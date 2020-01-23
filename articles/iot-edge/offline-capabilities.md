@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 951c81b2d65fe17f6e79dbdd699051ba43b86c49
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a057eac8d2a0114cb58f738277e3e9a8fed90672
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867376"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548659"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Uitgebreide offline mogelijkheden voor IoT Edge apparaten, modules en onderliggende apparaten begrijpen
 
@@ -52,24 +52,23 @@ IoT Edge apparaten en hun toegewezen onderliggende apparaten kunnen tijdens de e
 
 ## <a name="set-up-parent-and-child-devices"></a>Bovenliggende en onderliggende apparaten instellen
 
-Als u wilt dat een IoT Edge apparaat de uitgebreide offline mogelijkheden van de onderliggende IoT-apparaten uitbreidt, moet u twee stappen volt ooien. Declareer eerst de relaties tussen bovenliggende en onderliggende items in de Azure Portal. Vervolgens maakt u een vertrouwens relatie tussen het bovenliggende apparaat en eventuele onderliggende apparaten en configureert u apparaat-naar-Cloud-communicatie om door de bovenliggende site als gateway te gaan. 
+Als u wilt dat een IoT Edge apparaat de uitgebreide offline mogelijkheden van de onderliggende IoT-apparaten uitbreidt, moet u twee stappen volt ooien. Declareer eerst de relaties tussen bovenliggende en onderliggende items in de Azure Portal. Vervolgens maakt u een vertrouwens relatie tussen het bovenliggende apparaat en eventuele onderliggende apparaten en configureert u apparaat-naar-Cloud-communicatie om door de bovenliggende site als gateway te gaan.
 
 ### <a name="assign-child-devices"></a>Onderliggende apparaten toewijzen
 
-Onderliggende apparaten kunnen elk niet-IoT Edge apparaat zijn dat is geregistreerd bij dezelfde IoT Hub. Bovenliggende apparaten kunnen meerdere onderliggende apparaten hebben, maar een onderliggend apparaat heeft slechts één bovenliggend object. Er zijn drie opties voor het instellen van onderliggende apparaten op een edge-apparaat: via de Azure Portal, met behulp van de Azure CLI of de IoT Hub Service-SDK. 
+Onderliggende apparaten kunnen elk niet-IoT Edge apparaat zijn dat is geregistreerd bij dezelfde IoT Hub. Bovenliggende apparaten kunnen meerdere onderliggende apparaten hebben, maar een onderliggend apparaat heeft slechts één bovenliggend object. Er zijn drie opties voor het instellen van onderliggende apparaten op een edge-apparaat: via de Azure Portal, met behulp van de Azure CLI of de IoT Hub Service-SDK.
 
 De volgende secties bevatten voor beelden van de manier waarop u de bovenliggende/onderliggende relatie in IoT Hub kunt declareren voor bestaande IoT-apparaten. Als u nieuwe apparaat-id's voor uw onderliggende apparaten wilt maken, raadpleegt u [een downstream-apparaat verifiëren bij Azure IOT hub](how-to-authenticate-downstream-device.md) voor meer informatie.
 
 #### <a name="option-1-iot-hub-portal"></a>Optie 1: IoT Hub Portal
 
-U kunt de relatie bovenliggend/onderliggend declareren bij het maken van een nieuw apparaat. Voor bestaande apparaten kunt u de relatie declareren vanaf de pagina Details van apparaat van het bovenliggende IoT Edge apparaat of het onderliggende IoT-apparaat. 
+U kunt de relatie bovenliggend/onderliggend declareren bij het maken van een nieuw apparaat. Voor bestaande apparaten kunt u de relatie declareren vanaf de pagina Details van apparaat van het bovenliggende IoT Edge apparaat of het onderliggende IoT-apparaat.
 
    ![Onderliggende apparaten beheren vanaf de pagina met details van IoT Edge-apparaat](./media/offline-capabilities/manage-child-devices.png)
 
-
 #### <a name="option-2-use-the-az-command-line-tool"></a>Optie 2: gebruik het `az` opdracht regel programma
 
-Met de [Azure-opdracht regel interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) met [IOT-extensie](https://github.com/azure/azure-iot-cli-extension) (v 0.7.0 of hoger) kunt u bovenliggende onderliggende relaties beheren met de subopdrachten van het [apparaat-id](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) . In het onderstaande voor beeld wordt met behulp van een query alle niet-IoT Edge apparaten in de hub aan onderliggende apparaten van een IoT Edge apparaat toegewezen. 
+Met de [Azure-opdracht regel interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) met [IOT-extensie](https://github.com/azure/azure-iot-cli-extension) (v 0.7.0 of hoger) kunt u bovenliggende onderliggende relaties beheren met de subopdrachten van het [apparaat-id](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) . In het onderstaande voor beeld wordt met behulp van een query alle niet-IoT Edge apparaten in de hub aan onderliggende apparaten van een IoT Edge apparaat toegewezen.
 
 ```shell
 # Set IoT Edge parent device
@@ -89,39 +88,39 @@ az iot hub device-identity add-children \
   --child-list $device_list \
   --hub-name replace-with-hub-name \
   --resource-group replace-with-rg-name \
-  --subscription replace-with-sub-name 
+  --subscription replace-with-sub-name
 ```
 
 U kunt de [query](../iot-hub/iot-hub-devguide-query-language.md) wijzigen om een andere subset van apparaten te selecteren. De opdracht kan enkele seconden duren als u een grote set apparaten opgeeft.
 
-#### <a name="option-3-use-iot-hub-service-sdk"></a>Optie 3: de IoT Hub Service-SDK gebruiken 
+#### <a name="option-3-use-iot-hub-service-sdk"></a>Optie 3: de IoT Hub Service-SDK gebruiken
 
 Ten slotte kunt u de C#bovenliggende onderliggende relaties programmatisch beheren via een Java-of node. js-IOT hub Service-SDK. Hier volgt een [voor beeld van het toewijzen van een onderliggend apparaat](https://aka.ms/set-child-iot-device-c-sharp) met behulp van de C# SDK.
 
 ### <a name="set-up-the-parent-device-as-a-gateway"></a>Het bovenliggende apparaat instellen als een gateway
 
-U kunt een bovenliggende/onderliggende relatie beschouwen als een transparante gateway, waarbij het onderliggende apparaat een eigen identiteit heeft in IoT Hub, maar via de Cloud communiceert via de bovenliggende site. Voor beveiligde communicatie moet het onderliggende apparaat kunnen controleren of het bovenliggende apparaat afkomstig is van een vertrouwde bron. Anders kunnen derden schadelijke apparaten instellen om ouders te imiteren en communicatie te onderscheppen. 
+U kunt een bovenliggende/onderliggende relatie beschouwen als een transparante gateway, waarbij het onderliggende apparaat een eigen identiteit heeft in IoT Hub, maar via de Cloud communiceert via de bovenliggende site. Voor beveiligde communicatie moet het onderliggende apparaat kunnen controleren of het bovenliggende apparaat afkomstig is van een vertrouwde bron. Anders kunnen derden schadelijke apparaten instellen om ouders te imiteren en communicatie te onderscheppen.
 
 Een manier om deze vertrouwens relatie te maken, wordt gedetailleerd beschreven in de volgende artikelen:
 
 * [Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway](how-to-create-transparent-gateway.md)
 * [Een downstream (onderliggend) apparaat verbinden met een Azure IoT Edge gateway](how-to-connect-downstream-device.md)
 
-## <a name="specify-dns-servers"></a>DNS-servers opgeven 
+## <a name="specify-dns-servers"></a>DNS-servers opgeven
 
 Ter verbetering van de robuustheid wordt u ten zeerste aangeraden de DNS-server adressen op te geven die in uw omgeving worden gebruikt. Als u uw DNS-server voor IoT Edge wilt instellen, raadpleegt u de oplossing voor de [module Edge agent doorlopend het ' lege configuratie bestand ' en worden er geen modules gestart op het apparaat](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device) in het artikel over probleem oplossing.
 
 ## <a name="optional-offline-settings"></a>Optionele offline-instellingen
 
-Als uw apparaten offline gaan, slaat het IoT Edge bovenliggende apparaat alle apparaat-naar-Cloud-berichten op totdat de verbinding opnieuw tot stand is gebracht. De module IoT Edge hub beheert de opslag en het door sturen van offline berichten. Voor apparaten die gedurende lange tijd offline kunnen gaan, optimaliseert u de prestaties door twee IoT Edge hub-instellingen te configureren. 
+Als uw apparaten offline gaan, slaat het IoT Edge bovenliggende apparaat alle apparaat-naar-Cloud-berichten op totdat de verbinding opnieuw tot stand is gebracht. De module IoT Edge hub beheert de opslag en het door sturen van offline berichten. Voor apparaten die gedurende lange tijd offline kunnen gaan, optimaliseert u de prestaties door twee IoT Edge hub-instellingen te configureren.
 
-Verg root de time-to-Live-instelling, zodat de IoT Edge hub berichten lang genoeg blijft voordat het apparaat opnieuw verbinding maakt. Voeg vervolgens extra schijf ruimte toe voor bericht opslag. 
+Verg root de time-to-Live-instelling, zodat de IoT Edge hub berichten lang genoeg blijft voordat het apparaat opnieuw verbinding maakt. Voeg vervolgens extra schijf ruimte toe voor bericht opslag.
 
 ### <a name="time-to-live"></a>Time To Live
 
-Time to live-instelling is de hoeveelheid tijd (in seconden) die een bericht wachten kunt moet worden geleverd voordat deze verloopt. De standaardwaarde is 7200 seconden (twee uur). De maximum waarde wordt alleen beperkt door de maximum waarde van een variabele geheel getal, ongeveer 2.000.000.000. 
+Time to live-instelling is de hoeveelheid tijd (in seconden) die een bericht wachten kunt moet worden geleverd voordat deze verloopt. De standaardwaarde is 7200 seconden (twee uur). De maximum waarde wordt alleen beperkt door de maximum waarde van een variabele geheel getal, ongeveer 2.000.000.000.
 
-Deze instelling is een gewenste eigenschap van de IoT Edge hub, die wordt opgeslagen in de module dubbele. U kunt deze configureren in de Azure Portal of rechtstreeks in het implementatie manifest. 
+Deze instelling is een gewenste eigenschap van de IoT Edge hub, die wordt opgeslagen in de module dubbele. U kunt deze configureren in de Azure Portal of rechtstreeks in het implementatie manifest.
 
 ```json
 "$edgeHub": {
@@ -141,7 +140,7 @@ Berichten en informatie over de status van de module worden standaard opgeslagen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het instellen van een transparante gateway voor de verbindingen van een bovenliggend/onderliggend apparaat: 
+Meer informatie over het instellen van een transparante gateway voor de verbindingen van een bovenliggend/onderliggend apparaat:
 
 * [Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway](how-to-create-transparent-gateway.md)
 * [Een downstreamapparaat verifiëren voor Azure IoT Hub](how-to-authenticate-downstream-device.md)

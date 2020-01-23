@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 2d9de5e7294fdca7514989ba009e9dee8985a084
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421969"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549084"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>De Azure WebJobs SDK gebruiken voor op gebeurtenissen gebaseerde achtergrond verwerking
 
@@ -681,8 +681,8 @@ Zie [binding tijdens runtime](../azure-functions/functions-dotnet-class-library.
 De Azure Functions documentatie bevat Naslag informatie over elk bindings type. U vindt de volgende informatie in elk referentie artikel over de binding. (Dit voor beeld is gebaseerd op de opslag wachtrij.)
 
 * [Pakketten](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). Het pakket dat u moet installeren om ondersteuning te bieden voor de binding in een webjobs SDK-project.
-* [Voor beelden](../azure-functions/functions-bindings-storage-queue.md#trigger---example). Code voorbeelden. Het C# voor beeld van de klassen bibliotheek is van toepassing op de webjobs SDK. Laat het kenmerk `FunctionName` gewoon weg.
-* [Kenmerken](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes). De kenmerken die moeten worden gebruikt voor het bindings type.
+* [Voor beelden](../azure-functions/functions-bindings-storage-queue.md#trigger). Code voorbeelden. Het C# voor beeld van de klassen bibliotheek is van toepassing op de webjobs SDK. Laat het kenmerk `FunctionName` gewoon weg.
+* [Kenmerken](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations). De kenmerken die moeten worden gebruikt voor het bindings type.
 * [Configuratie](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Uitleg van de kenmerk eigenschappen en constructor-para meters.
 * [Gebruik](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). De typen waarmee u verbinding kunt maken en informatie over de werking van de binding. Bijvoorbeeld: polling-algoritme, verwerking van de verontreinigde wachtrij.
   

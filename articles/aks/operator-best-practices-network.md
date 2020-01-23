@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: mlearned
-ms.openlocfilehash: d1bc865b38b52c8a7c3ac6ec4dab6408a1d0430c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5b138849538cb9bbd6af6cbcf3e7a11b0cf66395
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614757"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549118"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor netwerk connectiviteit en beveiliging in azure Kubernetes service (AKS)
 
@@ -23,7 +23,7 @@ In deze best practices wordt het artikel gericht op netwerk connectiviteit en-be
 > [!div class="checklist"]
 > * De kubenet-en Azure CNI-netwerk modi vergelijken in AKS
 > * Plan voor vereiste IP-adres sering en connectiviteit
-> * Verkeer distribueren met load balancers, ingangs controllers of een Web Application firewall (WAF)
+> * Verkeer distribueren met load balancers, ingangs controllers of een Web Application Firewall (WAF)
 > * Veilig verbinding maken met cluster knooppunten
 
 ## <a name="choose-the-appropriate-network-model"></a>Kies het juiste netwerk model
@@ -41,13 +41,13 @@ De container Networking interface (CNI) is een Vendor-neutraal protocol waarmee 
 
 Voor de meeste productie-implementaties moet u Azure CNI-netwerken gebruiken. Dit netwerk model maakt schei ding van beheer en beheer van resources mogelijk. Vanuit een beveiligings perspectief wilt u vaak dat verschillende teams deze bronnen beheren en beveiligen. Met Azure CNI-netwerken kunt u rechtstreeks verbinding maken met bestaande Azure-resources, on-premises resources of andere services via IP-adressen die zijn toegewezen aan elke pod.
 
-Wanneer u Azure CNI-netwerken gebruikt, bevindt de virtuele netwerk resource zich in een afzonderlijke resource groep voor het AKS-cluster. Delegeer machtigingen voor de Service-Principal AKS voor toegang tot en beheer van deze resources. De service-principal die wordt gebruikt door het AKS-cluster [](../role-based-access-control/built-in-roles.md#network-contributor) moet ten minste netwerkinzender machtigingen hebben voor het subnet binnen het virtuele netwerk. Als u een [aangepaste rol](../role-based-access-control/custom-roles.md) wilt definiëren in plaats van de ingebouwde rol netwerk bijdrager te gebruiken, zijn de volgende machtigingen vereist:
+Wanneer u Azure CNI-netwerken gebruikt, bevindt de virtuele netwerk resource zich in een afzonderlijke resource groep voor het AKS-cluster. Delegeer machtigingen voor de Service-Principal AKS voor toegang tot en beheer van deze resources. De service-principal die wordt gebruikt door het AKS-cluster moet ten minste [netwerkinzender](../role-based-access-control/built-in-roles.md#network-contributor) machtigingen hebben voor het subnet binnen het virtuele netwerk. Als u een [aangepaste rol](../role-based-access-control/custom-roles.md) wilt definiëren in plaats van de ingebouwde rol netwerk bijdrager te gebruiken, zijn de volgende machtigingen vereist:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-Zie [toegang tot andere Azure-resources][sp-delegation]delegeren voor meer informatie over delegering van AKS-Service-Principal.
+Zie [toegang tot andere Azure-resources delegeren][sp-delegation]voor meer informatie over delegering van AKS-Service-Principal.
 
-Plan de adresbereiken voor de AKS-subnetten, aangezien elk knoop punt en pod zijn eigen IP-adres ontvangen. Het subnet moet groot genoeg zijn om IP-adressen op te geven voor elk knoop punt, elk van beide en netwerk bronnen die u implementeert. Elk AKS-cluster moet in een eigen subnet worden geplaatst. Om verbinding te kunnen maken met on-premises of peered netwerken in azure, kunt u geen IP-adresbereiken gebruiken die overlappen met bestaande netwerk bronnen. Er zijn standaard limieten voor het aantal peulen dat elke knoop punt wordt uitgevoerd met zowel kubenet als Azure CNI-netwerken. Als u opschalende gebeurtenissen of cluster upgrades wilt verwerken, moet u ook extra IP-adressen beschikbaar voor gebruik in het toegewezen subnet. Deze extra adres ruimte is vooral belang rijk als u Windows Server-containers gebruikt (momenteel als preview-versie in AKS), omdat voor deze knooppunt groepen een upgrade moet worden uitgevoerd om de meest recente beveiligings patches toe te passen. Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor meer informatie over Windows Server-knoop punten.
+Plan de adresbereiken voor de AKS-subnetten, aangezien elk knoop punt en pod zijn eigen IP-adres ontvangen. Het subnet moet groot genoeg zijn om IP-adressen op te geven voor elk knoop punt, elk van beide en netwerk bronnen die u implementeert. Elk AKS-cluster moet in een eigen subnet worden geplaatst. Om verbinding te kunnen maken met on-premises of peered netwerken in azure, kunt u geen IP-adresbereiken gebruiken die overlappen met bestaande netwerk bronnen. Er zijn standaard limieten voor het aantal peulen dat elke knoop punt wordt uitgevoerd met zowel kubenet als Azure CNI-netwerken. Voor het afhandelen van scale-out gebeurtenissen of cluster upgrades moet u ook extra IP-adressen beschikbaar voor gebruik in het toegewezen subnet. Deze extra adres ruimte is vooral belang rijk als u Windows Server-containers gebruikt (momenteel als preview-versie in AKS), omdat voor deze knooppunt groepen een upgrade moet worden uitgevoerd om de meest recente beveiligings patches toe te passen. Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor meer informatie over Windows Server-knoop punten.
 
 Zie [Azure cni-netwerken configureren in AKS][advanced-networking]voor het berekenen van het vereiste IP-adres.
 
@@ -73,7 +73,7 @@ Een Azure-load balancer kan klant verkeer distribueren naar toepassingen in uw A
  * Een ingangs *bron*en
  * Een ingangs *controller*
 
-De ingangs resource is een yaml-manifest `kind: Ingress` van waarmee de host, certificaten en regels worden gedefinieerd voor het routeren van verkeer naar services die worden uitgevoerd in uw AKS-cluster. In het volgende voor beeld YAML-manifest wordt het verkeer voor *MyApp.com* gedistribueerd naar een van de twee services, *blogservice* of *storeservice*. De klant wordt omgeleid naar één service of het andere op basis van de URL waartoe ze toegang hebben.
+De ingangs resource is een YAML-manifest van `kind: Ingress` dat de host, certificaten en regels definieert voor het routeren van verkeer naar services die worden uitgevoerd in uw AKS-cluster. In het volgende voor beeld YAML-manifest wordt het verkeer voor *MyApp.com* gedistribueerd naar een van de twee services, *blogservice* of *storeservice*. De klant wordt omgeleid naar één service of het andere op basis van de URL waartoe ze toegang hebben.
 
 ```yaml
 kind: Ingress
@@ -118,7 +118,7 @@ Een ingangs controller die verkeer naar Services en toepassingen distribueert, i
 
 ![Een Web Application Firewall (WAF) zoals Azure-app gateway kan verkeer voor uw AKS-cluster beveiligen en distribueren](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Een Web Application Firewall (WAF) biedt een extra beveiligingslaag door het binnenkomende verkeer te filteren. Het OWASP (open Web Application Security project) biedt een reeks regels om te controleren op aanvallen zoals cross-site scripting of cookie-vergiftiging. [Azure-toepassing gateway][app-gateway] (momenteel als preview-versie in AKS) is een WAF die kan worden geïntegreerd met AKS-clusters om deze beveiligings functies te bieden, voordat het verkeer uw AKS cluster en toepassingen bereikt. Andere oplossingen van derden voeren deze functies ook uit, zodat u bestaande investeringen of expertise in een bepaald product kunt blijven gebruiken.
+Een Web Application Firewall (WAF) biedt een extra beveiligingslaag door het binnenkomende verkeer te filteren. Het OWASP (open Web Application Security project) biedt een reeks regels om te controleren op aanvallen zoals cross-site scripting of cookie-vergiftiging. [Azure-toepassing gateway][app-gateway] (momenteel als preview in AKS) is een WAF die kan worden geïntegreerd met AKS-clusters om deze beveiligings functies te bieden, voordat het verkeer uw AKS cluster en toepassingen bereikt. Andere oplossingen van derden voeren deze functies ook uit, zodat u bestaande investeringen of expertise in een bepaald product kunt blijven gebruiken.
 
 Load Balancer-of ingangs bronnen blijven actief in uw AKS-cluster om de distributie van verkeer verder te verfijnen. App gateway kan centraal worden beheerd als een ingangs controller met een resource definitie. [Maak een Application Gateway ingangs controller][app-gateway-ingress]om aan de slag te gaan.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/09/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e52a859c86ff451293ac6ff795c7fe427a383b9d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 459d75bec3d4b4d0cf9057e0c6de238e7f165bfb
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835298"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548982"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Zelf studie: implementatie scripts gebruiken om een zelfondertekend certificaat te maken (preview)
 
@@ -267,7 +267,7 @@ Het implementatie script voegt een certificaat toe aan de sleutel kluis. Configu
     * **scriptContent**: Geef de script inhoud op. Als u een extern script wilt uitvoeren, gebruikt u **primaryScriptURI** in plaats daarvan. Zie [extern script gebruiken](./deployment-script-template.md#use-external-scripts)voor meer informatie.
         Het declareren van **$DeploymentScriptOutputs** is alleen vereist bij het testen van het script op een lokale computer. Als u de variabele declareert, kan het script worden uitgevoerd op een lokale computer en in een deploymentScript-bron zonder dat er wijzigingen hoeven te worden aangebracht. De waarde die is toegewezen aan $DeploymentScriptOutputs is beschikbaar als uitvoer in de implementaties. Zie [werken met uitvoer van implementatie scripts](./deployment-script-template.md#work-with-outputs-from-deployment-scripts)voor meer informatie.
     * **cleanupPreference**: Geef de voor keur op wanneer u de resources van het implementatie script wilt verwijderen.  De standaard waarde is **altijd**, wat betekent dat de implementatie script bronnen worden verwijderd ondanks de status van de Terminal (geslaagd, mislukt, geannuleerd). In deze zelf studie wordt **OnSuccess** gebruikt zodat u de resultaten van de uitvoering van het script kunt bekijken.
-    * **retentionInterval**: Geef het interval op waarvoor de service de script bronnen behoudt nadat het een Terminal status heeft bereikt. Resources worden verwijderd wanneer deze duur verloopt. De duur is gebaseerd op het ISO 8601-patroon. In deze zelf studie wordt P1D gebruikt. Dit betekent een dag.  Deze eigenschap wordt gebruikt wanneer **retentionInterval** is ingesteld op **OnExpiration**. Deze eigenschap is momenteel niet ingeschakeld.
+    * **retentionInterval**: Geef het interval op waarvoor de service de script bronnen behoudt nadat het een Terminal status heeft bereikt. Resources worden verwijderd wanneer deze duur verloopt. De duur is gebaseerd op het ISO 8601-patroon. In deze zelf studie wordt P1D gebruikt. Dit betekent een dag.  Deze eigenschap wordt gebruikt wanneer **cleanupPreference** is ingesteld op **OnExpiration**. Deze eigenschap is momenteel niet ingeschakeld.
 
     Het implementatie script neemt drie para meters: sleutel kluis naam, certificaat naam en onderwerpnaam.  Er wordt een certificaat gemaakt en vervolgens het certificaat toegevoegd aan de sleutel kluis.
 

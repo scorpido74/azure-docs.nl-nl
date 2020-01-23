@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 429205d1df91b5a63679d1189903e5340ab837f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913888"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547962"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netwerk concepten voor toepassingen in azure Kubernetes service (AKS)
 
@@ -45,7 +45,7 @@ Voor het vereenvoudigen van de netwerk configuratie voor toepassings werkbelasti
 
     ![Diagram van weer gave van NodePort verkeers stroom in een AKS-cluster][aks-nodeport]
 
-- **LoadBalancer** : Hiermee maakt u een Azure Load Balancer-resource, configureert u een extern IP-adres en verbindt u de aangevraagde peul met de back-endadresgroep van Load Balancer. Als u wilt dat klanten verkeer de toepassing kunnen bereiken, worden de regels voor taak verdeling op de gewenste poorten gemaakt. 
+- **LoadBalancer** : Hiermee maakt u een Azure Load Balancer-resource, configureert u een extern IP-adres en verbindt u de aangevraagde peul met de back-endadresgroep van Load Balancer. Als u het verkeer van klanten wilt toestaan om de toepassing te bereiken, worden er regels voor taak verdeling gemaakt op de gewenste poorten. 
 
     ![Diagram van Load Balancer verkeers stroom in een AKS-cluster][aks-loadbalancer]
 

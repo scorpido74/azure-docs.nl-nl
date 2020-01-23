@@ -3,12 +3,12 @@ title: Azure-Service Fabric-Service Fabric toepassing sleutel kluis verwijzingen
 description: In dit artikel wordt uitgelegd hoe u de KeyVaultReference-ondersteuning van service Fabric gebruikt voor toepassings geheimen.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 3f4c4979d0ce1329ac8ba49b236dae20a4e88b53
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167129"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545480"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-ondersteuning voor Service Fabric toepassingen (preview)
 
@@ -22,7 +22,7 @@ Een veelvoorkomende uitdaging bij het bouwen van Cloud toepassingen is het veili
 
 - Archief met centrale geheimen (CSS).
 
-    Centrale geheimen voor opslag (CSS) is de versleutelde lokale geheimen cache van de service-Fabric, KeyVaultReference nadat deze is opgehaald, worden opgeslagen in CSS.
+    Central geheimen Store (CSS) is de versleutelde lokale geheimen cache van Service Fabric. CSS is een lokale archief cache voor het opslaan van gevoelige gegevens, zoals een wacht woord, tokens en sleutels, versleuteld in het geheugen. KeyVaultReference, zodra het is opgehaald, worden in de cache opgeslagen in CSS.
 
     Voeg het onderstaande toe aan uw cluster configuratie onder `fabricSettings` om alle vereiste functies voor KeyVaultReference-ondersteuning in te scha kelen.
 

@@ -1,18 +1,18 @@
 ---
 title: Herstel na nood gevallen voor aangepaste onderwerpen in Azure Event Grid
-description: Meer informatie over de regionale uitval om Azure Event Grid te blijven verbinden.
+description: In deze zelf studie leert u hoe u uw gebeurtenis architectuur kunt instellen om te herstellen als de Event Grid-Service in een regio beschadigd wordt.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 7020fb167539e8ad16cc6c386f58e38326dec43b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 87f8f79e2cf125fa5735653153d8fcaa781f5200
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790284"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511515"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Bouw uw eigen herstel na nood gevallen voor aangepaste onderwerpen in Event Grid
 Herstel na noodgevallen is gericht op het herstellen van een ernstig verlies van de functionaliteit van de toepassing. In deze zelfstudie wordt u begeleid bij het instellen van uw gebeurtenisarchitectuur bij herstel als de Event Grid-service in een bepaalde regio niet goed functioneert.
@@ -46,7 +46,7 @@ Schrijf deze URL op, want u hebt deze later nodig.
 
 Maak eerst twee Event Grid-onderwerpen. Deze onderwerpen fungeren als primaire en secundaire onderwerp. Uw gebeurtenissen stromen standaard door uw primaire onderwerp. Bij uitval van service in de primaire regio, neemt het secundaire onderwerp het over.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
 
 1. Ga naar de linkerbovenhoek van het Azure-hoofdmenu, kies **Alle services** > zoek naar **Event Grid** > selecteer **Event Grid-onderwerpen**.
 

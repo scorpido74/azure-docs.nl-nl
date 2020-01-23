@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a9719ec7db4dead94478225cc47130b289a539c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5e66632fab0306da7766f079733cd1d8cb3edc8d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442342"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544086"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Snelstart: Webverkeer omleiden met Azure Application Gateway - Azure Portal
 
@@ -31,7 +31,7 @@ Meld u met uw Azure-account aan bij [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-application-gateway"></a>Een Application Gateway maken
 
-1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**. Het venster **Nieuw** wordt weergegeven.
+1. Selecteer in het menu van Azure Portal of op de **startpagina** de optie **Een resource maken**. Het venster **Nieuw** wordt weergegeven.
 
 2. Selecteer **Netwerken** en vervolgens **Application Gateway** in de lijst **Aanbevolen**.
 
@@ -66,7 +66,7 @@ Meld u met uw Azure-account aan bij [Azure Portal](https://portal.azure.com).
 
 1. Controleer op het tabblad **frontends** of het **frontend-IP-adres type** is ingesteld op **openbaar**. <br>U kunt de frontend-IP zo configureren dat deze openbaar of privé is volgens uw use-case. In dit voor beeld kiest u een openbaar frontend-IP.
    > [!NOTE]
-   > Voor de SKU van Application Gateway v2 kunt u alleen de **open bare** frontend-IP-configuratie kiezen. Alleen de persoonlijke frontend-IP-configuratie (alleen de ILB-modus) is momenteel niet ingeschakeld voor deze v2-SKU. U kunt zowel open bare als privé-frontend-IP-configuratie hebben.
+   > Voor de SKU van Application Gateway v2 moet er een **open bare** frontend-IP-configuratie zijn. U kunt nog steeds een open bare en een privé-front-end-IP-configuratie hebben, maar alleen persoonlijke frontend-IP-configuratie (alleen ILB modus) is momenteel niet ingeschakeld voor de v2-SKU. 
 
 2. Kies **Nieuw maken** voor het **open bare IP-adres** en voer *myAGPublicIPAddress* in als naam voor het open bare IP-adres en selecteer vervolgens **OK**. 
 
@@ -136,7 +136,7 @@ Hiervoor gaat u als volgt te werk:
 
 ### <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
-1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**. Het venster **Nieuw** wordt weergegeven.
+1. Selecteer in het menu van Azure Portal of op de **startpagina** de optie **Een resource maken**. Het venster **Nieuw** wordt weergegeven.
 2. Selecteer **Compute** en selecteer vervolgens **Windows Server 2016 Data Center** in de lijst **populair** . De pagina **Een virtuele machine maken** wordt weergegeven.<br>Application Gateway kunt verkeer routeren naar elk type virtuele machine dat wordt gebruikt in de back-endadresgroep. In dit voor beeld gebruikt u een Windows Server 2016 Data Center.
 3. Voer deze waarden in op het tabblad **Basisinformatie** voor de volgende instellingen voor de virtuele machine:
 

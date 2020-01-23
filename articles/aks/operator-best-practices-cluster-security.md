@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 4629e4e9cfd5c8f9861b692b2aec89057f83587c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2377cc2e0824911217fbc2783fdf8e86fd7b9405
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442922"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549203"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor beveiliging van clusters en upgrades in Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ In dit artikel richt zich op het beveiligen van uw AKS-cluster. Procedures voor:
 > * Azure Active Directory en op rollen gebaseerd toegangsbeheer gebruiken voor het beveiligen van toegang tot de API-server
 > * Beveiligde container-toegang tot resources van knooppunt
 > * Een AKS-cluster upgraden naar de nieuwste versie van Kubernetes
-> * Knooppunten bijwerken tot datum blijven en beveiligingspatches automatisch worden toegepast
+> * Knoop punten up-to-date houden en automatisch beveiligings patches Toep assen
 
 U kunt ook de aanbevolen procedures voor [container Image Management][best-practices-container-image-management] en voor [pod-beveiliging][best-practices-pod-security]lezen.
 

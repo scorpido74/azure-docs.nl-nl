@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: 24a19487567f2753457d5886cbb9fa4bf438bad4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: f87dbedb1428b5884e20a9f7daabea792387fe88
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311339"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543304"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Train met gegevens sets in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,8 +105,11 @@ experiment_run.wait_for_completion(show_output=True)
 Als u uw gegevens bestanden beschikbaar wilt maken voor het reken doel voor training, gebruikt u [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) om bestanden te koppelen of te downloaden waarnaar wordt verwezen.
 
 ### <a name="mount-vs-download"></a>V.s. koppelen Download
-Wanneer u een gegevensset koppelt, koppelt u de bestanden waarnaar wordt verwezen door de gegevensset naar een directory (koppel punt) en maakt u deze beschikbaar op het berekenings doel. Koppelen wordt ondersteund voor op Linux gebaseerde berekeningen, waaronder Azure Machine Learning compute, virtual machines en HDInsight. Als uw gegevens grootte de grootte van de berekenings schijf overschrijdt of als u alleen een deel van de gegevensset in uw script laadt, wordt de koppeling aanbevolen. Omdat het downloaden van een gegevensset die groter is dan de grootte van de schijf mislukt, en koppelen, wordt alleen het deel van de gegevens geladen dat door het script wordt gebruikt op het moment van de verwerking. Wanneer u een gegevensset downloadt, worden alle bestanden waarnaar wordt verwezen door de gegevensset gedownload naar het Compute-doel. Downloaden wordt ondersteund voor alle reken typen. Als uw script alle bestanden verwerkt waarnaar wordt verwezen door de gegevensset, en uw berekenings schijf past in uw volledige gegevensset, wordt het downloaden aanbevolen om te voor komen dat de gegevens van opslag services worden gestreamd.
+Wanneer u een gegevensset koppelt, koppelt u de bestanden waarnaar wordt verwezen door de gegevensset naar een directory (koppel punt) en maakt u deze beschikbaar op het berekenings doel. Koppelen wordt ondersteund voor op Linux gebaseerde berekeningen, waaronder Azure Machine Learning compute, virtual machines en HDInsight. Als uw gegevens grootte de grootte van de berekenings schijf overschrijdt of als u alleen een deel van de gegevensset in uw script laadt, wordt de koppeling aanbevolen. Omdat het downloaden van een gegevensset die groter is dan de grootte van de schijf mislukt, en koppelen, wordt alleen het deel van de gegevens geladen dat door het script wordt gebruikt op het moment van de verwerking. 
 
+Wanneer u een gegevensset downloadt, worden alle bestanden waarnaar wordt verwezen door de gegevensset gedownload naar het Compute-doel. Downloaden wordt ondersteund voor alle reken typen. Als uw script alle bestanden verwerkt waarnaar wordt verwezen door de gegevensset, en uw berekenings schijf past in uw volledige gegevensset, wordt het downloaden aanbevolen om te voor komen dat de gegevens van opslag services worden gestreamd.
+
+Het koppelen of downloaden van bestanden van een indeling wordt ondersteund voor gegevens sets die zijn gemaakt op basis van Azure Blob-opslag, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database en Azure Database for PostgreSQL. 
 
 ### <a name="create-a-filedataset"></a>Een FileDataset maken
 

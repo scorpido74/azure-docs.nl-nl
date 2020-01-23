@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: b84855057b43daa0aeff4878a69dac4ae765d2ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429311"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546942"
 ---
 # <a name="control-access-to-iot-hub"></a>Toegang tot IoT Hub regelen
 
@@ -57,7 +57,7 @@ Bijvoorbeeld in een typische IoT-oplossing:
 > [!NOTE]
 > Zie [machtigingen](#iot-hub-permissions) voor gedetailleerde informatie.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 In Azure IoT Hub wordt toegang verleend aan eindpunten door een token te verifiëren op basis van de gedeelde toegangsbeleidsregels en beveiligingsreferenties van het identiteitsregister.
 
@@ -347,7 +347,7 @@ Het resultaat, waarmee toegang wordt verleend om alle apparaat-id's te lezen, zo
 
 ## <a name="supported-x509-certificates"></a>Ondersteunde X. 509-certificaten
 
-U kunt elk X. 509-certificaat gebruiken om een apparaat te verifiëren met IoT Hub door een certificaat vingerafdruk of een certificerings instantie (CA) te uploaden naar Azure IoT Hub. Verificatie met behulp van certificaat vingerafdrukken controleert alleen of de gepresenteerde vinger afdruk overeenkomt met de geconfigureerde vinger afdruk. Verificatie met behulp van certificerings instantie valideert de certificaat keten. 
+U kunt elk X. 509-certificaat gebruiken om een apparaat te verifiëren met IoT Hub door een certificaat vingerafdruk of een certificerings instantie (CA) te uploaden naar Azure IoT Hub. Verificatie met behulp van certificaat vingerafdrukten controleert of de gepresenteerde vinger afdruk overeenkomt met de geconfigureerde vinger afdruk. Verificatie met behulp van certificerings instantie valideert de certificaat keten. In beide gevallen vereist TLS-Handshake dat het apparaat een geldig certificaat en een geldige persoonlijke sleutel heeft. Raadpleeg de TLS-specificatie voor meer informatie, bijvoorbeeld: [RFC 5246-de Transport Layer Security (TLS) Protocol versie 1,2](https://tools.ietf.org/html/rfc5246/).
 
 Ondersteunde certificaten zijn onder andere:
 
@@ -461,6 +461,8 @@ Andere naslag onderwerpen in de IoT Hub ontwikkelaars handleiding zijn:
 * [IOT hub query taal](iot-hub-devguide-query-language.md) beschrijft de query taal die u kunt gebruiken om informatie op te halen van IOT hub over de apparaatdubbels en taken van uw apparaat.
 
 * [IOT hub MQTT-ondersteuning](iot-hub-mqtt-support.md) biedt meer informatie over IOT hub ondersteuning voor het MQTT-protocol.
+
+* [RFC 5246-de Transport Layer Security (TLS)-Protocol versie 1,2](https://tools.ietf.org/html/rfc5246/) biedt meer informatie over TLS-verificatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

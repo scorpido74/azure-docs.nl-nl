@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9332079cd77c4dcc972059071165ba0631135b5c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: cd10bd2a04bfb2a3e3316d86e64a98c75c12e36d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012512"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76530895"
 ---
 In dit artikel wordt uitgelegd hoe u back-ups en herstel na nood gevallen (DR) van IaaS virtual machines (Vm's) en schijven in azure plant. In dit document worden zowel beheerde als onbeheerde schijven beschreven.
 
@@ -33,7 +33,7 @@ Voordat we gaan kijken naar back-ups en DR-opties, gaan we enkele methoden samen
 
 ### <a name="azure-iaas-resiliency"></a>Tolerantie van Azure IaaS
 
-*Tolerantie* verwijst naar de tolerantie voor normale storingen die zich voordoen in hardware-onderdelen. Tolerantie is de mogelijkheid om fouten te herstellen en verder te werken. Het is niet mogelijk om storingen te voor komen, maar op een manier te reageren op fouten waardoor downtime of gegevens verlies wordt voor komen. Het doel van flexibiliteit is om de toepassing na een storing weer volledig te laten functioneren. Virtuele machines en schijven van Azure zijn ontworpen om te worden gebruikt voor veelvoorkomende hardwarefouten. Laten we eens kijken hoe het Azure IaaS-platform deze tolerantie biedt.
+*Tolerantie* verwijst naar de tolerantie voor normale storingen die zich voordoen in hardware-onderdelen. Tolerantie is de mogelijkheid om fouten te herstellen en verder te werken. Het gaat niet om het vermijden van storingen, maar om het reageren op storingen op een manier waarmee downtime of gegevensverlies wordt voorkomen. Het doel van flexibiliteit is om de toepassing na een storing weer volledig te laten functioneren. Virtuele machines en schijven van Azure zijn ontworpen om te worden gebruikt voor veelvoorkomende hardwarefouten. Laten we eens kijken hoe het Azure IaaS-platform deze tolerantie biedt.
 
 Een virtuele machine bestaat voornamelijk uit twee delen: een Compute Server en de permanente schijven. Beide beïnvloeden de fout tolerantie van een virtuele machine.
 
@@ -109,7 +109,7 @@ Voor niet-beheerde schijven kunt u het lokaal redundante opslag type gebruiken v
 
 | Scenario | Automatische replicatie | Oplossing voor nood herstel |
 | --- | --- | --- |
-| Premium-SSD schijven | Lokaal ([lokaal redundante opslag](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Premium SSD-schijven | Lokaal ([lokaal redundante opslag](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Managed Disks | Lokaal ([lokaal redundante opslag](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Onbeheerde lokaal redundante opslag schijven | Lokaal ([lokaal redundante opslag](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Niet-beheerde geo-redundante opslag schijven | Kruis regio ([geografisch redundante opslag](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Consistente moment opnamen](#alternative-solution-consistent-snapshots) |
@@ -151,8 +151,6 @@ Gebruik de volgende stappen om back-ups van uw Vm's in te scha kelen met behulp 
 1.  Configureer het back-upbeleid en selecteer de virtuele machine in dezelfde gebruikers interface.
 
 1.  Zorg ervoor dat de back-upagent is geïnstalleerd op de virtuele machine. Als uw virtuele machine is gemaakt met behulp van een Azure Gallery-afbeelding, is de back-upagent al geïnstalleerd. Als dat niet het geval is, gebruikt u de instructies voor [het installeren van de VM-agent op een virtuele machine](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent), als u een aangepaste installatie kopie gebruikt.
-
-1.  Zorg ervoor dat de virtuele machine verbinding maakt met het netwerk voor de back-upservice. Volg de instructies voor de [netwerk verbinding](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 1.  Nadat de vorige stappen zijn voltooid, wordt de back-up met regel matige intervallen uitgevoerd zoals opgegeven in het back-upbeleid. Als dat nodig is, kunt u de eerste back-up hand matig activeren vanuit het kluis dashboard op de Azure Portal.
 

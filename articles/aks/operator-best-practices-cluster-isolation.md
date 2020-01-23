@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 88b2da863b30157de7bb749ae0ca4d040484af52
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cb15f637337df05c61eeac611286b49e23b6adac
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293637"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549186"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor cluster isolatie in azure Kubernetes service (AKS)
 
@@ -26,7 +26,7 @@ Dit artikel Best practices is gericht op isolatie voor cluster operators. In dit
 
 ## <a name="design-clusters-for-multi-tenancy"></a>Clusters ontwerpen voor multitenancy
 
-Kubernetes biedt functies waarmee u teams en werk belastingen logisch kunt isoleren in hetzelfde cluster. Het doel is om het minste aantal bevoegdheden op te geven, binnen het bereik van de resources die nodig zijn voor elk team. Een [naam ruimte][k8s-namespaces] in Kubernetes maakt een logische isolatie grens. Aanvullende kubernetes-functies en overwegingen voor isolatie en multitenancy bevatten de volgende gebieden:
+Kubernetes biedt functies waarmee u teams en werk belastingen logisch kunt isoleren in hetzelfde cluster. Het doel is om het minste aantal bevoegdheden op te geven, binnen het bereik van de resources die nodig zijn voor elk team. Een [naam ruimte][k8s-namespaces] in Kubernetes maakt een logische isolatie grens. Aanvullende Kubernetes-functies en overwegingen voor isolatie en multitenancy bevatten de volgende gebieden:
 
 * **Planning** omvat het gebruik van basis functies, zoals resource quota en pod-verstorings budgets. Zie [Best Practices for Basic scheduler-functies in AKS][aks-best-practices-scheduler]voor meer informatie over deze functies.
   * Meer geavanceerde functies van scheduler zijn onder andere taints en verdragen, knooppunt selecties en node-en pod-affiniteit of anti-affiniteit. Zie [Aanbevolen procedures voor geavanceerde functies van scheduler in AKS][aks-best-practices-advanced-scheduler]voor meer informatie over deze functies.

@@ -15,13 +15,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 61d7a2a7e4a60794710d602dab6b54e894bfc475
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 712e7bcf513592f97950902faff2f7754093b9fc
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232027"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549288"
 ---
+> [!NOTE]
+> Het proces voor het integreren van SmarterU met Azure Active Directory wordt ook gedocumenteerd en bijgehouden in het [Help-systeem van SmarterU](https://help.smarteru.com/ID2053086).
+
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Zelf studie: integratie Azure Active Directory met SmarterU
 
 In deze zelf studie leert u hoe u SmarterU integreert met Azure Active Directory (Azure AD).
@@ -61,7 +64,7 @@ Als u de integratie van SmarterU in azure AD wilt configureren, moet u SmarterU 
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
+3. Als u een nieuwe toepassing wilt toevoegen, klikt u op de knop **nieuwe toepassing** aan de bovenkant van het dialoog venster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
@@ -107,7 +110,7 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     Typ de volgende URL in het tekstvak **Id**: `https://www.smarteru.com/`
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -170,7 +173,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -184,7 +187,7 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![De koppeling SmarterU in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 

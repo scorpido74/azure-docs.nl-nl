@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: fbf1e11d7a283ca6c93356f055198c35350e0332
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: efb0a9229d6061d4df8d67ba8455801d9d2a2964
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445354"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548880"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Meerdere Azure Functions triggers maken voor Cosmos DB
 
@@ -38,7 +38,7 @@ Het doel van dit artikel is om u te helpen bij het uitvoeren van de tweede optie
 
 ## <a name="configuring-a-shared-leases-container"></a>Een gedeelde lease-container configureren
 
-Als u de container gedeelde leases wilt configureren, is de enige extra configuratie die u nodig hebt om uw triggers te maken, het `LeaseCollectionPrefix` [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) toe C# te voegen als u of `leaseCollectionPrefix` [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) gebruikt als u Java script gebruikt. De waarde van het kenmerk moet een logische descriptor zijn van wat de betreffende trigger is.
+Als u de container gedeelde leases wilt configureren, is de enige extra configuratie die u nodig hebt om uw triggers te maken, het `LeaseCollectionPrefix` [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---attributes-and-annotations) toe C# te voegen als u of `leaseCollectionPrefix` [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) gebruikt als u Java script gebruikt. De waarde van het kenmerk moet een logische descriptor zijn van wat de betreffende trigger is.
 
 Als u bijvoorbeeld drie triggers hebt: een die e-mail berichten verzendt, een die een aggregatie maakt om een gerealiseerde weer gave te maken en een die de wijzigingen naar een andere opslag verzendt, kunt u voor latere analyse de `LeaseCollectionPrefix` ' e-mailen ' toewijzen aan het eerste, ' bemateriald ' en ' analyse ' tot de derde.
 
@@ -109,5 +109,5 @@ En voor Java script kunt u de configuratie Toep assen op het `function.json` bes
 ## <a name="next-steps"></a>Volgende stappen
 
 * Bekijk de volledige configuratie voor de [Azure functions trigger voor Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)
-* Controleer de uitgebreide [lijst met voor beelden](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---example) voor alle talen.
+* Controleer de uitgebreide [lijst met voor beelden](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) voor alle talen.
 * Ga naar de Serverloze recepten met Azure Cosmos DB en Azure Functions [github-opslag plaats](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios) voor meer voor beelden.

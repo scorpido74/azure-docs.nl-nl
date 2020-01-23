@@ -3,12 +3,12 @@ title: Azure Functions ontwikkelen met Visual Studio code
 description: Meer informatie over het ontwikkelen en testen van Azure Functions met behulp van de Azure Functions-extensie voor Visual Studio code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 54bbc46c703646f4680f6dc22d5c4b6781614ae7
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.openlocfilehash: 4a5f60c2da8a77f385dba40dcd4d342583e989c1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667546"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547418"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio code
 
@@ -146,7 +146,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 De para meter `msg` is een `ICollector<T>` type dat een verzameling berichten vertegenwoordigt die naar een uitvoer binding worden geschreven wanneer de functie is voltooid. U voegt een of meer berichten aan de verzameling toe. Deze berichten worden verzonden naar de wachtrij wanneer de functie is voltooid.
 
-Zie de documentatie voor de binding van de [wachtrij opslag](functions-bindings-storage-queue.md#output---c-example) voor meer informatie.
+Zie de documentatie voor de binding van de [wachtrij opslag](functions-bindings-storage-queue.md#output) voor meer informatie.
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -184,7 +184,7 @@ In de functie code wordt de binding van de `msg` geopend vanuit de `context`, zo
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-Zie voor meer informatie de referentie voor de uitvoer van de [wachtrij opslag](functions-bindings-storage-queue.md#output---javascript-example) .
+Zie voor meer informatie de referentie voor de uitvoer van de [wachtrij opslag](functions-bindings-storage-queue.md#output) .
 
 ---
 

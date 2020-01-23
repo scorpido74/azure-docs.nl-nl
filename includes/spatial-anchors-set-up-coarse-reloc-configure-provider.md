@@ -4,13 +4,13 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.openlocfilehash: c18e40b8950d5e75398382a41cf0acc3505ea5a6
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: a3db5535e65e036ab10c35b7bc066a6286a9cad7
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093130"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545200"
 ---
 ## <a name="configure-the-sensor-fingerprint-provider"></a>De sensor vingerafdruk provider configureren
 
-We beginnen met het maken en configureren van een sensor vingerafdruk provider. Dit zorgt ervoor dat de platformspecifieke Sens oren op uw apparaat worden gelezen en worden samengevoegd in een algemene weer gave die wordt gebruikt door de Cloud-anker sessie.
+We beginnen met het maken en configureren van een sensor vingerafdruk provider. De sensor vingerafdruk provider zorgt ervoor dat de platformspecifieke Sens oren op uw apparaat worden gelezen en dat hun Lees bewerkingen worden geconverteerd naar een algemene weer gave die wordt gebruikt door de in de Cloud gebruikte ruimtelijk-anker sessie.

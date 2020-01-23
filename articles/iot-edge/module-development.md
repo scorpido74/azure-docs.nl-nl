@@ -8,42 +8,46 @@ ms.date: 07/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 37f55165d1fea8a69d10003baeb0006199326cba
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 96bd6b461a5374b5f5bc578c5f58dbcd09cd7087
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456615"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548625"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Uw eigen IoT Edge-modules ontwikkelen
 
-Azure IoT Edge modules kunnen verbinding maken met andere Azure-Services en bijdragen aan uw grotere gegevens pijplijn voor de Cloud. In dit artikel wordt beschreven hoe u modules kunt ontwikkelen om te communiceren met de IoT Edge runtime en IoT Hub, en dus ook de rest van de Azure-Cloud. 
+Azure IoT Edge modules kunnen verbinding maken met andere Azure-Services en bijdragen aan uw grotere gegevens pijplijn voor de Cloud. In dit artikel wordt beschreven hoe u modules kunt ontwikkelen om te communiceren met de IoT Edge runtime en IoT Hub, en dus ook de rest van de Azure-Cloud.
 
 ## <a name="iot-edge-runtime-environment"></a>IoT Edge-runtime-omgeving
-IoT Edge-runtime biedt de infrastructuur voor het integreren van de functionaliteit van meerdere IoT Edge-modules en deze te implementeren op IoT Edge-apparaten. Op hoog niveau, kan elk programma worden geleverd als een IoT Edge-module. Echter, als u wilt profiteren van IoT Edge communicatie- en beheerfuncties, een programma wordt uitgevoerd in een module kunt verbinding maken met lokale IoT Edge hub, geïntegreerd in de IoT Edge-runtime.
+
+IoT Edge-runtime biedt de infrastructuur voor het integreren van de functionaliteit van meerdere IoT Edge-modules en deze te implementeren op IoT Edge-apparaten. Elk programma kan worden verpakt als een IoT Edge module. Een programma dat in een module wordt uitgevoerd, kan de Azure IoT Device SDK gebruiken om verbinding te maken met de lokale IoT Edge hub om optimaal te profiteren van IoT Edge communicatie-en beheer functionaliteit.
 
 ## <a name="using-the-iot-edge-hub"></a>Met behulp van de IoT Edge hub
+
 De IoT Edge hub biedt twee belangrijke functies: proxy naar IoT Hub en lokale communicatie.
 
 ### <a name="iot-hub-primitives"></a>IoT Hub primitieven
+
 IoT Hub ziet u een exemplaar van de module analogously aan een apparaat, in de zin dat:
 
-* het heeft een module die twee ledig is en die is geïsoleerd van het [apparaat](../iot-hub/iot-hub-devguide-device-twins.md) en de andere module apparaatdubbels van dat apparaat.
-* Er kunnen [apparaat-naar-Cloud-berichten](../iot-hub/iot-hub-devguide-messaging.md)worden verzonden.
-* het kan [directe methoden](../iot-hub/iot-hub-devguide-direct-methods.md) ontvangen die specifiek zijn gericht op de identiteit.
+* Er is een moduledubbel van die is uniek en geïsoleerd van de [apparaatdubbel](../iot-hub/iot-hub-devguide-device-twins.md) en de andere moduledubbels van het apparaat;
+* Er kunnen worden verzonden [apparaat-naar-cloud-berichten](../iot-hub/iot-hub-devguide-messaging.md);
+* kan de ontvangen [directe methoden](../iot-hub/iot-hub-devguide-direct-methods.md) speciaal bedoeld voor de identiteit.
 
-Een module kan niet op dit moment ontvangt berichten van cloud-naar-apparaat en de functionaliteit voor het uploaden niet gebruiken.
+Momenteel kunnen modules geen Cloud-naar-apparaat-berichten ontvangen of de functie voor het uploaden van bestanden gebruiken.
 
-Wanneer u een module schrijft, kunt u de [Azure IOT Device SDK](../iot-hub/iot-hub-devguide-sdks.md) gebruiken om verbinding te maken met de IOT Edge hub en de bovenstaande functionaliteit te gebruiken zoals bij het gebruik van IOT hub met een apparaat-app. het enige verschil is dat, vanuit de back-end van uw toepassing, u moet verwijzen naar de module-id in plaats van de apparaat-id.
+Wanneer u een module schrijft, kunt u de [Azure IOT Device SDK](../iot-hub/iot-hub-devguide-sdks.md) gebruiken om verbinding te maken met de IOT Edge hub en de bovenstaande functionaliteit te gebruiken zoals u zou doen wanneer u IOT hub gebruikt met een apparaat-app. Het enige verschil tussen IoT Edge modules en IoT Device-toepassingen is dat u moet verwijzen naar de module-identiteit in plaats van de apparaat-id.
 
 ### <a name="device-to-cloud-messages"></a>Apparaat-naar-cloud-berichten
+
 IoT Edge hub biedt declaratieve route ring van berichten tussen modules en tussen modules en IoT Hub om complexe verwerking van apparaat-naar-Cloud-berichten mogelijk te maken. Declaratieve routering kunt modules worden onderschept en verwerken van berichten verzonden door andere modules en het doorgeven ervan in complexe pijplijnen. Zie [modules implementeren en routes instellen in IOT Edge](module-composition.md)voor meer informatie.
 
-Een IoT Edge-module, in plaats van een normale IoT Hub device-toepassing kan apparaat-naar-cloud-berichten die om te worden verwerkt door ze via proxy door de lokale IoT Edge hub worden ontvangen.
+Een IoT Edge module, in tegens telling tot een normale IoT Hub apparaat-toepassing, kan apparaat-naar-Cloud-berichten ontvangen die via de lokale IoT Edge hub worden verzonden om ze te verwerken.
 
 IoT Edge hub worden de berichten door gegeven aan uw module op basis van declaratieve routes die in het [implementatie manifest](module-composition.md)worden beschreven. Bij het ontwikkelen van een IoT Edge-module, kunt u deze berichten ontvangen door in te stellen bericht handlers.
 
-IoT Edge voegt het concept van module- *invoer* -en *uitvoer* eindpunten toe om het maken van routes te vereenvoudigen. Een module kan ontvangen van alle apparaat-naar-cloud-berichten doorgestuurd naar het zonder invoer op te geven en apparaat-naar-cloud-berichten kunt verzenden zonder eventuele uitvoer op te geven. Met behulp van expliciete invoer en uitvoer, maar dan wel maakt regels voor doorsturen eenvoudiger om te begrijpen. 
+IoT Edge voegt het concept van module- *invoer* -en *uitvoer* eindpunten toe om het maken van routes te vereenvoudigen. Een module kan ontvangen van alle apparaat-naar-cloud-berichten doorgestuurd naar het zonder invoer op te geven en apparaat-naar-cloud-berichten kunt verzenden zonder eventuele uitvoer op te geven. Met behulp van expliciete invoer en uitvoer, maar dan wel maakt regels voor doorsturen eenvoudiger om te begrijpen.
 
 Ten slotte worden verwerkt door de Edge hub apparaat-naar-cloud-berichten factureringslabel voor de volgende eigenschappen:
 
@@ -55,7 +59,9 @@ Ten slotte worden verwerkt door de Edge hub apparaat-naar-cloud-berichten factur
 | $outputName | De uitvoer die wordt gebruikt voor het verzenden van het bericht. Kan niet leeg zijn. |
 
 ### <a name="connecting-to-iot-edge-hub-from-a-module"></a>Verbinding maken met IoT Edge hub vanuit een module
-Verbinding maken met de lokale IoT Edge hub vanuit een module bestaat uit twee stappen: 
+
+Verbinding maken met de lokale IoT Edge hub vanuit een module bestaat uit twee stappen:
+
 1. Maak een ModuleClient-exemplaar in uw toepassing.
 2. Zorg ervoor dat uw toepassing accepteert het certificaat dat door de IoT Edge hub op het apparaat.
 
@@ -67,7 +73,7 @@ IoT Edge ondersteunt meerdere besturings systemen, architecturen en ontwikkeling
 
 ### <a name="linux"></a>Linux
 
-IoT Edge ondersteunt de ontwikkeling voor AMD64-en ARM32 Linux-apparaten voor alle talen in de volgende tabel. 
+IoT Edge ondersteunt de ontwikkeling voor AMD64-en ARM32 Linux-apparaten voor alle talen in de volgende tabel.
 
 | Ontwikkeltaal | Ontwikkelhulpprogramma’s |
 | -------------------- | ----------------- |

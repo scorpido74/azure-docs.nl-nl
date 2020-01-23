@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8979481452b0c4e8bf862c306a7916ddcabf1307
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b1de85e2c075d343a72fcc9fd29c0358d0054350
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423972"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548132"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fout codes voor Azure AD-verificatie en-autorisatie
 
@@ -222,6 +222,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS90092 | GraphNonRetryableError |
 | AADSTS90093 | GraphUserUnauthorized-Graph heeft een niet-toegestane fout code voor de aanvraag geretourneerd. |
 | AADSTS90094 | AdminConsentRequired-toestemming van de beheerder is vereist. |
+| AADSTS900382 | De vertrouwelijke client wordt niet ondersteund in een cross-Cloud aanvraag. |
 | AADSTS90100 | InvalidRequestParameter-de para meter is leeg of ongeldig. |
 | AADSTS901002 | AADSTS901002: de aanvraag parameter ' resource ' wordt niet ondersteund. |
 | AADSTS90101 | InvalidEmailAddress: de opgegeven gegevens zijn geen geldig e-mail adres. Het e-mail adres moet de indeling `someone@example.com`hebben. |

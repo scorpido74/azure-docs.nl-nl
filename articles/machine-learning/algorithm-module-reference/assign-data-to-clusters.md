@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 1dd88eaa9c92a4f8ff5d491da950f7bb1cc48c20
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: ac99b95e3cece09c5bdeb0986a11a999603707e6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314501"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548523"
 ---
 # <a name="module-assign-data-to-clusters"></a>Module: gegevens toewijzen aan clusters
 
-In dit artikel wordt beschreven hoe u de module *gegevens toewijzen aan clusters* in azure machine learning Designer kunt gebruiken. De module genereert voor spellingen via een cluster model dat is getraind met het algoritme *k-means clustering* .
+In dit artikel wordt beschreven hoe u de module *gegevens toewijzen aan clusters* in azure machine learning Designer (preview) gebruikt. De module genereert voor spellingen via een cluster model dat is getraind met het algoritme *k-means clustering* .
 
 De module gegevens toewijzen aan clusters retourneert een gegevensset die de waarschijnlijke toewijzingen voor elk nieuw gegevens punt bevat. 
 

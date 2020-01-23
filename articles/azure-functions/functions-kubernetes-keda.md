@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 9978bd567b1b07e8dd0e22e1f02834626281a5dd
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 83c57b27c1cd1d524805a92381a1ba9eb2e1fbd6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920665"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549033"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions op Kubernetes met KEDA
 
@@ -26,15 +26,9 @@ Kubernetes-functies biedt de functions-runtime in een [docker-container](functio
 
 Als u functies wilt uitvoeren op uw Kubernetes-cluster, moet u het onderdeel KEDA installeren. U kunt dit onderdeel installeren met behulp van [Azure functions core tools](functions-run-local.md).
 
-### <a name="installing-with-the-azure-functions-core-tools"></a>Installeren met de Azure Functions Core Tools
+### <a name="installing-with-helm"></a>Installeren met helm
 
-Standaard installeert kern Hulpprogramma's zowel de KEDA-als Osiris-onderdelen, die respectievelijk gebeurtenis-en HTTP-schaling ondersteunen.  De installatie maakt gebruik van `kubectl` uitgevoerd in de huidige context.
-
-Installeer KEDA in uw cluster door de volgende installatie opdracht uit te voeren:
-
-```cli
-func kubernetes install --namespace keda
-```
+Er zijn verschillende manieren om KEDA te installeren in elk Kubernetes-cluster, met inbegrip van helm.  Implementatie opties zijn gedocumenteerd op de [KEDA-site](https://keda.sh/deploy/).
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Een functie-app implementeren op Kubernetes
 
@@ -73,11 +67,7 @@ kubectl delete secret <name-of-function-deployment>
 
 ## <a name="uninstalling-keda-from-kubernetes"></a>KEDA verwijderen uit Kubernetes
 
-U kunt de volgende kern hulpprogramma's opdracht uitvoeren om KEDA te verwijderen uit een Kubernetes-cluster:
-
-```cli
-func kubernetes remove --namespace keda
-```
+De stappen voor het verwijderen van KEDA zijn gedocumenteerd [op de KEDA-site](https://keda.sh/deploy/).
 
 ## <a name="supported-triggers-in-keda"></a>Ondersteunde triggers in KEDA
 
@@ -91,7 +81,7 @@ KEDA biedt ondersteuning voor de volgende Azure-functie triggers:
 
 ### <a name="http-trigger-support"></a>Ondersteuning voor HTTP-triggers
 
-U kunt Azure Functions gebruiken dat HTTP-triggers beschikbaar maakt, maar KEDA beheert ze niet rechtstreeks.  De Azure Functions Core Tools installeert een verwant project, Osiris, waarmee HTTP-eind punten kunnen worden geschaald van 0 tot 1.  Het schalen van 1 naar *n* vertrouwt op het traditionele Kubernetes-schaal beleid.
+U kunt Azure Functions gebruiken dat HTTP-triggers beschikbaar maakt, maar KEDA beheert ze niet rechtstreeks.  U kunt gebruikmaken van de KEDA Prometheus-trigger om [HTTP-Azure functions te schalen van 1 naar *n* exemplaren](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42).
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende bronnen voor meer informatie:

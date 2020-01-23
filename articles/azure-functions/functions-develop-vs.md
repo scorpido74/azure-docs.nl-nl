@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen en testen van Azure Functions 
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 571519b996948a9fc4ac98e18e510fcee1dbef9b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 7aceae256c4fc4d18615e181bbcb7425e659955d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769763"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547350"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure Functions ontwikkelen met Visual Studio  
 
@@ -136,7 +136,7 @@ In C# Class Library-functies worden de bindingen die worden gebruikt door de fun
     }
     ```
 
-    Er wordt een binding-specifiek kenmerk toegepast op elke bindings parameter die is opgegeven voor de toegangs punt methode. Het kenmerk neemt de bindings gegevens op als para meters. In het vorige voor beeld heeft de eerste para meter een **Queue trigger** kenmerk toegepast, waarmee wordt aangegeven dat de door de wachtrij geactiveerde functie is. De naam van de wachtrij en de connection string instelling worden door gegeven als para meters aan het kenmerk **Queue trigger** . Zie [Azure Queue-opslag bindingen voor Azure functions](functions-bindings-storage-queue.md#trigger---c-example)voor meer informatie.
+    Er wordt een binding-specifiek kenmerk toegepast op elke bindings parameter die is opgegeven voor de toegangs punt methode. Het kenmerk neemt de bindings gegevens op als para meters. In het vorige voor beeld heeft de eerste para meter een **Queue trigger** kenmerk toegepast, waarmee wordt aangegeven dat de door de wachtrij geactiveerde functie is. De naam van de wachtrij en de connection string instelling worden door gegeven als para meters aan het kenmerk **Queue trigger** . Zie [Azure Queue-opslag bindingen voor Azure functions](functions-bindings-storage-queue.md#trigger)voor meer informatie.
 
 U kunt de bovenstaande procedure gebruiken om meer functies aan uw functie-app-project toe te voegen. Elke functie in het project kan een andere trigger hebben, maar een functie moet precies één trigger hebben. Zie [Azure functions triggers en bindingen concepten](functions-triggers-bindings.md)voor meer informatie.
 

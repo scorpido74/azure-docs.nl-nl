@@ -1,5 +1,5 @@
 ---
-title: Video bestanden streamen met Azure Media Services en de Azure CLI | Microsoft Docs
+title: Video bestanden streamen met Azure Media Services en de Azure CLI
 description: Volg de stappen in deze zelf studie om een nieuw Azure Media Services-account te maken, een bestand te coderen en te streamen naar Azure Media Player.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: ''
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 58193a94d09dee5df611acf5d98c8661dd18abbb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a51b30ad2af29871ed6998e60bb64adf91dfdbbd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639972"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514371"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>Zelfstudie: Een extern bestand coderen op basis van URL en de video-CLI streamen
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>Zelf studie: een extern bestand coderen op basis van URL en de video-CLI streamen
 
 Deze zelf studie laat zien hoe u eenvoudig Video's kunt coderen en streamen op verschillende browsers en apparaten met behulp van Azure Media Services en de Azure CLI. U kunt invoer inhoud opgeven door gebruik te maken van HTTPS-of SAS-Url's of-paden naar bestanden in Azure Blob-opslag.
 
@@ -48,7 +48,7 @@ az group create -n amsResourceGroup -l westus2
 
 In dit voor beeld maken we een standaard-LRS-account voor algemeen gebruik.
 
-Als u wilt experimenteren met opslagaccounts, gebruikt u `--sku Standard_LRS`. Wanneer u een SKU voor productie kiest, kunt u overwegen om `--sku Standard_RAGRS`te gebruiken, die geografische replicatie biedt voor bedrijfs continuïteit. Zie [Opslagaccounts](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest) voor meer informatie.
+Als u wilt experimenteren met opslagaccounts, gebruikt u `--sku Standard_LRS`. Wanneer u een SKU voor productie kiest, kunt u overwegen `--sku Standard_RAGRS`te gebruiken, die geografische replicatie biedt voor bedrijfs continuïteit. Zie [Opslagaccounts](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest) voor meer informatie.
  
 ```azurecli
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
@@ -193,7 +193,7 @@ Wanneer u `az ams job start` uitvoert, kunt u een label instellen op de uitvoer 
 - Als u een waarde aan het label toewijst, stelt u '--output-assets ' in op ' assets = label '.
 - Als u geen waarde aan het label toewijst, stelt u '--output-assets ' in op ' assets = '.
 
-  U ziet dat we ' = ' aan de `output-assets`hebben toegevoegd.
+  U ziet dat we "=" aan de `output-assets`toevoegen.
 
 ```azurecli
 az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup 
@@ -309,7 +309,7 @@ U krijgt een antwoord als volgt:
 }
 ```
 
-Kopieer het HLS-pad (HTTP Live streaming). In dit geval is `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`dat.
+Kopieer het HLS-pad (HTTP Live streaming). In dit geval is het `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`.
 
 ## <a name="build-the-url"></a>De URL bouwen 
 
@@ -318,7 +318,7 @@ Kopieer het HLS-pad (HTTP Live streaming). In dit geval is `/e01b2be1-5ea4-42ca-
 ```azurecli
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
-Kopieer de waarde van `hostName`. In dit geval is `amsaccount-usw22.streaming.media.azure.net`dat.
+Kopieer de waarde van `hostName`. In dit geval is het `amsaccount-usw22.streaming.media.azure.net`.
 
 ### <a name="assemble-the-url"></a>De URL samen stellen
 
@@ -333,7 +333,7 @@ Hier volgt een voorbeeld:
 > [!NOTE]
 > Als een speler wordt gehost op een HTTPS-site, moet u ervoor zorgen dat u de URL met ' https ' start.
 
-1. Open een webbrowser en ga [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)naar.
+1. Open een webbrowser en ga naar [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
 2. Plak in het vak **URL** de URL die u in de vorige sectie hebt gemaakt. U kunt de URL in HLS, Dash of Smooth plakken. Azure Media Player wordt automatisch een geschikt streaming-protocol gebruikt voor afspelen op het apparaat.
 3. Selecteer **Update speler**.
 

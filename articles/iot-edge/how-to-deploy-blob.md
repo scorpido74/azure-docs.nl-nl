@@ -7,12 +7,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: fe09fb47a75ff9d412ffab2daafaf241a43443b4
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 8c2df4854f4cdb93c08e22f7dcdc23b1b69b13d6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75729604"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548778"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>De Azure Blob Storage op IoT Edge module implementeren op uw apparaat
 
@@ -37,7 +37,7 @@ De Azure Portal begeleidt u bij het maken van een implementatie manifest en het 
 
 ### <a name="configure-a-deployment-manifest"></a>Een manifest van de implementatie configureren
 
-Het manifest voor een implementatie is een JSON-document waarin wordt beschreven welke modules te implementeren, hoe gegevens stromen tussen de modules, en de gewenste eigenschappen van de moduledubbels. De Azure Portal bevat een wizard die u helpt bij het maken van een implementatie manifest, in plaats van het JSON-document hand matig te bouwen. Het bevat drie stappen die zijn georganiseerd in tabbladen: **modules**, **routes**en **revisie + maken**.
+Het manifest voor een implementatie is een JSON-document waarin wordt beschreven welke modules te implementeren, hoe gegevens stromen tussen de modules, en de gewenste eigenschappen van de moduledubbels. De Azure Portal heeft een wizard die u helpt bij het maken van een implementatie manifest. Het bevat drie stappen die zijn georganiseerd in tabbladen: **modules**, **routes**en **revisie + maken**.
 
 #### <a name="add-modules"></a>Modules toevoegen
 
@@ -57,11 +57,11 @@ Het manifest voor een implementatie is een JSON-document waarin wordt beschreven
    > [!IMPORTANT]
    > Azure IoT Edge is hoofdletter gevoelig wanneer u aanroepen naar modules uitvoert en de opslag-SDK is standaard ingesteld op kleine letters. Hoewel de naam van de module in [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) **AzureBlobStorageonIoTEdge**is, is het wijzigen van de naam in kleine letters handig om ervoor te zorgen dat uw verbindingen met de Azure Blob Storage op IOT Edge module niet worden onderbroken.
 
-3. Op het tabblad Opties voor het **maken van containers** geeft u JSON-code op om informatie over het opslag account en een koppeling voor de opslag op uw apparaat te bieden.
+3. Open het tabblad **Opties voor container maken** .
 
    ![Dubbele instellingen voor module](./media/how-to-deploy-blob/addmodule-tab3.png)
 
-   Kopieer en plak de volgende JSON in het vak en Raadpleeg de beschrijving van de tijdelijke aanduidingen in de volgende stap.
+   Kopieer en plak de volgende JSON in het vak om informatie over het opslag account en een koppeling voor de opslag op uw apparaat op te geven.
   
    ```json
    {
@@ -80,13 +80,13 @@ Het manifest voor een implementatie is een JSON-document waarin wordt beschreven
    }
    ```
 
-4. Werk de JSON bij die u hebt gekopieerd voor de **Opties voor container maken** met de volgende informatie:
+4. De JSON die u hebt gekopieerd naar de **container Create-opties** bijwerken met de volgende informatie:
 
    - Vervang `<your storage account name>` door een naam die u kunt onthouden. Account namen moeten 3 tot 24 tekens lang zijn, met kleine letters en cijfers. Geen spaties.
 
    - Vervang `<your storage account key>` door een base64-sleutel van 64-bytes. U kunt een sleutel met de hulpprogramma's zoals genereren [GeneratePlus](https://generate.plus/en/base64). U gebruikt deze referenties voor toegang tot de blob-opslag van andere modules.
 
-   - Vervang `<storage mount>` volgens het besturings systeem van de container. Geef de naam van een [volume](https://docs.docker.com/storage/volumes/) of het absolute pad naar een map op uw IoT Edge-apparaat dat is waar u de blob-module voor het opslaan van de gegevens. De opslag koppeling wijst een locatie op het apparaat toe die u hebt opgegeven voor een set-locatie in de module.
+   - Vervang `<storage mount>` volgens het besturings systeem van de container. Geef de naam van een [volume](https://docs.docker.com/storage/volumes/) of het absolute pad op naar een bestaande map op uw IOT edge apparaat waar de gegevens worden opgeslagen in de BLOB-module. De opslag koppeling wijst een locatie op het apparaat toe die u hebt opgegeven voor een set-locatie in de module.
 
      - Voor Linux-containers is de indeling *\<opslagpad of volume >:/blobroot*. Bijvoorbeeld
          - [volume koppeling](https://docs.docker.com/storage/volumes/)gebruiken: **mijn-volume:/blobroot**
@@ -94,7 +94,7 @@ Het manifest voor een implementatie is een JSON-document waarin wordt beschreven
      - Voor Windows-containers is de indeling *\<opslagpad of volume >: C:/BlobRoot*. Bijvoorbeeld
          - [volume koppeling](https://docs.docker.com/storage/volumes/)gebruiken: **mijn-volume: C:/blobroot**.
          - [binding koppelen](https://docs.docker.com/storage/bind-mounts/)gebruiken: **c:/ContainerData: c:/BlobRoot**.
-         - In plaats van uw lokale station te gebruiken, kunt u uw SMB-netwerk locatie toewijzen voor meer informatie Raadpleeg [SMB share gebruiken als uw lokale opslag](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
+         - In plaats van uw lokale station te gebruiken, kunt u uw SMB-netwerk locatie toewijzen. Zie [SMB-share gebruiken als lokale opslag](how-to-store-data-blob.md#using-smb-share-as-your-local-storage) voor meer informatie.
 
      > [!IMPORTANT]
      > Wijzig de tweede helft van de opslag koppelings waarde, die verwijst naar een specifieke locatie in de module. De opslag koppeling moet altijd eindigen op **:/blobroot** for Linux-containers en **: C:/blobroot** voor Windows-containers.
@@ -261,6 +261,7 @@ Bewerk de **container maken opties** (in het Azure Portal) of het veld **createO
 Wanneer u verbinding met aanvullende blob storage-modules maken, wijzigt u het eindpunt om te verwijzen naar de bijgewerkte host-poort.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Meer informatie over [Azure Blob Storage op IOT Edge](how-to-store-data-blob.md)
 
 Zie voor meer informatie over hoe implementatie werk manifesten en hoe ze worden gemaakt, [te begrijpen hoe IoT Edge-modules kunnen worden gebruikt, geconfigureerd en opnieuw gebruikt](module-composition.md).

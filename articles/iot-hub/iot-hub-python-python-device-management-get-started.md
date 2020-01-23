@@ -6,20 +6,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 01/17/2020
 ms.author: robinsh
-ms.openlocfilehash: 514f4b26a708a6fec30a1f54cfe6da6d1b58b79d
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 2abccf3c891a4e5c4db1e05f09d2e61a590b73b7
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555523"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548561"
 ---
 # <a name="get-started-with-device-management-python"></a>Aan de slag met Apparaatbeheer (python)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
-In deze zelfstudie ontdekt u hoe u:
+In deze handleiding ontdekt u hoe u:
 
 * Gebruik de Azure Portal voor het maken van een IoT Hub en het maken van een apparaat-id in uw IoT-hub.
 
@@ -37,7 +37,7 @@ Aan het einde van deze zelf studie hebt u twee python-console-apps:
 
 ## <a name="prerequisites"></a>Vereisten
 
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -150,15 +150,11 @@ In deze sectie doet u het volgende:
 
 In deze sectie maakt u een python-console-app die extern opnieuw opstarten op een apparaat initieert via een directe methode. De app maakt gebruik van Device-dubbele query's om de tijd van de laatste keer opnieuw opstarten voor dat apparaat te detecteren.
 
-1. Voer bij de opdracht prompt de volgende opdracht uit om het **Azure-IOT-service-client-** pakket te installeren:
+1. Voer bij de opdracht prompt de volgende opdracht uit om het **Azure-IOT-hub-** pakket te installeren:
 
     ```cmd/sh
-    pip install azure-iothub-service-client
+    pip install azure-iot-hub
     ```
-
-   > [!NOTE]
-   > Het PIP-pakket voor Azure-iothub-service-client is momenteel alleen beschikbaar voor Windows-besturings systemen. Voor Linux/Mac OS raadpleegt u de sectie met Linux-en Mac OS-specifieke secties in de [ontwikkel omgeving voorbereiden voor python](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) post.
-   >
 
 2. Maak met behulp van een tekst editor een bestand met de naam **dmpatterns_getstarted_service. py** in uw werkmap.
 
@@ -166,9 +162,9 @@ In deze sectie maakt u een python-console-app die extern opnieuw opstarten op ee
 
     ```python
     import sys, time
-    import iothub_service_client
 
-    from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
+    from azure.iot.hub import IoTHubRegistryManager
+    from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult, Twin
     ```
 
 4. Voeg de volgende variabelen declaraties toe. Vervang de waarde van de tijdelijke aanduiding `{IoTHubConnectionString}` door de IoT hub connection string die u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang de waarde van de tijdelijke aanduiding `{deviceId}` door de apparaat-ID die u hebt geregistreerd in [een nieuw apparaat registreren bij de IOT-hub](#register-a-new-device-in-the-iot-hub).
@@ -188,13 +184,15 @@ In deze sectie maakt u een python-console-app die extern opnieuw opstarten op ee
     ```python
     def iothub_devicemethod_sample_run():
         try:
-            iothub_twin_method = IoTHubDeviceTwin(CONNECTION_STRING)
-            iothub_device_method = IoTHubDeviceMethod(CONNECTION_STRING)
+            # Create IoTHubRegistryManager
+            registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
 
             print ( "" )
             print ( "Invoking device to reboot..." )
 
-            response = iothub_device_method.invoke(DEVICE_ID, METHOD_NAME, METHOD_PAYLOAD, TIMEOUT)
+            # Call the direct method.
+            deviceMethod = CloudToDeviceMethod(method_name=METHOD_NAME, payload=METHOD_PAYLOAD)
+            response = registry_manager.invoke_device_method(DEVICE_ID, deviceMethod)
 
             print ( "" )
             print ( "Successfully invoked the device to reboot." )
@@ -208,19 +206,19 @@ In deze sectie maakt u een python-console-app die extern opnieuw opstarten op ee
 
                 status_counter = 0
                 while status_counter <= WAIT_COUNT:
-                    twin_info = iothub_twin_method.get_twin(DEVICE_ID)
+                    twin_info = registry_manager.get_twin(DEVICE_ID)
 
-                    if twin_info.find("rebootTime") != -1:
-                        print ( "Last reboot time: " + twin_info[twin_info.find("rebootTime")+11:twin_info.find("rebootTime")+37])
+                    if twin_info.properties.reported.get("rebootTime") != None :
+                        print ("Last reboot time: " + twin_info.properties.reported.get("rebootTime"))
                     else:
                         print ("Waiting for device to report last reboot time...")
 
                     time.sleep(5)
                     status_counter += 1
 
-        except IoTHubError as iothub_error:
+        except Exception as ex:
             print ( "" )
-            print ( "Unexpected error {0}".format(iothub_error) )
+            print ( "Unexpected error {0}".format(ex) )
             return
         except KeyboardInterrupt:
             print ( "" )

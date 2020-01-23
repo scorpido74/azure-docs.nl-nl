@@ -4,14 +4,14 @@ description: Vereisten voor avere vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 7f89ea553bc7198c1faee5ba3549f88da5ec2b2c
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152983"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547503"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Voorbereiden op het maken van de Avere vFXT
 
@@ -23,10 +23,10 @@ Begin met het maken van een nieuw Azure-abonnement. Gebruik een afzonderlijk abo
 
 Een nieuw Azure-abonnement maken in de Azure Portal:
 
-* Navigeer naar de [Blade abonnementen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
-* Klik bovenaan op de knop **+ toevoegen**
-* Meld u aan als u hierom wordt gevraagd
-* Selecteer een aanbieding en door loop de stappen voor het maken van een nieuw abonnement
+1. Navigeer naar de [Blade abonnementen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)
+1. Klik bovenaan op de knop **+ toevoegen**
+1. Meld u aan als u hierom wordt gevraagd
+1. Selecteer een aanbieding en door loop de stappen voor het maken van een nieuw abonnement
 
 ## <a name="configure-subscription-owner-permissions"></a>Machtigingen voor abonnements eigenaren configureren
 
@@ -104,6 +104,6 @@ Maak het eind punt van de opslag service vanuit het Azure Portal.
 
    ![Azure Portal scherm opname met annotaties voor de stappen voor het maken van het service-eind punt](media/avere-vfxt-service-endpoint.png)
 
-## <a name="next-step-create-the-vfxt-cluster"></a>Volgende stap: het vFXT-cluster maken
+## <a name="next-steps"></a>Volgende stappen
 
 Nadat u deze vereisten hebt voltooid, kunt u het cluster maken. Lees [het vFXT-cluster implementeren](avere-vfxt-deploy.md) voor instructies.

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: cc5c7b9f26d74f32c9f6042e3a1deddc57171860
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2acde4efa1dc118498f3c7da29c75e48c0478ac0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274242"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543134"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Snelstartgids: Een schaalset voor virtuele machines maken in Azure Portal
 
@@ -31,7 +31,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 Azure [Load Balancer](../load-balancer/load-balancer-overview.md) distribueert binnenkomend verkeer onder gezonde instanties van virtuele machines. 
 
-Maak eerst een openbare basis load balancer met behulp van de portal. De naam en het openbare IP-adres die u maakt, worden automatisch geconfigureerd als de front-end van de load balancer.
+Maak eerst een open bare Standard Load Balancer met behulp van de portal. De naam en het openbare IP-adres die u maakt, worden automatisch geconfigureerd als de front-end van de load balancer.
 
 1. Typ **Load Balancer**in het zoekvak. Kies **Load Balancer**onder **Marketplace** in de zoek resultaten.
 1. Typ of selecteer de volgende informatie op het tabblad **basis principes** van de pagina **Load Balancer maken** :

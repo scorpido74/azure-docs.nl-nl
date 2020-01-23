@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: cccdb54b89dff7c6a1fc9dac55c63b19d661ab65
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 9980ad7af4a9e5db1d93ffb389ef7b04209b8c43
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951306"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544613"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voor beeld: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
 
@@ -48,7 +48,7 @@ Er zijn veel voor delen van het gebruik van Azure AD-verificatie om u aan te mel
 
 De volgende Linux-distributies worden momenteel ondersteund tijdens de preview-versie van deze functie:
 
-| Distributie | Version |
+| Distributie | Versie |
 | --- | --- |
 | CentOS | CentOS 6, CentOS 7 |
 | Debian | Debian 9 |
@@ -72,11 +72,11 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 Als u Azure AD-verificatie wilt inschakelen voor uw virtuele Linux-machines in azure, moet u ervoor zorgen dat de VM-netwerk configuratie uitgaande toegang tot de volgende eind punten via TCP-poort 443 toestaat:
 
-* https://login.microsoftonline.com
-* https://device.login.microsoftonline.com
-* https://pas.windows.net
-* https://management.azure.com
-* https://packages.microsoft.com
+* https:\//login.microsoftonline.com
+* https:\/-device.login.microsoftonline.com
+* https:\/-pas.windows.net
+* https:\//management.azure.com
+* https:\/-packages.microsoft.com
 
 > [!NOTE]
 > Momenteel kunnen Azure-netwerk beveiligings groepen niet worden geconfigureerd voor Vm's die zijn ingeschakeld met Azure AD-verificatie.

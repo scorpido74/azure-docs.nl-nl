@@ -1,38 +1,38 @@
 ---
-title: Maken van een Ubuntu-Server voor NFS (Network File System) voor gebruik door schillen van Azure Kubernetes Service (AKS)
-description: Meer informatie over het handmatig maken van een volume NFS Ubuntu Linux-Server voor gebruik met schillen in Azure Kubernetes Service (AKS)
+title: Een NFS (Network File System) Ubuntu-server maken voor gebruik door een Peul van Azure Kubernetes service (AKS)
+description: Meer informatie over het hand matig maken van een NFS-Ubuntu Linux server volume voor gebruik met een Peul in azure Kubernetes service (AKS)
 services: container-service
 author: ozboms
 ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 55eb5b0b98a4097d2f300bacabbfef3b0a32b27b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ef584c48ab44fd3616b5c7897d589bddbe45dc0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65468497"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549254"
 ---
-# <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Handmatig maken en gebruiken van een volume van de Linux-Server voor NFS (Network File System) met Azure Kubernetes Service (AKS)
-Delen van gegevens tussen containers is vaak een vereist onderdeel van op containers gebaseerde services en toepassingen. Gewoonlijk hebt u verschillende schillen die toegang nodig tot de dezelfde informatie op een externe permanent volume.    
-Hoewel Azure files een optie is, is het maken van een NFS-Server op een Azure VM een andere vorm van permanente gedeelde opslag. 
+# <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Hand matig een NFS-server volume (Network File System) maken en gebruiken met Azure Kubernetes service (AKS)
+Het delen van gegevens tussen containers is vaak een benodigd onderdeel van op containers gebaseerde services en toepassingen. Normaal gesp roken hebt u verschillende peulen die toegang nodig hebben tot dezelfde informatie op een extern permanent volume.    
+Azure files is een optie, waardoor het maken van een NFS-server op een virtuele Azure-machine een andere vorm van permanente gedeelde opslag is. 
 
-Dit artikel wordt beschreven hoe u een NFS-Server op een Ubuntu-machine maakt. En ook uw AKS containers-toegang geven tot dit systeem voor gedeelde bestanden.
+In dit artikel wordt uitgelegd hoe u een NFS-server op een virtuele Ubuntu-machine maakt. En geef uw AKS-containers ook toegang tot dit gedeelde bestands systeem.
 
 ## <a name="before-you-begin"></a>Voordat u begint
-In dit artikel wordt ervan uitgegaan dat u een bestaand AKS-Cluster hebt. Als u een Cluster AKS nodig hebt, raadpleegt u de Quick Start voor AKS [met de Azure CLI] [ aks-quickstart-cli] of [met behulp van de Azure-portal][aks-quickstart-portal].
+In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
 
-Uw AKS-Cluster moet bevinden zich in hetzelfde of een gekoppelde virtuele netwerken als de NFS-Server. Het cluster moet worden gemaakt in een bestaand VNET, die hetzelfde VNET als de virtuele machine kan zijn.
+Uw AKS-cluster moet zich in dezelfde of gekoppelde virtuele netwerken bevinden als de NFS-server. Het cluster moet worden gemaakt in een bestaand VNET. Dit kan hetzelfde VNET zijn als uw virtuele machine.
 
-De stappen voor het configureren van met een bestaand VNET worden beschreven in de documentatie: [AKS-Cluster maken in bestaande VNET] [ aks-virtual-network] en [verbinden van virtuele netwerken met VNET-peering][peer-virtual-networks]
+De stappen voor het configureren van een bestaand VNET worden beschreven in de documentatie: [AKS-cluster maken in bestaande vnet][aks-virtual-network] en [virtuele netwerken verbinden met VNET-peering][peer-virtual-networks]
 
-Ook wordt ervan uitgegaan dat u een Ubuntu Linux-Machine (bijvoorbeeld 18.04 TNS) hebt gemaakt. Instellingen en de grootte kunnen naar wens en kunnen worden geïmplementeerd via Azure. Zie voor Linux-quickstart, [linux VM-beheer][linux-create].
+Ook wordt ervan uitgegaan dat u een Ubuntu Linux virtuele machine hebt gemaakt (bijvoorbeeld 18,04 LTS). Instellingen en grootte kunnen naar eigen wens zijn en kunnen worden geïmplementeerd via Azure. Zie Linux-VM- [beheer][linux-create]voor meer informatie over Linux.
 
-Als u eerst uw AKS-Cluster implementeert, Azure wordt automatisch gevuld het veld van het virtuele netwerk bij het implementeren van uw Ubuntu-machine, waardoor ze live in hetzelfde VNET. Maar als u werken met gekoppelde netwerken in plaats daarvan wilt, raadpleegt u de bovenstaande documentatie.
+Als u eerst uw AKS-cluster implementeert, vult Azure automatisch het veld virtueel netwerk in wanneer u uw Ubuntu-machine implementeert, zodat deze binnen hetzelfde VNET wonen. Als u in plaats daarvan met peered netwerken wilt werken, raadpleegt u de bovenstaande documentatie.
 
-## <a name="deploying-the-nfs-server-onto-a-virtual-machine"></a>Implementeren van de NFS-Server op een virtuele Machine
-Dit is het script voor het instellen van een NFS-Server in uw virtuele Ubuntu-machine:
+## <a name="deploying-the-nfs-server-onto-a-virtual-machine"></a>De NFS-server op een virtuele machine implementeren
+Dit is het script voor het instellen van een NFS-server binnen uw virtuele Ubuntu-machine:
 ```bash
 #!/bin/bash
 
@@ -74,31 +74,31 @@ echo "/export        localhost(rw,async,insecure,fsid=0,crossmnt,no_subtree_chec
 
 nohup service nfs-kernel-server restart
 ```
-De server wordt opnieuw opgestart (vanwege het script) en u kunt de NFS-Server met AKS koppelen
+De server wordt opnieuw opgestart (vanwege het script) en u kunt de NFS-server koppelen aan AKS
 
 >[!IMPORTANT]  
->Vervang de **AKS_SUBNET** met het juiste is van het cluster of ' * ' de NFS-Server op alle poorten en verbindingen wordt geopend.
+>Zorg ervoor dat u de **AKS_SUBNET** vervangt door het juiste in het cluster of door ' * ' te vervangen door de NFS-server naar alle poorten en verbindingen.
 
-Nadat u uw virtuele machine hebt gemaakt, kopieert u het script hierboven naar een bestand. Vervolgens kunt u het verplaatsen van uw lokale computer, of waar het script is, in de virtuele machine met behulp van: 
+Nadat u uw virtuele machine hebt gemaakt, kopieert u het bovenstaande script naar een bestand. Vervolgens kunt u de computer verplaatsen van de lokale machine of van de locatie van het script naar de VM met behulp van: 
 ```console
 scp /path/to/script_file username@vm-ip-address:/home/{username}
 ```
-Nadat het script uw virtuele machine is, u kunt ssh in de virtuele machine en deze uitvoeren via de opdracht:
+Zodra het script zich in uw virtuele machine bevindt, kunt u een SSH-verbinding naar de virtuele machine uitvoeren via de opdracht:
 ```console
 sudo ./nfs-server-setup.sh
 ```
-Als de uitvoering is mislukt vanwege fout toegang geweigerd, stelt u de machtiging kan worden uitgevoerd via de opdracht:
+Als de uitvoering is mislukt vanwege een fout met de machtiging geweigerd, stelt u de machtiging voor uitvoering in via de opdracht:
 ```console
 chmod +x ~/nfs-server-setup.sh
 ```
 
-## <a name="connecting-aks-cluster-to-nfs-server"></a>AKS-Cluster maken van verbinding met NFS-Server
-We kunnen de NFS-Server verbinding met het cluster via een permanent volume en permanent volume-claim die bepaalt hoe de toegang tot het volume inrichten.  
-De twee services in de dezelfde of een gekoppelde virtuele netwerken verbinding is nodig. Hier worden de instructies voor het instellen van het cluster in hetzelfde VNET: [AKS-Cluster maken in bestaande VNET][aks-virtual-network]
+## <a name="connecting-aks-cluster-to-nfs-server"></a>AKS-cluster verbinden met NFS-server
+We kunnen de NFS-server koppelen aan het cluster door een permanent volume en een permanente volume claim in te richten waarmee wordt aangegeven hoe het volume moet worden geopend.  
+Het koppelen van de twee services in dezelfde of gekoppelde virtuele netwerken is nood zakelijk. Instructies voor het instellen van het cluster in hetzelfde VNET vindt u in het volgende: [AKS-cluster maken in bestaand vnet][aks-virtual-network]
 
-Zodra ze zich in hetzelfde virtuele netwerk (of aan elkaar gekoppeld), moet u voor het inrichten van een permanent volume en een permanent volume claim in uw AKS-Cluster. De containers kunnen vervolgens het NFS-station aan de lokale map koppelen.
+Zodra ze zich in hetzelfde virtuele netwerk (of een peered) bevinden, moet u een permanent volume en een permanente volume claim inrichten in uw AKS-cluster. De containers kunnen vervolgens het NFS-station koppelen aan de lokale map.
 
-Hier volgt een voorbeeld van de kubernetes-definitie voor de permanent volume (deze definitie wordt ervan uitgegaan dat uw cluster en de virtuele machine zich in hetzelfde VNET):
+Hier volgt een voor beeld van een Kubernetes-definitie voor het permanente volume (deze definitie gaat ervan uit dat uw cluster en virtuele machine zich in hetzelfde VNET bevinden):
 
 ```yaml
 apiVersion: v1
@@ -116,12 +116,12 @@ spec:
     server: <NFS_INTERNAL_IP>
     path: <NFS_EXPORT_FILE_PATH>
 ```
-Vervang **NFS_INTERNAL_IP**, **NFS_NAME** en **NFS_EXPORT_FILE_PATH** met informatie van de NFS-Server.
+Vervang **NFS_INTERNAL_IP**, **NFS_NAME** en **NFS_EXPORT_FILE_PATH** met NFS-server gegevens.
 
-U moet ook een bestand van de claim permanent volume. Hier volgt een voorbeeld van wat u wilt opnemen:
+U hebt ook een permanente volume claim bestand nodig. Hier volgt een voor beeld van wat u kunt gebruiken:
 
 >[!IMPORTANT]  
->**"storageClassName"** moet blijven een lege tekenreeks of de claim werkt niet.
+>**' storageClassName '** moet een lege teken reeks blijven of de claim werkt niet.
 
 ```yaml
 apiVersion: v1
@@ -141,22 +141,22 @@ spec:
 ```
 
 ## <a name="troubleshooting"></a>Problemen oplossen
-Als u geen verbinding maken met de server uit een cluster, wordt een probleem mogelijk worden de geëxporteerde map of het bovenliggende object, beschikt niet over voldoende machtigingen voor toegang tot de server.
+Als u geen verbinding kunt maken met de server vanuit een cluster, is het mogelijk dat een probleem de geëxporteerde map of het bovenliggende item heeft, niet voldoende machtigingen heeft om toegang te krijgen tot de server.
 
-Controleer of zowel de exportmap als de bovenliggende map 777 machtigingen hebt.
+Controleer of de export Directory en de bovenliggende map 777 machtigingen hebben.
 
-U kunt machtigingen controleren door het uitvoeren van de volgende opdracht en de mappen hebt *'drwxrwxrwx'* machtigingen:
+U kunt de machtigingen controleren door de onderstaande opdracht uit te voeren en de mappen moeten de machtigingen *' drwxrwxrwx '* hebben:
 ```console
 ls -l
 ```
 
 ## <a name="more-information"></a>Meer informatie
-Het overbrengen van een overzicht of om op te sporen van de NFS-Server-instellingen, is hier een uitgebreide zelfstudie:
-  - [NFS-zelfstudie][nfs-tutorial]
+Hier volgt een uitgebreide zelf studie voor een volledige uitleg of over het oplossen van fouten in de installatie van de NFS-server:
+  - [Zelf studie voor NFS][nfs-tutorial]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor de bijbehorende best practices, [aanbevolen procedures voor opslag en back-ups in AKS][operator-best-practices-storage].
+Zie [Aanbevolen procedures voor opslag en back-ups in AKS][operator-best-practices-storage]voor gekoppelde aanbevolen procedures.
 
 <!-- LINKS - external -->
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/

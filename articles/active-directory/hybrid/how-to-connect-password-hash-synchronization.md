@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 111581def3ed0c366898534ee6b6c5f5b6d9e756
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 9c4f0a72cb598a8e38fc69f23f62f0f456cccb04
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293110"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543916"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Wachtwoord-hashsynchronisatie met Azure AD Connect sync implementeren
 Dit artikel bevat gegevens die u nodig hebt om te synchroniseren van uw wachtwoorden van gebruikers uit een on-premises Active Directory-exemplaar naar een cloud-gebaseerde Azure Active Directory (Azure AD)-exemplaar.
@@ -124,7 +124,7 @@ Voor behoud: als er gesynchroniseerde accounts zijn die niet-verlopende wacht wo
 > [!NOTE]
 > Deze functie is nu beschikbaar in de open bare preview.
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon"></a>Open bare preview van het synchroniseren van tijdelijke wacht woorden en ' wacht woord bij volgende aanmelding afdwingen '
+#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon"></a>Open bare preview van het synchroniseren van tijdelijke wacht woorden en ' geforceerd wacht woord opnieuw instellen bij volgende aanmelding '
 
 Het is gebruikelijk dat een gebruiker het wacht woord tijdens de eerste aanmelding wijzigt, met name nadat een beheerders wachtwoord opnieuw is ingesteld.  Het is vaak bekend als het instellen van een ' tijdelijk ' wacht woord en wordt uitgevoerd door de vlag ' gebruiker moet wacht woord bij volgende aanmelding wijzigen ' op een gebruikers object in Active Directory (AD) in te scha kelen.
   

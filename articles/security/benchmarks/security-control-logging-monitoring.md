@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: ceb82bf729470f9996bc9ecc766329a0d1242ec4
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: ae9c678d9dfca895ec74ed92bcb1b541db6b134e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930031"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545497"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Beveiligings beheer: logboek registratie en controle
 
@@ -77,7 +77,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 |--|--|--|
 | 2.4 | 6,2, 6,3 | Klant |
 
-Als de reken resource eigendom is van micro soft, is micro soft verantwoordelijk voor het bewaken van de bron. Als de reken resource eigendom is van uw organisatie, is het uw verantwoordelijkheid om deze te controleren. U kunt Azure Security Center gebruiken om het besturings systeem te bewaken. Gegevens die worden verzameld door Security Center van het besturings systeem zijn onder andere besturingssysteem type en-versie, besturings systeem (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker. De Log Analytics-agent verzamelt ook crash dump bestanden.
+Als de reken resource eigendom is van micro soft, is micro soft verantwoordelijk voor het bewaken van de bron. Als de reken resource eigendom is van uw organisatie, is het uw verantwoordelijkheid om deze te controleren. U kunt Azure Security Center gebruiken om het besturings systeem te bewaken. Gegevens die worden verzameld door Security Center van het besturings systeem zijn onder andere besturingssysteem type en-versie, OS-Logboeken (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker. De Log Analytics-agent verzamelt ook crash dump bestanden.
 
 Interne host-logboeken van virtuele machines van Azure verzamelen met Azure Monitor:
 

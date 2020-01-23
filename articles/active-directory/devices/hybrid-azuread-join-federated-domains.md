@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 530f32a994f448247dd5f06a21336eb052193cbb
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 28d6e5362df9f41822525af0d256cfd99568d6de
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167572"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512127"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Zelfstudie: Hybride Azure Active Directory-koppeling configureren voor federatieve domeinen
 
@@ -172,7 +172,7 @@ U moet ook **toestaan dat updates voor de status balk via script worden** ingesc
 
 Voor het registreren van Windows down level-apparaten moeten organisaties [micro soft Workplace join installeren voor niet-Windows 10-computers](https://www.microsoft.com/download/details.aspx?id=53554). Micro soft Workplace Join voor niet-Windows 10-computers is beschikbaar in het micro soft Download centrum.
 
-U kunt het pakket implementeren met behulp van een software distributiesysteem als [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager). Het pakket ondersteunt de standaard opties voor installatie op de achtergrond met de para meter `quiet`. De huidige vertakking van Configuration Manager biedt voor delen ten opzichte van eerdere versies, zoals de mogelijkheid om voltooide registraties bij te houden.
+U kunt het pakket implementeren met behulp van een software distributiesysteem, zoals [micro soft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/). Het pakket ondersteunt de standaard opties voor installatie op de achtergrond met de para meter `quiet`. De huidige vertakking van Configuration Manager biedt voor delen ten opzichte van eerdere versies, zoals de mogelijkheid om voltooide registraties bij te houden.
 
 Het installatie programma maakt een geplande taak op het systeem dat wordt uitgevoerd in de gebruikers context. De taak wordt geactiveerd wanneer de gebruiker zich aanmeldt bij Windows. De taak wordt op de achtergrond met Azure AD toegevoegd aan het apparaat met behulp van de referenties van de gebruiker na verificatie met Azure AD.
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 7451758e758d597bfe63d92fe4789c8fa81b3dff
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 000db771f27c7063aee120f06e13eec3575c8ef5
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311475"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546636"
 ---
 # <a name="module-k-means-clustering"></a>Module: K-betekent clustering
 
-In dit artikel wordt beschreven hoe u de *clustering module K-betekent* in azure machine learning Designer kunt gebruiken om een niet-getraind k-means clustering model te maken. 
+In dit artikel wordt beschreven hoe u de module *K-betekent clustering* in azure machine learning Designer (preview) gebruikt om een niet-getraind k-means clustering model te maken. 
  
 K: is een van de eenvoudigste en *meest bekende* algoritmen voor leren. U kunt het algoritme gebruiken voor een aantal machine learning taken, zoals: 
 

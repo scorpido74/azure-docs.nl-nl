@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 680cf04e79a9cb6d5748723dad3cb37cf3c76468
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 5ac1f3e4bf629a2e12eb0461b932a5865228c79c
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314212"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546704"
 ---
 # <a name="cross-validate-model"></a>Kruisvalidatie van model valideren
 
-In dit artikel wordt beschreven hoe u de module voor kruis validatie kunt gebruiken in Azure Machine Learning Designer. *Kruis validatie* is een techniek die vaak wordt gebruikt in machine learning om zowel de variabiliteit van een gegevensset als de betrouw baarheid te beoordelen van een model dat via deze gegevens is getraind.  
+In dit artikel wordt beschreven hoe u de module voor kruis validatie gebruikt in Azure Machine Learning Designer (preview). *Kruis validatie* is een techniek die vaak wordt gebruikt in machine learning om zowel de variabiliteit van een gegevensset als de betrouw baarheid te beoordelen van een model dat via deze gegevens is getraind.  
 
 De module voor kruis validatie maakt als invoer een gegevensset met een label, samen met een niet-uitgetrainde classificatie of regressie model. De gegevensset wordt onderverdeeld in een aantal subsets (*vouwen*), bouwt een model op elke vouw en retourneert vervolgens een set nauw keurige statistieken voor elke vouw. Door de nauw keurige statistieken voor alle vouwen te vergelijken, kunt u de kwaliteit van de gegevensset interpreteren. U kunt vervolgens begrijpen of het model gevoelig is voor variaties in de gegevens.  
 

@@ -1,6 +1,6 @@
 ---
-title: Algemene foutcodes voor virtuele machine in Azure | Microsoft Docs
-description: Enkele van de algemene foutcodes aangetroffen bij het inrichten en beheren van virtuele machines in Azure
+title: Algemene VM-fout codes in azure | Microsoft Docs
+description: Meer informatie over enkele veelvoorkomende fout codes die worden aangetroffen bij het inrichten en beheren van virtuele machines in azure
 services: virtual-machines
 documentationcenter: ''
 author: xujing-ms
@@ -12,22 +12,22 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: 3b8c9c80c93430d8dc5a888742e4e4e96ba99400
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695331"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543015"
 ---
-# <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Informatie over veelvoorkomende foutberichten bij het beheren van virtuele machines in Azure
+# <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Algemene fout berichten over het beheren van virtuele machines in azure
 
-In dit artikel worden enkele van de meest voorkomende foutcodes en berichten die optreden kunnen bij het maken of beheren van virtuele machines (VM's) in Azure beschreven.
+In dit artikel worden enkele van de meest voorkomende fout codes en-berichten beschreven die u kunt tegen komen wanneer u virtuele machines (Vm's) in azure maakt of beheert.
 
 >[!NOTE]
-> U kunt opmerkingen achterlaten op deze pagina voor feedback of via [feedback over Azure](https://feedback.azure.com/forums/216843-virtual-machines) met #azerrormessage tag.
+> U kunt opmerkingen op deze pagina achterlaten voor feedback of via [Azure feedback](https://feedback.azure.com/forums/216843-virtual-machines) met #azerrormessage-tag.
 
-## <a name="error-response-format"></a>Fout antwoordindeling 
-Azure-VM's gebruiken de volgende JSON-indeling voor foutbericht:
+## <a name="error-response-format"></a>Indeling van fout bericht 
+Virtuele Azure-machines gebruiken de volgende JSON-indeling voor fout Reacties:
 
 ```json
 {
@@ -37,7 +37,7 @@ Azure-VM's gebruiken de volgende JSON-indeling voor foutbericht:
     "message":"Top level error message",
     "details":[
      {
-      "code":"Inner evel error code",
+      "code":"Inner level error code",
       "message":"Inner level error message"
      }
     ]
@@ -45,175 +45,175 @@ Azure-VM's gebruiken de volgende JSON-indeling voor foutbericht:
 }
 ```
 
-Reactie op een fout bevat altijd een statuscode en een foutobject. Elk foutobject bevat altijd een foutcode en een bericht. Als de virtuele machine is gemaakt met een sjabloon, bevat de foutobject ook een sectie voor informatie die een binnenste niveau van foutcodes en het bericht bevat. Normaal gesproken is het meest binnenste niveau van het foutbericht de root-fout.
+Een fout bericht bevat altijd een status code en een fout object. Elk fout object bevat altijd een fout code en een bericht. Als de virtuele machine is gemaakt met een sjabloon, bevat het fout object ook een sectie met details die een intern niveau aan fout codes en het bericht bevat. Normaal gesp roken is het meest interne niveau van fout berichten de hoofd fout.
 
 
-## <a name="common-virtual-machine-management-errors"></a>Veelvoorkomende fouten in virtual machine management
+## <a name="common-virtual-machine-management-errors"></a>Veelvoorkomende fouten bij het beheer van virtuele machines
 
-Deze sectie vindt u de algemene foutberichten die optreden kunnen bij het beheren van virtuele machines:
+In deze sectie vindt u de algemene fout berichten die u kunt tegen komen bij het beheren van virtuele machines:
 
 |  Foutcode  |  Foutbericht  |  
 |  :------| :-------------|  
-|  AcquireDiskLeaseFailed  |  Kan geen lease verkrijgen tijdens het maken van schijf '{0}' met blob met URI {1}. BLOB wordt al gebruikt.  |  
-|  AllocationFailed  |  Toewijzing is mislukt. Verminder de VM-grootte of het aantal virtuele machines, probeer het later opnieuw of probeer te implementeren naar een andere Beschikbaarheidsset of een andere Azure-locatie.  |  
-|  AllocationFailed  |  De VM-toewijzing is mislukt vanwege een interne fout. Probeer het later opnieuw of probeer te implementeren naar een andere locatie.  |
-|  ArtifactNotFound  |  De VM-extensie met uitgever '{0}en typ'{1}'kan niet worden gevonden in de locatie'{2}'.  |
-|  ArtifactNotFound  |  Extensie met uitgever '{0}', type '{1}', en type handlerversie '{2}' kan niet worden gevonden in de extensieopslagplaats.  |
-|  ArtifactVersionNotFound  |  Er is geen versie gevonden in de artefactopslagplaats die overeenkomt met de aangevraagde versie '{0}'.  |
-|  ArtifactVersionNotFound  |  Er is geen versie gevonden in de artefactopslagplaats die overeenkomt met de aangevraagde versie '{0}'voor VM-extensie met uitgever'{1}en typ'{2}'.  |
-|  AttachDiskWhileBeingDetached  |  Kan geen gegevensschijf koppelen '{0}'aan de virtuele machine'{1}' omdat de schijf momenteel wordt losgekoppeld. Wacht totdat de schijf volledig losgekoppeld is en probeer het opnieuw.  |
-|  BadRequest  |  Uitgelijnd ' Beschikbaarheidssets worden nog niet ondersteund in deze regio.  |
-|  BadRequest  |  Toevoegen van een VM met beheerde schijven aan niet-beheerde Beschikbaarheidsset of toevoeging van een VM met blobschijven aan een beheerde Beschikbaarheidsset wordt niet ondersteund. Maak een Beschikbaarheidsset met de eigenschap 'beheerde' is ingesteld om een VM met beheerde schijven aan toe te voegen.  |
-|  BadRequest  |  Beheerde schijven worden niet ondersteund in deze regio.  |
-|  BadRequest  |  Meerdere VM per handler worden niet ondersteund voor besturingssysteemtype '{0}'. VMExtension '{1}'met handler'{2}is al toegevoegd of opgegeven in de invoer.  |
-|  BadRequest  |  Bewerking '{0}'wordt niet ondersteund voor de Resource'{1}' met beheerde schijven.  |
-|  CertificateImproperlyFormatted  |  De JSON-weergave van het geheim die is opgehaald uit {0} bevat een gegevensveld dat niet een onjuist geformatteerd PFX-bestand of het opgegeven wachtwoord is niet worden gedecodeerd het PFX-bestand.  |
-|  CertificateImproperlyFormatted  |  De gegevens opgehaald uit {0} is niet opnieuw worden geserialiseerd in JSON.  |
-|  Conflict  |  De schijfgrootte is toegestaan, alleen als het maken van een virtuele machine of als de VM ongedaan is gemaakt.  |
-|  ConflictingUserInput  |  Schijf '{0}'kan niet worden gekoppeld omdat de schijf al eigendom is van de virtuele machine'{1}'.  |
-|  ConflictingUserInput  |  Bron-en doelresourcegroep zijn dezelfde.  |
-|  ConflictingUserInput  |  Bron- en storage-accounts voor schijf {0} verschillen.  |
-|  ContainerAlreadyOnLease  |  Er is al een lease op het storage-container met de blob met URI {0}.  |
-|  CrossSubscriptionMoveWithKeyVaultResources  |  De aanvraag resources verplaatsen bevat KeyVault-resources waarnaar wordt verwezen door een of meer {0}s in de aanvraag. Dit wordt niet wordt momenteel ondersteund kruislings abonnement verplaatsen. Controleer de foutdetails voor de resource-id's van de Key Vault.  |
-|  DiagnosticsOperationInternalError  |  Er is een interne fout opgetreden tijdens het verwerken van diagnostische profiel van de virtuele machine {0}.  |
-|  DiskBlobAlreadyInUseByAnotherDisk  |  BLOB {0} wordt al gebruikt door een andere schijf die behoort tot VM '{1}'. U kunt de blobmetagegevens voor de schijfverwijzingsgegevens bekijken.  |
-|  DiskBlobNotFound  |  Kan geen VHD-blob met URI vinden {0} voor schijf '{1}'.  |
-|  DiskBlobNotFound  |  Kan geen VHD-blob met URI vinden {0}.  |
-|  DiskEncryptionKeySecretMissingTags  |  {0} geheim beschikt niet over de {1} tags. Werk de geheime versie, de vereiste labels toevoegen en probeer het opnieuw.  |
-|  DiskEncryptionKeySecretUnwrapFailed  |  Uitpakken van het geheim {0} -waarde met sleutel {1} is mislukt.  |
-|  DiskImageNotReady  |  Schijfinstallatiekopie {0} is in {1} staat. Probeer het opnieuw als de image gereed is.  |
-|  DiskPreparationError  |  Een of meer fouten opgetreden tijdens het voorbereiden van VM-schijven. Zie de weergave voor meer informatie.  |
-|  DiskProcessingError  |  Verwerken van de schijf is onderbroken omdat de virtuele machine andere schijven in de schijven.  |
-|  ImageBlobNotFound  |  Kan geen VHD-blob met URI vinden {0} voor schijf '{1}'.  |
-|  ImageBlobNotFound  |  Kan geen VHD-blob met URI vinden {0}.  |
-|  IncorrectDiskBlobType  |  Schijfblobs kunnen alleen worden van het type pagina-blob. BLOB {0} voor schijf '{1}' is van het type blok-blob.  |
-|  IncorrectDiskBlobType  |  Schijfblobs kunnen alleen worden van het type pagina-blob. BLOB {0} is van het type '{1}'.  |
-|  IncorrectImageBlobType  |  Schijfblobs kunnen alleen worden van het type pagina-blob. BLOB {0} voor schijf '{1}' is van het type blok-blob.  |
-|  IncorrectImageBlobType  |  Schijfblobs kunnen alleen worden van het type pagina-blob. BLOB {0} is van het type '{1}'.  |
-|  InternalOperationError  |  Storage-account kan niet worden omgezet {0}. Zorg ervoor dat deze is gemaakt via de Storage Resource Provider op dezelfde locatie als de compute-resource.  |
-|  InternalOperationError  |  {0} taken voor Doelzoeken is mislukt.  |
-|  InternalOperationError  |  Er is een fout opgetreden bij het valideren van het netwerkprofiel van VM '{0}'.  |
-|  InvalidAccountType  |  Het AccountType {0} is ongeldig.  |
-|  InvalidParameter  |  De waarde van parameter {0} is ongeldig.  |
-|  InvalidParameter  |  Het opgegeven beheerderswachtwoord is niet toegestaan.  |
-|  InvalidParameter  |  "Het opgegeven wachtwoord moet tussen {0}-{1} tekens lang zijn en moet voldoen aan ten minste {2} van vereisten voor wachtwoordcomplexiteit van de volgende opties: <ol><li> Bevat een hoofdletter</li><li>Bevat een kleine letter</li><li>Een numerieke cijfer bevat</li><li>Een speciaal teken bevat.</li></ol>  |
-|  InvalidParameter  |  De opgegeven Beheerdersgebruikersnaam is niet toegestaan.  |
-|  InvalidParameter  |  Kan een bestaande OS-schijf niet koppelen als de virtuele machine is gemaakt op basis van een installatiekopie van het platform of gebruiker.  |
-|  InvalidParameter  |  Containernaam {0} is ongeldig. Namen van containers moeten tussen de 3 en 63 tekens lang zijn en mag alleen kleine letters, alfanumerieke tekens en afbreekstreepjes bevatten. Afbreekstreepje moet worden voorafgegaan en gevolgd door een alfanumeriek teken.  |
-|  InvalidParameter  |  Containernaam {0} in URL {1} is ongeldig. Namen van containers moeten tussen de 3 en 63 tekens lang zijn en mag alleen kleine letters, alfanumerieke tekens en afbreekstreepjes bevatten. Afbreekstreepje moet worden voorafgegaan en gevolgd door een alfanumeriek teken.  |
-|  InvalidParameter  |  De blobnaam in URL {0} bevat een schuine streep. Dit wordt momenteel niet ondersteund voor schijven.  |
-|  InvalidParameter  |  De URI {0} lijkt niet de juiste blob-URI.  |
-|  InvalidParameter  |  Een schijf met de naam '{0}' al gebruikmaakt van hetzelfde LUN: {1}.  |
-|  InvalidParameter  |  Een schijf met de naam '{0}' bestaat al.  |
-|  InvalidParameter  |  Kan de gebruikersinstallatiekopie overschreven voor een schijf die al zijn gedefinieerd in de opgegeven installatiekopieverwijzing niet opgeven.  |
-|  InvalidParameter  |  Een schijf met de naam '{0}' wordt al gebruikt dezelfde VHD URL {1}.  |
-|  InvalidParameter  |  Het aantal opgegeven foutdomeinen {0} moet vallen binnen het bereik {1} naar {2}.  |
-|  InvalidParameter  |  Het licentietype {0} is ongeldig. Geldige licentietypen zijn: Windows_Client of Windows_Server, hoofdlettergevoelig.  |
-|  InvalidParameter  |  Linux-hostnaam mag niet meer dan {0} tekens lang of de volgende tekens bevatten: {1}.  |
-|  InvalidParameter  |  Het doelpad voor openbare Ssh-sleutels is momenteel beperkt tot de standaardwaarde {0} vanwege een bekend probleem in Linux-inrichtingsagent.  |
-|  InvalidParameter  |  Een schijf voor LUN {0} bestaat al.  |
-|  InvalidParameter  |  Abonnement {0} van de aanvraag moet overeenkomen met het {1} die deel uitmaken van de beheerde schijf-id.  |
-|  InvalidParameter  |  Aangepaste gegevens in OSProfile moeten met base64 en met een maximale lengte van {0} tekens.  |
-|  InvalidParameter  |  Blobnaam in URL {0} moet eindigen met '{1}' extensie.  |
-|  InvalidParameter  |  {0}' is niet een geldig voorvoegsel van het vastgelegde VHD-blob. Een geldig voorvoegsel komt overeen met reguliere expressie '{1}'.  |
-|  InvalidParameter  |  Certificaten kunnen niet worden toegevoegd aan uw virtuele machine als de VM-agent is niet ingericht.  |
-|  InvalidParameter  |  Een schijf voor LUN {0} bestaat al.  |
-|  InvalidParameter  |  Kan de virtuele machine maken omdat de aangevraagde grootte {0} is niet beschikbaar in het cluster waar de beschikbaarheidsset momenteel is toegewezen. De beschikbare grootten zijn: {1}. Lees meer over VM-grootte strategy bij https://aka.ms/azure-resizevm.  |
-|  InvalidParameter  |  De aangevraagde VM-grootte {0} is niet beschikbaar in de huidige regio. De grootten die beschikbaar zijn in de huidige regio zijn: {1}. Meer informatie over de beschikbare VM-grootten in elke regio op https://aka.ms/azure-regions.  |
-|  InvalidParameter  |  De aangevraagde VM-grootte {0} is niet beschikbaar in de huidige regio. Meer informatie over de beschikbare VM-grootten in elke regio op https://aka.ms/azure-regions.  |
-|  InvalidParameter  |  Windows-beheerdersgebruikersnaam mag niet meer dan {0} tekens lang, eindigen met een punt of de volgende tekens bevatten: {1}.  |
-|  InvalidParameter  |  Windows-computernaam mag niet meer dan {0} tekens lang, uitsluitend uit cijfers bestaan, of de volgende tekens bevatten: {1}.  |
-|  MissingMoveDependentResources  |  De aanvraag voor het verplaatsen van resources bevat niet alle afhankelijke resources. Controleer de foutdetails op ontbrekende resource-id.  |
-|  MoveResourcesHaveInvalidState  |  De aanvraag voor verplaatsen van Resources bevat VM's die gekoppeld met ongeldige opslagaccounts zijn. Controleer de details voor deze resource-id's en de namen van opslagaccounts waarnaar wordt verwezen.  |
-|  MoveResourcesHavePendingOperations  |  De aanvraag voor het verplaatsen van resources bevat resources waarvoor een bewerking in behandeling is. Controleer de details voor deze resource-id. Voer de bewerking opnieuw uit nadat de bewerkingen in behandeling is voltooid.  |
-|  MoveResourcesNotFound  |  De aanvraag voor het verplaatsen van resources bevat resources die niet is gevonden. Controleer de details voor deze resource-id.  |
-|  NetworkingInternalOperationError  |  Onbekende netwerktoewijzingsfout.  |
-|  NetworkingInternalOperationError  |  Onbekende netwerktoewijzingsfout  |
-|  NetworkingInternalOperationError  |  Er is een interne fout opgetreden bij het verwerken van het netwerkprofiel van de virtuele machine.  |
-|  NotFound  |  De Beschikbaarheidsset {0} kan niet worden gevonden.  |
-|  NotFound  |  Bron van de virtuele Machine '{0}is opgegeven in de aanvraag bestaat niet op deze Azure-locatie.  |
-|  NotFound  |  Tenant met id {0} niet gevonden.  |
-|  NotFound  |  De installatiekopie van het {0} kan niet worden gevonden.  |
-|  NotSupported  |  Het licentietype is {0}, maar de installatiekopie blob {1} is niet van on-premises.  |
-|  OperationNotAllowed  |  Beschikbaarheidsset {0} kan niet worden verwijderd. Voordat u verwijdert een Beschikbaarheidsset Zorg ervoor dat deze geen een virtuele machine bevat.  |
-|  OperationNotAllowed  |  Beschikbaarheidsset wijzigen-SKU van 'Uitgelijnde' naar 'Classic' is niet toegestaan.  |
-|  OperationNotAllowed  |  Kan geen extensies in de virtuele machine niet wijzigen wanneer de virtuele machine niet wordt uitgevoerd.  |
-|  OperationNotAllowed  |  De actie vastleggen wordt alleen ondersteund op een virtuele Machine met op blobs gebaseerde schijven. Gebruik de 'Image' resource-API's voor het maken van een installatiekopie van een beheerde virtuele Machine.  |
-|  OperationNotAllowed  |  De resource {0} kan niet worden gemaakt op basis van de installatiekopie {1} totdat de installatiekopie is gemaakt.  |
-|  OperationNotAllowed  |  Updates van encryptionSettings is niet toegestaan wanneer de virtuele machine is toegewezen, probeer het opnieuw nadat de VM ongedaan is gemaakt  |
-|  OperationNotAllowed  |  Toevoeging van een beheerde schijf aan een VM met blobschijven wordt niet ondersteund.  |
-|  OperationNotAllowed  |  Het maximum aantal gegevensschijven kunnen worden gekoppeld aan een VM van deze grootte is {0}.  |
-|  OperationNotAllowed  |  Toevoeging van een blobschijf aan VM met beheerde schijven wordt niet ondersteund.  |
-|  OperationNotAllowed  |  Bewerking '{0}'is niet toegestaan op de installatiekopie'{1}' omdat de installatiekopie is gemarkeerd voor verwijdering. U kunt alleen opnieuw proberen te verwijderen (of wachten tot een lopende om te voltooien).  |
-|  OperationNotAllowed  |  Bewerking '{0}'is niet toegestaan op VM'{1}' omdat de virtuele machine is gegeneraliseerd.  |
-|  OperationNotAllowed  |  Bewerking '{0}'is niet toegestaan als herstelpuntverzameling'{1}' is gemarkeerd voor verwijdering.  |
-|  OperationNotAllowed  |  Bewerking '{0}'is niet toegestaan op VM-extensie'{1}' omdat deze is gemarkeerd voor verwijdering. U kunt alleen opnieuw proberen te verwijderen (of wachten tot een lopende om te voltooien).  |
-|  OperationNotAllowed  |  Bewerking '{0}'is niet toegestaan omdat de virtuele Machines'{1}'worden ingericht met behulp van de'{2}'.  |
-|  OperationNotAllowed  |  Bewerking '{0}'is niet toegestaan omdat de virtuele-Machineschaalset'{1}'wordt momenteel gebruikt voor de installatiekopie van het'{2}'.  |
-|  OperationNotAllowed  |  Bewerking '{0}'is niet toegestaan op VM'{1}' omdat de virtuele machine is gemarkeerd voor verwijdering. U kunt alleen opnieuw proberen te verwijderen (of wachten tot een lopende om te voltooien).  |
-|  OperationNotAllowed  |  Bewerking '{0}'is niet toegestaan op VM'{1}' omdat de virtuele machine ongedaan is gemaakt of gemarkeerd voor het ongedaan maken.  |
-|  OperationNotAllowed  |  Bewerking '{0}'is niet toegestaan op VM'{1}' omdat de virtuele machine wordt uitgevoerd. Schakel uit expliciet in het geval u afsluiten van de virtuele machine uit in het gastbesturingssysteem.  |
-|  OperationNotAllowed  |  Bewerking '{0}'is niet toegestaan op VM'{1}' omdat de virtuele machine niet ongedaan is gemaakt.  |
-|  OperationNotAllowed  |  Bewerking '{0}'is niet toegestaan op VM'{1}'Omdat de virtuele machine uitbreidings-'{2}' status mislukt.  |
-|  OperationNotAllowed  |  Bewerking '{0}'is niet toegestaan op VM'{1}' omdat een andere bewerking uitgevoerd wordt.  |
-|  OperationNotAllowed  |  De bewerking '{0}'moet de virtuele Machine'{1}' worden gegeneraliseerd.  |
-|  OperationNotAllowed  |  De bewerking moet de virtuele machine worden uitgevoerd (of instellen om uit te voeren).  |
-|  OperationNotAllowed  |  Schijf met de grootte {0}GB, die kleiner is dan de grootte {1}GB van de overeenkomstige schijf in de afbeelding, is niet toegestaan.  |
-|  OperationNotAllowed  |  VM-Schaalset-extensies van handler '{0}' kan alleen op het moment dat de VM-Schaalset gemaakt worden toegevoegd.  |
-|  OperationNotAllowed  |  VM-Schaalset-extensies van handler '{0}' kan alleen op het moment van verwijderen van VM-Schaalset worden verwijderd.  |
-|  OperationNotAllowed  |  Virtuele machine '{0}' maakt al gebruik van beheerde schijven.  |
-|  OperationNotAllowed  |  Virtuele machine '{0}'behoort tot 'Classic' availability set'{1}'. Werk de beschikbaarheidsset 'Uitgelijnde' SKU gebruiken en voer de conversie.  |
-|  OperationNotAllowed  |  Virtuele machine maken met de installatiekopie kan niet op blobs gebaseerde schijven hebben. Alle schijven moeten beheerde schijven.  |
-|  OperationNotAllowed  |  Vastleggen bewerking kan niet worden voltooid omdat de virtuele machine niet is gegeneraliseerd.  |
-|  OperationNotAllowed  |  Bewerkingen voor de VM '{0}' zijn niet toegestaan omdat de VM-schijven worden geconverteerd naar beheerde schijven.  |
-|  OperationNotAllowed  |  Een bewerking uitgevoerd waarmee de energiestatus van de virtuele Machine wordt gewijzigd {0} naar {1}. Voer de bewerking {2} na enige tijd.  |
-|  OperationNotAllowed  |  Kan niet toevoegen of bijwerken van de virtuele machine. De aangevraagde VM-grootte {0} mogelijk niet beschikbaar in de bestaande toewijzingseenheid. Lees meer over VM-grootte strategy bij https://aka.ms/azure-resizevm.  |
-|  OperationNotAllowed  |  Kan grootte van de virtuele machine omdat de aangevraagde grootte {0} is niet beschikbaar in het cluster waar de beschikbaarheidsset momenteel is toegewezen. De beschikbare grootten zijn: {1}. Lees meer over VM-grootte strategy bij https://aka.ms/azure-resizevm.  |
-|  OperationNotAllowed  |  Kan grootte van de virtuele machine omdat de aangevraagde grootte {0} is niet beschikbaar in het cluster waar de virtuele machine momenteel is toegewezen. Om het formaat van uw virtuele machine te {1} toewijzing ongedaan maken (dit is Stop-bewerking in Azure portal) en voer de grootte van de bewerking opnieuw uit. Lees meer over VM-grootte strategy bij https://aka.ms/azure-resizevm.  |
-|  OSProvisioningClientError  |  Besturingssysteem inrichten is mislukt voor de virtuele machine '{0}' omdat het gastbesturingssysteem wordt momenteel ingericht.  |
-|  OSProvisioningClientError  |  Inrichting van het besturingssysteem voor de virtuele machine '{0}' is mislukt. Details van fout: {1} Zorg ervoor dat de installatiekopie juist is voorbereid (gegeneraliseerd). <ul><li>Instructies voor Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  Sleutel genereren voor SSH-host is mislukt. Foutdetails: {0}. Om op te lossen dit probleem controleren als Linux-agent juist is ingesteld. <ul><li>U kunt de instructies op controleren: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
-|  OSProvisioningClientError  |  Gebruikersnaam is opgegeven voor de virtuele machine is ongeldig voor deze distributie Linux. Foutdetails: {0}.  |
-|  OSProvisioningInternalError  |  Besturingssysteem inrichten is mislukt voor de virtuele machine '{0}' vanwege een interne fout.  |
-|  OSProvisioningTimedOut  |  Inrichting van het besturingssysteem voor de virtuele machine '{0}' is niet binnen de toegewezen tijd voltooid. De virtuele machine mogelijk nog steeds wordt inrichten is voltooid. Controleer de Inrichtingsstatus later.  |
-|  OSProvisioningTimedOut  |  Inrichting van het besturingssysteem voor de virtuele machine '{0}' is niet binnen de toegewezen tijd voltooid. De virtuele machine mogelijk nog steeds wordt inrichten is voltooid. Controleer de Inrichtingsstatus later. Controleer ook of de installatiekopie juist is voorbereid (gegeneraliseerd).   <ul><li>Instructies voor Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Instructies voor Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
-|  OSProvisioningTimedOut  |  Inrichting van het besturingssysteem voor de virtuele machine '{0}' is niet binnen de toegewezen tijd voltooid. De VM-gastagent is echter gedetecteerd uitgevoerd. Dit kan erop wijzen het gastbesturingssysteem is niet correct voorbereid om te worden gebruikt als een VM-installatiekopie (met CreateOption = FromImage). U lost dit probleem, gebruikt u de VHD met CreateOption = Attach of juist voorbereiden voor gebruik als een installatiekopie:   <ul><li>Instructies voor Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Instructies voor Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
-|  OverConstrainedAllocationRequest  |  Het vereiste VM-grootte is momenteel niet beschikbaar in de geselecteerde locatie.  |
-|  ResourceUpdateBlockedOnPlatformUpdate  |  Resource kan niet worden bijgewerkt vanwege een lopende platformupdate. Probeer het later opnieuw.  |
-|  StorageAccountLimitation  |  Storage-account '{0}' biedt geen ondersteuning voor pagina-blobs die zijn vereist voor het maken van schijven.  |
-|  StorageAccountLimitation  |  Storage-account '{0}' het toegewezen quotum is overschreden.  |
-|  StorageAccountLocationMismatch  |  Storage-account kan niet worden omgezet {0}. Zorg ervoor dat deze is gemaakt via de Storage Resource Provider op dezelfde locatie als de compute-resource.  |
-|  StorageAccountNotFound  |  Storage-account {0} niet gevonden. Controleer of de storage-account is niet verwijderd en behoort tot dezelfde Azure-locatie als de virtuele machine.  |
-|  StorageAccountNotRecognized  |  Gebruik een opslagaccount dat wordt beheerd door Storage Resource Provider. Het gebruik van {0} wordt niet ondersteund.  |
-|  StorageAccountOperationInternalError  |  Er is een interne fout opgetreden tijdens het openen van storage-account {0}.  |
-|  StorageAccountSubscriptionMismatch  |  Storage-account {0} behoort niet tot abonnement {1}.  |
-|  StorageAccountTooBusy  |  Storage-account '{0}' is momenteel bezet. Overweeg het gebruik van een ander account.  |
-|  StorageAccountTypeNotSupported  |  Schijf {0} maakt gebruik van {1} die een Blob storage-account is. Probeer het opnieuw met een opslagaccount voor algemeen gebruik.  |
-|  StorageAccountTypeNotSupported  |  Storage-account {0} is van het {1} type. Ondersteunt het diagnostische gegevens over opstarten {2} storage-accounttypen.  <ul><li>Deze fout treedt op als u de premium-opslagaccount voor diagnostische gegevens over opstarten. Zie voor meer informatie, [over het gebruik van diagnostische gegevens over opstarten](boot-diagnostics.md). </li></ul> |
-|  SubscriptionNotAuthorizedForImage  |  Het abonnement is niet gemachtigd.  |
-|  TargetDiskBlobAlreadyExists  |  BLOB {0} bestaat al. Geef een andere blob-URI te maken van een nieuwe lege gegevensschijf '{1}'.  |
-|  TargetDiskBlobAlreadyExists  |  Capture kan niet worden voortgezet omdat de blob-doelafbeelding {0} bestaat al en de vlag voor het overschrijven van VHD-blobs is niet ingesteld. Verwijder de blob of stel de vlag overschrijven van VHD-blobs en probeer het opnieuw.  |
-|  TargetDiskBlobAlreadyExists  |  Capture kan niet worden voortgezet omdat de blob-doelafbeelding {0} heeft een actieve lease erop.   |
-|  TargetDiskBlobAlreadyExists  |  BLOB {0} bestaat al. Geef een andere blob-URI als doel voor schijf '{1}'.  |
-|  TooManyVMRedeploymentRequests  |  Te veel aanvragen voor opnieuw implementeren is ontvangen voor de virtuele machine '{0}' of de virtuele machines in dezelfde beschikbaarheidsset als aan deze virtuele machine. Probeer het later opnieuw.  |
-|  VHDSizeInvalid  |  De opgegeven schijfgrootte van {0} voor schijf '{1}' met de blob {2} is ongeldig. De schijfgrootte moet tussen {3} en {4}.  |
-|  VMAgentStatusCommunicationError  |  Virtuele machine '{0}' heeft de status voor VM-agent of de extensies niet gerapporteerd. Controleer of de virtuele machine heeft een actieve VM-agent en uitgaande verbindingen naar Azure storage kunt maken.  |
-|  VMArtifactRepositoryInternalError  |  Er is een fout opgetreden tijdens het communiceren met de artefactopslagplaats om op te halen van VM-artefactgegevens.  |
-|  VMArtifactRepositoryInternalError  |  Er is een interne fout opgetreden tijdens het ophalen van de VM-artefactgegevens van de artefactopslagplaats.  |
-|  VMExtensionHandlerNonTransientError  |  Handler '{0}'is een fout gerapporteerd voor VM-extensie'{1}'met terminal foutcode'{2}' en het volgende foutbericht: '{3}'  |
-|  VMExtensionManagementInternalError  |  Er is een interne fout opgetreden tijdens het verwerken van VM-extensie '{0}'.  |
-|  VMExtensionManagementInternalError  |  Meerdere fouten opgetreden tijdens het voorbereiden van de VM-extensies. Zie de weergave van een VM-extensie-exemplaar, voor meer informatie.  |
-|  VMExtensionProvisioningError  |  Virtuele machine heeft een fout gerapporteerd bij het verwerken van extensie '{0}'. Foutbericht weergegeven: "{1}'.  |
-|  VMExtensionProvisioningError  |  Meerdere VM-extensies kunnen niet worden ingericht op de virtuele machine. Raadpleeg de instantieweergave van de VM-extensie voor meer informatie.  |
-|  VMExtensionProvisioningTimeout  |  Het inrichten van VM-extensie '{0}' is een time-out. Installatie van de extensie duurt mogelijk te lang of de status van extensie kan niet worden opgehaald.  |
-|  VMMarketplaceInvalidInput  |  Het maken van een virtuele machine uit een niet-Marketplace-installatiekopie hoeft niet plangegevens, verwijder de plangegevens in de aanvraag. Naam van de Besturingssysteemschijf is {0}.  |
-|  VMMarketplaceInvalidInput  |  De aankoopgegevens komen niet overeen. Kan niet uit de Marketplace-installatiekopie implementeren. Naam van de Besturingssysteemschijf is {0}.  |
-|  VMMarketplaceInvalidInput  |  Een virtuele machine maken van Marketplace-installatiekopie, moet u gegevens over de planning in de aanvraag. Naam van de Besturingssysteemschijf is {0}.  |
-|  VMNotFound  |  De virtuele machine '{0}' kan niet worden gevonden.  |
-|  VMRedeploymentFailed  |  Virtuele machine '{0}' opnieuw implementeren is mislukt vanwege een interne fout. Probeer het later opnieuw.  |
-|  VMRedeploymentTimedOut  |  Opnieuw implementeren van virtuele machine '{0}' is niet voltooid binnen de toegewezen tijd. Het kan worden voltooid enige tijd opnieuw uit. Anders kunt u de aanvraag opnieuw proberen.  |
-|  VMStartTimedOut  |  Virtuele machine '{0}' is niet gestart binnen de toegewezen tijd. De virtuele machine mogelijk alsnog worden gestart. Controleer de energiestatus later opnieuw.  |
+|  AcquireDiskLeaseFailed  |  Kan geen lease verkrijgen tijdens het maken van de schijf{0}met behulp van een blob met URI-{1}. De BLOB wordt al gebruikt.  |  
+|  AllocationFailed  |  Toewijzing is mislukt. Verklein de VM-grootte of het aantal Vm's, probeer het later opnieuw of probeer te implementeren naar een andere Beschikbaarheidsset of een andere Azure-locatie.  |  
+|  AllocationFailed  |  De VM-toewijzing is mislukt vanwege een interne fout. Probeer het later opnieuw of probeer de implementatie uit te voeren op een andere locatie.  |
+|  ArtifactNotFound  |  De VM-extensie met de Publisher{0}en het type{1}is niet gevonden op de locatie{2}.  |
+|  ArtifactNotFound  |  De extensie met de Publisher{0}, het type{1}en de type-handler-versie{2}zijn niet gevonden in de uitbreidings opslagplaats.  |
+|  ArtifactVersionNotFound  |  Er is geen versie gevonden in de artefact opslagplaats die voldoet aan de aangevraagde versie{0}.  |
+|  ArtifactVersionNotFound  |  Er is geen versie gevonden in de artefact opslagplaats die voldoet aan de aangevraagde versie{0}voor de VM-extensie met de uitgever{1}en het type{2}.  |
+|  AttachDiskWhileBeingDetached  |  Kan de gegevens schijf{0}niet koppelen aan de virtuele machine{1}omdat de schijf momenteel wordt ontkoppeld. Wacht tot de schijf volledig is losgekoppeld en probeer het vervolgens opnieuw.  |
+|  BadRequest  |  De afgevulde beschikbaarheids sets worden nog niet ondersteund in deze regio.  |
+|  BadRequest  |  Het toevoegen van een virtuele machine met beheerde schijven aan een niet-beheerde Beschikbaarheidsset of het toevoegen van een virtuele machine met op blobs gebaseerde schijven naar een beheerde Beschikbaarheidsset wordt niet ondersteund. Maak een Beschikbaarheidsset met de eigenschap Managed om een virtuele machine met Managed disks aan de set toe te voegen.  |
+|  BadRequest  |  Managed Disks worden niet ondersteund in deze regio.  |
+|  BadRequest  |  Meerdere VMExtensions per handler worden niet ondersteund voor het type{0}van het besturings systeem. VMExtension '{1}' met handler '{2}' is al toegevoegd of opgegeven in de invoer.  |
+|  BadRequest  |  De bewerking{0}wordt niet ondersteund voor de resource{1}met Managed disks.  |
+|  CertificateImproperlyFormatted  |  De JSON-weer gave van het geheim die is opgehaald uit {0} heeft een gegevens veld dat geen correct opgemaakt PFX-bestand is, of het PFX-bestand wordt niet correct gedecodeerd met het opgegeven wacht woord.  |
+|  CertificateImproperlyFormatted  |  De gegevens die zijn opgehaald uit {0}, kunnen niet worden gedeserialiseerd in JSON.  |
+|  Conflict  |  Het wijzigen van de grootte van de schijf is alleen toegestaan bij het maken van een VM of wanneer de toewijzing van de virtuele machine ongedaan wordt gemaakt  |
+|  ConflictingUserInput  |  Schijf '{0}' kan niet worden gekoppeld omdat de schijf al eigendom is van de VM{1}.  |
+|  ConflictingUserInput  |  Bron-en doel resource groepen zijn hetzelfde.  |
+|  ConflictingUserInput  |  De bron-en doel opslag accounts voor schijf {0} verschillen.  |
+|  ContainerAlreadyOnLease  |  Er is al een lease in de opslag container met de blob met de URI-{0}.  |
+|  CrossSubscriptionMoveWithKeyVaultResources  |  De aanvraag voor het verplaatsen van resources bevat de bron-kluis resources waarnaar wordt verwezen door een of meer {0}s in de aanvraag. Dit wordt momenteel niet ondersteund tijdens het verplaatsen van cross-abonnementen. Raadpleeg de fout Details voor de resource-Id's van de sleutel kluis.  |
+|  DiagnosticsOperationInternalError  |  Er is een interne fout opgetreden tijdens het verwerken van het diagnostische Profiel van de VM-{0}.  |
+|  DiskBlobAlreadyInUseByAnotherDisk  |  BLOB {0} wordt al gebruikt door een andere schijf die deel uitmaakt van VM{1}. U kunt de BLOB-meta gegevens voor de schijf referentie gegevens controleren.  |
+|  DiskBlobNotFound  |  Kan de VHD-blob met de URI-{0} niet vinden voor de schijf{1}.  |
+|  DiskBlobNotFound  |  Kan de VHD-blob met de URI-{0}niet vinden.  |
+|  DiskEncryptionKeySecretMissingTags  |  {0} Secret heeft geen {1}-Tags. Werk de geheime versie bij, voeg de vereiste labels toe en probeer het opnieuw.  |
+|  DiskEncryptionKeySecretUnwrapFailed  |  Het teruglopen van de geheime {0} waarde met behulp van de sleutel {1} is mislukt.  |
+|  DiskImageNotReady  |  Schijf installatie kopie {0} bevindt zich in {1} status. Probeer het opnieuw wanneer de installatie kopie gereed is.  |
+|  DiskPreparationError  |  Er zijn een of meer fouten opgetreden bij het voorbereiden van VM-schijven. Zie weer gave van schijf instantie voor meer informatie.  |
+|  DiskProcessingError  |  De schijf verwerking is gestopt omdat de virtuele machine andere schijven heeft dan de schijven waarop de fout is opgetreden.  |
+|  ImageBlobNotFound  |  Kan de VHD-blob met de URI-{0} niet vinden voor de schijf{1}.  |
+|  ImageBlobNotFound  |  Kan de VHD-blob met de URI-{0}niet vinden.  |
+|  IncorrectDiskBlobType  |  Schijf-blobs kunnen alleen van het type pagina-BLOB zijn. De BLOB-{0} voor schijf '{1}' is van het type blok-blob.  |
+|  IncorrectDiskBlobType  |  Schijf-blobs kunnen alleen van het type pagina-BLOB zijn. BLOB-{0} is van het type{1}.  |
+|  IncorrectImageBlobType  |  Schijf-blobs kunnen alleen van het type pagina-BLOB zijn. De BLOB-{0} voor schijf '{1}' is van het type blok-blob.  |
+|  IncorrectImageBlobType  |  Schijf-blobs kunnen alleen van het type pagina-BLOB zijn. BLOB-{0} is van het type{1}.  |
+|  InternalOperationError  |  Kan het opslag account niet {0}omzetten. Zorg ervoor dat het is gemaakt via de opslag Resource provider op dezelfde locatie als de reken resource.  |
+|  InternalOperationError  |  {0} doel om taken te zoeken is mislukt.  |
+|  InternalOperationError  |  Er is een fout opgetreden bij het valideren van het netwerk profiel van de VM{0}.  |
+|  InvalidAccountType  |  Het account type {0} is ongeldig.  |
+|  InvalidParameter  |  De waarde van de para meter {0} is ongeldig.  |
+|  InvalidParameter  |  Het opgegeven beheerders wachtwoord is niet toegestaan.  |
+|  InvalidParameter  |  "Het opgegeven wacht woord moet tussen {0}{1} tekens lang zijn en moet voldoen aan ten minste {2} aan vereisten voor wachtwoord complexiteit van het volgende: <ol><li> Bevat een hoofd letter</li><li>Bevat een kleine letter</li><li>Bevat een numeriek cijfer</li><li>Bevat een speciaal teken.</li></ol>  |
+|  InvalidParameter  |  De opgegeven gebruikers naam voor de beheerder is niet toegestaan.  |
+|  InvalidParameter  |  Kan geen bestaande besturingssysteem schijf koppelen als de virtuele machine is gemaakt op basis van een platform of een gebruikers installatie kopie.  |
+|  InvalidParameter  |  De container naam {0} is ongeldig. Container namen moeten 3-63 tekens lang zijn en mogen alleen alfanumerieke tekens met kleine letters en afbreek streepjes bevatten. Het afbreek streepje moet worden voorafgegaan en gevolgd door een alfanumeriek teken.  |
+|  InvalidParameter  |  De container naam {0} in URL {1} is ongeldig. Container namen moeten 3-63 tekens lang zijn en mogen alleen alfanumerieke tekens met kleine letters en afbreek streepjes bevatten. Het afbreek streepje moet worden voorafgegaan en gevolgd door een alfanumeriek teken.  |
+|  InvalidParameter  |  De BLOB-naam in de URL-{0} bevat een slash. Dit wordt momenteel niet ondersteund voor schijven.  |
+|  InvalidParameter  |  De URI-{0} ziet niet de juiste BLOB-URI.  |
+|  InvalidParameter  |  Een schijf met de naam{0}maakt al gebruik van dezelfde LUN: {1}.  |
+|  InvalidParameter  |  Er bestaat al een schijf met de naam{0}.  |
+|  InvalidParameter  |  Kan geen overschrijvingen voor gebruikers afbeeldingen opgeven voor een schijf die al is gedefinieerd in de opgegeven installatie kopie verwijzing.  |
+|  InvalidParameter  |  Een schijf met de naam{0}gebruikt al dezelfde URL voor de VHD {1}.  |
+|  InvalidParameter  |  Het opgegeven aantal fout domeinen {0} moet in het bereik {1} tot {2}vallen.  |
+|  InvalidParameter  |  Het licentie type {0} is ongeldig. Geldige licentie typen zijn: Windows_Client of Windows_Server, hoofdletter gevoelig.  |
+|  InvalidParameter  |  De naam van een Linux-host mag niet langer zijn dan {0} tekens of de volgende tekens bevatten: {1}.  |
+|  InvalidParameter  |  Het doelpad voor open bare SSH-sleutels is momenteel beperkt tot de standaard waarde {0} vanwege een bekend probleem in de Linux-inrichtings agent.  |
+|  InvalidParameter  |  Er bestaat al een schijf op LUN {0}.  |
+|  InvalidParameter  |  Abonnements {0} van de aanvraag moeten overeenkomen met het abonnement {1} dat is opgenomen in de id van de beheerde schijf.  |
+|  InvalidParameter  |  Aangepaste gegevens in OSProfile moeten een base64-code ring hebben en een maximale lengte van {0} tekens hebben.  |
+|  InvalidParameter  |  De BLOB-naam in de URL {0} moet eindigen op de extensie{1}.  |
+|  InvalidParameter  |  {0}' is geen geldig voor voegsel van een vastgelegde VHD-BLOB-naam. Een geldig voor voegsel komt overeen met regex{1}.  |
+|  InvalidParameter  |  Er kunnen geen certificaten aan uw virtuele machine worden toegevoegd als de VM-agent niet is ingericht.  |
+|  InvalidParameter  |  Er bestaat al een schijf op LUN {0}.  |
+|  InvalidParameter  |  De virtuele machine kan niet worden gemaakt, omdat de aangevraagde grootte {0} niet beschikbaar is in het cluster met de beschikbaarheidsset die momenteel is toegewezen. De beschik bare grootten zijn: {1}. Meer informatie over de strategie voor het verg Roten/verkleinen van VM'S op https://aka.ms/azure-resizevm.  |
+|  InvalidParameter  |  De aangevraagde VM-grootte {0} is niet beschikbaar in de huidige regio. De beschik bare grootten in de huidige regio zijn: {1}. Meer informatie over de beschik bare VM-grootten in elke regio op https://aka.ms/azure-regions.  |
+|  InvalidParameter  |  De aangevraagde VM-grootte {0} is niet beschikbaar in de huidige regio. Meer informatie over de beschik bare VM-grootten in elke regio op https://aka.ms/azure-regions.  |
+|  InvalidParameter  |  De gebruikers naam van de Windows-beheerder mag niet langer zijn dan {0} tekens lang zijn, eindigen met een punt (.) of de volgende tekens bevatten: {1}.  |
+|  InvalidParameter  |  De Windows-computer naam mag niet langer zijn dan {0} tekens, volledig numeriek zijn of de volgende tekens bevatten: {1}.  |
+|  MissingMoveDependentResources  |  De aanvraag voor het verplaatsen van resources bevat niet alle afhankelijke resources. Raadpleeg de fout Details voor ontbrekende resource-id's.  |
+|  MoveResourcesHaveInvalidState  |  De aanvraag voor het verplaatsen van resources bevat Vm's die zijn gekoppeld aan ongeldige opslag accounts. Controleer de Details voor deze bron-id's en de namen van de opslag accounts waarnaar wordt verwezen.  |
+|  MoveResourcesHavePendingOperations  |  De aanvraag voor het verplaatsen van resources bevat resources waarvoor een bewerking in behandeling is. Controleer de Details voor deze resource-id's. Voer de bewerking opnieuw uit nadat de in behandeling zijnde bewerkingen zijn voltooid.  |
+|  MoveResourcesNotFound  |  De aanvraag voor het verplaatsen van resources bevat resources die niet kunnen worden gevonden. Controleer de Details voor deze resource-id's.  |
+|  NetworkingInternalOperationError  |  Onbekende netwerk toewijzings fout.  |
+|  NetworkingInternalOperationError  |  Fout bij onbekende netwerk toewijzing  |
+|  NetworkingInternalOperationError  |  Er is een interne fout opgetreden bij het verwerken van het netwerk profiel van de virtuele machine.  |
+|  NotFound  |  Kan de Beschikbaarheidsset {0} niet vinden.  |
+|  NotFound  |  De virtuele bron machine{0}die in de aanvraag is opgegeven, bestaat niet op deze Azure-locatie.  |
+|  NotFound  |  Kan de Tenant met de id {0} niet vinden.  |
+|  NotFound  |  Kan de installatie kopie {0} niet vinden.  |
+|  NotSupported  |  Het licentie type is {0}, maar de {1} van de afbeeldings-blob is niet van on-premises.  |
+|  OperationNotAllowed  |  {0} van de beschikbaarheidsset kan niet worden verwijderd. Voordat u een Beschikbaarheidsset verwijdert, moet u ervoor zorgen dat deze geen virtuele machine bevat.  |
+|  OperationNotAllowed  |  Het wijzigen van de SKU van de beschikbaarheidsset van ' uitgelijnd ' in ' klassiek ' is niet toegestaan.  |
+|  OperationNotAllowed  |  Kan uitbrei dingen in de virtuele machine niet wijzigen wanneer de virtuele machine niet wordt uitgevoerd.  |
+|  OperationNotAllowed  |  De opname actie wordt alleen ondersteund op een virtuele machine met schijven op basis van blobs. Gebruik de bron-Api's van de installatie kopie om een installatie kopie van een beheerde virtuele machine te maken.  |
+|  OperationNotAllowed  |  De resource {0} kan niet worden gemaakt op basis van de installatie kopie {1} totdat de installatie kopie is gemaakt.  |
+|  OperationNotAllowed  |  Updates voor encryptionSettings zijn niet toegestaan wanneer de virtuele machine is toegewezen. Probeer het opnieuw nadat de toewijzing van de VM ongedaan is gemaakt  |
+|  OperationNotAllowed  |  Het toevoegen van een beheerde schijf aan een virtuele machine met op blobs gebaseerde schijven wordt niet ondersteund.  |
+|  OperationNotAllowed  |  Het maximum aantal gegevens schijven dat kan worden gekoppeld aan een virtuele machine van deze grootte is {0}.  |
+|  OperationNotAllowed  |  Het toevoegen van een BLOB op basis van een schijf naar een VM met beheerde schijven wordt niet ondersteund.  |
+|  OperationNotAllowed  |  De bewerking{0}is niet toegestaan voor de installatie kopie{1}omdat de installatie kopie is gemarkeerd voor verwijdering. U kunt de Verwijder bewerking alleen opnieuw uitvoeren (of wachten totdat het proces is voltooid).  |
+|  OperationNotAllowed  |  De bewerking{0}is niet toegestaan voor de VM{1}omdat de VM is gegeneraliseerd.  |
+|  OperationNotAllowed  |  De bewerking{0}is niet toegestaan omdat de herstel punt verzameling{1}is gemarkeerd voor verwijdering.  |
+|  OperationNotAllowed  |  De bewerking{0}is niet toegestaan voor de VM-extensie{1}omdat deze is gemarkeerd voor verwijdering. U kunt de Verwijder bewerking alleen opnieuw uitvoeren (of wachten totdat het proces is voltooid).  |
+|  OperationNotAllowed  |  De bewerking{0}is niet toegestaan omdat de Virtual Machines{1}worden ingericht met de installatie kopie{2}.  |
+|  OperationNotAllowed  |  De bewerking '{0}' is niet toegestaan omdat de installatie kopie '{2}' momenteel wordt gebruikt voor de virtuele-machine Schaalset '{1}'.  |
+|  OperationNotAllowed  |  De bewerking{0}is niet toegestaan voor de VM{1}omdat de VM is gemarkeerd voor verwijdering. U kunt de Verwijder bewerking alleen opnieuw uitvoeren (of wachten totdat het proces is voltooid).  |
+|  OperationNotAllowed  |  De bewerking{0}is niet toegestaan voor de VM{1}omdat de toewijzing van de virtuele machine ongedaan is gemaakt of is gemarkeerd om te worden toegewezen.  |
+|  OperationNotAllowed  |  De bewerking{0}is niet toegestaan voor de VM{1}omdat de VM actief is. Schakel expliciet uit voor het geval u de virtuele machine afsluit vanuit het gast besturingssysteem.  |
+|  OperationNotAllowed  |  De bewerking{0}is niet toegestaan voor de VM{1}omdat de toewijzing van de virtuele machine niet ongedaan is gemaakt.  |
+|  OperationNotAllowed  |  De bewerking{0}is niet toegestaan voor de VM{1}, omdat de VM de extensie{2}heeft met de status mislukt.  |
+|  OperationNotAllowed  |  De bewerking{0}is niet toegestaan voor de VM{1}, omdat er een andere bewerking wordt uitgevoerd.  |
+|  OperationNotAllowed  |  Voor de bewerking{0}moet de virtuele machine{1}worden gegeneraliseerd.  |
+|  OperationNotAllowed  |  Voor de bewerking moet de virtuele machine worden uitgevoerd (of ingesteld om te worden uitgevoerd).  |
+|  OperationNotAllowed  |  De schijf met de grootte {0}GB, die kleiner is dan de grootte {1}GB van de bijbehorende schijf in de installatie kopie, is niet toegestaan.  |
+|  OperationNotAllowed  |  Uitbrei dingen van de VM-Schaalset van de handler{0}kunnen alleen worden toegevoegd op het moment dat de VM-Schaalset wordt gemaakt.  |
+|  OperationNotAllowed  |  Uitbrei dingen van de VM-Schaalset van de handler{0}kunnen alleen worden verwijderd op het moment dat de VM-Schaalset wordt verwijderd.  |
+|  OperationNotAllowed  |  De VM{0}maakt al gebruik van beheerde schijven.  |
+|  OperationNotAllowed  |  VM '{0}' behoort tot ' klassieke ' beschikbaarheidsset '{1}'. Werk de beschikbaarheidsset bij om de ' uitgelijnde ' SKU te gebruiken en voer de conversie vervolgens opnieuw uit.  |
+|  OperationNotAllowed  |  Een VM die is gemaakt op basis van een installatie kopie kan geen schijven op basis van BLOB hebben Alle schijven moeten beheerde schijven zijn.  |
+|  OperationNotAllowed  |  De opname bewerking kan niet worden voltooid omdat de virtuele machine niet is gegeneraliseerd.  |
+|  OperationNotAllowed  |  Beheer bewerkingen op VM-{0}zijn niet toegestaan omdat VM-schijven worden geconverteerd naar Managed disks.  |
+|  OperationNotAllowed  |  Bij een actieve bewerking wordt de energie status van de virtuele machine {0} gewijzigd in {1}. Voer de bewerking {2} na enige tijd uit.  |
+|  OperationNotAllowed  |  De virtuele machine kan niet worden toegevoegd of bijgewerkt. De aangevraagde VM-grootte {0} mogelijk niet beschikbaar in de bestaande toewijzings eenheid. Meer informatie over de strategie voor het verg Roten/verkleinen van VM'S op https://aka.ms/azure-resizevm.  |
+|  OperationNotAllowed  |  Kan de grootte van de virtuele machine niet wijzigen omdat de aangevraagde grootte {0} niet beschikbaar is in het cluster waar de beschikbaarheidsset momenteel is toegewezen. De beschik bare grootten zijn: {1}. Meer informatie over de strategie voor het verg Roten/verkleinen van VM'S op https://aka.ms/azure-resizevm.  |
+|  OperationNotAllowed  |  Kan de grootte van de virtuele machine niet wijzigen omdat de aangevraagde grootte {0} niet beschikbaar is in het cluster waar de virtuele machine momenteel is toegewezen. Als u de grootte van uw virtuele machine wilt wijzigen in {1}, moet u de toewijzing ongedaan maken (dit is een stop bewerking in de Azure Portal) en de grootte van de bewerking opnieuw proberen. Meer informatie over de strategie voor het verg Roten/verkleinen van VM'S op https://aka.ms/azure-resizevm.  |
+|  OSProvisioningClientError  |  Het inrichten van het besturings systeem is mislukt voor de VM{0}omdat het gast besturingssysteem momenteel wordt ingericht.  |
+|  OSProvisioningClientError  |  Het inrichten van het besturings systeem voor de VM{0}is mislukt. Fout Details: {1} ervoor te zorgen dat de installatie kopie op de juiste wijze is voor bereid (gegeneraliseerd). <ul><li>Instructies voor Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  Genereren van SSH-host is mislukt. Fout Details: {0}. Controleer of de Linux-agent correct is ingesteld om dit probleem op te lossen. <ul><li>U kunt de instructies controleren op: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
+|  OSProvisioningClientError  |  De gebruikers naam die voor de virtuele machine is opgegeven, is ongeldig voor deze Linux-distributie. Fout Details: {0}.  |
+|  OSProvisioningInternalError  |  Het inrichten van het besturings systeem voor de virtuele machine{0}is mislukt vanwege een interne fout.  |
+|  OSProvisioningTimedOut  |  Het inrichten van het besturings systeem voor de VM{0}is niet voltooid binnen de toegewezen tijd. De inrichting van de virtuele machine kan nog steeds worden voltooid. Controleer de inrichtings status later.  |
+|  OSProvisioningTimedOut  |  Het inrichten van het besturings systeem voor de VM{0}is niet voltooid binnen de toegewezen tijd. De inrichting van de virtuele machine kan nog steeds worden voltooid. Controleer de inrichtings status later. Zorg er ook voor dat de installatie kopie op de juiste wijze is voor bereid (gegeneraliseerd).   <ul><li>Instructies voor Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Instructies voor Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  Het inrichten van het besturings systeem voor de VM{0}is niet voltooid binnen de toegewezen tijd. De VM-gast agent is echter wel uitgevoerd. Dit geeft aan dat het gast besturingssysteem niet goed is voor bereid om te worden gebruikt als een VM-installatie kopie (met CreateOption = FromImage). Om dit probleem op te lossen, gebruikt u de VHD als is met CreateOption = koppelen of voorbereiden op de juiste manier voor gebruik als een installatie kopie:   <ul><li>Instructies voor Windows: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Instructies voor Linux: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OverConstrainedAllocationRequest  |  De vereiste VM-grootte is momenteel niet beschikbaar op de geselecteerde locatie.  |
+|  ResourceUpdateBlockedOnPlatformUpdate  |  De resource kan op dit moment niet worden bijgewerkt vanwege een voortdurende platform update. Probeer het later opnieuw.  |
+|  StorageAccountLimitation  |  Het opslag account{0}biedt geen ondersteuning voor pagina-blobs die vereist zijn voor het maken van schijven.  |
+|  StorageAccountLimitation  |  Het toegewezen quotum voor het opslag account{0}is overschreden.  |
+|  StorageAccountLocationMismatch  |  Kan het opslag account niet {0}omzetten. Zorg ervoor dat het is gemaakt via de opslag Resource provider op dezelfde locatie als de reken resource.  |
+|  StorageAccountNotFound  |  Kan het opslag account niet {0} vinden. Zorg ervoor dat het opslag account niet is verwijderd en tot dezelfde Azure-locatie behoort als de VM.  |
+|  StorageAccountNotRecognized  |  Gebruik een opslag account dat wordt beheerd door de provider van de opslag resource. Het gebruik van {0} wordt niet ondersteund.  |
+|  StorageAccountOperationInternalError  |  Er is een interne fout opgetreden tijdens het openen van het opslag account {0}.  |
+|  StorageAccountSubscriptionMismatch  |  Het {0} van het opslag account hoort niet bij het abonnement {1}.  |
+|  StorageAccountTooBusy  |  Het opslag account{0}is momenteel bezet. Overweeg het gebruik van een ander account.  |
+|  StorageAccountTypeNotSupported  |  Schijf {0} gebruikt {1} die een Blob Storage-account is. Probeer het opnieuw met een opslag account voor algemene doel einden.  |
+|  StorageAccountTypeNotSupported  |  Het {0} van het opslag account is van het type {1}. Diagnostische gegevens over opstarten ondersteunt {2} typen opslag accounts.  <ul><li>Deze fout treedt op als u het Premium-opslag account gebruikt voor diagnostische gegevens over opstarten. Zie voor meer informatie [over het gebruik van diagnostische gegevens over opstarten](boot-diagnostics.md). </li></ul> |
+|  SubscriptionNotAuthorizedForImage  |  Het abonnement is niet geautoriseerd.  |
+|  TargetDiskBlobAlreadyExists  |  Er bestaat al een BLOB {0}. Geef een andere blob-URI op om een nieuwe lege gegevens schijf te maken{1}.  |
+|  TargetDiskBlobAlreadyExists  |  De opname bewerking kan niet worden voortgezet omdat de BLOB voor de doel installatie kopie {0} al bestaat en de vlag voor het overschrijven van VHD-blobs niet is ingesteld. Verwijder de BLOB of stel de vlag in op het overschrijven van de VHD-blobs en probeer het opnieuw.  |
+|  TargetDiskBlobAlreadyExists  |  De opname bewerking kan niet worden voortgezet omdat er een actieve lease voor de blob van de doel afbeelding {0}.   |
+|  TargetDiskBlobAlreadyExists  |  Er bestaat al een BLOB {0}. Geef een andere blob-URI op als doel voor de schijf{1}.  |
+|  TooManyVMRedeploymentRequests  |  Er zijn te veel aanvragen voor herimplementaties ontvangen voor de virtuele machine '{0}' of de virtuele machines in dezelfde beschikbaarheidsset met deze virtuele machine. Probeer het later opnieuw.  |
+|  VHDSizeInvalid  |  De opgegeven waarde voor schijf grootte van {0} voor schijf '{1}' met Blob {2} is ongeldig. De schijf grootte moet tussen {3} en {4}.  |
+|  VMAgentStatusCommunicationError  |  De VM-{0}heeft geen status gerapporteerd voor de VM-agent of-uitbrei dingen. Controleer of de virtuele machine een actieve VM-agent heeft en of er uitgaande verbindingen met Azure Storage tot stand kunnen worden gebracht.  |
+|  VMArtifactRepositoryInternalError  |  Er is een fout opgetreden tijdens de communicatie met de artefact opslagplaats om VM-artefact gegevens op te halen.  |
+|  VMArtifactRepositoryInternalError  |  Er is een interne fout opgetreden tijdens het ophalen van de VM-artefact gegevens uit de artefact opslagplaats.  |
+|  VMExtensionHandlerNonTransientError  |  De handler '{0}' heeft een fout gerapporteerd voor de VM-extensie '{1}' met de Terminal fout code '{2}' en het volgende fout bericht: '{3}'  |
+|  VMExtensionManagementInternalError  |  Er is een interne fout opgetreden tijdens het verwerken van de VM-extensie{0}.  |
+|  VMExtensionManagementInternalError  |  Er zijn meerdere fouten opgetreden bij het voorbereiden van de VM-extensies. Zie de weer gave van de VM-extensie-instantie voor meer informatie.  |
+|  VMExtensionProvisioningError  |  De virtuele machine heeft een fout gerapporteerd bij het verwerken van de extensie{0}. Fout bericht:{1}.  |
+|  VMExtensionProvisioningError  |  Meerdere VM-extensies kunnen niet worden ingericht op de VM. Raadpleeg de weer gave van de VM-extensie-instantie voor meer informatie.  |
+|  VMExtensionProvisioningTimeout  |  Er is een time-out opgetreden tijdens het inrichten van de VM-extensie{0}. De installatie van de extensie kan te lang duren of de status van de extensie kan niet worden opgehaald.  |
+|  VMMarketplaceInvalidInput  |  Het maken van een virtuele machine vanuit een niet-Marketplace-installatie kopie vereist geen plan gegevens, verwijder de plan gegevens in de aanvraag. De naam van de besturingssysteem schijf is {0}.  |
+|  VMMarketplaceInvalidInput  |  De inkoop gegevens komen niet overeen. Kan niet implementeren vanuit de Marketplace-installatie kopie. De naam van de besturingssysteem schijf is {0}.  |
+|  VMMarketplaceInvalidInput  |  Voor het maken van een virtuele machine vanuit een Marketplace-installatie kopie zijn plan gegevens in de aanvraag vereist. De naam van de besturingssysteem schijf is {0}.  |
+|  VMNotFound  |  Kan de virtuele machine{0}niet vinden.  |
+|  VMRedeploymentFailed  |  De implementatie van de VM{0}is mislukt vanwege een interne fout. Probeer het later opnieuw.  |
+|  VMRedeploymentTimedOut  |  Het opnieuw implementeren van de VM '{0}' is niet voltooid binnen de toegewezen tijd. Het kan nu ook worden voltooid. Anders kunt u de aanvraag opnieuw proberen.  |
+|  VMStartTimedOut  |  De VM '{0}' is niet gestart binnen de toegewezen tijd. De VM kan nog steeds worden gestart. Controleer de energie status op een later tijdstip.  |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u meer hulp nodig hebt, u kunt contact opnemen met de Azure-experts op [het Azure MSDN en Stack Overflow-forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteuning van Azure site](https://azure.microsoft.com/support/options/) en selecteer **ophalen ondersteunen**.
+Als u meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.

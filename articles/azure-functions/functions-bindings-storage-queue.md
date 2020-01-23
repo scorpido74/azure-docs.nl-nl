@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 70254e42b5964c7c7a3bf15c396f4c118f68a5ed
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: ea213921c736bc3b6bf88c0bdd81a96656ecbe5b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121230"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547282"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue-opslag bindingen voor Azure Functions
 
@@ -21,7 +21,7 @@ In dit artikel wordt uitgelegd hoe u kunt werken met Azure Queue Storage-binding
 
 ## <a name="packages---functions-1x"></a>Pakketten - functies 1.x
 
-De bindingen voor de wachtrij opslag zijn opgenomen in het pakket [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet versie 2. x. Broncode voor het pakket is in de [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub-opslagplaats.
+De bindingen voor de wachtrij opslag zijn opgenomen in het pakket [micro soft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) Nuget versie 2. x. Broncode voor het pakket is in de [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub-opslagplaats.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -29,7 +29,7 @@ De bindingen voor de wachtrij opslag zijn opgenomen in het pakket [micro soft. A
 
 ## <a name="packages---functions-2x-and-higher"></a>Pakketten-functions 2. x en hoger
 
-De bindingen voor de wachtrij opslag zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet-pakket, versie 3. x. Broncode voor het pakket is in de [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub-opslagplaats.
+De bindingen voor de wachtrij opslag zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) Nuget-pakket, versie 3. x. Broncode voor het pakket is in de [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub-opslagplaats.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -40,17 +40,7 @@ Functions verwachten een *Base64* -gecodeerde teken reeks. Eventuele aanpassinge
 
 Gebruik de wachtrij trigger om een functie te starten wanneer er een nieuw item in een wachtrij wordt ontvangen. Het wachtrijbericht wordt geleverd als invoer voor de functie.
 
-## <a name="trigger---example"></a>Trigger - voorbeeld
-
-Zie het voorbeeld taalspecifieke:
-
-* [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
-* [JavaScript](#trigger---javascript-example)
-* [Java](#trigger---java-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>Trigger - voorbeeld met C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) waarmee de `myqueue-items` wachtrij wordt gepeild en een logboek wordt geschreven telkens wanneer een wachtrij-item wordt verwerkt.
 
@@ -67,7 +57,7 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Trigger - voorbeeld van C#-script
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
 In het volgende voor beeld ziet u een binding van een wachtrij trigger in een *Function. json* file [ C# -en script-code (. CSX)](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie pollt de `myqueue-items` wachtrij en schrijft een logboek wanneer een wachtrij-item wordt verwerkt.
 
@@ -122,7 +112,7 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 In het gedeelte [gebruik](#trigger---usage) wordt uitgelegd `myQueueItem`. dit wordt aangeduid met de eigenschap `name` in function. json.  De [sectie meta gegevens](#trigger---message-metadata) van het bericht geeft een uitleg van alle andere variabelen die worden weer gegeven.
 
-### <a name="trigger---javascript-example"></a>Trigger - JavaScript-voorbeeld
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld ziet u een binding van een wachtrij trigger in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie pollt de `myqueue-items` wachtrij en schrijft een logboek wanneer een wachtrij-item wordt verwerkt.
 
@@ -167,23 +157,7 @@ module.exports = async function (context, message) {
 
 In het gedeelte [gebruik](#trigger---usage) wordt uitgelegd `myQueueItem`. dit wordt aangeduid met de eigenschap `name` in function. json.  De [sectie meta gegevens](#trigger---message-metadata) van het bericht geeft een uitleg van alle andere variabelen die worden weer gegeven.
 
-### <a name="trigger---java-example"></a>Trigger - Java-voorbeeld
-
-In het volgende Java-voor beeld ziet u een trigger voor opslag wachtrij waarmee het geactiveerde bericht in de wachtrij `myqueuename`wordt geregistreerd.
-
- ```java
- @FunctionName("queueprocessor")
- public void run(
-    @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
-
-### <a name="trigger---python-example"></a>Voor beeld van een trigger-python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 In het volgende voor beeld ziet u hoe u een wachtrij bericht leest dat is door gegeven aan een functie via een trigger.
 
@@ -204,7 +178,7 @@ Een opslag wachtrij trigger is gedefinieerd in *Function. json* waarbij *type* i
 }
 ```
 
-De code  *_\_init_\_. py* declareert een para meter als `func.ServiceBusMessage` waarmee u het wachtrij bericht in uw functie kunt lezen.
+De code  *_\_init_\_. py* declareert een para meter als `func.ServiceBusMessage`, waarmee u het wachtrij bericht in uw functie kunt lezen.
 
 ```python
 import logging
@@ -231,7 +205,27 @@ def main(msg: func.QueueMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Trigger - kenmerken
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+In het volgende Java-voor beeld ziet u een functie voor het activeren van een opslag wachtrij, waarmee het geactiveerde bericht in de wachtrij `myqueuename`wordt geregistreerd.
+
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
+ ---
+
+## <a name="trigger---attributes-and-annotations"></a>Trigger-kenmerken en aantekeningen
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)de volgende kenmerken voor het configureren van een wachtrij trigger:
 
@@ -261,7 +255,7 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)de volgend
   }
   ```
 
-  Zie voor een compleet voorbeeld [Trigger - voorbeeld met C#](#trigger---c-example).
+  Zie voor een compleet voorbeeld [Trigger - voorbeeld met C#](#trigger).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -287,6 +281,47 @@ Het opslag account dat moet worden gebruikt, wordt in de volgende volg orde bepa
 * De `StorageAccount` kenmerk toegepast op de klasse.
 * De instelling van de app ' AzureWebJobsStorage '.
 
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+
+Kenmerken worden niet ondersteund door C# het script.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Kenmerken worden niet ondersteund door Java script.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Kenmerken worden niet ondersteund door python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Met de `QueueTrigger` aantekening krijgt u toegang tot de wachtrij die de functie activeert. In het volgende voor beeld wordt het wachtrij bericht beschikbaar voor de functie via de para meter `message`.
+
+```java
+package com.function;
+import com.microsoft.azure.functions.annotation.*;
+import java.util.Queue;
+import com.microsoft.azure.functions.*;
+
+public class QueueTriggerDemo {
+    @FunctionName("QueueTriggerDemo")
+    public void run(
+        @QueueTrigger(name = "message", queueName = "messages", connection = "MyStorageConnectionAppSetting") String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info("Queue message: " + message);
+    }
+}
+```
+
+| Eigenschap    | Beschrijving |
+|-------------|-----------------------------|
+|`name`       | Declareert de parameter naam in de functie handtekening. Wanneer de functie wordt geactiveerd, heeft de waarde van deze para meter de inhoud van het wachtrij bericht. |
+|`queueName`  | Declareert de wachtrij naam in het opslag account. |
+|`connection` | Verwijst naar het opslag account connection string. |
+
+---
+
 ## <a name="trigger---configuration"></a>Trigger - configuratie
 
 De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `QueueTrigger` kenmerk.
@@ -303,7 +338,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 ## <a name="trigger---usage"></a>Trigger - gebruik
 
-In C# en C# script opent u de bericht gegevens met behulp van een methode parameter, zoals `string paramName`. In C# script is `paramName` de waarde die is opgegeven in de eigenschap `name` van *Function. json*. U kunt verbinding maken met een van de volgende typen:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Toegang krijgen tot de bericht gegevens met behulp van een methode parameter, zoals `string paramName`. U kunt verbinding maken met een van de volgende typen:
 
 * Object-met de functions runtime wordt een JSON-nettolading gedeserialiseerd naar een exemplaar van een wille keurige klasse die in uw code is gedefinieerd. 
 * `string`
@@ -312,7 +349,30 @@ In C# en C# script opent u de bericht gegevens met behulp van een methode parame
 
 Als u probeert verbinding te maken met `CloudQueueMessage` en een fout bericht ontvangt, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
 
-Gebruik in Java script `context.bindings.<name>` om toegang te krijgen tot de nettolading van het wachtrij-item. Als de payload JSON is, wordt deze gedeserialiseerd tot een object. Deze nettolading wordt ook door gegeven als de tweede para meter voor de functie.
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+
+Toegang krijgen tot de bericht gegevens met behulp van een methode parameter, zoals `string paramName`. De `paramName` is de waarde die is opgegeven in de eigenschap `name` van *Function. json*. U kunt verbinding maken met een van de volgende typen:
+
+* Object-met de functions runtime wordt een JSON-nettolading gedeserialiseerd naar een exemplaar van een wille keurige klasse die in uw code is gedefinieerd. 
+* `string`
+* `byte[]`
+* [CloudQueueMessage]
+
+Als u probeert verbinding te maken met `CloudQueueMessage` en een fout bericht ontvangt, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+De nettolading van het wachtrij-item is beschikbaar via `context.bindings.<NAME>` waarbij `<NAME>` overeenkomt met de naam die is gedefinieerd in *Function. json*. Als de payload JSON is, wordt de waarde in een object gedeserialiseerd.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Open het wachtrij bericht via de para meter getypeerd als [QueueMessage](https://docs.microsoft.com/python/api/azure-functions/azure.functions.queuemessage?view=azure-python).
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Met de [Queue trigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) -aantekening krijgt u toegang tot het wachtrij bericht waarmee de functie is geactiveerd.
+
+---
 
 ## <a name="trigger---message-metadata"></a>Trigger - bericht-metagegevens
 
@@ -365,22 +425,12 @@ Het bestand [host. json](functions-host-json.md#queues) bevat instellingen die h
 
 Gebruik de Azure Queue Storage-uitvoer binding om berichten te schrijven naar een wachtrij.
 
-## <a name="output---example"></a>Uitvoer - voorbeeld
-
-Zie het voorbeeld taalspecifieke:
-
-* [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
-* [JavaScript](#output---javascript-example)
-* [Java](#output---java-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>Uitvoer - voorbeeld met C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) waarmee een wachtrij bericht wordt gemaakt voor elke ontvangen HTTP-aanvraag.
 
 ```csharp
-[StorageAccount("AzureWebJobsStorage")]
+[StorageAccount("MyStorageConnectionAppSetting")]
 public static class QueueFunctions
 {
     [FunctionName("QueueOutput")]
@@ -393,7 +443,7 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="output---c-script-example"></a>Uitvoer - voorbeeld van C#-script
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
 In het volgende voor beeld ziet u een binding van een http-trigger in een *Function. json* file [ C# -en script-code (. CSX)](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie maakt een wachtrij-item met een **CustomQueueMessage** -object lading voor elke ontvangen HTTP-aanvraag.
 
@@ -454,7 +504,7 @@ public static void Run(
 }
 ```
 
-### <a name="output---javascript-example"></a>Uitvoer - JavaScript-voorbeeld
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld ziet u een binding van de HTTP-trigger in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie maakt een wachtrij-item voor elke ontvangen HTTP-aanvraag.
 
@@ -504,25 +554,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---java-example"></a>Uitvoer - Java-voorbeeld
-
- In het volgende voor beeld ziet u een Java-functie die een wachtrij bericht maakt wanneer het wordt geactiveerd door een HTTP-aanvraag.
-
-```java
-@FunctionName("httpToQueue")
-@QueueOutput(name = "item", queueName = "myqueue-items", connection = "AzureWebJobsStorage")
- public String pushToQueue(
-     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-     final String message,
-     @HttpOutput(name = "response") final OutputBinding<String> result) {
-       result.setValue(message + " has been added.");
-       return message;
- }
-```
-
-Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@QueueOutput` annotatie voor para meters waarvan de waarde wordt geschreven naar de wachtrij opslag.  Het parametertype moet `OutputBinding<T>`, waarbij T alle systeemeigen Java-type van een POJO.
-
-### <a name="output---python-example"></a>Voor beeld van de uitvoer-python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 In het volgende voor beeld ziet u hoe u één en meerdere waarden naar opslag wachtrijen kunt uitvoeren. De configuratie die nodig is voor *Function. json* is op dezelfde manier.
 
@@ -585,7 +617,29 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Uitvoer - kenmerken
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+ In het volgende voor beeld ziet u een Java-functie waarmee een wachtrij bericht wordt gemaakt voor wanneer deze wordt geactiveerd door een HTTP-aanvraag.
+
+```java
+@FunctionName("httpToQueue")
+@QueueOutput(name = "item", queueName = "myqueue-items", connection = "MyStorageConnectionAppSetting")
+ public String pushToQueue(
+     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+     final String message,
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
+       result.setValue(message + " has been added.");
+       return message;
+ }
+```
+
+Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@QueueOutput` annotatie voor para meters waarvan de waarde wordt geschreven naar de wachtrij opslag.  Het parameter type moet `OutputBinding<T>`zijn, waarbij `T` een systeem eigen Java-type is van een POJO.
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Uitvoer-kenmerken en aantekeningen
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Gebruik in [ C# class libraries](functions-dotnet-class-library.md)het [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs).
 
@@ -611,9 +665,54 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-Zie voor een compleet voorbeeld [uitvoer - voorbeeld met C#](#output---c-example).
+Zie voor een compleet voorbeeld [uitvoer - voorbeeld met C#](#output).
 
 U kunt het kenmerk `StorageAccount` gebruiken om het opslag account op te geven bij klasse, methode of parameter niveau. Zie trigger-Attributes (Engelstalig) voor meer informatie.
+
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+
+Kenmerken worden niet ondersteund door C# het script.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Kenmerken worden niet ondersteund door Java script.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Kenmerken worden niet ondersteund door python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Met de aantekening van de `QueueOutput` kunt u een bericht schrijven naar een uitvoer van een functie. In het volgende voor beeld ziet u een door HTTP geactiveerde functie waarmee een wachtrij bericht wordt gemaakt.
+
+```java
+package com.function;
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
+public class HttpTriggerQueueOutput {
+    @FunctionName("HttpTriggerQueueOutput")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @QueueOutput(name = "message", queueName = "messages", connection = "MyStorageConnectionAppSetting") OutputBinding<String> message,
+            final ExecutionContext context) {
+
+        message.setValue(request.getQueryParameters().get("name"));
+        return request.createResponseBuilder(HttpStatus.OK).body("Done").build();
+    }
+}
+```
+
+| Eigenschap    | Beschrijving |
+|-------------|-----------------------------|
+|`name`       | Declareert de parameter naam in de functie handtekening. Wanneer de functie wordt geactiveerd, heeft de waarde van deze para meter de inhoud van het wachtrij bericht. |
+|`queueName`  | Declareert de wachtrij naam in het opslag account. |
+|`connection` | Verwijst naar het opslag account connection string. |
+
+De para meter die aan de `QueueOutput` aantekening is gekoppeld, wordt getypt als een [OutputBinding\<t\>](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) -exemplaar.
+
+---
 
 ## <a name="output---configuration"></a>Uitvoer - configuratie
 
@@ -631,7 +730,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 ## <a name="output---usage"></a>Uitvoer - gebruik
 
-In C# en C# script, een enkel wachtrij bericht schrijven met behulp van een methode parameter, zoals `out T paramName`. In C# script is `paramName` de waarde die is opgegeven in de eigenschap `name` van *Function. json*. U kunt het retour type van de methode gebruiken in plaats van een `out` para meter, en `T` kan een van de volgende typen zijn:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Een enkel wachtrij bericht schrijven met behulp van een methode parameter, zoals `out T paramName`. U kunt het retour type van de methode gebruiken in plaats van een `out` para meter, en `T` kan een van de volgende typen zijn:
 
 * Een object dat als JSON kan worden geserialiseerd
 * `string`
@@ -645,8 +746,43 @@ Schrijf C# in C# en script meerdere wachtrij berichten met behulp van een van de
 * `ICollector<T>` of `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-Gebruik in Java script-functies `context.bindings.<name>` om toegang te krijgen tot het bericht van de uitvoer wachtrij. U kunt een teken reeks of een JSON-serialiseerbaar object gebruiken voor de nettolading van het wachtrij-item.
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
+Een enkel wachtrij bericht schrijven met behulp van een methode parameter, zoals `out T paramName`. De `paramName` is de waarde die is opgegeven in de eigenschap `name` van *Function. json*. U kunt het retour type van de methode gebruiken in plaats van een `out` para meter, en `T` kan een van de volgende typen zijn:
+
+* Een object dat als JSON kan worden geserialiseerd
+* `string`
+* `byte[]`
+* [CloudQueueMessage] 
+
+Als u probeert verbinding te maken met `CloudQueueMessage` en een fout bericht ontvangt, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
+
+Schrijf C# in C# en script meerdere wachtrij berichten met behulp van een van de volgende typen: 
+
+* `ICollector<T>` of `IAsyncCollector<T>`
+* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Het uitvoer wachtrij-item is beschikbaar via `context.bindings.<NAME>` waarbij `<NAME>` overeenkomt met de naam die is gedefinieerd in *Function. json*. U kunt een teken reeks of een JSON-serialiseerbaar object gebruiken voor de nettolading van het wachtrij-item.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Er zijn twee opties voor het uitvoeren van een event hub-bericht van een functie:
+
+- **Retour waarde**: Stel de eigenschap `name` in *Function. json* in op `$return`. Met deze configuratie wordt de retour waarde van de functie persistent gemaakt als een wachtrij-opslag bericht.
+
+- Verplicht **: Geef**een waarde door aan de methode [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) van de para meter die is gedeclareerd als een [out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) -type. De waarde die aan `set` is door gegeven, wordt persistent gemaakt als een wachtrij-opslag bericht.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Er zijn twee opties voor het uitvoeren van een event hub-bericht van een functie met behulp van de [QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput) -aantekening:
+
+- **Retour waarde**: door de aantekening toe te passen op de functie zelf, wordt de geretourneerde waarde van de functie persistent gemaakt als een event hub-bericht.
+
+- **Absoluut**: als u de bericht waarde expliciet wilt instellen, past u de aantekening toe op een specifieke para meter van het type [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding), waarbij `T` een Pojo of een systeem eigen Java-type is. Met deze configuratie wordt door het door geven van een waarde aan de `setValue`-methode de waarde persistent gemaakt als een event hub-bericht.
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonderingen en retourcodes
 
@@ -679,7 +815,6 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
     }
 }
 ```
-
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|

@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 82426c0093550864b421d7acc35780c4173895a8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a794a9ed35cbbdd36c2cf136b8afc208c3ea0692
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824730"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549003"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Snelstartgids: een python-toepassing bouwen met een Azure Cosmos DB SQL-API-account
 
@@ -31,7 +31,7 @@ ms.locfileid: "73824730"
 
 Deze snelstart laat zien hoe u een [SQL API](sql-api-introduction.md)-account van Azure Cosmos DB, een documentdatabase en een container kunt maken met behulp van de Azure-portal. Vervolgens ontwikkelt u een console-app die is gebouwd met de Python SDK voor [SQL API](sql-api-sdk-python.md) en voert u deze uit.
 
-Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel documenten, sleutel/waarde, brede kolom-en grafiek databases maken en doorzoeken. Al deze bewerkingen profiteren van de distributie en schaal van Azure Cosmos DB.
+Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel documenten, sleutel/waarde, brede kolom-en grafiek databases maken en doorzoeken. Al deze bewerkingen profiteren van de distributie en schaal van Azure Cosmos DB.
 
 In deze Quick Start wordt versie 4 van de [python-SDK](https://pypi.org/project/azure-cosmos/#history)gebruikt.
 
@@ -49,7 +49,26 @@ In deze Quick Start wordt versie 4 van de [python-SDK](https://pypi.org/project/
 
 ## <a name="add-a-container"></a>Een container toevoegen
 
-[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
+U kunt nu het hulp programma Data Explorer in de Azure Portal gebruiken om een Data Base en container te maken. 
+
+1. Selecteer **Data Explorer** > **Nieuwe container**. 
+    
+    Het gebied **container toevoegen** wordt helemaal rechts weer gegeven. mogelijk moet u naar rechts scrollen om het weer te geven.
+
+    ![Azure Portal Data Explorer, deelvenster Container toevoegen](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
+
+2. Voer op de pagina **container toevoegen** de instellingen voor de nieuwe container in.
+
+    |Instelling|Voorgestelde waarde|Beschrijving
+    |---|---|---|
+    |**Database-id**|Taken|Voer *ToDoList* in als de naam voor de nieuwe data base. Databasenamen moeten tussen de 1 en 255 tekens zijn en mogen geen `/, \\, #, ?` bevatten en mogen niet eindigen met een spatie. Schakel de optie **doorvoer database inrichten** in, zodat u de door Voer die is ingericht voor de data base, kunt delen in alle containers in de data base. Deze optie helpt ook bij het besparen van kosten. |
+    |**Doorvoer**|400|De door Voer bij 400 aanvraag eenheden per seconde (RU/s) behouden. U kunt de doorvoer later opschalen als u de latentie wilt beperken.| 
+    |**Container-id**|Items|Voer *items* in als de naam voor de nieuwe container. Voor id's van containers gelden dezelfde tekenvereisten als voor databasenamen.|
+    |**Partitiesleutel**| /category| Het voor beeld dat in dit artikel wordt beschreven, maakt gebruik van *Category* als de partitie sleutel.|
+    
+    Naast de voor gaande instellingen kunt u eventueel **unieke sleutels** voor de container toevoegen. In dit voorbeeld laten we het veld leeg. Unieke sleutels bieden ontwikkelaars de mogelijkheid om een gegevensintegriteitslaag aan de database toe te voegen. Door een beleid voor unieke sleutels te maken tijdens het maken van een container, zorgt u ervoor dat een of meer waarden per partitie sleutel uniek zijn. Raadpleeg het artikel [Unique keys in Azure Cosmos DB](unique-keys.md) (Unieke sleutels in Azure Cosmos DB) voor meer informatie.
+    
+    Selecteer **OK**. In Data Explorer worden de nieuwe database en container weergegeven.
 
 ## <a name="add-sample-data"></a>Voorbeeldgegevens toevoegen
 

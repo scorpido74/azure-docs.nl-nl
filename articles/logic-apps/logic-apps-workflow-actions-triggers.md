@@ -6,17 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 2cef965f8ba23e31444d8dd8e36cdfc51afa15f6
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 6bb8dfc4b85da47a70ba768400341317462bafd8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513249"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543474"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Naslag Gids voor schema's voor trigger-en actie typen in Azure Logic Apps
 
-Deze verwijzing beschrijft de algemene typen die worden gebruikt voor het identificeren van triggers en acties in de onderliggende werk stroom definitie van uw logische app, die wordt beschreven en gevalideerd door de taal van de [werk stroom definitie](../logic-apps/logic-apps-workflow-definition-language.md).
-Zie de lijst onder het [overzicht connectors](https://docs.microsoft.com/connectors/)voor specifieke connector triggers en acties die u kunt gebruiken in uw Logic apps.
+Deze verwijzing beschrijft de algemene typen die worden gebruikt voor het identificeren van triggers en acties in de onderliggende werk stroom definitie van uw logische app, die wordt beschreven en gevalideerd door de taal van de [werk stroom definitie](../logic-apps/logic-apps-workflow-definition-language.md). Zie de lijst onder het [overzicht connectors](https://docs.microsoft.com/connectors/)voor specifieke connector triggers en acties die u kunt gebruiken in uw Logic apps.
 
 <a name="triggers-overview"></a>
 
@@ -26,7 +25,7 @@ Elke werk stroom bevat een trigger, waarmee de aanroepen worden gedefinieerd waa
 
 * Een *polling* trigger, waarmee het eind punt van een service op regel matige intervallen wordt gecontroleerd
 
-* Een *Push* trigger die een abonnement op een eind punt maakt en een *call back-URL* biedt zodat het eind punt de trigger kan waarschuwen wanneer de opgegeven gebeurtenis plaatsvindt of gegevens beschikbaar zijn. De trigger wacht op het antwoord van het eind punt voordat deze wordt geactiveerd. 
+* Een *Push* trigger die een abonnement op een eind punt maakt en een *call back-URL* biedt zodat het eind punt de trigger kan waarschuwen wanneer de opgegeven gebeurtenis plaatsvindt of gegevens beschikbaar zijn. De trigger wacht op het antwoord van het eind punt voordat deze wordt geactiveerd.
 
 Triggers hebben deze elementen op het hoogste niveau, maar sommige zijn optioneel:  
   
@@ -127,15 +126,15 @@ Deze trigger *controleert of* doorstuurt een eind punt met behulp van door [micr
 
 *Vereist*
 
-| Waarde | Type | Beschrijving | 
-|-------|------|-------------| 
-| <*APIConnection_trigger_name*> | Tekenreeks | De naam voor de trigger | 
-| <*naam* van de verbinding> | Tekenreeks | De naam voor de verbinding met de beheerde API die door de werk stroom wordt gebruikt | 
-| <*methode-type*> | Tekenreeks | De HTTP-methode voor communicatie met de beheerde API: ' GET ', ' PUT ', ' POST ', ' PATCH ', ' DELETE ' | 
-| <*api-operation*> | Tekenreeks | De API-bewerking die moet worden aangeroepen | 
-| <*time-unit*> | Tekenreeks | De tijds eenheid die aangeeft hoe vaak de trigger wordt geactiveerd: ' Second ', ' minuut ', ' uur ', ' dag ', ' week ', ' maand ' | 
-| <*number-of-time-units*> | Geheel getal | Een waarde die aangeeft hoe vaak de trigger wordt geactiveerd op basis van de frequentie. Dit is het aantal tijds eenheden dat moet worden gewacht totdat de trigger opnieuw wordt geactiveerd. <p>Dit zijn de minimale en maximale intervallen: <p>-Maand: 1-16 maanden </br>-Dag: 1-500 dagen </br>-Uur: 1-12000 uur </br>-Minuut: 1-72000 minuten </br>-Seconde: 1-9999999 seconden<p>Als het interval bijvoorbeeld 6 is en de frequentie "month" is, is het terugkeer patroon elke 6 maanden. | 
-|||| 
+| Waarde | Type | Beschrijving |
+|-------|------|-------------|
+| <*APIConnection_trigger_name*> | Tekenreeks | De naam voor de trigger |
+| <*naam* van de verbinding> | Tekenreeks | De naam voor de verbinding met de beheerde API die door de werk stroom wordt gebruikt |
+| <*methode-type*> | Tekenreeks | De HTTP-methode voor communicatie met de beheerde API: ' GET ', ' PUT ', ' POST ', ' PATCH ', ' DELETE ' |
+| <*api-operation*> | Tekenreeks | De API-bewerking die moet worden aangeroepen |
+| <*time-unit*> | Tekenreeks | De tijds eenheid die aangeeft hoe vaak de trigger wordt geactiveerd: ' Second ', ' minuut ', ' uur ', ' dag ', ' week ', ' maand ' |
+| <*number-of-time-units*> | Geheel getal | Een waarde die aangeeft hoe vaak de trigger wordt geactiveerd op basis van de frequentie. Dit is het aantal tijds eenheden dat moet worden gewacht totdat de trigger opnieuw wordt geactiveerd. <p>Dit zijn de minimale en maximale intervallen: <p>-Maand: 1-16 maanden </br>-Dag: 1-500 dagen </br>-Uur: 1-12000 uur </br>-Minuut: 1-72000 minuten </br>-Seconde: 1-9999999 seconden<p>Als het interval bijvoorbeeld 6 is en de frequentie "month" is, is het terugkeer patroon elke 6 maanden. |
+||||
 
 *Optioneel*
 
@@ -143,7 +142,7 @@ Deze trigger *controleert of* doorstuurt een eind punt met behulp van door [micr
 |-------|------|-------------| 
 | <*opnieuw proberen*> | JSON-object | Hiermee past u het gedrag voor opnieuw proberen aan voor periodieke storingen, die de status code 408, 429 en 5XX en eventuele connectiviteits uitzonderingen hebben. Zie [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies)voor meer informatie. | 
 | *query-para meters*> < | JSON-object | Alle query parameters die moeten worden toegevoegd met de API-aanroep. Het `"queries": { "api-version": "2018-01-01" }`-object voegt bijvoorbeeld `?api-version=2018-01-01` toe aan de aanroep. | 
-| <*max-runs*> | Geheel getal | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd of parallel op de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). | 
+| <*max-runs*> | Geheel getal | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd (gelijktijdig of parallel) tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Geheel getal | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u kunt wijzigen op basis van de eigenschap `runtimeConfiguration.concurrency.runs`, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
 | <*splitOn-expression*> | Tekenreeks | Voor triggers die matrices retour neren, verwijst deze expressie naar de matrix die moet worden gebruikt, zodat u een werk stroom exemplaar voor elk matrix item kunt maken en uitvoeren, in plaats van een ' voor elke ' lus te gebruiken. <p>Deze expressie vertegenwoordigt bijvoorbeeld een item in de matrix die wordt geretourneerd in de hoofd inhoud van de trigger: `@triggerbody()?['value']` |
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap `operationOptions` in te stellen. Zie [bewerkings opties](#operation-options)voor meer informatie. |
@@ -160,7 +159,7 @@ Deze trigger *controleert of* doorstuurt een eind punt met behulp van door [micr
 
 *Voorbeeld*
 
-Deze trigger definitie controleert voor elke dag in het postvak in het e-mail adres voor een Office 365 Outlook-account: 
+Deze trigger definitie controleert voor elke dag in het postvak in het e-mail adres voor een Office 365 Outlook-account:
 
 ```json
 "When_a_new_email_arrives": {
@@ -233,7 +232,7 @@ Deze trigger verzendt een abonnements aanvraag naar een eind punt met behulp van
 |-------|------|-------------| 
 | <*opnieuw proberen*> | JSON-object | Hiermee past u het gedrag voor opnieuw proberen aan voor periodieke storingen, die de status code 408, 429 en 5XX en eventuele connectiviteits uitzonderingen hebben. Zie [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies)voor meer informatie. | 
 | *query-para meters*> < | JSON-object | Alle query parameters die moeten worden toegevoegd met de API-aanroep <p>Het `"queries": { "api-version": "2018-01-01" }`-object voegt bijvoorbeeld `?api-version=2018-01-01` toe aan de aanroep. | 
-| <*max-runs*> | Geheel getal | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd of parallel op de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). | 
+| <*max-runs*> | Geheel getal | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd (gelijktijdig of parallel) tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Geheel getal | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u kunt wijzigen op basis van de eigenschap `runtimeConfiguration.concurrency.runs`, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
 | <*splitOn-expression*> | Tekenreeks | Voor triggers die matrices retour neren, verwijst deze expressie naar de matrix die moet worden gebruikt, zodat u een werk stroom exemplaar voor elk matrix item kunt maken en uitvoeren, in plaats van een ' voor elke ' lus te gebruiken. <p>Deze expressie vertegenwoordigt bijvoorbeeld een item in de matrix die wordt geretourneerd in de hoofd inhoud van de trigger: `@triggerbody()?['value']` |
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap `operationOptions` in te stellen. Zie [bewerkings opties](#operation-options)voor meer informatie. | 
@@ -319,7 +318,7 @@ Deze trigger verzendt een aanvraag naar het opgegeven HTTP-of HTTPS-eind punt op
 | `body` | <*body-content*> | JSON-object | De inhoud van het bericht dat moet worden verzonden als Payload met de aanvraag |
 | `authentication` | <*Authentication-Type-en-Property-waarden*> | JSON-object | Het verificatie model dat de aanvraag gebruikt voor het verifiëren van uitgaande aanvragen. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie. Behalve scheduler wordt de eigenschap `authority` ondersteund. Als u niets opgeeft, wordt de standaard waarde `https://management.azure.com/`, maar u kunt een andere waarde gebruiken. |
 | `retryPolicy` > `type` | <*opnieuw proberen*> | JSON-object | Hiermee past u het gedrag voor opnieuw proberen aan voor periodieke storingen, die de status code 408, 429 en 5XX en eventuele connectiviteits uitzonderingen hebben. Zie [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies)voor meer informatie. |
-| `runs` | <*max-runs*> | Geheel getal | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd of parallel op de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). |
+| `runs` | <*max-runs*> | Geheel getal | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd (gelijktijdig of parallel) tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). |
 | `maximumWaitingRuns` | <*max-runs-queue*> | Geheel getal | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u kunt wijzigen op basis van de eigenschap `runtimeConfiguration.concurrency.runs`, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. |
 | `operationOptions` | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap `operationOptions` in te stellen. Zie [bewerkings opties](#operation-options)voor meer informatie. |
 |||||
@@ -361,8 +360,7 @@ Voor een goede samen werking met uw logische app moet het eind punt voldoen aan 
 
 Deze trigger maakt het mogelijk dat uw logische app kan worden aangeroepen door een eind punt te maken dat een abonnement kan registreren door de opgegeven eind punt-URL aan te roepen. Wanneer u deze trigger in uw werk stroom maakt, maakt een uitgaande aanvraag de aanroep om het abonnement te registreren. Op die manier kan de trigger beginnen met Luis teren naar gebeurtenissen. Wanneer een bewerking deze trigger ongeldig maakt, maakt een uitgaande aanvraag automatisch de aanroep om het abonnement te annuleren. Zie [endpoint-abonnementen](#subscribe-unsubscribe)voor meer informatie.
 
-U kunt ook [asynchrone limieten](#asynchronous-limits) opgeven voor een **HTTPWebhook** -trigger.
-Het gedrag van de trigger is afhankelijk van de secties die u gebruikt of weglaat. 
+U kunt ook [asynchrone limieten](#asynchronous-limits) opgeven voor een **HTTPWebhook** -trigger. Het gedrag van de trigger is afhankelijk van de secties die u gebruikt of weglaat.
 
 ```json
 "HTTP_Webhook": {
@@ -414,7 +412,7 @@ Sommige waarden, zoals <*methode*>, zijn beschikbaar voor de objecten `"subscrib
 | <*body-content*> | Tekenreeks | Bericht inhoud die in het abonnement of de annulerings aanvraag moet worden verzonden | 
 | <*Authentication-type*> | JSON-object | Het verificatie model dat de aanvraag gebruikt voor het verifiëren van uitgaande aanvragen. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie. |
 | <*opnieuw proberen*> | JSON-object | Hiermee past u het gedrag voor opnieuw proberen aan voor periodieke storingen, die de status code 408, 429 en 5XX en eventuele connectiviteits uitzonderingen hebben. Zie [beleid voor opnieuw proberen](../logic-apps/logic-apps-exception-handling.md#retry-policies)voor meer informatie. | 
-| <*max-runs*> | Geheel getal | Standaard worden alle werk stroom exemplaren gelijktijdig uitgevoerd of parallel op basis van de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). | 
+| <*max-runs*> | Geheel getal | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd (gelijktijdig of parallel) tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Geheel getal | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u kunt wijzigen op basis van de eigenschap `runtimeConfiguration.concurrency.runs`, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap `operationOptions` in te stellen. Zie [bewerkings opties](#operation-options)voor meer informatie. | 
 |||| 
@@ -462,7 +460,7 @@ Met deze trigger maakt u een abonnement op het opgegeven eind punt, geeft u een 
 
 ### <a name="recurrence-trigger"></a>Trigger met terugkeerpatroon  
 
-Deze trigger wordt uitgevoerd op basis van het opgegeven terugkeer schema en biedt een eenvoudige manier om een regel matig actieve werk stroom te maken. 
+Deze trigger wordt uitgevoerd op basis van het opgegeven terugkeer schema en biedt een eenvoudige manier om een regel matig actieve werk stroom te maken.
 
 ```json
 "Recurrence": {
@@ -508,7 +506,7 @@ Deze trigger wordt uitgevoerd op basis van het opgegeven terugkeer schema en bie
 | <*one-or-more-hour-marks*> | Geheel getal of gehele matrix | Als u "dag" of "week" opgeeft voor `frequency`, kunt u een of meer gehele getallen van 0 tot en met 23, gescheiden door komma's, opgeven als de uren van de dag waarop u de werk stroom wilt uitvoeren. <p>Als u bijvoorbeeld "10", "12" en "14" opgeeft, krijgt u een dag van 10 uur, 12 uur en 2 PM. | 
 | <*een of meer minuut markeringen*> | Geheel getal of gehele matrix | Als u "dag" of "week" opgeeft voor `frequency`, kunt u een of meer gehele getallen van 0 tot en met 59 opgeven, gescheiden door komma's, als de minuten van het uur wanneer u de werk stroom wilt uitvoeren. <p>U kunt bijvoorbeeld "30" opgeven als het minuut merk en het vorige voor beeld gebruiken voor uren van de dag, u krijgt 10:30 uur, 12:30 uur en 2:30 uur. | 
 | weekDays | Teken reeks of teken reeks matrix | Als u ' week ' opgeeft voor `frequency`, kunt u een of meer dagen opgeven, gescheiden door komma's, wanneer u de werk stroom wilt uitvoeren: "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zaterdag" en "zondag" | 
-| <*max-runs*> | Geheel getal | Standaard worden alle werk stroom exemplaren gelijktijdig uitgevoerd of parallel op basis van de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). | 
+| <*max-runs*> | Geheel getal | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd (gelijktijdig of parallel) tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Geheel getal | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u kunt wijzigen op basis van de eigenschap `runtimeConfiguration.concurrency.runs`, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap `operationOptions` in te stellen. Zie [bewerkings opties](#operation-options)voor meer informatie. | 
 |||| 
@@ -569,7 +567,7 @@ Zie [taken die regel matig worden uitgevoerd maken en plannen](../connectors/con
 
 ### <a name="request-trigger"></a>Trigger voor aanvragen
 
-Deze trigger maakt het mogelijk dat uw logische app kan worden aangeroepen door een eind punt te maken dat binnenkomende aanvragen kan accepteren. Geef voor deze trigger een JSON-schema op waarmee de payload of invoer wordt beschreven en gevalideerd die de trigger van de binnenkomende aanvraag ontvangt. Het schema zorgt er ook voor dat de trigger eigenschappen gemakkelijker te verwijzen zijn vanaf latere acties in de werk stroom. 
+Deze trigger maakt het mogelijk dat uw logische app kan worden aangeroepen door een eind punt te maken dat binnenkomende aanvragen kan accepteren. Geef voor deze trigger een JSON-schema op waarmee de payload of invoer wordt beschreven en gevalideerd die de trigger van de binnenkomende aanvraag ontvangt. Het schema zorgt er ook voor dat de trigger eigenschappen gemakkelijker te verwijzen zijn vanaf latere acties in de werk stroom.
 
 Als u deze trigger wilt aanroepen, moet u de `listCallbackUrl`-API gebruiken, die wordt beschreven in de [werk stroom Service rest API](https://docs.microsoft.com/rest/api/logic/workflows). Zie [werk stromen aanroepen, activeren of nesten met HTTP-eind punten](../logic-apps/logic-apps-http-endpoint.md)voor meer informatie over het gebruik van deze trigger als een http-eind punt.
 
@@ -615,14 +613,14 @@ Als u deze trigger wilt aanroepen, moet u de `listCallbackUrl`-API gebruiken, di
 | <*methode-type*> | Tekenreeks | De methode die binnenkomende aanvragen moet gebruiken om uw logische app aan te roepen: ' GET ', ' PUT ', ' POST ', ' PATCH ', ' DELETE ' |
 | <*relatief pad-for-accepted-para meter*> | Tekenreeks | Het relatieve pad voor de para meter die door de URL van uw eind punt kan worden geaccepteerd | 
 | <*vereist-eigenschappen*> | Matrix | Een of meer eigenschappen waarvoor waarden zijn vereist | 
-| <*max-runs*> | Geheel getal | Standaard worden alle werk stroom exemplaren gelijktijdig uitgevoerd of parallel op basis van de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). | 
+| <*max-runs*> | Geheel getal | Standaard worden werk stroom exemplaren op hetzelfde moment uitgevoerd (gelijktijdig of parallel) tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u de [gelijktijdigheid van triggers wijzigen](#change-trigger-concurrency). | 
 | <*max-runs-queue*> | Geheel getal | Als voor uw werk stroom al het maximum aantal exemplaren wordt uitgevoerd dat u kunt wijzigen op basis van de eigenschap `runtimeConfiguration.concurrency.runs`, worden nieuwe uitvoeringen in deze wachtrij geplaatst tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | 
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap `operationOptions` in te stellen. Zie [bewerkings opties](#operation-options)voor meer informatie. | 
 |||| 
 
 *Voorbeeld*
 
-Met deze trigger wordt aangegeven dat een inkomende aanvraag de HTTP POST-methode moet gebruiken om de trigger aan te roepen en een schema bevat waarmee de invoer van de inkomende aanvraag wordt gevalideerd: 
+Met deze trigger wordt aangegeven dat een inkomende aanvraag de HTTP POST-methode moet gebruiken om de trigger aan te roepen en een schema bevat waarmee de invoer van de inkomende aanvraag wordt gevalideerd:
 
 ```json
 "manual": {
@@ -674,7 +672,7 @@ U kunt bijvoorbeeld opgeven dat een trigger alleen wordt geactiveerd wanneer een
 }
 ```
 
-Een trigger wordt standaard pas geactiveerd nadat een ' 200 OK '-antwoord is ontvangen. Wanneer een expressie naar de status code van een trigger verwijst, wordt het standaard gedrag van de trigger vervangen. Als u wilt dat de trigger wordt geactiveerd voor meer dan één status code, zoals de status code ' 200 ' en ' 201 ', moet u deze expressie als voor waarde toevoegen: 
+Een trigger wordt standaard pas geactiveerd nadat een ' 200 OK '-antwoord is ontvangen. Wanneer een expressie naar de status code van een trigger verwijst, wordt het standaard gedrag van de trigger vervangen. Als u wilt dat de trigger wordt geactiveerd voor meer dan één status code, zoals de status code ' 200 ' en ' 201 ', moet u deze expressie als voor waarde toevoegen:
 
 `@or(equals(triggers().code, 200),equals(triggers().code, 201))` 
 
@@ -682,15 +680,14 @@ Een trigger wordt standaard pas geactiveerd nadat een ' 200 OK '-antwoord is ont
 
 ## <a name="trigger-multiple-runs"></a>Meerdere uitvoeringen activeren
 
-Als uw trigger een matrix retourneert voor de logische app die moet worden verwerkt, kan een lus voor elke wordt te lang duren om elk matrix item te verwerken. In plaats daarvan kunt u de eigenschap **SplitOn** in de trigger gebruiken om de *batch* -matrix uit te stellen. Met de batch verwerking worden de matrix items gesplitst en wordt een nieuw workflowexemplaar gestart dat voor elk matrix item wordt uitgevoerd. Deze benadering is handig, bijvoorbeeld wanneer u een eind punt wilt pollen dat mogelijk meerdere nieuwe items tussen polling intervallen retourneert.
-Zie [limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)voor het maximum aantal matrix items dat **SplitOn** kan verwerken in één logische app-uitvoering. 
+Als uw trigger een matrix retourneert voor de logische app die moet worden verwerkt, kan een lus voor elke wordt te lang duren om elk matrix item te verwerken. In plaats daarvan kunt u de eigenschap **SplitOn** in de trigger gebruiken om de *batch* -matrix uit te stellen. Met de batch verwerking worden de matrix items gesplitst en wordt een nieuw workflowexemplaar gestart dat voor elk matrix item wordt uitgevoerd. Deze benadering is handig, bijvoorbeeld wanneer u een eind punt wilt pollen dat mogelijk meerdere nieuwe items tussen polling intervallen retourneert. Zie [limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)voor het maximum aantal matrix items dat **SplitOn** kan verwerken in één logische app-uitvoering. 
 
 > [!NOTE]
 > U kunt **SplitOn** niet gebruiken met een synchroon antwoord patroon. Elke werk stroom die gebruikmaakt van **SplitOn** en een antwoord actie bevat, wordt asynchroon uitgevoerd en stuurt onmiddellijk een `202 ACCEPTED` antwoord.
 >
 > Wanneer de gelijktijdigheid van de trigger is ingeschakeld, wordt de [limiet voor SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) aanzienlijk verminderd. Als het aantal items deze limiet overschrijdt, wordt de SplitOn-functionaliteit uitgeschakeld.
  
-Als het Swagger-bestand van uw trigger een nettolading beschrijft die een matrix is, wordt de eigenschap **SplitOn** automatisch toegevoegd aan uw trigger. Als dat niet het geval is, voegt u deze eigenschap toe aan de nettolading van het antwoord met de matrix die u wilt debatchren. 
+Als het Swagger-bestand van uw trigger een nettolading beschrijft die een matrix is, wordt de eigenschap **SplitOn** automatisch toegevoegd aan uw trigger. Als dat niet het geval is, voegt u deze eigenschap toe aan de nettolading van het antwoord met de matrix die u wilt debatchren.
 
 *Voorbeeld*
 
@@ -711,7 +708,7 @@ Stel dat u een API hebt die deze reactie retourneert:
    ]
 }
 ```
- 
+
 Uw logische app heeft alleen de inhoud van de matrix in `Rows`nodig, dus u kunt een trigger maken zoals in dit voor beeld:
 
 ``` json
@@ -758,9 +755,7 @@ De definitie van uw werk stroom kan nu `@triggerBody().name` gebruiken om de `na
 
 ## <a name="actions-overview"></a>Overzicht van acties
 
-Azure Logic Apps biedt verschillende actie typen: elk met verschillende invoer voor het definiëren van het unieke gedrag van een actie. 
-
-Acties hebben deze elementen op hoog niveau, maar sommige zijn optioneel:
+Azure Logic Apps biedt verschillende actie typen: elk met verschillende invoer voor het definiëren van het unieke gedrag van een actie. Acties hebben deze elementen op hoog niveau, maar sommige zijn optioneel:
 
 ```json
 "<action-name>": {
@@ -1000,8 +995,7 @@ U kunt ook limieten opgeven voor een **ApiConnectionWebhook** -actie op dezelfde
 
 ### <a name="compose-action"></a>Actie opstellen
 
-Met deze actie maakt u één uitvoer van meerdere invoer, met inbegrip van expressies. Zowel de uitvoer als de invoer kan elk type hebben dat Azure Logic Apps systeem eigen ondersteuning biedt, zoals matrices, JSON-objecten, XML en binaire elementen.
-Vervolgens kunt u de uitvoer van de actie in andere acties gebruiken. 
+Met deze actie maakt u één uitvoer van meerdere invoer, met inbegrip van expressies. Zowel de uitvoer als de invoer kan elk type hebben dat Azure Logic Apps systeem eigen ondersteuning biedt, zoals matrices, JSON-objecten, XML en binaire elementen. Vervolgens kunt u de uitvoer van de actie in andere acties gebruiken. 
 
 ```json
 "Compose": {
@@ -1310,7 +1304,7 @@ Deze actie definitie haalt de waarden van de variabele op met behulp van de func
 
 ### <a name="parse-json-action"></a>JSON-actie parseren
 
-Met deze actie worden gebruikers vriendelijke velden of *tokens* gemaakt op basis van de eigenschappen in JSON-inhoud. U kunt vervolgens met behulp van de tokens deze eigenschappen in uw logische app benaderen. Als u bijvoorbeeld JSON-uitvoer wilt gebruiken van services zoals Azure Service Bus en Azure Cosmos DB, kunt u deze actie in uw logische app toevoegen, zodat u gemakkelijker kunt verwijzen naar de gegevens in die uitvoer. 
+Met deze actie worden gebruikers vriendelijke velden of *tokens* gemaakt op basis van de eigenschappen in JSON-inhoud. U kunt vervolgens met behulp van de tokens deze eigenschappen in uw logische app benaderen. Als u bijvoorbeeld JSON-uitvoer wilt gebruiken van services zoals Azure Service Bus en Azure Cosmos DB, kunt u deze actie in uw logische app toevoegen, zodat u gemakkelijker kunt verwijzen naar de gegevens in die uitvoer.
 
 ```json
 "Parse_JSON": {
@@ -1333,7 +1327,7 @@ Met deze actie worden gebruikers vriendelijke velden of *tokens* gemaakt op basi
 
 *Voorbeeld*
 
-Deze actie definitie maakt deze tokens die u in uw werk stroom kunt gebruiken, maar alleen in acties die worden uitgevoerd na de actie **JSON parseren** : 
+Deze actie definitie maakt deze tokens die u in uw werk stroom kunt gebruiken, maar alleen in acties die worden uitgevoerd na de actie **JSON parseren** :
 
 `FirstName`, `LastName`en `Email`
 
@@ -1525,7 +1519,7 @@ In tegens telling tot andere acties heeft de **reactie** actie speciale beperkin
 
 ### <a name="select-action"></a>Actie selecteren
 
-Met deze actie wordt een matrix met JSON-objecten gemaakt door items van een andere matrix te transformeren op basis van de opgegeven kaart. De uitvoer matrix en de bron matrix hebben altijd hetzelfde aantal items. U kunt het aantal objecten in de uitvoer matrix niet wijzigen, maar het is ook mogelijk om eigenschappen en hun waarden toe te voegen aan of te verwijderen uit deze objecten. De eigenschap `select` geeft ten minste één sleutel/waarde-paar op waarmee de toewijzing voor het transformeren van items in de bron matrix wordt gedefinieerd. Een sleutel/waarde-paar vertegenwoordigt een eigenschap en de waarde ervan in alle objecten in de uitvoer matrix. 
+Met deze actie wordt een matrix met JSON-objecten gemaakt door items van een andere matrix te transformeren op basis van de opgegeven kaart. De uitvoer matrix en de bron matrix hebben altijd hetzelfde aantal items. U kunt het aantal objecten in de uitvoer matrix niet wijzigen, maar het is ook mogelijk om eigenschappen en hun waarden toe te voegen aan of te verwijderen uit deze objecten. De eigenschap `select` geeft ten minste één sleutel/waarde-paar op waarmee de toewijzing voor het transformeren van items in de bron matrix wordt gedefinieerd. Een sleutel/waarde-paar vertegenwoordigt een eigenschap en de waarde ervan in alle objecten in de uitvoer matrix.
 
 ```json
 "Select": {
@@ -1554,7 +1548,7 @@ Met de actie **selecteren** wordt een matrix als uitvoer gemaakt, dus elke actie
 
 *Voorbeeld*
 
-Met deze actie definitie wordt een JSON-object matrix gemaakt op basis van een matrix met gehele getallen. De actie doorloopt de bron matrix, haalt elk geheel getal op met behulp van de `@item()` expressie en wijst elke waarde toe aan de eigenschap '`number`' in elk JSON-object: 
+Met deze actie definitie wordt een JSON-object matrix gemaakt op basis van een matrix met gehele getallen. De actie doorloopt de bron matrix, haalt elk geheel getal op met behulp van de `@item()` expressie en wijst elke waarde toe aan de eigenschap '`number`' in elk JSON-object:
 
 ```json
 "Select": {
@@ -1659,11 +1653,11 @@ Als u kolom koppen en-waarden wilt opgeven of aanpassen, gebruikt u de matrix `c
 
 *Voorbeeld 1*
 
-Stel dat u een eerder gemaakte variabele ' myItemArray ' hebt die momenteel deze matrix bevat: 
+Stel dat u een eerder gemaakte variabele ' myItemArray ' hebt die momenteel deze matrix bevat:
 
 `[ {"ID": 0, "Product_Name": "Apples"}, {"ID": 1, "Product_Name": "Oranges"} ]`
 
-Met deze actie definitie maakt u een CSV-tabel op basis van de variabele ' myItemArray '. De expressie die wordt gebruikt door de eigenschap `from`, haalt de matrix op uit ' myItemArray ' met behulp van de `variables()` functie: 
+Met deze actie definitie maakt u een CSV-tabel op basis van de variabele ' myItemArray '. De expressie die wordt gebruikt door de eigenschap `from`, haalt de matrix op uit ' myItemArray ' met behulp van de `variables()` functie:
 
 ```json
 "Create_CSV_table": {
@@ -1686,7 +1680,7 @@ ID,Product_Name
 
 *Voorbeeld 2*
 
-Met deze actie definitie maakt u een HTML-tabel op basis van de variabele ' myItemArray '. De expressie die wordt gebruikt door de eigenschap `from`, haalt de matrix op uit ' myItemArray ' met behulp van de `variables()` functie: 
+Met deze actie definitie maakt u een HTML-tabel op basis van de variabele ' myItemArray '. De expressie die wordt gebruikt door de eigenschap `from`, haalt de matrix op uit ' myItemArray ' met behulp van de `variables()` functie:
 
 ```json
 "Create_HTML_table": {
@@ -1736,7 +1730,7 @@ Dit is de HTML-tabel die door deze actie wordt gemaakt:
 
 ### <a name="terminate-action"></a>Actie beëindigen
 
-Met deze actie wordt het uitvoeren van een werk stroom exemplaar gestopt, worden acties die worden uitgevoerd, geannuleerd en worden eventuele resterende acties overgeslagen en wordt de opgegeven status geretourneerd. U kunt bijvoorbeeld de actie **beëindigen** gebruiken wanneer de logische app volledig moet worden afgesloten met een fout status. Deze actie heeft geen invloed op reeds voltooide acties en kan niet worden weer gegeven in **foreach** en **tot** lussen, inclusief sequentiële lussen. 
+Met deze actie wordt het uitvoeren van een werk stroom exemplaar gestopt, worden acties die worden uitgevoerd, geannuleerd en worden eventuele resterende acties overgeslagen en wordt de opgegeven status geretourneerd. U kunt bijvoorbeeld de actie **beëindigen** gebruiken wanneer de logische app volledig moet worden afgesloten met een fout status. Deze actie heeft geen invloed op reeds voltooide acties en kan niet worden weer gegeven in **foreach** en **tot** lussen, inclusief sequentiële lussen.
 
 ```json
 "Terminate": {
@@ -1789,9 +1783,9 @@ Met deze actie definitie wordt een uitvoering van een werk stroom gestopt, wordt
 
 <a name="wait-action"></a>
 
-### <a name="wait-action"></a>Actie wachten  
+### <a name="wait-action"></a>Actie wachten
 
-Met deze actie wordt de uitvoering van de werk stroom onderbroken voor het opgegeven interval of tot de opgegeven tijd, maar niet beide. 
+Met deze actie wordt de uitvoering van de werk stroom onderbroken voor het opgegeven interval of tot de opgegeven tijd, maar niet beide.
 
 *Opgegeven interval*
 
@@ -1876,7 +1870,7 @@ De Logic Apps-Engine controleert de toegang tot de trigger die u wilt aanroepen,
 
 * Hetzelfde Azure-abonnement als uw bovenliggende logische app
 
-* Als u de uitvoer van de geneste logische app in uw bovenliggende logische app wilt gebruiken, moet de geneste logische app een [reactie](#response-action) actie hebben 
+* Als u de uitvoer van de geneste logische app in uw bovenliggende logische app wilt gebruiken, moet de geneste logische app een [reactie](#response-action) actie hebben
 
 ```json
 "<nested-logic-app-name>": {
@@ -1920,7 +1914,7 @@ De uitvoer van deze actie verschilt op basis van de reactie actie van de geneste
 
 *Voorbeeld*
 
-Nadat de actie ' Start_search ' is voltooid, roept deze werk stroom actie definitie een andere logische app op met de naam ' Get_product_information ', die wordt door gegeven aan de opgegeven invoer: 
+Nadat de actie ' Start_search ' is voltooid, roept deze werk stroom actie definitie een andere logische app op met de naam ' Get_product_information ', die wordt door gegeven aan de opgegeven invoer:
 
 ```json
 "actions": {
@@ -1985,7 +1979,7 @@ Deze herhalings actie doorloopt een matrix en voert acties uit voor elk matrix i
 
 | Waarde | Type | Beschrijving | 
 |-------|------|-------------| 
-| <*aantal*> | Geheel getal | Standaard worden de herhalingen voor elke-lus op hetzelfde moment uitgevoerd, of parallel op basis van de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u [voor elke lus-gelijktijdigheid wijzigen](#change-for-each-concurrency). | 
+| <*aantal*> | Geheel getal | Standaard worden de herhalingen voor elke-lus op hetzelfde moment (gelijktijdig of parallel) uitgevoerd tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u deze limiet wilt wijzigen door een nieuwe <*aantal*> waarde in te stellen, raadpleegt u [voor elke lus-gelijktijdigheid wijzigen](#change-for-each-concurrency). | 
 | <*bewerking-optie*> | Tekenreeks | Als u een lus voor elke wilt uitvoeren, in plaats van parallel, stelt u <*bewerking-optie*> in op `Sequential` of <*aantal*> naar `1`, maar niet beide. Zie voor meer informatie [Run ' voor elke ' herhalen](#sequential-for-each). | 
 |||| 
 
@@ -2316,7 +2310,7 @@ Deze lus-actie bevat acties die worden uitgevoerd tot de opgegeven voor waarde w
 
 *Voorbeeld*
 
-Met deze lus-actie definitie wordt een HTTP-aanvraag verzonden naar de opgegeven URL tot aan een van deze voor waarden wordt voldaan: 
+Met deze lus-actie definitie wordt een HTTP-aanvraag verzonden naar de opgegeven URL tot aan een van deze voor waarden wordt voldaan:
 
 * De aanvraag krijgt een antwoord met de status code ' 200 OK '.
 * De lus heeft 60 keer uitgevoerd.
@@ -2364,7 +2358,7 @@ Ter ondersteuning van deze aanroepen retourneert de `@listCallbackUrl()`-express
 
 ## <a name="change-asynchronous-duration"></a>Asynchrone duur wijzigen
 
-Voor zowel triggers als acties kunt u de duur van het asynchrone patroon beperken tot een bepaald tijds interval door de eigenschap `limit.timeout` toe te voegen. Op die manier wordt de status van de actie gemarkeerd als `Cancelled` met de `ActionTimedOut` code als de actie nog niet is voltooid wanneer het interval is verstreken. De eigenschap `timeout` maakt gebruik van de [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). 
+Voor zowel triggers als acties kunt u de duur van het asynchrone patroon beperken tot een bepaald tijds interval door de eigenschap `limit.timeout` toe te voegen. Op die manier wordt de status van de actie gemarkeerd als `Cancelled` met de `ActionTimedOut` code als de actie nog niet is voltooid wanneer het interval is verstreken. De eigenschap `timeout` maakt gebruik van de [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations).
 
 ``` json
 "<trigger-or-action-name>": {
@@ -2381,13 +2375,13 @@ Voor zowel triggers als acties kunt u de duur van het asynchrone patroon beperke
 
 ## <a name="runtime-configuration-settings"></a>Runtime configuratie-instellingen
 
-U kunt het standaard runtime gedrag voor triggers en acties met deze `runtimeConfiguration` eigenschappen in de trigger of actie definitie wijzigen.
+U kunt het standaard runtime gedrag voor triggers en acties wijzigen door deze `runtimeConfiguration` eigenschappen toe te voegen aan de trigger of actie definitie.
 
 | Eigenschap | Type | Beschrijving | Trigger of actie | 
 |----------|------|-------------|-------------------| 
-| `runtimeConfiguration.concurrency.runs` | Geheel getal | Wijzig de [*standaard limiet*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) voor het aantal werk stroom exemplaren dat tegelijkertijd kan worden uitgevoerd of parallel. Deze waarde kan helpen het aantal aanvragen dat back-end-systemen ontvangen te beperken. <p>Het instellen van de eigenschap `runs` op `1` werkt op dezelfde manier als het instellen van de `operationOptions` eigenschap op `SingleInstance`. U kunt beide eigenschappen instellen, maar niet beide. <p>Als u de standaard limiet wilt wijzigen, raadpleegt u [trigger-gelijktijdigheid wijzigen](#change-trigger-concurrency) of [instanties opeenvolgend activeren](#sequential-trigger). | Alle triggers | 
-| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Geheel getal | Wijzig de [*standaard limiet*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) voor het aantal workflowexemplaren dat kan worden uitgevoerd als de werk stroom het maximum aantal gelijktijdige exemplaren al uitvoert. U kunt de limiet voor gelijktijdigheid van de eigenschap `concurrency.runs` wijzigen. <p>Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | Alle triggers | 
-| `runtimeConfiguration.concurrency.repetitions` | Geheel getal | Wijzig de [*standaard limiet*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) voor het aantal herhalingen voor elke lus dat tegelijkertijd kan worden uitgevoerd of parallel. <p>Het instellen van de eigenschap `repetitions` op `1` werkt op dezelfde manier als het instellen van de `operationOptions` eigenschap op `SingleInstance`. U kunt beide eigenschappen instellen, maar niet beide. <p>Als u de standaard limiet wilt wijzigen, raadpleegt u ["voor elke" gelijktijdigheid](#change-for-each-concurrency) "of [" elke "voor elke" elke "wordt opeenvolgend herhaald](#sequential-for-each). | Actie: <p>[Foreach](#foreach-action) | 
+| `runtimeConfiguration.concurrency.runs` | Geheel getal | Wijzig de [*standaard limiet*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) voor het aantal werk stroom exemplaren dat gelijktijdig kan worden uitgevoerd (gelijktijdig of parallel). Het aanpassen van deze waarde kan helpen het aantal aanvragen dat back-end-systemen ontvangen te beperken. <p>Het instellen van de eigenschap `runs` op `1` werkt op dezelfde manier als het instellen van de `operationOptions` eigenschap op `SingleInstance`. U kunt beide eigenschappen instellen, maar niet beide. <p>Als u de standaard limiet wilt wijzigen, raadpleegt u [trigger-gelijktijdigheid wijzigen](#change-trigger-concurrency) of [instanties opeenvolgend activeren](#sequential-trigger). | Alle triggers | 
+| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Geheel getal | Wijzig de [*standaard limiet*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) voor het aantal werk stroom exemplaren dat moet wachten om te worden uitgevoerd wanneer de logische app al het maximum aantal gelijktijdige exemplaren uitvoert. <p>Zie de limiet voor het uitvoeren van een [wacht](#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. | Alle triggers | 
+| `runtimeConfiguration.concurrency.repetitions` | Geheel getal | Wijzig de [*standaard limiet*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) voor het aantal herhalingen voor elke lus dat tegelijkertijd kan worden uitgevoerd (gelijktijdig of parallel). <p>Het instellen van de eigenschap `repetitions` op `1` werkt op dezelfde manier als het instellen van de `operationOptions` eigenschap op `SingleInstance`. U kunt beide eigenschappen instellen, maar niet beide. <p>Als u de standaard limiet wilt wijzigen, raadpleegt u ["voor elke" gelijktijdigheid](#change-for-each-concurrency) "of [" elke "voor elke" elke "wordt opeenvolgend herhaald](#sequential-for-each). | Actie: <p>[Foreach](#foreach-action) | 
 | `runtimeConfiguration.paginationPolicy.minimumItemCount` | Geheel getal | Met deze waarde wordt het *minimale* aantal resultaten dat moet worden opgehaald, opgegeven voor specifieke acties die de paginering ondersteunen en inschakelen. <p>Zie [bulk gegevens, items of resultaten ophalen met behulp van paginering](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) om paginering in te scha kelen | Actie: variërend |
 | `runtimeConfiguration.secureData.properties` | Matrix | In veel triggers en acties verbergen deze instellingen invoer, uitvoer of beide van de uitvoerings geschiedenis van de logische app. <p>Zie [invoer en uitvoer verbergen uit uitvoerings geschiedenis](../logic-apps/logic-apps-securing-a-logic-app.md#secure-data-code-view)voor informatie over het beveiligen van deze gegevens. | De meeste triggers en acties |
 | `runtimeConfiguration.staticResult` | JSON-object | Voor acties die ondersteuning bieden voor de [statische](../logic-apps/test-logic-apps-mock-data-static-results.md) instelling van het resultaat, heeft het `staticResult`-object deze kenmerken: <p>- `name`, dat verwijst naar de naam van de statische resultaten definitie van de huidige actie, die wordt weer gegeven in het `staticResults` kenmerk in het kenmerk `definition` van uw logische app. Zie [statische resultaten-schema verwijzing voor werk stroom definitie taal](../logic-apps/logic-apps-workflow-definition-language.md#static-results)voor meer informatie. <p> - `staticResultOptions`, waarmee wordt aangegeven of statische resultaten `Enabled` of niet voor de huidige actie zijn. <p>Als u statische resultaten wilt inschakelen, raadpleegt u [Logic Apps testen met gegevens model maken door statische resultaten in te stellen](../logic-apps/test-logic-apps-mock-data-static-results.md) | Actie: variërend |
@@ -2411,7 +2405,7 @@ U kunt het standaard gedrag voor triggers en acties wijzigen met de eigenschap `
 
 ### <a name="change-trigger-concurrency"></a>Gelijktijdigheid van triggers wijzigen
 
-Standaard worden logische app-exemplaren tegelijkertijd uitgevoerd (gelijktijdig of parallel) tot de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Elke trigger instantie wordt dus gestart voordat het vorige werk stroom exemplaar wordt uitgevoerd. Deze limiet helpt bij het bepalen van het aantal aanvragen dat door de back-end-systemen wordt ontvangen. 
+Standaard worden alle werk stroom exemplaren van logische apps tegelijkertijd uitgevoerd (gelijktijdig of parallel). Dit gedrag houdt in dat elke trigger instantie wordt gestart voordat het vorige actieve werk stroom exemplaar is voltooid. Het aantal gelijktijdig uitgevoerde instanties heeft echter een [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Wanneer het aantal werk stroom exemplaren dat gelijktijdig wordt uitgevoerd deze limiet bereikt, moeten andere nieuwe instanties wachten om te worden uitgevoerd. Deze limiet helpt bij het bepalen van het aantal aanvragen dat door de back-end-systemen wordt ontvangen.
 
 Als u de standaard limiet wilt wijzigen, kunt u de code weergave-editor of Logic Apps Designer gebruiken, omdat het wijzigen van de gelijktijdigheids instelling via de ontwerper de `runtimeConfiguration.concurrency.runs` eigenschap in de onderliggende trigger definitie toevoegt of bijwerkt en vice versa. Deze eigenschap bepaalt het maximum aantal werk stroom exemplaren dat parallel kan worden uitgevoerd. Hier volgen enkele aandachtspunten voor wanneer u het gelijktijdigheids beheer wilt inschakelen:
 
@@ -2428,7 +2422,7 @@ Als u de standaard limiet wilt wijzigen, kunt u de code weergave-editor of Logic
        ![Eerste uitgevoerd exemplaar selecteren](./media/logic-apps-workflow-actions-triggers/waiting-runs.png)
 
        > [!TIP]
-       > Als u alleen exemplaren wilt weer geven die nog worden uitgevoerd, opent u de lijst **alle** en selecteert u **uitvoeren**.    
+       > Als u alleen exemplaren wilt weer geven die nog worden uitgevoerd, opent u de lijst **alle** en selecteert u **uitvoeren**.
 
     1. Selecteer **uitvoering annuleren**onder **Logic app run**.
 
@@ -2444,11 +2438,11 @@ Als u de standaard limiet wilt wijzigen, kunt u de code weergave-editor of Logic
 
        ![Time-outperiode opgeven](./media/logic-apps-workflow-actions-triggers/timeout.png)
 
-* Als u de logische app opeenvolgend wilt uitvoeren, kunt u de gelijktijdigheid van de trigger instellen op `1` met behulp van de code weergave editor of de ontwerp functie. Stel de eigenschap `operationOptions` van de trigger echter niet in op `SingleInstance` in de code weergave-editor. Anders krijgt u een validatie fout. Zie [instanties opeenvolgend activeren](#sequential-trigger)voor meer informatie.
+* Als u de logische app opeenvolgend wilt uitvoeren, stelt u de gelijktijdigheid van de trigger in op `1` met behulp van de code weergave editor of de ontwerp functie. Zorg ervoor dat u niet ook de eigenschap `operationOptions` van de trigger instelt op `SingleInstance` in de code weergave-editor. Anders krijgt u een validatie fout. Zie [instanties opeenvolgend activeren](#sequential-trigger)voor meer informatie.
 
 #### <a name="edit-in-code-view"></a>Bewerken in de code weergave 
 
-In de definitie van de onderliggende trigger voegt u de eigenschap `runtimeConfiguration.concurrency.runs` toe of werkt u deze bij naar een waarde tussen `1` en `50`.
+Voeg in de definitie van de onderliggende trigger de eigenschap `runtimeConfiguration.concurrency.runs` toe, die een waarde kan hebben die van `1` tot `50`ligt.
 
 Hier volgt een voor beeld waarin de limieten voor gelijktijdige uitvoeringen tot 10 instanties worden beperkt:
 
@@ -2467,26 +2461,30 @@ Hier volgt een voor beeld waarin de limieten voor gelijktijdige uitvoeringen tot
 }
 ```
 
+Zie runtime-configuratie- [instellingen](#runtime-config-options)voor meer informatie.
+
 #### <a name="edit-in-logic-apps-designer"></a>Bewerken in Logic Apps Designer
 
-1. Klik in de rechter bovenhoek van de trigger op de knop met weglatings tekens (...) en kies vervolgens **instellingen**.
+1. Selecteer de knop met weglatings tekens ( **...** ) in de rechter bovenhoek van de trigger en selecteer vervolgens **instellingen**.
 
-2. Stel onder **Gelijktijdigheids beheer**de **waarde** **in op aan**. 
+1. Stel onder **Gelijktijdigheids beheer**de **waarde** **in op aan**. 
 
-3. Sleep de schuif regelaar **van de parallelle** hoogte naar de gewenste waarde. Als u de logische app opeenvolgend wilt uitvoeren, sleept u de waarde van de schuif regelaar naar **1**.
+1. Sleep de schuif regelaar **van de parallelle** hoogte naar de gewenste waarde. Als u de logische app opeenvolgend wilt uitvoeren, sleept u de waarde van de schuif regelaar naar **1**.
 
 <a name="change-for-each-concurrency"></a>
 
 ### <a name="change-for-each-concurrency"></a>Wijzigen voor elke gelijktijdigheid
 
-Standaard worden voor elke herhalings herhalingen tegelijk of parallel uitgevoerd, tot aan de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Als u de standaard limiet wilt wijzigen, kunt u de code weergave-editor of Logic Apps Designer gebruiken, omdat het wijzigen van de gelijktijdigheids instelling via de ontwerper de `runtimeConfiguration.concurrency.repetitions` eigenschap in de onderliggende actie definitie ' voor elke ' toevoegt of bijwerkt en vice versa. Deze eigenschap bepaalt het maximum aantal iteraties dat parallel kan worden uitgevoerd.
+Standaard worden elke herhalings herhalingen op hetzelfde moment uitgevoerd (gelijktijdig of parallel) (voor elke). Dit gedrag houdt in dat elke iteratie wordt gestart voordat de vorige herhaling is voltooid. Het aantal gelijktijdig uitgevoerde herhalingen heeft echter een [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Wanneer het aantal gelijktijdig uitgevoerde iteraties deze limiet bereikt, moeten andere herhalingen wachten om te worden uitgevoerd.
+
+Als u de standaard limiet wilt wijzigen, kunt u de code weergave-editor of Logic Apps Designer gebruiken, omdat het wijzigen van de gelijktijdigheids instelling via de ontwerper de `runtimeConfiguration.concurrency.repetitions` eigenschap in de onderliggende actie definitie ' voor elke ' toevoegt of bijwerkt en vice versa. Deze eigenschap bepaalt het maximum aantal iteraties dat parallel kan worden uitgevoerd.
 
 > [!NOTE] 
 > Als u de actie voor elke wilt uitvoeren om opeenvolgend te worden uitgevoerd met behulp van de ontwerp functie of de code weergave-editor, stelt u de eigenschap `operationOptions` van de actie niet in op `Sequential` in de code weergave-editor. Anders krijgt u een validatie fout. Zie voor meer informatie [Run ' voor elke ' herhalen](#sequential-for-each).
 
 #### <a name="edit-in-code-view"></a>Bewerken in de code weergave 
 
-Voeg in de onderliggende definitie ' voor elke ' de eigenschap `runtimeConfiguration.concurrency.repetitions` toe aan een waarde tussen `1` en `50`, inclusief. 
+In de onderliggende definitie ' voor elke ' voegt u de eigenschap `runtimeConfiguration.concurrency.repetitions` toe of werkt u deze bij, wat een waarde kan hebben van `1` en `50`.
 
 Hier volgt een voor beeld waarin het aantal gelijktijdige uitvoeringen tot 10 iteraties wordt beperkt:
 
@@ -2504,23 +2502,25 @@ Hier volgt een voor beeld waarin het aantal gelijktijdige uitvoeringen tot 10 it
 }
 ```
 
+Zie runtime-configuratie- [instellingen](#runtime-config-options)voor meer informatie.
+
 #### <a name="edit-in-logic-apps-designer"></a>Bewerken in Logic Apps Designer
 
-1. Klik in de rechter bovenhoek van **elke** actie op de knop met weglatings tekens (...) en kies vervolgens **instellingen**.
+1. Selecteer in de rechter bovenhoek van **elke** actie de weglatings tekens ( **...** ) en selecteer vervolgens **instellingen**.
 
-2. Stel onder **Gelijktijdigheids beheer**gelijktijdigheids **beheer** **in op aan.** 
+1. Stel onder **Gelijktijdigheids beheer**gelijktijdigheids **beheer** **in op aan.**
 
-3. Sleep de schuif regelaar **van de parallelle** hoogte naar de gewenste waarde. Als u de logische app opeenvolgend wilt uitvoeren, sleept u de waarde van de schuif regelaar naar **1**.
+1. Sleep de schuif regelaar **van de parallelle** hoogte naar de gewenste waarde. Als u de logische app opeenvolgend wilt uitvoeren, sleept u de waarde van de schuif regelaar naar **1**.
 
 <a name="change-waiting-runs"></a>
 
 ### <a name="change-waiting-runs-limit"></a>De limiet voor het uitvoeren van een verwerking wijzigen
 
-Standaard worden alle werk stroom exemplaren van logische apps tegelijkertijd uitgevoerd, gelijktijdig of parallel op basis van de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Elk trigger exemplaar wordt gestart voordat het vorige actieve werk stroom exemplaar is voltooid. Hoewel u [deze standaard limiet kunt wijzigen](#change-trigger-concurrency), moeten andere nieuwe exemplaren wachten om te worden uitgevoerd wanneer het aantal werk stroom exemplaren de nieuwe gelijktijdigheids limiet bereikt. 
+Standaard worden alle werk stroom exemplaren van logische apps tegelijkertijd uitgevoerd (gelijktijdig of parallel). Dit gedrag houdt in dat elke trigger instantie wordt gestart voordat het vorige actieve werk stroom exemplaar is voltooid. Het aantal gelijktijdig uitgevoerde instanties heeft echter een [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Wanneer het aantal werk stroom exemplaren dat gelijktijdig wordt uitgevoerd deze limiet bereikt, moeten andere nieuwe instanties wachten om te worden uitgevoerd.
 
-Het aantal uitvoeringen dat kan wachten, heeft ook een [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits), die u kunt wijzigen. Wanneer de logische app echter de limiet bereikt voor uitvoeringen, accepteert de Logic Apps-Engine geen nieuwe uitvoeringen meer. De aanvraag en webhook-triggers retour neren 429 fouten en terugkerende triggers beginnen met het overs laan van polling-pogingen.
+Het aantal wachtende uitvoeringen heeft ook een [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Wanneer het aantal wachtende uitvoeringen deze limiet bereikt, accepteert de Logic Apps-Engine geen nieuwe uitvoeringen meer. De aanvraag en webhook-triggers retour neren 429 fouten en terugkerende triggers beginnen met het overs laan van polling-pogingen.
 
-Als u de standaard limiet voor het aantal wachtende uitvoeringen wilt wijzigen, voegt u in de onderliggende trigger definitie de eigenschap `runtimeConfiguration.concurency.maximumWaitingRuns` toe met een waarde tussen `1` en `100`. 
+U kunt niet alleen [de standaard limiet voor gelijktijdige activeringen wijzigen](#change-trigger-concurrency), maar u kunt ook de standaard limiet voor het uitvoeren van een wacht tijd wijzigen. Voeg in de definitie van de onderliggende trigger de eigenschap `runtimeConfiguration.concurrency.maximumWaitingRuns` toe, die een waarde kan hebben die van `1` tot `100`ligt.
 
 ```json
 "<trigger-name>": {
@@ -2537,11 +2537,13 @@ Als u de standaard limiet voor het aantal wachtende uitvoeringen wilt wijzigen, 
 }
 ```
 
+Zie runtime-configuratie- [instellingen](#runtime-config-options)voor meer informatie.
+
 <a name="sequential-trigger"></a>
 
 ### <a name="trigger-instances-sequentially"></a>Instanties opeenvolgend activeren
 
-Als u wilt dat elke werk stroom instantie van de logische app pas wordt uitgevoerd nadat het vorige exemplaar is voltooid, stelt u de trigger in op volg orde van uitvoering. U kunt de code weergave-editor of Logic Apps Designer gebruiken omdat door het wijzigen van de gelijktijdigheids instelling via Designer ook de eigenschap `runtimeConfiguration.concurrency.runs` in de onderliggende trigger definitie wordt toegevoegd of bijgewerkt en omgekeerd. 
+Als u wilt dat elke werk stroom instantie van de logische app pas wordt uitgevoerd nadat het vorige exemplaar is voltooid, stelt u de trigger in op volg orde van uitvoering. U kunt de code weergave-editor of Logic Apps Designer gebruiken omdat door het wijzigen van de gelijktijdigheids instelling via Designer ook de eigenschap `runtimeConfiguration.concurrency.runs` in de onderliggende trigger definitie wordt toegevoegd of bijgewerkt en omgekeerd.
 
 > [!NOTE] 
 > Wanneer u een trigger zo instelt dat deze opeenvolgend wordt uitgevoerd met behulp van de ontwerp functie of de code weergave-editor, stelt u de eigenschap `operationOptions` van de trigger niet in op `Sequential` in de code weergave-editor. Anders krijgt u een validatie fout. 
@@ -2582,19 +2584,21 @@ Stel de eigenschap `operationOptions` in op `SingleInstance`:
 }
 ```
 
+Zie [runtime configuratie-instellingen](#runtime-config-options) en [bewerkings opties](#operation-options)voor meer informatie.
+
 #### <a name="edit-in-logic-apps-designer"></a>Bewerken in Logic Apps Designer
 
-1. Klik in de rechter bovenhoek van de trigger op de knop met weglatings tekens (...) en kies vervolgens **instellingen**.
+1. Selecteer de knop met weglatings tekens ( **...** ) in de rechter bovenhoek van de trigger en selecteer vervolgens **instellingen**.
 
-2. Stel onder **Gelijktijdigheids beheer**de **waarde** **in op aan**. 
+1. Stel onder **Gelijktijdigheids beheer**de **waarde** **in op aan**. 
 
-3. Sleep de schuif regelaar **van de parallelle** hoogte naar het getal `1`. 
+1. Sleep de schuif regelaar **van de parallelle** hoogte naar het getal `1`. 
 
 <a name="sequential-for-each"></a>
 
 ### <a name="run-for-each-loops-sequentially"></a>Voer ' voor elke ' sequentieel herhalingen uit
 
-Als u een lus voor elke herhaling alleen wilt uitvoeren nadat de vorige herhaling is voltooid, stelt u de actie voor elke uit op volg orde. U kunt de code weergave-editor of de Logic Apps Designer gebruiken omdat het wijzigen van de gelijktijdigheid van de actie via Designer ook de eigenschap `runtimeConfiguration.concurrency.repetitions` bijvoegt of bijwerkt in de onderliggende actie definitie en omgekeerd. 
+Als u een lus voor elke herhaling alleen wilt uitvoeren nadat de vorige herhaling is voltooid, stelt u de actie voor elke uit op volg orde. U kunt de code weergave-editor of de Logic Apps Designer gebruiken omdat het wijzigen van de gelijktijdigheid van de actie via Designer ook de eigenschap `runtimeConfiguration.concurrency.repetitions` bijvoegt of bijwerkt in de onderliggende actie definitie en omgekeerd.
 
 > [!NOTE] 
 > Wanneer u een ' voor elke ' actie instelt om opeenvolgend te worden uitgevoerd met behulp van de ontwerp-of code weergave-editor, stelt u de eigenschap `operationOptions` van de actie niet in op `Sequential` in de code weergave-editor. Anders krijgt u een validatie fout. 
@@ -2633,13 +2637,15 @@ Stel de eigenschap `operationOptions` in op `Sequential`:
 }
 ```
 
+Zie [runtime configuratie-instellingen](#runtime-config-options) en [bewerkings opties](#operation-options)voor meer informatie.
+
 #### <a name="edit-in-logic-apps-designer"></a>Bewerken in Logic Apps Designer
 
-1. Klik in de rechter bovenhoek **van elke** actie op de knop met weglatings tekens (...) en kies vervolgens **instellingen**.
+1. Selecteer de knop met weglatings tekens ( **...** ) in de rechter bovenhoek **van elke** actie en selecteer vervolgens **instellingen**.
 
-2. Stel onder **Gelijktijdigheids beheer**gelijktijdigheids **beheer** **in op aan.** 
+1. Stel onder **Gelijktijdigheids beheer**gelijktijdigheids **beheer** **in op aan.**
 
-3. Sleep de schuif regelaar **van de parallelle** hoogte naar het getal `1`. 
+1. Sleep de schuif regelaar **van de parallelle** hoogte naar het getal `1`.
 
 <a name="asynchronous-patterns"></a>
 
@@ -2648,7 +2654,7 @@ Stel de eigenschap `operationOptions` in op `Sequential`:
 Alle HTTP-gebaseerde acties volgen standaard het standaard asynchrone bewerkings patroon. Met dit patroon wordt aangegeven dat wanneer een HTTP-actie een aanvraag verzendt naar het opgegeven eind punt, de externe server het antwoord "202 ACCEPTed" terugstuurt. Dit antwoord betekent dat de server de aanvraag heeft geaccepteerd voor verwerking. De Logic Apps-Engine controleert de URL die is opgegeven door de locatie header van het antwoord totdat de verwerking stopt. Dit is een niet-202-antwoord.
 
 Aanvragen hebben echter een time-outlimiet, dus als u langlopende acties wilt uitvoeren, kunt u het asynchrone gedrag uitschakelen door de eigenschap `operationOptions` toe te voegen en in te stellen op `DisableAsyncPattern` onder de invoer van de actie.
-  
+
 ```json
 "<some-long-running-action>": {
    "type": "Http",
@@ -2658,11 +2664,13 @@ Aanvragen hebben echter een time-outlimiet, dus als u langlopende acties wilt ui
 }
 ```
 
+Zie [bewerkings opties](#operation-options)voor meer informatie.
+
 <a name="run-high-throughput-mode"></a>
 
 ### <a name="run-in-high-throughput-mode"></a>Uitvoeren in de modus voor hoge door Voer
 
-Voor een definitie van een enkele Logic-app is het aantal acties dat elke 5 minuten wordt uitgevoerd een [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Als u deze limiet wilt verhogen tot het [maximum aantal](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) mogelijke, stelt u de eigenschap `operationOptions` in op `OptimizedForHighThroughput`. Met deze instelling wordt uw logische app in de modus voor hoge door Voer gezet. 
+Voor een definitie van een enkele Logic-app is het aantal acties dat elke 5 minuten wordt uitgevoerd een [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Als u deze limiet wilt verhogen tot het [maximum aantal](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) mogelijke, stelt u de eigenschap `operationOptions` in op `OptimizedForHighThroughput`. Met deze instelling wordt uw logische app in de modus voor hoge door Voer gezet.
 
 > [!NOTE]
 > De modus voor hoge door Voer is een preview-versie. U kunt indien nodig ook een werk belasting over meer dan één logische app distribueren.

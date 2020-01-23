@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb291f33d2b757ca381e1d675ddc386c78a55d52
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9afc25c906ecd3b7807e6bf3e0763ac1673ebd99
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170834"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544052"
 ---
 # <a name="conditional-access-cloud-apps-and-actions"></a>Voorwaardelijke toegang: Cloud-apps en-acties
 
@@ -79,7 +79,6 @@ Belangrijkste toepassingen die zijn opgenomen in de client-app voor Office 365 (
 
    - Microsoft Flow
    - Microsoft Forms
-   - Microsoft Office 365-Portal
    - Microsoft Stream
    - Microsoft To-Do
    - Microsoft Teams
@@ -89,6 +88,7 @@ Belangrijkste toepassingen die zijn opgenomen in de client-app voor Office 365 (
    - Office 365 Yammer
    - Office Delve
    - Office Online
+   - Office.com
    - OneDrive
    - PowerApps
    - Skype voor Bedrijven Online

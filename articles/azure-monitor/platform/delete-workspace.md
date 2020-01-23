@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 739f97e912a33402aa7482e59dd78f5aeb005772
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 03be29cde42478abf32492f55a296aeee0a4a478
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944426"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547248"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics-werk ruimte verwijderen en herstellen
 
@@ -57,6 +57,29 @@ U kunt een werk ruimte verwijderen met behulp van [Power shell](https://docs.mic
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+## <a name="permanent-workspace-delete"></a>Permanente werk ruimte verwijderen
+De methode voor het zacht verwijderen past mogelijk niet in sommige scenario's zoals ontwikkelen en testen, waarbij u een implementatie met dezelfde instellingen en werkruimte naam moet herhalen. In dergelijke gevallen kunt u uw werk ruimte permanent verwijderen en de periode voor voorlopig verwijderen negeren. Met de bewerking permanent verwijderen van werk ruimte wordt de naam van de werk plek vrijgegeven en kunt u een nieuwe werk ruimte maken met dezelfde naam.
+
+
+> [!IMPORTANT]
+> Wees voorzichtig wanneer u uw werk ruimte permanent verwijdert, omdat de bewerking onomkeerbaar is en uw werk ruimte en de gegevens niet kunnen worden hersteld.
+
+Het permanent verwijderen van de werk ruimte kan momenteel worden uitgevoerd via REST API.
+
+> [!NOTE]
+> Elke API-aanvraag moet een Bearer-autorisatie token in de aanvraag header bevatten.
+>
+> U kunt het token verkrijgen met behulp van:
+> - [App-registraties](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
+> - Ga in de browser naar Azure Portal met behulp van de console van de ontwikkelaar (F12). Zoek in een van de **batch?** instanties voor de verificatie reeks onder **aanvraag headers**. Dit is de patroon *autorisatie: bearer <token>* . Kopieer en voeg dit toe aan uw API-oproep, zoals wordt weer gegeven in de voor beelden.
+> - Ga naar de site van de Azure REST-documentatie. Druk op **try it** op een API, kopieer het Bearer-token en voeg dit toe aan uw API-aanroep.
+Als u uw werk ruimte permanent wilt verwijderen, gebruikt u de [werk ruimten-rest-API-aanroep verwijderen]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) met een Force-tag:
+>
+> ```rst
+> DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
+> Authorization: Bearer eyJ0eXAiOiJKV1Qi….
+> ```
 
 ## <a name="recover-workspace"></a>Werk ruimte herstellen
 

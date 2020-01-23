@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/01/2019
+ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: c8ef1d4dacf500c459ae1ab9a534ed118ca9e05a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446697"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548115"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text-API 3,0: BreakSentence
 
@@ -33,45 +33,20 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
 
-<table width="100%">
-  <th width="20%">Query parameter</th>
-  <th>Beschrijving</th>
-  <tr>
-    <td>api-version</td>
-    <td>*Vereiste query parameter*.<br/>De versie van de API die door de client is aangevraagd. De waarde moet `3.0`zijn.</td>
-  </tr>
-  <tr>
-    <td>language</td>
-    <td>*Optionele query parameter*.<br/>Taal code die de taal van de invoer tekst aangeeft. Als er geen code is opgegeven, wordt automatische taal detectie toegepast.</td>
-  </tr>
-  <tr>
-    <td>uit</td>
-    <td>*Optionele query parameter*.<br/>Script label waarmee het script wordt aangeduid dat wordt gebruikt door de invoer tekst. Als er geen script is opgegeven, wordt het standaard script van de taal gebruikt.</td>
-  </tr>
-</table> 
+| Query parameter | Beschrijving |
+| -------| ----------- |
+| api-version <img width=200/>   | **Vereiste query parameter**.<br/>De versie van de API die door de client is aangevraagd. De waarde moet `3.0`zijn. |
+| language | **Optionele query parameter**.<br/>Taal code die de taal van de invoer tekst aangeeft. Als er geen code is opgegeven, wordt automatische taal detectie toegepast. |
+| uit    | **Optionele query parameter**.<br/>Script label waarmee het script wordt aangeduid dat wordt gebruikt door de invoer tekst. Als er geen script is opgegeven, wordt het standaard script van de taal gebruikt.  | 
 
 Aanvraag headers zijn onder andere:
 
-<table width="100%">
-  <th width="20%">Headers</th>
-  <th>Beschrijving</th>
-  <tr>
-    <td>Verificatie header (s)</td>
-    <td>De <em>vereiste aanvraag header</em>.<br/>Bekijk de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschik bare opties voor authenticatie</a>.</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>De *vereiste aanvraag header*.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json`.</td>
-  </tr>
-  <tr>
-    <td>Content-length</td>
-    <td>De *vereiste aanvraag header*.<br/>De lengte van de aanvraag tekst.</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td>*Optioneel*.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. Houd er rekening mee dat u deze koptekst kunt weglaten als u de tracerings-ID opneemt in de query reeks met behulp van een query parameter met de naam `ClientTraceId`.</td>
-  </tr>
-</table> 
+| Headers | Beschrijving |
+| ------- | ----------- |
+| Verificatie header (s) <img width=200/>  | De **vereiste aanvraag header**.<br/>Bekijk de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschik bare opties voor authenticatie</a>. |
+| Content-Type | De **vereiste aanvraag header**.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json`. |
+| Content-length    | De **vereiste aanvraag header**.<br/>De lengte van de aanvraag tekst.  | 
+| X-ClientTraceId   | **Optioneel**.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. Houd er rekening mee dat u deze koptekst kunt weglaten als u de tracerings-ID opneemt in de query reeks met behulp van een query parameter met de naam `ClientTraceId`.  | 
 
 ## <a name="request-body"></a>Aanvraagbody
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 12/16/2019
-ms.openlocfilehash: 3c921bda1b839ee18a91b28f875ba7c84c0dd944
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/18/2020
+ms.openlocfilehash: 95960a0af628526eb11335ea5c2fcec51f3c66b5
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515034"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548540"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limieten en configuratie-informatie voor Azure Logic Apps
 
@@ -47,8 +47,8 @@ Dit zijn de limieten voor het uitvoeren van een enkele logische app:
 
 | Name | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
-| Uitvoeringsduur | 90 dagen | 366 dagen | Zie de duur van de [uitvoering wijzigen](#change-duration)als u de standaard limiet wilt wijzigen. |
-| Bewaarperiode | 90 dagen vanaf de begin tijd van de uitvoering | 366 dagen | Zie [opslag bewaaring wijzigen](#change-retention)als u de standaard limiet wilt wijzigen. |
+| Uitvoeringsduur | 90 dagen | 366 dagen | De uitvoerings duur wordt berekend met behulp van de begin tijd van de uitvoering en de limiet die *tijdens het begin tijdstip* wordt opgegeven door de werk stroom instelling, de Bewaar periode voor de [**geschiedenis in dagen**](#change-duration). <p><p>Zie de duur van de [uitvoering wijzigen](#change-duration)als u de standaard limiet wilt wijzigen, 90 dagen. |
+| Bewaar periode in opslag uitvoeren | 90 dagen | 366 dagen | De retentie van de run wordt berekend met behulp van de begin tijd van de uitvoering en de limiet die is opgegeven *op het huidige tijdstip* door de werk stroom instelling, de Bewaar periode voor de [**geschiedenis in dagen uitvoeren**](#change-retention). Of een uitvoering is voltooid of een time-out heeft, de retentie berekening maakt altijd gebruik van de begin tijd van de uitvoering. Wanneer de duur van een uitvoering de *huidige* Bewaar limiet overschrijdt, wordt de uitvoering uit de geschiedenis van de uitvoeringen verwijderd. <p><p>Als u deze instelling wijzigt, wordt de huidige limiet altijd gebruikt voor het berekenen van de Bewaar periode, ongeacht de vorige limiet. Als u bijvoorbeeld de Bewaar limiet van 90 dagen tot 30 dagen vermindert, wordt een run die 60 dagen oud is verwijderd uit de geschiedenis van de uitvoeringen. Als u de retentie periode van 30 dagen tot 60 dagen verhoogt, wordt een run die 20 dagen oud is, in de geschiedenis van de uitvoering van een andere 40 dagen bewaard. <p><p>Als u de standaard limiet wilt wijzigen, 90 dagen, raadpleegt u [retentie voor het uitvoeren van wijzigingen in de opslag](#change-retention). |
 | Mini maal terugkeer patroon | 1 seconde | 1 seconde ||
 | Maximum interval van terugkeer patroon | 500 dagen | 500 dagen ||
 |||||
@@ -56,9 +56,13 @@ Dit zijn de limieten voor het uitvoeren van een enkele logische app:
 <a name="change-duration"></a>
 <a name="change-retention"></a>
 
-### <a name="change-run-duration-and-storage-retention"></a>Uitvoerings duur en opslag bewaaring wijzigen
+### <a name="change-run-duration-and-run-retention-in-storage"></a>De uitvoerings duur wijzigen en de retentie in de opslag uitvoeren
 
-Volg deze stappen als u de standaard limiet voor de uitvoerings duur en opslag bewaaring wilt wijzigen. Als u de maximum limiet wilt verhogen, [neemt u contact op met het Logic apps team](mailto://logicappsemail@microsoft.com) voor hulp bij uw vereisten.
+Voer de volgende stappen uit om de standaard limiet voor de uitvoerings duur te wijzigen en retentie in de opslag uit te voeren. Als u de maximum limiet wilt verhogen, [neemt u contact op met het Logic apps team](mailto://logicappsemail@microsoft.com) voor hulp bij uw vereisten.
+
+> [!NOTE]
+> Voor logische apps in azure met meerdere tenants is de standaard limiet van 90 dagen gelijk aan de maximum limiet. U kunt deze waarde alleen verlagen.
+> Voor Logic apps in een integratie service omgeving kunt u de standaard limiet van 90 dagen verlagen of verhogen.
 
 1. Ga naar de [Azure Portal](https://portal.azure.com). Zoek en selecteer **Logic apps**in het zoekvak van de portal.
 
@@ -68,11 +72,9 @@ Volg deze stappen als u de standaard limiet voor de uitvoerings duur en opslag b
 
 1. Selecteer onder **runtime-opties**in de lijst **uitvoerings geschiedenis uitvoeren in dagen** de optie **aangepast**.
 
-1. Typ of sleep de schuif regelaar voor het aantal dagen dat u wilt.
+1. Sleep de schuif regelaar om het gewenste aantal dagen te wijzigen.
 
-   > [!NOTE]
-   > Voor logische apps in azure met meerdere tenants is de standaard limiet van 90 dagen gelijk aan de maximum limiet. U kunt deze waarde alleen verlagen.
-   > Voor Logic apps in een integratie service omgeving kunt u de standaard limiet van 90 dagen verlagen of verhogen.
+1. Wanneer u klaar bent, selecteert u op de werk balk **werk stroom instellingen** de optie **Opslaan**.
 
 <a name="looping-debatching-limits"></a>
 
@@ -82,11 +84,11 @@ Dit zijn de limieten voor het uitvoeren van een enkele logische app:
 
 | Name | Limiet | Opmerkingen |
 | ---- | ----- | ----- |
-| Gelijktijdigheid van triggers | * Onbeperkt wanneer het gelijktijdigheids beheer is uitgeschakeld <p><p>* 25 is de standaard limiet wanneer het gelijktijdigheids beheer is ingeschakeld. Dit kan niet ongedaan worden gemaakt nadat u het besturings element inschakelt. U kunt de standaard waarde van 1 tot en met 50 wijzigen. | Deze limiet beschrijft het hoogste aantal logische app-exemplaren dat tegelijkertijd kan worden uitgevoerd of parallel. <p><p>**Opmerking**: wanneer gelijktijdigheid is ingeschakeld, is de limiet voor SplitOn beperkt tot 100 items voor het [debatchiseren van matrices](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Als u de standaard limiet wilt wijzigen in een waarde tussen 1 en 50, raadpleegt u de [gelijktijdige overschrijding](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) van de trigger of [trigger instanties opeenvolgend](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
-| Maximum aantal wachtende uitvoeringen | Wanneer het gelijktijdigheids beheer is ingeschakeld, is het minimum aantal wachtende uitvoeringen 10 plus het aantal gelijktijdige uitvoeringen (gelijktijdigheid van triggers). U kunt het maximum aantal tot 100 wijzigen, inclusief. | Deze limiet beschrijft het hoogste aantal logische app-exemplaren dat kan worden uitgevoerd als het maximum aantal gelijktijdige exemplaren van de logische app al wordt uitgevoerd. <p><p>Zie de limiet voor het uitvoeren van een [wacht](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. |
+| Gelijktijdigheid van triggers | -Onbeperkt wanneer het gelijktijdigheids beheer is uitgeschakeld <p><p>-25 is de standaard limiet wanneer het gelijktijdigheids beheer is ingeschakeld. Dit kan niet ongedaan worden gemaakt nadat u het besturings element inschakelt. U kunt de standaard waarde van 1 tot en met 50 wijzigen. | Deze limiet beschrijft het hoogste aantal logische app-exemplaren dat tegelijkertijd kan worden uitgevoerd of parallel. <p><p>**Opmerking**: wanneer gelijktijdigheid is ingeschakeld, is de limiet voor SplitOn beperkt tot 100 items voor het [debatchiseren van matrices](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Als u de standaard limiet wilt wijzigen in een waarde tussen 1 en 50, raadpleegt u de [gelijktijdige overschrijding](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) van de trigger of [trigger instanties opeenvolgend](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Maximum aantal wachtende uitvoeringen | -Zonder gelijktijdigheid is het minimum aantal wachtende uitvoeringen 1, terwijl het maximum aantal 50 is. <p><p>-Met gelijktijdigheid is het minimum aantal wachtende uitvoeringen 10 plus het aantal gelijktijdige uitvoeringen (activerings gelijktijdigheids). U kunt het maximum aantal tot 100 wijzigen, inclusief. | Deze limiet beschrijft het hoogste aantal logische app-exemplaren dat kan worden uitgevoerd als het maximum aantal gelijktijdige exemplaren van de logische app al wordt uitgevoerd. <p><p>Zie de limiet voor het uitvoeren van een [wacht](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)tijd wijzigen om de standaard limiet te wijzigen. |
 | Elementen van foreach-matrix | 100.000 | Deze limiet beschrijft het hoogste aantal matrix items dat voor elke lus kan worden verwerkt. <p><p>Als u grotere matrices wilt filteren, kunt u de [query actie](logic-apps-perform-data-operations.md#filter-array-action)gebruiken. |
 | Gelijktijdigheid van foreach | 20 is de standaard limiet wanneer het gelijktijdigheids beheer is uitgeschakeld. U kunt de standaard waarde van 1 tot en met 50 wijzigen. | Deze limiet is het hoogste aantal ' for each '-herhalingen die tegelijkertijd kunnen worden uitgevoerd, of parallel. <p><p>Als u de standaard limiet wilt wijzigen in een waarde tussen 1 en 50, raadpleegt u [wijzigen voor elke "gelijktijdige overschrijding](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) " of [voert u "voor elke" sequentieel uit](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
-| SplitOn-items | * 100.000 zonder activerings gelijktijdigheid <p><p>* 100 met gelijktijdigheid van triggers | Voor triggers die een matrix retour neren, kunt u een expressie opgeven die gebruikmaakt van een eigenschap SplitOn die de [matrix items in meerdere workflowexemplaren voor verwerking splitst of opsplitst](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) , in plaats van een foreach-lus te gebruiken. Deze expressie verwijst naar de matrix die moet worden gebruikt voor het maken en uitvoeren van een workflowexemplaar voor elk matrix item. <p><p>**Opmerking**: wanneer gelijktijdigheid is ingeschakeld, is de limiet van SplitOn beperkt tot 100 items. |
+| SplitOn-items | -100.000 zonder activerings gelijktijdigheid <p><p>-100 met gelijktijdigheid van triggers | Voor triggers die een matrix retour neren, kunt u een expressie opgeven die gebruikmaakt van een eigenschap SplitOn die de [matrix items in meerdere workflowexemplaren voor verwerking splitst of opsplitst](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) , in plaats van een foreach-lus te gebruiken. Deze expressie verwijst naar de matrix die moet worden gebruikt voor het maken en uitvoeren van een workflowexemplaar voor elk matrix item. <p><p>**Opmerking**: wanneer gelijktijdigheid is ingeschakeld, is de limiet van SplitOn beperkt tot 100 items. |
 | Until-iteraties | 5\.000 | |
 ||||
 

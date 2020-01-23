@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/12/2020
 ms.author: mlearned
-ms.openlocfilehash: 054113da7fe06436fab0cdfff6c4257f1263de97
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 23a5dbf2333ca86c2d51d54bf983b00a71936eec
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290356"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547945"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Breng uw eigen sleutels (BYOK) met Azure-schijven in azure Kubernetes service (AKS)
 
@@ -98,7 +98,7 @@ az role assignment create --assignee $desIdentity --role Reader --scope $keyVaul
 
 ## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk"></a>Een nieuw AKS-cluster maken en de besturingssysteem schijf versleutelen
 
-Maak een **nieuwe resource groep** en AKS-cluster en gebruik vervolgens uw sleutel om de besturingssysteem schijf te versleutelen. Door de klant beheerde sleutels worden alleen ondersteund in versies van kubernetes die groter zijn dan 1,17. 
+Maak een **nieuwe resource groep** en AKS-cluster en gebruik vervolgens uw sleutel om de besturingssysteem schijf te versleutelen. Door de klant beheerde sleutels worden alleen ondersteund in versies van Kubernetes die groter zijn dan 1,17. 
 
 > [!IMPORTANT]
 > Zorg ervoor dat u een nieuwe resource-groep voor uw AKS-cluster maakt

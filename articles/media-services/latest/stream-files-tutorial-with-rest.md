@@ -1,5 +1,5 @@
 ---
-title: Extern bestand coderen op basis van URL en streamen met Azure Media Services - REST | Microsoft Docs
+title: Een extern bestand en een stream coderen met Azure Media Services v3
 description: Volg de stappen van deze zelfstudie om met behulp van REST een bestand te coderen op basis van een URL en inhoud te streamen met Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685107"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514337"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Zelf studie: een extern bestand coderen op basis van URL en de video-REST streamen
 
@@ -27,11 +27,11 @@ In deze zelfstudie leert u hoe u met behulp van REST een bestand kunt coderen en
 
 ![De video afspelen](./media/stream-files-tutorial-with-api/final-video.png)
 
-In deze zelfstudie ontdekt u hoe u:    
+In deze handleiding ontdekt u hoe u:    
 
 > [!div class="checklist"]
-> * Een Media Services-account maken
-> * Toegang krijgen tot de Media Services API
+> * Een Media Services-account kunt maken
+> * Toegang kunt krijgen tot de Media Services API
 > * Postman-bestanden downloaden
 > * Postman configureren
 > * Aanvragen verzenden met behulp van Postman
@@ -248,9 +248,9 @@ In dit voor beeld is de invoer van de taak gebaseerd op een HTTPS-URL (https:\//
         }
         ```
 
-De taak neemt enige tijd in beslag en wanneer deze is voltooid, wordt u hiervan op de hoogte gesteld. Als u de voortgang van de taak wilt zien, kunt u het best Event Grid gebruiken. Dit is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamische schaalbaarheid. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met intelligente filtering en routering van gebeurtenissen.  Zie [Gebeurtenissen routeren naar een aangepast eindpunt](job-state-events-cli-how-to.md).
+De taak neemt enige tijd in beslag en wanneer deze is voltooid, wordt u hiervan op de hoogte gesteld. Als u de voortgang van de taak wilt zien, kunt u het best Event Grid gebruiken. Dit is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamische schaalbaarheid. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met behulp van intelligente filtering en routering van gebeurtenissen.  Zie [Gebeurtenissen routeren naar een aangepast eindpunt](job-state-events-cli-how-to.md).
 
-De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **wordt geannuleerd** en **geannuleerd** wanneer het annuleren is voltooid.
+De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **Wordt geannuleerd** en **Geannuleerd** wanneer het annuleren is voltooid.
 
 #### <a name="job-error-codes"></a>Foutcodes in taak
 
@@ -262,7 +262,7 @@ Wanneer de coderingstaak is voltooid, gaat u in de volgende stap de video in de 
 
 Het proces voor het maken van een streaming-Locator wordt publicatie genoemd. De streaming-Locator is standaard onmiddellijk geldig nadat u de API-aanroepen hebt uitgevoerd en de laatste keer totdat deze is verwijderd, tenzij u de optionele begin-en eind tijden configureert. 
 
-Bij het maken van een [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) moet u de gewenste **StreamingPolicyName** opgeven. In dit voor beeld moet u de inhoud-de-Clear-(of niet-versleutelde) streamen. Daarom wordt het vooraf gedefinieerde beleid ' Predefined_ClearStreamingOnly ' voor het wissen van duidelijke gegevens gebruikt.
+Bij het maken van een [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) moet u de gewenste **StreamingPolicyName** opgeven. In dit voor beeld moet u in-de-Clear-inhoud (of niet-versleuteld) streamen, zodat het vooraf gedefinieerde beleid voor clearing van gegevens Predefined_ClearStreamingOnly wordt gebruikt.
 
 > [!IMPORTANT]
 > Wanneer u een aangepast [streamingbeleid](https://docs.microsoft.com/rest/api/media/streamingpolicies) gebruikt, moet u een beperkte set met dergelijke beleidsregels ontwerpen voor uw Media Service-account, en deze opnieuw gebruiken voor de StreamingLocators wanneer dezelfde versleutelingsopties en protocollen nodig zijn. 

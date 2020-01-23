@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b7e872f3320a2c72b6e9fb3ffba65510b205ca03
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9cb23dc11a853401d8d99a750a0c79082adbe036
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425563"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547588"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Zelf studie: een Azure Active Directory B2C-Tenant maken
 
@@ -43,7 +43,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
     ![Abonnement-Tenant, adres lijst-en abonnements filter waarvoor de Tenant van het abonnement is geselecteerd](media/tutorial-create-tenant/portal-01-pick-directory.png)
 
-1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**.
+1. Selecteer in het menu van Azure Portal of op de **startpagina** de optie **Een resource maken**.
 1. Zoek naar **Azure Active Directory B2C**en selecteer vervolgens **maken**.
 1. Selecteer **Een nieuwe Azure AD B2C-tenant maken**.
 
@@ -68,6 +68,8 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
     Selecteer voor **Resourcegroep** de optie **Nieuwe maken**. Voer een **naam** in voor de resource groep die de Tenant bevat, selecteer de **locatie van de resource groep**en selecteer vervolgens **maken**.
 
     ![Formulier abonnements instellingen koppelen in Azure Portal](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
+    
+    U kunt meerdere Azure AD B2C-tenants koppelen aan één Azure-abonnement voor facturerings doeleinden. 
 
 ## <a name="select-your-b2c-tenant-directory"></a>Selecteer uw B2C-Tenant Directory
 

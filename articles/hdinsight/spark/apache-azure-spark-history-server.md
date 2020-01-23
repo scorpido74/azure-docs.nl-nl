@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 8e0fcdc97475053dcf285b562b28784deffff28c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552726"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548931"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>De uitgebreide functies van de Apache Spark History-server gebruiken om fouten op te sporen en op te sporen in Spark-toepassingen
 
@@ -163,7 +163,7 @@ Selecteer het tabblad **gegevens scheefheid** . De overeenkomende gescheefe take
 
 #### <a name="specify-parameters"></a>Para meters opgeven
 
-In het gedeelte **para meters opgeven** worden de para meters weer gegeven die worden gebruikt voor het detecteren van gegevens scheefheid. De standaard regel is: de taak gegevens die worden gelezen, zijn groter dan drie keer van de gemiddelde taak gegevens worden gelezen en de gelezen taak gegevens zijn meer dan 10 MB. Als u uw eigen regel wilt definiëren voor gescheefde taken, kunt u de para meters kiezen. De secties **scheefe fase** en **scheefe tekens** worden dienovereenkomstig bijgewerkt.
+In het gedeelte **para meters opgeven** worden de para meters weer gegeven die worden gebruikt voor het detecteren van gegevens scheefheid. De standaard regel is: de taak gegevens die worden gelezen, zijn groter dan drie keer van de gemiddelde taak gegevens worden gelezen en de gelezen taak gegevens zijn meer dan 10 MB. Als u uw eigen regel wilt definiëren voor gescheefde taken, kunt u de para meters kiezen. De secties **scheefe fase** en **schuine grafiek** worden dienovereenkomstig bijgewerkt.
 
 #### <a name="skewed-stage"></a>Scheefe fase
 

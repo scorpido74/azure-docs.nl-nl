@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 01/21/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1cd9ca07aab1953d114caf748ca99170fae6b876
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293195"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546347"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
@@ -25,18 +25,39 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
 
 ## <a name="2020-01-21"></a>2020-01-21
 
-### <a name="azure-machine-learning-designer-generally-available-ga"></a>Azure Machine Learning Designer algemeen beschikbaar (GA)
-
-De ontwerp functie is nu algemeen beschikbaar.
+### <a name="azure-machine-learning-sdk-for-python-v1085"></a>Azure Machine Learning SDK voor python v-1.0.85
 
 + **Nieuwe functies**
-    + De optie `Regenerate Output` module is toegevoegd om de ontwerp functie te forceren om de cache resultaten te negeren.
-    + Er zijn nieuwe weer gaven toegevoegd aan de details van de pijplijn uitvoering:
-        + Pipeline-lijst weergave.
-        + Logboek weergave in de browser.
-    + Labels zijn toegevoegd aan module-invoer-en uitvoer poorten.
-    + `Set as Default` pijplijn optie toegevoegd op het [tabblad eind punten](how-to-run-batch-predictions-designer.md#versioning-endpoints).
-    + Toegevoegde sneltoetsen en [toegankelijkheids functies](designer-accessibility.md)voor scherm lezers.
+  + **azureml-core**
+    + Het huidige kern gebruik en de quotum limiet voor AmlCompute-resources in een bepaalde werk ruimte en een abonnement ophalen
+  
+  + **azureml-contrib-pijp lijn-stappen**
+    + Gebruikers toestaan om tabellaire gegevensset door te geven als een tussentijds resultaat van de vorige stap naar parallelrunstep
+
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **azureml-automl-runtime**
+    + De vereiste van y_query kolom in de aanvraag voor de geïmplementeerde Forecasting-service is verwijderd. 
+    + De y_query is verwijderd uit de sectie Dominick van de oranje sap-Notebook Service.
+    + Er is een probleem opgelost met de fout bij het voor komen van prognoses op de geïmplementeerde modellen, het werken met gegevens sets met datum en tijd kolommen.
+    + Er is een Matthews-correlatie coëfficiënt toegevoegd als classificatie-metriek voor zowel binaire als multi klassen classificatie.
+  + **azureml-contrib-interpreteren**
+    + Verwijderde tekst uitleg van azureml-contrib-interpreteren als tekst uitleg is verplaatst naar de opslag plaats van het interpreteren van tekst die binnenkort worden vrijgegeven.
+  + **azureml-core**
+    + DataSet: het gebruik van een bestands gegevensset is niet langer afhankelijk van numpy en Pandas die in de python-env moeten worden geïnstalleerd.
+    + LocalWebservice. wait_for_deployment () is gewijzigd om de status van de lokale docker-container te controleren voordat u probeert het status eindpunt te pingen, waardoor de hoeveelheid tijd die nodig is om een mislukte implementatie te melden, aanzienlijk wordt gereduceerd.
+    + De initialisatie van een interne eigenschap die wordt gebruikt in LocalWebservice. Reload () is opgelost wanneer het Service object wordt gemaakt op basis van een bestaande implementatie met behulp van de LocalWebservice ()-constructor.
+    + Bewerkt fout bericht voor een toelichting.
+    + Er is een nieuwe methode met de naam get_access_token () toegevoegd aan AksWebservice die een AksServiceAccessToken-object retourneert dat een toegangs token bevat, vernieuwt na tijds tempel, verval datum van het tijds tempel en het token type. 
+    + De bestaande methode get_token () in AksWebservice is afgeschaft, omdat alle informatie die deze methode retourneert, wordt geretourneerd.
+    + Gewijzigde uitvoer van AZ ml service Get-access-token opdracht. De naam van het token is gewijzigd in accessToken en refreshBy naar refreshAfter. De eigenschappen expiryOn en Token type zijn toegevoegd.
+    + Vaste get_active_runs
+  + **azureml-explain-model**
+    + Shap bijgewerkt naar 0.33.0 en interpreteert-community naar 0,4. *
+  + **azureml-interpreteren**
+    + Shap bijgewerkt naar 0.33.0 en interpreteert-community naar 0,4. *
+  + **azureml-Train-automl-runtime**
+    + Er is een Matthews-correlatie coëfficiënt toegevoegd als classificatie-metriek voor zowel binaire als multi klassen classificatie.
+    + Preproces-markering van code uitdrukken en vervangen door parametrisatie-parametrisatie is standaard ingeschakeld
 
 ## <a name="2020-01-06"></a>2020-01-06
 
@@ -44,6 +65,7 @@ De ontwerp functie is nu algemeen beschikbaar.
 
 + **Nieuwe functies**
   + Gegevensset: Voeg twee opties `on_error` en `out_of_range_datetime` toe voor `to_pandas_dataframe` wanneer gegevens fout waarden bevat in plaats van ze te vullen met `None`.
+  + Werk ruimte: de `hbi_workspace` markering is toegevoegd voor werk ruimten met gevoelige gegevens die verdere versleuteling mogelijk maken en geavanceerde diagnoses in werk ruimten uitschakelen. Er is ook ondersteuning toegevoegd voor het maken van uw eigen sleutels voor de bijbehorende Cosmos DB-instantie door de para meters `cmk_keyvault` en `resource_cmk_uri` op te geven bij het aanmaken van een werk ruimte, waardoor er een Cosmos DB-exemplaar in uw abonnement wordt gemaakt tijdens het inrichten van uw werk ruimte. [Meer informatie vindt u hier.](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#azure-cosmos-db)
 
 + **Oplossingen en verbeteringen voor oplossingen**
   + **azureml-automl-runtime**
@@ -64,7 +86,6 @@ De ontwerp functie is nu algemeen beschikbaar.
   + **azureml-Train-automl-client**
     + Gecorrigeerde uitlijning van console-uitvoer voor automl-uitvoeringen
     + Er is een fout opgelost waarbij een onjuiste versie van Pandas kan worden geïnstalleerd op de externe amlcompute.
-
 
 ## <a name="2019-12-23"></a>2019-12-23
 

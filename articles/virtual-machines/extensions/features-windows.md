@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79c6658d2b3758eed94f273bf0b3685bbd146278
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 69d08af9fd34728860343db3578f7283802f1611
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073071"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544749"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Extensies en functies van virtuele machines voor Windows
 
-Azure virtual machine (VM)-uitbrei dingen zijn kleine toepassingen die configuratie en automatiserings taken na de implementatie leveren op Azure-Vm's. Als een virtuele machine bijvoorbeeld software-installatie, anti-virus beveiliging of een script erin moet uitvoeren, kan een VM-extensie worden gebruikt. Azure VM-extensies kunnen worden uitgevoerd met de Azure CLI-, Power shell-, Azure Resource Manager-sjablonen en de Azure Portal. Uitbrei dingen kunnen worden gebundeld met een nieuwe VM-implementatie of worden uitgevoerd op basis van elk bestaand systeem.
+Extensies van virtuele Azure-machines (VM's) zijn kleine toepassingen die configuratie na de implementatie en automatiseringstaken voor Azure-VM's bieden. Als op een virtuele machine bijvoorbeeld software of antivirusbeveiliging moet worden geïnstalleerd of een script moet worden uitgevoerd, kan hiervoor een VM-extensie worden gebruikt. Azure VM-extensies kunnen worden uitgevoerd met de Azure CLI, PowerShell, Azure Resource Manager-sjablonen en de Azure-portal. Extensies kunnen worden gebundeld met een nieuwe VM-implementatie of worden uitgevoerd op een bestaand systeem.
 
 Dit artikel bevat een overzicht van VM-extensies, vereisten voor het gebruik van Azure VM-extensies en richt lijnen voor het detecteren, beheren en verwijderen van VM-extensies. Dit artikel bevat algemene informatie omdat er veel VM-uitbrei dingen beschikbaar zijn, elk met een mogelijk unieke configuratie. Details van een specifieke extensie vindt u in elk document dat specifiek is voor de afzonderlijke extensie.
 
@@ -65,7 +65,7 @@ Sommige extensies worden niet ondersteund in alle besturings systemen en kunnen 
 
 #### <a name="network-access"></a>Netwerktoegang
 
-Uitbreidings pakketten worden gedownload uit de opslag plaats van de Azure Storage extensie en uploads van uitbreidings status worden naar Azure Storage gepost. Als u een [ondersteunde](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) versie van de agents gebruikt, hoeft u geen toegang tot Azure Storage toe te staan in de VM-regio, zoals de agent kan gebruiken om de communicatie te omleiden naar de Azure Fabric-controller voor agent communicatie (HostGAPlugin-functie via de Privileged Channel op particuliere IP- [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)). Als u een niet-ondersteunde versie van de agent hebt, moet u uitgaande toegang tot Azure Storage in die regio vanuit de VM toestaan.
+Uitbreidings pakketten worden gedownload uit de opslag plaats van de Azure Storage extensie en uploads van uitbreidings status worden naar Azure Storage gepost. Als u een [ondersteunde](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) versie van de agents gebruikt, hoeft u geen toegang tot Azure Storage toe te staan in de VM-regio, zoals de agent kan gebruiken om de communicatie te omleiden naar de Azure Fabric-controller voor agent communicatie (HostGAPlugin-functie via het geprivilegieerde kanaal op particuliere IP- [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)). Als u een niet-ondersteunde versie van de agent hebt, moet u uitgaande toegang tot Azure Storage in die regio vanuit de VM toestaan.
 
 > [!IMPORTANT]
 > Als u de toegang tot *168.63.129.16* hebt geblokkeerd met behulp van de gast firewall of met een proxy, mislukt de extensies, ongeacht het bovenstaande. Poorten 80, 443 en 32526 zijn vereist.
@@ -252,6 +252,10 @@ Als u de opdracht verplaatst naar de eigenschap **Execute** naar de **beveiligde
 }
 ```
 
+Op een Azure IaaS-VM die gebruikmaakt van extensies, ziet u in de console certificaten mogelijk certificaten met het onderwerp **_Windows Azure CRP Certificate Generator_** . Op een klassieke RDFE-VM hebben deze certificaten de object naam **_Windows Azure Service Management voor uitbrei dingen_** .
+
+Deze certificaten beveiligen de communicatie tussen de virtuele machine en de host tijdens de overdracht van beveiligde instellingen (wacht woord, andere referenties) die worden gebruikt door uitbrei dingen. De certificaten worden gebouwd door de Azure Fabric-controller en door gegeven aan de VM-agent. Als u de VM elke dag stopt en start, wordt er mogelijk een nieuw certificaat gemaakt door de infrastructuur controller. Het certificaat wordt opgeslagen in het persoonlijke certificaat archief van de computer. Deze certificaten kunnen worden verwijderd. De VM-agent maakt de certificaten zo nodig opnieuw.
+
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Hoe worden agents en uitbrei dingen bijgewerkt?
 
 De agents en uitbrei dingen delen hetzelfde update mechanisme. Voor sommige updates zijn geen aanvullende firewall regels vereist.
@@ -419,7 +423,7 @@ U kunt een uitbrei ding ook als volgt verwijderen in de Azure Portal:
 ## <a name="common-vm-extensions-reference"></a>Naslag informatie over algemene VM-extensies
 | Extensie naam | Beschrijving | Meer informatie |
 | --- | --- | --- |
-| Aangepaste script extensie voor Windows |Scripts uitvoeren op een virtuele Azure-machine |[Aangepaste script extensie voor Windows](custom-script-windows.md) |
+| Aangepaste script extensie voor Windows |Scripts uitvoeren op een virtuele Azure-machine |[Aangepaste scriptextensie voor Windows](custom-script-windows.md) |
 | DSC-extensie voor Windows |Uitbrei ding Power shell DSC (desired state Configuration) |[DSC-extensie voor Windows](dsc-overview.md) |
 | Azure Diagnostics-extensie |Azure Diagnostics beheren |[Azure Diagnostics-extensie](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM-toegangs uitbreiding |Gebruikers en referenties beheren |[VM-toegangs extensie voor Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |

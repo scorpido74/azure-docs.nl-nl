@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 09ae896d26d534d3f9d5651834e181d37581c8f3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288950"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545616"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integratie voor Azure Red Hat open Shift
 
@@ -55,6 +55,9 @@ Als u de toegang tot cluster beheer wilt verlenen, worden de lidmaatschappen in 
 
 9. Wanneer de groep is gemaakt, wordt deze weer geven in de lijst met alle groepen. Klik op de nieuwe groep.
 10. Op de pagina die wordt weer gegeven, kopieert u de **object-id**. We verwijzen naar deze waarde als `GROUPID` in de zelf studie [een Azure Red Hat open Shift-cluster maken](tutorial-create-cluster.md) .
+
+> [!IMPORTANT]
+> Als u deze groep wilt synchroniseren met de OSA-klant-admins open Shift-groep, maakt u het cluster met behulp van de Azure CLI. De Azure Portal heeft momenteel geen veld om deze groep in te stellen.
 
 ## <a name="create-an-azure-ad-app-registration"></a>Een Azure AD-App-registratie maken
 

@@ -1,6 +1,6 @@
 ---
 title: Ruwe Herlokalisatie in eenheid
-description: Uitgebreide uitleg over het maken en vinden van ankers met behulp van sensors op apparaat C#in.
+description: Uitgebreide uitleg over het maken en vinden van ankers met ruwe Herlokalisatie in C#.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8b960ee168a1af66cafc52082138097cda240c9a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5c976bd020d37672c44c89113bf7786e1ccf141b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277171"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548251"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-c"></a>Ankers maken en vinden met sensors op apparaat inC#
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-c"></a>Ankers maken en vinden met grof relokalisatie inC#
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: e4c18f1148259d246445b94ac6117ebefa9470a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ed9b893b11f96a813cee4c751743ceb182a9a0bf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975374"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543032"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk 
 <a name="network-service-tags"></a>
@@ -51,7 +51,7 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 | **AzureAdvancedThreatProtection** | Azure Advanced Threat Protection. | Uitgaand | Nee | Nee |
 | **AzureBackup** |Azure Backup.<br/><br/>*Opmerking:* Deze tag bevat een afhankelijkheid van de **opslag** -en **AzureActiveDirectory** -Tags. | Uitgaand | Nee | Ja |
 | **AzureBotService** | Azure Bot Service. | Uitgaand | Nee | Nee |
-| **Cloud** | Alle [open bare IP-adressen van data centers](https://www.microsoft.com/download/details.aspx?id=41653). | Uitgaand | Ja | Ja |
+| **Cloud** | Alle [open bare IP-adressen van data centers](https://www.microsoft.com/download/details.aspx?id=56519). | Uitgaand | Ja | Ja |
 | **AzureCognitiveSearch** | Azure Cognitive Search (als indexeer functies met een vakkennisset worden gebruikt). | Beide | Nee | Nee |
 | **AzureConnectors** | Azure Logic Apps connectors voor probe/back-endverbinding. | Inkomend | Ja | Ja |
 | **AzureContainerRegistry** | Azure Container Registry. | Uitgaand | Ja | Ja |

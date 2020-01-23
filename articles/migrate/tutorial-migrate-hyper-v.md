@@ -4,12 +4,12 @@ description: Meer informatie over het migreren van on-premises virtuele Hyper-V-
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: b9c0de866a61ee2646d987c4fb98cb24a218417b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a321c3e731a6649f0831f7d515f1c464b311c9ac
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028967"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545905"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM's migreren naar Azure 
 
@@ -181,7 +181,7 @@ Als dit de eerste VM is die u repliceert in het Azure Migrate-project, wordt Azu
 - **Service Bus**: Azure migrate: Server migratie gebruikt de service bus voor het verzenden van replicatie-indelings berichten naar het apparaat.
 - **Gateway-opslag account**: Azure migrate: Server migratie gebruikt het opslag account van de gateway om status informatie op te slaan over de virtuele machines die worden gerepliceerd.
 - **Opslag account voor logboek registratie**: het Azure migrate apparaat uploadt replicatie logboeken voor vm's naar een logboek opslag account. Azure Migrate past de replicatie gegevens toe op de replica-beheerde schijven.
-- **Sleutel kluis**: het Azure migrate-apparaat gebruikt de sleutel kluis voor het beheren van verbindings reeksen voor de service bus en toegangs sleutels voor de opslag accounts die worden gebruikt voor replicatie. U moet de machtigingen instellen die de sleutel kluis nodig heeft voor toegang tot het opslag account tijdens de voor bereiding. voor [bereiding van Azure](tutorial-prepare-hyper-v.md#prepare-azure) voor Hyper-V VM-evaluatie en migratie. 
+- **Sleutel kluis**: het Azure migrate-apparaat gebruikt de sleutel kluis voor het beheren van verbindings reeksen voor de service bus en toegangs sleutels voor de opslag accounts die worden gebruikt voor replicatie. U moet de machtigingen instellen die de sleutel kluis nodig heeft om toegang te krijgen tot het opslag account wanneer u [Azure voor bereidingen](tutorial-prepare-hyper-v.md#prepare-azure) voor Hyper-V VM-evaluatie en-migratie maakt. 
 
 
 ## <a name="track-and-monitor"></a>Bijhouden en controleren

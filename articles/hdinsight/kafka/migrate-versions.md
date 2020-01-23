@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: d9ad5da27b4b5f8e4e447036c46613bad0f1f5c7
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 66ea8a93723c117a364a188ec05b050e1ef60564
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563782"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548081"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Apache Kafka workloads migreren naar Azure HDInsight 4,0
 
@@ -68,7 +68,7 @@ Bij de volgende migratie richtlijnen wordt uitgegaan van een Apache Kafka 1.0.0-
 
 Voer de volgende stappen uit om de migratie te volt ooien:
 
-1. **Implementeer een nieuw HDInsight 4,0-cluster en-clients voor test doeleinden.** Implementeer een nieuw HDInsight 4,0 Kafka-cluster. Als meerdere Kafka-cluster versies kunnen worden geselecteerd, is het raadzaam om de meest recente versie te selecteren. Stel na de implementatie een aantal para meters in en maak een onderwerp met dezelfde als uw bestaande omgeving. Stel ook SSL-en BYOK-code ring (uw eigen sleutel) in als dat nodig is. Controleer vervolgens of het goed werkt met het nieuwe cluster.
+1. **Implementeer een nieuw HDInsight 4,0-cluster en-clients voor test doeleinden.** Implementeer een nieuw HDInsight 4,0 Kafka-cluster. Als meerdere Kafka-cluster versies kunnen worden geselecteerd, is het raadzaam om de meest recente versie te selecteren. Stel na de implementatie een aantal para meters in als dat nodig is en maak een onderwerp met dezelfde naam als uw bestaande omgeving. Stel ook SSL-en BYOK-code ring (uw eigen sleutel) in als dat nodig is. Controleer vervolgens of het goed werkt met het nieuwe cluster.
 
     ![Nieuwe HDInsight 4,0-clusters implementeren](./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png)
 

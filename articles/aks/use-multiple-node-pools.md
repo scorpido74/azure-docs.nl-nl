@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 08/9/2019
+ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 9c72c8431907c52dab338114ce09be139608ab0a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f9d00cff5d910d6bbbb4c436249283cca87b91e1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768585"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549101"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -36,14 +36,14 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 * Het AKS-cluster moet het standaard SKU-load balancer gebruiken om meerdere knooppunt groepen te kunnen gebruiken. de functie wordt niet ondersteund met Basic SKU load balancers.
 * Het AKS-cluster moet virtuele-machine schaal sets gebruiken voor de knoop punten.
 * De naam van een knooppunt groep mag alleen kleine letters bevatten en moet beginnen met een kleine letter. Voor Linux-knooppunt Pools moet de lengte tussen 1 en 12 tekens lang zijn voor Windows-knooppunt groepen. de lengte moet tussen 1 en 6 tekens lang zijn.
-* Het AKS-cluster kan Maxi maal acht knooppunt groepen bevatten.
-* Het AKS-cluster kan Maxi maal 800 knoop punten in deze acht knooppunt groepen hebben.
+* Het AKS-cluster kan Maxi maal 10 knooppunt groepen bevatten.
+* Het AKS-cluster kan Maxi maal 1000 knoop punten in deze tien knooppunt groepen hebben.
 * Alle knooppunt groepen moeten zich in hetzelfde vnet en subnet bevinden.
 * Bij het maken van meerdere knooppunt groepen tijdens het maken van een cluster, moeten alle Kubernetes-versies die worden gebruikt door de knooppunt groepen, overeenkomen met de versieset voor het besturings vlak. Dit kan worden bijgewerkt nadat het cluster is ingericht met behulp van de bewerkingen per knooppunt groep.
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
-Om aan de slag te gaan, maakt u een AKS-cluster met één knooppunt groep. In het volgende voor beeld wordt de opdracht [AZ Group Create][az-group-create] gebruikt voor het maken van een resource groep met de naam *myResourceGroup* in de regio *eastus* . Er wordt een AKS-cluster met de naam *myAKSCluster* gemaakt met behulp van de opdracht [AZ AKS Create][az-aks-create] . Een *--kubernetes-versie* van *1.13.10* wordt gebruikt om te laten zien hoe u een knooppunt groep in een volgende stap bijwerkt. U kunt elke [ondersteunde versie van Kubernetes][supported-versions]opgeven.
+Om aan de slag te gaan, maakt u een AKS-cluster met één knooppunt groep. In het volgende voor beeld wordt de opdracht [AZ Group Create][az-group-create] gebruikt voor het maken van een resource groep met de naam *myResourceGroup* in de regio *eastus* . Er wordt een AKS-cluster met de naam *myAKSCluster* gemaakt met behulp van de opdracht [AZ AKS Create][az-aks-create] . Een *--kubernetes-versie* van *1.15.7* wordt gebruikt om te laten zien hoe u een knooppunt groep in een volgende stap bijwerkt. U kunt elke [ondersteunde versie van Kubernetes][supported-versions]opgeven.
 
 > [!NOTE]
 > De *Basic* Load Balancer SKU wordt **niet ondersteund** wanneer meerdere knooppunt groepen worden gebruikt. Standaard worden AKS-clusters gemaakt met de *Standard* Load Balancer SKU van Azure CLI en Azure Portal.
@@ -59,7 +59,7 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --node-count 2 \
     --generate-ssh-keys \
-    --kubernetes-version 1.13.10 \
+    --kubernetes-version 1.15.7 \
     --load-balancer-sku standard
 ```
 
@@ -84,7 +84,7 @@ az aks nodepool add \
     --cluster-name myAKSCluster \
     --name mynodepool \
     --node-count 3 \
-    --kubernetes-version 1.12.7
+    --kubernetes-version 1.15.5
 ```
 
 > [!NOTE]
@@ -107,7 +107,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.12.7",
+    "orchestratorVersion": "1.15.5",
     ...
     "vmSize": "Standard_DS2_v2",
     ...
@@ -117,7 +117,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "vmSize": "Standard_DS2_v2",
     ...
@@ -126,32 +126,32 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ```
 
 > [!TIP]
-> Als er geen *OrchestratorVersion* of *VmSize* wordt opgegeven wanneer u een knooppunt groep toevoegt, worden de knoop punten gemaakt op basis van de standaard waarden voor het AKS-cluster. In dit voor beeld is dat Kubernetes Version *1.13.10* en knooppunt grootte van *Standard_DS2_v2*.
+> Als er geen *VmSize* is opgegeven wanneer u een knooppunt groep toevoegt, is de standaard grootte *Standard_DS2_v3* voor Windows-knooppunt groepen en *Standard_DS2_v2* voor Linux-knooppunt groepen. Als er geen *OrchestratorVersion* is opgegeven, wordt standaard dezelfde versie gebruikt als het besturings vlak.
 
 ## <a name="upgrade-a-node-pool"></a>Een knooppunt groep upgraden
- 
+
 > [!NOTE]
 > Upgrade-en schaal bewerkingen op een cluster of knooppunt groep kunnen niet tegelijkertijd plaatsvinden, als er een fout wordt geretourneerd. In plaats daarvan moet elk bewerkings type worden voltooid voor de doel resource vóór de volgende aanvraag op dezelfde resource. Meer informatie hierover vindt u in onze [probleemoplossings handleiding](https://aka.ms/aks-pending-upgrade).
 
-Wanneer uw AKS-cluster oorspronkelijk in de eerste stap is gemaakt, is er een `--kubernetes-version` van *1.13.10* opgegeven. Hiermee stelt u de Kubernetes-versie in voor zowel het besturings vlak als de standaard knooppunt groep. Met de opdrachten in deze sectie wordt uitgelegd hoe u één specifieke knooppunt groep bijwerkt.
+Wanneer uw AKS-cluster oorspronkelijk in de eerste stap is gemaakt, is er een `--kubernetes-version` van *1.15.7* opgegeven. Hiermee stelt u de Kubernetes-versie in voor zowel het besturings vlak als de standaard knooppunt groep. Met de opdrachten in deze sectie wordt uitgelegd hoe u één specifieke knooppunt groep bijwerkt.
 
 De relatie tussen het upgraden van de Kubernetes-versie van het besturings vlak en de knooppunt groep wordt uitgelegd in de [volgende sectie](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 > [!NOTE]
 > De versie van de installatie kopie van het besturings systeem van de knooppunt groep is gekoppeld aan de Kubernetes-versie van het cluster. U kunt upgrades van de installatie kopie van het besturings systeem downloaden na een upgrade van een cluster.
 
-Omdat er in dit voor beeld twee knooppunt groepen zijn, moeten we [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] gebruiken om een knooppunt groep bij te werken. We gaan de *mynodepool* upgraden naar Kubernetes *1.13.10*. Gebruik de opdracht [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] om de knooppunt groep bij te werken, zoals wordt weer gegeven in het volgende voor beeld:
+Omdat er in dit voor beeld twee knooppunt groepen zijn, moeten we [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] gebruiken om een knooppunt groep bij te werken. We gaan de *mynodepool* upgraden naar Kubernetes *1.15.7*. Gebruik de opdracht [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] om de knooppunt groep bij te werken, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --kubernetes-version 1.13.10 \
+    --kubernetes-version 1.15.7 \
     --no-wait
 ```
 
-Vermeld opnieuw de status van uw knooppunt groepen met de opdracht [AZ AKS node pool List][az-aks-nodepool-list] . In het volgende voor beeld ziet u dat *mynodepool* zich in de *upgrade* status bevindt op *1.13.10*:
+Vermeld opnieuw de status van uw knooppunt groepen met de opdracht [AZ AKS node pool List][az-aks-nodepool-list] . In het volgende voor beeld ziet u dat *mynodepool* zich in de *upgrade* status bevindt op *1.15.7*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -162,7 +162,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Upgrading",
     ...
@@ -174,7 +174,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -240,7 +240,7 @@ az aks nodepool scale \
 Vermeld opnieuw de status van uw knooppunt groepen met de opdracht [AZ AKS node pool List][az-aks-nodepool-list] . In het volgende voor beeld ziet u dat *mynodepool* zich in de *schaal* status bevindt met een nieuw aantal van *5* knoop punten:
 
 ```console
-$ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 [
   {
@@ -248,7 +248,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
     "count": 5,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Scaling",
     ...
@@ -260,7 +260,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -298,7 +298,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 5,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Deleting",
     ...
@@ -310,7 +310,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -351,7 +351,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 1,
     ...
     "name": "gpunodepool",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Creating",
     ...
@@ -363,7 +363,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 2,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.10",
+    "orchestratorVersion": "1.15.7",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -383,8 +383,8 @@ U hebt nu twee knooppunt groepen in uw cluster: de standaard groep van het knoop
 $ kubectl get nodes
 
 NAME                                 STATUS   ROLES   AGE     VERSION
-aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.13.10
-aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.10
+aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
+aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
 ```
 
 De Kubernetes scheduler kan taints en verdragen gebruiken om te beperken welke workloads op knoop punten kunnen worden uitgevoerd.
@@ -461,7 +461,7 @@ Wanneer u een Azure Resource Manager sjabloon gebruikt om resources te maken en 
 Maak een sjabloon, zoals `aks-agentpools.json` en plak het volgende voorbeeld manifest. Met deze voorbeeld sjabloon worden de volgende instellingen geconfigureerd:
 
 * Hiermee werkt u de *Linux* -knooppunt groep met de naam *myagentpool* bij om drie knoop punten uit te voeren.
-* Hiermee stelt u de knoop punten in de knooppunt groep in op het uitvoeren van Kubernetes-versie *1.13.10*.
+* Hiermee stelt u de knoop punten in de knooppunt groep in op het uitvoeren van Kubernetes-versie *1.15.7*.
 * Hiermee definieert u de knooppunt grootte als *Standard_DS2_v2*.
 
 Bewerk deze waarden als u wilt dat er knooppunt groepen worden bijgewerkt, toegevoegd of verwijderd:
@@ -500,7 +500,7 @@ Bewerk deze waarden als u wilt dat er knooppunt groepen worden bijgewerkt, toege
     },
     "variables": {
         "apiVersion": {
-            "aks": "2019-04-01"
+            "aks": "2020-01-01"
         },
         "agentPoolProfiles": {
             "maxPods": 30,
@@ -513,7 +513,7 @@ Bewerk deze waarden als u wilt dat er knooppunt groepen worden bijgewerkt, toege
     },
     "resources": [
         {
-            "apiVersion": "2019-04-01",
+            "apiVersion": "2020-01-01",
             "type": "Microsoft.ContainerService/managedClusters/agentPools",
             "name": "[concat(parameters('clusterName'),'/', parameters('agentPoolName'))]",
             "location": "[parameters('location')]",
@@ -526,7 +526,7 @@ Bewerk deze waarden als u wilt dat er knooppunt groepen worden bijgewerkt, toege
                 "storageProfile": "ManagedDisks",
                 "type": "VirtualMachineScaleSets",
                 "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
-                "orchestratorVersion": "1.13.10"
+                "orchestratorVersion": "1.15.7"
             }
         }
     ]
@@ -540,6 +540,25 @@ az group deployment create \
     --resource-group myResourceGroup \
     --template-file aks-agentpools.json
 ```
+
+> [!TIP]
+> U kunt een tag toevoegen aan de knooppunt groep door de eigenschap *tag* in de sjabloon toe te voegen, zoals wordt weer gegeven in het volgende voor beeld.
+> 
+> ```json
+> ...
+> "resources": [
+> {
+>   ...
+>   "properties": {
+>     ...
+>     "tags": {
+>       "name1": "val1"
+>     },
+>     ...
+>   }
+> }
+> ...
+> ```
 
 Het kan een paar minuten duren voordat u uw AKS-cluster bijwerkt, afhankelijk van de instellingen van de knooppunt groep en de bewerkingen die u in uw Resource Manager-sjabloon definieert.
 

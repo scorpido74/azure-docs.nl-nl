@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 6d926ccaac5ca05fe6f137102cbfdd45b0e182bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4bb3af4ddad7e40cbf7edd58cf5899ced2757512
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434632"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548795"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Snelstart: X.509-apparaten registreren bij Device Provisioning Service met behulp van Node.js
 
@@ -147,7 +147,10 @@ Als u van plan bent de service voorbeelden van node. js te verkennen, moet u de 
 3. Selecteer **certificaten**uit uw Device Provisioning Service in de Azure Portal, selecteer het certificaat dat u voor deze Quick Start hebt geüpload en klik op de knop **verwijderen** boven aan het venster **certificaat Details** .  
  
 ## <a name="next-steps"></a>Volgende stappen
+
 In deze Quick Start hebt u een groeps registratie gemaakt voor een X. 509-tussenliggend of basis-CA-certificaat met behulp van de Azure-IoT Hub Device Provisioning Service. Voor meer informatie over device provisioning, gaat u verder met de zelfstudie voor het instellen van Device Provisioning Service in Azure Portal. 
+
+Zie ook het voor beeld van het inrichten van het [node. js-apparaat](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device/samples).
  
 > [!div class="nextstepaction"]
 > [Zelfstudies over Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)

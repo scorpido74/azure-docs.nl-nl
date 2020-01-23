@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 38b37a386e4e9829b5d90e31067ec9f6aaf75502
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 7ff4303a923e50a36ca36bd625581f11f7a9b491
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314909"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548489"
 ---
 # <a name="neural-network-regression-module"></a>Neural-module voor netwerk regressie
 
@@ -24,7 +24,7 @@ ms.locfileid: "76314909"
   
 ## <a name="module-overview"></a>Module overzicht  
 
-In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om een regressie model te maken met behulp van een aanpasbaar Neural-netwerk algoritme.
   

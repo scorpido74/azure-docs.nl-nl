@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: bd725d41f75bdfb1048b5bee7e8224679dbece4c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bd27827441082698bb4e0b43e7dd22d5b7e66539
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837258"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548948"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text-API 3,0: opzoeken in woorden lijst
 
@@ -33,45 +33,21 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
 
-<table width="100%">
-  <th width="20%">Query parameter</th>
-  <th>Beschrijving</th>
-  <tr>
-    <td>API-versie</td>
-    <td>*Vereiste para meter*.<br/>De versie van de API die door de client is aangevraagd. De waarde moet `3.0`zijn.</td>
-  </tr>
-  <tr>
-    <td>Van</td>
-    <td>*Vereiste para meter*.<br/>Geeft de taal van de invoer tekst aan. De bron taal moet een van de [ondersteunde talen](./v3-0-languages.md) zijn die is opgenomen in het `dictionary` bereik.</td>
-  </tr>
-  <tr>
-    <td>tot</td>
-    <td>*Vereiste para meter*.<br/>Hiermee geeft u de taal van de uitvoer tekst op. De doel taal moet een van de [ondersteunde talen](./v3-0-languages.md) zijn die is opgenomen in het `dictionary` bereik.</td>
-  </tr>
-</table>
+| Query parameter  | Beschrijving |
+| ------ | ----------- |
+| api-version <img width=200/>   | **Vereiste para meter**.<br/>De versie van de API die door de client is aangevraagd. De waarde moet `3.0` |
+| uit | **Vereiste para meter**.<br/>Geeft de taal van de invoer tekst aan. De bron taal moet een van de [ondersteunde talen](./v3-0-languages.md) zijn die is opgenomen in het `dictionary` bereik. |
+| tot   | **Vereiste para meter**.<br/>Hiermee geeft u de taal van de uitvoer tekst op. De doel taal moet een van de [ondersteunde talen](v3-0-languages.md) zijn die is opgenomen in het `dictionary` bereik. |
+
 
 Aanvraag headers zijn onder andere:
 
-<table width="100%">
-  <th width="20%">Headers</th>
-  <th>Beschrijving</th>
-  <tr>
-    <td>Verificatie header (s)</td>
-    <td>De <em>vereiste aanvraag header</em>.<br/>Bekijk de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschik bare opties voor authenticatie</a>.</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>De *vereiste aanvraag header*.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json`.</td>
-  </tr>
-  <tr>
-    <td>Content-length</td>
-    <td>De *vereiste aanvraag header*.<br/>De lengte van de aanvraag tekst.</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td>*Optioneel*.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. U kunt deze koptekst weglaten als u de tracerings-ID in de query reeks opneemt met behulp van een query parameter met de naam `ClientTraceId`.</td>
-  </tr>
-</table> 
+| Headers  | Beschrijving |
+| ------ | ----------- |
+| Verificatie header (s) <img width=200/>  | De **vereiste aanvraag header**.<br/>Bekijk de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">beschik bare opties voor authenticatie</a>. |
+| Content-Type | De **vereiste aanvraag header**.<br/>Hiermee geeft u het inhouds type van de payload op. Mogelijke waarden zijn: `application/json`. |
+| Content-length   | De **vereiste aanvraag header**.<br/>De lengte van de aanvraag tekst. |
+| X-ClientTraceId   | **Optioneel**.<br/>Een door de client gegenereerde GUID om de aanvraag uniek te identificeren. U kunt deze koptekst weglaten als u de tracerings-ID in de query reeks opneemt met behulp van een query parameter met de naam `ClientTraceId`. |
 
 ## <a name="request-body"></a>Aanvraagbody
 
@@ -83,7 +59,7 @@ De hoofd tekst van de aanvraag is een JSON-matrix. Elk matrix element is een JSO
 ]
 ```
 
-De volgende beperkingen zijn van toepassing:
+Hierbij gelden de volgende beperkingen:
 
 * De matrix kan Maxi maal 10 elementen bevatten.
 * De tekst waarde van een matrix element mag niet langer zijn dan 100 tekens, inclusief spaties.
@@ -106,16 +82,16 @@ Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken ree
 
         | Label naam | Beschrijving  |
         |----------|--------------|
-        | Corr      | Bijvoegingen   |
+        | Corr      | Bijvoeglijke naamwoorden   |
         | ADV      | Beparameters      |
         | CONJ     | Samen voegingen |
         | DET      | Zoekers  |
-        | MODAAL    | Termen        |
-        | ZELFSTANDIG     | Woorden        |
+        | MODAL    | Termen        |
+        | ZELFSTANDIG     | Zelfstandige naamwoorden        |
         | PREP     | Preposities |
         | PRON     | Prowoorders     |
         | TERM     | Termen        |
-        | DAARENTEG    | Overige        |
+        | OVERIGE    | Overige        |
 
         Als implementatie opmerking worden deze Tags bepaald door een deel van spraak Tags aan de Engelse kant en vervolgens de meest frequente tag te nemen voor elk bron/doel-paar. Als mensen vaak een Spaans woord vertalen naar een ander deel van een spraak code in het Engels, kunnen Tags uiteindelijk worden beëindigd (ten opzichte van het Spaanse woord).
 

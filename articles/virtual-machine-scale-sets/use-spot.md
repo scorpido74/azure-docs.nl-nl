@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 4f434afdd02d15f98e005b44f5563847f4c5847d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278214"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544783"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Voor beeld: Azure spot-Vm's voor schaal sets voor virtuele machines 
 
@@ -91,50 +91,20 @@ $vmssConfig = New-AzVmssConfig `
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sjablonen
 
-Het proces voor het maken van een schaalset die gebruikmaakt van stapsgewijze Vm's, is gelijk aan die in het artikel aan de slag voor [Linux](quick-create-template-linux.md) of [Windows](quick-create-template-windows.md). Voeg de eigenschap Priority toe aan het resource type *micro soft. Compute/virtualMachineScaleSets/virtualMachineProfile* in uw sjabloon en geef als waarde een *Spot* op. Zorg ervoor dat u *2019-03-01* API-versie of hoger gebruikt. 
+Het proces voor het maken van een schaalset die gebruikmaakt van stapsgewijze Vm's, is gelijk aan die in het artikel aan de slag voor [Linux](quick-create-template-linux.md) of [Windows](quick-create-template-windows.md). 
 
-Als u het verwijderings beleid wilt instellen op verwijderen, voegt u de para meter ' evictionPolicy ' toe en stelt u deze in op *verwijderen*.
-
-In het volgende voor beeld wordt een schaalset voor Linux gemaakt met de naam *myScaleSet* in *West-Centraal VS*, waardoor de vm's in de schaalset bij verwijdering worden *verwijderd* :
+Gebruik`"apiVersion": "2019-03-01"` of hoger voor implementaties van steun sjablonen. Voeg de eigenschappen `priority`, `evictionPolicy` en `billingProfile` toe aan de sectie `"virtualMachineProfile":` in uw sjabloon: 
 
 ```json
-{
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "name": "myScaleSet",
-  "location": "East US 2",
-  "apiVersion": "2019-03-01",
-  "sku": {
-    "name": "Standard_DS2_v2",
-    "capacity": "2"
-  },
-  "properties": {
-    "upgradePolicy": {
-      "mode": "Automatic"
-    },
-    "virtualMachineProfile": {
-       "priority": "Spot",
-       "evictionPolicy": "delete",
-       "storageProfile": {
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage"
-        },
-        "imageReference":  {
-          "publisher": "Canonical",
-          "offer": "UbuntuServer",
-          "sku": "16.04-LTS",
-          "version": "latest"
-        }
-      },
-      "osProfile": {
-        "computerNamePrefix": "myvmss",
-        "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
-      }
-    }
-  }
-}
+                "priority": "Spot",
+                "evictionPolicy": "Deallocate",
+                "billingProfile": {
+                    "maxPrice": -1
+                }
 ```
+
+Als u het exemplaar wilt verwijderen nadat het is verwijderd, wijzigt u de para meter `evictionPolicy` in `Delete`.
+
 ## <a name="faq"></a>Veelgestelde vragen
 
 **V:** Nadat het is gemaakt, is dezelfde instantie hetzelfde als standaard exemplaar?

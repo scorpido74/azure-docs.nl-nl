@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8b7a743ebcdf74f6ad740e4e4193bbd98da1536d
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291121"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544936"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Problemen met Azure Files oplossen in Linux
 
@@ -131,9 +131,8 @@ De versleutelingsfunctie voor SMB 3.0 voor Linux is geïntroduceerd in de kernel
 Als uw Linux SMB-client geen ondersteuning biedt voor versleutelen, koppelt u Azure Files met behulp van SMB 2.1 vanaf een Azure Linux-VM die zich in hetzelfde datacenter bevindt als de bestandsshare. Controleer of de instelling [Veilige overdracht vereist]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is uitgeschakeld in het opslagaccount. 
 
 <a id="noaaccessfailureportal"></a>
-## <a name="error-no-access-when-browsing-to-an-azure-file-share-in-the-portal"></a>Fout ' geen toegang ' bij het bladeren naar een Azure-bestands share in de portal
-
-Wanneer u naar een Azure-bestands share in de portal bladert, wordt mogelijk de volgende fout weer gegeven:
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Fout ' geen toegang ' wanneer u een Azure-bestands share probeert te openen of verwijderen  
+Wanneer u probeert een Azure-bestands share in de portal te openen of verwijderen, wordt mogelijk de volgende fout weer gegeven:
 
 Geen toegang  
 Fout code: 403 

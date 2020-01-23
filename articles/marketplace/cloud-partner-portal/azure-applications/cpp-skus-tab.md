@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 29b69499b708726b10947bd3202d3a52893f5c90
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2430d7e6fa74438c148d3cb849510be06243faa0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826183"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543151"
 ---
 # <a name="azure-application-skus-tab"></a>Tabblad Azure Application Sku's
 
@@ -47,7 +47,7 @@ Geef de volgende SKU-waarden op.  De velden die zijn toegevoegd met een sterretj
 |    Veld         |       Beschrijving                                                            |
 |  ---------       |     ---------------                                                          |
 |  **Titel\***     | Een titel voor de SKU. Deze titel wordt weer gegeven in de galerie voor dit item.   |
-| **Overzicht\***    | Een korte beschrijving van de SKU. (De maximale lengte is 100 tekens.)  |
+| **Samenvatting\***    | Een korte beschrijving van de SKU. (De maximale lengte is 100 tekens.)  |
 | **Beschrijving\*** | Een gedetailleerde beschrijving van de SKU. Eenvoudige HTML wordt ondersteund.                 | 
 | **SKU-type\***   | Type Azure-toepassings oplossing, selecteer ***oplossings sjabloon** voor dit scenario. |
 | **Beschik baarheid van Cloud\*** | De locatie van de SKU. De standaard waarde is **open bare Azure**.  <b/>**open bare Azure** -app kan worden geïmplementeerd voor klanten in alle open bare Azure-regio's die Marketplace-integratie hebben.  <b/>**Azure Government Cloud** -app wordt geïmplementeerd in de Azure Government Cloud. Voordat u naar [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)publiceert, raadt micro soft uitgevers aan om te testen en de oplossing te valideren werkt zoals verwacht in deze omgeving. Vraag een [proef account](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)aan om het te kunnen klaarzetten en testen.  |
@@ -69,7 +69,7 @@ Configureer de volgende SKU-instellingen. De velden die zijn toegevoegd met een 
 |    Veld         |       Beschrijving                                                            |
 |  ---------       |     ---------------                                                          |
 |  **Titel\***     | Een titel voor de SKU. Deze titel wordt weer gegeven in de galerie voor dit item.   |
-| **Overzicht\***    | Een korte beschrijving van de SKU. (De maximale lengte is 100 tekens.)  |
+| **Samenvatting\***    | Een korte beschrijving van de SKU. (De maximale lengte is 100 tekens.)  |
 | **Beschrijving\*** | Een gedetailleerde beschrijving van de SKU. Eenvoudige HTML wordt ondersteund.                 | 
 | **SKU-type\***   | Type Azure-toepassings oplossing: Selecteer ***beheerde toepassing** voor dit scenario. 
 | **Beschik baarheid van Cloud\*** | De locatie van de SKU. De standaard waarde is **open bare Azure**.  <b/>**open bare Azure** -app kan worden geïmplementeerd voor klanten in alle open bare Azure-regio's die Marketplace-integratie hebben.  <b/>**Azure Government Cloud** -app wordt geïmplementeerd in de Azure Government Cloud. Voordat u naar [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)publiceert, raadt micro soft uitgevers aan om te testen en de oplossing te valideren werkt zoals verwacht in deze omgeving. Vraag een [proef account](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)aan om het te kunnen klaarzetten en testen.   Microsoft Azure Government is een Cloud-community met gecontroleerde toegang voor klanten van de Amerikaanse federale, staats-, lokale of tribale en partners die in aanmerking komen voor deze entiteiten. |
@@ -82,17 +82,19 @@ Configureer de volgende SKU-instellingen. De velden die zijn toegevoegd met een 
 
 ### <a name="package-details-for-solution-template"></a>Pakket Details voor oplossings sjabloon
 
-   ![Pakket Details voor oplossings sjabloon](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
+![Pakket Details voor oplossings sjabloon](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
 Geef de volgende waarden voor **pakket Details** op.  De velden die zijn toegevoegd met een sterretje zijn vereist.
 
 - **Versie\*** : de versie van het pakket dat u wilt uploaden. Versie Tags moeten de indeling X. Y. Z hebben, waarbij X, Y en Z gehele getallen zijn.
 - **Pakket bestand (. zip)\*** : dit pakket bevat de volgende bestanden, opgeslagen in een zip-bestand.
-  - MainTemplate. json: het implementatie sjabloon bestand dat wordt gebruikt voor het implementeren van de oplossing/toepassing en het maken van de resources die zijn gedefinieerd voor de oplossing. Zie de [sjabloon bestanden](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)van de implementatie maken voor meer informatie.
-  - createUIDefinition. json: dit bestand wordt door de Azure Portal gebruikt voor het genereren van de gebruikers interface voor het inrichten van deze oplossing/toepassing. Zie [Azure Portal gebruikers interface voor uw beheerde toepassing maken](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)voor meer informatie.
+  - **mainTemplate. json\*** : het implementatie sjabloon bestand dat wordt gebruikt voor het implementeren van de oplossing/toepassing en het maken van de resources die zijn gedefinieerd voor de oplossing. Zie de [sjabloon bestanden](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)van de implementatie maken voor meer informatie.
+  - **createUIDefinition. json\*** : dit bestand wordt door de Azure Portal gebruikt voor het genereren van de gebruikers interface voor het inrichten van deze oplossing/toepassing. Zie [Azure Portal gebruikers interface voor uw beheerde toepassing maken](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)voor meer informatie.
+  - Scripts (indien vereist): extra scripts die mogelijk vereist zijn voor het uitvoeren van de sjabloon, bijvoorbeeld `Microsoft.Compute/virtualMachines/extensions`.
+  - Geneste sjablonen (indien nodig): extra geneste sjablonen.
 
-  >[!IMPORTANT] 
-  >Dit pakket moet geneste sjablonen of scripts bevatten die nodig zijn om deze toepassing in te richten. Het bestand MainTemplate. json en createUIDefinition. json moeten zich in de hoofdmap bevindt.
+  > [!IMPORTANT] 
+  > Dit pakket moet geneste sjablonen of scripts bevatten die nodig zijn om deze toepassing in te richten. Het bestand mainTemplate. json en createUIDefinition. json moeten zich in de hoofdmap bevindt. Zie [Azure Resource Manager sjablonen-best practices Guide (Engelstalig](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#deployment-artifacts-nested-templates-scripts)) voor meer informatie over implementatie artefacten.
 
 
 ### <a name="package-details-for-managed-application"></a>Pakket Details voor de beheerde toepassing
@@ -128,7 +130,7 @@ Voor een beheerde toepassing moet u autorisatie en beleids instellingen configur
 Voeg de Azure Active Directory id toe van de gebruiker, groep of toepassing waaraan u de machtiging wilt verlenen voor de beheerde resource groep. De machtiging die wordt verleend, wordt aangegeven door de roldefinitie-id. Dit kan een eigenaar, bijdrager of een aangepaste rol zijn.
 
 
-#### <a name="policy-settings"></a>Beleids instellingen
+#### <a name="policy-settings"></a>Beleidsinstellingen
 
 Voeg het beleid toe waaraan de beheerde app voldoet. Meer informatie over Azure resource policies, Zie [Wat is Azure Policy?](../../../governance/policy/overview.md)
 

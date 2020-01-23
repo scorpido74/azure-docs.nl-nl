@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: juliako
-ms.openlocfilehash: af3d4b51dadfaa99a166ca0ce475c5a110d8f6e8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e4eee3b9f3f97bf7cd7a7b61425ec5c9a3a198ef
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933686"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543072"
 ---
 # <a name="live-event-states-and-billing"></a>Live gebeurtenis statussen en facturering
 
-In Azure Media Services begint de facturering van een live gebeurtenis zodra de status overgangen **wordt uitgevoerd**. Als u de live-gebeurtenis van facturering wilt stoppen, moet u de live-gebeurtenis beëindigen.
+In Azure Media Services begint de facturering van een live gebeurtenis zodra de status overgangen **wordt uitgevoerd**. U wordt gefactureerd, zelfs als er geen video door de service wordt getransporteerd. Als u de live-gebeurtenis van facturering wilt stoppen, moet u de live-gebeurtenis beëindigen. Live transcriptie wordt gefactureerd op dezelfde manier als de live-gebeurtenis.
 
-Wanneer **LiveEventEncodingType** voor uw [live-gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) is ingesteld op Standard of Premium1080p, wordt met Media Services automatisch elke live gebeurtenis afgesloten die in de **actieve** status 12 uur na de invoer is verdwenen en er geen **Live uitvoer** is s wordt uitgevoerd. Er worden echter nog steeds kosten in rekening gebracht voor de tijd dat de live-gebeurtenis de status **actief** heeft.
+Wanneer **LiveEventEncodingType** voor uw [live-gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) is ingesteld op Standard of Premium1080p, wordt met Media Services automatisch elke live gebeurtenis afgesloten die nog 12 uur na het invoeren van de invoer wordt **uitgevoerd** , en worden er geen **Live uitvoer**s uitgevoerd. Er worden echter nog steeds kosten in rekening gebracht voor de tijd dat de live-gebeurtenis de status **actief** heeft.
 
 > [!NOTE]
 > Passthrough-Live-gebeurtenissen worden niet automatisch afgesloten en moeten expliciet worden gestopt door de API om buitensporige facturering te voor komen. 
@@ -40,6 +40,8 @@ De live-gebeurtenis kan een van de volgende statussen hebben.
 |**Wordt uitgevoerd**| De live-gebeurtenis resources zijn toegewezen, opname-en preview-Url's zijn gegenereerd en kunnen live streams ontvangen. Op dit moment is facturering actief. U moet expliciet Stop aanroepen in de resource van de livegebeurtenis om verdere facturering stop te zetten.|
 |**Stoppen**| De live gebeurtenis wordt gestopt en de inrichting van de resources wordt ongedaan gemaakt. Er vindt geen facturering plaats in deze tijdelijke status. Updates of streaming zijn niet toegestaan tijdens deze status.|
 |**Verwijder**| De livegebeurtenis wordt verwijderd. Er vindt geen facturering plaats in deze tijdelijke status. Updates of streaming zijn niet toegestaan tijdens deze status.|
+
+U kunt ervoor kiezen om live-transcripties in te scha kelen wanneer u de live-gebeurtenis maakt. Als u dit doet, wordt u gefactureerd voor Live transcripties wanneer de live-gebeurtenis de status **actief** heeft. Houd er rekening mee dat u wordt gefactureerd, zelfs als er geen audio stroom door de live-gebeurtenis plaatsvindt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

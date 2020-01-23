@@ -5,22 +5,22 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: b1717b9b336d31c86db1ec38eb97c7e8814b76d7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8062428ae63a572b81a5432c8b29910fe8422e24
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926001"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547452"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid trigger voor Azure Functions
 
-In dit artikel wordt uitgelegd hoe u [Event grid](../event-grid/overview.md) gebeurtenissen in azure functions kunt verwerken.
+In dit artikel wordt uitgelegd hoe u [Event grid](../event-grid/overview.md) gebeurtenissen in azure functions kunt verwerken. Lees [gebeurtenissen ontvangen naar een HTTP-eind](../event-grid/receive-events.md)punt voor meer informatie over het afhandelen van Event grid berichten in een http-eind punt.
 
 Event Grid is een Azure-service die HTTP-aanvragen verzendt om u op de hoogte te stellen van gebeurtenissen die zich in *uitgevers*voordoen. Een uitgever is de service of resource die van de gebeurtenis afkomstig is. Een Azure Blob-opslag account is bijvoorbeeld een uitgever en [een BLOB uploaden of verwijderen is een gebeurtenis](../storage/blobs/storage-blob-event-overview.md). Sommige [Azure-Services hebben ingebouwde ondersteuning voor het publiceren van gebeurtenissen naar Event grid](../event-grid/overview.md#event-sources).
 
 Gebeurtenis- *handlers* ontvangen en verwerken gebeurtenissen. Azure Functions is een van [de verschillende Azure-Services met ingebouwde ondersteuning voor het verwerken van Event grid-gebeurtenissen](../event-grid/overview.md#event-handlers). In dit artikel leert u hoe u een Event Grid trigger kunt gebruiken om een functie aan te roepen wanneer een gebeurtenis wordt ontvangen van Event Grid.
 
-Als u wilt, kunt u een HTTP-trigger gebruiken om Event Grid gebeurtenissen te verwerken. Zie [een HTTP-trigger gebruiken als Event grid trigger](#use-an-http-trigger-as-an-event-grid-trigger) verderop in dit artikel. Op dit moment kunt u geen Event Grid trigger gebruiken voor een Azure Functions-app wanneer de gebeurtenis wordt bezorgd in het [CloudEvents-schema](../event-grid/cloudevents-schema.md). Gebruik in plaats daarvan een HTTP-trigger.
+Als u wilt, kunt u een HTTP-trigger gebruiken om Event Grid gebeurtenissen te verwerken. Zie [gebeurtenissen ontvangen naar een HTTP-eind punt](../event-grid/receive-events.md). Op dit moment kunt u geen Event Grid trigger gebruiken voor een Azure Functions-app wanneer de gebeurtenis wordt bezorgd in het [CloudEvents-schema](../event-grid/cloudevents-schema.md#azure-functions). Gebruik in plaats daarvan een HTTP-trigger.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -38,15 +38,9 @@ De trigger Event Grid is opgenomen in het pakket [micro soft. Azure. webjobs. Ex
 
 ## <a name="example"></a>Voorbeeld
 
-Zie het taalspecifieke voor beeld voor een Event Grid trigger:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* C#
-* [C# script (.csx)](#c-script-example)
-* [Java](#trigger---java-examples)
-* [JavaScript](#javascript-example)
-* [Python](#python-example)
-
-Zie [HTTP-trigger gebruiken](#use-an-http-trigger-as-an-event-grid-trigger) verderop in dit artikel voor een voor beeld van een http-trigger.
+Zie [gebeurtenissen op een HTTP-eind punt ontvangen](../event-grid/receive-events.md)voor een voor beeld van een http-trigger.
 
 ### <a name="c-2x-and-higher"></a>C#(2. x en hoger)
 
@@ -74,7 +68,7 @@ namespace Company.Function
 
 Zie pakketten, [kenmerken](#attributes), [configuratie](#configuration)en [gebruik](#usage)voor meer informatie.
 
-### <a name="c-version-1x"></a>C#(Versie 1. x)
+### <a name="version-1x"></a>Versie 1. x
 
 In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) van de functies 1. x die aan `JObject`is gekoppeld:
 
@@ -99,7 +93,7 @@ namespace Company.Function
 }
 ```
 
-### <a name="c-script-example"></a>C#script voorbeeld
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
 In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding.
 
@@ -135,7 +129,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 
 Zie pakketten, [kenmerken](#attributes), [configuratie](#configuration)en [gebruik](#usage)voor meer informatie.
 
-#### <a name="c-script-version-1x"></a>C#script (versie 1. x)
+### <a name="version-1x"></a>Versie 1. x
 
 Dit is de functie 1. C# x-script code die is gekoppeld aan `JObject`:
 
@@ -151,7 +145,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-### <a name="javascript-example"></a>Java script-voor beeld
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding.
 
@@ -182,7 +176,7 @@ module.exports = function (context, eventGridEvent) {
 };
 ```
 
-### <a name="python-example"></a>Python-voor beeld
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding.
 
@@ -205,23 +199,30 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 Dit is de python-code:
 
 ```python
+import json
 import logging
+
 import azure.functions as func
 
-
 def main(event: func.EventGridEvent):
-    logging.info("Python Event Grid function processed a request.")
-    logging.info("  Subject: %s", event.subject)
-    logging.info("  Time: %s", event.event_time)
-    logging.info("  Data: %s", event.get_json())
+
+    result = json.dumps({
+        'id': event.id,
+        'data': event.get_json(),
+        'topic': event.topic,
+        'subject': event.subject,
+        'event_type': event.event_type,
+    })
+
+    logging.info('Python EventGrid trigger processed an event: %s', result)
 ```
 
-### <a name="trigger---java-examples"></a>Trigger-Java-voor beelden
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 Deze sectie bevat de volgende voorbeelden:
 
-* [Event Grid-trigger, teken reeks parameter](#event-grid-trigger-string-parameter-java)
-* [Event Grid trigger, para meter POJO](#event-grid-trigger-pojo-parameter-java)
+* [Event Grid-trigger, teken reeks parameter](#event-grid-trigger-string-parameter)
+* [Event Grid trigger, para meter POJO](#event-grid-trigger-pojo-parameter)
 
 In de volgende voor beelden wordt trigger binding weer gegeven in een *Function. json* -bestand en [Java-functies](functions-reference-java.md) die gebruikmaken van de binding en een gebeurtenis afdrukken, eerst de gebeurtenis ontvangen als ```String``` en seconde als een POJO.
 
@@ -237,7 +238,7 @@ In de volgende voor beelden wordt trigger binding weer gegeven in een *Function.
 }
 ```
 
-#### <a name="event-grid-trigger-string-parameter-java"></a>Event Grid trigger, teken reeks parameter (Java)
+### <a name="event-grid-trigger-string-parameter"></a>Event Grid-trigger, teken reeks parameter
 
 ```java
   @FunctionName("eventGridMonitorString")
@@ -251,7 +252,7 @@ In de volgende voor beelden wordt trigger binding weer gegeven in een *Function.
   }
 ```
 
-#### <a name="event-grid-trigger-pojo-parameter-java"></a>Trigger voor Event Grid, POJO para meter (Java)
+### <a name="event-grid-trigger-pojo-parameter"></a>Event Grid trigger, para meter POJO
 
 In dit voor beeld worden de volgende POJO gebruikt, die de eigenschappen van het hoogste niveau van een Event Grid gebeurtenis vertegenwoordigen:
 
@@ -293,7 +294,11 @@ Na aankomst wordt de JSON-payload van de gebeurtenis gedeserialiseerd in de ```E
 
 Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `EventGridTrigger` annotatie op para meters waarvan de waarde afkomstig is van EventGrid. Door para meters met deze aantekeningen wordt de functie uitgevoerd wanneer er een gebeurtenis binnenkomt.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met behulp van `Optional<T>`.
 
+---
+
 ## <a name="attributes"></a>Kenmerken
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/TriggerBinding/EventGridTriggerAttribute.cs) .
 
@@ -309,6 +314,24 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 Zie C# voor een volledig voor beeld.
 
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+
+Kenmerken worden niet ondersteund door C# het script.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Kenmerken worden niet ondersteund door Java script.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Kenmerken worden niet ondersteund door python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Met de aantekening [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) kunt u een event grid binding declaratief configureren door configuratie waarden op te geven. Zie het voor [beeld](#example) en de [configuratie](#configuration) secties voor meer informatie.
+
+---
+
 ## <a name="configuration"></a>Configuratie
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u in het bestand *Function. json* hebt ingesteld. Er zijn geen constructor-para meters of-eigenschappen om in te stellen in het kenmerk `EventGridTrigger`.
@@ -321,19 +344,47 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 
 ## <a name="usage"></a>Gebruik
 
-Voor C# en F# functies in azure functions 1. x kunt u de volgende parameter typen gebruiken voor de Event grid trigger:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+In Azure Functions 1. x kunt u de volgende parameter typen gebruiken voor de Event Grid trigger:
 
 * `JObject`
 * `string`
 
-Voor C# en F# functions in azure functions 2. x en hoger hebt u ook de mogelijkheid om het volgende parameter type te gebruiken voor de Event grid trigger:
+In Azure Functions 2. x en hoger hebt u ook de mogelijkheid om het volgende parameter type te gebruiken voor de Event Grid trigger:
+
+* `Microsoft.Azure.EventGrid.Models.EventGridEvent`-definieert eigenschappen voor de overeenkomende velden voor alle gebeurtenis typen.
+
+> [!NOTE]
+> In functions v1 als u verbinding probeert te maken met `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`, wordt in de compiler een ' afgeschaft ' bericht weer gegeven. u wordt aangeraden `Microsoft.Azure.EventGrid.Models.EventGridEvent` in plaats daarvan te gebruiken. Als u het nieuwe type wilt gebruiken, verwijst u naar het pakket [micro soft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet en geeft u de naam van het `EventGridEvent` volledig door met behulp van `Microsoft.Azure.EventGrid.Models`.
+
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+
+In Azure Functions 1. x kunt u de volgende parameter typen gebruiken voor de Event Grid trigger:
+
+* `JObject`
+* `string`
+
+In Azure Functions 2. x en hoger hebt u ook de mogelijkheid om het volgende parameter type te gebruiken voor de Event Grid trigger:
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent`-definieert eigenschappen voor de overeenkomende velden voor alle gebeurtenis typen.
 
 > [!NOTE]
 > In functions v1 als u verbinding probeert te maken met `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`, wordt in de compiler een ' afgeschaft ' bericht weer gegeven. u wordt aangeraden `Microsoft.Azure.EventGrid.Models.EventGridEvent` in plaats daarvan te gebruiken. Als u het nieuwe type wilt gebruiken, verwijst u naar het pakket [micro soft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet en geeft u de naam van het `EventGridEvent` volledig door met behulp van `Microsoft.Azure.EventGrid.Models`. Zie [NuGet-pakketten gebruiken](functions-reference-csharp.md#using-nuget-packages) voor meer informatie over het C# verwijzen naar NuGet-pakketten in een script functie
 
-Voor Java script-functies heeft de para meter met de naam van de *functie. json* -`name` eigenschap een verwijzing naar het gebeurtenis object.
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Het Event Grid-exemplaar is beschikbaar via de para meter die is geconfigureerd in de eigenschap `name` van het bestand *Function. json* .
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Het Event Grid-exemplaar is beschikbaar via de para meter die is geconfigureerd in de eigenschap `name` van het bestand *Function. json* , getypeerd als `func.EventGridEvent`.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+De Event Grid gebeurtenis instantie is beschikbaar via de para meter die is gekoppeld aan het kenmerk `EventGridTrigger`, dat is opgegeven als een `EventSchema`. Zie het voor [beeld](#example) voor meer informatie.
+
+---
 
 ## <a name="event-schema"></a>Gebeurtenisschema
 
@@ -389,7 +440,7 @@ Wanneer u deze koppeling selecteert, wordt de pagina **gebeurtenis abonnement ma
 
 Zie voor meer informatie over het maken van abonnementen met behulp van de Azure Portal [aangepaste gebeurtenis maken-Azure Portal](../event-grid/custom-event-quickstart-portal.md) in de Event grid documentatie.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 Als u een abonnement wilt maken met behulp van [de Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), gebruikt u de opdracht [AZ eventgrid Event-Subscription Create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) .
 
@@ -545,227 +596,6 @@ In de volgende scherm afbeeldingen worden de kopteksten en de hoofd tekst van de
 De functie Trigger Event Grid wordt uitgevoerd en logboeken worden weer gegeven die vergelijkbaar zijn met het volgende voor beeld:
 
 ![Voorbeeld functie Logboeken Event Grid](media/functions-bindings-event-grid/eg-output.png)
-
-## <a name="local-testing-with-ngrok"></a>Lokaal testen met ngrok
-
-Een andere manier om een Event Grid trigger lokaal te testen, is de HTTP-verbinding tussen internet en uw ontwikkel computer te automatiseren. U kunt dit doen met een hulp programma zoals [ngrok](https://ngrok.com/):
-
-1. [Een ngrok-eind punt maken](#create-an-ngrok-endpoint).
-1. [Voer de functie voor het activeren van Event grid](#run-the-event-grid-trigger-function).
-1. [Maak een event grid-abonnement](#create-a-subscription) dat gebeurtenissen naar het ngrok-eind punt verzendt.
-1. [Activeer een gebeurtenis](#trigger-an-event).
-
-Wanneer u klaar bent met testen, kunt u hetzelfde abonnement voor productie gebruiken door het eind punt bij te werken. Gebruik de opdracht [AZ eventgrid Event-Subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure cli.
-
-### <a name="create-an-ngrok-endpoint"></a>Een ngrok-eind punt maken
-
-Down load *ngrok. exe* van [ngrok](https://ngrok.com/)en voer de volgende opdracht uit:
-
-```
-ngrok http -host-header=localhost 7071
-```
-
-De-host-header-para meter is vereist omdat de functions-runtime aanvragen van localhost verwacht wanneer deze op localhost worden uitgevoerd. 7071 is het standaard poort nummer wanneer de runtime lokaal wordt uitgevoerd.
-
-De opdracht maakt uitvoer als de volgende:
-
-```
-Session Status                online
-Version                       2.2.8
-Region                        United States (us)
-Web Interface                 http://127.0.0.1:4040
-Forwarding                    http://263db807.ngrok.io -> localhost:7071
-Forwarding                    https://263db807.ngrok.io -> localhost:7071
-
-Connections                   ttl     opn     rt1     rt5     p50     p90
-                              0       0       0.00    0.00    0.00    0.00
-```
-
-U gebruikt de `https://{subdomain}.ngrok.io` URL voor uw Event Grid-abonnement.
-
-### <a name="run-the-event-grid-trigger-function"></a>De functie Trigger Event Grid uitvoeren
-
-De ngrok-URL biedt geen speciale verwerking door Event Grid. Daarom moet uw functie lokaal worden uitgevoerd wanneer het abonnement wordt gemaakt. Als dat niet het geval is, wordt het validatie antwoord niet verzonden en mislukt het maken van het abonnement.
-
-### <a name="create-a-subscription"></a>Een abonnement maken
-
-Maak een Event Grid-abonnement van het type dat u wilt testen en geef het uw ngrok-eind punt.
-
-Gebruik dit eindpunt patroon voor functies 2. x en hoger:
-
-```
-https://{SUBDOMAIN}.ngrok.io/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
-```
-
-Gebruik dit eindpunt patroon voor de functies 1. x:
-
-```
-https://{SUBDOMAIN}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
-```
-
-De para meter `{FUNCTION_NAME}` moet de naam zijn die is opgegeven in het kenmerk `FunctionName`.
-
-Hier volgt een voor beeld van het gebruik van de Azure CLI:
-
-```azurecli
-az eventgrid event-subscription create --resource-id /subscriptions/aeb4b7cb-b7cb-b7cb-b7cb-b7cbb6607f30/resourceGroups/eg0122/providers/Microsoft.Storage/storageAccounts/egblobstor0122 --name egblobsub0126 --endpoint https://263db807.ngrok.io/runtime/webhooks/eventgrid?functionName=EventGridTrigger
-```
-
-Zie eerder in dit artikel [een abonnement maken](#create-a-subscription) voor meer informatie over het maken van een abonnement.
-
-### <a name="trigger-an-event"></a>Een gebeurtenis activeren
-
-Hiermee wordt een gebeurtenis geactiveerd waarmee HTTP-verkeer wordt gegenereerd naar uw ngrok-eind punt.  Als u bijvoorbeeld een Blob Storage-abonnement hebt gemaakt, uploadt of verwijdert u een blob.
-
-De functie Trigger Event Grid wordt uitgevoerd en logboeken worden weer gegeven die vergelijkbaar zijn met het volgende voor beeld:
-
-![Voorbeeld functie Logboeken Event Grid](media/functions-bindings-event-grid/eg-output.png)
-
-## <a name="use-an-http-trigger-as-an-event-grid-trigger"></a>Een HTTP-trigger gebruiken als een Event Grid trigger
-
-Event Grid gebeurtenissen worden ontvangen als HTTP-aanvragen, zodat u gebeurtenissen kunt afhandelen met behulp van een HTTP-trigger in plaats van een Event Grid-trigger. Een mogelijke reden hiervoor is om meer controle te krijgen over de eind punt-URL die de functie aanroept. Een andere reden is wanneer u gebeurtenissen moet ontvangen in het [CloudEvents-schema](../event-grid/cloudevents-schema.md). Op dit moment ondersteunt de trigger van de Event Grid het CloudEvents-schema niet. In de voor beelden in deze sectie worden oplossingen weer gegeven voor zowel het Event Grid schema als het CloudEvents-schema.
-
-Als u een HTTP-trigger gebruikt, moet u code schrijven voor wat de Event Grid trigger automatisch doet:
-
-* Hiermee verzendt u een validatie antwoord naar een [validatie aanvraag](../event-grid/security-authentication.md#webhook-event-delivery)voor het abonnement.
-* Hiermee wordt de functie aangeroepen per element van de gebeurtenis matrix die is opgenomen in de hoofd tekst van de aanvraag.
-
-Voor informatie over de URL die moet worden gebruikt om de functie lokaal aan te roepen of wanneer deze wordt uitgevoerd in azure, raadpleegt u de [referentie documentatie voor http-trigger bindingen](functions-bindings-http-webhook.md)
-
-### <a name="event-grid-schema"></a>Event Grid-schema
-
-Met de volgende C# voorbeeld code voor een http-trigger wordt Event grid trigger gedrag gesimuleerd. Gebruik dit voor beeld voor gebeurtenissen die in het Event Grid schema worden bezorgd.
-
-```csharp
-[FunctionName("HttpTrigger")]
-public static async Task<HttpResponseMessage> Run(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequestMessage req,
-    ILogger log)
-{
-    log.LogInformation("C# HTTP trigger function processed a request.");
-
-    var messages = await req.Content.ReadAsAsync<JArray>();
-
-    // If the request is for subscription validation, send back the validation code.
-    if (messages.Count > 0 && string.Equals((string)messages[0]["eventType"],
-        "Microsoft.EventGrid.SubscriptionValidationEvent",
-        System.StringComparison.OrdinalIgnoreCase))
-    {
-        log.LogInformation("Validate request received");
-        return req.CreateResponse<object>(new
-        {
-            validationResponse = messages[0]["data"]["validationCode"]
-        });
-    }
-
-    // The request is not for subscription validation, so it's for one or more events.
-    foreach (JObject message in messages)
-    {
-        // Handle one event.
-        EventGridEvent eventGridEvent = message.ToObject<EventGridEvent>();
-        log.LogInformation($"Subject: {eventGridEvent.Subject}");
-        log.LogInformation($"Time: {eventGridEvent.EventTime}");
-        log.LogInformation($"Event data: {eventGridEvent.Data.ToString()}");
-    }
-
-    return req.CreateResponse(HttpStatusCode.OK);
-}
-```
-
-Met de volgende Java script-voorbeeld code voor een HTTP-trigger wordt Event Grid trigger gedrag gesimuleerd. Gebruik dit voor beeld voor gebeurtenissen die in het Event Grid schema worden bezorgd.
-
-```javascript
-module.exports = function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
-
-    var messages = req.body;
-    // If the request is for subscription validation, send back the validation code.
-    if (messages.length > 0 && messages[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
-        context.log('Validate request received');
-        var code = messages[0].data.validationCode;
-        context.res = { status: 200, body: { "ValidationResponse": code } };
-    }
-    else {
-        // The request is not for subscription validation, so it's for one or more events.
-        // Event Grid schema delivers events in an array.
-        for (var i = 0; i < messages.length; i++) {
-            // Handle one event.
-            var message = messages[i];
-            context.log('Subject: ' + message.subject);
-            context.log('Time: ' + message.eventTime);
-            context.log('Data: ' + JSON.stringify(message.data));
-        }
-    }
-    context.done();
-};
-```
-
-De code voor het afhandelen van gebeurtenissen bevindt zich in de lus via de `messages` matrix.
-
-### <a name="cloudevents-schema"></a>CloudEvents-schema
-
-Met de volgende C# voorbeeld code voor een http-trigger wordt Event grid trigger gedrag gesimuleerd.  Gebruik dit voor beeld voor gebeurtenissen die in het CloudEvents-schema worden bezorgd.
-
-```csharp
-[FunctionName("HttpTrigger")]
-public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, ILogger log)
-{
-    log.LogInformation("C# HTTP trigger function processed a request.");
-
-    var requestmessage = await req.Content.ReadAsStringAsync();
-    var message = JToken.Parse(requestmessage);
-
-    if (message.Type == JTokenType.Array)
-    {
-        // If the request is for subscription validation, send back the validation code.
-        if (string.Equals((string)message[0]["eventType"],
-        "Microsoft.EventGrid.SubscriptionValidationEvent",
-        System.StringComparison.OrdinalIgnoreCase))
-        {
-            log.LogInformation("Validate request received");
-            return req.CreateResponse<object>(new
-            {
-                validationResponse = message[0]["data"]["validationCode"]
-            });
-        }
-    }
-    else
-    {
-        // The request is not for subscription validation, so it's for an event.
-        // CloudEvents schema delivers one event at a time.
-        log.LogInformation($"Source: {message["source"]}");
-        log.LogInformation($"Time: {message["eventTime"]}");
-        log.LogInformation($"Event data: {message["data"].ToString()}");
-    }
-
-    return req.CreateResponse(HttpStatusCode.OK);
-}
-```
-
-Met de volgende Java script-voorbeeld code voor een HTTP-trigger wordt Event Grid trigger gedrag gesimuleerd. Gebruik dit voor beeld voor gebeurtenissen die in het CloudEvents-schema worden bezorgd.
-
-```javascript
-module.exports = function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
-
-    var message = req.body;
-    // If the request is for subscription validation, send back the validation code.
-    if (message.length > 0 && message[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
-        context.log('Validate request received');
-        var code = message[0].data.validationCode;
-        context.res = { status: 200, body: { "ValidationResponse": code } };
-    }
-    else {
-        // The request is not for subscription validation, so it's for an event.
-        // CloudEvents schema delivers one event at a time.
-        var event = JSON.parse(message);
-        context.log('Source: ' + event.source);
-        context.log('Time: ' + event.eventTime);
-        context.log('Data: ' + JSON.stringify(event.data));
-    }
-    context.done();
-};
-```
 
 ## <a name="next-steps"></a>Volgende stappen
 

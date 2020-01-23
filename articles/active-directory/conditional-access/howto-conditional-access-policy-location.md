@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42fa4dfb3e373eac4167ea1fecbd84ff3a7cca0d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 204026825a5132464e1adda611227db2ac7cf91f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977994"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543984"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Voorwaardelijke toegang: toegang blok keren per locatie
 
@@ -25,7 +25,7 @@ Met de voor waarde voor de locatie in voorwaardelijke toegang kunt u de toegang 
 ## <a name="define-locations"></a>Locaties definiëren
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
-1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
+1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang** > **benoemde locaties**.
 1. Kies **nieuwe locatie**.
 1. Geef een naam op voor uw locatie.
 1. Kies **IP-adresbereiken** als u de specifieke, extern toegankelijke IPv4-adresbereiken die deze locatie of **landen/regio's**vormen, kent.

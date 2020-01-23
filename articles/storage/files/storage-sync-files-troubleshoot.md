@@ -4,15 +4,15 @@ description: Veelvoorkomende problemen met Azure File Sync oplossen.
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/8/2019
+ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9318944004ae98eeb2a3300cabca07dfbe4e4fc7
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514626"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545038"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -48,6 +48,19 @@ stationsletter: \ is niet toegankelijk.
 De parameter is onjuist.
 
 Installeer de meest recente updates voor Windows Server 2012 R2 en start de server opnieuw op om het probleem op te lossen.
+
+<a id="server-registration-missing-subscriptions"></a>**Bij de server registratie worden niet alle Azure-abonnementen weer geven**  
+Wanneer u een server registreert met behulp van ServerRegistration. exe, ontbreken er abonnementen wanneer u op de vervolg keuzelijst voor het Azure-abonnement klikt.
+
+Dit probleem treedt op omdat ServerRegistration. exe momenteel geen ondersteuning biedt voor omgevingen met meerdere tenants. Dit probleem wordt opgelost in een toekomstige Azure File Sync agent update.
+
+U kunt dit probleem oplossen met behulp van de volgende Power shell-opdrachten om de server te registreren:
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+Login-AzureRmStorageSync -SubscriptionID "<guid>" -TenantID "<guid>"
+Register-AzureRmStorageSyncServer -SubscriptionId "<guid>" -ResourceGroupName "<string>" -StorageSyncServiceName "<string>"
+```
 
 <a id="server-registration-prerequisites"></a>**Bij de registratie van de server wordt het volgende bericht weer gegeven: "er ontbreken vereisten"**  
 Dit bericht wordt weer gegeven als AZ of AzureRM Power shell-module niet is geïnstalleerd in Power shell 5,1. 
@@ -311,6 +324,7 @@ Als u deze fouten wilt zien, voert u het Power shell-script **FileSyncErrorsRepo
 | 0x8000ffff | -2147418113 | E_UNEXPECTED | Het bestand kan niet worden gesynchroniseerd vanwege een onverwachte fout. | Als de fout gedurende enkele dagen blijft bestaan, kunt u een ondersteunings aanvraag openen. |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Het bestand kan niet worden gesynchroniseerd omdat het in gebruik is. Het bestand wordt gesynchroniseerd wanneer het niet meer in gebruik is. | U hoeft geen actie te ondernemen. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Het bestand is tijdens de synchronisatie gewijzigd, dus het moet opnieuw worden gesynchroniseerd. | U hoeft geen actie te ondernemen. |
+| 0x80070017 | -2147024873 | ERROR_CRC | Het bestand kan niet worden gesynchroniseerd vanwege een CRC-fout. Deze fout kan optreden als een gelaagd bestand niet is ingetrokken vóór het verwijderen van een server eindpunt of als het bestand is beschadigd. | Om dit probleem op te lossen, raadpleegt u [gelaagde bestanden niet toegankelijk op de server nadat u een server eindpunt hebt verwijderd](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) om gelaagde bestanden te verwijderen die zwevend zijn. Als de fout blijft optreden nadat u oprhaned gelaagde bestanden hebt verwijderd, voert u [chkdsk](https://docs.microsoft.com/windows-server/administration/windows-commands/chkdsk) uit op het volume. |
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Het bestand kan niet worden gesynchroniseerd omdat het maximum aantal conflict bestanden is bereikt. Azure File Sync ondersteunt 100-conflict bestanden per bestand. Zie Azure File Sync [Veelgestelde vragen](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution)voor meer informatie over bestands conflicten. | Verminder het aantal conflict bestanden om dit probleem op te lossen. Het bestand wordt gesynchroniseerd zodra het aantal conflict bestanden kleiner is dan 100. |
 
 #### <a name="handling-unsupported-characters"></a>Niet-ondersteunde tekens verwerken
@@ -442,6 +456,17 @@ Deze fout treedt op omdat de Azure File Sync-agent geen toegang heeft tot de Azu
 
 1. [Controleer of het opslag account bestaat.](#troubleshoot-storage-account)
 2. [Controleren of de instellingen voor de firewall en het virtuele netwerk op het opslagaccount correct zijn geconfigureerd (indien ingeschakeld)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+<a id="-2134364014"></a>**De synchronisatie is mislukt omdat het opslag account is vergrendeld.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83092 |
+| **HRESULT (decimaal)** | -2134364014 |
+| **Fout reeks** | ECS_E_STORAGE_ACCOUNT_LOCKED |
+| **Herstel vereist** | Ja |
+
+Deze fout treedt op omdat het opslag account een alleen-lezen [bron vergrendeling](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)heeft. U kunt dit probleem oplossen door de alleen-lezen resource vergrendeling voor het opslag account te verwijderen. 
 
 <a id="-1906441138"></a>**De synchronisatie is mislukt vanwege een probleem met de synchronisatie database.**  
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 524772578ad724e969bbeab0be0a3edcf32a845f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 36c6969ed89d0bb9222f52aa81de0d4128b9e533
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619610"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76542845"
 ---
 # <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>CloudSimple-bevoegdheden escaleren om beheer functies uit te voeren in de Privécloud-vCenter
 
@@ -33,5 +33,8 @@ Redenen voor het escaleren van bevoegdheden kunnen het volgende omvatten:
 In de CloudSimple-Portal kunt u machtigingen voor de lokale gebruiker CloudOwner op de vCenter-SSO [escaleren](escalate-private-cloud-privileges.md) .  U kunt de bevoegdheid van de externe gebruiker alleen escaleren als er een aanvullende ID-provider is geconfigureerd op vCenter.  Voor escalatie van bevoegdheden moet u de geselecteerde gebruiker toevoegen aan de ingebouwde groep Administrators van vSphere.  Er kan slechts één gebruiker escalated privileges hebben.  Als u de bevoegdheden van een andere gebruiker wilt door verwijzen, moet u eerst de bevoegdheden van de huidige gebruikers deactiveren.
 
 Gebruikers uit aanvullende identiteits bronnen moeten worden toegevoegd als leden van de groep CloudOwner.
+
+> [!CAUTION]
+> Nieuwe gebruikers moeten alleen worden toegevoegd aan de *Cloud-eigenaar-groep*, *Cloud-Global-cluster-admin groep*, *Cloud-Global-Storage-admin-Group*, Cloud-Global: *Network-Administrator-* Group of Cloud-Global:- *beheer groep*.  Gebruikers die zijn toegevoegd aan de groep *Administrators* , worden automatisch verwijderd.  Alleen service accounts moeten worden toegevoegd aan de groep *Administrators* en service accounts moeten worden gebruikt om u aan te melden bij de vSphere-webgebruikersinterface.
 
 Tijdens de escalatie periode gebruikt CloudSimple geautomatiseerde controle met bijbehorende waarschuwings meldingen om onbedoelde wijzigingen in de omgeving te identificeren.

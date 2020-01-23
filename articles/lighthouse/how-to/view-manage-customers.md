@@ -1,14 +1,14 @@
 ---
 title: Klanten en gedelegeerde resources weer geven en beheren
 description: Als service provider met behulp van Azure delegated Resource Management kunt u al uw gedelegeerte klant bronnen en abonnementen weer geven door naar mijn klanten te gaan in de Azure Portal.
-ms.date: 12/18/2019
+ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac268d2899dcc3d940072bfbfd17770044dc3c66
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d4b3187066754e8a549f029623762df539b30b1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456829"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543423"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Klanten en gedelegeerde resources weer geven en beheren
 
@@ -40,13 +40,20 @@ U kunt de volgende informatie op deze pagina bekijken:
 - Als u meer informatie over een aanbieding en de delegaties wilt zien, selecteert u de naam van het aanbod.
 - Als u meer informatie over roltoewijzingen voor gedelegeerde abonnementen of resource groepen wilt weer geven, selecteert u de vermelding in de kolom **delegaties** .
 
-## <a name="view-delegations"></a>Delegaties weer geven
+## <a name="view-and-manage-delegations"></a>Delegaties weer geven en beheren
 
 Delegaties tonen het abonnement/de resource groep die is gedelegeerd, samen met de gebruikers en machtigingen die er toegang toe hebben. Als u deze informatie wilt weer geven, selecteert u **delegaties** aan de linkerkant van de pagina **mijn klanten** .
 
 Met filters boven aan de pagina kunt u uw toegangs toewijzings gegevens sorteren en groeperen of filteren op specifieke klanten, aanbiedingen of tref woorden.
 
+### <a name="view-role-assignments"></a>Roltoewijzingen weergeven
+
 De gebruikers en machtigingen die aan elke delegatie zijn gekoppeld, worden weer gegeven in **de kolom roltoewijzingen** . U kunt elk item selecteren om de volledige lijst met gebruikers, groepen en service-principals weer te geven waaraan toegang is verleend tot het abonnement of de resource groep. Hier kunt u een bepaalde gebruiker, groep of Service Principal Name selecteren om meer informatie weer te geven.
+
+### <a name="remove-delegations"></a>Delegaties verwijderen
+
+Als u gebruikers met de functie voor het verwijderen van de [registratie toewijzing van beheerde services](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) hebt toegevoegd tijdens het voorbereiden van een klant voor Azure delegated resource management, kunnen die gebruikers een overdracht verwijderen door het pictogram Prullenbak te selecteren dat in de rij voor die delegatie wordt weer gegeven. Als dit het geval is, kunnen gebruikers in de Tenant van de service provider geen toegang krijgen tot de resources die eerder zijn gedelegeerd.
+
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>Werken in de context van een gedelegeerd abonnement
 

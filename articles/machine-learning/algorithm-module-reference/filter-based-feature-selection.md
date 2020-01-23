@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: e4e09ca77de00b7f189db2cbbcaca2e090dd7e72
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: bd1a6d4009181056ff0f91fc115d59851539bbe8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311628"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548472"
 ---
 # <a name="filter-based-feature-selection"></a>Functieselectie op basis van filters
 
-In dit artikel wordt beschreven hoe u de module voor het selecteren van functies op basis van filters in Azure Machine Learning Designer kunt gebruiken. Deze module helpt u bij het identificeren van de kolommen in uw invoer gegevensset die de grootste voorspellende kracht hebben. 
+In dit artikel wordt beschreven hoe u de module voor het selecteren van functies op basis van filters in Azure Machine Learning Designer (preview) gebruikt. Deze module helpt u bij het identificeren van de kolommen in uw invoer gegevensset die de grootste voorspellende kracht hebben. 
 
 In het algemeen verwijst het *selecteren van functies* naar het proces van het Toep assen van statistische tests op invoer, op basis van een opgegeven uitvoer. Het doel is om te bepalen welke kolommen meer voor spelling van de uitvoer zijn. De module op basis van filter functies bevat meerdere algoritmen voor het selecteren van onderdelen waaruit u kunt kiezen. De module bevat correlatie methoden, zoals Pearson-correlatie en Chi-kwadraat waarden. 
 

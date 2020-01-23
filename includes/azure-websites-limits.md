@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: a05229f22e1682d73b627e3b4644ba64e653335f
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 17d6947efcbaf8a01aeca70bf7a88dcc7b65cd0a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414551"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548198"
 ---
 | Bron | Gratis | Gedeeld | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -17,14 +17,14 @@ ms.locfileid: "74414551"
 | [App Service-plan](../articles/app-service/overview-hosting-plans.md) |10 per regio |10 per resource groep |100 per resource groep |100 per resource groep |100 per resource groep |100 per resource groep|
 | Type Compute-instantie |Gedeeld |Gedeeld |Toegewezen<sup>3</sup> |Toegewezen<sup>3</sup> |Toegewezen<sup>3</sup></p> |Toegewezen<sup>3</sup>|
 | [Uitschalen](../articles/app-service/manage-scale-up.md) (maximum aantal instanties) |1 gedeeld |1 gedeeld |3 toegewezen<sup>3</sup> |10 toegewezen<sup>3</sup> |30 toegewezen<sup>3</sup>|100 toegewezen<sup>4</sup>|
-| Opslag<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
+| Storage<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
 | CPU-tijd (5 minuten)<sup>6</sup> |3 minuten |3 minuten |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a>|
 | CPU-tijd (dag)<sup>6</sup> |60 minuten |240 minuten |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |
 | Geheugen (1 uur) |1\.024 MB per App Service-abonnement |1\.024 MB per app |N/A |N/A |N/A |N/A |
 | Bandbreedte |165 MB |Onbeperkte, [tarieven voor gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/) zijn van toepassing |Onbeperkte, [tarieven voor gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/) zijn van toepassing |Onbeperkte, [tarieven voor gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/) zijn van toepassing |Onbeperkte, [tarieven voor gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/) zijn van toepassing |Onbeperkte, [tarieven voor gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/) zijn van toepassing |
-| Toepassingsarchitectuur |32-bits |32-bits |32-bits/64-bits |32-bits/64-bits |32-bits/64-bits |32-bits/64-bits |
+| Toepassingsarchitectuur |32-bit |32-bit |32-bits/64-bits |32-bits/64-bits |32-bits/64-bits |32-bits/64-bits |
 | Websockets per exemplaar<sup>7</sup> |5 |35 |350 |Onbeperkt |Onbeperkt |Onbeperkt |
-| IP-verbindingen | 600 | 600 | Is afhankelijk van de grootte van het exemplaar<sup>8</sup> | Is afhankelijk van de grootte van het exemplaar<sup>8</sup> | Is afhankelijk van de grootte van het exemplaar<sup>8</sup> | 64,000 |
+| IP-verbindingen | 600 | 600 | Is afhankelijk van de grootte van het exemplaar<sup>8</sup> | Is afhankelijk van de grootte van het exemplaar<sup>8</sup> | Is afhankelijk van de grootte van het exemplaar<sup>8</sup> | 16,000 |
 | Gelijktijdige [verbindingen van fout opsporing](../articles/app-service/troubleshoot-dotnet-visual-studio.md) per toepassing |1 |1 |1 |5 |5 |5 |
 | App Service certificaten per abonnement<sup>9</sup>| Niet ondersteund | Niet ondersteund |10 |10 |10 |10 |
 | </a> voor aangepaste domeinen per app |0 (alleen azurewebsites.net subdomein)|500 |500 |500 |500 |500 |

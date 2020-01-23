@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 3ba4ac665df45ab6d53d2195ab59ec577f8bab05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e461f9de8b20e4f6c8f027b1ae81ae21e54ece86
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422291"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547928"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Beveiligings concepten voor toepassingen en clusters in azure Kubernetes service (AKS)
 
@@ -30,7 +30,7 @@ In dit artikel worden de belangrijkste concepten geïntroduceerd voor het beveil
 
 In AKS maken de Kubernetes-hoofd onderdelen deel uit van de beheerde service van micro soft. Elk AKS-cluster heeft een eigen Kubernetes-Master met één Tenant om de API-server, scheduler, enzovoort te bieden. Dit model wordt beheerd en onderhouden door micro soft.
 
-De Kubernetes API-server gebruikt standaard een openbaar IP-adres en met Fully Qualified Domain Name (FQDN). U kunt de toegang tot de API-server beheren met behulp van Kubernetes met toegangs beheer op basis van rollen en Azure Active Directory. Zie [Azure AD-integratie met AKS][aks-aad]voor meer informatie.
+De Kubernetes API-server gebruikt standaard een openbaar IP-adres en een Fully Qualified Domain Name (FQDN). U kunt de toegang tot de API-server beheren met behulp van Kubernetes met toegangs beheer op basis van rollen en Azure Active Directory. Zie [Azure AD-integratie met AKS][aks-aad]voor meer informatie.
 
 ## <a name="node-security"></a>Knooppunt beveiliging
 

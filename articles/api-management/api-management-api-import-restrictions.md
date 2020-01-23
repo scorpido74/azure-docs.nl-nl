@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: a1c514368960d39834125bd497d05b3d9ebeae7c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640700"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513368"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-import beperkingen en bekende problemen
 
@@ -52,7 +52,6 @@ Als u fouten ontvangt bij het importeren van uw OpenAPI-document, moet u ervoor 
 
 -   Als er veel `servers` zijn opgegeven, probeert API Management de eerste HTTPs-URL te selecteren. Als er geen HTTPs-Url's zijn, de eerste HTTP-URL. Als er geen HTTP-Url's zijn, de URL van de server is leeg.
 -   `Examples` wordt niet ondersteund, maar `example` is.
--   `Multipart/form-data` wordt niet ondersteund.
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI importeren, bijwerken en exporteren
 

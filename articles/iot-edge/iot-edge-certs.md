@@ -8,22 +8,22 @@ ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9e4fd0203d68ef1f39d6efbb9d17d3e517969bff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a222f72e705184c5a7ba6701cfda41073c7eba57
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457277"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548744"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Meer informatie over het gebruik van Azure IoT Edge certificaten
 
-IoT Edge certificaten worden gebruikt voor de modules en downstream IoT-apparaten voor het verifiëren van de identiteit en de geldigheid van de [IOT Edge hub](iot-edge-runtime.md#iot-edge-hub) runtime-module waarmee ze verbinding maken. Deze verificatie inschakelen voor een beveiligde verbinding van TLS (transport layer security) tussen de runtime, de modules en de IoT-apparaten. Zoals IoT-Hub zelf, IoT Edge vereist een veilige en versleutelde verbinding van IoT downstream (bladeren) apparaten en IoT Edge-modules. Om een beveiligde TLS-verbinding tot stand te brengen, presenteert de IoT Edge hub-module een server certificaat keten om clients te verbinden, zodat ze hun identiteit kunnen verifiëren.
+IoT Edge certificaten worden gebruikt door de modules en downstream IoT-apparaten om de identiteit en rechtmatigheid van de module [IOT Edge hub](iot-edge-runtime.md#iot-edge-hub) runtime te controleren. Deze verificatie inschakelen voor een beveiligde verbinding van TLS (transport layer security) tussen de runtime, de modules en de IoT-apparaten. Zoals IoT-Hub zelf, IoT Edge vereist een veilige en versleutelde verbinding van IoT downstream (bladeren) apparaten en IoT Edge-modules. Om een beveiligde TLS-verbinding tot stand te brengen, presenteert de IoT Edge hub-module een server certificaat keten om clients te verbinden, zodat ze hun identiteit kunnen verifiëren.
 
 In dit artikel wordt uitgelegd hoe IoT Edge certificaten kunnen werken in productie-, ontwikkelings-en test scenario's. De scripts zijn verschillende (Powershell versus bash), zijn de concepten hetzelfde tussen Linux en Windows.
 
 ## <a name="iot-edge-certificates"></a>IoT Edge-certificaten
 
-Meestal zijn fabrikanten niet de eind gebruikers van een IoT Edge apparaat. Soms is de enige relatie tussen de twee, wanneer de eind gebruiker of de operator, een algemeen apparaat koopt dat door de fabrikant is gemaakt. Andere keren werkt de fabrikant onder contract om een aangepast apparaat te bouwen namens de operator. Het ontwerp van de IoT Edge-certificaat wil rekening gehouden met beide scenario's.
+Meestal zijn fabrikanten niet de eind gebruikers van een IoT Edge apparaat. Soms is de enige relatie tussen de twee, wanneer de eind gebruiker of de operator, een algemeen apparaat koopt dat door de fabrikant is gemaakt. Andere keren werkt de fabrikant onder contract om een aangepast apparaat voor de operator te bouwen. Het ontwerp van de IoT Edge-certificaat wil rekening gehouden met beide scenario's.
 
 De volgende afbeelding ziet u IoT-Edge-gebruik van certificaten. Er kunnen zich nul, één of veel tussenliggende handtekening certificaten bevinden tussen het basis-CA-certificaat en het CA-certificaat van het apparaat, afhankelijk van het aantal betrokken entiteiten. Hier zien we één geval.
 
@@ -51,7 +51,7 @@ De fabrikant gebruikt in elk geval een tussenliggende CA-certificaat aan het ein
 
 ### <a name="device-ca-certificate"></a>Device CA-certificaat
 
-Het CA-certificaat van het apparaat is gegenereerd op basis van en ondertekend door het laatste tussenliggende CA-certificaat in het proces. Dit certificaat is geïnstalleerd op het IoT Edge apparaat zelf, bij voor keur in beveiligde opslag, zoals een Hardware Security module (HSM). Bovendien identificatie een certificaat van een apparaat unieke van een IoT Edge-apparaat. Het CA-certificaat van het apparaat kan andere certificaten ondertekenen. 
+Het CA-certificaat van het apparaat is gegenereerd op basis van en ondertekend door het laatste tussenliggende CA-certificaat in het proces. Dit certificaat is geïnstalleerd op het IoT Edge apparaat zelf, bij voor keur in beveiligde opslag, zoals een Hardware Security module (HSM). Bovendien identificatie een certificaat van een apparaat unieke van een IoT Edge-apparaat. Het CA-certificaat van het apparaat kan andere certificaten ondertekenen.
 
 ### <a name="iot-edge-workload-ca"></a>IoT Edge-werkbelasting CA
 
@@ -59,7 +59,7 @@ De [IOT Edge Security Manager](iot-edge-security-manager.md) GENEREERT het CA-ce
 
 ### <a name="iot-edge-hub-server-certificate"></a>IoT Edge hub-server certificaat
 
-Het IoT Edge hub-server certificaat is het daad werkelijke certificaat dat wordt aangeboden aan Leaf-apparaten en-modules voor identiteits verificatie tijdens het instellen van de TLS-verbinding die is vereist voor IoT Edge. Dit certificaat geeft de volledige keten van het ondertekenen van certificaten gebruikt voor het genereren ervan tot aan de basis-CA-certificaat de leaf-IoT-apparaat moet vertrouwen. Wanneer het is gegenereerd door IoT Edge Security Manager, wordt de algemene naam (CN) van dit IoT Edge hub-certificaat ingesteld op de eigenschap hostname in het bestand config. yaml na conversie naar kleine letters. Dit is een veelvoorkomende oorzaak van verwarring met IoT Edge.
+Het IoT Edge hub-server certificaat is het daad werkelijke certificaat dat wordt aangeboden aan Leaf-apparaten en-modules voor identiteits verificatie tijdens het instellen van de TLS-verbinding die is vereist voor IoT Edge. Dit certificaat geeft de volledige keten van het ondertekenen van certificaten gebruikt voor het genereren ervan tot aan de basis-CA-certificaat de leaf-IoT-apparaat moet vertrouwen. Wanneer het is gegenereerd door IoT Edge Security Manager, wordt de algemene naam (CN) van dit IoT Edge hub-certificaat ingesteld op de eigenschap hostname in het bestand config. yaml na conversie naar kleine letters. Deze configuratie is een veelvoorkomende bron van Verwar ring met IoT Edge.
 
 ## <a name="production-implications"></a>Gevolgen voor productie
 
@@ -94,9 +94,9 @@ Hier ziet u de hiërarchie van certificaat diepte weergegeven in de schermafbeel
 | Basis-CA-certificaat         | Azure IoT Hub-CA-certificaat Test alleen                                                                           |
 |-----------------------------|-----------------------------------------------------------------------------------------------------------|
 | Tussenliggende CA-certificaat | Azure IoT Hub tussenliggende certificaat alleen testen                                                                 |
-| Device CA-certificaat       | iotgateway.CA ("iotgateway" is doorgegeven als de naam < gateway > aan de scripts voor uw gemak bedoeld;)      |
+| Device CA-certificaat       | iotgateway.CA ("iotgateway" is doorgegeven als de naam < gateway > aan de scripts voor uw gemak bedoeld;)   |
 | Workload CA-certificaat     | iotedge werkbelasting ca                                                                                       |
-| IoT Edge hub-server certificaat | iotedgegw.local (overeenkomt met de 'hostnaam' van config.yaml)                                                |
+| IoT Edge hub-server certificaat | iotedgegw.local (overeenkomt met de 'hostnaam' van config.yaml)                                            |
 
 ## <a name="next-steps"></a>Volgende stappen
 

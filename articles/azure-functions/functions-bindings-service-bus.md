@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 4deae28d172bf717f527824be4be050975614c7d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 424d797410c091dc53687284c2b32e2f1f0358e1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277369"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549067"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-bindingen voor Azure Functions
 
@@ -40,16 +40,7 @@ De Service Bus-trigger te gebruiken om te reageren op berichten van een Service 
 
 ## <a name="trigger---example"></a>Trigger - voorbeeld
 
-Zie het voorbeeld taalspecifieke:
-
-* [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>Trigger - voorbeeld met C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) die leest [bericht metagegevens](#trigger---message-metadata) en een Service Bus-wachtrij-bericht vastlegt:
 
@@ -70,7 +61,7 @@ public static void Run(
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Trigger - voorbeeld van C#-script
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
 Het volgende voorbeeld ziet u een Service Bus-trigger binding in een *function.json* bestand en een [C#-scriptfunctie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie leest [bericht metagegevens](#trigger---message-metadata) en een Service Bus-wachtrij-bericht vastlegt.
 
@@ -110,90 +101,7 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>Trigger - F# voorbeeld
-
-Het volgende voorbeeld ziet u een Service Bus-trigger binding in een *function.json* bestand en een [ F# functie](functions-reference-fsharp.md) die gebruikmaakt van de binding. De functie vastlegt een Service Bus-wachtrij-bericht. 
-
-Hier volgt de binding-gegevens de *function.json* bestand:
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "testqueue",
-    "connection": "MyServiceBusConnection",
-    "name": "myQueueItem",
-    "type": "serviceBusTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-Hier volgt de F# code script:
-
-```fsharp
-let Run(myQueueItem: string, log: ILogger) =
-    log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
-```
-
-### <a name="trigger---java-example"></a>Trigger - Java-voorbeeld
-
-De volgende Java-functie maakt gebruik van de `@ServiceBusQueueTrigger` annotatie van de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime) om de configuratie voor een service bus wachtrij trigger te beschrijven. De functie trekt het bericht dat in de wachtrij is geplaatst en voegt het toe aan de logboeken.
-
-```java
-@FunctionName("sbprocessor")
- public void serviceBusProcess(
-    @ServiceBusQueueTrigger(name = "msg",
-                             queueName = "myqueuename",
-                             connection = "myconnvarname") String message,
-   final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
-```
-
-De volgende Java-functie toont het ophalen van meta gegevens die zijn gedefinieerd in de _gebruikers eigenschappen_ van een service bus bericht: 
-```java
-public class ServiceBusQueueTriggerJava {
-    @FunctionName("ServiceBusQueueTriggerJava")
-    public void run(
-            @ServiceBusQueueTrigger(name = "message", queueName = "myqueue", connection = "AzureWebJobsStorage") String message,
-            @BindingName("UserProperties") UserProperties userProperties,
-            final ExecutionContext context
-    ) {
-        context.getLogger().info("Java Service Bus Queue trigger function executed.");
-        context.getLogger().info(message);
-        context.getLogger().info(userProperties.key1);
-        context.getLogger().info(userProperties.key2);
-    }
-}
-
-public class UserProperties {
-    public String key1;
-    public String key2;
-}
-```
-
-Java-functies kunnen ook worden geactiveerd wanneer een bericht wordt toegevoegd aan een Service Bus onderwerp. In het volgende voor beeld wordt de `@ServiceBusTopicTrigger` aantekening gebruikt om de trigger configuratie te beschrijven.
-
-```java
-@FunctionName("sbtopicprocessor")
-    public void run(
-        @ServiceBusTopicTrigger(
-            name = "message",
-            topicName = "mytopicname",
-            subscriptionName = "mysubscription",
-            connection = "ServiceBusConnection"
-        ) String message,
-        final ExecutionContext context
-    ) {
-        context.getLogger().info(message);
-    }
-```
-
-### <a name="trigger---javascript-example"></a>Trigger - JavaScript-voorbeeld
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Het volgende voorbeeld ziet u een Service Bus-trigger binding in een *function.json* bestand en een [JavaScript-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie leest [bericht metagegevens](#trigger---message-metadata) en een Service Bus-wachtrij-bericht vastlegt. 
 
@@ -226,7 +134,7 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-### <a name="trigger---python-example"></a>Voor beeld van een trigger-python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 In het volgende voor beeld ziet u hoe u een Service Bus wachtrij bericht kunt lezen via een trigger.
 
@@ -277,7 +185,44 @@ def main(msg: func.ServiceBusMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Trigger - kenmerken
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+De volgende Java-functie maakt gebruik van de `@ServiceBusQueueTrigger` annotatie van de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime) om de configuratie voor een service bus wachtrij trigger te beschrijven. De functie trekt het bericht dat in de wachtrij is geplaatst en voegt het toe aan de logboeken.
+
+```java
+@FunctionName("sbprocessor")
+ public void serviceBusProcess(
+    @ServiceBusQueueTrigger(name = "msg",
+                             queueName = "myqueuename",
+                             connection = "myconnvarname") String message,
+   final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+```
+
+Java-functies kunnen ook worden geactiveerd wanneer een bericht wordt toegevoegd aan een Service Bus onderwerp. In het volgende voor beeld wordt de `@ServiceBusTopicTrigger` aantekening gebruikt om de trigger configuratie te beschrijven.
+
+```java
+@FunctionName("sbtopicprocessor")
+    public void run(
+        @ServiceBusTopicTrigger(
+            name = "message",
+            topicName = "mytopicname",
+            subscriptionName = "mysubscription",
+            connection = "ServiceBusConnection"
+        ) String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info(message);
+    }
+```
+
+---
+
+## <a name="trigger---attributes-and-annotations"></a>Trigger-kenmerken en aantekeningen
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 In [C#-klassebibliotheken](functions-dotnet-class-library.md), de volgende kenmerken gebruiken om te configureren van een Service Bus-trigger:
 
@@ -308,7 +253,7 @@ In [C#-klassebibliotheken](functions-dotnet-class-library.md), de volgende kenme
   }
   ```
 
-  Zie voor een compleet voorbeeld [Trigger - voorbeeld met C#](#trigger---c-example).
+  Zie voor een volledig voor beeld [trigger-voor beeld](#trigger---example).
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
 
@@ -336,6 +281,28 @@ De Service Bus-account moet worden gebruikt, wordt bepaald in de volgende volgor
 * De `ServiceBusAccount` kenmerk toegepast op de klasse.
 * De 'AzureWebJobsServiceBus' app-instelling.
 
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+
+Kenmerken worden niet ondersteund door C# het script.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Kenmerken worden niet ondersteund door Java script.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Kenmerken worden niet ondersteund door python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Met de `ServiceBusQueueTrigger` aantekening kunt u een functie maken die wordt uitgevoerd wanneer een Service Bus wachtrij bericht wordt gemaakt. Beschik bare configuratie opties zijn wachtrij naam en connection string naam.
+
+Met de `ServiceBusTopicTrigger` aantekening kunt u een onderwerp en een abonnement aanwijzen om te bepalen welke gegevens de functie activeren.
+
+Zie het [voor beeld](#trigger---example) van de trigger voor meer details.
+
+---
+
 ## <a name="trigger---configuration"></a>Trigger - configuratie
 
 De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `ServiceBusTrigger` kenmerk.
@@ -356,7 +323,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 ## <a name="trigger---usage"></a>Trigger - gebruik
 
-In C# en C#-script, kunt u de volgende parametertypen voor de wachtrij of onderwerp bericht:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+De volgende parameter typen zijn beschikbaar voor het bericht in de wachtrij of het onderwerp:
 
 * `string` -Als het bericht tekst is.
 * `byte[]` -Dit is handig voor binaire gegevens.
@@ -365,7 +334,32 @@ In C# en C#-script, kunt u de volgende parametertypen voor de wachtrij of onderw
 
 Deze parameter typen zijn voor Azure Functions versie 1. x; gebruik voor 2. x en hoger [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) in plaats van `BrokeredMessage`.
 
-In JavaScript, opent u het bericht wachtrij of onderwerp via `context.bindings.<name from function.json>`. De Service Bus-bericht wordt doorgegeven in de functie als een tekenreeks of een JSON-object.
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+
+De volgende parameter typen zijn beschikbaar voor het bericht in de wachtrij of het onderwerp:
+
+* `string` -Als het bericht tekst is.
+* `byte[]` -Dit is handig voor binaire gegevens.
+* Een aangepast type - als het bericht JSON bevat, Azure Functions probeert te deserialiseren van de JSON-gegevens.
+* `BrokeredMessage`: geeft u het gedeserialiseerd bericht met de methode [BrokeredMessage. GetBody\<t > ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) .
+
+Deze para meters zijn voor Azure Functions versie 1. x; gebruik voor 2. x en hoger [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) in plaats van `BrokeredMessage`.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Toegang tot de wachtrij of het onderwerp bericht met behulp van `context.bindings.<name from function.json>`. De Service Bus-bericht wordt doorgegeven in de functie als een tekenreeks of een JSON-object.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Het wachtrij bericht is beschikbaar voor de functie via een para meter die is getypt als `func.ServiceBusMessage`. De Service Bus-bericht wordt doorgegeven in de functie als een tekenreeks of een JSON-object.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Het binnenkomende Service Bus-bericht is beschikbaar via een `ServiceBusQueueMessage`-of `ServiceBusTopicMessage`-para meter.
+
+[Zie het voor beeld voor meer informatie](#trigger).
+
+---
 
 ## <a name="trigger---poison-messages"></a>Trigger - Onverwerkbare berichten
 
@@ -404,18 +398,9 @@ Zie [codevoorbeelden](#trigger---example) die eerder in dit artikel gebruikmaken
 
 Gebruik Azure Service Bus-Uitvoerbinding voor het verzenden van berichten in wachtrij of onderwerp.
 
-## <a name="output---example"></a>Uitvoer - voorbeeld
+### <a name="output---example"></a>Uitvoer - voorbeeld
 
-Zie het voorbeeld taalspecifieke:
-
-* [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
-* [F#](#output---f-example)
-* [Java](#output---java-example)
-* [JavaScript](#output---javascript-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>Uitvoer - voorbeeld met C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) het bericht van een Service Bus-wachtrij worden verzonden:
 
@@ -429,7 +414,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-### <a name="output---c-script-example"></a>Uitvoer - voorbeeld van C#-script
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
 Het volgende voorbeeld ziet u een Service Bus-Uitvoerbinding een *function.json* bestand en een [C#-scriptfunctie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie een timertrigger gebruikt voor het verzenden van een wachtrijbericht elke 15 seconden.
 
@@ -480,79 +465,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-### <a name="output---f-example"></a>Uitvoer - F# voorbeeld
-
-Het volgende voorbeeld ziet u een Service Bus-Uitvoerbinding een *function.json* bestand en een [ F# functie script](functions-reference-fsharp.md) die gebruikmaakt van de binding. De functie een timertrigger gebruikt voor het verzenden van een wachtrijbericht elke 15 seconden.
-
-Hier volgt de binding-gegevens de *function.json* bestand:
-
-```json
-{
-    "bindings": [
-        {
-            "schedule": "0/15 * * * * *",
-            "name": "myTimer",
-            "runsOnStartup": true,
-            "type": "timerTrigger",
-            "direction": "in"
-        },
-        {
-            "name": "outputSbQueue",
-            "type": "serviceBus",
-            "queueName": "testqueue",
-            "connection": "MyServiceBusConnection",
-            "direction": "out"
-        }
-    ],
-    "disabled": false
-}
-```
-
-Hier volgt F# code die een enkel bericht maakt een script:
-
-```fsharp
-let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
-    let message = sprintf "Service Bus queue message created at: %s" (DateTime.Now.ToString())
-    log.LogInformation(message)
-    outputSbQueue = message
-```
-
-### <a name="output---java-example"></a>Uitvoer - Java-voorbeeld
-
-In het volgende voor beeld ziet u een Java-functie die een bericht verzendt naar een Service Bus wachtrij `myqueue` wanneer deze wordt geactiveerd door een HTTP-aanvraag.
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- In de [Java functions runtime library](/java/api/overview/azure/functions/runtime), gebruikt u de `@ServiceBusQueueOutput` aantekening op functieparameters waarvan de waarde kan worden geschreven naar een Service Bus-wachtrij.  Het parametertype moet `OutputBinding<T>`, waarbij T alle systeemeigen Java-type van een POJO.
-
-Java-functies kunnen ook worden geschreven naar een Service Bus onderwerp. In het volgende voor beeld wordt de `@ServiceBusTopicOutput` aantekening gebruikt om de configuratie voor de uitvoer binding te beschrijven. 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
-### <a name="output---javascript-example"></a>Uitvoer - JavaScript-voorbeeld
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Het volgende voorbeeld ziet u een Service Bus-Uitvoerbinding een *function.json* bestand en een [JavaScript-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie een timertrigger gebruikt voor het verzenden van een wachtrijbericht elke 15 seconden.
 
@@ -604,7 +517,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="output---python-example"></a>Voor beeld van de uitvoer-python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 In het volgende voor beeld ziet u hoe u kunt schrijven naar een Service Bus wachtrij in python.
 
@@ -654,7 +567,46 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Uitvoer - kenmerken
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Het volgende voorbeeld ziet u een Java-functie die een bericht naar een Service Bus-wachtrij verzendt `myqueue` wanneer ze worden geactiveerd door een HTTP-aanvraag.
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ In de [Java functions runtime library](/java/api/overview/azure/functions/runtime), gebruikt u de `@QueueOutput` aantekening op functieparameters waarvan de waarde kan worden geschreven naar een Service Bus-wachtrij.  Het parametertype moet `OutputBinding<T>`, waarbij T alle systeemeigen Java-type van een POJO.
+
+Java-functies kunnen ook worden geschreven naar een Service Bus onderwerp. In het volgende voor beeld wordt de `@ServiceBusTopicOutput` aantekening gebruikt om de configuratie voor de uitvoer binding te beschrijven. 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Uitvoer-kenmerken en aantekeningen
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 In [C#-klassebibliotheken](functions-dotnet-class-library.md), gebruikt u de [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
 
@@ -680,9 +632,27 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-Zie voor een compleet voorbeeld [uitvoer - voorbeeld met C#](#output---c-example).
+Zie voor een volledig voor beeld [uitvoer-voor beeld](#output---example).
 
-U kunt het `ServiceBusAccount` kenmerk gebruiken om het Service Bus-account op te geven dat moet worden gebruikt op de klasse, de methode of het parameter niveau.  Zie voor meer informatie, [Trigger - kenmerken](#trigger---attributes).
+U kunt de `ServiceBusAccount` kenmerk om op te geven van de Service Bus-account moet worden gebruikt op het niveau van klasse, methode of parameter.  Zie voor meer informatie, [Trigger - kenmerken](#trigger---attributes-and-annotations).
+
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+
+Kenmerken worden niet ondersteund door C# het script.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Kenmerken worden niet ondersteund door Java script.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Kenmerken worden niet ondersteund door python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+De aantekeningen `ServiceBusQueueOutput` en `ServiceBusTopicOutput` zijn beschikbaar om een bericht te schrijven als uitvoer functie. De para meter die is gedecoreerd met deze aantekeningen moet worden gedeclareerd als een `OutputBinding<T>` waarbij `T` het type is dat overeenkomt met het type van het bericht.
+
+---
 
 ## <a name="output---configuration"></a>Uitvoer - configuratie
 
@@ -704,7 +674,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 In Azure Functions 1.x, de runtime maakt de wachtrij als deze nog niet bestaat en u hebt ingesteld `accessRights` naar `manage`. In functies versie 2. x en hoger moet de wachtrij of het onderwerp al bestaan; Als u een wachtrij of onderwerp opgeeft dat niet bestaat, mislukt de functie. 
 
-In C# en C#-script, kunt u de volgende parametertypen voor de Uitvoerbinding:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Gebruik de volgende parameter typen voor de uitvoer binding:
 
 * `out T paramName` - `T` geen JSON-geserialiseerd type kan zijn. Als de waarde van parameter is null wanneer de functie wordt afgesloten, wordt het bericht in functies gemaakt met een null-object.
 * `out string` -Als de waarde van parameter is null wanneer de functie wordt afgesloten, wordt in functies een bericht niet maken.
@@ -719,9 +691,36 @@ Bij het werken C# met functies:
 
 * Als u toegang wilt krijgen tot de sessie-ID, bindt u met een [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) type en gebruikt u de eigenschap `sessionId`.
 
-In JavaScript, toegang krijgen tot de wachtrij of onderwerp met behulp van `context.bindings.<name from function.json>`. U kunt een teken reeks, een byte matrix of een Java Script-object (gedeserialiseerd in JSON) toewijzen aan `context.binding.<name>`.
+# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
-Als u een bericht wilt verzenden naar een wachtrij met ingeschakelde sessiesC# in niet-talen, gebruikt u de [Azure service bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) in plaats van de ingebouwde uitvoer binding.
+Gebruik de volgende parameter typen voor de uitvoer binding:
+
+* `out T paramName` - `T` geen JSON-geserialiseerd type kan zijn. Als de waarde van parameter is null wanneer de functie wordt afgesloten, wordt het bericht in functies gemaakt met een null-object.
+* `out string` -Als de waarde van parameter is null wanneer de functie wordt afgesloten, wordt in functies een bericht niet maken.
+* `out byte[]` -Als de waarde van parameter is null wanneer de functie wordt afgesloten, wordt in functies een bericht niet maken.
+* `out BrokeredMessage`-als de waarde van de para meter null is wanneer de functie wordt afgesloten, wordt door functies geen bericht gemaakt (voor de functies 1. x)
+* `out Message`-als de waarde van de para meter null is wanneer de functie wordt afgesloten, wordt door functies geen bericht gemaakt (voor de functies 2. x en hoger)
+* `ICollector<T>` of `IAsyncCollector<T>` : voor het maken van meerdere berichten. Een bericht wordt gemaakt bij het aanroepen van de `Add` methode.
+
+Bij het werken C# met functies:
+
+* Voor async-functies is een retour waarde of een `IAsyncCollector` vereist in plaats van een `out`-para meter.
+
+* Als u toegang wilt krijgen tot de sessie-ID, bindt u met een [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) type en gebruikt u de eigenschap `sessionId`.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Toegang tot de wachtrij of het onderwerp met behulp van `context.bindings.<name from function.json>`. U kunt een teken reeks, een byte matrix of een Java Script-object (gedeserialiseerd in JSON) toewijzen aan `context.binding.<name>`.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Gebruik de [Azure service bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) in plaats van de ingebouwde uitvoer binding.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Gebruik de [Azure service bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) in plaats van de ingebouwde uitvoer binding.
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonderingen en retourcodes
 

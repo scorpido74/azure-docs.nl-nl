@@ -1,6 +1,6 @@
 ---
 title: Ruwe Herlokalisatie in doel stelling-C
-description: Uitgebreide uitleg over het maken en vinden van ankers met behulp van sensors op het apparaat in doel-C.
+description: Uitgebreide uitleg over het maken en vinden van ankers met ruwe Herlokalisatie in doel-C.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d60bb9dbb546db1af6f689dbdcb485354fb7174e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 251f0d8609921bd1d0222d9e30c537ecbb2a04bd
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277226"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548268"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-objective-c"></a>Ankers maken en vinden met behulp van sensors op apparaat in doel-C
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-objective-c"></a>Ankers maken en vinden met ruwe Herlokalisatie in doel stelling-C
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9d2986acc47087c267193eee43136e030abcc422
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: eeced5205b836a15a43fbccfb8c6cb60b4bec29f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990308"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76542862"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identiteits bronnen instellen voor het gebruik van Active Directory
 
@@ -33,7 +33,7 @@ In deze hand leiding worden de taken beschreven voor het instellen van Active Di
 Voordat u [een identiteits bron toevoegt](#add-an-identity-source-on-vcenter), moet [u uw vCenter-bevoegdheden tijdelijk escaleren](escalate-private-cloud-privileges.md).
 
 > [!CAUTION]
-> Nieuwe gebruikers moeten alleen worden toegevoegd aan de *Cloud-eigenaar-groep*, *Cloud-Global-cluster-admin groep*, *Cloud-Global-Storage-admin-Group*, Cloud-Global: *Network-Administrator-* Group of Cloud-Global:- *beheer groep*.  Gebruikers die zijn toegevoegd aan de groep *Administrators* , worden automatisch verwijderd.  Alleen service accounts moeten worden toegevoegd aan de groep *Administrators* .  
+> Nieuwe gebruikers moeten alleen worden toegevoegd aan de *Cloud-eigenaar-groep*, *Cloud-Global-cluster-admin groep*, *Cloud-Global-Storage-admin-Group*, Cloud-Global: *Network-Administrator-* Group of Cloud-Global:- *beheer groep*.  Gebruikers die zijn toegevoegd aan de groep *Administrators* , worden automatisch verwijderd.  Alleen service accounts moeten worden toegevoegd aan de groep *Administrators* en service accounts moeten worden gebruikt om u aan te melden bij de vSphere-webgebruikersinterface.   
 
 
 ## <a name="identity-source-options"></a>Opties voor identiteits bron

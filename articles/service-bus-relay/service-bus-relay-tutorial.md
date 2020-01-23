@@ -1,6 +1,6 @@
 ---
 title: Een on-premises WCF REST-service beschikbaar stellen aan clients met Azure Relay
-description: 'Zelf studie: een client-en service toepassing bouwen met behulp van WCF Relay.'
+description: In deze zelf studie wordt beschreven hoe u een on-premises WCF REST-service beschikbaar maakt voor een externe client met behulp van Azure WCF Relay.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/05/2019
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: ee090ca0d7bbdad70147b85644952143c086d336
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 551c8e662669737d9d074a69cb03d6060ab87ad5
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452296"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513079"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Zelf studie: een on-premises WCF REST-service beschikbaar maken voor externe clients met behulp van Azure WCF Relay
 
@@ -83,7 +83,7 @@ In het service contract wordt aangegeven welke bewerkingen door de service worde
     using Microsoft.ServiceBus;
     ```
 
-1. Verander de standaardnaam `EchoService` van de naamruimte in `Microsoft.ServiceBus.Samples`.
+1. Verander de naamruimtenaam van de standaardnaam van `EchoService` in `Microsoft.ServiceBus.Samples`.
 
    > [!IMPORTANT]
    > Deze zelf studie maakt C# gebruik van de naam ruimte `Microsoft.ServiceBus.Samples` dat de naam ruimte is van het op contracten gebaseerd beheerde type dat wordt gebruikt in het configuratie bestand in het gedeelte [de WCF-client configureren](#configure-the-wcf-client) . U kunt elke gewenste naam ruimte opgeven wanneer u dit voor beeld bouwt. De zelf studie werkt echter alleen als u de naam ruimten van het contract en de service dienovereenkomstig wijzigt in het configuratie bestand van de toepassing. De naam ruimte die is opgegeven in het bestand *app. config* moet hetzelfde zijn als de naam ruimte C# die is opgegeven in uw bestanden.
@@ -454,7 +454,7 @@ De volgende taak is het maken van een client toepassing en het definiëren van h
    1. Name project *EchoClient* en selecteer **Create**.
 
 1. Dubbel klik in **Solution Explorer**in het project **EchoClient** op **Program.cs** om het bestand in de editor te openen, als dit nog niet is geopend.
-1. Verander de standaardnaam `EchoClient` van de naamruimte in `Microsoft.ServiceBus.Samples`.
+1. Verander de naamruimtenaam van de standaardnaam van `EchoClient` in `Microsoft.ServiceBus.Samples`.
 1. Installeer het [Service Bus NuGet-pakket](https://www.nuget.org/packages/WindowsAzure.ServiceBus):
 
    1. Klik in **Solution Explorer**met de rechter muisknop op **EchoClient** en selecteer vervolgens **NuGet-pakketten beheren**.

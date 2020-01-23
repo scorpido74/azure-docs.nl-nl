@@ -7,20 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: aafefeb94f3b150789a91c3cf669520ccb522dd8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893056"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544154"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Voor beeld-Azure AD Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager
 
-Azure Active Directory Domain Services (AD DS) ondersteunt eenmalige overstap voor klanten die momenteel gebruikmaken van het klassieke virtuele netwerk model naar het Resource Manager-model van het virtuele netwerk.
+Azure Active Directory Domain Services (AD DS) ondersteunt eenmalige overstap voor klanten die momenteel gebruikmaken van het klassieke virtuele netwerk model naar het Resource Manager-model van het virtuele netwerk. Azure AD DS beheerde domeinen die gebruikmaken van het Resource Manager-implementatie model bieden extra functies, zoals een verfijnd wachtwoord beleid, audit logboeken en beveiliging tegen account vergrendeling.
 
-In dit artikel vindt u een overzicht van de voor delen en overwegingen voor migratie en vervolgens de vereiste stappen om een bestaand exemplaar van Azure AD DS te migreren. Deze functie is momenteel beschikbaar als preview-product.
+In dit artikel vindt u een overzicht van de voor delen en overwegingen voor migratie en vervolgens de vereiste stappen om een bestaand exemplaar van Azure AD DS te migreren. Deze migratie functie is momenteel beschikbaar als preview-versie.
 
 ## <a name="overview-of-the-migration-process"></a>Overzicht van het migratieproces
 
@@ -106,7 +106,7 @@ Tijdens de voor bereiding en het migreren van een Azure AD DS beheerd domein, zi
 
 ### <a name="ip-addresses"></a>IP-adressen
 
-De IP-adressen van de domein controller voor een door Azure AD DS beheerde domein wijziging na de migratie. Dit omvat het open bare IP-adres voor het beveiligde LDAP-eind punt. De nieuwe IP-adressen bevinden zich in het adres bereik voor het nieuwe subnet in het Resource Manager-virtuele netwerk.
+De IP-adressen van de domein controller voor een door Azure AD DS beheerde domein wijziging na de migratie. Deze wijziging omvat het open bare IP-adres voor het beveiligde LDAP-eind punt. De nieuwe IP-adressen bevinden zich in het adres bereik voor het nieuwe subnet in het Resource Manager-virtuele netwerk.
 
 In het geval van terugdraaien kunnen de IP-adressen na terugdraaien worden gewijzigd.
 
@@ -122,13 +122,13 @@ In azure AD DS beheerde domeinen die worden uitgevoerd op klassieke virtuele net
 
 Standaard hebben vijf mislukte wachtwoord pogingen binnen twee minuten een account voor 30 minuten vergrendeld.
 
-Een vergrendeld account kan niet worden aangemeld bij, wat kan leiden tot de mogelijkheid om het door Azure AD DS beheerde domein of toepassingen die worden beheerd door het account te beheren. Nadat een door Azure AD DS beheerd domein is gemigreerd, kunnen accounts zich voordoen als een permanente vergren deling als gevolg van herhaalde mislukte pogingen om zich aan te melden. Twee veelvoorkomende scenario's na migratie zijn onder andere:
+Een vergrendeld account kan niet worden gebruikt om aan te melden, wat kan leiden tot de mogelijkheid om het door Azure AD DS beheerde domein of toepassingen die worden beheerd door het account te beheren. Nadat een door Azure AD DS beheerd domein is gemigreerd, kunnen accounts zich voordoen als een permanente vergren deling als gevolg van herhaalde mislukte pogingen om zich aan te melden. Twee veelvoorkomende scenario's na migratie zijn onder andere:
 
 * Een service account dat een verlopen wacht woord gebruikt.
     * Het service account probeert zich herhaaldelijk aan te melden met een verlopen wacht woord, waardoor het account wordt vergrendeld. U kunt dit probleem verhelpen door de toepassing of virtuele machine te zoeken met verlopen referenties en het wacht woord bij te werken.
 * Een kwaadwillende entiteit maakt gebruik van felle pogingen om zich aan te melden bij accounts.
     * Wanneer Vm's worden blootgesteld aan Internet, kunnen aanvallers vaak gemeen schappelijke combi Naties van gebruikers namen en wacht woorden proberen als ze zich proberen aan te melden. Deze herhaalde mislukte aanmeldings pogingen kunnen de accounts vergren delen. Het is niet raadzaam om Administrator-accounts te gebruiken met algemene namen, zoals *admin* of *Administrator*, om te voor komen dat beheerders accounts worden vergrendeld.
-    * Minimaliseer het aantal Vm's dat wordt blootgesteld aan Internet. U kunt [Azure Bastion (momenteel in Preview)][azure-bastion] gebruiken om veilig verbinding te maken met virtuele machines met behulp van de Azure Portal.
+    * Minimaliseer het aantal Vm's dat wordt blootgesteld aan Internet. U kunt [Azure Bastion][azure-bastion] gebruiken om veilig verbinding te maken met virtuele machines met behulp van de Azure Portal.
 
 Als u vermoedt dat sommige accounts na de migratie kunnen worden vergrendeld, wordt in de laatste migratie stappen beschreven hoe u controle inschakelt of hoe u de instellingen voor een verfijnend wachtwoord beleid kunt wijzigen.
 
@@ -164,11 +164,11 @@ De migratie naar het Resource Manager-implementatie model en het virtuele netwer
 
 ## <a name="update-and-verify-virtual-network-settings"></a>De instellingen van het virtuele netwerk bijwerken en controleren
 
-Voordat u met de migratie begint, moet u de volgende eerste controles en updates uitvoeren. Deze stappen kunnen worden uitgevoerd op elk moment vóór de migratie en zijn niet van invloed op de werking van het door Azure AD DS beheerde domein.
+Voordat u met het migratie proces begint, moet u de volgende eerste controles en updates uitvoeren. Deze stappen kunnen worden uitgevoerd op elk moment vóór de migratie en zijn niet van invloed op de werking van het door Azure AD DS beheerde domein.
 
 1. Werk uw lokale Azure PowerShell-omgeving bij naar de nieuwste versie. Voor het volt ooien van de migratie stappen moet u ten minste versie *2.3.2*hebben.
 
-    Zie [Azure PowerShell Overview][azure-powershell]voor meer informatie over het controleren en bijwerken.
+    Zie [Azure PowerShell Overview][azure-powershell]voor meer informatie over het controleren en bijwerken van uw Power shell-versie.
 
 1. Maak of kies een bestaand virtueel netwerk van Resource Manager.
 
@@ -210,7 +210,8 @@ Voer de volgende stappen uit om het beheerde domein voor Azure AD DS voor te ber
 
     ```powershell
     Migrate-Aadds `
-        -Prepare -ManagedDomainFqdn contoso.com `
+        -Prepare `
+        -ManagedDomainFqdn contoso.com `
         -Credentials $creds
     ```
 
@@ -273,27 +274,27 @@ De tweede domein controller moet beschikbaar zijn 1-2 uur nadat de migratie-cmdl
 
 Wanneer het migratie proces is voltooid, kunt u de volgende optionele configuratie stappen gebruiken om controle Logboeken of e-mail meldingen in te scha kelen of het verfijnde wachtwoord beleid bij te werken.
 
-#### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>Abonneren op audit logboeken met Azure Monitor
+### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>Abonneren op audit logboeken met Azure Monitor
 
 In azure AD DS worden audit logboeken weer gegeven om te helpen bij het oplossen van problemen en gebeurtenissen op de domein controllers te bekijken. Zie [audit logboeken inschakelen en gebruiken][security-audits]voor meer informatie.
 
 U kunt sjablonen gebruiken om belang rijke informatie te bewaken die in de logboeken wordt weer gegeven. De sjabloon audit logboek werkmap kan bijvoorbeeld mogelijke account vergrendelingen bewaken in het door Azure AD DS beheerde domein.
 
-#### <a name="configure-azure-ad-domain-services-email-notifications"></a>Azure AD Domain Services e-mail meldingen configureren
+### <a name="configure-azure-ad-domain-services-email-notifications"></a>Azure AD Domain Services e-mail meldingen configureren
 
 Als u een melding wilt ontvangen wanneer er een probleem wordt gedetecteerd in het beheerde domein van Azure AD DS, moet u de instellingen voor e-mail meldingen in de Azure Portal bijwerken. Zie [instellingen voor meldingen configureren][notifications]voor meer informatie.
 
-#### <a name="update-fine-grained-password-policy"></a>Nauw keurig wachtwoord beleid bijwerken
+### <a name="update-fine-grained-password-policy"></a>Nauw keurig wachtwoord beleid bijwerken
 
 Als dat nodig is, kunt u het beleid voor verfijnde wacht woorden bijwerken zodat het minder beperkend is dan de standaard configuratie. U kunt de audit Logboeken gebruiken om te bepalen of een minder beperkende instelling zinvol is, en vervolgens het beleid configureren als dat nodig is. Gebruik de volgende stappen op hoog niveau om de beleids instellingen te controleren en bij te werken voor accounts die na de migratie herhaaldelijk worden vergrendeld:
 
 1. [Configureer wachtwoord beleid][password-policy] voor minder beperkingen op het Azure AD DS beheerde domein en Bekijk de gebeurtenissen in de audit Logboeken.
 1. Als voor service accounts verlopen wacht woorden worden gebruikt, zoals aangegeven in de audit logboeken, moet u deze accounts bijwerken met het juiste wacht woord.
-1. Als de virtuele machine wordt blootgesteld aan Internet, controleert u op algemene account namen, zoals *Administrator*, *gebruiker*of *gast* , met hoge aanmeldings pogingen. Waar mogelijk kunt u deze Vm's bijwerken met minder algemeen benoemde accounts.
-1. Gebruik een netwerk tracering op de virtuele machine om de bron van de aanvallen te vinden en de IP-adressen te blok keren om u te kunnen aanmelden.
+1. Als een virtuele machine wordt blootgesteld aan Internet, controleert u op algemene account namen, zoals *Administrator*, *gebruiker*of *gast* , met hoge aanmeldings pogingen. Waar mogelijk kunt u deze Vm's bijwerken met minder algemeen benoemde accounts.
+1. Gebruik een netwerk tracering op de virtuele machine om de bron van de aanvallen te zoeken en te voor komen dat deze IP-adressen zich kunnen aanmelden.
 1. Wanneer er minimale vergrendelings problemen zijn, werkt u het verfijnde wachtwoord beleid zo strikt mogelijk aan.
 
-#### <a name="creating-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
+### <a name="creating-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
 Azure AD DS heeft een netwerk beveiligings groep nodig om de poorten die nodig zijn voor het beheerde domein te beveiligen en alle andere inkomend verkeer te blok keren. Deze netwerk beveiligings groep fungeert als een extra beveiligingslaag om de toegang tot het beheerde domein te vergren delen en wordt niet automatisch gemaakt. Als u de netwerk beveiligings groep wilt maken en de vereiste poorten wilt openen, raadpleegt u de volgende stappen:
 
@@ -301,6 +302,8 @@ Azure AD DS heeft een netwerk beveiligings groep nodig om de poorten die nodig z
 1. Als u beveiligde LDAP gebruikt, voegt u een regel toe aan de netwerk beveiligings groep om binnenkomend verkeer voor *TCP* -poort *636*toe te staan. Zie [Configure secure LDAP][secure-ldap](Engelstalig) voor meer informatie.
 
 ## <a name="roll-back-and-restore-from-migration"></a>Terugdraaien en herstellen vanaf migratie
+
+Tot een bepaald punt in het migratie proces kunt u ervoor kiezen om het door Azure AD DS beheerde domein terug te zetten of te herstellen.
 
 ### <a name="roll-back"></a>Terugdraaien
 

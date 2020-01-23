@@ -4,14 +4,14 @@ description: Geeft een uitleg over het plannen van voordat avere vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 5ffa28a0f6080b94bd47519df578fd15309dbab5
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: cd0c74c8aa40b3e96716ef37aa27b08b5f6aece1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153633"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547537"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Uw Avere vFXT-systeem plannen
 
@@ -175,6 +175,6 @@ Er worden twee ingebouwde Azure-rollen gebruikt voor de virtuele avere-machines 
 
 Als u toegangs rollen voor avere vFXT-onderdelen wilt aanpassen, moet u uw eigen rol definiëren en deze vervolgens toewijzen aan de virtuele machines op het moment dat ze worden gemaakt. U kunt de implementatie sjabloon niet gebruiken in azure Marketplace. Neem contact op met de klanten service van micro soft door een ticket in de Azure Portal te openen, zoals wordt beschreven in [hulp vragen bij uw systeem](avere-vfxt-open-ticket.md).
 
-## <a name="next-step-understand-the-deployment-process"></a>Volgende stap: inzicht in het implementatie proces
+## <a name="next-steps"></a>Volgende stappen
 
 [Implementatie overzicht](avere-vfxt-deploy-overview.md) biedt een grote weer gave van de stappen die nodig zijn voor het maken van een avere-VFXT voor Azure-systeem en het voorbereiden van de gegevens.

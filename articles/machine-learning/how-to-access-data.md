@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4de8b032bd284ce0a2d6d8fd168b9ea3dd4937d3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6867862c130bf6f0b7cc34098064f6ce6eec282b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289047"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543492"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Toegang tot gegevens in azure Storage-services
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,7 @@ U hebt het volgende nodig:
 
 ## <a name="supported-data-storage-service-types"></a>Ondersteunde service typen voor gegevens opslag
 
-Data stores ondersteunen momenteel het opslaan van verbindings gegevens naar de opslag services die in de volgende matrix worden weer gegeven.
+Data stores ondersteunen momenteel het opslaan van verbindings gegevens naar de opslag services die in de volgende matrix worden weer gegeven. Op dit moment wordt Azure Data Warehouse niet ondersteund. 
 
 | Type opslag&nbsp; | Type verificatie&nbsp; | [Azure&nbsp;machine&nbsp;Learning Studio](https://ml.azure.com/) | [Azure&nbsp;machine&nbsp;Learning&nbsp; python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;machine&nbsp;Learning CLI](reference-azure-machine-learning-cli.md) | [Azure&nbsp;machine&nbsp;Learning&nbsp; rest API](https://docs.microsoft.com/rest/api/azureml/)
 ---|---|---|---|---|---

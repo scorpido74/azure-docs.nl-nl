@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 5b44bfd94dffa14fcd501f5e0ddea11309adabf6
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 40ec859802da2f00154e750ea717da3da0f46568
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907847"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512841"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Zelfstudie: HTTPS configureren in een aangepast Front Door-domein
 
@@ -29,7 +29,7 @@ Enkele belangrijke kenmerken van de aangepaste HTTPS-functie zijn:
 
 - Geen extra kosten: er worden geen kosten in rekening gebracht voor het verwerven of vernieuwen van certificaten, of voor HTTPS-verkeer. 
 
-- Eenvoudig inschakelen: inrichten met één klik is beschikbaar in de [Microsoft Azure-portal](https://portal.azure.com). U kunt ook REST API of andere hulpprogramma’s voor ontwikkelaars gebruiken om de functie in te schakelen.
+- Eenvoudig inschakelen: inrichten met één klik is beschikbaar in [Azure Portal](https://portal.azure.com). U kunt ook REST API of andere hulpprogramma’s voor ontwikkelaars gebruiken om de functie in te schakelen.
 
 - Volledig certificaatbeheer is beschikbaar: alle aanschaf en beheer van certificaten wordt voor u afgehandeld. Certificaten worden automatisch ingericht en vernieuwd vóór de verloopdatum. Hierdoor loopt u niet het risico dat de service wordt onderbroken omdat een certificaat is verlopen.
 
@@ -46,14 +46,14 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de stappen in deze zelfstudie kunt voltooien, moet u een Front Door maken waaraan ten minste één aangepast domein is toegevoegd. Zie [Zelfstudie: Een aangepast domein aan uw Front Door toevoegen](front-door-custom-domain.md).
+Voordat u de stappen in deze zelfstudie kunt voltooien, moet u een Front Door maken waaraan ten minste één aangepast domein is toegevoegd. Zie [Zelfstudie: Een aangepast domein toevoegen aan uw Front Door](front-door-custom-domain.md) voor meer informatie.
 
 ## <a name="ssl-certificates"></a>SSL-certificaten
 
 Als u het HTTPS-protocol wilt inschakelen voor het veilig leveren van inhoud aan een aangepast Front Door-domein, moet u een SSL-certificaat gebruiken. U kunt ervoor kiezen om een certificaat te gebruiken dat wordt beheerd door Azure Front Door Service of uw eigen certificaat gebruiken.
 
 
-### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Optie 1 (standaard): een certificaat gebruiken dat wordt beheerd door Front Door
+### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Optie 1 (standaard): gebruik een certificaat dat wordt beheerd door Front Door
 
 Wanneer u een certificaat gebruikt dat wordt beheerd door de Azure-service Front Door, kan de HTTPS-functie met een paar muisklikken worden ingeschakeld. Azure Front Door Service verwerkt certificaatbeheertaken van begin tot eind. Denk hierbij aan taken zoals het kopen en vernieuwen van certificaten. Zodra u de functie hebt ingeschakeld, wordt de procedure onmiddellijk gestart. Als het aangepaste domein al is toegewezen aan de standaardfront-endhost van Front Door (`{hostname}.azurefd.net`), is geen verdere actie vereist. Front Door verwerkt de stappen en voltooit uw aanvraag automatisch. Als uw aangepaste domein echter elders is toegewezen, moet u e-mail gebruiken om uw domeinbezit te valideren.
 
@@ -70,7 +70,7 @@ Volg deze stappen om HTTPS in te schakelen in een aangepast domein:
 5. Ga door naar [Domein valideren](#validate-the-domain).
 
 
-### <a name="option-2-use-your-own-certificate"></a>Optie 2: Uw eigen certificaat gebruiken
+### <a name="option-2-use-your-own-certificate"></a>Optie 2: gebruik uw eigen certificaat
 
 U kunt uw eigen certificaat gebruiken voor het inschakelen van de HTTPS-functie. Dit proces verloopt via een integratie met Azure Key Vault, waarmee u uw certificaten veilig kunt opslaan. Azure Front Door Service maakt gebruik van dit beveiligde mechanisme om uw certificaat op te vragen en er zijn maar een paar extra stappen nodig. Wanneer u uw SSL-certificaat maakt, moet u deze maken met een toegestane certificeringsinstantie (CA). Als u een niet-toegestane CA gebruikt, wordt uw aanvraag geweigerd. Zie [Toegestane certificeringsinstanties voor het inschakelen van aangepaste HTTPS in Azure Front Door Service](front-door-troubleshoot-allowed-ca.md) voor een lijst met toegestane certificeringsinstanties.
 
@@ -91,7 +91,7 @@ U kunt uw eigen certificaat gebruiken voor het inschakelen van de HTTPS-functie.
 Registreer de service-principal voor Azure Front Door Service als een app in uw Azure Active Directory via PowerShell.
 
 > [!NOTE]
-> Deze actie hoeft slechts **één keer** per Tenant te worden uitgevoerd.
+> Voor deze actie zijn globale beheerders machtigingen vereist, die slechts **één keer** per Tenant moeten worden uitgevoerd.
 
 1. Installeer zo nodig [Azure PowerShell](/powershell/azure/install-az-ps) in PowerShell op uw lokale computer.
 
@@ -147,7 +147,7 @@ Als u uw eigen certificaat gebruikt, is domeinvalidatie niet nodig.
 
 Uw CNAME-record moet de volgende indeling hebben, waarbij *Naam* de naam van het aangepaste domein is en *Waarde* de standaardhostnaam .azurefd.net van uw Front Door:
 
-| Name            | Type  | Value                 |
+| Name            | Type  | Waarde                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -176,7 +176,7 @@ webmaster@&lt;uw-domeinnaam.com&gt;
 hostmaster@&lt;uw-domeinnaam.com&gt;  
 postmaster@&lt;uw-domeinnaam.com&gt;  
 
-U ontvangt binnen enkele minuten een e-mailbericht, vergelijkbaar met het bericht in het volgende voorbeeld, waarin u wordt gevraagd om de aanvraag goed te keuren. Als u een spam filter gebruikt, voegt admin@digicert.com u toe aan de acceptatie lijst. Als u na 24 uur nog geen e-mailbericht hebt ontvangen, neemt u contact op met Microsoft Ondersteuning.
+U ontvangt binnen enkele minuten een e-mailbericht, vergelijkbaar met het bericht in het volgende voorbeeld, waarin u wordt gevraagd om de aanvraag goed te keuren. Als u een spam filter gebruikt, voegt u admin@digicert.com toe aan de acceptatie lijst. Als u na 24 uur nog geen e-mailbericht hebt ontvangen, neemt u contact op met Microsoft Ondersteuning.
 
 Als u op de goedkeuringskoppeling klikt, wordt u naar een onlinegoedkeuringsformulier geleid. Volg de instructies op het formulier. U hebt twee verificatieopties:
 

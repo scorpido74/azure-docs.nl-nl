@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: bb0af855a136c83eac7e28287b28046b50a7c124
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b9fb15fc9f3dc51a0df40a4ccb738a97d4558dff
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892733"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545888"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Video Indexer widgets insluiten in uw toepassingen
 
@@ -29,7 +29,7 @@ Vanaf versie 2 bevat de basis-URL van de widget de regio van het opgegeven accou
 
 Een cognitieve Insights-widget bevat alle visuele inzichten die zijn geëxtraheerd uit het indexerings proces van uw video. De cognitieve Insights-widget ondersteunt de volgende optionele URL-para meters.
 
-|Naam|Definitie|Beschrijving|
+|Name|Definitie|Beschrijving|
 |---|---|---|
 |`widgets`|Tekenreeksen gescheiden door komma's|Hiermee kunt u de inzichten bepalen die u wilt weer geven. <br/> Voor beeld: met `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` worden alleen de gebruikers interface-inzichten van gebruikers en Brands weer gegeven.<br/>Beschikbare opties: mensen, trefwoorden, aantekeningen, merken, gevoelens, transcript, zoeken.<br/>Houd er rekening mee dat de para meter `widgets` URL niet wordt ondersteund in versie 2.<br/>|
 |`locale`|Een korte taal code|Hiermee bepaalt u de inzichten taal. De standaardwaarde is `en`. <br/> Voorbeeld: `locale=de`.|
@@ -39,7 +39,7 @@ Een cognitieve Insights-widget bevat alle visuele inzichten die zijn geëxtrahee
 
 U kunt de Player-widget gebruiken om video te streamen met behulp van adaptieve bitsnelheid. De Player-widget ondersteunt de volgende optionele URL-para meters.
 
-|Naam|Definitie|Beschrijving|
+|Name|Definitie|Beschrijving|
 |---|---|---|
 |`t`|Seconden vanaf het begin|Hiermee wordt het afspelen van de speler vanaf het opgegeven tijd punt gestart.<br/> Voorbeeld: `t=60`.|
 |`captions`|Een taal code|Haalt het bijschrift in de opgegeven taal op tijdens het laden van de widget zodat deze beschikbaar is in het menu **bijschriften** .<br/> Voorbeeld: `captions=en-US`.|
@@ -52,7 +52,7 @@ U kunt de Player-widget gebruiken om video te streamen met behulp van adaptieve 
 
 U kunt de editor-widget gebruiken om nieuwe projecten te maken en de inzichten van een video te beheren. De editor-widget ondersteunt de volgende optionele URL-para meters.
 
-|Naam|Definitie|Beschrijving|
+|Name|Definitie|Beschrijving|
 |---|---|---|
 |`accessToken`<sup>*</sup>|Tekenreeks|Biedt toegang tot Video's die alleen voor komen in het account dat wordt gebruikt om de widget in te sluiten.<br> Voor de editor-widget is de para meter `accessToken` vereist.|
 |`language`|Een taal code|Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Voorbeeld: `language=de-DE`.|
@@ -159,7 +159,8 @@ In deze sectie wordt uitgelegd hoe u de interactie tussen een cognitieve Insight
             this.videobreakdown({
             videoId: "c4c1ad4c9a",
             syncTranscript: true,
-            syncLanguage: true
+            syncLanguage: true,
+            location: "trial" /* location option for paid accounts (default is trial) */
             });
 
             // Set the source dynamically.

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: bf7ff356af343667133c0226b6b31df8fc9e32b8
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 35ecb5c4e3987676d235fc6fd09f58c046301cda
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563629"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548030"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Snelstartgids: aan de slag met Azure Sentinel
 
@@ -91,7 +91,7 @@ U kunt een volledig nieuwe werkmap maken of een ingebouwde werkmap gebruiken als
 
 Met de volgende voorbeeld query kunt u trends van verkeer tussen weken vergelijken. U kunt eenvoudig overschakelen naar de leverancier en gegevens bron van het apparaat waarop u de query uitvoert. In dit voor beeld maakt gebruik van SecurityEvent van Windows. u kunt deze switch zo wijzigen dat deze wordt uitgevoerd op AzureActivity of CommonSecurityLog op elke andere firewall.
 
-     |where DeviceVendor = = "Palo Alto Networks":
+     |where DeviceVendor == "Palo Alto Networks":
       // week over week query
       SecurityEvent
       | where TimeGenerated > ago(14d)

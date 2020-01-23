@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: cd1f55a4ca94aae73a56334c76f211afff6e9622
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c1b72f2a84f8cafa1767639cae64fb420b0a997c
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514048"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546041"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Live-evenementen en live-uitvoer in Media Services
 
@@ -36,7 +36,7 @@ Met Azure Media Services kunt u live gebeurtenissen aan uw klanten leveren via d
 
 Een [live gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) kan een van de volgende twee typen zijn: Pass-Through of Live code ring. De typen worden tijdens het maken ingesteld met behulp van [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
 
-* **LiveEventEncodingType. none**: een on-premises Live coderings programma verzendt een stream met meerdere bitrates. De opgenomen stroom slaagt via de live-gebeurtenis zonder verdere verwerking. 
+* **LiveEventEncodingType. none**: een on-premises Live coderings programma verzendt een stream met meerdere bitrates. De opgenomen stroom slaagt via de live-gebeurtenis zonder verdere verwerking. Ook wel de Pass-Through-modus genoemd.
 * **LiveEventEncodingType. Standard**: een on-premises Live coderings programma verzendt een stream met één bitsnelheid naar de live-gebeurtenis en Media Services maakt meerdere bitrate-streams. Als de bijdrage-feed van 720p of hoger is, wordt met de voor instelling **Default720p** een set van 6 omzetting/bitrate-paren gecodeerd.
 * **LiveEventEncodingType. Premium1080p**: een on-premises Live coderings programma verzendt een stream met één bitsnelheid naar de live-gebeurtenis en Media Services maakt meerdere bitrate-streams. De Default1080p-voor instelling bepaalt de uitvoerset van de paren Resolution/bitrates.
 
@@ -81,6 +81,8 @@ Wanneer u een live gebeurtenis maakt, kunt u de volgende opties opgeven:
 * IP-beperkingen voor de opname en voorbeeldweergave. U kunt de IP-adressen definiëren die zijn toegestaan om een video van deze livegebeurtenis op te nemen. Toegestane IP-adressen kunnen worden opgegeven als één IP-adres (bijvoorbeeld 10.0.0.1), een IP-adresbereik met een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22) of een IP-adresbereik met een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld , ' 10.0.0.1(255.255.252.0)').<br/>Als er geen IP-adressen zijn opgegeven en er geen regel definitie is, is er geen IP-adres toegestaan. Als u IP-adres(sen) wilt toestaan, maakt u een regel en stelt u 0.0.0.0/0 in.<br/>De IP-adressen moeten een van de volgende indelingen hebben: IpV4-adres met vier getallen of CIDR-adres bereik.
 
     Als u bepaalde Ip's wilt inschakelen op uw eigen firewalls of als u invoer wilt beperken voor uw Live-gebeurtenissen in azure IP-adressen, downloadt u een JSON-bestand van de IP-adresbereiken van het [Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653). Selecteer de sectie **Details** op de pagina voor meer informatie over dit bestand.
+    
+* Wanneer u de gebeurtenis maakt, kunt u ervoor kiezen om live-transcripties in te scha kelen. <br/> Live transcriptie is standaard uitgeschakeld. U kunt deze eigenschap niet wijzigen als de live-gebeurtenis of de gekoppelde actieve uitvoer bewerkingen worden uitgevoerd. 
 
 ### <a name="naming-rules"></a>Naamgevingsregels
 
