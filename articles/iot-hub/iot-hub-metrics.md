@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 20a1ec4b8eb88f5914ce6b27acc8a472e58f5d29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec8a00460b4a750339f929eb6879ac6eb63cac8e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457094"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705731"
 ---
 # <a name="understand-iot-hub-metrics"></a>IoT Hub metrische gegevens begrijpen
 
@@ -115,7 +115,7 @@ IoT Hub biedt diverse metrische gegevens om u een overzicht te geven van de stat
 
 Nu u een overzicht van IoT Hub metrische gegevens hebt weer gegeven, volgt u deze koppeling voor meer informatie over het beheren van Azure IoT Hub:
 
-* [Controle van bewerkingen](iot-hub-operations-monitoring.md)
+* [Diagnostische logboeken instellen](iot-hub-monitor-resource-health.md)
 
 Zie voor meer informatie over de mogelijkheden van IoT Hub:
 

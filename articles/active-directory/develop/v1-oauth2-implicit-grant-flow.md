@@ -17,13 +17,12 @@ ms.date: 08/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb751d4cad036135865af9f97e159da104749388
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2591485c6e528eb9f422ce966ec7738af49dbddc
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532405"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701039"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Uitleg over de OAuth2 impliciete toekennings stroom in Azure Active Directory (AD)
 
@@ -62,7 +61,7 @@ Dit model verleent de Java script-toepassing de mogelijkheid om afzonderlijke to
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Is de impliciete toekenning geschikt voor mijn app?
 
-De impliciete toekenning presenteert meer Risico's dan andere subsidies en de gebieden die u moet best Eden aan de goed gedocumenteerde (bijvoorbeeld [misbruik van het toegangs token om de resource-eigenaar in impliciete stroom][OAuth2-Spec-Implicit-Misuse] en [OAuth 2,0 Threat model en beveiliging te imiteren Overwegingen][OAuth2-Threat-Model-And-Security-Implications]). Het profiel met een hoger risico is echter grotendeels te wijten aan het feit dat het de bedoeling is dat toepassingen die actieve code uitvoeren, worden geactiveerd door een externe bron in een browser. Als u een beveiligd-wachtwoord verificatie-architectuur plant, geen back-end-onderdelen hebt of een web-API wilt aanroepen via Java script, wordt het gebruik van de impliciete stroom voor het ophalen van tokens aanbevolen.
+De impliciete toekenning presenteert meer Risico's dan andere subsidies en de gebieden die u moet best Eden aan de goed gedocumenteerde (bijvoorbeeld [misbruik van toegangs token om de resource-eigenaar in impliciete stroom][OAuth2-Spec-Implicit-Misuse] en [OAuth 2,0 Threat model en beveiligings overwegingen][OAuth2-Threat-Model-And-Security-Implications]te imiteren). Het profiel met een hoger risico is echter grotendeels te wijten aan het feit dat het de bedoeling is dat toepassingen die actieve code uitvoeren, worden geactiveerd door een externe bron in een browser. Als u een beveiligd-wachtwoord verificatie-architectuur plant, geen back-end-onderdelen hebt of een web-API wilt aanroepen via Java script, wordt het gebruik van de impliciete stroom voor het ophalen van tokens aanbevolen.
 
 Als uw toepassing een systeem eigen client is, is de impliciete stroom niet geweldig. Het ontbreken van de Azure AD-sessie cookie in de context van een systeem eigen client zorgt dat uw toepassing een langdurige sessie kan onderhouden. Dit betekent dat uw toepassing herhaaldelijk de gebruiker vraagt wanneer er toegangs tokens voor nieuwe resources worden verkregen.
 

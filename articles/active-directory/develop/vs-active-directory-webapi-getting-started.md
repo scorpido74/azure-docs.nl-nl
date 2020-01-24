@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225940052e1f40f8050059532e4657df2b5410a3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e2216d1f489acea27bbc788c6ded21c6d9835915
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851903"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699934"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Aan de slag met Azure Active Directory (WebApi-projecten)
 
@@ -31,7 +30,7 @@ Zie [Wat is er gebeurd met mijn WebAPI-project?](vs-active-directory-webapi-what
 
 ## <a name="requiring-authentication-to-access-controllers"></a>Verificatie vereisen voor toegang tot controllers
 
-Alle controllers in uw project zijn voorzien van het `[Authorize]` kenmerk. Voor dit kenmerk moet de gebruiker worden geverifieerd voordat toegang kan worden verkregen tot de Api's die door deze controllers worden gedefinieerd. Als u wilt toestaan dat de controller anoniem wordt geopend, verwijdert u dit kenmerk van de controller. Als u de machtigingen op een meer gedetailleerd niveau wilt instellen, past u het kenmerk toe op elke methode waarvoor autorisatie is vereist in plaats van het toe te passen op de klasse controller.
+Alle controllers in uw project zijn voorzien van het kenmerk `[Authorize]`. Voor dit kenmerk moet de gebruiker worden geverifieerd voordat toegang kan worden verkregen tot de Api's die door deze controllers worden gedefinieerd. Als u wilt toestaan dat de controller anoniem wordt geopend, verwijdert u dit kenmerk van de controller. Als u de machtigingen op een meer gedetailleerd niveau wilt instellen, past u het kenmerk toe op elke methode waarvoor autorisatie is vereist in plaats van het toe te passen op de klasse controller.
 
 ## <a name="next-steps"></a>Volgende stappen
 

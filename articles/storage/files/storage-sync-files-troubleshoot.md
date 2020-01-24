@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 009d9e864773fb3a2578504b043fb30302cedb22
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545038"
+ms.locfileid: "76704541"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -298,6 +298,15 @@ Houd er rekening mee dat als u wijzigingen rechtstreeks in uw Azure-bestands sha
 Als uw PerItemErrorCount op de server of bestanden die niet zijn gesynchroniseerd in de portal groter zijn dan 0 voor een bepaalde synchronisatie sessie, betekent dit dat sommige items niet kunnen worden gesynchroniseerd. Bestanden en mappen kunnen kenmerken hebben die voor komen dat ze worden gesynchroniseerd. Deze kenmerken kunnen permanent zijn en vereisen expliciete acties om de synchronisatie te hervatten, bijvoorbeeld het verwijderen van niet-ondersteunde tekens uit de naam van het bestand of de map. Ze kunnen ook tijdelijk zijn, wat betekent dat het bestand of de map automatisch wordt hervat. bestanden met open ingangen worden bijvoorbeeld automatisch hervat wanneer het bestand wordt gesloten. Wanneer de Azure File Sync-Engine een dergelijk probleem detecteert, wordt er een fouten logboek gegenereerd dat kan worden geparseerd om de items weer te geven die momenteel niet worden gesynchroniseerd.
 
 Als u deze fouten wilt zien, voert u het Power shell-script **FileSyncErrorsReport. ps1** (in de installatiemap van de agent van de Azure file sync agent) uit om te bepalen welke bestanden niet kunnen worden gesynchroniseerd vanwege open ingangen, niet-ondersteunde tekens of andere problemen. Het veld het itempad vertelt u de locatie van het bestand ten opzichte van de hoofdmap voor synchronisatie. Zie de lijst met veelvoorkomende synchronisatie fouten voor herstels tappen.
+
+> [!Note]  
+> Als het script FileSyncErrorsReport. ps1 het volgende retourneert: "er zijn geen bestands fouten gevonden" of er worden geen fouten per item voor de synchronisatie groep vermeld, is de oorzaak
+>
+>- Oorzaak 1: de laatste voltooide synchronisatie sessie heeft geen fouten per item. De portal moet binnenkort worden bijgewerkt om 0 bestanden weer te geven die niet worden gesynchroniseerd. 
+>   - Controleer de [gebeurtenis-ID 9102](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) in het logboek voor telemetrie om te bevestigen dat de PerItemErrorCount 0 is. 
+>
+>- Oorzaak 2: het ItemResults-gebeurtenis logboek op de server die is verpakt als gevolg van te veel fouten per item en het gebeurtenis logboek bevat geen fouten meer voor deze synchronisatie groep.
+>   - Verhoog de grootte van het ItemResults-gebeurtenis logboek om dit probleem te voor komen. Het ItemResults-gebeurtenis logboek vindt u onder ' toepassingen en services Logs\Microsoft\FileSync\Agent ' in Logboeken. 
 
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Problemen oplossen per bestand/directory-synchronisatie fouten
 **ItemResults-logboek: synchronisatie fouten per item**  

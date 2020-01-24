@@ -2,25 +2,27 @@
 title: Over herstel plannen in Azure Site Recovery
 description: Meer informatie over herstel plannen in Azure Site Recovery.
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 1dd83be03c5b412708e89058ce7667a2ddfef530
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/23/2020
+ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497887"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705850"
 ---
 # <a name="about-recovery-plans"></a>Over herstelplannen
 
 In dit artikel vindt u een overzicht van herstel plannen in [Azure site Recovery](site-recovery-overview.md).
 
-Met een herstel plan worden computers in herstel groepen verzameld. Met een herstel plan kunt u een systematisch herstel proces definiëren door kleine onafhankelijke eenheden te maken waarvoor u een failover wilt uitvoeren. Een eenheid vertegenwoordigt meestal een app in uw omgeving.
+Een herstel plan verzamelt computers in herstel groepen voor het doel van de failover. Met een herstel plan kunt u een systematisch herstel proces definiëren door kleine onafhankelijke eenheden te maken waarvoor u een failover wilt uitvoeren. Een eenheid vertegenwoordigt meestal een app in uw omgeving.
 
 - Een herstel plan definieert hoe machine failover wordt uitgevoerd en de volg orde waarin ze worden gestart na een failover.
+- Herstel plannen worden gebruikt voor failover naar Azure, maar kunnen niet worden gebruikt voor failback vanuit Azure.
 - Maxi maal 100 beveiligde instanties kunnen worden toegevoegd aan één herstel plan.
 - U kunt een plan aanpassen door er bestellingen, instructies en taken aan toe te voegen.
 - Nadat een plan is gedefinieerd, kunt u er een failover op uitvoeren.
 - Er kan in meerdere herstel plannen naar machines worden verwezen, waarbij de volgende plannen de implementatie/het starten van een machine overs Laan als deze eerder is geïmplementeerd met een ander herstel plan.
+
 
 
 ### <a name="why-use-a-recovery-plan"></a>Waarom een herstel plan gebruiken?

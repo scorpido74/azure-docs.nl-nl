@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff1a030a17ce4f63427eb6bfebbf84be74f6500d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 232a17a21c7172bbf5056ae990679d87600ee6a0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231826"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705085"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Weer geven hoe uw organisatie uw privacy-gerelateerde gegevens gebruikt
 
@@ -33,7 +32,7 @@ U kunt zien hoe uw organisatie uw gegevens gebruikt op de pagina **Privacy** van
 
 3. Bekijk de informatie, met inbegrip van:
 
-    - **Services.** Een lijst met onlineservices waarmee u bent verbonden met uw werk-of school account.
+    - **Onderzoeksservices.** Een lijst met onlineservices waarmee u bent verbonden met uw werk-of school account.
 
     - **Gebruiksvoorwaarden**. De gebruiks voorwaarden van uw organisatie.
 

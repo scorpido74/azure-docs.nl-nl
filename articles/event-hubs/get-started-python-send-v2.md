@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 11548ba180a2dd6541240431d670812448c502b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d7ab79d49aade7dd6e98cf33ce538174d176c784
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981592"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705340"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Gebeurtenissen verzenden naar of ontvangen van Event Hubs met behulp van python
 
@@ -42,7 +42,7 @@ Voor het voltooien van deze zelfstudie moet aan de volgende vereisten worden vol
     Installeer dit pakket voor het ontvangen van de gebeurtenissen met behulp van een Azure Blob-opslag als de opslag plaats van het controle punt.
 
     ```cmd
-    pip install azure-eventhub-checkpointstoreblobaio
+    pip install azure-eventhub-checkpointstoreblob-aio
     ```
 
 ## <a name="send-events"></a>Gebeurtenissen verzenden

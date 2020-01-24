@@ -15,13 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ded0ba36a8eef7adb1be5b5f07408b9f79359f44
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 36d74b9926639bb4ec49821a3d73b5d615016394
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965633"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702671"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Registratie velden Azure Portal voor aangepaste apps
 
@@ -41,7 +40,7 @@ In dit artikel vindt u een korte beschrijving van alle beschik bare velden in he
 
 | Veld            | Beschrijving                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Naam             | De naam van de toepassing. De waarde moet mini maal vier tekens bevatten.                |
+| Name             | De naam van de toepassing. De waarde moet mini maal vier tekens bevatten.                |
 | Ondersteunde accounttypen| Selecteer welke accounts u uw toepassing wilt laten ondersteunen: accounts in deze organisatie-map alleen, accounts in een organisatie Directory of accounts in een organisatorische map en persoonlijke micro soft-accounts.  |
 | Omleidings-URI (optioneel) | Selecteer het type app dat u wilt maken, **Web** of **open bare client (mobiele & bureau blad)** en voer vervolgens de omleidings-URI (of antwoord-URL) in voor uw toepassing. Geef voor webtoepassingen de basis-URL van de app op. http://localhost:31544 kan bijvoorbeeld de URL zijn van een web-app die op uw lokale machine wordt uitgevoerd. Gebruikers moeten deze URL gebruiken om zich bij een webclienttoepassing aan te melden. Geef voor openbare clienttoepassingen de URI op die in Azure Active Directory wordt gebruikt om tokenantwoorden te retourneren. Voer een waarde in die specifiek is voor uw toepassing, zoals myapp://auth. Bekijk onze [Quick](https://docs.microsoft.com/azure/active-directory/develop)starts voor specifieke voor beelden voor webtoepassingen of systeem eigen toepassingen.|
 

@@ -17,13 +17,12 @@ ms.date: 02/08/2017
 ms.author: ryanwi
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ac618b28fae7410a773012e390dcd6b3a63b966
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 85ed6fc1535daf64394380ded44f74d5f9f939b6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834781"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701107"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Service-to-service aanroepen met behulp van client referenties (gedeeld geheim of certificaat)
 
@@ -54,10 +53,10 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ## <a name="service-to-service-access-token-request"></a>Aanvraag voor service-naar-service-toegangs token
 Er zijn twee gevallen, afhankelijk van het feit of de client toepassing wordt beveiligd door een gedeeld geheim of een certificaat.
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>Eerste geval: Toegangs token aanvraag met een gedeeld geheim
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Eerste case: toegangs token aanvraag met een gedeeld geheim
 Bij gebruik van een gedeeld geheim bevat een aanvraag voor service-naar-service-toegangs token de volgende para meters:
 
-| Parameter |  | Description |
+| Parameter |  | Beschrijving |
 | --- | --- | --- |
 | grant_type |vereist |Hiermee geeft u het aangevraagde toekennings type op. In een client referenties toekenning stroom moet de waarde **client_credentials**zijn. |
 | client_id |vereist |Hiermee geeft u de id op van de Azure AD-client van de aanroepende webservice. Als u de client-ID van de aanroepende toepassing wilt zoeken, klikt u in het [Azure Portal](https://portal.azure.com)op **Azure Active Directory**, klikt u op **app-registraties**en klikt u op de toepassing. De client_id is de *toepassings-id* |
@@ -65,7 +64,7 @@ Bij gebruik van een gedeeld geheim bevat een aanvraag voor service-naar-service-
 | resource |vereist |Voer de App-ID-URI in van de ontvangende webservice. Als u de URI van de App-ID wilt zoeken, klikt u in het Azure Portal op **Azure Active Directory**, klikt u op **app-registraties**, klikt u op de service toepassing en klikt u vervolgens op **instellingen** en **Eigenschappen**. |
 
 #### <a name="example"></a>Voorbeeld
-Met de volgende http post [wordt een toegangs token](access-tokens.md) voor https://service.contoso.com/ de webservice aangevraagd. `client_id` Hiermee wordt de webservice geïdentificeerd waarmee het toegangs token wordt aangevraagd.
+De volgende HTTP POST vraagt een [toegangs token](access-tokens.md) voor de https://service.contoso.com/ -webservice. Met de `client_id` wordt de webservice geïdentificeerd waarmee het toegangs token wordt aangevraagd.
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1
@@ -75,21 +74,21 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&client_secret=qkDwDJlDfig2IpeuUZYKH1Wb8q1V0ju6sILxQQqhJ+s=&resource=https%3A%2F%2Fservice.contoso.com%2F
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>Tweede geval: Toegangs token aanvraag met een certificaat
+### <a name="second-case-access-token-request-with-a-certificate"></a>Tweede geval: toegangs token aanvraag met een certificaat
 Een aanvraag voor service-naar-service-toegangs token met een certificaat bevat de volgende para meters:
 
-| Parameter |  | Description |
+| Parameter |  | Beschrijving |
 | --- | --- | --- |
 | grant_type |vereist |Hiermee geeft u het aangevraagde antwoord type op. In een client referenties toekenning stroom moet de waarde **client_credentials**zijn. |
 | client_id |vereist |Hiermee geeft u de id op van de Azure AD-client van de aanroepende webservice. Als u de client-ID van de aanroepende toepassing wilt zoeken, klikt u in het [Azure Portal](https://portal.azure.com)op **Azure Active Directory**, klikt u op **app-registraties**en klikt u op de toepassing. De client_id is de *toepassings-id* |
-| client_assertion_type |vereist |De waarde moet`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion_type |vereist |De waarde moet `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |vereist | Een bevestiging (een JSON Web Token) die u moet maken en ondertekenen met het certificaat dat u hebt geregistreerd als referenties voor uw toepassing. Lees de informatie over [certificaat referenties](active-directory-certificate-credentials.md) voor meer informatie over het registreren van uw certificaat en de indeling van de verklaring.|
 | resource | vereist |Voer de App-ID-URI in van de ontvangende webservice. Als u de URI van de App-ID wilt zoeken, klikt u in het Azure Portal op **Azure Active Directory**, klikt u op **app-registraties**, klikt u op de service toepassing en klikt u vervolgens op **instellingen** en **Eigenschappen**. |
 
 U ziet dat de para meters bijna hetzelfde zijn als in het geval van de aanvraag van het gedeelde geheim, behalve dat de para meter client_secret wordt vervangen door twee para meters: een client_assertion_type en client_assertion.
 
 #### <a name="example"></a>Voorbeeld
-Met de volgende http post wordt een toegangs token voor https://service.contoso.com/ de webservice aangevraagd met een certificaat. `client_id` Hiermee wordt de webservice geïdentificeerd waarmee het toegangs token wordt aangevraagd.
+De volgende HTTP POST vraagt een toegangs token voor de https://service.contoso.com/ -webservice met een certificaat. Met de `client_id` wordt de webservice geïdentificeerd waarmee het toegangs token wordt aangevraagd.
 
 ```
 POST /<tenant_id>/oauth2/token HTTP/1.1
@@ -103,10 +102,10 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 
 Een antwoord van het succes bevat een JSON OAuth 2,0-antwoord met de volgende para meters:
 
-| Parameter | Description |
+| Parameter | Beschrijving |
 | --- | --- |
 | access_token |Het aangevraagde toegangs token. De aanroepende webservice kan dit token gebruiken om te verifiëren bij de ontvangende webservice. |
-| token_type |Geeft de waarde van het token type aan. Het enige type dat door Azure AD wordtondersteund, is Bearer. Voor meer informatie over Bearer-tokens raadpleegt [u het OAuth 2,0 autorisatie Framework: Bearer-token gebruik (RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.txt)). |
+| token_type |Geeft de waarde van het token type aan. Het enige type dat door Azure AD wordt ondersteund, is **Bearer**. Zie voor meer informatie over Bearer-tokens het [OAuth 2,0 Authorization Framework: Bearer-token gebruik (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | expires_in |Hoe lang het toegangs token geldig is (in seconden). |
 | expires_on |Het tijdstip waarop het toegangs token verloopt. De datum wordt weer gegeven als het aantal seconden van 1970-01-01T0:0: 0Z UTC tot de verloop tijd. Deze waarde wordt gebruikt om de levens duur van tokens in de cache te bepalen. |
 | not_before |Het tijdstip waarop het toegangs token bruikbaar wordt. De datum wordt weer gegeven als het aantal seconden van 1970-01-01T0:0: 0Z UTC totdat de geldigheids duur van het token.|

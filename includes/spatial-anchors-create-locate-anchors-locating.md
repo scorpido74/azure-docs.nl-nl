@@ -1,13 +1,18 @@
 ---
-ms.openlocfilehash: 52dfbfca5f79a7f92848ea39eddc00aa10f05ff1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ac9fe1d367dba0ebdf4250b3213f191ced758dd3
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175751"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694534"
 ---
-## <a name="locate-a-cloud-spatial-anchor"></a>Zoek een cloud ruimtelijke anker
+## <a name="locate-a-cloud-spatial-anchor"></a>Een ruimtelijke beankering in de Cloud zoeken
 
-Zoek een eerder geüploade cloud ruimtelijke anker is kunnen een van de belangrijkste redenen voor het gebruik van de ruimtelijke ankers Azure-bibliotheek. Als u wilt zoeken ruimtelijke cloudankers, moet u de id weten. Anker-id's kunnen worden opgeslagen in de back-end-service van uw toepassing en toegankelijk is op alle apparaten die goed bij deze kunnen worden geverifieerd. Voor een voorbeeld van deze Zie [zelfstudie: Ruimtelijke ankers delen tussen apparaten](/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices/).
+Het is een van de belangrijkste redenen voor het gebruik van Azure spatiale ankers om een eerder opgeslagen ruimtelijke bewerkings plaats in de cloud te vinden. Er zijn verschillende manieren waarop u een ruimtelijke ruimte in de cloud kunt vinden. U kunt één strategie per keer gebruiken op een monitor.
+- Zoek naar ankers op id.
+- Ankers zoeken die zijn verbonden met een eerder gevonden anker. [Hier](/azure/spatial-anchors/concepts/anchor-relationships-way-finding.md)vindt u meer informatie over anker relaties.
+- Zoek naar een anker met [grof Herlokalisatie](/azure/spatial-anchors/concepts/coarse-reloc.md).
 
-Exemplaar maken van een `AnchorLocateCriteria` object, stelt u de id's die u zoekt en roep de `CreateWatcher` methode voor de sessie door te geven uw `AnchorLocateCriteria`.
+Als u ruimtelijke beschik bare ruimte in de Cloud zoekt met behulp van id, moet u de id van de in de back-end voor de Cloud beschik bare ruimte opslaan en deze toegankelijk maken voor alle apparaten die op de juiste manier kunnen worden geverifieerd. Zie [zelf studie: ruimtelijke ankers delen tussen apparaten](/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices/)voor een voor beeld hiervan.
+
+Maak een exemplaar van een `AnchorLocateCriteria`-object, stel de id's in die u zoekt en roep de `CreateWatcher`-methode aan voor de sessie door uw `AnchorLocateCriteria`op te geven.

@@ -12,17 +12,16 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ecdffae61fbadfd5d975af942861e24589c6fbf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233169"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704864"
 ---
 # <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>De gegevens van uw profiel en werk-of school account bijwerken in de portal mijn apps
 
-U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en uit te voeren  **toegangs beoordelingen** voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
+U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en **toegangs beoordelingen** uit te voeren voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -108,7 +107,7 @@ Voor twee ledige verificatie moet u twee soorten verificatie gegevens gebruiken,
 
     - **Stel de Microsoft Authenticator-app in.** U kunt ervoor kiezen om de Microsoft Authenticator-app zo in te stellen dat deze als verificatie methode wordt gebruikt. Zie [Wat is de Microsoft Authenticator-app?](user-help-auth-app-overview.md) voor meer informatie over de app Microsoft Authenticator.
 
-3. Selecteer **Opslaan** om uw wijzigingen op te slaan.
+3. Selecteer **opslaan** uw wijzigingen op te slaan.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>De gebruiks voorwaarden van uw organisatie controleren
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 8d75dbe5d4ab819e5bbe64e20ad84eb1c26a87a3
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 12759deb3e1775b5170d40cc609fe8c6226bf0d6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777815"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704575"
 ---
 # <a name="metrics-for-application-gateway"></a>Metrische gegevens voor Application Gateway
 
@@ -28,30 +28,30 @@ De volgende metrische gegevens met betrekking tot de timing van de aanvraag en h
 >
 > Als er meer dan één listener is in de Application Gateway, filtert u altijd op de dimensie *listener* terwijl u verschillende latentie gegevens vergelijkt om zinvolle interferentie te verkrijgen.
 
+- **Moment back-end verbinding**
+
+  Tijd die is besteed aan het tot stand brengen van een verbinding met een back-end-toepassing. Dit geldt ook voor de netwerk latentie en de tijd die nodig is voor de TCP-stack van de back-endserver om nieuwe verbindingen tot stand te brengen. In het geval van SSL omvat het ook de tijd die is besteed aan handshake. 
+
+- **Reactie tijd eerste byte van back-end**
+
+  Het tijds interval tussen het begin van het tot stand brengen van een verbinding met de back-endserver en het ontvangen van de eerste byte van de reactie header. Dit is een benadering van de som van de *back-uptijd* en reactie tijd van de back-end-toepassing (het tijdstip dat de server heeft geduurd om inhoud te genereren, mogelijk database query's op te halen en de respons terug te zetten naar Application Gateway)
+
+- **Reactie tijd laatste byte van back-end**
+
+  Het tijds interval tussen het begin van het tot stand brengen van een verbinding met de back-endserver en het ontvangen van de laatste byte van de antwoord tekst. Dit is een benadering van de som van de *reactie tijd van de eerste byte* en de tijd van de gegevens overdracht (dit aantal kan aanzienlijk variëren, afhankelijk van de grootte van de gevraagde objecten en de latentie van het Server netwerk)
+
+- **Totale tijd toepassings gateway**
+
+  De gemiddelde tijd die nodig is voor het verwerken van een aanvraag en het antwoord op verzen ding. Dit wordt berekend als gemiddelde van het interval van de tijd dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt op het moment dat de antwoord verzending is voltooid, de som van de verwerkings tijd van Application Gateway en de *laatste byte reactie tijd* van de back-end
+
 - **Client RTT**
 
   Gemiddelde Round-retour tijd tussen clients en Application Gateway. Met deze metriek wordt aangegeven hoe lang het duurt om verbindingen en retour bevestigingen tot stand te brengen. 
 
-- **Totale tijd toepassings gateway**
+Deze metrische gegevens kunnen worden gebruikt om te bepalen of de waargenomen vertraging wordt veroorzaakt door de Application Gateway, het netwerk en de back-endserver TCP-stack verzadiging, back-end-toepassings prestaties of grote bestands grootte.
+Als er bijvoorbeeld een piek in de back-end van de backend-reactie tijd is, maar de back-end-verbindings tijd constant is, kan deze worden afgeleid dat de toepassings gateway naar de back-end-latentie en de tijd die nodig is om de verbinding tot stand te brengen stabiel is en de piek wordt veroorzaakt door een n toename van de reactie tijd van de back-end-toepassing. En als de piek in de back-end van de byte de eerste keer wordt gekoppeld aan een corresponderende Prikker in back-end-Connect-tijd, kan deze worden afgeleid dat het netwerk of de TCP-stack van de server verzadigd is. Als u een piek in de back-end van de backend-reactie tijd ziet, maar de back-end voor de reactie van de eerste byte constant is, is de piek waarschijnlijk het gevolg van een groter bestand dat wordt aangevraagd. Op dezelfde manier geldt dat als de totale tijd van de toepassings gateway veel meer is dan de back-end van de backend-reactie tijd, het mogelijk is om op de Application Gateway een knel punt met de prestaties te maken.
 
-  De gemiddelde tijd die nodig is voor het verwerken van een aanvraag en het antwoord op verzen ding. Dit wordt berekend als gemiddelde van het interval van de tijd dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt naar het tijdstip waarop de bewerking voor het verzenden van het antwoord is voltooid. Het is belang rijk te weten dat dit doorgaans de verwerkings tijd van Application Gateway, de tijd dat de aanvraag-en antwoord pakketten op het netwerk onderweg zijn en het tijdstip waarop de back-end-server heeft gereageerd.
-  
-Als de RTT van de *client* veel meer is gefilterd op basis van de *totale tijds duur van de toepassings gateway*, kan deze worden afgeleid van de latentie van de client door de netwerk verbinding tussen de client en de Application Gateway. Als beide latenties vergelijkbaar zijn, kan de hoge latentie worden veroorzaakt door een van de volgende: Application Gateway, het netwerk tussen de Application Gateway en de back-end-toepassing, of de back-end-toepassings prestaties.
 
-- **Reactie tijd eerste byte van back-end**
-
-  Tijds interval tussen begin van het tot stand brengen van een verbinding met de back-end-server en het ontvangen van de eerste byte van de reactie header, geschatte verwerkings tijd van de back-endserver
-
-- **Reactie tijd laatste byte van back-end**
-
-  Tijds interval tussen begin van het tot stand brengen van een verbinding met de back-endserver en het ontvangen van de laatste byte van de antwoord tekst
-  
-Als de *totale tijd van de toepassings gateway* veel meer is dan de *reactie tijd van de laatste byte* van de back-end voor een specifieke listener, dan kan deze worden afgeleid dat de maximale latentie kan worden bereikt door de Application Gateway. Daarentegen, als de twee meet waarden vergelijkbaar zijn, kan het probleem worden veroorzaakt door het netwerk tussen de Application Gateway en de back-end-toepassing, of de prestaties van de back-end-toepassing.
-
-- **Moment back-end verbinding**
-
-  Tijd die is besteed aan het tot stand brengen van een verbinding met een back-end-toepassing. In het geval van SSL omvat het de tijd die is besteed aan handshake. Houd er rekening mee dat deze waarde afwijkt van de andere latentie-metrische gegevens omdat dit alleen de verbindings tijd meet en daarom mag niet rechtstreeks worden vergeleken met de andere latenties. Het vergelijken van het patroon van *back-uptijden* met het patroon van de andere latenties kan echter aangeven of een toename in andere latenties kan worden afgeleid als gevolg van een variatie in het netwerk tussen de toepassing GATWAY en de back-end-toepassing. 
-  
 
 ### <a name="application-gateway-metrics"></a>Application Gateway metrische gegevens
 

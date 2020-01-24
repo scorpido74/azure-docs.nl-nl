@@ -16,13 +16,12 @@ ms.date: 09/26/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae798c6108ec78b92b1ee6ac167b01c2f72c26d9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f2ce993b8fbf2a1b04ea4ad9d992ba278dbc964e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679709"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701413"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>Open bare client-apps met één of meer accounts
 
@@ -36,20 +35,20 @@ MSAL is gespecialiseerd in het API-Opper vlak van `PublicClientApplication` om d
 
 ## <a name="single-account-public-client-application"></a>Open bare client toepassing met één account
 
-Met de klasse `SingleAccountPublicClientApplication` kunt u een MSAL-app maken waarmee slechts één account tegelijk kan worden aangemeld. `SingleAccountPublicClientApplication` verschilt van `PublicClientApplication` op de volgende manieren:
+Met de klasse `SingleAccountPublicClientApplication` kunt u een app op basis van MSAL maken waarmee slechts één account tegelijk kan worden aangemeld. `SingleAccountPublicClientApplication` verschilt van `PublicClientApplication` op de volgende manieren:
 
 - MSAL houdt het account dat momenteel is aangemeld bij.
   - Als uw app gebruikmaakt van een Broker (de standaard tijdens het registreren van Azure Portal app) en is geïnstalleerd op een apparaat waarop een Broker aanwezig is, controleert MSAL of het account nog steeds beschikbaar is op het apparaat.
 - met `signIn` kunt u een account expliciet en onafhankelijk van het aanvragen van scopes aanmelden.
-- voor `acquireTokenSilent` is geen para meter voor een account vereist.  Als u een account opgeeft en het account dat u opgeeft, niet overeenkomt met het huidige account dat wordt getraceerd door MSAL, wordt er een `MsalClientException` gegenereerd.
-- met `acquireToken` kan de gebruiker niet overschakelen naar een ander account. Als de gebruiker probeert over te scha kelen naar een ander account, wordt er een uitzonde ring gegenereerd.
+- voor `acquireTokenSilent` is geen account parameter vereist.  Als u een account opgeeft en het account dat u opgeeft, niet overeenkomt met het huidige account dat wordt getraceerd door MSAL, wordt er een `MsalClientException` gegenereerd.
+- met `acquireToken` kan de gebruiker niet wisselen tussen accounts. Als de gebruiker probeert over te scha kelen naar een ander account, wordt er een uitzonde ring gegenereerd.
 - `getCurrentAccount` retourneert een resultaat object dat het volgende biedt:
   - Een Booleaanse waarde die aangeeft of het account is gewijzigd. Een account kan worden gewijzigd als gevolg van het verwijderen van het apparaat, bijvoorbeeld.
   - Het vorige account. Dit is handig als u lokaal gegevens opschoning wilt uitvoeren wanneer het account wordt verwijderd van het apparaat of wanneer een nieuw account is aangemeld.
   - De currentAccount.
-- `signOut` verwijdert alle tokens die zijn gekoppeld aan uw client van het apparaat.  
+- met `signOut` worden de tokens die zijn gekoppeld aan uw client, verwijderd van het apparaat.  
 
-Wanneer een Android-verificatie Broker, zoals Microsoft Authenticator of Intune-bedrijfsportal op het apparaat is geïnstalleerd en uw app is geconfigureerd voor het gebruik van de Broker, wordt door `signOut` het account niet van het apparaat verwijderd.
+Wanneer een Android-verificatie Broker, zoals Microsoft Authenticator of Intune-bedrijfsportal op het apparaat is geïnstalleerd en uw app is geconfigureerd voor het gebruik van de Broker, wordt `signOut` het account niet van het apparaat verwijderd.
 
 ## <a name="single-account-scenario"></a>Scenario met één account
 
@@ -121,7 +120,7 @@ Gebruik een of meer accounts in uw toepassing door `acquireToken` een of meer ke
 ### <a name="get-accounts"></a>Accounts ophalen
 
 - Roep `getAccount` aan om een specifiek account op te halen.
-- Call `getAccounts`to Haal een lijst op met accounts die op dit moment bekend zijn bij de app.
+- Roep `getAccounts`aan om een lijst op te halen met accounts die op dit moment bekend zijn bij de app.
 
 Uw app kan niet alle micro soft Identity platform-accounts op het apparaat opsommen die bekend zijn bij de Broker-app. Het kan alleen accounts opsommen die door uw app zijn gebruikt.  Accounts die zijn verwijderd van het apparaat, worden niet geretourneerd door deze functies.
 
@@ -129,7 +128,7 @@ Uw app kan niet alle micro soft Identity platform-accounts op het apparaat opsom
 
 Verwijder een account door `removeAccount` aan te roepen met een account-id.
 
-Als uw app is geconfigureerd voor het gebruik van een Broker en er een Broker op het apparaat is geïnstalleerd, wordt het account niet uit de Broker verwijderd wanneer u `removeAccount` aanroept.  Alleen tokens die zijn gekoppeld aan uw client, worden verwijderd.
+Als uw app is geconfigureerd voor het gebruik van een Broker en er een Broker op het apparaat is geïnstalleerd, wordt het account niet uit de Broker verwijderd wanneer u `removeAccount`aanroept.  Alleen tokens die zijn gekoppeld aan uw client, worden verwijderd.
 
 ## <a name="multiple-account-scenario"></a>Scenario met meerdere accounts
 

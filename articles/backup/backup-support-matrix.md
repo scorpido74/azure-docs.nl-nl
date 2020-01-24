@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor Azure Backup
 description: Bevat een samenvatting van ondersteuningsinstellingen en -beperkingen voor de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: dc709294b92fd26343e9520e3775b9f079aba94f
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: c424b905f44d6fd3a80a08ef925df4d0a06dd7d8
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708477"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705374"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -33,7 +33,7 @@ In de volgende tabel worden de functies van Recovery Services kluizen beschreven
 **Gegevens bronnen in de kluis opslag** | Maxi maal 54.400 GB. Er is geen limiet voor back-ups van virtuele Azure-machines.
 **Back-ups naar de kluis** | **Azure-vm's:** Eenmaal per dag.<br/><br/>**Machines die worden beveiligd door DPM-MABS:** Twee keer per dag.<br/><br/> **Machines maken rechtstreeks back-ups met behulp van de Mars-agent:** Drie keer per dag.
 **Back-ups tussen kluizen** | De back-up bevindt zich in een regio.<br/><br/> U hebt een kluis nodig in elke Azure-regio die virtuele machines bevat waarvan u een back-up wilt maken. U kunt geen back-up maken naar een andere regio.
-**Kluizen verplaatsen** | U kunt [kluizen verplaatsen](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) tussen abonnementen of tussen resource groepen in hetzelfde abonnement.
+**Kluizen verplaatsen** | U kunt [kluizen verplaatsen](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) tussen abonnementen of tussen resource groepen in hetzelfde abonnement. Het verplaatsen van kluizen over regio's wordt echter niet ondersteund.
 **Gegevens verplaatsen tussen kluizen** | Het verplaatsen van gegevens waarvan een back-up wordt gemaakt tussen kluizen, wordt niet ondersteund.
 **Type kluis opslag wijzigen** | U kunt het type opslag replicatie (geografisch redundante opslag of lokaal redundante opslag) voor een kluis wijzigen voordat er back-ups worden opgeslagen. Nadat een back-ups in de kluis is begonnen, kan het replicatietype niet meer worden gewijzigd.
 

@@ -12,13 +12,12 @@ ms.date: 03/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a7376720661e13a03be65df4ee180e0bca20c3
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 2987183900ad3232d46b2152bd52808ae96c802b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383077"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704830"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Problemen met de portal mijn apps oplossen
 
@@ -48,11 +47,11 @@ Als u problemen ondervindt met de installatie van de uitbrei ding voor beveiligd
 
 Als u problemen ondervindt bij het aanmelden bij de portal **mijn apps** , kunt u het volgende proberen:
 
-- Zorg ervoor dat u de juiste URL gebruikt. Dit moet een https://myapps.microsoft.com aangepaste pagina voor uw organisatie zijn, https://myapps.microsoft.com/contoso.com zoals.
+- Zorg ervoor dat u de juiste URL gebruikt. Dit moet https://myapps.microsoft.com zijn of een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
 
 - Zorg ervoor dat uw wacht woord juist is en niet is verlopen. Zie [uw werk-of school wachtwoord opnieuw instellen](active-directory-passwords-update-your-own-password.md)voor meer informatie.
 
-- Zorg ervoor dat uw verificatie gegevens actueel en nauw keurig zijn. Zie [wat betekent Azure multi-factor Authentication? voor](multi-factor-authentication-end-user.md) meer informatie. u kunt ook [de methoden en informatie voor uw beveiligings gegevens wijzigen](security-info-add-update-methods-overview.md).
+- Zorg ervoor dat uw verificatie gegevens actueel en nauw keurig zijn. Zie [wat betekent Azure multi-factor Authentication voor mij?](multi-factor-authentication-end-user.md) u kunt ook [de methoden en informatie voor uw beveiligings gegevens wijzigen](security-info-add-update-methods-overview.md).
 
 - Voeg de URL van **mijn app** -portal toe aan de **Internet eigenschappen > beveiliging > instellingen voor vertrouwde sites** .
 
@@ -76,7 +75,7 @@ Als u een bericht ontvangt dat de **toegang is geweigerd** nadat u een app hebt 
 
 - Zorg ervoor dat uw wacht woord juist is en niet is verlopen. Zie [uw werk-of school wachtwoord opnieuw instellen](active-directory-passwords-update-your-own-password.md)voor meer informatie.
 
-- Zorg ervoor dat uw verificatie gegevens actueel en nauw keurig zijn. Zie [wat betekent Azure multi-factor Authentication? voor](multi-factor-authentication-end-user.md) meer informatie. u kunt ook [de methoden en informatie voor uw beveiligings gegevens wijzigen](security-info-add-update-methods-overview.md).
+- Zorg ervoor dat uw verificatie gegevens actueel en nauw keurig zijn. Zie [wat betekent Azure multi-factor Authentication voor mij?](multi-factor-authentication-end-user.md) u kunt ook [de methoden en informatie voor uw beveiligings gegevens wijzigen](security-info-add-update-methods-overview.md).
 
 - Wis de cache van uw browser en probeer u opnieuw aan te melden.
 

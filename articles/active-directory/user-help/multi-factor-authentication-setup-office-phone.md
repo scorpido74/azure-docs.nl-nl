@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adbb913fc8ec6376f1c5f47708da4fd7df740ff
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 32d58a5536cda5a5a446eee15401dabc0c936304
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619374"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705221"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>Een zakelijke telefoon instellen als uw verificatie methode met twee factoren
 
@@ -27,7 +26,7 @@ U kunt uw zakelijke telefoon instellen om te fungeren als uw twee ledige verific
 
 ## <a name="set-up-your-office-phone-number-as-your-verification-method"></a>Stel uw zakelijke telefoon nummer in als uw verificatie methode
 
-1. Selecteer op de pagina **aanvullende beveiligings verificatie** de optie **Office Phone** uit **stap 1: Hoe moeten we contact met** u opnemen: Selecteer uw land of regio in de vervolg keuzelijst, typ uw zakelijke telefoon nummer en typ uw extensie als u deze hebt.
+1. Selecteer op de pagina **aanvullende beveiligings verificatie** de optie **Office Phone** uit **stap 1: hoe moet er contact met u worden opgenomen** , selecteer uw land of regio in de vervolg keuzelijst, typ het telefoon nummer van uw bedrijf en typ uw extensie als u deze hebt.
 
     ![Aanvullende beveiligings verificatie pagina, met verificatie telefoon en telefoon gesprek](media/multi-factor-authentication-verification-methods/multi-factor-authentication-office-phone.png)
 
@@ -35,7 +34,7 @@ U kunt uw zakelijke telefoon instellen om te fungeren als uw twee ledige verific
 
     ![Het opgegeven telefoon nummer testen](media/multi-factor-authentication-verification-methods/multi-factor-authentication-office-phone-test.png)
 
-3. **Uit stap 3: Blijf uw bestaande toepassingen** gebied gebruiken, kopieer het opgegeven app-wacht woord en plak het ergens veilig.
+3. In **stap 3: het gebied bestaande toepassingen blijven gebruiken** , kopieert u het opgegeven app-wacht woord en plakt u het op een veilige plek.
 
     ![Het gedeelte app-wacht woorden van de pagina aanvullende beveiligings verificatie](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 

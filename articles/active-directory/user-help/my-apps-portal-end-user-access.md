@@ -12,17 +12,16 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b74fa1caad629e6f7f745f84787b6f415876bbae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c15580481c153a58122db593f678998be485b57d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233180"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705000"
 ---
 # <a name="locate-and-use-your-organizations-cloud-based-apps-on-the-my-apps-portal"></a>De Cloud-apps in uw organisatie zoeken en gebruiken in de portal mijn apps
 
-U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en uit te voeren  **toegangs beoordelingen** voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
+U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en **toegangs beoordelingen** uit te voeren voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -70,7 +69,7 @@ Er wordt aan de rechter kant van de **adres** balk een pictogram toegevoegd, zod
 #### <a name="to-change-your-my-apps-portal-using-the-extension"></a>De portal van mijn apps wijzigen met behulp van de extensie
 U kunt kiezen hoeveel apps worden weer gegeven in het gedeelte **recent used** en bepalen of de interne url's van uw organisatie mogen worden omgeleid.
 
-1. Selecteer het pictogram nieuwe **aanmeld extensie voor beveiligde Apps** ![extensie pictogram](media/my-apps-portal/my-apps-portal-extension-icon.png) rechts van de **adres** balk en selecteer Aanmelden om aan de **slag te gaan**.
+1. Selecteer het pictogram uitbrei ding ![pictogram](media/my-apps-portal/my-apps-portal-extension-icon.png) voor **beveiligde aanmeldings extensie van mijn apps** rechts van de **adres** balk en selecteer **aanmelden om aan de slag te gaan**.
 
 2. Klik met de rechter muisknop op het pictogram **instellingen** ![instellingen pictogram](media/my-apps-portal/my-apps-portal-extension-settings-icon.png)en selecteer vervolgens **instellingen**.
 
@@ -88,7 +87,7 @@ Als u toegang hebt tot de Cloud-apps van uw organisatie, kunt u deze bekijken vi
 
 1. Meld u aan bij uw werk-of school account.
 
-2. Open uw webbrowser en ga naar https://myapps.microsoft.comof gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Open uw webbrowser en ga naar https://myapps.microsoft.com of gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -102,7 +101,7 @@ De apps van uw organisatie weer geven en gebruiken vanaf een Intune Managed Brow
 
 1. Down load en installeer de Intune Managed Browser-app op uw mobiele apparaat vanuit de [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) en de [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-2. Open de Intune Managed Browser-app, ga naar https://myapps.microsoft.comof gebruik de koppeling die wordt weer gegeven door uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Open de Intune Managed Browser-app, ga naar https://myapps.microsoft.com of gebruik de koppeling die wordt weer gegeven door uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -116,7 +115,7 @@ De portal voor **mijn apps** bekijken en gebruiken vanaf een iPhone of iPad-appa
 
 1. Start een webbrowser-app, zoals Safari, op uw mobiele apparaat.
 
-2. Ga naar https://myapps.microsoft.comof gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Ga naar https://myapps.microsoft.com of gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -130,7 +129,7 @@ De portal **mijn apps** op een Android-apparaat weer geven en gebruiken.
 
 1. Start op uw mobiele apparaat een webbrowser-app, zoals Google Chrome.
 
-2. Ga naar https://myapps.microsoft.comof gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Ga naar https://myapps.microsoft.com of gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 

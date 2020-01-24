@@ -13,13 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff6e9d101159af33a05a2dc50e227bc97970b12d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cccd2df334828c0b8103e4da2ffcd8549673b69c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424465"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696993"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>Procedure: uw Azure AD-App beperken tot een set gebruikers
 
@@ -49,47 +48,47 @@ Er zijn twee manieren om een toepassing met ingeschakelde gebruikers toewijzing 
 ### <a name="enterprise-applications-requires-the-global-administrator-role"></a>Bedrijfs toepassingen (vereist de rol globale beheerder)
 
 1. Ga naar de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder**.
-1. Selecteer op de bovenste balk het aangemelde account. 
-1. Onder **Directory**selecteert u de Azure AD-Tenant waar de app wordt geregistreerd.
-1. Selecteer in de navigatie aan de linkerkant **Azure Active Directory**. Als Azure Active Directory niet beschikbaar is in het navigatie venster, voert u de volgende stappen uit:
+1. On the top bar, select the signed-in account. 
+1. Under **Directory**, select the Azure AD tenant where the app will be registered.
+1. In the navigation on the left, select **Azure Active Directory**. Als Azure Active Directory niet beschikbaar is in het navigatie venster, voert u de volgende stappen uit:
 
     1. Selecteer **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
-    1. Typ **Azure Active Directory** in het vak Zoek opdracht filteren en selecteer vervolgens het **Azure Active Directory** item in het resultaat.
+    1. Type in **Azure Active Directory** in the filter search box, and then select the **Azure Active Directory** item from the result.
 
-1. Selecteer in het deel venster Azure Active Directory **bedrijfs toepassingen** in het navigatie menu **Azure Active Directory** links.
-1. Selecteer **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
+1. In the **Azure Active Directory** pane, select **Enterprise Applications** from the **Azure Active Directory** left-hand navigation menu.
+1. Select **All Applications** to view a list of all your applications.
 
-     Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u de diverse filters boven aan de lijst **alle toepassingen** om de lijst te beperken of omlaag te schuiven in de lijst om uw toepassing te vinden.
+     If you do not see the application you want show up here, use the various filters at the top of the **All applications** list to restrict the list or scroll down the list to locate your application.
 
-1. Selecteer in de lijst de toepassing waaraan u een gebruiker of beveiligings groep wilt toewijzen.
-1. Op de **overzichts** pagina van de toepassing selecteert u **Eigenschappen** in het navigatie menu van de toepassing aan de linkerkant.
-1. Zoek de instelling **gebruikers toewijzing vereist?** en stel deze in op **Ja**. Als deze optie is ingesteld op **Ja**, moeten gebruikers eerst worden toegewezen aan deze toepassing voordat ze er toegang toe hebben.
-1. Selecteer **Opslaan** om deze configuratie wijziging op te slaan.
+1. Select the application you want to assign a user or security group to from the list.
+1. On the application's **Overview** page, select **Properties** from the application’s left-hand navigation menu.
+1. Locate the setting **User assignment required?** and set it to **Yes**. When this option is set to **Yes**, users must first be assigned to this application before they can access it.
+1. Select **Save** to save this configuration change.
 
 ### <a name="app-registration"></a>App-registratie
 
-1. Ga naar de [**Azure Portal**](https://portal.azure.com/).
-1. Selecteer op de bovenste balk het aangemelde account. 
-1. Onder **Directory**selecteert u de Azure AD-Tenant waar de app wordt geregistreerd.
-1. Selecteer in de navigatie aan de linkerkant **Azure Active Directory**.
-1. Selecteer **app-registraties** in het deel venster **Azure Active Directory** van het navigatie menu **Azure Active Directory** links.
-1. Maak of selecteer de app die u wilt beheren. U moet **eigenaar** zijn van deze app-registratie.
-1. Op de **overzichts** pagina van de toepassing volgt u de koppeling **beheerde toepassing in lokale map** onder de essentiële elementen boven aan de pagina. Hiermee gaat u naar de _beheerde bedrijfs toepassing_ van de app-registratie.
-1. Selecteer **Eigenschappen**in de Blade navigatie aan de linkerkant.
-1. Zoek de instelling **gebruikers toewijzing vereist?** en stel deze in op **Ja**. Als deze optie is ingesteld op **Ja**, moeten gebruikers eerst worden toegewezen aan deze toepassing voordat ze er toegang toe hebben.
-1. Selecteer **Opslaan** om deze configuratie wijziging op te slaan.
+1. Go to the [**Azure portal**](https://portal.azure.com/).
+1. On the top bar, select the signed-in account. 
+1. Under **Directory**, select the Azure AD tenant where the app will be registered.
+1. In the navigation on the left, select **Azure Active Directory**.
+1. In the **Azure Active Directory** pane, select **App Registrations** from the **Azure Active Directory** left-hand navigation menu.
+1. Create or select the app you want to manage. You need to be **Owner** of this app registration.
+1. On the application's **Overview** page, follow the **Managed application in local directory** link under the essentials in the top of the page. This will take you to the _managed Enterprise Application_ of your app registration.
+1. From the navigation blade on the left, select **Properties**.
+1. Locate the setting **User assignment required?** and set it to **Yes**. When this option is set to **Yes**, users must first be assigned to this application before they can access it.
+1. Select **Save** to save this configuration change.
 
-## <a name="assign-users-and-groups-to-the-app"></a>Gebruikers en groepen toewijzen aan de app
+## <a name="assign-users-and-groups-to-the-app"></a>Assign users and groups to the app
 
-Zodra u uw app hebt geconfigureerd om gebruikers toewijzing in te scha kelen, kunt u gebruikers en groepen toewijzen aan de app.
+Once you've configured your app to enable user assignment, you can go ahead and assign users and groups to the app.
 
-1. Selecteer het deel venster **gebruikers en groepen** in het navigatie menu aan de linkerkant van de toepassing.
-1. Klik boven aan de lijst **gebruikers en groepen** op de knop **gebruiker toevoegen** om het deel venster **toewijzing toevoegen** te openen.
-1. Selecteer de optie **gebruikers** selecteren in het deel venster **toewijzing toevoegen** . 
+1. Select the **Users and groups** pane in the application’s left-hand navigation menu.
+1. At the top of the **Users and groups** list, select the **Add user** button to open the **Add Assignment** pane.
+1. Select the **Users** selector from the **Add Assignment** pane. 
 
-     Er wordt een lijst met gebruikers en beveiligings groepen weer gegeven samen met een tekstvak om te zoeken en een bepaalde gebruiker of groep te zoeken. In dit scherm kunt u meerdere gebruikers en groepen tegelijk selecteren.
+     A list of users and security groups will be shown along with a textbox to search and locate a certain user or group. This screen allows you to select multiple users and groups in one go.
 
-1. Wanneer u klaar bent met het selecteren van de gebruikers en groepen, klikt u op de knop **selecteren** aan de onderkant om naar het volgende deel te gaan.
-1. Druk op de knop **toewijzen** aan de onderkant om de toewijzingen van gebruikers en groepen aan de app te volt ooien. 
-1. Controleer of de gebruikers en groepen die u hebt toegevoegd, worden weer gegeven in de lijst met bijgewerkte **gebruikers en groepen** .
+1. Once you are done selecting the users and groups, press the **Select** button on bottom to move to the next part.
+1. Press the **Assign** button on the bottom to finish the assignments of users and groups to the app. 
+1. Confirm that the users and groups you added are showing up in the updated **Users and groups** list.
 

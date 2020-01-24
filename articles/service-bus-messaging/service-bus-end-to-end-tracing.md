@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-end-to-end tracering en diagnostische gegevens | Microsoft Docs
-description: Overzicht van Service Bus-client diagnostische gegevens en end-to-end tracering
+title: End-to-end-tracering en diagnostische gegevens Azure Service Bus | Microsoft Docs
+description: Overzicht van Service Bus client diagnostiek en end-to-end tracering
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -13,45 +13,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fa71ca7ea976ab4d724a061d0d0809cdb5767f4f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310999"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705748"
 ---
-# <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Gedistribueerde tracering en correlatie via Service Bus-berichten
+# <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Gedistribueerde tracering en correlatie via Service Bus berichten
 
-Een van de bekende problemen in de ontwikkeling van microservices is de mogelijkheid voor tracering bewerking van een client via de services die bij de verwerking betrokken zijn. Dit is handig voor foutopsporing, analyse van prestaties, A / B-tests en andere diagnostische gegevens van typische scenario's.
-Een deel van dit probleem is het bijhouden van werk logische onderdelen. Het bevat resultaat en latentie en externe afhankelijkheidsaanroepen het verwerken van berichten. Een ander deel is correlatie van deze gebeurtenissen diagnostische gegevens buiten de procesgrenzen van het.
+Een van de veelvoorkomende problemen in micro Services-ontwikkeling is de mogelijkheid om de werking van een client te traceren via alle services die bij de verwerking betrokken zijn. Het is handig voor fout opsporing, prestatie analyse, A/B testen en andere typische diagnose scenario's.
+Een deel van dit probleem is het bijhouden van logische stukjes werk. Het omvat bericht verwerkings resultaten en latentie en externe afhankelijkheids aanroepen. Een ander deel is de correlatie van deze diagnostische gebeurtenissen buiten de proces grenzen.
 
-Wanneer een producent een bericht via een wachtrij verzendt, gebeurt het meestal binnen het bereik van een andere logische bewerking, gestart door een andere client- of -service. Dezelfde bewerking wordt voortgezet door consumenten wanneer deze een bericht ontvangt. Zowel producent en consument (en andere services die de bewerking verwerken), telemetriegebeurtenissen wilt traceren van de bewerking stroom en het resultaat waarschijnlijk te verzenden. Om te kunnen correleren van dergelijke gebeurtenissen en tracering bewerking end-to-end, heeft elke service die telemetrie-rapporten voor elke gebeurtenis met een trace-context.
+Wanneer een producent een bericht via een wachtrij verzendt, gebeurt dit doorgaans in het bereik van een andere logische bewerking, geïnitieerd door een andere client of service. Dezelfde bewerking wordt voortgezet door de Consumer zodra de gebruiker een bericht ontvangt. Zowel producent als consument (en andere services die de bewerking verwerken) vermoeden dat er waarschijnlijk telemetrie-gebeurtenissen worden getraceerd om de bewerkings stroom en het resultaat te traceren. Om dergelijke gebeurtenissen en tracerings bewerkingen end-to-end te correleren, moet elke service die telemetrie rapporteert elke gebeurtenis met een tracerings context afschrijven.
 
-Microsoft Azure Service Bus-berichten, is de nettolading van eigenschappen die producenten en consumenten gebruiken moeten om door te geven van dergelijke trace-context gedefinieerd.
-Het protocol is gebaseerd op de [correlatie van HTTP-protocol](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
+Microsoft Azure Service Bus Messa ging heeft eigenschappen van Payload gedefinieerd die door producenten en consumenten moeten worden gebruikt om deze tracerings context door te geven.
+Het protocol is gebaseerd op het [http-correlatie protocol](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
-| De naam van eigenschap        | Description                                                 |
+| De naam van eigenschap        | Beschrijving                                                 |
 |----------------------|-------------------------------------------------------------|
-|  Diagnose-Id       | De unieke id van een externe aanroep van producent naar de wachtrij. Raadpleeg [Request-Id in de HTTP-protocol](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) voor logica, overwegingen en indeling |
-|  Correlation-Context | De bewerkingscontext, die wordt doorgegeven in alle services die betrokken zijn bij de bewerking wordt verwerkt. Zie voor meer informatie, [correlatie-Context in HTTP-protocol](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
+|  Diagnose-id       | De unieke id van een externe aanroep van de producent naar de wachtrij. Raadpleeg de [aanvraag-id in het HTTP-protocol](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) voor de motivering, overwegingen en indeling |
+|  Correlatie-context | Bewerkings context, die wordt door gegeven voor alle services die bij de verwerking van de bewerking betrokken zijn. Zie [correlatie-context in http-protocol](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) voor meer informatie. |
 
-## <a name="service-bus-net-client-auto-tracing"></a>Service Bus .NET Client auto-tracering
+## <a name="service-bus-net-client-auto-tracing"></a>Automatische tracering van Service Bus .NET-client
 
-Vanaf versie 3.0.0 [Microsoft Azure Service Bus-Client voor .NET](/dotnet/api/microsoft.azure.servicebus.queueclient) instrumentatiepunten tracering die kunnen worden aangesloten op tracering-systemen of stukje clientcode bevat.
-De instrumentatie kunt bijhouden van alle aanroepen naar de Service Bus messaging-service vanaf clientzijde. Als het bericht verwerken is voltooid met de [bericht handler patroon](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler), berichtverwerking ook is geïnstrumenteerd
+Met ingang van versie 3.0.0 [Microsoft Azure ServiceBus-client voor .net](/dotnet/api/microsoft.azure.servicebus.queueclient) kunt u tracerings instrumentatie punten aanwijzen die kunnen worden aangesloten door traceer systemen of client code.
+Met de instrumentatie kunt u alle aanroepen van de Service Bus Messa ging-service van aan de client zijde bijhouden. Als bericht verwerking wordt uitgevoerd met het [patroon van de bericht afhandelingsprocedure](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler), wordt de bericht verwerking ook instrumentatie
 
-### <a name="tracking-with-azure-application-insights"></a>Wijzigingen bijhouden met Azure Application Insights
+### <a name="tracking-with-azure-application-insights"></a>Bijhouden met Azure-toepassing Insights
 
-[Microsoft Application Insights](https://azure.microsoft.com/services/application-insights/) biedt uitgebreide mogelijkheden, waaronder automagical aanvraag en bijhouden van afhankelijkheid voor prestatiebewaking.
+[Micro soft Application Insights](https://azure.microsoft.com/services/application-insights/) biedt uitgebreide mogelijkheden voor het controleren van prestaties, waaronder Automagic-aanvraag en het bijhouden van afhankelijkheden.
 
-Afhankelijk van het projecttype van uw, Application Insights SDK te installeren:
-- [ASP.NET](../azure-monitor/app/asp-net.md) -versie 2.5 beta2 installeren of hoger
-- [ASP.NET Core](../azure-monitor/app/asp-net-core.md) -installatie van versie 2.2.0-beta2 of hoger.
-Deze koppelingen vindt u informatie over het installeren van de SDK, het maken van resources en SDK configureren (indien nodig). Raadpleeg voor niet-ASP.NET-toepassingen, [Azure Application Insights voor consoletoepassingen](../azure-monitor/app/console.md) artikel.
+Installeer Application Insights SDK, afhankelijk van het project type:
+- [ASP.net](../azure-monitor/app/asp-net.md) -versie 2,5-Beta2 of hoger installeren
+- [ASP.net core](../azure-monitor/app/asp-net-core.md) -install versie 2.2.0-beta2 of hoger.
+Deze koppelingen bieden Details over het installeren van SDK, het maken van resources en het configureren van SDK (indien nodig). Raadpleeg het artikel [Azure-toepassing Insights voor console toepassingen](../azure-monitor/app/console.md) voor non-ASP.NET-toepassingen.
 
-Als u [bericht handler patroon](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) voor het verwerken van berichten, bent u klaar: alle Service Bus-aanroepen uitgevoerd door uw service automatisch worden bijgehouden en verband houden met de andere telemetrie-items. Anders raadpleegt u het volgende voorbeeld voor handmatige berichtverwerking bijhouden.
+Als u een [bericht afhandelingsprocedure](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) gebruikt voor het verwerken van berichten, bent u klaar: alle Service Bus-aanroepen die door uw service worden uitgevoerd, worden automatisch getraceerd en gecorreleerd met andere telemetrie-items. Raadpleeg anders het volgende voor beeld voor het bijhouden van hand matige bericht verwerking.
 
-#### <a name="trace-message-processing"></a>Verwerking van berichten traceren
+#### <a name="trace-message-processing"></a>Verwerking van tracerings berichten
 
 ```csharp
 private readonly TelemetryClient telemetryClient;
@@ -80,27 +80,27 @@ async Task ProcessAsync(Message message)
 }
 ```
 
-In dit voorbeeld `RequestTelemetry` voor elk verwerkte bericht wordt een tijdstempel, duur en het resultaat (geslaagd) gerapporteerd. De telemetrische gegevens is ook een set eigenschappen correlatie.
-Geneste traces en uitzonderingen gemeld tijdens de verwerking van berichten zijn ook een factureringslabel voor correlatie-eigenschappen die ze als 'kinderen' van de `RequestTelemetry`.
+In dit voor beeld wordt `RequestTelemetry` gerapporteerd voor elk verwerkte bericht, met een tijds tempel, duur en resultaat (geslaagd). De telemetrie heeft ook een set correlatie-eigenschappen.
+Geneste traceringen en uitzonde ringen die worden gerapporteerd tijdens de bericht verwerking, worden ook gestempeld met correlatie-eigenschappen die ze vertegenwoordigen als ' kinderen ' van de `RequestTelemetry`.
 
-In het geval u aanroepen van ondersteunde externe onderdelen tijdens de verwerking van berichten aanbrengt, worden ze ook automatisch bijgehouden en gecorreleerde. Raadpleeg [aangepaste bewerkingen met Application Insights .NET-SDK bijhouden](../azure-monitor/app/custom-operations-tracking.md) voor het handmatig bijhouden en correlatie.
+Als u tijdens de verwerking van berichten aanroepen naar ondersteunde externe onderdelen maakt, worden deze ook automatisch gevolgd en gecorreleerd. Raadpleeg [aangepaste bewerkingen bijhouden met Application Insights .NET SDK](../azure-monitor/app/custom-operations-tracking.md) voor hand matig bijhouden en correlatie.
 
-### <a name="tracking-without-tracing-system"></a>Bijhouden zonder traceringssysteem
-Als uw traceringssysteem biedt geen ondersteuning voor automatische Service Bus aanroepen bijhouden wordt u op zoek naar dergelijke ondersteuning in een traceringssysteem of in uw toepassing toe te voegen. Deze sectie beschrijft diagnostische gebeurtenissen die door Service Bus .NET-client worden verzonden.  
+### <a name="tracking-without-tracing-system"></a>Bijhouden zonder tracering systeem
+Als uw tracerings systeem geen automatische Service Bus traceringen ondersteunt, is het mogelijk om dergelijke ondersteuning toe te voegen aan een tracerings systeem of in uw toepassing. In deze sectie worden de diagnostische gebeurtenissen beschreven die worden verzonden door Service Bus .NET-client.  
 
-Service Bus .NET-Client is geïnstrumenteerd met behulp van .NET tracering primitieven [System.Diagnostics.Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) en [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md).
+Service Bus .NET-client is instrumentatie met behulp van .NET-tracering primitieven [System. Diagnostics. activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) en [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md).
 
-`Activity` fungeert als een trace-context tijdens `DiagnosticSource` is een meldingsmechanisme voor. 
+`Activity` fungeert als tracerings context terwijl `DiagnosticSource` een meldings mechanisme is. 
 
-Als er geen listener voor de gebeurtenissen DiagnosticSource, heeft instrumentation is uitgeschakeld, de kosten van nul instrumentation. Alle controle geeft DiagnosticSource aan de listener van:
-- listener bepaalt welke gegevensbronnen en gebeurtenissen te luisteren naar
-- snelheid van besturingselementen listener en steekproeven
-- gebeurtenissen worden verzonden met een nettolading die volledige context biedt, zodat u kunt benaderen en berichtobject tijdens de gebeurtenis wijzigen
+Als er geen listener voor de DiagnosticSource-gebeurtenissen is, is instrumentatie uitgeschakeld, waardoor de kosten voor de instrumentatie gelijk blijven. DiagnosticSource biedt alle controle over de listener:
+- Listener bepaalt naar welke bronnen en gebeurtenissen moet worden geluisterd
+- de controle van de gebeurtenis frequentie en de steek proef van de listener
+- gebeurtenissen worden verzonden met een nettolading die volledige context biedt zodat u tijdens de gebeurtenis toegang krijgt tot het bericht object en deze kunt wijzigen
 
-Maak uzelf vertrouwd met [DiagnosticSource gebruikershandleiding](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) voordat u doorgaat met de implementatie.
+Raadpleeg de [Gebruikers handleiding voor DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) voordat u doorgaat met de implementatie.
 
-We maken een listener voor Service Bus-gebeurtenissen in ASP.NET Core-app die u schrijft de logboeken met Microsoft.Extension.Logger.
-Hierbij [System.Reactive.Core](https://www.nuget.org/packages/System.Reactive.Core) bibliotheek moet worden geabonneerd DiagnosticSource (dit is ook eenvoudig te abonneren op DiagnosticSource zonder)
+We gaan een listener maken voor Service Bus gebeurtenissen in ASP.NET Core app die logboeken schrijft met micro soft. extension. logger.
+Er wordt gebruikgemaakt van [System. Reactive. core](https://www.nuget.org/packages/System.Reactive.Core) -bibliotheek om u te abonneren op DiagnosticSource (u kunt zich ook eenvoudig abonneren op DiagnosticSource zonder IT)
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory factory, IApplicationLifetime applicationLifetime)
@@ -137,57 +137,57 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 }
 ```
 
-In dit voorbeeld registreert listener duur, resultaat, unieke id en de begintijd voor elke Service Bus-bewerking.
+In dit voor beeld worden de duur, het resultaat, de unieke id en de start tijd van de listener voor elke Service Bus bewerking geregistreerd.
 
-#### <a name="events"></a>Events
+#### <a name="events"></a>Evenements
 
-Voor elke bewerking, worden twee gebeurtenissen verzonden: 'Start' en 'Stop'. U bent waarschijnlijk, alleen geïnteresseerd in 'Stop'-gebeurtenissen. Ze geven het resultaat van bewerking, evenals begintijd en duur als de activiteitseigenschappen van een.
+Voor elke bewerking worden twee gebeurtenissen verzonden: Start en stop. Waarschijnlijk bent u alleen geïnteresseerd in ' Stop '-gebeurtenissen. Ze bieden het resultaat van de bewerking, evenals de begin tijd en duur als een activiteit.
 
-Nettolading biedt een listener met de context van de bewerking, het binnenkomende API-parameters worden gerepliceerd en waarde retourneren. Nettolading 'Stop' heeft de eigenschappen van nettolading 'Start', zodat u kunt de gebeurtenis 'Start' volledig negeren.
+De nettolading van de gebeurtenis biedt een listener met de context van de bewerking, repliceert de API-binnenkomende para meters en retour waarden. De nettolading van de gebeurtenis stop heeft alle eigenschappen van de nettolading van de gebeurtenis, dus u kunt de gebeurtenis start volledig negeren.
 
-Alle gebeurtenissen hebben ook eigenschappen 'Entiteit' en 'Eindpunt' voorvoegsels worden weggelaten onderstaande tabel
-  * `string Entity` --De naam van de entiteit (wachtrij, onderwerp, enz.)
-  * `Uri Endpoint` -Service Bus-eindpunt-URL
+Alle gebeurtenissen hebben ook de eigenschappen entity en endpoint, die in de onderstaande tabel worden wegge laten
+  * `string Entity`: de naam van de entiteit (wachtrij, onderwerp, enzovoort)
+  * `Uri Endpoint`-Service Bus eind punt-URL
 
-Elke gebeurtenis 'Stop' heeft een `Status` eigenschap met de `TaskStatus` asynchrone bewerking is voltooid, die ook in de volgende tabel voor het gemak wordt weggelaten.
+Elke gebeurtenis ' Stop ' heeft `Status` eigenschap met `TaskStatus` asynchrone bewerking is voltooid met, die ook in de volgende tabel wordt wegge laten voor eenvoud.
 
-Dit is de volledige lijst met providers bewerkingen:
+Hier volgt de volledige lijst met bewerkingen met een instrument:
 
-| Operation Name | Bijgehouden API | De nettolading van de specifieke eigenschappen|
+| Naam van bewerking | Bijgehouden API | Eigenschappen van specifieke nettolading|
 |----------------|-------------|---------|
-| Microsoft.Azure.ServiceBus.Send | [MessageSender.SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages` -Lijst met berichten worden verzonden |
-| Microsoft.Azure.ServiceBus.ScheduleMessage | [MessageSender.ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message` -Bericht dat wordt verwerkt<br/>`DateTimeOffset ScheduleEnqueueTimeUtc` -Offset gepland bericht<br/>`long SequenceNumber` -Het volgnummer van gepland bericht (nettolading 'Stop') |
-| Microsoft.Azure.ServiceBus.Cancel | [MessageSender.CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber` -Het volgnummer van het bericht te worden geannuleerd | 
-| Microsoft.Azure.ServiceBus.Receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount` -Het maximum aantal berichten dat kan worden ontvangen.<br/>`IList<Message> Messages` -Lijst van de ontvangen berichten (nettolading 'Stop') |
-| Microsoft.Azure.ServiceBus.Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber` -Het beginpunt van waaruit berichten batchgewijs bladeren.<br/>`int RequestedMessageCount` -Het aantal berichten om op te halen.<br/>`IList<Message> Messages` -Lijst van de ontvangen berichten (nettolading 'Stop') |
-| Microsoft.Azure.ServiceBus.ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers` -De lijst met de volgnummers te ontvangen.<br/>`IList<Message> Messages` -Lijst van de ontvangen berichten (nettolading 'Stop') |
-| Microsoft.Azure.ServiceBus.Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens` -De lijst met het lock-tokens van de bijbehorende berichten om te voltooien.|
-| Microsoft.Azure.ServiceBus.Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken` -Het lock-token van het bijbehorende bericht te breken. |
-| Microsoft.Azure.ServiceBus.Defer | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken` -Het lock-token van het bijbehorende bericht om uit te stellen. | 
-| Microsoft.Azure.ServiceBus.DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken` -Het lock-token van het bijbehorende bericht onbestelbare berichten. | 
-| Microsoft.Azure.ServiceBus.RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken` -Het lock-token van het bijbehorende bericht vergrendeling op vernieuwen.<br/>`DateTime LockedUntilUtc` -Lock nieuwe vervaldatum van token datum en tijd in UTC-notatie. ('Stop' event payload)|
-| Microsoft.Azure.ServiceBus.Process | Lambda-functie voor bericht Handler is opgegeven in [IReceiverClient.RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) | `Message Message` -Bericht dat wordt verwerkt. |
-| Microsoft.Azure.ServiceBus.ProcessSession | Lambda-functie voor bericht-sessie-Handler is opgegeven in [IQueueClient.RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) | `Message Message` -Bericht dat wordt verwerkt.<br/>`IMessageSession Session` -Sessie wordt verwerkt |
-| Microsoft.Azure.ServiceBus.AddRule | [SubscriptionClient.AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule` -De regelbeschrijving waarmee de regel toe te voegen. |
-| Microsoft.Azure.ServiceBus.RemoveRule | [SubscriptionClient.RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName` : De naam van de regel te verwijderen. |
-| Microsoft.Azure.ServiceBus.GetRules | [SubscriptionClient.GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules` -Alle regels die zijn gekoppeld aan het abonnement. (Alleen voor 'Stop' payload) |
-| Microsoft.Azure.ServiceBus.AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId` -De sessie-id aanwezig zijn in de berichten. |
-| Microsoft.Azure.ServiceBus.GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId` -De sessie-id aanwezig zijn in de berichten.<br/>`byte [] State` -Sessiestatus (nettolading 'Stop') |
-| Microsoft.Azure.ServiceBus.SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId` -De sessie-id aanwezig zijn in de berichten.<br/>`byte [] State` -Sessiestatus |
-| Microsoft.Azure.ServiceBus.RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId` -De sessie-id aanwezig zijn in de berichten. |
-| Microsoft.Azure.ServiceBus.Exception | een API hebt geïnstrumenteerd| `Exception Exception` -Exemplaar uitzondering |
+| Microsoft.Azure.ServiceBus.Send | [MessageSender.SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages`-lijst met berichten die worden verzonden |
+| Microsoft.Azure.ServiceBus.ScheduleMessage | [MessageSender.ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message`-bericht dat wordt verwerkt<br/>offset voor `DateTimeOffset ScheduleEnqueueTimeUtc`-gepland bericht<br/>`long SequenceNumber` Volg nummer van het geplande bericht (de nettolading van de gebeurtenis stoppen) |
+| Microsoft.Azure.ServiceBus.Cancel | [MessageSender.CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber` Volg nummer van te annuleren bericht | 
+| Microsoft.Azure.ServiceBus.Receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount`-het maximum aantal berichten dat kan worden ontvangen.<br/>`IList<Message> Messages`-lijst met ontvangen berichten (' Stop ' gebeurtenis lading) |
+| Microsoft.Azure.ServiceBus.Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber`: het begin punt van waaruit een batch berichten moet worden gebladerd.<br/>`int RequestedMessageCount`: het aantal berichten dat moet worden opgehaald.<br/>`IList<Message> Messages`-lijst met ontvangen berichten (' Stop ' gebeurtenis lading) |
+| Microsoft.Azure.ServiceBus.ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers`: de lijst met de reeks nummers die moeten worden ontvangen.<br/>`IList<Message> Messages`-lijst met ontvangen berichten (' Stop ' gebeurtenis lading) |
+| Microsoft.Azure.ServiceBus.Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens`: de lijst met de vergrendelings tokens van de bijbehorende berichten die moeten worden voltooid.|
+| Microsoft.Azure.ServiceBus.Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken`-het vergrendelings token van het bijbehorende bericht dat moet worden verlaten. |
+| Microsoft.Azure.ServiceBus.Defer | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken`-het vergrendelings token van het bijbehorende bericht dat moet worden uitgesteld. | 
+| Microsoft.Azure.ServiceBus.DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken`-het vergrendelings token van het bijbehorende bericht naar een onbestelbare letter. | 
+| Microsoft.Azure.ServiceBus.RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken`-het vergrendelings token van het bijbehorende bericht waarop de vergren deling moet worden vernieuwd.<br/>`DateTime LockedUntilUtc`-de verloop datum en-tijd van het nieuwe vergrendelings token in UTC-indeling. (' Stop ' gebeurtenis lading)|
+| Microsoft.Azure.ServiceBus.Process | Lambda-functie Message Handler in [IReceiverClient. RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) | `Message Message`-bericht dat wordt verwerkt. |
+| Microsoft.Azure.ServiceBus.ProcessSession | De Lambda-functie Message session handler in [IQueueClient. RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) | `Message Message`-bericht dat wordt verwerkt.<br/>`IMessageSession Session`-sessie wordt verwerkt |
+| Microsoft.Azure.ServiceBus.AddRule | [SubscriptionClient.AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule`: de regel beschrijving die de toe te voegen regel levert. |
+| Microsoft.Azure.ServiceBus.RemoveRule | [SubscriptionClient.RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName`-naam van de regel die moet worden verwijderd. |
+| Microsoft.Azure.ServiceBus.GetRules | [SubscriptionClient.GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules`-alle regels die zijn gekoppeld aan het abonnement. (Alleen Payload stoppen) |
+| Microsoft.Azure.ServiceBus.AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId`-de sessionId die aanwezig is in de berichten. |
+| Microsoft.Azure.ServiceBus.GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId`-de sessionId die aanwezig is in de berichten.<br/>`byte [] State`-sessie status (' Stop ' gebeurtenis lading) |
+| Microsoft.Azure.ServiceBus.SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId`-de sessionId die aanwezig is in de berichten.<br/>`byte [] State`-sessie status |
+| Microsoft.Azure.ServiceBus.RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId`-de sessionId die aanwezig is in de berichten. |
+| Microsoft.Azure.ServiceBus.Exception | een instrumentele API| `Exception Exception`-uitzonderings exemplaar |
 
-U kunt in elke gebeurtenis openen `Activity.Current` dat de huidige bewerkingscontext bevat.
+In elk geval kunt u toegang krijgen tot `Activity.Current` die de huidige bewerkings context bevatten.
 
-#### <a name="logging-additional-properties"></a>Extra eigenschappen voor logboekregistratie
+#### <a name="logging-additional-properties"></a>Logboek registratie van aanvullende eigenschappen
 
-`Activity.Current` biedt gedetailleerde context van de huidige bewerking en de bijbehorende bovenliggende klassen. Zie voor meer informatie, [activiteit documentatie](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) voor meer informatie.
-Service Bus instrumentation bevat aanvullende informatie in de `Activity.Current.Tags` -ze hebben `MessageId` en `SessionId` wanneer deze beschikbaar zijn.
+`Activity.Current` biedt gedetailleerde context van de huidige bewerking en de bovenliggende bewerkingen. Zie voor meer informatie [activiteiten documentatie](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) voor meer informatie.
+Service Bus instrumentatie bevat extra informatie over de `Activity.Current.Tags`-ze `MessageId` en `SessionId` wanneer deze beschikbaar zijn.
 
-Activiteiten die bijhouden 'Ontvangen', 'Peek' en 'ReceiveDeferred' gebeurtenis ook mogelijk `RelatedTo` tag. Deze unieke lijst bevat `Diagnostic-Id`(s) van berichten die als gevolg hiervan zijn ontvangen.
-Deze bewerking kan leiden tot meerdere niet-gerelateerde berichten te ontvangen. Ook de `Diagnostic-Id` is niet bekend bij de bewerking wordt gestart, zodat ' ontvangen ' aan 'Process'-bewerkingen met dit label alleen kunnen worden gecorreleerd. Dit is handig bij het analyseren van prestatieproblemen om te controleren hoe lang het heeft geduurd om het bericht te ontvangen.
+Activiteiten die de gebeurtenis ' Receive ', ' Peek ' en ' ReceiveDeferred ' volgen, hebben mogelijk ook `RelatedTo`-tag. Het bevat een afzonderlijke lijst met `Diagnostic-Id`(s) van berichten die als gevolg hiervan zijn ontvangen.
+Deze bewerking kan ertoe leiden dat er verschillende niet-gerelateerde berichten worden ontvangen. De `Diagnostic-Id` is ook niet bekend wanneer de bewerking wordt gestart. Daarom kunnen receive-bewerkingen alleen worden gecorreleerd aan proces bewerkingen met deze tag. Het is handig bij het analyseren van prestatie problemen om te controleren hoe lang het heeft geduurd om het bericht te ontvangen.
 
-Efficiënte manier om aan te melden Tags is om te herhalen, zodat de labels toe te voegen aan het voorgaande voorbeeld ziet eruit als 
+Een efficiënte manier om tags te registreren, is om ze te herhalen. het toevoegen van labels aan het voor gaande voor beeld ziet eruit als 
 
 ```csharp
 Activity currentActivity = Activity.Current;
@@ -202,31 +202,31 @@ foreach (var tags in currentActivity.Tags)
 serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, Duration={currentActivity.Duration}, Status={status}, Id={currentActivity.Id}, StartTime={currentActivity.StartTimeUtc}{tagsList}");
 ```
 
-#### <a name="filtering-and-sampling"></a>Filteren en steekproeven
+#### <a name="filtering-and-sampling"></a>Filters en steek proeven
 
-In sommige gevallen is het wenselijk om aan te melden slechts een deel van de gebeurtenissen worden verkleind performance overhead of opslag. U kunt gebeurtenissen 'Stop' alleen (zoals in het voorgaande voorbeeld) of percentage van de steekproef van de gebeurtenissen kan aanmelden. 
-`DiagnosticSource` Geef manier om te realiseren met `IsEnabled` predicaat. Zie voor meer informatie, [filteren op basis van een Context in DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
+In sommige gevallen is het wenselijk om slechts een deel van de gebeurtenissen te registreren om de prestaties van de overhead of het opslag verbruik te verminderen. U kunt stop gebeurtenissen alleen registreren (zoals in het voor gaande voor beeld) of het voorbeeld percentage van de gebeurtenissen. 
+`DiagnosticSource` bieden om dit te doen met `IsEnabled` predicaat. Zie [context-based filtering in DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering)voor meer informatie.
 
-`IsEnabled` mogelijk worden meerdere keren aangeroepen voor een enkele bewerking om te beperken van invloed op de prestaties.
+`IsEnabled` kan meermaals worden aangeroepen voor één bewerking om de prestaties te verminderen.
 
-`IsEnabled` wordt aangeroepen in de volgende volgorde:
+`IsEnabled` wordt in de volgende volg orde aangeroepen:
 
-1. `IsEnabled(<OperationName>, string entity, null)` bijvoorbeeld, `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`. Let op: Er is geen 'Start' of 'Stop' aan het einde. Gebruik deze om te filteren om bepaalde bewerkingen of wachtrijen. Als de callback retourneert `false`, gebeurtenissen voor de bewerking niet worden verzonden
+1. `IsEnabled(<OperationName>, string entity, null)` bijvoorbeeld `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`. Houd er rekening mee dat er aan het einde geen ' Start ' of ' Stop ' is. Gebruik het om bepaalde bewerkingen of wacht rijen te filteren. Als terugbellen `false`retourneert, worden gebeurtenissen voor de bewerking niet verzonden
 
-   * Voor de 'Process' en 'ProcessSession', ontvangt u ook `IsEnabled(<OperationName>, string entity, Activity activity)` retouraanroep. Gebruiken om te filteren op basis van gebeurtenissen `activity.Id` of Tags eigenschappen.
+   * Voor de bewerkingen ' process ' en ' ProcessSession ' ontvangt u ook `IsEnabled(<OperationName>, string entity, Activity activity)`-call back. Gebruik deze functie om gebeurtenissen te filteren op basis van eigenschappen van `activity.Id` of tags.
   
-2. `IsEnabled(<OperationName>.Start)` bijvoorbeeld, `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`. Hiermee wordt gecontroleerd of de gebeurtenis 'Start' moet worden geactiveerd. Het resultaat heeft alleen gevolgen voor de gebeurtenis 'Start', maar verdere instrumentation is niet afhankelijk van het.
+2. `IsEnabled(<OperationName>.Start)` bijvoorbeeld `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`. Hiermee wordt gecontroleerd of de gebeurtenis start moet worden gestart. Het resultaat is alleen van invloed op de gebeurtenis start, maar verdere instrumentatie is niet afhankelijk van het item.
 
-Er is geen `IsEnabled` voor gebeurtenis 'Stop'.
+Er is geen `IsEnabled` voor de gebeurtenis stop.
 
-Als sommige bewerkingsresultaat uitzondering, `IsEnabled("Microsoft.Azure.ServiceBus.Exception")` wordt genoemd. U kunt alleen abonneren op gebeurtenissen 'Uitzondering' en te voorkomen dat de rest van de instrumentatie. In dit geval hebt u nog steeds voor het afhandelen van zulke uitzonderingen. Aangezien andere instrumentatie is uitgeschakeld, moet u tracering context stromen met de berichten van consumenten producent niet verwacht.
+Als een bepaalde bewerkings resultaat uitzonde ring is, wordt `IsEnabled("Microsoft.Azure.ServiceBus.Exception")` aangeroepen. U kunt zich alleen abonneren op uitzonderings gebeurtenissen en de rest van de instrumentatie verhinderen. In dit geval moet u dergelijke uitzonde ringen nog steeds afhandelen. Omdat andere instrumentatie is uitgeschakeld, moet u niet verwachten dat de tracerings context wordt gestroomd met de berichten van de gebruiker naar de producent.
 
-U kunt `IsEnabled` ook steekproeven strategieën implementeren. Steekproef nemen op basis van de `Activity.Id` of `Activity.RootId` zorgt ervoor dat consistent sampling voor alle te testen (zolang het is doorgegeven door de tracering of door uw eigen code).
+U kunt `IsEnabled` ook voorbeeld strategieën implementeren. Steek proeven op basis van `Activity.Id` of `Activity.RootId` zorgen voor consistente steek proeven in alle banden (zolang deze door tracering systeem of door uw eigen code worden door gegeven).
 
-In de aanwezigheid van meerdere `DiagnosticSource` listeners voor dezelfde bron, is voldoende voor slechts één listener om te accepteren van de gebeurtenis, dus `IsEnabled` is niet noodzakelijkerwijs worden aangeroepen,
+Als er meerdere `DiagnosticSource` listeners voor dezelfde bron aanwezig zijn, is het voldoende voor slechts één listener om de gebeurtenis te accepteren, waardoor `IsEnabled` niet kan worden aangeroepen,
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Application Insights correlatie](../azure-monitor/app/correlation.md)
-* [Application Insights-afhankelijkheden controleren](../azure-monitor/app/asp-net-dependencies.md) om te zien als REST, SQL of andere externe resources zorgen voor vertraging.
-* [Aangepaste bewerkingen met Application Insights .NET-SDK bijhouden](../azure-monitor/app/custom-operations-tracking.md)
+* [Application Insights controle afhankelijkheden](../azure-monitor/app/asp-net-dependencies.md) om te zien of rest, SQL of andere externe bronnen worden vertraagd.
+* [Aangepaste bewerkingen bijhouden met Application Insights .NET SDK](../azure-monitor/app/custom-operations-tracking.md)

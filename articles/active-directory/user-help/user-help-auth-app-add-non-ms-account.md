@@ -11,17 +11,16 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c01377280c4e4c97b729e27c22496c388652924f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: da5e2f60334148be1206ce61a9c6397a3acf85e3
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278883"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704762"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Niet-micro soft-accounts toevoegen aan de app Microsoft Authenticator
 
-Voeg uw niet-micro soft-accounts, zoals voor Google, Facebook of GitHub, toe aan de Microsoft Authenticator-app voor twee ledige verificatie. De app Microsoft Authenticator werkt met elke app die gebruikmaakt van tweeledige verificatie en met elk account dat de TOTP-normen (Time-Based One-Time Passwords) accepteert.
+Voeg uw niet-micro soft-accounts, zoals voor Google, Facebook of GitHub, toe aan de Microsoft Authenticator-app voor twee ledige verificatie. De app Microsoft Authenticator werkt met elke app die verificatie in twee stappen gebruikt en met elk account dat de TOTP-normen (Time-Based One-Time Passwords) ondersteunt.
 
 >[!Important]
 >Voordat u uw account kunt toevoegen, moet u de app Microsoft Authenticator downloaden en installeren. Als u dat nog niet hebt gedaan, volgt u de stappen in het artikel [app downloaden en installeren](user-help-auth-app-download-install.md) .

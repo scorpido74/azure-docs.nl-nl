@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 88e11adadcc06875964146ad2046828267258038
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e971af5d415ea788f97ab11b58541e629c7eb0ed
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389213"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694296"
 ---
 ## <a name="lifecycle"></a>Levenscyclus
 
@@ -33,7 +33,7 @@ Op het tabblad **levenscyclus** geeft u op wanneer de toewijzing van een gebruik
 
 1. Als u wilt dat gebruikers hun toewijzingen kunnen uitbreiden, stelt u gebruikers toestaan in om de toegang tot **Ja**uit te **breiden** .
 
-    Als uitbrei dingen zijn toegestaan in het beleid, ontvangt de gebruiker een e-mail bericht van 14 dagen en ook 1 dag voordat de toewijzing van het toegangs pakket wordt ingesteld op verlopen om de toewijzing uit te breiden.
+    Als uitbrei dingen zijn toegestaan in het beleid, ontvangt de gebruiker een e-mail bericht van 14 dagen en ook 1 dag voordat de toewijzing van het toegangs pakket wordt ingesteld op verlopen om de toewijzing uit te breiden. Als de gebruiker een aanvraag indient om toegang uit te breiden, moet de uitbrei ding datum of de toewijzingen verlopen zoals gedefinieerd in het beleid dat is gebruikt om de gebruiker toegang te verlenen tot het toegangs pakket. Als het beleid bijvoorbeeld aangeeft dat toewijzingen op 30 juni op verlopen zijn ingesteld, kan de maximale extensie die een gebruiker kan aanvragen, 30 juni zijn.
 
     Als de toegang van een gebruiker wordt uitgebreid, kunnen ze het toegangs pakket niet aanvragen na de opgegeven extensie datum (datum die is ingesteld in de tijd zone van de gebruiker die het beleid heeft gemaakt).
 

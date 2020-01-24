@@ -12,13 +12,12 @@ ms.date: 08/07/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec5fe8e93c9032a07c1defe5b28753e0f520a320
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 32691892ccae31541855f47bd8274aa28b6dc185
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963330"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704286"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Snelstartgids: een client toepassing configureren voor toegang tot Web-Api's
 
@@ -42,10 +41,10 @@ In deze snelstart leert u hoe u uw toepassing kunt configureren voor het volgend
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u voordat u aan de slag gaat aan deze vereisten voldoet:
+Zorg ervoor dat u, voordat u aan de slag gaat, aan deze vereisten voldoet:
 
 * Lees de informatie over de ondersteunde [machtigingen en toestemming](v2-permissions-and-consent.md). Een goed begrip hiervan is belangrijk bij het bouwen van toepassingen die moeten worden gebruikt door andere gebruikers of met andere toepassingen.
-* U moet een tenant hebben waarvoor toepassingen zijn geregistreerd.
+* U beschikt over een tenant waarvoor toepassingen zijn geregistreerd.
   * Als u uw apps niet hebt geregistreerd, [kunt u hier lezen hoe u toepassingen registreert bij het Microsoft Identity Platform](quickstart-register-app.md).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Aanmelden bij de Azure-portal en de app selecteren
@@ -54,9 +53,9 @@ Voordat u de app kunt configureren, volgt u deze stappen:
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 1. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u uw account in de rechter bovenhoek en stelt u uw portal sessie in op de gewenste Azure AD-Tenant.
-1. Zoek en selecteer **Azure Active Directory**. 
+1. Zoek naar **Azure Active Directory** en selecteer deze optie. 
 1. Selecteer **app-registraties**in het linkerdeel venster.
-1. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u de pagina **Overzicht** of de hoofdregistratiepagina van de toepassing.
+1. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u het **Overzicht** of de hoofdregistratiepagina van de toepassing.
 1. Volg de stappen om uw toepassing te configureren voor toegang tot web-API's:
     * [Omleidings-URI's toevoegen aan uw toepassing](#add-redirect-uris-to-your-application)
     * [Geavanceerde instellingen configureren voor uw toepassing](#configure-advanced-settings-for-your-application)
@@ -209,8 +208,8 @@ Lees meer in deze andere gerelateerde snelstarts voor app-beheer:
 
 * [Een toepassing registreren met het Microsoft Identity Platform](quickstart-register-app.md)
 * [Een toepassing configureren voor het beschikbaar maken van web-API's](quickstart-configure-app-expose-web-apis.md)
-* [De accounts wijzigen die worden ondersteund in een toepassing](quickstart-modify-supported-accounts.md)
-* [Een geregistreerde toepassing verwijderen met het Microsoft Identity Platform](quickstart-remove-app.md)
+* [De accounts wijzigen die worden ondersteund door een toepassing](quickstart-modify-supported-accounts.md)
+* [Een geregistreerde toepassing verwijderen uit het Microsoft Identity Platform](quickstart-remove-app.md)
 
 Zie [Toepassingsobjecten en service-principal-objecten](app-objects-and-service-principals.md) voor meer informatie over de twee Azure Active Directory-objecten die een geregistreerde toepassing vertegenwoordigen en de relatie ertussen.
 

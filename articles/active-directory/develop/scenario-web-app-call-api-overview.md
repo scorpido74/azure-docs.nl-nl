@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3888c7f838d6009382f849bc7d3e34c49b3b70a4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9e123195205bb0eb88f0edd4e2dff2e0da9d84ce
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962131"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701651"
 ---
 # <a name="scenario-web-app-that-calls-web-apis"></a>Scenario: Web-app die web-Api's aanroept
 
@@ -43,7 +42,7 @@ U kunt verificatie toevoegen aan uw web-app, waarmee gebruikers zich kunnen aanm
 
 Web Apps die web-Api's aanroept:
 
-- Zijn vertrouwelijke client toepassingen.
+- zijn vertrouwelijke client toepassingen.
 - Daarom hebben ze een geheim (toepassings wachtwoord of-certificaat) geregistreerd bij Azure AD. Dit geheim wordt door gegeven tijdens het aanroepen van Azure AD om een token op te halen
 
 ## <a name="specifics"></a>Opsporingsgegevens

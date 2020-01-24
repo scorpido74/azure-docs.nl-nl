@@ -1,22 +1,18 @@
 ---
 title: Herstel plannen maken/aanpassen in Azure Site Recovery
 description: Meer informatie over het maken en aanpassen van herstel plannen voor herstel na nood gevallen met behulp van de Azure Site Recovery-service.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
-ms.topic: article
-ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: 9bb5a1a3aa0c2a4681ddecb5e20df41d481755ec
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.topic: how-to
+ms.date: 01/23/2020
+ms.openlocfilehash: 6540317324a9f0d9bccc046ecf95824d4128bd09
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084508"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705833"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Herstel plannen maken en aanpassen
 
-In dit artikel wordt beschreven hoe u een herstel plan maakt en aanpast in [Azure site Recovery](site-recovery-overview.md). Voordat u begint, kunt u [meer te weten komen](recovery-plan-overview.md) over herstel plannen.
+In dit artikel wordt beschreven hoe u een herstel plan voor failover kunt maken en aanpassen in [Azure site Recovery](site-recovery-overview.md). Voordat u begint, kunt u [meer te weten komen](recovery-plan-overview.md) over herstel plannen.
 
 ## <a name="create-a-recovery-plan"></a>Een herstelplan maken
 
@@ -24,22 +20,25 @@ In dit artikel wordt beschreven hoe u een herstel plan maakt en aanpast in [Azur
 2. In **herstel plan maken**geeft u een naam op voor het plan.
 3. Kies een bron en doel op basis van de computers in het plan en selecteer **Resource Manager** voor het implementatie model. De bron locatie moet machines hebben die zijn ingeschakeld voor failover en herstel. 
 
-   **Failover** | **Bron** | **Doel** 
+    **Failover** | **Bron** | **Doel** 
    --- | --- | ---
-   Azure naar Azure | Azure-regio |Azure-regio
-   VMware naar Azure | Configuratieserver | Azure
-   Fysieke machines naar Azure | Configuratieserver | Azure   
-   Door VMM beheerde Hyper-V-naar-Azure  | VMM-weergave naam | Azure
-   Hyper-V zonder VMM naar Azure | Naam van Hyper-V-site | Azure
-   VMM naar VMM |Beschrijvende naam van VMM | VMM-weergave naam 
+   Azure naar Azure | De Azure-regio selecteren | De Azure-regio selecteren
+   VMware naar Azure | De configuratie server selecteren | Azure selecteren
+   Fysieke machines naar Azure | De configuratie server selecteren | Azure selecteren   
+   Hyper-V naar Azure | De naam van de Hyper-V-site selecteren | Azure selecteren
+   Hyper-V (beheerd door VMM) naar Azure  | De VMM-server selecteren | Azure selecteren
+  
+    Houd rekening met het volgende:
+    -  U kunt alleen een herstel plan voor failover van de bron locatie naar Azure gebruiken. U kunt geen herstel plan gebruiken voor failback vanuit Azure.
+    - De bron locatie moet machines hebben die zijn ingeschakeld voor failover en herstel. 
+    - Een herstel plan kan machines met dezelfde bron en hetzelfde doel bevatten. 
+    - U kunt virtuele VMware-machines en virtuele Hyper-V-machines die worden beheerd door VMM, in hetzelfde abonnement toevoegen.
+    - Virtuele VMware-machines en fysieke servers kunnen zich in hetzelfde abonnement bevindt.
 
-   > [!NOTE]
-   > Een herstel plan kan machines met dezelfde bron en hetzelfde doel bevatten. VMware-en Hyper-V-Vm's die door VMM worden beheerd, kunnen zich niet in hetzelfde abonnement bevallen. Virtuele VMware-machines en fysieke servers kunnen zich in hetzelfde abonnement bevindt, waarbij de bron een configuratie server is.
-
-2. Selecteer in **virtuele machines voor items selecteren**de machines (of replicatie groep) die u aan het plan wilt toevoegen. Klik vervolgens op **OK**.
+4. Selecteer in **virtuele machines voor items selecteren**de machines (of replicatie groep) die u aan het plan wilt toevoegen. Klik vervolgens op **OK**.
     - Computers zijn standaard groep (groep 1) toegevoegd in het plan. Na een failover starten alle computers in deze groep op hetzelfde moment.
     - U kunt alleen computers selecteren in de bron-en doel locatie die u hebt opgegeven. 
-1. Klik op **OK** om het plan te maken.
+5. Klik op **OK** om het plan te maken.
 
 ## <a name="add-a-group-to-a-plan"></a>Een groep toevoegen aan een plan
 
@@ -64,9 +63,9 @@ U kunt een herstel plan aanpassen door een script of hand matige actie toe te vo
     **Scenario** | **Failover** | **Failback**
     --- | --- | --- 
     Azure naar Azure  | Runbook | Runbook
-    VMware naar Azure | Runbook | N.v.t. 
+    VMware naar Azure | Runbook | N.V.T. 
     Hyper-V met VMM naar Azure | Runbook | Script
-    Hyper-V-site naar Azure | Runbook | N.v.t.
+    Hyper-V-site naar Azure | Runbook | N.V.T.
     VMM naar secundaire VMM | Script | Script
 
 1. Klik in het herstel plan op de stap waaraan de actie moet worden toegevoegd en geef op wanneer de actie moet worden uitgevoerd:

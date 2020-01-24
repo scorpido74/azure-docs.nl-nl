@@ -1,18 +1,18 @@
 ---
 title: De migratie van Azure Monitor klassieke waarschuwingen voorbereiden door uw Logic apps en runbooks bij te werken
+author: yanivlavi
 description: Meer informatie over het wijzigen van uw webhooks, Logic apps en runbooks om een vrijwillige migratie voor te bereiden.
-author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: snmuvva
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 5235db5cab39be6e36bdf145d3edc7c73fe9da54
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 58ba95ff60ddccf909578a673110c870caf57376
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827387"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705561"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Bereid uw Logic apps en runbooks voor op de migratie van klassieke waarschuwings regels
 
@@ -25,13 +25,13 @@ Als u ervoor kiest om uw klassieke waarschuwings regels vrijwillig te migreren n
 
 ## <a name="api-changes"></a>API-wijzigingen
 
-De api's die klassieke waarschuwings regels maken en beheren (`microsoft.insights/alertrules`) verschillen van de api's die nieuwe metrische waarschuwingen maken en beheren (`microsoft.insights/metricalerts`). Als u nu een regel matig klassieke waarschuwings regels maakt en beheert, moet u de implementatie scripts bijwerken zodat deze met de nieuwe Api's kan worden gebruikt.
+De Api's die klassieke waarschuwings regels maken en beheren (`microsoft.insights/alertrules`) verschillen van de Api's die nieuwe metrische waarschuwingen maken en beheren (`microsoft.insights/metricalerts`). Als u nu een regel matig klassieke waarschuwings regels maakt en beheert, moet u de implementatie scripts bijwerken zodat deze met de nieuwe Api's kan worden gebruikt.
 
 De volgende tabel bevat een verwijzing naar de programmatische interfaces voor zowel klassieke als nieuwe waarschuwingen:
 
 |         |Klassieke waarschuwingen  |Nieuwe metrische waarschuwingen |
 |---------|---------|---------|
-|REST-API     | [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
+|REST API     | [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
 |Azure-CLI     | [AZ-monitor waarschuwing](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [waarschuwing AZ monitor Metrics](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
 |PowerShell      | [Naslaginformatie](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Naslaginformatie](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager-sjabloon | [Voor klassieke waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Voor nieuwe metrische waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
@@ -48,10 +48,10 @@ Gebruik de volgende tabel om de velden voor de nettolading van webhooks van de k
 |Contextuele informatie over de waarschuwing     | **context**        | **data.context**        |
 |Tijds tempel waarop de waarschuwing is geactiveerd of opgelost     | **context. time stamp**       | **data.context.timestamp**        |
 | ID van waarschuwings regel | **context.id** | **data.context.id** |
-| Naam waarschuwingsregel | **context.name** | **data.context.name** |
+| Naam van waarschuwingsregel | **context.name** | **data.context.name** |
 | Beschrijving van de waarschuwings regel | **context.description** | **data.context.description** |
 | Voor waarde waarschuwings regel | **context.condition** | **data.context.condition** |
-| Naam van de meetwaarde | **context. condition. metrische** | **data. context. condition. overzet [0]. metrische** |
+| Naam van metrische waarde | **context. condition. metrische** | **data. context. condition. overzet [0]. metrische** |
 | Tijd aggregatie (hoe de metrische gegevens worden geaggregeerd over het evaluatie venster)| **context. condition. timeAggregation** | **context. condition. timeAggregation** |
 | Evaluatie periode | **context.condition.windowSize** | **data.context.condition.windowSize** |
 | Operator (hoe de cumulatieve metrische waarde wordt vergeleken met de drempel) | **context.condition.operator** | **data.context.condition.operator** |

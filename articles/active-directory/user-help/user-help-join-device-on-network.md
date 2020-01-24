@@ -12,13 +12,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b122d70179f22c91028c8343b23d74cc616b1f76
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 149c0298ee7883aa130756bfc4d0cbbb9e002065
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028529"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704643"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Uw werk apparaat toevoegen aan het netwerk van uw organisatie
 Voeg uw werkend Windows 10-apparaat toe aan het netwerk van uw organisatie, zodat u mogelijk beperkte bronnen kunt openen.
@@ -86,7 +85,7 @@ Als u uw apparaat al een tijdje hebt en het reeds is ingesteld, kunt u deze stap
 
 5. Typ uw wacht woord in het scherm **wacht woord invoeren** en selecteer **Aanmelden**.
 
-    ![Wacht woord invoeren](./media/user-help-join-device-on-network/join-device-setup-password.png)
+    ![Wachtwoord invoeren](./media/user-help-join-device-on-network/join-device-setup-password.png)
 
 6. Goed keuren uw apparaat op uw mobiele apparaat om toegang tot uw account te krijgen. 
 

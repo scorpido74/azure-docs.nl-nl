@@ -1,5 +1,5 @@
 ---
-title: Wat is de extra verificatie pagina? -Azure AD
+title: Wat is de pagina Aanvullende verificatie? -Azure AD
 description: Ga naar de extra beveiligings verificatie pagina voor twee ledige verificatie.
 services: active-directory
 author: eross-msft
@@ -10,15 +10,14 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 01/15/2020
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dfcc02928cc92aedd0eb0f966bea9804be5fdcc
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: d7ec884cb55d876edd93f9fe1c5cc59f5ee13295
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156247"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705289"
 ---
-# <a name="what-is-the-additional-verification-page"></a>Wat is de extra verificatie pagina?
+# <a name="what-is-the-additional-verification-page"></a>Wat is de pagina Aanvullende verificatie?
 
 U hebt een e-mail ontvangen van iemand op de IT-afdeling of van uw baas met de mededeling dat in de organisatie extra beveiligingsverificatie is toegevoegd aan uw account. Wat houdt dit in? Dit houdt in dat in uw organisatie extra stappen worden ondernomen om uw identiteit te controleren bij het aanmelden. Deze extra verificatie, ook wel bekend als twee ledige verificatie, wordt uitgevoerd via een combi natie van uw gebruikers naam, uw wacht woord en een mobiel apparaat of telefoon nummer.
 

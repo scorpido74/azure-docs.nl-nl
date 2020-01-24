@@ -13,13 +13,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78acb1f27b27c53aaaac508e0aa99a5b9c14ff2d
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 74d443cc87a71950a31732db48e94ea3b5ced7ba
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914918"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705306"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>App-wacht woorden beheren voor verificatie in twee stappen
 
@@ -43,11 +42,11 @@ Tijdens het eerste registratie proces voor twee ledige verificatie wordt u met Ã
 
 U kunt app-wacht woorden maken en verwijderen op basis van de manier waarop u twee ledige verificatie gebruikt:
 
-- **Uw organisatie gebruikt twee ledige verificatie en de extra beveiligings verificatie pagina.** Als u uw werk-of school account (zoals alain@contoso.com) gebruikt met twee ledige verificatie in uw organisatie, kunt u uw app-wacht woorden beheren via de [pagina aanvullende beveiligings verificatie](https://account.activedirectory.windowsazure.com/Proofup.aspx). Zie voor gedetailleerde instructies [app-wacht woorden maken en verwijderen met de extra beveiligings verificatie pagina](#create-and-delete-app-passwords-from-the-additional-security-verification-page) in dit artikel.
+- **Uw organisatie gebruikt twee ledige verificatie en de extra beveiligings verificatie pagina.** Als u uw werk-of school account (zoals alain@contoso.com) gebruikt in combi natie met twee ledige verificatie in uw organisatie, kunt u uw app-wacht woorden beheren via de [pagina aanvullende beveiligings verificatie](https://account.activedirectory.windowsazure.com/Proofup.aspx). Zie voor gedetailleerde instructies [app-wacht woorden maken en verwijderen met de extra beveiligings verificatie pagina](#create-and-delete-app-passwords-from-the-additional-security-verification-page) in dit artikel.
 
-- **Uw organisatie gebruikt twee ledige verificatie en de Office 365-Portal.** Als u uw werk-of school account gebruikt (zoals, alain@contoso.com), twee ledige verificatie en Office 365-apps in uw organisatie, kunt u uw app-wacht woorden beheren via de pagina van de [Office 365-Portal](https://www.office.com). Zie voor gedetailleerde instructies [app-wacht woorden maken en verwijderen met behulp van de Office 365-Portal](#create-and-delete-app-passwords-using-the-office-365-portal) in dit artikel.
+- **Uw organisatie gebruikt twee ledige verificatie en de Office 365-Portal.** Als u uw werk-of school account (zoals alain@contoso.com), twee ledige verificatie en Office 365-apps in uw organisatie gebruikt, kunt u uw app-wacht woorden beheren via de [pagina van de Office 365-Portal](https://www.office.com). Zie voor gedetailleerde instructies [app-wacht woorden maken en verwijderen met behulp van de Office 365-Portal](#create-and-delete-app-passwords-using-the-office-365-portal) in dit artikel.
 
-- **U gebruikt twee ledige verificatie met een persoonlijke Microsoft-account.** Als u een persoonlijke Microsoft-account gebruikt (zoals, alain@outlook.com) met verificatie op basis van twee factoren, kunt u uw app-wacht woorden beheren op de pagina met [beveiligings beginselen](https://account.microsoft.com/security/). Voor gedetailleerde instructies raadpleegt [u app-wacht woorden gebruiken met apps die geen ondersteuning bieden voor verificatie in twee stappen](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
+- **U gebruikt twee ledige verificatie met een persoonlijke Microsoft-account.** Als u een persoonlijke Microsoft-account gebruikt (zoals alain@outlook.com) met twee ledige verificaties, kunt u uw app-wacht woorden beheren op de [pagina basis beginselen van beveiliging](https://account.microsoft.com/security/). Voor gedetailleerde instructies raadpleegt [u app-wacht woorden gebruiken met apps die geen ondersteuning bieden voor verificatie in twee stappen](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
 
 ## <a name="create-and-delete-app-passwords-from-the-additional-security-verification-page"></a>App-wacht woorden maken en verwijderen op de pagina aanvullende beveiligings verificatie
 
