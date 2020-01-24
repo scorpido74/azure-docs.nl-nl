@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9bf5608a44aa19650a507ada3a0a437d34c13277
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513729"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705663"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Sensor gegevens ophalen van sensor partners
 
@@ -37,9 +37,7 @@ Nadat u het streamen van sensor gegevens hebt gestart, kunt u beginnen met het p
  - Clientgeheim
  - EventHub connection string
 
-De vorige informatie wordt door uw systeem integrator verstrekt. Neem contact op met uw systeem integrator voor problemen die kunnen optreden wanneer u de integratie van het apparaat inschakelt.
-
-U kunt ook de referenties genereren door dit script uit Azure Cloud Shell uit te voeren. Volg deze stappen.
+U kunt de bovenstaande informatie genereren door de volgende stappen uit te voeren: (Houd er rekening mee dat deze stappen moeten worden uitgevoerd in azure, zodat u toegang nodig hebt tot het Azure-abonnement waar FarmBeats wordt geïmplementeerd)
 
 1. Down load het [zip-bestand](https://aka.ms/farmbeatspartnerscriptv2)en pak het uit naar uw lokale station. Er is één bestand in het zip-bestand.
 2. Meld u aan bij https://portal.azure.com/ en ga naar Azure Active Directory-> app-registraties

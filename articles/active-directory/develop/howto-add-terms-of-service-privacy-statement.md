@@ -12,13 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ca59120bcfadc6c75e3687be84a0e70f97fc3c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f28c33f20556825d84edda34752ac64714327526
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842799"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697333"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Procedure: Service voorwaarden en de privacyverklaring voor een app configureren
 
@@ -59,7 +58,7 @@ Wanneer de service voorwaarden en de privacyverklaring gereed zijn, kunt u aan d
 ### <a name="azure-portal"></a>De Azure Portal gebruiken
 Volg deze stappen in de Azure Portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Ga naar de sectie **app-registraties** en selecteer uw app.
 3. Open het deel venster **huis stijl** .
 4. Vul de URL-velden **voor de service voorwaarden** en de **privacyverklaring** in.

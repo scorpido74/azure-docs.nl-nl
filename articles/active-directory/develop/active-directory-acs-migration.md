@@ -13,13 +13,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c04377877619c96f139f4b6c1cf826573524d900
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 174a80b99f65393f5c5bbe35b30e7ac5b54a359e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845549"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699458"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Procedure: migreren vanuit Azure Access Control Service
 
@@ -208,7 +207,7 @@ Op hoog niveau *is Azure Active Directory waarschijnlijk de beste keuze voor uw 
 | Aanpas bare thuis realm detectie/account-gebruikers interface voor orderverzamelen | Download bare code die kan worden opgenomen in apps | Niet ondersteund |
 | Aangepaste certificaten voor token-ondertekening uploaden | Ondersteund | Ondersteund |
 | Claims in tokens aanpassen |-Invoer claims door geven van id-providers<br />-Toegangs token van ID-provider als claim ophalen<br />-Uitvoer claims uitgeven op basis van de waarden van invoer claims<br />-Uitvoer claims met constante waarden uitgeven |-Kan geen claims door geven van federatieve id-providers<br />-Kan geen toegangs Token ophalen van de identiteits provider als een claim<br />-Kan geen uitvoer claims uitgeven op basis van de waarden van invoer claims<br />-Kan uitvoer claims verzenden met constante waarden<br />-Kan uitvoer claims uitgeven op basis van eigenschappen van gebruikers die zijn gesynchroniseerd met Azure AD |
-| **Automation** | | |
+| **Automatisering** | | |
 | Configuratie-en beheer taken automatiseren | Ondersteund via Access Control Management-service | Ondersteund via Microsoft Graph en Azure AD Graph API |
 
 Als u besluit dat Azure AD het beste migratie traject is voor uw toepassingen en services, moet u rekening houden met twee manieren om uw app te integreren met Azure AD.
@@ -259,7 +258,7 @@ In de volgende tabel worden de functies van Access Control vergeleken die releva
 | Aanpas bare thuis realm detectie/account-gebruikers interface voor orderverzamelen | Download bare code die kan worden opgenomen in apps | Volledig aanpas bare gebruikers interface via aangepaste CSS |
 | Aangepaste certificaten voor token-ondertekening uploaden | Ondersteund | Aangepaste handtekening sleutels, geen certificaten, ondersteund via aangepast beleid |
 | Claims in tokens aanpassen |-Invoer claims door geven van id-providers<br />-Toegangs token van ID-provider als claim ophalen<br />-Uitvoer claims uitgeven op basis van de waarden van invoer claims<br />-Uitvoer claims met constante waarden uitgeven |-Kan claims van id-providers passeren; aangepast beleid dat is vereist voor sommige claims<br />-Kan geen toegangs Token ophalen van de identiteits provider als een claim<br />-Kan uitvoer claims uitgeven op basis van de waarden van invoer claims via aangepaste beleids regels<br />-Kan uitvoer claims met constante waarden uitgeven via aangepaste beleids regels |
-| **Automation** | | |
+| **Automatisering** | | |
 | Configuratie-en beheer taken automatiseren | Ondersteund via Access Control Management-service |Het maken van gebruikers die zijn toegestaan via Azure AD Graph API<br />-Kan geen B2C-tenants,-toepassingen of-beleid maken via een programma |
 
 Als u besluit dat Azure AD B2C het beste migratie traject is voor uw toepassingen en services, begint u met de volgende bronnen:

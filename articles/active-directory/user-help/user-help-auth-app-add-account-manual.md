@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00f8a0e8d655f9412eceb7b0901ced829e490f78
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4dd38eee8ebc12ed01874611ec5e532a4d78ede2
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616097"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704796"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Een account hand matig toevoegen aan de app
 
@@ -52,7 +51,7 @@ De codes voor uw accounts zijn niet hoofdletter gevoelig en vereisen geen spatie
 
     De pagina **streepjes code scannen kan niet worden** weer gegeven met de geheime code. Laat deze pagina open zodat u de geheime code kunt zien.
 
-2. Open de Microsoft Authenticator-app, selecteer **account toevoegen** uit het pictogram **aanpassen en beheer** in de rechter bovenhoek, selecteer een **ander account (Google, Facebook, enzovoort)** en selecteer **of typ code hand matig**.
+2. Open the Microsoft Authenticator app, select **Add account** from the **Customize and control** icon in the upper-right, select **Other account (Google, Facebook, etc.)** , and then select **OR ENTER CODE MANUALLY**.
 
 3. Voer een **account naam** in (bijvoorbeeld Google) en typ de **geheime sleutel** uit stap 1 en selecteer vervolgens **volt ooien**.
 
@@ -67,7 +66,7 @@ De codes voor uw accounts zijn niet hoofdletter gevoelig en vereisen geen spatie
 
 1. Op de pagina **instellen via verificator** van derden, waaronder de QR-code en een code die is geschreven voor toegang tot uw app. Laat deze pagina open zodat u de code kunt zien.
 
-2. Open de Microsoft Authenticator-app, selecteer **account toevoegen** uit het pictogram **aanpassen en beheer** in de rechter bovenhoek, selecteer een **ander account (Google, Facebook, enzovoort)** en selecteer **of typ code hand matig**.
+2. Open the Microsoft Authenticator app, select **Add account** from the **Customize and control** icon in the upper-right, select **Other account (Google, Facebook, etc.)** , and then select **OR ENTER CODE MANUALLY**.
 
 3. Voer een **account naam** in (bijvoorbeeld Facebook) en typ de **geheime sleutel** uit stap 1, en selecteer vervolgens **volt ooien**.
 
@@ -78,33 +77,33 @@ De codes voor uw accounts zijn niet hoofdletter gevoelig en vereisen geen spatie
     >[!NOTE]
     >Zie [Wat is twee ledige verificatie en hoe werkt het?](https://www.facebook.com/help/148233965247823)voor meer informatie over twee ledige verificatie en uw Facebook-account.
 
-## <a name="add-your-amazon-account"></a>Uw Amazon-account toevoegen
+## <a name="add-your-amazon-account"></a>Add your Amazon account
 
-U kunt uw Amazon-account toevoegen door twee ledige verificatie in te scha kelen en het account vervolgens toe te voegen aan de app.
+You can add your Amazon account by turning on two-factor verification and then adding the account to the app.
 
-1. Selecteer op uw computer de optie **kan de streepjes code niet scannen** vanaf de pagina **Kies hoe u codes wilt ontvangen** met de QR-code.
+1. On your computer, select **Can't scan the barcode** from the **Choose how you'll receive codes** page with the QR code.
 
-    Het **streepjescode bericht wordt niet gescand** met de geheime code. Laat dit bericht open zodat u de geheime code kunt zien.
+    The **Can't scan the barcode** message appears with the secret code. Keep this message open so you can see the secret code.
 
-2. Open de Microsoft Authenticator-app, selecteer **account toevoegen** uit het pictogram **aanpassen en beheer** in de rechter bovenhoek, selecteer een **ander account (Google, Facebook, enzovoort)** en selecteer **of typ code hand matig**.
+2. Open the Microsoft Authenticator app, select **Add account** from the **Customize and control** icon in the upper-right, select **Other account (Google, Facebook, etc.)** , and then select **OR ENTER CODE MANUALLY**.
 
-3. Voer een **account naam** in (bijvoorbeeld Amazon) en typ de **geheime sleutel** uit stap 1, en selecteer vervolgens **volt ooien**.
+3. Enter an **Account name** (for example, Amazon) and type the **Secret key** from Step 1, and then select **Finish**.
 
-4. Voltooi de rest van het aanmeldings proces, inclusief het toevoegen van een verificatie methode voor back-ups, zoals een tekst bericht, en selecteer vervolgens **code verzenden**.
+4. Complete the rest of the sign-up process, including adding a backup verification method such as a text message, and then select **Send code**.
 
-5. Typ op de pagina **een verificatie methode voor back-ups toevoegen** op uw computer de 6-cijferige verificatie code van uw back-upverificatie methode voor uw Amazon-account en selecteer vervolgens **code verifiëren en door gaan**.
+5. On the **Add a backup verification method** page on your computer, type the six-digit verification code provided by your backup verification method for your Amazon account, and then select **Verify code and continue**.
 
-6. Bepaal op de pagina bijna klaar of u uw computer een vertrouwd apparaat moet maken en selecteer **vervolgens ontvangen. Schakel verificatie**in twee stappen in.
+6. On the Almost done page, decide whether to make your computer a trusted device, and then select **Got it. Turn on Two-Step Verification**.
 
-    De pagina **Geavanceerde beveiligings instellingen** wordt weer gegeven, met daarin de bijgewerkte gegevens over twee ledige verificatie.
+    The **Advanced Security Settings** page appears, showing your updated two-factor verification details.
 
     >[!NOTE]
-    >Zie [over verificatie in twee stappen](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) en [Aanmelden met verificatie in twee stappen](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)voor meer informatie over twee ledige verificatie en uw Amazon-account.    
+    >For more information about two-factor verification and your Amazon account, see [About Two-Step Verification](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) and [Signing in with Two-Step Verification](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).    
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Nadat u uw accounts aan de app hebt toegevoegd, kunt u zich aanmelden met behulp van de Microsoft Authenticator-app op uw apparaat. Zie [Aanmelden met de app](user-help-auth-app-sign-in.md)voor meer informatie.
+- After you add your accounts to the app, you can sign in using the Microsoft Authenticator app on your device. For more information, see [Sign in using the app](user-help-auth-app-sign-in.md).
 
-- Als u problemen ondervindt met het verkrijgen van uw verificatie code voor uw persoonlijke Microsoft-account, raadpleegt u de sectie **problemen met verificatie code oplossen** van het artikel [Microsoft-account Security Info & verificatie codes](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) .
+- If you're having trouble getting your verification code for your personal Microsoft account, see the **Troubleshooting verification code issues** section of the [Microsoft account security info & verification codes](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) article.
 
-- Voor apparaten met iOS kunt u ook een back-up maken van uw account referenties en de bijbehorende app-instellingen, zoals de volg orde van uw accounts, naar de Cloud. Zie [back-up en herstellen met Microsoft Authenticator-app](user-help-auth-app-backup-recovery.md)voor meer informatie.
+- For devices running iOS, you can also back up your account credentials and related app settings, such as the order of your accounts, to the cloud. For more information, see [Backup and recover with Microsoft Authenticator app](user-help-auth-app-backup-recovery.md).

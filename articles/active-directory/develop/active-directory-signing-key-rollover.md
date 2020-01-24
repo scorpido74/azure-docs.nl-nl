@@ -12,13 +12,12 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3c696b3fed36ca8ee7faf6ec78f833191cedf9d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d3994b56b55a7aac0ba3ab64d53b6436bc19c45b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844648"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698540"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Rollover van de handtekening sleutel in Azure Active Directory
 In dit artikel wordt beschreven wat u moet weten over de open bare sleutels die in Azure Active Directory (Azure AD) worden gebruikt voor het ondertekenen van beveiligings tokens. Het is belang rijk te weten dat deze sleutels periodiek worden doorgevoerd en kan in een nood geval direct worden doorgevoerd. Alle toepassingen die gebruikmaken van Azure AD, moeten programmatisch het proces voor sleutel rollover kunnen afhandelen of een periodiek hand matig rollover proces instellen. Ga verder met lezen om te begrijpen hoe de sleutels werken, hoe u de invloed van de rollover op uw toepassing kunt beoordelen en hoe u uw toepassing kunt bijwerken of een periodiek hand matig rollover proces kunt instellen voor het afhandelen van Key rollover, indien nodig.

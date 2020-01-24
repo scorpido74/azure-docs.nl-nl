@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: bcf03c7d342c6d9ad39fa6327f566f191133fd40
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9758cdf07d1ad56e6300e89eed2aa0b1da29e081
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175743"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694442"
 ---
-## <a name="create-a-cloud-spatial-anchor"></a>De ruimtelijke anker van een cloud maken
+## <a name="create-a-cloud-spatial-anchor"></a>Een ruimtelijke beankering in de Cloud maken
 
-Maak eerst een anker in van uw platform AR systeem voor het maken van het anker van een cloud, en maakt u een cloud-equivalent. U gebruikt de `CreateAnchorAsync()` methode.
+Als u een ruimtelijke ruimte in de Cloud wilt maken, maakt u eerst een anker in het AR-systeem van uw platform en maakt u vervolgens een equivalent in de Cloud. U gebruikt de `CreateAnchorAsync()` methode.

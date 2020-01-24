@@ -16,19 +16,18 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4babb7e869f4fc83bcdb530a580a29dda234293
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e57e027848294cbff570cb64d0ad4bbf05693ffe
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373782"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699798"
 ---
 # <a name="web-api"></a>Web-API
 
 Web-API-apps zijn webtoepassingen die resources moeten ophalen van een web-API. In dit scenario zijn er twee identiteits typen die de webtoepassing kan gebruiken om de Web-API te verifiëren en aan te roepen:
 
-- **Toepassings-id** : in dit scenario worden OAuth 2,0-client referenties gebruikt voor verificatie als de toepassing en toegang tot de Web-API. Wanneer u een toepassings-id gebruikt, kan de Web-API alleen detecteren dat de webtoepassing deze aanroept, omdat de Web-API geen informatie over de gebruiker ontvangt. Als de toepassing informatie ontvangt over de gebruiker, wordt deze via het toepassings protocol verzonden en is deze niet ondertekend door Azure AD. De Web-API vertrouwt de verificatie van de gebruiker door de webtoepassing. Daarom wordt dit patroon een vertrouwd subsysteem genoemd.
+- **Toepassings-id** : in dit scenario worden OAuth 2,0-client referenties gebruikt voor verificatie als de toepassing en toegang tot de Web-API. Wanneer u een toepassings-id gebruikt, kan de Web-API alleen detecteren dat de webtoepassing deze aanroept, omdat de Web-API geen informatie over de gebruiker ontvangt. Als de toepassing informatie ontvangt over de gebruiker, wordt deze via het toepassings protocol verzonden en is deze niet ondertekend door Azure AD. De Web-API vertrouwt de verificatie van de gebruiker door de webtoepassing. Dit patroon wordt een subsysteem van het vertrouwde genoemd om deze reden.
 - **Gedelegeerde gebruikers-id** : dit scenario kan op twee manieren worden uitgevoerd. OpenID Connect Connect en OAuth 2,0-autorisatie code verlenen met een vertrouwelijke client. De webtoepassing verkrijgt een toegangs token voor de gebruiker, die bewijst dat de Web-API die de gebruiker met succes is geverifieerd voor de webtoepassing en dat de webtoepassing een gedelegeerde gebruikers-id kan verkrijgen om de Web-API aan te roepen. Dit toegangs token wordt in de aanvraag verzonden naar de Web-API, waarmee de gebruiker wordt geautoriseerd en de gewenste resource wordt geretourneerd.
 
 De identiteits typen toepassings identiteit en gedelegeerde gebruiker worden in de onderstaande stroom besproken. Het belangrijkste verschil is dat de gedelegeerde gebruikers-id eerst een autorisatie code moet verkrijgen voordat de gebruiker zich kan aanmelden en toegang kan krijgen tot de Web-API.
@@ -42,7 +41,7 @@ De identiteits typen toepassings identiteit en gedelegeerde gebruiker worden in 
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Toepassings-id met OAuth 2,0-client referenties toewijzen
 
 1. Een gebruiker is aangemeld bij Azure AD in de webtoepassing (Zie de sectie **Web apps** voor meer informatie).
-1. De webtoepassing moet een toegangs token verkrijgen zodat het kan worden geverifieerd bij de Web-API en de gewenste resource kan ophalen. Er wordt een aanvraag gemaakt voor het token eindpunt van Azure AD, met de referentie, toepassings-ID en de URI van de toepassings-ID van de Web-API.
+1. De web-App moet een toegangstoken verkrijgen, zodat het kan worden geverifieerd bij de web-API en opvragen van de gewenste resource. Er wordt een aanvraag gemaakt voor het token eindpunt van Azure AD, met de referentie, toepassings-ID en de URI van de toepassings-ID van de Web-API.
 1. Azure AD verifieert de toepassing en retourneert een JWT-toegangs token dat wordt gebruikt om de Web-API aan te roepen.
 1. Via HTTPS gebruikt de webtoepassing het geretourneerde JWT-toegangs token om de JWT-teken reeks toe te voegen met de aanduiding ' Bearer ' in de autorisatie-header van de aanvraag naar de Web-API. De Web-API valideert vervolgens de JWT-token en als de validatie is geslaagd, wordt de gewenste resource geretourneerd.
 
@@ -57,7 +56,7 @@ De identiteits typen toepassings identiteit en gedelegeerde gebruiker worden in 
 
 1. Een gebruiker is al aangemeld bij een webtoepassing, waarvan het verificatie mechanisme onafhankelijk is van Azure AD.
 1. De webtoepassing vereist een autorisatie code voor het verkrijgen van een toegangs token, waardoor een aanvraag via de browser wordt uitgegeven in het autorisatie-eind punt van Azure AD, waarbij de toepassings-ID en omleidings-URI voor de webtoepassing worden opgegeven nadat de verificatie is geslaagd. De gebruiker meldt zich aan bij Azure AD.
-1. Als de gebruiker van de webtoepassing nog niet heeft ingestemd, zodat de webtoepassing de Web-API namens u kan aanroepen, moet de gebruiker toestemming geven. De toepassing geeft de benodigde machtigingen weer en als een van deze machtigingen op beheerders niveau is, kan een normale gebruiker in de Directory geen toestemming geven. Deze toestemming geldt voor zowel één als multi tenant-toepassing. In het geval van één Tenant kan een beheerder toestemming geven om namens hun gebruikers toestemming te geven voor de beheerder. U kunt dit doen met behulp van de knop `Grant Permissions` in de [Azure Portal](https://portal.azure.com). 
+1. Als de gebruiker van de webtoepassing nog niet heeft ingestemd, zodat de webtoepassing de Web-API namens u kan aanroepen, moet de gebruiker toestemming geven. De toepassing geeft de benodigde machtigingen weer en als een van deze machtigingen op beheerders niveau is, kan een normale gebruiker in de Directory geen toestemming geven. Deze toestemming geldt voor zowel één als multi tenant-toepassing. In het geval van één Tenant kan een beheerder toestemming geven om namens hun gebruikers toestemming te geven voor de beheerder. U kunt dit doen met behulp van de `Grant Permissions` knop in de [Azure Portal](https://portal.azure.com). 
 1. Nadat de gebruiker heeft ingestemd, ontvangt de webtoepassing de autorisatie code die nodig is om een toegangs token te verkrijgen.
 1. Met de autorisatie code die is uitgegeven door Azure AD, verzendt de webtoepassing een aanvraag naar het token-eind punt van Azure AD met daarin de autorisatie code, Details over de client toepassing (toepassings-ID en omleidings-URI) en de gewenste resource (toepassings-ID URI voor de Web-API).
 1. De autorisatie code en informatie over de webtoepassing en Web-API worden gevalideerd door Azure AD. Bij een geslaagde validatie retourneert Azure AD twee tokens: een JWT-toegangs token en een JWT-vernieuwings token.

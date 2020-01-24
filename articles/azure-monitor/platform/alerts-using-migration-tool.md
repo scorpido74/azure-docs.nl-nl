@@ -1,103 +1,103 @@
 ---
-title: Uw klassieke waarschuwingen in Azure Monitor migreren met behulp van het hulpprogramma voor migratie op vrijwillige basis
-description: Informatie over het gebruik van het hulpprogramma voor migratie op vrijwillige basis voor het migreren van de klassieke waarschuwingsregels.
-author: snehithm
+title: Uw klassieke waarschuwingen in Azure Monitor migreren met behulp van het hulp programma voor vrijwillige migratie
+description: Meer informatie over het gebruik van het hulp programma voor vrijwillige migratie om uw klassieke waarschuwings regels te migreren.
+author: yanivlavi
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: snmuvva
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 0c8aa00d069ae54584d8e828dab35c22048f1876
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: c4ebb2e9572f1dcc9ade548a55fc44d7441e5a79
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295550"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705578"
 ---
-# <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Gebruik het hulpprogramma voor migratie op vrijwillige basis voor het migreren van de klassieke waarschuwingsregels
+# <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Gebruik het hulp programma voor vrijwillige migratie om uw klassieke waarschuwings regels te migreren
 
-Als [eerder aangekondigd](monitoring-classic-retirement.md), klassieke waarschuwingen in Azure Monitor worden stopgezet in September 2019 (oorspronkelijk juli 2019 is). Een hulpprogramma voor migratie is beschikbaar in de Azure-portal voor klanten die gebruik van klassieke waarschuwingsregels en willen voor het activeren van de migratie zelf. In dit artikel wordt uitgelegd hoe u het hulpprogramma voor migratie gebruiken voor het migreren van de klassieke waarschuwingsregels vrijwillig voordat de automatische migratie wordt gestart in September 2019.
+Zoals [eerder aangekondigd](monitoring-classic-retirement.md), worden klassieke waarschuwingen in azure monitor buiten gebruik gesteld in september 2019 (oorspronkelijk juli 2019). Er is een hulp programma voor migratie beschikbaar in de Azure Portal voor klanten die gebruikmaken van klassieke waarschuwings regels en die migratie zelf willen activeren. In dit artikel wordt uitgelegd hoe u het hulp programma voor migratie kunt gebruiken om uw klassieke waarschuwings regels vrijwillig te migreren voordat de automatische migratie wordt gestart in september 2019.
 
 > [!NOTE]
-> Vertraging in de uitrol van hulpprogramma voor migratie van de vervaldatum voor de migratie van de klassieke waarschuwingen is vanwege [uitgebreid tot en met 31 augustus 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) vanaf de oorspronkelijk aangekondigde datum van 30 juni 2019.
+> Als gevolg van een vertraging bij het uitrollen van het migratie hulpprogramma, is de buitengebruikstellings datum voor de migratie van klassieke waarschuwingen [uitgebreid tot en met 31 augustus 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) van de oorspronkelijke datum van 30 juni 2019.
 
-## <a name="benefits-of-new-alerts"></a>Voordelen van nieuwe waarschuwingen
+## <a name="benefits-of-new-alerts"></a>Voor delen van nieuwe waarschuwingen
 
-Klassieke waarschuwingen worden vervangen door nieuwe, uniforme waarschuwingen in Azure Monitor. Het nieuwe waarschuwingenplatform heeft de volgende voordelen:
+Klassieke waarschuwingen worden vervangen door nieuwe, Unified Alerting in Azure Monitor. Het nieuwe waarschuwings platform heeft de volgende voor delen:
 
-- U kunt waarschuwingen op tal van multidimensionale metrische gegevens voor [veel meer Azure-services](alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
-- De nieuwe metrische gegevens van waarschuwingen ondersteuning [meerdere resource-waarschuwingsregels](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) die de overhead van het beheer van veel regels aanzienlijk verminderen.
-- De geïntegreerde meldingsmechanisme, die ondersteuning biedt voor:
-  - [Actiegroepen](action-groups.md), een modulaire meldingsmechanisme die geschikt is voor alle nieuwe Waarschuwingstypen (metrische gegevens, logboeken en het activiteitenlogboek).
-  - Nieuwe meldingsmechanismen zoals SMS, spraak- en ITSM-Connector.
-- De [uniforme wijze van werken waarschuwing](alerts-overview.md) voorziet in alle waarschuwingen op andere signalen (metrische gegevens, logboeken en het activiteitenlogboek) in één locatie.
+- U kunt een waarschuwing ontvangen over diverse multidimensionale metrische gegevens voor [veel meer Azure-Services](alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+- De nieuwe metrische gegevens ondersteunen [waarschuwings regels voor meerdere bronnen](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor) waarmee de overhead van het beheren van veel regels aanzienlijk wordt verminderd.
+- Het uniforme meldings mechanisme, dat ondersteuning biedt voor:
+  - [Actie groepen](action-groups.md), een mechanisme voor modulaire meldingen dat werkt met alle nieuwe waarschuwings typen (metrische gegevens, logboeken en activiteiten Logboeken).
+  - Nieuwe meldings mechanismen, zoals SMS, Voice en ITSM-connector.
+- De [Unified alert-ervaring](alerts-overview.md) brengt alle waarschuwingen op verschillende signalen (metrische gegevens, logboeken en activiteiten Logboeken) op één plek.
 
 ## <a name="before-you-migrate"></a>Voordat u migreert
 
-Het migratieproces klassieke waarschuwingsregels converteert naar nieuwe, gelijkwaardige regels voor waarschuwingen en actiegroepen gemaakt. In voorbereiding, worden op de hoogte van de volgende punten:
+Het migratie proces converteert klassieke waarschuwings regels naar nieuwe, gelijkwaardige waarschuwings regels en maakt actie groepen. Houd rekening met de volgende punten in voor bereiding:
 
-- Zowel de indeling van de melding nettolading en de API's maken en beheren van nieuwe regels voor waarschuwingen zijn anders dan die van de klassieke waarschuwingsregels omdat ze ondersteuning meer functies bieden. [Informatie over het voorbereiden van de migratie](alerts-prepare-migration.md).
+- De indeling van de meldings lading en de Api's voor het maken en beheren van nieuwe waarschuwings regels verschillen van die van de regels van de klassieke waarschuwing, omdat deze meer functies ondersteunen. [Meer informatie over het voorbereiden van de migratie](alerts-prepare-migration.md).
 
-- Sommige regels voor klassieke waarschuwingen kunnen niet worden gemigreerd met behulp van het hulpprogramma. [Meer informatie over welke regels kunnen niet worden gemigreerd en wat er moet gebeuren met hen](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
-
-    > [!NOTE]
-    > Het migratieproces heeft geen gevolgen voor de evaluatie van de klassieke waarschuwingsregels. Ze blijven uitvoeren en waarschuwingen verzenden totdat ze zijn gemigreerd en de nieuwe regels voor waarschuwingen van kracht.
-
-## <a name="how-to-use-the-migration-tool"></a>Het gebruik van het hulpprogramma voor migratie
-
-Volg deze stappen voor het activeren van de migratie van de klassieke waarschuwingsregels in Azure portal:
-
-1. In [Azure-portal](https://portal.azure.com), selecteer **Monitor**.
-
-1. Selecteer **waarschuwingen**, en selecteer vervolgens **Waarschuwingsregels beheren** of **klassieke waarschuwingen weergeven**.
-
-1. Selecteer **migreren naar nieuwe regels** om naar de startpagina van de migratie te gaan. Deze pagina bevat een overzicht van al uw abonnementen en hun migratiestatus:
-
-    ![migratie-landingspagina](media/alerts-migration/migration-landing.png "regels migreren")
-
-    Alle abonnementen die kunnen worden gemigreerd met behulp van het hulpprogramma zijn gemarkeerd als **klaar om te migreren**.
+- Sommige klassieke waarschuwings regels kunnen niet worden gemigreerd met het hulp programma. [Meer informatie over welke regels niet kunnen worden gemigreerd en wat u ermee kunt doen](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
 
     > [!NOTE]
-    > Het Migratiehulpmiddel is beschikbaar in fasen voor alle abonnementen die gebruikmaken van klassieke waarschuwingsregels. In de eerste fasen van de implementatie ziet u mogelijk sommige abonnementen die zijn gemarkeerd als niet gereed voor migratie.
+    > Het migratie proces heeft geen invloed op de evaluatie van uw klassieke waarschuwings regels. Ze blijven worden uitgevoerd en waarschuwingen verzenden totdat ze worden gemigreerd en de nieuwe waarschuwings regels van kracht worden.
 
-1. Selecteer een of meer abonnementen, en selecteer vervolgens **migratie Preview**.
+## <a name="how-to-use-the-migration-tool"></a>Het hulp programma voor migratie gebruiken
 
-    De resulterende pagina worden de details van klassieke waarschuwingsregels die voor een abonnement op een moment worden gemigreerd. U kunt ook selecteren **downloaden van de details van de migratie voor dit abonnement** om de details in een CSV-indeling.
+Voer de volgende stappen uit om de migratie van uw klassieke waarschuwings regels in de Azure Portal te activeren:
+
+1. Selecteer in [Azure Portal](https://portal.azure.com) **monitor**.
+
+1. Selecteer **waarschuwingen**en selecteer vervolgens **waarschuwings regels beheren** of **klassieke waarschuwingen weer geven**.
+
+1. Selecteer **migreren naar nieuwe regels** om naar de pagina migratie lands te gaan. Op deze pagina wordt een lijst weer gegeven met al uw abonnementen en hun migratie status:
+
+    ![migratie-overloop](media/alerts-migration/migration-landing.png "Regels migreren")
+
+    Alle abonnementen die via het hulp programma kunnen worden gemigreerd, worden gemarkeerd als **gereed om te migreren**.
+
+    > [!NOTE]
+    > Het migratie programma wordt in fasen geïmplementeerd naar alle abonnementen waarvoor klassieke waarschuwings regels worden gebruikt. In de vroege fasen van de implementatie ziet u mogelijk sommige abonnementen die zijn gemarkeerd als niet gereed voor migratie.
+
+1. Selecteer een of meer abonnementen en selecteer vervolgens **migratie van voor beeld**.
+
+    Op de resulterende pagina ziet u de details van klassieke waarschuwings regels die voor één abonnement tegelijk worden gemigreerd. U kunt ook **de migratie Details voor dit abonnement downloaden** selecteren om de details in een CSV-indeling op te halen.
 
     ![migratie-preview](media/alerts-migration/migration-preview.png "Preview-migratie")
 
-1. Geef een of meer e-mailadressen om te worden geïnformeerd over de migratiestatus van de. U ontvangt e-mailbericht wanneer de migratie voltooid is of als u geen actie te ondernemen.
+1. Geef een of meer e-mail adressen op om op de hoogte te worden gesteld van de migratie status. U ontvangt een e-mail wanneer de migratie is voltooid of als er een actie van u nodig is.
 
-1. Selecteer **migratie Start**. Lees de informatie die wordt weergegeven in het bevestigingsdialoogvenster en Bevestig dat u bent klaar om te beginnen het migratieproces.
+1. Selecteer **migratie starten**. Lees de informatie die wordt weer gegeven in het bevestigings dialoogvenster en bevestig dat u klaar bent om het migratie proces te starten.
 
     > [!IMPORTANT]
-    > Nadat u de migratie voor een abonnement hebt gestart, kunt u zich niet bewerken of maken van regels voor klassieke waarschuwingen voor dat abonnement. Deze beperking zorgt ervoor dat er geen wijzigingen aangebracht in de klassieke waarschuwingsregels verloren tijdens de migratie naar de nieuwe regels zijn. Hoewel het niet mogelijk om te wijzigen van de klassieke waarschuwingsregels, blijven deze gewoon nog steeds om uit te voeren en om te geven van waarschuwingen totdat ze zijn gemigreerd. U geen klassieke waarschuwingsregels nadat de migratie voltooid voor uw abonnement is, niet meer gebruiken.
+    > Nadat u de migratie voor een abonnement hebt gestart, kunt u geen regels voor het klassieke waarschuwings bericht voor dat abonnement bewerken of maken. Deze beperking zorgt ervoor dat er geen wijzigingen in uw klassieke waarschuwings regels verloren gaan tijdens de migratie naar de nieuwe regels. Hoewel u uw klassieke waarschuwings regels niet kunt wijzigen, worden ze nog steeds uitgevoerd en worden er waarschuwingen weer geven totdat ze zijn gemigreerd. Nadat de migratie voor uw abonnement is voltooid, kunt u de regels voor klassieke waarschuwingen niet meer gebruiken.
 
-    ![migratie-confirm](media/alerts-migration/migration-confirm.png "bevestigen migratie starten")
+    ![migratie-bevestigen](media/alerts-migration/migration-confirm.png "Begin migratie bevestigen")
 
-1. Wanneer de migratie is voltooid, of als u niets, ontvangt u een e-mailbericht op de adressen die u eerder hebt opgegeven. U kunt ook periodiek de status op de startpagina van de migratie in de portal controleren.
+1. Wanneer de migratie is voltooid of als u een actie hebt vereist, ontvangt u een e-mail op de adressen die u eerder hebt opgegeven. U kunt in de portal ook regel matig de status controleren op de migratie landings pagina.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
 ### <a name="why-is-my-subscription-listed-as-not-ready-for-migration"></a>Waarom wordt mijn abonnement vermeld als niet gereed voor migratie?
 
-Het Migratiehulpmiddel is beschikbaar voor klanten in fasen. In de eerste fasen, meeste of alle van uw abonnementen kan worden gemarkeerd als **niet gereed voor migratie**. 
+Het hulp programma voor migratie wordt in fasen uitgevouwen naar klanten. In de vroege fasen kunnen de meeste of al uw abonnementen worden gemarkeerd als **niet gereed voor migratie**. 
 
-Wanneer een abonnement gereed voor migratie is, moet u eigenaar van het abonnement ontvangt een e-mailbericht dat aangeeft dat het hulpprogramma beschikbaar is. Houd gaten af voor dit bericht.
+Wanneer een abonnement gereed voor migratie wordt, ontvangt de eigenaar van het abonnement een e-mail bericht met de mede deling dat het hulp programma beschikbaar is. Bewaar dit bericht.
 
-### <a name="who-can-trigger-the-migration"></a>Die de migratie kunt activeren?
+### <a name="who-can-trigger-the-migration"></a>Wie kan de migratie activeren?
 
-Gebruikers die de rol van inzender voor bewaking aan hen toegewezen op het abonnementsniveau kunnen voor het activeren van de migratie. [Meer informatie over toegangsbeheer op basis van rollen voor het migratieproces](alerts-understand-migration.md#who-can-trigger-the-migration).
+Gebruikers aan wie de rol bewakings bijdrage aan hen is toegewezen op het abonnements niveau, kunnen de migratie activeren. Meer [informatie over op rollen gebaseerde Access Control voor het migratie proces](alerts-understand-migration.md#who-can-trigger-the-migration).
 
 ### <a name="how-long-will-the-migration-take"></a>Hoe lang duurt de migratie?
 
-Migratie is voltooid voor de meeste abonnementen in minder dan een uur. U kunt bijhouden van de voortgang van de migratie op de startpagina van de migratie. Tijdens de migratie, worden er gerust op zijn dat uw waarschuwingen nog steeds worden uitgevoerd in het systeem klassieke waarschuwingen of in het nieuwe certificaat.
+De migratie is voltooid voor de meeste abonnementen in een uur. U kunt de voortgang van de migratie volgen op de pagina migratie lands. Zorg er tijdens de migratie voor dat uw waarschuwingen nog steeds worden uitgevoerd in het klassieke systeem voor waarschuwingen of in het nieuwe abonnement.
 
-### <a name="what-can-i-do-if-i-run-into-a-problem-during-migration"></a>Wat moet ik doen als ik een probleem tijdens de migratie ondervindt?
+### <a name="what-can-i-do-if-i-run-into-a-problem-during-migration"></a>Wat kan ik doen als ik een probleem ondervindt tijdens de migratie?
 
-Zie de [problemen oplossen met](alerts-understand-migration.md#common-problems-and-remedies) voor hulp bij problemen die u tijdens de migratie kan tegenkomen. Als u geen actie te ondernemen om de migratie te voltooien, krijgt u een bericht op de e-mailadressen die u hebt opgegeven bij het instellen van het hulpprogramma.
+Raadpleeg de [hand leiding voor probleem oplossing](alerts-understand-migration.md#common-problems-and-remedies) voor hulp bij problemen die u tijdens de migratie kunt tegen komen. Als u een actie nodig hebt om de migratie te volt ooien, ontvangt u een melding op de e-mail adressen die u hebt opgegeven tijdens het instellen van het hulp programma.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Voorbereiden voor de migratie](alerts-prepare-migration.md)
-- [Informatie over de werking van het hulpprogramma voor migratie](alerts-understand-migration.md)
+- [De migratie voorbereiden](alerts-prepare-migration.md)
+- [Werking van het hulpprogramma voor migratie](alerts-understand-migration.md)

@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u Recovery Services kluizen maakt waarin
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 6a880f84d5e8626d36ac3f4b440436b479ec5f6d
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 682bf26c1485bd9e2ae288a6947e9ad573463069
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708507"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705459"
 ---
 # <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -90,7 +90,8 @@ Voor dit proces gelden de prijs implicaties voor het opslag niveau.
 >- Bekijk de [ondersteunings matrix](backup-support-matrix.md#cross-region-restore) voor een lijst met ondersteunde beheerde typen en regio's.
 >- De functie voor het terugzetten van meerdere regio's (CRR) is momenteel alleen beschikbaar in de regio WCUS.
 >- CRR is een opt-in-functie op kluis niveau voor elke GRS-kluis (standaard uitgeschakeld).
->- Gebruik *' functienaam ': ' CrossRegionRestore '* om uw abonnement op deze functie voor te bereiden.
+>- Gebruik de volgende opdracht om uw abonnement voor deze functie voor te bereiden:<br>
+>  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`
 >- Als u deze functie tijdens een open bare beperkte preview onbeschikbaar maakt, bevat het e-mail bericht over de goed keuring de prijs informatie.
 >- Na het inbrengen kan het tot 48 uur duren voordat de back-upitems beschikbaar zijn in secundaire regio's.
 >- Momenteel wordt CRR alleen ondersteund voor het type back-upbeheer. ARM Azure VM (klassieke Azure-VM wordt niet ondersteund).  Wanneer extra beheer typen ondersteuning bieden voor CRR, worden ze **automatisch** Inge schreven.

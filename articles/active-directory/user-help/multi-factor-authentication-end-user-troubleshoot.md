@@ -12,13 +12,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.reviewer: kexia
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d998fafbf6b3ba0547991de6c3a8e71b66d91f7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 498c150706cd62168b7c45b1bcf36ad6c3a8b63b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231883"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705204"
 ---
 # <a name="common-problems-and-solutions-with-two-factor-verification-and-your-work-or-school-account"></a>Veelvoorkomende problemen en oplossingen met twee ledige verificatie en uw werk-of school account
 
@@ -104,7 +103,7 @@ Als u twee ledige verificatie met uw werk-of school account gebruikt (bijvoorbee
 
 Als u deze stappen hebt uitgevoerd, maar nog steeds problemen ondervindt, neemt u contact op met de Help Desk voor ondersteuning.
 
-## <a name="related-articles"></a>Verwante artikelen
+## <a name="related-articles"></a>Verwante artikelen:
 
 - [De instellingen voor de verificatie methode met twee factoren beheren](multi-factor-authentication-end-user-manage-settings.md)
 

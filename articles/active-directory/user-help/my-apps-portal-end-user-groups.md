@@ -12,17 +12,16 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa251ee361af12ecf3fef3c7cd437fa06c1cea52
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: de7fa1952b2e23276a9f088f5840e54675b44d01
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803926"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704949"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Uw groeps gegevens bijwerken op de portal mijn apps
 
-U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en uit te voeren  **toegangs beoordelingen** voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
+U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en **toegangs beoordelingen** uit te voeren voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -41,7 +40,7 @@ Als uw beheerder u toestemming heeft gegeven om de tegel **groepen** weer te gev
 
 1. Meld u aan bij uw werk-of school account.
 
-2. Open uw webbrowser en ga naar https://myapps.microsoft.comof gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Open uw webbrowser en ga naar https://myapps.microsoft.com of gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -85,7 +84,7 @@ Als uw beheerder u toestemming heeft gegeven om de tegel **groepen** weer te gev
 
         - **Office 365.** Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Deze optie geeft u ook de mogelijkheid om mensen buiten uw organisatie toegang te geven tot de groep.
 
-    - **Groeps naam.** Voeg een naam voor de groep toe, iets wat u moet onthouden en dat klinkt logisch.
+    - **Naam van de groep.** Voeg een naam voor de groep toe, iets wat u moet onthouden en dat klinkt logisch.
 
     - **Groeps beschrijving (optioneel).** Voeg een optionele beschrijving toe aan uw groep.
 

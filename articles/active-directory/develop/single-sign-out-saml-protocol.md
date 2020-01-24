@@ -17,13 +17,12 @@ ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66c509b1b901889241d6837611a2c373750fdb3a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 95d3deff73ce357f012b15a7fc1cfa3decdb4bda
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834790"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701362"
 ---
 # <a name="single-sign-out-saml-protocol"></a>SAML-protocol voor eenmalige afmelding
 
@@ -34,7 +33,7 @@ In het volgende diagram ziet u de werk stroom van het proces voor eenmalige aanm
 ![Azure AD-werk stroom voor eenmalige afmelding](./media/single-sign-out-saml-protocol/active-directory-saml-single-sign-out-workflow.png)
 
 ## <a name="logoutrequest"></a>LogoutRequest
-De Cloud service stuurt een `LogoutRequest` bericht naar Azure AD om aan te geven dat een sessie is beëindigd. Het volgende fragment toont een voorbeeld `LogoutRequest` element.
+De Cloud service stuurt een `LogoutRequest` bericht naar Azure AD om aan te geven dat een sessie is beëindigd. Het volgende fragment toont een `LogoutRequest` element van een voor beeld.
 
 ```
 <samlp:LogoutRequest xmlns="urn:oasis:names:tc:SAML:2.0:metadata" ID="idaa6ebe6839094fe4abc4ebd5281ec780" Version="2.0" IssueInstant="2013-03-28T07:10:49.6004822Z" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -44,20 +43,20 @@ De Cloud service stuurt een `LogoutRequest` bericht naar Azure AD om aan te geve
 ```
 
 ### <a name="logoutrequest"></a>LogoutRequest
-Het `LogoutRequest` element dat naar Azure AD wordt verzonden, vereist de volgende kenmerken:
+Het `LogoutRequest`-element dat naar Azure AD wordt verzonden, vereist de volgende kenmerken:
 
-* `ID`-Hiermee wordt de afmeldings aanvraag geïdentificeerd. De waarde van `ID` mag niet beginnen met een getal. De gang bare procedure is het toevoegen van **id** aan de teken reeks representatie van een GUID.
-* `Version`-Stel de waarde van dit element in op **2,0**. Deze waarde is vereist.
-* `IssueInstant`: Dit is een `DateTime` teken reeks met een UTC-waarde (Coordinate Universal Time) en een notatie voor de [retour Tour ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD verwacht een waarde van dit type, maar dwingt dit niet af.
+* `ID`: Hiermee wordt de afmeldings aanvraag geïdentificeerd. De waarde van `ID` mag niet beginnen met een getal. De gang bare procedure is het toevoegen van **id** aan de teken reeks representatie van een GUID.
+* `Version`: Stel de waarde van dit element in op **2,0**. Deze waarde is verplicht.
+* `IssueInstant`: dit is een `DateTime` teken reeks met een UTC-waarde (Universal Time Coordinate) en een notatie voor de [retour Tour ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD verwacht een waarde van dit type, maar dwingt dit niet af.
 
-### <a name="issuer"></a>Certificaatverlener
-Het `Issuer` element in een `LogoutRequest` moet exact overeenkomen met een van de **ServicePrincipalNames** in de Cloud service in azure AD. Dit is normaal gesp roken ingesteld op de **App-ID-URI** die is opgegeven tijdens de registratie van de toepassing.
+### <a name="issuer"></a>Verlener
+Het `Issuer`-element in een `LogoutRequest` moet exact overeenkomen met een van de **ServicePrincipalNames** in de Cloud service in azure AD. Dit is normaal gesp roken ingesteld op de **App-ID-URI** die is opgegeven tijdens de registratie van de toepassing.
 
 ### <a name="nameid"></a>Meid
-De waarde van het `NameID` element moet exact overeenkomen `NameID` met de van de gebruiker die wordt afgemeld.
+De waarde van het `NameID` element moet exact overeenkomen met de `NameID` van de gebruiker die wordt afgemeld.
 
 ## <a name="logoutresponse"></a>LogoutResponse
-Azure AD stuurt een `LogoutResponse` als-antwoord naar `LogoutRequest` een-element. Het volgende fragment toont een voor `LogoutResponse`beeld.
+Azure AD verzendt een `LogoutResponse` als reactie op een `LogoutRequest`-element. Het volgende fragment toont een voor beeld `LogoutResponse`.
 
 ```
 <samlp:LogoutResponse ID="_f0961a83-d071-4be5-a18c-9ae7b22987a4" Version="2.0" IssueInstant="2013-03-18T08:49:24.405Z" InResponseTo="iddce91f96e56747b5ace6d2e2aa9d4f8c" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -69,12 +68,12 @@ Azure AD stuurt een `LogoutResponse` als-antwoord naar `LogoutRequest` een-eleme
 ```
 
 ### <a name="logoutresponse"></a>LogoutResponse
-Azure AD stelt de `ID`en `Version` `IssueInstant` waarden in het `LogoutResponse` -element in. Het `InResponseTo` element wordt ook ingesteld op de waarde `ID` van het kenmerk van `LogoutRequest` de die het antwoord heeft gereageerd.
+Azure AD stelt de `ID`, `Version` en `IssueInstant` waarden in het element `LogoutResponse` in. Het `InResponseTo`-element wordt ook ingesteld op de waarde van het kenmerk `ID` van de `LogoutRequest` die het antwoord heeft aangevallen.
 
-### <a name="issuer"></a>Certificaatverlener
-Azure AD stelt deze waarde in `https://login.microsoftonline.com/<TenantIdGUID>/` op \<waar TenantIdGUID > de Tenant-id is van de Azure AD-Tenant.
+### <a name="issuer"></a>Verlener
+Deze waarde wordt door Azure AD ingesteld op `https://login.microsoftonline.com/<TenantIdGUID>/` waarbij \<TenantIdGUID > de Tenant-ID is van de Azure AD-Tenant.
 
-Als u de waarde van het `Issuer` element wilt evalueren, gebruikt u de waarde van de **App-ID-URI** die is geleverd tijdens de registratie van de toepassing.
+Als u de waarde van het element `Issuer` wilt evalueren, gebruikt u de waarde van de URI van de **App-ID** die tijdens de registratie van de toepassing is opgenomen.
 
 ### <a name="status"></a>Status
-Azure AD gebruikt het `StatusCode` element in het `Status` -element om aan te geven dat de afmelding is geslaagd of mislukt. Wanneer de aanmeldings poging mislukt, kan het `StatusCode` element ook aangepaste fout berichten bevatten.
+Azure AD gebruikt het `StatusCode`-element in het `Status`-element om aan te geven dat de afmelding is geslaagd of mislukt. Wanneer de aanmeldings poging mislukt, kan het `StatusCode`-element ook aangepaste fout berichten bevatten.

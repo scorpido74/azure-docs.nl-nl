@@ -5,18 +5,18 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: ba7bddb2f11732f7de5f1dfa68b66be1204722cc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c5cb8366465d5983823184c87eb54fad6aaffbd0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083474"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705918"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute direct configureren
 
-ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde netwerk van Microsoft op peeringlocaties strategisch verdeeld over de hele wereld verbinding te maken. Zie voor meer informatie, [over ExpressRoute rechtstreeks verbinding maken met](expressroute-erdirect-about.md).
+ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde netwerk van Microsoft op peeringlocaties strategisch verdeeld over de hele wereld verbinding te maken. Zie [About ExpressRoute Direct](expressroute-erdirect-about.md) (Over ExpressRoute Direct) voor meer informatie.
 
 ## <a name="resources"></a>Maken van de resource
 

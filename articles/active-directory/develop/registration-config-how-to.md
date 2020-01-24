@@ -15,13 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6547266b92cbeee2754871d4cdca7a2de261fc8
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5dbe9d6eed6c546af0ed2cb35a0a62e9943503a9
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325349"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702790"
 ---
 # <a name="how-to-configure-endpoints"></a>Eind punten configureren
 
@@ -31,7 +30,7 @@ U kunt de verificatie-eind punten voor uw toepassing vinden in de [Azure Portal]
 
 -   Klik in het navigatie deel venster links op **Azure Active Directory**.
 
--   Klik op **app** -registraties en kies **eind punten**.
+-   Klik op **app-registraties** en kies **eind punten**.
 
 -   Hiermee opent u de pagina **eind punten** , die alle verificatie-eind punten voor uw Tenant vermeldt.
 

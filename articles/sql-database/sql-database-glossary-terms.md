@@ -10,45 +10,29 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 04/26/2019
-ms.openlocfilehash: 86da4ecab387da80954c2267ddeabe32a723474c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/22/2020
+ms.openlocfilehash: 733901d38703e02ab7dbe811b0f80a1dfedf03d5
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802726"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705782"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Woorden lijst met termen Azure SQL Database
 
 |Context|Termijn|Meer informatie|
 |:---|:---|:---|
-|Naam van de Azure-service|Azure SQL Database of SQL Database|[De Azure SQL Database-Service](sql-database-technical-overview.md)|
-|Compute-laag|Serverloos |[Serverloze Compute-laag](sql-database-serverless.md)
-||Ingericht|[Serverloze Compute-laag](sql-database-serverless.md)
-|Implementatieopties |Individuele database|[Individuele databases](sql-database-single-database.md)|
+|Azure-service|Azure SQL Database of SQL Database|[De Azure SQL Database-Service](sql-database-technical-overview.md)|
+|Aankoop model|Op DTU gebaseerd inkoop model|[Op DTU gebaseerd inkoop model](sql-database-service-tiers-dtu.md)|
+||Aankoopmodel op basis van vCore|[inkoop model op basis van vCore](sql-database-service-tiers-vcore.md)|
+|Implementatieoptie |Afzonderlijke database|[Individuele databases](sql-database-single-database.md)|
 ||Elastische pool|[Elastische pool](sql-database-elastic-pool.md)|
 ||Beheerd exemplaar|[Beheerd exemplaar](sql-database-managed-instance.md)|
-|Server objecten|SQL Database Server of database server|[Database server](sql-database-servers.md)|
+|Serviceniveau|Basic, Standard, Premium, Algemeen, grootschalige, Bedrijfskritiek|Zie [Single Data Base en elastische pool](sql-database-service-tiers-vcore.md#service-tiers) en [Managed instance](sql-database-managed-instance.md#managed-instance-service-tiers)voor service lagen in het vCore-model. Zie [DTU-model](sql-database-service-tiers-dtu.md#compare-the-dtu-based-service-tiers)voor service lagen in het DTU-model.|
+|Compute-laag|Serverloze rekenervaring|[Serverloze compute](sql-database-service-tiers-vcore.md#compute-tiers)
+||Ingerichte compute|[Ingerichte compute](sql-database-service-tiers-vcore.md#compute-tiers)
+|Compute genereren|GEN5, M-serie, Fsv2-serie|[Hardware gegenereerd](sql-database-service-tiers-vcore.md#hardware-generations)
+|Server entiteit|SQL Database Server of database server|[Database server](sql-database-servers.md)|
 ||Managed instance server, Managed instance server of instance server SQL Database|[Beheerd exemplaar](sql-database-managed-instance.md)|
-Database objecten|Azure SQL-database|Elke data base in Azure SQL Database|
-||Individuele database|Een Data Base die is gemaakt met de implementatie optie voor één data base|
-||Gegroepeerde Data Base|Een Data Base die is gemaakt in of verplaatst naar een elastische pool|
-||Exemplaar database|Een Data Base die is gemaakt in een beheerd exemplaar|
-||Basic-data base|Een Data Base die is gemaakt in of verplaatst naar de Basic-servicelaag van het op DTU gebaseerde aankoop model|
-||Standaard database|Een Data Base die is gemaakt in of verplaatst naar de Standard-servicelaag van het op DTU gebaseerde aankoop model|
-||Premium-data base|Een Data Base die is gemaakt in of verplaatst naar de Premium-servicelaag van het op DTU gebaseerde aankoop model|
-||Data Base voor algemeen gebruik|Een Data Base die is gemaakt in of verplaatst naar de servicelaag voor algemeen gebruik van het op vCore gebaseerde inkoop model|
-||Grootschalige-data base|Een Data Base die is gemaakt in of verplaatst naar de grootschalige-servicelaag van het op vCore gebaseerde inkoop model|
-||Bedrijfs kritieke data base|Een Data Base die is gemaakt in of verplaatst naar de bedrijfskritische service tier van het op vCore gebaseerde inkoop model|
-||Ingerichte data base|Een Data Base die is geconfigureerd in de ingerichte Compute-laag|
-|[Modellen en resources kopen](sql-database-purchase-models.md)|Op DTU gebaseerd inkoop model|[Op DTU gebaseerd inkoop model](sql-database-service-tiers-dtu.md)|
-||Aankoopmodel op basis van vCore|[inkoop model op basis van vCore](sql-database-service-tiers-vcore.md)|
-||vCore|Een kern die door de Hyper Visor aan het gast besturingssysteem wordt door gegeven.|
-||Servicelaag|Een service niveau binnen een inkoop model|
-||Reken grootte|De hoeveelheid reken resources voor één data base, elastische pool of een beheerd exemplaar binnen een servicelaag|
-||Opslag hoeveelheid|De hoeveelheid opslag ruimte die beschikbaar is voor één data base, elastische pool of een beheerd exemplaar|
-||Compute genereren|De generatie van een processor binnen een servicelaag|
-|IP-firewallregels voor databaseserver|IP-firewall regels|[IP-firewall regels](sql-database-firewall-configure.md)|
-||IP-firewallregels op serverniveau|[IP-firewall regels op server niveau](sql-database-firewall-configure.md)|
-|| IP-firewall regels op database niveau|[IP-firewall regels op database niveau](sql-database-firewall-configure.md)|
-||Virtuele netwerk eindpunten en-regels|[Eindpunten en regels van virtueel netwerk](sql-database-vnet-service-endpoint-rule-overview.md)|
+|Resourcetype|vCore|Er is een CPU-kern gegeven aan de reken resource voor één data base, elastische pool of een beheerd exemplaar.|
+||Berekenings grootte en opslag hoeveelheid|De berekenings grootte is de maximale hoeveelheid CPU, geheugen en andere niet-opslag gerelateerde resources die beschikbaar zijn voor één data base, elastische pool of een beheerd exemplaar.  Opslag grootte is de maximale hoeveelheid opslag ruimte die beschikbaar is voor één data base, een elastische pool of een beheerd exemplaar.  Zie [VCore single data bases](sql-database-vcore-resource-limits-single-databases.md), [VCore elastisch Pools](sql-database-vcore-resource-limits-elastic-pools.md) and [Managed instances](sql-database-managed-instance-resource-limits.md)(Engelstalig) voor meer informatie over de grootte van het VCore-model.  Zie voor de grootte opties in het DTU-model [DTU single data bases](sql-database-dtu-resource-limits-single-databases.md) en [DTU elastische Pools](sql-database-dtu-resource-limits-elastic-pools.md).

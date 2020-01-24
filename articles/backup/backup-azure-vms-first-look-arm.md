@@ -3,12 +3,12 @@ title: Een back-up van een Azure VM maken op basis van de VM-instellingen
 description: In dit artikel vindt u informatie over het maken van een back-up van een enkelvoudige Azure-VM of meerdere virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: bd75bdfb3fe9939c576fe289f6be38ebe875e020
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294062"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705442"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Een back-up van een Azure VM maken op basis van de VM-instellingen
 
@@ -79,16 +79,11 @@ Azure Backup installeert een uitbrei ding op de VM-agent die op de computer word
 Volg de instructies in dit artikel om back-ups van virtuele Azure-machines in te scha kelen door een Azure Backup Recovery Services kluis in te stellen en back-ups in de kluis in te scha kelen.
 
 >[!NOTE]
-> Azure Backup ondersteunt nu selectieve back-up en herstel met behulp van de back-upoplossing van Azure virtual machine.
+> **Azure Backup ondersteunt nu selectieve back-up en herstel met behulp van de back-upoplossing van Azure virtual machine.**
 >
 >Momenteel biedt Azure Backup ondersteuning voor het maken van back-ups van alle schijven (besturings systeem en gegevens) in een virtuele machine met behulp van de back-upoplossing van de VM. Met de functionaliteit voor uitsluiten van schijven krijgt u een optie om een back-up te maken van een of enkele van de vele gegevens schijven in een VM. Dit biedt een efficiënte en rendabele oplossing voor uw back-up-en herstel behoeften. Elk herstel punt bevat gegevens van de schijven die zijn opgenomen in de back-upbewerking, waarmee u een subset van schijven die zijn hersteld vanaf het opgegeven herstel punt tijdens de herstel bewerking kunt laten herstellen. Dit is van toepassing om beide te herstellen vanuit de moment opname en de kluis.
 >
-> Deze oplossing is met name handig in de volgende scenario's:
->  
->1. U hebt essentiële gegevens waarvan u een back-up wilt maken op slechts één schijf en u wilt geen back-up maken van de rest van de schijven die zijn gekoppeld aan een virtuele machine. Hierdoor worden de kosten voor back-upopslag geminimaliseerd.  
->2. U hebt andere back-upoplossingen voor een deel van uw VM-gegevens. U maakt bijvoorbeeld een back-up van uw data bases of gegevens met een andere back-up van de werk belasting en u wilt back-ups op Azure-VM-niveau gebruiken voor de rest van uw schijven en gegevens om een efficiënt en robuust systeem te bouwen met de beste mogelijkheden die beschikbaar zijn.
->
->Als u zich wilt aanmelden voor de preview, schrijft u voor AskAzureBackupTeam@microsoft.com
+>**Als u zich wilt aanmelden voor de preview, schrijft u voor AskAzureBackupTeam@microsoft.com**
 
 ## <a name="next-steps"></a>Volgende stappen
 

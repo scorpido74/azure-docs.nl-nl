@@ -11,19 +11,18 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28fd29c1f3f393c37c9e9a8d0995766258c2eb45
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8945f7a49f4c04b3265cb79c88c9acb287c50d10
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278908"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704745"
 ---
 # <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Persoonlijke micro soft-accounts toevoegen aan de app Microsoft Authenticator
 
 Voeg uw persoonlijke micro soft-accounts, zoals voor Outlook.com en Xbox LIVE, toe aan de Microsoft Authenticator-app voor zowel het standaard verificatie proces met twee factoren als de aanmeldings methode voor wacht woordloze telefoons.
 
-- **Standaard twee ledige verificatie methode.** Typ uw gebruikers naam en wacht woord in het apparaat waarmee u zich aanmeldt, en kies vervolgens of de Microsoft Authenticator app een melding verzendt of dat u de gekoppelde verificatie code wilt kopiëren vanuit het scherm **accounts** van de micro soft Verificator-app.
+- **Standaard twee ledige verificatie methode.** Typ uw gebruikers naam en wacht woord in het apparaat waarmee u zich aanmeldt, en kies vervolgens of de Microsoft Authenticator app een melding verzendt of dat u de gekoppelde verificatie code wilt kopiëren vanuit het scherm **accounts** van de Microsoft Authenticator-app.
 
 - **Aanmeldings methode zonder wacht woord.** Typ uw gebruikers naam in het apparaat waarmee u zich aanmeldt voor uw persoonlijke Microsoft-account en gebruik vervolgens uw mobiele apparaat om te controleren of u het kunt gebruiken met behulp van uw vinger afdruk, gezicht of pincode. Voor deze methode hoeft u niet uw wachtwoord op te geven.
 

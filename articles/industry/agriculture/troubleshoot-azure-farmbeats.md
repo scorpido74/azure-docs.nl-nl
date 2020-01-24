@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: f017b19ef8bd8e4c44d9e2885da6fbaf172808a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb4b06eca0d6df6848e2e215d8890569701f7596
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485973"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705612"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -44,6 +44,38 @@ Ga als volgt te werk om het bestand **deployer. log** te downloaden:
    - Als er *inkomende berichten*zijn, neemt u contact op met farmbeatssupport@microsoft.com. Koppel uw Datahub-en Accelerator logboeken en vastgelegde telemetrie.
 
 Als u wilt weten hoe u Logboeken kunt downloaden, gaat u naar de sectie [Logboeken hand matig verzamelen](#collect-logs-manually) .  
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Er kunnen geen telemetriegegevens worden weer gegeven na het opnemen van historische/streaming-gegevens van uw Sens oren
+
+**Symptoom**: er zijn apparaten of Sens oren geïmplementeerd en u hebt de apparaten/Sens oren op FarmBeats en opgenomen telemetrie naar de EventHub gemaakt, maar u kunt geen telemetriegegevens ophalen of weer geven op FarmBeats.
+
+**Corrigerende actie**:
+
+1. Zorg ervoor dat u de partner registratie op de juiste manier hebt uitgevoerd. u kunt dit controleren door naar uw datahub Swagger te gaan, naar/partner API te gaan, een Get-en check-taak uit te voeren als de partner is geregistreerd. Als dat niet het geval is, volgt u de [stappen](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om een partner toe te voegen.
+2. Zorg ervoor dat u de juiste indeling voor telemetrie-berichten hebt gebruikt:
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
+}
+```
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>De Azure-Event Hubs niet hebben connection string
 

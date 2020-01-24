@@ -11,13 +11,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84603dfa865afe1c7661f49d7dac7374fa62a2a0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e0616ae2c3b58c694e300abca28a9e34f8442fcb
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920783"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703708"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Snelstart: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een Android-app
 
@@ -537,7 +536,7 @@ In tegens telling tot het configuratie bestand [auth_config_single_account. json
 
 ## <a name="next-steps"></a>Volgende stappen
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Leer wat de stappen zijn voor het maken van de toepassing die wordt gebruikt in deze snelstart
+### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>De stappen voor het maken van de toepassing die wordt gebruikt in deze snelstart
 
 Probeer de [aanmeldings gebruikers uit en bel de Microsoft Graph vanuit een Android-app](tutorial-v2-android.md) -zelf studie voor een stapsgewijze hand leiding voor het bouwen van een Android-app waarmee een toegangs token wordt opgehaald en wordt gebruikt om de Microsoft Graph-API aan te roepen.
 

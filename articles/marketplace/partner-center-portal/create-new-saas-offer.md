@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: c39f41af8ed2f1e25064324c0e1da4a6603face8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.date: 01/22/2020
+ms.openlocfilehash: 4cac2fcd16f779a6b31e36ca175801eedaa31d5d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045535"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705816"
 ---
 # <a name="create-a-new-saas-offer"></a>Een nieuwe SaaS-aanbieding maken
 
@@ -111,7 +111,7 @@ Promoot uw bedrijf met micro soft door een Marketplace-vermelding te maken. Als 
 - **Hoe wilt u potentiële klanten interactie laten doen met deze aanbieding?**
 
 ##### <a name="get-it-now-free"></a>Nu downloaden (gratis)
-Bied uw aanbod aan klanten gratis aan door een geldige URL op te geven (te beginnen met *http* of *https*), waar ze toegang hebben tot uw app.  Bijvoorbeeld: `https://contoso.com/saas-app`
+Bied uw aanbod aan klanten gratis aan door een geldige URL op te geven (te beginnen met *http* of *https*), waar ze een proef versie met één klik kunnen krijgen met [behulp van Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials).  Bijvoorbeeld: `https://contoso.com/saas-app`
 
 ##### <a name="free-trial-listing"></a>Gratis proef versie (lijst)
 Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versie door een geldige URL op te geven (te beginnen met *http* of *https*), waar u een proef versie kunt verkrijgen met [één klik op verificatie met behulp van Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials).  Bijvoorbeeld: `https://contoso.com/trial/saas-app`. Gratis proef versies van aanbieding worden gemaakt, beheerd en geconfigureerd door uw service en er zijn geen abonnementen die door micro soft worden beheerd.
@@ -165,7 +165,7 @@ Op het tabblad **Eigenschappen** wordt u gevraagd om de categorieën en industri
 
 Selecteer **Opslaan** na het volt ooien van deze velden.
 
-### <a name="category"></a>Categorie
+### <a name="category"></a>Category
 
 Selecteer mini maal één (1) en een maximum van drie (3) categorieën die worden gebruikt voor het groeperen van uw aanbieding in de juiste Zoek gebieden voor Marketplace. Bel op hoe uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding.
 

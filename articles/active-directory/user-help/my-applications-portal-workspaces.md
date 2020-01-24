@@ -12,13 +12,12 @@ ms.topic: overview
 ms.date: 10/30/2019
 ms.author: lizross
 ms.custom: user-help
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38fe0b0ff3bcb38133444819200254a684f08d44
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 818e9a36f54e67ba1ea872394d470f2386485e2f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573789"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705034"
 ---
 # <a name="access-and-use-workspaces-on-the-my-apps-preview-portal"></a>Werk ruimten openen en gebruiken in de portal mijn apps (preview-versie)
 
@@ -47,7 +46,7 @@ Nadat u uw apps hebt ingedeeld in de verschillende categorieën van de portal **
 
 - Machtigingen die zijn verleend aan toepassingen controleren, bijwerken of intrekken. Zie [toepassings machtigingen bewerken of intrekken in de portal mijn apps (preview-versie)](my-applications-portal-permissions-saved-accounts.md)voor meer informatie.
 
-## <a name="related-articles"></a>Verwante artikelen
+## <a name="related-articles"></a>Verwante artikelen:
 
 - [Werk uw profiel en account gegevens](my-account-portal-overview.md)bij. Instructies voor het bijwerken van uw persoonlijke gegevens die worden weer gegeven op de portal **Mijn profiel** (preview-versie).
 

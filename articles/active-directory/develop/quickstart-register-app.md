@@ -12,13 +12,12 @@ ms.date: 05/09/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58a68b89ce38664c0d0ec87b509fe5f872cfd78c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: bb741fe36e00c3d528470866669e64e9b0b221ae
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921412"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704133"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Snelstartgids: een toepassing registreren bij het micro soft Identity-platform
 
@@ -30,7 +29,7 @@ In deze Quick start ziet u hoe u een toepassing kunt toevoegen en registreren me
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de door u gewenste Azure Active Directory-tenant.
-1. Zoek en selecteer **Azure Active Directory**. Selecteer op de pagina **Active Directory** **app-registraties** en selecteer vervolgens **nieuwe registratie**.
+1. Zoek naar **Azure Active Directory** en selecteer deze optie. Selecteer op de pagina **Active Directory** **app-registraties** en selecteer vervolgens **nieuwe registratie**.
 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
 
    - **Naam**: voer een beschrijvende toepassingsnaam in. Deze wordt zichtbaar voor gebruikers van de app.
@@ -62,7 +61,7 @@ In Azure AD wordt een unieke toepassings-id (client) toegewezen aan de app, waar
 - Raadpleeg deze snelstarts om extra configuratiefuncties in te schakelen in de registratie van de toepassing, zoals referenties en machtigingen, en aanmelden in te schakelen voor gebruikers van andere tenants:
     - [Een clienttoepassing configureren voor toegang tot web-API's](quickstart-configure-app-access-web-apis.md)
     - [Een toepassing configureren voor het beschikbaar maken van web-API's](quickstart-configure-app-expose-web-apis.md)
-    - [De accounts wijzigen die worden ondersteund in een toepassing](quickstart-modify-supported-accounts.md)
+    - [De accounts wijzigen die worden ondersteund door een toepassing](quickstart-modify-supported-accounts.md)
 - Kies een [snelstart](https://docs.microsoft.com/azure/active-directory/develop) om snel een app te bouwen en functionaliteit toe te voegen, zoals tokens ophalen, tokens vernieuwen, gebruikers aanmelden, bepaalde gebruikersgegevens weergeven, enzovoort.
 - Raadpleeg [Toepassingsobjecten en service-principal-objecten](app-objects-and-service-principals.md) voor meer informatie over de twee Azure Active Directory-objecten die een geregistreerde toepassing vertegenwoordigen en de relatie ertussen.
 - Zie [Huisstijlrichtlijnen voor apps](howto-add-branding-in-azure-ad-apps.md) voor meer informatie over de huisstijlrichtlijnen die u moet gebruiken bij het ontwikkelen van apps.

@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f03e92c1bfd86d15bf582487e3e92a3713b63e2
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c01a7a9c5adb050d98840938260c8486ecdeb199
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619353"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705187"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>Een mobiel apparaat instellen als uw verificatie methode met twee factoren
 
@@ -27,17 +26,17 @@ U kunt uw mobiele apparaat instellen om te fungeren als uw verificatie methode m
 
 ## <a name="set-up-your-mobile-device-to-use-a-text-message-as-your-verification-method"></a>Stel uw mobiele apparaat in voor het gebruik van een SMS-bericht als verificatie methode
 
-1. Selecteer op de pagina **aanvullende beveiligings verificatie** de optie **telefoon nummer** voor **verificatie in stap 1: Hoe moeten we contact met** u opnemen? Selecteer uw land of regio in de vervolg keuzelijst en typ vervolgens het telefoon nummer van uw mobiele apparaat.
+1. Selecteer op de pagina **aanvullende beveiligings verificatie** de optie telefoon nummer voor **authenticatie** in **stap 1: hoe moeten we contact met u opnemen?** Selecteer uw land of regio in de vervolg keuzelijst en typ vervolgens uw mobiele apparaat.
 
 2. Selecteer **Ik wil een code per SMS-bericht** in het gedeelte **methode** verzenden en selecteer **volgende**.
 
     ![Aanvullende beveiligings verificatie pagina met verificatie telefoon en SMS-bericht](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
-3. Typ de verificatie code uit het SMS-bericht dat van micro soft **wordt verzonden naar de stap 2: Er is een SMS-bericht naar uw telefoon** gebied verzonden en selecteer vervolgens **verifiëren**.
+3. Typ de verificatie code uit het SMS-bericht dat van micro soft wordt verzonden naar de **stap 2: we hebben een SMS-bericht naar uw telefoon gebied verzonden** en selecteer vervolgens **verifiëren**.
 
     ![Aanvullende beveiligings verificatie pagina met verificatie telefoon en SMS-bericht](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message-test.png)
 
-4. **Uit stap 3: Blijf uw bestaande toepassingen** gebied gebruiken, kopieer het opgegeven app-wacht woord en plak het ergens veilig.
+4. In **stap 3: het gebied bestaande toepassingen blijven gebruiken** , kopieert u het opgegeven app-wacht woord en plakt u het op een veilige plek.
 
     ![Het gedeelte app-wacht woorden van de pagina aanvullende beveiligings verificatie](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
@@ -48,7 +47,7 @@ U kunt uw mobiele apparaat instellen om te fungeren als uw verificatie methode m
 
 ## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>Uw mobiele apparaat instellen om een telefoon gesprek te ontvangen
 
-1. Selecteer op de pagina **aanvullende beveiligings verificatie** de optie **telefoon nummer** voor **verificatie in stap 1: Hoe moeten we contact met** u opnemen? Selecteer uw land of regio in de vervolg keuzelijst en typ vervolgens het telefoon nummer van uw mobiele apparaat.
+1. Selecteer op de pagina **aanvullende beveiligings verificatie** de optie telefoon nummer voor **authenticatie** in **stap 1: hoe moeten we contact met u opnemen?** Selecteer uw land of regio in de vervolg keuzelijst en typ vervolgens uw mobiele apparaat.
 
 2. Selecteer **mij bellen** in het gedeelte **methode** en selecteer vervolgens **volgende**.
 
@@ -58,7 +57,7 @@ U kunt uw mobiele apparaat instellen om te fungeren als uw verificatie methode m
 
     ![Het opgegeven telefoon nummer testen](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call-test.png)
 
-4. **Uit stap 3: Blijf uw bestaande toepassingen** gebied gebruiken, kopieer het opgegeven app-wacht woord en plak het ergens veilig.
+4. In **stap 3: het gebied bestaande toepassingen blijven gebruiken** , kopieert u het opgegeven app-wacht woord en plakt u het op een veilige plek.
 
     ![Het gedeelte app-wacht woorden van de pagina aanvullende beveiligings verificatie](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
