@@ -86,12 +86,6 @@
               href: sql-database-ssms-mfa-authentication.md
             - name: Multi-Factor Authentication instellen
               href: sql-database-ssms-mfa-authentication-configure.md
-            - name: TDE met BYOK (Bring Your Own Key) configureren
-              href: transparent-data-encryption-byok-azure-sql-configure.md
-            - name: TDE BYOK-sleutels roteren
-              href: transparent-data-encryption-byok-azure-sql-key-rotation.md
-            - name: TDE-beveiliging verwijderen
-              href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
         - name: Gegevensbeveiliging
           items:
             - name: Transparent Data Encryption (TDE)
@@ -100,6 +94,12 @@
                   href: transparent-data-encryption-azure-sql.md
                 - name: TDE met BYOK (Bring Your Own Key)
                   href: transparent-data-encryption-byok-azure-sql.md
+                - name: TDE met BYOK (Bring Your Own Key) configureren
+                  href: transparent-data-encryption-byok-azure-sql-configure.md
+                - name: TDE BYOK-sleutels roteren
+                  href: transparent-data-encryption-byok-azure-sql-key-rotation.md
+                - name: TDE-beveiliging verwijderen
+                  href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
             - name: Dynamische gegevensmaskering
               href: sql-database-dynamic-data-masking-get-started.md
             - name: Altijd versleuteld

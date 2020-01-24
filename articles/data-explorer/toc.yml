@@ -27,9 +27,11 @@
       href: visualize-power-bi.md
 - name: Concepten
   items:
-    - name: Overzicht van gegevensopname
-      displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
-      href: ingest-data-overview.md
+    - name: Gegevensopname
+      items:
+        - name: Overzicht van gegevensopname
+          displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
+          href: ingest-data-overview.md
     - name: Overzicht van gegevensvisualisatie
       href: viz-overview.md
     - name: Beveiligingsoverzicht
@@ -84,18 +86,20 @@
           href: ingest-data-one-click.md
         - name: Stroomopname
           href: ingest-data-streaming.md
+        - name: Met behulp van SDK's
+          items:
+            - name: Python
+              href: python-ingest-data.md
+            - name: Node SDK
+              href: node-ingest-data.md
+            - name: .NET Standard-SDK
+              href: net-standard-ingest-data.md
         - name: Kafka
           href: ingest-data-kafka.md
-        - name: Python
-          href: python-ingest-data.md
-        - name: Node SDK
-          href: node-ingest-data.md
-        - name: .NET Standard-SDK
-          href: net-standard-ingest-data.md
         - name: Logstash
           href: ingest-data-logstash.md
-        - name: Gegevens kopiëren met Azure Data Factory
-          href: data-factory-load-data.md
+        - name: Opgemaakte JSON-gegevens
+          href: ingest-json-formats.md
     - name: Querygegevens
       items:
         - name: Query's schrijven
@@ -204,6 +208,8 @@
           items:
             - name: Integratie met Data Factory
               href: data-factory-integration.md
+            - name: Gegevens kopiëren met Azure Data Factory
+              href: data-factory-load-data.md
             - name: Gegevens bulkgewijs kopiëren met een Azure Data Factory-sjabloon
               href: data-factory-template.md
             - name: Besturingsopdrachten uitvoeren met Azure Data Factory
