@@ -16,13 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbbcd854434bcc085f1b63fb864755dd0e928fc9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8bf4039ac968883628a72974b64d90faf707c9af
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852164"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700291"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Overzicht van micro soft Identity platform (v 2.0)
 
@@ -32,8 +31,8 @@ Het Microsoft Identity Platform bouwt voort op het ontwikkelaarsplatform van Azu
   - Werk-of school accounts (ingericht via Azure AD)
   - Persoonlijke micro soft-accounts (zoals Skype, Xbox en Outlook.com)
   - Sociale of lokale accounts (via Azure AD B2C)
-- **Open-source-bibliotheken**: Micro soft-verificatie bibliotheken (MSAL) en ondersteuning voor andere standaard bibliotheken die compatibel zijn
-- **Portal voor toepassings beheer**: Een registratie-en configuratie-ervaring die in de Azure Portal is ingebouwd, samen met al uw andere Azure-beheer mogelijkheden.
+- **Open-source-bibliotheken**: micro soft-verificatie bibliotheken (MSAL) en ondersteuning voor andere normen-compatibele bibliotheken
+- **Portal voor toepassings beheer**: een in de Azure Portal ingebouwde registratie-en configuratie-ervaring, samen met al uw andere Azure-beheer mogelijkheden.
 - **API voor toepassings configuratie en Power shell**: Hiermee kunt u programmatische configuratie van uw toepassingen via REST API (Microsoft Graph en Azure Active Directory Graph 1,6) en Power shell, zodat u uw DevOps-taken kunt automatiseren.
 - **Inhoud voor ontwikkel aars**: conceptuele en naslag documentatie, voor beelden van Snelstartgids, voor beelden van code, zelf studies en hand leidingen.
 
@@ -56,7 +55,7 @@ Werken met identiteiten hoeft niet moeilijk te zijn. Kies een [scenario](authent
 
 In het volgende diagram worden de scenario's voor algemene verificatie-apps beschreven. Gebruik dit als referentie bij het integreren van het micro soft Identity-platform met uw app.
 
-[![Toepassings scenario's in het micro soft Identity-platform](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
+[Toepassings scenario's in het micro soft Identity-platform ![](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 

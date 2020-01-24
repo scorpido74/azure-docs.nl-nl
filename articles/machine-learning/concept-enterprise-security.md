@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 277b22498066542deaa080845cb816df493d7e13
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122352"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312410"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -71,7 +71,7 @@ De volgende tabel bevat enkele van de belangrijkste Azure Machine Learning bewer
 | Experiment uit te voeren | ✓ | ✓ | |
 | Uitvoeringen/metrische gegevens weer geven | ✓ | ✓ | ✓ |
 | Model registreren | ✓ | ✓ | |
-| Installatiekopie maken | ✓ | ✓ | |
+| Installatie kopie maken | ✓ | ✓ | |
 | Webservice implementeren | ✓ | ✓ | |
 | Modellen/afbeeldingen weer geven | ✓ | ✓ | ✓ |
 | Webservice aanroepen | ✓ | ✓ | ✓ |
@@ -176,12 +176,12 @@ Het exemplaar van Azure container biedt geen ondersteuning voor schijf versleute
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-U kunt een geïmplementeerde Azure Kubernetes service-resource op elk gewenst moment versleutelen met door de klant beheerde sleutels. Zie [https://aka.ms/aks/byok](https://aka.ms/aks/byok)voor meer informatie. 
+U kunt een geïmplementeerde Azure Kubernetes service-resource op elk gewenst moment versleutelen met door de klant beheerde sleutels. Zie [uw eigen sleutels maken met de Azure Kubernetes-service](../aks/azure-disk-customer-managed-keys.md)voor meer informatie. 
 
 Met dit proces kunt u zowel de gegevens als de besturingssysteem schijf van de geïmplementeerde virtuele machines in het Kubernetes-cluster versleutelen.
 
 > [!IMPORTANT]
-> Dit proces werkt alleen met AKS K8s versie 1,16 of hoger. Azure Machine Learning is ondersteuning toegevoegd voor AKS 1,16 op 13 januari 2020.
+> Dit proces werkt alleen met AKS K8s versie 1,17 of hoger. Azure Machine Learning is ondersteuning toegevoegd voor AKS 1,17 op 13 januari 2020.
 
 #### <a name="machine-learning-compute"></a>Machine Learning Compute
 
@@ -191,7 +191,7 @@ Elke virtuele machine heeft ook een lokale tijdelijke schijf voor besturingssyst
 
 Zie [Azure Data Encryption at rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)(Engelstalig) voor meer informatie over de werking van versleuteling bij rest in Azure.
 
-### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+### <a name="encryption-in-transit"></a>Versleuteling in transit
 
 U kunt SSL gebruiken voor het beveiligen van interne communicatie tussen Azure Machine Learning micro Services en het beveiligen van externe aanroepen aan het Score-eind punt. Alle Azure Storage toegang vindt ook plaats via een beveiligd kanaal.
 
@@ -251,7 +251,7 @@ Details van Score aanvragen worden opgeslagen in Application Insights. Applicati
 * User agent
 * ComputeType
 * RequestUrl
-* StatusCode
+* Status code
 * RequestId
 * Duur
 

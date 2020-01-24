@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 0ecbb4399e038355a328055590da1c34170f3852
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6ec818ff77664fcc038412f79fffc1e3e05b82f0
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894622"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294249"
 ---
 # <a name="supported-platforms"></a>Ondersteunde platforms 
 
@@ -50,9 +50,13 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 
 Zie [ondersteunde functies van virtual machine/server](security-center-services.md#vm-server-features)voor meer informatie over de ondersteunde functies voor de Windows-besturings systemen die hierboven worden vermeld.
 
+### Windows-besturings systemen<a name="os-windows (non-server)"></a>
+
+Azure Security Center integreert met Azure-Services om uw op Windows gebaseerde virtuele machines te controleren en te beveiligen.
+
 ### Linux-besturings systemen<a name="os-linux"></a>
 
-64-bit
+64-bits
 
 * CentOS 6 en 7
 * Amazon Linux 2017,09
@@ -62,7 +66,7 @@ Zie [ondersteunde functies van virtual machine/server](security-center-services.
 * Ubuntu Linux 14,04 LTS, 16,04 LTS en 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-32-bit
+32-bits
 * CentOS 6
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6

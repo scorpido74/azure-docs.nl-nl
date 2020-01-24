@@ -95,6 +95,10 @@
           href: concepts-data-access-security-private-link.md
         - name: Gegevensversleuteling
           href: concepts-data-encryption-mysql.md
+        - name: Gegevensversleuteling
+          href: concepts-data-encryption-mysql.md
+        - name: Azure Active Directory-verificatie
+          href: concepts-azure-ad-authentication.md
     - name: Bedrijfscontinuïteit
       items:
         - name: Inleiding tot bedrijfscontinuïteit
@@ -238,6 +242,10 @@
       items:
         - name: Azure Portal
           href: howto-data-encryption-portal.md
+    - name: Azure AD-integratie
+      items:
+        - name: Azure AD-integratie configureren
+          href: howto-configure-sign-in-azure-ad-authentication.md
     - name: Server opnieuw opstarten
       items:
         - name: Azure Portal
