@@ -2,15 +2,15 @@
 title: Problemen oplossen
 services: azure-dev-spaces
 ms.date: 09/25/2019
-ms.topic: conceptual
+ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: a52d27733168c55f9e34d15f6675dd7bce0f8aad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a2eb98af2c73b5a920f3e3bcedb7ab18e9f0430
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438115"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548846"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
 
@@ -252,7 +252,7 @@ Failed to build container image.
 Service cannot be started.
 ```
 
-Deze fout treedt op omdat AKS-knoop punten een oudere versie van docker uitvoeren die geen ondersteuning biedt voor het gebruik van meerdere fasen. Herschrijf uw Dockerfile om te voor komen dat meerdere fases worden gebouwd.
+Deze fout treedt op omdat Azure dev Spaces momenteel geen builds van meerdere fasen ondersteunen. Herschrijf uw Dockerfile om te voor komen dat meerdere fases worden gebouwd.
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>Netwerk verkeer wordt niet doorgestuurd naar uw AKS-cluster bij het verbinden van uw ontwikkel computer
 
@@ -475,3 +475,12 @@ Als u Azure-ontwikkel ruimten wilt inschakelen op een AKS-cluster waarvoor het u
 | gcr.io | HTTP: 443 | Helm/Tiller-installatie kopieën ophalen|
 | storage.googleapis.com | HTTP: 443 | Helm/Tiller-installatie kopieën ophalen|
 | azds-<guid>.<location>. azds.io | HTTPS:443 | Om te communiceren met Azure dev Spaces back-upservices voor uw controller. De exacte FQDN kan worden gevonden in de ' dataplaneFqdn ' in% USERPROFILE%\.azds\settings.json|
+
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Fout: kan het cluster \<cluster\> in het abonnement niet vinden \<abonnements-\>"
+
+Deze fout kan optreden als uw kubeconfig-bestand is gericht op een ander cluster of abonnement dan u probeert te gebruiken met het Azure dev Spaces-programma aan de client zijde. Met het hulp programma voor het gebruik van Azure dev Spaces aan de client zijde wordt het gedrag van *kubectl*gerepliceerd, dat gebruikmaakt van [een of meer kubeconfig-bestanden](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) om te selecteren en te communiceren met het cluster.
+
+Dit probleem oplossen:
+
+* Gebruik `az aks use-dev-spaces -g <resource group name> -n <cluster name>` om de huidige context bij te werken. Met deze opdracht wordt ook Azure dev-ruimten op uw AKS-cluster ingeschakeld als dat nog niet is gebeurd. U kunt ook `kubectl config use-context <cluster name>` gebruiken om de huidige context bij te werken.
+* Gebruik `az account show` voor het weer geven van het huidige Azure-abonnement dat u wilt richten en controleer of dit juist is. U kunt het abonnement dat u wilt richten wijzigen met behulp van `az account set`.

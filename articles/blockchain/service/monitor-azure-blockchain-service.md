@@ -3,13 +3,13 @@ title: Azure Block Chain Service (ABS) bewaken
 description: De Azure Block Chain-Service bewaken via Azure Monitor
 ms.date: 01/08/2020
 ms.topic: article
-ms.reviewer: coborn
-ms.openlocfilehash: 8c2dc6afeaa00e4c7455940cbdf5a7acd6e17394
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.reviewer: v-umha
+ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780403"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293246"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>De Azure Block Chain-Service bewaken via Azure Monitor  
 
@@ -38,7 +38,7 @@ Wanneer u een diagnostische instelling maakt, geeft u op welke categorieën logb
 
 **Block Chain-toepassings logboeken** : Selecteer de categorie om logboeken op te halen van de Block Chain-toepassing die door de beheerde service wordt gehost. Bijvoorbeeld: voor een ABS-quorum lid zijn deze logboeken de logboeken van quorum zelf.  
 
-**Metrische aanvragen**: Selecteer de optie voor het verzamelen van metrische gegevens van Azure Cosmos DB naar de doelen in de diagnostische instelling, die automatisch wordt verzameld in de metrische waarden van Azure. Verzamelen van metrische gegevens met resource logboeken voor het analyseren van beide soorten gegevens en het verzenden van metrische gegevens buiten Azure Monitor.
+**Metrische aanvragen**: Selecteer de optie voor het verzamelen van metrische gegevens van Azure Cosmos DB naar de doelen in de diagnostische instelling, die automatisch wordt verzameld in metrische data van Azure. Verzamelen van metrische gegevens met resource logboeken voor het analyseren van beide soorten gegevens en het verzenden van metrische gegevens buiten Azure Monitor.
 
 ## <a name="analyze-metric-data"></a>Metrische gegevens analyseren  
 
@@ -81,7 +81,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Block Chain-pr
 
 | Naam van eigenschap  | Beschrijving |
 |:---|:---|
-| tijd | De datum en tijd (UTC) wanneer de bewerking opgetreden. |
+| time | De datum en tijd (UTC) wanneer de bewerking opgetreden. |
 | resourceID  | De Azure Block Chain-Service resource waarvoor logboeken zijn ingeschakeld.  |
 | category  |Voor de Azure Block Chain-service zijn de mogelijke waarden **Proxylogs** en **Applicationlogs**. |
 | operationName  | De naam van de bewerking die door deze gebeurtenis wordt vertegenwoordigd.   |
@@ -89,8 +89,8 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Block Chain-pr
 | NodeLocation  | Azure-regio waar het block Chain-lid wordt geïmplementeerd.  |
 | BlockchainNodeName  | De naam van het knoop punt van het Azure Block Chain-service-lid waarop de bewerking wordt uitgevoerd.   |
 | EthMethod  | De methode, die wordt aangeroepen door het onderliggende Block Chain-protocol, kan in quorum worden eth_sendTransactions, eth_getBlockByNumber enz.  |
-| Agent  | De gebruikers agent die optreedt namens een gebruiker, zoals de webbrowser Mozilla, Edge, enzovoort. Voor beelden van de waarden zijn: ' Mozilla/5.0 (Linux x64) node. js/8.16.0 V8/6.2.414.77 '  |
-| Coderen   | HTTP-fout codes. Normaal gesp roken 4XX en 5XX de fout voorwaarden.  |
+| Agent  | De gebruikers agent die optreedt namens een gebruiker, zoals de webbrowser Mozilla, Edge, enzovoort. Voor beelden van de waarden zijn: "Mozilla/5.0 (Linux x64) node. js/8.16.0 V8/6.2.414.77"  |
+| Code   | HTTP-fout codes. Normaal gesp roken 4XX en 5XX de fout voorwaarden.  |
 | NodeHost  | De DNS-naam van het knoop punt.   |
 | RequestMethodName | De HTTP-methode met de naam, de mogelijke waarden die hier worden weer gegeven, zijn voor het maken van leden, het ophalen van Details van het bestaande lid, verwijderen voor het lid verwijderen, PATCH voor het bijwerken van het lid.   |
 | BlockchainMemberName  | De lidnaam van de Azure Block Chain-service die door de gebruiker wordt gegeven.  |
@@ -107,7 +107,7 @@ De volgende tabel bevat de eigenschappen voor Azure Block Chain-toepassings Logb
 
 | Naam van eigenschap  | Beschrijving |
 |:---|:---|
-| tijd | De datum en tijd (UTC) wanneer de bewerking opgetreden. |
+| time | De datum en tijd (UTC) wanneer de bewerking opgetreden. |
 | resourceID  | De Azure Block Chain-Service resource waarvoor logboeken zijn ingeschakeld.|
 | category  |Voor de Azure Block Chain-service zijn de mogelijke waarden **Proxylogs** en **Applicationlogs**.  |
 | operationName  | De naam van de bewerking die door deze gebeurtenis wordt vertegenwoordigd.   |
@@ -131,24 +131,24 @@ Zie [Azure monitor ondersteunde metrische gegevens](https://docs.microsoft.com/a
 De volgende tabel bevat de lijst met block Chain-metrische gegevens die worden verzameld voor de resource van de Azure Block Chain service-lid.
 
 
-| Naam van metrische waarde | Eenheid  |  Aggregatietype| Beschrijving   |
+| metrische naam | Eenheid  |  Aggregatietype| Beschrijving   |
 |---|---|---|---|
-| Trans acties in behandeling   | Aantal  |  Average | Het aantal trans acties dat wacht om te worden ook niet gebruikt.   |
-| Verwerkte blokken   | Aantal  | Sum  |  Het aantal blokken dat in elk tijds interval wordt verwerkt. Op dit moment is de blok grootte 5 seconden. in een minuut worden 12 blokken en 60 blokken in vijf minuten in elk knoop punt verwerkt.   |
-|Verwerkte trans acties    | Aantal  | Sum  | Het aantal trans acties dat in een blok is verwerkt.    |
-|Trans acties in de wachtrij    |  Aantal | Average  | Het aantal trans acties dat niet direct kan worden ook niet gebruikt. Het kan zijn dat ze niet in de juiste volg orde zijn aangekomen en dat de volgende trans actie in de toekomst wordt gewacht. Het kan ook zijn dat twee trans acties hetzelfde nummer hebben als één keer (nonce) en dezelfde aardgas waarde, dus de tweede kan niet ook niet gebruikt zijn.   |
+| Trans acties in behandeling   | Count  |  Average | Het aantal trans acties dat wacht om te worden ook niet gebruikt.   |
+| Verwerkte blokken   | Count  | Sum  |  Het aantal blokken dat in elk tijds interval wordt verwerkt. Op dit moment is de blok grootte 5 seconden. in een minuut worden 12 blokken en 60 blokken in vijf minuten in elk knoop punt verwerkt.   |
+|Verwerkte trans acties    | Count  | Sum  | Het aantal trans acties dat in een blok is verwerkt.    |
+|Trans acties in de wachtrij    |  Count | Average  | Het aantal trans acties dat niet direct kan worden ook niet gebruikt. Het kan zijn dat ze niet in de juiste volg orde zijn aangekomen en dat de volgende trans actie in de toekomst wordt gewacht. Het kan ook zijn dat twee trans acties hetzelfde nummer hebben als één keer (nonce) en dezelfde aardgas waarde, dus de tweede kan niet ook niet gebruikt zijn.   |
 
 ### <a name="connection-metrics"></a>Metrische verbindingsgegevens  
 
 De volgende tabel geeft een lijst van de verschillende metrische verbindings gegevens die worden verzameld voor de resource van de Azure Block Chain service-lid. Dit zijn de metrische gegevens van de NGINX-proxy.
 
 
-| Naam van metrische waarde | Eenheid  |  Aggregatietype| Beschrijving |
+| metrische naam | Eenheid  |  Aggregatietype| Beschrijving |
 |---|---|---|---|
-| Geaccepteerde verbindingen   | Aantal  |  Sum | Het totale aantal geaccepteerde client verbindingen.   |
-| Actieve verbindingen  | Aantal  | Average  |  Het huidige aantal actieve client verbindingen, inclusief wachtende verbindingen.    |
-|Afgehandelde verbindingen    | Aantal  | Sum  | Het totale aantal verwerkte verbindingen. Over het algemeen is de parameter waarde hetzelfde als geaccepteerde verbindingen, tenzij sommige resource limieten zijn bereikt.     |
-|Verwerkte aanvragen     |  Aantal | Sum  | Het totale aantal client aanvragen.  |
+| Geaccepteerde verbindingen   | Count  |  Sum | Het totale aantal geaccepteerde client verbindingen.   |
+| Actieve verbindingen  | Count  | Average  |  Het huidige aantal actieve client verbindingen, inclusief wachtende verbindingen.    |
+|Afgehandelde verbindingen    | Count  | Sum  | Het totale aantal verwerkte verbindingen. Over het algemeen is de parameter waarde hetzelfde als geaccepteerde verbindingen, tenzij sommige resource limieten zijn bereikt.     |
+|Verwerkte aanvragen     |  Count | Sum  | Het totale aantal client aanvragen.  |
 
 
 ### <a name="performance-metrics"></a>Metrische gegevens voor prestaties
@@ -156,13 +156,13 @@ De volgende tabel geeft een lijst van de verschillende metrische verbindings geg
 De volgende tabel bevat de prestatie gegevens die worden verzameld voor elk van de knoop punten van de Azure Block Chain-lid-resource.  
 
 
-| Naam van metrische waarde | Eenheid  |  Aggregatietype| Beschrijving   |
+| metrische naam | Eenheid  |  Aggregatietype| Beschrijving   |
 |---|---|---|---|
 | Percentage CPU-gebruik   | Percentage  |  Max. | Het percentage van het CPU-gebruik.     |
 | I/o gelezen bytes   | Kilobytes   | Sum  |  De som van i/o-Lees bewerkingen op alle knoop punten van de Block chain.      |
 |I/o-schrijf bytes     | Kilobytes   | Sum  | De som van i/o-schrijf bewerkingen op alle knoop punten van de Block chain.     |
 |Geheugen limiet       |  Gigabytes   | Average    | Maxi maal beschikbaar geheugen voor het block chain-proces per knoop punt. |
-|Geheugengebruik     | Gigabytes  |  Average | De hoeveelheid geheugen die gemiddeld op alle knoop punten wordt gebruikt.  |
+|Geheugen gebruik     | Gigabytes  |  Average | De hoeveelheid geheugen die gemiddeld op alle knoop punten wordt gebruikt.  |
 | Percentage geheugen gebruik     | Percentage   | Average  |  Het percentage van het geheugen dat gemiddeld op alle knoop punten wordt gebruikt.       |
 |Opslag gebruik      | Gigabytes   | Average  | De hoeveelheid opslag die gemiddeld per knoop punt wordt gebruikt.       |
 

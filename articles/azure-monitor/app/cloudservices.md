@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: 860694a750ae313f04aceab924429dcf08ecbb66
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f915764deaa70117b96a42c5e7310b691125d731
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887542"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979857"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights voor Azure Cloud Services
 [Application Insights][start] kunt [Azure Cloud service-apps](https://azure.microsoft.com/services/cloud-services/) bewaken voor Beschik baarheid, prestaties, fouten en gebruik door gegevens van Application Insights sdk's te combi neren met [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) gegevens uit uw Cloud Services. Op basis van de feedback die u krijgt over de prestaties en de effectiviteit van uw app tijdens het gebruik, kunt u weldoordachte beslissingen nemen over de richting van het ontwerp in elke fase van de ontwikkelingslevenscyclus.
@@ -26,7 +26,7 @@ Voordat u begint, hebt u het volgende nodig:
 * Microsoft Azure-hulpprogram ma's 2,9 of hoger.
 * Developer Analytics Tools 7,10 of hoger.
 
-## <a name="get-started-quickly"></a>Ga snel aan de slag
+## <a name="get-started-quickly"></a>Snel aan de slag
 Als u uw cloudservice wilt controleren met Application Insights, kunt u dat het snelst en gemakkelijkst doen door die optie te kiezen wanneer u uw service naar Azure publiceert.
 
 ![Voor beeld van instellingen pagina voor diagnostische gegevens](./media/cloudservices/azure-cloud-application-insights.png)
@@ -52,7 +52,7 @@ In de volgende sectie leert u hoe u uw eigen Cloud service project op dezelfde m
 ## <a name="plan-resources-and-resource-groups"></a>Resources en resourcegroepen plannen
 De telemetrie van uw app wordt opgeslagen, geanalyseerd en weer gegeven in een Azure-resource van het type Application Insights. 
 
-Elke resource behoort tot een resourcegroep. Resource groepen worden gebruikt voor het beheren van kosten, het verlenen van toegang aan team leden en het implementeren van updates in één gecoördineerde trans actie. U kunt bijvoorbeeld [een script schrijven om](../../azure-resource-manager/resource-group-template-deploy.md) een Azure-Cloud service en het Application Insights bewakings bronnen in één bewerking te implementeren.
+Elke resource behoort tot een resourcegroep. Resource groepen worden gebruikt voor het beheren van kosten, het verlenen van toegang aan team leden en het implementeren van updates in één gecoördineerde trans actie. U kunt bijvoorbeeld [een script schrijven om](../../azure-resource-manager/templates/deploy-powershell.md) een Azure-Cloud service en het Application Insights bewakings bronnen in één bewerking te implementeren.
 
 ### <a name="resources-for-components"></a>Resources voor onderdelen
 U kunt het beste een afzonderlijke resource maken voor elk onderdeel van uw app. Dat wil zeggen dat u een resource maakt voor elke webrol en werk rollen. U kunt elk onderdeel afzonderlijk analyseren, maar u maakt een [dash board](../../azure-monitor/app/overview-dashboard.md) waarin de belangrijkste grafieken van alle onderdelen worden gecombineerd, zodat u ze in één weer gave kunt vergelijken en controleren. 

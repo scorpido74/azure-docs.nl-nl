@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ac0f59ea709e25f3d71a78ece5ebf40690bd3be
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db9b95f82a18072af538d4aa946431dcef8d9cff
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949623"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154638"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Pas de gebruikers interface van uw toepassing aan met behulp van een aangepast beleid in Azure Active Directory B2C
 
@@ -64,7 +64,7 @@ Maak HTML-inhoud met de merk naam van uw product in de titel.
 
 Als u deze HTML-inhoud in Blob Storage wilt hosten, voert u de volgende stappen uit:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer in het menu **hub** **nieuwe** > **Storage** - > **opslag account**.
 1. Selecteer een **abonnement** voor uw opslag account.
 1. Maak een **resource groep** of selecteer een bestaande.
@@ -120,7 +120,7 @@ Controleer of u klaar bent door de volgende stappen uit te voeren:
 
 Als u de UI-aanpassing wilt configureren, kopieert u de **ContentDefinition** en de onderliggende elementen van het basis bestand naar het extensie bestand.
 
-1. Open het basis bestand van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> . Dit is een van de beleids bestanden in het aangepaste beleids Starter Pack, die u in de vereiste moet hebben verkregen, aan de [slag met aangepast beleid](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Open het basis bestand van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>. Dit is een van de beleids bestanden in het aangepaste beleids Starter Pack, die u in de vereiste moet hebben verkregen, aan de [slag met aangepast beleid](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Zoek en kopieer de volledige inhoud van het **ContentDefinitions** -element.
 1. Open het extensie bestand. Bijvoorbeeld *TrustFrameworkExtensions. XML*. Zoek het element **BuildingBlocks** . Als het element niet bestaat, voegt u het toe.
 1. Plak de volledige inhoud van het **ContentDefinitions** -element dat u hebt gekopieerd als onderliggend element van het **Building Blocks** -object.
@@ -146,19 +146,19 @@ Als u de UI-aanpassing wilt configureren, kopieert u de **ContentDefinition** en
 
 1. Sla het bestand met extensies op.
 
-## <a name="upload-your-updated-custom-policy"></a>Uw bijgewerkte aangepaste beleid uploaden
+## <a name="upload-and-test-your-updated-custom-policy"></a>Uw bijgewerkte aangepaste beleid uploaden en testen
+
+### <a name="upload-the-custom-policy"></a>Het aangepaste beleid uploaden
 
 1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
-1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-1. Selecteer een **Framework voor identiteits ervaring**.
-1. Klik op **alle beleids regels**.
-1. Klik op **beleid uploaden**.
+1. Zoek en selecteer **Azure AD B2C**.
+1. Onder **beleids regels**selecteert u **identiteits ervaring-Framework**.
+1. Selecteer **aangepast beleid uploaden**.
 1. Upload het extensie bestand dat u eerder hebt gewijzigd.
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>Het aangepaste beleid testen met behulp van **nu uitvoeren**
+### <a name="test-the-custom-policy-by-using-run-now"></a>Het aangepaste beleid testen met behulp van **nu uitvoeren**
 
-1. Ga op de pagina **Azure AD B2C** naar **alle beleids regels**.
-1. Selecteer het aangepaste beleid dat u hebt geüpload en klik op de knop **nu uitvoeren** .
+1. Selecteer het beleid dat u hebt geüpload en selecteer **nu uitvoeren**.
 1. U moet zich kunnen aanmelden met behulp van een e-mail adres.
 
 ## <a name="reference"></a>Referentie
