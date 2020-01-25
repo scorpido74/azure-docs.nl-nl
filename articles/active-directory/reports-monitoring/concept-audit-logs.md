@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8883e3ade7e5d52f3a62346bf8be51ac36042f82
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008528"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714489"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Controleactiviteitenrapporten in Azure Active Directory Portal 
 
@@ -56,7 +56,7 @@ Een controlelogboek heeft een standaardlijstweergave die het volgende laat zien:
 - de categorie en de naam van de activiteit (*wat*) 
 - de status van de activiteit (geslaagd of mislukt)
 - het doel
-- De initiator/Actor (wie) van een activiteit
+- de initiator/Actor (wie) van een activiteit
 
 ![Auditlogboeken](./media/concept-audit-logs/listview.png "Auditlogboeken")
 
@@ -78,10 +78,10 @@ Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 U kunt de controle gegevens filteren op de volgende velden:
 
 - Service
-- Categorie
+- Category
 - Activiteit
 - Status
-- Doel
+- Kiezen
 - Gestart door (actor)
 - Datumbereik
 
@@ -89,12 +89,12 @@ U kunt de controle gegevens filteren op de volgende velden:
 
 Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de volgende services selecteren:
 
-- Alle
+- Alles
 - Toegangsbeoordelingen
 - Account inrichten 
 - SSO van de toepassing
 - Verificatiemethoden
-- B2C
+- Business to consumer
 - Voorwaardelijke toegang
 - Hoofddirectory
 - Rechtenbeheer
@@ -107,12 +107,12 @@ Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de vo
 
 Met het filter **categorie** kunt u een van de volgende filters selecteren:
 
-- Alle
+- Alles
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
+- Verificatie
 - Autorisatie
-- Contactpersoon
+- Contact
 - Apparaat
 - Apparaatconfiguratie
 - DirectoryManagement
@@ -130,7 +130,7 @@ U kunt de lijst met alle controle activiteiten ophalen met behulp van de Graph A
 
 Met het filter **status** kunt u filteren op basis van de status van een audit bewerking. De status kan een van de volgende zijn:
 
-- Alle
+- Alles
 - Geslaagd
 - Fout
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 93cdea453050df8899abf9233991715ae237bcd4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: feab221c24034fe29df420b4f9eb6d84e06a90b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257244"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719333"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Cosmos DB en Azure App Service Web Apps met behulp van een Azure Resource Manager-sjabloon implementeren
 Deze zelfstudie leert u hoe u een Azure Resource Manager-sjabloon gebruiken om te implementeren en integreren [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), een [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) web-app en een Voorbeeldwebtoepassing.
@@ -33,7 +33,7 @@ Na het voltooien van deze zelfstudie, kunt u zich de volgende vragen beantwoorde
 
 Voordat u de instructies in deze zelfstudie, controleert u of het een Azure-abonnement. Azure is een platform op basis van een abonnement.  Zie voor meer informatie over het verkrijgen van een abonnement [Aankoopopties](https://azure.microsoft.com/pricing/purchase-options/), [aanbiedingen voor leden](https://azure.microsoft.com/pricing/member-offers/), of [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a id="CreateDB"></a>Stap 1: De sjabloonbestanden downloaden
+## <a id="CreateDB"></a>Stap 1: Download de sjabloonbestanden
 Begin met het downloaden van de sjabloonbestanden die in deze zelfstudie is vereist.
 
 1. Download de [een Azure Cosmos DB-account, Web-Apps maken en implementeren van een voorbeeld van de toepassing demo](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) sjabloon naar een lokale map (bijvoorbeeld C:\Azure Cosmos DBTemplates). Deze sjabloon wordt geïmplementeerd voor een Azure Cosmos DB-account, een App Service-web-app en een web-App.  Het is ook automatisch Hiermee configureert u de web-App verbinden met de Azure Cosmos DB-account.
@@ -56,7 +56,7 @@ Nu gaan we de eerste sjabloon implementeert.
    ![Schermafbeelding van de gebruikersinterface voor sjabloonimplementatie](./media/create-website/TemplateDeployment3.png)
 4. Klik op **parameters bewerken**, geef waarden op voor elk van de verplichte parameters en klikt u op **OK**.  De parameters zijn als volgt:
    
-   1. SITENAAM: Hiermee geeft u de naam van de App Service-web-app en wordt gebruikt om de URL die u gebruikt voor toegang tot de web-app (bijvoorbeeld, als u "mydemodocdbwebapp" en vervolgens de URL waarmee u toegang tot de web-app is mydemodocdbwebapp.azurewebsites.net).
+   1. SITEROL: Hiermee geeft u de naam van de App Service web-app op. deze wordt gebruikt om de URL te maken die u gebruikt voor toegang tot de web-app (bijvoorbeeld als u ' mydemodocdbwebapp ' opgeeft, wordt de URL waarmee u toegang hebt tot de web-app `mydemodocdbwebapp.azurewebsites.net`).
    2. HOSTINGPLANNAME: Hiermee geeft u de naam van App Service-hostingplan te maken.
    3. LOCATIE: Hiermee geeft u de Azure-locatie in voor het maken van de Azure Cosmos DB- en web app-resources.
    4. DATABASEACCOUNTNAME: Hiermee geeft u de naam van de Azure Cosmos DB-account te maken.   
@@ -78,7 +78,7 @@ Nu gaan we de eerste sjabloon implementeert.
 
 <a id="Build"></a> 
 
-## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>Stap 3: De Document-account en web-app-voorbeeld implementeren
+## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>Stap 3: De voorbeeld-Document-account en web-app implementeren
 Nu gaan we de tweede sjabloon implementeert.  Deze sjabloon is handig om te laten zien hoe u kunt invoeren Azure Cosmos DB-verbindingsgegevens, zoals de eindpunt-account en de hoofdsleutel in een web-app als toepassingsinstellingen of als een aangepaste verbindingsreeks. Bijvoorbeeld, wellicht hebt u uw eigen web-App die u wilt implementeren met een Azure Cosmos DB-account en beschikken over de verbindingsgegevens automatisch ingevuld tijdens de implementatie.
 
 > [!TIP]
@@ -121,11 +121,11 @@ Gefeliciteerd! U kunt Azure Cosmos DB, App Service-web-app en een Voorbeeldwebto
 * Voor meer informatie over Azure App Service Web apps, klikt u op [hier](https://go.microsoft.com/fwlink/?LinkId=325362).
 * Voor meer informatie over Azure Resource Manager-sjablonen, klikt u op [hier](https://msdn.microsoft.com/library/azure/dn790549.aspx).
 
-## <a name="whats-changed"></a>Wat is er gewijzigd
-* Zie voor een handleiding voor het wijzigen van Websites in App Service: [Azure App Service en de invloed ervan op bestaande Azure-Services](https://go.microsoft.com/fwlink/?LinkId=529714)
+## <a name="whats-changed"></a>Wat is er veranderd
+* Als u van Websites wilt overstappen op App Service, raadpleegt u de volgende handleiding: [Azure App Service en de invloed ervan op bestaande Azure Services](https://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
-> Als u aan de slag wilt met Azure App Service voordat u zich aanmeldt voor een Azure-account, gaat u naar [App Service uitproberen](https://go.microsoft.com/fwlink/?LinkId=523751). Hier kunt u direct een tijdelijke web-app maken in App Service. U hebt geen creditcard nodig en u gaat geen verplichtingen aan.
+> Als u aan de slag wilt met Azure App Service voordat u zich aanmeldt voor een Azure-account, gaat u naar [App Service uitproberen](https://go.microsoft.com/fwlink/?LinkId=523751). Hier kunt u direct een tijdelijke web-app maken in App Service. Geen creditcards vereist en geen toezeggingen.
 > 
 > 
 

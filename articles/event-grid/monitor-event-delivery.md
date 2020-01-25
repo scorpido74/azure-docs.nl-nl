@@ -1,19 +1,19 @@
 ---
 title: Bezorging van Azure Event Grid bericht bewaken
-description: Hierin wordt beschreven hoe u de levering van Azure Event Grid berichten bewaakt.
+description: In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om de status van de levering van Azure Event Grid berichten te bekijken.
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b1035046cc3c3b6cd7bde895e2e779d1c966abe0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170014"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722132"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Bezorging van Event Grid bericht bewaken 
 

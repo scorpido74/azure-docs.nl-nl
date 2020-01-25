@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 32eb8e71cfb978fac5b4d6d05af4da4fdc9f67b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513929"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715517"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -72,7 +72,7 @@ Volg deze stappen.
 
  Nu u de vereiste referenties hebt, kunt u het apparaat en de Sens oren definiëren. Als u dit wilt doen, maakt u de meta gegevens door FarmBeats-Api's aan te roepen. Houd er rekening mee dat u de Api's moet aanroepen als de client-app die u hebt gemaakt in de bovenstaande sectie
 
- FarmBeats Datahub heeft de volgende Api's waarmee het maken en beheren van meta gegevens van apparaten of Sens oren kan worden ingeschakeld.
+ FarmBeats Datahub heeft de volgende Api's waarmee het maken en beheren van meta gegevens van apparaten of Sens oren kan worden ingeschakeld. Als u toegang hebt tot een partner, kunt u alleen de meta gegevens lezen, maken en bijwerken. **Verwijderen is niet toegestaan door een partner.**
 
 - /**DeviceModel**: DeviceModel komt overeen met de meta gegevens van het apparaat, zoals de fabrikant en het type apparaat, ofwel een gateway ofwel een knoop punt.
 - /**apparaat**: het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm.
@@ -89,7 +89,7 @@ Volg deze stappen.
 |     Name                 |  Naam om de resource te identificeren. Bijvoorbeeld de naam van het model of de product naam.
       Beschrijving     | Geef een zinvolle beschrijving van het model op.
 |    Eigenschappen          |    Aanvullende eigenschappen van de fabrikant.   |
-|    **Apparaat**             |                      |
+|    **Apparaatconfiguratie**             |                      |
 |   DeviceModelId     |     ID van het gekoppelde model.  |
 |  HardwareId          | De unieke ID voor het apparaat, zoals het MAC-adres.
 |  ReportingInterval        |   Rapportage-interval in seconden.
@@ -381,6 +381,41 @@ Hier volgt een voor beeld van een telemetrie-bericht:
       ]
     }
   ]
+}
+```
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Er kunnen geen telemetriegegevens worden weer gegeven na het opnemen van historische/streaming-gegevens van uw Sens oren
+
+**Symptoom**: er zijn apparaten of Sens oren geïmplementeerd en u hebt de apparaten/Sens oren op FarmBeats en opgenomen telemetrie naar de EventHub gemaakt, maar u kunt geen telemetriegegevens ophalen of weer geven op FarmBeats.
+
+**Corrigerende actie**:
+
+1. Zorg ervoor dat u de partner registratie op de juiste manier hebt uitgevoerd. u kunt dit controleren door naar uw datahub Swagger te gaan, naar/partner API te gaan, een Get-en check-taak uit te voeren als de partner is geregistreerd. Als dat niet het geval is, volgt u de [stappen](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) om een partner toe te voegen.
+2. Zorg ervoor dat u de meta gegevens (DeviceModel, Device, SensorModel, sensor) hebt gemaakt met behulp van de referenties van de partner-client.
+3. Zorg ervoor dat u de juiste indeling voor telemetrie-berichten hebt gebruikt (zoals hieronder is opgegeven):
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
 }
 ```
 

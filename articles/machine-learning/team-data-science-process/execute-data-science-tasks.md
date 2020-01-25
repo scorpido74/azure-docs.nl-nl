@@ -2,24 +2,24 @@
 title: Uitvoeren van datatechnologietaken - Team Data Science Process
 description: Hoe een gegevenswetenschapper een data science-project kunt uitvoeren in een herleidbare versie beheerd en gezamenlijke manier.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 16fb47879daae6bfbf0929e842a3a6227d1524a9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 984b03288b8dae644fc04a2cd78fb03a2e027f62
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772275"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722200"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Datatechnologietaken uitvoeren: gegevensonderzoek, modelleren en implementatie
 
-Datatechnologietaken doorgaans bevatten gegevens gegevensonderzoek, modelleren en implementatie. In dit artikel ziet u hoe u de **interactieve Gegevensverkenning, analyse en rapportage (IDEAR)** en **geautomatiseerde modelleren en rapportage (AMAR)** hulpprogramma's voor verschillende algemene datatechnologietaken uitvoeren zoals interactieve gegevensverkenning, gegevensanalyse, rapportage en model maken. Ook biedt opties voor het implementeren van een model in een productieomgeving met behulp van een aantal gegevens en toolkits platformen, zoals het volgende:
+Datatechnologietaken doorgaans bevatten gegevens gegevensonderzoek, modelleren en implementatie. In dit artikel ziet u hoe u de **interactieve Gegevensverkenning, analyse en rapportage (IDEAR)** en **geautomatiseerde modelleren en rapportage (AMAR)** hulpprogramma's voor verschillende algemene datatechnologietaken uitvoeren zoals interactieve gegevensverkenning, gegevensanalyse, rapportage en model maken. De opties voor het implementeren van een model in een productie omgeving kunnen het volgende omvatten:
 
 - [Azure Machine Learning](../index.yml)
 - [SQL-Server met ML-services](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)

@@ -3,20 +3,20 @@ title: Functies maken in SQL Server met behulp van SQL en Python - Team Data Sci
 description: Functies voor gegevens die zijn opgeslagen in een SQL Server-VM op Azure met behulp van SQL en Python - onderdeel van het Team Data Science Process genereren.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5aa9a4f0ab536c197f08cb64a5cee8280c23039f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982062"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721741"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Met SQL en Python functies maken voor gegevens in SQL Server
 Dit document laat zien hoe voor het genereren van functies voor gegevens die zijn opgeslagen op een SQL Server-VM in Azure waarmee algoritmen efficiënter Leer van de gegevens. U kunt SQL of een programmeertaal zoals Python gebruiken om deze taak te volbrengen. Beide methoden die hier.
@@ -37,9 +37,9 @@ In dit artikel wordt ervan uitgegaan dat u hebt:
 ## <a name="sql-featuregen"></a>Functie genereren met behulp van SQL
 In deze sectie wordt beschreven manieren voor het genereren van functies met behulp van SQL:  
 
-1. [Aantal op basis van functie genereren](#sql-countfeature)
-2. [Genereren van de functie binning](#sql-binningfeature)
-3. [Implementeren van de functies van één kolom](#sql-featurerollout)
+* [Aantal op basis van functie genereren](#sql-countfeature)
+* [Genereren van de functie binning](#sql-binningfeature)
+* [Implementeren van de functies van één kolom](#sql-featurerollout)
 
 > [!NOTE]
 > Nadat u extra functies genereert, kunt u ze als kolommen toevoegen aan de bestaande tabel of een nieuwe tabel maken met de aanvullende functies en de primaire sleutel, die kan worden samengevoegd met de oorspronkelijke tabel.
@@ -47,7 +47,7 @@ In deze sectie wordt beschreven manieren voor het genereren van functies met beh
 > 
 
 ### <a name="sql-countfeature"></a>Aantal op basis van functie genereren
-Dit document ziet u twee manieren voor het genereren van het aantal functies. De eerste methode maakt gebruik van Voorwaardelijke som en de tweede methode maakt gebruik van de component 'where'. Deze kunnen vervolgens worden samengevoegd met de oorspronkelijke tabel (met behulp van de primaire-sleutelkolommen) als u wilt dat het aantal functies samen met de oorspronkelijke gegevens.
+Dit document ziet u twee manieren voor het genereren van het aantal functies. De eerste methode maakt gebruik van Voorwaardelijke som en de tweede methode maakt gebruik van de component 'where'. Deze nieuwe functies kunnen vervolgens worden gekoppeld aan de oorspronkelijke tabel (met behulp van primaire-sleutel kolommen) om onderdelen naast de oorspronkelijke gegevens te tellen.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
 
@@ -55,7 +55,7 @@ Dit document ziet u twee manieren voor het genereren van het aantal functies. De
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
 
 ### <a name="sql-binningfeature"></a>Genereren van de functie binning
-Het volgende voorbeeld laat zien hoe voor het genereren van binned functies door binning (met behulp van 5 opslaglocaties) een numerieke kolom die kan worden gebruikt als een functie in plaats daarvan:
+Het volgende voorbeeld laat zien hoe voor het genereren van binned functies door binning (met behulp van vijf opslaglocaties) een numerieke kolom die kan worden gebruikt als een functie in plaats daarvan:
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
@@ -74,9 +74,9 @@ Hier volgt een korte uitleg van breedtegraad/lengtegraad locatiegegevens (resour
 * De derde decimaal de moeite waard is maximaal 110 m: dat het een grote agricultural veld of institutionele campus kunt identificeren.
 * De vierde decimaal de moeite waard is maximaal 11 m: dat er een pakket van de grond kunt identificeren. Het is vergelijkbaar met de typische nauwkeurigheid van een niet-gecorrigeerde GPS-eenheid zonder storing.
 * De vijfde decimaal de moeite waard is tot 1.1 m: dat deze structuren van elkaar worden onderscheiden. Nauwkeurigheid van de gegevens op dit niveau met commerciële GPS-eenheden kan alleen worden bereikt met differentiële correctie.
-* De zesde decimaal is waard tot 0.11 m: die u kunt deze gebruiken voor het opmaken van structuren in detail voor het ontwerpen van landschappen, het bouwen van wegen. Dit moet meer dan goed genoeg voor het bijhouden van bewegingen van glaciers en rivieren. Dit kan worden bereikt door middel van hele maatregelen met GPS, zoals differentially gecorrigeerde GPS.
+* De zesde decimaal positie is Maxi maal 0,11 m: u kunt dit niveau gebruiken voor het indelen van structuren, voor het ontwerpen van landschappen, het bouwen van wegen. Dit moet meer dan goed genoeg voor het bijhouden van bewegingen van glaciers en rivieren. Dit doel kan worden bereikt door Painstaking-maat regelen te nemen met GPS, zoals een differentieeel gecorrigeerde GPS.
 
-De locatie-informatie kan boommodel zijn door te scheiden van regio, locatie en plaats. Let op: één keer kan ook aanroepen een REST-eindpunt, zoals Bing kaarten-API die beschikbaar zijn op `https://msdn.microsoft.com/library/ff701710.aspx` voor de regio/district-informatie.
+De locatie-informatie kan boommodel zijn door te scheiden van regio, locatie en plaats. Eenmaal kan ook een REST-eind punt aanroepen, zoals de Bing Maps-API (Zie `https://msdn.microsoft.com/library/ff701710.aspx` om de informatie over de regio/district op te halen).
 
     select
         <location_columnname>

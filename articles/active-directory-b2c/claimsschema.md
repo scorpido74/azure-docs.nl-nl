@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1e72e100bcb3d06403af1514dea13de59c623310
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999104"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713071"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,39 +42,39 @@ Het **ClaimsSchema** -element definieert de claim typen waarnaar kan worden verw
 
 Het element **claim** type bevat het volgende kenmerk:
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
-| ID | Ja | Een id die wordt gebruikt voor het claim type. Andere elementen kunnen deze id in het beleid gebruiken. |
+| Id | Ja | Een id die wordt gebruikt voor het claim type. Andere elementen kunnen deze id in het beleid gebruiken. |
 
 Het element **claim** type bevat de volgende elementen:
 
-| Element | Gevallen | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | De titel die wordt weer gegeven voor gebruikers op verschillende schermen. De waarde kan worden [](localization.md)gelokaliseerd. |
+| DisplayName | 0:1 | De titel die wordt weer gegeven voor gebruikers op verschillende schermen. De waarde kan worden [gelokaliseerd](localization.md). |
 | Gegevenstype | 0:1 | Het type claim. De gegevens typen Boolean, date, dateTime, int, Long, String, stringCollection, alternativeSecurityIdCollection kunnen worden gebruikt. |
 | DefaultPartnerClaimTypes | 0:1 | De standaard claim typen voor de partner die moeten worden gebruikt voor een opgegeven protocol. De waarde kan worden overschreven in het **PartnerClaimType** dat is opgegeven in de **input claim** -of **output claim** -elementen. Gebruik dit element om de standaard naam voor een protocol op te geven.  |
-| Masker | 0:1 | Een optionele teken reeks maskerings tekens die kunnen worden toegepast wanneer de claim wordt weer gegeven. Het telefoon nummer 324-232-4343 kan bijvoorbeeld worden gemaskeerd als XXX-XXX-4343. |
-| UserHelpText | 0:1 | Een beschrijving van het claim type waarmee gebruikers het doel kunnen begrijpen. De waarde kan worden [](localization.md)gelokaliseerd. |
+| Subnetmasker | 0:1 | Een optionele teken reeks maskerings tekens die kunnen worden toegepast wanneer de claim wordt weer gegeven. Het telefoon nummer 324-232-4343 kan bijvoorbeeld worden gemaskeerd als XXX-XXX-4343. |
+| UserHelpText | 0:1 | Een beschrijving van het claim type waarmee gebruikers het doel kunnen begrijpen. De waarde kan worden [gelokaliseerd](localization.md). |
 | UserInputType | 0:1 | Het type invoer besturings element dat beschikbaar moet zijn voor de gebruiker bij het hand matig invoeren van de claim gegevens voor het claim type. Zie de gebruikers invoer typen die verderop op deze pagina zijn gedefinieerd. |
-| Beperking | 0:1 | De waarde-beperkingen voor deze claim, zoals een reguliere expressie (regex) of een lijst met acceptabele waarden. De waarde kan worden [](localization.md)gelokaliseerd. |
+| Beperking | 0:1 | De waarde-beperkingen voor deze claim, zoals een reguliere expressie (regex) of een lijst met acceptabele waarden. De waarde kan worden [gelokaliseerd](localization.md). |
 PredicateValidationReference| 0:1 | Een verwijzing naar een **PredicateValidationsInput** -element. Met de **PredicateValidationReference** -elementen kunt u een validatie proces uitvoeren om ervoor te zorgen dat alleen goed gevormde gegevens worden ingevoerd. Zie [predikaten](predicates.md)voor meer informatie. |
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
 De **DefaultPartnerClaimTypes** kan het volgende element bevatten:
 
-| Element | Gevallen | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Protocol | 0: n | Lijst met protocollen met de standaard type naam van de partner claim. |
 
 Het **protocol** element bevat de volgende kenmerken:
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
-| Name | Ja | De naam van een geldig protocol dat door Azure AD B2C wordt ondersteund. Mogelijke waarden zijn:  OAuth1, OAuth2, SAML2, OpenIdConnect. |
+| Name | Ja | De naam van een geldig protocol dat door Azure AD B2C wordt ondersteund. Mogelijke waarden zijn: OAuth1, OAuth2, SAML2, OpenIdConnect. |
 | PartnerClaimType | Ja | De claim type naam die moet worden gebruikt. |
 
-In het volgende voor beeld, wanneer het Framework van identiteits ervaring communiceert met een SAML2-ID-provider of relying party toepassing, wordt `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`de claim achternaam toegewezen aan, met OpenIdConnect en OAuth2 `family_name` , de claim wordt toegewezen aan .
+In het volgende voor beeld, wanneer het Framework voor identiteits ervaring communiceert met een SAML2-ID-provider of Relying Party toepassing, wordt de claim **Achternaam** toegewezen aan `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, met OpenIdConnect en OAuth2, de claim wordt toegewezen aan `family_name`.
 
 ```XML
 <ClaimType Id="surname">
@@ -88,7 +88,7 @@ In het volgende voor beeld, wanneer het Framework van identiteits ervaring commu
 </ClaimType>
 ```
 
-Als gevolg hiervan levert het JWT-token dat is uitgegeven door Azure AD B2C `family_name` , het in plaats van de naam van claim **type name.**
+Als gevolg hiervan verzendt het JWT-token dat is uitgegeven door Azure AD B2C, het `family_name` in plaats van de naam van de claim **type name.**
 
 ```JSON
 {
@@ -100,16 +100,16 @@ Als gevolg hiervan levert het JWT-token dat is uitgegeven door Azure AD B2C `fam
 }
 ```
 
-### <a name="mask"></a>Masker
+### <a name="mask"></a>Subnetmasker
 
 Het **masker** element bevat de volgende kenmerken:
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
-| `Type` | Ja | Het type van het claim masker. Mogelijke waarden: `Simple` of `Regex`. De `Simple` waarde geeft aan dat een eenvoudig tekst masker wordt toegepast op het voorste gedeelte van een teken reeks claim. De `Regex` waarde geeft aan dat een reguliere expressie wordt toegepast op de teken reeks claim als geheel.  Als de `Regex` waarde is opgegeven, moet er ook een optioneel kenmerk worden gedefinieerd met de reguliere expressie die moet worden gebruikt. |
+| `Type` | Ja | Het type van het claim masker. Mogelijke waarden: `Simple` of `Regex`. De waarde `Simple` geeft aan dat een eenvoudig tekst masker wordt toegepast op het voorste gedeelte van een teken reeks claim. De waarde `Regex` geeft aan dat een reguliere expressie wordt toegepast op de teken reeks claim als geheel.  Als de `Regex` waarde is opgegeven, moet er ook een optioneel kenmerk worden gedefinieerd met de reguliere expressie die moet worden gebruikt. |
 | `Regex` | Nee | Als **`Type`** is ingesteld op `Regex`, geeft u de reguliere expressie op die moet worden gebruikt.
 
-In het volgende voor beeld wordt een **phonenumber** -claim `Simple` met het masker geconfigureerd:
+In het volgende voor beeld wordt een **phonenumber** -claim met het `Simple` masker geconfigureerd:
 
 ```XML
 <ClaimType Id="PhoneNumber">
@@ -124,7 +124,7 @@ In het Framework voor identiteits ervaring wordt het telefoon nummer weer gegeve
 
 ![De telefoon nummer claim die in de browser wordt weer gegeven met de eerste zes cijfers, gemaskeerd door XS](./media/claimsschema/mask.png)
 
-In het volgende voor beeld wordt een **AlternateEmail** -claim `Regex` met het masker geconfigureerd:
+In het volgende voor beeld wordt een **AlternateEmail** -claim met het `Regex` masker geconfigureerd:
 
 ```XML
 <ClaimType Id="AlternateEmail">
@@ -144,13 +144,13 @@ In het Framework voor identiteits ervaring worden alleen de eerste letter van he
 
 Het **beperkings** element kan het volgende kenmerk bevatten:
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nee | De methode die wordt gebruikt voor het samen voegen van opsommings waarden met een claim type in een bovenliggend beleid met dezelfde id. Gebruik dit kenmerk wanneer u een claim overschrijft die is opgegeven in het basis beleid. Mogelijke waarden: `Append`, `Prepend`of `ReplaceAll`. De `Append` waarde is een verzameling gegevens die moet worden toegevoegd aan het einde van de verzameling die in het bovenliggende beleid is opgegeven. De `Prepend` waarde is een verzameling gegevens die moet worden toegevoegd vóór de verzameling die in het bovenliggende beleid is opgegeven. De `ReplaceAll` waarde is een verzameling gegevens die is opgegeven in het bovenliggende beleid en die moet worden genegeerd. |
 
 Het **beperkings** element bevat de volgende elementen:
 
-| Element | Gevallen | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Inventarisatie | 1: n | De beschik bare opties in de gebruikers interface waarmee de gebruiker een claim kan selecteren, zoals een waarde in een vervolg keuzelijst. |
 | Patroon | 1:1 | De reguliere expressie die moet worden gebruikt. |
@@ -159,13 +159,13 @@ Het **beperkings** element bevat de volgende elementen:
 
 Het **opsommings** element bevat de volgende kenmerken:
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
-| Text | Ja | De weergave teken reeks die wordt weer gegeven aan de gebruiker in de gebruikers interface voor deze optie. |
-|Value | Ja | De claim waarde die is gekoppeld aan het selecteren van deze optie. |
-| SelectByDefault | Nee | Hiermee wordt aangegeven of deze optie standaard moet worden geselecteerd in de gebruikers interface. Mogelijke waarden: Waar of ONWAAR. |
+| Tekst | Ja | De weergave teken reeks die wordt weer gegeven aan de gebruiker in de gebruikers interface voor deze optie. |
+|Waarde | Ja | De claim waarde die is gekoppeld aan het selecteren van deze optie. |
+| SelectByDefault | Nee | Hiermee wordt aangegeven of deze optie standaard moet worden geselecteerd in de gebruikers interface. Mogelijke waarden: True of false. |
 
-In het volgende voor beeld wordt een lijst claim voor een **plaats** keuzelijst geconfigureerd met een `New York`standaard waarde ingesteld op:
+In het volgende voor beeld wordt een lijst claim voor een **plaats** keuzelijst geconfigureerd met een standaard waarde ingesteld op `New York`:
 
 ```XML
 <ClaimType Id="city">
@@ -188,7 +188,7 @@ Lijst met vervolg steden met een standaard waarde ingesteld op New York:
 
 Het element **pattern** kan de volgende kenmerken bevatten:
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
 | RegularExpression | Ja | De reguliere expressie die de claims van dit type moet overeenkomen om geldig te zijn. |
 | HelpText | Nee | Het patroon of de reguliere expressie voor deze claim. |
@@ -218,7 +218,7 @@ In het Framework voor identiteits ervaring wordt de e-mailadres claim met invoer
 
 Azure AD B2C ondersteunt diverse invoer typen voor gebruikers, zoals een tekstvak, wacht woord en vervolg keuzelijst die kunnen worden gebruikt bij het hand matig invoeren van claim gegevens voor het claim type. U moet de **UserInputType** opgeven wanneer u gegevens van de gebruiker verzamelt met behulp van een [zelf-bevestigd technisch profiel](self-asserted-technical-profile.md).
 
-### <a name="textbox"></a>TextBox
+### <a name="textbox"></a>Tekstvak
 
 Het invoer type **tekstvak** wordt gebruikt om een tekstvak met één regel te maken.
 
@@ -354,9 +354,9 @@ Het invoer type **ReadOnly** wordt gebruikt om een veld met het kenmerk alleen-l
 ```
 
 
-### <a name="paragraph"></a>Alinea
+### <a name="paragraph"></a>Bepaalde
 
-Het invoer type **alinea** gebruiker wordt gebruikt om een veld op te geven waarin alleen tekst in een alinea code wordt weer gegeven. Bijvoorbeeld, &lt;p&gt;tekst&lt;/p.&gt;
+Het invoer type **alinea** gebruiker wordt gebruikt om een veld op te geven waarin alleen tekst in een alinea code wordt weer gegeven. Bijvoorbeeld &lt;p&gt;tekst&lt;/p&gt;.
 
 ![Claim type gebruiken met alinea](./media/claimsschema/paragraph.png)
 
@@ -368,11 +368,11 @@ Het invoer type **alinea** gebruiker wordt gebruikt om een veld op te geven waar
   <UserHelpText>A claim responsible for holding response messages to send to the relying party</UserHelpText>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>
 </ClaimType>
 ```
 
-Een van de opsommings waarden weer geven in een **responseMsg** claim, gebruik `GetMappedValueFromLocalizedCollection` of `CreateStringClaim` claim transformatie. Zie voor meer informatie [teken reeks claim](string-transformations.md) transformaties
+Als u een van de **opsommings** waarden in een claim voor een **responseMsg** wilt weer geven, gebruikt u `GetMappedValueFromLocalizedCollection` of `CreateStringClaim` claims trans formatie. Zie voor meer informatie [teken reeks claim transformaties](string-transformations.md)

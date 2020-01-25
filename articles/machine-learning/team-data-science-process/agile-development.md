@@ -2,20 +2,20 @@
 title: Flexibele ontwikkeling van wetenschappelijke gegevensprojecten - Team Data Science Process
 description: Een Data Science-project uitvoeren in een systematische, gecontroleerde versie en op samenwerkings wijze binnen een project team met behulp van het team data Science process.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 09c5962e62077fbecc9b327320d0bb5b88416ffa
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260691"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722098"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Flexibele ontwikkeling van wetenschappelijke gegevensprojecten
 
@@ -35,13 +35,13 @@ In de volgende afbeelding ziet u een typische werk stroom voor Sprint planning,-
 
 ##  <a name='Terminology-1'></a>Typen werk items
 
-In het TDSP Sprint planning Framework zijn vier veelgebruikte typen *werk items* : *Functies*, *gebruikers verhalen*, *taken*en *fouten*. De achterstand voor alle werk items is op project niveau, niet op het niveau van de Git-opslag plaats. 
+In het TDSP Sprint planning Framework zijn vier veelgebruikte typen *werk items* : *functies*, *gebruikers verhalen*, *taken*en *fouten*. De achterstand voor alle werk items is op project niveau, niet op het niveau van de Git-opslag plaats. 
 
 Hier vindt u de definities voor de typen werk items:
 
-- **Functie**: Een functie komt overeen met een project engagement. Verschillende afspraken met een client zijn verschillende functies en het is raadzaam om verschillende fasen van een project als verschillende functies te beschouwen. Als u een schema, zoals  *\<client naam > >-\<* naam van de klant, kiest voor het benoemen van uw functies, kunt u de context van het project en de betrokkenheid van de namen zelf herkennen.
+- **Functie**: een functie komt overeen met een project engagement. Verschillende afspraken met een client zijn verschillende functies en het is raadzaam om verschillende fasen van een project als verschillende functies te beschouwen. Als u een schema kiest als *\<client naam >-\<Verlovings >* om de namen van uw functies te benoemen, kunt u de context van het project en de afspraak gemakkelijk herkennen.
   
-- **Gebruikers hoofdtekst**: Gebruikers verhalen zijn werk items die nodig zijn om end-to-end een functie te volt ooien. Voor beelden van verhalen van gebruikers zijn:
+- **Gebruikers verhaal**: gebruikers verhalen zijn werk items die nodig zijn om end-to-end een functie te volt ooien. Voor beelden van verhalen van gebruikers zijn:
   - Gegevens ophalen 
   - Gegevens verkennen 
   - Functies genereren
@@ -49,11 +49,11 @@ Hier vindt u de definities voor de typen werk items:
   - Modellen operationeel maken 
   - Modellen opnieuw trainen
   
-- **Taak**: Taken zijn toegewezen werk items die moeten worden uitgevoerd om een specifiek gebruikers verhaal te volt ooien. Zo kunnen de taken in het artikel gegevens van de gebruiker worden *opgehaald* :
+- **Taak**: taken zijn toegewezen werk items die moeten worden uitgevoerd om een specifiek gebruikers verhaal te volt ooien. Zo kunnen de taken in het artikel gegevens van de gebruiker worden *opgehaald* :
   - SQL Server referenties ophalen
   - Gegevens uploaden naar SQL Data Warehouse
   
-- **Bug**: Bugs zijn problemen in bestaande code of documenten die moeten worden opgelost om een taak te volt ooien. Als fouten worden veroorzaakt door ontbrekende werk items, kunnen ze escaleren naar gebruikers verhalen of taken. 
+- **Bug**: bugs zijn problemen in bestaande code of documenten die moeten worden opgelost om een taak te volt ooien. Als fouten worden veroorzaakt door ontbrekende werk items, kunnen ze escaleren naar gebruikers verhalen of taken. 
 
 Gegevens wetenschappers kunnen meer vertrouwd zijn met een flexibel sjabloon waarmee functies, gebruikers verhalen en taken met TDSP levenscyclus fasen en subfaseën worden vervangen. Zie [een flexibele TDSP-werk sjabloon gebruiken](#set-up-agile-dsp-6)voor het maken van een flexibel afgeleide sjabloon die specifiek wordt uitgelijnd met de levenscyclus fase van de TDSP.
 
@@ -72,7 +72,7 @@ Zie [achterstallig artikelen toewijzen aan een sprint](/azure/devops/boards/spri
 
 Nadat u uw project-en project code opslagplaats hebt gemaakt, kunt u een functie toevoegen aan de achterstand om het werk voor uw project weer te geven.
 
-1. **Op de** pagina project selecteert u achterstanden voor **kaarten** > in de linkernavigatiebalk. 
+1. Selecteer op de pagina project de optie **kaarten** > **achterstand** in het linkernavigatievenster. 
    
 1. Als op het tabblad **achterstand** het type werk item in de bovenste balk de tekst **verhalen**, vervolg keuzelijst en selecteer **functies**. Selecteer vervolgens **nieuw werk item.**
    
@@ -86,7 +86,7 @@ Nadat u uw project-en project code opslagplaats hebt gemaakt, kunt u een functie
    
    U kunt de functie ook koppelen aan de Azure opslag plaatsen-code opslagplaats van het project door **koppeling toevoegen** te selecteren onder de sectie **ontwikkeling** . 
    
-   Nadat u klaar bent met het bewerken van de functie, selecteert u **opslaan & sluiten**.
+   Nadat u de functie hebt bewerkt, selecteert u **opslaan & sluiten**.
    
    ![Bewerk de functie en selecteer Opslaan & sluiten](./media/agile-development/3a-add-link-repo.png)
 
@@ -96,7 +96,7 @@ Onder deze functie kunt u gebruikers verhalen toevoegen om de belangrijkste stap
 
 Een nieuw gebruikers verhaal toevoegen aan een functie:
 
-1. Selecteer op het tabblad **achterstand** de **+** links van de functie. 
+1. Selecteer op het tabblad **achterstand** het **+** links van de functie. 
    
    ![Een nieuw gebruikers verhaal toevoegen onder de functie](./media/agile-development/4-sprint-add-story.png)
    
@@ -112,7 +112,7 @@ Een nieuw gebruikers verhaal toevoegen aan een functie:
 
 Taken zijn specifieke gedetailleerde stappen die nodig zijn om elk gebruikers verhaal te volt ooien. Nadat alle taken van een gebruikers verhaal zijn voltooid, moet het gebruikers verhaal ook worden voltooid. 
 
-Als u een taak aan een gebruikers hoofdtekst wilt toevoegen, **+** selecteert u de optie naast het artikel van de gebruiker en selecteert u **taak**. Vul de titel en andere informatie in de taak in.
+Als u een taak aan een gebruikers hoofdtekst wilt toevoegen, selecteert u de **+** naast het artikel van de gebruiker en selecteert u **taak**. Vul de titel en andere informatie in de taak in.
 
 ![Een taak toevoegen aan een gebruikers verhaal](./media/agile-development/7-sprint-add-task.png)
 
@@ -183,7 +183,7 @@ U kunt de data Science-proces sjabloon gebruiken voor het maken van TDSP-project
    
    ![Een TDSP-project maken](./media/agile-development/15-newproject.png)
    
-1. In het zojuist gemaakte project selecteert u achterstanden **boards** > **in de** linkernavigatiebalk.
+1. Selecteer in het zojuist gemaakte project de optie **boards** > **achterstand** in het linkernavigatievenster.
    
 1. Als u TDSP-projecten zichtbaar wilt maken, selecteert u het pictogram **team instellingen configureren** . Schakel in het scherm **instellingen** het selectie vakje **projecten TDSP** in en selecteer vervolgens **opslaan en sluiten**.
    
@@ -195,13 +195,13 @@ U kunt de data Science-proces sjabloon gebruiken voor het maken van TDSP-project
    
    ![Werk item van data Science project maken](./media/agile-development/17-dsworkitems0.png)
    
-1. Als u een werk item wilt toevoegen onder het TDSP-project **+** , selecteert u de naast het project en selecteert u vervolgens het type werk item dat u wilt maken. 
+1. Als u een werk item wilt toevoegen onder het TDSP-project, selecteert u de **+** naast het project en selecteert u vervolgens het type werk item dat u wilt maken. 
    
    ![Type gegevens wetenschappen werk item selecteren](./media/agile-development/17-dsworkitems1.png)
    
 1. Vul de details in het nieuwe werk item in en selecteer **opslaan & sluiten**.
    
-1. Ga door met het **+** selecteren van de symbolen naast werk items om nieuwe TDSP-fasen, subfases en taken toe te voegen. 
+1. Ga door met het selecteren van de **+** symbolen naast werk items om nieuwe TDSP-fasen, subfases en taken toe te voegen. 
    
 Hier volgt een voor beeld van hoe de werk items van het data Science-project moeten worden weer gegeven in de weer gave **achterstand** :
 

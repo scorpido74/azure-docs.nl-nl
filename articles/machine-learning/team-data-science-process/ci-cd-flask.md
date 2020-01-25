@@ -3,24 +3,24 @@ title: Een CI/CD-pijp lijn maken met Azure-pijp lijnen-team data Science process
 description: Maak een continue integratie en doorlopende leverings pijplijn voor toepassingen met kunst matige intelligentie (AI) met behulp van docker en Kubernetes.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: f07ce8e8834a2804b6a5b7668718c8e6bff00fa6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260670"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721826"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>CI/CD-pijp lijnen maken voor AI-apps met behulp van Azure-pijp lijnen, docker en Kubernetes
 
-Een AI-toepassing (kunst matige intelligentie) is toepassings code die is inge sloten met een model dat is getraind machine learning (ML). Er zijn altijd twee werk stromen voor een AI-toepassing: Data wetenschappers bouwen het ML-model en app-ontwikkel aars bouwen de app en geven ze bloot aan eind gebruikers. In dit artikel wordt beschreven hoe u een pijp lijn voor continue integratie en continue levering (CI/CD) implementeert voor een AI-toepassing waarmee het ML-model in de app-bron code wordt Inge sloten. De voorbeeld code en zelf studie gebruiken een eenvoudige python-kolf-webtoepassing en halen een vooraf getraind model op uit een persoonlijk Azure Blob-opslag account. U kunt ook een AWS S3-opslag account gebruiken.
+Een AI-toepassing (kunst matige intelligentie) is toepassings code die is inge sloten met een model dat is getraind machine learning (ML). Er zijn altijd twee werk stromen voor een AI-toepassing: gegevens wetenschappers bouwen het ML-model en app-ontwikkel aars bouwen de app en geven deze weer voor gebruik door eind gebruikers. In dit artikel wordt beschreven hoe u een pijp lijn voor continue integratie en continue levering (CI/CD) implementeert voor een AI-toepassing waarmee het ML-model in de app-bron code wordt Inge sloten. De voorbeeld code en zelf studie gebruiken een python-fles webtoepassing en halen een vooraf getraind model op uit een persoonlijk Azure Blob-opslag account. U kunt ook een AWS S3-opslag account gebruiken.
 
 > [!NOTE]
 > Het volgende proces is een van de verschillende manieren om CI/CD uit te voeren. Er zijn alternatieven voor dit hulp programma en de vereisten.

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: df8b65fcb4dd2b9622716052be2df59cbfa5424a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971821"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714518"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Gegevens importeren en exporteren in azure cache voor redis
 Import/export is een Azure cache voor redis-gegevens beheer bewerking, waarmee u gegevens kunt importeren in azure-cache voor redis of gegevens uit Azure-cache exporteren voor redis door het importeren en exporteren van een Azure-cache voor de redis-data base (RDB) van een Premium-cache naar een BLOB in een Azure Storage-account.
@@ -24,7 +24,7 @@ Met importeren/exporteren kunt u tussen verschillende Azure-caches migreren voor
 In dit artikel vindt u een hand leiding voor het importeren en exporteren van gegevens met Azure cache voor redis en vindt u de antwoorden op veelgestelde vragen.
 
 > [!IMPORTANT]
-> Import/export is in Preview en is alleen beschikbaar voor [Premium-laag](cache-premium-tier-intro.md) caches.
+> Import/export is alleen beschikbaar voor [Premium-laag](cache-premium-tier-intro.md) caches.
 >
 >
 
@@ -41,7 +41,7 @@ Importeren kan worden gebruikt om redis compatibele RDB-bestanden te halen van e
     ![Gegevens importeren](./media/cache-how-to-import-export-data/cache-import-data.png)
 2. Klik op **BLOB (s) kiezen** en selecteer het opslag account dat de gegevens bevat die u wilt importeren.
 
-    ![Opslagaccount kiezen](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
+    ![Opslag account kiezen](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
 3. Klik op de container die de gegevens bevat die u wilt importeren.
 
     ![Container kiezen](./media/cache-how-to-import-export-data/cache-import-choose-container.png)

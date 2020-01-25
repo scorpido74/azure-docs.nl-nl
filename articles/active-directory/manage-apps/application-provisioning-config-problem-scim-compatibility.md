@@ -16,12 +16,12 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eee480d4a52f77e054bf8f0780707444b6db28b0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c6da171db6535100342342571a5c1f6468abd0fc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275799"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712358"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekende problemen en oplossingen met SCIM 2,0-protocol compatibiliteit van de Azure AD User Provisioning Service
 
@@ -66,7 +66,7 @@ Ja. Als u dit exemplaar van de toepassing al gebruikt voor eenmalige aanmelding 
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
-   ![Taken ophalen](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Taken ophalen") 
+   ![Taken ophalen](media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Taken ophalen") 
 
 
 6. In de resultaten kopieert u de volledige ID-teken reeks die begint met ' customappsso ' of ' scim '.
@@ -74,7 +74,7 @@ Ja. Als u dit exemplaar van de toepassing al gebruikt voor eenmalige aanmelding 
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
-   ![Schema ophalen](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Schema ophalen") 
+   ![Schema ophalen](media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Schema ophalen") 
 
 8. Kopieer de JSON-uitvoer van de laatste stap en sla deze op in een tekst bestand. Dit bevat alle aangepaste kenmerk toewijzingen die u aan uw oude app hebt toegevoegd, en moet ongeveer een paar duizend regels JSON zijn.
 9. Voer de onderstaande opdracht uit om de inrichtings taak te verwijderen:

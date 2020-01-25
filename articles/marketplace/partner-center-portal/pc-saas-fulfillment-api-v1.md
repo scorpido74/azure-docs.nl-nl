@@ -9,26 +9,26 @@ ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
 ROBOTS: NOINDEX
-ms.openlocfilehash: 99dd6db7003e0358ddde2438f6897cd767932227
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f56e9b4f6c3db6fb47452c7478f5a27445955e87
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816571"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715382"
 ---
 # <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS-fulfillment-Api's versie 1 (afgeschaft)
 
 In dit artikel wordt uitgelegd hoe u een SaaS-aanbieding met Api's maakt. De Api's, bestaande uit REST methoden en eind punten, zijn nodig om abonnementen op uw SaaS-aanbieding toe te staan als u via Azure hebt gekozen voor verkopen.  
 
 > [!WARNING]
-> Deze eerste versie van de SaaS-fulfillment-API is afgeschaft. gebruik in plaats daarvan [SaaS fulfillment API v2](./pc-saas-fulfillment-api-v2.md).  Deze oorspronkelijke-versie van de API wordt momenteel alleen onderhouden voor bestaande uitgevers. 
+> Deze eerste versie van de SaaS-fulfillment-API is afgeschaft. gebruik in plaats daarvan [SaaS fulfillment API v2](./pc-saas-fulfillment-api-v2.md).  Deze eerste versie van de API wordt momenteel alleen onderhouden voor bestaande uitgevers. 
 
 De volgende Api's zijn bedoeld om u te helpen uw SaaS-service te integreren met Azure:
 
 -   Oplossen
--   Aanmelden
+-   Abonneer u nu
 -   Converteren
--   afmelden
+-   Afmelden
 
 
 ## <a name="api-methods-and-endpoints"></a>API-methoden en-eind punten
@@ -57,7 +57,7 @@ Wanneer een gebruiker wordt omgeleid naar de website van een ISV, bevat de URL e
 
 |  **Parameter naam** |     **Beschrijving**                                      |
 |  ------------------ |     ---------------------------------------------------- |
-|  API-versie        |  De versie van de bewerking die moet worden gebruikt voor deze aanvraag.   |
+|  api-version        |  De versie van de bewerking die moet worden gebruikt voor deze aanvraag.   |
 |  |  |
 
 
@@ -65,10 +65,10 @@ Wanneer een gebruiker wordt omgeleid naar de website van een ISV, bevat de URL e
 
 | **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                                                                                                                                                  |
 |--------------------|--------------|-----------------------------------------------------------|
-| x-MS-aanvraag-out     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.  |
+| x-ms-requestid     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.  |
 | x-MS-correlationid | Nee           | Een unieke teken reeks waarde voor de bewerking op de client. Dit veld verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers. |
-| inhouds type       | Ja          | `application/json`                                        |
-| autorisatie      | Ja          | Het JWT-Bearer-token (Web token).                    |
+| Inhouds type       | Ja          | `application/json`                                        |
+| authorization      | Ja          | Het JWT-Bearer-token (Web token).                    |
 | x-MS-Marketplace-token| Ja| De token query-para meter in de URL wanneer de gebruiker wordt omgeleid naar de website van SaaS ISV van Azure. **Opmerking:** Dit token is slechts één uur geldig. Daarnaast moet de URL de token waarde decoderen van de browser voordat u deze gebruikt.|
 |  |  |  |
   
@@ -109,37 +109,37 @@ Wanneer een gebruiker wordt omgeleid naar de website van een ISV, bevat de URL e
 
 | **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-aanvraag-out     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
+| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
 | x-MS-correlationid | Ja          | Correlatie-ID als door de client is door gegeven, anders is deze waarde de server correlatie-ID.                   |
-| x-MS-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Deze ID wordt gebruikt voor reconciliaties. |
+| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Deze ID wordt gebruikt voor reconciliaties. |
 | Opnieuw proberen na        | Nee           | Deze waarde wordt alleen ingesteld voor een 429-antwoord.                                                                   |
 |  |  |  |
 
 
-### <a name="subscribe"></a>Aanmelden
+### <a name="subscribe"></a>Abonneer u nu
 
 Met het abonnements eindpunt kunnen gebruikers een abonnement op een SaaS-service voor een bepaald plan starten en facturering in het commerce-systeem inschakelen.
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Parameter naam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
 | subscriptionId      | Unieke ID van het SaaS-abonnement dat is verkregen na het oplossen van het token via de API voor omzetten.                              |
-| API-versie         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
+| api-version         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
 |  |  |
 
 *Headers*
 
 |  **Header sleutel**        | **Vereist** |  **Beschrijving**                                                  |
 | ------------------     | ------------ | --------------------------------------------------------------------------------------- |
-| x-MS-aanvraag-out         |   Nee         | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als u deze niet opgeeft, wordt er een gegenereerd en geleverd in de antwoord headers. |
+| x-ms-requestid         |   Nee         | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als u deze niet opgeeft, wordt er een gegenereerd en geleverd in de antwoord headers. |
 | x-MS-correlationid     |   Nee         | Een unieke teken reeks waarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als u deze niet opgeeft, wordt er een gegenereerd en geleverd in de antwoord headers. |
 | If-match/If-None-Match |   Nee         |   ETag-waarde voor sterke validatie.                                                          |
-| inhouds type           |   Ja        |    `application/json`                                                                   |
-|  autorisatie         |   Ja        |    Het JWT-Bearer-token (Web token).                                               |
-| x-MS-Marketplace-sessie modus| Nee | Vlag waarmee de modus voor droge uitvoering wordt ingeschakeld wanneer u zich abonneert op een SaaS-aanbieding. Indien ingesteld, worden er geen kosten in rekening gebracht voor het abonnement. Dit is handig voor ISV-Test scenario's. Stel dit in op **dryrun**|
+| content-type           |   Ja        |    `application/json`                                                                   |
+|  authorization         |   Ja        |    Het JWT-Bearer-token (Web token).                                               |
+| x-ms-marketplace-session-mode| Nee | Vlag waarmee de modus voor droge uitvoering wordt ingeschakeld wanneer u zich abonneert op een SaaS-aanbieding. Indien ingesteld, worden er geen kosten in rekening gebracht voor het abonnement. Dit is handig voor ISV-Test scenario's. Stel dit in op **dryrun**|
 |  |  |  |
 
 *Hoofdtekst*
@@ -174,11 +174,11 @@ Voor een 202-antwoord moet u de status van de aanvraag bewerking opvolgen op de 
 
 | **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-aanvraag-out     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
+| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
 | x-MS-correlationid | Ja          | Correlatie-ID als door de client is door gegeven, anders is deze waarde de server correlatie-ID.                   |
-| x-MS-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Deze waarde wordt gebruikt voor reconciliaties. |
+| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Deze waarde wordt gebruikt voor reconciliaties. |
 | Opnieuw proberen na        | Ja          | Het interval waarmee de client de status kan controleren.                                                       |
-| Bewerkings locatie | Ja          | Koppeling naar een resource om de bewerkings status op te halen.                                                        |
+| Operation-Location | Ja          | Koppeling naar een resource om de bewerkings status op te halen.                                                        |
 |  |  |  |
 
 ### <a name="change-plan-endpoint"></a>Eind punt van abonnement wijzigen
@@ -187,23 +187,23 @@ Met het wijzigings eindpunt kan de gebruiker het abonnement dat op dat moment is
 
 **VERZENDEN**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Parameter naam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
 | subscriptionId      | ID van het SaaS-abonnement.                              |
-| API-versie         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
+| api-version         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
 |  |  |
 
 *Headers*
 
 | **Header sleutel**          | **Vereist** | **Beschrijving**                                                                                                                                                                                                                  |
 |-------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
-| x-MS-aanvraag-out          | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client. U wordt aangeraden een GUID in te stellen. Als u deze niet opgeeft, wordt er een gegenereerd en geleverd in de antwoord headers.   |
+| x-ms-requestid          | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client. U wordt aangeraden een GUID in te stellen. Als u deze niet opgeeft, wordt er een gegenereerd en geleverd in de antwoord headers.   |
 | x-MS-correlationid      | Nee           | Een unieke teken reeks waarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als u deze niet opgeeft, wordt er een gegenereerd en geleverd in de antwoord headers. |
 | If-match/If-None-Match | Nee           | ETag-waarde voor sterke validatie.                              |
-| inhouds type            | Ja          | `application/json`                                        |
-| autorisatie           | Ja          | Het JWT-Bearer-token (Web token).                    |
+| content-type            | Ja          | `application/json`                                        |
+| authorization           | Ja          | Het JWT-Bearer-token (Web token).                    |
 |  |  |  |
 
 *Hoofdtekst*
@@ -236,11 +236,11 @@ Met het wijzigings eindpunt kan de gebruiker het abonnement dat op dat moment is
 
 | **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-aanvraag-out     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
+| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
 | x-MS-correlationid | Ja          | Correlatie-ID als door de client is door gegeven, anders is deze waarde de server correlatie-ID.                   |
-| x-MS-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Deze waarde wordt gebruikt voor reconciliaties. |
+| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Deze waarde wordt gebruikt voor reconciliaties. |
 | Opnieuw proberen na        | Ja          | Het interval waarmee de client de status kan controleren.                                                       |
-| Bewerkings locatie | Ja          | Koppeling naar een resource om de bewerkings status op te halen.                                                        |
+| Operation-Location | Ja          | Koppeling naar een resource om de bewerkings status op te halen.                                                        |
 |  |  |  |
 
 ### <a name="delete-subscription"></a>Abonnement verwijderen
@@ -251,21 +251,21 @@ Met de actie verwijderen op het abonnements eindpunt kan een gebruiker een abonn
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Parameter naam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
 | subscriptionId      | ID van het SaaS-abonnement.                              |
-| API-versie         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
+| api-version         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
 |  |  |
 
 *Headers*
 
 | **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                                                                                                                                                  |
 |--------------------|--------------| ----------------------------------------------------------|
-| x-MS-aanvraag-out     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client. U wordt aangeraden een GUID in te stellen. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.                                                           |
+| x-ms-requestid     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client. U wordt aangeraden een GUID in te stellen. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.                                                           |
 | x-MS-correlationid | Nee           | Een unieke teken reeks waarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als u deze niet opgeeft, wordt er een gegenereerd en geleverd in de antwoord headers. |
-| autorisatie      | Ja          | Het JWT-Bearer-token (Web token).                    |
+| authorization      | Ja          | Het JWT-Bearer-token (Web token).                    |
 |  |  |  |
 
 *Antwoord codes*
@@ -286,14 +286,14 @@ Voor een 202-antwoord moet u de status van de aanvraag bewerking opvolgen op de 
 
 | **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-aanvraag-out     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
+| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
 | x-MS-correlationid | Ja          | Correlatie-ID als deze door de client is door gegeven, anders is dit de correlatie-ID van de server.                   |
-| x-MS-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties. |
+| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties. |
 | Opnieuw proberen na        | Ja          | Het interval waarmee de client de status kan controleren.                                                       |
-| Bewerkings locatie | Ja          | Koppeling naar een resource om de bewerkings status op te halen.                                                        |
+| Operation-Location | Ja          | Koppeling naar een resource om de bewerkings status op te halen.                                                        |
 |   |  |  |
 
-### <a name="get-operation-status"></a>Bewerkings status ophalen
+### <a name="get-operation-status"></a>Bewerkingsstatus ophalen
 
 Met dit eind punt kan de gebruiker de status van een geactiveerde async-bewerking (abonneren/afmelden/wijzigings plan) bijhouden.
 
@@ -301,21 +301,21 @@ Met dit eind punt kan de gebruiker de status van een geactiveerde async-bewerkin
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/ *{bewerkings-id}* ?api-version=2017-04-15**
 
 | **Parameter naam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
 | operationId         | De unieke ID voor de geactiveerde bewerking.                |
-| API-versie         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
+| api-version         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
 |  |  |
 
 *Headers*
 
 | **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                                                                                                                                                  |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
-| x-MS-aanvraag-out     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client. U wordt aangeraden een GUID in te stellen. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.   |
+| x-ms-requestid     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client. U wordt aangeraden een GUID in te stellen. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.   |
 | x-MS-correlationid | Nee           | Een unieke teken reeks waarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.  |
-| autorisatie      | Ja          | Het JWT-Bearer-token (Web token).                    |
+| authorization      | Ja          | Het JWT-Bearer-token (Web token).                    |
 |  |  |  | 
 
 *Antwoord tekst*
@@ -335,8 +335,8 @@ Met dit eind punt kan de gebruiker de status van een geactiveerde async-bewerkin
 | id                 | Tekenreeks        | De ID van de bewerking.                                                                      |
 | status             | Enum          | Bewerkings status, een van de volgende: `In Progress`, `Succeeded`of `Failed`.          |
 | resourceLocation   | Tekenreeks        | Koppeling naar het abonnement dat is gemaakt of gewijzigd. Zo kan de client bijgewerkte status post-bewerking ophalen. Deze waarde is niet ingesteld voor `Unsubscribe` bewerkingen. |
-| toegevoegd            | DateTime      | Aanmaak tijd van de bewerking in UTC.                                                           |
-| lastModified       | DateTime      | Laatste update voor de bewerking in UTC.                                                      |
+| toegevoegd            | Datum/tijd      | Aanmaak tijd van de bewerking in UTC.                                                           |
+| lastModified       | Datum/tijd      | Laatste update voor de bewerking in UTC.                                                      |
 |  |  |  |
 
 *Antwoord codes*
@@ -355,9 +355,9 @@ Met dit eind punt kan de gebruiker de status van een geactiveerde async-bewerkin
 
 | **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-aanvraag-out     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
+| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
 | x-MS-correlationid | Ja          | Correlatie-ID als deze door de client is door gegeven, anders is dit de correlatie-ID van de server.                   |
-| x-MS-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties. |
+| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties. |
 | Opnieuw proberen na        | Ja          | Het interval waarmee de client de status kan controleren.                                                       |
 |  |  |  |
 
@@ -369,21 +369,21 @@ Met het eind punt actie ophalen voor abonneren kan een gebruiker een abonnement 
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Parameter naam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
 | subscriptionId      | ID van het SaaS-abonnement.                              |
-| API-versie         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
+| api-version         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
 |  |  |
 
 *Headers*
 
 | **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                           |
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
-| x-MS-aanvraag-out     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.                                                           |
+| x-ms-requestid     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.                                                           |
 | x-MS-correlationid | Nee           | Een unieke teken reeks waarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers. |
-| autorisatie      | Ja          | Het JWT-Bearer-token (Web token).                                                                    |
+| authorization      | Ja          | Het JWT-Bearer-token (Web token).                                                                    |
 |  |  |  |
 
 *Antwoord tekst*
@@ -403,12 +403,12 @@ Met het eind punt actie ophalen voor abonneren kan een gebruiker een abonnement 
 | **Parameternaam**     | **Gegevenstype** | **Beschrijving**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | Tekenreeks        | ID van de SaaS-abonnements resource in Azure.    |
-| OfferId                | Tekenreeks        | De aanbiedings-ID waarop de gebruiker zich heeft geabonneerd.         |
+| offerId                | Tekenreeks        | De aanbiedings-ID waarop de gebruiker zich heeft geabonneerd.         |
 | planId                 | Tekenreeks        | De plan-ID waarop de gebruiker zich heeft geabonneerd.          |
 | saasSubscriptionName   | Tekenreeks        | De naam van het SaaS-abonnement.                |
-| saasSubscriptionStatus | Enum          | Bewerkings status.  Een van de volgende:  <br/> - `Subscribed`: abonnement is actief.  <br/> - `Pending`: de gebruiker heeft de resource gemaakt maar is niet geactiveerd door de ISV.   <br/> - `Unsubscribed`: de gebruiker heeft zich afgemeld.   <br/> - `Suspended`: de gebruiker heeft het abonnement onderbroken.   <br/> - `Deactivated`: het Azure-abonnement is onderbroken.  |
-| toegevoegd                | DateTime      | Time Stamp-waarde voor het maken van abonnementen in UTC. |
-| lastModified           | DateTime      | De time stamp-waarde voor het abonnement is gewijzigd in UTC. |
+| saasSubscriptionStatus | Enum          | Status van de bewerking.  Een van de volgende producten:  <br/> - `Subscribed`: abonnement is actief.  <br/> - `Pending`: de gebruiker heeft de resource gemaakt maar is niet geactiveerd door de ISV.   <br/> - `Unsubscribed`: de gebruiker heeft zich afgemeld.   <br/> - `Suspended`: de gebruiker heeft het abonnement onderbroken.   <br/> - `Deactivated`: het Azure-abonnement is onderbroken.  |
+| toegevoegd                | Datum/tijd      | Time Stamp-waarde voor het maken van abonnementen in UTC. |
+| lastModified           | Datum/tijd      | De time stamp-waarde voor het abonnement is gewijzigd in UTC. |
 |  |  |  |
 
 *Antwoord codes*
@@ -427,9 +427,9 @@ Met het eind punt actie ophalen voor abonneren kan een gebruiker een abonnement 
 
 | **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-aanvraag-out     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
+| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
 | x-MS-correlationid | Ja          | Correlatie-ID als deze door de client is door gegeven, anders is dit de correlatie-ID van de server.                   |
-| x-MS-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties. |
+| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties. |
 | Opnieuw proberen na        | Nee           | Het interval waarmee de client de status kan controleren.                                                       |
 | eTag               | Ja          | Koppeling naar een resource om de bewerkings status op te halen.                                                        |
 |  |  |  |
@@ -446,16 +446,16 @@ Met het eind punt actie ophalen voor abonnementen kan een gebruiker alle abonnem
 
 | **Parameter naam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
-| API-versie         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
+| api-version         | De versie van de bewerking die moet worden gebruikt voor deze aanvraag. |
 |  |  |
 
 *Headers*
 
 | **Header sleutel**     | **Vereist** | **Beschrijving**                                           |
 |--------------------|--------------|-----------------------------------------------------------|
-| x-MS-aanvraag-out     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client. U wordt aangeraden een GUID in te stellen. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.             |
+| x-ms-requestid     | Nee           | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client. U wordt aangeraden een GUID in te stellen. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers.             |
 | x-MS-correlationid | Nee           | Een unieke teken reeks waarde voor de bewerking op de client. Deze waarde is voor het correleren van alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers. |
-| autorisatie      | Ja          | Het JWT-Bearer-token (Web token).                    |
+| authorization      | Ja          | Het JWT-Bearer-token (Web token).                    |
 |  |  |  |
 
 *Antwoord tekst*
@@ -475,12 +475,12 @@ Met het eind punt actie ophalen voor abonnementen kan een gebruiker alle abonnem
 | **Parameternaam**     | **Gegevenstype** | **Beschrijving**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | Tekenreeks        | ID van SaaS-abonnements resource in azure    |
-| OfferId                | Tekenreeks        | De aanbiedings-ID waarop de gebruiker zich heeft geabonneerd         |
+| offerId                | Tekenreeks        | De aanbiedings-ID waarop de gebruiker zich heeft geabonneerd         |
 | planId                 | Tekenreeks        | Plan-ID waarop de gebruiker zich heeft geabonneerd          |
 | saasSubscriptionName   | Tekenreeks        | Naam van het SaaS-abonnement                |
-| saasSubscriptionStatus | Enum          | Bewerkings status.  Een van de volgende:  <br/> - `Subscribed`: abonnement is actief.  <br/> - `Pending`: de gebruiker heeft de resource gemaakt maar is niet geactiveerd door de ISV.   <br/> - `Unsubscribed`: de gebruiker heeft zich afgemeld.   <br/> - `Suspended`: de gebruiker heeft het abonnement onderbroken.   <br/> - `Deactivated`: het Azure-abonnement is onderbroken.  |
-| toegevoegd                | DateTime      | Time Stamp-waarde voor het maken van abonnementen in UTC |
-| lastModified           | DateTime      | Time Stamp-waarde gewijzigd in UTC |
+| saasSubscriptionStatus | Enum          | Status van de bewerking.  Een van de volgende producten:  <br/> - `Subscribed`: abonnement is actief.  <br/> - `Pending`: de gebruiker heeft de resource gemaakt maar is niet geactiveerd door de ISV.   <br/> - `Unsubscribed`: de gebruiker heeft zich afgemeld.   <br/> - `Suspended`: de gebruiker heeft het abonnement onderbroken.   <br/> - `Deactivated`: het Azure-abonnement is onderbroken.  |
+| toegevoegd                | Datum/tijd      | Time Stamp-waarde voor het maken van abonnementen in UTC |
+| lastModified           | Datum/tijd      | Time Stamp-waarde gewijzigd in UTC |
 |  |  |  |
 
 *Antwoord codes*
@@ -499,13 +499,13 @@ Met het eind punt actie ophalen voor abonnementen kan een gebruiker alle abonnem
 
 | **Header sleutel**     | **Vereist** | **Beschrijving**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-MS-aanvraag-out     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
+| x-ms-requestid     | Ja          | Aanvraag-ID die is ontvangen van de client.                                                                   |
 | x-MS-correlationid | Ja          | Correlatie-ID als deze door de client is door gegeven, anders is dit de correlatie-ID van de server.                   |
-| x-MS-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties. |
+| x-ms-activityid    | Ja          | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties. |
 | Opnieuw proberen na        | Nee           | Het interval waarmee de client de status kan controleren.                                                       |
 |  |  |  |
 
-### <a name="saas-webhook"></a>SaaS-webhook
+### <a name="saas-webhook"></a>SaaS Webhook
 
 Een SaaS-webhook wordt gebruikt voor het proactief op de hoogte brengen van wijzigingen aan de SaaS-service. Deze bericht-API wordt naar verwachting niet-geverifieerd en wordt aangeroepen door de micro soft-service. De SaaS-service wordt verwacht de operations API aan te roepen om te valideren en goed te keuren voordat actie wordt ondernomen voor de webhook-melding. 
 
@@ -525,9 +525,9 @@ Een SaaS-webhook wordt gebruikt voor het proactief op de hoogte brengen van wijz
 | **Parameternaam**     | **Gegevenstype** | **Beschrijving**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id  | Tekenreeks       | De unieke ID voor de geactiveerde bewerking.                |
-| ActivityId   | Tekenreeks        | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties.               |
+| activityId   | Tekenreeks        | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de service. Dit wordt gebruikt voor reconciliaties.               |
 | subscriptionId                     | Tekenreeks        | ID van de SaaS-abonnements resource in Azure.    |
-| OfferId                | Tekenreeks        | De aanbiedings-ID waarop de gebruiker zich heeft geabonneerd. Alleen gegeven bij de actie ' update '.        |
+| offerId                | Tekenreeks        | De aanbiedings-ID waarop de gebruiker zich heeft geabonneerd. Alleen gegeven bij de actie ' update '.        |
 | publisherId                | Tekenreeks        | Uitgevers-ID van de SaaS-aanbieding         |
 | planId                 | Tekenreeks        | De plan-ID waarop de gebruiker zich heeft geabonneerd. Alleen gegeven bij de actie ' update '.          |
 | action                 | Tekenreeks        | De actie waarmee deze melding wordt geactiveerd. Mogelijke waarden: activeren, verwijderen, onderbreken, opnieuw invoeren, bijwerken          |

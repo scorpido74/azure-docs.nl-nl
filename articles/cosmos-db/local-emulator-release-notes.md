@@ -3,15 +3,15 @@ title: Azure Cosmos-emulator downloaden en release-opmerkingen
 description: Down load de release opmerkingen voor de Azure Cosmos-emulator voor verschillende versies en down load gegevens.
 ms.service: cosmos-db
 ms.topic: tutorial
-author: markjbrown
-ms.author: mjbrown
+author: milismsft
+ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: e14ee617aca20fc18226651acfadab6ab2bdd939
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3878f6d01a2adfff2adc6a22aad20a5f83992b8d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445295"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719684"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-emulator-opmerkingen bij de release en informatie over downloaden
 
@@ -25,6 +25,10 @@ Dit artikel bevat de release opmerkingen voor de Azure Cosmos-emulator met een l
 |**Aan de slag**|[Lokaal ontwikkelen met Azure Cosmos-emulator](local-emulator.md)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
+
+### <a name="290"></a>2.9.0
+
+- Deze release voegt de optie toe om de consistentie in te stellen op consistent voor voegsel en verg root de maximum limieten voor gebruikers en machtigingen.
 
 ### <a name="272"></a>2.7.2
 

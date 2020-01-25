@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met behulp van Ja
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: a34efe20e796570358771ec53fbfb797daa15b93
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922002"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714790"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaars handleiding voor Azure Functions java script
 
@@ -232,7 +232,7 @@ U kunt ervoor kiezen om uitvoer binding gegevens te definiëren met behulp van d
 context.bindingData
 ```
 
-Retourneert een benoemd object dat trigger-meta gegevens en functie aanroepgegevens bevat (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Voor een voor beeld van meta gegevens van triggers raadpleegt u dit [voor beeld van Event hubs](functions-bindings-event-hubs.md#trigger---javascript-example).
+Retourneert een benoemd object dat trigger-meta gegevens en functie aanroepgegevens bevat (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Voor een voor beeld van meta gegevens van triggers raadpleegt u dit [voor beeld van Event hubs](functions-bindings-event-hubs.md#trigger).
 
 ### <a name="contextdone-method"></a>context. Done-methode
 

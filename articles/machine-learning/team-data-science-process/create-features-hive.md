@@ -1,22 +1,22 @@
 ---
-title: Functies maken voor gegevens in een Hadoop-cluster - Team Data Science Process
+title: 'Functies maken voor gegevens in een Azure HDInsight Hadoop cluster: team data Science process'
 description: Voorbeelden van Hive-query's die functies in de gegevens die zijn opgeslagen in een Azure HDInsight Hadoop-cluster genereren.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 979652a467ea91c05884d2f7a24781f82035e505
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982047"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721775"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Functies maken voor gegevens in een Hadoop-cluster met behulp van Hive-query 's
 Dit document wordt beschreven hoe u functies maken voor gegevens die zijn opgeslagen in een Azure HDInsight Hadoop-cluster met behulp van Hive-query's. Deze Hive-query's gebruikt ingesloten Hive User-Defined-functies (UDF's), de scripts die worden geleverd.
@@ -144,14 +144,14 @@ De standaardinstellingen voor de parameter van Hive-cluster is mogelijk niet ges
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
-    Deze parameter 4GB geheugen voor Java-heap ruimte toegewezen en maakt ook sorteren efficiënter door het toewijzen van meer geheugen voor deze. Er is een goed idee om af te spelen met deze toewijzingen als er een taak mislukt fouten met betrekking tot heap-ruimte.
+    Met deze para meter wordt er 4 GB geheugen toegewezen aan de opslag ruimte voor Java-heaps, en wordt het sorteren efficiënter door meer geheugen toe te wijzen. Er is een goed idee om af te spelen met deze toewijzingen als er een taak mislukt fouten met betrekking tot heap-ruimte.
 
 1. **DFS-blokgrootte**: met deze parameter stelt de kleinste gegevenseenheid die het bestandssysteem opslaat. Een voorbeeld: als de DFS-blokgrootte 128 MB, klikt u vervolgens alle gegevens van de grootte kleiner zijn dan en maximaal is 128 MB opgeslagen in één blok. Gegevens die groter is dan 128 MB extra blokken wordt toegewezen. 
 2. Het kiezen van een kleine blokgrootte zorgt ervoor dat grote overhead in Hadoop omdat het knooppunt met de naam voor het verwerken van veel meer aanvragen naar de desbetreffende blok met betrekking tot het bestand vinden. Een aanbevolen instelling wanneer betrekking tot gigabytes (of hoger) gegevens zijn:
 
         set dfs.block.size=128m;
 
-2. **Join-bewerking in Hive optimaliseren**: terwijl join-bewerkingen in het kader voor toewijzen/verminderen doorgaans in de verminderen fase soms plaatsvinden enorme winsten kunnen worden bereikt door het plannen van joins in de fase van de kaart (ook wel 'mapjoins' genoemd). Om de Hive om dit te doen waar mogelijk, instellen:
+2. **Join-bewerking in Hive optimaliseren**: terwijl join-bewerkingen in het kader voor toewijzen/verminderen doorgaans in de verminderen fase soms plaatsvinden enorme winsten kunnen worden bereikt door het plannen van joins in de fase van de kaart (ook wel 'mapjoins' genoemd). Stel deze optie in:
    
        set hive.auto.convert.join=true;
 
@@ -167,7 +167,7 @@ De standaardinstellingen voor de parameter van Hive-cluster is mogelijk niet ges
 
      Zoals we kunt zien, krijgt de gegevensgrootte afstemmen van deze parameters door "instelling" ze kunnen we om af te stemmen van het aantal mappers gebruikt.
 
-4. Hier volgen enkele andere meer **geavanceerde opties** voor Hive-prestaties optimaliseren. Dit kunnen u instellen van het geheugen toegewezen als u wilt toewijzen en het aantal taken te verkleinen en kunnen nuttig zijn bij het afstemmen van prestaties. Houd er rekening mee dat de *mapreduce.reduce.memory.mb* mag niet groter zijn dan de fysieke geheugengrootte van elk werkrolknooppunt in het Hadoop-cluster.
+4. Hier volgen enkele andere meer **geavanceerde opties** voor Hive-prestaties optimaliseren. Met deze opties kunt u het toegewezen geheugen instellen om taken te koppelen en te verminderen. Dit kan nuttig zijn bij het verfijnen van de prestaties. Houd er rekening mee dat de *mapreduce.reduce.memory.mb* mag niet groter zijn dan de fysieke geheugengrootte van elk werkrolknooppunt in het Hadoop-cluster.
    
         set mapreduce.map.memory.mb = 2048;
         set mapreduce.reduce.memory.mb=6144;

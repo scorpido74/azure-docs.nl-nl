@@ -2,20 +2,20 @@
 title: Implementeren van modellen in productie - Team Data Science Process
 description: Klik hier voor meer informatie over het implementeren van modellen voor productie, zodat ze een actieve rol bij het maken van zakelijke beslissingen te nemen.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ed48ab9f85d28bec926120fea87a5ccf8bb6f9af
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75526767"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722234"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Modellen implementeren naar productie om af te spelen een actieve rol bij het maken van zakelijke beslissingen te nemen
 
@@ -39,7 +39,7 @@ Er zijn verschillende benaderingen en platforms modellen in productie te plaatse
 
 ## <a name="ab-testing"></a>A/B-testen
 
-Als meerdere modellen in productie, kan het nuttig zijn om uit te voeren [A / B-tests](https://en.wikipedia.org/wiki/A/B_testing) kunnen de prestaties van de modellen. 
+Wanneer er meerdere modellen in productie zijn, kan [een/B-test](https://en.wikipedia.org/wiki/A/B_testing) worden gebruikt om de prestaties van het model te vergelijken. 
  
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: f5fa39e07eba6bdf24d96e72c9229e215ff6730b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9fd1e72568b4f0c8813a5d050ce7fa7214ca7cd9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772037"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722438"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnose van Standard Load Balancer met metrische gegevens, meldingen en status van resources
 
@@ -27,7 +27,7 @@ Azure Standard Load Balancer maakt de volgende diagnostische mogelijkheden besch
 
 * **Resource status**: de Load Balancer pagina in de Azure Portal en de resource Health pagina (onder monitor) geven de sectie Resource Health voor Standard Load Balancer zichtbaar. 
 
-Dit artikel bevat een korte rond leiding door deze mogelijkheden en biedt manieren om ze te gebruiken voor Standard Load Balancer.
+Dit artikel bevat een korte rond leiding door deze mogelijkheden en biedt manieren om ze te gebruiken voor Standard Load Balancer. 
 
 ## <a name = "MultiDimensionalMetrics"></a>Multi-dimensionale metrische gegevens
 
@@ -41,7 +41,7 @@ De verschillende Standard Load Balancer configuraties bieden de volgende metrisc
 | Health probe status (DIP-Beschik baarheid) | Open bare en interne load balancer | Standard Load Balancer maakt gebruik van een gedistribueerde status-probing-service die de status van uw toepassings eindpunt bewaakt volgens de configuratie-instellingen. Deze metriek levert een gefilterde weer gave van een aggregatie of per eind punt van elk eind punt van de instantie in de load balancer groep. U kunt zien hoe Load Balancer de status van uw toepassing weergeeft, zoals wordt aangegeven door de configuratie van uw Health probe. |  Average |
 | SYN-pakketten (synchroniseren) | Open bare en interne load balancer | Standard Load Balancer beëindigt Transmission Control Protocol (TCP)-verbindingen of communiceert niet met TCP-of UDP-pakket stromen. Stromen en hun hand shakes zijn altijd tussen de bron-en de VM-instantie. Voor een betere probleem oplossing van uw TCP-protocol scenario's kunt u de tellers van SYN-pakketten gebruiken om te begrijpen hoeveel TCP-verbindings pogingen er worden gedaan. De metriek rapporteert het aantal TCP SYN-pakketten dat is ontvangen.| Average |
 | SNAT-verbindingen | Open bare load balancer |Standard Load Balancer rapporteert het aantal uitgaande stromen dat is gemaskerd voor de front-end van het open bare IP-adres. De bron Network Address Translation SNAT-poorten zijn een exhaustible-bron. Met deze metriek kan worden aangegeven hoe sterk uw toepassing vertrouwt op SNAT voor uitgaande stroom stromen. Tellers voor geslaagde en mislukte uitgaande SNAT-stromen worden gerapporteerd en kunnen worden gebruikt om problemen op te lossen en de status van uw uitgaande stromen te begrijpen.| Average |
-| Byte tellers |  Open bare en interne load balancer | Standard Load Balancer rapporteert de verwerkte gegevens per front-end.| Average |
+| Byte tellers |  Open bare en interne load balancer | Standard Load Balancer rapporteert de verwerkte gegevens per front-end. U ziet dat de bytes niet gelijkmatig over de back-end-instanties worden gedistribueerd. Dit wordt verwacht omdat het Load Balancer-algoritme van Azure is gebaseerd op stromen | Average |
 | Pakket items |  Open bare en interne load balancer | Standard Load Balancer rapporteert de verwerkte pakketten per front-end.| Average |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Uw load balancer metrische gegevens weer geven in de Azure Portal
@@ -61,7 +61,7 @@ De metrische gegevens voor uw Standard Load Balancer resources weer geven:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Via Api's multi-dimensionale metrieken ophalen
 
-Zie [Azure Monitoring rest API-overzicht](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api)voor API-richt lijnen voor het ophalen van multi-dimensionale metrische definities en waarden.
+Zie [Azure Monitoring rest API-overzicht](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api)voor API-richt lijnen voor het ophalen van multi-dimensionale metrische definities en waarden. Deze metrische gegevens kunnen worden geschreven naar een opslag account met behulp van de optie ' alle metrische gegevens '. 
 
 ### <a name = "DiagnosticScenarios"></a>Veelvoorkomende diagnostische scenario's en aanbevolen weer gaven
 

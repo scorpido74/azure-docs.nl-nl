@@ -1,376 +1,956 @@
 ---
 title: Azure Functions op Linux maken met behulp van een aangepaste installatie kopie
 description: Informatie over het maken van Azure Functions uitgevoerd op een aangepaste installatiekopie van Linux.
-ms.date: 09/27/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: e70edac09c8b2d61c148c9ba0fd04ec231e9a965
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+zone_pivot_groups: programming-languages-set-functions01
+ms.openlocfilehash: 67d9ff3d4a69ed12d1fd023085eb33a68d02d37b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769316"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711064"
 ---
-# <a name="create-a-function-on-linux-using-a-custom-image"></a>Een functie in Linux maken met behulp van een aangepaste installatie kopie
+# <a name="create-a-function-on-linux-using-a-custom-container"></a>Een functie in Linux maken met behulp van een aangepaste container
 
-Met Azure Functions kunt u uw functies voor Linux hosten in uw eigen aangepaste container. U kunt ze ook [hosten op een standaard-Azure App Service-container](functions-create-first-azure-function-azure-cli-linux.md). Deze functionaliteit vereist [de functies 2. x runtime](functions-versions.md).
+In deze zelf studie maakt en implementeert u Python-code om Azure Functions als een aangepaste docker-container met behulp van een Linux-basis installatie kopie. Normaal gesp roken gebruikt u een aangepaste installatie kopie wanneer uw functies een specifieke taal versie vereisen of een specifieke afhankelijkheid of configuratie hebben die niet wordt opgegeven door de ingebouwde installatie kopie.
 
-In deze zelfstudie leert u hoe u uw functies in Azure implementeert als een aangepaste Docker-installatiekopie. Dit patroon is handig wanneer u de ingebouwde container installatie kopie moet aanpassen. U kunt een aangepaste installatiekopie gebruiken wanneer uw functies een specifieke taalversie nodig hebben of een specifieke afhankelijkheid of configuratie vereisen die niet binnen de ingebouwde installatiekopie aanwezig is. Ondersteunde basis installatie kopieën voor Azure Functions vindt u in de [Azure functions basis installatie kopieën opslag plaats](https://hub.docker.com/_/microsoft-azure-functions-base). 
-
-In deze zelfstudie leert u hoe u Azure Functions Core Tools gebruikt om een functie te maken in een aangepaste Linux-installatiekopie. U publiceert deze installatiekopie naar een functie-app in Azure, die is gemaakt met de Azure CLI. Later werkt u de functie bij om verbinding te maken met Azure Queue-opslag.
+U kunt ook een standaard Azure App Service-container gebruiken zoals wordt beschreven in [uw eerste functie maken die wordt gehost op Linux](functions-create-first-azure-function-azure-cli-linux.md). Ondersteunde basis installatie kopieën voor Azure Functions vindt u in de [Azure functions basis installatie kopieën opslag plaats](https://hub.docker.com/_/microsoft-azure-functions-base).
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een functie-app en Dockerfile maken met behulp van Core Tools.
+> * Maak een functie-app en Dockerfile met behulp van de Azure Functions Core Tools.
 > * Een aangepaste installatiekopie met behulp van Docker bouwen.
 > * Een aangepaste installatiekopie naar een containerregister publiceren.
-> * Een Azure Storage-account maken.
-> * Een Premium-hosting plan maken.
+> * Ondersteunende resources in azure maken voor de functie-app
 > * Een functie-app vanuit Docker Hub implementeren.
 > * Toepassingsinstellingen toevoegen aan de functie-app.
 > * Continue implementatie inschakelen.
 > * Schakel SSH-verbindingen met de container in.
 > * Voeg een uitvoer binding voor de wachtrij opslag toe. 
 
-De volgende stappen worden ondersteund op een Mac-, Windows- of Linux-computer. 
+U kunt deze zelf studie volgen op elke computer waarop Windows, Mac OS of Linux wordt uitgevoerd. Als u de zelf studie voltooit, worden er kosten in rekening gebracht voor een of meer Amerikaanse dollars in uw Azure-account.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u dit voorbeeld kunt uitvoeren moet u ervoor zorgen dat u het volgende hebt:
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- De [Azure functions core tools](./functions-run-local.md#v2) versie 2.7.1846 of hoger
+- De [Azure cli](/cli/azure/install-azure-cli) -versie 2.0.77 of hoger
+- De [Azure functions 2. x runtime](functions-versions.md)
+- De volgende language runtime-onderdelen:
+    ::: zone pivot="programming-language-csharp"
+    - [.NET Core 2.2. x of hoger](https://dotnet.microsoft.com/download)
+    ::: zone-end
+    ::: zone pivot="programming-language-javascript"
+    - [Node.js](https://nodejs.org/en/download/)
+    ::: zone-end
+    ::: zone pivot="programming-language-powershell"
+    - [PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)
+    ::: zone-end
+    ::: zone pivot="programming-language-python"
+    - [Python 3,6-64 bits](https://www.python.org/downloads/release/python-3610/) of [Python 3,7-64-bits](https://www.python.org/downloads/release/python-376/)
+    ::: zone-end
+    ::: zone pivot="programming-language-typescript"
+    - [Node.js](https://nodejs.org/en/download/)
+    - [TypeScript](http://www.typescriptlang.org/#download-links)
+    ::: zone-end
+- [Docker](https://docs.docker.com/install/)
+- Een [docker-id](https://hub.docker.com/signup)
 
-* Installeer [Azure Core Tools versie 2.x](functions-run-local.md#v2).
+### <a name="prerequisite-check"></a>Controle van vereisten
 
-* Installeer de [Azure CLI]( /cli/azure/install-azure-cli). In dit artikel is Azure CLI versie 2.0 of hoger vereist. Voer `az --version` uit om te zien welke versie u hebt.  
-U kunt ook de [Azure Cloud Shell](https://shell.azure.com/bash) gebruiken.
+1. Voer `func --version` in een Terminal-of opdracht venster uit om te controleren of de Azure Functions Core Tools versie 2.7.1846 of hoger is.
+1. Voer `az --version` uit om te controleren of de versie van de Azure CLI 2.0.76 of hoger is.
+1. Voer `az login` uit om u aan te melden bij Azure en een actief abonnement te verifiëren.
+1. Voer `docker login` uit om u aan te melden bij docker. Deze opdracht mislukt als docker niet wordt uitgevoerd. in dat geval wordt docker gestart en voert de opdracht opnieuw uit.
 
-* Een actief Azure-abonnement.
+## <a name="create-and-test-the-local-functions-project"></a>Het project met lokale functies maken en testen
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+1. Maak in een Terminal-of opdracht prompt een map voor deze zelf studie op een geschikte locatie en navigeer vervolgens naar die map.
 
-[!INCLUDE [functions-cloud-shell-note](../../includes/functions-cloud-shell-note.md)]
+1. Volg de instructies voor het [maken en activeren van een virtuele omgeving](functions-create-first-function-python.md#create-and-activate-a-virtual-environment) om een virtuele omgeving te maken voor gebruik met deze zelf studie.
 
-## <a name="create-the-local-project"></a>Het lokale project maken
+1. Voer de volgende opdracht uit voor de taal die u hebt gekozen om een functie-app-project te maken in een map met de naam `LocalFunctionsProject`. Met de optie `--docker` wordt een `Dockerfile` voor het project gegenereerd, waarmee een geschikte aangepaste container wordt gedefinieerd voor gebruik met Azure Functions en de geselecteerde runtime.
 
-Voer de volgende opdracht uit vanaf de opdrachtregel om een functie-app-project te maken in de map `MyFunctionProj` van de huidige lokale map. Voor een python-project [moet u in een virtuele omgeving worden uitgevoerd](functions-create-first-function-python.md#create-and-activate-a-virtual-environment).
+    ::: zone pivot="programming-language-csharp"
+    ```
+    func init LocalFunctionsProject --worker-runtime dotnet --docker
+    ```
+    ::: zone-end
 
-```bash
-func init MyFunctionProj --docker
-```
+    ::: zone pivot="programming-language-javascript"
+    ```
+    func init LocalFunctionsProject --worker-runtime node --language javascript --docker
+    ```
+    ::: zone-end
 
-Wanneer u de optie `--docker` opneemt, wordt een dockerfile voor het project gegenereerd. Dit bestand wordt gebruikt voor het maken van een aangepaste container waarin het project wordt uitgevoerd. De basisinstallatiekopie die wordt gebruikt, is afhankelijk van de gekozen taal voor de runtime van de werkrol.  
+    ::: zone pivot="programming-language-powershell"
+    ```
+    func init LocalFunctionsProject --worker-runtime powershell --docker
+    ```
+    ::: zone-end
 
-Wanneer u hierom wordt gevraagd, kiest u een runtime voor de werkrol uit de volgende talen:
+    ::: zone pivot="programming-language-python"
+    ```
+    func init LocalFunctionsProject --worker-runtime python --docker
+    ```
+    ::: zone-end
 
-* `dotnet`: Hiermee maakt u een .NET core Class Library-project (. csproj).
-* `node`: hiermee maakt u een JavaScript-project.
-* `python`: hiermee maakt u een Python-project.  
+    ::: zone pivot="programming-language-typescript"
+    ```
+    func init LocalFunctionsProject --worker-runtime node --language typescript --docker
+    ```
+    ::: zone-end
+    
+1. Navigeer naar de projectmap:
 
-Gebruik de volgende opdracht om naar de nieuwe projectmap `MyFunctionProj` te navigeren.
+    ```
+    cd LocalFunctionsProject
+    ```
+    
+1. Voeg een functie toe aan uw project met behulp van de volgende opdracht, waarbij het argument `--name` de unieke naam van de functie is en het argument `--template` de trigger van de functie specificeert. `func new` een submap te maken die overeenkomt met de naam van de functie die geschikt is voor de gekozen taal van het project en een configuratie bestand met de naam *Function. json*.
 
-```bash
-cd MyFunctionProj
-```
+    ```
+    func new --name HttpExample --template "HTTP trigger"
+    ```
 
-[!INCLUDE [functions-create-function-core-tools](../../includes/functions-create-function-core-tools.md)]
+1. Als u de functie lokaal wilt testen, start u de lokale Azure Functions runtime host in de map *LocalFunctionsProject* :
+   
+    ::: zone pivot="programming-language-csharp"
+    ```
+    func start --build
+    ```
+    ::: zone-end
 
-[!INCLUDE [functions-run-function-test-local](../../includes/functions-run-function-test-local.md)]
+    ::: zone pivot="programming-language-javascript"
+    ```
+    func start
+    ```
+    ::: zone-end
 
-## <a name="build-from-the-docker-file"></a>Bouwen vanuit het docker-bestand
+    ::: zone pivot="programming-language-powershell"
+    ```
+    func start
+    ```
+    ::: zone-end
 
-Bekijk de _Dockerfile_ in de hoofdmap van het project. Dit bestand beschrijft de omgeving die vereist is om de functie-app uit te voeren in Linux. Het volgende voorbeeld is een Dockerfile dat een container maakt die een functie-app uitvoert in runtime van de werkrol voor JavaScript (Node.js): 
+    ::: zone pivot="programming-language-python"
+    ```
+    func start
+    ```
+    ::: zone-end    
 
-```Dockerfile
-FROM mcr.microsoft.com/azure-functions/node:2.0
+    ::: zone pivot="programming-language-typescript"
+    ```
+    npm install
+    ```
 
-ENV AzureWebJobsScriptRoot=/home/site/wwwroot
-COPY . /home/site/wwwroot
-```
+    ```
+    npm start
+    ```
+    ::: zone-end
 
-> [!NOTE]
-> U vindt de volledige lijst met ondersteunde basis installatie kopieën voor Azure Functions op de [pagina basis installatie kopie van Azure functions](https://hub.docker.com/_/microsoft-azure-functions-base).
+1. Zodra het `HttpExample`-eind punt wordt weer gegeven in de uitvoer, gaat u naar `http://localhost:7071/api/HttpExample?name=Functions`. In de browser moet een bericht als ' Hello, functions ' worden weer gegeven (wat iets anders is afhankelijk van de gekozen programmeer taal).
 
-### <a name="run-the-build-command"></a>De opdracht `build` uitvoeren
+1. Gebruik **Ctrl**-**C** om de host te stoppen.
 
-Voer in de hoofdmap de opdracht [docker build](https://docs.docker.com/engine/reference/commandline/build/) uit en geef vervolgens een naam, `mydockerimage` en een tag, `v1.0.0`, op. Vervang `<docker-id>` door de ID van uw Docker Hub-account. Met deze opdracht wordt de Docker-installatiekopie voor de container gebouwd.
+## <a name="build-the-container-image-and-test-locally"></a>De container installatie kopie bouwen en lokaal testen
 
-```bash
-docker build --tag <docker-id>/mydockerimage:v1.0.0 .
-```
+1. Beschrijving Bekijk de * Dockerfile in de map *LocalFunctionsProj* . De Dockerfile beschrijft de vereiste omgeving voor het uitvoeren van de functie-app in Linux: 
 
-Wanneer de opdracht is voltooid, kunt u de nieuwe container lokaal uitvoeren.
+    ::: zone pivot="programming-language-csharp"
+    ```Dockerfile
+    FROM microsoft/dotnet:2.2-sdk AS installer-env
 
-### <a name="run-the-image-locally"></a>De installatie kopie lokaal uitvoeren
-Controleer of de installatiekopie die u hebt gebouwd werkt door de Docker-installatiekopie uit te voeren in een lokale container. Geef de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) en geef de naam en het label van de installatiekopie door. Zorg ervoor dat u de poorten opgeeft met behulp van het argument `-p`.
+    COPY . /src/dotnet-function-app
+    RUN cd /src/dotnet-function-app && \
+        mkdir -p /home/site/wwwroot && \
+        dotnet publish *.csproj --output /home/site/wwwroot
+    
+    # To enable ssh & remote debugging on app service change the base image to the one below
+    # FROM mcr.microsoft.com/azure-functions/dotnet:2.0-appservice 
+    FROM mcr.microsoft.com/azure-functions/dotnet:2.0
+    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+    
+    COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
+    ```
+    ::: zone-end
 
-```bash
-docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
-```
+    ::: zone pivot="programming-language-javascript"
+    ```Dockerfile
+    # To enable ssh & remote debugging on app service change the base image to the one below
+    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
+    FROM mcr.microsoft.com/azure-functions/node:2.0
+    
+    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+    
+    COPY . /home/site/wwwroot
+    
+    RUN cd /home/site/wwwroot && \
+    npm install    
+    ```
+    ::: zone-end
 
-Met de aangepaste installatiekopie die wordt uitgevoerd in een lokale Docker-container controleert u of de functie-app en container goed werken door te bladeren naar <http://localhost:8080>.
+    ::: zone pivot="programming-language-powershell"
+    ```Dockerfile
+    # To enable ssh & remote debugging on app service change the base image to the one below
+    # FROM mcr.microsoft.com/azure-functions/powershell:2.0-appservice
+    FROM mcr.microsoft.com/azure-functions/powershell:2.0
+    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+    
+    COPY . /home/site/wwwroot    
+    ```
+    ::: zone-end
 
-![Voer de functie-app lokaal uit.](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
+    ::: zone pivot="programming-language-python"
+    ```Dockerfile
+    # To enable ssh & remote debugging on app service change the base image to the one below
+    # FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7-appservice
+    FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7
+    
+    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+    
+    COPY requirements.txt /
+    RUN pip install -r /requirements.txt
+    
+    COPY . /home/site/wwwroot    
+    ```
+    ::: zone-end
 
-> [!NOTE]
-> Wanneer u op dit moment probeert om uw specifieke HTTP-functie aan te roepen, ontvangt u een HTTP 401-fout melding. Dit komt doordat de functie in de lokale container wordt uitgevoerd zoals in azure, wat betekent dat de functie sleutel vereist is. Omdat de container nog niet is gepubliceerd naar een functie-app, is er geen functie sleutel beschikbaar. U ziet later dat wanneer u de basis Hulpprogramma's gebruikt voor het publiceren van uw container, de functie toetsen worden weer gegeven. Als u de functie die wordt uitgevoerd in de lokale container wilt testen, kunt u de [autorisatie sleutel](functions-bindings-http-webhook.md#authorization-keys) wijzigen in `anonymous`. 
+    ::: zone pivot="programming-language-typescript"
+    ```Dockerfile
+    # To enable ssh & remote debugging on app service change the base image to the one below
+    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
+    FROM mcr.microsoft.com/azure-functions/node:2.0
+    
+    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+    
+    COPY . /home/site/wwwroot
+    
+    RUN cd /home/site/wwwroot && \
+    npm install    
+    ```
+    ::: zone-end
 
-Nadat u de functie-app in de container hebt geverifieerd, stopt u de uitvoering. U kunt nu de aangepaste installatiekopie naar uw Docker Hub-account pushen.
+    > [!NOTE]
+    > U vindt de volledige lijst met ondersteunde basis installatie kopieën voor Azure Functions op de [pagina basis installatie kopie van Azure functions](https://hub.docker.com/_/microsoft-azure-functions-base).
+    
+1. Voer in de map *LocalFunctionsProject* de opdracht [docker build](https://docs.docker.com/engine/reference/commandline/build/) uit en geef een naam, `azurefunctionsimage`en label op `v1.0.0`. Vervang `<docker_id>` door de ID van uw Docker Hub-account. Met deze opdracht wordt de Docker-installatiekopie voor de container gebouwd.
 
-## <a name="push-to-docker-hub"></a>Pushen naar docker hub
+    ```
+    docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
+    ```
+    
+    Wanneer de opdracht is voltooid, kunt u de nieuwe container lokaal uitvoeren.
+    
+1. Als u de build wilt testen, voert u de installatie kopie in een lokale container met behulp van de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) uit, vervangt u opnieuw `<docker_id>` met uw DOCKER-id en voegt u het argument poorten toe, `-p 8080:80`:
 
-Een REGI ster is een toepassing die afbeeldingen host en installatie kopie-en container Services biedt. Om uw installatiekopie te delen, moet u deze naar een register pushen. Docker Hub is een register voor Docker-installatiekopieën waarmee u uw eigen openbare of particuliere opslagplaatsen kunt hosten.
+    ```
+    docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
+    ```
+    
+1. Zodra de installatie kopie in een lokale container wordt uitgevoerd, opent u een browser om te `http://localhost:8080`, waarin de tijdelijke aanduiding voor de afbeelding moet worden weer gegeven. De afbeelding wordt op dit moment weer gegeven omdat uw functie wordt uitgevoerd in de lokale container, zoals in azure, wat betekent dat deze wordt beveiligd door een toegangs sleutel zoals gedefinieerd in *Function. json* met de eigenschap `"authLevel": "function"`. De container is nog niet gepubliceerd naar een functie-app in azure, maar de sleutel is nog niet beschikbaar. Als u lokaal wilt testen, sluit u docker, wijzigt u de autorisatie-eigenschap op `"authLevel": "anonymous"`, bouwt u de installatie kopie opnieuw en start u docker opnieuw op. Stel `"authLevel": "function"` in *Function. json*opnieuw in. Zie [autorisatie sleutels](functions-bindings-http-webhook.md#authorization-keys)voor meer informatie.
 
-Voordat u een installatiekopie kunt pushen, moet u zich aanmelden bij Docker Hub met behulp van de opdracht [docker login](https://docs.docker.com/engine/reference/commandline/login/). Vervang `<docker-id>` door uw accountnaam en typ uw wachtwoord bij de opdrachtprompt in de console. Zie [documentatie bij de opdracht voor dockeraanmelding](https://docs.docker.com/engine/reference/commandline/login/) voor andere wachtwoordopties voor Docker Hub.
+    ![Tijdelijke afbeelding die aangeeft dat de container lokaal wordt uitgevoerd](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-```bash
-docker login --username <docker-id>
-```
+1. Nadat u de functie-app in de container hebt geverifieerd, stopt u docker met **Ctrl**+**C**.
 
-Bij een bericht dat de aanmelding is geslaagd, wordt bevestigd dat u bent aangemeld. Nadat u zich hebt aangemeld, pusht u de installatiekopie naar Docker Hub met behulp van de [docker push](https://docs.docker.com/engine/reference/commandline/push/)-opdracht.
+## <a name="push-the-image-to-docker-hub"></a>De installatie kopie pushen naar docker hub
 
-```bash
-docker push <docker-id>/mydockerimage:v1.0.0
-```
+Docker hub is een container register dat installatie kopieën host en installatie kopie-en container Services biedt. Als u uw installatie kopie wilt delen, met inbegrip van implementatie naar Azure, moet u deze naar een REGI ster pushen.
 
-Nadat de push is voltooid, kunt u de installatie kopie gebruiken als de implementatie bron voor een nieuwe functie-app in Azure.
+1. Als u zich nog niet hebt aangemeld bij docker, doet u dit met de opdracht [docker login](https://docs.docker.com/engine/reference/commandline/login/) , waarbij u `<docker_id>` vervangt door de id van uw docker. Met deze opdracht wordt u gevraagd om uw gebruikers naam en wacht woord. In het bericht ' Aanmelden is geslaagd ' wordt bevestigd dat u bent aangemeld.
 
-[!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
+    ```
+    docker login
+    ```
+    
+1. Nadat u zich hebt aangemeld, pusht u de installatie kopie naar docker hub met behulp van de opdracht [docker push](https://docs.docker.com/engine/reference/commandline/push/) . vervang opnieuw `<docker_id>` met uw DOCKER-id.
 
-[!INCLUDE [functions-create-storage-account](../../includes/functions-create-storage-account.md)]
+    ```
+    docker push <docker_id>/azurefunctionsimage:v1.0.0
+    ```
 
-## <a name="create-a-premium-plan"></a>Een Premium-abonnement maken
+1. Afhankelijk van de snelheid van uw netwerk, kan het enkele minuten duren voordat de installatie kopie wordt gepusht (het pushen van de volgende wijzigingen is veel sneller). Terwijl u wacht, kunt u door gaan naar de volgende sectie en Azure-resources maken in een andere terminal.
 
-Linux-hosting voor aangepaste functies-containers wordt ondersteund op [speciale (app service) plannen](functions-scale.md#app-service-plan) en [Premium-abonnementen](functions-premium-plan.md#features). In deze zelf studie wordt een Premium-abonnement gebruikt dat naar behoefte kan worden geschaald. Zie [deze vergelijking van hostingabonnementen van Azure Functions](functions-scale.md) voor meer informatie over hosting.
+## <a name="create-supporting-azure-resources-for-your-function"></a>Ondersteunende Azure-resources maken voor uw functie
 
-In het volgende voor beeld wordt een Premium-plan gemaakt met de naam `myPremiumPlan` in de prijs categorie **elastisch Premium 1** (`--sku EP1`), in de regio vs West (`-location WestUS`) en in een Linux-container (`--is-linux`).
+Als u uw functie code wilt implementeren in azure, moet u drie resources maken:
 
-```azurecli-interactive
-az functionapp plan create --resource-group myResourceGroup --name myPremiumPlan \
---location WestUS --number-of-workers 1 --sku EP1 --is-linux
-```
+- Een resource groep, een logische container voor gerelateerde resources.
+- Een Azure Storage account, waarmee de status en andere informatie over uw projecten worden bijgehouden.
+- Een Azure functions-app, waarmee u de omgeving voor het uitvoeren van uw functie code kunt gebruiken. Een functie-app wordt toegewezen aan uw lokale functie project en biedt u de mogelijkheid om functies te groeperen als logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren en delen.
 
-## <a name="create-an-app-from-the-image"></a>Een app maken op basis van de installatie kopie
+U gebruikt Azure CLI-opdrachten om deze items te maken. Elke opdracht biedt JSON-uitvoer na voltooiing.
 
-De functie-app beheert de uitvoering van uw functies in uw hosting abonnement. Een functie-app maken op basis van een Docker Hub-installatiekopie met behulp van de opdracht [az functionapp create](/cli/azure/functionapp#az-functionapp-create).
+1. Meld u aan bij Azure met de opdracht [AZ login](/cli/azure/group#az-login) :
 
-Vervang in de volgende opdracht de plaatsaanduiding `<app_name>` en de opslagaccountnaam voor `<storage_name>` met een unieke functie-appnaam. De `<app_name>` wordt gebruikt als het standaard DNS-domein voor de functie-app. Om die reden moet de naam uniek zijn in alle apps in Azure. Net als voorheen is `<docker-id>` de naam van uw Docker-account.
+    ```azurecli
+    az login
+    ```
+    
+1. Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-group-create). In het volgende voor beeld wordt een resource groep met de naam `AzureFunctionsContainers-rg` in de `westeurope` regio gemaakt. (In het algemeen maakt u de resource groep en-resources in een regio bij u in de buurt met behulp van een beschik bare regio van de `az account list-locations`-opdracht.)
 
-```azurecli-interactive
-az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
---plan myPremiumPlan --deployment-container-image-name <docker-id>/mydockerimage:v1.0.0
-```
+    ```azurecli
+    az group create --name AzureFunctionsContainers-rg --location westeurope
+    ```
+    
+    > [!NOTE]
+    > U kunt geen Linux-en Windows-apps hosten in dezelfde resource groep. Als u een bestaande resource groep hebt met de naam `AzureFunctionsContainers-rg` met een Windows-functie-app of web-app, moet u een andere resource groep gebruiken.
+    
+1. Maak een opslag account voor algemeen gebruik in uw resource groep en regio met behulp van de opdracht [AZ Storage account create](/cli/azure/storage/account#az-storage-account-create) . Vervang `<storage_name>` in het volgende voor beeld door een globaal unieke naam die voor u van toepassing is. Namen mogen alleen uit drie tot 24 tekens bestaan en mag alleen kleine letters bevatten. `Standard_LRS` geeft een typisch algemeen account op.
 
-De _deployment-container-image-name_-parameter geeft aan dat de afbeelding die wordt gehost op Docker Hub wordt gebruikt om de functie-app te maken. Gebruik de opdracht [AZ functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) om informatie weer te geven over de installatie kopie die wordt gebruikt voor de implementatie. Gebruik de opdracht [AZ functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) om vanaf een andere installatie kopie te implementeren.
+    ```azurecli
+    az storage account create --name <storage_name> --location westeurope --resource-group AzureFunctionsContainers-rg --sku Standard_LRS
+    ```
+    
+    Het opslag account maakt voor deze zelf studie slechts een enkele USD cent.
+    
+1. Gebruik de opdracht voor het maken van een Premium-plan voor Azure Functions met de naam `myPremiumPlan` in de prijs categorie **elastisch Premium 1** (`--sku EP1`), in de Europa-West regio (`-location westeurope`, of gebruik een geschikte regio bij u in de buurt), en in een Linux-container (`--is-linux`).
 
-## <a name="configure-the-function-app"></a>De functie-app configureren
+    ```azurecli
+    az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
+    ```   
 
-De functie heeft de verbindingsreeks nodig om verbinding te maken met het standaardopslagaccount. Wanneer u uw aangepaste installatie kopie publiceert naar een persoonlijk container account, moet u deze toepassings instellingen instellen als omgevings variabelen in de Dockerfile met behulp van de [env-instructie](https://docs.docker.com/engine/reference/builder/#env)of iets dergelijks.
+    Linux-hosting voor aangepaste functies-containers wordt ondersteund op [speciale (app service) plannen](functions-scale.md#app-service-plan) en [Premium-abonnementen](functions-premium-plan.md#features). We gebruiken hier het Premium-plan, dat kan worden geschaald naar behoefte. Zie [deze vergelijking van hostingabonnementen van Azure Functions](functions-scale.md) voor meer informatie over hosting. Zie de pagina met prijzen voor [functies](https://azure.microsoft.com/pricing/details/functions/)voor het berekenen van de kosten.
 
-In dit geval is `<storage_name>` de naam van het opslagaccount dat u hebt gemaakt. Haal de verbindingsreeks op met de opdracht [az storage account show-connection-string](/cli/azure/storage/account). Voeg deze toepassingsinstellingen toe aan de functie-app met de opdracht [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
+    Met deze opdracht wordt ook een gekoppeld Azure-toepassing Insights-exemplaar in dezelfde resource groep ingericht, waarmee u uw functie-app kunt bewaken en logboeken weer geven. Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie. Er worden geen kosten in rekening gebracht totdat u deze activeert.
 
-```azurecli-interactive
-storageConnectionString=$(az storage account show-connection-string \
---resource-group myResourceGroup --name <storage_name> \
---query connectionString --output tsv)
+## <a name="create-and-configure-a-function-app-on-azure-with-the-image"></a>Een functie-app in azure maken en configureren met de installatie kopie
 
-az functionapp config appsettings set --name <app_name> \
---resource-group myResourceGroup \
---settings AzureWebJobsStorage=$storageConnectionString
-```
+Een functie-app in azure beheert de uitvoering van uw functies in uw hosting abonnement. In deze sectie gebruikt u de Azure-resources uit de vorige sectie om een functie-app te maken op basis van een installatie kopie op docker hub en deze te configureren met een connection string voor Azure Storage.
 
-> [!NOTE]
-> Als u een privécontainer gebruikt, moet u ook de volgende toepassingsinstellingen instellen  
-> - DOCKER_REGISTRY_SERVER_USERNAME  
-> - DOCKER_REGISTRY_SERVER_PASSWORD  
->
-> U moet uw functie-app stoppen en opnieuw starten om deze waarden op te halen
+1. Maak de functions-app met de opdracht [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) . Vervang in het volgende voor beeld `<storage_name>` door de naam die u hebt gebruikt in de vorige sectie voor het opslag account. Vervang `<app_name>` ook door een globaal unieke naam die geschikt is voor u en `<docker_id>` met uw docker-ID.
 
-## <a name="verify-your-functions"></a>Uw functies controleren
+    ```azurecli
+    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
+    ```
+    
+    Met de para meter *implementatie-container-image-name* wordt de afbeelding opgegeven die moet worden gebruikt voor de functie-app. U kunt de opdracht [AZ functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) gebruiken om informatie weer te geven over de installatie kopie die wordt gebruikt voor de implementatie. U kunt ook de opdracht [AZ functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) gebruiken om vanaf een andere installatie kopie te implementeren.
 
-<!-- we should replace this with a CLI or API-based approach, when we get something better than REST -->
+1. Haal de connection string op voor het opslag account dat u hebt gemaakt met behulp van de opdracht [AZ Storage account show-Connection-String](/cli/azure/storage/account) en wijs deze toe aan een shell-variabele `storageConnectionString`:
 
-De door HTTP geactiveerde functie die u hebt gemaakt, vereist een [functie sleutel](functions-bindings-http-webhook.md#authorization-keys) bij het aanroepen van het eind punt. Op dit moment is de gemakkelijkste manier om de URL van de functie, inclusief de sleutel, op te halen uit de [Azure Portal]. 
+    ```azurecli
+    az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
+    
+1. Add this setting to the function app by using the [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) command. In the following command, replace `<app_name>` with the name of your function app, and replace `<connection_string>` with the connection string from the previous step (a long encoded string that begins with "DefaultEndpointProtocol="):
+ 
+    ```azurecli
+    az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
+    ```
+
+1. De functie kan nu deze connection string gebruiken om toegang te krijgen tot het opslag account.
 
 > [!TIP]
-> U kunt ook uw functie sleutels verkrijgen met behulp van de [Key Management-api's](https://github.com/Azure/azure-functions-host/wiki/Key-management-API), waarvoor u een [Bearer-token moet gebruiken voor verificatie](/cli/azure/account#az-account-get-access-token).
+> In bash kunt u een shell-variabele gebruiken om de connection string vast te leggen in plaats van het klem bord te gebruiken. Gebruik eerst de volgende opdracht om een variabele te maken met de connection string:
+> 
+> ```bash
+> storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
+> ```
+> 
+> Ga vervolgens naar de variabele in de tweede opdracht:
+> 
+> ```azurecli
+> az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
+> ```
 
-Zoek de nieuwe functie-app in het [Azure Portal] door de naam van uw functie-app in het **zoekvak** boven aan de pagina te typen en de **app service** resource te selecteren.
+> [!NOTE]    
+> Als u uw aangepaste installatie kopie naar een persoonlijk container account publiceert, moet u in plaats daarvan omgevings variabelen in de Dockerfile voor de connection string gebruiken. Zie de [env-instructie](https://docs.docker.com/engine/reference/builder/#env)voor meer informatie. U moet ook de variabelen `DOCKER_REGISTRY_SERVER_USERNAME` en `DOCKER_REGISTRY_SERVER_PASSWORD`instellen. Als u de waarden wilt gebruiken, moet u de installatie kopie opnieuw opbouwen, de installatie kopie naar het REGI ster pushen en vervolgens de functie-app opnieuw starten in Azure.
 
-Selecteer de functie **MyHttpTrigger** , selecteer **</> functie-URL ophalen** > **standaard (functie toets)**  > **kopiëren**.
+## <a name="verify-your-functions-on-azure"></a>Uw functies in azure controleren
 
-![De functie-URL vanuit Azure Portal kopiëren](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)
+Als de installatie kopie is geïmplementeerd in de functie-app in azure, kunt u de functie nu via HTTP-aanvragen aanroepen. Omdat de definitie van de *functie. json* de eigenschap `"authLevel": "function"`bevat, moet u eerst de toegangs sleutel (ook wel de functie sleutel) verkrijgen en deze opnemen als een URL-para meter in alle aanvragen voor het eind punt.
 
-In deze URL is de functie sleutel de `code` query parameter. 
+1. Haal de functie-URL op met de Access-sleutel (functie) met behulp van de Azure Portal of gebruik de Azure CLI met de `az rest`-opdracht.)
 
-> [!NOTE]  
-> Omdat uw functie-app als een container is geïmplementeerd, kunt u geen wijzigingen aanbrengen in uw functie code in de portal. U moet in plaats daarvan het project bijwerken in de lokale container en opnieuw publiceren naar Azure.
+    # <a name="portaltabportal"></a>[Portal](#tab/portal)
 
-Plak de URL van de functie in de adresbalk van uw browser. Voeg waarde `&name=<yourname>` voor de querytekenreeks toe aan het einde van deze URL, en druk op de toets `Enter` op het toetsenbord om de aanvraag uit te voeren. U ziet het geretourneerde antwoord van de functie nu in de browser.
+    1. Meld u aan bij de Azure Portal en zoek vervolgens uw functie-app door de naam van uw functie-app in te voeren in het **zoekvak** boven aan de pagina. Selecteer in de resultaten de **app service** resource.
 
-Het volgende voorbeeld toont het antwoord in de browser:
+    1. Selecteer in het navigatie paneel aan de linkerkant onder **functies (alleen-lezen)** de naam van uw functie.
 
-![Het antwoord van de functie in de browser.](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
+    1. Selecteer in het deel venster Details **</> functie-URL ophalen**:
+    
+        ![De opdracht functie-URL ophalen in het Azure Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)   
 
-De aanvraag-URL bevat een sleutel die standaard is vereist, en waarmee u via HTTP toegang hebt tot de functie. 
+    1. Selecteer in de pop-up de optie **standaard (functie toets)** en **Kopieer**vervolgens. De sleutel is de teken reeks die de volgende tekens bevat `?code=`.
 
-## <a name="enable-continuous-deployment"></a>Continue implementatie inschakelen
+        ![De functie-URL uit de Azure Portal kopiëren](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key-popup.png)   
 
-Een van de voor delen van het gebruik van containers is ondersteuning voor continue implementatie. Met functies kunt u automatisch updates implementeren wanneer de container in het REGI ster wordt bijgewerkt. Schakel doorlopende implementatie in met de opdracht [AZ functionapp Deployment container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) .
+    > [!NOTE]  
+    > Omdat uw functie-app als een container is geïmplementeerd, kunt u geen wijzigingen aanbrengen in uw functie code in de portal. U moet in plaats daarvan het project bijwerken in de lokale installatie kopie, de installatie kopie naar het REGI ster pushen en vervolgens opnieuw implementeren naar Azure. U kunt in een later stadium doorlopende implementatie instellen.
+    
+    # <a name="azure-clitabazurecli"></a>[Azure-CLI](#tab/azurecli)
 
-```azurecli-interactive
-az functionapp deployment container config --enable-cd \
---query CI_CD_URL --output tsv \
---name <app_name> --resource-group myResourceGroup
-```
+    1. Maak een URL-teken reeks in de volgende indeling, vervang `<subscription_id>`, `<resource_group>`en `<app_name>` met de ID van uw Azure-abonnement, de resource groep van de functie-app en de naam van uw functie-app, respectievelijk:
 
-Met deze opdracht wordt de URL van de implementatie-webhook geretourneerd nadat de continue implementatie is ingeschakeld. U kunt ook de opdracht [AZ functionapp Deployment container show-cd-URL](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) gebruiken om deze URL te retour neren. 
+        ```
+        "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Web/sites/<app_name>/host/default/listKeys?api-version=2018-11-01"
+        ```
 
-Kopieer de implementatie-URL en blader naar uw DockerHub opslag plaats, kies het tabblad **webhooks** , typ de **naam** van de webhook voor de webhook, plak uw URL in de **webhook-URL**en kies vervolgens het plus teken ( **+** ).
+        De URL kan bijvoorbeeld het volgende adres zien:
 
-![De webhook in uw DockerHub opslag plaats toevoegen](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
+        ```
+        "/subscriptions/1234aaf4-1234-abcd-a79a-245ed34eabcd/resourceGroups/AzureFunctionsContainers-rg/providers/Microsoft.Web/sites/msdocsfunctionscontainer/host/default/listKeys?api-version=2018-11-01"
+        ```
 
-Als de webhook is ingesteld, worden alle updates van de gekoppelde afbeelding in DockerHub resultaat in de functie-app voor het downloaden en installeren van de nieuwste installatie kopie.
+        > [!TIP]
+        > Voor het gemak kunt u in plaats daarvan de URL toewijzen aan een omgevings variabele en deze gebruiken in de `az rest` opdracht.
+    
+    1. Voer de volgende `az rest` opdracht uit (beschikbaar in de Azure CLI-versie 2.0.77 en hoger), waarbij u `<uri>` vervangt door de URI-teken reeks uit de laatste stap, inclusief de aanhalings tekens:
+
+        ```azurecli
+        az rest --method post --uri <uri> --query functionKeys.default --output tsv
+        ```
+
+    1. De uitvoer van de opdracht is de functie toets. De volledige functie-URL wordt vervolgens `https://<app_name>.azurewebsites.net/api/<function_name>?code=<key>`, waarbij `<app_name>`, `<function_name>`en `<key>` worden vervangen door uw specifieke waarden.
+    
+        > [!NOTE]
+        > De sleutel die hier wordt opgehaald is de *host* -sleutel die werkt voor alle functies in de app functions. met de methode die wordt weer gegeven voor de portal, wordt de sleutel voor de ene functie opgehaald.
+
+    ---
+
+1. Plak de functie-URL in de adres balk van uw browser en voeg de para meter `&name=Azure` toe aan het einde van deze URL. Tekst als ' Hello Azure ' moet worden weer gegeven in de browser.
+
+    ![Het antwoord van de functie in de browser.](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
+
+1. U kunt de autorisatie testen door de code = para meter uit de URL te verwijderen en te controleren of u geen reactie krijgt van de functie.
+
+
+## <a name="enable-continuous-deployment-to-azure"></a>Continue implementatie naar Azure inschakelen
+
+U kunt Azure Functions instellen dat uw implementatie van een installatie kopie automatisch wordt bijgewerkt wanneer u de installatie kopie in het REGI ster bijwerkt.
+
+1. Continue implementatie inschakelen met behulp van [AZ functionapp Deployment container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) opdracht, vervangen `<app_name>` door de naam van uw functie-app:
+
+    ```azurecli
+    az functionapp deployment container config --enable-cd --query CI_CD_URL --output tsv --name <app_name> --resource-group AzureFunctionsContainers-rg
+    ```
+    
+    Met deze opdracht wordt continue implementatie ingeschakeld en wordt de URL van de implementatie webhook geretourneerd. (U kunt deze URL later op elk gewenst moment ophalen met behulp van de opdracht [AZ functionapp Deployment container show-cd-URL](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) .)
+
+1. Kopieer de URL van de implementatie-webhook naar het klem bord.
+
+1. Open [docker hub](https://hub.docker.com/), Meld u aan en selecteer **opslag** plaatsen op de navigatie balk. Zoek en selecteer afbeelding, selecteer het tabblad **webhooks** , geef een **naam**op voor de webhook, plak uw URL in de **webhook-URL**en selecteer vervolgens **maken**:
+
+    ![De webhook in uw DockerHub opslag plaats toevoegen](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
+
+1. Als de webhook is ingesteld, Azure Functions uw installatie kopie opnieuw implementeren wanneer u deze bijwerkt in docker hub.
 
 ## <a name="enable-ssh-connections"></a>SSH-verbindingen inschakelen
 
-SSH maakt veilige communicatie tussen een container en een client mogelijk. Als SSH is ingeschakeld, kunt u verbinding maken met uw container met behulp van App Service geavanceerde hulp middelen (kudu). Functies bieden een basis installatie kopie waarvoor SSH al is ingeschakeld, zodat u eenvoudig verbinding kunt maken met uw container via SSH. 
+SSH maakt veilige communicatie tussen een container en een client mogelijk. Als SSH is ingeschakeld, kunt u verbinding maken met uw container met behulp van App Service geavanceerde hulp middelen (kudu). Azure Functions biedt een basis installatie kopie waarvoor SSH al is ingeschakeld, zodat u eenvoudig verbinding kunt maken met uw container via SSH. U hoeft alleen uw Dockerfile te bewerken en vervolgens de installatie kopie opnieuw te bouwen en opnieuw te implementeren. U kunt vervolgens verbinding maken met de container via de geavanceerde hulp middelen (kudu)
 
-### <a name="change-the-base-image"></a>De basis installatie kopie wijzigen
+1. Voeg in uw Dockerfile de teken reeks `-appservice` toe aan de basis installatie kopie in uw `FROM` instructie:
 
-Voeg in uw dockerfile de teken reeks `-appservice` toe aan de basis installatie kopie in uw `FROM`-instructie, die voor een Java script-project er als volgt uitziet.
+    ::: zone pivot="programming-language-csharp"
+    ```Dockerfile
+    FROM microsoft/dotnet:2.2-sdk-appservice AS installer-env
+    ```
+    ::: zone-end
 
-```docker
-FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
-```
+    ::: zone pivot="programming-language-javascript"
+    ```Dockerfile
+    FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
+    ```
+    ::: zone-end
 
-Met de verschillen in de twee basis installatie kopieën worden SSH-verbindingen in uw container ingeschakeld. Deze verschillen worden beschreven in [deze app Services zelf studie](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections).
+    ::: zone pivot="programming-language-powershell"
+    ```Dockerfile
+    FROM mcr.microsoft.com/azure-functions/powershell:2.0-appservice
+    ```
+    ::: zone-end
 
-### <a name="rebuild-and-redeploy-the-image"></a>De installatie kopie opnieuw samen stellen en implementeren
+    ::: zone pivot="programming-language-python"
+    ```Dockerfile
+    FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7-appservice
+    ```
+    ::: zone-end
 
-Voer in de hoofdmap de opdracht [docker build](https://docs.docker.com/engine/reference/commandline/build/) opnieuw uit, zoals voorheen, vervang `<docker-id>` door de account-id van uw docker hub. 
+    ::: zone pivot="programming-language-typescript"
+    ```Dockerfile
+    FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
+    ```
+    ::: zone-end
 
-```bash
-docker build --tag <docker-id>/mydockerimage:v1.0.0 .
-```
+    De verschillen tussen de basis installatie kopieën worden beschreven in de hand leiding voor de [app Services-aangepaste docker-installatie kopieën](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections).
 
-Push de bijgewerkte installatie kopie terug naar docker hub.
+1. Bouw de installatie kopie opnieuw met behulp van de `docker build` opdracht opnieuw, waarbij u `<docker_id>` vervangt door uw docker-ID:
 
-```bash
-docker push <docker-id>/mydockerimage:v1.0.0
-```
+    ```
+    docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
+    ```
+    
+1. Push de bijgewerkte installatie kopie naar docker hub. deze moet aanzienlijk minder tijd in beslag nemen dan de eerste push alleen de bijgewerkte segmenten van de afbeelding moeten worden geüpload.
 
-De bijgewerkte installatie kopie wordt opnieuw geïmplementeerd in uw functie-app.
+    ```
+    docker push <docker_id>/azurefunctionsimage:v1.0.0
+    ```
+    
+1. Azure Functions de installatie kopie automatisch opnieuw implementeert in uw functions-app; het proces vindt minder dan een minuut plaats.
 
-### <a name="connect-to-your-container-in-azure"></a>Verbinding maken met uw container in azure
+1. Open in een browser `https://<app_name>.scm.azurewebsites.net/`en vervang `<app_name>` door uw unieke naam. Deze URL is het kudu-eind punt (Advanced tools) voor uw functie-app-container.
 
-Ga in de browser naar de volgende geavanceerde tools (kudu) `scm.`-eind punt voor uw functie-app-container en vervang `<app_name>` door de naam van uw functie-app.
+1. Meld u aan bij uw Azure-account en selecteer vervolgens de **SSH** om een verbinding met de container tot stand te brengen. Verbinding kan even duren als Azure nog steeds bezig is met het bijwerken van de container installatie kopie.
 
-```
-https://<app_name>.scm.azurewebsites.net/
-```
+1. Nadat een verbinding tot stand is gebracht met uw container, voert u de `top` opdracht uit om de actieve processen weer te geven. 
 
-Meld u aan bij uw Azure-account en selecteer vervolgens het tabblad **SSH** om een SSH-verbinding in uw container te maken.
+    ![Bovenste Linux-opdracht die in een SSH-sessie wordt uitgevoerd](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
 
-Nadat de verbinding tot stand is gebracht, voert u de `top` opdracht uit om de actieve processen weer te geven. 
+## <a name="write-to-an-azure-storage-queue"></a>Schrijven naar een Azure Storage wachtrij
 
-![De bovenste Linux-opdracht die in een SSH-sessie wordt uitgevoerd.](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
-
-## <a name="write-to-queue-storage"></a>Schrijven naar wachtrij opslag
-
-Met functies kunt u Azure-Services en andere resources verbinden met functies zonder dat u uw eigen integratie code hoeft te schrijven. Deze *bindingen*, die zowel invoer als uitvoer vertegenwoordigen, worden gedeclareerd in de functie definitie. Gegevens van bindingen worden als parameters aan de functie geleverd. Een *trigger* is een speciaal type invoer binding. Hoewel een functie slechts één trigger heeft, kan deze meerdere invoer-en uitvoer bindingen hebben. Zie [Azure functions triggers en bindingen](functions-triggers-bindings.md)voor meer informatie.
+Met Azure Functions kunt u uw functies verbinden met andere Azure-Services en-resources die uw eigen integratie code schrijven. Deze *bindingen*, die zowel invoer als uitvoer vertegenwoordigen, worden gedeclareerd in de functie definitie. Gegevens van bindingen worden aan de functie door gegeven als para meters. Een *trigger* is een speciaal type invoer binding. Hoewel een functie slechts één trigger heeft, kan deze meerdere invoer-en uitvoer bindingen hebben. Zie [Azure functions triggers en bindingen](functions-triggers-bindings.md)voor meer informatie.
 
 In deze sectie wordt beschreven hoe u uw functie integreert met een Azure Storage wachtrij. De uitvoer binding die u aan deze functie toevoegt, schrijft gegevens van een HTTP-aanvraag naar een bericht in de wachtrij.
 
-### <a name="download-the-function-app-settings"></a>De instellingen van de functie-app downloaden
+## <a name="retrieve-the-azure-storage-connection-string"></a>De Azure Storage ophalen connection string
 
-[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
+U hebt eerder een Azure Storage-account gemaakt voor gebruik door de functie-app. De connection string voor dit account wordt veilig opgeslagen in de app-instellingen in Azure. Door de instelling in het bestand *Local. settings. json* te downloaden, kunt u deze verbinding schrijven naar een opslag wachtrij in hetzelfde account wanneer u de functie lokaal uitvoert. 
 
-### <a name="enable-extension-bundles"></a>Uitbreidings bundels inschakelen
+1. Voer in de hoofdmap van het project de volgende opdracht uit en vervang `<app_name>` door de naam van uw functie-app uit de vorige Snelstartgids. Met deze opdracht worden alle bestaande waarden in het bestand overschreven.
 
-Omdat u een uitvoer binding voor de wachtrij opslag gebruikt, moet u de extensie opslag bindingen hebben geïnstalleerd voordat u het project uitvoert. 
+    ```
+    func azure functionapp fetch-app-settings <app_name>
+    ```
+    
+1. Open *Local. settings. json* en zoek de waarde met de naam `AzureWebJobsStorage`, het opslag account Connection String. U gebruikt de naam `AzureWebJobsStorage` en de connection string in andere secties van dit artikel.
 
+> [!IMPORTANT]
+> Omdat *Local. settings. json* bevat geheimen die zijn gedownload van Azure, moet u dit bestand altijd uitsluiten van broncode beheer. Het *. gitignore* -bestand dat is gemaakt met een lokale functie project, sluit het bestand standaard uit.
 
-# <a name="javascript--pythontabnodejspython"></a>[Java script/python](#tab/nodejs+python)
+### <a name="add-an-output-binding-to-functionjson"></a>Een uitvoer binding toevoegen aan function. json
 
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+In Azure Functions moet voor elk type binding een `direction`, `type`en een unieke `name` worden gedefinieerd in het bestand *Function. json* . De *functie. json* bevat al een invoer binding voor het type ' http trigger ' en een uitvoer binding voor het HTTP-antwoord. Als u een binding wilt toevoegen aan een opslag wachtrij, wijzigt u het bestand als volgt, waarmee een uitvoer binding wordt toegevoegd voor het type wachtrij, waarbij de wachtrij wordt weer gegeven als een invoer argument met de naam `msg`. De wachtrij binding vereist ook de naam van de wachtrij die moet worden gebruikt, in dit geval `outqueue`en de naam van de instellingen die de connection string bevatten, in dit geval `AzureWebJobStorage`.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+::: zone pivot="programming-language-csharp"
 
-Met uitzonde ring van HTTP-en timer triggers worden bindingen geïmplementeerd als uitbreidings pakketten. Voer de volgende [DotNet-opdracht add package](/dotnet/core/tools/dotnet-add-package) uit in het Terminal venster om het opslag extensie pakket toe te voegen aan uw project.
+In een C# klassen bibliotheek project worden de bindingen gedefinieerd als bindings kenmerken voor de functie methode. Het bestand *Function. json* wordt vervolgens automatisch gegenereerd op basis van deze kenmerken.
 
-```bash
-dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
+1. Voer voor de binding van de wachtrij de volgende [DotNet add package](/dotnet/core/tools/dotnet-add-package) opdracht uit om het opslag extensie pakket toe te voegen aan uw project.
+
+    ```
+    dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
+    ```
+
+1. Open het *HttpTrigger.cs* -bestand en voeg de volgende `using`-instructie toe:
+
+    ```cs
+    using Microsoft.Azure.WebJobs.Extensions.Storage;
+    ```
+    
+1. Voeg de volgende para meter toe aan de `Run` methode definitie:
+    
+    ```csharp
+    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg
+    ```
+    
+    De definitie van de `Run` methode moet nu overeenkomen met de volgende code:
+    
+    ```csharp
+    [FunctionName("HttpTrigger")]
+    public static async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
+        [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
+    ```
+
+De para meter `msg` is een `ICollector<T>` type dat een verzameling berichten vertegenwoordigt die naar een uitvoer binding worden geschreven wanneer de functie is voltooid. In dit geval is de uitvoer een opslag wachtrij met de naam `outqueue`. De connection string voor het opslag account is ingesteld door de `StorageAccountAttribute`. Dit kenmerk geeft de instelling aan die het opslag account bevat connection string en kan worden toegepast op het niveau van de klasse, methode of para meter. In dit geval kunt u `StorageAccountAttribute` weglaten omdat u het standaard opslag account al gebruikt.
+
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+Update *Function. json* zodat deze overeenkomt met het volgende door de binding van de wachtrij toe te voegen na de HTTP-binding:
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "msg",
+      "queueName": "outqueue",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
 ```
+::: zone-end
 
-> [!TIP]
-> Wanneer u Visual Studio gebruikt, kunt u ook NuGet Package Manager gebruiken om dit pakket toe te voegen.
+::: zone pivot="programming-language-powershell"
 
----
+Update *Function. json* zodat deze overeenkomt met het volgende door de binding van de wachtrij toe te voegen na de HTTP-binding:
 
-U kunt nu een opslag-uitvoer binding toevoegen aan uw project.
-
-### <a name="add-an-output-binding"></a>Een uitvoerbinding toevoegen
-
-In functies moet voor elk type binding een `direction`, `type`en een unieke `name` worden gedefinieerd in het bestand function. json. De manier waarop u deze kenmerken definieert, is afhankelijk van de taal van uw functie-app.
-
-# <a name="javascript--pythontabnodejspython"></a>[Java script/python](#tab/nodejs+python)
-
-[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
-
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
-
-[!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
-
----
-
-### <a name="add-code-that-uses-the-output-binding"></a>Code toevoegen die gebruikmaakt van de uitvoerbinding
-
-Nadat de binding is gedefinieerd, kunt u de `name` van de binding gebruiken om deze te openen als een kenmerk in de functie handtekening. Als u een uitvoer binding gebruikt, hoeft u niet de Azure Storage SDK-code te gebruiken voor authenticatie, het ophalen van een wachtrij verwijzing of het schrijven van gegevens. De functies runtime en wachtrij-uitvoer binding voeren deze taken voor u uit.
-
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
-
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
-
-[!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
-
----
-
-### <a name="update-the-hosted-container"></a>De gehoste container bijwerken
-
-Voer in de hoofdmap de opdracht [docker build](https://docs.docker.com/engine/reference/commandline/build/) opnieuw uit en deze tijd werkt de versie in de tag bij naar `v1.0.2`. Vervang `<docker-id>` door de account-ID van uw docker hub. 
-
-```bash
-docker build --tag <docker-id>/mydockerimage:v1.0.2
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "msg",
+      "queueName": "outqueue",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
 ```
+::: zone-end
 
-Push de bijgewerkte installatie kopie terug naar de opslag plaats.
+::: zone pivot="programming-language-python"
 
-```bash
-docker push <docker-id>/mydockerimage:v1.0.2
+Update *Function. json* zodat deze overeenkomt met het volgende door de binding van de wachtrij toe te voegen na de HTTP-binding:
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "msg",
+      "queueName": "outqueue",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
 ```
+::: zone-end
 
-### <a name="verify-the-updates-in-azure"></a>De updates in azure controleren
+::: zone pivot="programming-language-typescript"
 
-Gebruik dezelfde URL als voorheen in de browser om uw functie te activeren. U ziet hetzelfde antwoord. Deze keer wordt echter de teken reeks die u doorgeeft als de `name` para meter, naar de `outqueue`-opslag wachtrij geschreven.
+Update *Function. json* zodat deze overeenkomt met het volgende door de binding van de wachtrij toe te voegen na de HTTP-binding:
 
-[!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "msg",
+      "queueName": "outqueue",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
+```
+::: zone-end
 
-[!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
+## <a name="add-code-to-use-the-output-binding"></a>Code toevoegen voor het gebruik van de uitvoer binding
 
-[!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
+Nadat de binding is gedefinieerd, wordt de naam van de binding, in dit geval `msg`, weer gegeven in de functie code als een argument (of in het `context`-object in Java script en type script). U kunt deze variabele vervolgens gebruiken om berichten naar de wachtrij te schrijven. U moet elke code schrijven voor verificatie, het ophalen van een wachtrij verwijzing of het schrijven van gegevens. Al deze integratie taken kunnen worden verwerkt in de Azure Functions runtime-en wachtrij-uitvoer binding.
+
+::: zone pivot="programming-language-csharp"
+```csharp
+[FunctionName("HttpTrigger")]
+public static async Task<IActionResult> Run(
+    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
+    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
+{
+    log.LogInformation("C# HTTP trigger function processed a request.");
+
+    string name = req.Query["name"];
+
+    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    dynamic data = JsonConvert.DeserializeObject(requestBody);
+    name = name ?? data?.name;
+
+    if (!string.IsNullOrEmpty(name))
+    {
+        // Add a message to the output collection.
+        msg.Add(string.Format("Name passed to the function: {0}", name));
+    }
+    
+    return name != null
+        ? (ActionResult)new OkObjectResult($"Hello, {name}")
+        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
+}
+```
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+```js
+module.exports = async function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    if (req.query.name || (req.body && req.body.name)) {
+        // Add a message to the Storage queue.
+        context.bindings.msg = "Name passed to the function: " +
+            (req.query.name || req.body.name);
+
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: "Hello " + (req.query.name || req.body.name)
+        };
+    }
+    else {
+        context.res = {
+            status: 400,
+            body: "Please pass a name on the query string or in the request body"
+        };
+    }
+};
+```
+::: zone-end
+
+::: zone pivot="programming-language-powershell"
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$name = $Request.Query.Name
+if (-not $name) {
+    $name = $Request.Body.Name
+}
+
+if ($name) {
+    $outputMsg = "Name passed to the function: $name"
+    Push-OutputBinding -name msg -Value $outputMsg
+
+    $status = [HttpStatusCode]::OK
+    $body = "Hello $name"
+}
+else {
+    $status = [HttpStatusCode]::BadRequest
+    $body = "Please pass a name on the query string or in the request body."
+}
+
+# Associate values to output bindings by calling 'Push-OutputBinding'.
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = $status
+    Body = $body
+})
+```
+::: zone-end
+
+::: zone pivot="programming-language-python"
+```python
+import logging
+
+import azure.functions as func
+
+
+def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        msg.set(name)
+        return func.HttpResponse(f"Hello {name}!")
+    else:
+        return func.HttpResponse(
+            "Please pass a name on the query string or in the request body",
+            status_code=400
+        )
+```
+::: zone-end
+
+::: zone pivot="programming-language-typescript"
+```typescript
+import { AzureFunction, Context, HttpRequest } from "@azure/functions"
+
+const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
+    context.log('HTTP trigger function processed a request.');
+    const name = (req.query.name || (req.body && req.body.name));
+
+    if (name) {
+        // Add a message to the Storage queue.
+        context.bindings.msg = "Name passed to the function: " +
+            (req.query.name || req.body.name);
+        
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: "Hello " + (req.query.name || req.body.name)
+        };
+    }
+    else {
+        context.res = {
+            status: 400,
+            body: "Please pass a name on the query string or in the request body"
+        };
+    }
+};
+
+export default httpTrigger;
+```
+::: zone-end
+
+### <a name="update-the-image-in-the-registry"></a>De installatie kopie in het REGI ster bijwerken
+
+1. Voer `docker build` opnieuw uit in de hoofdmap en werk de versie in de tag bij naar `v1.0.1`. Vervang `<docker_id>` als voorheen door de account-ID van uw docker hub:
+
+    ```
+    docker build --tag <docker_id>/azurefunctionsimage:v1.0.1
+    ```
+    
+1. Push de bijgewerkte installatie kopie terug naar de opslag plaats met `docker push`:
+
+    ```
+    docker push <docker_id>/azurefunctionsimage:v1.0.1
+    ```
+
+1. Omdat u continue levering hebt geconfigureerd, wordt de functie-app in azure automatisch bijgewerkt wanneer u de installatie kopie in het REGI ster bijwerkt.
+
+## <a name="view-the-message-in-the-azure-storage-queue"></a>Het bericht in de wachtrij van Azure Storage weer geven
+
+Gebruik in een browser dezelfde URL als voordat u de functie aanroept. De browser moet hetzelfde antwoord weer geven als voorheen, omdat u dat deel van de functie code niet hebt gewijzigd. De toegevoegde code schrijft echter een bericht met behulp van de para meter `name` URL naar de `outqueue`-opslag wachtrij.
+
+U kunt de wachtrij weer geven in de [Azure Portal](../storage/queues/storage-quickstart-queues-portal.md) of in de [Microsoft Azure Storage Explorer](https://storageexplorer.com/). U kunt de wachtrij ook weer geven in de Azure CLI, zoals wordt beschreven in de volgende stappen:
+
+1. Open het bestand *Local. setting. json* van het functie project en kopieer de Connection String waarde. Voer in een Terminal-of opdracht venster de volgende opdracht uit om een omgevings variabele met de naam `AZURE_STORAGE_CONNECTION_STRING`te maken en uw specifieke connection string in plaats van `<connection_string>`te plakken. (Deze omgevings variabele houdt in dat u de connection string niet hoeft op te geven bij elke volgende opdracht met behulp van het argument `--connection-string`.)
+
+    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    
+    ```bash
+    AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
+    ```
+    
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    
+    ```powershell
+    $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
+    ```
+    
+    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    
+    ```cmd
+    set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
+    ```
+    
+    ---
+    
+1. Beschrijving Gebruik de [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) opdracht om de opslag wachtrijen in uw account weer te geven. De uitvoer van deze opdracht moet een wachtrij bevatten met de naam `outqueue`, die is gemaakt toen de functie het eerste bericht naar die wachtrij heeft geschreven.
+    
+    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    
+    ```azurecli
+    az storage queue list --output tsv
+    ```
+    
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    
+    ```azurecli
+    az storage queue list --output tsv
+    ```
+    
+    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    
+    ```azurecli
+    az storage queue list --output tsv
+    ```
+    
+    ---
+
+1. Gebruik de [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) opdracht om de berichten in deze wachtrij weer te geven. dit moet de eerste naam zijn die u hebt gebruikt bij het testen van de functie. De opdracht haalt het eerste bericht in de wachtrij op in [Base64-code ring](functions-bindings-storage-queue.md#encoding), dus u moet het bericht ook decoderen om als tekst weer te geven.
+
+    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    
+    ```bash
+    echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
+    ```
+    
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    
+    ```powershell
+    [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
+    ```
+    
+    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    
+    Omdat u de verwijzing naar de berichten verzameling moet decoderen en van base64 wilt ontsleutelen, voert u Power shell uit en gebruikt u de Power shell-opdracht.
+
+    ---
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u wilt blijven werken met de Azure-functie met behulp van de resources die u in deze zelf studie hebt gemaakt, kunt u alle resources op locatie laten staan. Omdat u een Premium-abonnement voor Azure Functions hebt gemaakt, kunt u een of twee USD per dag besparen op lopende kosten.
+
+Om lopende kosten te voor komen, verwijdert u de `AzureFunctionsContainer-rg` resource groep om alle resources in de groep op te schonen: 
+
+```azurecli
+az group delete --name AzureFunctionsContainer-rg
+```
 
 ## <a name="next-steps"></a>Volgende stappen
-
-Nu u uw aangepaste container hebt geïmplementeerd in een functie-app in azure, kunt u meer lezen over de volgende onderwerpen:
 
 + [Bewakings functies](functions-monitoring.md)
 + [Opties voor schalen en hosten](functions-scale.md)
 + [Op Kubernetes gebaseerde serverloze hosting](functions-kubernetes-keda.md)
-
-[Azure Portal]: https://portal.azure.com

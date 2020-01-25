@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 6c946667befdf34a2ae6769b2c1bb43871111c24
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 39b3a96ddd3a9007600d1fa956c4e2d48f6adae9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921022"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714804"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Implementatie technologieën in Azure Functions
 
@@ -32,7 +32,7 @@ Elk plan heeft verschillende gedragingen. Niet alle implementatie technologieën
 | Externe pakket-URL<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | Zip-implementatie |✔|✔|✔|✔|✔|✔|
 | Docker-container | | | | |✔|✔|
-| Webimplementatie |✔|✔|✔| | | |
+| Web implementeren |✔|✔|✔| | | |
 | Broncodebeheer |✔|✔|✔| |✔|✔|
 | Lokale Git<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Cloud synchronisatie<sup>1</sup> |✔|✔|✔| |✔|✔|
@@ -117,7 +117,7 @@ U kunt een Linux-container installatie kopie implementeren die uw functie-app be
 >__Hoe gebruikt u dit:__ Maak een Linux-functie-app in het Premium-of dedicated-abonnement en geef op van welke container installatie kopie moet worden uitgevoerd. U kunt dit op twee manieren doen:
 >
 >* Maak een Linux-functie-app in een Azure App Service plan in het Azure Portal. Voor **publiceren**selecteert u **docker-installatie kopie**en configureert u vervolgens de container. Geef de locatie op waar de installatie kopie wordt gehost.
->* Een Linux-functie-app maken in een App Service-abonnement met behulp van de Azure CLI. Zie [een functie maken in Linux met behulp van een aangepaste installatie kopie](functions-create-function-linux-custom-image.md#create-a-premium-plan)voor meer informatie.
+>* Een Linux-functie-app maken in een App Service-abonnement met behulp van de Azure CLI. Zie [een functie maken in Linux met behulp van een aangepaste installatie kopie](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function)voor meer informatie.
 >
 >Als u wilt implementeren in een bestaande app met behulp van een aangepaste container, gebruikt u de [`func deploy`](functions-run-local.md#publish) opdracht in [Azure functions core tools](functions-run-local.md).
 

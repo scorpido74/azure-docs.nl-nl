@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: e4050dedeb48b19b6848a95fc904f7f37fb5b04a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349398"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722557"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Voorbeelden van toepassings- en servicemanifesten voor toepassingen met meerdere containers
 Hier volgen enkele voor beelden van de toepassings-en service manifesten voor een Service Fabric toepassing met meerdere containers. Het doel van deze voor beelden is om te laten zien welke instellingen beschikbaar zijn en hoe u deze kunt gebruiken. Deze toepassings-en service manifesten zijn gebaseerd op de voorbeeld manifesten van de [Windows Server 2016-container](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) .
@@ -342,7 +342,7 @@ Het uitvoer bare bestand dat is opgegeven met entry point is doorgaans de langlo
  Zie het [element ContainerHost](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType) voor meer informatie.
 
 ### <a name="imagename-element"></a>Element Imagenaam
-De opslag plaats en installatie kopie op https://hub.docker.com of Azure Container Registry. Zie het [element afbeeldings](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType) voor meer informatie.
+De opslag plaats en installatie kopie op [https://hub.docker.com](https://hub.docker.com) of Azure container Registry. Zie het [element afbeeldings](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType) voor meer informatie.
 
 ### <a name="environmentvariables-element"></a>Omgevings variabelen-element
 U kunt omgevings variabelen door geven aan uw container of exe.  Zie het [element omgevings variabelen](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType) voor meer informatie.
@@ -386,7 +386,7 @@ Het uitvoer bare bestand dat is opgegeven met entry point is doorgaans de langlo
 Zie het [element ContainerHost](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType) voor meer informatie.
 
 ### <a name="imagename-element"></a>Element Imagenaam
-De opslag plaats en installatie kopie op https://hub.docker.com of Azure Container Registry. Zie het [element afbeeldings](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType) voor meer informatie.
+De opslag plaats en installatie kopie op [https://hub.docker.com](https://hub.docker.com) of Azure container Registry. Zie het [element afbeeldings](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType) voor meer informatie.
 
 ### <a name="commands-element"></a>Opdrachten element
 Een door komma's gescheiden lijst met opdrachten door geven aan de container. Zie [opdrachten element](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType) voor meer informatie.

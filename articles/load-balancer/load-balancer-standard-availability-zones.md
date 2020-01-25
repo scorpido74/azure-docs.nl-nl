@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 9e585f7d13e1686f125055056fd1e2d88e2bf8ff
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 0d61ad33b97b97c3a45334704544d72809e56848
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903336"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715273"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer van het type Standard en beschikbaarheidszones
 
@@ -37,7 +37,7 @@ In de context van beschikbaarheids zones worden het gedrag en de eigenschappen v
 
 Zowel de open bare als de interne Load Balancer ondersteunings zone-redundante en zonegebonden-scenario's en beide kunnen verkeer omleiden naar alle zones, indien nodig (*Kruis zone taak verdeling*). 
 
-### <a name="frontend"></a>Front-end
+### <a name="frontend"></a>Front
 
 Een Load Balancer frontend is een front-end-IP-configuratie die verwijst naar een open bare IP-adres of een privé-IP-adres binnen het subnet van een virtuele netwerk bron.  Het vormt het eind punt met gelijke taak verdeling waar uw service wordt weer gegeven.
 
@@ -143,7 +143,7 @@ Het volgende fragment is een afbeelding voor het definiëren van een interne Sta
                 ],
 ```
 
-De aan-fragmenten zijn geen complete sjablonen, maar zijn bedoeld om te laten zien hoe u de eigenschappen van beschikbaarheids zones kunt weer geven.  U moet deze instructies opnemen in uw sjablonen.
+De voor gaande fragmenten zijn niet volledig sjablonen, maar zijn bedoeld om te laten zien hoe u de eigenschappen van beschikbaarheids zones kunt weer geven.  U moet deze instructies opnemen in uw sjablonen.
 
 ### <a name="cross-zone-load-balancing"></a>Taak verdeling in meerdere zones
 

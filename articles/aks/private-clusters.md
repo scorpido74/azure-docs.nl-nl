@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 12/10/2019
+ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: 2344e2189d6b0f02e7fed1aab25d32551c1fedcf
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154338"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713320"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Een persoonlijk Azure Kubernetes service-cluster maken (preview)
 
@@ -128,14 +128,16 @@ Het API-server eindpunt heeft geen openbaar IP-adres. Daarom moet u een virtuele
 
 ## <a name="dependencies"></a>Afhankelijkheden  
 * De service private link wordt alleen ondersteund op standaard Azure Load Balancer. Basis Azure Load Balancer wordt niet ondersteund.  
+* Als u een aangepaste DNS-server wilt gebruiken, implementeert u een AD-server met DNS om door te sturen naar deze IP-168.63.129.16
 
 ## <a name="limitations"></a>Beperkingen 
+* Beschikbaarheidszones worden momenteel niet ondersteund
 * De beperkingen van de [Azure Private Link-service][private-link-service] zijn van toepassing op persoonlijke clusters, Azure-eind punten en service-eind punten van virtuele netwerken, die momenteel niet worden ondersteund in hetzelfde virtuele netwerk.
-* Geen ondersteuning voor virtuele knoop punten in een particulier cluster om persoonlijke Azure Container Instances (ACI) in te draaien in een particulier Azure Virtual Network.
-* Geen ondersteuning voor Azure DevOps-integratie uit het vak met persoonlijke clusters.
+* Geen ondersteuning voor virtuele knoop punten in een persoonlijk cluster om persoonlijke Azure Container Instances (ACI) in te draaien in een particulier Azure Virtual Network
+* Geen ondersteuning voor Azure DevOps-integratie uit het vak met privé clusters
 * Voor klanten die Azure Container Registry kunnen gebruiken met persoonlijke AKS, moet het virtuele netwerk Container Registry worden gekoppeld aan het virtuele netwerk van het agent cluster.
-* Geen huidige ondersteuning voor Azure dev Spaces.
-* Geen ondersteuning voor het converteren van bestaande AKS-clusters naar persoonlijke clusters.  
+* Geen huidige ondersteuning voor Azure dev Spaces
+* Geen ondersteuning voor het converteren van bestaande AKS-clusters naar particuliere clusters
 * Als u het persoonlijke eind punt in het subnet van de klant verwijdert of wijzigt, werkt het cluster niet meer. 
 * Azure Monitor voor containers Live-gegevens wordt momenteel niet ondersteund.
 * *Uw eigen DNS-server* wordt momenteel niet ondersteund.

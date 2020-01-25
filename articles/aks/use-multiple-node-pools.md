@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: f9d00cff5d910d6bbbb4c436249283cca87b91e1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6ea1bce6c14d7266b5ce49b94e39d661bfc57717
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549101"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713306"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -394,10 +394,10 @@ De Kubernetes scheduler kan taints en verdragen gebruiken om te beperken welke w
 
 Zie [Best Practices for Advanced scheduler-functies in AKS][taints-tolerations] voor meer informatie over het gebruik van geavanceerde Kubernetes-functies.
 
-In dit voor beeld past u een Taint toe op uw GPU-knoop punt met behulp van de [kubectl Taint knoop punt][kubectl-taint] opdracht. Geef de naam van uw op GPU gebaseerde knoop punt op uit de uitvoer van de vorige `kubectl get nodes` opdracht. De Taint wordt toegepast als *sleutel: waarde* en vervolgens een plannings optie. In het volgende voor beeld wordt het combi natie *SKU = GPU* gebruikt en definieert u de mogelijkheid om het *schema* niet te gebruiken:
+In dit voor beeld past u een Taint toe op uw GPU-knoop punt met behulp van de opdracht--node-taints. Geef de naam van uw op GPU gebaseerde knoop punt op uit de uitvoer van de vorige `kubectl get nodes` opdracht. De Taint wordt toegepast als *sleutel: waarde* en vervolgens een plannings optie. In het volgende voor beeld wordt het combi natie *SKU = GPU* gebruikt en definieert u de mogelijkheid om het *schema* niet te gebruiken:
 
 ```console
-kubectl taint node aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
+az aks nodepool --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 ```
 
 In het volgende voor beeld van een YAML-manifest wordt met behulp van een tolerantie toegestaan dat de Kubernetes scheduler een NGINX pod op het op GPU gebaseerde knoop punt uitvoert. Zie [Gpu's gebruiken voor computerintensieve werk belastingen op AKS][gpu-cluster]voor een meer geschikt, maar tijdrovende voor beeld om een tensor flow-taak uit te voeren op basis van de MNIST-gegevensset.

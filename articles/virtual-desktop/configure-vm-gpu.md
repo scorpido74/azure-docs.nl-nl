@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 64e8fab3ac352c906cfb63cd39f89acda4109b18
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953953"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719752"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>GPU-versnelling (graphics processing unit) configureren voor virtuele Windows-Bureau bladen
 
@@ -37,9 +37,9 @@ U moet ook een app-groep configureren of de standaard bureau blad-app-groep (met
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Ondersteunde grafische Stuur Programma's installeren in uw virtuele machine
 
-Als u gebruik wilt maken van de GPU-mogelijkheden van virtuele machines uit de Azure N-serie in Windows Virtual Desktop, moet u NVIDIA grafische Stuur Programma's installeren. Volg de instructies op [installatie van NVIDIA GPU-Stuur Programma's op vm's uit de N-serie met Windows](/azure/virtual-machines/windows/n-series-driver-setup) om stuur Programma's te installeren, hetzij hand matig of met de [uitbrei ding NVIDIA GPU-stuur programma](/azure/virtual-machines/extensions/hpccompute-gpu-windows).
+Als u gebruik wilt maken van de GPU-mogelijkheden van virtuele machines uit de Azure N-serie in Windows Virtual Desktop, moet u de juiste grafische Stuur Programma's installeren. Volg de instructies op de [ondersteunde besturings systemen en stuur Programma's](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) om stuur Programma's te installeren van de juiste grafische leverancier, hetzij hand matig of via een Azure VM-extensie.
 
-Houd er rekening mee dat alleen [NVIDIA-raster drivers](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) die worden gedistribueerd door Azure, worden ondersteund voor virtuele Windows-Bureau bladen.
+Alleen stuur Programma's die worden gedistribueerd door Azure, worden ondersteund voor virtuele Windows-Bureau bladen. Extra, voor virtuele Azure-machines met NVIDIA-Gpu's, worden alleen [NVIDIA-raster Stuur Programma's](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) ondersteund voor virtueel bureau blad van Windows.
 
 Na installatie van het stuur programma is het opnieuw opstarten van de virtuele machine vereist. Gebruik de verificaties tappen in de bovenstaande instructies om te controleren of grafische Stuur Programma's zijn geïnstalleerd.
 
@@ -74,7 +74,7 @@ Extern bureaublad codeert alle afbeeldingen die worden weer gegeven door apps en
 
 Voer een van de volgende handelingen uit om te controleren of apps de GPU gebruiken voor Rendering:
 
-* Gebruik het `nvidia-smi`-hulp programma zoals beschreven in [installatie van stuur programma controleren](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) om te controleren op GPU-gebruik bij het uitvoeren van uw apps.
+* Gebruik voor Azure-Vm's met een NVIDIA-GPU het `nvidia-smi`-hulp programma zoals beschreven in [installatie van stuur programma controleren](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) om te controleren op GPU-gebruik wanneer u uw apps uitvoert.
 * In ondersteunde besturingssysteem versies kunt u taak beheer gebruiken om te controleren op GPU-gebruik. Selecteer de GPU op het tabblad prestaties om te zien of apps gebruikmaken van de GPU.
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>GPU-versneld frame codering controleren
@@ -90,5 +90,5 @@ Controleren of Extern bureaublad gebruikmaakt van GPU-versneld coderen:
 
 Deze instructies moeten u uitvoeren met GPU-versnelling op een single Session Host-VM. Enkele aanvullende overwegingen voor het inschakelen van GPU-versnelling in een grotere hostgroep:
 
-* Overweeg het gebruik van de [uitbrei ding van het NVIDIA GPU-Stuur](/azure/virtual-machines/extensions/hpccompute-gpu-windows) programma om de installatie van Stuur Programma's en updates over een aantal virtuele machines te vereenvoudigen.
+* U kunt een [VM-extensie](/azure/virtual-machines/extensions/overview) gebruiken om de installatie van het stuur programma en updates van een aantal virtuele machines te vereenvoudigen. Gebruik de [uitbrei ding NVIDIA GPU-stuur programma](/azure/virtual-machines/extensions/hpccompute-gpu-windows) voor VM'S met NVIDIA-gpu's en gebruik de extensie van het AMD GPU-stuur programma (binnenkort beschikbaar) voor VM'S met AMD-gpu's.
 * Overweeg het gebruik van Active Directory groepsbeleid om de configuratie van groeps beleid te vereenvoudigen over een aantal Vm's. Zie [werken met Groepsbeleid-objecten](https://go.microsoft.com/fwlink/p/?LinkId=620889)voor meer informatie over het implementeren van Groepsbeleid in het Active Directory domein.

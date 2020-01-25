@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6a107936d290609fec73d46a93a277c3bdcce354
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: affa182145645b9a91801a9c6b38e682e6bd77ec
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832919"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720058"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Over sleutels, geheimen en certificaten
 
@@ -76,7 +76,7 @@ Waar:
 |`keyvault-name`|De naam voor een sleutel kluis in de Microsoft Azure Key Vault-service.<br /><br /> Key Vault namen worden geselecteerd door de gebruiker en zijn wereld wijd uniek.<br /><br /> Key Vault naam moet een teken reeks van 3-24 zijn die alleen 0-9, a-z, A-Z en-bevat.|  
 |`object-type`|Het type van het object, hetzij "sleutels" of "geheimen".|  
 |`object-name`|Een `object-name` is een door de gebruiker ingevoerde naam voor en moet uniek zijn binnen een Key Vault. De naam moet een teken reeks van 1-127 zijn die alleen 0-9, a-z, A-Z en-bevat.|  
-|`object-version`|Een `object-version` is een door het systeem gegenereerde 32 teken reeks-id die optioneel kan worden gebruikt * o-adres een unieke versie van een object.|  
+|`object-version`|Een `object-version` is een door het systeem gegenereerde 32 teken reeks-id die optioneel wordt gebruikt om een unieke versie van een object aan te pakken.|  
 
 ## <a name="key-vault-keys"></a>Key Vault sleutels
 
@@ -166,7 +166,7 @@ Zie [JSON Web Key (JWK) (Engelstalig)](https://tools.ietf.org/html/draft-ietf-jo
 
 ###  <a name="key-attributes"></a>Sleutel kenmerken
 
-Naast de instellingen voor sleutels kunnen de volgende kenmerken worden opgegeven. In een JSON-aanvraag zijn de kenmerken tref woord en accolades, {}} vereist, zelfs als er geen kenmerken zijn opgegeven.  
+Naast het sleutel materiaal kunnen de volgende kenmerken worden opgegeven. In een JSON-aanvraag zijn de kenmerken tref woord en accolades, {}} vereist, zelfs als er geen kenmerken zijn opgegeven.  
 
 - *ingeschakeld*: Boole, optioneel, standaard waarde is **True**. Hiermee geeft u op of de sleutel is ingeschakeld en bruikbaar is voor cryptografische bewerkingen. Het kenmerk *enabled* wordt gebruikt in combi natie met *NBF* en *exp*. Wanneer een bewerking plaatsvindt tussen *NBF* en *exp*, wordt deze alleen toegestaan als *ingeschakeld* is ingesteld op **waar**. Bewerkingen buiten het venster *nbf* / *exp* worden automatisch niet toegestaan, met uitzonde ring van bepaalde bewerkings typen onder [bepaalde voor waarden](#date-time-controlled-operations).
 - *NBF*: IntDate, optioneel, standaard is nu. Het kenmerk *NBF* (niet voor) geeft aan hoe lang de sleutel niet moet worden gebruikt voor cryptografische bewerkingen, met uitzonde ring van bepaalde typen bewerkingen onder [bepaalde voor waarden](#date-time-controlled-operations). Voor de verwerking van het *NBF* -kenmerk moet de huidige datum/tijd na of gelijk zijn aan de niet-voor-datum/-tijd die wordt vermeld in het *NBF* -kenmerk. Key Vault kan worden geboden voor sommige kleine Leeway, normaal gesp roken niet meer dan een paar minuten, om rekening te trekken met Clock scheefheid. De waarde moet een getal zijn dat een IntDate-waarde bevat.  
@@ -230,7 +230,7 @@ Voor meer informatie over het werken met sleutels raadpleegt u [belang rijke bew
 
 Vanuit het oogpunt van een ontwikkelaar Key Vault Api's accepteren en geheime waarden retour neren als teken reeksen. Intern worden geheimen door Key Vault opgeslagen en beheerd als reeksen van octetten (8-bits bytes), met een maximale grootte van 25k bytes. De Key Vault-service biedt geen semantiek voor geheimen. Alleen de gegevens worden geaccepteerd, versleuteld, opgeslagen en een geheime id (' id ') wordt geretourneerd. De id kan worden gebruikt om het geheim op een later tijdstip op te halen.  
 
-In het geval van zeer gevoelige gegevens is het raadzaam dat klanten extra beveiligingslagen overwegen. Dit kan bijvoorbeeld door het versleutelen van gegevens met behulp van een afzonderlijke beveiligingssleutel vóór de opslag in Key Vault.  
+Voor zeer gevoelige gegevens moeten clients extra beveiligings lagen voor gegevens overwegen. Het versleutelen van gegevens met behulp van een afzonderlijke beveiligings sleutel vóór opslag in Key Vault is een voor beeld.  
 
 Key Vault biedt ook ondersteuning voor een veld Content type voor geheimen. Clients kunnen het inhouds type van een geheim opgeven om te helpen bij het interpreteren van de geheime gegevens wanneer deze worden opgehaald. De maximale lengte van dit veld is 255 tekens. Er zijn geen vooraf gedefinieerde waarden. Het voorgestelde gebruik is als hint voor het interpreteren van de geheime gegevens. Een implementatie kan bijvoorbeeld beide wacht woorden en certificaten opslaan als geheimen en vervolgens dit veld gebruiken om onderscheid te maken. Er zijn geen vooraf gedefinieerde waarden.  
 
@@ -372,7 +372,7 @@ De volgende tabel geeft de toewijzing van het beleid voor x509-sleutel gebruik a
 |Authentic|ondertekenen, controleren| N/A |
 |crlsign|ondertekenen, controleren| N/A |
 
-### <a name="certificate-issuer"></a>Certificaatverlener
+### <a name="certificate-issuer"></a>Certificaat verlener
 
 Een Key Vault certificaat object bevat een configuratie die wordt gebruikt om te communiceren met een geselecteerde certificaat verlener-provider om x509-certificaten te best Ellen.  
 

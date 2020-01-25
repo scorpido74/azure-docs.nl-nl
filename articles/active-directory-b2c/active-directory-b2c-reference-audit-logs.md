@@ -12,12 +12,12 @@ ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: feefe7cf6d559360defd7c7f830a9e3f2e583cd6
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e79b2342f481786caf46aeb9454e2961637da335
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948229"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712933"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Toegang tot Azure AD B2C controle logboeken
 
@@ -53,10 +53,10 @@ Het deel venster activity Details bevat de volgende relevante informatie:
 
 |Sectie|Veld|Beschrijving|
 |-------|-----|-----------|
-| Activiteit | Naam | Welke activiteit heeft plaatsgevonden. *Geef bijvoorbeeld een id_token voor de toepassing op*, waarmee de werkelijke gebruikers aanmelding wordt beëindigd. |
-| Gestart door (actor) | ObjectId | De **object-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. Deze id is niet zichtbaar in de Azure Portal, maar is toegankelijk via de Microsoft Graph-API. |
+| Activiteit | Name | Welke activiteit heeft plaatsgevonden. *Geef bijvoorbeeld een id_token voor de toepassing op*, waarmee de werkelijke gebruikers aanmelding wordt beëindigd. |
+| Gestart door (actor) | Id | De **object-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. Deze id is niet zichtbaar in de Azure Portal, maar is toegankelijk via de Microsoft Graph-API. |
 | Gestart door (actor) | SPN | De **toepassings-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. |
-| Doel(en) | ObjectId | De **object-id** van de gebruiker die zich aanmeldt. |
+| Doel (en) | Id | De **object-id** van de gebruiker die zich aanmeldt. |
 | Aanvullende details | TenantId | De **Tenant-id** van de Azure AD B2C Tenant. |
 | Aanvullende details | PolicyId | De **beleids-id** van de gebruikers stroom (het beleid) dat wordt gebruikt voor het ondertekenen van de gebruiker in. |
 | Aanvullende details | ApplicationId | De **toepassings-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. |
@@ -165,7 +165,7 @@ Write-Output "Searching for events starting $7daysago"
 $body       = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
 $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
 
-# Parse audit report items, save output to file(s): auditX.json, where X = 0 thru n for number of nextLink pages
+# Parse audit report items, save output to file(s): auditX.json, where X = 0 through n for number of nextLink pages
 if ($oauth.access_token -ne $null) {
     $i=0
     $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}

@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 86ed494d3a6005ae74ee3f1aa4d5aa53ffc3098e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b538196467ba1d69e679a111ca313f922738b048
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931162"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716018"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider voor .NET core ILogger-logboeken
 
@@ -29,7 +29,7 @@ ApplicationInsightsLoggerProvider is standaard ingeschakeld in [micro soft. Appl
 
 ILogger logboeken die ApplicationInsightsLoggerProvider Capture ondervinden, zijn onderhevig aan dezelfde configuratie als andere telemetrie die worden verzameld. Ze hebben dezelfde set TelemetryInitializers en TelemetryProcessors, gebruiken dezelfde TelemetryChannel en worden gecorreleerd en gesampled op dezelfde manier als andere telemetrie. Als u versie 2.7.1 of hoger gebruikt, hoeft u geen actie te ondernemen voor het vastleggen van ILogger-Logboeken.
 
-Alleen *waarschuwingen* of hogere ILogger-Logboeken (uit alle categorieën) worden standaard naar Application Insights verzonden. Maar u kunt [filters toep assen om dit gedrag te wijzigen](#control-logging-level). Er zijn aanvullende stappen vereist voor het vastleggen van ILogger-logboeken van **Program.cs** of **Startup.cs**. (Zie [ILogger-logboeken vastleggen vanuit startup.cs en Program.cs in ASP.net core-toepassingen](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
+Alleen *waarschuwingen* of hogere ILogger-Logboeken (uit alle [Categorieën](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-category)) worden standaard naar Application Insights verzonden. Maar u kunt [filters toep assen om dit gedrag te wijzigen](#control-logging-level). Er zijn aanvullende stappen vereist voor het vastleggen van ILogger-logboeken van **Program.cs** of **Startup.cs**. (Zie [ILogger-logboeken vastleggen vanuit startup.cs en Program.cs in ASP.net core-toepassingen](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
 
 Als u een eerdere versie van micro soft. ApplicationInsights. AspNet-SDK gebruikt of als u alleen ApplicationInsightsLoggerProvider zonder andere Application Insights bewaking wilt gebruiken, gebruikt u de volgende procedure:
 

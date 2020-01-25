@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/23/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85987ca1ff7d2dd204d0a501367efffc8277f138
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86390132be0440b197b680803e5b6032670a7d1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939914"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721027"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>Isolatie groep van SQL Data Warehouse werk belasting (preview-versie)
 
@@ -32,7 +32,7 @@ In de volgende secties wordt uitgelegd hoe werkbelasting groepen de mogelijkheid
 
 Isolatie van werk belasting betekent dat resources gereserveerd zijn, uitsluitend voor een werkbelasting groep.  De isolatie van de werk belasting wordt bereikt door de para meter MIN_PERCENTAGE_RESOURCE in te stellen op een waarde groter dan nul in de syntaxis van de [groep werk belasting maken](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) .  Voor doorlopende uitvoerings werkbelastingen die moeten voldoen aan de strakke Sla's, wordt door isolatie gegarandeerd dat resources altijd beschikbaar zijn voor de werkbelasting groep. 
 
-Door workload-isolatie te configureren, wordt impliciet een gegarandeerd niveau van gelijktijdigheid gedefinieerd. Als een MIN_PERCENTAGE_RESOURCE is ingesteld op 30% en REQUEST_MIN_RESOURCE_GRANT_PERCENT is ingesteld op 2%, wordt een 15-gelijktijdigheids niveau gegarandeerd voor de werkbelasting groep.  Bekijk de onderstaande methode voor het bepalen van gegarandeerde gelijktijdigheid:
+Door workload-isolatie te configureren, wordt impliciet een gegarandeerd niveau van gelijktijdigheid gedefinieerd. Een werkbelasting groep waarvoor een `MIN_PERCENTAGE_RESOURCE` is ingesteld op 30% en `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ingesteld op 2% is bijvoorbeeld gegarandeerd 15 gelijktijdigheid.  Het niveau van gelijktijdigheid wordt gegarandeerd omdat 15-2%-sleuven van resources op elk moment worden gereserveerd in de werkbelasting groep (ongeacht hoe `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` is geconfigureerd).  Als `REQUEST_MAX_RESOURCE_GRANT_PERCENT` groter is dan `REQUEST_MIN_RESOURCE_GRANT_PERCENT` en `CAP_PERCENTAGE_RESOURCE` groter is dan `MIN_PERCENTAGE_RESOURCE` extra resources worden toegevoegd per aanvraag.  Als `REQUEST_MAX_RESOURCE_GRANT_PERCENT` en `REQUEST_MIN_RESOURCE_GRANT_PERCENT` gelijk zijn en `CAP_PERCENTAGE_RESOURCE` groter is dan `MIN_PERCENTAGE_RESOURCE`, is verdere gelijktijdigheid mogelijk.  Bekijk de onderstaande methode voor het bepalen van gegarandeerde gelijktijdigheid:
 
 [Gegarandeerde gelijktijdigheid] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 

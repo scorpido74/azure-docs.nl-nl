@@ -3,20 +3,20 @@ title: Met Spark gebouwde machine learning-modellen - Team Data Science Process
 description: Het laden en die zijn opgeslagen in Azure Blob Storage (WASB) met Python learning-modellen te beoordelen.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dd0467479960df30b1d44aeaef7ed0ed0d6c2a87
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f02690d7c54581ed80b521e8222d1bd5964c878
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253184"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718545"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Met Spark gebouwde machine learning-modellen
 
@@ -35,7 +35,7 @@ Vervang voor het wijzigen van de Jupyter-notebook voor Spark 1.6 voor gebruik me
 ## <a name="prerequisites"></a>Vereisten
 
 1. U moet een Azure-account en een Spark 1.6 (of Spark 2.0) HDInsight-cluster voor dit scenario. Zie de [overzicht van Gegevenswetenschap met Spark op Azure HDInsight](spark-overview.md) voor instructies over het voldoen aan deze vereisten. Dit onderwerp bevat ook een beschrijving van de hier gebruikte NYC 2013 Taxi-gegevens en instructies over hoe u code uitvoeren van een Jupyter-notebook in Spark-cluster. 
-2. U moet ook maken met de machine learning-modellen hier worden bepaald door het uitvoeren van de [met Spark gegevens verkennen en modelleren](spark-data-exploration-modeling.md) onderwerp voor het cluster Spark 1.6 of de Spark 2.0-notebooks. 
+2. Maak de machine learning modellen die u hier kunt beoordeelt door de [gegevens te verkennen en te model leren met het Spark](spark-data-exploration-modeling.md) -onderwerp voor het Spark 1,6-cluster of de Spark 2,0-notebooks. 
 3. De Spark 2.0-notebooks gebruiken een aanvullende gegevensset voor de classificatietaak, de bekende gegevensset op tijd vertrek luchtvaartmaatschappij in 2011 en 2012. Een beschrijving van de laptops en koppelingen naar deze vindt u in de [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) voor de GitHub-opslagplaats die ze bevatten. Bovendien is de code hier en in de gekoppelde notebooks is algemeen en werkt op een Spark-cluster. Als u niet met behulp van HDInsight Spark, configureren van het cluster en beheertaken uit kunnen enigszins afwijken van wat wordt hier weergegeven. 
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
@@ -104,7 +104,7 @@ Spark-context instellen en importeren van de vereiste bibliotheken door de volge
 
 
 ### <a name="preset-spark-context-and-pyspark-magics"></a>Vooraf ingestelde Spark-context en PySpark magics
-De PySpark-kernels die worden geleverd met Jupyter-notebooks hebben een vooraf ingestelde context. Zo hoeft u niet om in te stellen van de Spark of Hive-contexten expliciet voordat u begint met het werken met de toepassing die u ontwikkelt. Dit zijn standaard beschikbaar voor u. Deze context zijn:
+De PySpark-kernels die worden geleverd met Jupyter-notebooks hebben een vooraf ingestelde context. Daarom hoeft u de Spark-of Hive-contexten expliciet niet in te stellen voordat u begint te werken met de toepassing die u ontwikkelt. Deze contexten zijn standaard beschikbaar:
 
 * SC - voor Spark 
 * sqlContext - voor Hive
@@ -112,7 +112,7 @@ De PySpark-kernels die worden geleverd met Jupyter-notebooks hebben een vooraf i
 De PySpark-kernel biedt enkele vooraf gedefinieerde "kunt", die zijn speciale opdrachten die u met aanroepen kunt %%. Er zijn twee dergelijke opdrachten die worden gebruikt in deze voorbeelden van code.
 
 * **%% lokale** opgegeven dat de code in de volgende regels lokaal wordt uitgevoerd. Code moet geldige Python-code.
-* **%% sql -o \<variabelenaam >** 
+* **%% SQL-o \<naam van variabele >** 
 * Voert een Hive-query op de sqlContext. Als de parameter -o wordt doorgegeven, het resultaat van de query worden bewaard de %% lokale Python-context als een Pandas dataframe.
 
 Voor meer informatie over de kernels voor Jupyter notebooks en de vooraf gedefinieerde "magics" die ze leveren en Zie [beschikbare Kernels voor Jupyter-notebooks met HDInsight Spark Linux-clusters in HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
@@ -120,7 +120,7 @@ Voor meer informatie over de kernels voor Jupyter notebooks en de vooraf gedefin
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>Opname van gegevens en een opgeschoonde gegevensframe maken
 In deze sectie bevat de code voor een reeks taken die vereist zijn voor opname van de gegevens die moeten worden beoordeeld. Lees in een gekoppelde 0,1% voorbeeld van het taxi reis- en tarief-bestand (opgeslagen als een bestand .tsv) indeling de gegevens en maakt vervolgens een schone gegevensframe.
 
-De taxi reis- en tarief-bestanden zijn toegevoegd op basis van de procedure die is opgegeven in de: [Het Team Data Science Process in actie: met behulp van HDInsight Hadoop-clusters](hive-walkthrough.md) onderwerp.
+De taxi reis- en tarief-bestanden zijn toegevoegd op basis van de procedure die is opgegeven in de: [het Team Data Science Process in actie: met behulp van HDInsight Hadoop-clusters](hive-walkthrough.md) onderwerp.
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -257,7 +257,7 @@ De [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.pre
 Gebruikte tijd voor het uitvoeren van boven cel: 5,37 seconden
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>RDD-objecten met een functie-matrices voor invoer in modellen maken
-In deze sectie bevat de code die laat hoe u categorische gegevens als een object RDD index en deze een hot coderen zien, zodat deze kan worden gebruikt om te trainen en testen MLlib logistieke regressie en modellen op basis van een structuur. De geïndexeerde gegevens worden opgeslagen in [Resilient Distributed gegevensset (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objecten. Dit zijn de fundamentele abstrahering in Spark. Een RDD-object vertegenwoordigt een onveranderbare, gepartitioneerde verzameling van elementen die kunnen worden uitgevoerd op in combinatie met Spark.
+In deze sectie bevat de code die laat hoe u categorische gegevens als een object RDD index en deze een hot coderen zien, zodat deze kan worden gebruikt om te trainen en testen MLlib logistieke regressie en modellen op basis van een structuur. De geïndexeerde gegevens worden opgeslagen in [Resilient Distributed gegevensset (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objecten. De Rdd's zijn de basis abstractie in Spark. Een RDD-object vertegenwoordigt een onveranderbare, gepartitioneerde verzameling van elementen die kunnen worden uitgevoerd op in combinatie met Spark.
 
 Het bevat ook code die laat hoe u zien voor het schalen van gegevens met de `StandardScalar` geleverd door MLlib voor gebruik in de lineaire regressie met stochastische kleurovergang afkomst (SGD), een populaire algoritme voor het trainen van een breed scala aan machine learning-modellen. De [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) wordt gebruikt voor het schalen van de functies verschillen eenheid. Functie schalen, ook wel bekend als de gegevens normaliseren, weet u zeker dat functies met veel betaald waarden zijn niet opgegeven overmatige wegen de servicedoelstelling functie. 
 
@@ -443,9 +443,9 @@ Gebruikte tijd voor het uitvoeren van boven cel: 31.07 seconden
 ## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a>Classificatie- en regressiemodellen kleurovergang versterking structuur-modellen te beoordelen
 De code in deze sectie wordt beschreven hoe classificatie- en regressiemodellen kleurovergang versterking structuur Modellen laden vanuit Azure blob storage, hun prestaties met een standard-classificatie en regressie maatregelen te beoordelen en de resultaten vervolgens terug naar de blob-opslag opslaan. 
 
-**Spark.mllib** GBTs voor binaire classificatie en voor regressie, met behulp van doorlopende en categorische functies ondersteunt. 
+**Spark. mllib** ondersteunt GBTS voor binaire classificatie en voor regressie, met behulp van doorlopende en categorische-functies. 
 
-[Gradient Boosting structuren](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) ensembles van beslissingsstructuren zijn. GBTs trainen beslisbomen iteratief te minimaliseren, een functie verloren gaan. GBTs categorische functies kunnen worden verwerkt, vereisen geen functie schaalaanpassing en kunnen niet-mogelijkheid tot vastleggen en functie van interacties. Ze kunnen ook worden gebruikt in een multiklasse-classificatie.
+GBTS ( [Gradient Boosting trees](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) ) zijn ensembles van beslissings structuren. GBTSer boom structuren van de trein om een verlies functie te minimaliseren. GBTS kan categorische-functies afhandelen, geen functie schaaling vereisen en niet-lineaire en functie-interacties vastleggen. Dit algoritme kan ook worden gebruikt in een instelling met een classificatie met een hoge klasse.
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -524,7 +524,7 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Spark-modellen gebruiken via een webinterface.
-Spark biedt een mechanisme om in te dienen op afstand batch-taken of interactieve query's via een REST-interface met een component, genaamd Livy. Livy is standaard ingeschakeld op uw HDInsight Spark-cluster. Zie voor meer informatie over Livy: [Indienen van Spark-taken op afstand met behulp van Livy](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
+Spark biedt een mechanisme om in te dienen op afstand batch-taken of interactieve query's via een REST-interface met een component, genaamd Livy. Livy is standaard ingeschakeld op uw HDInsight Spark-cluster. Zie voor meer informatie over Livy: [indienen Spark-taken op afstand met behulp van Livy](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 U kunt Livy gebruiken om in te dienen op afstand een taak die door de batch scores een bestand dat is opgeslagen in een Azure-blob en vervolgens schrijft de resultaten naar een andere blob. U doet dit door uploaden u de Python-script uit  
 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) naar de blob van het Spark-cluster. U kunt een hulpprogramma zoals **Microsoft Azure Storage Explorer** of **AzCopy** het script kopiëren naar de cluster-blob. In ons geval wordt het script hebt geüpload ***wasb:///example/python/ConsumeGBNYCReg.py***.   
@@ -586,6 +586,6 @@ Als u liever een gratis Clientervaring van code, gebruikt u de [Azure Logic Apps
 
 ![Ontwerper van logische apps](./media/spark-model-consumption/spark-logica-app-client.png)
 
-## <a name="whats-next"></a>Volgende stappen
+## <a name="whats-next"></a>En verder?
 **Kruisvalidatie en hyperparameter sweeping**: Zie [geavanceerde met Spark gegevens verkennen en modelleren](spark-advanced-data-exploration-modeling.md) op hoe de modellen kunnen worden getraind met behulp van kruisvalidatie en hyper-parameter sweeping.
 

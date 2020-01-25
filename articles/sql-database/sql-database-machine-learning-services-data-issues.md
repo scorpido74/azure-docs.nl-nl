@@ -1,7 +1,7 @@
 ---
-title: Werken met R- en SQL-gegevenstypen en objecten
+title: Werken met R-en SQL-gegevens typen en-objecten
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Informatie over het werken met de gegevenstypen en objecten in R met Azure SQL Database met behulp van Machine Learning Services (preview), met inbegrip van veelvoorkomende problemen die kunnen optreden.
+description: Meer informatie over het werken met gegevens typen en gegevens objecten in R met Azure SQL Database met behulp van Machine Learning Services (preview), waaronder veelvoorkomende problemen die kunnen optreden.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,23 +13,23 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 01d3af14963e92393d34a952bddc8097b7b08f18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7dfd12729c5697d1935d098cbd4ed863a4551acd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232611"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719871"
 ---
-# <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Werken met R- en SQL-gegevens in Azure SQL Database Machine Learning Services (preview)
+# <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Werken met R-en SQL-gegevens in Azure SQL Database Machine Learning Services (preview-versie)
 
-In dit artikel komen enkele van de problemen die optreden kunnen tijdens het verplaatsen van gegevens tussen de R- en SQL-Database in [Machine Learning-Services (met R) in Azure SQL Database](sql-database-machine-learning-services-overview.md). De ervaring u via deze oefening krijgt bevat essentiële achtergrond bij het werken met gegevens in uw eigen script.
+In dit artikel worden enkele veelvoorkomende problemen besproken die kunnen optreden bij het verplaatsen van gegevens tussen R en SQL Database in [Machine Learning Services (met R) in Azure SQL database](sql-database-machine-learning-services-overview.md). De ervaring die u in deze oefening krijgt, biedt essentiële achtergrond bij het werken met gegevens in uw eigen script.
 
-Veelvoorkomende problemen die kunnen optreden zijn onder andere:
+Veelvoorkomende problemen die u kunt tegen komen, zijn onder andere:
 
-- Gegevenstypen soms komen niet overeen
+- Gegevens typen komen soms niet overeen
 - Impliciete conversies kunnen plaatsvinden
-- Cast en converteren naar bewerkingen zijn soms vereist
-- R- en SQL gebruikmaken van verschillende objecten
+- Conversie-en conversie bewerkingen zijn soms vereist
+- R en SQL gebruiken verschillende gegevens objecten
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -37,17 +37,17 @@ Veelvoorkomende problemen die kunnen optreden zijn onder andere:
 
 - Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/) voordat u begint.
 
-- Als u wilt uitvoeren met de voorbeeldcode in deze oefeningen, moet u eerst een Azure SQL database met Machine Learning-Services (met R) ingeschakeld hebben. Na de onboarding voor de openbare preview wordt Machine Learning voor u ingeschakeld voor uw bestaande of nieuwe database. Volg de stappen in [Meld u aan voor de preview-versie](sql-database-machine-learning-services-overview.md#signup).
+- Als u de voorbeeld code in deze oefeningen wilt uitvoeren, moet u eerst een Azure-SQL database hebben met Machine Learning Services (met R) ingeschakeld. Na de onboarding voor de openbare preview wordt Machine Learning voor u ingeschakeld voor uw bestaande of nieuwe database. Volg de stappen in [Meld u aan voor de preview-versie](sql-database-machine-learning-services-overview.md#signup).
 
-- Zorg ervoor dat u hebt de meest recente geïnstalleerd [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). U kunt R-scripts met behulp van het beheer van andere databases of hulpmiddelen voor query's uitvoeren, maar in deze snelstartgids gebruikt u SSMS.
+- Zorg ervoor dat u de nieuwste versie van [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) hebt geïnstalleerd. U kunt R-scripts uitvoeren met andere database beheer-of query hulpprogramma's, maar in deze Snelstartgids gebruikt u SSMS.
 
-## <a name="working-with-a-data-frame"></a>Werken met een gegevensframe
+## <a name="working-with-a-data-frame"></a>Werken met een gegevens frame
 
-Wanneer het script resultaten van R met SQL retourneert, moet deze de gegevens op als retourneren een **data.frame**. Een ander type object dat u in de script - of die een lijst, van meerdere factoren, vector of binaire gegevens - moet worden geconverteerd naar een gegevensframe als u wilt uitvoeren als onderdeel van de resultaten van de opgeslagen procedure. Gelukkig zijn er meerdere R-functies voor de ondersteuning van andere objecten naar een gegevensframe wijzigen. U kunt zelfs een binaire model serialiseren en terug in een gegevensframe, u verderop in dit artikel doet.
+Wanneer uw script resultaten van R naar SQL retourneert, moeten de gegevens worden geretourneerd als een **gegevens. frame**. Elk ander type object dat u in uw script genereert: of dit een lijst, factor, vector of binaire gegevens is, moet worden geconverteerd naar een gegevens frame als u het wilt uitvoeren als onderdeel van de opgeslagen procedure resultaten. Gelukkig kunnen er meerdere R-functies worden ondersteund voor het wijzigen van andere objecten in een gegevens frame. U kunt zelfs een binair model serialiseren en dit retour neren in een gegevens frame, dat u later in dit artikel gaat doen.
 
-Eerst gaan we experimenteren met enkele R basisobjecten - vectoren, matrices en lijsten - en zien hoe de conversie naar een gegevensframe verandert de uitvoer die wordt doorgegeven aan SQL.
+Eerst gaan we experimenteren met enkele Basic R-objecten-vectoren,-matrices en-lijsten, en zien hoe conversie naar een gegevens frame de uitvoer wijzigt die is door gegeven aan SQL.
 
-Deze twee "Hallo wereld"-scripts in R. vergelijken De scripts zien er bijna identiek, maar de eerste retourneert één kolom van drie waarden, terwijl de tweede retourneert drie kolommen met één waarde elk.
+Vergelijk deze twee ' Hallo wereld-scripts in R. De scripts zien er bijna identiek uit, maar de eerste retourneert één kolom van drie waarden, terwijl de tweede drie kolommen retourneert met één waarde elk.
 
 **Voorbeeld 1**
 
@@ -67,13 +67,13 @@ EXECUTE sp_execute_external_script @language = N'R'
     , @input_data_1 = N'';
 ```
 
-Waarom zijn de resultaten waardoor er verschillende?
+Waarom zijn de resultaten anders?
 
-Het antwoord kan doorgaans worden gevonden met behulp van de R `str()` opdracht. Voeg de functie `str(object_name)` overal in uw R-script om de gegevens schema van de opgegeven R-object geretourneerd als een informatief bericht. U vindt de berichten in de **berichten** tabblad in SSMS.
+Het antwoord kan meestal worden gevonden met behulp van de R-`str()` opdracht. Voeg de functie `str(object_name)` overal in uw R-script toe zodat het gegevens schema van het opgegeven R-object als een informatief bericht wordt geretourneerd. U kunt de berichten weer geven op het tabblad **berichten** in SSMS.
 
-Als u wilt weten waarom voorbeeld 1 en 2 van voorbeeld die verschillende resultaten hebt, voeg de regel `str(OutputDataSet)` aan het einde van de `@script` variabeledefinitie in elke instructie als volgt:
+Als u wilt weten waarom voor beeld 1 en voor beeld 2 dergelijke verschillende resultaten hebben, voegt u de regel `str(OutputDataSet)` toe aan het einde van de definitie van de `@script` variabele in elke instructie, zoals:
 
-**Voorbeeld 1 met str functie toegevoegd**
+**Voor beeld 1 met de functie Str toegevoegd**
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -85,7 +85,7 @@ str(OutputDataSet);
     , @input_data_1 = N'  ';
 ```
 
-**Voorbeeld 2 met str functie toegevoegd**
+**Voor beeld 2 met de functie Str toegevoegd**
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -96,9 +96,9 @@ str(OutputDataSet);
     , @input_data_1 = N'  ';
 ```
 
-Bekijk nu de tekst in **berichten** om te zien waarom de uitvoer is anders.
+Bekijk nu de tekst in **berichten** om te zien waarom de uitvoer afwijkt.
 
-**Resultaten - voorbeeld 1**
+**Resultaten-voor beeld 1**
 
 ```text
 STDOUT message(s) from external script:
@@ -106,7 +106,7 @@ STDOUT message(s) from external script:
 $ mytextvariable: Factor w/ 3 levels " ","hello","world": 2 1 3
 ```
 
-**Resultaten - voorbeeld 2**
+**Resultaten-voor beeld 2**
 
 ```text
 STDOUT message(s) from external script:
@@ -116,20 +116,20 @@ $ X...      : Factor w/ 1 level " ": 1
 $ c..world..: Factor w/ 1 level "world": 1
 ```
 
-Zoals u ziet, heeft een kleine wijziging in de R-syntaxis een grote invloed op het schema van de resultaten. Voor meer informatie de verschillen in de R-gegevenstypen worden beschreven in de details in de *gegevensstructuren* in sectie ['R geavanceerde' door Hadley Wickham](http://adv-r.had.co.nz).
+Zoals u kunt zien, heeft een kleine wijziging in de R-syntaxis een groot effect op het schema van de resultaten. Voor alle details worden de verschillen in R-gegevens typen uitgelegd in de sectie *gegevens structuren* in [' geavanceerde R ' door Hadley Wickham](http://adv-r.had.co.nz).
 
-Op dit moment alleen worden Let op: u moet de verwachte resultaten controleren wanneer bij R-objecten in gegevensframes toewijzen.
+U moet er nu voor kiezen dat u de verwachte resultaten wilt controleren bij het afdwingen van R-objecten in gegevens frames.
 
 > [!TIP]
-> Ook kunt u R-functies voor identiteit, zoals `is.matrix`, `is.vector`, om informatie over de structuur van de interne gegevens te retourneren.
+> U kunt ook R-identiteits functies, zoals `is.matrix`, `is.vector`gebruiken om informatie over de interne gegevens structuur te retour neren.
 
-## <a name="implicit-conversion-of-data-objects"></a>De impliciete conversie van objecten
+## <a name="implicit-conversion-of-data-objects"></a>Impliciete conversie van gegevens objecten
 
-Elke R-gegevens-object heeft eigen regels voor hoe waarden worden verwerkt als de twee objecten hebben die hetzelfde aantal dimensies in combinatie met andere objecten, of als een object voor heterogene gegevenstypen bevat.
+Elk R-gegevens object heeft zijn eigen regels voor het verwerken van waarden in combi natie met andere gegevens objecten als de twee gegevens objecten hetzelfde aantal dimensies hebben, of als een gegevens object heterogene gegevens typen bevat.
 
-Bijvoorbeeld, wordt ervan uitgegaan dat u wilt uitvoeren van de matrix vermenigvuldigen met R. U wilt een matrix met één kolom met de drie waarden vermenigvuldigen met een matrix met vier waarden en een matrix met 4 x 3 als gevolg hiervan wordt verwacht.
+Stel dat u een matrix vermenigvuldiging wilt uitvoeren met R. U wilt een matrix met één kolom met de drie waarden vermenigvuldigen met een matrix met vier waarden en een 4x3 matrix verwachten als resultaat.
 
-Maak eerst een kleine tabel met testgegevens.
+Maak eerst een kleine tabel met test gegevens.
 
 ```sql
 CREATE TABLE RTestData (col1 INT NOT NULL)
@@ -145,7 +145,7 @@ VALUES (100);
 GO
 ```
 
-Voer nu het volgende script.
+Voer nu het volgende script uit.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -163,17 +163,17 @@ WITH RESULT SETS((
             ));
 ```
 
-De kolom van drie waarden wordt op de achtergrond geconverteerd naar een matrix met één kolom. Omdat een matrix slechts een speciaal geval van een matrix in R, de matrix is `y` is impliciet gedwongen naar een matrix met één kolom te maken van de twee argumenten voldoen.
+Onder de kaften wordt de kolom van drie waarden geconverteerd naar een matrix met één kolom. Omdat een matrix slechts een speciaal geval is in een matrix in R, wordt de matrix `y` impliciet gedwongen naar een matrix met één kolom om de twee argumenten te laten voldoen.
 
 **Results**
 
-|Col1|Col2|Col3|Col4|
+|Kol1|Col2|Col3|Col4|
 |---|---|---|---|
 |12|13|14|15|
 |120|130|140|150|
 |1200|1300|1400|1500|
 
-Bedenk wat er gebeurt wanneer u de grootte van de matrix `y`.
+Houd er echter rekening mee wat er gebeurt wanneer u de grootte van de matrix wijzigt `y`.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -186,21 +186,21 @@ OutputDataSet <- as.data.frame(y %*% x);
 WITH RESULT SETS(([Col1] INT));
 ```
 
-R wordt nu een enkelvoudige waarde geretourneerd als het resultaat.
+R retourneert nu één waarde als resultaat.
 
 **Results**
     
-|Col1|
+|Kol1|
 |---|
 |1542|
 
-Hoe komt dat? In dit geval, omdat de twee argumenten kunnen worden verwerkt als vectoren met dezelfde lengte, retourneert R de binnenste als een matrix.  Dit is het verwachte gedrag volgens de regels van lineair wiskundige. Het kan echter problemen veroorzaken als uw downstream-toepassing wordt verwacht dat het uitvoerschema nooit wijzigen.
+Waarom? In dit geval, omdat de twee argumenten als vectoren van dezelfde lengte kunnen worden verwerkt, retourneert R het binnenste product als een matrix.  Dit is het verwachte gedrag volgens de regels van lineaire algebra. Dit kan echter problemen veroorzaken als uw downstream-toepassing verwacht dat het uitvoer schema nooit wordt gewijzigd.
 
-## <a name="merge-or-multiply-columns-of-different-length"></a>Samenvoegen of kolommen van verschillende lengtes vermenigvuldigen
+## <a name="merge-or-multiply-columns-of-different-length"></a>Kolommen met een andere lengte samen voegen of vermenigvuldigen
 
-R biedt hoge mate van flexibiliteit voor het werken met vectoren van verschillende grootte en voor het combineren van deze structuren voor kolom-achtige in gegevensframes. Lijsten van vectoren kunnen er uitzien als een tabel, maar ze niet alle regels die databasetabellen bepalen volgen.
+R biedt een uitstekende flexibiliteit voor het werken met vectoren van verschillende grootten en voor het combi neren van deze kolom achtige structuren in gegevens frames. Lijsten met vectoren kunnen eruitzien als een tabel, maar ze volgen niet alle regels die database tabellen regelen.
 
-Bijvoorbeeld het volgende script definieert een numerieke matrix van de lengte van 6 en slaat ze op in de R-variabele `df1`. De numerieke matrix vervolgens wordt gecombineerd met de gehele getallen van de RTestData-tabel (hierboven gemaakte) die bevat drie (3) waarden, zodat een nieuwe gegevensframe `df2`.
+Het volgende script definieert bijvoorbeeld een numerieke matrix met de lengte 6 en slaat deze op in de R-variabele `df1`. De numerieke matrix wordt vervolgens gecombineerd met de gehele getallen van de RTestData-tabel (hierboven gemaakt) die drie (3) waarden bevat, om een nieuw gegevens frame te maken, `df2`.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -216,7 +216,7 @@ WITH RESULT SETS((
             ));
 ```
 
-Als u wilt de gegevensframe invullen, R wordt herhaald de elementen die is opgehaald uit RTestData zo vaak als nodig is zodat deze overeenkomt met het aantal elementen in de matrix `df1`.
+Om het gegevens frame in te vullen, herhaalt R de elementen die worden opgehaald uit RTestData zo vaak als nodig is om overeen te komen met het aantal elementen in de matrix `df1`.
 
 **Results**
     
@@ -229,18 +229,18 @@ Als u wilt de gegevensframe invullen, R wordt herhaald de elementen die is opgeh
 |10|5|
 |100|6|
 
-Houd er rekening mee dat een gegevensframe alleen ziet als een tabel eruit, maar een lijst van vectoren is.
+Houd er rekening mee dat een gegevens frame alleen eruitziet als een tabel, maar wel in feite een lijst met vectoren.
 
-## <a name="cast-or-convert-sql-data"></a>CAST of convert SQL-gegevens
+## <a name="cast-or-convert-sql-data"></a>SQL-gegevens casten of converteren
 
-R- en SQL gebruik niet de dezelfde gegevenstypen, zodat wanneer u een query in SQL uitvoert voor het ophalen van gegevens en die vervolgens doorgeven aan de R-runtime, sommige typen van de impliciete conversie meestal vindt plaats. Een andere set conversies vindt plaats als u gegevens van R naar SQL terugkeert.
+R en SQL gebruiken niet dezelfde gegevens typen, dus wanneer u een query uitvoert in SQL om gegevens op te halen en vervolgens door te geven aan de R-runtime, vindt er meestal een type impliciete conversie plaats. Er vindt een andere set conversies plaats wanneer u gegevens van R naar SQL retourneert.
 
-- SQL duwt de gegevens van de query naar de R-proces en geconverteerd naar een interne weergave voor grotere efficiëntie.
-- De R-runtime de gegevens worden geladen in een variabele data.frame en voert een eigen bewerkingen op de gegevens.
-- De database-engine retourneert de gegevens naar SQL met behulp van een beveiligde verbinding met interne en geeft de gegevens in termen van SQL-gegevenstypen.
-- U de gegevens door verbinding te maken met SQL met behulp van een client of het netwerk bibliotheek die kan SQL-query's uitgeven en in tabelvorm gegevenssets worden verwerkt. Deze clienttoepassing kan mogelijk de gegevens op andere manieren beïnvloeden.
+- SQL duwt de gegevens van de query naar het R-proces en converteert deze naar een interne representatie voor een grotere efficiëntie.
+- De R-runtime laadt de gegevens in een gegevens. frame variabele en voert zijn eigen bewerkingen uit op de gegevens.
+- De data base-engine retourneert de gegevens naar SQL met een beveiligde interne verbinding en geeft de gegevens weer in termen van SQL-gegevens typen.
+- U krijgt de gegevens door verbinding te maken met SQL via een client-of netwerk bibliotheek die SQL-query's kan uitgeven en tabellaire gegevens sets kan verwerken. Deze client toepassing kan mogelijk van invloed zijn op de gegevens op andere manieren.
 
-Als u wilt zien hoe dit werkt, kunt u een query zoals deze uitvoeren op de [AdventureWorksDW](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) datawarehouse. In deze weergave retourneert verkoopgegevens gebruikt bij het maken van prognoses.
+Als u wilt zien hoe dit werkt, voert u een query uit, zoals deze in het [AdventureWorksDW](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) -Data Warehouse. Deze weer gave retourneert verkoop gegevens die worden gebruikt bij het maken van prognoses.
 
 ```sql
 USE AdventureWorksDW
@@ -255,9 +255,9 @@ ORDER BY ReportingDate ASC
 ```
 
 > [!NOTE]
-> U kunt een willekeurige versie van AdventureWorks gebruiken of maken van een andere query met behulp van een database van uw eigen. Het is om te proberen voor het afhandelen van sommige gegevens die tekst, datum/tijd en numerieke waarden bevat.
+> U kunt een wille keurige versie van AdventureWorks gebruiken of een andere query maken met behulp van een eigen data base. Het punt is om te proberen bepaalde gegevens af te handelen die tekst, DateTime en numerieke waarden bevatten.
 
-Probeer nu met behulp van deze query als invoer voor de opgeslagen procedure.
+U kunt deze query nu gebruiken als invoer voor de opgeslagen procedure.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -275,9 +275,9 @@ OutputDataSet <- InputDataSet;
 WITH RESULT SETS undefined;
 ```
 
-Als u een fout optreedt, moet u mogelijk enkele wijzigingen aanbrengen in de tekst van de query. Bijvoorbeeld, het predicaat tekenreeks in de WHERE-component moet worden omsloten door twee sets met enkele aanhalingstekens.
+Als er een fout optreedt, moet u waarschijnlijk enkele wijzigingen aanbrengen in de query tekst. Het teken reeks-predikaat in de component WHERE moet bijvoorbeeld tussen twee sets met enkele aanhalings tekens worden geplaatst.
 
-Nadat u de query werkt, bekijk de resultaten van de `str` functie om te zien hoe R omgaat met de ingevoerde gegevens.
+Nadat u de query hebt uitgevoerd, controleert u de resultaten van de functie `str` om te zien hoe R de invoer gegevens verwerkt.
 
 **Results**
 
@@ -288,16 +288,16 @@ STDOUT message(s) from external script: $ ProductSeries: Factor w/ 1 levels "M20
 STDOUT message(s) from external script: $ Amount       : num  3400 16925 20350 16950 16950
 ```
 
-- De datum/tijd-kolom is verwerkt met behulp van het gegevenstype R **POSIXct**.
-- De kolom "ProductSeries" is geïdentificeerd als een **factor**, wat betekent dat een categorische variabele. Tekenreekswaarden worden behandeld als factoren standaard. Als u een tekenreeks aan R doorgeeft, wordt deze geconverteerd naar een geheel getal voor intern gebruik en vervolgens terug naar de tekenreeks in de uitvoer is toegewezen.
+- De datum/tijd-kolom is verwerkt met behulp van het R-gegevens type **POSIXct**.
+- De tekst kolom "ProductSeries" is geïdentificeerd als een **factor**, wat een categorische-variabele is. Teken reeks waarden worden standaard verwerkt als factoren. Als u een teken reeks doorgeeft aan R, wordt deze geconverteerd naar een geheel getal voor intern gebruik en vervolgens weer terug naar de teken reeks in uitvoer.
 
 ## <a name="summary"></a>Samenvatting
 
-In ook deze korte voorbeelden ziet u de noodzaak om te controleren of de gevolgen van de gegevensconversie bij het doorgeven van SQL query's als invoer. Omdat sommige SQL-gegevenstypen worden niet ondersteund door R, u kunt de volgende manieren om fouten te voorkomen:
+Van zelfs deze korte voor beelden kunt u zien dat de gevolgen van gegevens conversie moeten worden gecontroleerd wanneer SQL-query's worden door gegeven als invoer. Omdat sommige SQL-gegevens typen niet worden ondersteund door R, moet u rekening houden met de volgende manieren om fouten te voor komen:
 
-- Uw gegevens vooraf te testen en controleer of kolommen of waarden in uw schema die mogelijk een probleem bij het doorgegeven aan R-code.
-- Kolommen in de bron van de invoergegevens afzonderlijk opgeven in plaats van dat `SELECT *`, en weet hoe elke kolom worden verwerkt.
-- Voer expliciete webcasts zo nodig bij het voorbereiden van uw invoergegevens, om te voorkomen verrassingen.
-- Vermijd het doorgeven van kolommen met gegevens (zoals GUID's of ROWGUID) die fouten veroorzaken en die niet zijn handig voor het maken van modellering.
+- Test uw gegevens vooraf en controleer of de kolommen of waarden in uw schema goed zijn en of er een probleem is met de door gegeven R-code.
+- Geef de kolommen in de invoer gegevens bron afzonderlijk op, in plaats van `SELECT *`te gebruiken, en u weet hoe elke kolom wordt verwerkt.
+- Voer indien nodig expliciete casts uit wanneer u uw invoer gegevens voorbereidt, om verrassingen te voor komen.
+- Vermijd het door geven van kolommen met gegevens (zoals GUID'S of rowguids) die fouten veroorzaken en die niet nuttig zijn voor het model leren.
 
-Zie voor meer informatie over ondersteunde en niet-ondersteunde R-gegevenstypen [R-bibliotheken en gegevenstypen](/sql/advanced-analytics/r/r-libraries-and-data-types).
+Zie [r-bibliotheken en-gegevens typen](/sql/advanced-analytics/r/r-libraries-and-data-types)voor meer informatie over ondersteunde en niet-ondersteunde R-gegevens typen.

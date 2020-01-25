@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dac3037f82c38980c9ac16685aa7fddac68a2e7b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354286"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720296"
 ---
 # <a name="troubleshoot-input-connections"></a>Problemen met invoerverbindingen oplossen
 
@@ -24,11 +24,13 @@ Deze pagina worden veelvoorkomende problemen beschreven met invoer verbindingen 
 
 2.  Controleer de ingevoerde gegevens.
 
-    Gebruik om te controleren dat de invoergegevens worden doorgestuurd naar Event Hub, [Service Bus Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) verbinding maken met Azure Event Hub (indien Event Hub-invoer wordt gebruikt).
+    1. Gebruik om te controleren dat de invoergegevens worden doorgestuurd naar Event Hub, [Service Bus Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) verbinding maken met Azure Event Hub (indien Event Hub-invoer wordt gebruikt).
         
-    Gebruik de [ **voorbeeldgegevens** ](stream-analytics-sample-data-input.md) knop voor elke invoer en download de voorbeeldinvoergegevens.
+    1. Gebruik de knop [**voorbeeld gegevens**](stream-analytics-sample-data-input.md) voor elke invoer. Down load de voorbeeld gegevens van de invoer.
         
-    Bekijk de voorbeeldgegevens voor inzicht in de vorm van de gegevens: het schema en de [gegevenstypen](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+    1. Inspecteer de voorbeeld gegevens om inzicht te krijgen in de vorm van de gegevens, dat wil zeggen, het schema en de [gegevens typen](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+
+3.  Zorg ervoor dat u een tijds bereik hebt geselecteerd in de invoer voorbeeld. Kies **tijds bereik selecteren**en voer een voorbeeld duur in voordat u uw query test.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Ongeldige invoergebeurtenissen veroorzaken deserialisatiefouten 
 Deserialisatie problemen worden veroorzaakt wanneer de invoerstroom van uw Stream Analytics-taak onjuiste berichten bevat. Bijvoorbeeld, een onjuist ingedeeld bericht wordt mogelijk veroorzaakt door een ontbrekend haakje of een accolade in een JSON-object, of heeft een onjuiste tijdstempel-indeling in het tijdveld. 

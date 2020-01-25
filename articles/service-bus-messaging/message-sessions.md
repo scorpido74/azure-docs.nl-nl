@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 7264b8e5a536c90d106b3bf4a5e26093744327d6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7da3c3de5074df80c676238e4d43dbd677b0a3b4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091814"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720228"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Bericht sessies: First in, first out (FIFO) 
 
@@ -54,13 +54,13 @@ Sessies bieden gelijktijdige demultiplexing van Interleaved-berichten stromen ti
 
 Er wordt een [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -ontvanger gemaakt door de client die een sessie accepteert. De client roept [QueueClient. AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) of [QueueClient. AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) aan C#in. In het reactieve call back-model registreert het een sessie-handler.
 
-Wanneer het [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -object wordt geaccepteerd en terwijl het wordt bewaard door een client, bevat die client een exclusieve vergren deling voor alle berichten met de [SessionId](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) van die sessie die voor komt in de wachtrij of het abonnement, en ook op alle berichten met die **SessionId** dat nog steeds arriveert terwijl de sessie wordt gehouden.
+Wanneer het [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -object wordt geaccepteerd en terwijl het wordt bewaard door een-client, bevat die client een exclusieve vergren deling voor alle berichten met de [SessionId](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) van die sessie die voor komt in de wachtrij of het abonnement, en ook op alle berichten met die **SessionID** die nog steeds arriveren terwijl de sessie wordt gehouden.
 
 De vergren deling wordt vrijgegeven wanneer **Close** of **CloseAsync** wordt aangeroepen of wanneer de vergren deling verloopt in gevallen waarin de toepassing de sluitings bewerking niet kan uitvoeren. De sessie vergrendeling moet worden behandeld als een exclusieve vergren deling van een bestand, wat inhoudt dat de toepassing de sessie moet sluiten zodra deze niet meer nodig is en/of geen verdere berichten verwacht.
 
 Wanneer meerdere gelijktijdige ontvangers uit de wachtrij halen, worden de berichten die tot een bepaalde sessie behoren, verzonden naar de specifieke ontvanger die momenteel de vergren deling voor die sessie bevat. Met deze bewerking wordt een Interleaved-berichten stroom die zich in één wachtrij of abonnement bevindt, schoon verwijderd naar verschillende ontvangers en die ontvangers kunnen ook live op verschillende client computers worden uitgevoerd, omdat het vergrendelings beheer aan de service zijde plaatsvindt, binnen Service Bus.
 
-In de vorige afbeelding worden drie sessie ontvangers gelijktijdig weer gegeven. Een sessie met `SessionId` = 4 heeft geen actieve, eigenaarste client, wat betekent dat er geen berichten worden bezorgd vanuit deze specifieke sessie. Een sessie werkt op verschillende manieren als een subwachtrij.
+In de vorige afbeelding worden drie sessie ontvangers gelijktijdig weer gegeven. Een sessie met `SessionId` = 4 heeft geen actieve, eigenaarste client, wat betekent dat er geen berichten vanuit deze specifieke sessie worden afgeleverd. Een sessie werkt op verschillende manieren als een subwachtrij.
 
 De sessie vergrendeling die wordt gehouden door de sessie ontvanger is een paraplu voor de bericht vergrendelingen die worden gebruikt door de modus voor het weer geven van *vergren delingen* . Een ontvanger kan niet twee berichten gelijktijdig hebben ' in vlucht ', maar de berichten moeten op volg orde worden verwerkt. Een nieuw bericht kan alleen worden verkregen wanneer het vorige bericht is voltooid of onbesteld is. Het afbreken van een bericht zorgt ervoor dat hetzelfde bericht opnieuw wordt weer gegeven met de volgende ontvangst bewerking.
 
@@ -82,7 +82,7 @@ De sessie status die is opgeslagen in een wachtrij of in een abonnement, telt de
 
 ## <a name="impact-of-delivery-count"></a>Impact van het aantal levering
 
-De definitie van het aantal bezorgingen per bericht in de context van sessies verschilt enigszins van de definitie in de er zijn van sessies. Hier volgt een tabel met een samen vatting van het aantal leverings stappen.
+De definitie van het aantal leveringen per bericht in de context van sessies verschilt enigszins van de definitie in afwezigheid van sessies. Hier volgt een tabel met een samen vatting van het aantal leverings stappen.
 
 | Scenario | Is het aantal leveringen van het bericht verhoogd |
 |----------|---------------------------------------------|

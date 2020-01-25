@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7d341c7081fef7aee2c33b9a7080d60417ce410d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0e6b87ff34d6555fda50518198f9ae3839aa56e6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895184"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719089"
 ---
 # <a name="build-highly-available-applications-with-zone-redundant-storage-zrs"></a>Maxi maal beschik bare toepassingen bouwen met zone-redundante opslag (ZRS)
 
@@ -34,6 +34,7 @@ Voor algemeen gebruik v2-accounts is ZRS algemeen beschikbaar in de volgende reg
 - Europa (west)
 - Frankrijk - centraal
 - Japan - Oost
+- Zuid-Afrika - noord
 - VK - zuid
 - US - centraal
 - US - oost
@@ -88,7 +89,7 @@ Tijdens een livemigratie kunt u uw opslagaccount gebruiken terwijl uw gegevens w
 Houd u aan de volgende beperkingen voor Livemigratie:
 
 - Microsoft verwerkt uw aanvraag voor livemigratie onmiddellijk, maar er is geen garantie wanneer een livemigratie wordt voltooid. Als u uw gegevens vóór een bepaalde datum naar ZRS wilt migreren, wordt u aangeraden een handmatige migratie uit te voeren. In het algemeen geldt dat hoe meer gegevens u voor uw account hebt, hoe langer het duurt om die gegevens te migreren. 
-- Livemigratie wordt alleen ondersteund voor opslag accounts die gebruikmaken van de replicatie van LRS of GRS. Als uw account gebruikmaakt van RA-GRS, moet u eerst het replicatie type van uw account wijzigen in LRS of GRS voordat u doorgaat. Deze intermediair-stap verwijdert het secundaire alleen-lezen eindpunt dat door RA-GRS vóór de migratie wordt gegeven.
+- Livemigratie wordt alleen ondersteund voor opslag accounts die gebruikmaken van LRS-replicatie. Als uw account gebruikmaakt van GRS of RA-GRS, moet u eerst het replicatie type van uw account wijzigen in LRS voordat u doorgaat. Met deze intermediaire stap verwijdert u het secundaire eind punt dat is verschaft door GRS/RA-GRS.
 - Uw account moet gegevens bevatten.
 - U kunt alleen gegevens binnen dezelfde regio migreren. Als u uw gegevens wilt migreren naar een ZRS-account dat zich in een andere regio dan het bron account bevindt, moet u een hand matige migratie uitvoeren.
 - Alleen de standaard opslag typen bieden ondersteuning voor Livemigratie. Premium Storage-accounts moeten hand matig worden gemigreerd.
@@ -130,9 +131,9 @@ Zodra de migratie is voltooid, wordt het replicatie type van de account (s) gewi
 
 ZRS ondersteunt alleen algemeen v2-accounts, dus voordat u een aanvraag voor een Livemigratie verzendt naar ZRS, moet u uw account (s) upgraden naar de versie van het algemene doel v2. Zie [overzicht van het Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-account-overview) en voer [een upgrade uit naar een v2-opslag account voor algemeen gebruik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) voor meer informatie.
 
-**Kan ik een Livemigratie aanvragen van mijn account (GRS) met geo-redundante opslag met lees toegang (en) naar ZRS?**
+**Kan ik een Livemigratie van mijn geo-redundante of geografisch redundante opslag met lees toegang (GRS/RA-GRS)-account (s) naar ZRS aanvragen?**
 
-Voordat u een aanvraag voor een Livemigratie naar ZRS, moet u ervoor zorgen dat uw toepassing (en) of werk belasting (s) niet langer toegang hebben tot het secundaire alleen-lezen-eind punt en het replicatie type van uw opslag account (s) wijzigen in geo-redundante opslag (GRS). Zie [replicatie strategie wijzigen](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy) voor meer informatie.
+Livemigratie wordt alleen ondersteund voor opslag accounts die gebruikmaken van LRS-replicatie. Als uw account gebruikmaakt van GRS of RA-GRS, moet u eerst het replicatie type van uw account wijzigen in LRS voordat u doorgaat. Met deze intermediaire stap verwijdert u het secundaire eind punt dat is verschaft door GRS/RA-GRS. Voordat u een aanvraag voor een Livemigratie naar ZRS, moet u er ook voor zorgen dat uw toepassingen of werk belasting (s) niet langer toegang hebben tot het secundaire alleen-lezen-eind punt en het replicatie type van uw opslag account (s) wijzigen in lokaal redundante opslag (LRS). Zie [replicatie strategie wijzigen](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy) voor meer informatie.
 
 **Kan ik een Live migratie van mijn opslag account (s) aanvragen naar een andere regio?**
 

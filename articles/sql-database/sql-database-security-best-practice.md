@@ -8,12 +8,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 12/23/2019
 ms.reviewer: ''
-ms.openlocfilehash: f93ab61fcba53ebf39adf8ad56137f4a1df7d5fd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 82297850bf6d03215963a1f81dda166550f2b0d5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615030"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715178"
 ---
 # <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL Database best practices voor Playbook-beveiliging
 
@@ -260,9 +260,9 @@ De volgende aanbevolen procedures zijn optioneel, maar leiden tot betere beheers
   - Beheerder 
   - Developer 
   - Ondersteunings personeel 
-  - Auditor 
+  - Accountant 
   - Geautomatiseerde processen 
-  - Eindgebruiker 
+  - Eind gebruiker 
 
 - Houd er rekening mee dat machtigingen in SQL Server data base-engine kunnen worden toegepast op de volgende bereiken. Hoe kleiner het bereik, hoe kleiner de impact van de verleende machtigingen: 
   - Azure SQL Database-Server (speciale rollen in de hoofd database) 
@@ -462,7 +462,7 @@ Wanneer u CLE gebruikt:
 - Beveilig symmetrische sleutels met asymmetrische sleutels/certificaten (geen wacht woorden) om te voor komen dat 3DES wordt gebruikt. 
 
 - Wees voorzichtig bij het migreren van een Data Base met behulp van versleuteling op basis van een cel-niveau via exporteren/importeren (Bacpac-bestanden). 
-  - Zie het artikel [aanbevelingen voor het gebruik van versleuteling op basis van een mapniveau in Azure SQL database](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) over het voor komen van verbroken-sleutels bij het migreren van gegevens en voor andere best practice richt lijnen.
+  - Zie het artikel [aanbevelingen voor het gebruik van versleuteling op basis van een mapniveau in Azure SQL database](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) over het voor komen van het verlies van sleutels bij het migreren van gegevens en voor andere best practice richt lijnen.
 
 Wanneer u Always Encrypted gebruikt, moet u er rekening mee gehouden dat Always Encrypted voornamelijk is ontworpen voor het beveiligen van gevoelige gegevens die worden gebruikt door gebruikers met een hoge bevoegdheid van Azure SQL Database (Cloud operators, Dba's). Zie [gevoelige gegevens beveiligen in gebruik van met hoge bevoegdheden onbevoegde gebruikers](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users). Houd rekening met de volgende uitdagingen wanneer u Always Encrypted gebruikt voor het beveiligen van gegevens van toepassings gebruikers:
 

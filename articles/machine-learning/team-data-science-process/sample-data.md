@@ -1,22 +1,22 @@
 ---
-title: Voorbeeldgegevens in de locaties van andere Azure storage - Team Data Science Process
+title: 'Voorbeeld gegevens in verschillende Azure Storage locaties: team data Science process'
 description: Voorbeeldgegevens in Azure blob-containers, SQL Server en Hive-tabellen te verkleinen tot een grootte kleiner, maar representatieve en gemakkelijker.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc91aec80f74488125649cfe807757ba5ae49c9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 22e91d50227fcb44c7b90478d76379c14161ae05
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253101"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718600"
 ---
 # <a name="heading"></a>Voorbeeldgegevens in Azure blob-containers, SQL Server en Hive-tabellen
 
@@ -30,5 +30,5 @@ Deze taak steekproeven is een stap in de [Team Data Science Process (TDSP)](http
 
 **Waarom sample van gegevens?**
 
-Als de gegevensset die u van plan bent om te analyseren groot is, is het doorgaans een goed idee om down-sampling van de gegevens om deze aan de grootte van een kleiner, maar representatieve en gemakkelijker. Dit vereenvoudigt het begrijpen van gegevens, verkennen en feature-engineering. De rol in het Cortana Analytics-proces is om in te schakelen, snel ontwikkelen van prototypen van de functies voor het verwerken van gegevens en machine learning-modellen.
+Als de gegevensset die u van plan bent om te analyseren groot is, is het doorgaans een goed idee om down-sampling van de gegevens om deze aan de grootte van een kleiner, maar representatieve en gemakkelijker. Overweeg kan bijdragen aan het leren, verkennen en functie techniek. Deze steekproef rol in het proces van Cortana Analytics is het snel maken van prototypen van de functies voor gegevens verwerking en het machine learning model.
 

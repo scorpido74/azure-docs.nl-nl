@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 0e1ba6d86778b40f96940c417050e242fde33845
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: b98ab8d3c4d03115ea689b4dfd3d8dee753f019d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797580"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715075"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Uw AKS-peul automatisch schalen met behulp van Application Gateway metrische gegevens (bèta)
 
@@ -94,7 +94,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 Zodra we `appgw-request-count-metric` kunnen weer geven via de metrische server, zijn we klaar om [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) te gebruiken om onze doel implementatie te verg Roten.
 
-In het volgende voor beeld wordt een voor beeld van een implementatie `aspnet`. We zullen het Peul omhoog schalen wanneer `appgw-request-count-metric` > 200 per pod tot een maximum van `10` peul.
+In het volgende voor beeld wordt een voor beeld van een implementatie `aspnet`. We zullen het Peul omhoog schalen wanneer `appgw-request-count-metric` > 200 per pod tot Maxi maal `10` peul.
 
 Vervang de naam van de doel implementatie en pas de volgende configuratie voor automatisch schalen toe:
 ```yaml

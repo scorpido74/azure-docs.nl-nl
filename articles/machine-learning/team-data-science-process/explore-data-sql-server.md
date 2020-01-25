@@ -3,24 +3,24 @@ title: Gegevens verkennen in SQL Server-VM - Team Data Science Process
 description: Klik hier voor meer informatie over het verkennen van gegevens die zijn opgeslagen in een SQL Server-VM op Azure met behulp van SQL- of een programmeertaal zoals Python.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be75490e4e86956337ce38133df6095790b3a374
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ae8c7c43ecbf9bc625e1e46be3e2c71c8d57b6f7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303642"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720092"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Gegevens in virtuele SQL Server-machine verkennen in Azure
 
-In dit artikel wordt uitgelegd hoe u gegevens die zijn opgeslagen in een SQL Server-VM op Azure te verkennen. Dit kan worden gedaan door data wrangling met behulp van SQL of met behulp van een programmeertaal zoals Python.
+In dit artikel wordt uitgelegd hoe u gegevens die zijn opgeslagen in een SQL Server-VM op Azure te verkennen. Gebruik SQL of python voor het onderzoeken van de gegevens.
 
 Deze taak is een stap in de [Team Data Science Process](overview.md).
 
@@ -51,7 +51,7 @@ Hier volgen enkele voorbeelden SQL-scripts die kunnen worden gebruikt voor het v
 > 
 
 ## <a name="python"></a>Verken SQL-gegevens met Python
-Met behulp van Python voor gegevens verkennen en het genereren van functies als de gegevens in SQL Server is vergelijkbaar met het verwerken van gegevens in Azure blob met behulp van Python, zoals beschreven in [proces Azure Blob-gegevens in uw data science-omgeving](data-blob.md). De gegevens moeten worden geladen uit de database in een pandas DataFrame en vervolgens verder kunnen worden verwerkt. We leggen het proces van verbinding met de database en het laden van de gegevens in het DataFrame in deze sectie.
+Met behulp van Python voor gegevens verkennen en het genereren van functies als de gegevens in SQL Server is vergelijkbaar met het verwerken van gegevens in Azure blob met behulp van Python, zoals beschreven in [proces Azure Blob-gegevens in uw data science-omgeving](data-blob.md). Laad de gegevens uit de data base in een Panda data frame en kan vervolgens verder worden verwerkt. We leggen het proces van verbinding met de database en het laden van de gegevens in het DataFrame in deze sectie.
 
 De volgende indeling van de verbindingsreeks kan worden gebruikt voor het verbinding maken met een SQL Server-database vanuit Python met behulp van pyodbc (vervang servername, dbname, gebruikersnaam en wachtwoord met uw specifieke waarden):
 

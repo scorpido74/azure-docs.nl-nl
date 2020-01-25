@@ -2,20 +2,20 @@
 title: Taken voor het project leiden in Team Data Science Process
 description: Een gedetailleerd overzicht van de taken voor een project leider op een team data Science process team
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8a94a2ae5298bbee8bb1c9c0fa044eb3189147be
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244389"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714409"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Project Lead-taken in het team data Science process
 
@@ -45,7 +45,7 @@ In deze zelf studie wordt ervan uitgegaan dat uw [groeps Manager](group-manager-
 - **Opslag** plaatsen voor team sjablonen en-hulpprogram ma's
 - **Machtigingen** voor uw organisatie account voor het maken en bewerken van opslag plaatsen voor uw project
 
-Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine of Data Science Virtual Machine (DSVM), of Azure File Storage wilt instellen en koppelen aan uw DSVM, hebt u ook het volgende nodig:
+Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine of Data Science Virtual Machine (DSVM), of Azure File Storage wilt instellen en deze wilt koppelen aan uw DSVM, moet u ook rekening houden met de volgende controle lijst:
 
 - Een Azure-abonnement.
 - Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Raadpleeg anders de [platformen en hulpprogramma's voor bijlage](platforms-and-tools.md#appendix).

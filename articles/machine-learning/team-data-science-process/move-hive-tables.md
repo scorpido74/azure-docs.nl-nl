@@ -3,20 +3,20 @@ title: Hive-tabellen maken en gegevens laden uit Blob storage - Team Data Scienc
 description: Hive-query's te maken van Hive-tabellen laden van gegevens uit Azure blob-opslag gebruiken. Hive-tabellen partitioneren en de geoptimaliseerde rij kolommen (ORC) te verbeteren, opmaak gebruiken.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: af9c072c428c486cab89288db4c9ee1c26513185
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 625d9d5c5ecf095d4acbff625754b2065f184536
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250131"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722523"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive-tabellen maken en gegevens laden uit Azure Blob Storage
 
@@ -25,12 +25,12 @@ In dit artikel geeft algemene Hive-query's die Hive-tabellen maken en gegevens l
 ## <a name="prerequisites"></a>Vereisten
 In dit artikel wordt ervan uitgegaan dat u hebt:
 
-* Een Azure storage-account gemaakt. Als u instructies nodig hebt, raadpleegt u [over Azure storage-accounts](../../storage/common/storage-introduction.md).
+* Er is een Azure Storage-account gemaakt. Zie [over Azure Storage-accounts](../../storage/common/storage-introduction.md)als u instructies nodig hebt.
 * Een aangepaste Hadoop-cluster met de HDInsight-service wordt ingericht.  Zie [installatie clusters in HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)als u instructies nodig hebt.
 * Ingeschakelde externe toegang tot het cluster, aangemeld en de Hadoop-opdrachtregelconsole geopend. Zie [Apache Hadoop-clusters beheren](../../hdinsight/hdinsight-administer-use-portal-linux.md)als u instructies nodig hebt.
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Gegevens uploaden naar Azure blob-opslag
-Als u een virtuele Azure-machine hebt gemaakt door de instructies in [instellen van een virtuele machine van Azure voor geavanceerde analyses](../../machine-learning/data-science-virtual-machine/overview.md), dit scriptbestand moet worden gedownload naar de *C:\\gebruikers \\ \<gebruikersnaam\>\\documenten\\Data Science Scripts* map op de virtuele machine. Deze Hive-query's is alleen vereist dat u in uw eigen gegevensschema en configuratie van de Azure blob-opslag in de juiste velden gereed is voor het indienen van aansluit.
+Als u een virtuele Azure-machine hebt gemaakt door de instructies in [instellen van een virtuele machine van Azure voor geavanceerde analyses](../../machine-learning/data-science-virtual-machine/overview.md), dit scriptbestand moet worden gedownload naar de *C:\\gebruikers \\ \<gebruikersnaam\>\\documenten\\Data Science Scripts* map op de virtuele machine. Deze Hive-query's vereisen alleen dat u een gegevens schema en Azure Blob-opslag configuratie opgeeft in de juiste velden die kunnen worden verzonden.
 
 We gaan ervan uit dat de gegevens voor Hive-tabellen een **niet-gecomprimeerde** tabelvorm, en dat de gegevens zijn geüpload naar de standaardwaarde (of een extra) container van het opslagaccount dat wordt gebruikt door de Hadoop-cluster.
 
@@ -38,20 +38,20 @@ Als u wilt om te oefenen op de **NYC Taxi reisgegevens**, moet u:
 
 * **Download** de 24 [NYC Taxi reisgegevens](https://www.andresmh.com/nyctaxitrips) bestanden (12 reis-bestanden en 12 Fare-bestanden)
 * **Pak deze uit** alle bestanden in CSV-bestanden, en vervolgens
-* **Upload** deze naar de standaard (of geschikte container) van het Azure-opslag account. opties voor een dergelijk account worden weer gegeven in [Azure-opslag gebruiken met Azure HDInsight-clusters](../../hdinsight/hdinsight-hadoop-use-blob-storage.md) onderwerp. Het proces voor het uploaden van de CSV-bestanden naar de standaard-container in de storage-account kan worden gevonden op deze [pagina](hive-walkthrough.md#upload).
+* **Upload** deze naar de standaard (of geschikte container) van het Azure Storage-account; opties voor een dergelijk account worden weer gegeven bij [gebruik Azure Storage met het onderwerp Azure HDInsight-clusters](../../hdinsight/hdinsight-hadoop-use-blob-storage.md) . Het proces voor het uploaden van de CSV-bestanden naar de standaard-container in de storage-account kan worden gevonden op deze [pagina](hive-walkthrough.md#upload).
 
 ## <a name="submit"></a>Het indienen van Hive-query 's
 Hive-query's kunnen worden verzonden met behulp van:
 
-1. [Indienen van Hive-query's via Hadoop vanaf de opdrachtregel in het hoofdknooppunt van Hadoop-cluster](#headnode)
-2. [Indienen van Hive-query's met de Hive-Editor](#hive-editor)
-3. [Indienen van Hive-query's met Azure PowerShell-opdrachten](#ps)
+* [Indienen van Hive-query's via Hadoop vanaf de opdrachtregel in het hoofdknooppunt van Hadoop-cluster](#headnode)
+* [Indienen van Hive-query's met de Hive-Editor](#hive-editor)
+* [Indienen van Hive-query's met Azure PowerShell-opdrachten](#ps)
 
 Hive-query's zijn SQL-achtige. Als u bekend met SQL bent, vindt u de [Hive voor SQL gebruikers Cheat Sheet](https://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) nuttig.
 
 Bij het indienen van een Hive-query, kunt u ook de bestemming van de uitvoer van Hive-query's, beheren, ongeacht of deze op het scherm of een lokaal bestand op het hoofdknooppunt van of naar een Azure-blob.
 
-### <a name="headnode"></a> 1. Indienen van Hive-query's via Hadoop vanaf de opdrachtregel in het hoofdknooppunt van Hadoop-cluster
+### <a name="headnode"></a>Hive-query's verzenden via Hadoop-opdracht regel in hoofd knooppunt van Hadoop-cluster
 Als de Hive-query complex is, leidt verzendt, wordt deze rechtstreeks in het hoofdknooppunt van het Hadoop cluster meestal tot sneller omlooptijd dan verzendt, wordt deze met een Hive-Editor of Azure PowerShell-scripts.
 
 Meld u aan bij het hoofdknooppunt van het Hadoop-cluster, opent u de Hadoop-opdrachtregel op het bureaublad van het hoofdknooppunt en voer de opdracht `cd %hive_home%\bin`.
@@ -59,7 +59,7 @@ Meld u aan bij het hoofdknooppunt van het Hadoop-cluster, opent u de Hadoop-opdr
 Hebt u drie manieren om in te dienen Hive-query's in de Hadoop-opdrachtregel:
 
 * rechtstreeks
-* met behulp van .hql bestanden
+* '. HQL-bestanden gebruiken
 * met de opdrachtconsole Hive
 
 #### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>Indienen van Hive-query's rechtstreeks in Hadoop vanaf de opdrachtregel.
@@ -67,18 +67,18 @@ U kunt de opdracht, zoals uitvoeren `hive -e "<your hive query>;` om in te diene
 
 ![Opdracht voor het indienen van Hive-query met de uitvoer van Hive-query](./media/move-hive-tables/run-hive-queries-1.png)
 
-#### <a name="submit-hive-queries-in-hql-files"></a>Indienen van Hive-query's in .hql bestanden
-Wanneer de Hive-query gecompliceerder is en meerdere regels heeft, is het bewerken van query's in vanaf de opdrachtregel of in de opdrachtconsole Hive het niet praktisch. Een alternatief is het gebruik van een teksteditor in het hoofdknooppunt van het Hadoop-cluster voor het opslaan van de Hive-query's in een bestand .hql in een lokale map van het hoofdknooppunt. En vervolgens de Hive-query in het bestand .hql kan worden verzonden met behulp van de `-f` argument als volgt te werk:
+#### <a name="submit-hive-queries-in-hql-files"></a>Hive-query's in. HQL-bestanden verzenden
+Wanneer de Hive-query gecompliceerder is en meerdere regels heeft, is het bewerken van query's in vanaf de opdrachtregel of in de opdrachtconsole Hive het niet praktisch. U kunt ook een tekst editor gebruiken in het hoofd knooppunt van het Hadoop-cluster om de Hive-query's in een. HQL-bestand op te slaan in een lokale map van het hoofd knooppunt. Vervolgens kan de Hive-query in het bestand '. HQL ' als volgt worden verzonden met behulp van het argument `-f`:
 
-    hive -f "<path to the .hql file>"
+    hive -f "<path to the '.hql' file>"
 
-![Hive-query in een bestand .hql](./media/move-hive-tables/run-hive-queries-3.png)
+![Hive-query in een. HQL-bestand](./media/move-hive-tables/run-hive-queries-3.png)
 
 **Voortgang van de status scherm afdrukken van Hive-query's onderdrukken**
 
 Standaard nadat Hive-query wordt verzonden in Hadoop vanaf de opdrachtregel, wordt de voortgang van de taak voor toewijzen/verminderen afgedrukt op het scherm. Als u wilt onderdrukken van het scherm afdrukken van de voortgang van de taak toewijzen/verminderen, kunt u een argument `-S` ("S" in hoofdletters) in de opdracht regel als volgt:
 
-    hive -S -f "<path to the .hql file>"
+    hive -S -f "<path to the '.hql' file>"
     hive -S -e "<Hive queries>"
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Indienen van Hive-query's in de opdrachtconsole Hive.
@@ -111,10 +111,10 @@ Als u de standaardcontainer van het Hadoop-cluster met behulp van Azure Storage 
 
 ![Azure Storage Explorer met de uitvoer van de Hive-query](./media/move-hive-tables/output-hive-results-3.png)
 
-### <a name="hive-editor"></a> 2. Indienen van Hive-query's met de Hive-Editor
-U kunt ook de query console (Hive-editor) gebruiken door een URL in te voeren van het formulier *https\/:/\<Hadoop-cluster naam >. azurehdinsight. net/Home/HiveEditor* in een webbrowser. U moet zijn geregistreerd in de zien deze console en dus moet u uw Hadoop-clusterreferenties hier.
+### <a name="hive-editor"></a>Hive-query's verzenden met de Hive-editor
+U kunt ook de query console (Hive-editor) gebruiken door een URL in te voeren van het formulier *https:\//\<Hadoop-cluster naam >. azurehdinsight. net/Home/HiveEditor* in een webbrowser. U moet zijn geregistreerd in de zien deze console en dus moet u uw Hadoop-clusterreferenties hier.
 
-### <a name="ps"></a> 3. Indienen van Hive-query's met Azure PowerShell-opdrachten
+### <a name="ps"></a>Hive-query's met Azure PowerShell-opdrachten verzenden
 U kunt ook PowerShell gebruiken om in te dienen Hive-query's. Zie voor instructies [indienen Hive-taken met behulp van PowerShell](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md).
 
 ## <a name="create-tables"></a>Hive-database en tabellen maken
@@ -137,19 +137,19 @@ Hier volgt de Hive-query die wordt gemaakt van een Hive-tabel.
 
 Hier volgen de beschrijvingen van de velden die u nodig hebt om aan te sluiten en andere configuraties:
 
-* **database naam:\>de naam van de data base die u wilt maken. \<** Als u alleen wilt gebruiken de standaard-database, de query *-database maken...*  kunnen worden weggelaten.
-* **tabel naam:\>de naam van de tabel die u in de opgegeven Data Base wilt maken. \<** Als u de standaard database wilt gebruiken, kan de tabel rechtstreeks worden aangeduid met \<\> *\<een tabel naam\>* zonder database naam.
-* **veld scheidings\>teken: het scheidings teken dat velden in het gegevens bestand begrenst dat naar de Hive-tabel moet worden geüpload. \<**
-* **lijn scheidings\>teken: het scheidings teken dat de regels in het gegevens bestand opsplitsen. \<**
-* **opslag locatie:\>de locatie van de Azure-opslag voor het opslaan van de gegevens van Hive-tabellen. \<** Als u geen *locatie \<opslag locatie\>* opgeeft, worden de data base en de tabellen standaard opgeslagen in *Hive/Warehouse/* Directory in de standaard container van het Hive-cluster. Als u opgeven van de opslaglocatie wilt, heeft de opslaglocatie moet zich binnen de standaard-container voor de database en tabellen. Deze locatie moet worden aangeduid als locatie relatief ten opzichte van de standaard container van het cluster in de indeling *wasb:///\<Directory 1 >/'* of *'\<wasb:///Directory 1 >\</map 2 >/'* , enzovoort. Nadat de query wordt uitgevoerd, worden de relatieve mappen in de standaardcontainer worden gemaakt.
-* **TBLPROPERTIES ("Skip. header. line. Count" = "1")** : Als het gegevens bestand een header-regel bevat, moet u deze eigenschap toevoegen **aan het einde** van de query *Create Table* . Anders wordt de kopregel geladen als een record in de tabel. Als het gegevensbestand geen een kopregel heeft, kan deze configuratie worden weggelaten in de query.
+* **\<database naam\>** : de naam van de data base die u wilt maken. Als u alleen de standaard database wilt gebruiken, kan de query "*Data Base maken...* " worden wegge laten.
+* **\<tabel naam\>** : de naam van de tabel die u in de opgegeven Data Base wilt maken. Als u de standaard database wilt gebruiken, kan de tabel rechtstreeks worden verwezen door *\<tabel naam\>* zonder \<database naam\>.
+* **\<veld scheidings teken\>** : de schei ding van velden in het gegevens bestand die moeten worden geüpload naar de Hive-tabel.
+* **\<regel scheidings teken\>** : de schei ding waarmee de regels in het gegevens bestand worden beperkt.
+* **\<opslag locatie\>** : de locatie van de Azure Storage om de gegevens van Hive-tabellen op te slaan. Als u geen locatie opgeeft *\<opslag locatie\>* , worden de data base en de tabellen standaard in *Hive/Warehouse/* map opgeslagen in de standaard container van het Hive-cluster. Als u opgeven van de opslaglocatie wilt, heeft de opslaglocatie moet zich binnen de standaard-container voor de database en tabellen. Deze locatie moet worden aangeduid als locatie relatief ten opzichte van de standaard container van het cluster in de indeling *wasb:///\<Directory 1 >/'* of *' wasb:///\<Directory 1 >/\<Directory 2 >/'* , enzovoort. Nadat de query is uitgevoerd, worden de relatieve directory's in de standaard container gemaakt.
+* **TBLPROPERTIES("SKIP.header.line.Count"="1")** : als het bestand met een kopregel heeft, u moet deze eigenschap toevoegen **aan het einde** van de *-tabel maken* query. Anders wordt de kopregel geladen als een record in de tabel. Als het gegevensbestand geen een kopregel heeft, kan deze configuratie worden weggelaten in de query.
 
 ## <a name="load-data"></a>Gegevens laden in Hive-tabellen
 Hier volgt de Hive-query die gegevens in een Hive-tabel laadt.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **pad naar BLOB-\>gegevens: \<** Als het blobbestand dat moet worden geüpload naar de Hive-tabel zich in de standaard container van het HDInsight Hadoop-cluster bevindt, moet het *\<pad naar de BLOB-gegevens\>* in de indeling *wasb://\<in deze container staan >/de\<naam van het BLOB-bestand >* . De blob-bestand kan ook worden in een andere container van het HDInsight Hadoop-cluster. In dit geval moet het  *\<pad naar de\> BLOB-gegevens* in de indeling *'\<wasb://container name\<' staan > naam van het opslag account >. blob. core\<. Windows. net/BLOB bestands naam > '* .
+* **\<pad naar BLOB-gegevens\>** : als het blobbestand dat moet worden geüpload naar de Hive-tabel zich in de standaard container van het HDInsight Hadoop-cluster bevindt, moet het *\<pad naar de blob-gegevens\>* in de indeling *' wasb://\<-map in deze container >/\<BLOB-bestands naam > '* staan. De blob-bestand kan ook worden in een andere container van het HDInsight Hadoop-cluster. In dit geval moet *\<pad naar BLOB-gegevens\>* de volgende indeling hebben *: ' wasb://\<container name >\<naam van het opslag account >. blob. core. Windows. net/\<BLOB-bestands naam > '* .
 
   > [!NOTE]
   > De blob-gegevens worden geüpload naar de Hive-tabel heeft zich in de standaard- of extra container van het opslagaccount voor het Hadoop-cluster. Anders wordt de *LOADING* query klagen dat deze geen toegang de gegevens tot is mislukt.
@@ -174,7 +174,7 @@ Hier volgt de Hive-query die een gepartitioneerde tabel maakt en gegevens in het
     LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
         PARTITION (<partitionfieldname>=<partitionfieldvalue>);
 
-Bij het opvragen van gepartitioneerde tabellen, het is raadzaam om toe te voegen van de voorwaarde van de partitie in de **begin** van de `where` component als dit de effectiviteit van het zoeken in aanzienlijk worden verbeterd.
+Bij het uitvoeren van query's op gepartitioneerde tabellen wordt aanbevolen de partitie voorwaarde toe te voegen aan het **begin** van de component `where`, waardoor de efficiëntie van de zoek opdracht wordt verbeterd.
 
     select
         field1, field2, ..., fieldN
@@ -216,7 +216,7 @@ Gegevens selecteren uit de externe tabel in stap 1 en invoegen in het ORC-tabel
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> Als de  *\<naam\>van de TEXTFILE-\< tabel database. de naam\> van de externe TEXTFILE-tabel* bevat partities, in stap 3, de `SELECT * FROM <database name>.<external textfile table name>` opdracht de partitie variabele selecteert als een veld in de gegevensset die wordt geretourneerd. Deze invoegen in de  *\<database naam\>.\< \> De naam* van de Orc-tabel is mislukt, omdat  *\<de database naam.\< \> De Orc-\> tabel naam* heeft niet de partitie variabele als een veld in het tabel schema. In dit geval moet u de velden die u wilt invoegen *\<in de database naam\>specifiek selecteren.\< De naam\>* van de Orc-tabel is als volgt:
+> Als de TEXTFILE-tabel *\<database naam\>.\<externe TEXTFILE-tabel naam\>* partities heeft, selecteert u in stap 3, de `SELECT * FROM <database name>.<external textfile table name>`-opdracht de partitie variabele als een veld in de gegevensset die wordt geretourneerd. Het wordt ingevoegd in de naam van de *\<-data base\>.\<Orc-tabel naam\>* mislukt omdat *\<database naam\>.\<Orc-tabel naam\>* niet de partitie variabele als een veld in het tabel schema. In dit geval moet u de velden die moeten worden ingevoegd, in de *\<database naam selecteren\>.\<Orc-tabel naam\>* als volgt:
 >
 >
 
@@ -225,7 +225,7 @@ Gegevens selecteren uit de externe tabel in stap 1 en invoegen in het ORC-tabel
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-Het is veilig om de  *\<tabel naam\> van de externe TEXTFILE* te verwijderen wanneer u de volgende query gebruikt nadat alle gegevens zijn ingevoegd in  *\<de database naam.\< \> ORC-tabel\>naam*:
+Het is veilig om de *\<naam van het externe tekst bestand* te verwijderen\>wanneer u de volgende query gebruikt nadat alle gegevens zijn ingevoegd in *\<database naam\>.\<Orc-tabel naam\>* :
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/09/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 459d75bec3d4b4d0cf9057e0c6de238e7f165bfb
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 450ebf0ce05d11e27639dff1cf9da821b10ab6a1
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548982"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710699"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Zelf studie: implementatie scripts gebruiken om een zelfondertekend certificaat te maken (preview)
 
@@ -199,7 +199,7 @@ Het implementatie script voegt een certificaat toe aan de sleutel kluis. Configu
         "forceUpdateTag": "[parameters('utcValue')]",
         "azPowerShellVersion": "2.8",
         "timeout": "PT30M",
-        "arguments": "[format(' -vaultName {0} -certificateName {1} -subjectName {2}', parameters('keyVaultName'), parameters('certificateName'), parameters('subjectName'))]", // can pass an arguement string, double quotes must be escaped
+        "arguments": "[format(' -vaultName {0} -certificateName {1} -subjectName {2}', parameters('keyVaultName'), parameters('certificateName'), parameters('subjectName'))]", // can pass an argument string, double quotes must be escaped
         "scriptContent": "
           param(
             [string] [Parameter(Mandatory=$true)] $vaultName,

@@ -9,12 +9,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: e1ee616adadcabb2deb3fa08a5f3d4f768fddfd5
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fa6e393500e9deeb91ee84aa5255320003817f08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045646"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719888"
 ---
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>Zelf studie: transactionele replicatie tussen twee beheerde instanties en SQL Server configureren
 
@@ -385,7 +385,7 @@ Mogelijke oplossingen:
 
 Wanneer u een nieuw abonnement toevoegt met behulp van de wizard **Nieuw abonnement** , is het mogelijk dat er op de **publicatie** pagina geen data bases en publicaties worden weer gegeven als beschik bare opties. mogelijk ziet u het volgende fout bericht:
 
-`There are no publications to which yuo can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
+`There are no publications to which you can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
  
 Hoewel het mogelijk is dat dit fout bericht nauw keurig is en er geen publicaties beschikbaar zijn op de Publisher waarmee u verbinding hebt gemaakt, of omdat u niet voldoende machtigingen hebt, kan deze fout ook worden veroorzaakt door een oudere versie van SQL Server Management Studio. Voer een upgrade uit naar SQL Server Management Studio 18,0 of hoger om dit uit te proberen als hoofd oorzaak. 
 

@@ -1,23 +1,22 @@
 ---
 title: Voorbeeld van Azure PowerShell-script - Aangepast onderwerp maken | Microsoft Docs
-description: Voorbeeld van Azure PowerShell-script - Aangepast onderwerp maken
+description: In dit artikel vindt u een voor beeld van een Azure PowerShell script dat laat zien hoe u een Event Grid aangepast onderwerp maakt.
 services: event-grid
 documentationcenter: na
-author: tfitzmac
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
+ms.date: 01/23/2020
 ms.author: tomfitz
-ms.openlocfilehash: 20ad58c2e7209f8bed8014d5ce1dff094907590c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 900f31ff87e6a588fc1d1e3efd854437d2c8c1b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117159"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719939"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>Aangepast Event Grid-onderwerp maken met PowerShell
 

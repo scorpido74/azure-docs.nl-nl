@@ -3,24 +3,24 @@ title: SQL Server-gegevens naar SQL Azure met Azure Data Factory - Team Data Sci
 description: Instellen van een ADF-pijplijn waarmee stelt het bericht op twee activiteiten van de gegevens migreren die samen gegevens dagelijks tussen databases on-premises en in de cloud verplaatsen.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b64aa6c0e6e0e3bf449d44996df3223b12a69923
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982414"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722489"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Gegevens verplaatsen van een on-premises SQL server naar SQL Azure met Azure Data Factory
 
-In dit artikel wordt beschreven hoe u gegevens verplaatst van een on-premises SQL Server Data Base naar een SQL Azure-data base via Azure Blob Storage met behulp van de Azure Data Factory (ADF): deze methode is een ondersteunde verouderde benadering die de voor delen van een gerepliceerde staging-kopie biedt, maar [we raden u aan om onze Datamigration-pagina te bekijken voor de nieuwste opties](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
+In dit artikel wordt beschreven hoe u gegevens van een on-premises SQL Server Data Base verplaatst naar een SQL Azure-data base via Azure Blob Storage met behulp van de Azure Data Factory (ADF): deze methode is een ondersteunde verouderde benadering die de voor delen van een gerepliceerde staging-kopie biedt, maar [we raden u aan de pagina gegevens migratie te bekijken voor de nieuwste opties](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
 
 Zie voor een tabel met een overzicht van verschillende opties voor het verplaatsen van gegevens naar een Azure SQL Database, [gegevens verplaatsen naar een Azure SQL Database voor Azure Machine Learning](move-sql-azure.md).
 
@@ -32,12 +32,12 @@ Met ADF, kunnen bestaande services voor gegevensverwerking bestaan in gegevenspi
 Overweeg het gebruik van ADF:
 
 * Wanneer gegevens moeten voortdurend worden gemigreerd een hybride scenario die toegang heeft tot zowel on-premises en cloudbronnen
-* Wanneer de gegevens is uitgevoerd of moet worden gewijzigd of toegevoegd als gemigreerd bedrijfslogica hebt.
+* Wanneer de gegevens trans formaties of bedrijfs logica moeten bevatten wanneer ze worden gemigreerd.
 
 ADF kunt u de planning en controle van taken met behulp van eenvoudige JSON-scripts waarmee de verplaatsing van gegevens op periodieke basis kunt beheren. ADF heeft ook andere mogelijkheden, zoals ondersteuning voor complexe bewerkingen. Voor meer informatie over ADF, Raadpleeg de documentatie bij [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/).
 
 ## <a name="scenario"></a>Het Scenario
-We instellen een ADF-pijplijn waarmee twee gegevens migratieactiviteiten stelt het bericht. Samen wordt gegevens dagelijks verplaatsen tussen een on-premises SQL-database en een Azure SQL Database in de cloud. De twee activiteiten zijn:
+We instellen een ADF-pijplijn waarmee twee gegevens migratieactiviteiten stelt het bericht. Samen verplaatsen ze gegevens dagelijks over een on-premises SQL Database en een Azure SQL Database in de Cloud. De twee activiteiten zijn:
 
 * gegevens kopiëren van een on-premises SQL Server-database naar een Azure Blob Storage-account
 * gegevens kopiëren van de Azure Blob Storage-account naar een Azure SQL Database.
@@ -69,7 +69,7 @@ U kunt aanpassen van de procedure die hier beschikbaar zijn op een set van uw ei
 De instructies voor het maken van een nieuwe Azure Data Factory en een resourcegroep in de [Azure-portal](https://portal.azure.com/) vindt u [maken van een Azure Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Naam van het nieuwe exemplaar van de ADF *adfdsp* en de naam van de resourcegroep gemaakt *adfdsprg*.
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Installeren en configureren van Azure Data Factory Integration Runtime
-De Integration Runtime is een klant beheerde gegevensintegratie-infrastructuur door Azure Data Factory gebruikt om u te bieden mogelijkheden voor gegevensintegratie in verschillende netwerkomgevingen. Deze runtime heette voorheen 'Data Management Gateway'.
+De Integration Runtime is een door de klant beheerde infra structuur voor gegevens integratie die door Azure Data Factory wordt gebruikt om mogelijkheden voor gegevens integratie in verschillende netwerk omgevingen te bieden. Deze runtime heette voorheen 'Data Management Gateway'.
 
 Als u wilt instellen, [volgt u de instructies voor het maken van een pijp lijn](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
@@ -78,7 +78,7 @@ De informatie die nodig zijn voor Azure Data Factory verbinding maken met een Ge
 
 1. On-premises SQL Server
 2. Azure Blob Storage
-3. Azure SQL-database
+3. Azure SQL Database
 
 De stapsgewijze procedure voor het maken van gekoppelde services vindt u in [gekoppelde services](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
 
@@ -136,7 +136,7 @@ De definitie van de tabel voor de on-premises SQL Server is opgegeven in de volg
 }
 ```
 
-De kolomnamen zijn niet opgenomen in hier. U kunt subplan selecteren op de kolomnamen door ze hier (voor meer informatie de [ADF documentatie](../../data-factory/copy-activity-overview.md) onderwerp.
+De kolomnamen zijn niet opgenomen in hier. U kunt de kolom namen subselecteren door deze hier op te nemen (Zie het onderwerp [ADF-documentatie](../../data-factory/copy-activity-overview.md) voor meer informatie.
 
 Kopieer de JSON-definitie van de tabel in een bestand met de naam *onpremtabledef.json* -bestand en sla deze op een bekende locatie (hier ervan uitgegaan dat *C:\temp\onpremtabledef.json*). De tabel in ADF maken met de volgende Azure PowerShell-cmdlet:
 
@@ -302,4 +302,4 @@ De *startdate* en *enddate* parameterwaarden moeten worden vervangen door de wer
 
 Zodra de pijplijn wordt uitgevoerd, zou het mogelijk om te zien van de gegevens weergegeven in de container voor de blob, één bestand per dag is geselecteerd.
 
-Houd er rekening mee dat we de functionaliteit die stapsgewijs door ADF pipe gegevens niet hebben gemaakt. Zie voor meer informatie over hoe u deze en andere mogelijkheden van ADF doet de [ADF documentatie](https://azure.microsoft.com/services/data-factory/).
+We hebben de functionaliteit van ADF om gegevens stapsgewijs niet meer gebruikt. Zie voor meer informatie over hoe u deze en andere mogelijkheden van ADF doet de [ADF documentatie](https://azure.microsoft.com/services/data-factory/).

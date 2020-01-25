@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: c97e10d2785b7dc1a438c95dca9be94fcef82f94
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658114"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714841"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Uitvoering van Runbook in Azure Automation
 
@@ -71,7 +71,7 @@ else
     }
 ```
 
-### <a name="time-dependant-scripts"></a>Tijd afhankelijke scripts
+### <a name="time-dependent-scripts"></a>Tijd afhankelijke scripts
 
 U moet zorgvuldig rekening houden bij het ontwerpen van runbooks. Zoals eerder vermeld, moeten runbooks worden ontworpen op een manier die ze robuust zijn en tijdelijke fouten kunnen afhandelen die ertoe kunnen leiden dat het runbook opnieuw wordt opgestart of mislukt. Als een runbook is mislukt, wordt het opnieuw geprobeerd. Als een runbook normaal gesp roken binnen een tijds beperking wordt uitgevoerd, moet de logica om te controleren of de uitvoerings tijd in het runbook wordt geïmplementeerd om ervoor te zorgen dat bewerkingen zoals opstarten, afsluiten of uitschalen alleen worden uitgevoerd tijdens bepaalde tijdstippen.
 
@@ -210,7 +210,7 @@ In de volgende tabel wordt beschreven welke status een taak kan hebben. Power Sh
 | Stopped |De gebruiker heeft de taak gestopt voordat deze is voltooid. |
 | Stopping |Het systeem stopt de taak. |
 | Suspended |De taak is door de gebruiker, door het systeem of door een opdracht in het runbook onderbroken. Als een runbook geen controle punt heeft, begint het vanaf het begin van het runbook. Als er een controle punt is, kan het opnieuw worden gestart en wordt hervat vanaf het laatste controle punt. Het runbook wordt alleen door het systeem onderbroken als er een uitzonde ring optreedt. ErrorActionPreference is standaard ingesteld om door te **gaan**, wat inhoudt dat de taak wordt uitgevoerd op een fout. Als deze voorkeurs variabele is ingesteld op **Stop**, wordt een fout door de taak onderbroken. Is alleen van toepassing op [grafische en Power shell-werk stroom-runbooks](automation-runbook-types.md) . |
-| Onderbreken |Het systeem probeert de taak op verzoek van de gebruiker te onderbreken. Runbook moet het volgende controlepunt bereiken voordat de taak kan worden onderbroken. Als het laatste controle punt al is door gegeven, wordt het voltooid voordat het kan worden onderbroken. Is alleen van toepassing op [grafische en Power shell-werk stroom-runbooks](automation-runbook-types.md) . |
+| Onderbreken |Het systeem probeert de taak op verzoek van de gebruiker te onderbreken. Het runbook moet het volgende controle punt bereiken voordat het kan worden onderbroken. Als het laatste controle punt al is door gegeven, wordt het voltooid voordat het kan worden onderbroken. Is alleen van toepassing op [grafische en Power shell-werk stroom-runbooks](automation-runbook-types.md) . |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Taak status weer geven vanuit de Azure Portal
 
@@ -238,7 +238,7 @@ U kunt ook samenvattings Details van taken weer geven voor een specifiek runbook
 
 ### <a name="job-summary"></a>Taakoverzicht
 
-U kunt een lijst weer geven met alle taken die voor een bepaald runbook zijn gemaakt en de meest recente status. U kunt deze lijst filteren op de taakstatus en het datumbereik voor de laatste wijziging voor de taak. Als u gedetailleerde informatie en uitvoer wilt weer geven, klikt u op de naam van een taak. De gedetailleerde weergave van de taak bevat de waarden voor de runbookparameters die zijn opgegeven voor die taak.
+U kunt een lijst weer geven met alle taken die voor een bepaald runbook zijn gemaakt en de meest recente status. U kunt deze lijst filteren op de taak status en het datum bereik voor de laatste wijziging van de taak. Als u gedetailleerde informatie en uitvoer wilt weer geven, klikt u op de naam van een taak. De gedetailleerde weergave van de taak bevat de waarden voor de runbookparameters die zijn opgegeven voor die taak.
 
 U kunt de volgende stappen gebruiken om de taken voor een runbook weer te geven.
 

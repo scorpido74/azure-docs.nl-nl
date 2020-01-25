@@ -4,14 +4,14 @@ description: Meer informatie over client configuratie opties voor het verbeteren
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eec5ab6cdf4afd63db2e77046bb19436e600ece6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "71261310"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720993"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties voor Azure Cosmos DB en .NET
 
@@ -30,7 +30,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
 1. **Verbindings beleid: modus directe verbinding gebruiken**
 
-    Hoe een client verbinding maakt met Azure Cosmos DB heeft belang rijke gevolgen voor de prestaties, met name in de waargenomen latentie aan de client zijde. Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configureren van het beleid voor client verbindingen: de verbindings *modus* en het verbindings *protocol*.  De twee beschik bare modi zijn:
+    Hoe een client verbinding maakt met Azure Cosmos DB is belangrijk voor de prestaties, in het bijzonder wat betreft de latentie aan de clientzijde. Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configureren van het beleid voor client verbindingen: de verbindings *modus* en het verbindings *protocol*.  De twee beschik bare modi zijn:
 
    * Gateway modus
       
@@ -40,18 +40,18 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
    * Directe modus
 
-     Directe modus ondersteunt verbindingen via TCP-en HTTPS-protocollen en is de standaard connectiviteits modus als u [micro soft. Azure. Cosmos/.net v3 SDK](sql-api-sdk-dotnet-standard.md)gebruikt.
+     Directe modus ondersteunt connectiviteit via TCP-protocol en is de standaard connectiviteits modus als u [micro soft. Azure. Cosmos/.net v3 SDK](sql-api-sdk-dotnet-standard.md)gebruikt.
 
      Bij gebruik van de gateway modus maakt Cosmos DB gebruik van poort 443 en poorten 10250, 10255 en 10256 wanneer u de API van Azure Cosmos DB gebruikt voor MongoDB. De 10250-poort is gekoppeld aan een standaard MongoDB-instantie zonder geo-replicatie en 10255/10256-poorten zijn gekoppeld aan het MongoDB-exemplaar met geo-replicatie functionaliteit. Wanneer u TCP in directe modus gebruikt, moet u, naast de gateway poorten, ervoor zorgen dat het poort bereik tussen 10000 en 20000 open is, omdat Azure Cosmos DB dynamische TCP-poorten gebruikt. Als deze poorten niet zijn geopend en u TCP probeert te gebruiken, ontvangt u een fout melding dat de 503-Service niet beschikbaar is. De volgende tabel toont de connectiviteits modi die beschikbaar zijn voor verschillende Api's en de gebruiker van de service poorten voor elke API:
 
      |Verbindings modus  |Ondersteund protocol  |Ondersteunde Sdk's  |API/service poort  |
      |---------|---------|---------|---------|
-     |Gateway  |   HTTPS    |  Alle SDK'S    |   SQL (443), Mongo (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
+     |Gateway  |   HTTPS    |  Alle SDK'S    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
      |Direct    |     TCP    |  .NET SDK    | Poorten binnen 10000-20000-bereik |
 
-     Azure Cosmos DB biedt een eenvoudig en open REST-programmeer model via HTTPS. Daarnaast biedt het een efficiënt TCP-protocol, dat ook wordt doorzocht in het communicatie model en dat beschikbaar is via de .NET-client-SDK. Zowel directe TCP als HTTPS gebruiken SSL voor initiële verificatie en het versleutelen van verkeer. Gebruik, indien mogelijk, het TCP-protocol voor de beste prestaties.
+     Azure Cosmos DB biedt een eenvoudig en open REST-programmeer model via HTTPS. Daarnaast biedt het een efficiënt TCP-protocol, dat ook wordt doorzocht in het communicatie model en dat beschikbaar is via de .NET-client-SDK. TCP-protocol gebruikt SSL voor initiële verificatie en het versleutelen van verkeer. Gebruik, indien mogelijk, het TCP-protocol voor de beste prestaties.
 
-     Voor SDK V3 wordt de connectiviteits modus geconfigureerd tijdens het maken van het CosmosClient-exemplaar als onderdeel van de CosmosClientOptions.
+     Voor SDK V3 wordt de connectiviteits modus geconfigureerd tijdens het maken van het CosmosClient-exemplaar als onderdeel van de CosmosClientOptions moet u er rekening mee houden dat de directe modus de standaard instelling is.
 
      ```csharp
      var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -59,7 +59,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
      CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
      new CosmosClientOptions
      {
-        ConnectionMode = ConnectionMode.Direct
+        ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
      });
      ```
 
@@ -71,7 +71,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
      DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
      new ConnectionPolicy
      {
-        ConnectionMode = ConnectionMode.Direct,
+        ConnectionMode = ConnectionMode.Direct, //ConnectionMode.Gateway is the default
         ConnectionProtocol = Protocol.Tcp
      });
      ```
@@ -185,7 +185,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
     - Voor test projecten op basis van VSTest kunt u dit doen door **test** instellingen te selecteren->**tests**->**standaard processor architectuur als x64**uit te voeren in de menu optie van **Visual Studio test** .
 
-    - Voor lokaal geïmplementeerde ASP.NET-webtoepassingen kunt u dit doen door de **64-bits versie van IIS Express voor websites en projecten**te controleren, onder **extra**->**opties**->**projecten en oplossingen**-> **Webprojecten**.
+    - Voor lokaal geïmplementeerde ASP.NET-webtoepassingen kunt u dit doen door de **64-bits versie van IIS Express voor websites en projecten**te controleren, onder **extra**->**opties**->**projecten en oplossingen**->- **webprojecten**.
 
     - Voor ASP.NET-webtoepassingen die zijn geïmplementeerd op Azure, kunt u dit doen door het **platform als 64-bit** te kiezen in de **Toepassings instellingen** op de Azure Portal.
 
@@ -209,13 +209,13 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
 1. **Meten en afstemmen voor lagere aanvraag eenheden/tweede gebruik**
 
-    Azure Cosmos DB biedt een uitgebreide set database bewerkingen, waaronder relationele en hiërarchische query's met Udf's, opgeslagen procedures en triggers, die allemaal op de documenten in een database verzameling worden uitgevoerd. De kosten die aan elk van deze bewerkingen zijn gekoppeld, zijn afhankelijk van de CPU, IO en het geheugen die nodig zijn om de bewerking te volt ooien. In plaats van te denken over en het beheren van hardwarebronnen, kunt u een aanvraag eenheid (RU) beschouwen als een enkele maat eenheid voor de resources die nodig zijn om verschillende database bewerkingen uit te voeren en een toepassings aanvraag te onderhouden.
+    Azure Cosmos DB biedt een uitgebreide set database bewerkingen, waaronder relationele en hiërarchische query's met Udf's, opgeslagen procedures en triggers, die allemaal op de documenten in een database verzameling worden uitgevoerd. De kosten die gepaard gaan met elke bewerking hangen af van de CPU, de IO en het geheugen, vereist om de bewerking uit te voeren. In plaats van te denken over en het beheren van hardwarebronnen, kunt u een aanvraag eenheid (RU) beschouwen als een enkele maat eenheid voor de resources die nodig zijn om verschillende database bewerkingen uit te voeren en een toepassings aanvraag te onderhouden.
 
     De door Voer is ingericht op basis van het aantal ingestelde [aanvraag eenheden](request-units.md) voor elke container. Het verbruik van de aanvraag eenheid wordt geëvalueerd als een rente per seconde. Toepassingen die het aantal ingerichte aanvraag eenheden voor hun container overschrijden, zijn beperkt tot het aantal onder het ingerichte niveau voor de container daalt. Als voor uw toepassing een hogere door Voer is vereist, kunt u de door Voer verhogen door extra aanvraag eenheden in te richten. 
 
     De complexiteit van een query is van invloed op het aantal aanvraag eenheden dat voor een bewerking wordt verbruikt. Het aantal predikaten, de aard van de predikaten, het aantal Udf's en de grootte van de bron gegevens sets beïnvloeden de kosten van de query bewerkingen.
 
-    Als u de overhead van een bewerking (maken, bijwerken of verwijderen) wilt meten, inspecteert u de [x-MS-Request-factuurkop](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (of de equivalente eigenschap RequestCharge in ResourceResponse\<t > of FeedResponse\<t > in de .NET SDK) om de het aantal aanvraag eenheden dat door deze bewerkingen wordt gebruikt.
+    Als u de overhead van een bewerking (maken, bijwerken of verwijderen) wilt meten, inspecteert u de [x-MS-Request-](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) factuurkop (of de equivalente eigenschap RequestCharge in ResourceResponse\<t > of FeedResponse\<t > in de .NET SDK) om het aantal aanvraag eenheden te meten dat door deze bewerkingen wordt verbruikt.
 
     ```csharp
     // Measure the performance (request units) of writes

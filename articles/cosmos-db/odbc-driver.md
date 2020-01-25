@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: e8a982a100655934d4ae3ecd64564cf2da82dbbc
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 8be17f0b624c5c34709fb420adb434b77dbc0d91
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035598"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721078"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Verbinding maken met Azure Cosmos DB met behulp van analysehulpprogramma's voor BI met het ODBC-stuurprogramma
 
 Het Azure Cosmos DB ODBC-stuurprogramma kunt u verbinding maken met Azure Cosmos DB met behulp van BI analytics-hulpprogramma's zoals SQL Server Integration Services, Power BI Desktop en Tableau, zodat u kunt analyseren en visualisaties van uw Azure Cosmos DB-gegevens in deze oplossingen maken.
 
-Het ODBC-stuurprogramma van Azure Cosmos DB is compatibel met ODBC 3.8 en ondersteunt ANSI SQL-92-syntaxis. Het stuurprogramma biedt uitgebreide functies waarmee u gegevens in Azure Cosmos DB opnieuw kunt normaliseren. Met behulp van het stuurprogramma kunt u gegevens in Azure Cosmos DB weergeven als tabellen en weergaven. Met het stuurprogramma kunt u SQL-bewerkingen uitvoeren ten opzichte van de tabellen en weergaven, zoals groeperen op query's, invoegingen, updates en verwijderingen.
+Het ODBC-stuurprogramma van Azure Cosmos DB is compatibel met ODBC 3.8 en ondersteunt ANSI SQL-92-syntaxis. Het stuurprogramma biedt uitgebreide functies waarmee u gegevens in Azure Cosmos DB opnieuw kunt normaliseren. Met behulp van het stuurprogramma kunt u gegevens in Azure Cosmos DB weergeven als tabellen en weergaven. Met het stuurprogramma kunt u SQL-bewerkingen uitvoeren op de tabellen en weergaven, zoals groeperen op query's, invoegingen, updates en verwijderingen.
 
 > [!NOTE]
 > Verbinding maken met Azure Cosmos DB met het ODBC-stuurprogramma wordt momenteel ondersteund voor Azure Cosmos DB SQL API-accounts.
@@ -90,7 +90,7 @@ Aan de slag met het ODBC-stuurprogramma.
 
 ## <a id="#container-mapping"></a>Stap 3: een schema definitie maken met behulp van de container toewijzings methode
 
-Er zijn twee soorten bemonsterings methoden die u kunt gebruiken: **container toewijzing** of **tabel scheidings tekens**. Een steekproef sessie kan gebruikmaken van beide steekproef methoden, maar elke container kan alleen een specifieke steekproef methode gebruiken. Met de volgende stappen maakt u een schema voor de gegevens in een of meer containers met behulp van de container toewijzings methode. Met deze steekproef methode worden de gegevens in de pagina van een container opgehaald om de structuur van de gegevens te bepalen. Er wordt een container naar een tabel op de ODBC-zijde getransponeren. Deze steekproef methode is efficiënt en snel wanneer de gegevens in een container homo geen zijn. Als een container heterogene type gegevens bevat, kunt u het beste de [toewijzings methode voor tabel scheidingen](#table-mapping) gebruiken, aangezien deze een krachtigere bemonsterings methode biedt om de gegevens structuren in de container te bepalen. 
+Er zijn twee soorten bemonsterings methoden die u kunt gebruiken: **container toewijzing** of **tabel scheidings tekens**. Een steekproef sessie kan gebruikmaken van beide steekproef methoden, maar elke container kan alleen een specifieke steekproef methode gebruiken. Met de volgende stappen maakt u een schema voor de gegevens in een of meer containers met behulp van de container toewijzings methode. Met deze steekproef methode worden de gegevens in de pagina van een container opgehaald om de structuur van de gegevens te bepalen. Er wordt een container naar een tabel op de ODBC-zijde getransponeren. Deze steekproef methode is efficiënt en snel wanneer de gegevens in een container homo geen zijn. Als een container hetero geen gegevens bevat, kunt u het beste de [toewijzings methode voor tabel scheidingen](#table-mapping) gebruiken, aangezien deze een krachtigere bemonsterings methode biedt om de gegevens structuren in de container te bepalen. 
 
 1. Klik na het volt ooien van de stappen 1-4 in [verbinding maken met uw Azure Cosmos-data base](#connect)op **schema-editor** in het venster **Azure Cosmos db odbc-stuur programma-DSN instellen** .
 

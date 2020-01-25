@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cb3b10ca67ab283b999e4fff8e3bb79ae3b59745
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 72b3349e0ad4fd86b91a7a02f70b2bcf1efbc271
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950813"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712852"
 ---
 # <a name="string-claims-transformations"></a>Teken reeks claim transformaties
 
@@ -157,7 +157,7 @@ Bepaal of een claim van een teken reeks gelijk is aan een andere. Het resultaat 
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | string | Eerste claim type, dat moet worden vergeleken. |
 | InputClaim | inputClaim2 | string | Tweede claim type, dat moet worden vergeleken. |
-| InputParameter | operator | string | Mogelijke waarden: `EQUAL` of `NOT EQUAL`. |
+| InputParameter | and | string | Mogelijke waarden: `EQUAL` of `NOT EQUAL`. |
 | InputParameter | ignoreCase | booleaans | Hiermee geeft u op of deze vergelijking het hoofdletter gebruik moet negeren van de teken reeksen die worden vergeleken. |
 | OutputClaim | outputClaim | booleaans | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen. |
 
@@ -197,7 +197,7 @@ Hiermee wordt bepaald of een claim waarde gelijk is aan de waarde van de invoer 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | string | Het claim type, dat moet worden vergeleken. |
-| InputParameter | operator | string | Mogelijke waarden: `EQUAL` of `NOT EQUAL`. |
+| InputParameter | and | string | Mogelijke waarden: `EQUAL` of `NOT EQUAL`. |
 | InputParameter | compareTo | string | teken reeks vergelijking, een van de waarden: Ordinal, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | booleaans | Hiermee geeft u op of deze vergelijking het hoofdletter gebruik moet negeren van de teken reeksen die worden vergeleken. |
 | OutputClaim | outputClaim | booleaans | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen. |
@@ -379,7 +379,7 @@ In het volgende voor beeld wordt de beschrijving van het fout bericht opgezocht 
   <DataType>string</DataType>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>
@@ -477,7 +477,7 @@ Hiermee wordt het domein gedeelte van een e-mail adres opgehaald.
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | emailAddress | string | Het claim type dat het e-mail adres bevat. |
-| OutputClaim | domein | string | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen-het domein. |
+| OutputClaim | domeinen | string | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen-het domein. |
 
 Gebruik deze claim transformatie voor het parseren van de domein naam na het @-symbool van de gebruiker. Dit kan handig zijn bij het verwijderen van persoons gegevens (PII) uit controle gegevens. De volgende claim transformatie laat zien hoe u de domein naam kunt parseren vanuit een **e-mail** claim.
 

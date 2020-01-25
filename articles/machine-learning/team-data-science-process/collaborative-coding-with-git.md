@@ -2,20 +2,20 @@
 title: Samenwerken aan code met Git - Team Data Science Process
 description: Het gezamenlijke code-ontwikkeling voor data science-projecten met behulp van Git met flexibele planning.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 08/23/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3b57621fcec654f11c8e9a68e4568f332dbf9ac6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195415"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721894"
 ---
 # <a name="collaborative-coding-with-git"></a>Samenwerken aan code met Git
 
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u Git kunt gebruiken als het ontwikkelings r
 
 Azure DevOps biedt een handige manier om een gebruikers hoofdtekst of taak item van Azure boards te verbinden met een Azure opslag plaatsen Git-opslagplaats vertakking. U kunt uw gebruikers verhaal of taak rechtstreeks koppelen aan de bijbehorende code. 
 
-Als u een werk item wilt verbinden met een nieuwe vertakking, selecteert u het beletsel teken ( **...** ) naast het werk item en bladert u naar het context menu en selecteert u **nieuwe vertakking**.  
+Als u een werk item wilt verbinden met een nieuwe vertakking, selecteert u het beletsel teken ( **...** ) naast het werk item en bladert u **naar het context** menu en selecteert u **nieuwe vertakking**.  
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
@@ -39,7 +39,7 @@ U kunt ook een nieuwe vertakking maken met behulp van de volgende Git Bash-opdra
 git checkout -b <new branch name> <base branch name>
 
 ```
-Als u geen naam van \<een basis vertakking opgeeft >, is de nieuwe vertakking gebaseerd `master`op. 
+Als u geen \<basis vertakkings naam opgeeft >, is de nieuwe vertakking gebaseerd op `master`. 
 
 Als u wilt overschakelen naar uw werk vertakking, voert u de volgende opdracht uit: 
 
@@ -47,7 +47,7 @@ Als u wilt overschakelen naar uw werk vertakking, voert u de volgende opdracht u
 git checkout <working branch name>
 ```
 
-Nadat u bent overgeschakeld naar de werk vertakking, kunt u beginnen met het ontwikkelen van code of documentatie artefacten om het werk item te volt ooien. Hiermee schakelt u terug naar de `master` vertakking. `git checkout master`
+Nadat u bent overgeschakeld naar de werk vertakking, kunt u beginnen met het ontwikkelen van code of documentatie artefacten om het werk item te volt ooien. Als u `git checkout master` activeert, gaat u terug naar de `master` vertakking.
 
 Het is een goed idee om een Git-vertakking te maken voor elk werk item van de gebruikers hoofdtekst. Voor elk taak werk item kunt u vervolgens een vertakking maken op basis van de vertakking van de gebruikers verhaal. Organiseer de vertakkingen in een hiërarchie die overeenkomt met de relatie van de gebruikers verhaal wanneer u meerdere personen hebt die aan verschillende gebruikers hoofdtekst werken voor hetzelfde project of op verschillende taken voor hetzelfde gebruikers verhaal. U kunt conflicten minimaliseren door ervoor te zorgen dat elk teamlid aan een andere vertakking werkt of op verschillende code of andere artefacten wanneer een vertakking wordt gedeeld. 
 
@@ -76,11 +76,11 @@ git push origin script
 
 Wanneer u klaar bent voor het samen voegen van uw huidige werk vertakking in de basis vertakking van een of meer door voeringen en pushes, kunt u een *pull-aanvraag* maken en verzenden in azure opslag plaatsen. 
 
-Ga op de hoofd pagina van uw Azure DevOps-project naar **opslag plaatsen** > **pull-aanvragen** in het linkernavigatievenster. Selecteer vervolgens een van de knoppen van de **nieuwe pull-aanvraag** of de koppeling **een pull-aanvraag maken** .
+Ga op de hoofd pagina van uw Azure DevOps-project naar **opslag plaatsen** > **pull-aanvragen** in de linkernavigatiebalk. Selecteer vervolgens een van de knoppen van de **nieuwe pull-aanvraag** of de koppeling **een pull-aanvraag maken** .
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-Ga, indien nodig, in het scherm **nieuwe pull-aanvraag** naar de Git-opslag plaats en de vertakking waarnaar u uw wijzigingen wilt samen voegen. U kunt andere informatie toevoegen of wijzigen. Voegonder revisoren de namen toe van de personen die u nodig hebt om uw wijzigingen te controleren en selecteer vervolgens **maken**. 
+Ga, indien nodig, in het scherm **nieuwe pull-aanvraag** naar de Git-opslag plaats en de vertakking waarnaar u uw wijzigingen wilt samen voegen. U kunt andere informatie toevoegen of wijzigen. Voeg onder **revisoren**de namen van de revisoren toe en selecteer vervolgens **maken**. 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
@@ -98,11 +98,11 @@ Bevestig dat de aanvraag is gemarkeerd als **voltooid**.
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-Wanneer u teruggaat naar **opslag plaatsen** in de linkernavigatiebalk, kunt u zien dat u bent overgeschakeld naar de hoofd vertakking sinds de `script` vertakking werd verwijderd.
+Wanneer u teruggaat naar **opslag plaatsen** in het linkernavigatievenster, kunt u zien dat u bent overgeschakeld naar de hoofd vertakking sinds de `script` vertakking is verwijderd.
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 
-U kunt ook de volgende Git Bash-opdrachten gebruiken om de `script` werk vertakking samen te voegen met de basis vertakking en de werk vertakking na het samen voegen te verwijderen:
+U kunt ook de volgende Git-Bash-opdrachten gebruiken om de `script` werkende vertakking samen te voegen met de basis vertakking en de werk vertakking na het samen voegen te verwijderen:
 
 ```bash
 git checkout master

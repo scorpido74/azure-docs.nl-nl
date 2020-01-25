@@ -3,32 +3,32 @@ title: Voorbeeldgegevens in Azure blob storage - Team Data Science Process
 description: Steekproef nemen voor gegevens die zijn opgeslagen in Azure blob-opslag programmatisch downloaden en vervolgens sampling met behulp van de procedures die zijn geschreven in Python.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1c455106e5faa4aa20ec56f37788e0b8c324fee1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4832762a88073f4d819925659bf9078e18f60c2d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61042905"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720274"
 ---
 # <a name="heading"></a>Voorbeeldgegevens in Azure blob-opslag
 
 In dit artikel bevat informatie over steekproef nemen voor gegevens die zijn opgeslagen in Azure blob-opslag programmatisch downloaden en vervolgens sampling met behulp van de procedures die zijn geschreven in Python.
 
 **Waarom sample van uw gegevens?**
-Als de gegevensset die u van plan bent om te analyseren groot is, is het doorgaans een goed idee om down-sampling van de gegevens om deze aan de grootte van een kleiner, maar representatieve en gemakkelijker. Dit vereenvoudigt het begrijpen van gegevens, verkennen en feature-engineering. De rol in het Cortana Analytics-proces is om in te schakelen, snel ontwikkelen van prototypen van de functies voor het verwerken van gegevens en machine learning-modellen.
+Als de gegevensset die u van plan bent om te analyseren groot is, is het doorgaans een goed idee om down-sampling van de gegevens om deze aan de grootte van een kleiner, maar representatieve en gemakkelijker. Bemonstering vereenvoudigt het leren van gegevens, het verkennen en functie-engineering. De rol in het Cortana Analytics-proces is om in te schakelen, snel ontwikkelen van prototypen van de functies voor het verwerken van gegevens en machine learning-modellen.
 
 Deze taak steekproeven is een stap in de [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="download-and-down-sample-data"></a>Download en down-sampling van gegevens
-1. De gegevens uit Azure blob-opslag met behulp van de blobservice van de volgende voorbeeldcode voor Python downloaden: 
+1. Down load de gegevens uit Azure Blob-opslag met behulp van de Blob service uit de volgende python-voorbeeld code: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -61,7 +61,7 @@ Deze taak steekproeven is een stap in de [Team Data Science Process (TDSP)](http
         sample_rows = np.random.choice(dataframe_blobdata.index.values, sample_size)
         dataframe_blobdata_sample = dataframe_blobdata.ix[sample_rows]
 
-Nu kunt u werken met de bovenstaande gegevensframe met het voorbeeld 1 procent voor verdere exploratie en genereren van de functie.
+U kunt nu met het bovenstaande gegevens frame werken met het percentage van de steek proef voor verdere exploratie en het genereren van onderdelen.
 
 ## <a name="heading"></a>Gegevens uploaden en te lezen in Azure Machine Learning
 U kunt de volgende voorbeeldcode down-sampling van de gegevens en deze rechtstreeks in Azure Machine Learning te gebruiken:

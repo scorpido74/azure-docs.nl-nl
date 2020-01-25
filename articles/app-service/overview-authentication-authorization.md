@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: efef578f5c62bef4ae33b98b568fd6d5c1389c4a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672248"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715122"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Authenticatie en autorisatie in Azure App Service
 
@@ -24,9 +24,9 @@ Azure App Service biedt ingebouwde ondersteuning voor verificatie en autorisatie
 Voor beveiligde verificatie en autorisatie is grondige inzichten van beveiliging vereist, waaronder Federatie, versleuteling, [JSON-webtokens (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) -beheer, [toekennings typen](https://oauth.net/2/grant-types/), enzovoort. App Service biedt deze hulpprogram ma's, zodat u meer tijd en energie kunt best Eden aan het leveren van bedrijfs waarde aan uw klant.
 
 > [!IMPORTANT]
-> U hoeft App Service voor authn/autho niet te gebruiken. Veel web frameworks worden gebundeld met beveiligings functies, en u kunt ze gebruiken als u wilt. Als u meer flexibiliteit nodig hebt dan App Service biedt, kunt u ook uw eigen hulpprogram ma's schrijven.  
+> U hoeft App Service voor authn/autho niet te gebruiken. U kunt gebruikmaken van de gebundelde beveiligings functies in uw eigen keuze of u kunt uw eigen hulpprogram ma's schrijven. Het is echter belang rijk dat [Chrome 80 een belang rijke wijziging aanbrengt in de implementatie van SameSite voor cookies](https://www.chromestatus.com/feature/5088147346030592) (release date rond maart 2020), en aangepaste externe verificatie of andere scenario's die afhankelijk zijn van het boeken van een cross-site cookie, kunnen afbreken wanneer client-Chrome-browsers worden bijgewerkt. De tijdelijke oplossing is complex omdat deze moet ondersteuning bieden voor verschillende SameSite-gedragingen voor verschillende browsers. 
 >
-> Als u echter met een van de niet-App Service opties voor externe authenticatie gaat, moet u er ook voor zorgen dat Chrome 80 een belang rijke [wijziging in de implementatie van SameSite voor cookies aanbrengt](https://www.chromestatus.com/feature/5088147346030592) (release datum rond maart 2020) en het authenticatie mechanisme van uw app kan afbreken wanneer client browsers worden bijgewerkt. De ASP.NET Core documentatie bevat informatie over hoe u deze in uw app kunt aanpakken, op [http: browser SameSite verandert van invloed op verificatie](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication). Het bevat nuttige richt lijnen over het testen van deze breuk wijziging ten opzichte van de belang rijke browsers, ongeacht of u ASP.NET Core gebruikt of niet.
+> De versies van de ASP.NET Core 2,1 en hoger die door App Service worden gehost, worden al bijgewerkt voor deze breuk wijziging en verwerkten gechrome 80 en oudere browsers op de juiste manier. Daarnaast wordt dezelfde patch voor ASP.NET Framework 4.7.2 geïmplementeerd in het App Service-exemplaar gedurende januari 2020. Zie [Azure app service SameSite cookie update](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)(Engelstalig) voor meer informatie over hoe u weet of uw app de patch heeft ontvangen.
 >
 
 Zie [gebruikers verificatie en autorisatie voor mobiele apps met Azure app service](../app-service-mobile/app-service-mobile-auth.md)voor meer informatie over systeem eigen mobiele apps.
@@ -85,7 +85,7 @@ App Service maakt gebruik van [federatieve identiteiten](https://en.wikipedia.or
 
 Wanneer u verificatie en autorisatie met een van deze providers inschakelt, is het aanmeldings eindpunt beschikbaar voor gebruikers verificatie en voor validatie van verificatie tokens van de provider. U kunt uw gebruikers een onbeperkt aantal van deze aanmeldings opties voorzien. U kunt ook een andere ID-provider of [uw eigen aangepaste identiteits oplossing][custom-auth]integreren.
 
-## <a name="authentication-flow"></a>Verificatie stroom
+## <a name="authentication-flow"></a>verificatie stroom
 
 De verificatie stroom is hetzelfde voor alle providers, maar verschilt afhankelijk van of u zich wilt aanmelden met de SDK van de provider:
 

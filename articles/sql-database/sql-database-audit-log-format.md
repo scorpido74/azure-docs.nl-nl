@@ -5,16 +5,16 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.topic: conceptual
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 5bd3a3ae5ab95076129e2565a578bdc6ac0e1e38
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 13746b86eed75055ceb5203afafb2d27a78ce1d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928637"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722081"
 ---
 # <a name="sql-database-audit-log-format"></a>Indeling van SQL Database audit logboek
 
@@ -43,7 +43,7 @@ Controle gebeurtenissen worden geschreven naar Log Analytics werk ruimte die tij
 
 ## <a id="subheading-1"></a>Controle logboek velden
 
-| Naam (BLOB) | Naam (Event Hubs/Log Analytics) | Beschrijving | Blobtype | Type Event Hubs/Log Analytics |
+| Naam (BLOB) | Naam (Event Hubs/Log Analytics) | Beschrijving | BLOB-type | Type Event Hubs/Log Analytics |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | ID van de actie | varchar (4) | string |
 | action_name | action_name_s | De naam van de actie | N/A | string |
@@ -78,8 +78,8 @@ Controle gebeurtenissen worden geschreven naar Log Analytics werk ruimte die tij
 | server_principal_sid | server_principal_sid_s | Huidige aanmeldings-SID | varbinary | string |
 | session_id | session_id_d | De ID van de sessie waarop de gebeurtenis heeft plaatsgevonden | smallint | int |
 | session_server_principal_name | session_server_principal_name_s | Server-Principal voor sessie | sysname | string |
-| instructie | statement_s | T-SQL-instructie die is uitgevoerd (indien van toepassing) | nvarchar (4000) | string |
-| geslaagd | succeeded_s | Hiermee wordt aangegeven of de actie die de gebeurtenis heeft geactiveerd is geslaagd. Voor andere gebeurtenissen dan aanmelden en batch wordt hiermee alleen gerapporteerd of de machtiging is geslaagd of mislukt, niet voor de bewerking. 1 = geslaagd, 0 = mislukt | bit | string |
+| rekeningen | statement_s | T-SQL-instructie die is uitgevoerd (indien van toepassing) | nvarchar (4000) | string |
+| Is voltooid | succeeded_s | Hiermee wordt aangegeven of de actie die de gebeurtenis heeft geactiveerd is geslaagd. Voor andere gebeurtenissen dan aanmelden en batch wordt hiermee alleen gerapporteerd of de machtiging is geslaagd of mislukt, niet voor de bewerking. 1 = geslaagd, 0 = mislukt | bit | string |
 | target_database_principal_id | target_database_principal_id_d | De databaseprincipal waarmee de bewerking GRANT/DENY/REVOKE wordt uitgevoerd. 0 indien niet van toepassing | int | int |
 | target_database_principal_name | target_database_principal_name_s | Doel gebruiker van actie. NULL indien niet van toepassing | string | string |
 | target_server_principal_id | target_server_principal_id_d | Server-Principal waarop de bewerking GRANT/DENY/REVOKE wordt uitgevoerd. Retourneert 0 indien niet van toepassing | int | int |

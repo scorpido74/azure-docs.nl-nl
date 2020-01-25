@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: ab0aebf0b66ac01e19699795b14063df31cb9621
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 6a50663fd0cc907e0dc97b50decd8b6edbaa42cb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263754"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713204"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren voor het gebruik van virtuele knoop punten in de Azure Portal
 
@@ -22,7 +22,7 @@ In dit artikel wordt beschreven hoe u de virtuele netwerk resources en een AKS-c
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Virtuele knoop punten scha kelen netwerk communicatie in tussen de peulen die worden uitgevoerd in ACI en het AKS-cluster. Om deze communicatie te bieden, wordt een subnet van een virtueel netwerk gemaakt en worden gedelegeerde machtigingen toegewezen. Virtuele knoop punten werken alleen met AKS-clusters die zijn gemaakt met *Geavanceerde* netwerken. Standaard worden AKS-clusters gemaakt met een *basis* netwerk. In dit artikel wordt beschreven hoe u een virtueel netwerk en subnetten maakt en hoe u een AKS-cluster implementeert dat gebruikmaakt van geavanceerde netwerken.
+Virtuele knoop punten scha kelen netwerk communicatie in tussen de peulen die worden uitgevoerd in Azure Container Instances (ACI) en het AKS-cluster. Om deze communicatie te bieden, wordt een subnet van een virtueel netwerk gemaakt en worden gedelegeerde machtigingen toegewezen. Virtuele knoop punten werken alleen met AKS-clusters die zijn gemaakt met *Geavanceerde* netwerken. Standaard worden AKS-clusters gemaakt met een *basis* netwerk. In dit artikel wordt beschreven hoe u een virtueel netwerk en subnetten maakt en hoe u een AKS-cluster implementeert dat gebruikmaakt van geavanceerde netwerken.
 
 Als u geen ACI eerder hebt gebruikt, registreert u de service provider bij uw abonnement. U kunt de status van de ACI-provider registratie controleren met de opdracht [AZ provider List][az-provider-list] , zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -38,7 +38,7 @@ Namespace                    RegistrationState
 Microsoft.ContainerInstance  Registered
 ```
 
-Als de provider wordt weer gegeven als *NotRegistered*, registreert u de provider met behulp van de [AZ provider REGI ster] [AZ-provider-REGI ster], zoals wordt weer gegeven in het volgende voor beeld:
+Als de provider wordt weer gegeven als *NotRegistered*, registreert u de provider met behulp van de [AZ provider REGI ster][az-provider-register] , zoals wordt weer gegeven in het volgende voor beeld:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
@@ -169,7 +169,7 @@ Voer de toepassing uit met de opdracht [kubectl apply][kubectl-apply] .
 kubectl apply -f virtual-node.yaml
 ```
 
-Gebruik de opdracht [kubectl Get peul][kubectl-get] met het argument `-o wide` om een lijst van peulen en het geplande knoop punt uit te voeren. U ziet dat de pod van de `virtual-node-helloworld` is gepland op het knoop punt `virtual-node-linux`.
+Gebruik de opdracht [kubectl Get peul][kubectl-get] met het argument `-o wide` om een lijst met peulen en het geplande knoop punt uit te voeren. U ziet dat de `virtual-node-helloworld` Pod is gepland op het `virtual-node-linux` knoop punt.
 
 ```
 $ kubectl get pods -o wide
@@ -181,7 +181,7 @@ virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m      
 Aan de Pod wordt een intern IP-adres toegewezen vanuit het subnet van het virtuele netwerk van Azure dat is gedelegeerd voor gebruik met virtuele knoop punten.
 
 > [!NOTE]
-> [Configureer en gebruik een Kubernetes-geheim][acr-aks-secrets]als u installatie kopieën gebruikt die zijn opgeslagen in azure container Registry. Een huidige beperking van virtuele knoop punten is dat u geen geïntegreerde Azure AD-Service-Principal-verificatie kunt gebruiken. Als u geen geheim gebruikt, mislukt het begin van de virtuele knoop punten en wordt de fout `HTTP response status code 400 error code "InaccessibleImage"` gerapporteerd.
+> [Configureer en gebruik een Kubernetes-geheim][acr-aks-secrets]als u installatie kopieën gebruikt die zijn opgeslagen in azure container Registry. Een huidige beperking van virtuele knoop punten is dat u geen geïntegreerde Azure AD-Service-Principal-verificatie kunt gebruiken. Als u geen geheim gebruikt, kan er geen peulen gepland op virtuele knoop punten worden gestart en wordt de fout `HTTP response status code 400 error code "InaccessibleImage"`gerapporteerd.
 
 ## <a name="test-the-virtual-node-pod"></a>De pod van het virtuele knoop punt testen
 
@@ -197,7 +197,7 @@ Installeer `curl` in de Pod met behulp van `apt-get`:
 apt-get update && apt-get install -y curl
 ```
 
-U hebt nu toegang tot het adres van uw Pod met `curl`, zoals *http://10.241.0.4* . Geef uw eigen interne IP-adres op dat wordt weer gegeven in de vorige `kubectl get pods`-opdracht:
+U hebt nu toegang tot het adres van uw Pod met behulp van `curl`, zoals *http://10.241.0.4* . Geef uw eigen interne IP-adres op dat wordt weer gegeven in de vorige `kubectl get pods` opdracht:
 
 ```azurecli-interactive
 curl -L http://10.241.0.4
@@ -247,3 +247,4 @@ Virtuele knoop punten zijn één onderdeel van een schaal oplossing in AKS. Raad
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register

@@ -3,26 +3,26 @@ title: Testen van data science-code met Services van Azure DevOps - Team Data Sc
 description: Data science code testen op Azure met de gegevensset UCI volwassenen inkomsten voorspelling met het Team Data Science Process en Azure DevOps-Services
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/19/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: 10692fcb720be819dcf94a8ecbc541983ffc8853
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60336531"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721967"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Data science code testen op Azure met het Team Data Science Process en Azure DevOps-Services
 Dit artikel bevat voorlopige richtlijnen voor het testen van code in een werkstroom voor datatechnologie. Dergelijke test biedt gegevenswetenschappers een systematische en efficiënte manier om te controleren of de kwaliteit en de verwachte resultaten van hun code. We gebruiken een Team Data Science Process (TDSP) [project die gebruikmaakt van de gegevensset UCI volwassenen inkomsten](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) die we eerder gepubliceerd om weer te geven hoe het testen van code kan worden gedaan. 
 
 ## <a name="introduction-on-code-testing"></a>Inleiding over het testen van code
-'Eenheidstesten' is een zich al geruime tijd procedure voor het ontwikkelen van software. Maar voor datatechnologie, is het vaak niet duidelijk welke die middelen en hoe u moet testen van code voor verschillende fasen van een volledige wetenschappelijke levensduur, zoals:
+'Eenheidstesten' is een zich al geruime tijd procedure voor het ontwikkelen van software. Maar voor een gegevens wetenschap is het vaak niet duidelijk wat ' eenheids testen ' betekent en hoe u code moet testen voor verschillende stadia van een levens cyclus van data wetenschappen, zoals:
 
 * Gegevensvoorbereiding
 * Data quality onderzoek
@@ -114,35 +114,35 @@ Gebruik de volgende stappen uit om te stellen en het testen van code en een geau
 
     a. Selecteer in de projectopslagplaats **Build and Release**, en selecteer vervolgens **+ nieuw** om een nieuwe buildproces te maken.
 
-       ![Selections for starting a new build process](./media/code-test/create_new_build.PNG)
+    ![Selecties voor het starten van een nieuwe bouw proces](./media/code-test/create_new_build.PNG)
 
     b. Volg de aanwijzingen om uw code bronlocatie, naam van het project, opslagplaats en vertakking informatie te selecteren.
     
-       ![Source, name, repository, and branch information](./media/code-test/fill_in_build_info.PNG)
+    ![Bron-, naam-, opslag plaats-en vertakkings gegevens](./media/code-test/fill_in_build_info.PNG)
 
     c. Selecteer een sjabloon. Omdat er geen Python projectsjabloon, maken, starten door het selecteren van **leeg proces**. 
 
-       ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
+    ![Lijst met sjablonen en de knop ' leeg proces '](./media/code-test/start_empty_process_template.PNG)
 
-    d. De naam van de build en selecteer de agent. U kunt hier de standaardwaarde als u een DSVM gebruiken wilt voor het voltooien van het bouwproces. Zie voor meer informatie over de instelling agents [bouwen en uitbrengen agents](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
+    d. De naam van de build en selecteer de agent. U kunt hier de standaard optie kiezen als u een DSVM wilt gebruiken om het bouw proces te volt ooien. Zie voor meer informatie over de instelling agents [bouwen en uitbrengen agents](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
     
-       ![Build and agent selections](./media/code-test/select_agent.PNG)
+    ![Selecties voor Build en agent](./media/code-test/select_agent.PNG)
 
-    e. Selecteer **+** in het linkerdeelvenster, een taak wordt toegevoegd voor deze build-fase. Omdat we gaan de Python-script uit te voeren **test1.py** voor het voltooien van alle controles, deze taak een PowerShell-opdracht gebruikt om het Python-code uitvoeren.
+    e. Selecteer **+** in het linkerdeelvenster, een taak wordt toegevoegd voor deze build-fase. Omdat we het python-script **test1.py** uitvoeren om alle controles te volt ooien, gebruikt deze taak een Power shell-opdracht voor het uitvoeren van python-code.
     
-       !["Add tasks" pane with PowerShell selected](./media/code-test/add_task_powershell.PNG)
+    ![Deel venster taken toevoegen met Power shell geselecteerd](./media/code-test/add_task_powershell.PNG)
 
     f. In de details van PowerShell, vult u de vereiste gegevens, zoals de naam en versie van PowerShell. Kies **Inline Script** als het type. 
     
-       In the box under **Inline Script**, you can type **python test1.py**. Make sure the environment variable is set up correctly for Python. If you need a different version or kernel of Python, you can explicitly specify the path as shown in the figure: 
+    In het vak onder **inline-script**kunt u **python test1.py**typen. Zorg ervoor dat de omgevings variabele juist is ingesteld voor python. Als u een andere versie of een andere kernel van python nodig hebt, kunt u het pad expliciet opgeven, zoals wordt weer gegeven in de afbeelding: 
     
-       ![PowerShell details](./media/code-test/powershell_scripts.PNG)
+    ![Power shell-Details](./media/code-test/powershell_scripts.PNG)
 
-    g. Selecteer **opslaan en in de wachtrij** naar het build-pijplijn-proces te voltooien.
+    g. Selecteer **& wachtrij opslaan** om het build pipeline-proces te volt ooien.
 
-       !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
+    ![Knop voor opslaan van & wachtrij](./media/code-test/save_and_queue_build_definition.PNG)
 
-Nu telkens wanneer een nieuwe doorvoer wordt doorgestuurd naar de opslagplaats, wordt het bouwproces automatisch gestart. (Hier gebruiken we master als de opslagplaats, maar u kunt een vertakking definiëren.) Het proces wordt uitgevoerd de **test1.py** bestand in de agentcomputer om ervoor te zorgen dat alles gedefinieerd in de code correct wordt uitgevoerd. 
+Nu telkens wanneer een nieuwe doorvoer wordt doorgestuurd naar de opslagplaats, wordt het bouwproces automatisch gestart. (Hier gebruiken we de Master als opslag plaats, maar u kunt een vertakking definiëren.) Het proces voert het **test1.py** -bestand in de agent machine uit om ervoor te zorgen dat alles wat in de code is gedefinieerd, correct wordt uitgevoerd. 
 
 Als meldingen correct zijn ingesteld, u krijgt een bericht in e-mailbericht wanneer de build is voltooid. U kunt ook de status van de build in Azure DevOps controleren. Als dit mislukt, kunt u de details van de build en weten welk stuk verbroken is.
 
@@ -154,7 +154,7 @@ Als meldingen correct zijn ingesteld, u krijgt een bericht in e-mailbericht wann
 * Zie de [UCI inkomsten voorspelling opslagplaats](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) voor concrete voorbeelden van eenheidstests voor data science-scenario's.
 * Volg de voorgaande overzicht en voorbeelden van het scenario UCI inkomsten voorspelling in uw eigen data science-projecten.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Naslaginformatie
 * [Team Data Science Process](https://aka.ms/tdsp)
 * [Hulpprogramma's voor Visual Studio testen](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Resources voor Azure DevOps testen](https://www.visualstudio.com/team-services/)

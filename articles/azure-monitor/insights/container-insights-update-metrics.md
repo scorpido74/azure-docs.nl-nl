@@ -3,12 +3,12 @@ title: Azure Monitor voor containers bijwerken voor metrische gegevens | Microso
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers bijwerkt om de functie voor aangepaste metrische gegevens in te scha kelen die ondersteuning biedt voor het verkennen en waarschuwen van geaggregeerde metrische gegevens.
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 0a2674df4a05d856b35dd51dbb33af0f407db29f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a7f40cb0523c2366c47da228e49311c2f9579212
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75403226"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715917"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Azure Monitor voor containers bijwerken om metrische gegevens in te scha kelen
 
@@ -20,7 +20,7 @@ Azure Monitor voor containers wordt ondersteuning geïntroduceerd voor het verza
 
 De volgende metrische gegevens zijn ingeschakeld als onderdeel van deze functie:
 
-| Metrische naamruimte | Gegevens | Beschrijving |
+| Metrische naam ruimte | Gegevens | Beschrijving |
 |------------------|--------|-------------|
 | insights.container/nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Dit zijn metrische gegevens van *knoop punten* en *host* als een dimensie, en ze bevatten ook de<br> de naam van het knoop punt als waarde voor de *host* -dimensie. |
 | insights.container/pods | podCount | Dit zijn *pod* metrische gegevens en bevatten de volgende dimensies: dimensie-controller naam, naam ruimte van Kubernetes, name, Phase. |
@@ -529,7 +529,7 @@ Voer de volgende stappen uit om een specifiek cluster bij te werken met Azure Po
     }
 
     #
-    #   Check AKS cluster existance and access check
+    #   Check AKS cluster existence and access check
     #
     Write-Host("Checking aks cluster exists...")
     $cluster = Get-AzAks -ResourceGroupName $resourceGroupName -Name $clusterName  -ErrorVariable notPresent -ErrorAction SilentlyContinue

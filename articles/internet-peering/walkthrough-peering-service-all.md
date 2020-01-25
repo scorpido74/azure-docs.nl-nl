@@ -1,21 +1,21 @@
 ---
-title: Overzicht van peering service-partners
+title: Overzicht van Peering Service-partners
 titleSuffix: Azure
-description: Overzicht van peering service-partners
+description: Overzicht van Peering Service-partners
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 28aa9f921de64fcc838935cf65b64a63280ddf16
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: d626d98613bd5d988b599d0980c885d7f73bb958
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75774625"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720245"
 ---
-# <a name="peering-service-partner-walkthrough"></a>Overzicht van peering service-partners
+# <a name="peering-service-partner-walkthrough"></a>Overzicht van Peering Service-partners
 
 In deze sectie wordt uitgelegd welke stappen een provider moet volgen om direct peering in te scha kelen voor de peering-service.
 
@@ -25,7 +25,7 @@ Service providers kunnen hun geografische bereik uitbreiden door nieuwe rechtstr
 1. Volg de instructies voor [het maken of wijzigen van een directe peering met behulp van de portal](howto-direct-portal.md). Zorg ervoor dat het voldoet aan de vereiste voor hoge Beschik baarheid.
 1. Volg vervolgens de stappen om [peering service in te scha kelen op een directe peering met behulp van de portal](howto-peering-service-portal.md).
 
-## <a name="use-legacy-direct-peering-conection-for-peering-service"></a>Verouderde directe peering verbindinglijst gebruiken voor peering service
+## <a name="use-legacy-direct-peering-connection-for-peering-service"></a>Verouderde directe peering-verbinding gebruiken voor peering-service
 Als u verouderde directe peering hebt die u wilt gebruiken ter ondersteuning van de peering-service,
 1. Als dit nog niet het geval is, wordt er een peering service-partner geworden.
 1. Volg de instructies voor [het converteren van een verouderde directe peering naar Azure-resource met behulp van de portal](howto-legacy-direct-portal.md). Bestel zo nodig extra circuits om te voldoen aan de vereiste voor hoge Beschik baarheid.

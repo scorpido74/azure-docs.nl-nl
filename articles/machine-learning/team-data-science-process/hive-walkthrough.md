@@ -3,32 +3,32 @@ title: Gegevens verkennen in een Hadoop-cluster - Team Data Science Process
 description: Met behulp van het Team Data Science Process voor een end-to-end-scenario, die gebruikmaakt van een HDInsight Hadoop-cluster te bouwen en implementeren van een model.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0549427cfc99703af9f13280cf7377106423367b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 005d4fe1b6ec59e7f05be3dd2ab3e72d0e7aa8e0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982012"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720568"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Het Team Data Science Process in actie: gebruik Azure HDInsight Hadoop-clusters
 In dit scenario gebruiken we de [Team Data Science Process (TDSP)](overview.md) in een end-to-end-scenario. We gebruiken een [Azure HDInsight Hadoop-cluster](https://azure.microsoft.com/services/hdinsight/) wilt opslaan, verkennen, en de functie-engineering gegevens uit de openbaar beschikbare [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) gegevensset, en down-sampling van de gegevens. Voor het afhandelen van binaire en multiklassen classificatie en de voorspellende taken regressie, bouwen we modellen van de gegevens met Azure Machine Learning. 
 
-Zie voor een overzicht waarin wordt getoond hoe u voor het afhandelen van een grotere gegevensset, [Team Data Science Process - met behulp van Azure HDInsight Hadoop-Clusters op een gegevensset van 1 TB](hive-criteo-walkthrough.md).
+Zie voor een overzicht waarin wordt getoond hoe u een grotere gegevensset kunt verwerken, [team data Science process: Using Azure HDInsight Hadoop clusters in een gegevensset van 1 TB](hive-criteo-walkthrough.md).
 
-U kunt ook een IPython notebook gebruiken de taken die zijn gepresenteerd in deze stapsgewijze Kennismaking die gebruikmaakt van de gegevensset van 1 TB. Zie voor meer informatie, [Criteo scenario met behulp van een Hive ODBC-verbinding](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb).
+U kunt ook een IPython-notebook gebruiken om de taken uit te voeren die worden weer gegeven in de walkthrough die gebruikmaakt van de gegevensset van 1 TB. Zie voor meer informatie, [Criteo scenario met behulp van een Hive ODBC-verbinding](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb).
 
 ## <a name="dataset"></a>Beschrijving van de gegevensset NYC Taxi Trips
 De reisgegevens NYC over taxi's is ongeveer 20 GB gecomprimeerde door komma's gescheiden waarden (CSV)-bestanden (~ 48 GB niet-gecomprimeerd). Het heeft meer dan 173 miljoen afzonderlijke trips en bevat de tarieven voor elke reis betaald. Elke record van de fietstocht bevat de locatie op te halen en dropoff en tijd, geanonimiseerde hack (van het stuurprogramma) licentienummer en straten nummer (unieke ID van de taxi). De gegevens bevat informatie over alle gegevens in het jaar 2013 en is beschikbaar in de volgende twee gegevenssets voor elke maand:
 
-- De CSV-bestanden trip_data bevatten reis details. Dit omvat het aantal personen, op te halen en dropoff punten, duur van de tocht en lengte van de fietstocht. Hier volgen enkele voorbeeldrecords:
+- De trip_data CSV-bestanden bevatten reis Details: het aantal reizigers, het ophaal-en dropoff punten, de duur van de reis en de lengte van de reis. Hier volgen enkele voorbeeldrecords:
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -36,7 +36,7 @@ De reisgegevens NYC over taxi's is ongeveer 20 GB gecomprimeerde door komma's ge
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-- De trip_fare CSV-bestanden bevatten details van het tarief voor elke reis betaald. Dit omvat betalingstype, fare bedrag, toeslag en belastingen, tips en tolwegen, en de totale hoeveelheid betaald. Hier volgen enkele voorbeeldrecords:
+- De trip_fare CSV-bestanden bevatten details over het tarief dat voor elke reis wordt betaald: betalings type, ritbedrag bedrag, toeslag en belastingen, tips en tolgelden, en het totale betaalde bedrag. Hier volgen enkele voorbeeldrecords:
    
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -48,7 +48,7 @@ De reisgegevens NYC over taxi's is ongeveer 20 GB gecomprimeerde door komma's ge
 De unieke sleutel voor deelname aan reis\_gegevens en reis\_fare bestaat uit de velden: straten hack\_licentie, en ophalen van\_datum/tijd. Als u alle details relevant zijn voor een bepaalde reis, is het voldoende om toe te voegen aan deze drie sleutels.
 
 ## <a name="mltasks"></a>Voorbeelden van taken voor voorspelling
-Bepaal de aard van voorspellingen die u wilt maken op basis van gegevensanalyse. Dit helpt de taken die u wilt opnemen in uw proces te verduidelijken. Hier volgen drie voorbeelden van voorspelling problemen die we in dit scenario behandelen. Deze zijn gebaseerd op de *tip\_bedrag*:
+Bepaal het soort voor spellingen dat u wilt maken op basis van gegevens analyse, zodat u de vereiste proces taken kunt verduidelijken. Hier volgen drie voor beelden van voorspellings problemen die we in deze walkthrough hebben geadresseerd, op basis van de *tip\_hoeveelheid*:
 
 - **Binaire classificatie**: voorspellen of een tip voor een reis is betaald. Dat wil zeggen, een *tip\_bedrag* die groter is dan $0 een voorbeeld van een positieve is, terwijl een *tip\_bedrag* van $0 is een voorbeeld van een negatief zijn.
    
@@ -104,7 +104,7 @@ In de volgende AzCopy-opdrachten, vervangt u de volgende parameters met de werke
 
 * ***\<path_to_data_folder >*** De map (samen met het pad) op de computer die de uitgepakte gegevens bestanden bevat.  
 * ***\<Storage-account naam van Hadoop-cluster >*** Het opslag account dat is gekoppeld aan uw HDInsight-cluster.
-* ***\<standaard container van Hadoop-cluster >*** De standaard container die door uw cluster wordt gebruikt. Houd er rekening mee dat de naam van de standaard-container meestal dezelfde naam als het cluster zelf wordt. Bijvoorbeeld, als het cluster wordt 'abc123.azurehdinsight.net' genoemd, is de standaardcontainer abc123.
+* ***\<standaard container van Hadoop-cluster >*** De standaard container die door uw cluster wordt gebruikt. De naam van de standaard container is doorgaans dezelfde naam als het cluster zelf. Bijvoorbeeld, als het cluster wordt 'abc123.azurehdinsight.net' genoemd, is de standaardcontainer abc123.
 * \<van de sleutel voor het ***opslag account >*** De sleutel voor het opslag account dat door uw cluster wordt gebruikt.
 
 Voer de volgende twee AzCopy-opdrachten uit vanaf de opdrachtprompt of een Windows PowerShell-venster.
@@ -127,19 +127,19 @@ De gegevens worden nu in Blob-opslag en gereed is om te worden verbruikt binnen 
 
 Voor toegang tot het hoofdknooppunt van het cluster voor experimentele data-analyse en down-sampling van de gegevens, volgt u de procedure wordt beschreven in [toegang tot het hoofdknooppunt van Hadoop-Cluster](customize-hadoop-cluster.md).
 
-In dit scenario gebruiken we voornamelijk query's die zijn geschreven in [Hive](https://hive.apache.org/), een SQL-achtige querytaal, voorlopige gegevens explorations uitvoeren. Het Hive-query's worden opgeslagen in .hql bestanden. We vervolgens down-sampling van deze gegevens moet worden gebruikt in Machine Learning voor het ontwikkelen van modellen.
+In dit scenario gebruiken we voornamelijk query's die zijn geschreven in [Hive](https://hive.apache.org/), een SQL-achtige querytaal, voorlopige gegevens explorations uitvoeren. De Hive-query's worden opgeslagen in. HQL-bestanden. We vervolgens down-sampling van deze gegevens moet worden gebruikt in Machine Learning voor het ontwikkelen van modellen.
 
-Het cluster om voor te bereiden experimentele data-analyse, downloaden de .hql-bestanden met de relevante Hive-scripts uit [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) naar een lokale map (C:\temp) op het hoofdknooppunt. Om dit te doen, opent u de opdrachtprompt vanuit het hoofdknooppunt van het cluster en voer de volgende twee opdrachten uit:
+Als u het cluster wilt voorbereiden op experimentele gegevens analyse, downloadt u de HQL-bestanden met de relevante Hive-scripts van [github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) naar een lokale map (C:\temp) op het hoofd knooppunt. Open de opdracht prompt vanuit het hoofd knooppunt van het cluster en voer de volgende twee opdrachten uit:
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
 
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 
-Deze twee opdrachten downloaden alle .hql bestanden die nodig zijn in dit scenario naar een lokale map ***C:\temp&#92;***  in het hoofdknooppunt.
+Deze twee opdrachten downloaden alle '. HQL-bestanden die nodig zijn in deze walkthrough voor de lokale map ***C:\Temp&#92;***  in het hoofd knooppunt.
 
 ## <a name="#hive-db-tables"></a>Hive-database en tabellen is gepartitioneerd op basis van de maand maken
 > [!NOTE]
-> Dit is meestal een admin-taak.
+> Deze taak is doorgaans voor een beheerder.
 > 
 > 
 
@@ -153,11 +153,11 @@ Open in het hoofdknooppunt van het Hadoop-cluster, de Hadoop-opdrachtregel op he
 > 
 > 
 
-Het Hive-directory-opdrachtprompt en voer de volgende opdracht in de Hadoop-opdrachtregel van het hoofdknooppunt. Hiermee wordt de Hive-query voor het maken van de Hive-database en tabellen verzonden:
+Voer de volgende opdracht uit in de opdracht regel van het Hive-bericht van het hoofd knooppunt waarmee de Hive-data base en-tabellen worden gemaakt:
 
     hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 
-Hier is de inhoud van de **C:\temp\sample\_hive\_maken\_db\_en\_tables.hql** bestand. Hiermee maakt u de Hive-database **nyctaxidb**, tabellen en **reis** en **fare**.
+Dit is de inhoud van de **C:\temp\sample-hive\_\_\_db\_en\_Tables. HQL** -bestand te maken dat de Hive-data base maakt **nyctaxidb**, en de tabel **reis** en **ritbedrag**.
 
     create database if not exists nyctaxidb;
 
@@ -207,7 +207,7 @@ Als u met deze procedures als u meer hulp nodig hebt, of u wilt onderzoeken alte
 
 ## <a name="#load-data"></a>Laden van gegevens met Hive-tabellen partities
 > [!NOTE]
-> Dit is meestal een admin-taak.
+> Deze taak is doorgaans voor een beheerder.
 > 
 > 
 
@@ -220,7 +220,7 @@ De **voorbeeld\_hive\_laden\_gegevens\_door\_partitions.hql** -bestand bevat de 
     LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
     LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
 
-Houd er rekening mee dat een aantal van de Hive-query's die hier worden gebruikt in het proces verkennen betrekking hebben op slechts één of twee partities kijken. Maar deze query's kunnen worden uitgevoerd in de hele gegevensset.
+Een aantal van de Hive-query's die hier in het onderzoek proces worden gebruikt, omvat alleen maar één of twee partities. Maar deze query's kunnen worden uitgevoerd in de hele gegevensset.
 
 ### <a name="#show-db"></a>Databases weergeven in het HDInsight Hadoop-cluster
 Als u wilt weergeven van de databases die zijn gemaakt in HDInsight Hadoop-cluster in het Hadoop-opdrachtregelvenster, voer de volgende opdracht in de Hadoop-opdrachtregel:
@@ -302,7 +302,7 @@ De top 10-records in de tabel fare ophalen uit de eerste maand:
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
 
-U kunt de records naar een bestand voor het weergeven van handige opslaan. Dit wordt bereikt door een kleine wijziging aan de voorgaande query:
+U kunt de records opslaan in een bestand voor een handige weer gave met een kleine wijziging in de voor gaande query:
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
 
@@ -316,7 +316,7 @@ Is waarop het aantal gegevens in het kalenderjaar varieert van belang zijn. Groe
 
     hive -e "select month, count(*) from nyctaxidb.trip group by month;"
 
-Dit biedt ons de volgende uitvoer:
+Met deze opdracht wordt de volgende uitvoer gegenereerd:
 
     1       14776615
     2       13990176
@@ -338,7 +338,7 @@ We kunnen ook het totale aantal records tellen in onze gegevensset reis door het
 
     hive -e "select count(*) from nyctaxidb.trip;"
 
-Dit resulteert in:
+Met deze opdracht geeft u het volgende resultaat:
 
     173179759
     Time taken: 284.017 seconds, Fetched: 1 row(s)
@@ -347,7 +347,7 @@ Met behulp van de opdrachten is vergelijkbaar met die wordt weergegeven voor de 
 
     hive -e "select month, count(*) from nyctaxidb.fare group by month;"
 
-Dit biedt ons de volgende uitvoer:
+Met deze opdracht wordt de volgende uitvoer gegenereerd:
 
     1       14776615
     2       13990176
@@ -363,22 +363,22 @@ Dit biedt ons de volgende uitvoer:
     12      13971118
     Time taken: 253.955 seconds, Fetched: 12 row(s)
 
-Houd er rekening mee dat er precies hetzelfde aantal bezoeken per maand wordt geretourneerd voor beide gegevenssets. Dit biedt de eerste validatie van de gegevens correct zijn geladen.
+Het exacte aantal trips per maand wordt geretourneerd voor beide gegevens sets, waarbij de eerste validatie wordt geboden dat de gegevens correct zijn geladen.
 
 U kunt het totale aantal records in de gegevensset fare met behulp van de volgende opdracht achter de opdrachtprompt van de directory Hive tellen:
 
     hive -e "select count(*) from nyctaxidb.fare;"
 
-Dit resulteert in:
+Met deze opdracht geeft u het volgende resultaat:
 
     173179759
     Time taken: 186.683 seconds, Fetched: 1 row(s)
 
-Het totale aantal records in beide tabellen is ook hetzelfde. Dit biedt een tweede validatie van de gegevens correct zijn geladen.
+Het totale aantal records in beide tabellen is ook hetzelfde, waardoor een tweede validatie wordt geboden dat de gegevens correct zijn geladen.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Verkennen: Verdeling reis straten
 > [!NOTE]
-> Dit is meestal een gegevenswetenschappers van elk gegevens taak.
+> Deze analyse is doorgaans een taak voor gegevens wetenschapper.
 > 
 > 
 
@@ -412,11 +412,11 @@ Het Hive-directory-opdrachtprompt en voer de volgende opdracht:
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Verkennen: Reis distributie per licentie straten en hack
 > [!NOTE]
-> Dit is meestal een gegevenswetenschappers van elk gegevens taak.
+> Deze taak is doorgaans voor een gegevens wetenschapper.
 > 
 > 
 
-Wanneer een gegevensset verkennen, willen we vaak CO-aantallen van groepen van waarden te controleren. Deze sectie bevat een voorbeeld van hoe u dit doet voor CAB-bestanden en stuurprogramma's.
+Bij het verkennen van een gegevensset willen we vaak de distributies van groepen waarden onderzoeken. Deze sectie bevat een voor beeld van hoe u deze analyse kunt uitvoeren voor Cab-en stuur Programma's.
 
 De **voorbeeld\_hive\_reis\_aantal\_door\_straten\_license.hql** bestand worden gegroepeerd op de gegevensset fare **straten** en **hack_license**, en retourneert, telt elke combinatie. Hier volgen de inhoud ervan:
 
@@ -457,7 +457,7 @@ Het Hive-directory-opdrachtprompt en voert u de volgende uit:
 
     hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
 
-De *-S* argument is opgenomen in deze opdracht wordt de afdruk van het scherm status van de taken voor toewijzen/verminderen Hive onderdrukt. Dit is handig omdat het scherm afdrukken van de Hive-query-uitvoer beter leesbaar.
+De *-S* argument is opgenomen in deze opdracht wordt de afdruk van het scherm status van de taken voor toewijzen/verminderen Hive onderdrukt. Deze opdracht is handig omdat de scherm afdruk van de Hive-query-uitvoer beter leesbaar is.
 
 ### <a name="exploration-binary-class-distributions-of-trip-tips"></a>Verkennen: Binaire klasse-distributies reis tips
 > [!NOTE]
@@ -470,7 +470,7 @@ Voor de binair klassificatieprobleem die worden beschreven in de [voorbeelden va
 * Tip gegeven (klasse 1, tip\_bedrag > $0)  
 * Er is geen tip (0, klasse, tip\_bedrag = $0)
 
-De volgende **voorbeeld\_hive\_punt\_frequencies.hql** bestand doet dit:
+In het volgende voor **beeld\_hive\_gekanteld\_frequenties. HQL** -bestand ziet u de opdracht die moet worden uitgevoerd:
 
     SELECT tipped, COUNT(*) AS tip_freq
     FROM
@@ -537,7 +537,7 @@ Om te zien van de vergelijking tussen de werkelijke reis afstand en de [Haversin
     and dropoff_longitude between -90 and -30
     and dropoff_latitude between 30 and 90;
 
-In de voorgaande query R is de radius van de aarde in mijl en pi wordt omgezet in radialen. Houd er rekening mee dat de lengtegraad, breedtegraad-punten worden gefilterd, zodat het verwijderen van de waarden die ver van het gebied NYC ligt.
+In de voorgaande query R is de radius van de aarde in mijl en pi wordt omgezet in radialen. De lengte graad-Latitude-punten worden gefilterd om waarden te verwijderen uit het gebied NYC.
 
 In dit geval, schrijven we de resultaten naar een map genaamd **queryoutputdir**. De volgorde van de volgende opdrachten maakt eerst deze uitvoermap en voert vervolgens de Hive-opdracht.
 
@@ -578,10 +578,10 @@ Er zijn twee stappen in deze procedure. Eerst we toevoegen de **nyctaxidb.trip**
 
 Als u de gegevens van de voor gaande steek proef rechtstreeks vanuit de module [gegevens importeren][import-data] in machine learning wilt gebruiken, moet u de resultaten van de vorige query opslaan in een interne Hive-tabel. In het volgende, we een interne Hive-tabel maken en vullen van de inhoud ervan met de gegevens van een domein en down-voorbeelden worden gemaakt.
 
-De query is van toepassing standaardfuncties Hive rechtstreeks voor het genereren van het volgende achter de **ophalen\_datum-/** veld:
+De query past standaard Hive-functies rechtstreeks toe om de volgende tijd parameters te genereren vanuit het veld **pickup\_datetime** :
 - uur van de dag
 - week van jaar
-- dag van de week (1 staat voor maandag en 7 staat voor zondag)
+- weekdag (' 1 ' staat voor maandag en ' 7 ' staat voor zondag)
 
 De query ook de directe afstand tussen de locaties op te halen en dropoff gegenereerd. Zie voor een volledige lijst van dergelijke functies, [LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF).
 
@@ -721,17 +721,17 @@ Als u Hive-query's wilt uitgeven in de module [gegevens importeren][import-data]
 
 Hier volgen enkele details over de module [gegevens importeren][import-data] en de para meters die moeten worden ingevoerd:
 
-**HCatalog server-URI**: als de naam van het cluster is **abc123**, dit is eenvoudig: https://abc123.azurehdinsight.net.
+**HCatalog-server-URI**: als de cluster naam **abc123**is, gebruikt u: https://abc123.azurehdinsight.net.
 
 **Hadoop-gebruikersaccountnaam**: de naam van de gebruiker gekozen voor het cluster (niet de RAS-gebruikersnaam).
 
-**Accountwachtwoord voor Hadoop-ser**: het wachtwoord dat is gekozen voor het cluster (niet het wachtwoord voor externe toegang).
+**Hadoop-gebruikers account voor wacht woord**: het wacht woord dat u hebt gekozen voor het cluster (niet het wacht woord voor externe toegang).
 
-**Locatie van de uitvoergegevens**: dit is gekozen om te worden van Azure.
+**Locatie van uitvoer gegevens**: gekozen als Azure.
 
-**Azure storage-accountnaam**: naam van het standaardopslagaccount dat is gekoppeld aan het cluster.
+**Azure Storage account naam**: de naam van het standaard opslag account dat aan het cluster is gekoppeld.
 
-**De containernaam van de Azure**: dit is de standaardnaam van de container voor het cluster en is meestal hetzelfde als de naam van het cluster. Voor een cluster met de naam **abc123**, dit abc123 is.
+**Azure-container naam**: de standaard container naam voor het cluster en is doorgaans hetzelfde als de naam van het cluster. Voor een cluster met de naam **abc123**is abc123.
 
 > [!IMPORTANT]
 > Elke tabel die u wilt opvragen met behulp van de module [gegevens importeren][import-data] in machine learning moet een interne tabel zijn.
@@ -750,7 +750,7 @@ Hier volgt een scherm opname van de Hive-query en de module [gegevens importeren
 
 ![Schermafbeelding van de Hive-query voor de module gegevens importeren](./media/hive-walkthrough/1eTYf52.png)
 
-Omdat de gegevens van onze omlaag steekproef zich in de standaardcontainer, is de resulterende Hive-query op basis van Machine Learning is zeer eenvoudig. Het is alleen een **selecteren * van nyctaxidb.nyctaxi\_verkleind\_gegevens**.
+Omdat de bemonsterde gegevens zich in de standaard container bevinden, is de resulterende Hive-query van Machine Learning eenvoudig. Het is alleen een **selecteren * van nyctaxidb.nyctaxi\_verkleind\_gegevens**.
 
 De gegevensset kan nu worden gebruikt als startpunt voor het bouwen van Machine Learning-modellen.
 
@@ -791,11 +791,11 @@ U kunt nu doorgaan naar modellen bouwen en implementeren van modellen in [Machin
 
   ![Diagram van de distributie die test](./media/hive-walkthrough/Vy1FUKa.png)
 
-  b. Voor dit experiment gebruiken we een verwarringsmatrix om te kijken naar de nauwkeurigheden voorspelling. Dit wordt hier weergegeven:
+  b. Voor dit experiment gebruiken we een Verwar ring matrix om de Voorspellings keurigheden te bekijken, zoals hier wordt weer gegeven:
 
   ![Verwarringsmatrix](./media/hive-walkthrough/cxFmErM.png)
 
-  Houd er rekening mee dat de klasse nauwkeurigheden op de gangbare klassen zijn heel goed, het model wordt niet goed werk 'learning' op de zeldzame klassen.
+  Hoewel de klasse keurigheden op de voorgangte klassen goed is, heeft het model geen goede taak van ' learning ' in de rarer-klassen.
 
 - **Regressie taak**: om te voorspellen van de hoeveelheid tip voor een reis betaald.
 
@@ -819,7 +819,7 @@ U kunt nu doorgaan naar modellen bouwen en implementeren van modellen in [Machin
 > 
 
 ## <a name="license-information"></a>Licentie-informatie
-In dit voorbeeld scenario en de bijbehorende scripts worden gedeeld door Microsoft onder de MIT-licentie. Zie voor meer informatie de **LICENSE.txt** bestand in de map van de voorbeeldcode op GitHub.
+In dit voorbeeld scenario en de bijbehorende scripts worden gedeeld door Microsoft onder de MIT-licentie. Zie het bestand **License. txt** in de map van de voorbeeld code op github voor meer informatie.
 
 ## <a name="references"></a>Naslaginformatie
 • [Andrés Monroy NYC Taxi Trips downloadpagina](https://www.andresmh.com/nyctaxitrips/)  

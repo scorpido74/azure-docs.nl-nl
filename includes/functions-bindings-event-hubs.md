@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 6324fd0e2957aea46fb5876aa8c91f0906205ccc
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ec3a7b6420144278df66f693d9fd9933449b3d80
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76694275"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748995"
 ---
 ## <a name="trigger"></a>Trigger
 
@@ -394,7 +394,7 @@ Het bestand [host. json](../articles/azure-functions/functions-host-json.md#even
 
 ## <a name="output"></a>Uitvoer
 
-Gebruik de Event Hubs uitvoer binding om gebeurtenissen naar een gebeurtenis stroom te schrijven. U moet een verzendmachtiging voor een Event Hub hebben om er gebeurtenissen naar te kunnen schrijven.
+Gebruik de Event Hubs uitvoer binding om gebeurtenissen naar een gebeurtenis stroom te schrijven. U moet een machtiging voor verzenden hebben voor een Event Hub om gebeurtenissen te kunnen schrijven.
 
 Zorg ervoor dat de vereiste pakket verwijzingen aanwezig zijn voordat u een uitvoer binding implementeert.
 
@@ -699,6 +699,6 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
-|`maxBatchSize`|64|Het maximum aantal gebeurtenissen dat per receive-lus is ontvangen.|
-|`prefetchCount`|n.v.t.|Het standaard aantal vooraf opgehaald dat door de onderliggende `EventProcessorHost`wordt gebruikt.|
+|`maxBatchSize`|10|Het maximum aantal gebeurtenissen dat per receive-lus is ontvangen.|
+|`prefetchCount`|300|Het standaard aantal vooraf opgehaald dat door de onderliggende `EventProcessorHost`wordt gebruikt.|
 |`batchCheckpointFrequency`|1|Het aantal gebeurtenis batches dat moet worden verwerkt voordat een EventHub-cursor controlepunt wordt gemaakt.|

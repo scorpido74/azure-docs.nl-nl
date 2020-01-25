@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 2c3f733ad5af46c16a6880b8988754fd81ddabb0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 292b53fac6c970fb961e8ad4ce7774c080e52422
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705555"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718868"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>De firewall van het gastbesturingssysteem uitschakelen in Azure VM
 
@@ -58,7 +58,7 @@ Als u een werkende Azure-agent hebt, kunt u [aangepaste script extensie](../exte
 
 1.  Maak verbinding met een virtuele machine die zich in hetzelfde virtuele netwerk bevindt als de virtuele machine die u niet kunt bereiken met behulp van een RDP-verbinding.
 
-2.  Open een Power shell-console venster.
+2.  Open een PowerShell-consolevenster.
 
 3.  Voer de volgende opdrachten uit:
 
@@ -118,9 +118,9 @@ Volg deze stappen om [extern REGI ster](https://support.microsoft.com/help/31483
 
 Als u een situatie hebt waarin u de virtuele machine niet op een wille keurige manier kunt bereiken, mislukt de aangepaste script extensie en moet u in de OFFLINE modus werken door rechtstreeks via de systeem schijf te werken. Voer hiervoor de volgende stappen uit:
 
-1.  [Koppel de systeem schijf aan een herstel-VM](troubleshoot-recovery-disks-portal-windows.md).
+1.  [De schijf koppelen aan een virtuele machine voor herstel](troubleshoot-recovery-disks-portal-windows.md).
 
-2.  Start een Extern bureaublad verbinding met de virtuele machine voor herstel.
+2.  Start een externe bureaubladverbinding met de virtuele machine voor herstel.
 
 3.  Zorg ervoor dat de schijf is gemarkeerd als online in de schijf beheer-console. Noteer de stationsletter die is toegewezen aan de gekoppelde systeem schijf.
 
@@ -148,7 +148,7 @@ Als u een situatie hebt waarin u de virtuele machine niet op een wille keurige m
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'BROKENSYSTEM\ControlSet00'+$ControlSet+'\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
-    # To ensure the firewall is not set thru AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
+    # To ensure the firewall is not set through AD policy, check if the following registry entries exist and if they do, then check if the following entries exist:
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile'
     Set-ItemProperty -Path $key -name 'EnableFirewall' -Value 0 -Type Dword -force
     $key = 'HKLM:\BROKENSOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
@@ -160,6 +160,6 @@ Als u een situatie hebt waarin u de virtuele machine niet op een wille keurige m
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [Ontkoppel de systeem schijf en maak de virtuele machine opnieuw](troubleshoot-recovery-disks-portal-windows.md).
+10. [De schijf loskoppelen en opnieuw maken van de virtuele machine](troubleshoot-recovery-disks-portal-windows.md).
 
-11. Controleer of het probleem is opgelost.
+11. Controleer of het probleem opgelost is.

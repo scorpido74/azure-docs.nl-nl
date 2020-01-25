@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3192e4bf25763e870cc618e5e45f16384607b7f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c1ebedcf93d66c01c80f7f40171a7aa27441488d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277989"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722149"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatische ML experimenten configureren in python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -187,11 +187,11 @@ De primaire meet waarde bepaalt de metrische gegevens die moeten worden gebruikt
 
 Meer informatie over de specifieke definities van deze metrische gegevens in [inzicht in geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md).
 
-### <a name="data-preprocessing--featurization"></a>& Voor verwerking van gegevens parametrisatie
+### <a name="data-featurization"></a>Gegevens parametrisatie
 
-In elk automatisch machine learning experiment worden uw gegevens [automatisch geschaald en genormaliseerd](concept-automated-ml.md#preprocess) om *bepaalde* algoritmen te helpen die gevoelig zijn voor functies die op verschillende schalen zijn.  U kunt echter ook aanvullende voor verwerking/parametrisatie inschakelen, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-create-portal-experiments.md#preprocess).
+In elk automatisch machine learning experiment worden uw gegevens [automatisch geschaald en genormaliseerd](concept-automated-ml.md#preprocess) om *bepaalde* algoritmen te helpen die gevoelig zijn voor functies die op verschillende schalen zijn.  U kunt echter ook extra parametrisatie inschakelen, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-create-portal-experiments.md#preprocess).
 
-Als u deze parametrisatie wilt inschakelen, geeft u `"preprocess": True` op voor de [`AutoMLConfig` klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+Als u deze parametrisatie wilt inschakelen, geeft u `"featurization": 'auto'` op voor de [`AutoMLConfig` klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
 > [!NOTE]
 > Automatische machine learning vooraf verwerkte stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde vooraf verwerkings stappen die tijdens de training worden toegepast, automatisch toegepast op uw invoer gegevens.
@@ -324,7 +324,7 @@ U kunt uw trainings resultaten weer geven in een widget of inline als u zich in 
 ## <a name="understand-automated-ml-models"></a>Meer informatie over geautomatiseerde modellen van ML
 
 Elk model dat is gemaakt met behulp van automatische ML omvat de volgende stappen:
-+ Geautomatiseerde functie techniek (indien preprocess = True)
++ Geautomatiseerde functie techniek (indien `"featurization": 'auto'`)
 + Schalen/normaliseren en algoritmen met afstemming-waarden
 
 We maken het transparant om deze informatie op te halen uit de fitted_model uitvoer van automatische MILLILITERs.
@@ -337,7 +337,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>Geautomatiseerde functie techniek
 
-Zie de lijst met voor verwerkings-en [automatische functie techniek](concept-automated-ml.md#preprocess) die zich voordoen wanneer feauturization = auto.
+Zie de lijst met voor verwerkings-en [automatische functie techniek](concept-automated-ml.md#preprocess) die zich voordoen wanneer `"featurization": 'auto'`.
 
 Bekijk dit voor beeld:
 + Er zijn vier invoer functies: A (numeriek), B (numeriek), C (numeriek), D (DateTime)

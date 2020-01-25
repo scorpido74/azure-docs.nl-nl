@@ -2,34 +2,35 @@
 title: Platformen en hulpprogramma's voor data science-projecten - Team Data Science Process
 description: Vindt u een specificatie en worden de gegevens en analyses resources beschikbaar voor ondernemingen standaardiseren het Team Data Science Process besproken.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e3297319c67ad2b7c94371356cde49113c7ef737
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978506"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718885"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformen en hulpprogramma's voor data science-projecten
 
-Microsoft biedt een volledige spectrum van gegevens en analyses services en resources voor zowel de cloud of on-premises platforms. Ze kunnen worden geïmplementeerd als u de uitvoering van uw data science-projecten efficiënter en schaalbare. Richtlijnen voor het implementeren van data science-projecten in een herleidbare teams, versie beheerd en gezamenlijke manier wordt geleverd door de [Team Data Science Process](overview.md) (TDSP).  Zie voor een overzicht van de rollen personeel en de bijbehorende taken die worden beheerd door een data science team standaardiseren over dit proces, [Team Data Science Process rollen en taken](roles-tasks.md).
+Micro soft biedt een volledig spectrum van analyse bronnen voor zowel Cloud-als on-premises platforms. Ze kunnen worden geïmplementeerd als u de uitvoering van uw data science-projecten efficiënter en schaalbare. Richtlijnen voor het implementeren van data science-projecten in een herleidbare teams, versie beheerd en gezamenlijke manier wordt geleverd door de [Team Data Science Process](overview.md) (TDSP).  Zie voor een overzicht van de rollen personeel en de bijbehorende taken die worden beheerd door een data science team standaardiseren over dit proces, [Team Data Science Process rollen en taken](roles-tasks.md).
 
-De gegevens en analyses services beschikbaar zijn voor data scienceteams met behulp van de TDSP zijn onder andere:
+De analyse bronnen die beschikbaar zijn voor data Science teams die gebruikmaken van de TDSP zijn:
 
 - Data Science Virtual Machines (zowel Windows als Linux CentOS)
 - HDInsight Spark-Clusters
-- SQL Data Warehouse
+- Synapse Analytics
 - Azure Data Lake
 - Hive met HDInsight-Clusters
 - Azure File Storage
-- SQL Server 2016 R Services
+- SQL Server 2019 R-en python-Services
+- Azure Databricks
 
 In dit document, we kort beschrijven de resources en bevatten koppelingen naar de zelfstudies en scenario's de TDSP-teams hebt gepubliceerd. Ze kunnen helpen u informatie over het gebruik van deze stap voor stap en gebruik worden genomen om uw intelligente toepassingen te bouwen. Meer informatie over deze resources is beschikbaar op de pagina's met product. 
 
@@ -48,9 +49,9 @@ Het bevat ook **ml-en AI-hulpprogram ma's** zoals xgboost, Mxnet en Vowpal Wabbi
 
 DSVM is momenteel beschikbaar in **Windows** en **Linux CentOS** besturingssystemen. Kies de grootte van uw DSVM (aantal CPU-kernen) en de hoeveelheid geheugen op basis van de behoeften van de data science-projecten die u van plan bent om uit te voeren op het. 
 
-Zie voor meer informatie over Windows-editie van DSVM [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) op Azure marketplace. Zie voor de Linux-versie van de DSVM, [Linux Data Science Virtual Machine](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+Zie [micro soft data Science virtual machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) op de Azure Marketplace voor meer informatie over Windows-edities van DSVM. Zie voor de Linux-versie van de DSVM, [Linux Data Science Virtual Machine](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
 
-Zie voor meer informatie over enkele van de algemene datatechnologietaken efficiënt uitvoeren op de DSVM, [tien dingen die u op de virtuele Machine voor datatechnologie doen kunt](../data-science-virtual-machine/vm-do-ten-things.md)
+Zie [tien dingen die u kunt doen op de data Science-virtuele machine](../data-science-virtual-machine/vm-do-ten-things.md) voor meer informatie over het efficiënt uitvoeren van een aantal algemene data Science-taken op de DSVM
 
 
 ## <a name="azure-hdinsight-spark-clusters"></a>Azure HDInsight Spark-clusters
@@ -71,7 +72,7 @@ Zie voor meer informatie over Azure SQL Data Warehouse de [SQL Data Warehouse](h
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
 
-Azure data lake is als een bedrijfsbrede opslagruimte voor elk soort gegevens die zijn verzameld op één locatie, voordat u een formele vereisten of schema wordt opgelegd. Deze flexibiliteit kunt elk soort gegevens worden bewaard in een data lake, ongeacht het formaat of de structuur of hoe snel worden opgenomen. Organisaties kunnen vervolgens gebruiken voor Hadoop of geavanceerde analyses om te zoeken, patronen in deze data lakes. Datalakes kunnen ook dienen als een opslagplaats voor goedkopere gegevens voor te bereiden voordat de inrichting van de gegevens en u deze verplaatst naar een datawarehouse.
+Azure Data Lake is een opslag plaats in de hele onderneming van elk type gegevens dat op één locatie wordt verzameld, vóór eventuele formele vereisten of het schema dat wordt opgelegd. Deze flexibiliteit kunt elk soort gegevens worden bewaard in een data lake, ongeacht het formaat of de structuur of hoe snel worden opgenomen. Organisaties kunnen vervolgens gebruiken voor Hadoop of geavanceerde analyses om te zoeken, patronen in deze data lakes. Datalakes kunnen ook dienen als een opslagplaats voor goedkopere gegevens voor te bereiden voordat de inrichting van de gegevens en u deze verplaatst naar een datawarehouse.
 
 Zie voor meer informatie over Azure Data Lake [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Zie voor meer informatie over het bouwen van een schaalbare end-to-end data science-oplossing met Azure Data Lake, [schaalbare Gegevenswetenschap in Azure Data Lake: een end-to-end-overzicht](data-lake-walkthrough.md)
 
@@ -94,11 +95,11 @@ Azure File Storage is een service die bestandsshares in de cloud die het Server 
 Met name nuttig voor data science-projecten is de mogelijkheid om te maken van een archief voor Azure als het om projectgegevens te delen met uw Projectteamleden. Elk van deze vervolgens heeft toegang tot hetzelfde exemplaar van de gegevens in de Azure file storage. Ze kunnen deze bestandsopslag ook gebruiken voor het delen van de functiesets die zijn gegenereerd tijdens het uitvoeren van het project. Als het project de betrokkenheid van een client is, kan uw clients een Azure-bestandsopslag onder hun eigen Azure-abonnement met u delen van de gegevens van een project en functies kunnen maken. Op deze manier kan heeft de client volledige controle over de project-gegevensassets. Zie voor meer informatie over Azure File Storage [aan de slag met Azure File storage in Windows](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) en [Azure File Storage gebruiken met Linux](../../storage/files/storage-how-to-use-files-linux.md).
 
 
-## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
+## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R-en python-Services
 
-R Services (In-database) biedt een platform voor het ontwikkelen en implementeren van intelligente toepassingen die nieuwe inzichten kunnen verwerven op basis. De uitgebreide en krachtige R-taal, met inbegrip van de vele pakketten geleverd door de community R, kunt u modellen maken en genereren van voorspellingen van uw SQL Server-gegevens. Omdat de R-taal R Services (In-database) met SQL Server integreren, worden analytics dicht bij de gegevens, zodat geen van de kosten en beveiligingsrisico's die zijn gekoppeld aan het verplaatsen van gegevens bewaard.
+R Services (in-data base) biedt een platform voor het ontwikkelen en implementeren van intelligente toepassingen die nieuwe inzichten kunnen opsporen. De uitgebreide en krachtige R-taal, met inbegrip van de vele pakketten geleverd door de community R, kunt u modellen maken en genereren van voorspellingen van uw SQL Server-gegevens. Omdat R Services (in-data base) de R-taal integreert met SQL Server, behouden de analyses zich dicht bij de gegevens, waardoor de kosten en beveiligings Risico's voor het verplaatsen van gegevens worden geëlimineerd.
 
-R Services (In-database) ondersteuning voor de open source R-taal met een uitgebreide set met SQL Server-hulpprogramma's en technologieën. Ze bieden uitstekende prestaties, beveiliging, betrouwbaarheid en beheermogelijkheden. U kunt R-oplossingen met behulp van handige en vertrouwde hulpprogramma's kunt implementeren. Uw productietoepassingen kunnen aanroepen van de R-runtime en ophalen van de voorspellings- en visuele elementen met behulp van Transact-SQL. U kunt ook de ScaleR-bibliotheken gebruiken voor het verbeteren van de schaal en prestaties van uw R-oplossingen. Zie voor meer informatie, [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
+R Services (in-data base) biedt ondersteuning voor de open source R-taal met een uitgebreide set SQL Server-hulpprogram ma's en-technologieën. Ze bieden uitstekende prestaties, beveiliging, betrouwbaarheid en beheermogelijkheden. U kunt R-oplossingen met behulp van handige en vertrouwde hulpprogramma's kunt implementeren. Uw productietoepassingen kunnen aanroepen van de R-runtime en ophalen van de voorspellings- en visuele elementen met behulp van Transact-SQL. U kunt ook de ScaleR-bibliotheken gebruiken voor het verbeteren van de schaal en prestaties van uw R-oplossingen. Zie voor meer informatie, [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
 
 Twee end-to-end-scenario's die laten zien hoe u oplossingen voor big data in SQL Server 2016 R Services bouwen die de TDSP-team van Microsoft beschikbaar heeft gesteld: één voor R-programmeurs en één voor SQL-ontwikkelaars. Voor **R-programmeurs**, Zie [Data Science End-to-End scenario](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). Voor **SQL ontwikkelaars**, Zie [In Database Advanced Analytics voor SQL-ontwikkelaars (zelfstudie)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
@@ -135,7 +136,7 @@ Als u van machines voor Linux (CentOS gebruikmaakt) de git-opdrachten uitvoeren,
 
 1. Kopieer de gehele ssh key inclusief *ssh-rsa*. 
 1. Meld u aan bij uw Azure DevOps-Services. 
-1. Klik op **< naam van uw\>**  in de rechterbovenhoek van de pagina en klik op **security**. 
+1. Klik in de rechter bovenhoek van de pagina op **uw naam\>** en klik op **beveiliging**. 
     
    ![Klik op uw naam en klik vervolgens op beveiliging](./media/platforms-and-tools/resources-2-user-setting.png)
 
@@ -143,7 +144,7 @@ Als u van machines voor Linux (CentOS gebruikmaakt) de git-opdrachten uitvoeren,
 
    ![Klik op de openbare SSH-sleutels en vervolgens klikt u op + toevoegen](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-1. Plak de ssh sleutel hebt gekopieerd in het tekstvak en opslaan.
+1. Plak de SSH-sleutel die is gekopieerd naar het tekstvak en sla het op.
 
 
 ## <a name="next-steps"></a>Volgende stappen

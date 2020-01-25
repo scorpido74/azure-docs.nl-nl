@@ -6,16 +6,16 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 12/20/2019
-ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/21/2020
+ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977569"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715838"
 ---
-# <a name="collect-azure-activity-log-with-legacy-settings"></a>Azure-activiteiten logboek met oude instellingen verzamelen
-Het [Azure-activiteiten logboek](platform-logs-overview.md) is een [platform logboek](platform-logs-overview.md) dat inzicht biedt in gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. Tot onlangs hebt u een logboek profiel gemaakt voor het verzenden van activiteiten logboek vermeldingen naar [een event hub of een opslag account](activity-log-export.md) en een connector gebruikt om ze te verzamelen in een [log Analytics-werk ruimte](activity-log-collect.md). In dit artikel wordt het verschil beschreven tussen de methoden, het werken met bestaande oude instellingen en het wissen van verouderde instellingen in de voor bereiding op Diagnostische instellingen.
+# <a name="update-to-azure-activity-log-collection-and-export"></a>Bijwerken naar Azure-activiteiten logboek verzamelen en exporteren
+Het [Azure-activiteiten logboek](platform-logs-overview.md) is een [platform logboek](platform-logs-overview.md) dat inzicht biedt in gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. De methode voor het verzenden van activiteiten logboek vermeldingen naar [een event hub-of opslag account](activity-log-export.md) of naar een [log Analytics werk ruimte](activity-log-collect.md) is gewijzigd voor het gebruik van [Diagnostische instellingen](diagnostic-settings.md). In dit artikel wordt het verschil tussen de methoden beschreven en wordt uitgelegd hoe u verouderde instellingen in de voor bereiding kunt wissen om de diagnostische instellingen te wijzigen.
 
 
 ## <a name="differences-between-methods"></a>Verschillen tussen methoden
@@ -39,14 +39,16 @@ Houd rekening met de volgende details van de verzameling activiteiten logboeken 
 ### <a name="differences-in-data"></a>Verschillen in gegevens
 Diagnostische instellingen verzamelen dezelfde gegevens als de vorige methoden die worden gebruikt voor het verzamelen van het activiteiten logboek met de volgende huidige verschillen:
 
-De volgende eigenschappen zijn verwijderd:
+De volgende kolommen zijn verwijderd. De vervanging voor deze kolommen heeft een andere indeling, dus u moet mogelijk logboek query's wijzigen die deze gebruiken. U ziet mogelijk nog steeds Verwijderde kolommen in het schema, maar ze worden niet gevuld met gegevens.
 
-- ActivityStatus
-- ActivitySubstatus
-- OperationName
-- ResourceProvider
+| Verwijderde kolom | Vervangende kolom |
+|:---|:---|
+| ActivityStatus    | Waarde voor ActivityStatusValue    |
+| ActivitySubstatus | ActivitySubstatusValue |
+| OperationName     | OperationNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
 
-De volgende eigenschappen zijn toegevoegd:
+De volgende kolom zijn toegevoegd:
 
 - Authorization_d
 - Claims_d

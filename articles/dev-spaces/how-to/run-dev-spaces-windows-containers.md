@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Meer informatie over het uitvoeren van Azure-ontwikkel ruimten op een bestaand cluster met Windows-containers
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Windows-containers
-ms.openlocfilehash: 886f71dcaaca6a636b385ef6b101f0a893ff7035
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 882cdaa8a7b01578b2f04cf939aa14fe4aee7e2e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156995"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720364"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interactie met Windows-containers met behulp van Azure dev Spaces
 
@@ -61,7 +61,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-De voorbeeld toepassing maakt gebruik van [helm][helm-installed] om de Windows-service op uw cluster uit te voeren. Ga naar de `charts` Directory en gebruik helm de Windows-service uitvoeren:
+De voorbeeld toepassing maakt gebruik van [helm 3][helm-installed] om de Windows-service op uw cluster uit te voeren. Ga naar de `charts` Directory en gebruik helm de Windows-service uitvoeren:
 
 ```console
 cd charts/

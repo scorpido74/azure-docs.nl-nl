@@ -3,20 +3,20 @@ title: Azure AI-handleiding voor oplossingen voor Voorspellend onderhoud - Team 
 description: Een uitgebreide beschrijving van de wetenschap dat wordt gebruikt door oplossingen voor Voorspellend onderhoud in meerdere verticale industrieën.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: d5201cd2e7c117e1229fcd04d77e8c429c1fc8ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5cd16280ba942404ffb23fd1c9d0e1a20af8c7c4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977128"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721809"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-handleiding voor oplossingen voor Voorspellend onderhoud
 
@@ -43,7 +43,7 @@ De inhoud Besluitvormer hoofdverwerkingsknooppunt verwacht niet dat de lezer is 
 
 Bedrijven vereisen dat essentiële apparaten op topcapaciteit en met een piekbezetting werken om het rendement op hun kapitaalinvesteringen te realiseren. Dit kan gaan om vliegtuigmotoren, turbines, liften of industriële koelers, die miljoenen kosten, maar ook om alledaagse apparaten zoals kopieerapparaten, koffiezetters of waterkoelers.
 - Standaard de meeste bedrijven afhankelijk zijn van _corrigerende onderhoud_, waarbij de onderdelen worden vervangen als en wanneer ze mislukken. Correctief onderhoud zorgt ervoor dat onderdelen volledig worden verbruikt (en de levensduur van de onderdelen niet wordt verspild), maar dit kost het bedrijf wel downtime, arbeid en ongepland onderhoud (buiten bedrijfsuren of op lastige locaties).
-- Op het volgende niveau, bedrijven praktijk _preventief onderhoud_, waar ze de nuttige levensduur voor een onderdeel bepalen, en onderhouden of vervang het voordat u een fout. Preventief onderhoud voorkomt ongepland onderhoud en onherstelbare fouten. Maar de hoge kosten van geplande downtime te voorzichtige gebruik van het onderdeel vóór de volledige levensduur van het gebruik en arbeid nog steeds blijven.
+- Op het volgende niveau, bedrijven praktijk _preventief onderhoud_, waar ze de nuttige levensduur voor een onderdeel bepalen, en onderhouden of vervang het voordat u een fout. Preventief onderhoud voorkomt ongepland onderhoud en onherstelbare fouten. Maar de hoge kosten van de geplande downtime, onder het gebruik van het onderdeel tijdens de levens duur, en arbeid blijven actief.
 - Het doel van _Voorspellend onderhoud_ is het optimaliseren van de balans tussen corrigerende en preventief onderhoud, doordat _just-in-time_ vervanging van onderdelen. Bij deze benadering worden alleen die onderdelen vervangen die bijna versleten zijn. Door de levensduur van onderdelen te verlengen (in vergelijking met preventief onderhoud) en de kosten voor ongepland onderhoud en ongeplande en arbeid te verminderen (ten opzichten van correctief onderhoud) kunnen bedrijven kosten besparen en concurrentievoordelen realiseren.
 
 ## <a name="business-problems-in-pdm"></a>Zakelijke problemen in PdM
@@ -92,7 +92,7 @@ Deze sectie richt zich op een verzameling van PdM van use cases in diverse branc
 |**Financiën** |                         |
 |_ATM-fout_ is een veelvoorkomend probleem in het bankwezen. Het probleem hier is voor het rapporteren van de kans dat een transactie ATM geld intrekking wordt onderbroken vanwege een fout papier zit vast of een deel in de dispenser geld. Gebaseerd op voorspellingen van transactiefouten optreden, kunnen geldautomaten worden onderhouden proactief om te voorkomen dat er fouten optreden.| In plaats van dat de machine halverwege een transactie mislukt, wordt het wenselijk alternatief is naar de machine service weigeren op basis van de voorspelling-programma.|
 |**Energie** |                          |
-|_Wind turbine-storingen_: wind turbines zijn de belangrijkste energie bronnen in omgevings bewuste landen/regio's, en omvatten hoge kapitaal kosten. Een belangrijk onderdeel voor wind maar is de motor generator. de fout wordt weergegeven de turbine ongeschikt. Het is ook zeer kostbaar zijn om op te lossen.|KPI's te voorspellen, zoals MTTF (gemiddelde tijd bij een storing) kunt u de energiebedrijven turbine fouten voorkomen, en controleer of de minimale downtime. Fout kansen wordt in kennis technici om te controleren, maar die waarschijnlijk zal mislukken snel en gepland onderhoud op basis van tijd regelingen. Voorspellende modellen bieden inzicht in verschillende factoren die bijdragen aan de fout, waarmee technici beter begrip van dat de belangrijkste oorzaken van problemen.|
+|_Wind turbine-storingen_: wind turbines zijn de belangrijkste energie bronnen in omgevings bewuste landen/regio's, en omvatten hoge kapitaal kosten. Een belang rijk onderdeel in wind turbines is de generator motor, waarvan de fout de turbine ingaat weer geven. Het is ook zeer kostbaar zijn om op te lossen.|KPI's te voorspellen, zoals MTTF (gemiddelde tijd bij een storing) kunt u de energiebedrijven turbine fouten voorkomen, en controleer of de minimale downtime. Fout kansen wordt in kennis technici om te controleren, maar die waarschijnlijk zal mislukken snel en gepland onderhoud op basis van tijd regelingen. Voorspellende modellen bieden inzicht in verschillende factoren die bijdragen aan de fout, waarmee technici beter begrip van dat de belangrijkste oorzaken van problemen.|
 |_Circuitonderbreker fouten_: distributie van elektriciteit aan huizen en bedrijven power regels te allen tijde om te waarborgen van energie-levering operationele zijn vereist. Stroomonderbrekers te beperken of te voorkomen dat schade aan power regels tijdens overbelasting of schadelijke weersomstandigheden. Het zakelijke probleem hier is Circuitonderbreker fouten kunt voorspellen.| PdM oplossingen helpen herstellen kosten te verlagen en de levensduur van de uitrusting zoals stroomonderbrekers verhogen. Ze helpen de kwaliteit van het netwerk power verbeteren door te verminderen onverwachte fouten en serviceonderbrekingen.|
 |**Vervoer en logistiek** |    |
 |_Lift klep fouten_: grote lift bedrijven bieden een volledige stack-service voor miljoenen functionele liften over de hele wereld. Lift-veiligheid, betrouwbaarheid en beschikbaarheid zijn de belangrijkste zorgen voor hun klanten. Deze bedrijven volgen deze en verschillende andere kenmerken via sensoren, zodat ze kunnen met corrigerende en preventief onderhoud. In een lift, is het probleem van de meest prominente klant lift deuren defect. Het zakelijke probleem wordt in dit geval een voorspellende knowledge base-toepassing die voorspelt dat de mogelijke oorzaken van de deur van fouten.| Liften zijn kapitaalinvesteringen voor mogelijk een 20-30-jaar geldig. Zodat elke potentiële verkoop uiterst concurrerende; verwachtingen voor de service en ondersteuning zijn daarom hoog. Voorspeld onderhoud kan deze bedrijven voorzien van een voordeel ten opzichte van hun concurrenten in hun product en serviceaanbiedingen.|
@@ -271,7 +271,7 @@ De vraag hier is: "Wat is de kans dat de asset niet wordt in de volgende X-tijds
 Afbeelding 3. Labels voor binaire classificatie
 
 Voorbeelden van de strategie voor enkele van de use cases labels worden hieronder vermeld.
-- _Flight vertragingen_: X 1 dag kan worden gekozen voor het voorspellen van vertragingen in de volgende 24 uur. Vervolgens alle vluchten die zich binnen 24 uur vóór de fouten zijn gelabeld als 1.
+- _Vlucht vertragingen_: X kan worden gekozen als één dag, om vertragingen in de komende 24 uur te voors pellen. Vervolgens alle vluchten die zich binnen 24 uur vóór de fouten zijn gelabeld als 1.
 - _ATM-geld afzien fouten_: een doel is mogelijk om te bepalen van de kans op fouten van een transactie in het volgende uur. In dat geval worden alle transacties die hebben plaatsgevonden binnen het afgelopen uur van de fout zijn gelabeld als 1. Om te voorspellen kans op mislukte via de volgende N valuta worden vrijgesteld, notities alle opmerkingen bij de aangeboden in de laatste N toelichting van een storing gelabeld als 1.
 - _Circuitonderbreker fouten_: het doel kan worden te voorspellen van de volgende fout van de Circuitonderbreker-opdracht. In dat geval is X gekozen als één toekomstige opdracht.
 - _Fouten voor de deur van de trein_: X kan worden gekozen als twee dagen.
@@ -425,7 +425,7 @@ Het laatste gedeelte van deze handleiding bevat een lijst van PdM oplossingssjab
 
 | # | Titel | Beschrijving |
 |--:|:------|-------------|
-| 2 | [De sjabloon voor Voorspellend onderhoud van Azure-oplossing](https://github.com/Azure/AI-PredictiveMaintenance) | Een open-source oplossings sjabloon waarmee Azure ML-modellering en een volledige Azure-infra structuur kunnen worden ondersteund voor het ondersteunen van voorspellende onderhouds scenario's in de context van IoT externe controle. |
+| 2 | [De sjabloon voor Voorspellend onderhoud van Azure-oplossing](https://github.com/Azure/AI-PredictiveMaintenance) | Een open-source oplossings sjabloon waarmee Azure ML-modellering en een volledige Azure-infra structuur kunnen worden ondersteund die ondersteuning bieden voor voorspellende onderhouds scenario's in de context van IoT externe controle. |
 | 3 | [Deep Learning voor Predictief onderhoud](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure-notitieblok met een demo-oplossing van het gebruik van LSTM (lange termijn geheugen)-netwerken (een klasse van terugkerende Neurale netwerken) voor Voorspellend onderhoud, met een [blogbericht op dit voorbeeld](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Voorspeld onderhoud model handleiding in R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | Handleiding voor PdM modellen met behulp van scripts in R.|
 | 5 | [Azure Voorspellend onderhoud voor lucht-en ruimtevaart](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Een van de eerste PdM oplossingssjablonen op basis van Azure ML v1.0 voor het onderhoud van vliegtuigmotoren. Deze handleiding afkomstig is van dit project. |

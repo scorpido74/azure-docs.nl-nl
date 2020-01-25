@@ -1,34 +1,34 @@
 ---
-title: Gegevens laden in azure storage-omgevingen-team data Science process
+title: Gegevens laden in Azure Storage omgevingen-team data Science process
 description: Meer informatie over het opnemen van gegevens in verschillende doel omgevingen waarin de gegevens worden opgeslagen en verwerkt.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 515decfafe46ad0c1b5b90743688abc26a975903
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: f8eab59d810fb825dbebf80d01d8efd2dd0a9841
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053267"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720534"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>Gegevens voor analysedoeleinden in opslagomgevingen laden
 
-Voor het proces van de team data Science moeten gegevens worden opgenomen of geladen in verschillende opslag omgevingen, zodat ze op de meest geschikte manier in elke fase van het proces kunnen worden verwerkt of geanalyseerd. Gegevens bestemmingen die vaak worden gebruikt voor verwerking zijn onder andere Azure Blob Storage, SQL Azure data bases SQL Server op Azure VM, HDInsight (Hadoop) en Azure Machine Learning. 
+Voor het proces van de team data Science moeten gegevens in elke fase op de meest geschikte manier worden opgenomen of geladen. Gegevens bestemmingen kunnen Azure Blob Storage, SQL Azure-data bases, SQL Server op Azure VM, HDInsight (Hadoop), Synapse Analytics en Azure Machine Learning zijn. 
 
-In de volgende artikelen wordt beschreven hoe u gegevens opneemt in verschillende doel omgevingen waarin de gegevens worden opgeslagen en verwerkt.
+De volgende artikelen wordt beschreven hoe u gegevens opnemen in verschillende doelomgevingen waar de gegevens worden opgeslagen en verwerkt.
 
-* Naar/van [Azure Blob Storage](move-azure-blob.md)
-* [SQL Server op Azure VM](move-sql-server-virtual-machine.md)
-* Naar [Azure SQL database](move-sql-azure.md)
-* In [Hive-tabellen](move-hive-tables.md)
-* Naar [SQL-gepartitioneerde tabellen](parallel-load-sql-partitioned-tables.md)
-* Van [on-premises SQL Server](move-sql-azure-adf.md)
+* Naar/van [Azure Blob-opslag](move-azure-blob.md)
+* Naar [SQL Server op Azure VM](move-sql-server-virtual-machine.md)
+* [Azure SQL database](move-sql-azure.md)
+* Naar [Hive-tabellen](move-hive-tables.md)
+* Naar [SQL gepartitioneerde tabellen](parallel-load-sql-partitioned-tables.md)
+* Van [On-premises SQL Server](move-sql-azure-adf.md)
 
-Technische en bedrijfs behoeften, evenals de oorspronkelijke locatie, indeling en grootte van uw gegevens, bepalen de doel omgevingen waarin de gegevens moeten worden opgenomen om de doel stellingen van uw analyse te bereiken. Het is niet ongebruikelijk dat een scenario vereist dat gegevens tussen verschillende omgevingen worden verplaatst om de verschillende taken die nodig zijn voor het bouwen van een voorspellend model te bereiken. Deze reeks taken kan bijvoorbeeld betrekking hebben op het verkennen van gegevens, het vooraf verwerken, schoonmaken, bemonsteren en model trainingen.
+Technische en bedrijfs behoeften, evenals de oorspronkelijke locatie, indeling en grootte van uw gegevens bepalen het beste plan voor gegevens opname. Het is niet ongebruikelijk dat een beste plan is om verschillende stappen uit te voeren. Deze reeks taken kan bijvoorbeeld bevatten gegevensverkenning, vooraf verwerken, opruimen, down-sampling en modeltraining.  Azure Data Factory is een aanbevolen Azure-resource voor het organiseren van gegevens verplaatsing en-trans formatie.

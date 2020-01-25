@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: c4d5716c8a31ceccbe23c1f77ad3b88030ff3065
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972128"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714637"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure-cache configureren voor redis
 In dit onderwerp worden de configuraties beschreven die beschikbaar zijn voor uw Azure-cache voor redis-exemplaren. In dit onderwerp wordt ook de standaard redis-server configuratie voor Azure cache voor redis-exemplaren besproken.
@@ -40,8 +40,8 @@ U kunt de volgende instellingen weer geven en configureren met behulp van het **
     * [Geavanceerde instellingen](#advanced-settings)
     * [Azure-cache voor redis Advisor](#azure-cache-for-redis-advisor)
     * [Schalen](#scale)
-    * [Grootte van redis-cluster](#cluster-size)
-    * [Redis-gegevenspersistentie](#redis-data-persistence)
+    * [Cluster grootte](#cluster-size)
+    * [Gegevens persistentie](#redis-data-persistence)
     * [Updates plannen](#schedule-updates)
     * [Geo-replicatie](#geo-replication)
     * [Virtueel netwerk](#virtual-network)
@@ -70,7 +70,7 @@ U kunt de volgende instellingen weer geven en configureren met behulp van het **
 
 Klik op **activiteiten logboek** om de acties weer te geven die zijn uitgevoerd op uw cache. U kunt ook filteren gebruiken om deze weer gave uit te breiden tot ook andere resources. Zie [bewerkingen controleren met Resource Manager](../azure-resource-manager/management/view-activity-logs.md)voor meer informatie over het werken met audit Logboeken. Zie [bewerkingen en waarschuwingen](cache-how-to-monitor.md#operations-and-alerts)voor meer informatie over het bewaken van Azure cache voor redis-gebeurtenissen.
 
-### <a name="access-control-iam"></a>Toegangsbeheer (IAM)
+### <a name="access-control-iam"></a>Toegangs beheer (IAM)
 
 De sectie **toegangs beheer (IAM)** biedt ondersteuning voor op rollen gebaseerd toegangs beheer (RBAC) in de Azure Portal. Met deze configuratie kunnen organisaties eenvoudig en nauw keurig voldoen aan de vereisten voor toegangs beheer. Zie op [rollen gebaseerd toegangs beheer in de Azure Portal](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
 
@@ -92,8 +92,8 @@ De sectie **instellingen** biedt u de mogelijkheid om de volgende instellingen v
 * [Geavanceerde instellingen](#advanced-settings)
 * [Azure-cache voor redis Advisor](#azure-cache-for-redis-advisor)
 * [Schalen](#scale)
-* [Grootte van redis-cluster](#cluster-size)
-* [Redis-gegevenspersistentie](#redis-data-persistence)
+* [Cluster grootte](#cluster-size)
+* [Gegevens persistentie](#redis-data-persistence)
 * [Updates plannen](#schedule-updates)
 * [Geo-replicatie](#geo-replication)
 * [Virtueel netwerk](#virtual-network)
@@ -185,10 +185,10 @@ Elke prijs categorie heeft verschillende limieten voor client verbindingen, gehe
 
 | Azure-cache voor redis-metriek | Meer informatie |
 | --- | --- |
-| Gebruik van netwerkbandbreedte |[Beschik bare band breedte in cache opslaan](cache-faq.md#cache-performance) |
+| Gebruik van netwerk bandbreedte |[Beschik bare band breedte in cache opslaan](cache-faq.md#cache-performance) |
 | Verbonden clients |[Standaard redis-server configuratie-MaxClients](#maxclients) |
 | Server belasting |[Gebruiks grafieken-redis-server belasting](cache-how-to-monitor.md#usage-charts) |
-| Geheugengebruik |[Cache prestaties-grootte](cache-faq.md#cache-performance) |
+| Geheugen gebruik |[Cache prestaties-grootte](cache-faq.md#cache-performance) |
 
 Als u uw cache wilt bijwerken, klikt u op **Nu bijwerken** om de prijs categorie te wijzigen en uw cache te [schalen](#scale) . Zie voor meer informatie over het kiezen van een prijs categorie [Wat is Azure cache voor redis aanbieding en grootte moet ik gebruiken?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
@@ -201,14 +201,9 @@ Klik op **schalen** om de prijs categorie voor uw cache weer te geven of te wijz
 <a name="cluster-size"></a>
 
 ### <a name="redis-cluster-size"></a>Grootte van redis-cluster
-Klik **(preview) redis-cluster grootte** om de cluster grootte te wijzigen voor een actieve Premium-cache waarbij Clustering is ingeschakeld.
+Klik op **cluster grootte** om de cluster grootte te wijzigen voor een actieve Premium-cache waarbij Clustering is ingeschakeld.
 
-> [!NOTE]
-> Houd er rekening mee dat als de Azure-cache voor de Premium-laag van redis is uitgebracht voor algemene Beschik baarheid, de functie redis cluster size momenteel in preview is.
->
->
-
-![Grootte van redis-cluster](./media/cache-configure/redis-cache-redis-cluster-size.png)
+![Cluster grootte](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
 Als u de cluster grootte wilt wijzigen, gebruikt u de schuif regelaar of typt u een getal tussen 1 en 10 in het tekstvak **Shard aantal** en klikt u op **OK** om op te slaan.
 
@@ -219,7 +214,7 @@ Als u de cluster grootte wilt wijzigen, gebruikt u de schuif regelaar of typt u 
 
 
 ### <a name="redis-data-persistence"></a>Redis-gegevenspersistentie
-Klik op **redis gegevens persistentie** om de gegevens persistentie voor uw Premium-cache in te scha kelen of uit te scha kelen of te configureren. Azure cache voor redis biedt redis persistentie met behulp van [RDB-persistentie](cache-how-to-premium-persistence.md#configure-rdb-persistence) of [AOF-persistentie](cache-how-to-premium-persistence.md#configure-aof-persistence).
+Klik op **gegevens persistentie** om gegevens persistentie voor uw Premium-cache in te scha kelen, uit te scha kelen of te configureren. Azure cache voor redis biedt redis persistentie met behulp van [RDB-persistentie](cache-how-to-premium-persistence.md#configure-rdb-persistence) of [AOF-persistentie](cache-how-to-premium-persistence.md#configure-aof-persistence).
 
 Zie [persistentie configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-persistence.md)voor meer informatie.
 
@@ -286,7 +281,7 @@ Klik op **Eigenschappen** om informatie over uw cache weer te geven, met inbegri
 ### <a name="locks"></a>Vergrendelingen
 Met de sectie **vergren** delen kunt u een abonnement, een resource groep of een resource om te voor komen dat andere gebruikers in uw organisatie per ongeluk essentiële bronnen verwijderen of wijzigen. Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](../azure-resource-manager/management/lock-resources.md).
 
-### <a name="automation-script"></a>Automatiseringsscript
+### <a name="automation-script"></a>Automatiserings script
 
 Klik op **Automation script** om een sjabloon van uw geïmplementeerde resources te bouwen en exporteren voor toekomstige implementaties. Zie [resources implementeren met Azure Resource Manager sjablonen](../azure-resource-manager/templates/deploy-powershell.md)voor meer informatie over het werken met sjablonen.
 
@@ -359,7 +354,7 @@ Standaard worden de metrische gegevens in de cache van Azure Monitor [30 dagen o
 ## <a name="support--troubleshooting-settings"></a>Ondersteuning voor het oplossen van problemen met instellingen &
 De instellingen in de sectie **ondersteuning en probleem oplossing** bieden u opties voor het oplossen van problemen met uw cache.
 
-![Ondersteuning + probleemoplossing](./media/cache-configure/redis-cache-support-troubleshooting.png)
+![Ondersteuning en probleem oplossing](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
 * [Resource status](#resource-health)
 * [Nieuwe ondersteunings aanvraag](#new-support-request)

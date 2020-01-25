@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: ddb44a064090a108f77d6a6f9a270fab8c55ec90
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433438"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714462"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redis-clustering configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. In dit artikel wordt beschreven hoe u clustering configureert in een Premium Azure-cache voor redis-exemplaar.
@@ -58,12 +58,7 @@ Zie het gedeelte [clustering.cs](https://github.com/rustd/RedisSamples/blob/mast
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>De cluster grootte wijzigen in een actieve Premium-cache
-Als u de cluster grootte wilt wijzigen in een actieve Premium-cache met clustering ingeschakeld, klikt u op **redis cluster grootte** in het **menu resource**.
-
-> [!NOTE]
-> Hoewel de Azure-cache voor de Premium-laag van redis is uitgebracht voor algemene Beschik baarheid, is de functie voor de cluster grootte van redis momenteel beschikbaar als preview-versie.
-> 
-> 
+Als u de cluster grootte wilt wijzigen voor een actieve Premium-cache met clustering ingeschakeld, klikt u op **cluster grootte** in het **menu resource**.
 
 ![Grootte van redis-cluster][redis-cache-redis-cluster-size]
 

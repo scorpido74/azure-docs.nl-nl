@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.openlocfilehash: e8a1cf0e197841b6af8c65fe00c25aa42dbd0e7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433504"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714446"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Azure-cache schalen voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies. Nadat u een cache hebt gemaakt, kunt u de grootte en de prijs categorie van de cache schalen als de vereisten van de toepassing veranderen. Dit artikel laat u zien hoe u uw cache kunt schalen met behulp van de Azure Portal en hulpprogram ma's zoals Azure PowerShell en Azure CLI.
@@ -22,7 +22,7 @@ U kunt de [bewakings](cache-how-to-monitor.md) functies van Azure cache gebruike
 U kunt de volgende metrische gegevens controleren om te helpen bepalen of u wilt schalen.
 
 * Redis-server belasting
-* Geheugengebruik
+* Geheugen gebruik
 * Netwerk bandbreedte
 * CPU-gebruik
 
@@ -166,7 +166,7 @@ Als een schaal bewerking mislukt, probeert de service de bewerking ongedaan te m
 
 
 ### <a name="how-long-does-scaling-take"></a>Hoe lang duurt het voor schalen?
-Het schalen neemt ongeveer 20 minuten in beslag, afhankelijk van de hoeveelheid gegevens in de cache.
+De schaal tijd is afhankelijk van de hoeveelheid gegevens in de cache, waarbij grotere hoeveel heden gegevens langer duren om te volt ooien. Het schalen duurt ongeveer 20 minuten. Voor geclusterde caches duurt het schalen ongeveer 20 minuten per Shard.
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>Hoe kan ik zien wanneer schalen is voltooid?
 In de Azure Portal ziet u dat de schaal bewerking wordt uitgevoerd. Wanneer het schalen is voltooid, verandert de status van de cache in **actief**.
@@ -176,6 +176,3 @@ In de Azure Portal ziet u dat de schaal bewerking wordt uitgevoerd. Wanneer het 
 [redis-cache-pricing-tier-blade]: ./media/cache-how-to-scale/redis-cache-pricing-tier-blade.png
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
-
-
-

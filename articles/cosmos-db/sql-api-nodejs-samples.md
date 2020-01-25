@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.openlocfilehash: d79ac0e368ad824f6ceaea7bbcba151ecec72336
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ac3d74cb76a936cc88261a2fedf16764e8ae52f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220158"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718290"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Voor beelden van node. js voor het beheren van gegevens in Azure Cosmos DB
 
@@ -71,7 +71,7 @@ Het [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/s
 
 ## <a name="item-examples"></a>Voorbeelden van items
 
-In het [ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) -bestand ziet u hoe de ruwe bewerkingen op het item worden uitgevoerd. Zie [werken met data bases, containers en](databases-containers-items.md) artikel concepten voor meer informatie over de Azure Cosmos-documenten voordat u de volgende voor beelden uitvoert. 
+In het [ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) -bestand ziet u hoe de ruwe bewerkingen op het item worden uitgevoerd. Zie [werken met data bases, containers en](databases-containers-items.md) artikel concepten voor meer informatie over de Azure Cosmos-documenten voordat u de volgende voor beelden uitvoert. 
 
 | Taak | API-referentie |
 | --- | --- |
@@ -98,7 +98,7 @@ Het [IndexManagement](https://github.com/Azure/azure-cosmos-js/blob/master/sampl
 
 ## <a name="server-side-programming-examples"></a>Voorbeelden van programmering op de server
 
-In het bestand [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) van het project [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) ziet u hoe de volgende taken worden uitgevoerd. Zie voor meer informatie over het Program meren van de server in Azure Cosmos DB voordat u de volgende voor beelden uitvoert, [opgeslagen procedures, triggers en](stored-procedures-triggers-udfs.md) conceptueel artikel over door de gebruiker gedefinieerde functies. 
+In het bestand [index. TS](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/index.ts) van het [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) -project ziet u hoe u de volgende taken uitvoert. Zie voor meer informatie over het Program meren van de server in Azure Cosmos DB voordat u de volgende voor beelden uitvoert, [opgeslagen procedures, triggers en](stored-procedures-triggers-udfs.md) conceptueel artikel over door de gebruiker gedefinieerde functies. 
 
 | Taak | API-referentie |
 | --- | --- |

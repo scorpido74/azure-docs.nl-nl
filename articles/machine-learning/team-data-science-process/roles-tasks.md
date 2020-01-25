@@ -2,27 +2,27 @@
 title: Team Data Science Process rollen en taken
 description: Een overzicht van de belangrijkste onderdelen, mede werkers rollen en de bijbehorende taken voor een Data Science-groep.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bbc066f4b01a01a589849ad524b58a9b5d9dfae1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260655"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720007"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process rollen en taken
 
 Het team data Science process (TDSP) is een door micro soft ontwikkelde framework dat een gestructureerde methodologie biedt om efficiënt predictive analytics oplossingen en intelligente toepassingen te bouwen. In dit artikel vindt u een overzicht van de belangrijkste personeels rollen en bijbehorende taken voor een Data Science-team dat wordt gestandardization op dit proces.
 
-Dit inleidende artikel heeft koppelingen naar zelf studies over het instellen van de TDSP-omgeving voor een hele data Science-groep, data Science teams en TDSP-projecten. De zelf studies bieden gedetailleerde richt lijnen voor het gebruik van Azure DevOps Projects, Azure opslag plaatsen-opslag plaatsen en hulpprogram ma's voor het flexibel plannen van Azure-kaarten om de toegang te beheren, de code te hosten en te delen en om team taken te beheren.
+Dit inleidende artikel maakt koppelingen naar zelf studies over het instellen van de TDSP omgeving. De zelf studies bieden gedetailleerde richt lijnen voor het gebruik van Azure DevOps Projects, Azure opslag plaatsen-opslag plaatsen en Azure-kaarten.  Het motiverende doel is van concept tot model en in implementatie.
 
 De zelf studies gebruiken Azure DevOps omdat u TDSP bij micro soft implementeert. Azure DevOps vereenvoudigt samen werking door beveiliging op basis van rollen, beheer en tracering van werk items en code-hosting, delen en broncode beheer te integreren. De zelf studies gebruiken ook een Azure [Data Science virtual machine](https://aka.ms/dsvm) (DSVM) als het Analytics Desktop, met een aantal populaire hulpprogram ma's voor gegevens wetenschap, vooraf geconfigureerd en geïntegreerd met micro soft-software en Azure-Services. 
 
@@ -40,13 +40,13 @@ In een dergelijke structuur zijn er groeps leads en team leiders. Normaal gesp r
 ## <a name="definition-and-tasks-for-the-four-tdsp-roles"></a>Definitie en taken voor de vier TDSP-rollen
 Met de veronderstelling dat de data Science-eenheid bestaat uit teams binnen een groep, zijn er vier afzonderlijke rollen voor TDSP personeel:
 
-1. **Groeps beheerder**: Beheert de gehele data Science-eenheid in een onderneming. Een data science-eenheid mogelijk meerdere teams, die elk is bezig met meerdere data science-projecten in afzonderlijk zakelijk verticalen. De Manager van een groep mogelijk hun taken delegeren aan een vervangend, maar de taken die zijn gekoppeld aan de rol niet te wijzigen.
+1. **Groeps beheer**: beheert de volledige data Science-eenheid in een onderneming. Een data science-eenheid mogelijk meerdere teams, die elk is bezig met meerdere data science-projecten in afzonderlijk zakelijk verticalen. De Manager van een groep mogelijk hun taken delegeren aan een vervangend, maar de taken die zijn gekoppeld aan de rol niet te wijzigen.
    
-2. **Team leider**: Beheert een team in de data Science-eenheid van een onderneming. Een team bestaat uit meerdere gegevenswetenschappers. Voor een kleine data Science-eenheid kunnen de groeps Manager en de team leider dezelfde persoon zijn.
+2. **Team leider**: beheert een team in de data Science-eenheid van een onderneming. Een team bestaat uit meerdere gegevenswetenschappers. Voor een kleine data Science-eenheid kunnen de groeps Manager en de team leider dezelfde persoon zijn.
    
-3. **Project leider**: Beheert de dagelijkse activiteiten van afzonderlijke gegevens wetenschappers op een specifiek data Science-project.
+3. **Project leider**: beheert de dagelijkse activiteiten van afzonderlijke gegevens wetenschappers op een specifiek data Science-project.
    
-4. **Afzonderlijke inzenders projecteren**: Gegevens wetenschappers, bedrijfs analisten, gegevens technici, architecten en anderen die een Data Science-project uitvoeren.
+4. **Project individuele mede**werkers: gegevens wetenschappers, bedrijfs analisten, gegevens technici, architecten en anderen die een Data Science-project uitvoeren.
 
 > [!NOTE]
 > Afhankelijk van de structuur en grootte van een onderneming mag één persoon meer dan één rol spelen of kan meer dan één persoon een rol invullen.
@@ -116,7 +116,7 @@ De volgende afbeelding geeft een overzicht van de TDSP-werk stroom voor het uitv
 De werk stroom stappen kunnen worden gegroepeerd in drie activiteiten:
 
 - Project leiders voeren Sprint planning
-- Gegevens wetenschappers bouwen artefacten op `git` branches voor het oplossen van werk items
+- Gegevens wetenschappers ontwikkelen artefacten op `git` vertakkingen om werk items te verhelpen
 - Project leiders of andere team leden doen code beoordelingen en voegen werk vertakkingen samen in de hoofd vertakking
 
 Zie [flexibele ontwikkeling van data Science-projecten](agile-development.md)voor gedetailleerde instructies voor de werk stroom voor het uitvoeren van projecten.

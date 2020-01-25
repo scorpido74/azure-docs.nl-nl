@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979344"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720653"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Beheerders van klassieke Azure-abonnementen
 
@@ -62,7 +62,7 @@ Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure P
 
 ### <a name="differences-for-guest-users"></a>Verschillen voor gast gebruikers
 
-Gast gebruikers aan wie de rol mede beheerder is toegewezen, kunnen enkele verschillen zien ten opzichte van gebruikers die lid zijn van de rol mede beheerder. Neem het volgende scenario in overweging:
+Gast gebruikers aan wie de rol mede beheerder is toegewezen, kunnen enkele verschillen zien ten opzichte van gebruikers die lid zijn van de rol mede beheerder. Denkt u zich het volgende scenario eens in:
 
 - Gebruiker A met een Azure AD-account (werk-of school account) is een service beheerder voor een Azure-abonnement.
 - Gebruiker B heeft een Microsoft-account.
@@ -99,29 +99,11 @@ Zie [Wat zijn de standaard machtigingen voor gebruikers in azure Active Director
 
 Alleen de account beheerder kan de service beheerder voor een abonnement wijzigen. Wanneer u zich aanmeldt voor een Azure-abonnement, is de service beheerder standaard hetzelfde als de account beheerder. De gebruiker met de rol account beheerder heeft geen toegang tot de Azure Portal. De gebruiker met de rol van service beheerder heeft volledige toegang tot de Azure Portal. Als de account beheerder en service beheerder dezelfde gebruiker zijn en u de service beheerder wijzigt in een andere gebruiker, verliest de account beheerder de toegang tot Azure Portal. De account beheerder kan echter altijd het account centrum gebruiken om de service beheerder weer op zichzelf te zetten.
 
-Er zijn twee manieren om de servicebeheerder te wijzigen. U kunt wijzigingen aanbrengen in de **Azure Portal** of het **account centrum**.
-
-### <a name="azure-portal"></a>Azure Portal
-
-1. Zorg ervoor dat uw scenario wordt ondersteund door de beperkingen voor het wijzigen van service beheerders te controleren.
-
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
-
-1. Open [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) en selecteer een abonnement.
-
-1. Klik op **Eigenschappen**.
-
-    ![Scherm opname van de account beheerder](./media/classic-administrators/account-admin.png)
-
-1. Klik bovenaan op **service beheerder** om het deel venster Service beheerder te openen.
-
-    Als de knop Service beheer is uitgeschakeld, bent u niet gemachtigd. Alleen de gebruiker die de account beheerder is, kan de service beheerder wijzigen.
-
-1. Selecteer een nieuwe service beheerder en klik vervolgens op **Opslaan**.
+Volg deze stappen om de service beheerder in het **account centrum**te wijzigen.
 
 ### <a name="account-center"></a>Account centrum
 
-1. Zorg ervoor dat uw scenario wordt ondersteund door de beperkingen voor het wijzigen van service beheerders te controleren.
+1. Zorg ervoor dat uw scenario wordt ondersteund door de [beperkingen voor het wijzigen van de service beheerder](#limitations-for-changing-the-service-administrator)te controleren.
 
 1. Meld u als account beheerder aan bij het [account centrum](https://account.windowsazure.com/subscriptions) .
 

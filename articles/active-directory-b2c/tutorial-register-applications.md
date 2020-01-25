@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2a9e4828428a91c1d1b75fb9d1b9004e52988084
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 214797f187c1812932c00bdf2a39c5ed79e15d4b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425488"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712662"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Zelf studie: een toepassing registreren in Azure Active Directory B2C
 
@@ -88,7 +88,7 @@ Zodra de registratie van de toepassing is voltooid, schakelt u de impliciete toe
 
 ## <a name="create-a-client-secret"></a>Een client geheim maken
 
-Als uw toepassing een code voor een token uitwisselt, moet u een toepassings geheim maken.
+Als uw toepassing een autorisatie code voor een toegangs token uitwisselt, moet u een toepassings geheim maken.
 
 #### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
 

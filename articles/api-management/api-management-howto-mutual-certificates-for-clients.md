@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 60cd9a1454704fae17ccdcf39b9de2745ae4fd2c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121009"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713148"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Api's beveiligen met verificatie op basis van client certificaten in API Management
 
@@ -34,7 +34,7 @@ Voor informatie over het beveiligen van de toegang tot de back-end-service van e
 > [!IMPORTANT]
 > Als u client certificaten wilt ontvangen en verifiëren in de laag verbruik, moet u de instelling client certificaat aanvragen inschakelen op de Blade aangepaste domeinen, zoals hieronder wordt weer gegeven.
 
-![Clientcertificaat aanvragen](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
+![Client certificaat aanvragen](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
 ## <a name="checking-the-issuer-and-subject"></a>De uitgever en het onderwerp controleren
 
@@ -93,7 +93,7 @@ In het volgende voor beeld ziet u hoe u de vinger afdruk van een client certific
 
 > [!TIP]
 > Probleem met het publiceren van het client certificaat dat in dit [artikel](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) wordt beschreven, kan zich op verschillende manieren manifesteren, zoals het blok keren van aanvragen, de aanvraag resulteert in `403 Forbidden` status code na een time-out, `context.Request.Certificate` is `null`. Dit probleem is doorgaans van invloed op `POST` en `PUT` aanvragen met een inhouds lengte van ongeveer 60KB of groter.
-> Als u wilt voor komen dat dit probleem optreedt, schakelt u de instelling onderhandelend client certificaat in voor gewenste hostnamen op de Blade ' aangepaste domeinen ', zoals hieronder wordt weer gegeven. Deze functie is niet beschikbaar in de laag verbruik.
+> Ga als volgt te werk om te voor komen dat dit probleem optreedt bij het inschakelen van de instelling ' onderhandelen over client certificaat ' voor gewenste hostnamen op de Blade ' aangepaste domeinen ', zoals hieronder wordt weer gegeven. Deze functie is niet beschikbaar in de laag verbruik.
 
 ![Onderhandelen over client certificaat](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 

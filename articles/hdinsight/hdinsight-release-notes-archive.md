@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2019
-ms.openlocfilehash: ad9437b135e48dcfaff9efa5f6daf345d78e79ef
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 094d9fe7425a6192ce2af94c3ea18cac20ff9ded
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895337"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720330"
 ---
 # <a name="archived-release-notes"></a>Gearchiveerde releaseopmerkingen
 
@@ -41,7 +41,7 @@ Met HDInsight kunt u nu uw eigen SQL-Data Base gebruiken voor Apache Ambari. U k
 ### <a name="deprecation"></a>Afschaffing
 Geen afschaffing van deze release. Zie [aanstaande wijzigingen](#upcoming-changes)voor meer informatie over het voorbereiden van toekomstige afschaffing.
 
-### <a name="behavior-changes"></a>Gedragswijzigingen
+### <a name="behavior-changes"></a>Gedrags wijzigingen
 Er zijn geen gedrags wijzigingen voor deze versie. Zie [aanstaande wijzigingen](#upcoming-changes)voor meer informatie over het voorbereiden van toekomstige gedrags wijzigingen.
 
 ### <a name="upcoming-changes"></a>Aanstaande wijzigingen
@@ -52,10 +52,10 @@ Transport Layer Security (TLS) en Secure Sockets Layer (SSL) zijn cryptografisch
 
 Vanaf de volgende release kunt u uw nieuwe HDInsight-clusters inschakelen en configureren, zodat alleen TLS 1,2-verbindingen worden geaccepteerd. 
 
-Later in het jaar, te beginnen op 6/30/2020, dwingt Azure HDInsight TLS 1,2 of hogere versies af voor alle HTTPS-verbindingen. We raden u aan om ervoor te zorgen dat alle clients klaar zijn voor het verwerken van TLS 1,2 of hoger.
+Later in het jaar, te beginnen op 6/30/2020, dwingt Azure HDInsight TLS 1,2 of hogere versies af voor alle HTTPS-verbindingen. We raden u aan om ervoor te zorgen dat al uw clients klaar zijn voor het verwerken van TLS 1.2 of nieuwere versies.
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Verplaatsen naar schaal sets voor virtuele Azure-machines
-HDInsight maakt nu gebruik van virtuele machines van Azure om het cluster in te richten. Vanaf Feburary 2020 (exacte datum wordt later gecommuniceerd), maakt HDInsight gebruik van virtuele-machine schaal sets van Azure. Meer informatie over [virtuele-machine schaal sets van Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+HDInsight maakt nu gebruik van virtuele machines van Azure om het cluster in te richten. Vanaf februari 2020 (exacte datum wordt later gecommuniceerd), gebruikt HDInsight virtuele-machine schaal sets van Azure. Meer informatie over [virtuele-machine schaal sets van Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
 
 #### <a name="esp-spark-cluster-node-size-change"></a>Wijziging van grootte van ESP Spark-cluster knooppunt 
 In de aanstaande release:
@@ -125,7 +125,7 @@ Vanuit deze release worden virtuele machines uit de G-serie niet meer aangeboden
 #### <a name="dv1-virtual-machine-deprecation"></a>Afschaffing van Dv1-virtuele machines
 In deze release is het gebruik van Dv1 Vm's met HDInsight afgeschaft. Elke klant aanvraag voor Dv1 wordt automatisch geleverd met dv2. Er is geen prijs verschil tussen Dv1 en dv2 Vm's.
 
-### <a name="behavior-changes"></a>Gedragswijzigingen
+### <a name="behavior-changes"></a>Gedrags wijzigingen
 
 #### <a name="cluster-managed-disk-size-change"></a>Wijziging in cluster-beheerde schijf grootte
 HDInsight biedt beheerde schijf ruimte voor het cluster. In deze release wordt de beheerde schijf grootte van elk knoop punt in het nieuwe gemaakte cluster gewijzigd in 128 GB.
@@ -878,7 +878,7 @@ Deze release biedt zwerver 0.7.0 en de volgende Apache-patches:
 
 -   [Zwerver-2008](https://issues.apache.org/jira/browse/RANGER-2008): beleids evaluatie is mislukt voor de voor waarden van een meerdere regels.
 
-#### <a name="slider"></a>Schuifregelaar
+#### <a name="slider"></a>Volledig
 
 Deze release biedt schuif regelaar-0.92.0 zonder extra Apache-patches.
 
@@ -1673,7 +1673,7 @@ Met opgeloste problemen worden geselecteerde problemen weer gegeven die eerder z
 
     -   <https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations>
 
-### <a name="upgrading"></a>Upgrade uitvoeren
+### <a name="upgrading"></a>Abonnement
 
 Al deze functies zijn beschikbaar in HDInsight 3,6. Als u de meest recente versie van Spark, Kafka en R Server (Machine Learning Services) wilt ophalen, kiest u de versie van Spark, Kafka en ML wanneer u [een HDInsight 3,6-cluster maakt](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Als u ondersteuning voor ADLS wilt krijgen, kunt u het opslag type ADLS kiezen als een optie. Bestaande clusters worden niet automatisch bijgewerkt naar deze versies.
 

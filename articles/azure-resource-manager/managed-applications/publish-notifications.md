@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: b33366b65fed0042eb3024c2264bce1c4a1c4c1d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75651629"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715681"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Door Azure beheerde toepassingen met meldingen
 
@@ -69,10 +69,10 @@ In de volgende tabel worden alle mogelijke combi Naties van Event type en Provis
 
 EventType | ProvisioningState | Trigger voor melding
 ---|---|---
-PUT | Geaccepteerd | De beheerde resource groep is gemaakt en geprojecteerd na het plaatsen van de toepassing (voordat de implementatie binnen de beheerde resource groep is gestart).
+PUT | Afgewezen | De beheerde resource groep is gemaakt en geprojecteerd na het plaatsen van de toepassing (voordat de implementatie binnen de beheerde resource groep is gestart).
 PUT | Geslaagd | Volledige inrichting van de beheerde toepassing is voltooid na een PUT.
 PUT | Mislukt | Fout bij het inrichten van een toepassings exemplaar op enig moment.
-PATCH | Geslaagd | Na een geslaagde PATCH voor het exemplaar van de beheerde toepassing voor het bijwerken van tags, JIT-toegangs beleid of beheerde identiteit.
+VERZENDEN | Geslaagd | Na een geslaagde PATCH voor het exemplaar van de beheerde toepassing voor het bijwerken van tags, JIT-toegangs beleid of beheerde identiteit.
 DELETE | Deleting | Zodra de gebruiker een exemplaar van een beheerde app verwijdert.
 DELETE | Deleted | Na de volledige en geslaagde verwijdering van de beheerde toepassing.
 DELETE | Mislukt | Na een fout tijdens het ongedaan maken van de inrichting die de verwijdering blokkeert.
@@ -181,15 +181,15 @@ Parameter | Beschrijving
 eventType | Het type gebeurtenis dat de melding heeft geactiveerd. (Bijvoorbeeld PUT, PATCH, DELETE)
 applicationId | De volledig gekwalificeerde resource-id van de beheerde toepassing waarvoor de melding is geactiveerd.
 eventTime | De tijds tempel van de gebeurtenis die de melding heeft geactiveerd. (Datum en tijd in UTC ISO 8601-indeling.)
-provisioningState | De inrichtings status van het exemplaar van de beheerde toepassing. (Bijvoorbeeld geslaagd, mislukt, verwijderen, verwijderd.)
+ProvisioningState | De inrichtings status van het exemplaar van de beheerde toepassing. (Bijvoorbeeld geslaagd, mislukt, verwijderen, verwijderd.)
 error | *Wordt alleen opgegeven als de provisioningState is mislukt*. Bevat de fout code, het bericht en de details van het probleem dat de fout heeft veroorzaakt.
 applicationDefinitionId | *Alleen opgegeven voor door service catalog beheerde toepassingen*. Hiermee wordt de volledig gekwalificeerde resource-id van de toepassings definitie aangegeven waarvoor het exemplaar van de beheerde toepassing is ingericht.
-plannen | *Alleen opgegeven voor door Azure Marketplace beheerde toepassingen*. Vertegenwoordigt de uitgever, aanbieding, SKU en versie van het exemplaar van de beheerde toepassing.
+Fonds | *Alleen opgegeven voor door Azure Marketplace beheerde toepassingen*. Vertegenwoordigt de uitgever, aanbieding, SKU en versie van het exemplaar van de beheerde toepassing.
 billingDetails | *Alleen opgegeven voor door Azure Marketplace beheerde toepassingen.* De facturerings gegevens van het exemplaar van de beheerde toepassing. Bevat de resourceUsageId die u kunt gebruiken om een query uit te zoeken op Azure Marketplace voor gebruiks gegevens.
 
 ## <a name="endpoint-authentication"></a>Eindpunt verificatie
 Het webhook-eind punt beveiligen en de authenticiteit van de melding controleren:
-1. Geef een query parameter op boven op de webhook-URI, bijvoorbeeld: https://your-endpoint.com?sig=Guid. Controleer bij elke melding of de query parameter `sig` de verwachte waarde `Guid`heeft.
+1. Geef een query parameter op voor de webhook-URI, zoals: https\://your-endpoint.com? sig = GUID. Controleer bij elke melding of de query parameter `sig` de verwachte waarde `Guid`heeft.
 2. Geef een GET-aanvraag voor het beheerde toepassings exemplaar op met behulp van applicationId. Controleer of de provisioningState overeenkomt met de provisioningState van de melding om consistentie te garanderen.
 
 ## <a name="notification-retries"></a>Meldingen opnieuw proberen

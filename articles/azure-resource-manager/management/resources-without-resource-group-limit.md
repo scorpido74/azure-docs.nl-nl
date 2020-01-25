@@ -2,13 +2,13 @@
 title: Aantal resources zonder limiet van 800
 description: Geeft een lijst van de Azure-resource typen die meer dan 800 exemplaren in een resource groep kunnen bevatten.
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: c4f452a13c2059c02bf675ca4fe80243257183d5
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 01/23/2020
+ms.openlocfilehash: 42e8ddeebcd1dda4fc67e4e7be137c5e01decdf4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659318"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715627"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resources die niet beperkt zijn tot 800 exemplaren per resource groep
 
@@ -26,6 +26,7 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 * registraties
 * registrations/customerSubscriptions
 * registraties/producten
+* verificationKeys
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -82,6 +83,7 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 
 ## <a name="microsoftguestconfiguration"></a>Micro soft. GuestConfiguration
 
+* autoManagedVmConfigurationProfiles
 * configurationProfileAssignments
 * guestConfigurationAssignments
 * software
@@ -178,6 +180,10 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 * apiManagementAccounts/apis
 * sites
 
+## <a name="microsoftinsights"></a>microsoft.insights
+
+* metricalerts
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md)voor een volledige lijst met quota's en limieten.
+Zie [Azure-abonnement en service limieten, quota's en beperkingen](azure-subscription-service-limits.md)voor een volledige lijst met quota's en limieten.

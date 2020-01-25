@@ -1,19 +1,18 @@
 ---
 title: Azure Event Grid-abonnementsschema
-description: Beschrijft de eigenschappen voor het abonneren op een gebeurtenis met Azure Event Grid.
+description: In dit artikel worden de eigenschappen beschreven voor het abonneren op een gebeurtenis met Azure Event Grid. Schema van Event Grid abonnement.
 services: event-grid
 author: banisadr
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/02/2019
+ms.date: 01/23/2020
 ms.author: babanisa
-ms.openlocfilehash: 6129c7f498ce6c52fce4266f693c6a304642f8c3
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 4bb04d22b762f31a02515549b698030a5267e4cd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845469"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720755"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid-abonnementsschema
 
@@ -33,23 +32,23 @@ Naam van het abonnement van de gebeurtenis moet 3 tot 64 tekens lang zijn en mag
  
 ## <a name="event-subscription-properties"></a>Eigenschappen van gebeurtenis-abonnement
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | destination | object | Het object dat het eindpunt definieert. |
 | filter | object | Een optioneel veld voor het filteren van de typen gebeurtenissen. |
 
 ### <a name="destination-object"></a>doelobject
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | endpointType | string | Het type van het eindpunt voor het abonnement (webhook/HTTP, Event Hub of wachtrij). | 
 | endpointUrl | string | De doel-URL voor gebeurtenissen in dit gebeurtenisabonnement. | 
 
 ### <a name="filter-object"></a>Filter-object
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| includedEventTypes | array | Overeenkomst wanneer het gebeurtenistype bericht in de gebeurtenis is een exacte overeenkomst voor een van de namen van deze gebeurtenis. Wordt een fout gegenereerd als de naam van gebeurtenis komt niet overeen met de namen van de geregistreerde gebeurtenis type voor de gebeurtenisbron. Standaard komt overeen met alle gebeurtenistypen. |
+| includedEventTypes | matrix | Overeenkomst wanneer het gebeurtenistype bericht in de gebeurtenis is een exacte overeenkomst voor een van de namen van deze gebeurtenis. Wordt een fout gegenereerd als de naam van gebeurtenis komt niet overeen met de namen van de geregistreerde gebeurtenis type voor de gebeurtenisbron. Standaard komt overeen met alle gebeurtenistypen. |
 | subjectBeginsWith | string | Een voorvoegselovereenkomst filteren op het onderwerpveld in de gebeurtenis bericht. De standaard- of lege tekenreeks komt overeen met alle. | 
 | subjectEndsWith | string | Een achtervoegsel-match filteren op het onderwerpveld in de gebeurtenis bericht. De standaard- of lege tekenreeks komt overeen met alle. |
 | isSubjectCaseSensitive | string | Hoofdlettergevoelige overeenkomende filters voor besturingselementen. |

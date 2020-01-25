@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 10/07/2019
+ms.date: 01/21/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 992cface653bf3fe52afc7efa3f17573fcf91399
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b35c23e6dd88af01391bf7f01a7e736a1a744fff
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469641"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714439"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Zelf studie: Key Vault verwijzingen gebruiken in een ASP.NET Core-app
 
@@ -119,30 +119,62 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
 
 1. Voer de volgende opdracht uit om de Service-Principal toegang te geven tot uw sleutel kluis:
 
-    ```
+    ```cmd
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
     ```
 
-1. Voeg geheimen toe voor *clientId* en *ClientSecret* aan geheimen Manager, het hulp programma voor het opslaan van gevoelige gegevens die u hebt toegevoegd aan het *. csproj* -bestand in [Quick Start: een ASP.net core-app maken met Azure-app-configuratie](./quickstart-aspnet-core-app.md). Deze opdrachten moeten worden uitgevoerd in dezelfde map als het *. csproj* -bestand.
+1. U kunt omgevings variabelen toevoegen om de waarden van *clientId*, *clientSecret*en *tenantId*op te slaan.
 
-    ```
-    dotnet user-secrets set ConnectionStrings:KeyVaultClientId <clientId-of-your-service-principal>
-    dotnet user-secrets set ConnectionStrings:KeyVaultClientSecret <clientSecret-of-your-service-principal>
+    #### <a name="windows-command-prompttabcmd"></a>[Windows-opdracht prompt](#tab/cmd)
+
+    ```cmd
+    setx AZURE_CLIENT_ID <clientId-of-your-service-principal>
+    setx AZURE_CLIENT_SECRET <clientSecret-of-your-service-principal>
+    setx AZURE_TENANT_ID <tenantId-of-your-service-principal>
     ```
 
-> [!NOTE]
-> Deze Key Vault referenties worden alleen in uw toepassing gebruikt. Uw toepassing verifieert rechtstreeks aan Key Vault met deze referenties. Ze worden nooit door gegeven aan de app-configuratie service.
+    #### <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+
+    ```PowerShell
+    $Env:AZURE_CLIENT_ID = <clientId-of-your-service-principal>
+    $Env:AZURE_CLIENT_SECRET = <clientSecret-of-your-service-principal>
+    $Env:AZURE_TENANT_ID = <tenantId-of-your-service-principal>
+    ```
+
+    #### <a name="bashtabbash"></a>[Bash](#tab/bash)
+
+    ```bash
+    export AZURE_CLIENT_ID = <clientId-of-your-service-principal>
+    export AZURE_CLIENT_SECRET = <clientSecret-of-your-service-principal>
+    export AZURE_TENANT_ID = <tenantId-of-your-service-principal>
+    ```
+
+    ---
+
+    > [!NOTE]
+    > Deze Key Vault referenties worden alleen in uw toepassing gebruikt. Uw toepassing verifieert rechtstreeks aan Key Vault met deze referenties. Ze worden nooit door gegeven aan de app-configuratie service.
+
+1. Start de Terminal opnieuw op om deze nieuwe omgevings variabelen te laden.
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Uw code bijwerken om een Key Vault referentie te gebruiken
+
+1. Voeg een verwijzing naar de vereiste NuGet-pakketten toe door de volgende opdracht uit te voeren:
+
+    ```dotnetcli
+    dotnet add package Microsoft.Azure.KeyVault
+    dotnet add package Azure.Identity
+    ```
 
 1. Open *Program.cs*en voeg verwijzingen toe aan de volgende vereiste pakketten:
 
     ```csharp
     using Microsoft.Azure.KeyVault;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
+    using Azure.Identity;
     ```
 
 1. Werk de `CreateWebHostBuilder`-methode bij om app-configuratie te gebruiken door de `config.AddAzureAppConfiguration`-methode aan te roepen. Neem de `UseAzureKeyVault` optie op voor het door geven van een nieuwe `KeyVaultClient` verwijzing naar uw Key Vault.
+
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -151,18 +183,38 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
             {
                 var settings = config.Build();
 
-                KeyVaultClient kvClient = new KeyVaultClient(async (authority, resource, scope) =>
+                config.AddAzureAppConfiguration(options =>
                 {
-                    var adCredential = new ClientCredential(settings["ConnectionStrings:KeyVaultClientId"], settings["ConnectionStrings:KeyVaultClientSecret"]);
-                    var authenticationContext = new AuthenticationContext(authority, null);
-                    return (await authenticationContext.AcquireTokenAsync(resource, adCredential)).AccessToken;
-                });
-
-                config.AddAzureAppConfiguration(options => {
                     options.Connect(settings["ConnectionStrings:AppConfig"])
-                            .UseAzureKeyVault(kvClient); });
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(new DefaultAzureCredential());
+                            });
+                });
             })
             .UseStartup<Startup>();
+    ```
+
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+
+    ```csharp
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var settings = config.Build();
+
+                config.AddAzureAppConfiguration(options =>
+                {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(new DefaultAzureCredential());
+                            });
+                });
+            })
+            .UseStartup<Startup>());
     ```
 
 1. Wanneer u de verbinding met de app-configuratie hebt geïnitialiseerd, hebt u de `KeyVaultClient` verwijzing naar de `UseAzureKeyVault`-methode door gegeven. Na de initialisatie kunt u de waarden van Key Vault verwijzingen op dezelfde manier openen als de waarden van reguliere app-configuratie sleutels.
@@ -179,7 +231,7 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
         }
         h1 {
             color: @Configuration["TestApp:Settings:FontColor"];
-            font-size: @Configuration["TestApp:Settings:FontSize"];
+            font-size: @Configuration["TestApp:Settings:FontSize"]px;
         }
     </style>
 

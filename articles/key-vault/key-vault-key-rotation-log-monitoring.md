@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1f60ce3a23882a48e6008b76c0eedcab99e013b2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a0aa20a8d1ddecfe401a4e099a4f298971779501
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883460"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720109"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Azure Key Vault instellen met de functie voor het draaien en controleren van sleutels
 
@@ -119,7 +119,7 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-Maak in de toepassings code een klasse om de methode voor uw Azure Active Directory-verificatie te bewaren. In dit voor beeld heet die klasse **hulppr**. Voeg de volgende `using` instructie toe:
+Maak in de toepassings code een klasse om de methode voor uw Azure Active Directory-verificatie te bewaren. In dit voor beeld heet die klasse **hulppr**. Voeg de volgende `using`-instructie toe:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -144,7 +144,7 @@ public async static Task<string> GetToken(string authority, string resource, str
 }
 ```
 
-Voeg de benodigde code toe om Key Vault aan te roepen en uw geheime waarde op te halen. Eerst moet u de volgende `using` instructie toevoegen:
+Voeg de benodigde code toe om Key Vault aan te roepen en uw geheime waarde op te halen. Eerst moet u de volgende `using`-instructie toevoegen:
 
 ```csharp
 using Microsoft.Azure.KeyVault;
@@ -163,7 +163,7 @@ Wanneer u de toepassing uitvoert, moet u zich nu verifiëren voor Azure Active D
 ## <a name="key-rotation-using-azure-automation"></a>De draaiing van sleutels met Azure Automation
 
 > [!IMPORTANT]
-> Azure Automation runbooks vereisen nog steeds het gebruik van `AzureRM` de module.
+> Azure Automation runbooks vereisen nog steeds het gebruik van de module `AzureRM`.
 
 U bent nu klaar om een rotatie strategie in te stellen voor de waarden die u als Key Vault geheimen opslaat. Geheimen kunnen op verschillende manieren worden gedraaid:
 
@@ -265,14 +265,14 @@ De volgende stap is het [maken van een Azure service bus wachtrij](../service-bu
 
 1. Maak een Service Bus naam ruimte (als u er al een hebt die u wilt gebruiken, gaat u verder met stap 2).
 2. Blader naar het Service Bus-exemplaar in de Azure Portal en selecteer de naam ruimte waarin u de wachtrij wilt maken.
-3. Selecteer **een resource** > maken**bedrijfsintegratie** > **Service Bus**en voer vervolgens de vereiste gegevens in.
+3. Selecteer **een resource maken** > **bedrijfsintegratie** > **Service Bus**en voer vervolgens de vereiste gegevens in.
 4. Zoek de Service Bus verbindings gegevens door de naam ruimte te selecteren en vervolgens **verbindings gegevens**te selecteren. U hebt deze informatie nodig voor de volgende sectie.
 
 Maak vervolgens [een Azure-functie](../azure-functions/functions-create-first-azure-function.md) om de sleutel kluis logboeken te controleren binnen het opslag account en nieuwe gebeurtenissen op te halen. Deze functie wordt geactiveerd volgens een schema.
 
 Als u een Azure function-app wilt maken, selecteert u **een resource maken**, zoekt u in de marketplace naar **functie-app**en selecteert u **maken**. Tijdens het maken kunt u een bestaand hosting plan gebruiken of een nieuw abonnement maken. U kunt er ook voor kiezen om dynamisch te hosten. Zie [Azure functions schalen](../azure-functions/functions-scale.md)voor meer informatie over de hosting opties voor Azure functions.
 
-Nadat de Azure function-app is gemaakt, gaat u naar deze en selecteert u het **Timer** scenario en **C\#**  voor de taal. Selecteer vervolgens **deze functie maken**.
+Nadat de Azure function-app is gemaakt, gaat u naar deze en selecteert u het **Timer** scenario en **C\#** voor de taal. Selecteer vervolgens **deze functie maken**.
 
 ![Blade Azure Functions starten](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
@@ -314,7 +314,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
         else
         {
             dtPrev = DateTime.UtcNow;
-            log.Verbose($"Sync point file didnt have a date. Setting to now.");
+            log.Verbose($"Sync point file didn't have a date. Setting to now.");
         }
     }
 
@@ -417,7 +417,7 @@ Voeg een bestand met de naam project. json toe met de volgende inhoud:
 
 Nadat u **Opslaan**hebt geselecteerd, worden de vereiste binaire bestanden door Azure functions gedownload.
 
-Ga naar het tabblad **integreren** en geef de para meter timer een duidelijke naam die u in de functie kunt gebruiken. In de voor gaande code verwacht de functie dat de timer *myTimer*wordt genoemd. Geef als volgt een [cron-expressie](../app-service/webjobs-create.md#CreateScheduledCRON) voor de timer `0 * * * * *`op:. Deze expressie zorgt ervoor dat de functie één keer per minuut wordt uitgevoerd.
+Ga naar het tabblad **integreren** en geef de para meter timer een duidelijke naam die u in de functie kunt gebruiken. In de voor gaande code verwacht de functie dat de timer *myTimer*wordt genoemd. Geef als volgt een [cron-expressie](../app-service/webjobs-create.md#CreateScheduledCRON) op voor de timer: `0 * * * * *`. Deze expressie zorgt ervoor dat de functie één keer per minuut wordt uitgevoerd.
 
 Voeg op hetzelfde tabblad **integreren** een invoer van het type **Azure Blob-opslag**toe. Deze invoer verwijst naar het bestand sync. txt dat het tijds tempel bevat van de laatste gebeurtenis die door de functie is bekeken. Deze invoer wordt in de functie geopend met behulp van de parameter naam. In de voor gaande code verwacht de invoer van de Azure Blob-opslag de parameter naam *inputBlob*. Selecteer het opslag account waarin het bestand sync. txt zich bevindt (dit kan hetzelfde zijn of een ander opslag account zijn). Geef in het veld pad het pad naar het bestand op in de indeling `{container-name}/path/to/sync.txt`.
 
@@ -429,7 +429,7 @@ De functie is nu gereed. Ga terug naar het tabblad **ontwikkelen** en sla de cod
 
 Vervolgens moet u een Azure Logic-app maken die de gebeurtenissen ophaalt die de functie naar de Service Bus wachtrij pusht, de inhoud parseert en een e-mail bericht verzendt op basis van een voor waarde die overeenkomt.
 
-[Maak een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md) door **een resource** > **Integration** > **Logic-app**maken te selecteren.
+[Maak een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md) door **een resource maken** > **Integration** > **Logic app**te selecteren.
 
 Nadat de logische app is gemaakt, gaat u naar deze en selecteert u **bewerken**. Selecteer in de Logic app-editor **Service Bus wachtrij** en voer uw service bus referenties in om deze te verbinden met de wachtrij.
 

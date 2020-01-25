@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830374"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720347"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: veelgestelde vragen
 
@@ -233,7 +233,7 @@ Zie [Hoe kan ik een cron instellen](https://askubuntu.com/questions/2368/how-do-
 ### <a name="why-is-llap-available-on-spark-esp-clusters"></a>Waarom is LLAP beschikbaar in Spark ESP-clusters?
 Op ESP Spark-clusters is LLAP ingeschakeld om beveiligings redenen (dat wil zeggen Apache zwerver), niet voor prestaties. U moet grotere Vm's voor knoop punten gebruiken voor het resource gebruik van LLAP (bijvoorbeeld minimale D13V2). 
 
-### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>Hoe kan ik aanvullende AAD-groepen toevoegen nadat ik een ESP-cluster heb gemaakt?
+### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>Hoe kan ik extra AAD-groepen toevoegen nadat ik een ESP-cluster heb gemaakt?
 Er zijn twee manieren om dit te doen: 1. u kunt het cluster opnieuw maken en de extra groep toevoegen op het moment dat het cluster wordt gemaakt. Als u scoped Synchronization in AAD-DS gebruikt, moet u ervoor zorgen dat groep B is opgenomen in de synchronisatie met het bereik.
 2: Voeg de groep toe als een geneste subgroep van de vorige groep die is gebruikt voor het maken van het ESP-cluster. Als u bijvoorbeeld een ESP-cluster met groeps `A`hebt gemaakt, kunt u later op groep toevoegen `B` als een geneste subgroep van `A` en na ongeveer één uur dat deze automatisch wordt gesynchroniseerd en beschikbaar is in het cluster. 
 

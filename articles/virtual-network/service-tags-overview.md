@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: ed9b893b11f96a813cee4c751743ceb182a9a0bf
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: dc64570ccf69c321f33b9689362def8c9caf975e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543032"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715408"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk 
 <a name="network-service-tags"></a>
@@ -64,7 +64,7 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Opmerking:* Deze tag bevat een afhankelijkheid van de labels **AzureActiveDirectory** en **AzureFrontDoor.** front-end. U kunt ook white list volgende Ip's (deze afhankelijkheid wordt binnenkort verwijderd): 13.107.6.181 & 13.107.9.181. | Uitgaand | Nee | Nee |
 | **AzureIoTHub** | Azure IoT Hub. | Uitgaand | Nee | Nee |
 | **AzureKeyVault** | Azure Key Vault.<br/><br/>*Opmerking:* Deze tag bevat een afhankelijkheid van de **AzureActiveDirectory** -tag. | Uitgaand | Ja | Ja |
-| **AzureLoadBalancer** | De Azure-infrastructuur load balancer. De tag wordt omgezet in het [virtuele IP-adres van de host](security-overview.md#azure-platform-considerations) (168.63.129.16) waar de Azure Health-tests afkomstig zijn. Als u Azure Load Balancer niet gebruikt, kunt u deze regel onderdrukken. | Beide | Nee | Nee |
+| **AzureLoadBalancer** | De Azure-infrastructuur load balancer. De tag wordt omgezet in het [virtuele IP-adres van de host](security-overview.md#azure-platform-considerations) (168.63.129.16) waar de Azure Health-tests afkomstig zijn. Dit omvat geen verkeer naar uw Azure Load Balancer-resource. Als u Azure Load Balancer niet gebruikt, kunt u deze regel onderdrukken. | Beide | Nee | Nee |
 | **AzureMachineLearning** | Azure Machine Learning. | Beide | Nee | Ja |
 | **AzureMonitor** | Log Analytics, Application Insights, AzMon en aangepaste metrische gegevens (GB-eind punten).<br/><br/>*Opmerking:* Voor Log Analytics heeft deze tag een afhankelijkheid van de **opslag** code. | Uitgaand | Nee | Ja |
 | **AzurePlatformDNS** | De basis-DNS-service (standaard).<br/><br>U kunt deze tag gebruiken om de standaard-DNS uit te scha kelen. Wees voorzichtig wanneer u deze tag gebruikt. U wordt aangeraden [Azure-platform overwegingen](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)te lezen. We raden u ook aan eerst tests uit te voeren voordat u deze tag gebruikt. | Uitgaand | Nee | Nee |
@@ -83,7 +83,7 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 | **HDInsight** | Azure HDInsight. | Inkomend | Ja | Nee |
 | **Internet** | De IP-adres ruimte die zich buiten het virtuele netwerk bevindt en bereikbaar is via het open bare Internet.<br/><br/>Het adres bereik bevat de [open bare IP-adres ruimte van Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Beide | Nee | Nee |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Uitgaand | Nee | Nee |
-| **MicrosoftContainerRegistry** | Azure Container Registry. | Uitgaand | Ja | Ja |
+| **MicrosoftContainerRegistry** | Container register voor micro soft container-installatie kopieën. <br/><br/>*Opmerking:* U kunt ook white list volgende IP-adres (deze afhankelijkheid wordt binnenkort verwijderd): 204.79.197.219. | Uitgaand | Ja | Ja |
 | **ServiceBus** | Azure Service Bus verkeer dat gebruikmaakt van de Premium-servicelaag. | Uitgaand | Ja | Ja |
 | **ServiceFabric** | Azure Service Fabric. | Uitgaand | Nee | Nee |
 | **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL en Azure SQL Data Warehouse.<br/><br/>*Opmerking:* Deze tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure SQL Database, maar geen specifieke SQL-database of -server. | Uitgaand | Ja | Ja |

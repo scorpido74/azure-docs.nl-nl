@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c102941920d2b8746a49be47ef4c5613fa0bc281
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973364"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719072"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Bouw Maxi maal beschik bare Azure Storage toepassingen met geo-zone-redundante opslag (GZRS) (preview)
 
@@ -32,6 +32,7 @@ GZRS en RA-GZRS zijn momenteel beschikbaar als preview-versie in de volgende reg
 - Azië (zuidoost)
 - Europa (noord)
 - Europa (west)
+- Japan - Oost
 - VK - zuid
 - US - oost
 - US - oost 2
@@ -129,6 +130,7 @@ Zodra de migratie is voltooid, wordt de replicatie-instelling van het opslag acc
 Houd u aan de volgende beperkingen voor Livemigratie:
 
 - Microsoft verwerkt uw aanvraag voor livemigratie onmiddellijk, maar er is geen garantie wanneer een livemigratie wordt voltooid. Als u wilt dat uw gegevens worden gemigreerd naar GZRS of RA-GZRS op een bepaalde datum, raadt micro soft u aan om in plaats daarvan een hand matige migratie uit te voeren. In het algemeen geldt dat hoe meer gegevens u voor uw account hebt, hoe langer het duurt om die gegevens te migreren.
+- Livemigratie wordt alleen ondersteund voor opslag accounts die gebruikmaken van GRS of RA-GRS-replicatie. Als uw account gebruikmaakt van LRS, moet u eerst het replicatie type van uw account wijzigen in GRS of RA-GRS voordat u doorgaat. In deze tussenliggende stap wordt het secundaire eind punt toegevoegd dat is verschaft door GRS/RA-GRS.
 - Uw account moet gegevens bevatten.
 - U kunt alleen gegevens binnen dezelfde regio migreren.
 - Alleen de standaard opslag typen bieden ondersteuning voor Livemigratie. Premium Storage-accounts moeten hand matig worden gemigreerd.

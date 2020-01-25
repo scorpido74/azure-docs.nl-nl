@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: c9f5bcd9921b0324eb194eefd2066f6c0eaa4706
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7bf01eea71134d932305cce7665c68d4dcc655cb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975211"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712567"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Een virtuele machine met Windows Server toevoegen aan een Azure Active Directory Domain Services beheerd domein met behulp van een resource manager-sjabloon
 
@@ -40,7 +40,7 @@ U hebt de volgende resources en bevoegdheden nodig om deze zelf studie te volt o
 
 Met Resource Manager-sjablonen kunt u de Azure-infra structuur in code definiëren. De vereiste resources, netwerk verbindingen of configuratie van Vm's kunnen allemaal worden gedefinieerd in een sjabloon. Deze sjablonen maken elke keer consistente, reproduceer bare implementaties en kunnen worden genoteerd wanneer u wijzigingen aanbrengt. Zie [Azure Resource Manager sjablonen Overview][template-overview](Engelstalig) voor meer informatie.
 
-Elke resource wordt gedefinieerd in een sjabloon met behulp van JSON. In het volgende JSON-voor beeld wordt het resource type *micro soft. Compute/informatie/Extensions* gebruikt voor het installeren van de Active Directory-extensie voor domein deelname. Para meters worden gebruikt die u tijdens de implementatie tijd opgeeft. Wanneer de uitbrei ding wordt geïmplementeerd, wordt de virtuele machine gekoppeld aan het opgegeven Azure AD DS beheerde domein.
+Elke resource wordt gedefinieerd in een sjabloon met behulp van JavaScript Object Notation (JSON). In het volgende JSON-voor beeld wordt het resource type *micro soft. Compute/informatie/Extensions* gebruikt voor het installeren van de Active Directory-extensie voor domein deelname. Para meters worden gebruikt die u tijdens de implementatie tijd opgeeft. Wanneer de uitbrei ding wordt geïmplementeerd, wordt de virtuele machine gekoppeld aan het opgegeven Azure AD DS beheerde domein.
 
 ```json
  {
@@ -94,7 +94,7 @@ Als u een Windows Server-VM wilt maken, voegt u deze toe aan een door Azure AD D
     | DNS-label voorvoegsel          | Voer een DNS-naam in om te gebruiken voor de virtuele machine, zoals *myvm*. |
     | VM-grootte                   | Geef een VM-grootte op, bijvoorbeeld *Standard_DS2_v2*. |
     | Domein om lid te worden            | De DNS-naam van het beheerde domein van Azure AD DS, zoals *aadds.contoso.com*. |
-    | Domein gebruikers naam           | Het gebruikers account in de Azure-AD DS beheerd domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein. Dit account moet lid zijn van de groep *Azure AD DC-Administrators* . |
+    | Domein gebruikers naam           | Het gebruikers account in de Azure AD DS beheerde domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein, zoals `contosoadmin@aadds.contoso.com`. Dit account moet lid zijn van de groep *Azure AD DC-Administrators* . |
     | Domeinwachtwoord           | Het wacht woord voor het gebruikers account dat is opgegeven in de vorige instelling. |
     | Optioneel pad naar OE          | De aangepaste organisatie-eenheid waaraan de virtuele machine moet worden toegevoegd. Als u geen waarde opgeeft voor deze para meter, wordt de virtuele machine toegevoegd aan de standaard organisatie-eenheid voor *Aad DC-computers* . |
     | Gebruikers naam van de VM-beheerder         | Geef een lokaal Administrator-account op om te maken op de VM. |
@@ -123,7 +123,7 @@ Voer de volgende stappen uit om een bestaande virtuele machine met Windows Serve
     | Resourcegroep            | Kies de resource groep met uw bestaande VM. |
     | Locatie                  | Selecteer de locatie van de bestaande virtuele machine. |
     | VM-lijst                   | Voer de door komma's gescheiden lijst in van de bestaande virtuele machine (s) die u wilt toevoegen aan de Azure AD DS beheerde domein, zoals *myVM1, myVM2*. |
-    | Gebruikers naam voor domein deelname     | Het gebruikers account in de Azure-AD DS beheerd domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein. Dit account moet lid zijn van de groep *Azure AD DC-Administrators* . |
+    | Gebruikers naam voor domein deelname     | Het gebruikers account in de Azure AD DS beheerde domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein, zoals `contosoadmin@aadds.contoso.com`. Dit account moet lid zijn van de groep *Azure AD DC-Administrators* . |
     | Domein deelname gebruikers wachtwoord | Het wacht woord voor het gebruikers account dat is opgegeven in de vorige instelling. |
     | Optioneel pad naar OE          | De aangepaste organisatie-eenheid waaraan de virtuele machine moet worden toegevoegd. Als u geen waarde opgeeft voor deze para meter, wordt de virtuele machine toegevoegd aan de standaard organisatie-eenheid voor *Aad DC-computers* . |
 

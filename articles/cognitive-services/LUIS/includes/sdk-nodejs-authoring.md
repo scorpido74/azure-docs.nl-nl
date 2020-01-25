@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 01/14/2020
+ms.date: 01/22/2020
 ms.author: diberry
-ms.openlocfilehash: 65611dfb171008deab9d1d6cb15f0470fcbc2753
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 808fdfb04cbe3b2b9e5f2de0c653bb978196269c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170552"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748838"
 ---
 Gebruik de Language Understanding (LUIS)-ontwerp-client bibliotheek voor node. js voor het volgende:
 
@@ -25,7 +25,7 @@ Gebruik de Language Understanding (LUIS)-ontwerp-client bibliotheek voor node. j
 * Train en publiceer een app.
 * App verwijderen
 
-[Referentie documentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [bron code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) van de bibliotheek | het [ontwerp pakket (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring) | voor [beelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
+[Referentie documentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [ontwerp pakket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring), [runtime pakket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | voor [beelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -100,7 +100,7 @@ Nadat de client is gemaakt, gebruikt u deze client voor toegang tot de functiona
 * [Versies](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/versions?view=azure-node-latest) : beheren met klonen, exporteren en verwijderen
 
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 Deze code fragmenten laten zien hoe u het volgende kunt doen met de Language Understanding (LUIS)-ontwerp-client bibliotheek voor node. js:
 
@@ -125,7 +125,7 @@ Maak variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Maak een [CognitiveServicesCredentials]() -object met uw sleutel en gebruik het met uw eind punt om een [LUISAuthoringClient]() -object te maken.
+Maak een [CognitiveServicesCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest) -object met uw sleutel en gebruik het met uw eind punt om een [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest) -object te maken.
 
 [!code-javascript[Create LUIS client object](~/cognitive-services-quickstart-code/javascript/LUIS/luis_authoring_quickstart.js?name=AuthoringCreateClient)]
 

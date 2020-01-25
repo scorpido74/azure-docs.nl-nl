@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: cherylmc
-ms.openlocfilehash: 57a066132cbc8812fac95862bd1b02a3fc59ff2f
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cbddd912831247e30f2913414c6dfa13131dde99
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293892"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719854"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -142,7 +142,7 @@ De volgende tabel geeft de connectiviteitslocaties en de serviceproviders voor e
 
 ### <a name="national-cloud-environments"></a>Nationale cloudomgevingen
 
-Azure National Clouds zijn geïsoleerd van elkaar en van Global Commerical Azure. ExpressRoute voor een Azure-Cloud kan geen verbinding maken met de Azure-regio's in de andere.
+Azure National Clouds zijn geïsoleerd van elkaar en van wereld wijde commerciële Azure. ExpressRoute voor een Azure-Cloud kan geen verbinding maken met de Azure-regio's in de andere.
 
 ### <a name="us-government-cloud"></a>Cloud van de Amerikaanse overheid
 | **Locatie** | **Help** | **Lokale Azure-regio's**| **Er direct** | **Serviceproviders** |

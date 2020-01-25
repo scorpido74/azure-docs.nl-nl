@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 6ff7500712f57d7cf2adad1fc73f68a29f3afc20
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 40cd3467c7a4377427bb8db437e1047382933b1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412835"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714869"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Gegevens persistentie configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen die flexibiliteit bieden bij het kiezen van cache grootte en-functies, waaronder functies voor de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. In dit artikel wordt beschreven hoe u persistentie configureert in een Premium Azure-cache voor redis-instantie.
@@ -26,7 +26,13 @@ Azure cache voor redis biedt redis persistentie met de volgende modellen:
 * **RDB-persistentie** : wanneer de persistentie van RDB (redis data base) is geconfigureerd, blijft Azure cache voor redis een moment opname van de Azure-cache voor redis in een redis binaire indeling op schijf op basis van een Configureer bare back-upfrequentie. Als er sprake is van een onherstelbare gebeurtenis die de primaire cache en de replica in de replicatie uitschakelt, wordt de cache opnieuw opgebouwd met de meest recente moment opname. Meer informatie over de [voor](https://redis.io/topics/persistence#rdb-advantages) -en [nadelen](https://redis.io/topics/persistence#rdb-disadvantages) van RDB-persistentie.
 * **AOF Persistence** : wanneer AOF (alleen bestand toevoegen) persistentie is geconfigureerd, slaat Azure cache voor redis elke schrijf bewerking op in een logboek dat ten minste eenmaal per seconde in een Azure Storage-account is opgeslagen. Als er sprake is van een onherstelbare gebeurtenis die de primaire cache en de replica in de replicatie uitschakelt, wordt de cache opnieuw opgebouwd met behulp van de opgeslagen schrijf bewerkingen. Meer informatie over de [voor](https://redis.io/topics/persistence#aof-advantages) -en [nadelen](https://redis.io/topics/persistence#aof-disadvantages) van AOF persistentie.
 
-Persistentie wordt geconfigureerd op de Blade **nieuwe Azure-cache voor redis** tijdens het maken van de cache en in het **resource menu** voor bestaande Premium-caches.
+Met persistentie worden redis-gegevens naar een Azure Storage-account geschreven dat u bezit en beheert. U kunt configureren vanaf de Blade **nieuwe Azure-cache voor redis** tijdens het maken van de cache en in het **resource menu** voor bestaande Premium-caches.
+
+> [!NOTE]
+> 
+> Azure Storage versleutelt gegevens automatisch wanneer deze persistent worden gemaakt. U kunt uw eigen sleutels gebruiken voor de versleuteling. Zie [door de klant beheerde sleutels met Azure Key Vault](/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault)voor meer informatie.
+> 
+> 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
@@ -38,7 +44,7 @@ In de stappen in de volgende sectie wordt beschreven hoe u redis Persistence kun
 
 ## <a name="enable-redis-persistence"></a>Redis-persistentie inschakelen
 
-Redis-persistentie wordt ingeschakeld op de Blade **gegevens persistentie redis** door ofwel **RDB** of **AOF** persistentie te kiezen. Voor nieuwe caches is deze Blade toegankelijk tijdens het proces voor het maken van de cache, zoals beschreven in de vorige sectie. Voor bestaande caches wordt de Blade **gegevens persistentie redis** geopend vanuit het **resource menu** voor uw cache.
+Redis-persistentie wordt ingeschakeld op de Blade **gegevens persistentie** door ofwel **RDB** ofwel **AOF** persistentie te kiezen. Voor nieuwe caches is deze Blade toegankelijk tijdens het proces voor het maken van de cache, zoals beschreven in de vorige sectie. Voor bestaande caches wordt de Blade **gegevens persistentie** geopend vanuit het **resource menu** voor uw cache.
 
 ![Redis-instellingen][redis-cache-settings]
 
@@ -125,7 +131,7 @@ Voor zowel RDB-als AOF-persistentie:
 * Als u naar een kleinere grootte hebt geschaald en er onvoldoende ruimte is in de kleinere grootte om alle gegevens van de laatste back-up te bewaren, worden de sleutels tijdens het herstel proces verwijderd, meestal met behulp van het verwijderings beleid voor [AllKeys-LRU](https://redis.io/topics/lru-cache) .
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Kan ik de frequentie van de RDB-back-up wijzigen nadat ik de cache heb gemaakt?
-Ja, u kunt de back-upfrequentie voor RDB-persistentie op de Blade **gegevens persistentie redis** wijzigen. Zie redis-persistentie configureren voor instructies.
+Ja, u kunt de back-upfrequentie voor RDB-persistentie op de Blade **gegevens persistentie** wijzigen. Zie redis-persistentie configureren voor instructies.
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Waarom is er meer dan 60 minuten tussen back-ups als ik een RDB-back-upfrequentie van 60 minuten heb?
 Het interval voor de back-upfrequentie voor de RDB-persistentie wordt pas gestart als het vorige back-upproces is voltooid. Als de back-upfrequentie 60 minuten is en het back-upproces 15 minuten duurt, wordt de volgende back-up pas 75 minuten na de begin tijd van de vorige back-up gestart.

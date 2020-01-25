@@ -5,20 +5,21 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e46574ae7f8faa67c2cc0c1afef1917270f69175
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969664"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715897"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-activiteiten logboek exporteren naar opslag of Azure Event Hubs
 
-> [!WARNING]
-> U kunt het activiteiten logboek nu verzamelen in een Log Analytics-werk ruimte met behulp van een diagnostische instelling, vergelijkbaar met de manier waarop u bron logboeken verzamelt. Zie [Azure-activiteiten logboeken verzamelen en analyseren in log Analytics werk ruimte in azure monitor](diagnostic-settings-legacy.md).
+> [!IMPORTANT]
+> De methode voor het verzenden van het Azure-activiteiten logboek naar Azure Storage en Azure Event Hubs is gewijzigd in [Diagnostische instellingen](diagnostic-settings.md). In dit artikel wordt de verouderde methode beschreven die wordt afgeschaft. Zie bijwerken naar [Azure-activiteiten logboek verzamelen en exporteren](diagnostic-settings-legacy.md) voor een vergelijking.
+
 
 Het [Azure-activiteiten logboek](platform-logs-overview.md) biedt inzicht in gebeurtenissen op abonnements niveau die in uw Azure-abonnement zijn opgetreden. Naast het weer geven van het activiteiten logboek in de Azure Portal of het kopiëren naar een Log Analytics werk ruimte waar het kan worden geanalyseerd met andere gegevens die zijn verzameld door Azure Monitor, kunt u een logboek profiel maken om het activiteiten logboek te archiveren in een Azure Storage-account of om het te streamen naar een  Event hub.
 
@@ -72,9 +73,14 @@ Als het Bewaar beleid is ingesteld, maar logboeken worden opgeslagen in een opsl
 
 Maak of bewerk een logboek profiel met de optie **exporteren naar Event hub** in de Azure Portal.
 
-1. Selecteer in het menu **monitor** in de Azure Portal **exporteren naar Event hub**.
+1. Selecteer in het menu **Azure monitor** van de Azure Portal het **activiteiten logboek**.
+3. Klik op **Diagnostische instellingen**.
 
-    ![De knop exporteren in de portal](media/activity-log-export/portal-export.png)
+   ![Diagnostische instellingen](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+4. Klik op de banner paars voor de oude ervaring.
+
+    ![Verouderde ervaring](media/diagnostic-settings-subscription/legacy-experience.png)
 
 3. Op de Blade die wordt weer gegeven, geeft u het volgende op:
    * Regio's met de gebeurtenissen die moeten worden geëxporteerd. U moet alle regio's selecteren om ervoor te zorgen dat u geen sleutel gebeurtenissen mist omdat het activiteiten logboek een globaal (niet-regionaal) logboek is en dus er aan de meeste gebeurtenissen geen regio is gekoppeld.
@@ -118,7 +124,7 @@ Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profie
     | serviceBusRuleId |Nee |Service Bus regel-ID voor de Service Bus naam ruimte waarin u Event hubs wilt maken. Dit is een teken reeks met de volgende indeling: `{service bus resource ID}/authorizationrules/{key name}`. |
     | Locatie |Ja |Een door komma's gescheiden lijst met regio's waarvoor u activiteiten logboek gebeurtenissen wilt verzamelen. |
     | RetentionInDays |Ja |Aantal dagen dat gebeurtenissen moeten worden bewaard in het opslag account, tussen 1 en 365. Met de waarde nul worden de logboeken voor onbepaalde tijd opgeslagen. |
-    | Categorie |Nee |Een door komma's gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn _schrijven_, _verwijderen_en _actie_. |
+    | Category |Nee |Een door komma's gescheiden lijst met gebeurtenis categorieën die moeten worden verzameld. Mogelijke waarden zijn _schrijven_, _verwijderen_en _actie_. |
 
 ### <a name="example-script"></a>Voorbeeldscript
 Hier volgt een voor beeld van een Power shell-script voor het maken van een logboek profiel waarmee het activiteiten logboek naar zowel een opslag account als Event Hub wordt geschreven.

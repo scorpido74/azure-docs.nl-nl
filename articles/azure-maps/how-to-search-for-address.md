@@ -8,33 +8,80 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 53856b4157afa5976947c451952fc26eefcdd0ea
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 20a2c18875096680cd1eba7601e88965fcbcc568
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264183"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715351"
 ---
-# <a name="find-an-address-using-the-azure-maps-search-service"></a>Een adres zoeken met behulp van de Azure Maps Search-service
+# <a name="using-azure-maps-search-services-for-geocoding-and-reverse-geocoding"></a>Azure Maps-Zoek Services gebruiken voor geocodering en omgekeerde geocodering
 
-De Maps Search-service is een set REST-Api's die is ontworpen voor ontwikkel aars. De service kan zoeken naar adressen, plaatsen, interesses, bedrijfs vermeldingen en andere geografische informatie. Elk van de volgende waarden voor breedte graad en lengte graad: een specifiek adres, een andere straat, een geografische functie of een POI. U kunt de geretourneerde waarden voor breedte graad en lengte graad van een query gebruiken als para meters in andere toewijzings Services. De geretourneerde waarden kunnen bijvoorbeeld para meters voor route service of de Traffic Flow-service worden. 
+De Azure Maps [Search service](https://docs.microsoft.com/rest/api/maps/search) is een reeks rest api's waarmee ontwikkel aars adressen, plaatsen, bedrijfs vermeldingen op naam of categorie en andere geografische informatie kunnen doorzoeken. Naast het ondersteunen van traditionele geocodering kunnen services ook Geocode-adressen en Cross-Streets omkeren op basis van de breedte graad en lengte graad. De breedte-en lengte waarden die worden geretourneerd door de zoek opdracht, kunnen worden gebruikt als para meters in andere Azure Maps Services, zoals [route](https://docs.microsoft.com/rest/api/maps/route) en [weer](https://docs.microsoft.com/rest/api/maps/weather) Services.
 
 Leer hoe u het volgende kunt doen:
 
-* Zoeken naar een adres met behulp van [fuzzy Search-API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
+* De coördinaten van de breedte graad en lengte graad voor een adres (locatie van een geocode) aanvragen met behulp van de [API voor Zoek adressen]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)
+* Zoeken naar een adres of belang stelling (POI) met behulp van [fuzzy Search-API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
 * Een adres samen met de eigenschappen en coördinaten zoeken
-* Maak een [Reverse Address-zoek opdracht](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) om te zoeken naar een adres
+* Een [omgekeerde adres zoekactie](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) maken om de coördinaten locatie naar het adres te vertalen
 * Zoeken naar een cross-straat met behulp van [Address reverse Cross Street-API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u aanroepen naar de Maps service-Api's wilt maken, hebt u een Maps-account en een sleutel nodig. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps)om een account te maken voor Azure Maps. Volg de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account)als u hulp nodig hebt bij het verkrijgen van uw primaire sleutel. Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
+Als u de stappen in dit artikel wilt uitvoeren, moet u eerst een Azure Maps-account maken en uw abonnements sleutel voor Maps-accounts ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
 In dit artikel wordt gebruikgemaakt van de [app postman](https://www.getpostman.com/apps) om rest-aanroepen te bouwen. U kunt elke gewenste API-ontwikkel omgeving gebruiken.
 
-## <a name="using-fuzzy-search"></a>Met fuzzy Search
+## <a name="request-latitude-and-longitude-for-an-address-geocoding"></a>De breedte graad en lengte graad voor een adres aanvragen (geocodering)
 
-De standaard-API voor de zoek service is [wazig zoeken](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy). Deze service is handig wanneer u niet zeker weet wat de invoer van de gebruiker is in een zoek opdracht. De API combineert POI Search en Geocode ring in een canonieke zoek opdracht met één regel. De API kan bijvoorbeeld invoer van een wille keurige combi natie van adressen of POI verwerken. Het kan ook worden gewogen met een contextuele positie (lat./Lon. paar), volledig beperkt door een coördinaat en RADIUS, of meer in het algemeen zonder enige geo-veranderings anker punt.
+In dit voor beeld gebruiken we Azure Maps [Zoek adres-API ophalen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) om een adres te converteren naar de coördinaten voor breedte graad en lengte graad. U kunt een volledig of gedeeltelijk adres door geven aan de API en een antwoord ontvangen dat gedetailleerde adres eigenschappen bevat, zoals straat, post code en land/regio, evenals positionele waarden in breedte graad en lengte graad.
+
+Als u een reeks adressen naar Geocode hebt, kunt u [post Search Address batch-API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch) gebruiken om een batch met query's te verzenden in één API-aanroep.
+
+1. Klik in postman op **nieuwe aanvraag** | **aanvraag ophalen** en geef de naam op voor de **Zoek opdracht**.
+
+2. Op het tabblad opbouw functie selecteert u de methode http **ophalen** , voert u de aanvraag-URL in voor uw API-eind punt en selecteert u een autorisatie protocol, indien van toepassing.
+
+![Adres zoeken](./media/how-to-search-for-address/address_search_url.png)
+
+| Parameter | Voorgestelde waarde |
+|---------------|------------------------------------------------| 
+| HTTP-methode | GET |
+| Aanvraag-URL | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) | 
+| Autorisatie | Geen verificatie |
+
+3. Klik op **params**en voer de volgende sleutel/waarde-paren in om te gebruiken als query-of Path-para meters in de aanvraag-URL: 
+
+![Adres zoeken](./media/how-to-search-for-address/address_search_params.png) 
+
+| Sleutel | Waarde | 
+|------------------|-------------------------| 
+| api-version | 1.0 | 
+| abonnement-sleutel | \<uw Azure Maps-sleutel\> | 
+| query | 400 brede St, Seattle, WA 98109 | 
+
+4. Klik op **verzenden** en controleer de tekst van het antwoord. 
+
+In dit geval hebt u een volledige adres query opgegeven en krijgt u één resultaat in de hoofd tekst van het antwoord. 
+
+5. Bewerk in params de query reeks in de volgende waarde: 
+
+    ```plaintext 
+        400 Broad, Seattle 
+    ``` 
+
+6. Voeg de volgende sleutel/waarde-paar toe aan de sectie **params** en klik op **verzenden**: 
+
+| Sleutel | Waarde | 
+|-----|------------| 
+| typeahead | waar | 
+
+De vlag **typeahead** geeft aan dat de zoek-API van het adres de query als gedeeltelijke invoer behandelt en een matrix van voorspellende waarden retourneert.
+
+## <a name="search-for-an-address-using-fuzzy-search-api"></a>Zoeken naar een adres met behulp van fuzzy Search-API
+
+Azure Maps[ fuzzy Search-API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) wordt aanbevolen service te gebruiken wanneer u niet weet wat uw gebruikers invoer zijn voor een zoek opdracht. De API combineert POI-Zoek resultaten (Point of interest) en Geocode ring in een canonieke zoek opdracht met één regel. De API kan bijvoorbeeld invoer van een wille keurige combi natie van adressen of POI verwerken. Het kan ook worden gewogen met een contextuele positie (lat./Lon. paar), volledig beperkt door een coördinaat en RADIUS, of meer in het algemeen zonder enige geo-veranderings anker punt.
 
 De meeste zoek query's zijn standaard `maxFuzzyLevel=1` om prestaties te verkrijgen en de ongebruikelijke resultaten te verminderen. Deze standaard instelling kan worden overschreven als nodig per aanvraag door door gegeven in de query parameter `maxFuzzyLevel=2` of `3`.
 
@@ -50,7 +97,7 @@ De meeste zoek query's zijn standaard `maxFuzzyLevel=1` om prestaties te verkrij
     |---------------|------------------------------------------------|
     | HTTP-methode | GET |
     | Aanvraag-URL | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
-    | Autorisatie | Geen autorisatie |
+    | Autorisatie | Geen verificatie |
 
     Het **JSON** -kenmerk in het URL-pad bepaalt de antwoord indeling. In dit artikel wordt JSON gebruikt voor gebruiks gemak en lees baarheid. U vindt de beschik bare antwoord indelingen in de **fuzzy zoek term** van de [functie voor het toewijzen van functionele API-verwijzingen](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
 
@@ -102,7 +149,7 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
     |---------------|------------------------------------------------|
     | HTTP-methode | GET |
     | Aanvraag-URL | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
-    | Autorisatie | Geen autorisatie |
+    | Autorisatie | Geen verificatie |
 
 3. Klik op **params**en voer de volgende sleutel/waarde-paren in om te gebruiken als query-of Path-para meters in de aanvraag-URL:
   
@@ -131,7 +178,7 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
 
     De vlag **typeahead** geeft aan dat de zoek-API van het adres de query als gedeeltelijke invoer behandelt en een matrix van voorspellende waarden retourneert.
 
-## <a name="search-for-a-street-address-using-reverse-address-search"></a>Zoeken naar een adres met behulp van Reverse Address Search
+## <a name="make-a-reverse-address-search"></a>Een omgekeerde adres zoekactie maken
 
 1. Klik in postman op **nieuwe aanvraag** | **Get-aanvraag** en noem de **Zoek opdracht voor omgekeerde adressen**.
 
@@ -143,7 +190,7 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
     |---------------|------------------------------------------------|
     | HTTP-methode | GET |
     | Aanvraag-URL | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
-    | Autorisatie | Geen autorisatie |
+    | Autorisatie | Geen verificatie |
   
 3. Klik op **params**en voer de volgende sleutel/waarde-paren in om te gebruiken als query-of Path-para meters in de aanvraag-URL:
   
@@ -189,9 +236,9 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
     |-----|------------|
     | roadUse | waar |
 
-    U kunt de omgekeerde Geocode query beperken tot een specifiek type weg de query parameter [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) gebruiken.
+    U kunt de omgekeerde Geocode query beperken tot een specifiek type weg met behulp van de [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) -query parameter.
   
-## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>Zoeken naar de cross-straat met omgekeerde adres zoeken in meerdere straat
+## <a name="search-for-cross-street-using-reverse-address-cross-street-search"></a>Zoeken naar meerdere Streets met omgekeerde adres zoeken in meerdere straat
 
 1. Klik in postman op **nieuwe aanvraag** | **Get-aanvraag** en geef deze de naam **omgekeerde adres zoeken in meerdere Streets**.
 
@@ -203,7 +250,7 @@ U kunt een volledig of gedeeltelijk adres door geven aan de API voor Zoek adress
     |---------------|------------------------------------------------|
     | HTTP-methode | GET |
     | Aanvraag-URL | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
-    | Autorisatie | Geen autorisatie |
+    | Autorisatie | Geen verificatie |
   
 3. Klik op **params**en voer de volgende sleutel/waarde-paren in om te gebruiken als query-of Path-para meters in de aanvraag-URL:
   

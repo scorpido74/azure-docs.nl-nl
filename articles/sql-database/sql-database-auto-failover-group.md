@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 1/05/2020
-ms.openlocfilehash: 73314cb2d3ac77347e0de720a6a3ab0084181218
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 7b45ddce0435a903c63855dea8a01353a7ab36ec
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732413"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722540"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 
@@ -71,6 +71,13 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
 - **Data bases in elastische pool toevoegen aan failovergroep**
 
   U kunt alle of meerdere data bases binnen een elastische pool in dezelfde failovergroep plaatsen. Als de primaire data base zich in een elastische pool bevindt, wordt het secundaire apparaat automatisch in de elastische pool gemaakt met dezelfde naam (secundaire groep). U moet ervoor zorgen dat de secundaire server een elastische pool met dezelfde exacte naam en voldoende vrije capaciteit bevat voor het hosten van de secundaire data bases die worden gemaakt door de failovergroep. Als u een data base in de groep toevoegt die al een secundaire data base in de secundaire groep heeft, wordt die geo-replicatie koppeling overgenomen door de groep. Wanneer u een Data Base toevoegt die al een secundaire Data Base bevat op een server die geen deel uitmaakt van de failovergroep, wordt er een nieuwe secundaire in de secundaire groep gemaakt.
+  
+- **Eerste seeding** 
+
+  Bij het toevoegen van data bases, elastische Pools of beheerde exemplaren aan een failovergroep, is er een initiële seeding-fase voordat de gegevens replicatie wordt gestart. De eerste seeding-fase is de langste en duurste bewerking. Zodra de initiële seeding is voltooid, worden de gegevens gesynchroniseerd, waarna alleen de volgende gegevens wijzigingen worden gerepliceerd. De tijd die nodig is om het oorspronkelijke Seed te volt ooien, is afhankelijk van de grootte van uw gegevens, het aantal gerepliceerde data bases en de snelheid van de koppeling tussen de entiteiten in de failovergroep. Onder normale omstandigheden is een typische seeding-snelheid van 50-500 GB per uur voor één data base of elastische pool en 18-35 GB per uur voor een beheerd exemplaar. Seeding wordt uitgevoerd voor alle data bases parallel. U kunt de vermelde seeding-snelheid, samen met het aantal data bases en de totale grootte van gegevens, gebruiken om te schatten hoe lang de eerste seeding-fase duurt voordat de replicatie van de gegevens wordt gestart.
+
+  Voor beheerde instanties moet de snelheid van de koppeling van de Express-route tussen de twee instanties ook worden overwogen bij het schatten van de tijd van de eerste seeding-fase. Als de snelheid van de koppeling tussen de twee instanties langzamer is dan nodig is, wordt de tijd tot Seed waarschijnlijk vooral beïnvloed. U kunt de vermelde seeding-snelheid, het aantal data bases, de totale grootte van de gegevens en de koppelings snelheid gebruiken om te schatten hoe lang de eerste seeding duurt voordat de replicatie van de gegevens wordt gestart. Voor een Data Base van één 100 GB zou de eerste seed-fase een wille keurige periode van 2,8 tot 5,5 uur duren als de koppeling in staat is om 35 GB per uur te pushen. Als de koppeling 10 GB per uur kan overdragen, neemt de seeding van een Data Base van 100 GB ongeveer 10 uur in beslag. Als er meerdere data bases zijn om te repliceren, wordt seeding parallel uitgevoerd en, in combi natie met een langzame verbindings snelheid, kan de initiële seeding-fase aanzienlijk langer duren, met name als de parallelle seeding van gegevens uit alle data bases de beschik bare band breedte koppelen. Als de netwerk bandbreedte tussen twee instanties beperkt is en u meerdere beheerde exemplaren aan een failovergroep toevoegt, kunt u overwegen meerdere beheerde instanties opeenvolgend toe te voegen aan de failovergroep, één voor één.
+
   
 - **DNS-zone**
 

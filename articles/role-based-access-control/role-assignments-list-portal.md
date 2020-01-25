@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6117f22b24887e913ed2f8d3a43e80335121636d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 099cf74dd27f39a4289397d5178511125d9ebf6f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934483"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720702"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Roltoewijzingen weer geven met behulp van Azure RBAC en de Azure Portal
 
@@ -125,6 +125,16 @@ Als u de toegang wilt weer geven voor een gebruiker, groep, Service-Principal of
     ![Roltoewijzingen voor een door het systeem toegewezen beheerde identiteit](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
 
 1. Als u het abonnement wilt wijzigen, klikt u op de lijst **abonnementen** .
+
+## <a name="list-number-of-role-assignments"></a>Aantal roltoewijzingen weer geven
+
+U kunt Maxi maal **2000** roltoewijzingen in elk abonnement hebben. Het tabblad roltoewijzingen bevat een grafiek **waarin het huidige** aantal roltoewijzingen wordt weer gegeven, zodat u deze limieten kunt bijhouden.
+
+![Toegangs beheer-aantal roltoewijzingen grafiek](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
+
+Als u het maximum aantal krijgt en u probeert meer roltoewijzingen toe te voegen, wordt er een waarschuwing weer gegeven in het deel venster **roltoewijzing toevoegen** . U kunt het aantal roltoewijzingen beperken door roltoewijzingen te verwijderen die niet meer nodig zijn of door rollen toe te wijzen aan groepen in plaats van afzonderlijke gebruikers.
+
+![Toegangs beheer-waarschuwing functie toewijzing toevoegen](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

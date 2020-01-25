@@ -2,13 +2,13 @@
 title: Modus voor volledige verwijdering
 description: Toont hoe bron typen het verwijderen van de modus volt ooien in Azure Resource Manager sjablonen verwerken.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 37d055503b8c9524392bedaa265025554dc4f8ee
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/23/2020
+ms.openlocfilehash: b24bf2d8076dbaa1975f5444d597647156a31f4f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479616"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715588"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Verwijdering van Azure-resources voor implementaties in de volledige modus
 
@@ -132,6 +132,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.Portal](#microsoftportal)
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
+> - [Micro soft. ProjectBabylon](#microsoftprojectbabylon)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Micro soft. RemoteApp](#microsoftremoteapp)
@@ -165,6 +166,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. Subscription](#microsoftsubscription)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Micro soft. VnfManager](#microsoftvnfmanager)
 > - [Microsoft.Web](#microsoftweb)
 > - [Micro soft. WindowsDefenderATP](#microsoftwindowsdefenderatp)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
@@ -208,7 +210,7 @@ Ga naar de naam ruimte van een resource provider:
 > | configuraties | Nee |
 > | generateRecommendations | Nee |
 > | metagegevens | Nee |
-> | aanbevelingen | Nee |
+> | vereisten | Nee |
 > | onderdrukkingen | Nee |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
@@ -282,6 +284,7 @@ Ga naar de naam ruimte van een resource provider:
 > | policySetDefinitions | Nee |
 > | providerOperations | Nee |
 > | roleAssignments | Nee |
+> | roleAssignmentsUsageMetrics | Nee |
 > | roleDefinitions | Nee |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
@@ -366,6 +369,7 @@ Ga naar de naam ruimte van een resource provider:
 > | billingAccounts / billingProfiles / billingSubscriptions | Nee |
 > | billingAccounts / billingProfiles / createBillingRoleAssignment | Nee |
 > | billingAccounts/billingProfiles/klanten | Nee |
+> | billingAccounts/billingProfiles/instructies | Nee |
 > | billingAccounts/billingProfiles/facturen | Nee |
 > | billingAccounts/billingProfiles/facturen/prijzen overzicht | Nee |
 > | billingAccounts / billingProfiles / invoiceSections | Nee |
@@ -476,7 +480,7 @@ Ga naar de naam ruimte van een resource provider:
 > | botServices | Ja |
 > | botServices/kanalen | Nee |
 > | botServices/verbindingen | Nee |
-> | talen | Nee |
+> | Talen | Nee |
 > | sjablonen | Nee |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
@@ -493,6 +497,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | appliedReservations | Nee |
+> | autoQuotaIncrease | Nee |
 > | calculateExchange | Nee |
 > | calculatePrice | Nee |
 > | calculatePurchasePrice | Nee |
@@ -509,6 +514,7 @@ Ga naar de naam ruimte van een resource provider:
 > | reservationOrders/splitsen | Nee |
 > | reservationOrders/swap | Nee |
 > | ringen | Nee |
+> | resourceProviders | Nee |
 > | resources | Nee |
 > | validateReservationOrder | Nee |
 
@@ -748,7 +754,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Budgetten | Nee |
 > | CloudConnectors | Nee |
 > | Connectors | Ja |
-> | Afdelingen | Nee |
+> | afdeling | Nee |
 > | Dimensies | Nee |
 > | EnrollmentAccounts | Nee |
 > | Exports | Nee |
@@ -762,9 +768,9 @@ Ga naar de naam ruimte van een resource provider:
 > | ExternalSubscriptions/dimensies | Nee |
 > | ExternalSubscriptions/prognose | Nee |
 > | ExternalSubscriptions/query | Nee |
-> | Prognose | Nee |
+> | Functies | Nee |
 > | Query | Nee |
-> | registreren | Nee |
+> | inschrijving | Nee |
 > | Reportconfigs | Nee |
 > | Rapporten | Nee |
 > | Instellingen | Nee |
@@ -805,7 +811,9 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | werkruimten | Ja |
+> | werk ruimten | Ja |
+> | werk ruimten/dbWorkspaces | Nee |
+> | werk ruimten/storageEncryption | Nee |
 > | werk ruimten/virtualNetworkPeerings | Nee |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -883,6 +891,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | servers | Ja |
 > | servers/adviseurs | Nee |
+> | servers/sleutels | Nee |
 > | servers/privateEndpointConnectionProxies | Nee |
 > | servers/privateEndpointConnections | Nee |
 > | servers/privateLinkResources | Nee |
@@ -899,6 +908,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | servers | Ja |
 > | servers/adviseurs | Nee |
+> | servers/sleutels | Nee |
 > | servers/privateEndpointConnectionProxies | Nee |
 > | servers/privateEndpointConnections | Nee |
 > | servers/privateLinkResources | Nee |
@@ -952,7 +962,7 @@ Ga naar de naam ruimte van een resource provider:
 > | hostpools / sessionhosts | Nee |
 > | hostpools / sessionhosts / usersessions | Nee |
 > | hostpools / usersessions | Nee |
-> | werkruimten | Ja |
+> | werk ruimten | Ja |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -961,8 +971,10 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | ElasticPools | Ja |
 > | ElasticPools / IotHubTenants | Ja |
+> | ElasticPools/IotHubTenants/securitySettings | Nee |
 > | IotHubs | Ja |
 > | IotHubs/eventGridFilters | Nee |
+> | IotHubs/securitySettings | Nee |
 > | ProvisioningServices | Ja |
 > | gebruik | Nee |
 
@@ -1036,7 +1048,13 @@ Ga naar de naam ruimte van een resource provider:
 > | domeinen/onderwerpen | Nee |
 > | eventSubscriptions | Nee |
 > | extensionTopics | Nee |
-> | -onderwerpen | Ja |
+> | partnerNamespaces | Ja |
+> | partnerNamespaces/eventChannels | Nee |
+> | partnerRegistrations | Ja |
+> | partnerTopics | Ja |
+> | systemTopics | Ja |
+> | systemTopics / eventSubscriptions | Nee |
+> | onderwerp | Ja |
 > | topicTypes | Nee |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
@@ -1066,7 +1084,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | inschrijven | Nee |
+> | Inge | Nee |
 > | galleryitems | Nee |
 > | generateartifactaccessuri | Nee |
 > | myareas | Nee |
@@ -1075,7 +1093,7 @@ Ga naar de naam ruimte van een resource provider:
 > | myareas/gebieden/gebieden/galleryitems | Nee |
 > | myareas/areas/galleryitems | Nee |
 > | myareas / galleryitems | Nee |
-> | registreren | Nee |
+> | inschrijving | Nee |
 > | resources | Nee |
 > | retrieveresourcesbyid | Nee |
 
@@ -1091,6 +1109,8 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
+> | autoManagedAccounts | Ja |
+> | autoManagedVmConfigurationProfiles | Ja |
 > | configurationProfileAssignments | Nee |
 > | guestConfigurationAssignments | Nee |
 > | software | Nee |
@@ -1202,6 +1222,8 @@ Ga naar de naam ruimte van een resource provider:
 > | clusters/data bases | Nee |
 > | clusters/data bases/dataConnections | Nee |
 > | clusters/data bases/eventhubconnections | Nee |
+> | clusters/data bases/principalassignments | Nee |
+> | clusters/principalassignments | Nee |
 > | clusters/sharedidentities | Nee |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
@@ -1238,7 +1260,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | werkruimten | Ja |
+> | werk ruimten | Ja |
 > | werk ruimten/reken bewerkingen | Nee |
 > | werk ruimten/eventGridFilters | Nee |
 
@@ -1247,7 +1269,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | Identiteiten | Nee |
+> | identiteit | Nee |
 > | userAssignedIdentities | Ja |
 
 ## <a name="microsoftmanagedservices"></a>Micro soft. ManagedServices
@@ -1292,6 +1314,7 @@ Ga naar de naam ruimte van een resource provider:
 > | offerTypes/uitgevers/aanbiedingen/plannen/configuraties | Nee |
 > | offerTypes/uitgevers/aanbiedingen/plannen/configuraties/importImage | Nee |
 > | privategalleryitems | Nee |
+> | privateStoreClient | Nee |
 > | producten | Nee |
 > | uitgevers | Nee |
 > | uitgevers/aanbiedingen | Nee |
@@ -1350,6 +1373,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | assessmentProjects | Ja |
 > | migrateprojects | Ja |
+> | moveCollections | Ja |
 > | projecten | Ja |
 
 ## <a name="microsoftmixedreality"></a>Microsoft.MixedReality
@@ -1491,9 +1515,13 @@ Ga naar de naam ruimte van een resource provider:
 > | apparaten | Nee |
 > | linkTargets | Nee |
 > | storageInsightConfigs | Nee |
-> | werkruimten | Ja |
+> | werk ruimten | Ja |
+> | werk ruimten/dataExports | Nee |
 > | werk ruimten/gegevens bronnen | Nee |
 > | werk ruimten/linkedServices | Nee |
+> | werk ruimten/privateEndpointConnectionProxies | Nee |
+> | werk ruimten/privateEndpointConnections | Nee |
+> | werk ruimten/privateLinkResources | Nee |
 > | werk ruimten/query | Nee |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
@@ -1534,7 +1562,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | consoles | Nee |
-> | dashboards | Ja |
+> | Dash boards | Ja |
 > | userSettings | Nee |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
@@ -1550,6 +1578,13 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | beschikt | Ja |
+
+## <a name="microsoftprojectbabylon"></a>Micro soft. ProjectBabylon
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | accounts | Ja |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -1602,10 +1637,11 @@ Ga naar de naam ruimte van een resource provider:
 > | availabilityStatuses | Nee |
 > | childAvailabilityStatuses | Nee |
 > | childResources | Nee |
+> | emergingissues | Nee |
 > | events | Nee |
 > | impactedResources | Nee |
 > | metagegevens | Nee |
-> | meldingen | Nee |
+> | Meldingen | Nee |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
@@ -1620,12 +1656,7 @@ Ga naar de naam ruimte van een resource provider:
 > | notifyResourceJobs | Nee |
 > | Providers | Nee |
 > | resourceGroups | Nee |
-> | resources | Nee |
-> | abonnementen | Nee |
-> | abonnementen/providers | Nee |
-> | abonnementen/resources | Nee |
-> | abonnementen/TagName | Nee |
-> | abonnementen/tagName/tagValues | Nee |
+> | geabonneerd | Nee |
 > | tenants | Nee |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1678,7 +1709,7 @@ Ga naar de naam ruimte van een resource provider:
 > | iotSecuritySolutions / analyticsModels / aggregatedRecommendations | Nee |
 > | jitNetworkAccessPolicies | Nee |
 > | networkData | Nee |
-> | policies | Nee |
+> | restrictie | Nee |
 > | prijzen | Nee |
 > | regulatoryComplianceStandards | Nee |
 > | regulatoryComplianceStandards / regulatoryComplianceControls | Nee |
@@ -1711,7 +1742,7 @@ Ga naar de naam ruimte van een resource provider:
 > | aggregaties | Nee |
 > | alertRules | Nee |
 > | alertRuleTemplates | Nee |
-> | bladwijzers | Nee |
+> | wijzer | Nee |
 > | meldingen | Nee |
 > | dataConnectors | Nee |
 > | Rijg | Nee |
@@ -1862,7 +1893,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | Caches | Ja |
+> | caches | Ja |
 > | caches/storageTargets | Nee |
 > | usageModels | Nee |
 
@@ -1928,10 +1959,10 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | annuleren | Nee |
+> | Annuleren | Nee |
 > | CreateSubscription | Nee |
-> | inschakelen | Nee |
-> | naam wijzigen | Nee |
+> | kunt | Nee |
+> | domeinnaam | Nee |
 > | SubscriptionDefinitions | Nee |
 > | SubscriptionOperations | Nee |
 
@@ -1954,6 +1985,16 @@ Ga naar de naam ruimte van een resource provider:
 > | dedicatedCloudServices | Ja |
 > | Informatie | Ja |
 
+## <a name="microsoftvnfmanager"></a>Micro soft. VnfManager
+
+> [!div class="mx-tableFixed"]
+> | Resourcetype | Modus voor volledige verwijdering |
+> | ------------- | ----------- |
+> | apparaten | Ja |
+> | crediteur | Nee |
+> | leveranciers/sku's | Nee |
+> | vnfs | Ja |
+
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 > [!div class="mx-tableFixed"]
@@ -1970,17 +2011,17 @@ Ga naar de naam ruimte van een resource provider:
 > | apiManagementAccounts / connectionAcls | Nee |
 > | apiManagementAccounts/verbindingen | Nee |
 > | billingMeters | Nee |
-> | certificaten | Ja |
+> | Bewijzen | Ja |
 > | connectionGateways | Ja |
 > | inbel | Ja |
 > | customApis | Ja |
 > | deletedSites | Nee |
-> | functions | Nee |
 > | hostingEnvironments | Ja |
+> | hostingEnvironments / eventGridFilters | Nee |
 > | hostingEnvironments / multiRolePools | Nee |
 > | hostingEnvironments / workerPools | Nee |
 > | publishingUsers | Nee |
-> | aanbevelingen | Nee |
+> | vereisten | Nee |
 > | resourceHealthMetadata | Nee |
 > | Runtimes | Nee |
 > | Server farms | Ja |
@@ -1996,6 +2037,7 @@ Ga naar de naam ruimte van een resource provider:
 > | sites/sleuven/hostNameBindings | Nee |
 > | sites/sleuven/networkConfig | Nee |
 > | sourceControls | Nee |
+> | staticSites | Ja |
 > | subelementid | Nee |
 > | verifyHostingEnvironmentVnet | Nee |
 

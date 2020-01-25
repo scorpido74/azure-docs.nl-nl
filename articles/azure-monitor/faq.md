@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/30/2019
-ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 01/23/2020
+ms.openlocfilehash: b0ec82807857be60f30aa777ff5871334383acf7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290339"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715930"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -95,6 +95,18 @@ Alle door Azure Monitor verzamelde logboek gegevens worden opgeslagen in een Log
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Kunt u een bestaande Log Analytics-werk ruimte verplaatsen naar een ander Azure-abonnement?
 U kunt een werk ruimte verplaatsen tussen resource groepen of abonnementen, maar niet naar een andere regio. Zie [een log Analytics-werk ruimte verplaatsen naar een ander abonnement of een andere resource groep](platform/move-workspace.md).
+
+### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Waarom kan ik query Explorer niet zien en knoppen Opslaan in Log Analytics?
+
+De knoppen **query Verkenner**, **Opslaan** en **nieuwe waarschuwings regel** zijn niet beschikbaar wanneer het [query bereik](log-query/scope.md) is ingesteld op een specifieke resource. Als u waarschuwingen wilt maken, een query wilt opslaan of laden, moet Log Analytics bereik zijn van een werk ruimte. Als u Log Analytics in de werkruimte context wilt openen, selecteert u **Logboeken** in het menu **Azure monitor** . De laatst gebruikte werkruimte is geselecteerd, maar u kunt een andere werkruimte selecteren. Zie de [logboek query bereik en het tijds bereik in Azure Monitor Log Analytics](log-query/scope.md)
+
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Waarom krijg ik de fout: ' micro soft. Insights van resource provider registreren voor dit abonnement om deze query in te scha kelen ' bij het openen van Log Analytics van een VM? 
+Veel resource providers worden automatisch geregistreerd, maar u moet mogelijk bepaalde resource providers hand matig registreren. Het bereik voor de registratie is altijd het abonnement. Zie [Resourceproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) voor meer informatie.
+
+### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Waarom krijg ik geen toegangs fout bericht bij het openen van Log Analytics vanaf een virtuele machine? 
+Als u VM-logboeken wilt weer geven, moet u beschikken over de machtiging lezen voor de werk ruimten waarin de VM-logboeken worden opgeslagen. In dergelijke gevallen moet de beheerder u verlenen machtigingen in Azure.
+
+
 
 
 ## <a name="alerts"></a>Waarschuwingen
@@ -180,6 +192,12 @@ Geef een bestaande of nieuwe [actie groep](platform/action-groups.md) op, zodat 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Wat zijn de firewall vereisten voor Azure Monitor agents?
 Zie [netwerk firewall vereisten](platform/log-analytics-agent.md#network-firewall-requirements)voor meer informatie over Firewall vereisten.
 
+
+## <a name="visualizations"></a>Visualisaties
+
+### <a name="why-cant-i-cant-see-view-designer"></a>Waarom kan ik de weer gave Designer niet zien?
+
+De weer gave Designer is alleen beschikbaar voor gebruikers die zijn toegewezen met Inzender machtigingen of een hoger in de Log Analytics-werk ruimte.
 
 
 ## <a name="application-insights"></a>Application Insights
@@ -322,7 +340,7 @@ Dit is mogelijk als uw code dergelijke gegevens verzendt. Dit kan ook gebeuren a
 * Het kan worden gebruikt om uw gegevens te scheef stellen of waarschuwingen te activeren.
 * We hebben niet gehoord dat een klant dergelijke problemen heeft gehad.
 
-U kunt de volgende stappen uitvoeren:
+U kunt het volgende doen:
 
 * Gebruik twee afzonderlijke instrumentatie sleutels (afzonderlijke Application Insights resources) voor client-en Server gegevens. Of
 * Schrijf een proxy die op uw server wordt uitgevoerd en laat de webclient gegevens verzenden via die proxy.

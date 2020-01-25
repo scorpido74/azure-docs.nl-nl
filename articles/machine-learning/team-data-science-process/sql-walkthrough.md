@@ -3,26 +3,26 @@ title: Bouwen en implementeren van een model in een SQL Server-VM - Team Data Sc
 description: Bouw en implementeer een machine learning-model met behulp van SQL Server op een Azure-VM met een openbaar beschikbare gegevensset.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/29/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 533c91bdc02425cabf5eeae93f37811144b32149
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a47f30cf00624faf098c8b605534cf355eacadee
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976328"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718528"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Het Team Data Science Process in actie: met behulp van SQL Server
 In deze zelfstudie hebt u stapsgewijs door het proces van het bouwen en implementeren van een machine learning-model met behulp van SQL Server en een openbaar beschikbare gegevensset testlab voor de [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) gegevensset. De procedure volgt een standaard gegevenswetenschapwerkstroom: opnemen en Verken de gegevens, functies, dingen en vervolgens bouwen en implementeren van een model bouwen.
 
 ## <a name="dataset"></a>NYC Taxi Trips-gegevensset-beschrijving
-De reisgegevens NYC over taxi's is ongeveer 20GB gecomprimeerde CSV-bestanden (~ 48GB niet-gecomprimeerd), die bestaat uit meer dan 173 miljoen afzonderlijke trips en de tarieven voor elke reis betaald. Elke record van de fietstocht bevat de locatie van ophalen en dropoff en tijd, geanonimiseerde hack (van het stuurprogramma) licentienummer en straten (unieke id van taxi) getal. De gegevens bevat informatie over alle gegevens in het jaar 2013 en is beschikbaar in de volgende twee gegevenssets voor elke maand:
+De NYC-gegevens over de taxi zijn ongeveer 20 GB aan gecomprimeerde CSV-bestanden (~ 48 GB niet-gecomprimeerd), bestaande uit meer dan 173.000.000 afzonderlijke reizen en de voor elke reis betaalde tarieven. Elke record van de fietstocht bevat de locatie van ophalen en dropoff en tijd, geanonimiseerde hack (van het stuurprogramma) licentienummer en straten (unieke id van taxi) getal. De gegevens bevat informatie over alle gegevens in het jaar 2013 en is beschikbaar in de volgende twee gegevenssets voor elke maand:
 
 1. Trip_data CSV bevat reis details, zoals het aantal personen, ophalen en dropoff punten, duur van de tocht en lengte van de fietstocht. Hier volgen enkele voorbeeldrecords:
    
@@ -46,15 +46,15 @@ De unieke sleutel voor deelname aan reis\_gegevens en reis\_fare bestaat uit de 
 ## <a name="mltasks"></a>Voorbeelden van taken voor voorspelling
 We zullen formuleren drie voorspelling problemen op basis van de *tip\_bedrag*, namelijk:
 
-1. Binaire classificatie: voorspellen of een tip betaald is voor een reis, dat wil zeggen een *tip\_bedrag* die groter is dan $0 een voorbeeld van een positieve is, terwijl een *tip\_bedrag* van $0 is een negatieve voorbeeld.
-2. Multiklassen classificatie: om te voorspellen van het bereik van de tip betaald voor de reis. We delen de *tip\_bedrag* in vijf opslaglocaties of klassen:
+* Binaire classificatie: er wordt voor speld dat er al dan niet een tip voor een reis is betaald, dat wil zeggen een *tip\_bedrag* dat groter is dan $0 een positief voor beeld is, terwijl een *Tip\_bedrag* van $0 een negatief voor beeld is.
+* Multiklassen classificatie: om te voorspellen van het bereik van de tip betaald voor de reis. We delen de *tip\_bedrag* in vijf opslaglocaties of klassen:
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. Regressie taak: om te voorspellen van de hoeveelheid tip voor een reis betaald.  
+* Regressie taak: om te voorspellen van de hoeveelheid tip voor een reis betaald.  
 
 ## <a name="setup"></a>Instelling van de Azure data science-omgeving voor geavanceerde analyses
 Zoals u ziet in de [van plan bent uw omgeving](plan-your-environment.md) guide, er zijn verschillende opties om te werken met de gegevensset NYC Taxi Trips in Azure:
@@ -62,7 +62,7 @@ Zoals u ziet in de [van plan bent uw omgeving](plan-your-environment.md) guide, 
 * Werken met de gegevens in Azure-blobs en vervolgens in Azure Machine Learning-model
 * Laad de gegevens in een SQL Server-database en het model in Azure Machine Learning
 
-In deze zelfstudie wordt gedemonstreerd parallelle bulkimport van de gegevens naar een SQL-Server, gegevensverkenning, functie engineering- en omlaag steekproeven met behulp van SQL Server Management Studio, evenals met behulp van IPython Notebook. [Voorbeelden van scripts](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) en [IPython-notitieblokken](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) worden gedeeld in GitHub. Een voorbeeld IPython notebook wilt werken met de gegevens in Azure-blobs is ook beschikbaar in dezelfde locatie.
+In deze zelf studie wordt gebruikgemaakt van de parallelle bulkimportbewerking van de gegevens tot een SQL Server, het verkennen van functies, het samen stellen van onderdelen en het bemonsteren van SQL Server Management Studio en het gebruik van een IPython-notebook. [Voorbeelden van scripts](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) en [IPython-notitieblokken](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) worden gedeeld in GitHub. Een voorbeeld IPython notebook wilt werken met de gegevens in Azure-blobs is ook beschikbaar in dezelfde locatie.
 
 Uw Azure Data Science-omgeving instellen:
 
@@ -87,7 +87,7 @@ Aan de [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) gegevensset van 
 Om te kopiëren van gegevens met AzCopy:
 
 1. Meld u aan bij uw virtuele machine (VM)
-2. Maak een nieuwe map in van de VM-gegevensschijf (Opmerking: gebruik niet de tijdelijke schijf wordt geleverd met de virtuele machine als gegevensschijf).
+2. Een nieuwe map maken in de gegevens schijf van de virtuele machine (Opmerking: gebruik niet de tijdelijke schijf die als een gegevens schijf wordt geleverd bij de virtuele machine).
 3. Voer de volgende Azcopy-opdrachtregel, < path_to_data_folder > vervangen door de gegevensmap van uw in (2) gemaakt in een opdrachtpromptvenster:
    
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
@@ -96,32 +96,32 @@ Om te kopiëren van gegevens met AzCopy:
 4. Pak het gedownloade bestanden. Houd er rekening mee de map waar de niet-gecomprimeerde bestanden zich bevinden. Deze map worden aangeduid als het < pad\_naar\_gegevens\_bestanden\>.
 
 ## <a name="dbload"></a>Bulksgewijs importeren van gegevens in SQL Server-Database
-De prestaties van het laden/overdracht van grote hoeveelheden gegevens op een SQL-database en de volgende query's kan worden verbeterd met behulp van *gepartitioneerde tabellen en weergaven*. In deze sectie volgen we de instructies die worden beschreven [parallelle bulksgewijs gegevens importeren met behulp van SQL-partitietabellen](parallel-load-sql-partitioned-tables.md) naar een nieuwe database maken en de gegevens in gepartitioneerde tabellen parallel laden.
+De prestaties van het laden/overbrengen van grote hoeveel heden gegevens naar een SQL Database en volgende query's kunnen worden verbeterd door *gepartitioneerde tabellen en weer gaven*te gebruiken. In deze sectie volgen we de instructies die worden beschreven [parallelle bulksgewijs gegevens importeren met behulp van SQL-partitietabellen](parallel-load-sql-partitioned-tables.md) naar een nieuwe database maken en de gegevens in gepartitioneerde tabellen parallel laden.
 
 1. Terwijl u bent aangemeld met uw virtuele machine, start **SQL Server Management Studio**.
 2. Verbinding maken met behulp van Windows-verificatie.
    
     ![SSMS verbinden][12]
-3. Als u hebt nog niet gewijzigd van de SQL Server-verificatiemodus en een nieuwe gebruiker van de SQL-aanmelding gemaakt, opent u het scriptbestand met de naam **wijzigen\_auth.sql** in de **voorbeeldscripts** map. De standaard-gebruikersnaam en het wachtwoord wijzigen. Klik op **! Voer** in de werkbalk van het script uit te voeren.
+3. Als u hebt nog niet gewijzigd van de SQL Server-verificatiemodus en een nieuwe gebruiker van de SQL-aanmelding gemaakt, opent u het scriptbestand met de naam **wijzigen\_auth.sql** in de **voorbeeldscripts** map. De standaard-gebruikersnaam en het wachtwoord wijzigen. Klik op **uitvoeren** in de werk balk om het script uit te voeren.
    
     ![Script uitvoeren][13]
-4. Controleren en/of de SQL Server-database en logboekbestanden standaardmappen om ervoor te zorgen dat zojuist gemaakte databases worden opgeslagen in een gegevensschijf te wijzigen. De SQL Server-VM-installatiekopie die is geoptimaliseerd voor datawarehousing belasting is vooraf geconfigureerd met gegevens en logboekbestanden schijven. Als uw virtuele machine een gegevensschijf niet bevat en u nieuwe virtuele harde schijven tijdens het installatieproces van de virtuele machine toegevoegd, wijzigt u de standaard-mappen als volgt:
+4. Controleren en/of de SQL Server-database en logboekbestanden standaardmappen om ervoor te zorgen dat zojuist gemaakte databases worden opgeslagen in een gegevensschijf te wijzigen. De SQL Server VM-installatie kopie die is geoptimaliseerd voor het laden van gegevens opslag is vooraf geconfigureerd met gegevens-en logboek schijven. Als uw virtuele machine een gegevensschijf niet bevat en u nieuwe virtuele harde schijven tijdens het installatieproces van de virtuele machine toegevoegd, wijzigt u de standaard-mappen als volgt:
    
    * Met de rechtermuisknop op de naam van de SQL Server in het linkerdeelvenster en klik op **eigenschappen**.
      
        ![Eigenschappen van SQL Server][14]
    * Selecteer **Database-instellingen** uit de **selecteert u een pagina** lijst aan de linkerkant.
-   * Controleren en/of wijzig de **Database standaardlocaties** naar de **gegevensschijf** locaties van uw keuze. Dit is waar nieuwe databases zich bevinden als die zijn gemaakt met de standaardinstellingen van de locatie.
+   * Controleren en/of wijzig de **Database standaardlocaties** naar de **gegevensschijf** locaties van uw keuze. Deze locatie is waar nieuwe data bases zich bevinden als ze worden gemaakt met de standaard instellingen.
      
        ![Standaardinstellingen voor SQL Database][15]  
-5. Voor het maken van een nieuwe database en een set bestandsgroepen voor het opslaan van de gepartitioneerde tabellen, opent u het voorbeeldscript **maken\_db\_default.sql**. Het script maakt u een nieuwe database met de naam **TaxiNYC** en 12 bestandsgroepen op de standaardlocatie van de gegevens. Elke bestandsgroep bevatten één maand van de fietstocht\_gegevens en reis\_ritbedrag gegevens. Indien gewenst, kunt u de naam van de database wijzigen. Klik op **! Voer** het script uit te voeren.
+5. Voor het maken van een nieuwe database en een set bestandsgroepen voor het opslaan van de gepartitioneerde tabellen, opent u het voorbeeldscript **maken\_db\_default.sql**. Het script maakt u een nieuwe database met de naam **TaxiNYC** en 12 bestandsgroepen op de standaardlocatie van de gegevens. Elke bestandsgroep bevatten één maand van de fietstocht\_gegevens en reis\_ritbedrag gegevens. Indien gewenst, kunt u de naam van de database wijzigen. Klik op **uitvoeren** om het script uit te voeren.
 6. Vervolgens maakt u twee partitietabellen, één voor de reis\_gegevens en een andere voor de reis\_tarief. Open het voorbeeldscript **maken\_gepartitioneerde\_table.sql**, die worden:
    
    * Maak een partitiefunctie voor het splitsen van de gegevens per maand.
    * Maak een partitieschema van elke maand om gegevens te koppelen aan een andere bestandsgroep.
    * Maak twee gepartitioneerde tabellen die zijn toegewezen aan het partitieschema: **nyctaxi\_reis** bevatten de reis\_gegevens en **nyctaxi\_fare** bevatten de reis\_ritbedrag gegevens.
      
-     Klik op **! Voer** en voer het script uit de gepartitioneerde tabellen maken.
+     Klik op **uitvoeren** om het script uit te voeren en de gepartitioneerde tabellen te maken.
 7. In de **voorbeeldscripts** map, er zijn twee PowerShell-voorbeeldscripts bedoeld ter illustratie van parallelle bulksgewijs de invoer van gegevens naar SQL Server-tabellen.
    
    * **BCP\_parallelle\_generic.ps1** is een algemeen script aan parallelle bulksgewijs importeren van gegevens in een tabel. Met dit script om in te stellen van de invoer- en doel-variabelen, zoals aangegeven in de opmerkingen in het script wijzigen.
@@ -131,9 +131,9 @@ De prestaties van het laden/overdracht van grote hoeveelheden gegevens op een SQ
     ![Gegevens voor bulksgewijs importeren][16]
    
     U kunt ook de verificatiemodus selecteren, standaard Windows-verificatie. Klik op de groene pijl in de werkbalk om uit te voeren. Het script wordt gestart, 24 bulksgewijze importbewerkingen in parallelle, 12 voor elke gepartitioneerde tabel. U kunt de voortgang gegevens importeren door het openen van de standaardgegevensmap voor SQL Server als hierboven.
-9. Het PowerShell-script rapporteert de begin- en eindtijd. Wanneer alle bulksgewijs importeren is voltooid, wordt de eindtijd gerapporteerd. Controleer de doelmap voor de logboekbestanden om te controleren dat de bulk-invoer gelukt, dat wil zeggen is, er geen fouten gemeld in de doelmap voor het logboek.
-10. Uw database is nu gereed voor verkennen, feature-engineering en andere bewerkingen naar wens. Omdat de tabellen worden gepartitioneerd volgens de **ophalen\_datum-/** veld, query's waaronder **ophalen\_datum-/** voorwaarden de **waar** component profiteren van het partitieschema.
-11. In **SQL Server Management Studio**, script in het opgegeven voorbeeld verkennen **voorbeeld\_queries.sql**. Als u wilt uitvoeren op een van de voorbeeldquery's, markeer de queryregels en klik vervolgens **! Voer** in de werkbalk.
+9. Het PowerShell-script rapporteert de begin- en eindtijd. Wanneer alle bulksgewijs importeren is voltooid, wordt de eindtijd gerapporteerd. Controleer de doelmap van het logboek om te controleren of de bulk invoer is geslaagd, dat wil zeggen dat er geen fouten worden gerapporteerd in de doelmap van het logboek.
+10. Uw database is nu gereed voor verkennen, feature-engineering en andere bewerkingen naar wens. Omdat de tabellen zijn gepartitioneerd op basis van het veld **datum/tijd van de ophaal\_** , bevatten query's met de voor waarden voor **ophalen\_datum/tijd** in de **where** -component voor deel van het partitie schema.
+11. In **SQL Server Management Studio**, script in het opgegeven voorbeeld verkennen **voorbeeld\_queries.sql**. Als u een van de voorbeeld query's wilt uitvoeren, markeert u de query regels en klikt u op in de werk balk op **uitvoeren** .
 12. De NYC Taxi Trips-gegevens zijn geladen uit twee verschillende tabellen. Ter verbetering van join-bewerkingen, is het raadzaam om te indexeren van de tabellen. Het voorbeeldscript **maken\_gepartitioneerde\_index.sql** maakt gepartitioneerde indexen voor de samengestelde join-sleutel **straten hack\_licentie, en ophalen van\_ datum/tijd**.
 
 ## <a name="dbexplore"></a>Gegevens verkennen en Feature-Engineering in SQL Server
@@ -153,7 +153,7 @@ Wanneer u klaar om door te gaan met Azure Machine Learning bent, kunt u een van:
 1. Sla de laatste SQL-query op om de gegevens te extra heren en voor te bereiden en kopieer de query rechtstreeks naar een [import gegevens][import-data] module in azure machine learning, of
 2. Behoud de bemonsterde en ontworpen gegevens die u wilt gebruiken voor het maken van modellen in een nieuwe database tabel en gebruik de nieuwe tabel in de module [gegevens importeren][import-data] in azure machine learning.
 
-In deze sectie wordt we de uiteindelijke query om te halen en de voorbeeldgegevens opslaan. De tweede methode wordt geïllustreerd in de [gegevens verkennen en functie-Engineering in IPython Notebook](#ipnb) sectie.
+In deze sectie wordt de laatste query opgeslagen om de gegevens op te halen en voor te bereiden. De tweede methode wordt geïllustreerd in de [gegevens verkennen en functie-Engineering in IPython Notebook](#ipnb) sectie.
 
 Voor een snelle controle van het aantal rijen en kolommen in de tabellen die eerder met behulp van parallelle bulkimport, ingevuld
 
@@ -201,7 +201,7 @@ In dit voorbeeld wordt gezocht naar het nummer van de gegevens die zijn punt ver
     GROUP BY tipped
 
 #### <a name="exploration-tip-classrange-distribution"></a>Verkennen: Tip-klasse/bereik distributie
-In dit voorbeeld berekent de verdeling van de tip bereiken in een bepaalde periode (of in de volledige gegevensset als die betrekking hebben op het gehele jaar). Dit is de distributie van de label-klassen die later worden gebruikt voor multiklassen classificatie modelleren.
+In dit voorbeeld berekent de verdeling van de tip bereiken in een bepaalde periode (of in de volledige gegevensset als die betrekking hebben op het gehele jaar). Deze verdeling van de label klassen wordt later gebruikt voor het model leren van een classificatie met multi klassen.
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
         SELECT CASE
@@ -230,7 +230,7 @@ In dit voorbeeld zet de ophalen en dropoff lengtegraad en breedtegraad in SQL-ge
     AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
 #### <a name="feature-engineering-in-sql-queries"></a>Feature-Engineering in SQL-query 's
-De label generatie Geografie conversie verkennen query's en kunnen ook worden gebruikt voor het genereren van labels en-functies door de tellen deel te verwijderen. Technische SQL-voorbeelden van aanvullende functies zijn beschikbaar in de [gegevens verkennen en functie-Engineering in IPython Notebook](#ipnb) sectie. Het is efficiënter de functie voor genereren van query's uitvoeren op de volledige gegevensset of een grote subset van met behulp van SQL-query's die rechtstreeks op het exemplaar van SQL Server-database worden uitgevoerd. De query's kunnen worden uitgevoerd in **SQL Server Management Studio**, IPython Notebook of elk hulpprogramma/ontwikkelomgeving die toegang heeft tot de database lokaal of extern.
+De label generatie Geografie conversie verkennen query's en kunnen ook worden gebruikt voor het genereren van labels en-functies door de tellen deel te verwijderen. Technische SQL-voorbeelden van aanvullende functies zijn beschikbaar in de [gegevens verkennen en functie-Engineering in IPython Notebook](#ipnb) sectie. Het is efficiënter om de query's voor het genereren van functies uit te voeren op de volledige gegevensset of een grote subset hiervan met behulp van SQL-query's die rechtstreeks worden uitgevoerd op het SQL Server Data Base-exemplaar. De query's kunnen worden uitgevoerd in **SQL Server Management Studio**, IPython notebook of een ontwikkel hulpprogramma of omgeving dat lokaal of op afstand toegang heeft tot de data base.
 
 #### <a name="preparing-data-for-model-building"></a>Voorbereiden van gegevens voor het Model bouwen
 De volgende query wordt de **nyctaxi\_reis** en **nyctaxi\_fare** tabellen, genereert u een label binaire classificatie **punt**, een meerdere klasse-classificatielabel **tip\_klasse**, en extraheert met een willekeurige steekproef 1% van de volledige gegevensset voor een domein. Deze query kan worden gekopieerd en vervolgens rechtstreeks in de module [Azure machine learning Studio](https://studio.azureml.net) [gegevens importeren][import-data] worden geplakt voor directe gegevens opname vanuit het SQL Server Data Base-exemplaar in Azure. De query niet van toepassing op records met onjuiste (0, 0) coördinaten.
@@ -254,7 +254,7 @@ De volgende query wordt de **nyctaxi\_reis** en **nyctaxi\_fare** tabellen, gene
 ## <a name="ipnb"></a>Gegevens verkennen en Feature-Engineering in IPython Notebook
 In deze sectie gaat uitvoeren en gegevens verkennen en functie te genereren met behulp van Python en SQL-query's op de SQL Server-database eerder hebt gemaakt. Een voorbeeld IPython notebook met de naam **machine-Learning-data-science-process-sql-story.ipynb** vindt u in de **voorbeeld IPython-notitieblokken** map. Dit notitieblok is ook beschikbaar op [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks).
 
-De aanbevolen volgorde bij het werken met big data is het volgende:
+Wanneer u met big data werkt, volgt u deze aanbevolen procedure:
 
 * Lees in een voorbeeld van de gegevens in het kader van een in-memory-gegevens.
 * Sommige visualisaties en explorations met behulp van de samplinggegevens uitvoeren.
@@ -378,7 +378,7 @@ We op dezelfde manier kunt controleren of de relatie tussen **tarief\_code** en 
 ### <a name="sub-sampling-the-data-in-sql"></a>De gegevens in SQL steekproeven subplan
 Wanneer u gegevens voorbereidt voor het maken van modellen in [Azure machine learning Studio](https://studio.azureml.net), kunt u ervoor kiezen **om de SQL-query rechtstreeks te gebruiken in de module gegevens importeren** of de ontworpen en voorbeeld gegevens in een nieuwe tabel te bewaren, die u in de module [gegevens importeren][import-data] kunt gebruiken met een eenvoudige **SELECT * van < uw\_nieuwe\_tabel\_naam >** .
 
-In deze sectie maken we een nieuwe tabel voor het opslaan van de sample en Social engineering-gegevens. Een voorbeeld van een directe SQL-query voor het model bouwen is opgegeven in de [gegevens verkennen en functie-Engineering in SQL Server](#dbexplore) sectie.
+In deze sectie maakt u een nieuwe tabel voor de bemonsterde en engineerde gegevens. Een voorbeeld van een directe SQL-query voor het model bouwen is opgegeven in de [gegevens verkennen en functie-Engineering in SQL Server](#dbexplore) sectie.
 
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>Maken van een voorbeeld van een tabel en vullen met 1% van de gekoppelde tabellen. Verwijderen in de eerste tabel als deze bestaat.
 In deze sectie wordt de tabellen samenvoegen **nyctaxi\_reis** en **nyctaxi\_fare**, extraheren van een steekproef van 1% en blijven de sample gegevens in de naam van een nieuwe tabel  **nyctaxi\_één\_procent**:
@@ -405,7 +405,7 @@ In deze sectie wordt de tabellen samenvoegen **nyctaxi\_reis** en **nyctaxi\_far
     cursor.commit()
 
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>Gegevens verkennen met behulp van SQL-query's in IPython Notebook
-In deze sectie wordt toegelicht gegevens-distributies die gebruikmaken van de gegevens van 1% steekproef die worden opgeslagen in de nieuwe tabel die eerder is gemaakt. Houd er rekening mee dat vergelijkbare explorations kunnen worden uitgevoerd met behulp van de oorspronkelijke tabellen, eventueel met behulp van **TABLESAMPLE** om te beperken de exploratie voorbeeld of door het beperken van de resultaten naar een bepaald moment periode met de **ophalen\_datum-/** partities, zoals wordt geïllustreerd in de [gegevens verkennen en functie-Engineering in SQL Server](#dbexplore) sectie.
+In deze sectie verkennen we gegevens distributies met behulp van de 1% voorbeeld gegevens die zijn opgeslagen in de nieuwe tabel die hierboven is gemaakt. Vergelijk bare exploratie kan worden uitgevoerd met behulp van de oorspronkelijke tabellen, eventueel met behulp van **TABLESAMPLE** om het voorbereidings voorbeeld te beperken of door de resultaten te beperken tot een bepaalde periode met behulp van de **ophaal\_datetime** -partities, zoals wordt geïllustreerd in het gedeelte over het [verkennen van gegevens en functies in SQL Server](#dbexplore) .
 
 #### <a name="exploration-daily-distribution-of-trips"></a>Verkennen: Dagelijkse distributie van trips
     query = '''
@@ -487,7 +487,7 @@ In dit voorbeeld transformeert een categorische veld naar een numeriek veld door
     cursor.commit()
 
 #### <a name="feature-engineering-bin-features-for-numerical-columns"></a>Feature-Engineering: Bin functies voor numerieke kolommen
-In dit voorbeeld transformeert een continue numeriek veld naar vooraf ingestelde categorie bereiken, numeriek veld dat wil zeggen, transformatie in een categorische veld.
+In dit voor beeld wordt een doorlopend numeriek veld getransformeerd naar een vooraf ingestelde categorie bereik, dat wil zeggen numeriek veld transformeren naar een categorische-veld.
 
     nyctaxi_one_percent_insert_col = '''
         ALTER TABLE nyctaxi_one_percent ADD trip_time_bin int
@@ -515,7 +515,7 @@ In dit voorbeeld transformeert een continue numeriek veld naar vooraf ingestelde
     cursor.commit()
 
 #### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>Feature-Engineering: Locatie functies ophalen uit de Decimal breedtegraad/lengtegraad
-In dit voor beeld wordt de decimale weer gave van een breedte-en/of lengte veld verdeeld in meerdere regio velden van verschillende granulariteit, zoals land/regio, plaats, steen, blok, enzovoort. Houd er rekening mee dat de nieuwe geo-velden niet zijn toegewezen aan echte locaties. Zie voor informatie over toewijzing geocode locaties, [REST-Services van Bing Maps](https://msdn.microsoft.com/library/ff701710.aspx).
+In dit voor beeld wordt de decimale weer gave van een breedte-en/of lengte veld verdeeld in meerdere regio velden van verschillende granulariteit, zoals land/regio, plaats, steen, blok, enzovoort. De nieuwe geo-velden zijn niet toegewezen aan de werkelijke locaties. Zie voor informatie over toewijzing geocode locaties, [REST-Services van Bing Maps](https://msdn.microsoft.com/library/ff701710.aspx).
 
     nyctaxi_one_percent_insert_col = '''
         ALTER TABLE nyctaxi_one_percent
@@ -555,22 +555,22 @@ Als u wilt de oefening modellen, moet u zich aanmelden bij uw Azure Machine Lear
 
 1. Als u wilt aan de slag met Azure Machine Learning, Zie [wat is Azure Machine Learning Studio?](../studio/what-is-ml-studio.md)
 2. Meld u aan bij [Azure Machine Learning Studio](https://studio.azureml.net).
-3. De startpagina van Studio biedt een schat aan informatie, video's, zelfstudies en koppelingen naar de Modules-verwijzing en andere bronnen. Voor meer informatie over Azure Machine Learning, raadpleegt u de [Azure Machine Learning-documentatiecentrum](https://azure.microsoft.com/documentation/services/machine-learning/).
+3. De startpagina van Studio biedt een schat aan informatie, video's, zelfstudies en koppelingen naar de Modules-verwijzing en andere bronnen. Raadpleeg voor meer informatie over Azure Machine Learning, de [Azure Machine Learning-documentatiecentrum](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-Een typische trainingsexperiment bestaat uit het volgende:
+Een typische trainingsexperiment bestaat uit de volgende stappen uit:
 
 1. Maak een **+ nieuw** experimenteren.
 2. Krijg de gegevens voor Azure Machine Learning.
-3. Vooraf verwerken en transformeren en manipuleren van de gegevens zo nodig.
+3. De gegevens vooraf verwerken, transformeren en manipuleren als dat nodig is.
 4. Functies genereren indien nodig.
 5. De gegevens splitsen in gegevenssets training/validatie/testen (of afzonderlijke gegevenssets hebben voor elk).
-6. Selecteer een of meer machine learning-algoritmen, afhankelijk van het leerprobleem om op te lossen. Bijvoorbeeld, binaire classificatie, multiklassen classificatie, regressie.
+6. Selecteer een of meer machine learning-algoritmen, afhankelijk van het leerprobleem om op te lossen. Bijvoorbeeld binaire classificatie, classificatie met meer klassen, regressie.
 7. Een of meer modellen met behulp van de gegevensset training trainen.
 8. De validatie-gegevensset met behulp van het getrainde modellen te beoordelen.
 9. De modellen voor het berekenen van de relevante metrische gegevens voor het leerprobleem evalueren.
-10. Fijn afstemmen van de modellen en het beste model selecteren om te implementeren.
+10. Stem de model (len) af en selecteer het beste model om te implementeren.
 
-In deze oefening hebben we al verkend en ontworpen van de gegevens in SQL Server en op de grootte van de steekproef besloten om op te nemen in Azure Machine Learning. Een of meer van de voorspellende modellen die we besloten bouwen:
+In deze oefening hebben we al verkend en ontworpen van de gegevens in SQL Server en op de grootte van de steekproef besloten om op te nemen in Azure Machine Learning. We hebben besloten om een of meer van de Voorspellings modellen te bouwen:
 
 1. De gegevens van Azure Machine Learning ophalen met behulp van [de module gegevens][import-data] **invoer en-uitvoer** die beschikbaar is. Zie de pagina referentie gegevens module [importeren][import-data] voor meer informatie.
    
@@ -579,7 +579,7 @@ In deze oefening hebben we al verkend en ontworpen van de gegevens in SQL Server
 3. Voer de naam van de DNS-database in de **databaseservernaam** veld. Indeling: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Voer de **databasenaam** in het bijbehorende veld.
 5. Voer de **SQL-gebruikersnaam** in de **accountnaam Server**, en de **wachtwoord** in de **Server het wachtwoord voor gebruikersaccount**.
-7. In de **databasequery** tekstgebied bewerken, plakt u de query die de benodigde velden (met inbegrip van berekende velden, zoals de labels) worden geëxtraheerd en naar beneden voorbeelden van de gegevens naar de gewenste steekproefgrootte.
+7. Plak in het tekst gebied **database query** bewerken de query waarmee de benodigde database velden worden geëxtraheerd (met inbegrip van berekende velden zoals de labels) en druk op voor beelden van de gegevens naar de gewenste steekproef grootte.
 
 Een voorbeeld van een binaire classificatie-experiment lezen van gegevens rechtstreeks vanuit de SQL Server-database is in de afbeelding hieronder. Vergelijkbare experimenten kunnen worden samengesteld voor multiklassen classificatie en regressie problemen.
 
@@ -610,7 +610,7 @@ Azure Machine Learning wordt geprobeerd te maken van een scoring-experiment op b
 2. Een logische identificeren **invoer poort** om weer te geven van een schema voor de verwachte invoergegevens.
 3. Een logische identificeren **uitvoerpoort** om weer te geven van de verwachte web service-uitvoerschema.
 
-Als u het scoring experiment maakt, beoordelen en naar wens aanpassen. Een typische aanpassing wordt vervangen door de invoergegevensset en/of de query met een met uitsluiting van labelvelden, als deze niet meer beschikbaar wanneer de service wordt aangeroepen. Het is ook een goede gewoonte om de grootte van de invoergegevensset en/of de query beperken tot een paar records, net voldoende zijn om aan te geven van de invoer-schema. Voor de uitvoer poort is het gebruikelijk om alle invoer **velden uit te sluiten en alleen** de **gescoorde labels** op te nemen in de uitvoer met behulp van de module [select columns in dataset][select-columns] .
+Als u het scoring experiment maakt, beoordelen en naar wens aanpassen. Een typische aanpassing is het vervangen van de invoer-gegevensset en/of de query met één die label velden uitsluit omdat deze labels niet beschikbaar zijn in het schema wanneer de service wordt aangeroepen. Het is ook een goed idee om de grootte van de invoer-gegevensset en/of de query te verkleinen naar enkele records, genoeg om het invoer schema aan te duiden. Voor de uitvoer poort is het gebruikelijk om alle invoer **velden uit te sluiten en alleen** de **gescoorde labels** op te nemen in de uitvoer met behulp van de module [select columns in dataset][select-columns] .
 
 Er is een voorbeeld van een experiment scores in de afbeelding hieronder. Wanneer u klaar bent om te implementeren, klikt u op de **WEBSERVICE publiceren** knop in de onderste actiebalk.
 
@@ -619,7 +619,7 @@ Er is een voorbeeld van een experiment scores in de afbeelding hieronder. Wannee
 Als u wilt samenvatting in deze zelfstudie scenario kunt u een Azure data science-omgeving heeft gewerkt met een grote openbare gegevensset van gegevens ophalen om modellen te trainen en implementeren van een Azure Machine Learning-webservice hebt gemaakt.
 
 ### <a name="license-information"></a>Licentie-informatie
-In dit voorbeeld scenario en de bijbehorende scripts en IPython notebook(s) worden gedeeld door Microsoft onder de MIT-licentie. Controleer of het bestand LICENSE.txt in de map van de voorbeeldcode op GitHub voor meer informatie.
+In dit voorbeeld scenario en de bijbehorende scripts en IPython notebook(s) worden gedeeld door Microsoft onder de MIT-licentie. Controleer het bestand LICENSE. txt in de map van de voorbeeld code op GitHub voor meer informatie.
 
 ### <a name="references"></a>Naslaginformatie
 • [Andrés Monroy NYC Taxi Trips downloadpagina](https://www.andresmh.com/nyctaxitrips/)  

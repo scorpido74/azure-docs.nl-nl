@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658335"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714855"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -53,7 +53,7 @@ Netwerk beveiligings groepen (Nsg's) worden ondersteund op Application Gateway. 
 - De uitgaande Internet verbinding kan niet worden geblokkeerd. Standaard regels voor uitgaande verbindingen in de NSG staan Internet connectiviteit toe. U wordt aangeraden dat u:
 
   - Verwijder de standaard regels voor uitgaande verbindingen niet.
-  - Maak geen andere uitgaande regels die uitgaande internet connectiviteit weigeren.
+  - Maak geen andere uitgaande regels waarmee uitgaande verbindingen worden geweigerd.
 
 - Verkeer van het label **AzureLoadBalancer** moet zijn toegestaan.
 

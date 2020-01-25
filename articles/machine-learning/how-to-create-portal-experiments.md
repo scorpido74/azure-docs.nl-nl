@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894024"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720398"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Automatische machine learning experimenten maken, verkennen en implementeren met Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -69,7 +69,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
         Bestands indeling| Hiermee definieert u de indeling en het type van de gegevens die zijn opgeslagen in een bestand.
         Scheidingsteken| Een of meer tekens voor het opgeven van de grens tussen afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen.
         Encoding| Hiermee wordt aangegeven welke bits-schema tabel moet worden gebruikt om de gegevensset te lezen.
-        Kolomkoppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.
+        Kolom koppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.
         Rijen overs Laan | Hiermee wordt aangegeven hoeveel, indien van toepassing, rijen in de gegevensset worden overgeslagen.
     
         Selecteer **Next**.
@@ -94,7 +94,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
     Veld|Beschrijving
     ---|---
     Compute name| Voer een unieke naam in die uw berekenings context identificeert.
-    Grootte van de virtuele machine| Selecteer de grootte van de virtuele machine voor de reken kracht.
+    Grootte van virtuele machine| Selecteer de grootte van de virtuele machine voor de reken kracht.
     Min-maximum aantal knoop punten (in geavanceerde instellingen)| Als u wilt profiel gegevens, moet u één of meer knoop punten opgeven. Voer het maximum aantal knoop punten in voor de reken kracht. De standaard waarde is 6 knoop punten voor een AML-berekening.
     
     Selecteer **Maken**. Het maken van een nieuwe berekening kan enkele minuten duren.
@@ -153,9 +153,15 @@ Kurtosis| Meting van hoe sterk de gegevens van deze kolom worden vergeleken met 
 
 <a name="preprocess"></a>
 
-## <a name="advanced-preprocessing-options"></a>Geavanceerde voor verwerkings opties
+## <a name="advanced-featurization-options"></a>Geavanceerde opties voor parametrisatie
 
-Wanneer u uw experimenten configureert, kunt u de geavanceerde instelling `Preprocess`. Dit betekent dat als onderdeel van de voor verwerking van de volgende gegevens Guardrails en parametrisatie-stappen automatisch worden uitgevoerd.
+Wanneer u uw experimenten configureert, kunt u de geavanceerde instelling `feauturization`. 
+
+|Parametrisatie-configuratie | Beschrijving |
+| ------------- | ------------- |
+|"feauturization" = ' FeaturizationConfig '| Hiermee wordt aangegeven dat er een aangepaste parametrisatie-stap moet worden gebruikt. [Meer informatie over het aanpassen van parametrisatie](how-to-configure-auto-train.md#customize-feature-engineering).|
+|"feauturization" = "off"| Hiermee wordt aangegeven dat de parametrisatie-stap niet automatisch moet worden uitgevoerd.|
+|"feauturization" = ' auto '| Geeft aan dat als onderdeel van de voor verwerking van de volgende gegevens Guardrails en parametrisatie-stappen automatisch worden uitgevoerd.|
 
 |&nbsp;stappen voor voor verwerking| Beschrijving |
 | ------------- | ------------- |
@@ -177,11 +183,11 @@ In de volgende tabel worden de momenteel ondersteunde gegevens Guardrails beschr
 
 Guardrail|Status|Voor waarde&nbsp;voor&nbsp;trigger
 ---|---|---
-Ontbrekende&nbsp;waarden&nbsp;toerekening |**Buffer** <br> <br> **Vast**|    Geen ontbrekende waarde in een van de invoer&nbsp;kolommen <br> <br> Voor sommige kolommen ontbreken waarden
+Ontbrekende&nbsp;waarden&nbsp;toerekening |**Buffer** <br> <br> **Vaste**|    Geen ontbrekende waarde in een van de invoer&nbsp;kolommen <br> <br> Voor sommige kolommen ontbreken waarden
 Kruisvalidatie|**Zo**|Als er geen expliciete validatieset wordt opgegeven
 Hoge&nbsp;kardinaliteit&nbsp;functie&nbsp;detectie|  **Buffer** <br> <br>**Zo**|   Er zijn geen functies met een hoge kardinaliteit gedetecteerd <br><br> Er zijn invoer kolommen met een hoge kardinaliteit gedetecteerd
 Detectie van klassecontrole |**Buffer** <br><br><br>**Gewaarschuwd** |Klassen worden in balans gebracht in de trainings gegevens. Een gegevensset wordt als evenwichtig beschouwd als elke klasse een goede representatie heeft in de gegevensset, gemeten op basis van het aantal en de verhouding van steek proeven <br> <br> Klassen in de trainings gegevens zijn niet in evenwicht
-Consistentie van de gegevens van de tijd reeks|**Buffer** <br><br><br><br> **Vast** |<br> De geselecteerde {horizon, vertraging, rollend venster} waarde (n) zijn geanalyseerd en er zijn geen mogelijke problemen met de geheugen detectie gedetecteerd. <br> <br>De geselecteerde waarden voor {Horizon, lag, Rolling venster} zijn geanalyseerd en kunnen ertoe leiden dat uw experiment te weinig geheugen beschikbaar heeft. Het verloop of het doorlopende venster is uitgeschakeld.
+Consistentie van de gegevens van de tijd reeks|**Buffer** <br><br><br><br> **Vaste** |<br> De geselecteerde {horizon, vertraging, rollend venster} waarde (n) zijn geanalyseerd en er zijn geen mogelijke problemen met de geheugen detectie gedetecteerd. <br> <br>De geselecteerde waarden voor {Horizon, lag, Rolling venster} zijn geanalyseerd en kunnen ertoe leiden dat uw experiment te weinig geheugen beschikbaar heeft. Het verloop of het doorlopende venster is uitgeschakeld.
 
 ## <a name="run-experiment-and-view-results"></a>Experiment uitvoeren en resultaten weer geven
 
@@ -222,7 +228,7 @@ Automatische ML helpt u bij het implementeren van het model zonder code te schri
     ----|----
     Name| Voer een unieke naam in voor uw implementatie.
     Beschrijving| Voer een beschrijving in om beter te kunnen identificeren waarvoor deze implementatie is.
-    Rekentype| Selecteer het type eind punt dat u wilt implementeren: *Azure Kubernetes service (AKS)* of *Azure container instance (ACI)* .
+    Reken type| Selecteer het type eind punt dat u wilt implementeren: *Azure Kubernetes service (AKS)* of *Azure container instance (ACI)* .
     Name| *Is alleen van toepassing op AKS:* Selecteer de naam van het AKS-cluster waarnaar u wilt implementeren.
     Authenticatie inschakelen | Selecteer deze optie om verificatie op basis van tokens of sleutel toe te staan.
     Aangepaste implementatie-assets gebruiken| Schakel deze functie in als u uw eigen score script en omgevings bestand wilt uploaden. Meer [informatie over Score scripts](how-to-deploy-and-where.md#script).

@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: d12cd24cb8cf31cc55a4cb6128b26a1c55a540d4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 68c7f3082adbf10ee6f5b5e6b6fd0bf79232a7d0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771407"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722421"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eind punten bewaken en verzamelen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,15 +52,15 @@ U kunt Azure-toepassing Insights in de Azure Portal in-en uitschakelen.
 
 1. Selecteer op het tabblad **implementaties** de service waar u Azure-toepassing Insights wilt inschakelen
 
-   [![lijst met Services op het tabblad implementaties](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![Lijst met services op het tabblad implementaties](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. Selecteer **bewerken**
 
-   [knop bewerken ![](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Knop bewerken](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 4. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights diagnostische gegevens inschakelen** in
 
-   [![ingeschakeld selectie vakje voor het inschakelen van diagnostische gegevens](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![Het selectievakje is ingeschakeld voor het inschakelen van diagnostische gegevens](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. Selecteer **bijwerken** aan de onderkant van het scherm om de wijzigingen toe te passen
 
@@ -69,11 +69,11 @@ U kunt Azure-toepassing Insights in de Azure Portal in-en uitschakelen.
 1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com)
 1. Selecteer **implementaties**, selecteer de service en selecteer vervolgens **bewerken** .
 
-   [![de knop bewerken gebruiken](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Gebruik de knop bewerken](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights Diagnostics inschakelen** in
 
-   [![gewist selectie vakje voor het inschakelen van diagnostische gegevens](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [![Het selectievakje is uitgeschakeld voor het inschakelen van diagnostische gegevens](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. Selecteer **bijwerken** aan de onderkant van het scherm om de wijzigingen toe te passen
  
@@ -95,7 +95,7 @@ U kunt Azure-toepassing Insights in de Azure Portal in-en uitschakelen.
 
 ### <a name="log-custom-traces-in-your-service"></a>Aangepaste logboektraceringen in uw service
 
-Als u aangepaste traceringen wilt registreren, volgt u het standaard implementatie proces voor AKS of ACI in het document [implementeren en where](how-to-deploy-and-where.md) . Gebruik vervolgens de volgende stappen uit:
+Als u wilt dat aangepaste logtraceringen, volgt u het proces van de standaard voor AKS of ACI in de [implementeren en waar](how-to-deploy-and-where.md) document. Gebruik vervolgens de volgende stappen uit:
 
 1. Het Score bestand bijwerken door afdruk instructies toe te voegen
     
@@ -130,7 +130,7 @@ Om dit te bekijken:
 
 1. Selecteer het tabblad **overzicht** om een basis verzameling metrische gegevens voor uw service weer te geven
 
-   [Overzicht van ![](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
+   [![Overzicht](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
 
 1. Als u de meta gegevens en het antwoord van de webservice-aanvraag wilt bekijken, selecteert u de tabel **aanvragen** in het gedeelte **Logboeken (Analytics)** en selecteert u **uitvoeren** om aanvragen weer te geven.
 
@@ -138,9 +138,9 @@ Om dit te bekijken:
 
 
 3. Als u wilt zoeken naar uw aangepaste traceringen, selecteert u **Analytics**
-4. Selecteer in de sectie schema **traceringen**. Selecteer vervolgens **uitvoeren** om de query uit te voeren. Gegevens moeten worden weer gegeven in een tabel indeling en moeten worden toegewezen aan uw aangepaste aanroepen in uw score bestand
+4. Selecteer in de schemasectie **traceringen**. Selecteer vervolgens **uitvoeren** uw query uit te voeren. Gegevens moeten worden weer gegeven in een tabel indeling en moeten worden toegewezen aan uw aangepaste aanroepen in uw score bestand
 
-   [Aangepaste traceringen ![](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
+   [![Aangepaste traceringen](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
 
 Zie [Wat is Application Insights?](../azure-monitor/app/app-insights-overview.md)voor meer informatie over het gebruik van Azure-toepassing Insights.
 

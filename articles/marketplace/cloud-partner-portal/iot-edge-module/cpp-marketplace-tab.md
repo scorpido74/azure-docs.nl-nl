@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 57bae42eb44c174657e59fa8b017da2931ae681b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8021b6fe40e006a95b3eeff1031606c38cc47b87
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814607"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721622"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Tabblad IoT Edge Marketplace-module
 
@@ -33,7 +33,7 @@ In de volgende tabel worden het doel en de inhoud van deze velden beschreven. Ve
 | **Titel\***                 | De titel van de aanbieding. Deze wordt duidelijk weer gegeven in de Marketplace.  Maximale lengte van 50 tekens. <!--ADD PICTURE IN ACTION-->|
 | **Overzicht\***               | Korte samen vatting van de aanbieding. Maximale lengte van 100 tekens. <!--ADD PICTURE IN ACTION-->|
 | **\* van lange samen vatting**          | Een langere samen vatting van de aanbieding (hoewel deze mogelijk hetzelfde is als de **samen vatting**).  Maximale lengte van 256 tekens. <!--ADD PICTURE IN ACTION-->|
-| **Beschrijving\***           | De beschrijving van de aanbieding.  De maximale lengte van 3000 tekens biedt ondersteuning voor eenvoudige HTML-opmaak.<br/> De para graaf moet onderaan een *minimale hardwarevereisten* bevatten. bijvoorbeeld: <br/> <p><u>Minimale hardwarevereisten:</u> Linux x64 en arm32 OS, 1 GB RAM, 500 MB aan opslag ruimte</p>
+| **Beschrijving\***           | De beschrijving van de aanbieding.  De maximale lengte van 3000 tekens biedt ondersteuning voor eenvoudige HTML-opmaak.<br/> De para graaf moet onderaan een *minimale hardwarevereisten* bevatten. Bijvoorbeeld: <br/> <p><u>Minimale hardwarevereisten:</u> Linux x64 en arm32 OS, 1 GB RAM, 500 MB aan opslag ruimte</p>
 | **Marketing-id\***  | Een unieke URL om aan deze aanbieding te koppelen, bevat doorgaans de naam van uw organisatie en de oplossing, maximale lengte van 50 tekens.  Bijvoorbeeld: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Preview-abonnement-Id's** | Voeg een id toe aan 100-abonnement-id's van Previewers. Deze op wit vermelde abonnementen hebben toegang tot de aanbieding nadat deze is gepubliceerd, voordat ze live gaan. |
 | **Nuttige koppelingen**          | U kunt kiezen uit meerdere zakelijke en technische categorieën die het beste kunnen worden gekoppeld aan.  Maxi maal 10 toegestaan. Zorg ervoor dat u ten minste één koppeling naar uw documentatie en een koppeling naar de compatibele IoT Edge apparaten toevoegt vanuit de [Azure IOT-apparaatinstantie](https://catalog.azureiotsolutions.com/). |
@@ -129,14 +129,14 @@ Gebruik de volgende richt lijnen voor een held logo:
 *  Vermijd het gebruik van de meeste tekst wanneer u het logo ontwerpt. De naam van de uitgever, de titel van het abonnement, de lange samen vatting van de aanbieding en een knop maken wordt via een programma in het logo Inge sloten wanneer de aanbieding wordt weer gegeven. 
 * Neem een ongebruikte rechthoekige ruimte aan de rechter kant van het logo van uw held. Deze lege ruimte is 415x100 pixels en verschuift van links naar 370 pixels.  
 
-<!-- P2: woudl be nice to also have an picture int he context of iot edge of the hero image
+<!-- P2: would be nice to also have an picture int he context of iot edge of the hero image
 As an example, the following hero icon is for the Azure Container Service.
 
 ![Example hero icon for Azure Container Service](./media/publishvm_010.png)
 -->
 
 
-## <a name="lead-management"></a>Leadbeheer
+## <a name="lead-management"></a>Leadmanagement
 
 In deze sectie kunt u de opties instellen voor het verzamelen van klant leads die zijn gegenereerd op basis van uw aanbiedingen in azure Marketplace. U kunt de volgende opslag opties selecteren in een vervolg keuzelijst.
 

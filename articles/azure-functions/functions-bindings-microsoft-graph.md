@@ -2,15 +2,15 @@
 title: Microsoft Graph bindingen voor Azure Functions
 description: Meer informatie over het gebruik van Microsoft Graph triggers en bindingen in Azure Functions.
 author: craigshoemaker
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 1923e26ba0ada7dcf5b8b333150b7cd5b775398b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 770187693e5bac6e059dfd20455099fcc695b74b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121196"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715027"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph bindingen voor Azure Functions
 
@@ -69,7 +69,7 @@ Als u de Azure Portal gebruikt, wordt er een waarschuwing weer gegeven onder de 
 
 
 <a name="token-input"></a>
-## <a name="auth-token"></a>Beveiligingstoken
+## <a name="auth-token"></a>Verificatie token
 
 De invoer binding van het auth-token krijgt een Azure AD-token voor een bepaalde resource en levert deze aan uw code als een teken reeks. De resource kan elk zijn waarvoor de toepassing machtigingen heeft. 
 
@@ -993,7 +993,7 @@ Zie [werken met webhooks in Microsoft Graph]voor meer informatie over webhooks.
 
 ## <a name="webhook-trigger"></a>Webhook-trigger
 
-Met de trigger voor het Microsoft Graph-webhook kan een functie reageren op een binnenkomende webhook vanuit de Microsoft Graph. Elke instantie van deze trigger kan reageren op één Microsoft Graph-resourcetype.
+Met de trigger voor het Microsoft Graph-webhook kan een functie reageren op een binnenkomende webhook vanuit de Microsoft Graph. Elk exemplaar van deze trigger kan worden gereageerd op een Microsoft Graph resource type.
 
 Deze sectie bevat de volgende subsecties:
 

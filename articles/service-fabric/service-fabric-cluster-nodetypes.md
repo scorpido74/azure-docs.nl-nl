@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4175dfe4ed5b7aa1064e8ba25c5b44243e4c79b0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e751b3dd9108d364c900bbd059dc89c1eb3770c4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028500"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722336"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric-knooppunt typen en schaal sets voor virtuele machines
 
@@ -75,7 +75,7 @@ Hier volgen de eigenschaps beschrijvingen:
 | name | string | unieke naam voor extensie |
 | type | "ServiceFabricLinuxNode" of "ServiceFabricWindowsNode" | Geeft aan dat het besturings systeem Service Fabric Boots trapt |
 | autoUpgradeMinorVersion | true of false | Automatische upgrade van secundaire versies van SF runtime inschakelen |
-| publisher | Microsoft.Azure.ServiceFabric | de naam van de uitgever van het Service Fabric gebied |
+| publisher | Microsoft.Azure.ServiceFabric | De naam van de uitgever van de Service Fabric extensie |
 | clusterEndpont | string | URI: poort voor beheer eindpunt |
 | nodeTypeRef | string | naam van nodeType |
 | durabilityLevel | bronze, silver, gold, platinum | tijd die is toegestaan voor het onderbreken van een onveranderlijke Azure-infra structuur |
