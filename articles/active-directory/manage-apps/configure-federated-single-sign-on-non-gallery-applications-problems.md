@@ -15,17 +15,16 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ROBOTS: NOINDEX
-ms.openlocfilehash: 99c5e4d99f45e2a642a46f7dc070fb7512ff4d73
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e7894bfada4d363e89f526280e2925b4f4c6180a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422552"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711891"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>Probleem bij het configureren van federatieve eenmalige aanmelding voor een niet-galerie toepassing
 
-Als er een probleem optreedt bij het configureren van een toepassing. Controleer of u alle stappen in het artikel voor het [configureren van eenmalige aanmelding voor toepassingen die zich niet in de Azure Active Directory toepassings galerie bevinden](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery) hebt gevolgd.
+Als er een probleem optreedt bij het configureren van een toepassing. Controleer of u alle stappen in het artikel voor het [configureren van eenmalige aanmelding voor toepassingen die zich niet in de Azure Active Directory toepassings galerie bevinden](configure-federated-single-sign-on-non-gallery-applications.md) hebt gevolgd.
 
 ## <a name="cant-add-another-instance-of-the-application"></a>Kan geen ander exemplaar van de toepassing toevoegen
 
@@ -41,7 +40,7 @@ Als de toepassing geen van de voor gaande instanties ondersteunt, kunt u een twe
 
 U kunt de EntityID-indeling (gebruikers-id) niet selecteren die door Azure AD wordt verzonden naar de toepassing in het antwoord na de verificatie van de gebruiker.
 
-Azure AD selecteert de indeling voor het NameID-kenmerk (gebruikers-id) op basis van de geselecteerde waarde of de indeling die door de toepassing is aangevraagd in het SAML-AuthRequest. Ga voor meer informatie naar het artikel [SAML-protocol voor eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) in de sectie NameIDPolicy,
+Azure AD selecteert de indeling voor het NameID-kenmerk (gebruikers-id) op basis van de geselecteerde waarde of de indeling die door de toepassing is aangevraagd in het SAML-AuthRequest. Ga voor meer informatie naar het artikel [SAML-protocol voor eenmalige aanmelding](../develop/single-sign-on-saml-protocol.md#authnrequest) in de sectie NameIDPolicy,
 
 ## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>Waar vind ik de meta gegevens van de toepassing of het certificaat van Azure AD
 
@@ -69,7 +68,7 @@ Azure AD biedt geen URL om de meta gegevens op te halen. De meta gegevens kunnen
 
 ## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>Weet u niet hoe u de SAML-claims kunt aanpassen die naar een toepassing worden verzonden
 
-Zie [claim toewijzing in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) voor meer informatie over het aanpassen van de SAML-kenmerk claims die naar uw toepassing worden verzonden.
+Zie [claim toewijzing in azure Active Directory](../develop/active-directory-claims-mapping.md) voor meer informatie over het aanpassen van de SAML-kenmerk claims die naar uw toepassing worden verzonden.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Toepassingen beheren met Azure Active Directory](what-is-application-management.md)

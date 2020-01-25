@@ -11,18 +11,18 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 28513c57101af67695d10056b3dc8e6537dcddb2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167615"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712554"
 ---
 # <a name="what-is-identity-provisioning"></a>Wat is identiteitsinrichting?
 
 Vandaag de dag maken organisaties en bedrijven steeds meer gebruik van een mix van on-premises toepassingen en cloudtoepassingen.  Gebruikers moeten on-premises en in de Cloud toegang hebben tot toepassingen. Er moet sprake zijn van een enkele identiteit in deze verschillende toepassingen (on-premises en in de Cloud).
 
-Inrichting is het proces van het maken van een object op basis van bepaalde voor waarden, waarbij het object tot de datum en het verwijderen van het object wordt verwijderd wanneer niet langer aan de voor waarden wordt voldaan. Wanneer een nieuwe gebruiker bijvoorbeeld lid wordt van uw organisatie, wordt die gebruiker in het HR-systeem ingevoerd.  Op dat moment kan het inrichten van een bijbehorend gebruikers account in de Cloud, in Active Directory en verschillende toepassingen waartoe de gebruiker toegang nodig heeft, maken.  Op deze manier kan de gebruiker aan de slag gaan met het werken en toegang hebben tot de toepassingen en systemen die ze nodig hebben op dag één. 
+Inrichting is het proces van het maken van een object op basis van bepaalde voor waarden, waarbij het object up-to-date wordt gehouden en het object wordt verwijderd wanneer niet langer aan de voor waarden wordt voldaan. Wanneer een nieuwe gebruiker bijvoorbeeld lid wordt van uw organisatie, wordt die gebruiker in het HR-systeem ingevoerd.  Op dat moment kan het inrichten van een bijbehorend gebruikers account in de Cloud, in Active Directory en verschillende toepassingen waartoe de gebruiker toegang nodig heeft, maken.  Op deze manier kan de gebruiker aan de slag gaan met het werken en toegang hebben tot de toepassingen en systemen die ze nodig hebben op dag één. 
 
 ![Cloud inrichting](media/what-is-provisioning/cloud1.png)
 

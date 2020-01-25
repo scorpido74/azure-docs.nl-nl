@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a891f87c3d03cf95c8051ee684916bb55441cb0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275724"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712244"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Inrichting configureren met behulp van Microsoft Graph-Api's
 
-De Azure Portal is een handige manier om de inrichting van afzonderlijke apps per keer te configureren. Maar als u meerdere of zelfs honderden exemplaren van een toepassing maakt, is het eenvoudiger om het maken en configureren van apps met Microsoft Graph Api's te automatiseren. In dit artikel wordt beschreven hoe u de inrichtings configuratie kunt automatiseren via Api's. Deze methode wordt doorgaans gebruikt voor toepassingen als [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso).
+De Azure Portal is een handige manier om de inrichting van afzonderlijke apps per keer te configureren. Maar als u meerdere of zelfs honderden exemplaren van een toepassing maakt, is het eenvoudiger om het maken en configureren van apps met Microsoft Graph Api's te automatiseren. In dit artikel wordt beschreven hoe u de inrichtings configuratie kunt automatiseren via Api's. Deze methode wordt doorgaans gebruikt voor toepassingen als [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
 
 **Overzicht van de stappen voor het gebruik van Microsoft Graph-Api's voor het automatiseren van de inrichtings configuratie**
 
@@ -48,7 +48,7 @@ De Azure Portal is een handige manier om de inrichting van afzonderlijke apps pe
 1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) starten
 1. Selecteer de knop aanmelden bij micro soft en meld u aan met behulp van de Azure AD Global-beheerder of de referenties van de app-beheerder.
 
-    ![Graph-aanmelding](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Graph-aanmelding](media/application-provisioning-configure-api/wd_export_02.png)
 
 1. Wanneer de aanmelding is geslaagd, worden de gegevens van het gebruikers account in het linkerdeel venster weer gegeven.
 
@@ -529,7 +529,7 @@ Content-type: application/json
 }
 
 ```
-## <a name="related-articles"></a>Verwante artikelen
+## <a name="related-articles"></a>Verwante artikelen:
 
 - [Raadpleeg de documentatie voor synchronisatie Microsoft Graph](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [Een aangepaste SCIM-app integreren met Azure AD](use-scim-to-provision-users-and-groups.md)

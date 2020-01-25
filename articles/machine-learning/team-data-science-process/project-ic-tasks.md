@@ -2,20 +2,20 @@
 title: Taken voor een individuele Inzender in Team Data Science Process
 description: Een gedetailleerd overzicht van de taken voor een individuele mede werker van een Data Science-Team project.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b64d9669c11f15de5e6bd616ff7a79f59b748363
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244273"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721248"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Taken voor een individuele Inzender in Team Data Science Process
 
@@ -42,7 +42,7 @@ In deze zelf studie wordt ervan uitgegaan dat de volgende resources en machtigin
 - Azure **File Storage** is ingesteld voor gedeelde assets voor uw team of project, indien van toepassing
 - **Machtigingen** voor het klonen van en terugsturen naar de project opslagplaats 
 
-Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine of DSVM of als u Azure File Storage wilt koppelen aan uw DSVM, hebt u het volgende nodig:
+Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine of DSVM of als u Azure File Storage wilt koppelen aan uw DSVM, moet u rekening houden met deze controle lijst:
 
 - Een Azure-abonnement.
 - Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Raadpleeg anders de [platformen en hulpprogramma's voor bijlage](platforms-and-tools.md#appendix).

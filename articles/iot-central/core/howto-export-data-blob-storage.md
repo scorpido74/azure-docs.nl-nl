@@ -8,12 +8,12 @@ ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: b6a437af33e3e85b8dc07de223b6e1fd7ce6cb03
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 79d578c910c7d08355901308e00db5912d1f3baf
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176251"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721486"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Uw gegevens exporteren naar Azure Blob Storage
 
@@ -134,7 +134,7 @@ Wanneer voortdurende gegevens export is ingeschakeld, wordt één moment opname 
 - `name` van het apparaat
 - `deviceId` van [Device Provisioning Service](/azure/iot-central/core/howto-connect-nodejs)
 - Informatie over de apparaatprofiel
-- Eigenschaps waarden
+- Waarden van eigenschappen
 - Waarden instellen
 
 Een nieuwe moment opname wordt eenmaal per minuut geschreven. De moment opname bevat:
@@ -620,7 +620,7 @@ const avro = require('avsc');
 async function parse(filePath) {
     const records = await load(filePath);
     for (const record of records) {
-        // Fetch the template ID and version from the id and verison properties.
+        // Fetch the template ID and version from the id and version properties.
         const templateId = record.id;
         const templateVersion = record.version;
 

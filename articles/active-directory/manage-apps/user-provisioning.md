@@ -15,16 +15,16 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d515731b8da186ef7e44a397d5abf87dfa65e83a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eefdb42cebad2b7f532392254b652742527ed862
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433797"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711468"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Gebruikers inrichten en het ongedaan maken van de inrichting van toepassingen automatiseren met Azure Active Directory
 
-In Azure Active Directory (Azure AD) verwijst de inrichting van de term- **app** naar het automatisch maken van gebruikers-id's en-rollen in de Cloud toepassingen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) waartoe gebruikers toegang nodig hebben. Naast het maken van gebruikers identiteiten, omvat automatische inrichting het onderhoud en de verwijdering van gebruikers identiteiten als status of rollen worden gewijzigd. Veelvoorkomende scenario's zijn onder andere het inrichten van een Azure AD-gebruiker in toepassingen zoals [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Sales Force](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)en meer.
+In Azure Active Directory (Azure AD) verwijst de inrichting van de term- **app** naar het automatisch maken van gebruikers-id's en-rollen in de Cloud toepassingen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) waartoe gebruikers toegang nodig hebben. Naast het maken van gebruikers identiteiten, omvat automatische inrichting het onderhoud en de verwijdering van gebruikers identiteiten als status of rollen worden gewijzigd. Veelvoorkomende scenario's zijn onder andere het inrichten van een Azure AD-gebruiker in toepassingen zoals [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Sales Force](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)en meer.
 
 ![Overzichts diagram van inrichting](media/user-provisioning/provisioning-overview.png)
 
@@ -63,7 +63,7 @@ Azure AD bevat vooraf geïntegreerde ondersteuning voor veel populaire SaaS-apps
 
    ![Sales Force-logo](media/user-provisioning/gallery-app-logos.png)
 
-   Als u een nieuwe toepassing wilt aanvragen voor inrichting, kunt u een [aanvraag indienen om uw toepassing te integreren in de app-galerie](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing). Voor een aanvraag voor gebruikers inrichting moet de toepassing een SCIM-compatibel eind punt hebben. Vraag de leverancier van de toepassing de SCIM-standaard te volgen zodat de app snel kan worden geïmplementeerd op ons platform.
+   Als u een nieuwe toepassing wilt aanvragen voor inrichting, kunt u een [aanvraag indienen om uw toepassing te integreren in de app-galerie](../develop/howto-app-gallery-listing.md). Voor een aanvraag voor gebruikers inrichting moet de toepassing een SCIM-compatibel eind punt hebben. Vraag de leverancier van de toepassing de SCIM-standaard te volgen zodat de app snel kan worden geïmplementeerd op ons platform.
 
 * **Toepassingen die ondersteuning bieden voor SCIM 2,0**. Zie [een scim-eind punt bouwen en gebruikers inrichten configureren](use-scim-to-provision-users-and-groups.md)voor meer informatie over het algemeen verbinden van toepassingen die gebruikmaken van scim 2,0-api's voor gebruikers beheer.
 
@@ -81,7 +81,7 @@ Toepassingen in de Azure AD-galerie ondersteunen een van de twee inrichtings mod
 
 * **Hand matige** inrichting betekent dat er nog geen automatische Azure AD-inrichtings connector is voor de app. Gebruikers accounts moeten hand matig worden gemaakt, bijvoorbeeld door gebruikers rechtstreeks toe te voegen aan de beheer portal van de app of een werk blad met details van een gebruikers account te uploaden. Raadpleeg de documentatie van de app of neem contact op met de app-ontwikkelaar om te bepalen welke mechanismen beschikbaar zijn.
 
-* **Automatische** betekent dat een Azure AD-inrichtings connector is ontwikkeld voor deze toepassing. U moet de zelf studie voor Setup volgen om het inrichten in te stellen voor de toepassing. App-zelf studies vindt u in een [lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+* **Automatische** betekent dat een Azure AD-inrichtings connector is ontwikkeld voor deze toepassing. U moet de zelf studie voor Setup volgen om het inrichten in te stellen voor de toepassing. App-zelf studies vindt u in een [lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](../saas-apps/tutorial-list.md).
 
 In de Azure AD-galerie worden toepassingen die ondersteuning bieden voor automatische inrichting, aangeduid met een **inrichtings** pictogram. Schakel over naar de nieuwe preview-ervaring van de galerie om deze pictogrammen te zien (Klik in de banner boven aan de **pagina een toepassing toevoegen**op de koppeling die hier wordt weer gegeven **om de nieuwe en verbeterde app-galerie uit te proberen**).
 
@@ -91,7 +91,7 @@ De inrichtings modus die door een toepassing wordt ondersteund, wordt ook weer g
 
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Hoe kan ik automatische inrichting instellen voor een toepassing?
 
-Voor vooraf geïntegreerde toepassingen die in de galerie worden vermeld, is stapsgewijze instructies beschikbaar voor het instellen van automatische inrichting. Zie de [lijst met zelf studies voor geïntegreerde galerie-apps](https://docs.microsoft.com/azure/active-directory/saas-apps/). De volgende video laat zien hoe u automatische gebruikers inrichting instelt voor Sales Force.
+Voor vooraf geïntegreerde toepassingen die in de galerie worden vermeld, is stapsgewijze instructies beschikbaar voor het instellen van automatische inrichting. Zie de [lijst met zelf studies voor geïntegreerde galerie-apps](../saas-apps/tutorial-list.md). De volgende video laat zien hoe u automatische gebruikers inrichting instelt voor Sales Force.
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 

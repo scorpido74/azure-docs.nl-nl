@@ -1,31 +1,31 @@
 ---
-title: Gebruik Azure HDInsight Hadoop-Cluster op de gegevensset van 1 TB - Team Data Science Process
+title: Azure HDInsight Hadoop cluster op 1-TB gegevensset gebruiken-team data Science process
 description: Voor een end-to-end scenario die gebruikmaakt van een HDInsight Hadoop-cluster te bouwen en implementeren van een model met behulp van een grote (1 TB) openbaar beschikbare gegevensset met behulp van het Team Data Science Process
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8d47f6f5b983c0f785c76d1b2cede815dda699a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 04bc29fb8a89f6e863f7c009e5299d1c702bf976
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968732"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721401"
 ---
-# <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Het Team Data Science Process in de praktijk - met behulp van een Azure HDInsight Hadoop-Cluster op een gegevensset van 1 TB
+# <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Het proces voor team gegevens wetenschap in actie-een Azure HDInsight Hadoop cluster op een gegevensset van 1 TB gebruiken
 
 In dit scenario ziet u hoe u het gebruik van het Team Data Science Process in een end-to-end-scenario met een [Azure HDInsight Hadoop-cluster](https://azure.microsoft.com/services/hdinsight/) wilt opslaan, verkennen, voorzien van engineering en voorbeeldgegevens uit een van de openbaar beschikbare omlaag[ Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) gegevenssets. Azure Machine Learning wordt gebruikt voor het bouwen van een binair classificeringsmodel in deze gegevens. U ziet ook hoe u een van deze modellen publiceren als een webservice.
 
 Het is ook mogelijk met gebruik van een IPython notebook de taken die zijn gepresenteerd in deze procedure. Gebruikers die u wilt uitproberen van deze benadering contact opnemen met de [Criteo scenario met behulp van een Hive ODBC-verbinding](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) onderwerp.
 
 ## <a name="dataset"></a>Beschrijving van de gegevensset Criteo
-De Criteo gegevens is een klik voorspelling gegevensset die is ongeveer 370GB gecomprimeerde gzip TSV-bestanden (niet-gecomprimeerd ~1.3TB), die bestaat uit meer dan 4.3 miljard records. Het is afkomstig uit 24 dagen van klikt u op gegevens die de [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/). Voor het gemak van gegevenswetenschappers zijn de gegevens beschikbaar voor ons om te experimenteren met uitgepakt.
+De Criteo-gegevens zijn een klik op een voor Spellings-dataset die 370 GB aan gzip gecomprimeerde TSV-bestanden (~ 1,3 TB niet-gecomprimeerd) is, met meer dan 4.300.000.000 records. Het is afkomstig uit 24 dagen van klikt u op gegevens die de [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/). Voor het gemak van gegevenswetenschappers zijn de gegevens beschikbaar voor ons om te experimenteren met uitgepakt.
 
 Elke record in deze gegevensset bevat 40 kolommen:
 
@@ -44,7 +44,7 @@ Hier volgt een fragment van de eerste 20 kolommen in twee metingen (rijen) uit d
 
 Zijn er ontbrekende waarden in de numerieke en categorische kolommen in deze gegevensset. Een eenvoudige methode voor het verwerken van de ontbrekende waarden wordt beschreven. Aanvullende details van de gegevens worden verkend bij het opslaan van deze in Hive-tabellen.
 
-**Definitie:** *Clickthrough-tarief (CTR):* dit is het percentage muisklikken in de gegevens. In deze gegevensset Criteo is de CTR ongeveer 3.3% of 0.033.
+**Definitie:** aantal aan */uit (plaats):* deze waarde is het percentage klikken in de gegevens. In deze gegevensset Criteo is de CTR ongeveer 3.3% of 0.033.
 
 ## <a name="mltasks"></a>Voorbeelden van taken voor voorspelling
 Twee voorbeeld voorspelling problemen worden in dit scenario behandeld:
@@ -56,39 +56,39 @@ Twee voorbeeld voorspelling problemen worden in dit scenario behandeld:
 2. **Regressie**: voorspelt de kans op een ad-klik van functies voor gebruikers.
 
 ## <a name="setup"></a>Instellen van een HDInsight Hadoop-cluster voor datatechnologie
-**Opmerking:** dit is meestal een **Admin** taak.
+**Opmerking:** Deze stap is doorgaans een **beheer** taak.
 
 Instellen van uw Azure Data Science-omgeving voor het bouwen van voorspellende analyseoplossingen met HDInsight-clusters in drie stappen:
 
 1. [Maak een opslagaccount](../../storage/common/storage-account-create.md): dit storage-account wordt gebruikt voor het opslaan van gegevens in Azure Blob Storage. De gegevens die worden gebruikt in HDInsight-clusters wordt hier opgeslagen.
 2. [Azure HDInsight Hadoop-Clusters aanpassen voor Data Science](customize-hadoop-cluster.md): deze stap maakt u een Azure HDInsight Hadoop-cluster met 64-bits Anaconda Python 2.7 geïnstalleerd op alle knooppunten. Er zijn twee belangrijke stappen (in dit onderwerp beschreven) om uit te voeren bij het aanpassen van het HDInsight-cluster.
 
-   * Het opslagaccount dat in stap 1 met uw HDInsight-cluster gemaakt wanneer deze is gemaakt, moet u koppelen. Dit opslagaccount wordt gebruikt voor toegang tot gegevens die kunnen worden verwerkt binnen het cluster.
-   * Nadat deze is gemaakt, moet u externe toegang inschakelen met het hoofdknooppunt van het cluster. Vergeet niet de RAS-referenties die u hier opgeeft (die afwijken van die zijn opgegeven voor het cluster op het is gemaakt): u moet de volgende procedures uitvoeren.
+   * Koppel het opslag account dat u in stap 1 hebt gemaakt met uw HDInsight-cluster wanneer het wordt gemaakt. Dit opslagaccount wordt gebruikt voor toegang tot gegevens die kunnen worden verwerkt binnen het cluster.
+   * Externe toegang tot het hoofd knooppunt van het cluster inschakelen nadat dit is gemaakt. Onthoud de externe toegangs referenties die u hier opgeeft (anders dan de referenties die zijn opgegeven tijdens het maken van het cluster): Voer de volgende procedures uit.
 3. [Een Azure machine learning studio-werk ruimte (klassieke) maken](../studio/create-workspace.md): deze Azure machine learning-werk ruimte wordt gebruikt voor het bouwen van machine learning modellen na een eerste gegevens exploratie en-bemonstering op het HDInsight-cluster.
 
 ## <a name="getdata"></a>Ophalen en gegevens uit een openbare gegevensbron gebruiken
-De [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) gegevensset kan worden geopend door te klikken op de koppeling, de gebruiksvoorwaarden accepteren en een naam geven. Hier ziet u een momentopname van hoe dit eruitziet:
+De [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) gegevensset kan worden geopend door te klikken op de koppeling, de gebruiksvoorwaarden accepteren en een naam geven. Hier wordt een moment opname weer gegeven:
 
 ![Criteo accepteren](./media/hive-criteo-walkthrough/hLxfI2E.png)
 
 Klik op **doorgaan naar de Download** voor meer informatie over de gegevensset en de beschikbaarheid ervan.
 
-De gegevens zich bevinden in een openbare [Azure blob-opslag](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) locatie: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. De "wasb" verwijst naar Azure Blob Storage-locatie.
+De gegevens bevinden zich in een [Azure Blob-opslag](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) locatie: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. De "wasb" verwijst naar Azure Blob Storage-locatie.
 
-1. De gegevens in deze openbare blob-opslag bestaat uit drie submappen van de uitgepakte gegevens.
+1. De gegevens in deze Azure Blob-opslag bestaan uit drie submappen van ongecomprimeerde gegevens.
 
    1. De submap *onbewerkte/aantal/* bevat de eerste 21 dagen aan gegevens - vanaf dag\_00 dag\_20
    2. De submap *onbewerkte/train/* bestaat uit een enkele dag van de gegevens, dag\_21
    3. De submap *onbewerkte/testen/* bestaat uit twee dagen aan gegevens, dag\_22 en dag\_23
-2. Voor diegenen die u wilt beginnen met de onbewerkte gzip-gegevens, deze zijn ook beschikbaar in de hoofdmap *onbewerkte /* als day_NN.gz, waarbij NN tussen 00 en 23 gaat.
+2. De onbewerkte gzip-gegevens zijn ook beschikbaar in de hoofdmap *RAW/* als day_NN. gz, waarbij nn van 00 tot 23 loopt.
 
 Een alternatieve methode om toegang te krijgen tot, verkennen, en het model die deze gegevens waarvoor lokale downloads verderop in dit scenario wordt uitgelegd wanneer we Hive-tabellen maken.
 
 ## <a name="login"></a>Meld u aan bij het hoofdknooppunt van het cluster
-Om aan te melden met het hoofdknooppunt van het cluster, gebruikt u de [Azure-portal](https://ms.portal.azure.com) te vinden van het cluster. Klik op het pictogram HDInsight elephant aan de linkerkant en dubbelklik vervolgens op de naam van uw cluster. Navigeer naar de **configuratie** tabblad, dubbelklik op het verbindingspictogram aan de onderkant van de pagina en geef uw referenties voor externe toegang wanneer u hierom wordt gevraagd. Hiermee gaat u naar het hoofdknooppunt van het cluster.
+Om aan te melden met het hoofdknooppunt van het cluster, gebruikt u de [Azure-portal](https://ms.portal.azure.com) te vinden van het cluster. Klik op het pictogram HDInsight elephant aan de linkerkant en dubbelklik vervolgens op de naam van uw cluster. Ga naar het tabblad **configuratie** , dubbel klik op het pictogram verbinding maken aan de onderkant van de pagina en voer uw referenties voor externe toegang in wanneer u hierom wordt gevraagd, waarbij u naar de hoofd knooppunt van het cluster gaat.
 
-Hier volgt een typische eerste aan te melden bij het hoofdknooppunt van het cluster ziet eruit als:
+Hier ziet u een typische eerste keer dat u zich aanmeldt voor de cluster hoofd knooppunt:
 
 ![Meld u aan bij cluster](./media/hive-criteo-walkthrough/Yys9Vvm.png)
 
@@ -114,7 +114,7 @@ Voor het maken van Hive-tabellen voor onze gegevensset Criteo, opent u de ***Had
 
 Nadat de REPL Hive wordt weergegeven met een ' hive > "Meld u, gewoon knippen en plakt u de query voor het uitvoeren van deze.
 
-De volgende code maakt u een database 'criteo' en genereert vervolgens 4 tabellen:
+Met de volgende code wordt een data base ' Criteo ' gemaakt en worden vervolgens vier tabellen gegenereerd:
 
 * een *tabel voor het genereren van aantallen* die is gebouwd op dagen dag\_00 dag\_20,
 * een *tabel voor gebruik als de gegevensset van de trein* die is gebouwd op dag\_21, en
@@ -153,17 +153,17 @@ Het script [voorbeeld&#95;hive&#95;maken&#95;criteo&#95;database&#95;en&#95;tabl
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/test/day_23';
 
-Alle deze tabellen zijn externe, zodat u gewoon met hun Azure Blob Storage (wasb)-locaties verwijzen kan.
+Al deze tabellen zijn extern, zodat u naar de Azure Blob Storage-locaties (wasb) kunt verwijzen.
 
 **Er zijn twee manieren een Hive-query uit te voeren:**
 
-1. **Met behulp van de opdrachtregel Hive-REPL**: de eerste is voor het verlenen van een opdracht "component" en kopieer en plak een query op de opdrachtregel Hive-REPL. U doet dit door het volgende te doen:
+* **Met behulp van de Hive-opdracht regel**: de eerste is het uitgeven van de opdracht ' hive ' en het kopiëren en plakken van een query op de Hive-opdracht regel van de component repl:
 
         cd %hive_home%\bin
         hive
 
-     Nu op de opdrachtregel REPL voert knippen en plakken van de query dit.
-2. **Query's naar een bestand opslaan en uitvoeren van de opdracht**: de tweede is om op te slaan van de query's naar een bestand .hql ([voorbeeld&#95;hive&#95;maken&#95;criteo&#95;database&#95;en&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) en vervolgens voert de volgende opdracht uit de query uit te voeren:
+     Nu kunt u op de REPL-opdracht regel de query knippen en plakken uitvoeren.
+* **Query's opslaan in een bestand en de opdracht uitvoeren**: de tweede is om de query's op te slaan in een. HQL-bestand ([voor&#95;beeld&#95;-&#95;Hive&#95;Create&#95;Criteo&#95;data base and tables. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) en voer de volgende opdracht uit om de query uit te voeren:
 
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
@@ -225,7 +225,7 @@ Zoals gewoonlijk u ook het script kan aanroepen vanuit de Hive-bin / map vragen 
 
 Ten slotte het onderzoeken van het aantal voorbeelden van de test in de set met testgegevens op basis van dag\_23.
 
-De opdracht uit om dit te doen is die vergelijkbaar is met de slechts weergegeven (Raadpleeg [voorbeeld&#95;hive&#95;aantal&#95;criteo&#95;testen&#95;dag&#95;23&#95;examples.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
+De opdracht die u hiervoor moet volgen, is vergelijkbaar met die in de weer gegeven (Raadpleeg het [&#95;aantal&#95;&#95;&#95;&#95;voorbeeld onderdelen&#95;Criteo test&#95;Day 23 voor beelden. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_23;
 
@@ -245,7 +245,7 @@ Dit geeft de labeldistributie:
         0       185922280
         Time taken: 459.435 seconds, Fetched: 2 row(s)
 
-Houd er rekening mee dat het percentage positieve labels ongeveer 3.3% (in overeenstemming met de oorspronkelijke gegevensset is).
+Het percentage positieve labels ligt ongeveer 3,3% (consistent met de oorspronkelijke gegevensset).
 
 ### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>Histogram distributies van sommige numerieke variabelen in de gegevensset van de trein
 Kunt u de Hive-native ' histogram\_numerieke "functie om erachter te komen hoe de distributie van de numerieke variabelen eruitziet. Hier vindt u de inhoud van [voorbeeld&#95;hive&#95;criteo&#95;histogram&#95;numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
@@ -282,7 +282,7 @@ Dit resulteert in het volgende:
         65510   3446
         Time taken: 317.851 seconds, Fetched: 20 row(s)
 
-De LATERALE BEELD - exploderen combinatie van argumenten in Hive fungeert voor het produceren van een SQL-achtige uitvoer in plaats van de gebruikelijke lijst. Houd er rekening mee dat in deze tabel de eerste kolom komt overeen met de bin-center en de tweede de bin-frequentie.
+De LATERALE BEELD - exploderen combinatie van argumenten in Hive fungeert voor het produceren van een SQL-achtige uitvoer in plaats van de gebruikelijke lijst. In deze tabel komt de eerste kolom overeen met het bin Center en de tweede naar de frequentie van de opslag locatie.
 
 ### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>Geschatte percentielen van sommige numerieke variabelen in de gegevensset van de trein
 Is ook de berekening van de geschatte percentielen van belang met numerieke variabelen. Hive de systeemeigen "percentiel\_ongeveer" doet dit voor ons. De inhoud van [voorbeeld&#95;hive&#95;criteo&#95;geschatte&#95;percentiles.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) zijn:
@@ -306,7 +306,7 @@ Dit resulteert in:
         19011825
         Time taken: 448.116 seconds, Fetched: 1 row(s)
 
-Houd er rekening mee dat Col15 19M unieke waarden bevat. Met behulp van technieken als 'een hot-codering' naïve is om te coderen die high-dimensionale categorische variabelen niet haalbaar is. In het bijzonder, een krachtige, robuuste techniek met de naam [Learning met telt](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) voor efficiënt aanpakken van dit probleem is uitgelegd en gedemonstreerd.
+Col15 heeft 19M unieke waarden! Met behulp van technieken als 'een hot-codering' naïve is om te coderen die high-dimensionale categorische variabelen niet haalbaar is. In het bijzonder, een krachtige, robuuste techniek met de naam [Learning met telt](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) voor efficiënt aanpakken van dit probleem is uitgelegd en gedemonstreerd.
 
 Ten slotte het aantal unieke waarden voor sommige andere categorische kolommen ook bekijken. De inhoud van [voorbeeld&#95;hive&#95;criteo&#95;unieke&#95;waarden&#95;meerdere&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) zijn:
 
@@ -323,7 +323,7 @@ Nogmaals, houd er rekening mee dat, met uitzondering van Col20, alle andere kolo
 
 ### <a name="co-occurrence-counts-of-pairs-of-categorical-variables-in-the-train-dataset"></a>CO exemplaar telt paren van categorische variabelen in de gegevensset van de trein
 
-De collega exemplaar tellingen van paren van categorische variabelen is ook van belang zijn. Dit kan worden bepaald met de code in [voorbeeld&#95;hive&#95;criteo&#95;gekoppelde&#95;categorische&#95;counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql):
+De Count-verdelingen van paren van Categorische-variabelen zijn ook van belang. Dit kan worden bepaald met de code in [voorbeeld&#95;hive&#95;criteo&#95;gekoppelde&#95;categorische&#95;counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql):
 
         SELECT Col15, Col16, COUNT(*) AS paired_count FROM criteo.criteo_train GROUP BY Col15, Col16 ORDER BY paired_count DESC LIMIT 15;
 
@@ -402,12 +402,12 @@ Dit resulteert in:
 
 Dit is bent u klaar voor gebruik van onze omlaag sample trainen en testen van gegevenssets voor het ontwikkelen van modellen in Azure Machine Learning.
 
-Er is een belangrijk onderdeel voor uiteindelijke voordat u doorgaat met de Azure Machine Learning, die betrekking heeft op de count-tabel. In de volgende subsectie, wordt de count-tabel in bepaalde mate van detail besproken.
+Er is een belangrijk onderdeel voor uiteindelijke voordat u doorgaat met de Azure Machine Learning, die betrekking heeft op de count-tabel. In de volgende Subsectie wordt de tabel Count besproken.
 
 ## <a name="count"></a> Een korte beschrijving van de count-tabel
-Als u hebt gezien, hebben verschillende categorische variabelen een zeer hoge dimensionaliteit. In dit overzicht, een krachtige techniek met de naam [Learning met telt](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) voor het coderen van deze variabelen in een efficiënte, robuuste wijze wordt weergegeven. Meer informatie over deze techniek wordt de koppeling.
+Zoals u hebt gezien, hebben verschillende categorische-variabelen een hoge dimensionaliteit. In dit overzicht, een krachtige techniek met de naam [Learning met telt](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) voor het coderen van deze variabelen in een efficiënte, robuuste wijze wordt weergegeven. Meer informatie over deze techniek wordt de koppeling.
 
-[!NOTE]
+>[!NOTE]
 >In dit scenario is gericht op het aantal tabellen gebruiken voor het produceren van compact representaties van high-dimensionale categorische functies. Dit is niet de enige manier om te coderen categorische functies. voor meer informatie over andere technieken, willen gebruikers kunnen bekijken [één-hot-encoding](https://en.wikipedia.org/wiki/One-hot) en [hash-functies](https://en.wikipedia.org/wiki/Feature_hashing).
 >
 
@@ -439,8 +439,8 @@ Voor de **importgegevens** -module, de waarden van de parameters die zijn opgege
 4. **Hadoop-gebruikersaccountnaam**: de naam van de gebruiker gekozen op het moment van het bedrijf stellen van het cluster. (Niet de RAS-gebruikersnaam!)
 5. **Het wachtwoord voor gebruikersaccount Hadoop**: het wachtwoord voor de naam van de gebruiker gekozen op het moment van het bedrijf stellen van het cluster. (Niet het wachtwoord voor externe toegang.)
 6. **Locatie van de uitvoergegevens**: 'Azure' kiezen
-7. **Azure storage-accountnaam**: het opslagaccount dat is gekoppeld aan het cluster
-8. **Azure storage-accountsleutel**: de sleutel van het opslagaccount dat is gekoppeld aan het cluster.
+7. **Azure Storage account naam**: het opslag account dat aan het cluster is gekoppeld
+8. **Azure Storage account sleutel**: de sleutel van het opslag account dat aan het cluster is gekoppeld.
 9. **De containernaam van de Azure**: als de naam van het cluster is "abc", wordt dit gewoon "abc", meestal is.
 
 Zodra de **importgegevens** klaar is met het ophalen van gegevens (u ziet de groene maatstreepjes op de Module), deze gegevens opslaan als een gegevensset (met een naam van uw keuze). Hoe dit eruitziet:
@@ -458,22 +458,22 @@ Schakel de opgeslagen gegevensset voor gebruik in een machine learning-experimen
 >
 >
 
-### <a name="step2"></a> Stap 2: Een eenvoudig experiment maken in Azure Machine Learning om te voorspellen klikken / geen klikken
+### <a name="step2"></a>Stap 2: een experiment maken in Azure Machine Learning om te voors pellen klikken/geen klikken
 Onze Azure Machine Learning Studio (klassiek) experiment ziet er als volgt uit:
 
 ![Machine Learning-experiment](./media/hive-criteo-walkthrough/xRpVfrY.png)
 
-Bekijk nu de belangrijke onderdelen van dit experiment. Sleep onze opgeslagen train en gegevenssets die u aan bij onze experimentcanvas eerst testen.
+Bekijk nu de belangrijke onderdelen van dit experiment. Sleep onze opgeslagen trein-en test gegevens sets eerst op het canvas van het experiment.
 
 #### <a name="clean-missing-data"></a>Ontbrekende gegevens opschonen
 De **Clean Missing Data** module biedt wat de naam al aangeeft: er ontbreken gegevens op een manier die door gebruiker opgegeven worden kunnen opschonen. Zoeken in deze module om dit te zien:
 
 ![Schone, ontbrekende gegevens](./media/hive-criteo-walkthrough/0ycXod6.png)
 
-Hier kiest u alle ontbrekende waarden vervangt door een 0. Er zijn andere opties, die kunnen worden gezien door te kijken in de vervolgkeuzelijsten in de module.
+Hier kunt u alle ontbrekende waarden vervangen door 0. Er zijn andere opties, die kunnen worden gezien door te kijken in de vervolgkeuzelijsten in de module.
 
 #### <a name="feature-engineering-on-the-data"></a>Functie-engineering op de gegevens
-Er zijn miljoenen unieke waarden voor sommige categorische functies van grote gegevenssets. Met behulp van methoden, zoals een hot-codering voor de weergave van high-dimensionale categorische functies naïve is volledig onwerkbaar om. Dit scenario ziet u hoe u het aantal functies met behulp van ingebouwde Azure Machine Learning-modules voor het genereren van compact representaties van deze hoge-dimensionale categorische variabelen. Het eindresultaat is een kleinere model, snellere training tijden en maatstaven voor prestaties die erg vergelijkbaar zijn met andere technieken.
+Er zijn miljoenen unieke waarden voor sommige categorische functies van grote gegevenssets. Met behulp van methoden, zoals een hot-codering voor de weergave van high-dimensionale categorische functies naïve is volledig onwerkbaar om. Dit scenario ziet u hoe u het aantal functies met behulp van ingebouwde Azure Machine Learning-modules voor het genereren van compact representaties van deze hoge-dimensionale categorische variabelen. Het eind resultaat is een kleinere model grootte, snellere opleidings tijden en prestatie gegevens die vergelijkbaar zijn met het gebruik van andere technieken.
 
 ##### <a name="building-counting-transforms"></a>Het bouwen van tellen transformeert
 Voor het bouwen van de functies count, gebruikt u de **bouwen tellen transformeren** module die beschikbaar is in Azure Machine Learning. De module er zo uit:
@@ -505,7 +505,7 @@ Nadat een aantal transformatie gereed is, de gebruiker kan kiezen welke functies
 In dit geval, zoals u kunt zien, de log-kans die moeten worden gebruikt en de back-off kolom wordt genegeerd. U kunt ook parameters op, zoals de drempelwaarde voor garbagecollection bin, hoeveel pseudo eerdere voorbeelden om toe te voegen voor vloeiend maken en of alle ruis Laplacian of niet instellen. Al deze functies zijn geavanceerde en het is om te worden opgemerkt dat de standaardwaarden zijn een goed uitgangspunt voor gebruikers die niet bekend bent met dit type functie genereren.
 
 ##### <a name="data-transformation-before-generating-the-count-features"></a>Gegevenstransformatie vóór het genereren van de functies count
-Nu de focus zich op een belangrijke verwijzen over het transformeren van de trein en testen van gegevens voorafgaand aan het genereren van daadwerkelijk aantal functies. Houd er rekening mee dat er twee zijn **R-Script uitvoeren** modules die worden gebruikt voordat de count-transformatie is toegepast op onze gegevens.
+Nu de focus zich op een belangrijke verwijzen over het transformeren van de trein en testen van gegevens voorafgaand aan het genereren van daadwerkelijk aantal functies. Er worden twee **R-script modules uitgevoerd** die worden gebruikt voordat de Count-trans formatie op onze gegevens wordt toegepast.
 
 ![R-Script modules uitvoeren](./media/hive-criteo-walkthrough/aF59wbc.png)
 
@@ -542,7 +542,7 @@ U moet eerst een cursist kiezen. Gebruik een twee-class boosted-beslisboom als o
 
 ![Two-Class Boosted beslissingsstructuur parameters](./media/hive-criteo-walkthrough/bH3ST2z.png)
 
-Kies de standaardwaarden van het experiment. Houd er rekening mee dat de standaardwaarden meestal zinvolle zijn en een goede manier om snel basislijnen op de prestaties. U kunt op de prestaties verbeteren door verstrekkende parameters als u wilt beschikt u over een basislijn.
+Kies de standaardwaarden van het experiment. De standaard waarden zijn nuttig en zijn een goede manier om snelle basis lijnen voor prestaties te krijgen. U kunt op de prestaties verbeteren door verstrekkende parameters als u wilt beschikt u over een basislijn.
 
 #### <a name="train-the-model"></a>Het model trainen
 Voor de training, gewoon aanroepen een **Train Model** module. De twee invoeren toe zijn de cursist Two-Class Boosted beslissingsstructuur en onze gegevensset van de trein. Dit wordt hier weergegeven:
@@ -555,18 +555,18 @@ Als u een getraind model hebt, bent u klaar om op de testgegevensset te beoordel
 ![De module Score Model (Scoremodel)](./media/hive-criteo-walkthrough/fydcv6u.png)
 
 ### <a name="step4"></a> Stap 4: Het model evalueren
-Tot slot moet u modelprestaties analyseren. Meestal is een goede indicatie voor twee klasse (binaire) classificatie problemen, het AUC. Als u wilt dit visualiseren, koppelt de **Score Model** module aan een **Evaluate Model** -module voor dit. Te klikken op **Visualize** op de **Evaluate Model** module resulteert in een afbeelding, zoals de volgende uitvoer:
+Tot slot moet u modelprestaties analyseren. Meestal is een goede indicatie voor twee klasse (binaire) classificatie problemen, het AUC. Als u deze curve wilt visualiseren, koppelt u de module **score model** aan een module **Evaluate model** . Te klikken op **Visualize** op de **Evaluate Model** module resulteert in een afbeelding, zoals de volgende uitvoer:
 
 ![Module BDT model evalueren](./media/hive-criteo-walkthrough/0Tl0cdg.png)
 
-In binaire (of twee klasse) problemen met de classificatie, een goede indicatie van nauwkeurigheid is het gebied onder Curve (AUC). De volgende sectie ziet onze resultaten met behulp van dit model op onze testgegevensset. Als u deze, met de rechtermuisknop op de uitvoerpoort van de **Evaluate Model** module en vervolgens **Visualize**.
+In binaire (of twee klasse) problemen met de classificatie, een goede indicatie van nauwkeurigheid is het gebied onder Curve (AUC). De volgende sectie ziet onze resultaten met behulp van dit model op onze testgegevensset. Klik met de rechter muisknop op de uitvoer poort van de module **Evaluate model** en klik vervolgens op **visualiseren**.
 
 ![Module Evaluate Model visualiseren](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
 ### <a name="step5"></a> Stap 5: Het model als een webservice publiceren
 De mogelijkheid voor het publiceren van een Azure Machine Learning-model als webservices met een minimum van fuss is een zeer nuttige functie voor het maken van deze algemeen beschikbaar. Wanneer dat is gebeurd, kan iedereen aanroepen naar de webservice met invoergegevens dat ze nodig hebben voor en het model in de webservice wordt gebruikt om te retourneren die voorspellingen.
 
-Om dit te doen, moet u eerst het getrainde model opslaan als een object van het getrainde Model. Dit wordt gedaan met de rechtermuisknop op de **Train Model** -module en met behulp van de **opslaan als het getrainde Model** optie.
+Sla eerst ons getrainde model op als een getraind model object door met de rechter muisknop op de module **Train model** te klikken en de optie **Opslaan als opgeleid model** te gebruiken.
 
 Vervolgens maken van de invoer en uitvoer van poorten voor onze webservice:
 
@@ -582,7 +582,7 @@ Het is gemakkelijk te gebruiken een **SQL-transformatie toepassen** module te fu
 U bent nu klaar om uit te voeren van een kleine experiment dat kan worden gebruikt om onze webservice publiceren.
 
 #### <a name="generate-input-data-for-webservice"></a>De invoergegevens voor de webservice genereren
-Als een stap zeroth omdat de tabel aantal groot is, worden een paar regels aan testgegevens en uitvoergegevens genereren van het aantal functies. Dit kan fungeren als de indeling van de invoergegevens voor onze webservice. Dit wordt hier weergegeven:
+Als een stap zeroth omdat de tabel aantal groot is, worden een paar regels aan testgegevens en uitvoergegevens genereren van het aantal functies. Deze uitvoer kan fungeren als de invoer gegevens indeling voor onze webservice, zoals hier wordt weer gegeven:
 
 ![De invoergegevens BDT maken](./media/hive-criteo-walkthrough/OEJMmst.png)
 
@@ -592,7 +592,7 @@ Als een stap zeroth omdat de tabel aantal groot is, worden een paar regels aan t
 >
 
 #### <a name="scoring-experiment-for-publishing-webservice"></a>Scoring-experiment voor de webservice publiceren
-Eerst, ziet u hoe dit eruitziet. De structuur van essentieel belang is een **Score Model** -module die accepteert onze getrainde model-object en een paar regels van ingevoerde gegevens die zijn gegenereerd in de vorige stappen met behulp van de **aantal Featurizer** module. Gebruik 'Select Columns in Dataset' aan het project de Scored labels en de Score kansen.
+Eerst is de essentiële structuur een module van een **score model** waarmee ons getrainde model object en enkele regels met invoer gegevens die in de vorige stappen zijn gegenereerd met behulp van de module **Count Featurizer** worden geaccepteerd. Gebruik 'Select Columns in Dataset' aan het project de Scored labels en de Score kansen.
 
 ![Kolommen in gegevensset selecteren](./media/hive-criteo-walkthrough/kRHrIbe.png)
 
@@ -613,7 +613,7 @@ U ziet de twee koppelingen voor webservices aan de linkerkant:
 * De **aanvraag/antwoord** Service (of RRS) is bedoeld voor één voorspellingen en wat is gebruikt in deze workshop is.
 * De **BATCHUITVOERING** Service (BES) wordt gebruikt voor batch voorspellingen en vereist dat de ingevoerde gegevens gebruikt om voorspellingen bevinden zich in Azure Blob-opslag te maken.
 
-Te klikken op de koppeling **aanvraag/antwoord** neemt ons naar een pagina die biedt ons de code in C#, python en R. vooraf blik Deze code kan gemakkelijk worden gebruikt voor het maken van aanroepen naar de webservice. Houd er rekening mee dat de API-sleutel op deze pagina moet worden gebruikt voor verificatie.
+Te klikken op de koppeling **aanvraag/antwoord** neemt ons naar een pagina die biedt ons de code in C#, python en R. vooraf blik Deze code kan gemakkelijk worden gebruikt voor het maken van aanroepen naar de webservice. De API-sleutel op deze pagina moet worden gebruikt voor verificatie.
 
 Is het handig moeten worden deze python-code gekopieerd naar een nieuwe cel in de IPython notebook.
 
@@ -621,11 +621,11 @@ Hier volgt een segment van de python-code met de juiste API-sleutel.
 
 ![Python-code](./media/hive-criteo-walkthrough/f8N4L4g.png)
 
-Houd er rekening mee dat de standaard API-sleutel is vervangen door de API-sleutel van onze webservices. Te klikken op **uitvoeren** op deze cel in een IPython notebook resulteert in het volgende antwoord:
+De standaard-API-sleutel is vervangen door de API-sleutel van onze webservice. Te klikken op **uitvoeren** op deze cel in een IPython notebook resulteert in het volgende antwoord:
 
 ![IPython-antwoord](./media/hive-criteo-walkthrough/KSxmia2.png)
 
-Test voor de twee voorbeelden over gevraagd (in de JSON-framework van het python-script), kunt u terug antwoorden in de vorm 'Scored Labels, Scored kansen'. In dit geval zijn de standaardwaarden gekozen dat de vooraf blik code (van 0 voor alle numerieke kolommen en de tekenreeks "waarde" voor alle categorische kolommen) biedt.
+Voor de twee test voorbeelden die worden gevraagd in het schema van het python-script, krijgt u terug-antwoorden in de vorm ' gescoorde labels, gescoorde kansen '. In dit geval zijn de standaardwaarden gekozen dat de vooraf blik code (van 0 voor alle numerieke kolommen en de tekenreeks "waarde" voor alle categorische kolommen) biedt.
 
-Hiermee is de procedure voor het verwerken van grote gegevensset met behulp van Azure Machine Learning. U aan de slag met een terabyte aan gegevens, een voorspellingsmodel gebouwd en geïmplementeerd als een webservice in de cloud.
+In deze walkthrough ziet u hoe u met Azure Machine Learning een grootschalige gegevensset kunt verwerken. U aan de slag met een terabyte aan gegevens, een voorspellingsmodel gebouwd en geïmplementeerd als een webservice in de cloud.
 

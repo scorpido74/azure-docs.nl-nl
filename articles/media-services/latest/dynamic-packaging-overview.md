@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/17/2019
+ms.date: 01/23/2020
 ms.author: juliako
-ms.openlocfilehash: 05a515d5f74569ff8d0fa8aec68eb681dc79d2fc
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 3984f33cd97ada9b3d5301e45fe3506966880848
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779600"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719667"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische verpakking in Media Services v3
 
@@ -29,18 +29,7 @@ In Media Services vertegenwoordigt een [streaming-eind punt](streaming-endpoint-
 
 ## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>om uw bron bestanden voor te bereiden voor levering
 
-Als u gebruik wilt maken van dynamische pakketten, moet u uw mezzanine-bestand (bron) [coderen](encoding-concept.md) in een set van meerdere bitrate MP4-bestanden (ISO Base media 14496-12). U moet een [Asset](assets-concept.md) hebben met de gecodeerde MP4-en streaming-configuratie bestanden die nodig zijn voor Media Services dynamische verpakking. Vanuit deze set MP4-bestanden kunt u dynamische pakketten gebruiken voor het leveren van video via de volgende protocollen voor streaming media:
-
-|Protocol|Voorbeeld|
-|---|---|
-|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
-|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
-|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
-|MPEG-DASH/KVP| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
-|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
-|Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
-
-Als u van plan bent om uw inhoud te beschermen met Media Services dynamische versleuteling, raadpleegt u [streaming protocollen en versleutelings typen](content-protection-overview.md#streaming-protocols-and-encryption-types).
+Als u gebruik wilt maken van dynamische pakketten, moet u uw mezzanine-bestand (bron) [coderen](encoding-concept.md) in een set van meerdere bitrate MP4-bestanden (ISO Base media 14496-12). U moet een [Asset](assets-concept.md) hebben met de gecodeerde MP4-en streaming-configuratie bestanden die nodig zijn voor Media Services dynamische verpakking. Vanuit deze set MP4-bestanden kunt u dynamische pakketten gebruiken voor het leveren van video via de protocollen voor streaming media die hieronder worden beschreven.
 
 > [!TIP]
 > Een van de manieren om de MP4-en streaming-configuratie bestanden op te halen is het [versleutelen van uw mezzanine-bestand met Media Services](#encode-to-adaptive-bitrate-mp4s). 
@@ -48,6 +37,36 @@ Als u van plan bent om uw inhoud te beschermen met Media Services dynamische ver
 Als u Video's in het gecodeerde activum beschikbaar wilt maken voor het afspelen van clients, moet u een [streaming-Locator](streaming-locators-concept.md) maken en streaming-url's bouwen. Op basis van de opgegeven indeling in het streaming-client manifest (HLS, MPEG DASH of Smooth Streaming) ontvangt u de stroom in het protocol dat u hebt gekozen.
 
 Hierdoor hoeft u voor slechts één opslagindeling de bestanden op te slaan en hiervoor te betalen. De Media Services-service bouwt en levert de juiste reactie op basis van aanvragen van een client.
+
+Als u van plan bent om uw inhoud te beschermen met Media Services dynamische versleuteling, raadpleegt u [streaming protocollen en versleutelings typen](content-protection-overview.md#streaming-protocols-and-encryption-types).
+
+### <a name="hls-protocol"></a>HLS-Protocol
+
+Uw streaming-client kan de volgende HLS-indelingen opgeven:
+
+|Protocol|Voorbeeld|
+|---|---|
+|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
+|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
+|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+
+### <a name="mpeg-dash-protocol"></a>MPEG-DASH-Protocol
+
+De streaming-client kan de volgende MPEG-DASH formaties opgeven:
+
+|Protocol|Voorbeeld|
+|---|---|
+|MPEG-DASH/KVP| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
+|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
+
+### <a name="smooth-streaming-protocol"></a>Smooth Streaming-Protocol
+
+Uw streaming-client kan de volgende Smooth Streaming indelingen opgeven:
+
+|Protocol|Opmerkingen/voor beelden| 
+|---|---|
+|Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
+|Smooth Streaming 2,0 (verouderd manifest)|Smooth Streaming manifest-indeling bevat standaard de herhalings code (r-tag). Sommige spelers bieden echter geen ondersteuning voor de `r-tag`. Clients met deze spelers kunnen een indeling gebruiken waarmee de r-code wordt uitgeschakeld:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
 ## <a name="on-demand-streaming-workflow"></a>Werk stroom voor streaming op aanvraag
 

@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 74b991fce132c991ebd5fbd3789328e2a500da86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e7f60335b3e75d93f408dec3386ca0bdcd6a0388
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232316"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711453"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Automatische gebruikers inrichting inschakelen voor uw toepassing met meerdere tenants
 
@@ -56,7 +56,7 @@ Toepassingen waarvoor een gebruikers record vereist is in de toepassing voordat 
 
 Azure AD biedt verschillende integratie paden om het automatisch inrichten van gebruikers voor uw toepassing in te scha kelen.
 
-* De [Azure AD-inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) beheert het inrichten en ongedaan maken van de inrichting van gebruikers van Azure AD voor uw toepassing (uitgaande inrichting) en vanuit uw toepassing naar Azure AD (inkomend inrichten). De service maakt verbinding met het systeem voor SCIM-gebruikers beheer API-eind punten die zijn opgenomen in uw toepassing.
+* De [Azure AD-inrichtings service](user-provisioning.md) beheert het inrichten en ongedaan maken van de inrichting van gebruikers van Azure AD voor uw toepassing (uitgaande inrichting) en vanuit uw toepassing naar Azure AD (inkomend inrichten). De service maakt verbinding met het systeem voor SCIM-gebruikers beheer API-eind punten die zijn opgenomen in uw toepassing.
 
 * Wanneer u de [Microsoft Graph](https://docs.microsoft.com/graph/)gebruikt, beheert uw toepassing de inkomende en uitgaande toewijzing van gebruikers en groepen vanuit Azure AD naar uw toepassing door de Microsoft Graph API te doorzoeken.
 
@@ -87,9 +87,9 @@ Zie voor meer informatie over hoe de Azure AD Provisioning Service-gebruikers SC
 
 * [Meer informatie over de SCIM-standaard](https://aka.ms/SCIMOverview)
 
-* [Systeem gebruiken voor Identity Management (SCIM) van meerdere domeinen om automatisch gebruikers en groepen in te richten van Azure Active Directory naar toepassingen](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Systeem gebruiken voor Identity Management (SCIM) van meerdere domeinen om automatisch gebruikers en groepen in te richten van Azure Active Directory naar toepassingen](use-scim-to-provision-users-and-groups.md)
 
-* [Meer informatie over de Azure AD SCIM-implementatie](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Meer informatie over de Azure AD SCIM-implementatie](use-scim-to-provision-users-and-groups.md)
 
 ## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph voor inrichting
 
@@ -115,7 +115,7 @@ SAML JIT gebruikt de informatie over claims in het SAML-token om gebruikers gege
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Eenmalige aanmelding inschakelen voor uw toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [Eenmalige aanmelding inschakelen voor uw toepassing](isv-sso-content.md)
 
 * [Dien de aanbieding](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) en partner van uw toepassing in bij micro soft om documentatie te maken op de site van micro soft.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2019
 ms.author: allensu
-ms.openlocfilehash: 31c247199bfbfc57ffef376649edefd487fd1962
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f570e0cd7361b365a4034e318511cf8227c425a2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263537"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722472"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer onderdelen en beperkingen
 Azure Load Balancer bevat verschillende belang rijke onderdelen voor de bewerking.  Deze onderdelen kunnen worden geconfigureerd in uw abonnement via de Azure Portal, Azure CLI of Azure PowerShell.  
@@ -58,7 +58,7 @@ Basic Load Balancer biedt geen ondersteuning voor uitgaande regels.
 
 Load Balancer biedt de volgende fundamentele mogelijkheden voor TCP en UDP-toepassingen:
 
-* **Algoritme voor taak verdeling**: met Azure Load Balancer kunt u een taakverdelings regel maken voor het distribueren van verkeer dat binnenkomt bij de frontend van exemplaren van back-endservers. Load Balancer gebruikt een hash-algoritme voor de distributie van binnenkomende stromen en herschrijft de headers van stromen naar back-endadresgroep. Er is een server beschikbaar om nieuwe stromen te ontvangen wanneer een status test een gezonde back-end-eind punt aangeeft.
+* **Algoritme voor taak verdeling**: met Azure Load Balancer kunt u een taakverdelings regel maken voor het distribueren van verkeer dat binnenkomt bij de frontend van exemplaren van back-endservers. Load Balancer gebruikt een hash-algoritme voor de distributie van binnenkomende stromen (niet bytes) en schrijft de headers van stromen naar back-endadresgroep. Er is een server beschikbaar om nieuwe stromen te ontvangen wanneer een status test een gezonde back-end-eind punt aangeeft.
 Load Balancer maakt standaard gebruik van een hash van 5-tuple. 
 
    De hash bevat: 

@@ -1,21 +1,21 @@
 ---
 title: Recepten voor docker-containers
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het bouwen, testen en opslaan van containers met een of meer van uw configuratie-instellingen voor implementatie en hergebruik.
+description: Meer informatie over het bouwen, testen en opslaan van containers met enkele of alle configuratie-instellingen voor implementatie en hergebruik.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: dbe2e288309b6682041bf3db9fe3d39455359806
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 97342f1dd4f6ce343626ba6c294f09dabe3db5c0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647284"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717204"
 ---
 # <a name="create-containers-for-reuse"></a>Containers maken voor hergebruik
 
@@ -27,9 +27,9 @@ Zodra u deze nieuwe laag of container hebt (met instellingen) en u deze lokaal h
 
 Bij alle `docker run`-voor beelden in dit document wordt ervan uitgegaan dat een Windows-console met een `^` regel voortzettings teken. Houd rekening met het volgende voor eigen gebruik:
 
-* Wijzig de volg orde van de argumenten niet, tenzij u bekend bent met docker-containers.
+* Wijzig de volgorde van de argumenten niet, tenzij u bekend bent met docker-containers.
 * Als u een ander besturings systeem dan Windows gebruikt, of een andere console dan Windows-console, gebruikt u de juiste console/terminal, syntaxis voor koppelingen en een regel vervolg teken voor uw console en systeem.  Omdat de Cognitive Services container een Linux-besturings systeem is, gebruikt de doel koppeling een syntaxis voor de Linux-stijl.
-* in `docker run`-voor beelden wordt de directory van het `c:` station gebruikt om eventuele toegangs conflicten in Windows te voor komen. Als u een specifieke directory moet gebruiken als de invoer Directory, moet u mogelijk de machtiging docker-service verlenen.
+* in `docker run`-voor beelden wordt de directory van het `c:` station gebruikt om eventuele toegangs conflicten in Windows te voor komen. Als u gebruiken van een specifieke map als de invoermap wilt, moet u mogelijk de docker verlenen machtiging-service.
 
 ## <a name="store-no-configuration-settings-in-image"></a>Geen configuratie-instellingen opslaan in afbeelding
 

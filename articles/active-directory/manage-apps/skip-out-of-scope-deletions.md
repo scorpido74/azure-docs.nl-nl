@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: c0664cbc8097f18ec9722e789ad40d5925781637
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997068"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711653"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Verwijdering van gebruikers accounts die buiten het bereik vallen, overs Laan
 
@@ -37,14 +37,14 @@ Omdat deze configuratie veel wordt gebruikt met de *werkdag om de app voor het i
 1. Start de [Azure Portal](https://portal.azure.com)en navigeer naar de sectie eigenschappen van uw inrichtings toepassing. Bijvoorbeeld, als u uw werkdag wilt exporteren *naar AD User Provisioning toepassings* toewijzing, navigeert u naar de sectie eigenschappen van de app. 
 1. In de sectie eigenschappen van uw inrichtings app kopieert u de GUID-waarde die is gekoppeld aan het veld *object-id* . Deze waarde wordt ook wel de **ServicePrincipalId** van uw app genoemd en wordt gebruikt in Graph Explorer-bewerkingen.
 
-   ![App Service Principal-ID van workday](./media/export-import-provisioning-mappings/wd_export_01.png)
+   ![App Service Principal-ID van workday](media/skip-out-of-scope-deletions/wd_export_01.png)
 
 ## <a name="step-2-sign-into-microsoft-graph-explorer"></a>Stap 2: aanmelden bij Microsoft Graph Explorer
 
 1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) starten
 1. Klik op de knop Aanmelden met micro soft en meld u aan met Azure AD Global admin of de referenties van de app-beheerder.
 
-    ![Graph-aanmelding](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Graph-aanmelding](media/skip-out-of-scope-deletions/wd_export_02.png)
 
 1. Wanneer de aanmelding is geslaagd, worden de gegevens van het gebruikers account in het linkerdeel venster weer gegeven.
 
@@ -56,11 +56,11 @@ Voer in de Microsoft Graph Explorer de volgende GET-query Vervang [servicePrinci
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
-   ![Taak query ophalen](./media/skip-out-of-scope-deletions/skip-03.png)
+   ![Taak query ophalen](media/skip-out-of-scope-deletions/skip-03.png)
 
 Kopieer het antwoord naar een tekst bestand. Deze ziet eruit als de JSON-tekst die hieronder wordt weer gegeven, met waarden die geel zijn gemarkeerd voor uw implementatie. Voeg de regels die zijn gemarkeerd in groen toe aan het einde en werk het wacht woord voor workday-verbindingen in op blauw gemarkeerd. 
 
-   ![Taak respons ophalen](./media/skip-out-of-scope-deletions/skip-04.png)
+   ![Taak respons ophalen](media/skip-out-of-scope-deletions/skip-04.png)
 
 Dit is het JSON-blok dat aan de toewijzing moet worden toegevoegd. 
 
@@ -82,22 +82,22 @@ Vervang in de onderstaande URL [servicePrincipalId] door de **servicePrincipalId
 ```
 Kopieer de bijgewerkte tekst uit stap 3 naar de ' hoofd tekst van de aanvraag ' en stel de header ' content-type ' in ' application/json ' in ' aanvraag headers ' in. 
 
-   ![Aanvraag plaatsen](./media/skip-out-of-scope-deletions/skip-05.png)
+   ![Aanvraag plaatsen](media/skip-out-of-scope-deletions/skip-05.png)
 
 Klik op query uitvoeren. 
 
 U moet de uitvoer als ' geslaagd – status code 204 ' ophalen. 
 
-   ![Antwoord plaatsen](./media/skip-out-of-scope-deletions/skip-06.png)
+   ![Antwoord plaatsen](media/skip-out-of-scope-deletions/skip-06.png)
 
 ## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>Stap 5: controleren of gebruikers buiten het bereik niet worden uitgeschakeld
 
 U kunt deze vlag testen op het verwachte gedrag door de scope regels bij te werken om een specifieke gebruiker over te slaan. In het onderstaande voor beeld wordt de werk nemer met ID 21173 (die eerder in bereik was) uitgesloten door een nieuwe scope regel toe te voegen: 
 
-   ![Voor beeld van scoping](./media/skip-out-of-scope-deletions/skip-07.png)
+   ![Voor beeld van scoping](media/skip-out-of-scope-deletions/skip-07.png)
 
 In de volgende inrichtings cyclus identificeert de Azure AD-inrichtings service dat de gebruiker 21173 zich buiten het bereik bevindt. als de eigenschap SkipOutOfScopeDeletions is ingeschakeld, wordt in de synchronisatie regel voor die gebruiker een bericht weer gegeven zoals hieronder wordt weer gegeven: 
 
-   ![Voor beeld van scoping](./media/skip-out-of-scope-deletions/skip-08.png)
+   ![Voor beeld van scoping](media/skip-out-of-scope-deletions/skip-08.png)
 
 

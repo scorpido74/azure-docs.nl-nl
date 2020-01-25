@@ -11,20 +11,20 @@ ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 63803f3ac477e48d8d1c14a72e2ee9b9d4860047
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a655ada93cd9db9db95295d445c0b4f27d772148
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685732"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721197"
 ---
-# <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Azure Stream Analytics gebruiken met SQL Data Warehouse
-Azure Stream Analytics is een volledig beheerde service met lage latentie en een Maxi maal beschik bare, schaal bare complexe gebeurtenis verwerking via streaming-gegevens in de Cloud. Lees de [Inleiding tot Azure stream Analytics voor][Introduction to Azure Stream Analytics]meer informatie over de basis principes. U kunt vervolgens leren hoe u een end-to-end-oplossing maakt met Stream Analytics door de zelf studie [aan de slag met Azure stream Analytics][Get started using Azure Stream Analytics] te volgen.
+# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Stream Analytics gebruiken met Azure Synapse Analytics
+Azure Stream Analytics is een volledig beheerde service met lage latentie en een Maxi maal beschik bare, schaal bare complexe gebeurtenis verwerking via streaming-gegevens in de Cloud. Lees de [Inleiding tot Azure stream Analytics voor](../stream-analytics/stream-analytics-introduction.md)meer informatie over de basis principes. U kunt vervolgens leren hoe u een end-to-end-oplossing maakt met Stream Analytics door de zelf studie [aan de slag met Azure stream Analytics](../stream-analytics/stream-analytics-real-time-fraud-detection.md) te volgen.
 
-In dit artikel leert u hoe u uw Azure SQL Data Warehouse-Data Base kunt gebruiken als een uitvoer Sink voor uw Stream Analytics taken.
+In dit artikel leert u hoe u uw data warehouse-Data Base kunt gebruiken als een uitvoer Sink voor uw Stream Analytics taken.
 
 ## <a name="prerequisites"></a>Vereisten
-Voer eerst de volgende stappen uit in de zelf studie [aan de slag met Azure stream Analytics][Get started using Azure Stream Analytics] .  
+Voer eerst de volgende stappen uit in de zelf studie [aan de slag met Azure stream Analytics](../stream-analytics/stream-analytics-real-time-fraud-detection.md) .  
 
 1. Een event hub-invoer maken
 2. Toepassing voor gebeurtenis Generator configureren en starten
@@ -50,13 +50,13 @@ Voer de volgende waarden in op de volgende pagina:
 * *Data Base*: Geef de naam op van een doel database.
 * *Server naam*: Geef de server naam op voor de data base die u zojuist hebt opgegeven. U kunt de Azure Portal gebruiken om dit te vinden.
 
-![][server-name]
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/dw-server-name.png)
 
 * *Gebruikers naam*: Geef de gebruikers naam op van een account met schrijf machtigingen voor de data base.
 * *Wacht woord*: Geef het wacht woord op voor het opgegeven gebruikers account.
 * *Tabel*: Geef de naam op van de doel tabel in de data base.
 
-![][add-database]
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/add-database.png)
 
 ### <a name="step-4"></a>Stap 4
 Klik op de knop controleren om deze taak uitvoer toe te voegen en te controleren of Stream Analytics verbinding kan maken met de data base.
@@ -64,25 +64,6 @@ Klik op de knop controleren om deze taak uitvoer toe te voegen en te controleren
 Wanneer de verbinding met de data base is geslaagd, ziet u een melding in de portal. U kunt klikken op testen om de verbinding met de data base te testen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [overzicht van integratie van SQL Data Warehouse][SQL Data Warehouse integration overview]voor een overzicht van de integratie.
+Zie voor een overzicht van integratie [andere services integreren](sql-data-warehouse-overview-integrate.md).
+Zie [ontwerp beslissingen en coderings technieken voor data warehouses](sql-data-warehouse-overview-develop.md)voor meer tips voor ontwikkel aars.
 
-Zie [Overzicht van SQL Data Warehouse voor ontwikkelaars][SQL Data Warehouse development overview] voor meer tips voor ontwikkelaars.
-
-<!--Image references-->
-
-[add-output]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/add-output.png
-[server-name]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/dw-server-name.png
-[add-database]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/add-database.png
-[test-connection]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/test-connection.png
-
-<!--Article references-->
-
-[Introduction to Azure Stream Analytics]: ../stream-analytics/stream-analytics-introduction.md
-[Get started using Azure Stream Analytics]: ../stream-analytics/stream-analytics-real-time-fraud-detection.md
-[SQL Data Warehouse development overview]:  ./sql-data-warehouse-overview-develop.md
-[SQL Data Warehouse integration overview]:  ./sql-data-warehouse-overview-integrate.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Azure Stream Analytics documentation]: https://azure.microsoft.com/documentation/services/stream-analytics/

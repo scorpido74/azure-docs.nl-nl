@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 3e36aa268286b9127f36859a1fa4402644994a32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a7eaabedd6736c107625204f982a530f2bab73d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444849"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718170"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK voor SQL-API: releaseopmerkingen en resources
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ De SQL API Java-SDK biedt ondersteuning voor synchrone bewerkingen. Voor asynchr
 |**Minimaal ondersteunde runtime**|[Java Development Kit (JDK 7 +)](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
+
+### <a name="a-name246246"></a><a name="2.4.6"/>2.4.6
+* De juiste replica beleids label aan client zijde is bijgewerkt op databaseAccount en er zijn databaseAccount configuratie Lees bewerkingen van de cache gemaakt.
 
 ### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
 * Nieuwe poging op ongeldige partitie sleutel bereik fout voor komen als de gebruiker pkRangeId levert.

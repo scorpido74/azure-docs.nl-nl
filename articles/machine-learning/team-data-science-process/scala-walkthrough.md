@@ -3,26 +3,26 @@ title: Gegevenswetenschap met Scala en Spark op Azure - Team Data Science Proces
 description: Het gebruik van Scala voor beheerde machine learning-taken met de Spark schaalbare MLlib en Spark ML-pakketten op een Azure HDInsight Spark-cluster.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b22d461d327e595908ea8cc18dd0d507fdc83ecd
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: b36a3faab49ee8d51c25aa18879e6f5d1db8c2fb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907701"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716756"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Gegevenswetenschap met Scala en Spark op Azure
 In dit artikel wordt beschreven hoe u met Scala voor beheerde machine learning-taken met de Spark schaalbare MLlib en Spark ML-pakketten op een Azure HDInsight Spark-cluster. Dit helpt u bij de taken die deel uitmaken van de [Data Science process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): gegevensopname en verkennen, visualisatie, feature-engineering, modellen en model verbruik. De modellen in het artikel zijn onder andere logistieke en lineaire regressie, willekeurige forests en verloop boosted structuren (GBTs), naast de twee algemene beheerde machine learning-taken:
 
-* Regressie probleem: Voor spelling van het fooien bedrag ($) voor een taxi reis
-* Binaire classificatie: Voor speld uiteinde of fooien (1/0) voor een taxi
+* Regressieprobleem: voorspelling van de tip-bedrag ($) voor een reis over taxi's
+* Binaire classificatie: voorspelling van tip of geen tip (1/0) voor een reis over taxi's
 
 Het modelleringsproces is vereist voor training en evaluatie van een test-gegevensset en de nauwkeurigheid van de relevante metrische gegevens. In dit artikel leert u hoe deze modellen worden opgeslagen in Azure Blob-opslag en hoe u kunt beoordelen en evalueren van de voorspellende prestaties. Dit artikel behandelt ook de meer geavanceerde onderwerpen over het optimaliseren van modellen met behulp van kruisvalidatie en hyper-parameter sweeping. De gegevens die worden gebruikt, is een voorbeeld van de 2013 NYC taxi reis- en fare gegevensset beschikbaar op GitHub.
 
@@ -41,7 +41,7 @@ De installatiestappen uit en de code in dit artikel zijn voor Azure HDInsight 3.
 
 ## <a name="prerequisites"></a>Vereisten
 * U hebt een abonnement op Azure nodig. Als u nog geen hebt, [ophalen van een gratis proefversie van Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* U moet een Azure HDInsight 3.4 Spark 1.6-cluster om de volgende procedures te voltooien. Als u een cluster wilt maken, raadpleegt [u de instructies in aan de slag: Maak Apache Spark in azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Instellen van de cluster van het type en de versie op de **clustertype selecteren** menu.
+* U moet een Azure HDInsight 3.4 Spark 1.6-cluster om de volgende procedures te voltooien. Voor het maken van een cluster, raadpleegt u de instructies in [aan de slag: Apache Spark maken in Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Instellen van de cluster van het type en de versie op de **clustertype selecteren** menu.
 
 ![Configuratie van het HDInsight-cluster](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -66,7 +66,7 @@ U kunt de notebook rechtstreeks vanuit GitHub met de Jupyter-Notebook-server op 
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
-## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Sample Vooraf ingestelde Spark-en Hive-contexten, Spark-magics en Spark-bibliotheken
+## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Instellen: Voorinstelling voor Spark en Hive-contexten, magics Spark en Spark-bibliotheken
 ### <a name="preset-spark-and-hive-contexts"></a>Vooraf ingestelde Spark en Hive-contexten
     # SET THE START TIME
     import java.util.Calendar
@@ -226,7 +226,7 @@ Het volgende codevoorbeeld geeft de locatie van de ingevoerde gegevens te lezen 
 
 **De uitvoer:**
 
-Tijd om de cel uit te voeren: 8 seconden.
+Tijd voor het uitvoeren van de cel: 8 seconden.
 
 ### <a name="query-the-table-and-import-results-in-a-data-frame"></a>Query uitvoeren op de tabel en resulteert in een gegevensframe importeren
 Vervolgens query uitvoeren op de tabel voor fare, particuliere en tip-gegevens. filteren van gegevens beschadigd en afgelegen; en afdrukken van verschillende rijen.
@@ -254,12 +254,12 @@ Vervolgens query uitvoeren op de tabel voor fare, particuliere en tip-gegevens. 
 |        10.5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>Gegevens verkennen en visualiseren
-Nadat u de gegevens in Spark brengt, wordt de volgende stap in de Data Science process is een dieper inzicht te krijgen van de gegevens via het verkennen en visualiseren. In deze sectie kunt u de gegevens over taxi's controleren met behulp van SQL-query's. De resultaten vervolgens importeren in een gegevensframe om de doelvariabelen en toekomstige functies voor visueel inspecteren met behulp van de functie auto-visualisatie van Jupyter tekenen.
+Nadat u de gegevens in Spark brengt, wordt de volgende stap in de Data Science process is een dieper inzicht te krijgen van de gegevens via het verkennen en visualiseren. In deze sectie kunt u de gegevens over taxi's controleren met behulp van SQL-query's. Importeer vervolgens de resultaten in een gegevens frame om de doel variabelen en de potentiële functies voor visuele inspectie uit te zetten met behulp van de functie voor automatische visualisatie Jupyter.
 
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>Lokale en SQL Magic-pakket gebruiken om te tekenen van gegevens
 De uitvoer van elk stukje code die u vanaf een Jupyter-notebook uitvoert is standaard beschikbaar zijn binnen de context van de sessie die is opgeslagen op de worker-knooppunten. Als u wilt opslaan een reis naar de worker-knooppunten voor elke berekening en als alle gegevens die u nodig hebt voor uw berekening lokaal op het serverknooppunt met Jupyter (dit is het hoofdknooppunt) beschikbaar is, kunt u de `%%local` Magic-pakket uit te voeren van het codefragment op de Jupyter de server.
 
-* **SQL magic** (`%%sql`). De kernel HDInsight Spark biedt ondersteuning voor eenvoudige inline HiveQL query's op SQLContext. De (`-o VARIABLE_NAME`) argument als een frame Pandas gegevens op de Jupyter-server de uitvoer van de SQL-query zich blijft voordoen. Dit betekent dat de functie is beschikbaar in de lokale modus.
+* **SQL magic** (`%%sql`). De kernel HDInsight Spark biedt ondersteuning voor eenvoudige inline HiveQL query's op SQLContext. De (`-o VARIABLE_NAME`) argument als een frame Pandas gegevens op de Jupyter-server de uitvoer van de SQL-query zich blijft voordoen. Deze instelling betekent dat de uitvoer beschikbaar is in de lokale modus.
 * `%%local` **Magic**. De `%%local` Magic-pakket voor de code wordt lokaal uitgevoerd op de Jupyter-server, waarop het hoofdknooppunt van het HDInsight-cluster. Meestal gebruikt u `%%local` magic in combinatie met de `%%sql` magic met de `-o` parameter. De `-o` parameter zou de uitvoer van de SQL-query lokaal, behouden en vervolgens `%%local` Magic-pakket voor de volgende set codefragment lokaal uitvoeren op basis van de uitvoer van de SQL-query's die lokaal is opgeslagen wilt activeren.
 
 ### <a name="query-the-data-by-using-sql"></a>De gegevens op te vragen met behulp van SQL
@@ -292,7 +292,7 @@ U kunt met behulp van Python-code nadat het dataframe in de lokale context als e
 * Tabel
 * Cirkel
 * Regel
-* Onderwerp
+* Gebied
 * Balk
 
 Dit is de code voor het tekenen van de gegevens:
@@ -411,7 +411,7 @@ Gebruik voor indexeren, `StringIndexer()`, en gebruik voor een hot-codering, `On
 
 **De uitvoer:**
 
-Tijd om de cel uit te voeren: 4 seconden.
+Tijd voor het uitvoeren van de cel: 4 seconden.
 
 ### <a name="sample-and-split-the-data-set-into-training-and-test-fractions"></a>Voorbeeld en de gegevensset in trainings- en testset breuken splitsen
 Deze code maakt een willekeurige steekproef van de gegevens (in dit voorbeeld 25%). Hoewel steekproeven niet vereist voor dit voorbeeld vanwege de grootte van de gegevensset is, het artikel wordt beschreven hoe u kunt een steekproef zodat u hoe u deze gebruiken voor uw eigen problemen weet wanneer dat nodig is. Als voorbeelden groot zijn, kan dit aanzienlijke tijd besparen tijdens het trainen van modellen. Splits vervolgens het voorbeeld in een training deel (in dit voorbeeld 75%) en een test deel (25%, in dit voorbeeld) als u wilt gebruiken in de classificatie en regressie modelleren.
@@ -450,7 +450,7 @@ Een willekeurig getal (tussen 0 en 1) toevoegen aan elke rij (in een kolom 'rand
 
 **De uitvoer:**
 
-Tijd om de cel uit te voeren: 2 seconden.
+Tijd voor het uitvoeren van de cel: 2 seconden.
 
 ### <a name="specify-training-variable-and-features-and-then-create-indexed-or-one-hot-encoded-training-and-testing-input-labeled-point-rdds-or-data-frames"></a>Training-variabele en functies, en maak geïndexeerde of een hot-gecodeerd trainings- en testdoeleinden met het label punt rdd's of gegevens frames invoer
 In deze sectie bevat de code u hoe u categorische gegevens als een gegevenstype gelabelde punt te indexeren en het coderen ziet, zodat u deze gebruiken kunt om te trainen en testen MLlib logistieke regressie en andere modellen voor classificatie. Gelabelde point-objecten zijn rdd's die zijn geformatteerd op een manier die door de meeste machine learning-algoritmen in MLlib nodig is als invoergegevens. Een [met het label punt](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) is een lokale vector, compacte of sparse, die zijn gekoppeld aan een label/antwoord.
@@ -493,7 +493,7 @@ In deze code geeft u de doelvariabele (afhankelijke) en de functies te gebruiken
 
 **De uitvoer:**
 
-Tijd om de cel uit te voeren: 4 seconden.
+Tijd voor het uitvoeren van de cel: 4 seconden.
 
 ### <a name="automatically-categorize-and-vectorize-features-and-targets-to-use-as-inputs-for-machine-learning-models"></a>Automatisch categoriseren en vectorize functies en doelen kunnen gebruiken als invoer voor machine learning-modellen
 Gebruik Spark ML voor het categoriseren van het doel en de functies die moeten worden gebruikt in de boomstructuur op basis van modellen functies. De code voltooit twee taken:
@@ -532,7 +532,7 @@ Dit is de code voor deze twee taken.
 
 
 
-## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Binair classificatie model: Voor spelt of een tip moet worden betaald
+## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Binaire classificeringsmodel: voorspellen of een tip moet worden betaald
 In deze sectie maakt maken u drie soorten binaire classificatie modellen om te voorspellen of een tip moet worden betaald:
 
 * Een **model voor logistieke regressie** met behulp van de Spark ML `LogisticRegression()` functie
@@ -723,9 +723,9 @@ Maak vervolgens een classificeringsmodel GBT met behulp van MLlib `GradientBoost
 
 **De uitvoer:**
 
-Gebied onder ROC-curve: 0.9846895479241554
+Gebied onder de ROC-curve: 0.9846895479241554
 
-## <a name="regression-model-predict-tip-amount"></a>Regressie model: Aantal fooien voor spel
+## <a name="regression-model-predict-tip-amount"></a>Regressiemodel: tip bedrag voorspellen
 In deze sectie maakt maken u twee typen regressiemodellen om te voorspellen van de hoeveelheid tip:
 
 * Een **overgegaan lineair regressiemodel** met behulp van de Spark ML `LinearRegression()` functie. U slaat u het model en het model op testgegevens evalueren.
@@ -775,7 +775,7 @@ In deze sectie maakt maken u twee typen regressiemodellen om te voorspellen van 
 
 **De uitvoer:**
 
-Tijd om de cel uit te voeren: 13 seconden.
+Tijd voor het uitvoeren van de cel: 13 seconden.
 
     # LOAD A SAVED LINEAR REGRESSION MODEL FROM BLOB STORAGE AND SCORE A TEST DATA SET
 
@@ -848,12 +848,12 @@ Grafieken maken met behulp van Python matplotlib.
 
 **De uitvoer:**
 
-![Aantal fooien: Werkelijk versus voor speld](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
+![Bedrag Tip: werkelijke omzet versus voorspelde](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>Een regressiemodel GBT maken
 Een regressiemodel GBT maken met behulp van de Spark ML `GBTRegressor()` functioneren en vervolgens het model op testgegevens evalueren.
 
-[Kleurovergang boosted structuren](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) ensembles van beslissingsstructuren zijn. GBTs trainen beslisbomen iteratief te minimaliseren, een functie verloren gaan. U kunt GBTs gebruiken voor regressie en classificatie. Ze categorische functies kunnen worden verwerkt, vereisen geen functie schaalaanpassing en nonlinearities en functie interacties kunnen vastleggen. Ook kunt u ze in een multiklasse-classificatie.
+GBTS ( [Gradient-boosted trees](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) ) zijn ensembles van beslissings structuren. GBTS traint een herhaling van de beslissings structuren om een verlies functie te minimaliseren. U kunt GBTS gebruiken voor regressie en classificatie. Ze categorische functies kunnen worden verwerkt, vereisen geen functie schaalaanpassing en nonlinearities en functie interacties kunnen vastleggen. Ook kunt u ze in een multiklasse-classificatie.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -881,7 +881,7 @@ Een regressiemodel GBT maken met behulp van de Spark ML `GBTRegressor()` functio
 
 **De uitvoer:**
 
-Test-R-Sqr is: 0.7655383534596654
+Test R-sqr is: 0.7655383534596654
 
 ## <a name="advanced-modeling-utilities-for-optimization"></a>Hulpprogramma's voor geavanceerde modellen voor optimalisatie
 In deze sectie gebruikt u machine learning-hulpprogramma's die ontwikkelaars wordt vaak voor de optimalisatie van het model gebruikt. Specifiek, kunt u drie verschillende manieren voor machine learning-modellen met behulp van parameter sweeping en kruisvalidatie optimaliseren:
@@ -938,7 +938,7 @@ Vervolgens gegevens splitsen in train en validatie aan de sets, gebruikt hyper-p
 
 **De uitvoer:**
 
-Test-R-Sqr is: 0.6226484708501209
+Test R-sqr is: 0.6226484708501209
 
 ### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>De binaire classificeringsmodel optimaliseren met behulp van kruisvalidatie en hyper-parameter sweeping
 Deze sectie leest u hoe u kunt een binair classificeringsmodel optimaliseren met behulp van kruisvalidatie en hyper-parameter sweeping. Dit maakt gebruik van de Spark ML `CrossValidator` functie.
@@ -982,7 +982,7 @@ Deze sectie leest u hoe u kunt een binair classificeringsmodel optimaliseren met
 
 **De uitvoer:**
 
-Tijd om de cel uit te voeren: 33 seconden.
+Tijd voor het uitvoeren van de cel: 33 seconden.
 
 ### <a name="optimize-the-linear-regression-model-by-using-custom-cross-validation-and-parameter-sweeping-code"></a>Het lineaire regressiemodel optimaliseren met behulp van aangepaste code van kruisvalidatie en de parameter-sweeping
 Vervolgens het model optimaliseren met behulp van aangepaste code en identificeren van de Modelparameters van het beste met behulp van het criterium van de hoogste nauwkeurigheid. Vervolgens maakt u het uiteindelijke model, het model op testgegevens evalueren en slaat u het model in Blob-opslag. Ten slotte laden van het model, testgegevens te beoordelen en evalueren van nauwkeurigheid.
@@ -1097,7 +1097,7 @@ Vervolgens het model optimaliseren met behulp van aangepaste code en identificer
 
 **De uitvoer:**
 
-Tijd om de cel uit te voeren: 61 seconden.
+Tijd voor het uitvoeren van de cel: 61 seconden.
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Gebruiken met Spark gebouwde machine learning-modellen automatisch met Scala
 Zie voor een overzicht van onderwerpen waarin wordt uitgelegd dat u de taken die deel uitmaken van de Data Science process in Azure, [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

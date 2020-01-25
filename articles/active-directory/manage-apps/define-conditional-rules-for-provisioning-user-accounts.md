@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f018edfa7cbb244c57f12c3b83dba086e1590f2
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: a82efda4cf53931dbf81b993b12a2927f02dfa0b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778342"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711694"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Toewijzing van toepassingen op basis van kenmerken met bereik filters
 In dit artikel wordt uitgelegd hoe u bereik filters gebruikt voor het definiëren van op kenmerken gebaseerde regels die bepalen welke gebruikers worden ingericht voor een toepassing.
@@ -52,7 +52,7 @@ Elke gebruiker of groep die door de Azure AD Provisioning-Service is verwerkt, w
 
 Bekijk bijvoorbeeld het volgende bereik filter:
 
-![Bereik filter](./media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
+![Bereik filter](media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
 
 Op basis van dit bereik filter moeten gebruikers voldoen aan de volgende criteria die moeten worden ingericht:
 

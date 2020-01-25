@@ -3,12 +3,12 @@ title: Ondersteunde resource typen via Azure Resource Health | Microsoft Docs
 description: Ondersteunde resource typen via Azure resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f25dc32774cb040a2b9873c6811ff184373c5104
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a61c8b90f4dc5e52a875488afb5374e3d6b7ce4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465268"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717065"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resource typen en status controles in azure resource Health
 Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd door middel van resource typen.
@@ -139,7 +139,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul><li>Is de VPN-tunnel verbonden?</li><li>Zijn er configuratie conflicten in de verbinding?</li><li>Zijn de vooraf gedeelde sleutels op de juiste wijze geconfigureerd?</li><li>Is het on-premises VPN-apparaat bereikbaar?</li><li>Komen er verschillen in het IPSec/IKE-beveiligings beleid?</li><li>Is de S2S-VPN-verbinding op de juiste wijze ingericht of is de status mislukt?</li><li>Is de VNET-naar-VNET-verbinding goed ingericht of is de status mislukt?</li></ul>|
 
-## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.network/expressroutecircuits
 |Controles uitgevoerd|
 |---|
 |<ul><li>Is het ExpressRoute-circuit in orde?</li></ul>|

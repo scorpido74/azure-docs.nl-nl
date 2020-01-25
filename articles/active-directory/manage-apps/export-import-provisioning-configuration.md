@@ -15,34 +15,34 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3e92ee5ffd97174331703b703e811bd1ce5f43
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 609031bfad23a14a954a09a447e363e89a9d29d5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70815836"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711747"
 ---
 # <a name="export-or-import-your-provisioning-configuration-by-using-graph-api"></a>Uw inrichtings configuratie exporteren of importeren met behulp van Graph API
 
 U kunt Microsoft Graph-API en Graph Explorer gebruiken om de kenmerk toewijzingen en het schema voor het inrichten van gebruikers te exporteren naar een JSON-bestand en dit weer te importeren in azure AD. U kunt ook de stappen die hier zijn vastgelegd, gebruiken om een back-up van uw inrichtings configuratie te maken. 
 
-## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Stap 1: Uw inrichtings App Service Principal-ID ophalen (object-ID)
+## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Stap 1: de principal-ID van uw inrichtings App Service ophalen (object-ID)
 
 1. Start de [Azure Portal](https://portal.azure.com)en navigeer naar de sectie eigenschappen van uw inrichtings toepassing. Bijvoorbeeld, als u uw werkdag wilt exporteren *naar AD User Provisioning toepassings* toewijzing, navigeert u naar de sectie eigenschappen van de app. 
 1. In de sectie eigenschappen van uw inrichtings app kopieert u de GUID-waarde die is gekoppeld aan het veld *object-id* . Deze waarde wordt ook wel de **ServicePrincipalId** van uw app genoemd en wordt gebruikt in Graph Explorer-bewerkingen.
 
-   ![App Service Principal-ID van workday](./media/export-import-provisioning-mappings/wd_export_01.png)
+   ![App Service Principal-ID van workday](media/export-import-provisioning-mappings/wd_export_01.png)
 
-## <a name="step-2-sign-into-microsoft-graph-explorer"></a>Stap 2: Aanmelden bij Microsoft Graph Explorer
+## <a name="step-2-sign-into-microsoft-graph-explorer"></a>Stap 2: aanmelden bij Microsoft Graph Explorer
 
 1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) starten
 1. Klik op de knop Aanmelden met micro soft en meld u aan met Azure AD Global admin of de referenties van de app-beheerder.
 
-    ![Graph-aanmelding](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Graph-aanmelding](media/export-import-provisioning-mappings/wd_export_02.png)
 
 1. Wanneer de aanmelding is geslaagd, worden de gegevens van het gebruikers account in het linkerdeel venster weer gegeven.
 
-## <a name="step-3-retrieve-the-provisioning-job-id-of-the-provisioning-app"></a>Stap 3: De inrichtings taak-ID van de inrichtings-app ophalen
+## <a name="step-3-retrieve-the-provisioning-job-id-of-the-provisioning-app"></a>Stap 3: de inrichtings taak-ID van de inrichtings-app ophalen
 
 Voer in de Microsoft Graph Explorer de volgende GET-query Vervang [servicePrincipalId] uit met de **servicePrincipalId** geëxtraheerd uit [stap 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id).
 
@@ -52,9 +52,9 @@ Voer in de Microsoft Graph Explorer de volgende GET-query Vervang [servicePrinci
 
 U ontvangt een antwoord zoals hieronder wordt weer gegeven. Kopieer het kenmerk id dat aanwezig is in het antwoord. Deze waarde is de **ProvisioningJobId** en wordt gebruikt voor het ophalen van de onderliggende meta gegevens van het schema.
 
-   [![Inrichtings taak-ID](./media/export-import-provisioning-mappings/wd_export_03.png)](./media/export-import-provisioning-mappings/wd_export_03.png#lightbox)
+   [inrichtings taak-ID ![](media/export-import-provisioning-mappings/wd_export_03.png)](media/export-import-provisioning-mappings/wd_export_03.png#lightbox)
 
-## <a name="step-4-download-the-provisioning-schema"></a>Stap 4: Het inrichtings schema downloaden
+## <a name="step-4-download-the-provisioning-schema"></a>Stap 4: het inrichtings schema downloaden
 
 Voer in de Microsoft Graph Explorer de volgende GET-query uit en vervang [servicePrincipalId] en [ProvisioningJobId] door de ServicePrincipalId en de ProvisioningJobId die in de vorige stappen zijn opgehaald.
 
@@ -64,7 +64,7 @@ Voer in de Microsoft Graph Explorer de volgende GET-query uit en vervang [servic
 
 Kopieer het JSON-object van het antwoord en sla het op in een bestand om een back-up van het schema te maken.
 
-## <a name="step-5-import-the-provisioning-schema"></a>Stap 5: Het inrichtings schema importeren
+## <a name="step-5-import-the-provisioning-schema"></a>Stap 5: het inrichtings schema importeren
 
 > [!CAUTION]
 > Voer deze stap alleen uit als u het schema voor configuratie wilt wijzigen dat niet kan worden gewijzigd met behulp van de Azure Portal of als u de configuratie wilt herstellen vanuit een eerder back-up van een bestand met een geldig en werk schema.
@@ -77,10 +77,10 @@ Configureer in de Microsoft Graph Explorer de volgende PUT-query en vervang [ser
 
 Kopieer de inhoud van het JSON-schema bestand op het tabblad aanvraag tekst.
 
-   [![Aanvraag tekst](./media/export-import-provisioning-mappings/wd_export_04.png)](./media/export-import-provisioning-mappings/wd_export_04.png#lightbox)
+   [![aanvraag tekst](media/export-import-provisioning-mappings/wd_export_04.png)](media/export-import-provisioning-mappings/wd_export_04.png#lightbox)
 
 Voeg op het tabblad aanvraag headers het kenmerk content-type header toe met de waarde ' application/json '
 
-   [![Aanvraag headers](./media/export-import-provisioning-mappings/wd_export_05.png)](./media/export-import-provisioning-mappings/wd_export_05.png#lightbox)
+   [![aanvraag headers](media/export-import-provisioning-mappings/wd_export_05.png)](media/export-import-provisioning-mappings/wd_export_05.png#lightbox)
 
 Klik op de knop Query uitvoeren om het nieuwe schema te importeren.

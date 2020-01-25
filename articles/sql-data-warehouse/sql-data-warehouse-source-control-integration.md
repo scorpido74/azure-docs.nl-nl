@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 82d366b3f807e21e3531da00da78520fed90bc66
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: fc1fdddc7a157828fcc4770c4e8237af9a45fdc3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645263"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720024"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Integratie van broncode beheer voor Azure SQL Data Warehouse
 
@@ -37,7 +37,7 @@ In deze zelf studie wordt beschreven hoe u het SSDT-database project (SQL Server
 
    ![Verbindingen beheren](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Verbindingen beheren")
 
-   ![Verbinding maken](media/sql-data-warehouse-source-control-integration/3-connect.png "Verbinding maken")
+   ![Verbinding maken](media/sql-data-warehouse-source-control-integration/3-connect.png "Connect")
 
 3. Uw Azure opslag plaats-opslag plaats vanuit uw project naar uw lokale machine klonen
 
@@ -82,13 +82,3 @@ In deze zelf studie wordt beschreven hoe u het SSDT-database project (SQL Server
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Ontwikkelen voor Azure SQL Data Warehouse](sql-data-warehouse-overview-develop.md)
-
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-

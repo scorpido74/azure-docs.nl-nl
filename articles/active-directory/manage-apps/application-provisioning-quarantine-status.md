@@ -16,12 +16,12 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3ad689fb57c51d0deb698a723b93e6175bdbb5c
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 933217b2ad86535d45f6674165ee162f263a8cd7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882879"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712175"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Toepassing inrichten in quarantaine status
 
@@ -63,7 +63,7 @@ Los eerst het probleem op dat ertoe heeft geleid dat de toepassing in quarantain
 
 - Controleer de inrichtings instellingen van de toepassing om er zeker van te zijn dat u [geldige beheerders referenties hebt ingevoerd](configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning). Azure AD moet in staat zijn om een vertrouwens relatie met de doel toepassing tot stand te brengen. Zorg ervoor dat u geldige referenties hebt ingevoerd en dat uw account over de benodigde machtigingen beschikt.
 
-- Controleer de [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) om te onderzoeken welke fouten in quarantaine worden veroorzaakt en los de fout op. Toegang tot de inrichtings Logboeken in de Azure Portal door te gaan naar **Azure Active Directory** &gt; **enter prise apps** &gt; **inrichtings Logboeken (preview)** in de sectie **activiteit** .
+- Controleer de [inrichtings logboeken](../reports-monitoring/concept-provisioning-logs.md) om te onderzoeken welke fouten in quarantaine worden veroorzaakt en los de fout op. Toegang tot de inrichtings Logboeken in de Azure Portal door te gaan naar **Azure Active Directory** &gt; **enter prise apps** &gt; **inrichtings Logboeken (preview)** in de sectie **activiteit** .
 
 Nadat u het probleem hebt opgelost, start u de inrichtings taak opnieuw. Bepaalde wijzigingen in de inrichtings instellingen van de toepassing, zoals kenmerk toewijzingen of bereik filters, worden automatisch opnieuw opgestart. De voortgangs balk op de **inrichtings** pagina van de toepassing geeft aan wanneer het inrichten voor het laatst is gestart. Als u de inrichtings taak hand matig opnieuw moet starten, gebruikt u een van de volgende methoden:  
 

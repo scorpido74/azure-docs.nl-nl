@@ -1,39 +1,39 @@
 ---
-title: Post-gebeurtenis om aangepaste Azure Event Grid-onderwerp
-description: Beschrijft hoe u een gebeurtenis in een aangepast onderwerp plaatsen voor Azure Event Grid
+title: Het onderwerp gebeurtenis op aangepast Azure Event Grid plaatsen
+description: In dit artikel wordt beschreven hoe u een gebeurtenis op een aangepast onderwerp plaatst. Hier ziet u de indeling van de post-en gebeurtenis gegevens.
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 14ae5f2a0b6a950889d8587cd4d03ff4fc9a171b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0afad249f71a36bf7552da499e985b68d48ee7a9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304216"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721552"
 ---
-# <a name="post-to-custom-topic-for-azure-event-grid"></a>Plaatsen op aangepast onderwerp voor Azure Event Grid
+# <a name="post-to-custom-topic-for-azure-event-grid"></a>Bericht plaatsen op aangepast onderwerp voor Azure Event Grid
 
-In dit artikel wordt beschreven hoe u een gebeurtenis om een aangepast onderwerp te plaatsen. Hier ziet u de indeling van de boeken en gebeurtenis-gegevens. De [Service Level Agreement (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) alleen van toepassing op berichten die overeenkomen met de verwachte indeling.
+In dit artikel wordt beschreven hoe u een gebeurtenis op een aangepast onderwerp plaatst. Hier ziet u de indeling van de post-en gebeurtenis gegevens. De [Service Level Agreement (Sla)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) is alleen van toepassing op Posts die overeenkomen met de verwachte indeling.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="endpoint"></a>Eindpunt
 
-Wanneer u de HTTP POST naar een aangepast onderwerp verzendt, gebruikt u de URI-notatie: `https://<topic-endpoint>?api-version=2018-01-01`.
+Als u het HTTP-bericht naar een aangepast onderwerp verzendt, gebruikt u de URI-indeling: `https://<topic-endpoint>?api-version=2018-01-01`.
 
-Bijvoorbeeld, is het een geldige URI: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
+Een geldige URI is bijvoorbeeld: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
 
-Voor het eindpunt voor een aangepast onderwerp met Azure CLI, gebruikt u:
+Als u het eind punt voor een aangepast onderwerp met Azure CLI wilt ophalen, gebruikt u:
 
 ```azurecli-interactive
 az eventgrid topic show --name <topic-name> -g <topic-resource-group> --query "endpoint"
 ```
 
-Voor het eindpunt voor een aangepast onderwerp met Azure PowerShell, gebruikt u:
+Als u het eind punt voor een aangepast onderwerp met Azure PowerShell wilt ophalen, gebruikt u:
 
 ```powershell
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
@@ -41,17 +41,17 @@ Voor het eindpunt voor een aangepast onderwerp met Azure PowerShell, gebruikt u:
 
 ## <a name="header"></a>Header
 
-Opnemen in de aanvraag een headerwaarde met de naam `aeg-sas-key` die bevat een sleutel voor verificatie.
+Neem in de aanvraag een header waarde op met de naam `aeg-sas-key` die een sleutel voor verificatie bevat.
 
-Bijvoorbeeld, een geldige headerwaarde is `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
+Een geldige header-waarde is bijvoorbeeld `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
 
-Voor de sleutel voor een aangepast onderwerp met Azure CLI, gebruikt u:
+Als u de sleutel voor een aangepast onderwerp met Azure CLI wilt ophalen, gebruikt u:
 
 ```azurecli
 az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --query "key1"
 ```
 
-Voor de sleutel voor een aangepast onderwerp met PowerShell, gebruikt u:
+Als u de sleutel voor een aangepast onderwerp wilt ophalen met Power shell, gebruikt u:
 
 ```powershell
 (Get-AzEventGridTopicKey -ResourceGroupName <topic-resource-group> -Name <topic-name>).Key1
@@ -59,7 +59,7 @@ Voor de sleutel voor een aangepast onderwerp met PowerShell, gebruikt u:
 
 ## <a name="event-data"></a>Gebeurtenisgegevens
 
-Voor aangepaste onderwerpen bevat de gegevens op het hoogste niveau dezelfde velden als standaard resource gedefinieerde gebeurtenissen. Een van deze eigenschappen is een gegevens-eigenschap met eigenschappen die uniek is voor het aangepaste onderwerp. Als de uitgever van gebeurtenissen, kunt u de eigenschappen voor dat gegevensobject bepalen. Gebruik het volgende schema:
+Voor aangepaste onderwerpen bevatten de gegevens op het hoogste niveau dezelfde velden als standaard, door de resource gedefinieerde gebeurtenissen. Een van deze eigenschappen is een gegevens eigenschap met eigenschappen die uniek zijn voor het aangepaste onderwerp. Als uitgever van de gebeurtenis bepaalt u de eigenschappen voor dat gegevens object. Gebruik het volgende schema:
 
 ```json
 [
@@ -76,12 +76,12 @@ Voor aangepaste onderwerpen bevat de gegevens op het hoogste niveau dezelfde vel
 ]
 ```
 
-Zie voor een beschrijving van deze eigenschappen [Azure Event Grid-gebeurtenisschema](event-schema.md). Als u gebeurtenissen naar een event grid-onderwerp boeken, kan de matrix een totale grootte van maximaal 1 MB hebben. Elke gebeurtenis in de matrix is beperkt tot 64 KB (algemeen beschikbaar) of 1 MB (preview).
+Zie [Azure Event grid-gebeurtenis schema](event-schema.md)voor een beschrijving van deze eigenschappen. Bij het posten van gebeurtenissen naar een event grid-onderwerp kan de matrix een totale grootte hebben van Maxi maal 1 MB. Elke gebeurtenis in de matrix is beperkt tot 64 KB (algemene Beschik baarheid) of 1 MB (preview-versie).
 
 > [!NOTE]
-> Een gebeurtenis van de grootte van maximaal 64 KB wordt gedekt door algemene beschikbaarheid (GA) Service Level Agreement (SLA). De ondersteuning voor een gebeurtenis van de grootte van maximaal 1 MB is momenteel in preview. Gebeurtenissen meer dan 64 KB in intervallen van 64 KB in rekening worden gebracht. 
+> Een gebeurtenis met een grootte van Maxi maal 64 KB wordt gedekt door de algemene Beschik baarheid (GA) Service Level Agreement (SLA). De ondersteuning voor een gebeurtenis met een grootte van Maxi maal 1 MB is momenteel als preview-versie beschikbaar. Gebeurtenissen van meer dan 64 KB worden in rekening gebracht in stappen van 64-KB. 
 
-Bijvoorbeeld, is een schema van de gegevens geldig gebeurtenis:
+Een geldig schema voor gebeurtenis gegevens is bijvoorbeeld:
 
 ```json
 [{
@@ -99,17 +99,17 @@ Bijvoorbeeld, is een schema van de gegevens geldig gebeurtenis:
 
 ## <a name="response"></a>Antwoord
 
-Na het boeken met het eindpunt onderwerp, moet u een antwoord ontvangt. Het antwoord is een standaard HTTP-responscode. Sommige algemene antwoorden zijn:
+Nadat u naar het onderwerp-eind punt hebt gepost, ontvangt u een antwoord. Het antwoord is een standaard-HTTP-antwoord code. Enkele veelvoorkomende reacties zijn:
 
 |Resultaat  |Antwoord  |
 |---------|---------|
 |Geslaagd  | 200 OK  |
-|Gebeurtenisgegevens heeft een onjuiste indeling | 400-Ongeldige aanvraag |
-|Ongeldige toegangssleutel | 401-niet toegestaan |
-|Onjuiste eindpunt | 404 – Niet gevonden |
-|Matrix of een gebeurtenis overschrijdt de maximale grootte | 413 payload te groot |
+|De gebeurtenis gegevens hebben een onjuiste indeling | 400 ongeldige aanvraag |
+|Ongeldige toegangs sleutel | 401 niet gemachtigd |
+|Onjuist eind punt | 404 – Niet gevonden |
+|Matrix of gebeurtenis overschrijdt grootte limieten | 413 Payload is te groot |
 
-Voor fouten heeft de hoofdtekst van het bericht de volgende indeling:
+Voor fouten heeft de bericht tekst de volgende indeling:
 
 ```json
 {
@@ -126,6 +126,6 @@ Voor fouten heeft de hoofdtekst van het bericht de volgende indeling:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor meer informatie over het controleren van de gebeurtenis leveringen [Monitor Event Grid berichtbezorging](monitor-event-delivery.md).
-* Zie voor meer informatie over de verificatiesleutel [Event Grid-beveiliging en verificatie](security-authentication.md).
-* Zie voor meer informatie over het maken van een Azure Event Grid-abonnement [Event Grid-abonnementsschema](subscription-creation-schema.md).
+* Zie [Event grid bericht bezorging bewaken](monitor-event-delivery.md)voor meer informatie over het bewaken van gebeurtenis leveringen.
+* Zie [Event grid beveiliging en verificatie](security-authentication.md)voor meer informatie over de verificatie sleutel.
+* Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.

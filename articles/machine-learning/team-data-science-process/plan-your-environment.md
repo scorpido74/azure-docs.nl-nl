@@ -3,20 +3,20 @@ title: Scenario's identificeren en het analyse proces plannen-team data Science 
 description: Identificeer scenario's en plan voor geavanceerde analytische gegevensverwerking op basis van een reeks van belangrijke vragen.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ba87461c6c195a6b483538fd94d8be76239b8dc5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647302"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710323"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Scenario's en plannen identificeren voor geavanceerde analytische gegevensverwerking
 
@@ -47,8 +47,8 @@ Bevindt uw gegevens zich lokaal of in de Cloud? Mogelijke locaties zijn:
 
 * een openbaar beschikbaar HTTP-adres
 * de locatie van een lokaal of netwerk bestand
-* een SQL Server-database
-* een Azure storage-container
+* een SQL Server-Data Base
+* een Azure Storage-container
 
 ### <a name="what-is-the-azure-destination"></a>Wat is de Azure-bestemming?
 
@@ -79,7 +79,7 @@ Zie [gegevens verplaatsen van een on-premises SQL-Server naar SQL Azure met Azur
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Hoeveel gegevens worden verplaatst naar Azure?
 
-Extreem grote gegevens sets kunnen de opslag capaciteit van bepaalde omgevingen overschrijden. Zie voor een voor beeld de bespreking van grootte limieten voor Machine Learning Studio (klassiek) in de volgende sectie. In dergelijke gevallen kunt u een voor beeld van de gegevens tijdens de analyse gebruiken. Zie voor meer informatie over hoe u een gegevensset in verschillende Azure-omgevingen down-sampling, [Sample van gegevens in het Team Data Science Process](sample-data.md).
+Grote gegevens sets kunnen de opslag capaciteit van bepaalde omgevingen overschrijden. Zie voor een voor beeld de bespreking van grootte limieten voor Machine Learning Studio (klassiek) in de volgende sectie. In dergelijke gevallen kunt u een voor beeld van de gegevens tijdens de analyse gebruiken. Zie voor meer informatie over hoe u een gegevensset in verschillende Azure-omgevingen down-sampling, [Sample van gegevens in het Team Data Science Process](sample-data.md).
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Vragen over de kenmerken van gegevens: type, de indeling en grootte
 

@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8238d2b417dbe03ad0623e472f1a239940c1bc8
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: e7296c63a467b2f53550b3e609cf1146244cf933
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681375"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712121"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>De status van het inrichten van gebruikers controleren
 
@@ -35,7 +35,7 @@ Wanneer u voor het eerst automatische inrichting configureert, ziet u in de sect
 - Het type inrichtings cyclus (eerste of incrementeel) dat momenteel wordt uitgevoerd of de laatste keer is voltooid.
 - Een **voortgangs balk** met het percentage van de inrichtings cyclus dat is voltooid. Het percentage weerspiegelt het aantal pagina's dat is ingericht. Houd er rekening mee dat elke pagina meerdere gebruikers of groepen kan bevatten, zodat het percentage niet rechtstreeks overeenkomt met het aantal gebruikers, groepen of rollen dat is ingericht.
 - Een knop voor **vernieuwen** die u kunt gebruiken om de weer gave bijgewerkt te laten worden.
-- Het aantal **gebruikers** en **groepen** in het gegevens archief van de connector. De telling neemt toe wanneer een object wordt toegevoegd aan het bereik van de inrichting. Het aantal wordt niet weer gegeven als een gebruiker zacht wordt verwijderd of permanent wordt verwijderd omdat hiermee het object niet uit de gegevens opslag van de connector wordt verwijderd. Het aantal wordt opnieuw berekende de eerste synchronisatie nadat de CD'S [opnieuw zijn ingesteld](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) 
+- Het aantal **gebruikers** en **groepen** in het gegevens archief van de connector. De telling neemt toe wanneer een object wordt toegevoegd aan het bereik van de inrichting. Het aantal wordt niet weer gegeven als een gebruiker zacht wordt verwijderd of permanent wordt verwijderd omdat hiermee het object niet uit de gegevens opslag van de connector wordt verwijderd. Het aantal wordt recaculated de eerste synchronisatie nadat de CD'S opnieuw zijn [ingesteld](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) 
 - Een koppeling **voor controle logboeken weer geven** waarmee de Azure AD-inrichtings logboeken worden geopend voor meer informatie over alle bewerkingen die worden uitgevoerd door de gebruikers Provisioning Service, inclusief de inrichtings status voor afzonderlijke gebruikers (Zie de sectie [inrichtings Logboeken gebruiken](#use-provisioning-logs-to-check-a-users-provisioning-status) ).
 
 Nadat een inrichtings cyclus is voltooid, toont de sectie **statistieken tot datum** de cumulatieve aantallen gebruikers en groepen die zijn ingericht tot datum, samen met de voltooiings datum en duur van de laatste cyclus. Met de **activiteit-ID** wordt de meest recente inrichtings cyclus uniek geïdentificeerd. De **taak-id** is een unieke id voor de inrichtings taak en is specifiek voor de app in uw Tenant.
@@ -60,7 +60,7 @@ De inrichtings logboeken registreren alle bewerkingen die worden uitgevoerd door
 Voor meer informatie over het lezen van de inrichtings Logboeken in de Azure Portal raadpleegt u de [hand leiding](check-status-user-account-provisioning.md)voor het inrichten van de rapportage.
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Hoe lang duurt het om gebruikers in te richten?
-Wanneer u automatische gebruikers inrichting met een toepassing gebruikt, worden gebruikers accounts in een app automatisch door Azure AD ingericht en bijgewerkt op basis van dingen zoals [gebruikers-en groeps toewijzing](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) met een regel matig gepland tijds interval, meestal elke 40 minuten.
+Wanneer u automatische gebruikers inrichting met een toepassing gebruikt, worden gebruikers accounts in een app automatisch door Azure AD ingericht en bijgewerkt op basis van dingen zoals [gebruikers-en groeps toewijzing](assign-user-or-group-access-portal.md) met een regel matig gepland tijds interval, meestal elke 40 minuten.
 
 Hoe lang het duurt voordat een bepaalde gebruiker is ingericht, hangt voornamelijk af van de vraag of uw inrichtings taak een eerste cyclus of een incrementele cyclus uitvoert.
 
@@ -102,7 +102,7 @@ Samen vatting van factoren die van invloed zijn op de tijd die nodig is om een *
 
 - Het aantal en de grootte van toegewezen groepen. Het synchroniseren van toegewezen groepen duurt langer dan gebruikers synchroniseren. Zowel het aantal als de grootte van de toegewezen groepen zijn van invloed op de prestaties. Als een toepassing [toewijzingen voor groeps object synchronisatie heeft ingeschakeld](customize-application-attributes.md#editing-group-attribute-mappings), worden groeps eigenschappen zoals groeps namen en lidmaatschappen naast gebruikers gesynchroniseerd. Deze aanvullende synchronisaties nemen meer tijd in beslag dan alleen gebruikers objecten synchroniseren.
 
-- Als de prestaties een probleem vormen en u probeert het meren deel van de gebruikers en groepen in uw Tenant in te richten, gebruikt u bereik filters. Met behulp van bereik filters kunt u de gegevens die door de inrichtings service worden geëxtraheerd, afstemmen op de gebruikers op basis van specifieke kenmerk waarden. Zie voor meer informatie over het bereik van filters [kenmerk toepassing inrichten met bereik filters](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+- Als de prestaties een probleem vormen en u probeert het meren deel van de gebruikers en groepen in uw Tenant in te richten, gebruikt u bereik filters. Met behulp van bereik filters kunt u de gegevens die door de inrichtings service worden geëxtraheerd, afstemmen op de gebruikers op basis van specifieke kenmerk waarden. Zie voor meer informatie over het bereik van filters [kenmerk toepassing inrichten met bereik filters](define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-[Automate User Provisioning and Deprovisioning to SaaS Applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning) (Automatisch gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory)
+[Automate User Provisioning and Deprovisioning to SaaS Applications with Azure Active Directory](user-provisioning.md) (Automatisch gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory)

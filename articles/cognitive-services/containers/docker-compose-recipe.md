@@ -1,5 +1,5 @@
 ---
-title: Docker-compositie gebruiken om meerdere containers te implementeren
+title: Docker Compose gebruiken om meerdere containers te implementeren
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het implementeren van meerdere Cognitive Services-containers. In dit artikel wordt beschreven hoe u meerdere docker-container installatie kopieën kunt organiseren met behulp van docker opstellen.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 95ec80af88e0b89f61bebed08f4b96a09947f401
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 54a2aac3db47d60f02a45adae9aaa6077d675a43
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311556"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716892"
 ---
-# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker-compositie gebruiken om meerdere containers te implementeren
+# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose gebruiken om meerdere containers te implementeren
 
 In dit artikel wordt beschreven hoe u meerdere Azure Cognitive Services-containers kunt implementeren. U leert hoe u docker-compositie kunt gebruiken om meerdere docker-container installatie kopieën te organiseren.
 
@@ -46,7 +46,7 @@ Vul het [aanvraag formulier voor de Cognitive Services spraak containers](https:
 
 ## <a name="docker-compose-file"></a>Docker-bestand opstellen
 
-Het YAML-bestand definieert alle services die moeten worden geïmplementeerd. Deze services zijn afhankelijk van ofwel `DockerFile` een of een bestaande container installatie kopie. In dit geval gebruiken we twee Preview-voor beelden. Kopieer en plak het volgende YAML-bestand en sla het op als *docker-Samenstel. yaml*. Geef de juiste **apikey**- , facturerings-en **waarden endpointuri** -waarden op in het bestand.
+Het YAML-bestand definieert alle services die moeten worden geïmplementeerd. Deze services zijn afhankelijk van een `DockerFile` of een bestaande container installatie kopie. In dit geval gebruiken we twee Preview-voor beelden. Kopieer en plak het volgende YAML-bestand en sla het op als *docker-Samenstel. yaml*. Geef de juiste **apikey**-, **facturerings**-en **waarden endpointuri** -waarden op in het bestand.
 
 ```yaml
 version: '3.7'

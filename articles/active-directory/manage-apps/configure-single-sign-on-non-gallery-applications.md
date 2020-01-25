@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dcc2d6fc252f288f15e2583012798b4d0e9cee6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7c99c38c9a1972bc434c7fa61d6745dac0d79d7b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169438"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711933"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Eenmalige aanmelding op basis van SAML configureren voor niet-galerie toepassingen
 
@@ -32,7 +32,7 @@ Als u eenmalige SAML-aanmelding wilt configureren voor een niet-galerie toepassi
 
 Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een niet-galerie-app toevoegen](add-non-gallery-app.md).
 
-## <a name="step-1-edit-the-basic-saml-configuration"></a>Stap 1. De basis-SAML-configuratie bewerken
+## <a name="step-1-edit-the-basic-saml-configuration"></a>Step 1. De basis-SAML-configuratie bewerken
 
 1. Meld u bij [Azure Portal](https://portal.azure.com) aan als beheerder van de cloudtoepassing of als toepassingsbeheerder voor uw Azure Active Directory-tenant.
 
@@ -53,8 +53,8 @@ Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een n
     | Basis configuratie-instelling voor SAML | SP-geïnitieerd | idP-geïnitieerd | Beschrijving |
     |:--|:--|:--|:--|
     | **Id (Entiteits-ID)** | Vereist voor sommige apps | Vereist voor sommige apps | Unieke identificatie van de toepassing. Azure Active Directory stuurt de id naar de toepassing als parameter van de doelgroep van het SAML-token. Er wordt verwacht dat de toepassing deze valideert. Deze waarde wordt ook weergegeven als de entiteit-ID in SAML-metagegevens die worden geleverd door de toepassing. Voer een URL in die gebruikmaakt van het volgende patroon: ' https://<subdomain>. contoso.com ' *u kunt deze waarde vinden als het element van de **Uitgever** in de **AuthnRequest** (SAML-aanvraag) die door de toepassing is verzonden.* |
-    | **Antwoord-URL** | Vereist | Vereist | Hiermee geeft u op waar de toepassing verwacht het SAML-token te ontvangen. De antwoord-URL wordt ook de ACS-URL (Assertion Consumer Service) genoemd. U kunt de extra antwoord-URL velden gebruiken om meerdere antwoord-Url's op te geven. Stel dat u aanvullende antwoord-Url's nodig hebt voor meerdere subdomeinen. Voor test doeleinden kunt u meerdere antwoord-Url's (lokale host en open bare Url's) tegelijk opgeven. |
-    | **Aanmeldings-URL** | Vereist | Niet opgeven | Wanneer een gebruiker deze URL opent, leidt de serviceprovider hem om naar Azure Active Directory om de gebruiker te verifiëren en aan te melden. Azure Active Directory maakt gebruik van de URL om de toepassing te starten vanuit Office 365 of het toegangsvenster van Azure Active Directory. Als deze leeg is, voert Azure AD een door IdP geïnitieerde aanmelding uit wanneer een gebruiker de toepassing start vanuit Office 365, het Azure AD-toegangs venster of de Azure AD SSO-URL.|
+    | **Antwoord-URL** | Verplicht | Verplicht | Hiermee geeft u op waar de toepassing verwacht het SAML-token te ontvangen. De antwoord-URL wordt ook de ACS-URL (Assertion Consumer Service) genoemd. U kunt de extra antwoord-URL velden gebruiken om meerdere antwoord-Url's op te geven. Stel dat u aanvullende antwoord-Url's nodig hebt voor meerdere subdomeinen. Voor test doeleinden kunt u meerdere antwoord-Url's (lokale host en open bare Url's) tegelijk opgeven. |
+    | **Aanmeldings-URL** | Verplicht | Niet opgeven | Wanneer een gebruiker deze URL opent, leidt de serviceprovider hem om naar Azure Active Directory om de gebruiker te verifiëren en aan te melden. Azure Active Directory maakt gebruik van de URL om de toepassing te starten vanuit Office 365 of het toegangsvenster van Azure Active Directory. Als deze leeg is, voert Azure AD een door IdP geïnitieerde aanmelding uit wanneer een gebruiker de toepassing start vanuit Office 365, het Azure AD-toegangs venster of de Azure AD SSO-URL.|
     | **Relay-status** | Optioneel | Optioneel | Hiermee geeft u aan de toepassing op waar de gebruiker naar moet worden omgeleid nadat de verificatie is voltooid. De waarde is doorgaans een geldige URL voor de toepassing. Sommige toepassingen gebruiken dit veld echter anders. Vraag de leverancier van de toepassing voor meer informatie.
     | **Afmeldings-URL** | Optioneel | Optioneel | Wordt gebruikt om de antwoorden op SAML-afmeldingen terug te sturen naar de toepassing.
 
@@ -70,11 +70,11 @@ Wanneer een gebruiker zich verifieert bij de toepassing, geeft Azure AD aan de t
 
 2. Controleer de **waarde**van de naam-id. De standaard waarde is *User. Principal*name. De gebruikers-id is uniek voor elke gebruiker in de toepassing. Als het e-mailadres bijvoorbeeld zowel de gebruikersnaam als de unieke id is, wordt de waarde ingesteld op *user.mail*.
 
-3. Als u de **naam-id-waarde**wilt wijzigen, selecteert u het **bewerkings** pictogram (een potlood) voor het veld **naam-id** . Breng de gewenste wijzigingen aan in de id-indeling en-bron, indien nodig. Zie voor meer informatie [bewerken van NameID](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#editing-nameid). Sla de wijzigingen op wanneer u klaar bent. 
+3. Als u de **naam-id-waarde**wilt wijzigen, selecteert u het **bewerkings** pictogram (een potlood) voor het veld **naam-id** . Breng de gewenste wijzigingen aan in de id-indeling en-bron, indien nodig. Zie voor meer informatie [bewerken van NameID](../develop/active-directory-saml-claims-customization.md#editing-nameid). Sla de wijzigingen op wanneer u klaar bent. 
  
 4. Als u groeps claims wilt configureren, selecteert u het **bewerkings** pictogram voor de groepen die zijn **geretourneerd in claim** veld. Zie [groeps claims configureren](../hybrid/how-to-connect-fed-group-claims.md)voor meer informatie.
 
-5. Als u een claim wilt toevoegen, selecteert u **nieuwe claim toevoegen** boven aan de pagina. Voer de **naam** in en selecteer de juiste bron. Als u de **kenmerk** bron selecteert, moet u het **bron kenmerk** kiezen dat u wilt gebruiken. Als u de **Vertaal** bron selecteert, moet u de **trans formatie** en **para meter 1** kiezen die u wilt gebruiken. Zie voor meer informatie [toepassingsspecifieke claims toevoegen](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#adding-application-specific-claims). Sla de wijzigingen op wanneer u klaar bent. 
+5. Als u een claim wilt toevoegen, selecteert u **nieuwe claim toevoegen** boven aan de pagina. Voer de **naam** in en selecteer de juiste bron. Als u de **kenmerk** bron selecteert, moet u het **bron kenmerk** kiezen dat u wilt gebruiken. Als u de **Vertaal** bron selecteert, moet u de **trans formatie** en **para meter 1** kiezen die u wilt gebruiken. Zie voor meer informatie [toepassingsspecifieke claims toevoegen](../develop/active-directory-saml-claims-customization.md#adding-application-specific-claims). Sla de wijzigingen op wanneer u klaar bent. 
 
 6. Selecteer **Opslaan**. De nieuwe claim wordt weer gegeven in de tabel.
 
@@ -150,7 +150,7 @@ Als er een fout bericht wordt weer gegeven, voert u de volgende stappen uit:
 
 1. Kopieer en plak de gegevens in het vak **Hoe ziet de fout eruit?** .
 
-    ![Hulp krijgen bij het oplossen van problemen](media/configure-single-sign-on-portal/error-guidance.png)
+    ![Hulp krijgen bij het oplossen van problemen](media/configure-single-sign-on-non-gallery-applications/error-guidance.png)
 
 2. Selecteer **ondersteuning**voor het oplossen van oplossingen. De richtlijnen voor de oorzaak en de oplossing van het probleem worden weergegeven.  In dit voorbeeld was de gebruiker niet toegewezen aan de toepassing.
 

@@ -17,12 +17,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8aa8265733128ed3b2ad5ddf16dcebb122b0f054
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87818066a656aa4bcd6f45f1835ca1512a674a9e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443422"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712301"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Het inrichten van gebruikers configureren voor een toepassing in de Azure AD-galerie
 
@@ -40,19 +40,19 @@ Als u ondersteuning wilt aanvragen voor automatische inrichting voor een bepaald
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>Een toepassing configureren voor automatische inrichting
 
-*Automatische* betekent dat een Azure AD-inrichtings connector is ontwikkeld voor deze toepassing. Voor meer informatie over de Azure AD-inrichtings service en hoe deze werkt, raadpleegt u gebruikers inrichten en het ongedaan maken van de [inrichting van SaaS-toepassingen met Azure Active Directory automatiseren](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
+*Automatische* betekent dat een Azure AD-inrichtings connector is ontwikkeld voor deze toepassing. Voor meer informatie over de Azure AD-inrichtings service en hoe deze werkt, raadpleegt u gebruikers inrichten en het ongedaan maken van de [inrichting van SaaS-toepassingen met Azure Active Directory automatiseren](user-provisioning.md).
 
-Zie voor meer informatie over het inrichten van specifieke gebruikers en groepen voor een toepassing [beheren van het inrichten van gebruikers accounts voor zakelijke apps](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning).
+Zie voor meer informatie over het inrichten van specifieke gebruikers en groepen voor een toepassing [beheren van het inrichten van gebruikers accounts voor zakelijke apps](configure-automatic-user-provisioning-portal.md).
 
 De stappen die nodig zijn om automatische inrichting in te scha kelen en te configureren, zijn afhankelijk van de toepassing.
 
 > [!NOTE]
-> U moet beginnen met het vinden van de installatie-zelf studie die specifiek is voor het instellen van inrichting voor uw toepassing, en het volgen van de stappen voor het configureren van zowel de app als Azure AD om de inrichtings verbinding te maken. 
+> U moet beginnen met het vinden van de installatie-zelf studie die specifiek is voor het instellen van inrichting voor uw toepassing, en het volgen van de stappen voor het configureren van zowel de app als Azure AD om de inrichtings verbinding te maken.
 
-App-zelf studies vindt u in een [lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+App-zelf studies vindt u in een [lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](../saas-apps/tutorial-list.md).
 
 Het is belang rijk om rekening mee te houden bij het instellen van inrichting door de kenmerk toewijzingen en werk stromen te controleren en te configureren die bepalen welke gebruikers-(of groeps) eigenschappen stromen van Azure AD naar de toepassing. Dit omvat het instellen van de ' overeenkomende eigenschap ' die wordt gebruikt om gebruikers/groepen tussen de twee systemen uniek te identificeren en te vergelijken. Zie de koppeling in de *volgende stappen* voor meer informatie over kenmerk toewijzingen.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Toewijzings kenmerken van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+[Toewijzings kenmerken van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory](customize-application-attributes.md)
 

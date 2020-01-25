@@ -3,20 +3,20 @@ title: Voorbeeldgegevens in SQL Server op Azure - Team Data Science Process
 description: Voorbeeldgegevens die zijn opgeslagen in SQL Server op Azure met SQL- of de Python-programmeertaal en verplaatsen naar Azure Machine Learning.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a544ddb6f31481750b1cd46b52d2909d71739707
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71a2ec9dc4d644fb8739db3817e2cd1d09913da7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61043392"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717643"
 ---
 # <a name="heading"></a>Voorbeeldgegevens in SQL Server op Azure
 
@@ -30,14 +30,14 @@ De steekproeven van Python gebruikt de [pyodbc](https://code.google.com/p/pyodbc
 > 
 
 **Waarom sample van uw gegevens?**
-Als de gegevensset die u van plan bent om te analyseren groot is, is het doorgaans een goed idee om down-sampling van de gegevens om deze aan de grootte van een kleiner, maar representatieve en gemakkelijker. Dit vereenvoudigt het begrijpen van gegevens, verkennen en feature-engineering. De rol in de [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) bestaat uit het inschakelen van snel ontwikkelen van prototypen van de functies voor het verwerken van gegevens en machine learning-modellen.
+Als de gegevensset die u van plan bent om te analyseren groot is, is het doorgaans een goed idee om down-sampling van de gegevens om deze aan de grootte van een kleiner, maar representatieve en gemakkelijker. Bemonstering vereenvoudigt het leren van gegevens, het verkennen en functie-engineering. De rol in de [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) bestaat uit het inschakelen van snel ontwikkelen van prototypen van de functies voor het verwerken van gegevens en machine learning-modellen.
 
 Deze taak steekproeven is een stap in de [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="SQL"></a>Met behulp van SQL
 Deze sectie beschrijft de verschillende methoden voor het uitvoeren van eenvoudige steekproeven ten opzichte van de gegevens in de database met behulp van SQL. Kies een methode op basis van de gegevensgrootte van uw en de distributie hiervan.
 
-De volgende twee items laten zien hoe u `newid` in SQL Server voor het uitvoeren van de steekproeven. Welke methode u kiest is afhankelijk van hoe willekeurige u wilt dat het voorbeeld om te worden (pk_id in de volgende voorbeeldcode wordt ervan uitgegaan dat een automatisch gegenereerde primaire sleutel).
+De volgende twee items laten zien hoe u `newid` in SQL Server voor het uitvoeren van de steekproeven. De methode die u kiest, is afhankelijk van hoe wille keurig het voor beeld moet worden (pk_id in de volgende voorbeeld code wordt aangenomen dat het een automatisch gegenereerde primaire sleutel is).
 
 1. Minder strikte steekproef
    
@@ -48,7 +48,7 @@ De volgende twee items laten zien hoe u `newid` in SQL Server voor het uitvoeren
         SELECT * FROM <table_name>
         WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
 
-Component TABLESAMPLE kan worden gebruikt voor de gegevens ook steekproeven. Dit kan een betere benadering zijn als de gegevensgrootte van uw groot is (ervan uitgaande dat gegevens op verschillende pagina's worden niet gecorreleerd) en voor de query uit te voeren binnen een redelijke tijd.
+Component TABLESAMPLE kan worden gebruikt voor de gegevens ook steekproeven. Deze optie is mogelijk een betere benadering als de grootte van uw gegevens groot is (ervan uitgaande dat de gegevens op verschillende pagina's niet worden gecorreleerd) en de query in een redelijke periode wordt voltooid.
 
     SELECT *
     FROM <table_name> 
@@ -60,18 +60,18 @@ Component TABLESAMPLE kan worden gebruikt voor de gegevens ook steekproeven. Dit
 > 
 
 ### <a name="sql-aml"></a>Verbinding maken met Azure Machine Learning
-U kunt rechtstreeks de voorbeeldquery's boven in de Azure Machine Learning [importgegevens] [ import-data] module down-sampling van de gegevens op elk gewenst moment en brengen naar een Azure Machine Learning-experiment. Een schermopname van het gebruik van de reader-module voor het lezen van de samplinggegevens wordt hier weergegeven:
+U kunt de bovenstaande voorbeeld query's rechtstreeks in de module Azure Machine Learning [gegevens importeren][import-data] gebruiken om de gegevens op de vlucht te verlagen en deze naar een Azure machine learning experiment te brengen. Een scherm opname van het gebruik van de Lees module om de voorbeeld gegevens te lezen, worden hier weer gegeven:
 
 ![lezer-sql][1]
 
 ## <a name="python"></a>Met behulp van de programmeertaal Python
-Deze sectie wordt gedemonstreerd met behulp van de [pyodbc-bibliotheek](https://code.google.com/p/pyodbc/) tot stand brengen van een ODBC verbinding maken met een SQL server-database in Python. De tekenreeks voor databaseverbinding is als volgt: (vervang servername, dbname, gebruikersnaam en wachtwoord door uw configuratie):
+Deze sectie wordt gedemonstreerd met behulp van de [pyodbc-bibliotheek](https://code.google.com/p/pyodbc/) tot stand brengen van een ODBC verbinding maken met een SQL server-database in Python. De data base connection string is als volgt: (Vervang servername, dbname, username en password door uw configuratie):
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-De [Pandas](https://pandas.pydata.org/) in Python-bibliotheek biedt een uitgebreide set gegevensstructuren en hulpprogramma's voor gegevensanalyse voor gegevensmanipulatie voor Python programmeren. De volgende code wordt een voorbeeld van 0,1% van de gegevens uit een tabel in Azure SQL-database in een Pandas gegevens gelezen:
+De [Pandas](https://pandas.pydata.org/) in Python-bibliotheek biedt een uitgebreide set gegevensstructuren en hulpprogramma's voor gegevensanalyse voor gegevensmanipulatie voor Python programmeren. Met de volgende code wordt een voor beeld van 0,1% gelezen van de gegevens uit een tabel in Azure SQL Database naar een Panda-gegevens:
 
     import pandas as pd
 
@@ -81,7 +81,7 @@ De [Pandas](https://pandas.pydata.org/) in Python-bibliotheek biedt een uitgebre
 Nu kunt u werken met de sample gegevens in het Pandas dataframe. 
 
 ### <a name="python-aml"></a>Verbinding maken met Azure Machine Learning
-De volgende voorbeeldcode kunt u de gegevens naar beneden steekproef opslaan naar een bestand en upload het naar een Azure-blob. De gegevens in de blob rechtstreeks kunnen worden gelezen in een Azure Machine Learning-Experiment met behulp van de [importgegevens] [ import-data] module. De stappen zijn als volgt: 
+De volgende voorbeeldcode kunt u de gegevens naar beneden steekproef opslaan naar een bestand en upload het naar een Azure-blob. De gegevens in de BLOB kunnen rechtstreeks in een Azure Machine Learning experiment worden gelezen met behulp van de module [gegevens importeren][import-data] . De stappen zijn als volgt: 
 
 1. Het pandas dataframe schrijven naar een lokaal bestand
    
@@ -107,12 +107,12 @@ De volgende voorbeeldcode kunt u de gegevens naar beneden steekproef opslaan naa
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Lezen van gegevens van Azure-blob met Azure Machine Learning [importgegevens] [ import-data] module, zoals wordt weergegeven in het volgende scherm selectiegrepen:
+3. Gegevens lezen uit een Azure-Blob met behulp van Azure Machine Learning [gegevens module importeren][import-data] , zoals wordt weer gegeven in de volgende scherm afbeelding:
 
 ![lezer-blob][2]
 
 ## <a name="the-team-data-science-process-in-action-example"></a>Het Team Data Science Process in actie voorbeeld
-Stapsgewijs een voorbeeld van het Team Data Science Process een met een openbare gegevensset, Zie [Team Data Science Process in actie: met behulp van SQL Server](sql-walkthrough.md).
+Voor een voor beeld van het team data Science process a met behulp van een open bare gegevensset raadpleegt u [team data Science process in actie: using SQL Server](sql-walkthrough.md).
 
 [1]: ./media/sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/sample-sql-server-virtual-machine/reader_blob.png

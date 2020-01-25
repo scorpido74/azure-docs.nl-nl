@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/20/2019
-ms.openlocfilehash: 35b087cdf190585ae98de35bc3f920c2cb66204a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a994a72ae57b39dba8025e7636e0f822f483bc8c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461251"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720670"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Snelstartgids: een Azure Cognitive Search cognitieve-vaardigheids maken in de Azure Portal
 
@@ -156,7 +156,7 @@ U hebt nu uw eerste vaardig heden gemaakt en belang rijke concepten geleerd die 
 
 Een van de belangrijke concepten die we wilden overbrengen, is de afhankelijkheid van Azure-gegevensbronnen. Een vaardig heden is gebonden aan een Indexeer functie en Indexeer functies zijn Azure en zijn specifiek voor de bron. Hoewel deze snelstart Azure Blob-opslag gebruikt, zijn andere Azure-gegevensbronnen ook mogelijk. Zie [Indexeer functies in Azure Cognitive Search](search-indexer-overview.md)voor meer informatie. 
 
-Een ander belang rijk concept is dat de vaardig heden over inhouds typen werken, en wanneer u met heterogene-inhoud werkt, worden sommige invoer overgeslagen. Het is ook mogelijk dat grote bestanden of velden de indexerings limieten van uw servicelaag overschrijden. Het is normaal dat er waarschuwingen worden weer gegeven wanneer deze gebeurtenissen optreden. 
+Een ander belang rijk concept is dat vaardig heden over inhouds typen werken en wanneer ze met heterogene inhoud werken, worden sommige invoer overgeslagen. Het is ook mogelijk dat grote bestanden of velden de indexerings limieten van uw servicelaag overschrijden. Het is normaal dat er waarschuwingen worden weer gegeven wanneer deze gebeurtenissen optreden. 
 
 Uitvoer wordt omgeleid naar een zoek index en er is een toewijzing tussen naam/waarde-paren die tijdens het indexeren en afzonderlijke velden in uw index worden gemaakt. Intern stelt de portal [aantekeningen](cognitive-search-concept-annotations-syntax.md) in en definieert een [set vaardigheden](cognitive-search-defining-skillset.md), waarmee de volgorde van bewerkingen en de algemene stroom wordt bepaald. Deze stappen zijn verborgen in de portal, maar wanneer u begint met het schrijven van code worden deze concepten belangrijk.
 
@@ -164,7 +164,7 @@ Ten slotte hebt u geleerd dat inhoud kan worden gecontroleerd door de index te d
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u in uw eigen abonnement werkt, is het een goed idee om aan het einde van een project te bepalen of u de gemaakte resources nog nodig hebt. Resources die actief blijven, kunnen u geld kosten. U kunt afzonderlijke resources verwijderen, maar ook de hele resourcegroep. Hiermee verwijdert u de volledige set met resources.
+Wanneer u in uw eigen abonnement werkt, is het een goed idee aan het einde van een project om te bepalen of u nog steeds de resources nodig hebt die u hebt gemaakt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
 
 U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
 

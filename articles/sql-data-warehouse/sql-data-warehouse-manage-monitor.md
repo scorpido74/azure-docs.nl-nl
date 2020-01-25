@@ -10,15 +10,15 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: b71d3b4824d8c1c73f40c8c6d87db315aabd423b
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 14c4bb843a93fe6d235354f24475b9974142db79
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555490"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721146"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
-In dit artikel wordt beschreven hoe u dynamische beheer weergaven (Dmv's) gebruikt om uw workload te bewaken. Dit omvat het onderzoeken van het uitvoeren van query's in Azure SQL Data Warehouse.
+In dit artikel wordt beschreven hoe u dynamische beheer weergaven (Dmv's) gebruikt om uw workload te bewaken. Inbegrepen is het onderzoeken van een query uitvoering in Azure SQL Data Warehouse.
 
 ## <a name="permissions"></a>Machtigingen
 Als u een query wilt uitvoeren voor de Dmv's in dit artikel, moet u de status van de data base of het besturings element weer geven. Normaal gesp roken is de status van de weergave DATABASE de voorkeurs machtiging omdat deze veel meer beperkend is.
@@ -28,7 +28,7 @@ GRANT VIEW DATABASE STATE TO myuser;
 ```
 
 ## <a name="monitor-connections"></a>Verbindingen controleren
-Alle aanmeldingen bij SQL Data Warehouse worden vastgelegd in [sys. dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Deze DMV bevat de laatste 10.000 aanmeldingen.  De session_id is de primaire sleutel en wordt opeenvolgend toegewezen voor elke nieuwe aanmelding.
+Alle aanmeldingen bij SQL Data Warehouse worden vastgelegd in [sys. dm_pdw_exec_sessions](https://msdn.microsoft.com/library/mt203883.aspx).  Deze DMV bevat de laatste 10.000 aanmeldingen.  De session_id is de primaire sleutel en wordt opeenvolgend toegewezen voor elke nieuwe aanmelding.
 
 ```sql
 -- Other Active Connections
@@ -36,7 +36,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 ```
 
 ## <a name="monitor-query-execution"></a>Query uitvoering bewaken
-Alle query's die worden uitgevoerd op SQL Data Warehouse, worden geregistreerd in [sys. dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  Deze DMV bevat de laatste 10.000 query's die zijn uitgevoerd.  De request_id unieke identificatie van elke query en is de primaire sleutel voor deze DMV.  De request_id wordt opeenvolgend toegewezen voor elke nieuwe query en wordt voorafgegaan door QID, wat staat voor query-ID.  Bij het uitvoeren van een query op deze DMV voor een gegeven session_id worden alle query's voor een bepaalde aanmelding weer gegeven.
+Alle query's die worden uitgevoerd op SQL Data Warehouse, worden geregistreerd in [sys. dm_pdw_exec_requests](https://msdn.microsoft.com/library/mt203887.aspx).  Deze DMV bevat de laatste 10.000 query's die zijn uitgevoerd.  De request_id unieke identificatie van elke query en is de primaire sleutel voor deze DMV.  De request_id wordt opeenvolgend toegewezen voor elke nieuwe query en wordt voorafgegaan door QID, wat staat voor query-ID.  Bij het uitvoeren van een query op deze DMV voor een gegeven session_id worden alle query's voor een bepaalde aanmelding weer gegeven.
 
 > [!NOTE]
 > Opgeslagen procedures gebruiken meerdere aanvraag-Id's.  Aanvraag-Id's worden in sequentiële volg orde toegewezen. 
@@ -63,9 +63,9 @@ ORDER BY total_elapsed_time DESC;
 
 In de voor gaande query resultaten **noteert u de aanvraag-id** van de query die u wilt onderzoeken.
 
-Query's in de **onderbroken** status kunnen worden geplaatst als gevolg van een groot aantal actieve query's. Deze query's worden ook weer gegeven in de [sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) wacht op query met een type UserConcurrencyResourceType. Zie [geheugen-en gelijktijdigheids limieten voor Azure SQL Data Warehouse](memory-concurrency-limits.md) of [resource klassen voor werkbelasting beheer](resource-classes-for-workload-management.md)voor meer informatie over gelijktijdigheids limieten. Query's kunnen ook worden gewacht op andere redenen, zoals voor object vergrendelingen.  Als uw query wacht op een resource, raadpleegt u [Query's onderzoeken][Investigating queries waiting for resources] die in dit artikel wachten op resources.
+Query's in de **onderbroken** status kunnen worden geplaatst als gevolg van een groot aantal actieve query's. Deze query's worden ook weer gegeven in de [sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) wacht op query met een type UserConcurrencyResourceType. Zie [geheugen-en gelijktijdigheids limieten voor Azure SQL Data Warehouse](memory-concurrency-limits.md) of [resource klassen voor werkbelasting beheer](resource-classes-for-workload-management.md)voor meer informatie over gelijktijdigheids limieten. Query's kunnen ook worden gewacht op andere redenen, zoals voor object vergrendelingen.  Als uw query wacht op een resource, raadpleegt u [Query's onderzoeken](#monitor-waiting-queries) die in dit artikel wachten op resources.
 
-Als u het opzoeken van een query in de tabel [sys. dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) wilt vereenvoudigen, gebruikt u [Label][LABEL] om een opmerking toe te wijzen aan uw query die kan worden opgezocht in de weer gave sys. dm_pdw_exec_requests.
+Als u het opzoeken van een query in de tabel [sys. dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) wilt vereenvoudigen, gebruikt u [Label](https://msdn.microsoft.com/library/ms190322.aspx) om een opmerking toe te wijzen aan uw query, die kan worden opgezocht in de weer gave sys. dm_pdw_exec_requests.
 
 ```sql
 -- Query with Label
@@ -82,7 +82,7 @@ WHERE   [label] = 'My Query';
 ```
 
 ### <a name="step-2-investigate-the-query-plan"></a>STAP 2: het query plan onderzoeken
-Gebruik de aanvraag-ID om het gedistribueerde SQL-abonnement (DSQL) van [sys. dm_pdw_request_steps][sys.dm_pdw_request_steps]op te halen.
+Gebruik de aanvraag-ID om het gedistribueerde SQL-abonnement (DSQL) van [sys. dm_pdw_request_steps](https://msdn.microsoft.com/library/mt203913.aspx)op te halen.
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -93,7 +93,7 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-Wanneer een DSQL-plan langer duurt dan verwacht, kan de oorzaak een complex plan zijn met veel DSQL-stappen of kan slechts één stap lang duren.  Als het plan veel stappen bevat met verschillende verplaatsings bewerkingen, kunt u de tabel distributies optimaliseren om de gegevens verplaatsing te verminderen. In het [tabel distributie][Table distribution] artikel wordt uitgelegd waarom gegevens moeten worden verplaatst om een query op te lossen en een aantal distributie strategieën wordt uitgelegd om de verplaatsing van gegevens te minimaliseren.
+Wanneer een DSQL-plan langer duurt dan verwacht, kan de oorzaak een complex plan zijn met veel DSQL-stappen of kan slechts één stap lang duren.  Als het plan veel stappen bevat met verschillende verplaatsings bewerkingen, kunt u de tabel distributies optimaliseren om de gegevens verplaatsing te verminderen. In het [tabel distributie](sql-data-warehouse-tables-distribute.md) artikel wordt uitgelegd waarom gegevens moeten worden verplaatst om een query op te lossen. In dit artikel wordt ook een aantal distributie strategieën uitgelegd om de verplaatsing van gegevens te minimaliseren.
 
 Als u meer informatie wilt over één stap, de *operation_type* kolom van de langlopende query stap en noteer de **stap index**:
 
@@ -101,7 +101,7 @@ Als u meer informatie wilt over één stap, de *operation_type* kolom van de lan
 * Ga door met stap 3b voor **gegevens verplaatsings bewerkingen**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
 ### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>STAP 3a: SQL onderzoeken op gedistribueerde data bases
-Gebruik de aanvraag-ID en de stap index om gegevens op te halen uit [sys. dm_pdw_sql_requests][sys.dm_pdw_sql_requests], die uitvoerings informatie bevat van de query stap op alle gedistribueerde data bases.
+Gebruik de aanvraag-ID en de stap index om gegevens op te halen uit [sys. dm_pdw_sql_requests](https://msdn.microsoft.com/library/mt203889.aspx), die uitvoerings informatie bevat van de query stap op alle gedistribueerde data bases.
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -111,7 +111,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-Wanneer de query stap wordt uitgevoerd, kan [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] worden gebruikt om het SQL Server geschatte plan op te halen uit de SQL Server-schema cache voor de stap die wordt uitgevoerd op een bepaalde distributie.
+Wanneer de query stap wordt uitgevoerd, kan [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx) worden gebruikt om het SQL Server geschatte plan op te halen uit de SQL Server-schema cache voor de stap die wordt uitgevoerd op een bepaalde distributie.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -121,7 +121,7 @@ DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
 ### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>STAP 3b: de verplaatsing van gegevens op de gedistribueerde data bases onderzoeken
-Gebruik de aanvraag-ID en de stap index om informatie op te halen over een stap voor het verplaatsen van gegevens die wordt uitgevoerd op elke distributie vanuit [sys. dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
+Gebruik de aanvraag-ID en de stap index om informatie op te halen over een stap voor het verplaatsen van gegevens die wordt uitgevoerd op elke distributie vanuit [sys. dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx).
 
 ```sql
 -- Find the information about all the workers completing a Data Movement Step.
@@ -134,7 +134,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 * Controleer de *total_elapsed_time* kolom om te zien of een bepaalde distributie aanzienlijk langer duurt dan andere.
 * Controleer voor de langlopende distributie de *rows_processed* kolom om te zien of het aantal rijen dat wordt verplaatst van die distributie aanzienlijk groter is dan de andere. Als dit het geval is, kan dit wijzen op het hellen van de onderliggende gegevens.
 
-Als de query wordt uitgevoerd, kan [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] worden gebruikt om het SQL Server geschatte plan op te halen uit de SQL Server plan cache voor de huidige actieve SQL-stap binnen een bepaalde distributie.
+Als de query wordt uitgevoerd, kunt u [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx) gebruiken om het SQL Server geschatte plan op te halen uit de SQL Server plan cache voor de huidige actieve SQL-stap binnen een bepaalde distributie.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -265,7 +265,7 @@ GROUP BY t.pdw_node_id, nod.[type]
 ```
 
 ## <a name="monitor-polybase-load"></a>Poly base-belasting controleren
-De volgende query geeft een indicatieve-schatting van de voortgang van de belasting. In de query worden alleen de bestanden weer gegeven die momenteel worden verwerkt. 
+De volgende query biedt een geschatte schatting van de voortgang van de belasting. In de query worden alleen de bestanden weer gegeven die momenteel worden verwerkt. 
 
 ```sql
 
@@ -290,23 +290,4 @@ ORDER BY
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [systeem weergaven][System views]voor meer informatie over dmv's.
-
-
-<!--Image references-->
-
-<!--Article references-->
-[SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
-[System views]: ./sql-data-warehouse-reference-tsql-system-views.md
-[Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
-
-<!--MSDN references-->
-[sys.dm_pdw_dms_workers]: https://msdn.microsoft.com/library/mt203878.aspx
-[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
-[sys.dm_pdw_exec_sessions]: https://msdn.microsoft.com/library/mt203883.aspx
-[sys.dm_pdw_request_steps]: https://msdn.microsoft.com/library/mt203913.aspx
-[sys.dm_pdw_sql_requests]: https://msdn.microsoft.com/library/mt203889.aspx
-[DBCC PDW_SHOWEXECUTIONPLAN]: https://msdn.microsoft.com/library/mt204017.aspx
-[DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
-[LABEL]: https://msdn.microsoft.com/library/ms190322.aspx
+Zie [systeem weergaven](./sql-data-warehouse-reference-tsql-system-views.md)voor meer informatie over dmv's.

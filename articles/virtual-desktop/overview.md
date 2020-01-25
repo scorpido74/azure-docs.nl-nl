@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/21/2020
+ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 83744750a664a3a992d823f0b7e76768e249aaba
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514269"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721418"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -99,13 +99,15 @@ De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, 
 |kms.core.windows.net|TCP-poort 1688|Windows 10-activering|
 
 >[!IMPORTANT]
->Het openen van deze Url's is essentieel voor een betrouw bare implementatie van een virtueel bureau blad in Windows. Het blok keren van de toegang tot deze Url's wordt niet ondersteund en heeft invloed op de service functionaliteit. Deze Url's zijn alleen van toepassing op virtuele bureau blad-sites en-bronnen van Windows en bevatten geen Url's voor andere services, zoals Azure AD.
+>Het openen van deze Url's is essentieel voor een betrouw bare implementatie van een virtueel bureau blad in Windows. Het blok keren van de toegang tot deze Url's wordt niet ondersteund en heeft invloed op de service functionaliteit. Deze Url's komen alleen overeen met virtuele bureau blad-sites en-bronnen van Windows en bevatten geen Url's voor andere services, zoals Azure Active Directory.
 
 >[!NOTE]
+>Het virtuele bureau blad van Windows heeft momenteel geen lijst met IP-adresbereiken die u kunt white list om netwerk verkeer toe te staan. We ondersteunen op dit moment alleen white list-specifieke Url's.
+>
 >U moet het Joker teken (*) gebruiken voor Url's waarbij service verkeer betrokken is. Als u liever geen * gebruikt voor verkeer dat betrekking heeft op agents, kunt u de Url's vinden zonder joker tekens:
 >
 >1. Registreer uw virtuele machines in de Windows-hostgroep voor virtueel bureau blad.
->2. Open **Logboeken** en navigeer naar **Windows** > - **toepassings logboeken** en zoek naar gebeurtenis-id 3702.
+>2. Open **Logboeken** en navigeer naar **Windows logs** > **toepassing** > **WVD-Agent** en zoek naar gebeurtenis-id 3702.
 >3. White List de Url's die u vindt onder gebeurtenis-ID 3702. De Url's onder gebeurtenis-ID 3702 zijn specifiek voor een regio. U moet het white list-proces herhalen met de relevante Url's voor elke regio waarin u uw virtuele machines wilt implementeren.
 
 Virtueel bureau blad van Windows bestaat uit de Windows-Desk tops en-apps die u levert aan gebruikers en de beheer oplossing, die als een service op Azure wordt gehost door micro soft. Desk tops en apps kunnen worden geïmplementeerd op virtuele machines (Vm's) in elke Azure-regio en de beheer oplossing en gegevens voor deze Vm's bevinden zich in de Verenigde Staten. Dit kan ertoe leiden dat gegevens worden overgedragen naar de Verenigde Staten.

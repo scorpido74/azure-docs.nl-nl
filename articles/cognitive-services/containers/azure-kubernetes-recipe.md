@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: e33aa98939eeb5b5394f1f5cc05e28ae8f6ae4f2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5c8b3ed329c03bd08b2a0b3e26ada7a4e36ceb49
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515232"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716889"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>De Text Analytics taal detectie container implementeren naar de Azure Kubernetes-service
 
@@ -36,7 +36,7 @@ Voor deze procedure zijn verschillende hulpprogram ma's vereist die moeten worde
 
 ## <a name="running-the-sample"></a>Het voorbeeld uitvoeren
 
-Met deze procedure wordt het Cognitive Services container voorbeeld voor taal detectie geladen en uitgevoerd. Het voor beeld heeft twee containers, een voor de client toepassing en één voor de Cognitive Services container. U moet beide installatie kopieën naar uw eigen Azure Container Registry pushen. Als ze zich in uw eigen REGI ster bevinden, maakt u een Azure Kubernetes-service voor toegang tot deze installatie kopieën en voert u de containers uit. Wanneer de containers worden uitgevoerd, gebruikt u de **kubectl** CLI om de prestaties van de containers te bekijken. Open de client toepassing met een HTTP-aanvraag en Bekijk de resultaten.
+Met deze procedure wordt het Cognitive Services container voorbeeld voor taal detectie geladen en uitgevoerd. Het voor beeld heeft twee containers, een voor de client toepassing en één voor de Cognitive Services container. Beide installatie kopieën worden naar de Azure Container Registry gepusht. Als ze zich in uw eigen REGI ster bevinden, maakt u een Azure Kubernetes-service voor toegang tot deze installatie kopieën en voert u de containers uit. Wanneer de containers worden uitgevoerd, gebruikt u de **kubectl** CLI om de prestaties van de containers te bekijken. Open de client toepassing met een HTTP-aanvraag en Bekijk de resultaten.
 
 ![Conceptueel idee van het uitvoeren van voorbeeld containers](../text-analytics/media/how-tos/container-instance-sample/containers.png)
 
@@ -66,19 +66,19 @@ Als u de container wilt implementeren in de Azure Kubernetes-service, moeten de 
     az login
     ```
 
-1. Maak een resource groep met de naam `cogserv-container-rg` om elke resource te bewaren die in deze procedure is gemaakt.
+1. Maak een resource groep met de naam `cogserv-container-rg` voor het opslaan van elke resource die in deze procedure wordt gemaakt.
 
     ```azurecli-interactive
     az group create --name cogserv-container-rg --location westus
     ```
 
-1. Maak uw eigen Azure Container Registry met de indeling van uw naam en klik vervolgens `registry`, zoals `pattyregistry`. Gebruik geen streepjes of onderstrepings tekens in de naam.
+1. Maak uw eigen Azure Container Registry met de indeling van uw naam en `registry`, zoals `pattyregistry`. Gebruik geen streepjes of onderstrepings tekens in de naam.
 
     ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
-    Sla de resultaten op om de eigenschap **login server** op te halen. Dit maakt deel uit van het adres van de gehoste container, die later in het bestand `language.yml` wordt gebruikt.
+    Sla de resultaten op om de eigenschap **login server** op te halen. Dit maakt deel uit van het adres van de gehoste container, die later in het `language.yml`-bestand wordt gebruikt.
 
     ```console
     > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
@@ -132,7 +132,7 @@ Als u de container wilt implementeren in de Azure Kubernetes-service, moeten de 
     docker push pattyregistry.azurecr.io/language-frontend:v1
     ```
 
-    Als u een `unauthorized: authentication required`-fout krijgt, meldt u zich aan met de `az acr login --name <your-container-registry-name>` opdracht. 
+    Als er een `unauthorized: authentication required` fout optreedt, meldt u zich aan met de `az acr login --name <your-container-registry-name>` opdracht. 
 
     Wanneer het proces is voltooid, moeten de resultaten er ongeveer als volgt uitzien:
 
@@ -178,7 +178,7 @@ De volgende stappen zijn nodig om de vereiste informatie te krijgen om uw contai
     az ad sp create-for-rbac --skip-assignment
     ```
 
-    Sla de resultaten op `appId`-waarde voor de para meter assigned in stap 3, `<appId>`. Sla de `password` op voor de client-geheime para meter van de volgende sectie `<client-secret>`.
+    Sla de resultaten `appId` waarde op voor de para meter assigned in stap 3, `<appId>`. Sla de `password` op voor de client-geheime para meter van de volgende sectie `<client-secret>`.
 
     ```console
     > az ad sp create-for-rbac --skip-assignment
@@ -197,7 +197,7 @@ De volgende stappen zijn nodig om de vereiste informatie te krijgen om uw contai
     az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
     ```
 
-    Sla de uitvoer voor de waarde van de bereik parameter, `<acrId>`, op in de volgende stap. Het ziet er als volgt uit:
+    Sla de uitvoer voor de waarde van de bereik parameter op `<acrId>`in de volgende stap. Het ziet er als volgt uit:
 
     ```console
     > az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
@@ -214,7 +214,7 @@ De volgende stappen zijn nodig om de vereiste informatie te krijgen om uw contai
 
 ## <a name="create-azure-kubernetes-service"></a>Azure Kubernetes-service maken
 
-1. Maak de Kubernetes-cluster. Alle parameter waarden zijn afkomstig uit vorige secties, met uitzonde ring van de para meter name. Kies een naam die aangeeft wie het heeft gemaakt en het doel ervan, bijvoorbeeld `patty-kube`.
+1. Maak de Kubernetes-cluster. Alle parameter waarden zijn afkomstig uit vorige secties, met uitzonde ring van de para meter name. Kies een naam die aangeeft wie het heeft gemaakt en het doel ervan, zoals `patty-kube`.
 
     ```azurecli-interactive
     az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
@@ -307,7 +307,7 @@ In deze sectie wordt de **kubectl** cli gebruikt om te communiceren met de Azure
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
     ```
 
-1. Kopieer het volgende bestand en geef het de naam `language.yml`. Het bestand bevat een `service`-sectie en een `deployment` sectie elk voor de twee container typen, de container van de `language-frontend`-website en de `language`-detectie container.
+1. Kopieer het volgende bestand en geef het de naam `language.yml`. Het bestand bevat een `service` sectie en een `deployment` sectie elk voor de twee typen containers, de `language-frontend` website container en de container voor `language` detectie.
 
     [!code-yml[Kubernetes orchestration file for the Cognitive Services containers sample](~/samples-cogserv-containers/Kubernetes/language/language.yml "Kubernetes orchestration file for the Cognitive Services containers sample")]
 
@@ -315,21 +315,21 @@ In deze sectie wordt de **kubectl** cli gebruikt om te communiceren met de Azure
 
     Implementatie-instellingen voor taal-frontend|Doel|
     |--|--|
-    |Regel 32<br> eigenschap `image`|Afbeeldings locatie voor de front-end-installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
-    |Regel 44<br> eigenschap `name`|Container Registry geheim voor de installatie kopie, aangeduid als `<client-secret>` in een vorige sectie.|
+    |Regel 32<br> `image` eigenschap|Afbeeldings locatie voor de front-end-installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
+    |Regel 44<br> `name` eigenschap|Container Registry geheim voor de installatie kopie, waarnaar wordt verwezen als `<client-secret>` in een vorige sectie.|
 
 1. Wijzig de taal implementatie regels van `language.yml` op basis van de volgende tabel om uw eigen container register installatie kopie namen, client geheim en tekst analyse-instellingen toe te voegen.
 
     |Instellingen voor taal implementatie|Doel|
     |--|--|
-    |Regel 78<br> eigenschap `image`|Afbeeldings locatie voor de taal installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
-    |Regel 95<br> eigenschap `name`|Container Registry geheim voor de installatie kopie, aangeduid als `<client-secret>` in een vorige sectie.|
-    |Regel 91<br> eigenschap `apiKey`|De bron sleutel voor tekst analyse|
-    |Regel 92<br> eigenschap `billing`|Het facturerings eindpunt voor uw tekst analyse resource.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+    |Regel 78<br> `image` eigenschap|Afbeeldings locatie voor de taal installatie kopie in uw Container Registry<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
+    |Regel 95<br> `name` eigenschap|Container Registry geheim voor de installatie kopie, waarnaar wordt verwezen als `<client-secret>` in een vorige sectie.|
+    |Regel 91<br> `apiKey` eigenschap|De bron sleutel voor tekst analyse|
+    |Regel 92<br> `billing` eigenschap|Het facturerings eindpunt voor uw tekst analyse resource.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
-    Omdat het **apiKey** -en **facturerings eindpunt** zijn ingesteld als onderdeel van de Kubernetes-indelings definitie, hoeft de website container deze niet te kennen of door te geven als onderdeel van de aanvraag. De website container verwijst naar de taal detectie container met de naam van Orchestrator `language`.
+    Omdat het **apiKey** -en **facturerings eindpunt** zijn ingesteld als onderdeel van de Kubernetes-indelings definitie, hoeft de website container deze niet te kennen of door te geven als onderdeel van de aanvraag. De website container verwijst naar de taal detectie container door de naam van de Orchestrator `language`.
 
-1. Laad het bestand met de indelings definitie voor dit voor beeld uit de map waarin u de `language.yml` hebt gemaakt en opgeslagen.
+1. Laad het bestand met de indelings definitie voor dit voor beeld vanuit de map waarin u de `language.yml`hebt gemaakt en opgeslagen.
 
     ```console
     kubectl apply -f language.yml
@@ -385,13 +385,13 @@ Als de `EXTERNAL-IP` voor de service wordt weer gegeven als in behandeling, voer
 
 ## <a name="test-the-language-detection-container"></a>De taal detectie container testen
 
-Open een browser en navigeer naar het externe IP-adres van de container `language` in de vorige sectie: `http://<external-ip>:5000/swagger/index.html`. U kunt de `Try it`-functie van de API gebruiken om het taal detectie-eind punt te testen.
+Open een browser en ga naar het externe IP-adres van de `language`-container in de vorige sectie: `http://<external-ip>:5000/swagger/index.html`. U kunt de `Try it`-functie van de API gebruiken om het taal detectie-eind punt te testen.
 
 ![De Swagger-documentatie van de container weer geven](../text-analytics/media/how-tos/container-instance-sample/language-detection-container-swagger-documentation.png)
 
 ## <a name="test-the-client-application-container"></a>De client toepassings container testen
 
-Wijzig de URL in de browser in het externe IP-adres van de `language-frontend`-container met de volgende notatie: `http://<external-ip>/helloworld`. De Engelse cultuur tekst van `helloworld` wordt voor speld als `English`.
+Wijzig de URL in de browser in het externe IP-adres van de `language-frontend`-container met de volgende indeling: `http://<external-ip>/helloworld`. De Engelse cultuur tekst van `helloworld` wordt voor speld als `English`.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

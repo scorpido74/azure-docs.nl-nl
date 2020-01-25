@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 1/04/2020
+ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 124fe4f69396286dbe383f8823a36b4ba52d346c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: e9d98f03b2c97245517e3fbb6d7dc7624cfb724d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665074"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721384"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Wat is Team Data Science Process?
 
@@ -36,11 +36,11 @@ TDSP bestaat uit de volgende belangrijke onderdelen:
 
 ## <a name="data-science-lifecycle"></a>Levenscyclus van wetenschappelijke gegevens
 
-Het Team Data Science Process (TDSP) biedt een levenscyclus voor de ontwikkeling van uw data science-projecten structureren. De levenscyclus van geeft een overzicht van de stappen van begin tot eind, projecten gewoonlijk volgen wanneer ze worden uitgevoerd.
+Het Team Data Science Process (TDSP) biedt een levenscyclus voor de ontwikkeling van uw data science-projecten structureren. De levens cyclus geeft een overzicht van de volledige stappen die geslaagde projecten volgen.
 
-Als u een andere volledige wetenschappelijke levensduur, zoals gebruikt [heldere-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) of uw organisatie eigen aangepaste proces, u kunt nog steeds de TDSP op basis van een taak in de context van de levenscycli van de ontwikkeling. Op hoog niveau hebben deze verschillende methoden veel gemeen. 
+Als u een andere data Science-levens cyclus gebruikt, zoals [glashelder-dm](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) of het eigen aangepaste proces van uw organisatie, kunt u nog steeds de op taken gebaseerde TDSP gebruiken in de context van deze ontwikkelings levenscycluss. Op hoog niveau hebben deze verschillende methoden veel gemeen. 
 
-Deze levenscyclus beheren, is ontworpen voor data science-projecten die worden geleverd als onderdeel van intelligente toepassingen. Deze toepassingen machine learning of kunstmatige intelligentie modellen voor voorspellende analyses te implementeren. Verkennende data science of ad-hoc analytics-projecten kunnen ook profiteren van dit proces. Maar in dergelijke gevallen enkele van de stappen mogelijk niet nodig.    
+Deze levenscyclus beheren, is ontworpen voor data science-projecten die worden geleverd als onderdeel van intelligente toepassingen. Deze toepassingen machine learning of kunstmatige intelligentie modellen voor voorspellende analyses te implementeren. Experimentele projecten voor gegevens Wetenschappen of Improvised Analytics-projecten kunnen ook profiteren van het gebruik van dit proces. Maar in dergelijke gevallen enkele van de stappen mogelijk niet nodig.    
 
 De levenscyclus van geeft een overzicht van de belangrijke fasen die projecten doorgaans worden uitgevoerd, vaak iteratief:
 
@@ -69,7 +69,7 @@ Het volgende diagram biedt een rasterweergave van de taken (in het blauw) en de 
 
 Met alle projecten delen van een mapstructuur en sjablonen gebruiken voor de project-documenten, kunt eenvoudig de teamleden voor informatie over hun projecten. Alle code en documenten worden opgeslagen in een versiebeheersysteem (Circuits), zoals Git, TFS of Subversion om in te schakelen samenwerking voor teams. Bijhouden van taken en -functies in een flexibele volgsysteem zoals Jira, Rally en Azure DevOps-project, kunt dichter in de buurt van de code voor afzonderlijke onderdelen bijhouden. Dergelijke bijhouden kan ook teams om op te halen beter kostenramingen. TDSP raadt aan om het maken van een aparte opslagplaats voor elk project in de Circuits voor versiebeheer, informatiebeveiliging en samenwerking. De gestandaardiseerde structuur voor alle projecten helpt met het bouwen van institutionele kennis in de hele organisatie.
 
-We bieden sjablonen voor de mapstructuur en de vereiste documenten in standaardlocaties. Deze mapstructuur organiseert de bestanden die code voor gegevensverkenning en het ophalen van functies bevatten en dat model iteraties opnemen. Deze sjablonen wordt het eenvoudiger voor teamleden om te begrijpen werk van anderen en nieuwe leden toevoegen aan teams. Het is gemakkelijk om te bekijken en bijwerken van sjablonen in markdown-indeling. Gebruik sjablonen om controlelijsten voorzien van belangrijke vragen voor elk project om ervoor te zorgen dat het probleem duidelijk gedefinieerd is en producten te voldoen aan de kwaliteit verwacht. Voorbeelden:
+We bieden sjablonen voor de mapstructuur en de vereiste documenten in standaardlocaties. Deze mapstructuur organiseert de bestanden die code voor gegevensverkenning en het ophalen van functies bevatten en dat model iteraties opnemen. Deze sjablonen wordt het eenvoudiger voor teamleden om te begrijpen werk van anderen en nieuwe leden toevoegen aan teams. Het is gemakkelijk om te bekijken en bijwerken van sjablonen in markdown-indeling. Gebruik sjablonen om controle lijsten in te stellen met belang rijke vragen voor elk project om ervoor te zorgen dat het probleem goed is gedefinieerd en dat de resultaten voldoen aan de verwachte kwaliteit. Voorbeelden:
 
 - een project Handvest vastleggen van de zakelijke probleem en het bereik van het project
 - rapporten met gegevens naar het document de structuur en statistieken van de onbewerkte gegevens
@@ -90,7 +90,7 @@ TDSP bevat aanbevelingen voor het beheren van gedeelde analyse- en opslaginfrast
 - de clusters (Hadoop- of Apache Spark) big data 
 - machine learning-service 
 
-De analyse- en opslaginfrastructuur kan zich in de cloud of on-premises. Dit is waar de onbewerkte gegevens en verwerkte gegevenssets worden opgeslagen. Deze infrastructuur kunt reproduceerbare analyse. Ook voorkomt u dubbele, wat tot inconsistenties en onnodige infrastructuurkosten leiden kan. Hulpprogramma's worden aan de gedeelde resources inrichten, traceren en zorgen dat elk teamlid veilig verbinding maken met deze resources verstrekt. Het is ook een goede gewoonte om het project leden maken van een consistente compute-omgeving. Andere teamleden kunnen vervolgens worden gerepliceerd en experimenten valideren.
+De analyse-en opslag infrastructuur, waar RAW-en verwerkte gegevens sets worden opgeslagen, kunnen zich in de Cloud of on-premises bevinden. Deze infrastructuur kunt reproduceerbare analyse. Ook voorkomt u dubbele, wat tot inconsistenties en onnodige infrastructuurkosten leiden kan. Hulpprogramma's worden aan de gedeelde resources inrichten, traceren en zorgen dat elk teamlid veilig verbinding maken met deze resources verstrekt. Het is ook een goede gewoonte om het project leden maken van een consistente compute-omgeving. Andere teamleden kunnen vervolgens worden gerepliceerd en experimenten valideren.
 
 Hier volgt een voorbeeld van een team werkt aan meerdere projecten en het delen van verschillende onderdelen van de cloud analytics infrastructuur.
 

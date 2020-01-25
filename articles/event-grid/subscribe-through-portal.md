@@ -1,32 +1,32 @@
 ---
-title: Azure Event Grid-abonnementen via de portal
-description: Beschrijft hoe u Event Grid-abonnementen via de portal maakt.
+title: Abonnementen Azure Event Grid via de portal
+description: In dit artikel wordt beschreven hoe u Event Grid-abonnementen maakt voor de ondersteunde bronnen, zoals Azure Blob Storage, door gebruik te maken van de Azure Portal.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b54bc52a2feaf4646d801265ddb273c2c86158ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3172c92ecae094ab5d978803d2ccac7e6404a5e1
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60823446"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721503"
 ---
-# <a name="subscribe-to-events-through-portal"></a>Abonneren op gebeurtenissen tot en met portal
+# <a name="subscribe-to-events-through-portal"></a>Abonneren op gebeurtenissen via de portal
 
-In dit artikel wordt beschreven hoe u Event Grid-abonnementen via de portal maken.
+In dit artikel wordt beschreven hoe u Event Grid-abonnementen maakt via de portal.
 
-## <a name="create-event-subscriptions"></a>Gebeurtenisabonnementen maken
+## <a name="create-event-subscriptions"></a>Gebeurtenis abonnementen maken
 
-Het maken van een Event Grid-abonnement voor het gebruik van de ondersteunde [gebeurtenisbronnen](event-sources.md), gebruik de volgende stappen. In dit artikel laat zien hoe een Event Grid-abonnement voor een Azure-abonnement maken.
+Als u een Event Grid-abonnement wilt maken voor een van de ondersteunde [gebeurtenis bronnen](event-sources.md), gebruikt u de volgende stappen. In dit artikel wordt beschreven hoe u een Event Grid-abonnement maakt voor een Azure-abonnement.
 
 1. Selecteer **Alle services**.
 
    ![Alle services selecteren](./media/subscribe-through-portal/select-all-services.png)
 
-1. Zoeken naar **Event Grid-abonnementen** en selecteert u deze uit de beschikbare opties.
+1. Zoek naar **Event grid-abonnementen** en selecteer deze in de beschik bare opties.
 
    ![Search](./media/subscribe-through-portal/search.png)
 
@@ -34,35 +34,35 @@ Het maken van een Event Grid-abonnement voor het gebruik van de ondersteunde [ge
 
    ![Abonnement toevoegen](./media/subscribe-through-portal/add-subscription.png)
 
-1. Selecteer het type abonnement die u wilt maken. Selecteer bijvoorbeeld het volgende om u te abonneren op gebeurtenissen voor uw Azure-abonnement, **Azure-abonnementen** en het doelabonnement.
+1. Selecteer het type abonnement dat u wilt maken. Als u zich bijvoorbeeld wilt abonneren op gebeurtenissen voor uw Azure-abonnement, selecteert u **Azure-abonnementen** en het doel abonnement.
 
-   ![Selecteer Azure-abonnement](./media/subscribe-through-portal/azure-subscription.png)
+   ![Azure-abonnement selecteren](./media/subscribe-through-portal/azure-subscription.png)
 
-1. Om u te abonneren op alle gebeurtenistypen voor deze bron van gebeurtenis, behouden de **abonneren op alle gebeurtenistypen** optie is ingeschakeld. Anders selecteert u de typen gebeurtenissen voor dit abonnement.
+1. Als u zich wilt abonneren op alle gebeurtenis typen voor deze gebeurtenis bron, laat u de optie **Abonneren op alle gebeurtenis typen** ingeschakeld. Anders selecteert u de gebeurtenis typen voor dit abonnement.
 
-   ![Selecteer de typen gebeurtenissen](./media/subscribe-through-portal/select-event-types.png)
+   ![Gebeurtenis typen selecteren](./media/subscribe-through-portal/select-event-types.png)
 
-1. Geef aanvullende informatie over het gebeurtenisabonnement, zoals het eindpunt voor het verwerken van gebeurtenissen en de naam van een abonnement.
+1. Geef aanvullende informatie op over het gebeurtenis abonnement, zoals het eind punt voor het afhandelen van gebeurtenissen en de naam van een abonnement.
 
-   ![Geef details van abonnement](./media/subscribe-through-portal/provide-subscription-details.png)
+   ![Abonnements gegevens opgeven](./media/subscribe-through-portal/provide-subscription-details.png)
 
-1. Onbestelbare inschakelen en aanpassen van beleid voor opnieuw proberen, selecteert u **extra functies**.
+1. Als u onbestelbare berichten wilt inschakelen en beleid voor opnieuw proberen wilt aanpassen, selecteert u **extra functies**.
 
    ![Extra functies selecteren](./media/subscribe-through-portal/select-additional-features.png)
 
-1. Selecteer een container wilt gebruiken voor het opslaan van gebeurtenissen die niet worden bezorgd en instellen hoe nieuwe pogingen worden verzonden.
+1. Selecteer een container die moet worden gebruikt voor het opslaan van gebeurtenissen die niet worden geleverd en stel in hoe nieuwe pogingen worden verzonden.
 
-   ![Onbestelbare en probeer het opnieuw inschakelen](./media/subscribe-through-portal/set-deadletter-retry.png)
+   ![Dead-berichten inschakelen en opnieuw proberen](./media/subscribe-through-portal/set-deadletter-retry.png)
 
 1. Wanneer u klaar bent, selecteert u **Maken**.
 
-## <a name="create-subscription-on-resource"></a>Abonnement maken voor de resource
+## <a name="create-subscription-on-resource"></a>Abonnement maken op resource
 
-Sommige bronnen van gebeurtenissen ondersteuning voor het maken van een gebeurtenisabonnement via de interface van de portal voor die bron. Selecteer de gebeurtenisbron en zoek naar **gebeurtenissen** in het linkerdeelvenster.
+Bepaalde gebeurtenis bronnen bieden ondersteuning voor het maken van een gebeurtenis abonnement via de portal-interface voor die bron. Selecteer de bron van de gebeurtenis en zoek naar **gebeurtenissen** in het linkerdeel venster.
 
-![Geef details van abonnement](./media/subscribe-through-portal/resource-events.png)
+![Abonnements gegevens opgeven](./media/subscribe-through-portal/resource-events.png)
 
-De portal biedt u de opties voor het maken van een gebeurtenisabonnement die relevant is voor die bron.
+De portal geeft u de opties voor het maken van een gebeurtenis abonnement dat relevant is voor die bron.
 
 ## <a name="next-steps"></a>Volgende stappen
 

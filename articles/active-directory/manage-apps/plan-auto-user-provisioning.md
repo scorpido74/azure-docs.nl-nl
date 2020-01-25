@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 44ed85ac8171484cccf39c0b048a5c7a026a657d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732447"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711593"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
 
@@ -25,7 +25,7 @@ Veel organisaties zijn afhankelijk van SaaS-toepassingen (Software as a Service)
 
 Azure Active Directory (Azure AD) automatische gebruikers inrichting vereenvoudigt dit proces door het maken, onderhouden en verwijderen van gebruikers identiteiten in SaaS-toepassingen op basis van bedrijfs regels te automatiseren. Met deze automatisering kunt u uw identiteits beheersystemen effectief schalen op zowel Cloud-en hybride omgevingen als u de afhankelijkheid ervan uitbreidt op Cloud oplossingen.
 
-Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) om meer inzicht te krijgen in de functionaliteit.
+Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](user-provisioning.md) om meer inzicht te krijgen in de functionaliteit.
 
 ## <a name="learn"></a>Leren
 
@@ -59,7 +59,7 @@ In dit artikel worden de volgende termen gebruikt:
 
 * Eenmalige aanmelding (SSO): de mogelijkheid voor een gebruiker om zich eenmaal aan te melden en om toegang te krijgen tot alle SSO-toepassingen. In de context van het inrichten van gebruikers is SSO een resultaat van gebruikers die één account hebben voor toegang tot alle systemen die gebruikmaken van automatische gebruikers inrichting.
 
-* Bron systeem: de opslag plaats van gebruikers die de Azure AD-bepalingen van hebben. Azure AD is het bron systeem voor de meeste vooraf geïntegreerde inrichtings connectors. Er zijn echter enkele uitzonde ringen voor Cloud toepassingen zoals SAP, workday en AWS. Zie bijvoorbeeld [Gebruikers inrichten van workday naar AD](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial).
+* Bron systeem: de opslag plaats van gebruikers die de Azure AD-bepalingen van hebben. Azure AD is het bron systeem voor de meeste vooraf geïntegreerde inrichtings connectors. Er zijn echter enkele uitzonde ringen voor Cloud toepassingen zoals SAP, workday en AWS. Zie bijvoorbeeld [Gebruikers inrichten van workday naar AD](../saas-apps/workday-inbound-tutorial.md).
 
 * Doel systeem: de opslag plaats van gebruikers die door de Azure AD worden ingericht. Het doel systeem is doorgaans een SaaS-toepassing, zoals ServiceNow, Zscaler en toegestane vertraging. Het doel systeem kan ook een on-premises systeem zijn, zoals AD.
 
@@ -73,8 +73,8 @@ In dit artikel worden de volgende termen gebruikt:
 | Video’s| [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Hoe kan ik de gebruikers inrichten in Active Azure Directory implementeren?](https://youtu.be/pKzyts6kfrw) <br> [Sales Force integreren met Azure AD: gebruikers inrichten automatiseren](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Onlinecursussen| SkillUp online: [identiteiten beheren](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Leer hoe u Azure AD integreert met veel SaaS-toepassingen en gebruikers toegang tot deze toepassingen kunt beveiligen. |
 | Boeken| [Moderne verificatie met Azure Active Directory voor webtoepassingen (Naslag informatie voor ontwikkel aars) 1e editie](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Dit is een gezaghebbende, diep gaande hand leiding voor het bouwen van Active Directory verificatie oplossingen voor deze nieuwe omgevingen. |
-| Zelfstudie| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list). |
-| Veelgestelde vragen| [Veelgestelde vragen](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) over het automatisch inrichten van gebruikers |
+| Zelfstudie| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md). |
+| Veelgestelde vragen| [Veelgestelde vragen](user-provisioning.md) over het automatisch inrichten van gebruikers |
 
 ### <a name="solution-architectures"></a>Architecturen voor oplossingen
 
@@ -92,9 +92,9 @@ In dit voor beeld worden gebruikers en of groepen gemaakt in een HR-data base di
 
 1. **Azure AD connect agent** voert geplande synchronisaties van identiteiten (gebruikers en groepen) uit van de lokale AD naar Azure AD.
 
-1. De **Azure AD-inrichtings service** start een [eerste cyclus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) op basis van het bron systeem en het doel systeem. 
+1. De **Azure AD-inrichtings service** start een [eerste cyclus](user-provisioning.md) op basis van het bron systeem en het doel systeem. 
 
-1. **Azure AD Provisioning Service** voert een query uit op het bron systeem voor gebruikers en groepen die zijn gewijzigd sinds de eerste cyclus en tijdens het pushen van wijzigingen in [incrementele cycli](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. **Azure AD Provisioning Service** voert een query uit op het bron systeem voor gebruikers en groepen die zijn gewijzigd sinds de eerste cyclus en tijdens het pushen van wijzigingen in [incrementele cycli](user-provisioning.md).
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Automatische gebruikers inrichting voor Cloud ondernemingen
 
@@ -106,9 +106,9 @@ In dit voor beeld vindt het maken van een gebruiker plaats in azure AD en de Azu
 
 1. Gebruikers/groepen worden gemaakt in azure AD.
 
-1. De **Azure AD-inrichtings service** start een [eerste cyclus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) op basis van het bron systeem en het doel systeem. 
+1. De **Azure AD-inrichtings service** start een [eerste cyclus](user-provisioning.md) op basis van het bron systeem en het doel systeem. 
 
-1. De **Azure AD-inrichtings service** vraagt het bron systeem voor alle gebruikers en groepen die zijn bijgewerkt sinds de eerste cyclus en voert eventuele [incrementele cycli](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)uit.
+1. De **Azure AD-inrichtings service** vraagt het bron systeem voor alle gebruikers en groepen die zijn bijgewerkt sinds de eerste cyclus en voert eventuele [incrementele cycli](user-provisioning.md)uit.
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>Automatische gebruikers inrichting voor Cloud-HR-toepassingen 
 
@@ -132,13 +132,13 @@ Bedenk wat uw organisatie nodig heeft om de strategie te bepalen voor het implem
 
 Wanneer technologie projecten mislukken, is dit doorgaans het gevolg van niet-overeenkomende verwachtingen wat betreft impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](https://aka.ms/deploymentplans) en dat de rol van belanghebbenden in het project goed worden begrepen door de belanghebbenden en hun project invoer en accountabilities te documenteren.
 
-### <a name="plan-communications"></a>De communicatie plannen
+### <a name="plan-communications"></a>Communicatie plannen
 
 Communicatie is van cruciaal belang voor het slagen van een nieuwe service. Communiceer proactief met uw gebruikers hoe hun ervaring verandert, wanneer deze wordt gewijzigd, en hoe u ondersteuning krijgt als u problemen ondervindt.
 
 ### <a name="plan-a-pilot"></a>Een pilot plannen
 
-We raden u aan de initiële configuratie van automatische gebruikers inrichting in een test omgeving met een kleine subset van gebruikers te maken voordat u deze naar alle gebruikers in productie kunt schalen. Zie [Aanbevolen procedures](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) voor het uitvoeren van een pilot.
+We raden u aan de initiële configuratie van automatische gebruikers inrichting in een test omgeving met een kleine subset van gebruikers te maken voordat u deze naar alle gebruikers in productie kunt schalen. Zie [Aanbevolen procedures](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) voor het uitvoeren van een pilot.
 
 #### <a name="best-practices-for-a-pilot"></a>Aanbevolen procedures voor een pilot  
 
@@ -146,29 +146,29 @@ Met een pilot kunt u testen met een kleine groep voordat u een mogelijkheid voor
 
 In uw eerste golf, richt IT, bruikbaarheid en andere geschikte gebruikers die kunnen testen en feedback geven. Gebruik deze feedback om de communicatie en instructies die u naar uw gebruikers verzendt verder te ontwikkelen en om inzicht te krijgen in de soorten problemen die uw ondersteunings medewerkers kunnen zien.
 
-Breid de implementatie uit voor grotere groepen gebruikers door het bereik van de doel groep (en) te verg Roten. Dit kan worden gedaan via een [dynamisch groepslid maatschap](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)of door gebruikers hand matig toe te voegen aan de doel groep (en).
+Breid de implementatie uit voor grotere groepen gebruikers door het bereik van de doel groep (en) te verg Roten. Dit kan worden gedaan via een [dynamisch groepslid maatschap](../users-groups-roles/groups-dynamic-membership.md)of door gebruikers hand matig toe te voegen aan de doel groep (en).
 
 ## <a name="plan-application-connections-and-administration"></a>Toepassings verbindingen en-beheer plannen
 
-Gebruik de Azure AD-portal voor het weer geven en beheren van alle toepassingen die ondersteuning bieden voor inrichting. Zie [uw apps zoeken in de portal](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal).
+Gebruik de Azure AD-portal voor het weer geven en beheren van alle toepassingen die ondersteuning bieden voor inrichting. Zie [uw apps zoeken in de portal](configure-automatic-user-provisioning-portal.md).
 
 ### <a name="determine-the-type-of-connector-to-use"></a>Bepalen welk type connector moet worden gebruikt
 
-De stappen die nodig zijn om automatische inrichting in te scha kelen en te configureren variëren afhankelijk van de toepassing. Als de toepassing die u wilt laten inrichten, wordt vermeld in de [Galerie met Azure AD SaaS-apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list), selecteert u de [app-specifieke integratie-zelf studie](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) voor het configureren van de vooraf geïntegreerde User Provisioning connector.
+De stappen die nodig zijn om automatische inrichting in te scha kelen en te configureren variëren afhankelijk van de toepassing. Als de toepassing die u wilt laten inrichten, wordt vermeld in de [Galerie met Azure AD SaaS-apps](../saas-apps/tutorial-list.md), selecteert u de [app-specifieke integratie-zelf studie](../saas-apps/tutorial-list.md) voor het configureren van de vooraf geïntegreerde User Provisioning connector.
 
 Als dat niet het geval is, volgt u de onderstaande stappen:
 
-1. [Een aanvraag maken](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) voor een vooraf geïntegreerde User Provisioning connector. Ons team zal samen werken met u en met de ontwikkelaar van de toepassing om uw toepassing op ons platform uit te laten staan als SCIM wordt ondersteund.
+1. [Een aanvraag maken](../develop/howto-app-gallery-listing.md) voor een vooraf geïntegreerde User Provisioning connector. Ons team zal samen werken met u en met de ontwikkelaar van de toepassing om uw toepassing op ons platform uit te laten staan als SCIM wordt ondersteund.
 
-1. Gebruik de algemene ondersteuning voor het inrichten van [BYOA scim](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) voor de app. Dit is een vereiste voor Azure AD om gebruikers in te richten op de app zonder vooraf geïntegreerde inrichtings connector.
+1. Gebruik de algemene ondersteuning voor het inrichten van [BYOA scim](use-scim-to-provision-users-and-groups.md) voor de app. Dit is een vereiste voor Azure AD om gebruikers in te richten op de app zonder vooraf geïntegreerde inrichtings connector.
 
-1. Als de toepassing de BYOA SCIM-connector kan gebruiken, raadpleegt u de [zelf studie over BYOA scim-integratie](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) om de BYOA scim-connector voor de toepassing te configureren.
+1. Als de toepassing de BYOA SCIM-connector kan gebruiken, raadpleegt u de [zelf studie over BYOA scim-integratie](use-scim-to-provision-users-and-groups.md) om de BYOA scim-connector voor de toepassing te configureren.
 
-Zie [welke toepassingen en systemen kan ik gebruiken met automatische gebruikers inrichting van Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) voor meer informatie.
+Zie [welke toepassingen en systemen kan ik gebruiken met automatische gebruikers inrichting van Azure Active Directory?](user-provisioning.md) voor meer informatie.
 
 ### <a name="collect-information-to-authorize-application-access"></a>Gegevens verzamelen om toegang tot toepassingen te verlenen
 
-Het instellen van automatische gebruikers inrichting is een proces per toepassing. Voor elke toepassing moet u [beheerders referenties](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) opgeven om verbinding te maken met het eind punt voor gebruikers beheer van het doel systeem.
+Het instellen van automatische gebruikers inrichting is een proces per toepassing. Voor elke toepassing moet u [beheerders referenties](configure-automatic-user-provisioning-portal.md) opgeven om verbinding te maken met het eind punt voor gebruikers beheer van het doel systeem.
 
 In de onderstaande afbeelding ziet u één versie van de vereiste beheerders referenties:
 
@@ -198,17 +198,17 @@ Documenteer de volgende informatie voor elke toepassing:
 
 Voordat u de automatische gebruikers inrichting implementeert, moet u bepalen welke gebruikers en groepen moeten worden ingericht voor uw toepassing.
 
-* Gebruik [bereik filters](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters) om op kenmerken gebaseerde regels te definiëren die bepalen welke gebruikers worden ingericht voor een toepassing.
+* Gebruik [bereik filters](define-conditional-rules-for-provisioning-user-accounts.md) om op kenmerken gebaseerde regels te definiëren die bepalen welke gebruikers worden ingericht voor een toepassing.
 
-* Gebruik vervolgens de [gebruikers-en groeps toewijzingen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) als dat nodig is voor extra filters.
+* Gebruik vervolgens de [gebruikers-en groeps toewijzingen](assign-user-or-group-access-portal.md) als dat nodig is voor extra filters.
 
 ### <a name="define-user-and-group-attribute-mapping"></a>Toewijzing van gebruikers-en groeps kenmerken definiëren
 
-Als u het automatisch inrichten van gebruikers wilt implementeren, moet u de gebruikers-en groeps kenmerken definiëren die nodig zijn voor de toepassing. Er is een vooraf geconfigureerde set met kenmerken en [kenmerk toewijzingen](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) tussen Azure AD-gebruikers objecten en de gebruikers objecten van elke SaaS-toepassing. Niet alle SaaS-apps hebben groeps kenmerken ingeschakeld.
+Als u het automatisch inrichten van gebruikers wilt implementeren, moet u de gebruikers-en groeps kenmerken definiëren die nodig zijn voor de toepassing. Er is een vooraf geconfigureerde set met kenmerken en [kenmerk toewijzingen](configure-automatic-user-provisioning-portal.md) tussen Azure AD-gebruikers objecten en de gebruikers objecten van elke SaaS-toepassing. Niet alle SaaS-apps hebben groeps kenmerken ingeschakeld.
 
-Azure AD ondersteunt door directe toewijzing van kenmerk naar kenmerk, voor het leveren van constante waarden of het [schrijven van expressies voor kenmerk toewijzingen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-writing-expressions-for-attribute-mappings). Met deze flexibiliteit kunt u precies bepalen wat er wordt ingevuld in het kenmerk van het doel systeem. U kunt [Microsoft Graph-API](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration) en Graph Explorer gebruiken om de kenmerk toewijzingen en het schema voor het inrichten van gebruikers te exporteren naar een JSON-bestand en dit weer te importeren in azure AD.
+Azure AD ondersteunt door directe toewijzing van kenmerk naar kenmerk, voor het leveren van constante waarden of het [schrijven van expressies voor kenmerk toewijzingen](functions-for-customizing-application-data.md). Met deze flexibiliteit kunt u precies bepalen wat er wordt ingevuld in het kenmerk van het doel systeem. U kunt [Microsoft Graph-API](export-import-provisioning-configuration.md) en Graph Explorer gebruiken om de kenmerk toewijzingen en het schema voor het inrichten van gebruikers te exporteren naar een JSON-bestand en dit weer te importeren in azure AD.
 
-Zie voor meer informatie [Gebruikers inrichten kenmerk toewijzingen voor SaaS-toepassingen in azure Active Directory aanpassen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+Zie voor meer informatie [Gebruikers inrichten kenmerk toewijzingen voor SaaS-toepassingen in azure Active Directory aanpassen](customize-application-attributes.md).
 
 ### <a name="special-considerations-for-user-provisioning"></a>Speciale overwegingen voor het inrichten van gebruikers
 
@@ -216,9 +216,9 @@ Houd rekening met het volgende om problemen na de implementatie te verminderen:
 
 * Zorg ervoor dat de kenmerken die worden gebruikt voor het toewijzen van gebruikers-of groeps objecten tussen bron-en doel toepassingen, robuust zijn. Gebruikers/groepen mogen niet onjuist worden ingericht als de kenmerken worden gewijzigd (bijvoorbeeld wanneer een gebruiker naar een ander deel van het bedrijf gaat).
 
-* Toepassingen kunnen specifieke beperkingen en/of vereisten hebben waaraan moet worden voldaan om de gebruikers inrichting correct te laten werken. Met een toegestane vertraging worden bijvoorbeeld waarden voor bepaalde kenmerken afgekapt. Raadpleeg de [zelf studies voor automatische gebruikers inrichting](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) die specifiek zijn voor elke toepassing.
+* Toepassingen kunnen specifieke beperkingen en/of vereisten hebben waaraan moet worden voldaan om de gebruikers inrichting correct te laten werken. Met een toegestane vertraging worden bijvoorbeeld waarden voor bepaalde kenmerken afgekapt. Raadpleeg de [zelf studies voor automatische gebruikers inrichting](../saas-apps/tutorial-list.md) die specifiek zijn voor elke toepassing.
 
-* Controleer de schema consistentie tussen de bron-en doel systemen. Veelvoorkomende problemen zijn kenmerken zoals UPN of e-mail die niet overeenkomt. Bijvoorbeeld: UPN in azure AD is ingesteld als *john_smith@contoso.com* en in de app *jsmith@contoso.com* . Zie de [verwijzing naar het gebruikers-en groeps schema](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)voor meer informatie.
+* Controleer de schema consistentie tussen de bron-en doel systemen. Veelvoorkomende problemen zijn kenmerken zoals UPN of e-mail die niet overeenkomt. Bijvoorbeeld: UPN in azure AD is ingesteld als *john_smith@contoso.com* en in de app *jsmith@contoso.com* . Zie de [verwijzing naar het gebruikers-en groeps schema](use-scim-to-provision-users-and-groups.md)voor meer informatie.
 
 ## <a name="plan-testing-and-security"></a>Testen en beveiliging plannen
 
@@ -233,7 +233,7 @@ Zodra u automatische gebruikers inrichting voor de toepassing hebt geconfigureer
 | Gebruiker wordt toegevoegd aan een groep die is toegewezen aan het doel systeem | Het gebruikers object is ingericht in het doel systeem. <br>De gebruiker kan zich aanmelden bij het doel systeem en de gewenste acties uitvoeren. |
 | De gebruiker wordt verwijderd uit een groep die is toegewezen aan het doel systeem | Het gebruikers object wordt ongedaan gemaakt in het doel systeem.<br>Gebruiker kan zich niet aanmelden bij het doel systeem. |
 | Gebruikers gegevens worden op elke manier bijgewerkt in azure AD | Bijgewerkte gebruikers kenmerken worden weer gegeven in het doel systeem na een incrementele cyclus |
-| De gebruiker valt buiten het bereik | Gebruikers object is uitgeschakeld of verwijderd. <br>Opmerking: dit gedrag wordt genegeerd bij het [inrichten](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)van werk dagen. |
+| De gebruiker valt buiten het bereik | Gebruikers object is uitgeschakeld of verwijderd. <br>Opmerking: dit gedrag wordt genegeerd bij het [inrichten](skip-out-of-scope-deletions.md)van werk dagen. |
 
 ### <a name="plan-security"></a>Beveiliging plannen
 
@@ -243,7 +243,7 @@ Het is gebruikelijk dat een beveiligings beoordeling vereist is als onderdeel va
 
 Als de implementatie van de automatische gebruikers inrichting niet naar wens werkt in de productie omgeving, kunnen de volgende terugdraai stappen u helpen bij het herstellen naar een eerdere bekende goede staat:
 
-1. Bekijk het [inrichtings samenvattings rapport](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting) en de [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting) om te bepalen wat de onjuiste bewerkingen hebben plaatsgevonden voor de betrokken gebruikers en/of groepen.
+1. Bekijk het [inrichtings samenvattings rapport](check-status-user-account-provisioning.md) en de [inrichtings logboeken](check-status-user-account-provisioning.md#provisioning-logs-preview) om te bepalen wat de onjuiste bewerkingen hebben plaatsgevonden voor de betrokken gebruikers en/of groepen.
 
 1. Gebruik audit logboeken voor het inrichten om de laatste bekende juiste status van de betrokken gebruikers en/of groepen te bepalen. Bekijk ook de bron systemen (Azure AD of AD).
 
@@ -257,13 +257,13 @@ Kies de stappen die zijn afgestemd op uw oplossings vereisten.
 
 Wanneer de Azure AD-inrichtings service voor de eerste keer wordt uitgevoerd, maakt de eerste cyclus voor het bron systeem en de doel systemen een moment opname van alle gebruikers objecten voor elk doel systeem.
 
-Bij het inschakelen van automatische inrichting voor een toepassing, kan de eerste cyclus van 20 minuten tot enkele uren duren. De duur is afhankelijk van de grootte van de Azure AD-map en het aantal gebruikers in het bereik voor inrichting. Zie de [prestaties van het inrichten verbeteren](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish).
+Bij het inschakelen van automatische inrichting voor een toepassing, kan de eerste cyclus van 20 minuten tot enkele uren duren. De duur is afhankelijk van de grootte van de Azure AD-map en het aantal gebruikers in het bereik voor inrichting. Zie de [prestaties van het inrichten verbeteren](application-provisioning-when-will-provisioning-finish.md).
 
 De inrichtings service slaat de status van beide systemen op na de eerste cyclus, waardoor de prestaties van de volgende incrementele cycli worden verbeterd.
 
 ### <a name="configure-automatic-user-provisioning"></a>Automatische gebruikersinrichting configureren
 
-Gebruik de [Azure Portal](https://portal.azure.com/) voor het beheren van automatische toewijzing van gebruikers accounts en het ongedaan maken van de inrichting voor toepassingen die deze ondersteunen. Volg de stappen in [Hoe kan ik automatische inrichting instellen voor een toepassing?](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
+Gebruik de [Azure Portal](https://portal.azure.com/) voor het beheren van automatische toewijzing van gebruikers accounts en het ongedaan maken van de inrichting voor toepassingen die deze ondersteunen. Volg de stappen in [Hoe kan ik automatische inrichting instellen voor een toepassing?](user-provisioning.md)
 
 De Azure AD User Provisioning Service kan ook worden geconfigureerd en beheerd met behulp van de [Microsoft Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview).
 
@@ -273,7 +273,7 @@ Nu u hebt geïmplementeerd, moet u de oplossing beheren.
 
 ### <a name="monitor-user-provisioning-operation-health"></a>Status van bewerkings bewerking door gebruiker bewaken
 
-Na een geslaagde [eerste cyclus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)zullen de Azure AD-inrichtings service voor onbepaalde tijd incrementele updates uitvoeren, met intervallen die specifiek zijn voor elke toepassing, totdat een van de volgende gebeurtenissen zich voordoet:
+Na een geslaagde [eerste cyclus](user-provisioning.md)zullen de Azure AD-inrichtings service voor onbepaalde tijd incrementele updates uitvoeren, met intervallen die specifiek zijn voor elke toepassing, totdat een van de volgende gebeurtenissen zich voordoet:
 
 * De service wordt hand matig gestopt en er wordt een nieuwe eerste cyclus geactiveerd met behulp van de [Azure Portal](https://portal.azure.com/), of met behulp van de juiste [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) -opdracht.
 
@@ -281,15 +281,15 @@ Na een geslaagde [eerste cyclus](https://docs.microsoft.com/azure/active-directo
 
 * Het inrichtings proces gaat in quarantaine vanwege een hoge fout frequentie en blijft meer dan vier weken in quarantaine, wanneer deze automatisch wordt uitgeschakeld.
 
-Zie Azure AD- [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context)voor het controleren van deze gebeurtenissen en alle andere activiteiten die worden uitgevoerd door de inrichtings service.
+Zie Azure AD- [inrichtings logboeken](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)voor het controleren van deze gebeurtenissen en alle andere activiteiten die worden uitgevoerd door de inrichtings service.
 
-Als u wilt weten hoe lang het inrichten van de inrichtings cyclus duurt en de voortgang van de inrichtings taak bewaken, kunt u [de status van het inrichten van gebruikers controleren](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user).
+Als u wilt weten hoe lang het inrichten van de inrichtings cyclus duurt en de voortgang van de inrichtings taak bewaken, kunt u [de status van het inrichten van gebruikers controleren](application-provisioning-when-will-provisioning-finish-specific-user.md).
 
 ### <a name="gain-insights-from-reports"></a>Inzichten verkrijgen van rapporten
 
-Azure AD kan [inzicht](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) geven in het gebruik van gebruikers en de operationele status van uw organisatie via controle logboeken en-rapporten.
+Azure AD kan [inzicht](application-provisioning-when-will-provisioning-finish-specific-user.md) geven in het gebruik van gebruikers en de operationele status van uw organisatie via controle logboeken en-rapporten.
 
-Beheerders moeten het samenvattings rapport van de inrichting controleren om de operationele status van de inrichtings taak te controleren. Alle activiteiten die worden uitgevoerd door de inrichtings service worden vastgelegd in de Azure AD-audit Logboeken. Zie [zelf studie: rapportage over het automatisch inrichten van gebruikers accounts](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning).
+Beheerders moeten het samenvattings rapport van de inrichting controleren om de operationele status van de inrichtings taak te controleren. Alle activiteiten die worden uitgevoerd door de inrichtings service worden vastgelegd in de Azure AD-audit Logboeken. Zie [zelf studie: rapportage over het automatisch inrichten van gebruikers accounts](check-status-user-account-provisioning.md).
 
 We raden u aan de eigenaar van de rapporten te gebruiken voor een uitgebracht die voldoet aan de vereisten van uw organisatie. Azure AD behoudt de meeste controle gegevens gedurende 30 dagen.
 
@@ -297,27 +297,27 @@ We raden u aan de eigenaar van de rapporten te gebruiken voor een uitgebracht di
 
 Raadpleeg de volgende koppelingen voor het oplossen van problemen die kunnen optreden tijdens het inrichten:
 
-* [Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
+* [Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-toepassing](application-provisioning-config-problem.md)
 
-* [Een kenmerk van uw on-premises Active Directory naar Azure AD synchroniseren voor het inrichten van een toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning-sync-attributes-for-mapping)
+* [Een kenmerk van uw on-premises Active Directory naar Azure AD synchroniseren voor het inrichten van een toepassing](user-provisioning-sync-attributes-for-mapping.md)
 
-* [Gebruikers die een Azure AD-galerie toepassing inrichten, nemen uren of meer in beslag](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish)
+* [Gebruikers die een Azure AD-galerie toepassing inrichten, nemen uren of meer in beslag](application-provisioning-when-will-provisioning-finish.md)
 
-* [Probleem bij het opslaan van de beheerders referenties tijdens het configureren van de gebruikers inrichting voor een Azure Active Directory galerie-toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-storage-limit)
+* [Probleem bij het opslaan van de beheerders referenties tijdens het configureren van de gebruikers inrichting voor een Azure Active Directory galerie-toepassing](application-provisioning-config-problem-storage-limit.md)
 
-* [Er worden geen gebruikers ingericht voor een Azure AD-galerie toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
+* [Er worden geen gebruikers ingericht voor een Azure AD-galerie toepassing](application-provisioning-config-problem-no-users-provisioned.md)
 
-* [Er wordt een verkeerde set gebruikers ingericht voor een Azure AD-galerie toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-wrong-users-provisioned)
+* [Er wordt een verkeerde set gebruikers ingericht voor een Azure AD-galerie toepassing](application-provisioning-config-problem-wrong-users-provisioned.md)
 
 ### <a name="helpful-documentation"></a>Nuttige documentatie
 
-* [Expressies schrijven voor kenmerk toewijzingen](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+* [Expressies schrijven voor kenmerk toewijzingen](functions-for-customizing-application-data.md)
 
 * [Overzicht van Azure AD-synchronisatie-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
 
-* [Verwijdering van gebruikers accounts die buiten het bereik vallen, overs Laan](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)
+* [Verwijdering van gebruikers accounts die buiten het bereik vallen, overs Laan](skip-out-of-scope-deletions.md)
 
-* [Azure AD Connect-inrichtings agent: release geschiedenis van versie](https://docs.microsoft.com/azure/active-directory/manage-apps/provisioning-agent-release-version-history)
+* [Azure AD Connect-inrichtings agent: release geschiedenis van versie](provisioning-agent-release-version-history.md)
 
 #### <a name="resources"></a>Resources
 
@@ -328,8 +328,8 @@ Raadpleeg de volgende koppelingen voor het oplossen van problemen die kunnen opt
 * [Stack overflow-Azure AD-forum](https://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Automatische gebruikers inrichting configureren](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)
+* [Automatische gebruikers inrichting configureren](configure-automatic-user-provisioning-portal.md)
 
-* [Uw inrichtings configuratie exporteren of importeren met behulp van Microsoft Graph-API](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration)
+* [Uw inrichtings configuratie exporteren of importeren met behulp van Microsoft Graph-API](export-import-provisioning-configuration.md)
 
-* [Expressies schrijven voor kenmerk toewijzingen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+* [Expressies schrijven voor kenmerk toewijzingen in azure Active Directory](functions-for-customizing-application-data.md)

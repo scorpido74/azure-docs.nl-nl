@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e8d7e7764a01dbd0169efae093bac4d984982108
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a8178e5ff9ff4816ddd422d3c45cfc0e1e0b3d41
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708656"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712980"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Continue integratie en implementatie voor Azure SQL Data Warehouse
 
@@ -30,7 +30,7 @@ In deze eenvoudige zelf studie wordt uitgelegd hoe u het SSDT-data base project 
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Continue integratie met Visual Studio build
 
-1. Navigeer naar Azure-pijp lijnen en maak een nieuwe build-pijp lijn
+1. Navigeer naar Azure-pijp lijnen en maak een nieuwe build-pijp lijn.
 
       ![Nieuwe pijp lijn](media/sql-data-warehouse-continuous-integration-and-deployment/1-new-build-pipeline.png "Nieuwe pijplijn")
 
@@ -47,7 +47,7 @@ Op dit moment hebt u een eenvoudige omgeving waar elke check-in voor de hoofd ve
 
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Doorlopende implementatie met de implementatie taak van Azure SQL Data Warehouse (of data base)
 
-1. Voeg een nieuwe taak toe met behulp van de [implementatie taak Azure SQL database](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) en vul de vereiste velden in om verbinding te maken met uw doel-Data Warehouse. Wanneer deze taak wordt uitgevoerd, wordt de DACPAC die is gegenereerd op basis van het vorige bouw proces, geïmplementeerd naar het doel Data Warehouse. U kunt ook de [implementatie taak van Azure SQL Data Warehouse](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) gebruiken 
+1. Voeg een nieuwe taak toe met behulp van de [implementatie taak Azure SQL database](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) en vul de vereiste velden in om verbinding te maken met uw doel-Data Warehouse. Wanneer deze taak wordt uitgevoerd, wordt de DACPAC die is gegenereerd op basis van het vorige bouw proces, geïmplementeerd naar het doel Data Warehouse. U kunt ook de [Azure SQL Data Warehouse implementatie taak](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)gebruiken. 
 
       ![Implementatie taak](media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Implementatie taak")
 
@@ -61,37 +61,7 @@ Op dit moment hebt u een eenvoudige omgeving waar elke check-in voor de hoofd ve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure SQL Data Warehouse architectuur](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture) verkennen
-- Snel [een SQL Data Warehouse maken][create a SQL Data Warehouse]
-- [Voorbeeld gegevens laden][load sample data].
+- [Azure SQL Data Warehouse architectuur](massively-parallel-processing-mpp-architecture.md) verkennen
+- Snel [een SQL Data Warehouse maken](create-data-warehouse-portal.md)
+- [Voorbeeld gegevens laden](sql-data-warehouse-load-sample-databases.md)
 - [Video's](/azure/sql-data-warehouse/sql-data-warehouse-videos) verkennen
-
-
-
-<!--Image references-->
-
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[Create a support ticket]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Customer Advisory Team blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Feature requests]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN forum]: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse
-[Stack Overflow forum]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

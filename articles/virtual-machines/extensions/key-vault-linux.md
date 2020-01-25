@@ -8,16 +8,16 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d6b8cdf43fea63fa4709dd5fc5319bb92ddefc63
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a31894719863b16cc92f7e5bf4d7c85944c8850e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806970"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721299"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Extensie van de virtuele machine Key Vault voor Linux
 
-De Key Vault VM-extensie biedt automatisch vernieuwen van certificaten die zijn opgeslagen in een Azure-sleutel kluis. De uitbrei ding bewaakt met name een lijst van waargenomen certificaten die zijn opgeslagen in sleutel kluizen.  Bij het detecteren van een wijziging wordt de uitbrei ding opgehaald en worden de bijbehorende certificaten geïnstalleerd. De extensie van de Key Vault-VM wordt gepubliceerd en ondersteund door micro soft, momenteel op Linux Vm's. In dit document vindt u informatie over de ondersteunde platforms, configuraties en implementatie opties voor de Key Vault VM-extensie voor Linux. 
+De Key Vault VM-extensie biedt automatisch vernieuwen van certificaten die zijn opgeslagen in een Azure-sleutel kluis. De uitbrei ding bewaakt met name een lijst van waargenomen certificaten die zijn opgeslagen in sleutel kluizen.  Bij het detecteren van een wijziging haalt de extensie de bijbehorende certificaten op en installeert deze. De extensie van de Key Vault-VM wordt gepubliceerd en ondersteund door micro soft, momenteel op Linux Vm's. In dit document vindt u informatie over de ondersteunde platforms, configuraties en implementatie opties voor de Key Vault VM-extensie voor Linux. 
 
 ### <a name="operating-system"></a>Besturingssysteem
 
@@ -67,7 +67,7 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 
 ### <a name="property-values"></a>Waarden van eigenschappen
 
-| Naam | Waarde / voorbeeld | Gegevenstype |
+| Name | Waarde / voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | string |
@@ -75,7 +75,7 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | string |
 | Naam certificaat archief | MY | string |
-| linkOnRenewal | onwaar | booleaans |
+| linkOnRenewal | false | booleaans |
 | certificateStoreLocation  | LocalMachine | string |
 | requiredInitialSync | waar | booleaans |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | teken reeks matrix
@@ -202,7 +202,7 @@ Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald 
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-CLI
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```

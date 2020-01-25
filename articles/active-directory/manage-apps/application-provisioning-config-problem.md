@@ -16,18 +16,18 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55b9b8dae6ff47099935f42f75286b1b4ddd3708
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4da7c874cc5f883d63f8613242c7a7e8b1e83cbd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275750"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712269"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-toepassing
 
-Voor het configureren van de [automatische gebruikers inrichting](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning) voor een app (indien ondersteund) moeten specifieke instructies worden gevolgd om de toepassing voor te bereiden voor automatische inrichting. Vervolgens kunt u de Azure Portal gebruiken om de inrichtings service te configureren om gebruikers accounts te synchroniseren met de toepassing.
+Voor het configureren van de [automatische gebruikers inrichting](user-provisioning.md) voor een app (indien ondersteund) moeten specifieke instructies worden gevolgd om de toepassing voor te bereiden voor automatische inrichting. Vervolgens kunt u de Azure Portal gebruiken om de inrichtings service te configureren om gebruikers accounts te synchroniseren met de toepassing.
 
-U moet altijd eerst de installatie-zelf studie vinden die specifiek is voor het instellen van inrichting voor uw toepassing. Volg vervolgens de stappen voor het configureren van zowel de app als Azure AD om de inrichtings verbinding te maken. Een lijst met app-zelf studies vindt u in een [lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+U moet altijd eerst de installatie-zelf studie vinden die specifiek is voor het instellen van inrichting voor uw toepassing. Volg vervolgens de stappen voor het configureren van zowel de app als Azure AD om de inrichtings verbinding te maken. Een lijst met app-zelf studies vindt u in een [lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](../saas-apps/tutorial-list.md).
 
 ## <a name="how-to-see-if-provisioning-is-working"></a>Controleren of inrichten werkt 
 
@@ -62,11 +62,11 @@ Voor het uitvoeren van de inrichting vereist Azure AD geldige referenties waarme
 
 Wanneer een gebruiker wordt weer gegeven als ' overgeslagen ' in de inrichtings logboeken, is het belang rijk om de uitgebreide details in het logboek bericht te lezen om de reden te bepalen. Hieronder vindt u enkele veelvoorkomende redenen en oplossingen:
 
-- **Er is een bereik filter geconfigureerd** **waarmee de gebruiker wordt gefilterd op basis van een kenmerk waarde**. Zie <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>voor meer informatie over het bereik van filters.
+- **Er is een bereik filter geconfigureerd** **waarmee de gebruiker wordt gefilterd op basis van een kenmerk waarde**. Zie [op kenmerken gebaseerde toepassing inrichten met bereik filters](define-conditional-rules-for-provisioning-user-accounts.md)voor meer informatie.
 
-- **De gebruiker is niet effectief.** Als u dit specifieke fout bericht ziet, is er een probleem met de gebruikers toewijzings record die is opgeslagen in azure AD. U kunt dit probleem oplossen door de toewijzing van de gebruiker (of groep) uit de app ongedaan te maken en het opnieuw toe te wijzen. Zie <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>voor meer informatie over de toewijzing.
+- **De gebruiker is niet effectief.** Als u dit specifieke fout bericht ziet, is er een probleem met de gebruikers toewijzings record die is opgeslagen in azure AD. U kunt dit probleem oplossen door de toewijzing van de gebruiker (of groep) uit de app ongedaan te maken en het opnieuw toe te wijzen. Zie [een gebruiker of groep toewijzen aan een bedrijfs-app](assign-user-or-group-access-portal.md)voor meer informatie.
 
-- **Een vereist kenmerk ontbreekt of is niet ingevuld voor een gebruiker.** Het is belang rijk om rekening mee te houden bij het instellen van inrichting om de kenmerk toewijzingen en werk stromen te controleren en te configureren die bepalen welke gebruikers-(of groeps) eigenschappen stromen van Azure AD naar de toepassing. Dit omvat het instellen van de ' overeenkomende eigenschap ' die wordt gebruikt om gebruikers/groepen tussen de twee systemen uniek te identificeren en te vergelijken. Zie <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>voor meer informatie over dit belang rijke proces.
+- **Een vereist kenmerk ontbreekt of is niet ingevuld voor een gebruiker.** Het is belang rijk om rekening mee te houden bij het instellen van inrichting om de kenmerk toewijzingen en werk stromen te controleren en te configureren die bepalen welke gebruikers-(of groeps) eigenschappen stromen van Azure AD naar de toepassing. Dit omvat het instellen van de ' overeenkomende eigenschap ' die wordt gebruikt om gebruikers/groepen tussen de twee systemen uniek te identificeren en te vergelijken. Zie voor meer informatie over dit belang rijke proces het [aanpassen van kenmerk toewijzingen voor gebruikers inrichting](customize-application-attributes.md).
 
   * **Kenmerk toewijzingen voor groepen:** Het inrichten van de groeps naam en groeps gegevens, naast de leden, als deze worden ondersteund voor sommige toepassingen. U kunt deze functie in-of uitschakelen door de **toewijzing** voor groeps objecten die op het tabblad **inrichten** wordt weer gegeven in of uit te scha kelen. Als inrichtings groepen is ingeschakeld, moet u de kenmerk toewijzingen controleren om ervoor te zorgen dat er een geschikt veld wordt gebruikt voor de ' overeenkomende ID '. Dit kan de weergave naam of e-mail alias zijn), omdat de groep en de bijbehorende leden niet worden ingericht als de overeenkomende eigenschap leeg is of niet is ingevuld voor een groep in azure AD.
 

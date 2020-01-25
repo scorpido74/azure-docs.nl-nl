@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 87f79f0ed21ec1f6a550c47f9f60d18511883300
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9d71dd854c9a5059c2d0a48f57ad3ba5bb1eddf9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768211"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721316"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Meldt zich aan Azure Database for PostgreSQL-één server
 Met Azure Database for PostgreSQL kunt u de standaard logboeken van post gres configureren en gebruiken. De logboeken kunnen worden gebruikt om configuratie fouten en suboptimale prestaties te identificeren, op te lossen en te herstellen. Logboek registratie-informatie die u kunt configureren en toegang bevat fouten, query gegevens, autovacuüm records, verbindingen en controle punten. (Toegang tot transactie Logboeken is niet beschikbaar).
@@ -96,7 +96,7 @@ De volgende tabel beschrijft de velden voor het type **PostgreSQLLogs** . Afhank
 
 |**Veld** | **Beschrijving** |
 |---|---|
-| tenantId | Uw Tenant-ID |
+| TenantId | Uw Tenant-ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Tijds tempel voor het vastleggen van het logboek in UTC |
 | Type | Het type van het logboek. Altijd `AzureDiagnostics` |
@@ -111,10 +111,10 @@ De volgende tabel beschrijft de velden voor het type **PostgreSQLLogs** . Afhank
 | Gelijk | Logboek registratie niveau, voor beeld: logboek, fout, kennisgeving |
 | Bericht | Primair logboek bericht | 
 | Domain | Server versie, voor beeld: post gres-10 |
-| specificatie | Secundair logboek bericht (indien van toepassing) |
+| Details | Secundair logboek bericht (indien van toepassing) |
 | ColumnName | De naam van de kolom (indien van toepassing) |
 | SchemaName | De naam van het schema (indien van toepassing) |
-| Gegevens type | Naam van het gegevens type (indien van toepassing) |
+| DatatypeName | Naam van het gegevens type (indien van toepassing) |
 | LogicalServerName | Naam van de server | 
 | _ResourceId | Resource-URI |
 | Voorvoegsel | Voor voegsel van logboek regel |

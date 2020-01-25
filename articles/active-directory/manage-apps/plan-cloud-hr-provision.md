@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha
-ms.openlocfilehash: 2d2cb113261495b0217d056cf62019b79be7fa27
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8964f710ca4dfdf4710458f857c3a930fd755654
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767854"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711516"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Cloud-HR-toepassing plannen voor Azure Active Directory gebruikers inrichting
 
 In het verleden hebben IT-mede werkers gepaard met hand matige methoden voor het maken, bijwerken en verwijderen. Ze hebben methoden gebruikt als het uploaden van CSV-bestanden of aangepaste scripts om gegevens van werk nemers te synchroniseren. Deze inrichtings processen zijn fout gevoelig, onveilig en moeilijk te beheren.
 
-Voor het beheren van de identiteits levensduur van werk nemers, leveranciers of voorwaardelijke werk nemers, [Azure Active Directory-gebruikers (Azure AD) User Provisioning Service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) , biedt integratie met op de cloud gebaseerde HR-toepassingen (Human Resources). Voor beelden van toepassingen zijn workday of SuccessFactors.
+Voor het beheren van de identiteits levensduur van werk nemers, leveranciers of voorwaardelijke werk nemers, [Azure Active Directory-gebruikers (Azure AD) User Provisioning Service](user-provisioning.md) , biedt integratie met op de cloud gebaseerde HR-toepassingen (Human Resources). Voor beelden van toepassingen zijn workday of SuccessFactors.
 
 Azure AD gebruikt deze integratie om de volgende workflows voor de Cloud toepassing (app) in te scha kelen:
 
@@ -86,7 +86,7 @@ U hebt ook een geldige licentie voor Azure AD Premium P1 of hoger nodig voor elk
 - Een test-en productie-exemplaar van de Cloud-HR-app.
 - Beheerders machtigingen in de Cloud HR-app om een systeem integratie gebruiker te maken en wijzigingen aan te brengen voor het testen van werknemers gegevens voor test doeleinden.
 - Voor het inrichten van gebruikers aan Active Directory is een server met Windows Server 2012 of hoger met .NET 4.7.1 + runtime vereist voor het hosten van de [Azure AD Connect-inrichtings agent](https://go.microsoft.com/fwlink/?linkid=847801).
-- [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect) voor het synchroniseren van gebruikers tussen Active Directory en Azure AD.
+- [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) voor het synchroniseren van gebruikers tussen Active Directory en Azure AD.
 
 ### <a name="training-resources"></a>Trainings bronnen
 
@@ -94,10 +94,10 @@ U hebt ook een geldige licentie voor Azure AD Premium P1 of hoger nodig voor elk
 |:-|:-|
 | Video’s | [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) |
 | | [Het inrichten van gebruikers in Active Azure Directory implementeren](https://youtu.be/pKzyts6kfrw) |
-| Zelfstudie | [Lijst met zelf studies voor het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) |
-| | [Zelf studie: workday configureren voor het automatisch inrichten van gebruikers](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
-| Veelgestelde vragen | [Automatische gebruikers inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
-| | [Inrichten van workday naar Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
+| Zelfstudie | [Lijst met zelf studies voor het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md) |
+| | [Zelf studie: workday configureren voor het automatisch inrichten van gebruikers](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
+| Veelgestelde vragen | [Automatische gebruikers inrichting](user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| | [Inrichten van workday naar Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Architectuur voor de oplossing
 
@@ -106,7 +106,7 @@ In het volgende voor beeld wordt de end-to-end-oplossings architectuur voor gebr
 - **Gezaghebbende HR-gegevens stroom vanuit de Cloud HR-app naar Active Directory.** In deze stroom wordt de HR-gebeurtenis (samen voegers-het proces voor de Leavers) gestart in de app-Tenant voor HR-apps. De Azure AD Provisioning-Service en Azure AD Connect inrichtings agent richten de gebruikers gegevens in van de Tenant van de HR-app van de cloud in Active Directory. Afhankelijk van de gebeurtenis kan dit leiden tot het maken, bijwerken, inschakelen en uitschakelen van bewerkingen in Active Directory.
 - **Synchroniseer met Azure AD en schrijf e-mail en gebruikers naam van on-premises Active Directory naar een Cloud-app.** Nadat de accounts zijn bijgewerkt in Active Directory, wordt deze gesynchroniseerd met Azure AD via Azure AD Connect. De kenmerken van het e-mail adres en de gebruikers naam kunnen worden teruggeschreven naar de Tenant voor de Cloud-app HR.
 
-![Werk stroom diagram](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img1.png)
+![Werk stroom diagram](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img1.png)
 
 #### <a name="description-of-workflow"></a>Beschrijving van werk stroom
 
@@ -116,7 +116,7 @@ De volgende belang rijke stappen worden in het diagram aangegeven:  
 2. De **Azure AD-inrichtings service** voert de geplande cycli uit van de Tenant van de HR-app in de Cloud en identificeert wijzigingen die moeten worden verwerkt om te synchroniseren met Active Directory.
 3. De **Azure AD-inrichtings service** roept de Azure AD Connect-inrichtings agent aan met een aanvraag lading die Active Directory account maken, bijwerken, inschakelen en uitschakelen heeft.
 4. **Azure AD Connect-inrichtings agent** gebruikt een service account voor het beheren van Active Directory account gegevens.
-5. **Azure AD Connect** voert Delta [synchronisatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) uit voor het ophalen van updates in Active Directory.
+5. **Azure AD Connect** voert Delta [synchronisatie](../hybrid/how-to-connect-sync-whatis.md) uit voor het ophalen van updates in Active Directory.
 6. **Active Directory** updates worden gesynchroniseerd met Azure AD.
 7. **Azure AD Provisioning Service** schrijft back-ups van het e-mail kenmerk en de gebruikers naam van Azure AD naar de app-TENANT voor HR-apps.
 
@@ -130,7 +130,7 @@ Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet
 
 Neem een vertegenwoordiger van de HR-organisatie op die invoer kan bieden aan bestaande HR-bedrijfs processen en worker-identiteit plus taak verwerkings vereisten.
 
-### <a name="plan-communications"></a>De communicatie plannen
+### <a name="plan-communications"></a>Communicatie plannen
 
 Communicatie is van cruciaal belang voor het slagen van een nieuwe service. Communiceer proactief met uw gebruikers over wanneer en hoe hun ervaring wordt gewijzigd. Laat ze weten hoe ze ondersteuning kunnen krijgen als ze problemen ondervinden.
 
@@ -138,7 +138,7 @@ Communicatie is van cruciaal belang voor het slagen van een nieuwe service. Comm
 
 Voor het integreren van bedrijfs processen en identiteits werk stromen van de Cloud HR-app naar doel systemen is een aanzienlijke hoeveelheid gegevens validatie, gegevens transformatie, het opschonen van gegevens en end-to-end-tests vereist voordat u de oplossing in productie kunt implementeren.
 
-Voer de eerste configuratie uit in een [test omgeving](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) voordat u deze schaalt naar alle gebruikers in productie.
+Voer de eerste configuratie uit in een [test omgeving](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) voordat u deze schaalt naar alle gebruikers in productie.
 
 ## <a name="select-cloud-hr-provisioning-connector-apps"></a>Apps voor de inrichtings connector voor Clouds selecteren
 
@@ -150,13 +150,13 @@ Als u Azure AD-inrichtings werk stromen tussen de Cloud HR-app en Active Directo
 
 In de volgende afbeelding ziet u bijvoorbeeld de workday-connector-apps die beschikbaar zijn in de Azure AD-App-galerie.
 
-![Galerie met apps voor Azure Active Directory Portal](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img2.png)
+![Galerie met apps voor Azure Active Directory Portal](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img2.png)
 
 ### <a name="decision-flow-chart"></a>Diagram van de beslissings stroom
 
 Gebruik de volgende beslissings stroom om te bepalen welke Clouds voor de inrichtings-app van uw afdeling relevant zijn voor uw scenario.
 
-![Diagram van de beslissings stroom](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img3.png)
+![Diagram van de beslissings stroom](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img3.png)
 
 ## <a name="design-the-azure-ad-connect-provisioning-agent-deployment-topology"></a>De implementatie topologie voor de Azure AD Connect-inrichtings agent ontwerpen
 
@@ -165,7 +165,7 @@ De inrichtings integratie tussen de Cloud HR-app en Active Directory vereist vie
 - Cloud HR app-Tenant
 - Connector-app inrichten
 - Inrichtings agent Azure AD Connect
-- Active Directory-domein
+- Active Directory domein
 
 De implementatie topologie voor de Azure AD Connect-inrichtings agent is afhankelijk van het aantal tenants in de Cloud-app voor apps en Active Directory onderliggende domeinen die u wilt integreren. Als u meerdere Active Directory domeinen hebt, is het afhankelijk van het feit of de Active Directory domeinen aaneengesloten of [gescheiden](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)zijn.
 
@@ -184,7 +184,7 @@ We raden u aan de volgende productie configuratie te configureren:
 |Aantal te configureren apps voor de inrichtings connector|Eén app per onderliggend domein|
 |Server host voor Azure AD Connect-inrichtings agent|Windows 2012 R2 + met een regel van het gezichts vermogen naar geolocatie Active Directory domein controllers</br>Kan samen met Azure AD Connect service worden gecombineerd|
 
-![Stroom naar on-premises agents](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img4.png)
+![Stroom naar on-premises agents](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img4.png)
 
 ### <a name="single-cloud-hr-app-tenant---target-multiple-child-domains-in-a-disjoint-active-directory-forest"></a>Tenant-> voor één Cloud-app met meerdere onderliggende domeinen in een niet-aaneengesloten Active Directory forest
 
@@ -198,13 +198,13 @@ We raden u aan de volgende productie configuratie te configureren:
 |Aantal te configureren apps voor de inrichtings connector|Eén app per onderliggend domein|
 |Server host voor Azure AD Connect-inrichtings agent|Windows 2012 R2 + met een regel van het gezichts vermogen naar geolocatie Active Directory domein controllers</br>Kan samen met Azure AD Connect service worden gecombineerd|
 
-![Niet-aaneengesloten app-Tenant voor een enkele Cloud Active Directory-forest](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img5.png)
+![Niet-aaneengesloten app-Tenant voor een enkele Cloud Active Directory-forest](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img5.png)
 
 ### <a name="azure-ad-connect-provisioning-agent-requirements"></a>Agent vereisten voor Azure AD Connect inrichten
 
 Voor de Cloud HR-app voor het Active Directory van de oplossing voor het inrichten van gebruikers is vereist dat u een of meer Azure AD Connect-inrichtings agenten implementeert op servers waarop Windows 2012 R2 of hoger wordt uitgevoerd. De servers moeten mini maal 4 GB RAM-geheugen en .NET 4.7.1 + runtime hebben. Zorg ervoor dat de hostserver netwerk toegang heeft tot het doel Active Directory domein.
 
-Om de on-premises omgeving voor te bereiden, wordt met de wizard agent configureren van Azure AD Connect de agent geregistreerd bij uw Azure AD-Tenant, worden [poorten geopend](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#open-ports), [krijgt u toegang tot url's](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#allow-access-to-urls)en worden de [uitgaande HTTPS-proxy configuratie](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)ondersteund.
+Om de on-premises omgeving voor te bereiden, wordt met de wizard agent configureren van Azure AD Connect de agent geregistreerd bij uw Azure AD-Tenant, worden [poorten geopend](application-proxy-add-on-premises-application.md#open-ports), [krijgt u toegang tot url's](application-proxy-add-on-premises-application.md#allow-access-to-urls)en worden de [uitgaande HTTPS-proxy configuratie](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)ondersteund.
 
 De inrichtings agent gebruikt een service account om te communiceren met de Active Directory domeinen. Voordat u de Agent installeert, maakt u een service account in Active Directory gebruikers en computers die aan de volgende vereisten voldoen:
 
@@ -221,7 +221,7 @@ Wanneer u het inrichten van de Cloud-app naar Active Directory of Azure AD insch
 
 ### <a name="define-scoping-filters"></a>Bereik filters definiëren
 
-Gebruik [bereik filters](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters) om de op kenmerken gebaseerde regels te definiëren waarmee wordt bepaald welke gebruikers moeten worden ingericht vanuit de app HR naar Active Directory of Azure AD.
+Gebruik [bereik filters](define-conditional-rules-for-provisioning-user-accounts.md) om de op kenmerken gebaseerde regels te definiëren waarmee wordt bepaald welke gebruikers moeten worden ingericht vanuit de app HR naar Active Directory of Azure AD.
 
 Wanneer u het proces voor samen voegers start, moet u de volgende vereisten verzamelen:
 
@@ -233,7 +233,7 @@ Afhankelijk van uw vereisten kunt u, wanneer u kenmerk toewijzingen configureert
 
 ### <a name="determine-matching-attributes"></a>Overeenkomende kenmerken bepalen
 
-Bij het inrichten beschikt u over de mogelijkheid om bestaande accounts te koppelen aan het bron-en doel systeem. Wanneer u de Cloud HR-app integreert met de Azure AD-inrichtings service, kunt u [kenmerk toewijzing configureren](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal#mappings) om te bepalen welke gebruikers gegevens moeten stromen van de HR-app naar Active Directory of Azure AD.
+Bij het inrichten beschikt u over de mogelijkheid om bestaande accounts te koppelen aan het bron-en doel systeem. Wanneer u de Cloud HR-app integreert met de Azure AD-inrichtings service, kunt u [kenmerk toewijzing configureren](configure-automatic-user-provisioning-portal.md#mappings) om te bepalen welke gebruikers gegevens moeten stromen van de HR-app naar Active Directory of Azure AD.
 
 Wanneer u het proces voor samen voegers start, moet u de volgende vereisten verzamelen:
 
@@ -243,13 +243,13 @@ Wanneer u het proces voor samen voegers start, moet u de volgende vereisten verz
 - Hoe kunt u vanuit een perspectief voor de levens cyclus van de identiteit werk nemers omzetten naar conversies van een voorwaardelijke werk nemer of anderszins?
 - Blijven de oude Active Directory accounts in geconverteerde gebruikers?
 
-Afhankelijk van uw vereisten ondersteunt Azure AD directe toewijzing van kenmerk naar kenmerk door constante waarden te bieden of expressies te [schrijven voor kenmerk toewijzingen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-writing-expressions-for-attribute-mappings). Deze flexibiliteit biedt u de ultieme controle over wat er wordt ingevuld in het kenmerk van de doel toepassing. U kunt de [Microsoft Graph-API](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration) en Graph Explorer gebruiken om de kenmerk toewijzingen en het schema voor het inrichten van gebruikers te exporteren naar een JSON-bestand en dit weer te importeren in azure AD.
+Afhankelijk van uw vereisten ondersteunt Azure AD directe toewijzing van kenmerk naar kenmerk door constante waarden te bieden of expressies te [schrijven voor kenmerk toewijzingen](functions-for-customizing-application-data.md). Deze flexibiliteit biedt u de ultieme controle over wat er wordt ingevuld in het kenmerk van de doel toepassing. U kunt de [Microsoft Graph-API](export-import-provisioning-configuration.md) en Graph Explorer gebruiken om de kenmerk toewijzingen en het schema voor het inrichten van gebruikers te exporteren naar een JSON-bestand en dit weer te importeren in azure AD.
 
 Het kenmerk in de Cloud-HR-app dat de unieke werk nemer-ID vertegenwoordigt, wordt standaard gebruikt als het overeenkomende kenmerk dat is *toegewezen aan het unieke kenmerk in Active Directory.* In het scenario van de werkdag-app wordt bijvoorbeeld het **WorkerID** kenmerk **workday** toegewezen aan het kenmerk Active Directory **employeeID** .
 
 U kunt meerdere overeenkomende kenmerken instellen en overeenkomende prioriteit toewijzen. Ze worden geëvalueerd op volg orde van overeenkomst. Zodra er een overeenkomst wordt gevonden, worden er geen verdere overeenkomende kenmerken geëvalueerd.
 
-U kunt ook [de standaard kenmerk toewijzingen aanpassen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes#understanding-attribute-mapping-types), zoals het wijzigen of verwijderen van bestaande kenmerk toewijzingen. U kunt ook nieuwe kenmerk toewijzingen maken op basis van de behoeften van uw bedrijf. Zie voor meer informatie de zelf studie over Cloud-HR-apps (zoals [workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) voor een lijst met aangepaste kenmerken die u wilt toewijzen.
+U kunt ook [de standaard kenmerk toewijzingen aanpassen](customize-application-attributes.md#understanding-attribute-mapping-types), zoals het wijzigen of verwijderen van bestaande kenmerk toewijzingen. U kunt ook nieuwe kenmerk toewijzingen maken op basis van de behoeften van uw bedrijf. Zie voor meer informatie de zelf studie over Cloud-HR-apps (zoals [workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) voor een lijst met aangepaste kenmerken die u wilt toewijzen.
 
 ### <a name="determine-user-account-status"></a>De status van het gebruikers account bepalen
 
@@ -268,7 +268,7 @@ Wanneer u het proces voor het sluiten van invoegers initieert, moet u de volgend
 | | Hoe beïnvloeden de conversies van werk nemers en voorwaardelijke werk nemers de bestaande Active Directory accounts? |
 | | Hoe verwerkt u de Rescind-bewerking in Active Directory? Rescind-bewerkingen moeten worden verwerkt als toekomstige gehuurde activiteiten in Active Directory worden gemaakt als onderdeel van het proces voor samen voegen. |
 
-Afhankelijk van uw vereisten kunt u de toewijzings logica aanpassen met behulp van [Azure AD-expressies](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data) , zodat het Active Directory-account wordt ingeschakeld of uitgeschakeld op basis van een combi natie van gegevens punten.
+Afhankelijk van uw vereisten kunt u de toewijzings logica aanpassen met behulp van [Azure AD-expressies](functions-for-customizing-application-data.md) , zodat het Active Directory-account wordt ingeschakeld of uitgeschakeld op basis van een combi natie van gegevens punten.
 
 ### <a name="map-cloud-hr-app-to-active-directory-user-attributes"></a>Cloud HR-app toewijzen aan Active Directory gebruikers kenmerken
 
@@ -286,13 +286,13 @@ Wanneer u het proces voor het verwijderen van samenvoegers-verplaatsers start, m
 | | Welke ingangs datums worden er in rekening gehouden voor het verwerken van gebruikers beëindiging? |
 | | Hoe beïnvloeden de conversies van werk nemers en voorwaardelijke werk nemers de bestaande Active Directory accounts? |
 
-Afhankelijk van uw vereisten kunt u de toewijzingen aanpassen om te voldoen aan uw integratie doelen. Voor meer informatie raadpleegt u de specifieke zelf studie over de Cloud-HR-app (zoals [workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) voor een lijst met aangepaste kenmerken die u wilt toewijzen.
+Afhankelijk van uw vereisten kunt u de toewijzingen aanpassen om te voldoen aan uw integratie doelen. Voor meer informatie raadpleegt u de specifieke zelf studie over de Cloud-HR-app (zoals [workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) voor een lijst met aangepaste kenmerken die u wilt toewijzen.
 
 ### <a name="generate-a-unique-attribute-value"></a>Een unieke kenmerk waarde genereren
 
 Wanneer u het proces voor samen voegers initieert, moet u mogelijk unieke kenmerk waarden genereren wanneer u kenmerken zoals CN, samAccountName en de UPN instelt, die unieke beperkingen hebben.
 
-De Azure AD-functie [SelectUniqueValues](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data#selectuniquevalue) evalueert elke regel en controleert vervolgens de waarde die is gegenereerd voor uniekheid in het doel systeem. Zie voor een voor beeld [unieke waarde genereren voor het kenmerk userPrincipalName (UPN)](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data#generate-unique-value-for-userprincipalname-upn-attribute).
+De Azure AD-functie [SelectUniqueValues](functions-for-customizing-application-data.md#selectuniquevalue) evalueert elke regel en controleert vervolgens de waarde die is gegenereerd voor uniekheid in het doel systeem. Zie voor een voor beeld [unieke waarde genereren voor het kenmerk userPrincipalName (UPN)](functions-for-customizing-application-data.md#generate-unique-value-for-userprincipalname-upn-attribute).
 
 > [!NOTE]
 > Deze functie wordt momenteel alleen ondersteund voor werk dagen Active Directory het inrichten van de gebruiker. Het kan niet worden gebruikt met andere inrichtings toepassingen.
@@ -301,7 +301,7 @@ De Azure AD-functie [SelectUniqueValues](https://docs.microsoft.com/azure/active
 
 Het is een gemeen schappelijke vereiste om Active Directory gebruikers accounts in containers te plaatsen op basis van bedrijfs eenheden, locaties en afdelingen. Wanneer u een verplaatsings proces initieert en als er een leidinggevende organisatie wordt gewijzigd, moet u de gebruiker mogelijk van de ene organisatie-eenheid verplaatsen naar een andere in Active Directory.
 
-Gebruik de functie [Switch ()](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data#switch) om de bedrijfs logica voor de OE-toewijzing te configureren en wijs deze toe aan het Active Directory kenmerk **parentDistinguishedName**.
+Gebruik de functie [Switch ()](functions-for-customizing-application-data.md#switch) om de bedrijfs logica voor de OE-toewijzing te configureren en wijs deze toe aan het Active Directory kenmerk **parentDistinguishedName**.
 
 Als u bijvoorbeeld gebruikers in OE wilt maken op basis van het HR-kenmerk **gemeente**, kunt u de volgende expressie gebruiken:
 
@@ -313,20 +313,20 @@ Als de waarde voor de gemeente van Rotterdam, Austin, Amsterdam of Londen is ing
 
 ## <a name="plan-for-password-delivery-of-new-user-accounts"></a>Plannen voor het leveren van wacht woorden van nieuwe gebruikers accounts
 
-Wanneer u het proces voor samen voegers initieert, moet u een tijdelijk wacht woord voor nieuwe gebruikers accounts instellen en leveren. Met Cloud HR naar Azure AD-gebruikers inrichten kunt u de Azure AD selfservice-functie voor het [opnieuw instellen van wacht woorden](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) voor de gebruiker op de eerste dag implementeren.
+Wanneer u het proces voor samen voegers initieert, moet u een tijdelijk wacht woord voor nieuwe gebruikers accounts instellen en leveren. Met Cloud HR naar Azure AD-gebruikers inrichten kunt u de Azure AD selfservice-functie voor het [opnieuw instellen van wacht woorden](../authentication/quickstart-sspr.md) (SSPR) voor de gebruiker op de eerste dag implementeren.
 
 SSPR is een eenvoudige manier om IT-beheerders in staat te stellen hun wacht woorden opnieuw in te stellen of hun accounts te ontgrendelen. U kunt het kenmerk **mobiele nummer** in de Cloud-app inrichten om Active Directory te maken en te synchroniseren met Azure AD. Nadat het **mobiele nummer** kenmerk in azure AD is gedefinieerd, kunt u SSPR inschakelen voor het account van de gebruiker. Vervolgens kan de nieuwe gebruiker op de eerste dag het geregistreerde en geverifieerde mobiele nummer voor verificatie gebruiken.
 
 ## <a name="plan-for-initial-cycle"></a>Plannen voor de eerste cyclus
 
-Wanneer de Azure AD-inrichtings service voor de eerste keer wordt uitgevoerd, wordt er een [eerste cyclus](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle) voor de Cloud HR-app uitgevoerd om een moment opname te maken van alle gebruikers objecten in de Cloud-app HR. De tijd die nodig is voor de eerste cycli is direct afhankelijk van het aantal gebruikers dat in het bron systeem aanwezig is. De eerste cyclus voor sommige tenants in de Cloud-app van meer dan 100.000 gebruikers kan veel tijd in beslag nemen.
+Wanneer de Azure AD-inrichtings service voor de eerste keer wordt uitgevoerd, wordt er een [eerste cyclus](how-provisioning-works.md#initial-cycle) voor de Cloud HR-app uitgevoerd om een moment opname te maken van alle gebruikers objecten in de Cloud-app HR. De tijd die nodig is voor de eerste cycli is direct afhankelijk van het aantal gebruikers dat in het bron systeem aanwezig is. De eerste cyclus voor sommige tenants in de Cloud-app van meer dan 100.000 gebruikers kan veel tijd in beslag nemen.
 
 Voer de eerste cyclus in progressieve stadia uit **voor grote tenants van de Cloud voor HR-apps (> 30000-gebruikers)** . Start de incrementele updates pas nadat u hebt gecontroleerd of de juiste kenmerken zijn ingesteld in Active Directory voor verschillende scenario's voor het inrichten van gebruikers. Volg de onderstaande volg orde.
 
 1. Voer de eerste cyclus alleen uit voor een beperkt aantal gebruikers door het [bereik filter](#plan-scoping-filters-and-attribute-mapping)in te stellen.
 2. Controleer Active Directory account inrichten en de kenmerk waarden die zijn ingesteld voor de gebruikers die zijn geselecteerd voor de eerste uitvoering. Als het resultaat aan uw verwachtingen voldoet, vouwt u het filter bereik uit om meer gebruikers toe te voegen en de resultaten voor de tweede uitvoering te controleren.
 
-Nadat u tevreden bent met de resultaten van de eerste cyclus voor test gebruikers, start u de [incrementele updates](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#incremental-cycles).
+Nadat u tevreden bent met de resultaten van de eerste cyclus voor test gebruikers, start u de [incrementele updates](how-provisioning-works.md#incremental-cycles).
 
 ## <a name="plan-testing-and-security"></a>Testen en beveiliging plannen
 
@@ -366,7 +366,7 @@ De implementatie van de gebruikers inrichting in de Cloud voor HR kan niet naar 
 
 Kies de Cloud-HR-app die wordt uitgelijnd met uw oplossings vereisten.
 
-**Workday**: voor het importeren van worker-profielen van workday in Active Directory en Azure AD, Zie [zelf studie: werk dagen configureren voor automatische gebruikers inrichting](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#planning-your-deployment). Desgewenst kunt u het e-mail adres en de gebruikers naam naar workday terugschrijven.
+**Workday**: voor het importeren van worker-profielen van workday in Active Directory en Azure AD, Zie [zelf studie: werk dagen configureren voor automatische gebruikers inrichting](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). Desgewenst kunt u het e-mail adres en de gebruikers naam naar workday terugschrijven.
 
 ## <a name="manage-your-configuration"></a>Uw configuratie beheren
 
@@ -374,21 +374,21 @@ Azure AD kan inzicht geven in het gebruik van gebruikers en de operationele stat
 
 ### <a name="gain-insights-from-reports-and-logs"></a>Inzicht verkrijgen in rapporten en Logboeken
 
-Na een geslaagde [eerste cyclus](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle)blijft de Azure AD-inrichtings service voor onbepaalde tijd back-to-back-incrementele updates uitvoeren, op intervallen die zijn gedefinieerd in de zelf studies die specifiek zijn voor elke app, totdat een van de volgende gebeurtenissen zich voordoet:
+Na een geslaagde [eerste cyclus](how-provisioning-works.md#initial-cycle)blijft de Azure AD-inrichtings service voor onbepaalde tijd back-to-back-incrementele updates uitvoeren, op intervallen die zijn gedefinieerd in de zelf studies die specifiek zijn voor elke app, totdat een van de volgende gebeurtenissen zich voordoet:
 
 - De service is hand matig gestopt. Er wordt een nieuwe eerste cyclus geactiveerd met behulp van de [Azure Portal](https://portal.azure.com/) of de juiste [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) -opdracht.
 - Er wordt een nieuwe eerste cyclus geactiveerd als gevolg van een wijziging in kenmerk toewijzingen of filter bereik.
 - Het inrichtings proces gaat in quarantaine vanwege een hoge fout frequentie. Het blijft langer dan vier weken in quarantaine, op het moment dat het automatisch wordt uitgeschakeld.
 
-Als u deze gebeurtenissen en alle andere activiteiten wilt bekijken die door de inrichtings service worden uitgevoerd, [leert u hoe u Logboeken kunt controleren en rapporten kunt ophalen over inrichtings activiteiten](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning).
+Als u deze gebeurtenissen en alle andere activiteiten wilt bekijken die door de inrichtings service worden uitgevoerd, [leert u hoe u Logboeken kunt controleren en rapporten kunt ophalen over inrichtings activiteiten](check-status-user-account-provisioning.md).
 
 #### <a name="azure-monitor-logs"></a>Azure Monitor-logboeken
 
 Alle activiteiten die worden uitgevoerd door de inrichtings service worden vastgelegd in de Azure AD-audit Logboeken. U kunt Azure AD-controle logboeken door sturen naar Azure Monitor logboeken voor verdere analyse. Met Azure Monitor-Logboeken (ook wel Log Analytics werk ruimte genoemd) kunt u gegevens opvragen om gebeurtenissen te vinden, trends te analyseren en de correlatie tussen verschillende gegevens bronnen uit te voeren. Bekijk deze [video](https://youtu.be/MP5IaCTwkQg) voor meer informatie over de voor delen van het gebruik van Azure monitor logboeken voor Azure AD-Logboeken in praktische gebruikers scenario's.
 
-Installeer de [log Analytics-weer gaven voor Azure AD-activiteiten logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views) om toegang te krijgen tot [vooraf ontwikkelde rapporten](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views) rondom het inrichten van gebeurtenissen in uw omgeving.
+Installeer de [log Analytics-weer gaven voor Azure AD-activiteiten logboeken](../reports-monitoring/howto-install-use-log-analytics-views.md) om toegang te krijgen tot [vooraf ontwikkelde rapporten](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views) rondom het inrichten van gebeurtenissen in uw omgeving.
 
-Zie [de Azure AD-activiteiten logboeken analyseren met uw Azure monitor-logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics)voor meer informatie.
+Zie [de Azure AD-activiteiten logboeken analyseren met uw Azure monitor-logboeken](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)voor meer informatie.
 
 ### <a name="manage-personal-data"></a>Persoonlijke gegevens beheren
 
@@ -400,21 +400,21 @@ De Azure AD-inrichtings service genereert geen rapporten, voert analyses uit of 
 
 Raadpleeg de volgende artikelen voor informatie over het oplossen van problemen die tijdens het inrichten kunnen worden gemaakt:
 
-- [Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
-- [Een kenmerk van uw on-premises Active Directory naar Azure AD synchroniseren voor het inrichten van een toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning-sync-attributes-for-mapping)
-- [Gebruikers die een Azure AD-galerie toepassing inrichten, nemen uren of meer in beslag](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish)
-- [Probleem bij het opslaan van de beheerders referenties tijdens het configureren van de gebruikers inrichting voor een Azure Active Directory galerie-toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-storage-limit)
-- [Er worden geen gebruikers ingericht voor een Azure AD-galerie toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
-- [Er wordt een verkeerde set gebruikers ingericht voor een Azure AD-galerie toepassing](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-wrong-users-provisioned)
-- [Problemen met Windows Logboeken instellen voor agent probleem oplossing](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#setting-up-windows-event-viewer-for-agent-troubleshooting)
-- [Azure Portal audit logboeken instellen voor het oplossen van services](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
-- [Informatie over Logboeken voor het maken van AD-gebruikers accounts](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#understanding-logs-for-ad-user-account-create-operations)
-- [Logboeken voor update bewerkingen voor managers](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#understanding-logs-for-manager-update-operations)
-- [Veelvoorkomende fouten oplossen](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#resolving-commonly-encountered-errors)
+- [Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-toepassing](application-provisioning-config-problem.md)
+- [Een kenmerk van uw on-premises Active Directory naar Azure AD synchroniseren voor het inrichten van een toepassing](user-provisioning-sync-attributes-for-mapping.md)
+- [Gebruikers die een Azure AD-galerie toepassing inrichten, nemen uren of meer in beslag](application-provisioning-when-will-provisioning-finish.md)
+- [Probleem bij het opslaan van de beheerders referenties tijdens het configureren van de gebruikers inrichting voor een Azure Active Directory galerie-toepassing](application-provisioning-config-problem-storage-limit.md)
+- [Er worden geen gebruikers ingericht voor een Azure AD-galerie toepassing](application-provisioning-config-problem-no-users-provisioned.md)
+- [Er wordt een verkeerde set gebruikers ingericht voor een Azure AD-galerie toepassing](application-provisioning-config-problem-wrong-users-provisioned.md)
+- [Problemen met Windows Logboeken instellen voor agent probleem oplossing](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
+- [Azure Portal audit logboeken instellen voor het oplossen van services](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
+- [Informatie over Logboeken voor het maken van AD-gebruikers accounts](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
+- [Logboeken voor update bewerkingen voor managers](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
+- [Veelvoorkomende fouten oplossen](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
 
 ### <a name="next-steps"></a>Volgende stappen
 
-- [Expressies schrijven voor kenmerk toewijzingen](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+- [Expressies schrijven voor kenmerk toewijzingen](functions-for-customizing-application-data.md)
 - [Overzicht van Azure AD-synchronisatie-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
-- [Verwijdering van gebruikers accounts die buiten het bereik vallen, overs Laan](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)
-- [Azure AD Connect-inrichtings agent: release geschiedenis van versie](https://docs.microsoft.com/azure/active-directory/manage-apps/provisioning-agent-release-version-history)
+- [Verwijdering van gebruikers accounts die buiten het bereik vallen, overs Laan](skip-out-of-scope-deletions.md)
+- [Azure AD Connect-inrichtings agent: release geschiedenis van versie](provisioning-agent-release-version-history.md)

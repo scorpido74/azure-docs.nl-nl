@@ -1,6 +1,6 @@
 ---
-title: Azure AD App Proxy-connector op de achtergrond installeren | Microsoft Docs
-description: Bevat informatie over het uitvoeren van een installatie zonder toezicht van Azure AD Application Proxy Connector voor veilige externe toegang tot uw on-premises toepassingen.
+title: Installatie op de achtergrond Azure AD-app proxy connector | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u een installatie zonder toezicht van Azure AD-toepassingsproxy-connector uitvoert om veilige externe toegang tot uw on-premises apps te bieden.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -11,62 +11,62 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/17/2018
+ms.date: 01/23/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eb3e52dfd02bd7948f1b5ffd908ac1255118008
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45ca40e9717394690374f5ca289a69e5c22551eb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65782924"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712010"
 ---
-# <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Een script voor installatie zonder toezicht voor de Azure AD Application Proxy-connector maken
+# <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Een script voor installatie zonder toezicht maken voor de Azure AD-toepassingsproxy-connector
 
-Dit onderwerp helpt u bij het maken van een Windows PowerShell-script waarmee de installatie zonder toezicht en de registratie voor uw Azure AD Application Proxy-connector.
+Dit onderwerp helpt u bij het maken van een Windows Power shell-script dat installatie zonder toezicht en registratie voor uw Azure AD-toepassingsproxy-connector mogelijk maakt.
 
-Deze mogelijkheid is handig als u wilt:
+Deze mogelijkheid is nuttig wanneer u het volgende wilt doen:
 
-* De connector installeren op Windows-servers die geen gebruikersinterface is ingeschakeld, of dat u geen toegang tot met extern bureaublad.
-* Installeer en registreer veel connectoren in één keer.
-* De installatie van connector en de registratie als onderdeel van een andere procedure integreren.
-* Maak een standaard-server-installatiekopie die de connector-bits bevat, maar is niet geregistreerd.
+* Installeer de connector op Windows-servers waarop geen gebruikers interface is ingeschakeld of waartoe u geen toegang hebt met Extern bureaublad.
+* Veel connectors tegelijk installeren en registreren.
+* Integreer de installatie en registratie van de connector als onderdeel van een andere procedure.
+* Maak een standaard installatie kopie van de server die de connector-bits bevat, maar niet is geregistreerd.
 
-Voor de [Application Proxy-connector](application-proxy-connectors.md) wilt werken, deze worden geregistreerd bij Azure Active directory met behulp van een beheerder van de toepassing en het wachtwoord heeft. Normaal gesproken deze informatie wordt opgegeven tijdens de installatie van de Connector in een pop-updialoogvenster, maar u kunt PowerShell gebruiken in plaats daarvan dit proces automatiseren.
+De connector van de [toepassings proxy](application-proxy-connectors.md) werkt alleen als deze is geregistreerd bij uw Azure AD-adres lijst met behulp van een toepassings beheerder en wacht woord. Normaal gesp roken wordt deze informatie tijdens de installatie van de connector ingevoerd in een pop-updialoogvenster, maar u kunt Power shell gebruiken om dit proces te automatiseren.
 
-Er zijn twee stappen voor een installatie zonder toezicht. Installeer eerst de connector. Ten tweede, registreert u de connector met Azure AD. 
+Er zijn twee stappen voor een installatie zonder toezicht. Installeer eerst de connector. Registreer vervolgens de connector bij Azure AD. 
 
-## <a name="install-the-connector"></a>De connector te installeren
-Gebruik de volgende stappen voor het installeren van de connector zonder deze te registreren:
+## <a name="install-the-connector"></a>De connector installeren
+Gebruik de volgende stappen om de connector te installeren zonder deze te registreren:
 
 1. Open een opdrachtprompt.
-2. Voer de volgende opdracht, waarbij de /q stille installatie betekent. Een stille installatie niet wordt gevraagd u accepteert de gebruiksrechtovereenkomst.
+2. Voer de volgende opdracht uit, waarbij de/q betekent een stille installatie. Bij een stille installatie wordt u niet gevraagd om de gebruiksrecht overeenkomst te accepteren.
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
-## <a name="register-the-connector-with-azure-ad"></a>De connector te registreren bij Azure AD
-Er zijn twee methoden die u gebruiken kunt om de connector te registreren:
+## <a name="register-the-connector-with-azure-ad"></a>De connector registreren bij Azure AD
+Er zijn twee methoden die u kunt gebruiken om de connector te registreren:
 
-* Registreert u de connector met behulp van een Windows PowerShell-referentieobject
-* Registreert u de connector met behulp van een token gemaakt offline
+* De connector registreren met een Windows Power shell-referentie object
+* De connector registreren met een token dat offline is gemaakt
 
-### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Registreert u de connector met behulp van een Windows PowerShell-referentieobject
-1. Een Windows PowerShell-referenties-object maken `$cred` die bevat een administratieve gebruikersnaam en wachtwoord voor uw directory. Voer de volgende opdracht vervangt *\<gebruikersnaam\>* en  *\<wachtwoord\>* :
+### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>De connector registreren met een Windows Power shell-referentie object
+1. Maak een Windows Power shell-referentie object `$cred` dat een beheerders naam en-wacht woord bevat voor uw Directory. Voer de volgende opdracht uit en vervang *\<gebruikers naam\>* en *\<wacht woord\>* :
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. Ga naar **C:\Program Files\Microsoft AAD App Proxy-Connector** en voer het volgende script uit via de `$cred` -object dat u hebt gemaakt:
+2. Ga naar de **map C:\Program Files\Microsoft Aad app proxy connector** en voer het volgende script uit met behulp van het `$cred`-object dat u hebt gemaakt:
    
         .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature ApplicationProxy
 
-### <a name="register-the-connector-using-a-token-created-offline"></a>Registreert u de connector met behulp van een token gemaakt offline
-1. Maak een offline-token met de AuthenticationContext-klasse met behulp van de waarden in dit codefragment of onderstaande PowerShell-cmdlets:
+### <a name="register-the-connector-using-a-token-created-offline"></a>De connector registreren met een token dat offline is gemaakt
+1. Maak een offline token met behulp van de AuthenticationContext-klasse met behulp van de waarden in dit code fragment of Power shell-cmdlets hieronder:
 
-    **Gebruik C#:**
+    **Gebruiken C#:**
 
         using System;
         using System.Diagnostics;
@@ -88,7 +88,7 @@ Er zijn twee methoden die u gebruiken kunt om de connector te registreren:
         /// <summary>
         /// The reply address of the connector application in AAD
         /// </summary>
-        static readonly Uri ConnectorRedirectAddress = new Uri("urn:ietf:wg:oauth:2.0:oob");
+        static readonly Uri ConnectorRedirectAddress = new Uri("https://login.microsoftonline.com/common/oauth2/nativeclient");
 
         /// <summary>
         /// The AppIdUri of the registration service in AAD
@@ -121,7 +121,7 @@ Er zijn twee methoden die u gebruiken kunt om de connector te registreren:
             tenantID = authResult.TenantId;
         }
 
-    **Met behulp van PowerShell:**
+    **Power shell gebruiken:**
 
         # Locate AzureAD PowerShell Module
         # Change Name of Module to AzureAD after what you have installed
@@ -141,7 +141,7 @@ Er zijn twee methoden die u gebruiken kunt om de connector te registreren:
         [string]$ConnectorAppId = "55747057-9b5d-4bd4-b387-abf52a8bd489"
         
         # The reply address of the connector application in AAD
-        [uri]$ConnectorRedirectAddress = "urn:ietf:wg:oauth:2.0:oob" 
+        [uri]$ConnectorRedirectAddress = "https://login.microsoftonline.com/common/oauth2/nativeclient" 
         
         # The AppIdUri of the registration service in AAD
         [uri]$RegistrationServiceAppIdUri = "https://proxy.cloudwebappproxy.net/registerapp"
@@ -171,11 +171,11 @@ Er zijn twee methoden die u gebruiken kunt om de connector te registreren:
         
         #endregion
 
-2. Wanneer u het token hebt, maakt u een SecureString met behulp van het token:
+2. Zodra u het token hebt, maakt u een SecureString met behulp van het token:
 
    `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
 
-3. Voer de volgende Windows PowerShell-opdracht, vervangt \<tenant GUID\> met uw directory-ID:
+3. Voer de volgende Windows Power shell-opdracht uit en vervang \<Tenant-GUID\> door de map-ID:
 
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 

@@ -4,29 +4,29 @@ description: Meer informatie over de Azure Cosmos DB-API voor MongoDB (3,6-versi
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 10/16/2019
+ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: a48fb82402cd4719cb210ec2dab55b3a0f7883ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a32affab45ab99a89113644bb08c4f2b57d69018
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441620"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721010"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB-API voor MongoDB (3,6-versie): ondersteunde functies en syntaxis
 
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt met de API van Azure Cosmos DB voor MongoDB communiceren via een van de open-source MongoDB-[clientstuurprogramma's](https://docs.mongodb.org/ecosystem/drivers). De API van Azure Cosmos DB voor MongoDB maakt het gebruik van bestaande clientstuurprogramma's mogelijk doordat de API functioneert conform het MongoDB-[wireprotocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
+Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt met behulp van een van de open-source MongoDB-client [Stuur Programma's](https://docs.mongodb.org/ecosystem/drivers)communiceren met de API van Azure Cosmos DB voor MongoDb. De API van Azure Cosmos DB voor MongoDB maakt het gebruik van bestaande clientstuurprogramma's mogelijk doordat de API functioneert conform het MongoDB-[wireprotocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
 Door gebruik te maken van de API van Azure Cosmos DB voor MongoDB hebt u de beschikking over de voordelen van de vertrouwde MongoDB, met alle zakelijke mogelijkheden die Cosmos DB biedt: [wereldwijde distributie](distribute-data-globally.md), [automatische sharding](partition-data.md), garanties voor beschikbaarheid en latentie, automatisch indexeren van alle velden, versleuteling van niet-actieve gegevens, het maken van back-ups, en meer.
 
 ## <a name="protocol-support"></a>Ondersteuning voor protocol
 
-De API van de Azure Cosmos DB voor MongoDB is standaard compatibel met MongoDB Server versie **3,6** voor nieuwe accounts. De ondersteunde operators en eventuele beperkingen of uitzonderingen worden hieronder vermeld. Elk clientstuurprogramma dat deze protocollen kent, kan verbinding maken met de API van Azure Cosmos DB voor MongoDB.
+De API van de Azure Cosmos DB voor MongoDB is standaard compatibel met MongoDB Server versie **3,6** voor nieuwe accounts. De ondersteunde operators en eventuele beperkingen of uitzonderingen worden hieronder vermeld. Elk clientstuurprogramma dat deze protocollen kent, kan verbinding maken met de API van Azure Cosmos DB voor MongoDB. Houd er rekening mee dat wanneer u de API van Azure Cosmos DB gebruikt voor MongoDB-accounts, de 3,6-versie van accounts het eind punt in de indeling heeft `*.mongo.cosmos.azure.com`, terwijl de 3,2-versie van accounts het eind punt in de indeling `*.documents.azure.com`heeft.
 
 ## <a name="query-language-support"></a>Ondersteuning voor querytaal
 
-De API van Azure Cosmos DB voor MongoDB biedt uitgebreide ondersteuning voor MongoDB-querytaalconstructs. Hieronder ziet u de gedetailleerde lijst met momenteel ondersteunde bewerkingen, operators, fasen, opdrachten en opties.
+De API van Azure Cosmos DB voor MongoDB biedt uitgebreide ondersteuning voor MongoDB-querytaalconstructs. Hieronder vindt u een overzicht van de huidige ondersteunde bewerkingen, Opera Tors, fasen, opdrachten en opties.
 
 ## <a name="database-commands"></a>Databaseopdrachten
 
@@ -34,43 +34,77 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 
 ### <a name="query-and-write-operation-commands"></a>Opdrachten voor query- en schrijfbewerkingen
 
-- delete
-- find
-- findAndModify
-- getLastError
-- getMore
-- insert
-- update
+|Opdracht  |Ondersteund |
+|---------|---------|
+|delete | Ja |
+|find | Ja     |
+|findAndModify | Ja  |
+|getLastError|   Ja |
+|getMore  |  Ja  |
+|getPrevError | Nee  |
+|insert  |   Ja  |
+|parallelCollectionScan  | Ja   |
+|resetError |   Nee  |
+|update  |   Ja  |
+|[Stroom wijzigen](mongodb-change-streams.md)  |  Ja  |
+|GridFS |   Ja  |
 
 ### <a name="authentication-commands"></a>Verificatieopdrachten
 
-- afmelden
-- authenticate
-- getnonce
+|Opdracht  |Ondersteund |
+|---------|---------|
+|authenticate    |   Ja      |
+|afmelden    |      Ja   |
+|getnonce   |    Ja     |
+
 
 ### <a name="administration-commands"></a>Beheeropdrachten
 
-- dropDatabase
-- listDatabases
-- listCollections
-- drop
-- maken
-- filemd5
-- createIndexes
-- listIndexes
-- dropIndexes
-- connectionStatus
-- reIndex
-- killCursors
+|Opdracht  |Ondersteund |
+|---------|---------|
+|Gelimiteerde verzamelingen   |   Nee      |
+|cloneCollectionAsCapped     |   Nee      |
+|collMod     |   Nee      |
+|collMod: expireAfterSeconds   |   Nee      |
+|convertToCapped   |  Nee       |
+|copydb     |  Nee       |
+|maken   |    Ja     |
+|createIndexes     |  Ja       |
+|currentOp     |  Ja       |
+|drop     |   Ja      |
+|dropDatabase     |  Ja       |
+|dropIndexes     |   Ja      |
+|filemd5    |   Ja      |
+|killCursors    |  Ja       |
+|killOp     |   Nee      |
+|listCollections     |  Ja       |
+|listDatabases     |  Ja       |
+|listIndexes     |  Ja       |
+|reIndex     |    Ja     |
+|renameCollection     |    Nee     |
+|connectionStatus    |     Nee    |
 
 ### <a name="diagnostics-commands"></a>Diagnostics commands
 
-- buildInfo
-- collStats
-- dbStats
-- hostInfo
-- listDatabases
-- whatsmyuri
+|Opdracht  |Ondersteund |
+|---------|---------|
+|buildInfo       |   Ja      |
+|collStats    |  Ja       |
+|connPoolStats     |  Nee       |
+|connectionStatus     |  Nee       |
+|dataSize     |   Nee      |
+|dbHash    |    Nee     |
+|dbStats     |   Ja      |
+|bespreken     | Nee        |
+|uitleg: executionStats     |     Nee    |
+|database     |    Nee     |
+|hostInfo     |   Nee      |
+|listDatabases       |   Ja      |
+|listCommands     |  Nee       |
+|Profiler     |  Nee       |
+|serverStatus     |  Nee       |
+|Boven     |    Nee     |
+|whatsmyuri     |   Ja      |
 
 <a name="aggregation-pipeline"/>
 
@@ -78,252 +112,433 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 
 ### <a name="aggregation-commands"></a>Samenvoegingsopdrachten
 
-- aggregate
-- count
-- distinct
+|Opdracht  |Ondersteund |
+|---------|---------|
+|aggregate |   Ja  |
+|count     |   Ja  |
+|distinct  | Ja |
+|mapReduce | Nee |
 
 ### <a name="aggregation-stages"></a>Samenvoegingsfasen
 
-- $project
-- $match
-- $limit
-- $skip
-- $unwind
-- $group
-- $sample
-- $sort
-- $lookup
-- $out
-- $count
-- $addFields
-- $redact
-- $replaceRoot
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$collStats |Nee|
+|$project   |Ja|
+|$match |Ja|
+|$redact|   Ja|
+|$limit |Ja|
+|$skip  |Ja|
+|$unwind|   Ja|
+|$group |   Ja|
+|$sample|       Ja|
+|$sort  |Ja|
+|$geoNear|  Nee|
+|$lookup    |   Ja|
+|$out       |Ja|
+|$indexStats|       Nee|
+|$facet |Nee|
+|$bucket|   Nee|
+|$bucketAuto|   Nee|
+|$sortByCount|  Ja|
+|$addFields |Ja|
+|$replaceRoot|  Ja|
+|$count |Ja|
+|$currentOp|    Nee|
+|$listLocalSessions |Nee|
+|$listSessions  |Nee|
+|$graphLookup   |Nee|
 
-### <a name="aggregation-expressions"></a>Expressies voor samenvoegen
+### <a name="boolean-expressions"></a>Booleaanse expressies
 
-#### <a name="boolean-expressions"></a>Booleaanse expressies
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$and| Ja|
+|$or|Ja|
+|$not|Ja|
 
-- $and
-- $or
-- $not
+### <a name="set-expressions"></a>Expressies voor instellen
 
-#### <a name="set-expressions"></a>Expressies voor instellen
+|Opdracht  |Ondersteund |
+|---------|---------|
+| $setEquals | Ja|
+|$setIntersection|Ja|
+| $setUnion|Ja|
+| $setDifference|Ja|
+| $setIsSubset|Ja|
+| $anyElementTrue|Ja|
+| $allElementsTrue|Ja|
 
-- $setEquals
-- $setIntersection
-- $setUnion
-- $setDifference
-- $setIsSubset
-- $anyElementTrue
-- $allElementsTrue
+### <a name="comparison-expressions"></a>Expressies voor vergelijken
 
-#### <a name="comparison-expressions"></a>Expressies voor vergelijken
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$cmp     |  Ja       |
+|$eq|   Ja| 
+|$gt |  Ja| 
+|$gte|  Ja| 
+|$lt    |Ja|
+|$lte|  Ja| 
+|$ne    |   Ja| 
+|$in    |   Ja| 
+|$nin   |   Ja| 
 
-- $cmp
-- $eq
-- $gt
-- $gte
-- $lt
-- $lte
-- $ne
+### <a name="arithmetic-expressions"></a>Rekenkundige expressies
 
-#### <a name="arithmetic-expressions"></a>Rekenkundige expressies
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$abs |  Ja       |
+| $add |  Ja       |
+| $ceil |  Ja       |
+| $divide |  Ja       |
+| $exp |  Ja       |
+| $floor |  Ja       |
+| $ln |  Ja       |
+| $log |  Ja       |
+| $log10 |  Ja       |
+| $mod |  Ja       |
+| $multiply |  Ja       |
+| $pow |  Ja       |
+| $sqrt |  Ja       |
+| $subtract |  Ja       |
+| $trunc |  Ja       |
 
-- $abs
-- $add
-- $ceil
-- $divide
-- $exp
-- $floor
-- $ln
-- $log
-- $log10
-- $mod
-- $multiply
-- $pow
-- $sqrt
-- $subtract
-- $trunc
+### <a name="string-expressions"></a>Tekenreeksexpressies
 
-#### <a name="string-expressions"></a>Tekenreeksexpressies
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$concat |  Ja       |
+| $indexOfBytes|  Ja       |
+| $indexOfCP|  Ja       |
+| $split|  Ja       |
+| $strLenBytes|  Ja       |
+| $strLenCP|  Ja       |
+| $strcasecmp|  Ja       |
+| $substr|  Ja       |
+| $substrBytes|  Ja       |
+| $substrCP|  Ja       |
+| $toLower|  Ja       |
+| $toUpper|  Ja       |
 
-- $concat
-- $indexOfBytes
-- $indexOfCP
-- $split
-- $strLenBytes
-- $strLenCP
-- $strcasecmp
-- $substr
-- $substrBytes
-- $substrCP
-- $toLower
-- $toUpper
+### <a name="text-search-operator"></a>Zoek operator voor tekst
 
-#### <a name="array-expressions"></a>Matrixexpressies
+|Opdracht  |Ondersteund |
+|---------|---------|
+| $meta | Nee|
 
-- $arrayElemAt
-- $concatArrays
-- $filter
-- $indexOfArray
-- $isArray
-- $range
-- $reverseArray
-- $size
-- $slice
-- $in
+### <a name="array-expressions"></a>Matrixexpressies
 
-#### <a name="date-expressions"></a>Datumexpressies
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$arrayElemAt   |   Ja|
+|$arrayToObject|    Ja|
+|$concatArrays  |   Ja|
+|$filter    |   Ja|
+|$indexOfArray  |Ja|
+|$isArray   |   Ja|
+|$objectToArray |Ja|
+|$range |Ja|
+|$reverseArray  |   Ja|
+|$reduce|   Ja|
+|$size  |   Ja|
+|$slice |   Ja|
+|$zip   |   Ja|
+|$in    |   Ja|
 
-- $dayOfYear
-- $dayOfMonth
-- $dayOfWeek
-- $year
-- $month
-- $week
-- $hour
-- $minute
-- $second
-- $millisecond
-- $isoDayOfWeek
-- $isoWeek
+### <a name="variable-operators"></a>Variabelen operators
 
-#### <a name="conditional-expressions"></a>Voorwaardelijke expressies
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$map   |Nee|
+|$let   |Ja|
 
-- $cond
-- $ifNull
+### <a name="system-variables"></a>Systeemvariabelen
 
-## <a name="aggregation-accumulators"></a>Samenvoegingsaccumulators
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$ $CURRENT| Ja|
+|$ $DESCEND|     Ja|
+|$ $KEEP     |Ja|
+|$ $PRUNE    |   Ja|
+|$ $REMOVE   |Ja|
+|$ $ROOT     |Ja|
 
-Cosmos DB ondersteunt alle MongoDB v 3.6-accu mulat oren, met uitzonde ring van:
+### <a name="literal-operator"></a>Letterlijke operator
 
-- $stdDevPop
-- $stdDevSamp
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$literal   |Ja|
+
+### <a name="date-expressions"></a>Datumexpressies
+
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$dayOfYear |Ja    |
+|$dayOfMonth|   Ja |
+|$dayOfWeek |Ja    |
+|$year  |Ja    |
+|$month |Ja|   
+|$week  |Ja    |
+|$hour  |Ja    |
+|$minute|   Ja|    
+|$second    |Ja    |
+|$millisecond|  Ja|    
+|$dateToString  |Ja    |
+|$isoDayOfWeek  |Ja    |
+|$isoWeek   |Ja    |
+|$dateFromParts|    Nee| 
+|$dateToParts   |Nee |
+|$dateFromString|   Nee|
+|$isoWeekYear   |Ja    |
+
+### <a name="conditional-expressions"></a>Voorwaardelijke expressies
+
+|Opdracht  |Ondersteund |
+|---------|---------|
+| $cond| Ja|
+| $ifNull| Ja|
+| $switch |Ja|
+
+### <a name="data-type-operator"></a>Gegevens type operator
+
+|Opdracht  |Ondersteund |
+|---------|---------|
+| $type| Ja|
+
+### <a name="accumulator-expressions"></a>Accumulator expressies
+
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$sum   |Ja    |
+|$avg   |Ja    |
+|$first|    Ja|
+|$last  |Ja    |
+|$max   |Ja    |
+|$min   |Ja    |
+|$push| Ja|
+|$addToSet| Ja|
+|$stdDevPop|    Nee  |
+|$stdDevSamp|   Nee|
+
+### <a name="merge-operator"></a>Operator samen voegen
+
+|Opdracht  |Ondersteund |
+|---------|---------|
+| $mergeObjects | Ja|
+
+## <a name="data-types"></a>Gegevenstypen
+
+|Opdracht  |Ondersteund |
+|---------|---------|
+|Double |Ja    |
+|Tekenreeks |Ja    |
+|Object |Ja    |
+|Matrix  |Ja    |
+|Binary Data    |Ja|   
+|Id   |Ja    |
+|Booleaans    |Ja    |
+|Datum   |Ja    |
+|Null   |Ja    |
+|32-bits geheel getal (int)   |Ja    |
+|Tijdstempel  |Ja    |
+|64-bits geheel getal (lang)  |Ja    |
+|MinKey |Ja    |
+|MaxKey |Ja    |
+|Decimal128 |Ja|   
+|Reguliere expressie |Ja|
+|JavaScript |Ja|
+|Java script (met bereik)|   Ja |
+|Niet gedefinieerd  |Ja    |
+
+## <a name="indexes-and-index-properties"></a>Indexen en index eigenschappen
+
+### <a name="indexes"></a>Indexen
+
+|Opdracht  |Ondersteund |
+|---------|---------|
+|Index met één veld |Ja    |
+|Samengestelde index |Ja    |
+|MultiKey-index |Ja    |
+|Tekst index |Nee|
+|2dsphere   |Ja    |
+|2D-index   |Nee |
+|Gehashte index   | Ja|
+
+### <a name="index-properties"></a>Eigenschappen van index
+
+|Opdracht  |Ondersteund |
+|---------|---------|
+|TTL|   Ja |
+|Uniek |Ja|
+|Gedeeltelijk|   Nee|
+|Niet hoofdletter gevoelig   |Nee|
+|Sparse |Nee |
+|Achtergrond|    Ja |
 
 ## <a name="operators"></a>Operators
 
-De volgende operators worden ondersteund met de bijbehorende gebruiksvoorbeelden. Overweeg om dit voorbeelddocument te gebruiken in de onderstaande query’s:
+### <a name="logical-operators"></a>Logische operators
 
-```json
-{
-  "Volcano Name": "Rainier",
-  "Country": "United States",
-  "Region": "US-Washington",
-  "Location": {
-    "type": "Point",
-    "coordinates": [
-      -121.758,
-      46.87
-    ]
-  },
-  "Elevation": 4392,
-  "Type": "Stratovolcano",
-  "Status": "Dendrochronology",
-  "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
-}
-```
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$or    |   Ja|
+|$and   |   Ja|
+|$not   |   Ja|
+|$nor   |   Ja| 
 
-Operator | Voorbeeld |
---- | --- |
-$eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
-$gt | `{ "Elevation": { $gt: 4000 } }` |  | -
-$gte | `{ "Elevation": { $gte: 4392 } }` |  | -
-$lt | `{ "Elevation": { $lt: 5000 } }` |  | -
-$lte | `{ "Elevation": { $lte: 5000 } }` | | -
-$ne | `{ "Elevation": { $ne: 1 } }` |  | -
-$in | `{ "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } }` |  | -
-$nin | `{ "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } }` | | -
-$or | `{ $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
-$and | `{ $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
-$not | `{ "Elevation": { $not: { $gt: 5000 } } }`|  | -
-$nor | `{ $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] }` |  | -
-$exists | `{ "Status": { $exists: true } }`|  | -
-$type | `{ "Status": { $type: "string" } }`|  | -
-$mod | `{ "Elevation": { $mod: [ 4, 0 ] } }` |  | -
-$regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
+### <a name="element-operators"></a>Element operators
 
-### <a name="notes"></a>Opmerkingen
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$exists|   Ja|
+|$type  |   Ja|
 
-In $regex-query’s is zoeken in de index toegestaan op basis van links-verankerde expressies. Als u echter de aanpassingsfuncties i (geen hoofdlettergevoeligheid) en m (meerdere regels) gebruikt, wordt de verzameling gescand in alle expressies.
-Wanneer $ of | moet worden opgenomen, kunt u het beste twee (of meer) regex-query’s maken.
-Bijvoorbeeld, bij de volgende oorspronkelijke query: ```find({x:{$regex: /^abc$/})```, moet dit als volgt worden gewijzigd: ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
-Het eerste deel maakt gebruik van de index om alleen te zoeken naar de documenten die beginnen met ^abc en het tweede deel zoekt naar een overeenkomst tussen de exacte vermeldingen.
-De streepoperator | fungeert als de functie: or. De query ```find({x:{$regex: /^abc|^def/})``` komt overeen met de documenten waarin het veld x waarden heeft die beginnen met abc of def. Als u de index wilt gebruiken, kunt u de query het beste opsplitsen in twee verschillende query’s die zijn verbonden met de operator $or: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
+### <a name="evaluation-query-operators"></a>Opera tors voor evaluatie query's
+
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$expr  |   Nee|
+|$jsonSchema    |   Nee|
+|$mod   |   Ja|
+|$regex |   Ja|
+|$text  | Nee (niet ondersteund. Gebruik in plaats daarvan $regex.)| 
+|$where |Nee| 
+
+In de $regex query's kunnen links verankerde expressies index zoeken toestaan. Als u echter de aanpassingsfuncties i (geen hoofdlettergevoeligheid) en m (meerdere regels) gebruikt, wordt de verzameling gescand in alle expressies.
+
+Wanneer $ of | moet worden opgenomen, kunt u het beste twee (of meer) regex-query’s maken. Als u bijvoorbeeld de volgende oorspronkelijke query hebt opgegeven: ```find({x:{$regex: /^abc$/})```, moet deze als volgt worden gewijzigd:
+
+```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
+
+Het eerste deel maakt gebruik van de index om alleen te zoeken naar de documenten die beginnen met ^abc en het tweede deel zoekt naar een overeenkomst tussen de exacte vermeldingen. De streepoperator | fungeert als de functie: or. De query ```find({x:{$regex: /^abc|^def/})``` komt overeen met de documenten waarin het veld x waarden heeft die beginnen met abc of def. Als u de index wilt gebruiken, kunt u de query het beste opsplitsen in twee verschillende query’s die zijn verbonden met de operator $or: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
+
+### <a name="array-operators"></a>Matrix operators
+
+|Opdracht  |Ondersteund | 
+|---------|---------|
+| $all | Ja| 
+| $elemMatch | Ja| 
+| $size | Ja | 
+
+### <a name="comment-operator"></a>Operator voor opmerkingen
+
+|Opdracht  |Ondersteund | 
+|---------|---------|
+$comment |Ja| 
+
+### <a name="projection-operators"></a>Projectie operators
+
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$elemMatch |Ja|
+|$meta| Nee|
+|$slice | Ja|
 
 ### <a name="update-operators"></a>Operators voor updates
 
 #### <a name="field-update-operators"></a>Operators voor veldupdates
 
-- $inc
-- $mul
-- $rename
-- $setOnInsert
-- $set
-- $unset
-- $min
-- $max
-- $currentDate
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$inc   |   Ja|
+|$mul   |   Ja|
+|$rename    |   Ja|
+|$setOnInsert|  Ja|
+|$set   |Ja|
+|$unset| Ja|
+|$min   |Ja|
+|$max   |Ja|
+|$currentDate   | Ja|
 
 #### <a name="array-update-operators"></a>Operators voor matrixupdates
 
-- $addToSet
-- $pop
-- $pullAll
-- $pull
-- $pushAll
-- $push
-- $each
-- $slice
-- $sort
-- $position
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$  |Ja|
+|$[]|   Ja|
+|$ [<identifier>]|   Ja|
+|$addToSet  |Ja|
+|$pop   |Ja|
+|$pullAll|  Ja|
+|$pull  |Ja|
+|$push  |Ja|
+|$pushAll| Ja|
+
+
+#### <a name="update-modifiers"></a>Bijwerk opties
+
+|Opdracht  |Ondersteund |
+|---------|---------|
+|$each  |   Ja|
+|$slice |Ja|
+|$sort  |Ja|
+|$position  |Ja|
 
 #### <a name="bitwise-update-operator"></a>Operators voor bitwise-updates
 
-- $bit
+|Opdracht  |Ondersteund |
+|---------|---------|
+| $bit  |   Ja|    
+|$bitsAllSet    |   Nee|
+|$bitsAnySet    |   Nee|
+|$bitsAllClear  |Nee|
+|$bitsAnyClear  |Nee|
 
 ### <a name="geospatial-operators"></a>Georuimtelijke operators
 
-Operator | Voorbeeld | |
---- | --- | --- |
-$geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ja |
-$geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ja |
-$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ja |
-$nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Ja |
-$geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ja |
-$minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | Ja |
-$maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Ja |
-$center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | Ja |
-$centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ja |
-$box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | Ja |
-$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ja |
+Operator | Ondersteund| 
+--- | --- |
+$geoWithin | Ja |
+$geoIntersects | Ja | 
+$near |  Ja |
+$nearSphere |  Ja |
+$geometry |  Ja |
+$minDistance | Ja |
+$maxDistance | Ja |
+$center | Ja |
+$centerSphere | Ja |
+$box | Ja |
+$polygon |  Ja |
 
-## <a name="sort-operations"></a>Bewerkingen sorteren
+## <a name="cursor-methods"></a>Cursormethoden
+
+|Opdracht  |Ondersteund |
+|---------|---------|
+|cursor. batchSize () |   Ja|
+|cursor. Close () |Ja|
+|cursor. isClosed ()|     Ja|
+|cursor. Collation ()|    Nee|
+|cursor. comment ()   |Ja|
+|cursor. Count () |Ja|
+|cursor. uitleg ()|  Nee|
+|cursor. forEach ()   |Ja|
+|cursor. hasNext ()   |Ja|
+|cursor. Hint ()  |Ja|
+|cursor. isExhausted ()|  Ja|
+|cursor. itcount ()   |Ja|
+|cursor. Limit () |Ja|
+|cursor. map ()   |Ja|
+|cursor. maxScan ()   |Ja|
+|cursor. maxTimeMS ()|    Ja|
+|cursor. Max ()   |Ja|
+|cursor. min ()   |Ja|
+|cursor. volgende ()| Ja|
+|cursor. noCursorTimeout ()   |Nee|
+|cursor. objsLeftInBatch ()   |Ja|
+|cursor. pretty ()|   Ja|
+|cursor. readConcern ()|  Ja|
+|cursor. readPref ()      |Ja|
+|cursor. reklare () |Nee|
+|cursor. showRecordId ()| Nee|
+|cursor. size ()  |Nes|
+|cursor. Skip ()  |Ja|
+|cursor.sort()  |   Ja|
+|cursor. staart ()| Nee|
+|cursor. toArray ()   |Ja|
+
+## <a name="sort-operations"></a>Sorteer bewerkingen
 
 Tijdens het gebruik van bewerking `findOneAndUpdate`, worden sorteerbewerkingen op één veld ondersteund, maar sorteerbewerkingen op meerdere velden worden niet ondersteund.
-
-## <a name="additional-operators"></a>Andere operators
-
-Operator | Voorbeeld | Opmerkingen
---- | --- | --- |
-$all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
-$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
-$size | ```{ "Location.coordinates": { $size: 2 } }``` |
-$comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` |
-$text |  | Wordt niet ondersteund. Gebruik in plaats hiervan $regex.
-
-## <a name="unsupported-operators"></a>Niet-ondersteunde operators
-
-De operators ```$where``` en ```$eval``` worden niet ondersteund door Azure Cosmos DB.
-
-### <a name="methods"></a>Methoden
-
-De volgende methoden worden ondersteund:
-
-#### <a name="cursor-methods"></a>Cursormethoden
-
-Methode | Voorbeeld | Opmerkingen
---- | --- | --- |
-cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Documenten zonder sorteersleutel worden niet geretourneerd
 
 ## <a name="unique-indexes"></a>Unieke indexen
 
@@ -335,7 +550,7 @@ Cosmos DB biedt ondersteuning voor een TTL (time-to-live) op basis van de tijdst
 
 ## <a name="user-and-role-management"></a>Gebruikers- en rolbeheer
 
-Cosmos DB biedt nog geen ondersteuning voor gebruikers en rollen. Cosmos DB biedt echter op rollen gebaseerd toegangsbeheer (RBAC), wachtwoorden voor lezen/schrijven en wachtwoorden met het kenmerk Alleen-lezen die kunnen worden verkregen via [Azure Portal](https://portal.azure.com) (pagina Verbindingsreeks).
+Cosmos DB biedt nog geen ondersteuning voor gebruikers en rollen. Cosmos DB ondersteunt echter op rollen gebaseerd toegangs beheer (RBAC) en alleen-lezen en alleen-lezen wacht woorden/sleutels die kunnen worden verkregen via de [Azure Portal](https://portal.azure.com) (pagina verbindings reeks).
 
 ## <a name="replication"></a>Replicatie
 

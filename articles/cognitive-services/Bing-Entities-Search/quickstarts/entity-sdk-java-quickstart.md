@@ -10,20 +10,20 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: b907b1ed945cd72d51d0b1acd037dbfc93be4873
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 49e3492bae1dfe248e07227caff11a6d00e59c08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448647"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716470"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Snelstartgids: een zoek opdracht verzenden met de Bing Entity Search SDK voor Java
 
-Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entity Search SDK voor Java. Hoewel Bing Entiteiten zoeken een REST-API heeft die compatibel is met de meeste moderne programmeertalen, biedt de SDK een eenvoudige manier om de service te integreren in uw toepassingen. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
+Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entity Search SDK voor Java. Hoewel Bing Entiteiten zoeken een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* De [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 
 * De Bing Entity Search SDK voor Java
 
@@ -135,9 +135,9 @@ Installeer de afhankelijkheden van Bing Entity Search SDK met Maven, Gradle of e
     ```java
     if (entityData.entities().value().size() > 0){
         // Find the entity that represents the dominant entity
-        List<Thing> entrys = entityData.entities().value();
+        List<Thing> entries = entityData.entities().value();
         Thing dominateEntry = null;
-        for(Thing thing : entrys) {
+        for(Thing thing : entries) {
             if(thing.entityPresentationInfo().entityScenario() == EntityScenario.DOMINANT_ENTITY) {
                 System.out.println("\r\nSearched for \"Satya Nadella\" and found a dominant entity with this description:");
                 System.out.println(thing.description());

@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 910317201275ba1598ed3e4d89815542b88fb108
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 5238f8ca9258e4f7907d9d9755b7252e60f40de8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719967"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711519"
 ---
 # <a name="how-provisioning-works"></a>Hoe inrichting werkt
 
@@ -29,13 +29,13 @@ Automatische inrichting heeft betrekking op het maken van gebruikers-id's en-rol
 De **Azure AD-inrichtings service voorziet** gebruikers van SaaS-apps en andere systemen door verbinding te maken met een systeem voor scim (Cross-Domain Identity Management) 2,0 gebruikers beheer API-eind punt van de leverancier van de toepassing. Met dit SCIM-eind punt kan Azure AD programmatisch gebruikers maken, bijwerken en verwijderen. Voor geselecteerde toepassingen kan de inrichtings service ook extra identiteits-gerelateerde objecten, zoals groepen en rollen, maken, bijwerken en verwijderen. Het kanaal dat wordt gebruikt voor het inrichten tussen Azure AD en de toepassing, wordt versleuteld met HTTPS SSL-versleuteling.
 
 
-![Azure AD Provisioning Service](./media/user-provisioning/provisioning0.PNG)
+![Azure AD Provisioning Service](media/how-provisioning-works/provisioning0.PNG)
 *afbeelding 1: de Azure AD-inrichtings service*
 
-![werk stroom voor uitgaand gebruikers inrichten](./media/user-provisioning/provisioning1.PNG)
+![werk stroom voor uitgaand gebruikers inrichten](media/how-provisioning-works/provisioning1.PNG)
 *afbeelding 2: ' uitgaande ' werk stroom voor gebruikers inrichting van Azure AD naar populaire SaaS-toepassingen*
 
-![werk stroom voor het inrichten van inkomend gebruikers](./media/user-provisioning/provisioning2.PNG)
+![werk stroom voor het inrichten van inkomend gebruikers](media/how-provisioning-works/provisioning2.PNG)
 *afbeelding 3: ' Inkomend ' werk stroom voor gebruikers inrichting van populaire HCM-toepassingen (Human Capital Management) tot Azure Active Directory en Windows Server Active Directory*
 
 ## <a name="provisioning-using-scim-20"></a>Inrichten met behulp van SCIM 2,0
@@ -73,11 +73,11 @@ Voor uitgaande levering vanuit Azure AD naar een SaaS-toepassing is afhankelijkh
 
   * Dynamische groepen kunnen invloed hebben op de prestaties van end-to-end-inrichting van Azure AD naar SaaS-toepassingen.
 
-  * Hoe snel een gebruiker in een dynamische groep wordt ingericht of ongedaan gemaakt in een SaaS-toepassing, is afhankelijk van de snelheid waarmee de dynamische groep lidmaatschaps wijzigingen kan evalueren. Zie [verwerkings status controleren voor een lidmaatschaps regel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)voor meer informatie over het controleren van de verwerkings status van een dynamische groep.
+  * Hoe snel een gebruiker in een dynamische groep wordt ingericht of ongedaan gemaakt in een SaaS-toepassing, is afhankelijk van de snelheid waarmee de dynamische groep lidmaatschaps wijzigingen kan evalueren. Zie [verwerkings status controleren voor een lidmaatschaps regel](../users-groups-roles/groups-create-rule.md)voor meer informatie over het controleren van de verwerkings status van een dynamische groep.
 
   * Wanneer een gebruiker het lidmaatschap van de dynamische groep kwijtraakt, wordt dit beschouwd als een niet-ingerichte gebeurtenis. Houd rekening met dit scenario bij het maken van regels voor dynamische groepen.
 
-* **Geneste groepen.** De Azure AD User Provisioning-Service kan geen gebruikers in geneste groepen lezen of inrichten. De service kan alleen gebruikers lezen en inrichten die onmiddellijk lid zijn van een expliciet toegewezen groep. Deze beperking van ' groeps toewijzingen voor toepassingen ' is ook van invloed op eenmalige aanmelding (Zie [een groep gebruiken voor het beheren van toegang tot SaaS-toepassingen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps)). In plaats daarvan moet u de groepen die de gebruikers moeten inrichten, rechtstreeks toewijzen of een ander [bereik](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) geven.
+* **Geneste groepen.** De Azure AD User Provisioning-Service kan geen gebruikers in geneste groepen lezen of inrichten. De service kan alleen gebruikers lezen en inrichten die onmiddellijk lid zijn van een expliciet toegewezen groep. Deze beperking van ' groeps toewijzingen voor toepassingen ' is ook van invloed op eenmalige aanmelding (Zie [een groep gebruiken voor het beheren van toegang tot SaaS-toepassingen](../users-groups-roles/groups-saasapps.md)). In plaats daarvan moet u de groepen die de gebruikers moeten inrichten, rechtstreeks toewijzen of een ander [bereik](define-conditional-rules-for-provisioning-user-accounts.md) geven.
 
 ### <a name="attribute-based-scoping"></a>Op kenmerken gebaseerde Scope 
 
@@ -85,7 +85,7 @@ U kunt bereik filters gebruiken om op kenmerken gebaseerde regels te definiëren
 
 ### <a name="b2b-guest-users"></a>B2B-gebruikers (gast)
 
-Het is mogelijk de Azure AD User Provisioning Service te gebruiken om B2B-gebruikers (of gast) in te richten in azure AD naar SaaS-toepassingen. Om B2B-gebruikers zich echter aan te melden bij de SaaS-toepassing met behulp van Azure AD, moet voor de SaaS-toepassing de mogelijkheid voor eenmalige aanmelding op basis van SAML op een specifieke manier zijn geconfigureerd. Zie voor meer informatie over het configureren van SaaS-toepassingen voor het ondersteunen van aanmeldingen van B2B-gebruikers [SaaS-apps configureren voor B2B-samen werking]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
+Het is mogelijk de Azure AD User Provisioning Service te gebruiken om B2B-gebruikers (of gast) in te richten in azure AD naar SaaS-toepassingen. Om B2B-gebruikers zich echter aan te melden bij de SaaS-toepassing met behulp van Azure AD, moet voor de SaaS-toepassing de mogelijkheid voor eenmalige aanmelding op basis van SAML op een specifieke manier zijn geconfigureerd. Zie voor meer informatie over het configureren van SaaS-toepassingen voor het ondersteunen van aanmeldingen van B2B-gebruikers [SaaS-apps configureren voor B2B-samen werking](../b2b/configure-saas-apps.md).
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Inrichtings cycli: begin en incrementeel
 
@@ -154,13 +154,13 @@ Als een fout in het doel systeem verhindert dat een afzonderlijke gebruiker word
 
 Los deze fouten op door de kenmerk waarden voor de betrokken gebruiker in het bron systeem aan te passen of door de kenmerk toewijzingen zo aan te passen dat er geen conflicten ontstaan.
 
-### <a name="quarantine"></a>Quarantaine
+### <a name="quarantine"></a>Voorschriften
 
 Als de meeste of alle aanroepen die op het doel systeem worden uitgevoerd, consistent mislukken vanwege een fout (bijvoorbeeld ongeldige beheerders referenties), wordt de inrichtings taak de status ' quarantaine '. Deze status wordt aangegeven in het [overzichts rapport](check-status-user-account-provisioning.md) van de inrichting en via e-mail als e-mail meldingen zijn geconfigureerd in de Azure Portal.
 
 In quarantaine wordt de frequentie van incrementele cycli geleidelijk per dag gereduceerd.
 
-De inrichtings taak verlaat quarantaine nadat alle foutieve fouten zijn opgelost en de volgende synchronisatie cyclus wordt gestart. Als de inrichtings taak langer dan vier weken in quarantaine blijft, wordt de inrichtings taak uitgeschakeld. Hier vindt u meer informatie over de [quarantaine status.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
+De inrichtings taak verlaat quarantaine nadat alle foutieve fouten zijn opgelost en de volgende synchronisatie cyclus wordt gestart. Als de inrichtings taak langer dan vier weken in quarantaine blijft, wordt de inrichtings taak uitgeschakeld. Hier vindt u meer informatie over de [quarantaine status.](application-provisioning-quarantine-status.md)
 
 ### <a name="how-long-provisioning-takes"></a>Hoelang inrichten duurt
 
@@ -184,7 +184,7 @@ De Azure AD-inrichtings service verwijdert een gebruiker in een toepassing zacht
 
 Als een van de bovenstaande vier gebeurtenissen optreedt en de doel toepassing geen tijdelijke verwijderingen ondersteunt, wordt door de inrichtings service een Verwijder aanvraag verzonden om de gebruiker definitief uit de app te verwijderen. 
 
-30 dagen nadat een gebruiker is verwijderd in azure AD, worden deze permanent verwijderd uit de Tenant. Op dit moment wordt door de inrichtings service een Verwijder aanvraag verzonden om de gebruiker permanent te verwijderen uit de toepassing. Op elk gewenst moment in het 30-daagse venster kunt u [een gebruiker permanent hand matig verwijderen]( https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore), waardoor een aanvraag voor verwijderen naar de toepassing wordt verzonden.
+30 dagen nadat een gebruiker is verwijderd in azure AD, worden deze permanent verwijderd uit de Tenant. Op dit moment wordt door de inrichtings service een Verwijder aanvraag verzonden om de gebruiker permanent te verwijderen uit de toepassing. Op elk gewenst moment in het 30-daagse venster kunt u [een gebruiker permanent hand matig verwijderen](../fundamentals/active-directory-users-restore.md), waardoor een aanvraag voor verwijderen naar de toepassing wordt verzonden.
 
 Als u een kenmerk IsSoftDeleted in uw kenmerk toewijzingen ziet, wordt dit gebruikt om de status van de gebruiker te bepalen en of een update aanvraag met actief = False moet worden verzonden om de gebruiker te verwijderen. 
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: fc0bac99aa70d7028412c68563a3024720fa49d9
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9fdbf3888b4302946fe20259a333842caa122836
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745409"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717791"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Veelgestelde vragen over het gebruik van Azure Database Migration Service
 
@@ -96,8 +96,8 @@ Tijdens een typische, eenvoudige database migratie:
 1. Een doel database (s) maken.
 2. Evalueer uw bron database (s).
     * Voor homogene migraties kunt u uw bestaande data base (s) beoordelen met behulp van [DMA](https://www.microsoft.com/download/details.aspx?id=53595).
-    * Voor heterogene-migraties (van concurrentie bronnen) kunt u uw bestaande data base (s) evalueren met [SSMA](https://aka.ms/get-ssma). U kunt SSMA ook gebruiken om database objecten te converteren en het schema te migreren naar uw doel platform.
-3. Maak een exemplaar van de Azure Database Migration Service.
+    * Voor heterogene migraties (van concurrentie bronnen) kunt u uw bestaande data base (s) beoordelen met [SSMA](https://aka.ms/get-ssma). U kunt SSMA ook gebruiken om database objecten te converteren en het schema te migreren naar uw doel platform.
+3. Maak een instantie van Azure Database Migration Service.
 4. Maak een migratie project waarin de bron database (s), doel database (s) en de te migreren tabellen worden opgegeven.
 5. Start de volledige belasting.
 6. Kies de volgende validatie.

@@ -1,26 +1,25 @@
 ---
 title: Azure Table Storage-bewerkingen uitvoeren met Power shell | Microsoft Docs
 description: Meer informatie over het uitvoeren van algemene taken, zoals het maken, opvragen en verwijderen van gegevens uit een Azure Table-opslag account met behulp van Power shell.
-services: cosmos-db
 author: roygara
-ms.service: cosmos-db
+ms.service: storage
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: rogarana
-ms.subservice: cosmosdb-table
-ms.openlocfilehash: 4591cded820bbefb741d55a22d10a91bd4fff383
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.subservice: tables
+ms.openlocfilehash: f1846fae4cbf473df688a2b184c307d72ab2f8d0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868504"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721469"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure Table Storage-bewerkingen uitvoeren met Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 Azure Table Storage is een NoSQL-gegevens opslag die u kunt gebruiken om grote sets gestructureerde, niet-relationele gegevens op te slaan en op te vragen. De belangrijkste onderdelen van de service zijn tabellen, entiteiten en eigenschappen. Een tabel is een verzameling entiteiten. Een entiteit is een set eigenschappen. Elke entiteit kan Maxi maal 252 eigenschappen hebben, die alle naam/waarde-paren zijn. In dit artikel wordt ervan uitgegaan dat u al bekend bent met de Azure Table Storage service-concepten. Zie voor gedetailleerde informatie [over het Table service-gegevens model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) en [aan de slag met Azure Table Storage met behulp van .net](../../cosmos-db/table-storage-how-to-use-dotnet.md).
 
-In dit artikel wordt beschreven hoe algemene Azure Table Storage-bewerkingen worden uitgevoerd. In deze zelfstudie leert u procedures om het volgende te doen: 
+In dit artikel wordt beschreven hoe algemene Azure Table Storage-bewerkingen worden uitgevoerd. Procedures voor: 
 
 > [!div class="checklist"]
 > * Een tabel maken

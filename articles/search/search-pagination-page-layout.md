@@ -7,20 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 31af550d4f499b4b4440a27037dc210bfdf0cb6f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 01/24/2020
+ms.openlocfilehash: c32e58a43b5409fd9f8ede536167d185270c6a22
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793457"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721571"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Werken met zoek resultaten in azure Cognitive Search
 Dit artikel bevat richt lijnen voor het implementeren van standaard elementen van een pagina met zoek resultaten, zoals het totale aantal, het ophalen van documenten, het sorteren van orders en navigatie. Pagina opties die gegevens of informatie aan uw zoek resultaten bijdragen, worden opgegeven via de [Zoek documenten](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) aanvragen die naar uw Azure Cognitive Search-service worden verzonden. 
 
 In de REST API bestaan aanvragen uit een GET-opdracht, een pad en een query parameter die de service op de hoogte stellen van wat er wordt gevraagd en hoe u het antwoord kunt formuleren. In de .NET SDK is de equivalente API de [DocumentSearchResult-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
 
-Enkele voor beelden van code zijn een web-front-end-interface, die u hier kunt vinden: [New York City taken demo app](https://azjobsdemo.azurewebsites.net/) and [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Als u snel een zoek pagina voor uw client wilt genereren, bekijkt u de volgende opties:
+
++ Gebruik de [toepassings Generator](search-create-app-portal.md) in de portal om een HTML-pagina te maken met een zoek balk, facet navigatie en resultaten.
++ Volg de zelf studie [uw eerste app C# maken](tutorial-csharp-create-first-app.md) om een functionele client te maken.
+
+Enkele voor beelden van code zijn een web-front-end-interface, die u hier kunt vinden: [New York City Jobs demo app](https://azjobsdemo.azurewebsites.net/), [Java script-voorbeeld code met een live demo site](https://github.com/liamca/azure-search-javascript-samples)en [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
 > Een geldige aanvraag bevat een aantal elementen, zoals een service-URL en pad, HTTP-term `api-version`, enzovoort. Voor het kortings merk zijn de voor beelden verwijderd om alleen de syntaxis te markeren die relevant is voor de paginering. Zie voor meer informatie over de aanvraag syntaxis [Azure COGNITIVE Search rest-api's](https://docs.microsoft.com/rest/api/searchservice).
@@ -88,13 +93,29 @@ U maakt een methode die de geselecteerde sorteer optie als invoer accepteert en 
 > Hoewel de standaard Score voldoende is voor veel scenario's, raden we u aan om in plaats daarvan relevantie op een aangepast Score profiel te baseren. Een aangepast Score profiel biedt een manier om items te stimuleren die nuttiger zijn voor uw bedrijf. Zie [Score profielen toevoegen](index-add-scoring-profiles.md) voor meer informatie.
 >
 
+## <a name="hit-highlighting"></a>Markeren
+
+U kunt opmaak Toep assen op overeenkomende voor waarden in de zoek resultaten, zodat u de overeenkomst eenvoudig herkent. Instructies voor het markeren van treffers worden vermeld in de [query-aanvraag](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+
+De opmaak wordt toegepast op volledige term query's. Query's op gedeeltelijke voor waarden, zoals fuzzy zoeken of joker tekens zoeken die resulteren in het uitbreiden van query's in de engine, kunnen geen treffer markeringen gebruiken.
+
+```http
+POST /indexes/hotels/docs/search?api-version=2019-05-06 
+    {  
+      "search": "something",  
+      "highlight": "Description"  
+    }
+```
+
+
+
 ## <a name="faceted-navigation"></a>Facetnavigatie
 
 Zoek navigatie is gebruikelijk op een resultaten pagina die zich vaak aan de zijkant of boven aan een pagina bevindt. In azure Cognitive Search biedt facet navigatie een zelfgestuurde zoek functie op basis van vooraf gedefinieerde filters. Zie [facet navigatie in Azure Cognitive Search](search-faceted-navigation.md) voor meer informatie.
 
 ## <a name="filters-at-the-page-level"></a>Filters op pagina niveau
 
-Als uw oplossing speciaal speciale zoek pagina's voor specifieke inhouds typen bevat (bijvoorbeeld een online retail-toepassing met afdelingen die boven aan de pagina staan), kunt u een [filter expressie](search-filters.md) invoegen naast een **OnClick** -gebeurtenis aan Open een pagina in een vooraf gefilterde status.
+Als uw oplossing speciaal speciale zoek pagina's voor specifieke inhouds typen bevat (bijvoorbeeld een online retail-toepassing met afdelingen die boven aan de pagina worden weer gegeven), kunt u een [filter expressie](search-filters.md) invoegen naast een **OnClick** -gebeurtenis om een pagina in een vooraf gefilterde status te openen.
 
 U kunt een filter met of zonder een zoek expressie verzenden. Met de volgende aanvraag wordt bijvoorbeeld op de merk naam gefilterd, waarbij alleen de documenten worden geretourneerd die overeenkomen.
 

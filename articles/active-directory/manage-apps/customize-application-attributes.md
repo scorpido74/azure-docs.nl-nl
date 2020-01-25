@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cbe5066974734093e440e64eb0b47542e569765
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: d21ebabb34b828624c196922f88380f02234dc05
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940913"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711859"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -39,17 +39,17 @@ Volg deze stappen om toegang te krijgen tot de functie **toewijzingen** van het 
 1. Selecteer **inrichting** om de instellingen voor het inrichten van gebruikers accounts voor de geselecteerde app te beheren.
 1. Vouw **toewijzingen** uit om de gebruikers kenmerken weer te geven en te bewerken die tussen Azure AD en de doel toepassing stroom gaan. Als de doel toepassing deze ondersteunt, kunt u in deze sectie desgewenst het inrichten van groepen en gebruikers accounts configureren.
 
-   ![Toewijzingen gebruiken om gebruikers kenmerken weer te geven en te bewerken](./media/customize-application-attributes/21.png)
+   ![Toewijzingen gebruiken om gebruikers kenmerken weer te geven en te bewerken](media/customize-application-attributes/21.png)
 
 1. Selecteer een configuratie **toewijzingen** om het scherm gerelateerde **kenmerk toewijzing** te openen. Sommige kenmerk toewijzingen zijn vereist voor een juiste werking van een SaaS-toepassing. Voor vereiste kenmerken is de functie **verwijderen** niet beschikbaar.
 
-   ![Kenmerk toewijzing gebruiken om kenmerk toewijzingen voor apps te configureren](./media/customize-application-attributes/22.png)
+   ![Kenmerk toewijzing gebruiken om kenmerk toewijzingen voor apps te configureren](media/customize-application-attributes/22.png)
 
    In deze scherm afbeelding ziet u dat het kenmerk **username** van een beheerd object in Sales Force wordt gevuld met de waarde **userPrincipalName** van het gekoppelde Azure Active Directory-object.
 
 1. Selecteer een bestaande **kenmerk toewijzing** om het scherm **kenmerk bewerken** te openen. Hier kunt u de gebruikers kenmerken bewerken die worden gestroomd tussen Azure AD en de doel toepassing.
 
-   ![Kenmerk bewerken gebruiken om gebruikers kenmerken te bewerken](./media/customize-application-attributes/23.png)
+   ![Kenmerk bewerken gebruiken om gebruikers kenmerken te bewerken](media/customize-application-attributes/23.png)
 
 ### <a name="understanding-attribute-mapping-types"></a>Informatie over kenmerk toewijzings typen
 
@@ -71,7 +71,7 @@ Naast deze eigenschap ondersteunen kenmerk toewijzingen ook de volgende kenmerke
 
 - **Bron kenmerk** : het gebruikers kenmerk van het bron systeem (voor beeld: Azure Active Directory).
 - **Doel kenmerk** : het gebruikers kenmerk in het doel systeem (voor beeld: ServiceNow).
-- **Standaard waarde indien Null (optioneel)** : de waarde die wordt door gegeven aan het doel systeem als het bron kenmerk null is. Deze waarde wordt alleen ingericht wanneer een gebruiker wordt gemaakt. De ' standaard waarde wanneer null ' wordt niet ingericht bij het bijwerken van een bestaande gebruiker. Als u bijvoorbeeld alle bestaande gebruikers in het doel systeem met een bepaalde functie titel wilt inrichten (als deze null is in het bron systeem), kunt u de volgende [expressie](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)gebruiken: switch (IsPresent ([jobTitle]), "DefaultValue", "True", [jobtitle]). Zorg ervoor dat u de "standaard waarde" vervangt door de inhoud die u wilt inrichten als deze null is in het bron systeem. 
+- **Standaard waarde indien Null (optioneel)** : de waarde die wordt door gegeven aan het doel systeem als het bron kenmerk null is. Deze waarde wordt alleen ingericht wanneer een gebruiker wordt gemaakt. De ' standaard waarde wanneer null ' wordt niet ingericht bij het bijwerken van een bestaande gebruiker. Als u bijvoorbeeld alle bestaande gebruikers in het doel systeem met een bepaalde functie titel wilt inrichten (als deze null is in het bron systeem), kunt u de volgende [expressie](functions-for-customizing-application-data.md)gebruiken: switch (IsPresent ([jobTitle]), "DefaultValue", "True", [jobtitle]). Zorg ervoor dat u de "standaard waarde" vervangt door de inhoud die u wilt inrichten als deze null is in het bron systeem. 
 - **Objecten met dit kenmerk matchen** : bepaalt of deze toewijzing moet worden gebruikt om gebruikers tussen de bron-en doel systemen uniek te identificeren. Deze is doorgaans ingesteld op het kenmerk userPrincipalName of mail in azure AD, dat meestal wordt toegewezen aan een gebruikersnaam veld in een doel toepassing.
 - **Overeenkomende prioriteit** : meerdere overeenkomende kenmerken kunnen worden ingesteld. Wanneer er meerdere zijn, worden deze geëvalueerd in de volg orde die is gedefinieerd door dit veld. Zodra er een overeenkomst wordt gevonden, worden er geen verdere overeenkomende kenmerken geëvalueerd.
 - **Deze toewijzing Toep assen**
@@ -92,7 +92,7 @@ De Azure AD-inrichtings service kan worden geïmplementeerd in zowel ' ontwikkel
 
 Een geselecteerd aantal toepassingen, zoals ServiceNow, box en G suite, ondersteunt de mogelijkheid om groeps objecten en gebruikers objecten in te richten. Groeps objecten kunnen groeps eigenschappen bevatten, zoals weergave namen en e-mail aliassen, samen met groeps leden.
 
-![Voor beeld toont ServiceNow met ingerichte groeps-en gebruikers objecten](./media/customize-application-attributes/24.png)
+![Voor beeld toont ServiceNow met ingerichte groeps-en gebruikers objecten](media/customize-application-attributes/24.png)
 
 Groeps inrichting kan optioneel worden in-of uitgeschakeld door de groeps toewijzing onder **toewijzingen**te selecteren en in **te scha kelen op** de gewenste optie in het scherm **kenmerk toewijzing** .
 
@@ -193,13 +193,13 @@ Aangepaste kenmerken kunnen geen referentiële kenmerken of kenmerken met meerde
 ## <a name="provisioning-a-role-to-a-scim-app"></a>Een rol inrichten voor een SCIM-app
 Volg de onderstaande stappen om rollen voor een gebruiker in te richten voor uw toepassing. Houd er rekening mee dat de onderstaande beschrijving specifiek is voor aangepaste SCIM-toepassingen. Gebruik voor galerie toepassingen zoals Sales Force en ServiceNow de vooraf gedefinieerde roltoewijzingen. In de onderstaande opsommings tekens wordt beschreven hoe u het kenmerk AppRoleAssignments transformeert naar de indeling die uw toepassing verwacht.
 
-- Als u een appRoleAssignment in azure AD wilt toewijzen aan een rol in uw toepassing, moet u het kenmerk transformeren met behulp van een [expressie](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data). Het kenmerk appRoleAssignment **mag niet rechtstreeks worden toegewezen** aan een Role-kenmerk zonder een expressie te gebruiken om de functie details te parseren. 
+- Als u een appRoleAssignment in azure AD wilt toewijzen aan een rol in uw toepassing, moet u het kenmerk transformeren met behulp van een [expressie](functions-for-customizing-application-data.md). Het kenmerk appRoleAssignment **mag niet rechtstreeks worden toegewezen** aan een Role-kenmerk zonder een expressie te gebruiken om de functie details te parseren. 
 
 - **SingleAppRoleAssignment** 
   - **Wanneer gebruiken:** Gebruik de SingleAppRoleAssignment-expressie om één rol voor een gebruiker in te richten en de primaire functie op te geven. 
   - **Configureren:** Volg de stappen die hierboven worden beschreven om naar de pagina kenmerk toewijzingen te gaan en gebruik de SingleAppRoleAssignment-expressie om toe te wijzen aan het kenmerk roles. Er zijn drie kenmerken waaruit u kunt kiezen: (rollen [Primary EQ "True"]. weer gave, rollen [Primary EQ "True]. type en roles [Primary EQ" True "]. Value). U kunt ervoor kiezen om een of alle functie kenmerken in uw toewijzingen op te neemt. Als u meer dan één wilt gebruiken, voegt u gewoon een nieuwe toewijzing toe en neemt u deze op als doel kenmerk.  
   
-  ![SingleAppRoleAssignment toevoegen](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  ![SingleAppRoleAssignment toevoegen](media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
   - **Aandachtspunten**
     - Zorg ervoor dat er geen meerdere rollen aan een gebruiker zijn toegewezen. We kunnen niet garanderen welke rol zal worden ingericht.
     
@@ -231,11 +231,11 @@ Volg de onderstaande stappen om rollen voor een gebruiker in te richten voor uw 
   - **Wanneer gebruiken:** Gebruik de AppRoleAssignmentsComplex-expressie om meerdere rollen voor een gebruiker in te richten. 
   - **Configureren:** Bewerk de lijst met ondersteunde kenmerken, zoals hierboven wordt beschreven, om een nieuw kenmerk op te geven voor rollen: 
   
-    ![Functies toevoegen](./media/customize-application-attributes/add-roles.png)<br>
+    ![Rollen toevoegen](media/customize-application-attributes/add-roles.png)<br>
 
     Gebruik vervolgens de AppRoleAssignmentsComplex-expressie om toe te wijzen aan het aangepaste Role-kenmerk, zoals wordt weer gegeven in de onderstaande afbeelding:
 
-    ![AppRoleAssignmentsComplex toevoegen](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+    ![AppRoleAssignmentsComplex toevoegen](media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
   - **Aandachtspunten**
     - Alle rollen worden ingericht als primair = onwaar.
     - Het bericht bevat het type rol. De PATCH-aanvraag bevat geen type. Er wordt gewerkt aan het verzenden van het type in POST-en PATCH-aanvragen.

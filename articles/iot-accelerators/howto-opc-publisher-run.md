@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66e2cb30dcd58b7ad0c6cedbb547f75c8039bc58
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2f99f50ffcccb052526981a712ac5046836a44ae
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824138"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712900"
 ---
 # <a name="run-opc-publisher"></a>OPC Publisher uitvoeren
 
@@ -532,7 +532,7 @@ Het geheugen en de prestaties zijn afhankelijk van de configuratie van het aanta
 - IoT Hub bericht grootte (standaard `1`): `--ms`
 - Capaciteit van de wachtrij voor bewaakte items: `--mq`
 
-De `--mq`-para meter bepaalt de bovengrens van de capaciteit van de interne wachtrij, die alle OPC-waarden voor wijzigings knooppunt waarde buffert. Als OPC Publisher berichten niet kan verzenden naar IoT Hub snel genoeg is, buffert deze wachtrij de meldingen. Met de para meter wordt het aantal meldingen ingesteld dat in de buffer kan worden opgeslagen. Als u het aantal items in deze wachtrij verg root in uw test uitvoeringen ziet, kunt u verbroken-berichten het beste voor komen:
+De `--mq`-para meter bepaalt de bovengrens van de capaciteit van de interne wachtrij, die alle OPC-waarden voor wijzigings knooppunt waarde buffert. Als OPC Publisher berichten niet kan verzenden naar IoT Hub snel genoeg is, buffert deze wachtrij de meldingen. Met de para meter wordt het aantal meldingen ingesteld dat in de buffer kan worden opgeslagen. Als u het aantal items in deze wachtrij verg root in uw test uitvoeringen ziet, kunt u voor komen dat er berichten verloren gaan:
 
 - Het interval voor het verzenden van IoT Hub verminderen
 - De grootte van het IoT Hub bericht verg Roten
@@ -579,7 +579,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Met de standaard configuratie worden gegevens verzonden naar IoT Hub elke tien seconden of wanneer 256 kB aan gegevens beschikbaar is voor het opnemen van IoT Hub. Deze configuratie voegt een gemiddelde latentie van ongeveer 10 seconden toe, maar heeft de laagste kans op verbroken-gegevens vanwege de grote bericht grootte. De diagnostische gegevens laten zien dat er geen OPC-knooppunt updates verloren zijn gegaan: `monitored item notifications enqueue failure: 0`.
+Met de standaard configuratie worden gegevens verzonden naar IoT Hub elke tien seconden of wanneer 256 kB aan gegevens beschikbaar is voor het opnemen van IoT Hub. Deze configuratie voegt een gemiddelde latentie van ongeveer 10 seconden toe, maar heeft de laagste kans dat gegevens verloren gaan als gevolg van de grote bericht grootte. De diagnostische gegevens laten zien dat er geen OPC-knooppunt updates verloren zijn gegaan: `monitored item notifications enqueue failure: 0`.
 
 #### <a name="constant-send-interval---si-1---ms-0"></a>Interval voor constante verzen ding (--Si 1--MS 0)
 
@@ -681,7 +681,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Deze configuratie batches worden zo veel OPC-knooppunt waarden bijgewerkt. De maximale IoT Hub bericht grootte is 256 kB, dat hier wordt geconfigureerd. Er is geen verzend interval aangevraagd, wat betekent dat de hoeveelheid gegevens voor IoT Hub op opnemen de latentie bepaalt. Deze configuratie heeft de minst waarschijnlijkheid van verbroken van OPC-knooppunt waarden en is geschikt voor het publiceren van een groot aantal knoop punten. Wanneer u deze configuratie gebruikt, moet u ervoor zorgen dat er voor uw scenario geen hoge latentie is ingesteld als de bericht grootte van 256 kB niet is bereikt.
+Deze configuratie batches worden zo veel OPC-knooppunt waarden bijgewerkt. De maximale IoT Hub bericht grootte is 256 kB, dat hier wordt geconfigureerd. Er is geen verzend interval aangevraagd, wat betekent dat de hoeveelheid gegevens voor IoT Hub op opnemen de latentie bepaalt. Deze configuratie heeft de minste kans om OPC-knooppunt waarden te verliezen en is geschikt voor het publiceren van een groot aantal knoop punten. Wanneer u deze configuratie gebruikt, moet u ervoor zorgen dat er voor uw scenario geen hoge latentie is ingesteld als de bericht grootte van 256 kB niet is bereikt.
 
 ## <a name="debug-the-application"></a>Fouten in de toepassing opsporen
 
