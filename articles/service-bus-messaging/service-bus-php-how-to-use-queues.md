@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Service Bus wachtrijen gebruiken met PHP'
-description: 'Quick Start: informatie over het gebruik van Service Bus wachtrijen in Azure. Code voorbeelden geschreven in PHP.'
+title: Azure Service Bus wachtrijen gebruiken met PHP
+description: In deze zelf studie leert u hoe u PHP-toepassingen kunt maken om berichten te verzenden naar en berichten van een Service Bus wachtrij te ontvangen.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: d576c269f4178c7543327c6b75f46f5487d7a205
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: fcb735d81cac587c75a133ad582f2a839551dcfa
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719184"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760688"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Snelstartgids: Service Bus wachtrijen gebruiken met PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -77,7 +77,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 
 Waar `Endpoint` doorgaans van de indeling `[yourNamespace].servicebus.windows.net`.
 
-Als u een Azure-serviceclient wilt maken, moet u de klasse `ServicesBuilder` gebruiken. U kunt:
+Als u een Azure-serviceclient wilt maken, moet u de klasse `ServicesBuilder` gebruiken. U kunt het volgende doen:
 
 * Geef het connection string rechtstreeks door aan het bestand.
 * Gebruik de **CloudConfigurationManager (CCM)** om meerdere externe bronnen voor de Connection String te controleren:

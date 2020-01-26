@@ -1,18 +1,18 @@
 ---
 title: Een Azure Image Builder-sjabloon maken (preview)
 description: Meer informatie over het maken van een sjabloon voor gebruik met Azure Image Builder.
-author: cynthn
-ms.author: cynthn
-ms.date: 07/31/2019
+author: danis
+ms.author: danis
+ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763076"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760008"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
 
@@ -28,11 +28,15 @@ Dit is de basis indeling van de sjabloon:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             },
+             }
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
         "buildTimeoutInMinutes": <minutes>, 
+        "vmProfile": 
+            {
+            "vmSize": "<vmSize>"
+            },
         "build": {}, 
         "customize": {}, 
         "distribute": {} 
@@ -64,6 +68,24 @@ De locatie is de regio waar de aangepaste installatie kopie wordt gemaakt. Voor 
 
 ```json
     "location": "<region>",
+```
+## <a name="vmprofile"></a>vmProfile
+Standaard wordt met de opbouw functie voor installatie kopieën een VM voor het bouwen van een Standard_D1_v2 gebruikt. u kunt dit bijvoorbeeld negeren als u een installatie kopie voor een GPU-VM wilt aanpassen, moet u een GPU VM-grootte hebben. Dit is optioneel.
+
+```json
+ {
+    "vmSize": "Standard_D1_v2"
+ },
+```
+
+## <a name="osdisksizegb"></a>osDiskSizeGB
+
+Standaard wordt de grootte van de installatie kopie niet door de opbouw functie voor installatie kopieën gewijzigd, wordt de grootte van de bron afbeelding gebruikt. U kunt de grootte van de besturingssysteem schijf (Win en Linux) aanpassen, Let op: niet te klein is dan de mini maal vereiste ruimte voor het besturings systeem. Dit is optioneel en de waarde 0 betekent dat de grootte van de bron afbeelding gelijk blijft. Dit is optioneel.
+
+```json
+ {
+    "osDiskSizeGB": 100
+ },
 ```
 
 ## <a name="tags"></a>Tags
@@ -135,13 +157,7 @@ In de lijst met **installatie Programma's en installatie kopieën voor Red Hat E
 > De toegangs tokens van de koppelingen worden met regel matige tussen pozen vernieuwd, dus telkens wanneer u een sjabloon wilt verzenden, moet u controleren of het adres van de RH-koppeling is gewijzigd.
  
 ### <a name="platformimage-source"></a>PlatformImage-bron 
-Azure Image Builder ondersteunt de volgende Azure Marketplace-installatie kopieën:
-* Ubuntu 18.04
-* Ubuntu 16.04
-* RHEL 7,6
-* CentOS 7,6
-* Windows 2016
-* Windows 2019
+Azure Image Builder biedt ondersteuning voor Windows Server-en client-en Linux Azure Marketplace-installatie kopieën. Zie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) voor de volledige lijst. 
 
 ```json
         "source": {
@@ -220,7 +236,8 @@ Bij het gebruik van `customize`:
             {
                 "type": "Shell",
                 "name": "<name>",
-                "scriptUri": "<path to script>"
+                "scriptUri": "<path to script>",
+                "sha256Checksum": "<sha256 checksum>"
             },
             {
                 "type": "Shell",
@@ -246,7 +263,8 @@ Shell-aanpassing ondersteunt het uitvoeren van shell scripts. deze moeten openba
         { 
             "type": "Shell", 
             "name": "<name>", 
-            "scriptUri": "<link to script>"        
+            "scriptUri": "<link to script>",
+            "sha256Checksum": "<sha256 checksum>"       
         }, 
     ], 
         "customize": [ 
@@ -266,7 +284,12 @@ Eigenschappen aanpassen:
 - **naam** -naam voor het bijhouden van de aanpassing 
 - **scriptUri** -URI naar de locatie van het bestand 
 - **inline** -matrix van shell opdrachten, gescheiden door komma's.
- 
+- **sha256Checksum** -waarde van de sha256-controlesom van het bestand, u genereert dit lokaal en vervolgens wordt de opbouw functie voor installatie kopieën gecontroleerd en gevalideerd.
+    * De sha256Checksum genereren met behulp van een Terminal op Mac/Linux run: `sha256sum <fileName>`
+
+
+Om opdrachten uit te voeren met super gebruikers bevoegdheden, moeten ze worden voorafgegaan door `sudo`.
+
 > [!NOTE]
 > Wanneer u de shell-aanpassing uitvoert met de ISO-bron RHEL, moet u ervoor zorgen dat uw eerste aanpassings shell wordt geregistreerd met een Red Hat-rechten server voordat er aanpassingen worden uitgevoerd. Zodra de aanpassing is voltooid, moet het script de registratie bij de rechten server ongedaan maken.
 
@@ -275,12 +298,15 @@ Met de aanpassings functie voor opnieuw opstarten kunt u een Windows-VM opnieuw 
 
 ```json 
      "customize": [ 
-         {
-            "type": "WindowsRestart", 
-            "restartCommand": "shutdown /r /f /t 0 /c", 
-            "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
-            "restartTimeout": "5m"
-         }],
+
+            {
+                "type": "WindowsRestart",
+                "restartCommand": "shutdown /r /f /t 0 /c", 
+                "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
+                "restartTimeout": "5m"
+            }
+  
+        ],
 ```
 
 BESTURINGSSYSTEEM ondersteuning: Windows
@@ -300,13 +326,16 @@ Shell Customize ondersteunt het uitvoeren van Power shell-scripts en de inline-o
         { 
              "type": "PowerShell",
              "name":   "<name>",  
-             "scriptUri": "<path to script>" 
+             "scriptUri": "<path to script>",
+             "runElevated": "<true false>",
+             "sha256Checksum": "<sha256 checksum>" 
         },  
         { 
              "type": "PowerShell", 
              "name": "<name>", 
              "inline": "<PowerShell syntax to run>", 
-             "valid_exit_codes": "<exit code>" 
+             "valid_exit_codes": "<exit code>",
+             "runElevated": "<true or false>" 
          } 
     ], 
 ```
@@ -319,6 +348,10 @@ Eigenschappen aanpassen:
 - **scriptUri** -URI naar de locatie van het Power shell-script bestand. 
 - **inline** : inline-opdrachten die moeten worden uitgevoerd, gescheiden door komma's.
 - **valid_exit_codes** – optioneel, geldige codes die kunnen worden geretourneerd door de script/inline opdracht, waardoor het mislukken van de script/inline-opdracht wordt voor komen.
+- **runElevated** : optioneel, Booleaans, ondersteuning voor het uitvoeren van opdrachten en scripts met verhoogde machtigingen.
+- **sha256Checksum** -waarde van de sha256-controlesom van het bestand, u genereert dit lokaal en vervolgens wordt de opbouw functie voor installatie kopieën gecontroleerd en gevalideerd.
+    * De sha256Checksum genereren met behulp van een Power shell op Windows [Get-hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
+
 
 ### <a name="file-customizer"></a>Bestands aanpassing
 
@@ -330,7 +363,8 @@ Met de file Customizer kunt u met Image Builder een bestand downloaden van een G
             "type": "File", 
              "name": "<name>", 
              "sourceUri": "<source location>",
-             "destination": "<destination>" 
+             "destination": "<destination>",
+             "sha256Checksum": "<sha256 checksum>"
          }
      ]
 ```
@@ -398,8 +432,39 @@ Azure Image Builder ondersteunt drie distributie doelen:
 
 U kunt een installatie kopie distribueren naar beide doel typen in dezelfde configuratie, Zie [voor beelden](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
 
-Omdat er meer dan één doel kan zijn om naar te distribueren, houdt Image Builder een status bij voor elk distributie doel dat toegankelijk is door query's uit te stellen op de `runOutputName`.  De `runOutputName` is een object waarmee u een query kunt uitvoeren op distributie voor informatie over die distributie. U kunt bijvoorbeeld een query uitvoeren op de locatie van de VHD of regio's waarnaar de installatie kopie versie is gerepliceerd. Dit is een eigenschap van elke distributie doel. De `runOutputName` moet uniek zijn voor elk distributie doel.
- 
+Omdat er meer dan één doel kan zijn om naar te distribueren, houdt Image Builder een status bij voor elk distributie doel dat toegankelijk is door query's uit te stellen op de `runOutputName`.  De `runOutputName` is een object waarmee u een query kunt uitvoeren op distributie voor informatie over die distributie. U kunt bijvoorbeeld een query uitvoeren op de locatie van de VHD, of regio's waarnaar de versie van de installatie kopie is gerepliceerd, of de versie van de SIG-installatie kopie is gemaakt. Dit is een eigenschap van elke distributie doel. De `runOutputName` moet uniek zijn voor elk distributie doel. Hier volgt een voor beeld van het uitvoeren van een query op de distributie van een gedeelde installatie kopie galerie:
+
+```bash
+subscriptionID=<subcriptionID>
+imageResourceGroup=<resourceGroup of image template>
+runOutputName=<runOutputName>
+
+az resource show \
+        --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
+        --api-version=2019-05-01-preview
+```
+
+Uitvoer:
+```json
+{
+  "id": "/subscriptions/xxxxxx/resourcegroups/rheltest/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/rhel77",
+  "identity": null,
+  "kind": null,
+  "location": null,
+  "managedBy": null,
+  "name": "rhel77",
+  "plan": null,
+  "properties": {
+    "artifactId": "/subscriptions/xxxxxx/resourceGroups/aibDevOpsImg/providers/Microsoft.Compute/galleries/devOpsSIG/images/rhel/versions/0.24105.52755",
+    "provisioningState": "Succeeded"
+  },
+  "resourceGroup": "rheltest",
+  "sku": null,
+  "tags": null,
+  "type": "Microsoft.VirtualMachineImages/imageTemplates/runOutputs"
+}
+```
+
 ### <a name="distribute-managedimage"></a>Distribueren: managedImage
 
 De uitvoer van de installatie kopie is een beheerde afbeeldings bron.
@@ -503,13 +568,4 @@ az resource show \
 ## <a name="next-steps"></a>Volgende stappen
 
 Er zijn voor beelden van json-bestanden voor verschillende scenario's in de [Azure Image Builder-github](https://github.com/danielsollondon/azvmimagebuilder).
- 
- 
- 
- 
- 
- 
- 
- 
- 
  

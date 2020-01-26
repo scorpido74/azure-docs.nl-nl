@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 803c82c9926c3b75545b42a9a382fd5c327b7151
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c14bebca775345ab478228f42d9b8416dd223032
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289081"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756191"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: veelgestelde vragen (FAQ)
 
@@ -39,7 +39,7 @@ In een Azure AD-Tenant hebben gebruikers die deel uitmaken van de aanmelding van
 
 In een Azure AD B2C-Tenant willen de meeste apps zich aanmelden met een wille keurig e-mail adres (bijvoorbeeld joe@comcast.net, bob@gmail.com, sarah@contoso.comof jim@live.com). Dit type account is een lokaal account. We ondersteunen ook wille keurige gebruikers namen als lokale accounts (bijvoorbeeld Joe, Bob, Sarah of Jim). U kunt een van deze twee lokale account typen kiezen bij het configureren van id-providers voor Azure AD B2C in de Azure Portal. Selecteer in uw Azure AD B2C-Tenant de optie **id-providers**, selecteer **lokaal account**en selecteer vervolgens **gebruikers naam**.
 
-Gebruikers accounts voor toepassingen moeten altijd worden gemaakt via een gebruikers stroom voor registratie, registratie of aanmelding, of met behulp van de Azure AD-Graph API. Gebruikers accounts die zijn gemaakt in de Azure Portal worden alleen gebruikt voor het beheer van de Tenant.
+Gebruikers accounts voor toepassingen kunnen worden gemaakt via een gebruikers stroom voor registratie, registratie of aanmeldings gebruikers stroom, de Microsoft Graph-API of de Azure Portal.
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Welke leveranciers van sociale ID ondersteunen u nu? Wat zijn de voor waarden die u in de toekomst wilt ondersteunen?
 
@@ -77,7 +77,7 @@ U kunt de [functie voor bedrijfs huisstijl](../active-directory/fundamentals/cus
 De e-mail handtekening bevat de naam van de Azure AD B2C Tenant die u hebt ingevoerd toen u de Azure AD B2C-Tenant voor het eerst hebt gemaakt. U kunt de naam wijzigen met behulp van de volgende instructies:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als globale beheerder.
-1. Open de blade **Azure Active Directory**.
+1. Open de Blade **Azure Active Directory** .
 1. Klik op de **eigenschappen** tabblad.
 1. Wijzig het veld **naam** .
 1. Klik bovenaan de pagina op **Opslaan**.
@@ -150,7 +150,7 @@ U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (U
 1. Selecteer onder **beheren**de optie **gebruikers instellingen**.
 1. Indien aanwezig selecteert u onder **LinkedIn-account verbindingen**de optie **Nee**en selecteert u vervolgens **Opslaan**.
 1. Selecteer onder **beheren**de optie **Eigenschappen**
-1. Selecteer onder **Toegangsbeheer voor Azure-resources** **Ja** en selecteer vervolgens **Opslaan**.
+1. Selecteer onder **toegangs beheer voor Azure-resources**de optie **Ja**en selecteer vervolgens **Opslaan**.
 1. Meld u af bij de Azure Portal en meld u weer aan om uw toegang te vernieuwen.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Selecteer op de pagina **overzicht** de optie **map verwijderen**. Volg de instructies op het scherm om het proces te volt ooien.
@@ -170,7 +170,7 @@ U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (U
 1. Selecteer onder **beheren**de optie **gebruikers instellingen**.
 1. Indien aanwezig selecteert u onder **LinkedIn-account verbindingen**de optie **Nee**en selecteert u vervolgens **Opslaan**.
 1. Selecteer onder **beheren**de optie **Eigenschappen**
-1. Selecteer onder **Toegangsbeheer voor Azure-resources** **Ja** en selecteer vervolgens **Opslaan**.
+1. Selecteer onder **toegangs beheer voor Azure-resources**de optie **Ja**en selecteer vervolgens **Opslaan**.
 1. Meld u af bij de Azure Portal en meld u weer aan om uw toegang te vernieuwen.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Selecteer op de pagina **overzicht** de optie **map verwijderen**. Volg de instructies op het scherm om het proces te volt ooien.

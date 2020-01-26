@@ -1,6 +1,6 @@
 ---
-title: Quota en limieten Microsoft Azure Service Bus | Microsoft Docs
-description: Limieten en quota voor Azure Service Bus zoeken.
+title: Quota en limieten Microsoft Azure Service Bus
+description: 'In dit artikel vindt u een overzicht van de basis quota en drempel waarden voor beperking in Azure Service Bus berichten. Bijvoorbeeld: het maximum aantal naam ruimten per abonnement.'
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/27/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: ae2c55486e0489006395a1630eba0b1c3f56b5be
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 7a6d8e56d7f70d637b2c963814b66e6e7cb3a907
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561506"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759564"
 ---
 # <a name="service-bus-quotas"></a>Service Bus-quota
 In deze sectie vindt u de basis quota en drempel waarden voor bandbreedte beperking in Azure Service Bus berichten.

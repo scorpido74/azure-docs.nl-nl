@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046042"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760885"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -152,23 +152,13 @@ Vergeet niet om te **slaan** voordat u verdergaat met de volgende sectie.
 
 Op de pagina **Eigenschappen** kunt u de categorieën en industrieën definiëren die worden gebruikt voor het groeperen van uw aanbieding op Marketplace, uw app-versie en de juridische contracten die uw aanbieding ondersteunen. Selecteer **Opslaan** nadat u deze pagina hebt voltooid.
 
-### <a name="category"></a>Categorie
+### <a name="category"></a>Category
 
 Selecteer mini maal één en Maxi maal drie categorieën. deze worden gebruikt om uw aanbieding in de juiste Zoek gebieden voor Marketplace te plaatsen. Neem contact op met de manier waarop uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. 
 
-### <a name="standard-marketplace-terms-and-conditions"></a>Standard Marketplace-voor waarden
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard-contract voor micro soft Commercial Marketplace
 
-Om het aankoop proces voor klanten te vereenvoudigen en de juridische complexiteit voor software leveranciers te verminderen, biedt micro soft een standaard contract sjabloon om een trans actie in de Marketplace te vergemakkelijken.
-
-In plaats van aangepaste voor waarden te gebruiken, kunt u ervoor kiezen om uw software aan te bieden onder het Standard-contract, wat klanten alleen maar één keer hoeven te accepteren.
-
-Het standaard contract vindt u hier: https://go.microsoft.com/fwlink/?linkid=2041178
-
-Als u het standaard contract wilt gebruiken, schakelt u het selectie vakje **standaard contract gebruiken** in.
-
-#### <a name="terms-of-use"></a>Gebruiksvoorwaarden
-
-Als u het selectie vakje **standaard contract gebruiken** niet inschakelt, moet u uw eigen juridische voor waarden opgeven in het veld **Gebruiksvoorwaarden** . Voer Maxi maal 10.000 tekens in of, als u de gebruiks voorwaarden een langere beschrijving nodig hebt, geeft u de URL op waar u de aanvullende licentie voorwaarden kunt vinden. Klanten moeten deze voor waarden accepteren voordat ze uw app kunnen proberen.
+[!INCLUDE [Commercial marketplace Standard Contract](./includes/marketplace-contract-text.md)]
 
 ## <a name="offer-listing"></a>Aanbieding weer geven
 
@@ -287,7 +277,7 @@ Nadat u hebt gemaakt, ziet u de namen van uw plannen, Id's, plan type, Beschik b
 
 Op het tabblad **installatie plannen** kunt u de high-level configuratie voor het type abonnement instellen, of deze pakketten van een ander abonnement opnieuw gebruikt en op welke Clouds het plan beschikbaar moet zijn.  Uw antwoorden op dit tabblad beïnvloeden welke velden worden weer gegeven op andere tabbladen voor hetzelfde abonnement.
 
-#### <a name="plan-type"></a>Plantype
+#### <a name="plan-type"></a>Type abonnement
 
 Zoals beschreven in de [typen Azure-toepassings abonnementen](#types-of-azure-application-plans), geeft u aan of uw plan een oplossings sjabloon of een beheerde toepassing zal bevatten.
 
@@ -352,7 +342,7 @@ U kunt elk plan zodanig configureren dat het zichtbaar is voor iedereen of allee
 
 Als uw oplossings sjabloon alleen indirect moet worden geïmplementeerd als er een andere oplossings sjabloon of beheerde toepassing wordt verwezen, schakelt u dit selectie vakje in om de oplossings sjabloon te publiceren, maar deze te verbergen bij klanten die ze rechtstreeks zoeken en bezoeken.
 
-## <a name="pricing-and-availability"></a>Prijzen en beschikbaarheid
+## <a name="pricing-and-availability"></a>Prijzen en beschik baarheid
 
 Het tabblad **prijzen en beschik baarheid** is alleen zichtbaar voor beheerde toepassings abonnementen.  U kunt de markten configureren waarop dit plan beschikbaar is, de prijs per maand van het beheer van de oplossing en of het plan zichtbaar moet worden voor iedereen of alleen voor specifieke klanten (een privé-publiek).
 
@@ -461,7 +451,7 @@ Selecteer voor elke principal een van de ingebouwde Azure AD-rollen uit de lijst
 
 Pas [Azure-beleid](https://docs.microsoft.com/azure/governance/policy/overview) toe op uw beheerde toepassing om nalevings vereisten voor de geïmplementeerde oplossing op te geven.  Zie [Voorbeelden van Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/index) voor beleidsdefinities en de indeling van de parameterwaarden.  U kunt Maxi maal vijf beleids regels configureren, en slechts één exemplaar van elke beleids optie.  Voor sommige beleids regels zijn aanvullende para meters vereist.  De standaard-SKU is vereist voor controle beleid.  De naam van het beleid is beperkt tot 50 tekens.
 
-## <a name="co-sell"></a>Co-Sell
+## <a name="co-sell"></a>Gezamenlijk verkopen
 
 Het is volledig optioneel om informatie op het tabblad verkopen op te geven voor het publiceren van uw aanbieding. Het is vereist voor het vergemakkelijkt van de verkoop van Ready en de status van de voor bereidingen op de IP-mede verkoop. De gegevens die u verstrekt, worden door micro soft Sales teams gebruikt om meer te weten te komen over uw oplossing bij de evaluatie van de geschiktheid voor klanten behoeften. Het is niet rechtstreeks beschikbaar voor klanten.
 

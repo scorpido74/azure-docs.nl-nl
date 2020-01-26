@@ -1,22 +1,14 @@
 ---
 title: Limieten en grenzen - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker heeft meta-limieten voor het delen van de knowledge base en de service. Het is belangrijk dat u uw knowledge base binnen de grenzen om te testen en publiceren.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/10/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: ddf2cb5730f123038c5dbde7ab07b4022f021ced
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/23/2020
+ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381117"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760229"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker kennisdatabase limieten en grenzen
 
@@ -33,6 +25,15 @@ Het maximum aantal kennis grondslagen is gebaseerd op [limieten voor Azure-Cogni
  Als uw laag bijvoorbeeld 15 toegestane indexen heeft, kunt u 14 Knowledge bases publiceren (1 index per gepubliceerde kennis basis). De vijftiende index, `testkb`, wordt gebruikt voor alle kennis grondslagen voor ontwerpen en testen.
 
 ## <a name="extraction-limits"></a>Extractie limieten
+
+### <a name="file-naming-constraints"></a>Beperkingen voor bestands naamgeving
+
+Bestands namen mogen niet de volgende tekens bevatten:
+
+|Geen teken gebruiken|
+|--|
+|`'` met enkele aanhalings tekens|
+|`"` voor dubbele aanhalings tekens|
 
 ### <a name="maximum-file-size"></a>Maximale bestandsgrootte
 

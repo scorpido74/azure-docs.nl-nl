@@ -1,15 +1,15 @@
 ---
 title: Een lid van de Azure Block Chain-service maken-Azure CLI
 description: Maak een lid van de Azure Block Chain-Service voor een Block Chain consortium met behulp van de Azure CLI.
-ms.date: 11/20/2019
+ms.date: 01/23/2020
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: 6a9673431c3da21b3ce645b9aff30506be1012f3
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 703444b6077c2301e1ffec77c8096fb76ddaa731
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455945"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759923"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Snelstartgids: een Block Chain-lid van de Azure Block Chain-service maken met behulp van Azure CLI
 
@@ -37,7 +37,9 @@ az group create \
 
 ## <a name="create-a-blockchain-member"></a>Een blockchain-lid maken
 
-Maak een Block Chain-lid in de Azure Block Chain-service die het quorum grootboek protocol in een nieuw consortium uitvoert. Er zijn verschillende para meters en eigenschappen die u moet door geven. Vervang de voorbeeld parameters door uw waarden.
+Een lid van de Azure Block Chain-service is een Block Chain-knoop punt in een particulier consortium Block chain-netwerk. Bij het inrichten van een lid kunt u een consortium netwerk maken of eraan toevoegen. U hebt ten minste één lid nodig voor een consortium netwerk. Het aantal Block Chain-leden dat nodig is voor deel nemers is afhankelijk van uw scenario. Consortium deelnemers kunnen een of meer Block Chain leden hebben of ze kunnen leden delen met andere deel nemers. Zie [Azure Block Chain Service consortium](consortium.md)voor meer informatie over consortiums.
+
+Er zijn verschillende para meters en eigenschappen die u moet door geven. Vervang de voorbeeld parameters door uw waarden.
 
 ```azurecli-interactive
 az resource create \
@@ -50,11 +52,11 @@ az resource create \
 
 | Parameter | Beschrijving |
 |---------|-------------|
-| **resource-groep** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. Gebruik de resource groep die u in de vorige sectie hebt gemaakt.
-| **naam** | Een unieke naam die uw Azure Block Chain Service Block Chain-lid aanduidt. De naam wordt gebruikt voor het adres van het open bare eind punt. Bijvoorbeeld `myblockchainmember.blockchain.azure.com`.
+| **resource-group** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. Gebruik de resource groep die u in de vorige sectie hebt gemaakt.
+| **De naam** | Een unieke naam die uw Azure Block Chain Service Block Chain-lid aanduidt. De naam wordt gebruikt voor het adres van het open bare eind punt. Bijvoorbeeld `myblockchainmember.blockchain.azure.com`.
 | **location** | Azure-regio waar het block Chain-lid wordt gemaakt. Bijvoorbeeld `westus2`. Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt.
-| **wacht woord** | Het wacht woord voor het standaard transactie knooppunt van het lid. Gebruik het wacht woord voor basis verificatie bij het maken van verbinding met het open bare eind punt van het standaard transactie knooppunt van het block Chain-lid.
-| **verband** | Naam van het consortium dat u wilt toevoegen of maken.
+| **Wachtwoord** | Het wacht woord voor het standaard transactie knooppunt van het lid. Gebruik het wacht woord voor basis verificatie bij het maken van verbinding met het open bare eind punt van het standaard transactie knooppunt van het block Chain-lid.
+| **consortium** | Naam van het consortium dat u wilt toevoegen of maken. Zie [Azure Block Chain Service consortium](consortium.md)voor meer informatie over consortiums.
 | **consortiumAccountPassword** | Het wacht woord van het consortium account wordt ook wel het wacht woord van het lid-account genoemd. Het wacht woord van het lid-account wordt gebruikt voor het versleutelen van de persoonlijke sleutel voor het Ethereum-account dat voor uw lid wordt gemaakt. U gebruikt het wacht woord voor het account en het lid van het account voor het beheer van consortiums.
 | **skuName** | Type laag. Gebruik S0 voor Standard en B0 voor Basic.
 
@@ -74,7 +76,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een lid van de Azure Block Chain-service en een nieuw consortium geïmplementeerd. Probeer de volgende Snelstartgids om Azure Block Chain Development Kit te gebruiken voor Ethereum om te koppelen aan een consortium op Azure Block Chain-service.
+In deze Quick Start hebt u een lid van de Azure Block Chain-service en een nieuw consortium geïmplementeerd. Probeer de volgende Snelstartgids om Azure Block Chain Development Kit te gebruiken voor Ethereum om te koppelen aan een lid van de Azure Block Chain-service.
 
 > [!div class="nextstepaction"]
 > [Visual Studio code gebruiken om verbinding te maken met de Azure Block Chain-Service](connect-vscode.md)

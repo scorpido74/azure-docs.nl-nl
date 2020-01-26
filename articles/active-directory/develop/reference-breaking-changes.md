@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b3d5aa74705d858349eaca543a7fd86e315a63e6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702994"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758747"
 ---
 # <a name="whats-new-for-authentication"></a>Wat is er nieuw voor verificatie? 
 
@@ -40,7 +40,20 @@ Het verificatie systeem wijzigt en voegt voortdurend functies toe om de naleving
 
 ## <a name="upcoming-changes"></a>Aanstaande wijzigingen
 
-September 2019: extra afdwinging van POST semantiek volgens de regels voor het parseren van URL'S-dubbele para meters activeren een fout en [stuk lijst](https://www.w3.org/International/questions/qa-byte-order-mark) wordt genegeerd.
+Geen gepland op dit moment.  Hieronder vindt u een overzicht van de wijzigingen die in of beschikbaar zijn voor productie. 
+
+## <a name="february-2020"></a>Februari 2020: 
+
+### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>Lege fragmenten worden toegevoegd aan elke HTTP-omleiding vanuit het aanmeldings-eind punt. 
+
+**Ingangs datum**: 8 februari 2020
+
+**Beïnvloede eind punten**: zowel v 1.0 als v 2.0
+
+**Beïnvloede protocollen**: OAuth-en OIDC-stromen die gebruikmaken van response_type = query-dit bevat de [autorisatie code stroom](v2-oauth2-auth-code-flow.md) in sommige gevallen en de [impliciete stroom](v2-oauth2-implicit-grant-flow.md). 
+
+Wanneer een verificatie reactie vanuit login.microsoftonline.com naar een toepassing wordt verzonden via een HTTP-omleiding, wordt door de service een leeg fragment aan de antwoord-URL toegevoegd.  Dit voor komt een klasse van omleidings aanvallen door ervoor te zorgen dat de browser alle bestaande fragmenten in de verificatie aanvraag wist.  Geen enkele app moet afhankelijk zijn van dit gedrag. 
+
 
 ## <a name="august-2019"></a>Augustus 2019
 

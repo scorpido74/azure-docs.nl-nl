@@ -2,14 +2,15 @@
 title: Herstel na nood gevallen voor Azure VM met Azure Site Recovery instellen
 description: Leer hoe u herstel na noodgevallen van Azure-VM’s naar een andere Azure-regio kunt instellen met de Azure Site Recovery-service.
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 1/24/2020
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7d78064285057f6abd91c3ca95e01ec86f1a1a39
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169339"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759786"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Herstel na nood geval instellen voor virtuele Azure-machines
 
@@ -38,7 +39,7 @@ Vereisten om deze zelfstudie te voltooien:
 Maak de kluis in elke gewenste regio, met uitzondering van de bronregio.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**. Selecteer deze vervolgens **&-beheer hulpprogramma's** > **back-up en site Recovery**.
+1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**. Selecteer deze vervolgens **&-beheer hulpprogramma's** > **back-up en site Recovery**.
 1. Geef in **Naam** een beschrijvende naam op om de kluis mee aan te duiden. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
 1. Maak een resourcegroep of selecteer een bestaande resourcegroep. Geef een Azure-regio op. Zie Geografische beschikbaarheid in [Prijsinformatie voor Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) om na te gaan welke regio's er worden ondersteund.
 1. Om toegang te krijgen tot de kluis vanuit het dash board, selecteert u vastmaken **aan dash board** en selecteert u **Create**.
@@ -75,17 +76,6 @@ Als u een firewall proxy op basis van een URL gebruikt voor het beheren van uitg
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Uitgaande connectiviteit voor IP-adresbereiken
 
 Als u een netwerk beveiligings groep (NSG) gebruikt, moet u NSG-regels op basis van een service label maken voor toegang tot Azure Storage, Azure Active Directory, Site Recovery service en Site Recovery bewaking. [Meer informatie](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
-
-> [!NOTE]
-> Het is raadzaam om altijd NSG-regels met Service Tags voor uitgaande toegang te configureren.
-
-Als u uitgaande verbindingen met IP-adressen wilt beheren, moet u deze adressen toestaan voor op IP gebaseerde firewalls, proxy-of NSG:
-
-- [Microsoft Azure Datacenter IP-bereiken](https://www.microsoft.com/download/details.aspx?id=41653)
-- [Windows Azure Datacenter IP-bereiken in Duitsland](https://www.microsoft.com/download/details.aspx?id=54770)
-- [Windows Azure Datacenter IP-bereiken in China](https://www.microsoft.com/download/details.aspx?id=42064)
-- [Office 365 URLs and IP address ranges (URL's en IP-adresbereiken voor Office 365)](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
-- [Site Recovery-service-eindpunt-IP-adressen](https://aka.ms/site-recovery-public-ips)
 
 ## <a name="verify-azure-vm-certificates"></a>Azure VM-certificaten controleren
 

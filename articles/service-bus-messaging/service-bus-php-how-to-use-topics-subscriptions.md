@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Service Bus-onderwerpen gebruiken met PHP'
-description: 'Snelstartgids: informatie over het gebruik van Service Bus-onderwerpen met PHP in Azure.'
+title: Azure Service Bus-onderwerpen gebruiken met PHP
+description: In deze zelf studie leert u hoe u Azure Service Bus-onderwerpen en-abonnementen kunt gebruiken vanuit een PHP-toepassing.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: b55d3c93f9926b7446dadf069b37a878caa81e15
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 92f25f4bdac4942478c93f717c81eadd2c2f5b4a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721652"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760671"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met PHP
 
@@ -98,7 +98,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 
 Waar `Endpoint` doorgaans van de indeling `https://[yourNamespace].servicebus.windows.net`.
 
-Als u een Azure-serviceclient wilt maken, moet u de klasse `ServicesBuilder` gebruiken. U kunt:
+Als u een Azure-serviceclient wilt maken, moet u de klasse `ServicesBuilder` gebruiken. U kunt het volgende doen:
 
 * Geef het connection string rechtstreeks door aan het bestand.
 * Gebruik de **CloudConfigurationManager (CCM)** om meerdere externe bronnen voor de Connection String te controleren:

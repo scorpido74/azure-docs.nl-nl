@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus Messa ging-entiteiten automatisch door sturen | Microsoft Docs
-description: Een Service Bus wachtrij of-abonnement koppelen aan een andere wachtrij of een onderwerp.
+title: Azure Service Bus Messa ging-entiteiten automatisch door sturen
+description: In dit artikel wordt beschreven hoe u een Azure Service Bus wachtrij of een abonnement koppelt aan een andere wachtrij of een onderwerp.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 1d7b76a58a427b687d0dc36d13cfc00f32196853
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 8b8883b579233962de61e7247e6ac1cbcb2a6d80
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390136"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761046"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Service Bus entiteiten koppelen met autoforwarding
 
@@ -27,7 +27,7 @@ Met de functie voor het *door sturen* van service bus kunt u een wachtrij of abo
 
 ## <a name="using-autoforwarding"></a>Autoforwarden gebruiken
 
-U kunt autoforwarding inschakelen door de eigenschappen [QueueDescription. ForwardTo][QueueDescription.ForwardTo] of [SubscriptionDescription. ForwardTo][SubscriptionDescription.ForwardTo] in te stellen voor de [QueueDescription][QueueDescription] -of [SubscriptionDescription][SubscriptionDescription] -objecten voor de bron, zoals in de volgende voor beeld:
+U kunt autoforwarding inschakelen door de eigenschappen [QueueDescription. ForwardTo][QueueDescription.ForwardTo] of [SubscriptionDescription. ForwardTo][SubscriptionDescription.ForwardTo] in te stellen voor de [QueueDescription][QueueDescription] -of [SubscriptionDescription][SubscriptionDescription] -objecten voor de bron, zoals in het volgende voor beeld:
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);

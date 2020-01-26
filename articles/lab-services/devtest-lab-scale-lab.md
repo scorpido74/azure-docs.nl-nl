@@ -1,6 +1,6 @@
 ---
 title: Quota en limieten in uw Lab in Azure DevTest Labs schalen | Microsoft Docs
-description: Meer informatie over het schalen van een lab in Azure DevTest Labs
+description: In dit artikel wordt beschreven hoe u uw Lab in Azure DevTest Labs kunt schalen. Bekijk uw gebruiks quota's en limieten en vraag om een verhoging.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 231a227cbccaa4cbf74f3b13839c0ba42895cf24
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f3299c24bc751263ccd284a4fddb492fba5dd1e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644848"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761182"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Quota en limieten schalen in DevTest Labs
 Wanneer u in DevTest Labs werkt, merkt u misschien dat er bepaalde standaard limieten gelden voor sommige Azure-resources, die van invloed kunnen zijn op de service DevTest Labs. Deze limieten worden **quota's**genoemd.
@@ -26,7 +26,7 @@ Wanneer u in DevTest Labs werkt, merkt u misschien dat er bepaalde standaard lim
 > [!NOTE]
 > De DevTest Labs-service heeft geen quota opgelegd. Alle quota's die u kunt tegen komen, zijn standaard beperkingen van het hele Azure-abonnement.
 
-U kunt elke Azure-Resource gebruiken totdat u het quotum bereikt. Elk abonnement heeft afzonderlijke quota en het gebruik wordt bijgehouden per abonnement.
+U kunt elke Azure-Resource gebruiken totdat u het quotum bereikt. Elk abonnement heeft afzonderlijke quota's en het gebruik wordt bijgehouden per abonnement.
 
 Elk abonnement heeft bijvoorbeeld een standaard quotum van 20 kernen. Als u bijvoorbeeld virtuele machines in uw Lab maakt met vier kernen, kunt u slechts vijf Vm's maken.
 

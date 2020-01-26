@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-berichten doorzoeken | Microsoft Docs
-description: Blader en Service Bus-berichten bekijken
+title: Azure Service Bus-bericht bladeren
+description: Met Service Bus berichten bladeren en bekijken kunnen een Azure Service Bus-client alle berichten opsommen die zich in een wachtrij of abonnement bevinden.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,40 +11,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 425cf262b80e83a4d06074a567a2921eee12f9c2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ad10ad2d4393c1d25a835d0ff8cd0b98ed25879
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402748"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756393"
 ---
 # <a name="message-browsing"></a>Berichten doorzoeken
 
-Berichten doorzoeken en weergeven, kunt een Service Bus-clienttoepassing opsommen van alle berichten die zich in een wachtrij of abonnement, doorgaans voor diagnose- en foutopsporingsgegevens doeleinden bevinden.
+Door een bericht te bladeren of te bekijken, kan een Service Bus-client alle berichten opsommen die zich in een wachtrij of abonnement bevinden, meestal voor diagnose-en fout opsporing.
 
-De peek bewerkingen retourneren alle berichten die aanwezig zijn in de wachtrij of abonnement bericht-logboek, niet alleen beschikbaar voor onmiddellijke overname met `Receive()` of de `OnMessage()` lus. De `State` eigenschap van elk bericht geeft aan of het bericht actief is (beschikbaar om te worden ontvangen), [uitgestelde](message-deferral.md), of [geplande](message-sequencing.md).
+Met de bewerking Peek worden alle berichten geretourneerd die bestaan in het wachtrij-of abonnements berichten logboek, niet alleen die beschikbaar voor direct ophalen met `Receive()` of de `OnMessage()`-lus. De eigenschap `State` van elk bericht vertelt u of het bericht actief is (dat kan worden ontvangen), [uitgesteld](message-deferral.md)of [gepland](message-sequencing.md).
 
-Verbruikte en verlopen berichten worden opgeschoond door een asynchrone 'garbagecollection' die is uitgevoerd en niet per se precies wanneer berichten verlopen, en daarom `Peek` kan inderdaad berichten die al zijn verlopen en wordt verwijderd of wanneer dead lettered retourneren een ontvangstbewerking wordt vervolgens aangeroepen in de wachtrij of abonnement.
+Verbruikte en verlopen berichten worden opgeschoond door een asynchrone ' garbagecollection ', en niet noodzakelijkerwijs precies wanneer berichten verlopen, en daarom is het `Peek` waarschijnlijk dat er berichten worden geretourneerd die al zijn verlopen en worden verwijderd of onbestelbaar verzonden wanneer een receive-bewerking vervolgens wordt aangeroepen voor de wachtrij of het abonnement.
 
-Dit is vooral belangrijk in waarmee u rekening moet houden bij het herstellen van uitgestelde berichten uit de wachtrij. Een bericht waarvoor de [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) instant is verstreken is niet langer in aanmerking voor het ophalen van de reguliere op een andere manier, zelfs wanneer deze wordt geretourneerd door Peek. Deze berichten retourneren is opzettelijk, aangezien Peek is een hulpprogramma voor diagnostische gegevens over de actuele status van het logboek.
+Dit is vooral belang rijk bij het herstellen van uitgestelde berichten uit de wachtrij. Een bericht waarvoor de [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) direct is door gegeven, komt niet meer in aanmerking voor regel matige ophaal acties op een andere manier, zelfs wanneer dit wordt geretourneerd door Peek. Het retour neren van deze berichten is opzettelijk, omdat Peek een diagnostisch hulp programma is dat de huidige status van het logboek weergeeft.
 
-Peek retourneert ook berichten die zijn vergrendeld en momenteel wordt verwerkt door andere ontvangers, maar nog niet zijn voltooid. Echter, omdat Peek een momentopname van een niet-verbonden retourneert, de status van de vergrendeling van een bericht kan niet worden waargenomen berichten worden bekeken, en de [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) en [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) eigenschappen throw een [ InvalidOperationException](/dotnet/api/system.invalidoperationexception) wanneer de toepassing probeert te lezen.
+PEEK retourneert ook berichten die zijn vergrendeld en die momenteel worden verwerkt door andere ontvangers, maar die nog niet zijn voltooid. Omdat Peek echter een niet-verbonden moment opname retourneert, kan de vergrendelings status van een bericht niet worden waargenomen op getoonde berichten. de eigenschappen [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) en [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) genereren een [InvalidOperationException](/dotnet/api/system.invalidoperationexception) wanneer de toepassing deze probeert te lezen.
 
-## <a name="peek-apis"></a>API's bekijken
+## <a name="peek-apis"></a>Api's bekijken
 
-De [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) en [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) methoden zijn beschikbaar in alle .NET en Java-clientbibliotheken en op alle objecten van de ontvanger: **MessageReceiver**, **MessageSession**, **QueueClient**, en **SubscriptionClient**. Werkt op alle wachtrijen en abonnementen en de desbetreffende wachtrijen voor onbestelbare berichten bekijken.
+De methoden [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) en [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) zijn aanwezig in alle .net-en Java-client bibliotheken en op alle receiver-objecten: **MessageReceiver**, **MessageSession**, **QueueClient**en **SubscriptionClient**. Peek werkt op alle wacht rijen en abonnementen en de bijbehorende wacht rijen voor onbestelbare berichten.
 
-Als meerdere keren aangeroepen, wordt met de Peek-methode alle berichten die zijn opgenomen in de wachtrij of abonnement logboek, in volgorde met nummer, uit het laagste beschikbaar volgnummer op de hoogste waarde inventariseert. Dit is de volgorde waarin berichten in de wachtrij zijn en is niet de volgorde waarin berichten mogelijk uiteindelijk worden opgehaald.
+Wanneer herhaaldelijk wordt aangeroepen, worden alle berichten die in de wachtrij of het logboek voor het abonnement aanwezig zijn, in volg orde van Volg nummers opgesomd van het laagste beschik bare Volg nummer tot het hoogste niveau. Dit is de volg orde waarin berichten in wachtrij worden gezet en niet de volg orde waarin berichten uiteindelijk kunnen worden opgehaald.
 
-[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) meerdere berichten ophaalt en retourneert ze als een opsomming. Als er geen berichten beschikbaar zijn, wordt het opsommingsobject is leeg, niet null zijn.
+[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) haalt meerdere berichten op en retourneert deze als een opsomming. Als er geen berichten beschikbaar zijn, is het opsommings object leeg, niet null.
 
-U kunt ook een overbelasting van de methode met seed een [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) op waarop u wilt starten en vervolgens de overload parameterloze methode om te inventariseren verder aan te roepen. **PeekBatch** oftewel functies, maar een set berichten in één keer worden opgehaald.
+U kunt ook een overbelasting van de methode seeden met een [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) waarop moet worden gestart. Vervolgens roept u de methode-overload zonder para meters aan om verdere inventarisatie uit te voeren. **PeekBatch** werkt gelijk aan, maar haalt een aantal berichten tegelijk op.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Service Bus-berichten, de volgende onderwerpen:
+Zie de volgende onderwerpen voor meer informatie over Service Bus Messa ging:
 
 * [Service Bus-wachtrijen, -onderwerpen en -abonnementen](service-bus-queues-topics-subscriptions.md)
 * [Aan de slag met Service Bus-wachtrijen](service-bus-dotnet-get-started-with-queues.md)

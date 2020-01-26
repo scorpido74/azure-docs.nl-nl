@@ -1,6 +1,6 @@
 ---
 title: Gids voor probleem oplossing voor Azure Service Bus | Microsoft Docs
-description: Lijst met uitzonde ringen en voorgestelde acties voor Service Bus berichten.
+description: Dit artikel bevat een lijst met Azure Service Bus Messa ging-uitzonde ringen en voorgestelde acties die moeten worden uitgevoerd wanneer de uitzonde ring optreedt.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2020
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 20d9fc141fa19a5c6d01f33c2a5398ca84497b9f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 37f316af68bc0b20f21eb606e2abc8232f29ce32
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309962"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759360"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Gids voor probleem oplossing voor Azure Service Bus
 Dit artikel bevat enkele van de .NET-uitzonde ringen die worden gegenereerd door Service Bus .NET Framework Api's en ook andere tips voor het oplossen van problemen. 

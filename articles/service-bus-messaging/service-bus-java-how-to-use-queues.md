@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Azure Service Bus wacht rijen gebruiken met Java'
-description: 'Quick Start: informatie over het gebruik van Service Bus wachtrijen in Azure. Code voorbeelden geschreven in Java.'
+title: Azure Service Bus wacht rijen gebruiken met Java
+description: In deze zelf studie leert u hoe u Java-toepassingen kunt maken om berichten te verzenden naar en berichten van een Azure Service Bus wachtrij te ontvangen.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bb51f30a69294cd78d0664a5bdae70c969da1972
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5a32d92dd8a44602034d84262f2e502a60ac23a9
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721702"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760637"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Snelstartgids: Azure Service Bus-wacht rijen gebruiken met Java om berichten te verzenden en te ontvangen
 

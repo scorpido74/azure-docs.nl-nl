@@ -4,14 +4,14 @@ description: Een lijst met de Azure-resource typen die kunnen worden verplaatst 
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 11/21/2019
+ms.date: 01/20/2020
 ms.author: raynew
-ms.openlocfilehash: 60b8708458e081d66514e092edc9ef9af7c33494
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9bc7dc66ccf3049ac878f7871c816e5ade1afde5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485245"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760705"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Ondersteuning voor het verplaatsen van Azure-resources in verschillende regio's
 
@@ -186,7 +186,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | service | Nee |
+> | service |  Ja | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -259,7 +259,7 @@ Ga naar de naam ruimte van een resource provider:
 > | clusters | Nee | 
 > | fileservers | Nee | 
 > | functies | Nee | 
-> | werkruimten | Nee | 
+> | werk ruimten | Nee | 
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
@@ -439,7 +439,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | hubs | Nee |  
+> | bedrijfs | Nee |  
 
 ## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
@@ -467,7 +467,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | werkruimten | Nee | 
+> | werk ruimten | Nee | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
@@ -628,7 +628,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
 > | domeinen | Nee |  
-> | -onderwerpen | Nee | 
+> | onderwerp | Nee | 
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
@@ -705,7 +705,7 @@ Ga naar de naam ruimte van een resource provider:
 > | notificationrules | Nee | 
 > | scheduledqueryrules |  Nee | 
 > | webtests |  Nee | 
-> | werkmappen |  Nee |  
+> | bladen |  Nee |  
 
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
@@ -778,7 +778,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | commitmentplans |  Nee | 
 > | webservices |  Nee | 
-> | werkruimten |  Nee | 
+> | werk ruimten |  Nee | 
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 
@@ -818,7 +818,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | werkruimten | Nee | 
+> | werk ruimten | Nee | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -942,7 +942,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | werkruimten |  Nee | 
+> | werk ruimten |  Nee | 
 
 
 
@@ -966,7 +966,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | dashboards | Nee | 
+> | Dash boards | Nee | 
 
 ## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 
@@ -1001,7 +1001,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | kluizen | Ja (voor een back-upkluis die ik denk? | 
+> | kluizen | Nee. [Kluis uitschakelen en opnieuw maken](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) voor site Recovery  | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
@@ -1030,7 +1030,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | flows |  Nee |  
+> | terugloop |  Nee |  
 > | jobcollections |  Nee | 
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1142,14 +1142,14 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | Storage accounts | Ja? | 
+> | Storage accounts | Ja | 
 
 ## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | Caches | Nee | 
+> | caches | Nee | 
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
@@ -1254,7 +1254,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | certificaten | Nee | 
+> | Bewijzen | Nee | 
 > | connectiongateways |  Nee |  
 > | inbel |  Nee |  
 > | customapis |  Nee | 
@@ -1279,7 +1279,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | applicationgroups | Nee | 
 > | hostpools | Nee | 
-> | werkruimten | Nee | 
+> | werk ruimten | Nee | 
 
 ## <a name="third-party-services"></a>Services van derden
 

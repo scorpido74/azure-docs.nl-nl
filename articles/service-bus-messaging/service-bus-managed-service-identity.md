@@ -1,6 +1,6 @@
 ---
 title: Beheerde identiteiten voor Azure-resources met Service Bus
-description: Beheerde identiteiten gebruiken voor Azure-resources met Azure Service Bus
+description: In dit artikel wordt beschreven hoe u beheerde identiteiten gebruikt om toegang te krijgen tot Azure Service Bus entiteiten (wacht rijen, onderwerpen en abonnementen).
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 57c52640262854037420c1679804f611394230ef
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 89de6bf80d14ec77fe6b1f98b6e1d15c6e573fbe
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793155"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756280"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Azure Service Bus bronnen
-[Beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) is een functie van meerdere Azure waarmee u een beveiligde identiteit kunt maken die is gekoppeld aan de implementatie waaronder uw toepassings code wordt uitgevoerd. U kunt deze identiteit vervolgens koppelen aan de toegangs beheer rollen die aangepaste machtigingen verlenen om toegang te krijgen tot specifieke Azure-resources die uw toepassing nodig heeft.
+[Identiteiten voor een Azure-resources beheerd](../active-directory/managed-identities-azure-resources/overview.md) is een cross-Azure-functie die u kunt maken van een veilige identiteit die is gekoppeld aan de implementatie waarmee uw toepassingscode wordt uitgevoerd. Daarna kunt u die identiteit koppelen met access-control-rollen die aangepaste machtigingen voor toegang tot specifieke Azure-resources die uw toepassing nodig heeft.
 
-Met beheerde identiteiten beheert het Azure-platform deze runtime-identiteit. U hoeft geen toegangs sleutels op te slaan en te beveiligen in uw toepassings code of configuratie, hetzij voor de identiteit zelf, hetzij voor de resources die u nodig hebt. Een Service Bus client-app die wordt uitgevoerd in een Azure App Service toepassing of op een virtuele machine met ingeschakelde beheerde entiteiten voor Azure-bronnen ondersteuning, hoeft geen SAS-regels en sleutels of andere toegangs tokens te verwerken. De client-app heeft alleen het eindpunt adres van de Service Bus Messa ging-naam ruimte nodig. Wanneer de app verbinding maakt, Service Bus de context van de beheerde entiteit koppelen aan de client in een bewerking die verderop in dit artikel wordt weer gegeven. Zodra deze is gekoppeld aan een beheerde identiteit, kan uw Service Bus-client alle geautoriseerde bewerkingen uitvoeren. Autorisatie wordt verleend door een beheerde entiteit te koppelen aan Service Bus rollen. 
+Met beheerde identiteiten beheert het Azure-platform deze runtime-identiteit. U hoeft niet voor het opslaan en toegang tot sleutels in uw toepassingscode of de configuratie voor de identiteit zelf, of voor de resources die u nodig hebt om toegang te beveiligen. Een Service Bus client-app die wordt uitgevoerd in een Azure App Service toepassing of op een virtuele machine met ingeschakelde beheerde entiteiten voor Azure-bronnen ondersteuning, hoeft geen SAS-regels en sleutels of andere toegangs tokens te verwerken. De client-app heeft alleen het eindpunt adres van de Service Bus Messa ging-naam ruimte nodig. Wanneer de app verbinding maakt, Service Bus de context van de beheerde entiteit koppelen aan de client in een bewerking die verderop in dit artikel wordt weer gegeven. Zodra deze is gekoppeld aan een beheerde identiteit, kan uw Service Bus-client alle geautoriseerde bewerkingen uitvoeren. Autorisatie wordt verleend door een beheerde entiteit te koppelen aan Service Bus rollen. 
 
 ## <a name="overview"></a>Overzicht
 Wanneer een beveiligingsprincipal (een gebruiker, groep of toepassing) probeert toegang te krijgen tot een Service Bus entiteit, moet de aanvraag worden geautoriseerd. Met Azure AD is toegang tot een resource een proces dat uit twee stappen bestaat. 
@@ -75,9 +75,9 @@ Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [begrijp
 ## <a name="enable-managed-identities-on-a-vm"></a>Beheerde identiteiten op een virtuele machine inschakelen
 Voordat u beheerde identiteiten voor Azure-resources kunt gebruiken om Service Bus-resources van uw virtuele machine te autoriseren, moet u eerst beheerde identiteiten voor Azure-resources inschakelen op de VM. Zie een van de volgende artikelen voor meer informatie over het inschakelen van beheerde identiteiten voor Azure-resources:
 
-- [Azure-portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
-- [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+- [Azure-CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-sjabloon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Client bibliotheken Azure Resource Manager](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
@@ -124,15 +124,15 @@ Als u een rol aan een Service Bus naam ruimte wilt toewijzen, gaat u naar de naa
 
 Zodra u de rol hebt toegewezen, heeft de webtoepassing toegang tot de Service Bus entiteiten onder het gedefinieerde bereik. 
 
-### <a name="run-the-app"></a>De app kunt uitvoeren
+### <a name="run-the-app"></a>De app uitvoeren
 
 Wijzig nu de standaard pagina van de ASP.NET-toepassing die u hebt gemaakt. U kunt de code van de webtoepassing van [deze github-opslag plaats](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)gebruiken.  
 
 De pagina default. aspx is uw landings pagina. De code vindt u in het Default.aspx.cs-bestand. Het resultaat is een minimale webtoepassing met enkele invoer velden en met de knoppen **verzenden** en **ontvangen** die verbinding maken met Service Bus om berichten te verzenden of te ontvangen.
 
-U ziet hoe het [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) -object wordt geïnitialiseerd. In plaats van de SAS-token provider (Shared Access token) te gebruiken, maakt de code een token provider voor de beheerde identiteit met de aanroep van `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();`. Er zijn dus geen geheimen om te behouden en te gebruiken. De stroom van de beheerde identiteits context naar Service Bus en de autorisatie-Handshake worden automatisch verwerkt door de token provider. Het is een eenvoudiger model dan het gebruik van SAS.
+Houd er rekening mee hoe de [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) -object is geïnitialiseerd. In plaats van de tokenprovider Shared Access Token (SAS), de code maakt u een token-provider voor de beheerde identiteit met de `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` aanroepen. Er zijn dus geen geheimen om te behouden en te gebruiken. De stroom van de beheerde identiteits context naar Service Bus en de autorisatie-Handshake worden automatisch verwerkt door de token provider. Het is een eenvoudiger model dan het gebruik van SAS.
 
-Nadat u deze wijzigingen hebt aangebracht, publiceert u de toepassing en voert u deze uit. U kunt eenvoudig de juiste publicatie gegevens verkrijgen door een publicatie profiel te downloaden en vervolgens te importeren in Visual Studio:
+Nadat u deze wijzigingen aanbrengt, publiceren en de toepassing wordt uitgevoerd. U kunt eenvoudig de juiste publicatie gegevens verkrijgen door een publicatie profiel te downloaden en vervolgens te importeren in Visual Studio:
 
 ![Publicatie profiel ophalen](./media/service-bus-managed-service-identity/msi3.png)
  

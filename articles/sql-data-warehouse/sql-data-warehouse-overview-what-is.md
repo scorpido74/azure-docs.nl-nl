@@ -10,16 +10,16 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 07bf3070e42af8a03ce1fd7ea4445fc76557e8a3
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 40f779fa5545e0e9c8fd1aa2cc2689b29dffdb82
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645518"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760756"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Wat is Azure Synapse Analytics (voorheen SQL DW)?
 
-Azure Synapse is een oneindige analyse service waarmee bedrijfs gegevensopslag en Big data-analyses worden gecombineerd. Het biedt u de vrijheid om gegevens op te vragen over uw voor waarden, met behulp van serverloze on-demand of ingerichte resources, op schaal. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te leveren voor direct BI en machine learning behoeften
+Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big data-analyses combineert. Dit geeft u de vrijheid om geheel naar eigen wens op schaal gegevens op te vragen, met behulp van serverloze on-demand of ingerichte resources. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te leveren voor direct BI en machine learning behoeften
 
 Azure Synapse heeft vier onderdelen:
 - SQL Analytics: volledige op T-SQL gebaseerde analyses – algemeen beschikbaar
@@ -54,43 +54,14 @@ De analyseresultaten kunnen worden verzonden naar wereldwijde rapportagedatabase
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Synapse-architectuur](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture) verkennen
+- [Azure Synapse-architectuur](massively-parallel-processing-mpp-architecture.md) verkennen
 - Snel [een SQL-groep maken](create-data-warehouse-portal.md)
-- [Voorbeeld gegevens laden][load sample data].
-- [Video's](/azure/sql-data-warehouse/sql-data-warehouse-videos) verkennen
+- [Voorbeeld gegevens laden](sql-data-warehouse-load-sample-databases.md).
+- [Video's](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse) verkennen
 
 Of Bekijk enkele van deze andere Azure Synapse-resources.  
-* [Blogs] zoeken
-* Een [Functieverzoeken] indienen
-* Blogs over het [Teamblogs met adviezen voor klanten] zoeken
-* [Een ondersteuningsticket maken]
-* [MSDN-forum] zoeken
-* [Stack Overflow-forum] zoeken
-
-
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[Een ondersteuningsticket maken]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a data warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[Azure Synapse Analytics solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Teamblogs met adviezen voor klanten]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Functieverzoeken]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN-forum]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
-[Stack Overflow-forum]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for Azure Synapse Analytics]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/
+* [Blogs](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/) zoeken
+* Een [functie aanvraag](https://feedback.azure.com/forums/307516-sql-data-warehouse) indienen
+* [Een ondersteuningsticket maken](sql-data-warehouse-get-started-create-support-ticket.md)
+* [MSDN-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse) zoeken
+* [Stack overflow forum](https://stackoverflow.com/questions/tagged/azure-sqldw) zoeken

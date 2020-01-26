@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 8c3265210f6ba5bb291401ce4691581dac8a0325
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 53644066276aa8e9fb57b4802142bca3fe4b342f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289609"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760845"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten beveiligen en taken in een Azure-Virtual Network afzorgen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,11 +179,14 @@ Als u de standaard regels voor uitgaande verbindingen niet wilt gebruiken en u d
 
 - Uitgaande Internet verbinding weigeren met behulp van de NSG-regels.
 
-- Beperk het uitgaande verkeer tot de volgende items:
-   - Azure Storage, met behulp van de __servicetag van__ __Storage. Region_Name__ (bijvoorbeeld Storage. oostelijke)
-   - Azure Container Registry, met behulp van de __service-tag__ __AzureContainerRegistry. Region_Name__ (bijvoorbeeld AzureContainerRegistry. oostelijkeus)
+- Beperk het uitgaande verkeer voor een __reken instantie__ of een __berekenings cluster__tot de volgende items:
+   - Azure Storage, met behulp van het __service label__ __opslag__
+   - Azure Container Registry, met behulp van het __service label__ __AzureContainerRegistry__
    - Azure Machine Learning, met behulp van het __service label__ __AzureMachineLearning__
-   - In het geval van een reken instantie, Azure Cloud, met behulp van het __service label__ __AzureResourceManager__
+   
+- Voor een __reken instantie__voegt u ook de volgende items toe:
+   - Azure Resource Manager, met behulp van het __service label__ __AzureResourceManager__
+   - Azure Active Directory, met behulp van het __service label__ __AzureActiveDirectory__
 
 De NSG-regel configuratie in de Azure Portal wordt weer gegeven in de volgende afbeelding:
 
@@ -206,12 +209,12 @@ De NSG-regel configuratie in de Azure Portal wordt weer gegeven in de volgende a
 > run_config.environment.python.user_managed_dependencies = True
 > ```
 >
-> Estimator training__
+> __Estimator-training__
 > ```python
-> est = Estimator(source_directory='.', 
->                 script_params=script_params, 
->                 compute_target='local', 
->                 entry_script='dummy_train.py', 
+> est = Estimator(source_directory='.',
+>                 script_params=script_params,
+>                 compute_target='local',
+>                 entry_script='dummy_train.py',
 >                 user_managed=True)
 > run = exp.submit(est)
 > ```

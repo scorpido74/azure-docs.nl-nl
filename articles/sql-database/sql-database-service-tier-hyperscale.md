@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 9cce221946a16103e706875e179c677190f32af1
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: aeda79ec4cb850ce73db18398c57d90aa4eb2acd
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940812"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759496"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -66,13 +66,13 @@ De grootschalige-servicelaag ondersteunt een breed scala aan SQL Server workload
 
 Grootschalige is alleen beschikbaar in het [vCore-model](sql-database-service-tiers-vcore.md). Als u wilt uitlijnen met de nieuwe architectuur, is het prijs model iets anders dan Algemeen of Bedrijfskritiek service lagen:
 
-- **Compute**:
+- **Berekenen**:
 
   De grootschalige reken eenheids prijs is per replica. De [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) prijs wordt toegepast om automatisch schaal replica's te lezen. Er wordt standaard een primaire replica en één alleen-lezen replica per grootschalige-data base gemaakt.  Gebruikers kunnen het totaal aantal replica's aanpassen, met inbegrip van de primaire van 1-5.
 
 - **Opslag**:
 
-  U hoeft niet de maximale gegevens grootte op te geven bij het configureren van een grootschalige-data base. In de laag Hyperscale wordt opslag voor uw database in rekening gebracht op basis van daadwerkelijk gebruik. Opslag wordt automatisch toegewezen tussen 10 GB en 100 TB, in stappen die dynamisch worden aangepast tussen 10 GB en 40 GB.  
+  U hoeft niet de maximale gegevens grootte op te geven bij het configureren van een grootschalige-data base. In de laag Hyperscale wordt opslag voor uw database in rekening gebracht op basis van daadwerkelijke toewijzing. Opslag wordt automatisch toegewezen tussen 40 GB en 100 TB, in stappen die dynamisch worden aangepast tussen 10 GB en 40 GB. Een grootschalige-data base wordt gemaakt met een begin grootte van 10 GB en deze wordt met 10 GB elke 10 minuten verg root totdat de grootte van 40 GB wordt bereikt.
 
 Zie [Azure SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/single/) voor meer informatie over prijzen voor grootschalige
 

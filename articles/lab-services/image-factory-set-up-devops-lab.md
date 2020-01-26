@@ -1,6 +1,6 @@
 ---
-title: Een installatie kopie-Factory uitvoeren vanuit Azure DevOps in Azure DevTest Labs | Microsoft Docs
-description: Meer informatie over het maken van een aangepaste installatie kopie-Factory in Azure DevTest Labs.
+title: Een installatie kopie-Factory uitvoeren vanuit Azure DevOps in Azure DevTest Labs
+description: In dit artikel worden alle voor bereidingen behandeld die nodig zijn om de installatie kopie-Factory uit te voeren vanuit Azure DevOps (voorheen Visual Studio Team Services).
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 101ed792f091a5074b42e3d06eed27d606d3d2a7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638949"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758679"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Een fabrieksinstallatiekopie uitvoeren vanuit Azure DevOps
 In dit artikel worden alle voor bereidingen behandeld die nodig zijn om de installatie kopie-Factory uit te voeren vanuit Azure DevOps (voorheen Visual Studio Team Services).
@@ -52,7 +52,7 @@ Alle Power shell-, sjablonen-en configuratie-instellingen voor de installatie ko
 1. Ga naar het Azure DevOps-project dat u in de vorige stap hebt gemaakt (URL ziet eruit als **https:\//\<accountname >. Visual Studio. com/MyFirstProject**).
 2. Selecteer **een opslag plaats importeren**.
 3. Voer de **kloon-URL** in voor de DevTest Labs opslag plaats: `https://github.com/Azure/azure-devtestlab`.
-4. Selecteer **Importeren**.
+4. Selecteer **importeren**.
 
     ![Git-opslag plaats importeren](./media/set-up-devops-lab/import-git-repo.png)
 
@@ -106,7 +106,7 @@ De snelste manier om een Service-Principal in te stellen, is door Azure DevOps v
 2. Kies **Azure Resource Manager**voor het **verbindings type Azure**.
 3. Selecteer de koppeling **beheren** om de Service-Principal in te stellen.
 
-Zie dit [blogbericht](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) voor meer informatie. Wanneer u de koppeling **beheren** selecteert, gaat u naar de juiste plaats in DevOps (tweede scherm afbeelding in het blog bericht) om de verbinding met Azure in te stellen. Zorg ervoor dat u **Azure Resource Manager service-eind punt** kiest wanneer u dit instelt.
+Zie dit [blog bericht](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)voor meer informatie. Wanneer u de koppeling **beheren** selecteert, gaat u naar de juiste plaats in DevOps (tweede scherm afbeelding in het blog bericht) om de verbinding met Azure in te stellen. Zorg ervoor dat u **Azure Resource Manager service-eind punt** kiest wanneer u dit instelt.
 
 ## <a name="complete-the-build-task"></a>De taak bouwen volt ooien
 Als u de taak maken selecteert, ziet u alle details in het rechterdeel venster dat moet worden ingevuld.

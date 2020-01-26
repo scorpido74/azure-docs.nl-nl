@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: python gebruiken om een query uit te zoeken'
+title: Python gebruiken om een query uit te zoeken op een Data Base
 description: In dit onderwerp ziet u hoe u Python gebruikt om een programma te maken dat is verbonden met een Azure SQL-database, en hoe u een query voor deze database uitvoert met behulp van Transact-SQL-instructies.
 services: sql-database
 ms.service: sql-database
@@ -11,46 +11,60 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 42d5b500a48e427aad2372710597e0266b2e80aa
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9929c483c2e27983254033e2e26b3b753699260b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826997"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758305"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Snelstart: Python gebruiken om een query uit te voeren voor een Azure SQL-database
 
- In dit artikel wordt beschreven hoe u [python](https://python.org) gebruikt om verbinding te maken met een Azure-SQL database en hoe u Transact-SQL-instructies gebruikt om gegevens op te vragen. Bekijk onze [verwijzings](https://docs.microsoft.com/python/api/overview/azure/sql)-documentatie, de [pyodbc GitHub-opslagplaats](https://github.com/mkleehammer/pyodbc/wiki/) en een [pyodbc-voorbeeld](https://github.com/mkleehammer/pyodbc/wiki/Getting-started) voor meer informatie voor SDK.
+In deze Quick Start gebruikt u python om verbinding te maken met een Azure-SQL database en kunt u T-SQL-instructies gebruiken om gegevens op te vragen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Een Azure SQL-database. U kunt een van deze quickstarts gebruiken om een database te maken en vervolgens te configureren in Azure SQL Database:
-
-  || Individuele database | Beheerd exemplaar |
-  |:--- |:--- |:---|
-  | Maken| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Configureren | [IP-firewallregel op serverniveau](sql-database-server-level-firewall-rule.md)| [Connectiviteit vanaf een VM](sql-database-managed-instance-configure-vm.md)|
-  |||[Connectiviteit vanaf locatie](sql-database-managed-instance-configure-p2s.md)
-  |Gegevens laden|Adventure Works geladen volgens de quickstart|[Wide World Importers herstellen](sql-database-managed-instance-get-started-restore.md)
-  |||Adventure Works herstellen of importeren vanuit [BACPAC](sql-database-import.md) -bestand vanuit [github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
-  |||
-
-  > [!IMPORTANT]
-  > De scripts in dit artikel zijn geschreven voor gebruik met de Adventure Works-database. Met een beheerd exemplaar moet u de Adventure Works-database importeren in een exemplaardatabase of de scripts in dit artikel wijzigen voor gebruik van de Wide World Importers-database.
+- Een [Azure-SQL database](sql-database-single-database-get-started.md)
   
-- Python en verwante software voor uw besturingssysteem:
-  
-  - **MacOS**: Installeer homebrew en Python, installeer het ODBC-stuur programma en Sqlcmd, en installeer vervolgens het python-stuur programma voor SQL Server. Zie stappen 1.2, 1.3 en 2.1 in [Python-apps maken met behulp van SQL Server in macOS](https://www.microsoft.com/sql-server/developer-get-started/python/mac/). Zie [Het Microsoft ODBC-stuurprogramma installeren in Linux en macOS](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server) voor meer informatie.
+- [Python](https://python.org/downloads) 3 en verwante software
 
-  - **Ubuntu**: Installeer Python en andere vereiste pakketten met `sudo apt-get install python python-pip gcc g++ build-essential`. Download en installeer het ODBC-stuurprogramma, SQLCMD en het Python-stuurprogramma voor SQL Server. Zie [Een ontwikkelomgeving configureren voor pyodbc Python-ontwikkeling](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux) voor instructies.
+  # <a name="macostabmacos"></a>[MacOS](#tab/macos)
 
-  - **Windows**: python, het ODBC-stuur programma en Sqlcmd en het python-stuur programma voor SQL Server installeren. Zie [Een ontwikkelomgeving configureren voor pyodbc Python-ontwikkeling](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows) voor instructies.
+  Als u homebrew en Python, het ODBC-stuur programma en SQLCMD en het python-stuur programma voor SQL Server wilt installeren, gebruikt u stap **1,2**, **1,3**en **2,1** in [create python apps met behulp van SQL Server in macOS](https://www.microsoft.com/sql-server/developer-get-started/python/mac/).
 
-## <a name="get-sql-server-connection-information"></a>Verbindingsgegevens voor SQL Server ophalen
+  Zie voor meer informatie [micro soft ODBC-stuur programma op macOS](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
+
+  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+
+  Gebruik `sudo apt-get install python python-pip gcc g++ build-essential`om python en andere vereiste pakketten te installeren.
+
+  Zie [Configure a Environment for Pyodbc python Development](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux)om het ODBC-stuur programma, Sqlcmd en het python-stuur programma voor SQL Server te installeren.
+
+  Zie [micro soft ODBC-stuur programma op Linux](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)voor meer informatie.
+
+  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+  Zie [Configure a Environment for Pyodbc python Development](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)om python, het ODBC-stuur programma en Sqlcmd, en het python-stuur programma voor SQL Server te installeren.
+
+  Zie [micro soft ODBC-stuur programma](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server)voor meer informatie.
+
+---
+
+> [!IMPORTANT]
+> De scripts in dit artikel zijn geschreven om de **Adventure Works** -data base te gebruiken.
+
+> [!NOTE]
+> U kunt desgewenst kiezen voor het gebruik van een Azure SQL Managed instance.
+>
+> Als u de [Azure Portal](sql-database-managed-instance-get-started.md), [Power shell](scripts/sql-database-create-configure-managed-instance-powershell.md)of [cli](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)wilt maken en configureren, gebruikt u de [on-site-](sql-database-managed-instance-configure-p2s.md) of [VM](sql-database-managed-instance-configure-vm.md) -verbinding instellen.
+>
+> Als u gegevens wilt laden, raadpleegt u [Restore with BACPAC](sql-database-import.md) with the [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) file of raadpleegt u [de Data Base voor Wide World Importers herstellen](sql-database-managed-instance-get-started-restore.md).
+
+Zie [azure SQL database libraries voor python](/python/api/overview/azure/sql), de [pyodbc-opslag plaats](https://github.com/mkleehammer/pyodbc/wiki/)en een pyodbc-voor [beeld](https://github.com/mkleehammer/pyodbc/wiki/Getting-started)om python en Azure SQL database verder te verkennen.
+
+## <a name="get-sql-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
@@ -58,7 +72,7 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
 
 2. Ga naar de pagina **SQL-data bases** of **SQL Managed instances** .
 
-3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erop en selecteert u het pictogram **Kopiëren**.
+3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren**.
 
 ## <a name="create-code-to-query-your-sql-database"></a>Code maken om query's uit te voeren op uw SQL-database 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121944"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756157"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolatie in de open bare Azure-Cloud
 Met Azure kunt u toepassingen en virtuele machines (Vm's) uitvoeren op gedeelde fysieke infra structuur. Een van de Prime economische motivaties voor het uitvoeren van toepassingen in een cloud omgeving is de mogelijkheid om de kosten van gedeelde resources over meerdere klanten te verdelen. In deze praktijk van multitenancy wordt de efficiëntie verbeterd door resources te multiplexen tussen verschillende klanten tegen lage kosten. Helaas introduceert het ook het risico van het delen van fysieke servers en andere infrastructuur resources om uw gevoelige toepassingen en Vm's uit te voeren die kunnen behoren tot een wille keurige en mogelijk schadelijke gebruiker.
@@ -73,7 +73,7 @@ Azure RBAC heeft drie basis rollen die van toepassing zijn op alle resource type
 
 - **Lezer** kan bestaande Azure-resources weer geven.
 
-![Op rollen gebaseerd toegangsbeheer van Azure](./media/isolation-choices/azure-isolation-fig3.png)
+![Access Control op basis van rollen in azure](./media/isolation-choices/azure-isolation-fig3.png)
 
 Met de rest van de RBAC-rollen in azure kunt u specifieke Azure-resources beheren. Zo kan de gebruiker met de rol Inzender voor virtuele machines virtuele machines maken en beheren. Deze geeft geen toegang tot de Azure-Virtual Network of het subnet waarmee de virtuele machine verbinding maakt.
 
@@ -111,6 +111,9 @@ Microsoft Azure biedt verschillende Cloud Computing Services die een breed scala
 ### <a name="isolated-virtual-machine-sizes"></a>Geïsoleerde grootte van virtuele machines
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
+
+### <a name="dedicated-hosts"></a>Toegewezen hosts
+Naast de geïsoleerde hosts die in de voor gaande sectie worden beschreven, biedt Azure ook speciale hosts. Toegewezen hosts in Azure is een service die fysieke servers levert die als host kunnen fungeren voor een of meer virtuele machines, en die zijn toegewezen aan één Azure-abonnement. Toegewezen hosts bieden hardwarematige isolatie op het niveau van de fysieke server. Er worden geen andere Vm's op uw hosts geplaatst. Toegewezen hosts worden geïmplementeerd in dezelfde data centers en delen hetzelfde netwerk en onderliggende opslag infrastructuur als andere, niet-geïsoleerde hosts. Zie het gedetailleerde overzicht van met [Azure toegewezen hosts](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)voor meer informatie.
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V-&-basis besturingssysteem isolatie tussen de virtuele machines van de virtuele machine & gast-Vm's
 Het Compute-platform van Azure is gebaseerd op machine virtualisatie, wat inhoudt dat alle klant code wordt uitgevoerd in een Hyper-V-virtuele machine. Op elk Azure-knoop punt (of netwerk eindpunt) bevindt zich een Hyper Visor die rechtstreeks over de hardware wordt uitgevoerd en die een knoop punt opsplitst in een variabele aantal gast Virtual Machines (Vm's).
@@ -196,7 +199,7 @@ IP-opslag gegevens kunnen worden beschermd tegen onbevoegde gebruikers via een n
 
 ### <a name="encryption"></a>Versleuteling
 Azure biedt de volgende typen versleuteling om gegevens te beveiligen:
--   Versleuteling 'in transit'
+-   Versleuteling in transit
 
 -   Versleuteling 'at rest'
 

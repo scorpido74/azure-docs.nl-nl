@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490783"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760824"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Functies zijn informatie over acties en context
 
@@ -56,7 +56,7 @@ Personaler neemt functies die zijn ingedeeld in naam ruimten. U kunt in uw toepa
 Hier volgen enkele voor beelden van onderdeel naam ruimten die worden gebruikt door toepassingen:
 
 * User_Profile_from_CRM
-* Time
+* Tijd
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
@@ -107,6 +107,7 @@ De teken reeks die u gebruikt voor het benoemen van de naam ruimte moet voldoen 
 * Dit kan niet Unicode zijn.
 * U kunt sommige van de afdruk bare symbolen gebruiken met codes < 256 voor de namen van de naam ruimte. 
 * U kunt geen symbolen gebruiken met codes < 32 (niet afdruk bare), 32 (spatie), 58 (dubbele punt), 124 (pijp) en 126 – 140.
+* Het mag niet beginnen met een onderstrepings teken "_" of het onderdeel wordt genegeerd.
 
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Functie sets effectiever maken voor persoonlijker
 

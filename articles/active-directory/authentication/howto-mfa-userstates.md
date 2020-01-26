@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fadd974fdc572dddb403c25e90246fd92b1989
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 61d7227c57422cfe2228002750ec29bffa385d44
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763229"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756760"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Verificatie in twee stappen vereisen voor een gebruiker
 
@@ -62,9 +62,8 @@ Alle gebruikers beginnen *Uitgeschakeld*. Als u een gebruiker zich inschrijft vi
 Gebruik de volgende stappen om de pagina te openen waar u de status van een gebruiker kunt bekijken en beheren:
 
 1. Meld u als beheerder aan bij [Azure Portal](https://portal.azure.com).
-2. Zoek en selecteer *Azure Active Directory*. Selecteer **Gebruikers** > **Alle gebruikers**.
-3. Selecteer **Multi-Factor Authentication**.
-   ![Multi-Factor Authentication selecteren](./media/howto-mfa-userstates/selectmfa.png)
+2. Zoek en selecteer *Azure Active Directory*. Selecteer **gebruikers** > **alle gebruikers**.
+3. Selecteer **multi-factor Authentication**. Mogelijk moet u naar rechts schuiven om deze menu optie weer te geven. Selecteer de onderstaande scherm afbeelding om het volledige Azure Portal venster en de menu locatie weer te geven:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Multi-Factor Authentication selecteren in het venster gebruikers in azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 4. Er wordt een nieuwe pagina geopend waarin de gebruikers statussen worden weer gegeven.
    ![gebruikers status van multi-factor Authentication-scherm afbeelding](./media/howto-mfa-userstates/userstate1.png)
 

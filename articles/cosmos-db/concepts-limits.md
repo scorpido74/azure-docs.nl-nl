@@ -1,17 +1,17 @@
 ---
 title: Service quota's Azure Cosmos DB
 description: Azure Cosmos DB Service quota's en standaard limieten voor verschillende resource typen.
-author: jasonwhowell
-ms.author: jasonh
+author: abhijitpai
+ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: b954b56d3c4f9d3ae0ad3142b11a8660e341b74a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 2cce9cbe20121376ad77692773df1d58fcf5257f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711311"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759769"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 

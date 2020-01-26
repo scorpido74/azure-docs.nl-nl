@@ -1,6 +1,6 @@
 ---
-title: Systeemvereisten voor Microsoft Azure Data Box Edge | Microsoft Docs
-description: Meer informatie over de software en netwerkvereisten voor uw Azure Data Box-Edge
+title: Systeem vereisten voor Microsoft Azure Data Box Edge | Microsoft Docs
+description: Meer informatie over de software-en netwerk vereisten voor uw Azure Data Box Edge
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,27 +8,27 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60756542"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757863"
 ---
-# <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box-Edge-systeemvereisten
+# <a name="azure-data-box-edge-system-requirements"></a>Systeem vereisten voor Azure Data Box Edge
 
-Dit artikel beschrijft de belangrijke systeemvereisten voor uw Microsoft Azure Data Box Edge-oplossing en de clients die verbinding maken met Azure Data Box Edge. Het is raadzaam dat u de informatie voordat u uw Data Box-Edge implementeren zorgvuldig te controleren. U kunt raadplegen tot deze gegevens zo nodig tijdens de implementatie en het volgende gebruik.
+In dit artikel worden de belangrijkste systeem vereisten beschreven voor uw Microsoft Azure Data Box Edge-oplossing en voor de clients die verbinding maken met Azure Data Box Edge. We raden u aan de informatie zorgvuldig te bekijken voordat u uw Data Box Edge implementeert. U kunt deze informatie naar behoefte terugsturen tijdens de implementatie en de volgende bewerking.
 
-De systeemvereisten voor de Data Box-rand zijn onder andere:
+De systeem vereisten voor de Data Box Edge zijn onder andere:
 
-- **Softwarevereisten voor hosts** -beschrijving van de ondersteunde platforms, browsers voor de lokale configuratie-UI, SMB-clients en eventuele bijkomende vereisten voor de clients die toegang het apparaat tot.
-- **Netwerkvereisten voor het apparaat** -vindt u informatie over eventuele netwerkvereisten voor de werking van het fysieke apparaat.
+- **Software vereisten voor hosts** : beschrijft de ondersteunde platforms, browsers voor de lokale configuratie-UI, SMB-clients en eventuele aanvullende vereisten voor de clients die toegang hebben tot het apparaat.
+- **Netwerk vereisten voor het apparaat** : bevat informatie over eventuele netwerk vereisten voor de werking van het fysieke apparaat.
 
-## <a name="supported-os-for-clients-connected-to-device"></a>Ondersteund besturingssysteem voor clients die zijn verbonden met het apparaat
+## <a name="supported-os-for-clients-connected-to-device"></a>Ondersteund besturings systeem voor clients die zijn verbonden met het apparaat
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-supported-client-os.md)]
 
-## <a name="supported-protocols-for-clients-accessing-device"></a>Ondersteunde protocollen voor toegang tot apparaat-clients
+## <a name="supported-protocols-for-clients-accessing-device"></a>Ondersteunde protocollen voor clients die toegang hebben tot het apparaat
 
 [!INCLUDE [Supported protocols for clients accessing device](../../includes/data-box-edge-gateway-supported-client-protocols.md)]
 
@@ -44,95 +44,95 @@ De systeemvereisten voor de Data Box-rand zijn onder andere:
 
 [!INCLUDE [Supported browsers for local web UI](../../includes/data-box-edge-gateway-supported-browsers.md)]
 
-## <a name="networking-port-requirements"></a>Poort netwerkvereisten
+## <a name="networking-port-requirements"></a>Vereisten voor netwerk poort
 
-### <a name="port-requirements-for-data-box-edge"></a>Poortvereisten voor gegevens in Microsoft Edge
+### <a name="port-requirements-for-data-box-edge"></a>Poort vereisten voor Data Box Edge
 
-De volgende tabel staan de poorten die moeten worden geopend in uw firewall om toe te staan voor SMB en de cloud en het beheer van verkeer. In deze tabel *in* of *inkomende* verwijst naar de richting van welke binnenkomende client aanvragen toegang tot uw apparaat. *Uit* of *uitgaande* verwijst naar de richting waarin uw gegevens in het Edge-apparaat gegevens extern, na de implementatie, bijvoorbeeld, uitgaand naar het internet verzendt.
+De volgende tabel geeft een lijst van de poorten die in uw firewall moeten worden geopend om SMB-, Cloud-of beheer verkeer toe te staan. In deze tabel verwijst *naar* of *binnenkomend* naar de richting waarin de inkomende client toegang tot uw apparaat vraagt. *Out* of *uitgaand* verwijst naar de richting waarin uw data Box edge apparaat gegevens extern verzendt, bijvoorbeeld uitgaand naar Internet.
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
-### <a name="port-requirements-for-iot-edge"></a>Poortvereisten voor IoT Edge
+### <a name="port-requirements-for-iot-edge"></a>Poort vereisten voor IoT Edge
 
-Azure IoT Edge kunt uitgaande communicatie tussen een on-premises Edge-apparaat en Azure-cloud met ondersteunde protocollen van IoT-Hub. Binnenkomende communicatie is alleen vereist voor specifieke scenario's waar Azure IoT Hub moeten zijn om berichten naar de Azure IoT Edge-apparaat (bijvoorbeeld Cloud naar apparaatmessaging).
+Azure IoT Edge staat uitgaande communicatie van een on-premises edge-apparaat naar Azure-Cloud toe met ondersteunde IoT Hub protocollen. Inkomende communicatie is alleen vereist voor specifieke scenario's waarbij Azure IoT Hub berichten naar het Azure IoT Edge apparaat moet pushen (bijvoorbeeld Cloud-naar-apparaat-berichten).
 
-Gebruik de volgende tabel voor de configuratie van de poort voor de servers die als host fungeert voor Azure IoT Edge-runtime:
+Gebruik de volgende tabel voor poort configuratie voor de servers die als host fungeren voor Azure IoT Edge runtime:
 
-| Poort niet. | In- of uitschalen | Poort-bereik | Vereist | Richtlijnen |
+| Poort nummer | In of uit | Poort bereik | Verplicht | Hulp |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| out       | WAN        | Ja      | Uitgaande open voor IoT Edge wordt ingericht. Deze configuratie is vereist bij het gebruik van handmatige scripts of Azure IoT Device Provisioning Service (DPS).|
+| TCP 443 (HTTPS)| Af       | WAN        | Ja      | Uitgaand openen voor IoT Edge inrichting. Deze configuratie is vereist bij het gebruik van handmatige scripts of Azure IoT Device Provisioning Service (DPS).|
 
-Voor meer informatie gaat u naar [Firewall en configuratieregels poort voor de implementatie van IoT Edge](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
+Voor volledige informatie gaat u naar de [firewall-en poort configuratie regels voor IOT Edge-implementatie](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 
-## <a name="url-patterns-for-firewall-rules"></a>URL-patronen voor firewall-regels
+## <a name="url-patterns-for-firewall-rules"></a>URL-patronen voor firewall regels
 
-Netwerkbeheerders kunnen vaak geavanceerde firewall-regels op basis van de URL-patronen voor het filteren van de inkomende en uitgaande verkeer configureren. Uw gegevens in het Edge-apparaat en de service, is afhankelijk van andere Microsoft-toepassingen, zoals Azure Service Bus, toegangsbeheer van Azure Active Directory, opslagaccounts en Microsoft Update-servers. De URL-patronen die zijn gekoppeld aan deze toepassingen kunnen worden gebruikt om de firewall-regels configureren. Het is belangrijk om te begrijpen dat de URL-patronen die zijn gekoppeld aan deze toepassingen kunnen wijzigen. Deze wijzigingen vereisen de netwerkbeheerder om te controleren en firewallregels bijwerken voor uw gegevens in Edge als en wanneer dat nodig is.
+Netwerk beheerders kunnen regel matig geavanceerde firewall regels configureren op basis van de URL-patronen om het binnenkomende en uitgaande verkeer te filteren. Uw Data Box Edge-apparaat en de service zijn afhankelijk van andere micro soft-toepassingen, zoals Azure Service Bus, Azure Active Directory Access Control, opslag accounts en Microsoft Update servers. De URL-patronen die aan deze toepassingen zijn gekoppeld, kunnen worden gebruikt voor het configureren van firewall regels. Het is belang rijk te weten dat de URL-patronen die aan deze toepassingen zijn gekoppeld, kunnen worden gewijzigd. Als u deze wijzigingen aanbrengt, moet de netwerk beheerder de firewall regels voor uw Data Box Edge controleren en bijwerken als dat nodig is.
 
-U wordt aangeraden dat u uw firewall-regels voor uitgaand verkeer, op basis van gegevens in Edge vaste IP-adressen, opneemt in de meeste gevallen hebt ingesteld. Echter, kunt u de onderstaande informatie om in te stellen van geavanceerde firewallregels die nodig zijn om beveiligde omgevingen te maken.
+We raden u aan de firewall regels voor uitgaand verkeer op te nemen, op basis van Data Box Edge vaste IP-adressen, in de meeste gevallen. U kunt echter de onderstaande informatie gebruiken om geavanceerde firewall regels in te stellen die nodig zijn om beveiligde omgevingen te maken.
 
 > [!NOTE]
-> - Het apparaat (bron) IP-adressen moet altijd worden ingesteld op alle netwerkinterfaces ingeschakeld voor de cloud.
-> - De IP-adressen moet worden ingesteld op bestemming [Azure datacenter IP-adresbereiken](https://www.microsoft.com/download/confirmation.aspx?id=41653).
+> - De IP-adressen van het apparaat moeten altijd worden ingesteld op alle netwerk interfaces die zijn ingeschakeld voor de Cloud.
+> - De doel-Ip's moeten worden ingesteld op [Azure Data Center IP-bereiken](https://www.microsoft.com/download/confirmation.aspx?id=41653).
 
-### <a name="url-patterns-for-gateway-feature"></a>URL-patronen voor de functie voor de gateway
+### <a name="url-patterns-for-gateway-feature"></a>URL-patronen voor de gateway functie
 
 [!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
-### <a name="url-patterns-for-compute-feature"></a>URL-patronen voor compute-functie
+### <a name="url-patterns-for-compute-feature"></a>URL-patronen voor de functie compute
 
 | URL-patroon                      | Onderdeel of functionaliteit                     |   
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft-containerregister (vereist)               |
-| https://\*.azurecr.io                     | Persoonlijke en van derden container Registry (optioneel) | 
-| https://\*.azure-devices.net              | IoT Hub-toegang (vereist)                             | 
+| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Micro soft container Registry (vereist)               |
+| https://\*.azurecr.io                     | Persoonlijke en container registers van derden (optioneel) | 
+| https://\*.azure-devices.net              | IoT Hub toegang (vereist)                             | 
 
-### <a name="url-patterns-for-gateway-for-azure-government"></a>URL-patronen voor gateway voor Azure Government
+### <a name="url-patterns-for-gateway-for-azure-government"></a>URL-patronen voor de gateway voor Azure Government
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 
-### <a name="url-patterns-for-compute-for-azure-government"></a>URL-patronen voor compute voor Azure Government
+### <a name="url-patterns-for-compute-for-azure-government"></a>URL-patronen voor het berekenen van Azure Government
 
 | URL-patroon                      | Onderdeel of functionaliteit                     |  
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft-containerregister (vereist)               |
-| https://\*.azure-devices.us              | IoT Hub-toegang (vereist)           |
-| https://\*.azurecr.us                    | Persoonlijke en van derden container Registry (optioneel) | 
+| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Micro soft container Registry (vereist)               |
+| https://\*. azure-devices.us              | IoT Hub toegang (vereist)           |
+| https://\*. azurecr.us                    | Persoonlijke en container registers van derden (optioneel) | 
 
-## <a name="internet-bandwidth"></a>Internet-bandbreedte
+## <a name="internet-bandwidth"></a>Internet bandbreedte
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
-## <a name="compute-sizing-considerations"></a>COMPUTE dimensioneringsoverwegingen
+## <a name="compute-sizing-considerations"></a>Overwegingen bij reken grootte
 
-Uw ervaring bij het ontwikkelen en testen van uw oplossing gebruiken om te controleren of er voldoende capaciteit is op uw gegevens in het Edge-apparaat en u de optimale prestaties van uw apparaat.
+Gebruik uw ervaring bij het ontwikkelen en testen van uw oplossing om ervoor te zorgen dat er voldoende capaciteit is op uw Data Box Edge apparaat en dat u de optimale prestaties van uw apparaat krijgt.
 
-U moet rekening houden met factoren zijn onder andere:
+Denk hierbij aan de volgende factoren:
 
-- **Details van de container** -denken over het volgende.
+- **Container Details** : denk aan het volgende.
 
-    - Hoeveel containers zijn in uw werkbelasting? U kunt veel van lichtgewicht containers ten opzichte van enkele resource-intensieve labels hebben.
-    - Wat zijn de resources die zijn toegewezen aan deze containers ten opzichte van wat zijn de resources die ze gebruiken?
-    - Het aantal lagen maken gebruik van uw containers?
-    - Zijn er niet-gebruikte containers? Een gestopte container neemt nog steeds schijfruimte.
+    - Hoeveel containers bevinden zich in uw werk belasting? U kunt een groot aantal licht gewicht containers hebben in plaats van een aantal bronnen.
+    - Wat zijn de resources die zijn toegewezen aan deze containers en wat zijn de resources die ze gebruiken?
+    - Hoeveel lagen delen uw containers?
+    - Zijn er ongebruikte containers? Een gestopt container neemt nog steeds schijf ruimte in beslag.
     - In welke taal zijn uw containers geschreven?
-- **Grootte van de gegevens verwerkte** -hoeveel gegevens uw containers wordt verwerkt? Deze gegevens verbruikt schijfruimte of de gegevens in het geheugen wordt verwerkt?
-- **Prestaties verwacht** -wat zijn de gewenste prestatiekenmerken van uw oplossing? 
+- **Grootte van de verwerkte gegevens** -hoeveel gegevens worden er door uw containers verwerkt? Nemen deze gegevens schijf ruimte in beslag of worden de gegevens in het geheugen verwerkt?
+- **Verwachte prestaties** : wat zijn de gewenste prestatie kenmerken van uw oplossing? 
 
-Om te begrijpen en verfijnen van de prestaties van uw oplossing, kunt u het volgende gebruiken:
+Als u de prestaties van uw oplossing wilt begrijpen en verfijnen, kunt u het volgende gebruiken:
 
-- De compute-meetgegevens beschikbaar zijn in Azure portal. Ga naar uw gegevens in het Edge-resource en ga vervolgens naar **bewaking > metrische gegevens**. Bekijk de **Edge compute - geheugengebruik** en **Edge compute - Percentage CPU** om te begrijpen van de beschikbare resources en hoe worden de resources ophalen die worden gebruikt.
-- De bewaking opdrachten die beschikbaar zijn via de PowerShell-interface van het apparaat, zoals:
+- De metrische reken gegevens die beschikbaar zijn in de Azure Portal. Ga naar uw Data Box Edge-resource en ga vervolgens naar **bewaking > metrische gegevens**. Bekijk de **Edge Compute-Memory Usage** en **Edge Compute-percentage CPU** om inzicht te krijgen in de beschik bare bronnen en hoe de bronnen worden gebruikt.
+- De beschik bare bewakings opdrachten via de Power shell-interface van het apparaat, zoals:
 
-    - `dkr` statistieken voor een live stream van containers Haal verbruiksstatistieken op resource. De opdracht biedt ondersteuning voor CPU, geheugengebruik, geheugenlimiet en netwerk-i/o-metrische gegevens.
-    - `dkr system df` voor informatie met betrekking tot de hoeveelheid schijfruimte die wordt gebruikt. 
-    - `dkr image [prune]` opschonen van niet-gebruikte installatiekopieën en ruimte vrij te maken.
-    - `dkr ps --size` om te bekijken van de geschatte grootte van een container die wordt uitgevoerd. 
+    - `dkrdbe stats` om een live stream van de resource gebruiks statistieken van de container (s) op te halen. De opdracht ondersteunt CPU, geheugen gebruik, geheugen limiet en metrische gegevens voor netwerk-i/o.
+    - `dkrdbe system df` om informatie te verkrijgen over de hoeveelheid schijf ruimte die wordt gebruikt. 
+    - `dkrdbe image prune` om ongebruikte installatie kopieën op te ruimen en ruimte vrij te maken.
+    - `dkrdbe ps --size` om de geschatte grootte van een actieve container weer te geven. 
 
-    Voor meer informatie over de beschikbare opdrachten gaat u naar [bewaken en problemen oplossen compute modules](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
+    Ga voor meer informatie over de beschik bare opdrachten naar [bewaken en problemen oplossen van Compute-modules](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
 
-Ten slotte, zorg ervoor dat u uw oplossing voor uw gegevensset te valideren en de prestaties voor gegevens in het edge-apparaten voordat u implementeert in productie kwantificeren.
+Ten slotte moet u ervoor zorgen dat u uw oplossing valideert op uw gegevensset en de prestaties van Data Box Edge te kwantificeren voordat u in productie implementeert.
 
 
 ## <a name="next-step"></a>Volgende stap
 
-- [Uw Azure Data Box-Edge implementeren](data-box-edge-deploy-prep.md)
+- [Uw Azure Data Box Edge implementeren](data-box-edge-deploy-prep.md)

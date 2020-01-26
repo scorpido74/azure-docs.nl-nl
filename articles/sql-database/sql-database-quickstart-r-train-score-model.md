@@ -1,7 +1,7 @@
 ---
-title: Maken en train een Voorspellend model in R
+title: Een voorspellend model maken en trainen in R
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Maken van een eenvoudig voorspelmodel in R met behulp van Azure SQL Database Machine Learning Services (preview) en vervolgens een resultaat met nieuwe gegevens te voorspellen.
+description: Maak een eenvoudig voorspellend model in R met behulp van Azure SQL Database Machine Learning Services (preview) en klik vervolgens op een resultaat met behulp van nieuwe gegevens.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,52 +13,55 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: c1719064de53b79a127146d0ab034f461657cc64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 04054d206d5e30d2de3da5ccd9d018027653cdcf
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714891"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760025"
 ---
-# <a name="create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Maken en train een Voorspellend model in R met Azure SQL Database Machine Learning Services (preview)
+# <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Quick Start: een voorspellend model maken en trainen in R met Azure SQL Database Machine Learning Services (preview)
 
-In deze snelstartgids hebt u zult maken en train een Voorspellend model met behulp van R, slaat u het model naar een tabel in uw SQL-database en het model gebruiken om te voorspellen van waarden van nieuwe gegevens met behulp van de openbare preview van [Machine Learning-Services (met R) in Azure SQL Database ](sql-database-machine-learning-services-overview.md). 
-
-Het model dat u in deze snelstartgids gebruikt is een eenvoudige regressiemodel waarmee de afstand van een auto op basis van de snelheid voorspeld. U gebruikt de **auto's** gegevensset die is opgenomen met R, omdat deze kleine en gemakkelijk te begrijpen.
-
-> [!TIP]
-> Veel gegevenssets, grote en kleine, zijn opgenomen in de R-runtime. Als u een lijst met gegevenssets die zijn geïnstalleerd met R, typt u `library(help="datasets")` vanaf een opdrachtprompt R.
+In deze Quick Start maakt en traint u een voorspellend model met R, slaat u het model op in een tabel in uw data base en gebruikt u vervolgens het model om waarden van nieuwe gegevens te voors pellen met behulp van Machine Learning Services (met R) in Azure SQL Database.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/) voordat u begint.
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Als u wilt uitvoeren met de voorbeeldcode in deze oefeningen, moet u eerst een Azure SQL database met Machine Learning-Services (met R) ingeschakeld hebben. Na de onboarding voor de openbare preview wordt Machine Learning voor u ingeschakeld voor uw bestaande of nieuwe database. Volg de stappen in [Meld u aan voor de preview-versie](sql-database-machine-learning-services-overview.md#signup).
+- Een [Azure-SQL database](sql-database-single-database-get-started.md) met een [firewall regel op server niveau](sql-database-server-level-firewall-rule.md)
 
-- Zorg ervoor dat u hebt de meest recente geïnstalleerd [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). U kunt de R-scripts met behulp van het beheer van andere databases of hulpmiddelen voor query's uitvoeren, maar in deze snelstartgids gebruikt u SSMS.
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) met R ingeschakeld. [Meld u aan voor de preview-versie](sql-database-machine-learning-services-overview.md#signup).
 
-- Deze snelstart moet u een firewallregel op serverniveau configureren. Zie voor informatie over hoe u dit doet, [maken-firewallregel op serverniveau](sql-database-server-level-firewall-rule.md).
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-## <a name="create-and-train-a-predictive-model"></a>Maken en train een Voorspellend model
+> [!NOTE]
+> Na de onboarding voor de openbare preview wordt Machine Learning voor u ingeschakeld voor uw bestaande of nieuwe database.
 
-De gegevens van de snelheid van auto's in de **auto's** gegevensset bevat twee kolommen, beide numerieke: **dist** en **snelheid**. De gegevens bevatten meerdere stoppen metingen met verschillende snelheden. In deze gegevens maakt u een lineair regressiemodel waarmee de relatie tussen de snelheid van auto's en de afstand die zijn vereist voor het stoppen van een auto wordt beschreven.
+In dit voor beeld wordt een eenvoudig regressie model gebruikt voor het voors pellen van de stop afstand van een auto op basis van snelheid met behulp van de **auto's** gegevensset die is opgenomen in R.
+
+> [!TIP]
+> Veel gegevens sets zijn opgenomen in de R-runtime, om een lijst met geïnstalleerde gegevens sets op te halen, typt u `library(help="datasets")` van de R-opdracht prompt.
+
+## <a name="create-and-train-a-predictive-model"></a>Een voorspellend model maken en trainen
+
+De gegevens van de auto snelheid in de gegevensset **auto's** bevatten twee kolommen, zowel numerieke: **VERD** als **snelheid**. De gegevens bevatten meerdere stoppende waarnemingen met verschillende snelheden. Vanuit deze gegevens maakt u een lineair regressie model dat de relatie beschrijft tussen de snelheid van de auto en de afstand die nodig is om een auto te stoppen.
 
 De vereisten van een lineair model zijn eenvoudig:
-- Een formule die de relatie tussen de afhankelijke variabele beschrijft definiëren *snelheid* en de onafhankelijke variabele *afstand*.
+- Definieer een formule die de relatie beschrijft tussen de *snelheid* van de afhankelijke variabele en de onafhankelijke variabele *afstand*.
 - Bied de invoergegevens die moeten worden gebruikt om het model te trainen.
 
 > [!TIP]
-> Als u nodig hebt voor een opfrisser over lineaire modellen, probeert u deze zelfstudie waarin wordt beschreven van het proces voor het aanpassen van een model met behulp van rxLinMod: [Lineaire modellen aanpassen](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
+> Als u een refresher op lineaire modellen nodig hebt, kunt u deze zelf studie gebruiken om het proces van het aanpassen van een model te beschrijven met behulp van rxLinMod: [aanpassing van lineaire modellen](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
-In de volgende stappen die moet u de trainingsgegevens instellen, een regressiemodel maken, trainen met behulp van de trainingsgegevens en slaat u het model naar een SQL-tabel.
+In de volgende stappen stelt u de trainings gegevens in, maakt u een regressie model, traint u het met de trainings gegevens en slaat u het model op in een SQL-tabel.
 
 1. Open **SQL Server Management Studio** en maak verbinding met de SQL-database.
 
-   Als u hulp bij het maken van een verbinding nodig hebt, raadpleegt u [Quick Start: SQL Server Management Studio gebruiken om verbinding te maken en query's uit te voeren op een Azure SQL database](sql-database-connect-query-ssms.md).
+   Als u hulp nodig hebt bij het verbinding maken, raadpleegt u [Quick Start: SQL Server Management Studio gebruiken om verbinding te maken met een Azure-SQL database](sql-database-connect-query-ssms.md).
 
-1. Maak de **CarSpeed** tabel op te slaan de trainingsgegevens.
+1. Maak de **CarSpeed** -tabel om de trainings gegevens op te slaan.
 
     ```sql
     CREATE TABLE dbo.CarSpeed (
@@ -78,9 +81,9 @@ In de volgende stappen die moet u de trainingsgegevens instellen, een regressiem
     GO
     ```
 
-1. Maak een regressie model met `rxLinMod`. 
+1. Maak een regressie model met behulp van `rxLinMod`. 
 
-   Het-model bouwt u de formule in de R-code definieert en u geeft u de trainingsgegevens **CarSpeed** als invoerparameter.
+   Als u het model wilt bouwen, definieert u de formule in de R-code en geeft u de **CarSpeed** voor de training door als een invoer parameter.
 
     ```sql
     DROP PROCEDURE IF EXISTS generate_linear_model;
@@ -104,9 +107,9 @@ In de volgende stappen die moet u de trainingsgegevens instellen, een regressiem
 
      Het eerste argument voor rxLinMod is de *formuleparameter*, waarmee afstand wordt gedefinieerd als afhankelijk van snelheid. De invoergegevens worden opgeslagen in de variabele `CarsData`, die wordt gevuld met de SQL-query.
 
-1. Maak een tabel waarin u het model opslaan zodat u deze later voor voorspelling gebruiken kunt. 
+1. Een tabel maken waarin u het model opslaat, zodat u dit later kunt gebruiken voor voor spellingen. 
 
-   De uitvoer van een R-pakket dat u een model maakt is meestal een **binaire object**, zodat de tabel een kolom met moet **VARBINARY(max)** type.
+   De uitvoer van een R-pakket dat een model maakt, is doorgaans een **binair object**, dus de tabel moet een kolom van het type **varbinary (max)** hebben.
 
     ```sql
     CREATE TABLE dbo.stopping_distance_models (
@@ -115,7 +118,7 @@ In de volgende stappen die moet u de trainingsgegevens instellen, een regressiem
         );
     ```
 
-1. Nu de opgeslagen procedure aanroept, het model is gegenereerd en sla deze op in een tabel.
+1. Roep nu de opgeslagen procedure aan, Genereer het model en sla het op in een tabel.
 
    ```sql
    INSERT INTO dbo.stopping_distance_models (model)
@@ -128,7 +131,7 @@ In de volgende stappen die moet u de trainingsgegevens instellen, een regressiem
    Violation of PRIMARY KEY constraint...Cannot insert duplicate key in object bo.stopping_distance_models
    ```
 
-   Een optie om te voorkomen dat deze fout is de naam voor elk nieuw model bijwerken. U kunt de naam bijvoorbeeld wijzigen in een meer beschrijvende naam, en extra info opnemen, zoals het modeltype, de dag waarop het model is gemaakt, enzovoort.
+   Een optie om deze fout te voor komen is het bijwerken van de naam voor elk nieuw model. U kunt de naam bijvoorbeeld wijzigen in een meer beschrijvende naam, en extra info opnemen, zoals het modeltype, de dag waarop het model is gemaakt, enzovoort.
 
    ```sql
    UPDATE dbo.stopping_distance_models
@@ -136,11 +139,11 @@ In de volgende stappen die moet u de trainingsgegevens instellen, een regressiem
    WHERE model_name = 'default model'
    ```
 
-## <a name="view-the-table-of-coefficients"></a>De tabel van de coëfficiënten weergeven
+## <a name="view-the-table-of-coefficients"></a>De tabel met coëfficiënten weer geven
 
 Over het algemeen is de uitvoer van R van de opgeslagen procedure [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) beperkt tot één gegevensframe. U kunt echter naast het gegevensframe ook uitvoer van andere typen retourneren, zoals scalaire waarden.
 
-Stel bijvoorbeeld dat u wilt een model te trainen, maar de tabel uit het model onmiddellijk te bekijken. Om dit te doen, maakt u de tabel van de coëfficiënten aangezien het belangrijkste resultaat ingesteld en de uitvoer van het getrainde model in een SQL-variabele. U kunt onmiddellijk opnieuw gebruiken het model door het aanroepen van de variabele of kunt u het model opslaan in een tabel, zoals hier wordt weergegeven.
+Stel bijvoorbeeld dat u een model wilt trainen, maar direct de tabel met coëfficiënten uit het model wilt weer geven. Hiervoor maakt u de tabel met coëfficiënten als de belangrijkste resultatenset en voert u het getrainde model uit in een SQL-variabele. U kunt het model direct opnieuw gebruiken door de variabele aan te roepen of u kunt het model opslaan in een tabel zoals hier wordt weer gegeven.
 
 ```sql
 DECLARE @model VARBINARY(max)
@@ -173,13 +176,13 @@ VALUES (
 
 ![Getraind model met extra uitvoer](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
-## <a name="score-new-data-using-the-trained-model"></a>Nieuwe gegevens met behulp van het getrainde model beoordelen
+## <a name="score-new-data-using-the-trained-model"></a>Nieuwe gegevens scoren met behulp van het getrainde model
 
-*Scoring* is een term die wordt gebruikt in de data science om voorspellingen, kansen of andere waarden op basis van nieuwe gegevens die zijn opgenomen in een getraind model genereren. U gebruikt het model dat u hebt gemaakt in de vorige sectie om voorspellingen op basis van nieuwe gegevens te beoordelen.
+*Score* is een term die wordt gebruikt in data Science voor het genereren van voor spellingen, kansen of andere waarden op basis van nieuwe gegevens die worden opgenomen in een getraind model. U gebruikt het model dat u in de vorige sectie hebt gemaakt om voor spellingen te scoren op nieuwe gegevens.
 
-Hebt u opgemerkt dat de oorspronkelijke trainingsgegevens stoppen bij een snelheid van 25 mijl per uur? Dit komt omdat de oorspronkelijke gegevens zijn gebaseerd op een experiment uit 1920. U vraagt zich misschien af, hoe lang duurt het een auto uit de 1920s stoppen als deze kan aan de slag net zo snel als 60 mph of zelfs 100 mph? Als u wilt deze vraag te beantwoorden, kunt u enkele nieuwe waarden van de snelheid aan uw model opgeven.
+Hebt u opgemerkt dat de oorspronkelijke trainingsgegevens stoppen bij een snelheid van 25 mijl per uur? Dit komt omdat de oorspronkelijke gegevens zijn gebaseerd op een experiment uit 1920. Misschien vraagt u zich af hoe lang het een auto van de 1920s is om te stoppen als de oplossing snel kan worden uitgevoerd als 60 mph of zelfs 100 mph? U kunt deze vraag beantwoorden door enkele nieuwe snelheids waarden aan uw model toe te voegen.
 
-1. Maak een tabel met nieuwe snelheid gegevens.
+1. Maak een tabel met nieuwe snelheids gegevens.
 
    ```sql
     CREATE TABLE dbo.NewCarSpeed (
@@ -198,19 +201,19 @@ Hebt u opgemerkt dat de oorspronkelijke trainingsgegevens stoppen bij een snelhe
         , (100)
    ```
 
-2. Stoppen afstand van deze nieuwe waarden van de snelheid te voorspellen.
+2. Voor speling van de afstand van deze nieuwe snelheids waarden.
 
-   Omdat het model is gebaseerd op de **rxLinMod** algoritme geleverd als onderdeel van de **RevoScaleR** pakket, u kunt aanroepen de [rxPredict](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict) functioneren, in plaats van de algemene R `predict` functie.
+   Omdat uw model is gebaseerd op het **rxLinMod** -algoritme dat is opgenomen in het **RevoScaleR** -pakket, roept u de functie [rxPredict](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict) aan in plaats van de algemene R `predict`-functie.
 
-   Met dit voorbeeldscript:
-   - Maakt gebruik van een SELECT-instructie één model ophalen uit de tabel
-   - Wordt doorgegeven als invoerparameter
-   - Aanroepen van de `unserialize` -functie voor het model
-   - Van toepassing is de `rxPredict` functie met de juiste argumenten voor het model
-   - Biedt de nieuwe invoergegevens
+   Dit voorbeeld script:
+   - Maakt gebruik van een SELECT-instructie om één model uit de tabel op te halen
+   - Geeft dit als een invoer parameter
+   - Hiermee wordt de functie `unserialize` op het model aangeroepen
+   - Hiermee wordt de `rxPredict` functie met de juiste argumenten toegepast op het model
+   - Bevat de nieuwe invoer gegevens
 
    > [!TIP]
-   > Zie voor realtime scoren [serialisatie functies](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) geleverd door RevoScaleR.
+   > Zie [serialisatie-functies](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) die worden meegeleverd met RevoScaleR voor in realtime scores.
 
    ```sql
     DECLARE @speedmodel VARBINARY(max) = (
@@ -242,15 +245,15 @@ Hebt u opgemerkt dat de oorspronkelijke trainingsgegevens stoppen bij een snelhe
    ![Resultatenset voor het voorspellen van de remafstand](./media/sql-database-quickstart-r-train-score-model/r-predict-stopping-distance-resultset.png)
 
 > [!NOTE]
-> In dit voorbeeldscript wordt de `str` functie is toegevoegd tijdens de testfase om te controleren of het schema van de gegevens worden geretourneerd van R. U kunt de instructie later verwijderen.
+> In dit voorbeeld script wordt de functie `str` toegevoegd tijdens de test fase om het schema van de gegevens die worden geretourneerd vanuit R te controleren. U kunt de instructie later verwijderen.
 >
-> De kolomnamen die worden gebruikt in het R-script, worden niet per se doorgegeven aan de uitvoer van de opgeslagen procedure. De component met resultaten definieert hier enkele nieuwe kolomnamen.
+> De kolomnamen die worden gebruikt in het R-script, worden niet per se doorgegeven aan de uitvoer van de opgeslagen procedure. Hier definieert de component WITH RESULTs een aantal nieuwe kolom namen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor meer informatie over Azure SQL Database Machine Learning-Services met R (preview).
+Zie de volgende artikelen voor meer informatie over Azure SQL Database Machine Learning Services met R (preview).
 
-- [Azure SQL Database Machine Learning-Services met R (preview)](sql-database-machine-learning-services-overview.md)
-- [Maken en eenvoudige R-scripts uitvoeren in Azure SQL Database Machine Learning-Services (preview)](sql-database-quickstart-r-create-script.md)
-- [Schrijven van geavanceerde R-functies in Azure SQL Database met behulp van Machine Learning-Services (preview)](sql-database-machine-learning-services-functions.md)
-- [Werken met R- en SQL-gegevens in Azure SQL Database Machine Learning Services (preview)](sql-database-machine-learning-services-data-issues.md)
+- [Azure SQL Database Machine Learning Services met R (preview-versie)](sql-database-machine-learning-services-overview.md)
+- [Eenvoudige R-scripts maken en uitvoeren in Azure SQL Database Machine Learning Services (preview-versie)](sql-database-quickstart-r-create-script.md)
+- [Geavanceerde R-functies schrijven in Azure SQL Database met behulp van Machine Learning Services (preview)](sql-database-machine-learning-services-functions.md)
+- [Werken met R-en SQL-gegevens in Azure SQL Database Machine Learning Services (preview-versie)](sql-database-machine-learning-services-data-issues.md)

@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: 555a60579c11a7ecb9b39753c5e4b35e801edeb1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 531dc62cacc044187c7800dd8abcdad282c4e633
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422166"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759940"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Zelfstudie: Een app met meerdere containers (preview) maken in Web App for Containers
 
@@ -38,7 +38,7 @@ Voor het volt ooien van deze zelf studie hebt u ervaring nodig met [docker opste
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Voor deze zelfstudie gebruikt u het samenstellingsbestand van [Docker](https://docs.docker.com/compose/wordpress/#define-the-project), maar bewerkt u dit zo dat hierin Azure Database for MySQL, permanente opslag en Redis worden opgenomen. U vindt het configuratiebestanden in [Azure-voorbeelden](https://github.com/Azure-Samples/multicontainerwordpress). Zie [Opties voor docker-samen stellen](configure-custom-container.md#docker-compose-options)voor ondersteunde configuratie opties.
+Voor deze zelf studie gebruikt u het opstellen van het bestand uit [docker](https://docs.docker.com/compose/wordpress/#define-the-project), maar u kunt dit wijzigen in azure database for MySQL, permanente opslag en redis. U vindt het configuratiebestanden in [Azure-voorbeelden](https://github.com/Azure-Samples/multicontainerwordpress). Zie [Opties voor docker-samen stellen](configure-custom-container.md#docker-compose-options)voor ondersteunde configuratie opties.
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 
@@ -333,7 +333,7 @@ Wanneer de app-instelling is gemaakt, toont Cloud Shell soortgelijke informatie 
 
 ### <a name="modify-configuration-file"></a>Configuratiebestand wijzigen
 
-Typ `nano docker-compose-wordpress.yml` in Cloud Shell om de nano-teksteditor te openen.
+Typ `nano docker-compose-wordpress.yml` in de Cloud Shell om de nano-teksteditor te openen.
 
 Met de optie `volumes` wordt het bestandssysteem toegewezen aan een map in de container. `${WEBAPP_STORAGE_HOME}` is een omgevingsvariabele in App Service die is toegewezen aan de permanente opslag voor uw app. U gebruikt deze omgevingsvariabele in de volumeoptie zodat de WordPress-bestanden worden geïnstalleerd in de permanente opslag in plaats van de container. Breng de volgende wijzigingen aan in het bestand:
 

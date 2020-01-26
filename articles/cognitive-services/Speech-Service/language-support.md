@@ -3,20 +3,20 @@ title: Taal ondersteuning-spraak service
 titleSuffix: Azure Cognitive Services
 description: De spraak service ondersteunt talloze talen voor conversie van spraak naar tekst en tekst naar spraak, samen met spraak omzetting. In dit artikel vindt u een uitgebreide lijst met taal ondersteuning per service functie.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: erhopf
+ms.date: 01/23/2020
+ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: b5f227deb3385d64160f5a469d76b9763057b160
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 34d362a4b28ade5116c68e2243a2341bab9fca9d
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381049"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760620"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Taal-en regio ondersteuning voor de spraak service
 
@@ -24,49 +24,58 @@ Taal ondersteuning is afhankelijk van de functionaliteit van de spraak service. 
 
 ## <a name="speech-to-text"></a>Spraak naar tekst
 
-Zowel de micro soft Speech SDK als de REST API ondersteunen de volgende talen (land instellingen). Om de nauw keurigheid te verbeteren, wordt aanpassing aangeboden voor een subset van de talen via het uploaden van audio en Transcripten met menselijke labels of gerelateerde tekst: zinnen.  Het aanpassen van de uitspraak is momenteel alleen beschikbaar voor `en-US` en `de-DE`. Meer informatie over aanpassingen [vindt u hier](how-to-custom-speech.md).
+Zowel de micro soft Speech SDK als de REST API ondersteunen de volgende talen (land instellingen). Om de nauw keurigheid te verbeteren, wordt aanpassing aangeboden voor een subset van de talen via het uploaden van audio en Transcripten met menselijke labels of gerelateerde tekst: zinnen. Het aanpassen van de uitspraak is momenteel alleen beschikbaar voor `en-US` en `de-DE`. Meer informatie over aanpassingen [vindt u hier](how-to-custom-speech.md).
 
- Landinstelling | Taal | Ondersteund | Aanpasbaar
+<!--
+To get the AM and ML bits:
+https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20models%3A/GetSupportedLocalesForModels
+
+To get pronunciation bits:
+https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
+-->
+
+ Landinstelling | Taal | Ondersteund | Aanpassingen
 ------|------------|-----------|-------------
-`ar-EG` | Arabisch (Egypte), moderne standard | Ja | Ja
-`ar-SA` | Arabisch (Saoedi-Arabië) | Ja | Ja
-`ar-AE` | Arabisch (VAE) | Ja | Ja
-`ar-KW` | Arabisch (Koeweit) | Ja | Ja
-`ar-QA` | Arabisch (Qatar) | Ja | Ja
-`ca-ES` | Catalaans | Ja | Nee
-`da-DK` | Deens (Denemarken) | Ja | Nee
-`de-DE` | Duits (Duitsland) | Ja | Ja
-`en-AU` | Engels (Australië) | Ja | Ja
-`en-CA` | Engels (Canada) | Ja | Ja
-`en-GB` | Engels (Verenigd Koninkrijk) | Ja | Ja
-`en-IN` | English (India) | Ja | Ja
-`en-NZ` | Engels (Nieuw-Zeeland) | Ja | Ja
-`en-US` | Engels (Verenigde Staten) | Ja | Ja
-`es-ES` | Spaans (Spanje) | Ja | Ja
-`es-MX` | Spaans (Mexico) | Ja | Ja
-`fi-FI` | Fins (Finland) | Ja | Nee
-`fr-CA` | Frans (Canada) | Ja | Ja
-`fr-FR` | Frans (Frankrijk) | Ja | Ja
-`gu-IN` | Gujarati (Indiase) | Ja | Ja
-`hi-IN` | Hindi (India) | Ja | Ja
-`it-IT` | Italiaans (Italië) | Ja | Ja
-`ja-JP` | Japans (Japan) | Ja | Ja
-`ko-KR` | Koreaans (Korea) | Ja | Ja
-`mr-IN` | Marathi (India) | Ja | Ja
-`nb-NO` | Noors (Bokmål) (Noorwegen) | Ja | Nee
-`nl-NL` | Nederlands (Nederland) | Ja | Ja
-`pl-PL` | Pools (Polen) | Ja | Nee
-`pt-BR` | Portugees (Brazilië) | Ja | Ja
-`pt-PT` | Portugees (Portugal) | Ja | Ja
-`ru-RU` | Russisch (Rusland) | Ja | Ja
-`sv-SE` | Zweeds (Zweden) | Ja | Nee
-`ta-IN` | Tamil (India) | Ja | Ja
-`te-IN` | Telugu (India) | Ja | Ja
-`zh-CN` | Chinees (Mandarijn, vereenvoudigd) | Ja | Ja
-`zh-HK` | Chinees (Kantonees, traditioneel) | Ja | Ja
-`zh-TW` | Chinees (Taiwan Mandarijn) | Ja | Ja
+`ar-AE` | Arabisch (VAE) | Ja | Nee
+`ar-BH` | Arabisch (Bahrein) | Ja | Taal model
+`ar-EG` | Arabisch (Egypte), moderne standard | Ja | Taal model
+`ar-KW` | Arabisch (Koeweit) | Ja | Nee
+`ar-QA` | Arabisch (Qatar) | Ja | Nee
+`ar-SA` | Arabisch (Saoedi-Arabië) | Ja | Nee
+`ca-ES` | Catalaans | Ja | Taal model
+`da-DK` | Deens (Denemarken) | Ja | Taal model
+`de-DE` | Duits (Duitsland) | Ja | Akoestische model<br>Taal model<br>Uitspraak van
+`en-AU` | Engels (Australië) | Ja | Akoestische model<br>Taal model
+`en-CA` | Engels (Canada) | Ja | Akoestische model<br>Taal model
+`en-GB` | Engels (Verenigd Koninkrijk) | Ja | Akoestische model<br>Taal model<br>Uitspraak van
+`en-IN` | English (India) | Ja | Akoestische model<br>Taal model
+`en-NZ` | Engels (Nieuw-Zeeland) | Ja | Akoestische model<br>Taal model
+`en-US` | Engels (Verenigde Staten) | Ja | Akoestische model<br>Taal model<br>Uitspraak van
+`es-ES` | Spaans (Spanje) | Ja | Akoestische model<br>Taal model
+`es-MX` | Spaans (Mexico) | Ja | Akoestische model<br>Taal model
+`fi-FI` | Fins (Finland) | Ja | Taal model
+`fr-CA` | Frans (Canada) | Ja | Akoestische model<br>Taal model
+`fr-FR` | Frans (Frankrijk) | Ja | Akoestische model<br>Taal model<br>Uitspraak van
+`gu-IN` | Gujarati (Indiase) | Ja | Taal model
+`hi-IN` | Hindi (India) | Ja | Akoestische model<br>Taal model
+`it-IT` | Italiaans (Italië) | Ja | Akoestische model<br>Taal model<br>Uitspraak van
+`ja-JP` | Japans (Japan) | Ja | Taal model
+`ko-KR` | Koreaans (Korea) | Ja | Taal model
+`mr-IN` | Marathi (India) | Ja | Taal model
+`nb-NO` | Noors (Bokmål) (Noorwegen) | Ja | Taal model
+`nl-NL` | Nederlands (Nederland) | Ja | Taal model
+`pl-PL` | Pools (Polen) | Ja | Taal model
+`pt-BR` | Portugees (Brazilië) | Ja | Akoestische model<br>Taal model<br>Uitspraak van
+`pt-PT` | Portugees (Portugal) | Ja | Taal model
+`ru-RU` | Russisch (Rusland) | Ja | Akoestische model<br>Taal model
+`sv-SE` | Zweeds (Zweden) | Ja | Taal model
+`ta-IN` | Tamil (India) | Ja | Taal model
+`te-IN` | Telugu (India) | Ja | Nee
 `th-TH` | Thai (Thailand) | Ja | Nee
-`tr-TR` | Turkije | Ja | Ja
+`tr-TR` | Turkije | Ja | Nee
+`zh-CN` | Chinees (Mandarijn, vereenvoudigd) | Ja | Akoestische model<br>Taal model
+`zh-HK` | Chinees (Kantonees, traditioneel) | Ja | Taal model
+`zh-TW` | Chinees (Taiwan Mandarijn) | Ja | Taal model
 
 ## <a name="text-to-speech"></a>Tekst naar spraak
 
@@ -102,7 +111,7 @@ Meer dan 75 standaard stemmen zijn beschikbaar in meer dan 45 talen en land inst
 
 Landinstelling | Taal | Geslacht | Volledige toewijzing van service naam | Korte naam
 -------|----------|---------|----------|----------
-<sup>&dagger;</sup>`ar-EG` | Arabisch (Egypte) | Vrouw | "Microsoft Server spraak tekst en spraak spraak (ar-bijvoorbeeld Hoda)" | "ar-EG-Hoda"
+<sup>**1**</sup>`ar-EG` | Arabisch (Egypte) | Vrouw | "Microsoft Server spraak tekst en spraak spraak (ar-bijvoorbeeld Hoda)" | "ar-EG-Hoda"
 `ar-SA` | Arabisch (Saoedi-Arabië) | Man | "Microsoft Server spraak tekst en spraak, spraak (ar-SA, Naayf)" | "ar-SA-Naayf"
 `bg-BG` | Bulgaars | Man | "Microsoft Server tekst naar spraak stem (bg-BG, Ivan)" | "bg-BG-Ivan"
 `ca-ES` | Catalaans | Vrouw | "Microsoft Server tekst naar spraak stem (ca-ES, HerenaRUS)" | "ca-ES-HerenaRUS"
@@ -184,7 +193,7 @@ Landinstelling | Taal | Geslacht | Volledige toewijzing van service naam | Korte
 | | | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS"
 | | | Man | "Microsoft Server spraak tekst en spraak, spraak (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo"
 
-&dagger; *ar bijvoorbeeld ondersteunt moderne Standard Arabisch (MSA).*
+**1** *AR-voor beeld: ondersteuning voor modern Standard-Arabisch (MSA).*
 
 > [!NOTE]
 > U kunt de volledige service naam toewijzing of de naam van de korte spraak gebruiken in uw verzoeken voor spraak synthese.

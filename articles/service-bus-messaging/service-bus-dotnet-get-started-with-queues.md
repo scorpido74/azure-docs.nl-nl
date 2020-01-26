@@ -1,6 +1,6 @@
 ---
 title: Aan de slag met Azure Service Bus-wachtrijen | Microsoft Docs
-description: Een C#-consoletoepassing schrijven voor Service Bus Messaging-wachtrijen.
+description: In deze zelf studie maakt u .NET Core-Console toepassingen om berichten te verzenden naar en berichten van een Service Bus wachtrij te ontvangen.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/27/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 49abd1b0542b1a658517561cf1ffead402fa93a5
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 60428e3c5be4ac994f83f44c4492ebd80ee65da7
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563391"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760978"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Aan de slag met Service Bus-wachtrijen
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -386,7 +386,7 @@ Voer het programma uit en controleer de portal opnieuw. Het **aantal actieve ber
 
 ![Wachtrij nadat berichten zijn ontvangen][queue-message-receive]
 
-Gefeliciteerd. U hebt nu een wachtrij gemaakt, een set berichten naar die wachtrij verzonden en die berichten ontvangen van dezelfde wachtrij.
+Gefeliciteerd! U hebt nu een wachtrij gemaakt, een set berichten naar die wachtrij verzonden en die berichten ontvangen van dezelfde wachtrij.
 
 > [!NOTE]
 > U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers eenvoudig verbinding maken met een Service Bus naam ruimte en berichten entiteiten beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerpen, wacht rijen, abonnementen, relay-Services, Notification hubs en Event hubs te testen.

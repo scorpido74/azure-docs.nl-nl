@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c9d3a876b75e7d3ed8ff43217227db1a524206f2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2ef90e1cb883a2d22b355ff4105ae0ce3c73ad6d
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273478"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759843"
 ---
 # <a name="create-an-azure-storage-account"></a>Een Azure Storage-account maken
 
@@ -133,6 +133,9 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2
 ```
 
+> [!IMPORTANT]
+> Als u [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, moet u `-EnableHierarchicalNamespace $True` opnemen in deze lijst met para meters. 
+
 Als u een v2-opslag account voor algemeen gebruik met een andere replicatie optie wilt maken, vervangt u de gewenste waarde in de onderstaande tabel voor de para meter **SkuName** .
 
 |Replicatie-optie  |De parameter SkuName  |
@@ -172,6 +175,9 @@ az storage account create \
     --sku Standard_RAGRS \
     --kind StorageV2
 ```
+
+> [!IMPORTANT]
+> Als u [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, moet u `--enable-hierarchical-namespace true` opnemen in deze lijst met para meters. 
 
 Als u een v2-opslag account voor algemeen gebruik met een andere replicatie optie wilt maken, vervangt u de gewenste waarde in de onderstaande tabel voor de **SKU** -para meter.
 

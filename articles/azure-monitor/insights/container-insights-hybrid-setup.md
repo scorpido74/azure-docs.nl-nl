@@ -2,13 +2,13 @@
 title: Hybride Kubernetes-clusters met Azure Monitor voor containers configureren | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers kunt configureren voor het bewaken van Kubernetes-clusters die worden gehost op Azure Stack of een andere omgeving.
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: d6218550f4b5a3a59b4addc69b19ff11e282d45a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/24/2020
+ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977744"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759889"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hybride Kubernetes-clusters met Azure Monitor voor containers configureren
 
@@ -39,7 +39,7 @@ Voordat u begint, zorg ervoor dat u het volgende hebt:
     |*.blob.core.windows.net |Poort 443 |  
     |*. dc.services.visualstudio.com |Poort 443 |
 
-* Voor de container agent moet `cAdvisor port: 10255` worden geopend op alle knoop punten in het cluster om metrische gegevens over prestaties te verzamelen.
+* De container agent vereist dat Kubelet `cAdvisor secure port: 10250` of `unsecure port :10255` worden geopend op alle knoop punten in het cluster om metrische gegevens over prestaties te verzamelen. U wordt aangeraden `secure port: 10250` te configureren op de cAdvisor van Kubelet als deze nog niet is geconfigureerd.
 
 * Voor de container agent moeten de volgende omgevings variabelen worden opgegeven in de container om te communiceren met de Kubernetes API-service binnen het cluster om de `KUBERNETES_SERVICE_HOST` en `KUBERNETES_PORT_443_TCP_PORT`van de inventaris gegevens te verzamelen.
 
@@ -290,12 +290,12 @@ Als er een fout optreedt bij het inschakelen van bewaking voor uw hybride Kubern
 * De OmsAgent Health-Service wordt uitgevoerd
 * De Log Analytics werk ruimte-id en-sleutel die zijn geconfigureerd op de container agent komen overeen met de werk ruimte waarin het inzicht is geconfigureerd.
 * Valideer alle Linux worker-knoop punten hebben `kubernetes.io/role=agent` label voor het plannen van RS pod. Als deze niet bestaat, voegt u deze toe.
-* Valideer `cAdvisor port: 10255` is geopend op alle knoop punten in het cluster.
+* Valideer `cAdvisor secure port:10250` of `unsecure port: 10255` wordt geopend op alle knoop punten in het cluster.
 
 Als u wilt uitvoeren met Azure PowerShell, gebruikt u de volgende opdrachten in de map die het script bevat:
 
 ```powershell
-.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile> -clusterContextInKubeconfig <clusterContext>
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

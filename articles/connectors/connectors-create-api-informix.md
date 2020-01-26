@@ -9,12 +9,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
-ms.openlocfilehash: ebedb68f8826642437f53e5c5fa8cd0843e7c20e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665828"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757965"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>IBM Informix-database bronnen beheren met behulp van Azure Logic Apps
 
@@ -83,7 +83,7 @@ In dit onderwerp wordt beschreven hoe u de connector in een logische app kunt ge
    | Verbindingsnaam | `name` | Ja | `informix-demo-connection` | De naam die moet worden gebruikt voor de verbinding met uw Informix-data base |
    | server | `server` | Ja | -Cloud: `informixdemo.cloudapp.net:9089` <br>-On-premises: `informixdemo:9089` | Het TCP/IP-adres of de alias in de IPv4-of IPv6-indeling, gevolgd door een dubbele punt en een TCP/IP-poort nummer |
    | Database | `database` | Ja | `nwind` | De DRDA relationele database naam (RDBNAM) of de naam van de Informix-data base (dbname). Informix accepteert een teken reeks van 128 bytes. |
-   | Authentication | `authentication` | Alleen on-premises | **Basic** of **Windows** (Kerberos) | Het verificatie type dat vereist is voor uw Informix-data base. Deze eigenschap wordt alleen weer gegeven wanneer u **verbinding maken via een on-premises gegevens gateway**selecteert. |
+   | Verificatie | `authentication` | Alleen on-premises | **Basic** of **Windows** (Kerberos) | Het verificatie type dat vereist is voor uw Informix-data base. Deze eigenschap wordt alleen weer gegeven wanneer u **verbinding maken via een on-premises gegevens gateway**selecteert. |
    | Gebruikersnaam | `username` | Nee | <*Data Base-gebruikers naam*> | Een gebruikers naam voor de data base |
    | Wachtwoord | `password` | Nee | <*Data Base-wacht woord*> | Een wacht woord voor de data base |
    | Gateway | `gateway` | Alleen on-premises | -> *Azure-abonnement* <<br>-<*Azure-on-premises-data gateway-bron*> | Het Azure-abonnement en de Azure-resource naam voor de on-premises gegevens gateway die u hebt gemaakt in de Azure Portal. De eigenschap **Gateway** en subeigenschappen worden alleen weer gegeven wanneer u **verbinding maken via een on-premises gegevens gateway**selecteert. |
@@ -117,7 +117,7 @@ In dit onderwerp wordt beschreven hoe u de connector in een logische app kunt ge
 
 1. Als u de invoer wilt weer geven, selecteert u onder **invoer koppeling**de URL-koppeling. Als u de uitvoer wilt weer geven, selecteert u onder **uitvoer** koppeling de koppeling URL. Hier volgen enkele voor beelden van uitvoer:
 
-   * **Tabellen ophalen** toont een lijst met tabellen:
+   * **Get_tables** ziet u een lijst met tabellen:
 
      ![Uitvoer van de actie ' Tables ophalen '](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
 

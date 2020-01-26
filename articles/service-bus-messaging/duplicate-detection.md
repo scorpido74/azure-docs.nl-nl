@@ -1,6 +1,6 @@
 ---
 title: Dubbele bericht detectie Azure Service Bus | Microsoft Docs
-description: Dubbele Service Bus berichten detecteren
+description: In dit artikel wordt uitgelegd hoe u dubbele items kunt detecteren in Azure Service Bus berichten. Het duplicaat bericht kan worden genegeerd en verwijderd.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 4cd5fc50c35f4c4adb63c9d91af05dcf8b2dda40
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c109b9fd310a09e5eb4c6d18cc3536e4d8069c0b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924641"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760365"
 ---
 # <a name="duplicate-detection"></a>Detectie van duplicaten
 
@@ -39,7 +39,7 @@ De *MessageId* kan altijd een bepaalde GUID zijn, maar het verankeren van de id 
 > [!NOTE]
 > Als de duplicaten detectie is ingeschakeld en de sessie-ID of partitie sleutel niet zijn ingesteld, wordt de bericht-ID gebruikt als de partitie sleutel. Als de bericht-ID ook niet is ingesteld, genereert .NET-en AMQP-bibliotheken automatisch een bericht-ID voor het bericht. Zie het [gebruik van partitie sleutels](service-bus-partitioning.md#use-of-partition-keys)voor meer informatie.
 
-## <a name="enable-duplicate-detection"></a>Detectie van duplicaten inschakelen
+## <a name="enable-duplicate-detection"></a>Duplicaten detectie inschakelen
 
 In de portal is de functie ingeschakeld tijdens het maken van de entiteit met het selectie vakje **Duplicaten detectie inschakelen** , die standaard uitgeschakeld is. De instelling voor het maken van nieuwe onderwerpen is gelijkwaardig.
 

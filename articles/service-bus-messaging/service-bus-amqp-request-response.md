@@ -1,6 +1,6 @@
 ---
 title: AMQP 1,0-aanvraag/antwoord-bewerkingen in Azure Service Bus
-description: Lijst met Microsoft Azure Service Bus bewerkingen op basis van aanvraag/antwoord.
+description: In dit artikel wordt de lijst met AMQP bewerkingen op aanvraag/antwoord in Microsoft Azure Service Bus gedefinieerd.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/23/2020
 ms.author: aschhab
-ms.openlocfilehash: b549aee197f35df29a982a1a86644c46b9061c63
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 338b411eade35fa357f64131c64b8ef2034c92b0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785281"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761080"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1,0 in Microsoft Azure Service Bus: bewerkingen op basis van aanvraag-respons
 
 In dit artikel wordt de lijst met Microsoft Azure Service Bus bewerkingen op aanvraag/antwoord gedefinieerd. Deze informatie is gebaseerd op het werk concept AMQP-beheer versie 1,0.  
   
-Voor een gedetailleerde AMQP 1,0-protocol handleiding op Wire-niveau, waarin wordt uitgelegd hoe Service Bus implementeert en bouwt op de OASIS AMQP Technical Specification, raadpleegt u de [AMQP 1,0 in azure service bus en Event hubs-protocol handleiding][amqp 1.0-protocolhandleiding]Guide.  
+Zie voor een gedetailleerde wire-niveau AMQP 1.0-protocol handleiding, waarin wordt uitgelegd hoe Service Bus implementeert en bouwt voort op de technische OASIS AMQP-specificatie, de [AMQP 1.0 in Azure Service Bus en Event Hubs protocol handleiding][amqp 1.0-protocolhandleiding].  
   
 ## <a name="concepts"></a>Concepten  
   
@@ -133,7 +133,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:renew-lock`|  
+|operation|string|Ja|`com.microsoft:renew-lock`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
  De hoofd tekst van het aanvraag bericht moet bestaan uit een AMQP sectie met een kaart met de volgende vermeldingen:  
@@ -171,14 +171,14 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:peek-message`|  
+|operation|string|Ja|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|`from-sequence-number`|omvang|Ja|Volg nummer waarvan u wilt beginnen met bekijken.|  
+|`from-sequence-number`|lang|Ja|Volg nummer waarvan u wilt beginnen met bekijken.|  
 |`message-count`|int|Ja|Het maximum aantal berichten dat moet worden weer geven.|  
   
 #### <a name="response"></a>Antwoord  
@@ -212,7 +212,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:schedule-message`|  
+|operation|string|Ja|`com.microsoft:schedule-message`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -225,7 +225,7 @@ De toewijzing die een bericht weergeeft, moet de volgende vermeldingen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|bericht-id|string|Ja|`amqpMessage.Properties.MessageId` als teken reeks|  
+|message-id|string|Ja|`amqpMessage.Properties.MessageId` als teken reeks|  
 |sessie-id|string|Nee|`amqpMessage.Properties.GroupId as string`|  
 |partitie sleutel|string|Nee|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
 |via-Partition-sleutel|string|Nee|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
@@ -256,7 +256,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:cancel-scheduled-message`|  
+|operation|string|Ja|`com.microsoft:cancel-scheduled-message`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -286,7 +286,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:renew-session-lock`|  
+|operation|string|Ja|`com.microsoft:renew-session-lock`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -308,7 +308,7 @@ De hoofd tekst van het antwoord moet bestaan uit een **AMQP** sectie met een kaa
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|verval|tijdstempel|Ja|Nieuwe verval datum.|  
+|Verval|tijdstempel|Ja|Nieuwe verval datum.|  
   
 ### <a name="peek-session-message"></a>Sessie bericht bekijken  
 
@@ -320,14 +320,14 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:peek-message`|  
+|operation|string|Ja|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|van-Sequence-Number|omvang|Ja|Volg nummer waarvan u wilt beginnen met bekijken.|  
+|van-Sequence-Number|lang|Ja|Volg nummer waarvan u wilt beginnen met bekijken.|  
 |bericht-aantal|int|Ja|Het maximum aantal berichten dat moet worden weer geven.|  
 |sessie-id|string|Ja|Sessie-ID.|  
   
@@ -362,7 +362,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:set-session-state`|  
+|operation|string|Ja|`com.microsoft:set-session-state`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -391,7 +391,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:get-session-state`|  
+|operation|string|Ja|`com.microsoft:get-session-state`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -425,7 +425,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:get-message-sessions`|  
+|operation|string|Ja|`com.microsoft:get-message-sessions`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -462,7 +462,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:add-rule`|  
+|operation|string|Ja|`com.microsoft:add-rule`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -484,27 +484,27 @@ De SQL-filter toewijzing moet de volgende vermeldingen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|expressie|string|Ja|Expressie voor SQL-filter.|  
+|expression|string|Ja|Expressie voor SQL-filter.|  
   
 De **correlatie filter** toewijzing moet ten minste één van de volgende vermeldingen bevatten:  
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |correlatie-id|string|Nee||  
-|bericht-id|string|Nee||  
+|message-id|string|Nee||  
 |tot|string|Nee||  
-|beantwoorden|string|Nee||  
+|reply-to|string|Nee||  
 |label|string|Nee||  
 |sessie-id|string|Nee||  
 |antwoord-to-Session-ID|string|Nee||  
-|inhouds type|string|Nee||  
+|content-type|string|Nee||  
 |properties|map|Nee|Wordt toegewezen aan Service Bus [BrokeredMessage. Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).|  
   
 De toewijzing **SQL-regel-Action** moet de volgende vermeldingen bevatten:  
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|expressie|string|Ja|SQL-actie-expressie.|  
+|expression|string|Ja|SQL-actie-expressie.|  
   
 #### <a name="response"></a>Antwoord  
 
@@ -523,7 +523,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:remove-rule`|  
+|operation|string|Ja|`com.microsoft:remove-rule`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -549,7 +549,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
 
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:enumerate-rules`|  
+|operation|string|Ja|`com.microsoft:enumerate-rules`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
 
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -604,11 +604,11 @@ Elk toewijzings item in de matrix bevat de volgende eigenschappen:
 | 0 | string | Correlatie-id |
 | 1 | string | Bericht-ID |
 | 2 | string | Tot |
-| 3 | string | Beantwoorden |
+| 3 | string | Antwoorden op |
 | 4 | string | Label |
 | 5 | string | Sessie-id |
 | 6 | string | Antwoord op sessie-ID|
-| 7 | string | Inhouds type |
+| 7 | string | Inhoudstype |
 | 8 | Kaart | Toewijzing van door toepassing gedefinieerde eigenschappen |
 
 `ruleAction` kan een van de volgende typen zijn:
@@ -632,7 +632,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:receive-by-sequence-number`|  
+|operation|string|Ja|`com.microsoft:receive-by-sequence-number`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
@@ -674,14 +674,14 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Schijf|string|Ja|`com.microsoft:update-disposition`|  
+|operation|string|Ja|`com.microsoft:update-disposition`|  
 |`com.microsoft:server-timeout`|uint|Nee|Time-out van bewerking server in milliseconden.|  
   
 De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
   
 |Sleutel|Waardetype|Verplicht|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|toestand: status|string|Ja|gevuld<br /><br /> geannuleerd<br /><br /> Gebroken|  
+|toestand: status|string|Ja|gevuld<br /><br /> geannuleerd<br /><br /> gebroken|  
 |Lock-tokens|matrix van uuid|Ja|Tokens voor bericht vergrendeling om de status van de toestand bij te werken.|  
 |deadletter-reden|string|Nee|Kan worden ingesteld als de status van de bestemming is ingesteld op **opgeschort**.|  
 |deadletter-beschrijving|string|Nee|Kan worden ingesteld als de status van de bestemming is ingesteld op **opgeschort**.|  

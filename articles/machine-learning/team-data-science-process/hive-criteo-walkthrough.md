@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 04bc29fb8a89f6e863f7c009e5299d1c702bf976
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 218fb96f6960e194f0fc4a4a3a3e603388b961c8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721401"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760807"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Het proces voor team gegevens wetenschap in actie-een Azure HDInsight Hadoop cluster op een gegevensset van 1 TB gebruiken
 
@@ -56,7 +56,8 @@ Twee voorbeeld voorspelling problemen worden in dit scenario behandeld:
 2. **Regressie**: voorspelt de kans op een ad-klik van functies voor gebruikers.
 
 ## <a name="setup"></a>Instellen van een HDInsight Hadoop-cluster voor datatechnologie
-**Opmerking:** Deze stap is doorgaans een **beheer** taak.
+> [!NOTE]
+> Deze stap is doorgaans een **beheer** taak.
 
 Instellen van uw Azure Data Science-omgeving voor het bouwen van voorspellende analyseoplossingen met HDInsight-clusters in drie stappen:
 
@@ -107,10 +108,8 @@ Voor het maken van Hive-tabellen voor onze gegevensset Criteo, opent u de ***Had
 > [!NOTE]
 > Voor het uitvoeren van een Hive-query, kan een altijd gebruik van de volgende opdrachten:
 >
->
-
-        cd %hive_home%\bin
-        hive
+>        cd %hive_home%\bin
+>        hive
 
 Nadat de REPL Hive wordt weergegeven met een ' hive > "Meld u, gewoon knippen en plakt u de query voor het uitvoeren van deze.
 

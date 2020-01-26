@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ba7ba4be103beb494c31a844d1871c22c25b8c6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422346"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756297"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -50,7 +50,7 @@ Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatis
 >Raadpleeg [dit artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) voor meer informatie over het upgraden van Azure AD Connect naar de nieuwste versie.
 
 ## <a name="14380"></a>1.4.38.0
-### <a name="release-status"></a>Status van de release
+### <a name="release-status"></a>Release status
 12/9/2019: vrijgeven voor downloaden. Niet beschikbaar via automatische upgrade.
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 - De wachtwoord hash-synchronisatie voor Azure AD Domain Services is bijgewerkt naar een juiste account voor opvulling in Kerberos-hashes.  Dit biedt een prestatie verbetering tijdens wachtwoord synchronisatie van AAD naar Azure AD Domain Services.
@@ -64,7 +64,7 @@ Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatis
 - Er is een oplossing uitgevoerd om DSSO tegelijkertijd in alle forests in te scha kelen via de AADConnect-gebruikers interface
 
 ## <a name="14320"></a>1.4.32.0
-### <a name="release-status"></a>Status van de release
+### <a name="release-status"></a>Release status
 11/08/2019: uitgebracht voor downloaden. Niet beschikbaar via automatische upgrade.
 
 >[!IMPORTANT]
@@ -76,7 +76,7 @@ Houd er rekening mee dat deze regel wijziging ertoe kan leiden dat er verouderde
 
 ## <a name="14250"></a>1.4.25.0
 
-### <a name="release-status"></a>Status van de release
+### <a name="release-status"></a>Release status
 9/28/2019: vrijgegeven voor automatische upgrade om tenants te selecteren. Niet beschikbaar voor downloaden.
 
 Deze versie corrigeert een bug waarbij sommige servers die automatisch zijn bijgewerkt van een eerdere versie naar 1.4.18.0 en problemen ondervonden met selfservice voor wachtwoord herstel (SSPR) en het terugschrijven van wacht woorden.
@@ -84,6 +84,8 @@ Deze versie corrigeert een bug waarbij sommige servers die automatisch zijn bijg
 ### <a name="fixed-issues"></a>Problemen opgelost
 
 Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naar versie 1.4.18.0, de selfservice voor wachtwoord herstel en het terugschrijven van wacht woorden niet opnieuw inschakelen nadat de upgrade is voltooid. Deze automatische upgrade release corrigeert die de selfservice voor het opnieuw instellen van wacht woorden en het terugschrijven van wacht woorden opnieuw mogelijk maakt.
+
+Er is een fout opgelost in het compressie hulpprogramma synchronisatie fouten dat geen surrogaat tekens goed afhandelen.
 
 ## <a name="14180"></a>1.4.18.0
 
@@ -94,7 +96,7 @@ Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naa
 >Met deze versie van Azure AD Connect kunnen sommige klanten sommige of alle Windows-apparaten zien, verdwijnen van Azure AD. Dit is geen oorzaak van bezorgdheid, omdat deze apparaat-id's niet worden gebruikt door Azure AD tijdens de autorisatie van voorwaardelijke toegang. Zie [Wat is Azure AD Connect 1.4. xx. x-apparaat disappearnce](reference-connect-device-disappearance.md) voor meer informatie.
 
 
-### <a name="release-status"></a>Status van de release
+### <a name="release-status"></a>Release status
 9/25/2019: alleen uitgegeven voor automatische upgrades.
 
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
@@ -143,7 +145,7 @@ Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naa
 >2. Voer `Import-Module "ADSync"` uit.
 >3. Voer `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` uit.
  
-### <a name="release-status"></a>Status van de release 
+### <a name="release-status"></a>Release status 
 
 05/14/2019: uitgebracht voor downloaden
 
@@ -153,7 +155,7 @@ Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naa
 
 ## <a name="13200"></a>1.3.20.0 
 
-### <a name="release-status"></a>Status van de release 
+### <a name="release-status"></a>Release status 
 
 04/24/2019: uitgebracht voor downloaden
 
@@ -200,7 +202,7 @@ Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naa
 
 ## <a name="12700"></a>1.2.70.0
 
-### <a name="release-status"></a>Status van de release
+### <a name="release-status"></a>Release status
 
 12/18/2018: uitgebracht voor downloaden
 
@@ -211,7 +213,7 @@ Met deze build worden de niet-standaard connectors (bijvoorbeeld generieke LDAP-
 
 ## <a name="12690"></a>1.2.69.0
 
-### <a name="release-status"></a>Status van de release
+### <a name="release-status"></a>Release status
 12/11/2018: uitgebracht voor downloaden
 
 ### <a name="fixed-issues"></a>Problemen opgelost
@@ -223,7 +225,7 @@ Als een build met de bijgewerkte functionaliteit voor de opties voor apparaten i
 
 ## <a name="12680"></a>1.2.68.0
 
-### <a name="release-status"></a>Status van de release 
+### <a name="release-status"></a>Release status 
 
 11/30/2018: uitgebracht voor downloaden
 
@@ -235,7 +237,7 @@ Met deze hotfix-build wordt een conflict opgelost waarbij een verificatie fout k
 
 ## <a name="12670"></a>1.2.67.0
 
-### <a name="release-status"></a>Status van de release 
+### <a name="release-status"></a>Release status 
 
 11/19/2018: uitgebracht voor downloaden
 
@@ -245,7 +247,7 @@ Met deze hotfix-build wordt een regressie in de vorige build opgelost waarbij he
 
 ## <a name="12650"></a>1.2.65.0 
 
-### <a name="release-status"></a>Status van de release 
+### <a name="release-status"></a>Release status 
 
 10/25/2018: uitgebracht voor downloaden
 
@@ -285,7 +287,7 @@ Azure AD Connect upgrade mislukt als SQL AlwaysOn-Beschik baarheid is geconfigur
 
 ## <a name="118800"></a>1.1.880.0
 
-### <a name="release-status"></a>Status van de release
+### <a name="release-status"></a>Release status
 
 8/21/2018: uitgebracht voor down loads en automatische upgrades. 
 
@@ -324,7 +326,7 @@ Azure AD Connect upgrade mislukt als SQL AlwaysOn-Beschik baarheid is geconfigur
 
 ## <a name="118190"></a>1.1.819.0
 
-### <a name="release-status"></a>Status van de release
+### <a name="release-status"></a>Release status
 
 5/14/2018: uitgebracht voor automatische upgrade en downloaden.
 
@@ -390,7 +392,7 @@ Status 4/12/2018: alleen beschikbaar voor downloaden
 #### <a name="fixed-issues"></a>Problemen opgelost
 Correctie van een probleem was automatische Azure-exemplaar detectie voor China-tenants af en toe mislukt.  
 
-### <a name="ad-fs-management"></a>AD FS-Management
+### <a name="ad-fs-management"></a>AD FS beheer
 #### <a name="fixed-issues"></a>Problemen opgelost
 
 Er is een probleem opgetreden in de logica voor het opnieuw proberen van de configuratie, wat zou leiden tot een ArgumentException dat er al een item met dezelfde sleutel is toegevoegd.  Dit kan leiden tot het mislukken van alle pogingen.
@@ -494,11 +496,11 @@ Vergrendel de toegang tot het AD DS-account door de volgende machtigings wijzigi
 *   Verwijder alle Ace's van het specifieke object, met uitzonde ring van Ace's die specifiek voor zichzelf zijn. We willen de standaard machtigingen intact houden wanneer het gaat om zelf.
 *   Wijs deze specifieke machtigingen toe:
 
-Type     | Name                          | Toegang               | Is van toepassing op
+Type     | Name                          | Toegang               | Van toepassing op
 ---------|-------------------------------|----------------------|--------------|
-Toestaan    | SYSTEEM                        | Volledig beheer         | Dit object  |
-Toestaan    | Ondernemingsadministrators             | Volledig beheer         | Dit object  |
-Toestaan    | Domeinadministrators                 | Volledig beheer         | Dit object  |
+Toestaan    | OPGEHAALD                        | Volledig beheer         | Dit object  |
+Toestaan    | Ondernemings Administrators             | Volledig beheer         | Dit object  |
+Toestaan    | Domein Administrators                 | Volledig beheer         | Dit object  |
 Toestaan    | Beheerders                | Volledig beheer         | Dit object  |
 Toestaan    | Ondernemings domein controllers | Inhoud weer geven        | Dit object  |
 Toestaan    | Ondernemings domein controllers | Alle eigenschappen lezen  | Dit object  |
@@ -606,7 +608,7 @@ Status: oktober 19 2017
 
 * Als u eerder de synchronisatie van wacht woord-Hashs probeerde in te scha kelen, controleert Azure AD Connect niet of het AD-Connector account de vereiste machtigingen heeft voor het synchroniseren van wacht woord-hashes uit on-premises AD. Azure AD Connect wizard wordt nu geverifieerd en u wordt gewaarschuwd als het AD Connector-account niet over voldoende machtigingen beschikt.
 
-### <a name="ad-fs-management"></a>AD FS-Management
+### <a name="ad-fs-management"></a>AD FS beheer
 #### <a name="fixed-issue"></a>Probleem opgelost
 * Er is een probleem opgelost dat betrekking heeft op het gebruik van de functie [MS-DS-ConsistencyGuid als bron anker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) . Dit probleem is van invloed op klanten die Federatie hebben geconfigureerd *met AD FS* als de aanmeldings methode voor gebruikers. Wanneer u de taak *bron anker configureren* in de wizard uitvoert, schakelt Azure AD Connect over naar het bron kenmerk * MS-DS-ConsistencyGuid als broncode voor immutableId. Als onderdeel van deze wijziging Azure AD Connect probeert de claim regels voor ImmutableId in AD FS bij te werken. Deze stap is echter mislukt omdat Azure AD Connect geen beheerders referenties hebt vereist voor het configureren van AD FS. Met deze oplossing wordt Azure AD Connect nu gevraagd om de beheerders referenties voor AD FS in te voeren wanneer u de taak *bron anker configureren* uitvoert.
 
@@ -643,12 +645,12 @@ Status: september 05 2017
 * Wanneer Azure AD Connect-wachtwoord synchronisatie agent wordt gestart, wordt geprobeerd verbinding te maken met een bekend Azure AD-eind punt voor wachtwoord synchronisatie. Wanneer de verbinding is geslaagd, wordt deze omgeleid naar een regio-specifiek eind punt. Voorheen slaat de wachtwoord synchronisatie agent het regio-specifieke eind punt op in het cache geheugen totdat het opnieuw wordt gestart. Nu wordt de cache door de agent gewist en wordt opnieuw geprobeerd met het bekende eind punt als er een verbindings probleem met het regio-specifieke eind punt wordt aangetroffen. Met deze wijziging zorgt u ervoor dat wachtwoord synchronisatie een failover naar een ander regio-specifiek eind punt kan hebben wanneer het in de cache opgeslagen regio-specifieke eind punt niet meer beschikbaar is.
 * Voor het synchroniseren van wijzigingen vanuit een on-premises AD-forest is een AD DS-account vereist. U kunt (i) zelf het AD DS-account maken en de referentie voor Azure AD Connect opgeven, of (II) Geef de referenties van een ondernemings beheerder op en laat Azure AD Connect het AD DS-account voor u maken. Voorheen, (i) is de standaard optie in de wizard Azure AD Connect. Nu is (II) de standaard optie.
 
-### <a name="azure-ad-connect-health"></a>Azure AD Connect Health (Engelstalig)
+### <a name="azure-ad-connect-health"></a>Azure AD Connect Health
 
 #### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 * Er is ondersteuning toegevoegd voor Microsoft Azure Government Cloud en Microsoft Cloud Duitsland.
 
-### <a name="ad-fs-management"></a>AD FS-Management
+### <a name="ad-fs-management"></a>AD FS beheer
 #### <a name="fixed-issues"></a>Problemen opgelost
 * De initialisatie-ADSyncNGCKeysWriteBack-cmdlet in de AD prep Power shell-module heeft onjuiste Acl's toegepast op de apparaatregistratie en zou daarom alleen bestaande machtigingen overnemen.  Dit is bijgewerkt, zodat het synchronisatie service account de juiste machtigingen heeft.
 

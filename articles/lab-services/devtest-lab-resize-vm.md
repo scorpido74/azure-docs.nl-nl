@@ -1,6 +1,6 @@
 ---
-title: Formaat van een virtuele machine in een lab in Azure DevTest Labs | Microsoft Docs
-description: Meer informatie over het formaat van een virtuele machine in Azure DevTest Labs
+title: Het formaat van een virtuele machine in een lab in Azure DevTest Labs wijzigen
+description: Meer informatie over het wijzigen van de grootte van een virtuele machine (VM) in Azure DevTest Labs op basis van uw behoeften voor CPU-, netwerk-of schijf prestaties.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,44 +12,44 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: a0bc618a9c0a02aae884d8be359df6bdbf4c0d2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf7c425766a97aaa1d143133f04502a0aa3c36cb
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60868065"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756174"
 ---
-# <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Formaat van een virtuele machine in een lab in Azure DevTest Labs
-Een van de belangrijke functies van virtuele machines van Azure is dat Hiermee kunt u de grootte van een virtuele machine (VM) op basis van uw behoeften voor CPU, netwerk en prestaties van de schijf wijzigen. Azure DevTest Labs biedt ondersteuning voor deze functie voor virtuele machines in een testomgeving nu. De functie formaat voldoet aan het lab-beleid voor toegestane VM-grootten in de testomgeving. Dat wil zeggen, kunt u de grootte van een virtuele machine alleen toegestane grootten in de testomgeving. 
+# <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Het formaat van een virtuele machine in een lab in Azure DevTest Labs wijzigen
+Een van de belang rijke functies van virtuele Azure-machines is dat hiermee de grootte van een virtuele machine (VM) kan worden gewijzigd op basis van uw behoeften voor CPU-, netwerk-of schijf prestaties. Azure DevTest Labs ondersteunt deze functie nu voor Vm's in een lab. De functie voor het wijzigen van het formaat voldoet aan het lab-beleid voor toegestane VM-grootten in het lab. Dat wil zeggen dat u de grootte van een virtuele machine kunt wijzigen in alleen toegestane grootten in het lab. 
 
 
-## <a name="steps-to-resize-a-vm-in-a-lab"></a>Stappen voor het formaat van een virtuele machine in een testomgeving 
-Als u wilt het formaat van een virtuele machine in een lab in Azure DevTest Labs, moet u de volgende stappen uitvoeren: 
+## <a name="steps-to-resize-a-vm-in-a-lab"></a>Stappen voor het wijzigen van de grootte van een virtuele machine in een Lab 
+Voer de volgende stappen uit om de grootte van een virtuele machine in een lab in Azure DevTest Labs te wijzigen: 
 
 > [!NOTE]
-> Als u verbonden bent met de virtuele machine via Extern bureaublad-sessiehost (RDP), sla uw werk en verbreken van de virtuele machine voordat u het formaat.
+> Als u verbinding hebt met de virtuele machine via een extern bureau blad-sessie (RDP), slaat u uw werk op en verbreekt u de verbinding met de virtuele machine voordat u het formaat ervan wijzigt.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer **alle Services**, en selecteer vervolgens **DevTest Labs** in de lijst.
-3. Selecteer in de lijst met labs, de testomgeving met de virtuele machine die u wilt vergroten of verkleinen.  
-4. Selecteer in het linkerdeelvenster **mijn virtuele Machines**. 
-5. Selecteer in de lijst met virtuele machines, een virtuele machine.
-6. Selecteer **stoppen** op de werkbalk als de virtuele machine wordt uitgevoerd. Controleer de status van de bewerking in de **meldingen** venster. Wacht totdat de virtuele machine gestopt en sluit is de **meldingen** venster. 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
+3. Selecteer in de lijst met Labs het lab dat de virtuele machine bevat waarvan u de grootte wilt wijzigen.  
+4. Selecteer in het linkerdeel venster **mijn virtual machines**. 
+5. Selecteer een virtuele machine in de lijst met Vm's.
+6. Selecteer **stoppen** op de werk balk als de virtuele machine wordt uitgevoerd. Controleer de status van de bewerking in het venster **meldingen** . Wacht totdat de virtuele machine is gestopt en sluit het venster **meldingen** . 
 
     ![De virtuele machine stoppen](media/devtest-lab-resize-vm/stop-vm.png)
-1. Selecteer in de virtuele Machine-pagina voor uw virtuele machine, **grootte** onder **instellingen** in het menu links.
+1. Selecteer op de pagina virtuele machine voor uw VM de optie **grootte** onder **instellingen** in het menu links.
 
-    ![Grootte van menu](media/devtest-lab-resize-vm/size-menu.png)
-1. In de **Kies een grootte** bladeren en selecteer een grootte voor de virtuele machine en klikt u op **Selecteer**.     
-1. Controleer de status van de bewerking formaat wijzigen in de **meldingen** venster.
+    ![Menu grootte](media/devtest-lab-resize-vm/size-menu.png)
+1. Blader in het venster **een grootte kiezen** en selecteer een grootte voor de virtuele machine en klik op **selecteren**.     
+1. Controleer de status van de bewerking voor het wijzigen van de grootte in het venster **meldingen** .
 
-    ![Grootte van status](media/devtest-lab-resize-vm/resize-status.png)
-10. De grootte is gewijzigd na de bewerking is geslaagd, sluit de **meldingen** venster. 
-11. Selecteer **overzicht** in het menu aan de linkerkant en selecteer **opnieuw** op de werkbalk om het opnieuw opstarten van de virtuele machine. 
+    ![Status van formaat wijzigen](media/devtest-lab-resize-vm/resize-status.png)
+10. Nadat de grootte is gewijzigd, sluit u het venster **meldingen** . 
+11. Selecteer **overzicht** in het menu links en selecteer **opnieuw opstarten** op de werk balk om de virtuele machine opnieuw op te starten. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor gedetailleerde informatie over het formaat wijzigen-functie wordt ondersteund door virtuele machines van Azure, [vergroten of verkleinen van virtuele machines](https://azure.microsoft.com/blog/resize-virtual-machines/).
+Zie [grootte van virtuele machines aanpassen](https://azure.microsoft.com/blog/resize-virtual-machines/)voor meer informatie over de functie voor het wijzigen van het formaat dat door Azure virtual machines wordt ondersteund.
 
 

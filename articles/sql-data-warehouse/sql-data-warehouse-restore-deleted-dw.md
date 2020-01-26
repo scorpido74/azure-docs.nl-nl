@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cb09b4808bd6d59d2f70e85d204ab8451d501cee
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e508eff3b322b49a6dc50d818c8bcccc3e924ff2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692608"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759649"
 ---
 # <a name="restore-a-deleted-azure-sql-data-warehouse"></a>Een verwijderde Azure SQL Data Warehouse herstellen
 
@@ -26,22 +26,22 @@ In dit artikel leert u hoe u een verwijderde SQL Data Warehouse herstelt met beh
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Controleer de DTU-capaciteit.** Elk SQL Data Warehouse wordt gehost door een SQL-Server (bijvoorbeeld myserver.database.windows.net) met een standaard-DTU-quotum.  Controleer of de SQL-Server voldoende resterende DTU-quota heeft voor de data base die wordt hersteld. Zie [een wijziging in een DTU-quotum aanvragen][Request a DTU quota change]voor meer informatie over het berekenen van de benodigde DTU of om meer DTU aan te vragen.
+**Controleer de DTU-capaciteit.** Elk SQL Data Warehouse wordt gehost door een SQL-Server (bijvoorbeeld myserver.database.windows.net) met een standaard-DTU-quotum.  Controleer of de SQL-Server voldoende resterende DTU-quota heeft voor de data base die wordt hersteld. Zie [een wijziging in een DTU-quotum aanvragen](sql-data-warehouse-get-started-create-support-ticket.md)voor meer informatie over het berekenen van de benodigde DTU of om meer DTU aan te vragen.
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Een verwijderd Data Warehouse herstellen via Power shell
 
-Als u een verwijderde SQL Data Warehouse wilt herstellen, gebruikt u de cmdlet [Restore-AzSqlDatabase][Restore-AzSqlDatabase] . Als de bijbehorende logische server ook is verwijderd, kunt u dat data warehouse niet herstellen.
+Als u een verwijderde SQL Data Warehouse wilt herstellen, gebruikt u de cmdlet [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) . Als de bijbehorende logische server ook is verwijderd, kunt u dat data warehouse niet herstellen.
 
-1. Voordat u begint, moet u ervoor zorgen dat u [Azure PowerShell installeert][Install Azure PowerShell].
+1. Voordat u begint, moet u ervoor zorgen dat u [Azure PowerShell installeert](https://docs.microsoft.com/powershell/azure/overview).
 2. Open PowerShell.
 3. Maak verbinding met uw Azure-account en vermeld alle abonnementen die aan uw account zijn gekoppeld.
 4. Selecteer het abonnement dat het verwijderde data warehouse bevat dat moet worden hersteld.
 5. Het specifieke verwijderde data warehouse ophalen.
 6. Het verwijderde data warehouse herstellen
     1. Als u de verwijderde SQL Data Warehouse wilt herstellen naar een andere logische server, moet u de naam van de andere logische server opgeven.  Deze logische server kan zich ook in een andere resource groep en regio bevinden.
-    1. Als u wilt herstellen naar een ander abonnement, gebruikt u de knop [verplaatsen][Move] om de logische server naar een ander abonnement te verplaatsen.
+    1. Als u wilt herstellen naar een ander abonnement, gebruikt u de knop [verplaatsen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#use-the-portal) om de logische server naar een ander abonnement te verplaatsen.
 1. Controleer of het herstelde data warehouse online is.
-1. Nadat de herstel bewerking is voltooid, kunt u uw herstelde data warehouse configureren door [de data base na het herstel te configureren][Configure your database after recovery].
+1. Nadat de herstel bewerking is voltooid, kunt u uw herstelde data warehouse configureren door [de data base na het herstel te configureren](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -71,7 +71,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Een verwijderde data base herstellen met behulp van de Azure Portal
 
-1. Meld u aan bij de [Azure Portal][Azure portal].
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Ga naar de SQL-server waarop uw verwijderde data warehouse werd gehost.
 3. Selecteer het pictogram **Verwijderde data bases** in de inhouds opgave.
 
@@ -86,29 +86,5 @@ $RestoredDatabase.status
     ![Database naam opgeven](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een bestaand Data Warehouse herstellen][Restore an existing data warehouse]
-- [Herstellen vanuit een geografisch back-updata Warehouse][Restore from a geo-backup data warehouse]
-
-<!--Image references-->
-
-<!--Article references-->
-[Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
-[Request a DTU quota change]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[Install Azure PowerShell]: https://docs.microsoft.com/powershell/azure/overview
-[Overview]: ./sql-data-warehouse-restore-database-overview.md
-[Portal]: ./sql-data-warehouse-restore-database-portal.md
-[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST]: ./sql-data-warehouse-restore-database-rest-api.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[support ticket]: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket
-[Move]:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#use-the-portal
-[Restore an existing data warehouse]:./sql-data-warehouse-restore-active-paused-dw.md
-[Restore a deleted data warehouse]:./sql-data-warehouse-restore-deleted-dw.md
-[Restore from a geo-backup data warehouse]:./sql-data-warehouse-restore-from-geo-backup.md
-
-<!--MSDN references-->
-[Restore-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase
-
-<!--Other Web references-->
-[Azure Portal]: https://portal.azure.com/
+- [Een bestaand Data Warehouse herstellen](sql-data-warehouse-restore-active-paused-dw.md)
+- [Herstellen vanuit een geografisch back-updata Warehouse](sql-data-warehouse-restore-from-geo-backup.md)

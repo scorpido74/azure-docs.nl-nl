@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus bericht overdrachten, vergren delingen en afwikkeling | Microsoft Docs
-description: Overzicht van Service Bus bericht overdrachten en vereffenings bewerkingen
+title: Bericht overdrachten, vergren delingen en afwikkeling van Azure Service Bus
+description: Dit artikel bevat een overzicht van Azure Service Bus bericht overdrachten, vergrendelingen en vereffenings bewerkingen.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 01/24/2019
 ms.author: aschhab
-ms.openlocfilehash: 9aaada1ede8912b8b70f37c628ec918eca9be9d2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676269"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759275"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Berichten overdragen, vergrendelen en verwerken
 
@@ -34,7 +34,7 @@ Bij het gebruik van een van de ondersteunde Service Bus API-clients worden verze
 
 Als het bericht is geweigerd door Service Bus, bevat de weigering een fout indicator en tekst met een ' tracking-ID ' erin. De weigering bevat ook informatie over de vraag of de bewerking opnieuw kan worden uitgevoerd met een verwachte uitkomst. In de client wordt deze informatie omgezet in een uitzonde ring en verhoogd naar de aanroeper van de verzend bewerking. Als het bericht is geaccepteerd, wordt de bewerking op de achtergrond uitgevoerd.
 
-Bij gebruik van het AMQP-protocol, dat het exclusieve protocol voor de .NET Standard-client en de Java-client is, en [die een optie is voor de .NET Framework-client](service-bus-amqp-dotnet.md), worden bericht overdrachten en-afwikkelingen in de pipeline en volledig asynchroon uitgevoerd. u wordt aangeraden de asynchrone programmeer model-API-varianten te gebruiken.
+Bij gebruik van het AMQP-protocol, dat het exclusieve protocol voor de .NET Standard-client en de Java-client is en [die een optie is voor de .NET Framework-client](service-bus-amqp-dotnet.md), worden bericht overdrachten en-afwikkelingen in de pipeline en volledig asynchroon uitgevoerd en wordt aanbevolen dat u de asynchrone programmeer model-API varianten gebruikt.
 
 Een afzender kan meerdere berichten op de kabel snel achter elkaar plaatsen zonder te hoeven wachten op elk bericht dat moet worden bevestigd, zoals in andere gevallen het SBMP-protocol of met HTTP 1,1. Deze asynchrone verzend bewerkingen zijn voltooid als de respectieve berichten worden geaccepteerd en opgeslagen in gepartitioneerde entiteiten of wanneer de verzend bewerking naar verschillende entiteiten overlapt. De voltooiingen kunnen ook uit de oorspronkelijke verzend volgorde optreden.
 
@@ -116,13 +116,13 @@ De ontvangende client initieert de afwikkeling van een ontvangen bericht met een
 
 Wanneer de ontvangende client een bericht niet kan verwerken, maar wil dat het bericht opnieuw wordt bezorgd, kan het expliciet worden gevraagd of het bericht onmiddellijk moet worden vrijgegeven en ontgrendeld door het aanroepen van [Abandon](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) of kan niets doen en de vergren deling laten verlopen.
 
-Als een ontvangende client een bericht niet kan verwerken en weet dat het opnieuw verzenden van het bericht en het opnieuw proberen van de bewerking niet helpt, kan het bericht afwijzen, waardoor het wordt verplaatst naar de wachtrij voor onbestelbare berichten door [DeadLetter](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter)aan te roepen. Dit kan ook het instellen van een aangepaste eigenschap met een reden code die kan worden opgehaald met het bericht uit de wachtrij met onbestelbare berichten.
+Als een ontvangende client een bericht niet kan verwerken en weet dat het bericht opnieuw moet worden bezorgd en de bewerking opnieuw kan worden uitgevoerd, kan het bericht worden geweigerd, waardoor het wordt verplaatst naar de wachtrij voor onbestelbare berichten door [DeadLetter](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter)aan te roepen, waardoor ook een aangepaste eigenschap kan worden ingesteld, inclusief een reden code die kan worden opgehaald met het bericht uit de wachtrij voor onbestelbare berichten.
 
 Een speciaal geval van afwikkeling is uitstel, dat in een afzonderlijk artikel wordt besproken.
 
 De **volledige** -of **Deadletter** -bewerkingen en de **RenewLock** -bewerkingen kunnen mislukken als gevolg van netwerk problemen, als de vergren deling is verlopen of er andere service voorwaarden zijn die de trans actie verhinderen. In een van de laatste gevallen verzendt de service een negatieve bevestiging als een uitzonde ring op de API-clients. Als de reden een verbroken netwerk verbinding is, wordt de vergren deling verwijderd omdat Service Bus geen ondersteuning biedt voor het herstellen van bestaande AMQP-koppelingen op een andere verbinding.
 
-Als **volt ooien** mislukt. dit gebeurt doorgaans aan het einde van de verwerking van berichten. in sommige gevallen kan de ontvangende toepassing bepalen of het de status van het werk behoudt en negeert hetzelfde bericht wanneer het wordt geleverd. een tweede keer, of het tosses van het werk resultaat en nieuwe pogingen wanneer het bericht opnieuw wordt bezorgd.
+Als **volt ooien** mislukt. dit gebeurt doorgaans aan het eind van de verwerking van berichten en in sommige gevallen na de verwerking van het werk, kan de ontvangende toepassing beslissen of de status van het werk wordt behouden en dat hetzelfde bericht wordt genegeerd wanneer het een tweede keer wordt geleverd, of dat er een nieuwe poging wordt gedaan om het werk resultaat te tosses en opnieuw te proberen wanneer het bericht opnieuw wordt bezorgd.
 
 Het gebruikelijke mechanisme voor het identificeren van dubbele bericht leveringen is door het controleren van de bericht-id, die door de afzender kan worden ingesteld op een unieke waarde, mogelijk afgestemd op een id van het oorspronkelijke proces. Met een job scheduler zou de bericht-id waarschijnlijk worden ingesteld op de id van de taak die wordt toegewezen aan een werk nemer met de opgegeven werk nemer. de werk nemer negeert het tweede exemplaar van de taak toewijzing als deze taak al is voltooid.
 

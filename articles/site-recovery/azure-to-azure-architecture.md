@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/23/2020
 ms.author: raynew
-ms.openlocfilehash: e5fdf0a14586a0a2ea97d222f4be481e8fe31e51
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 852059317c45dec4885b3f56de5617695d82e1e8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754517"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759803"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgevallen van Azure naar Azure
 
@@ -63,7 +63,7 @@ U kunt doel resources als volgt beheren:
 
 Wanneer u Azure VM-replicatie inschakelt, Site Recovery standaard een nieuw replicatie beleid maken met de standaard instellingen in de tabel.
 
-**Beleidsinstelling** | **Details** | **Standaard**
+**Beleids instelling** | **Details** | **Standaard**
 --- | --- | ---
 **Bewaar periode van het herstel punt** | Hiermee geeft u op hoelang Site Recovery herstel punten bewaard | 24 uur
 **Frequentie van de app-consistente moment opname** | Hoe vaak Site Recovery een app-consistente moment opname gebruikt. | Elke vier uur
@@ -80,7 +80,7 @@ Als u wilt dat Vm's samen worden gerepliceerd en gedeelde crash-consistente en t
 
 
 
-## <a name="snapshots-and-recovery-points"></a>Momentopnamen en herstelpunten
+## <a name="snapshots-and-recovery-points"></a>Moment opnamen en herstel punten
 
 Herstel punten worden gemaakt op basis van moment opnamen van VM-schijven die op een bepaald moment worden uitgevoerd. Wanneer u een failover voor een virtuele machine doorvoert, gebruikt u een herstel punt om de virtuele machine op de doel locatie te herstellen.
 
@@ -146,7 +146,7 @@ Details van de vereisten voor netwerk connectiviteit vindt u in het [technisch d
 **Budgetoverboekingsregel** |  **Details** | **Servicetag**
 --- | --- | --- 
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met opslag accounts in de bron regio | Opslagpad.\<regio-naam >
-HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Active Directory (Azure AD).<br/><br/> Als Azure AD-adressen in de toekomst worden toegevoegd, moet u nieuwe NSG-regels (netwerk beveiligings groep) maken.  | AzureActiveDirectory
+HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Active Directory (Azure AD)  | AzureActiveDirectory
 HTTPS-uitgaand toestaan: poort 443 | Sta bereiken toe die overeenkomen met de hub van gebeurtenissen in de doel regio. | EventsHub.\<regio-naam >
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Site Recovery  | AzureSiteRecovery
 
@@ -155,7 +155,7 @@ HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azur
 **Budgetoverboekingsregel** |  **Details** | **Servicetag**
 --- | --- | --- 
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met opslag accounts in de doel regio | Opslagpad.\<regio-naam >
-HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure AD.<br/><br/> Als Azure AD-adressen in de toekomst worden toegevoegd, moet u nieuwe NSG-regels maken.  | AzureActiveDirectory
+HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure AD  | AzureActiveDirectory
 HTTPS-uitgaand toestaan: poort 443 | Sta bereiken toe die overeenkomen met de hub van gebeurtenissen in de bron regio. | EventsHub.\<regio-naam >
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Site Recovery  | AzureSiteRecovery
 

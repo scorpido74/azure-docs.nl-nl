@@ -1,5 +1,5 @@
 ---
-title: Gegevens stromen voor Parameterizing-toewijzing
+title: Toewijzingsgegevensstromen parameteriseren
 description: Meer informatie over het para meters van een toewijzings gegevens stroom van data factory-pijp lijnen
 author: kromerm
 ms.author: makromer
@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: c589cfeab7a812e09ce7f7620e93b72bd362859a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c717d9ab44493d15589030073cd2ab260ef52e1c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746122"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760212"
 ---
-# <a name="parameterizing-mapping-data-flows"></a>Gegevens stromen voor Parameterizing-toewijzing
+# <a name="parameterizing-mapping-data-flows"></a>Toewijzingsgegevensstromen parameteriseren
 
 Het toewijzen van gegevens stromen in Azure Data Factory ondersteunen het gebruik van para meters. U kunt para meters definiëren in de definitie van de gegevens stroom, die u vervolgens kunt gebruiken in uw expressies. De parameter waarden kunnen worden ingesteld door de aanroepende pijp lijn via de activiteit gegevens stroom uitvoeren. U hebt drie opties voor het instellen van de waarden in de gegevens stroom activiteit expressies:
 
@@ -23,9 +23,6 @@ Het toewijzen van gegevens stromen in Azure Data Factory ondersteunen het gebrui
 * Een van de expressie taal gebruiken om een statische letterlijke waarde in te stellen
 
 Gebruik deze mogelijkheid om uw gegevens te stroom, flexibel en herbruikbaar te maken. U kunt para meters en expressies voor gegevens stromen met deze para meters.
-
-> [!NOTE]
-> Als u de controle stroom expressies voor de pijp lijn wilt gebruiken, moet u de para meter voor de gegevens stroom van het type teken reeks zijn.
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>Para meters maken in een toewijzings gegevens stroom
 

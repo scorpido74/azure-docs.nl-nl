@@ -2,14 +2,14 @@
 title: Algemene vragen over de Azure Site Recovery-service
 description: In dit artikel worden populaire algemene vragen over Azure Site Recovery beschreven.
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863560"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760348"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
@@ -147,7 +147,7 @@ Azure Site Recovery gegevens repliceren naar een Azure-opslag account of beheerd
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Waarom kan ik niet repliceren via VPN?
 
-Wanneer u naar Azure repliceert, bereikt het replicatie verkeer de open bare eind punten van een Azure Storage. Daarom kunt u alleen repliceren via het open bare Internet met ExpressRoute (micro soft-peering of een bestaande open bare peering), en VPN werkt niet.
+Wanneer u naar Azure repliceert, bereikt het replicatie verkeer de open bare eind punten van een Azure Storage. Daarom kunt u alleen repliceren via het open bare Internet of via ExpressRoute (micro soft-peering of een bestaande open bare peering).
 
 ### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Kan ik Riverbed SteelHeads gebruiken voor replicatie?
 

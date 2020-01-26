@@ -1,5 +1,5 @@
 ---
-title: R met Machine Learning Services gebruiken om een query uit te zoeken
+title: R gebruiken met Machine Learning Services voor het uitvoeren van een query op een Data Base (preview)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: In dit artikel leest u hoe u een R-script gebruikt met Azure SQL Database Machine Learning Services om verbinding te maken met een Azure-SQL database en query's uit te voeren met behulp van Transact-SQL-instructies.
 services: sql-database
@@ -13,60 +13,38 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0288d8c4710d12d8e67658caab93157c534b75ee
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826978"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758356"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Snelstartgids: met R met Machine Learning Services een query uitvoeren op een Azure SQL database (preview-versie)
 
-In deze Quick start ziet u hoe u met behulp van [R](https://www.r-project.org/) met Machine Learning Services verbinding maakt met een Azure SQL database en hoe u Transact-SQL-instructies gebruikt om gegevens op te vragen. Machine Learning Services is een functie van Azure SQL Database die wordt gebruikt voor het uitvoeren van een Data Base-R-script. Zie [Azure SQL Database Machine Learning Services met R (preview)](sql-database-machine-learning-services-overview.md)voor meer informatie.
+In deze Quick Start gebruikt u R met Machine Learning Services om verbinding te maken met een Azure SQL database en T-SQL-instructies te gebruiken om gegevens op te vragen.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Een Azure SQL-database. U kunt een van deze quickstarts gebruiken om een database te maken en vervolgens te configureren in Azure SQL Database:
+- Een [Azure-SQL database](sql-database-single-database-get-started.md)
+  
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) met R ingeschakeld. [Meld u aan voor de preview-versie](sql-database-machine-learning-services-overview.md#signup).
 
-<!-- Managed instance is not supported during the preview
-  || Single database | Managed instance |
-  |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Configure | [Server-level IP firewall rule](sql-database-server-level-firewall-rule.md) | [Connectivity from a VM](sql-database-managed-instance-configure-vm.md) |
-  ||| [Connectivity from on-site](sql-database-managed-instance-configure-p2s.md) |
-  | Load data | Adventure Works loaded per quickstart | [Restore Wide World Importers](sql-database-managed-instance-get-started-restore.md) |
-  ||| Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) |
-  |||
--->
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-  || Individuele database |
-  |:--- |:--- |
-  | Maken| [Portal](sql-database-single-database-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
-  | Configureren | [IP-firewallregel op serverniveau](sql-database-server-level-firewall-rule.md) |
-  | Gegevens laden | Adventure Works geladen volgens de quickstart |
-  |||
+> [!IMPORTANT]
+> De scripts in dit artikel zijn geschreven om de **Adventure Works** -data base te gebruiken.
 
-  > [!NOTE]
-  > Tijdens de preview-versie van Azure SQL Database Machine Learning Services met R, wordt de implementatie optie Managed instance niet ondersteund.
+> [!NOTE]
+> Tijdens de open bare preview zal micro soft u de mogelijkheid bieden om machine learning voor uw bestaande of nieuwe data base in te scha kelen, maar de implementatie optie Managed instances wordt momenteel niet ondersteund.
 
-<!-- Managed instance is not supported during the preview
-  > [!IMPORTANT]
-  > The scripts in this article are written to use the Adventure Works database. With a managed instance, you must either import the Adventure Works database into an instance database or modify the scripts in this article to use the Wide World Importers database.
--->
+Machine Learning Services met R is een functie van Azure SQL database die wordt gebruikt voor het uitvoeren van een Data Base-R-script. Zie voor meer informatie het [R-project](https://www.r-project.org/).
 
-- Machine Learning Services (met R) ingeschakeld. Na de onboarding voor de openbare preview wordt Machine Learning voor u ingeschakeld voor uw bestaande of nieuwe database. Volg de stappen in [Meld u aan voor de preview-versie](sql-database-machine-learning-services-overview.md#signup).
-
-- De nieuwste [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). U kunt R-scripts uitvoeren met andere database beheer-of query hulpprogramma's, maar in deze Snelstartgids gebruikt u SSMS.
-
-## <a name="get-sql-server-connection-information"></a>Verbindingsgegevens voor SQL Server ophalen
+## <a name="get-sql-server-connection-information"></a>SQL Server-verbindingsgegevens ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
@@ -74,7 +52,7 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
 
 2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
 
-3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erop en selecteert u het pictogram **Kopiëren**.
+3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren**.
 
 ## <a name="create-code-to-query-your-sql-database"></a>Code maken om query's uit te voeren op uw SQL-database
 

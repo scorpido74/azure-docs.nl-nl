@@ -1,5 +1,5 @@
 ---
-title: Een experimentele voor instelling voor Content-Aware encoding-Azure | Microsoft Docs
+title: Een voor instelling voor code ring met Content-Aware-Azure Media Services |
 description: In dit artikel wordt beschreven hoe u met inhoud compatibele code ring in Microsoft Azure Media Services v3.
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 34b4386d536a9845c8a48e7e54612548367b52bc
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933483"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759343"
 ---
-# <a name="experimental-preset-for-content-aware-encoding"></a>Experimentele voor instelling voor code ring met Content-Aware
+# <a name="a-preset-for-content-aware-encoding"></a>Een voor instelling voor code ring met Content-Aware
 
 Video moet worden gecodeerd met meerdere bitsnelheden (hoog naar laag) om inhoud voor te bereiden voor levering door [Adaptive bitrate streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming). Om te zorgen voor een goede vermindering van de kwaliteit, naarmate de bitsnelheid lager is, is dit de resolutie van de video. Dit resulteert in een zogenaamde coderings ladder: een tabel met resoluties en bitsnelheden; Zie de Media Services [ingebouwde coderings definities](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
 

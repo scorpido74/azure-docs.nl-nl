@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309979"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760569"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>De Azure Cosmos-emulator gebruiken voor lokale ontwikkeling en tests
 
@@ -47,7 +47,7 @@ De Azure Cosmos-emulator heeft de volgende hardware-en software vereisten:
 
 * Softwarevereisten
   * Windows Server 2012 R2, Windows Server 2016 of Windows 10
-  * 64-bits besturingssysteem
+  * 64-bits besturings systeem
 * Minimale hardwarevereisten
   * 2 GB RAM
   * 10 GB beschikbare schijfruimte
@@ -181,7 +181,7 @@ Start Emulator vanaf een beheerders opdracht prompt met '/EnableCassandraEndpoin
 
 Start Emulator vanaf een beheerders opdracht prompt met '/EnableGremlinEndpoint '. U kunt ook de omgevings variabele `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true` instellen
 
-* [Installeer Apache-tinkerpop-Gremlin-console-3.3.4](https://tinkerpop.apache.org/downloads.html)
+* [Installeer Apache-tinkerpop-Gremlin-console-3.3.4](https://archive.apache.org/dist/tinkerpop/3.3.4).
 
 * Maak in de emulator Data Explorer een data base ' db1 ' en een verzameling ' coll1 '. Kies voor de partitie sleutel "/name"
 
@@ -268,7 +268,7 @@ Typ `Microsoft.Azure.Cosmos.Emulator.exe /?` bij de opdrachtprompt om een lijst 
 | DisableRateLimiting |Geeft aan dat het beperkingsgedrag van de aanvraagsnelheid is uitgeschakeld. |Micro soft. Azure. Cosmos. emulator. exe/DisableRateLimiting | |
 | NoUI | De gebruikersinterface van de emulator niet weergeven. | Micro soft. Azure. Cosmos. emulator. exe/NoUI | |
 | NoExplorer | Geen Data Explorer weergeven bij het opstarten. |Micro soft. Azure. Cosmos. emulator. exe/NoExplorer | | 
-| PartitionCount | Hiermee geeft u het maximum aantal gepartitioneerde containers op. Zie [het aantal containers wijzigen](#set-partitioncount) voor meer informatie. | Micro soft. Azure. Cosmos. emulator. exe/PartitionCount =\<PartitionCount\> | \<partitioncount\>: maximum aantal toegestane containers met één partitie. De standaardwaarde is 25. Maximaal toegestaan is 250.|
+| PartitionCount | Hiermee geeft u het maximum aantal gepartitioneerde containers op. Zie [het aantal containers wijzigen](#set-partitioncount) voor meer informatie. | Micro soft. Azure. Cosmos. emulator. exe/PartitionCount =\<PartitionCount\> | \<partitioncount\>: maximum aantal toegestane containers met één partitie. De standaard waarde is 25. Maximaal toegestaan is 250.|
 | DefaultPartitionCount| Hiermee geeft u het standaard aantal partities voor een gepartitioneerde container op. | Micro soft. Azure. Cosmos. emulator. exe/DefaultPartitionCount =\<DefaultPartitionCount\> | \<defaultpartitioncount\> standaard waarde is 25.|
 | AllowNetworkAccess | Geeft toegang tot de emulator via een netwerk. U moet ook /Key=\<sleutelreeks\> of /KeyFile=\<bestandsnaam\> doorgeven om netwerktoegang in te schakelen. | Micro soft. Azure. Cosmos. emulator. exe/AllowNetworkAccess/Key =\<key_string\> of micro soft. Azure. Cosmos. emulator. exe/AllowNetworkAccess/KeyFile =\<file_name\>| |
 | NoFirewall | Pas de firewall regels niet aan wanneer de optie/AllowNetworkAccess wordt gebruikt. |Micro soft. Azure. Cosmos. emulator. exe/NoFirewall | |

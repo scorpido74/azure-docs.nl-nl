@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus bericht verloop | Microsoft Docs
-description: Verloop tijd en time-to-Live van Azure Service Bus berichten
+title: Azure Service Bus-verlopen van berichten
+description: In dit artikel wordt uitgelegd over de verval tijd en de duur van Azure Service Bus berichten. Na een dergelijke deadline wordt het bericht niet meer bezorgd.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 109ecc671b43365c433a626ff8d9fe55a5a626b5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: e86c92fa1cfb13929d5617502224f479709efdd3
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310300"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756331"
 ---
 # <a name="message-expiration-time-to-live"></a>Verlopen van berichten (Time to Live)
 
@@ -26,7 +26,7 @@ De payload in een bericht of een opdracht of query die een bericht overbrengt na
 
 Voor ontwikkel-en test omgevingen waarin wacht rijen en onderwerpen vaak worden gebruikt in de context van gedeeltelijke uitvoeringen van toepassingen of toepassings onderdelen, is het ook wenselijk dat geringe test berichten automatisch worden opgeruimd, zodat de volgende test uitvoering kan Start schonen.
 
-De verval datum van elk afzonderlijk bericht kan worden bepaald door de systeem eigenschap [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) in te stellen, waarmee een relatieve duur wordt opgegeven. De verval datum wordt een absolute directe melding wanneer het bericht in de entiteit wordt geplaatst. Op dat moment gebruikt de eigenschap [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) de waarde [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). De TTL-instelling (time-to-Live) voor een brokered bericht wordt niet afgedwongen wanneer er geen clients actief Luis teren.
+De verval datum van elk afzonderlijk bericht kan worden bepaald door de systeem eigenschap [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) in te stellen, waarmee een relatieve duur wordt opgegeven. De verval datum wordt een absolute directe melding wanneer het bericht in de entiteit wordt geplaatst. Op dat moment gebruikt de eigenschap [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) de waarde [(**EnqueuedTimeUtc** ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [ **TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). De TTL-instelling (time-to-Live) voor een brokered bericht wordt niet afgedwongen wanneer er geen clients actief Luis teren.
 
 Na de **ExpiresAtUtc** -chat worden berichten niet meer in aanmerking komen voor ophalen. De verval datum heeft geen invloed op berichten die momenteel zijn vergrendeld voor levering; deze berichten worden nog steeds normaal verwerkt. Als de vergren deling is verlopen of het bericht is afgebroken, wordt de verval datum direct van kracht.
 
@@ -41,11 +41,11 @@ Alle berichten die worden verzonden naar een wachtrij of onderwerp, zijn onderhe
 >
 > Voor Messa ging-entiteiten (wacht rijen en onderwerpen) is de standaard verloop tijd ook [time span. Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) voor Service Bus standaard-en Premium-lagen.  Voor de laag basis is de standaard verval tijd 14 dagen.
 
-Verlopen berichten kunnen eventueel worden verplaatst naar een [wachtrij](service-bus-dead-letter-queues.md) met onbestelbare meldingen door de eigenschap [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) in te stellen of het respectieve vak in de portal te controleren. Als de optie is uitgeschakeld, worden verlopen berichten verwijderd. Verlopen berichten die zijn verplaatst naar de wachtrij met onbestelbare meldingen kunnen worden onderscheiden van andere onbestelbare berichten door de [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) -eigenschap te evalueren die de Broker opslaat in de sectie gebruikers eigenschappen. in dit geval is de waarde [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) .
+Verlopen berichten kunnen eventueel worden verplaatst naar een [wachtrij met onbestelbare](service-bus-dead-letter-queues.md) meldingen door de eigenschap [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) in te stellen of het respectieve vak in de portal te controleren. Als de optie is uitgeschakeld, worden verlopen berichten verwijderd. Verlopen berichten die zijn verplaatst naar de wachtrij met onbestelbare meldingen kunnen worden onderscheiden van andere onbestelbare berichten door de [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) -eigenschap te evalueren die de Broker opslaat in de sectie gebruikers eigenschappen. in dit geval is de waarde [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) .
 
 In het voor beeld waarin het bericht is beveiligd tegen verloop tijd en als de vlag is ingesteld voor de entiteit, wordt het bericht verplaatst naar de wachtrij voor onbestelbare berichten, omdat de vergren deling wordt afgebroken of verloopt. Het wordt echter niet verplaatst als het bericht is afgewikkeld, waarna wordt aangenomen dat de toepassing het heeft verwerkt, ondanks de nominale verval datum.
 
-De combi natie van [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) en automatische (en transactionele) onbestelbare berichten op de verval datum is een waardevol hulp middel om te bepalen of een taak die wordt gegeven aan een handler of een groep handlers onder een deadline wordt opgehaald voor verwerking als de deadline is bereikt.
+De combi natie van [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) en automatische (en transactionele) onbestelbare berichten op de verval datum is een waardevol hulp middel voor het tot stand brengen van een vertrouwens functie, of een taak die wordt gegeven aan een handler of een groep handlers onder een deadline wordt opgehaald om te worden verwerkt, omdat de deadline is bereikt.
 
 Denk bijvoorbeeld aan een website die op betrouw bare wijze taken moet uitvoeren op een op een schaal beperkte back-end en die af en toe kan leiden tot pieken in de beschik baarheid van de back-end. In het normale geval stuurt de handler aan de server zijde voor de verzonden gebruikers gegevens de gegevens naar een wachtrij en ontvangt vervolgens een antwoord dat de verwerking van de trans actie in een antwoord wachtrij heeft bevestigd. Als er sprake is van een piek van het verkeer en de back-end-handler de items in de tijd niet kan verwerken, worden de verlopen taken in de wachtrij voor onbestelbare berichten geretourneerd. De interactieve gebruiker kan worden gewaarschuwd dat de aangevraagde bewerking wat langer duurt dan normaal. de aanvraag kan vervolgens worden geplaatst in een andere wachtrij voor een verwerkings traject waarbij het uiteindelijke verwerkings resultaat per e-mail naar de gebruiker wordt verzonden. 
 
@@ -64,13 +64,13 @@ De eigenschap **autoDeleteOnIdle** moet worden ingesteld via een Azure Resource 
 
 Hier ziet u wat er als niet-actief van entiteiten (wacht rijen, onderwerpen en abonnementen) geldt:
 
-- Wachtrijen
+- Queues
     - Geen verzen dingen  
     - Geen ontvangen  
     - Geen updates voor de wachtrij  
     - Geen geplande berichten  
     - Geen bladeren/bekijken 
-- Onderwerpen  
+- Topics  
     - Geen verzen dingen  
     - Het onderwerp is niet bijgewerkt  
     - Geen geplande berichten 

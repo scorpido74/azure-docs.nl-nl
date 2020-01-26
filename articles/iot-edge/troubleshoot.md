@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 255ccb5c8e9529ab9b36186ec0eeb5b3f55ed64f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514252"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759224"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Veelvoorkomende problemen en oplossingen voor Azure IoT Edge
 
@@ -265,7 +265,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 **Hoofd oorzaak**
 
-IoT Edge-runtime biedt alleen ondersteuning voor hostnamen die korter zijn dan 64 tekens lang zijn. Fysieke machines gewoonlijk lang hostnamen niet hebben, maar het probleem komt vaker voor op een virtuele machine. De automatisch gegenereerde hostnamen voor Windows virtuele machines die worden gehost in Azure, meestal in het bijzonder te lang. 
+IoT Edge-runtime biedt alleen ondersteuning voor hostnamen die korter zijn dan 64 tekens lang zijn. Fysieke machines gewoonlijk lang hostnamen niet hebben, maar het probleem komt vaker voor op een virtuele machine. De automatisch gegenereerde hostnamen voor Windows virtuele machines die worden gehost in Azure, meestal in het bijzonder te lang.
 
 **Resolutie**
 
@@ -302,7 +302,7 @@ De IoT Edge hub, die deel uitmaakt van de IoT Edge runtime, is standaard geoptim
 
 **Resolutie**
 
-Stel voor de IoT Edge hub een omgevings variabele **OptimizeForPerformance** in op **False**. Er zijn twee manieren om dit te doen:
+Stel voor de IoT Edge hub een omgevings variabele **OptimizeForPerformance** in op **False**. Er zijn twee manieren waarop u omgevings variabelen kunt instellen:
 
 In Azure Portal:
 
@@ -340,7 +340,7 @@ De `Get-WinEvent` PowerShell-opdracht is afhankelijk van een registervermelding 
 
 Een registervermelding voor de IoT Edge-daemon instellen. Maak een **iotedge.reg** bestand met de volgende inhoud en importeren naar het Windows-register door erop te dubbelklikken of met behulp van de `reg import iotedge.reg` opdracht:
 
-```
+```reg
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application\iotedged]
@@ -351,10 +351,10 @@ Windows Registry Editor Version 5.00
 
 ## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>IoT Edge-module is mislukt voor het verzenden van een bericht naar de edgeHub met 404-fout
 
-Een aangepaste IoT Edge-module is mislukt voor het verzenden van een bericht naar de edgeHub met een 404-fout `Module not found` fout. De IoT Edge-daemon afdrukken van het volgende bericht naar de logboeken: 
+Een aangepaste IoT Edge-module is mislukt voor het verzenden van een bericht naar de edgeHub met een 404-fout `Module not found` fout. De IoT Edge-daemon afdrukken van het volgende bericht naar de logboeken:
 
 ```output
-Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
+Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
 ```
 
 **Hoofd oorzaak**
@@ -391,7 +391,7 @@ Standaard worden modules IoT Edge in hun eigen geïsoleerde container netwerk ge
 
 **Optie 1: DNS-server instellen in container Engine-instellingen**
 
-Geef de DNS-server voor uw omgeving op in de instellingen van de container-engine die van toepassing is op alle container modules die door de engine worden gestart. Maak een bestand met de naam `daemon.json` Geef de DNS-server op die moet worden gebruikt. Bijvoorbeeld:
+Geef de DNS-server voor uw omgeving op in de instellingen van de container-engine, die van toepassing is op alle container modules die zijn gestart door de engine. Maak een bestand met de naam `daemon.json` Geef de DNS-server op die moet worden gebruikt. Bijvoorbeeld:
 
 ```json
 {
@@ -401,7 +401,7 @@ Geef de DNS-server voor uw omgeving op in de instellingen van de container-engin
 
 In het bovenstaande voor beeld wordt de DNS-server ingesteld op een openbaar toegankelijke DNS-service. Als het edge-apparaat geen toegang kan krijgen tot dit IP-adres in de omgeving, vervangt u het door de DNS-server die toegankelijk is.
 
-Plaats `daemon.json` op de juiste locatie voor uw platform: 
+Plaats `daemon.json` op de juiste locatie voor uw platform:
 
 | Platform | Locatie |
 | --------- | -------- |
@@ -410,7 +410,7 @@ Plaats `daemon.json` op de juiste locatie voor uw platform:
 
 Als de locatie al `daemon.json` bestand bevat, voegt u de **DNS-** sleutel hieraan toe en slaat u het bestand op.
 
-*Start de container-engine opnieuw op om de updates van kracht te laten worden*
+Start de container-engine opnieuw op om de updates van kracht te laten worden.
 
 | Platform | Opdracht |
 | --------- | -------- |
@@ -431,7 +431,7 @@ U kunt de DNS-server voor de *createOptions* van elke module instellen in de imp
 }
 ```
 
-Zorg ervoor dat u dit ook instelt voor de *edgeAgent* -en *edgeHub* -modules.
+Zorg ervoor dat u deze configuratie ook instelt voor de *edgeAgent* -en *edgeHub* -modules.
 
 ## <a name="next-steps"></a>Volgende stappen
 

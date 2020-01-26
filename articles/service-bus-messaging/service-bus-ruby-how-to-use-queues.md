@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Azure Service Bus wachtrijen gebruiken met ruby'
-description: 'Quick Start: informatie over het gebruik van Service Bus wachtrijen in Azure. Code voorbeelden geschreven in Ruby.'
+title: Azure Service Bus wachtrijen gebruiken met ruby
+description: In deze zelf studie leert u hoe u ruby-toepassingen kunt maken om berichten te verzenden naar en berichten van een Service Bus wachtrij te ontvangen.
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 09fdc58254d260b6ffeff958b6bbda50332adfac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a699543bb442e7c57d57e72acb2cdf6ac40159c1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718771"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760586"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>Snelstartgids: Service Bus wachtrijen gebruiken met ruby
 
@@ -64,7 +64,7 @@ queue = azure_service_bus_service.create_queue(queue)
 ## <a name="how-to-send-messages-to-a-queue"></a>Berichten verzenden naar een wachtrij
 Als u een bericht wilt verzenden naar een Service Bus wachtrij, wordt de methode `send_queue_message()` door de toepassing aangeroepen in het object **Azure:: ServiceBusService** . Berichten die worden verzonden naar (en ontvangen van) Service Bus wacht rijen zijn **Azure:: ServiceBus:: BrokeredMessage** -objecten en hebben een aantal standaard eigenschappen (zoals `label` en `time_to_live`), een woorden lijst die wordt gebruikt voor het opslaan van aangepaste toepassingsspecifieke eigenschappen en een hoofd tekst van wille keurige toepassings gegevens. Een toepassing kan de hoofd tekst van het bericht instellen door een teken reeks waarde door te geven als het bericht en eventuele vereiste standaard eigenschappen worden gevuld met standaard waarden.
 
-In het volgende voor beeld ziet u hoe u een test bericht naar de wachtrij met de naam `test-queue` verzendt met behulp van `send_queue_message()`:
+In het volgende voor beeld ziet u hoe u een test bericht verzendt naar de wachtrij met de naam `test-queue` met behulp van `send_queue_message()`:
 
 ```ruby
 message = Azure::ServiceBus::BrokeredMessage.new("test queue message")
@@ -77,7 +77,7 @@ Service Bus-wachtrijen ondersteunen een maximale berichtgrootte van 256 kB in de
 ## <a name="how-to-receive-messages-from-a-queue"></a>Berichten van een wachtrij ontvangen
 Er worden berichten van een wachtrij ontvangen met behulp van de methode `receive_queue_message()` in het object **Azure:: ServiceBusService** . Standaard worden berichten gelezen en vergrendeld zonder dat ze uit de wachtrij worden verwijderd. U kunt echter berichten uit de wachtrij verwijderen wanneer ze worden gelezen door de `:peek_lock` optie in te stellen op **Onwaar**.
 
-De standaard instelling is het lezen en verwijderen van een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of op betrouw bare wijze is opgeslagen voor toekomstige verwerking), wordt de tweede fase van het ontvangst proces voltooid door het aanroepen van de methode `delete_queue_message()` en het bericht te verwijderen als een para meter. Met de methode `delete_queue_message()` wordt het bericht gemarkeerd als verbruikt en wordt het uit de wachtrij verwijderd.
+De standaard instelling is het lezen en verwijderen van een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of op betrouw bare wijze is opgeslagen voor toekomstige verwerking), wordt de tweede fase van het ontvangst proces voltooid door `delete_queue_message()` methode aan te roepen en het bericht te verwijderen als een para meter. Met de methode `delete_queue_message()` wordt het bericht gemarkeerd als verbruikt en wordt het uit de wachtrij verwijderd.
 
 Als de para meter `:peek_lock` is ingesteld op **False**, lezen en verwijderen van het bericht het eenvoudigste model is, en werkt het beste voor scenario's waarin een toepassing een bericht niet verwerkt in het geval van een fout. Neem bijvoorbeeld een scenario waarin de consument de ontvangstaanvraag uitgeeft en het systeem vervolgens vastloopt voordat de aanvraag wordt verwerkt. Omdat Service Bus het bericht als verbruikt heeft gemarkeerd, wordt het bericht dat voor het vastlopen is verbruikt, gemist wanneer de toepassing opnieuw wordt gestart en er opnieuw wordt verbruikt.
 

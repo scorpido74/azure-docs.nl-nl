@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 483f13f89acd1bce0ceb8486ac252e6f844d881f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7af4f68417b25b480ea5422eb13d6b2a5748212c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431739"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759700"
 ---
 # <a name="cloud-tiering-overview"></a>Overzicht van Cloud lagen
 Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand met de Azure File Sync bestandssysteem filter (StorageSync. sys) vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk ' offline ' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS ingesteld, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
  
-Wanneer een gebruiker een gelaagd bestand opent, Azure File Sync de bestands gegevens naadloos terugroepen van Azure Files zonder dat de gebruiker moet weten dat het bestand daad werkelijk is opgeslagen in Azure. 
+Wanneer een gebruiker een gelaagd bestand opent, Azure File Sync de bestands gegevens naadloos terugroepen van Azure Files zonder dat de gebruiker moet weten dat het bestand is opgeslagen in Azure. 
  
  > [!Important]  
  > Cloud lagen worden niet ondersteund voor Server eindpunten op de Windows-systeem volumes en alleen bestanden met een grootte van meer dan 64 KiB kunnen worden getierd naar Azure Files.
@@ -127,6 +127,13 @@ Wanneer de functie voor Cloud lagen is ingeschakeld, worden bestanden in Cloud l
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ```
+
+<a id="afs-image-thumbnail"></a>
+### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>Waarom worden mijn gelaagde bestanden niet weer gegeven als miniaturen of voor beelden in Windows Verkenner?
+Voor gelaagde bestanden zijn miniaturen en voor beelden niet zichtbaar op het server eindpunt. Dit gedrag wordt verwacht omdat de functie van de miniatuur cache in Windows het lezen van bestanden met het kenmerk offline overs Laan. Als Cloud lagen zijn ingeschakeld, kan de Lees bewerking door gelaagde bestanden worden gedownload (ingetrokken).
+
+Dit gedrag is niet specifiek voor Azure File Sync. in Windows Verkenner wordt een ' grijze X ' weer gegeven voor bestanden waarvoor het kenmerk offline is ingesteld. Het pictogram X wordt weer geven bij het openen van bestanden via SMB. Raadpleeg [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105) voor een gedetailleerde uitleg van dit gedrag
+
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)

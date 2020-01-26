@@ -1,6 +1,6 @@
 ---
-title: Naslag informatie over de SQLRuleAction-syntaxis in azure | Microsoft Docs
-description: Meer informatie over SQLRuleAction-grammatica.
+title: Naslag informatie over de SQLRuleAction-syntaxis in Azure Service Bus
+description: Dit artikel bevat een verwijzing naar de SQLRuleAction-syntaxis. De acties worden geschreven in de syntaxis op basis van SQL-taal die wordt uitgevoerd voor een brokered bericht.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 0f9365b72da1cec81eed82756097d32b1d72ca71
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 37615e39577ef60cccc9df91b61a6aa24ca794d0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60307475"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759625"
 ---
-# <a name="sqlruleaction-syntax"></a>SQLRuleAction-syntaxis
+# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Naslag informatie voor SQLRuleAction-syntaxis voor Azure Service Bus
 
 Een *SqlRuleAction* is een instantie van de klasse [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) en vertegenwoordigt een set acties die zijn geschreven in de SQL-taal syntaxis die wordt uitgevoerd op een [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).   
   
@@ -65,13 +65,13 @@ Dit artikel bevat informatie over de grammatica van de SQL-regel actie.
   
 ## <a name="arguments"></a>Argumenten  
   
--   `<scope>`is een optionele teken reeks die het bereik van `<property_name>`de aangeeft. Geldige waarden zijn `sys` of `user`. De `sys` waarde geeft de systeem Scope `<property_name>` aan waar de naam van een open bare eigenschap van de [klasse BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)is. `user`Hiermee wordt het gebruikers `<property_name>` bereik aangegeven waarbij een sleutel van de [BrokeredMessage-klassen](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) woordenlijst is. `user`Scope is het standaard bereik als `<scope>` niet is opgegeven.  
+-   `<scope>` is een optionele teken reeks die het bereik van de `<property_name>`aangeeft. Geldige waarden zijn `sys` of `user`. De `sys` waarde geeft de systeem Scope aan waarbij `<property_name>` een naam van een open bare eigenschap is van de [klasse BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` geeft het gebruikers bereik aan waarbij `<property_name>` een sleutel is van de hoofdwoorden lijst van de [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . `user` bereik is het standaard bereik als `<scope>` niet is opgegeven.  
   
 ### <a name="remarks"></a>Opmerkingen  
 
 Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaande systeem eigenschap. een poging om toegang te krijgen tot een niet-bestaande gebruikers eigenschap is geen fout. In plaats daarvan wordt een niet-bestaande gebruikers eigenschap intern geëvalueerd als een onbekende waarde. Een onbekende waarde wordt speciaal behandeld tijdens de evaluatie van de operator.  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -84,7 +84,7 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
 ```  
   
 ### <a name="arguments"></a>Argumenten  
- `<regular_identifier>`is een teken reeks die wordt vertegenwoordigd door de volgende reguliere expressie:  
+ `<regular_identifier>` is een teken reeks die wordt vertegenwoordigd door de volgende reguliere expressie:  
   
 ```  
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
@@ -92,13 +92,13 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
   
  Dit betekent een wille keurige teken reeks die begint met een letter en wordt gevolgd door een of meer onderstrepings tekens/letter/cijfer.  
   
- `[:IsLetter:]`betekent elk Unicode-teken dat is gecategoriseerd als Unicode-letter. `System.Char.IsLetter(c)`retourneert `true`een Unicode-letter. `c`  
+ `[:IsLetter:]` betekent een Unicode-teken dat is gecategoriseerd als Unicode-letter. `System.Char.IsLetter(c)` retourneert `true` als `c` een Unicode-letter is.  
   
- `[:IsDigit:]`betekent elk Unicode-teken dat is gecategoriseerd als een decimaal cijfer. `System.Char.IsDigit(c)`retourneert `true` of`c` een Unicode-cijfer is.  
+ `[:IsDigit:]` betekent een Unicode-teken dat is gecategoriseerd als een decimaal getal. `System.Char.IsDigit(c)` retourneert `true` als `c` een Unicode-cijfer is.  
   
  Een `<regular_identifier>` kan geen gereserveerd tref woord zijn.  
   
- `<delimited_identifier>`is een teken reeks die wordt Inge sloten met vier Kante haken links/rechts ([]). Een rechter rechte haak wordt weer gegeven als twee rechter rechte haken. Hier volgen enkele voor beelden `<delimited_identifier>`van:  
+ `<delimited_identifier>` is een wille keurige teken reeks die wordt Inge sloten met vier Kante haken links/rechts ([]). Een rechter rechte haak wordt weer gegeven als twee rechter rechte haken. Hier volgen enkele voor beelden van `<delimited_identifier>`:  
   
 ```  
 [Property With Space]  
@@ -106,7 +106,7 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
   
 ```  
   
- `<quoted_identifier>`is een teken reeks die tussen dubbele aanhalings tekens is geplaatst. Een dubbel aanhalings teken in id wordt weer gegeven als twee dubbele aanhalings tekens. Het is niet raadzaam om id's van aanhalings tekens te gebruiken omdat deze eenvoudig kunnen worden verward met een teken reeks constante. Gebruik, indien mogelijk, een gescheiden id. Hier volgt een voor beeld van `<quoted_identifier>`:  
+ `<quoted_identifier>` is een teken reeks die tussen dubbele aanhalings tekens is geplaatst. Een dubbel aanhalings teken in id wordt weer gegeven als twee dubbele aanhalings tekens. Het is niet raadzaam om id's van aanhalings tekens te gebruiken omdat deze eenvoudig kunnen worden verward met een teken reeks constante. Gebruik, indien mogelijk, een gescheiden id. Hier volgt een voor beeld van `<quoted_identifier>`:  
   
 ```  
 "Contoso & Northwind"  
@@ -121,13 +121,13 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
   
 ### <a name="remarks"></a>Opmerkingen
   
- `<pattern>`moet een expressie zijn die als een teken reeks wordt geëvalueerd. Deze wordt gebruikt als een patroon voor de LIKE-operator.      De naam kan de volgende joker tekens bevatten:  
+ `<pattern>` moet een expressie zijn die als een teken reeks wordt geëvalueerd. Deze wordt gebruikt als een patroon voor de LIKE-operator.      De naam kan de volgende joker tekens bevatten:  
   
--   `%`:  Een wille keurige teken reeks van nul of meer tekens.  
+-   `%`: een wille keurige teken reeks van nul of meer tekens.  
   
--   `_`: Eén wille keurig teken.  
+-   `_`: één wille keurig teken.  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
@@ -136,9 +136,9 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
   
 ### <a name="remarks"></a>Opmerkingen
   
- `<escape_char>`moet een expressie zijn die als een teken reeks met een lengte van 1 wordt geëvalueerd. Deze wordt gebruikt als escape-teken voor de operator LIKE.  
+ `<escape_char>` moet een expressie zijn die als een teken reeks met een lengte van 1 wordt geëvalueerd. Deze wordt gebruikt als escape-teken voor de operator LIKE.  
   
- Bijvoorbeeld, `property LIKE 'ABC\%' ESCAPE '\'` komt overeen `ABC%` met een teken reeks die begint met `ABC`.  
+ `property LIKE 'ABC\%' ESCAPE '\'` komt bijvoorbeeld overeen met `ABC%` in plaats van een teken reeks die begint met `ABC`.  
   
 ## <a name="constant"></a>constante  
   
@@ -149,7 +149,7 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
   
 ### <a name="arguments"></a>Argumenten  
   
--   `<integer_constant>`is een teken reeks die niet tussen aanhalings tekens staat en geen decimale punten bevat. De waarden worden `System.Int64` intern opgeslagen en volgen hetzelfde bereik.  
+-   `<integer_constant>` is een teken reeks met getallen die niet tussen aanhalings tekens staan en die geen decimale punten bevatten. De waarden worden opgeslagen als `System.Int64` intern en volgen hetzelfde bereik.  
   
      Hier volgen enkele voor beelden van lange constanten:  
   
@@ -158,9 +158,9 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
     2  
     ```  
   
--   `<decimal_constant>`is een teken reeks die niet tussen aanhalings tekens staat en een decimaal teken bevat. De waarden worden `System.Double` intern opgeslagen en volgen hetzelfde bereik/dezelfde precisie.  
+-   `<decimal_constant>` is een teken reeks met getallen die niet tussen aanhalings tekens staan en die een decimaal teken bevatten. De waarden worden opgeslagen als `System.Double` intern en volgen hetzelfde bereik/dezelfde precisie.  
   
-     In een toekomstige versie kan dit nummer worden opgeslagen in een ander gegevens type ter ondersteuning van nauw keurige semantiek, dus moet u niet vertrouwen op het feit dat het onderliggende gegevens type `System.Double` voor `<decimal_constant>`is.  
+     In een toekomstige versie kan dit nummer worden opgeslagen in een ander gegevens type ter ondersteuning van nauw keurige semantiek. Daarom moet u niet vertrouwen op het feit dat het onderliggende gegevens type `System.Double` is voor `<decimal_constant>`.  
   
      Hier volgen enkele voor beelden van decimale constanten:  
   
@@ -169,14 +169,14 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
     2.0  
     ```  
   
--   `<approximate_number_constant>`is een getal dat is geschreven in een weten schappelijke notatie. De waarden worden `System.Double` intern opgeslagen en volgen hetzelfde bereik/dezelfde precisie. Hier volgen enkele voor beelden van constanten met een benaderende waarde:  
+-   `<approximate_number_constant>` is een getal dat is geschreven in een weten schappelijke notatie. De waarden worden opgeslagen als `System.Double` intern en volgen hetzelfde bereik/dezelfde precisie. Hier volgen enkele voor beelden van constanten met een benaderende waarde:  
   
     ```  
     101.5E5  
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
@@ -185,9 +185,9 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
   
 ### <a name="remarks"></a>Opmerkingen
   
-Booleaanse constanten worden vertegenwoordigd door de tref `TRUE` woorden `FALSE`of. De waarden worden opgeslagen als `System.Boolean`.  
+Booleaanse constanten worden vertegenwoordigd door de tref woorden `TRUE` of `FALSE`. De waarden worden opgeslagen als `System.Boolean`.  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
@@ -197,7 +197,7 @@ Booleaanse constanten worden vertegenwoordigd door de tref `TRUE` woorden `FALSE
   
 Teken reeks constanten worden tussen enkele aanhalings tekens geplaatst en bevatten geldige Unicode-tekens. Een enkel aanhalings teken in een teken reeks constante wordt weer gegeven als twee enkele aanhalings tekens.  
   
-## <a name="function"></a>functie  
+## <a name="function"></a>functieassembly  
   
 ```  
 <function> :=  
@@ -207,9 +207,9 @@ Teken reeks constanten worden tussen enkele aanhalings tekens geplaatst en bevat
   
 ### <a name="remarks"></a>Opmerkingen  
 
-De `newid()` functie retourneert een **System. GUID** die is gegenereerd `System.Guid.NewGuid()` door de-methode.  
+De functie `newid()` retourneert een **System. GUID** die wordt gegenereerd door de methode `System.Guid.NewGuid()`.  
   
-De `property(name)` functie retourneert de waarde van de eigenschap waarnaar wordt verwezen `name`door. De `name` waarde kan een geldige expressie zijn die een teken reeks waarde retourneert.  
+De functie `property(name)` retourneert de waarde van de eigenschap waarnaar wordt verwezen door `name`. De `name`-waarde kan een geldige expressie zijn die een teken reeks waarde retourneert.  
   
 ## <a name="considerations"></a>Overwegingen
 

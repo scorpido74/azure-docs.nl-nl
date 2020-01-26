@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-berichten voor prefetch | Microsoft Docs
-description: De prestaties verbeteren door veelgevraagde Azure Service Bus-berichten.
+title: Azure Service Bus prefetch-berichten | Microsoft Docs
+description: Verbeter de prestaties door Azure Service Bus berichten vooraf op te halen. Berichten zijn direct beschikbaar voor lokaal ophalen voordat ze door de toepassing worden aangevraagd.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,52 +11,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c63e6bf66e4832a1a5b0b5e6fc3dfbbf02d1e490
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80717ab940d27e9bf108b3740309bcd7d71668fd
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125845"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760654"
 ---
-# <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus-berichten vooraf ophalen
+# <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus-berichten prefetch
 
-Wanneer *Prefetch* is ingeschakeld in een van de officiële Service Bus-clients, de ontvanger stille verkrijgt meer berichten, tot de [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) limiet, dan wat de toepassing in eerste instantie gevraagd.
+Als *prefetch* is ingeschakeld in een van de officiële service bus-clients, verkrijgt de ontvanger op een flexibele wijze meer berichten, tot aan de limiet van [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) , in het geval dat de toepassing voor het eerst wordt gevraagd.
 
-Een enkele initiële [ontvangen](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive) of [ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) aanroep krijgt dus een bericht voor direct gebruik dat wordt geretourneerd zo snel als beschikbaar. De client vervolgens ontvangt verdere berichten op de achtergrond te vullen van de buffer prefetch.
+Een enkele eerste [Receive](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive) -of [ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) -aanroep verwerft daarom een bericht voor onmiddellijk verbruik dat wordt geretourneerd als beschikbaar. De client verwerft vervolgens nieuwe berichten op de achtergrond om de prefetch-buffer te vullen.
 
 ## <a name="enable-prefetch"></a>Prefetch inschakelen
 
-Met .NET, u de functie voor Prefetch inschakelen door in te stellen de [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) eigenschap van een **MessageReceiver**, **QueueClient**, of **SubscriptionClient**  naar een getal groter dan nul. Als de waarde nul schakelt prefetch.
+Met .NET schakelt u de functie prefetch in door de eigenschap [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) van een **MessageReceiver**, **QueueClient**of **SubscriptionClient** in te stellen op een getal dat groter is dan nul. Als u de waarde instelt op nul, wordt prefetch uitgeschakeld.
 
-U kunt deze instelling eenvoudig toevoegen aan de ontvangstzijde van de [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) of [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) instellingen voor de voorbeelden om te zien van het effect in deze context.
+U kunt deze instelling eenvoudig toevoegen aan de receive-zijde van de instellingen voor [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) of [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) samples om het effect in die contexten te bekijken.
 
-Terwijl er berichten zijn beschikbaar in de buffer prefetch, kan voor elke volgende **ontvangen**/**ReceiveAsync** aanroepen onmiddellijk uit de buffer is voldaan, en de buffer wordt aangevuld de zoals ruimte beschikbaar op de achtergrond. Als er geen berichten beschikbaar voor de levering, de receive-bewerking wordt leeggemaakt de buffer en vervolgens wacht of blokken, zoals verwacht.
+Hoewel berichten beschikbaar zijn in de prefetch-buffer, worden alle daaropvolgende ontvangen/**ReceiveAsync** -aanroepen onmiddellijk aan de buffer door **gegeven** en wordt de buffer op de achtergrond aangevuld wanneer er ruimte beschikbaar is. Als er geen berichten beschikbaar zijn voor levering, wordt de buffer door de receive-bewerking leeg gemaakt en vervolgens gewacht of geblokkeerd, zoals verwacht.
 
-Prefetch werkt ook op dezelfde manier als met de [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) en [OnMessageAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessageasync) API's.
+Prefetch werkt ook op dezelfde manier met de [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) -en [OnMessageAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessageasync) -api's.
 
-## <a name="if-it-is-faster-why-is-prefetch-not-the-default-option"></a>Als het is sneller en waarom is Prefetch niet standaard ingeschakeld?
+## <a name="if-it-is-faster-why-is-prefetch-not-the-default-option"></a>Als het sneller is, waarom wordt prefetch niet de standaard optie?
 
-Prefetch versnelt de stroom door een bericht direct beschikbaar zijn voor het ophalen van lokale wanneer en voordat de toepassing wordt gevraagd om een. Dit voordeel doorvoer is het resultaat van een afweging die de auteur van de toepassing moet expliciet aanbrengen:
+Prefetch versnelt de berichten stroom door een bericht direct beschikbaar te stellen voor lokaal ophalen wanneer en voordat de toepassing er een vraagt. Deze door Voer is het resultaat van een trans actie die de auteur van de toepassing expliciet moet maken:
 
-Met de [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) modus ontvangen, worden alle berichten die zijn aangeschaft in de buffer prefetch zijn niet meer beschikbaar in de wachtrij, en alleen bevinden zich in de buffer in-memory prefetch totdat ze worden ontvangen in de toepassing via de **ontvangen**/**ReceiveAsync** of **OnMessage**/**OnMessageAsync** API's. Als de toepassing wordt beëindigd voordat de berichten worden ontvangen in de toepassing, zijn deze berichten permanent verloren gaan.
+Met de [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) -ontvangst modus zijn alle berichten die zijn verkregen in de prefetch-buffer niet meer beschikbaar in de wachtrij en bevinden zich alleen in de prefetch-buffer van het geheugen totdat ze in de toepassing worden **ontvangen via de/** **ReceiveAsync** of **OnMessage**/**OnMessageAsync** -api's. Als de toepassing wordt beëindigd voordat de berichten in de toepassing worden ontvangen, worden deze berichten permanent verloren gegaan.
 
-In de [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) modus ontvangen, opgehaald in de Prefetch buffer-berichten zijn aangeschaft in de buffer in een vergrendelde status en heeft de timeout klok voor de vergrendeling blijft draaien. Als de prefetch-buffer groot is en de verwerking zo lang dat bericht vergrendelingen verlopen duurt terwijl die zich bevinden in de buffer prefetch of zelfs terwijl de toepassing het bericht wordt verwerkt, is het mogelijk dat er enkele verwarrend gebeurtenissen voor de toepassing om af te handelen.
+In de [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) -ontvangst modus worden berichten die in de prefetch-buffer worden opgehaald, in de buffer opgehaald in een vergrendelde status en hebben de time-out voor de vergren deling. Als de prefetch-buffer groot is en de verwerking zo lang duurt dat bericht vergrendelingen verlopen terwijl het aanwezig is in de prefetch-buffer, of zelfs terwijl de toepassing het bericht verwerkt, zijn er mogelijk verwarrende gebeurtenissen die de toepassing kan verwerken.
 
-De toepassing mogelijk een bericht met een verlopen of imminently verlopen vergrendeling verkrijgen. Als dit het geval is, kan de toepassing verwerken van het bericht, maar gaat u naar dat niet kan deze worden voltooid vanwege een verlopen vergrendeling. De toepassing kunt controleren de [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) eigenschap (dit is onderhevig aan het tijdsverschil tussen de broker en klok van de lokale computer). Als de bericht-vergrendeling is verlopen, moet de toepassing het bericht; negeren Er zijn geen API-aanroep op of met het bericht moet worden gemaakt. Als het bericht niet is verlopen, maar vervaltijd onmiddellijk wordt, de vergrendeling kan worden vernieuwd en uitgebreid door een andere standaardperiode van vergrendeling door het aanroepen van [bericht. RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
+De toepassing kan een bericht verkrijgen met een verlopen of binnenkort verlooptde vergren deling. Als dit het geval is, kan de toepassing het bericht verwerken, maar deze kan niet worden voltooid omdat de vergren deling is verlopen. De toepassing kan de eigenschap [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) (die onderhevig is aan klok verschil tussen de Broker en de klok van de lokale computer) controleren. Als de bericht vergrendeling is verlopen, moet de toepassing het bericht negeren. Er moet geen API-aanroep worden uitgevoerd op of met het bericht. Als het bericht niet is verlopen, maar de verloopt binnenkort, kan de vergren deling worden vernieuwd en uitgebreid door een andere standaard vergrendelings periode door het aanroepen van een [bericht. RenewLock ()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
 
-Als de vergrendeling op de achtergrond in de buffer prefetch verloopt, wordt het bericht wordt behandeld als afgeschaft en wordt opnieuw beschikbaar gesteld voor ophalen uit de wachtrij. Dat kan leiden tot het moet worden opgehaald in de buffer prefetch; geplaatst aan het einde. Als de prefetch-buffer kan niet tijdens de vervaldatum van het bericht meestal via worden gewerkt, dit zorgt ervoor dat berichten herhaaldelijk prefetched maar nooit effectief geleverde zich in een bruikbaar (geldige vergrendelde) staat en worden uiteindelijk verplaatst naar de dead-letter-wachtrij één keer de maximum aantal bezorgingen is overschreden.
+Als de vergren deling op de achtergrond verloopt in de prefetch-buffer, wordt het bericht beschouwd als ingetrokken en wordt het opnieuw beschikbaar gemaakt voor ophalen uit de wachtrij. Dat kan ertoe leiden dat het kan worden opgehaald in de prefetch-buffer; aan het einde geplaatst. Als de prefetch-buffer normaal gesp roken niet kan worden gebruikt tijdens het verlopen van het bericht, worden de berichten herhaaldelijk vooraf opgehaald, maar worden ze nooit in een bruikbare status (geldig vergrendeld) bezorgd en worden ze uiteindelijk naar de wachtrij voor onbestelbare brieven verplaatst. het maximum aantal leveringen is overschreden.
 
-Als u een hoge mate van betrouwbaarheid voor de verwerking van berichten moet en verwerking veel werk en het tijdstip neemt, is het raadzaam dat u de functie prefetch dan, of helemaal niet gebruiken.
+Als u een hoge mate van betrouw baarheid nodig hebt voor bericht verwerking en de verwerking veel werk en tijd in beslag neemt, is het raadzaam de prefetch-functie op een conservatieve of helemaal niet te gebruiken.
 
-Als u hoge doorvoer en -verwerking van berichten vaak goedkope is, levert prefetch doorvoer aanzienlijke voordelen.
+Als u een hoge door Voer en bericht verwerking nodig hebt, is de prefetch een aanzienlijke doorvoer voordelen.
 
-De maximale prefetch aantal en de vergrendelingsduur van de is geconfigureerd voor de wachtrij of abonnement moeten worden verdeeld, zodat de time-out van de vergrendeling ten minste groter is dan de cumulatieve verwacht bericht verwerkingstijd voor de maximale grootte van de buffer prefetch, plus één bericht. Op hetzelfde moment, de time-out van de vergrendeling niet had zo lang dat berichten groter zijn dan de maximale [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) wanneer ze per ongeluk worden verwijderd, dus de vergrendeling verloopt voordat opnieuw wordt bezorgd vereisen.
+Het maximum aantal prefetch en de vergrendelings duur die zijn geconfigureerd voor de wachtrij of het abonnement moeten evenwichtig worden verdeeld, zodat de time-out van de vergren deling ten minste de cumulatieve verwachte verwerkings tijd overschrijdt voor de maximale grootte van de prefetch-buffer, plus één bericht. Tegelijkertijd moet de time-out van de vergren deling niet zo lang zijn dat berichten de maximale [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) kunnen overschrijden wanneer ze per ongeluk zijn verwijderd, waardoor de vergren deling moet verlopen voordat ze opnieuw worden geleverd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Service Bus-berichten, de volgende onderwerpen:
+Zie de volgende onderwerpen voor meer informatie over Service Bus Messa ging:
 
 * [Service Bus-wachtrijen, -onderwerpen en -abonnementen](service-bus-queues-topics-subscriptions.md)
 * [Aan de slag met Service Bus-wachtrijen](service-bus-dotnet-get-started-with-queues.md)

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9be353e6a030708ea0b9939689d8669506d3b80
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6a920e58f1ffd4c3e3e9769bf6346100a8677b90
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289030"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760046"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Zelf studie: Azure AD-eenmalige aanmelding (SSO) integreren met NetSuite
 
@@ -98,8 +98,12 @@ Ga als volgt te werk om Azure AD SSO in te scha kelen in de Azure Portal:
     | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
     | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
-    > [!NOTE]
-    > De waarden in de voor gaande Url's zijn niet echt. Werk deze bij met de daad werkelijke antwoord-URL. Neem contact op met het [ondersteunings team van de client voor NetSuite](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)om de waarde op te halen. U kunt ook verwijzen naar de indelingen die worden weer gegeven in de sectie **basis configuratie van SAML** in de Azure Portal.
+    * U krijgt de **<`Account ID`>** waarde in de sectie configuratie van het onderdeel Netsuite, die verderop in de zelf studie wordt beschreven in stap 8 onder configuratie van het Netsuite. U vindt het exacte domein (zoals system.na0.netsuite.com in dit geval).
+
+        ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/domain-value.png)
+
+        > [!NOTE]
+        > De waarden in de voor gaande Url's zijn niet echt. Werk deze bij met de daad werkelijke antwoord-URL. Neem contact op met het [ondersteunings team van de client voor NetSuite](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)om de waarde op te halen. U kunt ook verwijzen naar de indelingen die worden weer gegeven in de sectie **basis configuratie van SAML** in de Azure Portal.
 
 1. De toepassing NetSuite verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerk toewijzingen moet toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
@@ -204,7 +208,7 @@ In deze sectie schakelt u gebruiker B. Simon in voor het gebruik van eenmalige a
 
     b. Kopieer de waarde van de **account-id** in het deel venster **Bedrijfs gegevens** in de rechter kolom.
 
-    c. Plak de **account-id** die u hebt gekopieerd uit het NetSuite-account in het vak **kenmerk waarde** in azure AD. 
+    c. Plak de **account-id** die u hebt gekopieerd uit het NetSuite-account in het vak **kenmerk waarde** in azure AD.
 
 10. Voordat gebruikers eenmalige aanmelding kunnen gebruiken met NetSuite moeten ze over de juiste machtigingen beschikken in NetSuite. Ga als volgt te werk om deze machtigingen toe te wijzen:
 

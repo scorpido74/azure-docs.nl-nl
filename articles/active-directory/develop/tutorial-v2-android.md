@@ -15,12 +15,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 81a6d61580eb97e5793e05faf204f1acba19c1f5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d851e23e8f6915c7d52565f18eff4a73bd96c9c0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701277"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758832"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Zelf studie: gebruikers aanmelden en de Microsoft Graph aanroepen vanuit een Android-toepassing 
 
@@ -85,7 +85,7 @@ Als u nog geen Android-toepassing hebt, voert u de volgende stappen uit om een n
 6. Klik in de sectie **hash van hand tekening** van de pagina **uw Android-app configureren** op **een hash voor ontwikkel handtekeningen genereren.** Kopieer de opdracht voor het hulp programma om te gebruiken voor uw platform.
 
    > [!Note]
-   > Het hulp programma voor het maken van de functie is geïnstalleerd als onderdeel van de JDK (Java Development Kit). U moet ook het hulp programma OpenSSL installeren om de opdracht voor het uitvoeren van het programma uit te voeren.
+   > Het hulp programma voor het maken van de functie is geïnstalleerd als onderdeel van de JDK (Java Development Kit). U moet ook het hulp programma OpenSSL installeren om de opdracht voor het uitvoeren van het programma uit te voeren. Raadpleeg de [Android-documentatie over het genereren van een sleutel](https://developer.android.com/studio/publish/app-signing#generate-key) voor meer informatie. 
 
 7. Voer de **hand tekening-hash** gegenereerd door het hulp programma.
 8. Klik op `Configure` en sla de **MSAL-configuratie** op die wordt weer gegeven op de pagina Android- **configuratie** zodat u deze kunt invoeren wanneer u de app later configureert.  Klik op **Gereed**.
@@ -155,8 +155,11 @@ Als u nog geen Android-toepassing hebt, voert u de volgende stappen uit om een n
         jcenter()
     }  
     dependencies{
-        implementation 'com.microsoft.identity.client:msal:1.0.+'
+        implementation 'com.microsoft.identity.client:msal:1.2.+'
         implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
+    }
+    packagingOptions{
+        exclude("META-INF/jersey-module-version") 
     }
     ```
     [Meer informatie over de Microsoft Graph SDK](https://github.com/microsoftgraph/msgraph-sdk-java/)
@@ -190,7 +193,7 @@ import com.microsoft.identity.client.exception.*;
 ## <a name="instantiate-publicclientapplication"></a>PublicClientApplication instantiëren
 #### <a name="initialize-variables"></a>Variabelen initialiseren 
 ```java
-private final static String[] SCOPES = {"User.Read"};
+private final static String[] SCOPES = {"File.Read"};
 /* Azure AD v2 Configs */
 final static String AUTHORITY = "https://login.microsoftonline.com/common";
 private ISingleAccountPublicClientApplication mSingleAccountApp;

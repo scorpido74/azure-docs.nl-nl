@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790895"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760790"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Concepten en samen stelling van vaardig heden in azure Cognitive Search
 
@@ -37,15 +37,15 @@ Vaardig heden zijn geschreven in JSON. U kunt complexe vaardig heden maken met l
 ### <a name="enrichment-tree"></a>Verrijkings structuur
 
 Als u wilt bepalen hoe een vaardig heden uw document progressief verrijkt, gaan we beginnen met de manier waarop het document eruitziet voor elke verrijking. De uitvoer van het kraken van documenten is afhankelijk van de gegevens bron en de geselecteerde geparseerde modus. Dit is ook de status van het document waarvan de [veld Toewijzingen](search-indexer-field-mappings.md) bron inhoud kunnen hebben wanneer er gegevens aan de zoek index worden toegevoegd.
-![Kennis archief in pijplijn diagram](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Knowledge-archief in pijplijn diagram ")
+![Kennis archief in pijplijn diagram](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Kennis archief in pijplijn diagram")
 
 Zodra een document zich in de verrijkings pijplijn bevindt, wordt het weer gegeven als een structuur van inhoud en bijbehorende verrijkingen. Deze boom structuur wordt geïnstantieerd als de uitvoer van het kraken van documenten. De indeling van de verrijkings structuur maakt het mogelijk om meta gegevens te koppelen aan zelfs primitieve gegevens typen, maar dit is geen geldig JSON-object, maar kan worden geprojecteerd naar een geldige JSON-indeling. In de volgende tabel ziet u de status van een document dat in de verrijkings pijplijn wordt ingevoerd:
 
 |Modus data Source\Parsing|Standaard|JSON, JSON-lijnen & CSV|
 |---|---|---|
-|Blobopslag|/document/content<br>/document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
-|SQL|/document/{column1}<br>/document/{column2}<br>...|N/A |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|N/A|
+|Blobopslag|/document/content<br>/document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|N/A |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N/A|
 
  Wanneer vaardig heden worden uitgevoerd, voegen ze nieuwe knoop punten toe aan de verrijkings structuur. Deze nieuwe knoop punten kunnen vervolgens worden gebruikt als invoer voor downstream-vaardig heden, projecteren naar het kennis archief of toewijzing aan index velden. Verrijkingen zijn niet onveranderbaar: als u deze eenmaal hebt gemaakt, kunnen knoop punten niet worden bewerkt. Naarmate uw vaardig heden ingewik kelder wordt, is uw verrijkings structuur, maar niet alle knoop punten in de verrijkings structuur nodig om deze naar de index of het kennis archief te brengen. U kunt slechts een subset van de verrijkingen van de index of het kennis archief selectief blijven.
 
@@ -56,7 +56,7 @@ Voor de rest van dit document gaan we ervan uit dat we een [voor beeld van een h
 Elke vaardigheid vereist een context. Een context bepaalt het volgende:
 +   Het aantal keren dat de vaardigheid wordt uitgevoerd, op basis van de geselecteerde knoop punten. Bij context waarden van het type verzameling wordt een ```/*``` aan het einde toegevoegd, waardoor de vaardigheid één keer wordt aangeroepen voor elke instantie in de verzameling. 
 +   In de verrijkings structuur worden de vaardigheids uitvoer toegevoegd. Uitvoer wordt altijd aan de structuur toegevoegd als onderliggende elementen van het context knooppunt. 
-+   Vorm van de invoer. Voor verzamelingen op meerdere niveaus is het instellen van de context voor de bovenliggende verzameling van invloed op de vorm van de invoer van de vaardigheid. Als u bijvoorbeeld een verrijkings structuur hebt met een lijst met landen, wordt elk verrijkt met een lijst met statussen die een lijst met ZIPcodes bevatten.
++   Vorm van de invoer. Voor verzamelingen op meerdere niveaus is het instellen van de context voor de bovenliggende verzameling van invloed op de vorm van de invoer voor de vaardigheid. Als u bijvoorbeeld een verrijkings structuur hebt met een lijst met landen, wordt elk verrijkt met een lijst met statussen die een lijst met ZIPcodes bevatten.
 
 |Context|Invoer|Vorm van invoer|Aanroepen van vaardig heden|
 |---|---|---|---|
@@ -65,7 +65,7 @@ Elke vaardigheid vereist een context. Een context bepaalt het volgende:
 
 ### <a name="sourcecontext"></a>SourceContext
 
-De `sourceContext` wordt alleen gebruikt voor invoer van vaardig heden en [projecties](knowledge-store-projection-overview.md). Dit wordt gebruikt om geneste multi-level-objecten te bouwen. Mogelijk moet u een nieuwe oject maken om deze te geven als invoer voor een vaardigheid of project in het kennis archief. Omdat verrijkings knooppunten mogelijk geen geldig JSON-object in de verrijkings structuur zijn en refrencing een knoop punt in de structuur retourneert alleen die status van het knoop punt wanneer het werd gemaakt, met behulp van de verrijkingen als vaardigheids invoer of projecties moet u een goed gevormd JSON-object maken. Met de `sourceContext` kunt u een hiërarchisch, anoniem type object maken dat meerdere vaardig heden zou moeten hebben als u de context alleen gebruikt. Het gebruik van `sourceContext` wordt weer gegeven in de volgende sectie. Bekijk de vaardigheids uitvoer die een verrijking heeft gegenereerd om te bepalen of het een geldig JSON-object is en niet een primitief type.
+De `sourceContext` wordt alleen gebruikt voor invoer van vaardig heden en [projecties](knowledge-store-projection-overview.md). Dit wordt gebruikt om geneste multi-level-objecten te bouwen. Mogelijk moet u een nieuw object maken om het door te geven als invoer voor een vaardigheid of project in het kennis archief. Omdat verrijkings knooppunten mogelijk geen geldig JSON-object in de verrijkings structuur zijn en verwijzen naar een knoop punt in de structuur, wordt alleen die status van het knoop punt geretourneerd toen het werd gemaakt, met behulp van de verrijkingen als vaardig heden of projecties moet u een goed gevormd JSON-object maken. Met de `sourceContext` kunt u een hiërarchisch, anoniem type object maken dat meerdere vaardig heden zou moeten hebben als u de context alleen gebruikt. Het gebruik van `sourceContext` wordt weer gegeven in de volgende sectie. Bekijk de vaardigheids uitvoer die een verrijking heeft gegenereerd om te bepalen of het een geldig JSON-object is en niet een primitief type.
 
 ### <a name="projections"></a>Projecties
 
@@ -100,7 +100,7 @@ Het hoofd knooppunt voor alle verrijkingen is `"/document"`. Bij het werken met 
 
 ### <a name="skill-2-language-detection"></a>Taal detectie van vaardigheids #2
  Hoewel de vaardigheid van taal detectie de derde vaardigheid (vaardigheids #3) is gedefinieerd in de vaardig heden, is dit de volgende vaardigheid die moet worden uitgevoerd. Omdat het niet wordt geblokkeerd door invoer te vereisen, wordt deze parallel uitgevoerd met de vorige vaardigheid. Net als de gesplitste vaardigheid die erop wordt toegepast, wordt de vaardigheid van de taal detectie ook één keer voor elk document aangeroepen. De verrijkings structuur heeft nu een nieuw knoop punt voor taal.
- ![verrijkings structuur na vaardigheid #2](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Enrijkere structuur nadat Kwalificatie #2 uitgevoerd.)
+ ![verrijkings structuur na vaardigheid #2](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Verrijkings structuur nadat Kwalificatie #2 uitgevoerd")
  
  ### <a name="skill-3-key-phrases-skill"></a>Vaardig heden #3: vaardigheid van sleutel zinnen 
 
@@ -114,7 +114,7 @@ De kleuren van de connectors in de bovenstaande structuur geven aan dat de verri
 
 ## <a name="save-enrichments-in-a-knowledge-store"></a>Verrijkingen opslaan in een kennis archief 
 
-Vaardig heden definieert ook een kennis archief waar uw verrijkte documenten kunnen worden geprojecteerd als tabellen of objecten. Als u uw verrijkte gegevens in het kennis archief wilt opslaan, definieert u een aantal projecties van uw verrijkte document. Zie [Knowledge Store Overview](knowledge-store-concept-intro.md) (Engelstalig) voor meer informatie over het kennis archief
+Vaardig heden definieert ook een kennis archief waar uw verrijkte documenten kunnen worden geprojecteerd als tabellen of objecten. Als u uw verrijkte gegevens in het kennis archief wilt opslaan, definieert u een aantal projecties voor uw verrijkte document. Zie [Knowledge Store Overview](knowledge-store-concept-intro.md) (Engelstalig) voor meer informatie over het kennis archief
 
 ### <a name="slicing-projections"></a>Segmenteer projecties
 

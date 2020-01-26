@@ -1,6 +1,6 @@
 ---
-title: Overzicht van AMQP 1.0 in Azure Servicebus | Microsoft Docs
-description: Meer informatie over het gebruik van het Advanced Message Queuing Protocol (AMQP 1.0) in Azure.
+title: Overzicht van AMQP 1,0 in Azure Service Bus
+description: Lees hoe Azure Service Bus Advanced Message Queueing Protocol (AMQP) ondersteunt, een open standaard protocol.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,87 +14,87 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 34829482e570354c1ab1e1fd6cec0c96b993cd83
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50d21cfe8136b9c794eae5104bbb34e28f7c1661
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60403909"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759309"
 ---
-# <a name="amqp-10-support-in-service-bus"></a>Ondersteuning van AMQP 1.0 in Service Bus
-De cloudservice van Azure Service Bus- en on-premises [Service Bus voor Windows Server (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) ondersteuning voor het Advanced Message Queueing Protocol (AMQP 1.0). AMQP kunt u platformonafhankelijke, hybride toepassingen met een open standaard protocol bouwen. Toepassingen die gebruikmaken van onderdelen die zijn gebouwd met behulp van verschillende talen en frameworks en die op verschillende besturingssystemen worden uitgevoerd, kunt u maken. Al deze onderdelen verbinding met Service Bus en naadloos maken kunnen uitwisselen gestructureerde business-berichten efficiënt en vol vertrouwen.
+# <a name="amqp-10-support-in-service-bus"></a>Ondersteuning voor AMQP 1,0 in Service Bus
+Zowel de Azure Service Bus Cloud service als on-premises [service bus voor Windows Server (Service Bus 1,1)](https://msdn.microsoft.com/library/dn282144.aspx) ondersteunen het AMQP (Advanced Message queueing Protocol) 1,0. Met AMQP kunt u platform onafhankelijke, hybride toepassingen bouwen met behulp van een open standaard protocol. U kunt toepassingen bouwen met behulp van onderdelen die zijn gebouwd met behulp van verschillende talen en frameworks, en die worden uitgevoerd op verschillende besturings systemen. Al deze onderdelen kunnen verbinding maken met Service Bus en gestructureerde bedrijfs berichten efficiënt en met volledige betrouw baarheid uitwisselen.
 
-## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>Introductie: Wat is AMQP 1.0- en waarom is het belangrijk?
-Bericht-georiënteerde middlewareproducten hebben de eigen protocollen van traditioneel gebruikt voor communicatie tussen client-toepassingen en brokers. Dit betekent dat wanneer u een bepaalde leverancier berichtbroker hebt geselecteerd, u de bibliotheken van de leverancier gebruiken moet om uw clienttoepassingen die broker verbinding te maken. Dit resulteert in een bepaalde mate van afhankelijkheid van de leverancier, omdat wijzigingen in de code in de verbonden toepassingen overzetten van een toepassing naar een ander product vereist. 
+## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>Inleiding: wat is AMQP 1,0 en waarom is het belang rijk?
+Normaal gesp roken hebben op berichten georiënteerde middlewareproducten een eigen protocol gebruikt voor communicatie tussen client toepassingen en makelaars. Dit betekent dat als u de Messa ging-Broker van een bepaalde leverancier hebt geselecteerd, u de bibliotheken van die leverancier moet gebruiken om uw client toepassingen te verbinden met die Broker. Dit leidt tot een zekere mate van afhankelijkheid van die leverancier, omdat het voor de poort van een toepassing naar een ander product nood zakelijk is dat code wijzigingen in alle verbonden toepassingen worden aangebracht. 
 
-Bovendien is het lastig berichtenbrokers verbinding te maken van verschillende leveranciers. Hiervoor wordt meestal op toepassingsniveau bridging verplaatsen van berichten van het ene systeem naar een andere en voor de omzetting tussen hun eigen berichtindelingen. Dit is een algemene vereiste; bijvoorbeeld wanneer u moet een nieuwe, geïntegreerde interface naar oudere ongelijksoortige systemen bieden of na een fusie IT-systemen integreren.
+Bovendien is het maken van de communicatie van Messa ging-Brokers van verschillende leveranciers lastig. Dit vereist meestal bridging op toepassings niveau om berichten van het ene naar het andere systeem te verplaatsen en te vertalen tussen hun eigen bericht indelingen. Dit is een algemene vereiste. bijvoorbeeld wanneer u een nieuwe, geïntegreerde interface moet bieden voor oudere systemen of als u de IT-systemen wilt integreren na een fusie.
 
-De software-industrie is een bedrijf ontdekt; nieuwe moderne programmeertalen en toepassingsframeworks zijn geïntroduceerd in een tempo soms heel breed. Op dezelfde manier de vereisten van de IT-systemen loop der tijd veranderen en ontwikkelaars meer willen profiteren van de nieuwste functies van het platform. Maar ondersteunt soms de leverancier van de geselecteerde messaging geen deze platformen. Omdat messaging-protocollen eigen zijn, is het niet mogelijk is voor anderen voor bibliotheken voor deze nieuwe platformen. Daarom moet u methoden, zoals het bouwen van gateways of bruggen waarmee u kunt echter ook doorgaan met het product messaging.
+De software-industrie is een bedrijf dat snel kan worden verplaatst. nieuwe programmeer talen en toepassings raamwerken worden in een soms bewildering tempo geïntroduceerd. Op dezelfde manier kunnen de vereisten van IT-systemen in de loop van tijd en ontwikkel aars profiteren van de nieuwste platform functies. Soms wordt deze platformen echter niet ondersteund door de leverancier van de geselecteerde berichten. Omdat berichten protocollen eigendom zijn, is het niet mogelijk dat anderen bibliotheken voor deze nieuwe platforms bieden. Daarom moet u benaderingen gebruiken zoals het maken van gateways of bruggen waarmee u het bericht product kunt blijven gebruiken.
 
-De ontwikkeling van het Advanced Message Queuing Protocol (AMQP 1.0) is gemotiveerd door deze problemen. Deze afkomstig is van JP Morgan Chase, die, zoals de meeste financiële dienstverleners, zware gebruikers van de bericht-georiënteerde middleware. Het doel is eenvoudig: het maken van een open standaard-berichtenprotocol dat maakte het mogelijk om met behulp van de onderdelen die zijn gebouwd met behulp van verschillende talen, frameworks en -besturingssystemen op basis van een bericht-toepassingen te bouwen alles met behulp van beste van RAS-onderdelen uit een scala aan leveranciers.
+De ontwikkeling van de Advanced Message Queueing Protocol (AMQP) 1,0 is gemotiveerd door deze problemen. Het is afkomstig van de Morgan-oplossing van JP, wie, zoals de meeste ondernemingen van financiële dienst verlening, zware gebruikers van de bericht georiënteerde middleware. Het doel is eenvoudig: om een open-standaard berichten protocol te maken dat het mogelijk maakt om op berichten gebaseerde toepassingen te bouwen met behulp van onderdelen die zijn gemaakt met verschillende talen, frameworks en besturings systemen, waarbij alles wordt gebruikt voor het gebruik van de beste onderdelen uit een bereik van leverancier.
 
-## <a name="amqp-10-technical-features"></a>Technische AMQP 1.0-functies
-AMQP 1.0 is een efficiënte, betrouwbare, wire-level berichtenprotocol dat u gebruiken kunt voor het bouwen van robuuste, platformonafhankelijke toepassingen berichten. Het protocol is een eenvoudige doel: voor het definiëren van het mechanisme van de beveiligde, betrouwbare en efficiënte overdracht van berichten tussen twee partijen. De berichten zelf zijn gecodeerd met behulp van de weergave van een draagbare gegevens waarmee heterogene afzenders en ontvangers voor het uitwisselen van gestructureerde business-berichten op vol vertrouwen. Hier volgt een overzicht van de belangrijkste functies:
+## <a name="amqp-10-technical-features"></a>Technische functies van AMQP 1,0
+AMQP 1,0 is een efficiënt, betrouwbaar, Wire-level berichten protocol dat u kunt gebruiken voor het bouwen van robuuste, platform onafhankelijke toepassingen voor bericht verwerking. Het protocol heeft een eenvoudig doel: voor het definiëren van de mechanismen van de veilige, betrouw bare en efficiënte overdracht van berichten tussen twee partijen. De berichten zelf worden gecodeerd met behulp van een draag bare gegevens weergave waarmee heterogene afzenders en ontvangers gestructureerde zakelijke berichten kunnen uitwisselen met volledige betrouw baarheid. Hier volgt een overzicht van de belangrijkste functies:
 
-* **Efficiënte**: AMQP 1.0 is een verbinding-georiënteerd protocol dat wordt een binaire codering voor de instructies van het protocol en de business-berichten die via deze worden overgedragen. Deze bevat geavanceerde datatransportbesturing schema's voor het gebruik van het netwerk en de verbonden onderdelen te maximaliseren. Dat gezegd, het protocol is ontworpen een evenwicht tot stand tussen de efficiëntie, flexibiliteit en interoperabiliteit zijn.
-* **Betrouwbare**: De AMQP 1.0-protocol kunnen berichten worden uitgewisseld met een scala aan garanties voor betrouwbaarheid, van fire-and-forgetstromen voor betrouwbare, precies-eenmaal bevestigd levering.
-* **Flexible**: AMQP 1.0 is een flexibel protocol die kan worden gebruikt voor de ondersteuning van verschillende topologieën. Hetzelfde protocol kan worden gebruikt voor communicatie van client-naar-client, client-naar-broker en broker-naar-broker.
-* **Onafhankelijk van de Broker-model**: De AMQP 1.0-specificatie maakt geen geen vereisten voor het model van de berichten die worden gebruikt door een broker. Dit betekent dat het is mogelijk eenvoudig AMQP 1.0-ondersteuning toevoegen aan bestaande berichtenbrokers.
+* **Efficiënt**: AMQP 1,0 is een verbindingsgeoriënteerd protocol dat gebruikmaakt van een binaire code ring voor de instructies van het protocol en de bedrijfs berichten die worden overgedragen. Het bevat geavanceerde schema's voor stroom beheer om het gebruik van het netwerk en de verbonden onderdelen te maximaliseren. Het protocol is zo ontworpen dat het een evenwicht heeft tussen efficiëntie, flexibiliteit en interoperabiliteit.
+* **Betrouw bare**: met het AMQP 1,0-protocol kunnen berichten worden uitgewisseld met een bereik van betrouwbaarheids garanties, van brand en voor verg eten tot betrouw bare, precies eenmaal bevestigde levering.
+* **Flexibel**: AMQP 1,0 is een flexibel protocol dat kan worden gebruikt om verschillende topologieën te ondersteunen. Hetzelfde protocol kan worden gebruikt voor communicatie van client naar client, client naar Broker en Broker-naar-Broker.
+* **Broker-model onafhankelijk**: de AMQP 1,0-specificatie maakt geen vereisten voor het berichten model dat wordt gebruikt door een Broker. Dit betekent dat het mogelijk is om eenvoudig AMQP 1,0-ondersteuning toe te voegen aan bestaande Messa ging-brokers.
 
-## <a name="amqp-10-is-a-standard-with-a-capital-s"></a>AMQP 1.0 is een standaard (met een hoofdletter van ')
-AMQP 1.0 is een internationale standaard, goedgekeurd door de ISO en IEC als ISO/IEC 19464:2014.
+## <a name="amqp-10-is-a-standard-with-a-capital-s"></a>AMQP 1,0 is een standaard (met een kapitaal)
+AMQP 1,0 is een internationale standaard, goedgekeurd door ISO en IEC als ISO/IEC 19464:2014.
 
-AMQP 1.0 is in ontwikkeling sinds 2008 door een groep core van meer dan 20 bedrijven, zowel leveranciers van technologie en eindgebruikers ondernemingen. Gedurende deze periode kan gebruiker ondernemingen hebben bijgedragen hun echte zakelijke vereisten en de technologieleveranciers het protocol om te voldoen aan deze vereisten hebben ontwikkeld. Gedurende het proces hebben leveranciers deelgenomen aan workshops waarin ze heeft voor het valideren van de interoperabiliteit tussen hun implementaties.
+AMQP 1,0 is in ontwikkeling sinds 2008 door een kern groep van meer dan 20 bedrijven, zowel technologie leveranciers als eind gebruikers. Gedurende die tijd hebben gebruikers bedrijven hun eigen bedrijfs vereisten bijgedragen en hebben de technologie leveranciers het protocol ontwikkeld om aan deze vereisten te voldoen. Tijdens het hele proces hebben leveranciers gedeeld in workshops waarin ze zijn gewerkt om de interoperabiliteit tussen hun implementaties te valideren.
 
-In oktober 2011, is de projecten overgezet naar een technisch comité binnen de organisatie voor de Advancement of Structured Information Standards (OASIS) en de Standard OASIS AMQP 1.0 in oktober 2012 uitgebracht. De volgende ondernemingen hebben deelgenomen aan het technische Comité tijdens de ontwikkeling van de standaard:
+In oktober 2011 werd het ontwikkelings werk overgegaan naar een technisch comité binnen de organisatie voor de vervroeging van Structured Information Standards (OASIS) en de OASIS AMQP 1,0 Standard is uitgebracht in oktober 2012. De volgende ondernemingen hebben in het technisch comité gedeeld tijdens de ontwikkeling van de standaard:
 
-* **Technologieleveranciers**: Axway Software, Huawei Technologies, vorm Software, INETCO systemen, Kaazing, Microsoft, Mitre Corporation, Primeton technologieën, voortgang van Software, Red Hat, SITA, Software AG, Solace systemen, VMware, WSO2, Zenika.
-* **Gebruiker ondernemingen**: Bank van-Amerika, tegoed Zwitserland, Deutsche Boerse, Goldman Sachs, JPMorgan zake.
+* **Technologie leveranciers**: Axway software, Huawei Technologies, IIT software, INETCO Systems, Kaazing, micro soft, Mitre Corporation, Primeton Technologies, progressief software, Red Hat, Sita, Software AG, Solace Systems, VMware, WSO2, Zenika.
+* **Gebruikers bedrijven**: Bank of America, Credit Suisse, Deutsche boerse, Goldman Sachs, JPMorgan-nadoende.
 
-De vaak gehoord voordelen van open standaarden zijn onder andere:
+Enkele van de meest voorkomende voor delen van open standaarden zijn:
 
-* Minder kans van de leverancier van vergrendeling
+* Minder kans op het vergren delen van een leverancier
 * Interoperabiliteit
-* Grote beschikbaarheid van bibliotheken en hulpprogramma 's
-* Bescherming tegen veroudering
-* Beschikbaarheid van deskundig personeel
-* Lagere en beheerbare risico
+* Brede Beschik baarheid van bibliotheken en hulpprogram ma's
+* Bescherming tegen economische veroudering
+* Beschik baarheid van deskundig personeel
+* Lager en beheersbaar risico
 
-## <a name="amqp-10-and-service-bus"></a>AMQP 1.0- en Service Bus
-Ondersteuning van AMQP 1.0 in Azure Service Bus betekent dat u kunt nu gebruikmaken van het in de Service Bus-wachtrij en publiceren/abonneren brokered messaging-onderdelen uit een scala aan platformen met behulp van een doeltreffende binaire-protocol. Bovendien kunt u toepassingen bestaat uit onderdelen die zijn gebouwd met behulp van een combinatie van programmeertalen, frameworks en besturingssystemen bouwen.
+## <a name="amqp-10-and-service-bus"></a>AMQP 1,0 en Service Bus
+AMQP 1,0-ondersteuning in Azure Service Bus houdt in dat u nu kunt gebruikmaken van de Service Bus Queuing en Brokered Messaging functies publiceert/abonneert vanuit diverse platformen met behulp van een efficiënt binair protocol. Daarnaast kunt u toepassingen bouwen die bestaan uit onderdelen die zijn gebouwd met behulp van een combi natie van talen, frameworks en besturings systemen.
 
-De volgende afbeelding ziet u een voorbeeld van een implementatie waarbij Java-clients die worden uitgevoerd op Linux, die zijn geschreven met behulp van de standaard Java Message Service (JMS) API en .NET-clients die worden uitgevoerd op Windows, berichten uitgewisseld via Service Bus AMQP 1.0 via exchange.
+In de volgende afbeelding ziet u een voorbeeld implementatie waarbij Java-clients die worden uitgevoerd op Linux, worden geschreven met behulp van de standaard JMS-API (Java Message Service) en .NET-clients die worden uitgevoerd op Windows, Exchange-berichten via Service Bus met AMQP 1,0.
 
 ![][0]
 
-**Afbeelding 1: Voorbeeldscenario voor implementatie met platformonafhankelijke berichtenverzending met behulp van Service Bus en AMQP 1.0**
+**Afbeelding 1: voor beeld van implementatie scenario met verschillende platform berichten met behulp van Service Bus en AMQP 1,0**
 
-Op dit moment worden de volgende clientbibliotheken bekend bij het werken met Service Bus:
+Op dit moment zijn de volgende client bibliotheken bekend om samen te werken met Service Bus:
 
 | Taal | Bibliotheek |
 | --- | --- |
-| Java |Apache Qpid Java Message Service JMS ()-client<br/>VORM Software SwiftMQ Java-clients |
+| Java |JMS-client (Apache Qpid Java Message Service)<br/>IIT software SwiftMQ Java-client |
 | C |Apache Qpid Proton-C |
 | PHP |Apache Qpid Proton-PHP |
 | Python |Apache Qpid Proton-Python |
 | C# |AMQP .NET Lite |
 
-**Afbeelding 2: Tabel met AMQP 1.0-clientbibliotheken**
+**Afbeelding 2: tabel met AMQP 1,0-client bibliotheken**
 
 ## <a name="summary"></a>Samenvatting
-* AMQP 1.0 is een open, betrouwbare berichtenprotocol dat kunt u platformonafhankelijke, hybride toepassingen bouwen. AMQP 1.0 is een OASIS-standaard.
-* Ondersteuning van AMQP 1.0 is nu beschikbaar in Azure Service Bus, evenals Service Bus voor Windows Server (Service Bus 1.1). Prijzen zijn dezelfde als die voor de bestaande protocollen.
+* AMQP 1,0 is een open, betrouw bare berichten protocol dat u kunt gebruiken voor het bouwen van platformoverschrijdende, hybride toepassingen. AMQP 1,0 is een OASIS-standaard.
+* AMQP 1,0-ondersteuning is nu beschikbaar in Azure Service Bus en Service Bus voor Windows Server (Service Bus 1,1). De prijs is hetzelfde als voor de bestaande protocollen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Bent u klaar om meer te weten? Ga naar de volgende koppelingen:
+Klaar voor meer informatie? Ga naar de volgende koppelingen:
 
-* [Met behulp van Servicebus van .NET met AMQP]
-* [Met behulp van Servicebus in Java met AMQP]
-* [Apache Qpid Proton-C installeren op een Azure Linux-VM]
-* [AMQP in WindowsServer-Servicebus]
+* [Service Bus van .NET gebruiken met AMQP]
+* [Service Bus van Java gebruiken met AMQP]
+* [Apache Qpid Proton-C op een Azure Linux-VM installeren]
+* [AMQP in Service Bus voor Windows Server]
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
-[Met behulp van Servicebus van .NET met AMQP]: service-bus-amqp-dotnet.md
-[Met behulp van Servicebus in Java met AMQP]: service-bus-amqp-java.md
-[Apache Qpid Proton-C installeren op een Azure Linux-VM]: service-bus-amqp-apache.md
-[AMQP in WindowsServer-Servicebus]: https://msdn.microsoft.com/library/dn574799.aspx
+[Service Bus van .NET gebruiken met AMQP]: service-bus-amqp-dotnet.md
+[Service Bus van Java gebruiken met AMQP]: service-bus-amqp-java.md
+[Apache Qpid Proton-C op een Azure Linux-VM installeren]: service-bus-amqp-apache.md
+[AMQP in Service Bus voor Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx

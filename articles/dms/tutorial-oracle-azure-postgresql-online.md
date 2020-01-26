@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 45b0c012ec8b8d70c1fad99db40f38fb92daf8a0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 01/24/2020
+ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770642"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759906"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Zelf studie: Oracle migreren naar Azure Database for PostgreSQL online met behulp van DMS (preview)
 
@@ -28,7 +28,7 @@ In deze zelfstudie leert u het volgende:
 >
 > * Evalueer de migratie inspanningen met het hulp programma ora2pg.
 > * Migreer het voorbeeld schema met het ora2pg-hulp programma.
-> * Maak een exemplaar van de Azure Database Migration Service.
+> * Maak een instantie van Azure Database Migration Service.
 > * Een migratie project maken met behulp van Azure Database Migration Service.
 > * De migratie uitvoeren.
 > * De migratie controleren.
@@ -49,7 +49,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 * Down load en Installeer [Oracle 11G release 2 (Standard Edition, Standard Edition One of ENTER prise Edition)](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html).
 * Down load [hier](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002)de voor beeld- **HR** -data base.
-* Down load en installeer ora2pg op [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) of [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf).
+* Down load en [Installeer ora2pg op Windows of Linux](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf).
 * [Een exemplaar maken in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).
 * Maak verbinding met het exemplaar en maak een Data Base met behulp van de instructie in dit [document](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal).
 * Maak een Microsoft Azure Virtual Network voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Raadpleeg de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)voor meer informatie over het maken van een virtueel netwerk, met name de Quick Start-artikelen met stapsgewijze Details.
@@ -198,7 +198,7 @@ Zie de sectie **migratie: schema en gegevens** van de [Oracle to Azure database 
 
 U kunt ervoor kiezen om Oracle-tabel schema's, opgeslagen procedures, pakketten en andere database objecten te converteren om ze post gres compatibel te maken met behulp van ora2pg voordat u een migratie pijplijn in Azure Database Migration Service start. Zie de onderstaande koppelingen voor meer informatie over het werken met ora2pg:
 
-* [Ora2pg installeren in Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf)
+* [Ora2pg installeren in Windows](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
 * [Migratie Cookbook van Oracle naar Azure PostgreSQL](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
 
 Azure Database Migration Service kunt ook het PostgreSQL-tabel schema maken. De service opent het tabel schema in de verbonden Oracle-bron en maakt een compatibel tabel schema in Azure Database for PostgreSQL. Zorg ervoor dat u de schema-indeling valideert en controleert in Azure Database for PostgreSQL nadat Azure Database Migration Service klaar bent met het maken van het schema en het verplaatsen van de gegevens.

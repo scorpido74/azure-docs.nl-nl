@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs gebruiken voor ontwikkelaars | Microsoft Docs
-description: Leer hoe u Azure DevTest Labs gebruiken voor scenario's van ontwikkelaars.
+title: Azure DevTest Labs voor ontwikkel aars gebruiken | Microsoft Docs
+description: Meer informatie over Azure DevTest Labs-functies die kunnen worden gebruikt om te voldoen aan de vereisten voor ontwikkel aars en gedetailleerde stappen die u kunt volgen om een lab in te stellen.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,127 +12,127 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 5a293946e4672e7737f912f42511ad0907ba4a81
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae44696f62a085bf1e798f0915e2bd1e27c3a78f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61293929"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760144"
 ---
-# <a name="use-azure-devtest-labs-for-developers"></a>Azure DevTest Labs gebruiken voor ontwikkelaars
+# <a name="use-azure-devtest-labs-for-developers"></a>Azure DevTest Labs voor ontwikkel aars gebruiken
 Azure DevTest Labs kan worden gebruikt voor het implementeren van allerlei scenario's. Eén van de belangrijkste scenario's is het inzetten van DevTest Labs voor het hosten van ontwikkelmachines voor ontwikkelaars. In dit scenario biedt DevTest Labs deze voordelen:
 
-- Ontwikkelaars kunnen snel inrichten voor hun ontwikkeling-machines op aanvraag.
+- Ontwikkel aars kunnen snel hun ontwikkel machines op aanvraag inrichten.
 - Ontwikkelaars kunnen hun ontwikkelmachines eenvoudig aanpassen als dat nodig is.
-- Beheerders kunnen kosten beheren door ervoor te zorgen dat:
-  - Ontwikkelaars kunnen niet meer virtuele machines bevat dan ze nodig hebt voor ontwikkeling ophalen.
-  - VM's worden afgesloten wanneer deze niet in gebruik. 
+- Beheerders kunnen kosten bepalen door ervoor te zorgen dat:
+  - Ontwikkel aars kunnen niet meer Vm's ophalen dan ze nodig hebben voor de ontwikkeling.
+  - Vm's worden afgesloten wanneer ze niet worden gebruikt. 
 
 ![DevTest Labs gebruiken voor training](./media/devtest-lab-developer-lab/devtest-lab-developer-lab.png)
 
-In dit artikel leert u over verschillende Azure DevTest Labs-functies die kunnen worden gebruikt om te voldoen aan vereisten voor ontwikkelaars en de gedetailleerde stappen die u volgen kunt als u een lab wilt instellen.
+In dit artikel vindt u informatie over diverse Azure DevTest Labs functies die kunnen worden gebruikt om te voldoen aan de vereisten voor ontwikkel aars en gedetailleerde stappen die u kunt volgen om een lab in te stellen.
 
-## <a name="implementing-developer-environments-with-azure-devtest-labs"></a>Implementatie van de developer-omgevingen met Azure DevTest Labs
+## <a name="implementing-developer-environments-with-azure-devtest-labs"></a>Ontwikkel omgevingen met Azure DevTest Labs implementeren
 1. **Het lab maken** 
    
-    Labs vormen het beginpunt in Azure DevTest Labs. Zodra u een lab hebt gemaakt, kunt u uitvoeren zoals het toevoegen van gebruikers (ontwikkelaars) aan het lab instellen van beleidsregels voor het beheren van kosten, het definiëren van VM-installatiekopieën die snel kunnen maken en nog veel meer.  
+    Labs is het begin punt in Azure DevTest Labs. Nadat u een Lab hebt gemaakt, kunt u taken zoals het toevoegen van gebruikers (ontwikkel aars) aan het Lab uitvoeren, beleids regels instellen voor het beheren van de kosten, het definiëren van VM-installatie kopieën die snel kunnen worden gemaakt en meer.  
    
-    Meer informatie door te klikken op de koppelingen in de volgende tabel:
+    Klik op de koppelingen in de volgende tabel voor meer informatie.
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [Een lab maken in Azure DevTest Labs](devtest-lab-create-lab.md) |Leer hoe u een lab maken in Azure DevTest Labs in de Azure-portal. |
-2. **Virtuele machines in enkele minuten met kant-en-marketplace-installatiekopieën en aangepaste installatiekopieën maken** 
+   | [Een lab maken in Azure DevTest Labs](devtest-lab-create-lab.md) |Meer informatie over het maken van een lab in Azure DevTest Labs in het Azure Portal. |
+2. **Binnen enkele minuten Vm's maken met behulp van kant-en-klare Marketplace-installatie kopieën en aangepaste installatie kopieën** 
    
-    U kunt kiezen en-klare afbeeldingen uit een groot aantal installatiekopieën in de Azure Marketplace en zodat ze beschikbaar zijn in het lab. Als de kant-en-afbeeldingen niet voldoen aan uw vereisten, kunt u een aangepaste installatiekopie maken met het maken van een lab-virtuele machine een kant-en-installatiekopie met behulp van Azure Marketplace, de software die u nodig hebt, installeert en het opslaan van de virtuele machine als een aangepaste installatiekopie in het lab.
+    U kunt kant-en-klare installatie kopieën kiezen uit een groot aantal installatie kopieën op de Azure Marketplace en deze beschikbaar maken in het lab. Als de kant-en-klare installatie kopieën niet voldoen aan uw vereisten, kunt u een aangepaste installatie kopie maken door een Lab-VM te maken met een kant-en-klare installatie kopie vanuit Azure Marketplace, alle software die u nodig hebt, te installeren en de virtuele machine op te slaan als een aangepaste installatie kopie in het lab.
 
-    Als u aangepaste installatiekopieën gebruikt, kunt u overwegen een factory installatiekopie te maken en distribueren van uw afbeeldingen. Een afbeelding factory is een configuratie als code-oplossing die regelmatig bouwt en distribueert het geconfigureerde installatiekopieën automatisch. Dit bespaart de tijd die nodig is om het systeem handmatig configureren nadat een virtuele machine is gemaakt met het Basisbesturingssysteem.
+    Als u aangepaste installatie kopieën wilt gebruiken, kunt u een image Factory gebruiken om uw installatie kopieën te maken en te distribueren. Een image Factory is een oplossing voor configuratie-as-code die regel matig uw geconfigureerde installatie kopieën bouwt en distribueert. Dit bespaart de tijd die nodig is om het systeem hand matig te configureren nadat een virtuele machine is gemaakt met het basis besturingssysteem.
   
-    Meer informatie door te klikken op de koppelingen in de volgende tabel:
+    Klik op de koppelingen in de volgende tabel voor meer informatie.
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [Azure Marketplace-installatiekopieën configureren](devtest-lab-configure-marketplace-images.md) |Meer informatie over hoe u kunt Azure Marketplace-installatiekopieën van lijst met toegestane adressen, zodat beschikbaar voor selectie alleen de installatiekopieën die u wilt gebruiken voor de ontwikkelaars.|
-   | [Een aangepaste installatiekopie maken](devtest-lab-create-template.md) |Een aangepaste installatiekopie maken door het vooraf installeren van de software die u nodig hebt, zodat ontwikkelaars kunnen snel een virtuele machine met behulp van de aangepaste installatiekopie maken.|
-   | [Meer informatie over de installatiekopie factory](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |Bekijk een video waarin wordt beschreven hoe u kunt instellen en gebruiken van een installatiekopie-factory.|
+   | [Azure Marketplace-installatie kopieën configureren](devtest-lab-configure-marketplace-images.md) |Meer informatie over hoe u Azure Marketplace-installatie kopieën kunt white list, zodat u alleen de gewenste installatie kopieën voor de ontwikkel aars beschikbaar maakt.|
+   | [Een aangepaste installatie kopie maken](devtest-lab-create-template.md) |Maak een aangepaste installatie kopie door de software die u nodig hebt, vooraf te installeren, zodat ontwikkel aars snel een virtuele machine kunnen maken met behulp van de aangepaste installatie kopie.|
+   | [Meer informatie over image Factory](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |Bekijk een video met een beschrijving van het instellen en gebruiken van een image Factory.|
 
-3. **Herbruikbare sjablonen voor developer-machines maken** 
+3. **Herbruikbare sjablonen maken voor ontwikkel aars-computers** 
    
-    Een formule in Azure DevTest Labs is een lijst van de eigenschap standaardwaarden gebruikt voor het maken van een virtuele machine. U kunt een formule in het lab maken door het verzamelen van een afbeelding, een VM-grootte (een combinatie van CPU en RAM-geheugen) en een virtueel netwerk. Elke ontwikkelaar kan de formule in het lab zien en gebruiken om u te maken van een virtuele machine. 
+    Een formule in Azure DevTest Labs is een lijst met standaard eigenschaps waarden die worden gebruikt om een virtuele machine te maken. U kunt een formule in het lab maken door een installatie kopie, een VM-grootte (een combi natie van CPU en RAM) en een virtueel netwerk te kiezen. Elke ontwikkelaar kan de formule in het lab bekijken en gebruiken om een virtuele machine te maken. 
    
-    Meer informatie door te klikken op de koppelingen in de volgende tabel:
+    Klik op de koppelingen in de volgende tabel voor meer informatie.
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [DevTest Labs-formules voor het maken van virtuele machines beheren](devtest-lab-manage-formulas.md) |Meer informatie over hoe u een formule kunt maken met het ophalen van een installatiekopie van een VM-grootte (combinatie van CPU en RAM-geheugen) en een virtueel netwerk.|
+   | [DevTest Labs-formules beheren om Vm's te maken](devtest-lab-manage-formulas.md) |Meer informatie over het maken van een formule door een afbeelding, VM-grootte (combi natie van CPU en RAM) en een virtueel netwerk op te halen.|
 
-4. **Als u wilt inschakelen, flexibele aanpassing van de VM-artefacten maken**
+4. **Artefacten maken voor het inschakelen van flexibele VM-aanpassing**
 
-   Artefacten worden gebruikt om te implementeren en configureren van uw toepassing nadat een virtuele machine is ingericht. Artefacten kunnen het volgende zijn:
+   Artefacten worden gebruikt voor het implementeren en configureren van uw toepassing nadat een virtuele machine is ingericht. Artefacten kunnen het volgende zijn:
 
-   - Hulpprogramma's die u wilt installeren op de VM - zoals agents, Fiddler en Visual Studio.
-   - Acties die u uitvoeren op de VM wilt-zoals een opslagplaats te klonen.
+   - Hulpprogram ma's die u wilt installeren op de VM, zoals agents, Fiddler en Visual Studio.
+   - Acties die u wilt uitvoeren op de VM, zoals het klonen van een opslag plaats.
    - Programma's die u wilt testen.
 
-   Veel artefacten zijn al beschikbaar out-of-the-box. U kunt uw eigen aangepaste artefacten maken als u meer aanpassingen wilt gebruiken voor uw specifieke behoeften.
+   Veel artefacten zijn al out-of-the-box beschikbaar. U kunt uw eigen aangepaste artefacten maken als u meer aanpassing wilt voor uw specifieke behoeften.
 
-   Meer informatie door te klikken op de koppelingen in de volgende tabel:
+   Klik op de koppelingen in de volgende tabel voor meer informatie.
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [Aangepaste artefacten maken voor uw DevTest Labs-VM](devtest-lab-artifact-author.md) |Maak uw eigen aangepaste artefacten voor de virtuele machines in uw testomgeving.|
-   | [Toevoegen van een Git-opslagplaats voor het opslaan van aangepaste artefacten en Azure Resource Manager-sjablonen voor gebruik in Azure DevTest Labs](devtest-lab-add-artifact-repo.md) |Leer hoe u voor het opslaan van uw aangepaste artefacten in uw eigen persoonlijke Git-opslagplaats.|
+   | [Aangepaste artefacten maken voor uw DevTest Labs VM](devtest-lab-artifact-author.md) |Maak uw eigen aangepaste artefacten voor de virtuele machines in uw Lab.|
+   | [Voeg een Git-opslag plaats toe om aangepaste artefacten en Azure Resource Manager sjablonen op te slaan voor gebruik in Azure DevTest Labs](devtest-lab-add-artifact-repo.md) |Meer informatie over het opslaan van uw aangepaste artefacten in uw eigen persoonlijke Git-opslag plaats.|
 
-5. **Beheersen van kosten**
+5. **Beheer kosten**
    
-    Azure DevTest Labs kunt u een beleid instellen in de testomgeving om op te geven van het maximum aantal virtuele machines dat kan worden gemaakt door ontwikkelaars, in het lab. 
+    Met Azure DevTest Labs kunt u een beleid in het lab instellen om het maximum aantal Vm's op te geven dat door een ontwikkelaar in het Lab kan worden gemaakt. 
    
-    Als uw developer-team heeft een set werken planning en u wilt stoppen alle virtuele machines op een bepaald tijdstip van de dag en automatisch start vervolgens de volgende dag, kunt u die eenvoudig uitvoeren door het instellen van beleidsregels voor automatisch afsluiten en automatisch wordt gestart in de testomgeving. 
+    Als uw ontwikkelaars team een werk schema heeft en u alle Vm's op een bepaald tijdstip van de dag wilt stoppen en vervolgens de volgende dag automatisch opnieuw wilt opstarten, kunt u dit eenvoudig doen door automatisch afsluiten en beleid voor automatisch starten in te stellen in het lab. 
    
-    Ten slotte, als app-ontwikkeling voltooid is, kunt u verwijderen alle virtuele machines in één keer een eenmalige PowerShell-script uit te voeren. 
+    Ten slotte, wanneer het ontwikkelen van apps is voltooid, kunt u alle Vm's tegelijk verwijderen door één Power shell-script uit te voeren. 
    
-    Meer informatie door te klikken op de koppelingen in de volgende tabel:
+    Klik op de koppelingen in de volgende tabel voor meer informatie.
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [Beleid voor lab maken](devtest-lab-set-lab-policy.md) |Kosten beheren met het instellen van beleidsregels in het lab. |
-   | [Alle in het lab-VM's met een PowerShell-script verwijderen](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Verwijder de labs in één bewerking als ontwikkeling voltooid is.|
+   | [Beleid voor lab maken](devtest-lab-set-lab-policy.md) |Beheer kosten door beleids regels in te stellen in het lab. |
+   | [Alle Lab-Vm's verwijderen met een Power shell-script](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Verwijder alle Labs in één bewerking wanneer de ontwikkeling is voltooid.|
 
-1. **Een virtueel netwerk toevoegen aan een virtuele machine** 
+1. **Een virtueel netwerk toevoegen aan een VM** 
    
-    DevTest Labs maakt een nieuw virtueel netwerk (VNET) wanneer er een lab wordt gemaakt. Als u uw eigen VNET hebt geconfigureerd – bijvoorbeeld via ExpressRoute of site-naar-site VPN-kunt u dit VNET toevoegen aan de instellingen van de virtuele netwerken van uw testomgeving zodat deze beschikbaar is bij het maken van virtuele machines.
+    DevTest Labs maakt een nieuw virtueel netwerk (VNET) wanneer een lab wordt gemaakt. Als u uw eigen VNET hebt geconfigureerd, bijvoorbeeld door gebruik te maken van ExpressRoute of site-naar-site VPN, kunt u dit VNET toevoegen aan de virtuele netwerk instellingen van uw Lab, zodat deze beschikbaar zijn wanneer u virtuele machines maakt.
 
-    Er is bovendien een beschikbaar die wordt een virtuele machine toevoegen aan een domein als de virtuele machine wordt gemaakt van Azure Active Directory-domein join artefact. 
+    Daarnaast is er een Azure Active Directory domein samenvoegings artefact beschikbaar waarmee een VM wordt toegevoegd aan een domein wanneer de virtuele machine wordt gemaakt. 
    
-    Meer informatie door te klikken op de koppelingen in de volgende tabel:
+    Klik op de koppelingen in de volgende tabel voor meer informatie.
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [Een virtueel netwerk configureren in Azure DevTest Labs](devtest-lab-configure-vnet.md) |Informatie over het configureren van een virtueel netwerk in Azure DevTest Labs met behulp van de Azure portal.|
+   | [Een virtueel netwerk configureren in Azure DevTest Labs](devtest-lab-configure-vnet.md) |Meer informatie over het configureren van een virtueel netwerk in Azure DevTest Labs met behulp van de Azure Portal.|
 
-6. **In het lab delen met elke ontwikkelaar**
+6. **Het lab delen met elke ontwikkelaar**
    
-    Labs kunnen rechtstreeks worden benaderd via een koppeling die u met uw ontwikkelaars deelt. Ze hoeft te hebben van een Azure-account, zolang ze hebben een [Microsoft-account](devtest-lab-faq.md#what-is-a-microsoft-account). Ontwikkelaars zien geen virtuele machines die zijn gemaakt door andere ontwikkelaars.  
+    Labs kan rechtstreeks worden geopend met behulp van een koppeling die u deelt met uw ontwikkel aars. Ze hebben zelfs nog geen Azure-account nodig, zolang ze een [Microsoft-account](devtest-lab-faq.md#what-is-a-microsoft-account)hebben. Ontwikkel aars kunnen geen Vm's zien die zijn gemaakt door andere ontwikkel aars.  
    
-    Meer informatie door te klikken op de koppelingen in de volgende tabel:
+    Klik op de koppelingen in de volgende tabel voor meer informatie.
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [Een ontwikkelaar toevoegen aan een lab in Azure DevTest Labs](devtest-lab-add-devtest-user.md) |De Azure portal gebruiken voor ontwikkelaars toevoegen aan uw testomgeving.|
-   | [Ontwikkelaars aan de testomgeving met een PowerShell-script toevoegen](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |PowerShell gebruiken voor het automatiseren van ontwikkelaars van toe te voegen aan uw testomgeving. |
-   | [Haal een koppeling naar het lab](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Meer informatie over hoe ontwikkelaars rechtstreeks toegang tot een lab via een hyperlink.|
+   | [Een ontwikkelaar toevoegen aan een lab in Azure DevTest Labs](devtest-lab-add-devtest-user.md) |Gebruik de Azure Portal om ontwikkel aars toe te voegen aan uw Lab.|
+   | [Ontwikkel aars toevoegen aan het lab met behulp van een Power shell-script](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Gebruik Power shell om ontwikkel aars automatisch toe te voegen aan uw Lab. |
+   | [Een koppeling naar het lab ophalen](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Meer informatie over hoe ontwikkel aars rechtstreeks toegang hebben tot een lab via een Hyper link.|
 
-7. **Lab maken voor meer teams automatiseren** 
+7. **Het maken van een Lab automatiseren voor meer teams** 
    
-    U kunt lab maken, met inbegrip van aangepaste instellingen door Resource Manager-sjabloon maken en deze opnieuw maken van identieke labs automatiseren. 
+    U kunt het maken van een Lab automatiseren, met inbegrip van aangepaste instellingen, door een resource manager-sjabloon te maken en deze te gebruiken om opnieuw identieke lessen te maken. 
    
-    Meer informatie door te klikken op de koppelingen in de volgende tabel:
+    Klik op de koppelingen in de volgende tabel voor meer informatie.
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [Een lab met behulp van Resource Manager-sjabloon maken](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Labs maken in Azure DevTest Labs met behulp van Resource Manager-sjablonen. |
+   | [Een lab maken met een resource manager-sjabloon](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Maak Labs in Azure DevTest Labs met behulp van Resource Manager-sjablonen. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

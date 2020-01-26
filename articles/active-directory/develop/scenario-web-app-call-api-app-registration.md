@@ -14,26 +14,26 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bcb4fa5eb5889698174b65eb576c9caf0c82f857
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5a57fcef3569734964bf6e8a41faa49800798f9b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701668"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759054"
 ---
-# <a name="web-app-that-calls-web-apis---app-registration"></a>Web-app die web-Api's aanroept-app-registratie
+# <a name="a-web-app-that-calls-web-apis-app-registration"></a>Een web-app die web-Api's aanroept: app-registratie
 
-Een web-app die web-Api's aanroept, heeft dezelfde registratie als gebruikers voor het aanmelden via een web-app. Daarom moet u de instructies in de [Web-app volgen waarmee gebruikers zich kunnen aanmelden-app-registratie](scenario-web-app-sign-user-app-registration.md)
+Een web-app die web-Api's aanroept, heeft dezelfde registratie als een web-app die gebruikers ondertekent in. Volg de instructies in [een web-app die zich in gebruikers aanmeldt: app-registratie](scenario-web-app-sign-user-app-registration.md).
 
-Omdat de web-app nu web-Api's aanroept, wordt het een vertrouwelijke client toepassing. Daarom is er een stukje extra registratie vereist: het moet geheimen (client referenties) delen met het micro soft Identity-platform.
+Echter, omdat de web-app nu ook Web-Api's aanroept, wordt het een vertrouwelijke client toepassing. Daarom is een extra registratie vereist. De app moet client referenties of *geheimen*delen met het micro soft Identity-platform.
 
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
+[!INCLUDE [Registration of client secrets](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
 ## <a name="api-permissions"></a>API-machtigingen
 
-Webtoepassingen roepen Api's namens de aangemelde gebruiker aan. Ze moeten gedelegeerde machtigingen aanvragen. Zie machtigingen voor [toegang tot Web-Api's toevoegen](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis) voor meer informatie.
+Web apps roepen namens de aangemelde gebruiker Api's aan. Hiervoor moeten ze *gedelegeerde machtigingen*aanvragen. Zie [machtigingen voor toegang tot Web-Api's toevoegen](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Configuratie van de app-code](scenario-web-app-call-api-app-configuration.md)
+> [Een web-app die web-Api's aanroept: code configuratie](scenario-web-app-call-api-app-configuration.md)

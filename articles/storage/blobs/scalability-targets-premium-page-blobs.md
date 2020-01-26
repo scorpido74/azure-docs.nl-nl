@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 39153b05b16395cf2dfc0511efa601d1cc4da550
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749701"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756246"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Schaalbaarheids-en prestatie doelen voor Premium-pagina-Blob Storage-accounts
 
@@ -31,7 +31,7 @@ Voor Premium-pagina-Blob Storage-accounts gelden de volgende schaalbaarheids doe
 
 | Totale account capaciteit                            | Totale band breedte voor een lokaal redundante opslag account                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |
-| Schijf capaciteit: 35 TB <br>Moment opname capaciteit: 10 TB | Maxi maal 50 gigabits per seconde voor inkomend<sup>1</sup> + uitgaand<sup>2</sup> |
+| Schijf capaciteit: 4 TB (afzonderlijke schijf)/35 TB (cumulatief totaal van alle schijven) <br>Moment opname capaciteit: 10 TB | Maxi maal 50 gigabits per seconde voor inkomend<sup>1</sup> + uitgaand<sup>2</sup> |
 
 <sup>1</sup> alle gegevens (aanvragen) die worden verzonden naar een opslag account
 

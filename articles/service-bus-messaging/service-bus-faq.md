@@ -1,22 +1,22 @@
 ---
 title: Veelgestelde vragen over Azure Service Bus | Microsoft Docs
-description: Beantwoordt enkele veelgestelde vragen over Azure Service Bus.
+description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Service Bus.
 services: service-bus-messaging
 author: axisc
 manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c303e2b691f8e7aa7ea3c8fcc69e39d7970ef54e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75352879"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760246"
 ---
-# <a name="service-bus-faq"></a>Veelgestelde vragen over Service Bus
+# <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-Veelgestelde vragen (FAQ)
 
 In dit artikel worden enkele veelgestelde vragen over Microsoft Azure Service Bus beschreven. U kunt ook de [Veelgestelde vragen over Azure-ondersteuning](https://azure.microsoft.com/support/faq/) bezoeken voor algemene Azure-prijzen en-ondersteunings informatie.
 

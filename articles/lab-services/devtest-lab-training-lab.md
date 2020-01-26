@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs gebruiken voor training | Microsoft Docs
-description: Leer hoe u Azure DevTest Labs gebruiken voor training scenario's.
+title: Azure DevTest Labs voor training gebruiken | Microsoft Docs
+description: In dit artikel vindt u gedetailleerde stappen die u kunt volgen om een lab in te stellen voor training in Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,94 +11,94 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 0a7ce1640636c6fba246584d098043a91990b9a0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8f0a930d6e3c04548ade71f6d4e3294114eb60a2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622832"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759974"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Azure DevTest Labs gebruiken voor training
-Azure DevTest Labs kan worden gebruikt voor het implementeren van veel belangrijke scenario's naast ontwikkelen en testen. Een van deze scenario's is het instellen van een lab voor training. Azure DevTest Labs kunt u maken van een lab waarin u aangepaste sjablonen die elke leerling gebruiken kunt voor het maken van identieke en geïsoleerde omgevingen voor training kunt opgeven. U kunt beleid om ervoor te zorgen dat training omgevingen beschikbaar voor elke leerling zijn alleen wanneer ze deze nodig hebt en voldoende resources - zoals virtuele machines - vereiste voor de training bevatten toepassen. Ten slotte kunt u de testomgeving eenvoudig delen met stagiairs, die ze in één klik kunnen openen.
+Azure DevTest Labs kunnen worden gebruikt voor het implementeren van veel belang rijke scenario's naast dev/test. Een van deze scenario's is het instellen van een Lab voor training. Met Azure DevTest Labs kunt u een lab maken waarin u aangepaste sjablonen kunt opgeven die elke getrainde kan gebruiken om identieke en geïsoleerde omgevingen te maken voor training. U kunt beleids regels Toep assen om ervoor te zorgen dat de trainings omgevingen alleen beschikbaar zijn voor elke getrainde wanneer ze deze nodig hebben en voldoende resources bevatten, zoals virtuele machines, die vereist zijn voor de training. Ten slotte kunt u het lab eenvoudig delen met trainees, dat ze met één klik kunnen openen.
 
 ![DevTest Labs gebruiken voor training](./media/devtest-lab-training-lab/devtest-lab-training.png)
 
-Azure DevTest Labs voldoet aan de volgende vereisten die nodig zijn voor het trainen in een virtuele omgeving: 
+Azure DevTest Labs voldoet aan de volgende vereisten die nodig zijn voor het uitvoeren van training in elke virtuele omgeving: 
 
-* Stagiairs zien virtuele machines die zijn gemaakt door andere stagiairs niet
-* Elke machine training moeten identiek zijn
-* Stagiairs kunnen snel inrichten voor hun omgevingen voor training
-* Kosten beheren door ervoor te zorgen dat stagiairs meer virtuele machines bevat dan ze nodig voor de trainings- en ook virtuele machines afsluiten hebt wanneer ze niet gebruiken kunnen niet ophalen
-* In het lab training eenvoudig delen met elke leerling
-* In het lab training steeds weer opnieuw gebruiken
+* Trainees kan geen Vm's zien die zijn gemaakt door andere trainees
+* Elke trainings machine moet identiek zijn
+* Trainees kunnen snel hun trainings omgevingen inrichten
+* Beheer kosten door ervoor te zorgen dat trainees niet meer Vm's kan ophalen dan nodig is voor de training en om ook Vm's te kunnen afsluiten wanneer ze deze niet gebruiken
+* Deel het trainings Lab eenvoudig met elke getrainde
+* Het trainings Lab opnieuw en opnieuw gebruiken
 
-In dit artikel leert u over verschillende Azure DevTest Labs-functies die kunnen worden gebruikt om te voldoen aan de eerder beschreven Trainingsvereisten en gedetailleerde stappen die u volgen kunt om het instellen van een testomgeving voor training.  
+In dit artikel vindt u informatie over diverse Azure DevTest Labs functies die kunnen worden gebruikt om te voldoen aan de eerder beschreven trainings vereisten en gedetailleerde stappen die u kunt volgen om een Lab voor training in te stellen.  
 
-## <a name="implementing-training-with-azure-devtest-labs"></a>Implementatie van training met Azure DevTest Labs
+## <a name="implementing-training-with-azure-devtest-labs"></a>Training implementeren met Azure DevTest Labs
 1. **Het lab maken** 
    
-    Labs vormen het beginpunt in Azure DevTest Labs. Zodra u een lab hebt gemaakt, kunt u taken uitvoeren zoals als gebruikers (stagiairs) toevoegen aan het lab, beleid instellen voor kosten te beheren, het definiëren van VM-installatiekopieën die snel kunnen maken, en meer.   
+    Labs is het begin punt in Azure DevTest Labs. Nadat u een Lab hebt gemaakt, kunt u taken zoals gebruikers toevoegen (trainees) aan het Lab uitvoeren, beleids regels instellen om de kosten te controleren, VM-installatie kopieën definiëren die snel kunnen worden gemaakt en meer.   
    
-    Meer informatie door te klikken op de koppelingen in de volgende tabel:
-   
-   | Taak | Wat u leert |
-   | --- | --- |
-   | [Een lab maken in Azure DevTest Labs](devtest-lab-create-lab.md) |Leer hoe u een lab maken in Azure DevTest Labs in de Azure-portal. |
-2. **Training virtuele machines in enkele minuten met kant-en-marketplace-installatiekopieën en aangepaste installatiekopieën maken** 
-   
-    U kunt kiezen en-klare afbeeldingen uit een groot aantal installatiekopieën in de Azure Marketplace en beschikbaar maken voor de stagiairs in het lab. Als de kant-en-afbeeldingen niet voldoen aan uw vereisten, kunt u een aangepaste installatiekopie maken met het maken van een lab-virtuele machine met een kant-en-installatiekopie uit Azure Marketplace, installeren van de software die u nodig hebt voor de training en opslaan van de virtuele machine als aangepaste installatiekopie in het lab. 
-   
-    Meer informatie door te klikken op de koppelingen in de volgende tabel:
+    Klik op de koppelingen in de volgende tabel voor meer informatie.
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [Azure Marketplace-installatiekopieën configureren](devtest-lab-configure-marketplace-images.md) |Leer hoe u kunt Azure Marketplace-installatiekopieën whitelist; maken van alleen de installatiekopieën beschikbaar voor selectie wilt u gebruiken voor de training. |
-   | [Een aangepaste installatiekopie maken](devtest-lab-create-template.md) |Een aangepaste installatiekopie maken door het vooraf installeren van de software die u nodig hebt voor de training zodat stagiairs kunnen snel een virtuele machine met behulp van de aangepaste installatiekopie maken. |
-3. **Herbruikbare sjablonen maken voor training-machines** 
+   | [Een lab maken in Azure DevTest Labs](devtest-lab-create-lab.md) |Meer informatie over het maken van een lab in Azure DevTest Labs in het Azure Portal. |
+2. **Maak binnen enkele minuten trainings-Vm's met behulp van kant-en-klare Marketplace-installatie kopieën en aangepaste installatie kopieën** 
    
-    Een formule in Azure DevTest Labs is een lijst van de eigenschap standaardwaarden gebruikt voor het maken van een virtuele machine. U kunt een formule in het lab maken door het verzamelen van een afbeelding, een VM-grootte (een combinatie van CPU en RAM-geheugen) en een virtueel netwerk. Elke leerling kan de formule in het lab zien en gebruiken om u te maken van een virtuele machine. 
+    U kunt kant-en-klare installatie kopieën kiezen uit een groot aantal installatie kopieën op de Azure Marketplace en deze beschikbaar maken voor de trainees in het lab. Als de kant-en-klare installatie kopieën niet voldoen aan uw vereisten, kunt u een aangepaste installatie kopie maken door een Lab-VM te maken met behulp van een kant-en-klare installatie kopie vanuit Azure Marketplace, alle software die u nodig hebt voor de training te installeren en de VM op te slaan als aangepaste installatie kopie in het lab. 
    
-    Meer informatie door te klikken op de koppelingen in de volgende tabel:
-   
-   | Taak | Wat u leert |
-   | --- | --- |
-   | [DevTest Labs-formules voor het maken van virtuele machines beheren](devtest-lab-manage-formulas.md) |Meer informatie over hoe u een formule kunt maken met het ophalen van een installatiekopie van een VM-grootte (combinatie van CPU en RAM-geheugen) en een virtueel netwerk. |
-4. **Beheersen van kosten**
-   
-    Azure DevTest Labs kunt u een beleid instellen in de testomgeving om op te geven van het maximum aantal virtuele machines dat kan worden gemaakt door een leerling in het lab. 
-   
-    Als u bent bezig met meerdere dagen training en wilt stoppen alle virtuele machines op een bepaald tijdstip van de dag en vervolgens automatisch opnieuw opgestart ze de volgende dag, kunt u eenvoudig uitvoeren die door in te stellen automatisch afsluiten en automatisch wordt gestart voor in het lab. 
-   
-    Ten slotte is het zo dat als training voltooid is u alle virtuele machines in één keer kunt verwijderen door het uitvoeren van een enkel PowerShell-script. 
-   
-    Meer informatie door te klikken op de koppelingen in de volgende tabel:
+    Klik op de koppelingen in de volgende tabel voor meer informatie.
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [Beleid voor lab maken](devtest-lab-set-lab-policy.md) |Kosten beheren met het instellen van beleidsregels in het lab. |
-   | [Alle in het lab-VM's met een PowerShell-script verwijderen](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Verwijder de labs in één bewerking als de training voltooid is. |
-5. **De testomgeving met elke leerling delen**
+   | [Azure Marketplace-installatie kopieën configureren](devtest-lab-configure-marketplace-images.md) |Meer informatie over hoe u installatie kopieën van Azure Marketplace kunt white list. u kunt alleen de installatie kopieën die u voor de training wilt selecteren beschikbaar maken. |
+   | [Een aangepaste installatie kopie maken](devtest-lab-create-template.md) |Maak een aangepaste installatie kopie door de software die u nodig hebt voor de training vooraf te installeren, zodat trainees snel een virtuele machine kan maken met behulp van de aangepaste installatie kopie. |
+3. **Herbruikbare sjablonen voor trainings machines maken** 
    
-    Labs kunnen rechtstreeks worden benaderd via een koppeling die u met uw stagiairs deelt. Uw stagiairs hoef niet eens een Azure-account hebben, zolang ze hebben een [Microsoft-account](devtest-lab-faq.md#what-is-a-microsoft-account). Stagiairs zien geen virtuele machines die zijn gemaakt door andere stagiairs.  
+    Een formule in Azure DevTest Labs is een lijst met standaard eigenschaps waarden die worden gebruikt om een virtuele machine te maken. U kunt een formule in het lab maken door een installatie kopie, een VM-grootte (een combi natie van CPU en RAM) en een virtueel netwerk te kiezen. Elke trainer kan de formule in het lab zien en gebruiken om een virtuele machine te maken. 
    
-    Meer informatie door te klikken op de koppelingen in de volgende tabel:
-   
-   | Taak | Wat u leert |
-   | --- | --- |
-   | [Een leerling toevoegen aan een lab in Azure DevTest Labs](devtest-lab-add-devtest-user.md) |Gebruik de Azure-portal stagiairs toevoegen aan uw testomgeving training. |
-   | [Stagiairs toevoegen aan het lab met een PowerShell-script](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |PowerShell gebruiken voor het automatiseren van toe te voegen stagiairs aan uw lab training. |
-   | [Haal een koppeling naar het lab](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Meer informatie over hoe een lab zijn rechtstreeks toegankelijk via een hyperlink. |
-6. **In het lab opnieuw gebruiken** 
-   
-    U kunt lab maken, met inbegrip van aangepaste instellingen door Resource Manager-sjabloon maken en deze opnieuw maken van identieke labs automatiseren. 
-   
-    Meer informatie door te klikken op de koppelingen in de volgende tabel:
+    Klik op de koppelingen in de volgende tabel voor meer informatie.
    
    | Taak | Wat u leert |
    | --- | --- |
-   | [Een lab met behulp van Resource Manager-sjabloon maken](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Labs maken in Azure DevTest Labs met behulp van Resource Manager-sjablonen. |
+   | [DevTest Labs-formules beheren om Vm's te maken](devtest-lab-manage-formulas.md) |Meer informatie over het maken van een formule door een afbeelding, VM-grootte (combi natie van CPU en RAM) en een virtueel netwerk op te halen. |
+4. **Beheer kosten**
+   
+    Met Azure DevTest Labs kunt u een beleid in het lab instellen om het maximum aantal Vm's op te geven dat door een getrainer in het Lab kan worden gemaakt. 
+   
+    Als u een training voor meerdere dagen wilt uitvoeren en u alle Vm's op een bepaald tijdstip van de dag wilt stoppen en vervolgens de volgende dag automatisch opnieuw wilt opstarten, kunt u dit eenvoudig doen door automatisch afsluiten en beleid voor automatisch starten in te stellen in het lab. 
+   
+    Ten slotte, wanneer de training is voltooid, kunt u alle Vm's tegelijk verwijderen door één Power shell-script uit te voeren. 
+   
+    Klik op de koppelingen in de volgende tabel voor meer informatie.
+   
+   | Taak | Wat u leert |
+   | --- | --- |
+   | [Beleid voor lab maken](devtest-lab-set-lab-policy.md) |Beheer kosten door beleids regels in te stellen in het lab. |
+   | [Alle Lab-Vm's verwijderen met een Power shell-script](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Verwijder alle Labs in één bewerking wanneer de training is voltooid. |
+5. **Deel het lab met elke getrainde**
+   
+    Labs kan rechtstreeks worden geopend met behulp van een koppeling die u deelt met uw trainees. Uw trainees hebben zelfs een Azure-account nodig, zolang ze een [Microsoft-account](devtest-lab-faq.md#what-is-a-microsoft-account)hebben. Trainees kan geen Vm's zien die zijn gemaakt door andere trainees.  
+   
+    Klik op de koppelingen in de volgende tabel voor meer informatie.
+   
+   | Taak | Wat u leert |
+   | --- | --- |
+   | [Een Train toevoegen aan een lab in Azure DevTest Labs](devtest-lab-add-devtest-user.md) |Gebruik de Azure Portal om trainees toe te voegen aan uw trainings Lab. |
+   | [Trainees toevoegen aan het lab met behulp van een Power shell-script](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Gebruik Power shell om het toevoegen van trainees aan uw trainings Lab te automatiseren. |
+   | [Een koppeling naar het lab ophalen](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Meer informatie over hoe een Lab rechtstreeks kan worden geopend via een Hyper link. |
+6. **Het lab opnieuw en opnieuw gebruiken** 
+   
+    U kunt het maken van een Lab automatiseren, met inbegrip van aangepaste instellingen, door een resource manager-sjabloon te maken en deze te gebruiken om opnieuw identieke lessen te maken. 
+   
+    Klik op de koppelingen in de volgende tabel voor meer informatie.
+   
+   | Taak | Wat u leert |
+   | --- | --- |
+   | [Een lab maken met een resource manager-sjabloon](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Maak Labs in Azure DevTest Labs met behulp van Resource Manager-sjablonen. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

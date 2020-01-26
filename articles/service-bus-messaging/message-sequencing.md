@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-berichtvolgorde en -timestamps | Microsoft Docs
-description: Volgorde van Service Bus-bericht en volgorde met tijdstempels behouden
+title: Azure Service Bus bericht sequentiëren en tijds tempels | Microsoft Docs
+description: In dit artikel wordt uitgelegd hoe u sequentiëren en volg orde (met tijds tempels) van Azure Service Bus berichten kunt behouden.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,44 +11,44 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 8665d0a1fccecf5521a553a894e2a55e52384ec3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 54d774c00fa650cb9608f46cc07b9d899709eaa5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402714"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756314"
 ---
 # <a name="message-sequencing-and-timestamps"></a>Berichtvolgorde en -timestamps
 
-Sequentiëren en tijdstempel zijn twee functies die altijd zijn ingeschakeld op alle Service Bus-entiteiten en surface via de [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) en [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) eigenschappen van ontvangen of bekeken berichten.
+Sequentiëren en tijds tempels zijn twee functies die altijd zijn ingeschakeld voor alle Service Bus entiteiten en het Opper vlak via de eigenschappen [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) en [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) van ontvangen of bekeken berichten.
 
-Voor gevallen waarin absolute volgorde van berichten belangrijk is en/of waarin moet een gebruiker een betrouwbare unieke id voor berichten, de broker stempels berichten met een gat gratis, verhogen volgnummer ten opzichte van de wachtrij of onderwerp. Voor gepartitioneerde entiteiten, is het volgnummer uitgegeven ten opzichte van de partitie.
+Voor de gevallen waarin de absolute volg orde van berichten significant is en/of waarin een consument een betrouw bare unieke id voor berichten nodig heeft, stemt de Broker berichten met een lege ruimte en een groter Volg nummer relatief ten opzichte van de wachtrij of het onderwerp. Voor gepartitioneerde entiteiten wordt het Volg nummer uitgegeven ten opzichte van de partitie.
 
-De **SequenceNumber** waarde is een unieke 64-bits geheel getal zijn toegewezen aan een bericht wanneer ze worden geaccepteerd en door de broker en functies als de interne id opgeslagen. Voor gepartitioneerde entiteiten weerspiegelen de bovenste 16 bits de partitie-id. Volgnummers meenemen op nul wanneer het bereik 48/64-bits is verbruikt.
+De waarde **SequenceNumber** is een uniek 64-bits geheel getal dat is toegewezen aan een bericht dat wordt geaccepteerd en opgeslagen door de Broker en fungeert als interne id. Voor gepartitioneerde entiteiten weerspiegelt de bovenste 16 bits de partitie-id. Reeks nummers worden gekanteld tot nul wanneer het 48/64-bits bereik wordt uitgeput.
 
-Het volgnummer kan worden vertrouwd als een unieke id omdat deze is toegewezen door een CA-centraal en neutrale en niet door clients. Deze ook vertegenwoordigt de waarde true volgorde van aankomst van en nauwkeuriger is dan een tijdstempel als een criterium volgorde omdat tijdstempels geen een hoog genoeg resolutie extreme bericht tarieven en zijn mogelijk onderhevig aan (maar minimale) tijdsverschil in situaties waar de broker eigendom van omgevingen tussen knooppunten.
+Het Volg nummer kan worden vertrouwd als een unieke id omdat het wordt toegewezen door een centrale en neutrale instantie en niet door clients. Het bevat ook de werkelijke volg orde van aankomst en is nauw keuriger dan een tijds tempel als een order criterium, omdat tijds tempels mogelijk niet een hoge resolutie hebben tegen extreme bericht snelheden en een klok snelheid kunnen ondergaan in situaties waarin de Broker eigendoms overgangen tussen knoop punten.
 
-De absolute aankomst volgorde belangrijk is, bijvoorbeeld in zakelijke scenario's waarin een beperkt aantal goederen aangeboden worden verwerkt op basis van first-komen-eerst maalt zolang de voorraad strekt laatst; concert kaartverkoop vormen een voorbeeld.
+De absolute aankomst order is bijvoorbeeld van belang voor bedrijfs scenario's waarin een beperkt aantal aangeboden goederen wordt geleverd op basis van het eerste geleverde product, terwijl het voor het laatst wordt geleverd. de verkoop van concert tickets is een voor beeld.
 
-De mogelijkheid tijdstempel fungeert als een neutrale en betrouwbaar (CA) die nauwkeurig de UTC-tijd van aankomst van een bericht weergegeven legt in de **EnqueuedTimeUtc** eigenschap. De waarde is handig als een bedrijfsscenario is afhankelijk van deadlines, zoals of een werkitem is ingediend op een bepaalde datum vóór middernacht, maar de verwerking is uiterst achter de achterstand in de replicatiewachtrij.
+De functie voor tijds tempels fungeert als een neutrale en betrouw bare instantie die de UTC-tijd van de aankomst van een bericht nauw keurig vastlegt, weer gegeven in de eigenschap **EnqueuedTimeUtc** . De waarde is handig als een bedrijfs scenario afhankelijk is van deadlines, zoals of een werk item is verzonden op een bepaalde datum vóór middernacht, maar de verwerking ver achter de achterstand van de wachtrij is.
 
 ## <a name="scheduled-messages"></a>Geplande berichten
 
-U kunt berichten naar een wachtrij of onderwerp voor vertraagde verwerking; indienen Als u bijvoorbeeld voor het plannen van een taak weer beschikbaar voor verwerking door een systeem op een bepaalde periode. Deze mogelijkheid realiseert een betrouwbare gedistribueerde planner die op basis van tijd.
+U kunt berichten verzenden naar een wachtrij of onderwerp voor een vertraagde verwerking. bijvoorbeeld, om een taak te plannen die op een bepaald moment beschikbaar moet worden voor verwerking door een systeem. Deze functie realiseert een betrouw bare, gedistribueerde op tijd gebaseerde planner.
 
-Geplande berichten doen niet realiseren in de wachtrij tot het tijdstip gedefinieerd in de wachtrij plaatsen. Vóór die tijd kunnen geplande berichten worden geannuleerd. Annulering wordt het bericht verwijderd.
+Geplande berichten worden niet in de wachtrij realiseren tot de gedefinieerde tijd voor Intijd. De geplande berichten kunnen vóór die tijd worden geannuleerd. Met de annulering wordt het bericht verwijderd.
 
-U kunt plannen dat berichten door in te stellen de [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) eigenschap bij het verzenden van een bericht dat het pad naar de normale verzenden of expliciet met de [ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) API. De laatste retourneert onmiddellijk het geplande bericht **SequenceNumber**, die u later kunt gebruiken om te annuleren de gepland bericht, indien nodig. Geplande berichten en hun volgnummers kunnen ook worden gedetecteerd met behulp van [door berichten bladert](message-browsing.md).
+U kunt berichten plannen door de eigenschap [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) in te stellen wanneer u een bericht verzendt via het gewone verzend traject of expliciet met de [ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) -API. De laatste retourneert onmiddellijk de **SequenceNumber**van het geplande bericht, dat u later kunt gebruiken om het geplande bericht zo nodig te annuleren. Geplande berichten en hun Volg nummers kunnen ook worden gedetecteerd met behulp van [bericht bladeren](message-browsing.md).
 
-De **SequenceNumber** voor een gepland bericht is alleen geldig bij het bericht is in deze status. Als de bericht-overgangen naar de actieve status, het bericht wordt toegevoegd aan de wachtrij als waren in de wachtrij op de huidige chatberichten, waaronder het toewijzen van een nieuwe **SequenceNumber**.
+De **SequenceNumber** voor een gepland bericht is alleen geldig wanneer het bericht deze status heeft. Wanneer het bericht wordt overgezet naar de actieve status, wordt het bericht toegevoegd aan de wachtrij, alsof het is in de huidige chat opgenomen, waarbij een nieuwe **SequenceNumber**is toegewezen.
 
-Omdat de functie is verankerd op afzonderlijke berichten en berichten kunnen in de wachtrij alleen één keer worden, ondersteunt Service Bus geen terugkerende schema's voor berichten.
+Omdat de functie verankerd is voor afzonderlijke berichten en berichten slechts eenmaal in de wachtrij kunnen worden geplaatst, ondersteunt Service Bus geen terugkerende schema's voor berichten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Service Bus-berichten, de volgende onderwerpen:
+Zie de volgende onderwerpen voor meer informatie over Service Bus Messa ging:
 
 * [Service Bus-wachtrijen, -onderwerpen en -abonnementen](service-bus-queues-topics-subscriptions.md)
 * [Aan de slag met Service Bus-wachtrijen](service-bus-dotnet-get-started-with-queues.md)

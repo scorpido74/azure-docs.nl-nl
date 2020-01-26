@@ -6,14 +6,14 @@ ms.topic: overview
 ms.date: 09/22/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: 5c6d7ae458c30d462c599042e254f4243daf474c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5b320485001d6cbc457d39ef193ed8c57f7161df
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260868"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760280"
 ---
-# <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Ingebouwde Jupyter-notebooks ondersteunen in Azure Cosmos DB
+# <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Ingebouwde Jupyter-notebooks ondersteunen in Azure Cosmos DB (preview-versie)
 
 Jupyter notebook is een open-source webtoepassing waarmee u documenten kunt maken en delen met Live code, vergelijkingen, visualisaties en tekst. Azure Cosmos DB ondersteunt ingebouwde Jupyter-notebooks voor alle Api's, zoals Cassandra, MongoDB, SQL, Gremlin en Table. Met de ingebouwde ondersteuning voor notebooks voor alle Azure Cosmos DB Api's en gegevens modellen kunt u interactief query's uitvoeren. De Jupyter-notebooks worden uitgevoerd binnen de Azure Cosmos-accounts en ze stellen ontwikkel aars in staat om gegevens te verkennen, gegevens te reinigen, gegevens trans formaties, numerieke simulaties, statistische model lering, gegevens visualisatie en machine learning.
 

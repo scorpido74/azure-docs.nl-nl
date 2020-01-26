@@ -1,6 +1,6 @@
 ---
-title: Asynchrone Service Bus-berichtenservice | Microsoft Docs
-description: Beschrijving van Azure Service Bus asynchrone berichten.
+title: Asynchrone berichten Service Bus | Microsoft Docs
+description: Meer informatie over hoe Azure Service Bus asynchronism ondersteunt via een archief-en doorstuur mechanisme met wacht rijen, onderwerpen en abonnementen.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,60 +12,60 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 50778ae742c1ec66857a6c2fa6250dc3d67e5601
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 554260f403104d815b9b63c576c7ba0a2f3cf1e1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531118"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761029"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Asynchrone berichtpatronen en hoge beschikbaarheid
 
-Asynchrone berichten kan worden geïmplementeerd in een aantal verschillende manieren. Azure Service Bus ondersteunt met wachtrijen, onderwerpen en abonnementen, asynchronism via een winkel en een mechanisme voor doorsturen. Verzenden van berichten met wachtrijen en onderwerpen in de normale werking (synchrone) en ontvangen van berichten van wachtrijen en abonnementen. Toepassingen die u schrijft, is afhankelijk van deze entiteiten die altijd beschikbaar worden gesteld. Wanneer de entiteitsstatus wordt gewijzigd, vanwege allerlei omstandigheden, moet u een manier om aan te bieden van een entiteit met verminderde functionaliteit dat is voor de meeste behoeften geschikt.
+Asynchrone berichten kunnen op verschillende manieren worden geïmplementeerd. Met wacht rijen, onderwerpen en abonnementen ondersteunt Azure Service Bus asynchronism via een mechanisme voor opslaan en door sturen. Bij een normale (synchrone) bewerking verzendt u berichten naar wacht rijen en onderwerpen en ontvangt u berichten van wacht rijen en abonnementen. Toepassingen die u schrijft, zijn afhankelijk van deze entiteiten die altijd beschikbaar zijn. Wanneer de status van de entiteit wordt gewijzigd vanwege diverse omstandigheden, hebt u een manier nodig om een beperkte functionaliteits entiteit te bieden die aan de meeste behoeften kan voldoen.
 
-Asynchrone berichtpatronen toepassingen meestal gebruiken om in te schakelen van een aantal scenario's voor communicatie. U kunt toepassingen waarin clients berichten naar services, verzenden kunnen zelfs wanneer de service wordt niet uitgevoerd op te bouwen. Voor toepassingen die ervaring pieken in communicatie, een wachtrij kunt niveau van de belasting door te geven van een interne buffer-communicatie. Ten slotte, krijgt u een eenvoudige maar effectieve load balancer om berichten te verdelen over meerdere machines.
+Toepassingen gebruiken meestal asynchrone bericht patronen om een aantal communicatie scenario's mogelijk te maken. U kunt toepassingen bouwen waarin clients berichten kunnen verzenden naar Services, zelfs wanneer de service niet wordt uitgevoerd. Voor toepassingen die bursts-communicatie ervaren, kan een wachtrij de belasting helpen inverdelen door een plek voor buffer communicatie te bieden. Ten slotte kunt u een eenvoudige, maar effectief load balancer krijgen om berichten over meerdere computers te verdelen.
 
-U kunt een aantal verschillende manieren waarop deze entiteiten kunnen worden weergegeven is niet beschikbaar voor een duurzaam berichtensysteem gehandhaafd beschikbaarheid van elk van deze entiteiten. In het algemeen zien we de entiteit niet meer beschikbaar zijn voor toepassingen die we in de volgende manieren schrijven:
+Als u de beschik baarheid van een van deze entiteiten wilt behouden, moet u rekening houden met een aantal verschillende manieren waarop deze entiteiten niet beschikbaar kunnen worden gesteld voor een duurzaam berichten systeem. In het algemeen zien we dat de entiteit niet meer beschikbaar is voor toepassingen die we op de volgende verschillende manieren schrijven:
 
-* Kan het verzenden van berichten.
+* Kan geen berichten verzenden.
 * Kan geen berichten ontvangen.
-* Kan geen entiteiten beheren (maken, ophalen, bijwerken of verwijderen van entiteiten).
-* Kan geen contact op met de service.
+* Entiteiten kunnen niet worden beheerd (maken, ophalen, bijwerken of verwijderen van entiteiten).
+* Kan geen verbinding maken met de service.
 
-Voor elk van deze fouten bestaan verschillende foutmodi waarmee een toepassing om door te gaan om uit te voeren werk op basis van bepaalde mate van verminderde functionaliteit. Bijvoorbeeld, een systeem dat u kunt berichten verzenden, maar deze niet meer ontvangen kunt nog steeds orders van klanten ontvangen maar deze orders kan niet worden verwerkt. In dit onderwerp worden de mogelijke problemen die kunnen optreden, en hoe die problemen zijn verholpen. Service Bus heeft een aantal oplossingen die u moet kiezen voor geïntroduceerd en in dit onderwerp worden ook de regels voor het gebruik van deze oplossingen aanmelden.
+Voor elk van deze fouten bestaan er verschillende fout modi die ervoor zorgen dat een toepassing op een zekere mate van verminderde functionaliteit nog meer werk kan uitvoeren. Een systeem dat bijvoorbeeld berichten kan verzenden, maar niet ontvangen, kan nog steeds orders van klanten ontvangen, maar kan deze orders niet verwerken. In dit onderwerp worden mogelijke problemen beschreven die zich kunnen voordoen en hoe deze problemen worden verholpen. Service Bus heeft een aantal beperkende maat regelen geïntroduceerd waarbij u zich moet aanmelden. in dit onderwerp worden ook de regels besproken voor het gebruik van deze opt-in-oplossingen.
 
-## <a name="reliability-in-service-bus"></a>Betrouwbaarheid in Servicebus
-Er zijn verschillende manieren voor het afhandelen van problemen met het bericht en de entiteit en er zijn richtlijnen voor het juiste gebruik van deze oplossingen. Voor meer informatie over de richtlijnen, moet u eerst te begrijpen wat in Service Bus kan mislukken. Vanwege het ontwerp van de Azure-systemen vaak al deze problemen worden tijdelijke. Op hoog niveau uitzien de andere oorzaken van niet beschikbaar zijn als volgt:
+## <a name="reliability-in-service-bus"></a>Betrouw baarheid in Service Bus
+Er zijn verschillende manieren voor het afhandelen van bericht-en entiteits problemen en er zijn richt lijnen voor het juiste gebruik van deze oplossingen. Om inzicht te krijgen in de richt lijnen, moet u eerst begrijpen wat er kan mislukken in Service Bus. Vanwege het ontwerp van Azure Systems moeten al deze problemen kort worden bewaard. Op hoog niveau worden de verschillende oorzaken van niet-beschik baarheid als volgt weer gegeven:
 
-* Beperking van een extern systeem waarop Service Bus hangt ervan af. Beperking optreedt van de interacties met de opslag en rekenresources.
-* Probleem voor een systeem waarop Service Bus hangt ervan af. Een onderdeel van de opslag kan bijvoorbeeld problemen optreden.
-* Fout van Service Bus op één subsysteem. In dit geval een rekenknooppunt kunt krijgen in een inconsistente toestand en moet opnieuw worden opgestart, waardoor alle entiteiten die het resultaat wordt gebruikt om taken te verdelen naar andere knooppunten. Dit kan een korte periode van trage berichtverwerking op zijn beurt veroorzaken.
-* Fout van Service Bus in een Azure-datacenter. Dit is een 'Onherstelbare fout"gedurende welke het systeem niet bereikbaar voor het aantal minuten of een paar uur is.
+* Beperking van een extern systeem waarop Service Bus afhankelijk is. Beperking wordt veroorzaakt door interacties met opslag-en reken resources.
+* Probleem voor een systeem waarvan Service Bus afhankelijk is. Bijvoorbeeld, een bepaald deel van de opslag kan problemen ondervinden.
+* Fout bij het Service Bus van één subsysteem. In deze situatie kan een reken knooppunt een inconsistente status krijgen en moet het knoop punt opnieuw worden opgestart, waardoor alle entiteiten de taak verdeling naar andere knoop punten. Dit kan een korte periode van trage bericht verwerking veroorzaken.
+* Uitval van Service Bus in een Azure-Data Center. Dit is een ' onherstelbare fout ' waarbij het systeem gedurende enkele minuten of enkele uren onbereikbaar is.
 
 > [!NOTE]
-> De term **opslag** kan betekenen zowel Azure Storage en SQL Azure.
+> De term **opslag** kan zowel Azure Storage als SQL Azure betekenen.
 > 
 > 
 
-Service Bus bevat een aantal oplossingen voor deze problemen. De volgende secties worden besproken elk probleem en hun respectieve oplossingen.
+Service Bus bevat een aantal beperkingen voor deze problemen. In de volgende secties worden elk probleem en de bijbehorende oplossingen besproken.
 
 ### <a name="throttling"></a>Beperking
-Met Service Bus kunt beperking gezamenlijke bericht tarief management. Elke afzonderlijke Service Bus-knooppunt ook veel entiteiten nieuwste. Elk van deze entiteiten kunt eisen op het systeem in termen van CPU, geheugen, opslag en andere facetten. Wanneer een van deze facetten gebruik detecteert die groter is dan gedefinieerde drempelwaarden, Service Bus een bepaalde aanvraag kunt weigeren. De oproepende functie ontvangt een [ServerBusyException] [ ServerBusyException] en nieuwe pogingen na tien seconden.
+Met Service Bus kunt u met beperking het beheer van de gezamenlijke bericht snelheid inschakelen. Elk afzonderlijk Service Bus knoop punt is een groot aantal entiteiten. Elk van deze entiteiten voert de vereisten op het systeem uit met betrekking tot CPU, geheugen, opslag en andere facetten. Wanneer een van deze facetten het gebruik detecteert dat de gedefinieerde drempel waarden overschrijdt, kan Service Bus een bepaalde aanvraag weigeren. De aanroeper ontvangt een [ServerBusyException][ServerBusyException] en nieuwe pogingen na 10 seconden.
 
-Als een beperking, moet de code de fout bij het lezen en stoppen van een nieuwe pogingen van het bericht ten minste 10 seconden. Omdat de fout op verschillende onderdelen van de Klanttoepassing plaatsvinden kan, is het waarschijnlijk dat elk onafhankelijk wordt uitgevoerd de logica voor opnieuw proberen. De code kunt verminderen de kans wordt beperkt door in te schakelen op een wachtrij of onderwerp partitioneren.
+Als oplossing moet de code de fout lezen en alle pogingen van het bericht gedurende ten minste tien seconden stoppen. Aangezien de fout kan optreden in delen van de klant toepassing, wordt ervan uitgegaan dat elk stuk de pogings logica onafhankelijk uitvoert. De code kan de waarschijnlijkheid verminderen door partitioneren in te scha kelen voor een wachtrij of onderwerp.
 
-### <a name="issue-for-an-azure-dependency"></a>Probleem met een Azure-afhankelijkheid
-Andere onderdelen in Azure kunnen van tijd tot tijd hebben problemen met de service. Bijvoorbeeld, wanneer een systeem dat gebruikmaakt van Service Bus wordt bijgewerkt, kan dat systeem tijdelijk ervaren beperkte mogelijkheden. Als tijdelijke oplossing voor dit soort problemen, Service Bus regelmatig onderzoekt het probleem en oplossingen implementeert. Neveneffecten van deze oplossingen worden ook weergegeven. Voor het afhandelen van tijdelijke problemen met opslag, bijvoorbeeld: implementeert Service Bus een systeem dat Hiermee kunt u bewerkingen van bericht verzenden naar het consistent worden gewerkt. Vanwege de aard van de oplossing, kan een verzonden bericht tot 15 minuten in de betreffende wachtrij of abonnement wordt weergegeven en gereed voor een ontvangstbewerking duren. De meeste entiteiten wordt dit probleem in het algemeen niet optreden. Echter, gezien het aantal entiteiten in Service Bus in Azure, deze beperking is soms nodig voor een kleine subset van Service Bus-klanten.
+### <a name="issue-for-an-azure-dependency"></a>Probleem voor een Azure-afhankelijkheid
+Andere onderdelen in azure kunnen af en toe Service problemen ondervinden. Wanneer een systeem dat Service Bus gebruikt, bijvoorbeeld wordt bijgewerkt, kan dat systeem tijdelijk minder mogelijkheden ondervinden. Om dit soort problemen te omzeilen, Service Bus regel matig onderzoeken en oplossingen implementeren. De neven effecten van deze oplossingen worden weer gegeven. Als u bijvoorbeeld tijdelijke problemen met opslag wilt afhandelen, implementeert Service Bus een systeem waarmee het verzenden van berichten consistent kan worden uitgevoerd. Vanwege de aard van de oplossing kan een verzonden bericht tot wel 15 minuten worden weer gegeven in de betrokken wachtrij of het abonnement en klaar zijn voor een ontvangst bewerking. Over het algemeen hebben de meeste entiteiten geen last van dit probleem. Gezien het aantal entiteiten in Service Bus in azure, is deze oplossing soms nodig voor een kleine subset van Service Bus klanten.
 
-### <a name="service-bus-failure-on-a-single-subsystem"></a>Service Bus-fout op een enkele subsysteem
-Met elke toepassing omstandigheden kunnen leiden tot een interne onderdeel van Service Bus inconsistent worden. Wanneer Service Bus gedetecteerd, worden gegevens verzameld van de toepassing om te helpen bij het vaststellen van wat is er gebeurd. Zodra de gegevens zijn verzameld, kan de toepassing wordt opnieuw gestart in een poging om een consistente status weer. Dit proces vrij snel wordt uitgevoerd, en resultaten in een entiteit zijn niet beschikbaar voor maximaal een paar minuten, maar typische uitvaltijden lijkt veel korter.
+### <a name="service-bus-failure-on-a-single-subsystem"></a>Service Bus fout op één subsysteem
+In geval van elke toepassing kan een intern onderdeel van Service Bus inconsistent worden. Als Service Bus dit detecteert, worden gegevens uit de toepassing verzameld om te helpen bij het vaststellen van de oorzaak van het probleem. Zodra de gegevens zijn verzameld, wordt de toepassing opnieuw gestart in een poging deze te herstellen naar een consistente status. Dit proces vindt redelijk snel plaats en de resultaten van een entiteit die niet langer dan een paar minuten beschikbaar is, zijn echter veel korter.
 
-In dergelijke gevallen de clienttoepassing genereert een [System.TimeoutException] [ System.TimeoutException] of [MessagingException] [ MessagingException] uitzondering. Service Bus bevat een beperking voor dit probleem in de vorm van logica voor opnieuw proberen van geautomatiseerde client. Zodra de tijd tussen elke poging is verbruikt en het bericht is niet afgeleverd, u kunt verkennen met behulp van andere vermeld in het artikel op [uitval en noodgevallen afhandelen][handling outages and disasters].
+In deze gevallen genereert de client toepassing een uitzonde ring [System. TimeoutException][System.TimeoutException] of [MessagingException][MessagingException] . Service Bus bevat een oplossing voor dit probleem in de vorm van een automatische pogings logica van de client. Zodra de periode voor opnieuw proberen is uitgeput en het bericht niet is bezorgd, kunt u de andere procedure in het artikel verkennen met betrekking tot het [afhandelen van storingen en rampen][handling outages and disasters].
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu dat u hebt de basisbeginselen van asynchrone berichten in Service Bus, Raadpleeg voor meer informatie over [uitval en noodgevallen afhandelen][handling outages and disasters].
+Nu u de basis principes van asynchrone berichten in Service Bus hebt geleerd, leest u meer informatie over het [afhandelen van storingen en rampen][handling outages and disasters].
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
 [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx

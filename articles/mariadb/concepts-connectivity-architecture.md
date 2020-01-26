@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 530cc029f2339c4aeb7aa1744dceec21810db2b1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58f6e49280925b550deff21ecf04528d91d924d7
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432065"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760127"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Connectiviteits architectuur in Azure Database for MariaDB
 In dit artikel wordt uitgelegd wat de Azure Database for MariaDB connectiviteits architectuur is en hoe het verkeer wordt omgeleid naar uw Azure Database for MariaDB exemplaar van clients, zowel binnen als buiten Azure.
@@ -42,7 +42,7 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | China - noord 2 | 40.73.50.0     |
 | Azië - oost | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
 | VS - oost | 40.121.158.30, 191.238.6.43  |
-| VS - oost 2 |40.79.84.180, 191.239.224.107, 52.167.104.0     |
+| VS - oost 2 |40.79.84.180, 191.239.224.107, 52.177.185.181   |
 | Frankrijk - centraal | 40.79.137.0, 40.79.129.1  |
 | Duitsland - centraal | 51.4.144.100     |
 | Duitsland-noord Oost | 51.5.144.179  |
