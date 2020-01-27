@@ -65,8 +65,8 @@ De volgende tabel bevat de beschik bare primaire en secundaire regio's paars.
 
 | Primair | Secundair |
 | --- | --- |
-| VS - zuid-centraal |VS - noord-centraal |
-| US - oost 2 |VS - centraal |
+| US - zuid-centraal |US - noord-centraal |
+| US - oost 2 |US - centraal |
 | Europa - west |Europa - noord |
 | Azië - zuidoost |Azië - oost |
 | Japan - Oost |Japan - West |

@@ -54,12 +54,12 @@ De kosten van Azure FarmBeats zijn een samen vatting van de kosten van de onderl
 ### <a name="regions-supported"></a>Regio's worden ondersteund
 
 Momenteel wordt Azure FarmBeats ondersteund in open bare Cloud omgevingen in de volgende regio's:
-* Australië Oost
-* VS - centraal
+* Australië - oost
+* US - centraal
 * VS - oost
 * VS - oost 2
-* VS - west
-* VS - west 2
+* US - west
+* US - west 2
 * Europa - noord
 * Europa - west
 * Azië - zuidoost

@@ -51,7 +51,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 * De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 
-  * VS - centraal
+  * US - centraal
   * Centrale VS-EUAP
   * Azië - zuidoost
   * Europa - noord

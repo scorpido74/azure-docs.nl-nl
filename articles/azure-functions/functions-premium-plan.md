@@ -102,11 +102,11 @@ Hieronder ziet u de regio's die momenteel worden ondersteund voor elk besturings
 |--| -- | -- |
 |Australië - centraal| ✔<sup>1</sup> | |
 |Australië - centraal 2| ✔<sup>1</sup> | |
-|Australië Oost| ✔ | |
-|Australië Zuidoost | ✔ | ✔<sup>1</sup> |
+|Australië - oost| ✔ | |
+|Australië - zuidoost | ✔ | ✔<sup>1</sup> |
 |Brazilië - Zuid| ✔<sup>2</sup> |  |
 |Canada-Midden| ✔ |  |
-|VS - centraal| ✔ |  |
+|US - centraal| ✔ |  |
 |Azië - oost| ✔ |  |
 |VS - oost | ✔ | ✔<sup>1</sup> |
 |VS - oost 2| ✔ |  |
@@ -115,17 +115,17 @@ Hieronder ziet u de regio's die momenteel worden ondersteund voor elk besturings
 |Japan - Oost| ✔ | ✔<sup>1</sup> |
 |Japan - West| ✔ | |
 |Korea - centraal| ✔ |  |
-|VS - noord-centraal| ✔ |  |
+|US - noord-centraal| ✔ |  |
 |Europa - noord| ✔ | ✔<sup>1</sup> |
-|VS - zuid-centraal| ✔ | ✔<sup>1</sup> |
+|US - zuid-centraal| ✔ | ✔<sup>1</sup> |
 |India - zuid | ✔ | |
 |Azië - zuidoost| ✔ | ✔<sup>1</sup> |
-|VK - zuid| ✔ | |
-|VK - west| ✔ |  |
+|UK - zuid| ✔ | |
+|UK - west| ✔ |  |
 |Europa - west| ✔ | ✔<sup>1</sup> |
 |India - west| ✔ |  |
-|VS - west| ✔ | ✔<sup>1</sup> |
-|VS - west 2| ✔ |  |
+|US - west| ✔ | ✔<sup>1</sup> |
+|US - west 2| ✔ |  |
 
 <sup>1</sup> Maxi maal aantal uitschalen is beperkt tot 20 exemplaren.  
 <sup>2</sup> Maxi maal aantal uitschalen beperkt tot 60 exemplaren.

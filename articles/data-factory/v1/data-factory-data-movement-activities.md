@@ -96,30 +96,30 @@ Wanneer zowel de bron-als de Sink-gegevens opslag zich in de cloud bevinden, geb
 |:--- |:--- |:--- |
 | Verenigde Staten | VS - oost | VS - oost |
 | &nbsp; | VS - oost 2 | VS - oost 2 |
-| &nbsp; | VS - centraal | VS - centraal |
-| &nbsp; | VS - noord-centraal | VS - noord-centraal |
-| &nbsp; | VS - zuid-centraal | VS - zuid-centraal |
-| &nbsp; | VS - west-centraal | VS - west-centraal |
-| &nbsp; | VS - west | VS - west |
-| &nbsp; | VS - west 2 | VS - west 2 |
+| &nbsp; | US - centraal | US - centraal |
+| &nbsp; | US - noord-centraal | US - noord-centraal |
+| &nbsp; | US - zuid-centraal | US - zuid-centraal |
+| &nbsp; | US - west-centraal | US - west-centraal |
+| &nbsp; | US - west | US - west |
+| &nbsp; | US - west 2 | US - west 2 |
 | Canada | Canada-Oost | Canada-Midden |
 | &nbsp; | Canada-Midden | Canada-Midden |
 | Brazilië | Brazilië - Zuid | Brazilië - Zuid |
 | Europa | Europa - noord | Europa - noord |
 | &nbsp; | Europa - west | Europa - west |
-| Verenigd Koninkrijk | VK - west | VK - zuid |
-| &nbsp; | VK - zuid | VK - zuid |
-| Azië-Pacific | Azië - zuidoost | Azië - zuidoost |
+| Verenigd Koninkrijk | UK - west | UK - zuid |
+| &nbsp; | UK - zuid | UK - zuid |
+| Azië en Stille Oceaan | Azië - zuidoost | Azië - zuidoost |
 | &nbsp; | Azië - oost | Azië - zuidoost |
-| Australië | Australië Oost | Australië Oost |
-| &nbsp; | Australië Zuidoost | Australië Zuidoost |
+| Australië | Australië - oost | Australië - oost |
+| &nbsp; | Australië - zuidoost | Australië - zuidoost |
 | India | India - centraal | India - centraal |
 | &nbsp; | India - west | India - centraal |
 | &nbsp; | India - zuid | India - centraal |
 | Japan | Japan - Oost | Japan - Oost |
 | &nbsp; | Japan - West | Japan - Oost |
 | Korea | Korea - centraal | Korea - centraal |
-| &nbsp; | Korea (Zuid) | Korea - centraal |
+| &nbsp; | Korea - zuid | Korea - centraal |
 
 U kunt de regio van Data Factory service die moet worden gebruikt voor het uitvoeren van de kopie, ook expliciet opgeven door `executionLocation` eigenschap onder Copy activity `typeProperties`op te geven. Ondersteunde waarden voor deze eigenschap worden weer gegeven in de bovenstaande **regio die wordt gebruikt voor de kolom gegevens verplaatsing** . Houd er rekening mee dat uw gegevens tijdens het kopiëren over de kabel heen gaan. Als u bijvoorbeeld wilt kopiëren tussen Azure-winkels in Korea, kunt u `"executionLocation": "Japan East"` opgeven om te routeren via een Japanse regio (Zie voor [beeld van JSON](#by-using-json-scripts) als referentie).
 

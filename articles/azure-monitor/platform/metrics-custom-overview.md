@@ -181,7 +181,7 @@ Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische 
 | **Europa** | |
 |Europa - noord    | https:\/-northeurope.monitoring.azure.com/ |
 |Europa -west     | https:\/-westeurope.monitoring.azure.com/ |
-|VK - zuid | https:\/-uksouth.monitoring.azure.com
+|UK - zuid | https:\/-uksouth.monitoring.azure.com
 |Frankrijk - centraal | https:\/-francecentral.monitoring.azure.com |
 | **Africa** | |
 |Zuid-Afrika - noord | https:\/-southafricanorth.monitoring.azure.com

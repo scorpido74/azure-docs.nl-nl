@@ -118,8 +118,8 @@ Account-failover is beschikbaar als preview-versie voor alle klanten die gebruik
 
 - Azië - oost
 - Azië (zuidoost)
-- Australië Oost
-- Australië Zuidoost
+- Australië - oost
+- Australië - zuidoost
 - US - centraal
 - US - oost 2
 - US - west-centraal

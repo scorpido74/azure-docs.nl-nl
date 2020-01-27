@@ -33,7 +33,7 @@ GZRS en RA-GZRS zijn momenteel beschikbaar als preview-versie in de volgende reg
 - Europa (noord)
 - Europa (west)
 - Japan - Oost
-- VK - zuid
+- UK - zuid
 - US - oost
 - US - oost 2
 - US - centraal

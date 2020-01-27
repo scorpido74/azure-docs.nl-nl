@@ -70,7 +70,7 @@ Cloud Shell machines bestaan in de volgende regio's:
 |---|---|
 |Noord- en Zuid-Amerika|VS-Oost, Zuid-Centraal VS, VS-West|
 |Europa|Europa - noord, Europa - west|
-|Azië-Pacific|India, midden, Zuidoost-Azië|
+|Azië en Stille Oceaan|India, midden, Zuidoost-Azië|
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Het maken van resources beperken met een Azure-resource beleid
 Opslag accounts die u in Cloud Shell maakt, worden gelabeld met `ms-resource-usage:azure-cloud-shell`. Als u wilt voor komen dat gebruikers opslag accounts maken in Cloud Shell, maakt u een [Azure-resource beleid voor Tags](../azure-policy/json-samples.md) die worden geactiveerd door deze specifieke tag.

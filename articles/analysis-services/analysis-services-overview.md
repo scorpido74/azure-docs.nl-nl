@@ -84,12 +84,12 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |VS - oost     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |VS - oost 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |VS - oost 2     |     S8, S9, S8v2, S9v2   |    1    |
-|VS - noord-centraal     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|VS - centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|VS - zuid-centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|VS - west-centraal   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
-|VS - west     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|VS - west     |    S8, S9, S8v2, S9v2   |    2  |
+|US - noord-centraal     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
+|US - centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|US - zuid-centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|US - west-centraal   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|US - west     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
+|US - west     |    S8, S9, S8v2, S9v2   |    2  |
 |US - west 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
 |US - west 2    |    S8, S9, S8v2, S9v2  |    1     |
 
@@ -99,17 +99,17 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |---------|---------|:---------:|
 |Europa - noord     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Europa - noord     |    S8v2, S9v2      |    3     |
-|VK - zuid     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
+|UK - zuid     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Europa - west     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Europa - west    |   S8, S9, S8v2, S9v2  |  1  |
 
-### <a name="asia-pacific"></a>Azië-Pacific 
+### <a name="asia-pacific"></a>Azië en Stille Oceaan 
 
 |Regio  | Ondersteunde abonnementen | Queryreplica's (alleen Standard-abonnementen) |
 |---------|---------|:---------:|
-|Australië Oost     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Australië Oost     |    S8, S9, S8v2, S9v2    |    1     |
-|Australië Zuidoost     | B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Australië - oost     |    B1, B2, S0, S1, S2, S4     |    3     |
+|Australië - oost     |    S8, S9, S8v2, S9v2    |    1     |
+|Australië - zuidoost     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japan - Oost     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Azië - zuidoost     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |India - west     |    B1, B2, S0, S1, S2, S4, D1     |    1     |

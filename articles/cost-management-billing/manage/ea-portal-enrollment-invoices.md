@@ -10,7 +10,7 @@ ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 7cb2966c94485d0a05febf3085ab367fcba97434
 ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/22/2020
 ms.locfileid: "76514354"
@@ -414,7 +414,7 @@ Voor de diensten waarbij zones en regio's van invloed zijn op de prijsstelling, 
 | Geografisch gebied | Regio's voor de gegevensoverdracht | CDN-regio's |
 | --- | --- | --- |
 | Zone 1 | Europa (noord) <br> Europa (west) <br> US - west <br> US - oost <br> US - noord-centraal <br> US - zuid-centraal <br> US - oost 2 <br> US - centraal | Noord-Amerika <br> Europa |
-| Zone 2 | Azië-Pacific - Oost <br> Azië Pacific - Zuidoost <br> Japan - Oost <br> Japan - West <br> Australië Oost <br> Australië Zuidoost | Azië-Pacific <br> Japan <br> Latijns-Amerika <br> Midden-Oosten/Afrika <br> Australië Oost <br> Australië Zuidoost |
+| Zone 2 | Azië-Pacific - Oost <br> Azië Pacific - Zuidoost <br> Japan - Oost <br> Japan - West <br> Australië - oost <br> Australië - zuidoost | Azië en Stille Oceaan <br> Japan <br> Latijns-Amerika <br> Midden-Oosten/Afrika <br> Australië - oost <br> Australië - zuidoost |
 | Zone 3 | Brazilië - Zuid |   |
 
 **Tabel**  **4**  **– Regio's voor de gegevensoverdracht**

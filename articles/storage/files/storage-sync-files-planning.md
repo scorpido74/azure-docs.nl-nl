@@ -251,40 +251,40 @@ Azure File Sync is alleen beschikbaar in de volgende regio's:
 
 | Regio | Locatie van Data Center |
 |--------|---------------------|
-| Australië Oost | New South Wales |
-| Australië Zuidoost | Victoria |
+| Australië - oost | New South Wales |
+| Australië - zuidoost | Victoria |
 | Brazilië - Zuid | Sao Paulo (staat) |
 | Canada-Midden | Toronto |
 | Canada-Oost | Quebec (stad) |
 | India - centraal | Pune |
-| VS - centraal | Iowa |
+| US - centraal | Iowa |
 | Azië - oost | Hongkong SAR |
 | VS - oost | Virginia |
 | VS - oost2 | Virginia |
 | Frankrijk - centraal | Parijs |
 | Frankrijk-zuid * | Marseille |
 | Korea - centraal | Seoul |
-| Korea (Zuid) | Busan |
+| Korea - zuid | Busan |
 | Japan - Oost | Tokyo, Saitama |
 | Japan - West | Osaka |
-| VS - noord-centraal | Illinois |
+| US - noord-centraal | Illinois |
 | Europa - noord | Ierland |
 | Zuid-Afrika - noord | Johannesburg |
 | Zuid-Afrika-west * | Kaapstad |
-| VS - zuid-centraal | Texas |
+| US - zuid-centraal | Texas |
 | India - zuid | Chennai |
 | Azië - zuidoost | Singapore |
-| VK - zuid | Londen |
-| VK - west | Cardiff |
+| UK - zuid | Londen |
+| UK - west | Cardiff |
 | US Gov - Arizona | Arizona |
 | US Gov - Texas | Texas |
 | US Gov - Virginia | Virginia |
 | VAE - noord | Dubai |
 | UAE-centraal * | Abu Dhabi |
 | Europa - west | Nederland |
-| VS - west-centraal | Wyoming |
-| VS - west | Californië |
-| VS - west 2 | Washington |
+| US - west-centraal | Wyoming |
+| US - west | Californië |
+| US - west 2 | Washington |
 
 Azure File Sync ondersteunt alleen synchronisatie met een Azure-bestands share die zich in dezelfde regio bevinden als de opslag synchronisatie service.
 
@@ -300,38 +300,38 @@ Ter ondersteuning van de failover-integratie tussen geo-redundante opslag en Azu
 
 | Primaire regio      | Gekoppelde regio      |
 |---------------------|--------------------|
-| Australië Oost      | Australië Zuidoost|
-| Australië Zuidoost | Australië Oost     |
-| Brazilië - Zuid        | VS - zuid-centraal   |
+| Australië - oost      | Australië - zuidoost|
+| Australië - zuidoost | Australië - oost     |
+| Brazilië - Zuid        | US - zuid-centraal   |
 | Canada-Midden      | Canada-Oost        |
 | Canada-Oost         | Canada-Midden     |
 | India - centraal       | India - zuid        |
-| VS - centraal          | VS - oost 2          |
+| US - centraal          | VS - oost 2          |
 | Azië - oost           | Azië - zuidoost     |
-| VS - oost             | VS - west            |
-| VS - oost 2           | VS - centraal         |
+| VS - oost             | US - west            |
+| VS - oost 2           | US - centraal         |
 | Frankrijk - centraal      | Frankrijk - zuid       |
 | Frankrijk - zuid        | Frankrijk - centraal     |
 | Japan - Oost          | Japan - West         |
 | Japan - West          | Japan - Oost         |
-| Korea - centraal       | Korea (Zuid)        |
-| Korea (Zuid)         | Korea - centraal      |
+| Korea - centraal       | Korea - zuid        |
+| Korea - zuid         | Korea - centraal      |
 | Europa - noord        | Europa - west        |
-| VS - noord-centraal    | VS - zuid-centraal   |
+| US - noord-centraal    | US - zuid-centraal   |
 | Zuid-Afrika - noord  | Zuid-Afrika - west  |
 | Zuid-Afrika - west   | Zuid-Afrika - noord |
-| VS - zuid-centraal    | VS - noord-centraal   |
+| US - zuid-centraal    | US - noord-centraal   |
 | India - zuid         | India - centraal      |
 | Azië - zuidoost      | Azië - oost          |
-| VK - zuid            | VK - west            |
-| VK - west             | VK - zuid           |
+| UK - zuid            | UK - west            |
+| UK - west             | UK - zuid           |
 | US Gov - Arizona      | US Gov - Texas       |
 | US Gov - Iowa         | US Gov - Virginia    |
 | US Gov - Virginia      | US Gov - Texas       |
 | Europa - west         | Europa - noord       |
-| VS - west-centraal     | VS - west 2          |
-| VS - west             | VS - oost            |
-| VS - west 2           | VS - west-centraal    |
+| US - west-centraal     | US - west 2          |
+| US - west             | VS - oost            |
+| US - west 2           | US - west-centraal    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Updatebeleid Azure File Sync-agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

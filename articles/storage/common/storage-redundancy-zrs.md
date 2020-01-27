@@ -35,7 +35,7 @@ Voor algemeen gebruik v2-accounts is ZRS algemeen beschikbaar in de volgende reg
 - Frankrijk - centraal
 - Japan - Oost
 - Zuid-Afrika - noord
-- VK - zuid
+- UK - zuid
 - US - centraal
 - US - oost
 - US - oost 2

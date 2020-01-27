@@ -39,7 +39,7 @@ AKS-clusters kunnen momenteel worden gemaakt met beschikbaarheids zones in de vo
 * Azië - zuidoost
 * Verenigd Koninkrijk Zuid
 * Europa -west
-* VS - west 2
+* US - west 2
 
 De volgende beperkingen zijn van toepassing wanneer u een AKS-cluster maakt met beschikbaarheids zones:
 

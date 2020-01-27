@@ -32,12 +32,12 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 |:----------------|:-------------|
 | Australië - centraal| 20.36.105.0     |
 | Australië-Central2     | 20.36.113.0   |
-| Australië Oost | 13.75.149.87, 40.79.161.1     |
+| Australië - oost | 13.75.149.87, 40.79.161.1     |
 | Australië - zuidoost |191.239.192.109, 13.73.109.251   |
 | Brazilië - Zuid | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Canada-Midden |40.85.224.249  |
 | Canada-Oost | 40.86.226.166    |
-| VS - centraal | 23.99.160.139, 13.67.215.62   |
+| US - centraal | 23.99.160.139, 13.67.215.62   |
 | China - oost 2 | 40.73.82.1  |
 | China - noord 2 | 40.73.50.0     |
 | Azië - oost | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
@@ -52,21 +52,21 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | Japan - Oost | 13.78.61.196, 191.237.240.43  |
 | Japan - West | 104.214.148.156, 191.238.68.11    |
 | Korea - centraal | 52.231.32.42   |
-| Korea (Zuid) | 52.231.200.86    |
-| VS - noord-centraal | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
+| Korea - zuid | 52.231.200.86    |
+| US - noord-centraal | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
 | Europa - noord | 40.113.93.91, 191.235.193.75    |
 | Zuid-Afrika - noord  | 102.133.152.0    |
 | Zuid-Afrika - west | 102.133.24.0   |
-| VS - zuid-centraal |13.66.62.124, 23.98.162.75   |
+| US - zuid-centraal |13.66.62.124, 23.98.162.75   |
 | Azië - zuidoost | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | VAE - centraal | 20.37.72.64  |
 | VAE - noord | 65.52.248.0    |
-| VK - zuid | 51.140.184.11   |
-| VK - west | 51.141.8.11  |
-| VS - west-centraal | 13.78.145.25     |
+| UK - zuid | 51.140.184.11   |
+| UK - west | 51.141.8.11  |
+| US - west-centraal | 13.78.145.25     |
 | Europa - west | 40.68.37.158, 191.237.232.75     |
-| VS - west | 104.42.238.205, 23.99.34.75  |
-| VS - west 2 | 13.66.226.202  |
+| US - west | 104.42.238.205, 23.99.34.75  |
+| US - west 2 | 13.66.226.202  |
 ||||
 
 ## <a name="next-steps"></a>Volgende stappen

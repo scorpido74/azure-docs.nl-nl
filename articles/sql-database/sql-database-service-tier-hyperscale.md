@@ -166,11 +166,11 @@ Als u een Azure SQL Database grootschalige-Data Base wilt herstellen naar een an
 
 De laag Azure SQL Database grootschalige is momenteel beschikbaar in de volgende regio's:
 
-- Australië Oost
-- Australië Zuidoost
+- Australië - oost
+- Australië - zuidoost
 - Brazilië - Zuid
 - Canada-Midden
-- VS - centraal
+- US - centraal
 - China - oost 2
 - China - noord 2
 - Azië - oost
@@ -180,17 +180,17 @@ De laag Azure SQL Database grootschalige is momenteel beschikbaar in de volgende
 - Japan - Oost
 - Japan - West
 - Korea - centraal
-- Korea (Zuid)
-- VS - noord-centraal
+- Korea - zuid
+- US - noord-centraal
 - Europa - noord
 - Zuid-Afrika - noord
-- VS - zuid-centraal
+- US - zuid-centraal
 - Azië - zuidoost
-- VK - zuid
-- VK - west
+- UK - zuid
+- UK - west
 - Europa - west
-- VS - west
-- VS - west 2
+- US - west
+- US - west 2
 
 Als u een grootschalige-Data Base wilt maken in een regio die niet wordt weer gegeven als ondersteund, kunt u een aanvraag voor onboarding verzenden via Azure Portal. U kunt de lijst met ondersteunde regio's uitbreiden. Controleer vervolgens de meest recente regio lijst.
 

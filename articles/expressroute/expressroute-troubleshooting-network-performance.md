@@ -180,17 +180,17 @@ Setup testen:
 | | | | | | |
 |-|-|-|-|-|-|
 |ExpressRoute<br/>Locatie|Azure<br/>Regio|Bepaald<br/>Afstand (km)|Latentie|1 sessie<br/>Bandbreedte|Maximum<br/>Bandbreedte|
-| Seattle | VS - west 2        |    191 km |   5 ms | 262,0 Mbit per seconde |  3,74 Gbits per seconde |
-| Seattle | VS - west          |  1\.094 km |  18 MS |  82,3 Mbit per seconde |  3,70 Gbits per seconde |
-| Seattle | VS - centraal       |  2\.357 km |  40 MS |  38,8 Mbit per seconde |  2,55 Gbits per seconde |
-| Seattle | VS - zuid-centraal |  2\.877 km |  51 ms |  30,6 Mbit per seconde |  2,49 Gbits per seconde |
-| Seattle | VS - noord-centraal |  2\.792 km |  55 MS |  27,7 Mbit per seconde |  2,19 Gbits per seconde |
+| Seattle | US - west 2        |    191 km |   5 ms | 262,0 Mbit per seconde |  3,74 Gbits per seconde |
+| Seattle | US - west          |  1\.094 km |  18 MS |  82,3 Mbit per seconde |  3,70 Gbits per seconde |
+| Seattle | US - centraal       |  2\.357 km |  40 MS |  38,8 Mbit per seconde |  2,55 Gbits per seconde |
+| Seattle | US - zuid-centraal |  2\.877 km |  51 ms |  30,6 Mbit per seconde |  2,49 Gbits per seconde |
+| Seattle | US - noord-centraal |  2\.792 km |  55 MS |  27,7 Mbit per seconde |  2,19 Gbits per seconde |
 | Seattle | VS - oost 2        |  3\.769 km |  73 MS |  21,3 Mbit per seconde |  1,79 Gbits per seconde |
 | Seattle | VS - oost          |  3\.699 km |  74 MS |  21,1 Mbit per seconde |  1,78 Gbits per seconde |
 | Seattle | Japan - Oost       |  7\.705 km | 106 MS |  14,6 Mbit per seconde |  1,22 Gbits per seconde |
-| Seattle | VK - zuid         |  7\.708 km | 146 ms |  10,6 Mbit per seconde |   896 Mbit per seconde |
+| Seattle | UK - zuid         |  7\.708 km | 146 ms |  10,6 Mbit per seconde |   896 Mbit per seconde |
 | Seattle | Europa - west      |  7\.834 km | 153 MS |  10,2 Mbit per seconde |   761 Mbit per seconde |
-| Seattle | Australië Oost   | 12.484 km | 165 MS |   9,4 Mbit per seconde |   794 Mbit per seconde |
+| Seattle | Australië - oost   | 12.484 km | 165 MS |   9,4 Mbit per seconde |   794 Mbit per seconde |
 | Seattle | Azië - zuidoost   | 12.989 km | 170 MS |   9,2 Mbit per seconde |   756 Mbit per seconde |
 | Seattle | Brazilië-zuid *   | 10.930 km | 189 ms |   8,2 Mbit per seconde |   699 Mbit per seconde |
 | Seattle | India - zuid      | 12.918 km | 202 MS |   7,7 Mbit per seconde |   634 Mbit per seconde |

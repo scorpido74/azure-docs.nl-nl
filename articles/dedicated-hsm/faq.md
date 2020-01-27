@@ -74,12 +74,12 @@ Vanaf eind maart 2019 is toegewezen HSM beschikbaar in de volgende 14 regio's. V
 * Azië - oost
 * Europa - noord
 * Europa - west
-* VK - zuid
-* VK - west
+* UK - zuid
+* UK - west
 * Canada-Midden
 * Canada-Oost
-* Australië Oost
-* Australië Zuidoost
+* Australië - oost
+* Australië - zuidoost
 
 ## <a name="interoperability"></a>Interoperabiliteit
 

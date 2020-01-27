@@ -68,7 +68,7 @@ Enkele van de in code vastgelegde waarden in de sjabloon:
 
 | Eigenschap | Waarde |
 |----------|-------|
-| Locatie | VS - west |
+| Locatie | US - west |
 | VNet-naam | &lt;ClusterNamePrevix>-vnet1 |
 | Adres ruimte voorvoegsel | 10.1.0.0/16 |
 | Subnetnaam | subnet 1 |

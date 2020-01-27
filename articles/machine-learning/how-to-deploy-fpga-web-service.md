@@ -65,7 +65,7 @@ Fpga's zijn beschikbaar in deze Azure-regio's:
   - VS - oost
   - Azië - zuidoost
   - Europa - west
-  - VS - west 2
+  - US - west 2
 
 > [!IMPORTANT]
 > Om de latentie en door voer te optimaliseren, moet uw client gegevens verzenden naar het FPGA-model in een van de bovenstaande regio's (het model dat u hebt geïmplementeerd.)

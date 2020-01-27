@@ -36,9 +36,9 @@ Als u een uitgebreide bedrijfs continuïteit wilt bereiken op Azure, bouwt u uw 
 De combi Naties van Azure-Services en-regio's die ondersteuning bieden voor Beschikbaarheidszones zijn:
 
 
-|                                 |Noord- en Zuid-Amerika |              |           |           | Europa |              |          |              | Azië-Pacific |                 |
+|                                 |Noord- en Zuid-Amerika |              |           |           | Europa |              |          |              | Azië en Stille Oceaan |                 |
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|
-|          |VS - centraal|VS - oost|VS - oost 2|VS - west 2|Frankrijk - centraal|Europa - noord|VK - zuid|Europa - west|Japan - Oost|Azië - zuidoost|
+|          |US - centraal|VS - oost|VS - oost 2|US - west 2|Frankrijk - centraal|Europa - noord|UK - zuid|Europa - west|Japan - Oost|Azië - zuidoost|
 | **Compute**                         |            |              |           |           |                |              |          |             |            |                |
 | Virtuele Linux-machines          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Virtuele Windows-machines        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |

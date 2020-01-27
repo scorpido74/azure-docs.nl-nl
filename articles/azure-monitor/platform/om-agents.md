@@ -45,16 +45,16 @@ Controleer de volgende vereisten voordat u begint.
 * U bent geverifieerd bij Azure met een account dat lid is van de [rol log Analytics Inzender](manage-access.md#manage-access-using-azure-permissions).
 
 * Ondersteunde regio's: alleen de volgende Azure-regio's worden ondersteund door System Center Operations Manager om verbinding te maken met een Log Analytics-werk ruimte:
-    - VS - west-centraal
+    - US - west-centraal
     - Australië - zuidoost
     - Europa - west
     - VS - oost
     - Azië - zuidoost
     - Japan - Oost
-    - VK - zuid
+    - UK - zuid
     - India - centraal
     - Canada-Midden
-    - VS - west 2
+    - US - west 2
 
 >[!NOTE]
 >Recente wijzigingen aan Azure-Api's kunnen voor komen dat klanten de integratie tussen hun beheer groep en Azure Monitor voor de eerste keer configureren. Voor klanten die hun beheer groep al hebben geïntegreerd met de service, heeft dit geen invloed op de gebruikers, tenzij u uw bestaande verbinding opnieuw moet configureren.  

@@ -31,13 +31,13 @@ Het besturings vlak of de API-server bevindt zich in een door Azure Kubernetes s
 * De Azure CLI-versie 2.0.77 of hoger en de Azure CLI AKS preview-extensie versie 0.4.18
 
 ## <a name="currently-supported-regions"></a>Momenteel ondersteunde regio's
-* VS - west
-* VS - west 2
+* US - west
+* US - west 2
 * VS - oost 2
 * Canada-Midden
 * Europa - noord
 * Europa - west
-* Australië Oost
+* Australië - oost
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>De nieuwste Azure CLI AKS preview-extensie installeren
 

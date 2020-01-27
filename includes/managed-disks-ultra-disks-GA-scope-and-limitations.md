@@ -20,11 +20,11 @@ Voor nu hebben Ultra disks de volgende beperkingen:
 - Worden ondersteund in de volgende regio's, met een verschillend aantal beschikbaarheids zones per regio:
     - VS - oost 2
     - VS - oost
-    - VS - west 2
+    - US - west 2
     - Zuidoost-Azië
     - Europa - noord
     - Europa - west
-    - VK - zuid 
+    - UK - zuid 
 - Kan alleen worden gebruikt met beschikbaarheids zones (beschikbaarheids sets en implementaties met één VM buiten zones kan geen Ultra schijf koppelen)
 - Worden alleen ondersteund in de volgende VM-reeks:
     - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)

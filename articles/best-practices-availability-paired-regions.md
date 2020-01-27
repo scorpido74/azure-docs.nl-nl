@@ -42,12 +42,12 @@ Afbeelding 1: Azure-regionale paren
 | India |India - west |India - zuid |
 | Japan |Japan - Oost |Japan - west |
 | Korea |Korea - centraal |Korea - zuid |
-| Noord-Amerika |VS - oost |VS - west |
+| Noord-Amerika |VS - oost |US - west |
 | Noord-Amerika |US - oost 2 |US - centraal |
-| Noord-Amerika |VS - noord-centraal |US - zuid-centraal |
-| Noord-Amerika |US - west 2 |VS - west-centraal 
+| Noord-Amerika |US - noord-centraal |US - zuid-centraal |
+| Noord-Amerika |US - west 2 |US - west-centraal 
 | Zuid-Afrika | Zuid-Afrika - noord | Zuid-Afrika - west
-| VK |Verenigd Koninkrijk West |VK - zuid |
+| VK |Verenigd Koninkrijk West |UK - zuid |
 | Verenigde Arabische Emiraten | VAE - noord | VAE - centraal
 | Amerikaans Ministerie van defensie |US DoD - oost |US DoD - centraal |
 | Amerikaanse overheid |VS (overheid) - Arizona |VS (overheid) - Texas |

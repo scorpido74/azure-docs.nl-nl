@@ -37,9 +37,9 @@ Voor de preview worden de volgende functies ondersteund:
 De Azure Image Builder-service is beschikbaar voor een preview in deze regio's. Installatie kopieën kunnen buiten deze regio's worden gedistribueerd.
 - VS - oost
 - VS - oost 2
-- VS - west-centraal
-- VS - west
-- VS - west 2
+- US - west-centraal
+- US - west
+- US - west 2
 
 ## <a name="os-support"></a>Ondersteuning voor besturings systeem
 AIB biedt ondersteuning voor Azure Marketplace Base OS-basis installatie kopieën:

@@ -40,7 +40,7 @@ Wanneer u een beleid voor IP-toegangs beheer programmatisch inschakelt, moet u h
 |------|----------|
 |Duitsland|51.4.229.218|
 |China|139.217.8.252|
-|Amerikaanse overheid|52.244.48.71|
+|US Gov|52.244.48.71|
 |Alle andere regio's|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
 U kunt toegang tot de Azure Portal inschakelen door de optie **toegang toestaan vanaf Azure Portal** in te scha kelen, zoals wordt weer gegeven in de volgende scherm afbeelding:

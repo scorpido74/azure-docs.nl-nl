@@ -78,7 +78,7 @@ U kunt een Azure Migrate project maken in een aantal geographs. Hoewel u alleen 
 **Geografie** | **Opslag locatie van meta gegevens**
 --- | ---
 Azure Government | US Gov - Virginia
-Azië-Pacific | Azië Azië-oost of Zuidoost
+Azië en Stille Oceaan | Azië Azië-oost of Zuidoost
 Australië | Australië-oost of Australië-zuidoost
 Brazilië | Brazilië - Zuid
 Canada | Canada-centraal of Canada-oost

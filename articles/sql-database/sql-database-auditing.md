@@ -252,8 +252,8 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
     > [!IMPORTANT]
     > De instelling schrijven beveiligde toevoeg-blobs toestaan onder Bewaar periode is momenteel beschikbaar en alleen zichtbaar in de volgende regio's:
     > - VS - oost
-    > - VS - zuid-centraal
-    > - VS - west 2
+    > - US - zuid-centraal
+    > - US - west 2
 
 
 ## <a id="subheading-7"></a>Beheer van Azure SQL Server en data bases controleren met behulp van Azure PowerShell

@@ -160,7 +160,7 @@ Ja, Azure cache voor redis is beschikbaar in Azure Government Cloud, Azure China
 | Cloud   | DNS-achtervoegsel voor redis            |
 |---------|---------------------------------|
 | Public  | *.redis.cache.windows.net       |
-| Amerikaanse overheid  | *.redis.cache.usgovcloudapi.net |
+| US Gov  | *.redis.cache.usgovcloudapi.net |
 | Duitsland | *.redis.cache.cloudapi.de       |
 | China   | *.redis.cache.chinacloudapi.cn  |
 

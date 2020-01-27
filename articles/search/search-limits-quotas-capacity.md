@@ -76,11 +76,11 @@ Als u wilt bepalen of uw service document limieten heeft, gebruikt u de [rest AP
 
 Als de portal een document limiet aangeeft, is uw service gemaakt vóór de eind versie van 2017 of is deze gemaakt in een Data Center met clusters met lagere capaciteit voor het hosten van Azure Cognitive Search Services:
 
-+ Australië Oost
++ Australië - oost
 + Azië - oost
 + India - centraal
 + Japan - West
-+ VS - west-centraal
++ US - west-centraal
 
 Voor services die aan de document limieten voldoen, gelden de volgende maximum limieten:
 

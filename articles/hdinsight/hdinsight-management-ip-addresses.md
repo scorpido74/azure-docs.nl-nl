@@ -50,8 +50,8 @@ Verkeer toestaan van de IP-adressen die worden vermeld voor de Azure HDInsight-s
 | ---- | ---- | ---- | ---- | ----- |
 | Azië | Azië - oost | 23.102.235.122</br>52.175.38.134 | \*:443 | Inkomend |
 | &nbsp; | Azië - zuidoost | 13.76.245.160</br>13.76.136.249 | \*:443 | Inkomend |
-| Australië | Australië Oost | 104.210.84.115</br>13.75.152.195 | \*:443 | Inkomend |
-| &nbsp; | Australië Zuidoost | 13.77.2.56</br>13.77.2.94 | \*:443 | Inkomend |
+| Australië | Australië - oost | 104.210.84.115</br>13.75.152.195 | \*:443 | Inkomend |
+| &nbsp; | Australië - zuidoost | 13.77.2.56</br>13.77.2.94 | \*:443 | Inkomend |
 | Brazilië | Brazilië - Zuid | 191.235.84.104</br>191.235.87.113 | \*:443 | Inkomend |
 | Canada | Canada-Oost | 52.229.127.96</br>52.229.123.172 | \*:443 | Inkomend |
 | &nbsp; | Canada-Midden | 52.228.37.66</br>52.228.45.222 |\*: 443 | Inkomend |
@@ -69,15 +69,15 @@ Verkeer toestaan van de IP-adressen die worden vermeld voor de Azure HDInsight-s
 | Japan | Japan - Oost | 13.78.125.90</br>13.78.89.60 | \*:443 | Inkomend |
 | &nbsp; | Japan - West | 40.74.125.69</br>138.91.29.150 | \*:443 | Inkomend |
 | Korea | Korea - centraal | 52.231.39.142</br>52.231.36.209 | \*:443 | Inkomend |
-| &nbsp; | Korea (Zuid) | 52.231.203.16</br>52.231.205.214 | \*:443 | Inkomend
-| Verenigd Koninkrijk | VK - west | 51.141.13.110</br>51.141.7.20 | \*:443 | Inkomend |
-| &nbsp; | VK - zuid | 51.140.47.39</br>51.140.52.16 | \*:443 | Inkomend |
-| Verenigde Staten | VS - centraal | 13.89.171.122</br>13.89.171.124 | \*:443 | Inkomend |
+| &nbsp; | Korea - zuid | 52.231.203.16</br>52.231.205.214 | \*:443 | Inkomend
+| Verenigd Koninkrijk | UK - west | 51.141.13.110</br>51.141.7.20 | \*:443 | Inkomend |
+| &nbsp; | UK - zuid | 51.140.47.39</br>51.140.52.16 | \*:443 | Inkomend |
+| Verenigde Staten | US - centraal | 13.89.171.122</br>13.89.171.124 | \*:443 | Inkomend |
 | &nbsp; | VS - oost | 13.82.225.233</br>40.71.175.99 | \*:443 | Inkomend |
-| &nbsp; | VS - noord-centraal | 157.56.8.38</br>157.55.213.99 | \*:443 | Inkomend |
-| &nbsp; | VS - west-centraal | 52.161.23.15</br>52.161.10.167 | \*:443 | Inkomend |
-| &nbsp; | VS - west | 13.64.254.98</br>23.101.196.19 | \*:443 | Inkomend |
-| &nbsp; | VS - west 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Inkomend |
+| &nbsp; | US - noord-centraal | 157.56.8.38</br>157.55.213.99 | \*:443 | Inkomend |
+| &nbsp; | US - west-centraal | 52.161.23.15</br>52.161.10.167 | \*:443 | Inkomend |
+| &nbsp; | US - west | 13.64.254.98</br>23.101.196.19 | \*:443 | Inkomend |
+| &nbsp; | US - west 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Inkomend |
 | &nbsp; | VAE - noord | 65.52.252.96</br>65.52.252.97 | \*:443 | Inkomend |
 
 Voor informatie over de IP-adressen die voor Azure Government moeten worden gebruikt, raadpleegt u het document [Azure Government Intelligence en Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) .

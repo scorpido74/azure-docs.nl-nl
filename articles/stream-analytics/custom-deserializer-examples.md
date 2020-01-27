@@ -225,10 +225,10 @@ De volgende Java script-code is een voor beeld van de serialisatie-indeling voor
 
 Deze functie is beschikbaar in de volgende regio's:
 
-* VS - west-centraal
+* US - west-centraal
 * Europa - noord
 * VS - oost
-* VS - west
+* US - west
 * VS - oost 2
 * Europa - west
 

@@ -42,7 +42,7 @@ De geografische gebieden in Office 365 is beschikbaar voor meerdere geografische
 
 | Geografisch gebied | waarde preferredDataLocation |
 | --- | --- |
-| Azië-Pacific | APC |
+| Azië en Stille Oceaan | APC |
 | Australië | AU'S |
 | Canada | KUNNEN |
 | Europese Unie | EUR |

@@ -60,7 +60,7 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
    | **Naam** | LA-MailingList | De naam van uw logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt gebruikgemaakt van ' LA-MailingList '. |
    | **Abonnement** | <*your-Azure-subscription-name*> | De naam van uw Azure-abonnement |
    | **Resourcegroep** | LA-MailingList-RG | De naam voor de [Azure-resource groep](../azure-resource-manager/management/overview.md), die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' LA-MailingList-RG ' gebruikt. |
-   | **Locatie** | VS - west | De tKan-regio waar de logische app-gegevens moeten worden opgeslagen. In dit voor beeld wordt ' West US ' gebruikt. |
+   | **Locatie** | US - west | De tKan-regio waar de logische app-gegevens moeten worden opgeslagen. In dit voor beeld wordt ' West US ' gebruikt. |
    | **Log Analytics** | Uit | Behoud de instelling **Uit** voor het vastleggen van diagnostische gegevens. |
    ||||
 

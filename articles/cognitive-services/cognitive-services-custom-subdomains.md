@@ -87,12 +87,12 @@ Ja. Dit is een lijst met regionale eind punten die u kunt gebruiken met Azure Co
 | | Zuid-Afrika - noord | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | US - zuid-centraal | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Azië - zuidoost | `https://southeastasia.api.cognitive.microsoft.com` |
-| | VK - zuid | `https://uksouth.api.cognitive.microsoft.com` |
+| | UK - zuid | `https://uksouth.api.cognitive.microsoft.com` |
 | | US - west-centraal | `https://westcentralus.api.cognitive.microsoft.com` |
 | | Europa -west | `https://westeurope.api.cognitive.microsoft.com` |
 | | US - west | `https://westus.api.cognitive.microsoft.com` |
 | | US - west 2 | `https://westus2.api.cognitive.microsoft.com` |
-| Amerikaanse overheid | VS (overheid) - Virginia | `https://virginia.api.cognitive.microsoft.us` |
+| US Gov | VS (overheid) - Virginia | `https://virginia.api.cognitive.microsoft.us` |
 | China | China - oost 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | China - noord | `https://chinanorth.api.cognitive.azure.cn` |
 

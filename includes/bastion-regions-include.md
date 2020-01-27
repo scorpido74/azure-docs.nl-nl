@@ -19,11 +19,11 @@ ms.locfileid: "76159294"
 >We werken hard om extra regio's toe te voegen. Wanneer een regio wordt toegevoegd, worden deze toegevoegd aan deze lijst.
 >
 
-* VS - west
-* VS - west 2
+* US - west
+* US - west 2
 * VS - oost
 * VS - oost 2
 * Europa - west
-* VS - zuid-centraal
-* Australië Oost
+* US - zuid-centraal
+* Australië - oost
 * Japan - Oost

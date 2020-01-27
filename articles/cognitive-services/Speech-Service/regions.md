@@ -34,23 +34,23 @@ De Speech SDK is beschikbaar in deze regio's voor **spraak herkenning**, **tekst
 
 | Regio           | Parameter voor spraak-SDK | Spraak aanpassing Portal    |
 | ---------------- | -------------------- | ------------------------------ |
-| VS - west          | `westus`             | https://westus.cris.ai         |
-| VS - west 2        | `westus2`            | https://westus2.cris.ai        |
+| US - west          | `westus`             | https://westus.cris.ai         |
+| US - west 2        | `westus2`            | https://westus2.cris.ai        |
 | VS - oost          | `eastus`             | https://eastus.cris.ai         |
 | VS - oost 2        | `eastus2`            | https://eastus2.cris.ai        |
-| VS - centraal       | `centralus`          | https://centralus.cris.ai      |
-| VS - noord-centraal | `northcentralus`     | https://northcentralus.cris.ai |
-| VS - zuid-centraal | `southcentralus`     | https://southcentralus.cris.ai |
+| US - centraal       | `centralus`          | https://centralus.cris.ai      |
+| US - noord-centraal | `northcentralus`     | https://northcentralus.cris.ai |
+| US - zuid-centraal | `southcentralus`     | https://southcentralus.cris.ai |
 | India - centraal    | `centralindia`       | https://centralindia.cris.ai   |
 | Azië - oost        | `eastasia`           | https://eastasia.cris.ai       |
 | Azië - zuidoost   | `southeastasia`      | https://southeastasia.cris.ai  |
 | Japan - Oost       | `japaneast`          | https://japaneast.cris.ai      |
 | Korea - centraal    | `koreacentral`       | https://koreacentral.cris.ai   |
-| Australië Oost   | `australiaeast`      | https://australiaeast.cris.ai  |
+| Australië - oost   | `australiaeast`      | https://australiaeast.cris.ai  |
 | Canada-Midden   | `canadacentral`      | https://canadacentral.cris.ai  |
 | Europa - noord     | `northeurope`        | https://northeurope.cris.ai    |
 | Europa - west      | `westeurope`         | https://westeurope.cris.ai     |
-| VK - zuid         | `uksouth`            | https://uksouth.cris.ai        |
+| UK - zuid         | `uksouth`            | https://uksouth.cris.ai        |
 | Frankrijk - centraal   | `francecentral`      | https://francecentral.cris.ai  |
 
 ### <a name="intent-recognition"></a>Intentieherkenning
@@ -61,15 +61,15 @@ Beschik bare regio's voor **intentie herkenning** via de Speech SDK zijn de volg
 | ------------- | ---------------- | -------------------- |
 | Azië          | Azië - oost        | `eastasia`           |
 | Azië          | Azië - zuidoost   | `southeastasia`      |
-| Australië     | Australië Oost   | `australiaeast`      |
+| Australië     | Australië - oost   | `australiaeast`      |
 | Europa        | Europa - noord     | `northeurope`        |
 | Europa        | Europa - west      | `westeurope`         |
 | Noord-Amerika | VS - oost          | `eastus`             |
 | Noord-Amerika | VS - oost 2        | `eastus2`            |
-| Noord-Amerika | VS - zuid-centraal | `southcentralus`     |
-| Noord-Amerika | VS - west-centraal  | `westcentralus`      |
-| Noord-Amerika | VS - west          | `westus`             |
-| Noord-Amerika | VS - west 2        | `westus2`            |
+| Noord-Amerika | US - zuid-centraal | `southcentralus`     |
+| Noord-Amerika | US - west-centraal  | `westcentralus`      |
+| Noord-Amerika | US - west          | `westus`             |
+| Noord-Amerika | US - west 2        | `westus2`            |
 | Zuid-Amerika | Brazilië - Zuid     | `brazilsouth`        |
 
 Dit is een subset van de publicatie regio's die worden ondersteund door de [Language Understanding-service (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
@@ -80,8 +80,8 @@ De [spraak-SDK](speech-sdk.md) ondersteunt de mogelijkheden van de **Voice Assis
 
 | Regio         | Parameter voor spraak-SDK |
 | -------------- | -------------------- |
-| VS - west        | `westus`             |
-| VS - west 2      | `westus2`            |
+| US - west        | `westus`             |
+| US - west 2      | `westus2`            |
 | VS - oost        | `eastus`             |
 | VS - oost 2      | `eastus2`            |
 | Europa - west    | `westeurope`         |

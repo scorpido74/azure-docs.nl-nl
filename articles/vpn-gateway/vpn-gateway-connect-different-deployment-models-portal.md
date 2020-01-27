@@ -77,7 +77,7 @@ In de volgende tabel ziet u een voor beeld van hoe het voor beeld-VNets en de lo
 
 | Virtueel netwerk | Adresruimte | Regio | Maakt verbinding met de lokale netwerk site |
 |:--- |:--- |:--- |:--- |
-| ClassicVNet |(10.0.0.0/24) |VS - west | RMVNetLocal (192.168.0.0/16) |
+| ClassicVNet |(10.0.0.0/24) |US - west | RMVNetLocal (192.168.0.0/16) |
 | RMVNet | (192.168.0.0/16) |VS - oost |ClassicVNetLocal (10.0.0.0/24) |
 
 ## <a name="classicvnet"></a>Sectie 1: de klassieke VNet-instellingen configureren
@@ -172,7 +172,7 @@ In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway 
 
 | Virtueel netwerk | Adresruimte | Regio | Maakt verbinding met de lokale netwerk site |Openbaar IP-adres van Gateway|
 |:--- |:--- |:--- |:--- |:--- |
-| ClassicVNet |(10.0.0.0/24) |VS - west | RMVNetLocal (192.168.0.0/16) |Het open bare IP-adres dat is toegewezen aan de ClassicVNet-gateway|
+| ClassicVNet |(10.0.0.0/24) |US - west | RMVNetLocal (192.168.0.0/16) |Het open bare IP-adres dat is toegewezen aan de ClassicVNet-gateway|
 | RMVNet | (192.168.0.0/16) |VS - oost |ClassicVNetLocal (10.0.0.0/24) |Het open bare IP-adres dat is toegewezen aan de RMVNet-gateway.|
 
 De lokale netwerk gateway geeft het adres bereik en het open bare IP-adres aan dat is gekoppeld aan uw klassieke VNet en de gateway van het virtuele netwerk. Als u deze stappen uitvoert als oefening, raadpleegt u de voorbeeld waarden.

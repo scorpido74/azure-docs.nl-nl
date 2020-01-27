@@ -109,7 +109,7 @@ Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGro
 
 | NAAM | TYPE  | LOCATIE |
 |------|-------|----------|
-| SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
+| SpeechEchoBotTutorial-speech | Cognitive Services | US - west |
 
 ### <a name="create-an-azure-app-service-plan"></a>Een Azure App Service-plan maken
 
@@ -132,8 +132,8 @@ Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGro
 
 | NAAM | TYPE  | LOCATIE |
 |------|-------|----------|
-| SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
-| SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
+| SpeechEchoBotTutorial-AppServicePlan | App Service-plan | US - west |
+| SpeechEchoBotTutorial-speech | Cognitive Services | US - west |
 
 ## <a name="build-an-echo-bot"></a>Een echo bot bouwen
 
@@ -209,9 +209,9 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
 
 | NAAM | TYPE  | LOCATIE |
 |------|-------|----------|
-| EchoBot20190805125647 | App Service | VS - west |
-| SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
-| SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
+| EchoBot20190805125647 | App Service | US - west |
+| SpeechEchoBotTutorial-AppServicePlan | App Service-plan | US - west |
+| SpeechEchoBotTutorial-speech | Cognitive Services | US - west |
 
 ## <a name="enable-web-sockets"></a>Websockets inschakelen
 
@@ -251,10 +251,10 @@ Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup**
 
 | NAAM | TYPE  | LOCATIE |
 |------|-------|----------|
-| EchoBot20190805125647 | App Service | VS - west |
-| SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
+| EchoBot20190805125647 | App Service | US - west |
+| SpeechEchoBotTutorial-AppServicePlan | App Service-plan | US - west |
 | SpeechEchoBotTutorial-BotRegistration | Registratie botkanalen | Wereldwijd |
-| SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
+| SpeechEchoBotTutorial-speech | Cognitive Services | US - west |
 
 > [!IMPORTANT]
 > In de bron van de bot-kanalen wordt de wereld wijde regio weer gegeven, zelfs als u vs West hebt geselecteerd. Dit is normaal gedrag.

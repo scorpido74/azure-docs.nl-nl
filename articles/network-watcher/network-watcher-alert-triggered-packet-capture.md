@@ -82,7 +82,7 @@ De eerste stap is het maken van een Azure-functie voor het verwerken van de waar
     |**Abonnement**|[Uw abonnement] Het abonnement waarvoor u de functie-app wilt maken.||
     |**Resourcegroep**|PacketCaptureRG|De resource groep die de functie-app bevat.|
     |**Hostingabonnement**|Verbruiksabonnement| Het type van het plan dat door uw functie-app wordt gebruikt. Opties zijn verbruik of Azure App Service plan. |
-    |**Locatie**|VS - centraal| De regio waarin de functie-app moet worden gemaakt.|
+    |**Locatie**|US - centraal| De regio waarin de functie-app moet worden gemaakt.|
     |**Opslagaccount**|automatisch gegenereerde| Het opslag account dat Azure Functions vereist voor opslag voor algemeen gebruik.|
 
 3. Selecteer op de Blade **PacketCaptureExample-functie-apps** **functies** > **aangepaste functie** > **+** .

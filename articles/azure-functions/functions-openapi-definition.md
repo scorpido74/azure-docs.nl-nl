@@ -140,7 +140,7 @@ U nu kunt de OpenAPI-definitie genereren.
     | **Naam** | Wereldwijd unieke naam | Er wordt een naam gegenereerd op basis van de naam van uw functie-app. |
     | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe resource wordt gemaakt. |  
     | **[Resourcegroep](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Dezelfde resource als uw functie-app, die voor u moet worden ingesteld. |
-    | **Locatie** | VS - west | Kies de locatie vs-West. |
+    | **Locatie** | US - west | Kies de locatie vs-West. |
     | **Naam van de organisatie** | Contoso | De naam van de organisatie die wordt gebruikt in de ontwikkelaars Portal en voor e-mail meldingen. |
     | **E-mailadres van de beheerder** | uw e-mail adres | E-mail die systeem meldingen van API Management heeft ontvangen. |
     | **Prijscategorie** | Verbruik (preview-versie) | Verbruiks laag is in Preview en is niet beschikbaar in alle regio's. Zie de [pagina met prijzen voor API Management](https://azure.microsoft.com/pricing/details/api-management/) voor de volledige prijs informatie |

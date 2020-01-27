@@ -85,7 +85,7 @@ De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegeve
 |    eastus                |    US - oost                               |
 |    eastus2               |    US - oost 2                             |
 |    GermanyCentral        |    DE, midden                            |
-|    GermanyNortheast      |    DE, noordoosten                          |
+|    GermanyNortheast      |    DE - noordoost                          |
 |    japaneast             |    JA - oost                               |
 |    japanwest             |    JA - west                               |
 |    KoreaCentral          |    KR - centraal                            |

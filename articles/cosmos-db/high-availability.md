@@ -77,7 +77,7 @@ Bij het configureren van schrijf bewerkingen met meerdere regio's voor uw Azure 
 
 Deze functie is beschikbaar in de volgende Azure-regio's:
 
-- VK - zuid
+- UK - zuid
 
 - Azië - zuidoost
 
@@ -85,11 +85,11 @@ Deze functie is beschikbaar in de volgende Azure-regio's:
 
 - VS - oost 2
 
-- VS - centraal
+- US - centraal
 
 - Europa - west
 
-- VS - west 2
+- US - west 2
 
 > [!NOTE]
 > Als u Beschikbaarheidszones inschakelt voor een Azure Cosmos-account in één regio, worden er kosten in rekening gebracht die gelijk zijn aan het toevoegen van een extra regio aan uw account. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) en de [kosten voor meerdere regio's in azure Cosmos DB](optimize-cost-regions.md) artikelen voor meer informatie over prijzen.
