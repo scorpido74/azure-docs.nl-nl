@@ -10,12 +10,12 @@ ms.date: 01/02/2020
 ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d421de69f856790b89c866a6c8b7221e9214aef4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b141fcdb2aacc8654999d023c4174c7eb9bc177f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75773022"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761429"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -39,19 +39,19 @@ Open vervolgens uw project in Visual Studio.
 
 Laten we een code toevoegen die als een skelet voor het project werkt. Houd er rekening mee dat u een async-methode met de naam `recognizeIntent()`hebt gemaakt.
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-16,73-81)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-16,72-80)]
 
 ## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
 
-Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configuratie maken die de sleutel en locatie voor uw LUIS-Voorspellings bron gebruikt. 
+Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configuratie maken die de sleutel en locatie voor uw LUIS-Voorspellings bron gebruikt.
 
 > [!IMPORTANT]
-> Uw start sleutel-en ontwerp sleutels werken niet. U moet uw Voorspellings sleutel en-locatie gebruiken die u eerder hebt gemaakt. Zie voor meer informatie [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition). 
+> Uw start sleutel-en ontwerp sleutels werken niet. U moet uw Voorspellings sleutel en-locatie gebruiken die u eerder hebt gemaakt. Zie voor meer informatie [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition).
 
 Voeg deze code in de methode `recognizeIntent()` toe. Zorg ervoor dat u deze waarden bijwerkt:
 
-* Vervang `"YourLanguageUnderstandingSubscriptionKey"` door de LUIS-Voorspellings sleutel. 
-* Vervang `"YourLanguageUnderstandingServiceRegion"` door de locatie van uw LUIS. 
+* Vervang `"YourLanguageUnderstandingSubscriptionKey"` door de LUIS-Voorspellings sleutel.
+* Vervang `"YourLanguageUnderstandingServiceRegion"` door de locatie van uw LUIS.
 
 >[!TIP]
 > Als u hulp nodig hebt bij het vinden van deze waarden, raadpleegt u [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition).
@@ -70,14 +70,14 @@ Nu gaan we een `IntentRecognizer`maken. Voeg deze code in de `recognizeIntent()`
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>Een LanguageUnderstandingModel en intenties toevoegen
 
-U moet een `LanguageUnderstandingModel` koppelen aan de intentie herkenning en de intenties toevoegen die u wilt herkennen. We gaan de intenties gebruiken van het vooraf ontwikkelde domein voor Start Automation. 
+U moet een `LanguageUnderstandingModel` koppelen aan de intentie herkenning en de intenties toevoegen die u wilt herkennen. We gaan de intenties gebruiken van het vooraf ontwikkelde domein voor Start Automation.
 
-Voeg deze code toe onder uw `IntentRecognizer`. Zorg ervoor dat u `"YourLanguageUnderstandingAppId"` vervangt door de ID van uw LUIS-app. 
+Voeg deze code toe onder uw `IntentRecognizer`. Zorg ervoor dat u `"YourLanguageUnderstandingAppId"` vervangt door de ID van uw LUIS-app.
 
 >[!TIP]
 > Als u hulp nodig hebt bij het vinden van deze waarde, raadpleegt u [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition).
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=31-34)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=31-33)]
 
 ## <a name="recognize-an-intent"></a>Een intentie herkennen
 
@@ -85,7 +85,7 @@ Vanuit het `IntentRecognizer`-object roept u de `RecognizeOnceAsync()`-methode a
 
 Voeg deze code toe onder uw model:
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=44)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=43)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>De herkennings resultaten (of fouten) weer geven
 
@@ -93,7 +93,7 @@ Wanneer het herkennings resultaat wordt geretourneerd door de spraak service, wi
 
 Voeg deze code toe onder `auto result = recognizer->RecognizeOnceAsync().get();`:
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=47-72)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=46-71)]
 
 ## <a name="check-your-code"></a>Controleer uw code
 
@@ -102,7 +102,7 @@ Op dit moment moet uw code er als volgt uitzien:
 > [!NOTE]
 > Er zijn enkele opmerkingen toegevoegd aan deze versie.
 
-[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-81)]
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-79)]
 
 ## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
 

@@ -10,12 +10,12 @@ ms.date: 01/02/2020
 ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: acd122668a5aa70becbf284bd064535e859ad01b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: e2cb4f81e3de5e22bae3029e42ec2f67dae55424
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772972"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761410"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -42,15 +42,15 @@ Laten we een code toevoegen die als een skelet voor het project werkt. Houd er r
 
 ## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
 
-Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configuratie maken die de sleutel en locatie voor uw LUIS-Voorspellings bron gebruikt. 
+Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configuratie maken die de sleutel en locatie voor uw LUIS-Voorspellings bron gebruikt.
 
 > [!IMPORTANT]
-> Uw start sleutel-en ontwerp sleutels werken niet. U moet uw Voorspellings sleutel en-locatie gebruiken die u eerder hebt gemaakt. Zie voor meer informatie [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition). 
+> Uw start sleutel-en ontwerp sleutels werken niet. U moet uw Voorspellings sleutel en-locatie gebruiken die u eerder hebt gemaakt. Zie voor meer informatie [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition).
 
-Voeg deze code in de methode `RecognizeIntentAsync()` toe. Zorg ervoor dat u deze waarden bijwerkt: 
+Voeg deze code in de methode `RecognizeIntentAsync()` toe. Zorg ervoor dat u deze waarden bijwerkt:
 
-* Vervang `"YourLanguageUnderstandingSubscriptionKey"` door de LUIS-Voorspellings sleutel. 
-* Vervang `"YourLanguageUnderstandingServiceRegion"` door de locatie van uw LUIS. 
+* Vervang `"YourLanguageUnderstandingSubscriptionKey"` door de LUIS-Voorspellings sleutel.
+* Vervang `"YourLanguageUnderstandingServiceRegion"` door de locatie van uw LUIS.
 
 >[!TIP]
 > Als u hulp nodig hebt bij het vinden van deze waarden, raadpleegt u [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition).
@@ -65,16 +65,16 @@ De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal
 
 Nu gaan we een `IntentRecognizer`maken. Dit object wordt gemaakt in een using-instructie om ervoor te zorgen dat onbeheerde bronnen goed worden vrijgegeven. Voeg deze code in de `RecognizeIntentAsync()` methode toe, rechts onder uw spraak configuratie.
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=28-30,76)]
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=29-30,76)]
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>Een LanguageUnderstandingModel en intenties toevoegen
 
-U moet een `LanguageUnderstandingModel` koppelen aan de intentie herkenning en de intenties toevoegen die u wilt herkennen. We gaan de intenties gebruiken van het vooraf ontwikkelde domein voor Start Automation. Voeg deze code toe in de instructie using uit de vorige sectie. Zorg ervoor dat u `"YourLanguageUnderstandingAppId"` vervangt door de ID van uw LUIS-app. 
+U moet een `LanguageUnderstandingModel` koppelen aan de intentie herkenning en de intenties toevoegen die u wilt herkennen. We gaan de intenties gebruiken van het vooraf ontwikkelde domein voor Start Automation. Voeg deze code toe in de instructie using uit de vorige sectie. Zorg ervoor dat u `"YourLanguageUnderstandingAppId"` vervangt door de ID van uw LUIS-app.
 
 >[!TIP]
 > Als u hulp nodig hebt bij het vinden van deze waarde, raadpleegt u [een Luis-app maken voor de intentie herkenning](#create-a-luis-app-for-intent-recognition).
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=31-35)]
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=33-35)]
 
 ## <a name="recognize-an-intent"></a>Een intentie herkennen
 
@@ -88,7 +88,7 @@ Wanneer het herkennings resultaat wordt geretourneerd door de spraak service, wi
 
 Voeg in de instructie using onder `RecognizeOnceAsync()`de volgende code toe:
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=48-75)]
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=49-75)]
 
 ## <a name="check-your-code"></a>Controleer uw code
 
@@ -97,7 +97,7 @@ Op dit moment moet uw code er als volgt uitzien:
 > [!NOTE]
 > Er zijn enkele opmerkingen toegevoegd aan deze versie.
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=5-86)]
+[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=7-86)]
 
 ## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
 

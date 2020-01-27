@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0101573675d96694ee94c45288342dad8183e7fe
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 09fe8396b6f0033a2c01d1ef056060a855b23d0a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75773044"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761422"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Wat is het verschil tussen een virtuele Azure-netwerk gateway (VPN Gateway) en een virtueel WAN VPN-gateway van Azure?
 
@@ -42,9 +42,6 @@ Nee. U kunt ieder VPN-apparaat gebruiken dat voldoet aan de Azure-vereisten voor
 
 Softwarematige oplossingen voor netwerkconnectiviteit beheren hun vertakkingsapparaten doorgaans met behulp van een controller of een knooppunt voor apparaatinrichting. De controller kan Azure API’s gebruiken om de connectiviteit met Azure Virtual WAN te automatiseren. De automatisering omvat het uploaden van vertakkings gegevens, het downloaden van de Azure-configuratie, het instellen van IPSec-tunnels in virtuele Azure-hubs en het automatisch instellen van connectiviteit via het vertakkings apparaat in azure Virtual WAN. Wanneer u honderden filialen hebt, is het eenvoudig om verbinding te maken met behulp van virtuele WAN CPE-partners, omdat de voorbereidings ervaring de nood zaak heeft om grootschalige IPsec-connectiviteit in te stellen, te configureren en te beheren. Raadpleeg [Virtual WAN partner automation](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) (Automatisering voor Virtual WAN-partners) voor meer informatie.
 
-### <a name="am-i-required-to-use-a-preferred-partner-device"></a>Moet ik een apparaat van een voorkeurspartner gebruiken?
-
-Nee. U kunt ieder VPN-apparaat gebruiken dat voldoet aan de Azure-vereisten voor IKEv2/IKEv1 IPSec-ondersteuning.
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Hoe wordt virtuele WAN ondersteunt SD-WAN-apparaten?
 
