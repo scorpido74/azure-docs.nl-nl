@@ -172,7 +172,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Zimbabwe                    | ✓               |                              |        ✓| 
 
 
-## <a name="asia-pacific"></a>Azië-Pacific
+## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
 | Land/regio              |  Satelliet tegels | Minuut prognose, radar tegels | Daarenteg | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  

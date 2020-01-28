@@ -37,7 +37,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 |Uruguay |✓         |✓         |
 
 
-## <a name="asia-pacific"></a>Azië-Pacific
+## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
 |Land/regio   |Incidenten  |Stroom  |
 |---------|:---------:|:---------:|

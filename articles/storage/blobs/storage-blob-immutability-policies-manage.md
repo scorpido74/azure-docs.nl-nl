@@ -173,8 +173,8 @@ Op dit moment hebt u alleen toegang tot de `allowProtectedAppendWrites` instelli
 > [!IMPORTANT] 
 >  De instelling schrijven beveiligde toevoeg-blobs toestaan onder Bewaar periode is momenteel beschikbaar en alleen zichtbaar in de volgende regio's:
 > - VS - oost
-> - VS - zuid-centraal
-> - VS - west 2
+> - US - zuid-centraal
+> - US - west 2
 >
 > Zie voor meer informatie [toestaan dat beveiligde toevoeg-blobs worden geschreven](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
 

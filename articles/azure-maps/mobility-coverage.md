@@ -50,7 +50,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps Mobility-servi
 | \+ Amerikaanse Maagden eilanden | Amerikaanse Maagden eilanden * |
 
 
-## <a name="asia-pacific"></a>Azië-Pacific
+## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
 | Land/regio |  Stad (metro gebied) |
 |--------|---------|

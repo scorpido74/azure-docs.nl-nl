@@ -30,7 +30,7 @@ De volgende regio's en resources zijn beschikbaar voor container groepen met Lin
 | -------- | -- | :---: | :-----------: |
 | Brazilië-zuid, Canada-centraal, Centraal-India, VS-midden, Azië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, Europa-west, VS-West, VS-West 2 | Linux | 4 | 16 |
 | Australië-oost, Japan-Oost | Linux | 2 | 8 |
-| VS - noord-centraal | Linux | 2 | 3,5 |
+| US - noord-centraal | Linux | 2 | 3,5 |
 | Brazilië-zuid, Japan-Oost, Europa-west | Windows | 4 | 16 |
 | US - oost, US - west | Windows | 4 | 14 |
 | Australië-oost, Canada-centraal, Centraal-India, VS-midden, Azië-oost, VS-Oost 2, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, VS-West 2 | Windows | 2 | 3,5 |

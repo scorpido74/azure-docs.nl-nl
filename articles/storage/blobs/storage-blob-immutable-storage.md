@@ -89,8 +89,8 @@ Beleid voor juridische bewaring kan `allowProtectedAppendWrites` niet inschakele
 > [!IMPORTANT] 
 > De instelling beveiligde toevoeg-blobs toestaan schrijf bewerkingen onder Bewaar periode is momenteel beschikbaar in de volgende regio's:
 > - VS - oost
-> - VS - zuid-centraal
-> - VS - west 2
+> - US - zuid-centraal
+> - US - west 2
 >
 > Op dit moment raden wij u ten zeerste aan om `allowProtectedAppendWrites` in andere regio's dan die welke zijn opgegeven niet in te scha kelen, omdat het mogelijk onregelmatige fouten kan veroorzaken en de compatibiliteit van toevoeg-blobs kan beïnvloeden. Zie voor meer informatie over het instellen en vergren delen van op tijd gebaseerde Bewaar beleidsregels voor het [inschakelen van beveiligde toevoeg-blobs toestaan](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes).
 

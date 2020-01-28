@@ -72,7 +72,7 @@ In dit voor beeld ziet u hoe u NSG-regels configureert voor replicatie van een v
 
    **Locatie** | **Site Recovery IP-adres** |  **IP-adres van Site Recovery bewaking**
     --- | --- | ---
-   VS - centraal | 40.69.144.231 | 52.165.34.144
+   US - centraal | 40.69.144.231 | 52.165.34.144
 
 ### <a name="nsg-rules---central-us"></a>NSG-regels-VS-Centraal
 
@@ -86,7 +86,7 @@ Deze regels zijn vereist zodat replicatie kan worden ingeschakeld vanuit de doel
 
    **Locatie** | **Site Recovery IP-adres** |  **IP-adres van Site Recovery bewaking**
     --- | --- | ---
-   VS - centraal | 13.82.88.226 | 104.45.147.24
+   US - centraal | 13.82.88.226 | 104.45.147.24
 ## <a name="issue-3-site-recovery-configuration-failed-151197"></a>Probleem 3: Configuratie van de Site Recovery is mislukt (151197)
 - **Mogelijke oorzaak** </br>
   - Kan geen verbinding maken met Azure Site Recovery service-eindpunten.

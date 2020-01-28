@@ -76,7 +76,7 @@ In de volgende tabel ziet u een voor beeld van hoe u uw VNets definieert. Gebrui
 | Virtual Network | Adresruimte | Regio | Maakt verbinding met de lokale netwerk site |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |VS - oost |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
-| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |VS - west |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
+| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |US - west |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 ## <a name="vnetvalues"></a>Stap 2: de virtuele netwerken maken
 
@@ -138,7 +138,7 @@ De lokale site voor elk VNet is het andere VNet. De volgende voorbeeld waarden w
 | Virtual Network | Adresruimte | Regio | Maakt verbinding met de lokale netwerk site |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |VS - oost |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
-| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |VS - west |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
+| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |US - west |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 1. Zoek TestVNet1 in de Azure Portal. Klik in de sectie **VPN-verbindingen** van de pagina op **Gateway**.
 

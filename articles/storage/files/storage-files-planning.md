@@ -207,8 +207,8 @@ Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaald
 |-------|---------|
 |Australië - centraal    |LRS     |
 |Australië - centraal 2    |LRS     |
-|Australië Oost |LRS     |
-|Australië Zuidoost|LRS |
+|Australië - oost |LRS     |
+|Australië - zuidoost|LRS |
 |Brazilië - Zuid    |LRS     |
 |Canada-Midden  |LRS     |
 |Canada-Oost     |LRS     |
@@ -222,24 +222,24 @@ Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaald
 |Japan - Oost     |LRS     |
 |Japan - West     |LRS     |
 |Korea - centraal  |LRS     |
-|Korea (Zuid)    |LRS     |
-|VS - noord-centraal |LRS   |
+|Korea - zuid    |LRS     |
+|US - noord-centraal |LRS   |
 |Europa - noord   |LRS     |
 |India - zuid    |LRS     |
-|VS - zuid-centraal |LRS     |
+|US - zuid-centraal |LRS     |
 |Azië - zuidoost |LRS, ZRS|
 |Zwitserland - noord    |LRS     |
 |Zwitserland - west    |LRS     |
 |VAE - centraal    |LRS     |
 |VAE - noord    |LRS     |
-|VK, noord   |LRS, ZRS    |
-|VK - zuid    |LRS     |
-|VK - west    |LRS     |
-|VS - west-centraal|LRS     |
+|UK - noord   |LRS, ZRS    |
+|UK - zuid    |LRS     |
+|UK - west    |LRS     |
+|US - west-centraal|LRS     |
 |Europa-west *    |LRS, ZRS|
 |India - west   |LRS     |
-|VS - west        |LRS     |
-|VS - west 2      |LRS, ZRS|
+|US - west        |LRS     |
+|US - west 2      |LRS, ZRS|
 
 \* ondersteund voor nieuwe accounts, niet alle bestaande accounts hebben het upgrade proces voltooid. U kunt controleren of uw bestaande opslag accounts het upgrade proces hebben voltooid door te proberen [grote bestands shares in te scha kelen](storage-files-how-to-create-large-file-share.md).
 

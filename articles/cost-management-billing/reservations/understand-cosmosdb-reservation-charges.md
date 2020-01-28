@@ -11,7 +11,7 @@ ms.author: banders
 ms.reviewer: sngun
 ms.openlocfilehash: cb20c88577bba614c70fdf5a266d482d06aeca57
 ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/15/2020
 ms.locfileid: "75995557"
@@ -45,10 +45,10 @@ De reserveringskorting wordt toegepast op kosten van Azure Cosmos DB-doorvoer op
 |Azure Cosmos DB - 100 RU/s/uur - KR - zuid|    KR - zuid     |     1    |
 |Azure Cosmos DB - 100 RU/s/uur - EU - west|    EU - west     |      1   |
 |Azure Cosmos DB - 100 RU/s/uur - KR - centraal|   KR - centraal    |       1  |
-|Azure Cosmos DB - 100 RU/s/uur - UK - zuid|   VK - zuid      |     1    |
-|Azure Cosmos DB - 100 RU/s/uur - UK - west|   VK - west      |    1     |
-|Azure Cosmos DB - 100 RU/s/uur - UK - noord |   VK, noord    |     1    |
-|Azure Cosmos DB - 100 RU/s/uur - UK - zuid 2|   VK, zuid 2      |     1    |
+|Azure Cosmos DB - 100 RU/s/uur - UK - zuid|   UK - zuid      |     1    |
+|Azure Cosmos DB - 100 RU/s/uur - UK - west|   UK - west      |    1     |
+|Azure Cosmos DB - 100 RU/s/uur - UK - noord |   UK - noord    |     1    |
+|Azure Cosmos DB - 100 RU/s/uur - UK - zuid 2|   UK - zuid      |     1    |
 |Azure Cosmos DB - 100 RU/s/uur - US - oost 2|  US - oost 2     |     1    |
 |Azure Cosmos DB - 100 RU/s/uur - US - noord-centraal|   US - noord-centraal      |     1    |
 |Azure Cosmos DB - 100 RU/s/uur - US - west|   US - west      |     1    |
@@ -62,7 +62,7 @@ De reserveringskorting wordt toegepast op kosten van Azure Cosmos DB-doorvoer op
 |Azure Cosmos DB - 100 RU/s/Hour - CA - oost|   CA - oost      |    1.1      |
 |Azure Cosmos DB - 100 RU/s/Hour - JA - oost|   JA - oost      |    1,125     |
 |Azure Cosmos DB - 100 RU/s/Hour - JA - west|     JA - west    |   1,125       |
-|Azure Cosmos DB - 100 RU/s/Hour - IN - west|     West-India    |    1,1375     |
+|Azure Cosmos DB - 100 RU/s/Hour - IN - west|     IN - west    |    1,1375     |
 |Azure Cosmos DB - 100 RU/s/Hour - IN - centraal|    IN - centraal     |  1,1375       |
 |Azure Cosmos DB - 100 RU/s/Hour - AU - oost|     AU - oost    |   1,15       |
 |Azure Cosmos DB - 100 RU/s/Hour - CA - centraal|  CA - centraal       |   1.2       |

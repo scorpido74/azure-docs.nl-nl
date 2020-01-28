@@ -125,7 +125,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Venezuela                      |        ✓       |                      |             |
 
 
-## <a name="asia-pacific"></a>Azië-Pacific
+## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
 | Land/regio                 | Routes         | Route ring met verkeer | Vracht routering |
 |--------------------------------|:---------------:|:--------------------:|:------------:|

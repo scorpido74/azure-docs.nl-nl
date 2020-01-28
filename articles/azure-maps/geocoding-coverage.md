@@ -86,7 +86,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Britse Maagdeneilanden                              |                 |                |              |      ✓     |          ✓         |
 | Amerikaanse Maagden eilanden                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
-## <a name="asia-pacific"></a>Azië-Pacific
+## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
 | Land/regio                                      | Adres punten |Huis nummers | Straat niveau | Niveau van de stad | Interessante punten |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|

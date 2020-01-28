@@ -201,21 +201,21 @@ Zelf-hostende IR is een ADF-pijp lijn constructie die u met de Kopieer activitei
 
 Wrangling-gegevens stroom wordt momenteel ondersteund in gegevens fabrieken die in de volgende regio's zijn gemaakt:
 
-* Australië Oost
+* Australië - oost
 * Canada-Midden
 * India - centraal
-* VS - centraal
+* US - centraal
 * VS - oost
 * VS - oost 2
 * Japan - Oost
 * Europa - noord
 * Azië - zuidoost
-* VS - zuid-centraal
-* VK - zuid
-* VS - west-centraal
+* US - zuid-centraal
+* UK - zuid
+* US - west-centraal
 * Europa - west
-* VS - west
-* VS - west 2
+* US - west
+* US - west 2
 
 ### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Wat zijn de beperkingen en beperkingen met wrangling-gegevens stroom?
 

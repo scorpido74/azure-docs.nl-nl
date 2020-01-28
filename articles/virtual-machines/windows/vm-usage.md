@@ -78,27 +78,27 @@ De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegeve
 |    CanadaCentral         |    CA - centraal                            |
 |    CanadaEast            |    CA - oost                               |
 |    CentralIndia          |    IN - centraal                            |
-|    centralus             |    VS - centraal                            |
+|    centralus             |    US - centraal                            |
 |    chinaeast             |    China - oost                            |
 |    chinanorth            |    China - noord                           |
 |    eastasia              |    Azië - oost                             |
 |    eastus                |    VS - oost                               |
 |    eastus2               |    VS - oost 2                             |
 |    GermanyCentral        |    DE, midden                            |
-|    GermanyNortheast      |    DE, noordoosten                          |
+|    GermanyNortheast      |    DE - noordoost                          |
 |    japaneast             |    JA - oost                               |
 |    japanwest             |    JA - west                               |
 |    KoreaCentral          |    KR - centraal                            |
 |    KoreaSouth            |    KR - zuid                              |
-|    northcentralus        |    VS - noord-centraal                      |
+|    northcentralus        |    US - noord-centraal                      |
 |    northeurope           |    Europa - noord                          |
-|    southcentralus        |    VS - zuid-centraal                      |
+|    southcentralus        |    US - zuid-centraal                      |
 |    southeastasia         |    Azië - zuidoost                        |
 |    SouthIndia            |    IN - zuid                              |
 |    UKNorth               |    VS Noord                              |
-|    uksouth               |    VK - zuid                              |
-|    UKSouth2              |    VK, zuid 2                            |
-|    ukwest                |    VK - west                               |
+|    uksouth               |    UK - zuid                              |
+|    UKSouth2              |    UK - zuid                            |
+|    ukwest                |    UK - west                               |
 |    USDoDCentral          |    US DoD - centraal                        |
 |    USDoDEast             |    US DoD - oost                           |
 |    USGovArizona          |    USGov Arizona                         |
@@ -107,8 +107,8 @@ De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegeve
 |    usgovvirginia         |    USGov - Virginia                        |
 |    US - west-centraal         |    US - west-centraal                       |
 |    westeurope            |    Europa - west                           |
-|    WestIndia             |    West-India                               |
-|    westus                |    VS - west                               |
+|    WestIndia             |    IN - west                               |
+|    westus                |    US - west                               |
 |    westus2               |    US - west 2                             |
 
 
