@@ -619,18 +619,6 @@
       items:
         - name: Gegevens analyseren met Databricks
           href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Blobs zonder code beheren
-          items:
-            - name: PowerShell
-              href: storage-quickstart-blobs-powershell.md
-            - name: CLI
-              href: storage-quickstart-blobs-cli.md
-        - name: Ontwikkelen met blobs
-          items:
-            - name: .NET
-              href: storage-quickstart-blobs-dotnet.md
-            - name: Python
-              href: storage-quickstart-blobs-python.md
     - name: Zelfstudies
       items:
         - name: 'Gegevens uitpakken, transformeren en laden met Azure Databricks'
@@ -657,36 +645,12 @@
           href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Aanbevolen procedures
           href: data-lake-storage-best-practices.md
-        - name: Toegangslagen
-          items:
-            - name: Toegangslagen
-              href: storage-blob-storage-tiers.md
-            - name: De levenscyclus van Azure Blob Storage beheren
-              href: storage-lifecycle-management-concepts.md
-        - name: Beveiliging
-          items:
-            - name: Overzicht van opslagbeveiliging
-              href: ../blobs/security-recommendations.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Toegangsbeheer
-              href: data-lake-storage-access-control.md
-        - name: Logboekregistratie
-          items:
-            - name: Opslaganalyse
-              href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Logboeken voor opslaganalyse
-              href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Gebeurtenisverwerking
-          href: storage-blob-event-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Toegangsbeheer (mappen en bestanden)
+          href: data-lake-storage-access-control.md
     - name: Procedures
       items:
-        - name: Opslagaccounts maken en beheren
-          items:
-            - name: Een opslagaccount maken voor uw Data Lake
-              href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Gegevens beheren met Storage Explorer
-              href: ../blobs/data-lake-storage-explorer.md
-            - name: Een opslagaccount upgraden
-              href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Een opslagaccount maken voor uw Data Lake
+          href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 'Mappen, bestanden en ACL''s beheren'
           items:
             - name: .NET
@@ -700,43 +664,7 @@
             - name: CLI
               href: data-lake-storage-directory-file-acl-cli.md
             - name: Opslagverkenner
-              href: data-lake-storage-how-to-set-permissions-storage-explorer.md
-        - name: Gegevens overdragen
-          items:
-            - name: AzCopy
-              items:
-                - name: Aan de slag
-                  href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Gebruiken met Azure Data Lake Storage Gen2
-                  href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Configureren, optimaliseren, problemen oplossen'
-                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Distcp gebruiken
-              href: ../blobs/data-lake-storage-use-distcp.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure Data Factory gebruiken
-              href: ../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Beveiligde gegevens
-          items:
-            - name: Firewalls en virtuele netwerken configureren
-              href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Door de klant beheerde sleutels configureren voor serviceversleuteling
-              items:
-                - name: Portal
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Toegangsrechten beheren met RBAC
-              items:
-                - name: Portal
-                  href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Machtigingen instellen op bestands- en directory-niveau
-              href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
+              href: data-lake-storage-explorer.md
         - name: Prestaties optimaliseren
           items:
             - name: Overzicht
@@ -761,43 +689,16 @@
           href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Naslaginformatie
       items:
-        - name: PowerShell
-          href: /powershell/module/azure.storage
-        - name: Azure CLI
-          href: /cli/azure/storage
         - name: .NET
-          items:
-            - name: Blobs (versie 12.x)
-              href: /dotnet/api/azure.storage.blobs
-            - name: Gegevensverplaatsing
-              href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: Opslagresourceprovider
-              href: /dotnet/api/overview/azure/storage/management
+          href: /dotnet/api/azure.storage.files.datalake
         - name: Java
-          items:
-            - name: Blobs (versie 12.x)
-              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
-            - name: Blobs (versie 8.x)
-              href: /java/api/com.microsoft.azure.storage.blob
-            - name: Opslagresourceprovider
-              href: /java/api/overview/azure/storage/management
-        - name: JavaScript (versie 12.x)
-          href: /javascript/api/@azure/storage-blob/
-        - name: Python (versie 12.x)
-          href: /python/api/azure-storage-blob/
+          href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html'
+        - name: Python
+          href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
+        - name: Javascript
+          href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
-          items:
-            - name: 'Blobs, wachtrijen, tabellen en bestanden'
-              href: /rest/api/storageservices
-            - name: Data Lake Storage Gen2
-              href: /rest/api/storageservices/data-lake-storage-gen2
-            - name: Resourceprovider
-              href: /rest/api/storagerp
-            - name: Import/Export
-              href: /rest/api/storageimportexport
-        - name: Resource Manager-sjabloon
-          displayName: ARM
-          href: /azure/templates/microsoft.storage/allversions
+          href: /rest/api/storageservices/data-lake-storage-gen2
     - name: Resources
       items:
         - name: Bekende problemen
