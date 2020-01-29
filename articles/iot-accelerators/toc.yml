@@ -74,7 +74,7 @@
           href: overview-opc-twin-architecture.md
         - name: OPC Vault-architectuur
           href: overview-opc-vault-architecture.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Externe bewaking
       items:
@@ -221,6 +221,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Resources
   items:
+    - name: Opties voor ondersteuning en hulp
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Externe bewaking
       items:
         - name: Snelzoekgids voor ontwikkelaars (.NET)

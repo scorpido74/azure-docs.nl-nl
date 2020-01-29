@@ -110,6 +110,8 @@
           href: connect-azure-stack.md
     - name: Meerdere tenants (MSSP)
       href: multiple-tenants-service-providers.md
+    - name: Door de klant beheerde sleutels (CMK) instellen
+      href: customer-managed-keys.md
     - name: Incidenten maken op basis van waarschuwingen
       href: create-incidents-from-alerts.md
     - name: Zoeken

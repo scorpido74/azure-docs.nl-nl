@@ -503,16 +503,20 @@
               href: ./hadoop/apache-ambari-troubleshoot-down-hosts-services.md
             - name: Waarschuwingen over dat Apache Ambari verlopen is
               href: ./hadoop/apache-ambari-troubleshoot-stale-alerts.md
+            - name: Mapwaarschuwingen voor Apache Ambari
+              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
             - name: Problemen met een traag of niet werkend HDInsight-cluster oplossen
               href: ./hdinsight-troubleshoot-failed-cluster.md
             - name: Problemen met Apache Hadoop HDFS oplossen
               href: ./hdinsight-troubleshoot-hdfs.md
             - name: Problemen met Apache Hadoop YARN oplossen
               href: ./hdinsight-troubleshoot-yarn.md
+            - name: Ongeldige BCFile-fout in het Yarn-logboek
+              href: ./hadoop/troubleshoot-yarn-log-invalid-bcfile.md
             - name: Problemen met Data Lake Store-bestanden oplossen
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
-            - name: Mapwaarschuwingen voor Apache Ambari
-              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
+            - name: Poortconflict bij het starten van services
+              href: ./hadoop/troubleshoot-port-conflict.md
 - name: Apache Kafka
   items:
     - name: Overzicht
@@ -870,5 +874,5 @@
           items:
             - name: ESP-verificatieproblemen
               href: ./domain-joined/domain-joined-authentication-issues.md
-            - name: Aanmelden bij Zeppelin met ESP mislukt
-              href: ./domain-joined/domain-joined-zeppelin-signin.md
+            - name: Het maken van een cluster mislukt met de melding DomainNotFound
+              href: ./domain-joined/troubleshoot-domainnotfound.md

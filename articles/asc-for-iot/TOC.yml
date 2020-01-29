@@ -37,6 +37,8 @@
       href: concept-security-module.md
     - name: Beveiligingswaarschuwingen
       href: concept-security-alerts.md
+    - name: Aanpasbare beveiligingswaarschuwingen
+      href: concept-customizable-security-alerts.md
     - name: Aanbevelingen voor beveiliging
       href: concept-recommendations.md
     - name: Basislijn
@@ -45,7 +47,7 @@
       href: event-aggregation.md
     - name: Prijs en bijbehorende kosten
       href: concept-pricing.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Welke agent moet ik implementeren?
       items:

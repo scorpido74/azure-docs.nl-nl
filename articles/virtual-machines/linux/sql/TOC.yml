@@ -6,9 +6,13 @@
   items:
     - name: Een virtuele SQL-machine maken - Portal
       href: provision-sql-server-linux-virtual-machine.md
+- name: Zelfstudies
+  items:
+    - name: Een beschikbaarheidsgroep voor Azure RHEL VM instellen met STONITH
+      href: sql-server-linux-rhel-ha-stonith-tutorial.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/
     - name: PowerShell
       href: /powershell/azure/overview

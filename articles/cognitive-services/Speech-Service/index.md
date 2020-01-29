@@ -1,15 +1,15 @@
 ---
 layout: HubPage
-ms.date: 11-21-2019
+ms.date: 01-24-2020
 ms.topic: hub-page
 title: Documentatie voor Speech Service
 description: Aan de slag met de spraakservice. Spraakherkenning, spraak samenstellen, realtime vertalen, gesprekken transcriberen of spraak integreren in uw ervaringen van bots.
-ms.openlocfilehash: 7ae8f33e949519cc32d81b591503a159e045178b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a965090be737a10633ead2ca1ed7033ec061ed7f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381270"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771983"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -316,6 +316,63 @@ ms.locfileid: "75381270"
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-translation">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Taalondersteuning</h3>
+                                                    <p>Meer informatie over welke talen worden ondersteund voor intentieherkenning.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-pricing.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Prijzen</h3>
+                                                    <p>Meer informatie over de kosten voor intentieherkenning.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>De docs lezen</h3>
+                                                    <p>Informatie over hoe u intentieherkenning toevoegt aan uw apps, hulpprogramma's en producten. Bevat concepten, zelfstudies, API-verwijzing en opmerkingen bij de release.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -441,25 +498,6 @@ ms.locfileid: "75381270"
                         <a href="#conversationtranscription">Gesprektranscriptie</a>
                         <ul id="conversationtranscription" class="cardsC">
                             <li>
-                                <a href="https://aka.ms/speech/cts-overview">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Overzicht</h3>
-                                                    <p>Meer informatie over gesprektranscriptie en hoe u dit integreert in uw producten.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="https://aka.ms/speech/cts-microphone">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -491,6 +529,25 @@ ms.locfileid: "75381270"
                                                 <div class="cardText">
                                                     <h3>Gesprekken asynchroon transcriberen</h3>
                                                     <p>Meer informatie over het asynchroon transcriberen van gesprekken, het controleren van de status en het downloaden van de uitvoer.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/call-center-transcription">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-call-center-transcription.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Callcentertranscriptie</h3>
+                                                    <p>Meer informatie over hoe u grote hoeveelheden telefoongegevens kunt transcriberen die afkomstig zijn van verschillende systemen.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -535,13 +592,8 @@ ms.locfileid: "75381270"
                                     </div>
                                 </a>
                             </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#voice-assistants">Spraakassistenten</a>
-                        <ul id="voice-assistants" class="cardsC">
                             <li>
-                                <a href="https://aka.ms/speech/va-overview">
+                                <a href="https://aka.ms/speech/cts-overview">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -551,14 +603,19 @@ ms.locfileid: "75381270"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Overzicht</h3>
-                                                    <p>Meer informatie over wat u nodig hebt om een spraakassistent te bouwen.</p>
+                                                    <h3>De docs lezen</h3>
+                                                    <p>Meer informatie over gesprektranscriptie en hoe u dit integreert in uw producten.</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
                             </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#voice-assistants">Spraakassistenten</a>
+                        <ul id="voice-assistants" class="cardsC">
                             <li>
                                 <a href="https://aka.ms/speech/va-bot-framework">
                                     <div class="cardSize">
@@ -591,6 +648,106 @@ ms.locfileid: "75381270"
                                                 <div class="cardText">
                                                     <h3>Aangepaste opdrachten gebruiken</h3>
                                                     <p>Leer hoe u eenvoudig krachtige spraaktoepassingen voor opdrachten en beheer kunt bouwen, zodat gebruikers taken kunnen uitvoeren met hun stem.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://aka.ms/speech/va-overview">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>De docs lezen</h3>
+                                                    <p>Meer informatie over wat u nodig hebt om een spraakassistent te bouwen.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#deploy-architecture">Hosting</a>
+                        <ul id="deploy-architecture" class="cardsC">
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-how-to.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Een resource voor Azure-spraakservice maken</h3>
+                                                    <p>Ontdek hoe u een Azure-abonnementssleutel kunt ophalen, een spraakresource kunt maken en hiermee aan de slag kunt gaan.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="speech-container-howto.md?tabs=stt">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-containers.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Spraakservicecontainers implementeren</h3>
+                                                    <p>Meer informatie over het gebruik van Spraak-containers op locatie, met Kubernetes en Helm of Azure-containerinstanties.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/sovereign-clouds">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Onafhankelijke clouds</h3>
+                                                    <p>Beschikbaarheid van Spraakservice-resources in een onafhankelijke Azure-cloud.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="regions.md">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Ondersteunde regio’s</h3>
+                                                    <p>Meer informatie over waar Speech Service wordt ondersteund.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -658,7 +815,45 @@ ms.locfileid: "75381270"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                                                    
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/scenario-availability">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Beschikbaarheid van scenario's en functies</h3>
+                                                    <p>Meer informatie over de vele Spraak SDK-functiescenario's voor een groot aantal programmeertalen en omgevingen.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/regions">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Ondersteunde regio’s</h3>
+                                                    <p>Meer informatie over de beschikbare regio's en eindpunten voor de Spraakservice.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -849,6 +1044,25 @@ ms.locfileid: "75381270"
                                 </a>
                             </li>
                             <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Taalondersteuning</h3>
+                                                    <p>Meer informatie over programmering en de ondersteuning voor gesproken taal voor Custom Voice.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="https://aka.ms/speech/custom-tts-pricing">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -870,97 +1084,6 @@ ms.locfileid: "75381270"
                             </li>
                         </ul>
                     </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#scenarios">Scenario's</a>
-                <ul id="scenarios">
-                    <li>
-                        <a href="#use-cases">Gebruiksvoorbeelden</a>
-                        <ul id="use-cases" class="cardsC">
-                            <li>
-                                <a href="call-center-transcription.md">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-call-center-transcription.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Callcentertranscriptie</h3>
-                                                    <p>Een veelvoorkomend scenario voor spraak-naar-tekst is het transcriberen van grote aantallen telefoongegevens van bronnen als IVR-systemen (Interactive Voice Response). </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="scenario-availability.md">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Beschikbaarheid van scenario's en functies</h3>
-                                                    <p>Meer informatie over beschikbaarheid van scenario's en functies per platform en programmeertaal.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#deploy-architecture">Implementatie</a>
-                        <ul id="deploy-architecture" class="cardsC">
-                            <li>
-                                <a href="speech-container-howto.md?tabs=stt">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-containers.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Speech Service implementeren in containers</h3>
-                                                    <p>Docker gebruiken om de Speech Service in een containerinstantie te implementeren.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="regions.md">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-regions.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Ondersteunde regio’s</h3>
-                                                    <p>Meer informatie over waar Speech Service wordt ondersteund.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>                                    
-                        </ul>
-                    </li>                    
                 </ul>
             </li>
         </ul>

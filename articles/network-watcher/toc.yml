@@ -41,7 +41,7 @@
       href: network-watcher-security-group-view-overview.md
     - name: Op rollen gebaseerde toegangsmachtigingen
       href: required-rbac-permissions.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Network Watcher configureren
       href: network-watcher-create.md
@@ -57,7 +57,7 @@
           items:
             - name: Azure PowerShell
               href: diagnose-vm-network-routing-problem-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: diagnose-vm-network-routing-problem-cli.md
         - name: Uitgaande verbindingsproblemen vaststellen
           items:
@@ -65,7 +65,7 @@
               href: network-watcher-connectivity-portal.md
             - name: Azure PowerShell
               href: network-watcher-connectivity-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: network-watcher-connectivity-cli.md
             - name: REST
               href: network-watcher-connectivity-rest.md
@@ -77,7 +77,7 @@
                   href: network-watcher-packet-capture-manage-portal.md
                 - name: Azure PowerShell
                   href: network-watcher-packet-capture-manage-powershell.md
-                - name: Azure-CLI
+                - name: Azure CLI
                   href: network-watcher-packet-capture-manage-cli.md
                 - name: REST
                   href: network-watcher-packet-capture-manage-rest.md
@@ -97,10 +97,12 @@
           items:
             - name: Azure PowerShell
               href: network-watcher-nsg-flow-logging-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: network-watcher-nsg-flow-logging-cli.md
             - name: REST
               href: network-watcher-nsg-flow-logging-rest.md
+            - name: Azure Resource Manager
+              href: network-watcher-nsg-flow-logging-azure-resource-manager.md
         - name: Opslagblobs van NSG-stroomlogboeken verwijderen
           href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: NSG-stroomlogboeken lezen
@@ -126,7 +128,7 @@
           items:
             - name: Azure PowerShell
               href: network-watcher-security-group-view-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: network-watcher-security-group-view-cli.md
             - name: REST
               href: network-watcher-security-group-view-rest.md
@@ -138,7 +140,7 @@
           items:
             - name: Azure PowerShell
               href: network-watcher-troubleshoot-manage-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: network-watcher-troubleshoot-manage-cli.md
             - name: REST
               href: network-watcher-troubleshoot-manage-rest.md
@@ -154,7 +156,7 @@
       href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/network/watcher
     - name: Azure PowerShell
       href: '/powershell/module/az.network/#network_watcher'
