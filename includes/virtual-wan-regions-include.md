@@ -21,15 +21,15 @@ VPN-verbinding tussen sites en virtuele WAN-architectuur is beschikbaar voor de 
 
 |Geopolitieke regio | Azure-regio's|
 |---|---|
-| Noord-Amerika | US - oost, US - west, US - oost 2, US - west 2, US - centraal, US - zuid-centraal, US - noord-centraal, US - west-centraal, Canada Centraal, Canada Oost |
+| Noord-Amerika | US - oost, US - west, US - oost 2, US - west 2, US - centraal, US - zuid-centraal, US - noord-centraal, US - west-centraal, Canada - centraal, Canada - oost |
 |Zuid-Amerika |Brazilië - Zuid |
-| Europa | Frankrijk - centraal, Frankrijk - zuid, Europa - noord, Europa - west, VK - west, VK - zuid |
+| Europa | Frankrijk - centraal, Frankrijk - zuid, Europa - noord, Europa - west, UK - west, UK - zuid |
 | Azië | Azië - oost, Azië - zuidoost |
 | Japan  | Japan - west, Japan - oost |
 | Australië | Australië - zuidoost, Australië - oost |
 | Australia overheid | Australië Centraal, Australië Centraal 2 |
 | India | India - west, India - centraal, India - zuid |
-| Zuid-Korea | Korea Centraal, Korea Zuid |
+| Zuid-Korea | Korea - centraal, Korea - zuid |
 | Zuid-Afrika | Zuid-Afrika-noord, Zuid-Afrika-west |
 
 ### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Azure-regio's en geopolitieke grenzen voor nationale Clouds
