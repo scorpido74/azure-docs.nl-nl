@@ -10,44 +10,41 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/15/2020
+ms.date: 01/24/2020
 ms.author: raiye
-ms.openlocfilehash: 85029b5f819a59ffc4934d245778044a94a18d5e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 89fd16b6afadee75678b76381739c12a31dc1a07
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122131"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765363"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
 
 ## <a name="january-2020-guest-os"></a>Januari 2020-gast besturingssysteem
 
->[!NOTE]
->Het besturings systeem januari gast wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem januari gast. Deze lijst is onderhevig aan wijzigingen.
-
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 20-01  |  [4532960]  |  Windows-beveiliging  | 2,94 | 14 januari 2020 |
-|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 2,94 | 14 januari 2020 |
-|  Rel 20-01  |  [4534314]  |  Windows-beveiliging  | 2,94 | 14 januari 2020 |
-|  Rel 20-01  |  [4532958]  |  Windows-beveiliging  | 3,81 | 14 januari 2020 |
-|  Rel 20-01  |  [4532963]  |  Windows-beveiliging  | 3,81 | 14 januari 2020 |
-|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 3,81 | 14 januari 2020 |
-|  Rel 20-01  |  [4534288]  |  Windows-beveiliging  | 3,81 | 14 januari 2020 |
-|  Rel 20-01  |  [4532961]  |  Windows-beveiliging  | 4,74 | 14 januari 2020 |
-|  Rel 20-01  |  [4532962]  |  Windows-beveiliging  | 4,74 | 14 januari 2020 |
-|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 4,74 | 14 januari 2020 |
-|  Rel 20-01  |  [4534309]  |  Windows-beveiliging  | 4,74 | 14 januari 2020 |
-|  Rel 20-01  |  [4494175]  |  Micro code v3  | 5,39 | 29 aug 2019 |
-|  Rel 20-01  |  [4534271]  |  LCU  | 5,39 | 14 januari 2020 |
-|  Rel 20-01  |  [4494174]  |  Micro code v4  | 6,15 | 29 aug 2019 |
-|  Rel 20-01  |  [4532947]  |  Windows-beveiliging  | 6,15 | 14 januari 2020 |
-|  Rel 20-01  |  [4534273]  |  LCU  | 6,15 | 14 januari 2020 |
-|  Rel 20-01  |  [4530734]  |  Niet-beveiliging  | 2,94 | 10 december 2019 |
-|  Rel 20-01  |  [4530691]  |  Niet-beveiliging   | 3,81 | 10 december 2019 |
-|  Rel 20-01  |  [4530702]  |  Niet-beveiliging  | 4,74 | 10 december 2019 |
+|  Rel 20-01  |  [4532960]  |  Windows-beveiliging  | [2,94] | 14 januari 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [2,94] | 14 januari 2020 |
+|  Rel 20-01  |  [4534314]  |  Windows-beveiliging  | [2,94] | 14 januari 2020 |
+|  Rel 20-01  |  [4532958]  |  Windows-beveiliging  | [3,81] | 14 januari 2020 |
+|  Rel 20-01  |  [4532963]  |  Windows-beveiliging  | [3,81] | 14 januari 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [3,81] | 14 januari 2020 |
+|  Rel 20-01  |  [4534288]  |  Windows-beveiliging  | [3,81] | 14 januari 2020 |
+|  Rel 20-01  |  [4532961]  |  Windows-beveiliging  | [4,74] | 14 januari 2020 |
+|  Rel 20-01  |  [4532962]  |  Windows-beveiliging  | [4,74] | 14 januari 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [4,74] | 14 januari 2020 |
+|  Rel 20-01  |  [4534309]  |  Windows-beveiliging  | [4,74] | 14 januari 2020 |
+|  Rel 20-01  |  [4494175]  |  Micro code v3  | [5,39] | 29 aug, 2019 |
+|  Rel 20-01  |  [4534271]  |  LCU  | [5,39] | 14 januari 2020 |
+|  Rel 20-01  |  [4494174]  |  Micro code v4  | [6,15] | 29 aug, 2019 |
+|  Rel 20-01  |  [4532947]  |  Windows-beveiliging  | [6,15] | 14 januari 2020 |
+|  Rel 20-01  |  [4534273]  |  LCU  | [6,15] | 14 januari 2020 |
+|  Rel 20-01  |  [4530734]  |  Niet-beveiliging  | [2,94] | 10 december 2019 |
+|  Rel 20-01  |  [4530691]  |  Niet-beveiliging   | [3,81] | 10 december 2019 |
+|  Rel 20-01  |  [4530702]  |  Niet-beveiliging  | [4,74] | 10 december 2019 |
 
 [4532960]: https://support.microsoft.com/kb/4532960
 [4534251]: https://support.microsoft.com/kb/4534251
@@ -68,6 +65,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4530734]: https://support.microsoft.com/kb/4530734
 [4530691]: https://support.microsoft.com/kb/4530691
 [4530702]: https://support.microsoft.com/kb/4530702
+[6,15]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,39]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,74]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,81]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,94]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="december-2019-guest-os"></a>December 2019-gast besturingssysteem
@@ -216,10 +218,10 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 |  Rel 19-09   |  [4514366]  |  .NET Framework 3,5 en 4.7.2   |  [6,11]  |  Sept 10, 2019  |
 |  Rel 19-09   |  [4516044]  |  Meest recente cumulatieve update   |  [5,35]  |  Sept 10, 2019  |
 |  Rel 19-09   |  [4516064]  |  Windows-beveiliging   |  [4,70]  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4514350]  |  .NET Framework 3.5   |  [4,70]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4514350]  |  .NET Framework 3,5   |  [4,70]  |  Sept 10, 2019  |
 |  Rel 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  [4,70]  |  Sept 10, 2019  |
 |  Rel 19-09   |  [4516062]  |  Windows-beveiliging   |  [3,77]  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4514349]  |  .NET Framework 3.5   |  [3,77]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4514349]  |  .NET Framework 3,5   |  [3,77]  |  Sept 10, 2019  |
 |  Rel 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  [3,77]  |  Sept 10, 2019  |
 |  Rel 19-09   |  [4516033]  |  Windows-beveiliging   |  [2,90]  |  12 september 2019  |
 |  Rel 19-09   |  [4512488]  |  Niet-beveiliging   |  [4,70]  |  13 augustus 2019  |
@@ -778,14 +780,14 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 ## <a name="july-2018-guest-os"></a>2018 juli-gast besturingssysteem
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| Rel 18-07 | [4338814] |Windows 10-beveiliging |5.21 |10 juli 2018 |
+| Rel 18-07 | [4338814] |Windows 10-beveiliging |5,21 |10 juli 2018 |
 | Rel 18-07 | [4338823] |Alleen Windows-beveiliging |2,76 |10 juli 2018 |
 | Rel 18-07 | [4338820] |Alleen Windows-beveiliging |3,63 |10 juli 2018 |
 | Rel 18-07 | [4338824] |Alleen Windows-beveiliging |4,56 |10 juli 2018 |
 | Rel 18-07 | [4345459] |Beveiligings update vernieuwen |2,76 |10 juli 2018 |
 | Rel 18-07 | [4345425] |Beveiligings update vernieuwen |3,63 |10 juli 2018 |
 | Rel 18-07 | [4345424] |Beveiligings update vernieuwen |4,56 |10 juli 2018 |
-| Rel 18-07 | [4345418] |Beveiligings update vernieuwen |5.21 |10 juli 2018 |
+| Rel 18-07 | [4345418] |Beveiligings update vernieuwen |5,21 |10 juli 2018 |
 | Rel 18-07 | [4338612], [4338602] |.NET 3.5, 4.x Security |2,76 |10 juli 2018 |
 | Rel 18-07 | [4338601], [4338604] |.NET 3.5, 4.x, 4.5x Security |3,63 |10 juli 2018 |
 | Rel 18-07 | [4338613], [4338600], [4338605] |.NET 3.5, 4.x, 4.5x Security |4,56|10 juli 2018 |

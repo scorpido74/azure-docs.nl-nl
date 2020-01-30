@@ -5,7 +5,6 @@
     - name: Over Virtual Network
       href: virtual-networks-overview.md
 - name: Snelstartgidsen
-  expanded: true
   items:
     - name: Een virtueel netwerk maken - Portal
       href: quick-create-portal.md
@@ -13,6 +12,7 @@
       href: quick-create-powershell.md
     - name: Een virtueel netwerk maken - Azure CLI
       href: quick-create-cli.md
+  expanded: true
 - name: Zelfstudies
   items:
     - name: Netwerkverkeer filteren
@@ -25,7 +25,7 @@
       href: tutorial-connect-virtual-networks-portal.md
 - name: Voorbeelden
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -83,13 +83,7 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvirtual-network%2ftoc.json
     - name: Onderlinge netwerkconnectiviteit
       href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-    - name: Klassiek
-      items:
-        - name: IP-adressering
-          href: virtual-network-ip-addresses-overview-classic.md
-        - name: Toegangsbeheerlijsten
-          href: virtual-networks-acl.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Plannen
       items:
@@ -105,7 +99,7 @@
               items:
                 - name: Azure PowerShell
                   href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
-                - name: Azure-CLI
+                - name: Azure CLI
                   href: virtual-network-ipv4-ipv6-dual-stack-cli.md
                 - name: Resource Manager-sjabloon
                   href: ipv6-configure-template-json.md
@@ -113,13 +107,13 @@
               items:
                 - name: Azure PowerShell
                   href: ipv6-add-to-existing-vnet-powershell.md
-                - name: Azure-CLI
+                - name: Azure CLI
                   href: ipv6-add-to-existing-vnet-cli.md
             - name: Openbare load balancer van het type Standard
               items:
                 - name: Azure PowerShell
                   href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-                - name: Azure-CLI
+                - name: Azure CLI
                   href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
                 - name: Resource Manager-sjabloon
                   href: ipv6-configure-standard-load-balancer-template-json.md
@@ -131,13 +125,13 @@
           items:
             - name: Azure PowerShell
               href: tutorial-filter-network-traffic-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: tutorial-filter-network-traffic-cli.md
         - name: Routetabellen
           items:
             - name: Azure PowerShell
               href: tutorial-create-route-table-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: tutorial-create-route-table-cli.md
             - name: Ansible
               href: /azure/ansible/ansible-create-configure-route-table
@@ -146,7 +140,7 @@
           items:
             - name: Azure PowerShell
               href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: tutorial-restrict-network-access-to-resources-cli.md
         - name: Beleid voor service-eindpunten - portal
           href: virtual-network-service-endpoint-policies-portal.md
@@ -156,7 +150,7 @@
               items:
                 - name: Azure PowerShell
                   href: tutorial-connect-virtual-networks-powershell.md
-                - name: Azure-CLI
+                - name: Azure CLI
                   href: tutorial-connect-virtual-networks-cli.md
             - name: Hetzelfde implementatiemodel - verschillende abonnementen
               href: create-peering-different-subscriptions.md
@@ -166,7 +160,7 @@
               href: create-peering-different-deployment-models-subscriptions.md
         - name: Virtual Network TAP
           items:
-            - name: Azure-CLI
+            - name: Azure CLI
               href: tutorial-tap-virtual-network-cli.md
         - name: Containernetwerken
           href: deploy-container-networking.md
@@ -178,7 +172,7 @@
                   href: virtual-network-deploy-static-pip-arm-portal.md
                 - name: Azure PowerShell
                   href: virtual-network-deploy-static-pip-arm-ps.md
-                - name: Azure-CLI
+                - name: Azure CLI
                   href: virtual-network-deploy-static-pip-arm-cli.md
             - name: Een openbaar IP-adres toevoegen aan een bestaande VM
               href: associate-public-ip-address-vm.md
@@ -190,13 +184,13 @@
                   href: virtual-networks-static-private-ip-arm-pportal.md
                 - name: Azure PowerShell
                   href: virtual-networks-static-private-ip-arm-ps.md
-                - name: Azure-CLI
+                - name: Azure CLI
                   href: virtual-networks-static-private-ip-arm-cli.md
             - name: Een virtuele machine maken - meerdere netwerkinterfaces
               items:
                 - name: Azure PowerShell
                   href: ../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                - name: Azure-CLI
+                - name: Azure CLI
                   href: ../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json
             - name: Een virtuele machine maken - meerdere IP-adressen
               items:
@@ -204,13 +198,13 @@
                   href: virtual-network-multiple-ip-addresses-portal.md
                 - name: Azure PowerShell
                   href: virtual-network-multiple-ip-addresses-powershell.md
-                - name: Azure-CLI
+                - name: Azure CLI
                   href: virtual-network-multiple-ip-addresses-cli.md
             - name: Een virtuele machine maken - versnelde netwerken
               items:
                 - name: Azure PowerShell
                   href: create-vm-accelerated-networking-powershell.md
-                - name: Azure-CLI
+                - name: Azure CLI
                   href: create-vm-accelerated-networking-cli.md
                   items:
                     - name: DPDK instellen
@@ -258,6 +252,8 @@
               href: virtual-network-manage-peering.md
             - name: DDoS-bescherming
               href: manage-ddos-protection.md
+            - name: Partners onboarden voor standaard DDoS Protection
+              href: ddos-protection-partner-onboarding.md
         - name: Netwerkbeveiligingsgroepen
           href: manage-network-security-group.md
           items:
@@ -321,77 +317,9 @@
           href: what-is-ip-address-168-63-129-16.md
         - name: Verbindingsproblemen met Azure-VM oplossen
           href: troubleshoot-vm-connectivity.md
-    - name: Klassiek
-      items:
-        - name: Een virtueel netwerk maken en beheren
-          items:
-            - name: Een virtueel netwerk maken
-              href: create-virtual-network-classic.md
-              items:
-                - name: Azure Portal
-                  href: virtual-networks-create-vnet-classic-pportal.md
-                - name: Azure PowerShell
-                  href: virtual-networks-create-vnet-classic-netcfg-ps.md
-                - name: Azure-CLI
-                  href: virtual-networks-create-vnet-classic-cli.md
-            - name: DNS-instellingen in een virtueel-netwerkconfiguratiebestand opgeven
-              href: virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md
-            - name: DNS-instellingen in een serviceconfiguratiebestand opgeven
-              href: virtual-networks-specifying-dns-settings-in-a-service-configuration-file.md
-            - name: Beheren
-              items:
-                - name: Netwerkconfiguratiebestand
-                  href: virtual-networks-using-network-configuration-file.md
-                - name: Van een affiniteitsgroep naar een regio migreren
-                  href: virtual-networks-migrate-to-regional-vnet.md
-        - name: Een netwerkbeveiligingsgroep maken
-          items:
-            - name: Azure PowerShell
-              href: virtual-networks-create-nsg-classic-ps.md
-            - name: Klassieke versie van Azure CLI
-              href: virtual-networks-create-nsg-classic-cli.md
-        - name: Een routetabel maken
-          items:
-            - name: Azure PowerShell
-              href: virtual-network-create-udr-classic-ps.md
-            - name: Azure-CLI
-              href: virtual-network-create-udr-classic-cli.md
-        - name: VM-netwerken
-          items:
-            - name: Een virtuele machine maken - meerdere netwerkinterfaces
-              items:
-                - name: Azure PowerShell
-                  href: virtual-network-deploy-multinic-classic-ps.md
-                - name: Azure-CLI
-                  href: virtual-network-deploy-multinic-classic-cli.md
-            - name: Een virtuele machine maken - statisch privé-IP-adres
-              href: virtual-networks-reserved-public-ip.md
-            - name: Beheren
-              items:
-                - name: Statische IP-adressen
-                  items:
-                    - name: Azure PowerShell
-                      href: virtual-networks-reserved-private-ip.md
-                    - name: Azure-CLI
-                      href: virtual-networks-static-private-ip-classic-cli.md
-                - name: Openbare IP-adressen op exemplaarniveau
-                  href: virtual-networks-instance-level-public-ip.md
-                - name: Toegangsbeheerlijsten
-                  items:
-                    - name: Azure Portal
-                      href: ../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json
-                    - name: Azure PowerShell
-                      href: virtual-networks-acl-powershell.md
-                - name: Een VM verplaatsen naar een ander subnet
-                  href: virtual-networks-move-vm-role-to-subnet.md
-        - name: Cloudservice en netwerkbeveiliging
-          href: 'https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter'
-          items:
-            - name: Voorbeeldtoepassing
-              href: virtual-networks-sample-app.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/network
     - name: Azure PowerShell
       href: /powershell/module/az.network

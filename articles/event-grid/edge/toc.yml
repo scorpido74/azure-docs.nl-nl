@@ -24,6 +24,8 @@
   items:
     - name: Concepten binnen Event Grid
       href: concepts.md
+    - name: Gebeurtenis-handlers en bestemmingen
+      href: event-handlers.md
     - name: Verificatie en beveiliging
       href: security-authentication.md
     - name: Gebeurtenisschema's
@@ -34,7 +36,7 @@
       href: delivery-output-batching.md
     - name: Geavanceerd filteren
       href: advanced-filtering.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Permanente status
       items:
@@ -42,6 +44,8 @@
           href: persist-state-linux.md
         - name: Windows
           href: persist-state-windows.md
+    - name: Onderwerpen en abonnementen bewaken
+      href: monitor-topics-subscriptions.md
     - name: API-protocollen configureren
       href: configure-api-protocol.md
     - name: Clientverificatie configureren
@@ -60,3 +64,5 @@
       href: configure-event-grid.md
     - name: Configuratieschema van moduledubbel
       href: twin-json.md
+    - name: Releaseopmerkingen
+      href: release-notes.md

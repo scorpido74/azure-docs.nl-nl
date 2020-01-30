@@ -12,6 +12,8 @@
           href: prepay-sql-data-warehouse-charges.md
         - name: Een virtuele-machinereservering aanschaffen
           href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Azure Disk Storage
+          href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Een Azure Storage-reservering aanschaffen
           href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Een Cosmos DB-reservering aanschaffen
@@ -40,8 +42,12 @@
       items:
         - name: Kortingen voor gereserveerde VM-exemplaren
           href: ../manage/understand-vm-reservation-charges.md
+        - name: Hoe reserveringsaanbevelingen worden gemaakt
+          href: reserved-instance-purchase-recommendations.md
         - name: Kortingen voor gereserveerde Azure Storage-capaciteit
           href: understand-storage-charges.md
+        - name: Azure Disk Storage-reserveringskortingen
+          href: understand-disk-reservations.md
         - name: Kortingen voor gereserveerde Cosmos DB-capaciteit
           href: understand-cosmosdb-reservation-charges.md
         - name: Kortingen voor gereserveerde SQL Database-capaciteit

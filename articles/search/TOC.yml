@@ -400,6 +400,8 @@
           href: cognitive-search-skill-conditional.md
         - name: Documentextractie
           href: cognitive-search-skill-document-extraction.md
+        - name: PII-detectie
+          href: cognitive-search-skill-pii-detection.md
     - name: Aangepaste vaardigheden
       items:
         - name: Aangepaste Web-API

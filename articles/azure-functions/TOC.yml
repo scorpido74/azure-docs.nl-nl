@@ -13,26 +13,25 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: 'Functie maken - C#'
-      href: functions-create-your-first-function-visual-studio.md
-    - name: Functie maken - Java
-      href: functions-create-first-java-maven.md
-    - name: Functie maken - JavaScript
-      href: functions-create-first-function-vs-code.md
-    - name: Functie maken - PowerShell
-      href: functions-create-first-function-powershell.md
-    - name: Functie maken - Python
-      href: functions-create-first-function-python.md
-    - name: Verbinding maken met services
+    - name: Functie maken
+      expanded: true
       items:
-        - name: 'Opslag - C#'
-          href: functions-add-output-binding-storage-queue-vs.md
-        - name: Opslag - Java
-          href: functions-add-output-binding-storage-queue-java.md
-        - name: Opslag - JavaScript
+        - name: Visual Studio Code
+          href: /azure/azure-functions/functions-create-first-function-vs-code
+        - name: Visual Studio
+          href: functions-create-your-first-function-visual-studio.md
+        - name: Opdrachtregel
+          href: functions-create-first-azure-function-azure-cli.md
+        - name: Maven (Java)
+          href: functions-create-first-java-maven.md
+    - name: Verbinding maken met opslag
+      items:
+        - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: Opslag - Python
-          href: functions-add-output-binding-storage-queue-python.md
+        - name: Visual Studio
+          href: functions-add-output-binding-storage-queue-vs.md
+        - name: Maven (Java)
+          href: functions-add-output-binding-storage-queue-java.md
 - name: Zelfstudies
   items:
     - name: Functions met Logic Apps
@@ -73,7 +72,7 @@
           href: /samples/browse/?products=azure-functions&languages=python
         - name: TypeScript
           href: /samples/browse/?products=azure-functions&languages=typescript
-    - name: Azure-CLI
+    - name: Azure CLI
       href: functions-cli-samples.md
 - name: Concepten
   items:
@@ -137,7 +136,7 @@
       href: functions-networking-options.md
     - name: IP-adressen
       href: ip-addresses.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Ontwikkelen
       items:
@@ -160,7 +159,7 @@
                 - name: Azure Portal
                   href: functions-create-first-azure-function.md
                 - name: Opdrachtregel
-                  href: functions-create-first-azure-function-azure-cli.md
+                  href: create-cli.md
                 - name: Visual Studio
                   href: create-visual-studio.md
                 - name: Visual Studio Code

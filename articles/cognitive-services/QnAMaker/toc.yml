@@ -67,23 +67,37 @@
       href: Tutorials/create-qna-bot.md
 - name: Concepten
   items:
-    - name: Knowledge base
-      href: Concepts/knowledge-base.md
-      displayName: 'metadata, pair'
-    - name: LUIS en QnA Maker gebruiken
-      href: ../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json
-    - name: Levenscyclus van een knowledge base-ontwikkeling
-      href: Concepts/development-lifecycle-knowledge-base.md
-      displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: Azure-resources
+      href: Concepts/azure-resources.md
+    - name: Een kennisdatabase ontwerpen
+      items:
+        - name: Voor talen
+          href: Concepts/design-language-culture.md
+        - name: Voor clienttoepassingen
+          href: Concepts/integration-with-other-applications.md
+    - name: Gegevensbronnen en inhoud
+      items:
+        - name: Importeren uit gegevensbronnen
+          href: Concepts/knowledge-base.md
+        - name: Geïmporteerde inhoudstypen
+          href: Concepts/content-types.md
+        - name: Vraag-en-antwoord-sets
+          href: Concepts/question-answer-set.md
+    - name: Levenscyclus van Knowledge base
+      items:
+        - name: Levenscyclus van ontwikkeling
+          href: Concepts/development-lifecycle-knowledge-base.md
+          displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: Knowledge base bewerken
+      items:
+        - name: Antwoord ophalen
+          displayName: 'DefaultAnswer, Default answer'
+          href: Concepts/query-knowledge-base.md
+        - name: Betrouwbaarheidsscore
+          href: Concepts/confidence-score.md
     - name: Aanbevolen procedures
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
-    - name: Betrouwbaarheidsscore
-      displayName: 'DefaultAnswer, Default answer'
-      href: Concepts/confidence-score.md
-    - name: Ondersteunde gegevensbronnen
-      href: Concepts/data-sources-supported.md
-      displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
 - name: Instructiegidsen
   items:
     - name: Knowledge base bewerken
@@ -106,6 +120,8 @@
         - name: Antwoord ophalen met metagegevens
           href: How-To/metadata-generateanswer-usage.md
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+        - name: Standaardantwoord instellen
+          href: How-to/change-default-answer.md
         - name: Een bot maken met QnA Maker en LUIS
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Taal selecteren
