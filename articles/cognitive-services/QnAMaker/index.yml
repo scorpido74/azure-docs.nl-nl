@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: Documentatie voor QnA Maker
   description: QnA Maker is een cloudgebaseerde API-service voor het maken van een vraag- en antwoordlaag over uw gegevens in gespreksstijl. Met QnA Maker kunt u een vraag- en antwoordservice maken op basis van uw semi-gestructureerde inhoud zoals FAQ-documenten, URL's en producthandleidingen. De QnA Maker-service beantwoordt de in natuurlijke taal gestelde vragen van uw gebruikers door deze te koppelen aan de best mogelijke antwoorden uit de QnA's in uw Knowledge Base.
-  ms.openlocfilehash: 03518a1d7156d57424b28980d05bb03bfef56503
-  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+  ms.openlocfilehash: e566fdb18bdabe80447de9b2882cf7d57209d15e
+  ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 01/14/2020
-  ms.locfileid: "75945607"
+  ms.lasthandoff: 01/29/2020
+  ms.locfileid: "76844106"
 landingContent:
 - title: Over QnA Maker
   linkLists:
@@ -35,7 +35,7 @@ landingContent:
     - text: Levenscyclus van ontwikkeling
       url: concepts/development-lifecycle-knowledge-base.md
     - text: Gegevensbronnen
-      url: concepts/data-sources-supported.md
+      url: concepts/knowledge-base.md
   - linkListType: video
     links:
     - text: Bouw binnen enkele minuten een bot
