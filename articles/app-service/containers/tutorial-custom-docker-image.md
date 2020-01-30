@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d960af01eed9fae0fec2566772799e4972053d7b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 965897afc8e23c123575de0c497d4071ff4ca85a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687497"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767106"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Zelf studie: een aangepaste installatie kopie maken en uitvoeren in App Service vanuit een persoonlijk REGI ster
 
@@ -122,7 +122,7 @@ az acr credential show --name <azure-container-registry-name>
 De uitvoer toont twee wacht woorden samen met de gebruikers naam.
 
 ```json
-<
+{
   "passwords": [
     {
       "name": "password",
@@ -178,7 +178,7 @@ U moet de volgende uitvoer ophalen.
 
 ### <a name="create-web-app"></a>Een web-app maken
 
-Maak in de Cloud Shell een [web-app](app-service-linux-intro.md) in het `myAppServicePlan`App Service-plan met de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Vervang _\<app-naam >_ door een unieke app-naam en _\<Azure-container-registry-name >_ met de register naam.
+Maak in Cloud Shell een [web-app](app-service-linux-intro.md) in het `myAppServicePlan` App Service-plan met de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Vervang _\<app-naam >_ door een unieke app-naam en _\<Azure-container-registry-name >_ met de register naam.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -217,7 +217,7 @@ az webapp config container set --name <app-name> --resource-group myResourceGrou
 
 De meeste docker-installatie kopieën gebruiken aangepaste omgevings variabelen, zoals een andere poort dan 80. U vertelt App Service over de poort die wordt gebruikt door de installatie kopie met behulp van de `WEBSITES_PORT` app-instelling. De GitHub-pagina voor het [Python-voorbeeld in deze zelfstudie](https://github.com/Azure-Samples/docker-django-webapp-linux) laat zien dat u `WEBSITES_PORT` in moet stellen op _8000_.
 
-Gebruik de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell om de app-instellingen in te stellen. App-instellingen zijn hoofdlettergevoelig en door spaties gescheiden.
+Gebruik de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell om de app-instellingen te definiëren. App-instellingen zijn hoofdlettergevoelig en door spaties gescheiden.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_PORT=8000
@@ -320,7 +320,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 77 root      20   0   21920   2304   1972 R  0.0  0.1   0:00.00 top
 ```
 
-Gefeliciteerd! U hebt een aangepaste Linux-container geconfigureerd in App Service.
+Gefeliciteerd. U hebt een aangepaste Linux-container geconfigureerd in App Service.
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 

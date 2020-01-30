@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: f449dc08dede30a7dec977bb66e0a2c0b509a1f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6c7c041565f6376e7f8b8b84f5076b30c1eec7bf
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433493"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846404"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. Een VNet is een privé netwerk in de Cloud. Wanneer een Azure-cache voor redis-exemplaar is geconfigureerd met een VNet, is het niet openbaar adresseerbaar en is deze alleen toegankelijk vanaf virtuele machines en toepassingen binnen het VNet. In dit artikel wordt beschreven hoe u ondersteuning voor virtuele netwerken kunt configureren voor een Premium Azure-cache voor een redis-exemplaar.
@@ -37,7 +37,7 @@ Als u het VNet voor uw nieuwe cache wilt configureren, klikt u op **Virtual Netw
 
 ![Virtueel netwerk][redis-cache-vnet]
 
-Selecteer het gewenste subnet in de vervolg keuzelijst **subnet** en geef het gewenste **statische IP-adres**op. Als u een klassiek VNet gebruikt, is het veld **statisch IP-adres** optioneel en als er geen is opgegeven, wordt er een gekozen uit het geselecteerde subnet.
+Selecteer het gewenste subnet in de vervolg keuzelijst **subnet** .  Geef desgewenst een **statisch IP-adres**op. Het veld **statisch IP-adres** is optioneel en als er geen is opgegeven, wordt er een gekozen uit het geselecteerde subnet.
 
 > [!IMPORTANT]
 > Wanneer u een Azure-cache voor redis implementeert voor een resource manager VNet, moet de cache zich in een toegewijd subnet bevinden dat geen andere resources bevat behalve Azure cache voor redis-exemplaren. Als er een poging wordt gedaan om een Azure-cache te implementeren voor redis naar een resource manager-VNet naar een subnet dat andere bronnen bevat, mislukt de implementatie.
@@ -92,13 +92,13 @@ Wanneer Azure cache voor redis wordt gehost in een VNet, worden de poorten in de
 > 
 
 - [Vereisten voor de uitgaande poort](#outbound-port-requirements)
-- [Vereisten voor de inkomende poort](#inbound-port-requirements)
+- [Vereisten voor inkomende poort](#inbound-port-requirements)
 
 #### <a name="outbound-port-requirements"></a>Vereisten voor de uitgaande poort
 
 Er zijn negen uitgaande poort vereisten. Uitgaande aanvragen in deze bereiken zijn ofwel uitgaand voor andere services die nodig zijn om de cache te laten functioneren of intern voor het redis-subnet voor communicatie tussen knoop punten. Voor geo-replicatie bestaan er extra uitgaande vereisten voor communicatie tussen subnetten van de primaire en secundaire cache.
 
-| Poort(en) | Richting | Transportprotocol | Doel | Lokaal IP-adres | Extern IP-adres |
+| Poort (en) | Richting | Transport Protocol | Doel | Lokaal IP-adres | Extern IP-adres |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Uitgaand |TCP |Afhankelijkheden van redis op Azure Storage/PKI (Internet) | (Redis-subnet) |* |
 | 443 | Uitgaand | TCP | Afhankelijkheid van redis op Azure Key Vault | (Redis-subnet) | AzureKeyVault <sup>1</sup> |
@@ -124,7 +124,7 @@ Als u gebruikmaakt van georeplicatie tussen caches in virtuele netwerken van Azu
 
 Er zijn acht vereisten voor het poort bereik voor inkomend verkeer. Inkomende aanvragen in deze bereiken zijn ofwel inkomend van andere services die worden gehost in hetzelfde VNET of intern voor de communicatie van het redis-subnet.
 
-| Poort(en) | Richting | Transportprotocol | Doel | Lokaal IP-adres | Extern IP-adres |
+| Poort (en) | Richting | Transport Protocol | Doel | Lokaal IP-adres | Extern IP-adres |
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |Inkomend |TCP |Client communicatie naar redis, Azure-taak verdeling | (Redis-subnet) | (Redis subnet), Virtual Network, Azure Load Balancer <sup>1</sup> |
 | 8443 |Inkomend |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |

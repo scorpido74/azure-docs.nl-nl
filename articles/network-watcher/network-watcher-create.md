@@ -3,9 +3,7 @@ title: Een Azure Network Watcher-exemplaar maken | Microsoft Docs
 description: Meer informatie over het inschakelen van Network Watcher in een Azure-regio.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: fd293c2815721295715c5e02846c55d4cdb74a32
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.author: damendo
+ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693477"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845120"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Een Azure Network Watcher-exemplaar maken
 
@@ -51,11 +49,11 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>Een Network Watcher maken in de portal
 
-Ga naar **alle Services**  > **netwerk**  > **Network Watcher**. U kunt alle abonnementen selecteren waarvoor u Network Watcher wilt inschakelen. Met deze actie maakt u een Network Watcher in elke regio die beschikbaar is.
+Ga naar **alle Services** > **netwerk** > **Network Watcher**. U kunt alle abonnementen selecteren waarvoor u Network Watcher wilt inschakelen. Met deze actie maakt u een Network Watcher in elke regio die beschikbaar is.
 
-![een netwerk-Watcher maken](./media/network-watcher-create/figure1.png)
+![Een netwerk-Watcher maken](./media/network-watcher-create/figure1.png)
 
-Als u Network Watcher inschakelt met behulp van de portal, wordt de naam van de Network Watcher instantie automatisch ingesteld op *NetworkWatcher_region_name* , waarbij *region_name* overeenkomt met de Azure-regio waar de instantie is ingeschakeld. Een Network Watcher dat is ingeschakeld in de regio West-Centraal VS heeft bijvoorbeeld de naam *NetworkWatcher_westcentralus*.
+Als u Network Watcher inschakelt met behulp van de portal, wordt de naam van de Network Watcher instantie automatisch ingesteld op *NetworkWatcher_region_name* waarbij *region_name* overeenkomt met de Azure-regio waar het exemplaar is ingeschakeld. Een Network Watcher die is ingeschakeld in de regio West-Centraal VS heeft bijvoorbeeld de naam *NetworkWatcher_westcentralus*.
 
 Het Network Watcher-exemplaar wordt automatisch gemaakt in een resource groep met de naam *NetworkWatcherRG*. De resource groep wordt gemaakt als deze nog niet bestaat.
 
@@ -105,7 +103,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>Een Network Watcher in de Portal verwijderen
 
-Ga naar **alle Services**  > **netwerk**  > **Network Watcher**.
+Ga naar **alle Services** > **netwerk** > **Network Watcher**.
 
 Selecteer het tabblad Overzicht als u dat nog niet hebt gedaan. Gebruik de vervolg keuzelijst om het abonnement te selecteren waarvoor u de Network Watcher wilt uitschakelen.
 Vouw de lijst met regio's voor het gekozen abonnement uit door op de pijl te klikken. Gebruik voor elke gegeven de drie punten aan de rechter kant om het context menu te openen.

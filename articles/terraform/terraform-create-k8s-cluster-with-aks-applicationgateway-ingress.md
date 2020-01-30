@@ -3,12 +3,12 @@ title: 'Zelf studie: een Application Gateway ingangs controller maken in azure K
 description: Zelfstudie voor het maken van een Kubernetes-cluster met Application Gateway als controller voor inkomend verkeer, met behulp van Azure Kubernetes Service
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867406"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772859"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Zelf studie: een Application Gateway ingangs controller maken in azure Kubernetes service
 
@@ -51,7 +51,7 @@ De eerste stap is het maken van een map voor de Terraform-configuratiebestanden 
     cd clouddrive
     ```
 
-1. Maak een map met de naam `terraform-aks-k8s`.
+1. Maak een map met de naam `terraform-aks-appgw-ingress`.
 
     ```bash
     mkdir terraform-aks-appgw-ingress
@@ -731,8 +731,8 @@ De code in deze sectie maakt gebruik van [helm](/azure/aks/kubernetes-helm) -Kub
     - `armAuth.secretJSON`: alleen nodig wanneer het geheim type van de Service-Principal is gekozen (wanneer `armAuth.type` is ingesteld op `servicePrincipal`).
 
     Opmerkingen bij de sleutel:
-    - De `identityResourceID` waarde wordt gemaakt in het terraform-script en kan worden gevonden door het volgende uit te voeren: `echo "$(terraform output identity_client_id)"`.
-    - De `identityClientID` waarde wordt gemaakt in het terraform-script en kan worden gevonden door het volgende uit te voeren: `echo "$(terraform output identity_resource_id)"`.
+    - De `identityResourceID` waarde wordt gemaakt in het terraform-script en kan worden gevonden door het volgende uit te voeren: `echo "$(terraform output identity_resource_id)"`.
+    - De `identityClientID` waarde wordt gemaakt in het terraform-script en kan worden gevonden door het volgende uit te voeren: `echo "$(terraform output identity_client_id)"`.
     - De `<resource-group>` waarde is de resource groep van uw app-gateway.
     - De `<identity-name>` waarde is de naam van de gemaakte identiteit.
     - Alle identiteiten voor een bepaald abonnement kunnen worden weer gegeven met behulp van: `az identity list`.

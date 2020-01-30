@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1a9801fc0d8a2a013fa737c9d53138dc7d52b398
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: acf7fd91eff6a868074c61d557effa076033e799
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768454"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845925"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Een SSL-certificaat in Azure App Service toevoegen
 
@@ -61,6 +61,7 @@ Het gratis door App Service beheerde certificaat is een zet-sleutel oplossing vo
 - Ondersteunt geen joker tekens.
 - Biedt geen ondersteuning voor niet-geblote domeinen.
 - Kan niet worden geëxporteerd.
+- Biedt geen ondersteuning voor DNS A-records.
 
 > [!NOTE]
 > Het gratis certificaat wordt uitgegeven door DigiCert. Voor sommige domeinen van het hoogste niveau moet u DigiCert als een certificaat verlener expliciet toestaan door een CAA- [domein record](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) te maken met de waarde: `0 issue digicert.com`.
@@ -137,7 +138,7 @@ Klik op de pagina **Key Vault status** op **Key Vault opslag plaats** om een nie
 | Locatie | Selecteer dezelfde locatie als uw App Service-app. |
 | Prijscategorie | Zie [Azure Key Vault prijs informatie](https://azure.microsoft.com/pricing/details/key-vault/)voor meer informatie. |
 | Toegangsbeleid| Hiermee worden de toepassingen en de toegestane toegang tot de kluis resources gedefinieerd. U kunt deze later configureren, door de stappen [te volgen om verschillende toepassingen toegang te verlenen tot een sleutel kluis](../key-vault/key-vault-group-permissions-for-apps.md). |
-| Toegang tot virtueel netwerk | Beperk de toegang tot de kluis tot bepaalde virtuele netwerken van Azure. U kunt dit later configureren door de stappen te volgen op [Azure Key Vault firewalls en virtuele netwerken configureren](../key-vault/key-vault-network-security.md) |
+| Toegang Virtual Network | Beperk de toegang tot de kluis tot bepaalde virtuele netwerken van Azure. U kunt dit later configureren door de stappen te volgen op [Azure Key Vault firewalls en virtuele netwerken configureren](../key-vault/key-vault-network-security.md) |
 
 Wanneer u de kluis hebt geselecteerd, sluit u de pagina **Key Vault opslag plaats** . Bij **stap 1:** de optie opslaan wordt een groen vinkje weer gegeven voor geslaagde pogingen. Laat de pagina voor de volgende stap geopend.
 

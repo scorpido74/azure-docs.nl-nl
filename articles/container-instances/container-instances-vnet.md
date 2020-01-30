@@ -4,12 +4,12 @@ description: Meer informatie over het implementeren van container groepen in een
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 12260dcb43a675414d38cb5067b230832dd2d16b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887953"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845169"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Container instanties implementeren in een virtueel Azure-netwerk
 
@@ -32,7 +32,8 @@ Met container groepen die zijn geïmplementeerd in een virtueel Azure-netwerk, k
 Bepaalde beperkingen zijn van toepassing wanneer u container groepen implementeert in een virtueel netwerk.
 
 * Als u container groepen wilt implementeren in een subnet, mag het subnet geen andere resource typen bevatten. Verwijder alle bestaande resources uit een bestaand subnet voordat u container groepen implementeert, of maak een nieuw subnet.
-* U kunt geen [beheerde identiteit](container-instances-managed-identity.md) gebruiken in een container groep die is geïmplementeerd in een virtueel netwerk.
+* U kunt een [beheerde identiteit](container-instances-managed-identity.md) niet gebruiken in een container groep die is geïmplementeerd in een virtueel netwerk.
+* U kunt geen test voor de [duur](container-instances-liveness-probe.md) van de bewaarde of [gereedheids test](container-instances-readiness-probe.md) inschakelen in een container groep die is geïmplementeerd in een virtueel netwerk.
 * Als gevolg van de extra netwerk bronnen die betrokken zijn, is het implementeren van een container groep naar een virtueel netwerk doorgaans langzamer dan het implementeren van een standaard container exemplaar.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
@@ -261,7 +262,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 
 > [!NOTE]
-> Als er een fout optreedt tijdens het verwijderen van het netwerk profiel, moet u 2-3 dagen voor het platform het probleem automatisch beperken en de verwijdering opnieuw proberen. Als u nog steeds problemen ondervindt met het verwijderen van het netwerk profiel, [opent u een ondersteunings aanvraag](https://azure.microsoft.com/support/create-ticket/).
+> Als er een fout optreedt tijdens het verwijderen van het netwerk profiel, moet u 3-4 dagen voor het platform het probleem automatisch beperken en de verwijdering opnieuw proberen. Als u een netwerk profiel onmiddellijk moet verwijderen, [opent u een ondersteunings aanvraag](https://azure.microsoft.com/support/create-ticket/) die verwijst naar de Azure container instances-service.
 
 Voor deze functie zijn momenteel verschillende extra opdrachten vereist voor het verwijderen van de netwerk resources die u eerder hebt gemaakt. Als u de voorbeeld opdrachten in vorige secties van dit artikel hebt gebruikt om uw virtuele netwerk en subnet te maken, kunt u het volgende script gebruiken om die netwerk resources te verwijderen.
 

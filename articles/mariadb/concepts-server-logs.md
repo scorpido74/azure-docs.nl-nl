@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: b38838c20e4ab18b64cabcb2749ec39163f1b52d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/28/2020
+ms.openlocfilehash: 3f82a061f276aaf786bc0a9bae15b60e8bdda009
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515051"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846340"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Trage query Logboeken in Azure Database for MariaDB
 In Azure Database for MariaDB is het langzame query logboek beschikbaar voor gebruikers. Toegang tot het transactie logboek wordt niet ondersteund. Het logboek met trage query's kan worden gebruikt om prestatie knelpunten voor het oplossen van problemen te identificeren.
@@ -37,7 +37,7 @@ Het logboek voor langzame query's is standaard uitgeschakeld. Als u deze functie
 
 Andere para meters die u kunt aanpassen zijn onder andere:
 
-- **long_query_time**: als een query langer duurt dan long_query_time (in seconden) dat de query wordt geregistreerd. De standaardinstelling is 10 seconden.
+- **long_query_time**: als een query langer duurt dan long_query_time (in seconden) dat de query wordt geregistreerd. De standaard waarde is 10 seconden.
 - **log_slow_admin_statements**: als u beheer instructies zoals ALTER_TABLE en ANALYZE_TABLE in de instructies bevat die naar de slow_query_log zijn geschreven.
 - **log_queries_not_using_indexes**: bepaalt of query's die geen indexen gebruiken, worden geregistreerd in het slow_query_log
 - **log_throttle_queries_not_using_indexes**: deze para meter beperkt het aantal niet-index query's dat naar het langzame query logboek kan worden geschreven. Deze para meter wordt van kracht als log_queries_not_using_indexes is ingesteld op aan.
@@ -51,9 +51,6 @@ Zie de documentatie voor MariaDB [langzame query logboeken](https://mariadb.com/
 
 ## <a name="diagnostic-logs"></a>Diagnostische logboeken
 Azure Database for MariaDB is geïntegreerd met Azure Monitor Diagnostische logboeken. Zodra u langzame query logboeken op uw MariaDB-server hebt ingeschakeld, kunt u ervoor kiezen om deze aan Azure Monitor-logboeken, Event Hubs of Azure Storage uit te geven. Zie de sectie over de [documentatie van Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie over het inschakelen van Diagnostische logboeken.
-
-> [!IMPORTANT]
-> Deze diagnostische functie voor Server Logboeken is alleen beschikbaar in de [prijs categorie](concepts-pricing-tiers.md)algemeen en geoptimaliseerd voor geheugen.
 
 In de volgende tabel wordt de inhoud van elk logboek beschreven. Afhankelijk van de uitvoer methode worden de opgenomen velden en de volg orde waarin ze worden weer gegeven, mogelijk verschillend.
 
@@ -82,7 +79,7 @@ In de volgende tabel wordt de inhoud van elk logboek beschreven. Afhankelijk van
 | `insert_id_s` | Invoeg-ID |
 | `sql_text_s` | Volledige query |
 | `server_id_s` | Server-ID |
-| `thread_id_s` | Thread-id |
+| `thread_id_s` | Thread-ID |
 | `\_ResourceId` | Resource-URI |
 
 ## <a name="analyze-logs-in-azure-monitor-logs"></a>Logboeken analyseren in Azure Monitor-logboeken

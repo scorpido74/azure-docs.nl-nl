@@ -5,26 +5,26 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: 94ba2830824c4a918e9451a9fc5140d422110370
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231316"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845721"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Uw eerste duurzame functie maken in JavaScript
 
-*Durable Functions* is een extensie van [Azure Functions](../functions-overview.md) waarmee u stateful functies kunt schrijven in een serverloze omgeving. Met de extensie worden status, controlepunten en het opnieuw opstarten voor u beheerd.
+*Durable Functions* is een extensie van [Azure Functions](../functions-overview.md) waarmee u stateful functies kunt schrijven in een serverloze omgeving. De extensie beheert status, controlepunten en het opnieuw opstarten voor u.
 
 [!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
-In dit artikel leert u hoe u de Azure Functions-extensie van Visual Studio Code kunt gebruiken om lokaal een duurzame ‘Hallo wereld’-functie te maken en te testen.  Met deze functie worden aanroepen naar andere functies ingedeeld en aan elkaar gekoppeld. Vervolgens publiceert u de functiecode op Azure.
+In dit artikel leert u hoe u de Azure Functions-extensie van Visual Studio Code kunt gebruiken om lokaal een duurzame ‘Hallo wereld’-functie te maken en te testen.  Deze functie deelt aanroepen naar andere functies in en koppelt ze aan elkaar. Vervolgens publiceert u de functiecode op Azure.
 
-![Duurzame functie uitvoeren in Azure](./media/quickstart-js-vscode/functions-vs-code-complete.png)
+![Durable Function uitvoeren in Azure](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 * Installeer [Visual Studio Code](https://code.visualstudio.com/download).
 
@@ -38,7 +38,31 @@ Vereisten voor het voltooien van deze zelfstudie:
 
 [!INCLUDE [functions-install-vs-code-extension](../../../includes/functions-install-vs-code-extension.md)]
 
-[!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
+## <a name="create-an-azure-functions-project"></a>Uw lokale project maken 
+
+In deze sectie gebruikt u Visual Studio code om een lokaal Azure Functions project te maken. 
+
+1. Druk in Visual Studio code op F1 om het opdracht palet te openen. In het opdracht palet zoekt en selecteert u `Azure Functions: Create new project...`.
+
+1. Kies een maplocatie voor de Project werkruimte en kies **selecteren**.
+
+    > [!NOTE]
+    > Deze stappen zijn zodanig ontworpen dat ze buiten een werk ruimte worden uitgevoerd. Selecteer in dit geval geen projectmap die deel uitmaakt van een werkruimte.
+
+1. Voer de volgende informatie in voor de gewenste taal:
+
+    | Vraag | Waarde | Beschrijving |
+    | ------ | ----- | ----------- |
+    | Selecteer een taal voor uw functie-app-project | JavaScript | Een lokaal node. js-functie project maken. |
+    | Een versie selecteren | Azure Functions v2 | U ziet deze optie alleen wanneer de kern Hulpprogramma's niet al zijn geïnstalleerd. In dit geval worden de kern Hulpprogramma's geïnstalleerd wanneer u de app voor het eerst uitvoert. |
+    | Selecteer een sjabloon voor de eerste functie van uw project | HTTP-trigger | Een door HTTP geactiveerde functie maken in de nieuwe functie-app. |
+    | Een functie naam opgeven | HttpTrigger | Druk op ENTER om de standaard naam te gebruiken. |
+    | Autorisatieniveau | Functie | Het `function` autorisatie niveau vereist dat u een toegangs sleutel opgeeft bij het aanroepen van het HTTP-eind punt van uw functie. Hierdoor is het moeilijker om toegang te krijgen tot een niet-beveiligd eind punt. Zie [autorisatie sleutels](../functions-bindings-http-webhook.md#authorization-keys)voor meer informatie.  |
+    | Selecteer hoe u uw project wilt openen | Toevoegen aan werk ruimte | Hiermee maakt u de functie-app in de huidige werk ruimte. |
+
+Met Visual Studio code worden de Azure Functions Core Tools, indien nodig, geïnstalleerd. Er wordt ook een functie-app-project in een nieuwe werk ruimte gemaakt. Dit project bevat de configuratie bestanden [host. json](../functions-host-json.md) en [Local. settings. json](../functions-run-local.md#local-settings-file) . Er wordt ook een HttpExample-map gemaakt met het [definitie bestand function. json](../functions-reference-node.md#folder-structure) en het [bestand index. js](../functions-reference-node.md#exporting-a-function), een node. js-bestand dat de functie code bevat.
+
+Er wordt ook een package. JSON-bestand gemaakt in de hoofdmap.
 
 ## <a name="install-the-durable-functions-npm-package"></a>Het NPM-pakket voor Durable Functions installeren
 
@@ -60,7 +84,7 @@ Maak eerst een HTTP-geactiveerde functie waarmee de indeling voor een duurzame f
 
     ![De HTTP-starter-sjabloon kiezen](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. Wijzig de standaard naam als `DurableFunctionsHttpStart` en druk op * * * * Voer * * in en selecteer **anonieme** verificatie.
+3. Laat de standaardnaam als `DurableFunctionsHttpStart` en druk op ** **Enter**, selecteer vervolgens **anoniem** verificatie.
 
     ![Anonieme verificatie kiezen](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 

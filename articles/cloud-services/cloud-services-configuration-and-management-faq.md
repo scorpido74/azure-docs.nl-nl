@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 47a75d10f6016eb49061f9e7158b00899a387f2f
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 50dd6e2387abbf5b24adcee708dd2ff387e33261
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660610"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845376"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Configuratie-en beheer problemen voor Azure Cloud Services: veelgestelde vragen (FAQ)
 
@@ -174,11 +174,11 @@ Zie [Nieuw: Configureer bare time-out voor inactiviteit voor Azure Load Balancer
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Hoe kan ik een statisch IP-adres koppelen aan mijn Cloud service?
 Als u een statisch IP-adres wilt instellen, moet u een gereserveerde IP maken. Dit gereserveerde IP-adres kan worden gekoppeld aan een nieuwe Cloud service of aan een bestaande implementatie. Raadpleeg de volgende documenten voor meer informatie:
-* [Een gereserveerd IP-adres maken](../virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [Het IP-adres van een bestaande Cloud service reserveren](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [Een gereserveerd IP-adres koppelen aan een nieuwe Cloud service](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [Een gereserveerd IP-adres aan een actieve implementatie koppelen](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [Een gereserveerd IP-adres koppelen aan een Cloud service met behulp van een service configuratie bestand](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [Een gereserveerd IP-adres maken](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
+* [Het IP-adres van een bestaande Cloud service reserveren](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
+* [Een gereserveerd IP-adres koppelen aan een nieuwe Cloud service](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
+* [Een gereserveerd IP-adres aan een actieve implementatie koppelen](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
+* [Een gereserveerd IP-adres koppelen aan een Cloud service met behulp van een service configuratie bestand](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Wat zijn de functies en mogelijkheden die Azure Basic IP'S/ID'S en DDOS biedt?
 Azure heeft IP'S/ID'S in fysieke Data Center-servers om tegen bedreigingen te beschermen. Daarnaast kunnen klanten beveiligings oplossingen van derden implementeren, zoals firewalls voor webtoepassingen, netwerk firewalls, antimalware, detectie van indringers, preventie van systemen (ID'S/IP'S) en meer. Zie [uw gegevens en assets beveiligen en voldoen aan de algemene beveiligings normen](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)voor meer informatie.
@@ -219,7 +219,7 @@ Cloud Services biedt geen ondersteuning voor het RBAC-model (op rollen gebaseerd
 
 Zie [inzicht krijgen in de verschillende rollen in azure](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="remote-desktop"></a>Extern bureaublad
+## <a name="remote-desktop"></a>Extern bureau blad
 
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Kunnen interne technici van micro soft extern bureau blad naar Cloud service-instanties zonder toestemming?
 Micro soft volgt een strikt proces dat interne technici niet in staat stelt om extern bureau blad in uw Cloud service te plaatsen zonder schrijf machtiging (e-mail adres of andere schriftelijke communicatie) van de eigenaar of de gebruiker.
@@ -250,7 +250,7 @@ Zie [Application Insights voor Azure Cloud Services](https://docs.microsoft.com/
 
 Zie voor meer informatie over het inschakelen van Azure Diagnostics logboek registratie voor Cloud Services voor het [instellen van diagnostische gegevens voor Azure Cloud Services en virtuele machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
-## <a name="generic"></a>Algemeen
+## <a name="generic"></a>Encarta
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Kunt u ' all sniff ' toevoegen aan mijn website? Hoe kan ik
 Als u wilt voor komen dat clients de MIME-typen sniffen, voegt u een instelling toe in het bestand *Web. config* .

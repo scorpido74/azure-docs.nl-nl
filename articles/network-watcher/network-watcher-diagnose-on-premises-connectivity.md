@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: In dit artikel wordt beschreven hoe u on-premises connectiviteit via een VPN-gateway kunt vaststellen met Azure Network Watcher resource Troubleshooting.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
 ms.service: network-watcher
 ms.devlang: na
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 528684031404dbd907205e69f3565155fa1856b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: damendo
+ms.openlocfilehash: 835b3a69e779b536961110b674ae67f4e8c13ce0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454299"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845065"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnose van on-premises connectiviteit via VPN-gateways
 
@@ -82,11 +80,11 @@ Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u 
 
 ### <a name="gateway"></a>Gateway
 
-| Fouttype | Reden | Logboek|
+| Fout type | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout is gedetecteerd. |Ja|
+| NoFault | Als er geen fout wordt gedetecteerd. |Ja|
 | GatewayNotFound | De gateway of gateway is niet gevonden. |Nee|
-| PlannedMaintenance |  Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |Nee|
+| PlannedMaintenance |  Het gateway-exemplaar is onderhouds werkzaamheden.  |Nee|
 | UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn. | Nee |
 | VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Dit gebeurt wanneer de status test mislukt. | Nee |
 | PlatformInActive | Er is een probleem met het platform. | Nee|
@@ -97,18 +95,18 @@ Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u 
 
 ### <a name="connection"></a>Verbinding
 
-| Fouttype | Reden | Logboek|
+| Fout type | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout is gedetecteerd. |Ja|
+| NoFault | Als er geen fout wordt gedetecteerd. |Ja|
 | GatewayNotFound | De gateway of gateway is niet gevonden. |Nee|
-| PlannedMaintenance | Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |Nee|
+| PlannedMaintenance | Het gateway-exemplaar is onderhouds werkzaamheden.  |Nee|
 | UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn.  | Nee |
 | VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Deze fout treedt op wanneer de status test mislukt. | Nee |
 | ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt. | Nee |
 | ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' losgekoppeld '. |Nee|
 | ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Ja |
 | ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Ja|
-| Authentication | De vooraf gedeelde sleutel komt niet overeen. | Ja|
+| Verificatie | De vooraf gedeelde sleutel komt niet overeen. | Ja|
 | PeerReachability | De peer gateway is niet bereikbaar. | Ja|
 | IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
 | WfpParse Error | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|

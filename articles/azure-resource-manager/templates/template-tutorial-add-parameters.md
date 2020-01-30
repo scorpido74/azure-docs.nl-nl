@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 28c171dfa067ec9b3eff2e0d7e5d5dd0a0c274c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89101a96f4fc228e2d5c45d67e10b52ac5d8aa11
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472966"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773211"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Zelf studie: para meters toevoegen aan uw Resource Manager-sjabloon
 
@@ -26,7 +26,7 @@ U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en e
 
 Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
 Mogelijk hebt u gemerkt dat er een probleem is met deze sjabloon. De naam van het opslag account is vastgelegd in een vaste code. U kunt deze sjabloon alleen gebruiken om elk keer hetzelfde opslag account te implementeren. Als u een opslag account met een andere naam wilt implementeren, moet u een nieuwe sjabloon maken. Dit is uiteraard geen praktische manier om uw implementaties te automatiseren.
 
@@ -36,7 +36,7 @@ Als u uw sjabloon opnieuw wilt gebruiken, gaan we een para meter toevoegen waarm
 
 Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json" range="1-26" highlight="4-10,15":::
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
@@ -80,7 +80,7 @@ Met parameters kunt u de implementatie aanpassen door waarden op te geven die vo
 
 In de vorige sjabloon is altijd een Standard_LRS Storage-account geïmplementeerd. Mogelijk wilt u de flexibiliteit om verschillende Sku's te implementeren, afhankelijk van de omgeving. In het volgende voor beeld ziet u de wijzigingen voor het toevoegen van een para meter voor SKU. Kopieer het hele bestand en plak over uw sjabloon.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
 De **storageSKU** -para meter heeft een standaard waarde. Deze waarde wordt gebruikt wanneer tijdens de implementatie geen waarde is opgegeven. Het bevat ook een lijst met toegestane waarden. Deze waarden komen overeen met de waarden die nodig zijn voor het maken van een opslag account. U wilt niet dat gebruikers van uw sjabloon door geven in Sku's die niet werken.
 

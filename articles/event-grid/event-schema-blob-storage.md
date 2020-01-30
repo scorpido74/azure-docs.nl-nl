@@ -7,18 +7,21 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 9c5b7b4301eb9cf019399795fc45b69fe152061d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4a71f50a130bd9b22965d39fa942b47c70857a86
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722319"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844476"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid-gebeurtenis schema voor Blob Storage
 
 In dit artikel vindt u de eigenschappen en het schema voor Blob Storage-gebeurtenissen. Zie [Azure Event grid-gebeurtenis schema](event-schema.md)voor een inleiding tot gebeurtenis schema's.
 
 Zie [opslag gebeurtenis bron](event-sources.md#storage)voor een lijst met voorbeeld scripts en zelf studies.
+
+>[!NOTE]
+> Alleen opslag accounts van het type **StorageV2 (algemeen gebruik v2)** en **BlobStorage** ondersteunings gebeurtenis integratie. **Storage (Genral doel v1)** biedt *geen* ondersteuning voor integratie met Event grid.
 
 ## <a name="list-of-events-for-blob-rest-apis"></a>Lijst met gebeurtenissen voor BLOB REST-Api's
 

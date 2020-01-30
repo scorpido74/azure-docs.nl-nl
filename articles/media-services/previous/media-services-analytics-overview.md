@@ -15,23 +15,22 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 66edbc872fe5f1d4320107aa21ed2792bdd4fecc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083892"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844340"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics op het Media Services platform 
 
 ## <a name="retirement-plans"></a>Pensioen plannen
 
 > [!IMPORTANT]
-> De volgende verouderde media processors worden buiten gebruik gesteld in 2020. Zie de volgende tabel voor meer informatie. 
+> De volgende verouderde media processor wordt buiten gebruik gesteld in 2020. Zie de volgende tabel voor meer informatie. 
 
 |Naam van mediaprocessor|Buitengebruikstellings datum|Aanvullende opmerkingen|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 1 januari van 2020|Deze media processor wordt vervangen door [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Zie [Migrate from Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.|
 |[Azure Media Indexer](media-services-index-content.md)|1 oktober van 2020|Deze media processor wordt vervangen door [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Zie voor meer informatie [migreren van Azure media indexer naar Azure Media Services video indexer](migrate-indexer-v1-v2.md)
  
 ## <a name="overview"></a>Overzicht
@@ -51,17 +50,21 @@ Media Analytics-mediaprocessoren produceren MP4- of JSON-bestanden. Als een medi
 ## <a name="media-analytics-services"></a>Media Analytics Services
 
 ### <a name="indexer"></a>Indexer
-Met Azure Media Indexer kunt u inhoud doorzoekbaar maken en ondertitelings tracks genereren. Vergeleken met de vorige versie heeft Azure Media Indexer 2 Preview snellere indexering en ondersteuning voor bredere talen. Ondersteunde talen zijn Engels, Spaans, Frans, Duits, Italiaans, Chinees, Portugees en Arabisch. Zie [Video's verwerken met Azure media indexer 2](media-services-process-content-with-indexer2.md)voor gedetailleerde informatie en voor beelden.
+Met Azure Media Indexer kunt u inhoud doorzoekbaar maken en ondertitelings tracks genereren. Zie [Media bestanden indexeren met Azure media indexer](media-services-index-content.md)voor gedetailleerde informatie en voor beelden.
+
 ### <a name="motion-detector"></a>Bewegingsherkenning
 U kunt bewegings detector gebruiken om bewegingen in een video te detecteren met behulp van stationaire achtergronden. Dit maakt het mogelijk om te controleren op fout-positieven op bewegings gebeurtenissen die zijn gedetecteerd door bewakings camera's. Zie [bewegings detectie voor Azure Media Analytics](media-services-motion-detection.md)voor gedetailleerde informatie en voor beelden.
+
 ### <a name="face-detector"></a>Gezichtsherkenning
 Door gebruik te maken van Face detector kunt u de gezichten van mensen en hun emoties, met inbegrip van blij, verdriet en verrassing, ontdekken. Dit heeft verschillende bruikbare toepassingen, die later worden beschreven, inclusief het samen voegen en analyseren van reacties van personen die een evenement bijwonen. Zie [gezichts-en Emotion detectie voor Azure Media Analytics](media-services-face-and-emotion-detection.md)voor meer informatie en voor beelden.
+
 ### <a name="video-summarization"></a>Video samenvatting
 Video overzicht kan u helpen bij het maken van samen vattingen van lange Video's door automatisch interessante fragmenten te selecteren uit de bron video. Deze mogelijkheid is handig als u een kort overzicht wilt geven van wat u in een lange video kunt verwachten. Zie [Azure Media video thumbnails gebruiken om video samenvatting te maken](media-services-video-summarization.md)voor meer informatie en voor beelden.
 ### <a name="optical-character-recognition"></a>Optische tekenherkenning
 Met Azure media OCR (optische teken herkenning) kunt u tekst inhoud in video bestanden converteren naar bewerkbaar, Doorzoek bare digitale tekst. U kunt vervolgens het uitpakken van zinvolle meta gegevens automatiseren vanuit het video signaal van uw media.
 ### <a name="scalable-face-redaction"></a>Schaal bare gezichts redactie
 Azure Media Redactor is een Media Analytics media processor die schaal bare gezichts redactie in de Cloud biedt. Door gebruik te maken van gezichts redactie kunt u uw video aanpassen om gezichten van geselecteerde personen te vervagen. Mogelijk wilt u de gezichts redactie service gebruiken in nieuws media of wanneer de open bare veiligheid betrokken is. Een paar minuten van beeld materiaal dat meerdere gezichten bevat, kan uren duren om hand matig te worden geredigeerd, maar bij deze service nemen gezichts redactie slechts enkele eenvoudige stappen in beslag. Zie voor meer informatie de [reredactie-gezichten met Azure Media Analytics](media-services-face-redaction.md) -artikel.
+
 ### <a name="content-moderation"></a>Content Moderation
 Met Azure Content Moderator kunt u op uw Video's machine-ondersteunde toezicht gebruiken. Stel, u wilt mogelijk erotische en racistische inhoud detecteren in video's en de gemarkeerde inhoud laten controleren door uw team. Het hand matig toezicht op Video's voor ongewenste inhoud is een tijdrovende en dure taak. Met deze service en de bijbehorende beoordelings tools combineert u door de machine ondersteunde toezicht met Human-in-the-loop-mogelijkheden voor de beste resultaten efficiënt en rendabel. Zie het artikel [uw Video's verwerken met Azure content moderator](media-services-content-moderation.md) voor meer informatie.
 
@@ -75,7 +78,7 @@ Met Media Analytics kunnen organisaties en ondernemingen nieuwe inzichten van vi
 In deze sectie vindt u een overzicht van de Media Analytics-media processors en wordt uitgelegd hoe u .NET of REST kunt gebruiken om een media processor (MP)-object te verkrijgen.
 
 ### <a name="mp-names"></a>MP-namen
-* Azure Media Indexer 2-Preview
+
 * Azure Media Indexer
 * Azure Media Face Detector
 * Azure Media Motion Detector
@@ -112,7 +115,7 @@ Aanvraag:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <token>
-    x-ms-version: 2.12
+    x-ms-version: 2.19
     Host: media.windows.net
 
 Reactie:
@@ -133,7 +136,7 @@ Reactie:
        ]
     }
 
-## <a name="demos"></a>Demo 's
+## <a name="demos"></a>Demo’s
 Zie [Azure Media Analytics demo's](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
 ## <a name="provide-feedback"></a>Feedback geven

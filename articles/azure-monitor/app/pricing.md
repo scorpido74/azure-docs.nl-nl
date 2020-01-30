@@ -8,14 +8,14 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aaa551619b48bb385bf5b1fef2331d382e32a040
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0a800a95d00e482b2342911111f43cfadb5a9c6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406535"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845636"
 ---
-# <a name="manage-usage-and-costs-for-application-insights"></a>Gebruik en kosten van Application Insights beheren
+# <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
 > [!NOTE]
 > In dit artikel wordt beschreven hoe u de kosten voor Application Insights begrijpt en beheert.  Een verwant artikel, het [bewaken van het gebruik en de geschatte kosten](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) , beschrijft het weer geven van het gebruik en de geschatte kosten in meerdere Azure-bewakings functies voor verschillende prijs modellen.
@@ -38,9 +38,9 @@ Er zijn twee benaderingen om dit op te lossen: gebruik van standaard bewaking en
 
 ### <a name="data-collection-when-using-sampling"></a>Gegevens verzameling bij gebruik van steek proeven
 
-Met de [adaptieve steek proef](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)van de ASP.NET SDK wordt het gegevens volume automatisch aangepast om binnen een opgegeven maximum frequentie aan verkeer te blijven voor standaard Application Insights bewaking. Als de toepassing een geringe hoeveelheid telemetrie produceert, zoals bij het opsporen van fouten of wegens een laag gebruik, worden de items niet verwijderd door de sampling processor zolang het volume minder is dan het geconfigureerde aantal gebeurtenissen per seconde niveau. Voor een toepassing met hoge volumes, met de standaard drempelwaarde van vijf gebeurtenissen per seconde, wordt het aantal dagelijkse gebeurtenissen door adaptieve steek proeven beperkt tot 432.000. Met een typische gemiddelde gebeurtenis grootte van 1 KB komt dit overeen met 13,4 GB telemetrie per 31-daagse maand per knoop punt dat als host fungeert voor uw toepassing (aangezien de steek proef op elk knoop punt wordt uitgevoerd). 
+Met de [adaptieve steek proef](sampling.md#adaptive-sampling)van de ASP.NET SDK wordt het gegevens volume automatisch aangepast om binnen een opgegeven maximum frequentie aan verkeer te blijven voor standaard Application Insights bewaking. Als de toepassing een geringe hoeveelheid telemetrie produceert, zoals bij het opsporen van fouten of wegens een laag gebruik, worden de items niet verwijderd door de sampling processor zolang het volume minder is dan het geconfigureerde aantal gebeurtenissen per seconde niveau. Voor een toepassing met hoge volumes, met de standaard drempelwaarde van vijf gebeurtenissen per seconde, wordt het aantal dagelijkse gebeurtenissen door adaptieve steek proeven beperkt tot 432.000. Met een typische gemiddelde gebeurtenis grootte van 1 KB komt dit overeen met 13,4 GB telemetrie per 31-daagse maand per knoop punt dat als host fungeert voor uw toepassing (aangezien de steek proef op elk knoop punt wordt uitgevoerd). 
 
-Voor Sdk's die geen adaptieve bemonstering ondersteunen, kunt u [opname sampling](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)gebruiken, die voor beelden van de gegevens die worden ontvangen door Application Insights op basis van een percentage van de gegevens die moeten worden bewaard, of een [vast aantal steek proeven voor ASP.net, ASP.net core en Java-websites](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) om het verkeer te verminderen dat vanaf uw webserver en webbrowsers wordt verzonden.
+Voor Sdk's die geen adaptieve bemonstering ondersteunen, kunt u [opname sampling](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)gebruiken, die voor beelden van de gegevens die worden ontvangen door Application Insights op basis van een percentage van de gegevens die moeten worden bewaard, of een [vast aantal steek proeven voor ASP.net, ASP.net core en Java-websites](sampling.md#fixed-rate-sampling) om het verkeer te verminderen dat vanaf uw webserver en webbrowsers wordt verzonden.
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Meer informatie over wat vergelijk bare klanten verzamelen
 

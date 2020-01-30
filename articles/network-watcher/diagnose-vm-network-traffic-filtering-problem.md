@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: In deze snelstart leert u hoe u een diagnose uitvoert voor een probleem met netwerkverkeersfilters op een virtuele machine met behulp van de functie IP-stroomverificatie in Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -16,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: d436fab100dc05cde8a434af564c67477b33d8d3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276014"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844918"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Snelstart: Diagnose uitvoeren voor een probleem met netwerkverkeersfilters op een virtuele machine met behulp van Azure Portal
 
@@ -35,7 +34,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-vm"></a>Een virtuele machine maken
+## <a name="create-a-vm"></a>Een VM maken
 
 1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
 2. Selecteer **Compute** en selecteer **Windows Server 2016 Datacenter** of een versie van **Ubuntu Server**.
@@ -43,7 +42,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
     |Instelling|Waarde|
     |---|---|
-    |Naam|myVm|
+    |Name|myVm|
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Abonnement| Selecteer uw abonnement.|
@@ -62,7 +61,7 @@ Als u de netwerkcommunicatie wilt testen met Network Watcher, moet u eerst een n
 
 Als u al een netwerk-watcher hebt ingeschakeld in minstens één regio, gaat u verder met [IP-stroomverificatie gebruiken](#use-ip-flow-verify).
 
-1. Selecteer in de portal de optie **Alle services**. Typ **Network Watcher** in het vak *Filteren*. Selecteer **Network Watcher** in de resultaten.
+1. Selecteer in de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de resultaten.
 2. Schakel een netwerk-watcher in de regio US - oost in, omdat dat de regio is waarin de VM is geïmplementeerd in de vorige stap. Selecteer **Regio's** om dit item uit te vouwen en selecteer vervolgens **...** rechts van **US - oost**, zoals wordt weergegeven in de volgende afbeelding:
 
     ![Network Watcher inschakelen](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
@@ -73,7 +72,7 @@ Als u al een netwerk-watcher hebt ingeschakeld in minstens één regio, gaat u v
 
 Als u een VM maakt, wordt netwerkverkeer van en naar de VM standaard toegestaan en geweigerd in Azure. U kunt de standaardinstellingen in Azure later negeren en extra typen verkeer toestaan en weigeren.
 
-1. Selecteer in de portal de optie **Alle services**. Voer **Network Watcher** in het vak *Alle services* *Filter* in. Selecteer **Network Watcher** in de resultaten.
+1. Selecteer in de portal de optie **Alle services**. Voer in het vak **alle services** *filteren* de *Network Watcher*in. Selecteer **Network Watcher** in de resultaten.
 2. Selecteer **IP-stroomverificatie** onder **DIAGNOSTISCHE HULPPROGRAMMA’S VOOR NETWERK**.
 3. Selecteer uw abonnement, typ of selecteer de volgende waarden, en selecteer vervolgens **Controleren**, zoals wordt weergegeven in de onderstaande afbeelding:
 

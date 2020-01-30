@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 690a9751111ca4c86ebb34825f2845ea59d6f186
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462492"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846279"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Service limieten in azure Cognitive Search
 
@@ -76,11 +76,11 @@ Als u wilt bepalen of uw service document limieten heeft, gebruikt u de [rest AP
 
 Als de portal een document limiet aangeeft, is uw service gemaakt vóór de eind versie van 2017 of is deze gemaakt in een Data Center met clusters met lagere capaciteit voor het hosten van Azure Cognitive Search Services:
 
-+ Australië - oost
++ Australië Oost
 + Azië - oost
 + India - centraal
 + Japan - West
-+ US - west-centraal
++ VS - west-centraal
 
 Voor services die aan de document limieten voldoen, gelden de volgende maximum limieten:
 
@@ -117,7 +117,7 @@ Er zijn maximale uitvoerings tijden beschikbaar om het saldo en de stabiliteit v
 | Maximale uitvoerings tijd <sup>5</sup> | 1-3 minuten |24 uur |24 uur |24 uur |24 uur |N/A  |24 uur |24 uur |
 | Maximale uitvoerings tijd voor cognitieve Zoek vaardig heden of BLOB-indexering met afbeeldings analyse <sup>5</sup> | 3-10 minuten |2 uur |2 uur |2 uur |2 uur |N/A  |2 uur |2 uur |
 | BLOB-Indexer: maximale grootte van BLOB, MB |16 |16 |128 |256 |256 |N/A  |256 |256 |
-| BLOB-Indexeer functie: maximum aantal tekens inhoud geëxtraheerd uit een BLOB |32,000 |64,000 |4&nbsp;miljoen |4&nbsp;miljoen |4&nbsp;miljoen |N/A |4&nbsp;miljoen |4&nbsp;miljoen |
+| BLOB-Indexeer functie: maximum aantal tekens inhoud geëxtraheerd uit een BLOB |32,000 |64,000 |4&nbsp;miljoen |8&nbsp;miljoen |16&nbsp;miljoen |N/A |4&nbsp;miljoen |4&nbsp;miljoen |
 
 <sup>1</sup> gratis services hebben de maximale uitvoerings tijd van de Indexeer functie van 3 minuten voor BLOB-bronnen en 1 minuut voor alle andere gegevens bronnen. Voor AI-indexering die in Cognitive Services aanroept, zijn gratis services beperkt tot 20 gratis trans acties per dag, waarbij een trans actie wordt gedefinieerd als een document dat door de verrijkings pijplijn is door gegeven.
 
@@ -151,7 +151,7 @@ Voor de lagen geoptimaliseerd voor opslag moet u een lagere query door Voer en e
 
 ## <a name="data-limits-ai-enrichment"></a>Gegevens limieten (AI-verrijking)
 
-Een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) die aanroepen naar een Text Analytics bron voor [entiteit herkenning](cognitive-search-skill-entity-recognition.md), [extractie van sleutel zinnen](cognitive-search-skill-keyphrases.md), [sentiment analyse](cognitive-search-skill-sentiment.md)en [taal detectie](cognitive-search-skill-language-detection.md) onderhevig is aan gegevens limieten. De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens wilt opsplitsen voordat u deze naar de sentiment Analyzer verzendt, gebruikt u de functie [tekst splitsen](cognitive-search-skill-textsplit.md).
+Een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) die aanroepen naar een Text Analytics bron voor [entiteit herkenning](cognitive-search-skill-entity-recognition.md), [extractie van sleutel zinnen](cognitive-search-skill-keyphrases.md), [sentiment analyse](cognitive-search-skill-sentiment.md), [taal detectie](cognitive-search-skill-language-detection.md)en [PII-detectie](cognitive-search-skill-pii-detection.md) is onderhevig aan gegevens limieten. De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens wilt opsplitsen voordat u deze naar de sentiment Analyzer verzendt, gebruikt u de functie [tekst splitsen](cognitive-search-skill-textsplit.md).
 
 ## <a name="throttling-limits"></a>Beperkings limieten
 

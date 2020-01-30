@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 376b7b8a734e5064713237e9250542a4c5cc18f1
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: a4a2eccc3c46b7f982836c73d3144f1793e5034b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903078"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846197"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Trans acties in SQL Data Warehouse gebruiken
 Tips voor het implementeren van trans acties in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
@@ -25,7 +25,7 @@ Tips voor het implementeren van trans acties in Azure SQL Data Warehouse voor he
 Zoals u verwacht, ondersteunt SQL Data Warehouse trans acties als onderdeel van de werk belasting van het Data Warehouse. Om ervoor te zorgen dat de prestaties van SQL Data Warehouse echter worden gehandhaafd op schaal, zijn sommige functies beperkt in vergelijking tot SQL Server. In dit artikel worden de verschillen gemarkeerd en worden de andere weer gegeven. 
 
 ## <a name="transaction-isolation-levels"></a>Trans actie-isolatie niveaus
-SQL Data Warehouse implementeert zuur transacties. Het isolatie niveau van de transactionele ondersteuning is echter beperkt tot lezen niet-doorgevoerd; Dit niveau kan niet worden gewijzigd. Als lezen niet doorgevoerd een probleem is, kunt u een aantal Codeer methoden implementeren om te voor komen dat gegevens worden gelezen. De meest populaire methoden gebruiken zowel CTAS als omschakeling van de tabel partitie (ook wel het sliding window patroon genoemd) om te voor komen dat gebruikers query's uitvoeren op gegevens die nog worden voor bereid. Weer gaven waarmee de gegevens vooraf worden gefilterd, zijn ook een populaire benadering.  
+SQL Data Warehouse implementeert zuur transacties. Het isolatie niveau van de transactionele ondersteuning is standaard om niet-doorgevoerd te lezen.  U kunt deze wijzigen om doorgevoerde MOMENTOPNAME isolatie te lezen door de optie READ_COMMITTED_SNAPSHOT data base in te scha kelen voor een gebruikers database wanneer deze is verbonden met de hoofd database.  Wanneer deze optie is ingeschakeld, worden alle trans acties in deze data base uitgevoerd onder Lees-VASTGELEGDe snap shot-isolatie en wordt het lezen van niet-toegewezen op sessie niveau niet in rekening gehouden. Raadpleeg [ALTER data base set Options (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) voor meer informatie.
 
 ## <a name="transaction-size"></a>Transactie grootte
 Een trans actie met één gegevens wijziging is beperkt. De limiet wordt per distributie toegepast. Daarom kan de totale toewijzing worden berekend door de limiet te vermenigvuldigen met het aantal distributies. Om het maximum aantal rijen in de trans actie te benaderen, deelt u de verdelings limiet door de totale grootte van elke rij. Overweeg voor kolommen met variabele lengte een gemiddelde kolom lengte in plaats van de maximum grootte te gebruiken.
@@ -39,39 +39,39 @@ In de onderstaande tabel zijn de volgende veronderstellingen aangebracht:
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | Cap per distributie (GB) | Aantal distributies | MAXIMALE transactie grootte (GB) | Aantal rijen per distributie | Maximum aantal rijen per trans actie |
 | --- | --- | --- | --- | --- | --- |
-| DW100c |1 |60 |60 |4\.000.000 |240.000.000 |
-| DW200c |1.5 |60 |90 |6,000,000 |360.000.000 |
-| DW300c |2,25 |60 |135 |9\.000.000 |540.000.000 |
-| DW400c |3 |60 |180 |12.000.000 |720.000.000 |
-| DW500c |3,75 |60 |225 |15.000.000 |900.000.000 |
-| DW1000c |7,5 |60 |450 |30.000.000 |1\.800.000.000 |
-| DW1500c |11,25 |60 |675 |45.000.000 |2\.700.000.000 |
-| DW2000c |15 |60 |900 |60.000.000 |3\.600.000.000 |
+| DW100c |1 |60 |60 |4,000,000 |240,000,000 |
+| DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
+| DW300c |2.25 |60 |135 |9,000,000 |540,000,000 |
+| DW400c |3 |60 |180 |12,000,000 |720,000,000 |
+| DW500c |3.75 |60 |225 |15,000,000 |900,000,000 |
+| DW1000c |7.5 |60 |450 |30,000,000 |1,800,000,000 |
+| DW1500c |11.25 |60 |675 |45,000,000 |2,700,000,000 |
+| DW2000c |15 |60 |900 |60,000,000 |3,600,000,000 |
 | DW2500c |18,75 |60 |1125 |75.000.000 |4\.500.000.000 |
-| DW3000c |22,5 |60 |1\.350 |90.000.000 |5\.400.000.000 |
+| DW3000c |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
 | DW5000c |37,5 |60 |2\.250 |150.000.000 |9\.000.000.000 |
-| DW6000c |45 |60 |2\.700 |180.000.000 |10.800.000.000 |
+| DW6000c |45 |60 |2,700 |180,000,000 |10,800,000,000 |
 | DW7500c |56,25 |60 |3\.375 |225.000.000 |13.500.000.000 |
 | DW10000c |75 |60 |4\.500 |300,000,000 |18.000.000.000 |
 | DW15000c |112,5 |60 |6\.750 |450.000.000 |27.000.000.000 |
-| DW30000c |225 |60 |13.500 |900.000.000 |54.000.000.000 |
+| DW30000c |225 |60 |13.500 |900,000,000 |54.000.000.000 |
 
 ## <a name="gen1"></a>Gen1
 
 | [DWU](sql-data-warehouse-overview-what-is.md) | Cap per distributie (GB) | Aantal distributies | MAXIMALE transactie grootte (GB) | Aantal rijen per distributie | Maximum aantal rijen per trans actie |
 | --- | --- | --- | --- | --- | --- |
-| DW100 |1 |60 |60 |4\.000.000 |240.000.000 |
-| DW200 |1.5 |60 |90 |6,000,000 |360.000.000 |
-| DW300 |2,25 |60 |135 |9\.000.000 |540.000.000 |
-| DW400 |3 |60 |180 |12.000.000 |720.000.000 |
-| DW500 |3,75 |60 |225 |15.000.000 |900.000.000 |
-| DW600 |4,5 |60 |270 |18.000.000 |1\.080.000.000 |
-| DW1000 |7,5 |60 |450 |30.000.000 |1\.800.000.000 |
-| DW1200 |9 |60 |540 |36.000.000 |2\.160.000.000 |
-| DW1500 |11,25 |60 |675 |45.000.000 |2\.700.000.000 |
-| DW2000 |15 |60 |900 |60.000.000 |3\.600.000.000 |
-| DW3000 |22,5 |60 |1\.350 |90.000.000 |5\.400.000.000 |
-| DW6000 |45 |60 |2\.700 |180.000.000 |10.800.000.000 |
+| DW100 |1 |60 |60 |4,000,000 |240,000,000 |
+| DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |
+| DW300 |2.25 |60 |135 |9,000,000 |540,000,000 |
+| DW400 |3 |60 |180 |12,000,000 |720,000,000 |
+| DW500 |3.75 |60 |225 |15,000,000 |900,000,000 |
+| DW600 |4.5 |60 |270 |18,000,000 |1,080,000,000 |
+| DW1000 |7.5 |60 |450 |30,000,000 |1,800,000,000 |
+| DW1200 |9 |60 |540 |36,000,000 |2,160,000,000 |
+| DW1500 |11.25 |60 |675 |45,000,000 |2,700,000,000 |
+| DW2000 |15 |60 |900 |60,000,000 |3,600,000,000 |
+| DW3000 |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
+| DW6000 |45 |60 |2,700 |180,000,000 |10,800,000,000 |
 
 De limiet voor de transactie grootte wordt toegepast per trans actie of bewerking. Het wordt niet toegepast op alle gelijktijdige trans acties. Elke trans actie is daarom toegestaan om deze hoeveelheid gegevens naar het logboek te schrijven. 
 

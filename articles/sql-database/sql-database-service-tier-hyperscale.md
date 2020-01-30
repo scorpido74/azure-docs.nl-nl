@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: aeda79ec4cb850ce73db18398c57d90aa4eb2acd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 226ed1fcc72eada399c0a9a9eb4225d79cd83dd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759496"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845884"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -72,7 +72,7 @@ Grootschalige is alleen beschikbaar in het [vCore-model](sql-database-service-ti
 
 - **Opslag**:
 
-  U hoeft niet de maximale gegevens grootte op te geven bij het configureren van een grootschalige-data base. In de laag Hyperscale wordt opslag voor uw database in rekening gebracht op basis van daadwerkelijke toewijzing. Opslag wordt automatisch toegewezen tussen 40 GB en 100 TB, in stappen die dynamisch worden aangepast tussen 10 GB en 40 GB. Een grootschalige-data base wordt gemaakt met een begin grootte van 10 GB en deze wordt met 10 GB elke 10 minuten verg root totdat de grootte van 40 GB wordt bereikt.
+  U hoeft niet de maximale gegevens grootte op te geven bij het configureren van een grootschalige-data base. In de laag Hyperscale wordt opslag voor uw database in rekening gebracht op basis van daadwerkelijke toewijzing. Opslag wordt automatisch toegewezen tussen 40 GB en 100 TB, in stappen van 10 GB. Meerdere gegevens bestanden kunnen op hetzelfde moment worden uitgebreid als dat nodig is. Een grootschalige-data base wordt gemaakt met een begin grootte van 10 GB en deze wordt met 10 GB elke 10 minuten verg root totdat de grootte van 40 GB wordt bereikt.
 
 Zie [Azure SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/single/) voor meer informatie over prijzen voor grootschalige
 
@@ -117,8 +117,8 @@ Een grootschalige-data base kan worden gemaakt met behulp van de [Azure Portal](
 Met de volgende T-SQL-opdracht maakt u een grootschalige-data base. U moet zowel de editie als de service doelstelling opgeven in de instructie `CREATE DATABASE`. Raadpleeg de [resource limieten](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4) voor een lijst met geldige service doelstellingen.
 
 ```sql
--- Create a HyperScale Database
-CREATE DATABASE [HyperScaleDB1] (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Create a Hyperscale Database
+CREATE DATABASE [HyperscaleDB1] (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 Hiermee maakt u een grootschalige-Data Base op GEN5-hardware met 4 kern geheugens.
@@ -130,8 +130,8 @@ U kunt uw bestaande Azure SQL-data bases verplaatsen naar grootschalige met behu
 Met de volgende T-SQL-opdracht wordt een Data Base verplaatst naar de servicelaag grootschalige. U moet zowel de editie als de service doelstelling opgeven in de instructie `ALTER DATABASE`.
 
 ```sql
--- Alter a database to make it a HyperScale Database
-ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Alter a database to make it a Hyperscale Database
+ALTER DATABASE [DB2] MODIFY (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 
@@ -160,17 +160,17 @@ Als u een Azure SQL Database grootschalige-Data Base wilt herstellen naar een an
 2. Volg de instructies in het onderwerp [geo-Restore](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) van de pagina voor het herstellen van Azure SQL-data bases vanuit automatische back-ups.
 
 > [!NOTE]
-> Omdat de bron en het doel zich in verschillende regio's bevinden, kan de data base geen momentopname opslag delen met de bron database als in niet-geografische herstel bewerkingen, die zeer snel zijn voltooid.  In het geval van een geo-Restore van een grootschalige-data base is het een grootte-of-Data-bewerking, zelfs als het doel zich in het gekoppelde gebied van de geo-gerepliceerde opslag bevindt.  Dit betekent dat het uitvoeren van een geo-herstel tijd evenredig is met de grootte van de data base die wordt hersteld.  Als het doel zich in het gekoppelde gebied bevindt, wordt de kopie binnen een Data Center genoteerd dat aanzienlijk sneller is dan een lange afstands kopie via internet, maar worden wel alle bits gekopieerd.
+> Omdat de bron en het doel zich in verschillende regio's bevinden, kan de data base geen momentopname opslag delen met de bron database als in niet-geografische herstel bewerkingen, die zeer snel zijn voltooid. In het geval van een geo-Restore van een grootschalige-data base is het een grootte-of-Data-bewerking, zelfs als het doel zich in het gekoppelde gebied van de geo-gerepliceerde opslag bevindt.  Dit betekent dat het uitvoeren van een geo-herstel tijd evenredig is met de grootte van de data base die wordt hersteld.  Als het doel zich in het gekoppelde gebied bevindt, wordt de kopie binnen een regio weer gegeven. Dit is aanzienlijk sneller dan een kopie van een andere regio, maar het is nog steeds een bewerking voor de grootte van de gegevens.
 
 ## <a name=regions></a>Beschik bare regio's
 
 De laag Azure SQL Database grootschalige is momenteel beschikbaar in de volgende regio's:
 
-- Australië - oost
-- Australië - zuidoost
+- Australië Oost
+- Australië Zuidoost
 - Brazilië - Zuid
 - Canada-Midden
-- US - centraal
+- VS - centraal
 - China - oost 2
 - China - noord 2
 - Azië - oost
@@ -180,17 +180,17 @@ De laag Azure SQL Database grootschalige is momenteel beschikbaar in de volgende
 - Japan - Oost
 - Japan - West
 - Korea - centraal
-- Korea - zuid
-- US - noord-centraal
+- Korea (Zuid)
+- VS - noord-centraal
 - Europa - noord
 - Zuid-Afrika - noord
-- US - zuid-centraal
+- VS - zuid-centraal
 - Azië - zuidoost
-- UK - zuid
-- UK - west
+- VK - zuid
+- VK - west
 - Europa - west
-- US - west
-- US - west 2
+- VS - west
+- VS - west 2
 
 Als u een grootschalige-Data Base wilt maken in een regio die niet wordt weer gegeven als ondersteund, kunt u een aanvraag voor onboarding verzenden via Azure Portal. U kunt de lijst met ondersteunde regio's uitbreiden. Controleer vervolgens de meest recente regio lijst.
 

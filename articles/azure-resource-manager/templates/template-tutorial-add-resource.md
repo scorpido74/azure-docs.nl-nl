@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 924c369465bf53ea5f58de906bd0894ce822cac3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472959"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765592"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Zelf studie: een resource toevoegen aan uw Resource Manager-sjabloon
 
@@ -28,7 +28,7 @@ Als u een opslag account definitie wilt toevoegen aan de bestaande sjabloon, bek
 
 Vervang **{Geef unieke naam}** door een unieke naam voor het opslag account. De naam van het opslagaccount moet uniek zijn in Azure. De naam mag alleen kleine letters of cijfers bevatten. De waarde mag niet langer zijn dan 24 tekens. U kunt een naamgevings patroon gebruiken zoals het gebruik van **store1** als voor voegsel en vervolgens uw initialen en de datum van vandaag toevoegen. De naam die u gebruikt, kan er bijvoorbeeld uitzien als **store1abc09092019**.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json?range=1-19&highlight=5-17)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
 Het raden van een unieke naam voor een opslag account is niet eenvoudig en werkt niet goed voor het automatiseren van grote implementaties. Verderop in deze reeks zelf studies gebruikt u sjabloon functies waarmee u gemakkelijker een unieke naam kunt maken.
 

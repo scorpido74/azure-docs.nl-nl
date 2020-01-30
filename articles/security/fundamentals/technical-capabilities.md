@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: a8dd859b05c3e95a1c584a7947334dad25813122
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970655"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845340"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische mogelijkheden van Azure-beveiliging
 Dit artikel bevat een inleiding tot beveiligings Services in azure waarmee u uw gegevens, resources en toepassingen in de cloud kunt beveiligen en voldoen aan de beveiligings behoeften van uw bedrijf.
@@ -57,7 +57,7 @@ Met de oplossingen voor identiteits-en toegangs beheer van micro soft kunt u de 
 
 Voor delen van de beveiliging van Azure Active Directory (Azure AD) zijn de mogelijkheid om het volgende te doen:
 
-- Maak en beheer één enkele identiteit voor elke gebruiker in uw hybride onderneming, zodat gebruikers, groepen en apparaten gesynchroniseerd blijven.
+- Maak en beheer één identiteit voor elke gebruiker in uw hybride onderneming, zodat gebruikers, groepen en apparaten synchroon blijven.
 
 - Bieden van eenmalige aanmelding toegang tot uw toepassingen, waaronder duizenden vooraf geïntegreerde SaaS-apps.
 
@@ -119,7 +119,7 @@ In de Azure Portal of via de [Azure Active Directory-Portal](https://aad.portal.
 
 [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) is een Maxi maal beschik bare, wereld wijde service voor identiteits beheer voor consumenten toepassingen die worden geschaald naar honderden miljoenen identiteiten. De service kan worden geïntegreerd in zowel mobiele als webplatforms. Uw klanten kunnen zich bij al uw toepassingen aanmelden via verschillende aanpasbare methoden met hun bestaande sociale accounts of door nieuwe aanmeldingsgegevens te maken.
 
-In het verleden hebben ontwikkel aars van toepassingen die [gebruikers wilden aanmelden en aanmelden](../../active-directory-b2c/active-directory-b2c-overview.md) bij hun toepassingen, hun eigen code geschreven. Bovendien gebruikten ze on-premises databases of systemen om gebruikersnamen en wachtwoorden op te slaan. Azure Active Directory B2C biedt uw organisatie een betere manier om identiteits beheer van consumenten te integreren in toepassingen met behulp van een beveiligd, op standaarden gebaseerd platform en een grote set Extensible-beleids regels.
+In het verleden hebben ontwikkel aars van toepassingen die [gebruikers wilden aanmelden en aanmelden](../../active-directory-b2c/overview.md) bij hun toepassingen, hun eigen code geschreven. Bovendien gebruikten ze on-premises databases of systemen om gebruikersnamen en wachtwoorden op te slaan. Azure Active Directory B2C biedt uw organisatie een betere manier om identiteits beheer van consumenten te integreren in toepassingen met behulp van een beveiligd, op standaarden gebaseerd platform en een grote set Extensible-beleids regels.
 
 Wanneer u Azure Active Directory B2C gebruikt, kunnen uw consumenten zich registreren voor uw toepassingen met hun bestaande sociale accounts (Facebook, Google, Amazon, LinkedIn) of door nieuwe referenties te maken (e-mail adres en wacht woord of gebruikers naam en wacht woord).
 
@@ -256,7 +256,7 @@ Grotere gegevens sets kunnen worden verplaatst via een speciale WAN-verbinding m
 
 Als u werkt met Azure Storage via de Azure-Portal, worden alle trans acties uitgevoerd via HTTPS. [Opslag rest API](https://msdn.microsoft.com/library/azure/dd179355.aspx) via https kan ook worden gebruikt om te communiceren met [Azure Storage](https://azure.microsoft.com/services/storage/) en [Azure SQL database](https://azure.microsoft.com/services/sql-database/).
 
-Organisaties die gegevens in de overdracht niet kunnen beveiligen, zijn gevoeliger voor [man-in-the-middle-aanvallen](https://technet.microsoft.com/library/gg195821.aspx), [afluis teren](https://technet.microsoft.com/library/gg195641.aspx)en het overnemen van sessies. Deze aanvallen kunnen de eerste stap zijn om toegang te krijgen tot vertrouwelijke gegevens.
+Organisaties die gegevens in de overdracht niet kunnen beveiligen, zijn gevoeliger voor [man-in-the-middle-aanvallen](https://technet.microsoft.com/library/gg195821.aspx), [afluis teren](https://technet.microsoft.com/library/gg195641.aspx)en het overnemen van sessies. Deze aanvallen kunnen de eerste stap zijn in het verkrijgen van toegang tot vertrouwelijke gegevens.
 
 Meer informatie over de Azure VPN-optie vindt u in het artikel [planning en ontwerp voor VPN gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
@@ -432,7 +432,7 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 
 - Beveiligingswaarschuwingen van geïntegreerde antimalwareprogramma's en firewalls
 
-### <a name="azure-monitor"></a>Azure Monitor
+### <a name="azure-monitor"></a>Monitor voor Azure
 
 [Azure monitor](../../azure-monitor/overview.md) biedt verwijzingen naar informatie over specifieke typen resources. Het biedt visualisatie, query's, route ring, waarschuwingen, automatisch schalen en automatisering op gegevens van de Azure-infra structuur (activiteiten logboek) en elke afzonderlijke Azure-resource (Diagnostische logboeken).
 

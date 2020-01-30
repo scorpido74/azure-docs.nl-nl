@@ -10,18 +10,18 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 94c2f86b6d0a592e53c2ab1f9833bdb045f81583
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 2d7615d810e96beb61c3fe0b182a88158dc77c07
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325879"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844833"
 ---
 # <a name="whats-new-in-qna-maker"></a>Wat is er nieuw in QnA Maker
 
-Meer informatie over wat er nieuw is in de service. Bij deze items kunnen opmerkingen, Video's, blog berichten en andere soorten informatie worden vrijgegeven. Bladwijzer deze pagina om up-to-date te blijven met de service.  
+Meer informatie over wat er nieuw is in de service. Bij deze items kunnen opmerkingen, Video's, blog berichten en andere soorten informatie worden vrijgegeven. Bladwijzer deze pagina om up-to-date te blijven met de service.
 
-## <a name="release-notes"></a>Releaseopmerkingen 
+## <a name="release-notes"></a>Releaseopmerkingen
 
 Meer informatie over de nieuwe functies van QnA Maker.
 
@@ -33,15 +33,15 @@ Meer informatie over de nieuwe functies van QnA Maker.
 
 ### <a name="october-2019"></a>Oktober 2019
 
-* [De taal expliciet instellen](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) voor alle Knowledge bases in de QnA Maker-service. 
+* [De taal expliciet instellen](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) voor alle Knowledge bases in de QnA Maker-service.
 
 ### <a name="september-2019"></a>September 2019
 
-* Importeren en exporteren met de [xls-bestands indeling](concepts/data-sources-supported.md) 
+* Importeren en exporteren met de [xls-bestands indeling](concepts/content-types.md)
 
 ### <a name="june-2019"></a>Juni 2019
 
-* Verbeterd [rangord model](concepts/knowledge-base.md#ranker-process) voor Frans, Italiaans, Duits, Spaans, Portugees
+* Verbeterd [rangord model](concepts/query-knowledge-base.md#ranker-process) voor Frans, Italiaans, Duits, Spaans, Portugees
 
 ### <a name="april-2019"></a>April 2019
 
@@ -51,7 +51,7 @@ Meer informatie over de nieuwe functies van QnA Maker.
 ### <a name="march-2019"></a>Maart 2019
 
 * [Actief onderwijs](how-to/improve-knowledge-base.md) biedt suggesties voor nieuwe vraag alternatieven op basis van echte gebruikers vragen
-* Verbeterd NLP [-model (](concepts/knowledge-base.md#ranker-process) natuurlijke taal verwerking) voor het Engels 
+* Verbeterd NLP [-model (](concepts/query-knowledge-base.md#ranker-process) natuurlijke taal verwerking) voor het Engels
 
 > [!div class="nextstepaction"]
 > [Een QnA Maker-service maken](how-to/set-up-qnamaker-service-azure.md)

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5534a46ba99d1536d331b5852ef47588f03d73a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bf0740bbdd4754aeba43e64f1076a1bea33cffc6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980281"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844413"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Problemen met Azure Stream Analytics query's oplossen
 
@@ -21,21 +21,24 @@ In dit artikel worden veelvoorkomende problemen beschreven met het ontwikkelen v
 
 ## <a name="query-is-not-producing-expected-output"></a>De verwachte uitvoer wordt niet geproduceerd met de query
 1.  Controleer fouten door lokaal te testen:
-    - Selecteer op het tabblad **query** de optie **testen**. Gebruik de gedownloade voorbeeld gegevens om [de query te testen](stream-analytics-test-query.md). Controleer eventuele fouten en probeer deze te corrigeren.   
-    - U kunt [uw query ook rechtstreeks op Live-invoer testen](stream-analytics-live-data-local-testing.md) met behulp van stream Analytics-hulpprogram Ma's voor Visual Studio.
+    - Selecteer op Azure Portal op het tabblad **query** de optie **testen**. Gebruik de gedownloade voorbeeld gegevens om [de query te testen](stream-analytics-test-query.md). Controleer eventuele fouten en probeer deze te corrigeren.   
+    - U kunt [uw query ook lokaal testen](stream-analytics-live-data-local-testing.md) met Azure stream Analytics-hulpprogram Ma's voor Visual Studio of [Visual Studio code](visual-studio-code-local-run-live-input.md). 
 
-2.  Als u [**time stamp by**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)gebruikt, controleert u of de gebeurtenissen tijds tempels hebben die groter zijn dan de [begin tijd](stream-analytics-out-of-order-and-late-events.md)van de taak.
+2.  [Debug-query's stap voor stap lokaal met behulp van taak diagram](debug-locally-using-job-diagram.md) in azure stream Analytics-hulpprogram Ma's voor Visual Studio. Het taak diagram is om te laten zien hoe gegevens stromen van invoer bronnen (Event hub, IoT Hub, enzovoort) via meerdere query stappen en tot slot uitvoer naar Sinks. Elke query stap wordt toegewezen aan een tijdelijke resultatenset die is gedefinieerd in het script using WITH-instructie. U kunt de gegevens weer geven en waarden in elke query stap in elke tussenliggende resultatenset om de oorzaak van het probleem te vinden.
+    voorbeeld resultaat ![taak diagram](./media/debug-locally-using-job-diagram/preview-result.png)
 
-3.  Vermijd veelvoorkomende Valk uilen, zoals:
+3.  Als u [**time stamp by**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)gebruikt, controleert u of de gebeurtenissen tijds tempels hebben die groter zijn dan de [begin tijd](stream-analytics-out-of-order-and-late-events.md)van de taak.
+
+4.  Vermijd veelvoorkomende Valk uilen, zoals:
     - Een [**where**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) -component in de query heeft alle gebeurtenissen gefilterd, waardoor er geen uitvoer kan worden gegenereerd.
     - Een [**cast**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) -functie mislukt, waardoor de taak mislukt. Als u geen cast-fouten wilt voor komen, gebruikt u [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) in plaats daarvan.
     - Wanneer u venster functies gebruikt, wacht u tot de volledige venster duur een uitvoer van de query ziet.
     - De tijds tempel voor gebeurtenissen gaat vooraf aan de begin tijd van de taak en daarom worden gebeurtenissen verwijderd.
 
-4.  Zorg ervoor dat het beleid voor het best Ellen van gebeurtenissen is geconfigureerd zoals verwacht. Ga naar **instellingen** en selecteer [**gebeurtenissen ordenen**](stream-analytics-out-of-order-and-late-events.md). Het beleid wordt *niet* toegepast wanneer u de knop **testen** gebruikt om de query te testen. Dit resultaat is een verschil tussen het testen van in-browser en het uitvoeren van de taak in de productie omgeving.
+5.  Zorg ervoor dat het beleid voor het best Ellen van gebeurtenissen is geconfigureerd zoals verwacht. Ga naar **instellingen** en selecteer [**gebeurtenissen ordenen**](stream-analytics-out-of-order-and-late-events.md). Het beleid wordt *niet* toegepast wanneer u de knop **testen** gebruikt om de query te testen. Dit resultaat is een verschil tussen het testen van in-browser en het uitvoeren van de taak in de productie omgeving. 
 
-5. Fouten opsporen met behulp van controle-en Diagnostische logboeken:
-    - Gebruik [controle logboeken](../azure-resource-manager/management/view-activity-logs.md)en filter om fouten op te sporen en op te sporen.
+6. Fouten opsporen met behulp van controle-en Diagnostische logboeken:
+    - Gebruik [controle logboeken](../azure-resource-manager/resource-group-audit.md)en filter om fouten op te sporen en op te sporen.
     - Gebruik [Diagnostische logboeken voor taken](stream-analytics-job-diagnostic-logs.md) om fouten te identificeren en op te sporen.
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>Taak verbruikt te veel streaming-eenheden

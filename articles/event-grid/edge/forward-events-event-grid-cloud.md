@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100660"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844714"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Zelf studie: gebeurtenissen door sturen naar Event Grid Cloud
 
@@ -23,7 +23,7 @@ In dit artikel worden alle stappen beschreven die nodig zijn voor het door sture
 * Reageren op Edge-gebeurtenissen in de Cloud.
 * Stuur gebeurtenissen door naar Event Grid in de Cloud en gebruik Azure Event Hubs of Azure Storage wacht rijen om gebeurtenissen te bufferen voordat ze in de cloud worden verwerkt.
 
-Voor het volt ooien van deze zelf studie hebt u een goed idee van Event Grid concepten over [Edge](concepts.md) en [Azure](../concepts.md).
+ Voor het volt ooien van deze zelf studie hebt u een goed idee van Event Grid concepten over [Edge](concepts.md) en [Azure](../concepts.md). Zie voor aanvullende doel typen [gebeurtenis-handlers](event-handlers.md). 
 
 ## <a name="prerequisites"></a>Vereisten 
 Als u deze zelf studie wilt volt ooien, hebt u het volgende nodig:
@@ -83,6 +83,7 @@ Als u bijvoorbeeld een onderwerp met de naam `testegcloudtopic` hebt gemaakt in 
   
 ## <a name="create-event-grid-subscription-at-the-edge"></a>Event Grid abonnement maken aan de rand
 
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Maak subscription3. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
@@ -201,3 +202,4 @@ In deze zelf studie hebt u een gebeurtenis op de rand gepubliceerd en doorgestuu
 * Zie [probleemoplossings gids voor informatie](troubleshoot.md)over het oplossen van problemen met het gebruik van Azure Event Grid op IOT Edge.
 * Door sturen van gebeurtenissen naar IoTHub door deze [zelf studie](forward-events-iothub.md) te volgen
 * Door sturen van gebeurtenissen naar webhook in de Cloud door deze [zelf studie](pub-sub-events-webhook-cloud.md) te volgen
+* [Onderwerpen en abonnementen bewaken aan de rand](monitor-topics-subscriptions.md)

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: a9c64f4bafa770de9bbbd97ae9a0295b72d81f54
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 24114defe5e78bb7adbd006adc4ddbf8250b3188
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719820"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844969"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Wat is er nieuw in azure Cognitive Search
 
@@ -26,6 +26,10 @@ Meer informatie over wat er nieuw is in de service. Bladwijzer deze pagina om up
 De naam van Azure Search wordt nu gewijzigd in **Azure Cognitive Search** om het uitgebreide (nog optioneel) gebruik van cognitieve vaardig heden en AI-verwerking in kern bewerkingen weer te geven. API-versies, NuGet-pakketten, naam ruimten en eind punten zijn ongewijzigd. Nieuwe en bestaande Zoek oplossingen worden niet beïnvloed door de wijziging van de service naam.
 
 ## <a name="feature-announcements"></a>Aankondigingen van functies
+
+### <a name="february-2020"></a>Februari 2020
+
++ [PII-detectie](cognitive-search-skill-pii-detection.md) is een cognitieve vaardigheid die wordt gebruikt tijdens de indexering die persoons gegevens ophaalt uit een invoer tekst en die u de mogelijkheid biedt om de tekst op verschillende manieren te maskeren.
 
 ### <a name="january-2020"></a>Januari 2020
 
@@ -52,7 +56,7 @@ De naam van Azure Search wordt nu gewijzigd in **Azure Cognitive Search** om het
 
 + [Document extractie (preview)](cognitive-search-skill-document-extraction.md) is een cognitieve vaardigheid die wordt gebruikt tijdens het indexeren, waarmee u de inhoud van een bestand kunt extra heren uit een vakkennisset. Het kraken van documenten is eerder voorgekomen voordat de vaardig heden werden uitgevoerd. Als u deze vaardigheid hebt toegevoegd, kunt u deze bewerking ook uitvoeren binnen de vaardig heden-uitvoering.
 
-+ [Tekst omzetting (preview)](cognitive-search-skill-text-translation.md) is een cognitieve vaardigheid die wordt gebruikt tijdens het indexeren waarmee tekst wordt geëvalueerd en, voor elke record, de tekst wordt omgezet in de opgegeven doel taal.
++ [Tekst omzetting](cognitive-search-skill-text-translation.md) is een cognitieve vaardigheid die wordt gebruikt tijdens de indexering die tekst evalueert en, voor elke record, de tekst die wordt vertaald naar de opgegeven doel taal.
 
 + [Power bi sjablonen](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) kunnen uw visualisaties en analyse van verrijkte inhoud in een kennis archief op Power bi bureau blad. Deze sjabloon is ontworpen voor Azure-tabel prognoses die zijn gemaakt met behulp van de [wizard gegevens importeren](knowledge-store-create-portal.md).
 

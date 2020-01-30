@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4f662df6692e03cf3eb948b0d8e2ae51002e815d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 793258b572fdcf2487d4b20fa07fb4ef5524b149
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113023"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846270"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Documenten in Azure Blob Storage indexeren met Azure Cognitive Search
 
@@ -134,7 +134,7 @@ Afhankelijk van de configuratie van de [Indexeer](#PartsOfBlobToIndex)functie ka
 * De tekst inhoud van het document wordt geëxtraheerd in een teken reeks veld met de naam `content`.
 
 > [!NOTE]
-> Azure Cognitive Search beperkt het aantal tekst dat wordt geëxtraheerd, afhankelijk van de prijs categorie: 32.000 tekens voor de gratis laag, 64.000 voor Basic en 4.000.000 voor Standard, standaard S2 en standaard S3-lagen. Er is een waarschuwing opgenomen in het indexeer programma status antwoord voor afgekapte documenten.  
+> Azure Cognitive Search beperkt hoeveel tekst er wordt geëxtraheerd, afhankelijk van de prijs categorie: 32.000 tekens voor de gratis laag, 64.000 voor Basic, 4.000.000 voor Standard, 8.000.000 voor Standard S2 en 16.000.000 voor Standard S3. Er is een waarschuwing opgenomen in het indexeer programma status antwoord voor afgekapte documenten.  
 
 * Door de gebruiker opgegeven eigenschappen van meta gegevens in de blob, indien aanwezig, worden geëxtraheerd Verbatim.
 * Standaard eigenschappen van BLOB-meta gegevens worden in de volgende velden geëxtraheerd:

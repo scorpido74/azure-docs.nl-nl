@@ -3,24 +3,17 @@ title: Voor beeld van Azure CLI-script-een Azure-app configuratie archief maken
 titleSuffix: Azure App Configuration
 description: 'Azure CLI-voorbeeldscript: een Azure-app-configuratiearchief verwijderen'
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
+author: jpconnock
 ms.service: azure-app-configuration
-ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 02/24/2019
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: d57de8219cb73864ed722c6906a1bd75fec51a50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/24/2020
+ms.author: jeconnoc
+ms.openlocfilehash: 44c381da8648fea74059c9110438cfeb4c366116
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433596"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766464"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Een Azure App-configuratiearchief maken
 
@@ -57,13 +50,14 @@ appConfigHostname=$(az appconfig create \
   --query hostName \
   -o tsv)
 
-# Get the AppConfig primary key 
-appConfigPrimaryKey=$(az appconfig key list --name $myAppConfigStoreName \
-  --resource-group $myResourceGroupName --query primaryKey -o tsv)
+# Get the AppConfig connection string 
+appConfigConnectionString=$(az appconfig credential list \
+--resource-group $myResourceGroupName \
+--name $myAppConfigStoreName \
+--query "[?name=='Secondary Read Only'] .connectionString" -o tsv)
 
-# Form the connection string for use in your application
-connstring="Endpoint=https://$appConfigHostname;AccessKey=$appConfigPrimaryKey;"
-echo "$connstring"
+# Echo the connection string for use in your application
+echo "$appConfigConnectionString"
 ```
 
 Noteer de naam die wordt gegenereerd voor de nieuwe resourcegroep. U hebt deze naam nodig als u later alle groepsresources wilt verwijderen.
@@ -78,10 +72,10 @@ In dit script worden de volgende opdrachten gebruikt om een nieuwe resource groe
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | Hiermee maakt u een app-configuratie opslag resource. |
-| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Een lijst met sleutels die zijn opgeslagen in een app-configuratie archief. |
+| [AZ appconfig Credential List](/cli/azure/ext/appconfig/appconfig/credential?view=azure-cli-latest) | Lijst met toegangs sleutels voor een app-configuratie archief. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 Extra CLI-script voorbeelden voor configuratie van apps vindt u in de voor beelden van de [Azure-app configuratie-cli](../cli-samples.md).

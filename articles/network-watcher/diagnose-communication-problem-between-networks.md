@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: In deze zelf studie leert u hoe u een communicatie probleem kunt vaststellen tussen een virtueel Azure-netwerk dat is verbonden met een on-premises of een ander virtueel netwerk, via een virtuele Azure-netwerk gateway, met behulp van de VPN-functie voor diagnostische gegevens van Network Watcher.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: I need to determine why resources in a virtual network can't communicate with resources in a different network.
 ms.service: network-watcher
 ms.devlang: na
@@ -14,14 +12,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: e2ec59cf609fcde79d289e321331ca5018401a5e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419729"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834678"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Zelfstudie: Communicatieproblemen tussen netwerken onderzoeken met Azure Portal
 
@@ -47,13 +45,13 @@ Het script heeft ongeveer een uur nodig om een VPN-gateway te maken. In de overi
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-network-watcher"></a>Network Watcher inschakelen
 
 Als u al een netwerk-watcher hebt ingeschakeld in de regio US - oost, ga dan verder met [Een gateway onderzoeken](#diagnose-a-gateway).
 
-1. Selecteer in de portal de optie **Alle services**. Typ **Network Watcher** in het vak *Filteren*. Selecteer **Network Watcher** in de resultaten.
+1. Selecteer in de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de resultaten.
 2. Selecteer **Regio's** om dit item uit te vouwen en selecteer vervolgens **...** rechts van **US - oost**, zoals wordt weergegeven in de volgende afbeelding:
 
     ![Network Watcher inschakelen](./media/diagnose-communication-problem-between-networks/enable-network-watcher.png)

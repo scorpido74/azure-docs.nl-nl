@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 540e037e83d359dc67cb32f98dec0319bf490707
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381f9f54a95b6d457aa65c7e8ef6abe49fe9eeea
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472980"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765733"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Zelf studie: uitvoer toevoegen aan uw Resource Manager-sjabloon
 
@@ -26,7 +26,7 @@ U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en e
 
 Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json":::
 
 Er wordt een opslag account geïmplementeerd, maar er worden geen gegevens over het opslag account geretourneerd. Mogelijk moet u de eigenschappen van een nieuwe resource vastleggen zodat ze later beschikbaar zijn voor referentie.
 
@@ -36,7 +36,7 @@ U kunt uitvoer gebruiken om waarden te retour neren van de sjabloon. Het kan bij
 
 In het volgende voor beeld wordt de wijziging in de sjabloon gemarkeerd om een uitvoer waarde toe te voegen. Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json?range=1-53&highlight=47-52)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json" range="1-53" highlight="47-52":::
 
 Er zijn enkele belang rijke items die u kunt noteren over de uitvoer waarde die u hebt toegevoegd.
 

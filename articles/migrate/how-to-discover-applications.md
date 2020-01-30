@@ -3,12 +3,12 @@ title: Ontdek apps, functies en onderdelen op on-premises servers met Azure Migr
 description: Meer informatie over het detecteren van apps, functies en onderdelen op on-premises servers met Azure Migrate server-evaluatie.
 ms.topic: article
 ms.date: 11/20/2019
-ms.openlocfilehash: 454d70a53c3ea00a4dc592703c0bc04d5517b97f
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 7c3a6360e051b8cb694393695e75578ce2c135ec
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280761"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846312"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Machine-apps,-functies en-functies detecteren
 
@@ -28,7 +28,7 @@ App-detectie met Azure Migrate: Server evaluatie is zonder agent. Er hoeft niets
 2. Zorg ervoor dat u het hulp programma voor de Azure Migrate: Server evaluatie hebt [toegevoegd](how-to-assess.md) aan een project.
 4. Raadpleeg de [VMware-vereisten](migrate-support-matrix-vmware.md#vmware-requirements) voor het detecteren en beoordelen van virtuele VMware-machines met het Azure migrate apparaat.
 5. Controleer de [vereisten](migrate-appliance.md) voor het implementeren van het Azure migrate apparaat.
-6. [Controleer de ondersteuning en vereisten](/migrate-support-matrix-vmware.md#application-discovery) voor toepassings detectie.
+6. [Controleer de ondersteuning en vereisten](migrate-support-matrix-vmware.md#application-discovery) voor toepassings detectie.
 
 ## <a name="prepare-for-app-discovery"></a>App-detectie voorbereiden
 

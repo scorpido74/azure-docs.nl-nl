@@ -1,39 +1,36 @@
 ---
-title: Inleiding tot IP-stroom controleren in Azure Network Watcher | Microsoft Docs
-description: Deze pagina bevat een overzicht van de Network Watcher-IP-stroom controleren mogelijkheid
+title: Inleiding tot IP-stroom controleren in azure Network Watcher | Microsoft Docs
+description: Op deze pagina vindt u een overzicht van de mogelijkheden van de Network Watcher IP-stroom controle
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: d352fb2d-4b4f-4ac4-9c2e-1cfccf0e7e03
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2017
-ms.author: kumud
-ms.openlocfilehash: 5c34fd2b6d354f594ed153647c1bed700566fad6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 69aca5e0901a0da8aa98fe310ac220898bf650b2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64709590"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845003"
 ---
-# <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Inleiding tot IP-stroom controleren in Azure Network Watcher
+# <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Inleiding tot IP-stroom controleren in azure Network Watcher
 
-IP-stroom wordt gecontroleerd of een pakket wordt toegestaan of verboden vanaf of naar een virtuele machine. De informatie bestaat uit de richting, protocol, lokale IP, externe IP-, lokale poort en externe poort. Als het pakket is geweigerd door een beveiligingsgroep, wordt de naam van de regel die het pakket geweigerd geretourneerd. Terwijl de IP-bron- of doelserver kan worden gekozen, IP-stroom controleren helpt beheerders snel vaststellen van connectiviteitsproblemen met van of naar het internet en van of naar de on-premises omgeving.
+IP-stroom controleert of een pakket wordt toegestaan of geweigerd op een virtuele machine. De informatie bestaat uit richting, protocol, lokaal IP, extern IP-adres, lokale poort en externe poort. Als het pakket wordt geweigerd door een beveiligings groep, wordt de naam van de regel die het pakket heeft geweigerd, geretourneerd. Terwijl elke bron-of doel-IP kan worden gekozen, kunnen beheerders met IP-stroom controleren snel verbindings problemen vaststellen vanuit of naar Internet en van of naar de on-premises omgeving.
 
-IP-stroom controleren ziet op de regels voor alle Netwerkbeveiligingsgroepen (nsg's) toegepast op de netwerkinterface, zoals een subnet of een virtuele machine NIC. Netwerkverkeer wordt vervolgens geverifieerd op basis van de geconfigureerde instellingen naar of van de netwerkinterface. IP-stroom controleren is nuttig bij het bevestigen van als binnenkomende of uitgaande verkeer naar of van een virtuele machine wordt geblokkeerd door een regel in een Netwerkbeveiligingsgroep.
+De IP-stroom controleert de regels voor alle netwerk beveiligings groepen (Nsg's) die worden toegepast op de netwerk interface, zoals een subnet of virtuele-machine-NIC. De verkeers stroom wordt vervolgens geverifieerd op basis van de geconfigureerde instellingen van of naar die netwerk interface. Verificatie van de IP-stroom is handig om te controleren of een regel in een netwerk beveiligings groep binnenkomend of uitgaand verkeer naar of van een virtuele machine blokkeert.
 
-Een exemplaar van Network Watcher moet worden gemaakt in alle regio's die u van plan bent om uit te voeren van IP-stroom controleren. Network Watcher is een regionale service en kan alleen worden uitgevoerd op resources in dezelfde regio. Het exemplaar dat wordt gebruikt, heeft geen invloed op de resultaten van IP-stroom controleren, zoals een route die is gekoppeld aan de NIC of subnet wordt nog steeds worden geretourneerd.
+Er moet een exemplaar van Network Watcher worden gemaakt in alle regio's die u wilt gebruiken om de IP-stroom te controleren. Network Watcher is een regionale service en kan alleen worden uitgevoerd op resources in dezelfde regio. Het gebruikte exemplaar heeft geen invloed op de resultaten van de IP-stroom controle, omdat er nog steeds een route wordt geretourneerd die is gekoppeld aan de NIC of het subnet.
 
 ![1][1]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar het volgende artikel voor meer informatie als een pakket wordt toegestaan of geweigerd voor een specifieke virtuele machine via de portal. [Controleren of verkeer is toegestaan op een virtuele machine met het IP-stroom controleren met behulp van de portal](diagnose-vm-network-traffic-filtering-problem.md)
+Ga naar het volgende artikel voor meer informatie over het toestaan of weigeren van een pakket voor een specifieke virtuele machine via de portal. [Controleren of verkeer is toegestaan op een virtuele machine met IP-stroom controleren met behulp van de portal](diagnose-vm-network-traffic-filtering-problem.md)
 
 [1]: ./media/network-watcher-ip-flow-verify-overview/figure1.png
 

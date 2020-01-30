@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 58df0fe6a598d97e0a9d985052cf3a8c198eb4cc
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 15bf6533106fe826c56b38cfb345c509d6d67966
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541333"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844089"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn Compute-doelen in Azure Machine Learning? 
 
@@ -53,12 +53,12 @@ U kunt Azure Machine Learning Compute instances (preview) of compute clusters ma
 | | Azure Machine Learning Studio | Azure Portal | SDK | Resource Manager-sjabloon | CLI |
 |---| ----- | ----- | ----- | ----- | ----- |
 | Rekeninstantie | ja | ja | ja | ja |  |
-| Rekencluster | ja | ja | ja | ja | ja |
+| Reken cluster | ja | ja | ja | ja | ja |
 
 Wanneer u deze reken resources maakt, worden deze automatisch onderdeel van uw werk ruimte, in tegens telling tot andere soorten Compute-doelen.
 
 > [!NOTE]
-> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**.
+> Reken instanties zijn alleen beschikbaar voor werk ruimten met een **Noord-Centraal VS**, * * VS-Oost 2 * *, **Europa-Noord** of **UK-Zuid**.
 >Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken. 
 
 ### <a name="compute-clusters"></a>Reken clusters

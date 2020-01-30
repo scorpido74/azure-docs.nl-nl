@@ -1,19 +1,19 @@
 ---
 title: Tabelgegevens opvragen in Azure Cosmos DB
 description: Meer informatie over het opvragen van gegevens die zijn opgeslagen in de Azure Cosmos DB Table-API-account met behulp van OData-filters en LINQ-query's
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9502829dcf7b49675b67e05cb923e28f378859d1
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760161"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76770490"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Zelfstudie: Query's uitvoeren in Azure Cosmos DB met behulp van de tabel-API
 

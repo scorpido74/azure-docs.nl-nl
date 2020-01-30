@@ -3,8 +3,7 @@ title: Zelf studie-netwerk communicatie bewaken met behulp van de Azure Portal
 description: In deze zelf studie leert u hoe u netwerk communicatie bewaken tussen twee virtuele machines met de functionaliteit van de verbindings monitor van Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419692"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834651"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Zelfstudie: Netwerkcommunicatie tussen twee virtuele machines bewaken met behulp van de Azure-portal
 
@@ -37,9 +36,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-## <a name="create-vms"></a>VM's maken
+## <a name="create-vms"></a>Virtuele machines maken
 
 Maak twee virtuele machines.
 
@@ -51,7 +50,7 @@ Maak twee virtuele machines.
 
     |Instelling|Waarde|
     |---|---|
-    |Naam|myVm1|
+    |Name|myVm1|
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Abonnement| Selecteer uw abonnement.|
@@ -74,7 +73,7 @@ Voer de stappen in [De eerste virtuele machine maken](#create-the-first-vm) opni
 |Stap|Instelling|Waarde|
 |---|---|---|
 | 1 | Selecteer een versie van **Ubuntu Server** |                                                                         |
-| 3 | Naam                                  | myVm2                                                                   |
+| 3 | Name                                  | myVm2                                                                   |
 | 3 | Verificatietype                   | Plak uw openbare SSH-sleutel of selecteer **Wachtwoord** en voer een wachtwoord in. |
 | 3 | Resourcegroep                        | Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.                 |
 | 6 | Extensies                            | **Network Watcher-agent voor Linux**                                             |
@@ -93,13 +92,13 @@ Maak een verbindingsmonitor om communicatie via TCP-poort 22 van *myVm1* naar *m
 
     | Instelling                  | Waarde               |
     | ---------                | ---------           |
-    | Naam                     | myVm1-myVm2(22)     |
+    | Name                     | myVm1-myVm2(22)     |
     | Bron                   |                     |
     | Virtuele machine          | myVm1               |
-    | Doel              |                     |
+    | Bestemming              |                     |
     | Een virtuele machine selecteren |                     |
     | Virtuele machine          | myVm2               |
-    | Poort                     | 22                  |
+    | Port                     | 22                  |
 
     ![Verbindingsmonitor toevoegen](./media/connection-monitor/add-connection-monitor.png)
 
@@ -152,7 +151,7 @@ Standaard staat Azure communicatie toe over alle poorten tussen virtuele machine
     | Poortbereiken van doel | 22             |
     | Actie                  | Weigeren           |
     | Prioriteit                | 100            |
-    | Naam                    | DenySshInbound |
+    | Name                    | DenySshInbound |
 
 5. Aangezien verbindingsmonitor test met intervallen van 60 seconden, wacht u een paar minuten. Selecteer vervolgens aan de linkerkant van de portal **Network Watcher**, dan **Verbindingsmonitor** en selecteer vervolgens de monitor  **myVm1-myVm2(22)** opnieuw. De resultaten zijn nu anders, zoals u ziet in de volgende afbeelding:
 

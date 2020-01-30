@@ -9,16 +9,18 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 3506399537fe2cb16014ceb3429bce5aeee8cb69
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 39b16c6cfd5b94d412827ed88197edbef2da1453
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100339"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844629"
 ---
 # <a name="persist-state-in-linux"></a>Status persistent in Linux
 
-Onderwerpen en abonnementen die zijn gemaakt in de Event Grid module, worden standaard opgeslagen in het container bestandssysteem. Zonder persistentie, als de module opnieuw wordt geïmplementeerd, worden alle meta gegevens die zijn gemaakt, verloren gegaan. Momenteel worden alleen meta gegevens bewaard. Gebeurtenissen worden opgeslagen in het geheugen. Als Event Grid module opnieuw wordt geïmplementeerd of opnieuw is gestart, gaan alle niet-bezorgde gebeurtenissen verloren.
+Onderwerpen en abonnementen die in de Event Grid module zijn gemaakt, worden standaard opgeslagen in het container bestandssysteem. Zonder persistentie, als de module opnieuw wordt geïmplementeerd, worden alle meta gegevens die zijn gemaakt, verloren gegaan. Als u de gegevens in de implementaties wilt behouden en opnieuw wilt opstarten, moet u de gegevens buiten het bestands systeem van de container bewaren.
+
+Standaard worden alleen meta gegevens persistent gemaakt en gebeurtenissen worden nog steeds in het geheugen opgeslagen voor betere prestaties. Volg de sectie gebeurtenissen persistent maken om ook gebeurtenis persistentie in te scha kelen.
 
 Dit artikel bevat de stappen voor het implementeren van de Event Grid module met persistentie in Linux-implementaties.
 
@@ -61,7 +63,8 @@ De volgende configuratie resulteert bijvoorbeeld in het maken van het volume **e
   ],
   "HostConfig": {
     "Binds": [
-      "egmetadataDbVol:/app/metadataDb"
+      "egmetadataDbVol:/app/metadataDb",
+      "egdataDbVol:/app/eventsDb"
     ],
     "PortBindings": {
       "4438/tcp": [
@@ -74,7 +77,7 @@ De volgende configuratie resulteert bijvoorbeeld in het maken van het volume **e
 }
 ```
 
-U kunt ook een docker-volume maken met behulp van docker client-opdrachten. 
+In plaats van een volume te koppelen, kunt u een map op het hostsysteem maken en die directory koppelen.
 
 ## <a name="persistence-via-host-directory-mount"></a>Persistentie via Host Directory-koppeling
 
@@ -138,7 +141,8 @@ In plaats van een docker-volume hebt u ook de mogelijkheid om een host-map te ko
           ],
           "HostConfig": {
                 "Binds": [
-                  "/myhostdir:/app/metadataDb"
+                  "/myhostdir:/app/metadataDb",
+                  "/myhostdir2:/app/eventsDb"
                 ],
                 "PortBindings": {
                       "4438/tcp": [
@@ -153,3 +157,32 @@ In plaats van een docker-volume hebt u ook de mogelijkheid om een host-map te ko
 
     >[!IMPORTANT]
     >Wijzig het tweede deel van de bindings waarde niet. Deze verwijst naar een specifieke locatie binnen de module. Voor de module Event Grid op Linux moet het **/app/metadata**zijn.
+
+
+## <a name="persist-events"></a>Gebeurtenissen persistent maken
+
+Als u gebeurtenis persistentie wilt inschakelen, moet u eerst meta gegevens persistentie via volume koppeling of host Directory koppelen inschakelen met behulp van de bovenstaande secties.
+
+Belang rijke aandachtspunten voor het aanhouden van persistente gebeurtenissen:
+
+* Het persistent maken van gebeurtenissen wordt ingeschakeld per gebeurtenis abonnement en is een opt-in nadat een volume of map is gekoppeld.
+* Gebeurtenis persistentie wordt tijdens het maken geconfigureerd op een gebeurtenis abonnement en kan niet worden gewijzigd nadat het gebeurtenis abonnement is gemaakt. Als u wilt overschakelen op gebeurtenis persistentie, moet u het gebeurtenis abonnement verwijderen en opnieuw maken.
+* Het persistent maken van gebeurtenissen is bijna altijd langzamer dan in geheugen bewerkingen, maar het snelheids verschil is echter zeer afhankelijk van de kenmerken van het station. De verhouding tussen snelheid en betrouw baarheid is inherent aan alle berichten systemen, maar wordt doorgaans alleen een noticible op grote schaal.
+
+Als u gebeurtenis persistentie wilt inschakelen voor een gebeurtenis abonnement, stelt u `persistencePolicy` in op `true`:
+
+ ```json
+        {
+          "properties": {
+            "persistencePolicy": {
+              "isPersisted": "true"
+            },
+            "destination": {
+              "endpointType": "WebHook",
+              "properties": {
+                "endpointUrl": "<your-webhook-url>"
+              }
+            }
+          }
+        }
+ ```

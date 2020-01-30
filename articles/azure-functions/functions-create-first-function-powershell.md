@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8cc89805ce53c141ff2c012fccb3c01ff2e9db49
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167906"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845903"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Uw eerste Power shell-functie maken in azure
 
@@ -67,36 +67,7 @@ De Azure Functions-projectsjabloon in Visual Studio Code maakt een project dat k
 
 Visual Studio code maakt het Power shell-functie-app-project in een nieuwe werk ruimte. Dit project bevat de configuratie bestanden [host. json](functions-host-json.md) en [Local. settings. json](functions-run-local.md#local-settings-file) , die van toepassing zijn op alle functies in het project. Dit [Power Shell-project](functions-reference-powershell.md#folder-structure) is hetzelfde als een functie-app die wordt uitgevoerd in Azure.
 
-## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
-
-Azure Functions Core Tools integreert met Visual Studio code zodat u een Azure Functions-project lokaal kunt uitvoeren en debuggen.  
-
-1. Als u fouten wilt opsporen in uw functie, voegt u een aanroep naar de cmdlet [`Wait-Debugger`] in de functie code in voordat u de debugger kunt koppelen. Druk vervolgens op F5 om het functie-app-project te starten en de debugger te koppelen. De uitvoer van Core Tools wordt weergegeven in het deelvenster **Terminal**.
-
-1. Kopieer het URL-eindpunt van de door HTTP getriggerde functie in het deelvenster **Terminal**.
-
-    ![Lokale Azure-uitvoer](./media/functions-create-first-function-powershell/functions-vscode-f5.png)
-
-1. Voeg de query reeks `?name=<yourname>` toe aan deze URL en gebruik `Invoke-RestMethod` om de aanvraag uit te voeren, als volgt:
-
-    ```powershell
-    PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
-    Hello PowerShell
-    ```
-
-    U kunt ook de GET-aanvraag uitvoeren vanuit een browser.
-
-    Wanneer u het http trigger-eind punt aanroept zonder een `name` para meter door te geven als query parameter of in de hoofd tekst, retourneert de functie een [http status code]:: onjuiste aanvraag-fout. Wanneer u de code in run. ps1 bekijkt, ziet u dat deze fout wordt veroorzaakt door het ontwerp.
-
-1. Als u wilt stoppen met fouten opsporen, drukt u op Shift + F5.
-
-Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale computer, is het tijd om het project te publiceren in Azure.
-
-> [!NOTE]
-> Vergeet niet alle aanroepen naar `Wait-Debugger` te verwijderen voordat u uw functies naar Azure publiceert. 
->
-> Het maken van een functie-app in azure vraagt alleen om de naam van uw functie-app. Andere waarden worden voor u gedefinieerd.
-> Stel `azureFunctions.advancedCreation` in op `true` moet worden gevraagd om alle andere waarden.
+[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 

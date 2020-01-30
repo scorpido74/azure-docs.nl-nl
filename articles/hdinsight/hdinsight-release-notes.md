@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: 56be45b8d0f8086d9a64811fe715fad967fca33e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/24/2020
+ms.openlocfilehash: 9d484afb1d80ee6b110438cc3ddea1d3d67ad999
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027772"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844680"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
 
@@ -23,7 +23,7 @@ Dit artikel bevat informatie over de **meest recente** updates voor Azure HDInsi
 
 Azure HDInsight is een van de populairste services van zakelijke klanten voor open-source analyses op Azure.
 
-## <a name="release-date-01092019"></a>Release datum: 01/09/2019
+## <a name="release-date-01092020"></a>Release datum: 01/09/2020
 
 Deze release geldt voor HDInsight 3,6 en 4,0. HDInsight-release wordt beschikbaar gesteld voor alle regio's over enkele dagen. De release datum geeft hier de release datum van de eerste regio aan. Als de onderstaande wijzigingen niet worden weer gegeven, wacht u tot de release over enkele dagen in uw regio actief is.
 
@@ -42,7 +42,7 @@ Alle beheerde schijven in HDInsight worden beveiligd met Azure Storage-service v
 ## <a name="deprecation"></a>Afschaffing
 Geen afschaffing van deze release. Zie [aanstaande wijzigingen](#upcoming-changes)voor meer informatie over het voorbereiden van toekomstige afschaffing.
 
-## <a name="behavior-changes"></a>Gedragswijzigingen
+## <a name="behavior-changes"></a>Gedrags wijzigingen
 Er zijn geen gedrags wijzigingen voor deze versie. Zie [aanstaande wijzigingen](#upcoming-changes)voor meer informatie over het voorbereiden van aanstaande wijzigingen.
 
 ## <a name="upcoming-changes"></a>Aanstaande wijzigingen
@@ -65,3 +65,34 @@ HDInsight blijft de betrouw baarheid en prestaties van het cluster verbeteren.
 
 ## <a name="component-version-change"></a>Onderdeel versie wijzigen
 Er is geen wijziging van de onderdeel versie voor deze versie. U vindt hier de huidige onderdeel versies voor HDInsight 4,0 AD HDInsight 3,6.
+
+## <a name="known-issues"></a>Bekende problemen
+
+Vanaf 24 januari 2020 is er sprake van een actief probleem waarin wordt gemeld dat er een fout optreedt wanneer u probeert een Jupyter-notebook te gebruiken. Volg de onderstaande stappen om het probleem op te lossen. U kunt ook dit [MSDN post-bericht](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) of dit [stack overflow-bericht](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) raadplegen voor actuele informatie of aanvullende vragen stellen. Deze pagina wordt bijgewerkt wanneer het probleem is opgelost.
+
+**Bufferoverschrijdingsfouten**
+
+* ValueError: kan geen notitie blok naar V5 converteren omdat deze versie niet bestaat
+* Fout bij laden van notitie blok er is een onbekende fout opgetreden tijdens het laden van dit notitie blok. Deze versie kan notebook-indelingen v4 of eerder laden
+
+**Oorzaak** 
+
+Het bestand _version. py op het cluster is bijgewerkt naar 5. x. x in plaats van 4.4. x. # #.
+
+**Oplossing**
+
+Als u een nieuw Jupyter-notebook maakt en een van de hierboven vermelde fouten ontvangt, voert u de volgende stappen uit om het probleem op te lossen.
+
+1. Open Ambari in een webbrowser door naar https://CLUSTERNAME.azurehdinsight.net te gaan, waarbij CLUSTERNAME de naam van uw cluster is.
+1. Klik in Ambari in het menu links op **Jupyter**en vervolgens op **service acties**op **stoppen**.
+1. SSH in het cluster hoofd knooppunt waarop de Jupyter-service wordt uitgevoerd.
+1. Open het volgende bestand/usr/bin/Anaconda/lib/python2.7/site-packages/nbformat/_version. py in de sudo-modus.
+1. De bestaande vermelding moet er ongeveer uitzien als de volgende code: 
+
+    version_info = (5, 0, 3)
+
+    Wijzig de vermelding in: 
+    
+    version_info = (4, 4, 0)
+1. Sla het bestand op.
+1. Ga terug naar Ambari en klik in **service acties**op **alle opnieuw opstarten**.

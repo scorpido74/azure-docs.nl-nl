@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: In dit artikel wordt beschreven hoe u Azure Network Watcher en open source-hulpprogram ma's gebruikt voor het detecteren van inbreuk op het netwerk
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
@@ -14,19 +12,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 8a0b4ff4fc985355d8dc76f2f3fd7fb35da55ec0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 781f3788c9001276315a2baed7060450fa00d77a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275923"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845020"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Detectie van binnendringing van het netwerk met Network Watcher en open source-hulpprogram ma's uitvoeren
 
 Pakket opnames zijn een belang rijk onderdeel voor het implementeren van indringings detectie systemen (ID'S) voor netwerk beveiliging en het uitvoeren van netwerk beveiligings bewaking (NSM). Er zijn verschillende open source-id-hulpprogram ma's die pakket opnames verwerken en zoeken naar hand tekeningen van mogelijke netwerk indringers en schadelijke activiteiten. Met behulp van de pakket opnames van Network Watcher, kunt u uw netwerk analyseren op schadelijke indringers of beveiligings problemen.
 
-Een dergelijk open source-hulp programma is Suricata, een id-engine die gebruikmaakt van rules om netwerk verkeer te bewaken en waarschuwingen te activeren wanneer er verdachte gebeurtenissen optreden. Suricata biedt een multi thread-engine, wat betekent dat IT netwerk verkeer analyse kan uitvoeren met verhoogde snelheid en efficiëntie. Ga naar de website van https://suricata-ids.org/voor meer informatie over Suricata en de mogelijkheden ervan.
+Een dergelijk open source-hulp programma is Suricata, een id-engine die gebruikmaakt van rules om netwerk verkeer te bewaken en waarschuwingen te activeren wanneer er verdachte gebeurtenissen optreden. Suricata biedt een multi thread-engine, wat betekent dat IT netwerk verkeer analyse kan uitvoeren met verhoogde snelheid en efficiëntie. Ga naar de website van https://suricata-ids.org/ voor meer informatie over Suricata en de mogelijkheden ervan.
 
 ## <a name="scenario"></a>Scenario
 

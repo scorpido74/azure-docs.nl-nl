@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8656bbb070e2b05a06ea22dd1634a40182b440cb
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098678"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844582"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge-module implementeren
 
@@ -33,15 +33,17 @@ Er zijn verschillende manieren om modules op een IoT Edge apparaat te implemente
 1. Klik op de ID van het doel apparaat in de lijst met apparaten
 1. Selecteer **Modules instellen**. Laat de pagina geopend. U gaat verder met de stappen in de volgende sectie.
 
-### <a name="configure-a-deployment-manifest"></a>Een implementatie manifest configureren
+### <a name="configure-a-deployment-manifest"></a>Een manifest van de implementatie configureren
 
-Een implementatie manifest is een JSON-document waarin wordt beschreven welke modules moeten worden geïmplementeerd, hoe gegevens stromen tussen de modules en gewenste eigenschappen van de module apparaatdubbels. De Azure Portal bevat een wizard die u helpt bij het maken van een implementatie manifest, in plaats van het JSON-document hand matig te bouwen.  Er zijn drie stappen: **modules toevoegen**, **routes opgeven**en de **implementatie controleren**.
+Het manifest voor een implementatie is een JSON-document waarin wordt beschreven welke modules te implementeren, hoe gegevens stromen tussen de modules, en de gewenste eigenschappen van de moduledubbels. De Azure Portal bevat een wizard die u helpt bij het maken van een implementatie manifest, in plaats van het JSON-document hand matig te bouwen.  Er drie stappen: **modules toevoegen**, **routes opgeven**, en **implementatie bekijken**.
 
 ### <a name="add-modules"></a>Modules toevoegen
 
 1. Selecteer in de sectie **implementatie modules** de optie **toevoegen**
 1. Selecteer **IOT Edge module** uit de typen modules in de vervolg keuzelijst.
 1. Geef de naam, de afbeelding en de opties voor het maken van de container van de container op:
+
+[!INCLUDE [event-grid-edge-module-version-update](event-grid-edge-module-version-update.md)]
 
    * **Naam**: eventgridmodule
    * **Afbeeldings-URI**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
@@ -50,8 +52,8 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth:clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -76,10 +78,10 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
 
  Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sectie beoordeling
 
-### <a name="review-deployment"></a>Implementatie controleren
+### <a name="review-deployment"></a>Implementatie bekijken
 
-1. In het gedeelte beoordeling ziet u het JSON-implementatie manifest dat is gemaakt op basis van uw selecties in de vorige twee secties. Controleer of de twee modules in de lijst worden weer geven: **$edgeAgent** en **$edgeHub**. Deze twee modules vormen de IoT Edge runtime en zijn de standaard instellingen voor elke implementatie.
-1. Controleer uw implementatie gegevens en selecteer vervolgens **verzenden**.
+1. De revisie sectie ziet u de JSON-implementatie manifest dat is gemaakt op basis van uw selecties in de vorige twee secties. Controleer of de twee modules in de lijst worden weer geven: **$edgeAgent** en **$edgeHub**. Deze twee modules vormen de IoT Edge runtime en zijn de standaard instellingen voor elke implementatie.
+1. Lees de informatie van uw implementatie, en selecteer vervolgens **indienen**.
 
 ### <a name="verify-your-deployment"></a>Uw implementatie verifiëren
 

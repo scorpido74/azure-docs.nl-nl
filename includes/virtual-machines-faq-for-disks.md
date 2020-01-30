@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359904"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887613"
 ---
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
@@ -145,31 +145,23 @@ Installatie kopieën van de eerste generatie kunnen alleen gebruikmaken van GPT-
 
 Moment opnamen van Premium-SSD, Standard SSD en Standard HDD-ondersteuning. Voor deze drie schijf typen worden moment opnamen ondersteund voor alle schijf grootten (inclusief schijven tot 32 TiB groot). Ultra disks bieden geen ondersteuning voor moment opnamen.
 
-### <a name="disk-reservation"></a>Schijf reservering
+**Wat zijn Azure Disk reservation?**
+Schijf reservering is de mogelijkheid om één jaar aan schijf ruimte te kopen, zodat u de totale kosten kunt verlagen. Zie ons artikel over het onderwerp: [begrijpen hoe uw reserverings korting wordt toegepast op de Azure-schijf](../articles/cost-management-billing/reservations/understand-disk-reservations.md)voor meer informatie over Azure Disk Reservations.
 
-**Wat is Azure Disk reservation?**
-Schijf reservering is de mogelijkheid om één jaar aan schijf ruimte te kopen, zodat u de totale kosten kunt verlagen.
+**Welke opties biedt Azure Disk reservation-aanbieding?** Azure Disk reservation biedt de mogelijkheid om Premium-Ssd's te kopen in de opgegeven Sku's van P30 (1 TiB) tot P80 (32 TiB) voor een periode van één jaar. Er is geen beperking voor de minimale hoeveelheid schijven die nodig is om een schijf reservering te kopen. Daarnaast kunt u ervoor kiezen om in één keer alles vooruit te betalen of om maandelijkse betalingen te doen. Er zijn geen aanvullende transactie kosten toegepast voor Premium-SSD Managed Disks. 
 
-**Welke opties biedt Azure Disk reservation-aanbieding?**
-Azure Disk reservation biedt de mogelijkheid om Premium-Ssd's te kopen in de opgegeven Sku's van P30 (1 TiB) tot P80 (32 TiB) voor een periode van één jaar. Er is geen beperking voor de minimale hoeveelheid schijven die nodig is om een schijf reservering te kopen. Daarnaast kunt u ervoor kiezen om in één keer alles vooruit te betalen of om maandelijkse betalingen te doen. Er zijn geen aanvullende transactie kosten toegepast voor Premium-SSD Managed Disks.
+Reserve ringen worden gemaakt in de vorm van schijven, niet op capaciteit. Met andere woorden, wanneer u een P80-schijf (32 TiB) reserveert, krijgt u één P80-schijf, kunt u die specifieke reserve ring niet delen in twee kleinere P70 (16 TiB)-schijven. U kunt natuurlijk zo veel of zo weinig schijven reserveren als u wilt, met inbegrip van twee afzonderlijke P70 (16 TiB)-schijven.
 
-Reserve ringen worden gemaakt in de vorm van schijven, niet op capaciteit. Met andere woorden, wanneer u een P80-schijf (32 TiB) reserveert, krijgt u één P80 schijf, kunt u die specifieke reserve ring niet divvy tot twee kleinere P70-schijven (16 TiB). U kunt natuurlijk zo veel of zo weinig schijven reserveren als u wilt, met inbegrip van twee afzonderlijke P70 (16 TiB)-schijven.
+**Hoe wordt Azure Disk reservation toegepast?**  
+Schijf reservering volgt een model dat vergelijkbaar is met gereserveerde VM-exemplaren (Virtual Machine). Het verschil is dat een schijf reservering niet kan worden toegepast op verschillende Sku's, terwijl een VM-instantie dat kan. Zie [kosten besparen met Azure reserved VM instances](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) voor meer informatie over VM-exemplaren.    
 
-**Hoe worden er kosten in rekening gebracht voor Azure Disk reservation?**
-- Voor Enterprise Agreement (EA)-klanten wordt de monetaire toezeg ging van Azure voor het eerst gebruikt voor het kopen van Azure Disk-reserve ringen. In scenario's waarin EA-klanten al hun monetaire toezeg gingen hebben gebruikt, kunnen er nog steeds schijf reserveringen worden gekocht. deze aankopen worden gefactureerd voor de enkele, vooraf betaalde betaling op de volgende overschrijding factuur.
+**Kan ik mijn gegevensopslag gebruiken die via een Azure-schijf reservering is aangeschaft in meerdere regio's?**     
+Azure Disk-reserve ringen worden aangeschaft voor een specifieke regio en SKU (zoals P30 in VS-Oost 2) en kunnen daarom niet buiten deze constructs worden gebruikt. U kunt altijd een extra reserve ring voor Azure-schijven aanschaffen voor uw schijf opslag behoeften in andere regio's of Sku's. 
 
-- Voor klanten die via Azure.com kopen, worden op het moment van de aankoop de credit card in rekening gebracht voor de volledige betaling vooraf (of maandelijks vaste betalingen) van de reserve ring van Azure-schijven.
-
-**Hoe wordt Azure Disk reservation toegepast?**
-Schijf reservering volgt een model dat vergelijkbaar is met gereserveerde VM-exemplaren (Virtual Machine). Het verschil is dat een schijf reservering niet kan worden toegepast op verschillende Sku's, terwijl een VM-instantie dat kan. Zie [kosten besparen met Azure reserved VM instances](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) voor meer informatie over VM-exemplaren. 
-
-**Kan ik mijn gegevensopslag gebruiken die via een Azure-schijf reservering is aangeschaft in meerdere regio's?**
-Azure Disk-reserve ringen worden aangeschaft voor een specifieke regio en SKU (zoals P30 in VS-Oost 2) en kunnen daarom niet buiten deze constructs worden gebruikt. U kunt altijd een extra reserve ring voor Azure-schijven aanschaffen voor uw schijf opslag behoeften in andere regio's of Sku's.
-
-**Wat gebeurt er wanneer mijn Azure disks-reserve ring verloopt?**
+**Wat gebeurt er wanneer mijn Azure disks-reserve ring verloopt?**    
 U ontvangt een e-mail melding van 30 dagen vóór de verval datum en opnieuw op het verloop van de gegevens. Zodra de reserve ring verloopt, blijven geïmplementeerde schijven actief en wordt de laatste betalen naar gebruik- [tarieven](https://azure.microsoft.com/pricing/details/managed-disks/)in rekening gebracht.
 
-## <a name="ultra-disks"></a>Ultraschijven
+## <a name="ultra-disks"></a>Ultra schijven
 
 **Hoe stel ik mijn Ultra Disk-door Voer in op?**
 Als u niet zeker weet wat uw schijf doorvoer moet instellen, raden we u aan om te beginnen met een i/o-grootte van 16 KiB en de prestaties van daar aan te passen terwijl u uw toepassing bewaakt. De formule is: door Voer in MBps = aantal IOPS * 16/1000.

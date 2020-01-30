@@ -4,18 +4,23 @@ description: Een virtuele machine beheren met inventarisverzameling
 services: automation
 ms.subservice: change-inventory-management
 keywords: inventaris, automation, wijziging, bijhouden
-ms.date: 02/06/2019
+ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5ac5cb1b1f02ea1e8b7eccb65fba978c99cc4f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75419813"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844816"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Een virtuele Azure-machine met inventarisverzameling beheren
 
-U kunt Inventaris bijhouden voor een virtuele Azure-machine inschakelen vanaf de resourcepagina van de computer. U kunt inventarisgegevens verzamelen en weergeven voor software, bestanden, Linux-daemons, Windows-services en Windows-registersleutels op uw computers. Deze methode biedt een gebruikersinterface op basis van een browser voor het instellen en configureren van een inventarisverzameling.
+U kunt Inventaris bijhouden voor een virtuele Azure-machine inschakelen vanaf de resourcepagina van de computer. U kunt de volgende inventaris gegevens verzamelen en weer geven op uw computers:
+
+- Windows-software (Windows-toepassingen en Windows-updates), services, bestanden en register sleutels
+- Linux-software (pakketten) daemons en bestanden
+
+Deze methode biedt een gebruikersinterface op basis van een browser voor het instellen en configureren van een inventarisverzameling.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -101,7 +106,7 @@ Als u een computer groep selecteert in de lijst, wordt de pagina computer groepe
 
 Klik op de knop **+ kloon** om de computer groep te klonen. Hier moet u de groep een nieuwe naam en alias geven voor de groep. De definitie kan op dit moment worden gewijzigd. Nadat u de query hebt gewijzigd, klikt u op **query valideren** om een voor beeld te bekijken van de computers die zouden worden geselecteerd. Wanneer u tevreden bent met de groep, klikt u op **maken** om de computer groep te maken
 
-Als u een nieuwe machine groep wilt maken, selecteert u **+ een machine groep maken**. Met deze knop opent u de **pagina een machine groep maken** , waar u de nieuwe groep kunt definiëren. Klik op **Maken** om de groep te maken.
+Als u een nieuwe machine groep wilt maken, selecteert u **+ een machine groep maken**. Met deze knop opent u de **pagina een machine groep maken** , waar u de nieuwe groep kunt definiëren. Klik op **maken** om de groep te maken.
 
 ![Nieuwe computer groep maken](./media/automation-vm-inventory/create-new-group.png)
 

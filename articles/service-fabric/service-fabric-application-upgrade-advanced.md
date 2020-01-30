@@ -2,21 +2,87 @@
 title: Geavanceerde onderwerpen over toepassings upgrades
 description: In dit artikel vindt u een aantal geavanceerde onderwerpen met betrekking tot het bijwerken van een Service Fabric-toepassing.
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: bd95d651e02cb61bcbe7a108db92afce8b5484bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 1/28/2020
+ms.openlocfilehash: 09f3fdf1f26a13c6722eb039e132256f33be38ff
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457525"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845424"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric toepassings upgrade: geavanceerde onderwerpen
-## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>Toevoegen of verwijderen van service typen tijdens een toepassings upgrade
+
+## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>Service typen toevoegen of verwijderen tijdens een toepassings upgrade
+
 Als een nieuw service type wordt toegevoegd aan een gepubliceerde toepassing als onderdeel van een upgrade, wordt het nieuwe service type toegevoegd aan de geïmplementeerde toepassing. Een dergelijke upgrade heeft geen invloed op een van de service-exemplaren die al deel uitmaken van de toepassing, maar er moet een exemplaar van het toegevoegde service type worden gemaakt voor het nieuwe service type om actief te zijn (Zie [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
 
 Daarnaast kunnen service typen uit een toepassing worden verwijderd als onderdeel van een upgrade. Alle service-exemplaren van het Service type to-to-remove moeten worden verwijderd voordat u kunt door gaan met de upgrade (Zie [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
 
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Voor komen dat de verbinding wordt verbroken tijdens stateless service geplande uitval tijd (preview-versie)
+
+Voor geplande storingen in stateless instanties, zoals het bijwerken van de toepassing/cluster of het deactiveren van een knoop punt, kunnen verbindingen worden verbroken omdat het blootgestelde eind punt wordt verwijderd nadat het is uitgeschakeld.
+
+Als u dit wilt voor komen, configureert u de *RequestDrain* (preview-functie) door een vertraging voor het sluiten van een replica- *exemplaar* in de service configuratie toe te voegen. Dit zorgt ervoor dat het eind punt dat door het stateless exemplaar wordt geadverteerd, wordt verwijderd *voordat* de vertragings timer wordt gestart voor het sluiten van het exemplaar. Deze vertraging maakt het mogelijk om bestaande aanvragen op de juiste wijze af te zuigen voordat het exemplaar wordt uitgeschakeld. Clients worden op de hoogte gesteld van de wijziging van het eind punt door de call back-functie, zodat ze het eind punt opnieuw kunnen oplossen en voor komen dat nieuwe aanvragen naar het exemplaar worden verzonden.
+
+### <a name="service-configuration"></a>Service configuratie
+
+Er zijn verschillende manieren om de vertraging aan de kant van de service te configureren.
+
+ * Geef **bij het maken van een nieuwe service**een `-InstanceCloseDelayDuration`op:
+
+    ```powershell
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    ```
+
+ * Wijs **tijdens het definiëren van de service in het gedeelte standaard instellingen in het manifest van de toepassing**de eigenschap `InstanceCloseDelayDurationSeconds` toe:
+
+    ```xml
+          <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
+              <SingletonPartition />
+          </StatelessService>
+    ```
+
+ * **Als u een bestaande service bijwerkt**, geeft u een `-InstanceCloseDelayDuration`op:
+
+    ```powershell
+    Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
+    ```
+
+### <a name="client-configuration"></a>Clientconfiguratie
+
+Als u een melding wilt ontvangen wanneer een eind punt is gewijzigd, kunnen clients een call back (`ServiceManager_ServiceNotificationFilterMatched`) als volgt registreren: 
+
+```csharp
+    var filterDescription = new ServiceNotificationFilterDescription
+    {
+        Name = new Uri(serviceName),
+        MatchNamePrefix = true
+    };
+    fbClient.ServiceManager.ServiceNotificationFilterMatched += ServiceManager_ServiceNotificationFilterMatched;
+    await fbClient.ServiceManager.RegisterServiceNotificationFilterAsync(filterDescription);
+
+private static void ServiceManager_ServiceNotificationFilterMatched(object sender, EventArgs e)
+{
+      // Resolve service to get a new endpoint list
+}
+```
+
+De wijzigings melding geeft aan dat de eind punten zijn gewijzigd. de client moet de eind punten opnieuw omzetten en de eind punten die niet meer worden geadverteerd, niet gebruiken omdat ze binnenkort uitkomen.
+
+### <a name="optional-upgrade-overrides"></a>Optionele upgrade onderdrukkingen
+
+Naast het instellen van de standaard vertragings duur per service, kunt u ook de vertraging tijdens de upgrade van de toepassing/het cluster overschrijven met dezelfde (`InstanceCloseDelayDurationSec`) optie:
+
+```powershell
+Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
+
+Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
+```
+
+De vertragings duur is alleen van toepassing op het aangeroepen upgrade-exemplaar en wijzigt de afzonderlijke service vertragings configuraties niet. U kunt dit bijvoorbeeld gebruiken om een vertraging van `0` op te geven om vooraf geconfigureerde upgrade vertragingen over te slaan.
+
 ## <a name="manual-upgrade-mode"></a>Modus hand matig bijwerken
+
 > [!NOTE]
 > De *bewaakte* upgrade modus wordt aanbevolen voor alle service Fabric upgrades.
 > De *UnmonitoredManual* -upgrade modus mag alleen worden overwogen voor mislukte of onderbroken upgrades. 
@@ -30,6 +96,7 @@ In de *UnmonitoredManual* -modus heeft de toepassings beheerder de volledige con
 Ten slotte is de *UnmonitoredAuto* -modus handig voor het uitvoeren van snelle upgrade iteraties tijdens service ontwikkeling of tests, omdat er geen gebruikers invoer is vereist en er geen beleids regels voor de status van de toepassing worden geëvalueerd.
 
 ## <a name="upgrade-with-a-diff-package"></a>Upgrade uitvoeren met een diff-pakket
+
 In plaats van een volledig toepassings pakket in te richten, kunnen ook upgrades worden uitgevoerd door diff-pakketten in te richten die alleen de bijgewerkte code/config/data-pakketten bevatten, samen met het volledige toepassings manifest en de service manifesten te volt ooien. Volledige toepassings pakketten zijn alleen vereist voor de eerste installatie van een toepassing naar het cluster. Volgende upgrades kunnen van toepassing zijn: volledige toepassings pakketten of diff-pakketten.  
 
 Verwijzingen in het manifest van de toepassing of service manifesten van een diff-pakket dat niet kan worden gevonden in het toepassings pakket, worden automatisch vervangen door de momenteel ingerichte versie.
@@ -113,7 +180,7 @@ HealthState            : Ok
 ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAfter" }
 ```
 
-## <a name="rolling-back-application-upgrades"></a>Upgrades van toepassingen terugdraaien
+## <a name="roll-back-application-upgrades"></a>Upgrades van toepassingen terugdraaien
 
 Hoewel upgrades kunnen worden doorgevoerd in een van de drie modi (*bewaakt*, *UnmonitoredAuto*of *UnmonitoredManual*), kunnen ze alleen worden teruggedraaid in de modus *UnmonitoredAuto* of *UnmonitoredManual* . Terugdraaien in de *UnmonitoredAuto* -modus werkt op dezelfde manier als met de uitzonde ring dat de standaard waarde van *UpgradeReplicaSetCheckTimeout* verschilt-Zie [para meters](service-fabric-application-upgrade-parameters.md)voor de upgrade van de toepassing. Terugdraaien in de *UnmonitoredManual* -modus werkt op dezelfde manier als vooruit draaien: de terugdraai actie wordt na elke UD onderbroken en moet expliciet worden hervat met behulp van [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) om door te gaan met het terugdraaien.
 

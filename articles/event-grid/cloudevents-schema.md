@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: e7cddf95a6537e5799acc523effb484c2249453d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548047"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844731"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>CloudEvents v 1.0-schema gebruiken met Event Grid
 
@@ -73,7 +73,6 @@ U kunt Event Grid gebruiken voor zowel invoer als uitvoer van gebeurtenissen in 
 |--------------------|---------------------
 | CloudEvents-indeling | CloudEvents-indeling
 | Event Grid indeling  | CloudEvents-indeling
-| CloudEvents-indeling | Event Grid indeling
 | Event Grid indeling  | Event Grid indeling
 
 Voor alle gebeurtenis schema's moet Event Grid worden gevalideerd bij het publiceren naar een event grid-onderwerp en bij het maken van een gebeurtenis abonnement. Zie voor meer informatie, [Event Grid-beveiliging en verificatie](security-authentication.md).
@@ -109,8 +108,6 @@ New-AzureRmEventGridTopic `
   -Name <topic_name> `
   -InputSchema CloudEventSchemaV1_0
 ```
-
-De huidige versie van CloudEvents biedt geen ondersteuning voor batch verwerking van gebeurtenissen. Als u gebeurtenissen met een CloudEvent-schema naar een onderwerp wilt publiceren, moet u elke gebeurtenis afzonderlijk publiceren.
 
 ### <a name="output-schema"></a>Uitvoer schema
 

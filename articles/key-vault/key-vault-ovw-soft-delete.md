@@ -6,12 +6,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 89b7dc639a3140f17a62087c5ba0d05fb6df4d7f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 26bd6c8b31bd16c058c5cb35cab086117b9f8cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883128"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845814"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Overzicht van Azure Key Vault voorlopig verwijderen
 
@@ -36,13 +36,21 @@ Azure-sleutel kluizen zijn bijgehouden resources die worden beheerd door Azure R
 
 Met deze functie is de Verwijder bewerking voor een sleutel kluis of een sleutel kluis object een tijdelijke verwijdering, waardoor de resources voor een bepaalde Bewaar periode (90 dagen) in feite worden bewaard, terwijl de weer gave van het object wordt verwijderd. De service biedt verder een mechanisme voor het herstellen van het verwijderde object, waardoor het verwijderen in feite ongedaan wordt. 
 
-Zacht verwijderen is een optioneel Key Vault gedrag en is **standaard niet ingeschakeld** in deze release. Deze kan worden ingeschakeld via [cli](key-vault-soft-delete-cli.md) of [Power shell](key-vault-soft-delete-powershell.md).
+Voorlopig verwijderen is nu standaard ingeschakeld voor nieuwe sleutel kluizen. Het kan worden uitgeschakeld via de [Azure cli](key-vault-soft-delete-cli.md) of [Azure Power shell](key-vault-soft-delete-powershell.md).
+
+De standaard retentie periode is 90 dagen, maar het is mogelijk om het interval voor het Bewaar beleid in te stellen op een waarde van 7 tot 90 dagen via de Azure Portal. Het retentie beleid voor het leegmaken van de beveiliging gebruikt hetzelfde interval. 
+
+Wanneer het voorlopig verwijderen is ingesteld op een sleutel kluis, kan het niet worden uitgeschakeld en kan het interval voor het Bewaar beleid niet worden gewijzigd. 
+
+U kunt de naam van een sleutel kluis die zacht is verwijderd, niet opnieuw gebruiken totdat de Bewaar periode is verstreken. 
 
 ### <a name="purge-protection"></a>Beveiliging opschonen 
 
-Wanneer het leegmaken van de beveiliging is ingeschakeld, kan een kluis of een object in de verwijderde status pas worden verwijderd nadat de Bewaar periode van 90 dagen is verstreken. Deze kluizen en objecten kunnen nog steeds worden hersteld, waardoor klanten er zeker van zijn dat het Bewaar beleid wordt gevolgd. 
-
 Het opschonen van de beveiliging is een optioneel Key Vault gedrag en is **standaard niet ingeschakeld**. Deze kan worden ingeschakeld via [cli](key-vault-soft-delete-cli.md#enabling-purge-protection) of [Power shell](key-vault-soft-delete-powershell.md#enabling-purge-protection).
+
+Wanneer het leegmaken van de beveiliging is ingeschakeld, kan een kluis of een object in de verwijderde status pas worden verwijderd nadat de Bewaar periode is verstreken. Voorlopig verwijderde kluizen en objecten kunnen nog steeds worden hersteld, zodat het Bewaar beleid wordt gevolgd. 
+
+De standaard retentie periode is 90 dagen, maar het is mogelijk om het interval voor het Bewaar beleid in te stellen op een waarde van 7 tot 90 dagen via de Azure Portal. Zodra het interval voor het Bewaar beleid is ingesteld en opgeslagen, kan het niet meer worden gewijzigd voor die kluis. 
 
 ### <a name="permitted-purge"></a>Toegestaan opschonen
 

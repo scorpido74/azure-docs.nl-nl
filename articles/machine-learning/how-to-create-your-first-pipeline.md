@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5b2fa550029c35ca989d6746254298cf1e92992d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 01ab09383a29db38d2ce8c7c513bed76aafcc44a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75764572"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845941"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>machine learning-pijp lijnen maken en uitvoeren met Azure Machine Learning SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begin
 * [Configureer uw ontwikkel omgeving](how-to-configure-environment.md) om de Azure machine learning SDK te installeren, of gebruik een [Azure machine learning reken instantie (preview)](concept-compute-instance.md) met de SDK al geïnstalleerd.
 
 > [!NOTE]
-> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**.
+> Reken instanties zijn alleen beschikbaar voor werk ruimten met een **Noord-Centraal VS**, * * VS-Oost 2 * *, **Europa-Noord** of **UK-Zuid**.
 >Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken. 
 
 Begin met het koppelen van uw werk ruimte:

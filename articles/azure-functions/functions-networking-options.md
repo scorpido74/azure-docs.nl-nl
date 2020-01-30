@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 1a9c058e590e5df9ab9ec82d900e22f7154d00a0
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 79c27d252136281249c217f51019e53987922334
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561929"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846449"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions-netwerk opties
 
@@ -91,7 +91,7 @@ Er zijn enkele dingen die de integratie van virtuele netwerken niet ondersteunt,
 
 * Koppelen van een schijf
 * Active Directory-integratie
-* NetBIOS
+* Naamgeving
 
 Virtuele netwerk integratie in Azure Functions gebruikt een gedeelde infra structuur met App Service web-apps. Zie voor meer informatie over de twee typen integratie van virtuele netwerken:
 
@@ -136,7 +136,7 @@ Wanneer u in een Premium-abonnement wordt uitgevoerd, kunt u niet-HTTP-activerin
 U kunt ook virtuele netwerk triggers inschakelen met behulp van de volgende Azure CLI-opdracht:
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set properties.functionsRuntimeScaleMonitoringEnabled=1
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
 
 Virtuele netwerk triggers worden ondersteund in versie 2. x en hoger van de functions-runtime. De volgende niet-HTTP-trigger typen worden ondersteund.

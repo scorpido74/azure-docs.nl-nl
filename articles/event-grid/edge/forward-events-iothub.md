@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098688"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844697"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Zelf studie: gebeurtenissen door sturen naar IoTHub
 
@@ -81,6 +81,8 @@ Als uitgever van een gebeurtenis moet u een event grid-onderwerp maken. Het onde
 ## <a name="create-event-subscription"></a>Gebeurtenis abonnement maken
 
 Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp worden gepubliceerd. Als u een gebeurtenis wilt ontvangen, moet u een event grid-abonnement maken op een onderwerp van belang.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Maak subscription4. json met de onderstaande inhoud. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
 
@@ -212,3 +214,4 @@ In deze zelf studie hebt u een event grid-onderwerp, Edge hub-abonnement en gepu
 * Persistentie van Event Grid module instellen in [Linux](persist-state-linux.md) of [Windows](persist-state-windows.md)
 * Volg de [documentatie](configure-client-auth.md) voor het configureren van client verificatie
 * Door sturen van gebeurtenissen naar Azure Event Grid in de Cloud door deze [zelf studie](forward-events-event-grid-cloud.md) te volgen
+* [Onderwerpen en abonnementen bewaken aan de rand](monitor-topics-subscriptions.md)

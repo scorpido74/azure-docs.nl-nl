@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3a87475146e2b23c4a824e568ea3da33e1f4abf0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3a52d906d958fdfd1d7e09c6229b12af3204bc52
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512943"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846381"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Gebeurtenis bronnen in Azure Event Grid
 
@@ -132,6 +132,9 @@ Abonneer u op Service Bus gebeurtenissen om te reageren op berichten zonder acti
 ## <a name="storage"></a>Storage
 
 Abonneer u op Blob Storage-gebeurtenissen om te reageren op gemaakte blobs en verwijderde gebeurtenissen.
+
+>[!NOTE]
+> Alleen opslag accounts van het type **StorageV2 (algemeen gebruik v2)** en **BlobStorage** ondersteunings gebeurtenis integratie. **Storage (Genral doel v1)** biedt *geen* ondersteuning voor integratie met Event grid.
 
 |Titel  |Beschrijving  |
 |---------|---------|

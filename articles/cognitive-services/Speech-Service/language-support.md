@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 01/28/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 34d362a4b28ade5116c68e2243a2341bab9fca9d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 008f0b1b83e8ba856fae2fe40b026dcc645e46ab
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760620"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845329"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Taal-en regio ondersteuning voor de spraak service
 
@@ -72,7 +72,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 `ta-IN` | Tamil (India) | Ja | Taal model
 `te-IN` | Telugu (India) | Ja | Nee
 `th-TH` | Thai (Thailand) | Ja | Nee
-`tr-TR` | Turkije | Ja | Nee
+`tr-TR` | Turks (Turkije) | Ja | Nee
 `zh-CN` | Chinees (Mandarijn, vereenvoudigd) | Ja | Akoestische model<br>Taal model
 `zh-HK` | Chinees (Kantonees, traditioneel) | Ja | Taal model
 `zh-TW` | Chinees (Taiwan Mandarijn) | Ja | Taal model
@@ -111,7 +111,7 @@ Meer dan 75 standaard stemmen zijn beschikbaar in meer dan 45 talen en land inst
 
 Landinstelling | Taal | Geslacht | Volledige toewijzing van service naam | Korte naam
 -------|----------|---------|----------|----------
-<sup>**1**</sup>`ar-EG` | Arabisch (Egypte) | Vrouw | "Microsoft Server spraak tekst en spraak spraak (ar-bijvoorbeeld Hoda)" | "ar-EG-Hoda"
+<sup>1</sup>`ar-EG` | Arabisch (Egypte) | Vrouw | "Microsoft Server spraak tekst en spraak spraak (ar-bijvoorbeeld Hoda)" | "ar-EG-Hoda"
 `ar-SA` | Arabisch (Saoedi-Arabië) | Man | "Microsoft Server spraak tekst en spraak, spraak (ar-SA, Naayf)" | "ar-SA-Naayf"
 `bg-BG` | Bulgaars | Man | "Microsoft Server tekst naar spraak stem (bg-BG, Ivan)" | "bg-BG-Ivan"
 `ca-ES` | Catalaans | Vrouw | "Microsoft Server tekst naar spraak stem (ca-ES, HerenaRUS)" | "ca-ES-HerenaRUS"
@@ -181,7 +181,7 @@ Landinstelling | Taal | Geslacht | Volledige toewijzing van service naam | Korte
 `ta-IN` | Tamil (India) | Man | "Microsoft Server spraak tekst en spraak, spraak (ta-IN, Valluvar)" | "TA-IN-Valluvar"
 `te-IN` | Telugu (India) | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (te-IN, Chitra)" | "te-IN-Chitra"
 `th-TH` | Thais | Man | "Microsoft Server tekst naar spraak stem (th-TH, Pattara)" | ' th-do-Pattara '
-`tr-TR` | Turks | Vrouw | "Microsoft Server tekst naar spraak stem (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
+`tr-TR` | Turks (Turkije) | Vrouw | "Microsoft Server tekst naar spraak stem (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
 `vi-VN` | Vietnamees | Man | "Microsoft Server-stem tekst naar spraak (vi-VN, een)" | "VI-VN-a"
 `zh-CN` | Chinees (vasteland) | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (zh-CN, HuihuiRUS)" | "zh-CN-HuihuiRUS"
 | | | Vrouw | "Microsoft Server spraak tekst en spraak, spraak (zh-CN, Yaoyao, Apollo)" | "zh-CN-Yaoyao-Apollo"

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b32b0377502697e32e56e5c8324ca287c9a3cf69
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1db391f42aeb4fdf80baf001150f845daef3bf4f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473050"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773229"
 ---
 # <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Zelf studie: sjabloon functies toevoegen aan uw Resource Manager-sjabloon
 
@@ -26,7 +26,7 @@ U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en e
 
 Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
 De locatie van het opslag account wordt vastgelegd in een VS- **Oost**. Het is echter mogelijk dat u het opslag account moet implementeren in andere regio's. Er wordt een probleem opgetreden bij het oplossen van uw sjabloon. U kunt een para meter voor de locatie toevoegen, maar dit zou geweldig zijn als de standaard waarde meer zinniger is dan alleen een hardcoded waarde.
 
@@ -40,7 +40,7 @@ In het volgende voor beeld worden de wijzigingen gemarkeerd voor het toevoegen v
 
 Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json?range=1-44&highlight=24-27,34)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json" range="1-44" highlight="24-27,34":::
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 

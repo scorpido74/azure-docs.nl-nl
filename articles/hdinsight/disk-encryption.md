@@ -7,14 +7,14 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2019
-ms.openlocfilehash: 2c015db828bcbfa8b26f519b3a4707b5ec69b8f3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b452cb986e6f662aeb33c2a475f18695ebc75745
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982494"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846113"
 ---
-# <a name="customer-managed-key-disk-encryption"></a>Door de klant beheerde sleutel schijf versleuteling
+# <a name="customer-managed-key-disk-encryption"></a>Schijfversleuteling met behulp van door klant beheerde sleutel
 
 Azure HDInsight ondersteunt door de klant beheerde sleutels, ook wel bekend als Bring Your Own Key (BYOK) versleuteling voor gegevens op beheerde schijven en bron schijven die zijn gekoppeld aan virtuele HDInsight-cluster-Vm's. Met deze functie kunt u Azure Key Vault gebruiken om de versleutelings sleutels te beheren waarmee gegevens in rust op uw HDInsight-clusters worden beveiligd. Uw clusters kunnen een of meer gekoppelde Azure Storage-accounts bevatten waarbij de versleutelings sleutels ook door micro soft worden beheerd of door de klant worden beheerd, maar de versleutelings service verschilt.
 
@@ -79,7 +79,7 @@ HDInsight ondersteunt alleen Azure Key Vault. Als u uw eigen sleutel kluis hebt,
 
     b. Kies onder **Principal selecteren**de door de gebruiker toegewezen beheerde identiteit die u hebt gemaakt.
 
-    ![Selecteer de principal voor Azure Key Vault toegangs beleid instellen](./media/disk-encryption/add-key-vault-access-policy-select-principal.png)
+    ![Selecteer de principal voor Azure Key Vault toegangs beleid instellen](./media/disk-encryption/azure-portal-add-access-policy.png)
 
     c. Stel de **sleutel machtigingen** in om de sleutel op te **halen**, uit te **pakken**en te **verpakken**.
 
@@ -100,6 +100,8 @@ U bent nu klaar om een nieuw HDInsight-cluster te maken. Door de klant beheerde 
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 
 Geef tijdens het maken van het cluster de volledige sleutel-URL op, met inbegrip van de sleutel versie. Bijvoorbeeld `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. U moet ook de beheerde identiteit toewijzen aan het cluster en de sleutel-URI opgeven.
+
+![Een nieuw cluster maken](./media/disk-encryption/create-cluster-portal.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 

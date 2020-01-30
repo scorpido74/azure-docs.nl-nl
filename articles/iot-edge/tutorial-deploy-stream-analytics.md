@@ -7,18 +7,18 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: bd1487d7922d8ea81c4b09773eed978e64cd9e8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 648eb6cdb1787e1cbdf82bd8e5c8499b0dbaf02c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457238"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772263"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Zelf studie: Azure Stream Analytics implementeren als een IoT Edge module
 
 Veel IoT-oplossingen gebruiken Analytics Services om inzicht te krijgen in gegevens in de cloud van IoT-apparaten. Met Azure IoT Edge kunt u de logica van [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) verplaatsen naar het apparaat zelf. Door telemetriestromen te verwerken kunt u de hoeveelheid geüploade gegevens verkleinen en tijd besparen bij het reageren op inzichten waarvoor een actie kan worden uitgevoerd.
 
-Azure IoT Edge en Azure Stream Analytics zijn geïntegreerd, zodat u een Azure Stream Analytics-taak kunt maken in Azure Portal en deze vervolgens zonder aanvullende code kunt implementeren als een IoT Edge-module.  
+Azure IoT Edge en Azure Stream Analytics zijn geïntegreerd om de ontwikkeling van uw werk belasting te vereenvoudigen. U kunt een Azure Stream Analytics-taak maken in de Azure Portal en deze vervolgens implementeren als een IoT Edge module zonder extra code.  
 
 Azure Stream Analytics biedt een uitgebreide gestructureerde query syntaxis voor gegevens analyse, zowel in de Cloud als op IoT Edge-apparaten. Zie [Azure stream Analytics-documentatie](../stream-analytics/stream-analytics-edge.md)voor meer informatie.
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 
 <center>
 
-![diagram-zelf studie-architectuur, faseren en implementatie van de ASA-taak](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
+![diagram-zelf studie architectuur: fase ring en implementatie van de ASA-taak](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -46,7 +46,7 @@ Een Azure IoT Edge-apparaat:
 
 Cloudresources:
 
-* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure. 
+* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 
 ## <a name="create-an-azure-stream-analytics-job"></a>Een Azure Stream Analytics-taak maken
 
@@ -54,20 +54,20 @@ In deze sectie maakt u een Azure Stream Analytics taak die de volgende stappen u
 
 * Gegevens ontvangen van uw IoT Edge-apparaat.
 * Query's uitvoeren op de telemetriegegevens voor waarden buiten een ingesteld bereik.
-* Actie ondernemen op het IoT Edge apparaat op basis van de query resultaten. 
+* Actie ondernemen op het IoT Edge apparaat op basis van de query resultaten.
 
 ### <a name="create-a-storage-account"></a>Maak een opslagaccount
 
-Wanneer u een Azure Stream Analytics-taak maakt die op een IoT Edge-apparaat moet worden uitgevoerd, moet deze worden opgeslagen op een manier die door het apparaat kan worden aangeroepen. U kunt een bestaand Azure-opslagaccount gebruiken of een nieuw maken. 
+Wanneer u een Azure Stream Analytics-taak maakt die op een IoT Edge-apparaat moet worden uitgevoerd, moet deze worden opgeslagen op een manier die door het apparaat kan worden aangeroepen. U kunt een bestaand Azure Storage-account gebruiken of nu een nieuwe maken.
 
-1. Ga in Azure Portal naar **een resource maken** > **opslag** > **opslag account**. 
+1. Ga in Azure Portal naar **een resource maken** > **opslag** > **opslag account**.
 
 1. Geef de volgende waarden op om uw opslagaccount te maken:
 
    | Veld | Waarde |
    | ----- | ----- |
    | Abonnement | Kies het hetzelfde abonnement als uw IoT-hub. |
-   | Resourcegroep | Het wordt aangeraden om dezelfde resourcegroep te gebruiken voor alle test-resources die u maakt met de snelstartgidsen en zelfstudies voor IoT Edge, zoals **IoTEdgeResources**. |
+   | Resourcegroep | U wordt aangeraden dezelfde resource groep te gebruiken voor al uw test resources voor de IoT Edge Snelstartgids en zelf studies. zoals **IoTEdgeResources**. |
    | Name | Voer een unieke naam in voor het opslagaccount. |
    | Locatie | Kies een locatie dicht bij u in de buurt. |
 
@@ -88,7 +88,7 @@ Wanneer u een Azure Stream Analytics-taak maakt die op een IoT Edge-apparaat moe
    | Resourcegroep | Het wordt aangeraden om dezelfde resourcegroep te gebruiken voor alle test-resources die u maakt met de snelstartgidsen en zelfstudies voor IoT Edge, zoals **IoTEdgeResources**. |
    | Locatie | Kies een locatie dicht bij u in de buurt. |
    | Hostingomgeving | Selecteer **Edge**. |
- 
+
 1. Selecteer **Maken**.
 
 ### <a name="configure-your-job"></a>Uw taak configureren
@@ -105,7 +105,7 @@ Met behulp van de drie elementen invoer, uitvoer en query wordt in deze sectie e
 
 1. Kies **Edge Hub** in de vervolgkeuzelijst.
 
-1. Voer in het deelvenster **Nieuwe invoer** **temperatuur** in als de invoeralias. 
+1. Voer in het deelvenster **Nieuwe invoer** **temperatuur** in als de invoeralias.
 
 1. Houd de standaardwaarden voor de andere velden aan en selecteer **Opslaan**.
 
@@ -152,7 +152,7 @@ Als u uw Stream Analytics-taak wilt voorbereiden om te worden geïmplementeerd o
 
 ## <a name="deploy-the-job"></a>De taak implementeren
 
-U bent nu klaar om de Azure Stream Analytics-taak te implementeren op uw IoT Edge-apparaat. 
+U bent nu klaar om de Azure Stream Analytics-taak te implementeren op uw IoT Edge-apparaat.
 
 In deze sectie gaat u de wizard **Modules instellen** in de Azure-portal gebruiken om een *distributiemanifest* te maken. Het distributiemanifest is een JSON-bestand waarin alle modules worden beschreven die op een apparaat worden geïmplementeerd, waarin de containerregisters worden beschreven waarin installatiekopieën van de modules worden bewaard, hoe de modules moeten worden beheerd en hoe de modules met elkaar kunnen communiceren. Uw IoT Edge-apparaat haalt het distributiemanifest op uit IoT Hub en gebruikt vervolgens de informatie die zich daarin bevindt, om alle modules die eraan zijn toegewezen te implementeren en te configureren.
 

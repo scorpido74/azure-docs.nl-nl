@@ -3,12 +3,12 @@ title: Back-ups maken van Azure-bestands shares met Azure CLI
 description: Meer informatie over het gebruik van Azure CLI voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 10ae6d88e8a40ba4175e664ed338f0a02be7a7ca
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: ff1d8c6245521d2d0262b0440177d65713058742
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294485"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844038"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Back-ups maken van Azure-bestands shares met CLI
 
@@ -104,7 +104,7 @@ Als u een back-up op aanvraag wilt activeren voor uw bestands share in plaats va
 
 U moet de volgende para meters definiëren om een back-up op aanvraag te activeren:
 
-* **--container naam** is de naam van het opslag account dat als host fungeert voor de bestands share. Als u de **naam** of **beschrijvende naam** van uw container wilt ophalen, gebruikt u de opdracht [AZ backup container List](https://docs.microsoft.com/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
+* **--container naam** is de naam van het opslag account dat als host fungeert voor de bestands share. Als u de **naam** of **beschrijvende naam** van uw container wilt ophalen, gebruikt u de opdracht [AZ backup container List](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
 * **--item-name** is de naam van de bestands share waarvoor u een back-up op aanvraag wilt activeren. Als u de **naam** of **beschrijvende naam** van het back-upitem wilt ophalen, gebruikt u de opdracht [AZ back-upitems](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) .
 * **--behoud: totdat** de datum wordt opgegeven tot wanneer u het herstel punt wilt behouden. De waarde moet worden ingesteld in UTC-tijd notatie (dd-mm-jjjj).
 

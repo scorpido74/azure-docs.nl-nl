@@ -9,16 +9,16 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 5fb6cab4bfeea4308873210fb5f9122b37b61dcd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100313"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844583"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Zelf studie: publiceren, abonneren op gebeurtenissen in de Cloud
 
-In dit artikel worden alle stappen beschreven die nodig zijn voor het publiceren en abonneren op gebeurtenissen met behulp van Event Grid op IoT Edge.
+In dit artikel worden alle stappen beschreven die nodig zijn voor het publiceren en abonneren op gebeurtenissen met behulp van Event Grid op IoT Edge. Deze zelf studie maakt gebruik van en Azure function als gebeurtenis-handler. Zie voor aanvullende doel typen [gebeurtenis-handlers](event-handlers.md).
 
 Zie [Event grid concepten](concepts.md) om te begrijpen wat een event grid-onderwerp en-abonnement zijn voordat u verdergaat.
 
@@ -107,6 +107,8 @@ Als uitgever van een gebeurtenis moet u een event grid-onderwerp maken. Onderwer
 ## <a name="create-an-event-subscription"></a>Een gebeurtenisabonnement maken
 
 Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp worden gepubliceerd. Als u een gebeurtenis wilt ontvangen, moeten de abonnees een event grid-abonnement maken op een onderwerp van belang.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Maak subscription2. json met de volgende inhoud. Raadpleeg onze [API-documentatie](api.md) voor meer informatie over de payload.
 
@@ -203,3 +205,4 @@ In deze zelf studie hebt u een event grid-onderwerp,-abonnement en-gepubliceerde
 * Persistentie van Event Grid module instellen in [Linux](persist-state-linux.md) of [Windows](persist-state-windows.md)
 * Volg de [documentatie](configure-client-auth.md) voor het configureren van client verificatie
 * Door sturen van gebeurtenissen naar Azure Event Grid in de Cloud door deze [zelf studie](forward-events-event-grid-cloud.md) te volgen
+* [Onderwerpen en abonnementen bewaken aan de rand](monitor-topics-subscriptions.md)

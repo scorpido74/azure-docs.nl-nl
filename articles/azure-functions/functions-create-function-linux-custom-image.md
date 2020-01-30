@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: 67d9ff3d4a69ed12d1fd023085eb33a68d02d37b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: edb947f0748c186e146bce5f4dbe9d0b95a2568d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711064"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846481"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Een functie in Linux maken met behulp van een aangepaste container
 
@@ -290,7 +290,7 @@ Als u uw functie code wilt implementeren in azure, moet u drie resources maken:
 
 U gebruikt Azure CLI-opdrachten om deze items te maken. Elke opdracht biedt JSON-uitvoer na voltooiing.
 
-1. Meld u aan bij Azure met de opdracht [AZ login](/cli/azure/group#az-login) :
+1. Meld u aan bij Azure met de opdracht [AZ login](/cli/azure/reference-index#az-login) :
 
     ```azurecli
     az login

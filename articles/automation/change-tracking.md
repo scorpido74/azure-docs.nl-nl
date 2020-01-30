@@ -3,19 +3,29 @@ title: Wijzigingen bijhouden met Azure Automation
 description: De Wijzigingen bijhouden oplossing helpt u bij het identificeren van de software-en Windows-service wijzigingen die zich in uw omgeving voordoen.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 04/29/2019
+ms.date: 01/28/2019
 ms.topic: conceptual
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7dce249a3e1e13fc9d7d2a962e7f056c803eb23e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83babd65fdf22ab40b0137d93a1cbe7f1fd7ff04
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418751"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844799"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Wijzigingen in uw omgeving bijhouden met de Wijzigingen bijhouden oplossing
 
-Dit artikel helpt u bij het gebruik van de Wijzigingen bijhouden-oplossing om eenvoudig wijzigingen in uw omgeving te identificeren. De oplossing houdt wijzigingen bij van Windows-en Linux-software, Windows-en Linux-bestanden, Windows-register sleutels, Windows-Services en Linux-daemons. Het identificeren van configuratie wijzigingen kan u helpen bij het lokaliseren van operationele problemen.
+Dit artikel helpt u bij het gebruik van de Wijzigingen bijhouden-oplossing om eenvoudig wijzigingen in uw omgeving te identificeren. De oplossing houdt de volgende configuratie wijzigingen bij om u te helpen bij het lokaliseren van operationele problemen:
+
+- Windows-software
+- Linux-software (pakketten)
+
+    >[!NOTE]
+    >Wijzigingen bijhouden houdt alleen software bij die wordt beheerd met package manager van de distributie.
+
+- Windows-en Linux-bestanden
+- Windows-register sleutels
+- Windows-services
+- Linux-daemons
 
 Wijzigingen in geïnstalleerde software, Windows-Services, Windows-REGI ster en-bestanden en Linux-daemons op de bewaakte servers worden verzonden naar de Azure Monitor-service in de Cloud voor verwerking. Logica wordt toegepast op de ontvangen gegevens en de gegevens worden vastgelegd door de cloudservice. Met behulp van de informatie op het Wijzigingen bijhouden dash board kunt u eenvoudig de wijzigingen zien die zijn aangebracht in uw server infrastructuur.
 
@@ -26,13 +36,13 @@ Wijzigingen in geïnstalleerde software, Windows-Services, Windows-REGI ster en-
 
 De volgende versies van het Windows-besturingssysteem worden officieel ondersteund voor de Windows-agent:
 
-* Windows Server 2008 R2 of later
+* Windows Server 2008 R2 of hoger
 
 ## <a name="supported-linux-operating-systems"></a>Ondersteunde Linux-besturingssystemen
 
 De volgende Linux-distributies worden officieel ondersteund. De Linux-agent kan echter ook worden uitgevoerd op andere distributies die niet worden vermeld. Tenzij anders vermeld, worden alle secundaire releases ondersteund voor elke primaire versie die wordt vermeld.
 
-### <a name="64-bit"></a>64-bit
+### <a name="64-bit"></a>64-bits
 
 * CentOS 6 en 7
 * Amazon Linux 2017,09
@@ -42,7 +52,7 @@ De volgende Linux-distributies worden officieel ondersteund. De Linux-agent kan 
 * Ubuntu Linux 14,04 LTS, 16,04 LTS en 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32-bit
+### <a name="32-bit"></a>32-bits
 
 * CentOS 6
 * Oracle Linux 6
@@ -70,7 +80,7 @@ Voor het bijhouden van wijzigingen in bestanden in zowel Windows als Linux, word
 Azure Security Center heeft FIM (File Integrity Monitoring) op basis van Azure Wijzigingen bijhouden toegevoegd. Hoewel FIM alleen bestanden en registers bewaakt, omvat de volledige Wijzigingen bijhouden-oplossing ook:
 
 - Software wijzigingen
-- Windows-services
+- Windows-Services
 - Linux-daemons
 
 Als u FIM al hebt ingeschakeld en de volledige Wijzigingen bijhouden-oplossing wilt uitproberen, moet u de volgende stappen uitvoeren. De instellingen worden niet verwijderd door dit proces.
@@ -159,6 +169,8 @@ De Wijzigingen bijhouden-oplossing biedt momenteel geen ondersteuning voor de vo
 
 * Recursie voor het bijhouden van Windows-REGI ster
 * Netwerk bestands systemen
+* Andere installatie methoden worden niet bijgehouden
+* *. exe-bestanden worden niet bijgehouden voor Windows
 
 Andere beperkingen:
 
@@ -241,7 +253,7 @@ Het doel van het bewaken van wijzigingen in register sleutels is het lokaliseren
 
 De volgende adressen zijn specifiek vereist voor Wijzigingen bijhouden. De communicatie met deze adressen geschiedt via poort 443.
 
-|Openbare Azure-peering  |Azure Government  |
+|Open bare Azure  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |

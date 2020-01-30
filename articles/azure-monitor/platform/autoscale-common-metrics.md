@@ -4,12 +4,12 @@ description: Meer informatie over de metrische gegevens die vaak worden gebruikt
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364591"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845575"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor automatisch schalen van algemene metrische gegevens
 
@@ -36,7 +36,7 @@ De volgende metrische gegevens op hostniveau worden standaard verzonden voor Azu
 - [Metrische gegevens van de host voor Windows-en Linux-Vm's op basis van Resource Manager](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
 - [Metrische gegevens van de host voor Windows-en Linux-VM Scale Sets op basis van Resource Manager](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Metrische Windows-Vm's op basis van een gast besturingssysteem (op Resource Manager gebaseerde)
+### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Metrische gegevens van het gast besturingssysteem voor Windows-Vm's op basis van Resource Manager
 Wanneer u een virtuele machine in azure maakt, wordt Diagnostische gegevens ingeschakeld met behulp van de diagnostische extensie. Met de uitbrei ding voor diagnostische gegevens wordt een set metrische gegevens verzonden die zijn gemaakt van binnen van de virtuele machine. Dit betekent dat u automatisch de metrische gegevens die niet standaard worden verzonden, kunt uitschalen.
 
 U kunt een lijst met metrische gegevens genereren met behulp van de volgende opdracht in Power shell.
@@ -129,8 +129,8 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \NetworkInterface\TotalTxErrors |Aantal |
 | \NetworkInterface\TotalCollisions |Aantal |
 
-## <a name="commonly-used-web-server-farm-metrics"></a>Veelgebruikte metrische gegevens voor Web (server-farm)
-U kunt ook automatisch schalen uitvoeren op basis van algemene gegevens van webservers, zoals de lengte van de http-wachtrij. De naam van de metrische waarde is **HttpQueueLength**.  In de volgende sectie worden metrische gegevens van de beschik bare server farm (Web Apps) weer gegeven.
+## <a name="commonly-used-app-service-server-farm-metrics"></a>Gegevens die vaak worden gebruikt App Service (server farm)
+U kunt ook automatisch schalen uitvoeren op basis van algemene gegevens van webservers, zoals de lengte van de http-wachtrij. De naam van de metrische waarde is **HttpQueueLength**.  In de volgende sectie worden metrische gegevens van de beschik bare server farm (App Service) weer gegeven.
 
 ### <a name="web-apps-metrics"></a>Web Apps metrische gegevens
 U kunt een lijst met Web Apps metrische gegevens genereren met behulp van de volgende opdracht in Power shell.
@@ -159,8 +159,8 @@ Met een klassiek opslag account kunt u bijvoorbeeld de instelling voor automatis
 
 ```
 "metricName": "ApproximateMessageCount",
- "metricNamespace": "",
- "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
+"metricNamespace": "",
+"metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
 Voor een (niet-klassiek) opslag account zou het metricTrigger het volgende omvatten:
@@ -177,7 +177,7 @@ U kunt schalen op Service Bus wachtrij lengte, het aantal berichten in de Servic
 Voor VM-schaal sets kunt u de instelling voor automatisch schalen in het Resource Manager-sjabloon bijwerken om *metrische waarde* als *ApproximateMessageCount* te gebruiken en de id van de opslag wachtrij als *metricResourceUri*door te geven.
 
 ```
-"metricName": "MessageCount",
+"metricName": "ApproximateMessageCount",
  "metricNamespace": "",
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ServiceBus/namespaces/SB_NAMESPACE/queues/QUEUE_NAME"
 ```

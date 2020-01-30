@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: e31153a1c490948266714633202d5e59fe66fa3a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d8461cb2d98ec8fe914c2cc878e9002d132c9995
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980472"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845815"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuele netwerk service-eind punten voor Azure Key Vault
 
@@ -75,7 +75,8 @@ Hier volgt een lijst met vertrouwde services die toegang mogen hebben tot een sl
 |Azure Databricks|[Snelle, eenvoudige en samen werkende, Apache Spark-gebaseerde analyse service](../azure-databricks/what-is-azure-databricks.md)|
 |Azure API Management|[Certificaten voor een aangepast domein van Key Vault implementeren met behulp van MSI](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
 |Azure Data Factory|[Referenties voor gegevens opslag ophalen in Key Vault van Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|
-
+|Azure Event Hubs|[Toegang verlenen tot een sleutel kluis voor het scenario door de klant beheerde sleutels](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
+|Service Bus van Azure|[Toegang verlenen tot een sleutel kluis voor het scenario door de klant beheerde sleutels](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 
 
 > [!NOTE]

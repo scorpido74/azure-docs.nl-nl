@@ -1,29 +1,29 @@
 ---
-title: 'Snelstartgids: een Standard Load Balancer-Azure PowerShell maken'
+title: 'Snelstartgids: een Load Balancer-Azure PowerShell maken'
 titleSuffix: Azure Load Balancer
-description: In deze Quick start ziet u hoe u een Standard Load Balancer maakt met behulp van Azure PowerShell
+description: In deze Quick start ziet u hoe u een Load Balancer maakt met behulp van Azure PowerShell
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 21488fbc8a5a9354db74d5b93719d100bce8878c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045663"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846530"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Snelstartgids: een Standard Load Balancer maken met behulp van Azure PowerShell
+# <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Snelstartgids: een Load Balancer maken met behulp van Azure PowerShell
 
 In deze snelstart vindt u meer informatie over het maken van een Standard Load Balancer met behulp Azure PowerShell. Als u de load balancer wilt testen, implementeert u drie virtuele machines (Vm's) met Windows Server en taak verdeling van een web-app tussen de Vm's. Zie [Wat is Standard Load Balancer](load-balancer-standard-overview.md) voor meer informatie over Standard Load Balancer.
 
@@ -45,7 +45,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 
 ## <a name="create-a-public-ip-address"></a>Een openbaar IP-adres maken
 
-Om toegang te krijgen tot uw app op internet, hebt u een openbaar IP-adres nodig voor de load balancer. Maak een openbaar IP-adres met [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). In het volgende voor beeld wordt een openbaar IP-adres gemaakt met de naam *myPublicIP* in de resource groep *myResourceGroupSLB* :
+Om toegang te krijgen tot uw app op internet, hebt u een openbaar IP-adres nodig voor de load balancer. Maak een openbaar IP-adres met [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). In het volgende voor beeld wordt een zone onnodig openbaar IP-adres gemaakt met de naam *myPublicIP* in de resource groep *myResourceGroupSLB* :
 
 ```azurepowershell
 $publicIp = New-AzPublicIpAddress `
@@ -56,11 +56,25 @@ $publicIp = New-AzPublicIpAddress `
  -SKU Standard
 ```
 
-## <a name="create-standard-load-balancer"></a>Een Standard Load Balancer maken
+Als u een openbaar IP-adres voor zonegebonden in zone 1 wilt maken, gebruikt u het volgende:
+
+```azurepowershell
+$publicIp = New-AzPublicIpAddress `
+ -ResourceGroupName $rgName `
+ -Name 'myPublicIP' `
+ -Location $location `
+ -AllocationMethod static `
+ -SKU Standard
+ -zone 1
+```
+
+Gebruik ```-SKU Basic``` om een open bare basis-IP te maken. Micro soft raadt aan om standaard te gebruiken voor werk belastingen voor de productie.
+
+## <a name="create-load-balancer"></a>Load Balancer maken
 
 In deze sectie configureert u de front-end-IP en de back-endadresgroep voor de load balancer en maakt u vervolgens de Standard Load Balancer.
 
-### <a name="create-front-end-ip"></a>Maak een front-end IP-adres
+### <a name="create-frontend-ip"></a>Front-end-IP maken
 
 Maak een front-end-IP-adres met [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). In het volgende voorbeeld wordt een front-end-IP-configuratie met de naam *myFrontEnd* gemaakt en wordt het adres *myPublicIP* eraan gekoppeld:
 
@@ -146,6 +160,8 @@ $lb = New-AzLoadBalancer `
   -InboundNatRule $natrule1,$natrule2,$natrule3
 ```
 
+Gebruik ```-SKU Basic``` om een basis Load Balancer te maken. Micro soft raadt aan om standaard te gebruiken voor werk belastingen voor de productie.
+
 ## <a name="create-network-resources"></a>Netwerkbronnen maken
 Voordat u enkele VM's implementeert en uw balancer test, moet u ondersteunende netwerkbronnen maken (virtueel netwerk en virtuele NIC's). 
 
@@ -195,8 +211,11 @@ $RdpPublicIP_3 = New-AzPublicIpAddress `
   -AllocationMethod static
 
 ```
+
+Gebruik ```-SKU Basic``` om een open bare basis-Ip's te maken. Micro soft raadt aan om standaard te gebruiken voor werk belastingen voor de productie.
+
 ### <a name="create-network-security-group"></a>Netwerkbeveiligingsgroep maken
-Maak een netwerkbeveiligingsgroep om de binnenkomende verbindingen met uw virtuele netwerk te definiëren.
+Maak een netwerkbeveiligingsgroep om binnenkomende verbindingen met uw virtuele netwerk te definiëren.
 
 #### <a name="create-a-network-security-group-rule-for-port-3389"></a>Een netwerkbeveiligingsgroepsregel maken voor poort 3389
 Maak een netwerkbeveiligingsgroepsregel die RDP-verbindingen via poort 3389 toestaat met [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
@@ -356,7 +375,6 @@ Remove-AzResourceGroup -Name myResourceGroupSLB
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u een standaard Load Balancer gemaakt, VM's daaraan gekoppeld, een regel voor het Load Balancer-verkeer geconfigureerd, een statustest gemaakt en vervolgens de load balancer getest. Voor meer informatie over Azure Load Balancer gaat u verder met de zelfstudies voor Azure Load Balancer.
+In deze Quick Start hebt u een Standard Load Balancer, gekoppelde Vm's aan de app gemaakt, de regel voor het Load Balancer verkeer geconfigureerd, de status test en vervolgens de Load Balancer getest. Ga door naar [Azure Load Balancer zelf studies](tutorial-load-balancer-standard-public-zone-redundant-portal.md)voor meer informatie over Azure Load Balancer.
 
-> [!div class="nextstepaction"]
-> [Zelfstudies voor Azure Load Balancer](tutorial-load-balancer-basic-internal-portal.md)
+Meer informatie over [Load Balancer-en beschikbaarheids zones](load-balancer-standard-availability-zones.md).

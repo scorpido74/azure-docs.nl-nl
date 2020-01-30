@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: e3dcd9305a48b0d34f1bcbea64d6628efabc1235
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8e1f144fdf94df445fb64b9b489cba1e9998f381
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546058"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845619"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -85,7 +85,7 @@ Activiteiten kunnen meldingen geven via de SDK of de Web-UI, zodat u de voortgan
 ### <a name="compute-instance"></a>Reken instantie (preview-versie)
 
 > [!NOTE]
-> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**.
+> Reken instanties zijn alleen beschikbaar voor werk ruimten met een **Noord-Centraal VS**, * * VS-Oost 2 * *, **Europa-Noord** of **UK-Zuid**.
 >Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken. 
 
 Een **Azure machine learning Compute-instantie** (voorheen laptop-VM) is een volledig beheerd werk station in de Cloud met meerdere hulpprogram ma's en omgevingen die voor machine learning zijn geïnstalleerd. Reken instanties kunnen worden gebruikt als een reken doel voor trainings-en detraining-taken. Voor grote taken is het [Azure machine learning compute-clusters](how-to-set-up-training-targets.md#amlcompute) met schaal mogelijkheden voor meerdere knoop punten een betere reken doel keuze.

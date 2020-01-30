@@ -3,12 +3,12 @@ title: Azure Functions ontwikkelen met Visual Studio code
 description: Meer informatie over het ontwikkelen en testen van Azure Functions met behulp van de Azure Functions-extensie voor Visual Studio code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 4a5f60c2da8a77f385dba40dcd4d342583e989c1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547418"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845403"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio code
 
@@ -65,11 +65,13 @@ Met de functie-extensie kunt u een functie-app-project maken, samen met uw eerst
 
 1. Selecteer de map voor uw functie-app-project en **Selecteer vervolgens een taal voor uw functie project**.
 
+1. Als u de kern Hulpprogramma's nog niet hebt geïnstalleerd, wordt u gevraagd om **een versie** van de kern Hulpprogramma's te selecteren die u wilt installeren. Kies versie 2. x of een nieuwere versie. 
+
 1. Selecteer de sjabloon voor de **http-trigger** functie of selecteer **nu overs Laan** om een project zonder een functie te maken. U kunt later altijd [een functie toevoegen aan uw project](#add-a-function-to-your-project) .
 
     ![De sjabloon voor de HTTP-trigger kiezen](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. Typ **http trigger** voor de functie naam en selecteer ENTER, en selecteer vervolgens **functie** autorisatie. Voor dit autorisatie niveau moet u een [functie toets](functions-bindings-http-webhook.md#authorization-keys) opgeven wanneer u het eind punt van de functie aanroept.
+1. Typ **HttpExample** voor de functie naam en selecteer ENTER, en selecteer vervolgens **functie** autorisatie. Voor dit autorisatie niveau moet u een [functie toets](functions-bindings-http-webhook.md#authorization-keys) opgeven wanneer u het eind punt van de functie aanroept.
 
     ![Functie autorisatie selecteren](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -189,6 +191,8 @@ Zie voor meer informatie de referentie voor de uitvoer van de [wachtrij opslag](
 ---
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
+
+[!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
 ## <a name="publish-to-azure"></a>Publiceren naar Azure
 
@@ -404,7 +408,7 @@ De uitbrei ding Azure Functions biedt een handige grafische interface in het geb
 | **Azure Functions Core Tools installeren of bijwerken** | Installeert of update [Azure functions core tools], die wordt gebruikt om functies lokaal uit te voeren. |
 | **Opnieuw implementeren**  | Hiermee kunt u Project bestanden opnieuw implementeren vanuit een verbonden Git-opslag plaats naar een specifieke implementatie in Azure. Als u lokale updates opnieuw wilt publiceren vanuit Visual Studio code, [publiceert u het project opnieuw](#republish-project-files). |
 | **Instellingen voor naam wijzigen** | Hiermee wijzigt u de sleutel naam van een bestaande functie-app-instelling in Azure. Deze opdracht heeft geen invloed op de instellingen in het bestand local. settings. json. Nadat u de naam van instellingen in azure hebt gewijzigd, moet u [deze wijzigingen downloaden naar het lokale project](#download-settings-from-azure). |
-| **Opnieuw opstarten** | Hiermee wordt de functie-app in azure opnieuw gestart. Als u updates implementeert, wordt ook de functie-app opnieuw gestart. |
+| **Opnieuw** | Hiermee wordt de functie-app in azure opnieuw gestart. Als u updates implementeert, wordt ook de functie-app opnieuw gestart. |
 | **AzureWebJobsStorage instellen**| Hiermee stelt u de waarde van de `AzureWebJobsStorage` toepassings instelling. Deze instelling is vereist door Azure Functions. Het wordt ingesteld wanneer een functie-app wordt gemaakt in Azure. |
 | **Beginnen** | Hiermee wordt een gestopt functie-app in azure gestart. |
 | **Streaming-Logboeken starten** | Hiermee start u de streaming-logboeken voor de functie-app in Azure. Gebruik Streaming-logboeken tijdens het extern oplossen van problemen in azure als u logboek gegevens in vrijwel realtime wilt weer geven. Zie [streaming-logboeken](#streaming-logs)voor meer informatie. |

@@ -2,14 +2,14 @@
 title: Virtuele Hyper-V-machines evalueren voor migratie naar Azure met Azure Migrate | Microsoft Docs
 description: Hierin wordt beschreven hoe u on-premises virtuele Hyper-V-machines kunt beoordelen voor migratie naar Azure met behulp van Azure Migrate.
 ms.topic: tutorial
-ms.date: 01/01/2020
+ms.date: 01/23/2020
 ms.custom: mvc
-ms.openlocfilehash: f36b0fbae01b25e604222c76d41ac21c0a7ae5a9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029022"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845515"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Virtuele Hyper-V-machines beoordelen met Azure Migrate server-evaluatie
 
@@ -138,8 +138,8 @@ Importeer het gedownloade bestand en maak de virtuele machine.
 2. In **import type kiezen**klikt u op **de virtuele machine kopiëren (een nieuwe unieke id maken)** . Klik op **Volgende**.
 3. Laat in **doel kiezen**de standaard instelling ongewijzigd. Klik op **Volgende**.
 4. In **opslag mappen**, behoud de standaard instelling. Klik op **Volgende**.
-5. Geef in **netwerk kiezen**de virtuele switch op die door de VM moet worden gebruikt. De switch heeft Internet connectiviteit nodig om gegevens naar Azure te verzenden.
-6. Controleer de instellingen in **samen vatting**. Klik vervolgens op **Voltooien**.
+5. Geef in **netwerk kiezen**de virtuele switch op die door de VM moet worden gebruikt. De switch heeft Internet connectiviteit nodig om gegevens naar Azure te verzenden. [Meer informatie](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines) over het maken van een virtuele switch.
+6. Controleer de instellingen in **samen vatting**. Klik vervolgens op **volt ooien**.
 7. Start de virtuele machine in Hyper-V-beheer > **virtual machines**.
 
 

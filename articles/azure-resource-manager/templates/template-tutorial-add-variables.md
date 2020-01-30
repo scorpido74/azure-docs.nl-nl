@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a27022f8c06449d8b05f90f78055b983bc88c01c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 881d91d5b8ca06a9591b8752af0a73da7f00b0c1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472854"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765504"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Zelf studie: variabelen toevoegen aan uw Resource Manager-sjabloon
 
@@ -26,7 +26,7 @@ U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en e
 
 Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json":::
 
 De para meter voor de naam van het opslag account is moeilijk te gebruiken omdat u een unieke naam moet opgeven. Als u de eerdere zelf studies in deze serie hebt voltooid, is het waarschijnlijk een unieke naam te raden. U lost dit probleem op door een variabele toe te voegen die een unieke naam voor het opslag account bouwt.
 
@@ -34,7 +34,7 @@ De para meter voor de naam van het opslag account is moeilijk te gebruiken omdat
 
 In het volgende voor beeld worden de wijzigingen gemarkeerd om een variabele aan uw sjabloon toe te voegen waarmee een unieke opslag accountnaam wordt gemaakt. Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json?range=1-47&highlight=5-9,29-31,36)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
 U ziet dat het een variabele bevat met de naam **uniqueStorageName**. Deze variabele maakt gebruik van vier functies om een teken reeks waarde te maken.
 

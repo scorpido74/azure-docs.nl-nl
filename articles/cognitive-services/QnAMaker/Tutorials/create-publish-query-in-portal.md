@@ -1,28 +1,20 @@
 ---
 title: 'Zelf studie: maken, publiceren en beantwoorden QnA Maker'
-titleSuffix: Azure Cognitive Services
 description: Deze zelf studie laat zien hoe u een nieuwe Knowledge Base maakt met vragen en antwoorden van een open bare webgebaseerde Veelgestelde vragen. De Knowledge Base opslaan, trainen en publiceren. Nadat de Knowledge Base is gepubliceerd, kunt u een vraag verzenden en een antwoord met een krul opdracht ontvangen. Maak vervolgens een bot en test de bot met dezelfde vraag.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 5b2f2decf3d070da2fb58bebd424b4209f353316
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/28/2020
+ms.openlocfilehash: 07a92b0f24aa95fc4a5188f54c7194fd342409fb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447392"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844148"
 ---
 # <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>Zelf studie: een Knowledge Base maken vanuit de QnA Maker Portal
 
-Maak een nieuwe Knowledge Base met vragen en antwoorden van een open bare webgebaseerde Veelgestelde vragen. De Knowledge Base opslaan, trainen en publiceren. Nadat de Knowledge Base is gepubliceerd, kunt u een vraag verzenden en een antwoord met een krul opdracht ontvangen. Maak vervolgens een bot en test de bot met dezelfde vraag. 
+Maak een nieuwe Knowledge Base met vragen en antwoorden van een open bare webgebaseerde Veelgestelde vragen. De Knowledge Base opslaan, trainen en publiceren. Nadat de Knowledge Base is gepubliceerd, kunt u een vraag verzenden en een antwoord met een krul opdracht ontvangen. Maak vervolgens een bot en test de bot met dezelfde vraag.
 
-In deze zelfstudie leert u het volgende: 
+In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Maak een Knowledge Base in de QnA Maker Portal.
@@ -30,60 +22,69 @@ In deze zelfstudie leert u het volgende:
 > * Publiceer de Knowledge Base.
 > * Gebruik krul om de Knowledge Base te doorzoeken.
 > * Maak een bot.
- 
+
 
 > [!NOTE]
 > De programmaversie van deze zelfstudie is beschikbaar met een volledige oplossing in de GitHub-opslagplaats [**Azure-Samples/cognitive-services-qnamaker-csharp**](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze zelfstudie moet u beschikken over een bestaande [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md). 
+Voor deze zelfstudie moet u beschikken over een bestaande [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md).
 
-## <a name="create-a-knowledge-base"></a>Een knowledge base maken 
+## <a name="create-a-knowledge-base"></a>Een knowledge base maken
 
-1. Aanmelden bij de [QnA Maker](https://www.qnamaker.ai)-portal. 
+1. Aanmelden bij de [QnA Maker](https://www.qnamaker.ai)-portal.
 
 1. Selecteer **Een knowledge base maken** in het menu bovenaan.
 
-    ![Scherm opname van QnA Maker Portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-1.png)
+    > [!div class="mx-imgBorder"]
+    > Scherm afbeelding van QnA Maker Portal ![](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-1.png)
 
-1. Sla de eerste stap over, omdat u uw bestaande QnA Maker-service gaat gebruiken. 
+1. Sla de eerste stap over, omdat u uw bestaande QnA Maker-service gaat gebruiken.
 
-1. Selecteer de bestaande instellingen:  
+1. Selecteer de bestaande instellingen:
 
     |Instelling|Doel|
     |--|--|
     |Microsoft Azure Directory-ID|Deze ID is gekoppeld aan het account dat u gebruikt om u aan te melden bij de Azure Portal en de QnA Maker-Portal. |
     |Azure-abonnements-id|Het facturerings account waarin u de QnA Maker resource hebt gemaakt.|
     |Azure QnA Service|Uw bestaande QnA Maker-resource.|
+    |Taal|De taal die wordt gebruikt voor alle Knowledge bases in de service. Maak geen talen in één resource. Dat de antwoord kwaliteit kan schaden.|
 
-    ![Scherm opname van QnA Maker Portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-2.png)
+    > [!div class="mx-imgBorder"]
+    > Scherm afbeelding van QnA Maker Portal ![](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-2.png)
 
 1. Voer de naam van uw Knowledge Base in `My Tutorial kb`.
 
-    ![Scherm opname van QnA Maker Portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-3.png)
+    > [!div class="mx-imgBorder"]
+    > Scherm afbeelding van QnA Maker Portal ![](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-3.png)
 
-1. Vul uw Knowledge Base in met de volgende instellingen:  
+1. Vul uw Knowledge Base in met de volgende instellingen:
 
     |Naam van instelling|Instellingswaarde|Doel|
     |--|--|--|
+    |Meerdere Schakel extractie inschakelen|Geselecteerd|Hiermee kunt u opvolgings vragen.|
+    |Standaard antwoord tekst|`No good answer was found.`|Retourneert wanneer er geen overeenkomst is met de vraag.|
     |URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |De inhoud van de veelgestelde vragen bij die URL zijn ingedeeld met een vraag gevolgd door een antwoord. QnA Maker kan deze indeling interpreteren om vragen en de bijbehorende antwoorden te extraheren.|
     |Bestand |_niet gebruikt in deze zelfstudie_|Hiermee worden bestanden voor vragen en antwoorden geüpload. |
     |De persoonlijkheid 'Heen- en weergepraat'|Weergave|Dit geeft een beschrijvende en onduidelijke [persoonlijkheid](../Concepts/best-practices.md#chit-chat) voor veelgestelde vragen en antwoorden. U kunt deze vragen en antwoorden later bewerken. |
 
-    ![Scherm opname van QnA Maker Portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
+    > [!div class="mx-imgBorder"]
+    > Scherm afbeelding van QnA Maker Portal ![](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 
 1. Selecteer **Uw KB maken** om het proces te voltooien.
 
-    ![Scherm opname van QnA Maker Portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-5.png)
+    > [!div class="mx-imgBorder"]
+    > Scherm afbeelding van QnA Maker Portal ![](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-5.png)
 
 ## <a name="review-save-and-train-the-knowledge-base"></a>De knowledge base controleren, opslaan en trainen
 
-1. Controleer de vragen en antwoorden. De eerste pagina bestaat uit vragen en antwoorden uit de URL. 
+1. Controleer de vragen en antwoorden. De eerste pagina bestaat uit vragen en antwoorden uit de URL.
 
-    ![Scherm opname van QnA Maker Portal](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb.png)
+    > [!div class="mx-imgBorder"]
+    > Scherm afbeelding van QnA Maker Portal ![](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb.png)
 
-1. Selecteer de laatste pagina van de vragen en antwoorden vanaf de onderkant van de tabel. De pagina toont vragen en antwoorden van de persoonlijkheid 'Heen- en weergepraat'. 
+1. Selecteer de laatste pagina van de vragen en antwoorden vanaf de onderkant van de tabel. De pagina toont vragen en antwoorden van de persoonlijkheid 'Heen- en weergepraat'.
 
 1. Selecteer in de werk balk boven de lijst met vragen en antwoorden het pictogram **weergave opties** en selecteer vervolgens **meta gegevens weer geven**. Hiermee worden de tags met metagegevens voor elke vraag en antwoord weergegeven. Voor de heen- en weergepraatvragen zijn de **editorial: chit-chat**-metagegevens al ingesteld. Deze meta gegevens worden geretourneerd naar de client toepassing, samen met het geselecteerde antwoord. De clienttoepassing, bijvoorbeeld een chatbot, kan deze gefilterde metagegevens gebruiken om extra verwerking of interactie met de gebruiker te bepalen.
 
@@ -101,19 +102,19 @@ Nadat de Knowledge Base is gepubliceerd, wordt het eind punt weer gegeven.
 
 ![Scherm opname van eindpunt instellingen](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
 
-Sluit deze **publicatie** pagina niet. U hebt deze later in de zelf studie nodig om een bot te maken. 
+Sluit deze **publicatie** pagina niet. U hebt deze later in de zelf studie nodig om een bot te maken.
 
 ## <a name="use-curl-to-query-for-an-faq-answer"></a>Krul gebruiken om een antwoord op een veelgestelde vragen te zoeken
 
-1. Selecteer het tabblad **Curl**. 
+1. Selecteer het tabblad **Curl**.
 
     ![Scherm afbeelding van het tabblad krul](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
 1. Kopieer de tekst van het tabblad **krul** en voer deze uit in een op krul ingeschakelde terminal of opdracht regel. De waarde van de autorisatie-header bevat de tekst `Endpoint`, met een spatie en vervolgens de sleutel.
 
-1. Vervang `<Your question>` door `How large can my KB be?`. Dit komt dicht bij de vraag, `How large a knowledge base can I create?`, in de buurt, maar is niet precies hetzelfde. QnA Maker past natuurlijke taalverwerking toe om te bepalen of de twee vragen hetzelfde zijn.     
+1. Vervang `<Your question>` door `How large can my KB be?`. Dit komt dicht bij de vraag, `How large a knowledge base can I create?`, in de buurt, maar is niet precies hetzelfde. QnA Maker past natuurlijke taalverwerking toe om te bepalen of de twee vragen hetzelfde zijn.
 
-1. Voer de opdracht krul uit en ontvang het JSON-antwoord, met inbegrip van de score en het antwoord. 
+1. Voer de opdracht krul uit en ontvang het JSON-antwoord, met inbegrip van de score en het antwoord.
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -132,16 +133,16 @@ Sluit deze **publicatie** pagina niet. U hebt deze later in de zelf studie nodig
         }
       ]
     }
-    
+
     ```
 
-    QnA Maker is enigszins zeker met de score van 42.81%.  
+    QnA Maker is enigszins zeker met de score van 42.81%.
 
 ## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Krul gebruiken om te zoeken naar een Chit-Chat-antwoord
 
-1. Vervang in de met krul ingeschakelde Terminal `How large can my KB be?` door een bot Conversation-eind instructie van de gebruiker, zoals `Thank you`.   
+1. Vervang in de met krul ingeschakelde Terminal `How large can my KB be?` door een bot Conversation-eind instructie van de gebruiker, zoals `Thank you`.
 
-1. Voer de opdracht krul uit en ontvang het JSON-antwoord, met inbegrip van de score en het antwoord. 
+1. Voer de opdracht krul uit en ontvang het JSON-antwoord, met inbegrip van de score en het antwoord.
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -172,18 +173,18 @@ Sluit deze **publicatie** pagina niet. U hebt deze later in de zelf studie nodig
         }
       ]
     }
-   
+
     ```
 
-    Omdat de vraag `Thank you` precies overeenkwam met een heen- en weergepraatvraag, is QnA Maker volledig zeker met de score van 100. QnA Maker heeft ook alle gerelateerde vragen geretourneerd, evenals de meta gegevens eigenschap met de Chit-Chat-meta gegevens code gegevens.  
+    Omdat de vraag `Thank you` precies overeenkwam met een heen- en weergepraatvraag, is QnA Maker volledig zeker met de score van 100. QnA Maker heeft ook alle gerelateerde vragen geretourneerd, evenals de meta gegevens eigenschap met de Chit-Chat-meta gegevens code gegevens.
 
 ## <a name="use-curl-to-query-for-the-default-answer"></a>Krul gebruiken om het standaard antwoord op te vragen
 
-Elke vraag die QnA Maker niet zeker weet hoe het standaard antwoord wordt ontvangen. Dit antwoord wordt geconfigureerd in Azure Portal. 
+Elke vraag die QnA Maker niet zeker weet hoe het standaard antwoord wordt ontvangen. Dit antwoord wordt geconfigureerd in Azure Portal.
 
-1. Vervang `Thank you` door `x`in de krul geschakelde Terminal. 
+1. Vervang `Thank you` door `x`in de krul geschakelde Terminal.
 
-1. Voer de opdracht krul uit en ontvang het JSON-antwoord, met inbegrip van de score en het antwoord. 
+1. Voer de opdracht krul uit en ontvang het JSON-antwoord, met inbegrip van de score en het antwoord.
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -200,8 +201,8 @@ Elke vraag die QnA Maker niet zeker weet hoe het standaard antwoord wordt ontvan
       ]
     }
     ```
-    
-    QnA Maker heeft een score geretourneerd van `0`, wat geen betrouw baarheid betekent. Ook wordt het standaard antwoord geretourneerd. 
+
+    QnA Maker heeft een score geretourneerd van `0`, wat geen betrouw baarheid betekent. Ook wordt het standaard antwoord geretourneerd.
 
 ## <a name="create-a-knowledge-base-bot"></a>Een Knowledge Base-bot maken
 
@@ -211,15 +212,15 @@ Zie [een chat-bot maken met deze Knowledge Base](create-qna-bot.md)voor meer inf
 
 Wanneer u klaar bent met de bot van de Knowledge Base, verwijdert u de resource groep `my-tutorial-rg`om alle Azure-resources te verwijderen die in het bot-proces zijn gemaakt.
 
-Wanneer u klaar bent met de Knowledge Base, selecteert u in de QnA Maker Portal **mijn Knowledge bases**. Vervolgens selecteert u de Knowledge Base, de **zelf studie KB**en selecteert u het pictogram verwijderen helemaal rechts in die rij.  
+Wanneer u klaar bent met de Knowledge Base, selecteert u in de QnA Maker Portal **mijn Knowledge bases**. Vervolgens selecteert u de Knowledge Base, de **zelf studie KB**en selecteert u het pictogram verwijderen helemaal rechts in die rij.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Ondersteunde gegevensbronnen](../Concepts/data-sources-supported.md) voor meer informatie over ondersteunde bestandsindelingen. 
+Zie [Ondersteunde gegevensbronnen](../Concepts/content-types.md) voor meer informatie over ondersteunde bestandsindelingen.
 
 Lees meer over [persoonlijkheden](../Concepts/best-practices.md#chit-chat) voor heen- en weergepraat.
 
-Zie [Geen overeenkomst gevonden](../Concepts/confidence-score.md#no-match-found) voor meer informatie over het standaardantwoord. 
+Zie [Geen overeenkomst gevonden](../Concepts/confidence-score.md#no-match-found) voor meer informatie over het standaardantwoord.
 
 > [!div class="nextstepaction"]
 > [Een chat-bot maken met deze kennis database](create-qna-bot.md)

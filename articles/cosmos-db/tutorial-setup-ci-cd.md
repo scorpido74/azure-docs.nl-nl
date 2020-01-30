@@ -4,15 +4,15 @@ description: Zelfstudie over het instellen van build- en releasewerkstroom in Az
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/23/2019
+ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: e3f7bcee8969939e3c3e9d9e10b43a3eb234fd50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4b05b4b44df53846a4880249785c6a5deda62f8a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441054"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846538"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Een CI/CD-pijplijn instellen met de build-taak van Azure Cosmos DB Emulator in Azure DevOps
 
@@ -47,12 +47,17 @@ Nu de extensie is geïnstalleerd, meldt u zich aan bij uw Azure DevOps-account e
 
    ![Selecteer het teamproject, de opslagplaats en de vertakking voor de build-pipeline](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
-3. Selecteer ten slotte de gewenste sjabloon voor de build-pipeline. We selecteren de sjabloon **ASP.NET** voor deze zelfstudie. 
+3. Selecteer ten slotte de gewenste sjabloon voor de build-pipeline. We selecteren de sjabloon **ASP.NET** voor deze zelfstudie. U hebt nu een build-pijp lijn die u kunt instellen voor het gebruik van de Azure Cosmos DB emulator-opbouw taak. 
 
 > [!NOTE]
 > Voor de agent groep die moet worden geselecteerd voor deze CI moet docker voor Windows zijn geïnstalleerd, tenzij de installatie hand matig wordt uitgevoerd in een eerdere taak als onderdeel van de CI. Zie het artikel [micro soft hosted agents](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) voor een selectie van agent groepen; We raden u aan om te beginnen met `Hosted VS2017`.
 
-We hebben nu een build-pipeline die we kunnen instellen voor gebruik van de build-taak van Azure Cosmos DB Emulator. 
+De gehoste VS2019-agent groep wordt momenteel niet ondersteund door de Azure Cosmos DB-emulator. De emulator wordt echter al met VS2019 geïnstalleerd en u gebruikt deze door de emulator te starten met de volgende Power shell-cmdlets. Als u problemen ondervindt bij het gebruik van de VS2019, kunt u contact met het [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) -team bereiken voor hulp:
+
+```powershell
+Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
+Start-CosmosDbEmulator
+```
 
 ## <a name="addEmulatorBuildTaskToBuildDefinition"></a>De taak toevoegen aan een build-pipeline
 

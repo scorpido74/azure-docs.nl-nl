@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: 1c5b2879659305e55bb01e4cfab27c7a1b343155
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894856"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845738"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Bewakings Azure Machine Learning
 
@@ -32,7 +32,7 @@ In dit artikel worden de bewakings gegevens beschreven die worden gegenereerd do
 
 Azure Machine Learning registreert de bewakings gegevens met behulp van Azure Monitor. Dit is een volledige stack monitoring-service in Azure. Azure Monitor biedt een volledige set functies voor het bewaken van uw Azure-resources. Het kan ook resources in andere Clouds en on-premises bewaken.
 
-Begin met het artikel [Azure Monitor overzicht](/azure/azure-monitor/overview). Dit biedt een overzicht van de mogelijkheden van bewaking. In de volgende secties vindt u informatie over het maken van een specifieke versie van OO met behulp van Azure Monitor met Azure Machine Learning.
+Begin met het artikel [Azure Monitor overzicht](/azure/azure-monitor/overview). Dit biedt een overzicht van de mogelijkheden van bewaking. In de volgende secties vindt u informatie over het gebruik van Azure Monitor met Azure Machine Learning.
 
 Zie [verbruik en geschatte kosten](/azure/azure-monitor/platform/usage-estimated-costs)voor meer informatie over de kosten die zijn gekoppeld aan Azure monitor. Zie [gegevens opname tijd vastleggen](/azure/azure-monitor/platform/data-ingestion-time)voor meer informatie over de tijd die nodig is om uw gegevens weer te geven in azure monitor.
 
@@ -85,7 +85,7 @@ Zie voor meer informatie over het maken van een diagnostische instelling [Diagno
 
 U kunt de volgende logboeken configureren voor Azure Machine Learning:
 
-| Categorie | Beschrijving |
+| Category | Beschrijving |
 |:---|:---|
 | AmlComputeClusterEvent | Gebeurtenissen van Azure Machine Learning Reken clusters. |
 | AmlComputeClusterNodeEvent | Gebeurtenissen van knoop punten binnen een Azure Machine Learning Compute-Cluster. |

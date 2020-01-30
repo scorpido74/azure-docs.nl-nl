@@ -4,12 +4,12 @@ description: Maak en implementeer serverloze python-code in de Cloud met behulp 
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 01c586c9077fd8cf244d7e26fe55252cc455c6fb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 452c5aeab5d2a1092cb7d338d37e26a82d92396e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710918"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845504"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Quick Start: een HTTP-geactiveerde python-functie maken in azure
 
@@ -207,7 +207,7 @@ Als u uw functie code wilt implementeren in azure, moet u drie resources maken:
 
 U gebruikt Azure CLI-opdrachten om deze items te maken. Elke opdracht biedt JSON-uitvoer na voltooiing.
 
-1. Als u dit nog niet hebt gedaan, meldt u zich aan bij Azure met de opdracht [AZ login](/cli/azure/group#az-login) :
+1. Als u dit nog niet hebt gedaan, meldt u zich aan bij Azure met de opdracht [AZ login](/cli/azure/reference-index#az-login) :
 
     ```azurecli
     az login

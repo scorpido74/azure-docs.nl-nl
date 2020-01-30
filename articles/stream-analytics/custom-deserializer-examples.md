@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/30/2019
-ms.openlocfilehash: a64912921e5ce8c0dc76fbf2ae0be8fb34bacf1a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 1/28/2020
+ms.openlocfilehash: 270e9a31c28e7209cfe43ea8307b928ed3257a35
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553015"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845256"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Invoer in elke indeling lezen met aangepaste .net-deserialisatie
 
@@ -80,7 +80,7 @@ De para meter `stream` is de stroom die het geserialiseerde object bevat. `Deser
 
 ## <a name="deserializer-examples"></a>Voor beelden van deserialiseren
 
-In deze sectie wordt beschreven hoe u aangepaste deserializers schrijft voor protobuf en CSV. Ga naar [Azure stream Analytics op github](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)voor meer voor beelden.
+In deze sectie wordt beschreven hoe u aangepaste deserializers schrijft voor protobuf en CSV. Ga voor meer voor beelden, zoals de AVRO-indeling voor Event hub Capture, naar [Azure stream Analytics op github](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers).
 
 ### <a name="protocol-buffer-protobuf-format"></a>De protobuf-indeling (protocol buffer)
 
@@ -225,10 +225,10 @@ De volgende Java script-code is een voor beeld van de serialisatie-indeling voor
 
 Deze functie is beschikbaar in de volgende regio's:
 
-* US - west-centraal
+* VS - west-centraal
 * Europa - noord
 * VS - oost
-* US - west
+* VS - west
 * VS - oost 2
 * Europa - west
 

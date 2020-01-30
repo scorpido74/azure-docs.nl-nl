@@ -11,29 +11,27 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 8d4917bb8956185e0cb557368fbb0c64343c0ac6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e23a4c39f93ea4de7f5dd38bb266d63ed52913cb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422540"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845858"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Enkele database resources in Azure SQL Database schalen
 
 In dit artikel wordt beschreven hoe u de berekenings-en opslag resources schaalt die beschikbaar zijn voor een Azure SQL Database in de ingerichte Compute-laag. De [Compute-laag zonder server](sql-database-serverless.md) biedt ook reken capaciteit automatisch schalen en facturen per seconde voor gebruikte reken kracht.
 
-## <a name="change-compute-size-vcores-or-dtus"></a>Berekenings grootte wijzigen (vCores of Dtu's)
-
-Nadat u het aantal vCores of Dtu's hebt gekozen, kunt u een enkele data base dynamisch omhoog of omlaag schalen op basis van de werkelijke ervaring met behulp van de [Azure Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Power shell](/powershell/module/az.sql/set-azsqldatabase), de [Azure cli](/cli/azure/sql/db#az-sql-db-update)of de [rest API ](https://docs.microsoft.com/rest/api/sql/databases/update).
+Nadat u het aantal vCores of Dtu's hebt gekozen, kunt u een enkele data base dynamisch omhoog of omlaag schalen op basis van de werkelijke ervaring met behulp van de [Azure Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Power shell](/powershell/module/az.sql/set-azsqldatabase), de [Azure cli](/cli/azure/sql/db#az-sql-db-update)of de [rest API](https://docs.microsoft.com/rest/api/sql/databases/update).
 
 De volgende video toont het dynamisch wijzigen van de servicelaag en de berekenings grootte om beschik bare Dtu's voor één Data Base te verg Roten.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
+> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie voor meer informatie, [bestandsruimte in Azure SQL Database beheren](sql-database-file-space-management.md).
 
-### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Gevolgen van het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte
+## <a name="impact"></a>Impact
 
 Het wijzigen van de servicelaag of reken grootte van voornamelijk omvat de service die de volgende stappen uitvoert:
 
@@ -48,24 +46,24 @@ Het wijzigen van de servicelaag of reken grootte van voornamelijk omvat de servi
 > [!IMPORTANT]
 > Er gaan geen gegevens verloren tijdens elke stap in de werk stroom. Zorg ervoor dat u enkele [pogings logica](sql-database-connectivity-issues.md) hebt geïmplementeerd in de toepassingen en onderdelen die Azure SQL database gebruiken terwijl de servicelaag wordt gewijzigd.
 
-### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Latentie van het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte
+## <a name="latency"></a>Latentie 
 
 De geschatte latentie voor het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte van één data base of elastische pool is als volgt:
 
-|Servicelaag|Basis, afzonderlijke Data Base,</br>Standaard (S0-S1)|Algemene elastische pool,</br>Standard (S2-S12), </br>Grootschalige </br>Algemeen afzonderlijke data base of elastische pool|Premium of Bedrijfskritiek afzonderlijke data base of elastische pool|
+|Serviceniveau|Basis, afzonderlijke Data Base,</br>Standaard (S0-S1)|Algemene elastische pool,</br>Standard (S2-S12), </br>Grootschalige </br>Algemeen afzonderlijke data base of elastische pool|Premium of Bedrijfskritiek afzonderlijke data base of elastische pool|
 |:---|:---|:---|:---|
 |**Basis enkele data base,</br> Standard (S0-S1)**|&bull; &nbsp;constante tijd latentie onafhankelijk van gebruikte ruimte</br>&bull; &nbsp;doorgaans, minder dan 5 minuten|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|
 |**Basic elastische pool, </br>Standard (S2-S12), </br>grootschalige, </br>Algemeen afzonderlijke data base of elastische pool**|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;constante tijd latentie onafhankelijk van gebruikte ruimte</br>&bull; &nbsp;doorgaans, minder dan 5 minuten|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|
 |**Premium of Bedrijfskritiek afzonderlijke data base of elastische pool**|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|
 
 > [!TIP]
-> Zie voor het controleren van bewerkingen in uitvoering: [bewerkingen beheren met behulp van de SQL rest API](https://docs.microsoft.com/rest/api/sql/operations/list), [bewerkingen beheren met CLI](/cli/azure/sql/db/op), [bewerkingen bewaken met T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) en deze twee Power shell-opdrachten: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) en [ Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Zie voor het controleren van bewerkingen in uitvoering: [bewerkingen beheren met behulp van de SQL rest API](https://docs.microsoft.com/rest/api/sql/operations/list), [bewerkingen beheren met CLI](/cli/azure/sql/db/op), [bewerkingen bewaken met T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) en deze twee Power shell-opdrachten: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) en [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
-### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Wijzigingen in de servicelaag of het opnieuw schalen van berekeningen annuleren
+## <a name="cancelling-changes"></a>Wijzigingen annuleren
 
 Een wijzigings-of COMPUTE-bewerking voor het opnieuw schalen van een service tier kan worden geannuleerd.
 
-#### <a name="azure-portal"></a>Azure-portal
+#### <a name="azure-portal"></a>Azure Portal
 
 Ga op de Blade overzicht van Data Base naar **meldingen** en klik op de tegel die aangeeft dat er een actieve bewerking is:
 
@@ -90,7 +88,7 @@ else {
 }
 ```
 
-### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Aanvullende overwegingen bij het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte
+## <a name="additional-considerations"></a>Aanvullende overwegingen
 
 - Als u een upgrade uitvoert naar een hogere servicelaag of reken grootte, wordt de maximale grootte van de data base niet verhoogd, tenzij u expliciet een grotere grootte (maxSize) opgeeft.
 - Om een Data Base te downgradeen, moet de gebruikte data base kleiner zijn dan de Maxi maal toegestane grootte van de doellaag en de grootte van de berekening.
@@ -100,7 +98,7 @@ else {
 - De mogelijkheden om de service te herstellen verschillen voor de verschillende servicelagen. Als u downgradet naar de laag **basis** , is er een lagere Bewaar periode voor back-ups. Zie [Azure SQL database back-ups](sql-database-automated-backups.md).
 - De nieuwe eigenschappen voor de database worden pas toegepast nadat de wijzigingen zijn voltooid.
 
-### <a name="billing-during-compute-rescaling"></a>Facturering tijdens het berekenen van de schaal
+## <a name="billing"></a>Billing 
 
 Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met de hoogste service laag + reken grootte die tijdens dat uur is toegepast, ongeacht het gebruik of het feit dat de data base minder dan een uur actief was. Als u bijvoorbeeld een enkele data base maakt en deze vijf minuten later verwijdert, wordt de factuur voor één data base uur weer gegeven.
 
@@ -114,7 +112,7 @@ Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met
 - De prijs van opslag voor één data base is de som van de hoeveelheid gegevens opslag en de opslag van Logboeken, vermenigvuldigd met de prijs van de opslag eenheid van de servicelaag. De kosten voor TempDB zijn opgenomen in de prijs van de vCore. Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
+> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie voor meer informatie, [bestandsruimte in Azure SQL Database beheren](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>Op DTU gebaseerd inkoop model
 
@@ -123,7 +121,11 @@ Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met
 - De prijs van extra opslag voor één data base is de extra opslag hoeveelheid vermenigvuldigd met de extra eenheids prijs voor opslag van de servicelaag. Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
+> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie voor meer informatie, [bestandsruimte in Azure SQL Database beheren](sql-database-file-space-management.md).
+
+### <a name="geo-replicated-database"></a>Geo-gerepliceerde data base
+
+Als u de grootte van de data base van een gerepliceerde secundaire Data Base wilt wijzigen, wijzigt u de grootte van de primaire data base. Deze wijziging wordt dan ook gerepliceerd en geïmplementeerd op de secundaire data base. 
 
 ## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>P11-en P15-beperkingen bij een maximale grootte van meer dan 1 TB
 

@@ -3,12 +3,13 @@ title: Functies verbinden met Azure Storage met Visual Studio code
 description: Meer informatie over het toevoegen van een uitvoer binding om uw functies te koppelen aan een Azure Storage wachtrij met Visual Studio code.
 ms.date: 06/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: baddb6f02fe3d9c66e3c52d826ffe70c151d313e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 5b7d7be7854a216b7cb7b610ea6d51fdc496a93f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227440"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845651"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Functies verbinden met Azure Storage met Visual Studio code
 
@@ -23,8 +24,13 @@ Voor de meeste bindingen is een opgeslagen connection string vereist die functie
 Voordat u aan dit artikel begint, moet aan de volgende vereisten worden voldaan:
 
 * Installeer de [Azure Storage-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage).
+
 * Installeer [Azure Storage Explorer](https://storageexplorer.com/). Storage Explorer is een hulp programma dat u gebruikt om wachtrij berichten te onderzoeken die zijn gegenereerd door de uitvoer binding. Storage Explorer wordt ondersteund op macOS-, Windows-en Linux-besturings systemen.
-* Installeer [.net core SLI-hulpprogram ma's](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x) (C# alleen projecten).
+
+::: zone pivot="programming-language-csharp"
+* Installeer [.net core SLI-hulpprogram ma's](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x).
+::: zone-end
+
 * Voltooi de stappen in [deel 1 van de Snelstartgids voor Visual Studio code](functions-create-first-function-vs-code.md). 
 
 In dit artikel wordt ervan uitgegaan dat u al bent aangemeld bij uw Azure-abonnement vanuit Visual Studio code. U kunt zich aanmelden door `Azure: Sign In` vanuit het opdracht palet uit te voeren. 
@@ -46,49 +52,162 @@ In het [vorige Quick](functions-create-first-function-vs-code.md)start-artikel h
 
 Omdat u een uitvoer binding voor de wachtrij opslag gebruikt, moet u de extensie opslag bindingen hebben geïnstalleerd voordat u het project uitvoert. 
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+::: zone-end
+
+::: zone pivot="programming-language-csharp"
 
 Met uitzonde ring van HTTP-en timer triggers worden bindingen geïmplementeerd als uitbreidings pakketten. Voer de volgende [DotNet-opdracht add package](/dotnet/core/tools/dotnet-add-package) uit in het Terminal venster om het opslag extensie pakket toe te voegen aan uw project.
 
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
----
+
+::: zone-end
+
 Nu kunt u de opslag-uitvoer binding toevoegen aan uw project.
 
 ## <a name="add-an-output-binding"></a>Een uitvoerbinding toevoegen
 
 In functies moet voor elk type binding een `direction`, `type`en een unieke `name` worden gedefinieerd in het bestand function. json. De manier waarop u deze kenmerken definieert, is afhankelijk van de taal van uw functie-app.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+::: zone-end
+
+::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
 
----
+::: zone-end
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Code toevoegen die gebruikmaakt van de uitvoerbinding
 
 Nadat de binding is gedefinieerd, kunt u de `name` van de binding gebruiken om deze te openen als een kenmerk in de functie handtekening. Als u een uitvoer binding gebruikt, hoeft u niet de Azure Storage SDK-code te gebruiken voor authenticatie, het ophalen van een wachtrij verwijzing of het schrijven van gegevens. De functies runtime en wachtrij-uitvoer binding voeren deze taken voor u uit.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+::: zone pivot="programming-language-javascript"
 
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+::: zone-end
+
+::: zone pivot="programming-language-typescript"
+
+Voeg code toe die gebruikmaakt van het `msg` uitvoer bindings object op `context.bindings` om een wachtrij bericht te maken. Voeg deze code toe vóór de instructie `context.res`.
+
+```typescript
+// Add a message to the Storage queue.
+context.bindings.msg = "Name passed to the function: " + name;
+```
+
+De functie moet op dit moment er als volgt uitzien:
+
+```javascript
+import { AzureFunction, Context, HttpRequest } from "@azure/functions"
+
+const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
+    context.log('HTTP trigger function processed a request.');
+    const name = (req.query.name || (req.body && req.body.name));
+
+    if (name) {
+        // Add a message to the Storage queue.
+        context.bindings.msg = "Name passed to the function: " + name; 
+        // Send a "hello" response.
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: "Hello " + (req.query.name || req.body.name)
+        };
+    }
+    else {
+        context.res = {
+            status: 400,
+            body: "Please pass a name on the query string or in the request body"
+        };
+    }
+};
+
+export default httpTrigger;
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-powershell"
+
+Voeg code toe die gebruikmaakt van de cmdlet `Push-OutputBinding` om tekst naar de wachtrij te schrijven met behulp van de `msg`-uitvoer binding. Voeg deze code toe voordat u de status OK instelt in de `if`-instructie.
+
+```powershell
+# Write the $name value to the queue.
+$outputMsg = "Name passed to the function: $name"
+Push-OutputBinding -name msg -Value $outputMsg
+```
+
+De functie moet op dit moment er als volgt uitzien:
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$name = $Request.Query.Name
+if (-not $name) {
+    $name = $Request.Body.Name
+}
+
+if ($name) {
+    # Write the $name value to the queue.
+    $outputMsg = "Name passed to the function: $name"
+    Push-OutputBinding -name msg -Value $outputMsg
+
+    $status = [HttpStatusCode]::OK
+    $body = "Hello $name"
+}
+else {
+    $status = [HttpStatusCode]::BadRequest
+    $body = "Please pass a name on the query string or in the request body."
+}
+
+# Associate values to output bindings by calling 'Push-OutputBinding'.
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = $status
+    Body = $body
+})
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
----
+::: zone-end
+
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-powershell"
+
+[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
+
+::: zone-end
 
 Er wordt een nieuwe wachtrij met de naam **outqueue** in uw opslag account gemaakt door de functions-runtime wanneer de uitvoer binding voor het eerst wordt gebruikt. U gebruikt Storage Explorer om te controleren of de wachtrij samen met het nieuwe bericht is gemaakt.
 
@@ -140,27 +259,13 @@ Nu is het tijd om de bijgewerkte functie-app opnieuw te publiceren naar Azure.
 
 U hebt resources gemaakt om deze snelstartgidsen te voltooien. Deze resources kunnen bij u in rekening worden gebracht, afhankelijk van de [accountstatus](https://azure.microsoft.com/account/) en [serviceprijzen](https://azure.microsoft.com/pricing/). Als u de resources niet meer nodig hebt, kunt u ze als volgt verwijderen:
 
-1. Druk in Visual Studio code op F1 om het opdracht palet te openen. In het opdracht palet zoekt en selecteert u `Azure Functions: Open in portal`.
-
-1. Kies uw functie-app en druk op ENTER. De pagina functie-app wordt geopend in de [Azure Portal](https://portal.azure.com).
-
-1. Selecteer op het tabblad **overzicht** de benoemde koppeling onder **resource groep**.
-
-    ![Selecteer op de pagina Functie-app de resourcegroep die u wilt verwijderen.](./media/functions-add-output-binding-storage-queue-vs-code/functions-app-delete-resource-group.png)
-
-1. Bekijk op de pagina **Resourcegroep** de lijst met opgenomen resources en controleer of dit de resources zijn die u wilt verwijderen.
- 
-1. Selecteer **Resourcegroep verwijderen** en volg de instructies.
-
-   Verwijderen kan enkele minuten duren. Wanneer dit is voltooid, verschijnt een aantal seconden een melding in beeld. U kunt ook het belpictogram boven aan de pagina selecteren om de melding te bekijken.
+[!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt uw HTTP-geactiveerde functie bijgewerkt om gegevens naar een opslag wachtrij te schrijven. Zie voor meer informatie over het ontwikkelen van functies [Azure functions ontwikkelen met Visual Studio code](functions-develop-vs-code.md).
-
-Schakel vervolgens Application Insights bewaking in voor uw functie-app:
+U hebt uw HTTP-geactiveerde functie bijgewerkt om gegevens naar een opslag wachtrij te schrijven. Vervolgens vindt u meer informatie over het ontwikkelen van functies met Visual Studio code:
 
 > [!div class="nextstepaction"]
-> [Application Insights-integratie inschakelen](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Azure Functions ontwikkelen met Visual Studio code](functions-develop-vs-code.md)
 
 [Azure-opslagverkenner]: https://storageexplorer.com/

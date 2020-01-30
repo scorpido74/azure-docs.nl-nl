@@ -1,31 +1,19 @@
 ---
 title: Ondersteunings matrix Azure Migrate
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen voor de Azure Migrate-service.
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/28/2020
 ms.author: raynew
-ms.openlocfilehash: fa6ea1ec1992c94d44531cda9802290edf8db301
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 5c29b80f30b024d34ec4e8f65e51b59fc70e8f93
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74669158"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846560"
 ---
 # <a name="azure-migrate-support-matrix"></a>Ondersteunings matrix Azure Migrate
 
 U kunt de [Azure migrate-service](migrate-overview.md) gebruiken voor het beoordelen en migreren van machines naar de Microsoft Azure Cloud. In dit artikel vindt u een overzicht van algemene ondersteunings instellingen en beperkingen voor Azure Migrate scenario's en implementaties.
-
-
-## <a name="azure-migrate-versions"></a>Azure Migrate versies
-
-Er zijn twee versies van de Azure Migrate-service:
-
-- **Huidige versie**: met deze versie kunt u nieuwe Azure migrate projecten maken, on-premises evalueren en analyses en migraties organiseren. [Meer informatie](whats-new.md#release-version-july-2019).
-- **Vorige versie**: voor klant die de vorige versie van Azure migrate gebruikt (alleen de evaluatie van on-premises virtuele VMware-machines wordt ondersteund), moet u nu de huidige versie gebruiken. In de vorige versie kunt u geen nieuwe Azure Migrate projecten maken of nieuwe detecties uitvoeren.
 
 ## <a name="supported-assessmentmigration-scenarios"></a>Ondersteunde scenario's voor evaluatie/migratie
 
@@ -71,6 +59,16 @@ Virtuele Hyper-V-machines | Evalueer Maxi maal 35.000 Hyper-V-Vm's in één proj
 
 Een project kan zowel virtuele VMware-machines als virtuele Hyper-V-machines bevatten, tot aan de evaluatie limieten.
 
+## <a name="azure-permissions"></a>Azure-machtigingen
+
+Azure Migrate werkt alleen met Azure als u deze machtigingen hebt voordat u computers gaat beoordelen en migreren.
+
+**Taak** | **Machtigingen** | **Details**
+--- | --- | ---
+Een Azure Migrate-project maken | Uw Azure-account heeft machtigingen nodig om een project te maken. | Ingesteld voor [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project)-, [Hyper-V-](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)of [fysieke servers](tutorial-prepare-physical.md#assign-permissions-to-create-project).
+Het Azure Migrate apparaat registreren | Azure Migrate maakt gebruik van een licht gewicht [Azure migrate apparaat](migrate-appliance.md) om virtuele VMware-machines te beoordelen met de evaluatie van Azure migrate server, en voor het uitvoeren van [agentloze migratie](server-migrate-overview.md) van virtuele vmware-machines met Azure migrate server migratie. Dit apparaat detecteert Vm's en verzendt de meta gegevens en prestatie gegevens van de virtuele machine naar Azure Migrate.<br/><br/> Tijdens de registratie worden door Azure Migrate twee Azure Active Directory-apps (Azure AD) gemaakt waarmee het apparaat uniek wordt geïdentificeerd, en moeten machtigingen voor het maken van deze apps zijn vereist.<br/><br/> -De eerste app communiceert met Azure Migrate service-eind punten.<br/><br/> -De tweede app heeft toegang tot een Azure Key Vault die tijdens de registratie is gemaakt voor het opslaan van Azure AD-App-gegevens en configuratie-instellingen voor het apparaat. | Ingesteld voor [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)-, [Hyper-V-](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)of [fysieke servers](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance).
+Een sleutel kluis maken voor VMware-agentloze migratie | Als u virtuele VMware-machines wilt migreren met agentloze Azure Migrate server migratie, maakt Azure Migrate een Key Vault voor het beheren van toegangs sleutels voor het replicatie-opslag account in uw abonnement. Als u de kluis wilt maken, stelt u machtigingen (eigenaar of Inzender en beheerder van gebruikers toegang) in voor de resource groep waarin het Azure Migrate project zich bevindt. | [Stel](tutorial-prepare-vmware.md#assign-role-assignment-permissions) machtigingen in.
+
 ## <a name="supported-geographies"></a>Ondersteunde geografs
 
 U kunt een Azure Migrate project maken in een aantal geographs. Hoewel u alleen projecten in deze geografi kunt maken, kunt u machines voor andere doel locaties evalueren of migreren. De Geografie van het project wordt alleen gebruikt om de gedetecteerde meta gegevens op te slaan.
@@ -78,7 +76,7 @@ U kunt een Azure Migrate project maken in een aantal geographs. Hoewel u alleen 
 **Geografie** | **Opslag locatie van meta gegevens**
 --- | ---
 Azure Government | US Gov - Virginia
-Azië en Stille Oceaan | Azië Azië-oost of Zuidoost
+Azië-Pacific | Azië Azië-oost of Zuidoost
 Australië | Australië-oost of Australië-zuidoost
 Brazilië | Brazilië - Zuid
 Canada | Canada-centraal of Canada-oost
@@ -104,6 +102,14 @@ Verenigde Staten | VS-midden, VS-West 2
 
 [Bekijk](migrate-support-matrix-hyper-v.md) de ondersteunings matrix voor de evaluatie van Azure migrate server en de server migratie voor Hyper-V-vm's.
 
+
+
+## <a name="azure-migrate-versions"></a>Azure Migrate versies
+
+Er zijn twee versies van de Azure Migrate-service:
+
+- **Huidige versie**: met deze versie kunt u nieuwe Azure migrate projecten maken, on-premises evalueren en analyses en migraties organiseren. [Meer informatie](whats-new.md#release-version-july-2019).
+- **Vorige versie**: voor klant die de vorige versie van Azure migrate gebruikt (alleen de evaluatie van on-premises virtuele VMware-machines wordt ondersteund), moet u nu de huidige versie gebruiken. In de vorige versie kunt u geen nieuwe Azure Migrate projecten maken of nieuwe detecties uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

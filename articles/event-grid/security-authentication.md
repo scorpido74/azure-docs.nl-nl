@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: dfa53acaf392e225873a40b05b8517de2f9780dc
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e8913c1f198c89bdcd779d2faf2706f9d4079c5c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169564"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846304"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid-beveiliging en verificatie 
 
@@ -87,7 +87,7 @@ Om te bewijzen dat eindpunt eigendom, echo wordt teruggestuurd de validatiecode 
 
 U moet een HTTP 200 OK-antwoord status code retour neren. HTTP 202-geaccepteerd wordt niet herkend als een geldig Event Grid antwoord op een abonnements validatie. De HTTP-aanvraag moet binnen 30 seconden worden voltooid. Als de bewerking niet binnen 30 seconden wordt voltooid, wordt de bewerking geannuleerd en wordt deze na vijf seconden opnieuw geprobeerd. Als alle pogingen mislukken, wordt deze behandeld als validatie-Handshake-fout.
 
-Of u kunt handmatig het abonnement valideren door een GET-aanvraag verzenden naar de URL van de validatie. Het gebeurtenis abonnement blijft in de status in behandeling totdat het is gevalideerd. De validatie-URL maakt gebruik van poort 553. Als uw firewall regels poort 553 blok keren, moeten de regels mogelijk worden bijgewerkt voor een geslaagde hand matige handshake.
+Of u kunt handmatig het abonnement valideren door een GET-aanvraag verzenden naar de URL van de validatie. Het gebeurtenisabonnement blijft in behandeling totdat gevalideerd. De validatie-URL maakt gebruik van poort 553. Als uw firewall regels poort 553 blok keren, moeten de regels mogelijk worden bijgewerkt voor een geslaagde hand matige handshake.
 
 Zie voor een voorbeeld van het verwerken van de abonnement-handshake-validatie: een [ C# voorbeeld](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
@@ -95,7 +95,7 @@ Zie voor een voorbeeld van het verwerken van de abonnement-handshake-validatie: 
 
 Bij het maken van het gebeurtenis abonnement wordt er een fout bericht weer gegeven zoals ' de poging om het gegeven eind punt HTTPS te valideren:\//your-endpoint-Here is mislukt. Ga naar https:\//aka.ms/esvalidation ' voor meer informatie. Dit geeft aan dat er een fout is opgetreden in de validatie-handshake. U kunt deze fout oplossen, controleert u of de volgende aspecten:
 
-* Hebt u controle over de toepassingscode in de doel-eindpunt? Bijvoorbeeld, als u een HTTP-trigger op basis van Azure-functie schrijft, hebt u toegang tot de toepassingscode wijzigingen aanbrengen?
+* Beheert u de toepassings code die wordt uitgevoerd in het doel eindpunt? Bijvoorbeeld, als u een HTTP-trigger op basis van Azure-functie schrijft, hebt u toegang tot de toepassingscode wijzigingen aanbrengen?
 * Hebt u toegang tot de toepassingscode, de ValidationCode op basis van handshake-mechanisme implementeren zoals wordt weergegeven in het bovenstaande voorbeeld.
 
 * Als u geen toegang tot de toepassingscode (bijvoorbeeld als u een service van derden die webhooks ondersteunen), kunt u de handmatige handshake-mechanisme. Zorg ervoor dat u de API-versie 2018-05-01-preview of hoger (installatie Event Grid-Azure CLI-extensie) voor het ontvangen van de validationUrl in de validatiegebeurtenis. Voor het voltooien van de handshake handmatig worden gevalideerd, haal de waarde van de `validationUrl` eigenschap en gaat u naar deze URL in uw webbrowser. Als de validatie is gelukt, ziet u een bericht in uw webbrowser validatie is gelukt. U ziet dat het gebeurtenisabonnement provisioningState is 'geslaagd'. 
@@ -348,6 +348,10 @@ Hieronder vindt u voorbeeld Event Grid roldefinities die toestaat dat gebruikers
 ```
 
 U kunt maken van aangepaste rollen met [PowerShell](../role-based-access-control/custom-roles-powershell.md), [Azure CLI](../role-based-access-control/custom-roles-cli.md), en [REST](../role-based-access-control/custom-roles-rest.md).
+
+## <a name="encryption-at-rest"></a>Versleuteling 'at rest'
+
+Alle gebeurtenissen of gegevens die door de Event Grid-Service naar schijf worden geschreven, worden versleuteld met een door micro soft beheerde sleutel, zodat deze op rest versleuteld is. Bovendien is de maximale tijds duur voor het behouden van gebeurtenissen of gegevens 24 uur in acht de [Event grid beleid voor opnieuw proberen](delivery-and-retry.md). Event Grid verwijdert automatisch alle gebeurtenissen of gegevens na 24 uur, of de TTL van de gebeurtenis, afhankelijk van wat kleiner is.
 
 ## <a name="next-steps"></a>Volgende stappen
 

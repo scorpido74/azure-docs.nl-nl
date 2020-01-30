@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6c22a8e2b479ed7d3a225bc649d89f5302d0f536
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0680309b13bf4499f0d153f44e575c1762b54d79
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472574"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773173"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Zelf studie: geëxporteerde sjabloon uit het Azure Portal gebruiken
 
@@ -26,7 +26,7 @@ U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en e
 
 Aan het einde van de vorige zelf studie had uw sjabloon de volgende JSON:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 
 Deze sjabloon werkt goed voor het implementeren van opslag accounts, maar mogelijk wilt u er meer resources aan toevoegen. U kunt een sjabloon uit een bestaande resource exporteren om de JSON voor die resource snel te verkrijgen.
 
@@ -36,7 +36,7 @@ Deze sjabloon werkt goed voor het implementeren van opslag accounts, maar mogeli
 1. Selecteer **Een resource maken**.
 1. In **de Marketplace doorzoeken**voert u **app service plan**in en selecteert u vervolgens **app service plan**.  Selecteer geen **app service plan (klassiek)**
 1. Selecteer **Maken**.
-1. voer het volgende in:
+1. Voer
 
     - **Abonnement**: selecteer uw Azure-abonnement.
     - **Resource groep**: Selecteer **nieuwe maken** en geef een naam op. Geef een andere naam op voor de resource groep dan het account dat u in deze zelfstudie reeks hebt gebruikt.
@@ -76,7 +76,7 @@ In het volgende voor beeld worden de toevoegingen aan uw sjabloon gemarkeerd. He
 
 Kopieer het hele bestand en vervang de sjabloon door de inhoud ervan.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json?range=1-77&highlight=28-31,50-69)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json" range="1-77" highlight="28-31,50-69":::
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 

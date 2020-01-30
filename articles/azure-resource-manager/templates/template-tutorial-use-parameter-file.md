@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: abafa00febe0431acf5c678cc179c6c114fa9179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472371"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773152"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Zelf studie: parameter bestanden gebruiken voor het implementeren van uw Resource Manager-sjabloon
 
@@ -26,7 +26,7 @@ U moet Visual Studio code hebben met de uitbrei ding Resource Manager tools en e
 
 De sjabloon bevat een groot aantal para meters die u tijdens de implementatie kunt opgeven. Aan het einde van de vorige zelf studie is uw sjabloon als volgt bekeken:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json":::
 
 Deze sjabloon werkt goed, maar nu wilt u de para meters die u doorgeeft, eenvoudig beheren voor de sjabloon.
 
@@ -36,13 +36,13 @@ Parameter bestanden zijn JSON-bestanden met een structuur die vergelijkbaar is m
 
 Maak in VS code een nieuw bestand met de volgende inhoud. Sla het bestand op met de naam **azuredeploy. para meters. dev. json**.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
 Dit bestand is het parameter bestand voor de ontwikkel omgeving. U ziet dat deze Standard_LRS gebruikt voor het opslag account, namen van resources met een **dev** -voor voegsel en het **omgevings** label instelt op **dev**.
 
 Maak opnieuw een nieuw bestand met de volgende inhoud. Sla het bestand op met de naam **azuredeploy. para meters. Prod. json**.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
 Dit bestand is het parameter bestand voor de productie omgeving. U ziet dat deze Standard_GRS gebruikt voor het opslag account, resources benoemt met een voor voegsel van **Contoso** en de **omgevings** label instelt op **productie**. In een echte productie omgeving zou u ook een app service willen gebruiken met een andere SKU dan gratis, maar we blijven die SKU gebruiken voor deze zelf studie.
 

@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: 9798cbd2b1c9dca489e843a7102f213757e4de75
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 27243f47df7da22ab4adda088bdf631c1030dd6c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771816"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845197"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interactief fouten opsporen in een Azure Machine Learning Compute-exemplaar met externe versus code
 
 In dit artikel leert u hoe u de externe Visual Studio code kunt instellen op een Azure Machine Learning Compute-exemplaar, zodat u uw code op een andere manier op een andere manier kan **debuggen** vanuit VS code. 
 
 > [!NOTE]
-> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**.
+> Reken instanties zijn alleen beschikbaar voor werk ruimten met een **Noord-Centraal VS**, * * VS-Oost 2 * *, **Europa-Noord** of **UK-Zuid**.
 
 + Een [Azure machine learning Compute-exemplaar](concept-compute-instance.md) is een volledig beheerd werk station in de Cloud voor gegevens wetenschappers en biedt beheer-en Enter prise-gereedheids mogelijkheden voor IT-beheerders. 
 

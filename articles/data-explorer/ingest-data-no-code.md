@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 11/17/2019
-ms.openlocfilehash: 2574f27b4b86bab276a56f95fda9fa2a1434c095
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 01/29/2020
+ms.openlocfilehash: c160f04ef7120a6c90991d8e6ecdf98b2f0d348e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995929"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836556"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Zelf studie: gegevens opnemen en controleren in azure Data Explorer 
 
@@ -330,7 +330,7 @@ Als u de gegevens van het activiteiten logboek wilt toewijzen aan de tabel, gebr
 2. Voeg het [updatebeleid](/azure/kusto/concepts/updatepolicy) toe aan de doeltabel. Met dit beleid wordt de query automatisch uitgevoerd op nieuwe opgenomen gegevens in de tussenliggende gegevens tabel *DiagnosticRawRecords* en worden de resultaten opgenomen in de tabel *DiagnosticMetrics* :
 
     ```kusto
-    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnostische logboeken](#tab/diagnostic-logs)
@@ -344,7 +344,7 @@ Als u de gegevens van het activiteiten logboek wilt toewijzen aan de tabel, gebr
         | mv-expand events = Records
         | where isnotempty(events.operationName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Result = tostring(events.resultType),
@@ -363,7 +363,7 @@ Als u de gegevens van het activiteiten logboek wilt toewijzen aan de tabel, gebr
 2. Voeg het [updatebeleid](/azure/kusto/concepts/updatepolicy) toe aan de doeltabel. Met dit beleid wordt de query automatisch uitgevoerd op nieuwe opgenomen gegevens in de tussenliggende gegevens tabel *DiagnosticRawRecords* en worden de resultaten opgenomen in de tabel *DiagnosticLogs* :
 
     ```kusto
-    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="activity-logstabactivity-logs"></a>[Activiteiten logboeken](#tab/activity-logs)
@@ -376,7 +376,7 @@ Als u de gegevens van het activiteiten logboek wilt toewijzen aan de tabel, gebr
         ActivityLogsRawRecords
         | mv-expand events = Records
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Category = tostring(events.category),
@@ -393,7 +393,7 @@ Als u de gegevens van het activiteiten logboek wilt toewijzen aan de tabel, gebr
 2. Voeg het [updatebeleid](/azure/kusto/concepts/updatepolicy) toe aan de doeltabel. Met dit beleid wordt de query automatisch uitgevoerd op nieuwe opgenomen gegevens in de tussenliggende gegevens tabel *ActivityLogsRawRecords* en worden de resultaten opgenomen in de tabel *ActivityLogs* :
 
     ```kusto
-    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 ---
 
@@ -409,7 +409,7 @@ Met Diagnostische instellingen voor Azure kunt u metrische gegevens en logboeken
 
     ![Een event hub maken](media/ingest-data-no-code/event-hub.png)
 
-1. Vul het formulier in met de volgende gegevens. Gebruik de standaardwaarden voor alle instellingen die niet worden vermeld in de volgende tabel.
+1. Vul in het formulier de volgende gegevens in. Gebruik de standaardwaarden voor alle instellingen die niet worden vermeld in de volgende tabel.
 
     **Instelling** | **Voorgestelde waarde** | **Beschrijving**
     |---|---|---|
@@ -595,7 +595,7 @@ Queryresultaten:
 
 |   |   |
 | --- | --- |
-|   |  aantal_ | any_Database | any_Table | any_IngestionSourcePath
+|   |  count_ | any_Database | any_Table | any_IngestionSourcePath
 |   | 00:06.156 | TestDatabase | DiagnosticRawRecords | https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip
 | | |
 

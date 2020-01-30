@@ -3,12 +3,12 @@ title: VMware-evaluatie ondersteuning in Azure Migrate
 description: Meer informatie over VMware-evaluatie ondersteuning in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 74dae71404fe827c9e19d5e3042afd2f98a7a5dd
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154683"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846173"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 
@@ -52,11 +52,11 @@ Naast het detecteren van computers, Azure Migrate: Server assessment kan apps, r
 --- | ---
 **vCenter Server** | Machines die u wilt detecteren en beoordelen, moeten worden beheerd door vCenter Server versie 5,5, 6,0, 6,5 of 6,7.
 **Machtigingen (beoordeling)** | vCenter Server alleen-lezen-account.
-**Machtigingen (app-detectie)** | vCenter Server account met alleen-lezen toegang en bevoegdheden ingeschakeld voor virtuele machines > gast bewerkingen.
+**Machtigingen (app-detectie)** | vCenter Server account met alleen-lezen toegang en bevoegdheden ingeschakeld voor **virtuele machines > gast bewerkingen**.
 **Machtigingen (visualisatie van afhankelijkheden)** | Center Server-account met alleen-lezen toegang en bevoegdheden ingeschakeld voor **virtuele machines** > - **gast bewerkingen**.
 
 
-## <a name="azure-migrate-appliance-requirements"></a>Vereisten van Azure Migrate apparaat
+## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-apparaatvereisten
 
 Azure Migrate gebruikt het [Azure migrate-apparaat](migrate-appliance.md) voor detectie en evaluatie. Het apparaat voor VMware wordt geïmplementeerd met behulp van een eicellen-sjabloon, geïmporteerd in vCenter Server. 
 
@@ -65,10 +65,11 @@ Azure Migrate gebruikt het [Azure migrate-apparaat](migrate-appliance.md) voor d
 
 ## <a name="port-access"></a>Poort toegang
 
-**Apparaat** | **Verbinding**
+**Apparaatconfiguratie** | **Verbinding**
 --- | ---
-Apparaat | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Uitgaande verbindingen op poort 443, 5671 en 5672 voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
+Apparaat | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL: ```https://<appliance-ip-or-name>:44368``` <br/><br/>Uitgaande verbindingen op poort 443 (HTTPS), 5671 en 5672 (AMQP) voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
 vCenter-server | Binnenkomende verbindingen op TCP-poort 443 zodat het apparaat configuratie-en prestatie-meta gegevens voor evaluaties kan verzamelen. <br/><br/> Het apparaat maakt standaard verbinding met vCenter op poort 443. Als de vCenter-Server op een andere poort luistert, kunt u de poort wijzigen bij het instellen van detectie.
+ESXi-hosts | **Alleen vereist voor de visualisatie van de [toepassings detectie](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#application-discovery) en de [afhankelijkheid van agents](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-dependency-visualization)** <br/><br/> Het apparaat maakt verbinding met ESXi-hosts op TCP-poort 443 voor het detecteren van toepassingen en het uitvoeren van een afhankelijkheids visualisatie zonder agents op de Vm's die op de hosts worden uitgevoerd.
 
 ## <a name="agent-based-dependency-visualization"></a>Visualisatie van afhankelijkheid op basis van een agent
 
@@ -80,14 +81,14 @@ Met de [visualisatie van afhankelijkheden](concepts-dependency-visualization.md)
 **Implementatie** | Voordat u een afhankelijkheids visualisatie implementeert, moet er een Azure Migrate project aanwezig zijn, met het Azure Migrate: Server assessment tool is toegevoegd aan het project. U kunt de visualisatie van de afhankelijkheid implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises machines te detecteren.<br/><br/> Visualisatie van afhankelijkheid is niet beschikbaar in Azure Government.
 **Serviceoverzicht** | Visualisatie op basis van een agent maakt gebruik van de [servicetoewijzing](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) oplossing in [Azure monitor logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview).<br/><br/> Als u wilt implementeren, koppelt u een nieuwe of bestaande Log Analytics-werk ruimte aan een Azure Migrate-project.
 **Log Analytics-werkruimte** | De werk ruimte moet zich in hetzelfde abonnement bevinden als het Azure Migrate-project.<br/><br/> Azure Migrate ondersteunt werk ruimten die zich in het VS-Oost, Zuidoost-Azië en Europa-west regio's bevinden.<br/><br/>  De werk ruimte moet zich in een regio bevinden waarin [servicetoewijzing wordt ondersteund](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> De werk ruimte voor een Azure Migrate project kan niet worden gewijzigd nadat deze is toegevoegd.
-**Kosten** | Voor de Servicetoewijzing oplossing worden geen kosten in rekening gebracht voor de eerste 180 dagen (vanaf de dag dat u de werk ruimte Log Analytics aan het Azure Migrate project hebt gekoppeld).<br/><br/> Na 180 dagen zijn de standaard Log Analytics kosten van toepassing.<br/><br/> Bij het gebruik van een andere oplossing dan Servicetoewijzing in de gekoppelde Log Analytics werk ruimte worden standaard Log Analytics kosten in rekening gebracht.<br/><br/> Als u het Azure Migrate project verwijdert, wordt de werk ruimte niet verwijderd. Nadat het project is verwijderd, is Servicetoewijzing niet gratis en worden alle knoop punten in rekening gebracht volgens de betaalde laag van Log Analytics werk ruimte.
+**Belastingen** | Voor de Servicetoewijzing oplossing worden geen kosten in rekening gebracht voor de eerste 180 dagen (vanaf de dag dat u de werk ruimte Log Analytics aan het Azure Migrate project hebt gekoppeld).<br/><br/> Na 180 dagen zijn de standaard Log Analytics kosten van toepassing.<br/><br/> Bij het gebruik van een andere oplossing dan Servicetoewijzing in de gekoppelde Log Analytics werk ruimte worden standaard Log Analytics kosten in rekening gebracht.<br/><br/> Als u het Azure Migrate project verwijdert, wordt de werk ruimte niet verwijderd. Nadat het project is verwijderd, is Servicetoewijzing niet gratis en worden alle knoop punten in rekening gebracht volgens de betaalde laag van Log Analytics werk ruimte.
 **Middelen** | Voor visualisatie op basis van een agent moet u twee agents installeren op elke computer die u wilt analyseren.<br/><br/> - [micro soft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - - [afhankelijkheids agent](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
 **Verbinding met internet** | Als computers niet zijn verbonden met internet, moet u de Log Analytics-gateway hierop installeren.
 
 
 ## <a name="agentless-dependency-visualization"></a>Visualisatie van afhankelijkheid zonder agent
 
-Deze optie is momenteel in preview. [Meer informatie](how-to-create-group-machine-dependencies-agentless.md). In de volgende tabel vindt u een overzicht van de vereisten.
+Deze optie is momenteel beschikbaar als preview-versie. [Meer informatie](how-to-create-group-machine-dependencies-agentless.md). In de volgende tabel vindt u een overzicht van de vereisten.
 
 **Vereiste** | **Details**
 --- | ---

@@ -10,16 +10,16 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 1039b72d5834ff837bcddd34d1d2c518364f96ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 483524520962b46a7c6cb1c1829c4a26227a1a8f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447621"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844276"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Snelstart: Een knowledge base maken in QnA Maker met behulp van Go
 
-In deze snelstart wordt beschreven hoe u programmatisch een voorbeeld van een QnA Maker-knowledge base kunt maken. Met QnA Maker worden automatisch vragen en antwoorden opgehaald uit semi-gestructureerde inhoud, zoals veelgestelde vragen, vanuit [gegevensbronnen](../Concepts/data-sources-supported.md). Het model voor de knowledge base wordt gedefinieerd in de JSON die in de hoofdtekst van de API-aanvraag wordt verzonden.
+In deze snelstart wordt beschreven hoe u programmatisch een voorbeeld van een QnA Maker-knowledge base kunt maken. Met QnA Maker worden automatisch vragen en antwoorden opgehaald uit semi-gestructureerde inhoud, zoals veelgestelde vragen, vanuit [gegevensbronnen](../Concepts/knowledge-base.md). Het model voor de knowledge base wordt gedefinieerd in de JSON die in de hoofdtekst van de API-aanvraag wordt verzonden.
 
 In deze snelstart worden QnA Maker-API's aangeroepen:
 * [KB maken](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
@@ -49,7 +49,7 @@ Voeg na de bovenstaande vereiste afhankelijkheden de vereiste constanten toe voo
 
 Stel de volgende waarden in:
 
-* `<your-qna-maker-subscription-key>`: de **sleutel** is een teken reeks van 32 en is beschikbaar in de Azure Portal op de QnA Maker resource op de pagina snel starten. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
+* `<your-qna-maker-subscription-key>`: de **sleutel** is een teken reeks van 32 en is beschikbaar in de Azure Portal, op de QnA Maker resource, op de pagina Quick Start. Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
 * `{your-resource-name}`: de **naam** van uw resource wordt gebruikt om de URL voor het ontwerpen van eind punten voor het ontwerpen te maken, in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
 
 [!code-go[Add the required constants](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=13-20 "Add the required constants")]

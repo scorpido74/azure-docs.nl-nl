@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098624"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844535"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Zelf studie: publiceren, lokaal abonneren op gebeurtenissen
 
@@ -45,9 +45,9 @@ Er zijn verschillende manieren om modules op een IoT Edge apparaat te implemente
 1. Klik op de ID van het doel apparaat in de lijst met apparaten
 1. Selecteer **Modules instellen**. Laat de pagina geopend. U gaat verder met de stappen in de volgende sectie.
 
-### <a name="configure-a-deployment-manifest"></a>Een implementatie manifest configureren
+### <a name="configure-a-deployment-manifest"></a>Een manifest van de implementatie configureren
 
-Een implementatie manifest is een JSON-document waarin wordt beschreven welke modules moeten worden geïmplementeerd, hoe gegevens stromen tussen de modules en gewenste eigenschappen van de module apparaatdubbels. De Azure Portal bevat een wizard die u helpt bij het maken van een implementatie manifest, in plaats van het JSON-document hand matig te bouwen.  Er zijn drie stappen: **modules toevoegen**, **routes opgeven**en de **implementatie controleren**.
+Het manifest voor een implementatie is een JSON-document waarin wordt beschreven welke modules te implementeren, hoe gegevens stromen tussen de modules, en de gewenste eigenschappen van de moduledubbels. De Azure Portal bevat een wizard die u helpt bij het maken van een implementatie manifest, in plaats van het JSON-document hand matig te bouwen.  Er drie stappen: **modules toevoegen**, **routes opgeven**, en **implementatie bekijken**.
 
 ### <a name="add-modules"></a>Modules toevoegen
 
@@ -59,11 +59,13 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
    * **Afbeeldings-URI**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Opties**voor het maken van containers:
 
+   [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
+
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -127,7 +129,7 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
 ### <a name="submit-the-deployment-request"></a>De implementatie aanvraag verzenden
 
 1. In het gedeelte beoordeling ziet u het JSON-implementatie manifest dat is gemaakt op basis van uw selecties in de vorige sectie. Controleer of de modules: **eventgridmodule** en **Subscriber** in de JSON worden weer gegeven. 
-1. Controleer uw implementatie gegevens en selecteer vervolgens **verzenden**. Nadat u de implementatie hebt verzonden, keert u terug naar de pagina **apparaat** .
+1. Lees de informatie van uw implementatie, en selecteer vervolgens **indienen**. Nadat u de implementatie hebt verzonden, keert u terug naar de pagina **apparaat** .
 1. Controleer in de **sectie modules**of zowel de **eventgrid** -als de **abonnee** modules worden weer gegeven. Controleer of de **opgegeven in-implementatie** en **gerapporteerd door** de kolom apparaat is ingesteld op **Ja**.
 
     Het kan even duren voordat de module op het apparaat is gestart en vervolgens weer aan IoT Hub is gemeld. Vernieuw de pagina om de bijgewerkte status weer te geven.
@@ -178,6 +180,8 @@ Als uitgever van een gebeurtenis moet u een event grid-onderwerp maken. In Azure
 ## <a name="create-an-event-subscription"></a>Een gebeurtenisabonnement maken
 
 Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp worden gepubliceerd. Als u een gebeurtenis wilt ontvangen, moet u een Event Grid-abonnement maken voor een onderwerp van belang.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Maak Subscription. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
@@ -307,4 +311,5 @@ In deze zelf studie hebt u een event grid-onderwerp,-abonnement en-gepubliceerde
 - Volg de [documentatie](configure-client-auth.md) voor het configureren van client verificatie
 - Door sturen van gebeurtenissen naar Azure Functions in de Cloud door deze [zelf studie](pub-sub-events-webhook-cloud.md) te volgen
 - [Reageren op Blob Storage gebeurtenissen op IoT Edge](react-blob-storage-events-locally.md)
+- [Onderwerpen en abonnementen bewaken aan de rand](monitor-topics-subscriptions.md)
 

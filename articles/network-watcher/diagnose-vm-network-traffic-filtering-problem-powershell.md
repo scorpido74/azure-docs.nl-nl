@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: In deze snelstart leert u hoe u een diagnose uitvoert voor een probleem met netwerkverkeersfilters op een virtuele machine met behulp van de functie IP-stroomverificatie in Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -16,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 756c8d4d7e227d477c3031aab0d0a478454c35bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5438cc07670393cab69344544ea1b68c46c42bd6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276055"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844021"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Snelstart: Diagnose uitvoeren voor een probleem met netwerkverkeersfilters op een virtuele machine - Azure PowerShell
 
@@ -35,11 +34,11 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u Power shell lokaal wilt installeren en gebruiken, is voor deze Quick Start de module Azure PowerShell `Az` vereist. Voer `Get-Module -ListAvailable Az` uit om na te gaan welke versie er is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u Power shell lokaal wilt installeren en gebruiken, is voor deze Quick Start de module Azure PowerShell `Az` vereist. Voer `Get-Module -ListAvailable Az` uit om te zien welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 
 
-## <a name="create-a-vm"></a>Een virtuele machine maken
+## <a name="create-a-vm"></a>Een VM maken
 
 Voordat u een VM kunt maken, maakt u eerst een resourcegroep die de VM bevat. Maak een resourcegroep met behulp van de opdracht [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
 
@@ -178,7 +177,7 @@ De geretourneerde uitvoer bevat de volgende tekst voor de regel **AllowInternetO
   },
 ```
 
-In de uitvoer ziet u dat **DestinationAddressPrefix** **Internet** is. Het is niet duidelijk hoe 13.107.21.200, het adres dat u hebt getest in [IP-stroomverificatie gebruiken](#use-ip-flow-verify), is gerelateerd aan **Internet**. Er worden verschillende adresvoorvoegsels weergegeven onder **ExpandedDestinationAddressPrefix**. Een van de voorvoegsels in de lijst is **12.0.0.0/6**, dat het bereik met IP-adressen 12.0.0.1-15.255.255.254 bevat. Aangezien 13.107.21.200 zich binnen dit adresbereik bevindt, is uitgaand verkeer toegestaan op basis van de regel **AllowInternetOutBound**. Daarnaast worden in de met **geretourneerde uitvoer geen regels met hogere**prioriteit`Get-AzEffectiveNetworkSecurityGroup` (lagere waarde) weergegeven op basis waarvan deze regel wordt genegeerd. Als u uitgaande communicatie naar 13.107.21.200 wilt weigeren, kunt u een beveiligingsregel met een hogere prioriteit toevoegen op basis waarvan uitgaand verkeer naar het IP-adres wordt geweigerd op poort 80.
+In de uitvoer ziet u dat **DestinationAddressPrefix** **Internet** is. Het is niet duidelijk hoe 13.107.21.200, het adres dat u hebt getest in [IP-stroomverificatie gebruiken](#use-ip-flow-verify), is gerelateerd aan **Internet**. Er worden verschillende adresvoorvoegsels weergegeven onder **ExpandedDestinationAddressPrefix**. Een van de voorvoegsels in de lijst is **12.0.0.0/6**, dat het bereik met IP-adressen 12.0.0.1-15.255.255.254 bevat. Aangezien 13.107.21.200 zich binnen dit adresbereik bevindt, is uitgaand verkeer toegestaan op basis van de regel **AllowInternetOutBound**. Daarnaast worden in de met `Get-AzEffectiveNetworkSecurityGroup` geretourneerde uitvoer geen regels met hogere **prioriteit** (lagere waarde) weergegeven op basis waarvan deze regel wordt genegeerd. Als u uitgaande communicatie naar 13.107.21.200 wilt weigeren, kunt u een beveiligingsregel met een hogere prioriteit toevoegen op basis waarvan uitgaand verkeer naar het IP-adres wordt geweigerd op poort 80.
 
 Toen u de opdracht `Test-AzNetworkWatcherIPFlow` in [IP-stroomverificatie gebruiken](#use-ip-flow-verify) uitvoerde om uitgaande communicatie van 172.131.0.100 te testen, bleek uit de uitvoer dat communicatie wordt geweigerd op basis van de regel **DefaultOutboundDenyAll**. De regel **DefaultOutboundDenyAll** is gelijk aan de regel **DenyAllOutBound** die wordt weergegeven in de volgende uitvoer via de opdracht `Get-AzEffectiveNetworkSecurityGroup`:
 

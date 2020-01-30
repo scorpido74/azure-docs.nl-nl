@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van Ansible voor het configureren 
 keywords: ansible, azure, devops, bash, Cloud shell, Playbook, AKS, container, AKS, kubernetes, Azure Active Directory, RBAC
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: 1be123eb06bd2679169478daf27a7148d2a8b055
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 5fac42383ee56318cc4b8f39323c02d05853dbb6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156870"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836963"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Zelf studie: functies op basis van op rollen gebaseerde toegangs beheer (RBAC) configureren in azure Kubernetes service (AKS) met behulp van Ansible
 
@@ -156,7 +156,7 @@ subjects:
   name: <your-aad-account>
 ```
 
-Vervang de tijdelijke aanduiding `&lt;your-aad-account>` door de [object-id](#get-the-azure-ad-object-id)van uw Azure AD-Tenant.
+Vervang de tijdelijke aanduiding `<your-aad-account>` door de [object-id](#get-the-azure-ad-object-id)van uw Azure AD-Tenant.
 
 Sla de volgende Playbook op die uw nieuwe rol implementeert naar AKS-als `aks-kube-deploy.yml`:
 

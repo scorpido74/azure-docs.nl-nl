@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 756363d0c46dee6f7d0037fda48ab22dbdaeb0b0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514296"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846210"
 ---
 # <a name="what-is-personalizer"></a>Wat is Personalizer?
 
@@ -43,7 +43,7 @@ De __actie__ die wordt weer gegeven voor de gebruiker, wordt gekozen met machine
 
 Enkele voorbeeld scenario's zijn:
 
-|Inhoudstype|**Acties (met functies)**|**Context functies**|Geretourneerde actie-ID van beloning<br>(deze inhoud weer geven)|
+|Inhouds type|**Acties (met functies)**|**Context functies**|Geretourneerde actie-ID van beloning<br>(deze inhoud weer geven)|
 |--|--|--|--|
 |Nieuws lijst|a. `The president...` (National, politiek, [tekst])<br>b. `Premier League ...` (globaal, sport, [tekst, afbeelding, video])<br> c. `Hurricane in the ...` (regionaal, weer, [tekst, afbeelding]|Nieuws van apparaten lezen<br>Maand of seizoen<br>|een `The president...`|
 |Lijst met films|1. `Star Wars` (1977, [actie, Adventure, fictief], George Lucas)<br>2. `Hoop Dreams` (1994, [documentaire, sport], Stefan Jeroen<br>3. `Casablanca` (1942, [Romaans, drama, War], Michael Curtiz)|De film van het apparaat wordt bekeken<br>scherm grootte<br>Type gebruiker<br>|3. `Casablanca`|
@@ -99,6 +99,6 @@ Omdat persoonlijke gegevens in bijna realtime worden gebruikt om het afzonderlij
 * [Wat is versterking van het onderwijs?](concepts-reinforcement-learning.md)
 * [Meer informatie over de functies en acties voor de rang aanvraag](concepts-features.md)
 * [Meer informatie over het bepalen van de score voor de belonings aanvraag](concept-rewards.md)
-* [Snelstartgidsen]()
-* [Zelfstudie]()
+* [Snelstartgidsen](sdk-learning-loop.md)
+* [Zelfstudie](tutorial-use-azure-notebook-generate-loop-data.md)
 * [De interactieve demo gebruiken](https://personalizationdemo.azurewebsites.net/)

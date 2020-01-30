@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 83b4e1e10af8e398f6671f6b2561485bfdb6b7f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87c0b62cec0b61bfc52ec31233ca7c1f947fdd98
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432486"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846128"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor instellen voor uw python-toepassing (preview-versie)
 
@@ -136,7 +136,7 @@ Dit zijn de Exporters die opentellingen bieden die zijn gekoppeld aan de typen t
 
 4. Wanneer u nu het python-script uitvoert, moet u nog steeds worden gevraagd om waarden in te voeren, maar alleen de waarde wordt afgedrukt in de shell. De gemaakte `SpanData` worden naar Azure Monitor verzonden. U kunt de verzonden gegevens over het bereik vinden onder `dependencies`.
 
-5. Voor informatie over de bemonstering van opentellingen bekijkt u de [bemonstering in Opentellingen](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-fixed-rate-sampling-in-opencensus-python).
+5. Voor informatie over de bemonstering van opentellingen bekijkt u de [bemonstering in Opentellingen](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
 
 6. Voor meer informatie over de correlatie van de telemetrie in uw traceer gegevens bekijkt u de correlatie van opentellingen [telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python).
 

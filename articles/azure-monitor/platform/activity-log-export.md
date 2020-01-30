@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e46574ae7f8faa67c2cc0c1afef1917270f69175
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715897"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845461"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-activiteiten logboek exporteren naar opslag of Azure Event Hubs
 
@@ -36,9 +36,10 @@ Het archiveren van het activiteiten logboek naar een opslag account is handig al
 ### <a name="storage-account"></a>Opslagaccount
 Als u uw activiteiten logboek archiveert, moet u [een opslag account maken](../../storage/common/storage-account-create.md) als u er nog geen hebt. Gebruik geen bestaand opslag account met andere, niet-bewakings gegevens die erin zijn opgeslagen, zodat u de toegang tot bewakings gegevens beter kunt beheren. Als u ook logboeken en metrische gegevens naar een opslag account archiveert, kunt u ervoor kiezen om hetzelfde opslag account te gebruiken om alle bewakings gegevens op een centrale locatie te bewaren.
 
-Het opslag account hoeft zich niet in hetzelfde abonnement te benemen als het abonnement dat Logboeken verzendt, zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen.
-> [!NOTE]
->  U kunt momenteel geen gegevens archiveren naar een opslag account dat zich achter een beveiligd virtueel netwerk bevindt.
+Het opslag account hoeft zich niet in hetzelfde abonnement te benemen als het abonnement dat Logboeken verzendt, zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen. 
+
+> [!TIP]
+> Zie [Azure Storage firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) om toegang te bieden tot een opslag account achter een beveiligd virtueel netwerk.
 
 ### <a name="event-hubs"></a>Event Hubs
 Als u uw activiteiten logboek naar een Event Hub verzendt, moet u [een event hub maken](../../event-hubs/event-hubs-create.md) als u er nog geen hebt. Als u eerder activiteiten logboek gebeurtenissen hebt gestreamd naar deze Event Hubs naam ruimte, wordt dat Event Hub opnieuw gebruikt.

@@ -4,12 +4,12 @@ description: Meer informatie over hoe Azure App Service het besturings systeem e
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1a56fed04399325be315d8d977e5a72223bddac5
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 02fa89305c19ee4ec5e151ad36f7f5fa3e130f63
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688571"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846256"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patches voor besturings systeem en uitvoering in Azure App Service
 
@@ -83,6 +83,7 @@ In de volgende tabel ziet u hoe de versies van Windows en de taal runtime worden
 | PHP-versie | Voer op `https://<appname>.scm.azurewebsites.net/DebugConsole`de volgende opdracht uit in de opdracht prompt: <br> `php --version` |
 | Standaard versie van node. js | Voer in het [Cloud shell](../cloud-shell/overview.md)de volgende opdracht uit: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Python-versie | Voer op `https://<appname>.scm.azurewebsites.net/DebugConsole`de volgende opdracht uit in de opdracht prompt: <br> `python --version` |  
+| Java-versie | Voer op `https://<appname>.scm.azurewebsites.net/DebugConsole`de volgende opdracht uit in de opdracht prompt: <br> `java -version` |  
 
 > [!NOTE]  
 > Toegang tot de register locatie `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, waarbij informatie over [KB-patches](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) wordt opgeslagen, is vergrendeld.

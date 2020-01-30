@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 3624c8fd8b15f6d35917f4ead676221d93a26ddc
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dfa7681b43bd18e15ee929156ab9a45bb9790c5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646486"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845582"
 ---
 # <a name="plan-virtual-networks"></a>Virtuele netwerken plannen
 
@@ -39,9 +39,9 @@ Alle Azure-resources worden gemaakt in een Azure-regio en-abonnement. Een resour
 
 ## <a name="subscriptions"></a>Abonnementen
 
-U kunt zoveel virtuele netwerken implementeren als vereist in elk abonnement, tot aan de [limiet](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Sommige organisaties hebben bijvoorbeeld verschillende abonnementen voor verschillende afdelingen. Zie voor meer informatie en overwegingen met betrekking tot abonnementen het beheer van [abonnementen](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy).
+U kunt zoveel virtuele netwerken implementeren als vereist in elk abonnement, tot aan de [limiet](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Sommige organisaties hebben bijvoorbeeld verschillende abonnementen voor verschillende afdelingen. Zie voor meer informatie en overwegingen met betrekking tot abonnementen het beheer van [abonnementen](/azure/cloud-adoption-framework/reference/migration-with-enterprise-scaffold#define-your-hierarchy).
 
-## <a name="segmentation"></a>Segmentatie
+## <a name="segmentation"></a>Segmentering
 
 U kunt meerdere virtuele netwerken per abonnement en per regio maken. U kunt meerdere subnetten binnen elk virtueel netwerk maken. De volgende overwegingen helpen u bij het bepalen van het aantal virtuele netwerken en subnetten dat u nodig hebt:
 

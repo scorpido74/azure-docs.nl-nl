@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 9d71dd854c9a5059c2d0a48f57ad3ba5bb1eddf9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721316"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844935"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Meldt zich aan Azure Database for PostgreSQL-één server
 Met Azure Database for PostgreSQL kunt u de standaard logboeken van post gres configureren en gebruiken. De logboeken kunnen worden gebruikt om configuratie fouten en suboptimale prestaties te identificeren, op te lossen en te herstellen. Logboek registratie-informatie die u kunt configureren en toegang bevat fouten, query gegevens, autovacuüm records, verbindingen en controle punten. (Toegang tot transactie Logboeken is niet beschikbaar).
@@ -69,7 +69,7 @@ Ga naar het artikel [Diagnostische instellingen](../azure-monitor/platform/diagn
 
 ### <a name="access-diagnostic-logs"></a>Toegang tot diagnostische logboeken
 
-De manier waarop u de logboeken opent, is afhankelijk van het eind punt dat u kiest. Voor Azure Storage wordt het schema beschreven in het artikel [opslag account voor logboeken](../azure-monitor/platform/resource-logs-collect-storage.md) . Zie het artikel [Stream Azure logs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) voor Event hubs.
+De manier waarop u de logboeken opent, is afhankelijk van het eind punt dat u kiest. Zie het artikel over het [opslag account voor logboeken](../azure-monitor/platform/resource-logs-collect-storage.md) voor Azure Storage. Zie het artikel [Stream Azure logs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) voor Event hubs.
 
 Voor Azure Monitor-logboeken worden logboeken verzonden naar de werk ruimte die u hebt geselecteerd. De post gres-Logboeken gebruiken de **AzureDiagnostics** -verzamelings modus, zodat ze kunnen worden opgevraagd vanuit de tabel AzureDiagnostics. De velden in de tabel worden hieronder beschreven. Meer informatie over het uitvoeren van query's en waarschuwingen vindt u in het overzicht van de [Azure monitor-logboeken](../azure-monitor/log-query/log-query-overview.md) .
 
@@ -78,7 +78,7 @@ Hier volgen enkele query's die u kunt proberen om aan de slag te gaan. U kunt wa
 Zoeken naar alle post gres-logboeken voor een bepaalde server in de afgelopen dag
 ```
 AzureDiagnostics
-| where LogicalServerName_s == 'myservername'
+| where LogicalServerName_s == "myservername"
 | where TimeGenerated > ago(1d) 
 ```
 

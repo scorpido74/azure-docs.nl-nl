@@ -1,11 +1,9 @@
 ---
-title: Pakketinspecties uitvoeren met Azure Network Watcher | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u gebruik van Network Watcher om uit te voeren grondige inspecties van pakketten die worden verzameld van een virtuele machine
+title: Pakket inspectie met Azure Network Watcher | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u Network Watcher kunt gebruiken om grondige pakket inspecties uit te voeren die zijn verzameld van een virtuele machine
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
@@ -13,35 +11,35 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7f3fc69bbfd881a26ceb25705852558b66c60153
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64716898"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845083"
 ---
-# <a name="packet-inspection-with-azure-network-watcher"></a>Pakketinspecties uitvoeren met Azure Network Watcher
+# <a name="packet-inspection-with-azure-network-watcher"></a>Pakket inspectie met Azure Network Watcher
 
-Met behulp van de functie voor het vastleggen van pakketten van Network Watcher, kunt u starten en beheren van opnamen sessies op uw Azure Virtual machines uit de portal, PowerShell of CLI, en via een programma via de SDK en REST-API. Pakketopname kunt u soort scenario's waarvoor niveau pakketgegevens door te geven van de informatie in een indeling die ongewijzigd worden gebruikt. Gebruik te maken van een gratis hulpprogramma's voor het controleren van de gegevens, kunt u onderzoeken communicatie verzonden naar en van uw VM's en krijg inzicht in uw netwerkverkeer. Sommige toepassingen voorbeeld van pakket vastleggen van gegevens zijn onder andere: netwerk of de toepassing problemen onderzoeken, netwerk pogingen tot misbruik en inbraakdetectie te detecteren of naleving van regelgeving te onderhouden. In dit artikel laten we zien hoe een packet capture-bestand geleverd door de Network Watcher te openen met behulp van een populaire open-source-hulpprogramma. We sturen ook voorbeelden die laten zien hoe u een latentie van de verbinding berekenen, abnormaal verkeer wordt geïdentificeerd en netwerken statistieken onderzoeken.
+Met de functie voor het vastleggen van pakketten van Network Watcher kunt u in de portal, Power shell, CLI en programmatisch met de SDK en REST API Capture-sessies initiëren en beheren op uw Azure-Vm's. Met pakket opname kunt u scenario's aanpakken waarvoor gegevens op pakket niveau zijn vereist door de informatie in een gemakkelijk bruikbare indeling op te geven. Gebruik gratis hulpprogram ma's voor het inspecteren van de gegevens, u kunt de communicatie onderzoeken die naar en van uw Vm's worden verzonden en inzicht krijgen in uw netwerk verkeer. Een voor beeld van het gebruik van gegevens voor pakket opname is: het onderzoeken van problemen met het netwerk of de toepassing, het detecteren van misbruik van het netwerk en pogingen tot inbraak of het behouden van naleving van regelgeving. In dit artikel laten we zien hoe u een pakket opname bestand opent dat is verschaft door Network Watcher met behulp van een populaire open source-hulp programma. Er worden ook voor beelden gegeven van het berekenen van de latentie van een verbinding, het identificeren van abnormaal verkeer en het onderzoeken van netwerk statistieken.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel gaat via bepaalde scenario's met vooraf geconfigureerde op een pakketopname die eerder is uitgevoerd. Deze scenario's worden mogelijkheden die aan de hand van een pakketopname kunnen worden geopend. In dit scenario wordt gebruikgemaakt van [WireShark](https://www.wireshark.org/) om te controleren van de pakketopname.
+Dit artikel doorloopt enkele vooraf geconfigureerde scenario's voor een pakket opname die eerder is uitgevoerd. Deze scenario's illustreren de mogelijkheden die toegankelijk zijn door een pakket opname te bekijken. In dit scenario wordt [WireShark](https://www.wireshark.org/) gebruikt om de pakket opname te controleren.
 
-In dit scenario wordt ervan uitgegaan dat u al een pakketopname uitgevoerd op een virtuele machine. Voor meer informatie over het maken van een pakket vastleggen Bezoek [beheren pakket worden vastgelegd met de portal](network-watcher-packet-capture-manage-portal.md) of met REST recentst [pakket vastgelegd beheren met REST-API](network-watcher-packet-capture-manage-rest.md).
+In dit scenario wordt ervan uitgegaan dat u een pakket opname al hebt uitgevoerd op een virtuele machine. Ga voor meer informatie over het maken van een pakket opname met behulp van [de portal](network-watcher-packet-capture-manage-portal.md) of met de rest door [pakket opnames beheren met rest API](network-watcher-packet-capture-manage-rest.md)te bezoeken.
 
 ## <a name="scenario"></a>Scenario
 
-In dit scenario u:
+In dit scenario kunt u het volgende doen:
 
-* Bekijk een pakketopname
+* Een pakket opname controleren
 
-## <a name="calculate-network-latency"></a>De netwerklatentie berekenen
+## <a name="calculate-network-latency"></a>Netwerk latentie berekenen
 
-In dit scenario, laten we zien hoe u om de initiële Round Trip Time (RTT) van een Transmission Control Protocol (TCP)-conversatie plaatsvinden tussen twee eindpunten weer te geven.
+In dit scenario laten we zien hoe u de eerste round trip-tijd (RTT) kunt weer geven van een Transmission Control Protocol (TCP)-conversatie tussen twee eind punten.
 
-Wanneer een TCP-verbinding tot stand is gebracht, volgt u de eerste drie pakketten worden verzonden in de verbinding met een patroon dat vaak aangeduid als de handshake drie richtingen. Aan de hand van de eerste twee pakketten worden verzonden in deze-handshake wordt een eerste aanvraag van de client en een reactie van de server, kunnen we de latentie berekenen wanneer deze verbinding tot stand is gebracht. Deze latentie wordt aangeduid als de Round Trip Time (RTT). Raadpleeg de volgende bronnen voor meer informatie over het TCP-protocol en de handshake drie richtingen. https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+Wanneer een TCP-verbinding tot stand is gebracht, volgen de eerste drie pakketten die in de verbinding worden verzonden, een patroon dat doorgaans de drieweg-handshake wordt genoemd. Door de eerste twee pakketten te controleren die in deze Handshake worden verzonden, een eerste aanvraag van de client en een reactie van de server, kunnen we de latentie berekenen wanneer deze verbinding tot stand is gebracht. Deze latentie wordt de round-trip tijd (RTT) genoemd. Raadpleeg de volgende resource voor meer informatie over het TCP-protocol en de drieweg-handshake. https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
 
 ### <a name="step-1"></a>Stap 1
 
@@ -49,83 +47,83 @@ WireShark starten
 
 ### <a name="step-2"></a>Stap 2
 
-Load de **.cap** -bestand van de pakketopname. Dit bestand kan worden gevonden in de blob is opgeslagen in onze lokaal op de virtuele machine, afhankelijk van hoe u deze hebt geconfigureerd.
+Laad het **Cap** -bestand van de pakket opname. Dit bestand bevindt zich in de blob die lokaal op de virtuele machine is opgeslagen, afhankelijk van hoe u het hebt geconfigureerd.
 
 ### <a name="step-3"></a>Stap 3
 
-Als u wilt weergeven eerste Round Trip Time (Retourtijd) in de TCP-gesprekken, worden er alleen bekijken op de eerste twee pakketten die betrokken zijn bij de TCP-handshake. We gebruiken de eerste twee pakketten in de handshake drie richtingen, die de [SYN], [SYN, ACK] pakketten. Ze heten voor vlaggen instellen in de TCP-header. Het laatste pakket in de handshake, het pakket [ACK] wordt niet gebruikt in dit scenario. Het pakket [SYN] wordt verzonden door de client. Zodra dit is ontvangen verzendt de server [ACK]-pakket als een bevestiging van de SYN ontvangen van de client. Gebruik te maken van het feit dat het antwoord van de server is vereist weinig overhead, we berekenen de RTT door af te trekken van de tijd de [SYN, ACK]-pakket is ontvangen door de client met de tijd [SYN] pakket is verzonden door de client.
+Voor het weer geven van de eerste round trip-tijd (RTT) in TCP-conversaties gaan we alleen naar de eerste twee pakketten die bij de TCP-handshake betrokken zijn. We gebruiken de eerste twee pakketten in de drieweg-handshake, die de pakketten [SYN], [SYN, ACK] zijn. Deze worden benoemd voor vlaggen die in de TCP-header zijn ingesteld. Het laatste pakket in de handshake, het pakket [ACK], wordt niet gebruikt in dit scenario. Het [SYN]-pakket wordt verzonden door de client. Zodra deze is ontvangen, verzendt de server het pakket [ACK] als bevestiging van het ontvangen van de SYN van de client. Het feit dat de reactie van de server weinig overhead vergt, we berekenen de RTT door de tijd af te trekken van het pakket [SYN, ACK] dat door de client is ontvangen door de client.
 
-Met behulp van WireShark wordt deze waarde berekend voor ons.
+Met WireShark wordt deze waarde voor ons berekend.
 
-Als u wilt weergeven eenvoudiger de eerste twee pakketten in de TCP-handshake drie richtingen, gaan we de mogelijkheid de filteren door WireShark gebruiken.
+Om de eerste twee pakketten in de TCP-richtings-Handshake gemakkelijker te kunnen bekijken, zullen we de filter functionaliteit gebruiken die wordt geleverd door WireShark.
 
-Als u wilt toepassen op het filter in WireShark, vouw het Segment 'Transmission Control Protocol' van een [SYN]-pakket in uw vastleggen en bekijk de vlaggen instellen in de TCP-header.
+Als u het filter in WireShark wilt Toep assen, vouwt u het segment ' Transmission Control Protocol ' van een [SYN]-pakket in uw Capture uit en bekijkt u de vlaggen die zijn ingesteld in de TCP-header.
 
-Omdat we op zoek bent om te filteren op alle [SYN] en [SYN, ACK] pakketten onder vlaggen bevestigen dat de Syn-bit is ingesteld op 1 en rechts klikt u op de bit Syn -> toepassen als Filter -> geselecteerd.
+Omdat we op zoek zijn naar alle [SYN]-en [SYN, ACK]-pakketten, onder vlaggen bevestigen dat de SYN-bit is ingesteld op 1, klikt u met de rechter muisknop op de SYN-bit-> als filter-> geselecteerd.
 
 ![afbeelding 7][7]
 
 ### <a name="step-4"></a>Stap 4
 
-Nu dat u hebt gefilterd, het venster om te zien alleen de pakketten met de [SYN] bit is ingesteld, kunt u eenvoudig gesprekken die u geïnteresseerd bent in om de initiële RTT weer te geven. Een eenvoudige manier om weer te geven van de RTT in WireShark klikt gewoon op de vervolgkeuzelijst "SEQ/ACK" analysis gemarkeerd. Vervolgens ziet u de RTT weergegeven. In dit geval is de RTT 0.0022114 seconden of 2.211 ms.
+Nu u het venster hebt gefilterd, zodat alleen pakketten met de bit [SYN] worden weer gegeven, kunt u eenvoudig gesp rekken selecteren waarin u geïnteresseerd bent om de eerste RTT weer te geven. Een eenvoudige manier om de RTT in WireShark weer te geven, klikt u gewoon op de vervolg keuzelijst ' SEQ/ACK '. Vervolgens ziet u dat de RTT wordt weer gegeven. In dit geval is de RTT 0,0022114 seconden of 2,211 MS.
 
 ![afbeelding 8][8]
 
 ## <a name="unwanted-protocols"></a>Ongewenste protocollen
 
-U kunt veel toepassingen die worden uitgevoerd op een virtuele machine-instantie die u hebt geïmplementeerd in Azure hebben. Veel van deze toepassingen communiceren via het netwerk mogelijk zonder uw expliciete toestemming. Met behulp van pakketopname voor het opslaan van de netwerkcommunicatie, kunt we hoe de toepassing praten dan over op het netwerk en zoek naar eventuele problemen onderzoeken.
+U kunt veel toepassingen uitvoeren op een exemplaar van een virtuele machine die u in azure hebt geïmplementeerd. Veel van deze toepassingen communiceren via het netwerk, mogelijk zonder uw uitdrukkelijke toestemming. Door gebruik te maken van pakket opname om netwerk communicatie op te slaan, kunnen we onderzoeken hoe de toepassing op het netwerk communiceert en wat er problemen zijn.
 
-In dit voorbeeld bekijken we een vorige pakketopname voor ongewenste protocollen die kan duiden op niet-geautoriseerde communicatie van een toepassing die wordt uitgevoerd op uw computer uitgevoerd.
-
-### <a name="step-1"></a>Stap 1
-
-Klik met de dezelfde vastleggen in het voorgaande scenario **statistieken** > **Protocol hiërarchie**
-
-![Protocol hiërarchie menu][2]
-
-Het protocol hiërarchie-venster wordt weergegeven. In deze weergave bevat een lijst van alle protocollen die zijn gebruikt tijdens de sessie vastleggen en het aantal pakketten verzonden en ontvangen met behulp van de protocollen. In deze weergave is handig voor het vinden van ongewenste netwerkverkeer op de virtuele machines of het netwerk.
-
-![Protocol hiërarchie geopend][3]
-
-Zoals u in de volgende schermafbeelding ziet, is er verkeer dat gebruikmaakt van de BitTorrent-protocol, dat wordt gebruikt voor het delen van peer-to-peer-bestand. Als een beheerder u niet verwacht om te zien BitTorrent verkeer op deze specifieke virtuele machines. Nu u op de hoogte van dit verkeer, u kunt verwijderen van de peer-to-peer-software die op deze virtuele machine is geïnstalleerd, of het verkeer met behulp van Netwerkbeveiligingsgroepen of een Firewall blokkeren. Bovendien kan u ervoor kiezen om uit te voeren pakketopnamen volgens een schema, zodat u kunt het gebruik van het protocol regelmatig op uw virtuele machines bekijken. Ga voor een voorbeeld over het automatiseren van taken in azure network naar [bewaken van netwerkbronnen met azure automation](network-watcher-monitor-with-azure-automation.md)
-
-## <a name="finding-top-destinations-and-ports"></a>Meest gebruikte doelen en poorten vinden
-
-De typen verkeer, de eindpunten en de poorten die is doorgegeven via, is een belangrijk bij het controleren of het oplossen van toepassingen en bronnen in uw netwerk. Met behulp van een bestand voor het vastleggen van pakket van boven, we kunnen snel informatie over de meest gebruikte doelen die onze VM met communiceert en de poorten die worden gebruikt.
+In dit voor beeld bekijken we een eerder uitgevoerde pakket opname voor ongewenste protocollen die kunnen wijzen op niet-geautoriseerde communicatie van een toepassing die op de computer wordt uitgevoerd.
 
 ### <a name="step-1"></a>Stap 1
 
-Klik met de dezelfde vastleggen in het voorgaande scenario **statistieken** > **IPv4-statistieken** > **bestemmingen en poorten**
+Met dezelfde vastleg ging in het vorige scenario klikt u op **statistieken** > **protocol hiërarchie**
 
-![periode voor het vastleggen van pakket][4]
+![menu Protocol hiërarchie][2]
+
+Het venster protocol hiërarchie wordt weer gegeven. Deze weer gave bevat een lijst met alle protocollen die tijdens de opname sessie werden gebruikt en het aantal pakketten dat is verzonden en ontvangen met behulp van de protocollen. Deze weer gave kan handig zijn voor het vinden van ongewenst netwerk verkeer op uw virtuele machines of netwerk.
+
+![de protocol hiërarchie is geopend][3]
+
+Zoals u kunt zien in de volgende scherm opname, was er verkeer via het BitTorrent-protocol, dat wordt gebruikt voor peer-to-peer bestanden delen. Als beheerder kunt u geen BitTorrent-verkeer op deze specifieke virtuele machines zien. Nu u op de hoogte bent van dit verkeer, kunt u de peer-to-peer-software die op deze virtuele machine is geïnstalleerd, verwijderen of het verkeer blok keren met behulp van netwerk beveiligings groepen of een firewall. Daarnaast kunt u ervoor kiezen om pakket opnames volgens een schema uit te voeren, zodat u het protocol gebruik regel matig op uw virtuele machines controleert. Zie [netwerk bronnen bewaken met Azure Automation](network-watcher-monitor-with-azure-automation.md) voor een voor beeld van het automatiseren van netwerk taken in Azure.
+
+## <a name="finding-top-destinations-and-ports"></a>De belangrijkste bestemmingen en poorten zoeken
+
+Meer informatie over de typen verkeer, de eind punten en de door gegeven poorten zijn belang rijk bij het bewaken of oplossen van problemen met toepassingen en bronnen in uw netwerk. Het gebruik van een pakket opname bestand van boven kan er snel worden gecommuniceerd met de belangrijkste bestemmingen die onze VM verkrijgt en de poorten die worden gebruikt.
+
+### <a name="step-1"></a>Stap 1
+
+Met dezelfde vastleg ging in het vorige scenario klikt u op **statistieken** > **IPv4-statistieken** > **doelen en poorten**
+
+![pakket opname venster][4]
 
 ### <a name="step-2"></a>Stap 2
 
-Als we door de resultaten die een regel opvalt bekijken, zijn er meerdere verbindingen op poort 111. De meest gebruikte poort 3389, is dit extern bureaublad is, en de resterende RPC dynamische poorten zijn.
+Als we de resultaten van een regel bekijken, zijn er meerdere verbindingen op poort 111. De poort die het meest wordt gebruikt, is 3389, dat wil zeggen: extern bureau blad, en het resterende aantal RPC dynamische poorten.
 
-Hoewel dit verkeer dat er niets betekenen kan, is het een poort die is gebruikt voor het aantal verbindingen en is onbekend bij de beheerder.
+Hoewel dit verkeer kan betekenen dat er niets is, is het een poort die voor veel verbindingen is gebruikt en is deze niet bekend bij de beheerder.
 
-![Afbeelding 5][5]
+![afbeelding 5][5]
 
 ### <a name="step-3"></a>Stap 3
 
-Nu dat we hebben vastgesteld dat een out-of interne poort filteren we onze vastleggen op basis van de poort.
+Nu we een poort voor buiten het bereik hebben bepaald, kunnen we de vastleg ging filteren op basis van de poort.
 
-Het filter in dit scenario zou zijn:
+Het filter in dit scenario is:
 
 ```
 tcp.port == 111
 ```
 
-We de Filtertekst hierboven invoeren in het filtertekstvak en druk op enter.
+We voeren de filter tekst van boven in het tekstvak Filter en druk op ENTER.
 
-![Afbeelding 6][6]
+![afbeelding 6][6]
 
-Vanuit de resultaten zien we dat al het verkeer afkomstig is van een lokale virtuele machine in hetzelfde subnet. Als we nog steeds niet waarom dit verkeer plaatsvindt begrijpen, kunnen we de pakketten om te bepalen waarom het ervoor zorgt dat deze aanroepen op poort 111 verder controleren. Met deze informatie kunnen we de juiste actie ondernemen.
+Vanuit de resultaten ziet u dat al het verkeer afkomstig is van een lokale virtuele machine in hetzelfde subnet. Als we nog steeds niet begrijpen waarom dit verkeer plaatsvindt, kunnen we de pakketten verder controleren om te bepalen waarom deze aanroepen worden gedaan op poort 111. Met deze informatie kunnen we de juiste actie ondernemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de andere diagnostische functies van Network Watcher, recentst [Azure-netwerk bewakingsoverzicht](network-watcher-monitoring-overview.md)
+Meer informatie over de andere diagnostische functies van Network Watcher vindt u in [Azure Network bewaking Overview](network-watcher-monitoring-overview.md) (Engelstalig)
 
 [1]: ./media/network-watcher-deep-packet-inspection/figure1.png
 [2]: ./media/network-watcher-deep-packet-inspection/figure2.png

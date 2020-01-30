@@ -6,14 +6,14 @@ ms.subservice: cosmosdb-table
 ms.devlang: Java
 ms.topic: sample
 ms.date: 04/05/2018
-author: wmengmsft
-ms.author: wmeng
-ms.openlocfilehash: 9e5f9d3fbd7fcf12271329ec324b38b03b4dcd7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+author: sakash279
+ms.author: akshanka
+ms.openlocfilehash: 33569730e565c68d66539feb4491b1925796b300
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444829"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771151"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Azure Table Storage of de Azure Cosmos DB Table-API van Java gebruiken
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -90,7 +90,7 @@ U kunt uw verbindingstekenreeks ook opslaan in het bestand config.properties van
 StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=your_account;AccountKey=your_account_key;TableEndpoint=https://your_table_endpoint/
 ```
 
-In de volgende voorbeelden wordt er van uitgegaan dat u een van deze methoden hebt gebruikt om de opslagverbindingstekenreeks op te halen.
+In de volgende voorbeelden wordt ervan uitgegaan dat u een van deze methoden hebt gebruikt om de opslagverbindingstekenreeks op te halen.
 
 ## <a name="create-a-table"></a>Een tabel maken
 Met een **CloudTableClient**-object kunt u referentieobjecten ophalen voor tabellen en entiteiten. Met de volgende code maakt u een **CloudTableClient**-object dat wordt gebruikt om een nieuw **CloudTable**-object te maken dat de tabel 'mensen' vertegenwoordigt. 
@@ -122,7 +122,7 @@ catch (Exception e)
 ```
 
 ## <a name="list-the-tables"></a>De tabellen vermelden
-Voor het ophalen van een lijst met tabellen, roept u de methode **CloudTableClient.listTables()** aan om een lijst met tabelnamen op te halen.
+Als u een lijst met tabellen wilt weergeven, roept u de methode **CloudTableClient.listTables()** aan om een lijst met tabelnamen op te halen.
 
 ```java
 try

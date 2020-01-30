@@ -2,18 +2,17 @@
 title: Zelf studie-Azure Functions uitvoeren in Azure Stream Analytics-taken
 description: In deze zelfstudie leert u hoe u Azure Functions configureert als een uitvoerlocatie voor Stream Analytics-taken.
 author: mamccrea
+ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/05/2019
-ms.author: mamccrea
-ms.reviewer: mamccrea
-ms.openlocfilehash: 84df3edcebb1ca9f14a68125ae9793f004e56c4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/27/2020
+ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369317"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772874"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Zelf studie: Azure Functions uitvoeren vanuit Azure Stream Analytics-taken 
 
@@ -51,7 +50,7 @@ Volg de zelfstudie [Realtime fraudedetectie](stream-analytics-real-time-fraud-de
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Een functie in Azure Functions maken die gegevens naar de Azure Cache voor Redis schrijft
 
-1. Zie de sectie [Een functie-app maken](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) van de Azure Functions-documentatie. Hiermee wordt u begeleid bij het maken van een functie-app en een [HTTP-geactiveerde functie in Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function). Hiervoor wordt de taal C# gebruikt.  
+1. Zie de sectie [Een functie-app maken](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) van de Azure Functions-documentatie. In deze sectie wordt uitgelegd hoe u een functie-app en een door [http geactiveerde functie in azure functions](../azure-functions/functions-create-first-azure-function.md#create-function)maakt met behulp van de taal csharp.  
 
 2. Blader naar de functie **run.csx**. Werk deze bij met de volgende code. Vervang **"\<uw Azure-cache voor Redis Connection String hier\>"** met de Azure-cache voor Redis primaire Connection String die u in de vorige sectie hebt opgehaald. 
 
@@ -149,7 +148,7 @@ Volg de zelfstudie [Realtime fraudedetectie](stream-analytics-real-time-fraud-de
    |Importoptie| U kunt de functie van het huidige abonnement gebruiken of de instellingen handmatig opgeven als de functie zich in een ander abonnement bevindt. |
    |Functie-app| Naam van uw Azure Functions-app. |
    |Functie| Naam van de functie in uw Azure Functions-app (naam van de functie run.csx).|
-   |Maximale batchgrootte|Hiermee stelt u de maximale grootte (in bytes) in voor elke uitvoerbatch die naar uw functie wordt verzonden. Deze waarde is standaard ingesteld op 262.144 bytes (256 kB).|
+   |Maximale batchgrootte|Hiermee stelt u de maximale grootte in voor elke uitvoer batch, die wordt verzonden naar uw functie in bytes. Deze waarde is standaard ingesteld op 262.144 bytes (256 kB).|
    |Maximum aantal batches|Hiermee geeft u het maximum aantal gebeurtenissen in elke batch op die naar de functie worden verzonden. De standaardwaarde is 100. Deze eigenschap is optioneel.|
    |Sleutel|Hiermee kunt u een functie uit een ander abonnement gebruiken. Geef de waarde op van de sleutel die toegang geeft tot uw functie. Deze eigenschap is optioneel.|
 
@@ -187,13 +186,10 @@ Volg de zelfstudie [Realtime fraudedetectie](stream-analytics-real-time-fraud-de
    Met deze opdracht wordt de waarde voor de opgegeven sleutel afgedrukt:
 
    ![Schermopname van uitvoer van Azure Cache for Redis](./media/stream-analytics-with-azure-functions/image5.png)
-   
-## <a name="error-handling-and-retries"></a>Foutafhandeling en nieuwe pogingen
-In geval van een fout bij het verzenden van gebeurtenissen naar Azure Functions, wordt getracht de bewerking te voltooien. Er zijn echter fouten waarvoor geen nieuwe pogingen worden gedaan. Deze zijn:
 
- 1. HttpRequestExceptions
- 2. Aanvraagentiteit is te groot (HTTP-foutcode 413)
- 3. ApplicationExceptions
+## <a name="error-handling-and-retries"></a>Foutafhandeling en nieuwe pogingen
+
+Als er een fout optreedt tijdens het verzenden van gebeurtenissen naar Azure Functions, Stream Analytics de meeste bewerkingen opnieuw proberen. Alle http-uitzonde ringen worden opnieuw geprobeerd tot het slagen, met uitzonde ring van HTTP-fout 413 (entiteit te groot). Een te grote fout van een entiteit wordt behandeld als een gegevens fout die wordt onderhevig aan het [beleid voor opnieuw proberen of verwijderen](stream-analytics-output-error-policy.md).
 
 ## <a name="known-issues"></a>Bekende problemen
 
@@ -210,7 +206,7 @@ Wanneer u een resourcegroep niet meer nodig hebt, verwijdert u de resourcegroep,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een eenvoudige Stream Analytics-taak gemaakt die een Azure-functie uitvoert. Ga verder met de volgende zelfstudie voor meer informatie over Stream Analytics-taken:
+In deze zelf studie hebt u een eenvoudige Stream Analytics-taak gemaakt, waarmee een Azure-functie wordt uitgevoerd. Ga voor meer informatie over Stream Analytics-taken verder met de volgende zelfstudie:
 
 > [!div class="nextstepaction"]
 > [Door gebruiker gedefinieerde JavaScript-functies uitvoeren in Stream Analytics-taken](stream-analytics-javascript-user-defined-functions.md)

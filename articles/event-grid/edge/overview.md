@@ -7,19 +7,19 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
-ms.openlocfilehash: e03429ed3df5bd3518d5e5194bd842b9a4f290ba
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: feac5891734731e6f7377750127958a40a815036
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991944"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844650"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Wat is Azure Event Grid op Azure IoT Edge?
-Event Grid op IoT Edge biedt de kracht en flexibiliteit van Azure Event Grid tot aan de rand van alle scenario's die zijn gebaseerd op pub/sub en op gebeurtenissen. Maak onderwerpen, publiceer gebeurtenissen en Abonneer u op meerdere doelen, ongeacht of ze modules zijn op hetzelfde apparaat, andere edge-apparaten of services in de Cloud.
+Event Grid op IoT Edge biedt de kracht en flexibiliteit van Azure Event Grid tot aan de rand. Maak onderwerpen, publiceer gebeurtenissen en Abonneer u op meerdere doelen, ongeacht of ze modules zijn op hetzelfde apparaat, andere edge-apparaten of services in de Cloud.
 
-Net als in de Cloud, wordt door de module Event Grid op IoT Edge de route ring, het filteren en de betrouw bare levering van gebeurtenissen op schaal verwerkt. Filter gebeurtenissen om ervoor te zorgen dat alleen relevante gebeurtenissen worden verzonden naar verschillende gebeurtenis-handlers met behulp van geavanceerde teken reeks-, numerieke en Booleaanse filters. Pogings logica zorgt ervoor dat de gebeurtenis de doel module, het rand apparaat of de Cloud service bereikt, zelfs als deze niet beschikbaar is op het moment van publiceren. Hiermee kunt u Event Grid op IoT Edge als een krachtig archief-en doorstuur mechanisme gebruiken.
+Net als in de Cloud, wordt door de module Event Grid op IoT Edge de route ring, het filteren en de betrouw bare levering van gebeurtenissen op schaal verwerkt. Filter gebeurtenissen om ervoor te zorgen dat alleen relevante gebeurtenissen worden verzonden naar verschillende gebeurtenis-handlers met behulp van geavanceerde teken reeks-, numerieke en Booleaanse filters. Pogings logica zorgt ervoor dat de gebeurtenis de doel bestemming bereikt, zelfs als deze niet beschikbaar is op het moment van publiceren. Hiermee kunt u Event Grid op IoT Edge als een krachtig archief-en doorstuur mechanisme gebruiken.
 
-Event Grid op IoT Edge ondersteunt zowel CloudEvents v 1.0 als aangepaste gebeurtenis schema's. Het biedt ook ondersteuning voor hetzelfde publiceren en abonneren op de semantiek als Event Grid in de Cloud, zodat u gemakkelijk kunt samen werken met Azure en derden.
+Event Grid op IoT Edge ondersteunt zowel CloudEvents v 1.0 als aangepaste gebeurtenis schema's. Het ondersteunt ook dezelfde pub/sub-semantiek als Event Grid in de Cloud voor eenvoudige interoperabiliteit.
 
 Dit artikel bevat een overzicht van Azure Event Grid op IoT Edge. Zie [publiceren, abonneren op gebeurtenissen lokaal](pub-sub-events-webhook-local.md)voor stapsgewijze instructies voor het gebruik van deze module aan de rand. 
 
@@ -29,7 +29,7 @@ In deze afbeelding ziet u een aantal manieren waarop u Event Grid op IoT Edge ku
 
 ## <a name="when-to-use-event-grid-on-iot-edge"></a>Wanneer gebruikt u Event Grid op IoT Edge
 
-Event Grid op IoT Edge is gebouwd om een uniform, eenvoudig te gebruiken en betrouw bare gebeurtenis model te bieden voor het bouwen van op gebeurtenissen gebaseerde architecturen tussen de rand en de Cloud.
+Event Grid op IoT Edge biedt een eenvoudig te gebruiken, betrouw bare gebeurtenis model voor tussen de rand en de Cloud.
 
 Event Grid op IoT Edge is gebouwd met een symmetrische runtime surface area naar de Azure-Cloud service, zodat u altijd dezelfde gebeurtenissen en API-aanroepen kunt gebruiken als u dat nodig hebt. Of u nu pub/sub in de Cloud, aan de rand of tussen de twee, Event Grid op IoT Edge kunt u de oplossing die u wilt bezoeken.
 
@@ -55,8 +55,12 @@ Event Grid op IoT Edge is gebouwd voor het verzenden van gebeurtenissen naar elk
 
 * Andere modules, waaronder IoT Hub, functies en aangepaste modules
 * Andere edge-apparaten
-* Services die worden gehost in de Cloud met inbegrip van Azure Event Grid en Azure Functions
-* Webhooks
+* WebHooks
+* Azure Event Grid-Cloud service
+* Event Hubs
+* Service Bus-wachtrijen
+* Service Bus-onderwerpen
+* Opslag wachtrijen
 
 ## <a name="supported-environments"></a>Ondersteunde omgevingen
 Momenteel worden de Windows 64-bits, Linux 64-bits en ARM 32-bits omgevingen ondersteund.

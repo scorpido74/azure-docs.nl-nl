@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 890095718833c90a6764d0799d2081b393b1d0bd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: ee80c04a6365c2cf337c4033a90df8d2993c299d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887758"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845959"
 ---
 De volgende limieten gelden voor Azure Event Grid systeem onderwerpen en aangepaste onderwerpen, *niet* voor gebeurtenis domeinen.
 
@@ -23,7 +23,7 @@ De volgende limieten gelden voor Azure Event Grid systeem onderwerpen en aangepa
 | Gebeurtenis abonnementen per onderwerp | 500 |
 | Publicatie frequentie voor een aangepast onderwerp (ingangs) | 5\.000 gebeurtenissen per seconde per onderwerp |
 | Aanvragen publiceren | 250 per seconde |
-| Grootte van gebeurtenis | Ondersteuning voor 64 KB in algemene Beschik baarheid (GA). Ondersteuning voor 1 MB is momenteel beschikbaar als preview-versie. |
+| Grootte van gebeurtenis | 1 MB (in rekening gebracht als meerdere 64-KB-gebeurtenissen) |
 
 De volgende limieten gelden alleen voor gebeurtenis domeinen.
 

@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: fbda2f645308e30a6f408335b7a1b37095522921
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5082ed06b4ce5baf3869fc035654be3c7a45f29f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003317"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845304"
 ---
-# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Zelfstudie: Azure Key Vault gebruiken met een virtuele Windows-machine in .NET
+# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Zelf studie: Azure Key Vault gebruiken met een virtuele Windows-machine in .NET
 
 Azure Key Vault helpt u bij het beveiligen van geheimen zoals API-sleutels, de database verbindings reeksen die u nodig hebt om toegang te krijgen tot uw toepassingen, services en IT-resources.
 
@@ -83,7 +83,7 @@ De zojuist gemaakte resource groep wordt in deze zelf studie gebruikt.
 Maak een sleutel kluis in de resource groep door de opdracht [AZ sleutel kluis Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) op te geven met de volgende informatie:
 
 * Sleutel kluis naam: een teken reeks van 3 tot 24 tekens die alleen getallen (0-9), letters (a-z, A-Z) en afbreek streepjes (-) kan bevatten
-* Resourcegroepnaam
+* Naam van de resourcegroep
 * Locatie: **US - west**
 
 ```azurecli
@@ -138,7 +138,7 @@ Volg de instructies in [verbinding maken en aanmelden bij een virtuele Azure-mac
 
 ## <a name="set-up-the-console-app"></a>De console-app instellen
 
-Een console-app maken en de vereiste pakketten installeren met `dotnet` behulp van de opdracht.
+Maak een console-app en installeer de vereiste pakketten met behulp van de `dotnet` opdracht.
 
 ### <a name="install-net-core"></a>.NET Core installeren
 
@@ -181,10 +181,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 
-Bewerk het klassen bestand zodat het de code bevat in het volgende proces in twee stappen:
+Bewerk het klassen bestand zodat het de code bevat in het volgende proces met drie stappen:
 
 1. Haal een token uit het lokale MSI-eindpunt op de virtuele machine op. Als u dit wel doet, wordt er ook een token uit Azure AD opgehaald.
-1. Geef het token door aan de sleutel kluis en haal vervolgens uw geheim op. 
+2. Geef het token door aan de sleutel kluis en haal vervolgens uw geheim op. 
+3. Voeg de kluis naam en geheime naam toe aan de aanvraag.
 
 ```csharp
  class Program
@@ -205,9 +206,10 @@ Bewerk het klassen bestand zodat het de code bevat in het volgende proces in twe
             WebResponse response = request.GetResponse();
             return ParseWebResponse(response, "access_token");
         }
-
+        
         static string FetchSecretValueFromKeyVault(string token)
         {
+            //Step 3: Add the vault name and secret name to the request.
             WebRequest kvRequest = WebRequest.Create("https://<YourVaultName>.vault.azure.net/secrets/<YourSecretName>?api-version=2016-10-01");
             kvRequest.Headers.Add("Authorization", "Bearer "+  token);
             WebResponse kvResponse = kvRequest.GetResponse();

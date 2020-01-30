@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5350ecdd3b73894e43db3b9f342fc657cf73f224
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 40810b9a9b295f2aa9d56caaf4b51cab7dbbe5bc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268330"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887820"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Informatie over het opnieuw opstarten van VM's - onderhoud versus downtime
 Er zijn drie scenario's die van invloed kunnen zijn op de virtuele machine in Azure: ongepland onderhoud van hardware, onverwachte downtime en gepland onderhoud.
@@ -79,12 +79,13 @@ Get-AzComputeResourceSku | where{$_.ResourceType -eq 'availabilitySets' -and $_.
 az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Location:locationInfo[0].location, MaximumFaultDomainCount:capabilities[0].value}' -o Table
 ```
 
-> Opmerking: in bepaalde omstandigheden kan het gebeuren dat twee Vm's in dezelfde Beschikbaarheidsset dezelfde FaultDomain delen. U kunt dit bevestigen door naar uw Beschikbaarheidsset te gaan en de kolom fout domein te controleren.
-> Dit gedrag kan worden waargenomen wanneer de volgende reeks is opgetreden tijdens het implementeren van de virtuele machines:
+> [!NOTE]
+> Onder bepaalde omstandigheden kan 2 Vm's in dezelfde Beschikbaarheidsset dezelfde FaultDomain delen. U kunt dit bevestigen door naar uw beschikbaarheidsset te gaan en de kolom **fout domein** te controleren.
+> Dit kan het gevolg zijn van de volgende reeks tijdens het implementeren van de virtuele machines:
 > - De eerste VM implementeren
 > - De eerste VM stoppen/de toewijzing ervan ongedaan maken
 > - De tweede VM onder deze omstandigheden implementeren, kan de besturingssysteem schijf van de tweede virtuele machine worden gemaakt in hetzelfde fout domein als de eerste VM, waardoor de tweede VM ook op dezelfde FaultDomain wordt gegrond. 
-> Om dit probleem te voor komen, is het raadzaam om de virtuele machine niet te stoppen of te detoewijzen tussen hun implementaties.
+> Om dit probleem te voor komen, wordt u aangeraden de Vm's tussen implementaties niet te stoppen/te detoewijzen.
 
 Als u Vm's met niet-beheerde schijven wilt gebruiken, volgt u de aanbevolen procedures voor opslag accounts waarin virtuele harde schijven (Vhd's) van Vm's worden opgeslagen als [pagina-blobs](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
 

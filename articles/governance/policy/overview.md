@@ -3,12 +3,13 @@ title: Overzicht van Azure-beleid
 description: Azure Policy is een service in Azure die u gebruikt om beleidsdefinities in uw Azure-omgeving te maken, toe te wijzen en te beheren.
 ms.date: 11/25/2019
 ms.topic: overview
-ms.openlocfilehash: a7cc5ebca74e249057d159334e4207a3efca37f5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 9babfd52071ed7d033761802f696c3b6021287af
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885463"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846030"
 ---
 # <a name="what-is-azure-policy"></a>Wat is Azure Policy?
 
@@ -27,7 +28,7 @@ U kunt bijvoorbeeld beleid hebben op basis waarvan alleen virtuele machines van 
 
 ## <a name="how-is-it-different-from-rbac"></a>Wat is het verschil met RBAC?
 
-Er zijn enkele belang rijke verschillen tussen Azure Policy en op rollen gebaseerd toegangs beheer (RBAC). RBAC is gericht op de acties van gebruikers in verschillende bereiken. Mogelijk wordt u voor een resourcegroep toegevoegd aan de rol Inzender, zodat u wijzigingen kunt aanbrengen in die resourcegroep. Azure Policy richt zich op bron eigenschappen tijdens de implementatie en voor al bestaande resources. Met Azure Policy worden eigenschappen bepaald, zoals de typen resources of hun locatie. In tegens telling tot RBAC is Azure Policy een standaard systeem voor toestaan en expliciet weigeren.
+Er zijn enkele belang rijke verschillen tussen Azure Policy en op rollen gebaseerd toegangs beheer (RBAC). RBAC is gericht op de acties van gebruikers in verschillende bereiken. Mogelijk wordt u voor een resourcegroep toegevoegd aan de rol Inzender, zodat u wijzigingen kunt aanbrengen in die resourcegroep. Azure Policy richt zich op bron eigenschappen tijdens de implementatie en voor al bestaande resources. Azure Policy besturings elementen, zoals de typen of locaties van resources. In tegens telling tot RBAC is Azure Policy een standaard systeem voor toestaan en expliciet weigeren.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>RBAC-machtigingen in Azure Policy
 
@@ -62,7 +63,7 @@ Raadpleeg [Structuur van beleidsdefinities](./concepts/definition-structure.md) 
 
 ## <a name="policy-assignment"></a>Beleidstoewijzing
 
-Een beleidstoewijzing is een beleidsdefinitie die is toegewezen om te worden toegepast binnen een bepaald bereik. Dit bereik kan variëren van een [beheergroep](../management-groups/overview.md) tot een resourcegroep. De term *bereik* verwijst naar alle resourcegroepen, abonnementen of beheergroepen waaraan de beleidsdefinitie is toegewezen. Beleidstoewijzingen worden overgenomen door alle onderliggende resources. Dit betekent dat als beleid wordt toegepast op een resourcegroep, dit beleid ook van toepassing is op alle resources in de resourcegroep. U kunt echter een subbereik uitsluiten van een beleidstoewijzing.
+Een beleidstoewijzing is een beleidsdefinitie die is toegewezen om te worden toegepast binnen een bepaald bereik. Dit bereik kan variëren van een [beheer groep](../management-groups/overview.md) tot een afzonderlijke resource. Het term *bereik* verwijst naar alle resources, resource groepen, abonnementen of beheer groepen waaraan de beleids definitie is toegewezen. Beleidstoewijzingen worden overgenomen door alle onderliggende resources. Dit betekent dat als beleid wordt toegepast op een resourcegroep, dit beleid ook van toepassing is op alle resources in de resourcegroep. U kunt echter een subbereik uitsluiten van een beleidstoewijzing.
 
 U kunt op het abonnementsbereik bijvoorbeeld een beleid toepassen op basis waarvan het maken van netwerkresources wordt voorkomen. U kunt echter één resourcegroep binnen het abonnement uitsluiten, namelijk degene die is bedoeld voor netwerkinfrastructuur. U verleent vervolgens toegang tot deze netwerkresourcegroep aan gebruikers aan wie u het maken van de netwerkresourcegroep toevertrouwt.
 
@@ -93,7 +94,7 @@ Onder dit initiatief vallen beleidsdefinities zoals:
 
 ## <a name="initiative-assignment"></a>Initiatieftoewijzing
 
-Net zoals een beleidstoewijzing is een initiatieftoewijzing een initiatiefdefinitie die is toegewezen aan een bepaald bereik. Initiatieftoewijzingen verminderen de noodzaak om verschillende initiatiefdefinities te maken voor elk bereik. Dit bereik kan ook variëren van een beheergroep tot een resourcegroep.
+Net zoals een beleidstoewijzing is een initiatieftoewijzing een initiatiefdefinitie die is toegewezen aan een bepaald bereik. Initiatieftoewijzingen verminderen de noodzaak om verschillende initiatiefdefinities te maken voor elk bereik. Dit bereik kan ook variëren van een beheer groep tot een afzonderlijke resource.
 
 Elk initiatief kan aan meerdere bereiken worden toegewezen. Eén initiatief kan zowel aan **subscriptionA** als aan **subscriptionB** worden toegewezen.
 

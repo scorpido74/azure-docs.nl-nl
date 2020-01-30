@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: e9e6eff4c527ff2e22be57ebc1eb3dcdb3c4e0ab
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241980"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845272"
 ---
 # <a name="api-management-policy-expressions"></a>API Management-beleids expressies
-In dit artikel vindt C# u een beschrijving van de syntaxis van beleids expressies. Elke expressie heeft toegang tot de impliciet verschafte [context](api-management-policy-expressions.md#ContextVariables) variabele en een toegestane [subset](api-management-policy-expressions.md#CLRTypes) van .NET Framework typen.
+In dit artikel wordt de syntaxis van beleids C# expressies in 7 beschreven. Elke expressie heeft toegang tot de impliciet verschafte [context](api-management-policy-expressions.md#ContextVariables) variabele en een toegestane [subset](api-management-policy-expressions.md#CLRTypes) van .NET Framework typen.
 
 Voor meer informatie:
 
@@ -156,7 +156,7 @@ De volgende tabel bevat de .NET Framework typen en de leden die zijn toegestaan 
 |System. Security. Cryptography. SymmetricAlgorithm|Alles|
 |System.Security.Cryptography.X509Certificates.PublicKey|Alles|
 |System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Alles|
-|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Naam|
+|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Name|
 |System. Security. Cryptography. X509Certificates. X509Certificate|Alles|
 |System. Security. Cryptography. X509Certificates. X509Certificate2|Alles|
 |System.Security.Cryptography.X509Certificates.X509ContentType|Alles|

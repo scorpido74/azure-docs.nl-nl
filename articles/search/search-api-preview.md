@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/04/2020
-ms.openlocfilehash: eb73d614ca94bc1fa007a14f3705e50c74ab9e4f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 940ada83aeabf4bf8746ad5f90592e0917f7b403
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922481"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844442"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>REST API voor Azure Cognitive Search Service-versie 2019-05-06-preview
 
@@ -30,10 +30,6 @@ In dit artikel wordt de `api-version=2019-05-06-Preview` versie van de zoek serv
 + [Cosmos DB Indexeer functie](search-howto-index-cosmosdb.md) ondersteunt MongoDb API (preview), GREMLIN-API (preview) en Cassandra-API (preview).
 
 + [Azure data Lake Storage Gen2 Indexeer functie (preview)](search-howto-index-azure-data-lake-storage.md) kan inhoud en meta gegevens indexeren vanuit data Lake Storage Gen2.
-
-+ [Document extractie (preview)](cognitive-search-skill-document-extraction.md) is een cognitieve vaardigheid die wordt gebruikt tijdens het indexeren, waarmee u de inhoud van een bestand kunt extra heren uit een vakkennisset. Het kraken van documenten is eerder voorgekomen voordat de vaardig heden werden uitgevoerd. Als u deze vaardigheid hebt toegevoegd, kunt u deze bewerking ook uitvoeren binnen de vaardig heden-uitvoering.
-
-+ [Tekst omzetting (preview)](cognitive-search-skill-text-translation.md) is een cognitieve vaardigheid die wordt gebruikt tijdens het indexeren waarmee tekst wordt geëvalueerd en, voor elke record, de tekst wordt omgezet in de opgegeven doel taal.
 
 + Het [kennis archief](knowledge-store-concept-intro.md) is een nieuwe bestemming van een AI-gebaseerde verrijkings pijplijn. De fysieke gegevens structuur bevindt zich in Azure Blob Storage en Azure Table Storage, en wordt gemaakt en ingevuld wanneer u een Indexeer functie uitvoert met een bijgevoegde cognitieve vaardigheids. De definitie van een kennis archief zelf is opgegeven in een definitie van een vakkennisset. In de definitie van het kennis archief beheert u de fysieke structuur van uw gegevens door middel van *projectie* -elementen die bepalen hoe gegevens worden gevormd, of gegevens worden opgeslagen in tabel opslag of Blob-opslag en of er meerdere weer gaven zijn.
 

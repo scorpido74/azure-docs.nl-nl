@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 03be29cde42478abf32492f55a296aeee0a4a478
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: fabb2524547bd7837d3644d79f0023311ddccdfc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547248"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845553"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics-werk ruimte verwijderen en herstellen
 
@@ -23,7 +23,7 @@ In dit artikel wordt uitgelegd hoe u met de procedure voor het uitvoeren van Azu
 Wanneer u een Log Analytics-werk ruimte verwijdert, wordt er een tijdelijke Verwijder bewerking uitgevoerd om het herstel van de werk ruimte met inbegrip van gegevens en verbonden agents binnen 14 dagen toe te staan, of het verwijderen per ongeluk of opzettelijk is geslaagd. Na de periode voor het voorlopig verwijderen kunnen de werkruimte resource en de gegevens niet worden hersteld. de bijbehorende gegevens worden in een wachtrij geplaatst voor permanent verwijderen en binnen 30 dagen volledig verwijderd. De naam van de werk ruimte is vrijgegeven en u kunt deze gebruiken om een nieuwe werk ruimte te maken.
 
 > [!NOTE]
-> Het gedrag van zacht verwijderen kan niet worden uitgeschakeld. We voegen binnenkort een optie toe om de tijdelijke verwijdering te overschrijven wanneer u een Force-tag gebruikt in de verwijderings bewerking.
+> Als u het gedrag van zacht verwijderen wilt negeren en uw werk ruimte permanent wilt verwijderen, volgt u de stappen in [permanente werk ruimte verwijderen](#Permanent workspace delete).
 
 U wilt voorzichtig zijn wanneer u een werk ruimte verwijdert, omdat er mogelijk belang rijke gegevens en configuratie zijn die uw service bewerking negatief kunnen beïnvloeden. Bekijk welke agents, oplossingen en andere Azure-Services en-bronnen uw gegevens opslaan in Log Analytics, zoals:
 
@@ -89,7 +89,7 @@ U kunt een werk ruimte herstellen door deze opnieuw te maken met behulp van de v
 
 * Abonnements-id
 * Naam van resource groep
-* Naam van de werkruimte
+* Werkruimte naam
 * Regio
 
 ### <a name="powershell"></a>PowerShell
