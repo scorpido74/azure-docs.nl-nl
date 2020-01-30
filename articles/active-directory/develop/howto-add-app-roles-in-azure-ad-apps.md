@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d16ab7acd87fa6cc7907f8fee3400c2e416e6cfe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697418"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834243"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Procedure: app-rollen toevoegen in uw toepassing en deze ontvangen in het token
 
@@ -44,7 +44,7 @@ Deze toepassings rollen worden gedefinieerd in de [Azure Portal](https://portal.
 1. Bewerk het app-manifest door de `appRoles`-instelling te vinden en alle toepassings rollen toe te voegen.
 
      > [!NOTE]
-     > Elke app-roldefinitie in dit manifest moet een andere geldige GUID hebben voor de eigenschap `id`. 
+     > Elke definitie van een app-functie in dit manifest moet een andere geldige GUID hebben in de context van het manifest voor de eigenschap `id`.    
      > 
      > De eigenschap `value` van elke definitie van een app-functie moet exact overeenkomen met de teken reeksen die worden gebruikt in de code in de toepassing. De eigenschap `value` mag geen spaties bevatten. Als dit het geval is, ontvangt u een fout melding wanneer u het manifest opslaat.
      

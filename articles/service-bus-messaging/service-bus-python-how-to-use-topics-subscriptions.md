@@ -1,10 +1,9 @@
 ---
 title: 'Snelstartgids: Azure Service Bus-onderwerpen en-abonnementen gebruiken met python'
-description: Meer informatie over het gebruik van Azure Service Bus-onderwerpen en-abonnementen van python.
+description: In dit artikel leest u hoe u een Azure Service Bus onderwerp, een abonnement, berichten verzendt naar een onderwerp en berichten van het abonnement ontvangt.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: c4f1d76c-7567-4b33-9193-3788f82934e4
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 94a49b31139947c6323ab391b78ecd03ee911e0a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 03e22c4c179850e5140015c0abc2d89f16d4b624
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748502"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774547"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met python
 
@@ -182,7 +181,7 @@ Als u een onderwerp verwijdert, worden alle abonnementen op het onderwerp verwij
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
-Onderwerpen en abonnementen zijn standaard permanent en bestaan tot u deze verwijdert. Als u automatisch abonnementen wilt verwijderen nadat een bepaalde periode is verstreken, kunt u de para meter [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) instellen voor het abonnement. 
+Onderwerpen en abonnementen zijn standaard permanent en bestaan tot u deze verwijdert. Als u automatisch abonnementen wilt verwijderen nadat een bepaalde tijds periode is verstreken, kunt u de para meter [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) instellen voor het abonnement. 
 
 > [!TIP]
 > U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunt u verbinding maken met een Service Bus naam ruimte en eenvoudig bericht entiteiten beheren. Het hulp programma biedt geavanceerde functies, zoals de functionaliteit voor importeren/exporteren, en de mogelijkheid om onderwerpen, wacht rijen, abonnementen, relay-Services, Notification hubs en Event hubs te testen. 

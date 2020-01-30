@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Azure/service-bus-wacht rijen gebruiken in node. js'
-description: 'Snelstartgids: informatie over het gebruik van Service Bus wachtrijen in azure vanuit een node. js-app met behulp van het Azure/service bus-pakket.'
+title: Azure/service-bus-wacht rijen gebruiken in node. js
+description: Meer informatie over het schrijven van een Nodejs-programma voor het verzenden van berichten naar en het ontvangen van berichten van een Service Bus wachtrij met behulp van het nieuwe @azure/service-bus-pakket.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 9901ccd6bb1abf27bb1141c618d0bfde167b9cc3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9db359d8331859e3eebf345d91fe5dc6e66c0d4c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721681"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774577"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Snelstartgids: Service Bus wachtrijen gebruiken met node. js en het Azure/service-bus-pakket
 > [!div class="op_multi_selector" title1="Programmeertaal" title2="Node. js pakket"]

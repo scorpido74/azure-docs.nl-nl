@@ -1,6 +1,6 @@
 ---
-title: Een Azure asset coderen met behulp van Media Encoder Standard | Microsoft Docs
-description: Informatie over het gebruik van Media Encoder Standard coderen van media-inhoud op Azure Media Services. Voorbeelden van code REST API gebruiken.
+title: Een Azure-Asset coderen met behulp van Media Encoder Standard | Microsoft Docs
+description: Meer informatie over het gebruik van Media Encoder Standard voor het coderen van media-inhoud op Azure Media Services. Code voorbeelden gebruiken REST API.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8db9e60e9ce99eaf2621821825620966b8b8b4ae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6854400f2152a5952a7b24dbd860d7ad4bfc943d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640069"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774922"
 ---
-# <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Een asset coderen met behulp van Media Encoder Standard
+# <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Een Asset coderen met behulp van Media Encoder Standard
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
 > * [REST](media-services-rest-encode-asset.md)
@@ -31,41 +31,41 @@ ms.locfileid: "60640069"
 
 ## <a name="overview"></a>Overzicht
 
-Voor het leveren van digitale video via het Internet, moet u de media comprimeren. Digitale videobestanden groot en kunnen worden te groot om te leveren via Internet, of voor apparaten van uw klanten om correct weer te geven. Codering is het proces van het comprimeren van video en audio, zodat uw klanten in uw multimedia weergeven kunnen.
+Als u digitale video via internet wilt leveren, moet u het medium comprimeren. Digitale video bestanden zijn groot en zijn mogelijk te groot om te leveren via internet of voor de apparaten van uw klanten om goed te kunnen worden weer gegeven. Encoding is het proces van het comprimeren van video en audio zodat uw klanten uw media kunnen bekijken.
 
-Coderingstaken vormen een van de meest voorkomende bewerkingen voor de verwerking in Azure Media Services. U creëert coderingstaken om mediabestanden te converteren van de ene naar de andere indeling. Wanneer u codeert, kunt u de ingebouwde Media Services encoder die (Media Encoder Standard). U kunt ook een coderingsprogramma geleverd door een partner voor Media Services gebruiken. Coderingsprogramma's van derden zijn beschikbaar via de Azure Marketplace. U kunt de details van de codering van taken met behulp van vooraf ingestelde tekenreeksen die zijn gedefinieerd voor het coderingsprogramma of met behulp van vooraf ingestelde-configuratiebestanden. Als u wilt zien welke typen voorinstellingen die beschikbaar zijn, Zie [taak voorinstellingen voor Media Encoder Standard](https://msdn.microsoft.com/library/mt269960).
+Coderings taken zijn een van de meest voorkomende verwerkings bewerkingen in Azure Media Services. U creëert coderingstaken om mediabestanden te converteren van de ene naar de andere indeling. Wanneer u codeert, kunt u het ingebouwde coderings programma (Media Encoder Standard) van Media Services gebruiken. U kunt ook een coderings programma van een Media Services partner gebruiken. Coderings Programma's van derden zijn beschikbaar via de Azure Marketplace. U kunt de details van coderings taken opgeven met behulp van vooraf gedefinieerde teken reeksen die zijn gedefinieerd voor uw encoder, of met behulp van vooraf ingestelde configuratie bestanden. Zie [taak voorinstellingen voor Media Encoder Standard voor](https://msdn.microsoft.com/library/mt269960)een overzicht van de beschik bare soorten voor instellingen.
 
-Elke taak kan een of meer taken, afhankelijk van het type van de verwerking die u wilt bereiken hebben. U kunt via de REST-API, taken en hun verwante taken maken op twee manieren:
+Elke taak kan een of meer taken bevatten, afhankelijk van het type verwerking dat u wilt uitvoeren. Via de REST API kunt u op een van de volgende twee manieren taken en de bijbehorende taken maken:
 
-* Taken kunnen worden gedefinieerd inline via de navigatie-eigenschap van de taken op taak entiteiten.
-* Gebruikmaken van batchverwerking van OData.
+* Taken kunnen inline worden gedefinieerd via de taak navigatie-eigenschap voor taak entiteiten.
+* Gebruik OData-batch verwerking.
 
-Het is raadzaam dat u altijd bronbestanden van uw in een adaptive bitrate MP4-set coderen, en vervolgens de set naar de gewenste indeling met behulp van converteren [dynamische verpakking](media-services-dynamic-packaging-overview.md).
+U wordt aangeraden om uw bron bestanden altijd te coderen in een adaptieve bitsnelheid MP4 en de set vervolgens te converteren naar de gewenste indeling door [dynamische pakketten](media-services-dynamic-packaging-overview.md)te gebruiken.
 
-Als uw uitvoerasset opslag versleuteld is, moet u het leveringsbeleid voor Assets configureren. Zie voor meer informatie, [leveringsbeleid voor Assets configureren](media-services-rest-configure-asset-delivery-policy.md).
+Als uw uitvoer activum is versleuteld, moet u het beleid voor de levering van assets configureren. Zie voor meer informatie beleid voor het [leveren van assets configureren](media-services-rest-configure-asset-delivery-policy.md).
 
 ## <a name="considerations"></a>Overwegingen
 
-Bij het openen van entiteiten in Media Services, moet u specifieke header-velden en waarden instellen in uw HTTP-aanvragen. Zie voor meer informatie, [instellen voor het ontwikkelen van Media Services REST API](media-services-rest-how-to-use.md).
+Wanneer u entiteiten in Media Services opent, moet u specifieke header-velden en-waarden in uw HTTP-aanvragen instellen. Zie [Setup for Media Services rest API Development](media-services-rest-how-to-use.md)(Engelstalig) voor meer informatie.
 
-Voordat u verwijst naar een media-processors, controleert u of de juiste media processor-ID. Zie voor meer informatie, [ophalen van media-processors](media-services-rest-get-media-processor.md).
+Controleer voordat u begint met het verwijzen naar media processors of u de juiste media processor-ID hebt. Zie [Media processors ophalen](media-services-rest-get-media-processor.md)voor meer informatie.
 
-## <a name="connect-to-media-services"></a>Verbinding met Media Services maken
+## <a name="connect-to-media-services"></a>Maak verbinding met Media Services
 
-Zie voor meer informatie over het verbinding maken met de AMS-API [toegang tot de API van Azure Media Services met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md). 
+Zie [toegang tot de Azure Media Services-API met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor meer informatie over het maken van een verbinding met de AMS-API. 
 
-## <a name="create-a-job-with-a-single-encoding-task"></a>Een taak maken met een enkele coderingstaak
+## <a name="create-a-job-with-a-single-encoding-task"></a>Een taak met één coderings taak maken
 
 > [!NOTE]
-> Wanneer u met de Media Services REST API werkt, de volgende overwegingen zijn van toepassing:
+> Wanneer u werkt met de Media Services REST API, zijn de volgende overwegingen van toepassing:
 >
-> Bij het openen van entiteiten in Media Services, moet u specifieke header-velden en waarden instellen in uw HTTP-aanvragen. Zie voor meer informatie, [instellen voor het ontwikkelen van Media Services REST API](media-services-rest-how-to-use.md).
+> Wanneer u entiteiten in Media Services opent, moet u specifieke header-velden en-waarden in uw HTTP-aanvragen instellen. Zie [Setup for Media Services rest API Development](media-services-rest-how-to-use.md)(Engelstalig) voor meer informatie.
 >
-> Wanneer met behulp van JSON en op te geven voor het gebruik van de **__metadata** sleutelwoord in de aanvraag (bijvoorbeeld, om te verwijzen naar een gekoppeld object), stelt u de **accepteren** koptekst [uitgebreide JSON-indeling](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Accepteer: application/json; odata = uitgebreide.
+> Wanneer u JSON gebruikt en opgeeft dat u het sleutel woord **__metadata** gebruikt in de aanvraag (bijvoorbeeld om te verwijzen naar een gekoppeld object), moet u de **Accept** -header instellen op [JSON-indeling](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): accepteren: Application/JSON; odata = verbose.
 >
 >
 
-Het volgende voorbeeld ziet u hoe u maakt en plaatsen van een taak met één taak ingesteld op het coderen van een video op een specifieke oplossingsstatus en kwaliteit. Wanneer u met Media Encoder Standard codeert, kunt u taak configuratie voorinstellingen opgegeven [hier](https://msdn.microsoft.com/library/mt269960).
+In het volgende voor beeld ziet u hoe u een taak maakt en post met één taakset voor het coderen van een video met een specifieke resolutie en kwaliteit. Wanneer u codeert met Media Encoder Standard, kunt u [hier](https://msdn.microsoft.com/library/mt269960)opgegeven voor instellingen voor taak configuratie gebruiken.
 
 Aanvraag:
 
@@ -74,7 +74,7 @@ Aanvraag:
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
         Authorization: Bearer <ENCODED JWT TOKEN> 
         x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
         Host: media.windows.net
@@ -87,27 +87,27 @@ Reactie:
 
     . . .
 
-### <a name="set-the-output-assets-name"></a>Stel de naam van de uitvoerasset
-Het volgende voorbeeld laat zien hoe het kenmerk assetName instellen:
+### <a name="set-the-output-assets-name"></a>De naam van het uitvoer activum instellen
+In het volgende voor beeld ziet u hoe u het kenmerk assets instelt:
 
     { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}
 
 ## <a name="considerations"></a>Overwegingen
-* Eigenschappen van TaskBody moeten letterlijke XML gebruiken om te definiëren van het aantal invoer of uitvoer van de activa die worden gebruikt door de taak. Taak dit artikel bevat de definitie van de XML-Schema voor het XML-bestand.
-* In het definitie TaskBody elke interne waarde voor de `<inputAsset>` en `<outputAsset>` JobInputAsset(value) of JobOutputAsset(value) moet worden ingesteld.
-* Een taak kan meerdere uitvoerassets hebben. Een JobOutputAsset(x) kan alleen één keer worden gebruikt als uitvoer van een taak in een taak.
-* U kunt JobInputAsset of JobOutputAsset opgeven als een invoeractivum van een taak.
-* Taken moeten een cyclus voor besturingselementen geen cyclus.
-* De waardeparameter die u aan JobInputAsset of JobOutputAsset doorgeeft vertegenwoordigt de indexwaarde voor een asset. De werkelijke activa zijn gedefinieerd in de eigenschappen van de navigatie InputMediaAssets en OutputMediaAssets op de definitie van de taak entiteit.
-* Omdat Media Services is gebouwd op OData v3-processors, de afzonderlijke elementen in de verzamelingen InputMediaAssets en OutputMediaAssets navigatie-eigenschap wordt verwezen door een ' __metadata: uri ' naam / waarde-paar.
-* InputMediaAssets toegewezen aan een of meer elementen die u hebt gemaakt in Media Services. OutputMediaAssets worden gemaakt door het systeem. Ze niet verwijzen naar een bestaande asset.
-* OutputMediaAssets kan worden benoemd met het kenmerk assetName. Als dit kenmerk niet aanwezig zijn is, is de naam van de OutputMediaAsset ongeacht de binnenste tekstwaarde van de `<outputAsset>` -element is met een achtervoegsel van de waarde van de taak, of de taak-Id-waarde (in het geval waarbij de eigenschap Name is niet gedefinieerd). Bijvoorbeeld, als u een waarde instellen voor assetName naar "Voorbeeld", is klikt u vervolgens de eigenschap OutputMediaAsset Name ingesteld op 'Voorbeeld'. Als u een waarde voor assetName niet hebt ingesteld, maar de naam van de taak naar nieuwe "taak" hebt ingesteld, zou klikt u vervolgens de naam van de OutputMediaAsset wel "JobOutputAsset (waarde) _NewJob."
+* TaskBody-eigenschappen moeten letterlijke XML gebruiken om het aantal invoer-of uitvoer activa te definiëren dat door de taak wordt gebruikt. Het taak artikel bevat de XML-schema definitie voor de XML.
+* In de TaskBody-definitie moet elke binnenste waarde voor `<inputAsset>` en `<outputAsset>` worden ingesteld als JobInputAsset (waarde) of JobOutputAsset (waarde).
+* Een taak kan meerdere uitvoer assets hebben. Een JobOutputAsset (x) kan slechts één keer worden gebruikt als uitvoer van een taak in een taak.
+* U kunt JobInputAsset of JobOutputAsset als invoer element van een taak opgeven.
+* Taken mogen geen cyclus vormen.
+* De waarde-para meter die u doorgeeft aan JobInputAsset of JobOutputAsset vertegenwoordigt de index waarde voor een Asset. De werkelijke activa worden gedefinieerd in de navigatie-eigenschappen InputMediaAssets en OutputMediaAssets van de definitie van de taak entiteit.
+* Omdat Media Services is gebouwd op OData v3, wordt verwezen naar de afzonderlijke assets in de InputMediaAssets-en OutputMediaAssets-navigatie-eigenschappen verzamelingen via een ' __metadata: URI-naam/waarde-paar.
+* InputMediaAssets wordt toegewezen aan een of meer assets die u hebt gemaakt in Media Services. OutputMediaAssets worden gemaakt door het systeem. Ze verwijzen niet naar een bestaande Asset.
+* OutputMediaAssets kan worden benoemd met behulp van het kenmerk activanaam. Als dit kenmerk niet aanwezig is, is de naam van de OutputMediaAsset gelijk aan de interne tekst waarde van het `<outputAsset>`-element met een achtervoegsel van de waarde van de taak naam of de waarde van de taak-id (in het geval waar de eigenschap naam niet is gedefinieerd). Als u bijvoorbeeld een waarde instelt voor ' voor beeld ', wordt de eigenschap OutputMediaAsset name ingesteld op ' voor beeld '. Als u echter geen waarde hebt ingesteld voor de OutputMediaAsset, maar de taak naam had ingesteld op ' NewJob ', zou de naam van de JobOutputAsset zijn _NewJob (waarde).
 
 ## <a name="create-a-job-with-chained-tasks"></a>Een taak maken met gekoppelde taken
-In veel scenario's van toepassing willen ontwikkelaars maken van een reeks standaardtaken voor de verwerking. U kunt een reeks gekoppelde taken maken in Media Services. Elke taak voert de verwerking van de verschillende stappen uit en andere media-processors kunt gebruiken. De gekoppelde taken kunnen afleveren een asset van een taak naar een andere, een lineaire reeks taken uitvoeren op de asset. De taken die worden uitgevoerd in een taak zijn echter niet vereist zijn in een reeks. Wanneer u een gekoppelde taak, de keten maakt **ITask** objecten worden gemaakt in een enkel **IJob** object.
+Ontwikkel aars willen in veel toepassings scenario's een reeks verwerkings taken maken. In Media Services kunt u een reeks gekoppelde taken maken. Elke taak voert verschillende verwerkings stappen uit en kan verschillende media processors gebruiken. De gekoppelde taken kunnen een Asset van de ene taak naar de andere overdragen, waarbij een lineaire volg orde van taken op de Asset wordt uitgevoerd. De taken die in een taak worden uitgevoerd, hoeven echter geen volg orde te zijn. Wanneer u een keten taak maakt, worden de geketende **ITask** -objecten gemaakt in één **IJob** -object.
 
 > [!NOTE]
-> Er is momenteel een limiet van 30 taken per taak. Als u nodig hebt om te koppelen van meer dan 30 taken, maakt u meer dan één taak om de taken te bevatten.
+> Er is momenteel een limiet van 30 taken per taak. Als u meer dan 30 taken wilt koppelen, moet u meer dan één taak maken die de taken bevat.
 >
 >
 
@@ -116,7 +116,7 @@ In veel scenario's van toepassing willen ontwikkelaars maken van een reeks stand
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
@@ -145,13 +145,13 @@ In veel scenario's van toepassing willen ontwikkelaars maken van een reeks stand
 
 
 ### <a name="considerations"></a>Overwegingen
-Om in te schakelen taak koppeling:
+Taak koppeling inschakelen:
 
-* Een taak moet ten minste twee taken hebben.
-* Er moet ten minste één taak waarvan de invoer de uitvoer van een andere taak in de taak is.
+* Een taak moet ten minste twee taken bevatten.
+* Er moet ten minste één taak zijn waarvan de invoer de uitvoer van een andere taak in de taak is.
 
-## <a name="use-odata-batch-processing"></a>OData-batchverwerking gebruiken
-Het volgende voorbeeld laat zien hoe OData batchverwerking gebruiken om te maken van een job en taken. Zie voor informatie over batchverwerking, [Open Data Protocol (OData) batchverwerking](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+## <a name="use-odata-batch-processing"></a>OData-batch verwerking gebruiken
+In het volgende voor beeld ziet u hoe u OData-batch verwerking gebruikt om een taak en taken te maken. Zie voor meer informatie over batch verwerking [Open Data Protocol (OData) batch processing (Engelstalig)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
     POST https://media.windows.net/api/$batch HTTP/1.1
     DataServiceVersion: 1.0;NetFx
@@ -160,7 +160,7 @@ Het volgende voorbeeld laat zien hoe OData batchverwerking gebruiken om te maken
     Accept: multipart/mixed
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
     Host: media.windows.net
 
@@ -180,7 +180,7 @@ Het volgende voorbeeld laat zien hoe OData batchverwerking gebruiken om te maken
     MaxDataServiceVersion: 3.0
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
     {"Name" : "NewTestJob", "InputMediaAssets@odata.bind":["https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3A2a22445d-1500-80c6-4b34-f1e5190d33c6')"]}
@@ -197,7 +197,7 @@ Het volgende voorbeeld laat zien hoe OData batchverwerking gebruiken om te maken
     MaxDataServiceVersion: 3.0
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
     {  
@@ -211,17 +211,17 @@ Het volgende voorbeeld laat zien hoe OData batchverwerking gebruiken om te maken
 
 
 
-## <a name="create-a-job-by-using-a-jobtemplate"></a>Een taak maken met behulp van een taaksjabloon
-Wanneer u meerdere assets verwerken met behulp van een gemeenschappelijke set taken, gebruikt u een taaksjabloon om op te geven van de taak standaardvoorinstellingen, of om in te stellen de volgorde van taken.
+## <a name="create-a-job-by-using-a-jobtemplate"></a>Een taak maken met behulp van een JobTemplate
+Wanneer u meerdere assets verwerkt met behulp van een algemene set taken, gebruikt u een JobTemplate om de standaard instellingen voor de taak op te geven, of om de volg orde van de taken in te stellen.
 
-Het volgende voorbeeld ziet hoe u een taaksjabloon maakt met een TaskTemplate die is gedefinieerd inline. De TaskTemplate de Media Encoder Standard gebruikt als de MediaProcessor coderen van het assetbestand. Andere MediaProcessors kan echter ook worden gebruikt.
+In het volgende voor beeld ziet u hoe u een JobTemplate maakt met een TaskTemplate die in line is gedefinieerd. De TaskTemplate gebruikt de Media Encoder Standard als MediaProcessor voor het coderen van het activa bestand. Andere MediaProcessors kunnen echter ook worden gebruikt.
 
     POST https://media.windows.net/API/JobTemplates HTTP/1.1
     Content-Type: application/json;odata=verbose
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -230,7 +230,7 @@ Het volgende voorbeeld ziet hoe u een taaksjabloon maakt met een TaskTemplate di
 
 
 > [!NOTE]
-> In tegenstelling tot andere entiteiten Media Services, moet u een nieuwe GUID-id definiëren voor elke TaskTemplate en plaats deze in de taskTemplateId en de Id-eigenschap in de aanvraagtekst. Het schema voor de identificatie van inhoud moet voldoen aan het schema dat wordt beschreven in de Azure Media Services-entiteiten identificeren. Bovendien kan niet JobTemplates worden bijgewerkt. In plaats daarvan moet u een nieuw bestand met uw wijzigingen bijgewerkt.
+> In tegens telling tot andere Media Services entiteiten moet u een nieuwe GUID-id definiëren voor elke TaskTemplate en deze in de eigenschap taskTemplateId en id in de aanvraag tekst plaatsen. Het inhouds identificatie schema moet volgen volgens het schema dat wordt beschreven in Azure Media Services entiteiten identificeren. Ook kan JobTemplates niet worden bijgewerkt. In plaats daarvan moet u een nieuw abonnement maken met de bijgewerkte wijzigingen.
 >
 >
 
@@ -241,14 +241,14 @@ Als dit lukt, wordt het volgende antwoord geretourneerd:
     . . .
 
 
-Het volgende voorbeeld laat zien hoe een taak maakt die verwijst naar een taaksjabloon-Id:
+In het volgende voor beeld ziet u hoe u een taak maakt die verwijst naar een JobTemplate-id:
 
     POST https://media.windows.net/API/Jobs HTTP/1.1
     Content-Type: application/json;odata=verbose
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -263,12 +263,12 @@ Als dit lukt, wordt het volgende antwoord geretourneerd:
     . . .
 
 
-## <a name="advanced-encoding-features-to-explore"></a>Geavanceerde Encoding-functies verkennen
-* [Miniatuurweergaven genereren](media-services-dotnet-generate-thumbnail-with-mes.md)
+## <a name="advanced-encoding-features-to-explore"></a>Geavanceerde coderings functies voor verkennen
+* [Miniaturen genereren](media-services-dotnet-generate-thumbnail-with-mes.md)
 * [Miniaturen genereren tijdens het coderen](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
 * [Video's bijsnijden tijdens het coderen](media-services-crop-video.md)
-* [Coderingsstandaarden aanpassen](media-services-custom-mes-presets-with-dotnet.md)
-* [Overlay of een video met een installatiekopie van een watermerk](media-services-advanced-encoding-with-mes.md#overlay)
+* [Coderings definities aanpassen](media-services-custom-mes-presets-with-dotnet.md)
+* [Een video met een afbeelding bedekkend of in een water merk](media-services-advanced-encoding-with-mes.md#overlay)
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -277,7 +277,7 @@ Als dit lukt, wordt het volgende antwoord geretourneerd:
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu dat u hoe u weet het maken van een taak voor een asset coderen, Zie [het controleren van de voortgang van de taak met Media Services](media-services-rest-check-job-progress.md).
+Nu u weet hoe u een taak kunt maken om een Asset te coderen, raadpleegt u de [voortgang van de taak controleren met Media Services](media-services-rest-check-job-progress.md).
 
 ## <a name="see-also"></a>Zie ook
-[Ophalen van Media-Processors](media-services-rest-get-media-processor.md)
+[Media processors ophalen](media-services-rest-get-media-processor.md)

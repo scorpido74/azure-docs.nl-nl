@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 0e4dd67e1686d3b63376138d1be2d1f7df4bb41a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: fa0df19053c3c238e3c00c46733cb4626dd64072
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290645"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773129"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Azure Resource Manager-sjablonen voor de consistentie van de cloud ontwikkelen
 
@@ -449,7 +449,7 @@ In het algemeen niet vastgelegd eindpunten in een sjabloon. De aanbevolen proced
 De volgende verwijzing sjabloonfunctie haalt de eindpunt-naamruimte van de storage resourceprovider:
 
 ```json
-"diskUri":"[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, 'container/myosdisk.vhd')]"
+"diskUri":"[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))).primaryEndpoints.blob, 'container/myosdisk.vhd')]"
 ```
 
 Door het vervangen van de waarde vastgelegd van het eindpunt van de storage-account met de `reference` sjabloonfunctie, kunt u dezelfde sjabloon gebruiken om te implementeren voor verschillende omgevingen is zonder dat u wijzigingen aanbrengt aan de eindpunt-verwijzing.

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 35d568afa0c45529b33b7918fd453213f432ba06
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/23/2020
+ms.openlocfilehash: fd6d3e24adfc22d2f6ea17f09b8dea4638a054b6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792296"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769043"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -59,8 +59,6 @@ U moet rekening houden met de volgende beperkingen:
 
 
 ## <a name="create-a-replica"></a>Replica's maken
-Voor de hoofd server moet de para meter `azure.replication_support` zijn ingesteld op **replica**. Als deze para meter wordt gewijzigd, moet de server opnieuw worden opgestart om de wijziging van kracht te laten worden. (De para meter `azure.replication_support` is alleen van toepassing op de lagen Algemeen en geoptimaliseerd voor geheugen).
-
 Wanneer u de werk stroom voor het maken van de replica start, wordt er een lege Azure Database for PostgreSQL-server gemaakt. De nieuwe server wordt gevuld met de gegevens die zich op de hoofd server bevonden. De aanmaak tijd is afhankelijk van de hoeveelheid gegevens op de Master en de tijd sinds de laatste wekelijkse volledige back-up. De tijd kan variëren van een paar minuten tot enkele uren.
 
 Elke replica is ingeschakeld voor [automatische groei](concepts-pricing-tiers.md#storage-auto-grow)van opslag. Met de functie voor automatisch uitbreiden kan de replica de gegevens repliceren, en wordt voor komen dat de replicatie wordt onderbroken vanwege onvoldoende opslag fouten.

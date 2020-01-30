@@ -9,14 +9,14 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 7d6b83354baf3db5ddb65f94fee1c3dce2dcca94
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992455"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841744"
 ---
-# <a name="output-batching"></a>Uitvoer batching
+# <a name="output-batching"></a>Batchverwerking van uitvoer
 
 Event Grid biedt ondersteuning voor het leveren van meer dan één gebeurtenis in één bezorgings aanvraag. Deze functie maakt het mogelijk de algehele leverings doorvoer te verhogen zonder de HTTP per-aanvraag-overhead te betalen. Batch verwerking is standaard uitgeschakeld en kan per abonnement worden ingeschakeld.
 
@@ -77,16 +77,16 @@ U kunt het batch gedrag van Event Grid per abonnee aanpassen door de volgende tw
 
 De volgende implementatie tijd instellingen bepalen de toegestane maximum waarde bij het maken van een gebeurtenis abonnement.
 
-| Eigenschaps naam | Beschrijving |
+| De naam van eigenschap | Beschrijving |
 | ------------- | ----------- | 
-| `api:deliveryPolicyLimits:maxpreferredBatchSizeInKilobytes` | De toegestane maximum waarde voor de `PreferredBatchSizeInKilobytes` knop. Standaard `1033`.
-| `api:deliveryPolicyLimits:maxEventsPerBatch` | De toegestane maximum waarde voor de `MaxEventsPerBatch` knop. Standaard `50`.
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | De toegestane maximum waarde voor de `PreferredBatchSizeInKilobytes` knop. Standaard `1033`.
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | De toegestane maximum waarde voor de `MaxEventsPerBatch` knop. Standaard `50`.
 
 ## <a name="configuring-runtime-default-values"></a>Standaard waarden voor runtime configureren
 
 De volgende implementatie tijd instellingen bepalen de runtime standaard waarde van elke knop wanneer deze niet is opgegeven in het gebeurtenis abonnement. Als u wilt herhalen, moet er ten minste één knop worden ingesteld op het gebeurtenis abonnement om batch-gedrag in te scha kelen.
 
-| Eigenschaps naam | Beschrijving |
+| De naam van eigenschap | Beschrijving |
 | ------------- | ----------- |
-| `broker:defaultMaxBatchSizeInBytes` | Maximale grootte van de leverings aanvraag wanneer alleen `MaxEventsPerBatch` is opgegeven. Standaard `1_058_576`.
-| `broker:defaultMaxEventsPerBatch` | Het maximum aantal gebeurtenissen dat aan een batch moet worden toegevoegd als alleen `MaxBatchSizeInBytes` is opgegeven. Standaard `10`.
+| `broker__defaultMaxBatchSizeInBytes` | Maximale grootte van de leverings aanvraag wanneer alleen `MaxEventsPerBatch` is opgegeven. Standaard `1_058_576`.
+| `broker__defaultMaxEventsPerBatch` | Het maximum aantal gebeurtenissen dat aan een batch moet worden toegevoegd als alleen `MaxBatchSizeInBytes` is opgegeven. Standaard `10`.

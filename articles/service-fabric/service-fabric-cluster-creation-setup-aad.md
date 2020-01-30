@@ -3,12 +3,12 @@ title: Azure Active Directory instellen voor client verificatie
 description: Meer informatie over het instellen van Azure Active Directory (Azure AD) voor het verifiëren van clients voor Service Fabric clusters.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: bbad991e955a31e3f3c53931889f630e521e1a8c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614686"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843817"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory instellen voor client verificatie
 
@@ -104,9 +104,19 @@ Wanneer u zich probeert aan te melden bij Azure AD in Service Fabric Explorer, r
 De cluster toepassing (web) die staat voor Service Fabric Explorer pogingen om te verifiëren bij Azure AD en als onderdeel van de aanvraag, levert de omleidings-URL. De URL wordt echter niet weer gegeven in de lijst met **antwoord-url's** voor de Azure AD-toepassing.
 
 #### <a name="solution"></a>Oplossing
-Selecteer ' App-registraties ' op de pagina AAD, selecteer uw cluster toepassing en selecteer vervolgens de knop **antwoord-url's** . Voeg op de pagina antwoord-Url's de URL van Service Fabric Explorer toe aan de lijst of vervang een van de items in de lijst. Wanneer u klaar bent, slaat u de wijziging op.
+Selecteer op de pagina Azure AD **app-registraties**, selecteer uw cluster toepassing en selecteer vervolgens antwoord- **url's**. Voeg in het deel venster **antwoord-url's** de service Fabric Explorer URL toe aan de lijst of vervang een van de items in de lijst. Sla de wijziging op.
 
 ![Antwoord-URL van webtoepassing][web-application-reply-url]
+
+### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>Als u verbinding maakt met het cluster via Azure AD-verificatie via Power shell, wordt er een fout bericht weer geven als u zich aanmeldt: "AADSTS50011"
+#### <a name="problem"></a>Probleem
+Wanneer u probeert verbinding te maken met een Service Fabric cluster met behulp van Azure AD via Power shell, retourneert de aanmeldings pagina een fout: "AADSTS50011: de antwoord-URL die in de aanvraag is opgegeven, komt niet overeen met de antwoord-url's die zijn geconfigureerd voor de toepassing: &lt;GUID&gt;."
+
+#### <a name="reason"></a>Reden
+Net als bij het voor gaande probleem probeert Power shell verificatie uit te voeren bij Azure AD, dat een omleidings-URL biedt die niet wordt vermeld in de lijst met **antwoord-url's** van de Azure AD-toepassing.  
+
+#### <a name="solution"></a>Oplossing
+Gebruik hetzelfde proces als in het voor gaande probleem, maar de URL moet worden ingesteld op `urn:ietf:wg:oauth:2.0:oob`, een speciale omleiding voor verificatie via de opdracht regel.
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>Verbind het cluster met behulp van Azure AD-verificatie via Power shell
 Gebruik de volgende Power shell-opdracht voor beeld om verbinding te maken met het Service Fabric cluster:

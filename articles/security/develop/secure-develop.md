@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9a4f5094837b0c642c4de75180039064de4e40c2
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 76219ec454fd105ed4bbf1a2fa0e922475d8dd1f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513980"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834974"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Veilige toepassingen ontwikkelen in azure
 In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden bij het ontwikkelen van toepassingen voor de Cloud. Beveiligings vragen en-concepten waarmee u rekening moet houden tijdens de implementatie-en verificatie fasen van micro soft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) vallen onder de dekking. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te ontwikkelen.
@@ -36,7 +36,7 @@ Stel dat uw toepassing wordt gebruikt op een manier die u niet wilt gebruiken. Z
 
 Voordat u code incheckt, voert u [code beoordelingen](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) uit om de algehele code kwaliteit te verbeteren en het risico op het maken van fouten te verminderen. U kunt [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) gebruiken om het code controle proces te beheren.
 
-### <a name="perform-static-code-analysis"></a>Statische codeanalyse uitvoeren
+### <a name="perform-static-code-analysis"></a>Statische code analyse uitvoeren
 
 [Statische code analyse](https://www.owasp.org/index.php/Static_Code_Analysis) (ook wel bekend als *broncode analyse*) wordt gewoonlijk uitgevoerd als onderdeel van een code controle. Statische code analyse verwijst doorgaans naar het uitvoeren van hulpprogram ma's voor statische code analyse om mogelijke beveiligings problemen in niet-actieve code te vinden met behulp van technieken als [Taint-controle](https://en.wikipedia.org/wiki/Taint_checking) en [gegevens stroom analyse](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
@@ -89,7 +89,7 @@ Dit betekent dat minder mensen toegang hebben tot uw echte gegevens, waardoor uw
 
 U moet een sterk wachtwoord beleid implementeren om ervoor te zorgen dat gebruikers een complex wacht woord maken (bijvoorbeeld: 12 tekens minimum lengte en alfanumerieke en speciale tekens vereisen) om te voor komen dat de computer wordt geraden.
 
-U kunt een identiteits raamwerk gebruiken om wachtwoord beleid te maken en af te dwingen. Azure AD B2C helpt u bij het beheer van wacht woorden door [ingebouwde beleids regels](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [selfservice voor wachtwoord herstel](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)en meer te bieden.
+U kunt een identiteits raamwerk gebruiken om wachtwoord beleid te maken en af te dwingen. Azure AD B2C helpt u bij het beheer van wacht woorden door [ingebouwde beleids regels](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [selfservice voor wachtwoord herstel](../../active-directory-b2c/user-flow-self-service-password-reset.md)en meer te bieden.
 
 Om te beschermen tegen aanvallen op standaard accounts, moet u controleren of alle sleutels en wacht woorden worden vervangen en dat ze worden gegenereerd of vervangen nadat u resources hebt geïnstalleerd.
 

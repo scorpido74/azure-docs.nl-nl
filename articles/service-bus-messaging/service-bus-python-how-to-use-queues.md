@@ -1,10 +1,9 @@
 ---
 title: 'Snelstartgids: Azure Service Bus wacht rijen gebruiken met python'
-description: Meer informatie over het gebruik van Azure Service Bus wachtrijen met python.
+description: In dit artikel wordt beschreven hoe u python gebruikt om berichten te maken, te verzenden naar en te ontvangen van Azure Service Bus-wacht rijen.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: b95ee5cd-3b31-459c-a7f3-cf8bcf77858b
 ms.service: service-bus-messaging
@@ -12,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-python-october2019
-ms.openlocfilehash: d0f579fcd82860380f1aaa651a61c0259d075a0d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: aa9ffc48d9b1374fa510f450bab2c66641421446
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748526"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773497"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Snelstartgids: Azure Service Bus wacht rijen gebruiken met python
 

@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314722"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838544"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen voor Indexeer functies in azure Cognitive Search oplossen
 
@@ -249,7 +249,7 @@ Als u weet dat uw gegevensset meerdere talen bevat en u de [LanguageDetectionSki
 ```
 
 Hier volgen enkele referenties voor de momenteel ondersteunde talen voor elk van de vaardig heden die dit fout bericht kunnen veroorzaken:
-* [Text Analytics ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (voor de [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)en [SentimentSkill](cognitive-search-skill-sentiment.md))
+* [Text Analytics ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (voor de [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md), [SentimentSkill](cognitive-search-skill-sentiment.md)en [PIIDetectionSkill](cognitive-search-skill-pii-detection.md))
 * Door [Translator ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) (voor de [tekst TranslationSkill](cognitive-search-skill-text-translation.md))
 * [Tekst SplitSkill](cognitive-search-skill-textsplit.md) Ondersteunde talen: `da, de, en, es, fi, fr, it, ko, pt`
 
@@ -303,7 +303,7 @@ De [Table Storage-service](https://azure.microsoft.com/services/storage/tables) 
 <a name="truncated-extracted-text-to-x-characters"/>
 
 ## <a name="warning-truncated-extracted-text-to-x-characters"></a>Waarschuwing: geëxtraheerde tekst wordt afgekapt tot X tekens
-Indexeer functies beperken hoeveel tekst uit één document kan worden opgehaald. Deze limiet is afhankelijk van de prijs categorie: 32.000 tekens voor de gratis laag, 64.000 voor Basic en 4.000.000 voor Standard, standaard S2 en standaard S3-lagen. De tekst die is afgekapt, wordt niet geïndexeerd. U kunt deze waarschuwing vermijden door documenten met grote hoeveel heden tekst te splitsen in meerdere, kleinere documenten. 
+Indexeer functies beperken hoeveel tekst uit één document kan worden opgehaald. Deze limiet is afhankelijk van de prijs categorie: 32.000 tekens voor de gratis laag, 64.000 voor Basic, 4.000.000 voor Standard, 8.000.000 voor Standard S2 en 16.000.000 voor Standard S3. De tekst die is afgekapt, wordt niet geïndexeerd. U kunt deze waarschuwing vermijden door documenten met grote hoeveel heden tekst te splitsen in meerdere, kleinere documenten. 
 
 Zie voor meer informatie [indexerings limieten](search-limits-quotas-capacity.md#indexer-limits).
 

@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 345924c10feabe9a7d5f50905689a4a0edb065ce
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 25a8181d404091064c26407c98fe31465cd4f4b3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948808"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838952"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Geef een toegangs token door via een gebruikers stroom naar uw toepassing in Azure Active Directory B2C
 
-Een [gebruikers stroom](active-directory-b2c-reference-policies.md) in Azure Active Directory B2C (Azure AD B2C) biedt gebruikers van uw toepassing de mogelijkheid zich aan te melden of zich aan te melden met een id-provider. Wanneer de rit wordt gestart, ontvangt Azure AD B2C een [toegangs token](active-directory-b2c-reference-tokens.md) van de ID-provider. Azure AD B2C gebruikt dat token om informatie over de gebruiker op te halen. U schakelt een claim in uw gebruikers stroom in om het token door te geven aan de toepassingen die u registreert in Azure AD B2C.
+Een [gebruikers stroom](user-flow-overview.md) in Azure Active Directory B2C (Azure AD B2C) biedt gebruikers van uw toepassing de mogelijkheid zich aan te melden of zich aan te melden met een id-provider. Wanneer de rit wordt gestart, ontvangt Azure AD B2C een [toegangs token](tokens-overview.md) van de ID-provider. Azure AD B2C gebruikt dat token om informatie over de gebruiker op te halen. U schakelt een claim in uw gebruikers stroom in om het token door te geven aan de toepassingen die u registreert in Azure AD B2C.
 
-Azure AD B2C biedt momenteel alleen ondersteuning voor het door geven van het toegangs token van [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) -id-providers, zoals [Facebook](active-directory-b2c-setup-fb-app.md) en [Google](active-directory-b2c-setup-goog-app.md). Voor alle andere id-providers wordt de claim leeg geretourneerd.
+Azure AD B2C biedt momenteel alleen ondersteuning voor het door geven van het toegangs token van [OAuth 2,0](authorization-code-flow.md) -id-providers, zoals [Facebook](identity-provider-facebook.md) en [Google](identity-provider-google.md). Voor alle andere id-providers wordt de claim leeg geretourneerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -56,4 +56,4 @@ Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Az
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie vindt u in het [overzicht van Azure AD B2C-tokens](active-directory-b2c-reference-tokens.md).
+Meer informatie vindt u in het [overzicht van Azure AD B2C-tokens](tokens-overview.md).

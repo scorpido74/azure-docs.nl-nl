@@ -1,14 +1,14 @@
 ---
 title: Externe verificatie van ACR-taak
-description: Een beheerde identiteit inschakelen voor Azure-resources in een Azure Container Registry-taak (ACR) zodat de taak de docker hub-referenties kan lezen die zijn opgeslagen in een Azure-sleutel kluis.
+description: Configureer een Azure Container Registry taak (ACR taak) om docker hub-referenties te lezen die zijn opgeslagen in een Azure-sleutel kluis met behulp van een beheerde identiteit voor Azure-resources.
 ms.topic: article
-ms.date: 07/12/2019
-ms.openlocfilehash: a7086050a4aef380f11298c819817692396216b2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/14/2020
+ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456220"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842517"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Externe authenticatie in een ACR-taak met behulp van een door Azure beheerde identiteit 
 
@@ -20,7 +20,7 @@ Voor het maken van de Azure-resources moet u voor dit artikel de Azure CLI-versi
 
 ## <a name="scenario-overview"></a>Overzicht van scenario's
 
-Met de voorbeeld taak worden docker hub-referenties gelezen die zijn opgeslagen in een Azure-sleutel kluis. De referenties zijn voor een docker hub-account met schrijf machtigingen (push) voor een privé-opslag plaats in docker hub. Als u de referenties wilt lezen, configureert u de taak met een beheerde identiteit en wijst u de juiste machtigingen toe. De taak die aan de identiteit is gekoppeld, bouwt een installatie kopie en meldt zich aan bij docker hub om de installatie kopie naar de persoonlijke opslag plaats te pushen. 
+Met de voorbeeld taak worden docker hub-referenties gelezen die zijn opgeslagen in een Azure-sleutel kluis. De referenties zijn voor een docker hub-account met schrijf machtigingen (push) naar een privé-docker hub-opslag plaats. Als u de referenties wilt lezen, configureert u de taak met een beheerde identiteit en wijst u de juiste machtigingen toe. De taak die aan de identiteit is gekoppeld, bouwt een installatie kopie en meldt zich aan bij docker hub om de installatie kopie naar de persoonlijke opslag plaats te pushen. 
 
 In dit voor beeld ziet u stappen met behulp van een door de gebruiker toegewezen of door het systeem toegewezen beheerde identiteit. De identiteit die u kiest, is afhankelijk van de behoeften van uw organisatie.
 
@@ -71,7 +71,7 @@ In een praktijk scenario zouden geheimen waarschijnlijk in een afzonderlijk proc
 De stappen voor deze voorbeeld taak worden gedefinieerd in een [yaml-bestand](container-registry-tasks-reference-yaml.md). Maak een bestand met de naam `dockerhubtask.yaml` in een lokale werkmap en plak de volgende inhoud. Zorg ervoor dat u de naam van de sleutel kluis in het bestand vervangt door de naam van de sleutel kluis.
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 # Replace mykeyvault with the name of your key vault
 secrets:
   - id: username
@@ -80,12 +80,12 @@ secrets:
     keyvault: https://mykeyvault.vault.azure.net/secrets/Password
 steps:
 # Log in to Docker Hub
-  - cmd: docker login --username '{{.Secrets.username}}' --password '{{.Secrets.password}}'
+  - cmd: bash echo '{{.Secrets.password}}' | docker login --username '{{.Secrets.username}}' --password-stdin 
 # Build image
-  - build: -t {{.Values.PrivateRepo}}:{{.Run.ID}} https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
+  - build: -t {{.Values.PrivateRepo}}:$ID https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
 # Push image to private repo in Docker Hub
   - push:
-    - {{.Values.PrivateRepo}}:{{.Run.ID}}
+    - {{.Values.PrivateRepo}}:$ID
 ```
 
 Met de taak stappen gaat u als volgt te werk:
@@ -94,6 +94,7 @@ Met de taak stappen gaat u als volgt te werk:
 * Verifieer met docker hub door de geheimen door te geven aan de opdracht `docker login`.
 * Bouw een installatie kopie met behulp van een voor beeld-Dockerfile in de opslag plaats van [Azure-samples/ACR-tasks](https://github.com/Azure-Samples/acr-tasks.git) .
 * Push de installatie kopie naar de opslag plaats van de privé-docker-hub.
+
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>Optie 1: taak maken met door gebruiker toegewezen identiteit
 
@@ -140,7 +141,10 @@ az acr task create \
 Voer de volgende [AZ-set-Policy][az-keyvault-set-policy] opdracht uit om een toegangs beleid in te stellen op de sleutel kluis. In het volgende voor beeld kan de identiteit geheimen van de sleutel kluis lezen. 
 
 ```azurecli
-az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
 ```
 
 ## <a name="manually-run-the-task"></a>De taak hand matig uitvoeren
@@ -148,7 +152,7 @@ az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --obje
 Als u wilt controleren of de taak waarin u een beheerde identiteit hebt ingeschakeld, met succes wordt uitgevoerd, moet u de taak hand matig activeren met de opdracht [AZ ACR Task run][az-acr-task-run] . De para meter `--set` wordt gebruikt om de naam van de persoonlijke opslag plaats door te geven aan de taak. In dit voor beeld is de naam van de tijdelijke aanduiding opslag plaats *hubuser/hubrepo*.
 
 ```azurecli
-az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo 
+az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo
 ```
 
 Wanneer de taak met succes wordt uitgevoerd, toont de uitvoer geslaagde verificatie voor docker hub en de installatie kopie is gemaakt en gepusht naar de persoonlijke opslag plaats:

@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 74666b1dc2ba4fac25aff0a56a52d048d746d465
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: a0a6581e0eed74725a7186e528618da5d8a4f890
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950932"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840244"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technische SAML-profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor de SAML 2,0-ID-provider. In dit artikel worden de specifieke specificaties beschreven van een technisch profiel voor interactie met een claim provider die ondersteuning biedt voor dit gestandaardiseerde protocol. Met een SAML-technische profiel kunt u met een id-provider op basis van SAML communiceren, zoals [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md) en [Sales Force](active-directory-b2c-setup-sf-app-custom.md). Met deze Federatie kunnen uw gebruikers zich aanmelden met hun bestaande sociale of bedrijfs identiteiten.
+Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor de SAML 2,0-ID-provider. In dit artikel worden de specifieke specificaties beschreven van een technisch profiel voor interactie met een claim provider die ondersteuning biedt voor dit gestandaardiseerde protocol. Met een SAML-technische profiel kunt u met een id-provider op basis van SAML communiceren, zoals [ADFS](identity-provider-adfs2016-custom.md) en [Sales Force](identity-provider-salesforce-custom.md). Met deze Federatie kunnen uw gebruikers zich aanmelden met hun bestaande sociale of bedrijfs identiteiten.
 
 ## <a name="metadata-exchange"></a>Uitwisseling van meta gegevens
 
@@ -150,5 +150,5 @@ Het **CryptographicKeys** -element bevat de volgende kenmerken:
 
 Raadpleeg de volgende artikelen voor voor beelden van het werken met SAML-id-providers in Azure AD B2C:
 
-- [ADFS toevoegen als een SAML-ID-provider met behulp van aangepast beleid](active-directory-b2c-custom-setup-adfs2016-idp.md)
-- [Meld u aan met Sales Force-accounts via SAML](active-directory-b2c-setup-sf-app-custom.md)
+- [ADFS toevoegen als een SAML-ID-provider met behulp van aangepast beleid](identity-provider-adfs2016-custom.md)
+- [Meld u aan met Sales Force-accounts via SAML](identity-provider-salesforce-custom.md)

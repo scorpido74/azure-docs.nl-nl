@@ -9,16 +9,16 @@ ms.date: 10/05/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 336b6157128468169264d6ffa9564da4d9338aae
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0aedeea2a6ad08e1627c2d1a6ebde6c91a4d02d9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992442"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841762"
 ---
 # <a name="configure-identity-for-the-event-grid-module"></a>Identiteit configureren voor de module Event Grid
 
-In dit artikel vindt u voor beelden van de mogelijke identiteits configuraties voor een Event Grid-module. Standaard zal de module Event Grid het identiteits certificaat weer geven zoals geconfigureerd door de IoT-beveiligings-daemon. Er wordt een identiteits certificaat weer gegeven door de Event Grid-module op de uitgaande oproepen die zich voordoen wanneer er gebeurtenissen worden geleverd. Een abonnee van een Event Grid gebeurtenis kan er vervolgens voor kiezen om te controleren of het inderdaad de Event Grid module is die de gebeurtenis heeft verzonden voordat de gebeurtenis wordt geaccepteerd.
+In dit artikel wordt beschreven hoe u identiteit configureert voor raster aan de rand. De module Event Grid geeft standaard het identiteits certificaat weer zoals geconfigureerd door de IoT-beveiligings-daemon. Event Grid op Edge presenteert het identiteits certificaat met de uitgaande oproepen wanneer het gebeurtenissen levert. Een abonnee kan vervolgens de Event Grid-module valideren die de gebeurtenis heeft verzonden voordat deze wordt geaccepteerd.
 
 Zie de hand leiding voor [beveiliging en verificatie](security-authentication.md) voor alle mogelijke configuraties.
 
@@ -28,8 +28,8 @@ Hier volgt een voorbeeld configuratie voor het altijd presen teren van een ident
 ```json
  {
   "Env": [
-    "outbound:clientAuth:clientCert:enabled=true",
-    "outbound:clientAuth:clientCert:source=IoTEdge"
+    "outbound__clientAuth__clientCert__enabled=true",
+    "outbound__clientAuth__clientCert__source=IoTEdge"
   ]
 }
  ```
@@ -40,7 +40,7 @@ Hier volgt een voorbeeld configuratie voor het niet presen teren van een identit
 ```json
  {
   "Env": [
-    "outbound:clientAuth:clientCert:enabled=false"
+    "outbound__clientAuth__clientCert__enabled=false"
   ]
 }
  ```

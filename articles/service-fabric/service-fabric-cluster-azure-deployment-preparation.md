@@ -3,12 +3,12 @@ title: Een Azure Service Fabric-cluster implementatie plannen
 description: Meer informatie over het plannen en voorbereiden van een productie-Service Fabric cluster implementatie naar Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32d48f9ffa056d252bdf762304340f245d80fd26
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463315"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834447"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plannen en voorbereiden voor een cluster implementatie
 
@@ -37,9 +37,59 @@ De minimale grootte van Vm's voor elk knooppunt type wordt bepaald door de [duur
 
 Het minimale aantal Vm's voor het primaire knooppunt type wordt bepaald door de gekozen [betrouwbaarheids categorie][reliability] .
 
-Zie de minimale aanbevelingen voor [primaire knooppunt typen](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [stateful werk belastingen op niet-primaire knooppunt](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)typen en [stateless workloads op niet-primaire knooppunt typen](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
+Zie de minimale aanbevelingen voor [primaire knooppunt typen](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [stateful werk belastingen op niet-primaire knooppunt](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)typen en [stateless workloads op niet-primaire knooppunt typen](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads).
 
 Meer dan het minimum aantal knoop punten moet zijn gebaseerd op het aantal replica's van de toepassing/services dat u wilt uitvoeren in dit knooppunt type.  [Capaciteits planning voor service Fabric-toepassingen](service-fabric-capacity-planning.md) helpt u bij het schatten van de resources die u nodig hebt om uw toepassingen uit te voeren. U kunt het cluster altijd hoger of lager schalen om de werk belasting van de toepassing te wijzigen. 
+
+#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>Tijdelijke besturingssysteem schijven gebruiken voor schaal sets voor virtuele machines
+
+*Tijdelijke besturingssysteem schijven* zijn opslag gemaakt op de lokale virtuele machine (VM) en worden niet opgeslagen op externe Azure Storage. Deze worden aanbevolen voor alle Service Fabric knooppunt typen (primair en secundair), omdat deze worden vergeleken met traditionele permanente besturingssysteem schijven, tijdelijke besturingssysteem schijven:
+
+* Lees-en schrijf latentie beperken tot de besturingssysteem schijf
+* Beheer bewerkingen voor het opnieuw instellen of terugzetten van knoop punten sneller uitvoeren
+* De totale kosten verlagen (de schijven zijn gratis en er zijn geen extra opslag kosten in rekening gebracht)
+
+Tijdelijke besturingssysteem schijven zijn geen specifieke Service Fabric-functie, maar in plaats daarvan een functie van de *virtuele-machine schaal sets* van Azure die zijn toegewezen aan service Fabric knooppunt typen. Voor het gebruik van deze met Service Fabric hebt u het volgende nodig in uw cluster Azure Resource Manager sjabloon:
+
+1. Zorg ervoor dat de typen knoop punten [ondersteunde Azure VM-grootten](../virtual-machines/windows/ephemeral-os-disks.md) voor tijdelijke besturingssysteem schijven opgeven en dat de grootte van de virtuele machine voldoende is voor de cache, zodat de grootte van de besturingssysteem schijf wordt ondersteund (Zie *Opmerking* hieronder). Bijvoorbeeld:
+
+    ```xml
+    "vmNodeType1Size": {
+        "type": "string",
+        "defaultValue": "Standard_DS3_v2"
+    ```
+
+    > [!NOTE]
+    > Zorg ervoor dat u een VM-grootte selecteert met een cache grootte die gelijk is aan of groter is dan de schijf grootte van het besturings systeem van de VM zelf, anders kan uw Azure-implementatie een fout veroorzaken (zelfs als deze in eerste instantie wordt geaccepteerd).
+
+2. Geef een versie van de virtuele-machine Scale set (`vmssApiVersion`) van `2018-06-01` of hoger op:
+
+    ```xml
+    "variables": {
+        "vmssApiVersion": "2018-06-01",
+    ```
+
+3. Geef in de sectie schaalset voor virtuele machines van uw implementatie sjabloon `Local` optie op voor `diffDiskSettings`:
+
+    ```xml
+    "apiVersion": "[variables('vmssApiVersion')]",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+        "virtualMachineProfile": {
+            "storageProfile": {
+                "osDisk": {
+                        "vhdContainers": ["[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('vmStorageAccountName')), variables('storageApiVersion')).primaryEndpoints.blob, parameters('vmStorageAccountContainerName'))]"],
+                        "caching": "ReadOnly",
+                        "createOption": "FromImage",
+                        "diffDiskSettings": {
+                            "option": "Local"
+                        },
+                }
+            }
+        }
+    ```
+
+Zie voor meer informatie en meer configuratie opties [kortstondige besturingssysteem schijven voor virtuele Azure-machines](../virtual-machines/windows/ephemeral-os-disks.md) 
+
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>De duurzaamheid en betrouwbaarheids niveaus voor het cluster selecteren
 De laag duurzaamheid wordt gebruikt om aan het systeem de bevoegdheden aan te geven die uw virtuele machines hebben met de onderliggende Azure-infra structuur. In het primaire knooppunt type kan met deze bevoegdheid Service Fabric elke infrastructuur aanvraag op VM-niveau onderbreken (zoals het opnieuw opstarten van een VM, een VM-installatie kopie of een VM-migratie) die van invloed is op de quorum vereisten voor de systeem services en uw stateful Services. In de niet-primaire knooppunt typen kan met deze bevoegdheid Service Fabric alle infrastructuur aanvragen op VM-niveau (zoals opnieuw opstarten van de VM, VM-installatie kopie en VM-migratie) onderbreken die van invloed zijn op de quorum vereisten voor uw stateful Services.  Zie [de duurzaamheids kenmerken van het cluster][durability]voor meer voor delen van de verschillende niveaus en aanbevelingen voor het niveau dat moet worden gebruikt en wanneer.

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b4f0a082ba68ce9de417d196c1f6ea593c5c8feb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b067b18985905b226287f9dd10ad4b937fab6df1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473498"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767972"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Overzicht van Azure FarmBeats (preview-versie)
 
@@ -33,7 +33,7 @@ Met de preview-versie van Azure FarmBeats kunt u het volgende doen:
 ## <a name="datahub"></a>Datahub
 
 De Azure FarmBeats Datahub is een API-laag, waarmee aggregatie, normalisatie en contextualization van verschillende agrarische gegevens sets tussen providers worden ingeschakeld. U kunt Azure FarmBeats gebruiken om het volgende te krijgen:
-- **Sensor gegevens** van twee sensor-providers [Davis-instrumenten](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/)
+- **Sensor gegevens** van twee sensor-providers [Davis instrumenten](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), [pessl-instrumenten](https://metos.at/)
 - **Satelliet afbeelding** van de missie van de [Sentinel-2-](https://sentinel.esa.int/web/sentinel/home) satelliet van het Euro pees ruimte-agentschap
 - **Drone image** uit drie drone-installatie kopie providers [senseFly](https://www.sensefly.com/) , [SlantRange](https://slantrange.com/) , [DJI](https://dji.com/)
 

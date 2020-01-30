@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f0f9b2c974c0a095719973b1c6173d682718dbbf
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69014871"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773686"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Aan de slag met het leveren van inhoud op aanvraag met behulp van REST  
 
@@ -89,11 +89,11 @@ In Media Services uploadt u de digitale bestanden naar (of neemt u deze op in) e
 
 Een van de waarden die u moet opgeven bij het maken van een Asset, is opties voor het maken van activa. De eigenschap **Options** is een opsommings waarde die de versleutelings opties beschrijft waarmee een activum kan worden gemaakt. Een geldige waarde is een van de waarden uit de onderstaande lijst, niet een combi natie van waarden uit deze lijst:
 
-* Geen = **0** : er wordt geen versleuteling gebruikt. Wanneer u deze optie gebruikt, wordt uw inhoud niet door Voer of op rest in de opslag beveiligd.
+* **Geen** = **0** : er wordt geen versleuteling gebruikt. Wanneer u deze optie gebruikt, wordt uw inhoud niet door Voer of op rest in de opslag beveiligd.
     Als u een MP4-bestand wilt leveren via progressief downloaden, gebruikt u deze optie.
-* StorageEncrypted = **1** : Hiermee versleutelt u uw ongecodeerde inhoud lokaal met AES-256-bits versleuteling en uploadt u deze naar Azure Storage waar deze wordt opgeslagen op rest. De versleuteling van assets die zijn beveiligd met Storage Encryption, wordt automatisch ongedaan gemaakt en de assets worden automatisch in een versleuteld bestandssysteem geplaatst voordat ze worden gecodeerd. Eventueel kunnen ze opnieuw worden versleuteld voordat ze opnieuw worden geüpload als een nieuwe uitvoerasset. Storage Encryption wordt voornamelijk gebruikt om uw invoerbestanden met media van hoge kwaliteit die zijn opgeslagen op de schijf, te beveiligen met een sterke versleuteling.
-* CommonEncryptionProtected = **2** : gebruik deze optie als u inhoud uploadt die al is versleuteld en beveiligd met common Encryption of playready DRM (bijvoorbeeld Smooth streaming beveiligd met PlayReady DRM).
-* EnvelopeEncryptionProtected = **4** : gebruik deze optie als u HLS versleuteld uploadt met AES. De bestanden moeten zijn gecodeerd en versleuteld door trans formatie Manager.
+* **StorageEncrypted** = **1** : versleutelt uw ongecodeerde inhoud lokaal met AES-256-bits versleuteling en uploadt deze vervolgens naar Azure Storage waar deze wordt opgeslagen in rust. De versleuteling van assets die zijn beveiligd met Storage Encryption, wordt automatisch ongedaan gemaakt en de assets worden automatisch in een versleuteld bestandssysteem geplaatst voordat ze worden gecodeerd. Eventueel kunnen ze opnieuw worden versleuteld voordat ze opnieuw worden geüpload als een nieuwe uitvoerasset. Storage Encryption wordt voornamelijk gebruikt om uw invoerbestanden met media van hoge kwaliteit die zijn opgeslagen op de schijf, te beveiligen met een sterke versleuteling.
+* **CommonEncryptionProtected** = **2** : gebruik deze optie als u inhoud uploadt die al is versleuteld en beveiligd met common Encryption of PlayReady DRM (bijvoorbeeld Smooth streaming beveiligd met PlayReady DRM).
+* **EnvelopeEncryptionProtected** = **4** : gebruik deze optie als u HLS versleuteld uploadt met AES. De bestanden moeten zijn gecodeerd en versleuteld door trans formatie Manager.
 
 ### <a name="create-an-asset"></a>Een Asset maken
 Een Asset is een container voor meerdere typen of verzamelingen van objecten in Media Services, zoals video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden. In de REST API vereist het maken van een Asset POST-aanvraag verzenden naar Media Services en het plaatsen van eigenschaps informatie over uw asset in de hoofd tekst van de aanvraag.
@@ -109,7 +109,7 @@ In het volgende voor beeld ziet u hoe u een Asset maakt.
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: c59de965-bc89-4295-9a57-75d897e5221e
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 45
@@ -163,7 +163,7 @@ Nadat u uw digitale media bestand naar een BLOB-container hebt geüpload, gebrui
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 164
 
@@ -225,7 +225,7 @@ In het volgende voor beeld ziet u hoe u een AccessPolicy maakt:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 74
 
@@ -284,7 +284,7 @@ In het volgende voor beeld ziet u hoe u een SAS URL-Locator maakt, zoals gedefin
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 178
 
@@ -348,7 +348,7 @@ Nu u het bestand hebt geüpload, werkt u de FileAsset-grootte (en andere) bij. B
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
     {  
@@ -376,7 +376,7 @@ Als dit lukt, wordt het volgende geretourneerd:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -395,7 +395,7 @@ Als dit lukt, wordt het volgende geretourneerd:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 **HTTP-antwoord**
@@ -407,9 +407,9 @@ Als dit lukt, wordt het volgende geretourneerd:
 
 ## <a id="encode"></a>Het bron bestand coderen in een set Adaptive bitrate MP4-bestanden
 
-Nadat u activa in Media Services hebt opgenomen, kunnen media worden gecodeerd, transmuxed, met een water merk, enzovoort voordat deze aan clients worden geleverd. Deze activiteiten worden gepland en uitgevoerd op meerdere achtergrondrolinstanties om hoge prestaties en een hoge beschikbaarheid te garanderen. Deze activiteiten worden taken genoemd en elke taak bestaat uit atomische taken die het werkelijke werk doen aan het activa bestand (Zie [taak](https://docs.microsoft.com/rest/api/media/operations/job)beschrijvingen) voor meer informatie [](https://docs.microsoft.com/rest/api/media/operations/task) .
+Nadat u activa in Media Services hebt opgenomen, kunnen media worden gecodeerd, transmuxed, met een water merk, enzovoort voordat deze aan clients worden geleverd. Deze activiteiten worden gepland en uitgevoerd op meerdere achtergrondrolinstanties om hoge prestaties en een hoge beschikbaarheid te garanderen. Deze activiteiten worden taken genoemd en elke taak bestaat uit atomische taken die het werkelijke werk doen aan het activa bestand (Zie [taak](https://docs.microsoft.com/rest/api/media/operations/job) [beschrijvingen)](https://docs.microsoft.com/rest/api/media/operations/task) voor meer informatie.
 
-Zoals eerder is vermeld, wordt bij het werken met Azure Media Services een van de meest voorkomende scenario's Adaptive Bitrate Streaming aan de clients geleverd. Met Media Services kunt u een dynamisch pakket maken met een van de volgende indelingen voor MP4-bestanden met een adaptieve bitsnelheid: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
+Zoals eerder is vermeld, wordt bij het werken met Azure Media Services een van de meest voorkomende scenario's Adaptive Bitrate Streaming aan de clients geleverd. Media Services kunt een set Adaptive bitrate MP4-bestanden dynamisch inpakken in een van de volgende indelingen: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
 
 In de volgende sectie ziet u hoe u een taak maakt die één coderings taak bevat. De taak geeft aan dat het mezzanine-bestand moet worden transcoderen naar een set adaptieve bitrate mp4's met behulp van **Media Encoder Standard**. In deze sectie wordt ook uitgelegd hoe u de voortgang van de taak verwerking kunt controleren. Wanneer de taak is voltooid, kunt u Locators maken die nodig zijn om toegang te krijgen tot uw activa.
 
@@ -426,7 +426,7 @@ Met de volgende code wordt de id van het coderings programma aangevraagd.
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -460,7 +460,7 @@ Met de volgende code wordt de id van het coderings programma aangevraagd.
     }
 
 ### <a name="create-a-job"></a>Een taak maken
-Elke taak kan een of meer taken bevatten, afhankelijk van het type verwerking dat u wilt uitvoeren. Via de REST API kunt u op een van de volgende twee manieren taken en de bijbehorende taken maken: Taken kunnen inline worden gedefinieerd via de taak navigatie-eigenschap op taak entiteiten of via OData batch-verwerking. De Media Services SDK gebruikt batch verwerking. Voor de Lees baarheid van de code voorbeelden in dit artikel, worden de taken echter in line gedefinieerd. Zie voor meer informatie over batch verwerking [Open Data Protocol (OData) batch processing (Engelstalig)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Elke taak kan een of meer taken bevatten, afhankelijk van het type verwerking dat u wilt uitvoeren. Via de REST API kunt u taken en de bijbehorende taken op een van de volgende twee manieren maken: taken kunnen inline worden gedefinieerd via de taak navigatie-eigenschap op taak entiteiten of via OData batch-verwerking. De Media Services SDK gebruikt batch verwerking. Voor de Lees baarheid van de code voorbeelden in dit artikel, worden de taken echter in line gedefinieerd. Zie voor meer informatie over batch verwerking [Open Data Protocol (OData) batch processing (Engelstalig)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
 In het volgende voor beeld ziet u hoe u een taak maakt en post met één Taakset voor het coderen van een video met een specifieke resolutie en kwaliteit. De volgende documentatie sectie bevat de lijst met alle [taak voorinstellingen](https://msdn.microsoft.com/library/mt269960) die door de Media Encoder Standard-processor worden ondersteund.  
 
@@ -473,7 +473,7 @@ In het volgende voor beeld ziet u hoe u een taak maakt en post met één Taakset
     Accept: application/json;odata=verbose
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 482
 
@@ -561,19 +561,19 @@ Als dit lukt, wordt het volgende antwoord geretourneerd:
 Er zijn enkele belang rijke dingen die u moet weten in elke taak aanvraag:
 
 * TaskBody-eigenschappen moeten letterlijke XML gebruiken om het aantal invoer-of uitvoer activa te definiëren dat door de taak wordt gebruikt. Het taak artikel bevat de XML-schema definitie voor de XML.
-* In de TaskBody-definitie moet elke interne waarde `<inputAsset>` voor `<outputAsset>` en worden ingesteld op JobInputAsset (waarde) of JobOutputAsset (waarde).
+* In de TaskBody-definitie moet elke binnenste waarde voor `<inputAsset>` en `<outputAsset>` worden ingesteld als JobInputAsset (waarde) of JobOutputAsset (waarde).
 * Een taak kan meerdere uitvoer assets hebben. Een JobOutputAsset (x) kan slechts één keer worden gebruikt als uitvoer van een taak in een taak.
 * U kunt JobInputAsset of JobOutputAsset als invoer element van een taak opgeven.
 * Taken mogen geen cyclus vormen.
 * De waarde-para meter die u doorgeeft aan JobInputAsset of JobOutputAsset vertegenwoordigt de index waarde voor een Asset. De werkelijke activa worden gedefinieerd in de navigatie-eigenschappen InputMediaAssets en OutputMediaAssets van de definitie van de taak entiteit.
 
 > [!NOTE]
-> Omdat Media Services is gebouwd op OData v3, wordt verwezen naar de afzonderlijke assets in InputMediaAssets-en OutputMediaAssets-navigatie-eigenschappen verzamelingen via een combi natie van naam en waarde ' __metadata: URI '.
+> Omdat Media Services is gebouwd op OData v3, wordt verwezen naar de afzonderlijke assets in de InputMediaAssets-en OutputMediaAssets-navigatie-eigenschappen verzamelingen via een ' __metadata: URI-naam/waarde-paar.
 >
 >
 
 * InputMediaAssets wordt toegewezen aan een of meer assets die u hebt gemaakt in Media Services. OutputMediaAssets worden gemaakt door het systeem. Ze verwijzen niet naar een bestaande Asset.
-* OutputMediaAssets kan worden benoemd met het kenmerk activanaam. Als dit kenmerk niet aanwezig is, is de naam van de OutputMediaAsset gelijk aan de interne tekst waarde van het `<outputAsset>` element, met een achtervoegsel van de waarde van de taak naam, of de waarde van de taak-id (in het geval waar de eigenschap naam niet is gedefinieerd). Als u bijvoorbeeld een waarde instelt voor ' voor beeld ', wordt de eigenschap OutputMediaAsset name ingesteld op ' voor beeld '. Als u echter geen waarde hebt ingesteld voor de OutputMediaAsset, maar de taak naam had ingesteld op ' NewJob ', zou de naam van de eigenschap ' JobOutputAsset (waarde) _NewJob ' zijn.
+* OutputMediaAssets kan worden benoemd met het kenmerk activanaam. Als dit kenmerk niet aanwezig is, is de naam van de OutputMediaAsset gelijk aan de interne tekst waarde van het `<outputAsset>`-element met een achtervoegsel van de waarde van de taak naam of de waarde van de taak-id (in het geval waar de eigenschap naam niet is gedefinieerd). Als u bijvoorbeeld een waarde instelt voor ' voor beeld ', wordt de eigenschap OutputMediaAsset name ingesteld op ' voor beeld '. Als u echter geen waarde hebt ingesteld voor de OutputMediaAsset, maar de taak naam had ingesteld op ' NewJob ', zou de naam van de eigenschap ' JobOutputAsset (waarde) _NewJob ' zijn.
 
     In het volgende voor beeld ziet u hoe u het kenmerk assets instelt:
 
@@ -583,7 +583,7 @@ Er zijn enkele belang rijke dingen die u moet weten in elke taak aanvraag:
   * Een taak moet ten minste twee taken bevatten
   * Er moet ten minste één taak zijn waarvan de invoer van een andere taak in de taak wordt uitgevoerd.
 
-Zie een coderings [taak maken met de Media Services rest API](media-services-rest-encode-asset.md)voor meer informatie.
+Zie [een coderings taak maken met de Media Services rest API](media-services-rest-encode-asset.md)voor meer informatie.
 
 ### <a name="monitor-processing-progress"></a>Voortgang van verwerking bewaken
 U kunt de taak status ophalen met behulp van de eigenschap State, zoals wordt weer gegeven in het volgende voor beeld:
@@ -595,7 +595,7 @@ U kunt de taak status ophalen met behulp van de eigenschap State, zoals wordt we
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 0
@@ -632,7 +632,7 @@ In het volgende voor beeld ziet u hoe u CancelJob aanroept.
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.2
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
 
@@ -656,7 +656,7 @@ De volgende code laat zien hoe u de id van de uitvoer activum kunt aanvragen.
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -733,7 +733,7 @@ In het volgende voor beeld ziet u hoe u de AccessPolicy opgeeft voor lees machti
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 74
@@ -756,7 +756,7 @@ De volgende code laat zien hoe u een URL krijgt die kan worden gebruikt voor het
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs.net
     Content-Length: 182
@@ -847,7 +847,7 @@ De volgende code laat zien hoe u een streaming-URL-Locator maakt:
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: wamsbayclus001rest-hs
     Content-Length: 182
@@ -915,7 +915,7 @@ Gebruik [Azure Media Services Player](https://aka.ms/azuremediaplayer) om uw vid
 
 Plak een URL in een browser (bijvoorbeeld Internet Explorer, Chrome, Safari) om progressieve down load te testen.
 
-## <a name="next-steps-media-services-learning-paths"></a>Volgende stappen Media Services-leertrajecten
+## <a name="next-steps-media-services-learning-paths"></a>Volgende stappen: Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geven

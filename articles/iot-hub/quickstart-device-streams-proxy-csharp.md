@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: b48c43f90be3f43b05dcb4028c774836ffd196b7
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: a1b6adc37d78e3fa73d7ae70237d678af6b9dc99
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045974"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769466"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Quick Start: SSH en RDP via een IoT Hub Device stream inschakelen met behulp van een C# proxy toepassing (preview-versie)
 
@@ -51,7 +51,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 * De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 
-  * US - centraal
+  * VS - centraal
   * Centrale VS-EUAP
   * Azië - zuidoost
   * Europa - noord
@@ -72,7 +72,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
    az extension add --name azure-cli-iot-ext
    ```
 
-* [Down load het C# voorbeeld project](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)en pak het zip-archief uit.
+* [Down load de Azure C# IOT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)-voor beelden en pak het zip-archief uit.
 
 * Een geldig gebruikers account en referenties op het apparaat (Windows of Linux) dat wordt gebruikt om de gebruiker te verifiëren.
 

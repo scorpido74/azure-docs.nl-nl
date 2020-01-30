@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: b813ef89bb1a55f769d0ea2391855ba5d671c140
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 78ec5b6d330f03d78dcb4e798b23d588fd93398e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648796"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835960"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reageren op Blob Storage-gebeurtenissen
 
-Met Azure Storage gebeurtenissen kunnen toepassingen reageren op gebeurtenissen, zoals het maken en verwijderen van blobs met behulp van moderne serverloze architecturen. Dit gebeurt zonder dat er complexe code of dure en inefficiënte polling services nodig zijn.
+Met Azure Storage gebeurtenissen kunnen toepassingen reageren op gebeurtenissen, zoals het maken en verwijderen van blobs. Dit gebeurt zonder dat er complexe code of dure en inefficiënte polling services nodig zijn.
 
-In plaats daarvan worden gebeurtenissen gepusht via [Azure Event grid](https://azure.microsoft.com/services/event-grid/) naar abonnees zoals Azure Functions, Azure Logic apps of zelfs naar uw eigen aangepaste HTTP-listener en betaalt u alleen voor wat u gebruikt.
+Gebeurtenissen worden gepusht met behulp van [Azure Event grid](https://azure.microsoft.com/services/event-grid/) naar abonnees, zoals Azure Functions, Azure Logic apps of zelfs naar uw eigen HTTP-listener. Het beste deel is dat u alleen betaalt voor wat u gebruikt.
 
-Blob Storage-gebeurtenissen worden betrouwbaar verzonden naar de Event Grid-service die betrouw bare leverings Services biedt aan uw toepassingen via een uitgebreid beleid voor opnieuw proberen en levering van onbestelbare berichten.
+Blob-opslag verzendt gebeurtenissen naar Event Grid die betrouw bare levering van gebeurtenissen naar uw toepassingen biedt door een beleid voor uitgebreide pogingen en onbestelbare berichten.
 
 Veelvoorkomende gebeurtenissen in Blob Storage zijn onder andere afbeeldings-of video verwerking, zoek indexering of een op bestanden gebaseerde werk stroom. Het asynchroon uploaden van bestanden is een uitstekend geschikt voor gebeurtenissen. Als de wijzigingen niet worden doorgevoerd, maar voor uw scenario een onmiddellijke reactie nodig is, kan de architectuur op basis van gebeurtenissen bijzonder efficiënt zijn.
 
@@ -29,11 +29,14 @@ Als u dit nu wilt doen, raadpleegt u een van de volgende Quick Start-artikelen:
 
 |Als u dit hulp programma wilt gebruiken:    |Zie dit artikel: |
 |--|-|
-|Azure Portal    |[Snelstart: Blob Storage-gebeurtenissen naar een webeindpunt door sturen met de Azure Portal](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|PowerShell    |[Snelstart: Opslag gebeurtenissen naar een webeindpunt door sturen met Power shell](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure-CLI    |[Snelstart: Opslag gebeurtenissen naar een webeindpunt door sturen met Azure CLI](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Portal    |[Snelstartgids: Blob Storage-gebeurtenissen naar een webeindpunt door sturen met de Azure Portal](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|PowerShell    |[Snelstartgids: opslag gebeurtenissen naar een webeindpunt door sturen met Power shell](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure-CLI    |[Snelstartgids: opslag gebeurtenissen naar een webeindpunt door sturen met Azure CLI](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
-Als uw account een hiërarchische naam ruimte heeft, ziet u in deze zelf studie hoe u verbinding maakt met een Event Grid-abonnement, een Azure-functie en een [taak](https://docs.azuredatabricks.net/user-guide/jobs.html) in azure Databricks: [Vind Gebruik Azure Data Lake Storage Gen2 gebeurtenissen om een Databricks Delta tabel](data-lake-storage-events.md)bij te werken.
+Als uw account een hiërarchische naam ruimte heeft, ziet u in deze zelf studie hoe u verbinding maakt met een Event Grid-abonnement, een Azure-functie en een [taak](https://docs.azuredatabricks.net/user-guide/jobs.html) in azure Databricks: [zelf studie: Azure data Lake Storage Gen2-gebeurtenissen gebruiken om een Databricks Delta tabel bij te werken](data-lake-storage-events.md).
+
+>[!NOTE]
+> Alleen opslag accounts van het type **StorageV2 (algemeen gebruik v2)** en **BlobStorage** ondersteunings gebeurtenis integratie. **Storage (Genral doel v1)** biedt *geen* ondersteuning voor integratie met Event grid.
 
 ## <a name="the-event-model"></a>Het gebeurtenis model
 
@@ -52,7 +55,7 @@ Zie het artikel over het [schema voor Blob Storage-gebeurtenissen](../../event-g
 
 ## <a name="filtering-events"></a>Gebeurtenissen filteren
 
-BLOB gebeurtenis abonnementen kunnen worden gefilterd op basis van het gebeurtenis type en door de naam van de container en de blobnaam van het object dat is gemaakt of verwijderd.  Filters kunnen worden toegepast op gebeurtenis abonnementen tijdens het [maken](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) van het gebeurtenis abonnement of [op een later tijdstip](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest). De subject filters in Event Grid werken op basis van de overeenkomsten ' begint met ' en ' eindigt op ', zodat gebeurtenissen met een overeenkomend onderwerp aan de abonnee worden geleverd.
+BLOB- [gebeurtenissen kunnen worden gefilterd](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) op basis van het gebeurtenis type, de naam van de container of de naam van het object dat is gemaakt/verwijderd. Filters in Event Grid komen overeen met het begin of het einde van het onderwerp, zodat gebeurtenissen met een overeenkomend onderwerp naar de abonnee gaan.
 
 Zie [gebeurtenissen filteren voor Event grid voor](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)meer informatie over het Toep assen van filters.
 
@@ -64,25 +67,25 @@ Het onderwerp van Blob Storage-gebeurtenissen maakt gebruik van de volgende inde
 
 Als u alle gebeurtenissen voor een opslag account wilt vergelijken, kunt u de onderwerps filters leeg laten.
 
-Als u gebeurtenissen wilt vergelijken van blobs die zijn gemaakt in een set containers die een voor `subjectBeginsWith` voegsel delen, gebruikt u een filter zoals:
+Als u gebeurtenissen wilt vergelijken van blobs die zijn gemaakt in een set containers die een voor voegsel delen, gebruikt u een `subjectBeginsWith` filter zoals:
 
 ```
 /blobServices/default/containers/containerprefix
 ```
 
-Als u gebeurtenissen wilt vergelijken van blobs die zijn gemaakt in een `subjectBeginsWith` specifieke container, gebruikt u een filter zoals:
+Als u gebeurtenissen wilt vergelijken van blobs die zijn gemaakt in een specifieke container, gebruikt u een `subjectBeginsWith` filter zoals:
 
 ```
 /blobServices/default/containers/containername/
 ```
 
-Als u gebeurtenissen wilt vergelijken van blobs die zijn gemaakt in een specifieke container voor het delen `subjectBeginsWith` van een BLOB-naam, gebruikt u een filter zoals:
+Als u gebeurtenissen wilt vergelijken van blobs die zijn gemaakt in een specifieke container voor het delen van een BLOB-naam, gebruikt u een `subjectBeginsWith` filter zoals:
 
 ```
 /blobServices/default/containers/containername/blobs/blobprefix
 ```
 
-Als u gebeurtenissen wilt vergelijken van blobs die zijn gemaakt in een specifieke container met een `subjectEndsWith` BLOB-achtervoegsel, gebruikt u een filter zoals ". log" of ". jpg". Zie [Event grid-concepten](../../event-grid/concepts.md#event-subscriptions)voor meer informatie.
+Als u gebeurtenissen wilt vergelijken van blobs die zijn gemaakt in een specifieke container voor het delen van een BLOB-achtervoegsel, gebruikt u een `subjectEndsWith` filter zoals '. log ' of '. jpg '. Zie [Event grid-concepten](../../event-grid/concepts.md#event-subscriptions)voor meer informatie.
 
 ## <a name="practices-for-consuming-events"></a>Procedures voor het gebruiken van gebeurtenissen
 
@@ -91,10 +94,10 @@ Toepassingen die Blob Storage-gebeurtenissen verwerken, moeten een aantal aanbev
 > * Omdat meerdere abonnementen kunnen worden geconfigureerd voor het routeren van gebeurtenissen naar dezelfde gebeurtenis-handler, is het belang rijk om te voor komen dat gebeurtenissen afkomstig zijn uit een bepaalde bron, maar om het onderwerp van het bericht te controleren om ervoor te zorgen dat het afkomstig is van het opslag account dat u verwacht.
 > * Controleer ook of de Event type is ingesteld als een voor bereiding op het proces en ga er niet van uit dat alle gebeurtenissen die u ontvangt, de verwachte typen zijn.
 > * Wanneer berichten in aflopende volg orde en na enige vertraging kunnen aankomen, gebruikt u de ETAG-velden om te begrijpen of uw informatie over objecten nog steeds actueel is.  Gebruik ook de sequencer-velden om de volg orde van gebeurtenissen op een bepaald object te begrijpen.
-> * Gebruik het veld blobType om te begrijpen welk type bewerkingen op de BLOB zijn toegestaan en welke client bibliotheek typen u moet gebruiken voor toegang tot de blob. Geldige waarden zijn ofwel `BlockBlob` of `PageBlob`. 
-> * Gebruik het URL-veld met `CloudBlockBlob` de `CloudAppendBlob` Constructors om toegang te krijgen tot de blob.
+> * Gebruik het veld blobType om te begrijpen welk type bewerkingen op de BLOB zijn toegestaan en welke client bibliotheek typen u moet gebruiken voor toegang tot de blob. Geldige waarden zijn `BlockBlob` of `PageBlob`. 
+> * Gebruik het URL-veld met de `CloudBlockBlob` en `CloudAppendBlob` Constructors om toegang te krijgen tot de blob.
 > * Velden negeren die u niet begrijpt. Met deze procedure kunt u de nieuwe functies die in de toekomst kunnen worden toegevoegd, flexibeler maken.
-> * Als u ervoor wilt zorgen dat de **gebeurtenis micro soft. storage. BlobCreated** alleen wordt geactiveerd als een blok-BLOB volledig is doorgevoerd, filtert u `CopyBlob`de gebeurtenis `PutBlockList` voor `FlushWithClose` de-, `PutBlob`-of rest API-aanroepen. Met deze API-aanroepen wordt de gebeurtenis **micro soft. storage. BlobCreated** alleen geactiveerd wanneer gegevens volledig zijn doorgevoerd in een blok-blob. Zie [gebeurtenissen filteren voor Event grid voor](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)meer informatie over het maken van een filter.
+> * Als u ervoor wilt zorgen dat de gebeurtenis **micro soft. storage. BlobCreated** alleen wordt geactiveerd als een blok-BLOB volledig is doorgevoerd, filtert u de gebeurtenis voor de `CopyBlob`, `PutBlob`, `PutBlockList` of `FlushWithClose` rest API-aanroepen. Met deze API-aanroepen wordt de gebeurtenis **micro soft. storage. BlobCreated** alleen geactiveerd wanneer gegevens volledig zijn doorgevoerd in een blok-blob. Zie [gebeurtenissen filteren voor Event grid voor](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)meer informatie over het maken van een filter.
 
 
 ## <a name="next-steps"></a>Volgende stappen

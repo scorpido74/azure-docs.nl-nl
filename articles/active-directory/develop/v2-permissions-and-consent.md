@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 29e099e1c53f83d038caa697d11158fd5939ca7b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 567df85fa634570b0ac04fe6da906776a74c0550
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700308"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833343"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Machtigingen en toestemming in het micro soft Identity platform-eind punt
 
@@ -168,13 +168,16 @@ Zie het voor beeld van een [beheerders beperking](https://github.com/Azure-Sampl
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>De machtigingen aanvragen in de portal voor app-registratie
 
-De toestemming van de beheerder accepteert geen bereik parameter, dus de aangevraagde machtigingen moeten statisch worden gedefinieerd in de registratie van de toepassing. Over het algemeen is het best practice om ervoor te zorgen dat de machtigingen die statisch voor een bepaalde toepassing zijn gedefinieerd, een superset zijn van de machtigingen die ze dynamisch/incrementeel aanvragen.
+Toepassingen kunnen weten welke machtigingen ze nodig hebben (zowel gedelegeerde als toepassing) in de app-registratie Portal.  Dit maakt het gebruik mogelijk van de `/.default` bereik en de optie toestemming van de Azure-Portal verlenen.  Over het algemeen is het best practice om ervoor te zorgen dat de machtigingen die statisch voor een bepaalde toepassing zijn gedefinieerd, een superset zijn van de machtigingen die ze dynamisch/incrementeel aanvragen.
+
+> [!NOTE]
+Toepassings machtigingen kunnen alleen worden aangevraagd via het gebruik van [`/.default`](#the-default-scope) , dus als uw app toepassings machtigingen nodig heeft, controleert u of deze worden vermeld in de app registratie-Portal.  
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>De lijst met statisch aangevraagde machtigingen voor een toepassing configureren
 
 1. Ga naar uw toepassing in de [Azure Portal-app-registraties-](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring of [Maak een app](quickstart-register-app.md) als u dat nog niet hebt gedaan.
 2. Ga naar de sectie **API-machtigingen** en klik in de API-machtigingen op een machtiging toevoegen.
-3. Selecteer **Microsoft Graph** in de lijst met beschik bare api's en voeg vervolgens de machtigingen toe die uw app nodig heeft.
+3. Selecteer uw voorkeurs resource (bijvoorbeeld **Microsoft Graph**) in de lijst met beschik bare api's en voeg vervolgens de machtigingen toe die uw app nodig heeft.
 3. **Sla** de app-registratie op.
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Aanbevolen: Onderteken de gebruiker in uw app
@@ -205,7 +208,7 @@ Wanneer u klaar bent om machtigingen aan te vragen bij de beheerder van uw organ
 | `client_id` | Verplicht | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
 | `redirect_uri` | Verplicht |De omleidings-URI waar u het antwoord voor uw app wilt laten afhandelen. Het moet exact overeenkomen met een van de omleidings-Uri's die u hebt geregistreerd in de app-registratie Portal. |
 | `state` | Aanbevolen | Een waarde die in de aanvraag is opgenomen en die ook wordt geretourneerd in de token reactie. Dit kan een teken reeks zijn van elke gewenste inhoud. Gebruik de status om informatie over de status van de gebruiker in de app te coderen voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin deze zijn aangemeld. |
-|`scope`        | Verplicht      | Hiermee wordt de set machtigingen gedefinieerd die worden aangevraagd door de toepassing. Dit kan statisch zijn (met behulp van/.default) of dynamische bereiken.  Dit kan bestaan uit de OIDC-bereiken (`openid`, `profile``email`). | 
+|`scope`        | Verplicht      | Hiermee wordt de set machtigingen gedefinieerd die worden aangevraagd door de toepassing. Dit kan statisch zijn (met behulp van [`/.default`](#the-default-scope)) of dynamische bereiken.  Dit kan bestaan uit de OIDC-bereiken (`openid`, `profile``email`). Als u toepassings machtigingen nodig hebt, moet u `/.default` gebruiken om de statisch geconfigureerde lijst met machtigingen aan te vragen.  | 
 
 
 Op dit moment heeft Azure AD een Tenant beheerder nodig om zich aan te melden om de aanvraag te volt ooien. De beheerder wordt gevraagd om alle machtigingen die u in de para meter `scope` hebt aangevraagd goed te keuren.  Als u een statische (`/.default`)-waarde hebt gebruikt, werkt deze als het eind punt v 1.0-beheerder toestemming en vraagt u toestemming aan voor alle scopes die zijn gevonden in de vereiste machtigingen voor de app.
@@ -264,9 +267,9 @@ Zie voor meer informatie over het OAuth 2,0-protocol en het verkrijgen van toega
 
 ## <a name="the-default-scope"></a>Het/.default-bereik
 
-U kunt het `/.default` bereik gebruiken om uw apps van het v 1.0-eind punt te migreren naar het micro soft Identity platform-eind punt. Dit is een ingebouwd bereik voor elke toepassing die verwijst naar de statische lijst met machtigingen die zijn geconfigureerd voor de registratie van de toepassing. Een `scope` waarde van `https://graph.microsoft.com/.default` is functioneel hetzelfde als de eind punten van de v 1.0 `resource=https://graph.microsoft.com`-dat wil zeggen, er wordt een token aangevraagd met de scopes op Microsoft Graph waarop de toepassing is geregistreerd in de Azure Portal.
+U kunt het `/.default` bereik gebruiken om uw apps van het v 1.0-eind punt te migreren naar het micro soft Identity platform-eind punt. Dit is een ingebouwd bereik voor elke toepassing die verwijst naar de statische lijst met machtigingen die zijn geconfigureerd voor de registratie van de toepassing. Een `scope` waarde van `https://graph.microsoft.com/.default` is functioneel hetzelfde als de eind punten van de v 1.0 `resource=https://graph.microsoft.com`-dat wil zeggen, er wordt een token aangevraagd met de scopes op Microsoft Graph waarop de toepassing is geregistreerd in de Azure Portal.  Het is gemaakt met behulp van de resource-URI + `/.default` (bijvoorbeeld als de resource-URI `https://contosoApp.com`is, is het aangevraagde bereik `https://contosoApp.com/.default`).  Zie de [sectie over afsluitende slashes](#trailing-slash-and-default) voor gevallen waarin u een tweede slash moet toevoegen om het token correct aan te vragen.  
 
-Het/.default-bereik kan worden gebruikt in een OAuth 2,0-stroom, maar is nodig [voor de stroom van namens-](v2-oauth2-on-behalf-of-flow.md) en [client referenties](v2-oauth2-client-creds-grant-flow.md).  
+Het/.default-bereik kan worden gebruikt in een OAuth 2,0-stroom, maar is wel nodig in de stroom [voor namens-](v2-oauth2-on-behalf-of-flow.md) en [client referenties](v2-oauth2-client-creds-grant-flow.md)en bij gebruik van het v2-eind punt voor de beheerder om toepassings machtigingen aan te vragen.  
 
 > [!NOTE]
 > Clients kunnen statische (`/.default`) en dynamische toestemming niet combi neren in één aanvraag. `scope=https://graph.microsoft.com/.default+mail.read` resulteert dus in een fout vanwege de combi natie van bereik typen.
@@ -281,15 +284,15 @@ Omdat `/.default` functioneel identiek is aan het gedrag van het `resource`-gece
 
 #### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>Voor beeld 1: de gebruiker of Tenant beheerder heeft machtigingen verleend
 
-De gebruiker (of een Tenant beheerder) heeft de client de Microsoft Graph machtigingen `mail.read` en `user.read`verleend. Als de client een aanvraag indient voor `scope=https://graph.microsoft.com/.default`, wordt er geen prompt met toestemming weer gegeven, ongeacht de inhoud van de geregistreerde client toepassingen, de machtigingen voor Microsoft Graph. Er wordt een token geretourneerd met de bereiken `mail.read` en `user.read`.
+In dit voor beeld heeft de gebruiker (of een Tenant beheerder) de client de Microsoft Graph machtigingen `mail.read` en `user.read`verleend. Als de client een aanvraag indient voor `scope=https://graph.microsoft.com/.default`, wordt er geen prompt met toestemming weer gegeven, ongeacht de inhoud van de geregistreerde client toepassingen, de machtigingen voor Microsoft Graph. Er wordt een token geretourneerd met de bereiken `mail.read` en `user.read`.
 
 #### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>Voor beeld 2: de gebruiker heeft geen machtigingen verleend tussen de client en de resource
 
-Er bestaat geen toestemming voor de gebruiker tussen de client en de Microsoft Graph. De client is geregistreerd voor de `user.read`-en `contacts.read` machtigingen, evenals de Azure Key Vault bereik `https://vault.azure.net/user_impersonation`. Wanneer de client een token aanvraagt voor `scope=https://graph.microsoft.com/.default`, ziet de gebruiker een scherm voor toestemming voor de `user.read`, `contacts.read`en de Key Vault `user_impersonation` bereiken. Het geretourneerde token bevat alleen de `user.read` en `contacts.read` bereiken.
+In dit voor beeld bestaat er geen toestemming voor de gebruiker tussen de client en Microsoft Graph. De client is geregistreerd voor de `user.read`-en `contacts.read` machtigingen, evenals de Azure Key Vault bereik `https://vault.azure.net/user_impersonation`. Wanneer de client een token aanvraagt voor `scope=https://graph.microsoft.com/.default`, ziet de gebruiker een scherm voor toestemming voor de `user.read`, `contacts.read`en de Key Vault `user_impersonation` bereiken. Het geretourneerde token heeft alleen de `user.read` en `contacts.read` bereiken erin en zijn alleen bruikbaar voor Microsoft Graph. 
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>Voor beeld 3: de gebruiker heeft toestemming gegeven en er wordt extra scopes aangevraagd door de client
 
-De gebruiker heeft al toestemming gegeven voor het `mail.read` van de client. De client is geregistreerd voor het `contacts.read` bereik in de registratie. Wanneer de client een aanvraag doet voor een token met behulp van `scope=https://graph.microsoft.com/.default` en toestemming vraagt via `prompt=consent`, ziet de gebruiker een scherm voor toestemming alleen voor en alle machtigingen die zijn geregistreerd door de toepassing. `contacts.read` is aanwezig in het venster voor toestemming, maar `mail.read` niet. Het geretourneerde token is voor Microsoft Graph en bevat `mail.read` en `contacts.read`.
+In dit voor beeld heeft de gebruiker al gestemd op `mail.read` voor de client. De client is geregistreerd voor het `contacts.read` bereik in de registratie. Wanneer de client een aanvraag doet voor een token met behulp van `scope=https://graph.microsoft.com/.default` en toestemming vraagt via `prompt=consent`, ziet de gebruiker een venster voor toestemming voor alle (en alleen) de machtigingen die zijn geregistreerd door de toepassing. `contacts.read` is aanwezig in het venster voor toestemming, maar `mail.read` niet. Het geretourneerde token is voor Microsoft Graph en bevat `mail.read` en `contacts.read`.
 
 ### <a name="using-the-default-scope-with-the-client"></a>Het/.default-bereik gebruiken met de-client
 
@@ -306,7 +309,13 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-Dit produceert een venster voor toestemming voor alle geregistreerde machtigingen (indien van toepassing op basis van de bovenstaande beschrijvingen van toestemming en `/.default`) en retourneert vervolgens een id_token in plaats van een toegangs token.  Dit gedrag bestaat voor bepaalde verouderde clients die van ADAL naar MSAL worden verplaatst en mogen niet worden gebruikt door nieuwe clients die gericht zijn op het micro soft Identity platform-eind punt.  
+Dit produceert een venster voor toestemming voor alle geregistreerde machtigingen (indien van toepassing op basis van de bovenstaande beschrijvingen van toestemming en `/.default`) en retourneert vervolgens een id_token in plaats van een toegangs token.  Dit gedrag bestaat voor bepaalde verouderde clients die van ADAL naar MSAL worden verplaatst en **mogen niet** worden gebruikt door nieuwe clients die gericht zijn op het micro soft Identity platform-eind punt.  
+
+### <a name="trailing-slash-and-default"></a>Afsluitende slash en/.default
+
+Sommige bron-Uri's hebben een afsluitende slash (`https://contoso.com/` in tegens telling tot `https://contoso.com`), wat kan leiden tot problemen met de validatie van tokens.  Dit kan voornamelijk optreden bij het aanvragen van een token voor Azure Resource Management (`https://management.azure.com/`), dat een afsluitende slash heeft op de resource-URI en vereist dat deze aanwezig is wanneer het token wordt aangevraagd.  Daarom moet u bij het aanvragen van een token voor `https://management.azure.com/` en het gebruik van `/.default`de aanvraag `https://management.azure.com//.default`-Let op de dubbele slash! 
+
+In het algemeen: als u hebt gevalideerd dat het token wordt uitgegeven en het token wordt geweigerd door de API die deze moet accepteren, moet u een tweede slash toevoegen en het opnieuw proberen. Dit gebeurt omdat de aanmeldings server een token verzendt met de doel groep die overeenkomt met de Uri's in de para meter `scope`-met `/.default` van het einde verwijderd.  Als u de afsluitende slash verwijdert, wordt de aanmeldings server nog steeds verwerkt en wordt deze gevalideerd op basis van de resource-URI, zelfs als deze niet meer overeenkomen. Dit is niet-standaard en mag niet worden vertrouwd door uw toepassing. 
 
 ## <a name="troubleshooting-permissions-and-consent"></a>Problemen met machtigingen en toestemming
 

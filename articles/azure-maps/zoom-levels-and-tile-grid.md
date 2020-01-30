@@ -3,24 +3,24 @@ title: Zoom niveaus en tegel raster | Microsoft Azure kaarten
 description: In dit artikel vindt u meer informatie over zoom niveaus en tegel rasters in Microsoft Azure kaarten.
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 09d6e357b87b59e8010e38693806da5f26f5b679
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6ee697ac9b7849a0231d9916c6fa8bc73ef7f9b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910778"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765842"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomniveaus en tegelraster
 
-Azure Maps het bolvormige Mercator-projectie coördinaten systeem (EPSG: 3857) gebruiken. Een projectie is het mathematische model dat wordt gebruikt om de bolvormige wereld te transformeren naar een platte kaart. Met de bolvormige Mercator-projectie wordt de kaart in de palen uitgerekt om een vier Kante kaart te maken. Hierdoor worden de schaal en het Opper vlak van de kaart aanzienlijk vervormd, maar er zijn twee belang rijke eigenschappen die zwaarder zijn dan:
+Azure Maps het bolvormige Mercator-projectie coördinaten systeem (EPSG: 3857) gebruiken. Een projectie is het mathematische model dat wordt gebruikt om de bolvormige wereld te transformeren naar een platte kaart. Met de bolvormige Mercator-projectie wordt de kaart in de palen uitgerekt om een vier Kante kaart te maken. Met deze projectie wordt de schaal en het Opper vlak van de kaart aanzienlijk vervormd, maar er zijn twee belang rijke eigenschappen die niet zwaarder zijn dan:
 
-- Het is een conformele projectie, wat betekent dat de vorm van relatief kleine objecten wordt behouden. Dit is met name belang rijk bij het weer geven van foto-afbeelding, omdat we willen voor komen dat de vorm van gebouwen wordt vervalst. Vier Kante gebouwen moeten vier kant en niet rechthoekig worden weer gegeven.
-- Het is een cilindrische projectie, wat betekent dat North en South altijd direct omhoog en omlaag zijn, en dat West en Oost altijd direct links en rechts is. 
+- Het is een conformele projectie, wat betekent dat de vorm van relatief kleine objecten wordt behouden. Het behouden van de vorm van kleine objecten is vooral belang rijk bij het weer geven van foto beelden. We willen bijvoorbeeld voor komen dat de vorm van gebouwen wordt vervalst. Vier Kante gebouwen moeten vier kant en niet rechthoekig worden weer gegeven.
+- Het is een cilindrische projectie. Noord en Zuid zijn altijd actief en verticaal, en West en Oost zijn altijd links en rechts. 
 
 De kaart is onderverdeeld in vier Kante tegels om de prestaties van het ophalen en weer geven van toewijzingen te optimaliseren. De Azure Maps-SDK gebruiken tegels met een grootte van 512 x 512 pixels voor wegwijs kaarten en kleinere 256 x 256 pixels voor satelliet afbeelding. Azure Maps biedt raster-en vector tegels voor 23 zoom niveaus, genummerd van 0 tot en met 22. Op Zoom niveau 0 past de hele wereld op één tegel aan:
 
@@ -36,7 +36,7 @@ indeling van ![2x2 kaart tegel](media/zoom-levels-and-tile-grid/map-2x2-tile-lay
 
 Elk extra zoom niveau Quad-splitst de tegels van de vorige, waardoor een raster van 2<sup>zoomen</sup> x 2<sup>zoomen</sup>wordt gemaakt. Zoom niveau 22 is een raster 2<sup>22</sup> x 2<sup>22</sup>of 4.194.304 x 4.194.304 tegels (17.592.186.044.416 tegels in totaal).
 
-Met de besturings elementen voor de Azure Maps interactieve kaart voor web-en Android-ondersteuning worden zoom niveaus 25 zoom niveaus, genummerd op 0 t/m 24. Hoewel er geen weggegevens beschikbaar zijn op de zoom niveaus in wanneer de tegels beschikbaar zijn.
+De besturings elementen voor de Azure Maps interactieve kaart voor web-en Android-ondersteuning 25 zoom niveaus, genummerd op 0 t/m 24. Hoewel er geen weggegevens beschikbaar zijn op de zoom niveaus in wanneer de tegels beschikbaar zijn.
 
 De volgende tabel bevat de volledige lijst met waarden voor zoom niveaus waarbij de tegel grootte 512 pixels in het vier kant is:
 
@@ -70,7 +70,7 @@ De volgende tabel bevat de volledige lijst met waarden voor zoom niveaus waarbij
 
 ## <a name="pixel-coordinates"></a>Pixel coördinaten
 
-Als u hebt gekozen voor de projectie en schaal om te gebruiken bij elk zoom niveau, kunnen we geografische coördinaten omzetten in pixel coördinaten. De volledige pixel breedte en-hoogte van een kaart afbeelding van de wereld voor een bepaald zoom niveau kunnen als volgt worden berekend:
+Als u hebt gekozen voor de projectie en schaal om te gebruiken bij elk zoom niveau, kunnen we geografische coördinaten omzetten in pixel coördinaten. De volledige pixel breedte en-hoogte van een kaart afbeelding van de wereld voor een bepaald zoom niveau worden als volgt berekend:
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -82,9 +82,11 @@ Omdat de breedte en hoogte van de kaart verschillen voor elk zoom niveau, zijn d
 
 <center>
 
-![toewijzing met Pixel dimensies](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
+![Kaart met pixel afmetingen](media/zoom-levels-and-tile-grid/map-width-height.png)
 
-Gezien de breedte graad en de lengte graad in graden en het detail niveau, kunnen de pixels XY-coördinaten als volgt worden berekend:
+</center>
+
+Gezien de breedte graad en lengte graad in graden en het detail niveau, worden de pixel XY-coördinaten als volgt berekend:
 
 ```javascript
 var sinLatitude = Math.sin(latitude * Math.PI/180);
@@ -94,11 +96,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-De waarden voor de breedte graad en lengte graad worden aangenomen dat deze zich op de WGS 84-datum bevinden. Hoewel Azure Maps een bolvormige projectie gebruikt, is het belang rijk dat alle geografische coördinaten worden omgezet in een gemeen schappelijke datum en WGS 84 werd gekozen als die datum. Er wordt van uitgegaan dat de waarde voor lengte graad tussen-180 en + 180 graden ligt en de waarde voor de breedte graad moet worden afgekapt tot 85,05112878 en met 85,05112878. Dit voor komt een enkelvoud van de palen, en zorgt ervoor dat de geprojecteerde kaart vier kant is.
+De waarden voor de breedte graad en lengte graad worden aangenomen dat deze zich op de WGS 84-datum bevinden. Hoewel Azure Maps een bolvormige projectie gebruikt, is het belang rijk om alle geografische coördinaten te converteren naar een gemeen schappelijke datum. WGS 84 is de geselecteerde datum. Er wordt van uitgegaan dat de waarde voor de lengte graad tussen-180 graden en + 180 graden ligt en de waarde van de Latitude moet worden bijgesneden tot het bereik van-85,05112878 tot 85,05112878. Door te voldoen aan deze waarden wordt een enkelvoud aan de palen voor komen en wordt gegarandeerd dat de geprojecteerde kaart een vier Kante vorm is.
 
 ## <a name="tile-coordinates"></a>Tegel coördinaten
 
-Om de prestaties van het ophalen en weer geven van toewijzingen te optimaliseren, wordt de gerenderde kaart in tegels onderverdeeld. Naarmate het aantal pixels bij elk zoom niveau verschilt, is het aantal tegels:
+Om de prestaties van het ophalen en weer geven van toewijzingen te optimaliseren, wordt de gerenderde kaart in tegels onderverdeeld. Het aantal pixels en het aantal tegels verschilt per zoom niveau:
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -120,9 +122,9 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-Tegels worden aangeroepen door het zoom niveau en de x-en y-coördinaten die overeenkomen met de positie van de tegel op het raster voor dat zoom niveau.
+Tegels worden aangeroepen door het zoom niveau. De x-en y-coördinaten komen overeen met de positie van de tegel op het raster voor dat zoom niveau.
 
-Wanneer u bepaalt welk zoom niveau u wilt gebruiken, onthoud dan dat elke locatie zich op een vaste positie op de tegel bevindt. Dit betekent dat het aantal tegels dat nodig is voor het weer geven van een bepaalde Expanse van het gebied afhankelijk is van de specifieke plaatsing van het zoom raster op de wereld. Als er bijvoorbeeld twee punten 900 meters zijn, *kan* het slechts drie tegels hebben om een route ertussen weer te geven op Zoom niveau 17. Als het westelijk punt zich rechts van de tegel bevindt en het Eastern-punt links van de tegel, kan het echter vier tegels aannemen:
+Wanneer u bepaalt welk zoom niveau u wilt gebruiken, onthoud dan dat elke locatie zich op een vaste positie op de tegel bevindt. Als gevolg hiervan is het aantal tegels dat nodig is voor het weer geven van een gegeven Expanse van het gebied afhankelijk van de specifieke plaatsing van het zoom raster op de wereld kaart. Als er bijvoorbeeld twee punten 900 meters zijn, *kan* het slechts drie tegels hebben om een route ertussen weer te geven op Zoom niveau 17. Als het westelijk punt zich rechts van de tegel bevindt en het Eastern-punt links van de tegel, kan het echter vier tegels aannemen:
 
 <center>
 

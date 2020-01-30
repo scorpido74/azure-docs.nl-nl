@@ -1,28 +1,28 @@
 ---
-title: 'Snelstartgids: een standaard load balancer maken-Azure-sjabloon'
+title: 'Snelstartgids: een Load Balancer-Azure-sjabloon maken'
 titleSuffix: Azure Load Balancer
-description: In deze Quick start ziet u hoe u een standaard load balancer maakt met behulp van de Azure Resource Manager sjabloon.
+description: In deze Quick start ziet u hoe u een load balancer maakt met behulp van de Azure Resource Manager sjabloon.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 28c4ca59b20fcdd8ab0249392dc0f13cbabf1a97
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 69503968ece5e68b6e4777d72713565158009949
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970636"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843851"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Quick Start: een standaard load balancer maken om taken van Vm's te verdelen met behulp van Azure Resource Manager sjabloon
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Snelstartgids: een Load Balancer maken om taken van Vm's te verdelen met behulp van Azure Resource Manager sjabloon
 
 Taakverdeling zorgt voor een hogere beschikbaarheid en betere schaalbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines (VM's). In deze Quick start ziet u hoe u een Azure Resource Manager sjabloon kunt implementeren waarmee een standaard-load balancer wordt gemaakt voor de taak verdeling van Vm's. Het gebruik van Resource Manager-sjablonen neemt minder stappen in vergelijking met andere implementatie methoden.
 
@@ -30,9 +30,9 @@ Taakverdeling zorgt voor een hogere beschikbaarheid en betere schaalbaarheid doo
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="create-a-standard-load-balancer"></a>Een standaardversie van een load balancer maken
+## <a name="create-a-load-balancer"></a>Een load balancer maken
 
-Standard Load Balancer ondersteunt alleen een standaard openbaar IP-adres. Wanneer u een standaard load balancer maakt, moet u ook een nieuw standaard openbaar IP-adres maken dat is geconfigureerd als de front-end voor de standaard load balancer.
+Load Balancer en open bare IP-Sku's moeten overeenkomen. Wanneer u een Standard Load Balancer maakt, moet u ook een nieuw standaard openbaar IP-adres maken dat is geconfigureerd als de front-end voor de standaard load balancer. Als u een basis Load Balancer wilt maken, gebruikt u [deze sjabloon](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/). Micro soft raadt aan om standaard-SKU te gebruiken voor werk belastingen voor productie.
 
 De sjabloon die in deze Quick Start wordt gebruikt, is een [Quick Start sjabloon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json).
 

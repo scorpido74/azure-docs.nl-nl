@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732583"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771575"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Component OFFSET LIMIT in Azure Cosmos DB
 
@@ -37,7 +37,11 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Opmerkingen
   
-  Zowel het aantal VERSCHUIVINGen als het aantal LIMIETen zijn vereist in de component OFFSET LIMIT. Als er een optionele `ORDER BY`-component wordt gebruikt, wordt de resultatenset gemaakt door de overs laan van de geordende waarden over te slaan. Anders retourneert de query een vaste volg orde van waarden. Deze component wordt nu ondersteund voor query's binnen één partitie, evenals query's voor meerdere partities.
+  Zowel het `OFFSET` aantal als het `LIMIT` aantal zijn vereist in de component `OFFSET LIMIT`. Als er een optionele `ORDER BY`-component wordt gebruikt, wordt de resultatenset gemaakt door de overs laan van de geordende waarden over te slaan. Anders retourneert de query een vaste volg orde van waarden.
+
+  De RU-kosten van een query met `OFFSET LIMIT` toenemen naarmate het aantal voor waarden wordt verhoogd. Voor query's met meerdere pagina's met resultaten raden we u aan om vervolg tokens te gebruiken. Vervolg tokens zijn een ' blad wijzer ' voor de locatie waar de query later kan worden hervat. Als u `OFFSET LIMIT`gebruikt, is er geen blad wijzer. Als u de volgende pagina van de query wilt retour neren, moet u beginnen met het begin.
+  
+  Gebruik `OFFSET LIMIT` voor gevallen waarin u documenten volledig wilt overs Laan en client bronnen wilt opslaan. U moet bijvoorbeeld `OFFSET LIMIT` gebruiken als u wilt door gaan naar het 1000th-query resultaat en geen resultaten meer wilt weer geven van 1 tot en met 999. Op de back-end laadt `OFFSET LIMIT` nog steeds elk document, met inbegrip van de bestanden die worden overgeslagen. De prestaties profiteren van een besparing in client bronnen door te voor komen dat documenten worden verwerkt die niet nodig zijn.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -50,7 +54,7 @@ Hier volgt een query waarmee de eerste waarde wordt overgeslagen en de tweede wa
     OFFSET 1 LIMIT 1
 ```
 
-U ziet deze uitvoer:
+De resultaten zijn:
 
 ```json
     [
@@ -69,7 +73,7 @@ Hier volgt een query waarmee de eerste waarde wordt overgeslagen en de tweede wa
     OFFSET 1 LIMIT 1
 ```
 
-U ziet deze uitvoer:
+De resultaten zijn:
 
 ```json
     [

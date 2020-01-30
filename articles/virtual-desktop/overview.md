@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/23/2020
+ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 83744750a664a3a992d823f0b7e76768e249aaba
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721418"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772773"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -139,7 +139,7 @@ Het virtuele bureau blad van Windows ondersteunt de volgende installatie kopieë
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Windows Virtual Desktop biedt geen ondersteuning voor x86-installatie kopieën (32-bits), Windows 10 Enter prise N of Windows 10 Enter prise.
+Windows Virtual Desktop biedt geen ondersteuning voor x86-installatie kopieën (32-bits), Windows 10 Enter prise N of Windows 10 Enter prise. Windows 7 ondersteunt ook geen op VHD of VHDX gebaseerde profiel oplossingen die worden gehost op beheerde Azure Storage als gevolg van een limiet voor de sector grootte.
 
 De beschik bare opties voor automatisering en implementatie zijn afhankelijk van het besturings systeem en de versie die u kiest, zoals wordt weer gegeven in de volgende tabel: 
 

@@ -3,19 +3,19 @@ title: Evaluaties in Azure Migrate
 description: Meer informatie over evaluaties in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: a8912263432bc0e9cd7172c4b6c9b118132863d3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 5fc61d9987c9e728a5d83cb3ab3f91b8e8f5f740
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029115"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833325"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>Over evaluaties in Azure Migrate
 
 In dit artikel wordt beschreven hoe beoordelingen worden berekend in [Azure migrate: Server evaluatie](migrate-services-overview.md#azure-migrate-server-assessment-tool). U voert evaluaties uit op groepen on-premises machines om te bepalen of ze gereed zijn voor migratie naar Azure Migrate.
 
 ## <a name="how-do-i-run-an-assessment"></a>Hoe kan ik een evaluatie uit te voeren?
-U kunt een evaluatie uitvoeren met behulp van Azure Migrate: Server evaluatie of een ander hulp programma van Azure of derden. Nadat u een Azure Migrate project hebt gemaakt, voegt u het hulp programma toe dat u nodig hebt. [Meer informatie] (how-to-add-tool-first-time.md
+U kunt een evaluatie uitvoeren met behulp van Azure Migrate: Server evaluatie of een ander hulp programma van Azure of derden. Nadat u een Azure Migrate project hebt gemaakt, voegt u het hulp programma toe dat u nodig hebt. [Meer informatie](how-to-add-tool-first-time.md)
 
 ### <a name="collect-compute-data"></a>Reken gegevens verzamelen
 
@@ -124,11 +124,11 @@ Server beoordeling controleert de volgende eigenschappen van de on-premises virt
 --- | --- | ---
 **Opstart type** | Azure ondersteunt Vm's met een opstart type BIOS, niet voor UEFI. | Voorwaardelijk gereed als het opstart type UEFI is.
 **Kernen** | Het aantal kernen op de computers moet gelijk zijn aan of kleiner zijn dan het maximum aantal kernen (128) dat wordt ondersteund voor een virtuele machine van Azure.<br/><br/> Als er een prestatie geschiedenis beschikbaar is, worden de gebruikte kernen Azure Migrate beschouwd als vergelijking. Als er een comfort factor is opgegeven in de evaluatie-instellingen, wordt het aantal gebruikte kern geheugens vermenigvuldigd met de comfort factor.<br/><br/> Als er geen prestatie geschiedenis is, gebruikt Azure Migrate de toegewezen kernen zonder de comfort factor toe te passen. | Gereed als deze kleiner dan of gelijk aan de limieten zijn.
-**Geheugen** | De grootte van het computer geheugen moet gelijk zijn aan of kleiner zijn dan het maximum geheugen (3892 gigabytes [GB] op de Azure M-serie Standard_M128m&nbsp;<sup>2</sup>) dat is toegestaan voor een Azure-VM. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als er een prestatie geschiedenis beschikbaar is, wordt het gebruikte geheugen in Azure Migrate beschouwd als vergelijking. Als er een comfort factor is opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt zonder de comfort factor toe te passen.<br/><br/> | Gereed indien binnen de limieten.
+**Geheugenmetabase** | De grootte van het computer geheugen moet gelijk zijn aan of kleiner zijn dan het maximum geheugen (3892 gigabytes [GB] op de Azure M-serie Standard_M128m&nbsp;<sup>2</sup>) dat is toegestaan voor een Azure-VM. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als er een prestatie geschiedenis beschikbaar is, wordt het gebruikte geheugen in Azure Migrate beschouwd als vergelijking. Als er een comfort factor is opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt zonder de comfort factor toe te passen.<br/><br/> | Gereed indien binnen de limieten.
 **Opslag schijf** | De toegewezen grootte van een schijf moet 32 TB of minder zijn. Azure biedt ondersteuning voor 64-TB schijven met Ultra-SSD schijven, Azure Migrate: door server evaluatie wordt momenteel gecontroleerd op 32 TB als de grootte van de schijf wordt beperkt, omdat deze nog geen Ultra-SSD ondersteunt. <br/><br/> Het aantal schijven dat is gekoppeld aan de computer, moet 65 of minder zijn, inclusief de besturingssysteem schijf. | Gereed indien binnen de limieten.
 **Netwerken** | Aan een machine moeten 32 of minder netwerk interfaces (Nic's) zijn gekoppeld. | Gereed indien binnen de limieten.
 
-### <a name="guest-operating-system"></a>Gastbesturingssysteem
+### <a name="guest-operating-system"></a>Gast besturingssysteem
 Naast de VM-eigenschappen controleert de server evaluatie op het gast besturingssysteem van de computers om te bepalen of het op Azure kan worden uitgevoerd.
 
 > [!NOTE]

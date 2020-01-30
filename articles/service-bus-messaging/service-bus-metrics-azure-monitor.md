@@ -1,21 +1,20 @@
 ---
 title: Azure Service Bus metrische gegevens in Azure Monitor | Microsoft Docs
-description: Azure Monitor gebruiken om Service Bus-entiteiten te bewaken
+description: In dit artikel wordt uitgelegd hoe u Azure Monitor kunt gebruiken om Service Bus entiteiten (wacht rijen, onderwerpen en abonnementen) te bewaken.
 services: service-bus-messaging
 documentationcenter: .NET
 author: axisc
-manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 6d25bdf6ff8e790466f3a28e3b6043e347d74198
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 569eb31c6cbe8b95773d52f6e1325801fbabf86f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261863"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773536"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metrische gegevens in Azure Monitor
 
@@ -61,13 +60,13 @@ Alle metrische waarden worden verzonden naar Azure Monitor elke minuut. De tijdg
 
 Telt het aantal aanvragen voor beheer van gegevens en bewerkingen.
 
-| Naam van meetwaarde | Description |
+| Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-| Binnenkomende aanvragen| Het aantal aanvragen voor de Service Bus-service gedurende een opgegeven periode. <br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|Geslaagde aanvragen|Het aantal geslaagde aanvragen voor de Service Bus-service gedurende een opgegeven periode.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|Serverfouten|Het aantal niet-verwerkte aanvragen vanwege een fout in de Service Bus-service gedurende een opgegeven periode.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|Gebruikers fouten (Zie de volgende Subsectie)|Het aantal aanvragen die niet worden verwerkt wegens gebruikersfouten gedurende een bepaalde periode.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|Vertraagde aanvragen|Het aantal aanvragen dat is beperkt omdat het gebruik is overschreden.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
+| Binnenkomende aanvragen| Het aantal aanvragen voor de Service Bus-service gedurende een opgegeven periode. <br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|Geslaagde aanvragen|Het aantal geslaagde aanvragen voor de Service Bus-service gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|Server fouten|Het aantal niet-verwerkte aanvragen vanwege een fout in de Service Bus-service gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|Gebruikers fouten (Zie de volgende Subsectie)|Het aantal aanvragen die niet worden verwerkt wegens gebruikersfouten gedurende een bepaalde periode.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|Vertraagde aanvragen|Het aantal aanvragen dat is beperkt omdat het gebruik is overschreden.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
 
 ### <a name="user-errors"></a>Gebruikers fouten
 
@@ -79,36 +78,36 @@ De volgende twee typen fouten worden geclassificeerd als gebruikers fouten:
 
 ## <a name="message-metrics"></a>Bericht metrische gegevens
 
-| Naam van meetwaarde | Description |
+| Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-|Binnenkomende berichten|Het aantal gebeurtenissen of berichten dat is verzonden naar Service Bus gedurende een opgegeven periode.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|Uitgaande berichten|Het aantal gebeurtenissen of berichten dat is ontvangen van Service Bus gedurende een opgegeven periode.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-| Berichten| Aantal berichten in een wachtrij/onderwerp. <br/><br/> Teleenheid Count <br/> Aggregatie type: Average <br/> Dimensielideigenschap EntityName |
-| ActiveMessages| Aantal actieve berichten in een wachtrij/onderwerp. <br/><br/> Teleenheid Count <br/> Aggregatie type: Average <br/> Dimensielideigenschap EntityName |
-| Onbestelbare berichten| Aantal onbestelbare berichten in een wachtrij/onderwerp. <br/><br/> Teleenheid Count <br/> Aggregatie type: Average <br/>Dimensielideigenschap EntityName |
-| Geplande berichten| Aantal geplande berichten in een wachtrij/onderwerp. <br/><br/> Teleenheid Count <br/> Aggregatie type: Average  <br/> Dimensielideigenschap EntityName |
+|Inkomende berichten|Het aantal gebeurtenissen of berichten dat is verzonden naar Service Bus gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|Uitgaande berichten|Het aantal gebeurtenissen of berichten dat is ontvangen van Service Bus gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+| Berichten| Aantal berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Dimensie: EntityName |
+| ActiveMessages| Aantal actieve berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Dimensie: EntityName |
+| Onbestelbare berichten| Aantal onbestelbare berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/>Dimensie: EntityName |
+| Geplande berichten| Aantal geplande berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld  <br/> Dimensie: EntityName |
 
 ## <a name="connection-metrics"></a>Metrische verbindingsgegevens
 
-| Naam van meetwaarde | Description |
+| Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-|ActiveConnections|Het aantal actieve verbindingen voor een naamruimte, maar ook op een entiteit.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
+|ActiveConnections|Het aantal actieve verbindingen voor een naamruimte, maar ook op een entiteit.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
 
 ## <a name="resource-usage-metrics"></a>Metrische gegevens over resource gebruik
 
 > [!NOTE] 
 > De volgende metrische gegevens zijn alleen beschikbaar voor de **Premium** -laag. 
 
-| Naam van meetwaarde | Description |
+| Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-|CPU-gebruik per naam ruimte|Het percentage CPU-gebruik van de naam ruimte.<br/><br/> Teleenheid Percent <br/> Aggregatie type: Maximum <br/> Dimensielideigenschap EntityName|
-|Gebruik van geheugen grootte per naam ruimte|Het percentage geheugen gebruik van de naam ruimte.<br/><br/> Teleenheid Percent <br/> Aggregatie type: Maximum <br/> Dimensielideigenschap EntityName|
+|CPU-gebruik per naam ruimte|Het percentage CPU-gebruik van de naam ruimte.<br/><br/> Eenheid: percentage <br/> Aggregatie type: maximum <br/> Dimensie: EntityName|
+|Gebruik van geheugen grootte per naam ruimte|Het percentage geheugen gebruik van de naam ruimte.<br/><br/> Eenheid: percentage <br/> Aggregatie type: maximum <br/> Dimensie: EntityName|
 
 ## <a name="metrics-dimensions"></a>Metrische gegevens over dimensies
 
 Azure Service Bus ondersteunt de volgende dimensies voor metrische gegevens in Azure Monitor. Dimensies toevoegen aan uw metrische gegevens is optioneel. Als u dimensies niet toevoegt, worden de metrische gegevens opgegeven op het niveau van de naamruimte. 
 
-|Dimensie naam|Description|
+|Dimensie naam|Beschrijving|
 | ------------------- | ----------------- |
 |EntityName| Service Bus ondersteunt Messa ging-entiteiten in de naam ruimte.|
 
@@ -126,7 +125,7 @@ Azure Service Bus ondersteunt de volgende dimensies voor metrische gegevens in A
         ![Naamruimte selecteren](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. Selecteer **criteria toevoegen**en voer de volgende acties uit op de pagina **signaal logica configureren** :
     1. Selecteer **metrische gegevens** voor het **signaal type**. 
-    2. Selecteer een signaal. Bijvoorbeeld: **Service fouten**. 
+    2. Selecteer een signaal. Bijvoorbeeld: **service fouten**. 
 
         ![Server fouten selecteren](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
     1. Selecteer **groter dan** voor **waarde**.
@@ -140,7 +139,7 @@ Azure Service Bus ondersteunt de volgende dimensies voor metrische gegevens in A
     2. Voer een **Beschrijving** in voor de waarschuwing.
     3. Selecteer **Ernst** voor de waarschuwing. 
 
-        ![Waarschuwingsdetails](./media/service-bus-metrics-azure-monitor/alert-details.png)
+        ![Meldingsdetails](./media/service-bus-metrics-azure-monitor/alert-details.png)
 1. Vouw op de pagina **regel maken** de optie **actie groep definiëren**uit, selecteer **nieuwe actie groep**en voer de volgende acties uit op de **pagina actie groep toevoegen**. 
     1. Voer een naam in voor de actie groep.
     2. Voer een korte naam in voor de actie groep. 
@@ -154,7 +153,7 @@ Azure Service Bus ondersteunt de volgende dimensies voor metrische gegevens in A
         2. Typ het **e-mail adres**. 
         3. Selecteer **OK**.
 
-            ![Waarschuwingsdetails](./media/service-bus-metrics-azure-monitor/add-action-group.png)
+            ![Meldingsdetails](./media/service-bus-metrics-azure-monitor/add-action-group.png)
         4. Selecteer **OK**op de pagina **actie groep toevoegen** . 
 1. Selecteer op de pagina **regel maken** de optie **waarschuwings regel maken**. 
 

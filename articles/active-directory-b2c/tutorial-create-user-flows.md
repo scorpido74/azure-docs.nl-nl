@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cc492b29fd6bc4a820543740e9d1962fc74f2cfc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21a3597a8c3675a060359b5e4feb9561e02f0149
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425509"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840142"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Zelf studie: gebruikers stromen maken in Azure Active Directory B2C
 
-In uw toepassingen kunt u [gebruikers stromen](active-directory-b2c-reference-policies.md) gebruiken waarmee gebruikers zich kunnen registreren, aanmelden of hun profiel beheren. U kunt meerdere gebruikers stromen van verschillende typen in uw Azure Active Directory B2C-Tenant (Azure AD B2C) maken en deze naar behoefte gebruiken in uw toepassingen. Gebruikers stromen kunnen opnieuw worden gebruikt in verschillende toepassingen.
+In uw toepassingen kunt u [gebruikers stromen](user-flow-overview.md) gebruiken waarmee gebruikers zich kunnen registreren, aanmelden of hun profiel beheren. U kunt meerdere gebruikers stromen van verschillende typen in uw Azure Active Directory B2C-Tenant (Azure AD B2C) maken en deze naar behoefte gebruiken in uw toepassingen. Gebruikers stromen kunnen opnieuw worden gebruikt in verschillende toepassingen.
 
 In dit artikel leert u het volgende:
 

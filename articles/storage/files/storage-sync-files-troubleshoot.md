@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 009d9e864773fb3a2578504b043fb30302cedb22
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 527d0a602b9da1f2d4f21890e896eba9a951494b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704541"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842713"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -1084,7 +1084,35 @@ Als bestanden niet naar Azure Files kunnen worden gelaagd:
        - Voer `fltmc`uit vanaf een opdracht prompt met verhoogde bevoegdheid. Controleer of de bestandssysteem filter Stuur Programma's StorageSync. sys en StorageSyncGuard. sys worden weer gegeven.
 
 > [!NOTE]
-> Gebeurtenis-ID 9003 wordt eenmaal per uur vastgelegd in het logboek voor telemetrie als een bestand niet kan worden gelaagd (één gebeurtenis wordt per fout code geregistreerd). De operationele en diagnostische gebeurtenis logboeken moeten worden gebruikt als er aanvullende informatie nodig is om een probleem op te sporen.
+> Gebeurtenis-ID 9003 wordt eenmaal per uur vastgelegd in het logboek voor telemetrie als een bestand niet kan worden gelaagd (één gebeurtenis wordt per fout code geregistreerd). Controleer de sectie [fouten in lagen en herstel](#tiering-errors-and-remediation) om te zien of er herstels tappen voor de fout code worden weer gegeven.
+
+### <a name="tiering-errors-and-remediation"></a>Fouten in lagen en herstel
+
+| HRESULT | HRESULT (decimaal) | Fouttekenreeks | Probleem | Herstel |
+|---------|-------------------|--------------|-------|-------------|
+| 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | Het bestand kan niet worden getierd omdat het in gebruik is. | U hoeft geen actie te ondernemen. Het bestand wordt getierd wanneer het niet langer in gebruik is. |
+| 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | Het bestand kan niet worden getierd omdat het is uitgesloten door de synchronisatie. | U hoeft geen actie te ondernemen. De bestanden in de lijst met uitgesloten synchronisatie kunnen niet worden getierd. |
+| 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | Het bestand kan niet worden getierd omdat het niet is gevonden op de server. | U hoeft geen actie te ondernemen. Als de fout zich blijft voordoen, controleert u of het bestand zich op de server bevindt. |
+| 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | Het bestand kan niet worden getierd omdat het is verwijderd in de Azure-bestands share. | U hoeft geen actie te ondernemen. Het bestand moet op de server worden verwijderd wanneer de volgende down load-synchronisatie sessie wordt uitgevoerd. |
+| 0x80c8600e | -2134351858 | ECS_E_AZURE_SERVER_BUSY | Het bestand kan niet worden gelaagd vanwege een probleem met het netwerk. | U hoeft geen actie te ondernemen. Als de fout zich blijft voordoen, controleert u de netwerk verbinding met de Azure-bestands share. |
+| 0x80072EE7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | Het bestand kan niet worden gelaagd vanwege een probleem met het netwerk. | U hoeft geen actie te ondernemen. Als de fout zich blijft voordoen, controleert u de netwerk verbinding met de Azure-bestands share. |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Het bestand kan niet worden gelaagd vanwege een fout bij het weigeren van de toegang. Deze fout kan optreden als het bestand zich bevindt in een gerepliceerde map met het kenmerk alleen-lezen van DFS-R. | Azure Files Sync biedt geen ondersteuning voor servereindpunten in DFS-R-replicatiemappen met het kenmerk Alleen-lezen. Zie de [plannings handleiding](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) voor meer informatie. |
+| 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | Het bestand kan niet worden gelaagd vanwege een probleem met het netwerk. | U hoeft geen actie te ondernemen. Als de fout zich blijft voordoen, controleert u de netwerk verbinding met de Azure-bestands share. |
+| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | Het bestand kan niet worden getierd omdat de bestands grootte kleiner is dan de ondersteunde grootte. | Als de agent versie lager is dan 9,0, is de mini maal ondersteunde bestands grootte 64 kB. Als de agent versie 9,0 en hoger is, is de mini maal ondersteunde bestands grootte gebaseerd op de grootte van het bestandssysteem cluster (Double File System cluster size). Als de cluster grootte van het bestands systeem bijvoorbeeld 4kb is, is de minimale bestands grootte 8 KB. |
+| 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | Het bestand kan niet worden gelaagd vanwege een probleem met Azure Storage. | Als de fout zich blijft voordoen, opent u een ondersteunings aanvraag. |
+| 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | Het bestand kan niet worden getierd omdat het tegelijkertijd is ingetrokken. | U hoeft geen actie te ondernemen. Het bestand wordt getierd wanneer het intrekken is voltooid en het bestand wordt niet meer gebruikt. |
+| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | Het bestand kan niet worden getierd omdat het niet is gesynchroniseerd met de Azure-bestands share. | U hoeft geen actie te ondernemen. Het bestand wordt laag zodra het is gesynchroniseerd met de Azure-bestands share. |
+| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Het bestand kan niet worden getierd omdat het filter stuur programma voor de Cloud lagen (storagesync. sys) niet wordt uitgevoerd. | Om dit probleem op te lossen, opent u een opdracht prompt met verhoogde bevoegdheid en voert u de volgende opdracht uit: Fltmc load storagesync <br>Als het storagesync-filter stuur programma niet kan worden geladen tijdens het uitvoeren van de Fltmc-opdracht, verwijdert u de agent van Azure File Sync, start u de server opnieuw op en installeert u de Azure File Sync agent opnieuw. |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Het bestand kan niet worden gelaagd vanwege onvoldoende schijf ruimte op het volume waar het server eindpunt zich bevindt. | U kunt dit probleem oplossen door ten minste 100 MB aan schijf ruimte vrij te maken op het volume waar het server eindpunt zich bevindt. |
+| 0x80070490 | -2147023728 | ERROR_NOT_FOUND | Het bestand kan niet worden getierd omdat het niet is gesynchroniseerd met de Azure-bestands share. | U hoeft geen actie te ondernemen. Het bestand wordt laag zodra het is gesynchroniseerd met de Azure-bestands share. |
+| 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | Het bestand kan niet worden getierd omdat het een niet-ondersteund reparsepunt is. | Als het bestand een reparsepunt voor Gegevensontdubbeling is, volgt u de stappen in de [plannings handleiding](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication) om ondersteuning van gegevensontdubbeling in te scha kelen. Bestanden met een andere reparse-punten dan Gegevensontdubbeling worden niet ondersteund en worden niet getierd.  |
+| 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | Het bestand kan niet worden getierd omdat het is gewijzigd. | U hoeft geen actie te ondernemen. Het bestand wordt laag zodra het gewijzigde bestand is gesynchroniseerd met de Azure-bestands share. |
+| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | Het bestand kan niet worden getierd omdat het niet is gesynchroniseerd met de Azure-bestands share. | U hoeft geen actie te ondernemen. Het bestand wordt laag zodra het is gesynchroniseerd met de Azure-bestands share. |
+| 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | Het bestand kan niet worden gelaagd vanwege een probleem met het netwerk. | U hoeft geen actie te ondernemen. Als de fout zich blijft voordoen, controleert u de netwerk verbinding met de Azure-bestands share. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Het bestand kan niet worden getierd omdat het is gewijzigd. | U hoeft geen actie te ondernemen. Het bestand wordt laag zodra het gewijzigde bestand is gesynchroniseerd met de Azure-bestands share. |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Het bestand kan niet worden gelaagd vanwege onvoldoende systeem resources. | Als de fout zich blijft voordoen, onderzoekt u welke toepassing of kernelmodusstuurprogramma de systeem bronnen uitgeput raken. |
+
+
 
 ### <a name="how-to-troubleshoot-files-that-fail-to-be-recalled"></a>Problemen oplossen met bestanden die niet worden ingetrokken  
 Als bestanden niet kunnen worden ingetrokken:
@@ -1109,7 +1137,7 @@ Als bestanden niet kunnen worden ingetrokken:
 | 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | Het bestand kan niet worden ingetrokken omdat het niet toegankelijk is in de Azure-bestands share. | Controleer of het bestand bestaat in de Azure-bestands share om dit probleem op te lossen. Als het bestand zich in de Azure-bestands share bevindt, moet u een upgrade uitvoeren naar de nieuwste versie van Azure File Sync [agent](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions). |
 | 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | Het bestand kan niet worden ingetrokken vanwege een autorisatie fout naar het opslag account. | Als u dit probleem wilt oplossen, controleert [u Azure file sync toegang heeft tot het opslag account](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac). |
 | 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | Het bestand kan niet worden ingetrokken omdat de Azure-bestands share niet toegankelijk is. | Controleer of de bestands share bestaat en toegankelijk is. Als de bestands share is verwijderd en opnieuw is gemaakt, voert u de stappen uit die worden beschreven in de [synchronisatie is mislukt, omdat de Azure-bestands share is verwijderd en opnieuw is gemaakt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810) om de synchronisatie groep te verwijderen en opnieuw te maken. |
-| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Het bestand kan niet worden ingetrokken vanwege insuffcient-systeem resources. | Als de fout zich blijft voordoen, onderzoekt u welke toepassing of kernelmodusstuurprogramma de systeem bronnen uitgeput raken. |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Het bestand is niet ingetrokken vanwege onvoldoende systeem resources. | Als de fout zich blijft voordoen, onderzoekt u welke toepassing of kernelmodusstuurprogramma de systeem bronnen uitgeput raken. |
 | 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | Kan het bestand niet intrekken vanwege insuffcient geheugen. | Als de fout zich blijft voordoen, onderzoekt u welke toepassing of kernelmodus het stuur programma voor onvoldoende geheugen veroorzaakt. |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | Het bestand is niet ingetrokken vanwege onvoldoende schijf ruimte. | U kunt dit probleem oplossen door bestanden op het volume te verplaatsen naar een ander volume, de grootte van het volume te verg Roten of bestanden af te dwingen om laag te maken met behulp van de cmdlet invoke-StorageSyncCloudTiering. |
 

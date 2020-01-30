@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 01/27/2020
 ms.author: diberry
-ms.openlocfilehash: ed0b9450217b06ff145641d9e268ccee28ee49b2
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710595"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775130"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>De LUIS-app verbeteren door eind punt uitingen te controleren
 
@@ -27,6 +27,22 @@ Het proces voor het controleren van het eind punt uitingen voor de juiste voor s
 ## <a name="enable-active-learning"></a>Actief leren inschakelen
 
 Als u actief leren wilt inschakelen, moet u gebruikers query's registreren. Dit wordt bereikt door de query van het [eind punt](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) aan te roepen met de para meter en waarde van de `log=true` query string.
+
+Gebruik de LUIS-Portal om de juiste eindpunt query te maken.
+
+1. Selecteer in de [Preview-Luis-Portal](https://preview.luis.ai/)uw app in de lijst met apps.
+1. Ga naar de sectie **beheren** en selecteer vervolgens **Azure-resources**.
+1. Voor de toegewezen Voorspellings resource selecteert u **query parameters wijzigen**.
+
+    > [!div class="mx-imgBorder"]
+    > ![LUIS-Portal gebruiken om logboeken op te slaan. Dit is vereist voor actief leren.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
+
+1. Schakel **logboeken opslaan** vervolgens opslaan door **gereed**te selecteren.
+
+    > [!div class="mx-imgBorder"]
+    > ![LUIS-Portal gebruiken om logboeken op te slaan. Dit is vereist voor actief leren.](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
+
+     Met deze actie wordt de voorbeeld-URL gewijzigd door de `log=true` query string-para meter toe te voegen. Kopieer en gebruik de gewijzigde voorbeeld query-URL bij het maken van voorspellings query's voor het runtime-eind punt.
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>De intentie voorspellingen corrigeren om uitingen uit te lijnen
 

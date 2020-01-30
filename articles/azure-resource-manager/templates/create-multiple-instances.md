@@ -3,12 +3,12 @@ title: Meerdere exemplaren van bronnen implementeren
 description: Gebruik kopieer bewerkingen en matrices in een Azure Resource Manager sjabloon om meerdere keren te herhalen bij het implementeren van resources.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 54d406771f64d97a3ba564556be6dc49677a732d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 0250f5ee64c91d8d75ad246271ab31324a2553f8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121978"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836926"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Herhaling van resources, eigenschappen of variabelen in Azure Resource Manager sjablonen
 
@@ -205,6 +205,10 @@ In het volgende voor beeld ziet u hoe u `copy` toepast op de eigenschap data dis
 
 Wanneer u `copyIndex` in een eigenschaps herhaling gebruikt, moet u de naam van de herhaling opgeven. U hoeft de naam niet op te geven wanneer u deze gebruikt met resource iteratie.
 
+> [!NOTE]
+> Eigenschaps herhaling ondersteunt ook een argument Offset. De offset moet worden opgegeven na de naam van de iteratie, zoals functie copyindex (' data disks ', 1).
+>
+
 Resource Manager breidt de `copy`-matrix uit tijdens de implementatie. De naam van de matrix wordt de naam van de eigenschap. De invoer waarden worden de object eigenschappen. De geïmplementeerde sjabloon wordt:
 
 ```json
@@ -299,6 +303,10 @@ U kunt resource en eigenschaps herhaling samen gebruiken. Verwijzing naar eigens
 ## <a name="variable-iteration"></a>Variabele herhaling
 
 Als u meerdere exemplaren van een variabele wilt maken, gebruikt u de eigenschap `copy` in de sectie Varia bles. U maakt een matrix van elementen die zijn gemaakt op basis van de waarde in de eigenschap `input`. U kunt de eigenschap `copy` binnen een variabele of op het hoogste niveau van de sectie Varia bles gebruiken. Wanneer u `copyIndex` binnen een variabele herhaling gebruikt, moet u de naam van de herhaling opgeven.
+
+> [!NOTE]
+> Variabele herhaling ondersteunt ook een argument Offset. De offset moet worden opgegeven na de naam van de iteratie, zoals functie copyindex (' diskNames ', 1).
+>
 
 Zie [matrix sjabloon kopiëren](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json)voor een eenvoudig voor beeld van het maken van een matrix van teken reeks waarden.
 
@@ -484,7 +492,7 @@ Stel bijvoorbeeld dat u een gegevensset definieert als een onderliggende bron in
 
 Als u meer dan één gegevensset wilt maken, verplaatst u deze buiten het data factory. De gegevensset moet op hetzelfde niveau zijn als de data factory, maar het is nog steeds een onderliggende resource van de data factory. U behoudt de relatie tussen de gegevensset en data factory via de eigenschappen type en naam. Omdat het type niet meer kan worden afgeleid van de positie in de sjabloon, moet u het volledig gekwalificeerde type opgeven in de notatie: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
 
-Als u een bovenliggende/onderliggende relatie met een exemplaar van de data factory wilt instellen, geeft u een naam op voor de gegevensset die de naam van de bovenliggende resource bevat. Gebruik de notatie `{parent-resource-name}/{child-resource-name}`.
+Als u een bovenliggende/onderliggende relatie met een exemplaar van de data factory wilt instellen, geeft u een naam op voor de gegevensset die de naam van de bovenliggende resource bevat. Gebruik de indeling: `{parent-resource-name}/{child-resource-name}`.
 
 In het volgende voor beeld ziet u de implementatie:
 

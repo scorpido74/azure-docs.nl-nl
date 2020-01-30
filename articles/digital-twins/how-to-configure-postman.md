@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/10/2020
-ms.openlocfilehash: 3d0220f23c8098222b93473dc6c7aa7a4f2dd791
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933446"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765403"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postman configureren voor Azure Digital Apparaatdubbels
 
@@ -79,7 +79,6 @@ Configureer uw Azure Active Directory-app om de OAuth 2,0 impliciet-toekennings 
 
 Postman instellen en configureren om een Azure Active Directory token te verkrijgen. Vervolgens maakt u een geverifieerde HTTP-aanvraag voor Azure Digital Apparaatdubbels met behulp van het verkregen token:
 
-1. Ga naar [www.getpostman.com](https://www.getpostman.com/) om de app te downloaden.
 1. Controleer of uw **autorisatie-URL** juist is. De notatie moet de volgende indeling hebben:
 
     ```plaintext
@@ -88,25 +87,29 @@ Postman instellen en configureren om een Azure Active Directory token te verkrij
 
     | Name  | Vervangen door | Voorbeeld |
     |---------|---------|---------|
-    | YOUR_AZURE_TENANT | De naam van uw Tenant of organisatie | `microsoft` |
+    | YOUR_AZURE_TENANT | De naam van uw Tenant of organisatie. Gebruik de mensen vriendelijke naam in plaats van de alfanumerieke **Tenant-id** van uw Azure Active Directory app-registratie. | `microsoft` |
 
-1. Selecteer het tabblad **autorisatie** , selecteer **OAuth 2,0**en selecteer vervolgens **nieuw toegangs Token ophalen**.
+1. Ga naar [www.getpostman.com](https://www.getpostman.com/) om de app te downloaden.
+
+1. Open de Postman-app en klik op New | Create new en selecteer Request. Voer de naam van een aanvraag in. Selecteer een verzameling of map om deze op te slaan en klik op opslaan. 
+
+1. We willen een GET-aanvraag maken. Selecteer het tabblad **autorisatie** , selecteer OAuth 2,0 en selecteer vervolgens **nieuw toegangs Token ophalen**.
 
     | Veld  | Waarde |
     |---------|---------|
-    | Toekenningstype | `Implicit` |
-    | Callback-URL | `https://www.getpostman.com/oauth2/callback` |
-    | Auth.-URL | Gebruik de **autorisatie-URL** uit **stap 2** |
+    | Toekennings type | `Implicit` |
+    | URL voor terugbellen | `https://www.getpostman.com/oauth2/callback` |
+    | Verificatie-URL | Gebruik de **autorisatie-URL** uit **stap 2** |
     | Client-id | Gebruik de **toepassings-id** voor de app Azure Active Directory die is gemaakt of opnieuw is gebruikt in de vorige sectie |
     | Scope | Leeg laten |
     | Staat | Leeg laten |
-    | Clientauthenticatie | `Send as Basic Auth header` |
+    | Client verificatie | `Send as Basic Auth header` |
 
 1. De client moet er nu als volgt uitzien:
 
     [![postman client token-voor beeld](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
-1. Selecteer **Token aanvragen**.
+1. Selecteer een **aanvraag token**.
   
 1. Schuif omlaag en selecteer **token gebruiken**.
 

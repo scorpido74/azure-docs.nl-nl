@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB Table-API .NET SDK & resources
 description: Meer informatie over de Azure Cosmos DB Table-API met inbegrip van release datums, buiten gebruik stellen datums en wijzigingen die zijn aangebracht tussen elke versie.
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 5e98c40384207c77b4ea7e9557a7d1ebebd95e47
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5a5305ffd388d2573d250d93131c1fed236008b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058586"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771619"
 ---
-# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: Down load en release-opmerkingen
+# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: Download-en release-opmerkingen
 
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
@@ -27,8 +27,8 @@ ms.locfileid: "71058586"
 |   |   |
 |---|---|
 |**SDK downloaden**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**Snelstartgids**|[Azure Cosmos DB: Een app bouwen met .NET en het Table-API](create-table-dotnet.md)|
-|**Zelfstudie**|[Azure Cosmos DB: Ontwikkelen met de Table-API in .NET](tutorial-develop-table-dotnet.md)|
+|**Snelstartgids**|[Azure Cosmos DB: een app bouwen met .NET en de Table-API](create-table-dotnet.md)|
+|**Zelfstudie**|[Azure Cosmos DB: ontwikkel met de Table-API in .NET](tutorial-develop-table-dotnet.md)|
 |**Huidige ondersteunde framework**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
@@ -80,14 +80,14 @@ ms.locfileid: "71058586"
 
 Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het buiten gebruik stellen van een SDK om de overgang naar een nieuwere/ondersteunde versie te versoepelen.
 
-De `Microsoft.Azure.CosmosDB.Table` bibliotheek is momenteel alleen beschikbaar voor .NET Framework en bevindt zich in de onderhouds modus en zal binnenkort worden afgeschaft. Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de .NET Standard-bibliotheek [micro soft. Azure. Cosmos. table.](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)het wordt aanbevolen dat u een upgrade uitvoert naar [micro soft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).
+De `Microsoft.Azure.CosmosDB.Table`-bibliotheek is momenteel alleen beschikbaar voor .NET Framework en bevindt zich in de onderhouds modus en zal binnenkort worden afgeschaft. Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de .NET Standard-bibliotheek [micro soft. Azure. Cosmos. table.](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)het wordt aanbevolen dat u een upgrade uitvoert naar [micro soft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).
 
 Het preview-pakket voor [WindowsAzure. Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) is afgeschaft. De SDK voor WindowsAzure. Storage-PremiumTable wordt op 15 november 2018 ingetrokken, op het moment dat de aanvragen voor de buiten gebruik gestelde SDK niet worden toegestaan. 
 
 Aanvragen voor het Azure Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
 <br/>
 
-| Version | Releasedatum | Vervaldatum |
+| Versie | Releasedatum | Vervaldatum |
 | --- | --- | --- |
 | [2.1.2](#2.1.2) |16 september 2019| |
 | [2.1.0](#2.1.0) |22 januari 2019|01 april 2020 |

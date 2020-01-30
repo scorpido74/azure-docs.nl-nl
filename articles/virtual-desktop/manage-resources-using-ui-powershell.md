@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: d7304c1267c4a4f5548bb57ffb3e6016fac21d99
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e3ea11f4faad204756f9e1296b5190e1f81a5cc0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122505"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772803"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Een beheer programma implementeren met Power shell
 
 In dit artikel wordt uitgelegd hoe u het beheer programma implementeert met behulp van Power shell.
 
-## <a name="important-considerations"></a>Belangrijke overwegingen
+## <a name="important-considerations"></a>Belang rijke overwegingen
 
 Elk Azure Active Directory (Azure AD)-abonnement van de Tenant moet een eigen afzonderlijke implementatie van het beheer programma hebben. Dit hulp programma biedt geen ondersteuning voor B2B-scenario's (Business-to-Business) van Azure AD. 
 
@@ -163,4 +163,4 @@ Als u problemen ondervindt met het beheer programma of andere virtuele bureau bl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u het beheer programma implementeert en er verbinding mee maakt, kunt u leren hoe u de Help van Azure-service gebruikt om service problemen en status adviezen te bewaken. Zie onze [zelf studie Service waarschuwingen instellen](./set-up-service-alerts.md)voor meer informatie.
+Nu u hebt geleerd hoe u het beheer programma implementeert en er verbinding mee maakt, leert u hoe u Azure Service Health kunt gebruiken om service problemen en status adviezen te bewaken. Zie onze [zelf studie Service waarschuwingen instellen](./set-up-service-alerts.md)voor meer informatie.

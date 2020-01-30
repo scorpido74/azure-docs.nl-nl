@@ -9,14 +9,14 @@ ms.date: 10/03/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: ee2b3a35b6f1817b89541a31d0bde4adf00ade2a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992533"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841826"
 ---
-# <a name="rest-api"></a>REST-API
+# <a name="rest-api"></a>REST API
 In dit artikel worden de REST-Api's van Azure Event Grid op IoT Edge beschreven
 
 ## <a name="common-api-behavior"></a>Normaal API-gedrag
@@ -183,6 +183,7 @@ Voor beelden in deze sectie gebruiken `EndpointType=Webhook;`. De JSON-voor beel
             "eventExpiryInMinutes": 120,
             "maxDeliveryAttempts": 50
         },
+        "persistencePolicy": "true",
         "destination":
         {
             "endpointType": "WebHook",
@@ -673,7 +674,7 @@ EndpointUrl
 - Dit moet een absolute URL zijn.
 - Het pad `/api/events` moet worden gedefinieerd in het pad van de aanvraag-URL.
 - Deze moet `api-version=2018-01-01` hebben in de query reeks.
-- Als outbound__eventgrid__httpsOnly is ingesteld op True in de EventGridModule-instellingen (standaard instelling waar), moet dit alleen HTTPS zijn.
+- Als outbound__eventgrid__httpsOnly is ingesteld op True in de instellingen voor EventGridModule (standaard instelling), moet dit alleen HTTPS zijn.
 - Als outbound__eventgrid__httpsOnly is ingesteld op False, kan dit HTTP of HTTPS zijn.
 - Als outbound__eventgrid__allowInvalidHostnames is ingesteld op False (standaard instelling ONWAAR), moet dit een van de volgende eind punten zijn:
    - `eventgrid.azure.net`
@@ -686,3 +687,93 @@ SasKey:
 Onderwerpnaam:
 - Als het abonnement. EventDeliverySchema is ingesteld op EventGridSchema, wordt de waarde uit dit veld in het veld onderwerp van elke gebeurtenis geplaatst voordat deze wordt doorgestuurd naar Event Grid in de Cloud.
 - Als het abonnement. EventDeliverySchema is ingesteld op CustomEventSchema, wordt deze eigenschap genegeerd en wordt de nettolading van de aangepaste gebeurtenis exact doorgestuurd zoals deze is ontvangen.
+
+## <a name="set-up-event-hubs-as-a-destination"></a>Event Hubs instellen als bestemming
+
+Als u wilt publiceren naar een event hub, stelt u de `endpointType` in op `eventHub` en geeft u het volgende op:
+
+* Connections Tring: verbindings reeks voor de specifieke Event hub die u als doel hebt gegenereerd via een gedeeld toegangs beleid.
+
+    >[!NOTE]
+    > De connection string moet entiteits-specifiek zijn. Het is niet mogelijk om een naam ruimte connection string te gebruiken. U kunt een specifieke connection string genereren door te navigeren naar de specifieke Event hub waarnaar u wilt publiceren in azure Portal en te klikken op **gedeeld toegangs beleid** voor het genereren van een nieuwe entiteit specifieke connecection teken reeks.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "eventHub",
+              "properties": {
+                "connectionString": "<your-event-hub-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-queues-as-a-destination"></a>Service Bus-wacht rijen instellen als bestemming
+
+Als u wilt publiceren naar een Service Bus wachtrij, stelt u de `endpointType` in op `serviceBusQueue` en geeft u het volgende op:
+
+* Connections Tring: een verbindings reeks voor de specifieke Service Bus wachtrij waarvan u de doel groep hebt gegenereerd via een gedeeld toegangs beleid.
+
+    >[!NOTE]
+    > De connection string moet entiteits-specifiek zijn. Het is niet mogelijk om een naam ruimte connection string te gebruiken. Genereer een specifieke entiteit connection string door te navigeren naar de specifieke Service Bus wachtrij waarnaar u wilt publiceren in azure Portal en klik op **beleid voor gedeelde toegang** om een nieuwe entiteit specifieke connecection teken reeks te genereren.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusQueue",
+              "properties": {
+                "connectionString": "<your-service-bus-queue-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-topics-as-a-destination"></a>Service Bus onderwerpen instellen als bestemming
+
+Als u wilt publiceren naar een Service Bus onderwerp, stelt u de `endpointType` in op `serviceBusTopic` en geeft u het volgende op:
+
+* Connections Tring: een verbindings reeks voor het specifieke Service Bus onderwerp dat wordt gegenereerd via een gedeeld toegangs beleid.
+
+    >[!NOTE]
+    > De connection string moet entiteits-specifiek zijn. Het is niet mogelijk om een naam ruimte connection string te gebruiken. Genereer een specifieke entiteit connection string door te navigeren naar het specifieke Service Bus onderwerp waarnaar u wilt publiceren in azure Portal en klik op **beleid voor gedeelde toegang** om een nieuwe entiteit specifieke connecection teken reeks te genereren.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusTopic",
+              "properties": {
+                "connectionString": "<your-service-bus-topic-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-storage-queues-as-a-destination"></a>Opslag wachtrijen instellen als bestemming
+
+Als u wilt publiceren naar een opslag wachtrij, stelt u de `endpointType` in op `storageQueue` en geeft u het volgende op:
+
+* wachtrijmap: de naam van de opslag wachtrij waarnaar u publiceert.
+* Connections Tring: de verbindings reeks voor het opslag account waarin de opslag wachtrij zich bevindt.
+
+    >[!NOTE]
+    > Event Hubs, Service Bus wacht rijen en Service Bus onderwerpen, de connection string die voor opslag wachtrijen wordt gebruikt, is niet specifiek voor de entiteit. In plaats daarvan moet de connection string voor het opslag account.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "storageQueue",
+              "properties": {
+                "queueName": "<your-storage-queue-name>",
+                "connectionString": "<your-storage-account-connection-string>"
+              }
+            }
+          }
+        }
+    ```

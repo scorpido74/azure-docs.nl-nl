@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: fe0acedeb65f010f9af2ea55cd37e6fe3046d989
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 532bbaf0b983b2d4310780686777cbe895afebe4
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462162"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774618"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus-migreren van Azure Active Directory Access Control Service naar Shared Access Signature autorisatie
 
@@ -29,7 +29,7 @@ SAS heeft het voor deel dat het niet direct afhankelijk is van een andere servic
 
 Voor alle bestaande toepassingen die afhankelijk zijn van ACS, bevelen wij klanten aan om hun toepassingen te migreren om te vertrouwen op SAS.
 
-## <a name="migration-scenarios"></a>Migratiescenario's
+## <a name="migration-scenarios"></a>Migratie scenario's
 
 ACS en Service Bus zijn geïntegreerd met de gedeelde kennis van een *handtekening sleutel*. De handtekening sleutel wordt gebruikt door een ACS-naam ruimte voor het ondertekenen van autorisatie tokens en wordt gebruikt door Service Bus om te controleren of het token is uitgegeven door de gekoppelde ACS-naam ruimte. De ACS-naam ruimte bevat service-identiteiten en autorisatie regels. De autorisatie regels definiëren welke service-identiteit of welk token dat is uitgegeven door een externe ID-provider, het type toegang tot een deel van de Service Bus naam ruimte grafiek, in de vorm van een treffer voor het langste voor voegsel.
 

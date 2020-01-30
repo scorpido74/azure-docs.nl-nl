@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Op deze pagina wordt beschreven hoe u Network Watcher pakket Capture kunt gebruiken met Capanalysis om verkeers patronen van en naar uw virtuele machines te visualiseren.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 936d881b-49f9-4798-8e45-d7185ec9fe89
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 3baf73eed09e6880820952b8457526b6c21dd83b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: f36db28b58cd57b6407019b378a82632aa6c6228
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277766"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840652"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Netwerk verkeers patronen visualiseren van en naar uw Vm's met open source-hulpprogram ma's
 
@@ -69,13 +66,13 @@ CapAnalysis biedt verschillende opties voor het visualiseren van de pakket opnam
 
     ![overzicht van capanalysis-Protocol][6]
 
-1. Statistieken
+1. statistieken
 
     In dit deel venster kunt u de statistieken van het netwerk verkeer weer geven – verzonden en ontvangen bytes van bron-en doel-Ip's, stromen voor elk van de bron-en doel-Ip's, het protocol dat wordt gebruikt voor verschillende stromen en de duur van stromen.
 
     ![statistieken voor capanalysis][7]
 
-1. geomap
+1. Geomap
 
     Dit deel venster bevat een kaart weergave van uw netwerk verkeer, waarbij kleuren worden geschaald naar het volume verkeer van elk land/regio. U kunt gemarkeerde landen/regio's selecteren om aanvullende stroom statistieken weer te geven, zoals de verhouding van de gegevens die worden verzonden en ontvangen van IP-adressen in dat land/regio.
 

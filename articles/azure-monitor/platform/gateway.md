@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: b68f19faa1542b873e90a4ce6d0426db7f3ff871
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 30854382b5a6dfd0faabfc2f59340dc21518d6f2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547299"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773294"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Computers zonder Internet toegang verbinden met behulp van de Log Analytics-gateway in Azure Monitor
 
@@ -159,8 +159,8 @@ De volgende tabel geeft een overzicht van de para meters die door Setup worden o
 |PORTNUMBER | TCP-poort nummer voor de gateway waarop moet worden geluisterd |
 |WEBTOEPASSINGSPROXY | IP-adres van proxy server |
 |INSTALLDIR | Volledig gekwalificeerde pad voor het opgeven van de installatiemap van de gateway software bestanden |
-|GEBRUIKERSNAAM | Gebruikers-ID voor verificatie met proxy server |
-|WACHTWOORD | Wacht woord van de gebruikers-ID die moet worden geverifieerd met de proxy |
+|GEBRUIKERS | Gebruikers-ID voor verificatie met proxy server |
+|WACHT woord | Wacht woord van de gebruikers-ID die moet worden geverifieerd met de proxy |
 |LicenseAccepted | Geef een waarde van **1** op om te controleren of u akkoord gaat met de gebruiksrecht overeenkomst |
 |HASAUTH | Geef een waarde van **1** op wanneer de para meters gebruikers naam/wacht woord zijn opgegeven |
 |HASPROXY | Geef een waarde van **1** op bij het opgeven van het IP-adres voor de **proxy** parameter |
@@ -204,13 +204,13 @@ Zie voor informatie over het ontwerpen en implementeren van een Windows Server 2
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-Zie [Wat is Azure Load Balancer?](../../load-balancer/load-balancer-overview.md)voor meer informatie over het ontwerpen en implementeren van een Azure Load Balancer. Als u een basis load balancer wilt implementeren, volgt u de stappen die worden beschreven in deze [Quick](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) start, met uitzonde ring van de stappen die worden beschreven in de sectie **back-endservers maken**.   
+Zie [Wat is Azure Load Balancer?](../../load-balancer/load-balancer-overview.md)voor meer informatie over het ontwerpen en implementeren van een Azure Load Balancer. Als u een basis load balancer wilt implementeren, volgt u de stappen die worden beschreven in deze [Quick](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) start, met uitzonde ring van de stappen die worden beschreven in de sectie **back-endservers maken**.   
 
 > [!NOTE]
 > Voor het configureren van de Azure Load Balancer met behulp van de **basis-SKU**, moeten virtuele Azure-machines deel uitmaken van een beschikbaarheidsset. Zie [de beschik baarheid van virtuele Windows-machines beheren in azure](../../virtual-machines/windows/manage-availability.md)voor meer informatie over beschikbaarheids sets. Als u bestaande virtuele machines wilt toevoegen aan een beschikbaarheidsset, raadpleegt u [Azure Resource Manager-beschikbaarheidsset voor Vm's instellen](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
 > 
 
-Nadat de load balancer is gemaakt, moet er een back-end-pool worden gemaakt die verkeer naar een of meer Gateway servers distribueert. Volg de stappen die worden beschreven in de sectie Quick Start-artikel [resources maken voor de Load Balancer](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer).  
+Nadat de load balancer is gemaakt, moet er een back-end-pool worden gemaakt die verkeer naar een of meer Gateway servers distribueert. Volg de stappen die worden beschreven in de sectie Quick Start-artikel [resources maken voor de Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md).  
 
 >[!NOTE]
 >Bij het configureren van de status test moet deze worden geconfigureerd voor het gebruik van de TCP-poort van de gateway server. Met de Health probe worden de gateway servers dynamisch toegevoegd aan of verwijderd uit de load balancer draaiing op basis van hun reactie op status controles. 

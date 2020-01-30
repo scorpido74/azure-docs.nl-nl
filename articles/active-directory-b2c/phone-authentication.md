@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96bf088e6db29817d1ae4276c254a84723e5d03d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480188"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840329"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Stel aanmelding via de telefoon in en meld u aan met aangepast beleid in Azure AD B2C
 
@@ -30,7 +30,7 @@ Volg de stappen in dit artikel om het aangepaste beleid te gebruiken zodat uw kl
 
 * [Azure AD B2C Tenant](tutorial-create-tenant.md)
 * [Webtoepassing geregistreerd](tutorial-register-applications.md) in uw Tenant
-* [Aangepast beleid](active-directory-b2c-get-started-custom.md) dat is geüpload naar uw Tenant
+* [Aangepast beleid](custom-policy-get-started.md) dat is geüpload naar uw Tenant
 
 ## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Het Start pakket voor aanmelding via de telefoon &
 
@@ -44,7 +44,7 @@ Bij de volgende stappen wordt ervan uitgegaan dat u de [vereiste onderdelen](#pr
 
 1. Vervang in elk bestand de teken reeks `yourtenant` door de naam van uw Azure AD B2C Tenant. Als de naam van uw B2C-Tenant bijvoorbeeld *contosob2c*is, worden alle exemplaren van `yourtenant.onmicrosoft.com` `contosob2c.onmicrosoft.com`.
 
-1. Volg de stappen in de sectie [toepassings-Id's toevoegen aan het aangepaste beleid](active-directory-b2c-get-started-custom.md#add-application-ids-to-the-custom-policy) van aan de [slag met aangepast beleid in azure Active Directory B2C](active-directory-b2c-get-started-custom.md). In dit geval moet u `/phone-number-passwordless/` **`Phone_Email_Base.xml`** bijwerken met **de toepassings-id's (client)** van de twee toepassingen die u hebt geregistreerd bij het volt ooien van de vereisten, *IdentityExperienceFramework* en *ProxyIdentityExperienceFramework*.
+1. Volg de stappen in de sectie [toepassings-Id's toevoegen aan het aangepaste beleid](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) van aan de [slag met aangepast beleid in azure Active Directory B2C](custom-policy-get-started.md). In dit geval moet u `/phone-number-passwordless/` **`Phone_Email_Base.xml`** bijwerken met **de toepassings-id's (client)** van de twee toepassingen die u hebt geregistreerd bij het volt ooien van de vereisten, *IdentityExperienceFramework* en *ProxyIdentityExperienceFramework*.
 
 ## <a name="upload-the-policy-files"></a>De beleids bestanden uploaden
 

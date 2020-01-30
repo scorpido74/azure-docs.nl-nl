@@ -12,12 +12,12 @@ ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043524"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836657"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
@@ -41,11 +41,11 @@ Samen vatting van de twee niet-exclusieve kern scenario's met SAML:
 | Scenario | Azure AD B2C rol | Uitleg |
 | -------- | ----------------- | ------- |
 | Mijn toepassing verwacht een SAML-bevestiging om een verificatie te volt ooien. | **Azure AD B2C fungeert als de ID-provider (IdP)**<br />Azure AD B2C fungeert als een SAML-IdP voor de toepassingen. | Dit artikel. |
-| Mijn gebruikers hebben eenmalige aanmelding nodig met een id-provider die SAML-compatibel is, zoals ADFS, Sales Force of shibboleth.  | **Azure AD B2C fungeert als service provider (SP)**<br />Azure AD B2C fungeert als een service provider bij het maken van verbinding met de SAML-ID-provider. Het is een Federatie proxy tussen uw toepassing en de SAML-ID-provider.  | <ul><li>[Aanmelden met behulp van aangepast beleid instellen met ADFS als een SAML-IdP](active-directory-b2c-custom-setup-adfs2016-idp.md)</li><li>[Aanmelden met een Sales Force SAML-provider instellen met behulp van aangepast beleid](active-directory-b2c-setup-sf-app-custom.md)</li></ul> |
+| Mijn gebruikers hebben eenmalige aanmelding nodig met een id-provider die SAML-compatibel is, zoals ADFS, Sales Force of shibboleth.  | **Azure AD B2C fungeert als service provider (SP)**<br />Azure AD B2C fungeert als een service provider bij het maken van verbinding met de SAML-ID-provider. Het is een Federatie proxy tussen uw toepassing en de SAML-ID-provider.  | <ul><li>[Aanmelden met behulp van aangepast beleid instellen met ADFS als een SAML-IdP](identity-provider-adfs2016-custom.md)</li><li>[Aanmelden met een Sales Force SAML-provider instellen met behulp van aangepast beleid](identity-provider-salesforce-custom.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Voer de stappen in aan de [slag met aangepast beleid in azure AD B2C](active-directory-b2c-get-started-custom.md). U hebt het aangepaste beleid voor *SocialAndLocalAccounts* nodig van het aangepaste beleid dat wordt beschreven in het artikel.
+* Voer de stappen in aan de [slag met aangepast beleid in azure AD B2C](custom-policy-get-started.md). U hebt het aangepaste beleid voor *SocialAndLocalAccounts* nodig van het aangepaste beleid dat wordt beschreven in het artikel.
 * Basis informatie over het Security Assertion Markup Language (SAML)-protocol.
 * Een webtoepassing die is geconfigureerd als een SAML-service provider (SP). Voor deze zelf studie kunt u een door ons verstrekte [SAML-test toepassing][samltest] gebruiken.
 

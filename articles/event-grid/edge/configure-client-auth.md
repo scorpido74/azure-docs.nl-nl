@@ -9,16 +9,16 @@ ms.date: 10/03/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: b5456130e89bf77e2c2ba41880323e38f6b27f4c
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 3363db4557dd19e8d72747ccd62bb535abb7b1e2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992507"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841788"
 ---
 # <a name="configure-client-authentication-of-incoming-calls"></a>Client verificatie van binnenkomende oproepen configureren
 
-Deze hand leiding bevat voor beelden van de mogelijke configuraties voor client verificatie voor de module Event Grid. De module Event Grid ondersteunt twee typen client verificatie:-
+Deze hand leiding bevat voor beelden van de mogelijke configuraties voor client verificatie voor de module Event Grid. De module Event Grid ondersteunt twee typen client verificatie:
 
 * Shared Access Signature (SAS) op basis van sleutels
 * Op basis van certificaten
@@ -30,10 +30,10 @@ Zie de hand leiding voor [beveiliging en verificatie](security-authentication.md
 ```json
  {
   "Env": [
-    "inbound:clientAuth:sasKeys:enabled=false",
-    "inbound:clientAuth:clientCert:enabled=true",
-    "inbound:clientAuth:clientCert:source=IoTEdge",
-    "inbound:clientAuth:clientCert:allowUnknownCA=false"
+    "inbound__clientAuth__sasKeys__enabled=false",
+    "inbound__clientAuth__clientCert__enabled=true",
+    "inbound__clientAuth__clientCert__source=IoTEdge",
+    "inbound__clientAuth__clientCert__allowUnknownCA=false"
   ]
 }
  ```
@@ -43,28 +43,28 @@ Zie de hand leiding voor [beveiliging en verificatie](security-authentication.md
 ```json
  {
   "Env": [
-    "inbound:clientAuth:sasKeys:enabled=false",
-    "inbound:clientAuth:clientCert:enabled=true",
-    "inbound:clientAuth:clientCert:source=IoTEdge",
-    "inbound:clientAuth:clientCert:allowUnknownCA=true"
+    "inbound__clientAuth__sasKeys__enabled=false",
+    "inbound__clientAuth__clientCert__enabled=true",
+    "inbound__clientAuth__clientCert__source=IoTEdge",
+    "inbound__clientAuth__clientCert__allowUnknownCA=true"
   ]
 }
 ```
 
 >[!NOTE]
->Stel de eigenschap **Inkomend: clientAuth: clientCert: allowUnknownCA** in op **True** in test omgevingen, omdat u meestal zelfondertekende certificaten kunt gebruiken. Voor werk belastingen wordt u aangeraden deze eigenschap in te stellen op **False** en certificaten van een certificerings instantie (CA).
+>Stel de eigenschap **inbound__clientAuth__clientCert__allowUnknownCA** in op **waar** alleen in test omgevingen, omdat u meestal zelfondertekende certificaten kunt gebruiken. Voor werk belastingen wordt u aangeraden deze eigenschap in te stellen op **False** en certificaten van een certificerings instantie (CA).
 
 ## <a name="enable-certificate-based-and-sas-key-based-client-authentication"></a>Op certificaten gebaseerde en SAS-sleutel gebaseerde client verificatie inschakelen
 
 ```json
  {
   "Env": [
-    "inbound:clientAuth:sasKeys:enabled=true",
-    "inbound:clientAuth:sasKeys:key1=<some-secret1-here>",
-    "inbound:clientAuth:sasKeys:key2=<some-secret2-here>",
-    "inbound:clientAuth:clientCert:enabled=true",
-    "inbound:clientAuth:clientCert:source=IoTEdge",
-    "inbound:clientAuth:clientCert:allowUnknownCA=true"
+    "inbound__clientAuth__sasKeys__enabled=true",
+    "inbound__clientAuth__sasKeys__key1=<some-secret1-here>",
+    "inbound__clientAuth__sasKeys__key2=<some-secret2-here>",
+    "inbound__clientAuth__clientCert__enabled=true",
+    "inbound__clientAuth__clientCert__source=IoTEdge",
+    "inbound__clientAuth__clientCert__allowUnknownCA=true"
   ]
 }
  ```

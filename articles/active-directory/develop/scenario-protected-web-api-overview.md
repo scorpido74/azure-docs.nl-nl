@@ -15,16 +15,18 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f96393adf0eaed8a28bc1a2ec0def6b0386bd7ac
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: abe4ecf77e7a65251830ff822b15f79291471202
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701974"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773340"
 ---
 # <a name="scenario-protected-web-api"></a>Scenario: beveiligde web-API
 
-In dit scenario laten we u zien hoe u een web-API beschikbaar maakt en hoe u deze kunt beveiligen zodat alleen geverifieerde gebruikers toegang hebben tot de API. U wilt geverifieerde gebruikers met zowel werk-als school accounts of persoonlijke micro soft-accounts inschakelen om uw web-API te gebruiken.
+In dit scenario leert u hoe u een web-API beschikbaar maakt. U leert ook hoe u de Web-API kunt beveiligen, zodat alleen geverifieerde gebruikers er toegang toe hebben.
+
+Als u uw web-API wilt gebruiken, moet u geverifieerde gebruikers met zowel werk-als school accounts inschakelen of persoonlijke micro soft-accounts inschakelen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,10 +34,10 @@ In dit scenario laten we u zien hoe u een web-API beschikbaar maakt en hoe u dez
 
 ## <a name="specifics"></a>Opsporingsgegevens
 
-Hier volgen enkele specifieke informatie die u moet kennen om Web-Api's te beveiligen:
+Hier vindt u specifieke informatie die u moet kennen om Web-Api's te beveiligen:
 
-- De registratie van uw app moet ten minste één bereik weer geven. De token versie die door uw web-API wordt geaccepteerd, is afhankelijk van de doel groep voor aanmelden.
-- De configuratie van de code voor de Web-API moet het token valideren dat wordt gebruikt bij het aanroepen van de Web-API.
+- De registratie van uw app moet ten minste één bereik weer geven. De token versie die door de Web-API wordt geaccepteerd, is afhankelijk van de aanmeldings doel groep.
+- De code configuratie voor de Web-API moet het token valideren dat wordt gebruikt wanneer de Web-API wordt aangeroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

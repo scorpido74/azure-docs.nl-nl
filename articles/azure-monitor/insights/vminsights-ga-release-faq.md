@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/05/2019
-ms.openlocfilehash: 4833b8a1835bd5da3327c73058f170fb0a5738a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/24/2020
+ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450692"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765753"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor voor VM's algemeen beschikbaar (GA)
 
@@ -20,19 +20,28 @@ Deze veelgestelde vragen over algemene Beschik baarheid omvatten wijzigingen die
 
 ## <a name="updates-for-azure-monitor-for-vms"></a>Updates voor Azure Monitor voor VM's
 
-Er wordt een nieuwe versie van Azure Monitor voor VM's uitgebracht in januari 2020. Klanten die Azure-monitors voor Vm's inschakelen nadat deze release de nieuwe versie automatisch heeft ontvangen, maar bestaande klanten die al gebruikmaken van Azure Monitor voor VM's, wordt gevraagd om te upgraden. Deze veelgestelde vragen en onze documentatie bieden richt lijnen voor het uitvoeren van een upgrade op schaal als u grote implementaties in meerdere werk ruimten hebt.
+Er is een nieuwe versie van Azure Monitor voor VM's uitgebracht. Klanten die Azure monitors voor Vm's inschakelen, ontvangen nu de nieuwe versie, maar bestaande klanten die al gebruikmaken van Azure Monitor voor VM's, wordt gevraagd om bij te werken. Deze veelgestelde vragen en onze documentatie bieden richt lijnen voor het uitvoeren van een upgrade op schaal als u grote implementaties in meerdere werk ruimten hebt.
 
-Bij deze upgrade worden Azure Monitor voor VM's prestatie gegevens opgeslagen in dezelfde `InsightsMetrics`-tabel als [Azure monitor voor containers](container-insights-overview.md), en kunt u gemakkelijker de twee gegevens sets doorzoeken. U kunt ook meer diverse gegevens sets opslaan die niet kunnen worden opgeslagen in de tabel die eerder is gebruikt. De prestatieweergaven worden ook bijgewerkt, zodat hiervoor deze nieuwe tabel kan worden gebruikt.
+Bij deze upgrade worden Azure Monitor voor VM's prestatie gegevens opgeslagen in dezelfde *InsightsMetrics* -tabel als [Azure monitor voor containers](container-insights-overview.md), waardoor het gemakkelijker wordt om de twee gegevens sets op te vragen. U kunt ook meer diverse gegevens sets opslaan die niet kunnen worden opgeslagen in de tabel die eerder is gebruikt. 
 
-We verplaatsen naar nieuwe gegevens typen voor de gegevens sets van de verbinding. Deze wijziging vindt plaats in december 2019 en wordt aangekondigd in een Azure update-blog. Gegevens die momenteel zijn opgeslagen in `ServiceMapComputer_CL` en `ServiceMapProcess_CL`(aangepaste logboek tabellen), worden verplaatst naar specifieke gegevens typen met de naam `VMComputer` en `VMProcess`. Door over te stappen op specifieke gegevens typen, krijgen ze prioriteit voor het opnemen van gegevens en wordt het tabel schema gestandaardiseerd voor alle klanten.
+In de volgende week of twee zullen onze prestatie weergaven ook worden bijgewerkt om deze nieuwe tabel te gebruiken.
 
 We realiseren dat bestaande klanten die een upgrade uitvoeren, een onderbreking van de werk stroom veroorzaken. Daarom hebben we ervoor gekozen om dit nu uit te voeren in een open bare preview, in plaats van later na GA.
 
+
 ## <a name="what-is-changing"></a>Wat wordt er gewijzigd?
 
-Wanneer u het voorbereidings proces voor Azure Monitor voor VM's voltooit, schakelt u de Servicetoewijzing oplossing in de werk ruimte die u hebt geselecteerd om uw bewakings gegevens op te slaan en configureert u vervolgens de prestatie meters voor de gegevens die we verzamelen van uw Vm's. We zullen een nieuwe oplossing met de naam **VMInsights**, die aanvullende mogelijkheden bevat voor het verzamelen van gegevens, samen met een nieuwe locatie voor het opslaan van deze gegevens in uw log Analytics-werk ruimte.
+We hebben een nieuwe oplossing met de naam VMInsights, die aanvullende mogelijkheden bevat voor het verzamelen van gegevens, samen met een nieuwe locatie voor het opslaan van deze gegevens in uw Log Analytics-werk ruimte. 
 
-Met het huidige proces van het gebruik van prestatie meter items in uw Log Analytics-werk ruimte worden de gegevens naar de tabel `Perf` verzonden. Deze nieuwe oplossing verzendt de gegevens naar een tabel met de naam `InsightsMetrics` die ook wordt gebruikt door Azure Monitor voor containers. Met dit tabel schema kunnen we aanvullende metrische gegevens en servicegegevens sets opslaan die niet compatibel zijn met de indeling van de prestatie tabel.
+In het verleden hebben we de ServiceMap-oplossing ingeschakeld in uw werk ruimte en de prestatie meter items in uw Log Analytics-werk ruimte om de gegevens naar de *prestatie* tabel te verzenden. Deze nieuwe oplossing verzendt de gegevens naar een tabel met de naam *InsightsMetrics* die ook wordt gebruikt door Azure monitor voor containers. Met dit tabel schema kunnen we aanvullende metrische gegevens en servicegegevens sets opslaan die niet compatibel zijn met de indeling van de *prestatie* tabel.
+
+
+## <a name="how-do-i-upgrade"></a>Hoe kan ik upgrade?
+Elke VM die moet worden bijgewerkt, wordt geïdentificeerd op het tabblad **aan de slag** in azure monitor voor VM's in het Azure Portal. U kunt één virtuele machine upgraden of meerdere selecteren om samen te upgraden. Gebruik de volgende opdracht om een upgrade uit te kunnen maken met Power shell:
+
+```PowerShell
+Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
+```
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Wat moet ik doen met de prestatie meter items in mijn werk ruimte als ik de VMInsights-oplossing Installeer?
 

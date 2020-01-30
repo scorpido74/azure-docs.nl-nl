@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d6df9a35191cf9fe9c2803116d5905a74f21e964
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev, identityplatformtop40, fasttrack-edit
+ms.openlocfilehash: bacac67ddd7f379d679a149fe9574676ae0c7567
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699475"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834416"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Toegangs tokens van micro soft Identity platform
 
@@ -252,12 +252,12 @@ Vernieuwings tokens kunnen op elk gewenst moment ongeldig worden gemaakt of inge
 |   | Cookie op basis van wacht woorden | Token op basis van wacht woorden | Cookie op basis van niet-wacht woord | Niet-op wacht woord gebaseerde token | Vertrouwelijk client token |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | Wacht woord verloopt | Blijft actief | Blijft actief | Blijft actief | Blijft actief | Blijft actief |
-| Het wacht woord is gewijzigd door de gebruiker | Revoked | Revoked | Blijft actief | Blijft actief | Blijft actief |
-| Gebruiker heeft SSPR | Revoked | Revoked | Blijft actief | Blijft actief | Blijft actief |
-| Beheerder wacht woord opnieuw instellen | Revoked | Revoked | Blijft actief | Blijft actief | Blijft actief |
-| Gebruiker trekt de vernieuwings tokens in [via Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Revoked | Revoked | Revoked | Revoked | Revoked |
-| De beheerder trekt alle vernieuwings tokens voor de Tenant in [via Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Revoked | Revoked |Revoked | Revoked | Revoked |
-| [Eenmalige afmelding](v1-protocols-openid-connect-code.md#single-sign-out) op Internet | Revoked | Blijft actief | Revoked | Blijft actief | Blijft actief |
+| Het wacht woord is gewijzigd door de gebruiker | Ingetrokken | Ingetrokken | Blijft actief | Blijft actief | Blijft actief |
+| Gebruiker heeft SSPR | Ingetrokken | Ingetrokken | Blijft actief | Blijft actief | Blijft actief |
+| Beheerder wacht woord opnieuw instellen | Ingetrokken | Ingetrokken | Blijft actief | Blijft actief | Blijft actief |
+| Gebruiker trekt de vernieuwings tokens in [via Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Ingetrokken | Ingetrokken | Ingetrokken | Ingetrokken | Ingetrokken |
+| De beheerder trekt alle vernieuwings tokens voor de Tenant in [via Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Ingetrokken | Ingetrokken |Ingetrokken | Ingetrokken | Ingetrokken |
+| [Eenmalige afmelding](v1-protocols-openid-connect-code.md#single-sign-out) op Internet | Ingetrokken | Blijft actief | Ingetrokken | Blijft actief | Blijft actief |
 
 > [!NOTE]
 > Een ' niet-wacht woord op basis van ' is een aanmelding waarbij de gebruiker geen wacht woord heeft opgegeven om deze op te halen. U kunt bijvoorbeeld uw gezicht gebruiken met Windows Hello, een FIDO2-sleutel of een pincode.

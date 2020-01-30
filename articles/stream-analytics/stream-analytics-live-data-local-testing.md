@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: cda02408f9e90cb9f19a4f7d806a34e5cff9c33c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426043"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840482"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Testen van live gegevens lokaal met behulp van Azure Stream Analytics-hulpprogramma's voor Visual Studio (Preview)
 
@@ -38,7 +38,6 @@ De volgende opties voor lokale tests worden ondersteund:
 2. Als u wilt testen live-gegevens, kies **gebruik Cloud invoer** in de vervolgkeuzelijst.
 
    ![Azure Stream Analytics Visual Studio cloud live-invoer](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
-
 
 3. Stel de **begintijd** om te definiëren wanneer de taak zal starten voor het verwerken van invoergegevens. De taak moet mogelijk gelezen invoergegevens tevoren om nauwkeurig resultaten te behalen. Standaard is ingesteld op 30 minuten voor de huidige tijd.
 
@@ -65,6 +64,5 @@ De volgende opties voor lokale tests worden ondersteund:
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een Stream Analytics-taak maken met behulp van de Azure Stream Analytics-hulpprogramma's voor Visual Studio](stream-analytics-quick-create-vs.md)
-* [Azure Stream Analytics-hulpprogramma's voor Visual Studio installeren](stream-analytics-tools-for-visual-studio-install.md)
 * [Stream Analytics-query's met Visual Studio lokaal testen](stream-analytics-vs-tools-local-run.md)
 * [Visual Studio gebruiken om Azure Stream Analytics-taken weer te geven](stream-analytics-vs-tools.md)

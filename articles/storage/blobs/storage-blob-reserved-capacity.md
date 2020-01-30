@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f393ab23df49751efbbcb3d70314b2ac404a8b77
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3f9a1cfa92ffa454758849f52cc1977cef6df63a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981814"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768393"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimaliseer de kosten voor Blob Storage met gereserveerde capaciteit
 
@@ -54,7 +54,7 @@ Gereserveerde capaciteit kopen:
 
 - U moet de rol van **eigenaar** zijn voor minstens één bedrijf of een afzonderlijk abonnement met betalen per gebruik-tarieven.
 - Voor ondernemings abonnementen moet u **gereserveerde instanties toevoegen** inschakelen in de EA-Portal. Als deze instelling is uitgeschakeld, moet u een EA-beheerder zijn voor het abonnement.
-- Voor het programma Cloud Solution Provider (CSP) kunnen alleen beheer agenten of verkoop medewerkers Azure Cosmos DB gereserveerde capaciteit kopen.
+- Voor het programma Cloud Solution Provider (CSP) kunnen alleen beheerders of verkoop medewerkers Azure-Blob Storage gereserveerde capaciteit kopen.
 
 ## <a name="determine-required-capacity-before-purchase"></a>Vereiste capaciteit bepalen vóór aankoop
 
@@ -85,7 +85,7 @@ Volg deze stappen om gereserveerde capaciteit aan te schaffen:
    | **Redundantie** | De redundantie optie voor de reserve ring. Opties zijn *LRS*, *ZRS*, *GRS*en *Ra-GZRS*. Zie [Azure Storage redundantie](../common/storage-redundancy.md)voor meer informatie over redundantie opties. |
    | **Facturerings frequentie** | Hiermee wordt aangegeven hoe vaak het account wordt gefactureerd voor de reserve ring. De opties zijn *maandelijks* of *vooraf*. |
    | **Grootte** | De regio waar de reserve ring van kracht is. |
-   |**Term**  | Eén jaar of drie jaar.   |
+   |**Mandaat**  | Eén jaar of drie jaar.   |
 
 1. Nadat u de para meters voor de reserve ring hebt geselecteerd, worden de kosten weer gegeven in de Azure Portal. In de portal wordt ook het kortings percentage weer gegeven over betalen per gebruik-facturering.
 

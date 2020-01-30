@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 021767aa20dc35459c68fead674ff00510af2538
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: cdf07c6a4cb98f17a9bc15934a7be42ba70810f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129366"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840448"
 ---
 # <a name="azure-identity-management-security-overview"></a>Overzicht van Azure Identity Management-beveiliging
 
- Identiteits beheer is het proces van het verifiëren en autoriseren van [beveiligings](/windows/security/identity-protection/access-control/security-principals)-principals. Het omvat ook het beheren van informatie over deze principals (identiteiten). Beveiligings-principals (identiteiten) kunnen services, toepassingen, gebruikers, groepen, enzovoort bevatten. Met de oplossingen voor identiteits-en toegangs beheer van micro soft kunt u de toegang tot toepassingen en resources in het bedrijfs centrum en in de Cloud beveiligen. Dergelijke bescherming maakt extra validatie niveaus mogelijk, zoals Multi-Factor Authentication en beleid voor voorwaardelijke toegang. Het bewaken van verdachte activiteiten via geavanceerde beveiligings rapportage, controle en waarschuwingen helpt mogelijke beveiligings problemen te verhelpen. [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) biedt eenmalige aanmelding (SSO) voor duizenden cloud software as a Service (SaaS)-apps en toegang tot web-apps die u on-premises uitvoert.
+ Identiteits beheer is het proces van het verifiëren en autoriseren van [beveiligings-principals](/windows/security/identity-protection/access-control/security-principals). Het omvat ook het beheren van informatie over deze principals (identiteiten). Beveiligings-principals (identiteiten) kunnen services, toepassingen, gebruikers, groepen, enzovoort bevatten. Met de oplossingen voor identiteits-en toegangs beheer van micro soft kunt u de toegang tot toepassingen en resources in het bedrijfs centrum en in de Cloud beveiligen. Dergelijke bescherming maakt extra validatie niveaus mogelijk, zoals Multi-Factor Authentication en beleid voor voorwaardelijke toegang. Het bewaken van verdachte activiteiten via geavanceerde beveiligings rapportage, controle en waarschuwingen helpt mogelijke beveiligings problemen te verhelpen. [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) biedt eenmalige aanmelding (SSO) voor duizenden cloud software as a Service (SaaS)-apps en toegang tot web-apps die u on-premises uitvoert.
  
 Door gebruik te maken van de beveiligings voordelen van Azure Active Directory (Azure AD) kunt u het volgende doen:
 
@@ -102,11 +102,11 @@ Beveiligings bewaking, waarschuwingen en op machine learning gebaseerde rapporte
 
 In het Azure Portal vallen rapporten in de volgende categorieën:
 
-* **Afwijkende rapporten**: Bevatten aanmeldings gebeurtenissen die afwijkend zijn aangetroffen. Ons doel is om u op de hoogte te stellen van deze activiteit en u te laten bepalen of een gebeurtenis verdacht is.
-* **Geïntegreerde toepassings rapporten**: Geef inzicht in de manier waarop Cloud toepassingen in uw organisatie worden gebruikt. Azure AD biedt integratie met duizenden Cloud toepassingen.
-* **Fout rapporten**: Geef fouten op die kunnen optreden wanneer u accounts inricht op externe toepassingen.
-* **Gebruikersspecifieke rapporten**: Gegevens van de aanmeldings activiteit voor een apparaat weer geven voor een specifieke gebruiker.
-* **Activiteiten logboeken**: Een record bevatten van alle gecontroleerde gebeurtenissen in de afgelopen 24 uur, de afgelopen 7 dagen of de afgelopen 30 dagen, en de groeps activiteiten wijzigen en het opnieuw instellen van het wacht woord en de registratie activiteit.
+* **Afwijkingen rapporten**: bevatten aanmeldings gebeurtenissen die afwijkend zijn aangetroffen. Ons doel is om u op de hoogte te stellen van deze activiteit en u te laten bepalen of een gebeurtenis verdacht is.
+* **Geïntegreerde toepassings rapporten**: bieden inzicht in hoe Cloud toepassingen worden gebruikt in uw organisatie. Azure AD biedt integratie met duizenden Cloud toepassingen.
+* **Fout rapporten**: duiden op fouten die kunnen optreden wanneer u accounts inricht op externe toepassingen.
+* **Gebruikersspecifieke rapporten**: gegevens van de activiteit voor het aanmelden van een apparaat weer geven voor een specifieke gebruiker.
+* **Activiteiten logboeken**: bevatten een record van alle gecontroleerde gebeurtenissen in de afgelopen 24 uur, in de afgelopen 7 dagen, of in de afgelopen 30 dagen, en de groeps activiteiten wijzigen en het opnieuw instellen van het wacht woord en de registratie activiteit.
 
 Meer informatie:
 
@@ -125,8 +125,8 @@ Wanneer u Azure AD B2C gebruikt, kunnen uw consumenten zich registreren voor uw 
 Meer informatie:
 
 * [Wat is Azure Active Directory B2C?](https://azure.microsoft.com/services/active-directory-b2c/)
-* [Azure Active Directory B2C Preview: Gebruikers registreren en aanmelden bij uw toepassingen](../../active-directory-b2c/active-directory-b2c-overview.md)
-* [Azure Active Directory B2C Preview: Typen toepassingen](../../active-directory-b2c/active-directory-b2c-apps.md)
+* [Azure Active Directory B2C Preview: consumenten registreren en aanmelden bij uw toepassingen](../../active-directory-b2c/overview.md)
+* [Azure Active Directory B2C Preview: typen toepassingen](../../active-directory-b2c/application-types.md)
 
 ## <a name="device-registration"></a>Apparaatregistratie
 
@@ -165,7 +165,7 @@ Azure AD Identity Protection is een beveiligings service die een geconsolideerde
 Meer informatie:
 
 * [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview)
-* [Channel 9: Azure AD en identiteits weergave: Preview van identiteits beveiliging](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Channel 9: Azure AD en identiteits weergave: preview van identiteits beveiliging](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hybride identiteits beheer/Azure AD Connect
 

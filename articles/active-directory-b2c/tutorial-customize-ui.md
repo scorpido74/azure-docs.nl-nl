@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eba9919b7a1d89e6aea8fb93ef8c4b3e92960368
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950864"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840125"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Zelf studie: de interface van gebruikers ervaringen aanpassen in Azure Active Directory B2C
 
-U kunt [gebruikers stromen](active-directory-b2c-reference-policies.md) gebruiken in Azure Active Directory B2C (Azure AD B2C) voor meer veelvoorkomende gebruikers ervaringen, zoals aanmelden, aanmelden en het bewerken van profielen. In de informatie in deze zelf studie leert u hoe u [de gebruikers interface (UI)](customize-ui-overview.md) van deze ervaringen kunt aanpassen met uw eigen HTML-en CSS-bestanden.
+U kunt [gebruikers stromen](user-flow-overview.md) gebruiken in Azure Active Directory B2C (Azure AD B2C) voor meer veelvoorkomende gebruikers ervaringen, zoals aanmelden, aanmelden en het bewerken van profielen. In de informatie in deze zelf studie leert u hoe u [de gebruikers interface (UI)](customize-ui-overview.md) van deze ervaringen kunt aanpassen met uw eigen HTML-en CSS-bestanden.
 
 In dit artikel leert u het volgende:
 
@@ -43,7 +43,7 @@ U maakt een Azure Storage-account en een container en plaatst vervolgens de basi
 
 Hoewel u uw bestanden op veel verschillende manieren kunt opslaan, slaat u deze op in [Azure Blob-opslag](../storage/blobs/storage-blobs-introduction.md).
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Zorg ervoor dat u de map gebruikt die uw Azure-abonnement bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw abonnement bevat. Deze map wijkt af van de directory die uw Azure B2C-Tenant bevat.
 3. Kies alle services in de linkerbovenhoek van het Azure Portal, zoek en selecteer **opslag accounts**.
 4. Selecteer **Toevoegen**.
@@ -166,4 +166,4 @@ In dit artikel hebt u het volgende geleerd:
 > * De aangepaste gebruikers interface testen
 
 > [!div class="nextstepaction"]
-> [Taal aanpassing in Azure Active Directory B2C](active-directory-b2c-reference-language-customization.md)
+> [Taal aanpassing in Azure Active Directory B2C](user-flow-language-customization.md)

@@ -6,17 +6,17 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: ef5c7de782d833aad96516d3e5357a0ed575a781
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/27/2020
+ms.openlocfilehash: d293b76e004d693813a074cb8551a86cb3c0bec2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722874"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772336"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>Voorbeeld gegevens in JSON-indeling opnemen in azure Data Explorer
 
-Dit artikel laat u zien hoe u gegevens in JSON-indeling kunt opnemen in een Azure Data Explorer-data base. U begint met eenvoudige voor beelden van RAW en toegewezen JSON, gaat verder naar JSON met meerdere regels en vervolgens worden complexere JSON-schema's met matrices en woorden boeken door lopen. 
+Dit artikel laat u zien hoe u gegevens in JSON-indeling kunt opnemen in een Azure Data Explorer-data base. U begint met eenvoudige voor beelden van RAW en toegewezen JSON, gaat verder naar JSON met meerdere regels en vervolgens worden complexere JSON-schema's met matrices en woorden boeken door lopen.  De voor beelden beschrijven het proces van het opnemen van gegevens in JSON-indeling met behulp van C#Kusto query language (KQL), of python. De Kusto-query taal `ingest` besturings opdrachten worden direct uitgevoerd op het eind punt van de engine. In productie scenario's wordt opname voor de Gegevensbeheer-service uitgevoerd met behulp van client bibliotheken of gegevens verbindingen. Lees [opname gegevens met behulp van de azure Data Explorer python-bibliotheek](/azure/data-explorer/python-ingest-data) en neem [gegevens op met behulp van de Azure Data Explorer .NET Standard SDK](/azure/data-explorer/net-standard-ingest-data) voor een overzicht van de opname van gegevens met deze client bibliotheken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -81,9 +81,6 @@ Gebruik de Kusto-query taal om gegevens op te nemen in een onbewerkte JSON-indel
     ```Kusto
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
-
-    > [!NOTE]
-    > Hier ziet u de `ingest` besturings opdrachten die rechtstreeks op het motor eindpunt worden uitgevoerd. In productie scenario's wordt opname voor de Gegevensbeheer-service uitgevoerd met behulp van client bibliotheken of gegevens verbindingen. Lees [opname gegevens met behulp van de azure Data Explorer python-bibliotheek](/azure/data-explorer/python-ingest-data) en neem [gegevens op met behulp van de Azure Data Explorer .NET Standard SDK](/azure/data-explorer/net-standard-ingest-data) voor een overzicht van de opname van gegevens met deze client bibliotheken.
 
 # <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
 

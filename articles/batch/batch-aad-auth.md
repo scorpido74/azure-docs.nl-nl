@@ -12,14 +12,14 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 08/15/2019
+ms.date: 01/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 56fcd5a8a02e292fdf43f9d22f3987813bce0743
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ce3582539d6130e13ef205806d780164ba70c4fe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029823"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842534"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch-service oplossingen verifiëren met Active Directory
 
@@ -119,7 +119,7 @@ Als u een toepassing wilt verifiëren die zonder toezicht wordt uitgevoerd, gebr
 
 Wanneer uw toepassing wordt geverifieerd met een Service-Principal, verzendt deze zowel de toepassings-ID als een geheim naar Azure AD. U moet de geheime sleutel maken en kopiëren voor gebruik vanuit uw code.
 
-Volg deze stappen in Azure Portal:
+Volg deze stappen in de Azure Portal:
 
 1. Kies in het navigatie deel venster aan de linkerkant van de Azure Portal **alle services**. Selecteer **app-registraties**.
 1. Selecteer uw toepassing in de lijst met app-registraties.
@@ -144,6 +144,67 @@ Uw toepassing moet nu worden weer gegeven in de instellingen voor toegangs behee
 
 ![Een RBAC-rol toewijzen aan uw toepassing](./media/batch-aad-auth/app-rbac-role.png)
 
+### <a name="assign-a-custom-role"></a>Een aangepaste rol toewijzen
+
+Een aangepaste rol geeft een gedetailleerde machtiging voor een gebruiker voor het verzenden van taken, taken en meer. Dit biedt de mogelijkheid om te voor komen dat gebruikers bewerkingen uitvoeren die van invloed zijn op kosten, zoals het maken van Pools of het wijzigen van knoop punten.
+
+U kunt een aangepaste rol gebruiken om machtigingen te verlenen aan een Azure AD-gebruiker,-groep of-service-principal voor de volgende RBAC-bewerkingen:
+
+- Microsoft.Batch/batchAccounts/pools/write
+- Microsoft.Batch/batchAccounts/pools/delete
+- Microsoft.Batch/batchAccounts/pools/read
+- Micro soft. batch/batchAccounts/jobSchedules/schrijven
+- Micro soft. batch/batchAccounts/jobSchedules/verwijderen
+- Micro soft. batch/batchAccounts/jobSchedules/lezen
+- Micro soft. batch/batchAccounts/Jobs/schrijven
+- Micro soft. batch/batchAccounts/Jobs/verwijderen
+- Micro soft. batch/batchAccounts/Jobs/lezen
+- Microsoft.Batch/batchAccounts/certificates/write
+- Microsoft.Batch/batchAccounts/certificates/delete
+- Microsoft.Batch/batchAccounts/certificates/read
+- Micro soft. batch/batchAccounts/lezen (voor elke Lees bewerking)
+- Micro soft. batch/batchAccounts/Listkeys ophalen/actie (voor elke bewerking)
+
+Aangepaste rollen zijn voor gebruikers die zijn geverifieerd door Azure AD, niet met de referenties van het batch-account (gedeelde sleutel). Houd er rekening mee dat de referenties van het batch-account volledige machtiging bieden voor het batch-account. Houd er ook rekening mee dat taken die gebruikmaken van de groeps beleidsniveau machtigingen vereisen.
+
+Hier volgt een voor beeld van een aangepaste roldefinitie:
+
+```json
+{
+ "properties":{
+    "roleName":"Azure Batch Custom Job Submitter",
+    "type":"CustomRole",
+    "description":"Allows a user to submit jobs to Azure Batch but not manage pools",
+    "assignableScopes":[
+      "/subscriptions/88888888-8888-8888-8888-888888888888"
+    ],
+    "permissions":[
+      {
+        "actions":[
+          "Microsoft.Batch/*/read",
+          "Microsoft.Authorization/*/read",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Support/*",
+          "Microsoft.Insights/alertRules/*"
+        ],
+        "notActions":[
+
+        ],
+        "dataActions":[
+          "Microsoft.Batch/batchAccounts/jobs/*",
+          "Microsoft.Batch/batchAccounts/jobSchedules/*"
+        ],
+        "notDataActions":[
+
+        ]
+      }
+    ]
+  }
+}
+```
+
+Zie [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md)voor meer algemene informatie over het maken van een aangepaste rol.
+
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>De tenant-ID niet ophalen voor uw Azure Active Directory
 
 Met de Tenant-ID wordt de Azure AD-Tenant geïdentificeerd waarmee verificatie services voor uw toepassing worden geleverd. Als u de tenant-ID, de volgende stappen uit:
@@ -154,7 +215,7 @@ Met de Tenant-ID wordt de Azure AD-Tenant geïdentificeerd waarmee verificatie s
 
 ![De map-ID kopiëren](./media/batch-aad-auth/aad-directory-id.png)
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 De code voorbeelden in deze sectie laten zien hoe u met Azure AD verifieert met geïntegreerde verificatie en met een service-principal. De meeste van deze code voorbeelden gebruiken .NET, maar de concepten zijn vergelijkbaar voor andere talen.
 

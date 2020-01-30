@@ -1,47 +1,64 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 01/12/2020
 ms.author: glenga
-ms.custom: include file
-ms.openlocfilehash: 30a6d8556a251ba76dff77e004fb864f3eaf04cf
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: f1553a5c9d55366b2764877b48d0606ff8e0b370
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279615"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842132"
 ---
 ## <a name="publish-the-project-to-azure"></a>Het project naar Azure publiceren
 
-In Visual Studio Code kunt u uw functieproject rechtstreeks in Azure publiceren. In dit proces maakt u een functie-app en de bijbehorende resources in uw Azure-abonnement. De functie-app biedt een context waar u uw functies kunt uitvoeren. Het project wordt in uw Azure-abonnement verpakt en geïmplementeerd in de nieuwe functie-app.
+In deze sectie maakt u een functie-app en gerelateerde resources in uw Azure-abonnement en implementeert u vervolgens uw code. 
 
-Visual Studio code maakt standaard alle Azure-resources die nodig zijn om uw functie-app te maken. De namen van deze resources zijn gebaseerd op de naam van de functie-app die u kiest. Als u volledige controle over de gemaakte resources nodig hebt, kunt u in plaats daarvan [publiceren met behulp van geavanceerde opties](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options).
+1. Kies het pictogram van Azure in de activiteiten balk en kies in het gebied **Azure: functions** de knop **implementeren in functie app...** .
 
-In deze sectie wordt ervan uitgegaan dat u een nieuwe functie-app in azure maakt.
+    ![Uw project naar Azure publiceren](media/functions-publish-project-vscode/function-app-publish-project.png)
 
-> [!IMPORTANT]
-> Als u in een bestaande functie-app publiceert, wordt de inhoud van die app in Azure overschreven.
+1. Geef de volgende informatie op bij de prompts:
 
-1. Druk in Visual Studio code op F1 om het opdracht palet te openen. In het opdracht palet zoekt en selecteert u `Azure Functions: Deploy to function app...`.
+    ::: zone pivot="programming-language-csharp,programming-language-powershell"
 
-1. Als u zich niet hebt aangemeld, wordt u gevraagd u aan **te melden bij Azure**. U kunt ook **een gratis Azure-account maken**. Nadat u zich hebt aangemeld vanuit de browser, gaat u terug naar Visual Studio code. 
+    | Vraag | Waarde | Beschrijving |
+    | ------ | ----- | ----- |
+    | Abonnement selecteren | Uw abonnement | Wordt weer gegeven wanneer u meerdere abonnementen hebt. |
+    | functie-app selecteren in azure | + Nieuwe functie-app maken | Als u in een bestaande functie-app publiceert, wordt de inhoud van die app in Azure overschreven. |
+    | Voer een wereld wijd unieke naam in voor de functie-app | Unieke naam | Geldige tekens voor de naam van en functie-app zijn `a-z`, `0-9` en `-`. |
+    | Selecteer een locatie voor nieuwe resources | Regio | Kies een [regio](https://azure.microsoft.com/regions/) bij u in de buurt. | 
 
-1. Als u meerdere abonnementen hebt, **selecteert u een abonnement** voor de functie-app en kiest u **+ nieuwe functie-app maken in azure**.
+    ::: zone-end
 
-1. Typ een unieke naam waarmee de functie-app wordt geïdentificeerd en druk op Enter. Geldige tekens voor de naam van en functie-app zijn `a-z`, `0-9` en `-`.
+    ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python"
 
-    Wanneer u op ENTER drukt, worden de volgende Azure-resources in uw abonnement gemaakt:
+    | Vraag | Waarde | Beschrijving |
+    | ------ | ----- | ----- |
+    | Abonnement selecteren | Uw abonnement | Wordt weer gegeven wanneer u meerdere abonnementen hebt. |
+    | functie-app selecteren in azure | + Nieuwe functie-app maken | Als u in een bestaande functie-app publiceert, wordt de inhoud van die app in Azure overschreven. |
+    | Voer een wereld wijd unieke naam in voor de functie-app | Unieke naam | Geldige tekens voor de naam van en functie-app zijn `a-z`, `0-9` en `-`. |
+    | Een runtime selecteren | Uw versie | Kies de taal versie die u lokaal uitvoert. |
+    | Selecteer een locatie voor nieuwe resources | Regio | Kies een [regio](https://azure.microsoft.com/regions/) bij u in de buurt. | 
 
-    * **[Resource groep](../articles/azure-resource-manager/management/overview.md)** : bevat alle gemaakte Azure-resources. De naam is gebaseerd op de naam van uw functie-app.
-    * **[Opslag account](../articles/storage/common/storage-account-create.md)** : een standaard opslag account wordt gemaakt met een unieke naam die is gebaseerd op de naam van uw functie-app.
-    * **[Hosting plan](../articles/azure-functions/functions-scale.md)** : er wordt een verbruiks abonnement in de regio vs West gemaakt om uw serverloze functie-app te hosten.
-    * **Functie-app**: uw project wordt geïmplementeerd naar en wordt uitgevoerd in deze nieuwe functie-app.
+    ::: zone-end
 
-    Nadat de functie-app is gemaakt en het implementatiepakket is toegepast, wordt er een melding weergegeven. Selecteer **uitvoer weer geven** in deze melding om de resultaten voor het maken en implementeren weer te geven, inclusief de Azure-resources die u hebt gemaakt.
+    
+1.  Wanneer dit is voltooid, worden de volgende Azure-resources in uw abonnement gemaakt:
 
-1. Ga terug naar het gedeelte **functies van Azure:** , en vouw de nieuwe functie-app uit onder uw abonnement. Vouw **functies**uit, klik met de rechter muisknop op **http trigger**en kies vervolgens **functie-URL kopiëren**.
+    + **[Resource groep](../articles/azure-resource-manager/management/overview.md)** : bevat alle gemaakte Azure-resources. De naam is gebaseerd op de naam van uw functie-app.
+    + **[Opslag account](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** : een standaard opslag account wordt gemaakt met een unieke naam die is gebaseerd op de naam van uw functie-app.
+    + **[Hosting plan](../articles/azure-functions/functions-scale.md)** : er wordt een verbruiks abonnement in de regio vs West gemaakt om uw serverloze functie-app te hosten.
+    + **Functie-app**: uw project wordt geïmplementeerd naar en wordt uitgevoerd in deze nieuwe functie-app.
+    + **[Application Insights]()** : een exemplaar, dat is verbonden met uw functie-app, wordt gemaakt op basis van de functie naam.
+
+    Nadat de functie-app is gemaakt en het implementatiepakket is toegepast, wordt er een melding weergegeven. 
+    
+1. Selecteer **uitvoer weer geven** in deze melding om de resultaten voor het maken en implementeren weer te geven, inclusief de Azure-resources die u hebt gemaakt.
+
+    ![Volledige melding maken](media/functions-publish-project-vscode/function-create-notifications.png)
+
+1. Ga terug naar het gebied **Azure: functions** in de zijbalk en vouw de nieuwe functie-app uit onder uw abonnement. Vouw **functies**uit, klik met de rechter muisknop (Windows) of CTRL + klik (MacOS) op **HttpExample**en kies **functie-URL kopiëren**.
 
     ![Kopieer de functie-URL voor de nieuwe HTTP-trigger](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)

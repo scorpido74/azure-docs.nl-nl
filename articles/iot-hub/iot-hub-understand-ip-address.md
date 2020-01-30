@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: f05be2725ef766bb1e5fd7f2624e754a2e21698a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c5040721705b90a981f1f8a45a3a2eb70eefde05
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563170"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772151"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub IP-adressen
 
@@ -22,7 +22,7 @@ De IP-adres voorvoegsels van IoT Hub open bare eind punten worden periodiek gepu
 |------|-----------|----------|
 | Zorg ervoor dat uw apparaten en services met alleen IoT Hub-eind punten communiceren | [Apparaat-naar-Cloud](./iot-hub-devguide-messaging.md)-en [Cloud-naar-apparaat](./iot-hub-devguide-messages-c2d.md) -berichten, [directe methoden](./iot-hub-devguide-direct-methods.md), [apparaat-en module apparaatdubbels](./iot-hub-devguide-device-twins.md) en [streams](./iot-hub-device-streams-overview.md) van apparaten | Gebruik _AzureIoTHub_ -en _EventHub_ -service tags om IOT hub en Event hub IP-adres voorvoegsels te detecteren en configureer regels voor het op uw apparaten en services ingestelde firewall-instellingen voor deze IP-adres voorvoegsels dienovereenkomstig. verkeer verplaatsen naar andere doel-IP-adressen waarvoor u niet wilt dat de apparaten of services communiceren met. |
 | Zorg ervoor dat het eind punt van uw IoT Hub alleen verbindingen van uw apparaten en netwerk assets ontvangt | [Apparaat-naar-Cloud](./iot-hub-devguide-messaging.md)-en [Cloud-naar-apparaat](./iot-hub-devguide-messages-c2d.md) -berichten, [directe methoden](./iot-hub-devguide-direct-methods.md), [apparaat-en module apparaatdubbels](./iot-hub-devguide-device-twins.md) en [streams](./iot-hub-device-streams-overview.md) van apparaten | Gebruik IoT Hub [IP-filter functie](iot-hub-ip-filtering.md) om verbindingen van uw apparaten en IP-adressen van netwerk activa (Zie de sectie [beperkingen](#limitations-and-workarounds) ) toe te staan. | 
-| Zorg ervoor dat de aangepaste eindpunt resources (opslag accounts, service bus en Event hubs) van uw routes alleen bereikbaar zijn vanaf uw netwerk assets | [Berichtroutering](./iot-hub-devguide-messages-d2c.md) | Volg de richt lijnen van uw resource over het beperken van connectiviteit (bijvoorbeeld via [firewall regels](../storage/common/storage-network-security.md), [persoonlijke koppelingen](../private-link/private-endpoint-overview.md)of [service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)). Gebruik _AzureIoTHub_ -service tags om IOT hub IP-adres voorvoegsels te detecteren en regels toe te voegen voor de IP-voor voegsels van de firewall configuratie van uw bron (Zie de sectie [beperkingen](#limitations-and-workarounds) ). |
+| Zorg ervoor dat de aangepaste eindpunt resources (opslag accounts, service bus en Event hubs) van uw routes alleen bereikbaar zijn vanaf uw netwerk assets | [Bericht routering](./iot-hub-devguide-messages-d2c.md) | Volg de richt lijnen van uw resource over het beperken van connectiviteit (bijvoorbeeld via [firewall regels](../storage/common/storage-network-security.md), [persoonlijke koppelingen](../private-link/private-endpoint-overview.md)of [service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)). Gebruik _AzureIoTHub_ -service tags om IOT hub IP-adres voorvoegsels te detecteren en regels toe te voegen voor de IP-voor voegsels van de firewall configuratie van uw bron (Zie de sectie [beperkingen](#limitations-and-workarounds) ). |
 
 
 
@@ -30,9 +30,11 @@ De IP-adres voorvoegsels van IoT Hub open bare eind punten worden periodiek gepu
 
 * Wanneer u regels voor toestaan toevoegt aan de firewall configuratie van uw apparaten, kunt u het beste specifieke [poorten opgeven die worden gebruikt door de toepasselijke protocollen](./iot-hub-devguide-protocols.md#port-numbers).
 
-* De IP-adres voorvoegsels van IoT hub zijn onderhevig aan wijzigingen. Deze wijzigingen worden regel matig gepubliceerd via service Tags voordat ze van kracht worden. Het is daarom belang rijk dat u processen ontwikkelt om regel matig de meest recente service tags op te halen en te gebruiken. Dit proces kan worden geautomatiseerd via de [service Tags detectie-API](../virtual-network/service-tags-overview.md#service-tags-on-premises).
+* De IP-adres voorvoegsels van IoT hub zijn onderhevig aan wijzigingen. Deze wijzigingen worden regel matig gepubliceerd via service Tags voordat ze van kracht worden. Het is daarom belang rijk dat u processen ontwikkelt om regel matig de meest recente service tags op te halen en te gebruiken. Dit proces kan worden geautomatiseerd via de [service Tags detectie-API](../virtual-network/service-tags-overview.md#service-tags-on-premises). Houd er rekening mee dat service Tags detectie-API nog steeds beschikbaar is in de preview-versie. in sommige gevallen is het niet mogelijk om de volledige lijst met tags en IP-adressen te maken. Als de detectie-API algemeen beschikbaar is, kunt u overwegen de service tags te gebruiken in de te [downloaden JSON-indeling](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). 
 
 * Gebruik de *AzureIoTHub. [ regio naam]* label voor het identificeren van IP-voor voegsels die worden gebruikt door IOT hub-eind punten in een specifieke regio. Als u wilt account voor herstel na nood gevallen van Data Center of [regionale failover](iot-hub-ha-dr.md) , zorgt u ervoor dat de verbinding met IP-voor voegsels van de geografische paar regio van uw IOT hub ook is ingeschakeld.
+
+* Het instellen van firewall regels in IoT Hub blokkeert mogelijk de connectiviteit die nodig is om Azure CLI-en Power shell-opdrachten uit te voeren op uw IoT Hub. U kunt dit voor komen door regels toe te voegen voor de IP-adres voorvoegsels van uw clients om CLI-of Power shell-clients opnieuw in te scha kelen om met uw IoT Hub te communiceren.  
 
 
 ## <a name="limitations-and-workarounds"></a>Beperkingen en tijdelijke oplossingen

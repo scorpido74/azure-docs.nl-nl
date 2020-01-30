@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 01/27/2020
 ms.author: diberry
-ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448071"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772484"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Snelstartgids: een app implementeren in de LUIS-Portal
 
@@ -45,7 +45,7 @@ U maakt de Voorspellings eindpunt resource in de Azure Portal. Deze bron mag all
    |Locatie van ontwerpen|**US - west**|De Azure-regio voor het ontwerpen.|
    |Prijs categorie ontwerpen|**F0**|De standaard prijs categorie voor het ontwerpen.|
    |Runtime-locatie|**US - west**|De Azure-regio voor Voorspellings eindpunt query's.|
-   |Prijs categorie voor runtime|**S0**|Deze prijs categorie biedt een hoog verkeer voor websites.|
+   |Prijs categorie voor runtime|**S0**|Deze prijs categorie biedt voor websites met veel verkeer.|
    | | | |
 
 
@@ -74,6 +74,9 @@ Telkens wanneer u een nieuwe resource voor LUIS maakt, moet u de resource toewij
 1. Voer dezelfde stappen uit om de ontwerp sleutel toe te voegen aan uw app.
 
 1. Zoek de nieuwe rij in de tabel voor de nieuwe Voorspellings resource en kopieer de URL van het eind punt. Het is op de juiste wijze samengesteld om een `HTTP GET` aanvraag voor een voor spelling naar het LUIS-API-eind punt te maken.
+
+> [!TIP]
+> Als u van plan bent om actief leren te gebruiken om uw LUIS-app te verbeteren, selecteert u **query parameters wijzigen** en selecteert u **logboeken opslaan**. Met deze actie wordt de voorbeeld-URL gewijzigd door de `log=true` query string-para meter toe te voegen. Kopieer en gebruik de gewijzigde voorbeeld query-URL bij het maken van voorspellings query's voor het runtime-eind punt.
 
 ## <a name="train-the-app"></a>De app trainen
 

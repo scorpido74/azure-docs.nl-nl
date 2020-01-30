@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 4919c8f303488b583ea4d10dca87dd29bfb52e99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374077"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835161"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Veelgestelde vragen over SQL Server die worden uitgevoerd op virtuele Windows-machines in azure
 
@@ -66,7 +66,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
    Nee. Voor installatie kopieën in de galerie met virtuele machines die SQL Server bevatten, moet u een van de installatie kopieën selecteren via de Azure Portal of via [Power shell](virtual-machines-windows-ps-sql-create.md). U hebt echter de mogelijkheid om een Windows-VM te implementeren en zelf SQL Server te installeren. U moet [uw SQL Server-VM vervolgens registreren bij de resource provider van SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md) om uw SQL Server-VM in de portal te beheren, evenals functies zoals automatische patches en automatische back-ups. 
 
 
-## <a name="creation"></a>Maken
+## <a name="creation"></a>Zelf
 
 1. **Hoe kan ik een virtuele machine van Azure met SQL Server maken?**
 
@@ -82,15 +82,6 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
    Er zijn drie manieren om dit te doen. Als u een Enter prise Agreement (EA)-klant bent, kunt u een van de [installatie kopieën van virtuele machines inrichten die ondersteuning bieden voor licenties](virtual-machines-windows-sql-server-iaas-overview.md#BYOL), ook wel bekend als uw eigen licentie (BYOL). Als u [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)hebt, kunt u de [Azure Hybrid Benefit](virtual-machines-windows-sql-ahb.md) inschakelen op een bestaande payg-installatie kopie (betalen per gebruik). U kunt ook de SQL Server-installatie media kopiëren naar een Windows Server-VM en vervolgens SQL Server installeren op de virtuele machine. Zorg ervoor dat u uw SQL Server-VM registreert bij de [resource provider](virtual-machines-windows-sql-register-with-resource-provider.md) voor functies zoals portal beheer, geautomatiseerde back-up en automatische patching. 
 
-1. **Moet ik betalen om een SQL-server een licentie te verlenen op een Azure-VM, als deze SQL-server alleen wordt gebruikt als stand-by of om een failover uit te voeren?**
-
-   Als u een gratis passieve licentie wilt voor een secundaire beschikbaarheids groep met een stand-by-of een failover-cluster, moet u voldoen aan de volgende criteria, zoals beschreven in de [product licentie voorwaarden](https://www.microsoft.com/licensing/product-licensing/products):
-
-   1. U hebt [licentie mobiliteit](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) via [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
-   1. Het passieve SQL Server-exemplaar is niet bedoeld voor het SQL Server van gegevens aan clients of het uitvoeren van actieve SQL Server-workloads. Het wordt alleen gebruikt om te synchroniseren met de primaire server en houdt anders de passieve data base in een warme stand-by-staat. Als het gaat om gegevens, zoals rapporten naar clients waarop actieve SQL Server werk belastingen worden uitgevoerd, of het uitvoeren van andere werk items dan is opgegeven in de product voorwaarden, moet het een betaalde gelicentieerde SQL Server instantie zijn. De volgende activiteit is toegestaan op het secundaire exemplaar: consistentie controles van data bases of CheckDB, volledige back-ups, back-ups van transactie logboeken en het bewaken van gegevens over het resource gebruik. U kunt ook het primaire en het bijbehorende herstel exemplaar voor nood gevallen tegelijk uitvoeren voor korte Peri Oden van herstel na nood gevallen om de 90 dagen. 
-   1. De actieve SQL Server-licentie wordt gedekt door Software Assurance en biedt **één** passieve secundaire SQL Server instantie, met Maxi maal dezelfde hoeveelheid reken kracht als de gelicentieerde actieve server. 
-   1. De secundaire SQL Server VM maakt gebruik van de licentie voor [herstel na nood gevallen](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) in de Azure Portal.
-
 1. **Kan ik een VM wijzigen zodat mijn eigen SQL Server-licentie wordt gebruikt, wanneer de VM is gemaakt vanuit een van de Betalen per gebruik-installatiekopieën uit de galerie?**
 
    Ja. U kunt eenvoudig een PAYG-galerie (betalen naar gebruik) overschakelen naar uw eigen licentie (BYOL) door de [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)in te scha kelen.  Zie [How to Change the License model for a SQL Server VM](virtual-machines-windows-sql-ahb.md)(Engelstalig) voor meer informatie. Deze faciliteit is momenteel alleen beschikbaar voor klanten met een open bare Cloud.
@@ -98,6 +89,10 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 1. **Treedt er downtime op voor SQL Server tijdens het schakelen tussen licentiemodellen?**
 
    Nee. [Het wijzigen van het licentie model](virtual-machines-windows-sql-ahb.md) vereist geen uitval tijd voor SQL Server, omdat de wijziging onmiddellijk van kracht is en het opnieuw opstarten van de virtuele machine niet vereist is. Als u uw SQL Server virtuele machine echter wilt registreren bij de resource provider van SQL Server VM, is de [SQL IaaS-uitbrei ding](virtual-machines-windows-sql-server-agent-extension.md) een vereiste en installeert u de SQL IaaS-extensie in de _volledige_ modus. Start de SQL Server-service opnieuw. Als de SQL IaaS-extensie moet worden geïnstalleerd, installeert u deze in de modus _Lightweight_ voor beperkte functionaliteit of installeert u deze in de _volledige_ modus tijdens een onderhouds venster. De SQL IaaS-uitbrei ding die is geïnstalleerd in de _licht_ modus kan op elk gewenst moment worden bijgewerkt naar de _volledige_ modus, maar vereist dat de SQL Server-service opnieuw wordt gestart. 
+   
+1. **Is het mogelijk om te scha kelen tussen licentie model op een SQL Server VM die is geïmplementeerd met het klassieke model?**
+
+   Nee. Het wijzigen van het licentie model wordt niet ondersteund op een klassieke virtuele machine. U kunt uw VM migreren naar het Azure Resource Manager model en registreren bij de resource provider van de SQL Server-VM. Zodra de VM is geregistreerd bij de resource provider van de SQL Server VM, zijn wijzigingen in het licentie model beschikbaar op de VM.
 
 1. **Kan ik de Azure Portal gebruiken om meerdere exemplaren op dezelfde VM te beheren?**
 
@@ -106,6 +101,32 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 1. **Kunnen CSP-abonnementen de Azure Hybrid Benefit activeren?**
 
    Ja, de Azure Hybrid Benefit is beschikbaar voor CSP-abonnementen. CSP-klanten moeten eerst een betalen per gebruik-installatie kopie implementeren en vervolgens [het licentie model wijzigen](virtual-machines-windows-sql-ahb.md) in uw eigen licentie.
+   
+ 
+1. **Moet ik betalen om een SQL-server een licentie te verlenen op een Azure-VM, als deze SQL-server alleen wordt gebruikt als stand-by of om een failover uit te voeren?**
+
+   Als u een gratis passieve licentie wilt voor een secundaire beschikbaarheids groep met een stand-by-of een failover-cluster, moet u voldoen aan de volgende criteria, zoals beschreven in de [product licentie voorwaarden](https://www.microsoft.com/licensing/product-licensing/products):
+
+   1. U hebt [licentie mobiliteit](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) via [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
+   1. Het passieve SQL Server-exemplaar is niet bedoeld voor het SQL Server van gegevens aan clients of het uitvoeren van actieve SQL Server-workloads. Het wordt alleen gebruikt om te synchroniseren met de primaire server en houdt anders de passieve data base in een warme stand-by-staat. Als het gaat om gegevens, zoals rapporten naar clients waarop actieve SQL Server werk belastingen worden uitgevoerd, of het uitvoeren van andere werk items dan is opgegeven in de product voorwaarden, moet het een betaalde gelicentieerde SQL Server instantie zijn. De volgende activiteit is toegestaan op het secundaire exemplaar: consistentie controles van data bases of CheckDB, volledige back-ups, back-ups van transactie logboeken en het bewaken van gegevens over het resource gebruik. U kunt ook het primaire en het bijbehorende herstel exemplaar voor nood gevallen tegelijk uitvoeren voor korte Peri Oden van herstel na nood gevallen om de 90 dagen. 
+   1. De actieve SQL Server-licentie wordt gedekt door Software Assurance en biedt **één** passieve secundaire SQL Server instantie, met Maxi maal dezelfde hoeveelheid reken kracht als de gelicentieerde actieve server. 
+   1. De secundaire SQL Server VM maakt gebruik van de licentie voor [herstel na nood gevallen](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) in de Azure Portal.
+   
+1. **Wat wordt beschouwd als een passief exemplaar?**
+
+   Het passieve SQL Server-exemplaar is niet bedoeld voor het SQL Server van gegevens aan clients of het uitvoeren van actieve SQL Server-workloads. Het wordt alleen gebruikt om te synchroniseren met de primaire server en houdt anders de passieve data base in een warme stand-by-staat. Als het gaat om gegevens, zoals rapporten naar clients waarop actieve SQL Server werk belastingen worden uitgevoerd, of het uitvoeren van andere werk items dan is opgegeven in de product voorwaarden, moet het een betaalde gelicentieerde SQL Server instantie zijn. De volgende activiteit is toegestaan op het secundaire exemplaar: consistentie controles van data bases of CheckDB, volledige back-ups, back-ups van transactie logboeken en het bewaken van gegevens over het resource gebruik. U kunt ook het primaire en het bijbehorende herstel exemplaar voor nood gevallen tegelijk uitvoeren voor korte Peri Oden van herstel na nood gevallen om de 90 dagen.
+   
+
+1. **Welke scenario's kunnen gebruikmaken van het voor deel voor het herstellen van de dissmaakr (DR)?**
+
+   De [licentie handleiding](https://aka.ms/sql2019licenseguide) bevat scenario's waarin het voor deel van herstel na nood gevallen kan worden gebruikt. Raadpleeg de product voorwaarden en neem contact op met uw licentie-of account manager voor meer informatie.
+
+1. **Welke abonnementen bieden ondersteuning voor het voor deel van herstel na nood gevallen (DR)?**
+
+   Uitgebreide Program ma's die Software Assurance equivalente abonnements rechten aanbieden als een vast voor deel, bieden ondersteuning voor het voor deel van DR. Dit geldt ook voor. maar is niet beperkt tot, de Open Value (OV), Open Value Subscription (OVS), Enterprise Agreement (EA), Enter prise Subscription Agreement (EAS) en de server and Cloud Enrollment (SCE). Raadpleeg de [product voorwaarden](https://www.microsoft.com/licensing/product-licensing/products) en neem contact op met uw licentie contactpersonen of acocunt Manager voor meer informatie. 
+
+   
+ ## <a name="resource-provider"></a>Resourceprovider
 
 1. **Gaat mijn VM registreren met de nieuwe provider van SQL Server VM-resource, worden extra kosten in rekening gebracht?**
 
@@ -127,9 +148,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
     Ja. Als u SQL Server vanaf uw eigen media hebt geïmplementeerd en de SQL IaaS-extensie hebt geïnstalleerd, kunt u uw SQL Server VM registreren bij de resource provider om de beheer baarheid van de SQL IaaS-uitbrei ding te verkrijgen. U kunt een zelf-geïmplementeerde SQL Server-VM echter niet converteren naar betalen per gebruik.
 
-1. **Is het mogelijk om te scha kelen tussen licentie model op een SQL Server VM die is geïmplementeerd met het klassieke model?**
 
-   Nee. Het wijzigen van het licentie model wordt niet ondersteund op een klassieke virtuele machine. U kunt uw VM migreren naar het Azure Resource Manager model en registreren bij de resource provider van de SQL Server-VM. Zodra de VM is geregistreerd bij de resource provider van de SQL Server VM, zijn wijzigingen in het licentie model beschikbaar op de VM. 
    
 
 
@@ -183,7 +202,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Worden SQL Server-FCI (failover cluster instances) ondersteund op virtuele machines van Azure?**
 
-   Ja. U kunt [een Windows-failovercluster maken op Windows Server 2016](virtual-machines-windows-portal-sql-create-failover-cluster.md) en OPSLAGRUIMTEN direct (S2D) gebruiken voor de cluster opslag. U kunt ook clustering-of opslag oplossingen van derden gebruiken, zoals beschreven in [hoge Beschik baarheid en herstel na nood gevallen voor SQL Server in Azure virtual machines](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions).
+   Ja. U kunt een failover-cluster exemplaar installeren met behulp van [Premium-bestands shares (PFS)](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) of [opslag ruimten direct (S2D)](virtual-machines-windows-portal-sql-create-failover-cluster.md) voor het opslag subsysteem. Premium-bestands shares bieden IOPS en doorvoer capaciteit die voldoet aan de behoeften van veel werk belastingen. Voor i/o-intensieve workloads kunt u opslag ruimten direct gebruiken op basis van beheerd Premium of Ultra-disks. U kunt ook clustering-of opslag oplossingen van derden gebruiken, zoals beschreven in [hoge Beschik baarheid en herstel na nood gevallen voor SQL Server in Azure virtual machines](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions).
 
    > [!IMPORTANT]
    > Op dit moment wordt de _volledige_ [SQL Server IaaS-agent extensie](virtual-machines-windows-sql-server-agent-extension.md) niet ondersteund voor SQL Server FCI op Azure. U wordt aangeraden de _volledige_ uitbrei ding van vm's die deel uitmaken van de FCI te verwijderen en de uitbrei ding in de _licht_ modus te installeren. Deze uitbrei ding ondersteunt functies, zoals automatische back-ups en patches en bepaalde portal functies voor SQL Server. Deze functies werken niet voor SQL Server Vm's nadat de _volledige_ agent is verwijderd.

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 1/05/2020
-ms.openlocfilehash: 7b45ddce0435a903c63855dea8a01353a7ab36ec
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722540"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768663"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 
@@ -326,8 +326,8 @@ Als u [Virtual Network Service-eind punten en-regels](sql-database-vnet-service-
 Als failover is vereist voor uw bedrijfs continuïteits plan met behulp van groepen met automatische failover, kunt u de toegang tot uw SQL database beperken met behulp van de traditionele firewall regels. Voer de volgende stappen uit om automatische failover te ondersteunen:
 
 1. [Een openbaar IP-adres maken](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
-2. [Maak een open bare Load Balancer](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) en wijs hieraan het open bare IP-adres toe.
-3. [Een virtueel netwerk en de virtuele machines](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) voor uw front-end-onderdelen maken
+2. [Maak een open bare Load Balancer](../load-balancer/quickstart-load-balancer-standard-public-portal.md) en wijs hieraan het open bare IP-adres toe.
+3. [Een virtueel netwerk en de virtuele machines](../load-balancer/quickstart-load-balancer-standard-public-portal.md) voor uw front-end-onderdelen maken
 4. [Netwerk beveiligings groep maken](../virtual-network/security-overview.md) en binnenkomende verbindingen configureren.
 5. Zorg ervoor dat de uitgaande verbindingen met Azure SQL database zijn geopend met behulp van SQL- [service Tags](../virtual-network/security-overview.md#service-tags).
 6. Maak een [SQL database firewall regel](sql-database-firewall-configure.md) om binnenkomend verkeer toe te staan van het open bare IP-adres dat u in stap 1 hebt gemaakt.

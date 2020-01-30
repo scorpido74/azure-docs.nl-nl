@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: f7a1ff63f39777c1f7a83190adae2991138a11d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 46be6acc1ef08770826a2e020c8930eba0787791
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464058"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774451"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Een zelfstandige cluster in Windows beveiligen met behulp van Windows-beveiliging
 Als u ongeoorloofde toegang tot een Service Fabric cluster wilt voor komen, moet u het cluster beveiligen. Beveiliging is vooral belang rijk wanneer het cluster productie werkbelastingen uitvoert. In dit artikel wordt beschreven hoe u de beveiliging van knoop punt-naar-knoop punt en client-naar-knoop punt configureert met behulp van Windows-beveiliging in het bestand *ClusterConfig. json* .  Het proces komt overeen met de beveiligings stap configureren van [een zelfstandig cluster maken dat wordt uitgevoerd in Windows](service-fabric-cluster-creation-for-windows-server.md). Zie [cluster beveiligings scenario's](service-fabric-cluster-security.md)voor meer informatie over het gebruik van Windows-beveiliging met Service Fabric.
@@ -52,7 +52,7 @@ Het voor beeld van het configuratie bestand *ClusterConfig. gMSA. Windows. multi
 | IsAdmin |Stel deze waarde in op True om op te geven dat de domein gebruiker beheerders toegang of ONWAAR heeft voor toegang tot de client gebruiker. |
 
 > [!NOTE]
-> De ClustergMSAIdentity-waarde moet de notatiemysfgmsa@mydomainhebben.
+> De waarde van ClustergMSAIdentity moet de notatiemysfgmsa@mydomainhebben.
 
 [Knoop punt-naar-knooppunt beveiliging](service-fabric-cluster-security.md#node-to-node-security) wordt geconfigureerd door **ClustergMSAIdentity** in te stellen wanneer service Fabric moet worden uitgevoerd onder gMSA. Om vertrouwens relaties tussen knoop punten te kunnen bouwen, moeten ze van elkaar op de hoogte worden gesteld. Dit kan op twee verschillende manieren worden uitgevoerd: Geef het beheerde service account van de groep op dat alle knoop punten in het cluster bevat of geef de computer groep van het domein op die alle knoop punten in het cluster bevat. We raden u ten zeerste aan de [gMSA-aanpak (Group Managed Service account)](https://technet.microsoft.com/library/hh831782.aspx) te gebruiken, met name voor grotere clusters (meer dan 10 knoop punten) of voor clusters die waarschijnlijk groter of kleiner zijn.  
 Voor deze methode is het maken van een domein groep waarvoor cluster beheerders toegangs rechten hebben gekregen om leden toe te voegen en te verwijderen, niet vereist. Deze accounts zijn ook handig voor automatische wachtwoord beheer. Zie aan de slag [met beheerde service accounts voor groepen](https://technet.microsoft.com/library/jj128431.aspx)voor meer informatie.  

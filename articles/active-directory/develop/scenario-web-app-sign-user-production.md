@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 88ad32a289d499cd385f8f3095113a4b329b80f4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6c486e59f32afd09a9934ae2298172ccb4ee2414
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701532"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768110"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Web-app die zich aanmeldt bij gebruikers: verplaatsen naar productie
 
@@ -29,6 +29,13 @@ Nu u weet hoe u een token kunt ophalen om Web-Api's aan te roepen, lees dan hoe 
 
 ## <a name="next-steps"></a>Volgende stappen
 
+### <a name="same-site"></a>Dezelfde site
+
+Zorg ervoor dat u bekend bent met mogelijke problemen met nieuwe versies van de Chrome-browser
+
+> [!div class="nextstepaction"]
+> [Wijzigingen in SameSite-cookies afhandelen in de Chrome-browser](howto-handle-samesite-cookie-changes-chrome-browser.md)
+
 ### <a name="scenario-for-calling-web-apis"></a>Scenario voor het aanroepen van web-Api's
 
 Nadat uw web-app zich heeft aangemeld bij gebruikers, kan deze web-Api's namens de aangemelde gebruikers aanroepen. Het aanroepen van web-Api's vanuit de web-app is het object van het volgende scenario:
@@ -36,7 +43,7 @@ Nadat uw web-app zich heeft aangemeld bij gebruikers, kan deze web-Api's namens 
 > [!div class="nextstepaction"]
 > [Web-app die web-API's aanroept](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Grondige kennis: zelf studie voor ASP.NET Core web-app
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Grondige kennis: zelf studie voor ASP.NET Core web-app
 
 Meer informatie over andere manieren om gebruikers aan te melden bij deze ASP.NET Core-zelf studie: 
 
@@ -51,7 +58,7 @@ Deze progressieve zelf studie heeft productie-gereed code voor een web-app, waar
 - [Azure AD B2C](https://aka.ms/aadb2c)
 - Nationale Clouds
 
-### <a name="sample-code-java-web-app"></a>Voorbeeld code: Java-Web-app
+## <a name="sample-code-java-web-app"></a>Voorbeeld code: Java-Web-app
 
 Meer informatie over de Java-Web-app in dit voor beeld op GitHub: 
 

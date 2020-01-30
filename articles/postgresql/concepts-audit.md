@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: c0ce1648d7b5f7c25044ed8f66eafcca7b0009f4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/28/2020
+ms.openlocfilehash: 45490e398abd8b5bd3c10adb95b56e1019d2bb94
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747336"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842466"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Controle logboek registratie in Azure Database for PostgreSQL-één server
 
@@ -65,10 +65,8 @@ met pgAudit kunt u de sessie of object controle logboek registratie configureren
 Nadat u [pgAudit hebt geïnstalleerd](#installing-pgaudit), kunt u de para meters configureren om de logboek registratie te starten. De [pgAudit-documentatie](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) bevat de definitie van elke para meter. Test eerst de para meters en controleer of u het verwachte gedrag krijgt.
 
 > [!NOTE]
-> Als u `pgaudit.log_client` instelt op aan, worden logboeken omgeleid naar een client proces (zoals psql) in plaats van naar het bestand te schrijven. Deze instelling moet over het algemeen uitgeschakeld blijven.
-
-> [!NOTE]
-> `pgaudit.log_level` is alleen ingeschakeld wanneer `pgaudit.log_client` is ingeschakeld. Daarnaast is er in het Azure Portal momenteel een bug met `pgaudit.log_level`: een keuze lijst met invoervak wordt weer gegeven, zodat u meerdere niveaus kunt selecteren. Er moet echter maar één niveau worden geselecteerd. 
+> Als u `pgaudit.log_client` instelt op aan, worden logboeken omgeleid naar een client proces (zoals psql) in plaats van naar het bestand te schrijven. Deze instelling moet over het algemeen uitgeschakeld blijven. <br> <br>
+> `pgaudit.log_level` is alleen ingeschakeld wanneer `pgaudit.log_client` is ingeschakeld.
 
 > [!NOTE]
 > In Azure Database for PostgreSQL kan `pgaudit.log` niet worden ingesteld met behulp van een snelkoppeling naar een `-` (minteken) zoals beschreven in de pgAudit-documentatie. Alle vereiste instructieklassen (lezen, schrijven, enzovoort) moeten afzonderlijk worden opgegeven.
@@ -87,6 +85,22 @@ Ga naar de [postgresql-documentatie](https://www.postgresql.org/docs/current/run
 ### <a name="getting-started"></a>Aan de slag
 Als u snel aan de slag wilt gaan, stelt u `pgaudit.log` in op `WRITE`en opent u de logboeken om de uitvoer te controleren. 
 
+## <a name="viewing-audit-logs"></a>Audit logboeken weer geven
+Als u. log-bestanden gebruikt, worden uw audit Logboeken in hetzelfde bestand opgenomen als uw PostgreSQL-fout Logboeken. U kunt logboek bestanden downloaden via de Azure- [Portal](howto-configure-server-logs-in-portal.md) of [cli](howto-configure-server-logs-using-cli.md). 
+
+Als u Azure diagnostische logboek registratie gebruikt, is de manier waarop u de logboeken opent, afhankelijk van het eind punt dat u kiest. Zie het artikel over het [opslag account voor logboeken](../azure-monitor/platform/resource-logs-collect-storage.md) voor Azure Storage. Zie het artikel [Stream Azure logs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) voor Event hubs.
+
+Voor Azure Monitor-logboeken worden logboeken verzonden naar de werk ruimte die u hebt geselecteerd. De post gres-Logboeken gebruiken de **AzureDiagnostics** -verzamelings modus, zodat ze kunnen worden opgevraagd vanuit de tabel AzureDiagnostics. De velden in de tabel worden hieronder beschreven. Meer informatie over het uitvoeren van query's en waarschuwingen vindt u in het overzicht van de [Azure monitor-logboeken](../azure-monitor/log-query/log-query-overview.md) .
+
+U kunt deze query gebruiken om aan de slag te gaan. U kunt waarschuwingen configureren op basis van query's.
+
+Zoeken naar alle post gres-logboeken voor een bepaalde server in de afgelopen dag
+```
+AzureDiagnostics
+| where LogicalServerName_s == "myservername"
+| where TimeGenerated > ago(1d) 
+| where Message contains "AUDIT:"
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Meer informatie over het registreren van Azure Database for PostgreSQL](concepts-server-logs.md)

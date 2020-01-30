@@ -1,59 +1,57 @@
 ---
-title: Inleiding tot Azure Network Watcher-verbinding oplossen | Microsoft Docs
-description: Deze pagina biedt een overzicht van de mogelijkheden van Network Watcher-verbinding-probleemoplossing
+title: Inleiding tot Azure Network Watcher verbinding oplossen | Microsoft Docs
+description: Op deze pagina vindt u een overzicht van de mogelijkheden voor het oplossen van problemen met de Network Watcher-verbinding
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: 9510905f67ee943b4b1dfa5a14c2753efac39da7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705812"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842866"
 ---
-# <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Inleiding tot verbinding oplossen in Azure Network Watcher
+# <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Inleiding tot verbindings problemen in azure Network Watcher
 
-Oplossen van de verbinding van Network Watcher biedt de mogelijkheid om te controleren of een rechtstreekse TCP-verbinding van een virtuele machine aan een virtuele machine (VM), volledig gekwalificeerde domeinnaam (FQDN), URI, of het IPv4-adres. Scenario's met netwerken zijn complexe, ze zijn geïmplementeerd met behulp van netwerkbeveiligingsgroepen, firewalls, gebruiker gedefinieerde routes en verstrekt door Azure-resources. Complexe configuraties maakt het oplossen van verbindingsproblemen moeilijker. Network Watcher reduceert de hoeveelheid tijd om te zoeken en detecteren van problemen met de netwerkverbinding. De geretourneerde resultaten krijgt u inzicht in of een probleem met de netwerkverbinding veroorzaakt door een platform of een probleem met de gebruiker wordt. Connectiviteit kan worden gecontroleerd met [PowerShell](network-watcher-connectivity-powershell.md), [Azure CLI](network-watcher-connectivity-cli.md), en [REST-API](network-watcher-connectivity-rest.md).
+De functie verbinding oplossen van Network Watcher biedt de mogelijkheid om een directe TCP-verbinding van een virtuele machine naar een virtuele machine (VM), Fully Qualified Domain Name (FQDN), URI of IPv4-adres te controleren. Netwerk scenario's zijn complex, ze worden geïmplementeerd met behulp van netwerk beveiligings groepen, firewalls, door de gebruiker gedefinieerde routes en resources die worden geboden door Azure. Complexe configuraties maken probleem oplossing van connectiviteits problemen lastig. Network Watcher helpt de hoeveelheid tijd te beperken om verbindings problemen op te sporen en op te sporen. De geretourneerde resultaten kunnen inzicht geven in of een connectiviteits probleem wordt veroorzaakt door een platform of een probleem met de gebruikers configuratie. Connectiviteit kan worden gecontroleerd met [Power shell](network-watcher-connectivity-powershell.md), [Azure cli](network-watcher-connectivity-cli.md)en [rest API](network-watcher-connectivity-rest.md).
 
 > [!IMPORTANT]
-> Probleemoplossing voor verbindingen vereist dat de virtuele machine bij het oplossen van problemen met van heeft de `AzureNetworkWatcherExtension` VM-extensie is geïnstalleerd. Ga voor het installeren van de extensie op een Windows-VM naar [Azure Network Watcher-Agent de extensie van de virtuele machine voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux-VM naar [Azure Network Watcher-Agent de extensie van de virtuele machine voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De extensie is niet vereist op het eindpunt van de bestemming.
+> Verbindings problemen oplossen vereist dat de VM-extensie `AzureNetworkWatcherExtension` is geïnstalleerd op de virtuele machine die u wilt oplossen. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
 
 ## <a name="response"></a>Antwoord
 
-De volgende tabel ziet u de eigenschappen geretourneerd bij probleemoplossing voor verbindingen is voltooid.
+In de volgende tabel ziet u de eigenschappen die worden geretourneerd wanneer het oplossen van verbindings problemen is voltooid.
 
-|Eigenschap  |Description  |
+|Eigenschap  |Beschrijving  |
 |---------|---------|
-|connectionStatus     | De status van de connectiviteitscontrole. Mogelijke resultaten zijn **bereikbaar** en **onbereikbaar**.        |
-|AvgLatencyInMs     | Gemiddelde latentie tijdens de controle van de netwerkverbinding in milliseconden. (Alleen weergegeven als de status van de controle bereikbaar is)        |
-|MinLatencyInMs     | Minimale latentie tijdens de controle van de netwerkverbinding in milliseconden. (Alleen weergegeven als de status van de controle bereikbaar is)        |
-|MaxLatencyInMs     | Maximale latentie tijdens de controle van de netwerkverbinding in milliseconden. (Alleen weergegeven als de status van de controle bereikbaar is)        |
-|ProbesSent     | Aantal tests die tijdens de controle worden verzonden. De maximale waarde is 100.        |
-|ProbesFailed     | Aantal tests die tijdens de controle is mislukt. De maximale waarde is 100.        |
-|Hops     | Hop-by-hop-pad van bron naar bestemming.        |
-|Hops[].Type     | Het type resource. Mogelijke waarden zijn **bron**, **VirtualAppliance**, **VnetLocal**, en **Internet**.        |
-|Hops[].Id | De unieke id van de hop.|
-|Hops[].Address | IP-adres van de hop.|
-|Hops[].ResourceId | ResourceID van de hop als de hop een Azure-resource is. Als het een internet-bron, ResourceID is **Internet**. |
-|Hops[].NextHopIds | De unieke id van de volgende hop genomen.|
-|[] Hops. Problemen met | Een verzameling van problemen die zijn opgetreden tijdens de controle op die hop. Als er geen problemen zijn, wordt de waarde leeg is.|
-|[] Hops. Problemen met []. Oorsprong | Op de huidige hop waar probleem is opgetreden. Mogelijke waarden zijn:<br/> **Inkomende** -probleem is op de koppeling van de vorige hop naar de huidige hop<br/>**Uitgaande** -probleem is op de koppeling van de huidige hop naar de volgende hop<br/>**Lokale** -probleem is op de huidige hop.|
-|[] Hops. Problemen met []. Ernst | De ernst van het probleem dat is gedetecteerd. Mogelijke waarden zijn **fout** en **waarschuwing**. |
-|[] Hops. Problemen met []. Type |Het type probleem gevonden. Mogelijke waarden zijn: <br/>**CPU**<br/>**Geheugen**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
-|Hops[].Issues[].Context |Als u meer informatie over het probleem gevonden.|
-|[] Hops. Problemen met []. Context [] .key |Sleutel van de sleutel-waardepaar geretourneerd.|
-|Hops[].Issues[].Context[].value |De waarde van de sleutel-waardepaar geretourneerd.|
+|Connection Status     | De status van de connectiviteits controle. Mogelijke resultaten zijn **bereikbaar** en **onbereikbaar**.        |
+|AvgLatencyInMs     | Gemiddelde latentie tijdens de connectiviteits controle in milliseconden. (Wordt alleen weer gegeven als de status controleren bereikbaar is)        |
+|MinLatencyInMs     | Minimale latentie tijdens de connectiviteits controle in milliseconden. (Wordt alleen weer gegeven als de status controleren bereikbaar is)        |
+|MaxLatencyInMs     | Maximale latentie tijdens de connectiviteits controle in milliseconden. (Wordt alleen weer gegeven als de status controleren bereikbaar is)        |
+|ProbesSent     | Het aantal tests dat is verzonden tijdens de controle. De maximale waarde is 100.        |
+|ProbesFailed     | Het aantal tests dat tijdens de controle is mislukt. De maximale waarde is 100.        |
+|Hops     | Hop per hop-pad van bron naar doel.        |
+|Hops[].Type     | Het type resource. Mogelijke waarden zijn **Source**, **VirtualAppliance**, **VnetLocal**en **Internet**.        |
+|Hops []. Id | De unieke id van de hop.|
+|Hops []. Help | Het IP-adres van de hop.|
+|Hops[].ResourceId | ResourceID van de hop als de hop een Azure-resource is. Als het een Internet bron is, is ResourceID **Internet**. |
+|Hops[].NextHopIds | De unieke id van de volgende hop die is gemaakt.|
+|Hops []. Taken | Een verzameling van problemen die zijn opgetreden tijdens de controle bij die hop. Als er geen problemen zijn, is de waarde leeg.|
+|Hops []. Problemen []. Oorsprong | Bij de huidige hop, waar het probleem zich voordeed. Mogelijke waarden zijn:<br/> **Inkomend** -probleem bevindt zich op de koppeling van de vorige hop naar de huidige hop<br/>**Uitgaand** -probleem bevindt zich op de koppeling van de huidige hop naar de volgende hop<br/>**Lokaal** -probleem bevindt zich op de huidige hop.|
+|Hops []. Problemen []. Ernst | De ernst van het probleem is gedetecteerd. Mogelijke waarden zijn **fout** en **waarschuwing**. |
+|Hops []. Problemen []. Voert |Het type probleem dat is gevonden. Mogelijke waarden zijn: <br/>**CPU**<br/>**Geheugenmetabase**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Hops[].Issues[].Context |Details over het gevonden probleem.|
+|Hops []. Problemen []. Context []. key |De sleutel van het paar sleutel waarden dat is geretourneerd.|
+|Hops[].Issues[].Context[].value |De waarde van het sleutel waarde-paar dat wordt geretourneerd.|
 
-Hier volgt een voorbeeld van een probleem gevonden op een hop.
+Hier volgt een voor beeld van een probleem dat op een hop is gevonden.
 
 ```json
 "Issues": [
@@ -70,19 +68,19 @@ Hier volgt een voorbeeld van een probleem gevonden op een hop.
     }
 ]
 ```
-## <a name="fault-types"></a>Fout met betrekking tot typen
+## <a name="fault-types"></a>Fout typen
 
-Probleemoplossing voor verbindingen retourneert fout typen over de verbinding. De volgende tabel geeft een lijst van de huidige fault-typen die zijn geretourneerd.
+Verbindings problemen oplossen retourneert fout typen over de verbinding. De volgende tabel bevat een lijst met de huidige gegenereerde fout typen.
 
-|Type  |Description  |
+|Type  |Beschrijving  |
 |---------|---------|
-|CPU     | Hoge CPU-gebruik.       |
-|Geheugen     | Hoog geheugengebruik.       |
-|GuestFirewall     | Verkeer wordt geblokkeerd vanwege de firewall-configuratie van een virtuele machine.        |
-|DNSResolution     | Er is een DNS-omzetting mislukt voor het doeladres.        |
-|NetworkSecurityRule    | Verkeer wordt geblokkeerd door een NSG-regel (de regel is geretourneerd)        |
-|UserDefinedRoute|Verkeer wordt verwijderd vanwege een door de gebruiker gedefinieerde of systeemroute. |
+|CPU     | Hoog CPU-gebruik.       |
+|Geheugen     | Hoog geheugen gebruik.       |
+|GuestFirewall     | Verkeer wordt geblokkeerd vanwege een firewall configuratie van een virtuele machine.        |
+|DNSResolution     | De DNS-omzetting voor het doel adres is mislukt.        |
+|NetworkSecurityRule    | Verkeer wordt geblokkeerd door een NSG-regel (regel wordt geretourneerd)        |
+|UserDefinedRoute|Verkeer wordt verwijderd als gevolg van een door de gebruiker gedefinieerde of systeem route. |
 
 ### <a name="next-steps"></a>Volgende stappen
 
-Informatie over het oplossen van verbindingen met behulp van de [Azure-portal](network-watcher-connectivity-portal.md), [PowerShell](network-watcher-connectivity-powershell.md), wordt de [Azure CLI](network-watcher-connectivity-cli.md), of [REST-API](network-watcher-connectivity-rest.md).
+Meer informatie over het oplossen van verbindingen met behulp van de [Azure Portal](network-watcher-connectivity-portal.md), [Power shell](network-watcher-connectivity-powershell.md), de [Azure cli](network-watcher-connectivity-cli.md)of [rest API](network-watcher-connectivity-rest.md).

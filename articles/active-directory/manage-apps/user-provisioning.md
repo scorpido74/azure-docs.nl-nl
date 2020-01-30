@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eefdb42cebad2b7f532392254b652742527ed862
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9848e686188288b507a0a74d0f9fa16f8f0e4253
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711468"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841196"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Gebruikers inrichten en het ongedaan maken van de inrichting van toepassingen automatiseren met Azure Active Directory
 
@@ -67,7 +67,7 @@ Azure AD bevat vooraf geïntegreerde ondersteuning voor veel populaire SaaS-apps
 
 * **Toepassingen die ondersteuning bieden voor SCIM 2,0**. Zie [een scim-eind punt bouwen en gebruikers inrichten configureren](use-scim-to-provision-users-and-groups.md)voor meer informatie over het algemeen verbinden van toepassingen die gebruikmaken van scim 2,0-api's voor gebruikers beheer.
 
-## <a name="what-is-scim"></a>Wat is SCIM?
+## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>Wat is systeem voor Cross-Domain Identity Management (SCIM)?
 
 Apps bieden specifieke gebruikers-en groeps-Api's om het inrichten en ongedaan maken van de inrichting te automatiseren. Iedereen die probeert gebruikers te beheren in meer dan één app, vertelt u dat elke app probeert dezelfde eenvoudige acties uit te voeren, zoals het maken of bijwerken van gebruikers, het toevoegen van gebruikers aan groepen of het ongedaan maken van de inrichting van gebruikers. Al deze eenvoudige acties worden nog net zo eenvoudig geïmplementeerd, met behulp van verschillende eindpunt paden, verschillende methoden voor het opgeven van gebruikers gegevens en een ander schema om elk informatie-element weer te geven.
 

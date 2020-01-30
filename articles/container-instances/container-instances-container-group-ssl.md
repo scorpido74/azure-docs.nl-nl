@@ -3,22 +3,22 @@ title: SSL inschakelen in een container groep
 description: Een SSL-of TLS-eind punt maken voor een container groep die wordt uitgevoerd in Azure Container Instances
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 7578ad6f8c451694a90dde00b74bf2e8c6c61109
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483481"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773061"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>Een SSL-eind punt in een container groep inschakelen
 
 In dit artikel wordt beschreven hoe u een [container groep](container-instances-container-groups.md) maakt met een toepassings container en een zijspan container met een SSL-provider. Door een container groep met een apart SSL-eind punt in te stellen, schakelt u SSL-verbindingen voor uw toepassing in zonder de toepassings code te wijzigen.
 
-U stelt een container groep in die bestaat uit twee containers:
+U stelt een voorbeeld container groep in die bestaat uit twee containers:
 * Een toepassings container die een eenvoudige web-app uitvoert met behulp van de open bare installatie kopie van micro soft [ACI-HelloWorld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) . 
 * Een zijspan container waarop de open bare [nginx](https://hub.docker.com/_/nginx) -installatie kopie wordt uitgevoerd en die is geconfigureerd voor het gebruik van SSL. 
 
-In dit voor beeld heeft de container groep alleen poort 443 voor nginx met het open bare IP-adres. Nginx stuurt HTTPS-aanvragen naar de Companion-web-app die intern luistert op poort 80. U kunt het voor beeld aanpassen voor container-apps die Luis teren op andere poorten.
+In dit voor beeld heeft de container groep alleen poort 443 voor nginx met het open bare IP-adres. Nginx stuurt HTTPS-aanvragen naar de Companion-web-app die intern luistert op poort 80. U kunt het voor beeld aanpassen voor container-apps die Luis teren op andere poorten. Zie de [volgende stappen](#next-steps) voor andere benaderingen om SSL in te scha kelen in een container groep.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -235,4 +235,10 @@ In dit artikel wordt uitgelegd hoe u een nginx-container instelt voor het inscha
 
 Hoewel in dit artikel nginx wordt gebruikt in de zijspan wagen, kunt u een andere SSL-provider gebruiken, zoals [Caddy](https://caddyserver.com/).
 
-Een andere manier om SSL in te scha kelen in een container groep is het implementeren van de groep in een [virtueel Azure-netwerk](container-instances-vnet.md) met een [Azure Application Gateway](../application-gateway/overview.md). De gateway kan worden ingesteld als een SSL-eind punt. Bekijk een voor beeld van een [implementatie sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) die u kunt aanpassen om SSL-beëindiging in te scha kelen op de gateway.
+Als u uw container groep in een [virtueel Azure-netwerk](container-instances-vnet.md)implementeert, kunt u andere opties overwegen om een SSL-eind punt in te scha kelen voor een back-end-container exemplaar, waaronder:
+
+* [Azure Functions-proxy's](../azure-functions/functions-proxies.md)
+* [Azure API Management](../api-management/api-management-key-concepts.md)
+* [Azure Application Gateway](../application-gateway/overview.md)
+
+Als u een toepassings gateway wilt gebruiken, raadpleegt u een voorbeeld [implementatie sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet).

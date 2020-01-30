@@ -5,21 +5,21 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: conceptual
 ms.date: 05/21/2019
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 74bd22de81e385a4fbd9129a70616e24b594b0b4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441319"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771520"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Ontwerp handleiding voor de Azure Table Storage-tabel: schaal bare en uitvoerende tabellen
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-Als u schaal bare en uitvoerende tabellen wilt ontwerpen, moet u rekening houden met verschillende factoren, waaronder kosten. Als u eerder schema's hebt ontworpen voor relationele data bases, zijn deze overwegingen bekend voor u. Hoewel er sprake is van een aantal overeenkomsten tussen Azure Table Storage en relationele modellen, zijn er ook veel belang rijke verschillen. Deze verschillen leiden doorgaans tot verschillende ontwerpen die de tellers intuïtief of onjuist kunnen zien die bekend zijn met relationele data bases, maar dat doen als u ontwerpt voor een NoSQL sleutel/waarde-archief, zoals tabel opslag.
+Als u schaalbare en beter bruikbare tabellen wilt ontwerpen, moet u rekening houden met verschillende factoren, waaronder kosten. Als u eerder schema's hebt ontworpen voor relationele databases, zullen deze aandachtspunten u bekend voorkomen. Hoewel er een aantal overeenkomsten zijn tussen Azure Table-opslag en relationele modellen, zijn er ook veel belangrijke verschillen. Deze verschillen leiden doorgaans tot verschillende ontwerpen, die misschien vreemd aandoen voor iemand die bekend is met relationele databases. De ontwerpen zijn echter zeer geschikt als u ontwerpt voor een archief op basis van NoSQL-sleutels/waarden, zoals Table-opslag.
 
 Table Storage is ontworpen ter ondersteuning van toepassingen in de cloud die miljarden entiteiten (' rijen ' in relationele data base-terminologie) van gegevens kunnen bevatten, of voor gegevens sets die hoogwaardige volumes moeten ondersteunen. Daarom moet u nadenken over de manier waarop u uw gegevens opslaat, en begrijpen hoe tabel opslag werkt. Met een goed ontworpen NoSQL-gegevens archief kan uw oplossing veel verder worden geschaald (en tegen lagere kosten) dan een oplossing die gebruikmaakt van een relationele data base. Deze handleiding helpt u bij deze onderwerpen.  
 
@@ -193,7 +193,7 @@ Een goed uitgangs punt om gegevens efficiënt te kunnen lezen is het stellen van
 ### <a name="how-your-choice-of-partitionkey-and-rowkey-affects-query-performance"></a>De manier waarop uw keuze van `PartitionKey` en `RowKey` invloed heeft op de prestaties van query's
 In de volgende voor beelden wordt ervan uitgegaan dat er in tabel opslag werk nemers worden opgeslagen met de volgende structuur (de meeste voor beelden laten de `Timestamp` eigenschap voor duidelijkheid weg):  
 
-| Kolomnaam | Gegevenstype |
+| kolom naam | Gegevenstype |
 | --- | --- |
 | `PartitionKey` (afdelings naam) |Tekenreeks |
 | `RowKey` (werk nemer-ID) |Tekenreeks |

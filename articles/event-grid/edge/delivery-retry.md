@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100712"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841709"
 ---
 # <a name="delivery-and-retry"></a>Leveren en opnieuw proberen
 
@@ -27,7 +27,7 @@ Event Grid biedt een duurzame levering. Er wordt een poging gedaan om elk berich
 
 Event Grid wacht een reactie van 60 seconden nadat een bericht is afgeleverd. Als het eind punt van de abonnee niet het antwoord stuurt, wordt het bericht in een van onze back-upwachtrijen voor volgende pogingen in de wachtrij geplaatst.
 
-Er zijn twee vooraf geconfigureerde back-ups van wacht rijen die bepalen op welk schema een nieuwe poging wordt gedaan. Ze zijn:-
+Er zijn twee vooraf geconfigureerde back-ups van wacht rijen die bepalen op welk schema een nieuwe poging wordt gedaan. Dit zijn:
 
 | Planning | Beschrijving |
 | ---------| ------------ |
@@ -43,7 +43,7 @@ Er zijn twee vooraf geconfigureerde back-ups van wacht rijen die bepalen op welk
 
 ## <a name="retry-policy-limits"></a>Limieten voor beleid opnieuw proberen
 
-Er zijn twee configuraties die het beleid voor opnieuw proberen bepalen. Ze zijn:-
+Er zijn twee configuraties die het beleid voor opnieuw proberen bepalen. Dit zijn:
 
 * Maximum aantal pogingen
 * Time-to-Live (TTL) van gebeurtenis
@@ -52,12 +52,12 @@ Er wordt een gebeurtenis verwijderd als een van de limieten van het beleid voor 
 
 ## <a name="configuring-defaults-for-all-subscribers"></a>Standaard instellingen voor alle abonnees configureren
 
-Er zijn twee eigenschappen: `brokers:defaultMaxDeliveryAttempts` en `broker:defaultEventTimeToLiveInSeconds` die kunnen worden geconfigureerd als onderdeel van de Event Grid-implementatie, waarmee de standaard instellingen voor het beleid voor opnieuw proberen voor alle abonnees worden beheerd.
+Er zijn twee eigenschappen: `brokers__defaultMaxDeliveryAttempts` en `broker__defaultEventTimeToLiveInSeconds` die kunnen worden geconfigureerd als onderdeel van de Event Grid-implementatie, waarmee de standaard instellingen voor het beleid voor opnieuw proberen voor alle abonnees worden beheerd.
 
-| Eigenschaps naam | Beschrijving |
+| De naam van eigenschap | Beschrijving |
 | ---------------- | ------------ |
-| `broker:defaultMaxDeliveryAttempts` | Het maximum aantal pogingen om een gebeurtenis te leveren. Standaard waarde: 30.
-| `broker:defaultEventTimeToLiveInSeconds` | Gebeurtenis-TTL in seconden waarna een gebeurtenis wordt verwijderd als deze niet wordt bezorgd. Standaard waarde: **7200** seconden
+| `broker__defaultMaxDeliveryAttempts` | Het maximum aantal pogingen om een gebeurtenis te leveren. Standaard waarde: 30.
+| `broker__defaultEventTimeToLiveInSeconds` | Gebeurtenis-TTL in seconden waarna een gebeurtenis wordt verwijderd als deze niet wordt bezorgd. Standaard waarde: **7200** seconden
 
 ## <a name="configuring-defaults-per-subscriber"></a>Standaard instellingen per abonnee configureren
 
@@ -71,8 +71,8 @@ In het volgende voor beeld wordt het beleid voor opnieuw proberen ingesteld in d
 ```json
 {
   "Env": [
-    "broker:defaultMaxDeliveryAttempts=3",
-    "broker:defaultEventTimeToLiveInSeconds=1800"
+    "broker__defaultMaxDeliveryAttempts=3",
+    "broker__defaultEventTimeToLiveInSeconds=1800"
   ],
   "HostConfig": {
     "PortBindings": {

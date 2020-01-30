@@ -7,16 +7,16 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8bb8711bc4a6134ec740a55d9f5d5794b2de77ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588588"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773945"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Gegevens uit Azure Data Explorer visualiseren in een herstreep
 
-Als u de gegevens bronnen opnieuw [koppelt](https://www.redash.io/) , maakt u Dash boards om gegevens te visualiseren en te delen met peers. In dit artikel vindt u informatie over het instellen van Azure Data Explorer als gegevens bron voor het opnieuw insluiten en vervolgens visualiseren van gegevens.
+Als u de gegevens bronnen opnieuw [koppelt](https://redash.io/) , maakt u Dash boards om gegevens te visualiseren en te delen met peers. In dit artikel vindt u informatie over het instellen van Azure Data Explorer als gegevens bron voor het opnieuw insluiten en vervolgens visualiseren van gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 

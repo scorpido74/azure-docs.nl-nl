@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951061"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840261"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure Active Directory B2C met behulp van een aangepast beleid
 
@@ -38,7 +38,7 @@ De volgende stromen worden niet ondersteund:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
+Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B2C](custom-policy-get-started.md).
 
 ## <a name="register-an-application"></a>Een toepassing registreren
 
@@ -342,4 +342,4 @@ Azure AD B2C voldoet aan de OAuth 2,0-standaarden voor de referenties van het ei
 ## <a name="next-steps"></a>Volgende stappen
 
 - Bekijk een volledig voor beeld van dit scenario in het [Azure Active Directory B2C aangepast beleids Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
-- Meer informatie over de tokens die worden gebruikt door Azure Active Directory B2C in de [token verwijzing](active-directory-b2c-reference-tokens.md).
+- Meer informatie over de tokens die worden gebruikt door Azure Active Directory B2C in de [token verwijzing](tokens-overview.md).

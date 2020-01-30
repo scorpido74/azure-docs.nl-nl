@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d97d908ddf5d55bf09d96a5ef16fa79a7afde7b4
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: a4f26f180e34ee9c7a0222b0d7f6be95c78de1b4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951102"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840380"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een OAuth1 technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -94,7 +94,7 @@ Als u het **b2clogin.com** -domein gebruikt in plaats van **login.microsoftonlin
 
 Voorbeelden:
 
-- [Twitter toevoegen als een OAuth1-ID-provider met behulp van aangepast beleid](active-directory-b2c-custom-setup-twitter-idp.md)
+- [Twitter toevoegen als een OAuth1-ID-provider met behulp van aangepast beleid](identity-provider-twitter-custom.md)
 
 
 

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 69899f521e73cb5af1af145a0915dbe1a017f307
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 8ae78bb8c0b70e20bfe12b8dc52c02abb6030bdf
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281142"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774124"
 ---
 <a name="HOLTop"></a>
 
@@ -22,6 +22,7 @@ ms.locfileid: "76281142"
 
 > [!NOTE]
 > * In deze Snelstartgids wordt gebruikgemaakt van versie `3.0-preview` van de Text Analytics-client bibliotheek, die een open bare Preview bevat voor verbeterde [sentimentanalyse](../../../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) en [named entity Recognition (ner)](../../../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
+>
 > * De code in dit artikel maakt gebruik van onbeveiligde referentie opslag om redenen van eenvoud. Voor productie scenario's raden we aan om teken reeksen in batches te verzenden voor prestaties en schaal baarheid. U kunt bijvoorbeeld `SentimentBatchAsync()` aanroepen in plaats van `Sentiment()`.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -36,6 +37,9 @@ ms.locfileid: "76281142"
 [!INCLUDE [text-analytics-resource-creation](../resource-creation.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>Een nieuwe Node.js-toepassing maken
+
+> [!NOTE]
+> U kunt deze versie ook uitvoeren van de Text Analytics-client bibliotheek [in uw browser](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md).
 
 Maak in een console venster (zoals cmd, Power shell of bash) een nieuwe map voor uw app en navigeer ernaar. 
 
@@ -83,9 +87,9 @@ Tekst wordt naar de API verzonden als een lijst met `documents`. Dit zijn `dicti
 
 Het antwoord object is een lijst met de analyse-informatie voor elk document. 
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
-* [Clientauthenticatie](#client-authentication)
+* [Client verificatie](#client-authentication)
 * [Sentimentanalyse](#sentiment-analysis) (open bare preview)
 * [Taal detectie](#language-detection)
 * [Herkenning van benoemde entiteiten](#named-entity-recognition-public-preview) (open bare preview)
@@ -93,7 +97,7 @@ Het antwoord object is een lijst met de analyse-informatie voor elk document.
 * [Entiteit koppelen](#entity-linking)
 * [Extractie van sleutel woorden](#key-phrase-extraction)
 
-## <a name="client-authentication"></a>Clientauthenticatie
+## <a name="client-authentication"></a>Client verificatie
 
 Maak een nieuw `TextAnalyticsClient`-object met uw sleutel en eind punt als para meters.
 

@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 92925dc32d7f26b224811aa852112a275f112b35
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3f6d4849b02f320c7479469b4ee56be50e4f8dee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950830"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840091"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Java script-en pagina-indelings versies in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure AD B2C biedt een set verpakte inhoud die HTML, CSS en Java script bevat voor de elementen van de gebruikers interface in uw gebruikers stromen en aangepaste beleids regels. Als u Java script wilt inschakelen voor uw toepassingen, moet u een-element aan uw [aangepaste beleid](active-directory-b2c-overview-custom.md) toevoegen of in de portal inschakelen voor gebruikers stromen, een pagina-indeling selecteren en [b2clogin.com](b2clogin.md) in uw aanvragen gebruiken.
+Azure AD B2C biedt een set verpakte inhoud die HTML, CSS en Java script bevat voor de elementen van de gebruikers interface in uw gebruikers stromen en aangepaste beleids regels. Als u Java script wilt inschakelen voor uw toepassingen, moet u een-element aan uw [aangepaste beleid](custom-policy-overview.md) toevoegen of in de portal inschakelen voor gebruikers stromen, een pagina-indeling selecteren en [b2clogin.com](b2clogin.md) in uw aanvragen gebruiken.
 
 Als u van plan bent om [Java script](javascript-samples.md) -client code in te scha kelen, wilt u er zeker van zijn dat de elementen waarmee u uw Java script baseert, onveranderbaar zijn. Als dat niet het geval is, kan dit leiden tot onverwacht gedrag op de pagina's van uw gebruikers. Als u deze problemen wilt voor komen, kunt u het gebruik van een pagina-indeling afdwingen en een versie van de pagina-indeling opgeven. Dit zorgt ervoor dat alle inhouds definities die u op uw Java script hebt gebaseerd, onveranderbaar zijn. Zelfs als u niet van plan bent java script in te scha kelen, kunt u een versie van de pagina-indeling opgeven voor uw pagina's.
 

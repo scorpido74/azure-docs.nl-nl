@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/06/2019
+ms.date: 01/27/2019
 ms.author: aahi
-ms.openlocfilehash: a9bfa2a51341bf60f92378f5d96a390bd1d92db1
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732775"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774142"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
 
@@ -23,7 +23,7 @@ Met de Text Analytics-API kunt u ongestructureerde tekst afgeven en een lijst me
 
 ### <a name="entity-linking"></a>Entiteiten koppelen
 
-Entiteit koppelen is de mogelijkheid om de identiteit van een entiteit te identificeren en te dubbel zinnigheid die in tekst is gevonden (bijvoorbeeld om te bepalen of een exemplaar van het woord `Mars` verwijst naar de planeet of naar de Romeinse niet van War). Voor dit proces moet de aanwezigheid van een Knowledge Base in de juiste taal worden gekoppeld om herkende entiteiten in de tekst te koppelen. 
+Entiteit koppelen is de mogelijkheid om de identiteit van een entiteit te identificeren en te dubbel zinnigheid die in tekst is gevonden (bijvoorbeeld om te bepalen of een exemplaar van het woord `Mars` verwijst naar de planeet of naar de Romeinse niet van War). Voor dit proces moet de aanwezigheid van een Knowledge Base in de juiste taal worden gekoppeld om herkende entiteiten in de tekst te koppelen. De koppeling van de entiteit maakt gebruik van [Wikipedia](https://www.wikipedia.org/) als deze Knowledge Base.
 
 
 ### <a name="named-entity-recognition-ner"></a>Herkenning van benoemde entiteiten (NER)

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: a514dbce91a98bd51e51b1724d631bc224b2f33a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b76441c8b11032d3713d7679acfc7f350533b76b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527923"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769196"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor python
 
@@ -22,7 +22,7 @@ Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen di
 - Verbeter de beveiliging en controle over sleutels en wacht woorden.
 - Versleutelings sleutels maken en importeren in een paar minuten.
 - Verminder de latentie met Cloud schaal en wereld wijde redundantie.
-- Vereenvoudig en Automatiseer taken voor SSL/TLS-certificaten.
+- Vereenvoudig en Automatiseer taken voor TLS/SSL-certificaten.
 - Gebruik FIPS 140-2 level 2 Validated Hsm's.
 
 [API-referentie documentatie](/python/api/overview/azure/key-vault?view=azure-python) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [pakket (python-pakket index)](https://pypi.org/project/azure-keyvault/)
@@ -123,7 +123,7 @@ Met de Azure Key Vault-client bibliotheek voor python kunt u sleutels en gerelat
 
 De volledige console-app is beschikbaar op https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 ### <a name="add-directives"></a>Instructies toevoegen
 

@@ -1,10 +1,9 @@
 ---
 title: Overzicht integratie Azure Service Bus met Azure Event Grid | Microsoft Docs
-description: Beschrijving van de integratie van Service Bus-berichten met Event Grid
+description: Dit artikel bevat een beschrijving van de manier waarop Azure Service Bus berichten integreert met Azure Event Grid.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 5d4ece6b631882200c6f98f6de5daa543fdf7ce4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072138"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773482"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Overzicht integratie Azure Service Bus met Azure Event Grid
 
@@ -39,7 +38,7 @@ Als u deze functie wilt inschakelen, hebt u het volgende nodig:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Controleren of u toegang op Inzender-niveau hebt
-Ga naar uw Service Bus-naamruimte, selecteer **Toegangsbeheer (IAM)** en ga naar het tabblad **Roltoewijzingen**. Controleer of u inzenderstoegang hebt tot de naamruimte. 
+Ga naar uw Service Bus-naam ruimte en selecteer vervolgens **toegangs beheer (IAM)** en selecteer het tabblad **roltoewijzingen** . Controleer of u toegang hebt tot de naam ruimte. 
 
 ### <a name="events-and-event-schemas"></a>Gebeurtenissen en gebeurtenisschema's
 
@@ -153,7 +152,7 @@ namespaceid=$(az resource show --namespace Microsoft.ServiceBus --resource-type 
 az eventgrid event-subscription create --resource-id $namespaceid --name "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" --endpoint "<your_function_url>" --subject-ends-with "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
-Als u werkt met BASH 
+Als u BASH gebruikt 
 
 ## <a name="powershell-instructions"></a>Instructies voor PowerShell
 

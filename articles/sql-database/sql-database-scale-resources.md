@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: d367d9eedc06dbfe0e5096372a4f09c66ea35013
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c4366b2718271b1e27325e6946c5016e9230cea4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462609"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835909"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Database resources dynamisch schalen met minimale downtime
 
@@ -55,7 +55,8 @@ De drie soorten Azure SQL Database bieden de mogelijkheid om uw data bases dynam
 - Een [beheerd exemplaar](sql-database-managed-instance.md) gebruikt de modus [vCores](sql-database-managed-instance.md#vcore-based-purchasing-model) en stelt u in staat om Maxi maal CPU-kernen en het maximum aan opslag ruimte te definiëren die aan uw exemplaar zijn toegewezen. Alle data bases in het exemplaar delen de resources die aan het exemplaar zijn toegewezen.
 - Met [elastische Pools](sql-database-elastic-pool-scale.md) kunt u de maximale resource limiet per groep data bases in de groep definiëren.
 
-Het starten van een actie omhoog of omlaag schalen in een van de versies zou het data base-engine proces opnieuw starten en naar een andere virtuele machine verplaatsen, indien nodig. Het proces voor het verplaatsen van de data base-engine naar een nieuwe virtuele machine is **online proces** waar u uw bestaande Azure SQL database-service kunt blijven gebruiken terwijl het proces wordt uitgevoerd. Zodra de engine van de doel database volledig is geïnitialiseerd en gereed is voor het verwerken van de query's, worden de verbindingen [van de bron-naar de doel database-engine overgeschakeld](sql-database-single-database-scale.md#impact-of-changing-service-tier-or-rescaling-compute-size).
+Het starten van een actie omhoog of omlaag schalen in een van de versies zou het data base-engine proces opnieuw starten en naar een andere virtuele machine verplaatsen, indien nodig. Het proces voor het verplaatsen van de data base-engine naar een nieuwe virtuele machine is **online proces** waar u uw bestaande Azure SQL database-service kunt blijven gebruiken terwijl het proces wordt uitgevoerd. Zodra de engine van de doel database volledig is geïnitialiseerd en gereed is voor het verwerken van de query's, worden de verbindingen [van de bron-naar de doel database-engine overgeschakeld](sql-database-single-database-scale.md#impact). 
+
 
 > [!NOTE]
 > U kunt een korte verbinding verwachten wanneer het omhoog/omlaag schalen proces is voltooid. Als u [pogings logica hebt geïmplementeerd voor standaard tijdelijke fouten](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), zult u de failover niet zien.

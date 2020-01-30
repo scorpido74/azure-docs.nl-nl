@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4d45e4c79f46061ca177858fd517153fb5f29c41
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5801cc4fdfeb4bbdf7c22e2be2f686558611a7f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123824"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840210"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technisch en feature overzicht van Azure Active Directory B2C
 
-Dit artikel bevat een extra uitgebreide inleiding tot het [Azure Active Directory B2C](active-directory-b2c-overview.md)van de service. Dit zijn de belangrijkste resources waarmee u samenwerkt in de service, de functies ervan en hoe u hiermee een volledig aangepaste identiteits ervaring kunt bieden voor uw klanten in uw toepassingen.
+Dit artikel bevat een extra uitgebreide inleiding tot het [Azure Active Directory B2C](overview.md)van de service. Dit zijn de belangrijkste resources waarmee u samenwerkt in de service, de functies ervan en hoe u hiermee een volledig aangepaste identiteits ervaring kunt bieden voor uw klanten in uw toepassingen.
 
 ## <a name="azure-ad-b2c-tenant"></a>Azure AD B2C Tenant
 
@@ -38,7 +38,7 @@ De primaire resources waarmee u samenwerkt in een Azure AD B2C-Tenant zijn:
   * *Lokale* accounts waarmee gebruikers zich kunnen registreren en zich kunnen aanmelden met een gebruikers naam (of een e-mail adres of een andere id) en een wacht woord.
 * **Sleutels** -versleutelings sleutels voor het ondertekenen en valideren van tokens toevoegen en beheren.
 
-Een Azure AD B2C Tenant is de eerste resource die u moet maken om aan de slag te gaan met Azure AD B2C. Meer informatie over [hoe u in de zelf studie: Een Azure Active Directory B2C-tenant maken](tutorial-create-tenant.md).
+Een Azure AD B2C Tenant is de eerste resource die u moet maken om aan de slag te gaan met Azure AD B2C. Meer informatie over hoe u in [de zelf studie een Azure Active Directory B2C-Tenant maakt](tutorial-create-tenant.md).
 
 ## <a name="accounts-in-azure-ad-b2c"></a>Accounts in Azure AD B2C
 
@@ -48,7 +48,7 @@ Azure AD B2C definieert verschillende typen gebruikers accounts. Azure Active Di
 * **Gast account** : externe gebruikers die u als gast uitnodigen voor uw Tenant. Een typisch scenario voor het uitnodigen van een gast gebruiker aan uw Azure AD B2C-Tenant is het delen van beheer verantwoordelijkheden.
 * **Consument account** -consumenten accounts zijn de accounts die zijn gemaakt in uw Azure AD B2C Directory wanneer gebruikers de inschrijvings traject van de gebruiker in een toepassing die u in uw Tenant hebt geregistreerd, kunt volt ooien.
 
-![Azure AD B2C pagina gebruikers beheer in de Azure Portal](media/technical-overview/portal-01-users.png)<br/>*Afbeelding: Gebruikers lijst binnen een Azure AD B2C-Tenant in de Azure Portal*
+![pagina Azure AD B2C gebruikers beheer in de Azure Portal](media/technical-overview/portal-01-users.png)<br/>*Afbeelding: gebruikers lijst binnen een Azure AD B2C-Tenant in de Azure Portal*
 
 ### <a name="consumer-accounts"></a>Consumenten accounts
 
@@ -61,7 +61,7 @@ Een consument account kan worden gekoppeld aan deze identiteits typen:
 
 Een gebruiker met een consumenten account kan zich aanmelden met meerdere identiteiten, bijvoorbeeld gebruikers naam, e-mail adres, werk nemer-ID, overheids-ID en anderen. Eén account kan meerdere identiteiten, zowel lokaal als sociaal, hebben.
 
-![Identiteiten van consumenten accounts](media/technical-overview/identities.png)<br/>*Afbeelding: Eén consument account met meerdere identiteiten in Azure AD B2C*
+identiteiten van gebruikers accounts ![](media/technical-overview/identities.png)<br/>*Afbeelding: één consument account met meerdere identiteiten in Azure AD B2C*
 
 Met Azure AD B2C kunt u algemene kenmerken van profielen voor consumenten accounts beheren, zoals de weergave naam, de achternaam, de voor waarde, de plaats en andere. U kunt ook het Azure AD-schema uitbreiden om aanvullende informatie over uw gebruikers op te slaan. Bijvoorbeeld hun land of locatie, voorkeurs taal en voor keuren, zoals of ze zich willen abonneren op een nieuws brief of multi-factor Authentication inschakelen.
 
@@ -79,7 +79,7 @@ Op de pagina registreren of aanmelden bevat Azure AD B2C een lijst met externe I
 
 ![Mobiel aanmeldings voorbeeld met een sociaal account (Facebook)](media/technical-overview/external-idp.png)
 
-Zie [zelf studie: voor meer informatie over het toevoegen van id-providers in azure AD B2C. Id-providers toevoegen aan uw toepassingen in Azure Active Directory B2C](tutorial-add-identity-providers.md).
+Zie [zelf studie: id-providers toevoegen aan uw toepassingen in azure Active Directory B2C](tutorial-add-identity-providers.md)voor informatie over het toevoegen van id-providers in azure AD B2C.
 
 ## <a name="identity-experiences-user-flows-or-custom-policies"></a>Identiteits ervaring: gebruikers stromen of aangepast beleid
 
@@ -109,7 +109,7 @@ U kunt instellingen voor de gebruikers stroom configureren, zoals deze, om het g
 
 De meest voorkomende identiteits scenario's voor het meren deel van mobiele, Web-en single-page-toepassingen kunnen worden gedefinieerd en effectief worden geïmplementeerd met gebruikers stromen. U wordt aangeraden de ingebouwde gebruikers stromen te gebruiken tenzij u complexe gebruikers traject scenario's hebt waarvoor de volledige flexibiliteit van aangepast beleid is vereist.
 
-Meer informatie over gebruikers stromen in [gebruikers stromen in azure Active Directory B2C](active-directory-b2c-reference-policies.md).
+Meer informatie over gebruikers stromen in [gebruikers stromen in azure Active Directory B2C](user-flow-overview.md).
 
 ### <a name="custom-policy"></a>Aangepast beleid
 
@@ -130,13 +130,13 @@ Een aangepast beleid wordt gedefinieerd door verschillende XML-bestanden die naa
 
 De krachtige flexibiliteit van aangepast beleid is het meest geschikt voor wanneer u complexe identiteits scenario's wilt maken. Ontwikkel aars die aangepaste beleids regels configureren, moeten de vertrouwde relaties in zorgvuldige Details definiëren om eind punten van meta gegevens, exacte claim uitwisselings definities op te geven en geheimen, sleutels en certificaten te configureren die nodig zijn voor elke id-provider.
 
-Meer informatie over aangepast beleid in het [aangepaste beleid in azure Active Directory B2C](active-directory-b2c-overview-custom.md).
+Meer informatie over aangepast beleid in het [aangepaste beleid in azure Active Directory B2C](custom-policy-overview.md).
 
 ## <a name="protocols-and-tokens"></a>Protocollen en tokens
 
-Azure AD B2C ondersteunt de [OpenID Connect- en OAuth 2.0-protocollen](active-directory-b2c-reference-protocols.md) voor gebruikersbelevingen. In de Azure AD B2C-implementatie van OpenID Connect wordt deze gebruikerservaring via de toepassing gestart door verificatieaanvragen te verzenden naar Azure AD B2C.
+Azure AD B2C ondersteunt de [OpenID Connect- en OAuth 2.0-protocollen](protocols-overview.md) voor gebruikersbelevingen. In de Azure AD B2C-implementatie van OpenID Connect wordt deze gebruikerservaring via de toepassing gestart door verificatieaanvragen te verzenden naar Azure AD B2C.
 
-Het resultaat van een aanvraag bij Azure AD B2C is een beveiligingstoken, zoals een [id-token of toegangstoken](active-directory-b2c-reference-tokens.md). Met dit beveiligingstoken wordt de identiteit van de gebruiker gedefinieerd. Tokens worden ontvangen van Azure AD B2C-eind punten, `/token` zoals `/authorize` het of-eind punt. Met deze tokens kunt u toegang krijgen tot claims die kunnen worden gebruikt voor het valideren van een identiteit en toegang verlenen tot beveiligde bronnen.
+Het resultaat van een aanvraag bij Azure AD B2C is een beveiligingstoken, zoals een [id-token of toegangstoken](tokens-overview.md). Met dit beveiligingstoken wordt de identiteit van de gebruiker gedefinieerd. Tokens worden ontvangen van Azure AD B2C-eind punten, zoals het `/token`-of `/authorize`-eind punt. Met deze tokens kunt u toegang krijgen tot claims die kunnen worden gebruikt voor het valideren van een identiteit en toegang verlenen tot beveiligde bronnen.
 
 Voor externe identiteiten ondersteunt Azure AD B2C Federatie met een OAuth 1,0-, OAuth 2,0-, OpenID Connect Connect-, SAML-en WS-ID-provider.
 
@@ -148,7 +148,7 @@ In het voor gaande diagram ziet u hoe Azure AD B2C kunnen communiceren met behul
 1. Wanneer een gebruiker van de toepassing meldt om zich aan te melden met een externe ID-provider die het SAML-protocol gebruikt, roept Azure AD B2C het SAML-protocol aan om te communiceren met die id-provider.
 1. Nadat de gebruiker de aanmeldings bewerking met de externe ID-provider heeft voltooid, Azure AD B2C het token naar de Relying Party toepassing terugstuurt met behulp van OpenID Connect Connect.
 
-## <a name="application-integration"></a>Integratie van toepassingen
+## <a name="application-integration"></a>Integratie van applicaties
 
 Wanneer een gebruiker zich wil aanmelden bij uw toepassing, of het nu gaat om een web-, mobiel-, desktop-of single-page-toepassing (SPA), initieert de toepassing een autorisatie aanvraag naar een gebruikers stroom of een aangepast eind punt voor beleid. De gebruikers stroom of het aangepaste beleid definieert en bepaalt de gebruikers ervaring. Wanneer ze een gebruikers stroom volt ooien, bijvoorbeeld de *registratie-of aanmeldings* stroom, wordt door Azure AD B2C een token gegenereerd en wordt de gebruiker omgeleid naar uw toepassing.
 
@@ -172,7 +172,7 @@ Met de aanpassing van de taal in Azure AD B2C kunt u verschillende talen aanpass
 
 ![Drie aanmeldings pagina's met gebruikers interface-tekst in verschillende talen](media/technical-overview/localization.png)
 
-Bekijk hoe lokalisatie werkt in de [taal aanpassing in azure Active Directory B2C](active-directory-b2c-reference-language-customization.md).
+Bekijk hoe lokalisatie werkt in de [taal aanpassing in azure Active Directory B2C](user-flow-language-customization.md).
 
 ## <a name="add-your-own-business-logic"></a>Uw eigen bedrijfslogica toevoegen
 
@@ -195,7 +195,7 @@ U kunt een REST API-aanroep toevoegen aan elke stap in de gebruikers reis die is
 * Nadat Azure AD B2C een nieuw account in de Directory hebt gemaakt
 * Voordat Azure AD B2C een toegangs token uitgeeft
 
-Als u wilt zien hoe u aangepaste beleids regels gebruikt voor de integratie van de REST API in Azure AD B2C, raadpleegt u [rest API claims-uitwisseling integreren in uw Azure AD B2C gebruikers traject](active-directory-b2c-custom-rest-api-netfw.md).
+Als u wilt zien hoe u aangepaste beleids regels gebruikt voor de integratie van de REST API in Azure AD B2C, raadpleegt u [rest API claims-uitwisseling integreren in uw Azure AD B2C gebruikers traject](rest-api-claims-exchange-dotnet.md).
 
 ## <a name="protect-customer-identities"></a>Klant identiteiten beveiligen
 
@@ -223,7 +223,7 @@ Zie [beheerders rollen in azure Active Directory](../active-directory/users-grou
 
 Azure AD B2C multi-factor Authentication (MFA) helpt u bij het beveiligen van de toegang tot gegevens en toepassingen terwijl u eenvoud hebt voor uw gebruikers. Het biedt extra beveiliging door een tweede vorm van verificatie te vereisen en biedt sterke verificatie door een bereik aan gebruiks vriendelijke verificatie methoden te bieden. Uw gebruikers worden mogelijk niet voor MFA aangevraagd op basis van de configuratie beslissingen die u als beheerder kunt nemen.
 
-Lees hoe u MFA inschakelt in gebruikers stromen in [multi-factor Authentication inschakelen in azure Active Directory B2C](active-directory-b2c-reference-mfa.md).
+Lees hoe u MFA inschakelt in gebruikers stromen in [multi-factor Authentication inschakelen in azure Active Directory B2C](custom-policy-multi-factor-authentication.md).
 
 ### <a name="smart-account-lockout"></a>Smart account vergren delen
 
@@ -231,13 +231,13 @@ Azure AD B2C maakt gebruik van een geavanceerde strategie om accounts te vergren
 
 ![Account slimme vergren deling](media/technical-overview/smart-lockout1.png)
 
-Zie [bedreigingen voor resources en gegevens beheren in azure Active Directory B2C](active-directory-b2c-reference-threat-management.md)voor meer informatie over het beheren van instellingen voor wachtwoord beveiliging.
+Zie [bedreigingen voor resources en gegevens beheren in azure Active Directory B2C](threat-management.md)voor meer informatie over het beheren van instellingen voor wachtwoord beveiliging.
 
 ### <a name="password-complexity"></a>Wachtwoordcomplexiteit
 
 Tijdens de registratie of het opnieuw instellen van het wacht woord moeten uw gebruikers een wacht woord opgeven dat voldoet aan complexiteits regels. Azure AD B2C dwingt standaard een sterk wachtwoord beleid af. Azure AD B2C biedt ook configuratie opties voor het opgeven van de complexiteits vereisten van de wacht woorden die uw klanten gebruiken.
 
-U kunt vereisten voor wachtwoord complexiteit configureren in zowel [gebruikers stromen](active-directory-b2c-reference-password-complexity.md) als [aangepaste beleids regels](active-directory-b2c-reference-password-complexity-custom.md).
+U kunt vereisten voor wachtwoord complexiteit configureren in zowel [gebruikers stromen](user-flow-password-complexity.md) als [aangepaste beleids regels](custom-policy-password-complexity.md).
 
 ## <a name="auditing-and-logs"></a>Controle en Logboeken
 
@@ -254,17 +254,17 @@ In een audit logboek, dat beschikbaar is voor uw Azure AD B2C Tenant of voor een
 
 ![Controle logboek voor afzonderlijke gebruikers wordt weer gegeven in de Azure Portal](media/technical-overview/audit-log.png)
 
-Zie [toegang tot Azure AD B2C audit logboeken](active-directory-b2c-reference-audit-logs.md)voor meer informatie over audit Logboeken.
+Zie [toegang tot Azure AD B2C audit logboeken](view-audit-logs.md)voor meer informatie over audit Logboeken.
 
 ### <a name="usage-insights"></a>Inzicht in het gebruik
 
 Met Azure AD B2C kunt u ontdekken wanneer mensen zich registreren of aanmelden bij uw web-app, waar uw gebruikers zich bevinden en welke browsers en besturings systemen ze gebruiken. Door Azure-toepassing inzichten te integreren in Azure AD B2C met behulp van aangepast beleid, kunt u inzicht krijgen in de manier waarop gebruikers zich registreren, zich aanmelden, hun wacht woord opnieuw instellen of hun profiel bewerken. Met deze kennis kunt u gegevensgestuurde beslissingen nemen voor uw aanstaande ontwikkel cycli.
 
-Meer informatie over usage Analytics vindt u in het [bijhouden van gebruikers gedrag in azure Active Directory B2C met behulp van Application Insights](active-directory-b2c-custom-guide-eventlogger-appins.md).
+Meer informatie over usage Analytics vindt u in het [bijhouden van gebruikers gedrag in azure Active Directory B2C met behulp van Application Insights](analytics-with-application-insights.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u meer inzicht hebt in de functies en technische aspecten van Azure Active Directory B2C, kunt u aan de slag met de service door een B2C-Tenant te maken:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Een Azure Active Directory B2C Tenant maken >](tutorial-create-tenant.md)
+> [Zelf studie: een Azure Active Directory B2C Tenant maken >](tutorial-create-tenant.md)

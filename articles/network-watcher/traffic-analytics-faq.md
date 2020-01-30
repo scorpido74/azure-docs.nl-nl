@@ -3,22 +3,20 @@ title: Veelgestelde vragen over Azure Traffic Analytics | Microsoft Docs
 description: Krijg antwoorden op enkele veelgestelde vragen over Traffic Analytics.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
-ms.author: kumud
-ms.openlocfilehash: 991bb91c5bc1f6d695d5b363cdb08268f1ee83df
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.author: damendo
+ms.openlocfilehash: 5e31ed905f05070c8715a63ef3386b0006df0a75
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907092"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840618"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Veelgestelde vragen over Traffic Analytics
 
@@ -41,16 +39,16 @@ Uw account moet voldoen aan een van de volgende opties om Traffic Analytics in t
 - Uw account moet een van de volgende RBAC-rollen (op rollen gebaseerd toegangs beheer) hebben bij het abonnements bereik: eigenaar, bijdrager, lezer of netwerk bijdrager.
 - Als uw account niet is toegewezen aan een van de eerder vermelde rollen, moet dit worden toegewezen aan een aangepaste rol waaraan de volgende acties zijn toegewezen op abonnements niveau.
             
-    - Micro soft. Network/applicationGateways/lezen
-    - Micro soft. netwerk/verbindingen/lezen
-    - Micro soft. Network/loadBalancers/lezen 
-    - Micro soft. Network/localNetworkGateways/lezen 
-    - Micro soft. Network/networkInterfaces/lezen 
-    - Micro soft. Network/networkSecurityGroups/lezen 
-    - Micro soft. Network/publicIPAddresses/lezen
-    - Micro soft. Network/routeTables/lezen
-    - Micro soft. Network/virtualNetworkGateways/lezen 
-    - Micro soft. Network/virtualNetworks/lezen
+    - Microsoft.Network/applicationGateways/read
+    - Microsoft.Network/connections/read
+    - Microsoft.Network/loadBalancers/read 
+    - Microsoft.Network/localNetworkGateways/read 
+    - Microsoft.Network/networkInterfaces/read 
+    - Microsoft.Network/networkSecurityGroups/read 
+    - Microsoft.Network/publicIPAddresses/read
+    - Microsoft.Network/routeTables/read
+    - Microsoft.Network/virtualNetworkGateways/read 
+    - Microsoft.Network/virtualNetworks/read
         
 Rollen controleren die aan een gebruiker zijn toegewezen voor een abonnement:
 
@@ -66,56 +64,56 @@ Als er geen uitvoer wordt weer gegeven, neemt u contact op met de beheerder van 
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>In welke Azure-regio's is Traffic Analytics beschikbaar?
 
 U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteunde regio's:
-- Canada - midden
-- US - west-centraal
-- US - oost
-- US - oost 2
-- US - noord-centraal
-- US - zuid-centraal
-- US - centraal
-- US - west
-- US - west 2
+- Canada-Midden
+- VS - west-centraal
+- VS - oost
+- VS - oost 2
+- VS - noord-centraal
+- VS - zuid-centraal
+- VS - centraal
+- VS - west
+- VS - west 2
 - Frankrijk - centraal
-- Europa -west
+- Europa - west
 - Europa - noord
-- Brazilië - zuid
-- Verenigd Koninkrijk West
-- Verenigd Koninkrijk Zuid
-- Australië - oost
-- Australië - zuidoost 
+- Brazilië - Zuid
+- VK - west
+- VK - zuid
+- Australië Oost
+- Australië Zuidoost 
 - Azië - oost
 - Azië - zuidoost
 - Korea - centraal
 - India - centraal
 - India - zuid
-- Japan - oost
-- Japan - west
-- VS (overheid) - Virginia
+- Japan - Oost
+- Japan - West
+- US Gov - Virginia
 - China - oost 2
 
 De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
-- Canada - midden
-- US - west-centraal
-- US - oost
-- US - oost 2
-- US - noord-centraal
-- US - zuid-centraal
-- US - centraal
-- US - west
-- US - west 2
+- Canada-Midden
+- VS - west-centraal
+- VS - oost
+- VS - oost 2
+- VS - noord-centraal
+- VS - zuid-centraal
+- VS - centraal
+- VS - west
+- VS - west 2
 - Frankrijk - centraal
-- Europa -west
+- Europa - west
 - Europa - noord
-- Verenigd Koninkrijk West
-- Verenigd Koninkrijk Zuid
-- Australië - oost
-- Australië - zuidoost
+- VK - west
+- VK - zuid
+- Australië Oost
+- Australië Zuidoost
 - Azië - oost
 - Azië - zuidoost 
 - Korea - centraal
 - India - centraal
-- Japan - oost
-- VS (overheid) - Virginia
+- Japan - Oost
+- US Gov - Virginia
 - China - oost 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Kan de Nsg's ik stroom logboeken inschakelen voor andere regio's dan mijn werk ruimte?
@@ -265,6 +263,62 @@ Traffic Analytics biedt geen ingebouwde ondersteuning voor waarschuwingen. Omdat
 - Gebruik het [schema dat hier wordt beschreven](traffic-analytics-schema.md) om uw query's te schrijven 
 - Klik op nieuwe waarschuwings regel om de waarschuwing te maken
 - Raadpleeg de [documentatie over logboek waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) voor het maken van de waarschuwing
+
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>Hoe kan ik controleren welke Vm's het meest lokale verkeer ontvangen
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            | where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
+            | render timechart
+
+  Voor IP-adressen:
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
+            | render timechart
+
+Gebruik voor tijd notatie: jjjj-mm-dd 00:00:00
+
+## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>Hoe kan ik standaard afwijking controleren in verkeer dat door mijn Vm's van on-premises machines wordt ontvangen
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by vm
+
+
+Voor IP-adressen:
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by IP
+            
+## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>Hoe kan ik controleren welke poorten bereikbaar zijn (of bocked) tussen IP-paren met NSG-regels
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
+            | extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, " ") , pack_array(SrcIP_s)),
+            destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_s))
+            | mvexpand SourceIp = sourceIPs to typeof(string)
+            | mvexpand DestIp = destIPs to typeof(string)
+            | project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
+            | summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Hoe kan ik navigeren met behulp van het toetsen bord in de geo-kaart weergave?
 

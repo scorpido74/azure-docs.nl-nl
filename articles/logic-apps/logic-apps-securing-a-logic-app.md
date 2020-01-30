@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 753977ed0516e934f661d81904b60ff9935aa423
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981177"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843545"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -370,7 +370,7 @@ Zie voor meer informatie deze secties in dit onderwerp:
 
 Als u de [implementatie van Logic apps automatiseert met behulp van Resource Manager-sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), kunt u de [para meters](../azure-resource-manager/templates/template-parameters.md)voor beveiligde sjablonen definiëren die tijdens de implementatie worden geëvalueerd met behulp van de `securestring`-en `secureobject` typen. Voor het definiëren van sjabloon parameters gebruikt u de sectie `parameters` op het hoogste niveau van uw sjabloon, die gescheiden is en anders is dan de sectie `parameters` van uw werk stroom definitie. Als u de waarden voor sjabloon parameters wilt opgeven, gebruikt u een afzonderlijk [parameter bestand](../azure-resource-manager/templates/parameter-files.md).
 
-Als u bijvoorbeeld geheimen gebruikt, kunt u de para meters voor beveiligde sjablonen definiëren en gebruiken om deze geheimen op te halen uit [Azure Key Vault](../key-vault/key-vault-overview.md) tijdens de implementatie. U kunt vervolgens naar de sleutel kluis en het geheim in het parameter bestand verwijzen. Zie deze onderwerpen voor meer informatie:
+Als u bijvoorbeeld geheimen gebruikt, kunt u de para meters voor beveiligde sjablonen definiëren en gebruiken om deze geheimen op te halen uit [Azure Key Vault](../key-vault/key-vault-overview.md) tijdens de implementatie. U kunt vervolgens naar de sleutel kluis en het geheim in het parameter bestand verwijzen. Zie de volgende onderwerpen voor meer informatie:
 
 * [Gevoelige waarden door geven tijdens de implementatie met behulp van Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 * [Veilige para meters in azure Resource Manager sjablonen](#secure-parameters-deployment-template) verderop in dit onderwerp
@@ -620,7 +620,7 @@ HTTP-en HTTPS-eind punten ondersteunen verschillende soorten verificatie. Op bas
 
 ### <a name="basic-authentication"></a>Basisverificatie
 
-Als de optie [basis](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) beschikbaar is, geeft u de volgende eigenschaps waarden op:
+Als de optie [basis](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md) beschikbaar is, geeft u de volgende eigenschaps waarden op:
 
 | Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
@@ -682,7 +682,7 @@ Zie de volgende onderwerpen voor meer informatie over het beveiligen van service
 
 * [Api's beveiligen met verificatie op basis van client certificaten in azure API Management](../api-management/api-management-howto-mutual-certificates-for-clients.md)
 * [Beveilig back-end-services met verificatie op basis van client certificaten in azure API Management](../api-management/api-management-howto-mutual-certificates.md)
-* [Uw REST-service beveiligen met behulp van client certificaten](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+* [Uw REST-service beveiligen met behulp van client certificaten](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
 * [Certificaat referenties voor toepassings verificatie](../active-directory/develop/active-directory-certificate-credentials.md)
 * [Gebruik een SSL-certificaat in de code van uw toepassing in Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 
@@ -748,7 +748,7 @@ Geef in de trigger of actie die onbewerkte authenticatie ondersteunt de volgende
 
 | Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
-| **Verificatie** | `type` | Ja | Onbewerkt | Het te gebruiken verificatie type |
+| **Verificatie** | `type` | Ja | Uitgang | Het te gebruiken verificatie type |
 | **Waarde** | `value` | Ja | <*autorisatie-header-waarde*> | De waarde van de autorisatie-header die moet worden gebruikt voor verificatie |
 ||||||
 

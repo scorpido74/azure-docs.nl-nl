@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: b28e09b2d304dc392442d98fe39654bab2c8d09c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f9ac3c85bcd8e50918961649bdb5739fc66f1627
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645052"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772948"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Apparaten inrichten met Azure IoT Hub Device Provisioning Service
 Microsoft Azure biedt een uitgebreide set geïntegreerde openbare cloudservices om tegemoet te komen aan al uw IoT-vragen. IoT Hub Device Provisioning Service is een Helper-service voor IoT Hub die Just-In-Time-inrichting naar de juiste IoT-hub mogelijk maakt zonder tussenkomst van de gebruiker, zodat klanten miljoenen apparaten op een veilige en schaalbare manier kunnen inrichten.
@@ -80,7 +80,7 @@ Device Provisioning Service heeft allerlei functies, waardoor de service ideaal 
 * **Lijst van registraties** met een volledig overzicht van de apparaten/groepen apparaten die op enige moment kunnen worden geregistreerd. De registratielijst bevat informatie over de gewenste configuratie van het apparaat als dit wordt geregistreerd en de lijst kan op elk gewenst moment worden bijgewerkt.
 * **Meerdere toewijzings beleidsregels** om te bepalen hoe de Device Provisioning Service apparaten toewijst aan IOT-hubs ter ondersteuning van uw Scenario's: laagste latentie, gelijkmatig gewogen distributie (standaard) en statische configuratie via de registratie lijst. Houd er rekening mee dat de latentie wordt bepaald aan de hand van dezelfde methode als [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
 * **Controle en logboekregistratie van diagnostische gegevens** om ervoor te zorgen dat alles goed werkt.
-* **Ondersteuning voor meerdere hubs** zorgt ervoor dat Device Provisioning Service apparaten kan toewijzen aan meer dan één IoT-hub. Device Provisioning Service kan communiceren met hubs binnen verschillende Azure-abonnementen.
+* Met **ondersteuning voor meerdere hubs** kan de Device Provisioning-Service voor het eind binden van apparaten aan een IOT-hub tijdens runtime. Device Provisioning Service kan communiceren met hubs binnen verschillende Azure-abonnementen.
 * **Ondersteuning voor meerdere regio's** zorgt ervoor dat Device Provisioning Service apparaten kan toewijzen aan IoT-hubs in andere regio's.
 
 Zie [apparaatconcepten](concepts-device.md), [serviceconcepten](concepts-service.md) en [veiligheidsconcepten](concepts-security.md) voor meer informatie over de concepten en functies die zijn betrokken bij het inrichten van apparaten.

@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 43e6a39a52eb81573b4a4ba8ad63d48d0e51dedd
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 50f8b5b4412e02692bf2b5d57b7f0dee27c2a25a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514804"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842696"
 ---
 # <a name="automate-mobility-service-installation"></a>De installatie van de Mobility-service automatiseren
 
@@ -19,7 +19,7 @@ In dit artikel wordt beschreven hoe u de installatie en updates voor de Mobility
 Wanneer u Site Recovery implementeert voor herstel na nood gevallen van on-premises VMware-Vm's en fysieke servers naar Azure, installeert u de Mobility Service-agent op elke computer die u wilt repliceren. De Mobility-service legt gegevens op de computer vast en stuurt deze door naar de Site Recovery process-server voor replicatie. U kunt de Mobility-service op verschillende manieren implementeren:
 
 - **Push-installatie**: laat site Recovery de Mobility Service-agent installeren wanneer u replicatie inschakelt voor een computer in de Azure Portal.
-- **Hand matige installatie**: Installeer de Mobility-service hand matig op elke computer. Meer [informatie](/vmware-physical-mobility-service-overview.md) over push en hand matige installatie.
+- **Hand matige installatie**: Installeer de Mobility-service hand matig op elke computer. Meer [informatie](vmware-physical-mobility-service-overview.md) over push en hand matige installatie.
 - **Geautomatiseerde implementatie**: de installatie automatiseren met hulpprogram ma's voor software-implementatie, zoals micro soft endpoint Configuration Manager, of hulpprogram ma's van derden, zoals Intigua JetPatch.
 
 Automatische installatie en update biedt een oplossing als:
@@ -44,7 +44,7 @@ Voor de geautomatiseerde installatie hebt u het volgende nodig:
 
 De volgende tabel bevat een overzicht van de hulpprogram ma's en processen voor het automatiseren van de implementatie van de Mobility-service.
 
-**Hulpprogramma** | **Details** | **Instructies**
+**Hulpprogramma** | **Details** | **Schriften**
 --- | --- | ---
 **Configuratiebeheer** | 1. Controleer of u de hierboven vermelde [vereisten](#prerequisites) hebt. <br/><br/>2. Implementeer herstel na nood gevallen door de bron omgeving in te stellen, inclusief het downloaden van een bestand met de Site Recovery configuratie server als een VMware-VM met behulp van een OVF-sjabloon.<br/><br/> 2. u registreert de configuratie server bij de Site Recovery-service, stelt de doel-Azure-omgeving in en configureert een replicatie beleid.<br/><br/> 3. voor geautomatiseerde implementatie van Mobility-Services maakt u een netwerk share met de configuratie server wachtwoordzin en de Mobility service-installatie bestanden.<br/><br/> 4. u maakt een Configuration Manager-pakket met de installatie of updates en bereidt de implementatie van de Mobility-service voor.<br/><br/> 5. u kunt vervolgens replicatie naar Azure inschakelen voor de computers waarop de Mobility-service is geïnstalleerd. | [Automatiseren met Configuration Manager](#automate-with-configuration-manager).
 **JetPatch** | 1. Controleer of u de hierboven vermelde [vereisten](#prerequisites) hebt. <br/><br/> 2. Implementeer herstel na nood gevallen door de bron omgeving in te stellen, met inbegrip van het downloaden en implementeren van JetPatch agent Manager voor Azure Site Recovery in uw Site Recovery omgeving, met behulp van een OVF-sjabloon.<br/><br/> 2. u registreert de configuratie server bij Site Recovery, stelt de doel-Azure-omgeving in en configureert een replicatie beleid.<br/><br/> 3. voor automatische implementatie initialiseert en voltooit u de configuratie van het JetPatch agent-beheer.<br/><br/> 4. in JetPatch kunt u een Site Recovery-beleid maken om de implementatie en upgrade van de Mobility Service-agent te automatiseren. <br/><br/> 5. u kunt vervolgens replicatie naar Azure inschakelen voor de computers waarop de Mobility-service is geïnstalleerd. | [Automatiseren met JetPatch agent Manager](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/).<br/><br/> [Problemen met de installatie](https://kc.jetpatch.com/hc/articles/360035981812) van de agent in JetPatch oplossen.
@@ -368,7 +368,7 @@ cd /tmp
     - Voor Windows-computers selecteert u **dit programma kan alleen op de opgegeven platforms worden uitgevoerd**. Selecteer vervolgens de [ondersteunde Windows-besturings systemen](vmware-physical-azure-support-matrix.md#replicated-machines). Klik op **Volgende**.
     - Voor Linux-machines selecteert u **dit programma kan op elk platform worden uitgevoerd**. Klik op **Volgende**.
    
-10. Sluit de wizard af.
+10. Voltooi de wizard.
 
 
 

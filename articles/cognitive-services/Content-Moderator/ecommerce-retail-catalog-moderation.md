@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5ee96cd0cf8ca33cae785bc15eb824332dcb3c9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5e74eda9e30c536c0eba4e847019344c87e10cce
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382154"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774337"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Zelf studie: software matige installatie kopieën van e-commerce met Azure Content Moderator
 
 In deze zelf studie leert u hoe u Azure Cognitive Services, met inbegrip van Content Moderator, kunt gebruiken om product afbeeldingen te classificeren en te vertragen voor een e-commerce scenario. U gebruikt Computer Vision en Custom Vision voor het Toep assen van tags (labels) op afbeeldingen en vervolgens maakt u een team beoordeling, waarin u de op de machine learning gebaseerde technologieën van Content Moderator combineert met mede beoordelings teams om een intelligent toezicht systeem te bieden.
 
-In deze zelfstudie ontdekt u hoe u:
+In deze handleiding ontdekt u hoe u:
 
 > [!div class="checklist"]
 > * Aanmelden voor Content Moderator en een beoordelingsteam maken.

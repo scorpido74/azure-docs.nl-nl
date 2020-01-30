@@ -1,10 +1,9 @@
 ---
-title: Overzicht van transactieverwerking in Azure Service Bus | Microsoft Docs
-description: Overzicht van Azure Service Bus atomic-transacties en verzenden via
+title: Overzicht van transactie verwerking in Azure Service Bus
+description: In dit artikel vindt u een overzicht van transactie verwerking en de functie verzenden via in Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: 64449247-1026-44ba-b15a-9610f9385ed8
 ms.service: service-bus-messaging
@@ -12,47 +11,47 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: a839a4cad824a74bde388317cf3aaddf9c5bd47f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 22744ecbced40b3195f4d047227b1e2a37228102
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332343"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774506"
 ---
-# <a name="overview-of-service-bus-transaction-processing"></a>Overzicht van Service Bus-transactieverwerking
+# <a name="overview-of-service-bus-transaction-processing"></a>Overzicht van de verwerking van Service Bus transacties
 
-Dit artikel worden de transactiemogelijkheden van Microsoft Azure Service Bus. Veel van de discussie wordt aangegeven door de [AMQP transacties met Service Bus-voorbeeld](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia). In dit artikel is beperkt tot een overzicht van de verwerking van transacties en het *verzenden* functie in Service Bus, terwijl het voorbeeld Atomic-transacties grotere en complexere binnen het bereik is.
+In dit artikel worden de transactie mogelijkheden van Microsoft Azure Service Bus beschreven. Veel van de discussies worden geïllustreerd door de [AMQP-trans acties met Service Bus voor beeld](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia). Dit artikel is beperkt tot een overzicht van transactie verwerking en de functie *verzenden via* in service bus, terwijl het voor beeld van atomische trans acties breder en complexer is.
 
-## <a name="transactions-in-service-bus"></a>Transacties in Servicebus
+## <a name="transactions-in-service-bus"></a>Trans acties in Service Bus
 
-Een *transactie* gegroepeerd in twee of meer bewerkingen een *uitvoering bereik*. Een dergelijke transactie moet ervoor zorgen dat alle bewerkingen die behoren tot een bepaalde groep bewerkingen slagen of gezamenlijk mislukken door aard. In dit opzicht transacties fungeren als één eenheid, waarmee wordt vaak aangeduid als *atomisch*.
+Met een *trans actie* worden twee of meer bewerkingen gegroepeerd in een *uitvoerings bereik*. Een dergelijke trans actie moet er dus voor zorgen dat alle bewerkingen die tot een bepaalde groep bewerkingen behoren, slagen of mislukken. In dit opzicht fungeren als één eenheid, die vaak *atomisch*wordt genoemd.
 
-Service Bus is een transactioneel bericht-broker en zorgt ervoor transactionele integriteit voor alle interne bewerkingen op de berichten-stores. Alle overdrachten van berichten in Service Bus, zoals het verplaatsen van berichten naar een [dead-letter-wachtrij](service-bus-dead-letter-queues.md) of [automatisch doorsturen](service-bus-auto-forwarding.md) van berichten tussen entiteiten zijn transactionele. Als zodanig als Service Bus een bericht accepteert, is al opgeslagen en met het label met een volgnummer. Daarna eventuele overdrachten bericht in Service Bus zijn gecoördineerde bewerkingen via entiteiten en wordt geen van beide leiden tot verlies (bron is geslaagd en mislukt doel) of om te kopiëren (mislukt van de bron en doel is geslaagd) van het bericht.
+Service Bus is een transactionele bericht Broker en zorgt voor transactionele integriteit voor alle interne bewerkingen voor de berichten archieven. Alle overdrachten van berichten binnen Service Bus, zoals het verplaatsen van berichten naar een [wachtrij met onbestelbare](service-bus-dead-letter-queues.md) berichten of het [automatisch door sturen](service-bus-auto-forwarding.md) van bericht tussen entiteiten, zijn transactioneel. Als Service Bus een bericht accepteert, is het dus al opgeslagen en voorzien van een label met een Volg nummer. Vanaf dat punt worden alle bericht overdrachten binnen Service Bus gecoördineerde bewerkingen tussen entiteiten. Dit leidt niet tot verlies (de bron slaagt en het doel mislukt) of naar duplicatie (bron mislukt en doel is geslaagd) van het bericht.
 
-Service Bus biedt ondersteuning voor het groeperen van bewerkingen voor één berichtentiteit (wachtrij, onderwerp of abonnement) binnen het bereik van een transactie. Bijvoorbeeld, u kunt verschillende berichten verzenden naar een wachtrij van binnen het transactiebereik van een en de berichten worden alleen vastgelegd in Logboeken van de wachtrij als de transactie is voltooid.
+Service Bus biedt ondersteuning voor het groeperen van bewerkingen voor één berichtentiteit (wachtrij, onderwerp of abonnement) binnen het bereik van een transactie. U kunt bijvoorbeeld verschillende berichten verzenden naar één wachtrij vanuit een transactie bereik en de berichten worden alleen doorgevoerd in het logboek van de wachtrij wanneer de trans actie is voltooid.
 
-## <a name="operations-within-a-transaction-scope"></a>Bewerkingen in een transactiebereik
+## <a name="operations-within-a-transaction-scope"></a>Bewerkingen binnen een transactie bereik
 
-De bewerkingen die kunnen worden uitgevoerd in een transactiebereik zijn als volgt:
+De bewerkingen die kunnen worden uitgevoerd binnen een transactie bereik zijn als volgt:
 
-* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : Send, SendAsync, SendBatch, SendBatchAsync 
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : Complete, CompleteAsync, Abandon, AbandonAsync, Deadletter, DeadletterAsync, Defer, DeferAsync, RenewLock, RenewLockAsync 
+* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : Send, SendAsync, methode sendbatch, SendBatchAsync 
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : complete, CompleteAsync, abandon, AbandonAsync, Deadletter, DeadletterAsync, defer, DeferAsync, RenewLock, RenewLockAsync 
 
-Ontvangen bewerkingen zijn niet opgenomen, omdat ervan wordt uitgegaan dat de toepassing krijgt van berichten met behulp van de [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) modus, in een paar lus ontvangen of met een [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) terugbellen, en opent alleen vervolgens een transactiebereik voor het verwerken van het bericht.
+Ontvangst bewerkingen worden niet opgenomen, omdat ervan wordt uitgegaan dat de toepassing berichten ophaalt via de modus [ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) , in een bepaalde receive-lus of met een [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) -call back, en vervolgens een transactie bereik opent om het bericht te verwerken.
 
-De toestand van het bericht (voltooid, dit, dead-letter uitvoeren, uitstellen) uitgevoerd binnen het bereik van, en zijn afhankelijk van de algehele resultaat van de transactie.
+De toestand van het bericht (volledig, afwijzen, onbestelbare letter, defer) wordt vervolgens weer gegeven binnen het bereik van en is afhankelijk van het totale resultaat van de trans actie.
 
-## <a name="transfers-and-send-via"></a>Bestanden worden overgedragen en 'verzenden '
+## <a name="transfers-and-send-via"></a>Overdrachten en verzenden via
 
-Om in te schakelen transactionele oproepdienstoverdracht van gegevens van een wachtrij op een processor en klik vervolgens op een andere wachtrij, Service Bus ondersteunt *overdrachten*. In een overdrachtbewerking een afzender eerst verzendt een bericht naar een *wachtrij voor overdracht*, en de wachtrij voor overdracht wordt onmiddellijk het bericht verplaatst naar de bestemmingswachtrij met de dezelfde robuuste overdracht-implementatie die automatisch doorsturen afhankelijk van capaciteit. Het bericht is niet doorgevoerd in de wachtrij voor de overdracht logboek op een manier dat zichtbaar voor gebruikers van de wachtrij voor overdracht wordt.
+Service Bus *biedt ondersteuning*voor het transactionele overdracht van gegevens uit een wachtrij naar een processor en vervolgens naar een andere wachtrij. Bij een overdrachts bewerking verzendt een afzender eerst een bericht naar een *overdrachts wachtrij*. de overdrachts wachtrij verplaatst het bericht onmiddellijk naar de beoogde doel wachtrij met behulp van dezelfde krachtige overdrachts implementatie waarbij de mogelijkheid tot automatisch door sturen afhankelijk is. Het bericht wordt nooit doorgevoerd in het logboek van de overdrachts wachtrij op een manier die zichtbaar wordt voor de consumenten van de overdrachts wachtrij.
 
-De kracht van deze mogelijkheid transactionele wordt zichtbaar wanneer de wachtrij voor overdracht zelf de bron van de invoer van de afzender-berichten is. Met andere woorden, Service Bus kunt overbrengen het bericht naar de doelwachtrij "via' de wachtrij voor overdracht, tijdens het uitvoeren van een complete (of uitstellen, of dead-letter)-bewerking op de invoerbericht, allemaal op een atomische bewerking. 
+De kracht van deze transactionele mogelijkheden wordt duidelijk wanneer de overdrachts wachtrij zelf de bron is van de invoer berichten van de afzender. Met andere woorden, Service Bus kunt het bericht overzetten naar de doel wachtrij via de overdrachts wachtrij, terwijl een volledige (of deferische of onbestelbare) bewerking wordt uitgevoerd op het invoer bericht, allemaal in één atomische bewerking. 
 
-### <a name="see-it-in-code"></a>In de code weergeven
+### <a name="see-it-in-code"></a>In code weer geven
 
-Als u deze overschrijvingen instelt, maakt u een afzender die gericht is op de doelwachtrij via de wachtrij voor overdracht. U hebt ook een ontvanger die berichten op uit die dezelfde wachtrij haalt. Bijvoorbeeld:
+Als u dergelijke overdrachten wilt instellen, maakt u een bericht verzender die de doel wachtrij verricht via de overdrachts wachtrij. U hebt ook een ontvanger die berichten uit dezelfde wachtrij ophaalt. Bijvoorbeeld:
 
 ```csharp
 var connection = new ServiceBusConnection(connectionString);
@@ -61,7 +60,7 @@ var sender = new MessageSender(connection, QueueName);
 var receiver = new MessageReceiver(connection, QueueName);
 ```
 
-Vervolgens een eenvoudige transactie maakt gebruik van deze elementen, zoals in het volgende voorbeeld. Als u wilt het volledige voorbeeld verwijzen, raadpleegt u de [broncode in GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia):
+Een eenvoudige trans actie gebruikt vervolgens deze elementen, zoals in het volgende voor beeld. Als u het volledige voor beeld wilt raadplegen, raadpleegt u de [bron code op github](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia):
 
 ```csharp
 var receivedMessage = await receiver.ReceiveAsync();
@@ -100,12 +99,12 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor meer informatie over Service Bus-wachtrijen:
+Raadpleeg de volgende artikelen voor meer informatie over Service Bus wachtrijen:
 
 * [Service Bus-wachtrijen gebruiken](service-bus-dotnet-get-started-with-queues.md)
-* [Koppeling van Service Bus-entiteiten met automatisch doorsturen](service-bus-auto-forwarding.md)
-* [Voorbeeld van automatisch doorsturen](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
-* [Atomische transacties met Service Bus-voorbeeld](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)
-* [Azure-wachtrijen en Service Bus-wachtrijen in vergelijking met](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+* [Service Bus entiteiten koppelen met automatisch door sturen](service-bus-auto-forwarding.md)
+* [Voor beeld van automatisch door sturen](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
+* [Atomische trans acties met Service Bus-voor beeld](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)
+* [Vergeleken met Azure queues en Service Bus-wacht rijen](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 
 

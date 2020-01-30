@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: In dit artikel wordt beschreven hoe u een door een waarschuwing gegenereerde pakket opname maakt met Azure Network Watcher
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 26599776abdf7ecbb6c86c332a40e0c2b7d6e67e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276123"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842934"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Pakket opname gebruiken voor proactieve netwerk bewaking met waarschuwingen en Azure Functions
 
@@ -82,7 +80,7 @@ De eerste stap is het maken van een Azure-functie voor het verwerken van de waar
     |**Abonnement**|[Uw abonnement] Het abonnement waarvoor u de functie-app wilt maken.||
     |**Resourcegroep**|PacketCaptureRG|De resource groep die de functie-app bevat.|
     |**Hostingabonnement**|Verbruiksabonnement| Het type van het plan dat door uw functie-app wordt gebruikt. Opties zijn verbruik of Azure App Service plan. |
-    |**Locatie**|US - centraal| De regio waarin de functie-app moet worden gemaakt.|
+    |**Locatie**|VS - centraal| De regio waarin de functie-app moet worden gemaakt.|
     |**Opslagaccount**|automatisch gegenereerde| Het opslag account dat Azure Functions vereist voor opslag voor algemeen gebruik.|
 
 3. Selecteer op de Blade **PacketCaptureExample-functie-apps** **functies** > **aangepaste functie** > **+** .
@@ -93,7 +91,7 @@ De eerste stap is het maken van een Azure-functie voor het verwerken van de waar
     |---|---|---|
     |**Scenario**|Experimenteel|Type scenario|
     |**Een naam voor de functie opgeven**|AlertPacketCapturePowerShell|De naam van de functie|
-    |**Verificatieniveau**|Function|Autorisatie niveau voor de functie|
+    |**Verificatieniveau**|Functie|Autorisatie niveau voor de functie|
 
 ![Functions-voor beeld][functions1]
 

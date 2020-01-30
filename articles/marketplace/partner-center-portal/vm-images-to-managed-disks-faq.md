@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 5eeb223601a3990ef899d7eea96378a8b2a28eee
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: d85f6ba9d50b7d30930322ca34cb15edb30e1472
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933534"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774999"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Er worden installatie kopieën van virtuele machines (VM) op Azure Marketplace verplaatst naar Managed Disk Storage
 
@@ -56,6 +56,10 @@ U wordt aangeraden de installatie kopieën op de geplande datum te verplaatsen. 
 ### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Kan ik tijdens de verhuizing updates voor mijn VM-installatie kopieën publiceren?
 
 Updates van de VM-installatie kopieën kunnen niet worden gemaakt tijdens de verplaatsing.
+
+### <a name="will-the-publishing-process-change-after-my-vm-image-is-moved-to-managed-disk"></a>Wordt het publicatie proces gewijzigd nadat mijn VM-installatie kopie naar een beheerde schijf is verplaatst?
+
+Nee, het publicatie proces blijft hetzelfde. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

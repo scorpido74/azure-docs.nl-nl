@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936009"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774274"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Zelf studie: gematige Facebook-berichten en-opdrachten met Azure Content Moderator
 
 In deze zelf studie leert u hoe u Azure Content Moderator kunt gebruiken om de berichten en opmerkingen op een Facebook-pagina te lezen. Facebook verzendt de inhoud die wordt Gepost door bezoekers naar de Content Moderator-service. Vervolgens worden de inhoud door uw Content Moderator-werk stromen gepubliceerd of worden er in het beoordelings programma beoordelingen gemaakt, afhankelijk van de scores en drempel waarden van de inhoud. Raadpleeg de [video Build 2017-demo](https://channel9.msdn.com/Events/Build/2017/T6033) voor een werkend voor beeld van dit scenario.
 
-In deze zelfstudie ontdekt u hoe u:
+In deze handleiding ontdekt u hoe u:
 
 > [!div class="checklist"]
 > * Een Content Moderator-team samenstellen.
@@ -35,7 +35,7 @@ Dit diagram illustreert elk onderdeel van dit scenario:
 ![Diagram van Content Moderator het ontvangen van informatie van Facebook via ' FBListener ' en het verzenden van informatie via ' CMListener '](images/tutorial-facebook-moderation.png)
 
 > [!IMPORTANT]
-> In 2018 heeft Facebook een strengere hebben Facebook-apps geïmplementeerd. U kunt de stappen van deze zelf studie niet volt ooien als uw app niet is gecontroleerd en goedgekeurd door het Facebook Review-team.
+> In 2018 heeft Facebook een strengere hebben-beleid geïmplementeerd voor Facebook-apps. U kunt de stappen van deze zelf studie niet volt ooien als uw app niet is gecontroleerd en goedgekeurd door het Facebook Review-team.
 
 ## <a name="prerequisites"></a>Vereisten
 

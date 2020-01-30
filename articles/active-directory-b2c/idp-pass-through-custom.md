@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8f7122035f8d70cb91f4ec4f64e1dd4f7b2842b8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 697c904f98ea29395d5c4e95abe27556c06bb479
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949837"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76839088"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Geef een toegangs token door via een aangepast beleid voor uw toepassing in Azure Active Directory B2C
 
-Een [aangepast beleid](active-directory-b2c-get-started-custom.md) in Azure Active Directory B2C (Azure AD B2C) biedt gebruikers van uw toepassing de mogelijkheid zich aan te melden of zich aan te melden met een id-provider. Als dit gebeurt, ontvangt Azure AD B2C een [toegangs token](active-directory-b2c-reference-tokens.md) van de ID-provider. Azure AD B2C gebruikt dat token om informatie over de gebruiker op te halen. U voegt een claim type en uitvoer claim toe aan uw aangepaste beleid om het token door te geven aan de toepassingen die u registreert in Azure AD B2C.
+Een [aangepast beleid](custom-policy-get-started.md) in Azure Active Directory B2C (Azure AD B2C) biedt gebruikers van uw toepassing de mogelijkheid zich aan te melden of zich aan te melden met een id-provider. Als dit gebeurt, ontvangt Azure AD B2C een [toegangs token](tokens-overview.md) van de ID-provider. Azure AD B2C gebruikt dat token om informatie over de gebruiker op te halen. U voegt een claim type en uitvoer claim toe aan uw aangepaste beleid om het token door te geven aan de toepassingen die u registreert in Azure AD B2C.
 
-Azure AD B2C ondersteunt het door geven van het toegangs token van [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) -en [OpenID Connect Connect](active-directory-b2c-reference-oidc.md) -id-providers. Voor alle andere id-providers wordt de claim leeg geretourneerd.
+Azure AD B2C ondersteunt het door geven van het toegangs token van [OAuth 2,0](authorization-code-flow.md) -en [OpenID Connect Connect](openid-connect.md) -id-providers. Voor alle andere id-providers wordt de claim leeg geretourneerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -84,7 +84,7 @@ Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Az
 
 ### <a name="upload-the-files"></a>De bestanden uploaden
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C Tenant bevat door te klikken op het filter **Directory + abonnement** in het bovenste menu en de map te kiezen die uw Tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer een **Framework voor identiteits ervaring**.
@@ -105,4 +105,4 @@ Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Az
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over tokens in de [Azure Active Directory B2C-token verwijzing](active-directory-b2c-reference-tokens.md).
+Meer informatie over tokens in de [Azure Active Directory B2C-token verwijzing](tokens-overview.md).

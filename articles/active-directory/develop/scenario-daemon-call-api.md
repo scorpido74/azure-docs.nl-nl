@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5a234e0b5d3a88b722257aa80249f4d80182d12f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 338b638d6b33bcbbb5cf377643a96c71b0d314bd
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702229"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775194"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Daemon-app die web-Api's aanroept-een web-API van de app aanroepen
 
-Een daemon-app kan een web-API aanroepen vanuit een .NET daemon-toepassing of verschillende vooraf goedgekeurde Web-Api's aanroepen.
+.NET daemon-apps kunnen een web-API aanroepen. .NET daemon-apps kunnen ook verschillende vooraf goedgekeurde Web-Api's aanroepen.
 
-## <a name="calling-a-web-api-daemon-application"></a>Een web API daemon-toepassing aanroepen
+## <a name="calling-a-web-api-from-a-daemon-application"></a>Een web-API aanroepen vanuit een daemon-toepassing
 
 Hier volgt een beschrijving van het gebruik van het token voor het aanroepen van een API:
 
@@ -67,7 +67,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="calling-several-apis"></a>Meerdere Api's aanroepen
 
-Voor daemon-apps moet u de Web-Api's die u aanroept vooraf moeten worden goedgekeurd. Er is geen incrementele toestemming met daemon-apps (er is geen interactie tussen de gebruiker). De Tenant beheerder moet de toepassing en alle API-machtigingen vooraf toestemming geven. Als u verschillende Api's wilt aanroepen, moet u voor elke resource een token aanschaffen, telkens wanneer u `AcquireTokenForClient`aanroept. MSAL maakt gebruik van de toepassings token cache om onnodige service aanroepen te voor komen.
+Voor daemon-apps moet u de Web-Api's die u aanroept vooraf moeten worden goedgekeurd. Er is geen incrementele toestemming met daemon-apps. (Er is geen tussen komst van de gebruiker.) De Tenant beheerder moet vooraf toestemming geven voor de toepassing en alle API-machtigingen. Als u verschillende Api's wilt aanroepen, moet u voor elke resource een token verkrijgen, telkens wanneer u `AcquireTokenForClient`aanroept. MSAL maakt gebruik van de toepassings token cache om onnodige service aanroepen te voor komen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

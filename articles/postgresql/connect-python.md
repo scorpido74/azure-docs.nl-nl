@@ -8,22 +8,26 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: f01ac67b25cbcc098973a3beb0a2b7b311827a37
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766392"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769066"
 ---
-# <a name="use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Python gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL-één server
-In deze Quick start ziet u hoe u kunt werken met een Azure Database for PostgreSQL met behulp van python in macOS, Ubuntu Linux of Windows. De Quick Start laat zien hoe u verbinding maakt met de data base en hoe u SQL-instructies gebruikt om gegevens te zoeken, in te voegen, bij te werken en te verwijderen. In het artikel wordt ervan uitgegaan dat u bekend bent met python, maar geen ervaring hebt met het werken met Azure Database for PostgreSQL.
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Snelstartgids: python gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL-één server
+
+In deze Quick Start werkt u met een Azure Database for PostgreSQL met behulp van python in macOS, Ubuntu Linux of Windows. De Quick Start laat zien hoe u verbinding maakt met de data base en hoe u SQL-instructies gebruikt om gegevens te zoeken, in te voegen, bij te werken en te verwijderen. In het artikel wordt ervan uitgegaan dat u bekend bent met python, maar geen ervaring hebt met het werken met Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Vereisten
-- Een Azure Database for PostgreSQL-één server die is gemaakt met behulp van de stappen in [Quick Start: een Azure database for postgresql-server maken in de Azure Portal](quickstart-create-server-database-portal.md) of [Quick start: een Azure database for PostgreSQL maken met behulp van de Azure cli](quickstart-create-server-database-azure-cli.md). 
+
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+- Volt ooien van [Quick Start: een Azure database for postgresql-server maken in azure Portal](quickstart-create-server-database-portal.md) of [Quick start: een Azure database for PostgreSQL maken met behulp van de Azure cli](quickstart-create-server-database-azure-cli.md).
   
 - [Python](https://www.python.org/downloads/) 2.7.9 + of 3.4 +.
   
-- De nieuwste update van het [PIP](https://pip.pypa.io/en/stable/installing/) -pakket installatie programma, geïnstalleerd met behulp van `pip install -U pip`. 
+- Laatste [PIP](https://pip.pypa.io/en/stable/installing/) -pakket installatie programma.
 
 ## <a name="install-the-python-libraries-for-postgresql"></a>De python-bibliotheken voor PostgreSQL installeren
 De [psycopg2](https://pypi.python.org/pypi/psycopg2/) -module maakt het mogelijk om verbinding te maken met en query's uit te stellen op een postgresql-data base en is beschikbaar als Linux-, macOS-of Windows- [wiel](https://pythonwheels.com/) pakket. Installeer de binaire versie van de module, inclusief alle afhankelijkheden. Zie [Installation (installatie](http://initd.org/psycopg/docs/install.html)) voor meer informatie over `psycopg2` installatie en vereisten. 

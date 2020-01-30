@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: c8051126fc4a895c6e72e90942fac65d777afd8e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 01/27/2020
+ms.openlocfilehash: be6fd633f026c98e8f75467dc8661e695e121721
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546483"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841264"
 ---
 # <a name="summarize-data"></a>Gegevens samenvatten
 
@@ -46,7 +46,7 @@ De module berekent de belang rijke scores voor elke kolom en retourneert een rij
 
 Het rapport van de module kan de volgende statistieken bevatten. 
 
-|Kolomnaam|Beschrijving|
+|kolom naam|Beschrijving|
 |------|------|  
 |**Functie**|Naam van de kolom|
 |**Aantal**|Aantal rijen|
@@ -59,7 +59,7 @@ Het rapport van de module kan de volgende statistieken bevatten.
 |**1e kwartiel**|Waarde bij eerste kwartiel|
 |**Mediaan**|Kolom waarde mediaan|
 |**3e kwartiel**|Waarde bij derde kwartiel|
-|**Mode**|Modus van kolom waarden|
+|**Penmodus**|Modus van kolom waarden|
 |**Range**|Geheel getal dat het aantal waarden tussen de maximum-en minimum waarden vertegenwoordigt|
 |**Voorbeeld afwijking**|Variantie voor kolom; Zie opmerking|
 |**Standaard deviatie voor beeld**|Standaard afwijking voor kolom; Zie opmerking|
@@ -70,6 +70,20 @@ Het rapport van de module kan de volgende statistieken bevatten.
 |**P5**|5% percentiel|
 |**P95**|95% percentiel|
 |**P 99,5**|99,5% percentiel |
+
+## <a name="technical-notes"></a>Technische opmerkingen
+
+- Voor niet-numerieke kolommen worden alleen de waarden voor Count, het aantal unieke waarden en het aantal missers berekend. Voor andere statistieken wordt een null-waarde geretourneerd.
+
+- Kolommen die Booleaanse waarden bevatten, worden verwerkt met behulp van deze regels:
+
+    - Bij het berekenen van min, een logische en wordt toegepast.
+    
+    - Bij het berekenen van maximum, een logische of wordt toegepast
+    
+    - Bij het berekenen van het bereik controleert de module eerst of het aantal unieke waarden in de kolom gelijk is aan 2.
+    
+    - Bij het berekenen van een statistiek waarvoor drijvende-komma berekeningen zijn vereist, worden de waarden True beschouwd als 1,0 en worden de waarden False beschouwd als 0,0.
 
 ## <a name="next-steps"></a>Volgende stappen
 

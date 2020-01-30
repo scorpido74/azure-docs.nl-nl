@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 96b7c3cf59f947d1476ad840ae81695356d869b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd27e581aaca241fc15886f9f72546f92391b744
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037541"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772690"
 ---
 # <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Een beschikbaarheids groep configureren op Azure SQL Server virtuele machines in verschillende regio's
 
@@ -93,9 +93,26 @@ Voer de volgende stappen uit om een replica te maken in een extern Data Center:
 
 1. [Voeg de nieuwe SQL Server toe aan het Windows Server-failovercluster](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode).
 
-1. Maak een IP-adres bron op het cluster.
+1. Voeg een IP-adres bron toe aan het cluster.
 
-   U kunt de IP-adres bron maken in Failoverclusterbeheer. Klik met de rechter muisknop op de rol van de beschikbaarheids groep, klik op **resource toevoegen**, **meer resources**en klik op **IP-adres**.
+   U kunt de IP-adres bron maken in Failoverclusterbeheer. Selecteer de naam van het cluster, klik met de rechter muisknop op de cluster naam onder **cluster kern resources** en selecteer **Eigenschappen**: 
+
+   ![Cluster eigenschappen](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-name-properties.png)
+
+   Selecteer in het dialoog venster **Eigenschappen** de optie **toevoegen** onder **IP-adres**en voeg vervolgens het IP-adres van de cluster naam toe uit de regio voor het externe netwerk. Selecteer **OK** in het dialoog venster **IP-adres** en selecteer vervolgens **OK** in het dialoog venster **cluster eigenschappen** om het nieuwe IP-adres op te slaan. 
+
+   ![Cluster-IP toevoegen](./media/virtual-machines-windows-portal-sql-availability-group-dr/add-cluster-ip-address.png)
+
+
+1. Voeg het IP-adres toe als afhankelijkheid voor de naam van het basis cluster.
+
+   Open de cluster eigenschappen eenmaal en selecteer het tabblad **afhankelijkheden** . CONFIGUREER een or-afhankelijkheid voor de twee IP-adressen: 
+
+   ![Cluster eigenschappen](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-ip-dependencies.png)
+
+1. Voeg een IP-adres bron toe aan de rol van de beschikbaarheids groep in het cluster. 
+
+   Klik met de rechter muisknop op de rol van de beschikbaarheids groep in Failoverclusterbeheer, selecteer **resource toevoegen**, **meer resources**en selecteer **IP-adres**.
 
    ![IP-adres maken](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
@@ -103,16 +120,6 @@ Voer de volgende stappen uit om een replica te maken in een extern Data Center:
 
    - Gebruik het netwerk vanuit het externe Data Center.
    - Wijs het IP-adres toe vanuit de nieuwe Azure-load balancer. 
-
-1. Schakel op de nieuwe SQL Server in SQL Server Configuration Manager AlwaysOn- [beschikbaarheids groepen](https://msdn.microsoft.com/library/ff878259.aspx)in.
-
-1. [Open firewall poorten op de nieuwe SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
-
-   De poort nummers die u moet openen, zijn afhankelijk van uw omgeving. Open poorten voor het mirroring-eind punt en Azure load balancer Health probe.
-
-1. [Voeg op de nieuwe SQL Server een replica toe aan de beschikbaarheids groep](https://msdn.microsoft.com/library/hh213239.aspx).
-
-   Voor een replica in een externe Azure-regio stelt u deze in voor asynchrone replicatie met hand matige failover.  
 
 1. Voeg de IP-adres bron toe als afhankelijkheid voor het cluster van de listener-client toegangs punt (netwerk naam).
 
@@ -137,6 +144,17 @@ Voer het Power shell-script uit met de netwerk naam van het cluster, het IP-adre
 
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
+
+1. Schakel op de nieuwe SQL Server in SQL Server Configuration Manager AlwaysOn- [beschikbaarheids groepen](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server)in.
+
+1. [Open firewall poorten op de nieuwe SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
+
+   De poort nummers die u moet openen, zijn afhankelijk van uw omgeving. Open poorten voor het mirroring-eind punt en Azure load balancer Health probe.
+
+
+1. [Voeg op de nieuwe SQL Server een replica toe aan de beschikbaarheids groep](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio).
+
+   Voor een replica in een externe Azure-regio stelt u deze in voor asynchrone replicatie met hand matige failover.  
 
 ## <a name="set-connection-for-multiple-subnets"></a>Verbinding instellen voor meerdere subnetten
 

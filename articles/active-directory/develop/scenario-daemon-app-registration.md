@@ -15,40 +15,40 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1ba22226c75358a9d08671e1665e15a33810298a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 922a484d111746e5073c08a64d7c92e2b6b4a7c4
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702281"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773369"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Daemon-app voor het aanroepen van web-Api's-app-registratie
 
-Voor een daemon-toepassing is dit wat u moet weten wanneer u de app registreert.
+Voor een daemon-toepassing hebt u het volgende nodig om te weten wanneer u de app registreert.
 
 ## <a name="supported-account-types"></a>Ondersteunde accounttypen
 
-Omdat daemon-toepassingen alleen zinvol zijn in azure AD-tenants, kunt u bij het maken van de toepassing het volgende kiezen:
+Daemon-toepassingen maken alleen indruk in azure AD-tenants. Wanneer u de toepassing maakt, moet u dus een van de volgende opties kiezen:
 
-- **alleen accounts in deze organisatie Directory**. Deze keuze is het meest voorkomende geval, omdat daemon-toepassingen meestal worden geschreven door LOB-ontwikkel aars (line-of-Business).
-- of **accounts in een organisatorische Directory**. U maakt deze keuze als u een ISV bent die een hulp programma biedt aan uw klanten. U hebt Tenant beheerders van de klant nodig om deze goed te keuren.
+- **Accounts in deze organisatie-Directory alleen**. Dit is het meest voorkomende keuze omdat daemon-toepassingen meestal worden geschreven door LOB-ontwikkel aars (line-of-Business).
+- **Accounts in een organisatorische Directory**. U maakt deze keuze als u een ISV bent die een hulp programma biedt aan uw klanten. U hebt de Tenant beheerders van uw klanten nodig om het goed te keuren.
 
 ## <a name="authentication---no-reply-uri-needed"></a>Verificatie-geen antwoord-URI vereist
 
-Als uw vertrouwelijke client toepassing **alleen** de client referenties stroom gebruikt, hoeft de antwoord-URI niet te worden geregistreerd. Het is niet nodig voor de toepassings configuratie/-constructie. De client referenties stroom gebruikt deze niet.
+Als uw vertrouwelijke client toepassing *alleen* de client referenties stroom gebruikt, hoeft de antwoord-URI niet te worden geregistreerd. Het is niet nodig voor de toepassings configuratie of-constructie. De client referenties stroom gebruikt deze niet.
 
 ## <a name="api-permissions---app-permissions-and-admin-consent"></a>API-machtigingen-app-machtigingen en beheerders toestemming
 
-Een daemon-toepassing kan alleen toepassings machtigingen voor Api's aanvragen (niet-gedelegeerde machtigingen). Klik op de pagina **API-machtiging** voor de registratie van de toepassing, nadat u **een machtiging toevoegen** hebt geselecteerd en de API-familie hebt gekozen, kies **toepassings machtigingen**en selecteer vervolgens uw machtigingen
+Een daemon-toepassing kan alleen toepassings machtigingen voor Api's aanvragen (niet-gedelegeerde machtigingen). Klik op de pagina **API-machtigingen** voor de registratie van de toepassing, nadat u **een machtiging toevoegen** hebt geselecteerd en de API-familie hebt gekozen, kies **toepassings machtigingen**en selecteer vervolgens uw machtigingen.
 
 ![App-machtigingen en beheerders toestemming](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
-> De Web-API die u wilt aanroepen, moet de **toepassings machtigingen (app-rollen)** definiëren, niet de gedelegeerde machtigingen. Zie voor meer informatie over het beschikbaar maken van een dergelijke API [de beveiligde web-API: app-registratie-wanneer uw web-API wordt aangeroepen door een daemon-app](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)
+> De Web-API die u wilt aanroepen, moet de *toepassings machtigingen (app-rollen)* definiëren, niet de gedelegeerde machtigingen. Zie voor meer informatie over het beschikbaar maken van een dergelijke API [de beveiligde web-API: app-registratie-wanneer uw web-API wordt aangeroepen door een daemon-app](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app).
 
-Voor daemon-toepassingen moet een Tenant beheerder vooraf toestemming hebben voor de toepassing die de Web-API aanroept. Deze toestemming wordt gegeven op dezelfde **API-machtigings** pagina, door een Tenant beheerder die de toestemming van de **beheerder toekennen aan *onze organisatie***  selecteert
+Voor daemon-toepassingen moet een Tenant beheerder vooraf toestemming verlenen aan de toepassing die de Web-API aanroept. Tenant beheerders geven deze toestemming op dezelfde API- **machtigings** pagina door **toestemming van beheerder verlenen aan *onze organisatie***  te selecteren
 
-Als u een ISV-toepassing met meerdere tenants maakt, moet u de implementatie van de alinea met [multi tenant-apps voor meerdere pachters](scenario-daemon-production.md#deployment---case-of-multi-tenant-daemon-apps) controleren.
+Als u een ISV-toepassing met meerdere tenants maakt, leest u de sectie [implementatie van multi tenant-apps](scenario-daemon-production.md#deployment---multitenant-daemon-apps).
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 

@@ -3,12 +3,12 @@ title: Kubernetes-cluster status controleren met Azure Monitor voor containers |
 description: In dit artikel wordt beschreven hoe u de status van uw AKS-en niet-AKS-clusters kunt weer geven en analyseren met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 12/01/2019
-ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405085"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843987"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Informatie over de status van een AKS-cluster met Azure Monitor voor containers
 
@@ -23,7 +23,7 @@ Voor informatie over het inschakelen van Azure Monitor voor containers raadpleeg
 >[!NOTE]
 >Als u AKS-engine clusters wilt ondersteunen, controleert u of deze voldoet aan het volgende:
 >- De meest recente versie van de helm- [client](https://helm.sh/docs/using_helm/)wordt gebruikt.
->- De versie van de container agent is *micro soft/OMS: ciprod11012019*. Zie de [agent bijwerken in Kubernetes-cluster](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster)om de agent bij te werken.
+>- De versie van de container agent is *micro soft/OMS: ciprod11012019*. Zie de [agent bijwerken in Kubernetes-cluster](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster)om de agent bij te werken.
 >
 
 ## <a name="overview"></a>Overzicht
@@ -48,12 +48,12 @@ Alle monitors worden weer gegeven in een hiërarchische indeling in het deel ven
 * Het geheugen gebruik van het knoop punt en de container evalueren.
 * De status van de peulen en knoop punten op basis van de berekening van de status gereed gerapporteerd door Kubernetes.
 
-Met de volgende pictogrammen wordt de status aangegeven:
+De pictogrammen die worden gebruikt om de status aan te geven, zijn als volgt:
 
 |Pictogram|Betekenis|  
 |--------|-----------|  
-|![Pictogram groen vinkje geeft In orde aan](./media/container-insights-health/healthyicon.png)|Succes, status is in orde (groen)|  
-|![Gele driehoek en uitroepteken is waarschuwing](./media/container-insights-health/warningicon.png)|Waarschuwing (geel)|  
+|![Pictogram groen vinkje geeft in orde aan](./media/container-insights-health/healthyicon.png)|Geslaagd, status is OK (groen)|  
+|![Gele drie hoek en uitroep teken is waarschuwing](./media/container-insights-health/warningicon.png)|Waarschuwing (geel)|  
 |![Rode knop met witte X geeft kritieke status aan](./media/container-insights-health/criticalicon.png)|Kritiek (rood)|  
 |![Pictogram lichter gekleurd](./media/container-insights-health/grayicon.png)|Onbekend (grijs)|  
 

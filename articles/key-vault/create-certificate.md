@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 908f02807d5a3f7c2c1391c3c59a54fc88bbd831
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 26309bb9a7b9785dbac7f42b0c20de99bca10a17
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884158"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769248"
 ---
 # <a name="certificate-creation-methods"></a>Methoden voor het maken van certificaten
 
@@ -41,10 +41,10 @@ De volgende beschrijvingen komen overeen met de groene letterlijke stappen in he
 De volgende beschrijvingen komen overeen met de groene letterlijke stappen in het voor gaande diagram.
 
 1. In het bovenstaande diagram maakt uw toepassing een certificaat dat intern begint met het maken van een sleutel in uw sleutel kluis.
-2. Key Vault verzendt en SSL-certificaat aanvragen naar de certificerings instantie.
+2. Key Vault verzendt een TLS/SSL-certificaat aanvraag naar de certificerings instantie.
 3. Uw toepassings polls, in een lus en wacht proces, voor uw Key Vault voor het volt ooien van het certificaat. Het maken van het certificaat is voltooid wanneer Key Vault de reactie van de certificerings instantie met x509-certificaat ontvangt.
-4. De CA reageert op de SSL-certificaat aanvraag van Key Vault met een x509 SSL-certificaat.
-5. Het nieuwe certificaat is gemaakt met de fusie van het x509-certificaat voor de CA.
+4. De CA reageert op de TLS/SSL-certificaat aanvraag van Key Vault met een TLS/SSL X. 509-certificaat.
+5. Het nieuwe certificaat is gemaakt met de fusie van het TLS/SSL X. 509-certificaat voor de CA.
 
 ## <a name="asynchronous-process"></a>Asynchroon proces
 Het maken van een KV-certificaat is een asynchroon proces. Met deze bewerking wordt een KV-certificaat aanvraag gemaakt en wordt een HTTP-status code van 202 (geaccepteerd) geretourneerd. De status van de aanvraag kan worden gevolgd door te pollen van het object dat in behandeling is gemaakt door deze bewerking. De volledige URI van het in behandeling zijnde object wordt geretourneerd in de locatie-header.  
@@ -53,7 +53,7 @@ Wanneer een aanvraag voor het maken van een KV-certificaat is voltooid, wordt de
 
 ## <a name="first-creation"></a>Eerst maken
  Wanneer er voor de eerste keer een KV-certificaat wordt gemaakt, wordt er ook een adresseer bare sleutel en een geheim gemaakt met dezelfde naam als die van het certificaat. Als de naam al in gebruik is, mislukt de bewerking met de HTTP-status code 409 (conflict).
-De adresseer bare sleutel en het geheim ontvangen hun kenmerken van de kenmerken van het KV-certificaat. De adresseer bare sleutel en het geheim die op deze manier zijn gemaakt, zijn gemarkeerd als beheerde sleutels en geheimen, waarvan de levens duur wordt beheerd door Key Vault. Beheerde sleutels en geheimen hebben het kenmerk alleen-lezen. Opmerking: Als een KV-certificaat verloopt of is uitgeschakeld, worden de bijbehorende sleutel en het desbetreffende geheim niet meer bruikbaar.  
+De adresseer bare sleutel en het geheim ontvangen hun kenmerken van de kenmerken van het KV-certificaat. De adresseer bare sleutel en het geheim die op deze manier zijn gemaakt, zijn gemarkeerd als beheerde sleutels en geheimen, waarvan de levens duur wordt beheerd door Key Vault. Beheerde sleutels en geheimen hebben het kenmerk alleen-lezen. Opmerking: als een KV-certificaat verloopt of is uitgeschakeld, worden de bijbehorende sleutel en het betreffende geheim niet meer bruikbaar.  
 
  Als dit de eerste bewerking is voor het maken van een KV-certificaat, is een beleid vereist.  U kunt ook een beleid opgeven bij opeenvolgende Create-bewerkingen om de beleids bron te vervangen. Als er geen beleid is opgegeven, wordt de beleids bron voor de service gebruikt om een volgende versie van het KV-certificaat te maken. Houd er rekening mee dat wanneer een aanvraag voor het maken van een volgende versie wordt uitgevoerd, het huidige KV-certificaat en de bijbehorende adresseer bare sleutel en geheim, ongewijzigd blijven.  
 
@@ -88,7 +88,7 @@ Het maken van een certificaat kan hand matig worden voltooid of met een ' zelf-'
 
 Houd er rekening mee dat wanneer een bestelling wordt geplaatst met de provider van de verlener, het mogelijk is om de x509-certificaat uitbreidingen en de geldigheids periode van het certificaat te vervangen op basis van het type certificaat.  
 
- Autorisatie Vereist de machtiging voor certificaten/maken.
+ Autorisatie: vereist de machtiging voor certificaten/maken.
 
 ## <a name="see-also"></a>Zie ook
  - [Over sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981264"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773087"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Zelf studie: formulier herkenner gebruiken met Azure Logic Apps voor het analyseren van facturen
 
-In deze zelf studie maakt u een werk stroom in Azure Logic Apps die gebruikmaakt van een formulier herkenner, een service die deel uitmaakt van Azure Cognitive Services suite, om gegevens uit facturen te extra heren. U gebruikt de formulier Recognizer om eerst een model te trainen met behulp van een set met voorbeeld gegevens en het model vervolgens te testen met een andere gegevensset. De voorbeeld gegevens die in deze zelf studie worden gebruikt, worden opgeslagen in Azure Storage BLOB-containers.
+In deze zelf studie maakt u een werk stroom in Azure Logic Apps die gebruikmaakt van een formulier herkenner, een service die deel uitmaakt van Azure Cognitive Services suite, om gegevens uit facturen te extra heren. Eerst traint u een model voor het herleiden van een formulier met een voorbeeld gegevensset en test u vervolgens het model op een andere gegevensset.
 
 Deze zelf studie bevat de volgende onderwerpen:
 
@@ -41,12 +41,12 @@ Formulier herkenner is beschikbaar in een preview-versie van beperkte toegang. A
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>De te analyseren factuur begrijpen
 
-De set met voorbeeld gegevens die we gebruiken om het model te trainen en het model te testen, is beschikbaar als zip-bestand van [github](https://go.microsoft.com/fwlink/?linkid=2090451). Down load en pak het zip-bestand uit en open een factuur PDF-bestand in de map **/Train** . U ziet dat er een tabel is met het factuur nummer, de factuur datum, enzovoort. 
+De set met voorbeeld gegevens die u gebruikt om het model te trainen en te testen, is beschikbaar als zip-bestand van [github](https://go.microsoft.com/fwlink/?linkid=2090451). Down load en pak het zip-bestand uit en open een factuur PDF-bestand in de map **/Train** . U ziet dat er een tabel is met het factuur nummer, de factuur datum, enzovoort. 
 
 > [!div class="mx-imgBorder"]
 > ![voor beeld van factuur](media/tutorial-form-recognizer-with-logic-apps/sample-receipt.png)
 
-In deze zelf studie leert u hoe u de informatie uit deze tabellen uitpakt in een JSON-indeling met een werk stroom die is gemaakt met Azure Logic Apps en formulier herkenning.
+In deze zelf studie leert u hoe u een Azure Logic Apps werk stroom kunt gebruiken om de gegevens uit tabellen zoals deze te extra heren in JSON-indeling.
 
 ## <a name="create-an-azure-storage-blob-container"></a>Een Azure Storage BLOB-container maken
 
@@ -62,7 +62,7 @@ U gebruikt deze container om voorbeeld gegevens te uploaden die nodig zijn om he
 
 Down load de voorbeeld gegevens die beschikbaar zijn op [github](https://go.microsoft.com/fwlink/?linkid=2090451). Extraheer de gegevens naar een lokale map en upload de inhoud van de map **/Train** naar de **formrecocontainer** die u eerder hebt gemaakt. Volg de instructies bij het [uploaden van een blok-BLOB](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) voor het uploaden van gegevens naar een container.
 
-Kopieer de URL van de container. U hebt dit later in deze zelf studie nodig. Als u het opslag account en de container met dezelfde namen hebt gemaakt als vermeld in deze zelf studie, is de URL *https:\//formrecostorage.blob.core.Windows.net/formrecocontainer/* .
+Kopieer de URL van de container. U hebt deze URL later in de zelf studie nodig. Als u het opslag account en de container met dezelfde namen hebt gemaakt als vermeld in deze zelf studie, is de URL *https:\//formrecostorage.blob.core.Windows.net/formrecocontainer/* .
 
 ## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
 
@@ -75,7 +75,7 @@ U kunt Azure Logic Apps gebruiken om taken en werk stromen te automatiseren en t
 * Configureer de logische app voor het gebruik van een vorm van een **Train model** -bewerking voor het herkennen van een model voor het trainen van de voorbeeld gegevens die u hebt geüpload naar de Azure Blob-opslag.
 * Configureer de logische app voor het gebruik van een form-bewerking voor het **analyseren** van formulieren voor het model dat u al hebt getraind. Met dit onderdeel wordt de factuur die u aan deze logische app verstrekt, geanalyseerd op basis van het model dat eerder is getraind.
 
-Laten we beginnen. Volg deze stappen om uw werk stroom in te stellen.
+Volg deze stappen om uw werk stroom in te stellen.
 
 1. Selecteer in het hoofd menu van Azure **een resource maken** > **integratie** > **logische app**.
 
@@ -99,7 +99,7 @@ Laten we beginnen. Volg deze stappen om uw werk stroom in te stellen.
 
 ### <a name="configure-the-logic-app-to-trigger-the-workflow-when-an-email-arrives"></a>De logische app configureren om de werk stroom te activeren wanneer er een e-mail bericht binnenkomt
 
-In deze zelf studie wordt de werk stroom geactiveerd wanneer er een e-mail met een bijgevoegde factuur wordt ontvangen. Voor deze zelf studie kiezen we Office 365 als e-mail service, maar u kunt elke andere e-mail provider gebruiken die u wilt gebruiken.
+In deze zelf studie wordt de werk stroom geactiveerd wanneer er een e-mail met een bijgevoegde factuur wordt ontvangen. In deze zelf studie wordt Office 365 als e-mail service gebruikt, maar u kunt elke andere e-mail provider gebruiken die u wilt gebruiken.
 
 1. Selecteer op de tabbladen alle, selecteer **Office 365 Outlook**en selecteer onder **Triggers** **de optie wanneer een nieuwe e-mail binnenkomt**.
 
@@ -109,8 +109,8 @@ In deze zelf studie wordt de werk stroom geactiveerd wanneer er een e-mail met e
 
 1. Voer de volgende stappen uit in het volgende dialoog venster.
     1. Selecteer de map die moet worden bewaakt voor een nieuw e-mail bericht.
-    1. Voor **heeft bijlagen** , selecteert u **Ja**. Dit zorgt ervoor dat alleen de e-mail berichten met bijlagen de werk stroom activeren.
-    1. Selecteer **Ja**als u **bijlagen wilt toevoegen** . Dit zorgt ervoor dat de inhoud van de bijlage wordt gebruikt in downstream-verwerking.
+    1. Voor **heeft bijlagen**, selecteert u **Ja**. Dit zorgt ervoor dat alleen de e-mail berichten met bijlagen de werk stroom activeren.
+    1. Selecteer **Ja**als u **bijlagen wilt toevoegen**. Dit zorgt ervoor dat de inhoud van de bijlage wordt gebruikt in downstream-verwerking.
 
         > [!div class="mx-imgBorder"]
         > e-mail trigger voor logische apps ![configureren](media/tutorial-form-recognizer-with-logic-apps/logic-app-specify-email-folder.png)
@@ -149,14 +149,14 @@ In deze sectie voegt u de bewerking **formulier analyseren** toe aan de werk str
     > [!div class="mx-imgBorder"]
     > ![een model voor het herkenner van formulieren analyseren](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-analyze-model.png)
 
-1. Ga als volgt te werk in het dialoog venster **formulier analyseren** :
+1. Voer in het dialoog venster **formulier analyseren** de volgende stappen uit:
 
     1. Klik op het tekstvak **model-id** en selecteer in het dialoog venster dat wordt geopend, op het tabblad **dynamische inhoud** de optie **modelId**. Als u dit doet, geeft u de stroom toepassing op met de model-ID van het model dat u in de laatste sectie hebt getraind.
 
         > [!div class="mx-imgBorder"]
         > de ModelID voor de formulier herkenner ![gebruiken](media/tutorial-form-recognizer-with-logic-apps/analyze-form-model-id.png)
 
-    2. Klik op het tekstvak **document** en selecteer in het dialoog venster dat wordt geopend op het tabblad **dynamische inhoud** de optie **bijlagen inhoud**. Als u dit doet, configureert u de stroom om het voorbeeld factuur bestand te gebruiken dat is gekoppeld aan het e-mail bericht dat wordt verzonden om de werk stroom te activeren.
+    2. Klik op het tekstvak **document** en selecteer in het dialoog venster dat wordt geopend op het tabblad **dynamische inhoud** de optie **bijlagen inhoud**. Hiermee configureert u de stroom om het voorbeeld factuur bestand te gebruiken dat is gekoppeld aan het e-mail bericht dat de werk stroom activeert.
 
         > [!div class="mx-imgBorder"]
         > ![e-mail bijlage gebruiken om facturen te analyseren](media/tutorial-form-recognizer-with-logic-apps/analyze-form-input-data.png)
@@ -165,7 +165,7 @@ In deze sectie voegt u de bewerking **formulier analyseren** toe aan de werk str
 
 ### <a name="extract-the-table-information-from-the-invoice"></a>De tabel informatie uit de factuur extra heren
 
-In deze sectie configureren we de logische app voor het extra heren van de gegevens uit de tabel in de facturen.
+In deze sectie configureert u de logische app voor het extra heren van de gegevens uit de tabel in de facturen.
 
 1. Selecteer **een actie toevoegen**en selecteer onder **Kies een actie**zoeken naar **opstellen** en klik onder de beschik bare acties op opnieuw **samen stellen** .
     ![tabel gegevens uit de factuur ophalen](media/tutorial-form-recognizer-with-logic-apps/extract-table.png)
@@ -179,7 +179,7 @@ In deze sectie configureren we de logische app voor het extra heren van de gegev
 
 ## <a name="test-your-logic-app"></a>Uw logische app testen
 
-Als u de logische app wilt testen, gebruikt u de voor beelden van facturen in de map **/test** van de voor beeld-gegevensset die u hebt gedownload van [github](https://go.microsoft.com/fwlink/?linkid=2090451). Voer de volgende stappen uit:
+Als u de logische app wilt testen, gebruikt u de voor beelden van facturen in de map **/test** van de voor beeld-gegevensset die u hebt gedownload van [github](https://go.microsoft.com/fwlink/?linkid=2090451). Volg deze stappen:
 
 1. Selecteer in de Azure Logic Apps Designer voor uw app **uitvoeren** in de werk balk bovenaan. De werk stroom is nu actief en wacht op het ontvangen van een e-mail waaraan de factuur is gekoppeld.
 1. Een e-mail verzenden met een voorbeeld factuur die is gekoppeld aan het e-mail adres dat u hebt ingevoerd tijdens het maken van de logische app. Zorg ervoor dat het e-mail bericht wordt bezorgd in de map die u hebt ingevoerd tijdens het configureren van de logische app.

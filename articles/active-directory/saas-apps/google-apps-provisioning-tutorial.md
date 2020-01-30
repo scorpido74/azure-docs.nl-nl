@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d754964ac6c16c87e6f0825b4f1a955d38fa3530
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: f11258457e60ea3458b0ede1fe00f042041bcb1a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756225"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841247"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Zelf studie: G Suite configureren voor automatische gebruikers inrichting
 
@@ -209,6 +209,7 @@ Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [ra
 
 ## <a name="common-issues"></a>Algemene problemen
 * Autorisatie fouten kunnen optreden wanneer het account dat wordt gebruikt om een verbinding tot stand te brengen, niet voor een beheerder in GSuite is. Zorg ervoor dat het account dat wordt gebruikt om toegang te autoriseren, beheerders machtigingen heeft voor **alle domeinen** waarmee gebruikers moeten worden ingericht. 
+* Azure AD biedt ondersteuning voor het uitschakelen van gebruikers in GSuite, zodat deze geen toegang hebben tot de toepassing, maar geen gebruikers verwijdert in GSuite.
 
 ## <a name="next-steps"></a>Volgende stappen
 

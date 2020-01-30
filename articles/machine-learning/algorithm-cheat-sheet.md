@@ -9,18 +9,20 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: b43f2f351345f05c3eb56a84fb1a0eadb4826707
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 82d4131170002a3d9ffd78933c9dc566c3b1d921
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771509"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767631"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Machine Learnings Cheat-algoritme voor Azure Machine Learning Designer
 
 Het **Cheat-venster van Azure machine learning-algoritme** helpt u bij het kiezen van het juiste algoritme voor een Predictive Analytics model.
 
-Azure Machine Learning heeft een grote bibliotheek met algoritmen van de ***classificatie***, ***Aanbevolen systemen***, ***clustering***, ***afwijkings detectie***, ***regressie*** -en ***tekst analyse*** -families. Elk is ontworpen om een ander type machine learning probleem op te lossen.
+Azure Machine Learning heeft een grote bibliotheek met algoritmen van de ***classificatie***, ***Aanbevolen systemen***, ***clustering***, ***afwijkings detectie***, ***regressie***en ***tekst analyse*** -families. Elk is ontworpen om een ander type machine learning probleem op te lossen.
+
+Zie [algoritmen selecteren](how-to-select-algorithms.md) voor meer informatie.
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Downloaden: Machine Learning-algoritme Cheat-werk blad
 
@@ -32,7 +34,7 @@ Down load en druk het Machine Learning-algoritme blad Cheat in de formaat van ta
 
 ## <a name="how-to-use-the-machine-learning-algorithm-cheat-sheet"></a>Het Cheat-venster van Machine Learning Algorithm gebruiken
 
-De suggesties die in dit Cheat-algoritme worden aangeboden, zijn geschatte regels van de miniatuur. Sommige kunnen worden gebogen en andere kunnen worden flagrantly geschonden. Dit is bedoeld om een begin punt te suggereren. Zorg dat u geen hoofd-naar-head-concurrentie kunt uitvoeren tussen de verschillende algoritmen van uw gegevens. Er is eenvoudigweg geen vervanging voor het goed keuren van de principes van elk algoritme en het systeem dat uw gegevens heeft gegenereerd.
+De suggesties die in dit Cheat-algoritme worden aangeboden, zijn geschatte regels van de miniatuur. Sommige kunnen worden gebogen en andere kunnen worden flagrantly geschonden. Dit Cheat-venster is bedoeld om een begin punt te suggereren. Zorg dat u geen hoofd-naar-head-concurrentie kunt uitvoeren tussen de verschillende algoritmen van uw gegevens. Er is eenvoudigweg geen vervanging voor het goed keuren van de principes van elk algoritme en het systeem dat uw gegevens heeft gegenereerd.
 
 Elke machine learning-algoritme heeft een eigen stijl of inductieve afwijking. Voor een specifiek probleem zijn er mogelijk verschillende algoritmen geschikt en is het mogelijk dat een algoritme beter past dan andere. Maar het is niet altijd mogelijk om vooraf te weten wat het beste past. In dergelijke gevallen worden verschillende algoritmen samen in het Cheat-venster weer gegeven. Een geschikte strategie is om één algoritme te proberen, en als de resultaten nog niet bevredigend zijn, probeert u de andere. 
 
@@ -48,17 +50,17 @@ In het onderwijs met Super visie is elk gegevens punt gelabeld of gekoppeld aan 
 
 ### <a name="unsupervised-learning"></a>Leren zonder supervisie
 
-Er zijn geen labels aan gegevens punten gekoppeld aan het leren zonder toezicht. In plaats daarvan kunt u de gegevens op een bepaalde manier organiseren of de structuur ervan beschrijven. Dit kan betekenen dat het in clusters kan worden gegroepeerd, als K-betekent, of op verschillende manieren om complexe gegevens te bekijken, zodat deze eenvoudiger worden weer gegeven.
+Er zijn geen labels aan gegevens punten gekoppeld aan het leren zonder toezicht. In plaats daarvan kunt u de gegevens op een bepaalde manier organiseren of de structuur ervan beschrijven. Met niet-super visie worden gegevens in clusters gegroepeerde, omdat K-wil zeggen, of op verschillende manieren om complexe gegevens te bekijken, zodat deze eenvoudiger worden weer gegeven.
 
 ### <a name="reinforcement-learning"></a>Bekrachtigend leren
 
-In het versterken van learning wordt de algoritme gekozen om een actie te kiezen als reactie op elk gegevens punt. Het is een algemene benadering in Robotics, waarbij de set Lees bewerkingen op één punt in de tijd een gegevens punt is, en het algoritme de volgende actie van de robot moet kiezen. Het is ook natuurlijk geschikt voor Internet of Things toepassingen. Het leer algoritme heeft ook een korte tijd een belonings signaal ontvangen dat aangeeft hoe goed de beslissing was. Op basis hiervan wordt de strategie van het algoritme aangepast om de hoogste beloning te kunnen halen. 
+In het versterken van learning wordt de algoritme gekozen om een actie te kiezen als reactie op elk gegevens punt. Het is een algemene benadering in Robotics, waarbij de set Lees bewerkingen op één punt in de tijd een gegevens punt is, en het algoritme de volgende actie van de robot moet kiezen. Het is ook natuurlijk geschikt voor Internet of Things toepassingen. Het leer algoritme heeft ook een korte tijd een belonings signaal ontvangen dat aangeeft hoe goed de beslissing was. Op basis van dit signaal wijzigt het algoritme de strategie om de hoogste beloning te kunnen halen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over studio in azure machine learning en de Azure Portal](overview-what-is-azure-ml.md).
+* Meer richt lijnen voor [het selecteren van algoritmen](how-to-select-algorithms.md) weer geven
 
-* Bekijk een lijst met algoritmen en modules in de [referentie algoritme en module](algorithm-module-reference/module-reference.md).
+* [Meer informatie over studio in azure machine learning en de Azure Portal](overview-what-is-azure-ml.md).
 
 * [Zelf studie: een Voorspellings model bouwen in azure machine learning Designer](tutorial-designer-automobile-price-train-score.md).
 

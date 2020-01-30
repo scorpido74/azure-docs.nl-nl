@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 85e1ebc05ad4ebe1d58716981c0688df0126efb0
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937230"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771993"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Aanbevolen procedures voor Azure voor netwerk beveiliging
 In dit artikel wordt een verzameling van aanbevolen procedures voor Azure beschreven om uw netwerk beveiliging te verbeteren. Deze aanbevolen procedures zijn afgeleid van onze ervaring met Azure-netwerken en de ervaringen van klanten, zoals uzelf.
@@ -49,22 +49,22 @@ Virtuele Azure-netwerken zijn vergelijkbaar met Lan's in uw on-premises netwerk.
 
 De aanbevolen procedures voor het logisch segmenteren van subnetten zijn:
 
-**Aanbevolen procedure**: Wijs geen toestaan-regels met een brede bereiken toe (bijvoorbeeld 0.0.0.0 toestaan in 255.255.255.255).  
-**Details**: Zorg ervoor dat de procedures voor het oplossen van problemen worden geraden of dit type regels instellen. Op deze manier kunnen regels leiden tot een valse beveiligings gevoel en worden ze vaak door rode teams gevonden en misbruikt.
+**Aanbevolen procedure**: niet toestaan regels met een brede bereik toe te wijzen (bijvoorbeeld 0.0.0.0 t/m 255.255.255.255 toestaan).  
+**Details**: Zorg ervoor dat de procedure voor het oplossen van problemen zich afmoedigt of dit type regels kan instellen. Op deze manier kunnen regels leiden tot een valse beveiligings gevoel en worden ze vaak door rode teams gevonden en misbruikt.
 
-**Aanbevolen procedure**: Segmenteer de grotere adres ruimte in subnetten.   
-**Details**: Gebruik op [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)gebaseerde principes voor het maken van uw subnetten.
+**Best Practice**: Segmenteer de grotere adres ruimte in subnetten.   
+**Details**: gebruik op [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)gebaseerde principes voor het maken van uw subnetten.
 
-**Aanbevolen procedure**: Netwerk toegangs beheer tussen subnetten maken. Route ring tussen subnetten gebeurt automatisch en u hoeft geen routerings tabellen te configureren. Standaard zijn er geen besturings elementen voor netwerk toegang tussen de subnetten die u maakt in een virtueel Azure-netwerk.   
-**Details**: Gebruik een [netwerk beveiligings groep](/azure/virtual-network/virtual-networks-nsg) om te beschermen tegen ongevraagd verkeer in azure-subnetten. Netwerk beveiligings groepen zijn eenvoudige, stateful pakket inspectie apparaten die gebruikmaken van de 5-tuple benadering (bron-IP, bron poort, doel-IP, doel poort en laag 4-Protocol) om regels voor toestaan/weigeren voor netwerk verkeer te maken. U kunt verkeer naar en van meerdere IP-adressen, of van en naar hele subnetten, toestaan of weigeren voor een enkel IP-adres.
+**Aanbevolen procedure**: netwerk toegangs beheer tussen subnetten maken. Route ring tussen subnetten gebeurt automatisch en u hoeft geen routerings tabellen te configureren. Standaard zijn er geen besturings elementen voor netwerk toegang tussen de subnetten die u maakt in een virtueel Azure-netwerk.   
+**Details**: gebruik een [netwerk beveiligings groep](/azure/virtual-network/virtual-networks-nsg) om te beschermen tegen ongevraagd verkeer in azure-subnetten. Netwerk beveiligings groepen zijn eenvoudige, stateful pakket inspectie apparaten die gebruikmaken van de 5-tuple benadering (bron-IP, bron poort, doel-IP, doel poort en laag 4-Protocol) om regels voor toestaan/weigeren voor netwerk verkeer te maken. U kunt verkeer naar en van meerdere IP-adressen, of van en naar hele subnetten, toestaan of weigeren voor een enkel IP-adres.
 
 Wanneer u netwerk beveiligings groepen gebruikt voor netwerk toegangs beheer tussen subnetten, kunt u resources die horen bij dezelfde beveiligings zone of-rol in hun eigen subnets plaatsen.
 
-**Aanbevolen procedure**: Vermijd kleine virtuele netwerken en subnetten om eenvoud en flexibiliteit te garanderen.   
-**Details**: De meeste organisaties voegen meer resources toe dan oorspronkelijk gepland, en het opnieuw toewijzen van adressen is arbeids intensief. Het gebruik van kleine subnetten beperkt een beperkte beveiligings waarde en het toewijzen van een netwerk beveiligings groep aan elk subnet voegt overhead toe. Geef subnetten breed op om ervoor te zorgen dat u flexibiliteit hebt voor de groei.
+**Best Practice**: Vermijd kleine virtuele netwerken en subnetten om eenvoud en flexibiliteit te garanderen.   
+**Details**: de meeste organisaties voegen meer resources toe dan oorspronkelijk gepland, en het opnieuw toewijzen van adressen is arbeids intensief. Het gebruik van kleine subnetten beperkt een beperkte beveiligings waarde en het toewijzen van een netwerk beveiligings groep aan elk subnet voegt overhead toe. Geef subnetten breed op om ervoor te zorgen dat u flexibiliteit hebt voor de groei.
 
-**Aanbevolen procedure**: Vereenvoudig regel beheer voor de netwerk beveiligings groep door [toepassings beveiligings groepen](https://azure.microsoft.com/blog/applicationsecuritygroups/)te definiëren.  
-**Details**: Definieer een toepassings beveiligings groep voor lijsten met IP-adressen waarvan u denkt dat deze in de toekomst kunnen worden gewijzigd of worden gebruikt in veel netwerk beveiligings groepen. Zorg ervoor dat u de toepassings beveiligings groepen duidelijk beveiligt, zodat anderen hun inhoud en doel kunnen begrijpen.
+**Best Practice**: beheer van regel voor netwerk beveiligings groep vereenvoudigen door het definiëren van [toepassings beveiligings groepen](https://azure.microsoft.com/blog/applicationsecuritygroups/).  
+**Details**: Definieer een toepassings beveiligings groep voor lijsten met IP-adressen die u in de toekomst kunt wijzigen of die in veel netwerk beveiligings groepen worden gebruikt. Zorg ervoor dat u de toepassings beveiligings groepen duidelijk beveiligt, zodat anderen hun inhoud en doel kunnen begrijpen.
 
 ## <a name="adopt-a-zero-trust-approach"></a>Een vertrouwens benadering van nul aannemen
 Netwerken op basis van een perimeter netwerk maken gebruik van de veronderstelling dat alle systemen binnen een Network kunnen worden vertrouwd. Maar de werk nemers van vandaag hebben vanaf elke locatie op verschillende apparaten en apps toegang tot de resources van de organisatie, waardoor de beveiligings maatregelen voor de beveiliging niet relevant zijn. Toegangs beheer beleid dat alleen gericht is op personen die toegang hebben tot een resource, is niet voldoende. Beveiligings beheerders moeten ook *bepalen hoe* een bron wordt geopend om het evenwicht tussen beveiliging en productiviteit te Master te krijgen.
@@ -73,14 +73,14 @@ Netwerken moeten zich ontwikkelen van traditionele beveiligingen, omdat netwerke
 
 Aanbevolen procedures zijn:
 
-**Aanbevolen procedure**: Geef voorwaardelijke toegang tot resources op basis van apparaat, identiteit, Assurance, netwerk locatie en meer.  
-**Details**: Met [voorwaardelijke toegang van Azure AD](/azure/active-directory/conditional-access/overview) kunt u de juiste toegangs controles Toep assen door geautomatiseerde beslissingen voor toegangs beheer te implementeren op basis van de vereiste voor waarden. Zie [toegang tot Azure management beheren met voorwaardelijke toegang](../../role-based-access-control/conditional-access-azure-management.md)voor meer informatie.
+**Best Practice**: Geef voorwaardelijke toegang tot resources op basis van apparaat, identiteit, Assurance, netwerk locatie en meer.  
+**Details**: met [voorwaardelijke toegang van Azure AD](/azure/active-directory/conditional-access/overview) kunt u de juiste toegangs controles Toep assen door geautomatiseerde beslissingen voor toegangs beheer te implementeren op basis van de vereiste voor waarden. Zie [toegang tot Azure management beheren met voorwaardelijke toegang](../../role-based-access-control/conditional-access-azure-management.md)voor meer informatie.
 
-**Aanbevolen procedure**: Schakel poort toegang alleen in na workflowgoedkeuring goed te keuren.  
-**Details**: U kunt [just-in-time-VM-toegang in azure Security Center](../../security-center/security-center-just-in-time.md) gebruiken om inkomend verkeer naar uw Azure-vm's te vergren delen, waardoor de bloot stelling aan aanvallen wordt verkleind.
+**Aanbevolen procedure**: Schakel poort toegang alleen in na workflowgoedkeuring.  
+**Details**: u kunt [just-in-time-VM-toegang in azure Security Center](../../security-center/security-center-just-in-time.md) gebruiken om inkomend verkeer naar uw Azure-vm's te vergren delen, waardoor de bloot stelling aan aanvallen wordt verkleind.
 
-**Aanbevolen procedure**: Verleen tijdelijke machtigingen voor het uitvoeren van geprivilegieerde taken, waarmee wordt voor komen dat kwaadwillende of niet-gemachtigde gebruikers toegang krijgen nadat de machtigingen zijn verlopen. Toegang wordt alleen verleend wanneer gebruikers deze nodig hebben.  
-**Details**: Gebruik just-in-time-toegang in Azure AD Privileged Identity Management of in een oplossing van derden om machtigingen te verlenen voor het uitvoeren van geprivilegieerde taken.
+**Best Practice**: verleen tijdelijke machtigingen voor het uitvoeren van geprivilegieerde taken, waarmee wordt voor komen dat kwaadwillende of niet-gemachtigde gebruikers toegang krijgen nadat de machtigingen zijn verlopen. Toegang wordt alleen verleend wanneer gebruikers deze nodig hebben.  
+**Details**: gebruik just-in-time-toegang in azure AD privileged Identity Management of in een oplossing van derden om machtigingen te verlenen voor het uitvoeren van geprivilegieerde taken.
 
 Een vertrouwens relatie van nul is de volgende evolutie in netwerk beveiliging. De status van Cyber aanvallen-organisaties draagt bij aan het nemen van de uitgangspunt-uittredingen, maar deze benadering mag niet worden beperkt. Geen vertrouwde netwerken beveiligen Bedrijfs gegevens en bronnen en zorgen ervoor dat organisaties een moderne werk plek kunnen bouwen door gebruik te maken van technologieën waarmee werk nemers op elk moment en overal en op elke manier productief moeten zijn.
 
@@ -133,7 +133,7 @@ In een hybride IT-scenario is er meestal een deel van het type cross-premises-co
 * [Site-naar-site-VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Het is een vertrouwde, betrouw bare en opgezette technologie, maar de verbinding vindt plaats via internet. De band breedte is beperkt tot een maximum van 1,25 Gbps. Site-naar-site-VPN is een wenselijke optie in sommige scenario's.
 * **Azure ExpressRoute**. We raden u aan [ExpressRoute](../../expressroute/expressroute-introduction.md) te gebruiken voor uw cross-premises-connectiviteit. Met ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met micro soft-Cloud Services, zoals Azure, Office 365 en Dynamics 365. ExpressRoute is een specifieke WAN-verbinding tussen uw on-premises locatie of een micro soft Exchange host-provider. Omdat dit een telecommunicatie-verbinding is, worden uw gegevens niet via internet gereisd en worden ze niet blootgesteld aan de potentiële Risico's van Internet communicatie.
 
-De locatie van uw ExpressRoute-verbinding kan invloed hebben op de firewall capaciteit, schaal baarheid, betrouw baarheid en netwerk verkeer. U moet nagaan waar ExpressRoute wordt beëindigd in bestaande netwerken (on-premises). U kunt:
+De locatie van uw ExpressRoute-verbinding kan invloed hebben op de firewall capaciteit, schaal baarheid, betrouw baarheid en netwerk verkeer. U moet nagaan waar ExpressRoute wordt beëindigd in bestaande netwerken (on-premises). U kunt het volgende doen:
 
 - Beëindig buiten de firewall (het model van het perimeter netwerk) als u inzicht in het verkeer nodig hebt als u een bestaande praktijk van het isoleren van data centers moet voortzetten of als u alleen extranet resources op Azure plaatst.
 - Beëindig in de firewall (het paradigma van de netwerk extensie). Dit is de standaard aanbeveling. In alle andere gevallen raden we u aan Azure als een ne Data Center te behandelen.
@@ -147,30 +147,30 @@ Met deze verdeling van verkeer wordt de beschik baarheid verhoogd omdat een van 
 
 U wordt aangeraden de taak verdeling te gebruiken wanneer dat mogelijk is, en wat van toepassing is op uw services. Hieronder vindt u scenario's op het niveau van het virtuele Azure-netwerk en het globale niveau, samen met opties voor taak verdeling voor elk.
 
-**Scenario**: U hebt een toepassing die:
+**Scenario**: u hebt een toepassing die:
 
 - Vereist dat aanvragen van dezelfde gebruiker/client sessie dezelfde back-end-virtuele machine bereiken. Voor beelden hiervan zijn winkel wagentje-apps en web-mail servers.
 - Accepteert alleen een beveiligde verbinding, dus niet-versleutelde communicatie met de server is geen acceptabele optie.
 - Vereist dat meerdere HTTP-aanvragen op dezelfde langlopende TCP-verbinding worden gerouteerd of verdeeld over verschillende back-endservers.
 
-**Optie voor taak verdeling**: Gebruik [Azure-toepassing gateway](/azure/application-gateway/application-gateway-introduction), een HTTP-webverkeer Load Balancer. Application Gateway ondersteunt end-to-end SSL-versleuteling en [SSL-beëindiging](/azure/application-gateway/application-gateway-introduction) bij de gateway. Webservers kunnen dan niet worden belast met het versleutelen en ontsleutelen van de overhead en verkeer dat niet is versleuteld naar de back-endservers.
+**Optie voor taak verdeling**: gebruik [Azure-toepassing gateway](/azure/application-gateway/application-gateway-introduction), een HTTP-webverkeer Load Balancer. Application Gateway ondersteunt end-to-end SSL-versleuteling en [SSL-beëindiging](/azure/application-gateway/application-gateway-introduction) bij de gateway. Webservers kunnen dan niet worden belast met het versleutelen en ontsleutelen van de overhead en verkeer dat niet is versleuteld naar de back-endservers.
 
-**Scenario**: U moet binnenkomende verbindingen van het Internet verdelen over uw servers in een virtueel Azure-netwerk. Scenario's zijn wanneer u:
+**Scenario**: u moet binnenkomende verbindingen van het Internet verdelen over uw servers in een virtueel Azure-netwerk. Scenario's zijn wanneer u:
 
 - Beschikken over stateless toepassingen die binnenkomende aanvragen van het Internet accepteren.
 - Plak sessies of SSL-offload zijn niet vereist. Sticky Sessions is een methode die wordt gebruikt voor de taak verdeling van toepassingen, om server affiniteit te garanderen.
 
-**Optie voor taak verdeling**: Gebruik de Azure Portal om [een externe Load Balancer te maken](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) die binnenkomende aanvragen over meerdere vm's verspreidt om een hoger niveau van Beschik baarheid te bieden.
+**Optie voor taak verdeling**: gebruik de Azure Portal om [een externe Load Balancer te maken](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) die binnenkomende aanvragen over meerdere vm's verspreidt om een hoger niveau van Beschik baarheid te bieden.
 
-**Scenario**: U moet de verbindingen van virtuele machines die zich niet op internet bevinden, worden verdeeld. In de meeste gevallen worden de verbindingen die zijn geaccepteerd voor taak verdeling, geïnitieerd door apparaten op een virtueel Azure-netwerk, zoals SQL Server instanties of interne webservers.   
-**Optie voor taak verdeling**: Gebruik de Azure Portal om [een interne Load Balancer te maken](../../load-balancer/quickstart-create-basic-load-balancer-powershell.md) die binnenkomende aanvragen over meerdere vm's verspreidt om een hoger niveau van Beschik baarheid te bieden.
+**Scenario**: u moet verbindingen met de virtuele machines die zich niet op internet bevinden, verdelen. In de meeste gevallen worden de verbindingen die zijn geaccepteerd voor taak verdeling, geïnitieerd door apparaten op een virtueel Azure-netwerk, zoals SQL Server instanties of interne webservers.   
+**Optie voor taak verdeling**: gebruik de Azure Portal om [een interne Load Balancer te maken](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) die binnenkomende aanvragen verspreidt over meerdere vm's om een hoger niveau van Beschik baarheid te bieden.
 
-**Scenario**: U hebt wereld wijde taak verdeling nodig omdat:
+**Scenario**: u hebt wereld wijde taak verdeling nodig omdat:
 
 - Beschikken over een Cloud oplossing die veel wordt gedistribueerd over meerdere regio's en waarvoor het hoogste niveau van uptime (Beschik baarheid) mogelijk is.
 - U hebt het hoogste niveau van de uptime mogelijk om ervoor te zorgen dat uw service beschikbaar is, zelfs als een volledig Data Center niet meer beschikbaar is.
 
-**Optie voor taak verdeling**: Gebruik Azure Traffic Manager. Traffic Manager maakt het mogelijk om verbindingen met uw services te verdelen op basis van de locatie van de gebruiker.
+**Optie voor taak verdeling**: Azure Traffic Manager gebruiken. Traffic Manager maakt het mogelijk om verbindingen met uw services te verdelen op basis van de locatie van de gebruiker.
 
 Als de gebruiker bijvoorbeeld een aanvraag voor uw service van de EU doet, wordt de verbinding omgeleid naar uw services die zich in een EU-Data Center bevinden. Dit deel van Traffic Manager globale taak verdeling helpt de prestaties te verbeteren omdat verbinding wordt gemaakt met het dichtstbijzijnde Data Center sneller dan verbinding maken met data centers die ver weg zijn.
 
@@ -181,16 +181,16 @@ Het potentiële beveiligings probleem met het gebruik van deze protocollen via i
 
 U wordt aangeraden directe RDP-en SSH-toegang tot uw Azure virtual machines via internet uit te scha kelen. Nadat directe RDP-en SSH-toegang via internet is uitgeschakeld, hebt u andere opties die u kunt gebruiken om toegang te krijgen tot deze Vm's voor extern beheer.
 
-**Scenario**: Eén gebruiker in staat stellen om via Internet verbinding te maken met een virtueel Azure-netwerk.   
-**Optie**: [Punt-naar-site-VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) is een andere term voor een VPN-client/server-verbinding voor externe toegang. Nadat de punt-naar-site-verbinding tot stand is gebracht, kan de gebruiker RDP of SSH gebruiken om verbinding te maken met virtuele machines die zich bevinden in het virtuele Azure-netwerk waarmee de gebruiker verbinding maakt via een punt-naar-site-VPN. Hierbij wordt ervan uitgegaan dat de gebruiker gemachtigd is om deze Vm's te bereiken.
+**Scenario**: een enkele gebruiker in staat stellen om via Internet verbinding te maken met een virtueel Azure-netwerk.   
+**Optie**: [punt-naar-site-VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) is een andere term voor een VPN-client/server-verbinding voor externe toegang. Nadat de punt-naar-site-verbinding tot stand is gebracht, kan de gebruiker RDP of SSH gebruiken om verbinding te maken met virtuele machines die zich bevinden in het virtuele Azure-netwerk waarmee de gebruiker verbinding maakt via een punt-naar-site-VPN. Hierbij wordt ervan uitgegaan dat de gebruiker gemachtigd is om deze Vm's te bereiken.
 
 Punt-naar-site-VPN is veiliger dan directe RDP-of SSH-verbindingen omdat de gebruiker twee keer moet verifiëren voordat er verbinding wordt gemaakt met een virtuele machine. Eerst moet de gebruiker worden geverifieerd (en gemachtigd) om een punt-naar-site-VPN-verbinding tot stand te brengen. Ten tweede moet de gebruiker worden geverifieerd (en gemachtigd) om de RDP-of SSH-sessie tot stand te brengen.
 
-**Scenario**: Gebruikers in uw on-premises netwerk in staat stellen om verbinding te maken met virtuele machines in uw virtuele Azure-netwerk.   
-**Optie**: Een [site-naar-site-VPN](/azure/vpn-gateway/vpn-gateway-site-to-site-create) verbindt een volledig netwerk met een ander netwerk via internet. U kunt een site-naar-site-VPN gebruiken om uw on-premises netwerk te verbinden met een virtueel Azure-netwerk. Gebruikers in uw on-premises netwerk verbinden met behulp van het RDP-of SSH-protocol via de site-naar-site-VPN-verbinding. U hoeft geen directe RDP-of SSH-toegang via Internet toe te staan.
+**Scenario**: Hiermee kunnen gebruikers in uw on-premises netwerk verbinding maken met virtuele machines op uw virtuele Azure-netwerk.   
+**Optie**: een [site-naar-site-VPN](/azure/vpn-gateway/vpn-gateway-site-to-site-create) verbindt een volledig netwerk met een ander netwerk via internet. U kunt een site-naar-site-VPN gebruiken om uw on-premises netwerk te verbinden met een virtueel Azure-netwerk. Gebruikers in uw on-premises netwerk verbinden met behulp van het RDP-of SSH-protocol via de site-naar-site-VPN-verbinding. U hoeft geen directe RDP-of SSH-toegang via Internet toe te staan.
 
-**Scenario**: Gebruik een speciale WAN-koppeling om functionaliteit te bieden die vergelijkbaar is met de site-naar-site-VPN.   
-**Optie**: Gebruik [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/). Het biedt vergelijk bare functionaliteit als het site-naar-site-VPN. Dit zijn de belangrijkste verschillen:
+**Scenario**: gebruik een specifieke WAN-koppeling om functionaliteit te bieden die vergelijkbaar is met de site-naar-site-VPN.   
+**Optie**: gebruik [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/). Het biedt vergelijk bare functionaliteit als het site-naar-site-VPN. Dit zijn de belangrijkste verschillen:
 
 - De speciale WAN-verbinding kan niet worden gepasseren op internet.
 - Speciale WAN-koppelingen zijn doorgaans stabieler en beter.
@@ -200,12 +200,12 @@ Gebruik service-eind punten van het virtuele netwerk om uw privé-adres ruimte v
 
 Service-eindpunten bieden de volgende voordelen:
 
-- **Verbeterde beveiliging voor Azure-serviceresources**: Met service-eindpunten kunnen Azure-serviceresources worden beveiligd naar uw virtuele netwerk. Het beveiligen van service resources naar een virtueel netwerk biedt een betere beveiliging door het volledig verwijderen van open bare Internet toegang tot bronnen en het toestaan van verkeer alleen vanuit uw virtuele netwerk.
-- **Optimale routering voor verkeer van de Azure-service vanaf het virtuele netwerk**: Alle routes in uw virtuele netwerk die het Internet verkeer naar uw on-premises en/of virtuele apparaten afdwingen, ook wel geforceerde tunneling genoemd, afdwingen dat het verkeer van de Azure-service afdwingt om dezelfde route te nemen als het Internet verkeer. Service-eindpunten bieden een optimale routering voor Azure-verkeer.
+- **Verbeterde beveiliging voor uw Azure-serviceresources**: met service-eindpunten kunnen Azure-serviceresources op veilige wijze worden gekoppeld aan uw virtuele netwerk. Het beveiligen van service resources naar een virtueel netwerk biedt een betere beveiliging door het volledig verwijderen van open bare Internet toegang tot bronnen en het toestaan van verkeer alleen vanuit uw virtuele netwerk.
+- **Optimale route ring voor Azure service-verkeer van uw virtuele netwerk**: alle routes in uw virtuele netwerk die het Internet verkeer naar uw on-premises en/of virtuele apparaten afdwingen, ook wel geforceerde tunneling genoemd, afdwingen dat het verkeer van de Azure-service hetzelfde is als het Internet verkeer. Service-eindpunten bieden een optimale routering voor Azure-verkeer.
 
   Eind punten nemen altijd service verkeer rechtstreeks van uw virtuele netwerk naar de service op het Azure-backbone-netwerk. Door verkeer op het Azure-backbone-netwerk te bewaren, kunt u door gaan met het controleren en bewaken van het uitgaande Internet verkeer van uw virtuele netwerken via geforceerde tunneling, zonder dat dit van invloed is op het service verkeer. Meer informatie over door de [gebruiker gedefinieerde routes en geforceerde tunneling](../../virtual-network/virtual-networks-udr-overview.md).
 
-- **Eenvoudig te installeren met minder beheeroverhead**: U hebt geen gereserveerde open bare IP-adressen meer nodig in uw virtuele netwerken om Azure-resources te beveiligen via een IP-firewall. Er zijn geen NAT- of gatewayapparaten vereist voor het instellen van de service-eindpunten. Service-eindpunten worden geconfigureerd met een simpele klik op een subnet. Er is geen extra overhead voor het onderhouden van de eind punten.
+- **Eenvoudig in te stellen met minder beheer overhead**: u hebt geen gereserveerde open bare IP-adressen meer nodig in uw virtuele netwerken om Azure-resources te beveiligen via een IP-firewall. Er zijn geen NAT- of gatewayapparaten vereist voor het instellen van de service-eindpunten. Service-eindpunten worden geconfigureerd met een simpele klik op een subnet. Er is geen extra overhead voor het onderhouden van de eind punten.
 
 Zie [service-eind punten voor virtuele netwerken](../../virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie over service-eind punten en de Azure-Services en-regio's waarvoor service-eind punten beschikbaar zijn.
 

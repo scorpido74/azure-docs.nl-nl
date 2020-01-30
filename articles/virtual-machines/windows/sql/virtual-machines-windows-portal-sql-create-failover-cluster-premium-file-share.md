@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 2453b29c5efd768930f534df89d4c62320ed4770
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965342"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772605"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Een SQL Server-failovercluster configureren met Premium-bestands share op Azure virtual machines
 
@@ -77,13 +77,15 @@ Voordat u de stappen in dit artikel hebt voltooid, hebt u het volgende nodig:
 
 - Een Microsoft Azure-abonnement.
 - Een Windows-domein op virtuele machines van Azure.
-- Een account met machtigingen voor het maken van objecten op zowel virtuele Azure-machines als in Active Directory.
+- Een domein gebruikers account dat machtigingen heeft om objecten te maken op virtuele machines van Azure en in Active Directory.
+- Een domein gebruikers account om de SQL Server-service uit te voeren en dat u bij de virtuele machine kunt aanmelden bij het koppelen van de bestands share.  
 - Een virtueel Azure-netwerk en subnet met voldoende IP-adres ruimte voor deze onderdelen:
    - Twee virtuele machines.
    - Het IP-adres van het failovercluster.
    - Een IP-adres voor elke FCI.
 - DNS geconfigureerd op het Azure-netwerk, die verwijst naar de domein controllers.
-- Een [Premium-bestands share](../../../storage/files/storage-how-to-create-premium-fileshare.md) op basis van de opslag limiet van uw Data Base voor uw gegevens bestanden.
+- Een [Premium-bestands share](../../../storage/files/storage-how-to-create-premium-fileshare.md) die moet worden gebruikt als het geclusterde station, op basis van de opslag quota van uw Data Base voor uw gegevens bestanden.
+- Als u Windows Server 2012 R2 en ouder hebt, moet u een andere bestands share gebruiken als bestandssharewitness, omdat Cloud-witnesss worden ondersteund voor Windows 2016 en nieuwer. U kunt een andere Azure-bestands share gebruiken of u kunt een bestands share gebruiken op een afzonderlijke virtuele machine. Als u een andere Azure-bestands share wilt gebruiken, kunt u deze koppelen aan hetzelfde proces als voor de Premium-bestands share die wordt gebruikt voor uw geclusterde station. 
 
 Als aan deze vereisten is voldaan, kunt u beginnen met het bouwen van uw failovercluster. De eerste stap is het maken van de virtuele machines.
 
@@ -143,7 +145,7 @@ Als aan deze vereisten is voldaan, kunt u beginnen met het bouwen van uw failove
    1. Selecteer het standaard exemplaar.
    1. Verwijder alle functies onder **Data Base Engine-Services**. Verwijder **gedeelde onderdelen**niet. U ziet iets als de volgende scherm afbeelding:
 
-        ![Onderdelen selecteren](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
+        ![Functies selecteren](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
    1. Selecteer **volgende**en selecteer vervolgens **verwijderen**.
 
@@ -180,7 +182,8 @@ Nadat u de virtuele machines hebt gemaakt en geconfigureerd, kunt u de Premium-b
 1. Herhaal deze stappen op elke SQL Server virtuele machine die u aan het cluster wilt deel nemen.
 
   > [!IMPORTANT]
-  > Overweeg het gebruik van een afzonderlijke bestands share voor back-upbestanden om de IOPS-en ruimte capaciteit van deze share op te slaan voor gegevens en logboek bestanden. U kunt een Premium-of standaard bestands share gebruiken voor back-upbestanden.
+  > - Overweeg het gebruik van een afzonderlijke bestands share voor back-upbestanden om de IOPS-en ruimte capaciteit van deze share op te slaan voor gegevens en logboek bestanden. U kunt een Premium-of standaard bestands share gebruiken voor back-upbestanden.
+  > - Als u Windows 2012 R2 en ouder gebruikt, voert u dezelfde stappen uit om uw bestands share te koppelen die u als de bestandssharewitness gaat gebruiken. 
 
 ## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>Stap 3: het failovercluster configureren met de bestands share
 
@@ -189,7 +192,7 @@ De volgende stap is het configureren van het failovercluster. In deze stap gaat 
 1. Voeg de functie Windows Server Failover Clustering toe.
 1. Valideer het cluster.
 1. Maak het failovercluster.
-1. Maak de cloudwitness.
+1. Maak de cloudwitness (voor Windows Server 2016 en hoger) of de bestands share-Witness (voor Windows Server 2012 R2 en ouder).
 
 
 ### <a name="add-windows-server-failover-clustering"></a>Windows Server failover clustering toevoegen
@@ -263,9 +266,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 ```
 
 
-### <a name="create-a-cloud-witness"></a>Een cloudwitness maken
+### <a name="create-a-cloud-witness-win-2016-"></a>Een cloudwitness maken (Win 2016 +)
 
-Cloudwitness is een nieuw type cluster quorum-Witness dat is opgeslagen in een Azure Storage-blob. Dit verwijdert de nood zaak van een afzonderlijke virtuele machine die als host fungeert voor een Witness-share.
+Als u Windows Server 2016 en hoger gebruikt, moet u een Cloudwitness maken. Cloudwitness is een nieuw type cluster quorum-Witness dat is opgeslagen in een Azure Storage-blob. Hiermee verwijdert u de nood zaak van een afzonderlijke virtuele machine die als host fungeert voor een Witness-share of het gebruik van een afzonderlijke bestands share.
 
 1. [Maak een cloudwitness voor het failovercluster](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
 
@@ -273,7 +276,11 @@ Cloudwitness is een nieuw type cluster quorum-Witness dat is opgeslagen in een A
 
 1. Sla de toegangs sleutels en de container-URL op.
 
-1. Configureer de quorum-Witness van het failovercluster. Zie [Configure the quorumwitness in de gebruikers interface](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
+### <a name="configure-quorum"></a>Quorum configureren 
+
+Voor Windows Server 2016 en hoger configureert u het cluster voor gebruik van de cloudwitness die u zojuist hebt gemaakt. Voer alle stappen uit om [de quorumwitness in de gebruikers interface te configureren](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
+
+Voor Windows Server 2012 R2 en ouder voert u dezelfde stappen uit in de [Quorumwitness configureren in de gebruikers interface](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) , maar op de pagina **quorumwitness selecteren** selecteert u de optie **een bestands share-Witness configureren** . Geef de bestands share op die u hebt toegewezen als de bestandssharewitness, of het een andere virtuele machine is die u hebt geconfigureerd of die is gekoppeld vanuit Azure. 
 
 
 ## <a name="step-4-test-cluster-failover"></a>Stap 4: failover van het cluster testen
@@ -296,7 +303,7 @@ Nadat u het failovercluster hebt geconfigureerd, kunt u de SQL Server FCI maken.
 
 1. Selecteer **nieuwe SQL Server failover-cluster installatie**. Volg de instructies in de wizard om de SQL Server FCI te installeren.
 
-   De FCI-gegevens directory's moeten zich op de Premium-bestands share bestaan. Geef het volledige pad van de share op in dit formulier: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Er wordt een waarschuwing weer gegeven met de mede deling dat u een bestands server hebt opgegeven als de data directory. Deze waarschuwing wordt verwacht. Zorg ervoor dat het account dat u hebt gemaakt, de bestands share is hetzelfde account dat door de SQL Server-service wordt gebruikt om mogelijke fouten te voor komen.
+   De FCI-gegevens directory's moeten zich op de Premium-bestands share bestaan. Geef het volledige pad van de share op in dit formulier: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Er wordt een waarschuwing weer gegeven met de mede deling dat u een bestands server hebt opgegeven als de data directory. Deze waarschuwing wordt verwacht. Zorg ervoor dat het gebruikers account dat u RDP gebruikt voor de virtuele machine bij het persistent maken van de bestands share hetzelfde account is als de SQL Server-service om mogelijke storingen te voor komen.
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/use-file-share-as-data-directories.png" alt-text="Bestands share gebruiken als SQL-gegevens mappen":::
 
@@ -356,7 +363,7 @@ De load balancer maken:
 
 1. Selecteer **OK** om de back-end-pool te maken.
 
-### <a name="configure-a-load-balancer-health-probe"></a>Een load balancer-statustest configureren
+### <a name="configure-a-load-balancer-health-probe"></a>Een load balancer Health probe configureren
 
 1. Selecteer op de Blade load balancer **status controles**.
 

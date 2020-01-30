@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fdb925f820cad79fe68e7082f4ed63292a7d9444
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8bda1d3bcce37cbb7b5306d460bddd4652349fe9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951085"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840346"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een OpenID Connect Connect Technical-profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -103,6 +103,6 @@ Wanneer u de omleidings-URI van uw ID-provider configureert, voert u `https://{y
 
 Voorbeelden:
 
-- [Micro soft-account (MSA) toevoegen als een id-provider met behulp van aangepast beleid](active-directory-b2c-custom-setup-msa-idp.md)
-- [Aanmelden met Azure AD-accounts](active-directory-b2c-setup-aad-custom.md)
-- [Gebruikers toestaan zich aan te melden bij een multi tenant Azure AD-ID-provider met behulp van aangepast beleid](active-directory-b2c-setup-commonaad-custom.md)
+- [Micro soft-account (MSA) toevoegen als een id-provider met behulp van aangepast beleid](identity-provider-microsoft-account-custom.md)
+- [Aanmelden met Azure AD-accounts](identity-provider-azure-ad-single-tenant-custom.md)
+- [Gebruikers toestaan zich aan te melden bij een multi tenant Azure AD-ID-provider met behulp van aangepast beleid](identity-provider-azure-ad-multi-tenant-custom.md)

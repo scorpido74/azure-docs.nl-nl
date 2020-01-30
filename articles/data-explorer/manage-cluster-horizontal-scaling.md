@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 52a9c0a13723361bbc93362cdd9e2c73ef0372f2
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 8ab192957ead806b4bb3ae8e7395589f3b1ecbbe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942236"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833291"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Horizon taal schalen van het cluster beheren (uitschalen) in azure Data Explorer voor het wijzigen van de vraag
 
@@ -31,7 +31,7 @@ Als u horizon taal schalen gebruikt, kunt u het aantal exemplaren automatisch sc
 
 2. Selecteer in het venster **uitschalen** de gewenste methode voor automatisch schalen: **hand matig schalen**, **geoptimaliseerd**automatisch schalen of **aangepast automatisch schalen**.
 
-### <a name="manual-scale"></a>Handmatig schalen
+### <a name="manual-scale"></a>Hand matig schalen
 
 Hand matig schalen is de standaard instelling tijdens het maken van het cluster. Het cluster heeft een statische capaciteit die niet automatisch wordt gewijzigd. U selecteert de statische capaciteit met behulp van de **instantie aantal exemplaren** . De schaal van het cluster blijft in die instelling totdat u een andere wijziging aanbrengt.
 
@@ -58,9 +58,10 @@ Geoptimaliseerd automatisch schalen wordt gestart. De bijbehorende acties zijn n
 Wanneer uw cluster de status over het gebruik benadert, kunt u uitschalen om optimale prestaties te behouden. Uitschalen vindt plaats wanneer:
 * Het aantal cluster exemplaren ligt onder het maximum aantal exemplaren dat door de gebruiker is gedefinieerd.
 * Het cache gebruik is gedurende een uur hoog.
+* De CPU is gedurende een uur hoog.
 
 > [!NOTE]
-> De scale out-logica houdt momenteel geen rekening met het opname gebruik en CPU-metrische gegevens. Als deze metrische gegevens belang rijk zijn voor uw use-case, gebruikt u [aangepaste automatisch schalen](#custom-autoscale).
+> De schaal van de logica voor het opschalen van gegevens neemt momenteel geen rekening met de metrische opname capaciteit. Als deze waarde belang rijk is voor uw use-case, gebruikt u [aangepaste automatisch schalen](#custom-autoscale).
 
 **Schalen in**
 
@@ -78,13 +79,13 @@ Als uw cluster de status onder gebruik nadert, kunt u inschalen om de kosten te 
 > [!NOTE]
 > Voor de schaal van logica is momenteel een evaluatie van zeven dagen vereist voordat de implementatie van een geoptimaliseerde schaal in kan worden geïmplementeerd. Deze evaluatie vindt één keer per 24 uur plaats. Als er een snelle wijziging nodig is, gebruikt u [hand matig schalen](#manual-scale).
 
-### <a name="custom-autoscale"></a>Aangepaste automatische schaalaanpassing
+### <a name="custom-autoscale"></a>Aangepaste automatisch schalen
 
 Met aangepaste automatisch schalen kunt u uw cluster dynamisch schalen op basis van de metrische gegevens die u opgeeft. In de volgende afbeelding ziet u de stroom en de stappen voor het configureren van aangepaste automatisch schalen. Raadpleeg de afbeelding voor meer informatie.
 
 1. Voer in het vak **instellings naam automatisch schalen** een naam in, zoals *uitschalen: cache gebruik*. 
 
-   ![Schaalregel](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
+   ![Schaal regel](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
 2. Voor **schaal modus**selecteert u **schalen op basis van een metriek**. Deze modus biedt dynamische schaling. U kunt ook **schalen naar een specifiek aantal instanties**selecteren.
 

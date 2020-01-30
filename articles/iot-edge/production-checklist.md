@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 58959310a0daec3835585f64c53f2b8853eb553e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bb31a10623bd5e8ea9a406b37acf84995774045c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548591"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772310"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Voorbereidingen voor het implementeren van uw IoT Edge-oplossing in productie
 
@@ -39,7 +39,7 @@ Elke IoT Edge-apparaat in de productieomgeving moet een certificaat apparaten ce
 
 Zie voor meer informatie over de rol van het CA-apparaatcertificaat, [hoe Azure IoT Edge maakt gebruik van certificaten](iot-edge-certs.md).
 
-Zie [Production certificaten installeren op een IOT edge-apparaat](how-to-create-transparent-gateway.md)voor meer informatie over het installeren van certificaten op een IOT edge apparaat en om ernaar te verwijzen vanuit het bestand config. yaml.
+Zie [Production certificaten installeren op een IOT edge-apparaat](how-to-install-production-certificates.md)voor meer informatie over het installeren van certificaten op een IOT edge apparaat en om ernaar te verwijzen vanuit het bestand config. yaml.
 
 ### <a name="have-a-device-management-plan"></a>Plan voor een apparaat hebt
 

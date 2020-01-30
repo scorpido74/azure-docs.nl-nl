@@ -5,19 +5,19 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 56765fa16bc1ea96f1429b72fded38c4385e65ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452110"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774477"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Een Service Fabric cluster beschrijven met cluster resource manager
 De functie cluster resource manager van Azure Service Fabric biedt verschillende methoden voor het beschrijven van een cluster:
 
 * Foutdomeinen
 * Upgrade domeinen
-* Knooppunteigenschappen
+* Knooppunt eigenschappen
 * Knooppunt capaciteit
 
 Tijdens runtime gebruikt cluster resource manager deze informatie om te zorgen voor een hoge Beschik baarheid van de services die in het cluster worden uitgevoerd. Bij het afdwingen van deze belang rijke regels wordt er ook geprobeerd het Resource verbruik in het cluster te optimaliseren.
@@ -375,7 +375,7 @@ De waarde die in de knooppunt eigenschap is opgegeven, kan een teken reeks, een 
 
 * Voorwaardelijke controles voor het maken van specifieke instructies:
 
-  | Rekeningoverzicht | Syntaxis |
+  | rekeningen | Syntaxis |
   | --- |:---:|
   | "gelijk aan" | "==" |
   | is niet gelijk aan | "!=" |
@@ -386,7 +386,7 @@ De waarde die in de knooppunt eigenschap is opgegeven, kan een teken reeks, een 
 
 * Booleaanse instructies voor groepering en logische bewerkingen:
 
-  | Rekeningoverzicht | Syntaxis |
+  | rekeningen | Syntaxis |
   | --- |:---:|
   | maar | "&&" |
   | of | "&#124;&#124;" |
@@ -472,7 +472,7 @@ De eerste keer dat de computers niet overbelast zijn. Dit betekent dat machines 
 
 Ten tweede is er sprake van Balancing en optimalisatie, wat van essentieel belang is voor het efficiënt uitvoeren van services. Met rendabele of prestatie gevoelige service aanbiedingen kunnen bepaalde knoop punten niet worden warme wanneer anderen koud zijn. Hot knoop punten leiden tot bron conflicten en slechte prestaties. Koude knoop punten vertegenwoordigen verspilde resources en verhoogde kosten. 
 
-Service Fabric geeft resources als *metrische gegevens*. Metrische gegevens zijn een logische of fysieke resource die u wilt beschrijven Service Fabric. Voor beelden van metrische gegevens zijn ' WorkQueueDepth ' of ' MemoryInMb '. Zie [resource governance](service-fabric-resource-governance.md)voor informatie over de fysieke resources die service Fabric kunnen bepalen op knoop punten. Zie [dit artikel](service-fabric-cluster-resource-manager-metrics.md)voor meer informatie over het configureren van aangepaste metrische gegevens en het gebruik ervan.
+Service Fabric geeft resources als *metrische gegevens*. Metrische gegevens zijn een logische of fysieke resource die u wilt beschrijven Service Fabric. Voor beelden van metrische gegevens zijn ' WorkQueueDepth ' of ' MemoryInMb '. Zie [resource governance](service-fabric-resource-governance.md)voor informatie over de fysieke resources die service Fabric kunnen bepalen op knoop punten. Zie [dit artikel](service-fabric-cluster-resource-manager-metrics.md)voor meer informatie over de standaard waarden die worden gebruikt door cluster resource manager en het configureren van aangepaste metrische gegevens.
 
 Metrische gegevens verschillen van plaatsings beperkingen en eigenschappen van knoop punten. Knooppunt eigenschappen zijn statische descriptoren van de knoop punten zelf. Metrische gegevens beschrijven resources die knoop punten hebben en die services verbruiken wanneer ze op een knoop punt worden uitgevoerd. Een eigenschap van een knoop punt kan **HasSSD** zijn en kan worden ingesteld op True of false. De hoeveelheid beschik bare ruimte op die SSD en hoeveel er door Services wordt verbruikt, is een metrische waarde zoals ' DriveSpaceInMb '. 
 

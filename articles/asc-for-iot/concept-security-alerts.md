@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2019
+ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: aaf3111270687e3921d542d87981a25868842f93
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ac0152d0164c3577ade3d862e9512b920c451518
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554928"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766512"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center voor IoT-beveiligings waarschuwingen
 
@@ -30,11 +30,11 @@ Een waarschuwing fungeert als een indicatie van mogelijke inbreuk en moet worden
 
 In dit artikel vindt u een lijst met ingebouwde waarschuwingen die kunnen worden geactiveerd op uw IoT Hub en/of IoT-apparaten.
 Naast ingebouwde waarschuwingen kunt u met Azure Security Center voor IoT aangepaste waarschuwingen definiëren op basis van het verwachte gedrag van IoT Hub en/of apparaat.
-Zie [aangepaste waarschuwingen maken](quickstart-create-custom-alerts.md)voor meer informatie.
+Zie [aanpas bare waarschuwingen](concept-customizable-security-alerts.md)voor meer informatie.
 
 ## <a name="built-in-alerts-for-iot-devices"></a>Ingebouwde waarschuwingen voor IoT-apparaten
 
-| Naam | Ernst | Gegevens bron | Beschrijving | Voorgestelde herstels tappen|                  
+| Name | Ernst | Gegevensbron | Beschrijving | Voorgestelde herstels tappen|                  
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |**Hoge** urgentie|  |  |  |
 |   Binaire opdracht regel   | Hoog | Agent | Het binaire bestand van de LA Linux-module wordt aangeroepen/uitgevoerd vanaf de opdracht regel. Dit proces kan legitieme activiteiten zijn, of een indicatie dat het apparaat is aangetast.|   Controleer de opdracht met de gebruiker die het heeft uitgevoerd en controleer of dit iets goed is verwacht om te worden uitgevoerd op het apparaat. Als dat niet het geval is, kunt u de waarschuwing escaleren naar uw gegevens beveiligings team. |
@@ -85,16 +85,16 @@ Zie [aangepaste waarschuwingen maken](quickstart-create-custom-alerts.md)voor me
 
 ## <a name="built-in-alerts-for-iot-hub"></a>Ingebouwde waarschuwingen voor IoT Hub
 
-| Ernst | Naam                                                                         | Beschrijving | Voorgestelde herstel|
+| Ernst | Name                                                                         | Beschrijving | Voorgestelde herstel|
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 |**Gemiddelde** Ernst|  |  |  |
-|  Er is een nieuw certificaat toegevoegd aan een IoT Hub  | Middelgroot                                     |Er is een certificaat met de naam \'% {DescCertificateName} \' toegevoegd aan IoT Hub \'% {DescIoTHubName} \'. Als deze actie is uitgevoerd door een niet-geautoriseerde partij, kan dit wijzen op schadelijke activiteiten.| 1. Controleer of het certificaat is toegevoegd door een geautoriseerde partij. <br> 2. als deze niet is toegevoegd door een geautoriseerde partij, verwijdert u het certificaat en verdeelt u de waarschuwing naar het beveiligings team van de organisatie.  |
-|  Het certificaat is verwijderd uit een IoT Hub  | Middelgroot                             | Een certificaat met de naam \'% {DescCertificateName} \' is verwijderd uit IoT Hub \'% {DescIoTHubName} \'. Als deze actie is uitgevoerd door een niet-geautoriseerde partij, kan dit wijzen op een schadelijke activiteit.| 1. Controleer of het certificaat is verwijderd door een bevoegde partij. <br> 2. als het certificaat niet is verwijderd door een bevoegde partij, voegt u het certificaat dan toe en doorstuurt u de waarschuwing naar het beveiligings team van de organisatie. |
-| Er is een niet-geslaagde poging gedetecteerd om een certificaat toe te voegen aan een IoT Hub   | Middelgroot    | Er is een mislukte poging gedaan om het certificaat \'% {DescCertificateName} \' toe te voegen IoT Hub \'% {DescIoTHubName} \'. Als deze actie is uitgevoerd door een niet-geautoriseerde partij, kan dit wijzen op schadelijke activiteiten.|   Zorg ervoor dat machtigingen voor het wijzigen van certificaten alleen worden verleend aan geautoriseerde partijen.  |
-|  Er is een niet-geslaagde poging gedetecteerd om een certificaat uit een IoT Hub te verwijderen | Middelgroot  | Er is een mislukte poging gedaan om het certificaat \'% {DescCertificateName} \' te verwijderen van IoT Hub \'% {DescIoTHubName} \'. Als deze actie is uitgevoerd door een niet-geautoriseerde partij, kan dit wijzen op schadelijke activiteiten. |Zorg ervoor dat machtigingen voor het wijzigen van certificaten alleen worden verleend aan een gemachtigde partij.
+|  Er is een nieuw certificaat toegevoegd aan een IoT Hub  | Middelgroot                                     |Er is een certificaat met de naam \'% {DescCertificateName}\' toegevoegd aan IoT Hub \'% {DescIoTHubName}\'. Als deze actie is uitgevoerd door een niet-geautoriseerde partij, kan dit wijzen op schadelijke activiteiten.| 1. Controleer of het certificaat is toegevoegd door een geautoriseerde partij. <br> 2. als deze niet is toegevoegd door een geautoriseerde partij, verwijdert u het certificaat en verdeelt u de waarschuwing naar het beveiligings team van de organisatie.  |
+|  Het certificaat is verwijderd uit een IoT Hub  | Middelgroot                             | Een certificaat met de naam \'% {DescCertificateName}\' is verwijderd uit IoT Hub \'% {DescIoTHubName}\'. Als deze actie is uitgevoerd door een niet-geautoriseerde partij, kan dit wijzen op een schadelijke activiteit.| 1. Controleer of het certificaat is verwijderd door een bevoegde partij. <br> 2. als het certificaat niet is verwijderd door een bevoegde partij, voegt u het certificaat dan toe en doorstuurt u de waarschuwing naar het beveiligings team van de organisatie. |
+| Er is een niet-geslaagde poging gedetecteerd om een certificaat toe te voegen aan een IoT Hub   | Middelgroot    | Er is een mislukte poging gedaan om het certificaat \'% {DescCertificateName}\' toe te voegen IoT Hub \'% {DescIoTHubName}\'. Als deze actie is uitgevoerd door een niet-geautoriseerde partij, kan dit wijzen op schadelijke activiteiten.|   Zorg ervoor dat machtigingen voor het wijzigen van certificaten alleen worden verleend aan geautoriseerde partijen.  |
+|  Er is een niet-geslaagde poging gedetecteerd om een certificaat uit een IoT Hub te verwijderen | Middelgroot  | Er is een mislukte poging gedaan om het certificaat \'% {DescCertificateName}\' te verwijderen van IoT Hub \'% {DescIoTHubName}\'. Als deze actie is uitgevoerd door een niet-geautoriseerde partij, kan dit wijzen op schadelijke activiteiten. |Zorg ervoor dat machtigingen voor het wijzigen van certificaten alleen worden verleend aan een gemachtigde partij.
 |**Lage** urgentie|  |  |  |
 |   Er is geprobeerd een diagnostische instelling van een gedetecteerde IoT Hub toe te voegen of te bewerken   | Laag     | Poging om de diagnostische instellingen van een IoT Hub toe te voegen of te bewerken is gedetecteerd. Met Diagnostische instellingen kunt u de activiteiten sporen voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast. Als deze actie niet is uitgevoerd door een bevoegde partij, kan dit wijzen op schadelijke activiteiten.  |1. Controleer of het certificaat is verwijderd door een bevoegde partij.<br> 2. als het certificaat niet is verwijderd door een bevoegde partij, voegt u het certificaat opnieuw toe en geeft u de waarschuwing door aan uw gegevens beveiligings team.
-|   Poging tot het verwijderen van een diagnostische instelling van een gedetecteerde IoT Hub        | Laag      | Er is% {DescAttemptStatusMessage} \' poging een diagnostische instelling toe te voegen of te bewerken \'% {DescDiagnosticSettingName} \' van IoT Hub \'% {DescIoTHubName} \'. Met de diagnostische instelling kunt u de activiteiten sporen voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast. Als deze actie niet is uitgevoerd door een bevoegde partij, kan dit wijzen op een schadelijke activiteit. |Zorg ervoor dat machtigingen voor het wijzigen van diagnostische instellingen alleen worden toegekend aan een geautoriseerde partij.
+|   Poging tot het verwijderen van een diagnostische instelling van een gedetecteerde IoT Hub        | Laag      | Er is% {DescAttemptStatusMessage}\' poging een diagnostische instelling toe te voegen of te bewerken \'% {DescDiagnosticSettingName}\' van IoT Hub \'% {DescIoTHubName}\'. Met de diagnostische instelling kunt u de activiteiten sporen voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast. Als deze actie niet is uitgevoerd door een bevoegde partij, kan dit wijzen op een schadelijke activiteit. |Zorg ervoor dat machtigingen voor het wijzigen van diagnostische instellingen alleen worden toegekend aan een geautoriseerde partij.
 |
 
 ## <a name="next-steps"></a>Volgende stappen

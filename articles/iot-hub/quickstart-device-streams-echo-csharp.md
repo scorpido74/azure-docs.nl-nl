@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 14139d56a9a733a284d0ec49cabcb3ff7ce67fce
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ee709919f550a8b9afaf56e5e071522a494348ac
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084300"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773810"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Snelstartgids: communiceren met een apparaat-app C# in via IOT hub Device streams (preview)
 
@@ -31,7 +31,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 ## <a name="prerequisites"></a>Vereisten
 
 * De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
-  * US - centraal
+  * VS - centraal
   * Centrale VS-EUAP
   * Europa - noord
   * Azië - zuidoost
@@ -50,7 +50,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
     az extension add --name azure-cli-iot-ext
     ```
 
-* [Down load het C# voorbeeld project](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) en pak het zip-archief uit. U hebt deze zowel aan de kant van het apparaat als aan de kant van de service nodig.
+* [Down load de Azure C# IOT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) -voor beelden en pak het zip-archief uit. U hebt deze zowel aan de kant van het apparaat als aan de kant van de service nodig.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 

@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB Table-API .NET Standard SDK & resources
 description: Meer informatie over de Azure Cosmos DB Table-API en de .NET Standard-SDK, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen elke versie.
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: c1422b6411fc60383cffa6c3082108bb940c4343
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 48fd85e27feb3d0c7f7f722dbbd502be55684385
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996223"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771592"
 ---
-# <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tabel .NET Standard API: Down load en release-opmerkingen
+# <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: Download-en release-opmerkingen
 > [!div class="op_single_selector"]
 > 
 > * [.NET](table-sdk-dotnet.md)
@@ -88,12 +88,12 @@ Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het bui
 In deze platformoverschrijdende .NET Standard-bibliotheek [micro soft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) wordt de .NET Framework bibliotheek [micro soft. Azure. CosmosDB. table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)vervangen.
 
 ### <a name="200-series"></a>2.0.0-serie
-| Version | Releasedatum | Vervaldatum |
+| Versie | Releasedatum | Vervaldatum |
 | --- | --- | --- |
 | [2.0.0-Preview](#2.0.0-preview) |Auguest 22, 2019 |--- |
 
 ### <a name="100-series"></a>1.0.0-serie
-| Version | Releasedatum | Vervaldatum |
+| Versie | Releasedatum | Vervaldatum |
 | --- | --- | --- |
 | [1.0.5](#1.0.5) |13 september 2019 |--- |
 | [1.0.5-preview](#1.0.5-preview) |Auguest 20, 2019 |--- |

@@ -3,7 +3,7 @@ title: Azure-ondersteuning voor virtuele machines van de 2e generatie
 description: Overzicht van Azure-ondersteuning voor virtuele machines van de 2e generatie
 services: virtual-machines-windows
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 12/03/2019
-ms.author: lahugh
-ms.openlocfilehash: 6f03826bf0b82150fa89ad6e17cbcb76f98bb835
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/28/2020
+ms.author: jushiman
+ms.openlocfilehash: ace08d95e1f2eb5a6e7252ecdf505e282b04ddf8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790033"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837342"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -30,7 +30,7 @@ Vm's van generatie 2 gebruiken de nieuwe op UEFI gebaseerde opstart architectuur
 
 ## <a name="generation-2-vm-sizes"></a>VM-grootten van generatie 2
 
-Virtuele machines van de eerste generatie worden ondersteund door alle VM-grootten in Azure. Azure biedt nu ondersteuning voor generatie 2 voor de volgende geselecteerde VM-serie:
+Virtuele machines van de eerste generatie worden ondersteund door alle VM-grootten in azure (met uitzonde ring van Vm's uit de Mv2-serie). Azure biedt nu ondersteuning voor generatie 2 voor de volgende geselecteerde VM-serie:
 
 * [B-serie](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [DC-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
@@ -123,6 +123,12 @@ Gebruik bijvoorbeeld de volgende Power shell-cmdlet om een lijst op te halen van
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+U kunt ook de Azure CLI gebruiken voor een overzicht van alle beschik bare installatie kopieën van de tweede generatie, vermeld door **Publisher**.
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 Als u een virtuele machine met Windows Server 2012 als besturings systeem maakt, selecteert u de VM-SKU van generatie 1 (BIOS) of generatie 2 (UEFI), die er als volgt uitziet:

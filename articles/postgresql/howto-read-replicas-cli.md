@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: bb2c83757bd86d02a93c52bacdd03ce89186614e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719769"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774805"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Maak en beheer Lees replica's vanuit Azure CLI, REST API
 
@@ -38,8 +38,8 @@ De para meter `azure.replication_support` moet worden ingesteld op **replica** o
    ```
 
 > [!NOTE]
-> Als u de fout ' ongeldige waarde gegeven ' krijgt tijdens het instellen van Azure. replication_support vanuit de Azure CLI, is het waarschijnlijk dat uw server standaard al een REPLICA heeft ingesteld. Er wordt voor komen dat deze instelling correct wordt weer gegeven op nieuwere servers waarbij REPLICA de interne standaard is.
-> U kunt de stappen voor het voorbereiden van de hoofd stap overs Laan en de replica maken.
+> Als u de fout ' ongeldige waarde gegeven ' krijgt tijdens het instellen van Azure. replication_support vanuit de Azure CLI, is het waarschijnlijk dat uw server standaard al een REPLICA heeft ingesteld. Er wordt voor komen dat deze instelling correct wordt weer gegeven op nieuwere servers waarbij REPLICA de interne standaard is. <br><br>
+> U kunt de stappen voor het voorbereiden van de hoofd stap overs Laan en de replica maken. <br><br>
 > Als u wilt bevestigen dat uw server zich in deze categorie bevindt, gaat u naar de pagina replicatie van de server in de Azure Portal. ' Replicatie uitschakelen ' wordt grijs weer gegeven en ' replica toevoegen ' is actief op de werk balk.
 
 2. Start de server opnieuw op om de wijziging toe te passen.

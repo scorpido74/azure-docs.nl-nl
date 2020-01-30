@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 073a766662b2ead4b816276fa7fda6dc5e6caca7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6c7981d15acf2b2b71dfb4234f85b738efe62ce0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954650"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767949"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Real-time sensor gegevens visualiseren vanuit uw Azure IoT hub in een webtoepassing
 
@@ -165,10 +165,10 @@ In deze sectie maakt u een web-app in App Service en implementeert u uw code hie
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Richt nu een web-app in uw App Service-abonnement in. Met de para meter `--deployment-local-git` kan de code van de web-app worden geüpload en geïmplementeerd vanuit een Git-opslag plaats op uw lokale computer. De naam van uw web-app moet globaal uniek zijn en mag alleen bestaan uit hoofd letters, cijfers en afbreek streepjes.
+2. Richt nu een web-app in uw App Service-abonnement in. Met de para meter `--deployment-local-git` kan de code van de web-app worden geüpload en geïmplementeerd vanuit een Git-opslag plaats op uw lokale computer. De naam van uw web-app moet globaal uniek zijn en mag alleen bestaan uit hoofd letters, cijfers en afbreek streepjes. Zorg ervoor dat u het knoop punt versie 10,6 of hoger opgeeft voor de para meter `--runtime`, afhankelijk van de versie van de node. js-runtime die u gebruikt. U kunt de opdracht `az webapp list-runtimes` gebruiken om een lijst met ondersteunde Runtimes weer te geven.
 
    ```azurecli-interactive
-   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --deployment-local-git
+   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
 3. Voeg nu toepassings instellingen toe voor de omgevings variabelen waarmee de IoT hub-connection string en de Event hub-Consumer groep worden opgegeven. Afzonderlijke instellingen zijn ruimte gescheiden in de para meter `-settings`. Gebruik de service connection string voor uw IoT-hub en de Consumer-groep die u eerder in deze zelf studie hebt gemaakt. De waarden worden niet geciteerd.

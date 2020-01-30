@@ -3,18 +3,18 @@ title: Aangepaste gegevens op een raster kaart weer geven | Microsoft Azure kaar
 description: In dit artikel leert u hoe u aangepaste gegevens op een raster kaart kunt weer geven met behulp van Microsoft Azure Maps statische installatie kopie service.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 07/29/2019
+ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c052ae1f7bab902dcd22b3cc081907468874b35c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911482"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766041"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Aangepaste gegevens op een raster kaart weer geven
 
@@ -29,7 +29,7 @@ Als u aangepaste markerings punten, labels en geometrie-overlays wilt weer geven
 
 ### <a name="create-an-azure-maps-account"></a>Een Azure Maps-account maken
 
-Als u de procedures in dit artikel wilt uitvoeren, moet u eerst een Azure Maps-account maken en de account sleutel van Maps ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
+Als u de procedures in dit artikel wilt uitvoeren, moet u eerst een Azure Maps account maken en de sleutel van uw Maps-account ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Markerings punten met labels en een aangepaste installatie kopie weer geven
@@ -43,7 +43,7 @@ Voer de volgende stappen uit om de markerings punten met labels en een aangepast
 
 1. Maak een verzameling waarin de aanvragen worden opgeslagen. Selecteer in de app postman de optie **Nieuw**. Selecteer **verzameling**in het venster **Nieuw maken** . Geef de verzameling een naam en selecteer de knop **maken** . 
 
-2. Als u de aanvraag wilt maken, selecteert u **Nieuw** opnieuw. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer een **aanvraag naam** in voor de markerings punten, selecteer de verzameling die u in de vorige stap hebt gemaakt als de locatie waar u de aanvraag wilt opslaan en selecteer vervolgens **Opslaan**.
+2. Als u de aanvraag wilt maken, selecteert u **Nieuw** opnieuw. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer een **aanvraag naam** in voor de markerings punten. Selecteer de verzameling die u in de vorige stap hebt gemaakt als de locatie waar u de aanvraag wilt opslaan en selecteer vervolgens **Opslaan**.
     
     ![Een aanvraag maken in postman](./media/how-to-render-custom-data/postman-new.png)
 
@@ -142,13 +142,13 @@ U kunt ook het pad en de locatie gegevens van de pincode verkrijgen met behulp v
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-5. Kopieer uw status-URI en voeg de para meter van de abonnements sleutel toe met de waarde van uw Azure Maps account abonnements sleutel die u hebt gebruikt voor het uploaden van de gegevens. De URI-indeling voor de status moet er als volgt uitzien:
+5. Kopieer uw status-URI en voeg de para meter van de abonnements sleutel toe met de waarde van uw abonnements sleutel voor uw Azure Maps account. Gebruik dezelfde abonnements sleutel voor het account die u hebt gebruikt voor het uploaden van de gegevens. De URI-indeling voor de status moet er als volgt uitzien:
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. Als u de udId wilt weer geven, opent u een nieuw tabblad in de app postman en selecteert u HTTP-methode ophalen op het tabblad opbouw functie en maakt u een GET-aanvraag op de status-URI. Als het uploaden van uw gegevens is geslaagd, ontvangt u een udId in de antwoord tekst. Kopieer het udId.
+6. Als u de udId wilt ophalen, opent u een nieuw tabblad in de app postman en selecteert u HTTP-methode ophalen op het tabblad opbouw functie en maakt u een GET-aanvraag op de status-URI. Als het uploaden van uw gegevens is geslaagd, ontvangt u een udId in de antwoord tekst. Kopieer het udId.
 
    ```JSON
    {
@@ -156,7 +156,7 @@ U kunt ook het pad en de locatie gegevens van de pincode verkrijgen met behulp v
    }
    ```
 
-7. Gebruik de `udId` waarde die is ontvangen van de API voor het uploaden van gegevens om functies op de kaart weer te geven. Als u dit wilt doen, opent u een nieuw tabblad in de verzameling die u in de voor gaande sectie hebt gemaakt. Selecteer de methode HTTP ophalen op het tabblad opbouw functie en voer deze URL in om een GET-aanvraag te maken:
+7. Gebruik de `udId` waarde die is ontvangen van de API voor het uploaden van gegevens om functies op de kaart weer te geven. Als u dit wilt doen, opent u een nieuw tabblad in de verzameling die u in de voor gaande sectie hebt gemaakt. Selecteer de methode HTTP ophalen op het tabblad opbouw functie, vervang de {Subscription-Key} en {udId} door de waarden en voer deze URL in om een GET-aanvraag te maken:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -192,7 +192,7 @@ U kunt het uiterlijk van een veelhoek wijzigen met behulp van stijl wijzigingen 
 > Voor de procedure in deze sectie is een Azure Maps-account vereist in de prijs categorie S1.
 
 
-U kunt markerings punten en hun labels groter of kleiner maken met behulp van de `sc` wijzigings stijl voor schalen. Deze modificator heeft een waarde die groter is dan nul. Een waarde van 1 is de standaard schaal. Waarden die groter zijn dan 1 maken de pincodes groter en waarden kleiner dan 1 maken deze kleiner. Zie [para meters voor statisch installatie kopie-pad](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)voor meer informatie over stijl parameters.
+U kunt de weer gave van de pincodes wijzigen door aanpassings opties voor stijlen toe te voegen. Als u bijvoorbeeld markerings punten en de labels groter of kleiner wilt maken, gebruikt u de para meter ' schaal stijl ' `sc`. Deze modificator heeft een waarde die groter is dan nul. Een waarde van 1 is de standaard schaal. Waarden die groter zijn dan 1 maken de pincodes groter en waarden kleiner dan 1 maken deze kleiner. Zie [para meters voor statisch installatie kopie-pad](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)voor meer informatie over stijl parameters.
 
 
 Volg deze stappen om een cirkel en markerings punten met aangepaste labels weer te geven:
@@ -206,6 +206,18 @@ Volg deze stappen om een cirkel en markerings punten met aangepaste labels weer 
     Hier is de reactie afbeelding:
 
     ![Een cirkel met aangepaste markerings punten weer geven](./media/how-to-render-custom-data/circle-custom-pins.png)
+
+2. Als u de kleur van de markerings punten van de laatste stap wilt wijzigen, wijzigt u de stijl co. Bekijk `pins=default|la15+50|al0.66|lc003C62|co002D62|`, de huidige kleur wordt opgegeven als #002D62 in CSS. Stel dat u deze wilt wijzigen in #41d42a. Schrijf de nieuwe kleur waarde na de specificatie ' co ', bijvoorbeeld: `pins=default|la15+50|al0.66|lc003C62|co41D42A|`. Een nieuwe GET-aanvraag maken:
+
+    ```HTTP
+    https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co41D42A||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
+    ```
+
+    Dit is de reactie afbeelding na het wijzigen van de kleuren van de pincodes:
+
+    ![Een cirkel met bijgewerkte markerings punten weer geven](./media/how-to-render-custom-data/circle-updated-pins.png)
+
+Op dezelfde manier kunt u andere stijl aanpassingen wijzigen, toevoegen en verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

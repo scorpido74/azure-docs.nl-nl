@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974096"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769100"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning Compute-instantie?
 
@@ -117,7 +117,7 @@ Selecteer in uw werk ruimte in Azure Machine Learning Studio **Compute**en selec
 
 U kunt de volgende acties uitvoeren:
 
-* Maak een reken instantie. Geef de naam, het VM-type van Azure, inclusief Gpu's, SSH-toegang inschakelen/uitschakelen en configureer de instellingen van het virtuele netwerk optioneel. U kunt ook rechtstreeks vanuit geïntegreerde notebooks, Azure Portal, Resource Manager-sjabloon of Azure Machine Learning SDK een exemplaar maken. Het quotum toegewezen kernen per regio dat van toepassing is op het maken van een reken instantie is Unified en gedeeld met Azure Machine Learning quotum voor reken clusters.
+* Maak een reken instantie. Geef de naam, het type van de Azure-VM op, inclusief Gpu's (het VM-type kan niet worden gewijzigd na het maken), schakel SSH-toegang in/uit en configureer de instellingen voor het virtuele netwerk optioneel. U kunt ook rechtstreeks vanuit geïntegreerde notebooks, Azure Portal, Resource Manager-sjabloon of Azure Machine Learning SDK een exemplaar maken. Het quotum toegewezen kernen per regio dat van toepassing is op het maken van een reken instantie is Unified en gedeeld met Azure Machine Learning quotum voor reken clusters.
 * Het tabblad Compute instances vernieuwen
 * Een reken instantie starten, stoppen en opnieuw starten
 * Een reken instantie verwijderen
@@ -138,7 +138,7 @@ U kunt ook een exemplaar maken
 
 Het quotum toegewezen kernen per regio, dat van toepassing is op het maken van een reken instantie, wordt gecombineerd en gedeeld met Azure Machine Learning trainings cluster quota. 
 
-## <a name="compute-target"></a>Rekendoel
+## <a name="compute-target"></a>Reken doel
 
 Reken instanties kunnen worden gebruikt als een [trainings berekenings doel](concept-compute-target.md#train) vergelijkbaar met Azure machine learning Compute-trainings clusters. Richt een multi-GPU-VM in om gedistribueerde trainings taken uit te voeren met tensor flow/PyTorch-schattingen. U kunt ook een uitvoerings configuratie maken en deze gebruiken om uw experiment uit te voeren op reken exemplaar. U kunt reken instantie gebruiken als een lokaal doel voor het afwijzen van de implementatie voor scenario's voor testen en fout opsporing.
 

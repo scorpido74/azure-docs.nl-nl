@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263418"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765720"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt er door Azure Monitor bewaakt?
 In dit artikel worden de verschillende toepassingen en services beschreven die door Azure Monitor worden bewaakt. 
@@ -42,7 +42,7 @@ Oplossingen zijn gebaseerd op logboek query's en weer gaven die zijn aangepast v
 |:---|:---|
 | [Status van agent](insights/solution-agenthealth.md) | Analyseer de status en configuratie van Log Analytics agents. |
 | [Waarschuwingsbeheer](platform/alert-management-solution.md) | Analyseer waarschuwingen die zijn verzameld van System Center Operations Manager, nagios of zabbix. |
-| [Serviceoverzicht](insights/service-map.md) | Detecteert automatisch toepassings onderdelen op Windows-en Linux-systemen en wijst de communicatie tussen services toe. Dezelfde functionaliteit vindt u in   |
+| [Serviceoverzicht](insights/service-map.md) | Detecteert automatisch toepassings onderdelen op Windows-en Linux-systemen en wijst de communicatie tussen services toe. |
 
 
 
@@ -63,7 +63,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Advisor | Nee | Nee | Nee |  |
 |AI Builder | Nee | Nee | Nee |  |
 |Analysis Services | Ja | Ja | Nee |  |
-|API for FHIR | Nee | Nee | Nee |  |
+|API voor FHIR | Nee | Nee | Nee |  |
 |API Management | Ja | Ja | Nee |  |
 |App Service | Ja | Ja | Nee |  |
 |AppConfig | Nee | Nee | Nee |  |
@@ -91,16 +91,16 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Data Explorer | Ja | Ja | Nee |  |
 |Data Factory | Ja | Ja | Nee |  |
 |Data Factory v2 | Nee | Ja | Nee |  |
-|Data Share | Nee | Nee | Nee |  |
-|Database for MariaDB | Ja | Ja | Nee |  |
-|Database for MySQL | Ja | Ja | Nee |  |
-|Database for PostgreSQL | Ja | Ja | Nee |  |
+|Gegevens share | Nee | Nee | Nee |  |
+|Data Base voor MariaDB | Ja | Ja | Nee |  |
+|Data Base voor MySQL | Ja | Ja | Nee |  |
+|Data Base voor PostgreSQL | Ja | Ja | Nee |  |
 |Database Migration Service | Nee | Nee | Nee |  |
 |Databricks | Nee | Ja | Nee |  |
 |DDoS-beveiliging | Ja | Ja | Nee |  |
 |DevOps | Nee | Nee | Nee |  |
 |DNS | Ja | Nee | Nee |  |
-|Domeinnamen | Nee | Nee | Nee |  |
+|Domein namen | Nee | Nee | Nee |  |
 |DPS | Nee | Nee | Nee |  |
 |Dynamics 365-klant betrokkenheid | Nee | Nee | Nee |  |
 |Dynamics 365-Financiën en-bewerkingen | Nee | Nee | Nee |  |
@@ -111,7 +111,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Front Door | Ja | Ja | Nee |  |
 |Functions | Ja | Ja | Nee |  |
 |HDInsight | Nee | Ja | Nee |  |
-|HPC Cache | Nee | Nee | Nee |  |
+|HPC-cache | Nee | Nee | Nee |  |
 |Gegevensbeveiliging | Nee | Ja | Nee |  |
 |Intune | Nee | Ja | Nee |  |
 |IoT Central | Nee | Nee | Nee |  |
@@ -125,7 +125,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Kaarten  | Nee | Nee | Nee |  |
 |Media Services | Ja | Ja | Nee |  |
 |Microsoft Flow | Nee | Nee | Nee |  |
-|Microsoft Managed Desktop | Nee | Nee | Nee |  |
+|Micro soft Managed Desktop | Nee | Nee | Nee |  |
 |Microsoft PowerApps | Nee | Nee | Nee |  |
 |Microsoft Sociaal engagement | Nee | Nee | Nee |  |
 |Microsoft Stream | Ja | Ja | Nee |  |
@@ -156,7 +156,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Stack | Nee | Nee | Nee |  |
 |Storage | Ja | Nee | [Ja](insights/storage-insights-overview.md) |  |
 |Opslag cache | Nee | Nee | Nee |  |
-|Opslagsynchronisatieservices | Nee | Nee | Nee |  |
+|Opslag synchronisatie Services | Nee | Nee | Nee |  |
 |Stream Analytics | Ja | Ja | Nee |  |
 |Time Series Insights | Ja | Ja | Nee |  |
 |TINA | Nee | Nee | Nee |  |

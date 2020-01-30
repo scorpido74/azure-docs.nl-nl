@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82efda4cf53931dbf81b993b12a2927f02dfa0b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3401ed08a9332d4bb2735e536df33c201b28ca0e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711694"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841945"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Toewijzing van toepassingen op basis van kenmerken met bereik filters
 In dit artikel wordt uitgelegd hoe u bereik filters gebruikt voor het definiëren van op kenmerken gebaseerde regels die bepalen welke gebruikers worden ingericht voor een toepassing.
@@ -94,7 +94,12 @@ Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen v
    g. **regex match**. -Component retourneert ' True ' als het geëvalueerde kenmerk overeenkomt met een reguliere-expressie patroon. Bijvoorbeeld: ([1-9] [0-9]) komt overeen met een getal tussen 10 en 99.
 
    h. **geen regex-overeenkomst**. -Component retourneert ' True ' als het geëvalueerde kenmerk niet overeenkomt met een reguliere-expressie patroon.
- 
+   
+   i. **Greater_Than.** -Component retourneert ' True ' als het geëvalueerde kenmerk groter is dan de waarde. De waarde die is opgegeven voor het filter bereik moet een geheel getal zijn en het kenmerk van de gebruiker moet een geheel getal zijn [0, 1, 2,...]. 
+   
+   j. **Greater_Than_OR_EQUALS.** -Component retourneert ' True ' als het geëvalueerde kenmerk groter is dan of gelijk is aan de waarde. De waarde die is opgegeven voor het filter bereik moet een geheel getal zijn en het kenmerk van de gebruiker moet een geheel getal zijn [0, 1, 2,...]. 
+
+
 >[!IMPORTANT] 
 > De filters includes en IsMemberOf worden niet ondersteund. Deze worden binnenkort uit de gebruikers interface verwijderd.
 

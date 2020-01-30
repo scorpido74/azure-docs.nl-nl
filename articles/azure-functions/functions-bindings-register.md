@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 599becae0225bea623c383ead49cd9abcea6fff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 35df4c6c20345053bcc39a267a90a7bb1b227241
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231109"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766232"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions bindings uitbreidingen registreren
 
@@ -26,10 +26,10 @@ De volgende tabel geeft aan wanneer en hoe u bindingen registreert.
 
 | Ontwikkelomgeving |Registratie<br/> in functions 1. x  |Registratie<br/> in functies 2. x  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure-portal|Automatisch|Automatisch|
+|Azure Portal|Automatisch|Automatisch|
 |Ontwikkeling van Non-.NET-talen of lokale Azure core-Hulpprogram Ma's|Automatisch|[Azure Functions Core Tools-en uitbreidings bundels gebruiken](#extension-bundles)|
 |C#klassen bibliotheek met Visual Studio|[NuGet-hulpprogram ma's gebruiken](#vs)|[NuGet-hulpprogram ma's gebruiken](#vs)|
-|C#klassen bibliotheek met Visual Studio code|N.v.t.|[.NET Core SLI gebruiken](#vs-code)|
+|C#klassen bibliotheek met Visual Studio code|N/A|[.NET Core SLI gebruiken](#vs-code)|
 
 ## <a name="extension-bundles"></a>Uitbreidings bundels voor lokale ontwikkeling
 
@@ -62,9 +62,6 @@ Vervang `<TARGET_VERSION>` in het voor beeld door een specifieke versie van het 
 Als u `Install-Package` gebruikt om te verwijzen naar een binding, hoeft u geen [uitbreidings bundels](#extension-bundles)te gebruiken. Deze benadering is specifiek voor klassen bibliotheken die zijn gemaakt in Visual Studio.
 
 ## <a name="vs-code"></a>C# klassen bibliotheek met Visual Studio code
-
-> [!NOTE]
-> U kunt het beste [uitbreidings bundels](#extension-bundles) gebruiken om functies automatisch een compatibele set met bindings extensie pakketten te laten installeren. 
 
 In **Visual Studio code**installeert u pakketten voor een C# Class Library-project vanaf de opdracht prompt met behulp van de [DotNet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) opdracht in de .net core SLI. In het volgende voor beeld ziet u hoe u een binding toevoegt:
 

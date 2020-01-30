@@ -5,20 +5,20 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: a9c45321d12b659febfeb4913d66ea3732813918
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9b9e39776e519a91a4464532e11e85da711087b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769520"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766258"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Expressie patronen voor de binding Azure Functions
 
 Een van de krach tigste functies van [Triggers en bindingen](./functions-triggers-bindings.md) is *binding expressies*. In het bestand *Function. json* en in functie parameters en code kunt u expressies gebruiken die worden omgezet in waarden van verschillende bronnen.
 
-De meeste expressies worden geïdentificeerd door ze tussen accolades te plaatsen. In een functie voor wachtrij activering `{queueTrigger}` bijvoorbeeld omgezet in de tekst van de wachtrij bericht. Als de eigenschap `path` voor een BLOB-uitvoer binding `container/{queueTrigger}` is en de functie wordt geactiveerd door een wachtrij bericht `HelloWorld`, wordt een blob met de naam `HelloWorld` gemaakt.
+De meeste expressies worden geïdentificeerd door ze in accolades te laten teruglopen. In een functie voor wachtrij activering `{queueTrigger}` bijvoorbeeld omgezet in de tekst van de wachtrij bericht. Als de eigenschap `path` voor een BLOB-uitvoer binding `container/{queueTrigger}` is en de functie wordt geactiveerd door een wachtrij bericht `HelloWorld`, wordt een blob met de naam `HelloWorld` gemaakt.
 
-Typen bindingexpressies
+Typen bindings expressies
 
 * [App-instellingen](#binding-expressions---app-settings)
 * [Bestands naam van trigger](#trigger-file-name)
@@ -67,7 +67,7 @@ public static void Run(
 }
 ```
 
-## <a name="trigger-file-name"></a>Trigger-bestandsnaam
+## <a name="trigger-file-name"></a>Bestands naam van trigger
 
 De `path` voor een BLOB-trigger kan een patroon zijn waarmee u naar de naam van de trigger-Blob in andere bindingen en functie code kunt verwijzen. Het patroon kan ook filter criteria bevatten waarmee wordt aangegeven welke Blobs een functie aanroep kunnen activeren.
 
@@ -131,9 +131,21 @@ public static void Run(
 
 ```
 
-U kunt ook expressies maken voor delen van de bestands naam, zoals de extensie. Zie voor meer informatie over het gebruik van expressies en patronen in de teken reeks BLOB de [verwijzing naar de opslag-BLOB-binding](functions-bindings-storage-blob.md).
+U kunt ook expressies maken voor delen van de bestands naam. In het volgende voor beeld wordt de functie alleen geactiveerd voor bestands namen die overeenkomen met een patroon: `anyname-anyfile.csv`
 
-## <a name="trigger-metadata"></a>Trigger-metagegevens
+```json
+{
+    "name": "myBlob",
+    "type": "blobTrigger",
+    "direction": "in",
+    "path": "testContainerName/{date}-{filetype}.csv",
+    "connection": "OrderStorageConnection"
+}
+```
+
+Zie voor meer informatie over het gebruik van expressies en patronen in de teken reeks BLOB de [verwijzing naar de opslag-BLOB-binding](functions-bindings-storage-blob.md).
+
+## <a name="trigger-metadata"></a>Meta gegevens activeren
 
 Naast de gegevens lading die wordt verstrekt door een trigger (zoals de inhoud van het wachtrij bericht dat een functie heeft geactiveerd), bieden veel triggers aanvullende waarden voor meta gegevens. Deze waarden kunnen worden gebruikt als invoer parameters in C# en F# of in eigenschappen van het `context.bindings`-object in Java script. 
 

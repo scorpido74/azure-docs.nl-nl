@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor SAP HANA Backup
 description: In dit artikel vindt u informatie over de ondersteunde scenario's en beperkingen wanneer u Azure Backup gebruikt om back-ups te maken van SAP HANA-data bases op Azure-Vm's.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 2063da4c5210cace41454d8bdc5b12e636ba76cd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 82d844385290ab0dc2953537c1f9a3387dd7b2b2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705646"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842628"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Ondersteuningsmatrix voor back-up van SAP HANA-databases in virtuele Azure-machines
 
@@ -33,7 +33,7 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 | **Scenario**               | **Ondersteunde configuraties**                                | **Niet-ondersteunde configuraties**                              |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Topologie**               | Alleen SAP HANA die worden uitgevoerd in virtuele machines van Azure Linux                    | HANA grote instanties (HLI)                                   |
-| **Geografische gebieden**                   | **Ga**<br />**Europa** – Europa-west, Europa-noord, Frankrijk-centraal, Frankrijk-zuid, UK-zuid, UK-west, Duitsland-noord, Duitsland-West-Centraal, Zwitserland-noord, Zwitserland-West<br />**Azië en Stille Oceaan** – Australië-centraal, Australië-centraal 2, Australië-oost, Australië-Zuidoost, Japan-Oost, Japan-West, Korea-centraal, Korea-Zuid<br /><br>**Voorbeeld:**<br />**Amerikaans-Amerika** : VS-midden, VS-Oost 2, VS-Oost, Noord-Centraal VS, Zuid-Centraal VS, VS-West 2, West-Centraal VS, VS-west, Canada-centraal, Canada-oost, Brazilië-Zuid<br />**Azië en Stille Oceaan** – Azië-Oost, Zuidoost-Azië, Centraal-India, India-Zuid | China-oost, China-noord, China Oost2, China-noord 2, West-India, Centraal Zwitserland-noord, Zuid-Afrika-noord, Zuid-Afrika-west, UAE-noord, UAE-centraal, Azure Government regio's |
+| **Geografische gebieden**                   | **Ga**<br />**Europa** – Europa-west, Europa-noord, Frankrijk-centraal, UK-zuid, UK-west, Duitsland-noord, Duitsland-West-Centraal, Zwitserland-noord, Zwitserland-West<br />**Azië en Stille Oceaan** – Australië-centraal, Australië-centraal 2, Australië-oost, Australië-Zuidoost, Japan-Oost, Japan-West, Korea-centraal, Korea-Zuid<br /><br>**Voorbeeld:**<br />**Amerikaans-Amerika** : VS-midden, VS-Oost 2, Oost-VS, Noord-Centraal VS, Zuid-Centraal VS, VS-West 2, West-Centraal VS, VS-west, Canada-centraal, Canada-Oost <br />**Azië en Stille Oceaan** – Azië-Oost, Zuidoost-Azië, Centraal-India, India-Zuid | China-oost, China-noord, China Oost2, China-noord 2, West-India, Centraal Zwitserland-noord, Zuid-Afrika-noord, Zuid-Afrika-west, UAE-noord, UAE-centraal, Azure Government regio's, Frankrijk-zuid, Brazilië-zuid |
 | **Versies van besturings systemen**            | SLES 12 met SP2, SP3 of SP4                                | SLES 15, RHEL                                                |
 | **HANA-versies**          | Dit SDC op HANA 1. x, MDC op HANA 2. x < = SPS04 Rev 44            | -                                                            |
 | **HANA-implementaties**       | SAP HANA op één Azure VM-alleen omhoog schalen               | Uitschalen                                                    |

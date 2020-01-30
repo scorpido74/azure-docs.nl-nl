@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: ee5acc97e4b05a0e93f4ceee8c04b400da211b49
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552131"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769500"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory prijzen door middel van voor beelden
 
@@ -156,7 +156,7 @@ Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende i
 | Veronderstellingen voor gegevens stroom: uitvoerings tijd = 10 min + 10 min TTL | 10 \* 16 kernen van de algemene Compute met TTL van 10 |
 | Bewaak pijp lijn controleren: er is slechts 1 uitvoering uitgevoerd | 2 uitgevoerde pogingen voor het controleren van records (1 voor de pijplijn uitvoering, 1 voor de uitvoering van de activiteit) |
 
-**Totaal prijs scenario: $0,3011**
+**Totaal prijs scenario: $1,4631**
 
 - Data Factory bewerkingen = **$0,0001**
   - Lezen/schrijven = 10\*00001 = $0,0001 [1 R/W = $0,50/50.000 = 0,00001]

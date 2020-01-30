@@ -3,23 +3,21 @@ title: Azure Traffic Analytics | Microsoft Docs
 description: Meer informatie over het analyseren van stroom logboeken van de Azure-netwerk beveiligings groep met Traffic Analytics.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: kumud
+ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 91fb4551f4651f44a1f7358951c5d4cc0ff70644
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907156"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840584"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -41,7 +39,7 @@ Het is essentieel om uw eigen netwerk te bewaken, beheren en kennen voor ongeoor
 
 Cloud netwerken wijken af van on-premises bedrijfs netwerken, waarbij u over netwerk stromen of gelijkwaardige protocol routers en-switches beschikt die de mogelijkheid bieden om IP-netwerk verkeer te verzamelen wanneer het binnenkomt of afsluit van een netwerk interface. Door verkeers stroom gegevens te analyseren, kunt u een analyse van netwerk verkeer en een volume maken.
 
-Virtuele Azure-netwerken hebben NSG-stroom logboeken, die u informatie geven over binnenkomend en uitgaand IP-verkeer via een netwerk beveiligings groep die is gekoppeld aan afzonderlijke netwerk interfaces, Vm's of subnetten. Door het analyseren van RAW NSG-stroom logboeken en het invoegen van intelligentie van beveiliging, topologie en geografie, kan Traffic Analytics u inzicht geven in de verkeers stroom in uw omgeving. Traffic Analytics biedt informatie zoals de meeste communicerende hosts, de meeste communicerende toepassings protocollen, de meeste conversatieve host-paren, toegestaan/geblokkeerd verkeer, binnenkomend/uitgaand verkeer, open Internet poorten, de meeste blokkerings regels, verkeer distributie per Azure-Data Center, virtueel netwerk, subnetten of Rogue netwerken.
+Virtuele Azure-netwerken hebben NSG-stroom logboeken, die u informatie geven over binnenkomend en uitgaand IP-verkeer via een netwerk beveiligings groep die is gekoppeld aan afzonderlijke netwerk interfaces, Vm's of subnetten. Door het analyseren van RAW NSG-stroom logboeken en het invoegen van intelligentie van beveiliging, topologie en geografie, kan Traffic Analytics u inzicht geven in de verkeers stroom in uw omgeving. Traffic Analytics biedt informatie zoals de meeste communicerende hosts, de meeste communicerende toepassings protocollen, de meeste ondergeschikte host-paren, toegestaan/geblokkeerd verkeer, binnenkomend/uitgaand verkeer, open Internet poorten, de meeste blokkerings regels, verkeers distributie per Azure Data Center, virtueel netwerk, subnetten of Rogue netwerken.
 
 ## <a name="key-components"></a>Belangrijkste onderdelen
 
@@ -61,60 +59,60 @@ Met Traffic Analytics worden de onbewerkte NSG-stroom logboeken onderzocht en wo
 
 U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteunde regio's:
 
-* Canada - midden
-* US - west-centraal
-* US - oost
-* US - oost 2
-* US - noord-centraal
-* US - zuid-centraal
-* US - centraal
-* US - west
-* US - west 2
+* Canada-Midden
+* VS - west-centraal
+* VS - oost
+* VS - oost 2
+* VS - noord-centraal
+* VS - zuid-centraal
+* VS - centraal
+* VS - west
+* VS - west 2
 * Frankrijk - centraal
-* Europa -west
+* Europa - west
 * Europa - noord
-* Brazilië - zuid
-* Verenigd Koninkrijk West
-* Verenigd Koninkrijk Zuid
-* Australië - oost
-* Australië - zuidoost
+* Brazilië - Zuid
+* VK - west
+* VK - zuid
+* Australië Oost
+* Australië Zuidoost
 * Azië - oost
 * Azië - zuidoost
 * Korea - centraal
 * India - centraal
 * India - zuid
-* Japan - oost 
-* Japan - west
-* VS (overheid) - Virginia
+* Japan - Oost 
+* Japan - West
+* US Gov - Virginia
 * China - oost 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Ondersteunde regio's: Log Analytics werk ruimten
 
 De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
-* Canada - midden
-* US - west-centraal
-* US - oost
-* US - oost 2
-* US - noord-centraal
-* US - zuid-centraal
-* US - centraal
-* US - west
-* US - west 2
-* US - centraal
+* Canada-Midden
+* VS - west-centraal
+* VS - oost
+* VS - oost 2
+* VS - noord-centraal
+* VS - zuid-centraal
+* VS - centraal
+* VS - west
+* VS - west 2
+* VS - centraal
 * Frankrijk - centraal
-* Europa -west
+* Europa - west
 * Europa - noord
-* Brazilië - zuid
-* Verenigd Koninkrijk West
-* Verenigd Koninkrijk Zuid
-* Australië - oost
-* Australië - zuidoost
+* Brazilië - Zuid
+* VK - west
+* VK - zuid
+* Australië Oost
+* Australië Zuidoost
 * Azië - oost
 * Azië - zuidoost
 * Korea - centraal
 * India - centraal
-* Japan - oost
-* VS (overheid) - Virginia
+* Japan - Oost
+* US Gov - Virginia
 * China - oost 2
 
 ## <a name="prerequisites"></a>Vereisten
@@ -132,16 +130,16 @@ Uw account moet lid zijn van een van de volgende ingebouwde Azure [-rollen](../r
 
 Als uw account niet is toegewezen aan een van de ingebouwde rollen, moet dit worden toegewezen aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) waaraan de volgende acties zijn toegewezen op het abonnements niveau:
 
-- "Micro soft. Network/applicationGateways/lezen"
-- "Micro soft. netwerk/verbindingen/lezen"
-- "Micro soft. Network/loadBalancers/lezen"
-- "Micro soft. Network/localNetworkGateways/lezen"
-- "Micro soft. Network/networkInterfaces/lezen"
-- "Micro soft. Network/networkSecurityGroups/lezen"
-- "Micro soft. Network/publicIPAddresses/lezen"
-- "Micro soft. Network/routeTables/lezen"
+- "Microsoft.Network/applicationGateways/read"
+- "Microsoft.Network/connections/read"
+- "Microsoft.Network/loadBalancers/read"
+- "Microsoft.Network/localNetworkGateways/read"
+- "Microsoft.Network/networkInterfaces/read"
+- "Microsoft.Network/networkSecurityGroups/read"
+- "Microsoft.Network/publicIPAddresses/read"
+- "Microsoft.Network/routeTables/read"
 - "Micro soft. Network/virtualNetworkGateways/lezen"
-- "Micro soft. Network/virtualNetworks/lezen"
+- "Microsoft.Network/virtualNetworks/read"
 
 Zie [Veelgestelde vragen over Traffic Analytics](traffic-analytics-faq.md)voor informatie over het controleren van toegangs machtigingen voor gebruikers.
 
@@ -294,7 +292,7 @@ Enkele van de inzichten die u mogelijk wilt krijgen nadat Traffic Analytics voll
 
     ![Distributie dashboard overzicht verkeer](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
-- De geo-map toont het bovenste lint voor de selectie van para meters zoals Data Centers (geïmplementeerd/geen implementatie/actief/inactief/Traffic Analytics ingeschakeld/Traffic Analytics niet ingeschakeld) en landen/regio's die schadelijk/schadelijk verkeer naar de actieve inhoudsdistributiepad
+- De geo-map toont het bovenste lint voor de selectie van para meters, zoals Data Centers (geïmplementeerd/geen implementatie/actief/inactief/Traffic Analytics ingeschakeld/Traffic Analytics niet ingeschakeld) en landen/regio's die het goed aardige/schadelijke verkeer naar de actieve implementatie bijdragen:
 
     ![Weer gave geo-map met show Active Deployment](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
 

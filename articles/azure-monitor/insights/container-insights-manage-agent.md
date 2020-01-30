@@ -2,13 +2,13 @@
 title: Over het beheren van de Azure-Monitor voor containers agent | Microsoft Docs
 description: Dit artikel wordt beschreven in de meest voorkomende onderhoudstaken beheren met de beperkte Log Analytics-agent die wordt gebruikt door Azure Monitor voor containers.
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: b1fd9b70865dfb6bb71dadfe76620129e053acbb
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.date: 01/24/2020
+ms.openlocfilehash: 1a1f8d690979a846dbf5041999180221752acc0b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932860"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843953"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Over het beheren van de Azure-Monitor voor containers-agent
 
@@ -16,13 +16,13 @@ Azure Monitor voor containers maakt gebruik van een beperkte versie van de Log A
 
 ## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>Upgrade uitvoeren van de Azure-Monitor voor containers-agent
 
-Azure Monitor voor containers maakt gebruik van een beperkte versie van de Log Analytics-agent voor Linux. Wanneer een nieuwe versie van de agent wordt uitgebracht, wordt de agent automatisch bijgewerkt op uw beheerde Kubernetes-clusters die worden gehost in Azure Kubernetes Service (AKS).  
+Azure Monitor voor containers maakt gebruik van een beperkte versie van de Log Analytics-agent voor Linux. Wanneer een nieuwe versie van de agent wordt uitgebracht, wordt de agent automatisch bijgewerkt op uw beheerde Kubernetes-clusters die worden gehost op Azure Kubernetes service (AKS) en Azure Red Hat open SHIFT. De agent wordt niet beheerd voor een [hybride Kubernetes-cluster](container-insights-hybrid-setup.md) en u moet de agent hand matig bijwerken.
 
-Als de upgrade van de agent mislukt, wordt in dit artikel wordt beschreven van het proces van de agent handmatig te upgraden. Als u wilt volgen de versies die zijn uitgebracht, Zie [agent aankondigingen](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).   
+Als de upgrade van de agent mislukt voor een cluster dat wordt gehost op AKS, wordt in dit artikel ook het proces voor het hand matig bijwerken van de agent beschreven. Als u wilt volgen de versies die zijn uitgebracht, Zie [agent aankondigingen](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).
 
-### <a name="upgrading-agent-on-monitored-kubernetes-cluster"></a>Agent op de bewaakte Kubernetes-cluster upgraden
+### <a name="upgrade-agent-on-monitored-kubernetes-cluster"></a>Upgrade agent op het bewaakte Kubernetes-cluster
 
-Het proces voor het upgraden van de agent op clusters, met uitzonde ring van Azure Red Hat open Shift, bestaat uit twee rechte stappen voor door sturen. De eerste stap is om uit te schakelen controleren met Azure Monitor voor containers met behulp van Azure CLI.  Volg de stappen de [uitschakelen bewaking](container-insights-optout.md?#azure-cli) artikel. Met behulp van Azure CLI, kunnen we de agent verwijderen van de knooppunten in het cluster zonder gevolgen voor de oplossing en de bijbehorende gegevens die zijn opgeslagen in de werkruimte. 
+Het proces voor het upgraden van de agent op clusters, met uitzonde ring van Azure Red Hat open Shift, bestaat uit twee rechte stappen voor door sturen. De eerste stap is om uit te schakelen controleren met Azure Monitor voor containers met behulp van Azure CLI. Volg de stappen de [uitschakelen bewaking](container-insights-optout.md?#azure-cli) artikel. Met behulp van Azure CLI, kunnen we de agent verwijderen van de knooppunten in het cluster zonder gevolgen voor de oplossing en de bijbehorende gegevens die zijn opgeslagen in de werkruimte. 
 
 >[!NOTE]
 >Terwijl u deze activiteit onderhoud uitvoert, de knooppunten in het cluster niet van verzamelde gegevens doorsturen zijn en prestatieweergaven worden geen gegevens weergegeven tussen het moment dat u de agent verwijderen en de nieuwe versie installeert. 
@@ -52,6 +52,29 @@ De status is vergelijkbaar met het volgende voorbeeld, waarbij de waarde voor *o
     omi 1.4.2.5
     omsagent 1.6.0-163
     docker-cimprov 1.0.0.31
+
+## <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>Upgrade agent op hybride Kubernetes-cluster
+
+Het proces voor het bijwerken van de agent op een Kubernetes-cluster dat on-premises wordt gehost, AKS-engine op Azure en Azure Stack kan worden voltooid door de volgende opdracht uit te voeren:
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
+```
+
+Als de Log Analytics-werk ruimte zich in azure China bevindt, voert u de volgende opdracht uit:
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+```
+
+Als de Log Analytics-werk ruimte zich in azure US Government bevindt, voert u de volgende opdracht uit:
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Het uitschakelen van de variabele verzameling omgeving voor een container
 

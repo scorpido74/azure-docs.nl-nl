@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 16748d9948518964d47ee9543765e3cb59ae2ec4
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 9ed62ea6fdfc0732128ed340cc0bc48481eb73ec
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901995"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841077"
 ---
 # <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Snelstartgids: een zoek-app maken in de portal (Azure Cognitive Search)
 
@@ -22,6 +22,8 @@ Gebruik de wizard **Zoek opdracht app maken** om een download bare, ' localhost 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
+
+U kunt het beste een upgrade uitvoeren naar de [nieuwste versie van micro soft Edge](https://www.microsoft.com/edge) of gebruikmaken van de Chrome-browser van Google voor deze Quick Start.
 
 [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken. 
 
@@ -89,12 +91,12 @@ Op de volgende scherm afbeelding ziet u de opties in de wizard juxtaposed met ee
 
 De onderliggende index bestaat uit fictieve, gegenereerde gegevens die zijn gedupliceerd in documenten, en beschrijvingen die soms niet overeenkomen met de installatie kopie. U kunt een meer samenhangende ervaring verwachten wanneer u een app maakt op basis van uw eigen indexen.
 
-![De app kunt uitvoeren](media/search-create-app-portal/run-app.png)
+![De app uitvoeren](media/search-create-app-portal/run-app.png)
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u in uw eigen abonnement werkt, is het een goed idee om aan het einde van een project te bepalen of u de gemaakte resources nog nodig hebt. Resources die actief blijven, kunnen u geld kosten. U kunt resources afzonderlijk verwijderen of de resourcegroep verwijderen als u de complete verzameling resources wilt verwijderen.
+Wanneer u in uw eigen abonnement werkt, is het een goed idee aan het einde van een project om te bepalen of u nog steeds de resources nodig hebt die u hebt gemaakt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
 
 U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
 

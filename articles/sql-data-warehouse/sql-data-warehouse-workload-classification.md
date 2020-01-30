@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 01/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ca4b9fe3c40b7bf49d86464858747642e3cb5a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ab7c8ba64057b4f27e00a2928a65de8eadc78c4b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685383"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768835"
 ---
 # <a name="azure-sql-data-warehouse-workload-classification"></a>Classificatie van Azure SQL Data Warehouse werk belasting
 
@@ -36,14 +36,24 @@ Niet alle instructies worden geclassificeerd omdat ze geen bronnen nodig hebben 
 
 ## <a name="classification-process"></a>Classificatie proces
 
-De classificatie in SQL Data Warehouse wordt vandaag bereikt door gebruikers toe te wijzen aan een rol waaraan een bijbehorende resource klasse is toegewezen met behulp van [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). De mogelijkheid om aanvragen te kenmerken buiten een aanmelding bij een resource klasse is beperkt met deze mogelijkheid. Een rijkere methode voor classificatie is nu beschikbaar met de [classificatie syntaxis CREATE WORKLOAD](/sql/t-sql/statements/create-workload-classifier-transact-sql) .  Met deze syntaxis SQL Data Warehouse gebruikers prioriteit en een resource klasse aan aanvragen toewijzen.  
+Classificatie in SQL Data Warehouse wordt vandaag bereikt door gebruikers toe te wijzen aan een rol waaraan een bijbehorende resource klasse is toegewezen met behulp van [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql). De mogelijkheid om aanvragen te kenmerken buiten een aanmelding bij een resource klasse is beperkt met deze mogelijkheid. Een rijkere methode voor classificatie is nu beschikbaar met de [classificatie syntaxis CREATE WORKLOAD](/sql/t-sql/statements/create-workload-classifier-transact-sql) .  Met deze syntaxis SQL Data Warehouse gebruikers prioriteit toewijzen en hoeveel systeem bronnen worden toegewezen aan een aanvraag via de `workload_group`-para meter. 
 
 > [!NOTE]
 > De classificatie wordt per aanvraag geëvalueerd. Meerdere aanvragen in één sessie kunnen op verschillende manieren worden geclassificeerd.
 
-## <a name="classification-precedence"></a>Classificatie prioriteit
+## <a name="classification-weighting"></a>Classificatie weging
 
-Als onderdeel van het classificatie proces is de prioriteit van kracht om te bepalen welke resource klasse is toegewezen. Classificatie op basis van een database gebruiker heeft voor rang op het lidmaatschap van de rol. Als u een classificatie maakt waarmee de GebruikerA-data base wordt toegewezen aan de resource klasse mediumrc. Wijs vervolgens de Rola-databaserol (van welke GebruikerA lid is) toe aan de resource klasse largerc. De classificatie die de database gebruiker toewijst aan de resource klasse mediumrc, heeft voor rang op de classificatie die de Rola-databaserol toewijst aan de largerc-resource klasse.
+Als onderdeel van het classificatie proces is weging van kracht om te bepalen welke werkbelasting groep is toegewezen.  De weging gaat als volgt:
+
+|Classifier-para meter |Gewicht   |
+|---------------------|---------|
+|LIDNAAM: GEBRUIKER      |64       |
+|LIDNAAM: ROL      |32       |
+|WLM_LABEL            |16       |
+|WLM_CONTEXT          |8        |
+|START_TIME/END_TIME  |4        |
+
+De para meter `membername` is verplicht.  Als de opgegeven lidnaam echter een database gebruiker in plaats van een databaserol is, is het gewicht van de gebruiker hoger en dus de classificatie gekozen.
 
 Als een gebruiker lid is van meerdere rollen met verschillende resource klassen die zijn toegewezen aan of overeenkomen met meerdere classificaties, krijgt de gebruiker de hoogste toewijzing van resource klassen.  Dit gedrag is consistent met het bestaande gedrag van de toewijzing van resource klassen.
 
@@ -59,9 +69,9 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 Systeem classificaties die namens u zijn gemaakt, bieden een eenvoudig pad om te migreren naar de classificatie van werk belastingen. Met de toewijzings prioriteit van resource klassen kunt u leiden tot een misclassificatie wanneer u begint met het maken van nieuwe classificaties die belang rijk zijn.
 
-Houd rekening met het volgende scenario:
+Denkt u zich het volgende scenario eens in:
 
-- Een bestaand Data Warehouse heeft een database gebruiker DBAUser toegewezen aan de resource klasse largerc. De toewijzing van de resource klasse is gemaakt met sp_addrolemember.
+- Een bestaand Data Warehouse heeft een database gebruiker DBAUser toegewezen aan de resource klasse largerc. De toewijzing van de resource klasse is uitgevoerd met sp_addrolemember.
 - Het Data Warehouse wordt nu bijgewerkt met werkbelasting beheer.
 - Als u de nieuwe classificatie syntaxis wilt testen, heeft de databaserol DBARole (waarvan DBAUser lid is), een classificatie gemaakt waarmee ze worden toegewezen aan mediumrc en hoge urgentie.
 - Wanneer DBAUser zich aanmeldt en een query uitvoert, wordt de query toegewezen aan largerc. Omdat een gebruiker voor rang heeft op een rollidmaatschap.
@@ -85,4 +95,4 @@ sp_droprolemember ‘[Resource Class]’, membername
 - Zie de [classificatie werk belasting maken (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)voor meer informatie over het maken van een classificatie.  
 - Zie de Snelstartgids voor het maken van een classificatie van werk belastingen [een classificatie van werk belasting maken](quickstart-create-a-workload-classifier-tsql.md).
 - Zie de artikelen met procedures voor het [configureren van de urgentie van werk belastingen](sql-data-warehouse-how-to-configure-workload-importance.md) en het [beheren en bewaken van workload Management](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- Zie [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) voor het weer geven van query's en de prioriteit die is toegewezen.
+- Zie [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) om query's en de prioriteit weer te geven.

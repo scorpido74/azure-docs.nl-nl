@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 01/14/2020
+ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: bf09d8e9b2dd8cebcf3ef8414afcc8ac031f4cdf
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 69814c89c1c44a63febbcac04a4d161cd4c0921f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170566"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774234"
 ---
 Gebruik de Language Understanding (LUIS)-ontwerp-client bibliotheek voor python voor het volgende:
 
@@ -99,7 +99,7 @@ Nadat de client is gemaakt, gebruikt u deze client voor toegang tot de functiona
 * [Versies](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.versionsoperations?view=azure-python) : beheren met klonen, exporteren en verwijderen
 
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 Deze code fragmenten laten zien hoe u het volgende kunt doen met de Language Understanding (LUIS) ontwerp-client bibliotheek voor python:
 
@@ -187,3 +187,7 @@ Voer de toepassing uit met de opdracht `python` in uw Quick Start-bestand.
 ```console
 python quickstart-file.py
 ```
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Wanneer u klaar bent met de voor spelling, kunt u het werk van deze Quick Start opschonen door het bestand en de submappen ervan te verwijderen.

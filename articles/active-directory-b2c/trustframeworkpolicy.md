@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 673807377914aabad5b90d1ac2ecc16623870d30
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 5737a53d3eca0da440f178f9fd34adf5e968dd62
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063357"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840176"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -38,15 +38,15 @@ Een aangepast beleid wordt weer gegeven als een of meer XML-indelings bestanden 
 
 Het **TrustFrameworkPolicy** -element bevat de volgende kenmerken:
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Ja | De schema versie die moet worden gebruikt om het beleid uit te voeren. De waarde moet`0.3.0.0` |
+| PolicySchemaVersion | Ja | De schema versie die moet worden gebruikt om het beleid uit te voeren. De waarde moet `0.3.0.0` |
 | TenantObjectId | Nee | De unieke object-id van de Azure Active Directory B2C (Azure AD B2C)-Tenant. |
 | TenantId | Ja | De unieke id van de Tenant waartoe dit beleid behoort. |
 | PolicyId | Ja | De unieke id voor het beleid. Deze id moet worden voorafgegaan door *B2C_1A_* |
 | PublicPolicyUri | Ja | De URI voor het beleid, dat een combi natie is van de Tenant-ID en de beleids-ID. |
-| Als Deployment mode | Nee | Mogelijke waarden: `Production`, `Debugging`of `Development`. `Production` is de standaardwaarde. Gebruik deze eigenschap om fouten in uw beleid op te sporen. Zie [Logboeken verzamelen](active-directory-b2c-troubleshoot-custom.md)voor meer informatie. |
-| UserJourneyRecorderEndpoint | Nee | Het eind punt dat wordt gebruikt wanneer **als Deployment mode** is ingesteld `Development`op. De waarde moet zijn `urn:journeyrecorder:applicationinsights`. Zie [Logboeken verzamelen](active-directory-b2c-troubleshoot-custom.md)voor meer informatie. |
+| Als Deployment mode | Nee | Mogelijke waarden: `Production`, `Debugging`of `Development`. `Production` is de standaardwaarde. Gebruik deze eigenschap om fouten in uw beleid op te sporen. Zie [Logboeken verzamelen](troubleshoot-with-application-insights.md)voor meer informatie. |
+| UserJourneyRecorderEndpoint | Nee | Het eind punt dat wordt gebruikt wanneer **als Deployment mode** is ingesteld op `Development`. De waarde moet `urn:journeyrecorder:applicationinsights`zijn. Zie [Logboeken verzamelen](troubleshoot-with-application-insights.md)voor meer informatie. |
 
 
 In het volgende voor beeld ziet u hoe u het **TrustFrameworkPolicy** -element opgeeft:
@@ -80,7 +80,7 @@ Het overname model is als volgt:
 - Het onderliggende beleid op elk niveau kan overnemen van het bovenliggende beleid en het uitbreiden door nieuwe elementen toe te voegen.
 - Er is geen limiet voor het aantal niveaus.
 
-Zie [aan de slag met aangepaste beleids regels](active-directory-b2c-get-started-custom.md)voor meer informatie.
+Zie [aan de slag met aangepaste beleids regels](custom-policy-get-started.md)voor meer informatie.
 
 ## <a name="base-policy"></a>Basis beleid
 
@@ -88,13 +88,13 @@ Als u een beleid van een ander beleid wilt overnemen, moet u een **BasePolicy** 
 
 Het **BasePolicy** -element bevat de volgende elementen:
 
-| Element | Gevallen | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | De id van uw Azure AD B2C-Tenant. |
 | PolicyId | 1:1 | De id van het bovenliggende beleid. |
 
 
-In het volgende voor beeld ziet u hoe u een basis beleid opgeeft. Dit **B2C_1A_TrustFrameworkExtensions** -beleid wordt afgeleid van het **B2C_1A_TrustFrameworkBase** -beleid.
+In het volgende voor beeld ziet u hoe u een basis beleid opgeeft. Dit **B2C_1A_TrustFrameworkExtensions** beleid wordt afgeleid van het **B2C_1A_TrustFrameworkBase** -beleid.
 
 ``` XML
 <TrustFrameworkPolicy
@@ -120,7 +120,7 @@ Een Relying Party toepassing, zoals een web-, mobiele of bureaublad toepassing, 
 
 In het RP-beleids bestand geeft u het element **DefaultUserJourney** op dat verwijst naar de [UserJourney](userjourneys.md). De gebruikers traject wordt meestal gedefinieerd in het basis-of uitbrei ding beleid.
 
-B2C_1A_signup_signin-beleid:
+B2C_1A_signup_signin beleid:
 
 ```XML
 <RelyingParty>
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase of B2C_1A_TrustFrameworkExtensionPolicy:
 
 Een gebruikers traject definieert de bedrijfs logica van wat een gebruiker doorloopt. Elke gebruikers traject is een set Orchestration-stappen die een reeks acties uitvoert, in volg orde van de verificatie-en informatie verzameling.
 
-Het **SocialAndLocalAccounts** -beleids bestand in het [Starter Pack](active-directory-b2c-get-started-custom.md#custom-policy-starter-pack) bevat de SignUpOrSignIn-, ProfileEdit-, PasswordReset-gebruikers ritten. U kunt meer gebruikers ritten toevoegen voor andere scenario's, zoals het wijzigen van een e-mail adres of het koppelen en ontkoppelen van een sociaal account.
+Het **SocialAndLocalAccounts** -beleids bestand in het [Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack) bevat de SignUpOrSignIn-, ProfileEdit-, PasswordReset-gebruikers ritten. U kunt meer gebruikers ritten toevoegen voor andere scenario's, zoals het wijzigen van een e-mail adres of het koppelen en ontkoppelen van een sociaal account.
 
 De Orchestration-stappen kunnen een [technisch profiel](technicalprofiles.md)aanroepen. Een technisch profiel biedt een Framework met een ingebouwd mechanisme om te communiceren met verschillende soorten partijen. Een technisch profiel kan bijvoorbeeld onder andere de volgende acties uitvoeren:
 

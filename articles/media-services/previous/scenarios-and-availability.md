@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1bdca9de0bb6fea608f2a30aa9928f2518fc9dce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978165"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843936"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenario's en de beschikbaarheid van Media Services-functies in datacenters
 
@@ -37,7 +37,7 @@ Dit onderwerp bevat algemene scenario's voor het [live](#live_scenarios) of on-d
 
 Als u Azure Media Services wilt gaan gebruiken, moet u over het volgende beschikken:
 
-* Een Azure-account. Als u geen account hebt, kunt u binnen een paar minuten een account voor de gratis proefversie maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com) voor meer informatie.
+* Een Azure-account. Als u geen account hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com) voor meer informatie.
 * Een Azure Media Services-account. Zie [Een account maken](media-services-portal-create-account.md) voor meer informatie.
 * Het streaming-eindpunt van waar u inhoud wilt streamen, moet de status **Wordt uitgevoerd** hebben.
 
@@ -177,7 +177,7 @@ Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium
 
 #### <a name="availability"></a>Beschikbaarheid
 
-|Naam|Status|Datacenters
+|Name|Status|Datacenters
 |---|---|---|
 |Standard|Algemene beschikbaarheid|Alles|
 |Premium|Algemene beschikbaarheid|Alles|
@@ -211,9 +211,8 @@ Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarme
 |Azure Media Indexer|Algemene beschikbaarheid|Alles|
 |Azure Media Motion Detector|Preview|Alles|
 |Azure Media OCR|Preview|Alles|
-|Azure Media Redactor|Preview|Alles|
+|Azure Media Redactor|Algemene beschikbaarheid|Alles|
 |Azure Media Video Thumbnails|Preview|Alles|
-|Azure Media Indexer 2|Preview|Overal behalve China en regio federale overheid|
 
 ### <a name="protection"></a>Beveiliging
 

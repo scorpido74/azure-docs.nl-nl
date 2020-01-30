@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432309"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842398"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Problemen met het starten van een Linux-VM oplossen vanwege bestandssysteem fouten
 
@@ -29,7 +29,7 @@ U kunt geen verbinding maken met een virtuele machine van Azure Linux met behulp
 
 Hier volgen enkele voor beelden van mogelijke fouten.
 
-### <a name="example-1"></a>Voor beeld 1 
+### <a name="example-1"></a>Voorbeeld 1 
 
 ```
 Checking all file systems.
@@ -39,7 +39,7 @@ Checking all file systems.
 /dev/sda1: UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY
 ```
 
-### <a name="example-2"></a>Voor beeld 2
+### <a name="example-2"></a>Voorbeeld 2
 
 ```
 EXT4-fs (sda1): INFO: recovery required on readonly filesystem
@@ -48,7 +48,7 @@ EXT4-fs warning (device sda1): ext4_clear_journal_err:4531: Filesystem error rec
 EXT4-fs warning (device sda1): ext4_clear_journal_err:4532: Making fs in need of filesystem check.
 ```
 
-### <a name="example-3"></a>Voor beeld 3
+### <a name="example-3"></a>Voorbeeld 3
 
 ```
 [  14.252404] EXT4-fs (sda1): Couldn’t remount RDWR because of unprocessed orphan inode list.  Please unmount/remount instead
@@ -79,7 +79,7 @@ Om dit probleem op te lossen, start u de virtuele machine op in de nood herstel 
 
 ## <a name="use-the-serial-console"></a>Via de seriële console
 
-1. Maak verbinding met de seriële console.
+1. Verbinding maken met de seriële console.
 
    > [!Note]
    > Zie voor meer informatie over het gebruik van seriële console voor Linux:
@@ -110,20 +110,20 @@ Om dit probleem op te lossen, start u de virtuele machine op in de nood herstel 
 
    ```
    mkdir /temp
-   mount /dev/sda2 /temp
+   mount /dev/sda1 /temp
    ```
 
-8. Als de schijf niet kan worden gekoppeld, voert u de opdracht xfs_repair uit met de optie-L (geforceerde logboek registratie toestaan):
+8. Als de schijf niet kan worden gekoppeld, voert u de xfs_repair opdracht uit met de optie-L (geforceerde logboek registratie toestaan):
 
    ```
-   xfs_repair /dev/sda2 -L
+   xfs_repair /dev/sda1 -L
    ```
 
 9. Probeer vervolgens het bestands systeem te koppelen. Als de schijf is gekoppeld, wordt de volgende uitvoer weer gegeven:
  
    ```
-   XFS (sda2): Mounting V1 Filesystem
-   XFS (sda2): Ending clean mount
+   XFS (sda1): Mounting V1 Filesystem
+   XFS (sda1): Ending clean mount
    ```
 
 10. Start de virtuele machine opnieuw op en controleer of het probleem is opgelost.
@@ -132,7 +132,7 @@ Om dit probleem op te lossen, start u de virtuele machine op in de nood herstel 
     Reboot -f
     ```
 
-## <a name="repair-the-vm-offline"></a>De virtuele machine offline herstellen
+## <a name="repair-the-vm-offline"></a>Herstel de virtuele machine offline
 
 1. Koppel de systeem schijf van de virtuele machine als een gegevens schijf aan een herstel-VM (wille keurige werkende Linux-machine). U kunt hiervoor [cli-opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) gebruiken of u kunt de herstel-VM instellen met behulp van de opdrachten voor het herstellen van de [virtuele machine](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
 
@@ -158,7 +158,7 @@ Om dit probleem op te lossen, start u de virtuele machine op in de nood herstel 
    mount /dev/sdc1 /temp
    ```
 
-   Als de schijf niet kan worden gekoppeld, voert u de opdracht xfs_repair uit met de optie-L (geforceerde logboek registratie toestaan):
+   Als de schijf niet kan worden gekoppeld, voert u de xfs_repair opdracht uit met de optie-L (geforceerde logboek registratie toestaan):
 
    ```
    xfs_repair /dev/sdc1 -L

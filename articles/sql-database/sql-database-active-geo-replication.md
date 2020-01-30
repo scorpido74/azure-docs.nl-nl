@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 33697fd8d3b0c6faea423026e1462834c6b1ef4c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e32250102d095f341b2de918037b9ad834adfd33
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822663"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842649"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Actieve geo-replicatie maken en gebruiken
 
-Actieve geo-replicatie is Azure SQL Database functie waarmee u lees bare secundaire data bases van afzonderlijke data bases kunt maken op een SQL Database Server in dezelfde of een ander Data Center (regio).
+Actieve geo-replicatie is een Azure SQL Database functie waarmee u lees bare secundaire data bases kunt maken van afzonderlijke data bases op een SQL Database-Server in hetzelfde Data Center (regio).
 
 > [!NOTE]
 > Actieve geo-replicatie wordt niet ondersteund door een beheerd exemplaar. Gebruik [groepen voor automatische failover](sql-database-auto-failover-group.md)voor geografische failover van beheerde exemplaren.
@@ -124,6 +124,79 @@ Als u besluit om de secundaire te maken met een lagere reken grootte, biedt de g
 
 Zie [Wat zijn SQL database service lagen](sql-database-purchase-models.md)voor meer informatie over de SQL database Compute sizes.
 
+## <a name="cross-subscription-geo-replication"></a>Geo-replicatie tussen verschillende abonnementen
+
+Voor het instellen van actieve geo-replicatie tussen twee data bases die deel uitmaken van verschillende abonnementen (of onder dezelfde Tenant of niet), moet u de speciale procedure volgen die in deze sectie wordt beschreven.  De procedure is gebaseerd op SQL-opdrachten en vereist: 
+
+- Het maken van een geprivilegieerde aanmelding op beide servers
+- Het IP-adres toevoegen aan de acceptatie lijst van de client die de wijziging op beide servers uitvoert (zoals het IP-adres van de host waarop SQL Server Management Studio). 
+
+De client die de wijzigingen uitvoert, heeft netwerk toegang nodig tot de primaire server. Hoewel hetzelfde IP-adres van de client moet worden toegevoegd aan de acceptatie lijst op de secundaire server, is de netwerk verbinding met de secundaire server niet strikt vereist. 
+
+### <a name="on-the-master-of-the-primary-server"></a>Op de master van de primaire server
+
+1. Voeg het IP-adres toe aan de acceptatie lijst van de client die de wijzigingen uitvoert (Zie [firewall configureren](sql-database-firewall-configure.md)) voor meer informatie. 
+1. Maak een aanmelding die specifiek is ingesteld voor het instellen van actieve geo-replicatie (en pas de referenties indien nodig aan):
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01'
+   ```
+
+1. Maak een bijbehorende gebruiker en wijs deze toe aan de DBManager-rol: 
+
+   ```sql
+   create user geodrsetup for login gedrsetup
+   alter role geodrsetup dbmanager add member geodrsetup
+   ```
+
+1. Let op de SID van de nieuwe aanmelding met behulp van deze query: 
+
+   ```sql
+   select sid from sys.sql_logins where name = 'geodrsetup'
+   ```
+
+### <a name="on-the-source-database-on-the-primary-server"></a>Op de bron database op de primaire server
+
+1. Een gebruiker maken voor dezelfde aanmelding:
+
+   ```sql
+   create user geodrsetup for login geodrsetup
+   ```
+
+1. Voeg de gebruiker toe aan de db_owner rol:
+
+   ```sql
+   alter role db_owner add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-secondary-server"></a>Op de master van de secundaire server 
+
+1. Voeg het IP-adres toe aan de acceptatie lijst van de client die de wijzigingen uitvoert. Dit moet hetzelfde exacte IP-adres van de primaire server zijn. 
+1. Maak dezelfde aanmelding als op de primaire server met hetzelfde wacht woord voor de gebruikers naam en SID: 
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E
+   ```
+
+1. Maak een bijbehorende gebruiker en wijs deze toe aan de DBManager-rol:
+
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   alter role dbmanager add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-primary-server"></a>Op de master van de primaire server
+
+1. Meld u aan bij de master van de primaire server met de nieuwe aanmelding. 
+1. Maak een secundaire replica van de bron database op de secundaire server (Wijzig de database naam en servername indien nodig):
+
+   ```sql
+   alter database dbrep add secondary on server <servername>
+   ```
+
+Na de eerste installatie kunnen de gemaakte gebruikers, aanmeldingen en firewall regels worden verwijderd. 
+
+
 ## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>Referenties en firewall regels synchroon houden
 
 U wordt aangeraden [IP-firewall regels op database niveau](sql-database-firewall-configure.md) te gebruiken voor geo-gerepliceerde data bases, zodat deze regels kunnen worden gerepliceerd met de-data base om ervoor te zorgen dat alle secundaire data bases dezelfde IP-firewall regels hebben als de primaire. Deze aanpak elimineert dat klanten niet hand matig firewall regels hoeven te configureren en onderhouden op servers die de primaire en secundaire data bases hosten. Op dezelfde manier zorgt u er bij het gebruik van [Inge sloten database gebruikers](sql-database-manage-logins.md) voor gegevens toegang voor dat zowel de primaire als de secundaire data base altijd dezelfde gebruikers referenties hebben tijdens een failover, er geen onderbrekingen zijn veroorzaakt door niet-overeenkomende aanmeldingen en wacht woorden. Met de toevoeging van [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)kunnen klanten gebruikers toegang tot zowel primaire als secundaire data bases beheren en de nood zaak voor het beheer van referenties in data bases verwijderen.
@@ -172,9 +245,9 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Gebruik het argument secundair op SERVER toevoegen om een secundaire Data Base voor een bestaande Data Base te maken en gegevens replicatie te starten |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |FAILOVER of FORCE_FAILOVER_ALLOW_DATA_LOSS gebruiken om naar een secundaire data base te scha kelen die primair moet zijn om FAILOVER te initiëren |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Gebruik secundaire verwijderen op de SERVER om een gegevens replicatie tussen een SQL Database en de opgegeven secundaire data base te beëindigen. |
-| [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Retourneert informatie over alle bestaande replicatie koppelingen voor elke Data Base op de Azure SQL Database-Server. |
-| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Hiermee worden de laatste replicatie tijd, de laatste replicatie vertraging en andere informatie over de replicatie koppeling voor een opgegeven SQL database opgehaald. |
-| [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Hier wordt de status weer gegeven voor alle database bewerkingen, inclusief de status van de replicatie koppelingen. |
+| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Retourneert informatie over alle bestaande replicatie koppelingen voor elke Data Base op de Azure SQL Database-Server. |
+| [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Hiermee worden de laatste replicatie tijd, de laatste replicatie vertraging en andere informatie over de replicatie koppeling voor een opgegeven SQL database opgehaald. |
+| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Hier wordt de status weer gegeven voor alle database bewerkingen, inclusief de status van de replicatie koppelingen. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |zorgt ervoor dat de toepassing wacht totdat alle doorgevoerde trans acties worden gerepliceerd en bevestigd door de actieve secundaire data base. |
 |  | |
 

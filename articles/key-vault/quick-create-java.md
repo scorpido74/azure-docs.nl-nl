@@ -6,23 +6,23 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e06c8d5373f8740e8091daae242a4f7af6c0ea4a
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 0cde8b48e7bd1d1daa8f14dcded87001fb898fa7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995861"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769221"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor Java
 
 Ga aan de slag met de Azure Key Vault-client bibliotheek voor Java. Volg de onderstaande stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen.
 
-Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor Java om het volgende te doen:
+Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor Java om het volgende te doen:
 
 - Verbeter de beveiliging en controle over sleutels en wacht woorden.
 - Versleutelings sleutels maken en importeren in een paar minuten.
 - Verminder de latentie met Cloud schaal en wereld wijde redundantie.
-- Vereenvoudig en Automatiseer taken voor SSL/TLS-certificaten.
+- Vereenvoudig en Automatiseer taken voor TLS/SSL-certificaten.
 - Gebruik FIPS 140-2 level 2 Validated Hsm's.
 
 [Naslag documentatie](https://azure.github.io/azure-sdk-for-java) voor [bron code](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) | -API | [product documentatie](index.yml) | voor [beelden](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
@@ -170,7 +170,7 @@ Met de Azure Key Vault-client bibliotheek voor Java kunt u sleutels en gerelatee
 
 De volledige console-app is beschikbaar op https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 ### <a name="add-directives"></a>Instructies toevoegen
 

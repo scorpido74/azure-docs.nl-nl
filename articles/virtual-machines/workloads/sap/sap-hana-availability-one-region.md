@@ -15,15 +15,15 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c5b4904419af1fe86e43dc2f781ef43ce8dd762
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a5e4f9853a68b7b4d8b97cc76032cfa88708c097
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078792"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842679"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Beschik baarheid van SAP HANA binnen een Azure-regio
-In dit artikel worden verschillende beschikbaarheids scenario's binnen één Azure-regio beschreven. Azure heeft veel regio's, verspreid over de hele wereld. Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor de lijst met Azure-regio's. Voor de implementatie van SAP HANA op Vm's binnen één Azure-regio, biedt micro soft de implementatie van één virtuele machine met een HANA-exemplaar. Voor een verhoogde Beschik baarheid kunt u twee virtuele machines implementeren met twee HANA-instanties binnen een [Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) -beschikbaarheidsset die gebruikmaakt van Hana-systeem replicatie voor Beschik baarheid. 
+In dit artikel worden verschillende beschikbaarheids scenario's binnen één Azure-regio beschreven. Azure heeft veel regio's, verspreid over de hele wereld. Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor de lijst met Azure-regio's. Voor de implementatie van SAP HANA op Vm's binnen één Azure-regio, biedt micro soft de implementatie van één virtuele machine met een HANA-exemplaar. Voor een verhoogde Beschik baarheid kunt u twee virtuele machines implementeren met twee HANA-instanties binnen een [Azure-beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) die gebruikmaakt van Hana-systeem replicatie voor Beschik baarheid. 
 
 Op dit moment biedt Azure [Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview). In dit artikel wordt Beschikbaarheidszones niet beschreven. Maar bevat een algemene discussie over het gebruik van beschikbaarheids sets versus Beschikbaarheidszones.
 
@@ -108,7 +108,7 @@ In dit scenario is het vooraf laden van gegevens die zijn gerepliceerd naar het 
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>Systeem replicatie SAP HANA met automatische failover
 
-In de standaard-en meest voorkomende beschikbaarheids configuratie binnen één Azure-regio, hebben twee Azure-Vm's met SLES Linux een failovercluster gedefinieerd. Het SLES Linux-cluster is gebaseerd op het [pacemaker](http://www.linux-ha.org/wiki/Pacemaker) -Framework, in combi natie met een [STONITH](http://linux-ha.org/wiki/STONITH) -apparaat. 
+In de standaard-en meest voorkomende beschikbaarheids configuratie binnen één Azure-regio, hebben twee Azure-Vm's met SLES Linux een failovercluster gedefinieerd. Het SLES Linux-cluster is gebaseerd op het [pacemaker](http://www.linux-ha.org/wiki/Pacemaker) -Framework, in combi natie met een [STONITH](http://www.linux-ha.org/wiki/STONITH) -apparaat. 
 
 Vanuit een SAP HANA perspectief wordt de gebruikte replicatie modus gesynchroniseerd en wordt een automatische failover geconfigureerd. In de tweede VM fungeert het SAP HANA-exemplaar als een hot standby-knoop punt. Het knoop punt stand-by ontvangt een synchrone stroom van wijzigings records van het primaire SAP HANA exemplaar. Omdat trans acties worden doorgevoerd door de toepassing op het primaire knoop punt HANA, wacht het primaire HANA-knoop punt op het bevestigen van het door voeren van de toepassing totdat het secundaire SAP HANA knoop punt bevestigt dat het de commit-record heeft ontvangen. SAP HANA biedt twee synchrone replicatie modi. Zie voor meer informatie en voor een beschrijving van de verschillen tussen deze twee synchrone replicatie modi de SAP-artikel [replicatie modi voor SAP Hana-systeem replicatie](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html).
 

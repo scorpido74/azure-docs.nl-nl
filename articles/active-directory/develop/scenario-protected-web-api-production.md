@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5673465c9ff1afe83c5d9d549a78e1547a59b72f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 229f49255fbc72f74f07b1e7098417d136f35c27
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701957"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775178"
 ---
 # <a name="protected-web-api---move-to-production"></a>Beveiligde web-API: verplaatsen naar productie
 
@@ -30,17 +30,15 @@ Nu u weet hoe u uw web-API moet beveiligen, kunt u deze naar productie verplaats
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het aanroepen van downstream-Api's:
+Meer informatie over het aanroepen van een stroomafwaartse API.
 
 > [!div class="nextstepaction"]
-> [Scenario: Web API roept downstream API'S aan](scenario-web-api-call-api-overview.md)
+> [Scenario: Web API roept downstream Api's aan](scenario-web-api-call-api-overview.md)
 
-
-Meer informatie met zelf studies en voor beelden:
-
+Meer informatie met zelf studies en voor beelden.
 
 > [!div class="nextstepaction"]
-> [Aanroepen van een beveiligde API met behulp van daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
+> [Een beveiligde API aanroepen met een daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
 
 > [!div class="nextstepaction"]
 > [Zelf studie voor de Web-API ASP.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)

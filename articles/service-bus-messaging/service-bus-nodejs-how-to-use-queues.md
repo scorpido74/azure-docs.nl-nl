@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus-wacht rijen gebruiken in node. js met behulp van het pakket Azure-SB
-description: 'Quick Start: informatie over het gebruik van Service Bus wachtrijen in azure vanuit een node. js-app.'
+description: Meer informatie over het maken van node. js-toepassingen voor het verzenden van berichten naar en het ontvangen van berichten van een Azure Service Bus wachtrij met behulp van het pakket Azure-SB.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 5fa74bdc632154e361fc4d95ed602e4b4d39a198
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fee7ff6ffbd18cf514ce1bfda81aca727ed362c3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462183"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773508"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Snelstartgids: Service Bus-wacht rijen in azure gebruiken met node. js en het pakket Azure-SB
 

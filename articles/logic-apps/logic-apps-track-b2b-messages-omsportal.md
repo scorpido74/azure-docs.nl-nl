@@ -3,17 +3,15 @@ title: B2B-berichten bijhouden met Azure Monitor-logboeken
 description: B2B-communicatie bijhouden voor integratie accounts en Azure Logic Apps met Azure Log Analytics
 services: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6e66bdfcfe9e84c1095f03a41439b904c7cb96df
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792928"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773713"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>B2B-berichten bijhouden met Azure Monitor-logboeken
 
@@ -166,7 +164,7 @@ Dit zijn de naam notaties voor elke gedownloade AS2-bericht map en bestanden.
 
 | Map of bestand | Naam indeling |
 | :------------- | :---------- |
-| Map bericht | [Sender]\_[receiver]\_AS2\_[correlatie-ID]\_[Message-ID]\_[Time Stamp] |
+| Map bericht | [sender]\_[receiver]\_AS2\_[correlation-ID]\_[message-ID]\_[timestamp] |
 | Invoer, uitvoer en indien ingesteld, bevestigings bestanden | **Invoer lading**: [Sender]\_[receiver]\_AS2\_[correlatie-ID]\_input_payload. txt </p>**Uitvoer lading**: [Sender]\_[receiver]\_AS2\_[correlatie-ID]\_uitvoer\_payload. txt </p></p>**Invoer**: [Sender]\_[receiver]\_AS2\_[correlatie-ID]\_inputs. txt </p></p>**Uitvoer**: [Sender]\_[receiver]\_AS2\_[correlatie-ID]\_outputs. txt |
 |          |             |
 
@@ -199,7 +197,7 @@ Dit zijn de naam notaties voor elke gedownloade X12-bericht map en bestanden.
 
 | Map of bestand | Naam indeling |
 | :------------- | :---------- |
-| Map bericht | [Sender]\_[receiver]\_X12\_[Interchange Control-Number]\_[Global-Control-Number]\_[Trans Action-Set-Control-Number]\_[Time Stamp] |
+| Map bericht | [sender]\_[receiver]\_X12\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
 | Invoer, uitvoer en indien ingesteld, bevestigings bestanden | **Invoer lading**: [Sender]\_[receiver]\_X12\_[Interchange Control-number]\_input_payload. txt </p>**Uitvoer lading**: [Sender]\_[receiver]\_X12\_[Interchange Control-number]\_output\_payload. txt </p></p>**Invoer**: [Sender]\_[receiver]\_X12\_[Interchange Control-number]\_inputs. txt </p></p>**Uitvoer**: [Sender]\_[receiver]\_X12\_[Interchange Control-number]\_outputs. txt |
 |          |             |
 
@@ -232,7 +230,7 @@ Dit zijn de naam notaties voor elke gedownloade EDIFACT-bericht map en bestanden
 
 | Map of bestand | Naam indeling |
 | :------------- | :---------- |
-| Map bericht | [Sender]\_[receiver]\_EDIFACT\_[Interchange Control-Number]\_[Global-Control-Number]\_[Trans Action-Set-Control-Number]\_[Time Stamp] |
+| Map bericht | [sender]\_[receiver]\_EDIFACT\_[interchange-control-number]\_[global-control-number]\_[transaction-set-control-number]\_[timestamp] |
 | Invoer, uitvoer en indien ingesteld, bevestigings bestanden | **Invoer lading**: [Sender]\_[receiver]\_EDIFACT\_[Interchange Control-number]\_input_payload. txt </p>**Uitvoer lading**: [Sender]\_[receiver]\_EDIFACT\_[Interchange Control-number]\_output\_payload. txt </p></p>**Invoer**: [Sender]\_[receiver]\_EDIFACT\_[Interchange Control-number]\_inputs. txt </p></p>**Uitvoer**: [Sender]\_[receiver]\_EDIFACT\_[Interchange Control-number]\_outputs. txt |
 |          |             |
 

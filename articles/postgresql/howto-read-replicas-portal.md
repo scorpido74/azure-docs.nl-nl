@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: 5e031354d4695a1d7eb6f199e23e74b796273230
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/24/2020
+ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770217"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768947"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for PostgreSQL-één server van de Azure Portal
 
@@ -27,6 +27,9 @@ Deze stappen moeten worden gebruikt om een hoofd server voor te bereiden in de l
 1. Selecteer in de Azure Portal de bestaande Azure Database for PostgreSQL-server die als een Master moet worden gebruikt.
 
 2. Selecteer op de zijbalk van de server onder **instellingen**de optie **replicatie**.
+
+> [!NOTE] 
+> Als u de **ondersteuning voor replicatie uitschakelen** grijs weer gegeven, zijn de replicatie-instellingen standaard al op uw server ingesteld. U kunt de volgende stappen overs Laan en een lees replica maken. 
 
 3. Selecteer **ondersteuning voor replicatie inschakelen**. 
 
@@ -47,7 +50,7 @@ Deze stappen moeten worden gebruikt om een hoofd server voor te bereiden in de l
 Het inschakelen van ondersteuning voor replicatie is een eenmalige bewerking per hoofd server. Er wordt een **ondersteunings** knop voor het uitschakelen van de replicatie voor uw gemak geboden. Het is niet raadzaam om replicatie ondersteuning uit te scha kelen, tenzij u zeker weet dat u nooit een replica maakt op deze hoofd server. U kunt ondersteuning voor replicatie niet uitschakelen als uw hoofd server bestaande replica's heeft.
 
 
-## <a name="create-a-read-replica"></a>Een lees replica maken
+## <a name="create-a-read-replica"></a>Maken van een replica lezen
 Voer de volgende stappen uit om een lees replica te maken:
 
 1. Selecteer de bestaande Azure Database for PostgreSQL-server om te gebruiken als de hoofd server. 
@@ -106,7 +109,7 @@ Voer de volgende stappen uit om de replicatie tussen een hoofd server en een lee
    ![Bevestigen om replicatie te stoppen](./media/howto-read-replicas-portal/confirm-stop-replication.png)
  
 
-## <a name="delete-a-master-server"></a>Een hoofd server verwijderen
+## <a name="delete-a-master-server"></a>Een hoofd-server verwijderen
 Als u een master server wilt verwijderen, gebruikt u dezelfde stappen als voor het verwijderen van een zelfstandige Azure Database for PostgreSQL-server. 
 
 > [!IMPORTANT]

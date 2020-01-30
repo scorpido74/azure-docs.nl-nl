@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/25/2020
+ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444512"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773848"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -129,6 +129,12 @@ Het instellen van de door Voer en batch-eigenschappen op CosmosDB-sinks worden a
 * Batch grootte: Bereken de omvang van de ruwe rijen van uw gegevens en zorg ervoor dat rowSize * Batch grootte kleiner is dan 2.000.000. Als dat het geval is, verg root u de Batch grootte om een betere door voer te krijgen
 * Door Voer: Stel hier een hogere doorvoer instelling in zodat documenten sneller naar CosmosDB kunnen schrijven. Houd de hogere RU-kosten in acht op basis van een instelling voor hoge door voer.
 *   Budget voor schrijf doorvoer: gebruik een waarde die kleiner is dan het totaal van RUs per minuut. Als u een gegevens stroom hebt met een groot aantal Spark-partities, is het instellen van een budget doorvoer meer evenwicht over die partities.
+
+## <a name="join-performance"></a>Prestaties samen voegen
+
+Het beheren van de prestaties van samen voegingen in uw gegevens stroom is een zeer veelvoorkomende bewerking die u tijdens de levens cyclus van uw gegevens transformaties kunt uitvoeren. In ADF moeten voor gegevens stromen geen gegevens worden gesorteerd voordat ze worden toegevoegd omdat deze bewerkingen worden uitgevoerd als hash-samen voegingen in Spark. U kunt echter profiteren van verbeterde prestaties met de ' Broadcast '-deelname aan optimalisatie. Zo voor komt u een wille keurige volg orde door de inhoud van beide zijden van de samenvoegings relatie te verduwen in het Spark-knoop punt. Dit werkt goed voor kleinere tabellen die worden gebruikt voor het opzoeken van verwijzingen. Grotere tabellen die mogelijk niet in het geheugen van het knoop punt passen, zijn geen goede kandidaten voor de optimalisatie van broadcast berichten.
+
+Een andere mogelijkheid voor samen voegen is om uw deelname zo te bouwen dat de tendens van Spark voor het implementeren van cross-join's wordt voor komen. Wanneer u bijvoorbeeld letterlijke waarden in uw join-voor waarden opneemt, ziet Spark dat er eerst een volledig Cartesisch product moet worden uitgevoerd. vervolgens worden de gekoppelde waarden gefilterd. Als u echter zeker weet dat u kolom waarden aan beide zijden van uw samenvoegings voorwaarde hebt, kunt u dit met Spark veroorzaakte Cartesisch product voor komen en de prestaties van uw samen voegingen en gegevens stromen verbeteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

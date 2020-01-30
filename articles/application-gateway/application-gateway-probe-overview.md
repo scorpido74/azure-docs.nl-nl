@@ -5,18 +5,24 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/16/2019
+ms.date: 01/28/2020
 ms.author: victorh
-ms.openlocfilehash: 2938665aa0c0a3df66b6ddcfd1c8c5fbc4598319
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130676"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766835"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Overzicht van Application Gateway status controle
 
-Azure-toepassing gateway controleert standaard de status van alle resources in de back-end-groep en verwijdert automatisch alle bronnen die worden beschouwd als een slechte status van de groep. Application Gateway blijft de beschadigde instanties bewaken en voegt deze weer toe aan de gezonde back-end-pool zodra deze beschikbaar komen en reageren op status controles. Application Gateway verzendt de status tests met dezelfde poort die is gedefinieerd in de back-end-HTTP-instellingen. Deze configuratie zorgt ervoor dat de test wordt uitgevoerd op dezelfde poort die door klanten zou worden gebruikt om verbinding te maken met de back-end.
+Azure-toepassing gateway controleert standaard de status van alle resources in de back-end-groep en verwijdert automatisch alle bronnen die worden beschouwd als een slechte status van de groep. Application Gateway blijft de beschadigde instanties bewaken en voegt deze weer toe aan de gezonde back-end-pool zodra deze beschikbaar komen en reageren op status controles. Application Gateway verzendt de status tests met dezelfde poort die is gedefinieerd in de back-end-HTTP-instellingen. Deze configuratie zorgt ervoor dat de test wordt uitgevoerd op dezelfde poort die door klanten zou worden gebruikt om verbinding te maken met de back-end. 
+
+Het bron-IP-adres Application Gateway gebruikt voor status tests is afhankelijk van de back-end-groep:
+ 
+- Als de back-end-pool een openbaar eind punt is, is het bron adres het open bare IP-adres van de Application Gateway-frontend.
+- Als de back-end-pool een persoonlijk eind punt is, is het IP-bron adres van de toepassings gateway van het subnet persoonlijke IP-adres ruimte.
+
 
 ![test voorbeeld van Application Gateway][1]
 
@@ -30,16 +36,16 @@ Een toepassings gateway configureert automatisch een standaard status test wanne
 
 Bijvoorbeeld: u configureert uw toepassings gateway voor het gebruik van back-endservers A, B en C om HTTP-netwerk verkeer te ontvangen op poort 80. De standaard status bewaking test de drie servers om de 30 seconden voor een gezonde HTTP-reactie. Een gezond HTTP-antwoord heeft een [status code](https://msdn.microsoft.com/library/aa287675.aspx) tussen 200 en 399.
 
-Als de standaard controle van de test voor Server A mislukt, wordt deze door de toepassings gateway verwijderd uit de back-end-pool en wordt het netwerk verkeer niet meer naar deze server gestroomt. De standaard test blijft altijd elke 30 seconden controleren op server. Als server A reageert op een aanvraag van een standaard status test, wordt deze als in orde weer gegeven aan de back-end-pool en wordt het verkeer opnieuw op de server uitgevoerd.
+Als de standaard controle van de test voor Server A mislukt, wordt deze door de toepassings gateway verwijderd uit de back-end-pool en wordt het netwerk verkeer niet meer naar deze server gestroomt. De standaard test blijft altijd elke 30 seconden controleren op server. Als server A reageert op een aanvraag van een standaard status test, wordt deze als gezond toegevoegd aan de back-end-pool en wordt het verkeer opnieuw naar de server verzonden.
 
 ### <a name="probe-matching"></a>Testen vergelijken
 
-Standaard wordt een HTTP (S)-antwoord met de status code tussen 200 en 399 als gezond beschouwd. Aangepaste Health-tests ondersteunen daarnaast twee overeenkomende criteria. Overeenkomende criteria kunnen worden gebruikt om de standaard interpretatie te wijzigen van wat een gezonde reactie vormt.
+Standaard wordt een HTTP (S)-antwoord met de status code tussen 200 en 399 als gezond beschouwd. Aangepaste Health-tests ondersteunen daarnaast twee overeenkomende criteria. Overeenkomende criteria kunnen worden gebruikt voor het aanpassen van de standaard interpretatie van wat een gezonde reactie doet.
 
 Hier volgen de overeenkomende criteria: 
 
 - **Status code overeenkomst van http-antwoord** : test matching criterium voor het accepteren van door de gebruiker opgegeven HTTP-antwoord code of het bereik van antwoord codes. Afzonderlijke door komma's gescheiden antwoord status codes of een bereik met status code wordt ondersteund.
-- **Overeenkomst voor de hoofd tekst van het HTTP-antwoord die overeenkomt** met het criterium van de HTTP-reactie en overeenkomt met een door de gebruiker opgegeven teken reeks. De overeenkomst zoekt alleen naar de aanwezigheid van de door de gebruiker opgegeven teken reeks in de antwoord tekst en is geen volledige reguliere expressie.
+- **Overeenkomst voor de hoofd tekst van het HTTP-antwoord die overeenkomt** met het criterium van de HTTP-reactie en overeenkomt met een door de gebruiker opgegeven teken reeks. De overeenkomst zoekt alleen naar de aanwezigheid van de door de gebruiker opgegeven teken reeks in de tekst van het antwoord en is geen volledige reguliere expressie.
 
 U kunt match criteria opgeven met behulp van de cmdlet `New-AzApplicationGatewayProbeHealthResponseMatch`.
 
@@ -58,7 +64,7 @@ Zodra de match criteria zijn opgegeven, kan deze worden gekoppeld aan de test co
 | Test-URL |http://127.0.0.1:\<port\>/ |URL-pad |
 | Interval |30 |De hoeveelheid tijd in seconden die moet worden gewacht voordat de volgende status test wordt verzonden.|
 | Time-out |30 |De hoeveelheid tijd in seconden die de toepassings gateway wacht op een test reactie voordat de test wordt gemarkeerd als beschadigd. Als een test wordt geretourneerd als in orde, wordt de bijbehorende back-end direct gemarkeerd als in orde.|
-| Drempel waarde voor onjuiste status |3 |Bepaalt hoeveel tests er moeten worden verzonden als er een fout optreedt in de normale status test. Deze aanvullende Health-tests worden snel achter elkaar verzonden om de status van de back-end snel te bepalen en niet te wachten op het test interval. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
+| Drempel waarde voor onjuiste status |3 |Bepaalt hoeveel tests er moeten worden verzonden als er een fout is opgetreden van de normale status test. Deze aanvullende Health-tests worden snel achter elkaar verzonden om de status van de back-end snel te bepalen en niet te wachten op het test interval. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
 
 > [!NOTE]
 > De poort is dezelfde poort als de back-end-HTTP-instellingen.
@@ -81,7 +87,7 @@ De volgende tabel bevat definities voor de eigenschappen van een aangepaste stat
 
 | Probe-eigenschap | Beschrijving |
 | --- | --- |
-| Naam |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
+| Name |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
 | Protocol |Het protocol dat wordt gebruikt om de test te verzenden. De test gebruikt het protocol dat is gedefinieerd in de back-end-HTTP-instellingen |
 | Host |De hostnaam voor het verzenden van de test. Alleen van toepassing als multi-site is geconfigureerd op Application Gateway, anders ' 127.0.0.1 ' gebruiken. Deze waarde wijkt af van de naam van de VM-host. |
 | Pad |Het relatieve pad van de test. Het geldige pad wordt gestart vanaf/. |
@@ -95,7 +101,7 @@ De volgende tabel bevat definities voor de eigenschappen van een aangepaste stat
 
 ## <a name="nsg-considerations"></a>NSG overwegingen
 
-Als er een netwerk beveiligings groep (NSG) op een Application Gateway-subnet aanwezig is, moet poort bereik 65503-65534 op het subnet van de toepassings gateway worden geopend voor inkomend verkeer. Deze poorten zijn vereist voor een goede werking van de back-end-API.
+Als er een netwerk beveiligings groep (NSG) is op een Application Gateway-subnet, moet poort bereik 65503-65534 worden geopend op het toepassings gateway-subnet voor binnenkomend verkeer. Deze poorten zijn vereist voor een goede werking van de back-end-API.
 
 Daarnaast kan uitgaande internet connectiviteit niet worden geblokkeerd en moet binnenkomend verkeer dat afkomstig is van het label AzureLoadBalancer, worden toegestaan.
 

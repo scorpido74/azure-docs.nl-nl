@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f07eb65243b4f797a2955e33aca50ed8c46d256e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e6a92d12e7f2f24289aafa7e4a9acc9edccbd34c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950983"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840397"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Een op OWIN gebaseerde web-API migreren naar b2clogin.com
 
@@ -33,7 +33,7 @@ De volgende secties bevatten een voor beeld van het inschakelen van meerdere ver
 
 U hebt de volgende Azure AD B2C resources nodig om door te gaan met de stappen in dit artikel:
 
-* [Gebruikers stromen](tutorial-create-user-flows.md) of [aangepaste beleids regels](active-directory-b2c-get-started-custom.md) die zijn gemaakt in uw Tenant
+* [Gebruikers stromen](tutorial-create-user-flows.md) of [aangepaste beleids regels](custom-policy-get-started.md) die zijn gemaakt in uw Tenant
 
 ## <a name="get-token-issuer-endpoints"></a>Eind punten van token Uitgever ophalen
 
@@ -147,7 +147,7 @@ Wanneer de eindpunt teken reeksen zijn gemaakt tijdens de uitvoering van de web-
 
 In dit artikel vindt u een methode voor het configureren van een web-API die de micro soft OWIN middleware (Katana) implementeert voor het accepteren van tokens van meerdere issue-eind punten. Zoals u ziet, zijn er verschillende andere teken reeksen in de *Web. config* -bestanden van de TaskService-en project taskwebapp-projecten die moeten worden gewijzigd als u deze projecten wilt bouwen en uitvoeren met uw eigen Tenant. U kunt de projecten op de juiste manier aanpassen als u ze in actie wilt zien, maar een volledig overzicht van het uitvoeren van dit artikel.
 
-Zie [overzicht van tokens in azure Active Directory B2C](active-directory-b2c-reference-tokens.md)voor meer informatie over de verschillende typen beveiligings tokens die worden gegenereerd door Azure AD B2C.
+Zie [overzicht van tokens in azure Active Directory B2C](tokens-overview.md)voor meer informatie over de verschillende typen beveiligings tokens die worden gegenereerd door Azure AD B2C.
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip

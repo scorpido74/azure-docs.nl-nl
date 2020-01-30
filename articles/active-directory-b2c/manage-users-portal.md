@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/09/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 259ce2b1881c31c2558539fed34513575d193a48
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9d96db5cf062da1b2e8badd80a9a00620b724fd4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961986"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840414"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Gebruik de Azure Portal om consumenten gebruikers te maken en te verwijderen in Azure AD B2C
 
@@ -61,4 +61,4 @@ Zie [een onlangs verwijderde gebruiker herstellen of verwijderen met Azure Activ
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure AD B2C: gebruikers migratie](active-directory-b2c-user-migration.md)voor geautomatiseerde scenario's voor gebruikers beheer, bijvoorbeeld om gebruikers te migreren van een andere ID-provider naar uw Azure AD B2C Directory.
+Zie [Azure AD B2C: gebruikers migratie](user-migration.md)voor geautomatiseerde scenario's voor gebruikers beheer, bijvoorbeeld om gebruikers te migreren van een andere ID-provider naar uw Azure AD B2C Directory.

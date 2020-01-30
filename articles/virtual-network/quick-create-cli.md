@@ -11,16 +11,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 12/12/2018
+ms.date: 01/22/2019
 ms.author: kumud
-ms.openlocfilehash: 6306d893f491f93cc31b7e478afe5632e997285c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3cbfee90997c6b7cd9df1ec76543d77a4402100f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692649"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774524"
 ---
-# <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Snelstart: Een virtueel netwerk maken met Azure CLI
+# <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Snelstart: een virtueel netwerk maken met Azure Portal
 
 Met een virtueel netwerk kunnen Azure-resources, zoals virtuele machines, privé met elkaar en met internet communiceren. In deze snelstart leert u hoe u een virtueel netwerk maakt. Nadat u een virtueel netwerk hebt gemaakt, implementeert u twee virtuele machines in het virtuele netwerk. Vervolgens maakt u verbinding met de virtuele machines via internet en is er privécommunicatie via het nieuwe virtuele netwerk mogelijk.
 
@@ -104,7 +104,7 @@ Vervang in deze opdracht `<publicIpAddress>` door het openbare IP-adres van de V
 ssh <publicIpAddress>
 ```
 
-## <a name="communicate-between-vms"></a>Communiceren tussen VM's
+## <a name="communicate-between-vms"></a>Communicatie tussen virtuele machines
 
 Voer de volgende opdracht in om privécommunicatie tussen de virtuele machines *myVm2* en *myVm1* te bevestigen:
 

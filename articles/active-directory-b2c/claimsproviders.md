@@ -1,6 +1,6 @@
 ---
-title: ClaimsProviders - Azure Active Directory B2C | Microsoft Docs
-description: Geef de ClaimsProvider-element van een aangepast beleid in Azure Active Directory B2C.
+title: ClaimsProviders-Azure Active Directory B2C | Microsoft Docs
+description: Geef het ClaimsProvider-element van een aangepast beleid in Azure Active Directory B2C op.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8d2570af6abb34a87ac4c69dd63408c8ec2e8005
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a20f40c893c36823906d5cecadd9be21b8a4fd2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511527"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836011"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Een claimprovider bestaat uit een set [technische profielen](technicalprofiles.md). Elke claimprovider beschikken over een of meer technische profielen die bepalen de eindpunten en de protocollen die nodig zijn om te communiceren met de claimprovider. Een claimprovider kan meerdere technische profielen hebben. Meerdere technische profielen kunnen bijvoorbeeld worden gedefinieerd omdat de claimprovider biedt ondersteuning voor meerdere protocollen, verschillende eindpunten met verschillende mogelijkheden, of andere claims op verschillende assurance niveaus worden vrijgegeven. Kan het zijn aanvaardbaar is voor het vrijgeven van gevoelige claims in een gebruikersbeleving, maar niet in een andere.
+Een claim provider bevat een set [technische profielen](technicalprofiles.md). Elke claim provider moet een of meer technische profielen hebben die de eind punten bepalen en de protocollen die nodig zijn om te communiceren met de claim provider. Een claim provider kan meerdere technische profielen hebben. Er kunnen bijvoorbeeld meerdere technische profielen worden gedefinieerd, omdat de claim provider meerdere protocollen, verschillende eind punten met verschillende mogelijkheden ondersteunt of verschillende claims op verschillende verzekerings niveaus uitgeeft. Het kan acceptabel zijn om gevoelige claims te vrijgeven in één gebruikers traject, maar niet in een andere.
 
 ```XML
 <ClaimsProviders>
@@ -39,23 +39,23 @@ Een claimprovider bestaat uit een set [technische profielen](technicalprofiles.m
 </ClaimsProviders>
 ```
 
-De **ClaimsProviders** element bevat het volgende element:
+Het element **ClaimsProviders** bevat het volgende element:
 
-| Element | Exemplaren | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| ClaimsProvider | 1: n | Een erkende claimprovider die kan worden gebruikt in verschillende gebruikers reizen. |
+| ClaimsProvider | 1: n | Een erkende claim provider die kan worden gebruikt in verschillende trajecten van de gebruiker. |
 
 ## <a name="claimsprovider"></a>ClaimsProvider
 
-De **ClaimsProvider** element bevat de volgende onderliggende elementen:
+Het **ClaimsProvider** -element bevat de volgende onderliggende elementen:
 
-| Element | Exemplaren | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ---------- | ----------- |
-| Domein | 0:1 | Een tekenreeks zijn met de naam van de claimprovider. Bijvoorbeeld, als uw claimprovider het technische profiel Facebook bevat, is de domeinnaam Facebook.com. Deze domeinnaam wordt gebruikt voor alle technische profielen die zijn gedefinieerd in de claimprovider, tenzij deze overschreven door het technische profiel. Naam van het domein kan ook worden verwezen een **domain_hint**. Zie voor meer informatie de **aanmelden omleiden naar een provider voor sociale** sectie van [instellen direct aanmelden met behulp van Azure Active Directory B2C](direct-signin.md). |
-| DisplayName | 0:1 | Een tekenreeks zijn met de naam van de claimprovider die kan worden weergegeven aan gebruikers. |
-| [TechnicalProfiles](technicalprofiles.md) | 0:1 | Een set technische profielen die worden ondersteund door de claimprovider |
+| Domain | 0:1 | Een teken reeks die de domein naam voor de claim provider bevat. Als uw claim provider bijvoorbeeld het technische profiel voor Facebook bevat, is de domein naam Facebook.com. Deze domein naam wordt gebruikt voor alle technische profielen die zijn gedefinieerd in de claim provider, tenzij deze wordt overschreven door het technische profiel. Er kan ook worden verwezen naar de domein naam in een **domain_hint**. Zie voor meer informatie de sectie **Aanmelden omleiden naar een sociale provider** van het [rechtstreeks aanmelden instellen met behulp van Azure Active Directory B2C](direct-signin.md). |
+| DisplayName | 1:1 | Een teken reeks die de naam van de claim provider bevat die kan worden weer gegeven voor gebruikers. |
+| [TechnicalProfiles](technicalprofiles.md) | 0:1 | Een set technische profielen die worden ondersteund door de claim provider |
 
-**ClaimsProvider** organiseert hoe uw technische profielen in verband met de claimprovider. Het volgende voorbeeld ziet u de Azure Active Directory-claimprovider met de technische Azure Active Directory-profielen:
+**ClaimsProvider** organiseert hoe uw technische profielen verband houden met de claim provider. In het volgende voor beeld ziet u de Azure Active Directory claim provider met de Azure Active Directory technische profielen:
 
 ```XML
 <ClaimsProvider>
@@ -93,7 +93,7 @@ De **ClaimsProvider** element bevat de volgende onderliggende elementen:
 </ClaimsProvider>
 ```
 
-Het volgende voorbeeld ziet de Facebook-claimprovider met de **Facebook-OAUTH** technisch profiel.
+In het volgende voor beeld wordt de Facebook-claim provider weer gegeven met het **Facebook-OAUTH-** technische profiel.
 
 ```XML
 <ClaimsProvider>

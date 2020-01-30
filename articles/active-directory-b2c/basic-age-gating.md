@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f7eb4d8e784acc659f6661ef6efbdb06816b142c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1fc63b222fd2f08bb4b5596d58f825c8f6b1910e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064460"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836233"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Leeftijds beperking inschakelen in Azure Active Directory B2C
 
@@ -25,9 +25,9 @@ ms.locfileid: "71064460"
 
 Met leeftijds beperking in Azure Active Directory B2C (Azure AD B2C) kunt u minder jarigen identificeren die uw toepassing willen gebruiken. U kunt ervoor kiezen om de secundaire te blok keren om u aan te melden bij de toepassing. Gebruikers kunnen ook teruggaan naar de toepassing, hun leeftijds groep en de status van de ouderlijke toestemming identificeren. Azure AD B2C kunnen minder jarigen blok keren zonder toestemming van een ouder. Azure AD B2C kan ook zo worden ingesteld dat de toepassing kan bepalen wat met minder jarigen kan worden gedaan.
 
-Nadat u leeftijds beperking in uw [gebruikers stroom](active-directory-b2c-reference-policies.md)hebt ingeschakeld, worden gebruikers gevraagd wanneer ze geboren zijn en in welk land of welke regio ze wonen. Als een gebruiker zich aanmeldt dat de gegevens niet eerder zijn ingevoerd, moeten ze de volgende keer dat ze zich aanmelden invoeren. De regels worden toegepast telkens wanneer een gebruiker zich aanmeldt.
+Nadat u leeftijds beperking in uw [gebruikers stroom](user-flow-overview.md)hebt ingeschakeld, worden gebruikers gevraagd wanneer ze geboren zijn en in welk land of welke regio ze wonen. Als een gebruiker zich aanmeldt dat de gegevens niet eerder zijn ingevoerd, moeten ze de volgende keer dat ze zich aanmelden invoeren. De regels worden toegepast telkens wanneer een gebruiker zich aanmeldt.
 
-Azure AD B2C gebruikt de informatie die de gebruiker invoert om te bepalen of ze een kleine zijn. Het veld **ageGroup** wordt vervolgens bijgewerkt in hun account. `null`De waarde kan ,`Adult` ,,`NotAdult`en. `Undefined` `Minor`  De velden **ageGroup** en **consentProvidedForMinor** worden vervolgens gebruikt om de waarde van **legalAgeGroupClassification**te berekenen.
+Azure AD B2C gebruikt de informatie die de gebruiker invoert om te bepalen of ze een kleine zijn. Het veld **ageGroup** wordt vervolgens bijgewerkt in hun account. De waarde kan `null`, `Undefined`, `Minor`, `Adult`en `NotAdult`zijn.  De velden **ageGroup** en **consentProvidedForMinor** worden vervolgens gebruikt om de waarde van **legalAgeGroupClassification**te berekenen.
 
 De leeftijds beperking omvat twee leeftijds waarden: de leeftijd die niet langer wordt beschouwd als een kleine, en de leeftijd waarbij een kleine persoon toestemming moet geven over ouders. De volgende tabel bevat de leeftijds regels die worden gebruikt voor het definiëren van een kleine en kleine, vereiste toestemming.
 
@@ -41,7 +41,7 @@ De leeftijds beperking omvat twee leeftijds waarden: de leeftijd die niet langer
 | BH | Bahrein | Geen | 21 |
 | CM | Kameroen | Geen | 21 |
 | CY | Cyprus | 16 | 18 |
-| CZ | Tsjechische Republiek | 16 | 18 |
+| CZ | Tsjechië | 16 | 18 |
 | DE | Duitsland | 16 | 18 |
 | DK | Denemarken | 16 | 18 |
 | EE | Estland | 16 | 18 |
@@ -50,7 +50,7 @@ De leeftijds beperking omvat twee leeftijds waarden: de leeftijd die niet langer
 | FR | Frankrijk | 16 | 18 |
 | GB | Verenigd Koninkrijk | 13 | 18 |
 | GR | Griekenland | 16 | 18 |
-| HR | Kroatië (Hrvatska) | 16 | 18 |
+| HR | Kroatië | 16 | 18 |
 | HU | Hongarije | 16 | 18 |
 | IE | Ierland | 13 | 18 |
 | IT | Italië | 16 | 18 |
@@ -59,7 +59,7 @@ De leeftijds beperking omvat twee leeftijds waarden: de leeftijd die niet langer
 | LU | Luxemburg | 16 | 18 |
 | LV | Letland | 16 | 18 |
 | MT | Malta | 16 | 18 |
-| N.v.t. | Namibië | Geen | 21 |
+| N.V.T. | Namibië | Geen | 21 |
 | NL | Nederland | 16 | 18 |
 | PL | Polen | 13 | 18 |
 | PT | Portugal | 16 | 18 |
@@ -103,7 +103,7 @@ Nadat uw Tenant is ingesteld voor het gebruik van leeftijd beperking, kunt u dez
 1. Maak een gebruikers stroom waarvoor leeftijds beperking is ingeschakeld.
 2. Nadat u de gebruikers stroom hebt gemaakt, selecteert u **Eigenschappen** in het menu.
 3. Selecteer in de sectie **leeftijds beperking** de optie **ingeschakeld**.
-4. Vervolgens bepaalt u hoe u gebruikers wilt beheren die als minder jarigen worden geïdentificeerd. Als u **zich wilt aanmelden of aanmelden**, selecteert `Allow minors to access your application` u of. `Block minors from accessing your application` Als blokkerende minder jarigen is geselecteerd `Send a JSON back to the application` , `Show an error message`selecteert u of.
+4. Vervolgens bepaalt u hoe u gebruikers wilt beheren die als minder jarigen worden geïdentificeerd. Als u **zich wilt aanmelden of aanmelden**, selecteert u `Allow minors to access your application` of `Block minors from accessing your application`. Als het selectie vakje minder jarigen wordt ingeschakeld, selecteert u `Send a JSON back to the application` of `Show an error message`.
 
 
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940998"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841026"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -96,7 +96,7 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | Eigenschappen | Toegestane waarden | Gebruik |
 | --- | --- | --- |
 | city |Een wille keurige teken reeks waarde of *Null* |(User. City-EQ "waarde") |
-| land |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
+| regio |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
 | companyName | Een wille keurige teken reeks waarde of *Null* | (user.companyName -eq "value") |
 | department |Een wille keurige teken reeks waarde of *Null* |(User. Department-EQ "waarde") |
 | displayName |wille keurige teken reeks waarde |(User. displayName-EQ "waarde") |
@@ -144,7 +144,7 @@ De volgende tabel geeft een lijst van alle ondersteunde Opera tors en hun syntax
 | Bevat niet |-notContains |
 | Contains |-bevat |
 | Niet overeen |-notMatch |
-| Overeenkomst |-overeenkomst |
+| overeen met |-overeenkomst |
 | In | -in |
 | Niet in | -notIn |
 
@@ -178,7 +178,7 @@ De waarden die in een expressie worden gebruikt, kunnen bestaan uit verschillend
 
 * Tekenreeksen
 * Boolean – True, False
-* Aantallen
+* Rijnummers
 * Matrices – nummer matrix, teken reeks matrix
 
 Wanneer u een waarde in een expressie opgeeft, is het belang rijk dat u de juiste syntaxis gebruikt om fouten te voor komen. Enkele syntaxis tips zijn:
@@ -213,7 +213,7 @@ Hier volgen enkele voor beelden van goed geconstrueerde lidmaatschaps regels met
 (user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
 ```
 
-### <a name="operator-precedence"></a>Bewerkingsvolgorde van operators
+### <a name="operator-precedence"></a>Operator prioriteit
 
 Alle Opera tors worden hieronder weer gegeven in volg orde van prioriteit van hoog naar laag. Opera tors op dezelfde regel zijn gelijk aan de prioriteit:
 
@@ -370,7 +370,7 @@ U kunt ook een regel maken waarmee objecten worden geselecteerd voor lidmaatscha
 > [!NOTE]
 > systemlabels is een alleen-lezen kenmerk dat niet kan worden ingesteld met intune.
 >
-> Voor Windows 10 is de juiste indeling van het kenmerk deviceOSVersion als volgt: (Device. deviceOSVersion-EQ "10,0 (17763)"). De opmaak kan worden gevalideerd met de Power shell-cmdlet Get-MsolDevice.
+> Voor Windows 10 is de juiste indeling van het kenmerk deviceOSVersion als volgt: (Device. deviceOSVersion-EQ "10.0.17763"). De opmaak kan worden gevalideerd met de Power shell-cmdlet Get-MsolDevice.
 
 De volgende kenmerken van apparaten kunnen worden gebruikt.
 

@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: de078399a29af1c7eb2ae3fb237e1550ccaeacfa
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872295"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843257"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Opvolgprompts gebruiken om meerdere beurten in een gesprek te maken
 
@@ -65,7 +65,7 @@ Als u een document met meerdere scha kelen maakt, houdt u de volgende richt lijn
 
 * Gebruik koppen en subkoppen om de hiërarchie aan te duiden. U kunt bijvoorbeeld H1 de bovenliggende QnA en H2 aanduiden om de QnA aan te duiden die als prompt moet worden beschouwd. Gebruik de kleine grootte van de kop om volgende hiërarchie aan te duiden. Gebruik geen stijl, kleur of een ander mechanisme om de structuur in uw document te impliceren, QnA Maker de prompts voor meerdere schakelingen niet uit te pakken.
 
-* Het eerste teken van de kop moet worden gekapitaliseerd. 
+* Het eerste teken van de kop moet worden gekapitaliseerd.
 
 * Beëindig geen koptekst met een vraag teken `?`.
 
@@ -368,7 +368,7 @@ U kunt vragen over meerdere schakelingen toevoegen of verwijderen met de [API Qn
 
 ## <a name="export-knowledge-base-for-version-control"></a>Knowledge Base exporteren voor versie beheer
 
-QnA Maker [ondersteunt versie beheer](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) in de QnA Maker portal door de stappen voor het door voeren van meerdere discussies in het geëxporteerde bestand op te nemen.
+QnA Maker ondersteunt versie beheer door gespreks stappen voor meerdere locaties in het geëxporteerde bestand op te nemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

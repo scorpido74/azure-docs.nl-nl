@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 9f49a9224ed123b76f4d300c27a8dd5822e50ea3
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: eceb4b312476d701ec8ce4eb0ce4886621824b3a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706027"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841588"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive-workloads migreren naar HDInsight 4,0
 
@@ -76,7 +76,7 @@ Gebruik de waarden in de tabel hieronder. Vervang `SQLSERVERNAME DATABASENAME US
 |Eigenschap | Waarde |
 |---|---|
 |Script type|-Aangepast|
-|Naam|Hive-upgrade|
+|Name|Hive-upgrade|
 |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |Knooppunt type (n)|Kop|
 |Parameters|GEBRUIKERS NAAM DATABASENAME DATA BASE WACHT WOORD|
@@ -118,7 +118,7 @@ Deze compressie is vereist omdat de tabellen HDInsight 3,6 en HDInsight 4,0 ACID
 
 Wanneer u de migratie en de compressie stappen van de meta Store hebt voltooid, kunt u het werkelijke magazijn migreren. Nadat u de Hive-Warehouse migratie hebt voltooid, heeft het HDInsight 4,0-magazijn de volgende eigenschappen:
 
-|3,6 |4,0 |
+|3.6 |4.0 |
 |---|---|
 |Externe tabellen|Externe tabellen|
 |Niet-transactionele beheerde tabellen|Externe tabellen|
@@ -179,11 +179,13 @@ In HDInsight 3,6 is de GUI-client voor interactie met hive-server de Hive-weer g
 |Eigenschap | Waarde |
 |---|---|
 |Script type|-Aangepast|
-|Naam|DAS|
+|Name|DAS|
 |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Knooppunt type (n)|Kop|
 
-Wacht 5 tot 10 minuten en start vervolgens Data Analytics Studio met behulp van deze URL: `https://CLUSTERNAME.azurehdinsight.net/das/`.
+Wacht 10 tot 15 minuten en start vervolgens Data Analytics Studio met behulp van deze URL: `https://CLUSTERNAME.azurehdinsight.net/das/`.
+
+Een vernieuwing van de Ambari-gebruikers interface en/of het opnieuw opstarten van alle Ambari-onderdelen is mogelijk vereist voordat DAS wordt geopend.
 
 Als DAS is geïnstalleerd en u de query's die u hebt uitgevoerd, niet in de query viewer ziet, voert u de volgende stappen uit:
 

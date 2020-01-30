@@ -7,14 +7,14 @@ author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
-ms.date: 08/01/2019
+ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: 48e74f7dd6fa6f2c7fafe10797a301b3d4cc7f1d
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 69ff58d6cdabe49000b00afecfc6b4ad1a3f2daa
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045234"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841843"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Zelf studie: een iOS-app maken waarmee de insluitende lezer wordt gestart met inhoud van een foto (SWIFT)
 
@@ -91,7 +91,7 @@ In Xcode, drukt u op CTRL + R of klikt u op de knop afspelen om het project uit 
 
 In uw app ziet u het volgende:
 
-![Voorbeeldapp](./media/ios/picture-to-immersive-reader-ipad-app.png)
+![Voor beeld-app](./media/ios/picture-to-immersive-reader-ipad-app.png)
 
 In de app kunt u een foto van tekst nemen of uploaden door op de knop foto nemen of de knop foto van de bibliotheek kiezen te drukken en de insluitende lezer vervolgens te starten met het weer geven van de tekst van de foto.
 

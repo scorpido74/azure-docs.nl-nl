@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: bfa3f592ca799b71bef7c7f9409864026f6c8d6a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863890"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774428"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -33,7 +33,7 @@ Hyper-V zonder Virtual Machine Manager | U kunt herstel na nood geval uitvoeren 
 **Server** | **Vereisten** | **Details**
 --- | --- | ---
 Hyper-V (wordt uitgevoerd zonder Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (inclusief Server Core-installatie), Windows Server 2012 R2 met de nieuwste updates | Als u Windows Server 2012 R2 al hebt geconfigureerd met/of SCVMM 2012 R2 met Azure Site Recovery en een upgrade van het besturings systeem wilt uitvoeren, volgt u de [documentatie bij](upgrade-2012R2-to-2016.md) de richt lijnen. 
-Hyper-V (uitgevoerd met Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Als Virtual Machine Manager wordt gebruikt, moeten hosts met Windows Server 2019 worden beheerd in Virtual Machine Manager 2019. Op dezelfde manier moeten hosts met Windows Server 2016 worden beheerd in Virtual Machine Manager 2016.<br/><br/>
+Hyper-V (uitgevoerd met Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Als Virtual Machine Manager wordt gebruikt, moeten hosts met Windows Server 2019 worden beheerd in Virtual Machine Manager 2019. Op dezelfde manier moeten hosts met Windows Server 2016 worden beheerd in Virtual Machine Manager 2016.<br/><br/> Opmerking: failback naar een alternatieve locatie wordt niet ondersteund voor Windows Server 2019-hosts.
 
 
 ## <a name="replicated-vms"></a>Gerepliceerde Vm's
@@ -44,7 +44,7 @@ De volgende tabel bevat een overzicht van de VM-ondersteuning. Site Recovery ond
  **Onderdeel** | **Details**
 --- | ---
 VM-configuratie | Vm's die naar Azure repliceren, moeten voldoen aan de [vereisten van Azure](#azure-vm-requirements).
-Gastbesturingssysteem | Elk gast besturingssysteem dat wordt [ondersteund voor Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)..<br/><br/> Windows Server 2016 nano server wordt niet ondersteund.
+Gast besturingssysteem | Elk gast besturingssysteem dat wordt [ondersteund voor Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)..<br/><br/> Windows Server 2016 nano server wordt niet ondersteund.
 
 
 ## <a name="vmdisk-management"></a>VM/schijf beheer
@@ -102,7 +102,7 @@ Meerdere paden (MPIO). Getest met:<br></br> Micro soft DSM, EMC PowerPath 5,7 SP
 --- | --- | ---
 VMDK | N.V.T. | N.V.T.
 VHD/VHDX | Ja | Ja
-Generatie 2 VM | Ja | Ja
+VM van de 2e generatie | Ja | Ja
 EFI/UEFI<br></br>De gemigreerde VM in azure wordt automatisch geconverteerd naar een BIOS-opstart-VM. Op de VM moet Windows Server 2012 en hoger worden uitgevoerd. De besturingssysteem schijf moet Maxi maal vijf partities of minder hebben en de grootte van de besturingssysteem schijf moet kleiner zijn dan 300 GB.| Ja | Ja
 Gedeelde cluster schijf | Nee | Nee
 Versleutelde schijf | Nee | Nee
@@ -111,10 +111,10 @@ SMB 3.0 | Nee | Nee
 RDM | N.V.T. | N.V.T.
 Schijf > 1 TB | Ja, Maxi maal 4.095 GB | Ja, Maxi maal 4.095 GB
 Schijf: logische en fysieke sector van 4 KB | Niet ondersteund: gen 1/gen 2 | Niet ondersteund: gen 1/gen 2
-Schijf: 4 KB logische en 512 bytes fysieke sector | Ja |  Ja
+Schijf: 4 KB logische en 512-bytes fysieke sector | Ja |  Ja
 Beheer van logische volumes (LVM). LVM wordt alleen ondersteund op gegevens schijven. Azure biedt slechts één besturingssysteem schijf. | Ja | Ja
 Volume met gestripte schijf > 1 TB | Ja | Ja
-Opslagruimten | Nee | Nee
+Opslag ruimten | Nee | Nee
 Hot toevoegen/verwijderen schijf | Nee | Nee
 Schijf uitsluiten | Ja | Ja
 Meerdere paden (MPIO) | Ja | Ja
@@ -125,7 +125,7 @@ Meerdere paden (MPIO) | Ja | Ja
 --- | --- | ---
 Lokaal redundante opslag | Ja | Ja
 Geografisch redundante opslag | Ja | Ja
-Geografisch redundante opslag met leestoegang | Ja | Ja
+Geografisch redundante opslag met lees toegang | Ja | Ja
 Cool Storage | Nee | Nee
 Hot Storage| Nee | Nee
 Blok-blobs | Nee | Nee
@@ -133,8 +133,8 @@ Versleuteling op rest (SSE)| Ja | Ja
 Versleuteling in rust (CMK) <br></br> (Alleen voor failover naar beheerde schijven)| Ja (via Power shell AZ 3.3.0 module) | Ja (via Power shell AZ 3.3.0 module)
 Premium-opslag | Ja | Ja
 Import/export-service | Nee | Nee
-Azure Storage-accounts waarvoor Firewall is ingeschakeld | Ja. Voor doel opslag en cache. | Ja. Voor doel opslag en cache.
-Opslag account wijzigen | Nee. Het Azure Storage-doel account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Schakel herstel na nood gevallen uit en vervolgens opnieuw in. | Nee
+Azure Storage accounts waarvoor Firewall is ingeschakeld | Ja. Voor doel opslag en cache. | Ja. Voor doel opslag en cache.
+Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | Nee
 
 
 ## <a name="azure-compute-features"></a>Azure Compute-functies
@@ -151,19 +151,19 @@ On-premises Vm's die u naar Azure repliceert, moeten voldoen aan de vereisten va
 
 **Onderdeel** | **Vereisten** | **Details**
 --- | --- | ---
-Gastbesturingssysteem | Site Recovery ondersteunt alle besturings systemen die worden [ondersteund door Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | De controle van vereisten mislukt als dit niet wordt ondersteund.
+Gast besturingssysteem | Site Recovery ondersteunt alle besturings systemen die worden [ondersteund door Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | De controle van vereisten mislukt als dit niet wordt ondersteund.
 Architectuur van gast besturingssysteem | 32-bits (Windows Server 2008)/64-bit | De controle van vereisten mislukt als dit niet wordt ondersteund.
 Schijf grootte van het besturings systeem | Maxi maal 2.048 GB voor virtuele machines van de eerste generatie.<br/><br/> Maxi maal 300 GB voor virtuele machines van de tweede generatie.  | De controle van vereisten mislukt als dit niet wordt ondersteund.
 Aantal besturingssysteem schijven | 1 | De controle van vereisten mislukt als dit niet wordt ondersteund.
 Aantal gegevens schijven | 16 of minder  | De controle van vereisten mislukt als dit niet wordt ondersteund.
 VHD-grootte van gegevens schijf | Maxi maal 4.095 GB | De controle van vereisten mislukt als dit niet wordt ondersteund.
-Netwerkadapters | Meerdere netwerkadapters worden ondersteund |
+Netwerk adapters | Meerdere netwerkadapters worden ondersteund |
 Gedeelde VHD | Niet ondersteund | De controle van vereisten mislukt als dit niet wordt ondersteund.
 FC-schijf | Niet ondersteund | De controle van vereisten mislukt als dit niet wordt ondersteund.
 Indeling van harde schijf | VHD <br/><br/> VHDX | Site Recovery converteert VHDX automatisch naar VHD wanneer u een failover naar Azure voert. Wanneer u een failover naar on-premises doorvoert, blijven de virtuele machines de VHDX-indeling gebruiken.
 BitLocker | Niet ondersteund | BitLocker moet worden uitgeschakeld voordat u replicatie voor een virtuele machine inschakelt.
 VM-naam | 1 tot 63 tekens. Alleen letters, cijfers en afbreekstreepjes. De VM-naam moet beginnen en eindigen met een letter of cijfer. | Werk de waarde in de VM-eigenschappen in Site Recovery bij.
-VM-type | Eerste generatie<br/><br/> Generatie 2: Windows | Virtuele machines van de tweede generatie met het type basis van het besturings systeem (met een of twee gegevens volumes, geformatteerd als VHDX) en minder dan 300 GB schijf ruimte worden ondersteund.<br></br>Vm's van de Linux-generatie 2 worden niet ondersteund. [Meer informatie](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
+VM-type | Generatie 1<br/><br/> Generatie 2: Windows | Virtuele machines van de tweede generatie met het type basis van het besturings systeem (met een of twee gegevens volumes, geformatteerd als VHDX) en minder dan 300 GB schijf ruimte worden ondersteund.<br></br>Vm's van de Linux-generatie 2 worden niet ondersteund. [Meer informatie](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Recovery Services kluis acties
 

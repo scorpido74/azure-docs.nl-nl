@@ -8,17 +8,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: a79b0476fccbd2e2b9d3cf47ecfdc99c17c2862d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0f67caad03c4ebd1cf8f3721f377d8362219016a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113333"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837728"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Cognitieve vaardigheid van document extractie
 
 > [!IMPORTANT] 
-> Deze vaardigheid is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel geen portal-of .NET SDK-ondersteuning.
+> Deze vaardigheid is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Er is momenteel geen portal-of .NET SDK-ondersteuning.
 
 De vaardigheid van **document extractie** extraheert inhoud uit een bestand binnen de verrijkings pijplijn. Zo kunt u gebruikmaken van de stap voor document extractie die normaal gesp roken plaatsvindt voordat de vaardig heden-uitvoering wordt uitgevoerd op bestanden die door andere vaardig heden kunnen worden gegenereerd.
 
@@ -41,7 +41,7 @@ Para meters zijn hoofdletter gevoelig.
 
 | Configuratie parameter   | Toegestane waarden | Beschrijving |
 |-------------------------|----------------|-------------|
-| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Ingesteld op `none` om Inge sloten afbeeldingen of afbeeldings bestanden in de gegevensset te negeren. Dit is de standaard instelling. <br/>Voor het [analyseren van afbeeldingen met behulp van cognitieve vaardig heden](cognitive-search-concept-image-scenarios.md), stelt u in `generateNormalizedImages` om ervoor te hebben dat de kwalificatie een matrix van genormaliseerde installatie kopieën maakt als onderdeel van het kraken van documenten. Voor deze actie moet `parsingMode` zijn ingesteld op `default` en `dataToExtract` is ingesteld op `contentAndMetadata`. Een genormaliseerde afbeelding verwijst naar extra verwerking, waardoor de uitvoer van een uniforme afbeelding kan worden geschaald en geroteerd om een consistente rendering te bevorderen wanneer u afbeeldingen opneemt in visuele Zoek resultaten (bijvoorbeeld Foto's met dezelfde grootte in een besturings element voor een grafiek, zoals wordt weer gegeven in de [JFK Demo](https://github.com/Microsoft/AzureSearch_JFK_Files)). Deze informatie wordt voor elke installatie kopie gegenereerd wanneer u deze optie gebruikt.  <br/>Als u instelt op `generateNormalizedImagePerPage`, worden PDF-bestanden anders behandeld in plaats van Inge sloten afbeeldingen te extra heren, wordt elke pagina weer gegeven als een afbeelding en genormaliseerd.  Niet-PDF-bestands typen worden op dezelfde manier behandeld als `generateNormalizedImages` is ingesteld.
+| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Ingesteld op `none` om Inge sloten afbeeldingen of afbeeldings bestanden in de gegevensset te negeren. Dit is de standaard instelling. <br/>Voor het [analyseren van afbeeldingen met behulp van cognitieve vaardig heden](cognitive-search-concept-image-scenarios.md), stelt u in `generateNormalizedImages` om ervoor te hebben dat de kwalificatie een matrix van genormaliseerde installatie kopieën maakt als onderdeel van het kraken van documenten. Voor deze actie moet `parsingMode` zijn ingesteld op `default` en `dataToExtract` is ingesteld op `contentAndMetadata`. Een genormaliseerde installatie kopie verwijst naar extra verwerking, wat resulteert in een uniforme afbeeldings uitvoer, formaat en roteert om een consistente rendering te bevorderen wanneer u afbeeldingen opneemt in visuele Zoek resultaten (bijvoorbeeld Foto's met dezelfde grootte in een besturings element van de [JFK](https://github.com/Microsoft/AzureSearch_JFK_Files)). Deze informatie wordt voor elke installatie kopie gegenereerd wanneer u deze optie gebruikt.  <br/>Als u instelt op `generateNormalizedImagePerPage`, worden PDF-bestanden anders behandeld in plaats van Inge sloten afbeeldingen te extra heren, wordt elke pagina weer gegeven als een afbeelding en genormaliseerd.  Niet-PDF-bestands typen worden op dezelfde manier behandeld als `generateNormalizedImages` is ingesteld.
 | `normalizedImageMaxWidth` | Wille keurig geheel getal tussen 50-10000 | De maximum breedte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaard waarde is 2000. | 
 | `normalizedImageMaxHeight` | Wille keurig geheel getal tussen 50-10000 | De maximum hoogte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaard waarde is 2000. |
 

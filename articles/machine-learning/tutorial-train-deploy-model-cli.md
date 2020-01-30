@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: f920df20a8dc1cace76f641ce1c71f9b91a30bf4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867673"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841111"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Zelf studie: een model trainen en implementeren vanuit de CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -246,7 +246,7 @@ De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
 > [!IMPORTANT]
 > Kopieer de waarde van de `id` invoer, zoals deze wordt gebruikt in de volgende sectie.
 
-Gebruik de volgende opdracht om een uitgebreidere sjabloon te bekijken voor het JSON-bestand waarin een gegevensset wordt beschreven:
+Als u een uitgebreidere sjabloon voor een gegevensset wilt weer geven, gebruikt u de volgende opdracht:
 ```azurecli-interactive
 az ml dataset register --show-template
 ```
@@ -288,9 +288,9 @@ data:
 
 Wijzig de waarde van de `id` vermelding zodat deze overeenkomt met de waarde die is geretourneerd tijdens het registreren van de gegevensset. Deze waarde wordt gebruikt voor het laden van de gegevens in het reken doel tijdens de training.
 
-Deze YAML doet het volgende:
+Deze YAML resulteert in de volgende acties tijdens de training:
 
-* Koppelt de gegevensset (op basis van de ID van de gegevensset) in de trainings omgeving en slaat het pad op naar het koppel punt in de omgevings variabele `mnist`..
+* Koppelt de gegevensset (op basis van de ID van de gegevensset) in de trainings omgeving en slaat het pad op naar het koppel punt in de omgevings variabele `mnist`.
 * Hiermee wordt de locatie van de gegevens (koppel punt) in de trainings omgeving door gegeven aan het script met behulp van het argument `--data-folder`.
 
 Het runconfig-bestand bevat ook informatie over het configureren van de omgeving die wordt gebruikt voor de uitvoering van de training. Als u dit bestand inspecteert, ziet u dat het verwijst naar het `cpu-compute` Compute-doel dat u eerder hebt gemaakt. U ziet ook het aantal knoop punten dat moet worden gebruikt bij het trainen (`"nodeCount": "4"`) en bevat een `"condaDependencies"` sectie met een lijst met de Python-pakketten die nodig zijn om het trainings script uit te voeren.
@@ -298,7 +298,7 @@ Het runconfig-bestand bevat ook informatie over het configureren van de omgeving
 > [!TIP]
 > Hoewel het mogelijk is om hand matig een runconfig-bestand te maken, is de oplossing in dit voor beeld gemaakt met behulp van het `generate-runconfig.py`-bestand dat is opgenomen in de opslag plaats. Met dit bestand wordt een verwijzing naar de geregistreerde gegevensset opgehaald, wordt een uitvoeren van de configuratie programmatisch gemaakt en vervolgens opgeslagen in een bestand.
 
-Zie [Compute-doelen voor model training instellen en gebruiken](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)voor meer informatie over het uitvoeren van configuratie bestanden. u kunt ook verwijzen naar dit [JSON-bestand](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) om het volledige schema voor een runconfig te bekijken.
+Zie [Compute-doelen voor model training instellen en gebruiken](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)voor meer informatie over het uitvoeren van configuratie bestanden. Zie [runconfigschema. json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)voor een volledige JSON-verwijzing.
 
 ## <a name="submit-the-training-run"></a>De trainings uitvoering verzenden
 
@@ -379,7 +379,9 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 Met deze opdracht wordt een nieuwe service met de naam `myservice`geïmplementeerd met versie 1 van het model dat u eerder hebt geregistreerd.
 
-Het `inferenceConfig.yml` bestand bevat informatie over het uitvoeren van een afleiding, zoals het vermeldings script (`score.py`) en de software-afhankelijkheden. Voor meer informatie over de structuur van dit bestand raadpleegt u het schema voor het afzien van de [configuratie](reference-azure-machine-learning-cli.md#inference-configuration-schema). Zie [modellen implementeren met de Azure machine learning](how-to-deploy-and-where.md#prepare-to-deploy)voor meer informatie over invoer scripts.
+Het `inferenceConfig.yml` bestand bevat informatie over het gebruik van het model voor demijnen. Er wordt bijvoorbeeld verwezen naar het entry-script (`score.py`) en software-afhankelijkheden. 
+
+Voor meer informatie over de structuur van dit bestand raadpleegt u het schema voor het afzien van de [configuratie](reference-azure-machine-learning-cli.md#inference-configuration-schema). Zie [modellen implementeren met de Azure machine learning](how-to-deploy-and-where.md#prepare-to-deploy)voor meer informatie over invoer scripts.
 
 De `aciDeploymentConfig.yml` beschrijft de implementatie omgeving die wordt gebruikt voor het hosten van de service. De implementatie configuratie is specifiek voor het reken type dat u gebruikt voor de implementatie. In dit geval wordt een exemplaar van Azure container gebruikt. Zie het [implementatie configuratie schema](reference-azure-machine-learning-cli.md#deployment-configuration-schema)voor meer informatie.
 

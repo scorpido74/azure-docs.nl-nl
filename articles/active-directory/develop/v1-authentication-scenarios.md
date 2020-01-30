@@ -16,13 +16,13 @@ ms.workload: identity
 ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b6271805b9d14db9f2fdcd85d089962e9874f6ba
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev
+ms.openlocfilehash: 216c4a730828bf0959c2b932077dd110f5843739
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701141"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833274"
 ---
 # <a name="what-is-authentication"></a>Wat is verificatie?
 
@@ -63,7 +63,7 @@ In het bovenstaande voorbeeldscenario kunt u apps classificeren aan de hand van 
 
 Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verificatie stromen worden gebruikt die worden ondersteund door Azure AD. Deze stromen kunnen een aantal tokens (id_tokens, vernieuwings tokens, toegangs tokens) en autorisatie codes produceren, en vereisen verschillende tokens om ze te laten werken. Dit diagram bevat een overzicht:
 
-|Stroom | Vereist | id_token | toegangs token | token vernieuwen | autorisatie code | 
+|Stroom | Nodig | id_token | toegangs token | token vernieuwen | autorisatie code | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Autorisatie code stroom](v1-protocols-oauth-code.md) | | x | x | x | x|  
 |[Impliciete stroom](v1-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |

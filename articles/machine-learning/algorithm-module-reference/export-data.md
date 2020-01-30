@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7f8d3bb6452ee3260e5a89feb37c374418fc6943
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c83bfc4a3ec8d1163669f28dfde64c63e7c6ff89
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312155"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775073"
 ---
 # <a name="export-data-module"></a>Gegevens module exporteren
 
-In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om resultaten, tussenliggende gegevens en werk gegevens van uw pijp lijnen op te slaan in de Cloud opslag buiten Azure Machine Learning. 
 
@@ -29,7 +29,7 @@ Deze module biedt ondersteuning voor het exporteren van uw gegevens naar de volg
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Voordat u uw gegevens exporteert, moet u eerst een gegevens opslag registreren in uw Azure Machine Learning-werk ruimte. Zie [toegang tot gegevens](../how-to-access-data.md)voor meer informatie.
+Voordat u uw gegevens exporteert, moet u eerst een gegevens opslag registreren in uw Azure Machine Learning-werk ruimte. Zie [toegang tot gegevens in azure Storage-services](../how-to-access-data.md)voor meer informatie.
 
 ## <a name="how-to-configure-export-data"></a>Export gegevens configureren
 
@@ -39,7 +39,7 @@ Voordat u uw gegevens exporteert, moet u eerst een gegevens opslag registreren i
 
 1. Selecteer **gegevens exporteren** om het deel venster **Eigenschappen** te openen.
 
-1. Selecteer een bestaande gegevens opslag in de vervolg keuzelijst voor **gegevens opslag**. U kunt ook een nieuw gegevens archief maken. Ga na [hoe-to-Access-Data](../how-to-access-data.md)
+1. Selecteer een bestaande gegevens opslag in de vervolg keuzelijst voor **gegevens opslag**. U kunt ook een nieuw gegevens archief maken. Raadpleeg de informatie [in azure Storage-services om toegang te krijgen tot de gegevens](../how-to-access-data.md).
 
 1. Definieer het pad in het gegevens archief waarnaar de gegevens moeten worden geschreven. 
 

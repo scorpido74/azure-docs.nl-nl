@@ -1,108 +1,108 @@
 ---
-title: Klassieke Azure-implementatie model | Microsoft Docs
-description: Klassieke Azure-implementatie model
+title: Klassieke Azure-implementatie model
+description: Het klassieke implementatie model, dat nu door het Resource Manager-model wordt vervangen, dwingt een globale vCPU-quotum limiet af voor Vm's en virtuele-machine schaal sets.
 author: sowmyavenkat86
 ms.author: svenkat
-ms.date: 06/20/2019
+ms.date: 01/27/2020
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: d8f4bf04251347c44ea1692cfdda2602e23117f4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a3d5106cafc1d3bfe77f3e42e85cedb668fc4fa0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897050"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835572"
 ---
 # <a name="classic-deployment-model"></a>Klassiek implementatiemodel
 
-Het klassieke implementatie model is het Azure-implementatie model van de oudere generatie. Hiermee wordt een globale vCPU-quotum limiet afgedwongen voor virtuele machines en virtuele-machine schaal sets. Het klassieke implementatie model wordt niet meer aanbevolen en wordt nu vervangen door het Resource Manager-model. 
+Het klassieke implementatie model is het Azure-implementatie model van de oudere generatie. Hiermee wordt een globale vCPU-quotum limiet afgedwongen voor virtuele machines en virtuele-machine schaal sets. Het klassieke implementatie model wordt niet meer aanbevolen en wordt nu vervangen door het Resource Manager-model.
 
-Raadpleeg de pagina [Resource Manager en klassieke implementatie](../../azure-resource-manager/management/deployment-models.md) voor meer informatie over deze twee implementatie modellen en de voor delen van het gebruik van Resource Manager.
- 
-Wanneer een nieuw abonnement wordt gemaakt, wordt er een standaard quotum van Vcpu's aan toegewezen. Wanneer een nieuwe VM moet worden geïmplementeerd met behulp van het klassieke implementatie model, mag de som van het nieuwe en bestaande vCPU-gebruik in alle regio's niet groter zijn dan het vCPU-quotum dat is goedgekeurd voor het klassieke implementatie model.
- 
-Meer informatie over quota's op de pagina [Azure-abonnement en service limieten](https://aka.ms/quotalimits) .
+Zie [Resource Manager en klassieke implementatie](../../azure-resource-manager/management/deployment-models.md)voor meer informatie over deze twee implementatie modellen en de voor delen van het gebruik van Resource Manager.
 
-U kunt een verhoging van de vCPU-quotum limiet voor het klassieke implementatie model aanvragen via de Blade Help en ondersteuning of de Blade gebruik + quotum in de portal.
+Wanneer een nieuw abonnement wordt gemaakt, wordt er een standaard quotum van Vcpu's aan toegewezen. Telkens wanneer een nieuwe virtuele machine moet worden geïmplementeerd met behulp van het klassieke implementatie model, mag de som van het nieuwe en bestaande vCPU-gebruik in alle regio's niet groter zijn dan het vCPU-quotum dat is goedgekeurd voor het klassieke implementatie model.
 
-## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Aanvraag per VM-serie vCPU quotum verhoging op abonnements niveau met behulp van de Blade **Help en ondersteuning**
+Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over quota's.
 
-Volg de onderstaande instructies om een ondersteunings aanvraag te maken via de Blade Help en ondersteuning van Azure die beschikbaar zijn in de Azure Portal. 
+U kunt een verhoging van de vCPU-quotum limiet voor het klassieke implementatie model aanvragen. Gebruik **Help + ondersteuning** of **gebruik en quota** in de Azure Portal.
 
-1. Selecteer in https://portal.azure.com**Help + ondersteuning**.
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-help--support"></a>Aanvraag per VM-serie vCPU quotum verhoging op abonnements niveau met behulp van Help en ondersteuning
 
-   ![Help en ondersteuning](./media/resource-manager-core-quotas-request/helpsupport.png)
- 
-2.  Selecteer **Nieuwe ondersteuningsaanvraag**. 
+Volg de onderstaande instructies om een ondersteunings aanvraag te maken met behulp van **Help en ondersteuning** in de Azure Portal.
 
-      ![Nieuw ondersteuningsverzoek](./media/resource-manager-core-quotas-request/newsupportrequest.png)
+1. Selecteer in het menu [Azure Portal](https://portal.azure.com) de optie **Help en ondersteuning**.
 
-3. Kies in de vervolg keuzelijst probleem type de optie **service-en abonnements limieten (quota's)** .
+   ![Selecteer Help en ondersteuning in het Azure Portal](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-   ![Vervolg keuzelijst probleem type](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+1. Selecteer **Nieuwe ondersteuningsaanvraag**.
 
-4. Selecteer het abonnement waarvoor het quotum moet worden verhoogd.
+   ![Een nieuwe ondersteunings aanvraag maken in de Azure Portal](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-   ![Abonnement-Nieuwsset selecteren](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
-   
-5. Selecteer **Compute-VM (cores-vcpu's) de limiet voor het aantal verg Roten in het** **quotum type** . 
+1. Kies in **probleem type** **service-en abonnements limieten (quota's)** .
+
+   ![Quota's selecteren als type probleem](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
+
+1. Selecteer het abonnement waarvan u het quotum wilt verhogen.
+
+   ![Abonnement selecteren waarvoor een quotum moet worden verhoogd](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
+
+1. Selecteer bij **quotum type** **Compute-VM (cores-vcpu's) de limiet voor het abonnement wordt verhoogd**.
+
+   ![Selecteer het quotum type dat u wilt verhogen](./media/resource-manager-core-quotas-request/select-quota-type.png)
+
+1. Selecteer **volgende: oplossingen** om **probleem Details**te openen. Selecteer **Details opgeven** om aanvullende informatie te geven.
+
+   ![Geef details op om uw aanvraag langs te helpen](./media/resource-manager-core-quotas-request/provide-details-link.png)
+
+1. Selecteer in **quotum Details**de optie **klassiek** en selecteer een **locatie**.
+
+   ![Details toevoegen, waaronder het implementatie model en de locatie](./media/resource-manager-core-quotas-request/quota-details-classic.png)
+
+1. Selecteer voor **SKU-serie**een of meer SKU-families die u wilt verhogen.
+
+   ![De SKU-familie opgeven die u wilt verg Roten](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+
+1. Voer de nieuwe limieten in die u wilt voor het abonnement. Als u een regel wilt verwijderen, maakt u de selectie van de SKU van de **SKU-familie** ongedaan of selecteert u het pictogram ' X '. Nadat u een quotum voor elke SKU-familie hebt ingevoerd, selecteert u **opslaan en gaat u verder** met **quotum Details** om door te gaan met het ondersteunings verzoek.
+
+   ![Nieuwe limieten aanvragen](./media/resource-manager-core-quotas-request/new-limits-classic.png)
+
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usage--quotas"></a>Aanvraag per VM-serie vCPU quotum verhoging op abonnements niveau met gebruik en quota
+
+Volg de onderstaande instructies om een ondersteunings aanvraag te maken met behulp van **gebruik en quota's** in de Azure Portal.
+
+1. Zoek in het [Azure Portal](https://portal.azure.com)naar en selecteer **abonnementen**.
+
+   ![Ga naar abonnementen in de Azure Portal](./media/resource-manager-core-quotas-request/search-for-subscriptions.png)
+
+1. Selecteer het abonnement waarvan u het quotum wilt verhogen.
+
+   ![Selecteer het abonnement dat u wilt wijzigen](./media/resource-manager-core-quotas-request/select-subscription-change-quota.png)
+
+1. Selecteer **gebruik en quota's**.
+
+   ![Gebruik en quota's voor een abonnement selecteren](./media/resource-manager-core-quotas-request/select-usage-plus-quotas.png)
+
+1. Selecteer in de rechter bovenhoek **aanvraag verhoging**.
+
+   ![Selecteren om het quotum te verhogen](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
+
+1. Selecteer **Compute-VM (kernen-vcpu's) de limiet** van het abonnement wordt verhoogd als het **quota type**.
 
    ![Quotum type selecteren](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-6. Geef bij Details van het **probleem**aanvullende informatie op voor het verwerken van uw aanvraag door te klikken op **Details opgeven**.
+1. Selecteer **volgende: oplossingen** om **probleem Details**te openen. Selecteer **Details opgeven** om aanvullende informatie te geven.
 
-   ![Details opgeven](./media/resource-manager-core-quotas-request/provide-details.png)
+   ![Geef details op voor uw aanvraag](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
-7. Selecteer in het deel venster **quotum Details** de optie klassiek en selecteer een locatie.
+1. Selecteer in **quotum Details**de optie **klassiek** en een **locatie**.
 
-   ![Quotum Details DM](./media/resource-manager-core-quotas-request/quota-details-classic.png)
+   ![Quotum Details selecteren, inclusief het implementatie model en de locatie](./media/resource-manager-core-quotas-request/quota-details-classic.png)
 
-8. Selecteer de **SKU-families** die moeten worden verhoogd. 
+1. Selecteer een of meer SKU-families voor een verhoging.
 
-   ![SKU-familie](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+   ![SKU-familie selecteren voor toename](./media/resource-manager-core-quotas-request/sku-family-classic.png)
 
-9. Voer de nieuwe limieten in die u wilt voor het abonnement. Als u een regel wilt verwijderen, schakelt u de SKU uit in de vervolg keuzelijst SKU-familie of klikt u op het pictogram ' x ' negeren. Nadat u het gewenste quotum voor elke SKU-serie hebt ingevoerd, klikt u op **opslaan en door gaan** in het paneel quotum Details om door te gaan met de ondersteunings aanvraag maken.
+1. Voer de nieuwe limieten in die u wilt voor het abonnement. Als u een regel wilt verwijderen, maakt u de selectie van de SKU van de **SKU-familie** ongedaan of selecteert u het pictogram ' X '. Nadat u een quotum voor elke SKU-familie hebt ingevoerd, selecteert u **opslaan en gaat u verder** met **quotum Details** om door te gaan met het ondersteunings verzoek.
 
-   ![Nieuwe limieten](./media/resource-manager-core-quotas-request/new-limits-classic.png)
-
-## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usages--quota-blade"></a>Aanvraag per VM-serie vCPU quotum verhoging op abonnements niveau met **gebruik +** Blade quotum
-
-Volg de onderstaande instructies voor het maken van een ondersteunings aanvraag via de Blade gebruik en quotum van Azure die beschikbaar is in de Azure Portal. 
-
-1. Selecteer in https://portal.azure.com**abonnementen**.
-
-   ![Abonnementen](./media/resource-manager-core-quotas-request/subscriptions.png)
-
-2. Selecteer het abonnement waarvoor het quotum moet worden verhoogd.
-
-   ![Abonnement selecteren](./media/resource-manager-core-quotas-request/select-subscription.png)
-
-3. **Gebruik en quota's** selecteren
-
-   ![Gebruik en quota's selecteren](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
-
-4. Selecteer in de rechter bovenhoek **aanvraag verhoging**.
-
-   ![Toename aanvragen](./media/resource-manager-core-quotas-request/request-increase.png)
-
-5. Selecteer **Compute-VM (kernen-vcpu's) de limiet** voor het offerte type wordt verhoogd. 
-
-   ![Formulier invullen](./media/resource-manager-core-quotas-request/select-quota-type.png)
-   
-6. Geef bij Details van het **probleem**aanvullende informatie op voor het verwerken van uw aanvraag door te klikken op **Details opgeven**.
-
-   ![Details opgeven](./media/resource-manager-core-quotas-request/provide-details.png)
-
-7. Selecteer in het deel venster **quotum Details** de optie klassiek en selecteer een locatie.
-
-   ![Quotum Details DM](./media/resource-manager-core-quotas-request/quota-details-classic.png)
-
-8. Selecteer de **SKU-families** die moeten worden verhoogd. 
-
-   ![SKU-familie](./media/resource-manager-core-quotas-request/sku-family-classic.png)
-
-9. Voer de nieuwe limieten in die u wilt voor het abonnement. Als u een regel wilt verwijderen, schakelt u de SKU uit in de vervolg keuzelijst SKU-familie of klikt u op het pictogram ' x ' negeren. Nadat u het gewenste quotum voor elke SKU-serie hebt ingevoerd, klikt u op **opslaan en door gaan** in het paneel quotum Details om door te gaan met de ondersteunings aanvraag maken.
-
-   ![Nieuwe limieten](./media/resource-manager-core-quotas-request/new-limits-classic.png)
+   ![Nieuw quotum invoeren](./media/resource-manager-core-quotas-request/new-limits-classic.png)
 

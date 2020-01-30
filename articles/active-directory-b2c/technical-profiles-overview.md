@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: af08a24ff28d59bf743f92aa69ffa823dcdcc544
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 100f059f7c9f18ab6920f50c850b3b8d5a617908
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951034"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840193"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Over technische profielen in Azure Active Directory B2C aangepast beleid
 
@@ -38,7 +38,7 @@ Met een technisch profiel kunnen deze soorten scenario's worden ingeschakeld:
 - Betrouw bare [provider](restful-technical-profile.md) : oproep naar rest API services, zoals het valideren van gebruikers invoer, verrijkende gebruikers gegevens of het integreren van line-of-business-toepassingen.
 - [SAML2](saml-technical-profile.md) -Federatie met een id-provider voor SAML-protocollen.
 - [Zelfbevestigend](self-asserted-technical-profile.md) : interactie met de gebruiker. Verzamel bijvoorbeeld de referenties van de gebruiker om u aan te melden, de registratie pagina weer te geven of het wacht woord opnieuw in te stellen.
-- [Sessie beheer](active-directory-b2c-reference-sso-custom.md) : verschillende soorten sessies verwerken.
+- [Sessie beheer](custom-policy-reference-sso.md) : verschillende soorten sessies verwerken.
 - **Application Insights**
 
 ## <a name="technical-profile-flow"></a>Technische profiel stroom
@@ -57,7 +57,7 @@ Alle typen technische profielen delen hetzelfde concept. U verzendt invoer claim
 4. **ValidationTechnicalProfiles** : voor een [zelfbevestigend technisch profiel](self-asserted-technical-profile.md)kunt u een invoer [validatie technische profiel](validation-technical-profile.md)aanroepen. Het technische profiel voor validatie valideert de gegevens die door de gebruiker worden geprofilerd en retourneert een fout bericht of OK, met of zonder uitvoer claims. Voordat Azure AD B2C bijvoorbeeld een nieuw account maakt, wordt gecontroleerd of de gebruiker al in de Directory Services bestaat. U kunt een REST API technisch profiel aanroepen om uw eigen bedrijfs logica toe te voegen.<p>Het bereik van de uitvoer claims van een validatie technische profiel is beperkt tot het technische profiel waarmee het validatie technische profiel en andere validatie technische profielen onder hetzelfde technische profiel worden aangeroepen. Als u de uitvoer claims in de volgende Orchestration-stap wilt gebruiken, moet u de uitvoer claims toevoegen aan het technische profiel dat het technische profiel voor validatie aanroept.
 5. **OutputClaims** : claims worden teruggestuurd naar de Bag van claims. U kunt deze claims gebruiken in de volgende indelings stap of trans formaties uitvoer claims.
 6. **OutputClaimsTransformations** -invoer claims van elke uitvoer [claims transformatie](claimstransformations.md) worden opgehaald uit de verzameling claims. De uitvoer claims van het technische profiel uit de vorige stappen kunnen invoer claims van een uitvoer claim transformatie zijn. Na de uitvoering worden de uitvoer claims weer in de claims-Bag geplaatst. De uitvoer claims van een trans formatie voor uitvoer claims kunnen ook invoer claims van een volgende uitvoer claims transformatie zijn.
-7. **Sessie beheer voor eenmalige aanmelding (SSO)**  - [SSO-sessie beheer](active-directory-b2c-reference-sso-custom.md) besturings elementen interactie met een gebruiker nadat de gebruiker al is geverifieerd. De beheerder kan bijvoorbeeld bepalen of de selectie van id-providers wordt weer gegeven of dat de gegevens van het lokale account opnieuw moeten worden ingevoerd.
+7. **Sessie beheer voor eenmalige aanmelding (SSO)**  - [SSO-sessie beheer](custom-policy-reference-sso.md) besturings elementen interactie met een gebruiker nadat de gebruiker al is geverifieerd. De beheerder kan bijvoorbeeld bepalen of de selectie van id-providers wordt weer gegeven of dat de gegevens van het lokale account opnieuw moeten worden ingevoerd.
 
 Een technisch profiel kan van een ander technisch profiel overnemen om instellingen te wijzigen of nieuwe functionaliteit toe te voegen.  Het **IncludeTechnicalProfile** -element is een verwijzing naar het basis-technische profiel van waaruit een technisch profiel is afgeleid.
 

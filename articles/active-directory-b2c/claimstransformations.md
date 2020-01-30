@@ -1,6 +1,6 @@
 ---
-title: ClaimsTransformations - Azure Active Directory B2C | Microsoft Docs
-description: De definitie van het element ClaimsTransformations in de identiteit ervaring Framework-Schema van de Azure Active Directory B2C.
+title: ClaimsTransformations-Azure Active Directory B2C | Microsoft Docs
+description: De definitie van het element ClaimsTransformations in het Framework met identiteits ervaring van Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,20 +10,20 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c904ac9d4c59a467dd8402ec44682c3cbd03fd8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66c94f08638895c85836fda37c3ae61f3857ee51
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511534"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836691"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-De **ClaimsTransformations** element bevat een lijst met claims transformatiefuncties die kunnen worden gebruikt in gebruiker reizen als onderdeel van een [aangepast beleid](active-directory-b2c-overview-custom.md). Een bepaalde claim converteert een claimtransformatie naar een andere naam. In de claimtransformatie geeft u de transformatie-methode, bijvoorbeeld een item toe te voegen aan de verzameling van een tekenreeks of het wijzigen van het geval van een tekenreeks.
+Het **ClaimsTransformations** -element bevat een lijst met functies voor het transformeren van claims die kunnen worden gebruikt in gebruikers ritten als onderdeel van een [aangepast beleid](custom-policy-overview.md). Een claim transformatie zet een opgegeven claim om in een andere. In de claim transformatie geeft u de transformatie methode op, bijvoorbeeld het toevoegen van een item aan een teken reeks verzameling of het wijzigen van het hoofdletter gebruik van een teken reeks.
 
-Zodanig dat de lijst met claims transformatiefuncties die kunnen worden gebruikt in de trajecten van de gebruiker, moet een ClaimsTransformations XML-element worden gedeclareerd in het gedeelte BuildingBlocks van het beleid.
+Als u de lijst met functies voor het transformeren van claims wilt opnemen die kunnen worden gebruikt in de gebruikers ritten, moet een ClaimsTransformations XML-element worden gedeclareerd onder de sectie BuildingBlocks van het beleid.
 
 ```xml
 <ClaimsTransformations>
@@ -33,16 +33,16 @@ Zodanig dat de lijst met claims transformatiefuncties die kunnen worden gebruikt
 </ClaimsTransformations>
 ```
 
-De **ClaimsTransformation** element bevat de volgende kenmerken:
+Het **ClaimsTransformation** -element bevat de volgende kenmerken:
 
-| Kenmerk |Vereist | Description |
+| Kenmerk |Verplicht | Beschrijving |
 | --------- |-------- | ----------- |
-| Id |Ja | Een id die wordt gebruikt voor het aanduiden van de claimtransformatie. De id wordt naar verwezen vanuit andere XML-elementen in het beleid. |
-| TransformationMethod | Ja | De transformatie te gebruiken in de claimtransformatie-methode. Elke claimtransformatie heeft een eigen waarden. Zie de [claims transformatie verwijzing](#claims-transformations-reference) voor een volledige lijst van de beschikbare waarden. |
+| Id |Ja | Een id die wordt gebruikt om de claim transformatie uniek te identificeren. Er wordt naar de id verwezen vanuit andere XML-elementen in het beleid. |
+| TransformationMethod | Ja | De transformatie methode die in de claim transformatie moet worden gebruikt. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
 
 ## <a name="claimstransformation"></a>ClaimsTransformation
 
-De **ClaimsTransformation** element bevat de volgende elementen:
+Het **ClaimsTransformation** -element bevat de volgende elementen:
 
 ```xml
 <ClaimsTransformation Id="<identifier>" TransformationMethod="<method>">
@@ -59,67 +59,67 @@ De **ClaimsTransformation** element bevat de volgende elementen:
 ```
 
 
-| Element | Exemplaren | Description |
+| Element | Instanties | Beschrijving |
 | ------- | -------- | ----------- |
-| InputClaims | 0:1 | Een lijst met **InputClaim** elementen die claimtypen die worden uitgevoerd opgeeft als invoer voor de claimtransformatie. Elk van deze elementen bevat een verwijzing naar een ClaimType al gedefinieerd in de sectie ClaimsSchema in het beleid. |
-| InputParameters | 0:1 | Een lijst met **InputParameter** elementen die zijn opgegeven als invoer voor de claimtransformatie.  
-| OutputClaims | 0:1 | Een lijst met **OutputClaim** elementen die opgeeft claim typen die worden gegenereerd nadat de ClaimsTransformation is aangeroepen. Elk van deze elementen bevat een verwijzing naar een ClaimType al gedefinieerd in de sectie ClaimsSchema. |
+| InputClaims | 0:1 | Een lijst met **input claim** -elementen waarmee claim typen worden opgegeven die worden gebruikt als invoer voor de claims-trans formatie. Elk van deze elementen bevat een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid. |
+| InputParameters | 0:1 | Een lijst met **input parameter** -elementen die als invoer voor de claim transformatie worden opgegeven.  
+| OutputClaims | 0:1 | Een lijst met **output claim** -elementen die claim typen opgeven die worden geproduceerd nadat de ClaimsTransformation is aangeroepen. Elk van deze elementen bevat een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema. |
 
 ### <a name="inputclaims"></a>InputClaims
 
-De **InputClaims** element bevat het volgende element:
+Het element **InputClaims** bevat het volgende element:
 
-| Element | Exemplaren | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| InputClaim | 1: n | Een verwachte invoer claimtype. |
+| InputClaim | 1: n | Een verwachte invoer claim type. |
 
 #### <a name="inputclaim"></a>InputClaim
 
-De **InputClaim** element bevat de volgende kenmerken:
+Het **input claim** -element bevat de volgende kenmerken:
 
-| Kenmerk |Vereist | Description |
+| Kenmerk |Verplicht | Beschrijving |
 | --------- | ----------- | ----------- |
-| ClaimTypeReferenceId |Ja | Een verwijzing naar een ClaimType al gedefinieerd in de sectie ClaimsSchema in het beleid. |
-| TransformationClaimType |Ja | Een id om te verwijzen naar een transformatie claimtype. Elke claimtransformatie heeft een eigen waarden. Zie de [claims transformatie verwijzing](#claims-transformations-reference) voor een volledige lijst van de beschikbare waarden. |
+| ClaimTypeReferenceId |Ja | Een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid. |
+| TransformationClaimType |Ja | Een id om te verwijzen naar een type transformatie claim. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
 
 ### <a name="inputparameters"></a>InputParameters
 
-De **invoerparameters** element bevat het volgende element:
+Het element **Input parameters** bevat het volgende element:
 
-| Element | Exemplaren | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| InputParameter | 1: n | Een verwachte invoerparameter. |
+| InputParameter | 1: n | Een verwachte invoer parameter. |
 
 #### <a name="inputparameter"></a>InputParameter
 
-| Kenmerk | Vereist |Description |
+| Kenmerk | Verplicht |Beschrijving |
 | --------- | ----------- |----------- |
-| Id | Ja | Een id die is een verwijzing naar een parameter van de claims transformatie-methode. Elke claims transformatie-methode heeft zijn eigen waarden. Zie de tabel van de transformatie claims voor een volledige lijst van de beschikbare waarden. |
-| Gegevenstype | Ja | Het type gegevens van de parameter, zoals tekenreeks, Boole-waarde, Int of datum/tijd aan de hand van de opsomming gegevenstype in het beleid voor aangepaste XML-schema. Dit type wordt gebruikt om de rekenkundige bewerkingen correct wordt uitgevoerd. Elke claimtransformatie heeft een eigen waarden. Zie de [claims transformatie verwijzing](#claims-transformations-reference) voor een volledige lijst van de beschikbare waarden. |
-| Value | Ja | Een waarde die verbatim wordt doorgegeven aan de transformatie. Sommige van de waarden zijn willekeurige, sommige u kiezen uit de claims transformatie-methode. |
+| Id | Ja | Een id die een verwijzing is naar een para meter van de methode voor het transformeren van claims. Elke claim transformatie methode heeft zijn eigen waarden. Zie de tabel claim transformatie voor een volledige lijst van de beschik bare waarden. |
+| Gegevenstype | Ja | Het type gegevens van de para meter, zoals teken reeks, Booleaanse waarde, int of DateTime, zoals wordt bepaald door de opsomming van het gegevens type in het XML-schema van het aangepaste beleid. Dit type wordt gebruikt om reken kundige bewerkingen correct uit te voeren. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
+| Waarde | Ja | Een waarde die Verbatim wordt door gegeven aan de trans formatie. Sommige waarden zijn wille keurig, wat u selecteert in de methode voor het transformeren van claims. |
 
 ### <a name="outputclaims"></a>OutputClaims
 
-De **OutputClaims** element bevat het volgende element:
+Het element **OutputClaims** bevat het volgende element:
 
-| Element | Exemplaren | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| OutputClaim | 0: n | Verwachte uitvoer claimtype. |
+| OutputClaim | 0: n | Een verwacht type uitvoer claim. |
 
 #### <a name="outputclaim"></a>OutputClaim 
 
-De **OutputClaim** element bevat de volgende kenmerken:
+Het **output claim** -element bevat de volgende kenmerken:
 
-| Kenmerk |Vereist | Description |
+| Kenmerk |Verplicht | Beschrijving |
 | --------- | ----------- |----------- |
-| ClaimTypeReferenceId | Ja | Een verwijzing naar een ClaimType al gedefinieerd in de sectie ClaimsSchema in het beleid.
-| TransformationClaimType | Ja | Een id om te verwijzen naar een transformatie claimtype. Elke claimtransformatie heeft een eigen waarden. Zie de [claims transformatie verwijzing](#claims-transformations-reference) voor een volledige lijst van de beschikbare waarden. |
+| ClaimTypeReferenceId | Ja | Een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid.
+| TransformationClaimType | Ja | Een id om te verwijzen naar een type transformatie claim. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
  
-Als de invoer claim en de uitvoerclaim zijn van hetzelfde type (tekenreeks of Booleaanse waarde), kunt u de dezelfde invoer claim als de uitvoerclaim. In dit geval verandert de claimtransformatie de invoer claim met de uitvoerwaarde.
+Als de invoer claim en de uitvoer claim van hetzelfde type (teken reeks of Booleaanse waarde) zijn, kunt u dezelfde invoer claim gebruiken als de uitvoer claim. In dit geval wijzigt de claim transformatie de invoer claim met de uitvoer waarde.
 
 ## <a name="example"></a>Voorbeeld
 
-U kunt bijvoorbeeld de laatste versie van de voorwaarden van de services die de gebruiker heeft geaccepteerd opslaan. Wanneer u de voorwaarden van de services bijwerkt, kunt u vraagt de gebruiker om te accepteren van de nieuwe versie. In het volgende voorbeeld wordt de **HasTOSVersionChanged** claimtransformatie vergelijkt de waarde van de **TOSVersion** claim met de waarde van de **LastTOSAcceptedVersion**claimen en retourneert vervolgens de Booleaanse waarde **TOSVersionChanged** claim.
+U kunt bijvoorbeeld de laatste versie van uw service voorwaarden opslaan die de gebruiker heeft geaccepteerd. Wanneer u de service voorwaarden bijwerkt, kunt u de gebruiker vragen om de nieuwe versie te accepteren. In het volgende voor beeld vergelijkt de **HasTOSVersionChanged** -claim transformatie de waarde van de **TOSVersion** -claim met de waarde van de **LastTOSAcceptedVersion** -claim en retourneert vervolgens de Boolean **TOSVersionChanged** -claim.
 
 ```XML
 <BuildingBlocks>
@@ -155,13 +155,13 @@ U kunt bijvoorbeeld de laatste versie van de voorwaarden van de services die de 
 </BuildingBlocks>
 ```
 
-## <a name="claims-transformations-reference"></a>Claims transformaties verwijzing
+## <a name="claims-transformations-reference"></a>Verwijzing naar claim transformaties
 
-Zie de volgende pagina's met naslaginformatie voor voorbeelden van claimtransformaties:
+Voor voor beelden van claim transformaties raadpleegt u de volgende referentie pagina's:
 
 - [Boolean](boolean-transformations.md)
 - [datum](date-transformations.md)
-- [Geheel getal zijn](integer-transformations.md)
+- [Geheeltallige](integer-transformations.md)
 - [JSON](json-transformations.md)
 - [Algemeen](general-transformations.md)
 - [Sociaal account](social-transformations.md)

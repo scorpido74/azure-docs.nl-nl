@@ -5,14 +5,14 @@ services: container-service
 author: jnoller
 ms.service: container-service
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c018e511bbeed41bc9caf721562349a37ad0e748
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9a68a0d0a288a27d67a9615385391c06be2b662d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707224"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767365"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Ondersteunings beleid voor de Azure Kubernetes-service
 
@@ -42,6 +42,8 @@ De services worden *beheerd* in de zin dat micro soft en het AKS-team implemente
 
 > [!NOTE]
 > AKS worker-knoop punten worden weer gegeven in de Azure Portal als normale Azure IaaS-resources. Maar deze virtuele machines worden geïmplementeerd in een aangepaste Azure-resource groep (voorafgegaan door MC\\*). Het is mogelijk om AKS worker-knoop punten te wijzigen. U kunt bijvoorbeeld Secure Shell (SSH) gebruiken om AKS worker-knoop punten te wijzigen op de manier waarop u normale virtuele machines wijzigt (u kunt de basis installatie kopie van het besturings systeem niet wijzigen, en wijzigingen worden mogelijk niet persistent gemaakt via een update of opnieuw opstarten) en u kunt andere Azure-resources koppelen aan AKS worker-knoop punten. Maar wanneer u wijzigingen aanbrengt *buiten-band beheer en-aanpassing,* kan het AKS-cluster niet meer worden ondersteund. Vermijd het wijzigen van worker-knoop punten tenzij Microsoft Ondersteuning u wijzigingen aanbrengt.
+
+Als er niet-ondersteunde bewerkingen worden uitgevoerd, zoals hierboven gedefinieerd, zoals de buiten-band toewijzing van alle agent knooppunten, wordt het cluster niet ondersteund weer gegeven. AKS behoudt zich het recht voor om besturings plannen te archiveren die zijn geconfigureerd met ondersteunings richtlijnen voor langere Peri Oden van meer dan 30 dagen. AKS onderhoudt back-ups van etcd-meta gegevens van het cluster en kan het cluster eenvoudig opnieuw toewijzen. Deze hertoewijzing kan worden geïnitieerd door een PUT-bewerking, waarbij het cluster weer wordt ondersteund, zoals een upgrade of schalen naar actieve agent knooppunten.
 
 ## <a name="shared-responsibility"></a>Gedeelde verantwoordelijkheid
 
@@ -89,7 +91,7 @@ Micro soft en klanten delen de verantwoordelijkheid voor Kubernetes-worker-knoop
 * De basis installatie kopie van het besturings systeem heeft vereiste toevoegingen (zoals controle-en netwerk agents).
 * De worker-knoop punten ontvangen automatisch OS-patches.
 * Problemen met de Kubernetes-besturings vlak onderdelen die worden uitgevoerd op de worker-knoop punten, worden automatisch hersteld. Onderdelen zijn onder andere:
-  * Uitvoeren-proxy
+  * Kube-proxy
   * Netwerk tunnels die communicatie paden naar de hoofd onderdelen van de Kubernetes bieden
   * Kubelet
   * Docker-of Moby-daemon

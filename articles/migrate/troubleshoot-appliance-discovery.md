@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289523"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772036"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Problemen met het Azure Migrate apparaat en de detectie oplossen
 
@@ -85,7 +85,7 @@ Als deze verbindings fout optreedt, kunt u mogelijk geen verbinding maken met vC
 Ga als volgt te werk als de fout 60030 of 60031 wordt weer gegeven: ' een Azure Key Vault beheer bewerking is mislukt '
 - Zorg ervoor dat het Azure-gebruikers account dat wordt gebruikt om het apparaat te registreren, ten minste Inzender machtigingen heeft voor het abonnement.
 - Zorg ervoor dat het account toegang heeft tot de sleutel kluis die is opgegeven in het fout bericht en voer de bewerking opnieuw uit.
-- Als het probleem zich blijft voordoen, neemt u contact op met Microsoft-ondersteuning.
+- Neem contact op met micro soft ondersteuning als het probleem zich blijft voordoen.
 - Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) over de vereiste Azure-rollen en-machtigingen.
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>Fout 60028: detectie kan niet worden gestart
@@ -131,7 +131,7 @@ Als dit niet werkt en u de VMware-servers wilt detecteren:
 
 ## <a name="vm-data-not-in-portal"></a>VM-gegevens niet in Portal
 
-Als gedetecteerde Vm's niet in de portal worden weer gegeven, wacht u een paar minuten. Het duurt Maxi maal 30 minuten voordat gedetecteerde gegevens worden weer gegeven in de portal. Als er na 30 minuten geen gegevens zijn, kunt u als volgt vernieuwen
+Als gedetecteerde Vm's niet worden weer gegeven in de portal of als de VM-gegevens verouderd zijn, wacht u een paar minuten. Het duurt Maxi maal 30 minuten voordat wijzigingen in gedetecteerde VM-configuratie gegevens worden weer gegeven in de portal. Het kan enkele uren duren voordat wijzigingen in de toepassings gegevens worden weer gegeven. Als er na deze tijd geen gegevens zijn, kunt u als volgt vernieuwen
 
 1. Selecteer in **Servers** > **Azure migrate server-evaluatie**de optie **overzicht**.
 2. Selecteer onder **beheren**de optie **status van agent**.
@@ -148,7 +148,7 @@ Azure Migrate ondersteunt de detectie van toepassingen, functies en onderdelen m
 
 Veelvoorkomende fouten bij het detecteren van apps worden in de tabel samenvatten.
 
-**Fout** | **Oorzaak** | **Actie**
+**Optreedt** | **Oorzaak** | **Actie**
 --- | --- | --- | ---
 10000: de toepassingen die op de server zijn geïnstalleerd, kunnen niet worden gedetecteerd. | Dit kan gebeuren als het besturings systeem van de computer niet Windows of Linux is. | Gebruik app-detectie alleen voor Windows/Linux.
 10001: de toepassingen waarop de server is geïnstalleerd, kunnen niet worden opgehaald. | Interne fout: sommige bestanden ontbreken in het apparaat. | Neem contact op met Microsoft Ondersteuning.
@@ -166,7 +166,8 @@ Veelvoorkomende fouten bij het detecteren van apps worden in de tabel samenvatte
 9009: de toepassingen waarop de server is geïnstalleerd, kunnen niet worden opgehaald. | Kan optreden als de Windows UAC-instellingen (User Account Control) op de server beperkend zijn en voor komen dat geïnstalleerde toepassingen worden gedetecteerd. | Zoek de instellingen voor Gebruikersaccountbeheer op de server en configureer de UAC-instelling op de server op een van de twee lagere niveaus.
 9010: de toepassingen waarop de server is geïnstalleerd, kunnen niet worden opgehaald. | Dit kan een interne fout zijn.  | Tf het probleem wordt binnen 24 uur niet opgelost. Neem contact op met de ondersteuning.
 8084: ' kan geen toepassingen detecteren vanwege VMware-fout: <Exception from VMware>' | Het Azure Migrate-apparaat gebruikt VMware-Api's om toepassingen te detecteren. Dit probleem kan zich voordoen als er een uitzonde ring wordt gegenereerd door vCenter Server tijdens het detecteren van toepassingen. De fout melding van VMware wordt weer gegeven in het fout bericht dat wordt weer gegeven in de portal. | Zoek het bericht in de [VMware-documentatie](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)en volg de stappen om dit op te lossen. Neem contact op met micro soft ondersteuning als u deze niet kunt oplossen.
-
+9012: de toepassingen die op de server zijn geïnstalleerd, kunnen niet worden gedetecteerd | Het probleem kan optreden vanwege een interne fout.  | Neem contact op met de ondersteuning als het probleem zich binnen 24 uur niet kan oplossen.
+9013: de toepassingen die op de server zijn geïnstalleerd, kunnen niet worden gedetecteerd | Er wordt een nieuw tijdelijk profiel gemaakt telkens wanneer u zich aanmeldt bij de virtuele machine.  | Zorg ervoor dat er geen tijdelijk profiel voor de gast gebruiker is gemaakt.
 
 
 

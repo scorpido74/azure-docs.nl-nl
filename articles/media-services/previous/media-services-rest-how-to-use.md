@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895816"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773664"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Overzicht van Media Services bewerkingen REST API 
 
@@ -45,7 +45,7 @@ De volgende overwegingen zijn van toepassing wanneer u REST gebruikt.
         Accept: application/json;odata=verbose
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
-        x-ms-version: 2.17
+        x-ms-version: 2.19
         Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
@@ -60,7 +60,7 @@ Voor elke aanroep die u in Media Services maakt, moet u een set vereiste kopteks
 
 | Header | Type | Waarde |
 | --- | --- | --- |
-| Autorisatie |Drager |Bearer is het enige geaccepteerde autorisatie mechanisme. De waarde moet ook het toegangs token bevatten dat door Azure Active Directory is geleverd. |
+| Autorisatie |Bearer |Bearer is het enige geaccepteerde autorisatie mechanisme. De waarde moet ook het toegangs token bevatten dat door Azure Active Directory is geleverd. |
 | x-MS-version |Decimal |2,17 (of meest recente versie)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
@@ -75,12 +75,12 @@ Hier volgt een aantal optionele kopteksten:
 | Header | Type | Waarde |
 | --- | --- | --- |
 | Datum |RFC 1123-datum |Tijds tempel van de aanvraag |
-| Accepteren |Inhoudstype |Het aangevraagde inhouds type voor het antwoord, zoals de volgende:<p> -application/json;odata=verbose<p> -Application/Atom + XML<p> Antwoorden kunnen een ander inhouds type hebben, zoals het ophalen van een blob, waarbij een geslaagd antwoord de BLOB-stream als de payload bevat. |
-| Accept-Encoding |Gzip, verkleinen |GZIP-en deflate-code ring, indien van toepassing. Opmerking: voor grote bronnen kan Media Services deze header negeren en niet-gecomprimeerde gegevens retour neren. |
+| Zodat |Inhouds type |Het aangevraagde inhouds type voor het antwoord, zoals de volgende:<p> -application/json;odata=verbose<p> -Application/Atom + XML<p> Antwoorden kunnen een ander inhouds type hebben, zoals het ophalen van een blob, waarbij een geslaagd antwoord de BLOB-stream als de payload bevat. |
+| Accepteren-coderen |Gzip, verkleinen |GZIP-en deflate-code ring, indien van toepassing. Opmerking: voor grote bronnen kan Media Services deze header negeren en niet-gecomprimeerde gegevens retour neren. |
 | Accept-Language |"en", "ES", enzovoort. |Hiermee geeft u de voorkeurs taal op voor het antwoord. |
 | Accept-Charset |Charset-type like "UTF-8" |De standaard waarde is UTF-8. |
 | X-HTTP-methode |HTTP-methode |Biedt clients of firewalls die geen ondersteuning bieden voor HTTP-methoden zoals PUT of DELETE om deze methoden te gebruiken, via een GET-aanroep. |
-| Content-Type |Inhoudstype |Inhouds type van de aanvraag tekst in PUT-of POST-aanvragen. |
+| Content-Type |Inhouds type |Inhouds type van de aanvraag tekst in PUT-of POST-aanvragen. |
 | client-aanvraag-id |Tekenreeks |Een door een aanroeper gedefinieerde waarde die de opgegeven aanvraag aanduidt. Indien opgegeven, wordt deze waarde opgenomen in het antwoord bericht als een manier om de aanvraag toe te wijzen. <p><p>**Belangrijk**<p>De waarden moeten worden afgetopt op 2096b (2 KB). |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Standaard-HTTP-antwoord headers die worden ondersteund door Media Services
@@ -104,7 +104,7 @@ Hier volgt een volledige lijst met HTTP-termen die kunnen worden gebruikt bij he
 | PUT |Hiermee wordt een object vervangen of een benoemd object gemaakt (indien van toepassing). |
 | DELETE |Hiermee verwijdert u een object. |
 | SAMEN |Hiermee wordt een bestaand object bijgewerkt met de benoemde eigenschaps wijzigingen. |
-| HEAD |Retourneert meta gegevens van een object voor een GET-antwoord. |
+| HOREN |Retourneert meta gegevens van een object voor een GET-antwoord. |
 
 ## <a name="discover-and-browse-the-media-services-entity-model"></a>Het Media Services-entiteits model ontdekken en doorzoeken
 Als u wilt dat Media Services entiteiten beter kunnen worden gedetecteerd, kan de $metadata bewerking worden gebruikt. U kunt alle geldige entiteits typen, entiteits eigenschappen, koppelingen, functies, acties, enzovoort ophalen. Door de $metadata bewerking toe te voegen aan het einde van uw Media Services REST API-eind punt, kunt u toegang krijgen tot deze detectie service.

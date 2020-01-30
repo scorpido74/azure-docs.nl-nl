@@ -1,19 +1,18 @@
 ---
 title: Versnelde schrijf bewerkingen van Azure HDInsight voor Apache HBase
 description: Geeft een overzicht van de functie voor versneld schrijven van Azure HDInsight, die gebruikmaakt van Premium Managed disks om de prestaties van het Apache HBase write-Ahead logboek te verbeteren.
-services: hdinsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: ebcc91bb374183a3f2fe000f37c66230459befa3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/24/2020
+ms.openlocfilehash: 7165bab96d037f6782bc9aa6767cadd9b35f058c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156927"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764588"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Versnelde schrijf bewerkingen van Azure HDInsight voor Apache HBase
 
@@ -33,13 +32,13 @@ Als een **RegionServer** vastloopt of niet meer beschikbaar is voordat de geheug
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>De functie voor versnelde schrijf bewerkingen in azure HDInsight voor Apache HBase
 
-Met de functie voor versnelde schrijf bewerkingen wordt het probleem opgelost dat wordt veroorzaakt door het gebruik van schrijf voorschrijvende Logboeken in de Cloud opslag.  De functie voor versnelde schrijf bewerkingen voor HDInsight Apache HBase-clusters, koppelt Premium SSD-Managed disks aan elke RegionServer (worker-knoop punt). Naar voren geschreven logboeken worden vervolgens naar het Hadoop-bestands systeem (HDFS) genoteerd dat is gekoppeld aan deze Premium beheerde schijven in plaats van in de Cloud opslag.  Premium Managed disks gebruiken Ssd's (Solid-State Disks) en bieden uitstekende I/O-prestaties met fout tolerantie.  In tegens telling tot onbeheerde schijven geldt dat als er één opslag eenheid uitvalt, dit geen invloed heeft op andere opslag eenheden in dezelfde beschikbaarheidsset.  Als gevolg hiervan bieden beheerde schijven een lage schrijf latentie en een betere tolerantie voor uw toepassingen. Zie [Introduction to Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md)(Engelstalig) voor meer informatie over Azure Managed disks. 
+Met de functie voor versnelde schrijf bewerkingen wordt het probleem opgelost dat wordt veroorzaakt door het gebruik van schrijf voorschrijvende Logboeken in de Cloud opslag.  De functie voor versnelde schrijf bewerkingen voor HDInsight Apache HBase-clusters, koppelt Premium SSD-Managed disks aan elke RegionServer (worker-knoop punt). Naar voren geschreven logboeken worden vervolgens naar het Hadoop-bestands systeem (HDFS) genoteerd dat is gekoppeld aan deze Premium beheerde schijven in plaats van in de Cloud opslag.  Premium Managed disks gebruiken Ssd's (Solid-State Disks) en bieden uitstekende I/O-prestaties met fout tolerantie.  In tegens telling tot niet-beheerde schijven, is het niet van invloed op andere opslag eenheden in dezelfde beschikbaarheidsset als de ene opslag eenheid uitvalt.  Als gevolg hiervan bieden beheerde schijven een lage schrijf latentie en een betere tolerantie voor uw toepassingen. Zie [Introduction to Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md)(Engelstalig) voor meer informatie over Azure Managed disks.
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Versnelde schrijf bewerkingen inschakelen voor HBase in HDInsight
 
-Als u een nieuw HBase-cluster wilt maken met de functie voor versnelde schrijf bewerkingen, volgt u de stappen in [clusters instellen in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) totdat u **stap 3, opslag**. Klik onder **instellingen van meta Store**op het selectie vakje naast **versneld schrijven inschakelen**. Ga vervolgens door met de resterende stappen voor het maken van het cluster.
+Als u een nieuw HBase-cluster wilt maken met de functie voor versnelde schrijf bewerkingen, volgt u de stappen in [clusters instellen in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) totdat u **stap 3, opslag**. Schakel onder **instellingen van meta Store**het selectie vakje in naast **HBase versneld schrijven inschakelen**. Ga vervolgens door met de resterende stappen voor het maken van het cluster.
 
-![Optie voor versneld schrijven inschakelen voor HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
+![Optie voor versneld schrijven inschakelen voor HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
 
 ## <a name="other-considerations"></a>Andere overwegingen
 

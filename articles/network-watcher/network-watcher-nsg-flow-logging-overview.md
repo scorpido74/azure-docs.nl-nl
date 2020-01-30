@@ -4,27 +4,24 @@ titleSuffix: Azure Network Watcher
 description: In dit artikel wordt uitgelegd hoe u de functie NSG flow logs van Azure Network Watcher gebruikt.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 47d91341-16f1-45ac-85a5-e5a640f5d59e
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 509545443bc08e8613d5f7a9ba7f33d2a90684b8
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.author: damendo
+ms.openlocfilehash: f231a5339b9c696b2a427b0713118d4b46e30277
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830510"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840992"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen
 
-Stroomlogboeken voor netwerkbeveiligingsgroepen zijn een functie van Network Watcher waarmee u informatie kunt bekijken over inkomend en uitgaand IP-verkeer via een netwerkbeveiligingsgroep (NSG). Stroomlogboeken hebben de JSON-indeling en bevatten uitgaand en binnenkomend verkeer per regel, de netwerkinterface (NIC) waarop de stroom betrekking heeft, een tuple met vijf gegevens over de stroom (bron-/doel-IP, bron-/doelpoort en protocol), of het verkeer is toegestaan of geweigerd en, in versie 2, informatie over doorvoer (bytes en pakketten).
+Stroom logboeken voor netwerk beveiligings groepen (NSG) zijn een functie van Network Watcher waarmee u informatie kunt bekijken over binnenkomend en IP-verkeer via een NSG. Stroom logboeken worden geschreven in JSON-indeling en weer gegeven uitgaande en inkomende stromen per regel. de netwerk interface (NIC) van de stroom is van toepassing op 5-tuple-informatie over de stroom (bron/doel-IP, bron/doel poort en Protocol), als het verkeer is toegestaan of geweigerd, en in versie 2, gegevens over door Voer (bytes en pakketten).
 
 
 ![overzicht van stroom logboeken](./media/network-watcher-nsg-flow-logging-overview/figure1.png)

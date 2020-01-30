@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c2b74830463702e7de02d00bcfe88521fce2c803
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: caa7cbed7c56b63bcbf5ad8f287ab6cf32575c15
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932031"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840295"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -125,7 +125,7 @@ Het element **SingleSignOn** bevat in het volgende kenmerk:
 | Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
 | Scope | Ja | Het bereik van het gedrag bij eenmalige aanmelding. Mogelijke waarden: `Suppressed`, `Tenant`, `Application`of `Policy`. De waarde `Suppressed` geeft aan dat het gedrag wordt onderdrukt. In het geval van een eenmalige aanmeldings sessie wordt er bijvoorbeeld geen sessie voor de gebruiker onderhouden en wordt de gebruiker altijd gevraagd om een id-provider te selecteren. De waarde `TrustFramework` geeft aan dat het gedrag wordt toegepast voor alle beleids regels in het vertrouwens raamwerk. Bijvoorbeeld: een gebruiker die door twee beleids trajecten voor een vertrouwens raamwerk navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Tenant` geeft aan dat het gedrag wordt toegepast op alle beleids regels in de Tenant. Bijvoorbeeld: een gebruiker die door twee beleids ritten voor een Tenant navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Application` geeft aan dat het gedrag wordt toegepast op alle beleids regels voor de toepassing die de aanvraag maakt. Bijvoorbeeld: een gebruiker die door twee beleids ritten voor een toepassing navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Policy` geeft aan dat het gedrag alleen van toepassing is op een beleid. Bijvoorbeeld: een gebruiker die door twee beleids trajecten voor een vertrouwens raamwerk navigeert, wordt gevraagd een id-provider selectie in te scha kelen bij het overschakelen tussen de beleids regels. |
-| KeepAliveInDays | Ja | Hiermee wordt bepaald hoe lang de gebruiker aangemeld blijft. Als u de waarde instelt op 0, wordt de KMSI-functionaliteit uitgeschakeld. Zie [me aangemeld blijven](active-directory-b2c-reference-kmsi-custom.md)voor meer informatie. |
+| KeepAliveInDays | Ja | Hiermee wordt bepaald hoe lang de gebruiker aangemeld blijft. Als u de waarde instelt op 0, wordt de KMSI-functionaliteit uitgeschakeld. Zie [me aangemeld blijven](custom-policy-keep-me-signed-in.md)voor meer informatie. |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -140,7 +140,7 @@ Het **JourneyInsights** -element bevat de volgende kenmerken:
 | ServerEnabled | Ja | Mogelijke waarden: `true` of `false`. Als `true`, verzendt de bestaande UserJourneyRecorder-JSON als een aangepaste gebeurtenis naar Application Insights. |
 | TelemetryVersion | Ja | De waarde moet `1.0.0`zijn. |
 
-Zie [Logboeken verzamelen](active-directory-b2c-troubleshoot-custom.md) voor meer informatie
+Zie [Logboeken verzamelen](troubleshoot-with-application-insights.md) voor meer informatie
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
@@ -162,7 +162,7 @@ Het element **ContentDefinitionParameter** bevat het volgende kenmerk:
 | --------- | -------- | ----------- |
 | Name | Ja | De naam van het sleutel waarde-paar. |
 
-Zie [de gebruikers interface configureren met dynamische inhoud met behulp van aangepast beleid](active-directory-b2c-ui-customization-custom-dynamic.md) voor meer informatie.
+Zie [de gebruikers interface configureren met dynamische inhoud met behulp van aangepast beleid](custom-policy-ui-customization-dynamic.md) voor meer informatie.
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 

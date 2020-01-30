@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 12759deb3e1775b5170d40cc609fe8c6226bf0d6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a8882a810d18d06b33d6382bd8bd86ffe75b39d8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704575"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766814"
 ---
 # <a name="metrics-for-application-gateway"></a>Metrische gegevens voor Application Gateway
 
@@ -22,7 +22,9 @@ Application Gateway publiceert gegevens punten, met de naam metrieken, naar [Azu
 
 ### <a name="timing-metrics"></a>Metrische gegevens over timing
 
-De volgende metrische gegevens met betrekking tot de timing van de aanvraag en het antwoord zijn beschikbaar. Door deze metrische gegevens voor een specifieke listener te analyseren, kunt u bepalen of de vertraging in toepassing is in verband met het WAN, het Application Gateway, het netwerk tussen de Application Gateway en de back-end-toepassing, of de back-end-toepassings prestaties.
+Application Gateway biedt verschillende ingebouwde metrische gegevens voor de timing die zijn gerelateerd aan de aanvraag en het antwoord die allemaal worden gemeten in milliseconden. 
+
+![](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >
@@ -30,28 +32,41 @@ De volgende metrische gegevens met betrekking tot de timing van de aanvraag en h
 
 - **Moment back-end verbinding**
 
-  Tijd die is besteed aan het tot stand brengen van een verbinding met een back-end-toepassing. Dit geldt ook voor de netwerk latentie en de tijd die nodig is voor de TCP-stack van de back-endserver om nieuwe verbindingen tot stand te brengen. In het geval van SSL omvat het ook de tijd die is besteed aan handshake. 
+  Tijd die is besteed aan het tot stand brengen van een verbinding met de back-end-toepassing. 
+
+  Dit geldt ook voor de netwerk latentie en de tijd die nodig is voor de TCP-stack van de back-endserver om nieuwe verbindingen tot stand te brengen. In het geval van SSL omvat het ook de tijd die is besteed aan handshake. 
 
 - **Reactie tijd eerste byte van back-end**
 
-  Het tijds interval tussen het begin van het tot stand brengen van een verbinding met de back-endserver en het ontvangen van de eerste byte van de reactie header. Dit is een benadering van de som van de *back-uptijd* en reactie tijd van de back-end-toepassing (het tijdstip dat de server heeft geduurd om inhoud te genereren, mogelijk database query's op te halen en de respons terug te zetten naar Application Gateway)
+  Het tijds interval tussen het begin van het tot stand brengen van een verbinding met de back-endserver en het ontvangen van de eerste byte van de reactie header. 
+
+  Dit is een benadering van de som van de *back-uptijd*, het tijdstip van de aanvraag om de back-end te bereiken van Application Gateway, de tijd die door de back-end-toepassing wordt gebruikt om te reageren (het tijdstip waarop de server inhoud heeft gegenereerd, mogelijk database query's op te halen), en de tijd die wordt ingenel door de eerste byte Application Gateway van de back-end.
 
 - **Reactie tijd laatste byte van back-end**
 
-  Het tijds interval tussen het begin van het tot stand brengen van een verbinding met de back-endserver en het ontvangen van de laatste byte van de antwoord tekst. Dit is een benadering van de som van de *reactie tijd van de eerste byte* en de tijd van de gegevens overdracht (dit aantal kan aanzienlijk variëren, afhankelijk van de grootte van de gevraagde objecten en de latentie van het Server netwerk)
+  Het tijds interval tussen het begin van het tot stand brengen van een verbinding met de back-endserver en het ontvangen van de laatste byte van de antwoord tekst. 
+
+  Dit is een benadering van de som van de *reactie tijd van de eerste byte* en de gegevens overdrachts tijd (dit aantal kan aanzienlijk variëren, afhankelijk van de grootte van de gevraagde objecten en de latentie van het Server netwerk).
 
 - **Totale tijd toepassings gateway**
 
-  De gemiddelde tijd die nodig is voor het verwerken van een aanvraag en het antwoord op verzen ding. Dit wordt berekend als gemiddelde van het interval van de tijd dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt op het moment dat de antwoord verzending is voltooid, de som van de verwerkings tijd van Application Gateway en de *laatste byte reactie tijd* van de back-end
+  De gemiddelde tijd die nodig is om een aanvraag te ontvangen, verwerkt en het antwoord ervan te verzenden. 
+
+  Dit is het interval vanaf het moment dat Application Gateway de eerste byte van de HTTP-aanvraag ontvangt naar het tijdstip waarop de laatste reactie byte is verzonden naar de client. Dit omvat de verwerkings tijd van Application Gateway, de *laatste reactie tijd*van de back-end-byte, de tijd die door Application Gateway is genomen om alle antwoorden en de *client RTT*te verzenden.
 
 - **Client RTT**
 
-  Gemiddelde Round-retour tijd tussen clients en Application Gateway. Met deze metriek wordt aangegeven hoe lang het duurt om verbindingen en retour bevestigingen tot stand te brengen. 
-
-Deze metrische gegevens kunnen worden gebruikt om te bepalen of de waargenomen vertraging wordt veroorzaakt door de Application Gateway, het netwerk en de back-endserver TCP-stack verzadiging, back-end-toepassings prestaties of grote bestands grootte.
-Als er bijvoorbeeld een piek in de back-end van de backend-reactie tijd is, maar de back-end-verbindings tijd constant is, kan deze worden afgeleid dat de toepassings gateway naar de back-end-latentie en de tijd die nodig is om de verbinding tot stand te brengen stabiel is en de piek wordt veroorzaakt door een n toename van de reactie tijd van de back-end-toepassing. En als de piek in de back-end van de byte de eerste keer wordt gekoppeld aan een corresponderende Prikker in back-end-Connect-tijd, kan deze worden afgeleid dat het netwerk of de TCP-stack van de server verzadigd is. Als u een piek in de back-end van de backend-reactie tijd ziet, maar de back-end voor de reactie van de eerste byte constant is, is de piek waarschijnlijk het gevolg van een groter bestand dat wordt aangevraagd. Op dezelfde manier geldt dat als de totale tijd van de toepassings gateway veel meer is dan de back-end van de backend-reactie tijd, het mogelijk is om op de Application Gateway een knel punt met de prestaties te maken.
+  Gemiddelde Round-retour tijd tussen clients en Application Gateway.
 
 
+
+Deze metrische gegevens kunnen worden gebruikt om te bepalen of de waargenomen vertraging wordt veroorzaakt door het client netwerk, de Application Gateway prestaties, het back-end netwerk en de back-endserver TCP-stack verzadiging, back-end-toepassings prestaties of grote bestands grootte.
+
+Als er bijvoorbeeld sprake is van een piek in de back-end voor de *reactie tijd* van een time-out voor de back-end, maar de trend van de *moment verbinding* voor het verbinden stabiel is, kan deze worden uitgesteld dat de toepassings gateway naar de back-end-latentie en de tijd die nodig is om de verbinding tot stand te brengen stabiel is. Daarentegen, als de piek in de *back-end-byte-reactie tijd* is gekoppeld aan een corresponderende Prikker in back- *End Connect time*, kan deze worden afgeleid dat het netwerk tussen Application Gateway-en back-endserver of de TCP-stack van de back-endserver verzadigd is. 
+
+Als u een piek in de *reactie tijd van de laatste byte* van de back-end hebt gezien, maar de *back-end-reactie tijd* van de backend stabiel is, kan deze worden afgeleid door een groter bestand dat wordt aangevraagd.
+
+En als de *totale tijd van de toepassings gateway* een piek heeft, maar de *reactie tijd van de laatste byte* van de back-end is stabiel, dan kan het een teken van het knel punt van de prestaties zijn op het Application Gateway of een knel punt in het netwerk tussen client en Application Gateway. Bovendien, als de *client RTT* ook een overeenkomende Prikker heeft, geeft dit aan dat de degradatie wordt veroorzaakt door het netwerk tussen client en Application Gateway.
 
 ### <a name="application-gateway-metrics"></a>Application Gateway metrische gegevens
 
@@ -112,11 +127,11 @@ De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
 
 - **Aantal goede hosts**
 
-  Het aantal back-ends dat in orde wordt gesteld door de status test. U kunt filteren op basis van een per back-end-groep om gezonde/beschadigde hosts in een specifieke back-end-groep weer te geven.
+  Het aantal back-ends dat in orde wordt gesteld door de status test. U kunt filteren op basis van een per back-end-groep om het aantal gezonde hosts in een specifieke back-end-groep weer te geven.
 
 - **Aantal hosts met slechte status**
 
-  Het aantal back-ends dat niet in orde is voor de status test. U kunt filteren op basis van een per back-end-groep om de beschadigde hosts in een specifieke back-end-groep weer te geven.
+  Het aantal back-ends dat niet in orde is voor de status test. U kunt filteren op basis van een per back-end-groep om het aantal beschadigde hosts in een specifieke back-end-groep weer te geven.
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Metrische gegevens die worden ondersteund door Application Gateway v1 SKU
 
@@ -158,11 +173,11 @@ De volgende metrische gegevens zijn beschikbaar voor Application Gateway:
 
 - **Aantal goede hosts**
 
-  Het aantal back-ends dat in orde wordt gesteld door de status test. U kunt filteren op basis van een per back-end-groep om gezonde/beschadigde hosts in een specifieke back-end-groep weer te geven.
+  Het aantal back-ends dat in orde wordt gesteld door de status test. U kunt filteren op basis van een per back-end-groep om het aantal gezonde hosts in een specifieke back-end-groep weer te geven.
 
 - **Aantal hosts met slechte status**
 
-  Het aantal back-ends dat niet in orde is voor de status test. U kunt filteren op basis van een per back-end-groep om de beschadigde hosts in een specifieke back-end-groep weer te geven.
+  Het aantal back-ends dat niet in orde is voor de status test. U kunt filteren op basis van een per back-end-groep om het aantal beschadigde hosts in een specifieke back-end-groep weer te geven.
 
 ## <a name="metrics-visualization"></a>Visualisatie van metrische gegevens
 

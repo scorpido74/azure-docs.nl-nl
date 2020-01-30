@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 11/05/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 29e1af5f23b2167a524872731490b5862a14e5c1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9b92796e477ea0dd6795015edd3f400dd2cc9aa7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975394"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773749"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor .NET (SDK v3)
 
@@ -20,12 +20,12 @@ Ga aan de slag met de Azure Key Vault-client bibliotheek voor .NET. Volg de onde
 > [!NOTE]
 > In deze Quick Start wordt de v 3.0.4-versie van de client bibliotheek voor micro soft. Azure.-kluis gebruikt. Zie [Azure Key Vault-client bibliotheek voor .net (SDK v4)](quick-create-net.md)voor het gebruik van de meest recente versie van de Key Vault-client bibliotheek. 
 
-Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor .NET voor het volgende:
+Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor .NET voor het volgende:
 
 - Verbeter de beveiliging en controle over sleutels en wacht woorden.
 - Versleutelings sleutels maken en importeren in een paar minuten.
 - Verminder de latentie met Cloud schaal en wereld wijde redundantie.
-- Vereenvoudig en Automatiseer taken voor SSL/TLS-certificaten.
+- Vereenvoudig en Automatiseer taken voor TLS/SSL-certificaten.
 - Gebruik FIPS 140-2 level 2 Validated Hsm's.
 
 [API-referentie documentatie](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
@@ -139,7 +139,7 @@ Met de Azure Key Vault-client bibliotheek voor .NET kunt u sleutels en gerelatee
 
 De volledige console-app is beschikbaar op https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet.
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 ### <a name="add-directives"></a>Instructies toevoegen
 

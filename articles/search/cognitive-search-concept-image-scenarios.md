@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113849"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838255"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Informatie over het verwerken en extra heren van afbeeldingen in AI-verrijkings scenario's
 
@@ -215,7 +215,7 @@ Als helper moet u het volgende algoritme gebruiken als u genormaliseerde coördi
 
 ## <a name="see-also"></a>Zie ook
 + [Indexeer functie maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
-+ [Afbeeldings vaardigheid analyseren](cognitive-search-skill-image-analysis.md)
++ [Vaardigheid van afbeeldings analyse](cognitive-search-skill-image-analysis.md)
 + [OCR-vaardigheid](cognitive-search-skill-ocr.md)
 + [Tekst samenvoegings vaardigheid](cognitive-search-skill-textmerger.md)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)

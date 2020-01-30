@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2df0bfe8041216e207193832c8f7ca48967c4e5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978058"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842432"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-connector voor Azure
 
@@ -87,7 +87,7 @@ De Azure-connector kan gebruikmaken van een service-principal voor het autoriser
 1. Klik op nieuwe registratie
 1. Voer een naam in en klik op registreren
 1. Selecteer de nieuwe app en klik op certificaten & geheimen op het tabblad instellingen.
-1. Maak een nieuw client geheim, voer een beschrijving in voor een nieuwe sleutel, selecteer wanneer het geheim moet exire en klik op opslaan
+1. Een nieuw client geheim maken, een beschrijving invoeren voor een nieuwe sleutel, selecteren wanneer het geheim moet verlopen en op Opslaan klikken
 1. Noteer de waarde in. Dit wordt gebruikt als het wacht woord voor de Service-Principal
 1. Noteer de toepassings-ID. Deze wordt gebruikt als de gebruikers naam van de Service-Principal
 
@@ -294,7 +294,7 @@ ANF biedt NFS voor Azure. In de context van SAP LaMa Dit vereenvoudigt het maken
 
 Australië-oost, Central VS, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Europa-west en VS-West 2.
 
-#### <a name="network-requirements"></a>Netwerkvereisten
+#### <a name="network-requirements"></a>Netwerk vereisten
 
 ANF vereist een gedelegeerd subnet dat deel moet uitmaken van hetzelfde VNET als de SAP-servers. Hier volgt een voor beeld van een dergelijke configuratie.
 In dit scherm wordt het maken van het VNET en het eerste subnet weer gegeven:

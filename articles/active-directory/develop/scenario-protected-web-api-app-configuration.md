@@ -16,29 +16,33 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c4b8fc629c94f5046861437367fe6050dad4c65f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: fc74e72c6c2fe3e2b8817e6ffb418928ede08193
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702008"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773364"
 ---
 # <a name="protected-web-api-code-configuration"></a>Beveiligde web-API: code configuratie
 
-Als u de code voor de beveiligde web-API wilt configureren, moet u weten wat Api's als beveiligd definieert, hoe u een Bearer-token configureert en hoe u het token valideert.
+Als u de code voor de beveiligde web-API wilt configureren, moet u het volgende weten:
 
-## <a name="what-defines-aspnetaspnet-core-apis-as-protected"></a>Wat definieert ASP.NET/ASP.NET core-Api's als beveiligd?
+- Waarvan Api's als beveiligd worden gedefinieerd.
+- Een Bearer-token configureren.
+- Het token valideren.
 
-Net als web-apps zijn de ASP.NET/ASP.NET core-web-Api's beveiligd omdat hun controller acties worden voorafgegaan door het kenmerk `[Authorize]`. Daarom kunnen de controller acties alleen worden aangeroepen als de API wordt aangeroepen met een identiteit die is geautoriseerd.
+## <a name="what-defines-aspnet-and-aspnet-core-apis-as-protected"></a>Wat definieert ASP.NET-en ASP.NET Core-Api's als beveiligd?
 
-Denk na over de volgende vragen:
+Net als web-apps zijn de ASP.NET-en ASP.NET Core Web-Api's beschermd, omdat hun controller acties worden voorafgegaan door het kenmerk **[autoriseren]** . De controller acties kunnen alleen worden aangeroepen als de API wordt aangeroepen met een geautoriseerde identiteit.
 
-- Hoe kent de Web-API de identiteit van de app waarmee deze wordt aangeroepen? (Alleen een app kan een web-API aanroepen.)
-- Wat is de identiteit van de gebruiker als de app namens een gebruiker de Web-API wordt aangeroepen?
+Houd rekening met de volgende vragen:
+
+- Alleen een app kan een web-API aanroepen. Hoe kent de API de identiteit van de app waarmee deze wordt aangeroepen?
+- Als de app namens een gebruiker de API aanroept, wat is de identiteit van de gebruiker?
 
 ## <a name="bearer-token"></a>Bearer-token
 
-De informatie over de identiteit van de app en over de gebruiker (tenzij de web-app service-naar-service aanroepen van een daemon-app accepteert), wordt vastgehouden in het Bearer-token dat is ingesteld in de header wanneer de app wordt aangeroepen.
+Het Bearer-token dat is ingesteld in de header wanneer de app wordt aangeroepen, bevat informatie over de app-identiteit. Het bevat ook informatie over de gebruiker, tenzij de web-app service-to-service-aanroepen accepteert vanuit een daemon-app.
 
 Hier volgt een C# code voorbeeld waarin een client wordt weer gegeven die de API aanroept nadat deze een token heeft verkregen met micro soft Authentication Library voor .net (MSAL.net):
 
@@ -55,7 +59,9 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> Het Bearer-token is door een client toepassing aangevraagd bij het micro soft Identity platform-eind punt *voor de Web-API*. De Web-API is de enige toepassing waarmee het token moet worden geverifieerd en de claims worden weer gegeven. Client-apps moeten nooit proberen de claims in tokens te controleren. (De Web-API kan in de toekomst vereist zijn dat het token wordt versleuteld. Deze vereiste zou voor komen dat de toegang voor client-apps waarmee toegangs tokens kunnen worden weer gegeven.)
+> Een client toepassing vraagt het Bearer-token aan bij het micro soft Identity platform-eind punt *voor de Web-API*. De Web-API is de enige toepassing waarmee het token moet worden geverifieerd en de claims worden weer gegeven. Client-apps moeten nooit proberen de claims in tokens te controleren.
+>
+> In de toekomst is het mogelijk dat het token moet worden versleuteld met de Web-API. Deze vereiste zou de toegang voor client-apps die toegangs tokens kunnen bekijken, voor komen.
 
 ## <a name="jwtbearer-configuration"></a>JwtBearer-configuratie
 
@@ -91,9 +97,9 @@ In deze sectie wordt beschreven hoe u een Bearer-token configureert.
 
 ### <a name="code-initialization"></a>Code-initialisatie
 
-Wanneer een app wordt aangeroepen voor een controller actie die een `[Authorize]` kenmerk bevat, kijkt ASP.NET/ASP.NET core naar het Bearer-token in de autorisatie-header van de aanroep aanvraag en wordt het toegangs token geëxtraheerd. Het token wordt vervolgens doorgestuurd naar de JwtBearer-middleware, waarmee micro soft Identity model-extensies voor .NET worden aangeroepen.
+Wanneer een app wordt aangeroepen voor een controller actie met een kenmerk **[autoriseren]** , ASP.NET en ASP.net core het toegangs token uit het Bearer-token van de autorisatie-header ophalen. Het toegangs token wordt vervolgens doorgestuurd naar de JwtBearer-middleware, die micro soft Identity model-extensies aanroept voor .NET.
 
-In ASP.NET Core wordt deze middleware geïnitialiseerd in het Startup.cs-bestand:
+In ASP.NET Core wordt deze middleware geïnitialiseerd in het Startup.cs-bestand.
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -105,7 +111,7 @@ De middleware wordt toegevoegd aan de Web-API met behulp van deze instructie:
  services.AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
- Op dit moment maken de ASP.NET Core sjablonen Azure Active Directory (Azure AD) Web-Api's die zich aanmelden bij gebruikers in uw organisatie of een organisatie, niet met persoonlijke accounts. Maar u kunt ze eenvoudig wijzigen voor het gebruik van het micro soft Identity platform-eind punt door deze code toe te voegen aan het Startup.cs-bestand:
+ Op dit moment maken de ASP.NET Core sjablonen Azure Active Directory (Azure AD) Web-Api's waarmee gebruikers zich kunnen aanmelden binnen uw organisatie of een organisatie. Gebruikers kunnen zich niet aanmelden met persoonlijke accounts. Maar u kunt de sjablonen wijzigen om het micro soft Identity platform-eind punt te gebruiken door deze code toe te voegen aan Startup.cs:
 
 ```csharp
 services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
@@ -127,40 +133,42 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 });
 ```
 
-Dit code fragment wordt geëxtraheerd uit de stapsgewijze zelf studie voor de ASP.NET Core Web-API in [micro soft. Identity. Web/WebApiServiceCollectionExtensions. cs # L50-L63](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63). De methode `AddProtectedWebApi`, die veel meer doet, wordt aangeroepen vanuit de Startup.cs
+Het vorige code fragment wordt geëxtraheerd uit de stapsgewijze zelf studie voor de ASP.NET Core Web-API in [micro soft. Identity. Web/WebApiServiceCollectionExtensions. cs # L50-L63](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63). De methode **AddProtectedWebApi** , waarmee meer dan het fragment wordt weer gegeven, wordt aangeroepen vanuit startup.cs.
 
 ## <a name="token-validation"></a>Token validatie
 
-De JwtBearer-middleware, zoals de OpenID Connect Connect middleware in web apps, wordt door `TokenValidationParameters` omgeleid om het token te valideren. Het token wordt gedecodeerd (indien nodig), de claims worden geëxtraheerd en de hand tekening wordt gecontroleerd. De middleware valideert vervolgens het token door te controleren op deze gegevens:
+In het voor gaande fragment valideert de JwtBearer-middleware, zoals de OpenID Connect Connect-verbinding in web apps, het token op basis van de waarde van `TokenValidationParameters`. Het token wordt naar behoefte ontsleuteld, de claims worden geëxtraheerd en de hand tekening wordt gecontroleerd. De middleware valideert vervolgens het token door te controleren op deze gegevens:
 
-- Het is bedoeld voor de Web-API (publiek).
-- Het is uitgegeven voor een app die de Web-API (sub) mag aanroepen.
-- Het is uitgegeven door een Trusted Security Token Service (STS) (verlener).
-- De levens duur ligt binnen het bereik (verval datum).
-- Er is geen onrecht matig geknoeid met (hand tekening).
+- Doel groep: het token is gericht op de Web-API.
+- Sub: het certificaat is uitgegeven voor een app die de Web-API mag aanroepen.
+- Uitgever: het is uitgegeven door een Trusted Security Token Service (STS).
+- Verloop datum: de levens duur ligt binnen het bereik.
+- Hand tekening: er is niet mee geknoeid.
 
-Er kunnen ook speciale validaties zijn. Het is bijvoorbeeld mogelijk om te controleren of de ondertekeningssleutels (indien Inge sloten in een token) worden vertrouwd en dat het token niet opnieuw wordt afgespeeld. Ten slotte vereisen sommige protocollen specifieke validaties.
+Er kunnen ook speciale validaties zijn. Het is bijvoorbeeld mogelijk om te controleren of de ondertekeningssleutels, wanneer deze zijn Inge sloten in een token, worden vertrouwd en dat het token niet opnieuw wordt afgespeeld. Ten slotte vereisen sommige protocollen specifieke validaties.
 
 ### <a name="validators"></a>Controles
 
-De validatie stappen worden vastgelegd in validators, die allemaal zijn opgenomen in de [micro soft Identity model Extensions voor .net](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) open-source-bibliotheek, in één bron bestand: [micro soft. Identity model. tokens/validators. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
+De validatie stappen worden vastgelegd in validators, die worden weer gegeven in de [micro soft Identity model Extensions voor .net](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) open-source-bibliotheek. De validatie functies worden gedefinieerd in het bron bestand van de bibliotheek [micro soft. Identity model. tokens/validators. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs).
 
-De validatie functies worden in deze tabel beschreven:
+In deze tabel worden de validatie functies beschreven:
 
 | Validator | Beschrijving |
 |---------|---------|
-| `ValidateAudience` | Zorgt ervoor dat het token voor de toepassing is die het token valideert (voor mij). |
-| `ValidateIssuer` | Hiermee zorgt u ervoor dat het token is uitgegeven door een vertrouwde STS (van iemand die ik vertrouwt). |
-| `ValidateIssuerSigningKey` | Zorgt ervoor dat de toepassing die het token valideert, de sleutel vertrouwt die is gebruikt voor het ondertekenen van het token. (Speciaal geval waarbij de sleutel is inge sloten in het token. Doorgaans niet vereist.) |
-| `ValidateLifetime` | Hiermee zorgt u ervoor dat het token nog (of al) geldig is. Met de validatie functie wordt gecontroleerd of de levens duur van het token (`notbefore` en `expires` claims) binnen het bereik valt. |
-| `ValidateSignature` | Hiermee wordt gegarandeerd dat er niet met het token is geknoeid. |
-| `ValidateTokenReplay` | Hiermee zorgt u ervoor dat het token niet opnieuw is afgespeeld. (Speciaal geval voor sommige eenmalige-protocol gebruiken.) |
+| **ValidateAudience** | Zorgt ervoor dat het token voor de toepassing is die het token voor u valideert. |
+| **ValidateIssuer** | Hiermee zorgt u ervoor dat het token is uitgegeven door een vertrouwde STS, wat inhoudt dat u vertrouwt. |
+| **ValidateIssuerSigningKey** | Zorgt ervoor dat de toepassing die het token valideert, de sleutel vertrouwt die is gebruikt voor het ondertekenen van het token. Er is een speciaal geval waarin de sleutel is inge sloten in het token. Maar deze situatie doet zich meestal niet voor. |
+| **ValidateLifetime** | Zorgt ervoor dat het token nog of al geldig is. Met de validatie functie wordt gecontroleerd of de levens duur van het token zich in het bereik bevindt dat is opgegeven door de **notBefore** en **verlopen** claims. |
+| **ValidateSignature** | Hiermee wordt gegarandeerd dat er niet met het token is geknoeid. |
+| **ValidateTokenReplay** | Hiermee zorgt u ervoor dat het token niet opnieuw is afgespeeld. Er is een speciaal geval voor sommige eenmalige-protocollen. |
 
-De validatie functies zijn alle gekoppeld aan eigenschappen van de klasse `TokenValidationParameters`, die zelf zijn geïnitialiseerd vanuit de ASP.NET/ASP.NET-basis configuratie. In de meeste gevallen hoeft u de para meters niet te wijzigen. Er is één uitzonde ring, voor apps die geen afzonderlijke tenants zijn. (Dat wil zeggen: Web-apps die gebruikers accepteren van een organisatie of van persoonlijke micro soft-accounts.) In dit geval moet de uitgever worden gevalideerd.
+De validators zijn gekoppeld aan eigenschappen van de klasse **TokenValidationParameters** . De eigenschappen worden geïnitialiseerd vanuit de configuratie ASP.NET en ASP.NET Core.
+
+In de meeste gevallen hoeft u de para meters niet te wijzigen. Apps die geen enkele Tenant zijn, zijn uitzonde ringen. Deze web-apps accepteren gebruikers van elke organisatie of van persoonlijke micro soft-accounts. Uitgevers in dit geval moeten worden gevalideerd.
 
 ## <a name="token-validation-in-azure-functions"></a>Token validatie in Azure Functions
 
-Het is ook mogelijk om binnenkomende toegangs tokens in azure functions te valideren. In [DotNet](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions), [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)en [python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)vindt u voor beelden van het valideren van tokens in azure functions.
+U kunt ook binnenkomende toegangs tokens in Azure Functions valideren. Voor beelden van dergelijke validatie vindt u in [Microsoft .net](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions), [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)en [python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions).
 
 ## <a name="next-steps"></a>Volgende stappen
 

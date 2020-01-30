@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a49eae95628645f6586a637c103433b122b5d287
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 2bc02433be9ee7955b0e10ac659ee40e315e5a5e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950949"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840159"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Zelf studie: id-providers toevoegen aan uw toepassingen in Azure Active Directory B2C
 
-Het is wellicht wenselijk dat uw gebruikers zich in uw toepassingen bij verschillende id-providers kunnen aanmelden. Een *id-provider* maakt, onderhoudt en beheert id-gegevens en biedt tegelijkertijd verificatieservices voor toepassingen. U kunt met behulp van de Azure Portal ID-providers toevoegen die door Azure Active Directory B2C (Azure AD B2C) worden ondersteund voor uw [gebruikers stromen](active-directory-b2c-reference-policies.md) .
+Het is wellicht wenselijk dat uw gebruikers zich in uw toepassingen bij verschillende id-providers kunnen aanmelden. Een *id-provider* maakt, onderhoudt en beheert id-gegevens en biedt tegelijkertijd verificatieservices voor toepassingen. U kunt met behulp van de Azure Portal ID-providers toevoegen die door Azure Active Directory B2C (Azure AD B2C) worden ondersteund voor uw [gebruikers stromen](user-flow-overview.md) .
 
 In dit artikel leert u het volgende:
 
@@ -29,7 +29,7 @@ In dit artikel leert u het volgende:
 > * De id-providers toevoegen aan uw Tenant
 > * De id-providers toevoegen aan uw gebruikers stroom
 
-Normaal gesp roken gebruikt u slechts één ID-provider in uw toepassingen, maar u hebt de mogelijkheid om meer toe te voegen. Deze zelf studie laat zien hoe u een Azure AD-ID-provider en een Facebook-ID-provider aan uw toepassing kunt toevoegen. Het toevoegen van beide id-providers aan uw toepassing is optioneel. U kunt ook andere id-providers toevoegen, zoals [Amazon](active-directory-b2c-setup-amzn-app.md), [github](active-directory-b2c-setup-github-app.md), [Google](active-directory-b2c-setup-goog-app.md), [LinkedIn](active-directory-b2c-setup-li-app.md), [micro soft](active-directory-b2c-setup-msa-app.md)of [Twitter](active-directory-b2c-setup-twitter-app.md).
+Normaal gesp roken gebruikt u slechts één ID-provider in uw toepassingen, maar u hebt de mogelijkheid om meer toe te voegen. Deze zelf studie laat zien hoe u een Azure AD-ID-provider en een Facebook-ID-provider aan uw toepassing kunt toevoegen. Het toevoegen van beide id-providers aan uw toepassing is optioneel. U kunt ook andere id-providers toevoegen, zoals [Amazon](identity-provider-amazon.md), [github](identity-provider-github.md), [Google](identity-provider-google.md), [LinkedIn](identity-provider-linkedin.md), [micro soft](identity-provider-microsoft-account.md)of [Twitter](identity-provider-twitter.md).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -45,7 +45,7 @@ ID-provider toepassingen bieden de id en de sleutel om communicatie met uw Azure
 
 Als u het aanmelden voor gebruikers vanuit Azure AD wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant. De Azure AD-Tenant is niet hetzelfde als uw Azure AD B2C-Tenant.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
 1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 1. Selecteer **nieuwe registratie**.

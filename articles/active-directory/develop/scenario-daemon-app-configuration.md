@@ -15,49 +15,49 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f857cfabfcacc5bb11e152a53fddee612c63d75b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 88062c2134600d5b1460858c3799cfc8daa83744
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702433"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775235"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-app die web-Api's aanroept-code configuratie
 
 Meer informatie over het configureren van de code voor uw daemon-toepassing die web-Api's aanroept.
 
-## <a name="msal-libraries-supporting-daemon-apps"></a>MSAL-bibliotheken ondersteunen daemon-apps
+## <a name="msal-libraries-that-support-daemon-apps"></a>MSAL-bibliotheken die ondersteuning bieden voor daemon-apps
 
-De micro soft libraries ondersteunen daemon-apps zijn:
+Deze micro soft-bibliotheken ondersteunen daemon-apps:
 
   MSAL-bibliotheek | Beschrijving
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Ondersteunde platforms voor het bouwen van een daemon-toepassing zijn .NET Framework en .NET Core-platformen (niet UWP, Xamarin. iOS en Xamarin. Android als deze platformen worden gebruikt voor het bouwen van open bare client toepassingen)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Ondersteuning voor daemon-toepassingen in python
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Ondersteuning voor daemon-toepassingen in Java
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | De .NET Framework-en .NET Core-platformen worden ondersteund voor het bouwen van daemon-toepassingen. (UWP, Xamarin. iOS en Xamarin. Android worden niet ondersteund omdat deze platformen worden gebruikt voor het bouwen van open bare client toepassingen.)
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Ondersteuning voor daemon-toepassingen in python.
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Ondersteuning voor daemon-toepassingen in Java.
 
-## <a name="configuration-of-the-authority"></a>Configuratie van de instantie
+## <a name="configure-the-authority"></a>De instantie configureren
 
-Omdat de daemon-toepassingen geen gedelegeerde machtigingen gebruiken, maar toepassings machtigingen, worden het *ondersteunde account type* niet *accounts in een organisatorische map en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox, Outlook.com)* . Er is inderdaad geen Tenant beheerder om toestemming te verlenen voor de daemon-toepassing voor persoonlijke micro soft-accounts. U moet *accounts in mijn organisatie* of *accounts in een organisatie*kiezen.
+Voor daemon-toepassingen worden toepassings machtigingen gebruikt in plaats van gedelegeerde machtigingen. Het ondersteunde account type kan dus geen account zijn in een organisatorische map of persoonlijke Microsoft-account (bijvoorbeeld Skype, Xbox, Outlook.com). Er is geen Tenant beheerder om toestemming te verlenen voor een daemon-toepassing voor een persoonlijk micro soft-account. U moet *accounts in mijn organisatie* of *accounts in een organisatie*kiezen.
 
-Daarom moet de in de toepassings configuratie opgegeven instantie Tenant-ED zijn (een Tenant-ID of een domein naam opgeven die is gekoppeld aan uw organisatie).
+De in de toepassings configuratie opgegeven instantie moet dus worden getenantd (een Tenant-ID of een domein naam opgeven die is gekoppeld aan uw organisatie).
 
-Als u een ISV bent en een multi tenant hulp programma wilt bieden, kunt u `organizations`gebruiken. Maar houd er rekening mee dat u ook moet uitleggen wat uw klanten zijn om toestemming van de beheerder te verlenen. Zie [toestemming vragen voor een volledige Tenant](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) voor meer informatie. Er is momenteel ook een beperking in MSAL: `organizations` is alleen toegestaan wanneer de client referenties een toepassings geheim zijn (geen certificaat).
+Als u een ISV bent en een multi tenant hulp programma wilt bieden, kunt u `organizations`gebruiken. Maar houd er rekening mee dat u ook moet uitleggen wat uw klanten zijn om toestemming van de beheerder te verlenen. Zie [toestemming vragen voor een hele Tenant](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)voor meer informatie. Er is momenteel een beperking in MSAL: `organizations` is alleen toegestaan wanneer de referenties van de client een toepassings geheim zijn (niet een certificaat).
 
-## <a name="application-configuration-and-instantiation"></a>Toepassings configuratie en instantiëring
+## <a name="configure-and-instantiate-the-application"></a>De toepassing configureren en instantiëren
 
 In MSAL-bibliotheken worden de client referenties (geheim of certificaat) door gegeven als para meter van de client toepassings constructie.
 
 > [!IMPORTANT]
-> Zelfs als uw toepassing een console toepassing is die als een service wordt uitgevoerd, en als het een daemon-toepassing is, moet deze een vertrouwelijke client toepassing zijn.
+> Zelfs als uw toepassing een-console toepassing is die als een service wordt uitgevoerd, moet deze een een vertrouwelijke client toepassing zijn.
 
 ### <a name="configuration-file"></a>Configuratiebestand
 
 Het configuratie bestand definieert het volgende:
 
-- de instantie of het Cloud exemplaar en tenantId
-- de ClientID die u hebt ontvangen van de registratie van de toepassing
-- een client geheim of een certificaat
+- De instantie of het Cloud exemplaar en de Tenant-ID.
+- De client-ID die u hebt ontvangen van de registratie van de toepassing.
+- Een client geheim of een certificaat.
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -73,11 +73,11 @@ Het configuratie bestand definieert het volgende:
 }
 ```
 
-U geeft een clientSecret of een certificaatnaam op. Beide instellingen zijn exclusief.
+U geeft een `ClientSecret` of een `CertificateName`op. Deze instellingen zijn exclusief.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Wanneer u een vertrouwelijke client met client geheimen bouwt, is het configuratie bestand van de [para meters. json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) in het voor beeld van [python-daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) als volgt.
+Wanneer u een vertrouwelijke client met client geheimen bouwt, is het configuratie bestand van de [para meters. json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) in het voor beeld van [python-daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) als volgt:
 
 ```Json
 {
@@ -89,7 +89,7 @@ Wanneer u een vertrouwelijke client met client geheimen bouwt, is het configurat
 }
 ```
 
-Wanneer u een vertrouwelijke client met certificaten bouwt, is het configuratie bestand [para meters. json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) in het voor beeld van [python-daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) als volgt.
+Wanneer u een vertrouwelijke client met certificaten bouwt, zijn de [para meters. json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) -configuratie bestand in het [python-daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) -voor beeld als volgt:
 
 ```Json
 {
@@ -104,7 +104,7 @@ Wanneer u een vertrouwelijke client met certificaten bouwt, is het configuratie 
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Dit is de klasse die wordt gebruikt in MSAL voor beelden van Java-Ontwikkel aars om de voor beelden te configureren: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java) is de klasse die wordt gebruikt voor het configureren van MSAL java dev-voor beelden:
 
 ```Java
 public class TestData {
@@ -118,12 +118,11 @@ public class TestData {
 
 ---
 
-### <a name="instantiation-of-the-msal-application"></a>Instantiëring van de MSAL-toepassing
+### <a name="instantiate-the-msal-application"></a>De MSAL-toepassing instantiëren
 
-Als u de MSAL-toepassing wilt instantiëren, moet u het volgende doen:
+Als u de MSAL-toepassing wilt instantiëren, moet u het MSAL-pakket (afhankelijk van de taal) toevoegen, raadplegen of importeren.
 
-- Voeg het MSAL-pakket (afhankelijk van de taal) toe, of referentie of importeer het.
-- De bouw verschilt, afhankelijk van of u client geheimen of certificaten gebruikt (of, als een geavanceerd scenario, ondertekende beweringen)
+De bouw is anders, afhankelijk van of u client geheimen of certificaten gebruikt (of, als een geavanceerd scenario, ondertekende beweringen).
 
 #### <a name="reference-the-package"></a>Verwijzen naar het pakket
 
@@ -133,7 +132,7 @@ Raadpleeg het MSAL-pakket in de code van uw toepassing.
 
 Voeg het [micro soft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet-pakket toe aan uw toepassing.
 In MSAL.NET wordt de vertrouwelijke client toepassing vertegenwoordigd door de `IConfidentialClientApplication`-interface.
-MSAL.NET-naam ruimte in de bron code gebruiken
+Gebruik de naam ruimte MSAL.NET in de bron code.
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -157,7 +156,7 @@ import com.microsoft.aad.msal4j.IAuthenticationResult;
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-client-secrets"></a>De vertrouwelijke client toepassing instantiëren met client geheimen
+#### <a name="instantiate-the-confidential-client-application-with-a-client-secret"></a>De vertrouwelijke client toepassing instantiëren met een client geheim
 
 Dit is de code voor het instantiëren van de vertrouwelijke client toepassing met een client geheim:
 
@@ -175,7 +174,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential=config["secret"],
@@ -197,7 +196,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-client-certificate"></a>De vertrouwelijke client toepassing instantiëren met het client certificaat
+#### <a name="instantiate-the-confidential-client-application-with-a-client-certificate"></a>De vertrouwelijke client toepassing instantiëren met een client certificaat
 
 Hier volgt de code voor het bouwen van een toepassing met een certificaat:
 
@@ -216,7 +215,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},
@@ -228,12 +227,12 @@ app = msal.ConfidentialClientApplication(
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-In MSAL. Java: er zijn twee Builders voor het instantiëren van de vertrouwelijke client toepassing met certificaten.
+In MSAL Java zijn er twee bouwers voor het instantiëren van de vertrouwelijke client toepassing met certificaten:
 
 ```Java
 
-InputStream pkcs12Certificate = ... ; /* containing PCKS12 formatted certificate*/
-string certificatePassword = ... ;    /* contains the password to access the certificate */
+InputStream pkcs12Certificate = ... ; /* Containing PCKS12-formatted certificate*/
+string certificatePassword = ... ;    /* Contains the password to access the certificate */
 
 ConfidentialClientApplication app = ConfidentialClientApplication.builder(
         TestData.CONFIDENTIAL_CLIENT_ID,
@@ -257,18 +256,18 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 ---
 
-#### <a name="advanced-scenario---instantiate-the-confidential-client-application-with-client-assertions"></a>Geavanceerd scenario: de vertrouwelijke client toepassing instantiëren met client verklaringen
+#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>Geavanceerd scenario: de vertrouwelijke client toepassing instantiëren met client verklaringen
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-In plaats van een client geheim of een certificaat kan de vertrouwelijke client toepassing ook de identiteit bewijzen met behulp van client verklaringen.
+In plaats van een client geheim of een certificaat kan de vertrouwelijke client toepassing ook de identiteit bewijzen door gebruik te maken van client verklaringen.
 
 MSAL.NET heeft twee methoden om ondertekende bevestigingen te bieden aan de vertrouwelijke client-app:
 
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-Wanneer u `WithClientAssertion`gebruikt, moet u een ondertekende JWT opgeven. Dit geavanceerde scenario wordt beschreven in [client verklaringen](msal-net-client-assertions.md)
+Wanneer u `WithClientAssertion`gebruikt, moet u een ondertekende JWT opgeven. Dit geavanceerde scenario wordt beschreven in [client verklaringen](msal-net-client-assertions.md).
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -277,8 +276,8 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Wanneer u `WithClientClaims`gebruikt, wordt in MSAL.NET een ondertekende bevestiging berekend met de claims die worden verwacht door Azure AD plus aanvullende client claims die u wilt verzenden.
-Hier volgt een code fragment waarmee u dit kunt doen:
+Wanneer u `WithClientClaims`gebruikt, produceert MSAL.NET een ondertekende bevestiging die de claims bevat die worden verwacht door Azure AD, plus aanvullende client claims die u wilt verzenden.
+Deze code laat zien hoe u dit doet:
 
 ```csharp
 string ipAddress = "192.168.1.2";
@@ -294,12 +293,12 @@ Zie voor meer informatie [client verklaringen](msal-net-client-assertions.md).
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-In MSAL python kunt u client claims opgeven met behulp van de claims die worden ondertekend door de persoonlijke sleutel van deze `ConfidentialClientApplication`.
+In MSAL python kunt u client claims opgeven door gebruik te maken van de claims die worden ondertekend door de persoonlijke sleutel van deze `ConfidentialClientApplication`.
 
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},
@@ -310,7 +309,7 @@ app = msal.ConfidentialClientApplication(
     )
 ```
 
-Zie de referentie documentatie van MSAL python voor [ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__)voor meer informatie.
+Zie de naslag documentatie voor MSAL python voor [ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__)voor meer informatie.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 

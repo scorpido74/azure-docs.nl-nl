@@ -1,12 +1,12 @@
 ---
-title: 'Quickstart: Een standaard load balancer maken - Azure Portal'
+title: 'Snelstartgids: een open bare Load Balancer maken-Azure Portal'
 titleSuffix: Azure Load Balancer
-description: In deze Quick start ziet u hoe u een Standard Load Balancer maakt met behulp van de Azure Portal.
+description: In deze Quick start ziet u hoe u een Load Balancer maakt met behulp van de Azure Portal.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load Balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load Balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 027e05b3fbf7163c4a1b927a2b83db84c7eef1ff
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771458"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843868"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Snelstart: Een standaard load balancer maken om taken van VM's te verdelen via Azure Portal
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Snelstartgids: een Load Balancer maken om taken te verdelen over Vm's met behulp van de Azure Portal
 
-Taakverdeling zorgt voor een hogere beschikbaarheid en betere schaalbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines. U kunt in Azure Portal een load balancer maken om taken van virtuele machines (VM's) te verdelen. In deze snelstart wordt getoond hoe u taken van VM's kunt verdelen met een Standard Load Balancer.
+Taakverdeling zorgt voor een hogere beschikbaarheid en betere schaalbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines. U kunt in Azure Portal een load balancer maken om taken van virtuele machines (VM's) te verdelen. In deze Quick start ziet u hoe u virtuele machines kunt verdelen met behulp van een open bare Load Balancer.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
@@ -32,9 +32,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-standard-load-balancer"></a>Een Load Balancer van het type Standard maken
+## <a name="create-a-load-balancer"></a>Een load balancer maken
 
-In deze sectie maakt u een Standard Load Balancer die de taak verdeling van virtuele machines ondersteunt. U kunt een open bare Standard Load Balancer of een interne Standard Load Balancer maken. Standard Load Balancer ondersteunt alleen een standaard openbaar IP-adres, de basis-open bare IP-adressen worden niet ondersteund. Wanneer u een open bare Standard Load Balancer maakt, moet u ook een nieuw standaard openbaar IP-adres maken dat is geconfigureerd als de front-end (standaard de naam *LoadBalancerFrontend* ) voor de Standard Load Balancer. 
+In deze sectie maakt u een Load Balancer die de taak verdeling van virtuele machines ondersteunt. U kunt een open bare Load Balancer of een interne Load Balancer maken. Wanneer u een open bare Load Balancer maakt, moet u ook een nieuw openbaar IP-adres maken dat is geconfigureerd als de front-end (standaard de naam *LoadBalancerFrontend* ) voor de Load Balancer.
 
 1. Selecteer in de linkerbovenhoek van het scherm de optie **een resource maken** > **netwerk** > **Load Balancer**.
 2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **Controleren + maken**:
@@ -46,10 +46,11 @@ In deze sectie maakt u een Standard Load Balancer die de taak verdeling van virt
     | Name                   | *myLoadBalancer*                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
     | Type          | Selecteer **Openbaar**.                                        |
-    | SKU           | Selecteer **standaard**.                          |
-    | Openbaar IP-adres | Selecteer **Nieuw maken**. |
-    | Naam openbaar IP-adres              | Typ *myPublicIP* in het tekstvak.   |
-    |Beschikbaarheidszone| Selecteer **Zone-redundant**.    |
+    | SKU           | Selecteer **Standard** of **Basic**. Micro soft adviseert standaard voor productie werkbelastingen.  |
+    | Openbaar IP-adres | Selecteer **Nieuw maken**. Als u een bestaand openbaar IP-adres hebt dat u wilt gebruiken, selecteert u **bestaande gebruiken** |
+    | Naam openbare IP-adres              | Typ *myPublicIP* in het tekstvak.   |
+    | Beschikbaarheidszone | Typ een *zone-redundante* voor het maken van een flexibele Load Balancer. Als u een zonegebonden Load Balancer wilt maken, selecteert u een specifieke zone van 1, 2 of 3 |
+
 3. Selecteer in het tabblad **controleren en maken** de optie **maken**.   
 
     ![Een Load Balancer van het type Standard maken](./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png)
@@ -58,7 +59,7 @@ In deze sectie maakt u een Standard Load Balancer die de taak verdeling van virt
 
 In deze sectie configureert u Load Balancer instellingen voor een back-end-adres groep, een status test en een Balancer-regel opgeven.
 
-### <a name="create-a-backend-address-pool"></a>Een back-endadresgroep maken
+### <a name="create-a-backend-pool"></a>Een back-end-groep maken
 
 Als u verkeer naar de Vm's wilt distribueren, bevat een back-endadresgroep de IP-adressen van de virtuele (Nic's) die zijn verbonden met de Load Balancer. Maak de back- *myBackendPool* voor het toevoegen van virtuele machines voor het Internet verkeer voor taak verdeling.
 
@@ -79,7 +80,7 @@ Als u wilt dat de Load Balancer de status van uw app bewaken, gebruikt u een sta
     | Protocol | Selecteer **http**. |
     | Port | Voer *80*in.|
     | Interval | Geef *15* **op voor** het aantal seconden tussen de test pogingen. |
-    | Drempelwaarde voor onjuiste status | Selecteer **2** voor het aantal **foutieve drempel waarden** of opeenvolgende test fouten die moeten optreden voordat een VM wordt beschouwd als beschadigd.|
+    | Drempel waarde voor onjuiste status | Selecteer **2** voor het aantal **foutieve drempel waarden** of opeenvolgende test fouten die moeten optreden voordat een VM wordt beschouwd als beschadigd.|
     | | |
 4. Selecteer **OK**.
 
@@ -95,8 +96,8 @@ Een load balancer-regel wordt gebruikt om de verdeling van het verkeer over de V
     | Name | Voer *myhttprule als*in. |
     | Protocol | Selecteer **TCP**. |
     | Port | Voer *80*in.|
-    | Back-endpoort | Voer *80*in. |
-    | Back-endpool | Selecteer *myBackendPool*.|
+    | Backend-poort | Voer *80*in. |
+    | Back-end-groep | Selecteer *myBackendPool*.|
     | Statustest | Selecteer *myHealthProbe*. |
 4. Laat de overige standaard waarden ongewijzigd en selecteer **OK**.
 
@@ -122,7 +123,7 @@ In deze sectie maakt u een virtueel netwerk, maakt u drie virtuele machines voor
 1. Laat de overige standaardwaarden staan en selecteer **Maken**.
 
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
-Standard Load Balancer ondersteunt alleen Vm's met standaard-IP-adressen in de back-end-pool. In deze sectie maakt u drie virtuele machines (*myVM1*, *myVM2* en *myVM3*) met een standaard openbaar IP-adres in drie verschillende zones (*zone 1*, *zone 2*en *zone 3*) die later worden toegevoegd aan de back-end-groep van de Standard Load Balancer die eerder is gemaakt.
+Open bare IP-Sku's en Load Balancer Sku's moeten overeenkomen. Gebruik voor Standard Load Balancer Vm's met standaard-IP-adressen in de back-end-pool. In deze sectie maakt u drie virtuele machines (*myVM1*, *myVM2* en *myVM3*) met een standaard openbaar IP-adres in drie verschillende zones (*zone 1*, *zone 2*en *zone 3*) die later worden toegevoegd aan de back-end-groep van de Load Balancer die eerder is gemaakt. Als u basis hebt geselecteerd, gebruikt u Vm's met basis-IP-adressen.
 
 1. Selecteer in de linkerbovenhoek van de Portal de optie **een resource maken** > **reken** > **Windows Server 2019 Data Center**. 
    
@@ -138,7 +139,7 @@ Standard Load Balancer ondersteunt alleen Vm's met standaard-IP-adressen in de b
 1. Controleer op het tabblad **netwerken** of het volgende is geselecteerd:
    - **Virtueel netwerk**: *myVnet*
    - **Subnet**: *myBackendSubnet*
-   - **Open bare IP-** > Selecteer **nieuwe maken**en selecteer in het venster **openbaar IP-adres maken** voor **SKU**de optie **standaard**en selecteer **zone-redundante**in het **gebied beschikbaarheids zone**en selecteer vervolgens **OK**.
+   - **Open bare IP-** > Selecteer **nieuwe maken**en selecteer in het venster **openbaar IP-adres maken** voor **SKU**de optie **standaard**en selecteer **zone-redundante**in het **gebied beschikbaarheids zone**en selecteer vervolgens **OK**. Als u een basis Load Balancer hebt gemaakt, selecteert u basis. Micro soft raadt aan om standaard-SKU te gebruiken voor werk belastingen voor productie.
    - Als u een nieuwe netwerkbeveiligingsgroep (NSG) wilt maken, een soort firewall, selecteert u onder **Netwerkbeveiligingsgroep** de optie **Geavanceerd**. 
        1. Selecteer in het veld **Netwerkbeveiligingsgroep configureren** de optie **Nieuwe maken**. 
        1. Typ *myNetworkSecurityGroup*en selecteer **OK**.
@@ -167,15 +168,20 @@ In deze sectie maakt u een regel voor de netwerk beveiligings groep om binnenkom
 1. Selecteer **alle services** in het linkermenu, selecteer **alle resources**en selecteer vervolgens in de lijst met resources **myNetworkSecurityGroup** die zich in de resource groep **myResourceGroupSLB** bevindt.
 2. Selecteer onder **Instellingen** **Inkomende beveiligingsregels** en selecteer vervolgens **Toevoegen**.
 3. Voer deze waarden in voor de inkomende beveiligingsregel met de naam *myHTTPRule* om een binnenkomende HTTP-verbinding via poort 80 toe te staan:
-    - *Service Tag* bij **Bron**.
-    - *Internet* bij **Bronservicetag**
-    - *80* bij **Poortbereiken van doel**
-    - *TCP* bij **Protocol**
-    - *Allow* bij **Actie**
-    - *100* bij **Prioriteit**
-    - *myHTTPRule* als naam
-    - *Allow HTTP* als beschrijving
+    - **Bron**: *servicetag*
+    -  **Bron servicetag**: *Internet*
+    - **Poort bereik van doel**: *80*
+    - **Protocol**: *TCP*
+    - **Actie**: *toestaan*
+    - **Prioriteit**: *100*
+    - **Naam**: *myhttprule als* 
+    - **Beschrijving**: '*http toestaan* 
 4. Selecteer **Toevoegen**.
+5. Herhaal de stappen voor de inkomende RDP-regel, indien nodig, met de volgende verschillende waarden:
+   - **Poortbereiken van doel**: typ *3389*.
+   - **Prioriteit**: typ *200*. 
+   - **Naam**: typ *MyRDPRule*. 
+   - **Beschrijving**: typ *RDP toestaan*. 
  
 ### <a name="install-iis"></a>IIS installeren
 
@@ -214,7 +220,6 @@ Als u deze niet meer nodig hebt, verwijdert u de resource groep, Load Balancer e
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een Standard Load Balancer, gekoppelde Vm's aan de app gemaakt, de regel voor het Load Balancer verkeer geconfigureerd, de status test en vervolgens de Load Balancer getest. Voor meer informatie over Azure Load Balancer gaat u verder met de zelfstudies voor Azure Load Balancer.
+In deze Quick Start hebt u een Standard Load Balancer, gekoppelde Vm's aan de app gemaakt, de regel voor het Load Balancer verkeer geconfigureerd, de status test en vervolgens de Load Balancer getest. Ga door naar [Azure Load Balancer zelf studies](tutorial-load-balancer-standard-public-zone-redundant-portal.md)voor meer informatie over Azure Load Balancer.
 
-> [!div class="nextstepaction"]
-> [Zelfstudies voor Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+Meer informatie over [Load Balancer-en beschikbaarheids zones](load-balancer-standard-availability-zones.md).

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949403"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841230"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>De gebruikers interface in Azure Active Directory B2C aanpassen
 
@@ -28,17 +28,17 @@ Er zijn verschillende manieren voor het aanpassen van de gebruikers interface va
 
 ### <a name="user-flows"></a>Gebruikersstromen
 
-Als u gebruik maakt van [gebruikers stromen](active-directory-b2c-reference-policies.md), kunt u het uiterlijk van de pagina's van de gebruikers stroom wijzigen met behulp van ingebouwde *sjablonen voor pagina-indeling*of door gebruik te maken van uw eigen HTML en CSS. Beide methoden worden verderop in dit artikel besproken.
+Als u gebruik maakt van [gebruikers stromen](user-flow-overview.md), kunt u het uiterlijk van de pagina's van de gebruikers stroom wijzigen met behulp van ingebouwde *sjablonen voor pagina-indeling*of door gebruik te maken van uw eigen HTML en CSS. Beide methoden worden verderop in dit artikel besproken.
 
 U gebruikt de [Azure Portal](tutorial-customize-ui.md) voor het configureren van de UI-aanpassing voor gebruikers stromen.
 
 ### <a name="custom-policies"></a>Aangepast beleid
 
-Als u [aangepaste beleids regels](active-directory-b2c-overview-custom.md) gebruikt voor het aanmelden of aanmelden, het opnieuw instellen van wacht woorden of het bewerken van profielen in uw toepassing, gebruikt u [beleids bestanden om de gebruikers interface aan te passen](active-directory-b2c-ui-customization-custom.md).
+Als u [aangepaste beleids regels](custom-policy-overview.md) gebruikt voor het aanmelden of aanmelden, het opnieuw instellen van wacht woorden of het bewerken van profielen in uw toepassing, gebruikt u [beleids bestanden om de gebruikers interface aan te passen](custom-policy-ui-customization.md).
 
-Als u dynamische inhoud op basis van de beslissing van een klant wilt opgeven, gebruikt u aangepaste beleids regels die de [pagina-inhoud dynamisch kunnen wijzigen](active-directory-b2c-ui-customization-custom-dynamic.md) , afhankelijk van een para meter die wordt verzonden in een query reeks. U kunt bijvoorbeeld de achtergrond afbeelding wijzigen op de Azure AD B2C registratie-of aanmeldings pagina op basis van een para meter die u doorgeeft vanuit uw web-of mobiele toepassing.
+Als u dynamische inhoud op basis van de beslissing van een klant wilt opgeven, gebruikt u aangepaste beleids regels die de [pagina-inhoud dynamisch kunnen wijzigen](custom-policy-ui-customization-dynamic.md) , afhankelijk van een para meter die wordt verzonden in een query reeks. U kunt bijvoorbeeld de achtergrond afbeelding wijzigen op de Azure AD B2C registratie-of aanmeldings pagina op basis van een para meter die u doorgeeft vanuit uw web-of mobiele toepassing.
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 U kunt Java script-code aan de client zijde inschakelen in zowel [gebruikers stromen](user-flow-javascript-overview.md) als [aangepaste beleids regels](page-layout.md).
 
@@ -65,6 +65,8 @@ Selecteer vervolgens een sjabloon in de lijst. Hier volgen enkele voor beelden v
 Wanneer u een sjabloon kiest, wordt de geselecteerde indeling toegepast op alle pagina's in uw gebruikers stroom en de URI voor elke pagina wordt weer gegeven in het veld **aangepaste pagina-URI** .
 
 ## <a name="custom-html-and-css"></a>Aangepaste HTML en CSS
+
+Als u uw eigen beleids indeling wilt ontwerpen met uw aangepaste HTML en CSS, kunt u dit doen door de wissel knop ' aangepaste pagina-inhoud gebruiken ' in te scha kelen voor elk van de indelings namen die in uw beleid aanwezig zijn. Volg de onderstaande instructies met betrekking tot de aangepaste indelings configuraties:
 
 Azure AD B2C code wordt uitgevoerd in de browser van uw klant door gebruik te maken van een aanpak genaamd [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/).
 
@@ -150,7 +152,7 @@ De volgende tabel bevat de HTML-fragmenten die Azure AD B2C worden samengevoegd 
 
 ## <a name="localize-content"></a>Inhoud lokaliseren
 
-U kunt uw HTML-inhoud lokaliseren door [taal aanpassing](active-directory-b2c-reference-language-customization.md) in te scha kelen in uw Azure AD B2C-Tenant. Als u deze functie inschakelt, kunnen Azure AD B2C de OpenID Connect Connect-para meter `ui-locales` naar uw eind punt door sturen. De inhouds server kan deze para meter gebruiken om taalspecifieke HTML-pagina's op te geven.
+U kunt uw HTML-inhoud lokaliseren door [taal aanpassing](user-flow-language-customization.md) in te scha kelen in uw Azure AD B2C-Tenant. Als u deze functie inschakelt, kunnen Azure AD B2C de OpenID Connect Connect-para meter `ui-locales` naar uw eind punt door sturen. De inhouds server kan deze para meter gebruiken om taalspecifieke HTML-pagina's op te geven.
 
 Inhoud kan vanaf verschillende locaties worden opgehaald op basis van de land instelling die wordt gebruikt. In het eind punt waarvoor CORS is ingeschakeld, stelt u een mapstructuur in om inhoud voor specifieke talen te hosten. U roept de juiste waarde aan als u de Joker teken `{Culture:RFC5646}`gebruikt.
 
@@ -179,4 +181,4 @@ De voorbeeld HTML-en CSS-bestanden in de sjablonen bevinden zich in de map [/sam
     [Pas de gebruikers interface van uw toepassingen aan in azure Active Directory B2C](tutorial-customize-ui.md).
 - Als u **aangepast beleid**gebruikt, kunt u de gebruikers interface nu aanpassen met het artikel:
 
-    [Pas de gebruikers interface van uw toepassing aan met behulp van een aangepast beleid in azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+    [Pas de gebruikers interface van uw toepassing aan met behulp van een aangepast beleid in azure Active Directory B2C](custom-policy-ui-customization.md).

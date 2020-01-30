@@ -1,33 +1,33 @@
 ---
-title: Inzicht in de Azure IoT Hub-querytaal | Microsoft Docs
-description: Handleiding voor ontwikkelaars - beschrijving van de SQL-achtige IoT-Hub query language gebruikt voor het ophalen van informatie over het apparaat/module dubbels en taken van uw IoT-hub.
+title: Meer informatie over de Azure IoT Hub query-taal | Microsoft Docs
+description: 'Hand leiding voor ontwikkel aars: beschrijving van de SQL-achtige IoT Hub query taal die wordt gebruikt om informatie op te halen over de apparaatdubbels en taken van een apparaat/module van uw IoT-hub.'
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: 03d2ca0b7d6b53215c5293f84c8b22a2dc0d8297
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b224de96f6b6baedc3b57e0245a4c4e8748576b4
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450065"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767724"
 ---
-# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-querytaal voor dubbels voor apparaat- en -module, taken en berichtroutering
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub query taal voor apparaat-en module apparaatdubbels,-taken en-bericht routering
 
-IoT Hub biedt een krachtige SQL-achtige taal verkrijgen van informatie met betrekking tot [apparaatdubbels](iot-hub-devguide-device-twins.md), [moduledubbels](iot-hub-devguide-module-twins.md), [taken](iot-hub-devguide-jobs.md), en [berichtroutering](iot-hub-devguide-messages-d2c.md). In dit artikel geeft:
+IoT Hub biedt een krachtige SQL-achtige taal voor het ophalen van informatie over [apparaatdubbels](iot-hub-devguide-device-twins.md), [module apparaatdubbels](iot-hub-devguide-module-twins.md), [Jobs](iot-hub-devguide-jobs.md)en [bericht routering](iot-hub-devguide-messages-d2c.md). Dit artikel bevat het volgende:
 
-* Een inleiding tot de belangrijkste functies van de IoT Hub-querytaal en
-* De gedetailleerde beschrijving van de taal. Zie voor meer informatie over de querytaal voor het routeren van berichten, [query's in berichtroutering](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
+* Een inleiding tot de belangrijkste functies van de IoT Hub query taal en
+* De gedetailleerde beschrijving van de taal. Zie [query's in bericht routering](../iot-hub/iot-hub-devguide-routing-query-syntax.md)voor meer informatie over de query taal voor bericht routering.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="device-and-module-twin-queries"></a>Apparaat- en -module apparaatdubbel-query 's
 
-[Apparaatdubbels](iot-hub-devguide-device-twins.md) en [moduledubbels](iot-hub-devguide-module-twins.md) willekeurige JSON-objecten als zowel labels en eigenschappen kan bevatten. IoT Hub kunt u query apparaatdubbels en moduledubbels als een enkel JSON-document met alle dubbele gegevens.
+[Apparaatdubbels](iot-hub-devguide-device-twins.md) en [module apparaatdubbels](iot-hub-devguide-module-twins.md) kunnen WILLe keurige JSON-objecten bevatten als beide tags en eigenschappen. Met IoT Hub kunt u apparaatdubbels en module apparaatdubbels als één JSON-document met alle dubbele informatie opvragen.
 
-Stel bijvoorbeeld dat de apparaatdubbels van uw IoT-hub de volgende structuur hebben (moduledubbel zouden zijn vergelijkbaar met een extra moduleId alleen):
+We gaan ervan uit dat uw IoT hub-apparaat apparaatdubbels de volgende structuur hebben (de module dubbele is vergelijkbaar met een extra moduleId):
 
 ```json
 {
@@ -79,25 +79,25 @@ Stel bijvoorbeeld dat de apparaatdubbels van uw IoT-hub de volgende structuur he
 }
 ```
 
-### <a name="device-twin-queries"></a>Apparaatdubbel-query 's
+### <a name="device-twin-queries"></a>Dubbele query's van het apparaat
 
-IoT-Hub toont de apparaatdubbels als een documentverzameling met de naam **apparaten**. Bijvoorbeeld, haalt de volgende query de hele set dubbele apparaten:
+IoT Hub stelt de apparaatdubbels van het apparaat in als een document verzameling met de naam **apparaten**. Met de volgende query wordt bijvoorbeeld de hele set apparaat apparaatdubbels opgehaald:
 
 ```sql
 SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Azure IoT SDK's](iot-hub-devguide-sdks.md) ondersteuning voor paginering van veel resultaten.
+> [Azure IOT sdk's](iot-hub-devguide-sdks.md) ondersteunen het pagineren van grote resultaten.
 
-IoT Hub kunt u om op te halen van apparaatdubbels filteren met willekeurig voorwaarden. Bijvoorbeeld voor het ontvangen van device twins waar de **location.region** label is ingesteld op **VS** gebruik de volgende query:
+Met IoT Hub kunt u apparaatdubbels filteren met wille keurige voor waarden. Om bijvoorbeeld apparaat apparaatdubbels te ontvangen waarbij de tag **location. Region** is ingesteld op **ons** , gebruikt u de volgende query:
 
 ```sql
 SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-Booleaanse operators en rekenkundige vergelijkingen worden ook ondersteund. Bijvoorbeeld, om op te halen apparaatdubbels zich in de Verenigde Staten en geconfigureerd voor het verzenden van telemetrie minder dan elke minuut, gebruikt u de volgende query uit:
+Booleaanse Opera tors en reken kundige vergelijkingen worden ook ondersteund. Gebruik bijvoorbeeld de volgende query om de apparaatdubbels in de VS op te halen en zo geconfigureerd dat telemetrie minder dan elke minuut wordt verzonden:
 
 ```sql
 SELECT * FROM devices
@@ -105,23 +105,23 @@ SELECT * FROM devices
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
-Uw gemak, het is ook mogelijk met gebruik van de matrixconstanten met de **IN** en **NIN** operators (niet-in). Om op te halen, gebruik dubbele apparaten die rapporteren van Wi-Fi of bekabelde verbindingen de volgende query:
+Als gebruiks gemak is het ook mogelijk om matrix constanten te gebruiken met de Opera tors **in** en **Nover enkele** (niet in). U kunt bijvoorbeeld de volgende query gebruiken om de apparaatdubbels van het apparaat op te halen dat WiFi of bekabelde connectiviteit rapporteert:
 
 ```sql
 SELECT * FROM devices
   WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-Het is vaak nodig om u te identificeren van alle dubbele apparaten die een bepaalde eigenschap bevatten. IoT Hub biedt ondersteuning voor de functie `is_defined()` voor dit doel. Bijvoorbeeld, voor apparaatdubbels ophalen die definieert de `connectivity` eigenschap gebruik de volgende query:
+Het is vaak nodig om alle apparaatdubbels te identificeren die een specifieke eigenschap bevatten. IoT Hub ondersteunt de functie `is_defined()` voor dit doel einde. Gebruik bijvoorbeeld de volgende query om apparaatdubbels op te halen die de eigenschap `connectivity` definiëren:
 
 ```SQL
 SELECT * FROM devices
   WHERE is_defined(properties.reported.connectivity)
 ```
 
-Raadpleeg de [WHERE-component](iot-hub-devguide-query-language.md#where-clause) sectie voor de volledige verwijzing van de filters gebruiken om mogelijkheden.
+Raadpleeg de sectie [WHERE-component](iot-hub-devguide-query-language.md#where-clause) voor de volledige verwijzing van de filter mogelijkheden.
 
-Groeperen en aggregaties worden ook ondersteund. Bijvoorbeeld, als u wilt het aantal apparaten in de status van elk telemetrie-configuratie kunt vinden, gebruik de volgende query:
+Groepering en aggregaties worden ook ondersteund. Als u bijvoorbeeld wilt zoeken naar het aantal apparaten in elke configuratie status van de telemetrie, gebruikt u de volgende query:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -130,7 +130,7 @@ SELECT properties.reported.telemetryConfig.status AS status,
   GROUP BY properties.reported.telemetryConfig.status
 ```
 
-Deze groepering query retourneert een resultaat vergelijkbaar met het volgende voorbeeld:
+Deze groeperings query retourneert een resultaat zoals in het volgende voor beeld:
 
 ```json
 [
@@ -149,29 +149,29 @@ Deze groepering query retourneert een resultaat vergelijkbaar met het volgende v
 ]
 ```
 
-In dit voorbeeld drie apparaten gerapporteerd geslaagde configuratie, twee zijn nog steeds de configuratie van de toepassing en een heeft een fout gerapporteerd.
+In dit voor beeld hebben drie apparaten een geslaagde configuratie gerapporteerd. er wordt nog steeds een configuratie toegepast en er is een fout gemeld.
 
-Projectie van query's kunnen ontwikkelaars om terug te keren alleen de eigenschappen die het belangrijkst. Bijvoorbeeld, verbroken om op te halen van de laatste activiteitstijd van alle apparaten gebruik de volgende query uit:
+Met projectie query's kunnen ontwikkel aars alleen de eigenschappen retour neren die ze van belang hebben. Als u bijvoorbeeld de tijd van de laatste activiteit wilt ophalen van alle apparaten zonder verbinding, gebruikt u de volgende query:
 
 ```sql
 SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 ```
 
-### <a name="module-twin-queries"></a>Module apparaatdubbel-query 's
+### <a name="module-twin-queries"></a>Dubbele query's in module
 
-Query's over moduledubbels is vergelijkbaar met het uitvoeren van query's op dubbele apparaten, maar met behulp van een andere verzameling/naamruimte; in plaats van vanaf **apparaten**, u een query uit **devices.modules**:
+Het uitvoeren van query's op module apparaatdubbels is vergelijkbaar met het uitvoeren van query's op apparaatdubbels van apparaten, maar het gebruik van een andere verzameling/naam ruimte; in plaats van vanaf **apparaten**kunt u een query uitvoeren vanuit **apparaten. modules**:
 
 ```sql
 SELECT * FROM devices.modules
 ```
 
-We kunnen geen koppeling tussen de apparaten en devices.modules verzamelingen. Als u moduledubbels query alle apparaten wilt, doen u dit op basis van tags. Deze query retourneert alle moduledubbels voor alle apparaten met de status van de scannen:
+Er is geen koppeling tussen apparaten en apparaten. modules-verzamelingen toegestaan. Als u een query wilt uitvoeren op module apparaatdubbels op verschillende apparaten, doet u dit op basis van tags. Met deze query worden alle module apparaatdubbels op alle apparaten met de scan status geretourneerd:
 
 ```sql
 SELECT * FROM devices.modules WHERE properties.reported.status = 'scanning'
 ```
 
-Deze query retourneert alle moduledubbels met de status van de scans, maar alleen op het opgegeven aantal apparaten:
+Met deze query wordt alle module apparaatdubbels geretourneerd met de scan status, maar alleen op de opgegeven subset van apparaten:
 
 ```sql
 SELECT * FROM devices.modules
@@ -179,11 +179,11 @@ SELECT * FROM devices.modules
   AND deviceId IN ['device1', 'device2']
 ```
 
-### <a name="c-example"></a>C#-voorbeeld
+### <a name="c-example"></a>C#Hierbij
 
-De queryfunctionaliteit van de wordt weergegeven door de [C# service-SDK](iot-hub-devguide-sdks.md) in de **RegistryManager** klasse.
+De functionaliteit van de query wordt weer gegeven door de [ C# Service-SDK](iot-hub-devguide-sdks.md) in de **RegistryManager** -klasse.
 
-Hier volgt een voorbeeld van een eenvoudige query:
+Hier volgt een voor beeld van een eenvoudige query:
 
 ```csharp
 var query = registryManager.CreateQuery("SELECT * FROM devices", 100);
@@ -197,15 +197,15 @@ while (query.HasMoreResults)
 }
 ```
 
-De **query** object is gemaakt met een paginagrootte (maximaal 100). Klik meerdere pagina's worden opgehaald door het aanroepen van de **GetNextAsTwinAsync** methoden meerdere keren.
+Voor het **query** -object is een pagina grootte (maxi maal 100) geïnstantieerd. Vervolgens worden meerdere pagina's opgehaald door de **GetNextAsTwinAsync** -methoden meerdere keren aan te roepen.
 
-De query-object wordt aangegeven dat meerdere **volgende** waarden, afhankelijk van de deserialisatie-optie vereist door de query. Bijvoorbeeld, apparaatobjecten dubbel of de taak, of gewoon JSON bij het gebruik van projecties.
+In het object query worden meerdere **volgende** waarden weer gegeven, afhankelijk van de deserialisatie optie die de query vereist. Bijvoorbeeld dubbele en taak objecten, of gewone JSON bij het gebruik van projecties.
 
-### <a name="nodejs-example"></a>Node.js-voorbeeld
+### <a name="nodejs-example"></a>Node. js-voor beeld
 
-De queryfunctionaliteit van de wordt weergegeven door de [Azure IoT service SDK voor Node.js](iot-hub-devguide-sdks.md) in de **register** object.
+De functionaliteit van de query wordt weer gegeven door de [Azure IOT Service SDK voor node. js](iot-hub-devguide-sdks.md) in het **register** object.
 
-Hier volgt een voorbeeld van een eenvoudige query:
+Hier volgt een voor beeld van een eenvoudige query:
 
 ```javascript
 var query = registry.createQuery('SELECT * FROM devices', 100);
@@ -226,20 +226,20 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-De **query** object is gemaakt met een paginagrootte (maximaal 100). Klik meerdere pagina's worden opgehaald door het aanroepen van de **nextAsTwin** methode meerdere keren.
+Voor het **query** -object is een pagina grootte (maxi maal 100) geïnstantieerd. Vervolgens worden meerdere pagina's opgehaald door meerdere keren de methode **nextAsTwin** aan te roepen.
 
-De query-object wordt aangegeven dat meerdere **volgende** waarden, afhankelijk van de deserialisatie-optie vereist door de query. Bijvoorbeeld, apparaatobjecten dubbel of de taak, of gewoon JSON bij het gebruik van projecties.
+In het object query worden meerdere **volgende** waarden weer gegeven, afhankelijk van de deserialisatie optie die de query vereist. Bijvoorbeeld dubbele en taak objecten, of gewone JSON bij het gebruik van projecties.
 
 ### <a name="limitations"></a>Beperkingen
 
 > [!IMPORTANT]
-> Apparaatdubbels queryresultaten, kunnen een paar minuten vertraging met betrekking tot de meest recente waarden bevatten. Als het uitvoeren van query's is een afzonderlijke apparaatdubbels door-ID, moet u de ophalen-apparaat dubbele API gebruiken. Deze API is altijd de meest recente waarden bevat en is hoger beperkingslimieten.
+> De query resultaten kunnen een paar minuten vertraging hebben ten opzichte van de laatste waarden in het apparaatdubbels van het apparaat. Als u een query wilt uitvoeren op een afzonderlijk apparaat apparaatdubbels op ID, gebruikt u de [Get dubbele rest API](https://docs.microsoft.com/rest/api/iothub/service/gettwin). Deze API retourneert altijd de nieuwste waarden en heeft een hogere beperkings limiet. U kunt de REST API rechtstreeks uitgeven of de equivalente functionaliteit gebruiken in een van de [Azure IOT hub service-sdk's](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
 
-Op dit moment vergelijkingen bijvoorbeeld alleen tussen primitieve typen (geen objecten), worden ondersteund `... WHERE properties.desired.config = properties.reported.config` wordt alleen ondersteund als deze eigenschappen primitieve waarden hebben.
+Op dit moment worden vergelijkingen alleen ondersteund tussen primitieve typen (geen objecten), bijvoorbeeld `... WHERE properties.desired.config = properties.reported.config` wordt alleen ondersteund als deze eigenschappen primitieve waarden hebben.
 
-## <a name="get-started-with-jobs-queries"></a>Aan de slag met taken query 's
+## <a name="get-started-with-jobs-queries"></a>Aan de slag met taken query's
 
-[Taken](iot-hub-devguide-jobs.md) bieden een manier voor het uitvoeren van bewerkingen voor sets met apparaten. Elke apparaatdubbel bevat de informatie van de taken die het onderdeel in een verzameling met de naam is **taken**.
+[Taken](iot-hub-devguide-jobs.md) bieden een manier om bewerkingen op sets apparaten uit te voeren. Elk apparaat bevat de gegevens van de taken waarvan het deel uitmaakt in een verzameling met de naam **taken**.
 
 ```json
 {
@@ -270,25 +270,25 @@ Op dit moment vergelijkingen bijvoorbeeld alleen tussen primitieve typen (geen o
 }
 ```
 
-Deze verzameling is momenteel waarin u kunt zoeken als **devices.jobs** in de IoT Hub-querytaal.
+Op dit moment kan deze verzameling worden opgevraagd als **devices.Jobs** in de query taal IOT hub.
 
 > [!IMPORTANT]
-> Op dit moment wordt de eigenschap taken nooit geretourneerd bij het opvragen van apparaatdubbels. Dat wil zeggen, de query's die bevatten ' apparaten'. De eigenschap taken alleen kan worden geopend rechtstreeks met query's met behulp van `FROM devices.jobs`.
+> Op dit moment wordt de eigenschap Jobs nooit geretourneerd tijdens het opvragen van de apparaatdubbels van het apparaat. Dat wil zeggen query's die ' van apparaten ' bevatten. De eigenschap Jobs kan alleen rechtstreeks worden geopend met query's met behulp van `FROM devices.jobs`.
 >
 >
 
-Bijvoorbeeld, als u alle taken (afgelopen en geplande) die invloed hebben op één apparaat, kunt u de volgende query uit:
+Als u bijvoorbeeld alle taken wilt ophalen (in het verleden en gepland) die van invloed zijn op één apparaat, kunt u de volgende query gebruiken:
 
 ```sql
 SELECT * FROM devices.jobs
   WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
-Houd er rekening mee hoe deze query geeft de status van de apparaat-specifieke (en eventueel ook het antwoord van de directe methode) van elke taak die wordt geretourneerd.
+Houd er rekening mee dat deze query de apparaatspecifieke status (en mogelijk het antwoord van de directe methode) van elke geretourneerde taak levert.
 
-Het is ook mogelijk om te filteren met willekeurig Booleaanse voorwaarden op alle eigenschappen van het object in de **devices.jobs** verzameling.
+Het is ook mogelijk om te filteren met wille keurige Booleaanse voor waarden voor alle object eigenschappen in de **devices.Jobs** -verzameling.
 
-Bijvoorbeeld, om op te halen van alle voltooide device twin update taken die na September 2016 zijn gemaakt voor een specifiek apparaat, gebruikt u de volgende query uit:
+Als u bijvoorbeeld alle voltooide dubbele update taken van het apparaat wilt ophalen die na september 2016 zijn gemaakt voor een specifiek apparaat, gebruikt u de volgende query:
 
 ```sql
 SELECT * FROM devices.jobs
@@ -298,7 +298,7 @@ SELECT * FROM devices.jobs
     AND devices.jobs.createdTimeUtc > '2016-09-01'
 ```
 
-U kunt ook de resultaten per apparaat van een enkele taak ophalen.
+U kunt ook de uitkomsten per apparaat van één taak ophalen.
 
 ```sql
 SELECT * FROM devices.jobs
@@ -307,15 +307,15 @@ SELECT * FROM devices.jobs
 
 ### <a name="limitations"></a>Beperkingen
 
-Op dit moment een query uitgevoerd op **devices.jobs** bieden geen ondersteuning voor:
+Op dit moment bieden query's op **devices.Jobs** geen ondersteuning voor:
 
-* Projecties, daarom alleen `SELECT *` is mogelijk.
-* De voorwaarden die naar de apparaatdubbel naast taakeigenschappen verwijzen (Zie de vorige sectie).
-* Uitvoeren van de aggregaties, zoals het aantal, gemiddelde, groeperen op.
+* Projecties, daarom is alleen `SELECT *` mogelijk.
+* Voor waarden die naast taak eigenschappen naar het apparaat verwijzen (Zie de voor gaande sectie).
+* Aggregaties uitvoeren, zoals Count, Gem, groeperen op.
 
-## <a name="basics-of-an-iot-hub-query"></a>Basisprincipes van een IoT Hub-query
+## <a name="basics-of-an-iot-hub-query"></a>Basis beginselen van een IoT Hub query
 
-Elke IoT Hub query bestaat van selecteren en van de EU, met optionele waar en GROUP BY-componenten. Elke query wordt uitgevoerd op een verzameling van JSON-documenten, bijvoorbeeld apparaatdubbels. De component FROM geeft aan dat de documentenverzameling om te worden herhaald op (**apparaten**, **devices.modules**, of **devices.jobs**). Het filter in de component WHERE wordt vervolgens toegepast. Met aggregaties, worden de resultaten van deze stap zijn gegroepeerd zoals opgegeven in de component GROUP BY. Voor elke groep een rij wordt gegenereerd zoals opgegeven in de component SELECT.
+Elke IoT Hub query bestaat uit componenten SELECT en FROM, met optionele WHERE-en GROUP BY-componenten. Elke query wordt uitgevoerd op een verzameling JSON-documenten, bijvoorbeeld apparaatdubbels. De component FROM geeft de document verzameling aan die moet worden herhaald (**apparaten**, **apparaten. modules**of **devices.Jobs**). Vervolgens wordt het filter in de component WHERE toegepast. Met aggregaties worden de resultaten van deze stap gegroepeerd zoals opgegeven in de component GROUP BY. Voor elke groep wordt een rij gegenereerd zoals is opgegeven in de component SELECT.
 
 ```sql
 SELECT <select_list>
@@ -326,20 +326,20 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM-component
 
-De **van < from_specification >** component kunt ervan uitgaan dat alleen voor de drie waarden: **VANAF apparaten** naar query apparaatdubbels, **van devices.modules** naar query moduledubbels, of **van devices.jobs** op query-taakdetails per apparaat.
+In de component **from < from_specification >** kunnen slechts drie waarden worden uitgesteld: **van apparaten** om een query uit te zoeken naar apparaatdubbels, **van apparaten. modules** tot het opvragen van module apparaatdubbels of **van devices.Jobs** voor het uitvoeren van een query op gegevens per apparaat.
 
 ## <a name="where-clause"></a>WHERE-component
 
-De **waarbij < filter_condition >** component is optioneel. Hiermee geeft u een of meer voorwaarden dat de JSON-in de verzameling van documenten moeten voldoen om te worden opgenomen als onderdeel van het resultaat. Elk JSON-document moet de opgegeven voorwaarden op "true" moet worden opgenomen in het resultaat opleveren.
+De component **WHERE < filter_condition >** is optioneel. Hiermee geeft u een of meer voor waarden op waaraan de JSON-documenten in de verzameling FROM moeten voldoen om te worden opgenomen als onderdeel van het resultaat. In elk JSON-document moet de opgegeven voor waarden worden geëvalueerd op ' True ' die in het resultaat moeten worden opgenomen.
 
-De toegestane voorwaarden worden beschreven in de sectie [expressies en voorwaarden](iot-hub-devguide-query-language.md#expressions-and-conditions).
+De toegestane voor waarden worden beschreven in sectie- [expressies en voor waarden](iot-hub-devguide-query-language.md#expressions-and-conditions).
 
 ## <a name="select-clause"></a>SELECT-component
 
-De **Selecteer < select_list >** is verplicht en Hiermee geeft u de waarden die worden opgehaald uit de query. Het geeft de JSON-waarden moet worden gebruikt voor het genereren van nieuwe JSON-objecten.
-De Projectiefase wordt voor elk element van de gefilterde (en eventueel gegroepeerde) subset van de verzameling van een nieuwe JSON-object gegenereerd. Dit object is gemaakt met de opgegeven waarden in de component SELECT.
+De **selectie < select_list >** is verplicht en geeft aan welke waarden worden opgehaald uit de query. Hiermee geeft u de JSON-waarden op die moeten worden gebruikt voor het genereren van nieuwe JSON-objecten.
+Voor elk element van de gefilterde (en eventueel gegroepeerde) subset van de verzameling FROM, genereert de projectie fase een nieuw JSON-object. Dit object wordt samengesteld met de waarden die zijn opgegeven in de component SELECT.
 
-Hieronder vindt u de grammatica van de component SELECT:
+Hieronder volgt de grammatica van de component SELECT:
 
 ```
 SELECT [TOP <max number>] <projection list>
@@ -361,15 +361,15 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**%{Attribute_name/** verwijst naar een eigenschap van het JSON-document in de verzameling van. Enkele voorbeelden van SELECT-component kunnen worden gevonden in de aan de slag met sectie apparaat apparaatdubbel-query's.
+**Attribute_name** verwijst naar een wille keurige eigenschap van het JSON-document in de from-verzameling. Een aantal voor beelden van SELECT-componenten vindt u in de sectie aan de slag met Device-dubbele query's.
 
-Op dit moment selectie van de EU anders dan **Selecteer*** worden alleen ondersteund in statistische query's op dubbele apparaten.
+Momenteel zijn selectie componenten anders dan **Select*** worden alleen ondersteund in statistische query's op apparaatdubbels van het apparaat.
 
 ## <a name="group-by-clause"></a>GROUP BY-component
 
-De **GROUP BY < group_specification >** component is een optionele stap die wordt uitgevoerd na het opgegeven in de WHERE-component en voordat de projectie Selecteer in het opgegeven filter. Deze groepen documenten op basis van de waarde van een kenmerk. Deze groepen worden gebruikt voor het genereren van geaggregeerde waarden die zijn opgegeven in de component SELECT.
+De component **GROUP BY < group_specification >** is een optionele stap die wordt uitgevoerd na het filter dat is opgegeven in de component WHERE en voordat de projectie is opgegeven in de SELECT. Er worden documenten gegroepeerd op basis van de waarde van een kenmerk. Deze groepen worden gebruikt voor het genereren van geaggregeerde waarden zoals opgegeven in de component SELECT.
 
-Een voorbeeld van een query met GROUP BY is:
+Een voor beeld van een query met GROUP BY is:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -387,22 +387,22 @@ GROUP BY <group_by_element>
     | < group_by_element > '.' attribute_name
 ```
 
-**%{Attribute_name/** verwijst naar een eigenschap van het JSON-document in de verzameling van.
+**Attribute_name** verwijst naar een wille keurige eigenschap van het JSON-document in de from-verzameling.
 
-De component GROUP BY is momenteel alleen ondersteund bij het opvragen van apparaatdubbels.
+De component GROUP BY wordt momenteel alleen ondersteund bij het opvragen van de apparaatdubbels van het apparaat.
 
 > [!IMPORTANT]
-> De term `group` op dit moment wordt beschouwd als een speciale sleutelwoord in query's. In het geval, gebruikt u `group` als de eigenschapsnaam van de, houd rekening met eromheen met dubbele vierkante haken om te voorkomen dat fouten, zoals `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`.
+> De term `group` wordt momenteel behandeld als een speciaal tref woord in query's. In het geval gebruikt u `group` als uw naam van uw eigenschap, kunt u deze omsluiten met dubbele haken om fouten te voor komen, zoals `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`.
 >
 
-## <a name="expressions-and-conditions"></a>Expressies en voorwaarden
+## <a name="expressions-and-conditions"></a>Expressies en voor waarden
 
-Op hoog niveau, een *expressie*:
+Een *expressie*op hoog niveau:
 
-* Resulteert in een exemplaar van een JSON-type (zoals een Booleaanse waarde, getal, tekenreeks, matrix of object).
-* Wordt gedefinieerd door het bewerken van gegevens die afkomstig zijn van het apparaat JSON-document en constanten met behulp van ingebouwde operatoren en functies.
+* Evalueert naar een exemplaar van een JSON-type (zoals Booleaans, getal, teken reeks, matrix of object).
+* Wordt gedefinieerd door gegevens te bewerken die afkomstig zijn van het JSON-document van het apparaat en constanten die gebruikmaken van ingebouwde Opera tors en functies.
 
-*Voorwaarden* expressies die worden geëvalueerd tot een Booleaanse waarde zijn. Een constante anders dan de Booleaanse waarde **waar** wordt beschouwd als **false**. Deze regel bevat **null**, **niet-gedefinieerde**, een object of een matrix-exemplaar, een willekeurige tekenreeks en de Booleaanse waarde **false**.
+*Voor waarden* zijn expressies die resulteren in een Booleaanse waarde. Een constante die afwijkt van de Booleaanse **waarde True** , wordt als **Onwaar**beschouwd. Deze regel bevat **Null**, **ongedefinieerd**, een wille keurig object of matrix exemplaar, een wille keurige teken reeks en de Booleaanse waarde **False**.
 
 De syntaxis voor expressies is:
 
@@ -432,22 +432,22 @@ De syntaxis voor expressies is:
 <array_constant> ::= '[' <constant> [, <constant>]+ ']'
 ```
 
-Om te begrijpen wat elke symbool in de syntaxis van de expressies voor staat, raadpleegt u de volgende tabel:
+Raadpleeg de volgende tabel om te begrijpen wat elk symbool in de syntaxis van expressies voor staat:
 
-| Symbool | Definitie |
+| Valuta | Definitie |
 | --- | --- |
-| %{attribute_name/ | Een eigenschap van het JSON-document in de **FROM** verzameling. |
-| binary_operator | Een binaire operator die worden vermeld in de [Operators](#operators) sectie. |
-| functie_naam| Een functie die worden vermeld in de [functies](#functions) sectie. |
-| decimal_literal |Een float-waarde, uitgedrukt in decimale notatie. |
-| hexadecimal_literal |Een getal dat wordt uitgedrukt in de tekenreeks '0 x' gevolgd door een reeks van hexadecimale cijfers. |
-| string_literal |Letterlijke tekenreeks zijn vertegenwoordigd door een reeks van nul of meer Unicode-tekens of escapereeksen Unicode-tekenreeksen. Letterlijke tekenreeks zijn ingesloten in enkele aanhalingstekens of dubbele aanhalingstekens. Hiermee heft toegestaan: `\'`, `\"`, `\\`, `\uXXXX` voor Unicode-tekens die zijn gedefinieerd door 4 hexadecimale cijfers. |
+| attribute_name | Elke eigenschap van het JSON-document in de **from** -verzameling. |
+| binary_operator | Een binaire operator die wordt weer gegeven in de sectie [Opera tors](#operators) . |
+| function_name| Een functie die wordt weer gegeven in de sectie [functies](#functions) . |
+| decimal_literal |Een float, uitgedrukt in een decimale notatie. |
+| hexadecimal_literal |Een getal uitgedrukt in de teken reeks ' 0x ' gevolgd door een teken reeks van hexadecimale cijfers. |
+| string_literal |Letterlijke tekenreeks zijn vertegenwoordigd door een reeks van nul of meer Unicode-tekens of escapereeksen Unicode-tekenreeksen. Letterlijke teken reeksen worden tussen enkele aanhalings tekens of dubbele aanhalings tekens geplaatst. Toegestane Escapes: `\'`, `\"`, `\\`, `\uXXXX` voor Unicode-tekens die worden gedefinieerd door 4 hexadecimale cijfers. |
 
 ### <a name="operators"></a>Operators
 
-De volgende operators worden ondersteund:
+De volgende Opera tors worden ondersteund:
 
-| Familie | Operators |
+| Gezin | Operators |
 | --- | --- |
 | Rekenkundig |+, -, *, /, % |
 | Logisch |EN, OF, NIET |
@@ -455,53 +455,53 @@ De volgende operators worden ondersteund:
 
 ### <a name="functions"></a>Functions
 
-Bij het opvragen van dubbels en taken die de enige ondersteunde is functie:
+Bij het uitvoeren van een query op apparaatdubbels en Jobs is de enige ondersteunde functie:
 
-| Function | Description |
+| Functie | Beschrijving |
 | -------- | ----------- |
-| IS_DEFINED(Property) | Retourneert een Booleaanse waarde waarmee wordt aangegeven als de eigenschap een waarde is toegewezen (met inbegrip van `null`). |
+| IS_DEFINED (eigenschap) | Retourneert een Booleaanse waarde die aangeeft of aan de eigenschap is toegewezen (inclusief `null`). |
 
-In situaties, routes, worden de volgende wiskundige functies ondersteund:
+In routes voor waarden worden de volgende wiskundige functies ondersteund:
 
-| Function | Description |
+| Functie | Beschrijving |
 | -------- | ----------- |
 | ABS(x) | Retourneert de absolute (positieve) waarde van de opgegeven numerieke expressie. |
 | EXP(x) | Retourneert de exponentiële waarde van de opgegeven numerieke expressie (e ^ x). |
-| Power(x,y) | Retourneert de waarde van de opgegeven expressie voor de opgegeven macht (x ^ y).|
-| Square(x) | Retourneert het kwadraat van de opgegeven numerieke waarde. |
-| CEILING(x) | Retourneert het kleinste gehele getal dat groter is dan of gelijk is aan de opgegeven numerieke expressie. |
+| VERMOGEN (x, y) | Retourneert de waarde van de opgegeven expressie naar de opgegeven macht (x ^ y).|
+| VIER kant (x) | Retourneert het kwadraat van de opgegeven numerieke waarde. |
+| PLAFOND (x) | Retourneert het kleinste gehele getal dat groter is dan of gelijk is aan de opgegeven numerieke expressie. |
 | FLOOR(x) | Retourneert het grootste gehele getal dat kleiner is dan of gelijk is aan de opgegeven numerieke expressie. |
-| Sign(x) | Retourneert de positief (+ 1), nul (0) of minteken (-1) van de opgegeven numerieke expressie.|
-| WORTEL(x) | Retourneert de vierkantswortel van de opgegeven numerieke waarde. |
+| TEKEN (x) | Retourneert de positief (+ 1), nul (0) of minteken (-1) van de opgegeven numerieke expressie.|
+| SQRT (x) | Retourneert de vierkantswortel van de opgegeven numerieke waarde. |
 
-In situaties, routes, worden de volgende controle van het type en de casten functies ondersteund:
+In routes-voor waarden worden de volgende typen controleren en casting ondersteund:
 
-| Function | Description |
+| Functie | Beschrijving |
 | -------- | ----------- |
-| AS_NUMBER | De invoertekenreeks converteert naar een getal. `noop` Als de invoer een getal is. `Undefined` als tekenreeks niet voor een getal staat.|
+| AS_NUMBER | Converteert de invoer teken reeks naar een getal. `noop` als de invoer een getal is; `Undefined` als de teken reeks geen getal voor stelt.|
 | IS_ARRAY | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een matrix is. |
 | IS_BOOL | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een Booleaanse waarde is. |
 | IS_DEFINED | Retourneert een Booleaanse waarde die aangeeft of aan de eigenschap een waarde is toegewezen. |
 | IS_NULL | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie null is. |
 | IS_NUMBER | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een getal is. |
 | IS_OBJECT | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een JSON-object is. |
-| IS_PRIMITIVE | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een primitieve nemen is (tekenreeks, Boole-waarde, numerieke, of `null`). |
+| IS_PRIMITIVE | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een primitieve is (teken reeks, Booleaans, numeriek of `null`). |
 | IS_STRING | Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een tekenreeks is. |
 
-In situaties, routes, worden de volgende reeks functies ondersteund:
+In routes-voor waarden worden de volgende teken reeks functies ondersteund:
 
-| Function | Description |
+| Functie | Beschrijving |
 | -------- | ----------- |
-| CONCAT (x, y,...) | Retourneert een tekenreeks die het resultaat is van het samenvoegen van twee of meer tekenreekswaarden. |
-| LENGTH(x) | Retourneert het aantal tekens van de opgegeven tekenreeksexpressie.|
-| LOWER(x) | Retourneert een tekenreeksexpressie na het converteren van tekens in hoofdletters naar kleine letters. |
-| UPPER(x) | Retourneert een tekenreeksexpressie na het converteren van tekens in kleine letters naar hoofdletters. |
-| De SUBTEKENREEKS (tekenreeks, start [, lengte]) | Onderdeel van een tekenreeksexpressie vanaf de op nul gebaseerde positie van het opgegeven teken geretourneerd en blijft aan de opgegeven lengte of aan het einde van de tekenreeks. |
-| INDEX_OF(string, fragment) | Retourneert de beginpositie van het eerste exemplaar van de tweede tekenreeksexpressie binnen de eerste opgegeven tekenreeksexpressie, of -1 als de tekenreeks niet is gevonden.|
+| CONCAt (x, y,...) | Retourneert een tekenreeks die het resultaat is van het samenvoegen van twee of meer tekenreekswaarden. |
+| LENGTE (x) | Retourneert het aantal tekens van de opgegeven tekenreeksexpressie.|
+| LAGER (x) | Retourneert een tekenreeksexpressie na het converteren van tekens in hoofdletters naar kleine letters. |
+| UPPER (x) | Retourneert een tekenreeksexpressie na het converteren van tekens in kleine letters naar hoofdletters. |
+| Subtekenreeks (teken reeks, begin [, lengte]) | Onderdeel van een tekenreeksexpressie vanaf de op nul gebaseerde positie van het opgegeven teken geretourneerd en blijft aan de opgegeven lengte of aan het einde van de tekenreeks. |
+| INDEX_OF (teken reeks, fragment) | Retourneert de beginpositie van het eerste exemplaar van de tweede tekenreeksexpressie binnen de eerste opgegeven tekenreeksexpressie, of -1 als de tekenreeks niet is gevonden.|
 | STARTS_WITH (x, y) | Retourneert een Booleaanse waarde die aangeeft of de eerste expressie tekenreeks begint met de tweede. |
 | ENDS_WITH (x, y) | Retourneert een Booleaanse waarde die aangeeft of de eerste expressie tekenreeks eindigt met de tweede. |
-| CONTAINS(x,y) | Retourneert een Booleaanse waarde die aangeeft of de eerste tekenreeksexpressie de tweede bevat. |
+| BEVAT (x, y) | Retourneert een Booleaanse waarde die aangeeft of de eerste tekenreeksexpressie de tweede bevat. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het uitvoeren van query's in uw apps met behulp van [Azure IoT SDK's](iot-hub-devguide-sdks.md).
+Meer informatie over het uitvoeren van query's in uw apps met behulp van [Azure IOT sdk's](iot-hub-devguide-sdks.md).
