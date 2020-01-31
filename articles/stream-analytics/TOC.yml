@@ -65,6 +65,7 @@
       items:
         - name: Streaming-eenheden begrijpen en aanpassen
           href: stream-analytics-streaming-unit-consumption.md
+          displayName: 'scale, performance'
         - name: Queryprestaties verbeteren
           href: stream-analytics-parallelization.md
         - name: Uw invoer opnieuw partitioneren

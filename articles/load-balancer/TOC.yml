@@ -28,12 +28,6 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Doorsturen via poort configureren in Load Balancer
       href: tutorial-load-balancer-port-forwarding-portal.md
-- name: Voorbeelden
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: Concepten
   items:
     - name: Onderdelen en beperkingen
@@ -50,8 +44,6 @@
           href: load-balancer-query-metrics-rest-api.md
     - name: Poorten met hoge beschikbaarheid
       href: load-balancer-ha-ports-overview.md
-    - name: IPv6-ondersteuning
-      href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-overview'
     - name: Meerdere frontends
       href: load-balancer-multivip-overview.md
     - name: Uitgaande verbindingen
@@ -68,10 +60,6 @@
   items:
     - name: Een openbare load balancer upgraden van het type Basic naar het type Standard
       href: upgrade-basic-standard.md
-    - name: Taken over VM's in meerdere beschikbaarheidszones verdelen (CLI)
-      href: load-balancer-standard-public-zone-redundant-cli.md
-    - name: Taken over VM's binnen een zone verdelen (CLI)
-      href: load-balancer-standard-public-zonal-cli.md
     - name: Regels voor uitgaand verkeer configureren
       items:
         - name: Azure CLI
@@ -121,6 +109,12 @@
       items:
         - name: Problemen met Azure Load Balancer oplossen
           href: load-balancer-troubleshoot.md
+- name: Voorbeelden
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Naslaginformatie
   items:
     - name: Codevoorbeelden

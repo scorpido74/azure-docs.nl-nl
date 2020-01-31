@@ -4,9 +4,9 @@ title: Documentatie voor Azure App Configuration (preview)
 metadata:
   title: 'Documentatie voor Azure App Configuration - zelfstudies, API-verwijzing'
   description: Azure App Configuration is een beheerde service waarmee ontwikkelaars hun toepassings- en functie-instellingen eenvoudig en veilig kunnen centraliseren.
-  author: yegu-ms
+  author: lisaguthrie
   manager: maiye
-  ms.author: yegu
+  ms.author: lcozzens
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 04/19/2019
