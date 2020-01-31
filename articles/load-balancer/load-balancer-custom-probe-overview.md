@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ffb9480508366b223e49f173df3dc76cb711116d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690393"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769177"
 ---
 # <a name="load-balancer-health-probes"></a>Status van Load Balancer testen
 
@@ -200,7 +200,7 @@ Load Balancer is een Pass Through-service (er worden geen TCP-verbindingen beëi
 
 UDP-data grammen worden afgeleverd aan goede back-end-eind punten.
 
-UDP is zonder verbinding en er is geen flow-status voor UDP bijgehouden. Als de status test van een back-end-eind punt mislukt, kunnen de bestaande UDP-stromen worden verplaatst naar een ander ongezonde exemplaar in de back-end-pool.
+UDP is zonder verbinding en er is geen flow-status voor UDP bijgehouden. Als de status test van een back-end-eind punt mislukt, worden bestaande UDP-stromen verplaatst naar een ander onbeschadigde exemplaar in de back-endserver.
 
 Als alle tests voor alle exemplaren in een back-endpool mislukken, worden bestaande UDP-stromen worden beëindigd voor Basic en Standard Load Balancers.
 

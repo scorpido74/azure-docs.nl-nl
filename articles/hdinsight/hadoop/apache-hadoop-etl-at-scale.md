@@ -2,18 +2,18 @@
 title: ETL uitpakken, transformeren en laden op schaal-Azure HDInsight
 description: Ontdek hoe extra heren, transformeren en laden worden gebruikt in HDInsight met Apache Hadoop.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.author: ashishth
-ms.openlocfilehash: ceafee2d3356d37e74039789c8243ace41c141b2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: hdinsightactive
+ms.date: 01/27/2020
+ms.openlocfilehash: f2c18a1e858fcebf8d2c82210f2290cf4a14d061
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435776"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846010"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>(ETL) uitpakken, transformeren en laden op schaal
 
@@ -51,7 +51,7 @@ Raadpleeg de [documentatie](../../data-factory/introduction.md)voor meer informa
 
 ## <a name="ingest-file-storage-and-result-storage"></a>Bestands opslag en resultaat opslag opnemen
 
-Brongegevens bestanden worden meestal geladen op een locatie in Azure Storage of Azure Data Lake Storage. Bestanden kunnen een wille keurige indeling hebben, maar meestal zijn platte bestanden zoals Csv's.
+Brongegevens bestanden worden meestal geladen op een locatie in Azure Storage of Azure Data Lake Storage. Bestanden kunnen een wille keurige indeling hebben, maar meestal zijn platte bestanden, zoals Csv's.
 
 ### <a name="azure-storage"></a>Azure Storage
 
@@ -85,13 +85,13 @@ Voor het uploaden van gegevens sets in het terabyte-bereik kan de netwerk latent
 
 Azure SQL DW is een uitstekende keuze voor het opslaan van gereinigde en voor bereide resultaten voor toekomstige analyses.  Azure HDInsight kan worden gebruikt om deze services uit te voeren voor Azure SQL DW.
 
-Azure SQL Data Warehouse (SQL DW) is een relationele database opslag dat is geoptimaliseerd voor analytische werk belastingen.  Azure SQL DW kan worden geschaald op basis van gepartitioneerde tabellen.  Tabellen kunnen worden gepartitioneerd op meerdere knoop punten.  Knoop punten van Azure SQL DW worden geselecteerd op het moment van maken.  Ze kunnen worden geschaald na het feit, maar dat is een actief proces waarvoor gegevens verplaatsing nodig is. Zie [SQL Data Warehouse-Compute beheren](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) voor meer informatie.
+Azure SQL Data Warehouse (SQL DW) is een relationele database opslag dat is geoptimaliseerd voor analytische werk belastingen.  Azure SQL DW kan worden geschaald op basis van gepartitioneerde tabellen.  Tabellen kunnen worden gepartitioneerd op meerdere knoop punten.  Knoop punten van Azure SQL DW worden geselecteerd op het moment van maken.  Ze kunnen worden geschaald na het feit, maar dat is een actief proces waarvoor gegevens verplaatsing nodig is. Zie [SQL Data Warehouse-Compute beheren](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)voor meer informatie.
 
 ### <a name="apache-hbase"></a>Apache HBase
 
 Apache HBase is een sleutel waarde-archief dat beschikbaar is in azure HDInsight.  Apache HBase is een open-source NoSQL-database die is gebaseerd op Hadoop en die is gemodelleerd naar Google BigTable. HBase biedt wille keurige toegang en sterke consistentie voor grote hoeveel heden ongestructureerde en semigestructureerde gegevens in een schemaloze data base, geordend op kolom families.
 
-De gegevens worden opgeslagen in de rijen van een tabel en de gegevens in een rij worden gegroepeerd op basis van de kolomfamilie. HBase is een database zonder schema in de zin dat zowel de kolommen als het type gegevens dat hierin wordt opgeslagen niet hoeven te worden gedefinieerd voordat u ze kunt gebruiken. De open-source code wordt lineair geschaald om petabytes aan gegevens op duizenden knooppunten te verwerken. HBase kan afhankelijk zijn van gegevens redundantie, batch verwerking en andere functies die worden geleverd door gedistribueerde toepassingen in het Hadoop-ecosysteem.   
+De gegevens worden opgeslagen in de rijen van een tabel en de gegevens in een rij worden gegroepeerd op basis van de kolomfamilie. HBase is een database zonder schema in de zin dat zowel de kolommen als het type gegevens dat hierin wordt opgeslagen niet hoeven te worden gedefinieerd voordat u ze kunt gebruiken. De open-source code wordt lineair geschaald om petabytes aan gegevens op duizenden knooppunten te verwerken. HBase kan afhankelijk zijn van gegevens redundantie, batch verwerking en andere functies die worden geleverd door gedistribueerde toepassingen in het Hadoop-ecosysteem.
 
 HBase is een uitstekende bestemming voor sensor-en logboek gegevens voor toekomstige analyse.
 
@@ -107,7 +107,7 @@ Azure biedt drie verschillende relationele data bases als platform-as-a-Service 
 
 Deze producten worden omhoog geschaald, wat betekent dat ze worden geschaald door meer CPU en geheugen toe te voegen.  U kunt er ook voor kiezen om Premium-schijven met de producten te gebruiken voor betere I/O-prestaties.
 
-## <a name="azure-analysis-services"></a>Azure Analysis Services 
+## <a name="azure-analysis-services"></a>Azure Analysis Services
 
 Azure Analysis Services (AAS) is een analytische gegevens engine die wordt gebruikt in de besluit ondersteuning en Business Analytics, waarmee de analytische gegevens voor zakelijke rapporten en client toepassingen zoals Power BI, Excel, Reporting Services-rapporten en andere gegevens worden verstrekt. visualisatie hulpprogramma's.
 
@@ -115,11 +115,11 @@ Analyse kubussen kunnen worden geschaald door de lagen voor elke afzonderlijke k
 
 ## <a name="extract-and-load"></a>Uitpakken en laden
 
-Zodra de gegevens aanwezig zijn in azure, kunt u veel services gebruiken om deze te extra heren en te laden in andere producten.  HDInsight ondersteunt Sqoop en Flume. 
+Zodra de gegevens aanwezig zijn in azure, kunt u veel services gebruiken om deze te extra heren en te laden in andere producten.  HDInsight ondersteunt Sqoop en Flume.
 
 ### <a name="apache-sqoop"></a>Apache Sqoop
 
-Apache Sqoop is een hulp programma dat is ontworpen voor het efficiënt overbrengen van gegevens tussen gestructureerde, semi-gestructureerde en ongestructureerde gegevens bronnen. 
+Apache Sqoop is een hulp programma dat is ontworpen voor het efficiënt overbrengen van gegevens tussen gestructureerde, semi-gestructureerde en ongestructureerde gegevens bronnen.
 
 Sqoop maakt gebruik van MapReduce voor het importeren en exporteren van de gegevens, om parallelle bewerkingen en fout tolerantie mogelijk te maken.
 
@@ -131,10 +131,10 @@ Apache Flume kan niet worden gebruikt met Azure HDInsight.  Een on-premises Hado
 
 ## <a name="transform"></a>Transformeren
 
-Zodra de gegevens op de gekozen locatie aanwezig zijn, moet u deze opschonen, combi neren of voorbereiden voor een specifiek gebruiks patroon.  Hive-, Pig-en Spark SQL zijn allemaal een goede keuze voor dat soort werk.  Ze worden allemaal ondersteund op HDInsight. 
+Zodra de gegevens op de gekozen locatie aanwezig zijn, moet u deze opschonen, combi neren of voorbereiden voor een specifiek gebruiks patroon.  Hive-, Pig-en Spark SQL zijn allemaal een goede keuze voor dat soort werk.  Ze worden allemaal ondersteund op HDInsight.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Apache Pig gebruiken met Apache Hadoop op HDInsight](hdinsight-use-pig.md)
-* [Apache Hive als ETL-hulp programma gebruiken](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
+* [Apache Hive als ETL-hulp programma gebruiken](apache-hadoop-using-apache-hive-as-an-etl-tool.md)
 * [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Gegevens verplaatsen van Azure SQL Database naar Apache Hive tabel](./apache-hadoop-use-sqoop-mac-linux.md)

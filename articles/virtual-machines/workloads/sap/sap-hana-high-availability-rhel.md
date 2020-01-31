@@ -3,21 +3,21 @@ title: SAP HANA systeem replicatie op virtuele machines van Azure (Vm's) instell
 description: Breng hoge Beschik baarheid van SAP HANA op virtuele machines van Azure (Vm's).
 services: virtual-machines-linux
 documentationcenter: ''
-author: MSSedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: 62bb00c05359682503d2e99ef282f2523871147d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 01/28/2020
+ms.author: radeltch
+ms.openlocfilehash: fe4c3d8ea7aee0922ca29b9c0f475bfd9fa3c67a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721536"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837031"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op Red Hat Enterprise Linux
 
@@ -108,7 +108,7 @@ Voer de volgende stappen uit om de sjabloon te implementeren:
     * **SAP-systeem grootte**: Voer het aantal sap's in dat het nieuwe systeem moet bieden. Als u niet zeker weet hoeveel SAP'S het systeem nodig heeft, vraagt u uw SAP-technologie partner of systeem integrator.
     * **Systeem beschikbaarheid**: Selecteer **ha**.
     * **Beheerders naam, beheerders wachtwoord of SSH-sleutel**: er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
-    * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID is doorgaans hetzelfde als **/subscriptions/\<abonnement-id >/resourceGroups/\<resource groeps naam >/providers/Microsoft.Network/virtualNetworks/\<naam van het virtuele netwerk >/subnets/\<naam van het subnet >** . Laat dit leeg als u een nieuw virtueel netwerk wilt maken
+    * **Subnet-id**: als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de id van het specifieke subnet benoemen. De ID lijkt doorgaans op **/subscriptions/\<abonnement-id >/resourceGroups/\<resource groeps naam >/providers/Microsoft.Network/virtualNetworks/\<naam van het virtuele netwerk >/subnets/\<naam**van het subnet >. Laat dit leeg als u een nieuw virtueel netwerk wilt maken
 
 ### <a name="manual-deployment"></a>Hand matige implementatie
 
@@ -560,14 +560,21 @@ Maak vervolgens de HANA-topologie. Voer de volgende opdrachten uit op een van de
 <pre><code>sudo pcs property set maintenance-mode=true
 
 # Replace the bold string with your instance number and HANA system ID
-sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> --clone clone-max=2 clone-node-max=1 interleave=true
+sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> \
+op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600 \
+--clone clone-max=2 clone-node-max=1 interleave=true
 </code></pre>
 
 Maak vervolgens de HANA-resources:
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
 
-sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false master notify=true clone-max=2 clone-node-max=1 interleave=true
+sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
+op start timeout=3600 op stop timeout=3600 \
+op monitor interval=61 role="Slave" timeout=700 \
+op monitor interval=59 role="Master" timeout=700 \
+op promote timeout=3600 op demote timeout=3600 \
+master notify=true clone-max=2 clone-node-max=1 interleave=true
 
 sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
 
@@ -583,6 +590,9 @@ sudo pcs property set maintenance-mode=false
 </code></pre>
 
 Zorg ervoor dat de cluster status OK is en dat alle resources worden gestart. Het is niet belang rijk op welke knoop punten de resources worden uitgevoerd.
+
+> [!NOTE]
+> De time-outs in de bovenstaande configuratie zijn slechts voor beelden en moeten mogelijk worden aangepast aan de specifieke HANA-instellingen. Het is bijvoorbeeld mogelijk dat u de time-out voor starten moet verhogen als u de SAP HANA data base langer wilt starten.  
 
 <pre><code>sudo pcs status
 
