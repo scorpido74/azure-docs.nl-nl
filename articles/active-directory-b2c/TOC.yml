@@ -382,6 +382,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
     - name: Cookiedefinities
       href: cookie-definitions.md
+      displayName: 'cookies, SameSite'
     - name: Foutcodes
       href: error-codes.md
     - name: Regionale beschikbaarheid en opslaglocaties
