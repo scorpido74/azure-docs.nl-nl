@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl-knoop punt
 description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het beheren van cluster knooppunten.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 43b242d6c7c41b6198b8f909ab5ae056f0982307
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5881e6485003abd4fd23a7f6d06a428e768c00fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645290"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905876"
 ---
 # <a name="sfctl-node"></a>sfctl node
 De knoop punten beheren die een cluster vormen.
@@ -19,17 +19,44 @@ De knoop punten beheren die een cluster vormen.
 
 |Opdracht|Beschrijving|
 | --- | --- |
-| Uitschakelen | Deactiveer een Service Fabric cluster knooppunt met de opgegeven deactiveren-intentie. |
-| inschakelen | Activeer een Service Fabric cluster knooppunt dat momenteel is gedeactiveerd. |
+| add-Configuration-para meter-onderdrukkingen | Hiermee wordt de lijst met overschrijvingen van de configuratie toegevoegd aan het opgegeven knoop punt. |
+| scha | Deactiveer een Service Fabric cluster knooppunt met de opgegeven deactiveren-intentie. |
+| kunt | Activeer een Service Fabric cluster knooppunt dat momenteel is gedeactiveerd. |
+| ophalen-configuratie-onderdrukkingen | Hiermee haalt u de lijst met configuratie-onderdrukkingen op het opgegeven knoop punt op. |
 | gezondheidszorg | Hiermee wordt de status van een Service Fabric knoop punt opgehaald. |
 | info | Hiermee wordt de informatie opgehaald over een specifiek knoop punt in het Service Fabric cluster. |
 | list | Hiermee haalt u de lijst met knoop punten in het Service Fabric-cluster op. |
 | laden | Hiermee worden de gegevens van een Service Fabric knoop punt geladen. |
+| verwijderen-configuratie-onderdrukkingen | Hiermee verwijdert u de configuratie onderdrukkingen op het opgegeven knoop punt. |
 | Verwijder status | Hiermee wordt Service Fabric dat de persistente status op een knoop punt permanent is verwijderd of verloren is gegaan. |
 | report-health | Hiermee verzendt u een status rapport op het knoop punt Service Fabric. |
 | restart | Hiermee wordt een Service Fabric cluster knooppunt opnieuw opgestart. |
 | geschakeld | Hiermee wordt een cluster knooppunt gestart of gestopt. |
 | overgang-status | Hiermee wordt de voortgang opgehaald van een bewerking die is gestart met StartNodeTransition. |
+
+## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl-knooppunt toevoegen-configuratie-para meter-onderdrukkingen
+Hiermee wordt de lijst met overschrijvingen van de configuratie toegevoegd aan het opgegeven knoop punt.
+
+Met deze API kunnen alle bestaande configuratie onderdrukkingen op het opgegeven knoop punt worden toegevoegd.
+
+### <a name="arguments"></a>Argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --config-para meter-override-lijst [vereist] | Beschrijving voor het toevoegen van een lijst met configuratie-onderdrukkingen. |
+| --node-name [required] | De naam van het knoop punt. |
+| --forceren | Het toevoegen van configuratie-onderdrukkingen op opgegeven knoop punten forceren. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
+
+### <a name="global-arguments"></a>Algemene argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
 ## <a name="sfctl-node-disable"></a>sfctl-knoop punt uitschakelen
 Deactiveer een Service Fabric cluster knooppunt met de opgegeven deactiveren-intentie.
@@ -58,6 +85,28 @@ Deactiveer een Service Fabric cluster knooppunt met de opgegeven deactiveren-int
 Activeer een Service Fabric cluster knooppunt dat momenteel is gedeactiveerd.
 
 Hiermee activeert u een Service Fabric cluster knooppunt dat momenteel is gedeactiveerd. Wanneer het knoop punt eenmaal is geactiveerd, wordt het opnieuw een levensvatbaar doel om nieuwe replica's te plaatsen en worden gedeactiveerde replica's op het knoop punt opnieuw geactiveerd.
+
+### <a name="arguments"></a>Argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --node-name [required] | De naam van het knoop punt. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
+
+### <a name="global-arguments"></a>Algemene argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
+
+## <a name="sfctl-node-get-configuration-overrides"></a>Get-configuratie van sfctl-knoop punt-onderdrukkingen
+Hiermee haalt u de lijst met configuratie-onderdrukkingen op het opgegeven knoop punt op.
+
+Met deze API kunnen alle bestaande configuratie onderdrukkingen op het opgegeven knoop punt worden opgehaald.
 
 ### <a name="arguments"></a>Argumenten
 
@@ -167,10 +216,32 @@ Hiermee haalt u de gegevens van de belasting van een Service Fabric knoop punt o
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
 | --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
 
+## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl-knoop punt Remove-configuratie-onderdrukkingen
+Hiermee verwijdert u de configuratie onderdrukkingen op het opgegeven knoop punt.
+
+Met deze API kunnen alle bestaande configuratie onderdrukkingen op het opgegeven knoop punt worden verwijderd.
+
+### <a name="arguments"></a>Argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --node-name [required] | De naam van het knoop punt. |
+| --time-out-t | De time-out van de server voor het uitvoeren van de bewerking in enkele seconden. Met deze time-out geeft u de tijds duur op die de client nodig heeft om te wachten tot de aangevraagde bewerking is voltooid. De standaard waarde voor deze para meter is 60 seconden.  Standaard\: 60. |
+
+### <a name="global-arguments"></a>Algemene argumenten
+
+|Argument|Beschrijving|
+| --- | --- |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --Help-h | Dit Help-bericht weer geven en afsluiten. |
+| --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
+| --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |
+| --verbose | Uitgebreide logboek registratie verhogen. Gebruik--debug voor volledige logboeken voor fout opsporing. |
+
 ## <a name="sfctl-node-remove-state"></a>status van sfctl-knoop punt verwijderen
 Hiermee wordt Service Fabric dat de persistente status op een knoop punt permanent is verwijderd of verloren is gegaan.
 
-Dit betekent dat het niet mogelijk is om de persistente status van het knoop punt te herstellen. Dit gebeurt doorgaans als een harde schijf schoon is gewist of als een harde schijf vastloopt. Het knoop punt moet actief zijn om deze bewerking te kunnen volt ooien. Met deze bewerking wordt Service Fabric weet dat de replica's op dat knoop punt niet meer bestaan en dat Service Fabric moet stoppen met wachten op de replica's om een back-up te maken. Voer deze cmdlet niet uit als de status op het knoop punt niet is verwijderd en er een back-up van het knoop punt kan worden gemaakt met de status intact. Ga vanaf Service Fabric 6,5 om deze API voor Seed-knoop punten te gebruiken, wijzig de Seed-knoop punten in normale (niet-Seed) knoop punten en roep deze API vervolgens aan om de knooppunt status te verwijderen. Als het cluster wordt uitgevoerd op Azure, probeert Service Fabric het Seed-knoop punt automatisch te wijzigen in een niet-Seed-knoop punt. Om dit te doen, moet u ervoor zorgen dat het aantal niet-Seed-knoop punten in het primaire knooppunt type niet kleiner is dan het aantal knoop punten in het lagere knoop punt. Indien nodig voegt u meer knoop punten toe aan het primaire knooppunt type om dit te doen. Als er voor een zelfstandig cluster niet wordt verwacht dat er een back-up wordt gemaakt van de status intact, verwijdert u het knoop punt uit het cluster, raadpleegt u HTTPS\://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes.
+Dit betekent dat het niet mogelijk is om de persistente status van het knoop punt te herstellen. Dit gebeurt doorgaans als een harde schijf schoon is gewist of als een harde schijf vastloopt. Het knoop punt moet actief zijn om deze bewerking te kunnen volt ooien. Met deze bewerking wordt Service Fabric weet dat de replica's op dat knoop punt niet meer bestaan en dat Service Fabric moet stoppen met wachten op de replica's om een back-up te maken. Voer deze cmdlet niet uit als de status op het knoop punt niet is verwijderd en er een back-up van het knoop punt kan worden gemaakt met de status intact. Ga vanaf Service Fabric 6,5 om deze API voor Seed-knoop punten te gebruiken, wijzig de Seed-knoop punten in normale (niet-Seed) knoop punten en roep deze API vervolgens aan om de knooppunt status te verwijderen. Als het cluster wordt uitgevoerd op Azure, probeert Service Fabric het Seed-knoop punt automatisch te wijzigen in een niet-Seed-knoop punt. Om dit te doen, moet u ervoor zorgen dat het aantal niet-Seed-knoop punten in het primaire knooppunt type niet kleiner is dan het aantal knoop punten in het lagere knoop punt. Indien nodig voegt u meer knoop punten toe aan het primaire knooppunt type om dit te doen. Als er voor een zelfstandig cluster niet wordt verwacht dat er een back-up wordt gemaakt van de status intact, verwijdert u het knoop punt uit het cluster, raadpleegt u HTTPS\://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes.
 
 ### <a name="arguments"></a>Argumenten
 
@@ -207,7 +278,7 @@ Hiermee wordt de status van het opgegeven Service Fabric knoop punt gerapporteer
 | --remove-when-expired | Waarde die aangeeft of het rapport wordt verwijderd uit Health Store wanneer het is verlopen. <br><br> Als deze eigenschap is ingesteld op True, wordt het rapport verwijderd uit de Health Store nadat het is verlopen. Als deze eigenschap is ingesteld op False, wordt het rapport als een fout beschouwd wanneer het is verlopen. De waarde van deze eigenschap is standaard onwaar. Wanneer clients periodiek een rapport rapporteren, moeten ze RemoveWhenExpired False instellen (standaard). Op deze manier heeft de rapporter problemen (bijvoorbeeld deadlock) en kan het rapport niet worden gerapporteerd. de entiteit wordt geëvalueerd als er een fout optreedt wanneer het status rapport verloopt. Hiermee wordt de entiteit gemarkeerd als de fout status. |
 | --Volg nummer | Het Volg nummer voor dit status rapport als een numerieke teken reeks. <br><br> Het Volg nummer van het rapport wordt door de Health Store gebruikt voor het detecteren van verouderde rapporten. Als u niets opgeeft, wordt er automatisch een Volg nummer gegenereerd door de Health-client wanneer een rapport wordt toegevoegd. |
 | --time-out-t | Standaard\: 60. |
-| --ttl | De duur waarvoor dit status rapport geldig is. Dit veld maakt gebruik van de ISO8601-indeling voor het opgeven van de duur. <br><br> Wanneer clients periodiek rapporteren, moeten ze rapporten met een hogere frequentie verzenden dan live. Als clients rapporteren over overgang, kunnen ze de tijd te Live instellen op oneindig. Wanneer time to Live verloopt, wordt de status gebeurtenis die de status informatie bevat verwijderd uit Health Store, als RemoveWhenExpired is ingesteld op True, of bij fout geëvalueerd als RemoveWhenExpired False is. Als u niets opgeeft, wordt de time-to-Live-waarde standaard ingesteld op oneindig. |
+| --ttl | De duur waarvoor dit status rapport geldig is. Dit veld maakt gebruik van de ISO8601-indeling voor het opgeven van de duur. <br><br> Wanneer clients periodiek rapporteren, moeten ze rapporten met een hogere frequentie verzenden dan live. Als clients rapporteren over overgang, kunnen ze de TTL-waarde (time to Live) instellen op oneindig. Wanneer time to Live verloopt, wordt de status gebeurtenis die de status informatie bevat verwijderd uit Health Store, als RemoveWhenExpired is ingesteld op True, of bij fout geëvalueerd als RemoveWhenExpired False is. Als u niets opgeeft, wordt de time-to-Live-waarde standaard ingesteld op oneindig. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 

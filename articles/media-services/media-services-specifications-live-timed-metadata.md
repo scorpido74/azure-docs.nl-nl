@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: e686328464ac88abf28a0a8985d338838abca3d0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 03b40dea4949bb50c30f7755b56294ac53107403
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514235"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905244"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Getimede meta gegevens in live streamen signalering 
 
@@ -249,7 +249,7 @@ De volgende sectie bevat de RTMP-' eenvoudige ' modus ' payload, die kan worden 
  
 #### <a name="example-mpeg-dash-manifest-output-when-using-adobe-rtmp-simple-mode"></a>Voor beeld van een MPEG DASH-manifest uitvoer bij het gebruik van de eenvoudige modus van Adobe RTMP
 
-Zie voor beeld [3.3.2.1 voor MPEG Dash. mpd EventStream met behulp van de eenvoudige modus van Adobe](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
+Zie voor beeld [3.3.2.1 MPEG Dash. mpd EventStream met behulp van de eenvoudige modus van Adobe](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
 
 Bekijk een voor beeld [van een 3.3.3.1-streepje-manifest met één periode en Adobe-eenvoudige modus](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals)
 
@@ -280,7 +280,7 @@ In dit scenario moet de volgende Payload worden verzonden vanuit het on-premises
 Zie de [sectie 3.3.3.2 voorbeeld streepje-manifest met SCTE-35](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
 
 #### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>Voor beeld van HLS manifest. M3U8 met het SCTE-35-modus signaal
-Zie [voor beeld van een 3.3.1.1-HLS-manifest met SCTE-35](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
+Zie de [sectie 3.2.1.1 voor beeld HLS-manifest met SCTE-35](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
 
 ## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>2.1.5 RTMP AD signalering met ' onCuePoint ' voor elementaire Live
 
@@ -421,7 +421,7 @@ De sparse track **moet** worden gedeclareerd in het manifest van de live-server 
 | parentTrackName    | Tekenreeks         | Verplicht      | **Moet** de naam zijn van het bovenliggende spoor, waarbij de tijd codes van de sparse track worden uitgelijnd. Het bovenliggende spoor kan geen sparse track zijn.                                                                             |
 | manifestOutput     | Booleaans        | Verplicht      | **Moet** ' True ' zijn, om aan te geven dat de sparse track wordt Inge sloten in het Smooth client-manifest.                                                                                                                        |
 | Subtype            | Tekenreeks         | Verplicht      | **Moet** de vier teken code ' data ' zijn.                                                                                                                                                                                  |
-| Schema             | Tekenreeks         | Verplicht      | **Moet** een urn of URL zijn die het bericht schema aangeeft. Voor [SCTE-35] berichten **moet** dit ' urn: SCTE: scte35:2013: bin ' zijn om berichten te verzenden naar HLS-, Smooth-en dash-clients in overeenstemming met [SCTE-35]. |
+| Niveaus             | Tekenreeks         | Verplicht      | **Moet** een urn of URL zijn die het bericht schema aangeeft. Voor [SCTE-35] berichten **moet** dit ' urn: SCTE: scte35:2013: bin ' zijn om berichten te verzenden naar HLS-, Smooth-en dash-clients in overeenstemming met [SCTE-35]. |
 | trackName          | Tekenreeks         | Verplicht      | **Moet** de naam van de sparse track zijn. De tracknaam kan worden gebruikt om meerdere gebeurtenis stromen te onderscheiden met hetzelfde schema. Elke unieke gebeurtenis stroom **moet** een unieke Track naam hebben.                                |
 | timescale          | Aantal         | Optioneel      | **Moet** de tijd schaal van het bovenliggende spoor zijn.                                                                                                                                                                               |
 
@@ -767,7 +767,7 @@ De "verouderde" EXT-X-CUE-tag wordt hieronder gedefinieerd en er kan ook normati
 | WMS                | teken reeks tussen aanhalings tekens                 | Verplicht                                  | Het bericht dat is gecodeerd als een base64-gecodeerde teken reeks, zoals beschreven in [RFC4648]. Voor [SCTE-35] berichten is dit de met base64 gecodeerde splice_info_section ().                                                                                                                                      |
 | TYPE               | teken reeks tussen aanhalings tekens                 | Verplicht                                  | Een URN of URL die het bericht schema aangeeft. Voor [SCTE-35]-berichten neemt het type de speciale waarde ' scte35 '.                                                                                                                                                                          |
 | Id                 | teken reeks tussen aanhalings tekens                 | Verplicht                                  | Een unieke id voor de gebeurtenis. Als de ID niet is opgegeven wanneer het bericht wordt opgenomen, wordt door Azure Media Services een unieke id gegenereerd.                                                                                                                                              |
-| DUUR           | decimaal getal met drijvende komma | Verplicht                                  | De duur van de gebeurtenis. Als dit onbekend is, **moet** de waarde 0 zijn. Eenheden zijn factional seconden.                                                                                                                                                                                           |
+| HEBBEN           | decimaal getal met drijvende komma | Verplicht                                  | De duur van de gebeurtenis. Als dit onbekend is, **moet** de waarde 0 zijn. Eenheden zijn factional seconden.                                                                                                                                                                                           |
 | VERSTREKEN            | decimaal getal met drijvende komma | Optioneel, maar vereist voor sliding window | Wanneer het signaal wordt herhaald ter ondersteuning van een schuif presentatie venster, **moet** dit veld de hoeveelheid presentatie tijd zijn die is verstreken sinds de gebeurtenis is gestart. Eenheden zijn fractie seconden. Deze waarde kan groter zijn dan de oorspronkelijke opgegeven duur van de Splice of het segment. |
 | TIME               | decimaal getal met drijvende komma | Verplicht                                  | De presentatie tijd van de gebeurtenis. Eenheden zijn fractie seconden.                                                                                                                                                                                                                        |
 
@@ -1170,7 +1170,7 @@ Wanneer u uw implementatie met het Azure Media Services-platform test, moet u ee
 
 ---
 
-## <a name="change-history"></a>Wijzigingsoverzicht
+## <a name="change-history"></a>Wijzigings overzicht
 
 | Datum     | Wijzigingen                                                                                                             |
 | -------- | ------------------------------------------------------------------------------------------------------------------- |

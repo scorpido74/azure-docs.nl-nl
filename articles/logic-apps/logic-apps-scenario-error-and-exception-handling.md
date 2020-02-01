@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 03ed4731e59280a3879d77ca3fb82f0158313aeb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771560"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902697"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenario: afhandeling van uitzonde ringen en fouten logboek registratie voor Logic apps
 
@@ -122,7 +122,7 @@ We moeten de bron (aanvraag) van de patiënt record in de online portal van Dyna
 
 In het volgende code voorbeeld van de logische app ziet u hoe u logboek registratie kunt afhandelen.
 
-#### <a name="log-entry"></a>Logboekvermelding
+#### <a name="log-entry"></a>logboek vermelding
 
 Hier volgt de logische app-bron code voor het invoegen van een logboek vermelding.
 
@@ -481,5 +481,5 @@ De bron code voor de API-toepassing voor Logic Apps Exception Management is besc
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer voor beelden en scenario's van een logische app weer geven](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [Meer informatie over het bewaken van Logic apps](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [Logische apps controleren](../logic-apps/monitor-logic-apps.md)
 * [Implementatie van logische apps automatiseren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

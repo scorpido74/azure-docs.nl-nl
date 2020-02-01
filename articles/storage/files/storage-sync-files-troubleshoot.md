@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 527d0a602b9da1f2d4f21890e896eba9a951494b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 887c10097187f193f55c6e301be3e739a16d6bf7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842713"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906921"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -1102,7 +1102,7 @@ Als bestanden niet naar Azure Files kunnen worden gelaagd:
 | 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | Het bestand kan niet worden gelaagd vanwege een probleem met Azure Storage. | Als de fout zich blijft voordoen, opent u een ondersteunings aanvraag. |
 | 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | Het bestand kan niet worden getierd omdat het tegelijkertijd is ingetrokken. | U hoeft geen actie te ondernemen. Het bestand wordt getierd wanneer het intrekken is voltooid en het bestand wordt niet meer gebruikt. |
 | 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | Het bestand kan niet worden getierd omdat het niet is gesynchroniseerd met de Azure-bestands share. | U hoeft geen actie te ondernemen. Het bestand wordt laag zodra het is gesynchroniseerd met de Azure-bestands share. |
-| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Het bestand kan niet worden getierd omdat het filter stuur programma voor de Cloud lagen (storagesync. sys) niet wordt uitgevoerd. | Om dit probleem op te lossen, opent u een opdracht prompt met verhoogde bevoegdheid en voert u de volgende opdracht uit: Fltmc load storagesync <br>Als het storagesync-filter stuur programma niet kan worden geladen tijdens het uitvoeren van de Fltmc-opdracht, verwijdert u de agent van Azure File Sync, start u de server opnieuw op en installeert u de Azure File Sync agent opnieuw. |
+| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Het bestand kan niet worden getierd omdat het filter stuur programma voor de Cloud lagen (storagesync. sys) niet wordt uitgevoerd. | Om dit probleem op te lossen, opent u een opdracht prompt met verhoogde bevoegdheid en voert u de volgende opdracht uit: `fltmc load storagesync`<br>Als het storagesync-filter stuur programma niet kan worden geladen tijdens het uitvoeren van de Fltmc-opdracht, verwijdert u de agent van Azure File Sync, start u de server opnieuw op en installeert u de Azure File Sync agent opnieuw. |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | Het bestand kan niet worden gelaagd vanwege onvoldoende schijf ruimte op het volume waar het server eindpunt zich bevindt. | U kunt dit probleem oplossen door ten minste 100 MB aan schijf ruimte vrij te maken op het volume waar het server eindpunt zich bevindt. |
 | 0x80070490 | -2147023728 | ERROR_NOT_FOUND | Het bestand kan niet worden getierd omdat het niet is gesynchroniseerd met de Azure-bestands share. | U hoeft geen actie te ondernemen. Het bestand wordt laag zodra het is gesynchroniseerd met de Azure-bestands share. |
 | 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | Het bestand kan niet worden getierd omdat het een niet-ondersteund reparsepunt is. | Als het bestand een reparsepunt voor Gegevensontdubbeling is, volgt u de stappen in de [plannings handleiding](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication) om ondersteuning van gegevensontdubbeling in te scha kelen. Bestanden met een andere reparse-punten dan Gegevensontdubbeling worden niet ondersteund en worden niet getierd.  |

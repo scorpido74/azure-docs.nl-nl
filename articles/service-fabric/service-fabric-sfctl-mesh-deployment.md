@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-implementatie van sfctl-net
 description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het maken van Service Fabric netresources.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 6512cce075906fc8708a39fa0747ec27be33e961
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 108389407221779ed20e81310f084b7b5c23b8c7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645358"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906036"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
 Service Fabric netresources maken.
@@ -28,8 +28,8 @@ Hiermee maakt u een implementatie van Service Fabric netresources.
 
 |Argument|Beschrijving|
 | --- | --- |
-| --input-YAML-files [required] | Door komma's gescheiden relatieve/absolute bestands paden van alle YAML-bestanden of relatief/absoluut pad van de directory (recursieve) die YAML-bestanden bevatten. |
-| --parameters | Een relatief/absoluut pad naar het yaml-bestand of een JSON-object dat de para meters bevat die moeten worden overschreven. |
+| --input-YAML-files [required] | Door komma's gescheiden of absolute bestands paden van alle YAML-bestanden of relatief of absoluut pad van de directory (recursieve) die YAML-bestanden bevatten. |
+| --parameters | Een relatief of absoluut pad naar een yaml-bestand of een JSON-object dat de para meters bevat die moeten worden overschreven. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 

@@ -1,6 +1,6 @@
 ---
-title: Overzicht van hybride verbinding-serie VM - virtuele Machines van Azure | Microsoft Docs
-description: Meer informatie over de Preview-versie-ondersteuning voor de HC-serie VM-grootte in Azure.
+title: VM-overzicht van de HC-serie-Azure Virtual Machines | Microsoft Docs
+description: Meer informatie over de preview-ondersteuning voor de VM-grootte van de HC-serie in Azure.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -12,53 +12,53 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: 6cdb539846104f70dabf684925685fb062fea8af
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797561"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906739"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Overzicht van de virtuele machine van de HC-serie
 
-Prestaties van de HPC-toepassingen op Intel Xeon-Processors schaalbare maximaliseren, is een doordachte benadering voor het proces plaatsing op deze nieuwe architectuur vereist. We beschrijven hier, onze implementatie van deze op Azure HC-serie VM's voor HPC-toepassingen. We gebruiken de term 'pNUMA' om te verwijzen naar een fysieke NUMA-domein, en "vNUMA" om te verwijzen naar een gevirtualiseerde NUMA-domein. Op dezelfde manier gebruiken we de term 'pCore' om te verwijzen naar fysieke CPU-kernen en 'vCore' om te verwijzen naar een gevirtualiseerde CPU-kernen.
+Voor het optimaliseren van HPC-toepassings prestaties voor Intel Xeon-processoren is een doordachte benadering vereist voor het verwerken van de plaatsing van deze nieuwe architectuur. Hier geven we een overzicht van onze implementatie van IT op Vm's uit de Azure HC-serie voor HPC-toepassingen. We gebruiken de term ' pNUMA ' om te verwijzen naar een fysiek NUMA-domein en ' vNUMA ' om te verwijzen naar een gevirtualiseerde NUMA-domein. Op dezelfde manier gebruiken we de term ' pCore ' om te verwijzen naar fysieke CPU-kernen en ' vCore ' om te verwijzen naar gevirtualiseerde CPU-kernen.
 
-Een hybride verbinding-server is fysiek, 2 * 24-core Intel Xeon Platinum 8168 CPU's voor een totaal van 48 fysieke kernen. Elke CPU is een eenmalige pNUMA-domein en heeft toegang tot zes kanalen van DRAM unified. Intel Xeon Platinum CPU's-functie a 4 x groter L2-cache dan in eerdere generaties (1 MB/kern-> 256 KB/core), terwijl tegelijkertijd ook de L3-cache ten opzichte van eerdere Intel CPU's (2,5 MB/core-> 1.375 MB/core).
+Fysiek is een HC-Server 2 * 24-Core Intel Xeon Platinum 8168 Cpu's voor een totaal van 48 fysieke kernen. Elke CPU is een single pNUMA-domein en heeft eenvormige toegang tot zes kanalen van DRAM. Intel Xeon Platinum Cpu's heeft een 4x groter L2-cache dan in voor gaande generaties (256 KB/core-> 1 MB/kern geheugen), terwijl de L3-cache ook wordt beperkt vergeleken met eerdere Intel Cpu's (2,5 MB/core-> 1,375 MB/core).
 
-Aan de ook HC-serie hypervisor-configuratie wordt doorgevoerd in de bovenstaande topologie. Om ruimte voor de Azure-hypervisor om te werken zonder dat de virtuele machine Hierdoor wordt beïnvloed, behouden we ons pCores 0-1 en 24-25 (dat wil zeggen, de eerste 2 pCores op elke socket). We vervolgens toewijzen pNUMA domeinen alle resterende kernen aan de virtuele machine. Zo ziet de virtuele machine:
+De bovenstaande topologie wordt ook overgenomen door de configuratie van de HC-serie-Hyper Visor. Om ruimte te maken voor de werking van de Azure-Hyper Visor zonder dat de virtuele machine wordt verstoord, worden pCores 0-1 en 24-25 (dat wil zeggen, de eerste 2 pCores op elke socket) gereserveerd. Vervolgens wijst u pNUMA-domeinen alle resterende kernen toe aan de virtuele machine. Daarom ziet de VM er als volgt uit:
 
 `(2 vNUMA domains) * (22 cores/vNUMA) = 44` kernen per VM
 
-De virtuele machine heeft geen kennis pCores 0-1 en 24-25 zijn niet tot het krijgen. Het beschrijft dus elke vNUMA alsof er systeemeigen 22 kernen.
+De VM heeft geen kennis die pCores 0-1 en 24-25 niet heeft gekregen. Daarom wordt elke vNUMA beschikbaar gemaakt alsof het systeem eigen 22 kernen heeft.
 
-Intel Xeon Platinum, Gold en Silver CPU's moet u ook een 2D-op-chip-mesh-netwerk voor communicatie binnen en externe kennismaken met de CPU-socket. Het is raadzaam proces vast te maken voor optimale prestaties en consistentie. Omdat het onderliggende silicium wordt weergegeven als proces vastmaken werkt op HC-serie VM's-is op de Gast-VM. Zie voor meer informatie, [Intel Xeon SP architectuur](https://bit.ly/2RCYkiE).
+Intel Xeon Platinum-, Gold-en Silver Cpu's introduceren ook een on-to-Virtual Network-netwerk voor communicatie binnen en buiten de CPU-socket. Het wordt ten zeerste aanbevolen om proces vastmaken voor optimale prestaties en consistentie. Het vastmaken van processen werkt op Vm's uit de HC-serie, omdat het onderliggende silicium wordt blootgesteld aan de gast-VM. Zie [Intel Xeon SP-architectuur](https://bit.ly/2RCYkiE)voor meer informatie.
 
-Het volgende diagram toont de scheiding van kernen gereserveerd voor Azure-Hypervisor en de HC-series-VM.
+In het volgende diagram ziet u de schei ding van kernen die zijn gereserveerd voor Azure Hyper Visor en de VM van de HC-serie.
 
-![Scheiding van kernen gereserveerd voor Azure-Hypervisor en HC-serie VM](./media/hc-series-overview/segregation-cores.png)
+![Schei ding van kern geheugens gereserveerd voor Azure Hyper Visor en HC-serie VM](./media/hc-series-overview/segregation-cores.png)
 
 ## <a name="hardware-specifications"></a>Hardwarespecificaties
 
-| Hardwarespecificaties          | VM uit de HC-serie                     |
+| Hardwarespecificaties          | VM van HC-serie                     |
 |----------------------------------|----------------------------------|
-| Kerngeheugens                            | 40 (HT uitgeschakeld)                 |
-| CPU                              | Intel Xeon Platinum 8168*        |
-| CPU-frequentie (niet-AVX)          | 3,7 GHz (één kern), 2.7 3.4 GHz (alle kernen) |
-| Geheugen                           | 8 GB/kerngeheugens (352 totaal)            |
-| Lokale schijf                       | 700 GB NVMe                      |
-| Infiniband                       | 100 Gb EDR Mellanox ConnectX-5 ** |
-| Netwerk                          | 50 Gb Ethernet (40 Gb kan worden gebruikt) Azure tweede generatie SmartNIC *** |
+| Cores                            | 44 (HT uitgeschakeld)                 |
+| CPU                              | Intel Xeon Platinum 8168 *        |
+| CPU-frequentie (niet-AVX)          | 3,7 GHz (één kern), 2.7-3,4 GHz (alle kernen) |
+| Geheugen                           | 8 GB/core (352 in totaal)            |
+| Lokale schijf                       | NVMe van 700 GB                      |
+| Infiniband                       | 100 GB EDR Mellanox Connectx-5 * * |
+| Netwerk                          | 50 GB Ethernet (40 GB bruikbaar) Azure Second gen SmartNIC * * * |
 
-## <a name="software-specifications"></a>Softwarespecificaties
+## <a name="software-specifications"></a>Software specificaties
 
-| Softwarespecificaties     | VM uit de HC-serie          |
+| Software specificaties     | VM van HC-serie          |
 |-----------------------------|-----------------------|
-| Max MPI taakgrootte            | 4400 kernen (100 virtuele-machineschaalsets), 8800 kernen (200 virtuele-machineschaalsets) |
+| Maximale grootte van MPI-taak            | 13200 kernen (300 Vm's in één VMSS met singlePlacementGroup = True) |
 | MPI-ondersteuning                 | MVAPICH2, OpenMPI, MPICH, Platform MPI, Intel MPI  |
 | Aanvullende Frameworks       | Unified Communication X, libfabric, PGAS |
-| Ondersteuning voor Azure Storage       | Std + Premium (maximaal 4 schijven) |
-| Ondersteuning voor het besturingssysteem voor het maken van SRIOV RDMA   | CentOS/RHEL 7.6+, SLES 12 SP4+, WinServer 2016+ |
-| Ondersteuning van Azure CycleCloud    | Ja                         |
+| Ondersteuning voor Azure Storage       | Std + Premium (max. 4 schijven) |
+| Ondersteuning van het besturings systeem voor SRIOV RDMA   | CentOS/RHEL 7,6 +, SLES 12 SP4 +, WinServer 2016 + |
+| Ondersteuning voor Azure CycleCloud    | Ja                         |
 | Ondersteuning voor Azure Batch         | Ja                         |
 
 ## <a name="next-steps"></a>Volgende stappen

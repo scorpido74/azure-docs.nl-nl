@@ -4,16 +4,16 @@ description: AzCopy configureren, optimaliseren en problemen oplossen.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6a1dcd2d8734d7701dab6d913beb8af0ad4e35ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371391"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905273"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy configureren, optimaliseren en problemen oplossen
 
@@ -26,7 +26,7 @@ AzCopy is een opdracht regel programma dat u kunt gebruiken voor het kopiëren v
 > - [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
 > - [Gegevens overdragen met AzCopy en Amazon S3-buckets](storage-use-azcopy-s3.md)
 
-## <a name="configure-proxy-settings"></a>Proxyinstellingen configureren
+## <a name="configure-proxy-settings"></a>Proxy-instellingen configureren
 
 Als u de proxy-instellingen voor AzCopy wilt configureren, stelt u de omgevings variabele `https_proxy` in. Als u AzCopy uitvoert in Windows, detecteert AzCopy automatisch proxy-instellingen. u hoeft deze instelling niet te gebruiken in Windows. Als u kiest voor het gebruik van deze instelling in Windows, wordt automatische detectie vervangen.
 
@@ -41,6 +41,14 @@ Momenteel biedt AzCopy geen ondersteuning voor proxy's waarvoor authenticatie me
 ## <a name="optimize-performance"></a>Prestaties optimaliseren
 
 U kunt benchmark prestaties en vervolgens opdrachten en omgevings variabelen gebruiken om een optimale balans te vinden tussen prestaties en Resource verbruik.
+
+Deze sectie helpt u bij het uitvoeren van deze optimalisatie taken:
+
+> [!div class="checklist"]
+> * Bench Mark-tests uitvoeren
+> * Door Voer optimaliseren
+> * Geheugen gebruik optimaliseren 
+> * Bestands synchronisatie optimaliseren
 
 ### <a name="run-benchmark-tests"></a>Bench Mark-tests uitvoeren
 
@@ -97,6 +105,14 @@ Deze waarde in gigabytes (GB) uitdrukken.
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+
+### <a name="optimize-file-synchronization"></a>Bestands synchronisatie optimaliseren
+
+De [Sync](storage-ref-azcopy-sync.md) -opdracht identificeert alle bestanden op de bestemming en vergelijkt vervolgens bestands namen en tijdstippen die het laatst zijn gewijzigd voordat de synchronisatie bewerking wordt gestart. Als u een groot aantal bestanden hebt, kunt u de prestaties verbeteren door deze bewerking vooraf uit te scha kelen. 
+
+U kunt dit doen door in plaats daarvan de azcopy-opdracht [copy](storage-ref-azcopy-copy.md) te gebruiken en de `--overwrite`-vlag in te stellen op `ifSourceNewer`. AzCopy vergelijkt bestanden als ze worden gekopieerd zonder dat er vooraf scans en vergelijkingen worden uitgevoerd. Dit biedt een prestatie rand in gevallen waarin een groot aantal bestanden moet worden vergeleken.
+
+Met de [azcopy Copy](storage-ref-azcopy-copy.md) opdracht worden geen bestanden van de bestemming verwijderd. Als u bestanden op de bestemming wilt verwijderen wanneer deze niet meer op de bron aanwezig zijn, gebruikt u de [azcopy Sync](storage-ref-azcopy-sync.md) -opdracht waarbij de vlag `--delete-destination` is ingesteld op de waarde `true` of `prompt`. 
 
 ## <a name="troubleshoot-issues"></a>Problemen oplossen
 

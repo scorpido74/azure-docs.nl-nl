@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: c17576bb8cd772742b5335000a2453ff34753779
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457065"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906979"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
 
@@ -101,12 +101,13 @@ IoT Hub dwingt andere operationele limieten af:
 | Extra eind punten | Betaalde SKU hubs kunnen 10 extra eind punten hebben. Gratis SKU-hubs kunnen één extra eind punt hebben. |
 | Bericht routering query's | Betaalde SKU-hubs hebben mogelijk 100 routerings query's. Gratis SKU-hubs kunnen vijf routerings query's hebben. |
 | Berichtverrijkingen | Betaalde SKU hubs kunnen Maxi maal 10 bericht verrijkingen hebben. Gratis SKU-hubs kunnen Maxi maal 2 bericht verrijkingen hebben.|
-| Apparaat-naar-cloud-berichten | Maximale bericht grootte 256 KB |
+| Apparaat-naar-Cloud-berichten | Maximale bericht grootte 256 KB |
 | Cloud-naar-apparaat-berichten<sup>1</sup> | Maximale bericht grootte van 64 KB. Maximum aantal in behandeling zijnde berichten voor levering is 50 per apparaat. |
 | Directe methode<sup>1</sup> | De maximale grootte van de directe methode lading is 128 KB. |
 | Automatische apparaat-en module configuraties<sup>1</sup> | 100 configuraties per betaalde SKU-hub. 20 configuraties per gratis SKU-hub. |
 | Automatische implementaties IoT Edge<sup>1</sup> | 20 modules per implementatie. 100 implementaties (inclusief gelaagde implementaties) per betaalde SKU-hub. 10 implementaties per gratis SKU-hub. |
 | Twins<sup>1</sup> | De sectie maximale grootte van gewenste eigenschappen en gerapporteerde eigenschappen is 32 KB. De sectie maximum grootte van tags is 8 KB. |
+| Gedeeld toegangsbeleid | Het maximum aantal Shared Access-beleids regels is 16 |
 
 <sup>1</sup> Deze functie is niet beschikbaar in de laag basis van IoT Hub. Zie [de juiste IOT hub kiezen](iot-hub-scaling.md)voor meer informatie.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
-ms.openlocfilehash: 6c82b8ce591bbacb6bf790c8b38635310b33263d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ceeea809232909a196895e11601ad01d3407f763
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435345"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905393"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure-toolkit voor Eclipse gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken
 
@@ -33,7 +33,7 @@ Gebruik HDInsight-Hulpprogram Ma's in azure Toolkit voor een [eclips](https://ww
 
 ## <a name="install-required-plug-ins"></a>Vereiste invoeg toepassingen installeren
 
-### <a name="install-azure-toolkit-for-eclipse"></a>De Azure Toolkit voor Eclipse installeren
+### <a name="install-azure-toolkit-for-eclipse"></a>Azure-toolkit voor Eclipse installeren
 
 Zie [Azure-Toolkit voor eclipse installeren](https://docs.microsoft.com/azure/java/eclipse/azure-toolkit-for-eclipse-installation)voor installatie-instructies.
 
@@ -242,7 +242,7 @@ U kunt HDInsight-Hulpprogram Ma's in Azure-toolkit voor Eclipse gebruiken om Spa
 
 Terwijl u de lokale Spark scala-toepassing uitvoert op een Windows-computer, krijgt u mogelijk een uitzonde ring zoals uitgelegd in [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). Deze uitzonde ring treedt op omdat **WinUtils. exe** ontbreekt in Windows.
 
-U kunt deze fout oplossen door [het uitvoer bare bestand te downloaden](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) naar een locatie zoals **C:\WinUtils\bin**, en vervolgens de omgevings variabele **HADOOP_HOME** toe te voegen en de waarde van de variabele in te stellen op **C\WinUtils**.
+Om deze fout op te lossen, moet u `https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe` op een locatie zoals **C:\WinUtils\bin**, en vervolgens de omgevings variabele **HADOOP_HOME** toevoegen en de waarde van de variabele instellen op **C\WinUtils**.
 
 ### <a name="run-a-local-spark-scala-application"></a>Een lokale Spark scala-toepassing uitvoeren
 

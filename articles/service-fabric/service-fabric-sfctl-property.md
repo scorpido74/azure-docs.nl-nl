@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric CLI-sfctl eigenschap
-description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het verhalen en opvragen van eigenschappen.
+description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het opslaan en opvragen van eigenschappen.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: d9129f07db9f3499b51707965d10426dbc3d3c12
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639102"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905827"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Eigenschappen voor opslaan en opvragen onder Service Fabric namen.
@@ -22,7 +22,7 @@ Eigenschappen voor opslaan en opvragen onder Service Fabric namen.
 | delete | Hiermee verwijdert u de opgegeven Service Fabric eigenschap. |
 | Toevoegen | Hiermee wordt de opgegeven Service Fabric-eigenschap opgehaald. |
 | list | Haalt informatie op over alle Service Fabric eigenschappen onder een bepaalde naam. |
-| plaatsen | Hiermee wordt een Service Fabric eigenschap gemaakt of bijgewerkt. |
+| slaan | Hiermee wordt een Service Fabric eigenschap gemaakt of bijgewerkt. |
 
 ## <a name="sfctl-property-delete"></a>eigenschap sfctl verwijderen
 Hiermee verwijdert u de opgegeven Service Fabric eigenschap.
@@ -105,7 +105,7 @@ Hiermee wordt de opgegeven Service Fabric eigenschap met een bepaalde naam gemaa
 | --- | --- |
 | --naam-id [vereist] | De naam van de Service Fabric, zonder het URI-schema van het Fabric-\:. |
 | --eigenschap-naam [vereist] | De naam van de eigenschap Service Fabric. |
-| --waarde [vereist] | Beschrijft een Service Fabric eigenschaps waarde. Dit is een JSON-teken reeks. <br><br> De JSON-teken reeks heeft twee velden: het type van de gegevens en de waarde van de gegevens. De ' kind ' moet het eerste item zijn dat in de JSON-teken reeks wordt weer gegeven en kan waarden ' binary ', ' Int64 ', ' Double ', ' String ' of ' GUID ' zijn. De waarde moet een serialisatie kunnen hebben met de opgegeven typen. De waarden ' type ' en ' data ' moeten worden weer gegeven als teken reeksen. |
+| --waarde [vereist] | Beschrijft een Service Fabric eigenschaps waarde. Dit is een JSON-teken reeks. <br><br> De JSON-teken reeks heeft twee velden: het type van de gegevens en de waarde die is ingevoerd als gegevens van de gegevens. De ' kind ' moet het eerste item zijn dat in de JSON-teken reeks wordt weer gegeven en kan waarden ' binary ', ' Int64 ', ' Double ', ' String ' of ' GUID ' zijn. De waarde moet een serialisatie kunnen hebben met de opgegeven typen. De waarden ' type ' en ' data ' moeten worden weer gegeven als teken reeksen. |
 | --aangepast-ID-type | De aangepaste type-ID van de eigenschap. Met deze eigenschap kan de gebruiker het type van de waarde van de eigenschap labelen. |
 | --time-out-t | Standaard\: 60. |
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: 9d484afb1d80ee6b110438cc3ddea1d3d67ad999
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/29/2020
+ms.openlocfilehash: 091ca4d632d89405d85c66e264aff9867979fcd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844680"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905227"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
 
@@ -68,7 +68,7 @@ Er is geen wijziging van de onderdeel versie voor deze versie. U vindt hier de h
 
 ## <a name="known-issues"></a>Bekende problemen
 
-Vanaf 24 januari 2020 is er sprake van een actief probleem waarin wordt gemeld dat er een fout optreedt wanneer u probeert een Jupyter-notebook te gebruiken. Volg de onderstaande stappen om het probleem op te lossen. U kunt ook dit [MSDN post-bericht](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) of dit [stack overflow-bericht](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) raadplegen voor actuele informatie of aanvullende vragen stellen. Deze pagina wordt bijgewerkt wanneer het probleem is opgelost.
+Sinds 29 januari 2020 is er sprake van een actief probleem waarin wordt gemeld dat er een fout optreedt wanneer u probeert een Jupyter-notebook te gebruiken. Volg de onderstaande stappen om het probleem op te lossen. U kunt ook dit [MSDN post-bericht](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) of dit [stack overflow-bericht](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) raadplegen voor actuele informatie of aanvullende vragen stellen. Deze pagina wordt bijgewerkt wanneer het probleem is opgelost.
 
 **Bufferoverschrijdingsfouten**
 
@@ -77,22 +77,26 @@ Vanaf 24 januari 2020 is er sprake van een actief probleem waarin wordt gemeld d
 
 **Oorzaak** 
 
-Het bestand _version. py op het cluster is bijgewerkt naar 5. x. x in plaats van 4.4. x. # #.
+Het bestand _version. py op het cluster is bijgewerkt naar 5. x. x in plaats van 4.4. x. # # of Ambari moet opnieuw worden gestart.
 
 **Oplossing**
 
 Als u een nieuw Jupyter-notebook maakt en een van de hierboven vermelde fouten ontvangt, voert u de volgende stappen uit om het probleem op te lossen.
 
-1. Open Ambari in een webbrowser door naar https://CLUSTERNAME.azurehdinsight.net te gaan, waarbij CLUSTERNAME de naam van uw cluster is.
+1. Open Ambari in een webbrowser door naar `https://CLUSTERNAME.azurehdinsight.net`te gaan, waarbij CLUSTERNAME de naam van uw cluster is.
 1. Klik in Ambari in het menu links op **Jupyter**en vervolgens op **service acties**op **stoppen**.
 1. SSH in het cluster hoofd knooppunt waarop de Jupyter-service wordt uitgevoerd.
 1. Open het volgende bestand/usr/bin/Anaconda/lib/python2.7/site-packages/nbformat/_version. py in de sudo-modus.
-1. De bestaande vermelding moet er ongeveer uitzien als de volgende code: 
+1. Controleer de waarde van version_info.
+1. Als de waarde van version_info is ingesteld op: 
 
     version_info = (5, 0, 3)
 
-    Wijzig de vermelding in: 
+    Wijzig vervolgens de vermelding in: 
     
     version_info = (4, 4, 0)
-1. Sla het bestand op.
+
+    En sla het bestand op. 
+
+    Als version_info al is ingesteld op (4, 4, 0), gaat u verder met de volgende stap, omdat alleen Ambari opnieuw moeten worden gestart. er zijn geen aanvullende wijzigingen nodig.
 1. Ga terug naar Ambari en klik in **service acties**op **alle opnieuw opstarten**.

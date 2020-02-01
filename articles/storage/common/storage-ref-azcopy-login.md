@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7998ea0753ba7ab5d97142c34dc9e333f8b4f5d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6b2fbe28aae8e8233aaeb75bc9b43a35a9ab588
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034082"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905279"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -101,6 +101,8 @@ Zorg ervoor dat/path/to/my/CERT wordt behandeld als een pad naar een PEM-of PKCS
 
 |Optie|Beschrijving|
 |--|--|
+|--Aad-eind punt|Het Azure Active Directory-eind punt dat moet worden gebruikt. De standaard waarde (https://login.microsoftonline.com) is juist voor de open bare Azure-Cloud. Stel deze para meter in wanneer u een verificatie uitvoert in een nationale Cloud. Zie [Azure AD-verificatie-eind punten](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+Deze vlag is niet nodig voor Managed Service Identity.|
 |--reeks van toepassing-id|De toepassings-ID van de door de gebruiker toegewezen identiteit. Vereist voor Service Principal auth.|
 |--teken reeks voor certificaatpad|Het pad naar het certificaat voor SPN-verificatie. Vereist voor verificatie op basis van een service-principal voor certificaten.|
 |-h,--Help|Help-inhoud voor de aanmeldings opdracht weer geven.|

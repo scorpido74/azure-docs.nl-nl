@@ -3,12 +3,12 @@ title: Instellingen van Azure Service Fabric cluster wijzigen
 description: In dit artikel worden de infrastructuur instellingen en het Fabric-upgrade beleid beschreven dat u kunt aanpassen.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: ba98d4d30d14cb3a1981652fc0b86354923a8851
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 284e8ad566192f027d466ad08d66c2fc5265381d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772122"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905199"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric cluster instellingen aanpassen
 In dit artikel worden de verschillende infrastructuur instellingen voor uw Service Fabric cluster beschreven die u kunt aanpassen. Voor clusters die worden gehost in azure, kunt u instellingen aanpassen via de [Azure Portal](https://portal.azure.com) of met behulp van een Azure Resource Manager sjabloon. Zie [de configuratie van een Azure-cluster upgraden](service-fabric-cluster-config-upgrade-azure.md)voor meer informatie. Voor zelfstandige clusters past u de instellingen aan door het bestand *ClusterConfig. json* bij te werken en een configuratie-upgrade uit te voeren op uw cluster. Zie [de configuratie van een zelfstandig cluster upgraden](service-fabric-cluster-config-upgrade-windows-server.md)voor meer informatie.
@@ -54,7 +54,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|MinReplicaSetSize|int, standaard is 0|Statisch|De MinReplicaSetSize voor BackupRestoreService |
+|MinReplicaSetSize|Int, standaard is 0|Statisch|De MinReplicaSetSize voor BackupRestoreService |
 |PlacementConstraints|teken reeks, standaard instelling is|Statisch|  De PlacementConstraints voor de BackupRestore-service |
 |SecretEncryptionCertThumbprint|teken reeks, standaard instelling is|Dynamisch|Vinger afdruk van het x509-certificaat van de geheime versleuteling |
 |SecretEncryptionCertX509StoreName|teken reeks, standaard is ' My '|   Dynamisch|    Dit geeft het certificaat aan dat moet worden gebruikt voor het versleutelen en ontsleutelen van de cred-naam van het X. 509-certificaat archief dat wordt gebruikt voor het versleutelen van de opslag referenties die worden gebruikt door de back-upherstel service |
@@ -86,9 +86,10 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |ReplicaSetCheckTimeoutRollbackOverride |Tijd in seconden, standaard waarde is 1200 |Dynamisch| Geef een tijds duur in seconden op. Als ReplicaSetCheckTimeout is ingesteld op de maximum waarde DWORD; vervolgens wordt deze vervangen door de waarde van deze configuratie voor het terugdraaien. De waarde die wordt gebruikt voor het door sturen wordt nooit overschreven. |
 |SkipRollbackUpdateDefaultService | BOOL, default is False |Dynamisch|In CM worden de bijgewerkte standaard services die tijdens het terugdraaien van de upgrade van de toepassing worden teruggezet, overgeslagen. |
 |StandByReplicaKeepDuration | Tijd in seconden, standaard is (3600,0 \* 2)|Niet toegestaan|Geef een tijds duur in seconden op. De StandByReplicaKeepDuration voor ClusterManager. |
-|TargetReplicaSetSize |Int, standaard is 7 |Niet toegestaan|De TargetReplicaSetSize voor ClusterManager. |
+|TargetReplicaSetSize |int, standaard is 7 |Niet toegestaan|De TargetReplicaSetSize voor ClusterManager. |
 |UpgradeHealthCheckInterval |Tijd in seconden, standaard waarde is 60 |Dynamisch|De frequentie van status controles tijdens een upgrade van bewaakte toepassingen |
 |UpgradeStatusPollInterval |Tijd in seconden, standaard waarde is 60 |Dynamisch|De frequentie van polling voor de upgrade status van de toepassing. Deze waarde bepaalt de frequentie van de update voor elke GetApplicationUpgradeProgress-aanroep |
+|CompleteClientRequest | BOOL, default is False |Dynamisch| Voltooi de client aanvraag wanneer deze door CM wordt geaccepteerd. |
 
 ## <a name="common"></a>Algemeen
 
@@ -128,7 +129,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |EnablePlatformEventsFileSink |BOOL, default is False | Statisch |Platform gebeurtenissen die naar de schijf worden geschreven, in-of uitschakelen |
 |EnableTelemetry |BOOL, default is True | Dynamisch |Hiermee wordt telemetrie in-of uitgeschakeld. |
 |FailuresOnlyHttpTelemetry | BOOL, default is False | Dynamisch | Als HTTP-telemetrie-opname is ingeschakeld; alleen mislukte aanvragen vastleggen. Zo kunt u het aantal gebeurtenissen dat wordt gegenereerd voor telemetrie verminderen. |
-|HttpTelemetryCapturePercentage | int, standaard waarde is 50 | Dynamisch | Als HTTP-telemetrie-opname is ingeschakeld; Leg alleen een wille keurig percentage van aanvragen vast. Zo kunt u het aantal gebeurtenissen dat wordt gegenereerd voor telemetrie verminderen. |
+|HttpTelemetryCapturePercentage | Int, standaard waarde is 50 | Dynamisch | Als HTTP-telemetrie-opname is ingeschakeld; Leg alleen een wille keurig percentage van aanvragen vast. Zo kunt u het aantal gebeurtenissen dat wordt gegenereerd voor telemetrie verminderen. |
 |MaxDiskQuotaInMB |Int, standaard waarde is 65536 | Dynamisch |Schijf quotum in MB voor Windows Fabric-logboek bestanden. |
 |ProducerInstances |Tekenreeks | Dynamisch |De lijst met DCA producer-exemplaren. |
 
@@ -145,7 +146,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|MinReplicaSetSize|int, standaard is 0|Statisch|De MinReplicaSetSize voor de Event Store-service |
+|MinReplicaSetSize|Int, standaard is 0|Statisch|De MinReplicaSetSize voor de Event Store-service |
 |PlacementConstraints|teken reeks, standaard instelling is|Statisch|  De PlacementConstraints voor de Event Store-service |
 |TargetReplicaSetSize|int, standaard is 0|Statisch| De TargetReplicaSetSize voor de Event Store-service |
 
@@ -168,7 +169,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|ActivationMaxFailureCount |Int, standaard waarde is 10 |Dynamisch|Dit is het maximum aantal waarvoor het systeem opnieuw moet worden geactiveerd voordat het kan worden uitgevoerd. |
+|ActivationMaxFailureCount |int, standaard waarde is 10 |Dynamisch|Dit is het maximum aantal waarvoor het systeem opnieuw moet worden geactiveerd voordat het kan worden uitgevoerd. |
 |ActivationMaxRetryInterval |Tijd in seconden, standaard waarde is 300 |Dynamisch|Geef een tijds duur in seconden op. Maximale interval voor opnieuw proberen voor activering. Bij elke doorlopende storing wordt het interval voor nieuwe pogingen berekend als min (ActivationMaxRetryInterval; Aantal doorlopende fouten * ActivationRetryBackoffInterval). |
 |ActivationRetryBackoffInterval |Tijd in seconden, standaard waarde is 5 |Dynamisch|Geef een tijds duur in seconden op. Uitstel interval bij elke activerings fout; bij elke continue activerings fout zal het systeem de activering opnieuw proberen voor de MaxActivationFailureCount. Het interval voor nieuwe pogingen bij elke poging is een product van een doorlopende activerings fout en het back-upinterval van de activering. |
 |EnableRestartManagement |BOOL, default is False |Dynamisch|Hiermee schakelt u het opnieuw opstarten van de server in. |
@@ -217,16 +218,16 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |ExpectedNodeFabricUpgradeDuration|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60,0 \* 30)|Dynamisch|Geef een tijds duur in seconden op. Dit is de verwachte duur voor een upgrade van een knoop punt tijdens Windows Fabric upgrade. |
 |ExpectedReplicaUpgradeDuration|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60,0 \* 30)|Dynamisch|Geef een tijds duur in seconden op. Dit is de verwachte duur voor alle replica's die moeten worden bijgewerkt op een knoop punt tijdens de upgrade van de toepassing. |
 |IsSingletonReplicaMoveAllowedDuringUpgrade|BOOL, default is TRUE|Dynamisch|Indien ingesteld op True; replica's waarvan de grootte van de doel replica is ingesteld op 1, mogen tijdens de upgrade worden verplaatst. |
-|MinReplicaSetSize|int, standaard is 3|Niet toegestaan|Dit is de minimale grootte van de replicaset voor de FM. Als het aantal actieve FM-replica's onder deze waarde daalt; de FM weigert wijzigingen aan het cluster totdat ten minste het minimum aantal replica's wordt hersteld |
+|MinReplicaSetSize|Int, standaard is 3|Niet toegestaan|Dit is de minimale grootte van de replicaset voor de FM. Als het aantal actieve FM-replica's onder deze waarde daalt; de FM weigert wijzigingen aan het cluster totdat ten minste het minimum aantal replica's wordt hersteld |
 |PlacementConstraints|teken reeks, standaard instelling is|Niet toegestaan|Eventuele plaatsings beperkingen voor de failover Manager-replica's |
 |PlacementTimeLimit|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (600)|Dynamisch|Geef een tijds duur in seconden op. De tijds limiet voor het bereiken van het aantal doel replica's; waarna een waarschuwings status rapport wordt gestart |
 |QuorumLossWaitDuration |Tijd in seconden, de standaard waarde is MaxValue |Dynamisch|Geef een tijds duur in seconden op. Dit is de maximale duur waarvoor een partitie een status van quorum verlies mag hebben. Als de partitie na deze duur nog steeds in het quorum verloren is gegaan, de partitie wordt hersteld van quorum verlies door de replica's als verloren te beschouwen. Houd er rekening mee dat dit kan leiden tot gegevens verlies. |
 |ReconfigurationTimeLimit|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (300)|Dynamisch|Geef een tijds duur in seconden op. De tijds limiet voor opnieuw configureren; waarna een waarschuwings status rapport wordt gestart |
 |ReplicaRestartWaitDuration|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60,0 \* 30)|Niet toegestaan|Geef een tijds duur in seconden op. Dit is de ReplicaRestartWaitDuration voor de FMService |
-| SeedNodeQuorumAdditionalBufferNodes | int, standaard is 0 | Dynamisch | De buffer van Seed-knoop punten die nodig zijn om in te stellen (samen met het quorum van Seed-knoop punten) FM mag een maximum van (totalNumSeedNodes-(seedNodeQuorum + SeedNodeQuorumAdditionalBufferNodes)) Seed-knoop punten toestaan om uit te scha kelen. |
+| SeedNodeQuorumAdditionalBufferNodes | Int, standaard is 0 | Dynamisch | De buffer van Seed-knoop punten die nodig zijn om in te stellen (samen met het quorum van Seed-knoop punten) FM mag een maximum van (totalNumSeedNodes-(seedNodeQuorum + SeedNodeQuorumAdditionalBufferNodes)) Seed-knoop punten toestaan om uit te scha kelen. |
 |StandByReplicaKeepDuration|Time span, standaard is gebruikelijk:: time span:: FromSeconds (3600.0 \* 24 \* 7)|Niet toegestaan|Geef een tijds duur in seconden op. Dit is de StandByReplicaKeepDuration voor de FMService |
 |TargetReplicaSetSize|int, standaard is 7|Niet toegestaan|Dit is het doel aantal FM-replica's dat Windows Fabric blijft behouden. Een hogere waarde resulteert in een grotere betrouw baarheid van de FM-gegevens; met een kleine prestatie verhouding. |
-|UserMaxStandByReplicaCount |Int, standaard waarde is 1 |Dynamisch|Het maximum aantal stand-by replica's dat door het systeem voor gebruikers Services wordt bewaard. |
+|UserMaxStandByReplicaCount |int, standaard waarde is 1 |Dynamisch|Het maximum aantal stand-by replica's dat door het systeem voor gebruikers Services wordt bewaard. |
 |UserReplicaRestartWaitDuration |Tijd in seconden, de standaard waarde is 60,0 \* 30 |Dynamisch|Geef een tijds duur in seconden op. Wanneer een persistente replica uitvalt. Windows Fabric wacht totdat de replica een back-up maakt voordat nieuwe vervangende replica's (waarvoor een kopie van de status nodig is) worden gemaakt. |
 |UserStandByReplicaKeepDuration |Tijd in seconden, de standaard waarde is 3600,0 \* 24 \* 7 |Dynamisch|Geef een tijds duur in seconden op. Wanneer een persistente replica van de status omlaag wordt weer gegeven; mogelijk is deze al vervangen. Deze timer bepaalt hoe lang de FM de stand-by replica houdt voordat deze wordt genegeerd. |
 
@@ -317,7 +318,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |MaxPercentDeltaUnhealthyNodes|int, standaard waarde is 10|Statisch|Status van het evaluatie beleid voor cluster upgrades: Maxi maal percentage Delta beschadigde knoop punten dat is toegestaan voor het cluster in orde |
-|MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, standaard waarde is 15|Statisch|Status van het evaluatie beleid voor cluster upgrades: maximum percentage Delta van beschadigde knoop punten in een upgrade domein dat is toegestaan voor het cluster is in orde |
+|MaxPercentUpgradeDomainDeltaUnhealthyNodes|Int, standaard waarde is 15|Statisch|Status van het evaluatie beleid voor cluster upgrades: maximum percentage Delta van beschadigde knoop punten in een upgrade domein dat is toegestaan voor het cluster is in orde |
 
 ## <a name="hosting"></a>Hosting
 
@@ -341,7 +342,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |DefaultContainerRepositoryPassword|teken reeks, standaard instelling is|Statisch|Standaard wachtwoord referenties worden gebruikt in plaats van referenties die zijn opgegeven in ApplicationManifest. XML|
 |DefaultContainerRepositoryPasswordType|teken reeks, standaard instelling is|Statisch|Bij een niet-lege teken reeks kan de waarde "versleuteld" of "SecretsStoreRef" zijn.|
 |DefaultDnsSearchSuffixEmpty|BOOL, default is FALSE|Statisch|Standaard wordt de service naam toegevoegd aan de SF DNS-naam voor container Services. Deze functie stopt dit gedrag zodat er standaard niets wordt toegevoegd aan de SF DNS-naam in de oplossings routes.|
-|DeploymentMaxFailureCount|int, standaard waarde is 20| Dynamisch|De implementatie van de toepassing wordt opnieuw geprobeerd voor DeploymentMaxFailureCount tijden voordat de implementatie van die toepassing op het knoop punt is mislukt.| 
+|DeploymentMaxFailureCount|Int, standaard waarde is 20| Dynamisch|De implementatie van de toepassing wordt opnieuw geprobeerd voor DeploymentMaxFailureCount tijden voordat de implementatie van die toepassing op het knoop punt is mislukt.| 
 |DeploymentMaxRetryInterval| Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (3600)|Dynamisch| Geef een tijds duur in seconden op. Het interval voor het maximale aantal nieuwe pogingen voor de implementatie. Bij elke doorlopende storing wordt het interval voor nieuwe pogingen berekend als min (DeploymentMaxRetryInterval; Aantal doorlopende fouten * DeploymentRetryBackoffInterval) |
 |DeploymentRetryBackoffInterval| Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (10)|Dynamisch|Geef een tijds duur in seconden op. Back-outinterval voor de implementatie fout. Bij elke continue implementatie fout zal het systeem de implementatie opnieuw proberen voor de MaxDeploymentFailureCount. Het interval voor nieuwe pogingen is een product van een continue implementatie fout en het uitstel-interval van de implementatie. |
 |DisableContainers|BOOL, default is FALSE|Statisch|Configuratie voor het uitschakelen van containers: wordt gebruikt in plaats van DisableContainerServiceStartOnContainerActivatorOpen. deze configuratie is afgeschaft |
@@ -394,18 +395,18 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |QuorumLossWaitDuration | Tijd in seconden, de standaard waarde is MaxValue |Statisch| Geef een tijds duur in seconden op. De QuorumLossWaitDuration voor ImageStoreService. |
 |ReplicaRestartWaitDuration | Tijd in seconden, de standaard waarde is 60,0 \* 30 |Statisch|Geef een tijds duur in seconden op. De ReplicaRestartWaitDuration voor ImageStoreService. |
 |StandByReplicaKeepDuration | Tijd in seconden, standaard waarde is 3600,0 \* 2 |Statisch| Geef een tijds duur in seconden op. De StandByReplicaKeepDuration voor ImageStoreService. |
-|TargetReplicaSetSize | Int, standaard is 7 |Statisch|De TargetReplicaSetSize voor ImageStoreService. |
+|TargetReplicaSetSize | int, standaard is 7 |Statisch|De TargetReplicaSetSize voor ImageStoreService. |
 
 ## <a name="ktllogger"></a>KtlLogger
 
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|AutomaticMemoryConfiguration |Int, standaard waarde is 1 |Dynamisch|Vlag waarmee wordt aangegeven of de geheugen instellingen automatisch en dynamisch moeten worden geconfigureerd. Als dit niet het geval is, worden de configuratie-instellingen van het geheugen rechtstreeks gebruikt en worden ze niet gewijzigd op basis van de systeem voorwaarden. Als dit het geval is, worden de geheugen instellingen automatisch geconfigureerd en kunnen ze worden gewijzigd op basis van de systeem voorwaarden. |
+|AutomaticMemoryConfiguration |int, standaard waarde is 1 |Dynamisch|Vlag waarmee wordt aangegeven of de geheugen instellingen automatisch en dynamisch moeten worden geconfigureerd. Als dit niet het geval is, worden de configuratie-instellingen van het geheugen rechtstreeks gebruikt en worden ze niet gewijzigd op basis van de systeem voorwaarden. Als dit het geval is, worden de geheugen instellingen automatisch geconfigureerd en kunnen ze worden gewijzigd op basis van de systeem voorwaarden. |
 |MaximumDestagingWriteOutstandingInKB | Int, standaard is 0 |Dynamisch|Het aantal KB waarmee het gedeelde logboek kan worden voorgezet vóór het toegewezen logboek. Gebruik 0 om aan te geven dat er geen limiet is.
 |SharedLogId |teken reeks, standaard instelling is |Statisch|Unieke GUID voor gedeelde logboek container. Gebruik als standaardpad gebruiken onder Fabric data root. |
 |SharedLogPath |teken reeks, standaard instelling is |Statisch|Pad-en bestands naam naar locatie voor het plaatsen van een gedeelde logboek container. Gebruik "" voor het gebruik van het standaardpad onder Fabric data root. |
 |SharedLogSizeInMB |Int, standaard waarde is 8192 |Statisch|Het aantal MB dat moet worden toegewezen in de gedeelde logboek container. |
-|SharedLogThrottleLimitInPercentUsed|int, standaard is 0 | Statisch | Het percentage van het gebruik van het gedeelde logboek dat beperking veroorzaakt. De waarde moet tussen 0 en 100. De waarde 0 betekent dat de standaard percentage waarde wordt gebruikt. De waarde 100 houdt in dat er geen beperking is. Een waarde tussen 1 en 99 geeft het percentage logboek gebruik aan waarvan de beperking wordt toegepast. Als het gedeelde logboek bijvoorbeeld 10 GB is en de waarde 90 is, treedt er een beperking op wanneer 9 GB zijn wordt gebruikt. U wordt aangeraden de standaard waarde te gebruiken.|
+|SharedLogThrottleLimitInPercentUsed|Int, standaard is 0 | Statisch | Het percentage van het gebruik van het gedeelde logboek dat beperking veroorzaakt. De waarde moet tussen 0 en 100. De waarde 0 betekent dat de standaard percentage waarde wordt gebruikt. De waarde 100 houdt in dat er geen beperking is. Een waarde tussen 1 en 99 geeft het percentage logboek gebruik aan waarvan de beperking wordt toegepast. Als het gedeelde logboek bijvoorbeeld 10 GB is en de waarde 90 is, treedt er een beperking op wanneer 9 GB zijn wordt gebruikt. U wordt aangeraden de standaard waarde te gebruiken.|
 |WriteBufferMemoryPoolMaximumInKB | Int, standaard is 0 |Dynamisch|Het aantal KB waarmee de geheugen groep voor schrijf buffers mag groeien. Gebruik 0 om aan te geven dat er geen limiet is. |
 |WriteBufferMemoryPoolMinimumInKB |Int, standaard waarde is 8388608 |Dynamisch|Het aantal KB dat in eerste instantie moet worden toegewezen voor de geheugen groep schrijf buffer. Gebruik 0 om aan te geven dat er geen limiet standaard moet overeenkomen met SharedLogSizeInMB hieronder. |
 
@@ -420,7 +421,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 | --- | --- | --- | --- |
 |AutomaticUnprovisionInterval|Time span, standaard waarde is gebruikelijk:: time span:: FromMinutes (5)|Dynamisch|Geef een tijds duur in seconden op. Het opschoon interval voor het ongedaan maken van de registratie van het toepassings type tijdens het automatisch opschonen van het toepassings type.|
 |AzureStorageMaxConnections | Int, standaard waarde is 5000 |Dynamisch|Het maximum aantal gelijktijdige verbindingen met Azure Storage. |
-|AzureStorageMaxWorkerThreads | Int, standaard waarde is 25 |Dynamisch|Het maximum aantal worker-threads parallel. |
+|AzureStorageMaxWorkerThreads | int, standaard waarde is 25 |Dynamisch|Het maximum aantal worker-threads parallel. |
 |AzureStorageOperationTimeout | Tijd in seconden, standaard waarde is 6000 |Dynamisch|Geef een tijds duur in seconden op. Time-out voor het volt ooien van de xstore-bewerking. |
 |CleanupApplicationPackageOnProvisionSuccess|BOOL, default is FALSE |Dynamisch|Hiermee wordt het automatisch opruimen van het toepassings pakket bij een geslaagde inrichting in-of uitgeschakeld. |
 |CleanupUnusedApplicationTypes|BOOL, default is FALSE |Dynamisch|Met deze configuratie als deze functie is ingeschakeld, kan de registratie van ongebruikte toepassings type versies automatisch ongedaan worden gemaakt om de meest recente drie ongebruikte versies over te slaan, waardoor de schijf ruimte die wordt ingen Omen door Image Store De automatische opschoning wordt geactiveerd aan het einde van de inrichting van het specifieke app-type en wordt ook periodiek eenmaal per dag uitgevoerd voor alle toepassings typen. Het aantal ongebruikte versies dat moet worden overgeslagen, kan worden geconfigureerd met behulp van de para meter MaxUnusedAppTypeVersionsToKeep. |
@@ -456,7 +457,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |MaxFileOperationTimeout |Tijd in seconden, standaard waarde is 30 |Dynamisch|Geef een tijds duur in seconden op. De maximale time-out die is toegestaan voor de File Store-service bewerking. Aanvragen die een grotere time-out opgeven, worden geweigerd. |
 |MaxIndexedEmptyPartitions |Int, standaard waarde is 1000 |Dynamisch|Het maximum aantal lege partities dat in de cache met meldingen moet worden geïndexeerd voor het synchroniseren van de verbinding met clients. Eventuele lege partities boven dit nummer worden verwijderd uit de index in oplopende volg orde van de opzoek versie. Opnieuw verbinding maken met clients kan nog steeds synchroniseren en gemiste lege partitie-updates ontvangen; maar het synchronisatie protocol wordt duurder. |
 |MaxMessageSize |Int, standaard is 4\*1024\*1024 |Statisch|De maximale bericht grootte voor client knooppunt communicatie bij het gebruik van een naam. DOS-aanvals heffing; de standaard waarde is 4 MB. |
-|MaxNamingServiceHealthReports | Int, standaard waarde is 10 |Dynamisch|Het maximum aantal trage bewerkingen waarbij de naamgeving van Store-service rapporten niet in orde is. Als 0; alle trage bewerkingen worden verzonden. |
+|MaxNamingServiceHealthReports | int, standaard waarde is 10 |Dynamisch|Het maximum aantal trage bewerkingen waarbij de naamgeving van Store-service rapporten niet in orde is. Als 0; alle trage bewerkingen worden verzonden. |
 |MaxOperationTimeout |Tijd in seconden, standaard waarde is 600 |Dynamisch|Geef een tijds duur in seconden op. De maximale time-out die is toegestaan voor client bewerkingen. Aanvragen die een grotere time-out opgeven, worden geweigerd. |
 |MaxOutstandingNotificationsPerClient |Int, standaard waarde is 1000 |Dynamisch|Het maximum aantal openstaande meldingen voordat een client registratie geforceerd wordt gesloten door de gateway. |
 |MinReplicaSetSize | Int, standaard is 3 |Niet toegestaan| Het minimale aantal Naming Service replica's dat vereist is om te schrijven om een update te volt ooien. Als er minder replica's zijn dan deze die actief zijn in het systeem, weigert het betrouwbaarheids systeem updates voor het Naming Service archief totdat replica's worden hersteld. Deze waarde mag nooit meer zijn dan de TargetReplicaSetSize. |
@@ -468,7 +469,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |ServiceDescriptionCacheLimit | Int, standaard is 0 |Statisch| Het maximum aantal vermeldingen dat in de LRU-service beschrijvings cache van de naamgevings Store-service wordt bijgehouden (ingesteld op 0 voor geen limiet). |
 |ServiceNotificationTimeout |Tijd in seconden, standaard waarde is 30 |Dynamisch|Geef een tijds duur in seconden op. De time-out die wordt gebruikt bij het leveren van service meldingen aan de client. |
 |StandByReplicaKeepDuration | Tijd in seconden, de standaard waarde is 3600,0 * 2 |Niet toegestaan| Geef een tijds duur in seconden op. Wanneer een Naming Service replica van een status omlaag terugkomt; mogelijk is deze al vervangen. Deze timer bepaalt hoe lang de FM de stand-by replica houdt voordat deze wordt genegeerd. |
-|TargetReplicaSetSize |Int, standaard is 7 |Niet toegestaan|Het aantal replica sets voor elke partitie van het Naming Service archief. Het verhogen van het aantal replica sets verhoogt het betrouwbaarheids niveau voor de informatie in het Naming Service archief; het verminderen van de wijziging waarvan de informatie verloren gaat als gevolg van knooppunt storingen; bij een verhoogde belasting van Windows Fabric en de hoeveelheid tijd die nodig is voor het uitvoeren van updates voor de naam gegevens.|
+|TargetReplicaSetSize |int, standaard is 7 |Niet toegestaan|Het aantal replica sets voor elke partitie van het Naming Service archief. Het verhogen van het aantal replica sets verhoogt het betrouwbaarheids niveau voor de informatie in het Naming Service archief; het verminderen van de wijziging waarvan de informatie verloren gaat als gevolg van knooppunt storingen; bij een verhoogde belasting van Windows Fabric en de hoeveelheid tijd die nodig is voor het uitvoeren van updates voor de naam gegevens.|
 
 ## <a name="nodebufferpercentage"></a>NodeBufferPercentage
 | **Parameter** | **Toegestane waarden** |**Upgrade beleid**| **Uitleg of korte beschrijving** |
@@ -504,10 +505,10 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-|Tellers |Tekenreeks | Dynamisch |Een door komma's gescheiden lijst met prestatie meter items die moeten worden verzameld. |
+|Diverse |Tekenreeks | Dynamisch |Een door komma's gescheiden lijst met prestatie meter items die moeten worden verzameld. |
 |IsEnabled |BOOL, default is True | Dynamisch |Vlag geeft aan of de prestatie meter verzameling op het lokale knoop punt is ingeschakeld. |
-|MaxCounterBinaryFileSizeInMB |Int, standaard waarde is 1 | Dynamisch |Maximale grootte (in MB) voor elk binair bestand voor prestatie meter items. |
-|NewCounterBinaryFileCreationIntervalInMinutes |Int, standaard waarde is 10 | Dynamisch |Het maximum interval (in seconden) waarna een nieuw binair bestand voor het prestatie meter item wordt gemaakt. |
+|MaxCounterBinaryFileSizeInMB |int, standaard waarde is 1 | Dynamisch |Maximale grootte (in MB) voor elk binair bestand voor prestatie meter items. |
+|NewCounterBinaryFileCreationIntervalInMinutes |int, standaard waarde is 10 | Dynamisch |Het maximum interval (in seconden) waarna een nieuw binair bestand voor het prestatie meter item wordt gemaakt. |
 |SamplingIntervalInSeconds |Int, standaard waarde is 60 | Dynamisch |Steekproef interval voor prestatie meter items die worden verzameld. |
 
 ## <a name="placementandloadbalancing"></a>PlacementAndLoadBalancing
@@ -562,12 +563,14 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |SwapPrimaryThrottlingEnabled | BOOL, default is False|Dynamisch| Bepaal of het wisselen van primaire beperking is ingeschakeld. |
 |SwapPrimaryThrottlingGlobalMaxValue | Int, standaard is 0 |Dynamisch| Het maximale aantal wissel-primaire replica's dat globaal is toegestaan. |
 |TraceCRMReasons |BOOL, default is True |Dynamisch|Hiermee geeft u op of redenen voor door CRM uitgegeven verplaatsingen naar het kanaal operationele gebeurtenissen moeten worden opgespoord. |
-|UpgradeDomainConstraintPriority | Int, standaard waarde is 1| Dynamisch|Bepaalt de prioriteit van de beperking van het upgrade domein: 0: hard; 1: zacht; negatief: negeren. |
+|UpgradeDomainConstraintPriority | int, standaard waarde is 1| Dynamisch|Bepaalt de prioriteit van de beperking van het upgrade domein: 0: hard; 1: zacht; negatief: negeren. |
 |UseMoveCostReports | BOOL, default is False | Dynamisch|Hiermee geeft u op dat de LB het kosten element van de functie score moet negeren. Als gevolg van een potentieel groot aantal verplaatsingen voor een betere evenwichtige plaatsing. |
 |UseSeparateSecondaryLoad | BOOL, default is True | Dynamisch|Instelling die bepaalt of een andere secundaire belasting gebruikt. |
 |ValidatePlacementConstraint | BOOL, default is True |Dynamisch| Hiermee wordt aangegeven of de PlacementConstraint-expressie voor een service wordt gevalideerd wanneer de ServiceDescription van een service wordt bijgewerkt. |
 |ValidatePrimaryPlacementConstraintOnPromote| BOOL, default is TRUE |Dynamisch|Hiermee wordt aangegeven of de PlacementConstraint-expressie voor een service wordt geëvalueerd voor de primaire voor keur bij een failover. |
 |VerboseHealthReportLimit | Int, standaard waarde is 20 | Dynamisch|Hiermee definieert u het aantal keren dat een replica moet worden uitgevoerd voordat er een status waarschuwing wordt gerapporteerd (als uitgebreide status rapportage is ingeschakeld). |
+|NodeLoadsOperationalTracingEnabled | BOOL, default is True |Dynamisch|Configuratie waarmee knooppunt operationele structurele tracering in het gebeurtenis archief kan worden geladen. |
+|NodeLoadsOperationalTracingInterval | Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (20) | Dynamisch|Geef een tijds duur in seconden op. Het interval voor het traceren van knoop punten die worden geladen in het gebeurtenis Archief voor elk service domein. |
 
 ## <a name="reconfigurationagent"></a>ReconfigurationAgent
 
@@ -578,8 +581,8 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |GracefulReplicaShutdownMaxDuration|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (120)|Dynamisch|Geef een tijds duur in seconden op. De duur waarvoor het systeem wacht voordat de service-hosts worden afgesloten waarvan de replica's zijn vastgelopen. Als deze waarde is ingesteld op 0, worden replica's niet weer gegeven om te worden gesloten.|
 |NodeDeactivationMaxReplicaCloseDuration | Tijd in seconden, standaard waarde is 900 |Dynamisch|Geef een tijds duur in seconden op. De duur waarvoor het systeem wacht voordat de service-hosts worden beëindigd die replica's hebben die tijdens het deactiveren van het knoop punt zijn vastgelopen. |
 |PeriodicApiSlowTraceInterval | Tijd in seconden, standaard waarde is 5 minuten |Dynamisch| Geef een tijds duur in seconden op. PeriodicApiSlowTraceInterval definieert het interval waarover trage API-aanroepen worden overschreven door de API-monitor. |
-|ReplicaChangeRoleFailureRestartThreshold|int, standaard waarde is 10|Dynamisch| Geheel getal. Geef het aantal API-fouten op dat is opgetreden tijdens de primaire promotie waarna de actie voor automatisch beperken (replica opnieuw opstarten) wordt toegepast. |
-|ReplicaChangeRoleFailureWarningReportThreshold|int, standaard waarde is 2147483647|Dynamisch| Geheel getal. Geef het aantal API-fouten op dat wordt weer gegeven tijdens de primaire promotie, waarna het waarschuwings status rapport wordt gegenereerd.|
+|ReplicaChangeRoleFailureRestartThreshold|int, standaard waarde is 10|Dynamisch| Geheeltallige. Geef het aantal API-fouten op dat is opgetreden tijdens de primaire promotie waarna de actie voor automatisch beperken (replica opnieuw opstarten) wordt toegepast. |
+|ReplicaChangeRoleFailureWarningReportThreshold|int, standaard waarde is 2147483647|Dynamisch| Geheeltallige. Geef het aantal API-fouten op dat wordt weer gegeven tijdens de primaire promotie, waarna het waarschuwings status rapport wordt gegenereerd.|
 |ServiceApiHealthDuration | Tijd in seconden, standaard waarde is 30 minuten |Dynamisch| Geef een tijds duur in seconden op. ServiceApiHealthDuration definieert hoelang er wordt gewacht tot een service-API wordt uitgevoerd voordat er een melding wordt gegenereerd. |
 |ServiceReconfigurationApiHealthDuration | Tijd in seconden, standaard waarde is 30 |Dynamisch| Geef een tijds duur in seconden op. ServiceReconfigurationApiHealthDuration definieert hoelang er wordt gewacht tot een service-API wordt uitgevoerd voordat er een slechte melding wordt gegenereerd. Dit geldt voor API-aanroepen die van invloed zijn op de beschik baarheid.|
 
@@ -588,10 +591,10 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval|Time span, standaard waarde is gebruikelijk:: time span:: FromMilliseconds (15)|Statisch|Geef een tijds duur in seconden op. Bepaalt de hoeveelheid tijd die de Replicator wacht na het ontvangen van een bewerking voordat een bevestiging wordt verzonden. Andere bewerkingen die tijdens deze periode worden ontvangen, zullen hun bevestigingen terugsturen in één bericht-> het netwerk verkeer te verminderen, maar mogelijk de door Voer van de Replicator te verminderen.|
 |MaxCopyQueueSize|uint, standaard waarde is 1024|Statisch|Dit is de maximum waarde definieert de aanvankelijke grootte voor de wachtrij die replicatie bewerkingen onderhoudt. Houd er rekening mee dat dit een macht van 2 moet zijn. Als tijdens runtime de wachtrij wordt uitgebreid naar deze grootte, wordt de bewerking tussen de primaire en secundaire replicaties vertraagd.|
-|MaxPrimaryReplicationQueueMemorySize|uint, standaard waarde is 0|Statisch|Dit is de maximum waarde van de primaire replicatie wachtrij in bytes.|
+|MaxPrimaryReplicationQueueMemorySize|Uint, standaard waarde is 0|Statisch|Dit is de maximum waarde van de primaire replicatie wachtrij in bytes.|
 |MaxPrimaryReplicationQueueSize|uint, standaard waarde is 1024|Statisch|Dit is het maximum aantal bewerkingen dat kan voor komen in de primaire replicatie wachtrij. Houd er rekening mee dat dit een macht van 2 moet zijn.|
 |MaxReplicationMessageSize|uint, standaard waarde is 52428800|Statisch|De maximale bericht grootte van de replicatie bewerkingen. De standaard waarde is 50 MB.|
-|MaxSecondaryReplicationQueueMemorySize|uint, standaard waarde is 0|Statisch|Dit is de maximum waarde van de secundaire replicatie wachtrij in bytes.|
+|MaxSecondaryReplicationQueueMemorySize|Uint, standaard waarde is 0|Statisch|Dit is de maximum waarde van de secundaire replicatie wachtrij in bytes.|
 |MaxSecondaryReplicationQueueSize|uint, standaard waarde is 2048|Statisch|Dit is het maximum aantal bewerkingen dat kan voor komen in de secundaire replicatie wachtrij. Houd er rekening mee dat dit een macht van 2 moet zijn.|
 |QueueHealthMonitoringInterval|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (30)|Statisch|Geef een tijds duur in seconden op. Deze waarde bepaalt de tijds periode die door de Replicator wordt gebruikt voor het bewaken van waarschuwings-en fout gebeurtenissen in de wachtrij voor replicatie bewerkingen. Met de waarde ' 0 ' wordt de status controle uitgeschakeld |
 |QueueHealthWarningAtUsagePercent|uint, standaard waarde is 80|Statisch|Deze waarde bepaalt het gebruik van de replicatie wachtrij (in procenten) waarna waarschuwing wordt gegeven over hoog wachtrij gebruik. Dit doet u na een respijt interval van QueueHealthMonitoringInterval. Als het gebruik van de wachtrij onder dit percentage ligt in het respijt interval|
@@ -856,7 +859,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |MaxCopyQueueSize |Uint, standaard waarde is 16384 | Statisch |Dit is de maximum waarde definieert de aanvankelijke grootte voor de wachtrij die replicatie bewerkingen onderhoudt. Houd er rekening mee dat dit een macht van 2 moet zijn. Als tijdens runtime de wachtrij wordt uitgebreid naar deze grootte, wordt de bewerking tussen de primaire en secundaire replicaties vertraagd. |
 |MaxPrimaryReplicationQueueMemorySize |Uint, standaard waarde is 0 | Statisch |Dit is de maximum waarde van de primaire replicatie wachtrij in bytes. |
 |MaxPrimaryReplicationQueueSize |Uint, standaard waarde is 8192 | Statisch |Dit is het maximum aantal bewerkingen dat kan voor komen in de primaire replicatie wachtrij. Houd er rekening mee dat dit een macht van 2 moet zijn. |
-|MaxReplicationMessageSize |Uint, standaard waarde is 52428800 | Statisch | De maximale bericht grootte van de replicatie bewerkingen. De standaard waarde is 50 MB. |
+|MaxReplicationMessageSize |uint, standaard waarde is 52428800 | Statisch | De maximale bericht grootte van de replicatie bewerkingen. De standaard waarde is 50 MB. |
 |MaxSecondaryReplicationQueueMemorySize |Uint, standaard waarde is 0 | Statisch |Dit is de maximum waarde van de secundaire replicatie wachtrij in bytes. |
 |MaxSecondaryReplicationQueueSize |Uint, standaard waarde is 16384 | Statisch |Dit is het maximum aantal bewerkingen dat kan voor komen in de secundaire replicatie wachtrij. Houd er rekening mee dat dit een macht van 2 moet zijn. |
 |ReplicatorAddress |teken reeks, standaard waarde is ' localhost: 0 ' | Statisch | Het eind punt in de vorm van een teken reeks-' IP: poort ' die wordt gebruikt door de Windows Fabric Replicator om verbindingen met andere replica's tot stand te brengen om bewerkingen te kunnen verzenden/ontvangen. |

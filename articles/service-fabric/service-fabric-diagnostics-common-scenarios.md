@@ -1,16 +1,14 @@
 ---
 title: Veelvoorkomende Scenario's voor Azure Service Fabric diagnosticeren
 description: Meer informatie over het oplossen van veelvoorkomende bewakings-en diagnose scenario's in azure Service Fabric-toepassingen.
-author: srrengar
 ms.topic: article
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: b012e37bef7fe21e869fc3af415ca57b74c61dd8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645783"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906946"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Veelvoorkomende scenario's met Service Fabric diagnosticeren
 
@@ -134,6 +132,7 @@ Controleer deze koppelingen voor de volledige lijst met prestatie meter items op
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* [Veelvoorkomende fouten bij het activeren van code pakketten opzoeken](./service-fabric-diagnostics-code-package-errors.md)
 * [Stel waarschuwingen in AI in](../azure-monitor/app/alerts.md) om een melding te ontvangen over wijzigingen in prestaties of gebruik
 * [Slimme detectie in Application Insights](../azure-monitor/app/proactive-diagnostics.md) voert een proactieve analyse uit van de telemetrie die naar AI wordt verzonden om u te waarschuwen over mogelijke prestatie problemen
 * Meer informatie over Azure Monitor-logboeken waarin u wordt [gewaarschuwd](../log-analytics/log-analytics-alerts.md) voor hulp bij detectie en diagnose.

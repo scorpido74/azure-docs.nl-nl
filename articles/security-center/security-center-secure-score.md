@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
-ms.openlocfilehash: bd896cbee98bd61518c9a093f86e088f0b018d73
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 79154a13722654ef5cbbe7ac99bb67d4b761fe60
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156655"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903439"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Verbeter uw beveiligde Score in Azure Security Center
 
@@ -34,7 +34,7 @@ Met zoveel services die beveiligings voordelen bieden, is het vaak moeilijk om t
 ## <a name="secure-score-calculation"></a>Berekening van beveiligde Score
 
 Security Center imiteert het werk van een beveiligings analist, bekijkt uw beveiligings aanbevelingen en past geavanceerde algoritmen toe om te bepalen hoe belang rijk elke aanbeveling is.
-Azure Security Center controleert u voortdurend actieve aanbevelingen en berekent uw beveiligde Score op basis hiervan. de Score van een aanbeveling is afgeleid van de ernst en de best practices die van invloed zijn op de beveiliging van uw werk belasting.
+Azure Security Center bekijkt voortdurend uw actieve aanbevelingen en berekent uw beveiligde Score op basis hiervan, de Score van een aanbeveling is afgeleid van de ernst en de best practices die van invloed zijn op de beveiliging van uw werk belasting.
 
 Security Center biedt u ook een **algemene beveiligde Score**. 
 

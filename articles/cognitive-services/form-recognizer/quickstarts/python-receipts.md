@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 6b6fa03337e857c6dda43f8c6ae41713d8c3dbe0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2b800cbc2f836d415afbb53a8415e9e400f40d0e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774198"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901964"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Snelstartgids: ontvangst gegevens ophalen met behulp van de formulier Recognizer REST API met python
 
 In deze Quick Start gebruikt u de Azure Form Recognizer REST API met python voor het uitpakken en identificeren van relevante informatie in de Amerikaanse verkoop kwitanties.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-
-> [!IMPORTANT]
-> Deze Snelstartgids maakt gebruik van de API voor formulier herkenning v 2.0. Als uw abonnement zich niet in de `West US 2` of `West Europe` regio bevindt, moet u de v 1.0 API gebruiken. Volg in plaats daarvan de [Snelstartgids voor v 1.0](./curl-train-extract-v1.md) .
 
 ## <a name="prerequisites"></a>Vereisten
 

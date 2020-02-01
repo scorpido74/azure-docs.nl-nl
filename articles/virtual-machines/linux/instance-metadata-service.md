@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: ad3f9329ce79812e908fd15037e2054ca5a8906e
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 5b3f3eea4d23d84d684648d19fb67258d1ea2050
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045151"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906993"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -104,7 +104,7 @@ De volgende tabel bevat een verwijzing naar andere Data Format-Api's die mogelij
 
 API | Standaard gegevens indeling | Andere indelingen
 --------|---------------------|--------------
-/Instance | json | tekst
+/instance | json | tekst
 /scheduledevents | json | geen
 /attested | json | geen
 
@@ -126,7 +126,7 @@ Aanvragen moeten ook een `Metadata: true`-header bevatten om ervoor te zorgen da
 
 Als er geen gegevens element is gevonden of een ongeldige aanvraag is, retourneert de Instance Metadata Service standaard HTTP-fouten. Bijvoorbeeld:
 
-HTTP-statuscode | Reden
+HTTP-status code | Reden
 ----------------|-------
 200 OK |
 400 ongeldige aanvraag | `Metadata: true` header ontbreekt of de indeling ontbreekt tijdens het uitvoeren van een query op een Leaf-knoop punt
@@ -471,10 +471,10 @@ name | Naam van de virtuele machine | 2017-04-02
 offer | Informatie over de installatie kopie van de virtuele machine weer geven en die alleen aanwezig is voor installatie kopieën die vanuit de Azure-installatie kopie galerie | 2017-04-02
 besturingssysteemtype | Linux of Windows | 2017-04-02
 placementGroupId | [Plaatsings groep](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) van de schaalset voor virtuele machines | 2017-08-01
-plannen | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) met naam, product en uitgever voor een virtuele machine als dit een Azure Marketplace-installatie kopie is | 2018-04-02
+Fonds | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) met naam, product en uitgever voor een virtuele machine als dit een Azure Marketplace-installatie kopie is | 2018-04-02
 platformUpdateDomain |  [Domein bijwerken](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
 platformFaultDomain | [Fout domein](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
-provider | Provider van de virtuele machine | 10-01-2018
+providers | Provider van de virtuele machine | 10-01-2018
 publicKeys | [Verzameling van open bare sleutels](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) die zijn toegewezen aan de virtuele machine en de paden | 2018-04-02
 publisher | Uitgever van de VM-installatie kopie | 2017-04-02
 resourceGroupName | [Resource groep](../../azure-resource-manager/management/overview.md) voor uw virtuele machine | 2017-08-01
@@ -542,7 +542,7 @@ De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie 
 
 Meta gegevens van exemplaren kunnen worden opgehaald in Windows via het hulp programma Power shell `curl`:
 
- ```bash
+ ```powershell
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
 ```
 
@@ -820,7 +820,7 @@ Verification successful
 Gegevens | Beschrijving
 -----|------------
 nonce | Door de gebruiker opgegeven optionele teken reeks met de aanvraag. Als er geen nonce in de aanvraag is opgegeven, wordt de huidige UTC-tijds tempel geretourneerd
-plannen | Een virtuele machine in een Azure Marketplace-installatie kopie [plannen](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) , met naam, product en uitgever
+Fonds | Een virtuele machine in een Azure Marketplace-installatie kopie [plannen](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) , met naam, product en uitgever
 timestamp/createdOn | De UTC-tijds tempel waarop het eerste ondertekende document is gemaakt
 timestamp/expiresOn | De UTC-tijds tempel waarop het ondertekende document verloopt
 vmId |  De [unieke id](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) voor de virtuele machine
@@ -929,7 +929,7 @@ diskSizeGB | Grootte van de schijf in GB
 installatiekopie   | Virtuele harde schijf voor installatie kopie van bron gebruiker
 LUN     | Nummer van de logische eenheid van de schijf
 managedDisk | Beheerde schijf parameters
-name    | Schijfnaam
+name    | Schijf naam
 schijven     | Virtuele harde schijf
 writeAcceleratorEnabled | Hiermee wordt aangegeven of Write Accelerator is ingeschakeld op de schijf
 
@@ -944,7 +944,7 @@ diskSizeGB | Grootte van de schijf in GB
 encryptionSettings | Versleutelings instellingen voor de schijf
 installatiekopie   | Virtuele harde schijf voor installatie kopie van bron gebruiker
 managedDisk | Beheerde schijf parameters
-name    | Schijfnaam
+name    | Schijf naam
 besturingssysteemtype  | Type besturings systeem dat is opgenomen in de schijf
 schijven     | Virtuele harde schijf
 writeAcceleratorEnabled | Hiermee wordt aangegeven of Write Accelerator is ingeschakeld op de schijf

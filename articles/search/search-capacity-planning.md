@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4020a40b87c32bdbd07e390a0d04769cb3d47f7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 349587063c528fef1cbdb09d84e61e82443d45d1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112125"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906728"
 ---
 # <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>Partities en replica's schalen om capaciteit toe te voegen voor de werk belasting van query's en indexen in azure Cognitive Search
 
@@ -24,12 +24,12 @@ Resource configuratie is beschikbaar wanneer u een service instelt op de [basis-
 Als u minder SUs-resultaten gebruikt, wordt er een proportionele lagere factuur in rekening gebracht. De facturering is van kracht zolang de service is ingesteld. Als u tijdelijk geen service gebruikt, is de enige manier om facturering te voor komen door de service te verwijderen en deze vervolgens opnieuw te maken wanneer u deze nodig hebt.
 
 > [!Note]
-> Als u een service verwijdert, wordt alles verwijderd. Er is geen faciliteit in azure Cognitive Search voor het maken van back-ups en het herstellen van blijvende Zoek gegevens. Als u een bestaande index voor een nieuwe service opnieuw wilt implementeren, moet u het programma uitvoeren dat is gebruikt om het oorspronkelijk te maken en te laden. 
+> Als u een service verwijdert, wordt alle inhoud van de service ook verwijderd. Azure Cognitive Search bevat geen optie voor het maken van back-ups en het herstellen van persistente zoekgegevens. Als u een bestaande index voor een nieuwe service opnieuw wilt implementeren, moet u het programma uitvoeren dat is gebruikt om het oorspronkelijk te maken en te laden. 
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: replica's en partities
 Replica's en partities zijn de primaire resources die back-ups maken van een zoek service.
 
-| Resource | Definitie |
+| Bron | Definitie |
 |----------|------------|
 |*Partities* | Biedt index opslag en I/O voor lees-en schrijf bewerkingen (bijvoorbeeld bij het opnieuw samen stellen of vernieuwen van een index).|
 |*Replicas* | Exemplaren van de zoek service, worden voornamelijk gebruikt voor taak verdeling van query bewerkingen. Elke replica fungeert altijd als host voor één exemplaar van een index. Als u 12 replica's hebt, hebt u 12 kopieën van elke index die in de service is geladen.|
@@ -89,10 +89,10 @@ Alle standaard-en opslag geoptimaliseerde zoek services kunnen de volgende combi
 | **1 replica** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 replica's** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 replica's** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 replica's** |4 SU |8 SU |12 SU |16 SU |24 SU |N.v.t. |
-| **5 replica's** |5 SU |10 SU |15 SU |20 SU |30 SU |N.v.t. |
-| **6 replica's** |6 SU |12 SU |18 SU |24 SU |36 SU |N.v.t. |
-| **12 replica's** |12 SU |24 SU |36 SU |N.v.t. |N.v.t. |N.v.t. |
+| **4 replica's** |4 SU |8 SU |12 SU |16 SU |24 SU |N/A |
+| **5 replica's** |5 SU |10 SU |15 SU |20 SU |30 SU |N/A |
+| **6 replica's** |6 SU |12 SU |18 SU |24 SU |36 SU |N/A |
+| **12 replica's** |12 SU |24 SU |36 SU |N/A |N/A |N/A |
 
 SUs, prijzen en capaciteit worden gedetailleerd beschreven op de Azure-website. Zie [prijs informatie](https://azure.microsoft.com/pricing/details/search/)voor meer informatie.
 
@@ -123,7 +123,7 @@ Hoge Beschik baarheid voor Azure Cognitive Search is van toepassing op query's e
 > [!NOTE]
 > U kunt nieuwe velden toevoegen aan een Azure Cognitive Search-index zonder de index opnieuw samen te stellen. De waarde van het nieuwe veld is null voor alle documenten die al in de index staan.
 
-Als u de index beschikbaarheid tijdens het opnieuw opbouwen wilt behouden, moet u een kopie van de index met een andere naam op dezelfde service hebben, of een kopie van de index met dezelfde naam op een andere service, en vervolgens omleidings-of failover-logica in uw code opgeven.
+Wanneer de index opnieuw wordt samengesteld, is er een periode waarin de gegevens aan de nieuwe index worden toegevoegd. Als u ervoor wilt zorgen dat uw oude index gedurende deze tijd beschikbaar blijft, moet u een kopie van de oude index met een andere naam op dezelfde service hebben, of een kopie van de index met dezelfde naam op een andere service en geef vervolgens omleidings-of failover-logica in uw code op.
 
 ## <a name="disaster-recovery"></a>Herstel na noodgeval
 Er is momenteel geen ingebouwd mechanisme voor herstel na nood gevallen. Het toevoegen van partities of replica's zou de verkeerde strategie zijn voor het bereiken van herstel na nood gevallen. De meest voorkomende benadering is het toevoegen van redundantie op service niveau door een tweede zoek service in een andere regio in te stellen. Net als bij het opnieuw opbouwen van een index, moet de omleiding of failover-logica afkomstig zijn van uw code.

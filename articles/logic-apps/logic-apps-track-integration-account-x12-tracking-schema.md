@@ -1,30 +1,30 @@
 ---
 title: X12 tracking-schema's voor B2B-berichten
-description: X12-tracking schema's maken waarmee B2B-berichten in integratie accounts voor Azure Logic Apps met Enterprise Integration Pack worden gecontroleerd
+description: Tracking schema's maken voor het bewaken van X12-berichten voor Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/27/2017
-ms.openlocfilehash: 6f2356600f5b6a637da731c650b26d968092e2f6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/01/2020
+ms.openlocfilehash: 5b2df194761ebc167e67498a985960a4fce35f19
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791722"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905298"
 ---
-# <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Schema's maken voor het bijhouden van X12-berichten in integratie accounts voor Azure Logic Apps
+# <a name="create-schemas-for-tracking-x12-messages-in-azure-logic-apps"></a>Schema's maken voor het bijhouden van X12-berichten in Azure Logic Apps
 
 Als hulp bij het bewaken van geslaagde, fout-en bericht eigenschappen voor Business-to-Business (B2B)-trans acties, kunt u deze X12-tracking schema's gebruiken in uw integratie account:
 
 * Tracking schema voor X12-transactie sets
-* Tracking schema voor het bevestigen van X12-transactie sets
+* Tracking schema voor bevestiging van X12-transactie sets
 * X12 Interchange tracking-schema
-* Tracking-schema voor X12 Interchange-bevestiging
+* Tracking schema voor X12 uitwisselings bevestiging
 * Tracking schema van X12-functionele groep
-* Tracking schema voor het bevestigen van X12-functie groepen
+* Tracking schema voor bevestiging van X12-functie groep
 
 ## <a name="x12-transaction-set-tracking-schema"></a>Tracking schema voor X12-transactie sets
 
@@ -49,35 +49,35 @@ Als hulp bij het bewaken van geslaagde, fout-en bericht eigenschappen voor Busin
       "isMessageFailed": "",
       "isTechnicalAcknowledgmentExpected": "",
       "isFunctionalAcknowledgmentExpected": "",
-      "needAk2LoopForValidMessages":  "",
+      "needAk2LoopForValidMessages": "",
       "segmentsCount": ""
    }
 }
 ```
 
-| Eigenschap | Type | Beschrijving |
-| --- | --- | --- |
-| senderPartnerName | Tekenreeks | De partner naam van de afzender van het X12-bericht. Beschrijving |
-| receiverPartnerName | Tekenreeks | Partner naam van X12-bericht ontvanger. Beschrijving |
-| senderQualifier | Tekenreeks | Partner kwalificatie verzenden. Ingevuld |
-| senderIdentifier | Tekenreeks | Verzend de partner-id. Ingevuld |
-| receiverQualifier | Tekenreeks | Partner kwalificatie ontvangen. Ingevuld |
-| receiverIdentifier | Tekenreeks | De partner-id ontvangen. Ingevuld |
-| overeenkomst | Tekenreeks | De naam van de X12-overeenkomst waarop de berichten worden omgezet. Beschrijving |
-| richting | Enum | Richting van de berichten stroom, ontvangen of verzenden. Ingevuld |
-| interchangeControlNumber | Tekenreeks | Uitwisselings controle nummer. Beschrijving |
-| functionalGroupControlNumber | Tekenreeks | Het functionele controle nummer. Beschrijving |
-| transactionSetControlNumber | Tekenreeks | Controle nummer van de transactie set. Beschrijving |
-| CorrelationMessageId | Tekenreeks | Correlatie bericht-ID. Een combi natie van {licentieovereenkomst} {*GroupControlNumber*} {TransactionSetControlNumber}. Beschrijving |
-| Message type | Tekenreeks | Transactieset of document type. Beschrijving |
-| isMessageFailed | Booleaans | Of het X12-bericht is mislukt. Ingevuld |
-| isTechnicalAcknowledgmentExpected | Booleaans | Of de technische bevestiging is geconfigureerd in de X12-overeenkomst. Ingevuld |
-| isFunctionalAcknowledgmentExpected | Booleaans | Of de functionaliteits bevestiging is geconfigureerd in de X12-overeenkomst. Ingevuld |
-| needAk2LoopForValidMessages | Booleaans | Hiermee wordt aangegeven of de AK2-lus vereist is voor een geldig bericht. Ingevuld |
-| segmentsCount | Geheel getal | Aantal segmenten in de X12-transactieset. Beschrijving |
-||||
+| Eigenschap | Verplicht | Type | Beschrijving |
+|----------|----------|------|-------------|
+| senderPartnerName | Nee | Tekenreeks | Partner naam van de afzender van het X12-bericht |
+| receiverPartnerName | Nee | Tekenreeks | Partner naam van X12-bericht ontvanger |
+| senderQualifier | Ja | Tekenreeks | Partner kwalificatie verzenden |
+| senderIdentifier | Ja | Tekenreeks | Partner-id verzenden |
+| receiverQualifier | Ja | Tekenreeks | Partner kwalificatie ontvangen |
+| receiverIdentifier | Ja | Tekenreeks | Partner-id ontvangen |
+| agreementName | Nee | Tekenreeks | De naam van de X12-overeenkomst waarop de berichten worden omgezet |
+| richting | Ja | Enum | Richting van de berichten stroom, die `receive` of `send` |
+| interchangeControlNumber | Nee | Tekenreeks | Uitwisselings controle nummer |
+| functionalGroupControlNumber | Nee | Tekenreeks | Functioneel controle nummer |
+| transactionSetControlNumber | Nee | Tekenreeks | Controle nummer van transactie set |
+| CorrelationMessageId | Nee | Tekenreeks | ID van correlatie bericht, een combi natie van {*GroupControlNumber*} {TransactionSetControlNumber} |
+| Message type | Nee | Tekenreeks | Transactieset of document type |
+| isMessageFailed | Ja | Booleaans | Of het X12-bericht is mislukt |
+| isTechnicalAcknowledgmentExpected | Ja | Booleaans | Of de technische bevestiging is geconfigureerd in de X12-overeenkomst |
+| isFunctionalAcknowledgmentExpected | Ja | Booleaans | Of de functie bevestiging is geconfigureerd in de X12-overeenkomst |
+| needAk2LoopForValidMessages | Ja | Booleaans | Of de AK2-lus vereist is voor een geldig bericht |
+| segmentsCount | Nee | Geheel getal | Aantal segmenten in de X12-transactieset |
+|||||
 
-## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>Tracking schema voor het bevestigen van X12-transactie sets
+## <a name="x12-transaction-set-acknowledgment-tracking-schema"></a>Tracking schema voor bevestiging van X12-transactie sets
 
 ```json
 {
@@ -111,33 +111,33 @@ Als hulp bij het bewaken van geslaagde, fout-en bericht eigenschappen voor Busin
 }
 ```
 
-| Eigenschap | Type | Beschrijving |
-| --- | --- | --- |
-| senderPartnerName | Tekenreeks | De partner naam van de afzender van het X12-bericht. Beschrijving |
-| receiverPartnerName | Tekenreeks | Partner naam van X12-bericht ontvanger. Beschrijving |
-| senderQualifier | Tekenreeks | Partner kwalificatie verzenden. Ingevuld |
-| senderIdentifier | Tekenreeks | Verzend de partner-id. Ingevuld |
-| receiverQualifier | Tekenreeks | Partner kwalificatie ontvangen. Ingevuld |
-| receiverIdentifier | Tekenreeks | De partner-id ontvangen. Ingevuld |
-| overeenkomst | Tekenreeks | De naam van de X12-overeenkomst waarop de berichten worden omgezet. Beschrijving |
-| richting | Enum | Richting van de berichten stroom, ontvangen of verzenden. Ingevuld |
-| interchangeControlNumber | Tekenreeks | Uitwisselings controle nummer van de functionele bevestiging. De waarde wordt alleen gevuld voor de verzend kant waar de functie bevestiging wordt ontvangen voor de berichten die naar de partner worden verzonden. Beschrijving |
-| functionalGroupControlNumber | Tekenreeks | Het controle nummer van de functionele groep van de functionele bevestiging. De waarde wordt alleen gevuld voor de verzend kant waar de functie bevestiging wordt ontvangen voor de berichten die naar de partner worden verzonden. Beschrijving |
-| isaSegment | Tekenreeks | Het ISA-segment van het bericht. De waarde wordt alleen gevuld voor de verzend kant waar de functie bevestiging wordt ontvangen voor de berichten die naar de partner worden verzonden. Beschrijving |
-| gsSegment | Tekenreeks | GS-segment van het bericht. De waarde wordt alleen gevuld voor de verzend kant waar de functie bevestiging wordt ontvangen voor de berichten die naar de partner worden verzonden. Beschrijving |
-| respondingfunctionalGroupControlNumber | Tekenreeks | Het uitwisselings controle nummer reageert. Beschrijving |
-| respondingFunctionalGroupId | Tekenreeks | De functionele groep-ID die wordt toegewezen aan AK101 in de bevestiging. Beschrijving |
-| respondingtransactionSetControlNumber | Tekenreeks | Er wordt een controle nummer voor de transactie set antwoord. Beschrijving |
-| respondingTransactionSetId | Tekenreeks | De Trans Action Set-ID die wordt toegewezen aan AK201 in de bevestiging. Beschrijving |
-| Status code | Booleaans | Status code voor bevestiging van transactie set. Ingevuld |
-| segmentsCount | Enum | Status code van bevestiging. Toegestane waarden zijn **geaccepteerd**, **afgewezen**en **AcceptedWithErrors**. Ingevuld |
-| processingStatus | Enum | Verwerkings status van de bevestiging. Toegestane waarden worden **ontvangen**, **gegenereerd**en **verzonden**. Ingevuld |
-| CorrelationMessageId | Tekenreeks | Correlatie bericht-ID. Een combi natie van {licentieovereenkomst} {*GroupControlNumber*} {TransactionSetControlNumber}. Beschrijving |
-| isMessageFailed | Booleaans | Of het X12-bericht is mislukt. Ingevuld |
-| ak2Segment | Tekenreeks | Bevestiging voor een transactie groep binnen de ontvangen functionele groep. Beschrijving |
-| ak3Segment | Tekenreeks | Hiermee worden fouten in een gegevens segment gerapporteerd. Beschrijving |
-| ak5Segment | Tekenreeks | Hiermee wordt aangegeven of de trans actie die in het AK2-segment is geïdentificeerd, wordt geaccepteerd of afgewezen en waarom. Beschrijving |
-||||
+| Eigenschap | Verplicht | Type | Beschrijving |
+|----------|----------|------|-------------|
+| senderPartnerName | Nee | Tekenreeks | Partner naam van de afzender van het X12-bericht |
+| receiverPartnerName | Nee | Tekenreeks | Partner naam van X12-bericht ontvanger |
+| senderQualifier | Ja | Tekenreeks | Partner kwalificatie verzenden |
+| senderIdentifier | Ja | Tekenreeks | Partner-id verzenden |
+| receiverQualifier | Ja | Tekenreeks | Partner kwalificatie ontvangen |
+| receiverIdentifier | Ja | Tekenreeks | Partner-id ontvangen |
+| agreementName | Nee | Tekenreeks | De naam van de X12-overeenkomst waarop de berichten worden omgezet |
+| richting | Ja | Enum | Richting van de berichten stroom, die `receive` of `send` |
+| interchangeControlNumber | Nee | Tekenreeks | Uitwisselings controle nummer van de functie bevestiging. De waarde wordt alleen ingevuld voor de verzend kant waar de functie bevestiging wordt ontvangen voor de berichten die naar de partner worden verzonden. |
+| functionalGroupControlNumber | Nee | Tekenreeks | Controle nummer van functionele groep van de functie bevestiging. De waarde wordt alleen ingevuld voor de verzend kant waar de functie bevestiging wordt ontvangen voor de berichten die worden verzonden naar de partner |
+| isaSegment | Nee | Tekenreeks | Het ISA-segment van het bericht. De waarde wordt alleen ingevuld voor de verzend kant waar de functie bevestiging wordt ontvangen voor de berichten die worden verzonden naar de partner |
+| gsSegment | Nee | Tekenreeks | GS-segment van het bericht. De waarde wordt alleen ingevuld voor de verzend kant waar de functie bevestiging wordt ontvangen voor de berichten die worden verzonden naar de partner |
+| respondingfunctionalGroupControlNumber | Nee | Tekenreeks | Het aflopende uitwisselings controle nummer |
+| respondingFunctionalGroupId | Nee | Tekenreeks | De groeps-ID van de reactie die wordt toegewezen aan AK101 in de bevestiging |
+| respondingtransactionSetControlNumber | Nee | Tekenreeks | Het controle nummer van de transactieset die reageert |
+| respondingTransactionSetId | Nee | Tekenreeks | De trans actie set-ID die wordt toegewezen aan AK201 in de bevestiging |
+| Status code | Ja | Booleaans | Status code van bevestigings transactie set |
+| segmentsCount | Ja | Enum | Status code van de bevestiging met de volgende toegestane waarden: `Accepted`, `Rejected`en `AcceptedWithErrors` |
+| processingStatus | Ja | Enum | Verwerkings status van de bevestiging met de volgende toegestane waarden: `Received`, `Generated`en `Sent` |
+| CorrelationMessageId | Nee | Tekenreeks | ID van correlatie bericht, een combi natie van {*GroupControlNumber*} {TransactionSetControlNumber} |
+| isMessageFailed | Ja | Booleaans | Of het X12-bericht is mislukt |
+| ak2Segment | Nee | Tekenreeks | Bevestiging voor een transactieset binnen de ontvangen functionele groep |
+| ak3Segment | Nee | Tekenreeks | Hiermee worden fouten in een gegevens segment gerapporteerd |
+| ak5Segment | Nee | Tekenreeks | Hiermee wordt aangegeven of de trans actie die in het AK2-segment is geïdentificeerd, wordt geaccepteerd of afgewezen en waarom |
+|||||
 
 ## <a name="x12-interchange-tracking-schema"></a>X12 Interchange tracking-schema
 
@@ -169,30 +169,30 @@ Als hulp bij het bewaken van geslaagde, fout-en bericht eigenschappen voor Busin
 }
 ```
 
-| Eigenschap | Type | Beschrijving |
-| --- | --- | --- |
-| senderPartnerName | Tekenreeks | De partner naam van de afzender van het X12-bericht. Beschrijving |
-| receiverPartnerName | Tekenreeks | Partner naam van X12-bericht ontvanger. Beschrijving |
-| senderQualifier | Tekenreeks | Partner kwalificatie verzenden. Ingevuld |
-| senderIdentifier | Tekenreeks | Verzend de partner-id. Ingevuld |
-| receiverQualifier | Tekenreeks | Partner kwalificatie ontvangen. Ingevuld |
-| receiverIdentifier | Tekenreeks | De partner-id ontvangen. Ingevuld |
-| overeenkomst | Tekenreeks | De naam van de X12-overeenkomst waarop de berichten worden omgezet. Beschrijving |
-| richting | Enum | Richting van de berichten stroom, ontvangen of verzenden. Ingevuld |
-| interchangeControlNumber | Tekenreeks | Uitwisselings controle nummer. Beschrijving |
-| isaSegment | Tekenreeks | Message ISA-segment. Beschrijving |
-| isTechnicalAcknowledgmentExpected | Booleaans | Of de technische bevestiging is geconfigureerd in de X12-overeenkomst. Ingevuld |
-| isMessageFailed | Booleaans | Of het X12-bericht is mislukt. Ingevuld |
-| isa09 | Tekenreeks | X12-document uitwisselings datum. Beschrijving |
-| isa10 | Tekenreeks | X12-document uitwisselings tijd. Beschrijving |
-| isa11 | Tekenreeks | X12 Interchange Control-standaard-id. Beschrijving |
-| isa12 | Tekenreeks | Versie nummer van X12 Interchange Control. Beschrijving |
-| isa14 | Tekenreeks | Bevestiging van X12 is aangevraagd. Beschrijving |
-| isa15 | Tekenreeks | Indicator voor test of productie. Beschrijving |
-| isa16 | Tekenreeks | Element scheidings teken. Beschrijving |
-||||
+| Eigenschap | Verplicht | Type | Beschrijving |
+|----------|----------|------|-------------|
+| senderPartnerName | Nee | Tekenreeks | Partner naam van de afzender van het X12-bericht |
+| receiverPartnerName | Nee | Tekenreeks | Partner naam van X12-bericht ontvanger |
+| senderQualifier | Ja | Tekenreeks | Partner kwalificatie verzenden |
+| senderIdentifier | Ja | Tekenreeks | Partner-id verzenden |
+| receiverQualifier | Ja | Tekenreeks | Partner kwalificatie ontvangen |
+| receiverIdentifier | Ja | Tekenreeks | Partner-id ontvangen |
+| agreementName | Nee | Tekenreeks | De naam van de X12-overeenkomst waarop de berichten worden omgezet |
+| richting | Ja | Enum | Richting van de berichten stroom, die `receive` of `send` |
+| interchangeControlNumber | Nee | Tekenreeks | Uitwisselings controle nummer |
+| isaSegment | Nee | Tekenreeks | Message ISA-segment |
+| isTechnicalAcknowledgmentExpected | Booleaans | Of de technische bevestiging is geconfigureerd in de X12-overeenkomst  |
+| isMessageFailed | Ja | Booleaans | Of het X12-bericht is mislukt |
+| isa09 | Nee | Tekenreeks | X12-document uitwisselings datum |
+| isa10 | Nee | Tekenreeks | X12-document-uitwisselings tijd |
+| isa11 | Nee | Tekenreeks | X12 Interchange Control-standaard-id |
+| isa12 | Nee | Tekenreeks | Versie nummer van X12 Interchange Control |
+| isa14 | Nee | Tekenreeks | Bevestiging van X12 is aangevraagd |
+| isa15 | Nee | Tekenreeks | Indicator voor test of productie |
+| isa16 | Nee | Tekenreeks | Element scheidings teken |
+|||||
 
-## <a name="x12-interchange-acknowledgement-tracking-schema"></a>Tracking-schema voor X12 Interchange-bevestiging
+## <a name="x12-interchange-acknowledgment-tracking-schema"></a>Tracking schema voor X12 uitwisselings bevestiging
 
 ```json
 {
@@ -220,26 +220,26 @@ Als hulp bij het bewaken van geslaagde, fout-en bericht eigenschappen voor Busin
 }
 ```
 
-| Eigenschap | Type | Beschrijving |
-| --- | --- | --- |
-| senderPartnerName | Tekenreeks | De partner naam van de afzender van het X12-bericht. Beschrijving |
-| receiverPartnerName | Tekenreeks | Partner naam van X12-bericht ontvanger. Beschrijving |
-| senderQualifier | Tekenreeks | Partner kwalificatie verzenden. Ingevuld |
-| senderIdentifier | Tekenreeks | Verzend de partner-id. Ingevuld |
-| receiverQualifier | Tekenreeks | Partner kwalificatie ontvangen. Ingevuld |
-| receiverIdentifier | Tekenreeks | De partner-id ontvangen. Ingevuld |
-| overeenkomst | Tekenreeks | De naam van de X12-overeenkomst waarop de berichten worden omgezet. Beschrijving |
-| richting | Enum | Richting van de berichten stroom, ontvangen of verzenden. Ingevuld |
-| interchangeControlNumber | Tekenreeks | Uitwisselings controle nummer van de technische bevestiging die van partners wordt ontvangen. Beschrijving |
-| isaSegment | Tekenreeks | ISA-segment voor de technische bevestiging die van partners wordt ontvangen. Beschrijving |
-| respondingInterchangeControlNumber |Tekenreeks | Het uitwisselings controle nummer voor de technische bevestiging die van partners wordt ontvangen. Beschrijving |
-| isMessageFailed | Booleaans | Of het X12-bericht is mislukt. Ingevuld |
-| Status code | Enum | Status code van uitwisselings bevestiging. Toegestane waarden zijn **geaccepteerd**, **afgewezen**en **AcceptedWithErrors**. Ingevuld |
-| processingStatus | Enum | Bevestigings status. Toegestane waarden worden **ontvangen**, **gegenereerd**en **verzonden**. Ingevuld |
-| ta102 | Tekenreeks | Interchange date. Beschrijving |
-| ta103 | Tekenreeks | Uitwisselings tijd. Beschrijving |
-| ta105 | Tekenreeks | Code voor uitwisselings notities. Beschrijving |
-||||
+| Eigenschap | Verplicht | Type | Beschrijving |
+|----------|----------|------|-------------|
+| senderPartnerName | Nee | Tekenreeks | Partner naam van de afzender van het X12-bericht |
+| receiverPartnerName | Nee | Tekenreeks | Partner naam van X12-bericht ontvanger |
+| senderQualifier | Ja | Tekenreeks | Partner kwalificatie verzenden |
+| senderIdentifier | Ja | Tekenreeks | Partner-id verzenden |
+| receiverQualifier | Ja | Tekenreeks | Partner kwalificatie ontvangen |
+| receiverIdentifier | Ja | Tekenreeks | Partner-id ontvangen |
+| agreementName | Nee | Tekenreeks | De naam van de X12-overeenkomst waarop de berichten worden omgezet |
+| richting | Ja | Enum | Richting van de berichten stroom, die `receive` of `send` |
+| interchangeControlNumber | Nee | Tekenreeks | Uitwisselings controle nummer van de technische bevestigingen die van partners worden ontvangen |
+| isaSegment | Nee | Tekenreeks | ISA-segment voor de technische bevestigingen die van partners worden ontvangen |
+| respondingInterchangeControlNumber | Nee | Tekenreeks | Uitwisselings controle nummer voor de technische bevestigingen die van partners worden ontvangen |
+| isMessageFailed | Ja | Booleaans | Of het X12-bericht is mislukt |
+| Status code | Ja | Enum | Status code van uitwisselings bevestiging met de volgende toegestane waarden: `Accepted`, `Rejected`en `AcceptedWithErrors` |
+| processingStatus | Ja | Enum | Bevestigings status met de volgende toegestane waarden: `Received`, `Generated`en `Sent` |
+| ta102 | Nee | Tekenreeks | Uitwisselings datum |
+| ta103 | Nee | Tekenreeks | Uitwisselings tijd |
+| ta105 | Nee | Tekenreeks | Code voor uitwisselings notities |
+|||||
 
 ## <a name="x12-functional-group-tracking-schema"></a>Tracking schema van X12-functionele groep
 
@@ -273,32 +273,32 @@ Als hulp bij het bewaken van geslaagde, fout-en bericht eigenschappen voor Busin
 }
 ```
 
-| Eigenschap | Type | Beschrijving |
-| --- | --- | --- |
-| senderPartnerName | Tekenreeks | De partner naam van de afzender van het X12-bericht. Beschrijving |
-| receiverPartnerName | Tekenreeks | Partner naam van X12-bericht ontvanger. Beschrijving |
-| senderQualifier | Tekenreeks | Partner kwalificatie verzenden. Ingevuld |
-| senderIdentifier | Tekenreeks | Verzend de partner-id. Ingevuld |
-| receiverQualifier | Tekenreeks | Partner kwalificatie ontvangen. Ingevuld |
-| receiverIdentifier | Tekenreeks | De partner-id ontvangen. Ingevuld |
-| overeenkomst | Tekenreeks | De naam van de X12-overeenkomst waarop de berichten worden omgezet. Beschrijving |
-| richting | Enum | Richting van de berichten stroom, ontvangen of verzenden. Ingevuld |
-| interchangeControlNumber | Tekenreeks | Uitwisselings controle nummer. Beschrijving |
-| functionalGroupControlNumber | Tekenreeks | Het functionele controle nummer. Beschrijving |
-| gsSegment | Tekenreeks | Bericht GS-segment. Beschrijving |
-| isTechnicalAcknowledgmentExpected | Booleaans | Of de technische bevestiging is geconfigureerd in de X12-overeenkomst. Ingevuld |
-| isFunctionalAcknowledgmentExpected | Booleaans | Of de functionaliteits bevestiging is geconfigureerd in de X12-overeenkomst. Ingevuld |
-| isMessageFailed | Booleaans | Of het X12-bericht is mislukt. Ingevuld|
-| gs01 | Tekenreeks | Functionele id-code. Beschrijving |
-| gs02 | Tekenreeks | De code van de afzender van de toepassing. Beschrijving |
-| gs03 | Tekenreeks | De code van de ontvanger van de toepassing. Beschrijving |
-| gs04 | Tekenreeks | Datum van functionele groep. Beschrijving |
-| gs05 | Tekenreeks | Tijd van functionele groep. Beschrijving |
-| gs07 | Tekenreeks | Verantwoordelijke instantie code. Beschrijving |
-| gs08 | Tekenreeks | Code van versie/release/branche-id. Beschrijving |
-||||
+| Eigenschap | Verplicht | Type | Beschrijving |
+|----------|----------|------|-------------|
+| senderPartnerName | Nee | Tekenreeks | Partner naam van de afzender van het X12-bericht |
+| receiverPartnerName | Nee | Tekenreeks | Partner naam van X12-bericht ontvanger |
+| senderQualifier | Ja | Tekenreeks | Partner kwalificatie verzenden |
+| senderIdentifier | Ja | Tekenreeks | Partner-id verzenden |
+| receiverQualifier | Ja | Tekenreeks | Partner kwalificatie ontvangen |
+| receiverIdentifier | Ja | Tekenreeks | Partner-id ontvangen |
+| agreementName | Nee | Tekenreeks | De naam van de X12-overeenkomst waarop de berichten worden omgezet |
+| richting | Ja | Enum | De richting van de berichten stroom, ofwel ontvangen of verzenden |
+| interchangeControlNumber | Nee | Tekenreeks | Uitwisselings controle nummer |
+| functionalGroupControlNumber | Nee | Tekenreeks | Functioneel controle nummer |
+| gsSegment | Nee | Tekenreeks | Bericht GS-segment |
+| isTechnicalAcknowledgmentExpected | Ja | Booleaans | Of de technische bevestiging is geconfigureerd in de X12-overeenkomst |
+| isFunctionalAcknowledgmentExpected | Ja | Booleaans | Of de functie bevestiging is geconfigureerd in de X12-overeenkomst |
+| isMessageFailed | Ja | Booleaans | Of het X12-bericht is mislukt |
+| gs01 | Nee | Tekenreeks | Functionele id-code |
+| gs02 | Nee | Tekenreeks | Code van de afzender van de toepassing |
+| gs03 | Nee | Tekenreeks | Code van de ontvanger van de toepassing |
+| gs04 | Nee | Tekenreeks | Datum van functionele groep |
+| gs05 | Nee | Tekenreeks | Tijd van functionele groep |
+| gs07 | Nee | Tekenreeks | Verantwoordelijke instantie code |
+| gs08 | Nee | Tekenreeks | ID-code voor de versie, versie of branche |
+|||||
 
-## <a name="x12-functional-group-acknowledgement-tracking-schema"></a>Tracking schema voor het bevestigen van X12-functie groepen
+## <a name="x12-functional-group-acknowledgment-tracking-schema"></a>Tracking schema voor bevestiging van X12-functie groep
 
 ```json
 {
@@ -329,38 +329,37 @@ Als hulp bij het bewaken van geslaagde, fout-en bericht eigenschappen voor Busin
 }
 ```
 
-| Eigenschap | Type | Beschrijving |
-| --- | --- | --- |
-| senderPartnerName | Tekenreeks | De partner naam van de afzender van het X12-bericht. Beschrijving |
-| receiverPartnerName | Tekenreeks | Partner naam van X12-bericht ontvanger. Beschrijving |
-| senderQualifier | Tekenreeks | Partner kwalificatie verzenden. Ingevuld |
-| senderIdentifier | Tekenreeks | Verzend de partner-id. Ingevuld |
-| receiverQualifier | Tekenreeks | Partner kwalificatie ontvangen. Ingevuld |
-| receiverIdentifier | Tekenreeks | De partner-id ontvangen. Ingevuld |
-| overeenkomst | Tekenreeks | De naam van de X12-overeenkomst waarop de berichten worden omgezet. Beschrijving |
-| richting | Enum | Richting van de berichten stroom, ontvangen of verzenden. Ingevuld |
-| interchangeControlNumber | Tekenreeks | Uitwisselings controle nummer, dat voor de verzend zijde gevuld wanneer een technische bevestiging van partners wordt ontvangen. Beschrijving |
-| functionalGroupControlNumber | Tekenreeks | Het controle nummer van de functionele groep van de technische bevestiging, dat voor de verzend kant gevuld wordt wanneer er een technische bevestiging van partners wordt ontvangen. Beschrijving |
-| isaSegment | Tekenreeks | Hetzelfde als uitwisselings controle nummer, maar alleen in bepaalde gevallen ingevuld. Beschrijving |
-| gsSegment | Tekenreeks | Hetzelfde als het beheer nummer van de functionele groep, maar alleen in bepaalde gevallen ingevuld. Beschrijving |
-| respondingfunctionalGroupControlNumber | Tekenreeks | Controle nummer van de oorspronkelijke functionele groep. Beschrijving |
-| respondingFunctionalGroupId | Tekenreeks | Verwijst naar AK101 in de groeps-ID van de bevestigings functie. Beschrijving |
-| isMessageFailed | Booleaans | Of het X12-bericht is mislukt. Ingevuld |
-| Status code | Enum | Status code van bevestiging. Toegestane waarden zijn **geaccepteerd**, **afgewezen**en **AcceptedWithErrors**. Ingevuld |
-| processingStatus | Enum | Verwerkings status van de bevestiging. Toegestane waarden worden **ontvangen**, **gegenereerd**en **verzonden**. Ingevuld |
-| ak903 | Tekenreeks | Aantal ontvangen transactie sets. Beschrijving |
-| ak904 | Tekenreeks | Aantal transactie sets dat is geaccepteerd in de geïdentificeerde functionele groep. Beschrijving |
-| ak9Segment | Tekenreeks | Of de functionele groep die in het AK1-segment is geïdentificeerd, wordt geaccepteerd of afgewezen en waarom. Beschrijving |
-|||| 
+| Eigenschap | Verplicht | Type | Beschrijving |
+|----------|----------|------|-------------|
+| senderPartnerName | Nee | Tekenreeks | Partner naam van de afzender van het X12-bericht |
+| receiverPartnerName | Nee | Tekenreeks | Partner naam van X12-bericht ontvanger |
+| senderQualifier | Ja | Tekenreeks | Partner kwalificatie verzenden |
+| senderIdentifier | Ja | Tekenreeks | Partner-id verzenden |
+| receiverQualifier | Ja | Tekenreeks | Partner kwalificatie ontvangen |
+| receiverIdentifier | Ja | Tekenreeks | Partner-id ontvangen |
+| agreementName | Nee | Tekenreeks | De naam van de X12-overeenkomst waarop de berichten worden omgezet |
+| richting | Ja | Enum | Richting van de berichten stroom, die `receive` of `send` |
+| interchangeControlNumber | Nee | Tekenreeks | Het uitwisselings controle nummer, dat voor de verzend zijde gevuld wordt wanneer er een technische bevestiging van partners wordt ontvangen |
+| functionalGroupControlNumber | Nee | Tekenreeks | Controle nummer van functionele groep van de technische bevestigingen, die voor de verzend zijde gevuld wordt wanneer er een technische bevestiging van partners wordt ontvangen |
+| isaSegment | Nee | Tekenreeks | Hetzelfde als uitwisselings controle nummer, maar alleen in bepaalde gevallen ingevuld |
+| gsSegment | Nee | Tekenreeks | Hetzelfde als het beheer nummer van de functionele groep, maar alleen in bepaalde gevallen ingevuld |
+| respondingfunctionalGroupControlNumber | Nee | Tekenreeks | Controle nummer van de oorspronkelijke functionele groep |
+| respondingFunctionalGroupId | Nee | Tekenreeks | Verwijst naar AK101 in de ID van de bevestigings functionele groep |
+| isMessageFailed | Booleaans | Of het X12-bericht is mislukt |
+| Status code | Ja | Enum | Status code van de bevestiging met de volgende toegestane waarden: `Accepted`, `Rejected`en `AcceptedWithErrors` |
+| processingStatus | Ja | Enum | Verwerkings status van de bevestiging met de volgende toegestane waarden: `Received`, `Generated`en `Sent` |
+| ak903 | Nee | Tekenreeks | Aantal ontvangen transactie sets |
+| ak904 | Nee | Tekenreeks | Aantal transactie sets dat in de geïdentificeerde functionele groep is geaccepteerd |
+| ak9Segment | Nee | Tekenreeks | Of de in het AK1-segment geïdentificeerde functionele groep wordt geaccepteerd of afgewezen en waarom |
+|||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>Schema's voor het bijhouden van B2B-protocollen
 
 Voor informatie over schema's voor het bijhouden van B2B-protocollen raadpleegt u:
 
-* [Volgschema’s voor AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
+* [Volgschema’s voor AS2](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [Aangepaste B2B-tracking schema's](logic-apps-track-integration-account-custom-tracking-schema.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [bewaken van B2B-berichten](logic-apps-monitor-b2b-message.md).
-* Meer informatie over het [bijhouden van B2B-berichten in azure monitor-logboeken](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* [B2B-berichten bewaken met Azure Monitor-logboeken](../logic-apps/monitor-b2b-messages-log-analytics.md)

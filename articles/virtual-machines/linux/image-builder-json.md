@@ -7,12 +7,12 @@ ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4ac2c1266933716697a658b1ba88efd8c2f05d34
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760008"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905762"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
 
@@ -62,7 +62,7 @@ De locatie is de regio waar de aangepaste installatie kopie wordt gemaakt. Voor 
 - VS - oost
 - VS - oost 2
 - US - west-centraal
-- US - west
+- VS - west
 - US - west 2
 
 
@@ -317,6 +317,8 @@ Eigenschappen aanpassen:
 - **restartCheckCommand** – opdracht om te controleren of opnieuw opstarten is geslaagd (optioneel). 
 - **restartTimeout** : de time-out voor opnieuw opstarten is opgegeven als een teken reeks van grootte en eenheid. Bijvoorbeeld `5m` (5 minuten) of `2h` (2 uur). De standaard waarde is: ' 5 min. '
 
+### <a name="linux-restart"></a>Linux opnieuw opstarten  
+Er is geen Linux-aanpassings programma nodig. Als u echter Stuur Programma's installeert of onderdelen die opnieuw moeten worden opgestart, kunt u deze installeren en een herstart aanroepen met de shell-aanpassings programma. er is een 20min SSH-time-out voor de build-VM.
 
 ### <a name="powershell-customizer"></a>Power shell-aanpassing 
 Shell Customize ondersteunt het uitvoeren van Power shell-scripts en de inline-opdracht, maar de scripts moeten openbaar toegankelijk zijn voor de IB om ze te openen.

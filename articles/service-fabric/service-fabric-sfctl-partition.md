@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl-partitie
 description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het beheren van partities voor een service.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: c50fcb348dad7960be81f80ecb7c455dbffaadb3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c038ef3266a727bf6984a5bd88ca540a589380db
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646055"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905851"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 Zoek en beheer partities voor elke service.
@@ -38,10 +38,13 @@ Zoek en beheer partities voor elke service.
 ## <a name="sfctl-partition-data-loss"></a>sfctl-partitie gegevens-verlies
 Met deze API worden gegevens verlies voor de opgegeven partitie veroorzaakt.
 
-Er wordt een aanroep naar de OnDataLossAsync-API van de partitie geactiveerd.  Met deze API worden gegevens verlies voor de opgegeven partitie veroorzaakt. Er wordt een aanroep naar de OnDataLoss-API van de partitie geactiveerd. Het werkelijke gegevens verlies is afhankelijk van de opgegeven DataLossMode.  <br> -PartialDataLoss: alleen een quorum van replica's wordt verwijderd en OnDataLoss wordt geactiveerd voor de partitie, maar de werkelijke gegevens verlies is afhankelijk van de aanwezigheid van de replicatie in de vlucht.  <br> -FullDataLoss-alle replica's worden verwijderd, dus alle gegevens gaan verloren en OnDataLoss wordt geactiveerd. Deze API mag alleen worden aangeroepen met een stateful service als doel. Het aanroepen van deze API met een systeem service als het doel wordt niet aanbevolen.
+Er wordt een aanroep naar de OnDataLossAsync-API van de partitie geactiveerd.  Met deze API worden gegevens verlies voor de opgegeven partitie veroorzaakt. Er wordt een aanroep naar de OnDataLoss-API van de partitie geactiveerd. Het werkelijke gegevens verlies is afhankelijk van de opgegeven DataLossMode.
+- PartialDataLoss: alleen een quorum van replica's wordt verwijderd en OnDataLoss wordt geactiveerd voor de partitie, maar de werkelijke gegevens verlies is afhankelijk van de aanwezigheid van de replicatie in de vlucht.  
+- FullDataLoss: alle replica's worden verwijderd, dus alle gegevens gaan verloren en OnDataLoss wordt geactiveerd. Deze API mag alleen worden aangeroepen met een stateful service als doel. Het aanroepen van deze API met een systeem service als het doel wordt niet aanbevolen.
 
 > [!NOTE]   
 > Nadat deze API is aangeroepen, kan deze niet meer worden omgekeerd. Het aanroepen van CancelOperation stopt alleen de uitvoering en opschonen van de interne systeem status. Er worden geen gegevens hersteld als de opdracht ver genoeg is uitgevoerd om gegevens verlies te veroorzaken. Roep de GetDataLossProgress-API aan met dezelfde OperationId om informatie te retour neren over de bewerking die is gestart met deze API.
+
 ### <a name="arguments"></a>Argumenten
 
 |Argument|Beschrijving|

@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: d76338ccd4dcdf7a9a9a96baa1fb47ed5272d5ff
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8a8619da831dfa5b240bd93d3a046c49cc30affa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821971"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901399"
 ---
 | Bron | Standaard bestands shares | Premium-bestands shares |
 |----------|---------------|------------------------------------------|
@@ -27,4 +27,4 @@ ms.locfileid: "72821971"
 | Maximum lengte van de naam van het object (directory's en bestanden) | 2\.048 tekens | 2\.048 tekens |
 | Maximum pathname-onderdeel (in het pad \A\B\C\D is elke letter een onderdeel) | 255 tekens | 255 tekens |
 
-\* niet beschikbaar in alle regio's, Zie [regionale Beschik baarheid](../articles/storage/files/storage-files-planning.md#regional-availability) voor een lijst met beschik bare regio's.
+Zie [regionale Beschik baarheid](../articles/storage/files/storage-files-planning.md#regional-availability) voor meer informatie over beschik bare regio's \* beschikbaar in de meeste regio's.

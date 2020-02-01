@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0c1b09fbc425a80fe1f8d075c5a83455167073c3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b9ac15e6909498c38f618a24be6b010dc2774b07
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029985"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905498"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -147,25 +147,25 @@ Kopieer alle BLOB-containers, directory's en blobs van het opslag account naar e
 
 Kopieer een enkel object naar Blob Storage van Amazon Web Services (AWS) S3 met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor de AWS S3-bron.
   
-- azcopy CP "https://s3.amazonaws.com/[Bucket]/[object]" "https://[destaccount]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [SAS] "
+- azcopy CP "https://s3.amazonaws.com/ [Bucket]/[object]" "https://[destaccount]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [SAS] "
 
 Kopieer een volledige directory naar Blob Storage van AWS S3 door gebruik te maken van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor de AWS S3-bron.
 
-- azcopy CP "https://s3.amazonaws.com/[Bucket]/[map]" "https://[destaccount]. blob. core. Windows. net/[container]/[pad/naar/map]? [SAS] "--recursief = True
+- azcopy CP "https://s3.amazonaws.com/ [Bucket]/[map]" "https://[destaccount]. blob. core. Windows. net/[container]/[pad/naar/map]? [SAS] "--recursief = True
 
 Raadpleeg https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html voor een beter begrip van de tijdelijke aanduiding voor [map].
 
 Kopieer alle buckets naar Blob Storage vanuit Amazon Web Services (AWS) met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor de AWS S3-bron.
 
-- azcopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. core. Windows. net? [SAS] "--recursief = True
+- azcopy CP "https://s3.amazonaws.com/ " "https://[destaccount]. blob. core. Windows. net? [SAS] "--recursief = True
 
 Kopieer alle buckets naar Blob Storage vanuit een Amazon Web Services (AWS) regio met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor de AWS S3-bron.
 
-- azcopy CP "https://s3-[regio]. amazonaws. com/" "https://[destaccount]. blob. core. Windows. net? [SAS] "--recursief = True
+- azcopy CP "https://s3- [regio]. amazonaws. com/" "https://[destaccount]. blob. core. Windows. net? [SAS] "--recursief = True
 
 Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket naam. Net als bij de vorige voor beelden hebt u een toegangs sleutel en een SAS-token nodig. Zorg ervoor dat u de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY instelt voor de bron AWS S3.
 
-- azcopy CP "https://s3.amazonaws.com/[Bucket * naam]/" "https://[destaccount]. blob. core. Windows. net? [SAS] "--recursief = True
+- azcopy CP "https://s3.amazonaws.com/ [Bucket * naam]/" "https://[destaccount]. blob. core. Windows. net? [SAS] "--recursief = True
 
 ## <a name="options"></a>Opties
 
@@ -217,7 +217,7 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 
 **--no-schatting-MIME-type**                   Hiermee voor komt u dat AzCopy het inhouds type detecteert op basis van de extensie of inhoud van het bestand.
 
-**--** de teken reeks overschrijven de conflicterende bestanden en blobs op de bestemming overschrijven als deze vlag is ingesteld op True. Mogelijke waarden zijn ' True ', ' false ' en ' prompt '. (standaard ingesteld op ' True ')
+**--** de teken reeks overschrijven de conflicterende bestanden en blobs op de bestemming overschrijven als deze vlag is ingesteld op True. Mogelijke waarden zijn ' True ', ' false ', ' ifSourceNewer ' en ' prompt '. (standaard ingesteld op ' True ')
 
 **--pagina-BLOB-** teken reeks voor het uploaden van de pagina-blob naar Azure Storage met behulp van deze BLOB-laag. (standaard ' geen ')
 

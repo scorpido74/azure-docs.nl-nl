@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 662b2792a2e09603425b1988138326799334f323
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0912316d1c41f46e5dba74b58017f4fd5e8ed529
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973382"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909184"
 ---
 ### <a name="portal"></a>Portal
 
@@ -77,6 +77,7 @@ Er worden twee meldingen over de pop-up en geslaagd. Als u dit doet, kunt u de s
 Nu u de sleutel kluis en de schijf versleutelings hebt gemaakt en ingesteld, kunt u een virtuele machine implementeren met behulp van de versleuteling.
 Het implementatie proces van de VM is vergelijkbaar met het standaard implementatieproces, maar de enige verschillen zijn dat u de virtuele machine in dezelfde regio als uw andere resources moet implementeren en u ervoor kiest om een door de klant beheerde sleutel te gebruiken.
 
+1. Open de [koppeling schijf versleutelings sets](https://aka.ms/diskencryptionsets).
 1. Zoek naar **virtual machines** en selecteer **+ toevoegen** om een virtuele machine te maken.
 1. Op het tabblad **basis** selecteert u dezelfde regio als uw schijf versleutelings en Azure Key Vault.
 1. Vul op het tabblad **basis** de andere waarden in zoals u wilt.
@@ -96,6 +97,7 @@ Als u schijf versleuteling op uw bestaande schijven wilt beheren en configureren
 > [!CAUTION]
 > Als u schijf versleuteling wilt inschakelen op schijven die zijn gekoppeld aan een VM, moet u de virtuele machine stoppen.
 
+1. Open de [koppeling schijf versleutelings sets](https://aka.ms/diskencryptionsets).
 1. Ga naar een virtuele machine die zich in dezelfde regio bevindt als een van de schijf versleutelings sets.
 1. Open de virtuele machine en selecteer **stoppen**.
 

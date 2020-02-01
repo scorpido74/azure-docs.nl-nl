@@ -1,19 +1,19 @@
 ---
 title: Een cluster fout woordenlijst maken
 description: Meer informatie over het maken van een cluster fout woordenlijst.
-ms.reviewer: hrasheed
 author: karkrish
-ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: troubleshooting
-ms.date: 11/19/2019
 ms.author: v-todmc
-ms.openlocfilehash: ee9ed5374b12c3130d952770a4be6a759e37339a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.reviewer: hrasheed
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/19/2019
+ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156859"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905494"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: fouten bij het maken van een cluster
 
@@ -210,7 +210,7 @@ Deze fout wordt doorgaans gegenereerd wanneer er een tijdelijk probleem is of ee
 
 ### <a name="resolution"></a>Resolutie
 
-Controleer de [Azure-status](https://status.azure.com/status) pagina voor eventuele Azure-uitval die van invloed kunnen zijn op de cluster implementatie. Als er geen storingen zijn, voert u de cluster implementatie opnieuw uit.
+Controleer de [Azure-status](https://status.azure.com) pagina voor eventuele Azure-uitval die van invloed kunnen zijn op de cluster implementatie. Als er geen storingen zijn, voert u de cluster implementatie opnieuw uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 

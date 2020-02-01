@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 8b0e7d717ed5c06600adf261f7ce5b44f572adf9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6e9eddbec3cdc46c04f9c9ae78f937e20bfa8270
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774263"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901991"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Snelstartgids: ontvangst gegevens ophalen met behulp van de formulier Recognizer REST API met krul
 
 In deze Quick Start gebruikt u de Azure Form Recognizer REST API met krul om relevante informatie in Amerikaanse verkoop ontvangsten te extra heren en te identificeren.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-
-> [!IMPORTANT]
-> Deze Snelstartgids maakt gebruik van de API voor formulier herkenning v 2.0. Als uw abonnement zich niet in de `West US 2` of `West Europe` regio bevindt, moet u de v 1.0 API gebruiken. Volg in plaats daarvan de [Snelstartgids voor v 1.0](./curl-train-extract-v1.md) .
 
 ## <a name="prerequisites"></a>Vereisten
 
