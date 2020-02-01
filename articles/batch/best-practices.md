@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
 manager: gwallace
-ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c2acd09df51b942a08a85d96d907e064367377a7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026158"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900292"
 ---
 # <a name="azure-batch-best-practices"></a>Aanbevolen procedures Azure Batch
 
@@ -67,7 +67,7 @@ De levens duur van de groep kan variëren, afhankelijk van de toewijzings method
 
 Groeps toewijzings fouten kunnen zich voordoen op elk moment tijdens de eerste toewijzing of de volgende grootte. Dit kan worden veroorzaakt door tijdelijke capaciteits uitputting in een regio of fouten in andere Azure-Services waarop batch van afhankelijk is. Uw kern quotum is geen garantie, maar een limiet.
 
-### <a name="unplanned-downtime"></a>Niet-geplande uitvaltijd
+### <a name="unplanned-downtime"></a>Ongeplande downtime
 
 Het is mogelijk dat batch-Pools downtime-gebeurtenissen in azure kunnen ervaren. Het is belang rijk dat u rekening houdt met het plannen en ontwikkelen van uw scenario of werk stroom voor batch.
 
@@ -152,3 +152,15 @@ Hoewel zeldzame gevallen kan een taak intern opnieuw worden geprobeerd vanwege s
 ### <a name="security-isolation"></a>Beveiligings isolatie
 
 Als voor uw scenario het isoleren van taken van elkaar is vereist, moet u deze taken isoleren door ze in afzonderlijke groepen te laten staan. Een pool is de grens van beveiligings isolatie in batch, en twee groepen zijn standaard niet zichtbaar of kunnen met elkaar communiceren. Vermijd het gebruik van afzonderlijke batch-accounts als isolatie methode.
+
+## <a name="moving"></a>Verplaatsen
+
+### <a name="move-batch-account-across-regions"></a>Batch-account verplaatsen tussen regio's 
+
+Er zijn verschillende scenario's waarin u uw bestaande batch-account wilt verplaatsen van de ene regio naar een andere. U kunt bijvoorbeeld overschakelen naar een andere regio als onderdeel van de planning voor nood herstel.
+
+Azure Batch accounts kunnen niet worden verplaatst van de ene regio naar een andere. U kunt echter een Azure Resource Manager sjabloon gebruiken om de bestaande configuratie van uw batch-account te exporteren.  U kunt de resource vervolgens in een andere regio zetten door het batch-account te exporteren naar een sjabloon, de para meters te wijzigen zodat deze overeenkomen met de doel regio en vervolgens de sjabloon te implementeren in de nieuwe regio. Nadat u de sjabloon naar de nieuwe regio hebt geüpload, moet u certificaten, taak schema's en toepassings pakketten opnieuw maken. Als u de wijzigingen wilt door voeren en het batch-account wilt verplaatsen, moet u het oorspronkelijke batch-account of de resource groep verwijderen.  
+
+Voor meer informatie over Resource Manager en sjablonen raadpleegt [u Quick Start: Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+
+

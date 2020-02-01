@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 961a5cc3d8c90007e314f40ba98693d978fe8888
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0cd7625a8e89365ccb966c0aa847e5b337f33acc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771954"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900198"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Snelstartgids: een model voor een formulier herkenning trainen en formulier gegevens extra heren met behulp van de REST API met krul
 
 In deze Quick Start gebruikt u de Azure Form Recognizer REST API met krul naar Train-en Score-formulieren om sleutel-waardeparen en tabellen te extra heren.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-
-> [!IMPORTANT]
-> Deze Snelstartgids maakt gebruik van de API voor formulier herkenning v 2.0. Als uw abonnement zich niet in de `West US 2` of `West Europe` regio bevindt, moet u de v 1.0 API gebruiken. Volg in plaats daarvan de [Snelstartgids voor v 1.0](./curl-train-extract-v1.md) .
 
 ## <a name="prerequisites"></a>Vereisten
 

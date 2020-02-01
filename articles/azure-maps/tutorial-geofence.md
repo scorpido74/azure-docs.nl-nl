@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a88f03adab3beaea75ec2fa9a1c6f59b09739025
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153129"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899209"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Zelf studie: een geofence instellen met behulp van Azure Maps
 
@@ -174,7 +174,7 @@ Nadat de Postman-app is geïnstalleerd, volgt u deze stappen om de geofence van 
 
 In deze sectie maken we een gebeurtenis-handler die meldingen ontvangt. Deze gebeurtenis-handler moet de Operations Manager informeren over de invoer-en afsluit gebeurtenissen van alle apparatuur.
 
-We maken twee [Logic apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) Services om gebeurtenissen te verwerken, in te voeren en af te sluiten. Wanneer de gebeurtenissen in de Logic Apps trigger, worden er meer gebeurtenissen geactiveerd in de reeks. Het is verstandig om in dit geval e-mail berichten te verzenden naar de Operations Manager. De volgende afbeelding illustreert het maken van een Logic App voor Enter-gebeurtenis voor de geofence. Op eenzelfde manier kunt u een Logic App maken voor een Exit-gebeurtenis voor de geofence. U kun alle [ondersteunde gebeurtenis-handlers](https://docs.microsoft.com/azure/event-grid/event-handlers) bekijken voor meer informatie.
+We maken twee [Logic apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) Services voor het afhandelen van ENTER-en Exit-gebeurtenissen. Wanneer de gebeurtenissen in de Logic Apps trigger, worden er meer gebeurtenissen geactiveerd in de reeks. Het is verstandig om in dit geval e-mail berichten te verzenden naar de Operations Manager. De volgende afbeelding illustreert het maken van een Logic App voor Enter-gebeurtenis voor de geofence. Op eenzelfde manier kunt u een Logic App maken voor een Exit-gebeurtenis voor de geofence. U kun alle [ondersteunde gebeurtenis-handlers](https://docs.microsoft.com/azure/event-grid/event-handlers) bekijken voor meer informatie.
 
 1. Een Logic App maken in Azure-portal
 
@@ -194,7 +194,7 @@ We maken twee [Logic apps](https://docs.microsoft.com/azure/event-grid/event-han
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Een abonnement maken op Azure Maps-evenementen
 
-Azure Maps ondersteunt drie typen gebeurtenissen. U kunt de Azure Maps ondersteunde gebeurtenis typen [hier] (https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps ) bekijken. Er zijn twee verschillende gebeurtenis abonnementen nodig, één voor de gebeurtenis Enter en één voor de afsluit gebeurtenissen.
+Azure Maps ondersteunt drie typen gebeurtenissen. [Hier](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps) vindt u een overzicht van de gebeurtenistypen die door Azure Maps worden ondersteund. Er zijn twee verschillende gebeurtenis abonnementen nodig, één voor de gebeurtenis Enter en één voor de afsluit gebeurtenissen.
 
 Volg de stappen hieronder om een gebeurtenisabonnement te maken voor Enter-gebeurtenissen voor de geofence. U kunt zich op een vergelijkbare manier abonneren op Exit-gebeurtenissen voor de geofence.
 

@@ -8,19 +8,19 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 12/20/2019
-ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.openlocfilehash: 8fa123772ae380cd000c414c63bdf3908d279751
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437152"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906382"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Zelfstudie: Gegevensanomalieën binnen in realtime naar Azure Event Hubs verzonden gebeurtenissen visualiseren
 
 Met Azure Event Hubs kunt u Azure Stream Analytics gebruiken om de binnenkomende gegevens te controleren en de anomalieën te vinden, die u vervolgens kunt visualiseren in Power BI. Stel dat u duizenden apparaten hebt die constant realtimegegevens naar een Event Hub versturen, wat neerkomt op miljoenen gebeurtenissen per seconde. Hoe controleert u zoveel gegevens op afwijkingen, of fouten, in de gegevens? Bijvoorbeeld wat als de apparaten creditcard transacties verzenden en u wilt vastleggen waar u meerdere trans acties in meerdere landen of regio's binnen een tijds interval van vijf seconden hebt? Dit kan gebeuren als iemand creditcards steelt en deze dan gebruikt om tegelijkertijd op verschillende plaatsen ter wereld artikelen te kopen. 
 
-In deze zelfstudie simuleert u dit voorbeeld. U voert een toepassing uit die creditcardtransacties maakt en verzendt naar een Event Hub. Vervolgens leest u de gegevensstroom in realtime met Azure Stream Analytics, dat de geldige transacties van de ongeldige transacties scheidt, en vervolgens gebruikt u Power BI om de transacties die als ongeldig zijn gelabeld, visueel te identificeren.
+In deze zelfstudie simuleert u dit voorbeeld. U voert een toepassing uit die creditcardtransacties maakt en verzendt naar een Event Hub. Vervolgens leest u de gegevens stroom in realtime met Azure Stream Analytics, die de geldige trans acties van de ongeldige trans acties scheidt, en gebruikt u vervolgens Power BI om de trans acties die als ongeldig zijn gelabeld, visueel te identificeren.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -156,17 +156,17 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>App voor het produceren van testgebeurtenisgegevens uitvoeren
 
-De Event Hubs-[voorbeelden op GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) bevatten een [anomaliedetectie-app](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector) die testgegevens voor u produceert. Deze app simuleert het gebruik van creditcards door creditcardtransacties naar de Event Hub te schrijven, inclusief het af en toe schrijven van meerdere transacties voor dezelfde creditcard op meerdere locaties, zodat ze als anomalieën worden getagd. Volg deze stappen voor het uitvoeren van deze app: 
+De Event Hubs- [voor beelden op github](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) bevatten een anomalie detectie-app die test gegevens voor u produceert. Deze app simuleert het gebruik van creditcards door creditcardtransacties naar de Event Hub te schrijven, inclusief het af en toe schrijven van meerdere transacties voor dezelfde creditcard op meerdere locaties, zodat ze als anomalieën worden getagd. Volg deze stappen voor het uitvoeren van deze app: 
 
 1. Download de [Azure Event Hubs-voorbeelden](https://github.com/Azure/azure-event-hubs/archive/master.zip) van GitHub en pak het bestand lokaal uit.
+2. Ga naar de map **\azure-event-hubs-master\samples\DotNet\\** map. 
+3. Ga naar de map **Azure. Messa ging. EventHubs\AnomalyDetector\\** en dubbel klik op **AnomalyDetector. SLN** om de oplossing te openen in Visual Studio. 
 
-2. Ga naar de map \azure-event-hubs-master\samples\DotNet\AnomalyDetector\ en dubbelklik op AnomalyDetector.sln om de oplossing in Visual Studio te openen. 
-
+    Als u de oude versie van het voor beeld wilt gebruiken dat gebruikmaakt van het oude pakket micro soft. Azure. Event hubs, opent u de oplossing in de map **micro soft. Azure. EventHubs\AnomalyDetector** . 
 3. Open Program.cs en vervang **Event Hubs connection string** door de verbindingsreeks die u bij het uitvoeren van het script hebt opgeslagen. 
-
 4. Vervang **Event Hub name** door de naam van uw Event Hub. Klik op F5 om de toepassing uit te voeren. Deze begint met het verzenden van gebeurtenissen naar uw Event Hub en gaat door totdat er 1000 gebeurtenissen zijn verzonden. Er zijn een paar gevallen waarin u alleen gegevens kunt ophalen als de app actief is. Deze gevallen worden waar nodig aangegeven in de volgende instructies.
 
-## <a name="set-up-azure-stream-analytics"></a>Azure Stream Analytics installeren
+## <a name="set-up-azure-stream-analytics"></a>Azure Stream Analytics instellen
 
 U kunt nu gegevens streamen naar uw Event Hub. Als u die gegevens in een Power BI-visualisatie wilt gebruiken, begint u met het instellen van een Stream Analytics-taak om de gegevens op te halen, die vervolgens worden ingevoerd in de Power BI-visualisatie.
 
@@ -282,7 +282,7 @@ Deze query wordt gebruikt om de gegevens op te halen die uiteindelijk naar de Po
 
 5. Sluit het deelvenster Query.
 
-### <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
+### <a name="run-the-stream-analytics-job"></a>De Stream Analytics-taak uitvoeren
 
 Klik in de Stream Analytics-taak op **Start**, vervolgens op **Nu**  en daarna op **Start**. Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
 
@@ -306,7 +306,7 @@ Klik in de Stream Analytics-taak op **Start**, vervolgens op **Nu**  en daarna o
 
    ![Schermopname van het opgeven van de dashboardnaam.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-name.png)
 
-7. Klik op de dashboardpagina op **Tegel toevoegen**, selecteer **Aangepaste streaminggegevens**  in het gedeelte **REALTIMEGEGEVENS** en klik op **Volgende**.
+7. Klik op de pagina dash board op **tegel toevoegen**, selecteer **aangepaste streaminggegevens** in de sectie **realtime gegevens** en klik vervolgens op **volgende**.
 
    ![Schermafbeelding van het opgeven van de bron voor een tegel.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-real-time-data.png)
 

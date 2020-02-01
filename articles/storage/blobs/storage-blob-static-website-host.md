@@ -5,23 +5,23 @@ author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: cd3db902d713910de5a8199df85089d62569f9d7
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 97679ec48ee9120005118b6cacaf37e45657db08
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757573"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906625"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
 # <a name="tutorial-host-a-static-website-on-blob-storage"></a>Zelf studie: een statische website op Blob Storage hosten
 
-Deze zelfstudie is deel één van een serie. In dit deel leert u hoe u een statische website kunt bouwen en implementeren op Azure Storage. Wanneer u klaar bent, hebt u een statische website die openbaar toegankelijk is voor gebruikers. 
+In deze zelf studie leert u hoe u een statische website bouwt en implementeert voor Azure Storage. Wanneer u klaar bent, hebt u een statische website die openbaar toegankelijk is voor gebruikers. 
 
-In deel 1 van de reeks leert u het volgende:
+In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Het hosten van een statische website configureren
@@ -99,9 +99,9 @@ U hebt de zelfstudie voltooid en een statische website in Azure geïmplementeerd
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deel één van deze zelfstudie hebt u geleerd hoe u uw Azure Storage-account voor het hosten van een statische website configureert en hoe u een statische website op een Azure-eindpunt maakt en implementeert.
+In deze zelf studie hebt u geleerd hoe u uw Azure Storage-account kunt configureren voor het hosten van statische websites, en hoe u een statische website maakt en implementeert in een Azure-eind punt.
 
-Ga nu verder met deel twee, waarin u met Azure CDN een aangepast domein gaat configureren met SSL voor uw statische website.
+Vervolgens leert u hoe u een aangepast domein configureert met uw statische website.
 
 > [!div class="nextstepaction"]
-> [Azure CDN gebruiken om een aangepast domein met SSL in te schakelen voor een statische website](storage-blob-static-website-custom-domain.md)
+> [Een aangepast domein toewijzen aan een Azure Blob Storage-eind punt](storage-custom-domain-name.md)

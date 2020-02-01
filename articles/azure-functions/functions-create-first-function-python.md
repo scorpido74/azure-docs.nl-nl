@@ -4,18 +4,18 @@ description: Maak en implementeer serverloze python-code in de Cloud met behulp 
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 452c5aeab5d2a1092cb7d338d37e26a82d92396e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845504"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898563"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Quick Start: een HTTP-geactiveerde python-functie maken in azure
 
 In dit artikel gebruikt u opdracht regel Programma's voor het maken van een python-functie die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. Het volt ooien van deze Quick Start brengt een kleine prijs van een paar USD cent of minder in uw Azure-account.
 
-Er is ook een [versie op basis van Visual Studio code](/azure/python/tutorial-vs-code-serverless-python-01) van dit artikel.
+Er is ook een [versie op basis van Visual Studio code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-python) van dit artikel.
 
 ## <a name="prerequisites"></a>Vereisten
 

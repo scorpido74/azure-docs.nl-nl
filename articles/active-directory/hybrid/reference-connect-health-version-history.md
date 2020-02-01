@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: 8dd4e998-747b-4c52-b8d3-3900fe77d88f
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,23 +16,23 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c0d3055512145396f204fdb17e9375f65a0db3
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562328"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897032"
 ---
-# <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Releasegeschiedenis van versie
+# <a name="azure-ad-connect-health-version-release-history"></a>Versiegeschiedenis van status Azure AD Connect
 Het Azure Active Directory team werkt Azure AD Connect Health regel matig bij met nieuwe functies en functionaliteit. In dit artikel vindt u een overzicht van de versies en functies die zijn uitgebracht.  
 
 > [!NOTE]
-> Connect Health-Agents worden automatisch bijgewerkt wanneer er een nieuwe versie wordt uitgebracht. Zorg ervoor dat de instellingen voor automatisch bijwerken zijn ingeschakeld in Azure Portal. 
+> Connect Health-Agents worden automatisch bijgewerkt wanneer er een nieuwe versie wordt uitgebracht. Zorg ervoor dat de instellingen voor automatisch bijwerken zijn ingeschakeld in Azure Portal.
 >
 
 Azure AD Connect Health voor synchronisatie is geïntegreerd met Azure AD Connect-installatie. Meer informatie over het Azure AD Connect van de [release geschiedenis](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) voor functie feedback, stemmen bij [verbindings status van gebruikers Voice Channel](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
-## <a name="july-2019"></a>2019 juli
+## <a name="july-2019"></a>Juli 2019
 **Agent update**
 * Azure AD Connect Health Agent voor AD FS (versie 3.1.59.0) 
    1. Tekst wijziging in TestWindowsTransport
@@ -58,7 +59,7 @@ Azure AD Connect Health voor synchronisatie is geïntegreerd met Azure AD Connec
 * Azure AD Connect Health Agent voor AD FS (versie 3.1.46.0) 
    1. Het controle proces voor dubbele SPN-waarschuwingen voor ADFS oplossen
 
-## <a name="march-2019"></a>2019 maart
+## <a name="march-2019"></a>Maart 2019
 **Agent update:** 
 * Azure AD Connect Health Agent voor AD DS (versie 3.1.41.0)  
    1. .NET-versie verzameling
@@ -156,7 +157,7 @@ Azure AD Connect Health voor synchronisatie is geïntegreerd met Azure AD Connec
 **Agent update:**
 
  * Azure AD Connect Health-Agent voor synchronisatie (versie 3.0.129.0) uitgebracht met Azure AD Connect versie 1.1.649.0
-<br></br> Er is een probleem opgelost met versie compatibiliteit tussen Azure AD Connect en Azure AD Connect Health Agent voor synchronisatie. Dit probleem is van invloed op klanten die Azure AD Connect in-place upgrade uitvoeren naar versie 1.1.647.0, maar momenteel de status agent versie 3.0.127.0 hebben. Na de upgrade kan de Health-Agent geen status gegevens meer verzenden over Azure AD Connect synchronisatie service naar Azure AD Health Service. Met deze oplossing wordt de status agent versie 3.0.129.0 geïnstalleerd tijdens Azure AD Connect in-place upgrade. Versie 3.0.129.0 van Health Agent heeft geen compatibiliteits probleem met Azure AD Connect versie 1.1.649.0.
+<br></br> Er is een probleem opgelost met versie compatibiliteit tussen Azure AD Connect en Azure AD Connect Health Agent voor synchronisatie. Dit probleem is van invloed op klanten die Azure AD Connect in-place upgrade uitvoeren op versie 1.1.647.0, maar die momenteel versie 3.0.127.0 van Health Agent hebben. Na de upgrade kan de Health-Agent geen status gegevens meer verzenden over Azure AD Connect synchronisatie service naar Azure AD Health Service. Met deze oplossing wordt de versie 3.0.129.0 van de status agent geïnstalleerd tijdens Azure AD Connect in-place upgrade. Versie 3.0.129.0 van Health Agent heeft geen compatibiliteits probleem met Azure AD Connect versie 1.1.649.0.
 
 ## <a name="july-2017"></a>2017 juli
 **Agent update:**

@@ -8,18 +8,24 @@ ms.topic: include
 ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: b0f93f950b55052ea8d8b31538c47226413dc82a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 58e9156091702718dccd75eb4a57e5b6d8c1f073
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176126"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896333"
 ---
 ## <a name="access-the-media-services-api"></a>Toegang kunt krijgen tot de Media Services API
 
 Om verbinding te maken met Azure Media Services API's, gebruikt u de service-principal-verificatie van Azure Active Directory. Met de volgende opdracht wordt een Azure AD-toepassing gemaakt en een service-principal aan de account gekoppeld. De geretourneerde waarden moet u gebruiken om uw toepassing te configureren.
 
-Voordat u het script uitvoert, vervangt u de `amsaccount` en `amsResourceGroup` met de namen die u hebt gekozen bij het maken van deze resources. `amsaccount` is de naam van de Azure Media Services-account waaraan de service-principal moet worden gekoppeld.
+Voordat u het script uitvoert, moet u de `amsaccount` en `amsResourceGroup` vervangen door de namen die u hebt gekozen bij het maken van deze resources. `amsaccount` is de naam van de Azure Media Services-account waaraan de service-principal moet worden gekoppeld.
+
+Als u toegang hebt tot meerdere abonnementen, stelt u eerst het actieve abonnement in op het abonnement waar het Media Services-account is gemaakt.
+
+```azurecli
+az account set --subscription subscriptionId
+```
 
 De volgende opdracht retourneert een `json`-uitvoer:
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 78654dfd5a11219d39d53b4042157333656f9aa3
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f5bd6b741f85f35fe03c941ed09728354d6b3d2d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834758"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905714"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -124,7 +124,7 @@ Het [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-
 
 Raadpleeg de [referentie documentatie](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) voor meer informatie.
 
-Maak de instellingen voor de tijd reeks als een woordenlijst object. Stel de `time_column_name` in op het `day_datetime` veld in de gegevensset. Definieer de para meter `grain_column_names` om ervoor te zorgen dat **twee afzonderlijke time-series groepen** voor de gegevens worden gemaakt. een voor Store A en B. tot slot stelt u de `max_horizon` in op 50 om te voors pellen op de hele testset. Stel een venster voor een prognose in op 10 Peri Oden met `target_rolling_window_size`en geef één vertraging op voor de doel waarden voor twee Peri Oden vooruit met de para meter `target_lags`. Het is raadzaam om `max_horizon`, `target_rolling_window_size` en `target_lags` in te stellen op ' auto ', waarmee deze waarden automatisch voor u worden gedetecteerd. In het onderstaande voor beeld zijn ' automatische instellingen ' gebruikt voor deze paramaters. 
+Maak de instellingen voor de tijd reeks als een woordenlijst object. Stel de `time_column_name` in op het `day_datetime` veld in de gegevensset. Definieer de para meter `grain_column_names` om ervoor te zorgen dat **twee afzonderlijke time-series groepen** voor de gegevens worden gemaakt. een voor Store A en B. tot slot stelt u de `max_horizon` in op 50 om te voors pellen op de hele testset. Stel een venster voor een prognose in op 10 Peri Oden met `target_rolling_window_size`en geef één vertraging op voor de doel waarden voor twee Peri Oden vooruit met de para meter `target_lags`. Het is raadzaam om `max_horizon`, `target_rolling_window_size` en `target_lags` in te stellen op ' auto ', waarmee deze waarden automatisch voor u worden gedetecteerd. In het onderstaande voor beeld zijn ' automatische instellingen ' gebruikt voor deze para meters. 
 
 ```python
 time_series_settings = {
@@ -226,7 +226,7 @@ Bereken RMSE (root mean Error) tussen de `actual_labels` werkelijke waarden en d
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 
-rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
+rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
 

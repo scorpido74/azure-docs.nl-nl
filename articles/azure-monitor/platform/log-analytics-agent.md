@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/24/2019
-ms.openlocfilehash: 8e563ae095cf39cdce3e671d4099d2bf1592100a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/29/2020
+ms.openlocfilehash: d43b580f60f5ae8d2782cf9762b02aa1360e5a40
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513623"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901200"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Logboek gegevens verzamelen met de Log Analytics-agent
 
@@ -89,9 +89,9 @@ De volgende tabel geeft een overzicht van de pakketten die vereist zijn voor de 
 |-----------------|------------|----------------|
 |Glibc |    GNU C-bibliotheek | 2.5-12 
 |Openssl    | OpenSSL-bibliotheken | 1.0. x of 1.1. x |
-|Curl | Krul webclient | 7.15.5 |
+|Ezelsoor | Krul webclient | 7.15.5 |
 |Python-ctypes | | 
-|PAM | Pluggable Authentication Modules | | 
+|PAM | Pluggable verificatie modules | | 
 
 >[!NOTE]
 >Rsyslog of syslog-ng is vereist voor het verzamelen van syslog-berichten. De standaard syslog-daemon op versie 5 van Red Hat Enterprise Linux, CentOS en Oracle Linux-versie (sysklog) wordt niet ondersteund voor de verzameling van syslog. Als u syslog-gegevens uit deze versie van deze distributies wilt verzamelen, moet de rsyslog-daemon worden geïnstalleerd en geconfigureerd om sysklog te vervangen.
@@ -106,6 +106,7 @@ Hieronder vindt u de informatie over de proxy-en firewall configuratie die is ve
 
 |Agentresource|Poorten |Richting |HTTPS-controle overslaan|
 |------|---------|--------|--------|   
+|OMS *. Azure. com |Poort 443 |Uitgaand |Ja |
 |*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
 |*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
 |*.blob.core.windows.net |Poort 443 |Uitgaand|Ja |  

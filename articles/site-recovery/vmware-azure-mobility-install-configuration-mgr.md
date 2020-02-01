@@ -5,18 +5,18 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 50f8b5b4412e02692bf2b5d57b7f0dee27c2a25a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 235b96cfd2da0c097bc576c63f5bd1c8ed224781
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842696"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896024"
 ---
 # <a name="automate-mobility-service-installation"></a>De installatie van de Mobility-service automatiseren
 
 In dit artikel wordt beschreven hoe u de installatie en updates voor de Mobility Service-agent in [Azure site Recovery](site-recovery-overview.md)kunt automatiseren.
 
-Wanneer u Site Recovery implementeert voor herstel na nood gevallen van on-premises VMware-Vm's en fysieke servers naar Azure, installeert u de Mobility Service-agent op elke computer die u wilt repliceren. De Mobility-service legt gegevens op de computer vast en stuurt deze door naar de Site Recovery process-server voor replicatie. U kunt de Mobility-service op verschillende manieren implementeren:
+Wanneer u Site Recovery implementeert voor herstel na nood gevallen van on-premises VMware-Vm's en fysieke servers naar Azure, installeert u de Mobility Service-agent op elke computer die u wilt repliceren. De Mobility-service legt gegevens op de computer vast en stuurt deze door naar de Site Recovery process-server voor replicatie. U kunt de Mobility-service op een aantal manieren implementeren:
 
 - **Push-installatie**: laat site Recovery de Mobility Service-agent installeren wanneer u replicatie inschakelt voor een computer in de Azure Portal.
 - **Hand matige installatie**: Installeer de Mobility-service hand matig op elke computer. Meer [informatie](vmware-physical-mobility-service-overview.md) over push en hand matige installatie.
@@ -28,17 +28,15 @@ Automatische installatie en update biedt een oplossing als:
 - Uw bedrijfs beleid vereist dat wacht woorden periodiek worden gewijzigd. U moet een wacht woord opgeven voor de push-installatie.
 - Uw beveiligings beleid staat het toevoegen van Firewall uitzonderingen voor specifieke computers niet toe.
 - U fungeert als hosting serviceprovider en wilt geen referenties voor de computer van de klant opgeven die nodig zijn voor een push-installatie met Site Recovery.
-- U moet de voorzichtige installatie op veel servers tegelijkertijd schalen.
+- U moet de installatie van agents naar een groot aantal servers tegelijkertijd schalen.
 - U wilt installaties en upgrades plannen tijdens geplande onderhouds Vensters.
-
-
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor de geautomatiseerde installatie hebt u het volgende nodig:
+Als u de installatie wilt automatiseren, hebt u de volgende items nodig:
 
-- Een geïmplementeerde oplossing voor software-installatie, zoals [Configuration Manager](https://docs.microsoft.com/configmgr/) of [JetPatch](https://jetpatch.com/microsoft-azure-site-recovery/). 
--  Implementatie vereisten in [Azure](tutorial-prepare-azure.md) en [on-premises](vmware-azure-tutorial-prepare-on-premises.md) voor VMware-herstel na nood gevallen, of voor herstel na nood gevallen voor de [fysieke server](physical-azure-disaster-recovery.md) . Raadpleeg ook de [ondersteunings vereisten](vmware-physical-azure-support-matrix.md) voor herstel na nood gevallen.
+- Een geïmplementeerde oplossing voor software-installatie, zoals [Configuration Manager](/configmgr/) of [JetPatch](https://jetpatch.com/microsoft-azure-site-recovery/).
+- Implementatie vereisten in [Azure](tutorial-prepare-azure.md) en [on-premises](vmware-azure-tutorial-prepare-on-premises.md) voor VMware-herstel na nood gevallen, of voor herstel na nood gevallen voor de [fysieke server](physical-azure-disaster-recovery.md) . Bekijk de [ondersteunings vereisten](vmware-physical-azure-support-matrix.md) voor herstel na nood gevallen.
 
 ## <a name="prepare-for-automated-deployment"></a>Automatische implementatie voorbereiden
 
@@ -46,57 +44,59 @@ De volgende tabel bevat een overzicht van de hulpprogram ma's en processen voor 
 
 **Hulpprogramma** | **Details** | **Schriften**
 --- | --- | ---
-**Configuratiebeheer** | 1. Controleer of u de hierboven vermelde [vereisten](#prerequisites) hebt. <br/><br/>2. Implementeer herstel na nood gevallen door de bron omgeving in te stellen, inclusief het downloaden van een bestand met de Site Recovery configuratie server als een VMware-VM met behulp van een OVF-sjabloon.<br/><br/> 2. u registreert de configuratie server bij de Site Recovery-service, stelt de doel-Azure-omgeving in en configureert een replicatie beleid.<br/><br/> 3. voor geautomatiseerde implementatie van Mobility-Services maakt u een netwerk share met de configuratie server wachtwoordzin en de Mobility service-installatie bestanden.<br/><br/> 4. u maakt een Configuration Manager-pakket met de installatie of updates en bereidt de implementatie van de Mobility-service voor.<br/><br/> 5. u kunt vervolgens replicatie naar Azure inschakelen voor de computers waarop de Mobility-service is geïnstalleerd. | [Automatiseren met Configuration Manager](#automate-with-configuration-manager).
-**JetPatch** | 1. Controleer of u de hierboven vermelde [vereisten](#prerequisites) hebt. <br/><br/> 2. Implementeer herstel na nood gevallen door de bron omgeving in te stellen, met inbegrip van het downloaden en implementeren van JetPatch agent Manager voor Azure Site Recovery in uw Site Recovery omgeving, met behulp van een OVF-sjabloon.<br/><br/> 2. u registreert de configuratie server bij Site Recovery, stelt de doel-Azure-omgeving in en configureert een replicatie beleid.<br/><br/> 3. voor automatische implementatie initialiseert en voltooit u de configuratie van het JetPatch agent-beheer.<br/><br/> 4. in JetPatch kunt u een Site Recovery-beleid maken om de implementatie en upgrade van de Mobility Service-agent te automatiseren. <br/><br/> 5. u kunt vervolgens replicatie naar Azure inschakelen voor de computers waarop de Mobility-service is geïnstalleerd. | [Automatiseren met JetPatch agent Manager](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/).<br/><br/> [Problemen met de installatie](https://kc.jetpatch.com/hc/articles/360035981812) van de agent in JetPatch oplossen.
+**Configuratiebeheer** | 1. Controleer of u de hierboven vermelde [vereisten](#prerequisites) hebt. <br/><br/> 2. Implementeer herstel na nood gevallen door de bron omgeving in te stellen, inclusief het downloaden van een bestand met de Site Recovery configuratie server als een VMware-VM met behulp van een OVF-sjabloon.<br/><br/> 3. u registreert de configuratie server bij de Site Recovery-service, stelt de doel-Azure-omgeving in en configureert een replicatie beleid.<br/><br/> 4. voor automatische implementatie van Mobility-Services maakt u een netwerk share met de configuratie server wachtwoordzin en de Mobility service-installatie bestanden.<br/><br/> 5. u maakt een Configuration Manager-pakket met de installatie of updates en bereidt de implementatie van de Mobility-service voor.<br/><br/> 6. u kunt vervolgens replicatie naar Azure inschakelen voor de computers waarop de Mobility-service is geïnstalleerd. | [Automatiseren met Configuration Manager](#automate-with-configuration-manager)
+**JetPatch** | 1. Controleer of u de hierboven vermelde [vereisten](#prerequisites) hebt. <br/><br/> 2. Implementeer herstel na nood gevallen door de bron omgeving in te stellen, met inbegrip van het downloaden en implementeren van JetPatch agent Manager voor Azure Site Recovery in uw Site Recovery omgeving, met behulp van een OVF-sjabloon.<br/><br/> 3. u registreert de configuratie server bij Site Recovery, stelt de doel-Azure-omgeving in en configureert een replicatie beleid.<br/><br/> 4. voor automatische implementatie initialiseert en voltooit u de configuratie van JetPatch agent Manager.<br/><br/> 5. in JetPatch kunt u een Site Recovery-beleid maken om de implementatie en upgrade van de Mobility Service-agent te automatiseren. <br/><br/> 6. u kunt vervolgens replicatie naar Azure inschakelen voor de computers waarop de Mobility-service is geïnstalleerd. | [Automatiseren met JetPatch agent Manager](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/)<br/><br/> [Problemen met de installatie van de agent in JetPatch oplossen](https://kc.jetpatch.com/hc/articles/360035981812)
 
 ## <a name="automate-with-configuration-manager"></a>Automatiseren met Configuration Manager
 
 ### <a name="prepare-the-installation-files"></a>De installatie bestanden voorbereiden
 
 1. Zorg ervoor dat de vereiste onderdelen aanwezig zijn.
-2. Maak een beveiligde netwerk bestands share (SMB-share) die toegankelijk is voor de computer waarop de configuratie server wordt uitgevoerd.
-3. In Configuration Manager [categoriseert u de servers](https://docs.microsoft.com/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections) waarop u de Mobility-service wilt installeren of bijwerken. Eén verzameling moet alle Windows-servers, de andere alle Linux-server bevatten. 
-5. Maak een map op de netwerk share:
+1. Maak een beveiligde netwerk bestands share (SMB-share) die toegankelijk is voor de computer waarop de configuratie server wordt uitgevoerd.
+1. In Configuration Manager [categoriseert u de servers](/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections) waarop u de Mobility-service wilt installeren of bijwerken. Eén verzameling moet alle Windows-servers, de andere alle Linux-servers bevatten.
+1. Maak een map op de netwerk share:
 
-    - Voor installatie op Windows-computers maakt u een map **MobSvcWindows**.
-    - Voor installatie op Linux-machines maakt u een map **MobSvcLinux**.
+   - Voor installatie op Windows-computers maakt u een map met de naam _MobSvcWindows_.
+   - Voor installatie op Linux-machines maakt u een map met de naam _MobSvcLinux_.
 
-6. Meld u aan bij de computer met de configuratie server.
-7. Open een opdracht prompt met beheerders rechten op de computer.
-8. Voer deze opdracht uit om het wachtwoordzinbestand te genereren:
+1. Meld u aan bij de computer met de configuratie server.
+1. Open een opdracht prompt met beheerders rechten op de computer met de configuratie server.
+1. Als u het wachtwoordzinbestand wilt genereren, voert u deze opdracht uit:
 
-    ```
+    ```Console
     cd %ProgramData%\ASR\home\svsystems\bin
     genpassphrase.exe -v > MobSvc.passphrase
     ```
-9. Kopieer het bestand MobSvc. wachtwoordzin naar de map Windows en naar de map Linux.
-10. Voer deze opdracht uit om te bladeren naar de map met de installatie bestanden:
 
-    ```
+1. Kopieer het bestand _MobSvc. wachtwoordzin_ naar de map Windows en de map Linux.
+1. Als u wilt bladeren naar de map met de installatie bestanden, voert u deze opdracht uit:
+
+    ```Console
     cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository
     ```
 
-11. Kopieer de volgende installatie bestanden naar de netwerk share:
+1. Kopieer de volgende installatie bestanden naar de netwerk share:
 
-    - Kopieer **micro soft-ASR_UA_version_Windows_GA_date_Release. exe** naar **MobSvcWindows**.
-    - Kopiëren naar **MobSvcLinux**:
-        - Micro soft-ASR_UA*RHEL6-64*release. tar. gz
-        - Micro soft-ASR_UA*RHEL7-64*release. tar. gz
-        - Micro soft-ASR_UA*SLES11-SP3-64*release. tar. gz
-        - Micro soft-ASR_UA*SLES11-SP4-64*release. tar. gz
-        - Micro soft-ASR_UA*OL6-64*release. tar. gz
-        - Micro soft-ASR_UA*Ubuntu-14.04-64*release. tar. gz
-      
-12. Code kopiëren naar de Windows-of Linux-mappen, zoals beschreven in de volgende procedures. We gaan ervan uit dat:
-    - Het IP-adres van de configuratie server is 192.168.3.121.
-    - De beveiligde netwerk bestands share is **\\\ContosoSecureFS\MobilityServiceInstallers**.
+   - Kopieer voor Windows _micro soft-ASR_UA_version_Windows_GA_date_Release. exe_ naar _MobSvcWindows_.
+   - Voor Linux kopieert u de volgende bestanden naar _MobSvcLinux_:
+     - _Micro soft-ASR_UARHEL6 -64release. tar. gz_
+     - _Micro soft-ASR_UARHEL7 -64release. tar. gz_
+     - _Micro soft-ASR_UASLES11-SP3-64release. tar. gz_
+     - _Micro soft-ASR_UASLES11-SP4-64release. tar. gz_
+     - _Micro soft-ASR_UAOL6 -64release. tar. gz_
+     - _Micro soft-ASR_UAUBUNTU-14.04 -64release. tar. gz_
+
+1. Zoals beschreven in de volgende procedures kopieert u de code naar de Windows-of Linux-mappen. We gaan ervan uit dat:
+
+   - Het IP-adres van de configuratie server is `192.168.3.121`.
+   - De beveiligde netwerk bestands share is `\\ContosoSecureFS\MobilityServiceInstallers`.
 
 ### <a name="copy-code-to-the-windows-folder"></a>Code kopiëren naar de Windows-map
 
 Kopieer de volgende code:
 
-- Sla het bestand op als **install. bat** in de map **MobSvcWindows** .
-- Vervang de tijdelijke aanduidingen [CSIP] in dit script door de werkelijke waarden van het IP-adres van de configuratie server.
+- Sla de code in de map _MobSvcWindows_ op als _install. bat_.
+- Vervang de `[CSIP]` tijdelijke aanduidingen in dit script door de werkelijke waarden van het IP-adres van de configuratie server.
 - Het script ondersteunt nieuwe installaties van de Mobility Service-agent en updates van agents die al zijn geïnstalleerd.
 
 ```DOS
@@ -192,15 +192,14 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
 :ENDSCRIPT
     echo "End of script." >> C:\Temp\logfile.log
-
-
 ```
+
 ### <a name="copy-code-to-the-linux-folder"></a>Code kopiëren naar de Linux-map
 
 Kopieer de volgende code:
 
-- Sla het bestand op als **install_linux. sh** in de map **MobSvcLinux** .
-- Vervang de tijdelijke aanduidingen [CSIP] in dit script door de werkelijke waarden van het IP-adres van de configuratie server.
+- Sla de code in de map _MobSvcLinux_ op als _install_linux. sh_.
+- Vervang de `[CSIP]` tijdelijke aanduidingen in dit script door de werkelijke waarden van het IP-adres van de configuratie server.
 - Het script ondersteunt nieuwe installaties van de Mobility Service-agent en updates van agents die al zijn geïnstalleerd.
 
 ```Bash
@@ -337,22 +336,21 @@ cd /tmp
 
 ```
 
-
 ### <a name="create-a-package"></a>Een pakket maken
 
-1. Meld u aan bij de Configuration Manager-console > **software bibliotheek** > **toepassings beheer** > **pakketten**.
-2. Klik met de rechter muisknop op **pakketten** > **pakket maken**.
-3. Geef pakket Details op, inclusief een naam, beschrijving, fabrikant, taal en versie.
-4. Selecteer **Dit pakket bevat bron bestanden**.
-5. Klik op **Bladeren**en selecteer de netwerk share en de map met het relevante installatie programma (MobSvcWindows of MobSvcLinux) en klik vervolgens op **volgende**.
+1. Meld u aan bij de Configuration Manager-console en ga naar **software bibliotheek** > **toepassings beheer** > **pakketten**.
+1. Klik met de rechter muisknop op **pakketten** > **pakket maken**.
+1. Geef pakket Details op, inclusief een naam, beschrijving, fabrikant, taal en versie.
+1. Selecteer **Dit pakket bevat bron bestanden**.
+1. Klik op **Bladeren**en selecteer de netwerk share en de map die het relevante installatie programma bevat (_MobSvcWindows_ of _MobSvcLinux_). Selecteer vervolgens **Volgende**.
 
    ![Scherm opname van de wizard pakket en programma maken](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
-7. Selecteer in **het programma type kiezen dat u wilt maken de** optie **standaard programma** > **volgende**.
+1. Selecteer in **het programma type kiezen dat u wilt maken de** optie **standaard programma** > **volgende**.
 
    ![Scherm opname van de wizard pakket en programma maken](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
-8. Geef bij **Geef informatie op over deze standaard programma** pagina de volgende waarden op:
+1. Geef bij **Geef informatie op over deze standaard programma** pagina de volgende waarden op:
 
     **Parameter** | **Windows-waarde** | **Linux-waarde**
     --- | --- | ---
@@ -363,44 +361,44 @@ cd /tmp
 
    ![Scherm opname van de wizard pakket en programma maken](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
-9. Ga als volgt te **werk om de vereisten voor dit standaard programma**op te geven:
+1. Voer de volgende taken uit in **de vereisten voor dit standaard programma opgeven**:
 
-    - Voor Windows-computers selecteert u **dit programma kan alleen op de opgegeven platforms worden uitgevoerd**. Selecteer vervolgens de [ondersteunde Windows-besturings systemen](vmware-physical-azure-support-matrix.md#replicated-machines). Klik op **Volgende**.
-    - Voor Linux-machines selecteert u **dit programma kan op elk platform worden uitgevoerd**. Klik op **Volgende**.
-   
-10. Voltooi de wizard.
+   - Voor Windows-computers selecteert u **dit programma kan alleen op de opgegeven platforms worden uitgevoerd**. Selecteer vervolgens de [ondersteunde Windows-besturings systemen](vmware-physical-azure-support-matrix.md#replicated-machines) en selecteer **volgende**.
+   - Voor Linux-machines selecteert u **dit programma kan op elk platform worden uitgevoerd**. Selecteer vervolgens **Volgende**.
 
-
+1. Voltooi de wizard.
 
 ### <a name="deploy-the-package"></a>Het pakket implementeren
 
-1. Klik in de Configuration Manager-console met de rechter muisknop op het pakket > **distribueren van inhoud**.
-   Scherm opname van Configuration Manager-console ![](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
-2. Selecteer de distributie punten waarop de pakketten moeten worden gekopieerd. [Meer informatie](https://docs.microsoft.com/sccm/core/servers/deploy/configure/install-and-configure-distribution-points).
-3. Voltooi de wizard. Het pakket begint vervolgens met het repliceren naar de opgegeven distributie punten.
-4. Nadat de pakket distributie is voltooid, klikt u met de rechter muisknop op het pakket > **implementeren**.
-   Scherm opname van Configuration Manager-console ![](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
-5. Selecteer de Windows-of Linux-apparaatgroep die u eerder hebt gemaakt.
-6. Selecteer op de pagina **de doel inhoud opgeven** **distributie punten**.
-7. Stel het **doel** in op **vereist** **om te bepalen hoe deze software wordt geïmplementeerd op de** pagina.
+1. Klik in de Configuration Manager-console met de rechter muisknop op het pakket en selecteer **inhoud distribueren**.
+
+   ![Scherm opname van Configuration Manager-console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
+
+1. Selecteer de distributie punten waarop de pakketten moeten worden gekopieerd. [Meer informatie](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points).
+1. Voltooi de wizard. Het pakket begint vervolgens met het repliceren naar de opgegeven distributie punten.
+1. Nadat de pakket distributie is voltooid, klikt u met de rechter muisknop op het pakket > **implementeren**.
+
+   ![Scherm opname van Configuration Manager-console](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
+
+1. Selecteer de Windows-of Linux-apparaatgroep die u eerder hebt gemaakt.
+1. Selecteer op de pagina **de doel inhoud opgeven** **distributie punten**.
+1. Stel het **doel** in op **vereist** **om te bepalen hoe deze software wordt geïmplementeerd op de** pagina.
 
    ![Scherm opname van de wizard software implementeren](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
-8. Stel in **de planning voor deze implementatie**een planning in. [Meer informatie](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched).
+1. Stel in **de planning voor deze implementatie**een planning in. [Meer informatie](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched).
 
-    - De Mobility-service wordt geïnstalleerd volgens het schema dat u opgeeft. 
-    - Om te voor komen dat het systeem onnodig opnieuw wordt opgestart, moet u de installatie van het pakket plannen tijdens het maandelijkse onderhouds venster of het venster software-updates
-9. Configureer op de pagina **distributie punten** de instellingen en voltooi de wizard.
-10. Bewaak de voortgang van de implementatie in de Configuration Manager-console. Ga naar **bewaking** > **implementaties** >  *[uw pakket naam]* .
+   - De Mobility-service wordt geïnstalleerd volgens het schema dat u opgeeft.
+   - Om te voor komen dat het systeem onnodig opnieuw wordt opgestart, moet u de installatie van het pakket plannen tijdens het maandelijkse onderhouds venster of het venster software-updates
 
-
-
-
+1. Configureer op de pagina **distributie punten** de instellingen en voltooi de wizard.
+1. Bewaak de voortgang van de implementatie in de Configuration Manager-console. Ga naar **bewaking** > **implementaties** >  _\<uw pakket naam\>_ .
 
 ### <a name="uninstall-the-mobility-service"></a>De Mobility-service verwijderen
-U kunt Configuration Manager-pakketten maken voor het verwijderen van de Mobility-service. Gebruik het volgende script om dit te doen:
 
-```
+U kunt Configuration Manager-pakketten maken voor het verwijderen van de Mobility-service. Met het volgende script wordt de Mobility-service bijvoorbeeld verwijderd:
+
+```DOS
 Time /t >> C:\logfile.log
 REM ==================================================
 REM ==== Check if Mob Svc is already installed =======
@@ -418,8 +416,8 @@ IF  %ERRORLEVEL% EQU 1 (GOTO :INSTALL) ELSE GOTO :UNINSTALL
                 echo "Uninstall" >> C:\logfile.log
                 MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
 :ENDSCRIPT
-
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Schakel nu de beveiliging voor virtuele machines [in](vmware-azure-enable-replication.md) .
+
+[Replicatie inschakelen](vmware-azure-enable-replication.md) voor vm's.

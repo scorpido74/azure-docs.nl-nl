@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 630a018c25ac8663fd369c1256e376b8039182c9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: b5875d0672fc187920883abe208ad30c4d2b1051
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910808"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898554"
 ---
 # <a name="azure-maps-weather-coverage"></a>Weer dekking Azure Maps
 
@@ -23,7 +23,7 @@ Azure Maps heeft niet hetzelfde niveau van informatie en nauw keurigheid voor al
 
 De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvragen van elk land/elke regio.
 
-| Symbool | Betekenis |
+| Valuta | Betekenis |
 |--------|---------|
 |*       |Behandelt weer berichten over route, huidige omstandigheden, prognose per uur, prognose van kwartaal dagen en dagelijkse prognose-Api's |
 
@@ -81,12 +81,12 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Saint-Pierre en Miquelon                | ✓ |   |  ✓| 
 | Saint Vincent en de Grenadines         | ✓ |   |  ✓| 
 | Sint-Eustatius                           | ✓ |   |  ✓|  
-| Sint Maarten                             | ✓ |   |  ✓| 
+| Sint-Maarten                             | ✓ |   |  ✓| 
 | Zuid-Georgië en de zuidelijke Sandwich eilanden | ✓ |   |  ✓| 
 | Suriname                                 | ✓ |   |  ✓| 
 | Trinidad en Tobago                      | ✓ |   |  ✓| 
 | Turks- en Caicoseilanden                 | ✓ |   |  ✓| 
-| Kleine afgelegen eilanden van de Verenigde Staten                    | ✓ |   |  ✓| 
+| Amerikaanse ondergeschikte afgelegen eilanden                    | ✓ |   |  ✓| 
 | Amerikaanse Maagden eilanden                      | ✓ |   |  ✓| 
 | Verenigde Staten                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
@@ -118,7 +118,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Eritrea                     | ✓               |                              |        ✓| 
 | eSwatini                    | ✓               |                              |        ✓| 
 | Ethiopië                    | ✓               |                              |        ✓| 
-| Franse Gebieden in de zuidelijke Indische Oceaan | ✓               |                              |        ✓| 
+| Franse zuidelijke gebieden | ✓               |                              |        ✓| 
 | Gabon                       | ✓               |                              |        ✓| 
 | Gambia                      | ✓               |                              |        ✓| 
 | Ghana                       | ✓               |                              |        ✓| 
@@ -151,14 +151,14 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Réunion                     | ✓               |                              |        ✓| 
 | Rwanda                      | ✓               |                              |        ✓| 
 | Sint-Helena, Ascension en Tristan da Cunha        | ✓               |                              |        ✓| 
-| São Tomé en Principe       | ✓               |                              |        ✓| 
+| Sao Tomé en principe       | ✓               |                              |        ✓| 
 | Saoedi-Arabië                | ✓               |                              |        ✓| 
 | Senegal                     | ✓               |                              |        ✓| 
-| Seychellen                  | ✓               |                              |        ✓| 
+| Seychell                  | ✓               |                              |        ✓| 
 | Sierra Leone                | ✓               |                              |        ✓| 
 | Somalië                     | ✓               |                              |        ✓| 
 | Zuid-Afrika                | ✓               |                              |        ✓| 
-| Zuid-Sudan                 | ✓               |                              |        ✓| 
+| Zuid-Soedan                 | ✓               |                              |        ✓| 
 | Soedan                       | ✓               |                              |        ✓| 
 | Syrië                       | ✓               |                              |        ✓| 
 | Tanzania                    | ✓               |                              |        ✓| 
@@ -172,28 +172,27 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Zimbabwe                    | ✓               |                              |        ✓| 
 
 
-## <a name="asia-pacific"></a>Azië en Stille Oceaan
+## <a name="asia-pacific"></a>Azië-Pacific
 
 | Land/regio              |  Satelliet tegels | Minuut prognose, radar tegels | Daarenteg | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Afghanistan                       | ✓ |   |  ✓| 
 | Amerikaans-Samoa                    | ✓ |   |  ✓| 
 | Australië                         | ✓ | ✓ |  ✓| 
-| Azerbeidzjan                        | ✓ |   |  ✓| 
 | Bangladesh                        | ✓ |   |  ✓| 
 | Bhutan                            | ✓ |   |  ✓| 
 | Brits Indische Oceaanterritorium    | ✓ |   |  ✓| 
 | Brunei                            | ✓ |   |  ✓| 
 | Cambodja                          | ✓ |   |  ✓| 
 | China                             | ✓ | ✓ |  ✓| 
-| Christmaseiland                  | ✓ |   |  ✓| 
-| Cocoseilanden           | ✓ |   |  ✓| 
+| Christmas eiland                  | ✓ |   |  ✓| 
+| Cocos-Keeling-eilanden           | ✓ |   |  ✓| 
 | Cookeilanden                      | ✓ |   |  ✓| 
 | Fiji                              | ✓ |   |  ✓| 
 | Frans-Polynesië                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
-| Heardeiland en McDonaldeilanden | ✓ |   |  ✓| 
-| Hongkong SAR                     | ✓ |   |  ✓| 
+| Heard Island en McDonald eilanden | ✓ |   |  ✓| 
+| Hong Kong SAR                     | ✓ |   |  ✓| 
 | India                             | ✓ |   |  ✓| 
 | Indonesië                         | ✓ |   |  ✓| 
 | Japan                             | ✓ | ✓ |  ✓| 
@@ -205,7 +204,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Macau SAR                         | ✓ |   |  ✓| 
 | Maleisië                          | ✓ |   |  ✓| 
 | Maldiven                          | ✓ |   |  ✓| 
-| Marshalleilanden                  | ✓ |   |  ✓| 
+| Marshall eilanden                  | ✓ |   |  ✓| 
 | Micronesia                        | ✓ |   |  ✓| 
 | Mongolië                          | ✓ |   |  ✓| 
 | Myanmar                           | ✓ |   |  ✓| 
@@ -214,7 +213,7 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Nieuw-Caledonië                     | ✓ |   |  ✓| 
 | Nieuw-Zeeland                       | ✓ |   |  ✓| 
 | Niue                              | ✓ |   |  ✓| 
-| Norfolk                    | ✓ |   |  ✓| 
+| Norfolk eiland                    | ✓ |   |  ✓| 
 | Noord-Korea                       | ✓ |   |  ✓| 
 | Noordelijke Marianen          | ✓ |   |  ✓| 
 | Pakistan                          | ✓ |   |  ✓| 
@@ -247,7 +246,8 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Albanië                | ✓ |   |  ✓| 
 | Andorra                | ✓ |   |  ✓| 
 | Armenië                | ✓ |   |  ✓| 
-| Oostenrijk                | ✓ | ✓ |  ✓| 
+| Oostenrijk                | ✓ | ✓ |  ✓|
+| Azerbeidzjan             | ✓ |   |  ✓| 
 | Wit-Rusland                | ✓ |   |  ✓| 
 | België                | ✓ | ✓ |  ✓| 
 | Bosnië en Herzegovina | ✓ | ✓ |  ✓| 
@@ -299,4 +299,4 @@ De volgende tabel bevat informatie over wat voor soort informatie u kunt aanvrag
 | Turkije                 | ✓ |   |  ✓| 
 | Oekraïne                | ✓ |   |  ✓| 
 | Verenigd Koninkrijk         | ✓ | ✓ |  ✓| 
-| Vaticaanstad           | ✓ |   |  ✓| 
+| Vaticaan stad           | ✓ |   |  ✓| 

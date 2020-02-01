@@ -8,20 +8,18 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 299bbfbc50e9ba779898ab0e0e9dec060bf6541d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3173fe010106963b9079bf151c92957735253e84
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687578"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898768"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>SSH-ondersteuning voor Azure App Service in Linux
 
-[SSH (Secure Shell)](https://wikipedia.org/wiki/Secure_Shell) wordt vaak gebruikt om beheer opdrachten op afstand uit te voeren vanaf een opdracht regel Terminal. App Service op Linux biedt SSH-ondersteuning in de app-container met elk van de ingebouwde docker-installatie kopieën die worden gebruikt voor de runtime stack van nieuwe web-apps. 
+[SSH (Secure Shell)](https://wikipedia.org/wiki/Secure_Shell) wordt vaak gebruikt om beheer opdrachten op afstand uit te voeren vanaf een opdracht regel Terminal. App Service op Linux biedt SSH-ondersteuning in de app-container. 
 
-![Runtime stacks](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
-
-Voor aangepaste docker-installatie kopieën kunt u de SSH-server configureren in uw aangepaste installatie kopie.
+![Linux App Service SSH](./media/app-service-linux-ssh-support/app-service-linux-ssh.png)
 
 U kunt ook rechtstreeks vanuit uw lokale ontwikkel computer verbinding maken met de container via SSH en SFTP.
 

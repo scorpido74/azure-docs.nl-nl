@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045576"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898847"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Overzicht van Azure API Management-ontwikkelaars Portal
 
@@ -213,6 +213,18 @@ Deze fout wordt weer gegeven wanneer een `GET` aanroep van `https://<management-
 Als uw API Management-service zich in een VNet bevindt, raadpleegt u de bovenstaande VNet-connectiviteit.
 
 De aanroep fout kan ook worden veroorzaakt door een SSL-certificaat dat is toegewezen aan een aangepast domein en niet wordt vertrouwd door de browser. Als oplossing kunt u het aangepaste domein van het beheer eindpunt verwijderen-API Management het standaard eindpunt met een vertrouwd certificaat terugvallen.
+
+### <a name="whats-the-browser-support-for-the-portal"></a>Wat is de browser ondersteuning voor de portal?
+
+| Browser                     | Ondersteund       |
+|-----------------------------|-----------------|
+| Apple Safari                | Ja<sup>1</sup> |
+| Google Chrome               | Ja<sup>1</sup> |
+| Microsoft Edge              | Ja<sup>1</sup> |
+| Microsoft Internet Explorer | Nee              |
+| Mozilla Firefox             | Ja<sup>1</sup> |
+
+ <small><sup>1</sup> wordt ondersteund in de twee nieuwste productie versies.</small>
 
 ## <a name="next-steps"></a>Volgende stappen
 

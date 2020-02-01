@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 433d53e09fce6d3f6b2010956da91c4b7cf91d49
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 111fab880887b54b2415d433bda2368c951381bd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770166"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901215"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Azure Diagnostics gegevens in het warme pad streamen met behulp van Event Hubs
 Azure Diagnostics biedt flexibele manieren voor het verzamelen van metrische gegevens en logboeken van virtuele machines van Cloud Services (Vm's) en het overdragen van resultaten naar Azure Storage. Vanaf het tijds bestek van maart 2016 (SDK 2,9) kunt u Diagnostische gegevens verzenden naar aangepaste gegevens bronnen en dynamische padgegevens in seconden overdragen met behulp van [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -201,7 +201,7 @@ In dit voor beeld wordt de Sink toegepast op Logboeken en wordt deze alleen gefi
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Een Cloud Services toepassing en diagnose configuratie implementeren en bijwerken
 Visual Studio biedt het eenvoudigste pad voor het implementeren van de toepassing en de configuratie van Event Hubs sink. Als u het bestand wilt bekijken en bewerken, opent u het *. wadcfgx* -bestand in Visual Studio, bewerkt u het en slaat u het op. Het pad is een **Cloud Service Project** > **rollen** >  **(rolnaam)**  > **Diagnostische gegevens. wadcfgx**.  
 
-Op dit punt worden alle Update acties voor implementatie en implementatie in Visual Studio, Visual Studio Team System en alle opdrachten of scripts die zijn gebaseerd op MSBuild en met de **/t: Publish** doel, de *. wadcfgx* in het verpakkings proces gebruikt. Daarnaast implementeren implementaties en updates het bestand in azure met behulp van de juiste Azure Diagnostics agent-extensie op uw Vm's.
+Op dit punt worden alle Update acties voor implementatie en implementatie in Visual Studio, Visual Studio Team System en alle opdrachten of scripts die zijn gebaseerd op MSBuild en het `/t:publish` doel gebruiken de *. wadcfgx* in het verpakkings proces opnemen. Daarnaast implementeren implementaties en updates het bestand in azure met behulp van de juiste Azure Diagnostics agent-extensie op uw Vm's.
 
 Nadat u de toepassing en Azure Diagnostics configuratie hebt geïmplementeerd, ziet u onmiddellijk activiteiten in het dash board van de Event Hub. Dit geeft aan dat u klaar bent om door te gaan met het weer geven van de hot path-gegevens in de listener-client of het analyse hulpprogramma van uw keuze.  
 
@@ -215,13 +215,72 @@ In de volgende afbeelding toont het Event Hubs dash board gezonden het verzenden
 >
 
 ## <a name="view-hot-path-data"></a>Informatie over dynamische paden weer geven
-Zoals eerder besproken, zijn er veel gebruiks voorbeelden voor het Luis teren naar en verwerken van Event Hubs gegevens.
+Zoals eerder besproken, zijn er veel gebruiks voorbeelden voor het Luis teren naar en verwerken van Event Hubs gegevens. Een eenvoudige benadering is het maken van een kleine test console toepassing om naar het Event Hub te Luis teren en de uitvoer stroom af te drukken. 
 
-Een eenvoudige benadering is het maken van een kleine test console toepassing om naar het Event Hub te Luis teren en de uitvoer stroom af te drukken. In een console toepassing kunt u de volgende code, die in meer detail wordt uitgelegd in aan de [slag met Event hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)) plaatsen.  
+#### <a name="net-sdk-latest-500-or-latertablatest"></a>[.NET SDK nieuwste versie (5.0.0 of hoger)](#tab/latest)
+In een console toepassing kunt u de volgende code, die in meer detail wordt uitgelegd in aan de [slag met Event hubs](../../event-hubs/get-started-dotnet-standard-send-v2.md)) plaatsen.
 
-Houd er rekening mee dat de console toepassing het NuGet-pakket van de [Event processor host](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)moet bevatten.  
+```csharp
+using System;
+using System.Text;
+using System.Threading.Tasks;
+using Azure.Storage.Blobs;
+using Azure.Messaging.EventHubs;
+using Azure.Messaging.EventHubs.Processor;
+namespace Receiver1204
+{
+    class Program
+    {
+        private static readonly string ehubNamespaceConnectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
+        private static readonly string eventHubName = "EVENT HUB NAME";
+        private static readonly string blobStorageConnectionString = "AZURE STORAGE CONNECTION STRING";
+        private static readonly string blobContainerName = "BLOB CONTAINER NAME";
 
-Vergeet niet om de waarden tussen punt haken in de **hoofd** functie te vervangen door waarden voor uw resources.   
+        static async Task Main()
+        {
+            // Read from the default consumer group: $Default
+            string consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
+
+            // Create a blob container client that the event processor will use 
+            BlobContainerClient storageClient = new BlobContainerClient(blobStorageConnectionString, blobContainerName);
+
+            // Create an event processor client to process events in the event hub
+            EventProcessorClientOptions options = new EventProcessorClientOptions { }
+            EventProcessorClient processor = new EventProcessorClient(storageClient, consumerGroup, ehubNamespaceConnectionString, eventHubName);
+
+            // Register handlers for processing events and handling errors
+            processor.ProcessEventAsync += ProcessEventHandler;
+            processor.ProcessErrorAsync += ProcessErrorHandler;
+
+            // Start the processing
+            await processor.StartProcessingAsync();
+
+            // Wait for 10 seconds for the events to be processed
+            await Task.Delay(TimeSpan.FromSeconds(10));
+
+            // Stop the processing
+            await processor.StopProcessingAsync();
+        }
+
+        static Task ProcessEventHandler(ProcessEventArgs eventArgs)
+        {
+            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+            return Task.CompletedTask;
+        }
+
+        static Task ProcessErrorHandler(ProcessErrorEventArgs eventArgs)
+        {
+            Console.WriteLine($"\tPartition '{ eventArgs.PartitionId}': an unhandled exception was encountered. This was not expected to happen.");
+            Console.WriteLine(eventArgs.Exception.Message);
+            return Task.CompletedTask;
+        }
+    }
+}
+```
+
+#### <a name="net-sdk-legacy-410-or-earliertablegacy"></a>[.NET SDK verouderd (4.1.0 of eerder)](#tab/legacy)
+
+In een console toepassing kunt u de volgende code, die in meer detail wordt uitgelegd in aan de [slag met Event hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)) plaatsen. Houd er rekening mee dat de console toepassing het Nuget-pakket van de [Event processor host](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)moet bevatten. Vergeet niet om de waarden tussen punt haken in de **hoofd** functie te vervangen door waarden voor uw resources.   
 
 ```csharp
 //Console application code for EventHub test client
@@ -303,6 +362,7 @@ namespace EventHubListener
     }
 }
 ```
+---
 
 ## <a name="troubleshoot-event-hubs-sinks"></a>Problemen met Event Hubs-sinks oplossen
 * De Event Hub geeft niet de binnenkomende of uitgaande gebeurtenis activiteit zoals verwacht weer.
@@ -386,7 +446,7 @@ De complementaire *ServiceConfiguration. Cloud. cscfg* voor dit voor beeld ziet 
 </ServiceConfiguration>
 ```
 
-De equivalente JSON-instellingen voor de virtuele machines zijn als volgt:
+De equivalente JSON-instellingen voor virtuele machines zijn als volgt:
 
 Open bare instellingen:
 ```JSON

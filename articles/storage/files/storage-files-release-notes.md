@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 67f04b3873da020853c2523f6acc8c7dc7dcdedc
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d0e830aaca4f952f75c220b4f482ce831883b058
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749598"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905571"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Release opmerkingen voor de Azure File Sync-agent
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Uw installaties van Windows Server worden getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als u waar ook ter wereld nodig hebt.
@@ -23,7 +23,7 @@ Dit artikel bevat de releaseopmerkingen voor de ondersteunde versies van de Azur
 ## <a name="supported-versions"></a>Ondersteunde versies
 De volgende versies worden ondersteund voor de Azure File Sync-agent:
 
-| Mijlpaal | Versienummer agent | Releasedatum | Status |
+| Mijlpalen | Versienummer agent | Releasedatum | Status |
 |----|----------------------|--------------|------------------|
 | Update pakket van december 2019- [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12 december 2019 | Ondersteund |
 | V9 release- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2 december 2019 | Ondersteund |
@@ -35,9 +35,9 @@ De volgende versies worden ondersteund voor de Azure File Sync-agent:
 | Update pakket van juni 2019- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13 juni 2019 | Ondersteund |
 | Update pakket van mei 2019- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7 mei 2019 | Ondersteund |
 | V6-release- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21 april 2019 | Ondersteund |
-| Update pakket van april 2019- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4 april 2019 | Ondersteund |
-| Update pakket van maart 2019- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7 maart 2019 | Ondersteund |
-| V5-release- [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12 februari 2019 | Ondersteund |
+| Update pakket van april 2019- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4 april 2019 | Ondersteund: de agent versie verloopt op 12 februari 2020 |
+| Update pakket van maart 2019- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7 maart 2019 | Ondersteund: de agent versie verloopt op 12 februari 2020 |
+| V5-release- [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12 februari 2019 | Ondersteund: de agent versie verloopt op 12 februari 2020 |
 | V4-release | 4.0.1.0 - 4.3.0.0 | N/A | Niet ondersteund: agent versies verlopen op 6 november 2019 |
 | V3-release | 3.1.0.0 - 3.4.0.0 | N/A | Niet ondersteund: agent versies verlopen op 19 augustus 2019 |
 | Pre-GA-agents | 1.1.0.0-3.0.13.0 | N/A | Niet ondersteund: agent versies verlopen op 1 oktober 2018 |
@@ -60,7 +60,7 @@ De volgende release opmerkingen zijn voor versie 9.0.0.0 van de Azure File Sync-
 ### <a name="improvements-and-issues-that-are-fixed"></a>Verbeteringen en problemen die zijn opgelost
 
 - Ondersteuning voor herstel door self-service
-    - Gebruikers kunnen nu hun bestanden herstellen met behulp van de functie voor eerdere versies. Vóór de v9-release werd de functie vorige versie niet ondersteund op volumes waarop Cloud lagen zijn ingeschakeld. Deze functie moet voor elk volume afzonderlijk worden ingeschakeld, waarbij een eind punt waarvoor Cloud lagen zijn ingeschakeld, bestaat. Zie  voor meer informatie.  
+    - Gebruikers kunnen nu hun bestanden herstellen met behulp van de functie voor eerdere versies. Vóór de v9-release werd de functie vorige versie niet ondersteund op volumes waarop Cloud lagen zijn ingeschakeld. Deze functie moet voor elk volume afzonderlijk worden ingeschakeld, waarbij een eind punt waarvoor Cloud lagen zijn ingeschakeld, bestaat. Zie voor meer informatie  
 [Self-service herstellen via eerdere versies en VSS (Volume Shadow Copy Service)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service). 
  
 - Ondersteuning voor grotere grootte van bestands shares 
@@ -426,7 +426,7 @@ De volgende release opmerkingen zijn voor versie 5.0.2.0 van de Azure File Sync-
 
 - Ondersteuning voor Azure Government Cloud
   - Er is preview-ondersteuning toegevoegd voor de Azure Government Cloud. Hiervoor is een wit abonnement en een speciale down load van de agent van micro soft vereist. Als u toegang wilt krijgen tot de preview, kunt u ons rechtstreeks bij [AzureFiles@microsoft.com](mailto:AzureFiles@microsoft.com)een e-mail sturen.
-- Ondersteuning voor gegevensontdubbeling
+- Ondersteuning voor Gegevensontdubbeling
     - Gegevensontdubbeling wordt nu volledig ondersteund met Cloud lagen die zijn ingeschakeld op Windows Server 2016 en Windows Server 2019. Als u ontdubbeling inschakelt op een volume waarvoor Cloud lagen zijn ingeschakeld, kunt u meer bestanden on-premises opslaan zonder dat u meer opslag ruimte hoeft in te richten.
 - Ondersteuning voor offline gegevens overdracht (bijvoorbeeld via Data Box)
     - Migreer eenvoudig grote hoeveel heden gegevens naar Azure File Sync via een wille keurige manier. U kunt kiezen Azure Data Box, AzCopy en zelfs migratie services van derden. U hoeft geen enorme hoeveel heden band breedte te gebruiken om uw gegevens in azure op te halen, in het geval van Data Box: u kunt er gewoon e-mailen. Zie [Offline gegevensoverdracht docs](https://aka.ms/AFS/OfflineDataTransfer)(Engelstalig) voor meer informatie.

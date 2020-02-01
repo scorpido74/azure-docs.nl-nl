@@ -1,12 +1,13 @@
 ---
-title: Azure AD Connect Health - Diagnose dubbel kenmerk synchronisatiefouten | Microsoft Docs
-description: Dit document beschrijft het proces diagnose van de synchronisatiefouten dubbel kenmerk en een mogelijke oplossing van het zwevende object scenario's rechtstreeks vanuit de Azure portal.
+title: Azure AD Connect Health-dubbele kenmerken synchronisatie fouten opsporen | Microsoft Docs
+description: In dit document wordt het diagnose proces voor gedupliceerde kenmerk synchronisatie fouten en een mogelijke oplossing van de zwevende object scenario's rechtstreeks vanuit de Azure Portal beschreven.
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
 manager: maheshu
 editor: billmath
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,42 +15,42 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1fd5f9746299d72ed58a3209013822505b19b56
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 48ed9abf3e088e2581a3dd81b7c89e6b99da3ceb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702554"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897191"
 ---
-# <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Vaststellen en herstellen van de synchronisatiefouten dubbel kenmerk
+# <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Fouten in dubbele kenmerken vaststellen en oplossen
 
 ## <a name="overview"></a>Overzicht
-Meer doen met één stap duurt om te markeren synchronisatiefouten, introduceert Azure Active Directory (Azure AD) Connect Health zelf te verhelpen. Het Hiermee lost u dubbel kenmerk synchronisatiefouten en correcties van objecten die zijn zwevende van Azure AD.
-De functie voor diagnose heeft tot deze voordelen:
-- Het biedt een diagnostische procedure die de taalinstelling van de synchronisatiefouten dubbel kenmerk. En het specifieke oplossingen biedt.
-- Het is van toepassing een oplossing voor specifieke scenario's van Azure AD om op te lossen van de fout in één stap.
-- Er is geen upgrade of de configuratie is vereist voor deze functie inschakelen.
-Zie voor meer informatie over Azure AD, [duplicatiekenmerken identificeren voor synchronisatie- en](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
+Het nemen van een stap verder om synchronisatie fouten te markeren, Azure Active Directory (Azure AD) Connect Health introduceert Self-service herstel. Er worden dubbele kenmerk synchronisatie fouten opgetreden en objecten die zijn afgeleid van Azure AD worden opgelost.
+De functie voor het diagnosticeren heeft de volgende voor delen:
+- Er wordt een diagnostische procedure geboden waarmee gedupliceerde kenmerk synchronisatie fouten worden verkleind. En dit geeft specifieke oplossingen.
+- Er wordt een oplossing voor speciale scenario's van Azure AD toegepast om de fout in één stap op te lossen.
+- Er is geen upgrade of configuratie vereist om deze functie in te scha kelen.
+Zie [Identiteitssynchronisatie en dubbel kenmerk tolerantie](how-to-connect-syncservice-duplicate-attribute-resiliency.md)voor meer informatie over Azure AD.
 
-## <a name="problems"></a>Problemen met
+## <a name="problems"></a>Treden
 ### <a name="a-common-scenario"></a>Een veelvoorkomend scenario
-Wanneer **QuarantinedAttributeValueMustBeUnique** en **AttributeValueMustBeUnique** synchronisatiefouten optreden, is het gebruikelijk om te zien een **UserPrincipalName** of **Proxyadressen** conflict in Azure AD. U kunt de synchronisatiefouten oplossen door het bijwerken van de conflicterende bronobject vanaf de on-premises. De synchronisatiefout worden opgelost na de volgende synchronisatie. Deze afbeelding geeft bijvoorbeeld aan dat twee gebruikers beschikken over een conflict van hun **UserPrincipalName**. Beide zijn **Joe.J\@contoso.com**. De conflicterende objecten in Azure AD in quarantaine zijn geplaatst.
+Wanneer **QuarantinedAttributeValueMustBeUnique** -en **AttributeValueMustBeUnique** -synchronisatie fouten optreden, is het gebruikelijk om een **userPrincipalName** -of **proxy-adres** conflict te zien in azure AD. U kunt de synchronisatie fouten oplossen door het conflicterende bron object van de on-premises kant bij te werken. De synchronisatie fout wordt na de volgende synchronisatie opgelost. Deze afbeelding geeft bijvoorbeeld aan dat twee gebruikers een conflict hebben met hun **userPrincipalName**. Beide zijn **Joe. J\@contoso.com**. De conflicterende objecten worden in quarantaine geplaatst in azure AD.
 
-![Algemeen scenario voor synchronisatie fout vaststellen](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
+![Algemeen scenario voor het uitvoeren van een diagnose fout](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
-### <a name="orphaned-object-scenario"></a>Zwevende object scenario
-Soms is het wellicht dat een bestaande gebruiker verliest de **Bronanker**. Het verwijderen van het bronobject is er gebeurd in on-premises Active Directory. Maar de wijziging van het signaal van de verwijdering niet is gesynchroniseerd met Azure AD. Dit verlies gebeurt voor redenen, zoals problemen met synchronisatie-engine of migreren. Als hetzelfde object wordt teruggezet of opnieuw worden gemaakt, logisch, een bestaande gebruiker moet de gebruiker te synchroniseren vanaf de **Bronanker**. 
+### <a name="orphaned-object-scenario"></a>Scenario met zwevende objecten
+In sommige gevallen kunt u zien dat een bestaande gebruiker het **bron anker**kwijtraakt. Het verwijderen van het bron object is opgetreden in on-premises Active Directory. Maar de wijziging van het verwijderings signaal is nooit gesynchroniseerd met Azure AD. Dit verlies wordt veroorzaakt door redenen als synchronisatie-engine problemen of domein migratie. Wanneer hetzelfde object wordt hersteld of opnieuw wordt gemaakt, moet een bestaande gebruiker de gebruiker van het **bron anker**synchroniseren. 
 
-Als een bestaande gebruiker een alleen-cloud-object is, kunt u ook zien dat de conflicterende gebruiker gesynchroniseerd met Azure AD. De gebruiker is niet gesynchroniseerd naar het bestaande object overeen. Er is geen directe manier opnieuw toewijzen de **Bronanker**. Zie meer informatie over de [bestaande kennisdatabase](https://support.microsoft.com/help/2647098). 
+Wanneer een bestaande gebruiker een object in de Cloud is, kunt u ook zien dat de conflicterende gebruiker is gesynchroniseerd met Azure AD. De gebruiker kan niet worden gesynchroniseerd met het bestaande object. Er is geen rechtstreekse manier om het **bron anker**opnieuw toe te wijzen. Meer informatie over de [bestaande Knowledge Base](https://support.microsoft.com/help/2647098). 
 
-Het bestaande object in Azure AD bewaart als u bijvoorbeeld de licentie van Joe. Een nieuw gesynchroniseerd object met een andere **Bronanker** vindt plaats in de status van een dubbel kenmerk in Azure AD. Wijzigingen voor Jaap in on-premises Active Directory niet toegepast op Jaaps oorspronkelijke gebruiker (bestaande object) in Azure AD.  
+Als voor beeld wordt met het bestaande object in azure AD de licentie van Joe bewaard. Een nieuw gesynchroniseerd object met een ander **bron anker** vindt plaats in een gedupliceerde kenmerk status in azure AD. Wijzigingen voor Joe in on-premises Active Directory worden niet toegepast op de oorspronkelijke gebruiker (bestaand object) van Joe in azure AD.  
 
-![Fout-zwevende object synchronisatiescenario vaststellen](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
+![Probleem met zwevend object voor synchronisatie fout diagnosticeren](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
 
-## <a name="diagnostic-and-troubleshooting-steps-in-connect-health"></a>Diagnostische gegevens en de stappen in Connect Health voor probleemoplossing 
-De functie diagnose biedt ondersteuning voor gebruikersobjecten met de volgende dubbele kenmerken:
+## <a name="diagnostic-and-troubleshooting-steps-in-connect-health"></a>Diagnose-en probleemoplossings stappen in Connect Health 
+De functie voor het diagnosticeren ondersteunt gebruikers objecten met de volgende gedupliceerde kenmerken:
 
-| De naam van kenmerk | Typen voor synchronisatie|
+| Kenmerk naam | Synchronisatie fout typen|
 | ------------------ | -----------------|
 | UserPrincipalName | QuarantinedAttributeValueMustBeUnique of AttributeValueMustBeUnique | 
 | ProxyAddresses | QuarantinedAttributeValueMustBeUnique of AttributeValueMustBeUnique | 
@@ -57,102 +58,102 @@ De functie diagnose biedt ondersteuning voor gebruikersobjecten met de volgende 
 | OnPremiseSecurityIdentifier |  AttributeValueMustBeUnique |
 
 >[!IMPORTANT]
-> Toegang tot deze functie **globale beheerder** machtiging, of **Inzender** toestemming van de RBAC-instellingen is vereist.
+> Als u deze functie wilt gebruiken, moet u de machtigingen **globale beheerder** of **Inzender** machtiging van de RBAC-instellingen opgeven.
 >
 
-Volg de stappen van de Azure portal om te beperken de foutdetails voor synchronisatie en meer specifieke oplossingen te bieden:
+Volg de stappen in de Azure Portal om de details van de synchronisatie fout te verfijnen en meer specifieke oplossingen te bieden:
 
-![Synchronisatie fout diagnose stappen](./media/how-to-connect-health-diagnose-sync-errors/IIdFixSteps.png)
+![Stappen voor synchronisatie fout diagnose](./media/how-to-connect-health-diagnose-sync-errors/IIdFixSteps.png)
 
-Uitvoeren vanuit de Azure-portal, een paar stappen voor het identificeren van specifieke corrigeerbare scenario's:  
-1.  Controleer de **Diagnose status** kolom. De status wordt aangegeven als er een manier om op te lossen van een synchronisatiefout rechtstreeks uit Azure Active Directory. Een probleemoplossing stroom bestaat die met andere woorden, kan het geval is fout verfijnen en op te lossen mogelijk.
+Voer een paar stappen uit om specifieke fixable-scenario's te identificeren in de Azure Portal:  
+1.  Controleer de kolom **diagnose status** . De status geeft aan of er een mogelijke manier is om een synchronisatie fout rechtstreeks vanuit Azure Active Directory op te lossen. Met andere woorden, er bestaat een stroom voor probleem oplossing waarmee de fout kan worden verkleind en mogelijk worden opgelost.
 
 | Status | Wat betekent dit? |
 | ------------------ | -----------------|
-| Niet gestart | U kunt dit proces diagnose nog niet hebt bezocht. Afhankelijk van het diagnostisch resultaat is er een mogelijke manier om op te lossen de synchronisatiefout rechtstreeks vanuit de portal. |
-| Handmatige oplossing vereist | De fout niet aanpassen aan de criteria van de beschikbare oplossingen in de portal. Een van beide conflicterende objecttypen zijn niet-gebruikers, of u al de diagnostische stappen doorlopen en geen oplossing die oplossing is beschikbaar via de portal. In dat laatste geval is een oplossing vanaf de on-premises nog steeds een van de oplossingen. [Meer informatie over on-premises oplossingen](https://support.microsoft.com/help/2647098). | 
-| Synchronisatie in behandeling | Een oplossing is toegepast. De portal wacht op de volgende synchronisatiecyclus om te wissen van de fout. |
+| Niet gestart | U hebt dit diagnose proces niet bezocht. Afhankelijk van het diagnostische resultaat is er een mogelijke manier om de synchronisatie fout rechtstreeks vanuit de portal op te lossen. |
+| Hand matige correctie vereist | De fout past niet bij de criteria van de beschik bare oplossingen vanuit de portal. Conflicterende object typen zijn niet gebruikers, of u hebt al door de diagnostische stappen geleid en er is geen oplossings oplossing beschikbaar vanuit de portal. In het laatste geval is een oplossing van de on-premises kant nog steeds een van de oplossingen. [Meer informatie over on-premises oplossingen](https://support.microsoft.com/help/2647098). | 
+| Synchronisatie in behandeling | Er is een oplossing toegepast. De portal wacht tot de volgende synchronisatie cyclus de fout heeft gewist. |
 
   >[!IMPORTANT]
-  > De statuskolom van de diagnostische worden opnieuw ingesteld na elke synchronisatiecyclus. 
+  > De kolom diagnose status wordt na elke synchronisatie cyclus opnieuw ingesteld. 
   >
 
-1. Selecteer de **vaststellen** knop onder de foutdetails. U een aantal vragen beantwoorden en identificeren van de details van de synchronisatie-fout. Antwoorden op de vragen kunt een aanvraag zwevende object identificeren.
+1. Selecteer de knop **diagnose** onder de fout Details. U antwoordt op enkele vragen en identificeert de synchronisatie fout gegevens. Antwoorden op de vragen helpen u bij het identificeren van een zwevend object.
 
-1. Als een **sluiten** knop wordt weergegeven aan het einde van de diagnostische gegevens, er is geen snelle correctie beschikbaar is via de portal op basis van uw antwoorden. Raadpleeg de oplossing wordt weergegeven in de laatste stap. Oplossingen van on-premises zijn nog steeds de oplossingen. Selecteer de **sluiten** knop. De status van de huidige synchronisatiefout schakelt over naar de **handmatige oplossing vereist**. De status blijft tijdens de huidige synchronisatiecyclus.
+1. Als er aan het einde van de diagnose een knop **sluiten** wordt weer gegeven, is er geen snelle oplossing beschikbaar op basis van uw antwoorden op de portal. Raadpleeg de oplossing die in de laatste stap wordt weer gegeven. Correcties van on-premises zijn nog steeds de oplossingen. Selecteer de knop **sluiten** . De status van de huidige synchronisatie fout schakelt over op **hand matige correctie vereist**. De status blijft tijdens de huidige synchronisatie cyclus.
 
-1. Nadat een aanvraag zwevende object wordt geïdentificeerd, kunt u de dubbele kenmerken synchronisatiefouten rechtstreeks vanuit de portal oplossen. Voor het activeren van het proces, selecteer de **op oplossing toepassen** knop. De status van de huidige synchronisatie fout updates voor **in afwachting van synchronisatie**.
+1. Nadat een zwevende object case is geïdentificeerd, kunt u de gedupliceerde kenmerken synchronisatie fouten rechtstreeks vanuit de portal oplossen. Selecteer de knop **Fix Toep assen** om het proces te activeren. De status van de huidige synchronisatie fout is bijgewerkt in **in afwachting van synchronisatie**.
 
-1. Na de volgende synchronisatiecyclus, moet de fout worden verwijderd uit de lijst.
+1. Na de volgende synchronisatie cyclus moet de fout worden verwijderd uit de lijst.
 
-## <a name="how-to-answer-the-diagnosis-questions"></a>Hoe u de diagnose vragen beantwoorden 
-### <a name="does-the-user-exist-in-your-on-premises-active-directory"></a>Bestaat de gebruiker in uw on-premises Active Directory?
+## <a name="how-to-answer-the-diagnosis-questions"></a>De diagnose vragen beantwoorden 
+### <a name="does-the-user-exist-in-your-on-premises-active-directory"></a>Bevinden de gebruiker zich in uw on-premises Active Directory?
 
-Deze vraag wordt geprobeerd om de bronobject van de bestaande gebruiker van on-premises Active Directory te identificeren.  
-1. Controleer of Azure Active Directory een object met de opgegeven heeft **UserPrincipalName**. Zo niet, antwoord **Nee**.
-2. Als dit wel gebeurt, controleert u of het object nog steeds binnen het bereik voor het synchroniseren is.  
-   - Zoeken in de Azure AD-connectorgebied met behulp van de DN-naam.
-   - Als het object is gevonden de **toevoegen in behandeling** status, beantwoorden **Nee**. Azure AD Connect kan geen verbinding met het maken van het object op het juiste Azure AD-object.
-   - Als het object niet wordt gevonden, beantwoorden **Ja**.
+Deze vraag probeert het bron object van de bestaande gebruiker te identificeren van on-premises Active Directory.  
+1. Controleer of Azure Active Directory een object heeft met de door gegeven **userPrincipalName**. Als dat niet het geval is **, beantwoordt u**antwoord.
+2. Als dit het geval is, controleert u of het object nog steeds binnen het bereik is voor synchronisatie.  
+   - Zoek in de Azure AD-connector ruimte met behulp van de DN.
+   - Als het object wordt gevonden in de status **toevoegen in behandeling** , **antwoord beantwoorden**. Azure AD Connect kunt het object niet verbinden met het juiste Azure AD-object.
+   - Als het object niet is gevonden, beantwoordt u **Ja**.
 
-In deze voorbeelden wordt de vraag wordt geprobeerd om te identificeren of **Joe Jackson** nog steeds aanwezig in on-premises Active Directory.
-Voor de **veelvoorkomend scenario**, beide gebruikers **Joe Johnson** en **Joe Jackson** aanwezig zijn in on-premises Active Directory. Er zijn twee verschillende gebruikers in quarantaine geplaatste objecten.
+In deze voor beelden probeert de vraag te bepalen of **Jan Jackson** nog steeds aanwezig is in on-premises Active Directory.
+Voor het **algemene scenario**zijn zowel gebruikers **Joe Johnson** als **Joe-Jackson** aanwezig in on-premises Active Directory. De objecten in quarantaine zijn twee verschillende gebruikers.
 
-![Algemeen scenario voor synchronisatie fout vaststellen](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
+![Algemeen scenario voor het uitvoeren van een diagnose fout](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
-Voor de **zwevende object scenario**, alleen de één gebruiker **Joe Johnson** aanwezig is in on-premises Active Directory:
+Voor het **scenario met zwevende objecten**is alleen de gebruiker **Joe Johnson** aanwezig in on-premises Active Directory:
 
-![Zwevende synchronisatieobject fout diagnosticeren * gebruiker bestaat * scenario](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
+![Fout bij het diagnosticeren van een zwevend object * er bestaat een gebruiker * scenario](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
 
-### <a name="do-both-of-these-accounts-belong-to-the-same-user"></a>Horen beide van deze accounts bij dezelfde gebruiker?
-Deze vraag controleert een binnenkomende conflicterende gebruiker en het bestaande gebruikersobject in Azure AD om te zien als ze deel uitmaken van dezelfde gebruiker.  
-1. De conflicterende object wordt pas gesynchroniseerd met Azure Active Directory. Vergelijk de objecten kenmerken:  
+### <a name="do-both-of-these-accounts-belong-to-the-same-user"></a>Hebben beide accounts deel uitmaken van dezelfde gebruiker?
+Met deze vraag worden een binnenkomende conflicterende gebruiker en het bestaande gebruikers object in azure AD gecontroleerd om te zien of ze deel uitmaken van dezelfde gebruiker.  
+1. Het conflicterende object is zojuist gesynchroniseerd met Azure Active Directory. Vergelijk de kenmerken van de objecten:  
    - Weergavenaam
-   - User Principal Name
+   - User principal name
    - Object-id
-2. Als Azure AD om ze te vergelijken is mislukt, controleert u of Active Directory-objecten met de opgegeven heeft **UserPrincipalNames**. Antwoord **Nee** als u beide vinden.
+2. Als Azure AD deze niet kan vergelijken, controleert u of Active Directory objecten heeft met de geleverde **UserPrincipalNames**. Beantwoord **Nee** als u beide vindt.
 
-In het volgende voorbeeld wordt de twee objecten deel uitmaken van dezelfde gebruiker **Joe Johnson**.
+In het volgende voor beeld behoren de twee objecten tot dezelfde gebruiker **Joe Johnson**.
 
-![Zwevende synchronisatieobject fout diagnosticeren * dezelfde gebruiker * scenario](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
+![Fout bij het onderzoeken van een zwevend object voor synchronisatie fouten * hetzelfde gebruikers * scenario](./media/how-to-connect-health-diagnose-sync-errors/IIdFixOrphanedCase.png)
 
 
-## <a name="what-happens-after-the-fix-is-applied-in-the-orphaned-object-scenario"></a>Wat gebeurt er wanneer de oplossing wordt toegepast in het scenario voor zwevende object
-Op basis van de voorgaande vragen worden beantwoord, ziet u de **op oplossing toepassen** knop wanneer er een oplossing beschikbaar is via Azure AD. In dit geval de on-premises object gesynchroniseerd met een onverwacht Azure AD-object. De twee objecten worden toegewezen met behulp van de **Bronanker**. De **op oplossing toepassen** wijziging wordt in deze of gelijksoortige stappen:
-1. Updates de **Bronanker** op het juiste object in Azure AD.
-2. Hiermee verwijdert u de conflicterende object in Azure AD, indien aanwezig.
+## <a name="what-happens-after-the-fix-is-applied-in-the-orphaned-object-scenario"></a>Wat er gebeurt nadat de oplossing is toegepast in het scenario met zwevende objecten
+Op basis van de antwoorden op de voor gaande vragen ziet u de knop **Toep assen herstellen** als er een oplossing beschikbaar is vanuit Azure AD. In dit geval wordt het on-premises object gesynchroniseerd met een onverwacht Azure AD-object. De twee objecten worden gekoppeld met behulp van het **bron anker**. De wijziging voor het **Toep assen** van een correctie heeft de volgende of vergelijk bare stappen:
+1. Hiermee wordt het **bron anker** bijgewerkt naar het juiste object in azure AD.
+2. Hiermee wordt het conflicterende object in azure AD verwijderd als dit aanwezig is.
 
-![Synchronisatiefout nadat het probleem vaststellen](./media/how-to-connect-health-diagnose-sync-errors/IIdFixAfterFix.png)
+![Fout bij het vaststellen van de synchronisatie fouten na de correctie](./media/how-to-connect-health-diagnose-sync-errors/IIdFixAfterFix.png)
 
 >[!IMPORTANT]
-> De **op oplossing toepassen** wijziging geldt alleen voor zwevende object gevallen.
+> De wijziging **Toep assen herstellen** is alleen van toepassing op zwevende object cases.
 >
 
-Nadat de voorgaande stappen hebt kan de gebruiker toegang tot de oorspronkelijke bron, die een koppeling naar een bestaand object. De **Diagnose status** waarde in de lijstweergave met updates voor **synchronisatie in behandeling**. De synchronisatiefout worden opgelost na de volgende synchronisatie. Verbinding maken met status wordt niet langer weergeven de opgelost synchronisatiefout in de lijstweergave.
+Na de voor gaande stappen heeft de gebruiker toegang tot de oorspronkelijke resource. Dit is een koppeling naar een bestaand object. De waarde voor de **diagnose status** in de lijst met updates voor **synchronisatie in behandeling**. De synchronisatie fout wordt na de volgende synchronisatie opgelost. Bij de verbindings status wordt de opgeloste synchronisatie fout niet meer weer gegeven in de lijst weergave.
 
-## <a name="failures-and-error-messages"></a>Fouten en foutberichten
-**Gebruiker met een conflicterend kenmerk is voorlopig verwijderd uit de Azure Active Directory. Zorg ervoor dat de gebruiker is moeilijk worden verwijderd voordat de nieuwe pogingen.**  
-De gebruiker met een conflicterend kenmerk in Azure AD moet worden opgeschoond voordat u de oplossing kunt toepassen. Bekijk [permanent verwijderen van de gebruiker in Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore) voordat opnieuw wordt geprobeerd de oplossing. De gebruiker wordt ook automatisch verwijderd na 30 dagen definitief voorlopig verwijderde status heeft. 
+## <a name="failures-and-error-messages"></a>Fouten en fout berichten
+**De gebruiker met een conflicterend kenmerk wordt zacht verwijderd in de Azure Active Directory. Zorg ervoor dat de gebruiker permanent is verwijderd voordat u het opnieuw probeert.**  
+De gebruiker met een conflicterend kenmerk in azure AD moet worden gereinigd voordat u een correctie kunt Toep assen. Lees [hoe u de gebruiker permanent verwijdert in azure AD voordat u](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore) de oplossing opnieuw probeert. De gebruiker wordt ook permanent verwijderd na 30 dagen met de status zacht verwijderd. 
 
-**Bijwerken bronanker voor cloud-gebaseerde gebruiker in uw tenant wordt niet ondersteund.**  
-Cloud-gebaseerde gebruiker in Azure AD mag geen bronanker hebben. Bijwerken bronanker wordt in dit geval niet ondersteund. Handmatige oplossing is vereist vanuit on-premises. 
+**Het bijwerken van het bron anker naar een Cloud gebruiker in uw Tenant wordt niet ondersteund.**  
+Cloud-gebaseerde gebruiker in azure AD mag geen bron anker hebben. Het bijwerken van het bron anker wordt in dit geval niet ondersteund. Hand matige correctie is vereist van on-premises. 
 
 ## <a name="faq"></a>Veelgestelde vragen
-**V:** Wat gebeurt er als de uitvoering van de **op oplossing toepassen** mislukt?  
-**A:** Als de uitvoering is mislukt, is het mogelijk dat Azure AD Connect een exportfout wordt uitgevoerd. Vernieuw de portal-pagina en probeer het opnieuw na de volgende synchronisatie. De standaard-synchronisatiecyclus is 30 minuten. 
+**V:** Wat gebeurt er als de uitvoering van de **toepassing herstellen** mislukt?  
+**A:** Als de uitvoering mislukt, is het mogelijk dat Azure AD Connect een export fout uitvoert. Vernieuw de portal pagina en probeer het opnieuw na de volgende synchronisatie. De standaard synchronisatie cyclus is 30 minuten. 
 
 
-**V:** Wat gebeurt er als de **bestaande object** moet het object moet worden verwijderd?  
-**A:** Als de **bestaande object** moet worden verwijderd, het proces heeft geen betrekking op een wijziging van **Bronanker**. Meestal kunt u het oplossen van on-premises Active Directory. 
+**V:** Wat gebeurt er als het **bestaande object** het object moet zijn dat moet worden verwijderd?  
+**A:** Als het **bestaande object** moet worden verwijderd, is voor het proces geen wijziging van het **bron anker**vereist. Normaal gesp roken kunt u het probleem oplossen op basis van on-premises Active Directory. 
 
 
-**V:** Welke machtigingen heeft een gebruiker nodig om toe te passen van de oplossing?  
-**A:** **Globale beheerder**, of **Inzender** uit de RBAC-instellingen, toegang heeft tot de diagnostische gegevens en de procedure voor probleemoplossing.
+**V:** Welke machtigingen heeft een gebruiker nodig om de oplossing toe te passen?  
+**A:** **Globale beheerder**of **INZENDER** van de RBAC-instellingen heeft toestemming voor toegang tot het diagnose-en probleemoplossings proces.
 
 
-**V:** Heb ik Azure AD Connect configureren of bijwerken van de Azure AD Connect Health-agent voor deze functie?  
-**A:** Nee, de diagnose-proces is een complete cloud-gebaseerde functie.
+**V:** Moet ik Azure AD Connect configureren of de Azure AD Connect Health Agent bijwerken voor deze functie?  
+**A:** Nee, het diagnose proces is een volledige Cloud functie.
 
 
-**V:** Als het bestaande object voorlopig verwijderd is, wordt het proces diagnose dat het object active opnieuw?  
-**A:** Niet de oplossing kenmerken van het object niet, dan bijwerken **Bronanker**.
+**V:** Als het bestaande object zacht wordt verwijderd, wordt het object opnieuw geactiveerd door het diagnose proces?  
+**A:** Nee, met de oplossing worden geen object kenmerken bijgewerkt dan het **bron anker**.

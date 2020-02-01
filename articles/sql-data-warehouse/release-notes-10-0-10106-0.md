@@ -11,12 +11,12 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6d51213402f852daee8fe4a6b5dbbd473afda659
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 917a698840850182d2d41ef780ba01d948e11c2f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122454"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896373"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Opmerkingen bij de release Azure SQL Data Warehouse
 
@@ -38,6 +38,7 @@ Gebruik de versie die is geïdentificeerd om te bevestigen welke release is toeg
 | --- | --- |
 |**Beheerportal metrische gegevens werk belasting (preview-versie)**|Met de release van de isolatie van de [werk belasting](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation) voor een preview-versie van dit afgelopen oktober kunnen gebruikers hun eigen [werkbelasting groepen](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) maken om systeem bronnen efficiënt te beheren en ervoor te zorgen dat er aan de zakelijke service overeenkomsten wordt voldaan.  Als onderdeel van de algemene verbeteringen van het [werkbelasting beheer](/azure/sql-data-warehouse/sql-data-warehouse-workload-management) voor Azure Synapse Analytics zijn nu nieuwe [werk belasting bewakings metrische gegevens](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor) beschikbaar.</br> </br> Het bewaken van uw werk belasting heeft nu meer inzicht in de volgende metrische gegevens: </br> -Effectief cap-resource percentage  </br> -Effectief min resource percentage </br> -Actieve query's van groep workloads </br> -Werkbelasting groep toewijzen door Maxi maal resource percentage </br> -Werkbelasting groep toewijzen per systeem percentage </br> -Time-outs van de query groep werk belasting </br> -Werkbelasting groep query's in wachtrij </br></br> Gebruik deze metrische gegevens om [knel punten van werkbelasting groepen](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck) of werkbelasting groepen te identificeren die zijn geconfigureerd met [gewerkte werkbelasting isolatie](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation).  Deze metrische gegevens kunnen worden gebruikt in azure Portal en kunnen worden gesplitst op werkbelasting groep.  U kunt uw favoriete grafieken filteren en vastmaken aan een dash board voor snelle toegang tot inzichten.|
 |**Metrische gegevens voor portal bewaking**| De volgende metrische gegevens zijn toegevoegd aan de portal voor het bewaken van de algemene query activiteit: </br> -Actieve query's </br> -Query's in de wachtrij </br> </br>Deze metrische gegevens worden beschreven samen met de bestaande metrische gegevens in de [documentatie voor het bewaken van resources en query's](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity).|
+|**Product naam**|Op 2020 juni wordt de product naam geretourneerd door SELECT @@VERSION gewijzigd van Microsoft Azure SQL Data Warehouse naar Azure Synapse Analytics. We zullen het schema publiceren in onze release opmerkingen. Deze wijziging is relevant voor klanten die de product naam uit het resultaat van SELECT @@VERSION in hun toepassings code hebben geparseerd. Als u wijzigingen in de toepassings code wilt voor komen door productserver Property, gebruikt u deze opdrachten om een query uit te zoeken naar de product naam en-versie van de data base. </br> Om DW-versie nummer XX te retour neren. X. XXXXX. X (zonder product naam) gebruik deze opdracht: SELECT server Property (' ProductVersion ') </br> Als u de engine Edition wilt retour neren, gebruikt u deze opdracht die 6 retourneert voor Azure Synapse Analytics (voorheen SQL Data Warehouse): SELECT server Property (' EngineEdition ')|
 
 ## <a name="october-2019"></a>Oktober 2019
 

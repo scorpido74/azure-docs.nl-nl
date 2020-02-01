@@ -3,12 +3,12 @@ title: Wat is er nieuw in Azure Site Recovery
 description: Biedt een samen vatting van nieuwe functies en de meest recente updates in de Azure Site Recovery-service.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 4a9feff3b0bc98b5d9853268d033e60de55ea5ea
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ecd42c624cf1fe62c8041a0b8798585c8870cabc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024826"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896028"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -20,17 +20,17 @@ U kunt volgen en u abonneren op Site Recovery update meldingen in het [Azure-upd
 
 ## <a name="supported-updates"></a>Ondersteunde updates
 
-Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest recente versie is van de release. Deze worden samengevat in de volgende tabel.
+Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest recente versie is van de release. Deze worden in de volgende tabel samenvatten.
 
 **Update** |  **Unified Setup** | **Eicellen van de configuratie server** | **Mobility Service-agent** | **Site Recovery provider** | **Recovery Services-agent**
 --- | --- | --- | --- | --- | ---
-[Pakket 43](https://support.microsoft.com/help/4531426/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
+[Pakket 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [Pakket 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [Pakket 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 [Pakket 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Pakket 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 
-        
+
 
 Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning van de update.
 
@@ -153,7 +153,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-Nieuwe waarschuwingen voor proces server | Er zijn nieuwe waarschuwingen voor de proces server toegevoegd. [Meer informatie](vmware-physical-azure-monitor-process-server.md). 
+Nieuwe waarschuwingen voor proces server | Er zijn nieuwe waarschuwingen voor de proces server toegevoegd. [Meer informatie](vmware-physical-azure-monitor-process-server.md).
 
 ### <a name="hyper-v-disaster-recovery"></a>Herstel na nood geval voor Hyper-V
 
@@ -183,7 +183,7 @@ Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel s
 **Functie** | **Details**
 --- | ---
 **Versleuteling zonder Azure AD** | Versleuteling zonder Azure AD-app wordt nu ondersteund voor Azure VM-replicatie naar Managed disks met Windows.
-**Netwerk bronnen voor failover** | Wanneer een failover wordt uitgevoerd naar een andere regio, kunt u nu netwerk bron instellingen (Nsg's, taak verdeling, openbaar IP-adres) koppelen aan een virtuele machine. 
+**Netwerk bronnen voor failover** | Wanneer een failover wordt uitgevoerd naar een andere regio, kunt u nu netwerk bron instellingen (Nsg's, taak verdeling, openbaar IP-adres) koppelen aan een virtuele machine.
 
 ## <a name="updates-july-2019"></a>Updates (juli 2019)
 
@@ -255,7 +255,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-**Bewaking proces server** | Voor herstel na nood gevallen van on-premises virtuele VMware-machines en fysieke servers kunt u problemen met de proces server controleren en oplossen met verbeterde rapporten en waarschuwingen voor de server status. [Meer informatie](vmware-physical-azure-monitor-process-server.md). 
+**Bewaking proces server** | Voor herstel na nood gevallen van on-premises virtuele VMware-machines en fysieke servers kunt u problemen met de proces server controleren en oplossen met verbeterde rapporten en waarschuwingen voor de server status. [Meer informatie](vmware-physical-azure-monitor-process-server.md).
 
 
 
@@ -284,7 +284,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 ## <a name="updates-february-2019"></a>Updates (februari 2019)
 
-### <a name="update-rollup-34"></a>Update pakket 34 
+### <a name="update-rollup-34"></a>Update pakket 34
 
 [Update pakket 34](https://support.microsoft.com/help/4490016/update-rollup-34-for-azure-site-recovery) bevat de volgende updates.
 
@@ -294,7 +294,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
 
 
-### <a name="update-rollup-33"></a>Update pakket 33 
+### <a name="update-rollup-33"></a>Update pakket 33
 
 [Update pakket 33](https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery) bevat de volgende updates.
 
@@ -304,17 +304,19 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
 
 
-### <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM 
+### <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM
+
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-**Netwerk toewijzing** | Voor herstel na nood gevallen van Azure VM kunt u nu elk beschik bare doelnet werken gebruiken wanneer u replicatie inschakelt. 
+**Netwerk toewijzing** | Voor herstel na nood gevallen van Azure VM kunt u nu elk beschik bare doelnet werken gebruiken wanneer u replicatie inschakelt.
 **Standard - SSD** | U kunt nu herstel na nood gevallen instellen voor Azure-Vm's met behulp van [Standard-SSD-schijven](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd).
 **Opslagruimten Direct** | U kunt herstel na nood gevallen instellen voor apps die worden uitgevoerd op Azure VM-apps met behulp van [opslagruimten direct](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview) voor hoge Beschik baarheid.  Het gebruik van Opslagruimten Direct (S2D) in combi natie met Site Recovery biedt uitgebreide beveiliging van Azure VM-workloads. Met S2D kunt u een gast cluster hosten in Azure. Dit is vooral handig wanneer een virtuele machine als host fungeert voor een kritieke toepassing, zoals SAP ASCS Layer, SQL Server of scale-out Bestands server.
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>Herstel na nood geval voor VMware/fysieke server
+
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
@@ -332,7 +334,7 @@ Versneld netwerken maken gebruik van I/O-virtualisatie met één hoofdmap (SR-IO
 
 [Meer informatie](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
-### <a name="update-rollup-32"></a>Update pakket 32 
+### <a name="update-rollup-32"></a>Update pakket 32
 
 [Update pakket 32](https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery) bevat de volgende updates.
 
@@ -353,13 +355,13 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 ### <a name="vmware-vmsphysical-servers-disaster-recovery"></a>Herstel na nood geval voor virtuele VMware-machines/fysieke servers
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
- 
+
 **Functie** | **Details**
 --- | ---
 **Linux-ondersteuning** | Er is ondersteuning toegevoegd voor redhat Enter prise Linux 7,6, RedHat Workstation 6/7, Oracle Linux 6,10 en Oracle Linux 7,6 en nieuwe kernel-versies voor Ubuntu, Debian en SUSE.
 
 
-### <a name="update-rollup-31"></a>Update pakket 31 
+### <a name="update-rollup-31"></a>Update pakket 31
 
 [Update pakket 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery) bevat de volgende updates.
 
@@ -368,8 +370,10 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
 
-### <a name="vmware-vmsphysical-servers-replication"></a>Replicatie van virtuele VMware-machines/fysieke servers 
+### <a name="vmware-vmsphysical-servers-replication"></a>Replicatie van virtuele VMware-machines/fysieke servers
+
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
+
 **Functie** | **Details**
 --- | ---
 **Linux-ondersteuning** |  Er is ondersteuning toegevoegd voor Oracle Linux 6,8, Oracle Linux 6,9 en Oracle Linux 7,0 met de Red Hat compatible kernel en voor de onbreekbare UEK-versie (Enter prise kernel) 5.
@@ -380,6 +384,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **UEFI-ondersteuning** | Azure-Vm's ondersteunen boot type UEFI niet. U kunt nu on-premises fysieke servers met UEFI migreren naar Azure met Site Recovery. Site Recovery migreert de server door het opstart type te converteren naar BIOS vóór de migratie. Site Recovery eerder deze conversie alleen voor Vm's ondersteund. Ondersteuning is beschikbaar voor fysieke servers met Windows Server 2012 of hoger.
 
 ### <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM
+
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
@@ -411,7 +416,7 @@ Herstel na nood gevallen van virtuele Azure-machines, en netwerk-en opslag koste
 
 ## <a name="updates-october-2018"></a>Updates (oktober 2018)
 
-### <a name="update-rollup-30"></a>Update pakket 30 
+### <a name="update-rollup-30"></a>Update pakket 30
 
 [Update pakket 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30) biedt de volgende updates.
 
@@ -431,7 +436,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **Firewall-ingeschakelde opslag (Power shell)** | Ondersteuning voor [opslag accounts met ingeschakelde firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security).<br/><br/> U kunt Azure-Vm's met niet-beheerde schijven op opslag accounts met ingeschakelde firewalls repliceren naar een andere Azure-regio voor herstel na nood gevallen.<br/><br/> U kunt opslag accounts met ingeschakelde firewall gebruiken als doel opslag accounts voor niet-beheerde schijven.<br/><br/> Alleen ondersteund met Power shell.
 
 
-### <a name="update-rollup-29"></a>Update pakket 29 
+### <a name="update-rollup-29"></a>Update pakket 29
 
 [Update pakket 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery) biedt de volgende updates.
 
@@ -443,7 +448,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 ## <a name="updates-august-2018"></a>Updates (augustus 2018)
 
-### <a name="update-rollup-28"></a>Update pakket 28 
+### <a name="update-rollup-28"></a>Update pakket 28
 
 [Update pakket 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) bevat de volgende updates.
 
@@ -452,7 +457,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
 
-### <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM 
+### <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
@@ -461,12 +466,12 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **Cloud ondersteuning** | Ondersteunde nood herstel voor virtuele Azure-machines in de Duitse Cloud.
 **Herstel na nood geval voor meerdere abonnementen** | Ondersteuning voor het repliceren van virtuele Azure-machines in één regio naar een andere regio in een ander abonnement, binnen dezelfde Azure Active Directory Tenant. [Meer informatie](https://aka.ms/cross-sub-blog).
 
-### <a name="vmware-vmphysical-server-disaster-recovery"></a>Herstel na nood geval voor VMware VM/fysieke server 
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>Herstel na nood geval voor VMware VM/fysieke server
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-**Linux-ondersteuning** | Ondersteuning toegevoegd voor RedHat Enter prise Linux 6,10, CentOS 6,10.<br/><br/> Op Linux gebaseerde virtuele machines die gebruikmaken van de partitie stijl GPT (GUID-partitie tabel) in verouderde BIOS-compatibiliteits modus, worden nu ondersteund. Raadpleeg de [Veelgestelde vragen over Azure VM](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) voor meer informatie. 
+**Linux-ondersteuning** | Ondersteuning toegevoegd voor RedHat Enter prise Linux 6,10, CentOS 6,10.<br/><br/> Op Linux gebaseerde virtuele machines die gebruikmaken van de partitie stijl GPT (GUID-partitie tabel) in verouderde BIOS-compatibiliteits modus, worden nu ondersteund. Raadpleeg de [Veelgestelde vragen over Azure VM](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) voor meer informatie.
 **Herstel na nood geval voor Vm's na migratie** | Ondersteuning voor het inschakelen van herstel na nood gevallen naar een secundaire regio voor een on-premises virtuele VMware-machine die is gemigreerd naar Azure, zonder dat u de Mobility-service op de virtuele machine hoeft te verwijderen voordat u replicatie inschakelt.
 **Windows Server 2008** | Ondersteuning voor de migratie van computers met Windows Server 2008 R2/2008 64-bits en 32-bits.<br/><br/> Alleen migratie (replicatie en failover). Failback wordt niet ondersteund.
 
@@ -481,7 +486,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
 
-### <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM 
+### <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
@@ -489,7 +494,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 --- | ---
 **Linux-ondersteuning** | Ondersteuning toegevoegd voor Red Hat Enterprise Linux 7,5.
 
-### <a name="vmware-vmphysical-server-disaster-recovery"></a>Herstel na nood geval voor VMware VM/fysieke server 
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>Herstel na nood geval voor VMware VM/fysieke server
 
 De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 

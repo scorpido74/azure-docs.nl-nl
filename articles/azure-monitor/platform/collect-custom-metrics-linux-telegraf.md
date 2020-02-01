@@ -1,6 +1,6 @@
 ---
 title: Aangepaste metrische gegevens voor Linux-VM verzamelen met de InfluxData-Telegraf-agent
-description: instructies voor het implementeren van de InfluxData-telegrafie-agent op een virtuele Linux-machine in Azure en het configureren van de agent voor het publiceren van metrische gegevens naar Azure Monitor.
+description: Instructies voor het implementeren van de InfluxData-telegrafie-agent op een virtuele Linux-machine in Azure en het configureren van de agent voor het publiceren van metrische gegevens naar Azure Monitor.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b4cf5dc53c0fe256c9ecab5a844300224b860e44
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 365330aa445bcf8e5b1aec575d5e646d533ceaf7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926752"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901318"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Aangepaste metrische gegevens verzamelen voor een virtuele Linux-machine met de InfluxData-Telegraf-agent
 
@@ -21,7 +21,7 @@ U kunt met behulp van Azure Monitor aangepaste metrische gegevens verzamelen via
 
 ## <a name="influxdata-telegraf-agent"></a>InfluxData-Telegraf-agent 
 
-[Telegrafie](https://docs.influxdata.com/telegraf/v1.7/) is een door de toepassing aangedreven agent die het verzamelen van metrische gegevens van meer dan 150 verschillende bronnen mogelijk maakt. Afhankelijk van de werk belastingen die op uw virtuele machine worden uitgevoerd, kunt u de agent configureren voor het gebruik van gespecialiseerde invoer invoeg toepassingen voor het verzamelen van metrische gegevens. Voor beelden zijn MySQL, NGINX en Apache. Met behulp van uitvoer invoeg toepassingen kan de agent vervolgens naar bestemmingen schrijven die u kiest. De telegrafie agent heeft rechtstreeks geïntegreerd met de Azure Monitor aangepaste metrische gegevens REST API. Het ondersteunt een Azure Monitor-uitvoer-invoeg toepassing. Door deze invoeg toepassing te gebruiken, kan de agent specifieke metrische gegevens van uw Linux-machine verzamelen en als aangepaste metrische gegevens naar Azure Monitor verzenden. 
+[Telegrafie](https://docs.influxdata.com/telegraf/) is een door de toepassing aangedreven agent die het verzamelen van metrische gegevens van meer dan 150 verschillende bronnen mogelijk maakt. Afhankelijk van de werk belastingen die op uw virtuele machine worden uitgevoerd, kunt u de agent configureren voor het gebruik van gespecialiseerde invoer invoeg toepassingen voor het verzamelen van metrische gegevens. Voor beelden zijn MySQL, NGINX en Apache. Met behulp van uitvoer invoeg toepassingen kan de agent vervolgens naar bestemmingen schrijven die u kiest. De telegrafie agent heeft rechtstreeks geïntegreerd met de Azure Monitor aangepaste metrische gegevens REST API. Het ondersteunt een Azure Monitor-uitvoer-invoeg toepassing. Door deze invoeg toepassing te gebruiken, kan de agent specifieke metrische gegevens van uw Linux-machine verzamelen en als aangepaste metrische gegevens naar Azure Monitor verzenden. 
 
  ![Overzicht van de Telegraaf agent](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
@@ -29,7 +29,7 @@ U kunt met behulp van Azure Monitor aangepaste metrische gegevens verzamelen via
 
 Voor deze zelf studie implementeren we een virtuele Linux-machine waarop het Ubuntu 16,04 LTS-besturings systeem wordt uitgevoerd. De telegrafie-agent wordt ondersteund voor de meeste Linux-besturings systemen. Zowel de Debian-als de RPM-pakketten zijn beschikbaar in combi natie met niet-verpakkende Linux-bestanden op de [InfluxData-Download Portal](https://portal.influxdata.com/downloads). Zie deze [telegrafi-installatie handleiding](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) voor aanvullende installatie-instructies en-opties. 
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 Een nieuwe virtuele Linux-machine maken: 
 
@@ -106,7 +106,7 @@ De agent verzamelt nu metrische gegevens uit elk van de opgegeven invoer-invoeg 
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Uw telegrafeer metrische gegevens in de Azure Portal afzetten 
 
-1. Open de [Azure-portal](https://portal.azure.com). 
+1. Open de [Azure Portal](https://portal.azure.com). 
 
 1. Ga naar het tabblad nieuwe **monitor** . Selecteer vervolgens **metrische gegevens**.  
 

@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 649a4a50766d26f73584dae4481652c8007b2e9e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 493ba6396a7ceb11b917fbda5dd6c37c070f2fee
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174673"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897616"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Instellingen voor aanvraag-en goed keuring wijzigen voor een toegangs pakket in het beheer van rechten van Azure AD
 
@@ -42,6 +42,9 @@ De manier waarop u opgeeft wie een toegangs pakket kan aanvragen, is met een bel
 | Ik wil gebruikers in mijn Directory en gebruikers buiten mijn Directory toestaan om een toegangs pakket aan te vragen | Meerdere |
 | Ik wil andere goedkeurings instellingen opgeven voor sommige gebruikers | Meerdere |
 | Ik wil dat sommige gebruikers pakket toewijzingen gebruiken om te verlopen terwijl andere gebruikers hun toegang kunnen uitbreiden | Meerdere |
+
+Zie [meerdere beleids regels](entitlement-management-troubleshoot.md#multiple-policies
+)voor informatie over de prioriteits logica die wordt gebruikt wanneer er meerdere beleids regels van toepassing zijn.
 
 ### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>Een bestaand beleid voor aanvraag-en goedkeurings instellingen openen
 

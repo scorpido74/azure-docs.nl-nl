@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Connect Health FAQ - Azure | Microsoft Docs
-description: Deze Veelgestelde vragen vindt u antwoorden op vragen over Azure AD Connect Health. In deze Veelgestelde vragen worden vragen behandeld over het gebruik van de service, zoals het factureringsmodel, de mogelijkheden, beperkingen en ondersteuning.
+title: Azure Active Directory Connect Health Veelgestelde vragen-Azure | Microsoft Docs
+description: Deze veelgestelde vragen vindt u antwoorden op vragen over Azure AD Connect Health. In deze Veelgestelde vragen worden vragen behandeld over het gebruik van de service, zoals het factureringsmodel, de mogelijkheden, beperkingen en ondersteuning.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: f1b851aa-54d7-4cb4-8f5c-60680e2ce866
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,154 +16,154 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e6c490ee9d8b6f7f07f52e70ceb8c7c49d699b6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62096112"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897024"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Veelgestelde vragen over Azure AD Connect Health
-In dit artikel bevat antwoorden op veelgestelde vragen over Azure Active Directory (Azure AD) Connect Health. Deze Veelgestelde vragen hebben betrekking op vragen over het gebruik van de service, waaronder het facturering model, mogelijkheden, beperkingen en ondersteuning.
+In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Active Directory (Azure AD) Connect Health. Deze veelgestelde vragen worden behandeld in het gebruik van de service, waaronder het facturerings model, de mogelijkheden, beperkingen en ondersteuning.
 
 ## <a name="general-questions"></a>Algemene vragen
-**V: Kan ik beheren meerdere Azure AD-directory's. Hoe kan ik schakelen naar de met Azure Active Directory Premium?**
+**V: ik beheer meerdere Azure AD-mappen. Hoe kan ik overschakelen naar de versie die Azure Active Directory Premium heeft?**
 
-Schakelen tussen de verschillende Azure AD-tenants, selecteert u de momenteel aangemelde **gebruikersnaam** in de rechterbovenhoek hoek en kies vervolgens het gewenste account. Als het account hier niet wordt weergegeven, selecteert u **Afmelden**, en gebruik vervolgens de referenties van de globale beheerder van de directory met Azure Active Directory Premium aan te melden bij ingeschakeld.
+Als u wilt scha kelen tussen verschillende Azure AD-tenants, selecteert u de naam van de momenteel aangemelde **gebruiker** in de rechter bovenhoek en kiest u vervolgens het juiste account. Als het account hier niet wordt vermeld, selecteert u **Afmelden**en gebruikt u vervolgens de globale beheerders referenties van de map waarvoor Azure Active Directory Premium ingeschakeld om u aan te melden.
 
-**V: Welke versie van de identiteit rollen worden ondersteund door Azure AD Connect Health?**
+**V: welke versie van identiteits rollen wordt ondersteund door Azure AD Connect Health?**
 
-De volgende tabel geeft een lijst van de rollen en versies van besturingssystemen ondersteund.
+De volgende tabel bevat de rollen en ondersteunde besturingssysteem versies.
 
-|Rol| Besturingssysteem / versie|
+|Rol| Besturings systeem/versie|
 |--|--|
-|Active Directory Federatieservices (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory Federation Services (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 |Azure AD Connect | Versie 1.0.9125 of hoger|
 |Active Directory Domain Services (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
-Houd er rekening mee dat de functies van de service op basis van de rol en het besturingssysteem verschillen kunnen. Met andere woorden, alle functies mogelijk niet beschikbaar voor alle versies van besturingssystemen. Zie de functiebeschrijvingen van de voor meer informatie.
+Houd er rekening mee dat de functies die door de service worden door gegeven, mogelijk verschillen op basis van de rol en het besturings systeem. Met andere woorden, alle functies zijn mogelijk niet beschikbaar voor alle versies van het besturings systeem. Zie de beschrijvingen van functies voor meer informatie.
 
-**V: Hoeveel licenties heb ik nodig voor het bewaken van mijn infrastructuur?**
+**V: hoeveel licenties heb ik nodig voor het bewaken van mijn infra structuur?**
 
-* De eerste Connect Health-Agent is ten minste één Azure AD Premium-licentie vereist.
-* Voor elke extra geregistreerde agent vereist 25 extra Azure AD Premium-licenties.
-* Aantal agents is gelijk aan het totale aantal agents die zijn geregistreerd voor alle bewaakte rollen (AD FS, Azure AD Connect en/of AD DS).
-* AAD Connect Health-licentieverlening vereist niet dat u de licentie toewijzen aan specifieke gebruikers. U hoeft alleen het vereiste aantal geldige licenties hebt.
+* Voor de eerste Connect Health-Agent is ten minste één Azure AD Premium-licentie vereist.
+* Voor elke aanvullende geregistreerde agent zijn 25 extra licenties voor Azure AD Premium vereist.
+* Het aantal agents is gelijk aan het totale aantal agents dat is geregistreerd voor alle bewaakte rollen (AD FS, Azure AD Connect en/of AD DS).
+* Voor AAD Connect Health Licensing is het niet nodig om de licentie toe te wijzen aan specifieke gebruikers. U hoeft alleen het vereiste aantal geldige licenties te hebben.
 
-Licentie-informatie is ook gevonden op de [pagina met prijzen voor Azure AD](https://aka.ms/aadpricing).
+Licentie gegevens vindt u ook op de [Azure AD-pagina met prijzen](https://aka.ms/aadpricing).
 
 Voorbeeld:
 
-| Geregistreerde agents | Benodigde licenties | Configuratie van de voorbeeld-bewaking |
+| Geregistreerde agents | Vereiste licenties | Voor beeld van bewakings configuratie |
 | ------ | --------------- | --- |
-| 1 | 1 | 1 azure AD Connect-server |
-| 2 | 26| 1 azure AD Connect-server en 1-domeincontroller |
-| 3 | 51 | 1 active Directory Federation Services (AD FS)-server, 1 AD FS-proxy en 1-domeincontroller |
-| 4 | 76 | 1 AD FS-server, 1 AD FS-proxy en 2 domeincontrollers |
-| 5 | 101 | 1 azure AD Connect-server, 1 AD FS-server 1 AD FS-proxy en 2 domeincontrollers |
+| 1 | 1 | 1 Azure AD Connect server |
+| 2 | 26| 1 Azure AD Connect server en 1 domein controller |
+| 3 | 51 | 1 Active Directory Federation Services (AD FS) server, 1 AD FS proxy en 1 domein controller |
+| 4 | 76 | 1 AD FS server, 1 AD FS proxy en 2 domein controllers |
+| 5 | 101 | 1 Azure AD Connect server, 1 AD FS server, 1 AD FS proxy en 2 domein controllers |
 
-**V: Azure AD Connect Health biedt ondersteuning voor Azure-Cloud voor Duitsland?**
+**V: ondersteunt Azure AD Connect Health Azure Duitsland-Cloud?**
 
-Azure AD Connect Health wordt niet ondersteund in de Duitse Cloud, behalve voor de [synchronisatiefunctie fouten rapport](how-to-connect-health-sync.md#object-level-synchronization-error-report).
+Azure AD Connect Health wordt niet ondersteund in de Duitse Cloud, met uitzonde ring van de [functie synchronisatie fouten rapport](how-to-connect-health-sync.md#object-level-synchronization-error-report).
 
 | Rollen | Functies | Ondersteund in de Duitse Cloud |
 | ------ | --------------- | --- |
-| Connect Health for Sync | Bewaking / inzicht / waarschuwingen / analyse | Nee |
-|  | Rapport over synchronisatiefouten | Ja |
-| Connect Health voor AD FS | Bewaking / inzicht / waarschuwingen / analyse | Nee |
-| Connect Health voor ADDS | Bewaking / inzicht / waarschuwingen / analyse | Nee |
+| Connect Health voor synchronisatie | Bewaking/inzichten/waarschuwingen/analyse | Nee |
+|  | Synchronisatie fout rapport | Ja |
+| Connect Health voor ADFS | Bewaking/inzichten/waarschuwingen/analyse | Nee |
+| Status van verbinding maken voor toevoegen | Bewaking/inzichten/waarschuwingen/analyse | Nee |
 
-Om te controleren of de agent met de connectiviteit van Connect Health voor synchroniseren, configureer de [installatievereiste](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) dienovereenkomstig.
+Om ervoor te zorgen dat de verbindings status van de agent wordt gesynchroniseerd, moet u de vereisten voor de [installatie](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) dienovereenkomstig configureren.
 
-## <a name="installation-questions"></a>Vragen over de installatie
+## <a name="installation-questions"></a>Installatie vragen
 
-**V: Wat zijn de gevolgen van de Azure AD Connect Health-Agent installeren op afzonderlijke servers?**
+**V: wat is de impact van het installeren van de Azure AD Connect Health-Agent op afzonderlijke servers?**
 
-De impact van het installeren van de Microsoft Azure AD Connect Health-Agent, de AD FS, de WAP-servers, de Azure AD Connect (sync)-servers, domeincontrollers is minimale met betrekking tot de CPU, geheugengebruik, bandbreedte van het netwerk en opslag.
+De gevolgen van het installeren van de Microsoft Azure AD Connect Health-Agent, AD FS, Web Application proxy-servers, Azure AD Connect (synchronisatie)-servers, domein controllers zijn mini maal ten opzichte van de CPU, het geheugen verbruik, de netwerk bandbreedte en de opslag.
 
 De volgende getallen zijn een benadering:
 
-* CPU-verbruik: ~ 1-5% verhogen.
-* Geheugengebruik: Maximaal 10% van de totale systeemgeheugen.
+* CPU-verbruik: ~ 1-5% toename.
+* Geheugen gebruik: tot 10% van het totale systeem geheugen.
 
 > [!NOTE]
-> Als de agent kan niet met Azure communiceren, worden de gegevens voor een gedefinieerde maximumlimiet lokaal opgeslagen in de agent. De agent worden de gegevens 'in de cache' op basis van "minst recentelijk onderhouden" overschreven.
+> Als de agent niet kan communiceren met Azure, slaat de agent de gegevens lokaal op voor een gedefinieerde maximum limiet. De agent overschrijft de gegevens in cache op basis van een ' minst recent service '.
 >
 >
 
-* Lokale buffer opslag voor Azure AD Connect Health-Agents: ~ 20 MB.
-* Voor AD FS-servers raden wij het inrichten van een schijfruimte van 1024 MB (1 GB) voor het kanaal voor het controleren van AD FS voor Azure AD Connect Health-Agents voor het verwerken van de controlegegevens voordat deze wordt overschreven.
+* Lokale buffer opslag voor Azure AD Connect Health Agents: ~ 20 MB.
+* Voor AD FS-servers wordt u aangeraden een schijf ruimte van 1.024 MB (1 GB) in te richten voor het AD FS controle kanaal voor Azure AD Connect Health Agents om alle controle gegevens te verwerken voordat deze worden overschreven.
 
-**V: Ik moet mijn servers opnieuw tijdens de installatie van de Azure AD Connect Health-Agents?**
+**V: moet ik mijn servers opnieuw opstarten tijdens de installatie van de Azure AD Connect Health Agents?**
 
-Nee. De server opnieuw opstarten is niet nodig voor de installatie van de agents zijn vereist. Installatie van bepaalde vereiste stappen moet echter een opnieuw opstarten van de server.
+Nee. Voor de installatie van de agents is het niet nodig om de server opnieuw op te starten. Voor de installatie van bepaalde vereiste stappen kan het echter nodig zijn om de server opnieuw op te starten.
 
-Installatie van .NET-Framework 4.5 vereist bijvoorbeeld op Windows Server 2008 R2, server opnieuw opstarten.
+Voor de installatie van .NET 4,5 Framework in Windows Server 2008 R2 moet de server bijvoorbeeld opnieuw worden opgestart.
 
-**V: Werkt de Azure AD Connect Health via een Pass Through-HTTP-proxy?**
+**V: werkt Azure AD Connect Health via een Pass-Through HTTP-proxy?**
 
-Ja. U kunt de Health-Agent voor het gebruik van een HTTP-proxy voor het doorsturen van uitgaande HTTP-aanvragen te configureren voor lopende bewerkingen.
-Meer informatie over [HTTP-Proxy voor de Health-Agents configureren](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy).
+Ja. Voor doorlopende bewerkingen kunt u de Health-Agent configureren voor het gebruik van een HTTP-proxy voor het door sturen van uitgaande HTTP-aanvragen.
+Meer informatie over het [configureren van HTTP-proxy voor Health-Agents](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy).
 
-Als u een proxy configureren tijdens de registratie van de agent wilt, moet u mogelijk vooraf de Internet Explorer-Proxy-instellingen wijzigen.
+Als u een proxy moet configureren tijdens de registratie van de agent, moet u mogelijk de proxy-instellingen van Internet Explorer vooraf wijzigen.
 
-1. Open Internet Explorer > **instellingen** > **Internetopties** > **verbindingen** > **LAN-instellingen** .
-2. Selecteer **een proxyserver gebruiken voor uw LAN**.
-3. Selecteer **Geavanceerd** hebt u verschillende proxyservers poorten voor HTTP en HTTPS/Secure.
+1. Open Internet Explorer > **instellingen** > **Internet opties** > **verbindingen** > **LAN-instellingen**.
+2. Selecteer **een proxy server voor uw LAN gebruiken**.
+3. Selecteer **Geavanceerd** als u verschillende proxy poorten voor http en HTTPS/Secure hebt.
 
-**V: Ondersteunt Azure AD Connect Health basisverificatie wordt gebruikt bij het verbinden met HTTP-proxy's?**
+**V: ondersteunt Azure AD Connect Health basis verificatie bij het maken van verbinding met HTTP-proxy's?**
 
-Nee. Een mechanisme om op te geven van een willekeurige naam en het wachtwoord voor basisverificatie is momenteel niet ondersteund.
+Nee. Een mechanisme voor het opgeven van een wille keurige gebruikers naam en wacht woord voor basis verificatie wordt momenteel niet ondersteund.
 
-**V: Welke firewall-poorten moet ik openen voor de Azure AD Connect Health-Agent om te werken?**
+**V: welke firewall poorten moet ik openen om de Azure AD Connect Health Agent te laten werken?**
 
-Zie de [gedeelte vereisten](how-to-connect-health-agent-install.md#requirements) voor een lijst van firewall-poorten en andere vereisten voor connectiviteit.
+Zie de [sectie vereisten](how-to-connect-health-agent-install.md#requirements) voor de lijst met Firewall poorten en andere connectiviteits vereisten.
 
-**V: Waarom zie ik twee servers met dezelfde naam in de portal voor Azure AD Connect Health?**
+**V: Waarom worden er twee servers met dezelfde naam in de Azure AD Connect Health portal weer geven?**
 
-Wanneer u een agent van een server verwijderen, wordt de server niet automatisch verwijderd uit de Azure AD Connect Health-portal. Als u handmatig een agent van een server verwijderen of de server zelf verwijderen, moet u de serververmelding handmatig verwijderen van de Azure AD Connect Health-portal.
+Wanneer u een agent van een server verwijdert, wordt de server niet automatisch verwijderd uit de portal van Azure AD Connect Health. Als u een agent hand matig verwijdert van een server of de server zelf verwijdert, moet u de server vermelding hand matig verwijderen uit de Azure AD Connect Health Portal.
 
-U kunt de installatiekopie van een server terugzetten of een nieuwe server maken met de dezelfde informatie (zoals de naam van de machine). Als u de reeds geregistreerde server niet hebt verwijderd uit de Azure AD Connect Health-portal en de agent op de nieuwe server hebt geïnstalleerd, ziet u mogelijk twee vermeldingen met dezelfde naam.
+U kunt de installatie kopie van een server wijzigen of een nieuwe server maken met dezelfde gegevens (zoals de naam van de computer). Als u de reeds geregistreerde server niet uit de Azure AD Connect Health Portal hebt verwijderd en u de agent op de nieuwe server hebt geïnstalleerd, ziet u mogelijk twee vermeldingen met dezelfde naam.
 
-In dit geval wordt de vermelding die deel uitmaakt van de oude server handmatig verwijderen. De gegevens voor deze server moet zijn verouderd.
+In dit geval moet u de vermelding die bij de oudere server hoort hand matig verwijderen. De gegevens voor deze server zijn verouderd.
 
-## <a name="health-agent-registration-and-data-freshness"></a>Registratie en gegevens nieuwheid van Health-Agent
+## <a name="health-agent-registration-and-data-freshness"></a>Registratie en gegevens versheid van de Health-Agent
 
-**V: Wat zijn veelvoorkomende redenen voor de Health-Agent-registratiefouten en hoe los ik problemen?**
+**V: wat zijn veelvoorkomende redenen voor het registreren van fouten in de Health-Agent en hoe los ik problemen op?**
 
-De health-agent kan niet worden geregistreerd door de volgende mogelijke oorzaken:
+De status agent kan niet worden geregistreerd door de volgende mogelijke redenen:
 
-* De agent kan niet communiceren met de vereiste eindpunten omdat verkeer wordt geblokkeerd door een firewall. Dit geldt met name op de WAP-servers. Zorg ervoor dat u uitgaande communicatie naar de vereiste eindpunten en de poorten zijn toegestaan. Zie de [gedeelte vereisten](how-to-connect-health-agent-install.md#requirements) voor meer informatie.
-* Uitgaande communicatie is door de netwerklaag een SSL-inspectie onderworpen. Dit zorgt ervoor dat het certificaat die gebruikmaakt van de agent moet worden vervangen door de controle-server/entiteit en de stappen voor het voltooien van de registratie van de agent mislukken.
-* De gebruiker heeft geen toegang tot het uitvoeren van de registratie van de agent. Globale beheerders hebben standaard toegang. U kunt [rollen gebaseerd toegangsbeheer](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) voor toegang tot andere gebruikers delegeren.
+* De agent kan niet communiceren met de vereiste eind punten omdat het verkeer wordt geblokkeerd door een firewall. Dit is met name gebruikelijk op Web Application proxy-servers. Zorg ervoor dat u de toegestane uitgaande communicatie met de vereiste eind punten en poorten hebt toegestaan. Zie de [sectie vereisten](how-to-connect-health-agent-install.md#requirements) voor meer informatie.
+* Uitgaande communicatie wordt onderhevig aan een SSL-inspectie door de netwerklaag. Dit zorgt ervoor dat het certificaat dat door de agent wordt gebruikt, wordt vervangen door de controle server/entiteit en de stappen voor het volt ooien van de registratie van de agent mislukken.
+* De gebruiker heeft geen toegang om de registratie van de agent uit te voeren. Globale beheerders hebben standaard toegang. U kunt [op rollen gebaseerde Access Control](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) gebruiken om de toegang tot andere gebruikers te delegeren.
 
-**V: Ik ben ophalen gewaarschuwd dat 'Health-servicegegevens is niet up-to-date." Hoe kan ik het probleem oplossen?**
+**V: Ik ontvang een waarschuwing dat Health Service gegevens niet up-to-date zijn. Hoe kan ik het probleem op te lossen?**
 
-Azure AD Connect Health, wordt er een waarschuwing gegenereerd wanneer deze niet alle gegevenspunten van de server in de afgelopen twee uur ontvangen worden. [Meer informatie](how-to-connect-health-data-freshness.md).
+De waarschuwing wordt door Azure AD Connect Health gegenereerd wanneer deze niet alle gegevens punten van de server in de afgelopen twee uur ontvangt. [Meer informatie](how-to-connect-health-data-freshness.md).
 
-## <a name="operations-questions"></a>Operations-vragen
-**V: Heb ik nodig om te controleren voor de WAP-servers inschakelen?**
+## <a name="operations-questions"></a>Vragen over bewerkingen
+**V: moet ik de controle op de Web Application proxy-servers inschakelen?**
 
-Nee, controle hoeft niet te worden ingeschakeld op de WAP-servers.
+Nee, controle hoeft niet te worden ingeschakeld op de Web Application proxy-servers.
 
-**V: Hoe Azure AD Connect Health waarschuwingen opgelost?**
+**V: hoe Waarschuwingen Azure AD Connect Health ik opgelost?**
 
-Waarschuwingen van Azure AD Connect Health worden opgelost op een voorwaarde geslaagd. Azure AD Connect Health-Agents detecteren en de voorwaarden succes periodiek rapporteren aan de service. Voor enkele waarschuwingen is de onderdrukking op basis van tijd. Met andere woorden, als het hetzelfde probleem niet binnen 72 uur van het genereren van waarschuwingen is waargenomen, de waarschuwing automatisch opgelost.
+Azure AD Connect Health waarschuwingen worden opgelost met een succes voorwaarde. Azure AD Connect Health Agents kunnen de geslaagde voor waarden regel matig detecteren en rapporteren aan de service. Voor enkele waarschuwingen is de onderdrukking op basis van tijd. Met andere woorden, als dezelfde fout situatie niet binnen 72 uur wordt waargenomen bij het genereren van waarschuwingen, wordt de waarschuwing automatisch opgelost.
 
-**V: Ik ben ophalen gewaarschuwd dat 'Test-verificatieaanvraag (synthetische transactie) kan niet een token verkrijgen." Hoe kan ik het probleem oplossen?**
+**V: Ik ontvang een waarschuwing dat de test verificatie aanvraag (synthetische trans actie) geen token kan verkrijgen. Hoe kan ik het probleem op te lossen?**
 
-Azure AD Connect Health voor AD FS wordt deze waarschuwing gegenereerd wanneer de Health-Agent geïnstalleerd op een AD FS-server niet kan een token verkrijgen als onderdeel van een synthetische transactie is gestart door de Health-Agent. De Health-agent maakt gebruik van de lokale system-context en probeert op te halen van een token voor een relying party zelf. Dit is een catch-all-test om ervoor te zorgen dat AD FS heeft de status van het uitgeven van tokens.
+Azure AD Connect Health voor AD FS deze waarschuwing wordt gegenereerd wanneer de Health-Agent die is geïnstalleerd op een AD FS server, geen token kan verkrijgen als onderdeel van een synthetische trans actie die wordt geïnitieerd door de Health-Agent. De Health-Agent gebruikt de lokale systeem context en probeert een token op te halen voor een self-Relying Party. Dit is een catch-all-test om ervoor te zorgen dat AD FS zich in de status van tokens uitgeven bevindt.
 
-Deze test mislukt meestal omdat de Health-Agent niet kan omzetten van de naam van de AD FS-farm. Dit kan gebeuren als de AD FS-servers achter een load balancers voor het netwerk en de aanvraag wordt gestart vanaf een knooppunt dat achter de load balancer (in plaats van een reguliere-client die is voor de load balancer). Dit kan worden hersteld door het bijwerken van het Hostsbestand '' onder 'C:\Windows\System32\drivers\etc"het IP-adres van de AD FS-server of een loopback-IP-adres (127.0.0.1) voor de naam van de AD FS-farm (bijvoorbeeld sts.contoso.com) op te nemen. Het bestand met de host toe te voegen, wordt de netwerkaanroep, waardoor de Health-Agent om op te halen van het token kortsluiting.
+Meestal mislukt deze test omdat de status agent de naam van de AD FS-Farm niet kan omzetten. Dit kan gebeuren als de AD FS servers zich achter een netwerk taak verdeler bevinden en de aanvraag wordt gestart vanaf een knoop punt dat zich achter de load balancer bevindt (in plaats van een gewone client die vóór de load balancer is). Dit kan worden opgelost door het bijwerken van het "hosts"-bestand onder "C:\Windows\System32\drivers\etc" om het IP-adres van de AD FS server of een loop back-IP-adres (127.0.0.1) voor de naam van de AD FS Farm (zoals sts.contoso.com) op te laten bevatten. Het toevoegen van het hostbestand verkort de netwerk aanroep, waardoor de status agent het token kan ophalen.
 
-**V: Er treedt een e-mailbericht dat aangeeft dat mijn machines zijn niet gevuld voor de recente aanvallen met ransomware. Waarom krijg ik dit e-mailbericht?**
+**V: Ik heb een e-mail ontvangen waarin staat dat mijn computers niet worden gerepareerd voor de recente Ransomware-aanvallen. Waarom heb ik dit e-mail bericht?**
 
-Azure AD Connect Health-service gescand alle computers die wordt bewaakt om te controleren of de vereiste patches zijn geïnstalleerd. Het e-mailbericht is verzonden naar de tenantbeheerders als ten minste één computer beschikt niet over de kritieke patches. De volgende logica is gebruikt om dit te bepalen.
-1. Alle hotfixes die zijn geïnstalleerd op de machine vinden.
-2. Controleer of ten minste één van de HotFixes in de lijst met gedefinieerde aanwezig is.
-3. Als u Ja kiest, wordt de machine is beveiligd. Als dat niet het geval is, moet u de machine loopt het risico voor de aanval.
+Azure AD Connect Health-Service heeft alle machines gescand die worden bewaakt om ervoor te zorgen dat de vereiste patches zijn geïnstalleerd. Het e-mail bericht is verzonden naar de Tenant beheerders als ten minste één computer geen essentiële patches heeft. De volgende logica is gebruikt om deze bepaling te maken.
+1. Alle hotfixes zoeken die op de computer zijn geïnstalleerd.
+2. Controleer of er ten minste één van de HotFixes uit de gedefinieerde lijst aanwezig is.
+3. Zo ja, dan is de computer beveiligd. Als dat niet het geval is, is de computer kwetsbaar voor de aanval.
 
-U kunt de volgende PowerShell-script gebruiken om uit te voeren van deze controle handmatig. De bovenstaande logica geïmplementeerd.
+U kunt het volgende Power shell-script gebruiken om deze controle hand matig uit te voeren. De bovenstaande logica wordt geïmplementeerd.
 
 ```powershell
 Function CheckForMS17-010 ()
@@ -185,19 +186,19 @@ CheckForMS17-010
 
 ```
 
-**V: Waarom wordt de PowerShell-cmdlet <i>Get-MsolDirSyncProvisioningError</i> minder synchronisatiefouten in het resultaat weergeven?**
+**V: Waarom worden de Power shell <i>-cmdlet Get-MsolDirSyncProvisioningError</i> minder synchronisatie fouten weer gegeven in het resultaat?**
 
-<i>Get-MsolDirSyncProvisioningError</i> retourneert alleen fouten bij het inrichten DirSync. Behalve dat bevat Connect Health-portal ook andere synchronisatiecomponenten fouttypen zoals exportfouten. Dit komt overeen met de Azure AD Connect delta-resultaat. Meer informatie over [Azure AD Connect Sync fouten](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
+<i>Get-MsolDirSyncProvisioningError</i> retourneert alleen DirSync-inrichtings fouten. Naast de status van de Connect Health-Portal worden ook andere synchronisatie fout typen weer gegeven, zoals export fouten. Dit is consistent met Azure AD Connect Delta resultaat. Lees meer over [Azure AD Connect synchronisatie fouten](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
 
-**V: Waarom wordt mijn ADFS controles zijn uitgevoerd niet wordt gegenereerd?**
+**V: Waarom worden er geen ADFS-controles gegenereerd?**
 
-Gebruik PowerShell-cmdlet <i>Get-AdfsProperties - AuditLevel</i> uitgeschakeld om te controleren of de logboeken voor controle is niet in staat. Meer informatie over [AD FS-auditlogboeken](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). U ziet dat als er geavanceerde controle-instellingen naar de ADFS-server gepusht, worden eventuele wijzigingen in auditpol.exe overschreven (gebeurtenis als toepassing gegenereerd niet is geconfigureerd). Stel in dat geval wordt het lokale beveiligingsbeleid om aan te melden fouten toepassing gegenereerd en het slagen.
+Gebruik de Power shell-cmdlet <i>Get-AdfsProperties-audit level</i> om te controleren of de controle logboeken niet zijn uitgeschakeld. Lees meer over [AD FS-controle logboeken](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Als er geavanceerde controle-instellingen zijn gepusht naar de ADFS-server, worden alle wijzigingen met Auditpol. exe overschreven (gebeurtenis als de toepassing is gegenereerd, is niet geconfigureerd). In dit geval stelt u het lokale beveiligings beleid in op het vastleggen van gegenereerde fouten en geslaagde toepassingen.
 
-**V: Wanneer worden certificaat van de agent automatisch vernieuwd voordat verlopen?**
-De certificering van de agent wordt automatisch worden vernieuwd **6 maanden** vóór de vervaldatum. Als u deze niet verlengt, zorg ervoor dat de netwerkverbinding van de agent is stabiel. Start de agent-services of update van de meest recente versie kan het probleem ook oplossen.
+**V: wanneer wordt het agent certificaat automatisch vernieuwd voordat het verloopt?**
+De agent certificering wordt automatisch verlengd **6 maanden** voor de verval datum. Als deze niet wordt vernieuwd, zorgt u ervoor dat de netwerk verbinding van de agent stabiel is. Het probleem kan ook worden opgelost door de agent services opnieuw te starten of naar de nieuwste versie bij te werken.
 
 
-## <a name="related-links"></a>Verwante koppelingen
+## <a name="related-links"></a>Gerelateerde koppelingen
 * [Azure AD Connect Health (Engelstalig)](whatis-hybrid-identity-health.md)
 * [De Azure AD Connect Health-agent installeren](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health-bewerkingen](how-to-connect-health-operations.md)

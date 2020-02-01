@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 772f6f51fb98b3a9adbd1efe6571842c667e8e8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/30/2020
+ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427019"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899844"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Een prijs categorie kiezen voor Azure Cognitive Search
 
@@ -21,15 +21,20 @@ Wanneer u een Azure Cognitive Search-service maakt, [wordt er een resource gemaa
 
 De meeste klanten beginnen met de gratis laag zodat ze de service kunnen evalueren. Na de evaluatie is het gebruikelijk om een tweede service te maken in een van de hogere lagen voor ontwikkelings-en productie-implementaties.
 
-Hoewel alle lagen, met inbegrip van de gratis laag, over het algemeen de functie pariteit bieden, kunnen grotere werk belastingen een nood zaak voor hogere lagen vereisen. [AI-verrijking](cognitive-search-concept-intro.md) heeft bijvoorbeeld langlopende vaardig heden waarvoor een time-out optreedt op een gratis service, tenzij de gegevensset klein is.
+## <a name="feature-availability-by-tier"></a>Beschik baarheid van functies per laag
 
-> [!NOTE] 
-> De uitzonde ring op de functie pariteit is [Indexeer](search-indexer-overview.md)functies, die niet beschikbaar zijn op S3 HD.
->
+Bijna elke functie is beschikbaar op elke laag, inclusief gratis, maar een functie of werk stroom die veel resources vergt, werkt mogelijk niet goed, tenzij u voldoende capaciteit hebt. [AI-verrijking](cognitive-search-concept-intro.md) heeft bijvoorbeeld langlopende vaardig heden waarvoor een time-out optreedt op een gratis service, tenzij de gegevensset klein is.
 
-## <a name="available-tiers"></a>Beschikbare lagen
+In de volgende tabel worden de functie beperkingen voor de laag beschreven.
 
-Lagen hebben betrekking op de kenmerken van de hardware die als host fungeert voor de service (in plaats van functies) en worden onderscheiden door:
+| Functie | Beperkingen |
+|---------|-------------|
+| [Indexeer functies](search-indexer-overview.md) | Indexeer functies zijn niet beschikbaar op S3 HD. |
+| [Door de klant beheerde versleutelings sleutels](search-security-manage-encryption-keys.md) | Niet beschikbaar in de gratis laag. |
+
+## <a name="tiers-skus"></a>Lagen (Sku's)
+
+De lagen worden onderscheiden door:
 
 + Aantal indexen en Indexeer functies dat u kunt maken
 + Grootte en snelheid van partities (fysieke opslag)
@@ -80,7 +85,7 @@ Voor [AI-verrijking](cognitive-search-concept-intro.md)moet u plannen om [een fa
 |-----------|----------------|
 | Document kraken, tekst extractie | Gratis |
 | Document kraken, afbeeldings extractie | Gefactureerd op basis van het aantal afbeeldingen dat is geëxtraheerd uit uw documenten. In een [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) **imageAction** is de para meter die het ophalen van de installatie kopie activeert. Als **imageAction** is ingesteld op ' geen ' (de standaard instelling), worden er geen kosten in rekening gebracht voor het ophalen van afbeeldingen. De frequentie voor het extra heren van afbeeldingen wordt beschreven op de pagina [prijs informatie](https://azure.microsoft.com/pricing/details/search/) voor Azure Cognitive Search.|
-| [Ingebouwde cognitieve vaardig heden](cognitive-search-predefined-skills.md) | Gefactureerd tegen hetzelfde aantal als dat u de taak met Cognitive Services rechtstreeks hebt uitgevoerd. |
+| [Ingebouwde cognitieve tekstvaardigheden](cognitive-search-predefined-skills.md) | Gefactureerd tegen hetzelfde aantal als dat u de taak met Cognitive Services rechtstreeks hebt uitgevoerd. |
 | Aangepaste vaardigheden | Een aangepaste vaardigheid is de functionaliteit die u opgeeft. De kosten voor het gebruik van een aangepaste vaardigheid zijn geheel afhankelijk van of aangepaste code andere services met data limieten aanroept. |
 
 <a name="search-units"></a>
@@ -97,9 +102,9 @@ Het facturerings tarief is elk uur per SU. Elke laag heeft een geleidelijk hoger
 
 De meeste klanten brengen slechts een deel van de totale capaciteit online, waarbij de rest in de reserve wordt gehouden. Het aantal partities en replica's dat u online brengt, berekend met behulp van de SU-formule, bepaalt wat u per uur betaalt.
 
-## <a name="how-to-manage-and-reduce-costs"></a>Kosten beheren en verminderen
+## <a name="how-to-manage-costs"></a>Kosten beheren
 
-Naast de volgende suggesties gaat u naar [Facturering en kosten beheer](https://docs.microsoft.com/azure/billing/billing-getting-started).
+Aan de hand van de volgende suggesties kunt u de kosten ten minste verlagen:
 
 - Maak alle resources in dezelfde regio, of in zo weinig mogelijk regio's, om bandbreedte kosten te minimaliseren of te elimineren.
 
@@ -109,7 +114,11 @@ Naast de volgende suggesties gaat u naar [Facturering en kosten beheer](https://
 
 - Schaal omhoog voor resource-intensieve bewerkingen, zoals indexeren, en pas vervolgens de voor normale query werkbelastingen omlaag aan. Begin met de minimale configuratie voor Azure Cognitive Search (een SU die bestaat uit één partitie en één replica) en controleer vervolgens de gebruikers activiteiten om gebruiks patronen te identificeren die aangeven dat er meer capaciteit nodig is. Als er sprake is van een voorspelbaar patroon, kunt u de schaal aanpassen met de activiteit (u moet code schrijven om dit te automatiseren).
 
-U kunt een zoek service niet afsluiten om uw factuur te verminderen. Toegewezen resources zijn altijd operationeel en worden toegewezen voor de levens duur van uw service. In termen van de service zelf is de enige manier om uw factuur te verlagen, het beperken van replica's en partities tot een niveau dat nog acceptabele prestaties en [Sla-naleving](https://azure.microsoft.com/support/legal/sla/search/v1_0/)biedt, of het maken van een service in een lagere laag (uurtarieven per uur zijn lager dan S2 of S3-tarieven). Als u uw service aan het lagere einde van de belasting prognoses hebt ingericht, kunt u, als u de service uitbreidt, een tweede service met meer lagen maken, uw indexen opnieuw bouwen op de tweede service en vervolgens de eerste verwijderen.
+Daarnaast kunt u het [facturerings-en kosten beheer](https://docs.microsoft.com/azure/billing/billing-getting-started) bezoeken voor ingebouwde hulpprogram ma's en functies met betrekking tot uitgaven.
+
+Het is niet mogelijk om een zoek service op tijdelijke basis af te sluiten. Toegewezen resources zijn altijd operationeel en worden toegewezen voor de levens duur van uw service. Het verwijderen van een service is permanent en verwijdert ook de bijbehorende gegevens.
+
+In termen van de service zelf is de enige manier om uw factuur te verlagen, het beperken van replica's en partities tot een niveau dat nog acceptabele prestaties en [Sla-naleving](https://azure.microsoft.com/support/legal/sla/search/v1_0/)biedt, of het maken van een service in een lagere laag (uurtarieven per uur zijn lager dan S2 of S3-tarieven). Als u uw service aan het lagere einde van de belasting prognoses hebt ingericht, kunt u, als u de service uitbreidt, een tweede service met meer lagen maken, uw indexen opnieuw bouwen op de tweede service en vervolgens de eerste verwijderen.
 
 ## <a name="how-to-evaluate-capacity-requirements"></a>Capaciteits vereisten evalueren
 

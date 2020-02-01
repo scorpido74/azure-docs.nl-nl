@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 73b8a559eddec51dbc01f1d55f70414360ff2956
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843545"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898428"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -324,7 +324,7 @@ Hier volgen enkele [aandachtspunten om te controleren](#obfuscation-consideratio
 
 #### <a name="considerations-when-hiding-inputs-and-outputs"></a>Overwegingen bij het verbergen van invoer en uitvoer
 
-* Wanneer u de invoer of uitvoer van een trigger of actie beveiligt, verzendt Logic Apps de beveiligde gegevens niet naar Azure Log Analytics. U kunt ook geen [bijgehouden eigenschappen](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details) toevoegen aan deze trigger of actie voor bewaking.
+* Wanneer u de invoer of uitvoer van een trigger of actie beveiligt, verzendt Logic Apps de beveiligde gegevens niet naar Azure Log Analytics. U kunt ook geen [bijgehouden eigenschappen](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) toevoegen aan deze trigger of actie voor bewaking.
 
 * De [Logic apps-API voor het verwerken van de werk stroom geschiedenis](https://docs.microsoft.com/rest/api/logic/) retourneert geen beveiligde uitvoer.
 
@@ -806,7 +806,7 @@ Als de optie [beheerde identiteit](../active-directory/managed-identities-azure-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Implementatie voor Azure Logic Apps automatiseren](logic-apps-azure-resource-manager-templates-overview.md)  
-* [Uw logische apps bewaken](logic-apps-monitor-your-logic-apps.md)  
-* [Fouten en problemen van logische apps diagnosticeren](logic-apps-diagnosing-failures.md)  
-* [Implementatie van logische apps automatiseren](logic-apps-azure-resource-manager-templates-overview.md)
+* [Implementatie voor Azure Logic Apps automatiseren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)  
+* [Logische apps controleren](../logic-apps/monitor-logic-apps-log-analytics.md)  
+* [Fouten en problemen van logische apps diagnosticeren](../logic-apps/logic-apps-diagnosing-failures.md)  
+* [Implementatie van logische apps automatiseren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

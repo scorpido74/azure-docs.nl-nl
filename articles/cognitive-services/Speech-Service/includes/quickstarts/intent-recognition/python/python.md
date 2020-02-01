@@ -1,28 +1,24 @@
 ---
-title: 'Snelstartgids: spraak, intenties en entiteiten herkennen, python-Speech-Service'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f2a46b8a0868aaa1097dd7f1ae738a2a3e06e3b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9bc514c32d97958d8ab154dc2c5533747f380e86
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772876"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900628"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
-* Als dit uw eerste python-project is, gebruikt u deze hand leiding om <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">een leeg voorbeeld project te maken</a>.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Installeer de Speech SDK voor uw ontwikkel omgeving</a>.
+* Als dit uw eerste python-project is, gebruikt u deze hand leiding om <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">een leeg <span class="docon docon-navigate-external x-hidden-focus"> </span>voorbeeld project te maken </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Installeer de Speech SDK voor uw ontwikkel omgeving <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Een LUIS-app maken voor de intentie herkenning
 
@@ -65,7 +61,7 @@ Nu gaan we een `IntentRecognizer`maken. Voeg deze code toe aan de rechter kant o
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>Een LanguageUnderstandingModel en intenties toevoegen
 
-U moet een `LanguageUnderstandingModel` koppelen aan de intentie herkenning en de intenties toevoegen die u wilt herkennen. We gaan de intenties gebruiken van het vooraf ontwikkelde domein voor Start Automation. 
+U moet een `LanguageUnderstandingModel` koppelen aan de intentie herkenning en de intenties toevoegen die u wilt herkennen. We gaan de intenties gebruiken van het vooraf ontwikkelde domein voor Start Automation.
 
 Voeg deze code toe onder uw `IntentRecognizer`. Zorg ervoor dat u `"YourLanguageUnderstandingAppId"` vervangt door de ID van uw LUIS-app. 
 
@@ -90,7 +86,7 @@ Voeg de volgende code toe onder de aanroep van `recognize_once()`: [!code-python
 
 ## <a name="check-your-code"></a>Controleer uw code
 
-Op dit moment moet uw code er als volgt uitzien:  
+Op dit moment moet uw code er als volgt uitzien:
 
 > [!NOTE]
 > Er zijn enkele opmerkingen toegevoegd aan deze versie.

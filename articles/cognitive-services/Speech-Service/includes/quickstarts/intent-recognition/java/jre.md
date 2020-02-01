@@ -1,28 +1,24 @@
 ---
-title: 'Snelstartgids: spraak, intenties en entiteiten herkennen, Java-spraak service'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c5d70bba32df5940d929482e37317d40bd496676
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a6bf8bb558e82fefbbe6ff306f628a4b449a4e83
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761458"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900503"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
-* Als dit uw eerste Java-project is, gebruikt u deze hand leiding om <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">een leeg voorbeeld project te maken</a>.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Installeer de Speech SDK voor uw ontwikkel omgeving</a>.
+* Als dit uw eerste Java-project is, gebruikt u deze hand leiding om <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">een leeg voorbeeld <span class="docon docon-navigate-external x-hidden-focus"> </span>project te maken </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Installeer de Speech SDK voor uw ontwikkel omgeving <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Een LUIS-app maken voor de intentie herkenning
 
@@ -96,7 +92,7 @@ Het is belang rijk om de spraak bronnen vrij te geven wanneer u klaar bent met h
 
 ## <a name="check-your-code"></a>Controleer uw code
 
-Op dit moment moet uw code er als volgt uitzien:  
+Op dit moment moet uw code er als volgt uitzien:
 
 > [!NOTE]
 > Er zijn enkele opmerkingen toegevoegd aan deze versie.
@@ -105,7 +101,7 @@ Op dit moment moet uw code er als volgt uitzien:
 
 ## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
 
-Druk op F11 of selecteer **Uitvoeren** > **Fouten opsporen**.
+Druk op <kbd>F11</kbd>of selecteer **uitvoeren** > **fout opsporing**.
 De volgende 15 seconden aan spraakinvoer vanuit uw microfoon worden herkend en geregistreerd in het consolevenster.
 
 ## <a name="next-steps"></a>Volgende stappen

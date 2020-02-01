@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294096"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898885"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fout codes voor aanmeldings activiteiten rapport 
 
@@ -143,6 +143,7 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |53002|De gebruikte toepassing is geen goedgekeurde toepassing voor voorwaardelijke toegang. Gebruiker moet een van de apps uit de lijst met goedgekeurde toepassingen gebruiken om toegang te krijgen.|
 |53003|De toegang is geblokkeerd vanwege het beleid voor voorwaardelijke toegang.|
 |53004|Gebruiker moet multi-factor authentication-registratieproces voltooien om toegang te krijgen tot deze inhoud. Gebruiker moet zich registreren voor multi-factor authentication.|
+|53032|Het account is geblokkeerd vanwege Azure AD Identity Protection-beleid.|
 |65001|Toepassing X heeft geen toegangsmachtiging voor toepassing Y of de machtiging is ingetrokken. Of de gebruiker of beheerder heeft niet toegestaan dat de toepassing wordt gebruikt met id X. Stuur een interactieve autorisatieaanvraag voor deze gebruiker en resource. Of de gebruiker of beheerder heeft niet toegestaan dat de toepassing wordt gebruikt met id X. Stuur een autorisatieaanvraag naar uw tenant-beheerder uit naam van toepassing Y voor resource Z.|
 |65004|Gebruiker heeft geweigerd toestemming te geven app-toegang. Laat de gebruiker zich opnieuw aanmelden en toestemming geven voor de app|
 |65005|De voor de toepassing vereiste resourcetoegangslijst bevat geen toepassingen die kunnen worden gedetecteerd door de resource, de clienttoepassing heeft toegang aangevraagd tot een resource die niet is opgegeven in de vereiste resourcetoegangslijst, de Graph-service heeft een onjuiste aanvraag geretourneerd of de resource is niet gevonden. Als de toepassing SAML ondersteunt, hebt u mogelijk de toepassing met de verkeerde id (entiteit) geconfigureerd. Probeer de oplossing voor SAML via de koppeling hieronder: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|
@@ -184,7 +185,7 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |90010|De aanvraag kan om verschillende redenen niet worden ondersteund. De aanvraag wordt bijvoorbeeld gemaakt met behulp van een niet-ondersteunde aanvraag methode (alleen POST-methode wordt ondersteund) of het token handtekening algoritme dat is aangevraagd, wordt niet ondersteund. Neem contact op met de ontwikkelaar van de toepassing.|
 |90014| Er ontbreekt een vereist veld voor een protocol bericht. Neem contact op met de eigenaar van de toepassing. Als u de eigenaar van de toepassing bent, moet u ervoor zorgen dat u alle benodigde para meters voor de aanmeldings aanvraag hebt. |
 |90051| Ongeldig delegerings token. Er is een ongeldige nationale Cloud-ID ({cloudId}) opgegeven.|
-|90072| Het account moet eerst worden toegevoegd als externe gebruiker in de tenant. Meld u af en meld u opnieuw aan met een ander Azure AD-account.|
+|90072| Het account moet eerst worden toegevoegd als een externe gebruiker in de Tenant. Meld u af en meld u opnieuw aan met een ander Azure AD-account.|
 |90094| De app heeft machtigingen aangevraagd waarvoor de aangemelde gebruiker niet toestemming mag geven en de gebruiker is geblokkeerd. |
 |90095| De app heeft machtigingen aangevraagd waarvoor de aangemelde gebruiker niet toestemming mag geven en de gebruiker heeft het aanvraag formulier voor de [beheerder toestemming](../manage-apps/configure-admin-consent-workflow.md) gegeven. |
 |500011| De resource-principal met de naam <site address> is niet gevonden in de Tenant met de naam <tenant ID>. Dit kan gebeuren als de toepassing niet is geïnstalleerd door de beheerder van de Tenant of is gezonden door een gebruiker in de Tenant. Mogelijk hebt u de verificatieaanvraag naar de verkeerde tenant verzonden.|

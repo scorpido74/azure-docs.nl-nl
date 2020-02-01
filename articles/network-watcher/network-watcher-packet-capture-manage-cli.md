@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7eea4c05a48c5e055766f942cc44ee4cf189de5d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f83fb2377f2db1deaed453131a61e26677b3d87d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840858"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896397"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Pakket opnames beheren met Azure Network Watcher met behulp van de Azure CLI
 
@@ -52,7 +52,7 @@ In dit artikel wordt ervan uitgegaan dat u de volgende resources hebt:
 
 ### <a name="step-1"></a>Stap 1
 
-Voer de `az vm extension set`-cmdlet uit om de pakket Capture-agent te installeren op de virtuele gast machine.
+Voer de `az vm extension set` opdracht uit om de pakket Capture-agent te installeren op de virtuele gast machine.
 
 Voor virtuele Windows-machines:
 
@@ -63,15 +63,21 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 Voor virtuele Linux-machines:
 
 ```azurecli
-az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
+az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux --version 1.4
 ```
 
 ### <a name="step-2"></a>Stap 2
 
-Om ervoor te zorgen dat de agent is geïnstalleerd, voert u de `vm extension show`-cmdlet uit en geeft u deze de naam van de resource groep en de virtuele machine door. Controleer de resulterende lijst om te controleren of de agent is geïnstalleerd.
+Om ervoor te zorgen dat de agent is geïnstalleerd, voert u de `vm extension show` opdracht uit en geeft u de naam van de resource groep en de virtuele machine door. Controleer de resulterende lijst om te controleren of de agent is geïnstalleerd.
 
+Voor virtuele Windows-machines:
 ```azurecli
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
+```
+
+Voor virtuele Linux-machines:
+```azurecli
+az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name AzureNetworkWatcherExtension
 ```
 
 Het volgende voor beeld is een voor beeld van het uitvoeren van `az vm extension show`
@@ -100,31 +106,24 @@ Het volgende voor beeld is een voor beeld van het uitvoeren van `az vm extension
 
 Zodra de voor gaande stappen zijn voltooid, wordt de pakket Capture-agent geïnstalleerd op de virtuele machine.
 
+
 ### <a name="step-1"></a>Stap 1
-
-De volgende stap bestaat uit het ophalen van het Network Watcher-exemplaar. TKan naam van de Network Watcher wordt door gegeven aan de `az network watcher show`-cmdlet in stap 4.
-
-```azurecli
-az network watcher show --resource-group resourceGroup --name networkWatcherName
-```
-
-### <a name="step-2"></a>Stap 2
 
 Een opslag account ophalen. Dit opslag account wordt gebruikt om het pakket opname bestand op te slaan.
 
 ```azurecli
-azure storage account list
+az storage account list
 ```
 
-### <a name="step-3"></a>Stap 3
+### <a name="step-2"></a>Stap 2
 
-Filters kunnen worden gebruikt om de gegevens te beperken die worden opgeslagen door de pakket opname. In het volgende voor beeld wordt een pakket opname met verschillende filters ingesteld.  Met de eerste drie filters worden uitgaande TCP-verkeer alleen verzameld van lokale IP-10.0.0.3 naar doel poorten 20, 80 en 443.  Met het laatste filter wordt alleen UDP-verkeer verzameld.
+U bent nu klaar om een pakket opname te maken.  Eerst gaan we de para meters bekijken die u wilt configureren. Filters zijn een van deze para meters die kunnen worden gebruikt om de gegevens te beperken die worden opgeslagen door de pakket opname. In het volgende voor beeld wordt een pakket opname met verschillende filters ingesteld.  Met de eerste drie filters worden uitgaande TCP-verkeer alleen verzameld van lokale IP-10.0.0.3 naar doel poorten 20, 80 en 443.  Met het laatste filter wordt alleen UDP-verkeer verzameld.
 
 ```azurecli
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-Het volgende voor beeld is de verwachte uitvoer van het uitvoeren van de `az network watcher packet-capture create`-cmdlet.
+Het volgende voor beeld is de verwachte uitvoer van het uitvoeren van de `az network watcher packet-capture create` opdracht.
 
 ```json
 {
@@ -179,13 +178,13 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>Pakket opname ophalen
 
-Als u de cmdlet `az network watcher packet-capture show-status` uitvoert, wordt de status opgehaald van een actieve of voltooide pakket opname.
+Als de `az network watcher packet-capture show-status` opdracht wordt uitgevoerd, wordt de status opgehaald van een actieve of voltooide pakket opname.
 
 ```azurecli
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-Het volgende voor beeld is de uitvoer van de cmdlet `az network watcher packet-capture show-status`. Het volgende voor beeld is wanneer de opname wordt gestopt met een StopReason van TimeExceeded. 
+Het volgende voor beeld is de uitvoer van de `az network watcher packet-capture show-status` opdracht. Het volgende voor beeld is wanneer de opname wordt gestopt met een StopReason van TimeExceeded. 
 
 ```
 {
@@ -204,14 +203,14 @@ cketCaptures/packetCaptureName",
 
 ## <a name="stop-a-packet-capture"></a>Een pakket opname stoppen
 
-Door de cmdlet `az network watcher packet-capture stop` uit te voeren, wordt deze gestopt als er een opname sessie wordt uitgevoerd.
+Door de `az network watcher packet-capture stop` opdracht uit te voeren als een opname sessie wordt uitgevoerd, wordt deze gestopt.
 
 ```azurecli
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
-> De cmdlet retourneert geen antwoord wanneer deze wordt uitgevoerd op een actieve opname sessie of een bestaande sessie die al is gestopt.
+> De opdracht retourneert geen reactie wanneer deze wordt uitgevoerd op een actieve opname sessie of een bestaande sessie die al is gestopt.
 
 ## <a name="delete-a-packet-capture"></a>Een pakket opname verwijderen
 

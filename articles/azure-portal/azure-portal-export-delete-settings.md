@@ -1,21 +1,21 @@
 ---
-title: Azure Portal instellingen exporteren of verwijderen | Microsoft Docs
+title: Azure Portal-instellingen exporteren of verwijderen
 description: Meer informatie over hoe u uw gebruikers instellingen, persoonlijke Dash boards en aangepaste instellingen in de Azure Portal kunt exporteren of verwijderen.
 services: azure-portal
 keywords: ''
 author: santhoshsomayajula
-ms.date: 04/08/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.author: mblythe
-ms.openlocfilehash: f033af37985077f4d8df9d541b55764df0c75eda
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: accdfbd939fad73ca7d008450c358d366e7f8b70
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640173"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900744"
 ---
 # <a name="export-or-delete-user-settings"></a>Gebruikersinstellingen exporteren of verwijderen
 
@@ -32,28 +32,26 @@ Het is een goed idee om uw instellingen te exporteren en te controleren voordat 
 ## <a name="export-or-delete-your-portal-settings"></a>Uw Portal instellingen exporteren of verwijderen
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-2. Selecteer in de koptekst van de portal **instellingen**.
 
-    ![Scherm opname van de Portal instellingen](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
+1. Selecteer in de koptekst van de portal ![instellingen pictogram](media/azure-portal-export-delete-settings/settings-icon.png) **instellingen**.
 
-3. Selecteer **alle instellingen exporteren** of **alle instellingen en persoonlijke Dash boards verwijderen**.
+1. Selecteer **alle instellingen exporteren** of **alle instellingen en persoonlijke Dash boards verwijderen**.
 
-    ![Scherm afbeelding met de instellingen voor exporteren en verwijderen van de portal](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
+    ![Opties voor Azure Portal instellingen en instellingen](media/azure-portal-export-delete-settings/azure-portal-settings-with-export-delete.png)
 
       In de volgende tabel worden deze acties beschreven.
 
       | Actie | Beschrijving |
       | --- | --- |
-      | **Alle instellingen exporteren** | Hiermee maakt u een JSON-bestand dat uw gebruikers instellingen bevat, zoals uw kleuren thema, favorieten en persoonlijke Dash boards.|
+      | **Alle instellingen exporteren** | Hiermee maakt u een *JSON* -bestand dat uw gebruikers instellingen bevat, zoals uw kleuren thema, favorieten en persoonlijke Dash boards.|
       | **Alle instellingen en persoonlijke Dash boards verwijderen** | Hiermee verwijdert u alle koppelingen naar persoonlijke Dash boards en andere aangepaste instellingen die u hebt gemaakt in de portal. |
 
 > [!NOTE]
-> Als gevolg van de dynamische aard van de gebruikers instellingen en het risico op beschadiging van gegevens, kunt u geen instellingen importeren uit het JSON-bestand.
+> Als gevolg van de dynamische aard van de gebruikers instellingen en het risico op beschadiging van gegevens, kunt u geen instellingen importeren uit het *JSON* -bestand.
 >
 >
-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure-dashboards maken en delen](azure-portal-dashboard-share-access.md)
-* [Favorieten toevoegen, verwijderen en sorteren](azure-portal-add-remove-sort-favorites.md)
+* [Azure-Dash boards delen met behulp van op rollen gebaseerde Access Control](azure-portal-dashboard-share-access.md)
+* [Favorieten toevoegen, verwijderen en opnieuw ordenen](azure-portal-add-remove-sort-favorites.md)

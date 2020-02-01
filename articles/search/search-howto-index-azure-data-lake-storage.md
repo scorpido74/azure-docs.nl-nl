@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 628b8bb5c3cb83ae6038a7150420893d7abe61d5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4b725c8a1bf0649a640c02a9a1828ec9014d36d6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112284"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905656"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Documenten indexeren in Azure Data Lake Storage Gen2
 
@@ -47,3 +47,10 @@ Het indexeren van inhoud in Data Lake Storage Gen2 is identiek aan het indexeren
 Azure Data Lake Storage Gen2 implementeert een [model voor toegangs beheer](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) dat zowel op rollen gebaseerd toegangs beheer (RBAC) als POSIX-achtige acl's (toegangs beheer lijsten) ondersteunt. Wanneer u inhoud indexeert vanuit Data Lake Storage Gen2, haalt Azure Cognitive Search de RBAC-en ACL-gegevens niet uit de inhoud. Als gevolg hiervan worden deze gegevens niet opgenomen in uw Azure Cognitive Search-index.
 
 Als het beheren van toegangs beheer voor elk document in de index belang rijk is, is het aan de ontwikkelaar van de toepassing om [beveiligings beperking](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)te implementeren.
+
+## <a name="change-detection"></a>Wijzigings detectie
+
+De Data Lake Storage Gen2 indexer ondersteunt de detectie van wijzigingen. Dit betekent dat wanneer met de Indexeer functie alleen de gewijzigde blobs worden uitgevoerd, zoals bepaald door de tijds tempel van de BLOB `LastModified`.
+
+> [!NOTE] 
+> Data Lake Storage Gen2 kunnen mappen worden hernoemd. Wanneer de naam van een map wordt gewijzigd, worden de tijds tempels voor de blobs in die map niet bijgewerkt. Als gevolg hiervan worden deze blobs niet opnieuw geïndexeerd door de Indexeer functie. Als u wilt dat de blobs in een Directory opnieuw worden geïndexeerd nadat de naam van een map is gewijzigd, moet u de `LastModified` tijds tempel van alle blobs in de map bijwerken zodat de Indexeer functie deze opnieuw kan indexeren tijdens een toekomstige uitvoering.

@@ -12,16 +12,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 07/16/2019
+ms.date: 01/10/2020
 ms.author: shvija
-ms.openlocfilehash: 312800482405530d57ce7b0b1e77b91c2ad069ce
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 7533c2a4d5ef2bb3e6f66e116d3ff3937ddd77b3
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772162"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899983"
 ---
 # <a name="event-processor-host"></a>Gebeurtenisprocessorhost
+> [!NOTE]
+> Dit artikel is van toepassing op de oude versie van Azure Event Hubs SDK. Zie deze migratie handleidingen voor meer informatie over het migreren van uw code naar de nieuwere versie van de SDK. 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
+> - [Java script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
+>
+> Zie ook [de verdeling van de partitie verdelen over meerdere exemplaren van uw toepassing](event-processor-balance-partition-load.md).
 
 Azure Event Hubs is een krachtige service voor telemetrieopname die kan worden gebruikt voor streaming van miljoenen gebeurtenissen tegen lage kosten. In dit artikel wordt beschreven hoe u verbruiken opgenomen gebeurtenissen met behulp van de *Event Processor Host* (EPH); een intelligente consumeragent die het beheer van het plaatsen van controlepunten vereenvoudigt, overdracht en parallelle gebeurtenislezers.  
 
@@ -37,16 +45,16 @@ Elke sensor pushes gegevens naar een event hub. De event hub is geconfigureerd m
 
 Bij het ontwerpen van de gebruiker in een gedistribueerde omgeving, moet het scenario ingang in de volgende vereisten:
 
-1. **Tarieven** Maak meerdere consumenten, waarbij elke consument eigenaar is van een aantal Event Hubs partities.
-2. **Taak verdeling:** De consumenten dynamisch te verhogen of te verlagen. Bijvoorbeeld, wanneer een nieuw sensortype (bijvoorbeeld een koolmonoxide detector) wordt toegevoegd aan elke start, verhoogt het aantal gebeurtenissen. In dat geval wordt het aantal consumentexemplaren wordt verhoogd in de operator (een mens). Vervolgens, in de groep consumenten herverdelen van het aantal partities ze eigenaar zijn, voor het delen van de belasting met de zojuist toegevoegde consumenten.
-3. **Naadloos hervatten bij fouten:** Als een Consumer (**Consumer a**) uitvalt (bijvoorbeeld als de virtuele machine die de consument als host voor de klant heeft gevonden, plotseling vastloopt), moeten andere gebruikers de partities kunnen ophalen die eigendom zijn van de **consument a** en door gaan. Ook het vervolg-punt met de naam een *controlepunt* of *offset*, moet op het exacte punt waarop **consument A** is mislukt, of iets vóór die.
-4. **Gebeurtenissen gebruiken:** Hoewel de voor gaande drie punten van toepassing zijn op het beheer van de gebruiker, moet er code zijn om de gebeurtenissen te gebruiken en iets nuttig te doen. u kunt deze bijvoorbeeld samen voegen en uploaden naar Blob Storage.
+1. **Schaal:** meerdere consumenten worden gedistribueerd, met elke consument eigenaar van het lezen van een paar Event Hubs-partities te maken.
+2. **Verdeel de belasting van:** vergroten of verkleinen van de consumenten dynamisch. Bijvoorbeeld, wanneer een nieuw sensortype (bijvoorbeeld een koolmonoxide detector) wordt toegevoegd aan elke start, verhoogt het aantal gebeurtenissen. In dat geval wordt het aantal consumentexemplaren wordt verhoogd in de operator (een mens). Vervolgens, in de groep consumenten herverdelen van het aantal partities ze eigenaar zijn, voor het delen van de belasting met de zojuist toegevoegde consumenten.
+3. **Naadloze hervatten op fouten:** als een consument (**consument A**) mislukt (bijvoorbeeld de virtuele machine die als host fungeert de consument plotseling vastloopt), en vervolgens andere gebruikers moeten in staat om op te halen de partities die eigendom zijn van zijn**consument A** en door te gaan. Ook het vervolg-punt met de naam een *controlepunt* of *offset*, moet op het exacte punt waarop **consument A** is mislukt, of iets vóór die.
+4. **Gebeurtenissen gebruiken:** terwijl de vorige drie punten hebben betrekking op het beheer van de consumenten, moet er code voor het gebruiken van de gebeurtenissen en iets nuttig ermee doen; bijvoorbeeld, aggregeren en te uploaden naar blob-opslag.
 
 In plaats van het bouwen van uw eigen oplossing voor dit, Event Hubs biedt deze functionaliteit via de [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) interface en de [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) klasse.
 
 ## <a name="ieventprocessor-interface"></a>IEventProcessor-interface
 
-Voor de eerste keer gebruiken toepassingen de [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) -interface, die vier methoden heeft: [Openasync, CloseAsync, ProcessErrorAsync en ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Deze interface bevat de werkelijke code voor het gebruiken van de gebeurtenissen die Event Hubs wordt verzonden. De volgende code toont een eenvoudige implementatie:
+Eerst, verbruikt toepassingen implementeren de [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) interface, met vier methoden: [OpenAsync, CloseAsync, ProcessErrorAsync en ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Deze interface bevat de werkelijke code voor het gebruiken van de gebeurtenissen die Event Hubs wordt verzonden. De volgende code toont een eenvoudige implementatie:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -84,10 +92,10 @@ public class SimpleEventProcessor : IEventProcessor
 Vervolgens exemplaar maken van een [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) exemplaar. Afhankelijk van de overbelasting bij het maken van de [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) exemplaar in de constructor de volgende parameters worden gebruikt:
 
 - **Hostnaam:** de naam van elke consumentexemplaar. Elk exemplaar van **EventProcessorHost** moet een unieke waarde voor deze variabele hebben binnen een Consumer groep. Zorg er dus voor dat u deze waarde niet vast kunt coderen.
-- **eventHubPath:** De naam van de Event Hub.
-- **consumerGroupName:** Event Hubs gebruikt **$default** als de naam van de standaard Consumer groep, maar het is een goed idee om een Consumer groep te maken voor uw specifieke verwerkings aspect.
-- **eventHubConnectionString:** Het connection string naar de Event Hub, dat kan worden opgehaald uit de Azure Portal. Deze verbindingsreeks moet **luisteren** machtigingen voor de event hub.
-- **storageConnectionString:** Het opslag account dat wordt gebruikt voor intern resource beheer.
+- **eventHubPath:** de naam van de event hub.
+- **consumerGroupName:** maakt gebruik van Event Hubs **$Default** zoals de naam van de standaardgroep voor consumenten, maar het is raadzaam om te maken van een consumentengroep voor uw specifieke aspect van de verwerking.
+- **eventHubConnectionString:** de verbindingsreeks naar de event hub, die kan worden opgehaald uit de Azure-portal. Deze verbindingsreeks moet **luisteren** machtigingen voor de event hub.
+- **storageConnectionString:** de storage-account gebruikt voor het resourcebeheer van de interne.
 
 Ten slotte consumenten registreren de [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) -exemplaar met de Event Hubs-service. Registreren van een klasse event processor met een exemplaar van EventProcessorHost start gebeurtenisverwerking. Registreren van geeft u de Event Hubs-service kunnen verwachten dat de app voor consumenten van gebeurtenissen van enkele van de partities verbruikt en om aan te roepen de [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementatiecode wanneer deze gebeurtenissen te verbruiken pushes. 
 
@@ -110,7 +118,7 @@ De volgende lijst bevat een overzicht van dit voorbeeld:
 
 Eigendom van een partitie op een EPH-exemplaar (of een gebruiker) wordt bijgehouden via de Azure Storage-account dat is opgegeven voor tracering. U kunt als volgt de tracering als een eenvoudige tabel visualiseren. U kunt de daadwerkelijke implementatie zien door te controleren van de blobs onder het opgegeven opslagaccount:
 
-| **Naam van de groep consumenten** | **Partitie-ID** | **Hostnaam (eigenaar)** | **Lease (of eigenaar) verkregen tijd** | **Offset in partitie (controlepunt)** |
+| **Naam van consumentengroep** | **Partitie-ID** | **Hostnaam (eigenaar)** | **Lease (of eigenaar) verkregen tijd** | **Offset in partitie (controlepunt)** |
 | --- | --- | --- | --- | --- |
 | Standaar$d | 0 | Consumenten\_VM3 | 2018-04-15T01:23:45 | 156 |
 | Standaar$d | 1 | Consumenten\_VM4 | 2018-04-15T01:22:13 | 734 |
@@ -154,11 +162,11 @@ Zoals eerder uitgelegd, de tabel bijhouden vereenvoudigt de aard van de functie 
 
 Bovendien een overbelasting van de [RegisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) duurt een [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.registereventprocessorasync?view=azure-dotnet#Microsoft_Azure_EventHubs_Processor_EventProcessorHost_RegisterEventProcessorAsync__1_Microsoft_Azure_EventHubs_Processor_EventProcessorOptions_) object als parameter. Gebruik deze parameter om te bepalen het gedrag van [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) zelf. [EventProcessorOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions) definieert vier eigenschappen en één gebeurtenis:
 
-- [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize): De maximale grootte van de verzameling die u wilt ontvangen in een aanroep van [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync). Deze grootte is niet het minimum, alleen de maximale grootte. Als er minder berichten wilt ontvangen, **ProcessEventsAsync** voert met zoveel als beschikbaar waren.
-- [PrefetchCount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount): Een waarde die door het onderliggende AMQP-kanaal wordt gebruikt om de bovengrens te bepalen van het aantal berichten dat de client moet ontvangen. Deze waarde moet groter zijn dan of gelijk zijn aan [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize).
-- [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): Als deze para meter **True**is, wordt [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) aangeroepen wanneer de onderliggende aanroep voor het ontvangen van gebeurtenissen op een partitie een time-out heeft. Deze methode is handig voor het uitvoeren van acties op basis van tijd tijdens perioden van inactiviteit van de partitie.
-- [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): Hiermee kan een functie-of lambda-expressie worden ingesteld, die wordt aangeroepen om de initiële offset te bieden wanneer een lezer begint met het lezen van een partitie. Zonder op te geven deze offset, de lezer wordt gestart op de oudste gebeurtenis, tenzij een JSON-bestand met een offset al is opgeslagen in de storage-account dat is doorgegeven aan de [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) constructor. Deze methode is handig als u wilt wijzigen van het gedrag van het opstarten van de lezer. Wanneer deze methode wordt aangeroepen, bevat de parameter van het object in de partitie-ID waarvoor de lezer wordt gestart.
-- [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): Hiermee kunt u meldingen ontvangen over onderliggende uitzonde ringen die optreden in [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Als dingen niet werkt zoals verwacht, is deze gebeurtenis een goede plaats te bekijken.
+- [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize): de maximale grootte van de verzameling die u wilt ontvangen in een aanroep van [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync). Deze grootte is niet het minimum, alleen de maximale grootte. Als er minder berichten wilt ontvangen, **ProcessEventsAsync** voert met zoveel als beschikbaar waren.
+- [PrefetchCount](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.prefetchcount): een waarde die door het onderliggende AMQP-kanaal wordt gebruikt om te bepalen van de bovengrens van het aantal berichten van de client ontvangt. Deze waarde moet groter zijn dan of gelijk zijn aan [MaxBatchSize](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.maxbatchsize).
+- [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): als deze para meter **True**is, wordt [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) aangeroepen wanneer de onderliggende aanroep voor het ontvangen van gebeurtenissen op een partitie een time-out heeft. Deze methode is handig voor het nemen van op tijd gebaseerde acties tijdens peri Oden van inactiviteit op de partitie.
+- [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): Hiermee kunt u een functie aanwijzer of lambda-expressie moet worden ingesteld met de naam voor de eerste offset wanneer een lezer wordt begonnen met het lezen van een partitie. Zonder op te geven deze offset, de lezer wordt gestart op de oudste gebeurtenis, tenzij een JSON-bestand met een offset al is opgeslagen in de storage-account dat is doorgegeven aan de [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) constructor. Deze methode is handig als u wilt wijzigen van het gedrag van het opstarten van de lezer. Wanneer deze methode wordt aangeroepen, bevat de parameter van het object in de partitie-ID waarvoor de lezer wordt gestart.
+- [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): Hiermee kunt u ontvangen van eventuele onderliggende uitzonderingen die optreden in [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Als dingen niet werkt zoals verwacht, is deze gebeurtenis een goede plaats te bekijken.
 
 ## <a name="epoch"></a>Epoch
 
@@ -171,7 +179,7 @@ De epoche-functie biedt gebruikers de mogelijkheid om ervoor te zorgen dat er op
 
 - Als er geen bestaande ontvanger is voor een Consumer groep, kan de gebruiker een ontvanger maken met elke epoche waarde.
 - Als er een ontvanger is met een epoche waarde E1 en er een nieuwe ontvanger wordt gemaakt met een epoche waarde E2 waarbij E1 < = E2, wordt de ontvanger met E1 automatisch losgekoppeld, ontvanger met E2 wordt gemaakt.
-- Als er een ontvanger is met een epoche waarde E1 en er een nieuwe ontvanger wordt gemaakt met een epoche-waarde E2 waarbij E1 > E2, dan is het maken van E2 met de fout: Er bestaat al een ontvanger met epoche E1.
+- Als er een ontvanger is met een epoche waarde E1 en er een nieuwe ontvanger wordt gemaakt met een epoche waarde E2 waarbij E1 > E2, wordt het maken van E2 met een fout gegenereerd: er bestaat al een ontvanger met epoche E1.
 
 ### <a name="no-epoch"></a>Geen epoche
 U maakt een ontvanger op basis van een niet-epoche met behulp van de methode [CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) . 

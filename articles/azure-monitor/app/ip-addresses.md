@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: c571a4f36372b250a05564182b240bc4007240a1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 02f1e5e3f3252ffa026d8dffe9fe83c9e5abe65b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977816"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899106"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP-adressen die worden gebruikt door Application Insights en Log Analytics
 De [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) -service gebruikt een aantal IP-adressen. Mogelijk moet u deze adressen weten als de app die u bewaakt, wordt gehost achter een firewall.
@@ -56,6 +56,14 @@ Status Monitor configuratie: alleen nodig als u wijzigingen aanbrengt.
 
 ## <a name="availability-tests"></a>Beschikbaarheidstests
 Dit is de lijst met adressen waarvan de [webtesten voor Beschik baarheid](../../azure-monitor/app/monitor-web-app-availability.md) worden uitgevoerd. Als u webtests wilt uitvoeren voor uw app, maar uw webserver is beperkt tot het leveren van specifieke clients, moet u inkomend verkeer via onze beschikbaarheids test servers toestaan.
+
+Als u Azure-netwerk beveiligings groepen gebruikt, voegt u gewoon **een regel voor binnenkomende poort** toe om verkeer van Application Insights-beschikbaarheids tests toe te staan door **service Tags** als **bron** -en **ApplicationInsightsAvailability** te selecteren als bron **service label**.
+
+>[!div class="mx-imgBorder"]
+>Selecteer ![onder instellingen binnenkomende beveiligings regels en selecteer vervolgens toevoegen boven aan het tabblad ](./media/ip-addresses/add-inbound-security-rule.png)
+
+>[!div class="mx-imgBorder"]
+>![tabblad inkomende beveiligings regel toevoegen](./media/ip-addresses/add-inbound-security-rule2.png)
 
 Open poorten 80 (http) en 443 (https) voor binnenkomend verkeer van deze adressen (IP-adressen zijn gegroepeerd op locatie):
 

@@ -6,15 +6,15 @@ author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 92c414afbb8121eb03353c79dfe3a51e0cfa7ec0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a83d65e497688fa97fbb2bdb5a4a72c6d29d81ae
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718882"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905687"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Zelf studie: vastgelegde Event Hubs gegevens migreren naar een SQL Data Warehouse met behulp van Event Grid en Azure Functions
 
@@ -40,9 +40,11 @@ In deze zelfstudie voert u de volgende acties uit:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - [Visual studio 2019](https://www.visualstudio.com/vs/). Zorg ervoor dat u tijdens de installatie de volgende werkbelastingen installeert: .NET-desktopontwikkeling, Azure-ontwikkeling, ASP.NET- en webontwikkeling, Node.js-ontwikkeling en Python-ontwikkeling
-- Download het [Git-voorbeeld](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo). De voorbeeldoplossing bevat de volgende onderdelen:
+- Het git-voor [beeld](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) downloaden de voorbeeld oplossing bevat de volgende onderdelen:
     - *WindTurbineDataGenerator*: een eenvoudige uitgever waarmee voorbeeldgegevens van windturbines worden verzonden naar een Event Hub waarvoor Capture is ingeschakeld
     - *FunctionDWDumper*: een Azure-functie die een Event Grid-melding ontvangt wanneer een Avro-bestand wordt vastgelegd in de Azure Storage Blob. Het URI-pad van de blob wordt ontvangen en de inhoud wordt gelezen, waarna deze gegevens worden doorgestuurd naar een SQL Data Warehouse.
+
+    In dit voor beeld wordt het meest recente Azure. Messa ging. Event hubs-pakket gebruikt. U vindt [hier](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)het oude voor beeld dat gebruikmaakt van het pakket micro soft. Azure. Event hubs. 
 
 ### <a name="deploy-the-infrastructure"></a>De infrastructuur implementeren
 Gebruik Azure PowerShell of de Azure CLI om de infrastructuur te implementeren die nodig is voor deze zelfstudie met behulp van deze [Azure Resource Manager-sjabloon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json). Met deze sjabloon maakt u de volgende bronnen:
@@ -68,7 +70,7 @@ In de volgende secties vindt u Azure CLI- en Azure PowerShell-opdrachten voor he
 
 Het duurt even voordat alle Azure-artefacten zijn gemaakt met deze scripts. Wacht totdat het script is voltooid voordat u doorgaat. Als de implementatie mislukt, verwijdert u de resourcegroep, lost u het gerapporteerde probleem op en voert u de opdracht opnieuw uit. 
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure-CLI
 Voer de volgende opdrachten uit om de sjabloon te implementeren met Azure CLI:
 
 ```azurecli-interactive

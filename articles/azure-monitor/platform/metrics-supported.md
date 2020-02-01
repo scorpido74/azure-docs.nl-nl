@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 0210317ef74433b740feb043a1cc4f1f9bc2ef57
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310778"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901148"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Ondersteunde metrische gegevens met Azure Monitor
 
@@ -34,8 +34,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
 |qpu_metric|QPU|Aantal|Average|QPU. Bereik 0-100 voor S1, 0-200 voor S2 en 0-400 voor S4|ServerResourceType|
-|memory_metric|Geheugen|Bytes|Average|Geheugen. Bereik 0-25 GB voor S1, 0-50 GB voor S2 en 0-100 GB voor S4|ServerResourceType|
-|private_bytes_metric|Eigen Bytes|Bytes|Average|Privé-bytes.|ServerResourceType|
+|memory_metric|Geheugen|Bytes|Average|Geheugenmetabase. Bereik 0-25 GB voor S1, 0-50 GB voor S2 en 0-100 GB voor S4|ServerResourceType|
+|private_bytes_metric|Privé-bytes|Bytes|Average|Privé-bytes.|ServerResourceType|
 |virtual_bytes_metric|Virtuele bytes|Bytes|Average|Virtuele bytes.|ServerResourceType|
 |TotalConnectionRequests|Totaal aantal verbindings aanvragen|Aantal|Average|Totaal aantal verbindings aanvragen. Dit zijn ontvangsten.|ServerResourceType|
 |SuccessfullConnectionsPerSec|Geslaagde verbindingen per seconde|CountPerSecond|Average|Snelheid van geslaagde verbindings voltooiingen.|ServerResourceType|
@@ -75,7 +75,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |ShortParsingBusyThreads|Threads: bezette threads voor kort parseren|Aantal|Average|Het aantal actieve threads in de thread pool voor kort parseren.|ServerResourceType|
 |ShortParsingIdleThreads|Threads: niet-actieve threads voor kort parseren|Aantal|Average|Het aantal niet-actieve threads in de thread pool voor kort parseren.|ServerResourceType|
 |ShortParsingJobQueueLength|Threads: lengte van taak wachtrij voor kort parseren|Aantal|Average|Aantal taken in de wachtrij van de thread pool voor kort parseren.|ServerResourceType|
-|memory_thrashing_metric|Geheugenthrashing|Procent|Average|Gemiddeld geheugen overbelasting.|ServerResourceType|
+|memory_thrashing_metric|Geheugen overbelasting|Procent|Average|Gemiddeld geheugen overbelasting.|ServerResourceType|
 |mashup_engine_qpu_metric|M-engine QPU|Aantal|Average|QPU-gebruik door mashup-engine processen|ServerResourceType|
 |mashup_engine_memory_metric|M-engine geheugen|Bytes|Average|Geheugen gebruik door mashup-engine processen|ServerResourceType|
 |mashup_engine_private_bytes_metric|M-engine-eigen bytes|Bytes|Average|Privé-bytes gebruik door mashup-engine processen.|ServerResourceType|
@@ -215,7 +215,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
 |CpuUsagePercentageInDouble|Percentage CPU-gebruik|Procent|Maximum|Percentage CPU-gebruik|Knooppunt|
-|MemoryUsage|Geheugengebruik|Bytes|Average|Geheugengebruik|Knooppunt|
+|MemoryUsage|Geheugen gebruik|Bytes|Average|Geheugen gebruik|Knooppunt|
 |MemoryLimit|Geheugen limiet|Bytes|Average|Geheugen limiet|Knooppunt|
 |MemoryUsagePercentageInDouble|Percentage geheugen gebruik|Procent|Average|Percentage geheugen gebruik|Knooppunt|
 |StorageUsage|Opslag gebruik|Bytes|Average|Opslag gebruik|Knooppunt|
@@ -242,7 +242,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |cachemisses|Cache missers|Aantal|Totaal||ShardId|
 |cachemissrate|Aantal missers in cache|Procent|cachemissrate||ShardId|
 |getcommands|Methode|Aantal|Totaal||ShardId|
-|setcommands|Sets|Aantal|Totaal||ShardId|
+|setcommands|Groepen|Aantal|Totaal||ShardId|
 |operationsPerSecond|Bewerkingen per seconde|Aantal|Maximum||ShardId|
 |evictedkeys|Verwijderde sleutels|Aantal|Totaal||ShardId|
 |totalkeys|Totaal aantal sleutels|Aantal|Maximum||ShardId|
@@ -472,7 +472,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |BlobCapacity|Blobcapaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de Blob-service van het opslagaccount (in bytes).|BlobType, Tier|
 |BlobCount|Aantal blobs|Aantal|Average|Het aantal blobs in de Blob-service van het opslagaccount.|BlobType, Tier|
 |ContainerCount|Aantal blobcontainers|Aantal|Average|Het aantal containers in de Blob-service van het opslagaccount.|Geen|
-|IndexCapacity|Indexcapaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de index van de ADLS Gen2 (hiërarchisch) in bytes.|Geen|
+|IndexCapacity|Index capaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de index van de ADLS Gen2 (hiërarchisch) in bytes.|Geen|
 |Transacties|Transacties|Aantal|Totaal|Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen, evenals aanvragen waarbij fouten zijn opgetreden. Gebruik de ResponseType-dimensie voor het aantal verschillende type reactie.|ResponseType, geotype, ApiName, authenticatie|
 |Binnenkomend|Binnenkomend|Bytes|Totaal|De hoeveelheid inkomende gegevens in bytes. Hieronder vallen de inkomende gegevens van een externe client in Azure Storage evenals de inkomende gegevens binnen Azure.|Geotype, ApiName, authenticatie|
 |Uitgaand verkeer|Uitgaand verkeer|Bytes|Totaal|De hoeveelheid uitgaande gegevens in bytes. Hieronder vallen de uitgaande gegevens van een externe client in Azure Storage evenals de uitgaande gegevens binnen Azure. Daarom geeft deze hoeveelheid niet de factureerbare uitgaande gegevens weer.|Geotype, ApiName, authenticatie|
@@ -532,12 +532,12 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |---|---|---|---|---|---|
 |TotalCalls|Totaal aantal aanroepen|Aantal|Totaal|Totaal aantal aanroepen.|ApiName, Operationname, regio|
 |SuccessfulCalls|Geslaagde aanroepen|Aantal|Totaal|Aantal geslaagde aanroepen.|ApiName, Operationname, regio|
-|TotalErrors|Totale aantal fouten|Aantal|Totaal|Totaal aantal aanroepen met een fout respons (HTTP-antwoord code 4xx of 5xx).|ApiName, Operationname, regio|
+|TotalErrors|Totaal aantal fouten|Aantal|Totaal|Totaal aantal aanroepen met een fout respons (HTTP-antwoord code 4xx of 5xx).|ApiName, Operationname, regio|
 |BlockedCalls|Geblokkeerde aanroepen|Aantal|Totaal|Aantal aanroepen dat de frequentie of quotum limiet heeft overschreden.|ApiName, Operationname, regio|
 |ServerErrors|Server fouten|Aantal|Totaal|Het aantal aanroepen met een interne fout in de service (HTTP-antwoord code 5xx).|ApiName, Operationname, regio|
 |ClientErrors|Client fouten|Aantal|Totaal|Het aantal aanroepen met een fout aan de client zijde (HTTP-antwoord code 4xx).|ApiName, Operationname, regio|
-|DataIn|Inkomende gegevens|Bytes|Totaal|Grootte van binnenkomende gegevens in bytes.|ApiName, Operationname, regio|
-|DataOut|Uitgaande gegevens|Bytes|Totaal|Grootte van uitgaande gegevens in bytes.|ApiName, Operationname, regio|
+|DataIn|Gegevens in|Bytes|Totaal|Grootte van binnenkomende gegevens in bytes.|ApiName, Operationname, regio|
+|DataOut|Gegevens uit|Bytes|Totaal|Grootte van uitgaande gegevens in bytes.|ApiName, Operationname, regio|
 |Latentie|Latentie|MilliSeconds|Average|Latentie in milliseconden.|ApiName, Operationname, regio|
 |CharactersTranslated|Geconverteerde tekens|Aantal|Totaal|Totaal aantal tekens in binnenkomende-tekst aanvraag.|ApiName, Operationname, regio|
 |CharactersTrained|Getrainde tekens|Aantal|Totaal|Totaal aantal getrainde tekens.|ApiName, Operationname, regio|
@@ -572,12 +572,12 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Geschreven bytes per seconde gegevens schijf|Geschreven bytes per seconde (preview) gegevens schijf|CountPerSecond|Average|Tijdens de controle periode naar één schijf geschreven bytes per seconde|LUN|
 |Lees bewerkingen op de gegevens schijf per seconde|Lees bewerkingen op de gegevens schijf per seconde (preview)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode|LUN|
 |Schrijf bewerkingen op de gegevens schijf per seconde|Schrijf bewerkingen op de gegevens schijf per seconde (preview)|CountPerSecond|Average|IOPS tijdens de controle periode van één schijf schrijven|LUN|
-|Wachtrijlengte van gegevensschijf|Wachtrij diepte van gegevens schijf (preview-versie)|Aantal|Average|Wachtrij diepte van gegevens schijf (of wachtrij lengte)|LUN|
+|Wachtrij diepte van gegevens schijf|Wachtrij diepte van gegevens schijf (preview-versie)|Aantal|Average|Wachtrij diepte van gegevens schijf (of wachtrij lengte)|LUN|
 |BESTURINGSSYSTEEM schijf gelezen bytes per seconde|BESTURINGSSYSTEEM schijf gelezen bytes per seconde (preview)|CountPerSecond|Average|Gelezen bytes per seconde van één schijf tijdens de controle periode voor de besturingssysteem schijf|Geen|
 |Schrijf bewerkingen op de besturingssysteem schijf per seconde|Schrijf bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|Geschreven bytes per seconde tijdens de controle periode voor de besturingssysteem schijf|Geen|
 |Lees bewerkingen van de besturingssysteem schijf per seconde|Lees bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode voor de besturingssysteem schijf|Geen|
 |Schrijf bewerkingen op de besturingssysteem schijf per seconde|Schrijf bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|IOPS tijdens de controle periode voor de besturingssysteem schijf schrijven vanaf één schijf|Geen|
-|Wachtrijlengte van besturingssysteemschijf|Wachtrij diepte van de besturingssysteem schijf (preview-versie)|Aantal|Average|Wachtrij diepte van het besturings systeem (of wachtrij lengte)|Geen|
+|Wachtrij diepte van besturingssysteem schijf|Wachtrij diepte van de besturingssysteem schijf (preview-versie)|Aantal|Average|Wachtrij diepte van het besturings systeem (of wachtrij lengte)|Geen|
 |Binnenkomende stromen|Binnenkomende stromen|Aantal|Average|Inkomende stromen zijn het aantal huidige stromen in de binnenkomende richting (verkeer dat wordt verzonden naar de virtuele machine)|Geen|
 |Uitgaande stromen|Uitgaande stromen|Aantal|Average|Uitgaande stromen zijn het aantal huidige stromen in de uitgaande richting (verkeer dat uit de virtuele machine wordt verzonden)|Geen|
 |Maximum aanmaak frequentie inkomende stromen|Maximum aantal aanmaak snelheden inkomende stromen (preview-versie)|CountPerSecond|Average|Het maximale aantal inkomende stromen (verkeer dat wordt verzonden naar de virtuele machine)|Geen|
@@ -617,12 +617,12 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Geschreven bytes per seconde gegevens schijf|Geschreven bytes per seconde (preview) gegevens schijf|CountPerSecond|Average|Tijdens de controle periode naar één schijf geschreven bytes per seconde|LUN, VMName|
 |Lees bewerkingen op de gegevens schijf per seconde|Lees bewerkingen op de gegevens schijf per seconde (preview)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode|LUN, VMName|
 |Schrijf bewerkingen op de gegevens schijf per seconde|Schrijf bewerkingen op de gegevens schijf per seconde (preview)|CountPerSecond|Average|IOPS tijdens de controle periode van één schijf schrijven|LUN, VMName|
-|Wachtrijlengte van gegevensschijf|Wachtrij diepte van gegevens schijf (preview-versie)|Aantal|Average|Wachtrij diepte van gegevens schijf (of wachtrij lengte)|LUN, VMName|
+|Wachtrij diepte van gegevens schijf|Wachtrij diepte van gegevens schijf (preview-versie)|Aantal|Average|Wachtrij diepte van gegevens schijf (of wachtrij lengte)|LUN, VMName|
 |BESTURINGSSYSTEEM schijf gelezen bytes per seconde|BESTURINGSSYSTEEM schijf gelezen bytes per seconde (preview)|CountPerSecond|Average|Gelezen bytes per seconde van één schijf tijdens de controle periode voor de besturingssysteem schijf|VMName|
 |Schrijf bewerkingen op de besturingssysteem schijf per seconde|Schrijf bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|Geschreven bytes per seconde tijdens de controle periode voor de besturingssysteem schijf|VMName|
 |Lees bewerkingen van de besturingssysteem schijf per seconde|Lees bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode voor de besturingssysteem schijf|VMName|
 |Schrijf bewerkingen op de besturingssysteem schijf per seconde|Schrijf bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|IOPS tijdens de controle periode voor de besturingssysteem schijf schrijven vanaf één schijf|VMName|
-|Wachtrijlengte van besturingssysteemschijf|Wachtrij diepte van de besturingssysteem schijf (preview-versie)|Aantal|Average|Wachtrij diepte van het besturings systeem (of wachtrij lengte)|VMName|
+|Wachtrij diepte van besturingssysteem schijf|Wachtrij diepte van de besturingssysteem schijf (preview-versie)|Aantal|Average|Wachtrij diepte van het besturings systeem (of wachtrij lengte)|VMName|
 |Binnenkomende stromen|Binnenkomende stromen|Aantal|Average|Inkomende stromen zijn het aantal huidige stromen in de binnenkomende richting (verkeer dat wordt verzonden naar de virtuele machine)|VMName|
 |Uitgaande stromen|Uitgaande stromen|Aantal|Average|Uitgaande stromen zijn het aantal huidige stromen in de uitgaande richting (verkeer dat uit de virtuele machine wordt verzonden)|VMName|
 |Maximum aanmaak frequentie inkomende stromen|Maximum aantal aanmaak snelheden inkomende stromen (preview-versie)|CountPerSecond|Average|Het maximale aantal inkomende stromen (verkeer dat wordt verzonden naar de virtuele machine)|VMName|
@@ -662,12 +662,12 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Geschreven bytes per seconde gegevens schijf|Geschreven bytes per seconde (preview) gegevens schijf|CountPerSecond|Average|Tijdens de controle periode naar één schijf geschreven bytes per seconde|LUN|
 |Lees bewerkingen op de gegevens schijf per seconde|Lees bewerkingen op de gegevens schijf per seconde (preview)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode|LUN|
 |Schrijf bewerkingen op de gegevens schijf per seconde|Schrijf bewerkingen op de gegevens schijf per seconde (preview)|CountPerSecond|Average|IOPS tijdens de controle periode van één schijf schrijven|LUN|
-|Wachtrijlengte van gegevensschijf|Wachtrij diepte van gegevens schijf (preview-versie)|Aantal|Average|Wachtrij diepte van gegevens schijf (of wachtrij lengte)|LUN|
+|Wachtrij diepte van gegevens schijf|Wachtrij diepte van gegevens schijf (preview-versie)|Aantal|Average|Wachtrij diepte van gegevens schijf (of wachtrij lengte)|LUN|
 |BESTURINGSSYSTEEM schijf gelezen bytes per seconde|BESTURINGSSYSTEEM schijf gelezen bytes per seconde (preview)|CountPerSecond|Average|Gelezen bytes per seconde van één schijf tijdens de controle periode voor de besturingssysteem schijf|Geen|
 |Schrijf bewerkingen op de besturingssysteem schijf per seconde|Schrijf bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|Geschreven bytes per seconde tijdens de controle periode voor de besturingssysteem schijf|Geen|
 |Lees bewerkingen van de besturingssysteem schijf per seconde|Lees bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode voor de besturingssysteem schijf|Geen|
 |Schrijf bewerkingen op de besturingssysteem schijf per seconde|Schrijf bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|IOPS tijdens de controle periode voor de besturingssysteem schijf schrijven vanaf één schijf|Geen|
-|Wachtrijlengte van besturingssysteemschijf|Wachtrij diepte van de besturingssysteem schijf (preview-versie)|Aantal|Average|Wachtrij diepte van het besturings systeem (of wachtrij lengte)|Geen|
+|Wachtrij diepte van besturingssysteem schijf|Wachtrij diepte van de besturingssysteem schijf (preview-versie)|Aantal|Average|Wachtrij diepte van het besturings systeem (of wachtrij lengte)|Geen|
 |Binnenkomende stromen|Binnenkomende stromen|Aantal|Average|Inkomende stromen zijn het aantal huidige stromen in de binnenkomende richting (verkeer dat wordt verzonden naar de virtuele machine)|Geen|
 |Uitgaande stromen|Uitgaande stromen|Aantal|Average|Uitgaande stromen zijn het aantal huidige stromen in de uitgaande richting (verkeer dat uit de virtuele machine wordt verzonden)|Geen|
 |Maximum aanmaak frequentie inkomende stromen|Maximum aantal aanmaak snelheden inkomende stromen (preview-versie)|CountPerSecond|Average|Het maximale aantal inkomende stromen (verkeer dat wordt verzonden naar de virtuele machine)|Geen|
@@ -684,7 +684,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
 |CpuUsage|CPU-gebruik|Aantal|Average|CPU-gebruik op alle kernen in millicores.|containerName|
-|MemoryUsage|Geheugengebruik|Bytes|Average|Totaal geheugen gebruik in bytes.|containerName|
+|MemoryUsage|Geheugen gebruik|Bytes|Average|Totaal geheugen gebruik in bytes.|containerName|
 |NetworkBytesReceivedPerSecond|Ontvangen netwerk bytes per seconde|Bytes|Average|Het netwerk ontvangen bytes per seconde.|Geen|
 |NetworkBytesTransmittedPerSecond|Verzonden netwerk bytes per seconde|Bytes|Average|Het netwerk aantal verzonden bytes per seconde.|Geen|
 
@@ -740,7 +740,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
-|FailedRuns|Mislukte verwerkingen|Aantal|Totaal||pipelineName, activiteitsnummer|
+|FailedRuns|Mislukte uitvoeringen|Aantal|Totaal||pipelineName, activiteitsnummer|
 |SuccessfulRuns|Geslaagde uitvoeringen|Aantal|Totaal||pipelineName, activiteitsnummer|
 
 
@@ -876,12 +876,12 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
 |d2c.telemetry.ingress.allProtocol|Verzend pogingen voor telemetrie-berichten|Aantal|Totaal|Aantal pogingen voor het verzenden van apparaat-naar-Cloud-telemetrie naar uw IoT hub|Geen|
-|d2c.telemetry.ingress.success|Berichten over telemetrie verzonden|Aantal|Totaal|Aantal te verzenden apparaat-naar-Cloud-telemetrie-berichten naar uw IoT-hub|Geen|
+|d2c.telemetry.ingress.success|Verzonden telemetriegegevens|Aantal|Totaal|Aantal te verzenden apparaat-naar-Cloud-telemetrie-berichten naar uw IoT-hub|Geen|
 |C2D. commands. OUTuitgang. complete. geslaagd|C2D-bericht leveringen voltooid|Aantal|Totaal|Aantal bezorgingen van Cloud-naar-apparaat-berichten voltooid door het apparaat|Geen|
 |c2d.commands.egress.abandon.success|C2D-berichten zijn afgebroken|Aantal|Totaal|Aantal Cloud-naar-apparaat-berichten die zijn afgebroken door het apparaat|Geen|
 |c2d.commands.egress.reject.success|Geweigerde C2D-berichten|Aantal|Totaal|Aantal Cloud-naar-apparaat-berichten dat door het apparaat is geweigerd|Geen|
 |C2DMessagesExpired|C2D-berichten verlopen (preview-versie)|Aantal|Totaal|Aantal verlopen Cloud-naar-apparaat-berichten|Geen|
-|devices.totalDevices|Alle apparaten (afgeschaft)|Aantal|Totaal|Aantal apparaten dat is geregistreerd bij uw IoT-hub|Geen|
+|devices.totalDevices|Totaal aantal apparaten (afgeschaft)|Aantal|Totaal|Aantal apparaten dat is geregistreerd bij uw IoT-hub|Geen|
 |devices.connectedDevices.allProtocol|Verbonden apparaten (afgeschaft) |Aantal|Totaal|Aantal apparaten dat is verbonden met uw IoT-hub|Geen|
 |d2c.telemetry.egress.success|Route ring: telemetrie-berichten|Aantal|Totaal|Het aantal keren dat berichten zijn bezorgd bij alle eind punten met behulp van IoT Hub route ring. Als een bericht wordt doorgestuurd naar meerdere eind punten, wordt deze waarde met één verhoogd voor elke geslaagde levering. Als een bericht meerdere keren op hetzelfde eind punt wordt bezorgd, wordt deze waarde met één verhoogd voor elke geslaagde levering.|Geen|
 |d2c.telemetry.egress.dropped|Route ring: telemetrie-berichten verwijderd |Aantal|Totaal|Het aantal keren dat berichten zijn verwijderd door IoT Hub route ring vanwege Dead-eind punten. Deze waarde telt geen berichten die worden bezorgd als terugval route als berichten die worden verzonden, niet worden bezorgd.|Geen|
@@ -889,32 +889,32 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |d2c.telemetry.egress.invalid|Route ring: telemetrie-berichten incompatibel|Aantal|Totaal|Het aantal keren dat IoT Hub route ring geen berichten kan leveren als gevolg van incompatibiliteit met het eind punt. Deze waarde omvat geen nieuwe pogingen.|Geen|
 |d2c.telemetry.egress.fallback|Route ring: berichten worden bezorgd bij terugval|Aantal|Totaal|Het aantal keren dat de route ring van berichten IoT Hub verzonden naar het eind punt dat is gekoppeld aan de terugval route.|Geen|
 |d2c.endpoints.egress.eventHubs|Route ring: berichten worden bezorgd bij Event hub|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan Event hub-eind punten.|Geen|
-|d2c.endpoints.latency.eventHubs|Routering: berichtlatentie voor Event Hub|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten IoT Hub en het binnenkomen van berichten in een event hub-eind punt.|Geen|
+|d2c.endpoints.latency.eventHubs|Route ring: bericht latentie voor Event hub|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten IoT Hub en het binnenkomen van berichten in een event hub-eind punt.|Geen|
 |d2c.endpoints.egress.serviceBusQueues|Route ring: berichten worden bezorgd bij Service Bus wachtrij|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan Service Bus-wachtrij-eind punten.|Geen|
-|d2c.endpoints.latency.serviceBusQueues|Routering: berichtlatentie voor Service Bus-wachtrij|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten naar IoT Hub en telemetrie-berichten in een Service Bus wachtrij-eind punt.|Geen|
+|d2c.endpoints.latency.serviceBusQueues|Route ring: bericht latentie voor Service Bus wachtrij|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten naar IoT Hub en telemetrie-berichten in een Service Bus wachtrij-eind punt.|Geen|
 |d2c.endpoints.egress.serviceBusTopics|Route ring: berichten die worden bezorgd bij Service Bus onderwerp|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan Service Bus onderwerp-eind punten.|Geen|
 |d2c.endpoints.latency.serviceBusTopics|Route ring: bericht latentie voor Service Bus onderwerp|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten naar IoT Hub en telemetrie-berichten in het eind punt van een Service Bus onderwerp.|Geen|
 |D2C. endpoints. uitgangs punt. builtIn. Events|Route ring: berichten worden bezorgd bij berichten/gebeurtenissen|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan het ingebouwde eind punt (berichten/gebeurtenissen).|Geen|
 |d2c.endpoints.latency.builtIn.events|Route ring: bericht latentie voor berichten/gebeurtenissen|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten naar IoT Hub en het inkomend telemetrie-bericht in het ingebouwde eind punt (berichten/gebeurtenissen).|Geen|
 |d2c.endpoints.egress.storage|Route ring: berichten worden bezorgd bij de opslag|Aantal|Totaal|Het aantal keren dat IoT Hub route ring berichten heeft geleverd aan de opslag eindpunten.|Geen|
 |d2c.endpoints.latency.storage|Route ring: bericht latentie voor opslag|Milliseconden|Average|De gemiddelde latentie (in milliseconden) tussen het binnenkomen van berichten naar IoT Hub en telemetrie-berichten in een opslag eindpunt.|Geen|
-|D2C. endpoints. out. storage. bytes|Routering: aan opslag geleverde gegevens|Bytes|Totaal|De hoeveelheid gegevens (bytes) IoT Hub route ring die aan de opslag eindpunten wordt geleverd.|Geen|
-|d2c.endpoints.egress.storage.blobs|Routering: aan opslag geleverde blobs|Aantal|Totaal|Het aantal keren dat IoT Hub route ring blobs naar opslag eindpunten heeft geleverd.|Geen|
+|D2C. endpoints. out. storage. bytes|Route ring: gegevens worden geleverd aan de opslag|Bytes|Totaal|De hoeveelheid gegevens (bytes) IoT Hub route ring die aan de opslag eindpunten wordt geleverd.|Geen|
+|d2c.endpoints.egress.storage.blobs|Route ring: blobs die aan de opslag worden geleverd|Aantal|Totaal|Het aantal keren dat IoT Hub route ring blobs naar opslag eindpunten heeft geleverd.|Geen|
 |EventGridDeliveries|Event Grid leveringen (preview-versie)|Aantal|Totaal|Het aantal IoT Hub gebeurtenissen dat is gepubliceerd op Event Grid. Gebruik de dimensie resultaat voor het aantal geslaagde en mislukte aanvragen. De dimensie type-tekst geeft het soort gebeurtenis weer (https://aka.ms/ioteventgrid).|ResourceId, resultaat, type gebeurtenis|
 |EventGridLatency|Event Grid latentie (preview-versie)|Milliseconden|Average|De gemiddelde latentie (in milliseconden) vanaf het moment waarop de IOT hub-gebeurtenis werd gegenereerd toen de gebeurtenis werd gepubliceerd in Event Grid. Dit getal is een gemiddelde tussen alle gebeurtenis typen. Gebruik de dimensie type type om de latentie van een specifiek soort gebeurtenis weer te geven.|ResourceId, Event type|
 |d2c.twin.read.success|Geslaagde dubbele Lees bewerkingen van apparaten|Aantal|Totaal|De telling van alle geslaagde apparaten met dubbele Lees bewerkingen.|Geen|
-|D2C. dubbele. Read. failure|Mislukte dubbele leesbewerkingen van apparaten|Aantal|Totaal|Het aantal apparaten dat niet kan worden gestart, dubbele Lees bewerkingen.|Geen|
-|d2c.twin.read.size|Antwoordgrootte van dubbele leesbewerkingen van apparaten|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde apparaten-geïnitieerde dubbele Lees bewerkingen.|Geen|
+|D2C. dubbele. Read. failure|Mislukte dubbele Lees bewerkingen van apparaten|Aantal|Totaal|Het aantal apparaten dat niet kan worden gestart, dubbele Lees bewerkingen.|Geen|
+|d2c.twin.read.size|Reactie grootte van dubbele Lees bewerkingen van apparaten|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde apparaten-geïnitieerde dubbele Lees bewerkingen.|Geen|
 |d2c.twin.update.success|Geslaagde dubbele updates van apparaten|Aantal|Totaal|De telling van alle geslaagde, door het apparaat geïnitieerde dubbele updates.|Geen|
 |D2C. dubbele. update. failure|Mislukte dubbele updates van apparaten|Aantal|Totaal|Het aantal apparaten dat door een apparaat is gestart en dubbele updates heeft uitgevoerd.|Geen|
 |D2C. dubbele. update. grootte|Grootte van dubbele updates van apparaten|Bytes|Average|Het gemiddelde, het minimum en de maximale grootte van alle geslaagde, door het apparaat geïnitieerde dubbele updates.|Geen|
 |C2D. methods. geslaagd|Geslaagde directe aanroepen van de methode|Aantal|Totaal|Het aantal voltooide direct-methode aanroepen.|Geen|
-|C2D. methods. failure|Mislukte aanroepen van de directe methode|Aantal|Totaal|Het aantal mislukte direct-methode aanroepen.|Geen|
-|C2D. methods. requestSize|Aanvraaggrootte van aanroepen van de directe methode|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde direct-methode aanvragen.|Geen|
-|C2D. methods. responseSize|Antwoordgrootte van aanroepen van de directe methode|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde reacties van de methode direct.|Geen|
+|C2D. methods. failure|Mislukte directe aanroepen van methode|Aantal|Totaal|Het aantal mislukte direct-methode aanroepen.|Geen|
+|C2D. methods. requestSize|Aanvraag grootte van directe-methode aanroepen|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde direct-methode aanvragen.|Geen|
+|C2D. methods. responseSize|Antwoord grootte van directe methode aanroepen|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde reacties van de methode direct.|Geen|
 |c2d.twin.read.success|Geslaagde dubbele Lees bewerkingen van back-end|Aantal|Totaal|Het aantal geslaagde back-end-geïnitieerde dubbele Lees bewerkingen.|Geen|
-|c2d.twin.read.failure|Mislukte dubbele leesbewerkingen van back-end|Aantal|Totaal|Het aantal mislukte back-end-geïnitieerde dubbele Lees bewerkingen.|Geen|
-|c2d.twin.read.size|Antwoordgrootte van dubbele leesbewerkingen van back-end|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde back-end-geïnitieerde dubbele Lees bewerkingen.|Geen|
+|c2d.twin.read.failure|Mislukte dubbele Lees bewerkingen van back-end|Aantal|Totaal|Het aantal mislukte back-end-geïnitieerde dubbele Lees bewerkingen.|Geen|
+|c2d.twin.read.size|Reactie grootte van dubbele Lees bewerkingen van de back-end|Bytes|Average|Het gemiddelde, het minimum en het maximum van alle geslaagde back-end-geïnitieerde dubbele Lees bewerkingen.|Geen|
 |c2d.twin.update.success|Geslaagde dubbele updates van back-end|Aantal|Totaal|Het aantal geslaagde, door de back-end gestarte dubbele updates.|Geen|
 |C2D. dubbele. update. failure|Mislukte dubbele updates van back-end|Aantal|Totaal|Het aantal niet-geslaagde, door de back-end geïnitieerde dubbele updates.|Geen|
 |C2D. dubbele. update. grootte|Grootte van dubbele updates van back-end|Bytes|Average|Het gemiddelde, het minimum en de maximale grootte van alle geslaagde back-end-geïnitieerde dubbele updates.|Geen|
@@ -922,24 +922,24 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |twinQueries.failure|Mislukte dubbele query's|Aantal|Totaal|Het aantal mislukte dubbele query's.|Geen|
 |twinQueries.resultSize|Resultaat grootte van dubbele query's|Bytes|Average|Het gemiddelde, het minimum en het maximum van de resultaat grootte van alle geslaagde dubbele query's.|Geen|
 |jobs.createTwinUpdateJob.success|Geslaagde creatie van dubbele update taken|Aantal|Totaal|Het aantal van alle geslaagde taken voor het maken van dubbele updates.|Geen|
-|jobs.createTwinUpdateJob.failure|Mislukte bewerkingen voor het maken van dubbele taken voor bijwerken|Aantal|Totaal|Het aantal mislukte het maken van dubbele update taken.|Geen|
+|jobs.createTwinUpdateJob.failure|Kan geen dubbele update taken uitvoeren|Aantal|Totaal|Het aantal mislukte het maken van dubbele update taken.|Geen|
 |jobs.createDirectMethodJob.success|Geslaagde creatie van methode aanroep taken|Aantal|Totaal|Het aantal van alle geslaagde aanroepen van directe methode aanroep taken.|Geen|
-|jobs.createDirectMethodJob.failure|Mislukte bewerkingen voor het maken van taken voor het aanroepen van methode|Aantal|Totaal|Het aantal van alle mislukte aanroepen van directe methode aanroep taken.|Geen|
+|jobs.createDirectMethodJob.failure|Kan geen aanroepen van methode aanroep taken uitvoeren|Aantal|Totaal|Het aantal van alle mislukte aanroepen van directe methode aanroep taken.|Geen|
 |jobs.listJobs.success|Geslaagde aanroepen naar lijst taken|Aantal|Totaal|Het aantal geslaagde aanroepen naar lijst taken.|Geen|
-|jobs.listJobs.failure|Mislukte aanroepen naar taken op de lijst|Aantal|Totaal|Het aantal mislukte aanroepen naar lijst taken.|Geen|
+|jobs.listJobs.failure|Mislukte aanroepen naar lijst taken|Aantal|Totaal|Het aantal mislukte aanroepen naar lijst taken.|Geen|
 |jobs.cancelJob.success|Voltooide taak annuleringen|Aantal|Totaal|Het aantal geslaagde aanroepen om een taak te annuleren.|Geen|
-|jobs.cancelJob.failure|Mislukte taakannuleringen|Aantal|Totaal|Het aantal mislukte aanroepen om een taak te annuleren.|Geen|
+|jobs.cancelJob.failure|Mislukte taak annuleringen|Aantal|Totaal|Het aantal mislukte aanroepen om een taak te annuleren.|Geen|
 |jobs.queryJobs.success|Geslaagde taak query's|Aantal|Totaal|Het aantal geslaagde aanroepen naar query taken.|Geen|
-|jobs.queryJobs.failure|Mislukte taakquery's|Aantal|Totaal|Het aantal mislukte aanroepen naar query taken.|Geen|
+|jobs.queryJobs.failure|Mislukte taak query's|Aantal|Totaal|Het aantal mislukte aanroepen naar query taken.|Geen|
 |Jobs. voltooid|Voltooide taken|Aantal|Totaal|Het aantal voltooide taken.|Geen|
 |Jobs. mislukt|Mislukte taken|Aantal|Totaal|Het aantal mislukte taken.|Geen|
-|d2c.telemetry.ingress.sendThrottle|Aantal netwerkbeperkingsfouten|Aantal|Totaal|Aantal beperkings fouten door doorvoer vertraging van apparaat|Geen|
+|d2c.telemetry.ingress.sendThrottle|Aantal beperkings fouten|Aantal|Totaal|Aantal beperkings fouten door doorvoer vertraging van apparaat|Geen|
 |dailyMessageQuotaUsed|Totaal aantal gebruikte berichten|Aantal|Average|Totaal aantal gebruikte berichten vandaag|Geen|
 |deviceDataUsage|Totale hoeveelheid gegevens gebruik van apparaat|Bytes|Totaal|Verzonden bytes van en naar apparaten die zijn verbonden met IotHub|Geen|
 |deviceDataUsageV2|Totaal gebruik van apparaatgegevens (preview-versie)|Bytes|Totaal|Verzonden bytes van en naar apparaten die zijn verbonden met IotHub|Geen|
 |totalDeviceCount|Totaal aantal apparaten (preview-versie)|Aantal|Average|Aantal apparaten dat is geregistreerd bij uw IoT-hub|Geen|
-|connectedDeviceCount|Verbonden apparaten (preview)|Aantal|Average|Aantal apparaten dat is verbonden met uw IoT-hub|Geen|
-|configuraties|Metrische gegevens van configuratie|Aantal|Totaal|Metrische gegevens voor configuratie bewerkingen|Geen|
+|connectedDeviceCount|Verbonden apparaten (preview-versie)|Aantal|Average|Aantal apparaten dat is verbonden met uw IoT-hub|Geen|
+|configuraties|Metrische configuratie gegevens|Aantal|Totaal|Metrische gegevens voor configuratie bewerkingen|Geen|
 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
@@ -956,7 +956,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
 |AddRegion|Regio toegevoegd|Aantal|Aantal|Regio toegevoegd|Regio|
-|AvailableStorage|Beschikbare opslag|Bytes|Totaal|Totale beschik bare opslag gerapporteerd bij een granulatie van 5 minuten|Verzamelingnaam, databasenaam, regio|
+|AvailableStorage|Beschik bare opslag|Bytes|Totaal|Totale beschik bare opslag gerapporteerd bij een granulatie van 5 minuten|Verzamelingnaam, databasenaam, regio|
 |CassandraConnectionClosures|Cassandra-verbinding sluiten|Aantal|Totaal|Aantal Cassandra-verbindingen dat is gesloten, gerapporteerd met een granulatie van 1 minuut|APIType, regio, ClosureReason|
 |CassandraRequestCharges|Kosten voor Cassandra-aanvragen|Aantal|Totaal|RUs gebruikt voor Cassandra-aanvragen|APIType, DATABASENAME, verzamelingnaam, regio, OperationType, resource type|
 |CassandraRequests|Cassandra aanvragen|Aantal|Aantal|Aantal gemaakte Cassandra-aanvragen|APIType, DATABASENAME, verzamelingnaam, regio, OperationType, resource type, error code|
@@ -992,8 +992,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
 |TransactionCount|Aantal trans acties|Aantal|Aantal|Totaal aantal trans acties|TransactionCount|
-|SuccessCount|Aantal geslaagd|Aantal|Aantal|Aantal geslaagde trans acties|SuccessCount|
-|FailureCount|Aantal mislukt|Aantal|Aantal|Aantal mislukte trans acties|FailureCount|
+|SuccessCount|Aantal geslaagde pogingen|Aantal|Aantal|Aantal geslaagde trans acties|SuccessCount|
+|FailureCount|Aantal fouten|Aantal|Aantal|Aantal mislukte trans acties|FailureCount|
 |SuccessLatency|Geslaagde latentie|MilliSeconds|Average|Latentie van geslaagde trans acties|SuccessCount|
 
 ## <a name="microsofteventgriddomains"></a>Micro soft. EventGrid/domeinen
@@ -1139,7 +1139,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |availabilityResults/aantal|Beschikbaarheidstests|Aantal|Aantal|Aantal beschikbaarheids tests|availabilityResult/naam, availabilityResult/locatie, availabilityResult/geslaagd|
 |availabilityResults/duur|Duur beschikbaarheids test|MilliSeconds|Average|Duur beschikbaarheids test|availabilityResult/naam, availabilityResult/locatie, availabilityResult/geslaagd|
 |browserTimings/networkDuration|Netwerk verbindings tijd voor laden van pagina|MilliSeconds|Average|Tijd tussen de gebruikers aanvraag en de netwerk verbinding. Inclusief DNS-Zoek-en transport verbinding.|Geen|
-|browserTimings/processingDuration|Verwerkingstijd client|MilliSeconds|Average|Tijd tussen het ontvangen van de laatste byte van een document totdat de DOM is geladen. Asynchrone aanvragen kunnen nog steeds worden verwerkt.|Geen|
+|browserTimings/processingDuration|Verwerkings tijd van client|MilliSeconds|Average|Tijd tussen het ontvangen van de laatste byte van een document totdat de DOM is geladen. Asynchrone aanvragen kunnen nog steeds worden verwerkt.|Geen|
 |browserTimings/receiveDuration|Reactie tijd van ontvangst|MilliSeconds|Average|Tijd tussen de eerste en laatste bytes, of tot de verbinding wordt verbroken.|Geen|
 |browserTimings/sendDuration|Aanvraag tijd verzenden|MilliSeconds|Average|Tijd tussen netwerk verbinding en ontvangst van de eerste byte.|Geen|
 |browserTimings/totalDuration|Laad tijd van browser pagina|MilliSeconds|Average|Tijd van de gebruikers aanvraag totdat DOM, opmaak modellen, scripts en installatie kopieën worden geladen.|Geen|
@@ -1157,14 +1157,14 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |performanceCounters/processorCpuPercentage|Processor tijd|Procent|Average|Het percentage tijd dat de processor spendeert aan niet-inactieve threads.|Cloud-roleInstance|
 |performanceCounters/memoryAvailableBytes|Beschikbaar geheugen|Bytes|Average|Fysiek geheugen dat direct beschikbaar is voor toewijzing aan een proces of voor systeem gebruik.|Cloud-roleInstance|
 |performanceCounters/processPrivateBytes|Privé-bytes verwerken|Bytes|Average|Geheugen dat exclusief wordt toegewezen aan de processen van de bewaakte toepassing.|Cloud-roleInstance|
-|aanvragen/duur|Serverreactietijd|MilliSeconds|Average|Tijd tussen het ontvangen van een HTTP-aanvraag en het volt ooien van het verzenden van het antwoord.|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, aanvraag/geslaagd, Cloud/rolnaam|
+|aanvragen/duur|Server reactietijd|MilliSeconds|Average|Tijd tussen het ontvangen van een HTTP-aanvraag en het volt ooien van het verzenden van het antwoord.|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, aanvraag/geslaagd, Cloud/rolnaam|
 |aanvragen/aantal|Server aanvragen|Aantal|Aantal|Aantal voltooide HTTP-aanvragen.|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, aanvraag/geslaagd, Cloud/rolnaam|
 |aanvragen/mislukt|Mislukte aanvragen|Aantal|Aantal|Het aantal HTTP-aanvragen dat is gemarkeerd als mislukt. In de meeste gevallen zijn dit aanvragen met een antwoord code > = 400 en niet gelijk is aan 401.|aanvraag-requests, aanvraag-resultCode, aanvraag/geslaagd, bewerking/synthetisch, Cloud/roleInstance, Cloud/rolnaam|
 |aanvragen/frequentie|Aantal server aanvragen|CountPerSecond|Average|Aantal server aanvragen per seconde|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, aanvraag/geslaagd, Cloud/rolnaam|
 |uitzonde ringen/aantal|Uitzonderingen|Aantal|Aantal|Totaal aantal niet-onderschepte uitzonde ringen.|Cloud/rolnaam, Cloud/roleInstance, client/type|
 |uitzonde ringen/browser|Browseruitzonderingen|Aantal|Aantal|Aantal niet-onderschepte uitzonde ringen dat in de browser wordt gegenereerd.|client-isServer, Cloud/rolnaam|
 |uitzonde ringen/server|Server uitzonderingen|Aantal|Aantal|Aantal niet-onderschepte uitzonde ringen dat is opgetreden in de server toepassing.|client-isServer, Cloud/rolnaam, Cloud/roleInstance|
-|traceringen/aantal|Traces|Aantal|Aantal|Aantal tracerings documenten|Trace/severityLevel, Operation/synthetisch, Cloud/rolnaam, Cloud/roleInstance|
+|traceringen/aantal|Traceringen|Aantal|Aantal|Aantal tracerings documenten|Trace/severityLevel, Operation/synthetisch, Cloud/rolnaam, Cloud/roleInstance|
 
 
 
@@ -1293,7 +1293,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |---|---|---|---|---|---|
 |Voltooide uitvoeringen|Voltooide uitvoeringen|Aantal|Totaal|Het aantal uitvoeringen dat is voltooid voor deze werk ruimte|Scenario, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
 |Gestart uitvoeringen|Gestart uitvoeringen|Aantal|Totaal|Aantal uitvoeringen gestart voor deze werk ruimte|Scenario, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
-|Mislukte verwerkingen|Mislukte verwerkingen|Aantal|Totaal|Aantal uitvoeringen is mislukt voor deze werk ruimte|Scenario, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
+|Mislukte uitvoeringen|Mislukte uitvoeringen|Aantal|Totaal|Aantal uitvoeringen is mislukt voor deze werk ruimte|Scenario, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
 |Model registratie is voltooid|Model registratie is voltooid|Aantal|Totaal|Aantal model registraties dat is geslaagd in deze werk ruimte|Scenario|
 |Model register mislukt|Model register mislukt|Aantal|Totaal|Aantal model registraties dat is mislukt in deze werk ruimte|Scenario, status code|
 |Modelimplementatie gestart|Modelimplementatie gestart|Aantal|Totaal|Aantal model implementaties gestart in deze werk ruimte|Scenario|
@@ -1400,9 +1400,9 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
-|PacketsInDDoS|Binnenkomende pakketten DDoS|CountPerSecond|Maximum|Binnenkomende pakketten DDoS|Geen|
-|PacketsDroppedDDoS|Verwijderde binnenkomende pakketten DDoS|CountPerSecond|Maximum|Verwijderde binnenkomende pakketten DDoS|Geen|
-|PacketsForwardedDDoS|Doorgestuurde binnenkomende pakketten DDoS|CountPerSecond|Maximum|Doorgestuurde binnenkomende pakketten DDoS|Geen|
+|PacketsInDDoS|DDoS inkomende pakketten|CountPerSecond|Maximum|DDoS inkomende pakketten|Geen|
+|PacketsDroppedDDoS|DDoS inkomende pakketten verwijderd|CountPerSecond|Maximum|DDoS inkomende pakketten verwijderd|Geen|
+|PacketsForwardedDDoS|DDoS inkomende pakketten doorgestuurd|CountPerSecond|Maximum|DDoS inkomende pakketten doorgestuurd|Geen|
 |TCPPacketsInDDoS|Binnenkomende TCP-pakketten DDoS|CountPerSecond|Maximum|Binnenkomende TCP-pakketten DDoS|Geen|
 |TCPPacketsDroppedDDoS|DDoS binnenkomende TCP-pakketten|CountPerSecond|Maximum|DDoS binnenkomende TCP-pakketten|Geen|
 |TCPPacketsForwardedDDoS|Doorgestuurde binnenkomende TCP-pakketten DDoS|CountPerSecond|Maximum|Doorgestuurde binnenkomende TCP-pakketten DDoS|Geen|
@@ -1410,9 +1410,9 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |UDPPacketsDroppedDDoS|Verwijderde binnenkomende UDP-pakketten DDoS|CountPerSecond|Maximum|Verwijderde binnenkomende UDP-pakketten DDoS|Geen|
 |UDPPacketsForwardedDDoS|Door inkomende UDP-pakketten DDoS doorgestuurd|CountPerSecond|Maximum|Door inkomende UDP-pakketten DDoS doorgestuurd|Geen|
 |BytesInDDoS|Binnenkomende bytes DDoS|BytesPerSecond|Maximum|Binnenkomende bytes DDoS|Geen|
-|BytesDroppedDDoS|Verwijderde binnenkomende bytes DDoS|BytesPerSecond|Maximum|Verwijderde binnenkomende bytes DDoS|Geen|
+|BytesDroppedDDoS|Binnenkomende bytes verloren DDoS|BytesPerSecond|Maximum|Binnenkomende bytes verloren DDoS|Geen|
 |BytesForwardedDDoS|Doorgestuurde binnenkomende bytes DDoS|BytesPerSecond|Maximum|Doorgestuurde binnenkomende bytes DDoS|Geen|
-|TCPBytesInDDoS|Binnenkomende TCP-bytes DDoS|BytesPerSecond|Maximum|Binnenkomende TCP-bytes DDoS|Geen|
+|TCPBytesInDDoS|DDoS binnenkomende TCP-bytes|BytesPerSecond|Maximum|DDoS binnenkomende TCP-bytes|Geen|
 |TCPBytesDroppedDDoS|DDoS binnenkomende TCP-bytes|BytesPerSecond|Maximum|DDoS binnenkomende TCP-bytes|Geen|
 |TCPBytesForwardedDDoS|DDoS doorgestuurde binnenkomende TCP-bytes|BytesPerSecond|Maximum|DDoS doorgestuurde binnenkomende TCP-bytes|Geen|
 |UDPBytesInDDoS|Binnenkomende UDP-bytes DDoS|BytesPerSecond|Maximum|Binnenkomende UDP-bytes DDoS|Geen|
@@ -1421,7 +1421,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |IfUnderDDoSAttack|Onder DDoS-aanval of niet|Aantal|Maximum|Onder DDoS-aanval of niet|Geen|
 |DDoSTriggerTCPPackets|Binnenkomende TCP-pakketten om DDoS-beperking te activeren|CountPerSecond|Maximum|Binnenkomende TCP-pakketten om DDoS-beperking te activeren|Geen|
 |DDoSTriggerUDPPackets|Binnenkomende UDP-pakketten om DDoS-beperking te activeren|CountPerSecond|Maximum|Binnenkomende UDP-pakketten om DDoS-beperking te activeren|Geen|
-|DDoSTriggerSYNPackets|Binnenkomende SYN-pakketten om DDoS-beperking te activeren|CountPerSecond|Maximum|Binnenkomende SYN-pakketten om DDoS-beperking te activeren|Geen|
+|DDoSTriggerSYNPackets|Inkomende SYN-pakketten om DDoS-beperking te activeren|CountPerSecond|Maximum|Inkomende SYN-pakketten om DDoS-beperking te activeren|Geen|
 |VipAvailability|Beschik baarheid gegevenspad|Aantal|Average|Gemiddelde Beschik baarheid van IP-adressen per tijds duur|Port|
 |ByteCount|Aantal bytes|Aantal|Totaal|Totaal aantal verzonden bytes binnen tijds periode|Poort, richting|
 |PacketCount|Aantal pakketten|Aantal|Totaal|Totaal aantal verzonden pakketten binnen tijds periode|Poort, richting|
@@ -1659,9 +1659,9 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Average_ percentage gebruikte wissel ruimte|Percentage gebruikte wissel ruimte|Aantal|Average|Average_ percentage gebruikte wissel ruimte|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
 |Average_Available MB geheugen|Beschikbaar geheugen in megabytes|Aantal|Average|Average_Available MB geheugen|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
 |Average_Available MB wisselen|Beschik bare mega bytes wisselen|Aantal|Average|Average_Available MB wisselen|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
-|Average_Page Lees bewerkingen per seconde|paginaleesbewerkingen per seconde|Aantal|Average|Average_Page Lees bewerkingen per seconde|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
-|Average_Page schrijf bewerkingen per seconde|paginaschrijfbewerkingen per seconde|Aantal|Average|Average_Page schrijf bewerkingen per seconde|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
-|Average_Pages/sec.|pagina's per seconde|Aantal|Average|Average_Pages/sec.|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
+|Average_Page Lees bewerkingen per seconde|Gelezen pagina's per seconde|Aantal|Average|Average_Page Lees bewerkingen per seconde|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
+|Average_Page schrijf bewerkingen per seconde|Geschreven pagina's per seconde|Aantal|Average|Average_Page schrijf bewerkingen per seconde|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
+|Average_Pages/sec.|Pagina's per seconde|Aantal|Average|Average_Pages/sec.|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
 |Average_Used MB wissel ruimte|Gebruikte MB wissel ruimte|Aantal|Average|Average_Used MB wissel ruimte|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
 |Average_Used geheugen MB|Gebruikt geheugen Mbytes|Aantal|Average|Average_Used geheugen MB|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
 |Verzonden Average_Total bytes|Totaal aantal verzonden Bytes|Aantal|Average|Verzonden Average_Total bytes|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
@@ -1710,7 +1710,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Average_Bytes totaal per seconde|Totaal aantal bytes per seconde|Aantal|Average|Average_Bytes totaal per seconde|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
 |Percentage processor tijd van Average_|% Processortijd|Aantal|Average|Percentage processor tijd van Average_|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
 |Lengte van Average_Processor wachtrij|Lengte van de processor wachtrij|Aantal|Average|Lengte van Average_Processor wachtrij|Computer, ObjectName, INSTANCENAME, CounterPath, hebben|
-|Hartslag|Hartslag|Aantal|Totaal|Hartslag|Computer, OSType, versie, SourceComputerId|
+|Hart|Hart|Aantal|Totaal|Hart|Computer, OSType, versie, SourceComputerId|
 |Update|Update|Aantal|Average|Update|Computer, product, classificatie, update State, optioneel, goedgekeurd|
 |Gebeurtenis|Gebeurtenis|Aantal|Average|Gebeurtenis|Source, EventLog, computer, EventCategory, EventLevel, EventLevelName, Event gebeurtenis|
 
@@ -1733,11 +1733,11 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
-|QueryDuration|Queryduur|Milliseconden|Average|DAX-query duur in laatste interval|Er zijn geen dimensies|
+|QueryDuration|Query duur|Milliseconden|Average|DAX-query duur in laatste interval|Er zijn geen dimensies|
 |QueryPoolJobQueueLength|Threads: lengte van taak wachtrij voor query pool|Aantal|Average|Aantal taken in de wachtrij van de query thread pool.|Er zijn geen dimensies|
-|qpu_high_utilization_metric|Hoog QPU-gebruik|Aantal|Totaal|QPU hoog gebruik in de laatste minuut, 1 voor hoog QPU gebruik, anders 0|Er zijn geen dimensies|
-|memory_metric|Geheugen|Bytes|Average|Geheugen. Bereik 0-3 GB voor a1, 0-5 GB voor a2, 0-10 GB voor a3, 0-25 GB voor A4, 0-50 GB voor A5 en 0-100 GB voor A6|Er zijn geen dimensies|
-|memory_thrashing_metric|Geheugenthrashing|Procent|Average|Gemiddeld geheugen overbelasting.|Er zijn geen dimensies|
+|qpu_high_utilization_metric|Hoog gebruik van QPU|Aantal|Totaal|QPU hoog gebruik in de laatste minuut, 1 voor hoog QPU gebruik, anders 0|Er zijn geen dimensies|
+|memory_metric|Geheugen|Bytes|Average|Geheugenmetabase. Bereik 0-3 GB voor a1, 0-5 GB voor a2, 0-10 GB voor a3, 0-25 GB voor A4, 0-50 GB voor A5 en 0-100 GB voor A6|Er zijn geen dimensies|
+|memory_thrashing_metric|Geheugen overbelasting|Procent|Average|Gemiddeld geheugen overbelasting.|Er zijn geen dimensies|
 
 
 
@@ -1789,7 +1789,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |DeadletteredMessages|Aantal onbestelbare berichten in een wachtrij/onderwerp.|Aantal|Average|Aantal onbestelbare berichten in een wachtrij/onderwerp.|EntityName|
 |ScheduledMessages|Aantal geplande berichten in een wachtrij/onderwerp.|Aantal|Average|Aantal geplande berichten in een wachtrij/onderwerp.|EntityName|
 |NamespaceCpuUsage|CPU|Procent|Maximum|Metrische gegevens voor CPU-gebruik van service bus Premium-naam ruimte.|Replica|
-|NamespaceMemoryUsage|Geheugengebruik|Procent|Maximum|Metrische geheugen gebruik van service bus Premium-naam ruimte.|Replica|
+|NamespaceMemoryUsage|Geheugen gebruik|Procent|Maximum|Metrische geheugen gebruik van service bus Premium-naam ruimte.|Replica|
 |CPUXNS|CPU (afgeschaft)|Procent|Maximum|Metrische gegevens voor CPU-gebruik van service bus Premium-naam ruimte. Deze metrische waarde is verouderd. Gebruik in plaats daarvan de CPU-metriek (NamespaceCpuUsage).|Replica|
 |WSXNS|Geheugen gebruik (afgeschaft)|Procent|Maximum|Metrische geheugen gebruik van service bus Premium-naam ruimte. Deze metriek is afgeschaft. Gebruik in plaats daarvan de metriek geheugen gebruik (NamespaceMemoryUsage).|Replica|
 
@@ -1851,8 +1851,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |dwu_used|DWU gebruikt|Aantal|Maximum|DWU gebruikt. Is alleen van toepassing op data warehouses.|Geen|
 |cache_hit_percent|Percentage cache treffers|Procent|Maximum|Percentage van cache treffer. Is alleen van toepassing op data warehouses.|Geen|
 |cache_used_percent|Percentage gebruikt cache|Procent|Maximum|Percentage gebruikt cache. Is alleen van toepassing op data warehouses.|Geen|
-|sqlserver_process_core_percent|Kern percentage van SQL Server proces|Procent|Maximum|CPU-gebruik als percentage van het SQL DB-proces. Niet van toepassing op data warehouses.|Geen|
-|sqlserver_process_memory_percent|Percentage proces geheugen SQL Server|Procent|Maximum|Geheugen gebruik als percentage van het SQL DB-proces. Niet van toepassing op data warehouses.|Geen|
+|sqlserver_process_core_percent|Kern percentage van SQL Server proces|Procent|Maximum|Het CPU-gebruiks percentage voor het SQL Server proces, zoals gemeten door het besturings systeem. Momenteel alleen beschikbaar voor serverloze data bases.|Geen|
+|sqlserver_process_memory_percent|Percentage proces geheugen SQL Server|Procent|Maximum|Het percentage geheugen gebruik voor het SQL Server proces, zoals gemeten door het besturings systeem. Momenteel alleen beschikbaar voor serverloze data bases.|Geen|
 |tempdb_data_size|Data File grootte van tempdb|Aantal|Maximum|Data File grootte van tempdb-gegevens bestanden. Niet van toepassing op data warehouses.|Geen|
 |tempdb_log_size|Grootte van logboek bestanden tempdb|Aantal|Maximum|Grootte van KB-logboek bestanden. Niet van toepassing op data warehouses.|Geen|
 |tempdb_log_used_percent|Percentage gebruikt TempDB-logboek|Procent|Maximum|Percentage gebruikt TempDB-logboek. Niet van toepassing op data warehouses.|Geen|
@@ -1947,7 +1947,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |BlobCapacity|Blobcapaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de Blob-service van het opslagaccount (in bytes).|BlobType, Tier|
 |BlobCount|Aantal blobs|Aantal|Average|Het aantal blobs in de Blob-service van het opslagaccount.|BlobType, Tier|
 |ContainerCount|Aantal blobcontainers|Aantal|Average|Het aantal containers in de Blob-service van het opslagaccount.|Geen|
-|IndexCapacity|Indexcapaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de index van de ADLS Gen2 (hiërarchisch) in bytes.|Geen|
+|IndexCapacity|Index capaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de index van de ADLS Gen2 (hiërarchisch) in bytes.|Geen|
 |Transacties|Transacties|Aantal|Totaal|Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen, evenals aanvragen waarbij fouten zijn opgetreden. Gebruik de ResponseType-dimensie voor het aantal verschillende type reactie.|ResponseType, geotype, ApiName, authenticatie|
 |Binnenkomend|Binnenkomend|Bytes|Totaal|De hoeveelheid inkomende gegevens in bytes. Hieronder vallen de inkomende gegevens van een externe client in Azure Storage evenals de inkomende gegevens binnen Azure.|Geotype, ApiName, authenticatie|
 |Uitgaand verkeer|Uitgaand verkeer|Bytes|Totaal|De hoeveelheid uitgaande gegevens in bytes. Hieronder vallen de uitgaande gegevens van een externe client in Azure Storage evenals de uitgaande gegevens binnen Azure. Daarom geeft deze hoeveelheid niet de factureerbare uitgaande gegevens weer.|Geotype, ApiName, authenticatie|
@@ -2161,8 +2161,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |MemoryPercentage|Geheugen percentage|Procent|Average|Geheugen percentage|Instantie|
 |DiskQueueLength|Wachtrij lengte voor schijf|Aantal|Average|Wachtrij lengte voor schijf|Instantie|
 |HttpQueueLength|Lengte van http-wachtrij|Aantal|Average|Lengte van http-wachtrij|Instantie|
-|BytesReceived|Inkomende gegevens|Bytes|Totaal|Inkomende gegevens|Instantie|
-|BytesSent|Uitgaande gegevens|Bytes|Totaal|Uitgaande gegevens|Instantie|
+|BytesReceived|Gegevens in|Bytes|Totaal|Gegevens in|Instantie|
+|BytesSent|Gegevens uit|Bytes|Totaal|Gegevens uit|Instantie|
 |TcpSynSent|TCP SYN verzonden|Aantal|Average|TCP SYN verzonden|Instantie|
 |TcpSynReceived|TCP SYN ontvangen|Aantal|Average|TCP SYN ontvangen|Instantie|
 |TcpEstablished|TCP-verbinding|Aantal|Average|TCP-verbinding|Instantie|
@@ -2179,8 +2179,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |---|---|---|---|---|---|
 |CpuTime|CPU-tijd|Seconden|Totaal|CPU-tijd|Instantie|
 |Aanvragen|Aanvragen|Aantal|Totaal|Aanvragen|Instantie|
-|BytesReceived|Inkomende gegevens|Bytes|Totaal|Inkomende gegevens|Instantie|
-|BytesSent|Uitgaande gegevens|Bytes|Totaal|Uitgaande gegevens|Instantie|
+|BytesReceived|Gegevens in|Bytes|Totaal|Gegevens in|Instantie|
+|BytesSent|Gegevens uit|Bytes|Totaal|Gegevens uit|Instantie|
 |Http101|Http 101|Aantal|Totaal|Http 101|Instantie|
 |Http2xx|Http-2xx|Aantal|Totaal|Http-2xx|Instantie|
 |Http3xx|HTTP-3xx|Aantal|Totaal|HTTP-3xx|Instantie|
@@ -2190,13 +2190,13 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Http406|Http 406|Aantal|Totaal|Http 406|Instantie|
 |Http4xx|Http 4xx|Aantal|Totaal|Http 4xx|Instantie|
 |Http5xx|Http-server fouten|Aantal|Totaal|Http-server fouten|Instantie|
-|MemoryWorkingSet|Geheugenwerkset|Bytes|Average|Geheugenwerkset|Instantie|
+|MemoryWorkingSet|Werkset geheugen|Bytes|Average|Werkset geheugen|Instantie|
 |AverageMemoryWorkingSet|Gemiddelde werkset geheugen|Bytes|Average|Gemiddelde werkset geheugen|Instantie|
-|AverageResponseTime|Gemiddelde reactietijd|Seconden|Average|Gemiddelde reactietijd|Instantie|
+|AverageResponseTime|Gemiddelde reactie tijd|Seconden|Average|Gemiddelde reactie tijd|Instantie|
 |AppConnections|Verbindingen|Aantal|Average|Verbindingen|Instantie|
 |Formuleer|Aantal ingangen|Aantal|Average|Aantal ingangen|Instantie|
-|Threads|Aantal threads|Aantal|Average|Aantal threads|Instantie|
-|PrivateBytes|Eigen Bytes|Bytes|Average|Eigen Bytes|Instantie|
+|Lijnen|Aantal threads|Aantal|Average|Aantal threads|Instantie|
+|PrivateBytes|Privé-bytes|Bytes|Average|Privé-bytes|Instantie|
 |IoReadBytesPerSecond|I/o gelezen bytes per seconde|BytesPerSecond|Totaal|I/o gelezen bytes per seconde|Instantie|
 |IoWriteBytesPerSecond|I/o-schrijf bewerkingen in bytes per seconde|BytesPerSecond|Totaal|I/o-schrijf bewerkingen in bytes per seconde|Instantie|
 |IoOtherBytesPerSecond|Andere i/o-bytes per seconde|BytesPerSecond|Totaal|Andere i/o-bytes per seconde|Instantie|
@@ -2217,14 +2217,14 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
-|BytesReceived|Inkomende gegevens|Bytes|Totaal|Inkomende gegevens|Instantie|
-|BytesSent|Uitgaande gegevens|Bytes|Totaal|Uitgaande gegevens|Instantie|
+|BytesReceived|Gegevens in|Bytes|Totaal|Gegevens in|Instantie|
+|BytesSent|Gegevens uit|Bytes|Totaal|Gegevens uit|Instantie|
 |Http5xx|Http-server fouten|Aantal|Totaal|Http-server fouten|Instantie|
-|MemoryWorkingSet|Geheugenwerkset|Bytes|Average|Geheugenwerkset|Instantie|
+|MemoryWorkingSet|Werkset geheugen|Bytes|Average|Werkset geheugen|Instantie|
 |AverageMemoryWorkingSet|Gemiddelde werkset geheugen|Bytes|Average|Gemiddelde werkset geheugen|Instantie|
 |FunctionExecutionUnits|Eenheden voor functie-uitvoering|MB/milliseconden|Totaal|[Eenheden voor functie-uitvoering](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Instantie|
 |FunctionExecutionCount|Aantal functie-uitvoeringen|Aantal|Totaal|Aantal functie-uitvoeringen|Instantie|
-|PrivateBytes|Eigen Bytes|Bytes|Average|Eigen Bytes|Instantie|
+|PrivateBytes|Privé-bytes|Bytes|Average|Privé-bytes|Instantie|
 |IoReadBytesPerSecond|I/o gelezen bytes per seconde|BytesPerSecond|Totaal|I/o gelezen bytes per seconde|Instantie|
 |IoWriteBytesPerSecond|I/o-schrijf bewerkingen in bytes per seconde|BytesPerSecond|Totaal|I/o-schrijf bewerkingen in bytes per seconde|Instantie|
 |IoOtherBytesPerSecond|Andere i/o-bytes per seconde|BytesPerSecond|Totaal|Andere i/o-bytes per seconde|Instantie|
@@ -2248,8 +2248,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |---|---|---|---|---|---|
 |CpuTime|CPU-tijd|Seconden|Totaal|CPU-tijd|Instantie|
 |Aanvragen|Aanvragen|Aantal|Totaal|Aanvragen|Instantie|
-|BytesReceived|Inkomende gegevens|Bytes|Totaal|Inkomende gegevens|Instantie|
-|BytesSent|Uitgaande gegevens|Bytes|Totaal|Uitgaande gegevens|Instantie|
+|BytesReceived|Gegevens in|Bytes|Totaal|Gegevens in|Instantie|
+|BytesSent|Gegevens uit|Bytes|Totaal|Gegevens uit|Instantie|
 |Http101|Http 101|Aantal|Totaal|Http 101|Instantie|
 |Http2xx|Http-2xx|Aantal|Totaal|Http-2xx|Instantie|
 |Http3xx|HTTP-3xx|Aantal|Totaal|HTTP-3xx|Instantie|
@@ -2259,16 +2259,16 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Http406|Http 406|Aantal|Totaal|Http 406|Instantie|
 |Http4xx|Http 4xx|Aantal|Totaal|Http 4xx|Instantie|
 |Http5xx|Http-server fouten|Aantal|Totaal|Http-server fouten|Instantie|
-|MemoryWorkingSet|Geheugenwerkset|Bytes|Average|Geheugenwerkset|Instantie|
+|MemoryWorkingSet|Werkset geheugen|Bytes|Average|Werkset geheugen|Instantie|
 |AverageMemoryWorkingSet|Gemiddelde werkset geheugen|Bytes|Average|Gemiddelde werkset geheugen|Instantie|
-|AverageResponseTime|Gemiddelde reactietijd|Seconden|Average|Gemiddelde reactietijd|Instantie|
+|AverageResponseTime|Gemiddelde reactie tijd|Seconden|Average|Gemiddelde reactie tijd|Instantie|
 |HttpResponseTime|Reactie tijd|Seconden|Average|Reactie tijd|Instantie|
 |FunctionExecutionUnits|Eenheden voor functie-uitvoering|Aantal|Totaal|Eenheden voor functie-uitvoering|Instantie|
 |FunctionExecutionCount|Aantal functie-uitvoeringen|Aantal|Totaal|Aantal functie-uitvoeringen|Instantie|
 |AppConnections|Verbindingen|Aantal|Average|Verbindingen|Instantie|
 |Formuleer|Aantal ingangen|Aantal|Average|Aantal ingangen|Instantie|
-|Threads|Aantal threads|Aantal|Average|Aantal threads|Instantie|
-|PrivateBytes|Eigen Bytes|Bytes|Average|Eigen Bytes|Instantie|
+|Lijnen|Aantal threads|Aantal|Average|Aantal threads|Instantie|
+|PrivateBytes|Privé-bytes|Bytes|Average|Privé-bytes|Instantie|
 |IoReadBytesPerSecond|I/o gelezen bytes per seconde|BytesPerSecond|Totaal|I/o gelezen bytes per seconde|Instantie|
 |IoWriteBytesPerSecond|I/o-schrijf bewerkingen in bytes per seconde|BytesPerSecond|Totaal|I/o-schrijf bewerkingen in bytes per seconde|Instantie|
 |IoOtherBytesPerSecond|Andere i/o-bytes per seconde|BytesPerSecond|Totaal|Andere i/o-bytes per seconde|Instantie|
@@ -2290,8 +2290,8 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
 |Aanvragen|Aanvragen|Aantal|Totaal|Aanvragen|Instantie|
-|BytesReceived|Inkomende gegevens|Bytes|Totaal|Inkomende gegevens|Instantie|
-|BytesSent|Uitgaande gegevens|Bytes|Totaal|Uitgaande gegevens|Instantie|
+|BytesReceived|Gegevens in|Bytes|Totaal|Gegevens in|Instantie|
+|BytesSent|Gegevens uit|Bytes|Totaal|Gegevens uit|Instantie|
 |Http101|Http 101|Aantal|Totaal|Http 101|Instantie|
 |Http2xx|Http-2xx|Aantal|Totaal|Http-2xx|Instantie|
 |Http3xx|HTTP-3xx|Aantal|Totaal|HTTP-3xx|Instantie|
@@ -2301,7 +2301,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Http406|Http 406|Aantal|Totaal|Http 406|Instantie|
 |Http4xx|Http 4xx|Aantal|Totaal|Http 4xx|Instantie|
 |Http5xx|Http-server fouten|Aantal|Totaal|Http-server fouten|Instantie|
-|AverageResponseTime|Gemiddelde reactietijd|Seconden|Average|Gemiddelde reactietijd|Instantie|
+|AverageResponseTime|Gemiddelde reactie tijd|Seconden|Average|Gemiddelde reactie tijd|Instantie|
 |CpuPercentage|CPU-percentage|Procent|Average|CPU-percentage|Instantie|
 |MemoryPercentage|Geheugen percentage|Procent|Average|Geheugen percentage|Instantie|
 |DiskQueueLength|Wachtrij lengte voor schijf|Aantal|Average|Wachtrij lengte voor schijf|Instantie|

@@ -7,6 +7,7 @@ author: zhiweiwangmsft
 manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abed56ee64cbca8646c1aa1d24fea292aa4d8de3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60245476"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897206"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>De Azure AD Connect synchronisatie met Azure AD Connect Health bewaken
 De volgende documentatie is specifiek voor het bewaken van Azure AD Connect-synchronisatie met Azure AD Connect Health.  Zie [Using Azure AD Connect Health with AD FS](how-to-connect-health-adfs.md) (Engelstalig) voor informatie over het controleren van AD FS met Azure AD Connect Health. Zie ook [Azure AD Connect Health gebruiken met AD DS](how-to-connect-health-adds.md) voor informatie over het bewaken van Active Directory Domain Services met Azure AD Connect Health.
@@ -69,7 +70,7 @@ Deze functie genereert een rapport over synchronisatiefouten die zich voordoen w
 * Het rapport bevat informatie over fouten die zijn vastgelegd door de synchronisatieclient (Azure AD Connect versie 1.1.281.0 of later)
 * Het bevat de fouten die zijn opgetreden tijdens de laatste synchronisatie op de synchronisatie-engine. ('Exporteren' op de Azure AD-connector.)
 * Azure AD Connect Health-agent voor synchronisatie moet uitgaande connectiviteit hebben met de vereiste eindpunten om de meest recente gegevens in het rapport te kunnen opnemen.
-* Het rapport wordt **elke 30 minuten bijgewerkt** met de gegevens die door Azure AD Connect Health-agent voor synchronisatie zijn geüpload. Het bevat de volgende hoofdmogelijkheden
+* Het rapport wordt **na elke 30 minuten bijgewerkt** met behulp van de gegevens die zijn geüpload door Azure AD Connect Health-Agent voor synchronisatie. Het biedt de volgende belang rijke mogelijkheden
 
   * Classificatie van fouten
   * Lijst van objecten met fouten per categorie
@@ -80,7 +81,7 @@ Deze functie genereert een rapport over synchronisatiefouten die zich voordoen w
 ### <a name="categorization-of-errors"></a>Classificatie van fouten
 In het rapport worden de bestaande synchronisatiefouten in de volgende categorieën onderverdeeld:
 
-| Category | Description |
+| Category | Beschrijving |
 | --- | --- |
 | Dubbel-kenmerk |Fouten wanneer Azure AD Connect objecten probeert te maken of bij te werken met dubbele waarden in een of meer kenmerken in Azure AD die uniek moeten zijn in een tenant, zoals proxyAddresses, UserPrincipalName. |
 | Gegevens komen niet overeen |Fouten wanneer de zachte match er niet in slaagt om objecten te koppelen die synchronisatiefouten opleveren. |
@@ -112,7 +113,7 @@ Als u op Exporteren klikt, downloadt u een CSV-bestand met alle informatie over 
 ### <a name="diagnose-and-remediate-sync-errors"></a>Synchronisatiefouten analyseren en herstellen 
 In het specifieke scenario met synchronisatiefout door dubbel kenmerk waarbij een bronankerupdate van de gebruiker is betrokken, kunt u het probleem rechtstreeks vanuit de portal oplossen. Lees meer over [Diagnose and remediate duplicated attribute sync errors](how-to-connect-health-diagnose-sync-errors.md) (Synchronisatiefouten door dubbel kenmerk analyseren en herstellen)
 
-## <a name="related-links"></a>Verwante koppelingen
+## <a name="related-links"></a>Gerelateerde koppelingen
 * [Troubleshooting Errors during synchronization](tshoot-connect-sync-errors.md) (Synchronisatiefouten oplossen)
 * [Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) (Tolerantie van Dubbel-kenmerk)
 * [Azure AD Connect Health (Engelstalig)](whatis-hybrid-identity-health.md)

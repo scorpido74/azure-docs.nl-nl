@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: bca780eb31a16d3854a2e4dfac821d5a68e9ca43
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 40a7f49cbb2d74b55ccb85dce64eea936a20801e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719327"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905529"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Herstel na nood gevallen en failover van account (preview-versie)
 
@@ -118,29 +118,14 @@ Account-failover is beschikbaar als preview-versie voor alle klanten die gebruik
 
 - Azië - oost
 - Azië (zuidoost)
-- Australië - oost
-- Australië - zuidoost
+- Australië - Oost
+- Australië - Zuidoost
 - US - centraal
 - US - oost 2
 - US - west-centraal
 - US - west 2
 
 Het voor beeld is alleen bedoeld voor niet-productie gebruik. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.
-
-### <a name="register-for-the-preview"></a>Registreren voor de preview-versie
-
-Voer de volgende opdrachten uit in Power shell om u te registreren voor de preview-versie. Zorg ervoor dat u de tijdelijke aanduiding tussen vier Kante haken vervangt door uw eigen abonnements-ID:
-
-```powershell
-Connect-AzAccount -SubscriptionId <subscription-id>
-Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
-```
-
-Het kan 5-7 dagen duren voordat goed keuring voor de preview wordt ontvangen. Voer de volgende opdracht uit om te controleren of uw registratie is goedgekeurd:
-
-```powershell
-Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
-```
 
 ### <a name="additional-considerations"></a>Aanvullende overwegingen
 

@@ -7,6 +7,7 @@ author: curtand
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c4963e6563db166566cff41d381295a8a9e576b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7a1ec6ddf4f10aa2e03656eb6a3d92ead0d74922
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756365"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896576"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Een aangepaste Azure AD-rol toewijzen in Privileged Identity Management
 
@@ -71,7 +72,7 @@ Privileged Identity Management kunt aangepaste rollen beheren die u kunt maken i
 1. Als het selectie vakje **permanent** is ingeschakeld en beschikbaar is (afhankelijk van rolinstellingen), kunt u opgeven of de toewijzing permanent is. Schakel het selectie vakje in om de toewijzing permanent in aanmerking te laten komen of permanent toe te wijzen. Schakel het selectie vakje uit om de duur van een toewijzing op te geven.
 1. Als u de nieuwe roltoewijzing wilt maken, klikt u op **Opslaan** en vervolgens op **toevoegen**. Er wordt een melding weer gegeven van de status van het toewijzings proces.
 
-Als u de roltoewijzing wilt controleren, selecteert u in een open rol **toewijzingen**  > **toewijzen** en controleert u of uw roltoewijzing correct is geïdentificeerd als in aanmerking komend of actief.
+Als u de roltoewijzing wilt controleren, selecteert u in een open rol **toewijzingen** > **toewijzen** en controleert u of uw roltoewijzing correct is geïdentificeerd als in aanmerking komend of actief.
 
  ![Controleren of de roltoewijzing wordt weer gegeven als in aanmerking komend of actief](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 

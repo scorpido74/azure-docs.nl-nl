@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: c93c936664f65e7846f6c4ad82d9aead973fa129
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772598"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905732"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Wat zijn Azure Machine Learning pijp lijnen?
 
@@ -26,7 +26,7 @@ Met Azure Machine Learning pijp lijnen kunt u werk stromen maken in uw machine l
 + Flexibiliteit
 + Versie beheer en tracering
 + Modulariteit 
-+ Kwaliteitscontrole
++ Kwaliteits garantie
 + Kosten beheer
 
 Deze voor delen worden aanzienlijk zodra uw machine learning project wordt verplaatst naar een niet-versneld onderzoek en naar herhalingen. Zelfs eenvoudige pijp lijnen met één stap kunnen waardevol zijn. Machine learning-projecten zijn vaak in een complexe status en kunnen een vrijs telling zijn om een enkele werk stroom een trivial proces te maken.
@@ -48,12 +48,12 @@ De Azure-Cloud biedt verschillende andere pijp lijnen, elk met een ander doel. D
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Wat kunnen Azure ML-pijp lijnen doen?
 
-Een Azure Machine Learning pijp lijn is een onafhankelijk uitvoer bare werk stroom van een volledige machine learning taak. Subtaken worden ingekapseld als een reeks stappen in de pijp lijn. Een Azure Machine Learning-pijp lijn kan net zo eenvoudig zijn als één om een python-script aan te roepen. dit _kan_ dus iets anders doen. Pijp lijnen _moeten_ zich richten op machine learning taken, zoals:
+Een Azure Machine Learning pijp lijn is een onafhankelijk uitvoer bare werk stroom van een volledige machine learning taak. Subtaken worden ingekapseld als een reeks stappen in de pijplijn. Een Azure Machine Learning-pijp lijn kan net zo eenvoudig zijn als één om een python-script aan te roepen. dit _kan_ dus iets anders doen. Pijp lijnen _moeten_ zich richten op machine learning taken, zoals:
 
-+ Gegevens voorbereiding, waaronder importeren, valideren en schoonmaken, munging en trans formatie, normalisatie en fase ring
-+ Trainings configuratie met inbegrip van parameterizing-argumenten, filepath en logboek registratie/rapportage configuraties
++ Gegevensvoorbereiding, waaronder importeren, valideren en opschonen, munging en transformatie, normalisatie en fasering
++ Trainingsconfiguratie met inbegrip van parameteriseren van argumenten, bestandspaden en logboek-/rapportageconfiguratie
 + Training en validatie efficiënt en herhaaldelijk, wat kan bestaan uit het opgeven van specifieke gegevens subsets, verschillende hardware Compute-bronnen, gedistribueerde verwerking en voortgangs bewaking
-+ Implementatie, inclusief versie beheer, schalen, inrichten en toegangs beheer 
++ Implementatie, inclusief versiebeheer, schalen, inrichten en toegangsbeheer 
 
 Met onafhankelijke stappen kunnen er meerdere gegevens wetenschappers tegelijk op dezelfde pijp lijn werken zonder gegevens over reken bronnen te hoeven te gebruiken. Door afzonderlijke stappen te maken, kunt u voor elke stap ook eenvoudig verschillende reken typen/-groottes gebruiken.
 
@@ -202,7 +202,21 @@ De belangrijkste voor delen van het gebruik van pijp lijnen voor uw machine lear
 |**Herbruikbaarheid**|Maak pijplijn sjablonen voor specifieke scenario's, zoals retraining en batch-scores. Activeer gepubliceerde pijp lijnen van externe systemen via eenvoudige REST-aanroepen.|
 |**Wijzigingen bijhouden en versiebeheer**|In plaats van gegevens en resultaat paden hand matig te traceren tijdens het herhalen, gebruikt u de SDK van de pijp lijnen om uw gegevens bronnen, invoer en uitvoer expliciet een naam en versie te gegeven. U kunt ook scripts en gegevens afzonderlijk beheren voor een verhoogde productiviteit.|
 | **Modulariteit** | Het scheiden van aandachtspunten en het isoleren van wijzigingen stelt software in staat om sneller te werken met een hogere kwaliteit. | 
-|**Samenwerking**|Met pijp lijnen kunnen gegevens wetenschappers samen werken aan alle gebieden van het machine learning-ontwerp proces, terwijl ze gelijktijdig kunnen werken aan pijplijn stappen.|
+|**Werking**|Met pijp lijnen kunnen gegevens wetenschappers samen werken aan alle gebieden van het machine learning-ontwerp proces, terwijl ze gelijktijdig kunnen werken aan pijplijn stappen.|
+
+## <a name="modules"></a>Modules
+
+Tijdens de stappen voor de pijp lijn kunnen de resultaten van een vorige uitvoering opnieuw worden gebruikt. in veel gevallen neemt de bouw van de stap uit dat de vereiste scripts en afhankelijke bestanden lokaal beschikbaar moeten zijn. Als een gegevens wetenschapper boven op bestaande code wil bouwen, moeten de scripts en afhankelijkheden vaak worden gekloond van een afzonderlijke opslag plaats.
+
+Modules zijn vergelijkbaar in het gebruik van pijplijn stappen, maar bieden versie beheer via de werk ruimte, waardoor samen werking en bruikbaarheid op schaal mogelijk is. Modules zijn ontworpen om opnieuw te worden gebruikt in meerdere pijp lijnen en kunnen een specifieke berekening aanpassen aan verschillende gebruiks voorbeelden. Gebruikers kunnen de volgende taken uitvoeren via de werk ruimte, zonder het gebruik van externe opslag plaatsen:
+
+* Nieuwe modules maken en nieuwe versies van bestaande modules publiceren
+* Bestaande versies uitafschaffen
+* Versies markeren als uitgeschakeld om te voor komen dat gebruikers deze versie gebruiken
+* Standaard versies toewijzen
+* Modules ophalen op basis van de versie van de werk ruimte, om ervoor te zorgen dat teams dezelfde code gebruiken
+
+Raadpleeg het [notitie blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb) voor code voorbeelden voor het maken, verbinden en gebruiken van modules in azure machine learning pijp lijnen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

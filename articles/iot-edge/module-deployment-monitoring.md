@@ -4,16 +4,16 @@ description: Gebruik van automatische implementaties in Azure IoT Edge voor groe
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/12/2019
+ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 406830add1891a058e9b43fccb8435aa4d339ed0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8aaac6100ba980301ff3e85a3ac3959bfee89b49
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548676"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895966"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Informatie over IoT Edge-automatische implementaties voor individuele apparaten of op schaal
 
@@ -61,7 +61,7 @@ De doel voorwaarde wordt continu geëvalueerd gedurende de levens duur van de im
 
 U hebt bijvoorbeeld een implementatie met een doel voorwaarde label. Environment = ' Prod '. Wanneer u een vliegende start de implementatie, zijn er 10 productieapparaten. De modules zijn geïnstalleerd in deze 10-apparaten. In de status van de IoT Edge-agent worden 10 apparaten weer gegeven, 10 geslaagde reacties, 0 mislukte antwoorden en 0 Reacties in behandeling. Nu u bij het toevoegen van vijf meer apparaten met tags.environment = 'prod'. De service detecteert de wijziging en de status van de IoT Edge-agent wordt 15 totaal aantal apparaten, 10 geslaagde reacties, 0 mislukte antwoorden en vijf in behandeling zijnde antwoorden tijdens de implementatie van de vijf nieuwe apparaten.
 
-Gebruik een Boole-voorwaarde op device twins tags of deviceId de doelapparaten selecteren. Als u wilt de voorwaarde met tags gebruiken, moet u 'tags' toevoegen:{} sectie in de apparaatdubbel onder hetzelfde niveau als eigenschappen. [Meer informatie over tags in de apparaatdubbel](../iot-hub/iot-hub-devguide-device-twins.md)
+Gebruik een Booleaanse voor waarde op dubbele Tags van het apparaat, dubbele gerapporteerde eigenschappen of deviceId om de doel apparaten te selecteren. Als u wilt de voorwaarde met tags gebruiken, moet u 'tags' toevoegen:{} sectie in de apparaatdubbel onder hetzelfde niveau als eigenschappen. [Meer informatie over tags in de apparaatdubbel](../iot-hub/iot-hub-devguide-device-twins.md)
 
 Voor beelden van doel voorwaarden:
 
@@ -70,10 +70,11 @@ Voor beelden van doel voorwaarden:
 * tags.Environment = 'prod' AND tags.location = 'westus'
 * tags.Environment = 'prod' of tags.location = 'westus'
 * tags.operator = 'John' en tags.environment = 'prod' geen apparaat-id = 'linuxprod1'
+* Properties. gerapporteerd. devicemodel = ' 4000x '
 
-Hier volgen enkele beperkingen wanneer u een doelvoorwaarde maken:
+Houd rekening met deze beperkingen wanneer u een doel voorwaarde bouwt:
 
-* In de apparaatdubbel, kunt u alleen een doelvoorwaarde met behulp van labels of deviceId bouwen.
+* In Device-dubbele kunt u alleen een doel voorwaarde bouwen met behulp van tags, gerapporteerde eigenschappen of deviceId.
 * Dubbele aanhalingstekens zijn niet toegestaan in een gedeelte van de doelvoorwaarde. Gebruikt u enkele aanhalingstekens.
 * Enkele aanhalingstekens vertegenwoordigen de waarden van de doelvoorwaarde. Daarom moet u de enkel aanhalingsteken met een andere enkel aanhalingsteken escape-als het deel van de naam van het apparaat uitmaakt. Bijvoorbeeld: op een apparaat met de naam `operator'sDevice`, schrijven `deviceId='operator''sDevice'`.
 * Cijfers, letters en de volgende tekens zijn toegestaan in de voorwaarde doelwaarden: `-:.+%_#*?!(),=@;$`.
@@ -92,8 +93,8 @@ Standaard worden alle implementaties gerapporteerd op basis van vier metrische g
 
 * **Doel** geeft de IOT edge apparaten weer die overeenkomen met de voor waarde voor de implementatie doelstelling.
 * **Toegepast** toont de doel IOT edge apparaten die niet zijn gericht op een andere implementatie van een hogere prioriteit.
-* Bij **geslaagde rapportage** worden de IOT edge-apparaten weer gegeven die zijn gerapporteerd aan de service dat de modules zijn geïmplementeerd.
-* **Fout bij het rapporteren** geeft de IOT edge-apparaten weer die zijn gerapporteerd aan de service dat een of meer modules niet met succes zijn geïmplementeerd. Voor verder onderzoek van de fout, extern verbinding maken met deze apparaten en de logboekbestanden.
+* Bij **geslaagde rapportage** worden de IOT edge-apparaten weer gegeven die hebben gerapporteerd dat de modules zijn geïmplementeerd.
+* **Rapportage fout** toont de IOT edge apparaten die hebben gerapporteerd dat een of meer modules niet zijn geïmplementeerd. Voor verder onderzoek van de fout, extern verbinding maken met deze apparaten en de logboekbestanden.
 
 Daarnaast kunt u uw eigen aangepaste metrische gegevens definiëren om de implementatie te bewaken en beheren.
 
@@ -112,7 +113,7 @@ Gelaagde implementaties zijn automatische implementaties die samen kunnen worden
 
 Gelaagde implementaties hebben dezelfde basis onderdelen als automatische implementatie. Ze zijn gericht op apparaten op basis van tags in de apparaatdubbels van het apparaat en bieden dezelfde functionaliteit voor labels, metrische gegevens en status rapportage. Aan gelaagde implementaties zijn ook prioriteiten toegewezen, maar in plaats van de prioriteit te gebruiken om te bepalen welke implementatie op een apparaat wordt toegepast, bepaalt de prioriteit hoe meerdere implementaties op een apparaat worden gerangschikt. Als twee gelaagde implementaties bijvoorbeeld een module of een route met dezelfde naam hebben, wordt de gelaagde implementatie met de hogere prioriteit toegepast terwijl de lagere prioriteit wordt overschreven.
 
-De System runtime modules, edgeAgent en edgeHub, zijn niet geconfigureerd als onderdeel van een gelaagde implementatie. Op alle IoT Edge apparaten waarop een gelaagde implementatie is gericht, moet eerst een standaard automatische implementatie worden toegepast om de basis op te geven waarop gelaagde implementaties kunnen worden toegevoegd.
+De System runtime modules, edgeAgent en edgeHub, zijn niet geconfigureerd als onderdeel van een gelaagde implementatie. Op alle IoT Edge apparaten waarop een gelaagde implementatie is gericht, moet eerst een standaard automatische implementatie worden toegepast. De automatische implementatie biedt de basis waarop gelaagde implementaties kunnen worden toegevoegd.
 
 Een IoT Edge apparaat kan één en slechts één standaard automatische implementatie Toep assen, maar kan meerdere gelaagde automatische implementaties Toep assen. Gelaagde implementaties die zijn gericht op een apparaat, moeten een hogere prioriteit hebben dan de automatische implementatie voor dat apparaat.
 
@@ -141,7 +142,7 @@ In een standaard implementatie kunt u bijvoorbeeld de gesimuleerde temperatuur s
 }
 ```
 
-In een gelaagde implementatie die gericht is op dezelfde apparaten of een subset van dezelfde apparaten, wilt u mogelijk een extra eigenschap toevoegen die aangeeft dat de gesimuleerde sensor 1000 berichten verzendt en vervolgens stopt. U wilt de bestaande eigenschappen niet overschrijven, dus maakt u een nieuwe sectie in de gewenste eigenschappen met de naam `layeredProperties`, die de nieuwe eigenschap bevat:
+In een gelaagde implementatie die gericht is op sommige of alle van dezelfde apparaten, kunt u een eigenschap toevoegen die aangeeft dat de gesimuleerde sensor 1000 berichten verzendt en vervolgens stopt. U wilt de bestaande eigenschappen niet overschrijven, dus maakt u een nieuwe sectie in de gewenste eigenschappen met de naam `layeredProperties`, die de nieuwe eigenschap bevat:
 
 ```json
 "SimulatedTemperatureSensor": {

@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e9b2119964ec2af792e2f2a5b942fde12cf7eab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512848"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897071"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Een Azure Active Directory implementatie van het toegangs paneel plannen
 
@@ -36,7 +36,7 @@ Met behulp van het Azure AD-toegangs venster kunt u het volgende doen:
 
 Daarnaast kunnen beheerders het volgende beheren:
 
-* Servicevoorwaarden
+* Service voorwaarden
 * Organisaties
 * Toegangscontroles
 
@@ -89,10 +89,10 @@ De volgende tabel geeft een overzicht van de belangrijkste use cases voor een im
 | Beheer| De levens cyclus van de gebruikers toewijzingen aan toepassingen en groepen die zijn verbonden met Azure AD, wordt gedefinieerd en bewaakt. |
 | Beveiliging| Toegang tot bronnen wordt geregeld via gebruikers-en groeps toewijzingen. Alleen geautoriseerde gebruikers kunnen toegang tot resources beheren. |
 | Prestaties| De tijd lijnen voor het door geven van toegangs toewijzingen worden gedocumenteerd en gecontroleerd. |
-| Ervaring gebruiker| Gebruikers zijn op de hoogte van de mogelijkheden van het toegangs venster en hoe ze deze kunnen gebruiken.|
-| Ervaring gebruiker| Gebruikers kunnen hun toegang tot toepassingen en groepen beheren.|
-| Ervaring gebruiker| Gebruikers kunnen hun accounts beheren. |
-| Ervaring gebruiker| Gebruikers zijn op de hoogte van browser compatibiliteit. |
+| Gebruikers ervaring| Gebruikers zijn op de hoogte van de mogelijkheden van het toegangs venster en hoe ze deze kunnen gebruiken.|
+| Gebruikers ervaring| Gebruikers kunnen hun toegang tot toepassingen en groepen beheren.|
+| Gebruikers ervaring| Gebruikers kunnen hun accounts beheren. |
+| Gebruikers ervaring| Gebruikers zijn op de hoogte van browser compatibiliteit. |
 | Ondersteuning| Gebruikers kunnen ondersteuning voor problemen met het toegangs paneel vinden. |
 
 ### <a name="best-practices-for-deploying-the-azure-ad-access-panel"></a>Aanbevolen procedures voor het implementeren van het Azure AD-toegangs venster
@@ -149,7 +149,7 @@ Zie [configureren hoe eind gebruikers toestemming geven voor een toepassing in a
 
 Wanneer technologie projecten mislukken, worden ze doorgaans door niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](../fundamentals/active-directory-deployment-plans.md) en dat de rol van belanghebbenden in het project goed zijn begrepen.
 
-### <a name="plan-communications"></a>De communicatie plannen
+### <a name="plan-communications"></a>Communicatie plannen
 
 Communicatie is van cruciaal belang voor het slagen van een nieuwe service. Laat uw gebruikers proactief weten hoe en wanneer hun ervaring wordt gewijzigd en hoe u zo nodig ondersteuning krijgt.
 
@@ -227,9 +227,9 @@ Plan de volg orde waarin u toepassingen gaat toevoegen aan het start programma v
 
 Elke toepassing met Azure AD SSO kan worden toegevoegd aan het start programma voor apps. Andere toepassingen worden toegevoegd met behulp van de optie gekoppelde SSO. U kunt een toepassings tegel configureren die wordt gekoppeld aan de URL van uw bestaande webtoepassing. Met gekoppelde SSO kunt u beginnen met het omleiden van gebruikers naar de portal mijn apps zonder alle toepassingen naar Azure AD SSO te migreren. U kunt geleidelijk overschakelen naar door Azure AD SSO geconfigureerde toepassingen zonder de gebruikers ervaring te onderbreken.
 
-#### <a name="use-my-apps-workspaces-preview"></a>Mijn apps-werk ruimten gebruiken (preview-versie)
+#### <a name="use-my-apps-collections"></a>Mijn apps verzamelingen gebruiken
 
-Standaard worden alle toepassingen op één pagina weer gegeven. Maar u kunt werk ruimten gebruiken om gerelateerde toepassingen te groeperen en ze te presen teren op een afzonderlijk tabblad, waardoor ze gemakkelijker te vinden zijn. U kunt bijvoorbeeld werk ruimten gebruiken om logische groeperingen van toepassingen te maken voor specifieke taak rollen, taken, projecten, enzovoort. Zie [mijn apps-werk ruimten gebruiken om deel Vensters voor gebruikers toegang te wijzigen (preview)](access-panel-workspaces.md)voor meer informatie. 
+Standaard worden alle toepassingen op één pagina weer gegeven. U kunt echter verzamelingen gebruiken om gerelateerde toepassingen te groeperen en deze op een afzonderlijk tabblad te presen teren, zodat u ze eenvoudiger kunt vinden. U kunt bijvoorbeeld verzamelingen gebruiken om logische groeperingen van toepassingen te maken voor specifieke taak rollen, taken, projecten, enzovoort. Zie [mijn app-verzamelingen gebruiken om deel Vensters voor gebruikers toegang te wijzigen](access-panel-collections.md)voor meer informatie. 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>Plannen of mijn apps of een bestaande portal moeten worden gebruikt
 
@@ -340,7 +340,7 @@ U moet de rol met de minste bevoegdheden gebruiken om een vereiste taak uit te v
 | - | -| -|
 | Helpdesk beheerder| Ondersteuning voor laag 1| Geen |
 | Identiteits beheerder| Configureren en fouten opsporen wanneer de problemen invloed hebben op Azure AD| Globale beheerder |
-| Toepassingsbeheerder| Gebruikers verklaring in toepassing, configuratie voor gebruikers met machtigingen| Geen |
+| Toepassings beheerder| Gebruikers verklaring in toepassing, configuratie voor gebruikers met machtigingen| Geen |
 | Infrastructuur beheerders| Eigenaar certificaat rollover| Globale beheerder |
 | Bedrijfs eigenaar/belanghebbende| Gebruikers verklaring in toepassing, configuratie voor gebruikers met machtigingen| Geen |
 

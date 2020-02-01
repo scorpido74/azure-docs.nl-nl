@@ -1,28 +1,24 @@
 ---
-title: 'Snelstartgids: spraak, intenties en entiteiten herkennen, C# -spraak service'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e2cb4f81e3de5e22bae3029e42ec2f67dae55424
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 353e849332aa04d26774cda22508b6f1c269df7e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761410"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900590"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
-* Als dit uw eerste C# project is, gebruikt u deze hand leiding om <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=dotnet" target="_blank">een leeg voorbeeld project te maken</a>.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">Installeer de Speech SDK voor uw ontwikkel omgeving</a>.
+* Als dit uw eerste C# project is, gebruikt u deze hand leiding om <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=dotnet" target="_blank">een leeg voorbeeld <span class="docon docon-navigate-external x-hidden-focus"> </span>project te maken </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">Installeer de Speech SDK voor uw ontwikkel omgeving <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Een LUIS-app maken voor de intentie herkenning
 
@@ -92,7 +88,7 @@ Voeg in de instructie using onder `RecognizeOnceAsync()`de volgende code toe:
 
 ## <a name="check-your-code"></a>Controleer uw code
 
-Op dit moment moet uw code er als volgt uitzien:  
+Op dit moment moet uw code er als volgt uitzien:
 
 > [!NOTE]
 > Er zijn enkele opmerkingen toegevoegd aan deze versie.
@@ -104,7 +100,7 @@ Op dit moment moet uw code er als volgt uitzien:
 Nu bent u klaar om uw app te bouwen en de spraak herkenning te testen met behulp van de speech-service.
 
 1. **De code compileren** : Kies in de menu balk van Visual Studio **Build** > **Build-oplossing**.
-2. **Start uw app** -vanuit de menu balk, kies **fout opsporing** > **fout opsporing starten** of druk op **F5**.
+2. **Start uw app** -vanuit de menu balk, kies **fout opsporing** > **fout opsporing starten** of druk op <kbd>F5</kbd>.
 3. **Herkenning starten** : u wordt gevraagd om een woord groep in het Engels te spreken. Uw spraak wordt verzonden naar de spraak service, getranscribeerd als tekst en weer gegeven in de-console.
 
 ## <a name="next-steps"></a>Volgende stappen

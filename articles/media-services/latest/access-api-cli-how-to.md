@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d66b3e1b6ed2c8eef9f5cd21c0657648ad550ebe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 06ca26ee9a8af7f49aba6a48a1831d30d5886851
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896160"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896317"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Toegang tot Azure Media Services-API met Azure CLI
  
@@ -28,7 +28,8 @@ Als u de Azure AD-Service-Principal-verificatie wilt gebruiken om verbinding te 
 * Resource-URI voor REST Media Services
 * Azure AD-toepassings waarden: de client-ID en het client geheim
 
-Zie [toegang tot Media Services v3-api's](media-services-apis-overview.md#accessing-the-azure-media-services-api)voor gedetailleerde uitleg.
+> [!IMPORTANT]
+> Raadpleeg voor gedetailleerde uitleg [toegang tot Media Services v3-api's](media-services-apis-overview.md#accessing-the-azure-media-services-api).
 
 In dit artikel wordt beschreven hoe u de Azure CLI gebruikt om een Azure AD-toepassing en Service-Principal te maken en de waarden op te halen die nodig zijn voor toegang tot Azure Media Services resources.
 
@@ -55,7 +56,7 @@ Vergeet niet de waarden die u hebt gebruikt voor de namen van de resourcegroep e
 - [EventGrid maken - CLI](job-state-events-cli-how-to.md)
 - [Een asset publiceren - CLI](cli-publish-asset.md)
 - [Filteren - CLI](filters-dynamic-manifest-cli-howto.md)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+- [Azure-CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
 ## <a name="next-steps"></a>Volgende stappen
 
