@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/30/2019
-ms.openlocfilehash: cffd94459e3a18567f2ff2f6b8fca35598cb5eed
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.date: 01/29/2020
+ms.openlocfilehash: b75b760704511627c74301ae3fff82c24a262e17
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563450"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904898"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Snelstartgids: een Azure Cognitive Search-kennis archief maken in de Azure Portal
 
@@ -81,7 +81,7 @@ Klik op de pagina overzicht van de zoek service op **gegevens importeren** op de
 In deze wizardstap maakt u een vaardig heden met cognitieve vaardigheids verrijkingen. De bron gegevens bestaan uit beoordelingen van klanten in verschillende talen. De vaardig heden die relevant zijn voor deze gegevensset zijn het ophalen van belang rijke zinsdelen, het opsporen van sentiment en het omzetten van tekst. In een latere stap worden deze verrijkingen "geprojecteerd" in een kennis archief als Azure-tabellen.
 
 1. Vouw **Cognitive Services toevoegen**uit. **Gratis (beperkte verrijkingen)** is standaard geselecteerd. U kunt deze resource gebruiken omdat het aantal records in HotelReviews-Free. CSV 19 is en deze gratis resource Maxi maal 20 trans acties per dag toestaat.
-1. Vouw **cognitieve vaardig heden toevoegen**uit.
+1. Vouw **verrijkingen toevoegen**uit.
 1. Voer `hotel-reviews-ss`in voor de naam van de **vakkennisset**.
 1. Selecteer **reviews_text**voor het **veld Bron gegevens**.
 1. Selecteer voor uitgebreid **granulatie niveau**de optie **pagina's (segmenten van 5000 tekens)**
@@ -93,11 +93,11 @@ In deze wizardstap maakt u een vaardig heden met cognitieve vaardigheids verrijk
       ![Een vaardig heden maken](media/knowledge-store-create-portal/hotel-reviews-ss.png "Een set vaardigheden maken")
 
 1. Vouw **verrijkingen in het kennis archief**uit.
-1. Voer de **verbindings reeks voor het opslag account** in die u in een vorige stap hebt opgeslagen.
 1. Selecteer deze **Azure-tabel projecties**:
     + **Faxdocumenten**
     + **Pagina's**
     + **Sleutel zinnen**
+1. Voer de **verbindings reeks voor het opslag account** in die u in een vorige stap hebt opgeslagen.
 
     ![Kennis archief configureren](media/knowledge-store-create-portal/hotel-reviews-ks.png "Kennis archief configureren")
 

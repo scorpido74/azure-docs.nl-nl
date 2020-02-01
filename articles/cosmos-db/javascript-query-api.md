@@ -1,5 +1,5 @@
 ---
-title: Werken met geïntegreerde Java script-query-API in Azure Cosmos DB
+title: Werken met geïntegreerde Java script-query-API in Azure Cosmos DB opgeslagen procedures en triggers
 description: In dit artikel worden de concepten geïntroduceerd voor de in Java script geïntegreerde query-API voor het maken van opgeslagen procedures en triggers in Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8396608cdbc5638a3640f94c94b44ad7c5f52a73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b7ad470b3330224e80a7160fc1a37bb5ee1cde8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445318"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901831"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Java script-query-API in Azure Cosmos DB
 
-Naast het uitgeven van query's met behulp van de SQL-API in Azure Cosmos DB, kunt u met de [Cosmos DB SDK aan de server zijde](https://azure.github.io/azure-cosmosdb-js-server/) geoptimaliseerde query's uitvoeren met behulp van een Java script-interface. U hoeft niet op de hoogte te zijn van de SQL-taal om deze Java script-interface te gebruiken. Met de Java script-query-API kunt u programmatisch query's maken door predikaten te gebruiken in volg orde van functie aanroepen, met een syntaxis die bekend is met de ECMAScript5's array-ingebouwde en populaire Java script-bibliotheken zoals Lodash. Query's worden door de Java Script-runtime geparseerd en efficiënt uitgevoerd met Azure Cosmos DB indices.
+Naast het uitgeven van query's met behulp van de SQL-API in Azure Cosmos DB, biedt de [Cosmos DB SDK aan de server zijde](https://azure.github.io/azure-cosmosdb-js-server/) een Java script-interface voor het uitvoeren van geoptimaliseerde query's in Cosmos DB opgeslagen procedures en triggers. U hoeft niet op de hoogte te zijn van de SQL-taal om deze Java script-interface te gebruiken. Met de Java script-query-API kunt u programmatisch query's maken door predikaten te gebruiken in volg orde van functie aanroepen, met een syntaxis die bekend is met de ECMAScript5's array-ingebouwde en populaire Java script-bibliotheken zoals Lodash. Query's worden door de Java Script-runtime geparseerd en efficiënt uitgevoerd met Azure Cosmos DB indices.
 
 ## <a name="supported-javascript-functions"></a>Ondersteunde Java script-functies
 
-| **Functie** | **Beschrijving** |
+| **Functieassembly** | **Beschrijving** |
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|Start een keten-aanroep die moet worden afgesloten met value().|
 |`filter(predicateFunction [, options] [, callback])`|Filtert de invoer met behulp van een predicaat functie die resulteert in waar/onwaar om te filteren in/uit-invoer documenten in de resulterende set. Deze functie werkt die vergelijkbaar is met een WHERE-component in SQL.|

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 934dc94da9bbdfc38cc12e78eaa5b67fa9f786ca
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 75a9e3e8422c0c59e00c290f1f360d61fce1eceb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083315"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901577"
 ---
 # <a name="expressroute-routing-requirements"></a>Routeringsvereisten voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u routering instellen en beheren. Sommige connectiviteitsproviders bieden het instellen en beheren van routering aan als een beheerde service. Neem contact op met uw connectiviteitsprovider om na te gaan of ze deze service leveren. Als dat niet het geval is, moet u voldoen aan de volgende vereisten:
@@ -156,34 +156,40 @@ U kunt meer dan één ExpressRoute-circuit per geopolitieke regio aanschaffen. H
 | **Microsoft Azure-regio** | **Regionale BGP-Community** | **Opslag-BGP-Community** | **SQL BGP-Community** | **Cosmos DB BGP-Community** |
 | --- | --- | --- | --- | --- |
 | **Noord-Amerika** | |
-| US - oost | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
-| US - oost 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
-| US - west | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
+| VS - oost | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
+| VS - oost 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
+| VS - west | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
 | US - west 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
 | US - west-centraal | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
 | US - noord-centraal | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
 | US - zuid-centraal | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
-| US - centraal | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
-| Canada - midden | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
-| Canada - oost | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
+| VS - centraal | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
+| Canada-Midden | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
+| Canada-Oost | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
 | **Zuid-Amerika** | |
-| Brazilië - zuid | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 |
+| Brazilië - Zuid | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 |
 | **Europa** | |
 | Europa - noord | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 |
-| Europa -west | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 |
-| Verenigd Koninkrijk Zuid | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 |
-| Verenigd Koninkrijk West | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
+| Europa - west | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 |
+| UK - zuid | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 |
+| UK - west | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
 | Frankrijk - centraal | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 |
 | Frankrijk - zuid | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
+| Zwitserland - noord | 12076:51038 | 12076:52038 | 12076:53038 | 12076:54038 | 
+| Zwitserland - west | 12076:51039 | 12076:52039 | 12076:53039 | 12076:54039 | 
+| Duitsland - noord | 12076:51040 | 12076:52040 | 12076:53040 | 12076:54040 | 
+| Duitsland - west-centraal | 12076:51041 | 12076:52041 | 12076:53041 | 12076:54041 | 
+| Noorwegen - oost | 12076:51042 | 12076:52042 | 12076:53042 | 12076:54042 | 
+| Noorwegen - west | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 
 | **Azië en Stille Oceaan** | |
 | Azië - oost | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
 | Azië - zuidoost | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
 | **Japan** | |
-| Japan - oost | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 |
-| Japan - west | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 |
+| Japan - Oost | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 |
+| Japan - West | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 |
 | **Australië** | |
-| Australië - oost | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 |
-| Australië - zuidoost | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 |
+| Australië - Oost | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 |
+| Australië - Zuidoost | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 |
 | **Australië - overheid** | |
 | Australië - centraal | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 |
 | Australië - centraal 2 | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 |
@@ -235,10 +241,10 @@ Daarnaast worden voorvoegsels door Microsoft gemarkeerd op basis van de service 
 | **Nationale clouds Azure-regio**| **BGP-communitywaarde** |
 | --- | --- |
 | **Amerikaanse overheid** |  |
-| VS (overheid) - Arizona | 12076:51106 |
+| US Gov - Arizona | 12076:51106 |
 | US Gov - Iowa | 12076:51109 |
 | US Gov - Virginia | 12076:51105 |
-| VS (overheid) - Texas | 12076:51108 |
+| US Gov - Texas | 12076:51108 |
 | US DoD - centraal | 12076:51209 |
 | US DoD - oost | 12076:51205 |
 

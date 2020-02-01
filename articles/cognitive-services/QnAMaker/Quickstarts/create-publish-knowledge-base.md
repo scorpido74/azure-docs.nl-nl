@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 01/29/2020
 ms.author: diberry
-ms.openlocfilehash: 26c7996d6a955a183121a59254131dcb1dc6706f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a3bdc118be96630ebcf3bf63a2948976dc9b4261
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844259"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901677"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Snelstartgids: uw QnA Maker Knowledge Base maken, trainen en publiceren
 
@@ -39,7 +39,7 @@ Neem een Chit-Chat persoonlijkheid op om uw kennis beter te maken met uw gebruik
 1. Selecteer op de pagina **maken** de optie **een QnA-service maken**. U wordt omgeleid naar de [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) om een QnA Maker-service in te stellen in uw abonnement.
 
 1. Maak de resource in het Azure Portal. Onthoud de Azure Active Directory-ID, het abonnement en de naam van de QnA-resource die u hebt geselecteerd bij het maken van de resource.
-1. Ga terug naar de QnA Maker Portal, Vernieuw de webpagina in de portal om door te gaan met het maken van de Knowledge Base.
+1. Ga terug naar de QnA Maker Portal, Vernieuw de webpagina in de portal om door te gaan met het maken van de Knowledge Base. Selecteer een bestaande Tenant, een abonnement en de nieuwe resource. Selecteer de taal. Dit is de taal die wordt gebruikt voor alle kennis grondslagen in deze QnA Maker service.
 
    ![Scherm opname van het selecteren van een QnA Maker service Knowledge Base](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 

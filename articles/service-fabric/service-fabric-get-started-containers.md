@@ -1,14 +1,14 @@
 ---
 title: Een Azure Service Fabric-container toepassing maken
-description: Maak uw eerste Windows-containertoepassing in Azure Service Fabric. Bouw een Docker-installatiekopie met een Python-toepassing, push de installatiekopie naar een containerregister, en bouw en implementeer een Service Fabric-containertoepassing.
+description: Maak uw eerste Windows-containertoepassing in Azure Service Fabric. Bouw een docker-installatie kopie met een python-toepassing, push de installatie kopie naar een container register en bouw en implementeer de container vervolgens naar Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.openlocfilehash: 6ff3fb3057b21f389d42ad98fe4ebb2803f5fc8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458008"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906258"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Uw eerste Service Fabric-containertoepassing maken in Windows
 
@@ -16,7 +16,7 @@ ms.locfileid: "75458008"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Er zijn geen wijzigingen in uw toepassing vereist om een bestaande toepassing in een Windows-container uit te voeren in een Service Fabric-cluster. In dit artikel wordt stapsgewijs beschreven hoe u een docker-installatie kopie met een python- [kolf](http://flask.pocoo.org/) -webtoepassing maakt en deze implementeert in een service Fabric cluster dat op uw lokale computer wordt uitgevoerd. U gaat uw containertoepassing ook delen via [Azure Container Registry](/azure/container-registry/). In dit artikel wordt ervan uitgegaan dat u de basisbeginselen kent van Docker. Meer informatie over Docker kunt u lezen in het [Docker-overzicht](https://docs.docker.com/engine/understanding-docker/).
+Er zijn geen wijzigingen in uw toepassing vereist om een bestaande toepassing in een Windows-container uit te voeren in een Service Fabric-cluster. In dit artikel wordt stapsgewijs beschreven hoe u een docker-installatie kopie met een python- [kolf](http://flask.pocoo.org/) -webtoepassing maakt en deze implementeert in een Azure service Fabric-cluster. U gaat uw containertoepassing ook delen via [Azure Container Registry](/azure/container-registry/). In dit artikel wordt ervan uitgegaan dat u de basisbeginselen kent van Docker. Meer informatie over Docker kunt u lezen in het [Docker-overzicht](https://docs.docker.com/engine/understanding-docker/).
 
 > [!NOTE]
 > Dit artikel is van toepassing op een Windows-ontwikkel omgeving.  De runtime van Service Fabric cluster en de docker-runtime moeten op hetzelfde besturings systeem worden uitgevoerd.  U kunt geen Windows-containers uitvoeren op een Linux-cluster.

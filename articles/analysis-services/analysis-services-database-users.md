@@ -4,15 +4,15 @@ description: Meer informatie over het beheren van database rollen en-gebruikers 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 01/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9d1f3387fcea732e002689a4cdeaaf1d50d8a56f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 26d7c2d8919573c4c971edd7cb0e01b06fef3012
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147006"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901488"
 ---
 # <a name="manage-database-roles-and-users"></a>Database rollen en-gebruikers beheren
 
@@ -44,10 +44,10 @@ Bij het maken van een tabellaire model project maakt u rollen en voegt u gebruik
   
     |Machtiging|Beschrijving|  
     |----------------|-----------------|  
-    |**Geen**|Leden kunnen het model schema niet wijzigen en kunnen geen gegevens opvragen.|  
+    |**Geen**|Leden kunnen het model schema niet lezen of wijzigen en kunnen geen gegevens opvragen.|  
     |**Lezen**|Leden kunnen gegevens opvragen (op basis van Row filters), maar kunnen het model schema niet wijzigen.|  
     |**Lezen en verwerken**|Leden kunnen gegevens opvragen (op basis van filters op rijniveau) en proces uitvoeren en alle bewerkingen verwerken, maar kunnen het model schema niet wijzigen.|  
-    |**Host**|Leden kunnen proces uitvoeren en alle bewerkingen verwerken. Kan het model schema niet wijzigen en kan geen gegevens opvragen.|  
+    |**Host**|Leden kunnen proces uitvoeren en alle bewerkingen verwerken. Kan het model schema niet lezen of wijzigen en kan geen gegevens opvragen.|  
     |**Beheerder**|Leden kunnen het model schema wijzigen en alle gegevens opvragen.|   
   
 5.  Als de rol die u maakt lees-of lees-en proces machtiging heeft, kunt u rijdefinities toevoegen met behulp van een DAX-formule. Klik op het tabblad **rij filters** , selecteer een tabel en klik vervolgens op het **Dax-filter** veld en typ een Dax-formule.

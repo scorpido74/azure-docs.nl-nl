@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 4b419bd8c19cffaf84582cb4fa9e46592746da3f
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 4219df03f74f737c5f2435f9bc0842189dc1fd49
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752465"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909173"
 ---
 | | Standaard SKU | Basis-SKU |
 | --- | --- | --- |
-| Grootte van back-end-pool | Ondersteunt maximaal 1000 instanties. | Ondersteunt maximaal 100 instanties. |
+| Grootte van back-end-pool | Ondersteunt maximaal 1000 instanties. | Ondersteunt Maxi maal 300 exemplaren. |
 | Eindpunten voor de back-end-pool | Een virtuele machine in één virtueel netwerk, met inbegrip van de combi natie van virtuele machines, beschikbaarheids sets en virtuele-machine schaal sets. | Virtuele machines in een beschikbaarheidsset of virtuele-machineschaalset. |
 | [Statuscontroles](../articles/load-balancer/load-balancer-custom-probe-overview.md#types) | TCP, HTTP, HTTPS | TCP, HTTP |
 | [Gedrag statustest inactief](../articles/load-balancer/load-balancer-custom-probe-overview.md#probedown) | TCP-verbindingen blijven actief op een instantie die omlaag __en__ op alle tests wordt gecontroleerd. | TCP-verbindingen blijven actief op een instantie die wordt getest. Alle TCP-verbindingen worden beëindigd wanneer alle tests uitvallen. |

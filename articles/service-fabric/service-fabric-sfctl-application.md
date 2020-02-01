@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl-toepassing
 description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het beheren van toepassingen.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 4d416408fd83d7bc316c7045c2a0031fe50d36f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4e1066bba1db387c9dc0600bc55522f0b5fe897
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645409"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906208"
 ---
 # <a name="sfctl-application"></a>sfctl application
 Toepassingen en toepassings typen maken, verwijderen en beheren.
@@ -34,7 +34,7 @@ Toepassingen en toepassings typen maken, verwijderen en beheren.
 | type | Hiermee haalt u de lijst met toepassings typen in het Service Fabric cluster die overeenkomen met de opgegeven naam. |
 | type-list | Hiermee haalt u de lijst met toepassings typen op in het Service Fabric cluster. |
 | unprovision | Hiermee verwijdert of maakt u de registratie van een Service Fabric toepassings type van het cluster ongedaan. |
-| upgrade | Hiermee wordt een toepassing in het Service Fabric cluster bijgewerkt. |
+| upgrades | Hiermee wordt een toepassing in het Service Fabric cluster bijgewerkt. |
 | upgrade-resume | Hiermee wordt de upgrade van een toepassing in het Service Fabric cluster hervat. |
 | upgrade-terugdraai actie | De huidige doorlopende upgrade van een toepassing in het Service Fabric cluster wordt teruggezet. |
 | upgrade-status | Hiermee worden gegevens opgehaald voor de laatste upgrade die op deze toepassing is uitgevoerd. |
@@ -530,9 +530,12 @@ Hier kunt u de voortgang van het uploaden weer geven voor elk bestand in het pak
 |Argument|Beschrijving|
 | --- | --- |
 | --pad [vereist] | Pad naar het lokale toepassings pakket. |
+| --comprimeren | Alleen van toepassing op Service Fabric toepassings pakketten. Maak een nieuwe map met het gecomprimeerde toepassings pakket naar de standaard locatie of naar de locatie die is opgegeven door de para meter voor de gecomprimeerde locatie en upload de zojuist gemaakte map. <br><br> Als er al een gecomprimeerd bestand is gegenereerd door sfctl, wordt dit overschreven als deze vlag is ingesteld. Er wordt een fout geretourneerd als de Directory geen toepassings pakket is. Als de app al een gecomprimeerd toepassings pakket is, wordt de map gekopieerd. Standaard wordt het zojuist gemaakte gecomprimeerde toepassings pakket verwijderd nadat het uploaden is voltooid. Als het uploaden is mislukt, moet u het gecomprimeerde pakket hand matig opschonen. Bij het verwijderen worden geen lege mappen verwijderd die mogelijk zijn gemaakt als de gecomprimeerde locatie parameter verwijst naar niet-bestaande directory's. |
+| --gecomprimeerd-locatie | De locatie waar het gecomprimeerde toepassings pakket moet worden geplaatst. <br><br> Als er geen locatie wordt opgegeven, wordt het gecomprimeerde pakket geplaatst onder een nieuwe map met de naam sfctl_compressed_temp onder de bovenliggende map die is opgegeven in het argument pad. Als het argument pad bijvoorbeeld de waarde C\:/FolderA/AppPkg heeft, wordt het gecomprimeerde pakket toegevoegd aan C\:/FolderA/sfctl_compressed_temp/AppPkg. |
 | --installatie kopie opslag-teken reeks | Archief van de doel installatie kopie waarnaar het toepassings pakket moet worden geüpload.  Standaard\: infrastructuur\:installatie kopie opslag. <br><br> Als u wilt uploaden naar een bestands locatie, start u deze para meter met ' file\:'. Anders moet de waarde de connection string voor het opslaan van de installatie kopie zijn, zoals de standaard waarde. |
+| --Keep-compressed | Hiermee wordt aangegeven of het gegenereerde gecomprimeerde pakket moet worden bewaard wanneer de upload is voltooid. <br><br> Als dat niet zo is ingesteld, wordt de gecomprimeerde app-pakketten verwijderd als deze zijn voltooid. Als het uploaden is mislukt, wordt het toepassings pakket altijd bewaard in de uitvoermap om het opnieuw te uploaden. |
 | --voortgang weer geven | Voortgang van uploaden van bestanden voor grote pakketten weer geven. |
-| --time-out-t | De totale time-out in seconden. Uploaden mislukt en er wordt een fout geretourneerd nadat de time-out voor de upload is verstreken. Deze time-out is van toepassing op het hele toepassings pakket en de time-outs van afzonderlijke bestanden zijn gelijk aan de resterende time-outwaarde.  Standaard\: 300. |
+| --time-out-t | De totale time-out in seconden. Uploaden mislukt en er wordt een fout geretourneerd nadat de time-out voor de upload is verstreken. Deze time-out is van toepassing op het hele toepassings pakket en de time-outs van afzonderlijke bestanden zijn gelijk aan de resterende time-outwaarde. Time-out omvat niet de tijd die nodig is om het toepassings pakket te comprimeren.  Standaard\: 300. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 

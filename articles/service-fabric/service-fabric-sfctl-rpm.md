@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl rpm
 description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor de reparatie Manager-service.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 674970276046034d13801db7c1bb4ab5175385fb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639085"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904938"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Query's uitvoeren en opdrachten verzenden naar de service reparatie beheer.
@@ -77,7 +77,7 @@ Deze API ondersteunt het Service Fabric-platform. het is niet bedoeld om rechtst
 |Argument|Beschrijving|
 | --- | --- |
 | --uitvoerbaar filter | De naam van de reparatie-uitvoerder waarvan de gedeclareerde taken moeten worden opgenomen in de lijst. |
-| --status-filter | Een bitsgewijze-of van de volgende waarden, opgeven welke taak statussen moeten worden opgenomen in de lijst met resultaten. <br> 1-gemaakt <br>2-geclaimd  <br>4: voorbereiden  <br>8-goedgekeurd  <br>16-uitvoeren  <br>32-herstellen  <br>64-voltooid |
+| --status-filter | Een bitsgewijze-of van de volgende waarden, opgeven welke taak statussen moeten worden opgenomen in de lijst met resultaten. <ul><li>1-gemaakt</li><li>2-geclaimd</li><li>4: voorbereiden</li><li>8-goedgekeurd</li><li>16-uitvoeren</li><li>32-herstellen</li><li>64-voltooid</li></ul>
 | --task-id-filter | Het voor voegsel van de reparatie taak-ID moet worden gevonden. |
 
 ### <a name="global-arguments"></a>Algemene argumenten

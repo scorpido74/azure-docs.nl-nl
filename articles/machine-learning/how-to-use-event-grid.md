@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 11/04/2019
-ms.openlocfilehash: 885ddd5c25a36e2b12379ea7639956c1c4ca5437
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538421"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904282"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Door gebeurtenis gestuurde machine learning werk stromen maken (preview)
 
@@ -32,21 +32,6 @@ Gebruik Event Grid om algemene scenario's in te scha kelen, zoals:
 
 * Inzender of eigenaar toegang tot de Azure Machine Learning-werk ruimte waarvoor u gebeurtenissen gaat maken.
 * Selecteer een eind punt voor de gebeurtenis-handler, zoals een webhook of event hub. Zie voor meer informatie [gebeurtenis-handlers](https://docs.microsoft.com/azure/event-grid/event-handlers). 
-
-## <a name="register-resource-providers"></a>Registreren van resourceproviders
-
-Als u vóór november 1 2019 Azure Event Grid of Machine Learning hebt gebruikt, moet u de resource providers mogelijk opnieuw registreren voordat u de stappen in dit document kunt volgen. Als u de providers opnieuw wilt registreren, gebruikt u de volgende stappen:
-
-1. Ga naar de Azure Portal en selecteer __abonnementen__. Selecteer het abonnement waarmee u wilt werken.
-1. Selecteer __resource providers__en zoek naar __EventGrid__.
-1. Selecteer de vermelding __micro soft. EventGrid__ en selecteer __opnieuw registreren__.
-
-    ![opnieuw registreren-resource provider](./media/how-to-use-event-grid/re-register-resource-provider.png)
-
-1. Zoek naar __MachineLearningServices__, selecteer de vermelding en selecteer __opnieuw registreren__.
-
-> [!TIP]
-> Als u niet over de juiste machtigingen beschikt om deze stappen uit te voeren, vraagt u uw abonnements beheerder deze te doen.
 
 ## <a name="configure-machine-learning-events-using-the-azure-portal"></a>machine learning gebeurtenissen configureren met behulp van de Azure Portal
 

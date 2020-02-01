@@ -6,39 +6,29 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/15/2019
+ms.date: 01/28/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 193fe96d3e98b2917d9228784b93a9335406283f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2a303070b7240bddfd4803ed3d4d796fa52fdef5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771748"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906637"
 ---
-# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Snelstartgids: gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Azure Databricks
+# <a name="quickstart-analyze-data-with-databricks"></a>Snelstartgids: gegevens analyseren met Databricks
 
-Deze quickstart laat zien hoe u een Apache Spark-taak met Azure Databricks kunt uitvoeren voor het analyseren van gegevens die in een opslagaccount zijn opgeslagen waarvoor Azure Data Lake Storage Gen2 is ingeschakeld.
-
-Als onderdeel van de Apache Spark-taak gaat u abonnementsgegevens van een radiozender analyseren om meer inzicht te krijgen in vrij/betaald gebruik op basis van demografische gegevens.
-
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+In deze Quick Start voert u een Apache Spark-taak uit met behulp van Azure Databricks voor het uitvoeren van analyses op gegevens die zijn opgeslagen in een opslag account. Als onderdeel van de Apache Spark-taak gaat u abonnementsgegevens van een radiozender analyseren om meer inzicht te krijgen in vrij/betaald gebruik op basis van demografische gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Data Lake Gen2-opslagaccount maken. Zie [Quick Start: een Azure data Lake Storage Gen2 Storage-account maken](data-lake-storage-quickstart-create-account.md)
+* Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-  Plak de naam van het opslagaccount in een tekstbestand. U hebt deze naam binnenkort nodig.
+* De naam van uw Azure Data Lake Gen2-opslag account. [Maak een Azure data Lake Storage Gen2 Storage-account](data-lake-storage-quickstart-create-account.md).
 
-* Een service-principal maken. Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-  Er zijn een paar specifieke zaken die u moet doen terwijl u de stappen in het artikel uitvoert.
-
-  : heavy_check_mark: bij het uitvoeren van de stappen in de sectie [toepassing toewijzen aan een rol](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) van het artikel, moet u ervoor zorgen dat u de rol van **BLOB voor gegevens opslag** aan de Service-Principal toewijst.
+* De Tenant-ID, App-ID en het wacht woord van een Azure-Service-Principal met een toegewezen rol van de Inzender voor gegevens van de **opslag-BLOB**. [Maak een Service-Principal](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   > [!IMPORTANT]
-  > Zorg ervoor dat u de rol toewijst in het bereik van het Data Lake Storage Gen2-opslagaccount. U kunt een rol toewijzen aan de bovenliggende resourcegroep of het bovenliggende abonnement, maar u ontvangt machtigingsgerelateerde fouten tot die roltoewijzingen zijn doorgegeven aan het opslagaccount.
-
-  : heavy_check_mark: als u de stappen in de sectie [waarden ophalen voor ondertekening in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) van het artikel uitvoert, plakt u de Tenant-id, app-id en wachtwoord waarden in een tekst bestand. U hebt deze binnenkort nodig.
+  > Wijs de rol toe binnen het bereik van de Data Lake Storage Gen2 Storage-account. U kunt een rol toewijzen aan de bovenliggende resourcegroep of het bovenliggende abonnement, maar u ontvangt machtigingsgerelateerde fouten tot die roltoewijzingen zijn doorgegeven aan het opslagaccount.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Een Azure Databricks-werkruimte maken
 

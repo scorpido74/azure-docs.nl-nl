@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771612"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906264"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
@@ -201,49 +201,14 @@ Deze sectie is alleen van toepassing op de standaard bestands shares. Alle Premi
 
 ### <a name="regional-availability"></a>Regionale beschikbaarheid
 
-Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaalde regio's zijn ze beschikbaar met een limiet van 100 TiB. deze regio's worden weer gegeven in de volgende tabel:
+Standaard bestands shares met een capaciteits limiet van 100 TiB zijn wereld wijd beschikbaar in alle Azure-regio's.
 
-|Regio |Ondersteunde redundantie |
-|-------|---------|
-|Australië - centraal    |LRS     |
-|Australië - centraal 2    |LRS     |
-|Australië - oost |LRS     |
-|Australië - zuidoost|LRS |
-|Brazilië - Zuid    |LRS     |
-|Canada-Midden  |LRS     |
-|Canada-Oost     |LRS     |
-|India - centraal  |LRS     |
-|VS-Centraal *   |LRS, ZRS    |
-|Azië - oost      |LRS     |
-|VS-Oost *        |LRS, ZRS|
-|VS-Oost 2 *      |LRS, ZRS     |
-|Frankrijk - centraal |LRS, ZRS|
-|Frankrijk - zuid   |LRS     |
-|Japan - Oost     |LRS     |
-|Japan - West     |LRS     |
-|Korea - centraal  |LRS     |
-|Korea - zuid    |LRS     |
-|US - noord-centraal |LRS   |
-|Europa - noord   |LRS     |
-|India - zuid    |LRS     |
-|US - zuid-centraal |LRS     |
-|Azië - zuidoost |LRS, ZRS|
-|Zwitserland - noord    |LRS     |
-|Zwitserland - west    |LRS     |
-|VAE - centraal    |LRS     |
-|VAE - noord    |LRS     |
-|UK - noord   |LRS, ZRS    |
-|UK - zuid    |LRS     |
-|UK - west    |LRS     |
-|US - west-centraal|LRS     |
-|Europa-west *    |LRS, ZRS|
-|India - west   |LRS     |
-|US - west        |LRS     |
-|US - west 2      |LRS, ZRS|
+- LRS: alle regio's, met uitzonde ring van Zuid-Afrika-noord en Zuid-Afrika-west.
+   - Nationale Clouds (Government, Duitsland, China) worden ondersteund via Power shell en de Azure-opdracht regel interface (CLI). Geen portal ondersteuning. 
+   - VS-Oost, Oost-VS2, Europa-west: alle nieuwe accounts worden ondersteund. Het upgrade proces is niet voltooid voor een klein aantal bestaande accounts. U kunt controleren of uw bestaande opslag accounts het upgrade proces hebben voltooid door te proberen [grote bestands shares in te scha kelen](storage-files-how-to-create-large-file-share.md).
 
-\* ondersteund voor nieuwe accounts, niet alle bestaande accounts hebben het upgrade proces voltooid. U kunt controleren of uw bestaande opslag accounts het upgrade proces hebben voltooid door te proberen [grote bestands shares in te scha kelen](storage-files-how-to-create-large-file-share.md).
-
-Vul deze [enquête](https://aka.ms/azurefilesatscalesurvey)in om u te helpen bij het bepalen van de prioriteit van nieuwe regio's en functies.
+- ZRS: alle regio's, met uitzonde ring van Japan-Oost, Europa-noord, Zuid-Afrika-noord.
+- GRS/GZRS: wordt niet ondersteund.
 
 ### <a name="enable-and-create-larger-file-shares"></a>Grotere bestands shares inschakelen en maken
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: feab221c24034fe29df420b4f9eb6d84e06a90b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 11b84877171fae8e788d3298973fd74645b35480
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719333"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901912"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Cosmos DB en Azure App Service Web Apps met behulp van een Azure Resource Manager-sjabloon implementeren
 Deze zelfstudie leert u hoe u een Azure Resource Manager-sjabloon gebruiken om te implementeren en integreren [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), een [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) web-app en een Voorbeeldwebtoepassing.
@@ -69,7 +69,7 @@ Nu gaan we de eerste sjabloon implementeert.
    ![Schermafbeelding van de gebruikersinterface voor sjabloonimplementatie](./media/create-website/TemplateDeployment6.png)
 7. Wanneer de implementatie is voltooid, wordt het deelvenster van de groep Resource wordt geopend.
    ![Schermafbeelding van het deelvenster van de groep resource](./media/create-website/TemplateDeployment7.png)  
-8. Voor het gebruik van de toepassing, gaat u naar de URL van de web-app (in het bovenstaande voorbeeld is de URL is http://mydemodocdbwebapp.azurewebsites.net).  Hier ziet u de volgende web-App:
+8. Als u de toepassing wilt gebruiken, navigeert u naar de URL van de web-app (in bovenstaand voor beeld is de URL `http://mydemodocdbwebapp.azurewebsites.net`).  Hier ziet u de volgende web-App:
    
    ![Voorbeeld van Todo-toepassing](./media/create-website/image2.png)
 9. Gaan en een aantal taken in de web-app maken en ga vervolgens terug naar het deelvenster van de groep Resource in Azure portal. Klik op de resource van Azure Cosmos DB-account in de lijst met Resources en klik vervolgens op **Data Explorer**.
@@ -115,7 +115,7 @@ Nu gaan we de tweede sjabloon implementeert.  Deze sjabloon is handig om te late
 <a name="NextSteps"></a>
 
 ## <a name="next-steps"></a>Volgende stappen
-Gefeliciteerd! U kunt Azure Cosmos DB, App Service-web-app en een Voorbeeldwebtoepassing met behulp van Azure Resource Manager-sjablonen hebt geïmplementeerd.
+Gefeliciteerd. U kunt Azure Cosmos DB, App Service-web-app en een Voorbeeldwebtoepassing met behulp van Azure Resource Manager-sjablonen hebt geïmplementeerd.
 
 * Voor meer informatie over Azure Cosmos DB, klikt u op [hier](https://azure.microsoft.com/services/cosmos-db/).
 * Voor meer informatie over Azure App Service Web apps, klikt u op [hier](https://go.microsoft.com/fwlink/?LinkId=325362).

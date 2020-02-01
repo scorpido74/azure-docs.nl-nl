@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75425083"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Een proef uitvoeren met cloudinrichting voor een bestaande gesynchroniseerde AD-forest 
@@ -201,7 +201,7 @@ Met Azure AD Connect Sync worden wijzigingen die in uw on-premises Directory opt
 >[!NOTE] 
 >Als u uw eigen aangepaste planner uitvoert voor AAD Connect-synchronisatie, moet u de Scheduler inschakelen. 
 
-## <a name="something-went-wrong"></a>Er is iets fout gegaan
+## <a name="something-went-wrong"></a>Er is iets verkeerd gegaan
 Als de pilot niet werkt zoals verwacht, kunt u terugkeren naar de Azure AD Connect synchronisatie-instellingen door de volgende stappen uit te voeren:
 1.  De inrichtings configuratie uitschakelen in de Azure Portal. 
 2.  Schakel alle aangepaste synchronisatie regels die zijn gemaakt voor Cloud inrichting uit met het hulp programma synchronisatie regel Editor. Uitschakelen moet volledige synchronisatie op alle connectors veroorzaken.

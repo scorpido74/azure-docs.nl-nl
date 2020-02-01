@@ -13,31 +13,38 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 62455b395e6cad3ccf7650534d92d94a6a0a2417
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1f799c8f2e2b209e9939845047c61d50bc1a244d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977482"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898527"
 ---
-# <a name="quickstart-create-an-azure-data-factory-and-pipeline-using-python"></a>Snelstartgids: een Azure Data Factory en pijp lijn maken met behulp van python
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Snelstartgids: een data factory en pijp lijn maken met behulp van python
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1:](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](quickstart-create-data-factory-python.md)
 
-In deze snelstartgids wordt beschreven hoe u Python kunt gebruiken om een Azure data factory te maken. Met de pijplijn in deze data factory worden gegevens gekopieerd van de ene map naar een andere map in een Azure Blob-opslag.
+In deze Quick Start maakt u een data factory met behulp van python. Met de pijp lijn in dit data factory worden gegevens gekopieerd van de ene map naar een andere map in Azure Blob-opslag.
 
-Azure Data Factory is een cloudgebaseerde gegevensintegratieservice waarmee u gegevensgestuurde werkstromen kunt maken in de cloud. Op deze manier kunt u de verplaatsing en transformatie van gegevens indelen en automatiseren. Met Azure Data Factory kunt u gegevensgestuurde werkstromen (ook wel pijplijnen) maken en plannen die gegevens uit verschillende gegevensarchieven kunnen opnemen en de gegevens kunnen verwerken/transformeren met behulp van rekenservices zoals Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics en Azure Machine Learning. Daarnaast kunt u de uitvoergegevens publiceren naar gegevensarchieven zoals Azure SQL Data Warehouse, zodat BI-toepassingen (business intelligence) ze kunnen gebruiken.
+Azure Data Factory is een op de cloud gebaseerde gegevens integratie service waarmee u gegevensgestuurde werk stromen kunt maken voor het organiseren en automatiseren van gegevens verplaatsing en gegevens transformatie. Met Azure Data Factory kunt u gegevensgestuurde werk stromen (pijp lijnen) maken en plannen.
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Pijp lijnen kunnen gegevens uit verschillende gegevens archieven opnemen. Met behulp van reken Services, zoals Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics en Azure Machine Learning, kunnen pijp lijnen gegevens verwerken of transformeren. Pijp lijnen publiceren uitvoer gegevens naar gegevens archieven, zoals Azure SQL Data Warehouse voor business intelligence-toepassingen (BI).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure Storage-account**. U gebruikt de blob-opslag als gegevensopslag voor **bron** en **sink**. Als u geen Azure-opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) om een account te maken.
-* **Maak een toepassing in Azure Active Directory** aan de hand van [deze instructie](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Noteer de volgende waarden voor gebruik in latere stappen: **toepassings-id**, **verificatiesleutel** en **tenant-id**. Wijs de toepassing toe aan de rol '**Inzender**' door de instructies in hetzelfde artikel te volgen.
+* Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-### <a name="create-and-upload-an-input-file"></a>Een invoerbestand maken en uploaden
+* [Python 3.4 +](https://www.python.org/downloads/).
+
+* [Een Azure Storage-account](../storage/common/storage-account-create.md).
+
+* [Azure Storage Explorer](https://storageexplorer.com/) (optioneel).
+
+* [Een toepassing in azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Noteer de volgende waarden voor gebruik in latere stappen: **toepassings-id**, **verificatie sleutel**en **Tenant-id**. Wijs de toepassing toe aan de rol **Inzender** door de instructies in hetzelfde artikel te volgen.
+
+## <a name="create-and-upload-an-input-file"></a>Een invoerbestand maken en uploaden
 
 1. Start Kladblok. Kopieer de volgende tekst en sla deze op schijf op in het bestand **input.txt**.
 

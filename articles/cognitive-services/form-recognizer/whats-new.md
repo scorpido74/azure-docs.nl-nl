@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: pafarley
-ms.openlocfilehash: cb5639dcf0e13ea03d34604816b3939085674c2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2109d25d3962063c711dcab491855d9ebf1cf694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456364"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901879"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Wat is er nieuw in Form Recognizer?
 
@@ -24,9 +24,6 @@ In dit artikel worden de belangrijkste wijzigingen met nieuwe versies van de API
 > De Quick starts en hand leidingen in deze documentenset gebruiken altijd de nieuwste versie van de API, tenzij ze anders worden opgegeven.
 
 ## <a name="form-recognizer-20-preview"></a>Formulier Recognizer 2,0 (preview-versie)
-
-> [!IMPORTANT]
-> Formulier Recognizer 2,0 is momenteel beschikbaar voor abonnementen in de regio's `West US 2` en `West Europe`. Als uw abonnement zich niet in deze regio bevindt, gebruikt u de 1,0-API. De Quick starts voor training en het gebruik van een aangepast model zijn beschikbaar voor zowel v 1.0 als v 2.0.
 
 ### <a name="new-features"></a>Nieuwe functies
 

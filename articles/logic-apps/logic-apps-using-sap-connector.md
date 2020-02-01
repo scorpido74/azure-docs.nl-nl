@@ -9,12 +9,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: a9cf818e8b31ea2efb2f2ef2f0848a759e017dfa
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3990a9d53a8e53ddd29683440917031bc1bb6448
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790869"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904652"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Verbinding maken met SAP-systemen via Azure Logic Apps
 
@@ -213,7 +213,7 @@ Neem uw bericht inhoud op met uw aanvraag. U kunt een hulp programma zoals [post
 1. Nadat u uw HTTP-aanvraag hebt verzonden, moet u wachten op de reactie van de logische app.
 
    > [!NOTE]
-   > Mogelijk is er een time-out opgetreden voor uw logische app als alle stappen die vereist zijn voor het antwoord niet binnen de [time-outlimiet](./logic-apps-limits-and-config.md)van de aanvraag vallen. Als dit probleem optreedt, worden aanvragen mogelijk geblokkeerd. Lees hoe u [uw Logic apps kunt controleren en controleren](../logic-apps/logic-apps-monitor-your-logic-apps.md)voor meer informatie over het vaststellen van problemen.
+   > Mogelijk is er een time-out opgetreden voor uw logische app als alle stappen die vereist zijn voor het antwoord niet binnen de [time-outlimiet](./logic-apps-limits-and-config.md)van de aanvraag vallen. Als dit probleem optreedt, worden aanvragen mogelijk geblokkeerd. Lees hoe u [uw Logic apps kunt controleren en controleren](../logic-apps/monitor-logic-apps.md)voor meer informatie over het vaststellen van problemen.
 
 U hebt nu een logische app gemaakt die kan communiceren met uw SAP-server. Nu u een SAP-verbinding hebt ingesteld voor uw logische app, kunt u andere beschik bare SAP-acties, zoals BAPI en RFC, verkennen.
 

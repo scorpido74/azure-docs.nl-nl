@@ -6,17 +6,18 @@ author: martincoetzer
 manager: daveba
 tags: azuread
 ms.service: active-directory
+ms.subservice: authentication
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/19/2018
+ms.date: 01/29/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 478cccb3a8235291a4c4f0566cd130b4b75dbe6b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0ca5817e744ff81efcd549bc328d7ce5eeedb2d2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208558"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908731"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Maak een flexibele toegangs beheer strategie met Azure Active Directory
 
@@ -262,7 +263,7 @@ Als uw organisatie verouderd beleid voor MFA per gebruiker gebruikt, kunt u het 
 ## <a name="learn-more"></a>Meer informatie
 
 * [Documentatie voor Azure AD-verificatie](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
-* [Beheer accounts voor toegang in nood gevallen beheren in azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+* [Beheerdersaccounts voor EMS-toegang beheren in Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 * [Benoemde locaties configureren in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [Hybride Azure Active Directory-apparaten configureren](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)

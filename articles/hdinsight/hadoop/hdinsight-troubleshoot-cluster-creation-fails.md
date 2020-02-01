@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: ea60faf5b5689fa674095201d3db18422d3e0f1b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 093bfbd976ace41f635976ff27fa4292e5c4df3c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980501"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905154"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Problemen met het maken van clusters oplossen met Azure HDInsight
 
@@ -22,7 +22,7 @@ De volgende problemen zijn de meest voorkomende oorzaken voor het maken van een 
 - Machtigings problemen
 - Beperkingen voor het resource beleid
 - Firewalls
-- Resourcevergrendelingen
+- Resource vergrendelingen
 - Niet-ondersteunde onderdeel versies
 - Naam beperkingen van opslag account
 - Service storingen
@@ -78,7 +78,7 @@ Andere naamgevings beperkingen zijn ook van toepassing op het maken van een clus
 
 ## <a name="service-outages"></a>Service storingen
 
-Controleer de [Azure-status](https://status.azure.com/status) op mogelijke storingen of Service problemen.
+Controleer de [Azure-status](https://status.azure.com) op mogelijke storingen of Service problemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

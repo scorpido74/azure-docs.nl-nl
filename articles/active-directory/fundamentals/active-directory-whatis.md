@@ -5,17 +5,18 @@ services: active-directory
 author: msaburnley
 manager: daveba
 ms.service: active-directory
+ms.subservice: fundamentals
 ms.topic: overview
 ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0e028be6b4a507ba97f9126c791ee77c764c70
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: c4d32522ef88504b96d262c654dac7c08c292761
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880499"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897469"
 ---
 # <a name="what-is-azure-active-directory"></a>Wat is Azure Active Directory?
 
@@ -52,7 +53,7 @@ Als u uw Azure AD-implementatie wilt verbeteren, kunt u ook betaalde mogelijkhed
 
 - **Azure Active Directory Premium P1.** Naast de gratis functies biedt P1 ook toegang tot zowel on-premises als cloud resources. P1 biedt tevens ondersteuning voor geavanceerd beheer, zoals dynamische groepen, selfservice voor groepsbeheer, Microsoft Identity Manager (een on-premises pakket voor identiteits- en toegangsbeheer) en cloudfuncties voor terugschrijven, die selfservice voor wachtwoordherstel voor on-premises gebruikers mogelijk maken.
 
-- **Azure Active Directory Premium P2.** Naast de gratis en P1-functies biedt P2 ook [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) om op Risico's gebaseerde voorwaardelijke toegang te bieden tot uw apps en essentiële Bedrijfs gegevens en [privileged Identity Management](../privileged-identity-management/pim-getting-started.md) om te ontdekken, beheerders en hun toegang tot bronnen beperken en controleren en zo nodig just-in-time-toegang bieden.
+- **Azure Active Directory Premium P2.** Behalve de gratis en P1-functies biedt P2 ook [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) om op Risico's gebaseerde voorwaardelijke toegang te bieden tot uw apps en essentiële Bedrijfs gegevens en [privileged Identity Management](../privileged-identity-management/pim-getting-started.md) om beheerders en hun toegang tot bronnen te ontdekken, beperken en controleren en zo nodig just-in-time-toegang te bieden.
 
 - **Functielicenties met Betalen per gebruik.** U kunt ook aanvullende functielicenties krijgen, zoals Azure Active Directory Business-to-Customer (B2C). Met B2C kunt u identiteits- en toegangsbeheeroplossingen bieden voor klantgerichte apps. Voor meer informatie raadpleegt u de [documentatie over Azure Active Directory B2C](../../active-directory-b2c/index.yml).
 

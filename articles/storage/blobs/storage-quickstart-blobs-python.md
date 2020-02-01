@@ -3,41 +3,33 @@ title: 'Snelstartgids: Azure Blob-opslag bibliotheek V12-python'
 description: In deze Quick Start leert u hoe u de Azure Blob Storage-client bibliotheek versie 12 voor python kunt gebruiken om een container en een BLOB in Blob-opslag (object) te maken. Hierna leert u hoe u de blob naar uw lokale computer downloadt en hoe u alle blobs in een container kunt weergeven.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: faa73874d7e662eb23e85d46ecaf21a11d10ce73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03f298b49e6a1eba84e8adf5ca6039df0bfe1abd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443742"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906429"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor python
+# <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Quick Start: blobs beheren met python V12 SDK
 
-Ga aan de slag met de Azure Blob Storage-client bibliotheek V12 voor python. Azure Blob Storage is Microsoft's oplossing voor opslag van objecten in de cloud. Volg de stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
-
-> [!NOTE]
-> Om aan de slag te gaan met de vorige SDK-versie, raadpleegt u [Quick Start: client bibliotheek voor Azure Blob Storage voor python](storage-quickstart-blobs-python-legacy.md).
-
-Gebruik de Azure Blob Storage-client bibliotheek voor het volgende:
-
-* Een container maken
-* Een BLOB uploaden naar Azure Storage
-* Alle blobs in een container weer geven
-* De BLOB downloaden naar uw lokale computer
-* Een container verwijderen
+In deze Quick Start leert u hoe u blobs beheert met behulp van python. Blobs zijn objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. U kunt blobs uploaden, downloaden en vermelden en u kunt containers maken en verwijderen.
 
 [API-referentie documentatie](/python/api/azure-storage-blob) | [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [pakket (Python-pakket index)](https://pypi.org/project/azure-storage-blob/) | voor [beelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* Azure Storage-account: [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* [Python](https://www.python.org/downloads/) voor uw besturings systeem-2,7, 3,5 of hoger
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Een Azure Storage-account. [Een opslagaccount maken](../common/storage-account-create.md).
+- [Python](https://www.python.org/downloads/) 2,7, 3,5 of hoger.
+
+> [!NOTE]
+> Zie [Quick Start: blobs beheren met python v 2.1 SDK](storage-quickstart-blobs-python-legacy.md)om aan de slag te gaan met de vorige SDK-versie.
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>Instellen
 
@@ -81,7 +73,7 @@ Vanuit de projectmap:
 
 1. Een nieuw tekst bestand openen in de code-editor
 1. `import`-instructies toevoegen
-1. De structuur voor het programma maken, inclusief zeer eenvoudige uitzonde ringen verwerken
+1. De structuur voor het programma maken, met inbegrip van basis afhandeling van uitzonde ringen
 
     Hier volgt de code:
 
@@ -119,7 +111,7 @@ Gebruik de volgende python-klassen om te communiceren met deze resources:
 * [ContainerClient](/python/api/azure-storage-blob/azure.storage.blob.containerclient): met de klasse `ContainerClient` kunt u Azure Storage containers en de bijbehorende blobs bewerken.
 * [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient): met de klasse `BlobClient` kunt u Azure Storage blobs bewerken.
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 In deze voorbeeld code fragmenten ziet u hoe u het volgende kunt uitvoeren met de Azure Blob Storage-client bibliotheek voor python:
 
@@ -234,7 +226,7 @@ with open(download_file_path, "wb") as download_file:
 
 Met de volgende code wordt de resources opgeschoond die de app heeft gemaakt door de volledige container te verwijderen met behulp van de [delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) methode. U kunt ook de lokale bestanden verwijderen, indien gewenst.
 
-De app wordt gepauzeerd voor gebruikers invoer door `input()` aan te roepen voordat de blob, container en lokale bestanden worden verwijderd. Dit is een goede kans om te controleren of de resources daad werkelijk zijn gemaakt, voordat ze worden verwijderd.
+De app wordt gepauzeerd voor gebruikers invoer door `input()` aan te roepen voordat de blob, container en lokale bestanden worden verwijderd. Dit is een goede kans om te controleren of de resources correct zijn gemaakt voordat ze worden verwijderd.
 
 Voeg deze code toe aan het einde van het `try` blok:
 
@@ -298,4 +290,4 @@ Als u voor beeld-apps voor Blob-opslag wilt zien, gaat u door naar:
 > [Azure Blob Storage SDK V12 python-voor beelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
 * Zie de [Azure SDK voor python voor](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/README.md)meer informatie.
-* Voor zelf studies, voor beelden, snel starten en andere documentatie gaat u naar [Azure voor python-ontwikkel aars](/azure/python/).
+* Voor zelf studies, voor beelden, Quick starts en andere documentatie gaat u naar [Azure voor python-ontwikkel aars](/azure/python/).

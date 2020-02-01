@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: dc3bb6882963205e17e37f52ec9dcdffecdf9e21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 00b8e6d44ed8449aa4ddf8716039c8c85c558b8f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843113"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901741"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-resources beheren
 
@@ -97,7 +97,8 @@ Eindpunt-sleutels kunnen worden beheerd vanuit de [QnA Maker portal](https://qna
 
 2. Uw sleutels weer geven of herstellen:
 
-    ![Eindpunt sleutel beheer](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+    > [!div class="mx-imgBorder"]
+    > [de eindpunt sleutel in de service-instellingen ![weer geven, kopiëren of instellen](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)](../media/qnamaker-how-to-key-management/Endpoint-keys1.png#lightbox)
 
     >[!NOTE]
     >Vernieuw uw sleutels als u denkt dat ze zijn aangetast. Hiervoor kunnen eventueel bijbehorende wijzigingen in de client toepassing of bot code worden vereist.
@@ -136,7 +137,7 @@ De **app service** resource van QnA Maker maakt gebruik van de Cognitive Search 
 1. Selecteer **instellingen**en vervolgens **configuratie**. Hiermee worden alle bestaande instellingen voor de App Service van de QnA Maker weer gegeven.
 
     > [!div class="mx-imgBorder"]
-    > ![scherm opname van Azure Portal waarin App Service configuratie-instellingen worden weer gegeven](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+    > [Scherm opname van Azure Portal met App Service configuratie-instellingen ![](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png#lightbox)
 
 1. Wijzig de waarden voor de volgende sleutels:
 
@@ -146,7 +147,7 @@ De **app service** resource van QnA Maker maakt gebruik van de Cognitive Search 
 1. Als u de nieuwe instellingen wilt gebruiken, moet u de app service opnieuw starten. Selecteer **overzicht**en selecteer **opnieuw opstarten**.
 
     > [!div class="mx-imgBorder"]
-    > ![scherm opname van Azure Portal opnieuw opstarten App Service nadat de configuratie-instellingen zijn gewijzigd](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
+    > [![scherm opname van Azure Portal opnieuw opstarten App Service nadat de configuratie-instellingen zijn gewijzigd](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
 
 Als u een QnA-service maakt via Azure Resource Manager sjablonen, kunt u alle resources maken en de App Service maken om een bestaande zoek service te gebruiken.
 

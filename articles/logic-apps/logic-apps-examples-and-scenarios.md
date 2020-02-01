@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: ff6136dea8a25a39e045665d61bdd5d93eeb58a5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 5b72ee02c2bbf811293a2bcdb15590e16e300a02
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792138"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906684"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Veelvoorkomende scenario's, voor beelden, zelf studies en scenario's voor Azure Logic Apps
 
@@ -75,15 +75,15 @@ Logic apps bevatten uitgebreide mogelijkheden voor geavanceerde controle stromen
 * [Acties groeperen in combi natie met scopes](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [Verwerking van fouten en uitzonde ringen in een werk stroom](../logic-apps/logic-apps-exception-handling.md)
 * [Use-case: hoe een gezondheids zorg die gebruikmaakt van de verwerking van logische-app-uitzonde ringen voor HL7 FHIR-werk stromen](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
-* [Bewaking, logboek registratie en waarschuwingen voor bestaande Logic apps inschakelen](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [Bewakings-en diagnostische logboek registratie inschakelen bij het maken van logische apps](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)
+* [Bewaking, logboek registratie en waarschuwingen voor bestaande Logic apps inschakelen](../logic-apps/monitor-logic-apps.md)
+* [Bewakings-en diagnostische logboek registratie inschakelen bij het maken van logische apps](../logic-apps/monitor-logic-apps-log-analytics.md)
 
 ## <a name="deploy-and-manage-logic-apps"></a>Logic Apps implementeren en beheren
 
 U kunt Logic apps volledig ontwikkelen en implementeren met Visual Studio, Azure DevOps of een ander broncode beheer en hulpprogram ma's voor automatisch bouwen. Voor de ondersteuning van de implementatie van werk stromen en afhankelijke verbindingen in een resource sjabloon maakt Logic apps gebruik van Azure resource-implementatie sjablonen. Visual Studio-hulpprogram ma's genereren deze sjablonen automatisch, die u in broncode beheer kunt inchecken voor het maken van versies.
 
 * [Logische apps maken en implementeren met Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
-* [Bewaking, logboek registratie en waarschuwingen voor bestaande Logic apps inschakelen](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [Bewaking, logboek registratie en waarschuwingen voor bestaande Logic apps inschakelen](../logic-apps/monitor-logic-apps.md)
 * [Implementatie van logische apps automatiseren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Voor beeld: verbinding maken met Azure Service Bus wacht rijen van Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Voor beeld: verbinding maken met Azure Storage accounts vanuit Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)

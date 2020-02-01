@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 019c2f8a13a80de395803ca1782e578c049a7923
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549343"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909037"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Vereisten voor het inrichten van Azure AD Connect Cloud
 Dit artikel bevat richt lijnen voor het kiezen en gebruiken van Azure Active Directory (Azure AD) verbinden met Cloud inrichting als uw identiteits oplossing.
@@ -29,6 +29,9 @@ U hebt het volgende nodig voor het gebruik van Azure AD Connect Cloud inrichting
 - Een algemeen beheerders account voor uw Azure AD-Tenant.
 - Een on-premises server voor de inrichtings agent met Windows 2012 R2 of hoger.
 - On-premises firewall configuraties.
+
+>[!NOTE]
+>De inrichtings agent kan momenteel alleen worden geïnstalleerd op de Engelse taal servers. Het installeren van een Engels taal pakket op een niet-Engelse server is geen geldige tijdelijke oplossing, waardoor de agent niet kan worden geïnstalleerd. 
 
 De rest van het document bevat stapsgewijze instructies voor deze vereisten.
 

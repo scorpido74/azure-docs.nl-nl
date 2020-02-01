@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl mesh code-pakket-log
 description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het verkrijgen van Logboeken voor een opgegeven code pakket.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 78edc9bb36b711f72300942bc9900b0fde7c51d2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f8665e75e4c921a3305c9965601e2ee0825c8995
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646140"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906047"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
 De logboeken ophalen voor de container van het opgegeven code pakket voor de opgegeven service replica.

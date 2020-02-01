@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl chaos-schema
 description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het plannen van chaos.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: bff83e1d25d04f91611f5bea6c69dfcd299af04c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639170"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906188"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 De chaos-planning ophalen en instellen.
@@ -71,9 +71,10 @@ Chaos wordt automatisch gepland op basis van het chaos-schema. Het chaos-schema 
 
 ### <a name="examples"></a>Voorbeelden
 
-Met de volgende opdracht stelt u een planning in (ervan uitgaande dat het huidige schema versie 0 heeft) die begint op 2016-01-01 en verloopt op 2038-01-01 dat chaos 24 uur van de dag, 7 dagen per week uitvoert. Chaos wordt voor die tijd gepland op het cluster.
-
-    sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
+Met de volgende opdracht stelt u een planning in (ervan uitgaande dat het huidige schema versie 0 heeft) die begint op 2016-01-01 en verloopt op 2038-01-01 dat chaos 24 uur van de dag, 7 dagen per week uitvoert.
+Chaos wordt voor die tijd gepland op het cluster.
+```
+sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary
     [
     {
@@ -134,6 +135,8 @@ Met de volgende opdracht stelt u een planning in (ervan uitgaande dat het huidig
         ]
     }
     ]
+```
+
 
 
 ## <a name="next-steps"></a>Volgende stappen

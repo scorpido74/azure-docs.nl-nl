@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 12/11/2019
+ms.date: 01/28/2020
 ms.author: diberry
-ms.openlocfilehash: 0ddce3e4112dfb14309878927493abb3cb6b451a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9afef07af1332910cc9e25f9d66db5930df3bd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447369"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901657"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Zelf studie: een QnA-bot maken met Azure Bot Service v4
 
@@ -41,11 +41,11 @@ Maak een bot als een client toepassing voor de Knowledge Base.
 
 1. Ga in de QnA Maker Portal naar de pagina **publiceren** en publiceer uw kennis database. Selecteer **bot maken**.
 
-    ![Ga in de QnA Maker Portal naar de pagina publiceren en publiceer uw kennis database. Selecteer Bot maken.](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)
+    [Ga ![in de QnA Maker-Portal naar de pagina publiceren en publiceer uw kennis database. Selecteer bot maken.](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png#lightbox)
 
-    Azure Portal wordt geopend met de configuratie voor het maken van de bot.
+    De Azure Portal wordt geopend met de configuratie voor het maken van de bot.
 
-1.  Geef de instellingen voor het maken van de bot op:
+1.  Voer de instellingen in om de bot te maken:
 
     |Instelling|Waarde|Doel|
     |--|--|--|
@@ -57,7 +57,7 @@ Maak een bot als een client toepassing voor de Knowledge Base.
     |Naam van app|`qna-maker-central-us-bot-app`|Dit is een web-app ter ondersteuning van uw bot. Dit mag niet dezelfde app-naam zijn als uw QnA Maker-service al gebruikt. Het delen van de Web-App van QnA Maker met een andere resource wordt niet ondersteund.|
     |SDK-taal|C#|Dit is de onderliggende programmeer taal die wordt gebruikt door de bot Framework SDK. Uw keuzes zijn [C#](https://github.com/Microsoft/botbuilder-dotnet) of [node. js](https://github.com/Microsoft/botbuilder-js).|
     |QnA-verificatie sleutel|**Niet wijzigen**|Deze waarde wordt voor u ingevuld.|
-    |App Service-plan/-locatie|**Niet wijzigen**|Voor deze zelf studie is de locatie niet belang rijk.|
+    |App service-plan/-locatie|**Niet wijzigen**|Voor deze zelf studie is de locatie niet belang rijk.|
     |Application Insights|**Niet wijzigen**|Logboek registratie wordt verzonden naar Application Insights.|
     |Micro soft App-ID|**Niet wijzigen**|Active Directory-gebruiker en-wacht woord zijn vereist.|
 
@@ -70,9 +70,9 @@ Maak een bot als een client toepassing voor de Knowledge Base.
 
 ## <a name="chat-with-the-bot"></a>Met de Bot chatten
 
-1. Open de nieuwe botresource vanuit de melding in Azure Portal.
+1. Open in de Azure Portal de nieuwe bot-resource vanuit de melding.
 
-    ![Open de nieuwe botresource vanuit de melding in Azure Portal.](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
+    ![Open in de Azure Portal de nieuwe bot-resource vanuit de melding.](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
 
 1. Selecteer in **bot Management** **testen in Web Chat** en voer: `How large can my KB be?`in. De bot reageert met:
 
@@ -101,8 +101,6 @@ Als u geen nieuwe resource groep hebt gemaakt, moet u de resources zoeken die aa
 
 ## <a name="related-to-qna-maker-bots"></a>Gerelateerd aan QnA Maker bots
 
-* De QnA Maker Help-bot die in de QnA Maker portal wordt gebruikt, is beschikbaar als een bot-voor [beeld](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support).
-    het pictogram ![QnA Maker Help-bot is een rode robot](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
 * Het gebruik van de [gezondheids zorg](https://docs.microsoft.com/HealthBot/qna_model_howto) QnA Maker als een van de [taal modellen](https://docs.microsoft.com/HealthBot/qna_model_howto).
 
 

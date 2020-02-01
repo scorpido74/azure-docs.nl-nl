@@ -3,33 +3,30 @@ title: 'Snelstartgids: Azure Blob Storage-client bibliotheek v 2.1 voor python'
 description: In deze snelstart maakt u een opslagaccount en een container in object(blob)-opslag. Vervolgens gebruikt u de Storage-client bibliotheek v 2.1 voor python om een BLOB te uploaden naar Azure Storage, een BLOB te downloaden en de blobs in een container weer te geven.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/11/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 3e1adc9220dd9b49c49ff3fe5e798dfcc9d5c928
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122675"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906433"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Snelstartgids: Azure Blob Storage-client bibliotheek v 2.1 voor python
+# <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Quick Start: blobs beheren met python v 2.1 SDK
 
-In dit artikel gebruikt u python voor het uploaden, downloaden en weer geven van blok-blobs in een container in Azure Blob Storage. Blobs zijn simpelweg objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. Blobs in Azure Storage verschillen van bestands shares, schema's met minder tabellen en berichten wachtrijen.  Zie [Inleiding tot Azure Storage](/azure/storage/common/storage-introduction)voor meer informatie.
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+In deze Quick Start leert u hoe u blobs beheert met behulp van python. Blobs zijn objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. U kunt blobs uploaden, downloaden en vermelden en u kunt containers maken en verwijderen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Een Azure Storage-account. [Een opslagaccount maken](../common/storage-account-create.md).
+- [Python](https://www.python.org/downloads/).
+- [Azure Storage SDK voor python](https://github.com/Azure/azure-sdk-for-python).
 
-Zorg dat u de volgende aanvullende vereisten hebt geïnstalleerd:
-
-* [Python](https://www.python.org/downloads/)
-
-* [Azure Storage SDK voor Python](https://github.com/Azure/azure-sdk-for-python)
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="download-the-sample-application"></a>De voorbeeldtoepassing downloaden
 

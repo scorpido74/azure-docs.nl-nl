@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: d5b8121c7888903f3e4552a21a6ddc175ecc5176
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4214c4eb9fbe1d3e39d1ee16289f30b893b94653
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489094"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906613"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Een statische website hosten in Azure Storage
 
@@ -38,7 +38,7 @@ In het deel venster dat wordt weer gegeven naast de pagina account overzicht van
 
 <a id="cli" />
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 U kunt statisch website hosting inschakelen met behulp van de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
@@ -221,10 +221,5 @@ Wanneer u metrische gegevens hebt ingeschakeld, worden verkeers statistieken voo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een statische website hosten in Azure Storage](storage-blob-static-website.md)
-* [De Azure CDN gebruiken om toegang te krijgen tot blobs met aangepaste domeinen via HTTPS](storage-https-custom-domain-cdn.md)
-* [Een aangepaste domein naam configureren voor uw BLOB of Web-eind punt](storage-custom-domain-name.md)
-* [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure App Service](/azure/app-service/overview)
-* [Uw eerste serverloze web-app bouwen](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [Zelf studie: uw domein hosten in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)
+* Meer informatie over het configureren van een aangepast domein met uw statische website. Zie [een aangepast domein toewijzen aan een Azure Blob Storage-eind punt](storage-custom-domain-name.md).
+

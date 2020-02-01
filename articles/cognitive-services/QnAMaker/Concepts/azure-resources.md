@@ -3,12 +3,12 @@ title: Azure-resources-QnA Maker
 description: QnA Maker maakt gebruik van verschillende Azure-bronnen, elk met een ander doel. Als u begrijpt hoe deze afzonderlijk worden gebruikt, kunt u de juiste prijs categorie plannen en selecteren of u moet weten wanneer u de prijs categorie wilt wijzigen. Als u begrijpt hoe ze in combi natie worden gebruikt, kunt u problemen opsporen en oplossen wanneer deze zich voordoen.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 2b3a06122ce6123cd8edcedf5dfbf38c3c12218a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77aced459c7731a2cac432538cfc66ed9ce83f9d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843489"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902076"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-resources voor QnA Maker
 
@@ -111,6 +111,10 @@ De eerste Knowledge Base die in de QnA Maker resource wordt gemaakt, wordt gebru
 De QnA Maker-resource biedt toegang tot de ontwerp-en publicatie-Api's, evenals de NLP (QnA) op basis van de laag voor natuurlijke taal verwerking (prioriteits-#2) van de verzamelingen die tijdens runtime zijn ingesteld.
 
 Met de tweede classificatie worden intelligente filters toegepast die meta gegevens en opvolgings vragen kunnen bevatten.
+
+#### <a name="qna-maker-resource-configuration-settings"></a>Configuratie-instellingen van QnA Maker bron
+
+Wanneer u een nieuwe Knowledge Base maakt in de [QnA Maker Portal](https://qnamaker.ai), is de **taal** instelling de enige instelling die op het resource niveau wordt toegepast. U selecteert de taal bij het maken van de eerste Knowledge Base voor de resource. 
 
 ### <a name="app-service-and-app-service-plan"></a>App service-en app service-plan
 

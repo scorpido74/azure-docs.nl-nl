@@ -3,38 +3,26 @@ title: 'Snelstartgids: Azure Blob Storage-client bibliotheek V8 voor Java'
 description: Maak een opslagaccount en een container in object(Blob)-opslag. Gebruik vervolgens de Azure Storage-client bibliotheek V8 voor Java om een BLOB te uploaden naar Azure Storage, een BLOB te downloaden en de blobs in een container weer te geven.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/05/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: a6c4380e44d705e551bc96746a809c57aa02ac5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 373875aee836485bb994d81e0945cec3a9b088eb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825376"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906489"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v8-for-java"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V8 voor Java
+# <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Quick Start: blobs beheren met Java V8 SDK
 
-Ga aan de slag met de Azure Blob Storage-client bibliotheek V8 voor Java. Azure Blob Storage is de object opslag oplossing van micro soft voor de Cloud. Volg de stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
-
-Gebruik de Azure Blob Storage-client bibliotheek voor Java voor het volgende:
-
-* Een container maken
-* Machtigingen voor een container instellen
-* Een BLOB maken in Azure Storage
-* De BLOB downloaden naar uw lokale computer
-* Alle blobs in een container weer geven
-* Een container verwijderen
+In deze Quick Start leert u hoe u blobs beheert met behulp van Java. Blobs zijn objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. U kunt blobs uploaden, downloaden en vermelden. U kunt ook containers maken, machtigingen instellen voor en verwijderen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* Azure Storage account: [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Een IDE met maven-integratie.
-* U kunt Maven ook installeren en configureren voor gebruik vanaf de opdrachtregel.
-
-In deze hand leiding wordt gebruikgemaakt van [eclips](https://www.eclipse.org/downloads/) met de configuratie ' eclips IDE for Java Developers '.
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Een Azure Storage-account. [Een opslagaccount maken](../common/storage-account-create.md).
+- Een IDE met maven-integratie. In deze hand leiding wordt gebruikgemaakt van [eclips](https://www.eclipse.org/downloads/) met de configuratie ' eclips IDE for Java Developers '.
 
 ## <a name="download-the-sample-application"></a>De voorbeeldtoepassing downloaden
 
@@ -46,9 +34,9 @@ Gebruik [git](https://git-scm.com/) om een kopie van de toepassing naar uw ontwi
 git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 ```
 
-Met deze opdracht wordt de opslagplaats naar uw lokale git-map gekloond. Om het project te openen, start u Eclipse en sluit u het welkomstscherm. Selecteer **Bestand** en vervolgens **Projecten openen vanuit bestandssysteem**. Zorg ervoor dat **Detect and configure project natures** is ingeschakeld. Selecteer **Directory** en navigeer naar de locatie van de gekloonde opslagplaats. Selecteer in de gekloonde opslagplaats de map **blobAzureApp**. Zorg ervoor dat het project **blobAzureApp** wordt weergegeven als een Eclipse-project en selecteer vervolgens **Voltooien**.
+Met deze opdracht wordt de opslagplaats naar uw lokale git-map gekloond. Om het project te openen, start u Eclipse en sluit u het welkomstscherm. Selecteer **Bestand** en vervolgens **Projecten openen vanuit bestandssysteem**. Zorg ervoor dat het selectie vakje **project aarden detecteren en configureren** is ingeschakeld. Selecteer **Directory** en navigeer naar de locatie van de gekloonde opslagplaats. Selecteer in de gekloonde opslagplaats de map **blobAzureApp**. Zorg ervoor dat het project **blobAzureApp** wordt weergegeven als een Eclipse-project en selecteer vervolgens **Voltooien**.
 
-Zodra het project is geïmporteerd, opent u **AzureApp.java** (in **blobQuickstart.blobAzureApp** in **src/main/java**) en vervangt u de `accountname`en `accountkey` in de tekenreeks `storageConnectionString`. Voer de toepassing vervolgens uit. Specifieke instructies voor het voltooien van deze taken worden beschreven in de volgende secties.
+Zodra het project is voltooid, opent u **AzureApp. java** (bevindt zich in **blobQuickstart. blobAzureApp** in **src/main/Java**) en vervangt u de `accountname` en `accountkey` binnen de teken reeks van `storageConnectionString`. Voer de toepassing vervolgens uit. Specifieke instructies voor het voltooien van deze taken worden beschreven in de volgende secties.
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -89,7 +77,7 @@ Voordat u doorgaat, controleert u of in de standaardmap (*C:\Users\<user>\AppDat
   >[!NOTE]
   >U kunt ook een hulpprogramma zoals [Azure Storage Explorer](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) gebruiken om de bestanden in de Blob-opslag te bekijken. Azure Storage Explorer is een gratis hulpprogramma voor meerdere platforms waarmee u toegang hebt tot de gegevens van uw opslagaccount.
 
-Nadat u de bestanden hebt gecontroleerd, drukt u op **Enter** om het voorbeeld te voltooien en de testbestanden te verwijderen. Nu u weet wat het voorbeeld doet, opent u het bestand **AzureApp.java** om de code te bekijken.
+Nadat u de bestanden hebt gecontroleerd, drukt u op **Enter** om de demo te volt ooien en de test bestanden te verwijderen. Nu u weet wat het voorbeeld doet, opent u het bestand **AzureApp.java** om de code te bekijken.
 
 ## <a name="understand-the-sample-code"></a>De voorbeeldcode begrijpen
 
@@ -97,7 +85,7 @@ We gaan nu de voorbeeldcode bespreken, zodat u begrijpt hoe deze werkt.
 
 ### <a name="get-references-to-the-storage-objects"></a>Verwijzingen naar de opslagobjecten ophalen
 
-Als eerste moeten verwijzingen worden gemaakt naar objecten die worden gebruikt voor het verkrijgen van toegang tot de Blob-opslag en voor het beheren ervan. Deze objecten worden boven op elkaar gebouwd en elk ervan wordt door de volgende in de lijst gebruikt.
+Als eerste moeten verwijzingen worden gemaakt naar objecten die worden gebruikt voor het verkrijgen van toegang tot de Blob-opslag en voor het beheren ervan. Deze objecten zijn afhankelijk van elkaar en elk object vormt de basis voor het volgende object in de lijst.
 
 * Maak een exemplaar van het [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage.storageaccount)-object, dat naar het opslagaccount wijst.
 
@@ -118,7 +106,7 @@ Als eerste moeten verwijzingen worden gemaakt naar objecten die worden gebruikt 
 
 In deze sectie gaat u een exemplaar maken van de objecten, een nieuwe container maken en vervolgens machtigingen instellen voor de container, zodat de blobs openbaar zijn en via slechts een URL kunnen worden geopend. De container heeft de naam **quickstartcontainer**.
 
-In dit voorbeeld wordt [CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.createifnotexists) gebruikt omdat we bij elke nieuwe uitvoering van het voorbeeld een nieuwe container willen maken. In een productieomgeving waarin u overal in een toepassing dezelfde container gebruikt, is het beter om **CreateIfNotExists** maar één keer aan te roepen. U kunt de container ook vooraf maken, zodat u deze niet in de code hoeft te maken.
+In dit voorbeeld wordt [CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.createifnotexists) gebruikt omdat we bij elke nieuwe uitvoering van het voorbeeld een nieuwe container willen maken. In een productieomgeving waarin u overal in een toepassing dezelfde container gebruikt, is het beter om **CreateIfNotExists** maar één keer aan te roepen. U kunt de container ook vooraf maken, zodat u dit niet in de code hoeft te doen.
 
 ```java
 // Parse the connection string and create a blob client to interact with Blob storage
@@ -155,11 +143,11 @@ blob.uploadFromFile(sourceFile.getAbsolutePath());
 
 Er zijn verschillende methoden voor `upload`, waaronder [upload](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload), [uploadBlock](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadblock), [uploadFullBlob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadfullblob), [uploadStandardBlobTier](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadstandardblobtier) en [uploadText](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadtext) die u kunt gebruiken met Blob Storage. Als u bijvoorbeeld een tekenreeks hebt, kunt u de methode `UploadText` gebruiken in plaats van de methode `Upload`.
 
-Blok-bobs kunnen een willekeurig soort tekst- of binair bestand zijn. Pagina-blobs worden hoofdzakelijk gebruikt voor de VHD-bestanden die worden gebruikt als back-up voor IaaS-VM's. Gebruik toevoeg-blobs voor logboekregistratie, bijvoorbeeld wanneer u gegevens wilt wegschrijven naar een bestand en vervolgens gegevens wilt blijven toevoegen. De meeste objecten die worden opgeslagen in Blob-opslag, zijn blok-blobs.
+Blok-bobs kunnen bestaan uit elk type tekstbestand of binair bestand. Pagina-blobs worden hoofdzakelijk gebruikt voor de VHD-bestanden die worden gebruikt als back-up voor IaaS-VM's. Gebruik toevoeg-blobs voor logboekregistratie, bijvoorbeeld wanneer u gegevens wilt wegschrijven naar een bestand en vervolgens gegevens wilt blijven toevoegen. De meeste objecten die worden opgeslagen in Blob-opslag, zijn blok-blobs.
 
 ### <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
-U kunt een lijst met bestanden in de container opvragen met behulp van [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobs). Met de volgende code wordt de lijst met blobs opgehaald en doorlopen, waarbij de URL‘s van de gevonden blobs worden weergegeven. U kunt de URL uit het opdrachtvenster kopiëren en in een browser plakken om het bestand weer te geven.
+U kunt een lijst met bestanden in de container opvragen met behulp van [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobs). Met de volgende code wordt de lijst met blobs opgehaald en doorlopen, waarbij de URI‘s van de gevonden blobs worden weergegeven. U kunt de URL uit het opdrachtvenster kopiëren en in een browser plakken om het bestand weer te geven.
 
 ```java
 //Listing contents of container
@@ -172,7 +160,7 @@ for (ListBlobItem blobItem : container.listBlobs()) {
 
 Download blobs naar uw lokale schijf met behulp van [CloudBlob.DownloadToFile](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob.downloadtofile).
 
-Met de volgende code wordt de blob gedownload die in een eerdere sectie is geüpload, waarbij de suffix '_DOWNLOADED' wordt toegevoegd aan de blobnaam, zodat u beide bestanden op de lokale schijf kunt zien.
+Met de volgende code wordt de blob gedownload die in een eerdere sectie is geüpload, waarbij het achtervoegsel '_DOWNLOADED' wordt toegevoegd aan de blobnaam, zodat u beide bestanden op de lokale schijf kunt zien.
 
 ```java
 // Download blob. In most cases, you would have to retrieve the reference

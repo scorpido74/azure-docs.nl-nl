@@ -3,41 +3,33 @@ title: 'Snelstartgids: Azure Blob-opslag bibliotheek V12-java script'
 description: In deze Quick Start leert u hoe u de Azure Blob Storage-client bibliotheek versie 12 voor Java script kunt gebruiken om een container en een BLOB in Blob-opslag (object) te maken. Hierna leert u hoe u de blob naar uw lokale computer downloadt en hoe u alle blobs in een container kunt weergeven.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/19/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c8473bff3b6e7d2079bb202befc23e1ada3791eb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: eabfefbf28b54e4a0a025698f8da48518e7df9bf
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970261"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906455"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor Java script
+# <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Quick Start: blobs beheren met Java script V12 SDK in node. js
 
-Ga aan de slag met de Azure Blob Storage-client bibliotheek V12 voor Java script. Azure Blob Storage is Microsoft's oplossing voor opslag van objecten in de cloud. Volg de stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
-
-> [!NOTE]
-> Zie [Snelstartgids: Azure Blob Storage-client bibliotheek voor Java script](storage-quickstart-blobs-nodejs-legacy.md)om aan de slag te gaan met de vorige SDK-versie.
-
-Gebruik de Azure Blob Storage-client bibliotheek V12 voor Java script voor het volgende:
-
-* Een container maken
-* Een BLOB uploaden naar Azure Storage
-* Alle blobs in een container weer geven
-* De BLOB downloaden naar uw lokale computer
-* Een container verwijderen
+In deze Quick Start leert u hoe u blobs beheert met behulp van node. js. Blobs zijn objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. U kunt blobs uploaden, downloaden en vermelden en u kunt containers maken en verwijderen.
 
 [API-referentie documentatie](/javascript/api/@azure/storage-blob) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [pakket (knooppunt pakket beheer)](https://www.npmjs.com/package/@azure/storage-blob) | voor [beelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* Azure Storage-account: [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Huidig [knoop punt. js](https://nodejs.org/en/download/) voor uw besturings systeem.
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Een Azure Storage-account. [Een opslagaccount maken](../common/storage-account-create.md).
+- [Node.js](https://nodejs.org/en/download/).
+
+> [!NOTE]
+> Zie [Quick Start: blobs beheren met Java script V10 toevoegen SDK in node. js](storage-quickstart-blobs-nodejs-legacy.md)om aan de slag te gaan met de vorige SDK-versie.
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>Instellen
 
@@ -96,7 +88,7 @@ Vanuit de projectmap:
 
 1. Een ander nieuw tekst bestand openen in de code-editor
 1. `require`-aanroepen toevoegen om Azure-en node. js-modules te laden
-1. De structuur voor het programma maken, inclusief zeer eenvoudige uitzonde ringen verwerken
+1. De structuur voor het programma maken, met inbegrip van basis afhandeling van uitzonde ringen
 
     Hier volgt de code:
 
@@ -134,7 +126,7 @@ Gebruik de volgende Java script-klassen om te communiceren met deze resources:
 * [ContainerClient](/javascript/api/@azure/storage-blob/containerclient): met de klasse `ContainerClient` kunt u Azure Storage containers en de bijbehorende blobs bewerken.
 * [BlobClient](/javascript/api/@azure/storage-blob/blobclient): met de klasse `BlobClient` kunt u Azure Storage blobs bewerken.
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 In deze voorbeeld code fragmenten ziet u hoe u het volgende kunt uitvoeren met de Azure Blob Storage-client bibliotheek voor Java script:
 
@@ -232,7 +224,7 @@ for await (const blob of containerClient.listBlobsFlat()) {
 
 ### <a name="download-blobs"></a>Blobs downloaden
 
-Down load de eerder gemaakte BLOB door de [Download](/javascript/api/@azure/storage-blob/blockblobclient#download-undefined---number--undefined---number--blobdownloadoptions-) methode aan te roepen. De voorbeeld code bevat een hulp functie met de naam `streamToString` die wordt gebruikt om een door node. js Lees bare stroom te lezen in een teken reeks.
+Down load de eerder gemaakte BLOB door de [Download](/javascript/api/@azure/storage-blob/blockblobclient#download-undefined---number--undefined---number--blobdownloadoptions-) methode aan te roepen. De voorbeeld code bevat een hulp functie met de naam `streamToString`, die wordt gebruikt voor het lezen van een door node. js Lees bare stroom in een teken reeks.
 
 Voeg deze code toe aan het einde van de `main` functie:
 
@@ -314,7 +306,7 @@ Door loop de code in uw debugger en controleer de [Azure Portal](https://portal.
 
 In deze Quick Start hebt u geleerd hoe u blobs kunt uploaden, downloaden en vermelden met behulp van Java script.
 
-Voor zelf studies, voor beelden, snel starten en andere documentatie gaat u naar:
+Voor zelf studies, voor beelden, Quick starts en andere documentatie gaat u naar:
 
 > [!div class="nextstepaction"]
 > [Documentatie voor Azure voor Java script](/azure/javascript/)

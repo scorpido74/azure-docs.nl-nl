@@ -4,12 +4,12 @@ description: Het Hyperledger Fabric consortium-netwerk implementeren en configur
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 59e13b671f68c29271227d481b41562256d66fd6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 93f78f2c8bc32a2012e5635e0daec10b8c51d167
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289642"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901629"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
 
@@ -466,7 +466,7 @@ npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <que
 
 ```
 
-Geef de naam van de query functie en de door komma's gescheiden lijst met argumenten in `<queryFunction>` en `<queryFuncArgs>` respectievelijk op. `fabcar` chaincode als referentie om alle auto's in de wereld gezondheidsorganisatie in te voeren `<queryFunction>` in `"queryAllCars"` en `<queryArgs>' to `"" ".
+Geef de naam van de query functie en de door komma's gescheiden lijst met argumenten in `<queryFunction>` en `<queryFuncArgs>` respectievelijk op. En `fabcar` chaincode als referentie, om een query uit te voeren op alle auto's in de wereld statusset `<queryFunction>` naar `"queryAllCars"` en `<queryArgs>` `""`.
 
 Raadpleeg de Help van de opdracht voor meer informatie over de argumenten die zijn door gegeven in de opdracht
 

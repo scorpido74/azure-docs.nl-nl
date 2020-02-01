@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 909d8e69e02b55ee6e45515b0d9c316a549e1332
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e37ff6e1bde594014510880492c2572ad1634400
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972838"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904410"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -175,6 +175,9 @@ Als de locatie van de definitie a:
 ## <a name="display-name-and-description"></a>Weergavenaam en beschrijving
 
 U gebruikt **displayName** en **beschrijving** om te bepalen van de beleidsdefinitie en een context bieden voor wanneer deze wordt gebruikt. **DisplayName** heeft een maximale lengte van _128_ tekens en een **Beschrijving** van Maxi maal _512_ tekens.
+
+> [!NOTE]
+> Tijdens het maken of bijwerken van een beleids definitie, de **id**, het **type**en de **naam** worden gedefinieerd door de Eigenschappen extern van de JSON en zijn deze niet nodig in het JSON-bestand. Het ophalen van de beleids definitie via SDK retourneert de eigenschappen **id**, **type**en **naam** als onderdeel van de JSON, maar elk is een alleen-lezen informatie met betrekking tot de beleids definitie.
 
 ## <a name="policy-rule"></a>Beleidsregel
 

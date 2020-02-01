@@ -6,29 +6,29 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.author: mhopkins
-ms.date: 08/29/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 7d481b115650c72df95f7516bb3b39411201bf83
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 257af309ebdb9080c3cd60b8b89a2c992ecf5145
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864006"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906569"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>Quick Start: blobs uploaden, vermelden en verwijderen met behulp van Azure Storage V10 toevoegen SDK voor Java script/HTML in de browser
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-browser"></a>Quick Start: blobs beheren met Java script V10 toevoegen SDK in browser
 
-In deze Quick Start leert u de [Azure Storage SDK V10 toevoegen voor Java script-BLOB](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) Library te gebruiken voor het beheren van blobs van Java script-code die volledig in de browser wordt uitgevoerd. De hier gebruikte aanpak toont hoe u de vereiste beveiligingsmaatregelen dient te gebruiken om verzekerd te zijn van beveiligde toegang tot uw blobopslagaccount.
+In deze Quick Start leert u hoe u blobs beheert met behulp van Java script-code die volledig in de browser wordt uitgevoerd. Blobs zijn objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. U gebruikt vereiste beveiligings maatregelen om beveiligde toegang tot uw Blob Storage-account te garanderen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
-
-De Azure Storage java script-client bibliotheken werken niet rechtstreeks vanuit het bestands systeem en moeten vanuit een webserver worden geleverd. In dit onderwerp wordt [node. js](https://nodejs.org) gebruikt om een basis server te starten. Als u liever geen knoop punt installeert, kunt u elke andere manier gebruiken om een lokale webserver uit te voeren.
-
-Als u de stappen voor het opsporen van fouten wilt volgen, hebt u [Visual Studio code](https://code.visualstudio.com) en de [debugger voor Chrome](vscode:extension/msjsdiag.debugger-for-chrome) of [debugger voor micro soft Edge](vscode:extension/msjsdiag.debugger-for-edge) uitbrei ding nodig.
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Een Azure Storage-account. [Een opslagaccount maken](../common/storage-account-create.md).
+- Een lokale webserver. In dit artikel wordt [node. js](https://nodejs.org) gebruikt voor het openen van een basis server.
+- [Visual Studio Code](https://code.visualstudio.com).
+- Een VS-code-extensie voor fout opsporing in een browser, zoals [fout opsporing voor Chrome](vscode:extension/msjsdiag.debugger-for-chrome) of [fout opsporing voor micro soft Edge](vscode:extension/msjsdiag.debugger-for-edge).
 
 ## <a name="setting-up-storage-account-cors-rules"></a>CORS-regels voor het opslagaccount instellen
 

@@ -8,27 +8,27 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 01/28/2020
 ms.author: diberry
-ms.openlocfilehash: add4bbead880fb9b74d342abc1d4b3c0e9475fad
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: cadbf5fa88db7d5e524cb7e075745c03a844f750
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721177"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901711"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Actief leren gebruiken om uw Knowledge Base te verbeteren
 
-Met actief leren kunt u de kwaliteit van uw kennis basis verbeteren door alternatieve vragen te stellen, op basis van de gebruikers inzendingen, naar uw vraag en antwoord paar. U kunt deze suggesties bekijken, ofwel toevoegen aan bestaande vragen of afwijzen. 
+Met actief leren kunt u de kwaliteit van uw kennis basis verbeteren door alternatieve vragen te stellen, op basis van de gebruikers inzendingen, naar uw vraag en antwoord paar. U kunt deze suggesties bekijken, ofwel toevoegen aan bestaande vragen of afwijzen.
 
 Uw kennis database wordt niet automatisch gewijzigd. Als u een wijziging wilt door voeren, moet u de suggesties accepteren. Deze suggesties Voeg vragen toe, maar u kunt geen bestaande vragen wijzigen of verwijderen.
 
 ## <a name="what-is-active-learning"></a>Wat is actief leren?
 
 QnA Maker leert nieuwe vraag varianten met impliciete en expliciete feedback.
- 
+
 * [Impliciete feedback](#how-qna-makers-implicit-feedback-works) : de rang schikking begrijpt wanneer een gebruikers vraag meerdere antwoorden heeft met scores die zeer dicht zijn en die als feedback beschouwt. U hoeft niets te doen om dit te doen.
-* [Expliciete feedback](#how-you-give-explicit-feedback-with-the-train-api) : wanneer meerdere antwoorden met weinig variatie in scores worden geretourneerd door de Knowledge Base, vraagt de client toepassing aan de gebruiker welke vraag de juiste vraag is. De expliciete feedback van de gebruiker wordt verzonden naar QnA Maker met de [Train API](#train-api). 
+* [Expliciete feedback](#how-you-give-explicit-feedback-with-the-train-api) : wanneer meerdere antwoorden met weinig variatie in scores worden geretourneerd door de Knowledge Base, vraagt de client toepassing aan de gebruiker welke vraag de juiste vraag is. De expliciete feedback van de gebruiker wordt verzonden naar QnA Maker met de [Train API](#train-api).
 
 Beide methoden bieden de rang schikking van overeenkomende query's die geclusterd zijn.
 
@@ -44,19 +44,19 @@ Zodra vragen worden voorgesteld in de QnA Maker Portal, moet u deze suggesties c
 
 De impliciete feedback van QnA Maker maakt gebruik van een algoritme om de Score nabijheid te bepalen en vervolgens actieve Learning suggesties te maken. Het algoritme voor het bepalen van de nabijheid is geen eenvoudige berekening. De bereiken in het volgende voor beeld zijn niet bedoeld om te worden hersteld, maar moeten worden gebruikt als richt lijn om alleen de impact van het algoritme te begrijpen.
 
-Wanneer de Score van een vraag zeer betrouwbaar is, zoals 80%, is het bereik van de scores die worden overwogen voor actief onderwijs breed, ongeveer 10%. Naarmate de betrouwbaarheids Score, zoals 40%, afneemt, wordt het bereik van de scores in ongeveer 4% verkleind. 
+Wanneer de Score van een vraag zeer betrouwbaar is, zoals 80%, is het bereik van de scores die worden overwogen voor actief onderwijs breed, ongeveer 10%. Naarmate de betrouwbaarheids Score, zoals 40%, afneemt, wordt het bereik van de scores in ongeveer 4% verkleind.
 
 ## <a name="how-you-give-explicit-feedback-with-the-train-api"></a>Expliciete feedback geven met de trein-API
 
 Het is belang rijk dat QnA Maker expliciete feedback krijgt over de antwoorden die het beste antwoord waren. Hoe het beste antwoord wordt bepaald, is aan u toe te voegen en kan het volgende omvatten:
 
 * Feedback van gebruikers, selecteert u een van de antwoorden.
-* Bedrijfs logica, zoals het bepalen van een acceptabel Score bereik.  
+* Bedrijfs logica, zoals het bepalen van een acceptabel Score bereik.
 * Een combi natie van feedback van gebruikers en bedrijfs logica.
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>Upgrade uw runtime versie om actief leren te gebruiken
 
-Actief leren wordt ondersteund in runtime versie 4.4.0 en hoger. Als uw Knowledge Base is gemaakt in een eerdere versie, moet u [de runtime upgraden](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) om deze functie te gebruiken. 
+Actief leren wordt ondersteund in runtime versie 4.4.0 en hoger. Als uw Knowledge Base is gemaakt in een eerdere versie, moet u [de runtime upgraden](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) om deze functie te gebruiken.
 
 ## <a name="turn-on-active-learning-to-see-suggestions"></a>Actief leren inschakelen om suggesties te bekijken
 
@@ -64,17 +64,18 @@ Actief leren is standaard uitgeschakeld. Schakel deze in om voorgestelde vragen 
 
 1. Selecteer **publiceren** om de Knowledge Base te publiceren. Actieve leer query's worden alleen verzameld van het GenerateAnswer API prediction-eind punt. De query's naar het test venster in de QnA Maker Portal hebben geen invloed op actief leren.
 
-1. Als u actief leren wilt inschakelen in de QnA Maker Portal, gaat u naar de rechter bovenhoek en selecteert u uw **naam**. Ga naar [**Service-instellingen**](https://www.qnamaker.ai/UserSettings).  
+1. Als u actief leren wilt inschakelen in de QnA Maker Portal, gaat u naar de rechter bovenhoek en selecteert u uw **naam**. Ga naar [**Service-instellingen**](https://www.qnamaker.ai/UserSettings).
 
     ![Schakel de voorgestelde vraag van het actieve leer proces in op de pagina Service-instellingen. Selecteer uw gebruikers naam in het menu rechtsboven en selecteer vervolgens Service-instellingen.](../media/improve-knowledge-base/Endpoint-Keys.png)
 
 
-1. Zoek de QnA Maker-service en schakel vervolgens **actief leren**in. 
+1. Zoek de QnA Maker-service en schakel vervolgens **actief leren**in.
 
-    [![op de pagina Service-instellingen de functie actief leren in of uit. Als u de functie niet kunt in-of uitschakelen, moet u mogelijk een upgrade van uw service uitvoeren.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > [![op de pagina Service-instellingen de functie actief leren in of uit. Als u de functie niet kunt in-of uitschakelen, moet u mogelijk een upgrade van uw service uitvoeren.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     > [!Note]
-    > De exacte versie van de voor gaande afbeelding wordt alleen weer gegeven als voor beeld. Uw versie kan afwijken. 
+    > De exacte versie van de voor gaande afbeelding wordt alleen weer gegeven als voor beeld. Uw versie kan afwijken.
 
     Zodra **actief leren** is ingeschakeld, worden met de Knowledge Base regel matig nieuwe vragen voorgesteld op basis van door de gebruiker ingediende vragen. U kunt **actief leren** uitschakelen door de instelling opnieuw in te scha kelen.
 
@@ -82,7 +83,7 @@ Actief leren is standaard uitgeschakeld. Schakel deze in om voorgestelde vragen 
 
 Met actief onderwijs wijzigt u de Knowledge Base of Search Service na het goed keuren van de suggestie en vervolgens op te slaan en te trainen. Als u de suggestie goedkeurt, wordt deze toegevoegd als een alternatieve vraag.
 
-1. Als u de voorgestelde vragen wilt bekijken, selecteert u op de pagina Knowledge Base **bewerken** de optie **weergave opties**en selecteert u **actieve Learning suggesties weer geven**. 
+1. Als u de voorgestelde vragen wilt bekijken, selecteert u op de pagina Knowledge Base **bewerken** de optie **weergave opties**en selecteert u **actieve Learning suggesties weer geven**.
 
     [Selecteer ![in het gedeelte bewerken van de Portal de optie suggesties weer geven om de nieuwe vragen van het actieve leer proces te bekijken.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
@@ -90,7 +91,7 @@ Met actief onderwijs wijzigt u de Knowledge Base of Search Service na het goed k
 
     [![gebruik de wissel knop filteren op suggesties om alleen de voorgestelde suggesties van het actieve leer proces weer te geven.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. Elk QnA paar suggereert de nieuwe vraag alternatieven met een vinkje, `✔`, om de vraag te accepteren of een `x` om de suggesties af te wijzen. Schakel het selectie vakje in om de vraag toe te voegen. 
+1. Elk QnA paar suggereert de nieuwe vraag alternatieven met een vinkje, `✔`, om de vraag te accepteren of een `x` om de suggesties af te wijzen. Schakel het selectie vakje in om de vraag toe te voegen.
 
     [![suggesties van de voorgestelde vraag van het actieve leer proces selecteren of afwijzen door het groene vinkje of rode markering voor verwijderen te selecteren.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
@@ -118,7 +119,7 @@ Een bot of andere client toepassing moet de volgende architectuur stroom gebruik
 
 ### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Gebruik de eigenschap Top in de GenerateAnswer-aanvraag om verschillende overeenkomende antwoorden te verkrijgen
 
-Bij het indienen van een vraag om QnA Maker voor een antwoord, stelt de eigenschap `top` van de JSON-hoofd tekst het aantal antwoorden in dat moet worden geretourneerd. 
+Bij het indienen van een vraag om QnA Maker voor een antwoord, stelt de eigenschap `top` van de JSON-hoofd tekst het aantal antwoorden in dat moet worden geretourneerd.
 
 ```json
 {
@@ -130,7 +131,7 @@ Bij het indienen van een vraag om QnA Maker voor een antwoord, stelt de eigensch
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>Gebruik de eigenschap Score samen met bedrijfs logica om een lijst met antwoorden te krijgen voor weer geven gebruiker
 
-Wanneer de client toepassing (zoals een chat-bot) het antwoord ontvangt, worden de belangrijkste drie vragen geretourneerd. Gebruik de eigenschap `score` om de nabijheid van de scores te analyseren. Dit proximity-bereik wordt bepaald door uw eigen bedrijfs logica. 
+Wanneer de client toepassing (zoals een chat-bot) het antwoord ontvangt, worden de belangrijkste drie vragen geretourneerd. Gebruik de eigenschap `score` om de nabijheid van de scores te analyseren. Dit proximity-bereik wordt bepaald door uw eigen bedrijfs logica.
 
 ```json
 {
@@ -171,9 +172,9 @@ Wanneer de client toepassing (zoals een chat-bot) het antwoord ontvangt, worden 
 
 ## <a name="client-application-follow-up-when-questions-have-similar-scores"></a>Opvolging van client toepassing wanneer vragen vergelijk bare scores hebben
 
-Uw client toepassing geeft de vragen weer met een optie voor de gebruiker om _de enige vraag_ te selecteren die de bedoeling het meest vertegenwoordigt. 
+Uw client toepassing geeft de vragen weer met een optie voor de gebruiker om _de enige vraag_ te selecteren die de bedoeling het meest vertegenwoordigt.
 
-Zodra de gebruiker een van de bestaande vragen selecteert, stuurt de client toepassing de keuze van de gebruiker als feedback met behulp van de Train API van QnA Maker. Met deze feedback wordt de actieve lus voor het leren van feedback voltooid. 
+Zodra de gebruiker een van de bestaande vragen selecteert, stuurt de client toepassing de keuze van de gebruiker als feedback met behulp van de Train API van QnA Maker. Met deze feedback wordt de actieve lus voor het leren van feedback voltooid.
 
 ## <a name="train-api"></a>API trainen
 
@@ -186,12 +187,12 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Eigenschap HTTP-aanvraag|Naam|Type|Doel|
+|Eigenschap HTTP-aanvraag|Name|Type|Doel|
 |--|--|--|--|
-|URL-route parameter|Knowledge Base-ID|tekenreeks|De GUID voor uw Knowledge Base.|
-|Aangepast subdomein|Resource naam QnAMaker|tekenreeks|De resource naam wordt gebruikt als het aangepaste subdomein voor uw QnA Maker. Dit is beschikbaar op de pagina instellingen nadat u de Knowledge Base hebt gepubliceerd. Het wordt weer gegeven als de `host`.|
-|Header|Content-Type|tekenreeks|Het media type van de hoofd tekst die naar de API is verzonden. De standaard waarde is: `application/json`|
-|Header|Autorisatie|tekenreeks|Uw eindpunt sleutel (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
+|URL-route parameter|Knowledge Base-ID|string|De GUID voor uw Knowledge Base.|
+|Aangepast subdomein|Resource naam QnAMaker|string|De resource naam wordt gebruikt als het aangepaste subdomein voor uw QnA Maker. Dit is beschikbaar op de pagina instellingen nadat u de Knowledge Base hebt gepubliceerd. Het wordt weer gegeven als de `host`.|
+|Header|Content-Type|string|Het media type van de hoofd tekst die naar de API is verzonden. De standaard waarde is: `application/json`|
+|Header|Autorisatie|string|Uw eindpunt sleutel (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
 |Bericht tekst|JSON-object|JSON|De trainings feedback|
 
 De JSON-hoofd tekst heeft verschillende instellingen:
@@ -199,8 +200,8 @@ De JSON-hoofd tekst heeft verschillende instellingen:
 |Eigenschap van JSON-hoofd tekst|Type|Doel|
 |--|--|--|--|
 |`feedbackRecords`|matrix|Lijst met feedback.|
-|`userId`|tekenreeks|De gebruikers-ID van de persoon die de voorgestelde vragen accepteert. De indeling van de gebruikers-ID is Maxi maal. Een e-mail adres kan bijvoorbeeld een geldige gebruikers-ID zijn in uw architectuur. Optioneel.|
-|`userQuestion`|tekenreeks|De exacte tekst van de query van de gebruiker. Vereist.|
+|`userId`|string|De gebruikers-ID van de persoon die de voorgestelde vragen accepteert. De indeling van de gebruikers-ID is Maxi maal. Een e-mail adres kan bijvoorbeeld een geldige gebruikers-ID zijn in uw architectuur. Optioneel.|
+|`userQuestion`|string|De exacte tekst van de query van de gebruiker. Vereist.|
 |`qnaID`|getal|De ID van de vraag die in het [GenerateAnswer-antwoord](metadata-generateanswer-usage.md#generateanswer-response-properties)is gevonden. |
 
 Een voor beeld van een JSON-bericht ziet er als volgt uit:
@@ -217,11 +218,11 @@ Een voor beeld van een JSON-bericht ziet er als volgt uit:
 }
 ```
 
-Een geslaagde reactie retourneert de status 204 en geen JSON-antwoord tekst. 
+Een geslaagde reactie retourneert de status 204 en geen JSON-antwoord tekst.
 
 ### <a name="batch-many-feedback-records-into-a-single-call"></a>Batch-veel feedback records in één aanroep
 
-In de toepassing aan de client zijde, zoals een bot, kunt u de gegevens opslaan en vervolgens veel records in één JSON-hoofd tekst in de `feedbackRecords` matrix verzenden. 
+In de toepassing aan de client zijde, zoals een bot, kunt u de gegevens opslaan en vervolgens veel records in één JSON-hoofd tekst in de `feedbackRecords` matrix verzenden.
 
 Een voor beeld van een JSON-bericht ziet er als volgt uit:
 
@@ -258,7 +259,7 @@ Uw bot-Framework code moet de Train API aanroepen als de query van de gebruiker 
 * Bepalen of de query moet worden gebruikt voor actief leren
 * Query terugsturen naar Train API van QnA Maker voor actief leren
 
-In het voor [beeld van Azure bot](https://aka.ms/activelearningsamplebot)zijn beide activiteiten geprogrammeerd. 
+In het voor [beeld van Azure bot](https://aka.ms/activelearningsamplebot)zijn beide activiteiten geprogrammeerd.
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Voorbeeld C# code voor Train API met bot Framework 4. x
 
@@ -323,7 +324,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 }
 ```
 
-### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Voor beeld van node. js-code voor Train API with bot Framework 4. x 
+### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Voor beeld van node. js-code voor Train API with bot Framework 4. x
 
 De volgende code laat zien hoe u gegevens kunt terugsturen naar QnA Maker met de Train API. Dit [volledige code voorbeeld](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs) is beschikbaar op github.
 
@@ -353,7 +354,7 @@ async callTrain(stepContext){
 
             // Call Active Learning Train API
             this.activeLearningHelper.callTrain(this.qnaMaker.endpoint.host, feedbackRecords, this.qnaMaker.endpoint.knowledgeBaseId, this.qnaMaker.endpoint.endpointKey);
-            
+
             return await stepContext.next(qnaResults);
         }
         else{
@@ -368,7 +369,7 @@ async callTrain(stepContext){
 
 ## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Actief leren wordt opgeslagen in de geëxporteerde kennis basis
 
-Wanneer voor uw app actief leren is ingeschakeld en u de app exporteert, worden in de `SuggestedQuestions` kolom in het TSV-bestand de actieve leer gegevens bewaard. 
+Wanneer voor uw app actief leren is ingeschakeld en u de app exporteert, worden in de `SuggestedQuestions` kolom in het TSV-bestand de actieve leer gegevens bewaard.
 
 De `SuggestedQuestions` kolom is een JSON-object met informatie over impliciete, `autosuggested`en expliciete `usersuggested` feedback. Een voor beeld van dit JSON-object voor één door de gebruiker ingediende vraag van `help` is:
 
@@ -394,7 +395,7 @@ U kunt ook de API voor het downloaden van wijzigingen gebruiken om deze aanpassi
 * [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
 
 
-Wanneer u deze app opnieuw importeert, gaat het actieve leer proces verder met het verzamelen van informatie en worden suggesties voor uw Knowledge Base aanbevolen. 
+Wanneer u deze app opnieuw importeert, gaat het actieve leer proces verder met het verzamelen van informatie en worden suggesties voor uw Knowledge Base aanbevolen.
 
 
 
@@ -403,6 +404,6 @@ Wanneer u deze app opnieuw importeert, gaat het actieve leer proces verder met h
 Zie [Aanbevolen procedures](../Concepts/best-practices.md#active-learning)voor aanbevolen procedures voor het gebruik van actief leren.
 
 ## <a name="next-steps"></a>Volgende stappen
- 
+
 > [!div class="nextstepaction"]
 > [Meta gegevens gebruiken met GenerateAnswer-API](metadata-generateanswer-usage.md)

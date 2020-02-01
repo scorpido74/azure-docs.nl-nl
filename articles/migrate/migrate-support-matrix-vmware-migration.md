@@ -3,19 +3,19 @@ title: Ondersteuning voor VMware-migratie in Azure Migrate
 description: Meer informatie over ondersteuning voor de migratie van virtuele VMware-machines in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e33811563063c0f8eb94b9927d07596d51cd45e4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6593d4de6823f15f570ab8922d76cbe84fb0e348
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030222"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901542"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Ondersteunings matrix voor VMware-migratie
 
 In dit artikel vindt u een overzicht van de ondersteunings instellingen en beperkingen voor het migreren van virtuele VMware-machines met [Azure migrate: Server migratie](migrate-services-overview.md#azure-migrate-server-migration-tool) . Als u op zoek bent naar informatie over het beoordelen van virtuele VMware-machines voor migratie naar Azure, raadpleegt u de [ondersteunings matrix voor evaluatie](migrate-support-matrix-vmware.md).
 
 
-## <a name="migration-options"></a>Migratieopties
+## <a name="migration-options"></a>Migratie opties
 
 U kunt virtuele VMware-machines op een aantal manieren migreren:
 
@@ -24,7 +24,7 @@ U kunt virtuele VMware-machines op een aantal manieren migreren:
 
 Lees [dit artikel](server-migrate-overview.md) als u wilt weten welke methode u wilt gebruiken.
 
-## <a name="migration-limitations"></a>Migratiebeperkingen
+## <a name="migration-limitations"></a>Migratie beperkingen
 
 - U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer machines wilt migreren, repliceert u in groepen van 10.
 - Voor VMware-agentloze migratie kunt u Maxi maal 100 replicaties tegelijk uitvoeren.
@@ -71,7 +71,7 @@ Migratie zonder agent maakt gebruik van het Azure Migrate apparaat, geïmplement
 
 ## <a name="agentless-ports"></a>Zonder agents-poorten
 
-**Apparaat** | **Verbinding**
+**Apparaatconfiguratie** | **Verbinding**
 --- | ---
 Apparaat | Uitgaande verbindingen op poort 443 voor het uploaden van gerepliceerde gegevens naar Azure en om te communiceren met Azure Migrate services die replicatie en migratie coördineren.
 vCenter-server | Binnenkomende verbindingen op poort 443 om het apparaat in staat te stellen de replicatie te organiseren-moment opnamen maken, gegevens kopiëren, moment opnamen van de release
@@ -94,7 +94,7 @@ De tabel bevat een overzicht van de VMware VM-ondersteuning voor VMware-Vm's die
 **Ondersteuning** | **Details**
 --- | ---
 **Machine workload** | Azure Migrate ondersteunt de migratie van elke werk belasting (bijvoorbeeld Active Directory, SQL Server, enzovoort) die wordt uitgevoerd op een ondersteunde computer.
-**Besturingssystemen** | Raadpleeg de ondersteuning van het [besturings systeem](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) voor site Recovery voor de meest recente informatie. Azure Migrate biedt dezelfde ondersteuning voor het VM-besturings systeem.
+**Besturings systemen** | Raadpleeg de ondersteuning van het [besturings systeem](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) voor site Recovery voor de meest recente informatie. Azure Migrate biedt dezelfde ondersteuning voor het VM-besturings systeem.
 **Linux-bestands systeem/gast opslag** | Raadpleeg de ondersteuning van het Linux- [Bestands systeem](../site-recovery/vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) voor site Recovery voor de meest recente informatie. Azure Migrate heeft dezelfde ondersteuning voor het Linux-bestands systeem.
 **Netwerk/opslag** | Raadpleeg de vereisten voor het [netwerk](../site-recovery/vmware-physical-azure-support-matrix.md#network) en de [opslag](../site-recovery/vmware-physical-azure-support-matrix.md#storage) voor site Recovery voor de meest recente informatie. Azure Migrate biedt identieke netwerk-en opslag vereisten.
 **Azure-vereisten** | Bekijk de vereisten voor het Azure- [netwerk](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), de [opslag](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)en de [reken kracht](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) voor site Recovery voor de meest recente informatie. Azure Migrate heeft identieke vereisten voor VMware-migratie.
@@ -123,7 +123,15 @@ Wanneer u het replicatie apparaat instelt met behulp van de eicellen-sjabloon di
 
 - Meer informatie over de [vereisten voor replicatie-apparaten](migrate-replication-appliance.md#appliance-requirements) voor VMware.
 - MySQL moet op het apparaat zijn geïnstalleerd. Meer informatie over [installatie opties](migrate-replication-appliance.md#mysql-installation).
-- Meer informatie over [url's](migrate-replication-appliance.md#url-access) waarvoor het replicatie apparaat toegang moet hebben.
+- Meer informatie over [url's](migrate-replication-appliance.md#url-access) en [poorten]() waarvoor het replicatie apparaat toegang moet hebben.
+
+## <a name="agent-based-ports"></a>Poorten op basis van agents
+
+**Apparaatconfiguratie** | **Verbinding**
+--- | ---
+Virtuele machines | De Mobility-service die wordt uitgevoerd op Vm's communiceert met het on-premises replicatie apparaat (configuratie server) op poort HTTPS 443 inkomend voor replicatie beheer.<br/><br/> Vm's verzenden replicatie gegevens naar de proces server (die wordt uitgevoerd op de computer van de configuratie server) op poort HTTPS 9443-binnenkomend. Deze poort kan worden gewijzigd.
+Replicatie apparaat | Het replicatie apparaat organiseert de replicatie met Azure via poort HTTPS 443 uitgaand.
+Proces server | De proces server ontvangt replicatie gegevens, optimaliseert en versleutelt deze en verzendt deze naar Azure Storage via poort 443 uitgaand.<br/> Standaard wordt de proces server uitgevoerd op het replicatie apparaat.
 
 ## <a name="azure-vm-requirements"></a>Vereisten voor Azure VM
 
@@ -131,13 +139,13 @@ Alle on-premises Vm's die naar Azure worden gerepliceerd, moeten voldoen aan de 
 
 **Onderdeel** | **Vereisten** | **Details**
 --- | --- | ---
-Gastbesturingssysteem | Controleert ondersteunde VMware-VM-besturings systemen voor migratie.<br/> U kunt elke werk belasting migreren die wordt uitgevoerd op een ondersteund besturings systeem. | De controle is mislukt als dit niet wordt ondersteund.
+Gast besturingssysteem | Controleert ondersteunde VMware-VM-besturings systemen voor migratie.<br/> U kunt elke werk belasting migreren die wordt uitgevoerd op een ondersteund besturings systeem. | De controle is mislukt als dit niet wordt ondersteund.
 Architectuur van gast besturingssysteem | 64-bits. | De controle is mislukt als dit niet wordt ondersteund.
 Schijf grootte van het besturings systeem | Maxi maal 2.048 GB. | De controle is mislukt als dit niet wordt ondersteund.
 Aantal besturingssysteem schijven | 1 | De controle is mislukt als dit niet wordt ondersteund.
 Aantal gegevens schijven | 64 of minder. | De controle is mislukt als dit niet wordt ondersteund.
 Grootte van de gegevens schijf | Maxi maal 4.095 GB | De controle is mislukt als dit niet wordt ondersteund.
-Netwerkadapters | Meerdere adapters worden ondersteund. |
+Netwerk adapters | Meerdere adapters worden ondersteund. |
 Gedeelde VHD | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
 FC-schijf | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
 BitLocker | Wordt niet ondersteund. | BitLocker moet worden uitgeschakeld voordat u replicatie voor een machine inschakelt.

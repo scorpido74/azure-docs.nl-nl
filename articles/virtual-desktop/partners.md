@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 01/30/2020
 ms.author: helohr
-ms.openlocfilehash: e525976edee08097d75605ea1921d0552ed02785
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841060"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906851"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -38,6 +38,14 @@ Als goedgekeurde provider worden de voor delen van Windows virtueel bureau blad 
 
 - [Meld u aan voor de Tech Preview van Horizon-Cloud op Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Ga naar de website van de partner](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+
+## <a name="10zig"></a>10ZiG
+
+![10ZiG-logo](./media/partners/10zig.png)
+
+10ZiG-technologie, met geavanceerde dunne en Zero hardware en software van de client, is een spant-partner met micro soft en een speciaal Microsoft Azure en een virtueel bureau blad-partner voor Windows. 10ZiG Windows 10 IoT-gebaseerde thin-clients zijn krachtige, betrouw bare en betaal bare eind punten voor alle Windows-gebruikers met een virtueel bureau blad. 10ZiG Manager-software biedt buitengewone beheer en implementatie zonder extra kosten. Het 10ZiG tech-team, het Advance Warranty-programma en niet-gedoede demo's zijn een Windows-stop-oplossing voor multi-sessie ondersteuning in de Cloud.
+
+10ZiG's wereld-Market leiderschap in dun en nul-client eindpunt apparaten en beheer software voor virtuele Bureau bladen wordt geïllustreerd door de wijze waarop ze voor hun klanten werken. De thin client-hardware wordt geleverd met goed opgebouwde voor delen van functies en opties om ervoor te zorgen dat klanten de juiste client apparaten ontvangen op basis van hun behoeften. 10ZiG past de apparaten aan aan de klant omgevingen met Windows-en Linux-clients die de best mogelijke prestaties bieden in virtuele Bureau bladen, zowel binnen als buiten de Cloud.
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -133,6 +141,14 @@ Liquidware Essentials breidt de waarde van Windows virtueel bureau blad uit door
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
 - [Ga naar de website van de partner](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
+## <a name="liquit"></a>Liquit
+
+![Liquit-logo](./media/partners/liquit.png)
+
+Met Liquit voor het samen voegen van toepassingen en leverings software kunnen ondernemingen en service providers verbinding maken met en combi neren met alle back-ends van de werk ruimte (Citrix, VMWare, Windows Virtual Desktop, RDP en verouderd) en een aangepaste en consistente klant leveren ervaring, ongeacht waar de toepassingen van de klant zich bevinden. Wanneer een klant het slimme pictogram publiceert, bepaalt Liquit of de toepassing moet worden gestart op basis van de locatie, het apparaat en de profiel rechten van de klant.
+
+Als gecertificeerde integratie partner helpt Liquit de overgang naar de cloud te versnellen zonder een RIP-en-vervang vertraging. Met Windows Virtual Desktop kunt u eenvoudig verbinding maken met een bestaande omgeving, een werk ruimte maken en het bureau blad leveren. U kunt vervolgens de migratie van oude platforms afronden en wijzigingen aanbrengen in de back-end zonder uw gebruikers merkt. Profiteer van een consistente ervaring voor eind gebruikers, een flexibele infra structuur en behoud de controle over uw toepassingen, ongeacht waar ze zich bevinden.
+
 ## <a name="login-vsi"></a>Aanmeldings VSI
 
 ![VSI-logo aanmelden](./media/partners/loginvsi.png)
@@ -202,6 +218,16 @@ RDPSoft is een virtueel-bureaublad partner van Windows die krachtige en goedkope
 De Extern bureaublad Commander-oplossingen van RDPSoft verbeteren het beheer van virtuele Windows-Bureau bladen. Premium-beheer functies vereenvoudigen de overdracht van beheer taken voor virtuele Windows-Bureau bladen ter ondersteuning van Desk medewerkers door hulp op afstand, gebruikers sessie en proces beheer te bieden. Terzelfder tijd verzamelt de Extern bureaublad Commander Suite rijke metrische gegevens over de prestaties van de gebruiker en de belasting, gebruikers activiteit en controle, Windows Virtual Desktop-verbindings kwaliteit (latentie en band breedte), licenties en beveiliging in een centrale Azure SQL data base-exemplaar voor controle. Met RDPSoft zijn uitgebreide historische rapporten en uitgebreide Dash boards gewoon op weg.
 
 - [Ga naar de partner website](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+
+## <a name="sepago"></a>sepago
+
+![sepago-logo](./media/partners/sepago.png)
+
+sepago is opgericht in 2002 door vier vrienden in Cologne. Tegenwoordig is sepago een advies voor IT-beheer met een gestaag toenemend aantal sepagists, met locaties in Duitsland in Cologne, München en Hamburg. sepago zijn experts voor het automatisch inrichten van toepassingen, virtualisatie, Cloud oplossingen en IT-beveiliging. sepago biedt ondersteuning voor middel grote en grote bedrijven op hun manier voor digitale trans formatie en zorgt ervoor dat gebruikers veilig en efficiënt kunnen werken.
+
+het innovatie-en ontwikkelings Lab van sepago bouwt slimme oplossingen met behulp van big data-en AI-technologieën. Deze oplossingen zijn gericht op het verbeteren van het bedrijf, de gebruikers ervaring en de administraties van partner producten zoals virtueel bureau blad van Windows.
+
+- [Ga naar de partner website](https://www.sepago.de/wvd-value-add-tools/)
 
 ## <a name="thinprint"></a>ThinPrint
 

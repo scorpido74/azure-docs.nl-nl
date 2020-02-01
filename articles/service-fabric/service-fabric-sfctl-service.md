@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl-service
 description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het beheren van services, service typen en service pakketten.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 24ba7fea2ed51ea57c0a44e3c1f26b5df6043e1e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 696de713129ca71dd7f2451501a7cc9eca0ee9b9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639068"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906237"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Services, service typen en service pakketten maken, verwijderen en beheren.
@@ -110,7 +110,7 @@ Hiermee wordt de opgegeven Service Fabric-service gemaakt.
 | --int-scheme-low | Het begin van het sleutel bereik met gehele getallen, als er een uniform geheel getal is voor het partitie schema. |
 | --metrische gegevens voor belasting | JSON-gecodeerde lijst met metrische gegevens die worden gebruikt bij de taak verdeling van services tussen knoop punten. |
 | --min-replica-set-size | De minimale grootte van de replicaset als een getal. Dit geldt alleen voor stateful Services. |
-| --kosten voor verplaatsing | Hiermee geeft u de verplaatsings kosten voor de service op. Mogelijke waarden zijn\: ' nul ', ' laag ', ' medium ', ' hoog '. |
+| --kosten voor verplaatsing | Hiermee geeft u de verplaatsings kosten voor de service op. Mogelijke waarden zijn\: ' nul ', ' laag ', ' medium ', ' high ', ' VeryHigh '. |
 | --name-schema | Geeft aan dat de service meerdere benoemde partities moet hebben. |
 | --schema-lijst | JSON-gecodeerde lijst met namen voor het partitioneren van de service in, als het partitie schema met de naam wordt gebruikt. |
 | --zonder persistente status | Als deze eigenschap waar is, wordt hiermee aangegeven dat de service geen permanente status op de lokale schijf heeft opgeslagen, of alleen de status in het geheugen opslaat. |
@@ -118,6 +118,7 @@ Hiermee wordt de opgegeven Service Fabric-service gemaakt.
 | --quorum verlies-wachten | De maximum duur, in seconden, waarvoor een partitie een status van quorum verlies mag hebben. Dit geldt alleen voor stateful Services. |
 | --replica-opnieuw opstarten-wachten | De duur, in seconden, tussen het moment dat een replica uitvalt en wanneer een nieuwe replica wordt gemaakt. Dit geldt alleen voor stateful Services. |
 | --schalen-beleids regels | JSON-gecodeerde lijst met schaal beleid voor deze service. |
+| --Service-placement-time | De duur waarvoor replica's inbouwen kunnen blijven voordat wordt gemeld dat de build is vastgelopen. Dit geldt alleen voor stateful Services. |
 | --Singleton-schema | Geeft aan dat de service één partitie moet hebben of een niet-gepartitioneerde service moet zijn. |
 | --stand-by-replica-behoud | De maximum duur, in seconden, waarvoor stand-by replica's worden behouden voordat ze worden verwijderd. Dit geldt alleen voor stateful Services. |
 | -stateful | Geeft aan dat de service een stateful service is. |
@@ -562,11 +563,12 @@ Hiermee wordt de opgegeven service bijgewerkt met de opgegeven beschrijving van 
 | --exemplaar-aantal | Het aantal instanties. Dit geldt alleen voor stateless Services. |
 | --metrische gegevens voor belasting | JSON-gecodeerde lijst met metrische gegevens die worden gebruikt bij taak verdeling tussen knoop punten. |
 | --min-replica-set-size | De minimale grootte van de replicaset als een getal. Dit geldt alleen voor stateful Services. |
-| --kosten voor verplaatsing | Hiermee geeft u de verplaatsings kosten voor de service op. Mogelijke waarden zijn\: ' nul ', ' laag ', ' medium ', ' hoog '. |
+| --kosten voor verplaatsing | Hiermee geeft u de verplaatsings kosten voor de service op. Mogelijke waarden zijn\: ' nul ', ' laag ', ' medium ', ' high ', ' VeryHigh '. |
 | --plaatsing-beleid-lijst | JSON-gecodeerde lijst met plaatsings beleid voor de service en eventuele bijbehorende domein namen. Beleids regels kunnen een of meer\: `NonPartiallyPlaceService`, `PreferPrimaryDomain`, `RequireDomain``RequireDomainDistribution`zijn. |
 | --quorum verlies-wachten | De maximum duur, in seconden, waarvoor een partitie een status van quorum verlies mag hebben. Dit geldt alleen voor stateful Services. |
 | --replica-opnieuw opstarten-wachten | De duur, in seconden, tussen het moment dat een replica uitvalt en wanneer een nieuwe replica wordt gemaakt. Dit geldt alleen voor stateful Services. |
 | --schalen-beleids regels | JSON-gecodeerde lijst met schaal beleid voor deze service. |
+| --Service-placement-time | De duur waarvoor replica's inbouwen kunnen blijven voordat wordt gemeld dat de build is vastgelopen. Dit geldt alleen voor stateful Services. |
 | --stand-by-replica-behoud | De maximum duur, in seconden, waarvoor stand-by replica's worden behouden voordat ze worden verwijderd. Dit geldt alleen voor stateful Services. |
 | -stateful | Geeft aan dat de doel service een stateful service is. |
 | -stateless | Geeft aan dat de doel service een stateless service is. |

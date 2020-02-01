@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a954898a334ead15d8ffdf6dab6e6a309bd57089
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: cc01145423d2961e32bf17313a2873633399d21a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659828"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901467"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actie groepen maken en beheren in de Azure Portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -72,12 +72,12 @@ Nadat u een actie groep hebt gemaakt, wordt deze weer gegeven in de sectie **act
 > [!NOTE]
 > Zie [limieten voor abonnements Services voor controle](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) op numerieke limieten voor elk van de onderstaande items.  
 
-### <a name="automation-runbook"></a>Automation-runbook
+### <a name="automation-runbook"></a>Automation-Runbook
 Raadpleeg de [service limieten](../../azure-resource-manager/management/azure-subscription-service-limits.md) van het Azure-abonnement voor limieten voor nettoladingen van het Runbook.
 
 Mogelijk hebt u een beperkt aantal Runbook-acties in een actie groep. 
 
-### <a name="azure-app-push-notifications"></a>Pushmeldingen van Azure-app
+### <a name="azure-app-push-notifications"></a>Push meldingen van Azure-app
 Mogelijk hebt u een beperkt aantal Azure-app-acties in een actie groep.
 
 ### <a name="email"></a>E-mail
@@ -88,13 +88,13 @@ E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-
 
 Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
-### <a name="email-azure-resource-manager-role"></a>E-mailadres voor Azure Resource Manager-rol
+### <a name="email-azure-resource-manager-role"></a>E-mail Azure Resource Manager rol
 E-mail verzenden naar de leden van de rol van het abonnement.
 
 Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
 ### <a name="function"></a>Functie
-De functie sleutels voor functie-apps die zijn geconfigureerd als acties, worden gelezen via de functions-API, die momenteel v2-functie-apps vereist voor het configureren van de app-instelling ' AzureWebJobsSecretStorageType ' in ' files '. Zie [wijzigingen in sleutel beheer in functions v2]( https://aka.ms/funcsecrets)voor meer informatie.
+Hiermee wordt een bestaand HTTP trigger-eind punt aangeroepen in [Azure functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
 
 Mogelijk hebt u een beperkt aantal functie acties in een actie groep.
 

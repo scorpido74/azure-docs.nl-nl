@@ -4,12 +4,12 @@ description: Meer informatie over het implementeren van container groepen in een
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 40f312ce8bc08c9b59e7c47f05b6a5d3dc94a994
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845169"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901863"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Container instanties implementeren in een virtueel Azure-netwerk
 
@@ -259,10 +259,6 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 ```
 
 ### <a name="delete-network-resources"></a>Netwerk bronnen verwijderen
-
-
-> [!NOTE]
-> Als er een fout optreedt tijdens het verwijderen van het netwerk profiel, moet u 3-4 dagen voor het platform het probleem automatisch beperken en de verwijdering opnieuw proberen. Als u een netwerk profiel onmiddellijk moet verwijderen, [opent u een ondersteunings aanvraag](https://azure.microsoft.com/support/create-ticket/) die verwijst naar de Azure container instances-service.
 
 Voor deze functie zijn momenteel verschillende extra opdrachten vereist voor het verwijderen van de netwerk resources die u eerder hebt gemaakt. Als u de voorbeeld opdrachten in vorige secties van dit artikel hebt gebruikt om uw virtuele netwerk en subnet te maken, kunt u het volgende script gebruiken om die netwerk resources te verwijderen.
 

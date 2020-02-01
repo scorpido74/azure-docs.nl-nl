@@ -3,12 +3,12 @@ title: De gereedheids test voor het container exemplaar instellen
 description: Meer informatie over het configureren van een test om ervoor te zorgen dat containers in Azure Container Instances alleen aanvragen ontvangen wanneer ze klaar zijn
 ms.topic: article
 ms.date: 10/17/2019
-ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 50cb341788434a6dc0bb0a1423d9e59a3d93634d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533567"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901850"
 ---
 # <a name="configure-readiness-probes"></a>Gereedheidstests configureren
 
@@ -17,6 +17,9 @@ Voor container toepassingen die verkeer verwerken, wilt u wellicht controleren o
 In dit artikel wordt uitgelegd hoe u een container groep implementeert die een gereedheids test bevat, zodat een container alleen verkeer ontvangt wanneer de test slaagt.
 
 Azure Container Instances biedt ook ondersteuning voor [beproefde tests](container-instances-liveness-probe.md), die u zo kunt configureren dat een beschadigde container automatisch opnieuw wordt opgestart.
+
+> [!NOTE]
+> Op dit moment kunt u geen gereedheids test gebruiken in een container groep die is geïmplementeerd in een virtueel netwerk.
 
 ## <a name="yaml-configuration"></a>YAML-configuratie
 

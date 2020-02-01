@@ -3,12 +3,12 @@ title: De afronding van de liveiteit instellen voor het container exemplaar
 description: Meer informatie over het configureren van Live-tests om beschadigde containers opnieuw te starten in Azure Container Instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.openlocfilehash: 96d98d18a3f0ac666fb2c057216f7844b176d177
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 566f7952aff1cf460272fbb418a2a0efff411881
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481685"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901907"
 ---
 # <a name="configure-liveness-probes"></a>Activiteitstests configureren
 
@@ -17,6 +17,9 @@ Container toepassingen kunnen gedurende lange tijd worden uitgevoerd, wat leidt 
 In dit artikel wordt uitgelegd hoe u een container groep implementeert die een afsluitings sonde bevat, waarbij het automatisch opnieuw opstarten van een gesimuleerde beschadigde container wordt gedemonstreerd.
 
 Azure Container Instances biedt ook ondersteuning voor [gereedheids tests](container-instances-readiness-probe.md), die u kunt configureren om ervoor te zorgen dat verkeer alleen een container bereikt wanneer het gereed is voor IT.
+
+> [!NOTE]
+> U kunt op dit moment geen beproefde test gebruiken in een container groep die is geïmplementeerd in een virtueel netwerk.
 
 ## <a name="yaml-deployment"></a>YAML-implementatie
 

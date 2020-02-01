@@ -3,24 +3,26 @@ title: 'Snelstartgids: Azure Blob Storage-client bibliotheek V10 toevoegen voor 
 description: Blobs en containers maken, uploaden en verwijderen in node. js met de Azure Storage-client bibliotheek V10 toevoegen voor Java script
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/24/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: dd59dec65f75a17c35750140349101c600a92636
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6a530c96c99a9f22f1943a5b874656bcabd9594b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862846"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906469"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V10 toevoegen voor Java script
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Quick Start: blobs beheren met Java script V10 toevoegen SDK in node. js
 
-In deze snelstart leert u hoe u de [Azure Storage v10 SDK voor JavaScript](https://github.com/Azure/azure-sdk-for-js) kunt gebruiken in Node.js om blobs te uploaden, downloaden, weergeven en verwijderen en containers te beheren.
+In deze Quick Start leert u hoe u blobs beheert met behulp van node. js. Blobs zijn objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. U kunt blobs uploaden, downloaden, weer geven en verwijderen en u kunt containers beheren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Een Azure Storage-account. [Een opslagaccount maken](../common/storage-account-create.md).
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="download-the-sample-application"></a>De voorbeeldtoepassing downloaden
 
@@ -133,7 +135,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-Aanvragen van de API kunnen zo worden ingesteld dat deze na een bepaalde periode een time-out bereiken. De [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy)-klasse is verantwoordelijk voor het beheren van hoe time-outs van aanvragen worden behandeld en de volgende constante wordt gebruikt voor het definiëren van de time-outs die in dit voorbeeld worden gebruikt.
+Aanvragen van de API kunnen na een bepaald interval worden ingesteld op time-out. De [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy)-klasse is verantwoordelijk voor het beheren van hoe time-outs van aanvragen worden behandeld en de volgende constante wordt gebruikt voor het definiëren van de time-outs die in dit voorbeeld worden gebruikt.
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -203,7 +205,7 @@ Net als bij de container, bestaat de blok-blob nog niet. De variabele *blockBlob
 
 ### <a name="using-the-aborter-class"></a>De Aborter-klasse gebruiken
 
-Aanvragen van de API kunnen zo worden ingesteld dat deze na een bepaalde periode een time-out bereiken. De *Afbrekings* klasse is verantwoordelijk voor het beheren van de time-out van aanvragen. Met de volgende code wordt een context gemaakt waarbij een set aanvragen 30 minuten wordt gegeven.
+Aanvragen van de API kunnen na een bepaald interval worden ingesteld op time-out. De *Afbrekings* klasse is verantwoordelijk voor het beheren van de time-out van aanvragen. Met de volgende code wordt een context gemaakt waarbij een set aanvragen 30 minuten wordt gegeven.
 
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);

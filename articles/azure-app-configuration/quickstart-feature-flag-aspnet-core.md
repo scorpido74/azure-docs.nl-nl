@@ -1,17 +1,17 @@
 ---
 title: Quick start voor het toevoegen van functie vlaggen aan ASP.NET Core
 description: Functie vlaggen toevoegen aan ASP.NET Core-Apps en deze beheren met Azure-app configuratie
-author: jpconnock
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
-ms.author: jeconnoc
-ms.openlocfilehash: 6858648bc07546f30d4ebb92150c52f8c7729acd
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.author: lcozzens
+ms.openlocfilehash: fda0e8072984a25b33731a775780231538e92e3d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260277"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898695"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Snelstartgids: functie vlaggen toevoegen aan een ASP.NET Core-app
 

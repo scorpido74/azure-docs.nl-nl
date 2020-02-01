@@ -3,17 +3,17 @@ title: Azure Service Fabric CLI-sfctl
 description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten en subgroepen.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 518e60ee92a637533fdf5ab44053d1a1c8757bbe
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645239"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906216"
 ---
 # <a name="sfctl"></a>sfctl
-Opdrachten voor het beheren van Service Fabric clusters en entiteiten. Deze versie is compatibel met Service Fabric 6,5-runtime.
+Opdrachten voor het beheren van Service Fabric clusters en entiteiten. Deze versie is compatibel met Service Fabric 7,0-runtime.
 
 Opdrachten volgen het patroon van de zelfstandig naam woord. Zie subgroepen voor meer informatie.
 
@@ -30,7 +30,7 @@ Opdrachten volgen het patroon van de zelfstandig naam woord. Zie subgroepen voor
 | [mesh](service-fabric-sfctl-mesh.md) | Service Fabric-mesh-toepassingen verwijderen en beheren. |
 | [subknooppuntsleutels](service-fabric-sfctl-node.md) | De knoop punten beheren die een cluster vormen. |
 | [partitie](service-fabric-sfctl-partition.md) | Zoek en beheer partities voor elke service. |
-| [property](service-fabric-sfctl-property.md) | Eigenschappen voor opslaan en opvragen onder Service Fabric namen. |
+| [eigenschap](service-fabric-sfctl-property.md) | Eigenschappen voor opslaan en opvragen onder Service Fabric namen. |
 | [replica](service-fabric-sfctl-replica.md) | De replica's beheren die deel uitmaken van service partities. |
 | [rpm](service-fabric-sfctl-rpm.md) | Query's uitvoeren en opdrachten verzenden naar de service reparatie beheer. |
 | [sa-cluster](service-fabric-sfctl-sa-cluster.md) | Zelfstandige Service Fabric-clusters beheren. |

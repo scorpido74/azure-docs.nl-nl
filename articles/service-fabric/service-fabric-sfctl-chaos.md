@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl chaos
 description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het beheren van chaos.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b91c11dfb9b1249420429bee20f12439fffa4853
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6668446363361fbc6d24afc3d11a36a0b786667d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646174"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906160"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 Starten, stoppen en rapporteren op de chaos-test service.
@@ -26,7 +26,7 @@ Starten, stoppen en rapporteren op de chaos-test service.
 | events | Hiermee wordt het volgende segment van de chaos-gebeurtenissen opgehaald op basis van het vervolg token of het tijds bereik. |
 | Toevoegen | De status van chaos ophalen. |
 | start | Chaos wordt gestart in het cluster. |
-| stoppen | Stopt chaos als deze wordt uitgevoerd in het cluster en de chaos-planning in een status gestopt heeft gezet. |
+| tab | Stopt chaos als deze wordt uitgevoerd in het cluster en de chaos-planning in een status gestopt heeft gezet. |
 
 ## <a name="sfctl-chaos-events"></a>sfctl chaos-gebeurtenissen
 Hiermee wordt het volgende segment van de chaos-gebeurtenissen opgehaald op basis van het vervolg token of het tijds bereik.

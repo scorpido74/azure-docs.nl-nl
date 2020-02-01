@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl opstellen
 description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor docker-compositie toepassingen.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 3a9fa142dd45674e4a3e88745acffef225b80a64
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1e40ca4e3c5ec8b7566646aa7ef723bd4c9e45a1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645392"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906134"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Docker opstellen toepassingen maken, verwijderen en beheren.
@@ -21,9 +21,9 @@ Docker opstellen toepassingen maken, verwijderen en beheren.
 | --- | --- |
 | maken | Hiermee maakt u een implementatie voor Service Fabric opstellen. |
 | list | Hiermee haalt u de lijst met opstel implementaties op die zijn gemaakt in het Service Fabric cluster. |
-| verwijderen | Hiermee verwijdert u een bestaande Service Fabric voor het opstellen van een implementatie uit het cluster. |
+| verwijdert | Hiermee verwijdert u een bestaande Service Fabric voor het opstellen van een implementatie uit het cluster. |
 | status | Hiermee haalt u informatie op over een implementatie van Service Fabric opstellen. |
-| upgrade | Hiermee wordt een upgrade van een opstel implementatie in het Service Fabric cluster gestart. |
+| upgrades | Hiermee wordt een upgrade van een opstel implementatie in het Service Fabric cluster gestart. |
 | upgrade-terugdraai actie | Start een opstel implementatie-upgrade in het Service Fabric cluster. |
 | upgrade-status | Hiermee worden gegevens opgehaald voor de laatste upgrade die is uitgevoerd op deze Service Fabric een implementatie op te stellen. |
 

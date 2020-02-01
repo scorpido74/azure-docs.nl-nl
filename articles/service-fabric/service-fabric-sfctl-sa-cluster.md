@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI-sfctl sa-cluster
 description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het beheren van zelfstandige clusters.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 765d7d76cb13758417bb3927ff9620026ca763b1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 233148c04fb1a9c6cf1d6c7042c12c54eebd0205
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646021"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904918"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 Zelfstandige Service Fabric-clusters beheren.
@@ -19,7 +19,7 @@ Zelfstandige Service Fabric-clusters beheren.
 
 |Opdracht|Beschrijving|
 | --- | --- |
-| configuratie | Haal de configuratie van de zelfstandige Cluster Service Fabric. |
+| configuraties | Haal de configuratie van de zelfstandige Cluster Service Fabric. |
 | configuratie-upgrade | Het bijwerken van de configuratie van een zelfstandige Service Fabric-cluster starten. |
 | upgrade-status | De upgrade status van de cluster configuratie ophalen van een zelfstandige Service Fabric-cluster. |
 
@@ -80,9 +80,9 @@ Valideer de opgegeven configuratie-upgrade parameters en begin met het upgraden 
 ### <a name="examples"></a>Voorbeelden
 
 Een update voor een cluster configuratie starten
-``` 
-sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-    
-policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"   
+```
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 ```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl sa-cluster upgrade-status

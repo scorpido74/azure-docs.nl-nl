@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 58c0ff8cf8a579e2b97ebbe195f47e4baef4621a
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666819"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905108"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Logische app-werk stromen maken op basis van vooraf ontwikkelde sjablonen
 
@@ -50,7 +50,7 @@ Als u nog geen abonnement op Azure hebt, [meld u dan aan voor een gratis Azure-a
    | **Abonnement** | *naam-van-uw-Azure-abonnement* | Selecteer het Azure-abonnement dat u wilt gebruiken. | 
    | **Resourcegroep** | *naam-van-uw-Azure-resourcegroep* | Maak of selecteer een [Azure-resource groep](../azure-resource-manager/management/overview.md) voor deze logische app en beheer alle resources die zijn gekoppeld aan deze app. | 
    | **Locatie** | *uw-Azure-datacenter-regio* | Selecteer de regio van het datacenter voor het implementeren van uw logische app, bijvoorbeeld US - west. | 
-   | **Log Analytics** | **Uit** (standaard) of **op** | Schakel [Diagnostische logboek registratie](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) in voor uw logische app via [Azure monitor-logboeken](../log-analytics/log-analytics-overview.md). Hiervoor hebt u al een Log Analytics-werk ruimte nodig. | 
+   | **Log Analytics** | **Uit** (standaard) of **op** | Stel [Diagnostische logboek registratie](../logic-apps/monitor-logic-apps-log-analytics.md) in voor uw logische app met behulp van [Azure monitor-logboeken](../log-analytics/log-analytics-overview.md). Hiervoor hebt u al een Log Analytics-werk ruimte nodig. | 
    |||| 
 
 4. Wanneer u klaar bent, selecteert u **Vastmaken aan dashboard**. Op die manier wordt uw logische app automatisch weergegeven op uw Azure-dashboard en wordt geopend na de implementatie. Kies **Maken**.

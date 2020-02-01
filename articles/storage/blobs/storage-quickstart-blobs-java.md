@@ -3,42 +3,34 @@ title: 'Snelstartgids: Azure Blob-opslag bibliotheek V12-java'
 description: In deze Quick Start leert u hoe u de Azure Blob Storage-client bibliotheek versie 12 voor Java kunt gebruiken om een container en een BLOB in Blob-opslag (object) te maken. Hierna leert u hoe u de blob naar uw lokale computer downloadt en hoe u alle blobs in een container kunt weergeven.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: ffd91bbcc33ef313d496e793c8263126db81b685
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a76b1c8688a6458dc55a106525c77c5979e2e011
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863941"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906521"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor Java
+# <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Quick Start: blobs beheren met Java V12 SDK
 
-Ga aan de slag met de Azure Blob Storage-client bibliotheek V12 voor Java. Azure Blob Storage is Microsoft's oplossing voor opslag van objecten in de cloud. Volg de stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
-
-> [!NOTE]
-> Zie [Snelstartgids: Azure Blob Storage-client bibliotheek voor Java](storage-quickstart-blobs-java-legacy.md)om aan de slag te gaan met de vorige SDK-versie.
-
-Gebruik de Azure Blob Storage-client bibliotheek V12 voor Java naar:
-
-* Een container maken
-* Een BLOB uploaden naar Azure Storage
-* Alle blobs in een container weer geven
-* Een BLOB downloaden naar uw lokale computer
-* Een container verwijderen
+In deze Quick Start leert u hoe u blobs beheert met behulp van Java. Blobs zijn objecten die grote hoeveel heden tekst of binaire gegevens kunnen bevatten, zoals afbeeldingen, documenten, streaming media en gegevens archivering. U kunt blobs uploaden, downloaden en vermelden en u kunt containers maken en verwijderen.
 
 [API-referentie documentatie](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob?repo=jcenter) | -voor [beelden](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>Vereisten
 
-* JDK-versie 8 of hoger van [Java Development Kit](/java/azure/jdk/?view=azure-java-stable)
-* [Apache Maven](https://maven.apache.org/download.cgi)
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* Azure Storage-account: [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Een Azure Storage-account. [Een opslagaccount maken](../common/storage-account-create.md).
+- JDK-versie 8 of hoger van [Java Development Kit](/java/azure/jdk/?view=azure-java-stable) .
+- [Apache Maven](https://maven.apache.org/download.cgi).
+
+> [!NOTE]
+> Zie [Quick Start: blobs beheren met Java V8 SDK](storage-quickstart-blobs-java-legacy.md)om aan de slag te gaan met de vorige SDK-versie.
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>Instellen
 
@@ -48,7 +40,7 @@ In deze sectie wordt uitgelegd hoe u een project voorbereidt voor gebruik met de
 
 Maak een Java-toepassing *met de naam BLOB-Quick Start-V12*.
 
-1. In een console venster (zoals cmd, Power shell of bash), gebruikt u maven om een nieuwe console-app te maken met de naam *BLOB-Quick Start-V12*. Typ de volgende **MVN** -opdracht voor het maken van een eenvoudig "Hallo wereld!" Java-project.
+1. In een console venster (zoals cmd, Power shell of bash), gebruikt u maven om een nieuwe console-app te maken met de naam *BLOB-Quick Start-V12*. Typ de volgende **MVN** -opdracht voor het maken van een Hello World! Java-project.
 
    ```console
    mvn archetype:generate -DgroupId=com.blobs.quickstart \
@@ -170,7 +162,7 @@ Gebruik de volgende Java-klassen om te communiceren met deze resources:
 * [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): met de klasse `BlobClient` kunt u Azure Storage blobs bewerken.
 * [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): de klasse `BlobItem` vertegenwoordigt afzonderlijke blobs die zijn geretourneerd door een aanroep van `listBlobsFlat`.
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 In deze voorbeeld code fragmenten ziet u hoe u het volgende kunt uitvoeren met de Azure Blob Storage-client bibliotheek voor Java:
 
@@ -287,7 +279,7 @@ blobClient.downloadToFile(localPath + downloadFileName);
 
 Met de volgende code wordt de resources opgeschoond die de app heeft gemaakt door de volledige container te verwijderen met de methode [Delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) . Ook worden de lokale bestanden verwijderd die zijn gemaakt door de app.
 
-De app wordt gepauzeerd voor gebruikers invoer door `System.console().readLine()` aan te roepen voordat de blob, container en lokale bestanden worden verwijderd. Dit is een goede kans om te controleren of de resources daad werkelijk zijn gemaakt, voordat ze worden verwijderd.
+De app wordt gepauzeerd voor gebruikers invoer door `System.console().readLine()` aan te roepen voordat de blob, container en lokale bestanden worden verwijderd. Dit is een goede kans om te controleren of de resources correct zijn gemaakt voordat ze worden verwijderd.
 
 Voeg deze code toe aan het einde van de `Main` methode:
 
@@ -363,4 +355,4 @@ Als u voor beeld-apps voor Blob-opslag wilt zien, gaat u door naar:
 > [V12 Java-voor beelden voor Azure Blob Storage SDK](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
 * Zie de [Azure SDK voor Java](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)voor meer informatie.
-* Voor zelf studies, voor beelden, snel starten en andere documentatie gaat u naar [Azure voor Java Cloud-ontwikkel aars](/azure/java/).
+* Voor zelf studies, voor beelden, Quick starts en andere documentatie gaat u naar [Azure voor ontwikkel aars van Java-Clouds](/azure/java/).

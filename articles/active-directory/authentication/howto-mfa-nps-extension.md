@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4da2e3696dd1fad1dcce81831385f1e21891f97
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712537"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908850"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Uw bestaande NPS-infra structuur integreren met Azure Multi-Factor Authentication
 
@@ -192,6 +192,23 @@ Als uw vorige computer certificaat is verlopen en er een nieuw certificaat is ge
 
 > [!NOTE]
 > Als u uw eigen certificaten gebruikt in plaats van certificaten te genereren met het Power shell-script, moet u ervoor zorgen dat ze worden uitgelijnd op de NPS-naamgevings Conventie. De naam van het onderwerp moet **CN =\<TenantID\>, ou = micro soft NPS extension**zijn. 
+
+### <a name="microsoft-azure-government-additional-steps"></a>Aanvullende stappen Microsoft Azure Government
+
+Voor klanten die Azure Government Cloud gebruiken, zijn de volgende aanvullende configuratie stappen vereist op elke NPS-server:
+
+1. Open de **REGI ster-editor** op de NPS-server.
+1. Navigeer naar `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`. Stel de volgende sleutel waarden in:
+
+    | Register sleutel       | Waarde |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
+    | STS_URL            | https://login.microsoftonline.us/ |
+
+1. Herhaal de vorige twee stappen om de register sleutel waarden voor elke NPS-server in te stellen.
+1. Start de NPS-service voor elke NPS-server opnieuw.
+
+    Voor een minimale impact moet u elke NPS-server uit de NLB-rotatie een voor een tegelijk halen en wachten op alle verbindingen met de afvoer.
 
 ### <a name="certificate-rollover"></a>Certificaat overschakeling
 

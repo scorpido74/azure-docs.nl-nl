@@ -1,62 +1,78 @@
 ---
-title: Overzicht van Azure Arc voor servers
-description: Meer informatie over het gebruik van Azure Arc voor servers voor het automatiseren van de levens cyclus van infra structuur en toepassingen.
+title: Overzicht van Azure-Arc voor servers (preview-versie)
+description: Meer informatie over het gebruik van Azure Arc voor servers voor het beheren van computers die buiten Azure worden gehost alsof het een Azure-resource is.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 keywords: Azure Automation, DSC, Power shell, desired state Configuration, update beheer, bijhouden van wijzigingen, inventaris, runbooks, Python, grafisch, hybride
-ms.date: 11/04/2019
+ms.date: 01/29/2020
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 06e3b490f4f9cef64ae8bca5aed4d0518f10ba0e
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: b0f1d235391c4c4e3804a6dccc8174e946035b6a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659618"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899196"
 ---
-# <a name="what-is-azure-arc-for-servers"></a>Wat is Azure Arc voor servers?
+# <a name="what-is-azure-arc-for-servers-preview"></a>Wat is Azure Arc voor servers (preview-versie)
 
-Met Azure Arc voor servers kunt u computers beheren die zich buiten Azure bevinden.
-Wanneer een niet-Azure-machine is verbonden met Azure, wordt het een **verbonden machine** en wordt deze behandeld als een resource in Azure. Elke **verbonden computer** heeft een resource-id, wordt beheerd als onderdeel van een resource groep in een abonnement en voor delen van standaard Azure-constructs, zoals Azure Policy en tagging.
+Met Azure Arc voor servers (preview) kunt u uw Windows-en Linux-machines die buiten Azure worden gehost, beheren op uw bedrijfs netwerk of een andere Cloud provider, op dezelfde manier als bij het beheren van systeem eigen virtuele Azure-machines. Wanneer een hybride machine is verbonden met Azure, wordt het een verbonden machine en wordt deze behandeld als een resource in Azure. Elke verbonden computer heeft een resource-ID, wordt beheerd als onderdeel van een resource groep binnen een abonnement en heeft voor delen van standaard Azure-constructs, zoals Azure Policy en het Toep assen van tags.
 
-Op elke machine moet een agent pakket worden geïnstalleerd om het te verbinden met Azure. In de rest van dit document wordt het proces gedetailleerd uitgelegd.
+Om deze ervaring te bieden met uw hybride machines die buiten Azure worden gehost, moet de agent van de Azure Connected machine worden geïnstalleerd op elke computer die u wilt verbinden met Azure. Deze agent levert geen andere functionaliteit en vervangt de Azure [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md)niet. De Log Analytics-agent voor Windows en Linux is vereist wanneer u het besturings systeem en de workloads die worden uitgevoerd op de machine proactief wilt bewaken, beheren met Automation-runbooks of-oplossingen, zoals Updatebeheer, of andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-intro.md)gebruiken.
 
-Computers krijgen de status **verbonden** of **losgekoppeld** op basis van hoe recent de agent is ingecheckt. Elke check-in wordt een heartbeat genoemd. Als een computer in de afgelopen vijf minuten niet is ingecheckt, wordt deze weer gegeven als offline totdat de verbinding is hersteld.  <!-- For more information on troubleshooting agent connectivity, see [Troubleshooting Azure Arc for servers](troubleshoot/arc-for-servers.md). -->
+>[!NOTE]
+>Deze preview-versie is bedoeld voor evaluatie doeleinden en wij raden u aan om essentiële productie machines niet te beheren.
+>
 
-![Verbonden servers](./media/overview/arc-for-servers-onboarded-servers.png)
+## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
-## <a name="clients"></a>Clients
+Azure Arc voor servers (preview) ondersteunt de volgende scenario's met verbonden computers:
+
+- Wijs [Azure Policy-gast configuraties](../../governance/policy/concepts/guest-configuration.md) toe met dezelfde ervaring als beleids toewijzing voor virtuele Azure-machines.
+- Logboek gegevens die worden verzameld door de Log Analytics agent en die zijn opgeslagen in de Log Analytics werk ruimte waarin de machine is geregistreerd, bevat nu eigenschappen die specifiek zijn voor de machine, zoals de resource-ID, die kan worden gebruikt om de toegang tot bronnen in de [context](../../azure-monitor/platform/design-logs-deployment.md#access-mode) van het logboek te ondersteunen.
+
+## <a name="supported-regions"></a>Ondersteunde regio’s
+
+Met Azure Arc voor servers (preview) worden alleen bepaalde regio's ondersteund:
+
+- WestUS2
+- West-Europa
+- WestAsia
+
+## <a name="prerequisites"></a>Vereisten
 
 ### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-In de open bare preview ondersteunen we het volgende:
+De volgende versies van het Windows-en Linux-besturings systeem worden officieel ondersteund voor de Azure Connected machine agent: 
 
 - Windows Server 2012 R2 en hoger
 - Ubuntu 16,04 en 18,04
 
-De open bare preview-versie is ontworpen voor evaluatie doeleinden en mag niet worden gebruikt om kritieke productie resources te beheren.
+>[!NOTE]
+>Deze preview-versie van de verbonden machine-agent voor Windows ondersteunt alleen Windows Server die is geconfigureerd voor gebruik van de Engelse taal.
+>
 
-## <a name="azure-subscription-and-service-limits"></a>Azure-abonnement en service limieten
+### <a name="azure-subscription-and-service-limits"></a>Azure-abonnement en service limieten
 
-Lees de Azure Resource Manager limieten en plan het aantal computers dat moet worden verbonden volgens de richt lijn die wordt vermeld voor het [abonnement](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)en voor de [resource groepen](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits). In het bijzonder is er standaard een limiet van 800 servers per resource groep.
+Voordat u uw computers met Azure-Arc voor servers (preview) configureert, moet u de limieten voor het Azure Resource Manager- [abonnement](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager) en de [limieten van de resource groep](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) controleren om het aantal machines te plannen dat moet worden verbonden.
 
-## <a name="networking-configuration"></a>Netwerk configuratie
+### <a name="networking-configuration"></a>Netwerk configuratie
 
-Tijdens de installatie en runtime vereist de agent connectiviteit met **Azure Arc service-eind punten**. Als uitgaande connectiviteit wordt geblokkeerd door firewalls, moet u ervoor zorgen dat de volgende Url's niet standaard worden geblokkeerd. Alle verbindingen zijn uitgaand van de agent naar Azure en zijn beveiligd met **SSL**. Al het verkeer kan via een **https** -proxy worden doorgestuurd. Als u de IP-bereiken of domein namen toestaat waarmee de servers verbinding mogen maken, moet u poort 443 toegang tot de volgende service tags en DNS-namen toestaan.
+De verbonden machine agent voor Linux en Windows communiceert veilig uitgaande naar Azure Arc via TCP-poort 443. Als de computer verbinding maakt via een firewall of proxy server om via internet te communiceren, raadpleegt u de vereisten hieronder om inzicht te krijgen in de vereisten voor de netwerk configuratie.
+
+Als de uitgaande connectiviteit wordt beperkt door uw firewall of proxy server, controleert u of de Url's die hieronder worden weer gegeven niet zijn geblokkeerd. Als u alleen de IP-bereiken of domein namen toestaat die vereist zijn om de agent te laten communiceren met de-service, moet u ook toegang tot de volgende service tags en Url's toestaan.
 
 Service Tags:
 
-* AzureActiveDirectory
-* AzureTrafficManager
+- AzureActiveDirectory
+- AzureTrafficManager
 
-Zie voor een lijst met IP-adressen voor elke servicetag/regio het JSON-bestand- [Azure IP-bereiken en de service Tags – open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519). Micro soft publiceert wekelijkse updates met elke Azure-service en de IP-bereiken die worden gebruikt. Zie [service Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)voor meer informatie.
+Adres
 
-Deze DNS-namen worden naast de informatie over het IP-adres bereik van de service-tag vermeld, omdat het meren deel van de services momenteel geen servicetag registratie heeft en, als zodanig, de Ip's kunnen worden gewijzigd. Als er IP-bereiken zijn vereist voor de configuratie van de firewall, moet u de **Cloud** -servicetag gebruiken om toegang tot alle Azure-Services toe te staan. Schakel de beveiligings controle of inspectie van deze Url's niet uit, maar sta toe als andere Internet verkeer.
-
-| Domeinomgeving | Vereiste Azure-service-eindpunten |
+| Agentresource | Beschrijving |
 |---------|---------|
 |management.azure.com|Azure Resource Manager|
 |login.windows.net|Azure Active Directory|
@@ -65,116 +81,58 @@ Deze DNS-namen worden naast de informatie over het IP-adres bereik van de servic
 |*-agentservice-prod-1.azure-automation.net|Gastconfiguratie|
 |*. his.hybridcompute.azure-automation.net|Hybride identiteits service|
 
-### <a name="installation-network-requirements"></a>Vereisten voor installatie netwerk
+Zie voor een lijst met IP-adressen voor elke servicetag/regio het JSON-bestand- [Azure IP-bereiken en de service Tags – open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519). Micro soft publiceert wekelijkse updates met elke Azure-service en de IP-bereiken die worden gebruikt. Bekijk [service Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)voor meer informatie.
 
-Down load het pakket voor de [Azure Connected machine agent](https://aka.ms/AzureConnectedMachineAgent) via onze officiële distributie servers de onderstaande sites moeten toegankelijk zijn vanuit uw omgeving. U kunt ervoor kiezen om het pakket te downloaden naar een bestands share en de agent van daaruit te installeren. In dit geval moet het onboarding-script dat is gegenereerd op basis van de Azure Portal mogelijk worden gewijzigd.
+De Url's in de vorige tabel zijn vereist naast de IP-adres bereik gegevens van de service label, omdat de meeste services momenteel geen servicetag registratie hebben. Zo kunnen de IP-adressen worden gewijzigd. Als IP-adresbereiken vereist zijn voor de configuratie van de firewall, moet de **Cloud** -servicetag worden gebruikt om toegang tot alle Azure-Services toe te staan. Schakel de beveiligings controle of inspectie van deze Url's niet uit, en sta ze toe als andere Internet verkeer.
 
-Windows:
+### <a name="register-azure-resource-providers"></a>Azure-resource providers registreren
 
-* `aka.ms`
-* `download.microsoft.com`
+Azure Arc voor servers (preview) is afhankelijk van de volgende Azure-resource providers in uw abonnement om deze service te kunnen gebruiken:
 
-Linux:
+- **Microsoft.HybridCompute**
+- **Micro soft. GuestConfiguration**
 
-* `aka.ms`
-* `packages.microsoft.com`
-
-Zie de sectie [proxy server configuratie](quickstart-onboard-powershell.md#proxy-server-configuration)voor informatie over het configureren van de agent voor het gebruik van uw proxy.
-
-## <a name="register-the-required-resource-providers"></a>De vereiste resource providers registreren
-
-Als u Azure Arc voor servers wilt gebruiken, moet u de vereiste resource providers registreren.
-
-* **Microsoft.HybridCompute**
-* **Micro soft. GuestConfiguration**
-
-U kunt de resource providers registreren met de volgende opdrachten:
+Als ze niet zijn geregistreerd, kunt u ze registreren met de volgende opdrachten:
 
 Azure PowerShell:
 
 ```azurepowershell-interactive
 Login-AzAccount
-Set-AzContext -SubscriptionId [subscription you want to onboard]
-Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
-Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
+Set-AzContext -SubscriptionId [subscription you want to onboard]
+Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
+Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
 Azure CLI:
 
 ```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-U kunt de resource providers ook registreren met behulp van de portal door de stappen onder [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)te volgen.
+U kunt de resource providers ook registreren in de Azure Portal door de stappen onder [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)te volgen.
 
-## <a name="machine-changes-after-installing-the-agent"></a>Computer wijzigingen na de installatie van de agent
+## <a name="connected-machine-agent"></a>Verbonden machine agent
 
-Als er een oplossing voor het bijhouden van wijzigingen in uw omgeving is geïmplementeerd, kunt u de onderstaande lijst gebruiken om de wijzigingen die zijn aangebracht door het **AzCMAgent-installatie pakket (Azure Connected machine agent)** , bij te houden, te identificeren en toe te staan.
+U kunt het Azure Connected machine agent-pakket voor Windows en Linux downloaden van de hieronder vermelde locaties.
 
-Nadat u de agent hebt geïnstalleerd, ziet u de volgende wijzigingen die zijn aangebracht op uw servers.
+- [Windows agent Windows Installer-pakket](https://aka.ms/AzureConnectedMachineAgent) van het micro soft Download centrum.
+- Linux-agent pakket wordt gedistribueerd vanuit de [pakket opslagplaats](https://packages.microsoft.com/) van micro soft met behulp van de voorkeurs indeling van het pakket voor de distributie (. RPM of. DEB).
 
-### <a name="windows"></a>Windows
+>[!NOTE]
+>Tijdens deze preview-versie is slechts één pakket vrijgegeven, dat geschikt is voor Ubuntu 16,04 of 18,04.
 
-Geïnstalleerde services:
+## <a name="install-and-configure-agent"></a>Agent installeren en configureren
 
-* `Himds`: de service **Azure Connected machine agent** .
-* `Dscservice` of `gcd`-de **gast configuratie** service.
+Het koppelen van machines in uw hybride omgeving met Azure kan worden uitgevoerd met behulp van verschillende methoden, afhankelijk van uw vereisten. In de volgende tabel ziet u elke methode om te bepalen welke functie het beste werkt voor uw organisatie.
 
-Bestanden die zijn toegevoegd aan de server:
+| Methode | Beschrijving |
+|--------|-------------|
+| Interactief | Installeer de agent hand matig op een enkele of een beperkt aantal machines Volg de stappen in [computers verbinden met Azure Portal](quickstart-onboard-portal.md).<br> Vanuit het Azure Portal kunt u een script genereren en uitvoeren op de computer om de installatie-en configuratie stappen van de agent te automatiseren.|
+| Op schaal | Installeer en configureer de agent voor meerdere machines die de [Connect-computers volgen met behulp van een Service-Principal](quickstart-onboard-powershell.md).<br> Met deze methode maakt u een Service-Principal om machines niet-interactief te verbinden.|
 
-* `%ProgramFiles%\AzureConnectedMachineAgent\*.*` locatie van bestanden van een **met Azure verbonden machine agent** .
-* `%ProgramData%\GuestConfig\*.*` - **gast configuratie** Logboeken.
-
-Locaties van register sleutels:
-
-* `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Connected Machine Agent`-register sleutels voor de **Azure Connected machine agent**.
-
-### <a name="linux"></a>Linux
-
-Geïnstalleerde services:
-
-* `Himdsd`: de service **Azure Connected machine agent** .
-* `dscd` of `gcd`-de **gast configuratie** service.
-
-Bestanden die zijn toegevoegd aan de server:
-
-* `/var/opt/azcmagent/**` locatie van bestanden van een **met Azure verbonden machine agent** .
-* `/var/lib/GuestConfig/**` - **gast configuratie** Logboeken.
-
-## <a name="supported-scenarios"></a>Ondersteunde scenario 's
-
-Nadat u een knoop punt hebt geregistreerd, kunt u beginnen met het beheren van uw knoop punten met behulp van andere Azure-Services.
-
-In de open bare preview worden de volgende scenario's ondersteund voor **verbonden computers**.
-
-## <a name="guest-configuration"></a>Gastconfiguratie
-
-Nadat u de computer hebt verbonden met Azure, kunt u Azure-beleid toewijzen aan **verbonden computers** met dezelfde ervaring als beleids toewijzing voor virtuele Azure-machines.
-
-Zie [de gast configuratie van Azure Policy begrijpen](../../governance/policy/concepts/guest-configuration.md)voor meer informatie.
-
-De logboeken van de gast configuratie agent voor een **verbonden computer** bevinden zich op de volgende locaties:
-
-* Windows - `%ProgramFiles%\AzureConnectedMachineAgent\logs\dsc.log`
-* Linux:-`/opt/logs/dsc.log`
-
-## <a name="log-analytics"></a>Log Analytics
-
-Logboek gegevens die worden verzameld door de [micro soft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) en opgeslagen in log Analytics werk ruimte bevatten nu eigenschappen die specifiek zijn voor de computer, zoals **ResourceID**, die kunnen worden gebruikt voor de toegang tot de Resource Center-Logboeken.
-
-- Op computers waarop de MMA-agent al is geïnstalleerd, wordt de functionaliteit van **Azure Arc** ingeschakeld via bijgewerkte Management Packs.
-- [MMA-agent versie 10.20.18011 of hoger](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows#agent-and-vm-extension-version) is vereist voor Azure Arc voor servers-integratie.
-- Bij het uitvoeren van query's voor logboek gegevens in [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview), bevat het geretourneerde gegevens schema de Hybrid **ResourceID** in de vorm `/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>`.
-
-Zie [aan de slag met log Analytics in azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)voor meer informatie.
-
-<!-- MMA agent version 10.20.18011 and later -->
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Er zijn twee methoden om computers te verbinden met Azure Arc voor servers.
-
-* **Interactief** : Volg de Quick Start van de [Portal](quickstart-onboard-portal.md) om een script uit de portal te genereren en op de computer uit te voeren. Dit is de beste optie als u een computer tegelijk verbindt.
-* **Op schaal** : Volg de [Power shell-Snelstartgids](quickstart-onboard-powershell.md) om een service-principal te maken voor het niet-interactief verbinden van machines.
+- Als u Azure-Arc voor servers (preview) wilt gaan evalueren, volgt u het artikel [verbinding maken met hybride computers met Azure via de Azure Portal](quickstart-onboard-portal.md). 

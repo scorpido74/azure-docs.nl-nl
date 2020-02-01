@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708159"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906586"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statische website-hosting in Azure Storage
 
@@ -81,22 +81,16 @@ Als u bijvoorbeeld het open bare toegangs niveau van de container **$Web** van *
 
 De open bare toegang tot het eind punt van de primaire BLOB-service `https://contosoblobaccount.blob.core.windows.net/$web/index.html` echter gewijzigd van privé in openbaar. Gebruikers kunnen dit bestand nu openen met behulp van een van deze twee eind punten.
 
-## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>Ondersteuning voor Content Delivery Network (CDN) en SSL (Secure Socket Layer)
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Een aangepast domein toewijzen aan een statische website-URL
 
-Zie [de Azure CDN gebruiken om toegang te krijgen tot blobs met aangepaste domeinen via https](storage-https-custom-domain-cdn.md)om uw statische website bestanden beschikbaar te maken voor uw aangepaste domein en HTTPS. Als onderdeel van dit proces moet u uw CDN naar het primaire *statische website* -eind punt wijzen, in plaats van het primaire eind punt van de *BLOB service* . Mogelijk moet u enkele minuten wachten voordat uw inhoud zichtbaar is, omdat de CDN-configuratie niet onmiddellijk wordt uitgevoerd.
+U kunt uw statische website beschikbaar maken via een aangepast domein. 
 
-Wanneer u uw statische website bijwerkt, moet u ervoor zorgen dat de inhoud in de cache op de CDN-rand servers wordt gewist door het CDN-eind punt te verwijderen. Zie voor meer informatie [Een Azure CDN-eindpunt leegmaken](../../cdn/cdn-purge-endpoint.md).
+Het is eenvoudiger om HTTP-toegang in te scha kelen voor uw aangepaste domein, omdat deze door Azure Storage systeem eigen ondersteuning biedt. Als u HTTPS wilt inschakelen, moet u Azure CDN gebruiken, omdat Azure Storage nog geen systeem eigen ondersteuning biedt voor HTTPS met aangepaste domeinen. Zie [een aangepast domein toewijzen aan een Azure Blob Storage-eind punt](storage-custom-domain-name.md) voor stapsgewijze instructies.
 
-> [!NOTE]
-> HTTPS wordt standaard ondersteund door het web-eind punt van het account, zodat het webeindpunt toegankelijk is via HTTP en HTTPS. Als het opslag account echter is geconfigureerd voor het vereisen van beveiligde overdracht via HTTPS, moeten gebruikers het HTTPS-eind punt gebruiken. Zie [veilige overdracht vereisen in azure Storage](../common/storage-require-secure-transfer.md)voor meer informatie.
->
-> Voor het gebruik van aangepaste domeinen via HTTPS moet Azure CDN op dit moment worden gebruikt.
+Als het opslag account is geconfigureerd voor het [vereisen van beveiligde overdracht](../common/storage-require-secure-transfer.md) via https, moeten gebruikers het HTTPS-eind punt gebruiken. 
 
-## <a name="custom-domain-names"></a>Aangepaste domeinnamen
-
-U kunt uw statische website beschikbaar maken via een aangepast domein. Zie [een aangepaste domein naam configureren voor uw Azure Storage-account](storage-custom-domain-name.md)voor meer informatie.
-
-Zie [uw domein hosten in azure DNS](../../dns/dns-delegate-domain-azure-dns.md)voor een diep gaande bespreking van het hosten van uw domein in Azure.
+> [!TIP]
+> U kunt uw domein hosten in Azure. Zie [uw domein hosten in azure DNS](../../dns/dns-delegate-domain-azure-dns.md)voor meer informatie.
 
 ## <a name="pricing"></a>Prijzen
 
@@ -111,8 +105,7 @@ Zie [metrische gegevens inschakelen op de pagina's van een statische website](st
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een statische website hosten in Azure Storage](storage-blob-static-website-how-to.md)
-* [De Azure CDN gebruiken om toegang te krijgen tot blobs met aangepaste domeinen via HTTPS](storage-https-custom-domain-cdn.md)
-* [Een aangepaste domein naam configureren voor uw BLOB of Web-eind punt](storage-custom-domain-name.md)
+* [Een aangepast domein toewijzen aan een Azure Blob Storage-eind punt](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [Uw eerste serverloze web-app bouwen](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)

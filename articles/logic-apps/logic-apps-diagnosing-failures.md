@@ -5,108 +5,83 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 10/15/2017
-ms.openlocfilehash: 79cc9d1bf7aa9e8848197525646b0a3646a558d2
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.date: 01/31/2020
+ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666802"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905078"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Problemen met werk stromen oplossen en fouten opsporen in Azure Logic Apps
 
 Uw logische app genereert informatie die u kan helpen bij het vaststellen en oplossen van problemen in uw app. U kunt een logische app diagnosticeren door elke stap in de werk stroom te bekijken via de Azure Portal. U kunt ook enkele stappen toevoegen aan een werk stroom voor runtime-fout opsporing.
 
-## <a name="review-trigger-history"></a>Trigger geschiedenis controleren
+<a name="check-trigger-history"></a>
 
-Elke logische app begint met trigger. Als de trigger niet wordt gestart, controleert u eerst de trigger geschiedenis. Deze geschiedenis bevat een lijst met alle trigger pogingen die uw logische app heeft gemaakt en informatie over invoer en uitvoer voor elke trigger poging.
+## <a name="check-trigger-history"></a>Trigger geschiedenis controleren
 
-1. Als u wilt controleren of de trigger is geactiveerd, kiest u **overzicht**in het menu van de logische app. Controleer onder **trigger geschiedenis**de status van de trigger.
+De uitvoering van elke logische app begint met een trigger poging, dus als de trigger niet wordt gestart, voert u de volgende stappen uit:
 
-   > [!TIP]
-   > Als u het menu van de logische app niet ziet, probeer dan terug te gaan naar het Azure-dashboard. Open uw logische app dan opnieuw.
+1. Controleer de status van de trigger door [de trigger geschiedenis te controleren](../logic-apps/monitor-logic-apps.md#review-trigger-history). Als u meer informatie over de trigger poging wilt weer geven, selecteert u die trigger gebeurtenis, bijvoorbeeld:
 
-   ![Trigger geschiedenis controleren](./media/logic-apps-diagnosing-failures/logic-app-trigger-history-overview.png)
+   ![Trigger status en geschiedenis weer geven](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
 
-   > [!TIP]
-   > * Als u de verwachte gegevens niet kunt vinden, kunt u op de werk balk op **vernieuwen** klikken.
-   > * Als in de lijst veel trigger pogingen worden weer gegeven en u het gewenste item niet kunt vinden, kunt u de lijst filteren.
+1. Controleer de invoer van de trigger om te bevestigen dat ze worden weer gegeven zoals u verwacht. Selecteer onder **invoer koppeling**de koppeling, waarin het deel venster **invoer** wordt weer gegeven.
 
-   Hier volgen de mogelijke statussen voor een trigger poging:
+   Trigger invoer bevat de gegevens die de trigger verwacht en vereist om de werk stroom te starten. Door deze invoer te controleren, kunt u bepalen of de trigger invoer juist is en of aan de voor waarde is voldaan, zodat de werk stroom kan door gaan.
 
-   | Status | Beschrijving | 
-   | ------ | ----------- | 
-   | **Geslaagd** | De trigger heeft het eind punt gecontroleerd en beschik bare gegevens gevonden. Normaal gesp roken wordt naast deze status ook de status ' geactiveerd ' weer gegeven. Als dat niet het geval is, kan de definitie van de trigger een voor waarde of `SplitOn` opdracht hebben die niet is voldaan. <p>Deze status kan van toepassing zijn op een hand matige trigger, een herhalings trigger of een polling-trigger. Een trigger kan worden uitgevoerd, maar de uitvoeringsrun zelf kan echter nog steeds mislukken wanneer de acties onverwerkte fouten genereren. | 
-   | **Overgeslagen** | De trigger heeft het eind punt gecontroleerd, maar er zijn geen gegevens gevonden. | 
-   | **Mislukt** | Er is een fout opgetreden. Als u gegenereerde fout berichten voor een mislukte trigger wilt controleren, selecteert u de trigger poging en kiest u **uitvoer**. U kunt bijvoorbeeld invoer zoeken die niet geldig is. | 
-   ||| 
+   Zo heeft de eigenschap `feedUrl` hier een onjuiste waarde voor de RSS-feed:
 
-   Mogelijk hebt u meerdere trigger vermeldingen met dezelfde datum en tijd, wat er gebeurt wanneer uw logische app meerdere items vindt. 
-   Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-Engine een exemplaar van een logische app om uw werk stroom uit te voeren. Elk exemplaar wordt standaard parallel uitgevoerd, zodat er geen werk stroom moet worden gewacht voordat een uitvoering wordt gestart.
+   ![Invoer van triggers controleren op fouten](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
+
+1. Controleer de triggers-uitvoer, indien van toepassing, om te bevestigen dat ze worden weer gegeven zoals verwacht. Selecteer onder **uitvoer koppeling**de koppeling, waarin het deel venster **uitvoer** wordt weer gegeven.
+
+   Trigger uitvoer bevat de gegevens die door de trigger worden door gegeven aan de volgende stap in uw werk stroom. Door deze uitvoer te bekijken, kunt u bepalen of de juiste of verwachte waarden zijn door gegeven aan de volgende stap in uw werk stroom, bijvoorbeeld:
+
+   ![Activerings uitvoer controleren op fouten](./media/logic-apps-diagnosing-failures/review-trigger-outputs-for-errors.png)
 
    > [!TIP]
-   > U kunt de trigger opnieuw controleren zonder te wachten op het volgende terugkeer patroon. Kies op de werk balk overzicht de optie **trigger uitvoeren**en selecteer de trigger die een controle afdwingt. U kunt ook **uitvoeren** op de werk balk van Logic apps Designer selecteren.
+   > Als u inhoud vindt die u niet herkent, kunt u meer te weten komen over [verschillende inhouds typen](../logic-apps/logic-apps-content-type.md) in azure Logic apps.
 
-3. Als u de Details voor een trigger poging wilt controleren, selecteert u in trigger **geschiedenis**de trigger poging. 
+<a name="check-runs-history"></a>
 
-   ![Een trigger poging selecteren](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
+## <a name="check-runs-history"></a>Geschiedenis van uitvoeringen controleren
 
-4. Controleer de invoer en eventuele uitvoer die de trigger heeft gegenereerd. Trigger uitvoer geeft de gegevens weer die afkomstig zijn van de trigger. Deze uitvoer kan u helpen bepalen of alle eigenschappen worden geretourneerd zoals verwacht.
+Telkens wanneer de trigger wordt geactiveerd voor een item of gebeurtenis, maakt en voert de Logic Apps Engine een afzonderlijk werk stroom exemplaar voor elk item of elke gebeurtenis. Als een uitvoering mislukt, volgt u deze stappen om te controleren wat er is gebeurd tijdens de uitvoering, inclusief de status van elke stap in de werk stroom plus de invoer en uitvoer voor elke stap.
 
-   > [!NOTE]
-   > Als u inhoud vindt die u niet begrijpt, kunt u lezen hoe Azure Logic Apps [verschillende inhouds typen verwerkt](../logic-apps/logic-apps-content-type.md).
+1. Controleer de uitvoerings status van de werk stroom door [de runs History te controleren](../logic-apps/monitor-logic-apps.md#review-runs-history). Als u meer informatie wilt weer geven over een mislukte uitvoering, inclusief alle stappen in die worden uitgevoerd in hun status, selecteert u de mislukte uitvoering.
 
-   ![Trigger uitvoer](./media/logic-apps-diagnosing-failures/trigger-outputs.png)
+   ![Uitvoerings geschiedenis weer geven en mislukte uitvoering selecteren](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
-## <a name="review-run-history"></a>Uitvoeringsgeschiedenis controleren
+1. Als alle stappen in de uitvoering worden weer gegeven, vouwt u de eerste mislukte stap uit.
 
-Elke geactiveerde trigger start een uitvoering van de werk stroom. U kunt zien wat er is gebeurd tijdens de uitvoering, inclusief de status van elke stap in de werk stroom, plus de invoer en uitvoer voor elke stap.
+   ![Eerste mislukte stap uitvouwen](./media/logic-apps-diagnosing-failures/logic-app-run-pane.png)
 
-1. Kies **Overzicht** in het menu van de logische app. Controleer onder uitvoerings **geschiedenis**de uitvoering van de geactiveerde trigger.
+1. Controleer de invoer van de mislukte stap om te controleren of ze worden weer gegeven zoals verwacht.
 
-   > [!TIP]
-   > Als u het menu van de logische app niet ziet, probeer dan terug te gaan naar het Azure-dashboard. Open uw logische app dan opnieuw.
+1. Bekijk de details van elke stap in een specifieke uitvoering. Selecteer onder uitvoerings **geschiedenis**de uitvoering die u wilt onderzoeken.
 
-   ![Geschiedenis van uitvoeringen controleren](./media/logic-apps-diagnosing-failures/logic-app-runs-history-overview.png)
-
-   > [!TIP]
-   > * Als u de verwachte gegevens niet kunt vinden, kunt u op de werk balk op **vernieuwen** klikken.
-   > * Als in de lijst veel uitvoeringen worden weer gegeven en u het gewenste item niet kunt vinden, kunt u de lijst filteren.
-
-   Hier volgen de mogelijke statussen voor een uitvoering:
-
-   | Status | Beschrijving | 
-   | ------ | ----------- | 
-   | **Geslaagd** | Alle acties zijn voltooid. <p>Als er fouten zijn opgetreden in een specifieke actie, wordt die fout door een volgende actie in de werk stroom verwerkt. | 
-   | **Mislukt** | Ten minste één actie is mislukt en er zijn geen latere acties in de werk stroom ingesteld om de fout te verwerken. | 
-   | **Gevraagd** | De werk stroom is uitgevoerd, maar er is een annulerings aanvraag ontvangen. | 
-   | **Wordt uitgevoerd** | De werk stroom wordt momenteel uitgevoerd. <p>Deze status kan voor een beperkt aantal werk stromen optreden, of vanwege het huidige prijs plan. Zie de [pagina met prijzen voor de actie limieten](https://azure.microsoft.com/pricing/details/logic-apps/)voor meer informatie. Als u [Diagnostische logboek registratie](../logic-apps/logic-apps-monitor-your-logic-apps.md)instelt, kunt u ook informatie ophalen over eventuele vertragings gebeurtenissen die plaatsvinden. | 
-   ||| 
-
-2. Bekijk de details van elke stap in een specifieke uitvoering. Selecteer onder uitvoerings **geschiedenis**de uitvoering die u wilt onderzoeken.
-
-   ![Geschiedenis van uitvoeringen controleren](./media/logic-apps-diagnosing-failures/logic-app-run-history.png)
-
-   Of de uitvoering zelf is geslaagd of mislukt, de weer gave uitvoerings Details toont elke stap en of deze al dan niet is geslaagd of mislukt.
+   ![Geschiedenis van uitvoeringen controleren](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
    ![Details bekijken van een run van een logische app](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. Als u de invoer, uitvoer en eventuele fout berichten voor een specifieke stap wilt onderzoeken, kiest u die stap zodat de shape wordt uitgebreid en de details worden weer gegeven. Bijvoorbeeld:
+1. Als u de invoer, uitvoer en eventuele fout berichten voor een specifieke stap wilt onderzoeken, kiest u die stap zodat de shape wordt uitgebreid en de details worden weer gegeven. Bijvoorbeeld:
 
    ![Details van de stappen bekijken](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 
 ## <a name="perform-runtime-debugging"></a>Runtime-fout opsporing uitvoeren
 
-Als u hulp nodig hebt bij het opsporen van fouten, kunt u diagnostische stappen toevoegen aan een werk stroom en de geschiedenis van de trigger en uitvoeringen bekijken. U kunt bijvoorbeeld stappen toevoegen die gebruikmaken van de [webhook tester](https://webhook.site/) -service, zodat u HTTP-aanvragen kunt inspecteren en de exacte grootte, vorm en indeling bepaalt.
+Als u hulp nodig hebt bij het opsporen van fouten, kunt u diagnostische stappen toevoegen aan een werk stroom voor logische apps, samen met het controleren van de trigger-en uitvoerings geschiedenis. U kunt bijvoorbeeld stappen toevoegen die gebruikmaken van de [webhook tester](https://webhook.site/) -service, zodat u HTTP-aanvragen kunt inspecteren en de exacte grootte, vorm en indeling bepaalt.
 
-1. Ga naar de [webhook-tester](https://webhook.site/) en kopieer de unieke URL die is gemaakt
+1. Ga naar de website van de [webhook-tester](https://webhook.site/) en kopieer de gegenereerde unieke URL.
 
-2. Voeg in uw logische app een HTTP POST-actie toe met de inhoud van de hoofd tekst die u wilt testen, bijvoorbeeld een expressie of een andere stap uitvoer.
+1. Voeg in uw logische app een HTTP POST-actie plus de hoofd inhoud toe die u wilt testen, bijvoorbeeld een expressie of een andere stap uitvoer.
 
-3. Plak de URL voor uw webhook-tester in de actie HTTP POST.
+1. Plak de URL van de webhook-tester in de actie HTTP POST.
 
-4. Als u wilt zien hoe een aanvraag wordt gevormd wanneer deze wordt gegenereerd vanuit de Logic Apps-Engine, voert u de logische app uit en raadpleegt u webhook tester voor meer informatie.
+1. Als u wilt zien hoe een aanvraag wordt gevormd wanneer deze wordt gegenereerd vanuit de Logic Apps-Engine, voert u de logische app uit en bezoekt u de site van de webhook-tester voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Uw logische app bewaken](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [Uw logische app bewaken](../logic-apps/monitor-logic-apps.md)

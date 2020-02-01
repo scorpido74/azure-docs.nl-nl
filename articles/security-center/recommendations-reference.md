@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2019
 ms.author: memildin
-ms.openlocfilehash: 686b8bedfeb4ae5e1b2b7bf3b750b51074677990
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3c0fb29c5a4dd73135aa8352c97df29474c36caf
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288979"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904126"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Aanbevelingen voor beveiliging: een referentie gids
 
@@ -32,9 +32,10 @@ Uw beveiligde Score is gebaseerd op het aantal Security Center aanbevelingen dat
 |Aanbeveling|Beschrijving & gerelateerde beleids regel|Ernst|Snel oplossen ingeschakeld? ([Meer informatie](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Resourcetype|
 |----|----|----|----|----|
 |**Just-in-time-netwerk toegangs beheer moet worden toegepast op virtuele machines**|Pas een just-in-time-toegangs beheer (VM) toe om de toegang tot geselecteerde poorten permanent te vergren delen en stel gemachtigde gebruikers in staat om ze te openen via JIT, gedurende een beperkte periode.<br>(Gerelateerd beleid: Just-in-time-netwerk toegangs beheer moet worden toegepast op virtuele machines)|Hoog|N|Virtuele machine|
-|**Netwerk beveiligings groepen op het subnetniveau moeten zijn ingeschakeld**|Netwerk beveiligings groepen inschakelen voor het beheren van netwerk toegang van resources die zijn geïmplementeerd in uw subnetten.<br>(Gerelateerd beleid: subnetten moeten worden gekoppeld aan een netwerk beveiligings groep)|Hoog/gemiddeld|N|Subnet|
-|**Virtuele machines moeten worden gekoppeld aan een netwerk beveiligings groep**|Schakel netwerk beveiligings groepen in om de netwerk toegang van uw virtuele machines te beheren.<br>(Gerelateerd beleid: virtuele machines moeten worden gekoppeld aan een netwerk beveiligings groep)|Hoog/gemiddeld|N|Virtuele machine|
-|**Toegang moet worden beperkt voor strikte netwerk beveiligings groepen met Internet gerichte Vm's**|Beperk de netwerk beveiligings groepen van uw Internet gerichte Vm's door de toegang tot uw bestaande regels voor toestaan te beperken.<br>(Gerelateerd beleid: regels voor netwerk beveiligings groepen voor virtuele machines die op internet worden gericht, moeten worden gehardt)|Hoog|N|Virtuele machine|
+|**Netwerk beveiligings groepen op het subnetniveau moeten zijn ingeschakeld**|Netwerk beveiligings groepen inschakelen voor het beheren van netwerk toegang van resources die zijn geïmplementeerd in uw subnetten.<br>(Gerelateerd beleid: subnetten moeten worden gekoppeld aan een netwerk beveiligings groep.<br>Dit beleid is standaard uitgeschakeld)|Hoog/gemiddeld|N|Subnet|
+|**Internet gerichte virtuele machines moeten worden beveiligd met netwerk beveiligings groepen**|Schakel netwerk beveiligings groepen in om de netwerk toegang van uw virtuele machines te beheren.<br>(Gerelateerd beleid: Internet gerichte virtuele machines moeten worden beveiligd met netwerk beveiligings groepen)|Hoog/gemiddeld|N|Virtuele machine|
+|**Alle netwerk poorten moeten worden beperkt op NSG die zijn gekoppeld aan uw virtuele machine**|Beperk de netwerk beveiligings groepen van uw Internet gerichte Vm's door de toegang tot uw bestaande regels voor toestaan te beperken.<br>Deze aanbeveling wordt geactiveerd wanneer een wille keurige poort wordt geopend voor *alle* bronnen (met uitzonde ring van poort 22, 3389, 5985, 5986, 80 en 1443).<br>(Gerelateerd beleid: toegang via Internet gericht eind punt moet worden beperkt)|Hoog|N|Virtuele machine|
+|**Aanbevelingen voor adaptieve netwerk beveiliging moeten worden toegepast op Internet gerichte virtuele machines**|Voor klanten met de prijs categorie Standard wordt deze aanbeveling weer geven wanneer met de functie voor adaptieve netwerk beveiliging een regel matigere NSG wordt gevonden.<br>(Gerelateerd beleid: aanbevelingen voor adaptieve netwerk beveiliging moeten worden toegepast op Internet gerichte virtuele machines)|Hoog|N|Virtuele machine|
 |**De regels voor webtoepassingen op IaaS Nsg's moeten worden gehard**|De netwerk beveiligings groep (NSG) van uw virtuele machines waarop webtoepassingen worden uitgevoerd, beveiligen met NSG-regels die zich te maken hebben met betrekking tot de poorten van de web-app.<br>(Gerelateerd beleid: de Nsg's-regels voor webtoepassingen op IaaS moeten worden gehard)|Hoog|N|Virtuele machine|
 |**Toegang tot App Services moet worden beperkt**|Beperk de toegang tot uw App Services door de netwerk configuratie te wijzigen, om inkomend verkeer te weigeren van bereiken die te breed zijn.<br>(Gerelateerd beleid: [Preview]: toegang tot App Services moet worden beperkt)|Hoog|N|App Service|
 |**Beheer poorten moeten worden gesloten op uw virtuele machines**|Beperk de netwerk beveiligings groep van uw virtuele machines om de toegang tot beheer poorten te beperken.<br>(Gerelateerd beleid: beheer poorten moeten worden gesloten op uw virtuele machines)|Hoog|N|Virtuele machine|

@@ -3,19 +3,21 @@ title: Limieten en quota voor Azure-abonnementen
 description: Biedt een lijst met algemene Azure-abonnementen en service limieten, quota's en beperkingen. Dit artikel bevat informatie over het verhogen van de limieten en maximum waarden.
 tags: billing
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: c6661ce6d3e0f62c47b1f234898dbf47de36f3ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845995"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901422"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnement en servicelimieten, quota's en beperkingen
 
 Dit document bevat enkele van de meest voorkomende Microsoft Azure limieten, ook wel quota's genoemd. Dit document geldt momenteel niet voor alle Azure-Services. De lijst wordt na verloop van tijd uitgebreid en bijgewerkt om meer services te kunnen behandelen.
 
 Zie [overzicht van Azure-prijzen](https://azure.microsoft.com/pricing/)voor meer informatie over Azure-prijzen. Daar kunt u uw kosten ramen met behulp van de [prijs calculator](https://azure.microsoft.com/pricing/calculator/). U kunt ook naar de pagina prijs informatie voor een bepaalde service gaan, bijvoorbeeld Windows- [vm's](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). Zie [onverwachte kosten voor komen met Azure billing and cost management](../../billing/billing-getting-started.md)voor tips voor het beheren van uw kosten.
+
+Zie [naamgevings regels en beperkingen voor Azure-resources](resource-name-rules.md)voor limieten voor resource namen.
 
 > [!NOTE]
 > Als u de limiet of het quotum boven de standaard limiet wilt verhogen, kunt u gratis [een online klant ondersteuning-aanvraag openen](../templates/error-resource-quota.md). De limieten kunnen niet hoger zijn dan de limiet waarde die in de volgende tabellen wordt weer gegeven. Als er geen kolom maximum limiet is, heeft de resource geen aanpas bare limieten.
@@ -25,7 +27,7 @@ Zie [overzicht van Azure-prijzen](https://azure.microsoft.com/pricing/)voor meer
 
 ## <a name="limits-and-azure-resource-manager"></a>Limieten en Azure Resource Manager
 
-Het is nu mogelijk om meerdere Azure-resources te combi neren in één Azure-resource groep. Wanneer u resource groepen gebruikt, worden de limieten die eenmaal globaal worden beheerd op een regionaal niveau met Azure Resource Manager. Zie [Azure Resource Manager Overview](overview.md)voor meer informatie over Azure-resource groepen.
+U kunt meerdere Azure-resources combi neren in één Azure-resource groep. Wanneer u resource groepen gebruikt, worden de limieten die eenmaal globaal worden beheerd op een regionaal niveau met Azure Resource Manager. Zie [Azure Resource Manager Overview](overview.md)voor meer informatie over Azure-resource groepen.
 
 In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met verschillen in limieten wanneer u Azure Resource Manager gebruikt. Er is bijvoorbeeld een tabel met **limieten voor abonnementen** en een **abonnements limiet-Azure Resource Manager** tabel. Wanneer een limiet van toepassing is op beide scenario's, wordt deze alleen weer gegeven in de eerste tabel. Tenzij anders aangegeven, zijn de limieten globaal in alle regio's.
 
@@ -484,3 +486,4 @@ Zie [SQL Data Warehouse resource limieten](../../sql-data-warehouse/sql-data-war
 * [Meer informatie over Azure-limieten en toename](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Grootten van virtuele machines en Cloud Services voor Azure](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Grootten voor Azure Cloud Services](../../cloud-services/cloud-services-sizes-specs.md)
+* [Naamgevings regels en beperkingen voor Azure-resources](resource-name-rules.md)

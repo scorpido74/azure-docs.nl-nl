@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: 21314d3c80832c14538130ce373ccf6d2dd19f18
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965940"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906694"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Fouten en uitzonde ringen in Azure Logic Apps afhandelen
 
@@ -76,7 +76,7 @@ Of u kunt het beleid voor opnieuw proberen hand matig opgeven in het gedeelte `i
 | <*retry-attempts*> | Geheel getal | Het aantal nieuwe pogingen, dat tussen 1 en 90 ligt |
 ||||
 
-*Optioneel*
+*Beschrijving*
 
 | Waarde | Type | Beschrijving |
 |-------|------|-------------|
@@ -360,9 +360,9 @@ Ter referentie: Hier volgt een voor beeld van een enkel `@result()` item met daa
 
 Als u andere patronen voor uitzonde ringen wilt verwerken, kunt u de eerder beschreven expressies in dit artikel gebruiken. U kunt ervoor kiezen om één actie voor het afhandelen van uitzonde ringen uit te voeren buiten het bereik dat de volledige gefilterde matrix van fouten accepteert en de `For_each` actie verwijderen. U kunt ook andere nuttige eigenschappen van de `\@result()` reactie toevoegen zoals eerder is beschreven.
 
-## <a name="azure-diagnostics-and-metrics"></a>Azure Diagnostics en metrische gegevens
+## <a name="set-up-azure-monitor-logs"></a>Azure Monitor-logboeken instellen
 
-De vorige patronen zijn een uitstekende manier om fouten en uitzonde ringen binnen een uitvoering af te handelen, maar u kunt ook fouten onafhankelijk van de uitvoering identificeren en erop reageren. [Azure Diagnostics](../logic-apps/logic-apps-monitor-your-logic-apps.md) biedt een eenvoudige manier om alle werk stroom gebeurtenissen te verzenden, inclusief alle uitvoerings-en actie statussen, naar een Azure Storage account of een event hub dat is gemaakt met [Azure Event hubs](../event-hubs/event-hubs-about.md).
+De vorige patronen zijn een uitstekende manier om fouten en uitzonde ringen binnen een uitvoering af te handelen, maar u kunt ook fouten onafhankelijk van de uitvoering identificeren en erop reageren. [Azure monitor](../azure-monitor/overview.md) biedt een eenvoudige manier om alle werk stroom gebeurtenissen te verzenden, inclusief alle uitvoerings-en actie statussen, naar een [log Analytics-werk ruimte](../azure-monitor/platform/data-platform-logs.md), een [Azure-opslag account](../storage/blobs/storage-blobs-overview.md)of [Azure Event hubs](../event-hubs/event-hubs-about.md).
 
 Als u de uitvoerings status wilt evalueren, kunt u de logboeken en metrische gegevens controleren of ze publiceren in elk bewakings programma dat u wilt gebruiken. Een mogelijke mogelijkheid is om alle gebeurtenissen via Event Hubs naar [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/)te streamen. In Stream Analytics kunt u live-query's schrijven op basis van eventuele afwijkingen, gemiddelden of fouten uit de diagnostische Logboeken. U kunt Stream Analytics gebruiken om gegevens te verzenden naar andere gegevens bronnen, zoals wacht rijen, onderwerpen, SQL, Azure Cosmos DB of Power BI.
 
