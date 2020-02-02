@@ -130,6 +130,9 @@
     - name: Prestatieoverwegingen
       href: functions-best-practices.md
       displayName: best practice
+    - name: Opslagoverwegingen
+      href: storage-considerations.md
+      displayName: 'encryption, keys'
     - name: Functions-proxy's
       href: functions-proxies.md
     - name: Netwerkopties
