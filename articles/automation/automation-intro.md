@@ -7,12 +7,12 @@ keywords: azure automation, DSC, powershell, configuratie van gewenste status, u
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 3037f96464b0902ca3923bdaea2bddff39c47733
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3359d99d7e20bbced8950171fa34592fd2612500
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421951"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930400"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Een inleiding tot Azure Automation
 
@@ -75,6 +75,8 @@ Azure Automation beheert de gehele levenscyclus van uw infrastructuur en toepass
 * **Controle**: stel wijzigingen op machines vast die problemen veroorzaken en die oplossingen bieden voor of escaleren met beheersystemen.
 * **Beveiliging**: plaats virtuele machines in quarantaine als er een beveiligingswaarschuwing wordt gegeven. Stel in-guest vereisten in.
 * **Reguleren**: stel toegangsbeheer op basis van rollen in voor klanten. Herstel niet-gebruikte resources.
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="pricing-for-automation"></a>Prijzen voor Automation
 

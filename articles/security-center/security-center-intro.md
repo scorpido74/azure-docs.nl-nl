@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 378ad4fde94e8bccfbdad9765545675822d202ff
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 759cc3f22d8b57036bad48326ffec1d6fca42696
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558638"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939440"
 ---
 # <a name="what-is-azure-security-center"></a>Wat is Azure Beveiligingscentrum?
 
@@ -42,6 +42,8 @@ Met Security Center kunt u zich tegen deze bedreigingen beveiligen. Het biedt na
 -   **Beveiligen tegen bedreigingen**: met Security Center worden uw workloads beoordeeld en worden aanbevelingen voor het voor komen van bedreigingen en waarschuwingen voor detectie van bedreigingen gegenereerd.
 
 -   Snel **veilig**werken: in Security Center wordt alles uitgevoerd in de Cloud snelheid. Omdat Security Center in het eigen systeem is geïntegreerd, is het eenvoudig te implementeren en kan het u automatische inrichting en beveiliging bieden met Azure-services.
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="architecture"></a>Architectuur
 

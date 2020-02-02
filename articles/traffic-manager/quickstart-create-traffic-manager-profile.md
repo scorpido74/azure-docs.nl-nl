@@ -2,7 +2,7 @@
 title: 'Quick Start: een profiel maken voor de HA van toepassingen-Azure Portal-Azure Traffic Manager'
 description: In dit snelstartartikel wordt beschreven hoe u een Traffic Manager-profiel maakt voor het bouwen van webtoepassingen met hoge beschikbaarheid.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
-ms.author: allensu
-ms.openlocfilehash: b2163b76dc3a301359cf3474789c5b473f9e4552
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 559ed0a134bb6db78d1e89634138b4025e04152b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483676"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934770"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Snelstartgids: een Traffic Manager profiel maken met behulp van de Azure Portal
 
@@ -29,7 +29,7 @@ Als u nog geen abonnement op Azure hebt, maak dan nu een [gratis account](https:
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -65,7 +65,7 @@ Maak een Traffic Manager-profiel waarmee gebruikersverkeer wordt doorgestuurd op
 
     | Instelling | Waarde |
     | --------| ----- |
-    | Naam | Voer een unieke naam in voor uw Traffic Manager-profiel.|
+    | Name | Voer een unieke naam in voor uw Traffic Manager-profiel.|
     | Routeringsmethode | Selecteer **Prioriteit**.|
     | Abonnement | Selecteer het abonnement waarop u het Traffic Manager-profiel wilt toepassen. |
     | Resourcegroep | Selecteer *myResourceGroupTM1*.|
@@ -85,7 +85,7 @@ Voeg de website in *US - oost* toe als primair eindpunt om alle gebruikersverkee
     | Instelling | Waarde |
     | ------- | ------|
     | Type | Selecteer **Azure-eindpunt**. |
-    | Naam | Voer *myPrimaryEndpoint* in. |
+    | Name | Voer *myPrimaryEndpoint* in. |
     | Doelbrontype | Selecteer **App Service**. |
     | Doelbron | Selecteer **Choose an app service** > **US - oost**. |
     | Prioriteit | Selecteer **1**. Alle verkeer gaat naar dit eindpunt indien het in orde is. |
@@ -98,7 +98,7 @@ Voeg de website in *US - oost* toe als primair eindpunt om alle gebruikersverkee
     | Instelling | Waarde |
     | ------- | ------|
     | Type | Selecteer **Azure-eindpunt**. |
-    | Naam | Voer*myFailoverEndpoint* in. |
+    | Name | Voer*myFailoverEndpoint* in. |
     | Doelbrontype | Selecteer **App Service**. |
     | Doelbron | Selecteer **Choose an app service** > **Europa - west**. |
     | Prioriteit | Selecteer **2**. Alle verkeer gaat naar dit failover-eindpunt als het primaire eindpunt niet in orde is. |

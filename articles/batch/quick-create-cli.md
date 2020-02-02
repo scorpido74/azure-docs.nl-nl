@@ -1,6 +1,6 @@
 ---
 title: Azure-snelstartgids - Batch-taak uitvoeren - CLI
-description: Leer snel hoe u een Batch-taak kunt uitvoeren met behulp van Azure CLI.
+description: Leer snel hoe u een Batch-taak kunt uitvoeren met behulp van Azure CLI. Maak en beheer Azure-resources vanaf de opdracht regel of in scripts.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 900bafd5b27fcb5021e9dae2a6bbc13d4e233a45
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 73dc180b905dd8a7e2f0d2b09666e91cced771fb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029490"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932245"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Snelstartgids: Uw eerste Batch-taak uitvoeren met Azure CLI
 
@@ -65,7 +65,7 @@ az batch account create \
     --location eastus2
 ```
 
-Als u rekenpools en -taken wilt maken en beheren, moet u zich verifiëren bij Batch. Meld u aan bij het account met behulp van de opdracht [az batch account login](/cli/azure/batch/account#az-batch-account-login). Nadat u zich hebt aangemeld, maken uw `az batch`-opdrachten gebruik van deze accountcontext.
+Als u rekenpools en -taken wilt maken en beheren, moet u zich verifiëren bij Batch. Meld u aan bij het account met behulp van de opdracht [az batch account login](/cli/azure/batch/account#az-batch-account-login). Nadat u zich hebt aangemeld, maken de `az batch`-opdrachten gebruik van deze accountcontext.
 
 ```azurecli-interactive 
 az batch account login \
@@ -198,7 +198,7 @@ Er worden kosten berekend voor pools zolang de knooppunten actief zijn, zelfs al
 az batch pool delete --pool-id mypool
 ```
 
-U kunt de opdracht [az group delete](/cli/azure/group#az-group-delete) gebruiken om de resourcegroep, het Batch-account, de pools en alle gerelateerde resources te verwijderen wanneer u deze niet meer nodig hebt. U verwijdert de resources als volgt:
+U kunt de opdracht [az group delete](/cli/azure/group#az-group-delete) gebruiken om de resourcegroep, het Batch-account, de pools en alle gerelateerde resources te verwijderen wanneer u deze niet meer nodig hebt. Het verwijderen van de resources gaat als volgt:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

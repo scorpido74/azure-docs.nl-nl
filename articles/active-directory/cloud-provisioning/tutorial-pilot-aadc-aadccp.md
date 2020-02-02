@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75425083"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931405"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Een proef uitvoeren met cloudinrichting voor een bestaande gesynchroniseerde AD-forest 
 
@@ -68,7 +68,8 @@ Met Azure AD Connect Sync worden wijzigingen die in uw on-premises Directory opt
 
     **Naam:** Geef een beschrijvende naam op voor de regel<br>
     **Beschrijving:** Een zinvolle beschrijving toevoegen<br> 
-    **verbonden systeem:** Kies de AD-connector waarvoor u de aangepaste synchronisatie regel voor hebt geschreven<br>
+    
+    **Verbonden systeem:** Kies de AD-connector waarvoor u de aangepaste synchronisatie regel voor hebt geschreven<br>
     **Type verbonden systeem object:** Gebruiker<br>
     **Omgekeerd object type:** Gelaedeerde<br>
     **Type koppeling:** Jointypen<br>

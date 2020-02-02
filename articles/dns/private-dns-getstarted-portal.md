@@ -2,17 +2,17 @@
 title: 'Quick Start: een persoonlijke DNS-zone van Azure maken met behulp van de Azure Portal'
 description: In deze Quick Start maakt en test u een privé-DNS-zone en-record in Azure DNS. Dit is een stapsgewijze hand leiding voor het maken en beheren van uw eerste privé-DNS-zone en-record met behulp van de Azure Portal.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
-ms.author: allensu
-ms.openlocfilehash: 48c5684dd491a91b6da212f78c535433ac2aecf7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8391d92a2e2970378c11c043ca9f5d4f6dc44696
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210759"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939373"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Quick Start: een privé-DNS-zone met Azure maken met behulp van de Azure Portal
 
@@ -20,11 +20,11 @@ In deze Snelstartgids wordt u begeleid bij de stappen voor het maken van uw eers
 
 Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten. Als u uw domein wilt hosten in Azure DNS, moet u een DNS-zone maken voor die domeinnaam. Alle DNS-records voor uw domein worden vervolgens gemaakt binnen deze DNS-zone. Als u een privé-DNS-zone wilt publiceren naar uw virtuele netwerk, geeft u de lijst op met virtuele netwerken die zijn toegestaan om records in de zone om te zetten.  Deze worden *gekoppelde* virtuele netwerken genoemd. Als automatische registratie is ingeschakeld, werkt Azure DNS ook de zone records bij wanneer een virtuele machine wordt gemaakt, wordt het IP-adres gewijzigd of wordt dit verwijderd.
 
-In deze snelstart leert u de volgende zaken:
+In deze snelstartgids leert u de volgende zaken:
 
 > [!div class="checklist"]
 > * Een privé-DNS-zone maken
-> * Een virtueel netwerk maken
+> * Maak een virtueel netwerk
 > * Het virtuele netwerk koppelen
 > * Virtuele testmachines maken
 > * Een extra DNS-record maken
@@ -58,7 +58,7 @@ Een DNS-zone bevat de DNS-vermeldingen voor een domein. Als u uw domein wilt hos
 
 Het maken van de zone kan een paar minuten duren.
 
-## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 
 1. Selecteer op de pagina Portal linksboven **een resource maken**en vervolgens **netwerken**, en selecteer vervolgens **virtueel netwerk**.
 2. Typ **myAzureVNet**voor **naam**.
@@ -181,5 +181,5 @@ Als u deze niet meer nodig hebt, verwijdert u de resource groep **MyAzureResourc
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Scenario's voor Azure DNS-privézones](private-dns-scenarios.md)
+> [Azure DNS Private Zones scenario's](private-dns-scenarios.md)
 

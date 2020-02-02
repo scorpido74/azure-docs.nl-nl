@@ -3,13 +3,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: include
-ms.date: 12/03/2019
-ms.openlocfilehash: 21811041a25c63bb7542b101812222a9430c20fe
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 1/31/2020
+ms.openlocfilehash: 017833403beca6fb8689bd6f90cc8f460d56c65e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887762"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76961347"
 ---
 1. Als u een nieuwe app-configuratie wilt maken, meldt u zich aan bij de [Azure Portal](https://portal.azure.com). Selecteer in de linkerbovenhoek van de start pagina de optie **een resource maken**. In het vak **Marketplace doorzoeken** voert u de **app-configuratie** in en selecteert u ENTER.
 

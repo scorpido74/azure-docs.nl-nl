@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 964ba16fb7421c58f43d8b7d0d0d96f5cd377579
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5f3a8fa7b9619958db1d7213236e27d00b417c54
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261870"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939118"
 ---
 # <a name="what-is-azure-sentinel"></a>Wat is Azure Sentinel?
 
@@ -37,17 +37,17 @@ Azure Sentinel is uw vogel weer gave voor de hele onderneming die de stress van 
 
 - **Reageer snel op incidenten** met ingebouwde indeling en automatisering van algemene taken.
 
-
 ![Azure Sentinel Core-mogelijkheden](./media/overview/core-capabilities.png)
 
 Azure Sentinel bouwt in op het volledige bereik van bestaande Azure-Services en maakt gebruik van beproefde stichtingen, zoals Log Analytics, en Logic Apps. Azure Sentinel verrijkt uw onderzoek en detectie met AI, en biedt de bedreigings informatie stroom van micro soft en stelt u in staat om uw eigen bedreigings informatie te nemen. 
 
- 
 ## <a name="connect-to-all-your-data"></a>Verbinding maken met al uw gegevens
 
 U moet eerst [verbinding maken met uw beveiligings bronnen](connect-data-sources.md)om Azure-Sentinel aan de trein te kunnen. Azure Sentinel wordt geleverd met een aantal connectors voor micro soft-oplossingen, die beschikbaar zijn in de doos en die realtime-integratie bieden, waaronder oplossingen voor micro soft Threat Protection, en Microsoft 365 bronnen, waaronder Office 365, Azure AD, Azure ATP en Microsoft Cloud App Security, en nog veel meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligings ecosysteem voor niet-micro soft-oplossingen. U kunt ook algemene gebeurtenis indeling, syslog of REST-API gebruiken om uw gegevens bronnen met Azure Sentinel te verbinden.  
 
 ![Gegevens verzamelaars](./media/collect-data/collect-data-page.png)
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="workbooks"></a>Werkmappen
 
@@ -55,7 +55,7 @@ Nadat u [uw gegevens bronnen](quickstart-onboard.md) aan Azure Sentinel hebt g
 
 ![Dashboards](./media/tutorial-monitor-data/access-workbooks.png)
 
-## <a name="analytics"></a>Analyse
+## <a name="analytics"></a>Analytische gegevens
 
 Om het geluid te verminderen en het aantal waarschuwingen dat u moet controleren en te minimaliseren, gebruikt Azure Sentinel [Analytics om waarschuwingen in incidenten te correleren](tutorial-detect-threats-built-in.md). **Incidenten** zijn groepen gerelateerde waarschuwingen die samen een mogelijke bedreiging maken die kan worden onderzocht en opgelost. Gebruik de ingebouwde correlatie regels als-is of gebruik deze als uitgangs punt om uw eigen samen te stellen. Azure Sentinel biedt ook machine learning regels om uw netwerk gedrag toe te wijzen en vervolgens te zoeken naar afwijkingen in uw resources. Deze analyse verbindt de punten door waarschuwingen met een laag niveau te combi neren over verschillende entiteiten in potentiële beveiligings incidenten met hoge betrouw baarheid.
 
