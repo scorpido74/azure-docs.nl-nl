@@ -1,53 +1,53 @@
 ---
-title: Prestaties traffic routeringsmethode configureren met behulp van Azure Traffic Manager | Microsoft Docs
-description: In dit artikel wordt uitgelegd hoe u Traffic Manager configureren om verkeer te routeren naar het eindpunt met de laagste latentie
+title: Routerings methode voor prestatie verkeer configureren met behulp van Azure Traffic Manager | Microsoft Docs
+description: In dit artikel wordt uitgelegd hoe u Traffic Manager configureert om verkeer te routeren naar het eind punt met de laagste latentie
 services: traffic-manager
 manager: twooley
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: allensu
-ms.openlocfilehash: 5e9b02a4145d86b86ea3ba0d509d06b7c148cc6d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: f5e9b7690c28793a35c692a6125a6b11c7a140a4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048478"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938757"
 ---
-# <a name="configure-the-performance-traffic-routing-method"></a>De methode voor verkeersroutering voor prestaties configureren
+# <a name="configure-the-performance-traffic-routing-method"></a>De routerings methode voor prestatie verkeer configureren
 
-De methode voor verkeersroutering voor prestaties kunt u instellen dat verkeer naar het eindpunt met de laagste latentie vanaf het netwerk van de client. Het datacenter met de laagste latentie is meestal het dichtst in de geografische afstand. Deze methode voor verkeersroutering kan rekening gehouden met realtime wijzigingen in de netwerkconfiguratie of laden.
+Met de methode voor het routerings verkeer van prestaties kunt u verkeer naar het eind punt sturen met de laagste latentie van het netwerk van de client. Normaal gesp roken is het Data Center met de laagste latentie het dichtst bij de geografische afstand. Met deze routerings methode voor verkeer kan geen realtime-wijzigingen in de netwerk configuratie of het laden worden verwerkt.
 
-##  <a name="to-configure-performance-routing-method"></a>Routeringsmethode voor prestaties configureren
+##  <a name="to-configure-performance-routing-method"></a>Routerings methode voor prestaties configureren
 
 1. Meld u vanuit een browser aan bij [Azure Portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich registreren voor een [gratis proefversie van één maand](https://azure.microsoft.com/free/). 
-2. Zoek in de zoekbalk van de portal, de **Traffic Manager-profielen** en klik vervolgens op de naam van het profiel dat u wilt de routeringsmethode voor configureren.
-3. In de **Traffic Manager-profiel** blade controleren of de cloudservices en de websites die u wilt opnemen in uw configuratie weergegeven worden.
-4. In de **instellingen** sectie, klikt u op **configuratie**, en klik in de **configuratie** blade voltooid zijn als volgt te werk:
-    1. Voor **traffic routing-methode-instellingen**, voor **routeringsmethode** Selecteer **prestaties**.
-    2. Stel de **monitor eindpuntinstellingen** identiek voor alle elk eindpunt binnen dit profiel als volgt te werk:
-        1. Selecteer de juiste **Protocol**, en geef de **poort** getal. 
-        2. Voor **pad** typt u een slash */* . Voor het controleren van eindpunten, moet u een pad en bestandsnaam opgeven. Een schuine streep naar voren '/' is een geldige vermelding voor het relatieve pad en geeft aan dat het bestand is in de hoofdmap (standaard).
-        3. Aan de bovenkant van de pagina, klikt u op **opslaan**.
-5.  De wijzigingen in uw configuratie als volgt testen:
-    1.  In de zoekbalk van de portal, zoek de naam van het Traffic Manager-profiel en klik op het Traffic Manager-profiel in de resultaten die de weergegeven.
-    2.  In de **Traffic Manager** blade profiel, klikt u op **overzicht**.
-    3.  De **Traffic Manager-profiel** blade wordt weergegeven voor de DNS-naam van uw zojuist gemaakte Traffic Manager-profiel. Dit kan worden gebruikt door clients (bijvoorbeeld door te navigeren naar het via een webbrowser) ophalen gerouteerd naar het juiste eindpunt als bepaald door het routeringstype. In dit geval alle aanvragen worden doorgestuurd naar het eindpunt met de laagste latentie vanaf het netwerk van de client.
-6. Zodra uw Traffic Manager-profiel werkt, bewerkt u de DNS-record op de gezaghebbende DNS-server de naam van uw bedrijf domein verwijzen naar de naam van het Traffic Manager-domein.
+2. Zoek in de zoek balk van de portal naar de **Traffic Manager-profielen** en klik vervolgens op de naam van het profiel waarvoor u de routerings methode wilt configureren.
+3. Controleer op de Blade **Traffic Manager profiel** of de Cloud Services en websites die u wilt gebruiken in uw configuratie aanwezig zijn.
+4. Klik in de sectie **instellingen** op **configuratie**en voer op de Blade **configuratie** de volgende stappen uit:
+    1. Voor de **instellingen voor verkeers routerings methode**voor **routerings methode** selecteert u **prestaties**.
+    2. Stel de **instellingen voor de eindpunt monitor** identiek voor alle eind punten in dit profiel als volgt in:
+        1. Selecteer het juiste **protocol**en geef het **poort** nummer op. 
+        2. Typ bij **pad** een voorwaartse slash */* . Als u eind punten wilt controleren, moet u een pad en bestands naam opgeven. Een slash (/) is een geldige vermelding voor het relatieve pad en impliceert dat het bestand zich in de hoofdmap (standaard) bevindt.
+        3. Klik boven aan de pagina op **Opslaan**.
+5.  Test de wijzigingen in uw configuratie als volgt:
+    1.  Zoek in de zoek balk van de portal naar de naam van het Traffic Manager profiel en klik op het profiel Traffic Manager in de resultaten die worden weer gegeven.
+    2.  Klik op de Blade **Traffic Manager** profiel op **overzicht**.
+    3.  Op de Blade **Traffic Manager profiel** wordt de DNS-naam van het zojuist gemaakte Traffic Manager profiel weer gegeven. Dit kan worden gebruikt door clients (bijvoorbeeld door ernaar te navigeren met een webbrowser) om naar het juiste eind punt te gaan, zoals bepaald door het routerings type. In dit geval worden alle aanvragen doorgestuurd naar het eind punt met de laagste latentie van het netwerk van de client.
+6. Nadat uw Traffic Manager profiel werkt, bewerkt u de DNS-record op uw gezaghebbende DNS-server om de domein naam van uw bedrijf te laten verwijzen naar de Traffic Manager domein naam.
 
-![Prestaties van de methode voor verkeersroutering met Traffic Manager configureren][1]
+![Routerings methode voor prestatie verkeer configureren met Traffic Manager][1]
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [gewogen verkeersrouteringsmethode](traffic-manager-configure-weighted-routing-method.md).
 - Meer informatie over [de routeringsmethode met prioriteit](traffic-manager-configure-priority-routing-method.md).
 - Meer informatie over [geografische verkeersrouteringsmethode](traffic-manager-configure-geographic-routing-method.md).
-- Meer informatie over het [Traffic Manager-instellingen testen](traffic-manager-testing-settings.md).
+- Meer informatie over het [testen van Traffic Manager instellingen](traffic-manager-testing-settings.md).
 
 <!--Image references-->
 [1]: ./media/traffic-manager-performance-routing-method/traffic-manager-performance-routing-method.png

@@ -3,18 +3,18 @@ title: Het subnet van Azure Traffic Manager worden overschreven met behulp van A
 description: Dit artikel helpt u inzicht te krijgen in de manier waarop Traffic Manager subnet overschrijving kan worden gebruikt om de routerings methode van een Traffic Manager profiel te onderdrukken voor het omleiden van verkeer naar een eind punt op basis van het IP-adres van de eind gebruiker met behulp van een vooraf gedefinieerd IP-bereik voor eindpunt toewijzingen.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.topic: article
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: allensu
-ms.openlocfilehash: d285db22ef92128e025a677ea7f86d623dfe130c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.author: rohink
+ms.openlocfilehash: 818b692884bd9d31efd08663a582ebcfec2032e9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351180"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938476"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Onderdrukking van het subnet Traffic Manager met behulp van Azure CLI
 
@@ -77,6 +77,6 @@ az network traffic-manager endpoint update \
 
 ```
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over methoden voor het routeren van Traffic Manager [verkeer](traffic-manager-routing-methods.md).
+Meer informatie over methoden voor het [routeren](traffic-manager-routing-methods.md)van Traffic Manager verkeer.
 
 Meer informatie over het [subnet Traffic-routerings methode](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)

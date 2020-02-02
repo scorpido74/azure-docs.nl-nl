@@ -1,8 +1,8 @@
 ---
-title: Diagnostische logboekregistratie in Azure Traffic Manager inschakelen
-description: Leer hoe u Diagnostische logboekregistratie inschakelen voor uw Traffic Manager-profiel en toegang tot de logboeken die zijn gemaakt als gevolg hiervan.
+title: Diagnostische logboek registratie inschakelen in azure Traffic Manager
+description: Meer informatie over het inschakelen van diagnostische logboek registratie voor uw Traffic Manager profiel en het openen van de logboek bestanden die als gevolg hiervan worden gemaakt.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,73 +10,73 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
-ms.author: allensu
-ms.openlocfilehash: b2ebeb41e69b7edfd43c38cc3b828069a1b3401a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 0ed2ecef86795f62aa3fe5798dcd0d07adbaf9cc
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071232"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938678"
 ---
-# <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Diagnostische logboekregistratie in Azure Traffic Manager inschakelen
+# <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Diagnostische logboek registratie inschakelen in azure Traffic Manager
 
-In dit artikel wordt beschreven hoe u Diagnostische logboekregistratie en toegang logboekgegevens voor een Traffic Manager-profiel inschakelen.
+In dit artikel wordt beschreven hoe u diagnostische logboek registratie inschakelt en logboek gegevens opent voor een Traffic Manager profiel.
 
-Diagnostische logboeken in Azure Traffic Manager kunnen bieden inzicht in het gedrag van de resource Traffic Manager-profiel. U kunt bijvoorbeeld de logboekgegevens van het profiel gebruiken om te bepalen waarom time-out van afzonderlijke tests op basis van een eindpunt.
+Diagnostische logboeken van Azure Traffic Manager kunnen inzicht geven in het gedrag van de Traffic Manager-profiel bron. U kunt bijvoorbeeld de logboek gegevens van het profiel gebruiken om te bepalen waarom er een time-out optreedt voor individuele tests op een eind punt.
 
 ## <a name="enable-diagnostic-logging"></a>Bijhouden van diagnostische gegevens inschakelen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U kunt de opdrachten die volgen in uitvoeren de [Azure Cloud Shell](https://shell.azure.com/powershell), of door te voeren PowerShell vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u PowerShell vanaf uw computer uitvoeren, moet u de Azure PowerShell-module 1.0.0 of hoger. U kunt uitvoeren `Get-Module -ListAvailable Az` de geïnstalleerde versie te vinden. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook om uit te voeren `Login-AzAccount` zich aanmeldt bij Azure.
+U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/powershell), of door Power shell uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u Power shell vanaf uw computer uitvoert, hebt u de Azure PowerShell module 1.0.0 of hoger nodig. U kunt `Get-Module -ListAvailable Az` uitvoeren om de geïnstalleerde versie te vinden. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, moet u ook `Login-AzAccount` uitvoeren om u aan te melden bij Azure.
 
-1. **Traffic Manager-profiel ophalen:**
+1. **Het Traffic Manager profiel ophalen:**
 
-    Als u wilt vastleggen van diagnostische gegevens inschakelen, moet u de ID van een Traffic Manager-profiel. Ophalen van het Traffic Manager-profiel dat u Diagnostische logboekregistratie voor met wilt inschakelen [Get-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile). De uitvoer bevat informatie over Traffic Manager-profiel-ID.
+    Als u diagnostische logboek registratie wilt inschakelen, hebt u de ID van een Traffic Manager profiel nodig. Haal het Traffic Manager profiel op waarvoor u diagnostische logboek registratie wilt inschakelen met [Get-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile). De uitvoer bevat de ID-gegevens van het Traffic Manager profiel.
 
     ```azurepowershell-interactive
     Get-AzTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
     ```
 
-2. **Diagnostische logboekregistratie inschakelen voor Traffic Manager-profiel:**
+2. **Diagnostische logboek registratie inschakelen voor het Traffic Manager profiel:**
 
-    Diagnostische logboekregistratie inschakelen voor Traffic Manager-profiel met behulp van de ID die is verkregen in de vorige stap met [Set AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest). De volgende opdracht slaat uitgebreide logboeken voor het Traffic Manager-profiel aan een opgegeven Azure Storage-account. 
+    Schakel diagnostische logboek registratie in voor het Traffic Manager profiel met de ID die u in de vorige stap hebt verkregen met [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest). Met de volgende opdracht worden uitgebreide logboeken voor het Traffic Manager profiel opgeslagen in een opgegeven Azure Storage-account. 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
-3. **Controleer of de diagnostische instellingen:**
+3. **Controleer de diagnostische instellingen:**
 
-      Controleer of de diagnostische instellingen voor de Traffic Manager-profiel met [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest). De volgende opdracht geeft de categorieën die zijn geregistreerd voor een resource.
+      Controleer de diagnostische instellingen voor het Traffic Manager profiel met behulp van [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest). Met de volgende opdracht worden de categorieën weer gegeven die zijn geregistreerd voor een resource.
 
      ```azurepowershell-interactive
      Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
      ```  
-      Zorg ervoor dat alle categorieën die zijn gekoppeld aan de weergave van Traffic Manager profiel resource logboekbestanden als ingeschakeld. Controleer ook of het opslagaccount correct is ingesteld.
+      Zorg ervoor dat alle logboek categorieën die zijn gekoppeld aan de bron van het Traffic Manager-profiel, worden weer gegeven als ingeschakeld. Controleer ook of het opslag account correct is ingesteld.
 
-## <a name="access-log-files"></a>Logboekbestanden voor toegang
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+## <a name="access-log-files"></a>Toegang tot logboek bestanden
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
 1. Navigeer naar uw Azure Storage-account in de portal.
-2. Op de **overzicht** pagina van uw Azure storage-account onder **Services** Selecteer **Blobs**.
-3. Voor **Containers**, selecteer **insights-logs-probehealthstatusevents**, en navigeer naar het bestand PT1H.json en op **downloaden** en sla een kopie van dit logboek het bestand.
+2. Klik op de pagina **overzicht** van uw Azure Storage-account onder **Services** op **blobs**.
+3. Voor **containers**selecteert u **Insights-logs-probehealthstatusevents**en navigeert u omlaag naar het bestand PT1H. json en klikt u op **downloaden** om een kopie van dit logboek bestand te downloaden en op te slaan.
 
-    ![Logboekbestanden van de toegang van uw Traffic Manager-profiel van een blob-opslag](./media/traffic-manager-logs/traffic-manager-logs.png)
+    ![Toegang tot logboek bestanden van uw Traffic Manager profiel vanuit een Blob-opslag](./media/traffic-manager-logs/traffic-manager-logs.png)
 
 
-## <a name="traffic-manager-log-schema"></a>Schema voor Traffic Manager-logboek
+## <a name="traffic-manager-log-schema"></a>Traffic Manager-logboek schema
 
-Alle logboeken met diagnostische gegevens beschikbaar zijn via Azure Monitor delen een gemeenschappelijk schema van de op het hoogste niveau met flexibiliteit voor elke service op de unieke eigenschappen voor hun eigen gebeurtenissen verzenden. Voor diagnostische logboeken op het hoogste niveau schema, Zie [ondersteunde services, schema's en categorieën voor diagnostische logboeken van Azure](../azure-monitor/platform/tutorial-dashboards.md).
+Alle Diagnostische logboeken die beschikbaar zijn via Azure Monitor, delen een gemeen schappelijk schema op het hoogste niveau, met flexibiliteit voor elke service om unieke eigenschappen voor hun eigen gebeurtenissen te verzenden. Zie [ondersteunde services, schema's en categorieën voor Azure Diagnostic logs](../azure-monitor/platform/tutorial-dashboards.md)(Engelstalig) voor Diagnostische logboeken op het hoogste niveau.
 
-De volgende tabel bevat de logboeken schema die specifiek zijn voor de Azure Traffic Manager-profiel-resource.
+De volgende tabel bevat logboeken die specifiek zijn voor de Azure Traffic Manager-profiel bron.
 
 |||||
 |----|----|---|---|
-|**Veldnaam**|**Veldtype**|**Definitie**|**Voorbeeld**|
-|EndpointName|String|De naam van het Traffic Manager-eindpunt waarvan de gezondheidsstatus wordt opgenomen.|*myPrimaryEndpoint*|
-|Status|String|De status van het Traffic Manager-eindpunt dat is dat wordt aangeduid. De status kan zijn **van** of **omlaag**.|**Omhoog**|
+|**Veldnaam**|**Veld type**|**Definitie**|**Voorbeeld**|
+|EndpointName|Tekenreeks|De naam van het Traffic Manager-eind punt waarvan de integriteits status wordt vastgelegd.|*myPrimaryEndpoint*|
+|Status|Tekenreeks|De integriteits status van het Traffic Manager-eind punt dat is gecontroleerd. De status **kan een of meer** zijn **.**|**Gevouwen**|
 |||||
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Traffic Manager-bewaking](traffic-manager-monitoring.md)
+* Meer informatie over [Traffic Manager bewaking](traffic-manager-monitoring.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Kosten analyse en budget-Azure Batch
-description: Meer informatie over het verkrijgen van een kosten analyse en het instellen van een budget voor uw batch-workload.
+description: Meer informatie over het ophalen van een kosten analyse en het instellen van een budget voor de onderliggende reken resources en software licenties die worden gebruikt voor het uitvoeren van uw batch-workloads.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/19/2019
 ms.author: jushiman
-ms.openlocfilehash: 7707d966049e9eced1add1104441af8fee356ef0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0cd17271d041b41f9f71c7861e29ab8116c74710
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029562"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930194"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Kosten analyse en budgetten voor Azure Batch
 
@@ -83,7 +83,7 @@ Premium-SSD-schijven van het besturings systeem zijn duurder, maar ze hebben hog
 
 Als u batch wilt gebruiken gedurende een lange periode, kunt u besparen op de kosten van Vm's met behulp van [Azure Reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md) voor uw workloads. Een reserverings tarief is aanzienlijk lager dan het tarief voor betalen naar gebruik. Voor exemplaren van virtuele machines die worden gebruikt zonder een reserve ring, wordt het tarief voor betalen naar gebruik in rekening gebracht. Als u een reserve ring aanschaft, wordt de reserverings korting toegepast en worden er geen kosten meer berekend op basis van de betalen naar gebruik-tarieven.
 
-### <a name="automatic-scaling"></a>Automatische schaalaanpassing
+### <a name="automatic-scaling"></a>Automatisch schalen
 
 Met [automatisch schalen](batch-automatic-scaling.md) wordt het aantal vm's in de batch-pool dynamisch geschaald op basis van de vereisten van de huidige taak. Door de pool te schalen op basis van de levens duur van een taak, zorgt u er automatisch voor dat Vm's alleen omhoog worden geschaald en gebruikt wanneer er een taak wordt uitgevoerd. Wanneer de taak is voltooid of als er geen taken zijn, worden de Vm's automatisch omlaag geschaald om reken resources op te slaan. Met schalen kunt u de totale kosten van uw batch-oplossing verlagen door alleen de benodigde resources te gebruiken.
 

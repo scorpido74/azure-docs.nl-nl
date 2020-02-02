@@ -2,17 +2,17 @@
 title: Host load balanced Azure web apps op de zone Apex
 description: Een Azure DNS alias record gebruiken om de web-apps met taak verdeling te hosten op de zone Apex
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/10/2019
-ms.author: allensu
-ms.openlocfilehash: a673a74f8f6f919e7ebb7fc3b065ee0742ab3a10
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212374"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937370"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Host load balanced Azure web apps op de zone Apex
 
@@ -43,10 +43,10 @@ Een resource groep maken voor het opslaan van alle resources die in dit artikel 
 Maak twee Web App Service-abonnementen in uw resource groep met behulp van de volgende tabel voor configuratie-informatie. Zie [een app service-abonnement beheren in azure](../app-service/app-service-plan-manage.md)voor meer informatie over het maken van een app service-abonnement.
 
 
-|Naam  |Besturingssysteem  |Locatie  |Prijscategorie  |
+|Name  |Besturingssysteem  |Locatie  |Prijsniveau  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|US - oost|Dev/test D1-gedeeld|
-|ASP-02     |Windows|US - centraal|Dev/test D1-gedeeld|
+|ASP-01     |Windows|VS - oost|Dev/test D1-gedeeld|
+|ASP-02     |Windows|VS - centraal|Dev/test D1-gedeeld|
 
 ## <a name="create-app-services"></a>App Services maken
 
@@ -58,10 +58,10 @@ Maak twee web-apps, één in elk App Service-abonnement.
 4. Selecteer **Maken**.
 5. Accepteer de standaard waarden en gebruik de volgende tabel om de twee web-apps te configureren:
 
-   |Naam<br>(moet uniek zijn binnen. azurewebsites.net)|Resourcegroep |Runtime stack|Regio|Abonnement/locatie App Service
+   |Name<br>(moet uniek zijn binnen. azurewebsites.net)|Resourcegroep |Runtime stack|Regio|Abonnement/locatie App Service
    |---------|---------|-|-|-------|
-   |App-01|Bestaande gebruiken<br>Uw resourcegroep selecteren|.NET Core 2.2|US - oost|ASP-01 (D1)|
-   |App-02|Bestaande gebruiken<br>Uw resourcegroep selecteren|.NET Core 2.2|US - centraal|ASP-02 (D1)|
+   |App-01|Bestaande gebruiken<br>Uw resourcegroep selecteren|.NET Core 2.2|VS - oost|ASP-01 (D1)|
+   |App-02|Bestaande gebruiken<br>Uw resourcegroep selecteren|.NET Core 2.2|VS - centraal|ASP-02 (D1)|
 
 ### <a name="gather-some-details"></a>Enkele details verzamelen
 
@@ -87,10 +87,10 @@ U kunt nu de eind punten voor de twee web-apps maken.
 3. Selecteer **Toevoegen**.
 4. Gebruik de volgende tabel om de eind punten te configureren:
 
-   |Type  |Naam  |Doel  |Locatie  |Instellingen voor aangepaste header|
+   |Type  |Name  |Kiezen  |Locatie  |Instellingen voor aangepaste header|
    |---------|---------|---------|---------|---------|
-   |Extern eind punt     |End-01|IP-adres dat u hebt genoteerd voor app-01|US - oost|host:\<de URL die u hebt genoteerd voor app-01\><br>Voor beeld: **host: app-01.azurewebsites.net**|
-   |Extern eind punt     |End-02|IP-adres dat u hebt vastgelegd voor app-02|US - centraal|host:\<de URL die u hebt genoteerd voor app-02\><br>Voor beeld: **host: app-02.azurewebsites.net**
+   |Extern eind punt     |End-01|IP-adres dat u hebt genoteerd voor app-01|VS - oost|host:\<de URL die u hebt genoteerd voor app-01\><br>Voor beeld: **host: app-01.azurewebsites.net**|
+   |Extern eind punt     |End-02|IP-adres dat u hebt vastgelegd voor app-02|VS - centraal|host:\<de URL die u hebt genoteerd voor app-02\><br>Voor beeld: **host: app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>DNS-zone maken
 
@@ -104,7 +104,7 @@ Wanneer u een aangepaste hostnaam aan uw web-apps toevoegt, zoekt deze naar een 
 2. Selecteer **Recordset**.
 3. Voeg de recordset toe met behulp van de volgende tabel. Voor de waarde gebruikt u de daad werkelijke web-app-URL die u eerder hebt vastgelegd:
 
-   |Naam  |Type  |Waarde|
+   |Name  |Type  |Waarde|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
@@ -132,7 +132,7 @@ Voeg nu een alias record toe voor de zone Apex.
 2. Selecteer **Recordset**.
 3. Voeg de recordset toe met behulp van de volgende tabel:
 
-   |Naam  |Type  |Alias records instellen  |Alias type  |Azure-resource|
+   |Name  |Type  |Alias records instellen  |Alias type  |Azure-resource|
    |---------|---------|---------|---------|-----|
    |@     |A|Ja|Azure-resource|Traffic Manager-uw profiel|
 

@@ -3,20 +3,20 @@ title: Power shell gebruiken voor het beheren van Traffic Manager in azure
 description: Met dit leer traject kunt u aan de slag met Azure PowerShell voor Traffic Manager.
 services: traffic-manager
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: f8dd01f22dec58c3345798b391c1c37c968d1025
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: 7886764a69eefa68be071a801bea65ae995fbdc3
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038128"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938497"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Power shell gebruiken voor het beheren van Traffic Manager
 
@@ -61,7 +61,7 @@ De volgende tabel beschrijft de para meters:
 
 | Parameter | Beschrijving |
 | --- | --- |
-| Naam |De resource naam voor de Traffic Manager-profiel bron. Profielen in dezelfde resource groep moeten unieke namen hebben. Deze naam is gescheiden van de DNS-naam die wordt gebruikt voor DNS-query's. |
+| Name |De resource naam voor de Traffic Manager-profiel bron. Profielen in dezelfde resource groep moeten unieke namen hebben. Deze naam is gescheiden van de DNS-naam die wordt gebruikt voor DNS-query's. |
 | ResourceGroupName |De naam van de resource groep die de profiel bron bevat. |
 | TrafficRoutingMethod |Hiermee geeft u de routerings methode voor verkeer die wordt gebruikt om te bepalen welk eind punt wordt geretourneerd als antwoord op een DNS-query. Mogelijke waarden zijn ' performance ', ' Weightd ' of ' Priority '. |
 | RelativeDnsName |Hiermee geeft u het gedeelte hostnaam van de DNS-naam op die door dit Traffic Manager profiel wordt opgegeven. Deze waarde wordt gecombineerd met de DNS-domein naam die wordt gebruikt door Azure Traffic Manager om de Fully Qualified Domain Name (FQDN) van het profiel te vormen. De waarde van ' Contoso ' wordt bijvoorbeeld ingesteld op ' contoso.trafficmanager.net '. |

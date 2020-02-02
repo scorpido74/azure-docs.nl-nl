@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: cc99b469701b3974a5b8a2f235ee3a9edb798368
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2c946c49884ef0de6843028976d4ec00ccfbcdfe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790252"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934853"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Een nieuwe Time Series Insights-omgeving maken in Azure Portal
 
@@ -28,7 +28,7 @@ Met Time Series Insights kunt u aan de slag gaan met het visualiseren en opvrage
 
 Volg deze stappen om een omgeving te maken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Selecteer de knop **+ een resource maken** .
 
@@ -45,7 +45,7 @@ Volg deze stappen om een omgeving te maken:
    Instelling|Voorgestelde waarde|Beschrijving
    ---|---|---
    Omgevingsnaam | Een unieke naam | Deze naam vertegenwoordigt de omgeving in [Time Series Explorer](https://insights.timeseries.azure.com)
-   Abonnement | Uw abonnement | Als u meerdere abonnementen hebt, kiest u het abonnement dat uw gebeurtenis bron bevat bij voor keur. Time Series Insights kan Azure IoT Hub- en Event Hub-resources die in hetzelfde abonnement aanwezig zijn, automatisch detecteren.
+   Abonnement | Uw abonnement | Als u meerdere abonnementen hebt, kiest u het abonnement dat uw gebeurtenis bron bevat bij voor keur. Time Series Insights kunt automatisch Azure IoT Hub-en Event hub-resources detecteren die in hetzelfde abonnement aanwezig zijn.
    Resourcegroep | Nieuwe maken of bestaande gebruiken | Een resourcegroep is een verzameling Azure-resources die samen worden gebruikt. U kunt een bestaande resource groep kiezen, bijvoorbeeld het item met uw event hub of IoT Hub. Of u kunt een nieuw item maken als deze bron niet is gerelateerd aan de andere resources.
    Locatie | Dichtstbijzijnde bron van uw gebeurtenis | Kies bij voor keur dezelfde Data Center-locatie die uw gebeurtenis brongegevens bevat, om te voor komen dat extra regio's en bandbreedte kosten voor meerdere zones worden toegevoegd en latentie wordt toegevoegd bij het verplaatsen van gegevens uit de regio.
    Prijscategorie | S1 | Kies de benodigde doorvoer. Voor de laagste kosten en de start capaciteit selecteert u S1.
@@ -69,6 +69,6 @@ Volg deze stappen om een omgeving te maken:
 
 * [Een event hub-gebeurtenis bron toevoegen](time-series-insights-how-to-add-an-event-source-eventhub.md) aan uw Azure time series Insights-omgeving.
 
-* [Gebeurtenissen verzenden](time-series-insights-send-events.md) naar de bron van de gebeurtenis.
+* [Gebeurtenissen verzenden](time-series-insights-send-events.md) naar de gebeurtenisbron.
 
 * Bekijk uw omgeving in [Time Series Insights Explorer](https://insights.timeseries.azure.com).

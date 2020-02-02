@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 5732df2551eafa74b81f9a918a1cb7cf5ac1395c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 8a53f1cfbde2f518848e7ef1104bf41ba4996961
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768030"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936389"
 ---
 # <a name="how-to-use-batch-transcription"></a>Batch-transcriptie gebruiken
 
@@ -78,7 +78,7 @@ Configuratie parameters worden als JSON opgegeven:
     "AddWordLevelTimestamps" : "True | False",
     "AddSentiment" : "True | False",
     "AddDiarization" : "True | False",
-    "TranscriptionResultsContainerUrl" : "<SAS to Azure container to store results into (write permission required)>"
+    "TranscriptionResultsContainerUrl" : "<service SAS URI to Azure container to store results into (write permission required)>"
   }
 }
 ```
@@ -94,7 +94,7 @@ Gebruik deze optionele eigenschappen om transcriptie te configureren:
 | `AddWordLevelTimestamps` | Hiermee wordt aangegeven of Time Stamps op woord niveau moeten worden toegevoegd aan de uitvoer. Geaccepteerde waarden zijn `true` die tijds tempels op woord niveau en `false` (de standaard waarde) in staat stelt om deze uit te scha kelen. |
 | `AddSentiment` | Hiermee geeft u sentiment moet worden toegevoegd aan de utterance. Geaccepteerde waarden zijn `true` die sentiment per utterance en `false` (de standaard waarde) in staat stelt om het uit te scha kelen. |
 | `AddDiarization` | Hiermee geeft u op dat diarization-analyse moet worden uitgevoerd op de invoer waarvan wordt verwacht dat deze een mono-kanaal met twee stemmen bevat. Geaccepteerde waarden zijn `true` die diarization en `false` (de standaard waarde) in staat stelt om het uit te scha kelen. Ook moet `AddWordLevelTimestamps` worden ingesteld op True.|
-|`TranscriptionResultsContainerUrl`|Optionele SAS-token naar een Beschrijf bare container in Azure. Het resultaat wordt opgeslagen in deze container.
+|`TranscriptionResultsContainerUrl`|Optionele URL met [service-sa's](../../storage/common/storage-sas-overview.md) naar een Beschrijf bare container in Azure. Het resultaat wordt opgeslagen in deze container.
 
 ### <a name="storage"></a>Storage
 

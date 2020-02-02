@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: ef203eec1398e9f23fb162845b9d570316083ecf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8905f2a0a306ec4c9c6e19479c6adb96a6ed39ca
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703698"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931275"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Zelf studie: een Azure Active Directory Domain Services-exemplaar maken en configureren
 
@@ -93,6 +93,9 @@ Vul de velden in het venster *basis beginselen* van het Azure Portal in om een A
 
     Er is niets waarmee u kunt configureren voor Azure AD DS worden gedistribueerd over meerdere zones. Het Azure-platform verwerkt automatisch de zone distributie van resources. Zie [Wat zijn Beschikbaarheidszones in azure?][availability-zones] voor meer informatie en om de beschik baarheid van regio's te bekijken.
 
+1. De **SKU** bepaalt de prestaties, de back-upfrequentie en het maximum aantal forest-vertrouwens relaties die u kunt maken. Als uw bedrijfs vereisten of-vereisten veranderen, kunt u de SKU wijzigen nadat het beheerde domein is gemaakt. Zie [Azure AD DS SKU-concepten][concepts-sku]voor meer informatie.
+
+    Voor deze zelf studie selecteert u de *standaard* -SKU.
 1. Een *forest* is een logische constructie die door Active Directory Domain Services wordt gebruikt om een of meer domeinen te groeperen. Standaard wordt een door Azure AD DS beheerd domein gemaakt als een *gebruikers* forest. Dit type forest synchroniseert alle objecten van Azure AD, met inbegrip van gebruikers accounts die zijn gemaakt in een on-premises AD DS omgeving. Een *resource* -forest synchroniseert alleen gebruikers en groepen die rechtstreeks in azure AD zijn gemaakt. Bron-forests zijn momenteel beschikbaar als preview-versie. Zie [overzicht van Azure AD DS-resource forests][resource-forests]voor meer informatie over *bron* -forests, waaronder waarom u er één kunt gebruiken en hoe u forest-vertrouwens relaties maakt met on-premises AD DS domeinen.
 
     Voor deze zelf studie kiest u ervoor om een *gebruikers* forest te maken.
@@ -105,7 +108,7 @@ Als u snel een door Azure AD DS beheerd domein wilt maken, kunt u op **revisie +
 * Hiermee maakt u een subnet met de naam *aadds-subnet* met het IP-adres bereik *10.0.1.0/24*.
 * Synchroniseert *alle* gebruikers van Azure AD in het door Azure AD DS beheerde domein.
 
-1. Selecteer **controleren + maken** om deze standaard configuratie opties te accepteren.
+Selecteer **controleren + maken** om deze standaard configuratie opties te accepteren.
 
 ## <a name="deploy-the-managed-domain"></a>Het beheerde domein implementeren
 
@@ -200,6 +203,7 @@ Voordat u een domein toevoegt aan Vm's en toepassingen implementeert die gebruik
 [skus]: overview.md
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

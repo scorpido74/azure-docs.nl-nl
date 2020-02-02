@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260950"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939243"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
 
@@ -287,9 +287,9 @@ Met de volgende voorbeeld regel filtert u het account voor het uitvoeren van de 
 
 Filters beperken regel acties voor een subset van blobs binnen het opslag account. Als er meer dan één filter is gedefinieerd, wordt een logische `AND` uitgevoerd op alle filters.
 
-Filters omvatten:
+Filters zijn onder andere:
 
-| Bestandsnaam | Filtertype | Opmerkingen | Is vereist |
+| Filter naam | Filter type | Opmerkingen | Is vereist |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Een matrix met vooraf gedefinieerde Enum-waarden. | De huidige versie ondersteunt `blockBlob`. | Ja |
 | prefixMatch | Een matrix met teken reeksen voor voor voegsels die overeenkomen. Elke regel kan Maxi maal 10 voor voegsels definiëren. Een voorvoegsel teken reeks moet beginnen met een container naam. Als u bijvoorbeeld alle blobs onder `https://myaccount.blob.core.windows.net/container1/foo/...` voor een regel wilt vergelijken, wordt de prefixMatch `container1/foo`. | Als u prefixMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account.  | Nee |
@@ -348,7 +348,7 @@ In dit voor beeld ziet u hoe blok-blobs worden voorafgegaan door `container1/foo
 }
 ```
 
-### <a name="archive-data-at-ingest"></a>Gegevens archiveren in opname
+### <a name="archive-data-after-ingest"></a>Gegevens archiveren na opname
 
 Sommige gegevens blijven niet actief in de Cloud en worden zelden, indien ooit, geopend. Het volgende levenscyclus beleid is geconfigureerd om gegevens te archiveren zodra deze zijn opgenomen. In dit voor beeld worden blok-blobs in het opslag account in container `archivecontainer` naar een archief laag. De overgang wordt uitgevoerd door op blobs 0 dagen na de laatste wijzigings tijd te handelen:
 

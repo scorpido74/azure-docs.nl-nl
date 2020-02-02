@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fbfe120484f7a5fdfb847448a4bba2309f3fedc6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543559"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932379"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen met Azure Machine Learning implementeren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,8 +26,8 @@ Meer informatie over het implementeren van uw machine learning model als een web
 De werk stroom is vergelijkbaar, [waar u uw model implementeert](#target) :
 
 1. Registreer het model.
-1. Bereid de implementatie voor. (Geef de assets, het gebruik en het rekendoel op.)
-1. Implementeer het model op het rekendoel.
+1. Voorbereiden op implementeren. (Assets opgeven, gebruik, reken doel.)
+1. Implementeer het model op het Compute-doel.
 1. Test het geïmplementeerde model, ook wel webservice genoemd.
 
 Zie [modellen beheren, implementeren en bewaken met Azure machine learning](concept-model-management-and-deployment.md)voor meer informatie over de concepten die zijn betrokken bij de implementatie werk stroom.
@@ -40,7 +40,7 @@ Zie [modellen beheren, implementeren en bewaken met Azure machine learning](conc
 
 - De [Azure cli-extensie voor de machine learning-service](reference-azure-machine-learning-cli.md), de [Azure machine learning SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
 
-## <a name="connect-to-your-workspace"></a>Verbinding maken met uw werkruimte
+## <a name="connect-to-your-workspace"></a>Verbinding maken met uw werk ruimte
 
 De volgende code laat zien hoe u verbinding maakt met een Azure Machine Learning-werk ruimte met behulp van informatie in cache naar de lokale ontwikkel omgeving:
 
@@ -174,12 +174,12 @@ Voor een E2E-voor beeld waarin wordt getoond hoe u meerdere modellen achter éé
 
 ## <a name="prepare-to-deploy"></a>Implementatie voorbereiden
 
-U hebt de volgende items nodig om het model te implementeren:
+Voor het implementeren van het model hebt u de volgende items nodig:
 
-* **Een invoerscript**. Met dit script worden aanvragen geaccepteerd, worden de aanvragen met behulp van het model gescoord en worden de resultaten geretourneerd.
+* **Een invoer script**. Met dit script worden aanvragen geaccepteerd, worden de aanvragen met behulp van het model gescoord en worden de resultaten geretourneerd.
 
     > [!IMPORTANT]
-    > * Het invoerscript is specifiek voor uw model. Het moet inzicht krijgen in de indeling van de gegevens van de inkomende aanvraag, de indeling van de gegevens die worden verwacht door uw model en de indeling van de gegevens die aan clients worden geretourneerd.
+    > * Het invoer script is specifiek voor uw model. Het moet inzicht krijgen in de indeling van de gegevens van de inkomende aanvraag, de indeling van de gegevens die worden verwacht door uw model en de indeling van de gegevens die aan clients worden geretourneerd.
     >
     >   Als de gegevens van de aanvraag een indeling hebben die niet kan worden gebruikt door uw model, kan het script deze omzetten in een acceptabele indeling. Het kan ook de reactie transformeren voordat deze wordt geretourneerd naar de client.
     >
@@ -187,21 +187,21 @@ U hebt de volgende items nodig om het model te implementeren:
     >
     >   Een alternatief dat kan worden gebruikt voor uw scenario is [batch voorspelling](how-to-use-parallel-run-step.md), waarmee tijdens de Score toegang wordt geboden tot gegevens archieven.
 
-* **Afhankelijkheden**, zoals helper-scripts of Python-/Conda-pakketten die vereist zijn om het invoerscript of model uit te voeren.
+* **Afhankelijkheden**, zoals helper-scripts of python/Conda-pakketten die zijn vereist voor het uitvoeren van het script of model van de vermelding.
 
-* **De implementatieconfiguratie** voor het rekendoel waarmee het geïmplementeerde model wordt gehost. Met deze configuratie worden bepaalde zaken beschreven, zoals de geheugen- en CPU-vereisten die nodig zijn om het model uit te voeren.
+* **De implementatie configuratie** voor het reken doel dat als host fungeert voor het geïmplementeerde model. In deze configuratie worden de vereisten voor geheugen en CPU beschreven die nodig zijn om het model uit te voeren.
 
-Deze items worden ingekapseld in een *deductieconfiguratie* en een *implementatieconfiguratie*. De deductieconfiguratie verwijst naar het invoerscript en andere afhankelijkheden. U definieert deze configuraties programmatisch wanneer u de SDK gebruikt voor het uitvoeren van de implementatie. U definieert ze in JSON-bestanden wanneer u de CLI gebruikt.
+Deze items worden ingekapseld in een Afleidings *configuratie* en een *implementatie configuratie*. De configuratie voor afwijzen verwijst naar het script voor de vermelding en andere afhankelijkheden. U definieert deze configuraties programmatisch wanneer u de SDK gebruikt om de implementatie uit te voeren. U definieert ze in JSON-bestanden wanneer u de CLI gebruikt.
 
 ### <a id="script"></a>1. uw invoer script en afhankelijkheden definiëren
 
-Het invoerscript ontvangt de gegevens die bij een geïmplementeerde webservice zijn ingediend en stuurt ze door naar het model. Vervolgens wordt de reactie die door het model is geretourneerd naar de client geretourneerd. *Het script is specifiek voor uw model*. Het moet inzicht hebben in de gegevens die het model verwacht en retourneert.
+Het item script ontvangt gegevens die zijn verzonden naar een geïmplementeerde webservice en door gegeven aan het model. Vervolgens wordt het antwoord opgehaald dat door het model is geretourneerd en wordt dat naar de client geretourneerd. *Het script is specifiek voor uw model*. Het moet inzicht hebben in de gegevens die het model verwacht en retourneert.
 
-Het script bevat twee functies voor het laden en uitvoeren van het model:
+Het script bevat twee functies die het model laden en uitvoeren:
 
 * `init()`: deze functie laadt meestal het model in een globaal object. Deze functie wordt slechts één keer uitgevoerd wanneer de docker-container voor uw webservice wordt gestart.
 
-* `run(input_data)`: Met deze functie maakt gebruik van het model om te voorspellen van een waarde op basis van de ingevoerde gegevens. De in- en uitvoer van de uitvoerbewerking maken doorgaans gebruik van JSON voor serialisatie en deserialisatie. U kunt ook werken met onbewerkte binaire gegevens. U kunt de gegevens transformeren voordat u deze naar het model verzendt of voordat u deze naar de client retourneert.
+* `run(input_data)`: Met deze functie maakt gebruik van het model om te voorspellen van een waarde op basis van de ingevoerde gegevens. Invoer en uitvoer van de run worden meestal JSON gebruikt voor serialisatie en deserialisatie. U kunt ook werken met onbewerkte binaire gegevens. U kunt de gegevens transformeren voordat u deze naar het model verzendt of voordat u deze naar de client stuurt.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Model bestanden zoeken in uw invoer script
 
@@ -220,17 +220,23 @@ In de volgende tabel wordt de waarde van AZUREML_MODEL_DIR beschreven, afhankeli
 | Eén model | Het pad naar de map die het model bevat. |
 | Meerdere modellen | Het pad naar de map met alle modellen. Modellen bevinden zich op naam en versie in deze map (`$MODEL_NAME/$VERSION`) |
 
-Als u het pad naar een bestand in een model wilt ophalen, combineert u de omgevings variabele met de bestands naam waarnaar u op zoek bent.
-De bestands namen van de model bestanden blijven behouden tijdens registratie en implementatie. 
+Tijdens model registratie en-implementatie worden modellen in het AZUREML_MODEL_DIR pad geplaatst en hun oorspronkelijke bestands namen blijven behouden.
+
+Als u het pad naar een model bestand in het invoer script wilt ophalen, combineert u de omgevings variabele met het pad naar het bestand waarnaar u op zoek bent.
 
 **Voor beeld van één model**
 ```python
+# Example when the model is a file
 model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
+
+# Example when the model is a folder containing a file
+file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'sklearn_regression_model.pkl')
 ```
 
 **Voor beeld van meerdere modellen**
 ```python
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklearn_regression_model.pkl')
+# Example when the model is a file, and the deployment contains multiple models
+model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path

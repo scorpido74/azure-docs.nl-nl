@@ -3,7 +3,7 @@ title: Traffic Manager eindpunt typen | Microsoft Docs
 description: In dit artikel worden verschillende soorten eind punten uitgelegd die kunnen worden gebruikt met Azure Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: allensu
-ms.openlocfilehash: 9de5b161c6bb1897058898dddd620ad093f148be
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.author: rohink
+ms.openlocfilehash: 3d8f899a7899243129d31c2620a51dc764a8e917
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981060"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938662"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-eindpunten
 
@@ -38,7 +38,7 @@ In de volgende secties wordt elk type eind punt uitgebreid beschreven.
 Azure-eind punten worden gebruikt voor services op basis van Azure in Traffic Manager. De volgende Azure-resource typen worden ondersteund:
 
 * PaaS Cloud Services.
-* Web Apps
+* Web-apps
 * Web-app-sleuven
 * PublicIPAddress-bronnen (die rechtstreeks of via een Azure Load Balancer kunnen worden verbonden met Vm's). Aan de publicIpAddress moet een DNS-naam zijn toegewezen om te worden gebruikt in een Traffic Manager profiel.
 
@@ -59,7 +59,7 @@ In bepaalde gevallen is het handig om externe eind punten te gebruiken om te ver
 
 ## <a name="nested-endpoints"></a>Geneste eind punten
 
-Geneste eind punten combi neren meerdere Traffic Manager profielen voor het maken van flexibele verkeer routerings schema's en ondersteunen de behoeften van grotere, complexe implementaties. Met geneste eind punten wordt een onderliggend profiel toegevoegd als een eind punt aan een bovenliggend profiel. De onderliggende en bovenliggende profielen kunnen andere eind punten van elk type bevatten, inclusief andere geneste profielen. Zie geneste [Traffic Manager profielen](traffic-manager-nested-profiles.md)voor meer informatie.
+Geneste eind punten combi neren meerdere Traffic Manager profielen voor het maken van flexibele verkeer routerings schema's en ondersteunen de behoeften van grotere, complexe implementaties. Met geneste eind punten wordt een onderliggend profiel toegevoegd als een eind punt aan een bovenliggend profiel. De onderliggende en bovenliggende profielen kunnen andere eind punten van elk type bevatten, inclusief andere geneste profielen. Zie [geneste Traffic Manager profielen](traffic-manager-nested-profiles.md)voor meer informatie.
 
 ## <a name="web-apps-as-endpoints"></a>Web Apps als eind punten
 

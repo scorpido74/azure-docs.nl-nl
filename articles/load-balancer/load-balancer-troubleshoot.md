@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 63706a3cdd34e5656f881c8668d8b88d9ac2e9ff
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ca9b70bd71a618f8e3d5f4fe9504ba66a9f14c6f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843919"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935483"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Problemen met Azure Load Balancer oplossen
 
-Deze pagina bevat informatie over het oplossen van problemen met veelgestelde vragen over Azure Load Balancer. Wanneer de Load Balancer verbinding niet beschikbaar is, zijn de meest voorkomende symptomen als volgt: 
+Op deze pagina vindt u informatie over het oplossen van problemen met basis-en standaard Veelgestelde vragen over Azure Load Balancer. Zie [Standard Load Balancer Overview](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)voor meer informatie over Standard Load Balancer.
+
+Wanneer de Load Balancer verbinding niet beschikbaar is, zijn de meest voorkomende symptomen als volgt: 
+
 - Vm's achter de Load Balancer reageren niet op status controles 
 - Vm's achter de Load Balancer reageren niet op het verkeer op de geconfigureerde poort
 
@@ -124,6 +127,10 @@ Als uw toepassing die wordt gehost in de back-end-VM van een Load Balancer probe
 Als er een intern Load Balancer is geconfigureerd in een VNet en een van de back-end-Vm's van de deel nemer probeert toegang te krijgen tot de interne Load Balancer frontend, kunnen er fouten optreden wanneer de stroom wordt toegewezen aan de oorspronkelijke virtuele machine. Dit scenario wordt niet ondersteund. Lees de [beperkingen](concepts-limitations.md#limitations) voor een gedetailleerde discussie.
 
 **Oplossing** Er zijn verschillende manieren om dit scenario op te heffen, met inbegrip van het gebruik van een proxy. Evalueer Application Gateway of andere proxy's van derden (bijvoorbeeld nginx of haproxy). Zie [overzicht van Application Gateway](../application-gateway/application-gateway-introduction.md) voor meer informatie over Application Gateway.
+
+## <a name="symptom-cannot-change-backend-port-for-existing-lb-rule-of-a-load-balancer-which-has-vm-scale-set-deployed-in-the-backend-pool"></a>Symptoom: kan de back-uppoort niet wijzigen voor een bestaande LB-regel van een load balancer die een VM-Schaalset in de back-endadresgroep heeft geïmplementeerd. 
+### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Oorzaak: de backend-poort kan niet worden gewijzigd voor een taakverdelings regel die wordt gebruikt door een status test voor load balancer waarnaar wordt verwezen door de VM-Schaalset.
+**Oplossing** Als u de poort wilt wijzigen, kunt u de status test verwijderen door de VM-Schaalset bij te werken, de poort bij te werken en de status test vervolgens opnieuw te configureren.
 
 ## <a name="additional-network-captures"></a>Aanvullende netwerk opnamen
 Als u besluit een ondersteunings aanvraag te openen, verzamelt u de volgende informatie voor een snellere oplossing. Kies één back-end-VM om de volgende tests uit te voeren:

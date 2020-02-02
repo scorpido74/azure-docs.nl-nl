@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: c4395628ac31dd69a4978f7f68ecc24ca1e15cfb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453114"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932086"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Een persoonlijke koppelings service maken met behulp van Azure PowerShell
 In dit artikel wordt beschreven hoe u een persoonlijke koppelings service maakt in azure met behulp van Azure PowerShell.
@@ -109,7 +109,7 @@ Ga als volgt te weten over uw persoonlijke koppelings service met [Get-AzPrivate
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 
 ```
 
-In deze fase is uw persoonlijke koppelings service gemaakt en is deze klaar om het verkeer te ontvangen. Het bovenstaande voor beeld is alleen om te demonstreren hoe u een persoonlijke koppelings service maakt met behulp van Power shell.  De load balancer back-end-Pools of een toepassing op de back-endservers voor het Luis teren naar het verkeer is niet geconfigureerd. Als u end-to-end verkeers stromen wilt zien, kunt u het beste uw toepassing configureren achter uw standaard load balancer. 
+In deze fase is uw persoonlijke koppelings service gemaakt en is deze klaar om het verkeer te ontvangen. Het bovenstaande voor beeld is alleen om te demonstreren hoe u een persoonlijke koppelings service maakt met behulp van Power shell.  De load balancer back-end-Pools of een toepassing op de back-endservers voor het Luis teren naar het verkeer is niet geconfigureerd. Als u end-to-end verkeers stromen wilt zien, wordt u ten zeerste aangeraden uw toepassing te configureren achter uw standaard load balancer. 
 
 Vervolgens laten we zien hoe u deze service kunt toewijzen aan een persoonlijk eind punt in verschillende VNet met behulp van Power shell. Het voor beeld is beperkt tot het maken van het persoonlijke eind punt en het verbinden met de persoonlijke koppelings service die hierboven is gemaakt. U kunt Virtual Machines in de Virtual Network maken voor het verzenden/ontvangen van verkeer naar het persoonlijke eind punt voor het bouwen van uw scenario. 
 
@@ -134,7 +134,7 @@ $vnetPE = New-AzVirtualNetwork `
 -Subnet $peSubnet 
 ```
 
-### <a name="create-a-private-endpoint"></a>Een persoonlijk eind punt maken
+### <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken
 Maak een persoonlijk eind punt voor het gebruik van de service voor persoonlijke koppelingen die hierboven in uw virtuele netwerk is gemaakt:
  
 ```azurepowershell

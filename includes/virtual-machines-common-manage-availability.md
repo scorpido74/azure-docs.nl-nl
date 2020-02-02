@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 40810b9a9b295f2aa9d56caaf4b51cab7dbbe5bc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a4140ffc0d4e97afabb1c3080951eeb75c792a8c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887820"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76961546"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Informatie over het opnieuw opstarten van VM's - onderhoud versus downtime
 Er zijn drie scenario's die van invloed kunnen zijn op de virtuele machine in Azure: ongepland onderhoud van hardware, onverwachte downtime en gepland onderhoud.
@@ -53,7 +53,7 @@ Meer informatie over het implementeren van een virtuele [Windows](../articles/vi
 Beschikbaarheids sets zijn een andere datacenter configuratie om VM-redundantie en beschik baarheid te bieden. Deze configuratie binnen een Data Center zorgt ervoor dat tijdens een geplande of niet-geplande onderhouds gebeurtenis ten minste één virtuele machine beschikbaar is en voldoet aan de 99,95% Azure SLA. Zie de [SLA voor virtuele machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/) voor meer informatie.
 
 > [!IMPORTANT]
-> Voorkom dat een virtuele machine met een enkele instantie als enige deel uitmaakt van een beschikbaarheidsset. Vm's in deze configuratie komen niet in aanmerking voor een SLA-garantie en betekenen uitval tijd tijdens geplande Azure-onderhouds gebeurtenissen, behalve wanneer één virtuele machine gebruikmaakt van [Azure Premium ssd's](../articles/virtual-machines/windows/disks-types.md#premium-ssd). Voor één virtuele machine die gebruikmaakt van Premium Ssd's, is de Azure-SLA van toepassing.
+> Een virtuele machine met één exemplaar in een beschikbaarheidsset die zelfstandig is ingesteld, moet Premium-SSD of Ultra Disk gebruiken voor alle besturingssysteem schijven en gegevens schijven om in aanmerking te komen voor de SLA voor de connectiviteit van de virtuele machine van ten minste 99,9%.
 
 Elke virtuele machine in uw beschikbaarheidsset krijgt een **updatedomein** en een **foutdomein** toegewezen door het onderliggende Azure-platform. Voor iedere beschikbaarheidsset worden standaard vijf updatedomeinen toegewezen die niet door gebruiker te bewerken zijn (voor Resource Manager-implementaties kan dit aantal worden opgehoogd tot 20 updatedomeinen), om groepen virtuele machines en onderliggende fysieke hardware aan te duiden die op hetzelfde moment opnieuw kunnen worden opgestart. Wanneer in één beschikbaarheidsset meer dan vijf virtuele machines worden geconfigureerd, wordt de zesde virtuele machine in hetzelfde updatedomein geplaatst als de eerste virtuele machine, de zevende in hetzelfde updatedomein als de tweede virtuele machine, enzovoort. De volgorde waarin updatedomeinen opnieuw worden opgestart, verloopt tijdens gepland onderhoud niet altijd sequentieel, maar er wordt slechts één updatedomein tegelijk opnieuw opgestart. Een updatedomein dat opnieuw is opgestart, heeft 30 minuten om te herstellen voordat onderhoud wordt geïnitieerd op een ander updatedomein.
 

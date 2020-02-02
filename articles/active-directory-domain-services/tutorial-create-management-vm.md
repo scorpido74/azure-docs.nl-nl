@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: d8a5f4756f3a6799c7f1b08973e0a84603cb4571
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703635"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931586"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Zelf studie: een beheer-VM maken om een Azure Active Directory Domain Services beheerd domein te configureren en te beheren
 
@@ -40,9 +40,9 @@ U hebt de volgende resources en bevoegdheden nodig om deze zelf studie te volt o
 * Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
     * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
-    * Als dat nodig is, [maakt en configureert][create-azure-ad-ds-instance]de eerste zelf studie een Azure Active Directory Domain Services-exemplaar.
+    * Zie, indien nodig, de eerste zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
 * Een Windows Server-VM die is gekoppeld aan het beheerde domein van Azure AD DS.
-    * Als dat nodig is, maakt de vorige zelf studie [een Windows Server-VM en voegt deze toe aan een beheerd domein][create-join-windows-vm].
+    * Zie, indien nodig, de vorige zelf studie voor het [maken van een Windows Server-VM en voeg deze toe aan een beheerd domein][create-join-windows-vm].
 * Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal

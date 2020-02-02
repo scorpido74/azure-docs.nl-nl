@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: aa162fb47eab84ff26af2256f8fe0ba9896b7cf0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61e7da2d82262b234d9352c7a1198d121d7f73f9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448283"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935770"
 ---
 # <a name="quickstart-computer-vision-client-library-for-net"></a>Snelstartgids: Computer Vision-client bibliotheek voor .NET
 
@@ -97,7 +97,7 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 |[ComputerVisionClientExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions?view=azure-dotnet)| Deze klasse bevat aanvullende methoden voor de **ComputerVisionClient**.|
 |[VisualFeatureTypes](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)| Deze opsomming definieert de verschillende typen afbeeldings analyse die kunnen worden uitgevoerd in een standaard analyse bewerking. U geeft een set VisualFeatureTypes-waarden op, afhankelijk van uw behoeften. |
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Computer Vision-client bibliotheek voor .NET:
 
@@ -110,7 +110,7 @@ Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Co
 > [!NOTE]
 > In deze Quick Start wordt ervan uitgegaan dat u [omgevings variabelen hebt gemaakt](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de computer vision sleutel en het eind punt met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT` respectievelijk.
 
-In een nieuwe methode maakt u een exemplaar van een client met uw eind punt en sleutel. Maak een [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) -object met uw sleutel en gebruik het met uw eind punt om een [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) -object te maken.
+In een nieuwe methode maakt u een exemplaar van een client met uw eind punt en sleutel. Maak een **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials?view=azure-dotnet)** -object met uw sleutel en gebruik het met uw eind punt om een **[ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet)** -object te maken.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_auth)]
 
@@ -137,7 +137,7 @@ Sla in de **programma** klasse een verwijzing op naar de URL van de afbeelding d
 
 ### <a name="specify-visual-features"></a>Visuele functies opgeven
 
-Definieer uw nieuwe methode voor het analyseren van afbeeldingen. Voeg de onderstaande code toe. Hiermee geeft u de visuele functies op die u wilt extra heren in uw analyse. Zie de [VisualFeatureTypes](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet) -inventarisatie voor een volledige lijst.
+Definieer uw nieuwe methode voor het analyseren van afbeeldingen. Voeg de onderstaande code toe. Hiermee geeft u de visuele functies op die u wilt extra heren in uw analyse. Zie de **[VisualFeatureTypes](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)** -inventarisatie voor een volledige lijst.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_visualfeatures)]
 

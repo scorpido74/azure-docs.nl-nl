@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 01/31/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 008f0b1b83e8ba856fae2fe40b026dcc645e46ab
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 20b99cfffdaa0d942ccd4d954909810342cbfcb8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845329"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935347"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Taal-en regio ondersteuning voor de spraak service
 
@@ -240,8 +240,10 @@ De **Spraakomzetting** API biedt ondersteuning voor verschillende talen voor spr
 | Hmong Daw      | `mww`          |
 | Hongaars      | `hu`          |
 | Indonesisch      | `id`          |
+| Iers      | `ga`          |
 | Italiaans      | `it`          |
 | Japans      | `ja`          |
+| Kanarees      | `kn`          |
 | Swahili      | `sw`          |
 | Klingon      | `tlh`          |
 | Klingon (plqaD)      | `tlh-Qaak`          |
@@ -250,11 +252,14 @@ De **Spraakomzetting** API biedt ondersteuning voor verschillende talen voor spr
 | Litouws      | `lt`          |
 | Malagassische      | `mg`          |
 | Maleis      | `ms`          |
+| Malayalam      | `ml`          |
 | Maltees      | `mt`          |
 | Noors      | `nb`          |
 | Perzisch      | `fa`          |
 | Pools      | `pl`          |
-| Portugees      | `pt`          |
+| Portugees (Brazilië)      | `pt-br`          |
+| Portugees (Portugal)      | `pt-pt`          |
+| Punjabi      | `pa`          |
 | Queretaro Otomi      | `otq`          |
 | Roemeens      | `ro`          |
 | Russisch      | `ru`          |

@@ -3,7 +3,7 @@ title: Route ring met meerdere waarden configureren-Azure Traffic Manager
 description: In dit artikel wordt uitgelegd hoe u Traffic Manager configureert om verkeer naar een/AAAA-eind punten te routeren.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: allensu
-ms.openlocfilehash: 3e5e6cb55b86df8a48f96771fb2436afa8acaa18
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040375"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938785"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>De methode voor het routeren van meerdere waarden in Traffic Manager configureren
 
@@ -43,7 +43,7 @@ Maak een Traffic Manager profiel dat gebruikers verkeer verstuurt door het naar 
     
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
-    | Naam                   | Deze naam moet uniek zijn binnen de zone trafficmanager.net en resulteert in de DNS-naam, trafficmanager.net, die wordt gebruikt voor het openen van uw Traffic Manager-profiel.                                   |
+    | Name                   | Deze naam moet uniek zijn binnen de zone trafficmanager.net en resulteert in de DNS-naam, trafficmanager.net, die wordt gebruikt voor het openen van uw Traffic Manager-profiel.                                   |
     | Routeringsmethode          | Selecteer de methode voor het routeren van **meerdere waarden** .                                       |
     | Abonnement            | Selecteer uw abonnement.                          |
     | Resourcegroep          | Selecteer *myResourceGroupTM1*. |
@@ -63,7 +63,7 @@ Voeg twee IP-adressen als externe eind punten toe aan het profiel voor meerdere 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | Type                    | Extern eind punt                                   |
-    | Naam           | myEndpoint1                                        |
+    | Name           | myEndpoint1                                        |
     | FQDN-naam (Fully Qualified Domain Name) of IP           | Typ het open bare IP-adres van het eind punt dat u wilt toevoegen aan dit Traffic Manager profiel                         |
     |        |           |
 

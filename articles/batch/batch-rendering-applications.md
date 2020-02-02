@@ -1,18 +1,18 @@
 ---
 title: Rendering van toepassingen-Azure Batch
-description: Vooraf geïnstalleerde batch rendering-toepassingen
+description: Het is mogelijk om alle rendering-toepassingen met Azure Batch te gebruiken. Azure Marketplace-VM-installatie kopieën zijn echter beschikbaar met vooraf geïnstalleerde toepassingen.
 services: batch
 ms.service: batch
 author: ju-shim
 ms.author: jushiman
 ms.date: 09/19/2019
 ms.topic: conceptual
-ms.openlocfilehash: 367f7655c32c30f11b37c86c098d76e146fec69c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e47d05594142de87fabd2d61faeb40d25fdc1873
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026582"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934591"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>Vooraf geïnstalleerde toepassingen voor het renderen van VM-installatie kopieën
 

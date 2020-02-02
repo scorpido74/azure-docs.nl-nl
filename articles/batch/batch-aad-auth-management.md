@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory gebruiken om oplossingen voor Batch Management te verifiëren | Microsoft Docs
-description: Toepassingen die zijn gebouwd met Azure Resource Manager en de batch-resource provider verifiëren met Azure AD.
+title: Azure Active Directory gebruiken om oplossingen voor Batch Management te verifiëren
+description: Verken het gebruik van Azure Active Directory om te verifiëren vanuit toepassingen die gebruikmaken van de Batch Management .NET-bibliotheek.
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: jushiman
-ms.openlocfilehash: 19aac0e25f9a036ce52d72a51e1ab7270eaaf3e5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1dce5118040e6164a468b0d5470d28e5cd06d8c5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029845"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938266"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Oplossingen voor Batch Management verifiëren met Active Directory
 
@@ -47,7 +47,7 @@ Zodra u het registratie proces hebt voltooid, ziet u de toepassings-ID en de obj
 
 Vervolgens moet u de toegang tot uw toepassing delegeren naar de Azure Resource Manager-API. De Azure AD-id voor de Resource Manager-API is **Windows Azure Service Management-API**.
 
-Volg deze stappen in Azure Portal:
+Volg deze stappen in de Azure Portal:
 
 1. Kies in het navigatie deel venster aan de linkerkant van de Azure Portal **alle services**, klik op **app-registraties**en klik op **toevoegen**.
 2. Zoek de naam van uw toepassing in de lijst met app-registraties:

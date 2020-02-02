@@ -12,31 +12,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: 2d588d2707c267097e25176997e58f9573017582
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: bb004d536d30d62116866581daeef9b42c23d470
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780042"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936366"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integratie met Security Center (preview-versie)
 
 Azure Container Registry (ACR) is een beheerde, persoonlijke docker-register service waarmee uw container installatie kopieën voor Azure-implementaties in een centraal REGI ster worden opgeslagen en beheerd. Het is gebaseerd op de open-source docker Registry 2,0.
 
-Als u zich in de Standard-laag van Azure Security Center bevindt, kunt u de bundel met container registers toevoegen. Deze optionele functie biedt meer inzicht in de beveiligings problemen van de installatie kopieën in uw registers. Hiermee schakelt u de bundel op het abonnements niveau in of uit om alle registers in een abonnement te behandelen. Voor deze functie worden per afbeelding en niet per scan gefactureerd, zoals wordt weer gegeven op de [pagina met prijzen](security-center-pricing.md). 
+Als u zich in de Standard-laag van Azure Security Center bevindt, kunt u de bundel met container registers toevoegen. Deze optionele functie biedt meer inzicht in de beveiligings problemen van de installatie kopieën in uw op ARM gebaseerde registers. Hiermee schakelt u de bundel op het abonnements niveau in of uit om alle registers in een abonnement te behandelen. Voor deze functie worden per afbeelding en niet per scan gefactureerd, zoals wordt weer gegeven op de [pagina met prijzen](security-center-pricing.md). 
 
 Als u de container register bundel inschakelt, zorgt u ervoor dat Security Center gereed is voor het scannen van installatie kopieën die naar het REGI ster worden gepusht. De scans bevinden zich op het niveau van de installatie kopie: Security Center scant uw REGI ster niet. het scant de installatie kopieën die zijn opgeslagen in het REGI ster. 
 
 Wanneer een installatie kopie naar het REGI ster wordt gepusht, wordt de installatie kopie automatisch gescand door Security Center. U kunt de scan van een afbeelding activeren door deze naar uw opslag plaats te pushen.
 
-
-Wanneer de scan is voltooid (doorgaans na ongeveer 10 minuten), zijn er conclusies beschikbaar in Security Center aanbevelingen als volgt:
+Wanneer de scan is voltooid (doorgaans na ongeveer 10 minuten), zijn er conclusies beschikbaar in Security Center aanbevelingen zoals deze:
 
 [![voor beeld Azure Security Center aanbeveling over beveiligings problemen gedetecteerd in een gehoste installatie kopie van een Azure Container Registry (ACR)](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
 ## <a name="benefits-of-integration"></a>Voor delen van integratie
 
-Security Center identificeert ACR-registers in uw abonnement en biedt probleemloos het volgende:
+Security Center identificeert op ARM gebaseerde ACR-registers in uw abonnement en biedt probleemloos het volgende:
 
 * **Azure-systeem eigen beveiligings problemen scannen** voor alle pushed Linux-installatie kopieën. Security Center scant de installatie kopie met behulp van een scanner van de toonaangevende beveiligings problemen voor het scannen van leveranciers, Qualys. Deze systeem eigen oplossing is standaard naadloos geïntegreerd.
 

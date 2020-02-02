@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5a15b3b9e51772d8c7e5312968fecb180069e2a7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4cc3b1789ef2f7ef44e5421cbacb5a93c2a0a1ff
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911250"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933613"
 ---
 # <a name="add-html-markers-to-the-map"></a>HTML-markeringen toevoegen aan de kaart
 
@@ -24,7 +24,7 @@ Dit artikel laat u zien hoe u een aangepaste HTML, zoals een afbeeldings bestand
 > HTML-markeringen maken geen verbinding met gegevens bronnen. Plaatsings gegevens worden direct toegevoegd aan de markering en de markering wordt toegevoegd aan de Maps `markers` eigenschap die een [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)is.
 
 > [!IMPORTANT]
-> In tegens telling tot de meeste lagen in de Azure Maps web control die WebGL gebruiken voor rendering, gebruiken HTML-markeringen traditionele DOM-elementen voor rendering. Hoe meer HTML-markeringen een pagina heeft toegevoegd, hoe meer DOM-elementen er zijn. Prestaties kunnen afnemen nadat u een paar honderd HTML-markeringen hebt toegevoegd. Voor grotere gegevens sets kunt u het clusteren van uw gegevens of het gebruik van een symbool of een Bubble laag.
+> In tegens telling tot de meeste lagen in de Azure Maps web control die WebGL gebruiken voor rendering, gebruiken HTML-markeringen traditionele DOM-elementen voor rendering. Hoe meer HTML-markeringen worden toegevoegd aan een pagina, hoe meer DOM-elementen er zijn. Prestaties kunnen afnemen nadat u een paar honderd HTML-markeringen hebt toegevoegd. Voor grotere gegevens sets kunt u het clusteren van uw gegevens of het gebruik van een symbool of een Bubble laag.
 
 ## <a name="add-an-html-marker"></a>Een HTML-markering toevoegen
 
@@ -33,7 +33,7 @@ De [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atl
 Met de volgende code wordt een HTML-markering gemaakt en wordt de eigenschap Color ingesteld op ' DodgerBlue ' en de eigenschap Text op ' 10 '. Er wordt een pop-upvenster gekoppeld aan de markering en `click` gebeurtenis wordt gebruikt om de zicht baarheid van de pop-up te scha kelen.
 
 ```javascript
-//Create a HTML marker and add it to the map.
+//Create an HTML marker and add it to the map.
 var marker = new atlas.HtmlMarker({
     color: 'DodgerBlue',
     text: '10',

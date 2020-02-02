@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 24114defe5e78bb7adbd006adc4ddbf8250b3188
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: d0e0e8a5aa3a3e43997e3f9512525be9f51d2018
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844969"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934874"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Wat is er nieuw in azure Cognitive Search
 
@@ -29,13 +29,15 @@ De naam van Azure Search wordt nu gewijzigd in **Azure Cognitive Search** om het
 
 ### <a name="february-2020"></a>Februari 2020
 
-+ [PII-detectie](cognitive-search-skill-pii-detection.md) is een cognitieve vaardigheid die wordt gebruikt tijdens de indexering die persoons gegevens ophaalt uit een invoer tekst en die u de mogelijkheid biedt om de tekst op verschillende manieren te maskeren.
++ [PII-detectie (preview)](cognitive-search-skill-pii-detection.md) is een cognitieve vaardigheid die wordt gebruikt tijdens de indexering die persoonlijke gegevens ophaalt uit een invoer tekst en die u de mogelijkheid biedt om de tekst op verschillende manieren te maskeren.
+
++ [Zoek opdracht voor aangepaste entiteiten (preview)](cognitive-search-skill-custom-entity-lookup.md ) zoekt naar tekst uit een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen. Met deze lijst worden alle documenten met alle overeenkomende entiteiten labeld. De vaardigheid ondersteunt ook een mate van fuzzy matching die kan worden toegepast om overeenkomsten te vinden die vergelijkbaar zijn, maar niet helemaal precies. 
 
 ### <a name="january-2020"></a>Januari 2020
 
 + Door de [klant beheerde versleutelings sleutels](search-security-manage-encryption-keys.md) zijn nu algemeen beschikbaar. Als u REST gebruikt, kunt u de functie openen met behulp van `api-version=2019-05-06`. Voor beheerde code is het juiste pakket nog steeds [.NET SDK-versie 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , ook al is de functie niet beschikbaar in de preview-fase. 
 
-+ Persoonlijke toegang tot een zoek service is beschikbaar via twee mechanismen:
++ Persoonlijke toegang tot een zoek service is beschikbaar via twee mechanismen, zowel momenteel als preview-versie:
 
   + U kunt de toegang tot specifieke IP-adressen beperken met behulp van de beheer REST API `api-version=2019-10-01-Preview` om de service te maken. De preview-API bevat nieuwe eigenschappen **IpRule** en **NetworkRuleSet** in de [CreateOrUpdate-API](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate). Deze preview-functie is beschikbaar in geselecteerde regio's. Zie [How to use the Management rest API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)voor meer informatie.
 

@@ -2,17 +2,17 @@
 title: Een subdomein-Azure DNS delegeren
 description: Met dit leer traject kunt u aan de slag gaan met het delegeren van een Azure DNS subdomein.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 2/7/2019
-ms.author: allensu
-ms.openlocfilehash: 462282e9674e7a253f61c96338b54174c80fb03f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: cd1443a9ca8ccf7172072078734f21d789d36194
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212379"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937435"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Een Azure DNS subdomein delegeren
 
@@ -36,7 +36,7 @@ Maak eerst de zone voor het **technische** subdomein.
 3. Selecteer **Maken**.
 4. Typ **engineering.contoso.com** in het tekstvak **naam** in het deel venster **DNS-zone maken** .
 5. Selecteer de resource groep voor uw zone. Mogelijk wilt u dezelfde resource groep gebruiken als de bovenliggende zone om Vergelijk bare resources samen te brengen.
-6. Klik op **Create**.
+6. Klik op **Maken**.
 7. Nadat de implementatie is voltooid, gaat u naar de nieuwe zone.
 
 ## <a name="note-the-name-servers"></a>Noteer de naam servers

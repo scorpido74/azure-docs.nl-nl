@@ -2,17 +2,17 @@
 title: 'Zelf studie: uw domein en subdomein hosten-Azure DNS'
 description: In dit artikel vindt u informatie over het configureren van Azure DNS voor het hosten van uw DNS-zones.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: 062a5beaec30d510d37af436e00f4d57785245cd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212196"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937322"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Zelfstudie: uw domein hosten in Azure DNS
 

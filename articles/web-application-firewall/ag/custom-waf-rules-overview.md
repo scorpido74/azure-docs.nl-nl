@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: 323f01e08007260d4fb6d651b20937c5d5d5e357
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 9d9deca0365e13a0a8ad7404a476b05d0afef077
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645086"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934999"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Aangepaste regels voor Web Application firewall v2 op Azure-toepassing gateway
 
@@ -22,7 +22,7 @@ Met aangepaste regels kunt u uw eigen regels maken die worden geëvalueerd voor 
 
 U kunt bijvoorbeeld alle aanvragen van een IP-adres in het bereik 192.168.5.4/24 blok keren. In deze regel is de operator *IPMatch*, het matchValues is het IP-adres bereik (192.168.5.4/24) en de actie om het verkeer te blok keren. U kunt ook de naam en prioriteit van de regel instellen.
 
-Aangepaste regels bieden ondersteuning voor het gebruik van samengestelde logica om geavanceerde regels te maken die voldoen aan uw beveiligings behoeften. Bijvoorbeeld (Condition 1 **en** condition 2) **of** condition 3).  Dit voor beeld betekent dat als wordt voldaan aan voor waarde 1 **en** voor waarde 2, **of** als aan voor waarde 3 wordt voldaan, de WAF de actie moet uitvoeren die is opgegeven in de aangepaste regel.
+Aangepaste regels bieden ondersteuning voor het gebruik van samengestelde logica om geavanceerde regels te maken die voldoen aan uw beveiligings behoeften. Bijvoorbeeld (Condition 1 **en** condition 2) **of** condition 3). Dit betekent dat als aan voor waarde 1 **en** voor waarde 2 is voldaan, **of** als aan voor waarde 3 wordt voldaan, de WAF de actie moet uitvoeren die is opgegeven in de aangepaste regel.
 
 Verschillende overeenkomende voor waarden binnen dezelfde regel worden altijd samengesteld met **en**. Bijvoorbeeld verkeer blok keren van een specifiek IP-adres en alleen als ze een bepaalde browser gebruiken.
 
@@ -31,7 +31,7 @@ Als u **of** twee verschillende voor waarden wilt, moeten de twee voor waarden i
 > [!NOTE]
 > Het maximum aantal aangepaste WAF-regels is 100. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)voor meer informatie over Application Gateway limieten.
 
-Reguliere expressies worden ook ondersteund in aangepaste regels, net als in de CRS-rules. Voor voor beelden van deze, zie voor beelden 3 en 5 in [aangepaste Web Application firewall regels maken en gebruiken](create-custom-waf-rules.md).
+Reguliere expressies worden ook ondersteund in aangepaste regels, net als in de CRS-rules. Voor beelden, zie voor beelden 3 en 5 in [aangepaste Web Application firewall regels maken en gebruiken](create-custom-waf-rules.md).
 
 ## <a name="allowing-vs-blocking"></a>Toestaan versus blok keren
 
@@ -92,7 +92,7 @@ Deze aangepaste regel bevat een naam, prioriteit, een actie en de matrix van ove
 
 ### <a name="name-optional"></a>Naam [Optioneel]
 
-Dit is de naam van de regel. Deze naam wordt weer gegeven in de logboeken.
+De naam van de regel.  Deze wordt weer gegeven in de logboeken.
 
 ### <a name="priority-required"></a>Prioriteit [vereist]
 
@@ -145,7 +145,7 @@ De huidige voor waarde wordt genegeerd.
 Een lijst met teken reeksen met namen van trans formaties voordat de overeenkomst wordt geprobeerd. Dit kunnen de volgende trans formaties zijn:
 
 - Kleine letters
-- Trim
+- interne
 - UrlDecode
 - UrlEncode 
 - RemoveNulls
@@ -157,198 +157,13 @@ Lijst met waarden die moeten worden vergeleken, wat kan worden beschouwd als *or
 
 ### <a name="action-required"></a>Actie [vereist]
 
-- Toestaan: Hiermee wordt de trans actie geautoriseerd, waarbij alle volgende regels worden overgeslagen. Dit betekent dat de opgegeven aanvraag wordt toegevoegd aan de lijst met toegestane aanvragen en eenmaal overeenkomt met de aanvraag en wordt verzonden naar de back-end-groep. Regels die zich op de acceptatie lijst bevinden, worden niet geëvalueerd voor verdere aangepaste regels of beheerde regels.
-- Blok: blokkeert de trans actie op basis van *SecDefaultAction* (detectie/preventie modus). Net als bij de actie voor toestaan, zodra de aanvraag is geëvalueerd en toegevoegd aan de lijst met geblokkeerde websites, wordt de evaluatie gestopt en wordt de aanvraag geblokkeerd. Aanvragen die voldoen aan dezelfde voor waarden worden niet geëvalueerd en worden alleen geblokkeerd. 
-- Log: Hiermee kan de regel naar het logboek schrijven, maar kan de rest van de regels worden uitgevoerd voor evaluatie. Volgende aangepaste regels worden geëvalueerd in volg orde van prioriteit, gevolgd door de beheerde regels.
+- Toestaan: Hiermee wordt de trans actie geautoriseerd, waarbij alle andere regels worden overgeslagen. De opgegeven aanvraag wordt toegevoegd aan de acceptatie lijst en eenmaal overeenkomen, de aanvraag stopt verder met de evaluatie en wordt verzonden naar de back-end-groep. Regels die zich op de acceptatie lijst bevinden, worden niet geëvalueerd voor verdere aangepaste regels of beheerde regels.
+- Blok: blokkeert de trans actie op basis van *SecDefaultAction* (detectie/preventie modus). Net als bij de actie voor toestaan, zodra de aanvraag is geëvalueerd en toegevoegd aan de lijst met geblokkeerde websites, wordt de evaluatie gestopt en wordt de aanvraag geblokkeerd. Aanvragen na die voldoen aan dezelfde voor waarden worden niet geëvalueerd en worden alleen geblokkeerd. 
+- Log: Hiermee kan de regel naar het logboek schrijven, maar kan de rest van de regels worden uitgevoerd voor evaluatie. De andere aangepaste regels worden geëvalueerd in volg orde van prioriteit, gevolgd door de beheerde regels.
 
 ## <a name="geomatch-custom-rules-preview"></a>Aangepaste regels voor geomatching (preview-versie)
 
-Aangepaste regels maken het mogelijk om op maat gemaakte regels aan te passen aan de exacte behoeften van uw toepassingen en uw beveiligings beleid. U kunt de toegang tot uw webtoepassingen nu beperken op land/regio, die beschikbaar is in open bare preview. Net als bij alle aangepaste regels kan deze logica worden samengesteld met andere regels om te voldoen aan de behoeften van uw toepassing. 
-
-   > [!NOTE]
-   > Geomatch aangepaste regels zijn beschikbaar in Zuid-Centraal VS en Europa-noord. Als u toegang wilt krijgen tot de portals, gebruikt u [deze koppeling](https://aka.ms/AppGWWAFGeoMatch) totdat deze Live voor iedereen actief is. 
-
-Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende landen codes van twee cijfers zijn. 
-
-|Landnummer | Land naam |
-| ----- | ----- |
-| AD | Andorra |
-| AE | Verenigde Arabische Emiraten|
-| AF | Afghanistan|
-| AG | Antigua en Barbuda|
-| AL | Albanië|
-| AM | Armenië|
-| AO | Angola|
-| AR | Argentinië|
-| AS | Amerikaans-Samoa|
-| AT | Oostenrijk|
-| AU | Australië|
-| AZ | Azerbeidzjan|
-| BA | Bosnië en Herzegovina|
-| BB | Barbados|
-| BD | Bangladesh|
-| BE | België|
-| BF | Burkina Faso|
-| BG | Bulgarije|
-| BH | Bahrein|
-| BI | Burundi|
-| BJ | Benin|
-| BL | Saint--Barthélemy|
-| BN | Brunei Darussalam|
-| BO | Bolivia|
-| BR | Brazilië|
-| BS | Bahama's|
-| BT | Bhutan|
-| BW | Botswana|
-| BY | Wit-Rusland|
-| BZ | Belize|
-| CA | Canada|
-| CD | Congo (DRC)|
-| CF | Centraal-Afrikaanse Republiek|
-| CH | Zwitserland|
-| CI | Cote d'Ivoire|
-| CL | Chili|
-| CM | Kameroen|
-| CN | China|
-| CO | Colombia|
-| CR | Costa Rica|
-| CU | Cuba|
-| CV | Cabo Verde|
-| CY | Cyprus|
-| CZ | Tsjechië|
-| DE | Duitsland|
-| DK | Denemarken|
-| DO | Dominicaanse Republiek|
-| DZ | Algerije|
-| EC | Ecuador|
-| EE | Estland|
-| EG | Egypte|
-| ES | Spanje|
-| ET | Ethiopië|
-| FI | Finland|
-| FJ | Fiji|
-| FM | Micronesië, Federale Staten van|
-| FR | Frankrijk|
-| GB | Verenigd Koninkrijk|
-| GE | Georgië|
-| GF | Frans-Guyana|
-| GH | Ghana|
-| GN | Guinee|
-| GP | Guadeloupe|
-| GR | Griekenland|
-| GT | Guatemala|
-| GY | Guyana|
-| HK | Hongkong SAR|
-| HN | Honduras|
-| HR | Kroatië|
-| HT | Haiti|
-| HU | Hongarije|
-| Id | Indonesië|
-| IE | Ierland|
-| IL | Israël|
-| IN | India|
-| IQ | Irak|
-| IR | Iran, Islamitische Republiek|
-| IS | IJsland|
-| IT | Italië|
-| JM | Jamaica|
-| JO | Jordanië|
-| JP | Japan|
-| KE | Kenia|
-| KG | Kirgizië|
-| KH | Cambodja|
-| KI | Kiribati|
-| KN | Saint Kitts en Nevis|
-| KP | Noord-Korea|
-| KR | Zuid-Korea|
-| KW | Koeweit|
-| KY | Kaaimaneilanden|
-| KZ | Kazachstan|
-| LA | Laos|
-| LB | Libanon|
-| LI | Liechtenstein|
-| LK | Sri Lanka|
-| LR | Liberia|
-| LS | Lesotho|
-| LT | Litouwen|
-| LU | Luxemburg|
-| LV | Letland|
-| LY | Libië |
-| MA | Marokko|
-| MD | Moldavië, Republiek|
-| MG | Madagascar|
-| MK | Noord-Macedonië|
-| ML | Mali|
-| MM | Myanmar|
-| MN | Mongolië|
-| MO | Macau SAR|
-| MQ | Martinique|
-| MR | Mauretanië|
-| MT | Malta|
-| MV | Maldiven|
-| MW | Malawi|
-| MX | Mexico|
-| MY | Maleisië|
-| MZ | Mozambique|
-| N.V.T. | Namibië|
-| NE | Niger|
-| NG | Nigeria|
-| NI | Nicaragua|
-| NL | Nederland|
-| NO | Noorwegen|
-| NP | Nepal|
-| NR | Nauru|
-| NZ | Nieuw-Zeeland|
-| OM | Oman|
-| PA | Panama|
-| PE | Peru|
-| PH | Filippijnen|
-| PK | Pakistan|
-| PL | Polen|
-| PR | Puerto Rico|
-| PT | Portugal|
-| PW | Palau|
-| PY | Paraguay|
-| QA | Qatar|
-| RE | Réunion|
-| RO | Roemenië|
-| RS | Servië|
-| RU | Russische Federatie|
-| RW | Rwanda|
-| SA | Saoedi-Arabië|
-| SD | Soedan|
-| SE | Zweden|
-| SG | Singapore|
-| SI | Slovenië|
-| SK | Slowakije|
-| SN | Senegal|
-| SO | Somalië|
-| SR | Suriname|
-| SS | Zuid-Soedan|
-| SV | El Salvador|
-| SY | Syrië|
-| SZ | Swaziland|
-| TC | Turks- en Caicoseilanden|
-| TG | Togo|
-| TH | Thailand|
-| TN | Tunesië|
-| TR | Turkije|
-| TT | Trinidad en Tobago|
-| TW | Taiwan|
-| TZ | Tanzania, Verenigde Republiek|
-| UA | Oekraïne|
-| UG | Uganda|
-| VS | Verenigde Staten|
-| UY | Uruguay|
-| UZ | Oezbekistan|
-| VC | Saint Vincent en de Grenadines|
-| VE | Venezuela|
-| VG | Britse Maagdeneilanden|
-| VI | Amerikaanse Maagdeneilanden|
-| VN | Vietnam|
-| ZA | Zuid-Afrika|
-| ZM | Zambia|
-| ZW | Zimbabwe|
+Met aangepaste regels kunt u op maat gemaakte regels maken voor de exacte behoeften van uw toepassingen en beveiligings beleid. U kunt de toegang tot uw webtoepassingen beperken op basis van land/regio. Zie voor meer informatie [aangepaste regels voor geomatching (preview-versie)](geomatch-custom-rules.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

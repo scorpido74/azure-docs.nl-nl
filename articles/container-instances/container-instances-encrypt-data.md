@@ -1,17 +1,18 @@
 ---
-title: Implementatie gegevens versleutelen
+title: Implementatiegegevens versleutelen
 description: Meer informatie over het versleutelen van gegevens die zijn opgeslagen voor de resources van de container instantie en hoe u de gegevens versleutelt met een door de klant beheerde sleutel
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: danlep
-ms.openlocfilehash: 146effd7f1a7ad1ddd94886d1a79e2914bd1c94b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.date: 01/17/2020
+author: dkkapur
+ms.author: dekapur
+ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904209"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934304"
 ---
-# <a name="encrypt-deployment-data"></a>Implementatie gegevens versleutelen
+# <a name="encrypt-deployment-data"></a>Implementatiegegevens versleutelen
 
 Bij het uitvoeren van Azure Container Instances (ACI)-resources in de cloud worden met de ACI-service gegevens verzameld en persistent gemaakt met betrekking tot uw containers. Met ACI worden deze gegevens automatisch versleuteld wanneer deze persistent worden gemaakt in de Cloud. Deze versleuteling beveiligt uw gegevens om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. ACI biedt u ook de mogelijkheid om deze gegevens te versleutelen met uw eigen sleutel, zodat u meer controle hebt over de gegevens met betrekking tot uw ACI-implementaties.
 
@@ -23,7 +24,7 @@ Gegevens in ACI worden versleuteld en ontsleuteld met 256-bits AES-versleuteling
 
 U kunt gebruikmaken van door micro soft beheerde sleutels voor het versleutelen van de container gegevens of u kunt de versleuteling beheren met uw eigen sleutels. De volgende tabel vergelijkt deze opties: 
 
-|    |    Door micro soft beheerde sleutels     |     Door de klant beheerde sleutels     |
+|    |    Door micro soft beheerde sleutels     |     Door klant beheerde sleutels     |
 |----|----|----|
 |    Bewerkingen voor versleuteling/ontsleuteling    |    Azure    |    Azure    |
 |    Sleutel opslag    |    Micro soft-sleutel archief    |    Azure Key Vault    |
@@ -87,15 +88,18 @@ Het toegangs beleid wordt nu weer gegeven in het toegangs beleid van uw sleutel 
 > [!IMPORTANT]
 > Het versleutelen van implementatie gegevens met een door de klant beheerde sleutel is beschikbaar in de nieuwste API-versie (2019-12-01) die momenteel wordt geïmplementeerd. Geef deze API-versie op in uw implementatie sjabloon. Neem contact op met de ondersteuning van Azure als u problemen ondervindt.
 
-Wanneer de sleutel kluis sleutel en het toegangs beleid zijn ingesteld, voegt u de volgende eigenschap toe aan uw ACI-implementatie sjabloon. Meer informatie over het implementeren van ACI-resources met een sjabloon vindt u in de [zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Wanneer de sleutel kluis sleutel en het toegangs beleid zijn ingesteld, voegt u de volgende eigenschappen toe aan uw ACI-implementatie sjabloon. Meer informatie over het implementeren van ACI-resources met een sjabloon in de [zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+* Stel onder `resources``apiVersion` in op `2012-12-01`.
+* Voeg onder de sectie eigenschappen van container groep van de implementatie sjabloon een `encryptionProperties`toe, die de volgende waarden bevat:
+  * `vaultBaseUrl`: de DNS-naam van uw sleutel kluis kunt u vinden op de Blade overzicht van de sleutel kluis bron in de portal
+  * `keyName`: de naam van de sleutel die u eerder hebt gegenereerd
+  * `keyVersion`: de huidige versie van de sleutel. U kunt dit vinden door te klikken op de sleutel zelf (onder sleutels in de sectie instellingen van uw sleutel kluis resource).
+* Voeg onder de eigenschappen van de container groep een `sku` eigenschap toe met de waarde `Standard`. De eigenschap `sku` is vereist in API-versie 2019-12-01.
 
-Voeg, onder de sectie eigenschappen van container groep van de implementatie sjabloon, een ' encryptionProperties ' toe, die de volgende waarden bevat:
-* vaultBaseUrl: de DNS-naam van uw sleutel kluis kunt u vinden op de Blade overzicht van de sleutel kluis bron in de portal
-* sleutel naam: de naam van de code die u eerder hebt gegenereerd
-* Versie: de huidige versie van de sleutel. U kunt dit vinden door te klikken op de sleutel zelf (onder sleutels in de sectie instellingen van uw sleutel kluis resource).
-
+In het volgende sjabloon fragment worden de volgende aanvullende eigenschappen weer gegeven voor het versleutelen van implementatie gegevens:
 
 ```json
+[...]
 "resources": [
     {
         "name": "[parameters('containerGroupName')]",
@@ -108,12 +112,107 @@ Voeg, onder de sectie eigenschappen van container groep van de implementatie sja
                 "keyName": "acikey",
                 "keyVersion": "xxxxxxxxxxxxxxxx"
             },
+            "sku": "Standard",
             "containers": {
                 [...]
             }
         }
     }
 ]
+```
+
+Hieronder volgt een volledige sjabloon, aangepast aan de hand van de sjabloon in [zelf studie: een groep met meerdere containers implementeren met een resource manager-sjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "containerGroupName": {
+      "type": "string",
+      "defaultValue": "myContainerGroup",
+      "metadata": {
+        "description": "Container Group name."
+      }
+    }
+  },
+  "variables": {
+    "container1name": "aci-tutorial-app",
+    "container1image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",
+    "container2name": "aci-tutorial-sidecar",
+    "container2image": "mcr.microsoft.com/azuredocs/aci-tutorial-sidecar"
+  },
+  "resources": [
+    {
+      "name": "[parameters('containerGroupName')]",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2019-12-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "encryptionProperties": {
+            "vaultBaseUrl": "https://example.vault.azure.net",
+            "keyName": "acikey",
+            "keyVersion": "xxxxxxxxxxxxxxxx"
+        },
+        "sku": "Standard",  
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80
+                },
+                {
+                  "port": 8080
+                }
+              ]
+            }
+          },
+          {
+            "name": "[variables('container2name')]",
+            "properties": {
+              "image": "[variables('container2image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              }
+            }
+          }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",
+              "port": "80"
+            },
+            {
+                "protocol": "tcp",
+                "port": "8080"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "containerIPv4Address": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', parameters('containerGroupName'))).ipAddress.ip]"
+    }
+  }
+}
 ```
 
 ### <a name="deploy-your-resources"></a>Uw resources implementeren

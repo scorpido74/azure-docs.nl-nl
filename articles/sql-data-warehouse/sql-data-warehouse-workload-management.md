@@ -11,12 +11,12 @@ ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940584"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935413"
 ---
 # <a name="what-is-workload-management"></a>Wat is werkbelasting beheer?
 
@@ -31,7 +31,7 @@ Een werk belasting van een Data Warehouse verwijst naar alle bewerkingen die in 
 - Gegevens exporteren uit het Data Warehouse
 
 De capaciteit van de prestaties van een Data Warehouse wordt bepaald door de [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md).
-- Zie [geheugen en gelijktijdigheids limieten] geheugen-gelijktijdigheids limits.md) als u de resources wilt weer geven die voor alle prestatie profielen zijn toegewezen.
+- Zie [geheugen en gelijktijdigheids limieten](memory-concurrency-limits.md)om de resources weer te geven die voor alle prestatie profielen zijn toegewezen.
 - Als u de capaciteit wilt aanpassen, kunt u [omhoog of omlaag schalen](quickstart-scale-compute-portal.md).
 
 

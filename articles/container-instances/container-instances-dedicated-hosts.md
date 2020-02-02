@@ -1,15 +1,16 @@
 ---
-title: Implementeren op toegewezen hosts
-description: Gebruik toegewezen hosts om de isolatie op hostniveau te krijgen voor uw workloads
+title: Implementeren op specifieke host
+description: Gebruik een specifieke host om te profiteren van de echte isolatie op hostniveau voor uw Azure Container Instances-workloads
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: danlep
-ms.openlocfilehash: 619a39f4d08a4308cb0f566bc50860e9562bf9e4
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.date: 01/17/2020
+author: dkkapur
+ms.author: dekapur
+ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903754"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934151"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Implementeren op toegewezen hosts
 
@@ -17,22 +18,49 @@ ms.locfileid: "75903754"
 
 De toegewezen SKU is geschikt voor werkbelastingen van containers waarvoor isolatie van de werk belasting vereist is vanuit een oogpunt van een fysieke server.
 
-## <a name="using-the-dedicated-sku"></a>De toegewezen SKU gebruiken
+## <a name="prerequisites"></a>Vereisten
+
+* De standaard limiet voor elk abonnement voor het gebruik van de toegewezen SKU is 0. Als u deze SKU wilt gebruiken voor de implementaties van productie containers, maakt u een [Azure-ondersteuningsaanvraag][azure-support] om de limiet te verhogen.
+
+## <a name="use-the-dedicated-sku"></a>De toegewezen SKU gebruiken
 
 > [!IMPORTANT]
-> Het gebruik van de toegewezen SKU is alleen beschikbaar in de nieuwste API-versie (2019-12-01) die momenteel wordt geïmplementeerd. Geef deze API-versie op in uw implementatie sjabloon. Daarnaast is de standaard limiet voor een abonnement voor het gebruik van de toegewezen SKU 0. Als u deze SKU wilt gebruiken voor de implementaties van uw productie container, moet u een [Azure-ondersteuningsaanvraag][azure-support] maken
+> Het gebruik van de toegewezen SKU is alleen beschikbaar in de nieuwste API-versie (2019-12-01) die momenteel wordt geïmplementeerd. Geef deze API-versie op in uw implementatie sjabloon.
+>
 
-Vanaf API-versie 2019-12-01 is er een ' SKU-eigenschap ' in de sectie eigenschappen van container groep van een implementatie sjabloon, die vereist is voor een ACI-implementatie. Op dit moment kunt u deze eigenschap gebruiken als onderdeel van een Azure Resource Manager implementatie sjabloon voor ACI. Meer informatie over het implementeren van ACI-resources met een sjabloon vindt u in de [zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Vanaf API versie 2019-12-01 is er een `sku` eigenschap in de sectie eigenschappen van container groep van een implementatie sjabloon, die vereist is voor een ACI-implementatie. Op dit moment kunt u deze eigenschap gebruiken als onderdeel van een Azure Resource Manager implementatie sjabloon voor ACI. Meer informatie over het implementeren van ACI-resources met een sjabloon in de [zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
 
-De SKU-eigenschap kan een van de volgende waarden hebben:
-* Standaard: de standaard implementatie keuze van ACI, die nog steeds beveiliging op Hyper Visor niveau garandeert 
-* Toegewezen: wordt gebruikt voor isolatie op werkbelasting niveau met toegewezen fysieke hosts voor de container groep
+De eigenschap `sku` kan een van de volgende waarden hebben:
+* `Standard`-de standaard implementatie keuze van ACI, die nog steeds beveiliging op Hyper Visor niveau garandeert 
+* `Dedicated`: wordt gebruikt voor isolatie op werkbelasting niveau met toegewezen fysieke hosts voor de container groep
 
 ## <a name="modify-your-json-deployment-template"></a>De JSON-implementatie sjabloon wijzigen
 
-Zorg er in uw implementatie sjabloon voor dat de container groeps bron is opgegeven, dat de `"apiVersion": "2019-12-01",`. Stel in het gedeelte Eigenschappen van de resource container groep `"sku": "Dedicated",`in.
+Wijzig of Voeg in uw implementatie sjabloon de volgende eigenschappen toe:
+* Stel onder `resources``apiVersion` in op `2012-12-01`.
+* Voeg onder de eigenschappen van de container groep een `sku` eigenschap toe met de waarde `Dedicated`.
 
 Hier volgt een voorbeeld fragment voor het gedeelte resources van een sjabloon voor container groep implementatie die gebruikmaakt van de toegewezen SKU:
+
+```json
+[...]
+"resources": [
+    {
+        "name": "[parameters('containerGroupName')]",
+        "type": "Microsoft.ContainerInstance/containerGroups",
+        "apiVersion": "2019-12-01",
+        "location": "[resourceGroup().location]",    
+        "properties": {
+            "sku": "Dedicated",
+            "containers": {
+                [...]
+            }
+        }
+    }
+]
+```
+
+Hieronder volgt een volledige sjabloon die een voor beeld-container groep implementeert waarop één container exemplaar wordt uitgevoerd:
 
 ```json
 {
@@ -91,9 +119,8 @@ Hier volgt een voorbeeld fragment voor het gedeelte resources van een sjabloon v
                     ],
                     "type": "Public"
                 },
-                "osType": "Linux",
+                "osType": "Linux"
             },
-            "location": "eastus2euap",
             "tags": {}
         }
     ]
@@ -116,7 +143,7 @@ Implementeer de sjabloon met de opdracht [AZ Group Deployment Create][az-group-d
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-U ontvangt binnen enkele seconden een eerste reactie van Azure. Zodra de implementatie is voltooid, worden alle gegevens die betrekking hebben op deze door de ACI-service bewaard, versleuteld met de sleutel die u hebt ingevoerd.
+U ontvangt binnen enkele seconden een eerste reactie van Azure. Een geslaagde implementatie vindt plaats op een specifieke host.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create

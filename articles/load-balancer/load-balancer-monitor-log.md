@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 7ed58201fa7aa1e608cba6d64ac95740cf9a60dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0a21af683d9fa7849d3e96c545983c9f40a8d4c6
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965924"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935322"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor logboeken voor open bare basis Load Balancer
 
@@ -51,7 +51,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com). Als u nog geen load 
    * **Streamen naar een Event Hub**
    * **Verzenden naar Log Analytics**
 
-    ### <a name="archive-to-a-storage-account"></a>Archiveren naar een opslagaccount
+    ### <a name="archive-to-a-storage-account"></a>Archiveren naar een opslag account
     U hebt een opslag account nodig dat al is gemaakt voor dit proces.  Zie [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) voor meer informatie over het maken van een opslag account.
 
     1. Schakel het selectie vakje in naast **archiveren naar een opslag account**.
@@ -156,11 +156,11 @@ Dit logboek wordt alleen gegenereerd als u het hebt ingeschakeld op een per load
 
 De JSON-uitvoer wordt weer gegeven in het veld eigenschappen de basis informatie voor de test status. De eigenschap *dipDownCount* toont het totale aantal exemplaren op de back-end, die geen netwerk verkeer ontvangen vanwege mislukte test reacties.
 
-### <a name="view-and-analyze-the-audit-log"></a>Het audit logboek weer geven en analyseren
+### <a name="view-and-analyze-the-activity-log"></a>Het activiteitenlogboek bekijken en analyseren
 
-U kunt met behulp van de volgende methoden controle logboek gegevens weer geven en analyseren:
+U kunt activiteiten logboek gegevens weer geven en analyseren met een van de volgende methoden:
 
-* **Azure-hulpprogram ma's:** Gegevens uit de audit logboeken ophalen via Azure PowerShell, de Azure-opdracht regel interface (CLI), de Azure-REST API of de Azure Portal. Stapsgewijze instructies voor elke methode worden beschreven in het artikel [controle bewerkingen met Resource Manager](../azure-resource-manager/management/view-activity-logs.md) .
+* **Azure-hulpprogram ma's:** Gegevens ophalen uit het activiteiten logboek via Azure PowerShell, de Azure-opdracht regel interface (CLI), de Azure-REST API of de Azure Portal. Stapsgewijze instructies voor elke methode worden beschreven in het artikel [controle bewerkingen met Resource Manager](../azure-resource-manager/management/view-activity-logs.md) .
 * **Power BI:** Als u nog geen [Power bi](https:// .microsoft.com/pricing) account hebt, kunt u het gratis uitproberen. Met het [Azure audit logs-inhouds pakket voor Power bi](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)kunt u uw gegevens analyseren met vooraf geconfigureerde Dash boards, of u kunt weer gaven aanpassen aan uw vereisten.
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>De status test en het gebeurtenis logboek weer geven en analyseren

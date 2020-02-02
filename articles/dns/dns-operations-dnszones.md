@@ -3,7 +3,7 @@ title: DNS-zones beheren in Azure DNS-Power shell | Microsoft Docs
 description: U kunt DNS-zones beheren met Azure Power shell. In dit artikel wordt beschreven hoe u DNS-zones bijwerkt, verwijdert en maakt op Azure DNS
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: timlt
 ms.assetid: a67992ab-8166-4052-9b28-554c5a39e60c
 ms.service: dns
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
-ms.author: allensu
-ms.openlocfilehash: 7a838f10d44f3be0af79bba5d303467884159cbf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 0120501aab7f0a63721126bfb5b3d04d9deb42fb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211704"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936804"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>DNS-zones beheren met Power shell
 
@@ -26,7 +26,7 @@ ms.locfileid: "74211704"
 > * [Portal](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
 > * [Klassieke versie van Azure CLI](dns-operations-dnszones-cli-nodejs.md)
-> * [Azure CLI](dns-operations-dnszones-cli.md)
+> * [Azure-CLI](dns-operations-dnszones-cli.md)
 
 In dit artikel leest u hoe u uw DNS-zones beheert met behulp van Azure PowerShell. U kunt ook uw DNS-zones beheren met behulp van de platformoverschrijdende [Azure cli](dns-operations-dnszones-cli.md) of de Azure Portal.
 
@@ -162,11 +162,11 @@ De cmdlets `New-AzureRmDnsZone`, `Set-AzureRmDnsZone` en `Remove-AzureRmDnsZone`
 
 Zowel in `New-AzureRmDnsZone` als `Set-AzureRmDnsZone` wordt om bevestiging gevraagd als de PowerShell-voorkeursvariabele `$ConfirmPreference` de waarde `Medium` of lager heeft. Vanwege het potentieel grote effect van het verwijderen van een DNS-zone vraagt de cmdlet `Remove-AzureRmDnsZone` om bevestiging als de PowerShell-variabele `$ConfirmPreference` een andere waarde heeft dan `None`.
 
-Omdat de standaardwaarde voor `$ConfirmPreference` `High` is, wordt standaard alleen in `Remove-AzureRmDnsZone` om bevestiging gevraagd.
+Omdat de standaardwaarde voor `$ConfirmPreference``High` is, wordt standaard alleen in `Remove-AzureRmDnsZone` om bevestiging gevraagd.
 
 U kunt de huidige instelling van `$ConfirmPreference` overschrijven met behulp van de parameter `-Confirm`. Als u `-Confirm` of `-Confirm:$True` opgeeft, vraagt de cmdlet u om bevestiging voordat deze wordt uitgevoerd. Als u `-Confirm:$False` opgeeft, wordt u niet om bevestiging gevraagd.
 
-Zie `-Confirm`over voorkeursvariabelen`$ConfirmPreference` voor meer informatie over [ en ](/powershell/module/microsoft.powershell.core/about/about_preference_variables).
+Zie [over voorkeursvariabelen](/powershell/module/microsoft.powershell.core/about/about_preference_variables) voor meer informatie over `-Confirm` en `$ConfirmPreference`.
 
 ## <a name="next-steps"></a>Volgende stappen
 

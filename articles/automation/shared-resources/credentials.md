@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/12/2019
+ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 582645919825c308fce4fe3211fa601955aaf37d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 767c1fddbc3d1f46d4341a70c990c2b57ad40e54
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850173"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930419"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Referentie-assets in Azure Automation
 
@@ -25,27 +25,16 @@ Een Automation-referentie-Asset bevat een object dat beveiligings referenties be
 > [!NOTE]
 > Beveilig assets in Azure Automation referenties, certificaten, verbindingen en versleutelde variabelen bevatten. Deze assets worden versleuteld en opgeslagen in Azure Automation met behulp van een unieke sleutel die wordt gegenereerd voor elk Automation-account. Deze sleutel wordt opgeslagen in Key Vault. Voordat u een beveiligde Asset opslaat, wordt de sleutel geladen uit Key Vault en vervolgens gebruikt om de Asset te versleutelen.
 
-## <a name="azure-classic-powershell-cmdlets"></a>Klassieke Azure Power shell-cmdlets
+## <a name="azure-powershell-az-cmdlets"></a>Azure PowerShell AZ-cmdlets
 
-De cmdlets in de volgende tabel worden gebruikt voor het maken en beheren van automatiserings referentie-assets met Windows Power shell.  Ze worden geleverd als onderdeel van de [module Azure PowerShell](/powershell/azure/overview), die beschikbaar is voor gebruik in Automation-RUNBOOKS en DSC-configuraties.
-
-| Cmdlets | Beschrijving |
-|:--- |:--- |
-| [Get-AzureAutomationCredential](/powershell/module/servicemanagement/azure/get-azureautomationcredential) |Hiermee wordt informatie over een referentie-element opgehaald. U kunt de referentie zelf alleen ophalen uit de **Get-AutomationPSCredential-** activiteit. |
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Hiermee maakt u een nieuwe Automation-referentie. |
-| [Remove-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Hiermee verwijdert u een Automation-referentie. |
-| [Set-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Hiermee stelt u de eigenschappen voor een bestaande Automation-referentie. |
-
-## <a name="azurerm-powershell-cmdlets"></a>AzureRM Power shell-cmdlets
-
-De cmdlets in de volgende tabel worden gebruikt voor AzureRM om Automation-referentie assets te maken en te beheren met Windows Power shell.  Ze worden geleverd als onderdeel van de [AzureRM. Automation-module](/powershell/azure/overview), die beschikbaar is voor gebruik in Automation-RUNBOOKS en DSC-configuraties.
+Voor Azure PowerShell AZ-module worden de cmdlets in de volgende tabel gebruikt om Automation-referentie assets te maken en te beheren met Windows Power shell. Ze worden geleverd als onderdeel van de [AzureAz. Automation-module](/powershell/azure/new-azureps-module-az?view=azps-1.1.0), die beschikbaar is voor gebruik in Automation-RUNBOOKS en DSC-configuraties.
 
 | Cmdlets | Beschrijving |
 |:--- |:--- |
-| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential) |Hiermee wordt informatie over een referentie-element opgehaald. Hiermee wordt geen PSCredential-object geretourneerd.  |
-| [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential) |Hiermee maakt u een nieuwe Automation-referentie. |
-| [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential) |Hiermee verwijdert u een Automation-referentie. |
-| [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential) |Hiermee stelt u de eigenschappen voor een bestaande Automation-referentie. |
+| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Hiermee wordt informatie over een referentie-element opgehaald. Hiermee wordt geen PSCredential-object geretourneerd.  |
+| [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |Hiermee maakt u een nieuwe Automation-referentie. |
+| [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |Hiermee verwijdert u een Automation-referentie. |
+| [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |Hiermee stelt u de eigenschappen voor een bestaande Automation-referentie. |
 
 ## <a name="activities"></a>Activiteiten
 
@@ -74,8 +63,8 @@ De functie in de volgende tabel wordt gebruikt voor toegang tot referenties in e
 ### <a name="to-create-a-new-credential-asset-with-the-azure-portal"></a>Een nieuw referentie-element maken met de Azure Portal
 
 1. Selecteer in uw Automation-account **referenties** onder **gedeelde resources**.
-1. Klik op **+ een referentie toevoegen**.
-1. Vul het formulier in en klik op **maken** om de nieuwe referentie op te slaan.
+1. Selecteer **een referentie toevoegen**.
+1. Vul het formulier in en selecteer **maken** om de nieuwe referentie op te slaan.
 
 > [!NOTE]
 > Gebruikers accounts die gebruikmaken van multi-factor Authentication, worden niet ondersteund voor gebruik in Azure Automation.
@@ -96,7 +85,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 U haalt een referentie-element op in een runbook of DSC-configuratie met de activiteit **Get-AutomationPSCredential** . Hiermee wordt een [PSCredential-object](/dotnet/api/system.management.automation.pscredential) geretourneerd dat u met een activiteit of cmdlet kunt gebruiken waarvoor een PSCredential-para meter is vereist. U kunt ook de eigenschappen van het referentie object ophalen om het afzonderlijk te gebruiken. Het object heeft een eigenschap voor de gebruikers naam en het beveiligde wacht woord, of u kunt de methode **GetNetworkCredential** gebruiken om een [NetworkCredential](/dotnet/api/system.net.networkcredential) -object te retour neren dat een niet-beveiligde versie van het wacht woord geeft.
 
 > [!NOTE]
-> **Get-AzureRmAutomationCredential** retourneert geen **PSCredential** die voor verificatie kan worden gebruikt. Het bevat alleen informatie over de referentie. Als u een referentie in een runbook moet gebruiken, moet u de **Get-AutomationPSCredential** gebruiken om het object **PSCredential** op te halen.
+> **Get-AzAutomationCredential** retourneert geen **PSCredential** die voor verificatie kan worden gebruikt. Het bevat alleen informatie over de referentie. Als u een referentie in een runbook moet gebruiken, moet u de **Get-AutomationPSCredential** gebruiken om het object **PSCredential** op te halen.
 
 ### <a name="textual-runbook-sample"></a>Voor beeld van tekst-runbook
 
@@ -109,7 +98,7 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-U kunt ook een referentie gebruiken om te verifiëren bij Azure met [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount). In de meeste gevallen moet u een [uitvoeren als-account](../manage-runas-account.md) gebruiken en dit ophalen met [Get-AutomationConnection](../automation-connections.md).
+U kunt ook een referentie gebruiken om te verifiëren bij Azure met [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.3.0). In de meeste gevallen moet u een [uitvoeren als-account](../manage-runas-account.md) gebruiken en dit ophalen met [Get-AzAutomationConnection](../automation-connections.md).
 
 ```azurepowershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
@@ -128,7 +117,7 @@ U voegt een **Get-AutomationPSCredential-** activiteit toe aan een grafisch runb
 
 ![Referentie toevoegen aan canvas](../media/credentials/credential-add-canvas.png)
 
-In de volgende afbeelding ziet u een voor beeld van het gebruik van een referentie in een grafisch runbook.  In dit geval wordt deze gebruikt om verificatie voor een runbook te bieden aan Azure-resources, zoals beschreven in [Runbooks verifiëren met Azure AD-gebruikers account](../automation-create-aduser-account.md).  Met de eerste activiteit wordt de referentie opgehaald die toegang heeft tot het Azure-abonnement.  De activiteit **add-AzureAccount** gebruikt vervolgens deze referentie om verificatie uit te voeren voor alle activiteiten die zich daarna voordoen.  Een [pijplijn koppeling](../automation-graphical-authoring-intro.md#links-and-workflow) is hier omdat **Get-AutomationPSCredential** een enkel object verwacht.  
+In de volgende afbeelding ziet u een voor beeld van het gebruik van een referentie in een grafisch runbook. In dit geval wordt deze gebruikt om verificatie voor een runbook te bieden aan Azure-resources, zoals beschreven in [Runbooks verifiëren met Azure AD-gebruikers account](../automation-create-aduser-account.md). Met de eerste activiteit wordt de referentie opgehaald die toegang heeft tot het Azure-abonnement. De activiteit **Connect-AzureRmAccount** gebruikt vervolgens deze referentie om verificatie uit te voeren voor alle activiteiten die zich daarna voordoen. Een [pijplijn koppeling](../automation-graphical-authoring-intro.md#links-and-workflow) is hier omdat **Get-AutomationPSCredential** een enkel object verwacht.  
 
 ![Referentie toevoegen aan canvas](../media/credentials/get-credential.png)
 

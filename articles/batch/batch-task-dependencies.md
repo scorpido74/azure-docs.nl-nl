@@ -1,5 +1,5 @@
 ---
-title: Gebruik taak afhankelijkheden om taken uit te voeren op basis van de voltooiing van andere taken-Azure Batch | Microsoft Docs
+title: Taak afhankelijkheden maken om taken uit te voeren-Azure Batch
 description: Maak taken die afhankelijk zijn van de voltooiing van andere taken voor het verwerken van MapReduce stijl en soort gelijke big data werk belastingen in Azure Batch.
 services: batch
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 875e0314c41a6bb277769361b6faa0345312db2b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 733c6e0fb178ed246ac77e0783225ddd642a5fed
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026228"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937773"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Taak afhankelijkheden maken om taken uit te voeren die afhankelijk zijn van andere taken
 
@@ -210,7 +210,7 @@ Het [TaskDependencies][github_taskdependencies] -voorbeeld project is een van de
 - Taken uitvoeren op een pool van reken knooppunten.
 
 ## <a name="next-steps"></a>Volgende stappen
-### <a name="application-deployment"></a>Toepassingsimplementatie
+### <a name="application-deployment"></a>Toepassings implementatie
 De functie [toepassings pakketten](batch-application-packages.md) van batch biedt een eenvoudige manier om de toepassingen te implementeren en te installeren die uw taken uitvoeren op reken knooppunten.
 
 ### <a name="installing-applications-and-staging-data"></a>Toepassingen en faserings gegevens installeren

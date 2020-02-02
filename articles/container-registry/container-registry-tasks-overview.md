@@ -3,12 +3,12 @@ title: Overzicht van ACR-taken
 description: Een inleiding tot ACR-taken, een reeks functies in Azure Container Registry die beveiligde, geautomatiseerde build van container installatie kopieën biedt, beheer en patches in de Cloud.
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74840762"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938883"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Bouw en onderhoud van container installatie kopieën automatiseren met ACR-taken
 
@@ -122,6 +122,7 @@ De volgende tabel bevat enkele voor beelden van ondersteunde context locaties vo
 | Hoofd vertakking GitHub | Bestanden in de hoofd vertakking (of een andere standaard) van een open bare of persoonlijke GitHub-opslag plaats.  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub-vertakking | Specifieke vertakking van een open bare of particuliere GitHub-opslag plaats.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | Submap GitHub | Bestanden in een submap van een open bare of persoonlijke GitHub-opslag plaats. Voor beeld wordt een combi natie van een vertakking en submap opgegeven. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| GitHub door voeren | Specifieke door Voer in een open bare of persoonlijke GitHub-opslag plaats. Voor beeld toont een combi natie van een commit hash (SHA) en een specificatie van een submap. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Submap voor Azure DevOps | Bestanden in een submap van een open bare of persoonlijke Azure-opslag plaats. Voor beeld wordt een combi natie van een specificatie van branch en submap weer gegeven. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Externe tarball | Bestanden in een gecomprimeerd archief op een externe webserver. | `http://remoteserver/myapp.tar.gz` |
 
@@ -134,7 +135,7 @@ Standaard bouwt ACR-taken installatie kopieën voor het Linux-besturings systeem
 
 | Besturingssysteem | Architectuur|
 | --- | ------- | 
-| Linux | amd64<br/>arm<br/>arm64<br/>386 |
+| Linux | amd64<br/>scherp<br/>arm64<br/>386 |
 | Windows | amd64 |
 
 ## <a name="view-task-logs"></a>Taak logboeken weer geven

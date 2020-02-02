@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/03/2019
+ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65759b32889f9a99b0322823bb8a4924788e8c09
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786466"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930423"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modules in Azure Automation beheren
 
@@ -60,11 +60,11 @@ U kunt ook modules vanuit het PowerShell Gallery rechtstreeks vanuit uw Automati
 
 ## <a name="delete-modules"></a>Modules verwijderen
 
-Als u problemen ondervindt met een module of als u een eerdere versie van een module wilt herstellen, kunt u deze verwijderen uit uw Automation-account. U kunt de oorspronkelijke versie van de [standaard modules](#default-modules) die worden geïmporteerd niet verwijderen wanneer u een Automation-account maakt. Als de module die u wilt verwijderen een nieuwere versie is van een van de [standaard modules](#default-modules) die zijn geïnstalleerd, wordt de versie teruggezet die is geïnstalleerd met uw Automation-account. Anders wordt elke module verwijderd die u uit uw Automation-account verwijdert.
+Als u problemen ondervindt met een module of als u een eerdere versie van een module wilt herstellen, kunt u deze verwijderen uit uw Automation-account. U kunt de oorspronkelijke versie van de [standaard modules](#default-modules) die worden geïmporteerd wanneer u een Automation-account maakt, niet verwijderen. Als de module die u wilt verwijderen een nieuwere versie is van een van de [standaard modules](#default-modules) die zijn geïnstalleerd, wordt deze teruggezet naar de versie die is geïnstalleerd met uw Automation-account. Anders wordt elke module verwijderd die u uit uw Automation-account verwijdert.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Navigeer in het Azure Portal naar uw Automation-account en selecteer **modules** onder **gedeelde bronnen**. Selecteer de module die u wilt verwijderen. Op de pagina **module** , clcick **verwijderen**. Als deze module een van de [standaard modules](#default-modules)is, wordt deze teruggedraaid naar de versie die aanwezig was tijdens het maken van het Automation-account.
+Navigeer in het Azure Portal naar uw Automation-account en selecteer **modules** onder **gedeelde bronnen**. Selecteer de module die u wilt verwijderen. Selecteer op de pagina **module** de optie **verwijderen**. Als deze module een van de [standaard modules](#default-modules)is, wordt deze teruggedraaid naar de versie die aanwezig was tijdens het maken van het Automation-account.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -79,10 +79,10 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 Hier volgt een lijst met cmdlets in de module interne `Orchestrator.AssetManagement.Cmdlets` die in elk Automation-account wordt geïmporteerd. Deze cmdlets zijn toegankelijk in uw runbooks en DSC-configuraties en bieden u de mogelijkheid om te communiceren met uw assets in uw Automation-account. Daarnaast kunt u met de interne cmdlets geheimen ophalen van versleutelde **variabelen** waarden, **referenties**en versleutelde **verbindings** velden. De Azure PowerShell-cmdlets kunnen deze geheimen niet ophalen. Voor deze cmdlets hoeft u niet impliciet verbinding te maken met Azure wanneer u deze gebruikt, zoals het gebruik van een uitvoeren als-account om te verifiëren bij Azure.
 
 >[!NOTE]
->Deze interne cmdlets zijn niet beschikbaar op een Hybrid Runbook Worker, ze zijn alleen toegankelijk vanuit runbooks die worden uitgevoerd in Azure. Gebruik de bijbehorende modules [AzureRM. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) of [AZ](../az-modules.md) voor runbooks die rechtstreeks op de computer of op basis van resources in uw omgeving worden uitgevoerd. 
+>Deze interne cmdlets zijn beschikbaar op een Windows-Hybrid Runbook Worker, maar zijn niet beschikbaar op een Linux-Hybrid Runbook Worker. Gebruik de bijbehorende modules [AzureRM. Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) of [AZ](../az-modules.md) voor runbooks die rechtstreeks op de computer of op basis van resources in uw omgeving worden uitgevoerd. 
 >
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -252,7 +252,7 @@ Voeg `[OutputType([<MyOutputType>])]` toe waarbij MyOutputType een geldig type i
 
 De volgende tabel bevat de modules die standaard worden geïmporteerd wanneer een Automation-account wordt gemaakt. In de onderstaande modules kunnen nieuwere versies van deze onderdelen worden geïmporteerd, maar de oorspronkelijke versie kan niet worden verwijderd uit uw Automation-account, zelfs niet als u een nieuwere versie ervan verwijdert.
 
-|Module naam|Version|
+|Module naam|Versie|
 |---|---|
 | AuditPolicyDsc | 1.1.0.0 |
 | Azure | 1.0.3 |
@@ -264,14 +264,14 @@ De volgende tabel bevat de modules die standaard worden geïmporteerd wanneer ee
 | AzureRM.Sql | 1.0.3 |
 | AzureRM.Storage | 1.0.3 |
 | ComputerManagementDsc | 5.0.0.0 |
-| GPRegistryPolicyParser | 0,2 |
-| Micro soft. Power shell. core | 0 |
-| Micro soft. Power shell. Diagnostics |  |
-| Micro soft. Power shell. Management |  |
-| Micro soft. Power shell. Security |  |
+| GPRegistryPolicyParser | 0.2 |
+| Microsoft.PowerShell.Core | 0 |
+| Microsoft.PowerShell.Diagnostics |  |
+| Microsoft.PowerShell.Management |  |
+| Microsoft.PowerShell.Security |  |
 | Microsoft.PowerShell.Utility |  |
-| Micro soft. WSMan. Management |  |
-| Orchestrator. AssetManagement. cmdlets | 1 |
+| Microsoft.WSMan.Management |  |
+| Orchestrator.AssetManagement.Cmdlets | 1 |
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
 | StateConfigCompositeResources | 1 |

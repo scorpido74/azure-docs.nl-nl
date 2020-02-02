@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425423"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931235"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Zelf studie: een uitgaande forest-vertrouwens relatie maken met een on-premises domein in Azure Active Directory Domain Services (preview-versie)
 
@@ -45,7 +45,7 @@ U hebt de volgende resources en bevoegdheden nodig om deze zelf studie te volt o
     * Als dat nodig is, kunt [u een Azure Active Directory Domain Services-exemplaar maken en configureren][create-azure-ad-ds-instance-advanced].
     
     > [!IMPORTANT]
-    > Zorg ervoor dat u een beheerd domein van Azure AD DS maakt met behulp van een *resource* -forest. Met de standaard optie wordt een *gebruikers* forest gemaakt. Alleen bron-forests kunnen vertrouwens relaties maken met on-premises AD DS omgevingen.
+    > Zorg ervoor dat u een beheerd domein van Azure AD DS maakt met behulp van een *resource* -forest. Met de standaard optie wordt een *gebruikers* forest gemaakt. Alleen bron-forests kunnen vertrouwens relaties maken met on-premises AD DS omgevingen. U moet ook een minimum van de *Enter prise* SKU voor uw beheerde domein gebruiken. Wijzig indien nodig [de SKU voor een door Azure AD DS beheerd domein][howto-change-sku].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -188,7 +188,7 @@ Met de virtuele machine van Windows Server die is toegevoegd aan het Azure AD DS
 1. Selecteer *FileServerAccess* in de lijst **groepen of gebruikers namen** . Kies in de lijst **machtigingen voor FileServerAccess** de optie *toestaan* voor de machtigingen **wijzigen** en **schrijven** en selecteer vervolgens **OK**.
 1. Selecteer het tabblad **delen** en kies vervolgens **Geavanceerd delen...**
 1. Kies **deze map delen**en voer een naam in voor het onthouden van de bestands share in **share naam** , zoals *CrossForestShare*.
-1. Selecteer **Machtigingen**. Klik in de lijst **machtigingen voor iedereen** op **toestaan** voor de **wijzigings** machtiging.
+1. Selecteer **machtigingen**. Klik in de lijst **machtigingen voor iedereen** op **toestaan** voor de **wijzigings** machtiging.
 1. Selecteer **OK** twee keer en vervolgens **sluiten**.
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Verificatie tussen forests valideren voor een resource
@@ -220,3 +220,4 @@ Zie [Wat zijn resource-forests?][concepts-forest] en [Hoe kunnen forest-vertrouw
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
+[howto-change-sku]: change-sku.md

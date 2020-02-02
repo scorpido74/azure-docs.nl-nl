@@ -9,21 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5b59bdc06d455c7bd0ec9cf889f5cfa382948467
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8503b12be628fe7d5651221c9d0379bee3e292bd
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911174"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933470"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Een laagmap toevoegen aan de kaart
 
-Een line-laag kan worden gebruikt om `LineString` en `MultiLineString` functies als paden of routes op de kaart weer te geven. Een line-laag kan ook worden gebruikt om het overzicht van `Polygon`-en `MultiPolygon`-functies weer te geven. Een gegevens bron is verbonden met een line om te zorgen dat de gegevens worden weer gegeven. 
+Een line-laag kan worden gebruikt om `LineString` en `MultiLineString` functies als paden of routes op de kaart weer te geven. Een line-laag kan ook worden gebruikt om het overzicht van `Polygon`-en `MultiPolygon`-functies weer te geven. Een gegevens bron is verbonden met een laag om deze te voorzien van gegevens die moeten worden weer gegeven. 
 
 > [!TIP]
 > Met lijn lagen worden standaard de coördinaten van veelhoeken en lijnen in een gegevens bron weer gegeven. Als u de laag zo wilt beperken dat alleen Lines Tring-functies worden weer gegeven, stelt u de eigenschap `filter` van de laag in op `['==', ['geometry-type'], 'LineString']` of `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` als u ook multi line string-functies wilt toevoegen.
 
-De volgende code laat zien hoe u een regel maakt, toevoegt aan een gegevens bron en deze weergeeft met een laag met behulp van de [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) -klasse.
+De volgende code laat zien hoe u een regel kunt maken. Voeg de lijn toe aan een gegevens bron en geef deze vervolgens weer met behulp van de [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) -klasse.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -51,7 +51,7 @@ Lijn lagen kunnen worden opgemaakt met behulp van [LineLayerOptions](/javascript
 
 ## <a name="add-symbols-along-a-line"></a>Symbolen toevoegen langs een regel
 
-In dit voor beeld ziet u hoe u pijl pictogrammen kunt toevoegen langs een regel op de kaart. Wanneer u een symbool-laag gebruikt, stelt u de optie plaatsing in op regel, waarna de symbolen langs de lijn worden weer gegeven en de pictogrammen worden geroteerd (0 graden = rechts).
+In dit voor beeld ziet u hoe u pijl pictogrammen kunt toevoegen langs een regel op de kaart. Wanneer u een symbool-laag gebruikt, stelt u de optie plaatsing in op regel. Met deze optie worden de symbolen op de regel weer gegeven en de pictogrammen geroteerd (0 graden = rechts).
 
 <br/>
 
@@ -66,7 +66,7 @@ Zie de pijl van de pen <a href='https://codepen.io/azuremaps/pen/drBJwX/'>weer g
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>Een lijn kleur overgang toevoegen aan een lijn
 
-Naast het Toep assen van een enkele lijn kleur op een lijn kunt u ook een regel met een kleur overgang vullen om de overgang van het ene lijn segment naar het volgende weer te geven. Lijn kleur overgangen kunnen bijvoorbeeld worden gebruikt om wijzigingen in de loop van de tijd en afstand te vertegenwoordigen, of verschillende Tempe raturen over een verbonden object regel. Als u deze functie op een regel wilt Toep assen, moet de optie `lineMetrics` op de gegevens bron zijn ingesteld op True, waarna een kleur verloop expressie kan worden door gegeven aan de `strokeColor` optie van de regel. De expressie voor de kleur overgang van de lijn moet verwijzen naar de `['line-progress']` gegevens expressie waarmee de berekende regel metrieken voor de expressie worden weer gegeven.
+U kunt één lijn kleur op een regel Toep assen. U kunt ook een lijn vullen met een kleur overgang om de overgang van het ene lijn segment naar het volgende lijn segment weer te geven. Lijn kleur overgangen kunnen bijvoorbeeld worden gebruikt om wijzigingen in de loop van de tijd en afstand te vertegenwoordigen, of verschillende Tempe raturen over een verbonden object regel. Als u deze functie op een regel wilt Toep assen, moet de optie `lineMetrics` op de gegevens bron zijn ingesteld op True, waarna een kleur verloop expressie kan worden door gegeven aan de `strokeColor` optie van de regel. De expressie voor de kleur overgang van de lijn moet verwijzen naar de `['line-progress']` gegevens expressie waarmee de berekende regel metrieken voor de expressie worden weer gegeven.
 
 <br/>
 
@@ -76,7 +76,7 @@ Bekijk de pen <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>met de lijn kle
 
 ## <a name="customize-a-line-layer"></a>Een lijn laag aanpassen
 
-De lijn laag bevat verschillende opties voor opmaak. Hier volgt een hulp programma om het uit te proberen.
+De laag Layer heeft verschillende opmaak opties. Hier volgt een hulp programma om het uit te proberen.
 
 <br/>
 

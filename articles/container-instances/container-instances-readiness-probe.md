@@ -2,13 +2,13 @@
 title: De gereedheids test voor het container exemplaar instellen
 description: Meer informatie over het configureren van een test om ervoor te zorgen dat containers in Azure Container Instances alleen aanvragen ontvangen wanneer ze klaar zijn
 ms.topic: article
-ms.date: 10/17/2019
-ms.openlocfilehash: 50cb341788434a6dc0bb0a1423d9e59a3d93634d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/30/2020
+ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901850"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935685"
 ---
 # <a name="configure-readiness-probes"></a>Gereedheidstests configureren
 
@@ -23,7 +23,7 @@ Azure Container Instances biedt ook ondersteuning voor [beproefde tests](contain
 
 ## <a name="yaml-configuration"></a>YAML-configuratie
 
-Maak een voor beeld van een `readiness-probe.yaml`-bestand met het volgende code fragment dat een gereedheids test bevat. Dit bestand definieert een container groep die bestaat uit een container met een kleine web-app. De app wordt geïmplementeerd vanuit de open bare `mcr.microsoft.com/azuredocs/aci-helloworld`-installatie kopie. In deze container-app wordt ook gedemonstreerd in Quick starts, zoals [het implementeren van een container exemplaar in azure met behulp van de Azure cli](container-instances-quickstart.md).
+Maak een voor beeld van een `readiness-probe.yaml`-bestand met het volgende code fragment dat een gereedheids test bevat. Dit bestand definieert een container groep die bestaat uit een container met een kleine web-app. De app wordt geïmplementeerd vanuit de open bare `mcr.microsoft.com/azuredocs/aci-helloworld`-installatie kopie. Deze container-app wordt ook gedemonstreerd in [een container exemplaar implementeren in azure met behulp van de Azure cli](container-instances-quickstart.md) en andere Quick starts.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -63,7 +63,9 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>Opdracht starten
 
-Het YAML-bestand bevat een begin opdracht die moet worden uitgevoerd wanneer de container wordt gestart, gedefinieerd door de eigenschap `command` die een matrix met teken reeksen accepteert. Met deze opdracht wordt een tijd gesimuleerd wanneer de web-app wordt uitgevoerd, maar de container niet gereed is. Eerst start het een shell-sessie en voert een `node` opdracht uit om de web-app te starten. Er wordt ook een opdracht gestart voor een slaap stand van 240 seconden, waarna er een bestand met de naam `ready` in de map `/tmp` wordt gemaakt:
+De implementatie bevat een `command` eigenschap waarmee een start opdracht wordt gedefinieerd die wordt uitgevoerd wanneer de container voor het eerst wordt gestart. Deze eigenschap accepteert een matrix met teken reeksen. Met deze opdracht wordt een tijd gesimuleerd wanneer de web-app wordt uitgevoerd, maar de container niet gereed is. 
+
+Eerst start het een shell-sessie en voert een `node` opdracht uit om de web-app te starten. Er wordt ook een opdracht gestart voor een slaap stand van 240 seconden, waarna er een bestand met de naam `ready` in de map `/tmp` wordt gemaakt:
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait

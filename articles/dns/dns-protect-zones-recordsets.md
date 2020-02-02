@@ -2,17 +2,17 @@
 title: DNS-zones en records beveiligen-Azure DNS
 description: In dit leer traject kunt u aan de slag met het beveiligen van DNS-zones en-record sets in Microsoft Azure DNS.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
-ms.author: allensu
-ms.openlocfilehash: c87f9d51c69c4f4d330862e83e5cc8e8e849a988
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.author: rohink
+ms.openlocfilehash: 64c71047c60482ff198dbba833d4d0a35c80c60d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969022"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932416"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS-zones en-records beveiligen
 
@@ -156,7 +156,7 @@ De rol kan vervolgens op dezelfde manier worden toegewezen als ingebouwde rollen
 
 Zie [aangepaste rollen in azure RBAC](../role-based-access-control/custom-roles.md)voor meer informatie over het maken, beheren en toewijzen van aangepaste rollen.
 
-## <a name="resource-locks"></a>Resourcevergrendelingen
+## <a name="resource-locks"></a>Resource vergrendelingen
 
 Naast RBAC ondersteunt Azure Resource Manager ook een ander type beveiligings beheer, namelijk de mogelijkheid om resources te vergren delen. Met de RBAC-regels kunt u de acties van specifieke gebruikers en groepen beheren, worden resource vergrendelingen toegepast op de resource en zijn ze effectief voor alle gebruikers en rollen. Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](../azure-resource-manager/management/lock-resources.md).
 

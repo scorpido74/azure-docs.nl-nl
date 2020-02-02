@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 01/30/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f803bcafb1966e32e894b4caeaa8fafb5f73e8e7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7497e226589689497ce572193017dc7fc31042b1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186290"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934529"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Zelf studie: Video's analyseren met Media Services v3
 
@@ -38,6 +38,10 @@ In deze handleiding ontdekt u hoe u:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
+## <a name="compliance-privacy-and-security"></a>Naleving, privacy en beveiliging
+ 
+Als belang rijke herinnering moet u zich houden aan alle toepasselijke wetgeving bij het gebruik van Video Indexer en mag u Video Indexer of een andere Azure-service niet gebruiken op een manier die de rechten van anderen schendt of schadelijk voor anderen is. Voordat u Video's, met inbegrip van biometrische gegevens, naar de Video Indexer-service voor de verwerking en opslag uploadt, moet u over alle juiste rechten beschikken, met inbegrip van alle toepasselijke toestemmingen, van de afzonderlijke (en) in de video. Voor meer informatie over naleving, privacy en beveiliging in Video Indexer, de micro soft [Cognitive Services-voor waarden](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Raadpleeg de privacyverklaring van micro soft voor de privacy van micro soft en de verwerking van uw [gegevens, de](https://privacy.microsoft.com/PrivacyStatement) [voor waarden voor Online Services ("Ost")](https://www.microsoft.com/licensing/product-licensing/products) en de addendum op [gegevens verwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Aanvullende privacy-informatie, inclusief gegevens retentie, verwijdering/vernietiging, is beschikbaar in de OST en [hier](../video-indexer/faq.md). Door Video Indexer te gebruiken, gaat u akkoord met de Cognitive Services voor waarden, de OST, DPA en de privacyverklaring.
+
 ## <a name="prerequisites"></a>Vereisten
 
 - Als Visual Studio niet is geïnstalleerd, kunt u [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)downloaden.
@@ -46,7 +50,7 @@ In deze handleiding ontdekt u hoe u:
 
 ## <a name="download-and-configure-the-sample"></a>Het voorbeeld downloaden en configureren
 
-Klonen van een GitHub-opslagplaats met het .NET-voorbeeld op de computer met de volgende opdracht:  
+Kloon met de volgende opdracht een GitHub-opslagplaats met het .NET-voorbeeld op de computer:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
@@ -100,7 +104,7 @@ In de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) wordt het
 
 ### <a name="create-a-transform-and-a-job-that-analyzes-videos"></a>Een transformatie en een taak maken die video's analyseert
 
-Wanneer u inhoud codeert of verwerkt in Media Services, is dit een gemeen schappelijk patroon voor het instellen van de coderings instellingen als een recept. U dient vervolgens een **taak** in te dienen om het recept toe te passen op een video. Door nieuwe taken voor elke nieuwe video in te dienen, past u dat recept toe op alle Video's in uw bibliotheek. Een recept in Media Services wordt een **trans formatie**genoemd. Zie voor meer informatie [transformaties en taken](transform-concept.md). Met het voorbeeld dat wordt beschreven in deze zelfstudie wordt een recept gedefinieerd waarmee de opgegeven video wordt geanalyseerd.
+Wanneer u inhoud codeert of verwerkt in Media Services, is dit een gemeen schappelijk patroon voor het instellen van de coderings instellingen als een recept. U dient vervolgens een **taak** in te dienen om het recept toe te passen op een video. Door nieuwe taken voor elke nieuwe video in te dienen, past u dat recept toe op alle Video's in uw bibliotheek. Een recept in Media Services wordt een **trans formatie**genoemd. Zie voor meer informatie [Transformaties en taken](transform-concept.md). Met het voorbeeld dat wordt beschreven in deze zelfstudie wordt een recept gedefinieerd waarmee de opgegeven video wordt geanalyseerd.
 
 #### <a name="transform"></a>Transformeren
 
@@ -124,7 +128,7 @@ Het duurt enige tijd voordat de taak is voltooid. Wanneer dit het geval is, wilt
 
 Polling is geen aanbevolen best practice voor productie-apps vanwege een mogelijke latentie. Polling kan worden beperkt bij een te intensief gebruik op een account. Ontwikkelaars moeten in plaats daarvan Event Grid gebruiken.
 
-Event Grid is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamisch schalen. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met intelligente filtering en routering van gebeurtenissen. Zie voor meer informatie [route gebeurtenissen naar een aangepast webeindpunt](job-state-events-cli-how-to.md).
+Event Grid is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamisch schalen. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met behulp van intelligente filtering en routering van gebeurtenissen. Zie voor meer informatie [route gebeurtenissen naar een aangepast webeindpunt](job-state-events-cli-how-to.md).
 
 De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als er een fout is opgetreden in de taak, krijgt u de **fout** status. Als de taak wordt geannuleerd, wordt deze **geannuleerd** en vervolgens **geannuleerd** zodra deze is voltooid...
 
@@ -166,7 +170,7 @@ Voer de volgende CLI-opdracht uit:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="multithreading"></a>Multi-threading
+## <a name="multithreading"></a>Multithreading
 
 De Azure Media Services v3-Sdk's zijn niet thread-veilig. Wanneer u werkt met een app met meerdere threads, moet u een nieuw AzureMediaServicesClient-object per thread genereren.
 

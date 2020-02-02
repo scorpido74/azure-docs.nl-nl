@@ -1,28 +1,29 @@
 ---
-title: HDInsight-cluster upgraden naar een nieuwere versie-Azure
-description: Meer informatie over richt lijnen voor het bijwerken van uw Azure HDInsight-cluster naar een nieuwere versie.
-author: omidm1
-ms.author: omidm
+title: Cluster migreren naar een nieuwere versie
+titleSuffix: Azure HDInsight
+description: Meer informatie over richt lijnen voor het migreren van uw Azure HDInsight-cluster naar een nieuwere versie.
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/06/2019
-ms.openlocfilehash: 1a1d4a71786ebb1e68f59084086b3256a1c1ea40
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.date: 01/31/2020
+ms.openlocfilehash: 95892bba1b3152dda718a4af3c5f45072054fdae
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951153"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935490"
 ---
-# <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>HDInsight-cluster upgraden naar een nieuwere versie
+# <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>HDInsight-cluster migreren naar een nieuwere versie
 
-Als u gebruik wilt maken van de nieuwste HDInsight-functies, raden we aan dat HDInsight-clusters worden bijgewerkt naar de nieuwste versie. Volg de onderstaande richt lijnen om de versies van uw HDInsight-cluster bij te werken.
+Om te profiteren van de nieuwste HDInsight-functies, raden we aan dat HDInsight-clusters regel matig naar de meest recente versie worden gemigreerd. HDInsight biedt geen ondersteuning voor in-place Upgrades waarbij een bestaande cluster wordt bijgewerkt naar een nieuwere versie van het onderdeel. U moet een nieuw cluster maken met de gewenste onderdelen en platform versie en vervolgens uw toepassingen migreren om het nieuwe cluster te gebruiken. Volg de onderstaande richt lijnen voor het migreren van uw HDInsight-cluster versies.
 
 > [!NOTE]  
 > Zie [HDInsight-onderdeel versies](hdinsight-component-versioning.md#supported-hdinsight-versions)voor meer informatie over ondersteunde versies van hdinsight.
 
-## <a name="upgrade-tasks"></a>Upgrade taken
+## <a name="migration-tasks"></a>Migratie taken
 
 De werk stroom voor het upgraden van een HDInsight-cluster is als volgt.
 ![werk stroom diagram voor HDInsight-upgrade](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
@@ -39,6 +40,18 @@ Zodra u hebt gecontroleerd of alles werkt zoals verwacht, kunt u de downtime voo
 1. Maak een cluster in hetzelfde VNET-subnet met de nieuwste (of ondersteunde) HDI-versie met behulp van hetzelfde standaard gegevens archief dat het vorige cluster gebruikt. Hierdoor kan het nieuwe cluster blijven werken met uw bestaande productie gegevens.
 1. Importeer alle tijdelijke gegevens waarvan u een back-up hebt gemaakt.
 1. Start taken/Ga door met de verwerking met het nieuwe cluster.
+
+## <a name="workload-specific-guidance"></a>Specifieke richt lijnen voor workload
+
+De volgende documenten bevatten richt lijnen voor het migreren van specifieke workloads:
+
+* [HBase migreren](/hbase/apache-hbase-migrate-new-version.md)
+* [Kafka migreren](/kafka/migrate-versions.md)
+* [Hive/interactieve query migreren](/interactive-query/apache-hive-migrate-workloads.md)
+
+## <a name="backup-and-restore"></a>Back-up maken en terugzetten
+
+Zie [een Azure SQL database herstellen met behulp van automatische database back-ups](../sql-database/sql-database-recovery-using-backups.md)voor meer informatie over back-up en herstel van de data base.
 
 ## <a name="next-steps"></a>Volgende stappen
 

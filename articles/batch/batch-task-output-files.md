@@ -1,6 +1,6 @@
 ---
-title: Taak-en taak uitvoer persistent maken om te Azure Storage met de API van de batch-service-Azure Batch | Microsoft Docs
-description: Meer informatie over het gebruik van de batch-Service-API voor het persistent maken van batch taak-en taak uitvoer naar Azure Storage.
+title: Uitvoer gegevens persistent maken voor Azure Storage met de API voor batch-service-Azure Batch
+description: Meer informatie over het gebruik van de batch-Service-API voor het persistent maken van batch taak-en taak uitvoer gegevens naar Azure Storage.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -12,12 +12,12 @@ ms.workload: big-compute
 ms.date: 03/05/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 8d77da2a0298758dad3eff1a61aff45796bfb6c5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a7ac927ccc27af10999310fde9a5dede7b4539e0
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029631"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939082"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Taak gegevens persistent maken voor Azure Storage met de API voor de batch-service
 

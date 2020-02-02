@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 598bf677b06c5ec1f431144e7e76deee55d23f33
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 982e80f4c47a6f59b65edb06461a9d592248cc61
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435472"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76929889"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>IP-adressen van HDInsight-beheer
 
 > [!Important]
-> Gebruik de functie [service Tags](hdinsight-service-tags.md) voor netwerk beveiligings groepen. Nieuwe regio's worden alleen toegevoegd voor service tags en de statische IP-adressen zullen uiteindelijk worden afgeschaft.
+> In de meeste gevallen kunt u nu de functie [service code](hdinsight-service-tags.md) gebruiken voor netwerk beveiligings groepen, in plaats van het hand matig toevoegen van IP-adressen. Nieuwe regio's worden alleen toegevoegd voor service tags en de statische IP-adressen zullen uiteindelijk worden afgeschaft.
 
 Als u netwerk beveiligings groepen (Nsg's) of door de gebruiker gedefinieerde routes (Udr's) gebruikt om inkomend verkeer naar uw HDInsight-cluster te beheren, moet u ervoor zorgen dat uw cluster kan communiceren met de essentiële Azure-status-en beheer Services.  Sommige IP-adressen voor deze services zijn regio specifiek, en sommige van deze zijn van toepassing op alle Azure-regio's. Mogelijk moet u ook verkeer van de Azure DNS-service toestaan als u geen aangepaste DNS gebruikt.
 
@@ -50,8 +50,8 @@ Verkeer toestaan van de IP-adressen die worden vermeld voor de Azure HDInsight-s
 | ---- | ---- | ---- | ---- | ----- |
 | Azië | Azië - oost | 23.102.235.122</br>52.175.38.134 | \*:443 | Inkomend |
 | &nbsp; | Azië - zuidoost | 13.76.245.160</br>13.76.136.249 | \*:443 | Inkomend |
-| Australië | Australië - oost | 104.210.84.115</br>13.75.152.195 | \*:443 | Inkomend |
-| &nbsp; | Australië - zuidoost | 13.77.2.56</br>13.77.2.94 | \*:443 | Inkomend |
+| Australië | Australië - Oost | 104.210.84.115</br>13.75.152.195 | \*:443 | Inkomend |
+| &nbsp; | Australië - Zuidoost | 13.77.2.56</br>13.77.2.94 | \*:443 | Inkomend |
 | Brazilië | Brazilië - Zuid | 191.235.84.104</br>191.235.87.113 | \*:443 | Inkomend |
 | Canada | Canada-Oost | 52.229.127.96</br>52.229.123.172 | \*:443 | Inkomend |
 | &nbsp; | Canada-Midden | 52.228.37.66</br>52.228.45.222 |\*: 443 | Inkomend |
@@ -72,11 +72,11 @@ Verkeer toestaan van de IP-adressen die worden vermeld voor de Azure HDInsight-s
 | &nbsp; | Korea - zuid | 52.231.203.16</br>52.231.205.214 | \*:443 | Inkomend
 | Verenigd Koninkrijk | UK - west | 51.141.13.110</br>51.141.7.20 | \*:443 | Inkomend |
 | &nbsp; | UK - zuid | 51.140.47.39</br>51.140.52.16 | \*:443 | Inkomend |
-| Verenigde Staten | US - centraal | 13.89.171.122</br>13.89.171.124 | \*:443 | Inkomend |
+| Verenigde Staten | VS - centraal | 13.89.171.122</br>13.89.171.124 | \*:443 | Inkomend |
 | &nbsp; | VS - oost | 13.82.225.233</br>40.71.175.99 | \*:443 | Inkomend |
 | &nbsp; | US - noord-centraal | 157.56.8.38</br>157.55.213.99 | \*:443 | Inkomend |
 | &nbsp; | US - west-centraal | 52.161.23.15</br>52.161.10.167 | \*:443 | Inkomend |
-| &nbsp; | US - west | 13.64.254.98</br>23.101.196.19 | \*:443 | Inkomend |
+| &nbsp; | VS - west | 13.64.254.98</br>23.101.196.19 | \*:443 | Inkomend |
 | &nbsp; | US - west 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Inkomend |
 | &nbsp; | VAE - noord | 65.52.252.96</br>65.52.252.97 | \*:443 | Inkomend |
 

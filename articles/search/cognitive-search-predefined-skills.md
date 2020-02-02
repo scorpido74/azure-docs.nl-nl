@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4f0975aceeb55c8f184ebe4e6a44d819b4a8bf38
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9e1f62dcdb122726fc1c08b7bea4e4c214ce7906
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837857"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933371"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Ingebouwde cognitieve vaardig heden voor tekst-en afbeeldings verwerking tijdens het indexeren (Azure Cognitive Search)
 
@@ -31,6 +31,7 @@ Verschillende vaardig heden zijn flexibel in wat ze gebruiken of produceren. Ove
 
 | Eigen | Beschrijving |
 |-------|-------------|
+|[Micro soft. skills. Text. CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Zoekt naar tekst uit een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen.|
 | [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Deze vaardigheid maakt gebruik van een voortraind model voor het detecteren van belang rijke zinnen op basis van de term plaatsing, taal kundige regels, nabij de andere voor waarden en hoe ongebruikelijk de term binnen de bron gegevens valt. |
 | [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Deze vaardigheid maakt gebruik van een voortraind model om te detecteren welke taal wordt gebruikt (één taal-ID per document). Wanneer er meerdere talen worden gebruikt binnen dezelfde tekst segmenten, is de uitvoer de LCID van de taal die het meest in gebruik is.|
 | [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md) | Consolideert tekst van een verzameling velden in één veld.  |

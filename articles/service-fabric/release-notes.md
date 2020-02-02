@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 36586f93425c6583dd3be497da9f7a018ebd4c9d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 73624df3cb7b04c3c442a6654f1388017482b2ba
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75526733"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935445"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric releases
 
@@ -51,9 +51,12 @@ Dit is de meest recente versie van Service Fabric en wordt geladen met belang ri
 
 Daarnaast bevat deze release andere nieuwe functies, oplossingen voor problemen en ondersteunings-, betrouw baarheid en prestatie verbeteringen. Raadpleeg de opmerkingen bij de [release](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)voor een volledige lijst met wijzigingen.
 
+### <a name="service-fabric-70-releases"></a>Service Fabric 7,0 releases
+
 | Releasedatum | Publiceren | Meer informatie |
 |---|---|---|
 | 18 november 2019 | [Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [Releaseopmerkingen](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
+| 30 januari 2020 | [Release van Azure Service Fabric 7,0 vernieuwen](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-second-refresh-release/ba-p/1137690)  | [Releaseopmerkingen](https://github.com/Azure/service-fabric/blob/master/release_notes/Service-Fabric-70CU2-releasenotes.md)|
 
 
 ### <a name="service-fabric-65"></a>Service Fabric 6,5

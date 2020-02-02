@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3cc03ba1670299f1ea43a1fde666c2917eaf6b9d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8cff61d547e75b186869b3ab4d57c5eb12e6e2f5
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770455"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935468"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Kies de optie juiste MySQL-server in azure
 
@@ -36,7 +36,7 @@ De belangrijkste verschillen tussen deze opties worden weer gegeven in de volgen
 | Serviceovereenkomst (SLA)                | Biedt een SLA van 99,99% Beschik baarheid| Maxi maal 99,95% Beschik baarheid met twee of meer exemplaren in dezelfde beschikbaarheidsset.<br/><br/>99,9% Beschik baarheid met een virtuele machine met één exemplaar met Premium Storage.<br/><br/>99,99% met Beschikbaarheidszones met meerdere exemplaren in meerdere beschikbaarheids sets.<br/><br/>Zie de [virtual machines Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). |
 | Patches besturings systeem        | Automatisch  | Beheerd door klanten |
 | MySQL-patches     | Automatisch  | Beheerd door klanten |
-| Hoge beschikbaarheid | Het model voor hoge Beschik baarheid (HA) is gebaseerd op ingebouwde failover-mechanismen voor wanneer een onderbreking op knooppunt niveau optreedt. In dergelijke gevallen maakt de service automatisch een nieuw exemplaar en koppelt de opslag aan dit exemplaar. | Klanten bouwen, implementeren, testen en onderhouden hoge Beschik baarheid. Mogelijkheden zijn onder meer Failover Clustering, altijd op groeps replicatie, logboek verzending of transactionele replicatie.|
+| Hoge beschikbaarheid | Het model voor hoge Beschik baarheid (HA) is gebaseerd op ingebouwde failover-mechanismen voor wanneer een onderbreking op knooppunt niveau optreedt. In dergelijke gevallen maakt de service automatisch een nieuw exemplaar en koppelt de opslag aan dit exemplaar. | Klanten bouwen, implementeren, testen en onderhouden hoge Beschik baarheid. Mogelijkheden zijn onder andere Clustering, replicatie, enzovoort.|
 | Zone redundantie | Momenteel niet ondersteund | Virtuele Azure-machines kunnen worden ingesteld om te worden uitgevoerd in verschillende beschikbaarheids zones. Voor een on-premises oplossing moeten klanten hun eigen secundaire Data Center maken, beheren en onderhouden.|
 | Hybride scenario's | Met [replicatie van inkomende gegevens](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)kunt u gegevens van een externe mysql-server synchroniseren met de Azure database for MySQL-service. De externe server kan on-premises, in virtuele machines of een database service worden gehost door andere cloud providers.<br/><br/> Met de functie [replica lezen](https://docs.microsoft.com/azure/mysql/concepts-read-replicas) kunt u gegevens van een Azure database for MySQL hoofd server repliceren naar Maxi maal vijf alleen-lezen replica servers. De replica's bevinden zich in dezelfde Azure-regio of in verschillende regio's. Alleen-lezen replica's worden asynchroon bijgewerkt met behulp van binlog-replicatie technologie.| Beheerd door klanten
 | Back-ups maken en herstellen | Maakt automatisch [Server back-ups](https://docs.microsoft.com/azure/mysql/concepts-backup#backups) en slaat deze op in door de gebruiker geconfigureerde opslag die lokaal redundant of geo-redundant is. De service maakt gebruik van volledige, differentiële en back-ups van transactie logboeken | Beheerd door klanten |

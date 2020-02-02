@@ -3,7 +3,7 @@ title: Verkeer routeren voor HA van toepassingen-Azure PowerShell-Traffic Manage
 description: 'Azure PowerShell-voorbeeld script: route verkeer voor hoge Beschik baarheid van toepassingen'
 services: traffic-manager
 documentationcenter: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: kumudD
 editor: ''
 tags: azure-infrastructure
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
-ms.author: allensu
-ms.openlocfilehash: bd81ef459d4b3a60d5da3dff9fff4119392ac8cd
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.author: rohink
+ms.openlocfilehash: 3f448683dbb210ab196e27cfd98a376429d03aec
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014640"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934733"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Verkeer routeren voor hoge Beschik baarheid van toepassingen met behulp van Azure PowerShell
 
@@ -47,7 +47,7 @@ Remove-AzResourceGroup -Name myResourceGroup2
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, web-app, Traffic Manager-profiel en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, web-app, Traffic Manager-profiel en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

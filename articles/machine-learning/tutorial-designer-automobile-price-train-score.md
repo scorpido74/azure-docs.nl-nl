@@ -8,18 +8,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 639a61cddde27b0d989e5a3dd4c599c353182a73
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: c7a21bb3f086257b7f6a5edde5cbfdf835645a70
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720158"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934049"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In deze tweedelige zelf studie leert u hoe u de Azure Machine Learning Designer kunt gebruiken om een predictive analytics oplossing te ontwikkelen en implementeren waarmee de prijs van elke auto wordt voor speld.
+In deze tweedelige zelf studie leert u hoe u de Azure Machine Learning Designer kunt gebruiken om een machine learning model te trainen en te implementeren waarmee de prijs van elke auto wordt voor speld. De ontwerper is een hulp programma voor slepen en neerzetten waarmee u machine learning modellen kunt maken zonder één regel code.
 
 In deel één van de zelf studie leert u het volgende:
 
@@ -45,13 +45,15 @@ Als u een Azure Machine Learning pijp lijn wilt maken, hebt u een Azure Machine 
 
 ### <a name="create-a-new-workspace"></a>Een nieuwe werkruimte maken
 
+Als u de ontwerp functie wilt gebruiken, hebt u eerst een Azure Machine Learning-werk ruimte nodig. De werk ruimte is de resource op het hoogste niveau voor Azure Machine Learning. het biedt een centrale locatie voor het werken met alle artefacten die u in Azure Machine Learning maakt.
+
 Als u een Azure Machine Learning-werk ruimte hebt met een Enter prise-editie, [gaat u naar de volgende sectie](#create-the-pipeline).
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>Maak de pijplijn
 
-1. Meld u aan bij [ml.Azure.com](https://ml.azure.com)en selecteer de werk ruimte waarmee u wilt werken.
+1. Meld u aan bij <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.Azure.com</a>en selecteer de werk ruimte waarmee u wilt werken.
 
 1. Selecteer **ontwerp functie**.
 
@@ -60,6 +62,30 @@ Als u een Azure Machine Learning-werk ruimte hebt met een Enter prise-editie, [g
 1. Selecteer **eenvoudig te gebruiken vooraf gedefinieerde modules**.
 
 1. Selecteer boven aan het canvas de standaard pijplijn naam **pijplijn die is gemaakt**. Wijzig de naam in de voor *Spelling van prijzen voor auto Mobile*. De naam hoeft niet uniek te zijn.
+
+## <a name="set-the-default-compute-target"></a>Het standaard Compute-doel instellen
+
+Een pijp lijn wordt uitgevoerd op een compute-doel, een reken resource die aan uw werk ruimte is gekoppeld. Nadat u een compute-doel hebt gemaakt, kunt u het opnieuw gebruiken voor toekomstige uitvoeringen.
+
+U kunt een **standaard Compute-doel** instellen voor de volledige pijp lijn, zodat elke module standaard hetzelfde reken doel gebruikt. U kunt reken doelen echter per module opgeven.
+
+1. Selecteer naast de naam van de pijp lijn het **tandwiel pictogram** ![scherm afbeelding van het tandwiel pictogram](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) boven aan het canvas om het deel venster **instellingen** te openen.
+
+1. Selecteer in het deel venster **instellingen** rechts van het canvas de optie **reken doel selecteren**.
+
+    Als u al een beschik bare Compute-doel hebt, kunt u dit selecteren om deze pijp lijn uit te voeren.
+
+    > [!NOTE]
+    > De ontwerper kan experimenten alleen uitvoeren op Azure Machine Learning Compute-doelen. Andere reken doelen worden niet weer gegeven.
+
+1. Voer een naam in voor de reken resource.
+
+1. Selecteer **Opslaan**.
+
+    > [!NOTE]
+    > Het duurt ongeveer vijf minuten om een reken resource te maken. Nadat de resource is gemaakt, kunt u deze opnieuw gebruiken en deze wacht tijd overs laan voor toekomstige uitvoeringen.
+    >
+    > De reken resource wordt automatisch geschaald naar nul knoop punten wanneer het inactief is om kosten te besparen. Wanneer u het opnieuw gebruikt na een vertraging, kunt u ongeveer vijf minuten wachten terwijl de back-up wordt geschaald.
 
 ## <a name="import-data"></a>Gegevens importeren
 
@@ -77,7 +103,7 @@ U kunt de gegevens visualiseren om inzicht te krijgen in de gegevensset die u ga
 
 1. Selecteer de module **Auto Mobile price data (RAW)** .
 
-1. Selecteer **uitvoer**in het deel venster Eigenschappen rechts van het canvas.
+1. Selecteer in het detail venster van de module rechts van het canvas de optie **uitvoer**.
 
 1. Selecteer het pictogram van de grafiek om de gegevens te visualiseren.
 
@@ -93,9 +119,9 @@ Gegevens sets vereisen doorgaans een voor verwerking vóór de analyse. Mogelijk
 
 ### <a name="remove-a-column"></a>Een kolom verwijderen
 
-Wanneer u een model traint, moet u iets doen over de gegevens die ontbreken. In deze gegevensset ontbreken er veel waarden in de kolom **normaled-verliezen** , dus sluit u die kolom van het model niet samen.
+Wanneer u een model traint, moet u iets doen over de gegevens die ontbreken. In deze gegevensset ontbreken er veel waarden in de kolom **normaled-verliezen** , dus sluit u die kolom uit het model.
 
-1. Voer in het zoekvak boven aan het palet **selecteren** in om de module **select columns in dataset** te vinden.
+1. Vouw in het module palet links van het canvas de sectie **gegevens transformatie** uit en zoek de module **kolommen in gegevensset selecteren** .
 
 1. Sleep de module **kolommen in gegevensset selecteren** naar het canvas. Verwijder de module onder de module DataSet.
 
@@ -109,7 +135,7 @@ Wanneer u een model traint, moet u iets doen over de gegevens die ontbreken. In 
 
 1. Selecteer de module **select columns in dataset** .
 
-1. Selecteer in het deel venster Eigenschappen rechts van het canvas de optie **alle kolommen**.
+1. Selecteer in het detail venster van de module rechts van het canvas de optie **alle kolommen**.
 
 1. Selecteer de **+** om een nieuwe regel toe te voegen.
 
@@ -123,7 +149,7 @@ Wanneer u een model traint, moet u iets doen over de gegevens die ontbreken. In 
 
 1. Selecteer de module **select columns in dataset** . 
 
-1. In het deel venster Eigenschappen selecteert u het tekstvak **Opmerking** en voert u *normaal verlies uitsluiten*in.
+1. Selecteer in het deel venster module details rechts van het canvas het tekstvak voor de **Opmerking** en voer *normaal verlies*in.
 
     Opmerkingen worden weer gegeven in de grafiek om uw pijp lijn te organiseren.
 
@@ -134,13 +160,15 @@ Uw gegevensset heeft nog steeds ontbrekende waarden nadat u de kolom **normaled-
 > [!TIP]
 > Het schoonmaken van de ontbrekende waarden van invoer gegevens is een vereiste voor het gebruik van de meeste modules in de ontwerp functie.
 
-1. Voer **schone** in het zoekvak in om de module **clean Missing Data** te vinden.
+1. Vouw in het module palet links van het canvas de sectie **gegevens transformatie**uit en zoek de module **clean Missing Data** .
 
 1. Sleep de module **clean Missing Data** naar het pijp lijn-canvas. Verbind deze met de module **select columns in dataset** . 
 
-1. Selecteer in het deel venster Eigenschappen de optie **hele rij verwijderen** onder **reinigings modus**.
+1. Selecteer de module **clean Missing Data** .
 
-1. **In het vak deel** venster met eigenschappen geeft u de *rijen ontbrekende waarde verwijderen*op. 
+1. Selecteer in het detail venster van de module rechts van het canvas de optie **hele rij verwijderen** onder **reinigings modus**.
+
+1. Selecteer in het deel venster module details rechts van het canvas het vak **Opmerking** en voer *ontbrekende rijen verwijderen*in. 
 
     De pijp lijn moet er nu ongeveer als volgt uitzien:
     
@@ -156,26 +184,28 @@ Omdat u de prijs wilt voors pellen, wat een getal is, kunt u een regressie algor
 
 Het splitsen van gegevens is een gemeen schappelijke taak in machine learning. U kunt uw gegevens in twee afzonderlijke gegevens sets splitsen. Met één gegevensset wordt het model getraind en de andere wordt getest hoe goed het model wordt uitgevoerd.
 
-1. Voer **Split data** in het zoekvak in om de module **Split data** te vinden. Verbind de poort links van de module **clean Missing Data** in de module **Split data** .
+1. Vouw in het module palet de sectie **gegevens transformatie** uit en zoek de module **Split data** .
+
+1. Sleep de module **Split data** naar het pijp lijn-canvas.
+
+1. Verbind de poort links van de module **clean Missing Data** in de module **Split data** .
 
     > [!IMPORTANT]
     > Zorg ervoor dat de linker uitvoer poorten van **schone ontbrekende gegevens** verbinding maken met **gesplitste gegevens**. De linker poort bevat de gereinigde gegevens. De juiste poort bevat de discarted-gegevens.
 
 1. Selecteer de module **Split data** .
 
-1. Stel in het deel venster Eigenschappen het **gedeelte van de rijen in de eerste uitvoer gegevensset** in op 0,7.
+1. Stel in het deel venster module details rechts van het canvas het **gedeelte van de rijen in de eerste uitvoer gegevensset in** op 0,7.
 
     Met deze optie splitst u 70 procent van de gegevens om het model te trainen en 30 procent voor het testen ervan. De gegevensset van 70 procent is toegankelijk via de linker uitvoer poort. De resterende gegevens zijn beschikbaar via de juiste uitvoer poort.
 
-1. Voer in **het vak deel** venster met eigenschappen *de gegevensset in de trainingsset (0,7) en de testset (0,3)* .
+1. Selecteer in het deel venster module details rechts van het canvas het vak **Opmerking** en voer *de gegevensset in in de trainingsset (0,7) en de testset (0,3)* .
 
 ### <a name="train-the-model"></a>Het model trainen
 
 Train het model door het een gegevensset te geven die de prijs bevat. Het algoritme bouwt een model dat de relatie tussen de functies en de prijs aangeeft zoals gepresenteerd door de trainings gegevens.
 
-1. Als u het leer algoritme wilt selecteren, wist u het zoekvak van het module palet.
-
-1. Vouw **machine learning algoritmen**uit.
+1. Vouw in het palet module de optie **machine learning algoritmen**uit.
     
     Met deze optie worden verschillende categorieën modules weer gegeven die u kunt gebruiken voor het initialiseren van leer algoritmen.
 
@@ -192,9 +222,11 @@ Train het model door het een gegevensset te geven die de prijs bevat. Het algori
 
     ![Scherm opname van de juiste configuratie van de Train model-module. De lineaire regressie-module maakt verbinding met de linker poort van Train model module en de module voor gesplitste gegevens maakt verbinding met de juiste poort van Train model](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
+1. Vouw in het deel palet module de sectie **training van module modules**uit en sleep de module **Train model** naar het canvas.
+
 1. Selecteer de module **Train model** .
 
-1. Selecteer in het deel venster Eigenschappen de optie **kolom kiezer bewerken** .
+1. Selecteer in het detail venster van de module rechts van het canvas de optie **kolom kiezer bewerken** .
 
 1. Vouw in het dialoog venster **Label kolom** de vervolg keuzelijst uit en selecteer **kolom namen**. 
 
@@ -204,7 +236,7 @@ Train het model door het een gegevensset te geven die de prijs bevat. Het algori
 
     ![Scherm opname van de juiste configuratie van de pijp lijn na het toevoegen van de module Train model.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="score-a-machine-learning-model"></a>Een machine learning model beoordelen
+### <a name="add-the-score-model-module"></a>De module score model toevoegen
 
 Nadat u uw model hebt getraind met 70 procent van de gegevens, kunt u het gebruiken om de andere 30 procent te scoren om te zien hoe goed uw model functioneert.
 
@@ -212,7 +244,7 @@ Nadat u uw model hebt getraind met 70 procent van de gegevens, kunt u het gebrui
 
 1. Koppel de uitvoer van de module **Train model** aan de linker invoer poort van het **score model**. Koppel de test gegevens uitvoer (rechter poort) van de module **Split data** aan de juiste invoer poort van het **score model**.
 
-## <a name="evaluate-a-machine-learning-model"></a>Een machine learning model evalueren
+### <a name="add-the-evaluate-model-module"></a>De module Evaluate Model toevoegen
 
 Gebruik de module voor het **evalueren van modellen** om te evalueren hoe goed uw model de test-gegevensset heeft gescoord.
 
@@ -226,7 +258,20 @@ Gebruik de module voor het **evalueren van modellen** om te evalueren hoe goed u
 
 ## <a name="run-the-pipeline"></a>De pijplijn uitvoeren
 
-[!INCLUDE [aml-ui-create-training-compute](../../includes/aml-ui-create-training-compute.md)]
+Nu de pijp lijn is ingesteld op alle instellingen, kunt u een pijplijn uitvoering verzenden.
+
+1. Selecteer boven aan het canvas de optie **uitvoeren**.
+
+1. Selecteer in het dialoog venster **pijplijn uitvoering instellen** **+ Nieuw experiment** voor het **experiment**.
+
+    > [!NOTE]
+    > Experimenten groeperen gelijksoortige pijp lijnen worden uitgevoerd. Als u een pijp lijn meerdere keren uitvoert, kunt u hetzelfde experiment selecteren voor opeenvolgende uitvoeringen.
+
+    1. Voer een beschrijvende naam in voor de naam van het **experiment**.
+
+    1. Selecteer **Uitvoeren**.
+    
+    U kunt de uitvoerings status en-gegevens weer geven in de rechter bovenhoek van het canvas.
 
 ### <a name="view-scored-labels"></a>Gescoorde labels weer geven
 
@@ -234,7 +279,7 @@ Nadat de uitvoering is voltooid, kunt u de resultaten van de pijplijn uitvoering
 
 1. Selecteer de module **score model** om de uitvoer ervan weer te geven.
 
-1. Selecteer in het deel venster Eigenschappen de optie **uitvoer** > grafiek pictogram ![pictogram visualiseren](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) om de resultaten weer te geven.
+1. Selecteer in het deel venster module details rechts van het canvas de optie **uitvoer** > grafiek pictogram ![pictogram visualiseren](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) om de resultaten weer te geven.
 
     Hier vindt u de voorspelde prijzen en de werkelijke prijzen van de test gegevens.
 
@@ -246,7 +291,7 @@ Gebruik het **evalueren model** om te zien hoe goed het getrainde model op de te
 
 1. Selecteer de module **Evaluate model** om de uitvoer ervan weer te geven.
 
-1. Selecteer in het deel venster Eigenschappen de optie **uitvoer** > grafiek pictogram ![pictogram visualiseren](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) om de resultaten weer te geven.
+1. Selecteer in het deel venster module details rechts van het canvas het pictogram **uitvoer** > grafiek ![pictogram visualiseren](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) om de resultaten weer te geven.
 
 De volgende statistieken worden weer gegeven voor uw model:
 
@@ -260,16 +305,11 @@ Voor elk van de foutstatistieken geldt: hoe kleiner hoe beter. Een kleinere waar
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
+Sla deze sectie over als u wilt door gaan met deel 2 van de zelf studie, het [implementeren van modellen](tutorial-designer-automobile-price-deploy.md).
+
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-
-In deel één van deze zelf studie hebt u de volgende taken uitgevoerd:
-
-* Een pijplijn maken
-* De gegevens voorbereiden
-* Het model trainen
-* Het model beoordelen en evalueren
 
 In deel twee leert u hoe u uw model implementeert als een real-time-eind punt.
 

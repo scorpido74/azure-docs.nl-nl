@@ -3,20 +3,20 @@ title: Azure Traffic Manager-Veelgestelde vragen
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: allensu
-ms.openlocfilehash: d7feb0f7c32ab544df2b9de08daaf8cd007318b5
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.author: rohink
+ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045305"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938804"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Veelgestelde vragen over Traffic Manager
 
@@ -384,7 +384,7 @@ Voor profielen met een andere routerings methode dan meerdere waarden:
 
 |Binnenkomende query aanvraag|    Type eind punt|  Antwoord gegeven|
 |--|--|--|
-|ALLE |  A/AAAA/CNAME |  Doel eindpunt| 
+|IEDERE |  A/AAAA/CNAME |  Doel eindpunt| 
 |A |    A / CNAME | Doel eindpunt|
 |A |    AAAA |  Geen gegevens |
 |AAAA | AAAA/CNAME |  Doel eindpunt|
@@ -397,7 +397,7 @@ Voor profielen waarvoor een routerings methode is ingesteld op meerdere waarden:
 
 |Binnenkomende query aanvraag|    Type eind punt | Antwoord gegeven|
 |--|--|--|
-|ALLE |  Combi natie van A en AAAA | Doel eindpunten|
+|IEDERE |  Combi natie van A en AAAA | Doel eindpunten|
 |A |    Combi natie van A en AAAA | Alleen doel eindpunten van het type A|
 |AAAA   |Combi natie van A en AAAA|     Alleen doel eindpunten van het type AAAA|
 |CNAME |    Combi natie van A en AAAA | Geen gegevens |
@@ -499,7 +499,7 @@ In de volgende tabel wordt het gedrag van Traffic Manager status controles voor 
 
 | Monitor status van onderliggend profiel | Monitor status van bovenliggend eind punt | Opmerkingen |
 | --- | --- | --- |
-| Disabled. Het onderliggende profiel is uitgeschakeld. |Stopped |De status van het bovenliggende eind punt is gestopt, niet uitgeschakeld. De uitgeschakelde status is gereserveerd om aan te geven dat u het eind punt in het bovenliggende profiel hebt uitgeschakeld. |
+| Geblokkeerd. Het onderliggende profiel is uitgeschakeld. |Stopped |De status van het bovenliggende eind punt is gestopt, niet uitgeschakeld. De uitgeschakelde status is gereserveerd om aan te geven dat u het eind punt in het bovenliggende profiel hebt uitgeschakeld. |
 | Gedegradeerd. Ten minste één onderliggend Profiel van de onderliggende profielen heeft een gedegradeerde status. |Online: het aantal online eindpunten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>CheckingEndpoint: het aantal online plus CheckingEndpoint-eind punten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>Gedegradeerd: anders. |Verkeer wordt doorgestuurd naar het eind punt van de status CheckingEndpoint. Als MinChildEndpoints te hoog is ingesteld, wordt het eind punt altijd gedegradeerd. |
 | Online. Ten minste één onderliggend profiel voor een onderliggend knoop punt is een online status. Er is geen eind punt met de gedegradeerde status. |Zie hierboven. | |
 | CheckingEndpoints. Ten minste één onderliggend profiel voor een onderliggend knoop punt is ' CheckingEndpoint '. Er zijn geen eind punten ' online ' of ' verslechterd ' |Hetzelfde als hierboven. | |

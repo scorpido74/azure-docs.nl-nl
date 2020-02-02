@@ -9,31 +9,31 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 744d5ecd3aab02071f7c3aaff7dd760fc14a2a62
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8c39c7b57167d65dfa639d41665f5d5b38110183
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911167"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933125"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Een symbool laag aan een kaart toevoegen
 
-Een symbool kan worden verbonden met een gegevens bron en wordt gebruikt om een pictogram en/of tekst op een bepaald punt weer te geven. Symbool lagen worden gerenderd met behulp van WebGL en kunnen worden gebruikt om grote verzamelingen van punten op de kaart weer te geven. Met deze laag kunnen veel meer punt gegevens op de kaart worden weer gegeven, met goede prestaties dan wat er met HTML-markeringen kan worden behaald. De laag Symbol ondersteunt echter geen traditionele CSS-en HTML-elementen voor opmaak.  
+Een symbool dat is verbonden met een gegevens bron en wordt gebruikt om een pictogram en/of tekst op een bepaald punt weer te geven. Symbool lagen worden gerenderd met behulp van WebGL en worden gebruikt om grote verzamelingen van punten op de kaart weer te geven. Vergeleken met HTML-markering, wordt met de laag Symbol een groot aantal punt gegevens op de kaart weer gegeven, met betere prestaties. De laag Symbol ondersteunt echter geen traditionele CSS-en HTML-elementen voor opmaak.  
 
 > [!TIP]
-> Met symbool lagen worden standaard de coördinaten van alle geometrieën in een gegevens bron weer gegeven. Als u de laag zo wilt beperken dat alleen de functies van punt geometrie worden weer gegeven, stelt u de eigenschap `filter` van de laag in op `['==', ['geometry-type'], 'Point']` of `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` als u ook multi point-functies wilt toevoegen.
+> Met symbool lagen worden standaard de coördinaten van alle geometrieën in een gegevens bron weer gegeven. Als u de laag zo wilt beperken dat alleen de functies van punt geometrie worden weer gegeven, stelt u de eigenschap `filter` van de laag in op `['==', ['geometry-type'], 'Point']` of `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` als u wilt, kunt u ook multi point-functies toevoegen.
 
-De toewijzings installatie kopie sprite Manager, die wordt gebruikt voor het laden van aangepaste installatie kopieën die worden gebruikt door de Symbol-laag, ondersteunt de volgende afbeeldings indelingen:
+De Maps-afbeelding sprite Manager laadt aangepaste installatie kopieën die worden gebruikt door de laag van het symbool. Het ondersteunt de volgende afbeeldings indelingen:
 
 - INDELING
 - PNG
 - SVG
-- BMP
+- BITMAP
 - GIF (geen animaties)
 
 ## <a name="add-a-symbol-layer"></a>Een symboollaag toevoegen
 
-Als u een symbool laag wilt toevoegen aan de kaart en gegevens wilt weer geven, moet u eerst een gegevens bron maken en de kaart toevoegen. Vervolgens kan een symbool laag worden gemaakt en door gegeven in de gegevens bron waaruit de gegevens moeten worden opgehaald. Ten slotte moeten gegevens worden toegevoegd aan de gegevens bron, zodat er iets kan worden gerenderd. De volgende code toont de code die moet worden toegevoegd aan de kaart nadat deze is geladen om één punt op de kaart weer te geven met behulp van een symbool laag. 
+Voordat u een Symbol-laag aan de kaart kunt toevoegen, moet u een aantal stappen uitvoeren. Maak eerst een gegevens bron en voeg deze toe aan de kaart. Vervolgens kan een symbool laag worden gemaakt en door gegeven in de gegevens bron om de gegevens op te halen uit de gegevens bron. Ten slotte moeten gegevens worden toegevoegd aan de gegevens bron, zodat er iets kan worden gerenderd. De volgende code toont de code die aan de kaart moet worden toegevoegd nadat deze is geladen. Met de code wordt één punt op de kaart weer gegeven met behulp van een symbool laag. 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -53,11 +53,11 @@ dataSource.add(new atlas.data.Point([0, 0]));
 Er zijn vier verschillende typen punt gegevens die aan de kaart kunnen worden toegevoegd:
 
 - Geometrie van geojson-punt: dit object bevat alleen een coördinaat van een punt en niets anders. De `atlas.data.Point` helper-klasse kan worden gebruikt om deze objecten eenvoudig te maken.
-- Geojson multi point Geometry: dit object bevat de coördinaten van meerdere punten, maar niets anders. De `atlas.data.MultiPoint` helper-klasse kan worden gebruikt om deze objecten eenvoudig te maken.
+- Geojson multi point Geometry: dit object bevat de coördinaten van meerdere punten en niets anders. De `atlas.data.MultiPoint` helper-klasse kan worden gebruikt om deze objecten eenvoudig te maken.
 - Geojson-functie: dit object bestaat uit een geojson-geometrie en een set eigenschappen die meta gegevens bevatten die aan de geometrie zijn gekoppeld. De `atlas.data.Feature` helper-klasse kan worden gebruikt om deze objecten eenvoudig te maken.
-- `atlas.Shape` klasse is vergelijkbaar met de geojson-functie in dat deze bestaat uit een geojson-geometrie en een set eigenschappen die meta gegevens bevatten die aan de geometrie zijn gekoppeld. Als een geojson-object wordt toegevoegd aan een gegevens bron, kan het eenvoudig worden gerenderd in een laag, maar als de eigenschap coördinaten van het geojson-object wordt bijgewerkt, worden de gegevens bron en de kaart niet gewijzigd omdat er geen mechanisme is in het JSON-object om een update te activeren. De klasse Shape biedt functies voor het bijwerken van de gegevens die deze bevat en wanneer een wijziging wordt aangebracht, worden de gegevens bron en de kaart automatisch gewaarschuwd en bijgewerkt. 
+- `atlas.Shape` klasse is vergelijkbaar met de geojson-functie. Beide bestaan uit een geojson-geometrie en een set eigenschappen die meta gegevens bevatten die aan de geometrie zijn gekoppeld. Als een geojson-object wordt toegevoegd aan een gegevens bron, kan het eenvoudig worden weer gegeven in een laag. Als de eigenschap coördinaten van het geojson-object echter wordt bijgewerkt, worden de gegevens bron en de kaart niet gewijzigd. Dat komt doordat het JSON-object geen mechanisme bevat om een update te activeren. De klasse Shape biedt functies voor het bijwerken van de gegevens die deze bevat. Als er een wijziging wordt aangebracht, worden de gegevens bron en de kaart automatisch gewaarschuwd en bijgewerkt. 
 
-In het volgende code voorbeeld wordt een geometrie voor een geojson-punt gemaakt en door gegeven aan de `atlas.Shape` klasse, zodat het eenvoudig kan worden bijgewerkt. Het middel punt van de kaart wordt in eerste instantie gebruikt om een symbool weer te geven. Een gebeurtenis Click wordt toegevoegd aan de kaart, zodat de coördinaten van waar de muis werd geklikt, worden gebruikt met de shapes `setCoordinates` functie die de locatie van het symbool op de kaart bijwerkt.
+In het volgende code voorbeeld wordt een geometrie voor een geojson-punt gemaakt en door gegeven aan de `atlas.Shape` klasse, zodat het eenvoudig kan worden bijgewerkt. Het middel punt van de kaart wordt in eerste instantie gebruikt om een symbool weer te geven. Een Click-gebeurtenis wordt toegevoegd aan de kaart, zodat de coördinaten van de muis worden gebruikt in combi natie met de functie shapes `setCoordinates`. De muis coördinaten worden vastgelegd op het moment van de gebeurtenis Click. Vervolgens wordt de locatie van het symbool op de kaart bijgewerkt met de `setCoordinates`.
 
 <br/>
 
@@ -65,11 +65,11 @@ In het volgende code voorbeeld wordt een geometrie voor een geojson-punt gemaakt
 </iframe>
 
 > [!TIP]
-> Bij prestaties kunnen symbool lagen standaard de rendering van symbolen optimaliseren door symbolen te verbergen die elkaar overlappen. Wanneer u inzoomt, worden de verborgen symbolen zichtbaar. Als u deze functie wilt uitschakelen en alle symbolen wilt renderen, stelt u de eigenschap `allowOverlap` van de `iconOptions` opties in op `true`.
+> Standaard optimaliseert symbool lagen de rendering van symbolen door symbolen te verbergen die elkaar overlappen. Wanneer u inzoomt, worden de verborgen symbolen zichtbaar. Als u deze functie wilt uitschakelen en alle symbolen wilt renderen, stelt u de eigenschap `allowOverlap` van de `iconOptions` opties in op `true`.
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Een aangepast pictogram toevoegen aan een symbool-laag
 
-Symbool lagen worden gerenderd met behulp van WebGL. Alle resources, zoals pictogram afbeeldingen, moeten worden geladen in de WebGL-context. In dit voor beeld ziet u hoe u een aangepast pictogram kunt toevoegen aan de kaart resources en hoe u dit vervolgens kunt gebruiken om punt gegevens weer te geven met een aangepast symbool op de kaart. Voor de eigenschap `textField` van de Symbol-laag moet een expressie worden opgegeven. In dit geval willen we de eigenschap Tempe ratuur weer geven, maar omdat het een getal is, moet dit worden geconverteerd naar een teken reeks. Daarnaast willen we het ' °F ' aan het bestand toevoegen. Een expressie kan worden gebruikt om dit te doen; `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
+Symbool lagen worden gerenderd met behulp van WebGL. Alle resources, zoals pictogram afbeeldingen, moeten worden geladen in de WebGL-context. In dit voor beeld ziet u hoe u een aangepast pictogram aan de kaart resources toevoegt. Dit pictogram wordt vervolgens gebruikt voor het weer geven van punt gegevens met een aangepast symbool op de kaart. Voor de eigenschap `textField` van de Symbol-laag moet een expressie worden opgegeven. In dit geval willen we de eigenschap Tempe ratuur weer geven. Omdat de Tempe ratuur een getal is, moet dit worden geconverteerd naar een teken reeks. Daarnaast willen we ' °F ' eraan toevoegen. Een expressie kan worden gebruikt om deze samen voeging uit te voeren. `['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 

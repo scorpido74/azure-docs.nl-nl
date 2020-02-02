@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 5bdcd955919a91760f16287a62956542cfaa47c5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9135d0a602bfa1f36f9723311e82a4d26abe6c9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225286"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934560"
 ---
 # <a name="outbound-connections-in-azure"></a>Uitgaande verbindingen in Azure
 
@@ -237,7 +237,7 @@ Als u uitbreidt naar de volgende grotere laag van de back-endadresgroep, is er m
 
 ### <a name="idletimeout"></a>Keepalives gebruiken om de uitgaande time-out voor inactiviteit opnieuw in te stellen
 
-Uitgaande verbindingen hebben een time-out van 4 minuten. Deze time-out kan niet worden aangepast. U kunt echter Trans Port (bijvoorbeeld TCP-keepalives) of keepalives op toepassings niveau gebruiken om een niet-actieve stroom te vernieuwen en zo nodig de time-out voor inactiviteit opnieuw in te stellen.  
+Uitgaande verbindingen hebben een time-out van 4 minuten. Deze time-out is aanpasbaar via [Uitgaande regels](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout). U kunt ook Trans Port (bijvoorbeeld TCP-keepalives) of keepalives op toepassings niveau gebruiken om een niet-actieve stroom te vernieuwen en deze time-out voor inactiviteit zo nodig opnieuw in te stellen.  
 
 Bij het gebruik van TCP-keepalives is het voldoende om deze in te scha kelen aan één zijde van de verbinding. Het is bijvoorbeeld voldoende om ze alleen in te scha kelen op de server om de niet-actieve timer van de stroom opnieuw in te stellen en het is niet nodig voor beide zijden voor het starten van TCP-keepalives.  Er bestaan soort gelijke concepten voor Application Layer, waaronder client-server configuraties voor data bases.  Controleer de server zijde voor welke opties er bestaan voor toepassingsspecifieke keepalives.
 

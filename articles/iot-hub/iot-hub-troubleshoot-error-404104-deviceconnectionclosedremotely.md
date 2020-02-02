@@ -1,0 +1,76 @@
+---
+title: Problemen met Azure IoT Hub-fout 404104 DeviceConnectionClosedRemotely
+description: Meer informatie over het oplossen van fout 404104 DeviceConnectionClosedRemotely
+author: jlian
+manager: briz
+ms.service: iot-hub
+services: iot-hub
+ms.topic: troubleshooting
+ms.date: 01/30/2020
+ms.author: jlian
+ms.openlocfilehash: 686946b65b4b7540f404a291c87c5ad9c7b7a0ca
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76960800"
+---
+# <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
+
+In dit artikel worden de oorzaken en oplossingen voor **404104 DeviceConnectionClosedRemotely** -fouten beschreven.
+
+## <a name="symptoms"></a>Symptomen
+
+### <a name="symptom-1"></a>Symptoom 1
+
+Apparaten verbreekt de verbinding met een regel matig interval (bijvoorbeeld elke 65 minuten) en u ziet **404104 DeviceConnectionClosedRemotely** in IOT hub Diagnostische logboeken. Soms ziet u ook **401003 IoTHubUnauthorized** en een geslaagde apparaatfout van minder dan een minuut later.
+
+### <a name="symptom-2"></a>Symptoom 2
+
+Apparaten worden wille keurig losgekoppeld en u ziet **404104 DeviceConnectionClosedRemotely** in IOT hub Diagnostische logboeken.
+
+### <a name="symptom-3"></a>Symptoom 3
+
+Veel apparaten worden gelijktijdig verbroken, u ziet een dip in de [metrische gegevens voor verbonden apparaten](iot-hub-metrics.md)en er zijn meer **404104 DeviceConnectionClosedRemotely** -en [500xxx interne fouten](iot-hub-troubleshoot-error-500xxx-internal-errors.md) in Diagnostische logboeken dan gebruikelijk.
+
+## <a name="causes"></a>Oorzaken
+
+### <a name="cause-1"></a>Oorzaak 1
+
+Het [SAS-token dat wordt gebruikt om verbinding te maken met IOT hub](iot-hub-devguide-security.md#security-tokens) is verlopen. Dit zorgt ervoor dat IOT hub de verbinding met het apparaat verbreekt. De verbinding wordt hersteld wanneer het token wordt vernieuwd door het apparaat. Bijvoorbeeld: [het SAS-token verloopt elk uur standaard voor C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-authentication), wat kan leiden tot regel matige verbreken van de verbinding.
+
+Zie [401003 IoTHubUnauthorized oorzaak](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#cause-1)voor meer informatie.
+
+### <a name="cause-2"></a>Oorzaak 2
+
+Enkele mogelijkheden zijn:
+
+- Het apparaat heeft het onderliggende netwerk connectiviteit dat langer is dan de [MQTT Keep-Alive](iot-hub-mqtt-support.md#default-keep-alive-timeout), wat resulteert in een time-out voor inactiviteit op afstand. De MQTT Keep-Alive-instelling kan per apparaat verschillen.
+
+- Het apparaat heeft een reset op TCP/IP-niveau verzonden, maar er is geen `MQTT DISCONNECT`op toepassings niveau verzonden. Het apparaat heeft in principe de onderliggende socket verbinding plotseling gesloten. Dit probleem wordt soms veroorzaakt door fouten in oudere versies van de Azure IoT SDK.
+
+- De toepassing aan het apparaat is vastgelopen.
+
+### <a name="cause-3"></a>Oorzaak 3
+
+Mogelijk ondervindt IoT Hub een tijdelijk probleem. Zie [IOT hub interne server fout oorzaak](iot-hub-troubleshoot-error-500xxx-internal-errors.md#cause).
+
+## <a name="solutions"></a>Oplossingen
+
+### <a name="solution-1"></a>Oplossing 1
+
+Zie [401003 IoTHubUnauthorized-oplossing 1](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#solution-1)
+
+### <a name="solution-2"></a>Oplossing 2
+
+- Controleer of het apparaat een goede verbinding heeft met IoT Hub door [de verbinding te testen](tutorial-connectivity.md). Als het netwerk onbetrouwbaar of onverwacht is, raden we u aan de Keep-Alive-waarde niet te verhogen, omdat dit ertoe kan leiden dat er meer detectie plaatsvindt (bijvoorbeeld via Azure Monitor-waarschuwingen). 
+
+- Gebruik de nieuwste versies van de [IOT-sdk's](iot-hub-devguide-sdks.md).
+
+### <a name="solution-3"></a>Oplossing 3
+
+Zie [oplossingen voor het IOT hub van interne server fouten](iot-hub-troubleshoot-error-500xxx-internal-errors.md#solution).
+
+## <a name="next-steps"></a>Volgende stappen
+
+U kunt het beste Azure IoT-apparaat-Sdk's gebruiken om verbindingen betrouwbaar te beheren. Zie [connectiviteit en betrouw bare berichten beheren met Azure IOT hub apparaat-sdk's](iot-hub-reliability-features-in-sdks.md) voor meer informatie.

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 01/23/2020
-ms.openlocfilehash: fab24d55509ab315775437ca343e35fc90174f63
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: 09cc9e1475616700aa77cdf92fd7ca808cd4290c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715102"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937840"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Service lagen Azure SQL Database
 
@@ -53,7 +53,7 @@ In de volgende tabel worden de belangrijkste verschillen tussen service lagen vo
 |**OLTP in het geheugen** | | N/A | N/A | Beschikbaar |
 |**Alleen-lezen replica's**| | 0 ingebouwde <br> 0-4 met [geo-replicatie](sql-database-active-geo-replication.md) | 0-4-ingebouwde | 1 ingebouwde, inclusief prijs <br> 0-4 met [geo-replicatie](sql-database-active-geo-replication.md) |
 |**Prijzen/facturering** | Afzonderlijke database | [vCore, gereserveerde opslag en back-upopslag](https://azure.microsoft.com/pricing/details/sql-database/single/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht. | [vCore voor elke replica en gebruikte opslag](https://azure.microsoft.com/pricing/details/sql-database/single/) worden in rekening gebracht. <br/>IOPS nog niet gefactureerd. | [vCore, gereserveerde opslag en back-upopslag](https://azure.microsoft.com/pricing/details/sql-database/single/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht. |
-|| Managed Instance | [vCore en gereserveerde opslag](https://azure.microsoft.com/pricing/details/sql-database/managed/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht.<br/>Er wordt nog geen back-upopslag in rekening gebracht. | N/A | [vCore en gereserveerde opslag](https://azure.microsoft.com/pricing/details/sql-database/managed/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht.<br/>Er wordt nog geen back-upopslag in rekening gebracht. | 
+|| Managed Instance | [vCore, gereserveerde opslag en back-upopslag](https://azure.microsoft.com/pricing/details/sql-database/managed/) worden in rekening gebracht. <br/>Er worden geen IOPS in rekening gebracht| N/A | [vCore, gereserveerde opslag en back-upopslag](https://azure.microsoft.com/pricing/details/sql-database/managed/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht.| 
 |**Kortings modellen**| | [Gereserveerde instanties](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)| [Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)| [Gereserveerde instanties](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)|
 
 Zie voor meer informatie de gedetailleerde verschillen tussen de service lagen in [één data base (vCore)](sql-database-vcore-resource-limits-single-databases.md), [Single Data Base Pools (vCore)](sql-database-dtu-resource-limits-single-databases.md), [Single Data Base (DTU)](sql-database-dtu-resource-limits-single-databases.md), Single Data Base [Pools (DTU)](sql-database-dtu-resource-limits-single-databases.md)en [Managed instance](sql-database-managed-instance-resource-limits.md) Pages.

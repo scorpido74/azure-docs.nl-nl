@@ -3,7 +3,7 @@ title: DNS-records beheren in Azure DNS met behulp van Azure PowerShell | Micros
 description: DNS-record sets en-records beheren op Azure DNS wanneer uw domein wordt gehost op Azure DNS. Alle Power shell-opdrachten voor bewerkingen op record sets en records.
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: timlt
 ms.assetid: 7136a373-0682-471c-9c28-9e00d2add9c2
 ms.service: dns
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
-ms.author: allensu
-ms.openlocfilehash: c11a5c4a3cfe18fbc203ad641ab1de866915bcc4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b9244d9b2bdc9cb20195bbc103c0b1eb48a9de63
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211692"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932532"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Beheer DNS-records en-record sets in Azure DNS met behulp van Azure PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
 > * [Klassieke versie van Azure CLI](dns-operations-recordsets-cli-nodejs.md)
-> * [Azure CLI](dns-operations-recordsets-cli.md)
+> * [Azure-CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
 In dit artikel wordt beschreven hoe u DNS-records voor uw DNS-zone beheert met behulp van Azure PowerShell. DNS-records kunnen ook worden beheerd met behulp van de platformoverschrijdende [Azure cli](dns-operations-recordsets-cli.md) of de [Azure Portal](dns-operations-recordsets-portal.md).
@@ -390,7 +390,7 @@ Elke cmdlet vraagt om bevestiging als de `$ConfirmPreference` Power shell-voorke
 
 U kunt de huidige instelling van `$ConfirmPreference` overschrijven met behulp van de parameter `-Confirm`. Als u `-Confirm` of `-Confirm:$True` opgeeft, vraagt de cmdlet u om bevestiging voordat deze wordt uitgevoerd. Als u `-Confirm:$False` opgeeft, wordt u niet om bevestiging gevraagd. 
 
-Zie `-Confirm`over voorkeursvariabelen`$ConfirmPreference` voor meer informatie over [ en ](/powershell/module/microsoft.powershell.core/about/about_preference_variables).
+Zie [over voorkeursvariabelen](/powershell/module/microsoft.powershell.core/about/about_preference_variables) voor meer informatie over `-Confirm` en `$ConfirmPreference`.
 
 ## <a name="next-steps"></a>Volgende stappen
 

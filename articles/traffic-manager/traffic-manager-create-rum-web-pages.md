@@ -3,7 +3,7 @@ title: Real-user-metingen met webpagina's-Azure Traffic Manager
 description: In dit artikel leert u hoe u uw webpagina's kunt instellen om Real-user-metingen te verzenden naar Azure Traffic Manager.
 services: traffic-manager
 documentationcenter: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: allensu
+ms.author: rohink
 ms.custom: ''
-ms.openlocfilehash: 6e3cf5af5aaa894b1595d67c0056073a458b0a88
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 927d774ee30a291607a8a47fc2fd6878c1bc6fee
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040300"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938687"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Real-user-metingen naar Azure Traffic Manager verzenden met behulp van webpagina's
 

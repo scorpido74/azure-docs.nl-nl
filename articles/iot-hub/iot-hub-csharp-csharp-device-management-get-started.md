@@ -9,18 +9,18 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 0ab714efc3e9eb0de9d6753854031110e09fe06b
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 79e65671613364f5cc05153d90cfdcd5959a279f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147840"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939314"
 ---
 # <a name="get-started-with-device-management-net"></a>Aan de slag met Apparaatbeheer (.NET)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
-In deze zelfstudie ontdekt u hoe u:
+In deze handleiding ontdekt u hoe u:
 
 * Gebruik de Azure Portal om een IoT-hub te maken en een apparaat-id te maken in uw IoT-hub.
 
@@ -74,14 +74,14 @@ In deze sectie maakt u een .NET-console-app die C#wordt gebruikt, waarmee een ap
 
    Met deze stap wordt een verwijzing naar het [Azure IOT Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
+1. Voeg aan het begin van het bestand **Program.cs** de volgende `using`-instructies toe:
 
    ```csharp
    using Microsoft.Azure.Devices;
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de waarde van de tijdelijkeaanduidingdoordeIOThubConnectionStringueerderhebtgekopieerdindeIOThub-ConnectionStringophalen.`{iot hub connection string}` [](#get-the-iot-hub-connection-string)
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de waarde van de tijdelijke aanduiding `{iot hub connection string}` door de IoT Hub connection string u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
 
    ```csharp
    static RegistryManager registryManager;
@@ -126,7 +126,7 @@ In deze sectie maakt u een .NET-console-app die C#wordt gebruikt, waarmee een ap
    Console.ReadLine();
    ```
 
-1. Selecteer **Build** > **Build Solution**.
+1. Selecteer **build** > **Build-oplossing**.
 
 > [!NOTE]
 > In deze zelf studie wordt slechts één query uitgevoerd voor de gerapporteerde eigenschappen van het apparaat. In productie code kunt u het beste navragen om wijzigingen in de gerapporteerde eigenschappen te detecteren.
@@ -143,7 +143,7 @@ In deze sectie doet u het volgende:
 
 Als u de gesimuleerde apparaat-app wilt maken, volgt u deze stappen:
 
-1. Selecteer in Visual Studio het **bestand** > **Nieuw** > **project**in de TriggerReboot-oplossing die u al hebt gemaakt. Zoek in **een nieuw project maken**en selecteer de project sjabloon **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
+1. Selecteer in Visual Studio in de TriggerReboot-oplossing die u al hebt gemaakt **File** > **New** > **project**. Zoek in **een nieuw project maken**en selecteer de project sjabloon **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
 
 1. In **uw nieuwe project configureren**, de naam van het project *SimulateManagedDevice*en voor de **oplossing**, selecteert **u toevoegen aan oplossing**. Selecteer **Maken**.
 
@@ -157,14 +157,14 @@ Als u de gesimuleerde apparaat-app wilt maken, volgt u deze stappen:
 
    Met deze stap wordt een verwijzing naar het [Azure IOT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
+1. Voeg aan het begin van het bestand **Program.cs** de volgende `using`-instructies toe:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de `{device connection string}` waarde van de tijdelijke aanduiding door de Connection String van het apparaat die u eerder hebt genoteerd in [een nieuw apparaat registreren bij de IOT-hub](#register-a-new-device-in-the-iot-hub).
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de waarde van de tijdelijke aanduiding `{device connection string}` door de apparaat connection string die u eerder hebt genoteerd in [een nieuw apparaat registreren bij de IOT hub](#register-a-new-device-in-the-iot-hub).
 
     ```csharp
     static string DeviceConnectionString = "{device connection string}";
@@ -200,7 +200,7 @@ Als u de gesimuleerde apparaat-app wilt maken, volgt u deze stappen:
            Console.WriteLine("Error in sample: {0}", ex.Message);
        }
 
-       string result = "'Reboot started.'";
+       string result = @"{""result"":""Reboot started.""}";
        return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(result), 200));
    }
    ```
@@ -234,9 +234,9 @@ Als u de gesimuleerde apparaat-app wilt maken, volgt u deze stappen:
 
 1. Klik in Solution Explorer met de rechter muisknop op uw oplossing en selecteer vervolgens **opstart projecten instellen**.
 
-1. Selecteer **één opstart project**voor **algemene eigenschappen** > voor het opstarten van het**project**en selecteer vervolgens het project **SimulateManagedDevice** . Selecteer **OK** om uw wijzigingen op te slaan.
+1. Voor **algemene eigenschappen** > **project opstarten**selecteert u **één opstart project**en selecteert u vervolgens het project **SimulateManagedDevice** . Selecteer **OK** om uw wijzigingen op te slaan.
 
-1. Selecteer **Build** > **Build Solution**.
+1. Selecteer **build** > **Build-oplossing**.
 
 > [!NOTE]
 > Om de zaken niet nodeloos ingewikkeld te maken, is in deze handleiding geen beleid voor opnieuw proberen geïmplementeerd. In productie code moet u beleid voor opnieuw proberen implementeren (zoals een exponentiële uitstel), zoals wordt voorgesteld in [tijdelijke fout afhandeling](/azure/architecture/best-practices/transient-faults).

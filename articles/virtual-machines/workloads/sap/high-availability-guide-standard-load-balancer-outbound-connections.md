@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/28/2019
 ms.author: radeltch
-ms.openlocfilehash: 15abee96f81bca68575d61be1276d4394e9a6f55
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 179df26eb0cc75899c9b509ebe00410ffa916dc8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293807"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935184"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Connectiviteit van open bare eind punten voor Virtual Machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP
 
@@ -78,7 +78,7 @@ De configuratie zou er als volgt uitzien:
 
 ![Connectiviteit met open bare eind punten beheren met netwerk beveiligings groepen](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-public.png)
 
-### <a name="important-considerations"></a>Belangrijke overwegingen
+### <a name="important-considerations"></a>Belang rijke overwegingen
 
 - U kunt één extra open bare Load Balancer voor meerdere Vm's in hetzelfde subnet gebruiken om uitgaande connectiviteit naar het open bare eind punt te verzorgen en de kosten te optimaliseren  
 - Gebruik [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview) om te bepalen welke open bare eind punten toegankelijk zijn vanaf de vm's. U kunt de netwerk beveiligings groep toewijzen aan het subnet of aan elke virtuele machine. Gebruik waar mogelijk [service Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) om de complexiteit van de beveiligings regels te reduceren.  
@@ -129,7 +129,7 @@ De architectuur ziet er als volgt uit:
 
 ![Uitgaande verbinding met Azure Firewall](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall.png)
 
-### <a name="important-considerations"></a>Belangrijke overwegingen
+### <a name="important-considerations"></a>Belang rijke overwegingen
 
 - Azure firewall is een native Cloud service, met ingebouwde hoge Beschik baarheid en ondersteunt de zonegebonden-implementatie.
 - Vereist extra subnet met de naam AzureFirewallSubnet. 
@@ -173,7 +173,7 @@ De architectuur ziet er als volgt uit:
 
 U kunt proxy gebruiken om pacemaker-aanroepen naar de open bare Azure Management API-eind punt toe te staan.  
 
-### <a name="important-considerations"></a>Belangrijke overwegingen
+### <a name="important-considerations"></a>Belang rijke overwegingen
 
   - Als er al een bedrijfs proxy aanwezig is, kunt u uitgaande oproepen naar open bare eind punten routeren. Uitgaande aanroepen naar open bare eind punten gaan door naar het bedrijfs controlepunt.  
   - Zorg ervoor dat de proxy configuratie uitgaande connectiviteit met de Azure-beheer-API toestaat: https://management.azure.com  
@@ -200,11 +200,11 @@ Voer de volgende stappen uit op alle cluster knooppunten om pacemaker toe te sta
   - SUSE  
      ```
      # Place the cluster in maintenance mode
-     sudo pcs property set maintenance-mode=true
+     sudo crm configure property maintenance-mode=true
      #Restart on all nodes
      sudo systemctl restart pacemaker
      # Take the cluster out of maintenance mode
-     sudo pcs property set maintenance-mode=false
+     sudo crm configure property maintenance-mode=true
      ```
 
   - Red Hat  

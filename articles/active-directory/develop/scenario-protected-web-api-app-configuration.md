@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fc74e72c6c2fe3e2b8817e6ffb418928ede08193
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 975117ad5c58bed77002a33f0dc5370d0f1c17e2
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773364"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931465"
 ---
 # <a name="protected-web-api-code-configuration"></a>Beveiligde web-API: code configuratie
 
@@ -47,7 +47,7 @@ Het Bearer-token dat is ingesteld in de header wanneer de app wordt aangeroepen,
 Hier volgt een C# code voorbeeld waarin een client wordt weer gegeven die de API aanroept nadat deze een token heeft verkregen met micro soft Authentication Library voor .net (MSAL.net):
 
 ```csharp
-var scopes = new[] {$"api://.../access_as_user}";
+var scopes = new[] {$"api://.../access_as_user"};
 var result = await app.AcquireToken(scopes)
                       .ExecuteAsync();
 

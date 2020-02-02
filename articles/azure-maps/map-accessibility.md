@@ -8,16 +8,16 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 739322feb8e844a197f2943f4ff050cacc0f2274
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e298aad6dc43f85f5b6c344eec56f5d8b37980d4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911301"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933303"
 ---
 # <a name="building-an-accessible-application"></a>Een toegankelijke toepassing bouwen
 
-Van 20% van Internet gebruikers is een nood zaak voor toegankelijke webtoepassingen. Daarom is het belang rijk om ervoor te zorgen dat uw toepassing zodanig is ontworpen dat elke gebruiker deze eenvoudig kan gebruiken. Als onderdeel van uw algemene gebruikers ervaring kunt u beter zien wat de toegankelijkheid is van een reeks taken. Hoe meer toegankelijk uw toepassing is, hoe meer mensen deze kunnen gebruiken. 
+Van 20% van Internet gebruikers is een nood zaak voor toegankelijke webtoepassingen. Daarom is het belang rijk om ervoor te zorgen dat uw toepassing zo is ontworpen dat elke gebruiker deze eenvoudig kan gebruiken. Als onderdeel van uw algemene gebruikers ervaring kunt u beter zien wat de toegankelijkheid is van een reeks taken. Hoe meer toegankelijk uw toepassing is, hoe meer mensen deze kunnen gebruiken. 
 
 Wanneer het gaat om uitgebreide, interactieve inhoud zoals een kaart, zijn enkele veelvoorkomende aandachtspunten voor toegankelijkheid:
 - Biedt ondersteuning voor de scherm lezer voor gebruikers die moeite hebben met het bekijken van de webtoepassing.
@@ -72,8 +72,8 @@ De kaart bevat een aantal ingebouwde sneltoetsen waarmee u de kaart gemakkelijke
 | `Tab` | Navigeer over de besturings elementen en pop-upvensters in de kaart. |
 | `ESC` | De focus verplaatsen van een wille keurig element in de kaart naar het kaart element op het hoogste niveau. |
 | `Ctrl` + `Shift` + `D` | Detail niveau van de scherm lezer in-of uitschakelen.  |
-| Pijltoets-links | De kaart links van 100 pixels pannen |
-| Pijltoets-rechts | Kaart naar rechts 100 pixels pannen |
+| Toets pijl-links | De kaart links van 100 pixels pannen |
+| Pijl-rechts | Kaart naar rechts 100 pixels pannen |
 | Pijl-omlaag | De kaart omhoog pannen 100 pixels |
 | Pijl-omhoog | Kaart omhoog 100 pixels pannen |
 | `Shift` + pijl-omhoog | De kaart hoogte met 10 graden verg Roten |
@@ -84,7 +84,7 @@ De kaart bevat een aantal ingebouwde sneltoetsen waarmee u de kaart gemakkelijke
 | Minteken, afbreek streepje (`-`) of <sup>*</sup>onderstrepings teken (`_`) | Uitzoomen | 
 | `Shift` + muis slepen op kaart naar teken gebied | Inzoomen op gebied |
 
-<sup>*</sup> Deze sneltoetsen delen meestal dezelfde sleutel op een toetsen bord. Deze zijn toegevoegd om de gebruikers ervaring te verbeteren. het maakt hierbij niet uit of de gebruiker de Shift-toets gebruikt of niet voor deze sneltoetsen.
+<sup>*</sup> Deze sneltoetsen delen meestal dezelfde sleutel op een toetsen bord. Deze snelkoppelingen zijn toegevoegd om de gebruikers ervaring te verbeteren. Het maakt ook niet uit of de gebruiker de Shift-toets gebruikt of niet voor deze sneltoetsen.
 
 ## <a name="screen-reader-support"></a>Ondersteuning voor scherm lezers
 
@@ -94,9 +94,9 @@ Aanvullende informatie die op de basis kaart wordt geplaatst, moet bijbehorende 
 
 ## <a name="make-popups-keyboard-accessible"></a>Pop-upvensters toegankelijk maken voor het toetsen bord
 
-Een markering of symbool wordt vaak gebruikt om een locatie op de kaart weer te geven. Aanvullende informatie over de locatie wordt doorgaans weer gegeven in een pop-upvenster wanneer de gebruiker met de markering communiceert. In de meeste toepassingen popups worden weer gegeven wanneer een gebruiker op een markering klikt of tikt. hiervoor moet de gebruiker echter een muis of een aanraak scherm gebruiken. Het is een goed idee om pop-ups toegankelijk te maken wanneer u een toetsen bord gebruikt. Dit kan worden bereikt door een pop-up te maken voor elk gegevens punt en deze toe te voegen aan de kaart. 
+Een markering of symbool wordt vaak gebruikt om een locatie op de kaart weer te geven. Aanvullende informatie over de locatie wordt doorgaans weer gegeven in een pop-upvenster wanneer de gebruiker met de markering communiceert. In de meeste toepassingen popups wordt weer gegeven wanneer een gebruiker op een markering klikt of tikt, maar deze gebeurtenis vereist dat de gebruiker een muis of een aanraak scherm gebruikt. Het is een goed idee om pop-ups toegankelijk te maken wanneer u een toetsen bord gebruikt. Deze functionaliteit kan worden bereikt door een pop-up te maken voor elk gegevens punt en deze toe te voegen aan de kaart. 
 
-In het volgende voor beeld worden punten van belangen op de kaart geladen met behulp van een symbool laag en wordt een pop-upvenster toegevoegd aan de kaart voor elk gewenst moment. Een verwijzing naar elke pop-up wordt opgeslagen in de eigenschappen van elk gegevens punt, zodat deze ook kan worden opgehaald voor een markering, bijvoorbeeld wanneer er op een markering wordt geklikt. Als er op de kaart wordt gestreefd en u op TAB drukt, kan de gebruiker elke pop-up door lopen op de kaart.
+In het volgende voor beeld worden punten van belangen op de kaart geladen met behulp van een symbool laag en wordt een pop-upvenster toegevoegd aan de kaart voor elk gewenst moment. Een verwijzing naar elke pop-up wordt opgeslagen in de eigenschappen van elk gegevens punt. Het kan ook worden opgehaald voor een markering, bijvoorbeeld wanneer er op een markering wordt geklikt. Als er op de kaart wordt gestreefd en u op TAB drukt, kan de gebruiker elke pop-up door lopen op de kaart.
 
 <br/>
 
@@ -106,12 +106,12 @@ In het volgende voor beeld worden punten van belangen op de kaart geladen met be
 
 ## <a name="additional-accessibility-tips"></a>Aanvullende tips voor toegankelijkheid
 
-Hier volgen enkele extra tips om uw toepassing voor webtoewijzing toegankelijker te maken.
+Hier volgen enkele extra tips om uw webtoewijzings toepassing toegankelijker te maken.
 
-- Als u een groot aantal interactieve punt gegevens op de kaart wilt weer geven, kunt u overwegen het wirwar te verminderen en clustering te gebruiken. 
+- Als veel interactieve punt gegevens op de kaart worden weer gegeven, kunt u overwegen het wirwar te verminderen en clustering te gebruiken. 
 - Zorg ervoor dat de contrast verhouding van de kleur tussen tekst/symbolen en achtergrond kleuren is 4,5:1 of meer.
 - Houd uw scherm lezer (ARIA, ALT en titel kenmerken) berichten kort, beschrijvende en zinvol. Vermijd onnodig jargon en acroniemen.
-- Optimaliseer berichten die naar de scherm lezer worden verzonden om kort herken bare informatie te geven die gemakkelijk is voor de gebruiker om te worden gedigesteerd. Als u bijvoorbeeld de scherm lezer op een hoge frequentie wilt bijwerken, bijvoorbeeld wanneer de kaart wordt verplaatst, kunt u het volgende doen:
+- Optimaliseer berichten die naar de scherm lezer worden verzonden om kort herken bare informatie te geven die gemakkelijk is voor de gebruiker om te worden gedigesteerd. Als u bijvoorbeeld de scherm lezer op een hoge frequentie wilt bijwerken, bijvoorbeeld wanneer de kaart wordt verplaatst, kunt u de volgende punten overwegen:
     - Wacht totdat de toewijzing is voltooid om de scherm lezer bij te werken.
     - De updates tot één keer per seconde beperken. 
     - Combi neer berichten op logische wijze samen. 
@@ -122,7 +122,7 @@ Hier volgen enkele extra tips om uw toepassing voor webtoewijzing toegankelijker
     - Als er veelhoek gegevens worden weer gegeven, kan een patroon, zoals strepen, worden gebruikt als alternatief voor kleur. 
 - Sommige visualisaties, zoals Heatmaps, tegel lagen en afbeeldings lagen, zijn niet toegankelijk voor gebruikers met een visuele handicap. Enkele overwegingen:
     - De scherm lezer beschrijven wat de laag wordt weer gegeven wanneer deze wordt toegevoegd aan de kaart. Als er bijvoorbeeld een weer gave-laag met het beeld diagram wordt weer gegeven, laat u de scherm lezer zien dat deze er ongeveer zo uitziet als ' weers radar gegevens op de kaart '.
-- Beperk de hoeveelheid functionaliteit waarvoor een muis aanwijzer nodig is. Deze zijn niet toegankelijk voor gebruikers die een toetsen bord of aanraak apparaat gebruiken om met uw toepassing te communiceren. Houd er rekening mee dat het goed is om een aanwijs stijl te hebben voor interactieve inhoud, zoals klikbaar pictogrammen, koppelingen en knoppen.
+- Beperk de hoeveelheid functionaliteit waarvoor een muis aanwijzer nodig is. Deze functionaliteit is niet toegankelijk voor gebruikers die een toetsen bord of aanraak apparaat gebruiken om te communiceren met uw toepassing. Houd er rekening mee dat het een goed idee is om een aanwijs stijl te hebben voor interactieve inhoud, zoals klikbaar pictogrammen, koppelingen en knoppen.
 - Probeer uw toepassing te navigeren met behulp van het toetsen bord. Zorg ervoor dat de volg orde van het tabblad logisch is.
 - Als u sneltoetsen wilt maken, probeert u het te beperken tot twee sleutels of minder. 
 

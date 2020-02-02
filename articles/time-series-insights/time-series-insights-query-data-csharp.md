@@ -9,34 +9,76 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3729bedf7591ffecc558b88660486f7e336fa717
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a5cb435b38a776ba652854592bdc7d3e833742d1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705900"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935084"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Gegevens opvragen uit de Azure Time Series Insights GA-omgeving met behulp vanC#
 
-In C# dit voor beeld ziet u hoe u gegevens opvraagt uit de Azure time series Insights ga-omgeving.
+In C# dit voor beeld ziet u hoe u de [Ga query-api's](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) kunt gebruiken om gegevens uit Azure time series Insights ga-omgevingen op te vragen.
 
-Er worden enkele eenvoudige voorbeelden voor het gebruik van de API-query gegeven:
+## <a name="summary"></a>Samenvatting
 
-1. Als voorbereidende stap moet u het toegangs token verkrijgen via de API van Azure Active Directory. Geef dit token door in de `Authorization`-header van elke query-API-aanvraag. Zie [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md)voor meer informatie over het instellen van niet-interactieve toepassingen. Zorg er ook voor dat alle constanten die aan het begin van het voor beeld zijn gedefinieerd, correct zijn ingesteld.
-1. De lijst met omgevingen waartoe de gebruiker toegang heeft, wordt verkregen. Een van de omgevingen wordt opgehaald als de omgeving van belang en er worden verdere gegevens opgevraagd voor deze omgeving.
-1. Er worden beschikbaarheidsgegevens opgevraagd voor de belangrijkste omgeving als voorbeeld van een HTTPS-aanvraag.
-1. Er worden gebeurtenissamenvoegingsgegevens opgevraagd voor de belangrijkste omgeving als voorbeeld van een web socket-aanvraag. Er worden gegevens opgevraagd voor het volledige tijdsbereik van de beschikbaarheid.
+De voorbeeld code hieronder bevat de volgende functies:
+
+* Een toegangs token verkrijgen via Azure Active Directory met behulp van [micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).
+
+* Het aangeschafte toegangs token door geven in de `Authorization`-header van de volgende query-API-aanvragen. 
+
+* In het voor beeld wordt elk van de GA query-Api's gedemonstreerd hoe HTTP-aanvragen worden gedaan voor:
+    * De [omgevings-API ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api) om de omgevingen te retour neren waartoe de gebruiker toegang heeft
+    * [API voor omgevings beschikbaarheid ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
+    * [API voor omgevings gegevens ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api) om de meta gegevens van de omgeving op te halen
+    * [API voor omgevings gebeurtenissen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
+    * [API voor samen stellen van omgeving ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)
+    
+* Hoe u kunt communiceren met de GA query-Api's met behulp van WSS om het volgende te doen:
+
+   * [Gestreamde API voor de omgevings gebeurtenissen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
+   * [Gestreamde API voor de omgeving ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
 
 > [!NOTE]
 > De voorbeeld code is beschikbaar op [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
-## <a name="project-dependencies"></a>Project afhankelijkheden
+## <a name="prerequisites-and-setup"></a>Vereisten en installatie
 
-Voeg NuGet-pakketten toe `Microsoft.IdentityModel.Clients.ActiveDirectory` en `Newtonsoft.Json`.
+Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
-## <a name="c-example"></a>C#Hierbij
+1. [Richt een GA Azure time series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) -omgeving in.
+
+1. Configureer uw Azure Time Series Insights-omgeving voor Azure Active Directory zoals beschreven in [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md). 
+
+1. Installeer de vereiste project afhankelijkheden.
+
+1. Bewerk de voorbeeld code hieronder door elk **#DUMMY #** te vervangen door de juiste omgevings-id.
+
+1. Voer de code in Visual Studio uit.
+
+> [!TIP]
+> * Bekijk andere voor C# beelden van Ga code op [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
+
+## <a name="project-dependencies"></a>Projectafhankelijkheden
+
+Het is raadzaam om de nieuwste versie van Visual Studio te gebruiken:
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) -versie 16.4.2 +
+
+De voorbeeld code bevat twee vereiste afhankelijkheden:
+
+* Het pakket [micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -3.13.9.
+* [Newton soft. json](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1-pakket.
+
+De pakketten toevoegen met behulp van [NuGet 2.12 +](https://www.nuget.org/):
+
+* `dotnet add package Newtonsoft.Json --version 9.0.1`
+* `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 3.13.9`
+
+## <a name="c-sample-code"></a>C#voorbeeld code
 
 [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs)]
 

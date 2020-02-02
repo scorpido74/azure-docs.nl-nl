@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: a942277b5616f3e8220e7fc0fd00f7d660d76d3e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6d03e66d125c4234a95e5a79f212bc81e7cea560
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892699"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933380"
 ---
 # <a name="what-is-video-indexer"></a>Wat is Video Indexer?
 
@@ -26,6 +26,10 @@ Als u inzichten wilt gaan extra heren met Video Indexer, moet u een account make
 Het volgende diagram is een illustratie en is geen technische uitleg over de werking van Video Indexer in de back-end.
 
 ![Video Indexer stroom diagram Azure Media Services](./media/video-indexer-overview/model-chart.png)
+
+## <a name="compliance-privacy-and-security"></a>Naleving, privacy en beveiliging
+ 
+Als belang rijke herinnering moet u zich houden aan alle toepasselijke wetgeving bij het gebruik van Video Indexer en mag u Video Indexer of een andere Azure-service niet gebruiken op een manier die de rechten van anderen schendt of schadelijk voor anderen is. Voordat u Video's, met inbegrip van biometrische gegevens, naar de Video Indexer-service voor de verwerking en opslag uploadt, moet u over alle juiste rechten beschikken, met inbegrip van alle toepasselijke toestemmingen, van de afzonderlijke (en) in de video. Voor meer informatie over naleving, privacy en beveiliging in Video Indexer, de micro soft [Cognitive Services-voor waarden](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Raadpleeg de privacyverklaring van micro soft voor de privacy van micro soft en de verwerking van uw [gegevens, de](https://privacy.microsoft.com/PrivacyStatement) [voor waarden voor Online Services ("Ost")](https://www.microsoft.com/licensing/product-licensing/products) en de addendum op [gegevens verwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Aanvullende privacy-informatie, inclusief gegevens retentie, verwijdering/vernietiging, is beschikbaar in de OST en [hier](faq.md). Door Video Indexer te gebruiken, gaat u akkoord met de Cognitive Services voor waarden, de OST, DPA en de privacyverklaring.
 
 ## <a name="what-can-i-do-with-video-indexer"></a>Wat kan ik doen met Video Indexer?
 

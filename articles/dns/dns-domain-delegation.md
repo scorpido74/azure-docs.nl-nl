@@ -2,17 +2,17 @@
 title: Overzicht van Azure DNS delegering
 description: Lees hoe u de domeindelegering wijzigt en DNS-naamservers kunt gebruiken om domeinen te hosten.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.date: 2/19/2019
-ms.author: allensu
+ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 3d8a87e199736bf51fcdc051c17c2fded3402b79
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212086"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939055"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegatie van DNS-zones met Azure DNS
 
@@ -24,7 +24,7 @@ Met Azure DNS kunt u een DNS-zone hosten en de DNS-records voor een domein in Az
 
 Het Domain Name System is een hiërarchie van domeinen. De hiërarchie start vanaf het hoofddomein. De naam van dit domein is eenvoudigweg ' **.** '.  Hieronder komen de topleveldomeinen, zoals com, net, org, uk of nl.  Onder deze topleveldomeinen komen de secondleveldomeinen, zoals org.uk of co.jp.  Enzovoort. De domeinen in de DNS-hiërarchie worden gehost met behulp van afzonderlijke DNS-zones. Deze zones worden globaal gedistribueerd en gehost door DNS-naamservers over de hele wereld.
 
-**DNS-zone**: een domein is een unieke naam in het Domain Name System, bijvoorbeeld contoso.com. Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten. Het domein contoso.com kan bijvoorbeeld een aantal DNS-records bevatten, zoals mail.contoso.com (voor een e-mailserver) en 'www.contoso.com' (voor een website).
+**DNS-zone**: een domein is een unieke naam in het Domain Name System, bijvoorbeeld contoso.com. Een DNS-zone wordt gebruikt om de DNS-records voor een bepaald domein te hosten. Het domein contoso.com kan bijvoorbeeld een aantal DNS-records bevatten, zoals mail.contoso.com (voor een e-mailserver) en www.contoso.com (voor een website).
 
 **Domeinregistrar**: een domeinregistrar is een bedrijf dat internetdomeinnamen kan leveren. Het bedrijf controleert of het internetdomein dat u wilt gebruiken, beschikbaar is en biedt u de mogelijkheid om de naam te kopen. Zodra de domeinnaam is geregistreerd, bent u de juridische eigenaar van de domeinnaam. Als u al een internetdomein hebt, gebruikt u de huidige domeinregistrar om te delegeren naar Azure DNS.
 

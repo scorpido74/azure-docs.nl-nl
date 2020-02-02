@@ -3,18 +3,18 @@ title: Het subnet van Azure Traffic Manager worden overschreven met behulp van A
 description: Dit artikel helpt u inzicht te krijgen in de manier waarop Traffic Manager subnet overschrijving wordt gebruikt om de routerings methode van een Traffic Manager profiel te onderdrukken voor het omleiden van verkeer naar een eind punt op basis van het IP-adres van de eind gebruiker via vooraf gedefinieerd IP-bereik tot eindpunt toewijzingen met Azure Zo.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.topic: article
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: allensu
-ms.openlocfilehash: 93362c0e1b359583e30886172f8ccb155c5ffaf4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.author: rohink
+ms.openlocfilehash: 323093ec78a9486d19496b0ee90e37cb42eea341
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348889"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938421"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Traffic Manager subnet overschrijven met Azure Power shell
 
@@ -112,6 +112,6 @@ Het verwijderen van het IP-adres bereik kan worden voltooid met behulp van [Remo
     ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over methoden voor het routeren van Traffic Manager [verkeer](traffic-manager-routing-methods.md).
+Meer informatie over methoden voor het [routeren](traffic-manager-routing-methods.md)van Traffic Manager verkeer.
 
 Meer informatie over het [subnet Traffic-routerings methode](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)

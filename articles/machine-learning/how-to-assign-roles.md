@@ -11,15 +11,15 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d43e04e0ef347ec46a8aad12aac380f68106fc2f
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: aba613911328b1272ebb07eeae633932cb4a442f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541606"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935360"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Toegang tot een Azure Machine Learning-werk ruimte beheren
-[!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku.md)]
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u de toegang tot een Azure Machine Learning-werk ruimte beheert. [Op rollen gebaseerd toegangs beheer (RBAC)](/azure/role-based-access-control/overview) wordt gebruikt om de toegang tot Azure-resources te beheren. Gebruikers in uw Azure Active Directory krijgen specifieke rollen toegewezen, waarmee toegang tot resources wordt verleend. Azure biedt zowel ingebouwde rollen als de mogelijkheid om aangepaste rollen te maken.
 
@@ -27,7 +27,7 @@ In dit artikel leert u hoe u de toegang tot een Azure Machine Learning-werk ruim
 
 Een Azure Machine Learning-werk ruimte is een Azure-resource. Net als bij andere Azure-resources geldt dat als er een nieuwe Azure Machine Learning-werk ruimte wordt gemaakt, deze drie standaard rollen bevat. U kunt gebruikers toevoegen aan de werk ruimte en ze toewijzen aan een van deze ingebouwde rollen.
 
-| Rol | Toegangsniveau |
+| Rol | Toegangs niveau |
 | --- | --- |
 | **Lezer** | Alleen-lezen acties in de werk ruimte. Lezers kunnen assets in een werk ruimte vermelden en weer geven, maar kunnen deze assets niet maken of bijwerken. |
 | **Inzender** | Activa in een werk ruimte weer geven, maken, bewerken of verwijderen (indien van toepassing). Inzenders kunnen bijvoorbeeld een experiment maken, een berekenings cluster maken of koppelen, een run verzenden en een webservice implementeren. |

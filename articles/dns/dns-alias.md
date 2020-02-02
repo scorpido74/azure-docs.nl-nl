@@ -2,17 +2,17 @@
 title: Overzicht van alias records-Azure DNS
 description: In dit artikel vindt u meer informatie over ondersteuning voor alias records in Microsoft Azure DNS.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
-ms.author: allensu
-ms.openlocfilehash: da396d3e3db4acd1a9843977b8b3e3d51c33f021
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 085e5fc20a6b5356e012eb2f674fafc00cef828f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212328"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937325"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Overzicht van Azure DNS-aliasrecords
 
@@ -27,7 +27,7 @@ Een aliasset wordt ondersteund voor de volgende record typen in een Azure DNS zo
 > [!NOTE]
 > Als u van plan bent een alias record te gebruiken voor de A-of AAAA-record typen om te verwijzen naar een [Azure Traffic Manager-profiel](../traffic-manager/quickstart-create-traffic-manager-profile.md) , moet u ervoor zorgen dat het Traffic Manager profiel alleen [externe eind punten](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)heeft. U moet het IPv4-of IPv6-adres opgeven voor externe eind punten in Traffic Manager. U kunt geen volledig gekwalificeerde domein namen (FQDN) in eind punten gebruiken. In het ideale geval gebruikt u statische IP-adressen.
 
-## <a name="capabilities"></a>Functionaliteit
+## <a name="capabilities"></a>Mogelijkheden
 
 - **Wijs naar een open bare IP-bron van een DNS A/AAAA-Recordset.** U kunt een A/AAAA-recordset maken en hiervan een alias instellen om te verwijzen naar een open bare IP-resource (standaard of basis). De DNS-record sets worden automatisch gewijzigd als het open bare IP-adres wordt gewijzigd of verwijderd. Dangling DNS-records die verwijzen naar onjuiste IP-adressen, worden vermeden.
 
@@ -37,7 +37,7 @@ Een aliasset wordt ondersteund voor de volgende record typen in een Azure DNS zo
 - **Ga naar een Azure Content Delivery Network-eind punt (CDN)** . Dit is handig wanneer u statische websites maakt met behulp van Azure Storage en Azure CDN.
 - **Wijs naar een andere DNS-record die binnen dezelfde zone is ingesteld.** Aliasrecords kunnen naar andere recordsets van hetzelfde type verwijzen. Een DNS CNAME-recordset kan bijvoorbeeld een alias zijn voor een andere CNAME-Recordset. Deze indeling is handig als u wilt dat sommige record sets aliassen en bepaalde niet-aliassen hebben.
 
-## <a name="scenarios"></a>Scenario 's
+## <a name="scenarios"></a>Scenario's
 
 Er zijn enkele algemene scenario's voor alias records.
 

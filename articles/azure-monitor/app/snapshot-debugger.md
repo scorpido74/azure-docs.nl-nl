@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/23/2019
-ms.reviewer: brahmnes
-ms.openlocfilehash: 681190a23fd09402ae96c328b7d98044baf3444e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.reviewer: cweining
+ms.openlocfilehash: 44b4a7bb5910f7f2d89a9f76e21ccfcacda667fb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406398"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932577"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Fouten opsporen in momentopnamen op uitzonderingen in .NET-apps
-Wanneer er een uitzondering optreedt, kunt u automatisch een momentopname voor foutopsporing verzamelen van uw live webtoepassing. De momentopname toont de status van de broncode en variabelen op het moment dat de uitzondering is opgetreden. De Snapshot Debugger (preview) in [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) bewaakt uitzonderingstelemetrie van uw web-app. Deze verzamelt momentopnamen op uw uitzonderingen boven activerende zodat u de informatie die u nodig hebt om problemen in de productieomgeving te diagnosticeren. Neem het [snap shot Collector NuGet-pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) op in uw toepassing en configureer optioneel verzamelings parameters in [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Moment opnamen worden weer gegeven op [uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) in de Application Insights Portal.
+Wanneer er een uitzondering optreedt, kunt u automatisch een momentopname voor foutopsporing verzamelen van uw live webtoepassing. De momentopname toont de status van de broncode en variabelen op het moment dat de uitzondering is opgetreden. Met de Snapshot Debugger in [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) wordt de telemetrie van de uitzonde ring van uw web-app gecontroleerd. Deze verzamelt momentopnamen op uw uitzonderingen boven activerende zodat u de informatie die u nodig hebt om problemen in de productieomgeving te diagnosticeren. Neem het [snap shot Collector NuGet-pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) op in uw toepassing en configureer optioneel verzamelings parameters in [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Moment opnamen worden weer gegeven op [uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) in de Application Insights Portal.
 
 U kunt foutopsporingsmomentopnamen in het portaal bekijken om de aanroepstack te zien en variabelen inspecteren bij elk aanroepstackframe. Open moment opnamen met Visual Studio 2019 Enter prise voor een krachtigere fout opsporing met de bron code. In Visual Studio, kunt u ook [Snappoints om interactief momentopnamen te instellen](https://aka.ms/snappoint) zonder te wachten op een uitzondering.
 
@@ -33,7 +33,7 @@ De volgende omgevingen worden ondersteund:
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) met OS Family 4 of hoger
 * [Azure service Fabric Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) die worden uitgevoerd op Windows Server 2012 R2 of hoger
 * [Azure virtual machines-en virtuele-machine schaal sets](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) met Windows Server 2012 R2 of hoger
-* [On-premises virtuele of fysieke machines](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) met Windows Server 2012 R2 of hoger
+* [On-premises virtuele of fysieke machines](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) met windows server 2012 R2 of hoger of Windows 8,1 of hoger
 
 > [!NOTE]
 > Client-toepassingen (bijvoorbeeld WPF, Windows Forms of UWP) worden niet ondersteund.

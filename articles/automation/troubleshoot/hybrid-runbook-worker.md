@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 31d81c6946fc256f5c22b93674469d7b87500173
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a5885df67464095061d9a95aa59010a1629fb8f8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480716"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930349"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Problemen met Hybrid Runbook Workers oplossen
 
@@ -34,7 +34,7 @@ De Runbook-uitvoering is mislukt en de volgende fout wordt weer gegeven:
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-Uw runbook is onderbroken kort nadat dit drie keer is geprobeerd uit te voeren. Er zijn voor waarden, waardoor het runbook kan worden onderbroken. Als dit gebeurt, kan het gerelateerde fout bericht geen aanvullende informatie bevatten die u vertelt waarom.
+Uw runbook is onderbroken kort nadat dit drie keer is geprobeerd uit te voeren. Er zijn omstandigheden waardoor het runbook kan worden onderbroken. Het gerelateerde fout bericht bevat mogelijk geen aanvullende informatie.
 
 #### <a name="cause"></a>Oorzaak
 
@@ -48,13 +48,13 @@ Hier volgen mogelijke oorzaken:
 
 * De computer die is geconfigureerd om de Hybrid Runbook Worker-functie uit te voeren, voldoet niet aan de minimale hardwarevereisten.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Controleer of de computer uitgaande toegang heeft tot *. azure-automation.net op poort 443.
 
-Computers die de Hybrid Runbook Worker uitvoeren, moeten voldoen aan de minimale hardwarevereisten voordat deze wordt geconfigureerd voor het hosten van deze functie. Runbooks en de achtergrond processen die door ze worden gebruikt, kunnen ertoe leiden dat het systeem wordt gebruikt en vertragingen of time-outs van runbook-taken veroorzaken.
+Computers die de Hybrid Runbook Worker uitvoeren, moeten voldoen aan de minimale hardwarevereisten voordat de werk nemer is geconfigureerd voor het hosten van deze functie. Runbooks en de achtergrond processen die ze gebruiken, kunnen ertoe leiden dat het systeem wordt gebruikt en vertraging of time-outs veroorzaakt.
 
-Controleer of de computer waarop de Hybrid Runbook Worker-functie wordt uitgevoerd, voldoet aan de minimale hardwarevereisten. Als dit het geval is, controleert u het CPU-en geheugen gebruik om de correlatie tussen de prestaties van Hybrid Runbook Worker processen en Windows te bepalen. Als er geheugen of CPU-druk is, kan dit wijzen op de nood zaak om resources bij te werken. U kunt ook een andere reken resource selecteren die de minimale vereisten ondersteunt en schalen wanneer de werkbelasting vraag aangeeft dat er een verhoging nodig is.
+Controleer of de computer waarop de Hybrid Runbook Worker-functie wordt uitgevoerd, voldoet aan de minimale hardwarevereisten. Als dit het geval is, controleert u het CPU-en geheugen gebruik om de correlatie tussen de prestaties van Hybrid Runbook Worker processen en Windows te bepalen. Elk geheugen of CPU-druk kan erop wijzen dat er resources moeten worden bijgewerkt. U kunt ook een andere reken resource selecteren die de minimale vereisten ondersteunt en schalen wanneer de werkbelasting vraag aangeeft dat er een verhoging nodig is.
 
 Raadpleeg het **micro soft-SMA-** gebeurtenis logboek voor een bijbehorende gebeurtenis met de beschrijving *Win32-proces is afgesloten met code [4294967295]* . De oorzaak van deze fout is dat u verificatie niet hebt geconfigureerd in uw runbooks of dat u de run as-referenties voor de Hybrid worker-groep hebt opgegeven. Controleer de [Runbook-machtigingen](../automation-hrw-run-runbooks.md#runbook-permissions) om te bevestigen dat u de verificatie voor uw runbooks juist hebt geconfigureerd.
 
@@ -77,25 +77,25 @@ At line:3 char:1
 
 Deze fout treedt op wanneer u een [uitvoeren als-account](../manage-runas-account.md) probeert te gebruiken in een runbook dat wordt uitgevoerd op een Hybrid Runbook worker waarbij het certificaat van het run as-account niet aanwezig is. Hybrid Runbook Workers beschikken standaard niet over het lokale certificaat, wat vereist is voor een goede werking van het run as-account.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
-Als uw Hybrid Runbook Worker een Azure-VM is, kunt u in plaats daarvan [beheerde identiteiten voor Azure-resources](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) gebruiken. Met dit scenario kunt u zich verifiëren bij Azure-resources met behulp van de beheerde identiteit van de virtuele Azure-machine in plaats van het run as-account, waardoor verificatie wordt vereenvoudigd. Wanneer de Hybrid Runbook Worker een on-premises machine is, moet u het certificaat van het uitvoeren als-account op de computer installeren. Zie voor meer informatie over het installeren van het certificaat de stappen voor het uitvoeren van het [export-RunAsCertificateToHybridWorker](../automation-hrw-run-runbooks.md#runas-script) runbook.
+Als uw Hybrid Runbook Worker een Azure-VM is, kunt u in plaats daarvan [beheerde identiteiten voor Azure-resources](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) gebruiken. Dit scenario vereenvoudigt verificatie door u in plaats van het run as-account te verifiëren bij Azure-resources met behulp van de beheerde identiteit van de virtuele Azure-machine. Wanneer de Hybrid Runbook Worker een on-premises machine is, moet u het certificaat van het uitvoeren als-account op de computer installeren. Zie de stappen voor het uitvoeren van de Power shell-RunAsCertificateToHybridWorker in [runbooks uitvoeren op een Hybrid Runbook worker](../automation-hrw-run-runbooks.md)voor meer informatie over het installeren van het certificaat.
 
 ## <a name="linux"></a>Linux
 
 De Linux-Hybrid Runbook Worker is afhankelijk van de [log Analytics-agent voor Linux](../../azure-monitor/platform/log-analytics-agent.md) om te communiceren met uw Automation-account om de werk nemer te registreren, Runbook-taken te ontvangen en de status van het rapport. Als de registratie van de werk nemer mislukt, zijn hier enkele mogelijke oorzaken voor de fout:
 
-### <a name="oms-agent-not-running"></a>Scenario: de logboek Analyics-agent voor Linux wordt niet uitgevoerd
+### <a name="oms-agent-not-running"></a>Scenario: de Log Analytics-agent voor Linux wordt niet uitgevoerd
 
 #### <a name="issue"></a>Probleem
 
-De Log Analytics-agent voor Linux is niet actief
+De Log Analytics-agent voor Linux wordt niet uitgevoerd
 
 #### <a name="cause"></a>Oorzaak
 
 Als de agent niet wordt uitgevoerd, voor komt u dat de Linux-Hybrid Runbook Worker communiceert met Azure Automation. De agent kan om verschillende redenen niet worden uitgevoerd.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
  Controleer of de agent wordt uitgevoerd door de volgende opdracht in te voeren: `ps -ef | grep python`. De uitvoer ziet er ongeveer als volgt uit: de python-processen met **nxautomation** -gebruikers account. Als de Updatebeheer-of Azure Automation oplossingen niet zijn ingeschakeld, worden er geen van de volgende processen uitgevoerd.
 
@@ -112,13 +112,40 @@ De volgende lijst bevat de processen die zijn gestart voor een Linux-Hybrid Runb
 
 * **werk nemer. conf** : dit proces is het automatische geregistreerde Hybrid worker-proces, dat door de worker Manager wordt gestart. Dit proces wordt gebruikt door Updatebeheer en is transparant voor de gebruiker. Dit proces is niet aanwezig als de Updatebeheer-oplossing niet is ingeschakeld op de computer.
 
-* **zelf/Worker. conf** : dit proces is het proces van de zelf Hybrid Worker. Het zelf Hybrid worker-werk proces wordt gebruikt om gebruikers runbooks uit te voeren op de Hybrid Runbook Worker. Dit verschilt alleen van het automatische geregistreerde Hybrid worker-proces in de sleutel details die een andere configuratie gebruikt. Dit proces is niet aanwezig als de Azure Automation oplossing is uitgeschakeld en de zelf Linux-Hybrid Worker niet is geregistreerd.
+* **zelf/Worker. conf** : dit proces is het proces van de zelf Hybrid Worker. Het zelf Hybrid worker-werk proces wordt gebruikt om gebruikers runbooks uit te voeren op de Hybrid Runbook Worker. Dit verschilt alleen van het automatische geregistreerde Hybrid worker-proces in de sleutel Details waarvoor een andere configuratie wordt gebruikt. Dit proces is niet aanwezig als de Azure Automation oplossing is uitgeschakeld en de zelf Linux-Hybrid Worker niet is geregistreerd.
 
 Als de agent niet wordt uitgevoerd, voert u de volgende opdracht uit om de service te starten: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 
+### <a name="error-403-on-registration"></a>Scenario: fout 403 tijdens de registratie van Hybrid Runbook Worker
+
+#### <a name="issue"></a>Probleem
+
+De eerste registratie fase van de werk nemer mislukt en u ontvangt de volgende fout (403).
+
+```error
+"Forbidden: You don't have permission to access / on this server."
+```
+
+#### <a name="cause"></a>Oorzaak
+
+Hier volgen enkele mogelijke oorzaken:
+* Er is een niet-getypte werk ruimte-ID of werkruimte sleutel (primair) aanwezig in de instellingen van de agent. 
+* De Hybrid Runbook Worker kan de configuratie niet downloaden, waardoor een fout met een account wordt gekoppeld. Wanneer Azure oplossingen biedt, worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Het is ook mogelijk dat er een onjuiste datum en/of tijd op de computer is ingesteld. Als de tijd +/-15 minuten vanaf de huidige tijd is, mislukt de onboarding.
+
+#### <a name="resolution"></a>Resolutie
+
+##### <a name="mistyped-workspace-idkey"></a>Niet-getypte werk ruimte-ID/sleutel
+Als u wilt controleren of de werk ruimte-ID of de werk ruimte sleutel van de agent is getypt, raadpleegt u [een werk ruimte toevoegen of verwijderen: Windows agent](../../azure-monitor/platform/agent-manage.md#windows-agent) voor de Windows-agent of [een werk ruimte toevoegen of verwijderen. Dit is een Linux-agent](../../azure-monitor/platform/agent-manage.md#linux-agent) voor de Linux-agent.  Zorg ervoor dat u de volledige teken reeks selecteert in het Azure Portal en kopieer en plak deze zorgvuldig.
+
+##### <a name="configuration-not-downloaded"></a>De configuratie is niet gedownload
+
+Uw Log Analytics-werk ruimte en het Automation-account moeten zich in een gekoppelde regio bevinden. Zie [Azure Automation en log Analytics werkruimte toewijzingen](../how-to/region-mappings.md)voor een lijst met ondersteunde regio's.
+
+Mogelijk moet u ook de datum en/of tijd zone van uw computer bijwerken. Als u een aangepast tijds bereik selecteert, moet u ervoor zorgen dat het bereik zich in UTC bevindt. Dit kan afwijken van uw lokale tijd zone.
+
 ### <a name="class-does-not-exist"></a>Scenario: de opgegeven klasse bestaat niet
 
-Als u de volgende fout ziet: **de opgegeven klasse bestaat niet.** in het `/var/opt/microsoft/omsconfig/omsconfig.log` moet de Log Analytics-agent voor Linux worden bijgewerkt. Voer de volgende opdracht uit om de agent opnieuw te installeren:
+Als u de fout ziet **, bestaat de opgegeven klasse niet.** in het `/var/opt/microsoft/omsconfig/omsconfig.log`moet de Log Analytics-agent voor Linux worden bijgewerkt. Voer de volgende opdracht uit om de agent opnieuw te installeren:
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -136,13 +163,13 @@ De `healthservice`-service wordt niet uitgevoerd op de Hybrid Runbook Worker com
 
 #### <a name="cause"></a>Oorzaak
 
-Als de Windows-service micro soft Monitoring Agent niet wordt uitgevoerd, wordt door deze status voor komen dat de Hybrid Runbook Worker communiceert met Azure Automation.
+Als micro soft Monitoring Agent micro soft-service niet wordt uitgevoerd, wordt door deze status voor komen dat de Hybrid Runbook Worker communiceert met Azure Automation.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Controleer of de agent wordt uitgevoerd door de volgende opdracht in te voeren in Power shell: `Get-Service healthservice`. Als de service is gestopt, voert u de volgende opdracht in Power shell in om de service te starten: `Start-Service healthservice`.
 
-### <a name="event-4502"></a>Gebeurtenis 4502 in Operations Manager logboek
+### <a name="event-4502"></a>Scenario: gebeurtenis 4502 in Operations Manager logboek
 
 #### <a name="issue"></a>Probleem
 
@@ -152,13 +179,13 @@ In het gebeurtenis logboek van de **toepassing en het service servicelogboeken\o
 
 Dit probleem kan worden veroorzaakt door uw proxy of netwerk firewall die communicatie met Microsoft Azure blokkeert. Controleer of de computer uitgaande toegang heeft tot *. azure-automation.net op de poorten 443. 
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
-Logboeken worden lokaal opgeslagen op elke Hybrid worker op C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. U kunt controleren of er waarschuwingen of fouten zijn in het gebeurtenis logboek van de **toepassing en het Services-Logs\Microsoft-SMA\Operations** en het **toepassings-en servicelogboeken\operations beheer** dat zou wijzen op een connectiviteit of een ander probleem dat van invloed is op de onboarding van de rol aan Azure Automation of probleem tijdens normale bewerkingen. Zie problemen [met de log Analytics Windows-agent oplossen](../../azure-monitor/platform/agent-windows-troubleshoot.md)voor meer informatie over het oplossen van problemen met de log Analytics-agent.
+Logboeken worden lokaal opgeslagen op elke Hybrid worker op C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. U kunt controleren of er sprake is van waarschuwingen of fouten in het gebeurtenis logboek van de **toepassing en het Services-Logs\Microsoft-SMA\Operations** en het **toepassings-en servicelogboeken\operations beheer** dat een verbinding of een ander probleem aanduidt dat van invloed is op de onboarding van de rol tot Azure Automation of probleem terwijl de normale bewerkingen worden uitgevoerd. Zie problemen [met de log Analytics Windows-agent oplossen](../../azure-monitor/platform/agent-windows-troubleshoot.md)voor meer informatie over het oplossen van problemen met de log Analytics-agent.
 
 [Runbook-uitvoer en-berichten](../automation-runbook-output-and-messages.md) worden naar Azure Automation verzonden vanuit Hybrid Workers, net zoals met runbook-taken die worden uitgevoerd in de Cloud. U kunt de uitgebreide en voortgangs stromen ook op dezelfde manier inschakelen als voor andere runbooks.
 
-### <a name="corrupt-cache"></a>Hybrid Runbook Worker niet rapporteren
+### <a name="corrupt-cache"></a>Scenario: Hybrid Runbook Worker niet rapporteren
 
 #### <a name="issue"></a>Probleem
 
@@ -176,9 +203,9 @@ Heartbeat
 
 Dit probleem kan worden veroorzaakt door een beschadigde cache op het Hybrid Runbook Worker.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
-Om dit probleem op te lossen, meldt u zich aan bij de Hybrid Runbook Worker en voert u het volgende script uit. Met dit script wordt de micro soft Monitoring Agent gestopt, wordt de cache verwijderd en wordt de service opnieuw gestart. Deze actie dwingt de Hybrid Runbook Worker de configuratie opnieuw te downloaden van Azure Automation.
+Om dit probleem op te lossen, meldt u zich aan bij de Hybrid Runbook Worker en voert u het volgende script uit. Met dit script wordt de micro soft Monitoring Agent gestopt, wordt de cache verwijderd en wordt de service opnieuw gestart. Deze actie zorgt ervoor dat de Hybrid Runbook Worker de configuratie van Azure Automation opnieuw te downloaden.
 
 ```powershell
 Stop-Service -Name HealthService
@@ -200,9 +227,9 @@ Machine is already registered
 
 #### <a name="cause"></a>Oorzaak
 
-Dit kan gebeuren als de computer al is geregistreerd met een ander Automation-account of als u de Hybrid Runbook Worker opnieuw wilt toevoegen nadat u deze van een computer hebt verwijderd.
+Dit probleem kan optreden als de computer al is geregistreerd met een ander Automation-account of als u de Hybrid Runbook Worker wilt lezen nadat u deze van een computer hebt verwijderd.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 U kunt dit probleem oplossen door de volgende register sleutel te verwijderen en de `HealthService` opnieuw te starten en de `Add-HybridRunbookWorker` cmdlet opnieuw uit te voeren:
 
@@ -215,4 +242,3 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 * Krijg antwoorden van Azure-experts op [Azure-Forums](https://azure.microsoft.com/support/forums/)
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport), het officiële Microsoft Azure-account voor het verbeteren van de gebruikerservaring door de Azure-community in contact te brengen met de juiste resources: antwoorden, ondersteuning en experts.
 * Als u meer hulp nodig hebt, kunt u een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
-

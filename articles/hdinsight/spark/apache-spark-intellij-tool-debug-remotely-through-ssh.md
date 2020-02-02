@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: 6e3cf8fa70d6abe8005fe2d2de059c0a3944ff81
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 67660e3e98f5a12236798d74cc61f71616e6751d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905319"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934754"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Fouten opsporen Apache Spark toepassingen op een HDInsight-cluster met Azure-toolkit voor IntelliJ via SSH
 
@@ -25,7 +25,7 @@ In dit artikel vindt u stapsgewijze richt lijnen voor het gebruik van HDInsight-
 
 * Voor Windows-gebruikers: wanneer u de lokale Spark scala-toepassing uitvoert op een Windows-computer, kunt u een uitzonde ring krijgen, zoals wordt uitgelegd in [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). De uitzonde ring treedt op omdat WinUtils. exe ontbreekt in Windows.
 
-    U kunt deze fout oplossen door `https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe` te downloaden naar een locatie zoals **C:\WinUtils\bin**. Voeg vervolgens de omgevings variabele **HADOOP_HOME**toe en stel de waarde van de variabele in op **C:\WinUtils**.
+    U kunt deze fout oplossen door [Winutils. exe](https://github.com/steveloughran/winutils) te downloaden naar een locatie zoals **C:\WinUtils\bin**. Voeg vervolgens de omgevings variabele **HADOOP_HOME**toe en stel de waarde van de variabele in op **C:\WinUtils**.
 
 * [IntelliJ-idee](https://www.jetbrains.com/idea/download/#section=windows) (de Community-editie is gratis).
 

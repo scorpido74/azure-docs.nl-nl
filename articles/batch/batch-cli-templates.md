@@ -1,6 +1,6 @@
 ---
-title: End-to-end-taken uitvoeren met behulp van sjablonen-Azure Batch | Microsoft Docs
-description: Maak batch-Pools,-taken en-taken met sjabloon bestanden en de Azure CLI.
+title: End-to-end-taken uitvoeren met behulp van sjablonen-Azure Batch
+description: Met alleen CLI-opdrachten kunt u een pool maken, invoer gegevens uploaden, taken en bijbehorende taken maken en de resulterende uitvoer gegevens downloaden.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -11,12 +11,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 2612986491268651222e51646e75cdecc95dc40c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 89a354320ed474ce3e5f9049a75e06313c5860e2
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029735"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935062"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI-sjablonen en-bestands overdracht gebruiken
 

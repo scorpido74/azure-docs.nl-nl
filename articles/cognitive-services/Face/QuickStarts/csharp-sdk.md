@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e305a5634aa0c065342e1873c413039eb734b972
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: a9fb77ea30aa101653d50e7833876dbec6362093
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165891"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930148"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Snelstartgids: Face client library voor .NET
 
@@ -22,7 +22,6 @@ Ga aan de slag met de face-client bibliotheek voor .NET. Volg deze stappen om he
 
 Gebruik de face-client bibliotheek voor .NET voor het volgende:
 
-* [De client verifiëren](#authenticate-the-client)
 * [Gezichten detecteren in een installatie kopie](#detect-faces-in-an-image)
 * [Vergelijk bare gezichten zoeken](#find-similar-faces)
 * [Een persoons groep maken en trainen](#create-and-train-a-person-group)
@@ -105,7 +104,7 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 |[PersonGroupOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)| Deze klasse beheert de in de cloud opgeslagen **PersonGroup** -constructies, die een set geassorteerde **persoons** objecten opslaan. |
 |[ShapshotOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)|Deze klasse beheert de functionaliteit van de moment opname. U kunt deze gebruiken om al uw op de cloud gebaseerde gezichts gegevens tijdelijk op te slaan en deze gegevens te migreren naar een nieuw Azure-abonnement. |
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 In de onderstaande code fragmenten ziet u hoe u de volgende taken kunt uitvoeren met de face-client bibliotheek voor .NET:
 
@@ -122,7 +121,7 @@ In de onderstaande code fragmenten ziet u hoe u de volgende taken kunt uitvoeren
 > [!NOTE]
 > In deze Quick Start wordt ervan uitgegaan dat u [omgevings variabelen hebt gemaakt](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw gezichts sleutel en eind punt, met de naam `FACE_SUBSCRIPTION_KEY` en `FACE_ENDPOINT`.
 
-In een nieuwe methode maakt u een exemplaar van een client met uw eind punt en sleutel. Maak een [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) -object met uw sleutel en gebruik het met uw eind punt om een [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -object te maken.
+In een nieuwe methode maakt u een exemplaar van een client met uw eind punt en sleutel. Maak een **[ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** -object met uw sleutel en gebruik het met uw eind punt om een **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** -object te maken.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_auth)]
 
@@ -140,19 +139,19 @@ Optioneel kunt u kiezen welk AI-model u wilt gebruiken om gegevens van de gedete
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-Bij de laatste detectie bewerking worden een [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -object, een afbeeldings-URL en een herkennings model uitgevoerd.
+Bij de laatste detectie bewerking worden een **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** -object, een afbeeldings-URL en een herkennings model uitgevoerd.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
 ### <a name="get-detected-face-objects"></a>Gedetecteerde face-objecten ophalen
 
-In het volgende code blok detecteert de `DetectFaceExtract`-methode gezichten in drie van de afbeeldingen bij de opgegeven URL en maakt een lijst met [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) -objecten in programma geheugen. De lijst met [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) -waarden geeft aan welke functies moeten worden geëxtraheerd. 
+In het volgende code blok detecteert de `DetectFaceExtract`-methode gezichten in drie van de afbeeldingen bij de opgegeven URL en maakt een lijst met **[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** -objecten in programma geheugen. De lijst met **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** -waarden geeft aan welke functies moeten worden geëxtraheerd. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
 
 ### <a name="display-detected-face-data"></a>Gedetecteerde gezichts gegevens weer geven
 
-De rest van de methode `DetectFaceExtract` parseert en drukt de kenmerk gegevens af voor elk gedetecteerd gezicht. Elk kenmerk moet afzonderlijk worden opgegeven in de oorspronkelijke gezichts detectie-API-aanroep (in de [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) -lijst). De volgende code verwerkt elk kenmerk, maar u zult waarschijnlijk slechts één of enkele gebruiken.
+De rest van de methode `DetectFaceExtract` parseert en drukt de kenmerk gegevens af voor elk gedetecteerd gezicht. Elk kenmerk moet afzonderlijk worden opgegeven in de oorspronkelijke gezichts detectie-API-aanroep (in de **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** -lijst). De volgende code verwerkt elk kenmerk, maar u zult waarschijnlijk slechts één of enkele gebruiken.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
 

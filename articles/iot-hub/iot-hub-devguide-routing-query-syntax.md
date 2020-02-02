@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 859b15954f64f8b481f6b86c04fc28b542599f02
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 04db62f402c25dd4a04281047f684dc23d41a502
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890498"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934623"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Query syntaxis voor het routeren van berichten IoT Hub
 
@@ -52,11 +52,11 @@ Systeem eigenschappen helpen de inhoud en bron van de berichten te identificeren
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| Invoer | tekenreeks | De gebruiker geeft het inhouds type van het bericht op. Als u een query wilt toestaan voor de hoofd tekst van het bericht, moet u de waarde Application/JSON instellen. |
-| contentEncoding | tekenreeks | De gebruiker geeft het type code ring van het bericht op. Toegestane waarden zijn UTF-8, UTF-16, UTF-32 als het content type is ingesteld op Application/JSON. |
-| iothub-connection-device-id | tekenreeks | Deze waarde wordt ingesteld door IoT Hub en identificeert de ID van het apparaat. Gebruik `$connectionDeviceId`om een query uit te zoeken. |
-| iothub-enqueuedtime | tekenreeks | Deze waarde wordt ingesteld door IoT Hub en vertegenwoordigt de werkelijke tijd van enqueuing van het bericht in UTC. Gebruik `enqueuedTime`om een query uit te zoeken. |
-| iothub-interface-name | tekenreeks | Deze waarde wordt ingesteld door de gebruiker en vertegenwoordigt de naam van de digitale twee interface die het telemetrie-bericht implementeert. Gebruik `$interfaceName`om een query uit te zoeken. Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). |
+| contentType | string | De gebruiker geeft het inhouds type van het bericht op. Als u een query wilt toestaan voor de hoofd tekst van het bericht, moet u de waarde Application/JSON instellen. |
+| contentEncoding | string | De gebruiker geeft het type code ring van het bericht op. Toegestane waarden zijn UTF-8, UTF-16, UTF-32 als het content type is ingesteld op Application/JSON. |
+| iothub-connection-device-id | string | Deze waarde wordt ingesteld door IoT Hub en identificeert de ID van het apparaat. Gebruik `$connectionDeviceId`om een query uit te zoeken. |
+| iothub-enqueuedtime | string | Deze waarde wordt ingesteld door IoT Hub en vertegenwoordigt de werkelijke tijd van enqueuing van het bericht in UTC. Gebruik `enqueuedTime`om een query uit te zoeken. |
+| iothub-interface-name | string | Deze waarde wordt ingesteld door de gebruiker en vertegenwoordigt de naam van de digitale twee interface die het telemetrie-bericht implementeert. Gebruik `$interfaceName`om een query uit te zoeken. Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). |
 
 Zoals beschreven in de [IOT hub berichten](iot-hub-devguide-messages-construct.md), zijn er aanvullende systeem eigenschappen in een bericht. Naast **Content type**, **contentEncoding**en **enqueuedTime**kan ook een query worden uitgevoerd op de **connectionDeviceId** -en **connectionModuleId** .
 
@@ -163,7 +163,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ## <a name="message-routing-query-based-on-device-twin"></a>Bericht routering query op basis van het apparaat dubbele 
 
-Met bericht routering kunt u een query uitvoeren op dubbele Tags en eigenschappen van het [apparaat](iot-hub-devguide-device-twins.md) , die JSON-objecten zijn. Het uitvoeren van query's op module dubbele wordt niet ondersteund. Hieronder ziet u een voor beeld van dubbele Tags en eigenschappen van een apparaat.
+Met bericht routering kunt u een query uitvoeren op dubbele Tags en eigenschappen van het [apparaat](iot-hub-devguide-device-twins.md) , die JSON-objecten zijn. Query's uitvoeren op module dubbele wordt ook ondersteund. Hieronder ziet u een voor beeld van dubbele Tags en eigenschappen van een apparaat.
 
 ```JSON
 {
@@ -196,7 +196,7 @@ Met bericht routering kunt u een query uitvoeren op dubbele Tags en eigenschappe
 
 ### <a name="query-expressions"></a>Query-expressies
 
-Een query op de bericht tekst moet worden voorafgegaan door de `$twin`. De query-expressie kan ook een dubbele tag of eigenschaps verwijzing combi neren met een verwijzing naar een hoofd tekst, eigenschappen van het bericht systeem en naslag informatie over de eigenschappen van een bericht toepassing. U kunt het beste unieke namen gebruiken in tags en eigenschappen, aangezien de query niet hoofdletter gevoelig is. U kunt ook `twin`, `$twin`, `body`of `$body`gebruiken als eigenschaps namen. Zo zijn de volgende geldige query-expressies: 
+Een query op de bericht tekst moet worden voorafgegaan door de `$twin`. De query-expressie kan ook een dubbele tag of eigenschaps verwijzing combi neren met een verwijzing naar een hoofd tekst, eigenschappen van het bericht systeem en naslag informatie over de eigenschappen van een bericht toepassing. U kunt het beste unieke namen gebruiken in tags en eigenschappen, aangezien de query niet hoofdletter gevoelig is. Dit geldt voor apparaatdubbels en module apparaatdubbels. U kunt ook `twin`, `$twin`, `body`of `$body`gebruiken als eigenschaps namen. Zo zijn de volgende geldige query-expressies: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: d28eb6c4ee4fadf8a090a17121f6910eb34135e3
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514552"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935211"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Wat is Azure SQL Database beheerde instantie?
 
@@ -299,11 +299,11 @@ De implementatie optie Managed instance ondersteunt achterwaartse compatibilitei
   
 Het volgende diagram geeft een overzicht van surface area compatibiliteit in het beheerde exemplaar:  
 
-![migratie](./media/sql-database-managed-instance/migration.png)
+![virtuelemachinemigratie](./media/sql-database-managed-instance/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>De belangrijkste verschillen tussen SQL Server on-premises en in een beheerd exemplaar
 
-De implementatie van de Managed instance-optie voor delen is altijd up-to-date in de Cloud. Dit betekent dat sommige functies in on-premises SQL Server mogelijk verouderd, buiten gebruik worden gesteld of alternatieven hebben. Er zijn specifieke gevallen waarin hulpprogram ma's moeten herkennen dat een bepaalde functie op een iets andere manier werkt of dat de service niet volledig wordt beheerd:
+De implementatie van de Managed instance-optie voor delen is altijd up-to-date in de Cloud. Dit betekent dat sommige functies in on-premises SQL Server mogelijk verouderd, buiten gebruik worden gesteld of alternatieven hebben. Er zijn specifieke gevallen waarin hulpprogram ma's moeten herkennen dat een bepaalde functie op een iets andere manier werkt of dat de service wordt uitgevoerd in een omgeving die u niet volledig beheert:
 
 - Hoge Beschik baarheid is ingebouwd in en vooraf geconfigureerd met technologie die vergelijkbaar is met de [beschikbaarheids groepen altijd](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
 - Automatische back-ups en herstel naar een bepaald tijdstip. De klant kan `copy-only` back-ups initiëren die geen conflicten met de automatische back-upketen hebben.

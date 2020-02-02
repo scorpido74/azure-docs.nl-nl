@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887613"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76961456"
 ---
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
@@ -429,7 +429,7 @@ Ja.
 
 **Wat zijn de grootste schijf grootten die worden ondersteund door Azure Backup en Azure Site Recovery service?**
 
-De grootste schijf grootte die wordt ondersteund door Azure Backup en Azure Site Recovery service is 4 TiB. Ondersteuning voor de grotere schijven tot 32 TiB is nog niet beschikbaar.
+De grootste schijf grootte die wordt ondersteund door Azure Backup is 32 TiB (4 TiB voor versleutelde schijven). De grootste schijf grootte die wordt ondersteund door Azure Site Recovery is 8 TiB. Ondersteuning voor de grotere schijven tot 32 TiB is nog niet beschikbaar in Azure Site Recovery.
 
 **Wat zijn de aanbevolen VM-grootten voor grotere schijf grootten (> 4 TiB) voor Standard-SSD en Standard-HDD schijven voor een geoptimaliseerde schijf-IOPS en band breedte?**
 

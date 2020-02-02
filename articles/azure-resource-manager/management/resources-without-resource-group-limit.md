@@ -2,13 +2,13 @@
 title: Aantal resources zonder limiet van 800
 description: Geeft een lijst van de Azure-resource typen die meer dan 800 exemplaren in een resource groep kunnen bevatten.
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: 42e8ddeebcd1dda4fc67e4e7be137c5e01decdf4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715627"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937937"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resources die niet beperkt zijn tot 800 exemplaren per resource groep
 
@@ -89,6 +89,10 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 * software
 * softwareUpdateProfile
 * softwareUpdates
+
+## <a name="microsoftinsights"></a>Microsoft.Insights
+
+* metricalerts
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -179,10 +183,6 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 
 * apiManagementAccounts/apis
 * sites
-
-## <a name="microsoftinsights"></a>microsoft.insights
-
-* metricalerts
 
 ## <a name="next-steps"></a>Volgende stappen
 

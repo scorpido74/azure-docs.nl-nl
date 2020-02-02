@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6652ca30d9f38eb6184fce5f1ff5428d29c271a6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e2ad8eb181685d3ac3de8b1e0ed7ef8ddfa4e224
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911257"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933285"
 ---
 # <a name="add-controls-to-a-map"></a>Besturings elementen aan een kaart toevoegen
 
@@ -39,7 +39,7 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code van de bove
 
 ## <a name="add-pitch-control"></a>Besturings element voor Pitch toevoegen
 
-Met een besturings element pitch voegt u knoppen toe voor het kantelen van de hoogte om toe te wijzen aan de horizon. Met het volgende code voorbeeld maakt u een instantie van de klasse [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) en voegt u deze toe aan de rechter bovenhoek van de kaart.
+Met een besturings element pitch voegt u knoppen toe voor het kantelen van de hoogte om toe te wijzen aan de horizon. Met het volgende code voorbeeld maakt u een instantie van de klasse [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) . De PitchControl wordt toegevoegd aan de rechter bovenhoek van de kaart.
 
 ```javascript
 //Construct a pitch control and add it to the map.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 2624f9fafd82aad9613d6940eca69486d897aa08
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 393356bd8604f6e7622acd778817681aad31f1f9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905340"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935023"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure-toolkit voor IntelliJ gebruiken om fout opsporing uit te Apache Spark toepassingen op afstand in HDInsight via VPN
 
@@ -35,7 +35,7 @@ In dit artikel vindt u stapsgewijze richt lijnen voor het gebruik van de HDInsig
 * **IntelliJ-idee**. In dit artikel wordt versie 2017,1 gebruikt. U kunt deze installeren vanaf de [JetBrains-website](https://www.jetbrains.com/idea/download/).
 * **HDInsight-Hulpprogram ma's in azure-Toolkit voor IntelliJ**. HDInsight-hulpprogram ma's voor IntelliJ zijn beschikbaar als onderdeel van Azure-toolkit voor IntelliJ. Zie [install Azure-Toolkit voor IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation)voor instructies over het installeren van Azure Toolkit.
 * **Meld u aan bij uw Azure-abonnement vanuit het IntelliJ-idee**. Volg de instructies in het [Azure-Toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken](apache-spark-intellij-tool-plugin.md).
-* **Tijdelijke uitzonde ring**. Tijdens het uitvoeren van de Spark scala-toepassing voor externe fout opsporing op een Windows-computer, kan er een uitzonde ring optreden. Deze uitzonde ring wordt uitgelegd in [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) en treedt op als gevolg van een ontbrekend WinUtils. exe-bestand in Windows. U kunt deze fout omzeilen door `https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe` te downloaden naar een locatie zoals **C:\WinUtils\bin**. Voeg een **HADOOP_HOME** omgevings variabele toe en stel de waarde van de variabele in op **C\WinUtils**.
+* **Tijdelijke uitzonde ring**. Tijdens het uitvoeren van de Spark scala-toepassing voor externe fout opsporing op een Windows-computer, kan er een uitzonde ring optreden. Deze uitzonde ring wordt uitgelegd in [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) en treedt op als gevolg van een ontbrekend WinUtils. exe-bestand in Windows. U kunt deze fout omzeilen door [Winutils. exe](https://github.com/steveloughran/winutils) te downloaden naar een locatie zoals **C:\WinUtils\bin**. Voeg een **HADOOP_HOME** omgevings variabele toe en stel de waarde van de variabele in op **C\WinUtils**.
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>Stap 1: een virtueel Azure-netwerk maken
 

@@ -3,7 +3,7 @@ title: Problemen met de gedegradeerde status op Azure Traffic Manager oplossen
 description: Problemen met Traffic Manager profielen oplossen wanneer deze worden weer gegeven als gedegradeerde status.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: allensu
-ms.openlocfilehash: 8b8fbdf55e408874f6a6e83d6333583238865b5c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: c398763405472c9018a5c30d34fbd3963ecb93b7
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227722"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938368"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Oplossen van problemen met een gedegradeerde status op Azure Traffic Manager
 
@@ -43,7 +43,7 @@ Als in de status van uw Traffic Manager een **inactieve** status wordt weer gege
 Als u een test fout wilt oplossen, hebt u een hulp programma nodig dat de HTTP-status code retourneert van de test-URL. Er zijn veel hulpprogram ma's beschikbaar die het onbewerkte HTTP-antwoord tonen.
 
 * [Fiddler](https://www.telerik.com/fiddler)
-* [Ezelsoor](https://curl.haxx.se/)
+* [curl](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
 U kunt ook het tabblad netwerk van de F12-Hulpprogram Ma's voor fout opsporing in Internet Explorer gebruiken om de HTTP-antwoorden te bekijken.

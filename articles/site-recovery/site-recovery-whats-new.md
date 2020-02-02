@@ -2,13 +2,13 @@
 title: Wat is er nieuw in Azure Site Recovery
 description: Biedt een samen vatting van nieuwe functies en de meest recente updates in de Azure Site Recovery-service.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: ecd42c624cf1fe62c8041a0b8798585c8870cabc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/31/2020
+ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896028"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934926"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -36,6 +36,18 @@ Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning v
 
 ## <a name="updates-january-2020"></a>Updates (januari 2020)
 
+### <a name="update-rollup-44"></a>Update pakket 44
+[Update pakket 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) bevat de volgende updates.
+
+**Update** | **Details**
+--- | ---
+**Problemen/verbeteringen van het probleem** | Een aantal updates voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
+
+### <a name="azure-vmware-disaster-recovery"></a>Herstel na nood gevallen voor Azure VMware
+
+Virtuele Azure-machines ondersteunen nu Vm's voor versleuteling-at-rest met door de klant beheerde sleutels. [Meer informatie](azure-to-azure-how-to-enable-replication-cmk-disks.md).
+
+
 ### <a name="update-rollup-43"></a>Update pakket 43
 
 [Update pakket 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) bevat de volgende updates.
@@ -58,7 +70,7 @@ Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning v
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
 
 
-## <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM
+### <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM
 
 Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel samenvatten.
 

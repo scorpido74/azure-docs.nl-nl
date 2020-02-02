@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 183b85ad8a61c76942981ebb764512b8a090b0a8
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 150927ac05cba058d1d152ce568d7a462043d076
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890447"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937750"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Communiceren met uw IoT-hub met behulp van het MQTT-Protocol
 
@@ -44,11 +44,29 @@ De volgende tabel bevat koppelingen naar code voorbeelden voor elke ondersteunde
 
 | Taal | Protocol parameter |
 | --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |Azure-IOT-Device-mqtt |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol. MQTT |
+| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |azure-iot-device-mqtt |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol.MQTT |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |Transport type. Mqtt |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |MQTT standaard altijd ondersteunt |
+
+### <a name="default-keep-alive-timeout"></a>Standaard time-out voor Keep-Alive 
+
+Om ervoor te zorgen dat een client/IoT Hub verbinding actief blijft, worden zowel de service als de client regel matig een *Keep-Alive* ping naar elkaar verzonden. De client die IoT SDK gebruikt, verzendt een Keep-Alive met het interval dat is gedefinieerd in deze tabel:
+
+|Taal  |Standaard interval voor Keep-Alive  |Configureer bare  |
+|---------|---------|---------|
+|Node.js     |   180 seconden      |     Nee    |
+|Java     |    230 seconden     |     Nee    |
+|C     | 240 seconden |  [Ja](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
+|C#     | 300 seconden |  [Ja](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
+|Python (v2)   | 60 seconden |  Nee   |
+
+De volgende [MQTT-specificatie](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081), het Keep-Alive ping-interval van IoT Hub is 1,5 keer de client Keep-Alive-waarde. IoT Hub beperkt echter de maximale time-out aan de server zijde tot 29,45 minuten (1767 seconden), omdat alle Azure-Services zijn gebonden aan de Azure load balancer TCP-time-out voor inactiviteit, 29,45 minuten. 
+
+Bijvoorbeeld: een apparaat dat de Java-SDK gebruikt, verzendt de Keep-Alive ping, waarna de netwerk verbinding wordt verbroken. 230 seconden later is het apparaat de Keep-Alive ping missen omdat het offline is. IoT Hub wordt de verbinding echter niet onmiddellijk gesloten. er wordt nog een `(230 * 1.5) - 230 = 115` seconden gewacht voordat de verbinding met het apparaat wordt verbroken met de fout [404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md). 
+
+De maximale waarde voor de Keep-Alive van clients die u kunt instellen, is `1767 / 1.5 = 1177` seconden. Elk verkeer stelt de Keep-Alive opnieuw in. Bijvoorbeeld: een geslaagde SAS-token vernieuwing stelt de Keep-Alive opnieuw in.
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Een apparaat-app migreren van AMQP naar MQTT
 
@@ -153,7 +171,7 @@ Mosquitto_subscribe: om gebeurtenissen weer te geven die in een Azure IoT-hub op
 
 Verbinding maken met IoT Hub via MQTT via een module-identiteit is vergelijkbaar met het apparaat ( [hierboven](#using-the-mqtt-protocol-directly-as-a-device)beschreven), maar u moet het volgende gebruiken:
 
-* Stel de client-id in op `{device_id}/{module_id}`.
+* Stel de client-ID in op `{device_id}/{module_id}`.
 
 * Als verificatie met gebruikers naam en wacht woord, stelt u de gebruikers naam in op `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` en gebruikt u het SAS-token dat is gekoppeld aan de module identiteit als uw wacht woord.
 
@@ -229,10 +247,6 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 client.publish("devices/" + device_id + "/messages/events/", "{id=123}", qos=1)
 client.loop_forever()
 ```
-
-Hier volgen de installatie-instructies voor de vereisten.
-
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 Als u wilt verifiëren met behulp van een certificaat voor een apparaat, werkt u het code fragment hierboven bij met de volgende wijzigingen (Zie [een X. 509 CA-certificaat verkrijgen](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) over het voorbereiden op verificatie op basis van een certificaat):
 
@@ -313,13 +327,13 @@ De mogelijke status codes zijn:
 | ----- | ----------- |
 | 204 | Geslaagd (er is geen inhoud geretourneerd) |
 | 429 | Te veel aanvragen (beperkt), conform [IOT hub beperking](iot-hub-devguide-quotas-throttling.md) |
-| 5 * * | Server fouten |
+| 5** | Server fouten |
 
 Zie [de ontwikkelaars handleiding voor Device apparaatdubbels](iot-hub-devguide-device-twins.md)voor meer informatie.
 
 ## <a name="update-device-twins-reported-properties"></a>De gerapporteerde eigenschappen van het apparaat bijwerken
 
-Voor het bijwerken van de gerapporteerde eigenschappen geeft het apparaat een verzoek om IoT Hub via een publicatie in een aangewezen MQTT-onderwerp. Nadat de aanvraag is verwerkt, reageert IoT Hub de geslaagde of mislukte status van de update bewerking via een publicatie naar een ander onderwerp. Dit onderwerp kan worden geabonneerd op het apparaat, zodat het kan worden gewaarschuwd over het resultaat van de dubbele update aanvraag. Voor het implementeren van dit type aanvraag/antwoord interactie in MQTT maken we gebruik van het principe van de aanvraag-id (`$rid`) die in eerste instantie door het apparaat wordt gegeven in de update-aanvraag. Deze aanvraag-id is ook opgenomen in de reactie van IoT Hub, zodat het apparaat de reactie op de specifieke eerdere aanvraag kan correleren.
+Voor het bijwerken van de gerapporteerde eigenschappen geeft het apparaat een verzoek om IoT Hub via een publicatie in een aangewezen MQTT-onderwerp. Nadat de aanvraag is verwerkt, reageert IoT Hub de geslaagde of mislukte status van de update bewerking via een publicatie naar een ander onderwerp. Dit onderwerp kan worden geabonneerd op het apparaat, zodat het kan worden gewaarschuwd over het resultaat van de dubbele update aanvraag. Voor het implementeren van dit type aanvraag/antwoord interactie in MQTT maken we gebruik van het principe van de aanvraag-ID (`$rid`) die in eerste instantie door het apparaat wordt gegeven in de update-aanvraag. Deze aanvraag-ID is ook opgenomen in de reactie van IoT Hub, zodat het apparaat de reactie op de specifieke eerdere aanvraag kan correleren.
 
 In de volgende reeks wordt beschreven hoe een apparaat de gerapporteerde eigenschappen bijwerkt in het apparaat dubbele in IoT Hub:
 
@@ -345,7 +359,7 @@ De mogelijke status codes zijn:
 | 200 | Geslaagd |
 | 400 | Ongeldige aanvraag. Onjuist gevormde JSON |
 | 429 | Te veel aanvragen (beperkt), conform [IOT hub beperking](iot-hub-devguide-quotas-throttling.md) |
-| 5 * * | Server fouten |
+| 5** | Server fouten |
 
 In het onderstaande code fragment python ziet u het dubbele gerapporteerde eigenschappen update proces via MQTT (met behulp van PAHO MQTT-client):
 

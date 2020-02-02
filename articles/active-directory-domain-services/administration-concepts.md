@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f239bab48e732755361fe734fdc24b37d3823c63
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481014"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931572"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Beheer concepten voor gebruikers accounts, wacht woorden en beheer in Azure Active Directory Domain Services
 
@@ -34,7 +34,7 @@ Gebruikers accounts kunnen op verschillende manieren in azure AD DS worden gemaa
 * Het gebruikers account kan worden gesynchroniseerd vanuit Azure AD. Dit omvat alleen Cloud gebruikers accounts die rechtstreeks zijn gemaakt in azure AD, en hybride gebruikers accounts die zijn gesynchroniseerd vanuit een on-premises AD DS omgeving met behulp van Azure AD Connect.
     * Het meren deel van gebruikers accounts in azure AD DS worden gemaakt via het synchronisatie proces van Azure AD.
 * Het gebruikers account kan hand matig worden gemaakt in een beheerd domein van Azure AD DS en bestaat niet in azure AD.
-    * Als u service accounts moet maken voor toepassingen die alleen worden uitgevoerd in azure AD DS, kunt u deze hand matig maken in het beheerde domein. Omdat de synchronisatie in één richting vanuit Azure AD is, worden gebruikers accounts die zijn gemaakt in azure AD DS niet weer gesynchroniseerd met Azure AD.
+    * Als u service accounts moet maken voor toepassingen die alleen worden uitgevoerd in azure AD DS, kunt u deze hand matig maken in het beheerde domein. Net als bij Azure AD kunnen gebruikers accounts die zijn gemaakt in azure, AD DS niet worden gesynchroniseerd met Azure AD.
 
 ## <a name="password-policy"></a>Wachtwoord beleid
 
@@ -74,6 +74,36 @@ In een Azure AD DS- *bron* -forest verifiëren *gebruikers via een eenrichtings 
 
 Zie [Wat zijn resource][concepts-forest] -forests? en [Hoe worden forest-vertrouwens relaties in azure AD DS?][concepts-trust] voor meer informatie over forest-typen in azure AD DS?
 
+## <a name="azure-ad-ds-skus"></a>Azure AD DS Sku's
+
+In azure AD DS zijn de beschik bare prestaties en functies gebaseerd op de SKU. U selecteert een SKU wanneer u het beheerde domein maakt en u kunt switches als uw bedrijfs vereisten veranderen nadat het beheerde domein is geïmplementeerd. De volgende tabel geeft een overzicht van de beschik bare Sku's en de verschillen ertussen:
+
+| SKU-naam   | Maximum aantal objecten | Back-upfrequentie | Maximum aantal uitgaande forest-vertrouwens relaties |
+|------------|----------------------|------------------|----|
+| Standard   | Onbeperkt            | Elke 7 dagen     | 0  |
+| Enterprise | Onbeperkt            | Elke 3 dagen     | 5  |
+| Premium    | Onbeperkt            | Dagelijks            | 10 |
+
+Vóór deze Azure AD DS Sku's werd een facturerings model gebruikt dat is gebaseerd op het aantal objecten (gebruikers-en computer accounts) in het door Azure AD DS beheerde domein. Er zijn geen variabele prijzen meer op basis van het aantal objecten in het beheerde domein.
+
+Zie de pagina met prijzen voor [Azure AD DS][pricing]voor meer informatie.
+
+### <a name="managed-domain-performance"></a>Prestaties van beheerd domein
+
+De prestaties van het domein variëren op basis van de manier waarop verificatie voor een toepassing wordt geïmplementeerd. Aanvullende reken bronnen kunnen helpen de reactie tijd van query's te verbeteren en de tijd te beperken die wordt besteed aan synchronisatie bewerkingen. Naarmate het SKU-niveau toeneemt, worden de reken bronnen die beschikbaar zijn voor het beheerde domein verhoogd. Bewaak de prestaties van uw toepassingen en plan de vereiste resources.
+
+Als uw bedrijfs-of toepassings vereisten veranderen en u extra reken kracht nodig hebt voor uw Azure AD DS beheerde domein, kunt u overschakelen naar een andere SKU.
+
+### <a name="backup-frequency"></a>Back-upfrequentie
+
+De back-upfrequentie bepaalt hoe vaak een moment opname van het beheerde domein wordt gemaakt. Back-ups zijn een geautomatiseerd proces dat wordt beheerd door het Azure-platform. In het geval van een probleem met uw beheerde domein kan ondersteuning voor Azure u helpen bij het terugzetten van een back-up. Omdat synchronisatie slechts één manier plaatsvindt *vanuit* Azure AD, hebben problemen in een beheerd domein van Azure AD DS geen invloed op Azure AD of on-premises AD DS omgevingen en-functionaliteit.
+
+Naarmate het SKU-niveau toeneemt, neemt de frequentie van de back-upmomentopnamen toe. Controleer uw bedrijfs vereisten en Recovery Point Objective (RPO) om de vereiste back-upfrequentie voor uw beheerde domein te bepalen. Als uw zakelijke of toepassings vereisten veranderen en u meer frequente back-ups nodig hebt, kunt u overschakelen naar een andere SKU.
+
+### <a name="outbound-forests"></a>Uitgaande forests
+
+In de vorige sectie worden uitgebreide uitgaande forest-vertrouwens relaties van een Azure AD DS beheerd domein naar een on-premises AD DS omgeving (momenteel in Preview) beschreven. De SKU bepaalt het maximum aantal forest-vertrouwens relaties dat u kunt maken voor een door Azure AD DS beheerd domein. Bekijk de vereisten van uw bedrijf en toepassing om te bepalen hoeveel vertrouwens relaties u werkelijk nodig hebt en kies de juiste Azure AD DS-SKU. Als uw bedrijfs vereisten veranderen en u extra forest-vertrouwens relaties wilt maken, kunt u overschakelen naar een andere SKU.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Als u aan de slag wilt gaan, [maakt u een door Azure AD DS beheerd domein][create-instance].
@@ -87,3 +117,6 @@ Als u aan de slag wilt gaan, [maakt u een door Azure AD DS beheerd domein][creat
 [tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [concepts-forest]: concepts-resource-forest.md
 [concepts-trust]: concepts-forest-trust.md
+
+<!-- EXTERNAL LINKS -->
+[pricing]: https://azure.microsoft.com/pricing/details/active-directory-ds/

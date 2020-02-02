@@ -3,7 +3,7 @@ title: Routerings verkeer van het subnet configureren-Azure Traffic Manager
 description: In dit artikel wordt uitgelegd hoe u Traffic Manager configureert voor het routeren van verkeer van specifieke subnetten.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: allensu
-ms.openlocfilehash: d3751a14e8c317d6a4f23c1aa051b7e13305acf5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.author: rohink
+ms.openlocfilehash: 60cddce610d223433d0ffe1f6b9234625aca9881
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014611"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938739"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Verkeer naar specifieke eindpunten routeren met Traffic Manager op basis van subnets van gebruiker
 
@@ -52,7 +52,7 @@ In deze sectie maakt u twee Vm's *myEndpointVMEastUS* en *MYENDPOINTVMWEUROPE* i
 
     |Instelling|Waarde|
     |---|---|
-    |Naam|myIISVMEastUS|
+    |Name|myIISVMEastUS|
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Resourcegroep| Selecteer **Nieuw** en typ *myResourceGroupTM1*.|
@@ -64,7 +64,7 @@ In deze sectie maakt u twee Vm's *myEndpointVMEastUS* en *MYENDPOINTVMWEUROPE* i
     
     |Instelling|Waarde|
     |---|---|
-    |Virtueel netwerk| Selecteer **Virtueel netwerk** in **Virtueel netwerk maken** en voer voor **Naam** *myVNet1* en voor het subnet  *mySubnet* in.|
+    |Virtueel netwerk| Selecteer **Virtueel netwerk** in **Virtueel netwerk maken** en voer voor **Naam***myVNet1* en voor het subnet  *mySubnet* in.|
     |Netwerkbeveiligingsgroep|Selecteer **Basic** en selecteer in de vervolgkeuzelijst **Openbare binnenkomende poorten selecteren** de opties **HTTP** en **RDP** |
     |Diagnostische gegevens over opstarten|Selecteer **Uitgeschakeld**.|
     |||
@@ -76,14 +76,14 @@ In deze sectie maakt u twee Vm's *myEndpointVMEastUS* en *MYENDPOINTVMWEUROPE* i
     |Instelling|Waarde|
     |---|---|
     |Resourcegroep | Selecteer **Nieuw** en typ *myResourceGroupTM2*|
-    |Locatie|Europa -west|
+    |Locatie|Europa - west|
     |VM-naam | myIISVMWEurope|
-    |Virtueel netwerk | Selecteer **Virtueel netwerk** in **Virtueel netwerk maken** en voer voor **Naam** *myVNet2* en voor het subnet  *mySubnet* in.|
+    |Virtueel netwerk | Selecteer **Virtueel netwerk** in **Virtueel netwerk maken** en voer voor **Naam***myVNet2* en voor het subnet  *mySubnet* in.|
     |||
 
 8. Het maken van de VM's duurt enkele minuten. Ga niet verder met de overige stappen voordat beide VM's zijn gemaakt.
 
-   ![Een virtuele machine maken](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
+   ![Een VM maken](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>IIS installeren en de standaardwebpagina aanpassen
 
@@ -138,7 +138,7 @@ In deze sectie maakt u een virtuele machine (*mVMEastUS* en *myVMWestEurope*) in
 
     |Instelling|Waarde|
     |---|---|
-    |Naam|myVMEastUS|
+    |Name|myVMEastUS|
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Resourcegroep| Selecteer **Bestaande** en selecteer vervolgens *myResourceGroupTM1*.|
@@ -149,7 +149,7 @@ In deze sectie maakt u een virtuele machine (*mVMEastUS* en *myVMWestEurope*) in
 
     |Instelling|Waarde|
     |---|---|
-    |Virtueel netwerk| Selecteer **Virtueel netwerk** in **Virtueel netwerk maken** en voer voor **Naam** *myVNet3* en voor het subnet *mySubnet3* in.|
+    |Virtueel netwerk| Selecteer **Virtueel netwerk** in **Virtueel netwerk maken** en voer voor **Naam***myVNet3* en voor het subnet *mySubnet3* in.|
     |Netwerkbeveiligingsgroep|Selecteer **Basic** en selecteer in de vervolgkeuzelijst **Openbare binnenkomende poorten selecteren** de opties **HTTP** en **RDP** |
     |Diagnostische gegevens over opstarten|Selecteer **Uitgeschakeld**.|
     |||
@@ -162,7 +162,7 @@ In deze sectie maakt u een virtuele machine (*mVMEastUS* en *myVMWestEurope*) in
     |---|---|
     |VM-naam | *myVMWEurope*|
     |Resourcegroep | Selecteer **Bestaande** en typ vervolgens *myResourceGroupTM2*|
-    |Virtueel netwerk | Selecteer **Virtueel netwerk** in **Virtueel netwerk maken** en voer voor **Naam** *myVNet4* en voor het subnet *mySubnet4* in.|
+    |Virtueel netwerk | Selecteer **Virtueel netwerk** in **Virtueel netwerk maken** en voer voor **Naam***myVNet4* en voor het subnet *mySubnet4* in.|
     |||
 
 8. Het maken van de VM's duurt enkele minuten. Ga niet verder met de overige stappen voordat beide VM's zijn gemaakt.
@@ -175,7 +175,7 @@ Maak een Traffic Manager-profiel waarmee u specifieke eindpunten kunt retournere
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
-    | Naam                   | Deze naam moet uniek zijn binnen de zone trafficmanager.net en resulteert in de DNS-naam, trafficmanager.net, die wordt gebruikt voor het openen van uw Traffic Manager-profiel.                                   |
+    | Name                   | Deze naam moet uniek zijn binnen de zone trafficmanager.net en resulteert in de DNS-naam, trafficmanager.net, die wordt gebruikt voor het openen van uw Traffic Manager-profiel.                                   |
     | Routeringsmethode          | Selecteer de routeringsmethode **Subnet**.                                       |
     | Abonnement            | Selecteer uw abonnement.                          |
     | Resourcegroep          | Selecteer **Bestaande** en voer *myResourceGroupTM1* in. |
@@ -195,7 +195,7 @@ Voeg de twee virtuele machines met de IIS-servers- *myIISVMEastUS* & *myIISVMWEu
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | Type                    | Azure-eindpunt                                   |
-    | Naam           | myTestWebSiteEndpoint                                        |
+    | Name           | myTestWebSiteEndpoint                                        |
     | Doelbrontype           | Openbaar IP-adres                          |
     | Doelbron          | **Kies een openbaar IP-adres** om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam *myIISVMEastUS-ip*. Dit is het openbare IP-adres van de IIS-server VM in US - oost.|
     |  Instellingen voor subnetroutering    |   Voeg het IP-adres van de *myVMEastUS* -test-VM toe. Alle gebruikers query's die afkomstig zijn van deze VM, worden omgeleid naar de *myTestWebSiteEndpoint*.    |

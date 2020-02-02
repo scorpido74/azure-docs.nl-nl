@@ -3,7 +3,7 @@ title: Omgekeerde DNS voor Azure-Services-Azure DNS
 description: Met dit leer traject gaat u aan de slag met het configureren van reverse DNS-Zoek opdrachten voor services die worden gehost in Azure.
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: KumudD
 ms.service: dns
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: allensu
-ms.openlocfilehash: 550ba617dec0359fd7d4e0bc309e411095de0d1e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 073e84ece11f6817bfe2c5a94735ec6e16dac4fe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211233"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932373"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Omgekeerde DNS configureren voor services die worden gehost in azure
 
@@ -93,7 +93,7 @@ U moet ook een DNS-naam opgeven om omgekeerde DNS toe te voegen aan een bestaand
 azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f contosoapp1.westus.cloudapp.azure.com.
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure-CLI
 
 Omgekeerde DNS toevoegen aan een bestaande PublicIpAddress:
 
@@ -123,7 +123,7 @@ New-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Loc
 azure network public-ip create -n PublicIp -g MyResourceGroup -l westus -d contosoapp3 -f contosoapp3.westus.cloudapp.azure.com.
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure-CLI
 
 ```azurecli
 az network public-ip create --name PublicIp --resource-group MyResourceGroup --location westcentralus --dns-name contosoapp1 --reverse-fqdn contosoapp1.westcentralus.cloudapp.azure.com
@@ -145,7 +145,7 @@ Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 azure network public-ip show -n PublicIp -g MyResourceGroup
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure-CLI
 
 ```azurecli
 az network public-ip show --name PublicIp --resource-group MyResourceGroup
@@ -169,7 +169,7 @@ Set-AzPublicIpAddress -PublicIpAddress $pip
 azure network public-ip set -n PublicIp -g MyResourceGroup –f ""
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure-CLI
 
 ```azurecli
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn ""

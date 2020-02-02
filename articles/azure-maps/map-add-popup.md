@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 79bafb331cb7ad38ea7cad9e510b22886b647764
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 45d210725f7f09663b126528479655d7f4d9c19f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911149"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933356"
 ---
 # <a name="add-a-popup-to-the-map"></a>Een pop-upvenster toevoegen aan de kaart
 
@@ -22,7 +22,7 @@ In dit artikel wordt uitgelegd hoe u een pop-upvenster kunt toevoegen aan een pu
 
 ## <a name="understand-the-code"></a>De code begrijpen
 
-Met de volgende code wordt een punt functie met `name`-en `description` eigenschappen aan de kaart toegevoegd met behulp van een Symbol-laag. Er wordt een exemplaar van de [pop-upklasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) gemaakt, maar dit wordt niet weer gegeven. Muis gebeurtenissen worden toegevoegd aan de symbool-laag om te activeren en sluiten van het pop-upvenster wanneer de muis aanwijzer over en op de symbool markering wordt gehouden. Wanneer het markerings symbool wordt geplaatst, wordt de eigenschap `position` van het pop-upvenster bijgewerkt met de positie van de markering en de `content` optie wordt bijgewerkt met een aantal HTML-code waarmee de `name` en `description` eigenschappen van de punt functie worden gepositioneerd. De pop-up wordt weer gegeven op de kaart met behulp van de functie `open`.
+Met de volgende code wordt een punt functie met `name`-en `description` eigenschappen aan de kaart toegevoegd met behulp van een Symbol-laag. Er wordt een exemplaar van de [pop-upklasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) gemaakt, maar dit wordt niet weer gegeven. Muis gebeurtenissen worden toegevoegd aan de Symbol-laag om het openen en sluiten van de pop-up te activeren. Wanneer het markerings symbool wordt aangevallen, wordt de eigenschap `position` van het pop-upvenster bijgewerkt met de positie van de markering en de `content` optie wordt bijgewerkt met een aantal HTML-code die de `name` en `description` eigenschappen van de punt-functie wordt gepositioneerd. De pop-up wordt weer gegeven op de kaart met behulp van de functie `open`.
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -85,7 +85,7 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code van de bove
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>Een pop-upvenster met meerdere punten opnieuw gebruiken
 
-Wanneer u een groot aantal punten hebt en slechts één pop-up tegelijk wilt weer geven, is het raadzaam om één pop-up te maken en deze opnieuw te gebruiken in plaats van een pop-upvenster voor elke punt functie te maken. Door de pop-up opnieuw te gebruiken, wordt het aantal DOM-elementen dat door de toepassing is gemaakt, aanzienlijk verminderd, waardoor betere prestaties kunnen worden geboden. In het volgende voor beeld worden drie punt functies gemaakt. Als u op een van deze functies klikt, wordt er een pop-upvenster weer gegeven met de inhoud voor die punt functie.
+Wanneer u een groot aantal punten hebt en slechts één pop-up tegelijk wilt weer geven, is het raadzaam om één pop-up te maken en opnieuw te gebruiken. Door de pop-up opnieuw te gebruiken, wordt het aantal DOM-elementen dat door de toepassing is gemaakt, aanzienlijk verminderd, waardoor betere prestaties kunnen worden geboden. In het volgende voor beeld worden drie punt functies gemaakt. Als u op een van deze functies klikt, wordt er een pop-upvenster weer gegeven met de inhoud voor die punt functie.
 
 <br/>
 
@@ -94,7 +94,7 @@ Wanneer u een groot aantal punten hebt en slechts één pop-up tegelijk wilt wee
 
 ## <a name="customizing-a-popup"></a>Een pop-upvenster aanpassen
 
-Standaard heeft de pop-up een witte achtergrond, een aanwijzer pijl aan de onderkant en een knop Sluiten in de rechter bovenhoek. In het volgende voor beeld wordt de achtergrond kleur gewijzigd in zwart met de optie `fillColor` van de pop-up. De knop Sluiten wordt verwijderd door de `shoCloseButton` optie in te stellen op ONWAAR. De HTML-inhoud van het pop-upvenster gebruikt 10 pixels van de randen van het pop-upvenster en de tekst wordt wit weer gegeven, zodat deze fraai op de zwarte achtergrond verschijnt.  
+Standaard heeft de pop-up een witte achtergrond, een aanwijzer pijl aan de onderkant en een knop Sluiten in de rechter bovenhoek. In het volgende voor beeld wordt de achtergrond kleur gewijzigd in zwart met de optie `fillColor` van de pop-up. De knop Sluiten wordt verwijderd door de `CloseButton` optie in te stellen op ONWAAR. De HTML-inhoud van de pop-up maakt gebruik van 10 pixels van de randen van de pop-up. De tekst wordt wit gemaakt, zodat deze fraai op de zwarte achtergrond wordt weer gegeven.  
 
 <br/>
 
@@ -104,7 +104,7 @@ Zie de aangepaste pen ( <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>pop-u
 
 ## <a name="popup-events"></a>Pop-upgebeurtenisen
 
-Pop-ups kunnen worden geopend, gesloten en gesleept. De pop-upklasse biedt gebeurtenissen voor de Help-ontwikkel aars die op deze acties reageren. In het volgende voor beeld ziet u welke gebeurtenissen worden geactiveerd wanneer u de pop-up opent, sluit of sleept. 
+Pop-ups kunnen worden geopend, gesloten en gesleept. De pop-upklasse bevat gebeurtenissen waarmee ontwikkel aars op deze gebeurtenissen kunnen reageren. In het volgende voor beeld ziet u welke gebeurtenissen worden geactiveerd wanneer de gebruiker de pop-up opent, sluit of versleept. 
 
 <br/>
 

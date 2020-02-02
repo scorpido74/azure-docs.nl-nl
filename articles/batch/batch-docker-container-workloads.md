@@ -1,6 +1,6 @@
 ---
-title: Container werkbelastingen-Azure Batch | Microsoft Docs
-description: Meer informatie over het uitvoeren van toepassingen vanuit container installatie kopieën op Azure Batch.
+title: Container werkbelastingen-Azure Batch
+description: Meer informatie over het uitvoeren en schalen van apps vanuit container installatie kopieën op Azure Batch. Maak een pool van reken knooppunten die ondersteuning bieden voor het uitvoeren van container taken.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 097ab13ad64477274e756d8e8e93e3614dd1a4e8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 493c9b30f6c7f735d69e113f3f1efe26ca6c1576
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029720"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935054"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Container toepassingen uitvoeren op Azure Batch
 
@@ -23,7 +23,7 @@ Met Azure Batch kunt u grote aantallen taken voor batch verwerking op Azure uitv
 
 U moet bekend zijn met de container concepten en een batch-pool en-taak maken. De code voorbeelden gebruiken de batch .NET-en python-Sdk's. U kunt ook andere batch-Sdk's en-hulpprogram ma's, waaronder de Azure Portal, gebruiken om batch-Pools met container functionaliteit te maken en container taken uit te voeren.
 
-## <a name="why-use-containers"></a>Redenen om containers te gebruiken
+## <a name="why-use-containers"></a>Waarom containers gebruiken?
 
 Het gebruik van containers biedt een eenvoudige manier om batch taken uit te voeren zonder dat u een omgeving en afhankelijkheden hoeft te beheren om toepassingen uit te voeren. Containers implementeren toepassingen als Lightweight, Portable, Self-toereikende eenheden die in verschillende omgevingen kunnen worden uitgevoerd. Bouw en test bijvoorbeeld een container lokaal en upload de container installatie kopie naar een REGI ster in azure of ergens anders. Het implementatie model van de container zorgt ervoor dat de runtime omgeving van uw toepassing altijd correct is geïnstalleerd en geconfigureerd, waar u de toepassing host. Op containers gebaseerde taken in batch kunnen ook profiteren van functies van niet-container taken, waaronder toepassings pakketten en beheer van bron bestanden en uitvoer bestanden. 
 

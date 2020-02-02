@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832316"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933865"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Release opmerkingen bij Azure Media Services Video Indexer
 
@@ -29,6 +29,24 @@ Als u wilt bijhouden met de meest recente ontwikkelingen, vindt in dit artikel u
 * Bekende problemen
 * Opgeloste fouten
 * Afgeschafte functies
+
+## <a name="january-2020"></a>Januari 2020
+ 
+### <a name="custom-language-support-for-additional-languages"></a>Aangepaste taal ondersteuning voor extra talen
+
+Video Indexer ondersteunt nu aangepaste taal modellen voor `ar-SY`, `en-UK`en `en-AU` (alleen API).
+ 
+### <a name="delete-account-timeframe-action-update"></a>Update van tijds bestek actie verwijderen
+
+Met account actie verwijderen wordt het account nu binnen 90 dagen verwijderd in plaats van 48 uur.
+ 
+### <a name="new-video-indexer-github-repository"></a>Nieuwe Video Indexer GitHub-opslag plaats
+
+Een nieuwe Video Indexer GitHub met verschillende projecten, aan de slag-hand leidingen en code voorbeelden is nu beschikbaar: https://github.com/Azure-Samples/media-services-video-indexer
+ 
+### <a name="swagger-update"></a>Update Swagger
+
+Video Indexer gecombineerde **authenticaties** en **bewerkingen** in één [video indexer OpenAPI-specificatie (Swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson). Develpers kan de Api's vinden in [video indexer ontwikkelaars Portal](https://api-portal.videoindexer.ai/).
 
 ## <a name="december-2019"></a>December 2019
 

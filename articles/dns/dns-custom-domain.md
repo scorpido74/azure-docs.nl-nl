@@ -2,17 +2,17 @@
 title: Azure DNS integreren met uw Azure-resources-Azure DNS
 description: In dit artikel vindt u informatie over het gebruik van Azure DNS in combi natie met DNS voor uw Azure-resources.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 7/13/2019
-ms.author: allensu
-ms.openlocfilehash: b005cb9e0611d18c24e2b77abf493292d47f44b4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: d84a7a908bd3bb5cfb2958a617be437f3b6b154e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212422"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934893"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure DNS gebruiken om aangepaste domein instellingen op te geven voor een Azure-service
 
@@ -40,7 +40,7 @@ Navigeer naar uw DNS-zone en klik op **+ Recordset**. Vul de volgende gegevens i
 
 |Eigenschap  |Waarde  |Beschrijving  |
 |---------|---------|---------|
-|Naam     | myfunctionapp        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
+|Name     | myfunctionapp        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
 |Type     | CNAME        | Voor het gebruik van een CNAME-record wordt een alias gebruikt.        |
 |TTL     | 1        | 1 wordt voor 1 uur gebruikt        |
 |TTL-eenheid     | Uur        | Uren worden gebruikt als meet tijd         |
@@ -65,7 +65,7 @@ Navigeer naar uw DNS-zone en klik op **+ Recordset**. Vul de volgende gegevens i
 
 |Eigenschap  |Waarde  |Beschrijving  |
 |---------|---------|---------|
-|Naam     | mywebserver        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
+|Name     | mywebserver        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
 |Type     | A        | Gebruik een A-record als de resource een IP-adres is.        |
 |TTL     | 1        | 1 wordt voor 1 uur gebruikt        |
 |TTL-eenheid     | Uur        | Uren worden gebruikt als meet tijd         |
@@ -92,7 +92,7 @@ Navigeer naar uw DNS-zone en klik op **+ Recordset**. Vul de volgende gegevens i
 
 |Eigenschap  |Waarde  |Beschrijving  |
 |---------|---------|---------|
-|Naam     | mywebserver        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
+|Name     | mywebserver        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
 |Type     | CNAME        | Voor het gebruik van een CNAME-record wordt een alias gebruikt. Als de resource een IP-adres heeft gebruikt, wordt er een record gebruikt.        |
 |TTL     | 1        | 1 wordt voor 1 uur gebruikt        |
 |TTL-eenheid     | Uur        | Uren worden gebruikt als meet tijd         |
@@ -128,7 +128,7 @@ Navigeer naar uw DNS-zone en klik op **+ Recordset**. Vul de volgende gegevens i
 
 |Eigenschap  |Waarde  |Beschrijving  |
 |---------|---------|---------|
-|Naam     | asverify. mystorageaccount        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
+|Name     | asverify. mystorageaccount        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
 |Type     | CNAME        | Voor het gebruik van een CNAME-record wordt een alias gebruikt.        |
 |TTL     | 1        | 1 wordt voor 1 uur gebruikt        |
 |TTL-eenheid     | Uur        | Uren worden gebruikt als meet tijd         |
@@ -156,7 +156,7 @@ Navigeer naar uw DNS-zone en klik op **+ Recordset**. Vul de volgende gegevens i
 
 |Eigenschap  |Waarde  |Beschrijving  |
 |---------|---------|---------|
-|Naam     | cdnverify. mycdnendpoint        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
+|Name     | cdnverify. mycdnendpoint        | Deze waarde samen met het domein naam label is de FQDN voor de aangepaste domein naam.        |
 |Type     | CNAME        | Voor het gebruik van een CNAME-record wordt een alias gebruikt.        |
 |TTL     | 1        | 1 wordt voor 1 uur gebruikt        |
 |TTL-eenheid     | Uur        | Uren worden gebruikt als meet tijd         |

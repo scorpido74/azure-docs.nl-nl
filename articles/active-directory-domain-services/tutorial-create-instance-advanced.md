@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 46764fdae89d5af4c9dedf4037d07dc48d1cda83
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e969ed4f525d0b3d17339b9f9a6111ad81b0125
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703680"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931613"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>Zelf studie: een Azure Active Directory Domain Services-exemplaar maken en configureren met geavanceerde configuratie opties
 
@@ -94,6 +94,9 @@ Vul de velden in het venster *basis beginselen* van het Azure Portal in om een A
 
     Er is niets waarmee u kunt configureren voor Azure AD DS worden gedistribueerd over meerdere zones. Het Azure-platform verwerkt automatisch de zone distributie van resources. Zie [Wat zijn Beschikbaarheidszones in azure?][availability-zones] voor meer informatie en om de beschik baarheid van regio's te bekijken.
 
+1. De **SKU** bepaalt de prestaties, de back-upfrequentie en het maximum aantal forest-vertrouwens relaties die u kunt maken. Als uw bedrijfs vereisten of-vereisten veranderen, kunt u de SKU wijzigen nadat het beheerde domein is gemaakt. Zie [Azure AD DS SKU-concepten][concepts-sku]voor meer informatie.
+
+    Voor deze zelf studie selecteert u de *standaard* -SKU.
 1. Een *forest* is een logische constructie die door Active Directory Domain Services wordt gebruikt om een of meer domeinen te groeperen. Standaard wordt een door Azure AD DS beheerd domein gemaakt als een *gebruikers* forest. Dit type forest synchroniseert alle objecten van Azure AD, met inbegrip van gebruikers accounts die zijn gemaakt in een on-premises AD DS omgeving. Een *resource* -forest synchroniseert alleen gebruikers en groepen die rechtstreeks in azure AD zijn gemaakt. Bron-forests zijn momenteel beschikbaar als preview-versie. Zie [overzicht van Azure AD DS-resource forests][resource-forests]voor meer informatie over *bron* -forests, waaronder waarom u er één kunt gebruiken en hoe u forest-vertrouwens relaties maakt met on-premises AD DS domeinen.
 
     Voor deze zelf studie kiest u ervoor om een *gebruikers* forest te maken.
@@ -102,9 +105,9 @@ Vul de velden in het venster *basis beginselen* van het Azure Portal in om een A
 
 1. Als u extra opties hand matig wilt configureren, kiest u **volgende netwerk**. Als dat niet het geval is, selecteert u **controleren + maken** om de standaard configuratie opties te accepteren en gaat u naar de sectie voor het [implementeren van uw beheerde domein](#deploy-the-managed-domain). De volgende standaard waarden worden geconfigureerd wanneer u deze Maak optie kiest:
 
-* Hiermee maakt u een virtueel netwerk met de naam *aadds-vnet* dat gebruikmaakt van het IP-adres bereik van *10.0.1.0/24*.
-* Hiermee maakt u een subnet met de naam *aadds-subnet* met het IP-adres bereik *10.0.1.0/24*.
-* Synchroniseert *alle* gebruikers van Azure AD in het door Azure AD DS beheerde domein.
+    * Hiermee maakt u een virtueel netwerk met de naam *aadds-vnet* dat gebruikmaakt van het IP-adres bereik van *10.0.1.0/24*.
+    * Hiermee maakt u een subnet met de naam *aadds-subnet* met het IP-adres bereik *10.0.1.0/24*.
+    * Synchroniseert *alle* gebruikers van Azure AD in het door Azure AD DS beheerde domein.
 
 ## <a name="create-and-configure-the-virtual-network"></a>Het virtuele netwerk maken en configureren
 
@@ -125,7 +128,7 @@ Vul de velden in het venster *netwerk* als volgt in:
     1. Als u ervoor kiest om een virtueel netwerk te maken, voert u een naam in voor het virtuele netwerk, zoals *myVnet*, en geeft u een adres bereik op, zoals *10.0.1.0/24*.
     1. Maak een toegewezen subnet met een duidelijke naam, zoals *DomainServices*. Geef een adres bereik op, bijvoorbeeld *10.0.1.0/24*.
 
-    ![Een virtueel netwerk en een subnet maken voor gebruik met Azure AD Domain Services](./media/tutorial-create-instance-advanced/create-vnet.png)
+    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     Zorg ervoor dat u een adres bereik kiest dat binnen uw privé-IP-adres bereik valt. IP-adresbereiken die zich in de open bare adres ruimte bevinden, veroorzaken fouten in azure AD DS.
 
@@ -248,5 +251,6 @@ Als u dit beheerde domein in actie wilt zien, maakt u een virtuele machine en vo
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->

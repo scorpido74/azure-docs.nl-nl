@@ -1,7 +1,7 @@
 ---
 title: Een veilige Azure AD-webtoepassing ontwikkelen | Microsoft Docs
 description: Deze eenvoudige voor beeld-app implementeert aanbevolen beveiligings procedures voor het verbeteren van uw toepassing en de beveiligings postuur van uw organisatie bij het ontwikkelen op Azure.
-keywords: n.v.t.
+keywords: na
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771271"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937982"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Een beveiligde App ontwikkelen voor een Azure AD-app
 ## <a name="overview"></a>Overzicht
@@ -185,7 +185,7 @@ $gwSubnet = New-AzVirtualNetworkSubnetConfig -Name 'appgwsubnet' -AddressPrefix 
 
 #Assign an address range to be used for the back-end address pool.
 
-$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.0.0/24
+$nicSubnet = New-AzVirtualNetworkSubnetConfig  -Name 'appsubnet' -AddressPrefix 10.0.2.0/24
 
 #Create a virtual network with the subnets defined in the preceding steps.
 
@@ -212,7 +212,7 @@ $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAdd
 
 #Configure the back-end IP address pool with the IP addresses of the back-end web servers
 
-$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.0.0
+$pool = New-AzApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 10.0.3.11
 
 #Configure the front-end IP port for the public IP endpoint
 
@@ -222,6 +222,7 @@ $fp = New-AzApplicationGatewayFrontendPort -Name 'port01'  -Port 443
 
 $passwd = ConvertTo-SecureString  "P@ssword!1" -AsPlainText -Force 
 $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:\AAD\Securities\Certificates\sslcert.com.cer" -Password $passwd 
+
 
 #Create the HTTP listener for the application gateway
 
@@ -412,7 +413,7 @@ Azure-Services registreren systeem-en gebruikers activiteiten uitvoerig, evenals
    - Toegangs sleutel voor gegevens opslag
    - Verbindingsreeks
    - Naam gegevens tabel
-   - Gebruikersreferenties
+   - Gebruikers referenties
    - Geavanceerd toegangs beleid wordt op basis van behoefte geconfigureerd
    - Key Vault toegangs beleid is gedefinieerd met mini maal vereiste machtigingen voor sleutels en geheimen
    - Alle sleutels en geheimen in Key Vault verloop datums hebben
@@ -465,7 +466,7 @@ MFA inschakelen voor beheerders aanmeldingen
    1. Ga naar het tabblad **Azure Active Directory** in het Azure Portal
    2. Onder de categorie beveiliging selecteert u voorwaardelijke toegang. Dit scherm wordt weer gegeven
 
-       ![Beleid voor voorwaardelijke toegang - Beleid](./media/secure-aad-app/ad-mfa-conditional-add.png)
+       ![Voorwaardelijke toegang-beleids regels](./media/secure-aad-app/ad-mfa-conditional-add.png)
 
 Als u geen nieuw beleid kunt maken
 
@@ -518,7 +519,7 @@ Deze werk ruimte maken
 
    3. Gebruik het zoekvak om te zoeken naar **Azure Sentinel**.
 
-   ![Zoeken naar Azure Sentinel](./media/secure-aad-app/sentinel-add.png)
+   ![Zoeken naar Sentinel van Azure](./media/secure-aad-app/sentinel-add.png)
 
    *Zoeken naar Sentinel van Azure*
 
@@ -558,6 +559,6 @@ Deze werk ruimte maken
 ## <a name="next-steps"></a>Volgende stappen
    De volgende artikelen kunnen u helpen bij het ontwerpen, ontwikkelen en implementeren van beveiligde toepassingen.
 
-- [Ontwerpen](secure-design.md)
+- [Aangepast](secure-design.md)
 - [Ontwikkelen](secure-develop.md)
 - [Implementeren](secure-deploy.md)

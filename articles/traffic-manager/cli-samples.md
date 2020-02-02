@@ -1,9 +1,9 @@
 ---
-title: Azure CLI-voorbeelden voor Traffic Manager | Microsoft Docs
+title: Voor beelden van Azure CLI voor Traffic Manager | Microsoft Docs
 description: Azure CLI-voorbeelden
 services: virtual-network
 documentationcenter: virtual-network
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: virtual-network
 ms.devlang: na
@@ -11,21 +11,21 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 10/23/2018
-ms.author: allensu
-ms.openlocfilehash: fb195f7e4df2fa40562141199ad68dd8b29f97bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 3b14cf2058f425f650d827e10ef0ca77f1278b55
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066840"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938018"
 ---
 # <a name="azure-cli-samples-for-traffic-manager"></a>Azure CLI-voorbeelden voor Traffic Manager
 
-De volgende tabel bevat koppelingen naar bash-scripts voor Traffic Manager, die zijn gemaakt met de Azure CLI.
+De volgende tabel bevat koppelingen naar bash-scripts voor Traffic Manager gebouwd met behulp van de Azure CLI.
 
-|Titel  |Description |
+|Titel  |Beschrijving |
 |---------|---------|
-|[Direct verkeer via meerdere regio's voor hoge beschikbaarheid](./scripts/traffic-manager-cli-websites-high-availability.md)   |    Hiermee maakt u twee app service-abonnementen, twee web-apps, een traffic manager-profiel en twee traffic manager-eindpunten.     |
+|[Direct verkeer tussen meerdere regio's voor hoge Beschik baarheid van toepassingen](./scripts/traffic-manager-cli-websites-high-availability.md)   |    Hiermee maakt u twee app service-abonnementen, twee web-apps, een Traffic Manager-profiel en twee Traffic Manager-eind punten.     |
 |    |         |
 
 

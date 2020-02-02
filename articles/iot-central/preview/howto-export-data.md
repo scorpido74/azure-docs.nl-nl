@@ -4,16 +4,16 @@ description: Gegevens exporteren uit uw Azure IoT Central-toepassing naar Azure 
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 12/06/2019
+ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 1aac5af916e414178676a1caf42fead41109de68
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 612db9963b02e905c3a48d61a4f7a7ed6f832fba
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974458"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939018"
 ---
 # <a name="export-your-azure-iot-central-data-preview-features"></a>Uw Azure IoT Central-gegevens exporteren (preview-functies)
 
@@ -31,13 +31,13 @@ In dit artikel wordt beschreven hoe u de functie continue gegevens export in azu
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet een beheerder zijn in uw IoT Central-toepassing
+U moet een beheerder zijn in uw IoT Central-toepassing of machtigingen voor het exporteren van gegevens hebben.
 
 ## <a name="set-up-export-destination"></a>Export bestemming instellen
 
 Het export doel moet bestaan voordat u de continue gegevens export configureert.
 
-### <a name="create-event-hubs-namespace"></a>De Event Hubs-naamruimte maken
+### <a name="create-event-hubs-namespace"></a>Event Hubs naam ruimte maken
 
 Als u geen bestaande Event Hubs naam ruimte hebt om naar te exporteren, voert u de volgende stappen uit:
 
@@ -78,7 +78,7 @@ Nu u een bestemming hebt voor het exporteren van gegevens, voert u de volgende s
 2. Selecteer in het linkerdeel venster **gegevens export**.
 
     > [!Note]
-    > Als het exporteren van gegevens niet in het linkerdeel venster wordt weer gegeven, bent u geen beheerder in uw app. Neem contact op met een beheerder om het exporteren van gegevens in te stellen.
+    > Als het exporteren van gegevens niet in het linkerdeel venster wordt weer gegeven, bent u niet gemachtigd om de gegevens export in uw app te configureren. Neem contact op met een beheerder om het exporteren van gegevens in te stellen.
 
 3. Selecteer de knop **+ Nieuw** in de rechter bovenhoek. Kies een van de **Azure-Event hubs**, **Azure service bus**of **Azure Blob-opslag** als bestemming voor de export. Het maximum aantal uitvoer bewerkingen per toepassing is vijf.
 
@@ -104,7 +104,7 @@ Nu u een bestemming hebt voor het exporteren van gegevens, voert u de volgende s
 
 7. Kies onder te **exporteren gegevens**de typen gegevens die u wilt exporteren door het type in te stellen **op on**.
 
-8. Als u continue gegevens export wilt inschakelen, moet u ervoor zorgen dat de wissel knop voor het **exporteren van gegevens** is **ingeschakeld**. Selecteer **Opslaan**.
+8. Als u continue gegevens export wilt inschakelen, schakelt u de **ingeschakelde** wissel knop **in**. Selecteer **Opslaan**.
 
 9. Na enkele minuten worden uw gegevens weer gegeven in de bestemming die u hebt gekozen.
 
@@ -189,15 +189,16 @@ Dit is een voorbeeld record dat wordt geëxporteerd naar Blob Storage:
 
 ## <a name="devices"></a>Apparaten
 
-Elk bericht of record in een moment opname vertegenwoordigt een of meer wijzigingen aan een apparaat en de bijbehorende eigenschappen sinds het laatste geëxporteerde bericht. Dit omvat:
+Elk bericht of record in een moment opname vertegenwoordigt een of meer wijzigingen aan een apparaat en het apparaat en de Cloud eigenschappen sinds het laatste geëxporteerde bericht. Dit omvat:
 
-- `@id` van het apparaat in IoT Central
-- `name` van het apparaat
-- `deviceId` van [Device Provisioning Service](../core/howto-connect-nodejs.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)
-- Informatie over de apparaatprofiel
+- `id` van het apparaat in IoT Central
+- `displayName` van het apparaat
+- Id van de Device-sjabloon in `instanceOf`
+- `simulated` vlag, waar als het apparaat een gesimuleerd apparaat is
+- `provisioned` vlag, waar als het apparaat is ingericht
+- `approved` vlag, waar als het apparaat is goedgekeurd voor het verzenden van gegevens
 - Waarden van eigenschappen
-
-De sjabloon van het apparaat waartoe elk apparaat behoort, wordt vertegenwoordigd door de `instanceOf`. Als u de naam en aanvullende informatie over de Device-sjabloon wilt ophalen, moet u de gegevens van de apparaatgegevens ook exporteren.
+- `properties` inclusief waarden van het apparaat en de Cloud eigenschappen
 
 Verwijderde apparaten worden niet geëxporteerd. Er zijn momenteel geen indica toren voor het exporteren van berichten voor verwijderde apparaten.
 
@@ -210,46 +211,41 @@ Dit is een voorbeeld bericht over apparaten en eigenschappen van gegevens in Eve
 ```json
 {
   "body":{
-    "@id":"<id>",
-    "@type":"Device",
-    "displayName":"Airbox - 266d30aedn5",
-    "data":{
-      "$cloudProperties":{
-        "Color":"blue"
-      },
-      "EnvironmentalSensor":{
-        "thsensormodel":{
-          "reported":{
-            "value":"A1",
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
-        },
-        "pm25sensormodel":{
-          "reported":{
-            "value":"P1",
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
+    "id": "<device Id>",
+    "etag": "<etag>",
+    "displayName": "Sensor 1",
+    "instanceOf": "<device template Id>",
+    "simulated": false,
+    "provisioned": true,
+    "approved": true,
+    "properties": {
+        "sensorComponent": {
+            "setTemp": "30",
+            "fwVersion": "2.0.1",
+            "status": { "first": "first", "second": "second" },
+            "$metadata": {
+                "setTemp": {
+                    "desiredValue": "30",
+                    "desiredVersion": 3,
+                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                    "ackVersion": 3
+                },
+                "fwVersion": { "ackVersion": 3 },
+                "status": {
+                    "desiredValue": {
+                        "first": "first",
+                        "second": "second"
+                    },
+                    "desiredVersion": 2,
+                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                    "ackVersion": 2
+                }
+            },
+            
         }
-      },
-      "urn_azureiot_DeviceManagement_DeviceInformation":{
-        "totalStorage":{
-          "reported":{
-            "value":3088.1959855710156,
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
-        },
-        "totalMemory":{
-          "reported":{
-            "value":16005.703586477555,
-            "$lastUpdatedTimestamp":"2019-10-02T18:14:49.3820326Z"
-          }
-        }
-      }
     },
-    "instanceOf":"<templateId>",
-    "deviceId":"<deviceId>",
-    "simulated":true
-  },
+    "installDate": { "installDate": "2020-02-01" }
+},
   "annotations":{
     "iotcentral-message-source":"devices",
     "x-opt-partition-key":"<partitionKey>",
@@ -259,13 +255,324 @@ Dit is een voorbeeld bericht over apparaten en eigenschappen van gegevens in Eve
   },
   "partitionKey":"<partitionKey>",
   "sequenceNumber":39740,
-  "enqueuedTimeUtc":"2019-10-02T18:14:49.3820326Z",
+  "enqueuedTimeUtc":"2020-02-01T18:14:49.3820326Z",
   "offset":"<offset>"
 }
 ```
 
 Dit is een voor beeld van een moment opname met de gegevens apparaten en eigenschappen in Blob Storage. Geëxporteerde bestanden bevatten één regel per record.
 
+```json
+{
+  "id": "<device Id>",
+  "etag": "<etag>",
+  "displayName": "Sensor 1",
+  "instanceOf": "<device template Id>",
+  "simulated": false,
+  "provisioned": true,
+  "approved": true,
+  "properties": {
+      "sensorComponent": {
+          "setTemp": "30",
+          "fwVersion": "2.0.1",
+          "status": { "first": "first", "second": "second" },
+          "$metadata": {
+              "setTemp": {
+                  "desiredValue": "30",
+                  "desiredVersion": 3,
+                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                  "ackVersion": 3
+              },
+              "fwVersion": { "ackVersion": 3 },
+              "status": {
+                  "desiredValue": {
+                      "first": "first",
+                      "second": "second"
+                  },
+                  "desiredVersion": 2,
+                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
+                  "ackVersion": 2
+              }
+          },
+          
+      }
+  },
+  "installDate": { "installDate": "2020-02-01" }
+}
+```
+
+## <a name="device-templates"></a>Apparaatinstellingen
+
+Elk bericht of momentopname record vertegenwoordigt een of meer wijzigingen aan een sjabloon van een gepubliceerd apparaat sinds het laatste geëxporteerde bericht. De informatie die in elk bericht of record wordt verzonden, omvat:
+
+- `id` van de apparaatprofiel die overeenkomt met de `instanceOf` van de bovenstaande apparaten
+- `displayName` van de sjabloon voor het apparaat
+- Het apparaat `capabilityModel` met inbegrip van de `interfaces`en de definities van telemetrie, eigenschappen en opdrachten
+- `cloudProperties` definities
+- Onderdrukkingen en initiële waarden, inline met de `capabilityModel`
+
+Verwijderde Apparaatinstellingen worden niet geëxporteerd. Er zijn momenteel geen indica toren in geëxporteerde berichten voor verwijderde Apparaatinstellingen.
+
+Voor Event Hubs en Service Bus worden berichten met gegevens over de apparaatgegevens bijna in realtime naar uw Event Hub of Service Bus-wachtrij of onderwerp verzonden, zoals deze in IoT Central worden weer gegeven. 
+
+Voor Blob Storage wordt een nieuwe moment opname met alle wijzigingen sinds de laatste geschreven één keer per minuut geëxporteerd.
+
+Dit is een voorbeeld bericht over de gegevens van Device-sjablonen in Event Hub of Service Bus wachtrij of onderwerp:
+
+```json
+{
+  "body":{
+      "id": "<device template id>",
+      "etag": "<etag>",
+      "types": ["DeviceModel"],
+      "displayName": "Sensor template",
+      "capabilityModel": {
+          "@id": "<capability model id>",
+          "@type": ["CapabilityModel"],
+          "contents": [],
+          "implements": [
+              {
+                  "@id": "<component Id>",
+                  "@type": ["InterfaceInstance"],
+                  "name": "sensorComponent",
+                  "schema": {
+                      "@id": "<interface Id>",
+                      "@type": ["Interface"],
+                      "displayName": "Sensor interface",
+                      "contents": [
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry"],
+                              "displayName": "Humidity",
+                              "name": "humidity",
+                              "schema": "double"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry", "SemanticType/Event"],
+                              "displayName": "Error event",
+                              "name": "error",
+                              "schema": "integer"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Set temperature",
+                              "name": "setTemp",
+                              "writable": true,
+                              "schema": "integer",
+                              "unit": "Units/Temperature/fahrenheit",
+                              "initialValue": "30"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Firmware version read only",
+                              "name": "fwversion",
+                              "schema": "string"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Display status",
+                              "name": "status",
+                              "writable": true,
+                              "schema": {
+                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
+                                  "@type": ["Object"]
+                              }
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Command"],
+                              "commandType": "synchronous",
+                              "request": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Configuration",
+                                  "name": "config",
+                                  "schema": "string"
+                              },
+                              "response": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Response",
+                                  "name": "response",
+                                  "schema": "string"
+                              },
+                              "displayName": "Configure sensor",
+                              "name": "sensorConfig"
+                          }
+                      ]
+                  }
+              }
+          ],
+          "displayName": "Sensor capability model"
+      },
+      "solutionModel": {
+          "@id": "<id>",
+          "@type": ["SolutionModel"],
+          "cloudProperties": [
+              {
+                  "@id": "<id>",
+                  "@type": ["CloudProperty"],
+                  "displayName": "Install date",
+                  "name": "installDate",
+                  "schema": "dateTime",
+                  "valueDetail": {
+                      "@id": "<id>",
+                      "@type": ["ValueDetail/DateTimeValueDetail"]
+                  }
+              }
+          ]
+      }
+  },
+    "annotations":{
+      "iotcentral-message-source":"deviceTemplates",
+      "x-opt-partition-key":"<partitionKey>",
+      "x-opt-sequence-number":25315,
+      "x-opt-offset":"<offset>",
+      "x-opt-enqueued-time":1539274985085
+    },
+    "partitionKey":"<partitionKey>",
+    "sequenceNumber":25315,
+    "enqueuedTimeUtc":"2019-10-02T16:23:05.085Z",
+    "offset":"<offset>"
+  }
+}
+```
+
+Dit is een voor beeld van een moment opname met de gegevens apparaten en eigenschappen in Blob Storage. Geëxporteerde bestanden bevatten één regel per record.
+
+```json
+{
+      "id": "<device template id>",
+      "etag": "<etag>",
+      "types": ["DeviceModel"],
+      "displayName": "Sensor template",
+      "capabilityModel": {
+          "@id": "<capability model id>",
+          "@type": ["CapabilityModel"],
+          "contents": [],
+          "implements": [
+              {
+                  "@id": "<component Id>",
+                  "@type": ["InterfaceInstance"],
+                  "name": "Sensor component",
+                  "schema": {
+                      "@id": "<interface Id>",
+                      "@type": ["Interface"],
+                      "displayName": "Sensor interface",
+                      "contents": [
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry"],
+                              "displayName": "Humidity",
+                              "name": "humidity",
+                              "schema": "double"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Telemetry", "SemanticType/Event"],
+                              "displayName": "Error event",
+                              "name": "error",
+                              "schema": "integer"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Set temperature",
+                              "name": "setTemp",
+                              "writable": true,
+                              "schema": "integer",
+                              "unit": "Units/Temperature/fahrenheit",
+                              "initialValue": "30"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Firmware version read only",
+                              "name": "fwversion",
+                              "schema": "string"
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Property"],
+                              "displayName": "Display status",
+                              "name": "status",
+                              "writable": true,
+                              "schema": {
+                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
+                                  "@type": ["Object"]
+                              }
+                          },
+                          {
+                              "@id": "<id>",
+                              "@type": ["Command"],
+                              "commandType": "synchronous",
+                              "request": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Configuration",
+                                  "name": "config",
+                                  "schema": "string"
+                              },
+                              "response": {
+                                  "@id": "<id>",
+                                  "@type": ["SchemaField"],
+                                  "displayName": "Response",
+                                  "name": "response",
+                                  "schema": "string"
+                              },
+                              "displayName": "Configure sensor",
+                              "name": "sensorconfig"
+                          }
+                      ]
+                  }
+              }
+          ],
+          "displayName": "Sensor capability model"
+      },
+      "solutionModel": {
+          "@id": "<id>",
+          "@type": ["SolutionModel"],
+          "cloudProperties": [
+              {
+                  "@id": "<id>",
+                  "@type": ["CloudProperty"],
+                  "displayName": "Install date",
+                  "name": "installDate",
+                  "schema": "dateTime",
+                  "valueDetail": {
+                      "@id": "<id>",
+                      "@type": ["ValueDetail/DateTimeValueDetail"]
+                  }
+              }
+          ]
+      }
+  }
+```
+## <a name="data-format-change-notice"></a>Wijzigings waarschuwing voor gegevens indeling
+
+> [!Note]
+> De gegevens indeling van de telemetrie-stroom wordt niet beïnvloed door deze wijziging. Alleen de apparaten en apparaatnamen van de gegevens stromen worden beïnvloed.
+
+Als u een bestaande gegevens export in uw preview-toepassing hebt waarbij de streams *apparaten* en *apparaat-sjablonen* zijn ingeschakeld, moet u de export op **30 juni 2020**bijwerken. Dit geldt voor export naar Azure Blob Storage, Azure Event Hubs en Azure Service Bus.
+
+Vanaf 3 februari 2020 heeft alle nieuwe exports in toepassingen met apparaten en apparaatinstellingen ingeschakeld de hierboven beschreven gegevens indeling. Alle exports die eerder zijn gemaakt, blijven op de oude gegevens indeling tot en met 30 juni 2020, waarna de exports automatisch naar de nieuwe gegevens indeling worden gemigreerd. De nieuwe gegevens indeling komt overeen met het [apparaat](https://docs.microsoft.com/rest/api/iotcentral/devices/get), de [eigenschap](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties)apparaat, de eigenschappen van de [apparaat-Cloud](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties) en de object [sjabloon](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) objecten in de IOT Central open bare API. 
+ 
+Voor **apparaten**zijn er belang rijke verschillen tussen de oude gegevens indeling en de nieuwe gegevens indeling:
+- `@id` voor het apparaat wordt verwijderd, wordt de naam van `deviceId` gewijzigd in `id` 
+- `provisioned` markering is toegevoegd om de inrichtings status van het apparaat te beschrijven
+- `approved` vlag is toegevoegd om de goedkeurings status van het apparaat te beschrijven
+- `properties` inclusief apparaat-en Cloud eigenschappen, komt overeen met entiteiten in de open bare API
+
+Voor **apparaatprofielen**zijn de verschillen tussen de oude gegevens indeling en de nieuwe gegevens indeling als volgt:
+
+- de naam van `@id` voor de apparaatprofiel is gewijzigd in `id`
+- de naam van `@type` voor de sjabloon van het apparaat is gewijzigd in `types`en nu een matrix
+
+### <a name="devices-format-deprecated-as-of-3-february-2020"></a>Apparaten (indeling afgeschaft op 3 februari 2020)
 ```json
 {
   "@id":"<id-value>",
@@ -310,172 +617,7 @@ Dit is een voor beeld van een moment opname met de gegevens apparaten en eigensc
 }
 ```
 
-## <a name="device-templates"></a>Apparaatsjablonen
-
-Elk bericht of momentopname record vertegenwoordigt een of meer wijzigingen aan een apparaatprofiel sinds het laatste geëxporteerde bericht. De informatie die in elk bericht of record wordt verzonden, omvat:
-
-- `@id` van de apparaatprofiel die overeenkomt met de `instanceOf` van de bovenstaande apparaten
-- `name` van de sjabloon voor het apparaat
-- `version` van de sjabloon voor het apparaat
-- Het apparaat `capabilityModel` met inbegrip van de `interfaces`en de definities van telemetrie, eigenschappen en opdrachten
-- `cloudProperties` definities
-- Onderdrukkingen en initiële waarden, inline met de `capabilityModel`
-
-Verwijderde Apparaatinstellingen worden niet geëxporteerd. Er zijn momenteel geen indica toren in geëxporteerde berichten voor verwijderde Apparaatinstellingen.
-
-Voor Event Hubs en Service Bus worden berichten met gegevens over de apparaatgegevens bijna in realtime naar uw Event Hub of Service Bus-wachtrij of onderwerp verzonden, zoals deze in IoT Central worden weer gegeven. 
-
-Voor Blob Storage wordt een nieuwe moment opname met alle wijzigingen sinds de laatste geschreven één keer per minuut geëxporteerd.
-
-Dit is een voorbeeld bericht over de gegevens van Device-sjablonen in Event Hub of Service Bus wachtrij of onderwerp:
-
-```json
-{
-  "body":{
-    "@id":"<template-id>",
-    "@type":"DeviceModelDefinition",
-    "displayName":"Airbox",
-    "capabilityModel":{
-      "@id":"<id>",
-      "@type":"CapabilityModel",
-      "implements":[
-        {
-          "@id":"<id>",
-          "@type":"InterfaceInstance",
-          "name":"EnvironmentalSensor",
-          "schema":{
-            "@id":"<id>",
-            "@type":"Interface",
-            "comment":"Requires temperature and humidity sensors.",
-            "description":"Provides functionality to report temperature, humidity. Provides telemetry, commands and read-write properties",
-            "displayName":"Environmental Sensor",
-            "contents":[
-              {
-                "@id":"<id>",
-                "@type":"Telemetry",
-                "description":"Current temperature on the device",
-                "displayName":"Temperature",
-                "name":"temp",
-                "schema":"double",
-                "unit":"Units/Temperature/celsius",
-                "valueDetail":{
-                  "@id":"<id>",
-                  "@type":"ValueDetail/NumberValueDetail",
-                  "minValue":{
-                    "@value":"50"
-                  }
-                },
-                "visualizationDetail":{
-                  "@id":"<id>",
-                  "@type":"VisualizationDetail"
-                }
-              },
-              {
-                "@id":"<id>",
-                "@type":"Telemetry",
-                "description":"Current humidity on the device",
-                "displayName":"Humidity",
-                "name":"humid",
-                "schema":"integer"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Telemetry",
-                "description":"Current PM2.5 on the device",
-                "displayName":"PM2.5",
-                "name":"pm25",
-                "schema":"integer"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "description":"T&H Sensor Model Name",
-                "displayName":"T&H Sensor Model",
-                "name":"thsensormodel",
-                "schema":"string"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "description":"PM2.5 Sensor Model Name",
-                "displayName":"PM2.5 Sensor Model",
-                "name":"pm25sensormodel",
-                "schema":"string"
-              }
-            ]
-          }
-        },
-        {
-          "@id":"<id>",
-          "@type":"InterfaceInstance",
-          "name":"urn_azureiot_DeviceManagement_DeviceInformation",
-          "schema":{
-            "@id":"<id>",
-            "@type":"Interface",
-            "displayName":"Device information",
-            "contents":[
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "comment":"Total available storage on the device in kilobytes. Ex. 20480000 kilobytes.",
-                "displayName":"Total storage",
-                "name":"totalStorage",
-                "displayUnit":"kilobytes",
-                "schema":"long"
-              },
-              {
-                "@id":"<id>",
-                "@type":"Property",
-                "comment":"Total available memory on the device in kilobytes. Ex. 256000 kilobytes.",
-                "displayName":"Total memory",
-                "name":"totalMemory",
-                "displayUnit":"kilobytes",
-                "schema":"long"
-              }
-            ]
-          }
-        }
-      ],
-      "displayName":"AAEONAirbox52"
-    },
-    "solutionModel":{
-      "@id":"<id>",
-      "@type":"SolutionModel",
-      "cloudProperties":[
-        {
-          "@id":"<id>",
-          "@type":"CloudProperty",
-          "displayName":"Color",
-          "name":"Color",
-          "schema":"string",
-          "valueDetail":{
-            "@id":"<id>",
-            "@type":"ValueDetail/StringValueDetail"
-          },
-          "visualizationDetail":{
-            "@id":"<id>",
-            "@type":"VisualizationDetail"
-          }
-        }
-      ]
-    },
-    "annotations":{
-      "iotcentral-message-source":"deviceTemplates",
-      "x-opt-partition-key":"<partitionKey>",
-      "x-opt-sequence-number":25315,
-      "x-opt-offset":"<offset>",
-      "x-opt-enqueued-time":1539274985085
-    },
-    "partitionKey":"<partitionKey>",
-    "sequenceNumber":25315,
-    "enqueuedTimeUtc":"2019-10-02T16:23:05.085Z",
-    "offset":"<offset>"
-  }
-}
-```
-
-Dit is een voor beeld van een moment opname met de gegevens apparaten en eigenschappen in Blob Storage. Geëxporteerde bestanden bevatten één regel per record.
-
+### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>Apparaatbeheer (indeling afgeschaft op 3 februari 2020)
 ```json
 {
   "@id":"<template-id>",
@@ -607,7 +749,6 @@ Dit is een voor beeld van een moment opname met de gegevens apparaten en eigensc
   }
 }
 ```
-
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u weet hoe u uw gegevens naar Azure Event Hubs, Azure Service Bus en Azure Blob Storage kunt exporteren, gaat u verder met de volgende stap:

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 470e633b2c64283db9b6a5b1cd777a6a054dad16
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 6fc6479ccda77bff84319d3244b2bd4a0599dc47
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719786"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934003"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Zelf studie: een machine learning model implementeren met de ontwerp functie (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -38,6 +38,8 @@ Als u uw pijp lijn wilt implementeren, moet u eerst de trainings pijplijn omzett
 ### <a name="create-a-real-time-inference-pipeline"></a>Een real-time pijp lijn maken
 
 1. Selecteer boven het pijplijn canvas **pijp lijn maken** > **real-time pipeline-pijp lijn**.
+
+    ![Scherm afbeelding waarin wordt weer gegeven waar u de knop pijp lijn maken kunt vinden](./media/tutorial-designer-automobile-price-deploy/create-inference-pipeline.png)
 
     Uw pijp lijn moet er nu als volgt uitzien: 
 

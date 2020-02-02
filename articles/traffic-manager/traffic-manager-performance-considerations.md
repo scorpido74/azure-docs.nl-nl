@@ -1,86 +1,86 @@
 ---
-title: Prestatie-overwegingen voor Azure Traffic Manager | Microsoft Docs
-description: Inzicht in prestaties van Traffic Manager en het testen van prestaties van uw website bij het gebruik van Traffic Manager
+title: Prestatie overwegingen voor Azure Traffic Manager | Microsoft Docs
+description: Inzicht krijgen in de prestaties van Traffic Manager en hoe u de prestaties van uw website kunt testen wanneer u Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: 315165677bd3186bb3bdc87ed688c426776569fc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 84367a00643c48e7fe2fb7f907bab64589193b2e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071042"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938546"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Prestatieoverwegingen voor Traffic Manager
 
-Deze pagina leest u Prestatieoverwegingen met Traffic Manager. Houd rekening met het volgende scenario:
+Op deze pagina worden de prestatie overwegingen voor het gebruik van Traffic Manager uitgelegd. Denkt u zich het volgende scenario eens in:
 
-Er exemplaren van uw website in de regio's VS West en Oost-Aziatische. Een van de exemplaren is de statuscontrole voor de traffic manager-test mislukt. Toepassingsverkeer wordt omgeleid naar de regio in orde. Deze failover wordt verwacht maar prestaties kan een probleem opgetreden bij het op basis van de latentie van het verkeer nu onderweg naar een verafgelegen regio.
+U hebt exemplaren van uw website in de regio's Westus en EastAsia. Een van de exemplaren mislukt de status controle voor de Traffic Manager-test. Toepassings verkeer wordt omgeleid naar de in orde zijnde regio. Deze failover wordt verwacht, maar de prestaties kunnen een probleem zijn op basis van de latentie van het verkeer dat nu naar een regio voor een afstand wordt verzonden.
 
 ## <a name="performance-considerations-for-traffic-manager"></a>Prestatieoverwegingen voor Traffic Manager
 
-De enige invloed op de prestaties die Traffic Manager op uw website hebben kan is de eerste DNS-zoekactie. Een DNS-aanvraag voor de naam van uw Traffic Manager-profiel wordt verwerkt door de Microsoft DNS-hoofdserver die als host fungeert voor de zone trafficmanager.net. Traffic Manager wordt gevuld en regelmatig bijgewerkt, van het Microsoft root DNS-servers op basis van het Traffic Manager-beleid en de resultaten van de test. Dus zelfs tijdens de eerste DNS-zoekactie, worden er geen DNS-query's op Traffic Manager verzonden.
+De enige invloed op de prestaties die Traffic Manager kan hebben op uw website is de eerste DNS-zoek opdracht. Een DNS-aanvraag voor de naam van uw Traffic Manager profiel wordt verwerkt door de micro soft DNS-basis server die als host fungeert voor de zone trafficmanager.net. Traffic Manager vult en regel matig updates van de DNS-basis servers van micro soft op basis van het Traffic Manager beleid en de test resultaten. Dus zelfs tijdens de eerste DNS-zoek opdracht worden er geen DNS-query's verzonden naar Traffic Manager.
 
-Traffic Manager bestaat uit verschillende onderdelen: DNS-naam-servers, een API-service, de storage-laag en een eindpunt monitoring-service. Als een onderdeel van de service Traffic Manager is mislukt, heeft dit geen effect op de DNS-naam die is gekoppeld aan uw Traffic Manager-profiel. De records in de Microsoft DNS-servers blijven ongewijzigd. Eindpuntbewaking en DNS-updates echter niet gebeuren. Traffic Manager is daarom niet kunnen werkt DNS-server om te verwijzen naar uw failoversite als uw primaire locatie uitvalt.
+Traffic Manager bestaat uit verschillende onderdelen: DNS-naam servers, een API-service, de opslaglaag en een eindpunt bewakings service. Als een Traffic Manager-service onderdeel mislukt, heeft dit geen invloed op de DNS-naam die is gekoppeld aan uw Traffic Manager profiel. De records in de micro soft DNS-servers blijven ongewijzigd. Eindpunt controle en DNS-updates worden echter niet uitgevoerd. Daarom kan Traffic Manager DNS niet bijwerken om naar uw failover-site te verwijzen wanneer de primaire site uitvalt.
 
-DNS-naamomzetting is snel en resultaten in de cache zijn opgeslagen. De snelheid van de eerste DNS-zoekactie is afhankelijk van de DNS-servers die de client wordt gebruikt voor naamomzetting. Een client kan normaal gesproken een DNS-zoekopdracht binnen ~ 50 ms te voltooien. De resultaten van de zoekopdracht in de cache opgeslagen voor de duur van de DNS-Time-to-live (TTL). De standaard-TTL voor Traffic Manager is 300 seconden.
+De DNS-naam omzetting is snel en de resultaten worden opgeslagen in de cache. De snelheid van de eerste DNS-zoek opdracht is afhankelijk van de DNS-servers die de client gebruikt voor naam omzetting. Normaal gesp roken kan een client een DNS-zoek opdracht binnen ~ 50 MS volt ooien. De resultaten van de zoek actie worden in de cache opgeslagen voor de duur van de DNS-TTL (time-to-Live). De standaard-TTL voor Traffic Manager is 300 seconden.
 
-Verkeer wordt via Traffic Manager niet uitgebreid. Nadat de DNS-zoekactie is voltooid, is de client een IP-adres voor een exemplaar van uw website. De client maakt rechtstreeks verbinding met dit adres en geeft niet via Traffic Manager. Het Traffic Manager-beleid dat u kiest heeft geen invloed op de DNS-prestaties. Echter, kan een prestatie-routeringsmethode negatieve invloed hebben op de toepassingservaring. Bijvoorbeeld, als uw beleid verkeer van Noord-Amerika naar een exemplaar die wordt gehost in Azië omleidingen, mogelijk de netwerklatentie voor deze sessies een prestatieprobleem.
+Verkeer loopt niet door Traffic Manager. Zodra de DNS-zoek opdracht is voltooid, heeft de client een IP-adres voor een exemplaar van uw website. De client maakt rechtstreeks verbinding met dit adres en geeft geen Traffic Manager door. Het Traffic Manager-beleid dat u kiest, heeft geen invloed op de DNS-prestaties. Een prestatie routering methode kan echter een negatieve invloed hebben op de ervaring van de toepassing. Als uw beleid bijvoorbeeld verkeer omleidt van Noord-Amerika naar een exemplaar dat in Azië wordt gehost, kan de netwerk latentie voor deze sessies een prestatie probleem zijn.
 
-## <a name="measuring-traffic-manager-performance"></a>Meten van prestaties van Traffic Manager
+## <a name="measuring-traffic-manager-performance"></a>Prestaties meten Traffic Manager
 
-Er zijn diverse websites die u gebruiken kunt om te begrijpen van de prestaties en het gedrag van een Traffic Manager-profiel. Veel van deze sites zijn gratis, maar mogelijk beperkingen. Sommige sites bieden uitgebreide bewaking en rapportage voor een betaling te doen.
+Er zijn verschillende websites die u kunt gebruiken om inzicht te krijgen in de prestaties en het gedrag van een Traffic Manager profiel. Veel van deze sites zijn gratis, maar kunnen beperkingen hebben. Sommige sites bieden uitgebreide bewaking en rapportage voor een vergoeding.
 
-De hulpprogramma's voor deze sites meting DNS latenties en weergave van de opgelost IP-adressen voor clientlocaties over de hele wereld. De meeste van deze hulpprogramma's de DNS-resultaten niet opslaan in cache. Daarom geven de hulpprogramma's voor de volledige DNS-zoekactie telkens wanneer die een test wordt uitgevoerd. Wanneer u vanaf uw eigen client test, ondervindt u alleen de volledige DNS-lookup prestaties eenmaal opent gedurende de duur van de TTL-waarde.
+De hulpprogram ma's op deze sites meten DNS-latentie en geven de opgeloste IP-adressen weer voor client locaties over de hele wereld. De meeste van deze hulpprogram ma's slaan de DNS-resultaten niet op in de cache. Daarom tonen de hulpprogram ma's de volledige DNS-zoek opdracht telkens wanneer een test wordt uitgevoerd. Wanneer u van uw eigen client test, wordt alleen de volledige DNS-Zoek prestaties uitgevoerd tijdens de TTL-duur.
 
-## <a name="sample-tools-to-measure-dns-performance"></a>Voorbeeld van hulpprogramma's voor het meten van DNS-prestaties
+## <a name="sample-tools-to-measure-dns-performance"></a>Voorbeeld hulpprogramma's voor het meten van DNS-prestaties
 
 * [SolveDNS](https://www.solvedns.com/dns-comparison/)
 
-    SolveDNS biedt veel hulpprogramma's voor prestaties. De vergelijking van de DNS-hulpprogramma kunt u weergeven, hoe lang het duurt om uw DNS-naam te herleiden en hoe die zich verhoudt tot andere DNS-serviceproviders.
+    SolveDNS biedt veel prestatie hulpprogramma's. Met het hulp programma voor vergelijken van DNS kunt u zien hoe lang het duurt om uw DNS-naam op te lossen en hoe die worden vergeleken met andere DNS-service providers.
 
 * [WebSitePulse](https://www.websitepulse.com/help/tools.php)
 
-    Een van de meest eenvoudige hulpprogramma's is WebSitePulse. Voer de URL om te zien van de DNS-omzettingstijd, de eerste Byte, laatste Byte en andere statistieken over de prestaties. U kunt kiezen uit drie verschillende locaties. In dit voorbeeld ziet u dat de eerste uitvoering ziet u dat de DNS-zoekactie 0.204 sec duurt.
+    Een van de eenvoudigste hulpprogram ma's is WebSitePulse. Voer de URL in om de DNS-omzettings tijd, de eerste byte, de laatste byte en andere prestatie statistieken weer te geven. U kunt kiezen uit drie verschillende test locaties. In dit voor beeld ziet u dat de eerste uitvoering laat zien dat de DNS-zoek opdracht 0,204 sec.
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
-    Omdat de resultaten worden opgeslagen in de cache, de tweede test voor hetzelfde Traffic Manager-eindpunt de DNS-zoekactie neemt 0.002 sec.
+    Omdat de resultaten in de cache worden opgeslagen, wordt de tweede test voor hetzelfde Traffic Manager-eind punt dat de DNS-zoek opdracht 0,002 sec.
 
     ![pulse2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
 
-* [CA-App synthetische Monitor](https://asm.ca.com/en/checkit.php)
+* [Synthetische monitor voor CA-apps](https://asm.ca.com/en/checkit.php)
 
-    Voorheen bekend als het hulpprogramma voor controle van de muis selectievakje Website, deze site ziet u de DNS-omzettingstijd van meerdere geografische regio's tegelijkertijd. Voer de URL om te zien van de DNS-omzettingstijd, verbindingstijd en snelheid van verschillende geografische locaties. Gebruik deze test om te zien welke gehoste service wordt geretourneerd voor verschillende locaties over de hele wereld.
+    Deze site, voorheen bekend als de Watch-muis controle, geeft u de DNS-omzettings tijd van meerdere geografische regio's tegelijk weer. Voer de URL in om de DNS-omzettings tijd, verbindings tijd en snelheid van verschillende geografische locaties weer te geven. Gebruik deze test om te zien welke gehoste service wordt geretourneerd voor verschillende locaties over de hele wereld.
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 
 * [Pingdom](https://tools.pingdom.com/)
 
-    Dit hulpprogramma biedt statistieken over de prestaties voor elk element van een webpagina. Het tabblad analyse van de pagina bevat het percentage tijd besteed aan de DNS-zoekactie.
+    Dit hulp programma biedt prestatie statistieken voor elk element van een webpagina. Op het tabblad pagina analyse wordt het percentage tijd weer gegeven dat is besteed aan DNS-Zoek opdrachten.
 
 * [Wat is mijn DNS?](https://www.whatsmydns.net/)
 
-    Deze site heeft een DNS-zoekopdracht vanuit 20 verschillende locaties en de resultaten worden weergegeven op een kaart.
+    Deze site voert een DNS-zoek opdracht uit van 20 verschillende locaties en geeft de resultaten weer op een kaart.
 
-* [Dig Web Interface](https://www.digwebinterface.com)
+* [Webinterface graaf](https://www.digwebinterface.com)
 
-    Deze site bevat dat meer gedetailleerde DNS-informatie, met inbegrip van CNAME-records en A-records. Zorg ervoor dat u de 'Vullen met kleur uitvoer' en 'Statistieken' onder opties controleren, en selecteer 'All' onder naamservers.
+    Deze site bevat meer gedetailleerde DNS-informatie, inclusief CNAME en records. Controleer of u de ' inkleuren uitvoer ' en ' Statistieken ' selecteert onder Opties en selecteer ' alle ' onder naam servers.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Over verkeersrouteringsmethoden voor Traffic Manager](traffic-manager-routing-methods.md)
+[Over Traffic Manager routerings methoden voor verkeer](traffic-manager-routing-methods.md)
 
-[Uw instellingen voor Traffic Manager testen](traffic-manager-testing-settings.md)
+[Uw Traffic Manager-instellingen testen](traffic-manager-testing-settings.md)
 
 [Bewerkingen op Traffic Manager (REST API-referentiemateriaal)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure Traffic Manager-Cmdlets](https://docs.microsoft.com/powershell/module/az.trafficmanager)
+[Azure Traffic Manager-cmdlets](https://docs.microsoft.com/powershell/module/az.trafficmanager)
 

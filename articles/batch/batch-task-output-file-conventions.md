@@ -1,6 +1,6 @@
 ---
-title: Taak-en taak uitvoer persistent maken voor Azure Storage met de bestands conventies bibliotheek voor .NET-Azure Batch | Microsoft Docs
-description: Meer informatie over het gebruik van Azure Batch bestands conventies bibliotheek voor .NET om batch taak-en taak uitvoer te behouden voor Azure Storage en om de persistente uitvoer in de Azure Portal weer te geven.
+title: Uitvoer gegevens persistent maken voor Azure Storage met .NET file conventies Library-Azure Batch
+description: Meer informatie over het gebruik van Azure Batch bestands conventies bibliotheek voor .NET om batch taken te behouden & taak uitvoer naar Azure Storage en de uitvoer in de Azure Portal te bekijken.
 services: batch
 documentationcenter: .net
 author: ju-shim
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 306407252a6f5bc4071947b6aafa2d50bccc97a8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8b57ab7168b331734d7811e04284db56bc782f3f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842730"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935269"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Taak-en taak gegevens persistent maken om te Azure Storage met de conventies bibliotheek voor batch bestanden voor .NET
 

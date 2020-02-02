@@ -1,6 +1,6 @@
 ---
-title: Taken uitvoeren onder gebruikers accounts-Azure Batch | Microsoft Docs
-description: Gebruikers accounts configureren voor het uitvoeren van taken in Azure Batch
+title: Taken uitvoeren onder gebruikers accounts-Azure Batch
+description: Het is handig om het gebruikers account te configureren waaronder u wilt dat een taak wordt uitgevoerd. Meer informatie over de typen gebruikers accounts en hoe u deze kunt configureren.
 services: batch
 author: ju-shim
 manager: gwallace
@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/18/2019
 ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: d4975935c872f059dde6b08bcd7a4f06540c2dfd
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 01342c8fcd0d2d3c603762b06350a9fcf7c12d03
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029598"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937965"
 ---
 > [!NOTE] 
 > De gebruikers accounts die in dit artikel worden besproken, verschillen van gebruikers accounts die worden gebruikt voor Remote Desktop Protocol (RDP) of Secure Shell (SSH) om veiligheids redenen. 

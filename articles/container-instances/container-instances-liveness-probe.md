@@ -2,13 +2,13 @@
 title: De afronding van de liveiteit instellen voor het container exemplaar
 description: Meer informatie over het configureren van Live-tests om beschadigde containers opnieuw te starten in Azure Container Instances
 ms.topic: article
-ms.date: 06/08/2018
-ms.openlocfilehash: 566f7952aff1cf460272fbb418a2a0efff411881
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 01/30/2020
+ms.openlocfilehash: 11c6c9d39067c536bf4325f74eb24b2ab64ef515
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901907"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934166"
 ---
 # <a name="configure-liveness-probes"></a>Activiteitstests configureren
 
@@ -63,13 +63,13 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="start-command"></a>Opdracht starten
 
-De implementatie definieert een begin opdracht die moet worden uitgevoerd wanneer de container voor het eerst wordt uitgevoerd, gedefinieerd door de eigenschap `command`, die een matrix met teken reeksen accepteert. In dit voor beeld wordt een bash-sessie gestart en wordt een bestand met de naam `healthy` in de map `/tmp` gemaakt door de volgende opdracht door te geven:
+De implementatie bevat een `command` eigenschap waarmee een start opdracht wordt gedefinieerd die wordt uitgevoerd wanneer de container voor het eerst wordt gestart. Deze eigenschap accepteert een matrix met teken reeksen. Met deze opdracht wordt de container met een slechte status gesimuleerd.
+
+Eerst wordt een bash-sessie gestart en wordt een bestand met de naam `healthy` in de map `/tmp` gemaakt. Vervolgens wordt er 30 seconden geslapend voordat het bestand wordt verwijderd. vervolgens wordt er een slaap stand van 10 minuten ingevoerd:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
-
- De slaap stand wordt 30 seconden ingedrukt voordat het bestand wordt verwijderd. vervolgens wordt er een slaap stand van 10 minuten ingevoerd.
 
 ### <a name="liveness-command"></a>Opdracht van liveiteit
 
@@ -79,21 +79,21 @@ De eigenschap `periodSeconds` geeft aan dat de opdracht voor de liveiteit elke v
 
 ## <a name="verify-liveness-output"></a>Uitvoer van de liveiteit controleren
 
-Binnen de eerste 30 seconden bestaat het `healthy` bestand dat is gemaakt met de opdracht starten. Wanneer de opdracht van de bewerking wordt uitgevoerd op het bestaan van het `healthy` bestand, retourneert de status code een nul, de signaal bewerking is voltooid, dus niet opnieuw opstarten.
+Binnen de eerste 30 seconden bestaat het `healthy` bestand dat is gemaakt met de opdracht starten. Wanneer de opdracht van de bewerking wordt uitgevoerd op het bestaan van het `healthy` bestand, retourneert de status code 0, de signaal bewerking is voltooid, dus wordt het niet opnieuw opgestart.
 
-Na 30 seconden zal de `cat /tmp/healthy` mislukken, waardoor er sprake is van een slechte en dodende gebeurtenis.
+Na 30 seconden mislukt de `cat /tmp/healthy`-opdracht, waardoor er sprake is van een slechte en dodende gebeurtenis.
 
 Deze gebeurtenissen kunnen worden bekeken vanuit de Azure Portal of Azure CLI.
 
 ![De portal heeft een slechte gebeurtenis][portal-unhealthy]
 
-Door de gebeurtenissen in de Azure Portal weer te geven, worden gebeurtenissen van het type `Unhealthy` geactiveerd op het moment dat de opdracht wordt uitgevoerd. De volgende gebeurtenis is van het type `Killing`, waardoor een container wordt verwijderd, zodat het opnieuw opstarten kan worden gestart. Het aantal opnieuw te starten voor de container wordt telkens verhoogd wanneer deze gebeurtenis plaatsvindt.
+Door de gebeurtenissen in de Azure Portal weer te geven, worden gebeurtenissen van het type `Unhealthy` geactiveerd op het moment dat de opdracht voor de bewerking wordt uitgevoerd. De volgende gebeurtenis is van het type `Killing`, waardoor een container wordt verwijderd, zodat het opnieuw opstarten kan worden gestart. Het aantal opnieuw te starten voor de container wordt telkens verhoogd wanneer deze gebeurtenis plaatsvindt.
 
-Opnieuw opstarten is in-place voltooid zodat resources zoals open bare IP-adressen en platformspecifieke inhoud behouden blijven.
+Opnieuw opstarten is in-place voltooid, zodat resources zoals open bare IP-adressen en knooppunt afhankelijke inhoud behouden blijven.
 
 ![Teller voor opnieuw starten van portal][portal-restart]
 
-Als de duur van de bewerking continu wordt uitgevoerd en er te veel opnieuw moet worden opgestart, wordt in de container een exponentiële uitstel vertraging ingevoerd.
+Als de duur van de bewerking continu wordt uitgevoerd en er te veel opnieuw moet worden opgestart, treedt er een exponentiële uitstel vertraging op.
 
 ## <a name="liveness-probes-and-restart-policies"></a>Online tests en beleid voor opnieuw opstarten
 

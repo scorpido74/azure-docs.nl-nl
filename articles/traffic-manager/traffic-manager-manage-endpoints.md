@@ -3,20 +3,20 @@ title: Eindpunten beheren in Azure Traffic Manager | Microsoft Docs
 description: Dit artikel helpt u bij het toevoegen, verwijderen, inschakelen en uitschakelen van eindpunten vanuit Azure Traffic Manager.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
-ms.author: allensu
-ms.openlocfilehash: 573a8f7ede29b045053d77194d15707df9e23641
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 2aee4282fe6a66151ea39018f0d6c0db51f2c027
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071089"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939140"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Eindpunten toevoegen, uitschakelen, inschakelen of verwijderen
 
@@ -52,7 +52,7 @@ U kunt ook afzonderlijke eindpunten uitschakelen die deel uitmaken van een Traff
 1. Meld u vanuit een browser aan bij [Azure Portal](https://portal.azure.com).
 2. Zoek in de zoekbalk van de portal naar de naam van het **Traffic Manager-profiel** dat u wilt wijzigen, en klik vervolgens in de weergegeven resultaten op het Traffic Manager-profiel.
 3. Klik op de blade **Traffic Manager-profiel** in de sectie **Instellingen** op **Eindpunten**. 
-4. Klik op het eindpunt dat u wilt uitschakelen.
+4. Klik op het eind punt dat u wilt uitschakelen.
 5. Wijzig op de blade **Eindpunt** de eindpuntstatus in **Uitgeschakeld** en klik vervolgens op **Opslaan**.
 6. Clients blijven verkeer verzenden naar het eindpunt voor de duur van de Time-to-Live (TTL). U kunt de TTL wijzigen op de pagina Configuratie van het Traffic Manager-profiel.
 
@@ -61,7 +61,7 @@ U kunt ook afzonderlijke eindpunten uitschakelen die deel uitmaken van een Traff
 1. Meld u vanuit een browser aan bij [Azure Portal](https://portal.azure.com).
 2. Zoek in de zoekbalk van de portal naar de naam van het **Traffic Manager-profiel** dat u wilt wijzigen, en klik vervolgens in de weergegeven resultaten op het Traffic Manager-profiel.
 3. Klik op de blade **Traffic Manager-profiel** in de sectie **Instellingen** op **Eindpunten**. 
-4. Klik op het eindpunt dat u wilt inschakelen.
+4. Klik op het eind punt dat u wilt inschakelen.
 5. Wijzig op de blade **Eindpunt** de eindpuntstatus in **Ingeschakeld** en klik vervolgens op **Opslaan**.
 6. Clients blijven verkeer verzenden naar het eindpunt voor de duur van de Time-to-Live (TTL). U kunt de TTL wijzigen op de pagina Configuratie van het Traffic Manager-profiel.
 
@@ -70,8 +70,8 @@ U kunt ook afzonderlijke eindpunten uitschakelen die deel uitmaken van een Traff
 1. Meld u vanuit een browser aan bij [Azure Portal](https://portal.azure.com).
 2. Zoek in de zoekbalk van de portal naar de naam van het **Traffic Manager-profiel** dat u wilt wijzigen, en klik vervolgens in de weergegeven resultaten op het Traffic Manager-profiel.
 3. Klik op de blade **Traffic Manager-profiel** in de sectie **Instellingen** op **Eindpunten**. 
-4. Klik op het eindpunt dat u wilt verwijderen.
-5. In de **eindpunt** blade, klikt u op **verwijderen**
+4. Klik op het eind punt dat u wilt verwijderen.
+5. Klik op de Blade **eind punt** op **verwijderen**
 
 
 ## <a name="next-steps"></a>Volgende stappen

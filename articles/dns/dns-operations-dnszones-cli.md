@@ -3,7 +3,7 @@ title: DNS-zones beheren in Azure DNS-Azure CLI | Microsoft Docs
 description: U kunt DNS-zones beheren met behulp van Azure CLI. In dit artikel wordt beschreven hoe u DNS-zones bijwerkt, verwijdert en maakt op Azure DNS.
 services: dns
 documentationcenter: na
-author: asudbring
+author: rohinkoul
 manager: timlt
 ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
 ms.service: dns
@@ -12,20 +12,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
-ms.author: allensu
-ms.openlocfilehash: e1a3c401de32beb9757011ac306443334da8b867
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 413c2ab3ee04249c2bb52bf42ca6a31a58fb9082
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211929"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936934"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>DNS-zones beheren in Azure DNS met behulp van de Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Azure CLI](dns-operations-dnszones-cli.md)
+> * [Azure-CLI](dns-operations-dnszones-cli.md)
 
 
 In deze hand leiding wordt uitgelegd hoe u uw DNS-zones beheert met behulp van de platformoverschrijdende Azure CLI, die beschikbaar is voor Windows, Mac en Linux. U kunt ook uw DNS-zones beheren met behulp van [Azure PowerShell](dns-operations-dnszones.md) of de Azure Portal.

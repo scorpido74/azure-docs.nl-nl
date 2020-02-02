@@ -2,22 +2,22 @@
 title: Bewaking van Azure Traffic Manager Endpoint | Microsoft Docs
 description: Dit artikel bevat informatie over de manier waarop Traffic Manager eindpunt controle en automatische endpoint failover gebruikt om Azure-klanten te helpen bij het implementeren van toepassingen met hoge Beschik baarheid
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
-ms.author: allensu
-ms.openlocfilehash: e06d2ce93ac7c534f2c729dce794e66e3ee894d8
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.author: rohink
+ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333808"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938561"
 ---
-# <a name="traffic-manager-endpoint-monitoring"></a>Eindpunt bewaking Traffic Manager
+# <a name="traffic-manager-endpoint-monitoring"></a>Eindpuntbewaking in Traffic Manager
 
 Azure Traffic Manager omvat ingebouwde eindpunt bewaking en automatische endpoint failover. Deze functie helpt u bij het leveren van toepassingen met hoge Beschik baarheid die robuust zijn voor een eindpunt fout, waaronder problemen met Azure-regio's.
 
@@ -30,17 +30,17 @@ Als u eindpunt bewaking wilt configureren, moet u de volgende instellingen opgev
 * **Pad**. Deze configuratie-instelling is alleen geldig voor de HTTP-en HTTPS-protocollen waarvoor de instelling pad is vereist. Als u deze instelling voor het TCP-bewakings protocol opgeeft, resulteert dit in een fout. Voor HTTP-en HTTPS-protocol geeft u het relatieve pad en de naam van de webpagina of het bestand waartoe de controle toegang heeft. Een slash (/) is een geldige vermelding voor het relatieve pad. Deze waarde impliceert dat het bestand zich in de hoofdmap (standaard) bevindt.
 * **Instellingen voor aangepaste header** Deze configuratie-instelling helpt u bij het toevoegen van specifieke HTTP-headers aan de status controles die Traffic Manager naar eind punten in een profiel verzendt. De aangepaste kopteksten kunnen op een profiel niveau worden opgegeven dat van toepassing is voor alle eind punten in dat profiel en/of op een eindpunt niveau dat alleen van toepassing is op dat eind punt. U kunt aangepaste headers gebruiken voor het uitvoeren van status controles op eind punten in een omgeving met meerdere tenants naar de juiste bestemming door een host-header op te geven. U kunt deze instelling ook gebruiken door unieke headers toe te voegen die kunnen worden gebruikt om Traffic Manager afkomstig van HTTP (S)-aanvragen te identificeren en ze op een andere manier te verwerken. U kunt Maxi maal acht kopteksten opgeven: waardeparen seprated door een komma. Bijvoorbeeld "Header1: waarde1, header2: waarde2". 
 * **Verwachte status code-bereiken** Met deze instelling kunt u meerdere succes waarden opgeven in de notatie 200-299, 301-301. Als deze status codes worden ontvangen als reactie van een eind punt wanneer een status controle wordt gestart, markeert Traffic Manager deze eind punten als in orde. U kunt Maxi maal acht status bereik waarden opgeven. Deze instelling is alleen van toepassing op het HTTP-en HTTPS-protocol en op alle eind punten. Deze instelling bevindt zich op het niveau van Traffic Manager profiel en de waarde 200 wordt standaard gedefinieerd als de status code geslaagd.
-* **Interval voor zoeken**. Met deze waarde wordt aangegeven hoe vaak een eind punt wordt gecontroleerd op de status van een Traffic Manager-Bing-agent. U kunt hier twee waarden opgeven: 30 seconden (normale Zoek tijd) en tien seconden (snel zoeken). Als er geen waarden worden gegeven, wordt het profiel ingesteld op een standaard waarde van 30 seconden. Ga naar de pagina met [prijzen voor Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) voor meer informatie over de prijzen voor snel zoeken.
+* **Interval voor zoeken**. Met deze waarde wordt aangegeven hoe vaak een eind punt wordt gecontroleerd op de status van een Traffic Manager-Bing-agent. U kunt hier twee waarden opgeven: 30 seconden (normale Zoek tijd) en 10 seconden (snel zoeken). Als er geen waarden worden gegeven, wordt het profiel ingesteld op een standaard waarde van 30 seconden. Ga naar de pagina met [prijzen voor Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) voor meer informatie over de prijzen voor snel zoeken.
 * **Toegestaan aantal fouten**. Met deze waarde wordt het aantal mislukte pogingen aangegeven dat een Traffic Manager gezochte agent is toegestaan voordat het eind punt wordt gemarkeerd als beschadigd. De waarde kan variëren tussen 0 en 9. Een waarde van 0 betekent dat een enkele bewakings fout ervoor kan zorgen dat het eind punt wordt gemarkeerd als beschadigd. Als er geen waarde is opgegeven, wordt de standaard waarde 3 gebruikt.
 * **Time-out voor testen**. Met deze eigenschap geeft u de hoeveelheid tijd op die de agent voor de Traffic Manager-Bing moet wachten voordat wordt overwogen dat er een fout optreedt wanneer een status controle test naar het eind punt wordt verzonden. Als het probing-interval is ingesteld op 30 seconden, kunt u de time-outwaarde tussen 5 en 10 seconden instellen. Als er geen waarde is opgegeven, wordt de standaard waarde van 10 seconden gebruikt. Als het interval voor zoeken is ingesteld op 10 seconden, kunt u de time-outwaarde tussen 5 en 9 seconden instellen. Als er geen time-outwaarde is opgegeven, wordt de standaard waarde van 9 seconden gebruikt.
 
-    ![Eindpunt bewaking Traffic Manager](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
+    ![Eindpuntbewaking in Traffic Manager](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
 
-    **Afbeelding:  Eindpunt bewaking Traffic Manager**
+    **Afbeelding: eindpunt bewaking Traffic Manager**
 
 ## <a name="how-endpoint-monitoring-works"></a>Hoe eindpunt controle werkt
 
-Als het bewakings protocol is ingesteld als HTTP of HTTPS, wordt door de agent van Traffic Manager zoeken een GET-aanvraag naar het eind punt gemaakt met behulp van het Protocol, de poort en het relatieve pad dat is opgegeven. Als er een 200-OK-antwoord wordt teruggestuurd of een van de antwoorden die zijn geconfigureerd in de **verwachte status codes \*** , wordt dat eind punt als gezond beschouwd. Als het antwoord een andere waarde is, of als er geen reactie wordt ontvangen binnen de opgegeven time-outperiode, wordt de Traffic Manager hand leiding van de agent opnieuw geprobeerd, afhankelijk van de instelling van het getolerantiete aantal fouten (er worden geen nieuwe pogingen gedaan als deze instelling 0 is). Als het aantal opeenvolgende fouten hoger is dan het aantal ingestelde fouten, wordt het eind punt als beschadigd gemarkeerd. 
+Als het bewakings protocol is ingesteld als HTTP of HTTPS, wordt door de agent van Traffic Manager zoeken een GET-aanvraag naar het eind punt gemaakt met behulp van het Protocol, de poort en het relatieve pad dat is opgegeven. Als er een 200-OK-antwoord wordt teruggestuurd of een van de antwoorden die zijn geconfigureerd in de **verwachte status code \*bereiken**, wordt dat eind punt als gezond beschouwd. Als het antwoord een andere waarde is, of als er geen reactie wordt ontvangen binnen de opgegeven time-outperiode, wordt de Traffic Manager hand leiding van de agent opnieuw geprobeerd, afhankelijk van de instelling van het getolerantiete aantal fouten (er worden geen nieuwe pogingen gedaan als deze instelling 0 is). Als het aantal opeenvolgende fouten hoger is dan het aantal ingestelde fouten, wordt het eind punt als beschadigd gemarkeerd. 
 
 Als het bewakings protocol TCP is, initieert de Traffic Manager zoeken-agent een TCP-verbindings aanvraag met behulp van de opgegeven poort. Als het eind punt reageert op de aanvraag met een reactie op het tot stand brengen van de verbinding, wordt die status controle gemarkeerd als geslaagd en wordt de TCP-verbinding door de agent van de Traffic Manager gezocht. Als het antwoord een andere waarde is, of als er geen reactie wordt ontvangen binnen de opgegeven time-outperiode, wordt de Traffic Manager hand leiding van de agent opnieuw geprobeerd, afhankelijk van het aantal ingestelde fouten (er worden geen nieuwe pogingen gedaan als deze instelling 0 is). Als het aantal opeenvolgende fouten hoger is dan het aantal ingestelde fouten, is dat eind punt gemarkeerd als beschadigd.
 
@@ -49,13 +49,13 @@ In alle gevallen worden Traffic Manager tests vanaf meerdere locaties en wordt d
 >[!NOTE]
 >Voor HTTP-of HTTPS-bewakings protocollen is een veelvoorkomende procedure aan de kant van het eind punt een aangepaste pagina in uw toepassing te implementeren, bijvoorbeeld/Health.aspx. Met dit pad voor bewaking kunt u toepassingsspecifieke controles uitvoeren, zoals het controleren van prestatie meter items of het controleren van de beschik baarheid van de data base. Op basis van deze aangepaste controles retourneert de pagina een juiste HTTP-status code.
 
-Alle eind punten in een Traffic Manager profiel instellingen voor het delen van profielen. Als u verschillende bewakings instellingen voor verschillende eind punten wilt gebruiken, kunt u geneste [Traffic Manager profielen](traffic-manager-nested-profiles.md#example-5-per-endpoint-monitoring-settings)maken.
+Alle eind punten in een Traffic Manager profiel instellingen voor het delen van profielen. Als u verschillende bewakings instellingen voor verschillende eind punten wilt gebruiken, kunt u [geneste Traffic Manager profielen](traffic-manager-nested-profiles.md#example-5-per-endpoint-monitoring-settings)maken.
 
 ## <a name="endpoint-and-profile-status"></a>Status van eind punt en profiel
 
 U kunt Traffic Manager profielen en eind punten in-en uitschakelen. Een wijziging in de eindpunt status kan echter ook optreden als gevolg van Traffic Manager geautomatiseerde instellingen en processen.
 
-### <a name="endpoint-status"></a>Eindpuntstatus
+### <a name="endpoint-status"></a>Eindpunt status
 
 U kunt een specifiek eind punt in-of uitschakelen. De onderliggende service, die mogelijk nog steeds in orde is, wordt niet beïnvloed. Het wijzigen van de eindpunt status bepaalt de beschik baarheid van het eind punt in het Traffic Manager profiel. Wanneer de status van een eind punt is uitgeschakeld, controleert Traffic Manager de status niet en wordt het eind punt niet opgenomen in een DNS-antwoord.
 
@@ -67,16 +67,16 @@ Met de instelling profiel status kunt u een specifiek profiel in-of uitschakelen
 
 Status van eindpunt monitor is een door Traffic Manager gegenereerde waarde waarmee de status van het eind punt wordt weer gegeven. U kunt deze instelling niet hand matig wijzigen. De eindpunt Monitor status is een combi natie van de resultaten van de eindpunt bewaking en de geconfigureerde eindpunt status. De mogelijke waarden van de status van de eindpunt monitor worden weer gegeven in de volgende tabel:
 
-| Profiel status | Eindpuntstatus | Status van eindpunt monitor | Opmerkingen |
+| Profiel status | Eindpunt status | Status van eindpunt monitor | Opmerkingen |
 | --- | --- | --- | --- |
-| Uitgeschakeld |Enabled |Inactief |Het profiel is uitgeschakeld. Hoewel de status van het eind punt is ingeschakeld, heeft de profiel status (uitgeschakeld) prioriteit. Eind punten in uitgeschakelde profielen worden niet bewaakt. Er wordt een NXDOMAIN-respons code geretourneerd voor de DNS-query. |
-| &lt;iedere&gt; |Uitgeschakeld |Uitgeschakeld |Het eind punt is uitgeschakeld. Uitgeschakelde eind punten worden niet bewaakt. Het eind punt is niet opgenomen in DNS-antwoorden, waardoor er geen verkeer wordt ontvangen. |
-| Enabled |Enabled |Online |Het eind punt wordt bewaakt en is in orde. Het is opgenomen in DNS-antwoorden en kan verkeer ontvangen. |
-| Enabled |Enabled |Verminderd |Status controles voor eindpunt controle zijn mislukt. Het eind punt is niet opgenomen in DNS-antwoorden en ontvangt geen verkeer. <br>Een uitzonde ring hierop is als alle eind punten worden gedegradeerd, in het geval dat deze allemaal worden beschouwd als geretourneerd in het antwoord op de query).</br>|
-| Enabled |Enabled |CheckingEndpoint |Het eind punt wordt bewaakt, maar de resultaten van de eerste test zijn nog niet ontvangen. CheckingEndpoint is een tijdelijke status die gewoonlijk onmiddellijk optreedt nadat er een eind punt in het profiel is toegevoegd of ingeschakeld. Een eind punt in deze status is opgenomen in DNS-antwoorden en kan verkeer ontvangen. |
-| Enabled |Enabled |Gestopt |De web-app waarnaar het eind punt verwijst, wordt niet uitgevoerd. Controleer de instellingen van de web-app. Dit kan ook gebeuren als het eind punt van het type genest eind punt is en het onderliggende profiel is uitgeschakeld of niet actief is. <br>Een eind punt met de status stopped wordt niet bewaakt. Het is niet opgenomen in DNS-antwoorden en ontvangt geen verkeer. Een uitzonde ring hierop is als alle eind punten worden gedegradeerd. in dat geval worden deze allemaal beschouwd als geretourneerd in het antwoord op de query.</br>|
+| Uitgeschakeld |Ingeschakeld |Inactieve |Het profiel is uitgeschakeld. Hoewel de status van het eind punt is ingeschakeld, heeft de profiel status (uitgeschakeld) prioriteit. Eind punten in uitgeschakelde profielen worden niet bewaakt. Er wordt een NXDOMAIN-respons code geretourneerd voor de DNS-query. |
+| &gt; &lt; |Uitgeschakeld |Uitgeschakeld |Het eind punt is uitgeschakeld. Uitgeschakelde eind punten worden niet bewaakt. Het eind punt is niet opgenomen in DNS-antwoorden, waardoor er geen verkeer wordt ontvangen. |
+| Ingeschakeld |Ingeschakeld |Online |Het eind punt wordt bewaakt en is in orde. Het is opgenomen in DNS-antwoorden en kan verkeer ontvangen. |
+| Ingeschakeld |Ingeschakeld |Verminderd beschikbaar |Status controles voor eindpunt controle zijn mislukt. Het eind punt is niet opgenomen in DNS-antwoorden en ontvangt geen verkeer. <br>Een uitzonde ring hierop is als alle eind punten worden gedegradeerd, in het geval dat deze allemaal worden beschouwd als geretourneerd in het antwoord op de query).</br>|
+| Ingeschakeld |Ingeschakeld |CheckingEndpoint |Het eind punt wordt bewaakt, maar de resultaten van de eerste test zijn nog niet ontvangen. CheckingEndpoint is een tijdelijke status die gewoonlijk onmiddellijk optreedt nadat er een eind punt in het profiel is toegevoegd of ingeschakeld. Een eind punt in deze status is opgenomen in DNS-antwoorden en kan verkeer ontvangen. |
+| Ingeschakeld |Ingeschakeld |Stopped |De web-app waarnaar het eind punt verwijst, wordt niet uitgevoerd. Controleer de instellingen van de web-app. Dit kan ook gebeuren als het eind punt van het type genest eind punt is en het onderliggende profiel is uitgeschakeld of niet actief is. <br>Een eind punt met de status stopped wordt niet bewaakt. Het is niet opgenomen in DNS-antwoorden en ontvangt geen verkeer. Een uitzonde ring hierop is als alle eind punten worden gedegradeerd. in dat geval worden deze allemaal beschouwd als geretourneerd in het antwoord op de query.</br>|
 
-Zie geneste [Traffic Manager profielen](traffic-manager-nested-profiles.md)voor meer informatie over het berekenen van de status van de eindpunt monitor voor geneste eind punten.
+Zie [geneste Traffic Manager profielen](traffic-manager-nested-profiles.md)voor meer informatie over het berekenen van de status van de eindpunt monitor voor geneste eind punten.
 
 >[!NOTE]
 > Als uw webtoepassing niet wordt uitgevoerd in de Standard-laag of hierboven, kan de status van de eindpunt monitor niet worden gestopt op App Service. Zie [integratie met App Service Traffic Manager](/azure/app-service/web-sites-traffic-manager)voor meer informatie.
@@ -87,11 +87,11 @@ De profiel Monitor status is een combi natie van de geconfigureerde profiel stat
 
 | Profiel status (zoals geconfigureerd) | Status van eindpunt monitor | Status van profiel monitor | Opmerkingen |
 | --- | --- | --- | --- |
-| Uitgeschakeld |&lt;een&gt; of meer profielen zonder gedefinieerde eind punten. |Uitgeschakeld |Het profiel is uitgeschakeld. |
-| Enabled |De status van ten minste één eind punt is gedegradeerd. |Verminderd |Controleer de afzonderlijke eindpunt status waarden om te bepalen welke eind punten verdere aandacht vereisen. |
-| Enabled |De status van ten minste één eind punt is online. Geen van de eind punten heeft een gedegradeerde status. |Online |Het verkeer wordt geaccepteerd door de service. Er is geen verdere actie vereist. |
-| Enabled |De status van ten minste één eind punt is CheckingEndpoint. Er zijn geen eind punten in de online of gedegradeerde status. |CheckingEndpoints |Deze overgangs status treedt op wanneer een profiel wordt gemaakt of ingeschakeld. De status van het eind punt wordt voor de eerste keer gecontroleerd. |
-| Enabled |De statussen van alle eind punten in het profiel zijn uitgeschakeld of gestopt of het profiel heeft geen gedefinieerde eind punten. |Inactief |Er zijn geen eind punten actief, maar het profiel is nog ingeschakeld. |
+| Uitgeschakeld |&lt;&gt; of een profiel zonder gedefinieerde eind punten. |Uitgeschakeld |Het profiel is uitgeschakeld. |
+| Ingeschakeld |De status van ten minste één eind punt is gedegradeerd. |Verminderd beschikbaar |Controleer de afzonderlijke eindpunt status waarden om te bepalen welke eind punten verdere aandacht vereisen. |
+| Ingeschakeld |De status van ten minste één eind punt is online. Geen van de eind punten heeft een gedegradeerde status. |Online |Het verkeer wordt geaccepteerd door de service. Er is geen verdere actie vereist. |
+| Ingeschakeld |De status van ten minste één eind punt is CheckingEndpoint. Er zijn geen eind punten in de online of gedegradeerde status. |CheckingEndpoints |Deze overgangs status treedt op wanneer een profiel wordt gemaakt of ingeschakeld. De status van het eind punt wordt voor de eerste keer gecontroleerd. |
+| Ingeschakeld |De statussen van alle eind punten in het profiel zijn uitgeschakeld of gestopt of het profiel heeft geen gedefinieerde eind punten. |Inactieve |Er zijn geen eind punten actief, maar het profiel is nog ingeschakeld. |
 
 ## <a name="endpoint-failover-and-recovery"></a>Failover en herstel van eind punten
 
@@ -112,14 +112,14 @@ De tijd lijn in de volgende afbeelding is een gedetailleerde beschrijving van he
 
 ![Failover van het eind punt en de failback-reeks Traffic Manager](./media/traffic-manager-monitoring/timeline.png)
 
-**Afbeelding:  Failover en herstel volgorde van Traffic Manager-eind punt**
+**Afbeelding: failover van het Traffic Manager-eind punt en de herstel sequentie**
 
-1. **OPHALEN**. Voor elk eind punt voert het Traffic Manager bewakings systeem een GET-aanvraag uit op het pad dat is opgegeven in de instellingen voor controle.
+1. **Ophalen**. Voor elk eind punt voert het Traffic Manager bewakings systeem een GET-aanvraag uit op het pad dat is opgegeven in de instellingen voor controle.
 2. **200 OK of aangepast code bereik dat is opgegeven Traffic Manager instellingen voor profiel bewaking** . Het bewakings systeem verwacht een HTTP 200 OK-of het aangepaste code bereik dat is opgegeven Traffic Manager het bericht controle-instellingen van het profiel moet binnen 10 seconden worden geretourneerd. Wanneer deze reactie wordt ontvangen, herkent het de service.
 3. **30 seconden tussen controles**. De status controle van het eind punt wordt elke 30 seconden herhaald.
 4. De **service is niet beschikbaar**. De service is niet meer beschikbaar. Traffic Manager weet pas de volgende status controle.
 5. **Probeert toegang te krijgen tot het controlepad**. Het bewakings systeem voert een GET-aanvraag uit, maar ontvangt geen reactie binnen de time-outperiode van tien seconden (er kan ook een niet-200-antwoord worden ontvangen). Vervolgens wordt er drie keer per interval van 30 seconden geprobeerd. Als een van de pogingen is gelukt, wordt het aantal pogingen opnieuw ingesteld.
-6. **Status ingesteld op**gedegradeerd. Na een vierde opeenvolgende fout markeert het bewakings systeem de status van het niet-beschik bare eind punt als gedegradeerd.
+6. **Status ingesteld op gedegradeerd**. Na een vierde opeenvolgende fout markeert het bewakings systeem de status van het niet-beschik bare eind punt als gedegradeerd.
 7. **Verkeer wordt omverkocht naar andere eind punten**. De Traffic Manager DNS-naam servers worden bijgewerkt en Traffic Manager het eind punt niet meer retourneert als reactie op DNS-query's. Nieuwe verbindingen worden omgeleid naar andere, beschik bare eind punten. Eerdere DNS-antwoorden die dit eind punt bevatten, kunnen echter nog steeds in de cache worden opgeslagen door recursieve DNS-servers en DNS-clients. Clients blijven het eind punt gebruiken totdat de DNS-cache is verlopen. Als de DNS-cache is verlopen, maken clients nieuwe DNS-query's en worden ze omgeleid naar verschillende eind punten. De cache duur wordt bepaald door de TTL-instelling in het Traffic Manager profiel, bijvoorbeeld 30 seconden.
 8. **Status controles worden voortgezet**. Traffic Manager blijft de status van het eind punt controleren terwijl het een gedegradeerde status heeft. Traffic Manager detecteert wanneer het eind punt met de status wordt geretourneerd.
 9. **Service is weer online**. De service wordt beschikbaar. Het eind punt behoudt de gedegradeerde status in Traffic Manager totdat het bewakings systeem de volgende status controle uitvoert.
@@ -134,7 +134,7 @@ Wanneer een eind punt een gedegradeerde status heeft, wordt deze niet meer geret
 
 * **Prioriteit**. Eind punten vormen een lijst met prioriteiten. Het eerste beschik bare eind punt in de lijst wordt altijd geretourneerd. Als de status van een eind punt wordt gedegradeerd, wordt het volgende beschik bare eind punt geretourneerd.
 * **Weighted**. Elk beschikbaar eind punt wordt wille keurig gekozen op basis van het toegewezen gewicht en de gewichten van de andere beschik bare eind punten.
-* **Prestaties**. Het eind punt dat het dichtst bij de eind gebruiker ligt, wordt geretourneerd. Als dat eind punt niet beschikbaar is, Traffic Manager verplaatst het verkeer naar de eind punten in de dichtstbijzijnde Azure-regio. U kunt alternatieve failover plannen configureren voor prestatie verkeer-route ring door gebruik te maken van geneste [Traffic Manager profielen](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region).
+* **Prestaties**. Het eind punt dat het dichtst bij de eind gebruiker ligt, wordt geretourneerd. Als dat eind punt niet beschikbaar is, Traffic Manager verplaatst het verkeer naar de eind punten in de dichtstbijzijnde Azure-regio. U kunt alternatieve failover plannen configureren voor prestatie verkeer-route ring door gebruik te maken van [geneste Traffic Manager profielen](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region).
 * **Geografisch**. Het eind punt dat is toegewezen om de geografische locatie te leveren op basis van het IP-adres van de query aanvraag, wordt geretourneerd. Als dat eind punt niet beschikbaar is, wordt een ander eind punt niet geselecteerd voor failover naar, omdat een geografische locatie alleen kan worden toegewezen aan één eind punt in een profiel (meer informatie vindt u in de [Veelgestelde vragen](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)). Als best practice als u geografische route ring gebruikt, raden we klanten aan om geneste Traffic Manager profielen met meer dan één eind punt te gebruiken als de eind punten van het profiel.
 * **Meerdere waarden** Er zijn meerdere eind punten geretourneerd die aan IPv4/IPv6-adressen zijn toegewezen. Wanneer een query voor dit profiel wordt ontvangen, worden in goede eind punten geretourneerd op basis van het **maximum aantal records in de reactie** waarde die u hebt opgegeven. Het standaard aantal antwoorden is twee eind punten.
 * **Subnet** Het eind punt dat is toegewezen aan een set IP-adresbereiken wordt geretourneerd. Wanneer een aanvraag wordt ontvangen van dat IP-adres, wordt het eind punt geretourneerd dat is toegewezen aan dat IP-adres. 
@@ -201,4 +201,4 @@ Meer informatie over de [routerings methoden voor verkeer](traffic-manager-routi
 
 Meer informatie over het [maken van een Traffic Manager profiel](traffic-manager-manage-profiles.md)
 
-[Problemen met](traffic-manager-troubleshooting-degraded.md) de gedegradeerde status op een Traffic Manager eind punt oplossen
+[Problemen met de gedegradeerde status](traffic-manager-troubleshooting-degraded.md) op een Traffic Manager eind punt oplossen

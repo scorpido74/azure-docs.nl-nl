@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 7bd097885d629a6c8541b57195f2a2996e45ffaf
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 9886f41b25e7c1b34f9805a2c16b716c642ae90e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552658"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936291"
 ---
 # <a name="container-security-in-security-center"></a>Beveiliging van de container in Security Center
 
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u de beveiliging van uw containers en hun ap
 [tabblad Beveiliging van de container ![Azure Security Center](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Beveiligings beheer-container installatie kopieën scannen (preview)
-Als u uw Azure Container Registry wilt bewaken, moet u ervoor zorgen dat u de Standard-laag van Security Center hebt (Zie [prijzen](/azure/security-center/security-center-pricing)). Schakel vervolgens de optionele container registers bundel in. Wanneer een nieuwe installatie kopie wordt gepusht, wordt de installatie kopie door Security Center gescand met behulp van een scanner uit de toonaangevende beveiligings problemen voor het scannen van leveranciers, Qualys.
+Als u uw op ARM gebaseerde Azure Container Registry wilt bewaken, controleert u of u de Standard-laag van Security Center hebt (Zie de [prijzen](/azure/security-center/security-center-pricing)). Schakel vervolgens de optionele container registers bundel in. Wanneer een nieuwe installatie kopie wordt gepusht, wordt de installatie kopie door Security Center gescand met behulp van een scanner uit de toonaangevende beveiligings problemen voor het scannen van leveranciers, Qualys.
 
 Als er problemen worden gevonden, wordt er een melding weer gegeven in het Security Center-dash board van Qualys of Security Center. Security Center voorziet in elk beveiligings probleem met actie-aanbevelingen, samen met een Ernst classificatie en richt lijnen voor het oplossen van het probleem. Zie de [naslag lijst met aanbevelingen](recommendations-reference.md)voor meer informatie over de aanbevelingen van Security Center.
 

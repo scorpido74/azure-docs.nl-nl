@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0088cced84da08828d02d3a0f83846babf286b71
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911288"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933654"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Een tekenlaag aan een kaart toevoegen
 
-Dit artikel laat u zien hoe u punt gegevens van een gegevens bron kunt weer geven als een Bubble laag op een kaart. Met bellen lagen worden punten weer gegeven als cirkels op de kaart met een harde pixel RADIUS. 
+Dit artikel laat u zien hoe u punt gegevens van een gegevens bron kunt weer geven als een tekenlaag op een kaart. Met bellen lagen worden punten weer gegeven als cirkels op de kaart met een harde pixel RADIUS. 
 
 > [!TIP]
 > Met bellen lagen worden standaard de coördinaten van alle geometrieën in een gegevens bron weer gegeven. Als u de laag zo wilt beperken dat alleen de functies van punt geometrie worden weer gegeven, stelt u de eigenschap `filter` van de laag in op `['==', ['geometry-type'], 'Point']` of `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` als u ook multi point-functies wilt toevoegen.
 
 ## <a name="add-a-bubble-layer"></a>Een bubbellaag toevoegen
 
-Met de volgende code wordt een matrix met punten in een gegevens bron geladen en verbonden met een [tekenlaag](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). De laag Bubble krijgt de opties om de RADIUS van elke bel te renderen met vijf pixels, een opvul kleur wit, een streek kleur blauw en een streek breedte van zes pixels. 
+Met de volgende code wordt een matrix met punten geladen in een gegevens bron. Vervolgens worden de gegevens punten verbonden met een [tekenlaag](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). De laag Bubble geeft de straal van elke bel weer met vijf pixels, een opvul kleur wit, een streek kleur blauw en een streek breedte van zes pixels. 
 
 ```javascript
 //Add point locations.

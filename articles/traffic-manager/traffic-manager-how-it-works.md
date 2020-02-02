@@ -3,7 +3,7 @@ title: Hoe werkt Azure Traffic Manager? Microsoft Docs
 description: Dit artikel helpt u te begrijpen hoe Traffic Manager verkeer routeert voor hoge prestaties en beschik baarheid van uw webtoepassingen
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: allensu
-ms.openlocfilehash: 281e1e591d7c3cc31b77a116fb42af49dc27798c
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.author: rohink
+ms.openlocfilehash: 709e89b94ba10db954aa5cf3f70aeffb0d239edb
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312150"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938621"
 ---
 # <a name="how-traffic-manager-works"></a>Hoe Traffic Manager werkt
 
@@ -67,7 +67,7 @@ Wanneer een client de pagina https://partners.contoso.com/login.aspx opvraagt, v
 7. De recursieve DNS-service consolideert de resultaten en retourneert één DNS-antwoord naar de client.
 8. De client ontvangt de DNS-resultaten en maakt verbinding met het opgegeven IP-adres. De client maakt rechtstreeks verbinding met het eind punt van de toepassings service, niet via Traffic Manager. Omdat het een HTTPS-eind punt is, voert de client de benodigde SSL/TLS-Handshake uit en wordt vervolgens een HTTP GET-aanvraag voor de pagina '/login.aspx ' gemaakt.
 
-De recursieve DNS-service slaat de DNS-antwoorden op die het ontvangt. De DNS-resolver op het client apparaat slaat ook het resultaat op in het cache geheugen. Met caching kunnen volgende DNS-query's sneller worden beantwoord met behulp van gegevens uit de cache in plaats van een query uit te voeren op andere naam servers. De duur van de cache wordt bepaald door de eigenschap time-to-Live (TTL) van elke DNS-record. Kortere waarden leiden ertoe dat het cache geheugen sneller verloopt en dat er dus Retouren naar de Traffic Manager naam servers worden geretourneerd. Meer waarden betekenen dat het langer kan duren om verkeer te sturen van een mislukt eind punt. Met Traffic Manager kunt u de TTL configureren die wordt gebruikt in Traffic Manager DNS-antwoorden op Maxi maal 0 seconden en Maxi maal 2.147.483.647 seconden (het maximum bereik dat compatibel is met [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt)), zodat u de waarde kunt kiezen die het beste de behoeften van de uw toepassing.
+De recursieve DNS-service slaat de DNS-antwoorden op die het ontvangt. De DNS-resolver op het client apparaat slaat ook het resultaat op in het cache geheugen. Met caching kunnen volgende DNS-query's sneller worden beantwoord met behulp van gegevens uit de cache in plaats van een query uit te voeren op andere naam servers. De duur van de cache wordt bepaald door de eigenschap time-to-Live (TTL) van elke DNS-record. Kortere waarden leiden ertoe dat het cache geheugen sneller verloopt en dat er dus Retouren naar de Traffic Manager naam servers worden geretourneerd. Meer waarden betekenen dat het langer kan duren om verkeer te sturen van een mislukt eind punt. Met Traffic Manager kunt u de TTL configureren die wordt gebruikt in Traffic Manager DNS-antwoorden op Maxi maal 0 seconden en Maxi maal 2.147.483.647 seconden (het maximum bereik dat compatibel is met [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt)), zodat u de waarde kunt kiezen die het beste de behoeften van uw toepassing verlaagt.
 
 ## <a name="faqs"></a>Veelgestelde vragen
 
@@ -97,7 +97,7 @@ De recursieve DNS-service slaat de DNS-antwoorden op die het ontvangt. De DNS-re
 
 Meer informatie over Traffic Manager [endpoint-bewaking en automatische failover](traffic-manager-monitoring.md).
 
-Meer informatie over methoden voor het routeren van Traffic Manager [verkeer](traffic-manager-routing-methods.md).
+Meer informatie over methoden voor het [routeren](traffic-manager-routing-methods.md)van Traffic Manager verkeer.
 
 <!--Image references-->
 [1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png
