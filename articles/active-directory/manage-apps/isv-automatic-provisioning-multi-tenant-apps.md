@@ -52,7 +52,7 @@ Toepassingen waarvoor een gebruikers record vereist is in de toepassing voordat 
 
 * Verminder de kosten voor het hosten en onderhouden van aangepast ontwikkelde inrichtings oplossingen.
 
-## <a name="choose-a-provisioning-method"></a>Een inrichtings methode kiezen
+## <a name="choose-a-provisioning-method"></a>Kies een inrichtingsmethode
 
 Azure AD biedt verschillende integratie paden om het automatisch inrichten van gebruikers voor uw toepassing in te scha kelen.
 

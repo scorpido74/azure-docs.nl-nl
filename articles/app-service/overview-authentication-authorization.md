@@ -13,7 +13,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76715122"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service"></a>Authenticatie en autorisatie in Azure App Service
+# <a name="authentication-and-authorization-in-azure-app-service"></a>Verificatie en autorisatie in Azure App Service
 
 > [!NOTE]
 > Op dit moment wordt AAD v2 (inclusief MSAL) niet ondersteund voor Azure-app Services en Azure Functions. Ga terug naar updates.
@@ -31,7 +31,7 @@ Voor beveiligde verificatie en autorisatie is grondige inzichten van beveiliging
 
 Zie [gebruikers verificatie en autorisatie voor mobiele apps met Azure app service](../app-service-mobile/app-service-mobile-auth.md)voor meer informatie over systeem eigen mobiele apps.
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>How it works (Engelstalig artikel)
 
 De module authenticatie en autorisatie wordt uitgevoerd in dezelfde sandbox als de code van uw toepassing. Wanneer deze is ingeschakeld, stuurt elke binnenkomende HTTP-aanvraag deze door voordat deze wordt verwerkt door de code van uw toepassing.
 
@@ -132,7 +132,7 @@ Met deze optie hoeft u geen verificatie code in uw app te schrijven. Nauw keurig
 > [!CAUTION]
 > Het beperken van de toegang op deze manier is van toepassing op alle aanroepen naar uw app. Dit is mogelijk niet wenselijk voor apps die een openbaar beschik bare start pagina willen, zoals in veel toepassingen met één pagina.
 
-## <a name="more-resources"></a>Meer informatiebronnen
+## <a name="more-resources"></a>Meer bronnen
 
 [Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
 [Zelf studie: gebruikers end-to-end verifiëren en autoriseren in Azure App Service voor Linux](containers/tutorial-auth-aad.md)  

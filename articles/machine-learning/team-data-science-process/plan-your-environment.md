@@ -65,7 +65,7 @@ Waar moeten uw gegevens worden verwerkt of gemodelleerd?
 
 Zie voor procedures en bronnen voor het opnemen of laden van gegevens in een groot aantal verschillende opslag-en verwerkings omgevingen:
 
-* [Gegevens laden in opslagomgevingen voor analyses](ingest-data.md)
+* [Gegevens laden in opslag omgevingen voor analyse](ingest-data.md)
 * [Importeer uw trainings gegevens in Azure Machine Learning Studio (klassiek) van verschillende gegevens bronnen](../studio/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Moeten de gegevens worden verplaatst volgens een regel matig schema of worden gewijzigd tijdens de migratie?
@@ -79,7 +79,7 @@ Zie [gegevens verplaatsen van een on-premises SQL-Server naar SQL Azure met Azur
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Hoeveel gegevens worden verplaatst naar Azure?
 
-Grote gegevens sets kunnen de opslag capaciteit van bepaalde omgevingen overschrijden. Zie voor een voor beeld de bespreking van grootte limieten voor Machine Learning Studio (klassiek) in de volgende sectie. In dergelijke gevallen kunt u een voor beeld van de gegevens tijdens de analyse gebruiken. Zie voor meer informatie over hoe u een gegevensset in verschillende Azure-omgevingen down-sampling, [Sample van gegevens in het Team Data Science Process](sample-data.md).
+Grote gegevens sets kunnen de opslag capaciteit van bepaalde omgevingen overschrijden. Zie voor een voor beeld de bespreking van grootte limieten voor Machine Learning Studio (klassiek) in de volgende sectie. In dergelijke gevallen kunt u een voor beeld van de gegevens tijdens de analyse gebruiken. Zie [voorbeeld gegevens in het team data Science process](sample-data.md)voor meer informatie over het omlaag bemonsteren van een gegevensset in verschillende Azure-omgevingen.
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Vragen over de kenmerken van gegevens: type, de indeling en grootte
 
@@ -90,7 +90,7 @@ Deze vragen zijn essentieel om uw opslag-en verwerkings omgevingen te plannen. Z
 * Numerieke
 * Categorische gegevens
 * Tekenreeksen
-* Binary
+* Binair bestand
 
 ### <a name="how-is-your-data-formatted"></a>Hoe worden uw gegevens ingedeeld?
 
@@ -108,8 +108,8 @@ Deze vragen zijn essentieel om uw opslag-en verwerkings omgevingen te plannen. Z
 
 Maak de Azure Machine Learning Studio-omgeving (klassiek) bijvoorbeeld:
 
-* Zie voor een lijst van de opmaak van gegevens en die worden ondersteund door Azure Machine Learning Studio, [opmaak van gegevens en gegevens die worden ondersteund](../studio/import-data.md#supported-data-formats-and-data-types) sectie.
-* Zie voor informatie over de beperkingen van andere Azure-services die worden gebruikt in de analytics-proces, [Azure-abonnement en Servicelimieten, Quotums en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+* Zie de sectie [gegevens indelingen en gegevens typen](../studio/import-data.md#supported-data-formats-and-data-types) die worden ondersteund voor een lijst met de gegevens indelingen en typen die door Azure machine learning Studio worden ondersteund.
+* Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over de beperkingen van andere Azure-Services die worden gebruikt in het analyse proces.
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>Vragen over de kwaliteit van gegevens: verkennen en de voorverwerking
 
@@ -127,11 +127,11 @@ Deze stap is belang rijk om u te helpen:
 * Formuleer hypo Thesen die de meest geschikte functies of type analyse Voorst Ellen
 * Plannen formuleren voor extra gegevens verzameling
 
-Handige technieken voor gegevens inspectie zijn onder andere het berekenen van de berekenings statistieken en visualisaties. Zie voor meer informatie over het verkennen van een gegevensset in verschillende Azure-omgevingen [gegevens verkennen in Team Data Science Process](explore-data.md).
+Handige technieken voor gegevens inspectie zijn onder andere het berekenen van de berekenings statistieken en visualisaties. Voor meer informatie over hoe u een gegevensset in verschillende Azure-omgevingen kunt verkennen, raadpleegt u [gegevens in het team data Science proces verkennen](explore-data.md).
 
 ### <a name="does-the-data-require-preprocessing-or-cleaning"></a>Is voor de gegevens voor verwerking of reiniging vereist?
 
-Mogelijk moet u uw gegevens voorverwerken en opschonen voordat u de gegevensset effectief kunt gebruiken voor machine learning. Onbewerkte gegevens zijn vaak ruis en onbetrouwbaar. Er ontbreken mogelijk waarden. Met behulp van dergelijke gegevens voor modellen kan misleidend resultaten opleveren. Zie voor een beschrijving [taken het voorbereiden van gegevens voor verbeterde machine learning](prepare-data.md).
+Mogelijk moet u uw gegevens voorverwerken en opschonen voordat u de gegevensset effectief kunt gebruiken voor machine learning. Onbewerkte gegevens zijn vaak ruis en onbetrouwbaar. Er ontbreken mogelijk waarden. Met behulp van dergelijke gegevens voor modellen kan misleidend resultaten opleveren. Zie [taken om gegevens voor te bereiden voor verbeterde machine learning](prepare-data.md)voor een beschrijving.
 
 ## <a name="tools-and-languages-questions"></a>Vragen over hulpprogramma's en talen
 
@@ -147,16 +147,16 @@ Er zijn veel opties voor talen, ontwikkel omgevingen en hulpprogram ma's. Houd r
 
 * [Microsoft Azure Power shell](/powershell/azure/overview) : een script taal die wordt gebruikt voor het beheren van uw Azure-resources in een script taal
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
-* [Revolution Analytics af](https://www.microsoft.com/sql-server/machinelearningserver)
+* [Revolutie Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
 * [Jupyter-notebooks](https://jupyter.org/)
-* [Microsoft Power BI](https://powerbi.microsoft.com)
+* [Micro soft Power BI](https://powerbi.microsoft.com)
 
 ## <a name="identify-your-advanced-analytics-scenario"></a>Identificeren van uw scenario voor geavanceerde analyses
 
-Nadat u de vragen in de vorige sectie hebt beantwoord, kunt u bepalen welk scenario het meest geschikt is voor uw situatie. De voorbeeldscenario's worden beschreven in [scenario's voor geavanceerde analyses in Azure Machine Learning](plan-sample-scenarios.md).
+Nadat u de vragen in de vorige sectie hebt beantwoord, kunt u bepalen welk scenario het meest geschikt is voor uw situatie. De voorbeeld scenario's worden beschreven in [scenario's voor geavanceerde analyses in azure machine learning](plan-sample-scenarios.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

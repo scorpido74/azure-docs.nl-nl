@@ -19,7 +19,7 @@ ms.locfileid: "76722098"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Flexibele ontwikkeling van wetenschappelijke gegevensprojecten
 
-Dit document wordt beschreven hoe ontwikkelaars een data science-project in een systematische, versie beheerd en gezamenlijke manier binnen een projectteam uitvoeren kunnen met behulp van de [Team Data Science Process](overview.md) (TDSP). De TDSP is een framework dat is ontwikkeld door micro soft en een gestructureerde reeks activiteiten biedt om op een efficiënte manier cloud-gebaseerde predictive analytics oplossingen uit te voeren. Voor een overzicht van de rollen en taken die worden verwerkt door een Data Science-team dat wordt gestandardization op de TDSP, raadpleegt u [rollen en taken voor team data Science process](roles-tasks.md). 
+In dit document wordt beschreven hoe ontwikkel aars met behulp van het [team data Science process](overview.md) (TDSP) een Data Science-project kunnen uitvoeren in een systematische, gecontroleerde versie en op samenwerkings wijze binnen een project team. De TDSP is een framework dat is ontwikkeld door micro soft en een gestructureerde reeks activiteiten biedt om op een efficiënte manier cloud-gebaseerde predictive analytics oplossingen uit te voeren. Voor een overzicht van de rollen en taken die worden verwerkt door een Data Science-team dat wordt gestandardization op de TDSP, raadpleegt u [rollen en taken voor team data Science process](roles-tasks.md). 
 
 In dit artikel bevat instructies over het: 
 
@@ -158,9 +158,9 @@ Gegevens wetenschappers kunnen meer vertrouwd zijn met een flexibel sjabloon waa
    
 1. Volg dezelfde stappen om de namen van **functies** te wijzigen in *TDSP-fasen*en voeg de volgende nieuwe typen werk items toe:
    
-   - *Inzicht in het bedrijf*
+   - *Zakelijke inzichten*
    - *Gegevens ophalen*
-   - *Modeling*
+   - *Model*
    - *Implementatie*
    
 1. Onder **achterstand**voor de behoefte wijzigt u de naam van **artikelen** in *subfases van TDSP*, voegt u het nieuwe werk item type *TDSP subfase*toe en stelt u het type standaard werk item in op **TDSP subfase**.

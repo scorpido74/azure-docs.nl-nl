@@ -36,7 +36,7 @@ Voordat u begint, controleert u het volgende:
 * Aangepaste metrische gegevens zijn alleen beschikbaar in een subset van Azure-regio's. [Hier](../platform/metrics-custom-overview.md#supported-regions)wordt een lijst met ondersteunde regio's beschreven.
 * U bent lid van de rol **[eigenaar](../../role-based-access-control/built-in-roles.md#owner)** op de AKS-cluster bron om het verzamelen van aangepaste prestatie gegevens voor knoop punten en pod in te scha kelen. 
 
-Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voor het identificeren van uw versie uitvoeren `az --version`. Als u wilt installeren of upgraden van de Azure CLI, Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Een cluster upgraden van de Azure Portal
 

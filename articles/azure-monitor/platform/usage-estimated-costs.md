@@ -60,7 +60,7 @@ Als u de Azure Monitor kosten voor de afgelopen 30 dagen wilt zien, klikt u op d
 1. Azure Monitor
 2. Application Insights
 3. Log Analytics
-4. Insight and Analytics
+4. Inzicht en analyses
 
 Dit resulteert in een weer gave zoals:
 
@@ -87,7 +87,7 @@ Selecteer de koppeling in de maandelijkse gebruik kolom openen van een diagram m
 
 ## <a name="operations-management-suite-subscription-entitlements"></a>Rechten van het abonnement van Operations Management Suite
 
-Klanten die hebben gekocht van Microsoft Operations Management Suite E1 en E2 komen in aanmerking voor per knooppunt gegevensopname rechten voor [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) en [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Voor het ontvangen van deze rechten voor Log Analytics-werkruimten of Application Insights-resources in een bepaald abonnement: 
+Klanten die Microsoft Operations Management Suite E1 en E2 hebben gekocht, komen in aanmerking voor gegevens opname rechten per knoop punt voor [log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) en [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Voor het ontvangen van deze rechten voor Log Analytics-werkruimten of Application Insights-resources in een bepaald abonnement: 
 
 - Log Analytics-werkruimten moeten de "Per knooppunt (OMS)" prijscategorie gebruiken.
 - Application Insights resources moeten de prijs categorie onderneming gebruiken.

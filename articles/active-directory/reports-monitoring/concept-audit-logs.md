@@ -78,10 +78,10 @@ Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 U kunt de controle gegevens filteren op de volgende velden:
 
 - Service
-- Category
+- Categorie
 - Activiteit
 - Status
-- Kiezen
+- Doel
 - Gestart door (actor)
 - Datumbereik
 
@@ -89,15 +89,15 @@ U kunt de controle gegevens filteren op de volgende velden:
 
 Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de volgende services selecteren:
 
-- Alles
+- Alle
 - Toegangsbeoordelingen
 - Account inrichten 
 - SSO van de toepassing
 - Verificatiemethoden
-- Business to consumer
+- B2C
 - Voorwaardelijke toegang
 - Hoofddirectory
-- Rechtenbeheer
+- Beheer rechten
 - Identiteitsbeveiliging
 - Uitgenodigde gebruikers
 - PIM
@@ -107,12 +107,12 @@ Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de vo
 
 Met het filter **categorie** kunt u een van de volgende filters selecteren:
 
-- Alles
+- Alle
 - AdministrativeUnit
 - ApplicationManagement
-- Verificatie
+- Authentication
 - Autorisatie
-- Contact
+- Contactpersoon
 - Apparaat
 - Apparaatconfiguratie
 - DirectoryManagement
@@ -130,7 +130,7 @@ U kunt de lijst met alle controle activiteiten ophalen met behulp van de Graph A
 
 Met het filter **status** kunt u filteren op basis van de status van een audit bewerking. De status kan een van de volgende zijn:
 
-- Alles
+- Alle
 - Geslaagd
 - Fout
 
@@ -144,7 +144,7 @@ Mogelijke waarden zijn:
 - 1 maand
 - 7 dagen
 - 24 uur
-- Aangepast
+- Aangepast telefoonnummer
 
 Wanneer u een aangepast tijdsbestek selecteert, kunt u een begintijd en eindtijd configureren.
 

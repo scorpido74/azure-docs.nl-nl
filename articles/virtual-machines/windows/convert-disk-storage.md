@@ -111,7 +111,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 Volg deze stappen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer de VM in de lijst met **virtuele machines** in de portal.
 3. Als de virtuele machine niet is gestopt, selecteert u **stoppen** boven aan vm- **overzichts** deel venster en wacht u totdat de virtuele machine is gestopt.
 3. Selecteer in het deel venster voor de VM de optie **schijven** in het menu.

@@ -53,7 +53,7 @@ Voor Paginating-resultaten zijn zowel `$top` als `$skip`vereist, waarbij `$top` 
 
     GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
 
-## <a name="layout"></a>Layout
+## <a name="layout"></a>Indeling
 
 Op een pagina met zoek resultaten wilt u mogelijk een miniatuur afbeelding, een subset van velden en een koppeling naar een volledige product pagina weer geven.
 

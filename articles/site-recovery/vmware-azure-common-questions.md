@@ -188,7 +188,7 @@ Nee, Site Recovery biedt geen ondersteuning voor replicatie naar Azure Storage o
 
 ## <a name="component-upgrade"></a>Upgrade van onderdelen
 
-### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Mijn versie van de Mobility Services-agent of configuratie server is verouderd en mijn upgrade is mislukt. Wat kan ik doen?
+### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Mijn versie van de Mobility Services-agent of configuratie server is verouderd en mijn upgrade is mislukt. Wat moet ik doen?
 
 Site Recovery volgt het ondersteunings model N-4. Meer [informatie](https://aka.ms/asr_support_statement) over het uitvoeren van een upgrade van zeer oudere versies.
 

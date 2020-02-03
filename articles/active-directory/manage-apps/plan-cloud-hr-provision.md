@@ -90,11 +90,11 @@ U hebt ook een geldige licentie voor Azure AD Premium P1 of hoger nodig voor elk
 
 ### <a name="training-resources"></a>Trainings bronnen
 
-| **Bronnen** | **Koppeling en beschrijving** |
+| **Resources** | **Koppeling en beschrijving** |
 |:-|:-|
-| Video’s | [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) |
+| Video's | [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) |
 | | [Het inrichten van gebruikers in Active Azure Directory implementeren](https://youtu.be/pKzyts6kfrw) |
-| Zelfstudie | [Lijst met zelf studies voor het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md) |
+| Zelfstudies | [Lijst met zelf studies voor het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md) |
 | | [Zelf studie: workday configureren voor het automatisch inrichten van gebruikers](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 | Veelgestelde vragen | [Automatische gebruikers inrichting](user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Inrichten van workday naar Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
@@ -165,7 +165,7 @@ De inrichtings integratie tussen de Cloud HR-app en Active Directory vereist vie
 - Cloud HR app-Tenant
 - Connector-app inrichten
 - Inrichtings agent Azure AD Connect
-- Active Directory domein
+- Active Directory-domein
 
 De implementatie topologie voor de Azure AD Connect-inrichtings agent is afhankelijk van het aantal tenants in de Cloud-app voor apps en Active Directory onderliggende domeinen die u wilt integreren. Als u meerdere Active Directory domeinen hebt, is het afhankelijk van het feit of de Active Directory domeinen aaneengesloten of [gescheiden](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)zijn.
 
@@ -336,7 +336,7 @@ Zorg ervoor dat u tijdens elke fase van de implementatie van de eerste pilot doo
 
 Nadat u de Cloud-HR-app hebt geconfigureerd voor Azure AD-gebruikers inrichten, voert u test cases uit om te controleren of deze oplossing voldoet aan de vereisten van uw organisatie.
 
-|Scenario's|Verwachte resultaten|
+|Scenario 's|Verwachte resultaten|
 |:-|:-|
 |Nieuwe werk nemers worden in de Cloud-app HR ingehuurd.| -Het gebruikers account is ingericht in Active Directory.</br>-De gebruiker kan zich aanmelden bij Active Directory-domein-apps en de gewenste acties uitvoeren.</br>-Als Azure AD Connect synchronisatie is geconfigureerd, wordt het gebruikers account ook gemaakt in azure AD.
 |De gebruiker wordt beëindigd in de Cloud-app HR.|-Het gebruikers account is uitgeschakeld in Active Directory.</br>-De gebruiker kan zich niet aanmelden bij bedrijfs-apps die zijn beveiligd door Active Directory.

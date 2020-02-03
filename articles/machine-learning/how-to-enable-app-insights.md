@@ -52,15 +52,15 @@ U kunt Azure-toepassing Insights in de Azure Portal in-en uitschakelen.
 
 1. Selecteer op het tabblad **implementaties** de service waar u Azure-toepassing Insights wilt inschakelen
 
-   [![Lijst met services op het tabblad implementaties](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![lijst met Services op het tabblad implementaties](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. Selecteer **bewerken**
 
-   [![Knop bewerken](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [knop bewerken ![](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 4. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights diagnostische gegevens inschakelen** in
 
-   [![Het selectievakje is ingeschakeld voor het inschakelen van diagnostische gegevens](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![ingeschakeld selectie vakje voor het inschakelen van diagnostische gegevens](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. Selecteer **bijwerken** aan de onderkant van het scherm om de wijzigingen toe te passen
 
@@ -69,11 +69,11 @@ U kunt Azure-toepassing Insights in de Azure Portal in-en uitschakelen.
 1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com)
 1. Selecteer **implementaties**, selecteer de service en selecteer vervolgens **bewerken** .
 
-   [![Gebruik de knop bewerken](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![de knop bewerken gebruiken](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights Diagnostics inschakelen** in
 
-   [![Het selectievakje is uitgeschakeld voor het inschakelen van diagnostische gegevens](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [![gewist selectie vakje voor het inschakelen van diagnostische gegevens](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. Selecteer **bijwerken** aan de onderkant van het scherm om de wijzigingen toe te passen
  
@@ -95,7 +95,7 @@ U kunt Azure-toepassing Insights in de Azure Portal in-en uitschakelen.
 
 ### <a name="log-custom-traces-in-your-service"></a>Aangepaste logboektraceringen in uw service
 
-Als u wilt dat aangepaste logtraceringen, volgt u het proces van de standaard voor AKS of ACI in de [implementeren en waar](how-to-deploy-and-where.md) document. Gebruik vervolgens de volgende stappen uit:
+Als u aangepaste traceringen wilt registreren, volgt u het standaard implementatie proces voor AKS of ACI in het document [implementeren en where](how-to-deploy-and-where.md) . Gebruik vervolgens de volgende stappen uit:
 
 1. Het Score bestand bijwerken door afdruk instructies toe te voegen
     
@@ -130,7 +130,7 @@ Om dit te bekijken:
 
 1. Selecteer het tabblad **overzicht** om een basis verzameling metrische gegevens voor uw service weer te geven
 
-   [![Overzicht](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
+   [Overzicht van ![](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
 
 1. Als u de meta gegevens en het antwoord van de webservice-aanvraag wilt bekijken, selecteert u de tabel **aanvragen** in het gedeelte **Logboeken (Analytics)** en selecteert u **uitvoeren** om aanvragen weer te geven.
 
@@ -138,9 +138,9 @@ Om dit te bekijken:
 
 
 3. Als u wilt zoeken naar uw aangepaste traceringen, selecteert u **Analytics**
-4. Selecteer in de schemasectie **traceringen**. Selecteer vervolgens **uitvoeren** uw query uit te voeren. Gegevens moeten worden weer gegeven in een tabel indeling en moeten worden toegewezen aan uw aangepaste aanroepen in uw score bestand
+4. Selecteer in de sectie schema **traceringen**. Selecteer vervolgens **uitvoeren** om de query uit te voeren. Gegevens moeten worden weer gegeven in een tabel indeling en moeten worden toegewezen aan uw aangepaste aanroepen in uw score bestand
 
-   [![Aangepaste traceringen](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
+   [Aangepaste traceringen ![](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
 
 Zie [Wat is Application Insights?](../azure-monitor/app/app-insights-overview.md)voor meer informatie over het gebruik van Azure-toepassing Insights.
 

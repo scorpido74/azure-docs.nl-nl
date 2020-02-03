@@ -141,7 +141,7 @@ De gegevens die door de DeviceHarness worden verzonden, zijn naar uw IoT-hub geg
 
 De gegevens die we zojuist naar uw IoT-hub hebben verzonden, worden doorgestuurd naar de opslag container die we in het vorige artikel hebben gemaakt. Laten we eens kijken naar de gegevens in het opslag account.
 
-1. Ga in Azure Portal naar het nieuwe opslagaccount.
+1. Ga in Azure Portal naar uw opslagaccount.
 
 1. Selecteer **Storage Explorer (preview)** in de Navigator voor opslag accounts.
 

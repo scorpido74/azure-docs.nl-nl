@@ -60,7 +60,7 @@ U kunt de bovenstaande informatie genereren door de volgende stappen uit te voer
 
 8. Ga naar de map waarin het bestand is geüpload. Standaard worden bestanden in de hoofdmap van de gebruikers naam geüpload naar de basismap.
 
-9. Voer het volgende script uit. Het script vraagt om de Tenant-ID die kan worden verkregen op basis van Azure Active Directory-> overzichts pagina.
+9. Voer het volgende script uit: Het script vraagt om de Tenant-ID die kan worden verkregen op basis van Azure Active Directory-> overzichts pagina.
 
     ```azurepowershell-interactive 
 

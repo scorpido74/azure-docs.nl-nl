@@ -25,15 +25,15 @@ In dit artikel wordt beschreven hoe u down-sampling van gegevens die zijn opgesl
 * Steekproeven in groepen
 * Toepassing stratificatie steekproeven
 
-**Waarom sample van uw gegevens?**
+**Waarom een voor beeld van uw gegevens?**
 Als de gegevensset die u van plan bent om te analyseren groot is, is het doorgaans een goed idee om down-sampling van de gegevens om deze aan de grootte van een kleiner, maar representatieve en gemakkelijker. Down-sampling vereenvoudigt het uitvoeren van inzicht in gegevens verkennen en feature-engineering. De rol in het Team Data Science Process is om in te schakelen, snel ontwikkelen van prototypen van de functies voor het verwerken van gegevens en machine learning-modellen.
 
-Deze taak steekproeven is een stap in de [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Deze steekproef taak is een stap in het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="how-to-submit-hive-queries"></a>Het indienen van Hive-query 's
-Hive-query's kunnen worden verzonden vanaf de opdrachtregel Hadoop-console op het hoofdknooppunt van het Hadoop-cluster.  Meld u aan bij het hoofd knooppunt van het Hadoop-cluster, open de Hadoop-opdracht regel console en verzend de Hive-query's. Zie voor instructies over het indienen van Hive-query's in de Hadoop-opdrachtregelconsole [hoe u Hive-query's verzenden](move-hive-tables.md#submit).
+Hive-query's kunnen worden verzonden vanaf de opdrachtregel Hadoop-console op het hoofdknooppunt van het Hadoop-cluster.  Meld u aan bij het hoofd knooppunt van het Hadoop-cluster, open de Hadoop-opdracht regel console en verzend de Hive-query's. Zie [Hive-Query's verzenden](move-hive-tables.md#submit)voor instructies over het verzenden van Hive-query's in de Hadoop-opdracht regel console.
 
-## <a name="uniform"></a> Uniform steekproeven
+## <a name="uniform"></a>Uniforme aselecte steek proef
 Uniform steekproeven betekent dat elke rij in de gegevensset heeft een gelijke kans, worden steekproeven genomen. Dit kan worden geïmplementeerd door toe te voegen een extra veld ASELECT() in de gegevensset in de binnenste query voor "selecteren" en in de buitenste 'selecteren'-query die voorwaarde op een willekeurig veld.
 
 Hier volgt een voorbeeld van een query:
@@ -49,10 +49,10 @@ Hier volgt een voorbeeld van een query:
         )a
     where samplekey<='${hiveconf:sampleRate}'
 
-Hier `<sample rate, 0-1>` Hiermee geeft u het deel van de records die de gebruikers willen dat er een steekproef.
+Hier geeft `<sample rate, 0-1>` het aandeel van records op waarmee de gebruikers moeten worden gesampled.
 
-## <a name="group"></a> Steekproeven in groepen
-Wanneer categorische steekproef nemen voor gegevens, kunt u op te nemen of alle van de exemplaren van een waarde van de variabele categorische uitsluiten. De sortering van het samplen bijhouden heet 'steekproeven per groep'. Bijvoorbeeld, als er een categorische variabele "*status*', die waarden zoals NY, MA, CA, NJ en PA heeft, wilt u records uit elke de status, of ze niet worden vastgelegd.
+## <a name="group"></a>Wille keurige steek proeven per groep
+Wanneer categorische steekproef nemen voor gegevens, kunt u op te nemen of alle van de exemplaren van een waarde van de variabele categorische uitsluiten. De sortering van het samplen bijhouden heet 'steekproeven per groep'. Als u bijvoorbeeld een categorische-variabele '*State*' hebt, die waarden bevat zoals NY, ma, CA, NJ en PA, wilt u dat records uit elke staat samen komen, ongeacht of ze worden bemonsterd of niet.
 
 Hier volgt een voorbeeldquery die voorbeelden van groep:
 
@@ -80,7 +80,7 @@ Hier volgt een voorbeeldquery die voorbeelden van groep:
         )c
     on b.catfield=c.catfield
 
-## <a name="stratified"></a>Toepassing stratificatie steekproeven
+## <a name="stratified"></a>Stratified-steek proeven
 Steekproeven is toepassing stratificatie met betrekking tot een categorische variabele wanneer de voorbeelden die zijn verkregen categorische waarden die aanwezig zijn in dezelfde verhouding zoals ze in de populatie van de bovenliggende waren hebben. Met behulp van hetzelfde voorbeeld als hierboven, stel uw gegevens heeft de volgende opmerkingen per statussen: NJ heeft 100 opmerkingen, NY is 60 opmerkingen en WA 300 opmerkingen. Als u het aantal steekproeven toepassing stratificatie moet 0,5 opgeeft, klikt u vervolgens moet het voorbeeld dat is verkregen ongeveer 50, 30 en 150 opmerkingen van NJ, NY en WA respectievelijk.
 
 Hier volgt een voorbeeld van een query:
@@ -99,5 +99,5 @@ Hier volgt een voorbeeld van een query:
     where state_rank <= state_cnt*'${hiveconf:sampleRate}'
 
 
-Zie voor meer informatie over de meer geavanceerde steekproeven methoden die beschikbaar in Hive zijn [LanguageManual steekproeven](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling).
+Zie [LanguageManual sampling](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)(Engelstalig) voor meer informatie over geavanceerde bemonsterings methoden die beschikbaar zijn in Hive.
 

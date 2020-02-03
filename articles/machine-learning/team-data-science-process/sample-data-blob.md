@@ -18,14 +18,14 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76720274"
 ---
-# <a name="heading"></a>Voorbeeldgegevens in Azure blob-opslag
+# <a name="heading"></a>Voorbeeld gegevens in Azure Blob-opslag
 
 In dit artikel bevat informatie over steekproef nemen voor gegevens die zijn opgeslagen in Azure blob-opslag programmatisch downloaden en vervolgens sampling met behulp van de procedures die zijn geschreven in Python.
 
-**Waarom sample van uw gegevens?**
+**Waarom een voor beeld van uw gegevens?**
 Als de gegevensset die u van plan bent om te analyseren groot is, is het doorgaans een goed idee om down-sampling van de gegevens om deze aan de grootte van een kleiner, maar representatieve en gemakkelijker. Bemonstering vereenvoudigt het leren van gegevens, het verkennen en functie-engineering. De rol in het Cortana Analytics-proces is om in te schakelen, snel ontwikkelen van prototypen van de functies voor het verwerken van gegevens en machine learning-modellen.
 
-Deze taak steekproeven is een stap in de [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Deze steekproef taak is een stap in het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="download-and-down-sample-data"></a>Download en down-sampling van gegevens
 1. Down load de gegevens uit Azure Blob-opslag met behulp van de Blob service uit de volgende python-voorbeeld code: 
@@ -53,7 +53,7 @@ Deze taak steekproeven is een stap in de [Team Data Science Process (TDSP)](http
         #directly ready from file on disk
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-3. Down-sampling van de gegevens met de `numpy`van `random.choice` als volgt:
+3. Down sampling de gegevens met behulp van de `random.choice` van de `numpy`als volgt:
    
         # A 1 percent sample
         sample_ratio = 0.01 
@@ -63,7 +63,7 @@ Deze taak steekproeven is een stap in de [Team Data Science Process (TDSP)](http
 
 U kunt nu met het bovenstaande gegevens frame werken met het percentage van de steek proef voor verdere exploratie en het genereren van onderdelen.
 
-## <a name="heading"></a>Gegevens uploaden en te lezen in Azure Machine Learning
+## <a name="heading"></a>Gegevens uploaden en lezen in Azure Machine Learning
 U kunt de volgende voorbeeldcode down-sampling van de gegevens en deze rechtstreeks in Azure Machine Learning te gebruiken:
 
 1. Het gegevensframe schrijven naar een lokaal bestand
@@ -92,7 +92,7 @@ U kunt de volgende voorbeeldcode down-sampling van de gegevens en deze rechtstre
         except:            
             print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
 
-3. De gegevens lezen van de Azure-blob met Azure Machine Learning [importgegevens](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) zoals wordt weergegeven in de onderstaande afbeelding:
+3. Lees de gegevens van de Azure-Blob met Azure Machine Learning [gegevens importeren](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) , zoals wordt weer gegeven in de onderstaande afbeelding:
 
 ![lezer-blob](./media/sample-data-blob/reader_blob.png)
 

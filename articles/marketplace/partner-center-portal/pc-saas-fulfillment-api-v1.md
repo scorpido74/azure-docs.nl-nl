@@ -26,7 +26,7 @@ In dit artikel wordt uitgelegd hoe u een SaaS-aanbieding met Api's maakt. De Api
 De volgende Api's zijn bedoeld om u te helpen uw SaaS-service te integreren met Azure:
 
 -   Oplossen
--   Abonneer u nu
+-   Abonneren op
 -   Converteren
 -   Afmelden
 
@@ -116,13 +116,13 @@ Wanneer een gebruiker wordt omgeleid naar de website van een ISV, bevat de URL e
 |  |  |  |
 
 
-### <a name="subscribe"></a>Abonneer u nu
+### <a name="subscribe"></a>Abonneren op
 
 Met het abonnements eindpunt kunnen gebruikers een abonnement op een SaaS-service voor een bepaald plan starten en facturering in het commerce-systeem inschakelen.
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
 
 | **Parameter naam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
@@ -187,7 +187,7 @@ Met het wijzigings eindpunt kan de gebruiker het abonnement dat op dat moment is
 
 **VERZENDEN**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
 
 | **Parameter naam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
@@ -251,7 +251,7 @@ Met de actie verwijderen op het abonnements eindpunt kan een gebruiker een abonn
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
 
 | **Parameter naam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
@@ -301,7 +301,7 @@ Met dit eind punt kan de gebruiker de status van een geactiveerde async-bewerkin
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/ *{bewerkings-id}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ? API-Version = 2017-04-15**
 
 | **Parameter naam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
@@ -335,8 +335,8 @@ Met dit eind punt kan de gebruiker de status van een geactiveerde async-bewerkin
 | id                 | Tekenreeks        | De ID van de bewerking.                                                                      |
 | status             | Enum          | Bewerkings status, een van de volgende: `In Progress`, `Succeeded`of `Failed`.          |
 | resourceLocation   | Tekenreeks        | Koppeling naar het abonnement dat is gemaakt of gewijzigd. Zo kan de client bijgewerkte status post-bewerking ophalen. Deze waarde is niet ingesteld voor `Unsubscribe` bewerkingen. |
-| toegevoegd            | Datum/tijd      | Aanmaak tijd van de bewerking in UTC.                                                           |
-| lastModified       | Datum/tijd      | Laatste update voor de bewerking in UTC.                                                      |
+| toegevoegd            | DateTime      | Aanmaak tijd van de bewerking in UTC.                                                           |
+| lastModified       | DateTime      | Laatste update voor de bewerking in UTC.                                                      |
 |  |  |  |
 
 *Antwoord codes*
@@ -369,7 +369,7 @@ Met het eind punt actie ophalen voor abonneren kan een gebruiker een abonnement 
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
 
 | **Parameter naam**  | **Beschrijving**                                       |
 |---------------------|-------------------------------------------------------|
@@ -407,8 +407,8 @@ Met het eind punt actie ophalen voor abonneren kan een gebruiker een abonnement 
 | planId                 | Tekenreeks        | De plan-ID waarop de gebruiker zich heeft geabonneerd.          |
 | saasSubscriptionName   | Tekenreeks        | De naam van het SaaS-abonnement.                |
 | saasSubscriptionStatus | Enum          | Status van de bewerking.  Een van de volgende producten:  <br/> - `Subscribed`: abonnement is actief.  <br/> - `Pending`: de gebruiker heeft de resource gemaakt maar is niet geactiveerd door de ISV.   <br/> - `Unsubscribed`: de gebruiker heeft zich afgemeld.   <br/> - `Suspended`: de gebruiker heeft het abonnement onderbroken.   <br/> - `Deactivated`: het Azure-abonnement is onderbroken.  |
-| toegevoegd                | Datum/tijd      | Time Stamp-waarde voor het maken van abonnementen in UTC. |
-| lastModified           | Datum/tijd      | De time stamp-waarde voor het abonnement is gewijzigd in UTC. |
+| toegevoegd                | DateTime      | Time Stamp-waarde voor het maken van abonnementen in UTC. |
+| lastModified           | DateTime      | De time stamp-waarde voor het abonnement is gewijzigd in UTC. |
 |  |  |  |
 
 *Antwoord codes*
@@ -479,8 +479,8 @@ Met het eind punt actie ophalen voor abonnementen kan een gebruiker alle abonnem
 | planId                 | Tekenreeks        | Plan-ID waarop de gebruiker zich heeft geabonneerd          |
 | saasSubscriptionName   | Tekenreeks        | Naam van het SaaS-abonnement                |
 | saasSubscriptionStatus | Enum          | Status van de bewerking.  Een van de volgende producten:  <br/> - `Subscribed`: abonnement is actief.  <br/> - `Pending`: de gebruiker heeft de resource gemaakt maar is niet geactiveerd door de ISV.   <br/> - `Unsubscribed`: de gebruiker heeft zich afgemeld.   <br/> - `Suspended`: de gebruiker heeft het abonnement onderbroken.   <br/> - `Deactivated`: het Azure-abonnement is onderbroken.  |
-| toegevoegd                | Datum/tijd      | Time Stamp-waarde voor het maken van abonnementen in UTC |
-| lastModified           | Datum/tijd      | Time Stamp-waarde gewijzigd in UTC |
+| toegevoegd                | DateTime      | Time Stamp-waarde voor het maken van abonnementen in UTC |
+| lastModified           | DateTime      | Time Stamp-waarde gewijzigd in UTC |
 |  |  |  |
 
 *Antwoord codes*

@@ -31,7 +31,7 @@ Maak een nieuwe hostgroep met behulp van een virtuele machine met de grootte die
 Het virtuele bureau blad van Windows ondersteunt de weer gave en code ring van GPU-versnellen in de volgende besturings systemen:
 
 * Windows 10 versie 1511 of hoger
-* Windows Server 2016 of hoger
+* Windows Server 2016 of later
 
 U moet ook een app-groep configureren of de standaard bureau blad-app-groep (met de naam bureau blad-toepassings groep) gebruiken die automatisch wordt gemaakt wanneer u een nieuwe hostgroep maakt. Zie [zelf studie: app-groepen beheren voor virtuele Windows-Bureau bladen](/azure/virtual-desktop/manage-app-groups)voor instructies.
 

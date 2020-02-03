@@ -38,5 +38,5 @@ U moet eerst het [aanvraag formulier voor de afwijkings detectie container](http
 ## <a name="next-steps"></a>Volgende stappen
 
 * Controleer de [installatie-en uitvoer containers](../anomaly-detector-container-configuration.md) voor het ophalen van de container installatie kopie en voer de container uit
-* Beoordeling [containers configureren](../anomaly-detector-container-configuration.md) voor configuratie-instellingen
+* Containers voor configuratie-instellingen [configureren](../anomaly-detector-container-configuration.md) controleren
 * [Meer informatie over de API-service voor anomalie detectie](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

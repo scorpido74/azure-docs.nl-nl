@@ -34,7 +34,7 @@ Ambari agents voeren voortdurend status controles uit om de status van veel reso
 
 * Op weinig hosts in het cluster kunnen veel onderdelen worden gehost en daarom moet er een groot aantal waarschuwingen worden uitgevoerd. Als het aantal onderdelen groot is, is het mogelijk dat waarschuwings taken hun geplande intervallen kunnen missen
 
-## <a name="resolution"></a>Resolutie
+## <a name="resolution"></a>Oplossing
 
 ### <a name="increase-alert-interval-time"></a>Waarschuwings interval duur verhogen
 

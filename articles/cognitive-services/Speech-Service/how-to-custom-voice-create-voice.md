@@ -44,9 +44,9 @@ Gegevens sets worden automatisch gevalideerd zodra u op de knop uploaden hebt ge
 
 De volgende tabel toont de verwerkings statussen voor geïmporteerde gegevens sets:
 
-| Staat | Betekenis |
+| Status | Betekenis |
 | ----- | ------- |
-| Verwerken | Uw gegevensset is ontvangen en wordt verwerkt. |
+| Wordt verwerkt | Uw gegevensset is ontvangen en wordt verwerkt. |
 | Geslaagd | Uw gegevensset is gevalideerd en kan nu worden gebruikt voor het bouwen van een spraak model. |
 | Mislukt | De gegevensset is tijdens de verwerking mislukt omdat er veel redenen zijn, bijvoorbeeld bestands fouten, gegevens problemen of netwerk problemen. |
 
@@ -86,9 +86,9 @@ In de tabel training wordt een nieuw item weer gegeven dat overeenkomt met dit n
 
 De status die wordt weer gegeven, weerspiegelt het proces van het converteren van uw gegevensset naar een spraak model, zoals hier wordt weer gegeven.
 
-| Staat | Betekenis |
+| Status | Betekenis |
 | ----- | ------- |
-| Verwerken | Uw spraak model wordt gemaakt. |
+| Wordt verwerkt | Uw spraak model wordt gemaakt. |
 | Geslaagd | Uw spraak model is gemaakt en kan worden geïmplementeerd. |
 | Mislukt | Uw spraak model is niet in de cursus opgetreden omdat er veel redenen zijn, bijvoorbeeld ongevraagde gegevens problemen of netwerk problemen. |
 
@@ -117,7 +117,7 @@ Nadat het letter type is gemaakt, kunt u het testen voordat u het voor gebruik i
     > [!NOTE]
     > De taal van de tekst moet hetzelfde zijn als de taal van uw spraak lettertype. Alleen goed getrainde modellen kunnen worden getest. In deze stap wordt alleen tekst zonder opmaak ondersteund.
 
-5.  Klik op **Maken**.
+5.  Klik op **Create**.
 
 Zodra u uw test aanvraag hebt verzonden, keert u terug naar de pagina test. De tabel bevat nu een vermelding die overeenkomt met uw nieuwe aanvraag en de kolom Status. Het kan een paar minuten duren om spraak te maken. Wanneer de kolom status **is geslaagd**, kunt u de audio afspelen of de tekst invoer (een. txt-bestand) en audio-uitvoer (een. wav-bestand) downloaden en de Audition voor kwaliteit verder afstemmen.
 

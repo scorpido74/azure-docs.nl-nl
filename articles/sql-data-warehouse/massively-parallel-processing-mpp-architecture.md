@@ -19,7 +19,7 @@ ms.locfileid: "76720313"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architectuur van Azure Synapse Analytics (voorheen SQL DW) 
 
-Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big data-analyses combineert. Dit geeft u de vrijheid om geheel naar eigen wens op schaal gegevens op te vragen, met behulp van serverloze on-demand of ingerichte resources. In Azure Synapse komen deze werelden bij elkaar met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te leveren voor directe BI- en machine learning-behoeften.
+Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big data-analyses combineert. Deze geeft u de vrijheid om op schaal gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte resources. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te verwerken voor direct BI en machine learning behoeften.
 
  Azure Synapse heeft vier onderdelen:
 - SQL Analytics: op T-SQL gebaseerde analyses volt ooien 
@@ -27,7 +27,7 @@ Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big 
     - SQL on-demand (betalen per TB verwerkte) – (preview-versie)
 - Spark: diep geïntegreerde Apache Spark (preview-versie) 
 - Gegevens integratie: hybride gegevens integratie (preview-versie)
-- Studio: uniforme gebruikers ervaring.  (Preview)
+- Studio: uniforme gebruikers ervaring.  (Preview-versie)
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 

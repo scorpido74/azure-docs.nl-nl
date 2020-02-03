@@ -166,7 +166,7 @@ Zie [Wat gebeurt er als ik een andere grootte heb geschaald en een back-up is he
 
 Gegevens die zijn opgeslagen in AOF-bestanden, worden onderverdeeld in meerdere pagina-blobs per knoop punt om de prestaties van het opslaan van de gegevens in de opslag te verbeteren. In de volgende tabel ziet u hoeveel pagina-blobs voor elke prijs categorie worden gebruikt:
 
-| Premium-laag | Blobs |
+| Premiumlaag | Blobs |
 |--------------|-------|
 | P1           | 4 per Shard    |
 | P2           | 8 per Shard    |

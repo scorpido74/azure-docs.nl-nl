@@ -23,36 +23,36 @@ ms.locfileid: "76718511"
 Deze reeks onderwerpen ziet u hoe u HDInsight Spark algemene datatechnologietaken zoals gegevensopname, feature-engineering, modellen en model evaluatie voltooid. De gegevens die worden gebruikt, is een voorbeeld van de 2013 NYC taxi reis- en fare gegevensset. De gebouwde modellen zijn logistieke en lineaire regressie, willekeurige forests en kleurovergang boosted structuren. De onderwerpen laten ook zien hoe deze modellen worden opgeslagen in Azure blob storage (WASB) en hoe u kunt beoordelen en evalueren van de voorspellende prestaties. Meer geavanceerde onderwerpen besproken hoe modellen kunnen worden getraind met behulp van kruisvalidatie en hyper-parameter sweeping. Dit onderwerp verwijst ook naar de onderwerpen waarin wordt beschreven hoe u voor het instellen van het Spark-cluster die u nodig hebt voor de stappen in de scenario's.
 
 ## <a name="spark-and-mllib"></a>Spark en MLlib
-[Spark](https://spark.apache.org/) is een framework open-source parallelle verwerking dat ondersteuning biedt voor in-memory verwerking om de prestaties van toepassingen voor gegevensanalyse van big data te verbeteren. De Spark-verwerkingsengine is gebouwd voor snelheid, gebruiksgemak, en geavanceerde analyses. Gedistribueerde berekening in-memory-mogelijkheden van Spark kunnen u een goede keuze voor de zich herhalende algoritmen in machine learning- en grafiekberekeningen gebruikt. [MLlib](https://spark.apache.org/mllib/) is Spark van schaalbare machine learning-bibliotheek die zorgt voor de algoritmische-modelleringsmogelijkheden aan deze gedistribueerde omgeving.
+[Spark](https://spark.apache.org/) is een open-source framework voor parallelle verwerking dat ondersteuning biedt voor in-Memory verwerking om de prestaties van toepassingen voor de analyse van Big data te verbeteren. De Spark-verwerkingsengine is gebouwd voor snelheid, gebruiksgemak, en geavanceerde analyses. Gedistribueerde berekening in-memory-mogelijkheden van Spark kunnen u een goede keuze voor de zich herhalende algoritmen in machine learning- en grafiekberekeningen gebruikt. [MLlib](https://spark.apache.org/mllib/) is een schaal bare machine learning-bibliotheek van Spark die de algoritmen voor het samen brengen van modellen naar deze gedistribueerde omgeving brengt.
 
 ## <a name="hdinsight-spark"></a>HDInsight Spark
-[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) is de Azure gehoste aanbieding van open-source Spark. Het biedt ook ondersteuning voor **Jupyter PySpark notebooks** op het Spark-cluster dat interactieve Spark SQL-query voor het transformeren, filteren en visualiseren van gegevens die zijn opgeslagen in Azure Blobs (WASB) kan worden uitgevoerd. PySpark is de Python-API voor Spark. De codefragmenten die de oplossingen bieden en weergeven van de relevante grafieken om de gegevens die hier worden uitgevoerd in Jupyter-notebooks geïnstalleerd op de Spark-clusters te visualiseren. De stappen modellen in de volgende onderwerpen bevatten code die laat hoe u trainen zien, evalueren, opslaan en gebruiken van elk type model.
+[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) is de door Azure gehoste aanbieding van open-source Spark. Het biedt ook ondersteuning voor **Jupyter PySpark-notebooks** op het Spark-cluster, waarmee Spark SQL Interactive-query's kunnen worden uitgevoerd voor het transformeren, filteren en visualiseren van gegevens die zijn opgeslagen in azure-blobs (WASB). PySpark is de Python-API voor Spark. De codefragmenten die de oplossingen bieden en weergeven van de relevante grafieken om de gegevens die hier worden uitgevoerd in Jupyter-notebooks geïnstalleerd op de Spark-clusters te visualiseren. De stappen modellen in de volgende onderwerpen bevatten code die laat hoe u trainen zien, evalueren, opslaan en gebruiken van elk type model.
 
 ## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>Instellingen: De Spark-clusters en Jupyter notebooks onder
-Installatiestappen uit en code vindt u in dit scenario voor het gebruik van een HDInsight Spark 1.6. Maar Jupyter-notebooks voor HDInsight Spark 1.6- en Spark 2.0-clusters worden geleverd. Een beschrijving van de laptops en koppelingen naar deze vindt u in de [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) voor de GitHub-opslagplaats die ze bevatten. Bovendien is de code hier en in de gekoppelde notebooks is algemeen en werkt op een Spark-cluster. Als u niet met behulp van HDInsight Spark, configureren van het cluster en beheertaken uit kunnen enigszins afwijken van wat wordt hier weergegeven. Hier volgen de koppelingen naar de Jupyter-notebooks voor Spark 1,6 (om te worden uitgevoerd in de pySpark-kernel van de Jupyter Notebook-server) en Spark 2,0 (wordt uitgevoerd in de pySpark3-kernel van de Jupyter Notebook-server):
+Installatiestappen uit en code vindt u in dit scenario voor het gebruik van een HDInsight Spark 1.6. Maar Jupyter-notebooks voor HDInsight Spark 1.6- en Spark 2.0-clusters worden geleverd. Er wordt een beschrijving van de notitie blokken en koppelingen naar deze notebooks gegeven in de [README.MD](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) voor de GitHub-opslag plaats waarin deze zijn opgenomen. Bovendien is de code hier en in de gekoppelde notebooks is algemeen en werkt op een Spark-cluster. Als u niet met behulp van HDInsight Spark, configureren van het cluster en beheertaken uit kunnen enigszins afwijken van wat wordt hier weergegeven. Hier volgen de koppelingen naar de Jupyter-notebooks voor Spark 1,6 (om te worden uitgevoerd in de pySpark-kernel van de Jupyter Notebook-server) en Spark 2,0 (wordt uitgevoerd in de pySpark3-kernel van de Jupyter Notebook-server):
 
 ### <a name="spark-16-notebooks"></a>Spark 1.6-laptops
 Deze laptops zijn in de pySpark-kernel van Jupyter notebook-server moeten worden uitgevoerd.
 
-- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): bevat informatie over het uitvoeren van de gegevens verkennen, modelleren en scoren met diverse verschillende algoritmes.
-- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): bevat onderwerpen in de notebook #1 en de ontwikkeling van het model met behulp van hyperparameter afstemmen en kruisvalidatie.
-- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb): laat zien hoe u operationeel maken van een opgeslagen model met behulp van Python op HDInsight-clusters.
+- [pySpark-machine learning-data-Science-Spark-data-Explore-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): biedt informatie over het verkennen, model leren en scoren van gegevens met verschillende algoritmen.
+- [pySpark-machine learning-data-Science-Spark-Advanced-Data-Explore-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): bevat onderwerpen in notebook #1 en model ontwikkeling met afstemming tuning en kruislings validatie.
+- [pySpark-machine learning-data-wetenschappen-Spark-model-verbruik. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb): laat zien hoe u een opgeslagen model kunt operationeel maken met behulp van python op HDInsight-clusters.
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0-laptops
 Deze laptops zijn in de kernel pySpark3 van Jupyter notebook-server moeten worden uitgevoerd.
 
-- [Spark2.0-pySpark3-machine-Learning-Data-Science-Spark-Advanced-Data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): dit bestand bevat informatie over het uitvoeren van de gegevens verkennen, modellerings- en scoring in Spark 2.0-clusters met behulp van de fietstocht NYC Taxi en fare gegevensset-beschreven [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Dit notitieblok mogelijk een goed uitgangspunt voor het snel verkennen van de code die we voor Spark 2.0 hebt opgegeven. Voor een meer gedetailleerde notebook de gegevens over taxi's NYC analyseert, Zie de volgende notebook in deze lijst. Zie de opmerkingen na deze lijst waarin deze notitie blokken worden vergeleken.
-- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): dit bestand ziet u hoe u data wrangling (Spark SQL- en dataframe bewerkingen), gegevensonderzoek, modelleren en scoren met behulp van de NYC Taxi reis en fare set gegevens die worden beschreven uitvoeren [hier ](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): dit bestand ziet u hoe u data wrangling (Spark SQL- en dataframe bewerkingen), gegevensonderzoek, modelleren en scoren met behulp van de bekende luchtvaartmaatschappij op tijd vertrek uitvoeren de gegevensset in 2011 en 2012. We hebben de gegevensset van de luchtvaart maatschappij geïntegreerd met de weers gegevens van de lucht haven (bijvoorbeeld windspeed, Tempe ratuur, hoogte enz.) voordat ze worden gemodelleerd, zodat deze weers functies kunnen worden opgenomen in het model.
+- [Spark 2.0-pySpark3-machine-learning-data-Science-Spark-Advanced-Data-Explore-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): dit bestand bevat informatie over het verkennen, model leren en bepalen van gegevens in Spark 2,0-clusters met behulp van de NYC taxi trip en ritbedrag data-set die [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)wordt beschreven. Dit notitieblok mogelijk een goed uitgangspunt voor het snel verkennen van de code die we voor Spark 2.0 hebt opgegeven. Voor een meer gedetailleerde notebook de gegevens over taxi's NYC analyseert, Zie de volgende notebook in deze lijst. Zie de opmerkingen na deze lijst waarin deze notitie blokken worden vergeleken.
+- [Spark 2.0-pySpark3_NYC_Taxi_Tip_Regression. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): dit bestand bevat informatie over het uitvoeren van gegevens Wrangling (Spark SQL-en data frame-bewerkingen), exploratie, model leren en scoren met behulp van de NYC-reis-en ritbedrag gegevensverzameling die [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)wordt beschreven.
+- [Spark 2.0-pySpark3_Airline_Departure_Delay_Classification. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): dit bestand bevat informatie over het uitvoeren van gegevens Wrangling (Spark SQL en data frame Operations), exploratie, modellering en scoreing met behulp van de bekende luchtvaart maatschappij op tijd van 2011 en 2012. We hebben de gegevensset van de luchtvaart maatschappij geïntegreerd met de weers gegevens van de lucht haven (bijvoorbeeld windspeed, Tempe ratuur, hoogte enz.) voordat ze worden gemodelleerd, zodat deze weers functies kunnen worden opgenomen in het model.
 
 <!-- -->
 
 > [!NOTE]
 > De gegevensset luchtvaartmaatschappij is toegevoegd aan de notebooks Spark 2.0 ter illustratie van het gebruik van bestandsclassificatie-algoritmen beter. Zie de volgende koppelingen voor meer informatie over luchtvaartmaatschappij op tijd vertrek gegevensset en de gegevensset weer:
 > 
-> - Luchtvaartmaatschappij op tijd vertrek gegevens: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> - Gegevens over de verzen ding van de luchtvaart maatschappijen: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
-> - Weergegevens luchthaven: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
+> - Gegevens van lucht haven weer: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
 
 <!-- -->
 
@@ -63,22 +63,22 @@ Deze laptops zijn in de kernel pySpark3 van Jupyter notebook-server moeten worde
 
 <!-- -->
 
-Zie voor hulp bij de uitoefening van een model voor Spark 2.0 en het verbruik model voor het scoren van, de [Spark 1.6-document op verbruik](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) voor een voorbeeld geeft een overzicht van de stappen die nodig zijn. Als u dit voor beeld wilt gebruiken op Spark 2,0, vervangt u het python-code bestand door [dit bestand](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).
+Zie het [spark 1,6-document over verbruik](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) voor een voor beeld van een overzicht van de vereiste stappen voor meer informatie over de uitoefening van een Spark 2,0-model en model verbruik voor het scoren. Als u dit voor beeld wilt gebruiken op Spark 2,0, vervangt u het python-code bestand door [dit bestand](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).
 
 ### <a name="prerequisites"></a>Vereisten
 
 De volgende procedures hebben betrekking op Spark 1.6. Gebruik de notebooks beschreven en gekoppeld aan de eerder voor de versie van Spark 2.0.
 
-1. U hebt een abonnement op Azure nodig. Als u nog geen een, Zie [gratis proefversie van Azure ophalen](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+1. U hebt een abonnement op Azure nodig. Als u er nog geen hebt, raadpleegt u [gratis proef versie van Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-2. U hebt een Spark 1,6-cluster nodig om deze procedure te volt ooien. Als u wilt maken, Zie de instructies in [aan de slag: Apache Spark op Azure HDInsight maakt](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). De cluster van het type en de versie is opgegeven in de **clustertype selecteren** menu.
+2. U hebt een Spark 1,6-cluster nodig om deze procedure te volt ooien. Als u een wilt maken, raadpleegt u de instructies in [aan de slag: create Apache Spark op Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Het cluster type en de versie worden opgegeven in het menu **cluster type selecteren** .
 
 ![Cluster configureren](./media/spark-overview/spark-cluster-on-portal.png)
 
 <!-- -->
 
 > [!NOTE]
-> Zie voor een onderwerp waarin wordt uitgelegd hoe u Scala in plaats van Python gebruikt om taken voor een end-to-end-data science process te voltooien, de [Gegevenswetenschap met Spark op Azure met behulp van Scala](scala-walkthrough.md).
+> Voor een onderwerp waarin wordt getoond hoe u scala in plaats van python kunt gebruiken om taken voor een end-to-end proces voor gegevens wetenschap te volt ooien, raadpleegt [u de gegevens wetenschap met scala met Spark op Azure](scala-walkthrough.md).
 >
 >
 
@@ -108,7 +108,7 @@ De reisgegevens NYC over taxi's is ongeveer 20 GB aan gecomprimeerde door komma'
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-We hebben gemaakt van een steekproef 0,1% van deze bestanden en lid is van de fietstocht\_gegevens en reis\_ritbedrag CSV-bestanden in een enkele gegevensset moet worden gebruikt als invoergegevensset voor dit scenario. De unieke sleutel voor deelname aan reis\_gegevens en reis\_fare bestaat uit de velden: straten hack\_en ophalen van certificaat\_datum/tijd. Elke record van de gegevensset bevat de volgende kenmerken die een reis NYC Taxi vertegenwoordigt:
+We hebben een voor beeld van een 0,1% van deze bestanden genomen en zijn samengevoegd met de reis\_gegevens en de\_reis naar een enkele gegevensset om te gebruiken als de invoer gegevensset voor deze walkthrough. De unieke sleutel voor deelname aan de reis\_gegevens en reis\_ritbedrag bestaat uit de velden: Medallion, Hack\_Licensing en pickup\_DateTime. Elke record van de gegevensset bevat de volgende kenmerken die een reis NYC Taxi vertegenwoordigt:
 
 | Veld | Korte beschrijving |
 | --- | --- |
@@ -145,15 +145,15 @@ U kunt de Jupyter-Notebook vanuit de Azure-portal starten. Zoek uw Spark-cluster
 
 ![Clusterdashboards](./media/spark-overview/spark-jupyter-on-portal.png)
 
-U kunt ook bladeren naar ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** voor toegang tot de Jupyter-Notebooks. De CLUSTERNAAM deel uitmaken van deze URL vervangen door de naam van uw eigen cluster. U moet het wachtwoord voor uw beheerdersaccount voor toegang tot de notebooks.
+U kunt ook naar ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** bladeren om toegang te krijgen tot de Jupyter-notebooks. De CLUSTERNAAM deel uitmaken van deze URL vervangen door de naam van uw eigen cluster. U moet het wachtwoord voor uw beheerdersaccount voor toegang tot de notebooks.
 
 ![Jupyter-Notebooks bladeren](./media/spark-overview/spark-jupyter-notebook.png)
 
 Selecteer PySpark om een map te bekijken met een aantal voor beelden van vooraf verpakte notitie blokken die gebruikmaken van de PySpark-API. De notitie blokken die de code voorbeelden voor dit pakket met Spark bevatten, zijn beschikbaar op [github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark)
 
-U kunt de notebooks rechtstreeks vanuit uploaden [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) met de Jupyter-notebook-server op uw Spark-cluster. Op de startpagina van uw Jupyter, klikt u op de **uploaden** knop op het juiste deel van het scherm. Hiermee opent u een bestand in bestandenverkenner. Hier kunt u de URL van GitHub (onbewerkte inhoud) van de Notebook en op Plakken **Open**.
+U kunt de notebooks rechtstreeks vanuit [github](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) uploaden naar de Jupyter notebook-server op uw Spark-cluster. Klik op de start pagina van uw Jupyter op de knop **uploaden** aan de rechter kant van het scherm. Hiermee opent u een bestand in bestandenverkenner. Hier kunt u de GitHub-URL (onbewerkte inhoud) van het notitie blok plakken en op **openen**klikken.
 
-Ziet u de bestandsnaam in de lijst met de Jupyter-bestand met een **uploaden** knop opnieuw. Klik hierop **uploaden** knop. Nu hebt u de notebook geïmporteerd. Herhaal deze stappen voor het uploaden van de andere notebooks van dit scenario.
+U ziet de bestands naam in de lijst met Jupyter bestanden met een knop **uploaden** . Klik op de knop **uploaden** . Nu hebt u de notebook geïmporteerd. Herhaal deze stappen voor het uploaden van de andere notebooks van dit scenario.
 
 > [!TIP]
 > U kunt met de rechter muisknop op de koppelingen in uw browser klikken en **koppeling kopiëren** selecteren om de GitHub onbewerkte INHOUDS-URL op te halen. U kunt deze URL plakken in de Jupyter uploaden bestand explorer in het dialoogvenster.
@@ -163,23 +163,23 @@ Ziet u de bestandsnaam in de lijst met de Jupyter-bestand met een **uploaden** k
 U kunt nu het volgende doen:
 
 * De code bekijken door te klikken op de notebook.
-* Elke cel uitvoeren door te drukken **SHIFT + ENTER**.
-* Het hele notitieblok uitvoeren door te klikken op **cel** -> **uitvoeren**.
+* Voer elke cel uit door op **SHIFT + ENTER**te drukken.
+* Voer het hele notitie blok uit door te klikken op **cel** -> **uitvoeren**.
 * Gebruik de automatische visualisatie van query's.
 
 > [!TIP]
-> De PySpark-kernel visualiseert automatisch de uitvoer (HiveQL) SQL-query's. Krijgt u de mogelijkheid om te kiezen uit verschillende soorten visualisaties (tabel, Pie, regel, gebied of balk) met behulp van de **Type** menuknoppen in de notebook:
+> De PySpark-kernel visualiseert automatisch de uitvoer (HiveQL) SQL-query's. U krijgt de mogelijkheid om te kiezen uit verschillende soorten visualisaties (tabel, cirkel, lijn, gebied of balk) met behulp van de menu knoppen van het **type** in het notitie blok:
 >
 >
 
 ![Logistieke regressie ROC-curve voor algemene methode](./media/spark-overview/pyspark-jupyter-autovisualization.png)
 
-## <a name="whats-next"></a>En verder?
+## <a name="whats-next"></a>Volgende stappen
 Nu dat u zijn ingesteld met een HDInsight Spark-cluster en de Jupyter-notebooks hebt geüpload, bent u klaar om te werken via de onderwerpen die met de drie PySpark-notebooks overeenkomen. Ze laten zien hoe u om uw gegevens te verkennen en vervolgens op over het maken en gebruiken van modellen. De geavanceerde gegevens verkennen en modelleren notebook laat zien hoe het opnemen van kruisvalidatie, hyper-parameter verstrekkende, en model van de evaluatie.
 
-**Met Spark gegevens verkennen en modelleren:** de gegevensset te verkennen en maken, te beoordelen en evalueren van de machine learning-modellen door het uitvoeren van de [binaire classificatie- en regressiemodellen modellen voor gegevens met de MLlib Spark maken Toolkit](spark-data-exploration-modeling.md) onderwerp.
+**Gegevens verkennen en model leren met Spark:** Verken de gegevensset en maak, beoordeel en evalueer de machine learning modellen door te werken met behulp van het onderwerp [binaire classificatie maken en regressie modellen voor gegevens met behulp van de Spark MLlib Toolkit](spark-data-exploration-modeling.md) .
 
-**Model voor verbruik:** Zie voor meer informatie over de classificatie- en regressiemodellen modellen die zijn gemaakt in dit onderwerp te beoordelen, [Score en evalueren met Spark gebouwde machine learning-modellen](spark-model-consumption.md).
+**Model verbruik:** Zie voor meer informatie over het beoordelen van de classificatie en regressie modellen die in dit onderwerp zijn gemaakt, de [Score en evalueren van met Spark ontwikkelde machine learning modellen](spark-model-consumption.md).
 
-**Kruisvalidatie en hyperparameter sweeping**: Zie [geavanceerde met Spark gegevens verkennen en modelleren](spark-advanced-data-exploration-modeling.md) op hoe de modellen kunnen worden getraind met behulp van kruisvalidatie en hyper-parameter sweeping
+**Kruis validatie en afstemming verruimen**: Zie [geavanceerde gegevens verkennen en model leren met Spark](spark-advanced-data-exploration-modeling.md) over hoe modellen kunnen worden getraind met kruis validatie en Hyper-para meters opruimen
 

@@ -31,7 +31,7 @@ U ontvangt fouten van Apache Ambari die vergelijkbaar zijn met:
 
 De vermelde mappen van Ambari-waarschuwing ontbreken op betrokken worker-knoop punten.
 
-## <a name="resolution"></a>Resolutie
+## <a name="resolution"></a>Oplossing
 
 Hand matig ontbrekende directory's maken op de betrokken worker-knoop punten.
 

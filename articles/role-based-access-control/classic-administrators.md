@@ -138,7 +138,7 @@ De account beheerder is de gebruiker die zich voor het eerst aanmeldt voor het A
 
 Volg deze stappen om de account beheerder weer te geven.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Open [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) en selecteer een abonnement.
 

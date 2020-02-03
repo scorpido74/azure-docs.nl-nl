@@ -52,8 +52,8 @@ De volgende tabel bevat een overzicht van de verschillen tussen de account-id's 
 | Account-id                | MSAL                                                         | ADAL 2.7. x      | Oudere ADAL (vóór ADAL 2.7. x) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | id die kan worden afgespeeld            | `username`                                                   | `userId`        | `userId`                       |
-| unieke id die niet kan worden afgespeeld | `identifier`                                                 | `homeAccountId` | N/A                            |
-| Geen account-id bekend               | Query's uitvoeren op alle accounts via `allAccounts:`-API in `MSALPublicClientApplication` | N/A             | N/A                            |
+| unieke id die niet kan worden afgespeeld | `identifier`                                                 | `homeAccountId` | N.v.t.                            |
+| Geen account-id bekend               | Query's uitvoeren op alle accounts via `allAccounts:`-API in `MSALPublicClientApplication` | N.v.t.             | N.v.t.                            |
 
 Dit is de `MSALAccount`-interface die die id's biedt:
 

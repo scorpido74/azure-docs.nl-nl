@@ -193,7 +193,7 @@ Elke prijs categorie heeft verschillende limieten voor client verbindingen, gehe
 Als u uw cache wilt bijwerken, klikt u op **Nu bijwerken** om de prijs categorie te wijzigen en uw cache te [schalen](#scale) . Zie voor meer informatie over het kiezen van een prijs categorie [Wat is Azure cache voor redis aanbieding en grootte moet ik gebruiken?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
-### <a name="scale"></a>Schaal
+### <a name="scale"></a>Schalen
 Klik op **schalen** om de prijs categorie voor uw cache weer te geven of te wijzigen. Zie [Azure-cache schalen voor redis](cache-how-to-scale.md)voor meer informatie over schalen.
 
 ![Azure cache voor redis-prijs categorie](./media/cache-configure/pricing-tier.png)
@@ -213,7 +213,7 @@ Als u de cluster grootte wilt wijzigen, gebruikt u de schuif regelaar of typt u 
 >
 
 
-### <a name="redis-data-persistence"></a>Redis-gegevenspersistentie
+### <a name="redis-data-persistence"></a>Redis-gegevens persistentie
 Klik op **gegevens persistentie** om gegevens persistentie voor uw Premium-cache in te scha kelen, uit te scha kelen of te configureren. Azure cache voor redis biedt redis persistentie met behulp van [RDB-persistentie](cache-how-to-premium-persistence.md#configure-rdb-persistence) of [AOF-persistentie](cache-how-to-premium-persistence.md#configure-aof-persistence).
 
 Zie [persistentie configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-persistence.md)voor meer informatie.
@@ -250,7 +250,7 @@ De Blade **geo-replicatie** biedt een mechanisme voor het koppelen van twee Prem
 >
 >
 
-### <a name="virtual-network"></a>Virtual Network
+### <a name="virtual-network"></a>Virtueel netwerk
 Met de sectie **Virtual Network** kunt u de instellingen van het virtuele netwerk voor uw cache configureren. Zie [Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-vnet.md)voor meer informatie over het maken van een Premium-cache met VNET-ondersteuning en het bijwerken van de instellingen.
 
 > [!IMPORTANT]
@@ -295,7 +295,7 @@ Met de instellingen in de sectie **beheer** kunt u de volgende beheer taken voor
 * [Opnieuw opstarten](#reboot)
 
 
-### <a name="importexport"></a>Import/export
+### <a name="importexport"></a>Import/Export
 Import/export is een Azure cache voor redis-gegevens beheer bewerking, waarmee u gegevens in de cache kunt importeren en exporteren door een Azure-cache voor een redis-data base (RDB)-moment opname te importeren en exporteren van een Premium-cache naar een pagina-Blob in een Azure Storage-account. Met importeren/exporteren kunt u tussen verschillende Azure-caches migreren voor redis-exemplaren of de cache vullen met gegevens voor gebruik.
 
 Importeren kan worden gebruikt om redis compatibele RDB-bestanden te halen van elke redis-server die in een wille keurige Cloud of omgeving wordt uitgevoerd, waaronder redis die wordt uitgevoerd op Linux, Windows of een Cloud provider zoals Amazon Web Services en anderen. Het importeren van gegevens is een eenvoudige manier om een cache met vooraf gevulde gegevens te maken. Tijdens het import proces laadt Azure cache voor redis de RDB-bestanden vanuit Azure Storage in het geheugen en voegt vervolgens de sleutels in de cache in.
@@ -324,12 +324,12 @@ Als u een of meer knoop punten van uw cache opnieuw wilt opstarten, selecteert u
 >
 
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 In de sectie **bewaking** kunt u Diagnostische gegevens en bewaking configureren voor uw Azure-cache voor redis.
 Zie [Azure-cache bewaken voor redis](cache-how-to-monitor.md)voor meer informatie over Azure cache voor redis-controle en-diagnose.
 
-![Diagnostics](./media/cache-configure/redis-cache-diagnostics.png)
+![Diagnostiek](./media/cache-configure/redis-cache-diagnostics.png)
 
 * [Metrische gegevens van redis](#redis-metrics)
 * [Waarschuwings regels](#alert-rules)
@@ -338,11 +338,11 @@ Zie [Azure-cache bewaken voor redis](cache-how-to-monitor.md)voor meer informati
 ### <a name="redis-metrics"></a>Metrische gegevens van redis
 Klik op **redis metrische gegevens** om de [metrische gegevens](cache-how-to-monitor.md#view-cache-metrics) voor uw cache weer te geven.
 
-### <a name="alert-rules"></a>Waarschuwingsregels
+### <a name="alert-rules"></a>Regels voor waarschuwingen
 
 Klik op **waarschuwings regels** om waarschuwingen te configureren op basis van Azure cache voor redis metrische gegevens. Zie [waarschuwingen](cache-how-to-monitor.md#alerts)voor meer informatie.
 
-### <a name="diagnostics"></a>Diagnostics
+### <a name="diagnostics"></a>Diagnostiek
 
 Standaard worden de metrische gegevens in de cache van Azure Monitor [30 dagen opgeslagen](../azure-monitor/platform/data-platform-metrics.md) en vervolgens verwijderd. Als u de cache gegevens langer dan 30 dagen wilt behouden, klikt u op **diagnose** om [het opslag account te configureren](cache-how-to-monitor.md#export-cache-metrics) dat wordt gebruikt voor het opslaan van de diagnostische gegevens van de cache.
 
@@ -359,7 +359,7 @@ De instellingen in de sectie **ondersteuning en probleem oplossing** bieden u op
 * [Resource status](#resource-health)
 * [Nieuwe ondersteunings aanvraag](#new-support-request)
 
-### <a name="resource-health"></a>Bronnenstatus
+### <a name="resource-health"></a>Status van resources
 De **resource status** houdt uw resource in de gaten en vertelt u of deze wordt uitgevoerd zoals verwacht. Zie [overzicht van Azure resource Health](../resource-health/resource-health-overview.md)voor meer informatie over de Azure resource Health-Service.
 
 > [!NOTE]

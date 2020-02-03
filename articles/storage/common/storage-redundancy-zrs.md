@@ -29,13 +29,13 @@ Voor algemeen gebruik v2 ZRS-accounts ondersteunen blok-blobs, niet-schijf pagin
 
 Voor algemeen gebruik v2-accounts is ZRS algemeen beschikbaar in de volgende regio's:
 
-- Azië (zuidoost)
-- Europa (noord)
-- Europa (west)
+- Azië - zuidoost
+- Europa - noord
+- Europa - west
 - Frankrijk - centraal
-- Japan - Oost
+- Japan - oost
 - Zuid-Afrika - noord
-- UK - zuid
+- Verenigd Koninkrijk Zuid
 - US - centraal
 - US - oost
 - US - oost 2
@@ -43,7 +43,7 @@ Voor algemeen gebruik v2-accounts is ZRS algemeen beschikbaar in de volgende reg
 
 Voor FileStorage-accounts (Premium-bestands shares) en BlockBlobStorage-accounts (Premium-blok-blobs) is ZRS algemeen beschikbaar in de volgende regio's:
 
-- Europa (west)
+- Europa - west
 - US - oost
 
 Micro soft blijft ZRS inschakelen in extra Azure-regio's. Controleer regel matig de pagina met [updates voor Azure-Services](https://azure.microsoft.com/updates/) voor informatie over nieuwe regio's.

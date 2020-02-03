@@ -54,7 +54,7 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 |Opdracht  |Ondersteund |
 |---------|---------|
 |authenticate    |   Ja      |
-|afmelden    |      Ja   |
+|logout    |      Ja   |
 |getnonce   |    Ja     |
 
 
@@ -97,7 +97,7 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 |dbStats     |   Ja      |
 |bespreken     | Nee        |
 |uitleg: executionStats     |     Nee    |
-|database     |    Nee     |
+|functies     |    Nee     |
 |hostInfo     |   Nee      |
 |listDatabases       |   Ja      |
 |listCommands     |  Nee       |
@@ -330,14 +330,14 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 
 |Opdracht  |Ondersteund |
 |---------|---------|
-|Double |Ja    |
+|Double-waarde |Ja    |
 |Tekenreeks |Ja    |
 |Object |Ja    |
 |Matrix  |Ja    |
 |Binary Data    |Ja|   
 |Id   |Ja    |
 |Booleaans    |Ja    |
-|Datum   |Ja    |
+|Date   |Ja    |
 |Null   |Ja    |
 |32-bits geheel getal (int)   |Ja    |
 |Tijdstempel  |Ja    |
@@ -346,9 +346,9 @@ De API van Azure Cosmos DB voor MongoDB biedt ondersteuning voor de volgende dat
 |MaxKey |Ja    |
 |Decimal128 |Ja|   
 |Reguliere expressie |Ja|
-|JavaScript |Ja|
+|Javascript |Ja|
 |Java script (met bereik)|   Ja |
-|Niet gedefinieerd  |Ja    |
+|Undefined  |Ja    |
 
 ## <a name="indexes-and-index-properties"></a>Indexen en index eigenschappen
 
@@ -573,6 +573,6 @@ Azure Cosmos DB biedt nog geen ondersteuning voor de opdrachten aan de server zi
 - Raadpleeg voor meer informatie [Mongo 3,6-versie functies](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
 - Meer informatie over het [gebruik van Studio 3T](mongodb-mongochef.md) met de API voor MongoDB van Azure Cosmos DB.
 - Meer informatie over het [gebruik van Robo 3T](mongodb-robomongo.md) met de API voor MongoDB van Azure Cosmos DB.
-- Verken [voorbeelden](mongodb-samples.md) van MongoDB met de API van Azure Cosmos DB voor MongoDB.
+- Verken [voorbeelden](mongodb-samples.md) van MongoDB met de API voor MongoDB van Azure Cosmos DB.
 
 <sup>Opmerking: in dit artikel wordt een functie van Azure Cosmos DB beschreven die compatibiliteit met MongoDB-data bases biedt. Micro soft voert geen MongoDB-data bases uit om deze service te leveren. Azure Cosmos DB is niet gekoppeld aan MongoDB, Inc.</sup>

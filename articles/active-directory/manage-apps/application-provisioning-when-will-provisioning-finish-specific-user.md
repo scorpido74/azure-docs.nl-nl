@@ -74,13 +74,13 @@ De volgende tabel bevat een overzicht van de synchronisatie tijden voor veelvoor
 | Scope configuratie | Gebruikers, groepen en leden in bereik | Eerste cyclus tijd | Incrementele cyclus tijd |
 | -------- | -------- | -------- | -------- |
 | Alleen toegewezen gebruikers en groepen synchroniseren |  < 1.000 |  < 30 minuten | < 30 minuten |
-| Alleen toegewezen gebruikers en groepen synchroniseren |  1\.000 - 10.000 | 142-708 minuten | < 30 minuten |
+| Alleen toegewezen gebruikers en groepen synchroniseren |  1\.000-10.000 | 142-708 minuten | < 30 minuten |
 | Alleen toegewezen gebruikers en groepen synchroniseren |   10.000-100.000 | 1\.170-2.340 minuten | < 30 minuten |
 | Alle gebruikers en groepen in azure AD synchroniseren |  < 1.000 | < 30 minuten  | < 30 minuten |
-| Alle gebruikers en groepen in azure AD synchroniseren |  1\.000 - 10.000 | < 30-120 minuten | < 30 minuten |
+| Alle gebruikers en groepen in azure AD synchroniseren |  1\.000-10.000 | < 30-120 minuten | < 30 minuten |
 | Alle gebruikers en groepen in azure AD synchroniseren |  10.000-100.000  | 713-1.425 minuten | < 30 minuten |
 | Alle gebruikers in azure AD synchroniseren|  < 1.000  | < 30 minuten | < 30 minuten |
-| Alle gebruikers in azure AD synchroniseren | 1\.000 - 10.000  | 43-86 minuten | < 30 minuten |
+| Alle gebruikers in azure AD synchroniseren | 1\.000-10.000  | 43-86 minuten | < 30 minuten |
 
 
 Voor de configuratie **synchronisatie alleen gebruiker en groepen toegewezen**, kunt u de volgende formules gebruiken om de geschatte minimale en maximale verwachte **initiële cyclus** tijden te bepalen:
@@ -105,4 +105,4 @@ Samen vatting van factoren die van invloed zijn op de tijd die nodig is om een *
 - Als de prestaties een probleem vormen en u probeert het meren deel van de gebruikers en groepen in uw Tenant in te richten, gebruikt u bereik filters. Met behulp van bereik filters kunt u de gegevens die door de inrichtings service worden geëxtraheerd, afstemmen op de gebruikers op basis van specifieke kenmerk waarden. Zie voor meer informatie over het bereik van filters [kenmerk toepassing inrichten met bereik filters](define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-[Automate User Provisioning and Deprovisioning to SaaS Applications with Azure Active Directory](user-provisioning.md) (Automatisch gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory)
+[Automate user provisioning and deprovisioning to SaaS applications with Azure Active Directory](user-provisioning.md) (Automatisch gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory)

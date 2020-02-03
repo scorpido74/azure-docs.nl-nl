@@ -21,12 +21,12 @@ ms.locfileid: "76716677"
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Functies selecteren in Team Data Science Process (TDSP)
 Dit artikel worden de doeleinden van functieselectie en bevat voorbeelden van de rol in de uitbreiding van de synchronisatiegegevens van machine learning. Deze voorbeelden worden van Azure Machine Learning Studio getekend.
 
-Het technische team en de selectie van functies maakt deel uit van het Team Data Science Process (TDSP) die worden beschreven in het artikel [wat is Team Data Science Process?](overview.md). Feature-engineering en selectie maken deel uit van de **functies ontwikkelen** stap van de TDSP.
+De techniek en selectie van functies is een onderdeel van het team data Science process (TDSP), zoals beschreven in het artikel [Wat is het proces voor team data Science?](overview.md). Functie techniek en selectie zijn onderdelen van de stap **functies ontwikkelen** van de TDSP.
 
-* **functie-engineering**: dit proces probeert te maken van aanvullende desbetreffende functies van de bestaande onbewerkte functies in de gegevens en voorspellende power om het learning-algoritme te vergroten.
-* **functies selecteren**: dit proces selecteert u de belangrijke subset van functies van de oorspronkelijke gegevens in een poging om te beperken de dimensionaliteit van het probleem training.
+* **functie techniek**: dit proces probeert extra relevante functies te maken op basis van de bestaande onbewerkte functies in de gegevens en om de voorspellende stroom te verg Roten tot het leer algoritme.
+* **functie selectie**: dit proces selecteert de sleutel subset van de oorspronkelijke gegevens functies in een poging om de dimensionaliteit van het trainings probleem te reduceren.
 
-Normaal gesproken **functie-engineering** eerst wordt toegepast voor het genereren van extra functies, en vervolgens de **functies selecteren** stap wordt uitgevoerd om te voorkomen, niet van belang, redundante of zeer gecorreleerde functies.
+Normaal gesp roken **functie techniek** wordt eerst toegepast om extra functies te genereren, en vervolgens wordt de **functie selectie** stap uitgevoerd om irrelevante, redundante of zeer gecorreleerde functies te elimineren.
 
 ## <a name="filter-features-from-your-data---feature-selection"></a>Filteren van de functies van uw gegevens - Functieselectie
 Functie selectie kan worden gebruikt voor classificatie-of regressie taken. Het doel is om te selecteren van een subset van de functies van de oorspronkelijke gegevensset die de afmetingen beperken met behulp van een minimale set functies voor de maximale hoeveelheid afwijking in de gegevens. Deze subset van functies wordt gebruikt om het model te trainen. Functieselectie heeft twee hoofddoelen.

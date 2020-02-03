@@ -27,16 +27,16 @@ In Azure Lab Services fungeert een lab-account als het centrale account waarin a
 In deze zelfstudie voert u de volgende acties uit:
 
 > [!div class="checklist"]
-> * Maak een lab-account
+> * Een lab-account maken
 > * Een gebruiker toevoegen aan de rol Labmaker
 > * Microsoft Azure Marketplace-installatiekopieën die beschikbaar zijn voor eigenaars van een lab opgeven
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
-## <a name="create-a-lab-account"></a>Maak een lab-account
+## <a name="create-a-lab-account"></a>Een lab-account maken
 In de volgende stappen ziet u hoe u Azure Portal kunt gebruiken om een lab te maken met Azure Lab Services. 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer in het menu links **Alle services**. Selecteer **Lab Services** in de sectie **DEVOPS** . Als u ster (`*`) selecteert naast **Lab-Services**, wordt deze toegevoegd aan de sectie **Favorieten** in het menu links. Vanaf de volgende keer kunt u **Lab-Services** selecteren onder **Favorieten**.
 
     ![Alle services-> Lab-Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
@@ -103,5 +103,5 @@ Als eigenaar van een labaccount kunt u de Marketplace-installatiekopieën opgeve
 In deze zelfstudie hebt u een lab-account gemaakt. Ga verder met de volgende zelf studie voor meer informatie over het maken van een leslokaal Lab als docent:
 
 > [!div class="nextstepaction"]
-> [Een leslokaallab instellen](tutorial-setup-classroom-lab.md)
+> [Een leslokaal-lab instellen](tutorial-setup-classroom-lab.md)
 

@@ -153,7 +153,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 Ondersteuning voor websockets is standaard ingeschakeld. Er is geen door de gebruiker Configureer bare instelling om deze in of uit te scha kelen. U kunt websockets gebruiken met HTTP-en HTTPS-listeners.
 
-### <a name="custom-error-pages"></a>Aangepaste foutenpagina's
+### <a name="custom-error-pages"></a>Aangepaste foutpagina's
 
 U kunt een aangepaste fout op globaal niveau of op het niveau van de listener definiëren. Het maken van aangepaste fout pagina's op globaal niveau vanuit het Azure Portal wordt momenteel niet ondersteund. U kunt een aangepaste fout pagina configureren voor een 403-Web Application Firewall fout of een 502-onderhouds pagina op het niveau van de listener. U moet ook een openbaar toegankelijke BLOB-URL opgeven voor de gegeven fout status code. Zie voor meer informatie [Aangepaste foutpagina's maken voor Application Gateway](https://docs.microsoft.com/azure/application-gateway/custom-error).
 
@@ -241,7 +241,7 @@ Zie voor meer informatie over omleiding:
 
 #### <a name="rewrite-the-http-header-setting"></a>De HTTP-header-instelling opnieuw schrijven
 
-Met deze instelling worden HTTP-aanvragen en-antwoord headers toegevoegd, verwijderd of bijgewerkt, terwijl de aanvraag-en antwoord pakketten tussen de client en de back-end-pool worden verplaatst. Zie voor meer informatie:
+Met deze instelling worden HTTP-aanvragen en-antwoord headers toegevoegd, verwijderd of bijgewerkt, terwijl de aanvraag-en antwoord pakketten tussen de client en de back-end-pool worden verplaatst. Ga voor meer informatie naar:
 
  - [Overzicht van HTTP-headers opnieuw schrijven](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
  - [Herschrijven van HTTP-header configureren](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
@@ -264,7 +264,7 @@ Application Gateway ondersteunt HTTP en HTTPS voor het routeren van aanvragen na
 
 Deze instelling in combi natie met HTTPS in de listener ondersteunt [end-to-end SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Zo kunt u veilig gevoelige gegevens die zijn versleuteld verzenden naar de back-end. Elke back-endserver in de back-end-groep waarvoor end-to-end SSL is ingeschakeld, moet worden geconfigureerd met een certificaat om beveiligde communicatie toe te staan.
 
-### <a name="port"></a>Port
+### <a name="port"></a>Poort
 
 Met deze instelling geeft u de poort op waarop de back-endservers worden geluisterd naar verkeer van de toepassings gateway. U kunt poorten configureren variërend van 1 tot en met 65535.
 

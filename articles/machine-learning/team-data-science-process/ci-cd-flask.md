@@ -33,7 +33,7 @@ Als u de gedownloade bron code en zelf studie wilt gebruiken, hebt u de volgende
 
 - De [bron code opslagplaats](https://github.com/Azure/DevOps-For-AI-Apps) is gevorkt naar uw github-account
 - Een [Azure DevOps-organisatie](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
-- [Azure-CLI](/cli/azure/install-azure-cli)
+- [Azure CLI](/cli/azure/install-azure-cli)
 - Een [Azure container service voor een Kubernetes-cluster (AKS)](/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) opdrachten uitvoeren en configuratie ophalen uit het AKS-cluster 
 - Een [Azure container Registry-account (ACR)](/azure/container-registry/container-registry-get-started-portal)
@@ -62,7 +62,7 @@ In het volgende diagram en de stappen wordt de architectuur van de CI/CD-pijp li
 
 ## <a name="see-also"></a>Zie ook
 
-- [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
+- [Team data Science process (TDSP)](/azure/machine-learning/team-data-science-process/)
 - [Azure Machine Learning (AML)](/azure/machine-learning/)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Azure Kubernetes-Services (AKS)](/azure/aks/intro-kubernetes)
+- [Azure Kubernetes Services (AKS)](/azure/aks/intro-kubernetes)

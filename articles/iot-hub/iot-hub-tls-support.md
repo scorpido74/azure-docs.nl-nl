@@ -58,7 +58,7 @@ Met de gemaakte IoT Hub resource die gebruikmaakt van deze configuratie, worden 
 
 IoT-hubs waarvoor het gebruik van TLS 1,2 vereist is, kunnen in de volgende regio's worden gemaakt:
 
-* VS - oost
+* US - oost
 * US - zuid-centraal
 * US - west 2
 
@@ -84,7 +84,7 @@ Gebruik de onderstaande koppelingen voor het configureren van TLS 1,2 en toegest
 | Python   | Ja               | [Koppeling](https://aka.ms/Tls_Python_SDK_IoT) |
 | C#       | Ja               | [Koppeling](https://aka.ms/Tls_CSharp_SDK_IoT) |
 | Java     | Ja               | [Koppeling](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Ja               | [Koppeling](https://aka.ms/Tls_Node_SDK_IoT) |
+| Node.js   | Ja               | [Koppeling](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ### <a name="use-tls-12-in-your-iot-edge-setup"></a>TLS 1,2 gebruiken in uw IoT Edge-installatie

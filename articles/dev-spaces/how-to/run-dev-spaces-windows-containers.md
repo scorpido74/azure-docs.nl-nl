@@ -20,7 +20,7 @@ U kunt Azure dev Spaces inschakelen voor zowel nieuwe als bestaande Kubernetes-n
 
 In dit artikel wordt ervan uitgegaan dat u al een cluster hebt met zowel Linux-als Windows-knooppunt groepen. Als u een cluster met Linux-en Windows-knooppunt groepen wilt maken, kunt u de instructies [hier][windows-container-cli]volgen.
 
-Maak verbinding met uw cluster met behulp van [kubectl][kubectl], de Kubernetes-opdracht regel-client. Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
+Maak verbinding met uw cluster met behulp van [kubectl][kubectl], de Kubernetes-opdracht regel-client. Gebruik de opdracht `kubectl`az aks get-credentials[ om ][az-aks-get-credentials] zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

@@ -122,7 +122,7 @@ De beschik bare opties zijn onder andere:
 | /ph |Hostadres van proxy |- |
 | /po |Poort nummer van de proxy-host |- |
 | /pu |Gebruikers naam proxy host |- |
-| /pw |Proxy wachtwoord |- |
+| /pw |Wachtwoord voor proxy |- |
 
 ## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>Windows Server-of Windows-client computer registreren bij een Recovery Services kluis
 
@@ -203,7 +203,7 @@ Set-OBMachineSetting -NoThrottle
 Server properties updated successfully.
 ```
 
-## <a name="encryption-settings"></a>Versleutelings instellingen
+## <a name="encryption-settings"></a>Versleutelingsinstellingen
 
 De back-upgegevens die naar Azure Backup worden verzonden, worden versleuteld om de vertrouwelijkheid van de gegevens te beveiligen. De wachtwoordzin voor versleuteling is het wacht woord voor het ontsleutelen van de gegevens op het moment van herstel.
 
@@ -223,7 +223,7 @@ Server properties updated successfully
 >
 >
 
-## <a name="back-up-files-and-folders"></a>Back-up maken van bestanden en mappen
+## <a name="back-up-files-and-folders"></a>Back-ups maken van bestanden en mappen
 
 Alle back-ups van Windows-servers en-clients naar Azure Backup zijn onderworpen aan een beleid. Het beleid bestaat uit drie delen:
 
@@ -411,7 +411,7 @@ In deze sectie wordt de Power shell-opdracht voor het instellen van de systeem s
 $sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
 ```
 
-### <a name="retention"></a>Retentie
+### <a name="retention"></a>Bewaartermijn
 
 ```powershell
 $rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00

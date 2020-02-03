@@ -84,7 +84,7 @@ Ga, indien nodig, in het scherm **nieuwe pull-aanvraag** naar de Git-opslag plaa
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
-## <a name='ReviewandMerge-4'></a>Controleren en samenvoegen
+## <a name='ReviewandMerge-4'></a>Controleren en samen voegen
 
 Wanneer u de pull-aanvraag hebt gemaakt, krijgen uw revisoren een e-mail melding om de pull-aanvraag te bekijken. De revisoren testen of de wijzigingen werken en controleren zo mogelijk de wijzigingen met de aanvrager. De revisoren kunnen opmerkingen maken, wijzigingen aanvragen en de pull-aanvraag goed keuren of afwijzen op basis van hun beoordeling. 
 

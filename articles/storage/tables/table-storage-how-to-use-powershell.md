@@ -19,7 +19,7 @@ ms.locfileid: "76721469"
 
 Azure Table Storage is een NoSQL-gegevens opslag die u kunt gebruiken om grote sets gestructureerde, niet-relationele gegevens op te slaan en op te vragen. De belangrijkste onderdelen van de service zijn tabellen, entiteiten en eigenschappen. Een tabel is een verzameling entiteiten. Een entiteit is een set eigenschappen. Elke entiteit kan Maxi maal 252 eigenschappen hebben, die alle naam/waarde-paren zijn. In dit artikel wordt ervan uitgegaan dat u al bekend bent met de Azure Table Storage service-concepten. Zie voor gedetailleerde informatie [over het Table service-gegevens model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) en [aan de slag met Azure Table Storage met behulp van .net](../../cosmos-db/table-storage-how-to-use-dotnet.md).
 
-In dit artikel wordt beschreven hoe algemene Azure Table Storage-bewerkingen worden uitgevoerd. Procedures voor: 
+In dit artikel wordt beschreven hoe algemene Azure Table Storage-bewerkingen worden uitgevoerd. In deze zelfstudie leert u procedures om het volgende te doen: 
 
 > [!div class="checklist"]
 > * Een tabel maken

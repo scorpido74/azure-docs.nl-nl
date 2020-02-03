@@ -96,7 +96,7 @@ U kunt de instelling van de eigenschap `ApiKey` van het kenmerk weglaten als u u
 
 In het volgende voor beeld ziet u een SendGrid-uitvoer binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding.
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json 
 {
@@ -120,7 +120,7 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 }
 ```
 
-De [configuratie](#configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
 Dit is de C#-scriptcode:
 
@@ -155,7 +155,7 @@ public class Message
 
 In het volgende voor beeld ziet u een SendGrid-uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding.
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json 
 {
@@ -173,7 +173,7 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 }
 ```
 
-De [configuratie](#configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
 Dit is de JavaScript-code:
 
@@ -310,7 +310,7 @@ public class HttpTriggerSendGrid {
 
 Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) .
 
-Zie [configuratie](#configuration)voor informatie over kenmerk eigenschappen die u kunt configureren. Hier volgt een `SendGrid` kenmerk voorbeeld in een handtekeningmethode:
+Zie [configuratie](#configuration)voor informatie over kenmerk eigenschappen die u kunt configureren. Hier volgt een voor beeld van een `SendGrid` kenmerk in een methode handtekening:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -348,12 +348,12 @@ De volgende tabel geeft een lijst van de bindings configuratie-eigenschappen die
 
 | *Function. json* -eigenschap | Kenmerk/annotatie-eigenschap | Beschrijving | Optioneel |
 |--------------------------|-------------------------------|-------------|----------|
-| type |n.v.t.| Moet worden ingesteld op `sendGrid`.| Nee |
-| richting |n.v.t.| Moet worden ingesteld op `out`.| Nee |
-| name |n.v.t.| De naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. Deze waarde is `$return` als er slechts één retour waarde is. | Nee |
+| type |N.v.t.| moet worden ingesteld op `sendGrid`.| Nee |
+| richting |N.v.t.| moet worden ingesteld op `out`.| Nee |
+| naam |N.v.t.| De naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. Deze waarde is `$return` als er slechts één retour waarde is. | Nee |
 | apiKey | ApiKey | De naam van een app-instelling die uw API-sleutel bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling *AzureWebJobsSendGridApiKey*.| Nee |
-| tot| Tot | Het e-mail adres van de ontvanger. | Ja |
-| uit| Vanaf | Het e-mail adres van de afzender. |  Ja |
+| tot| Handeling | Het e-mail adres van de ontvanger. | Ja |
+| from| Van | Het e-mail adres van de afzender. |  Ja |
 | subject| Onderwerp | Het onderwerp van het e-mail bericht. | Ja |
 | tekst| Tekst | De inhoud van het e-mail bericht. | Ja |
 
@@ -368,7 +368,7 @@ Voor optionele eigenschappen zijn mogelijk standaard waarden in de binding gedef
 In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x en hoger. In het voor beeld van een host. JSON-bestand bevat alleen de instellingen van versie 2. x + voor deze binding. Zie voor meer informatie over globale configuratie-instellingen in versie 2. x en hoger de [verwijzing host. json voor Azure functions](functions-host-json.md).
 
 > [!NOTE]
-> Voor een verwijzing van host.json in functies 1.x, Zie [naslaginformatie over host.json voor Azure Functions 1.x](functions-host-json-v1.md).
+> Zie [host. json Reference voor Azure functions 1. x](functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
 
 ```json
 {
@@ -383,10 +383,10 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|uit|n.v.t.|Het e-mail adres van de afzender over alle functies.| 
+|from|N.v.t.|Het e-mail adres van de afzender over alle functies.| 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Azure functions-triggers en bindingen](functions-triggers-bindings.md)
+> [Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)

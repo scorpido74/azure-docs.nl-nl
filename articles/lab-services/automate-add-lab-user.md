@@ -132,7 +132,7 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 
 U kunt ook de Azure Active Directory Power shell-cmdlets gebruiken die [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0), [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)en [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0)bevatten.
 
-### <a name="scope"></a>Scope
+### <a name="scope"></a>Bereik
 Bereik Hiermee geeft u de resource of resource groep op waarvoor de roltoewijzing moet worden toegepast. Voor resources heeft het bereik de volgende vorm: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`. De sjabloon gebruikt de functie `subscription().subscriptionId` om het deel `subscription-id` en de functie `resourceGroup().name` sjabloon in te vullen om het `resource-group-name` onderdeel in te vullen. Als u deze functies gebruikt, moet het lab waaraan u een rol wilt toewijzen, bestaan in het huidige abonnement en dezelfde resource groep waarvoor de sjabloon implementatie is gemaakt. Het laatste deel, `resource-name`, is de naam van het lab. Deze waarde wordt ontvangen via de sjabloon parameter in dit voor beeld. 
 
 Het gebruikersrol bereik in de sjabloon: 

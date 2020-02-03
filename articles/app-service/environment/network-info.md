@@ -53,7 +53,7 @@ Wanneer u omhoog of omlaag schaalt, worden nieuwe rollen van de juiste grootte t
 
 Alleen voor de ASE van de ASE moeten de volgende poorten zijn geopend:
 
-| Gebruiken | Vanaf | Tot |
+| Gebruiken | Van | Handeling |
 |-----|------|----|
 | Beheer | App Service-beheer adressen | ASE-subnet: 454, 455 |
 |  ASE interne communicatie | ASE-subnet: alle poorten | ASE-subnet: alle poorten
@@ -72,7 +72,7 @@ De andere poorten waarmee u rekening moet houden, zijn de toepassings poorten:
 | Gebruiken | Poorten |
 |----------|-------------|
 |  HTTP/HTTPS  | 80, 443 |
-|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  FTP-FTPS    | 21, 990, 10001-10020 |
 |  Visual Studio externe fout opsporing  |  4020, 4022, 4024 |
 |  Web Deploy-Service | 8172 |
 
@@ -84,13 +84,13 @@ Voor uitgaande toegang is een ASE afhankelijk van meerdere externe systemen. Vee
 
 De ASE communiceert met internet toegankelijke adressen op de volgende poorten:
 
-| Gebruik | Poorten |
+| Bestemmingen | Poorten |
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
 | CRL, Windows-updates, Linux-afhankelijkheden, Azure-Services | 80/443 |
 | Azure SQL | 1433 | 
-| Controleren | 12000 |
+| Bewaking | 12000 |
 
 De uitgaande afhankelijkheden worden weer gegeven in het document met een beschrijving van het [vergren delen van app service Environment uitgaand verkeer](./firewall-integration.md). Als de ASE geen toegang meer heeft tot de afhankelijkheden, werkt deze niet meer. Wanneer dit lang genoeg duurt, wordt de ASE onderbroken. 
 
@@ -109,11 +109,11 @@ Als u de DNS-instelling van het VNet wijzigt waarin uw ASE zich bevindt, moet u 
 Naast de functionele afhankelijkheden van ASE zijn er enkele extra items die betrekking hebben op de portal-ervaring. Enkele van de mogelijkheden van de Azure Portal zijn afhankelijk van directe toegang tot de _SCM-site_. Voor elke app in Azure App Service zijn er twee Url's. De eerste URL is om toegang te krijgen tot uw app. De tweede URL is om toegang te krijgen tot de SCM-site, die ook wel de _kudu-console_wordt genoemd. Functies die gebruikmaken van de SCM-site zijn onder andere:
 
 -   Webjobs
--   Functions
+-   Functies
 -   Logboek streaming
 -   Kudu
 -   Extensies
--   Procesverkenner
+-   Process Explorer
 -   Console
 
 Wanneer u een ILB-ASE gebruikt, is de SCM-site niet toegankelijk van buiten het VNet. Sommige mogelijkheden werken niet vanuit de app-Portal, omdat ze toegang nodig hebben tot de SCM-site van een app. U kunt rechtstreeks verbinding maken met de SCM-site in plaats van de portal te gebruiken. 
@@ -169,7 +169,7 @@ De DNS-poort hoeft niet te worden toegevoegd als verkeer naar DNS wordt niet be√
 | Gebruiken | Poorten |
 |----------|-------------|
 |  HTTP/HTTPS  | 80, 443 |
-|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  FTP-FTPS    | 21, 990, 10001-10020 |
 |  Visual Studio externe fout opsporing  |  4020, 4022, 4024 |
 |  Web Deploy-Service | 8172 |
 
@@ -210,7 +210,7 @@ Als u dezelfde routes hand matig wilt maken, voert u de volgende stappen uit:
 
     ![Nsg's en routes][7]
 
-## <a name="service-endpoints"></a>Service-eindpunten ##
+## <a name="service-endpoints"></a>Service-eind punten ##
 
 Met service-eindpunten kunt u de toegang tot multitenant-services beperken tot een reeks virtuele Azure-netwerken en subnetten. Meer informatie over service-eind punten vindt u in de documentatie over de [Virtual Network Service-eind punten][serviceendpoints] . 
 
@@ -218,7 +218,7 @@ Wanneer u service-eindpunten voor een bron inschakelt, worden er routes gemaakt 
 
 Als Service-eindpunten in een subnet met een Azure SQL-exemplaar is ingeschakeld, moet Service-eindpunten zijn ingeschakeld op alle Azure SQL-exemplaren waarmee vanuit dat subnet een verbinding wordt gemaakt. Als u vanuit hetzelfde subnet toegang wilt hebben tot meerdere Azure SQL-exemplaren, is het niet mogelijk om Service-eindpunten wel op het ene Azure SQL-exemplaar in te schakelen en niet op een ander. Geen enkele andere Azure-service gedraagt zich als Azure SQL met betrekking tot service-eind punten. Wanneer u Service-eindpunten met Azure Storage inschakelt, kunt u de toegang tot die resource vanuit uw subnet vergrendelen en toegang behouden tot andere Azure Storage-accounts, zelfs als Service-eindpunten op die accounts niet is ingeschakeld.  
 
-![Service-eindpunten][8]
+![Service-eind punten][8]
 
 <!--Image references-->
 [1]: ./media/network_considerations_with_an_app_service_environment/networkase-overflow.png

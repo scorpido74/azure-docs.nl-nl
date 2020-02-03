@@ -24,11 +24,11 @@ Voor het proces van de team data Science moeten gegevens in elke fase op de mees
 
 De volgende artikelen wordt beschreven hoe u gegevens opnemen in verschillende doelomgevingen waar de gegevens worden opgeslagen en verwerkt.
 
-* Naar/van [Azure Blob-opslag](move-azure-blob.md)
-* Naar [SQL Server op Azure VM](move-sql-server-virtual-machine.md)
+* Naar/van [Azure Blob Storage](move-azure-blob.md)
+* [SQL Server op Azure VM](move-sql-server-virtual-machine.md)
 * [Azure SQL database](move-sql-azure.md)
-* Naar [Hive-tabellen](move-hive-tables.md)
-* Naar [SQL gepartitioneerde tabellen](parallel-load-sql-partitioned-tables.md)
-* Van [On-premises SQL Server](move-sql-azure-adf.md)
+* In [Hive-tabellen](move-hive-tables.md)
+* Naar [SQL-gepartitioneerde tabellen](parallel-load-sql-partitioned-tables.md)
+* Van [on-premises SQL Server](move-sql-azure-adf.md)
 
 Technische en bedrijfs behoeften, evenals de oorspronkelijke locatie, indeling en grootte van uw gegevens bepalen het beste plan voor gegevens opname. Het is niet ongebruikelijk dat een beste plan is om verschillende stappen uit te voeren. Deze reeks taken kan bijvoorbeeld bevatten gegevensverkenning, vooraf verwerken, opruimen, down-sampling en modeltraining.  Azure Data Factory is een aanbevolen Azure-resource voor het organiseren van gegevens verplaatsing en-trans formatie.

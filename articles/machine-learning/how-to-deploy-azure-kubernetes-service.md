@@ -57,7 +57,7 @@ Wanneer u implementeert in azure Kubernetes service, implementeert u naar een AK
 
 ## <a name="create-a-new-aks-cluster"></a>Een nieuw AKS-cluster maken
 
-**Geschatte tijd**: ongeveer 20 minuten.
+**Geschatte tijd**: circa 20 minuten.
 
 Het maken of koppelen van een AKS-cluster is een eenmalig proces voor uw werk ruimte. U kunt dit cluster voor meerdere implementaties opnieuw gebruiken. Als u het cluster of de resource groep verwijdert die het bevat, moet u de volgende keer dat u moet implementeren een nieuw cluster maken. Er kunnen meerdere AKS-clusters aan uw werk ruimte zijn gekoppeld.
 
@@ -348,7 +348,7 @@ print(token)
 * [Veilig experimenteren en dezicht in een virtueel netwerk](how-to-enable-virtual-network.md)
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie oplossen](how-to-troubleshoot-deployment.md)
-* [Azure Machine Learning-webservices met SSL beveiligde](how-to-secure-web-service.md)
-* [Een ML-Model dat is geïmplementeerd als een webservice gebruiken](how-to-consume-web-service.md)
+* [Azure Machine Learning webservices beveiligen met SSL](how-to-secure-web-service.md)
+* [Een ML-model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)

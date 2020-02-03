@@ -158,7 +158,7 @@ Document ID: 2
     Offset: 88, Length: 7,  Score: 0.9998779296875
 ```
 
-## <a name="key-phrase-extraction"></a>Sleuteluitdrukkingen extraheren
+## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
 Maak een lijst met objecten die uw documenten bevatten. Roep de methode [woordgroepen ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-) van de client aan en haal het geretourneerde [KeyPhraseBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult) -object op. Herhaal de resultaten en druk de ID van elk document af en alle gedetecteerde sleutel zinnen.
 

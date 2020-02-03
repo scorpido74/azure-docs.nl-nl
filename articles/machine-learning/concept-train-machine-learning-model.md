@@ -35,7 +35,7 @@ Azure Machine Learning biedt verschillende manieren om uw modellen te trainen, v
 
 Elk van deze trainings methoden kan gebruikmaken van verschillende soorten reken resources voor training. Deze resources worden gezamenlijk aangeduid als [__Compute-doelen__](concept-azure-machine-learning-architecture.md#compute-targets). Een compute-doel kan een lokale machine of een Cloud resource zijn, zoals een Azure Machine Learning compute, Azure HDInsight of een externe virtuele machine.
 
-## <a name="python-sdk"></a>Python SDK
+## <a name="python-sdk"></a>Python-SDK
 
 Met de Azure Machine Learning SDK voor python kunt u machine learning werk stromen maken en uitvoeren met Azure Machine Learning. U kunt met de service communiceren vanuit een interactieve python-sessie, Jupyter-notebooks, Visual Studio code of een andere IDE.
 

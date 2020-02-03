@@ -73,7 +73,7 @@ Het inrichtings samenvattings rapport en de inrichtings logboeken spelen een bel
 
 Zie problemen met het [configureren en inrichten van gebruikers voor een toepassing](application-provisioning-config-problem.md)voor op scenario's gebaseerde richt lijnen voor het oplossen van problemen met automatische gebruikers inrichting.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

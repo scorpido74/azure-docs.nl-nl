@@ -28,7 +28,7 @@ Als u een Event Grid-abonnement wilt maken voor een van de ondersteunde [gebeurt
 
 1. Zoek naar **Event grid-abonnementen** en selecteer deze in de beschik bare opties.
 
-   ![Search](./media/subscribe-through-portal/search.png)
+   ![Zoeken](./media/subscribe-through-portal/search.png)
 
 1. Selecteer **+ Gebeurtenisabonnement**.
 
@@ -66,6 +66,6 @@ De portal geeft u de opties voor het maken van een gebeurtenis abonnement dat re
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor informatie over de bezorging van gebeurtenissen en nieuwe pogingen, [bezorging van berichten van Event Grid en probeer het opnieuw](delivery-and-retry.md).
+* [Event grid aflevering van berichten en probeer het opnieuw](delivery-and-retry.md).
 * Zie [Een inleiding tot Event Grid](overview.md) voor een inleiding tot Event Grid.
-* Als u wilt snel aan de slag met Event Grid, Zie [aangepaste gebeurtenissen maken en routeren met Azure Event Grid](custom-event-quickstart.md).
+* Zie [aangepaste gebeurtenissen maken en routeren met Azure Event grid](custom-event-quickstart.md)om snel aan de slag te gaan met Event grid.

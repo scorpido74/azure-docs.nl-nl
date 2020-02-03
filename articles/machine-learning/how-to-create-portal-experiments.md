@@ -141,7 +141,7 @@ Type distributie| In-line waarde van het aantal typen in een kolom. Nullen zijn 
 Type|Het type van de kolom is afgeleid. Mogelijke waarden zijn: teken reeksen, booleans, datums en decimalen.
 Min.| Minimum waarde van de kolom. Er worden geen lege items weer gegeven voor functies waarvan het type geen inherente ordening (bijvoorbeeld Boole-waarden) heeft.
 Max.| De maximum waarde van de kolom. 
-Aantal| Totaal aantal ontbrekende en niet-ontbrekende vermeldingen in de kolom.
+Count| Totaal aantal ontbrekende en niet-ontbrekende vermeldingen in de kolom.
 Niet-ontbrekend aantal| Het aantal vermeldingen in de kolom die niet ontbreken. Lege teken reeksen en fouten worden beschouwd als waarden, zodat ze niet bijdragen aan het aantal niet-ontbrekende items.
 Quantiles| Geschatte waarden bij elke quantile om een idee te geven van de distributie van de gegevens.
 Gemiddelde| Reken kundige gemiddelde of gemiddelde van de kolom.
@@ -230,7 +230,7 @@ Automatische ML helpt u bij het implementeren van het model zonder code te schri
     Beschrijving| Voer een beschrijving in om beter te kunnen identificeren waarvoor deze implementatie is.
     Reken type| Selecteer het type eind punt dat u wilt implementeren: *Azure Kubernetes service (AKS)* of *Azure container instance (ACI)* .
     Name| *Is alleen van toepassing op AKS:* Selecteer de naam van het AKS-cluster waarnaar u wilt implementeren.
-    Authenticatie inschakelen | Selecteer deze optie om verificatie op basis van tokens of sleutel toe te staan.
+    Verificatie inschakelen | Selecteer deze optie om verificatie op basis van tokens of sleutel toe te staan.
     Aangepaste implementatie-assets gebruiken| Schakel deze functie in als u uw eigen score script en omgevings bestand wilt uploaden. Meer [informatie over Score scripts](how-to-deploy-and-where.md#script).
 
     >[!Important]

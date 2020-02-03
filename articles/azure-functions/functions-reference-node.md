@@ -267,10 +267,10 @@ Hiermee kunt u naar de streaming-functie Logboeken schrijven op het standaard tr
 
 | Methode                 | Beschrijving                                |
 | ---------------------- | ------------------------------------------ |
-| **error(_message_)**   | Schrijft naar logboek registratie op fout niveau of lager.   |
-| **warn(_message_)**    | Schrijft naar logboek registratie op waarschuwings niveau of lager. |
-| **info(_message_)**    | Schrijft naar logboek registratie op info niveau of lager.    |
-| **verbose(_message_)** | Schrijft naar uitgebreide logboek registratie.           |
+| **fout (_bericht_)**   | Schrijft naar logboek registratie op fout niveau of lager.   |
+| **Warning (_bericht_)**    | Schrijft naar logboek registratie op waarschuwings niveau of lager. |
+| **info (_bericht_)**    | Schrijft naar logboek registratie op info niveau of lager.    |
+| **uitgebreid (_bericht_)** | Schrijft naar uitgebreide logboek registratie.           |
 
 In het volgende voor beeld wordt een logboek op het tracerings niveau waarschuwing geschreven:
 
@@ -344,12 +344,12 @@ Het `context.req`-object (Request) heeft de volgende eigenschappen:
 
 | Eigenschap      | Beschrijving                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _body_        | Een object dat de hoofd tekst van de aanvraag bevat.               |
+| _organen_        | Een object dat de hoofd tekst van de aanvraag bevat.               |
 | _koppen_     | Een object dat de aanvraag headers bevat.                   |
-| _method_      | De HTTP-methode van de aanvraag.                                |
+| _methode_      | De HTTP-methode van de aanvraag.                                |
 | _originalUrl_ | De URL van de aanvraag.                                        |
 | _params_      | Een object dat de routerings parameters van de aanvraag bevat. |
-| _query_       | Een object dat de query parameters bevat.                  |
+| _ophalen_       | Een object dat de query parameters bevat.                  |
 | _rawBody_     | De hoofd tekst van het bericht als een teken reeks.                           |
 
 
@@ -359,10 +359,10 @@ Het object `context.res` (Response) heeft de volgende eigenschappen:
 
 | Eigenschap  | Beschrijving                                               |
 | --------- | --------------------------------------------------------- |
-| _body_    | Een object dat de hoofd tekst van het antwoord bevat.         |
+| _organen_    | Een object dat de hoofd tekst van het antwoord bevat.         |
 | _koppen_ | Een object dat de antwoord headers bevat.             |
 | _isRaw_   | Hiermee wordt aangegeven dat de opmaak voor het antwoord wordt overgeslagen.    |
-| _status_  | De HTTP-status code van het antwoord.                     |
+| _hebben_  | De HTTP-status code van het antwoord.                     |
 
 ### <a name="accessing-the-request-and-response"></a>De aanvraag en het antwoord openen 
 

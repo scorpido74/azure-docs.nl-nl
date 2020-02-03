@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: zoeken naar installatie kopieën-Bing Image Search SDK voor node. js'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze snelstartgids om voor de eerste keer afbeeldingen te zoeken met behulp van de Bing Image Search SDK, wat een wrapper is voor de API en die dus dezelfde functies bevat. Deze eenvoudige Node.js-toepassing verzendt een zoekquery voor afbeeldingen, parseert het JSON-antwoord en geeft de URL weer van de eerst geretourneerde afbeelding.
+description: Gebruik deze snelstart om voor de eerste keer afbeeldingen te zoeken met behulp van de Bing Afbeeldingen zoeken-SDK, wat een wrapper is voor de API en die dus dezelfde functies bevat. Deze eenvoudige Node.js-toepassing verzendt een zoekquery voor afbeeldingen, parseert het JSON-antwoord en geeft de URL weer van de eerst geretourneerde afbeelding.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -20,7 +20,7 @@ ms.locfileid: "76716201"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>Snelstartgids: Zoeken naar afbeeldingen met de Bing Image Search SDK voor Node.js
 
-Gebruik deze snelstartgids om voor de eerste keer afbeeldingen te zoeken met behulp van de Bing Image Search SDK, wat een wrapper is voor de API en die dus dezelfde functies bevat. Deze eenvoudige JavaScript-toepassing verzendt een zoekquery voor afbeeldingen, parseert het JSON-antwoord en geeft de URL weer van de eerst geretourneerde afbeelding.
+Gebruik deze snelstart om voor de eerste keer afbeeldingen te zoeken met behulp van de Bing Afbeeldingen zoeken-SDK, wat een wrapper is voor de API en die dus dezelfde functies bevat. Deze eenvoudige JavaScript-toepassing verzendt een zoekquery voor afbeeldingen, parseert het JSON-antwoord en geeft de URL weer van de eerst geretourneerde afbeelding.
 
 De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) met extra foutafhandeling en aantekeningen.
 

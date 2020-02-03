@@ -106,7 +106,7 @@ Nadat u naar het onderwerp-eind punt hebt gepost, ontvangt u een antwoord. Het a
 |Geslaagd  | 200 OK  |
 |De gebeurtenis gegevens hebben een onjuiste indeling | 400 ongeldige aanvraag |
 |Ongeldige toegangs sleutel | 401 niet gemachtigd |
-|Onjuist eind punt | 404 – Niet gevonden |
+|Onjuist eind punt | 404 niet gevonden |
 |Matrix of gebeurtenis overschrijdt grootte limieten | 413 Payload is te groot |
 
 Voor fouten heeft de bericht tekst de volgende indeling:

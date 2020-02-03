@@ -40,9 +40,9 @@ Dit is afhankelijk van de volgende pakketten:
 * Python-dateutil
 * pandas
 
-We raden aan met behulp van een Python-distributie, zoals [Anaconda](http://continuum.io/downloads#all) of [bladerdak](https://store.enthought.com/downloads/), die worden geleverd met Python, IPython en de hierboven genoemde drie-pakketten geïnstalleerd. Hoewel IPython niet strikt vereist is, is een geweldige omgeving voor het werken met en gegevens interactief te visualiseren.
+U kunt het beste een python-distributie gebruiken, zoals [Anaconda](http://continuum.io/downloads#all) of [Canopy](https://store.enthought.com/downloads/), die wordt geleverd met python, IPython en de drie bovenstaande pakketten die hierboven zijn geïnstalleerd. Hoewel IPython niet strikt vereist is, is een geweldige omgeving voor het werken met en gegevens interactief te visualiseren.
 
-### <a name="installation"></a>Het installeren van de Azure Machine Learning Python-clientbibliotheek
+### <a name="installation"></a>De Azure Machine Learning python-client bibliotheek installeren
 Installeer de Azure Machine Learning python-client bibliotheek om de taken uit te voeren die in dit onderwerp worden beschreven. Deze bibliotheek is beschikbaar vanuit de [python-pakket index](https://pypi.python.org/pypi/azureml). Om het te installeren in uw Python-omgeving, voer de volgende opdracht uit uw lokale Python-omgeving:
 
     pip install azureml
@@ -61,18 +61,18 @@ De Python-clientbibliotheek biedt u programmatische toegang tot uw bestaande geg
 
 Vanuit de webinterface Azure Machine Learning Studio (klassiek) kunt u code fragmenten genereren die alle benodigde informatie bevatten voor het downloaden en deserialiseren van gegevens sets als Panda data frame-objecten op uw lokale computer.
 
-### <a name="security"></a>Beveiliging voor toegang tot gegevens
+### <a name="security"></a>Beveiliging voor gegevens toegang
 De code fragmenten die worden geleverd door Azure Machine Learning Studio (klassiek) voor gebruik met de python-client bibliotheek bevatten uw werk ruimte-ID en autorisatie token. Deze bieden volledige toegang tot uw werkruimte en moeten worden beveiligd, zoals een wachtwoord.
 
-Uit veiligheidsoverwegingen, de codefragment-functionaliteit is alleen beschikbaar voor gebruikers die beschikken over hun rol instellen als **eigenaar** voor de werkruimte. Uw rol wordt weer gegeven in Azure Machine Learning Studio (klassiek) op de pagina **gebruikers** onder **instellingen**.
+Uit veiligheids overwegingen is de functie code fragment alleen beschikbaar voor gebruikers die hun rol hebben ingesteld als **eigenaar** voor de werk ruimte. Uw rol wordt weer gegeven in Azure Machine Learning Studio (klassiek) op de pagina **gebruikers** onder **instellingen**.
 
 ![Beveiliging][security]
 
-Als uw rol is niet ingesteld als **eigenaar**, kunt u een aanvraag voor het opnieuw worden uitgenodigd als een eigenaar, of vraag de eigenaar van de werkruimte om te voorzien van het codefragment.
+Als uw rol niet is ingesteld als **eigenaar**, kunt u aanvragen om opnieuw te worden uitgenodigd als eigenaar of vraagt u de eigenaar van de werk ruimte u het code fragment te geven.
 
 Als u het autorisatie token wilt ophalen, kunt u een van de volgende opties kiezen:
 
-* Vragen om een token van een eigenaar. Eigen aren hebben toegang tot hun autorisatie tokens op de pagina instellingen van hun werk ruimte in Azure Machine Learning Studio (klassiek). Selecteer **instellingen** in het linkerdeelvenster en klik op **AUTORISATIETOKENS** om te zien van de primaire en secundaire tokens. Hoewel de primaire of de secundaire autorisatietokens kunnen worden gebruikt in het codefragment, verdient het aanbeveling dat de eigenaren van de secundaire autorisatietokens alleen delen.
+* Vragen om een token van een eigenaar. Eigen aren hebben toegang tot hun autorisatie tokens op de pagina instellingen van hun werk ruimte in Azure Machine Learning Studio (klassiek). Selecteer **instellingen** in het linkerdeel venster en klik op **autorisatie tokens** om de primaire en secundaire tokens weer te geven. Hoewel de primaire of de secundaire autorisatietokens kunnen worden gebruikt in het codefragment, verdient het aanbeveling dat de eigenaren van de secundaire autorisatietokens alleen delen.
 
    ![Autorisatietokens](./media/python-data-access/ml-python-access-settings-tokens.png)
 
@@ -80,12 +80,12 @@ Als u het autorisatie token wilt ophalen, kunt u een van de volgende opties kiez
 
 Zodra ontwikkel aars de werk ruimte-ID en het autorisatie token hebben verkregen, kunnen ze toegang krijgen tot de werk ruimte met behulp van het code fragment, ongeacht hun rol.
 
-Autorisatietokens worden beheerd op de **AUTORISATIETOKENS** pagina onder **instellingen**. U kunt ze genereren, maar deze procedure trekt u toegang tot het vorige token.
+Verificatie tokens worden beheerd op de pagina **autorisatie tokens** onder **instellingen**. U kunt ze genereren, maar deze procedure trekt u toegang tot het vorige token.
 
-### <a name="accessingDatasets"></a>Toegang tot gegevenssets vanuit een lokale Python-toepassing
+### <a name="accessingDatasets"></a>Gegevens sets openen vanuit een lokale python-toepassing
 1. Klik in Machine Learning Studio (klassiek) op **gegevens sets** in de navigatie balk aan de linkerkant.
-2. Selecteer de gegevensset die u wilt openen. U kunt een van de gegevenssets van selecteren de **mijn GEGEVENSSETS** lijst of vanuit de **voorbeelden** lijst.
-3. Klik op de werkbalk onder **Code voor gegevenstoegang genereren**. Als de gegevens in een indeling die niet compatibel met de Python-clientbibliotheek is, wordt deze knop is uitgeschakeld.
+2. Selecteer de gegevensset die u wilt openen. U kunt een wille keurig gegevens sets selecteren in de lijst met **mijn gegevens sets** of in de lijst met voor **beelden** .
+3. Klik in de onderste werk balk op **gegevens toegangs code genereren**. Als de gegevens in een indeling die niet compatibel met de Python-clientbibliotheek is, wordt deze knop is uitgeschakeld.
    
     ![Gegevenssets][datasets]
 4. Selecteer het codefragment in het venster dat wordt weergegeven en deze naar het Klembord te kopiëren.
@@ -95,7 +95,7 @@ Autorisatietokens worden beheerd op de **AUTORISATIETOKENS** pagina onder **inst
    
     ![Plak de code in de notebook][ipython-dataset]
 
-## <a name="accessingIntermediateDatasets"></a>Toegang tot de tussenliggende gegevenssets van Machine Learning-experimenten
+## <a name="accessingIntermediateDatasets"></a>Toegang tot tussenliggende gegevens sets vanuit Machine Learning experimenten
 Nadat een experiment is uitgevoerd in Machine Learning Studio (klassiek), is het mogelijk om toegang te krijgen tot de tussenliggende gegevens sets van de uitvoer knooppunten van modules. Tussenliggende gegevenssets zijn de gegevens die is gemaakt en gebruikt voor de tussenliggende stappen wanneer een model-hulpprogramma is uitgevoerd.
 
 Tussenliggende gegevenssets kunnen worden geopend, zolang de gegevensindeling compatibel met de Python-clientbibliotheek is.
@@ -121,12 +121,12 @@ U moet een conversie module, zoals [converteren naar CSV][convert-to-csv], gebru
 De volgende stappen ziet een voorbeeld van een experiment maakt, wordt uitgevoerd en heeft toegang tot de tussenliggende gegevensset.
 
 1. Een nieuw experiment maken.
-2. Voeg een **volwassenen telling inkomsten binaire classificatie gegevensset** module.
+2. Voeg een module voor de **binaire classificatie van de volwassen telling** van de inkomsten toe.
 3. Voeg een [Splits][split] module in en verbind de invoer met de module uitvoer van de gegevensset.
 4. Voeg een [conversie naar CSV][convert-to-csv] -module toe en verbind de invoer met een van de [gesplitste][split] module-uitvoer.
 5. Sla het experiment op, voer het uit en wacht totdat de taak is voltooid.
 6. Klik op het uitvoer knooppunt in de module [converteren naar CSV][convert-to-csv] .
-7. Wanneer het contextmenu wordt weergegeven, selecteert u **Code voor gegevenstoegang genereren**.
+7. Wanneer het context menu wordt weer gegeven, selecteert u **gegevens toegangs code genereren**.
    
     ![Contextmenu][experiment]
 8. Selecteer het codefragment en naar het Klembord kopiëren vanuit het venster dat wordt weergegeven.
@@ -139,7 +139,7 @@ De volgende stappen ziet een voorbeeld van een experiment maakt, wordt uitgevoer
     
     ![Histogram][ipython-histogram]
 
-## <a name="clientApis"></a>De Machine Learning Python-clientbibliotheek gebruiken om te openen, lezen, maken en gegevenssets beheren
+## <a name="clientApis"></a>De Machine Learning python-client bibliotheek gebruiken voor het openen, lezen, maken en beheren van gegevens sets
 ### <a name="workspace"></a>Werkruimte
 De werkruimte is het toegangspunt voor de Python-clientbibliotheek. Geef de klasse `Workspace` op met uw werk ruimte-ID en autorisatie token om een exemplaar te maken:
 
@@ -188,7 +188,7 @@ Anderen zijn waarden die door Azure ML is toegewezen:
     print(ds.created_date)
     print(ds.size)
 
-Zie de `SourceDataset` klasse voor meer informatie over de metagegevens van de beschikbaar.
+Zie de klasse `SourceDataset` voor meer informatie over de beschik bare meta gegevens.
 
 ### <a name="read-contents"></a>Inhoud lezen
 De code fragmenten die worden verschaft door Machine Learning Studio (klassiek), downloaden en deserialiseren de gegevensset automatisch naar een Panda data frame-object. Dit wordt gedaan met de `to_dataframe` methode:
@@ -236,7 +236,7 @@ Als uw gegevens al is geserialiseerd, kunt u het volgende gebruiken:
         description='my description'
     )
 
-De Python-clientbibliotheek kan het serialiseren van een pandas DataFrame naar de volgende indelingen (constanten voor deze zich in de `azureml.DataTypeIds` klasse):
+De python-client bibliotheek kan een Panda data frame serialiseren met de volgende indelingen (constanten voor deze bevinden zich in de `azureml.DataTypeIds` klasse):
 
 * Als tekst zonder opmaak
 * GenericCSV
@@ -255,7 +255,7 @@ Voor het bijwerken van een bestaande gegevensset, moet u eerst een verwijzing na
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Gebruik vervolgens `update_from_dataframe` voor het serialiseren en vervang de inhoud van de gegevensset op Azure:
+Gebruik vervolgens `update_from_dataframe` om de inhoud van de gegevensset op Azure te serialiseren en te vervangen:
 
     dataset = ws.datasets['existing dataset']
 
@@ -265,7 +265,7 @@ Gebruik vervolgens `update_from_dataframe` voor het serialiseren en vervang de i
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Als u de gegevens naar een andere indeling wilt, Geef een waarde op voor de optionele `data_type_id` parameter.
+Als u de gegevens wilt serialiseren naar een andere indeling, geeft u een waarde op voor de optionele para meter `data_type_id`.
 
     from azureml import DataTypeIds
 
@@ -280,7 +280,7 @@ Als u de gegevens naar een andere indeling wilt, Geef een waarde op voor de opti
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-U kunt eventueel een nieuwe beschrijving instellen door een waarde opgeeft voor de `description` parameter.
+U kunt desgewenst een nieuwe beschrijving instellen door een waarde op te geven voor de para meter `description`.
 
     dataset = ws.datasets['existing dataset']
 
@@ -293,7 +293,7 @@ U kunt eventueel een nieuwe beschrijving instellen door een waarde opgeeft voor 
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to feb 2015'
 
-U kunt eventueel een nieuwe naam instellen door een waarde opgeeft voor de `name` parameter. Van nu af, zult u de gegevensset met behulp van de nieuwe naam alleen ophalen. Met de volgende code worden de gegevens, naam en beschrijving bijgewerkt.
+U kunt desgewenst een nieuwe naam instellen door een waarde voor de para meter `name` op te geven. Van nu af, zult u de gegevensset met behulp van de nieuwe naam alleen ophalen. Met de volgende code worden de gegevens, naam en beschrijving bijgewerkt.
 
     dataset = ws.datasets['existing dataset']
 
@@ -310,9 +310,9 @@ U kunt eventueel een nieuwe naam instellen door een waarde opgeeft voor de `name
     print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
     print(ws.datasets['existing dataset'].name)    # IndexError
 
-De `data_type_id`, `name` en `description` parameters zijn optioneel en wordt standaard ingesteld op hun vorige waarde. De `dataframe` parameter is altijd vereist.
+De para meters `data_type_id`, `name` en `description` zijn optioneel en zijn standaard ingesteld op de vorige waarde. De para meter `dataframe` is altijd vereist.
 
-Als uw gegevens al is geserialiseerd, gebruikt u `update_from_raw_data` in plaats van `update_from_dataframe`. Als u alleen doorgeeft `raw_data` in plaats van `dataframe`, het op een soortgelijke manier werkt.
+Als uw gegevens al zijn geserialiseerd, gebruikt u `update_from_raw_data` in plaats van `update_from_dataframe`. Als u alleen de `raw_data` doorgeeft in plaats van `dataframe`, werkt het op een vergelijk bare manier.
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png

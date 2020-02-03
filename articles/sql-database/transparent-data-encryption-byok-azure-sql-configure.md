@@ -119,7 +119,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
    -ServerName <LogicalServerName> -DatabaseName <DatabaseName>  
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Zie [de Azure-opdracht regel 2,0 interface voor meerdere platformen installeren en configureren](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie over het installeren van de vereiste opdracht regel interface versie 2,0 of hoger en het maken van een verbinding met uw Azure-abonnement.
 
@@ -205,7 +205,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
    Remove-AzSqlServerKeyVaultKey -KeyId <KeyVaultKeyId> -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 - Zie [AZ SQL](/cli/azure/sql)(Engelstalig) voor algemene data base-instellingen.
 
@@ -227,7 +227,7 @@ Controleer het volgende als er een probleem optreedt:
    Get-AzSubscription -SubscriptionId <SubscriptionId>
    ```
 
-   # <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+   # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
    ```powershell
    az account show - s <SubscriptionId>

@@ -136,7 +136,7 @@ As an example, the following hero icon is for the Azure Container Service.
 -->
 
 
-## <a name="lead-management"></a>Leadmanagement
+## <a name="lead-management"></a>Leadbeheer
 
 In deze sectie kunt u de opties instellen voor het verzamelen van klant leads die zijn gegenereerd op basis van uw aanbiedingen in azure Marketplace. U kunt de volgende opslag opties selecteren in een vervolg keuzelijst.
 
@@ -159,7 +159,7 @@ Nadat u uw aanbieding hebt gepubliceerd, wordt de verbinding van de lead gecontr
 4. amp.com the tile -->
 
 
-## <a name="legal"></a>Juridische informatie
+## <a name="legal"></a>Rechtmatig
 
 In deze sectie kunt u de twee juridische documenten opgeven die vereist zijn voor elke aanbieding: Privacybeleid en de gebruiks voorwaarden.
 

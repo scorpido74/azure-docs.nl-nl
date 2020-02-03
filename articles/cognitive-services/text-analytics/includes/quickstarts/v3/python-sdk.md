@@ -305,7 +305,7 @@ Linked Entities:
         Score: 0.281    Offset:  89     Length: 5
 ```
 
-## <a name="key-phrase-extraction"></a>Sleuteluitdrukkingen extraheren
+## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
 Maak een nieuwe functie met de naam `key_phrase_extraction_example()` die het eind punt en de sleutel als argumenten neemt, en vervolgens de `single_extract_key_phrases()`-functie aanroept. Het resultaat bevat de lijst met gedetecteerde sleutel zinnen in `key_phrases` als deze is geslaagd en een `error` als dat niet het geval is. Alle gedetecteerde sleutel zinnen afdrukken.
 

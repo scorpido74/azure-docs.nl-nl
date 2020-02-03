@@ -22,7 +22,7 @@ Voor het maken van een Event Grid-abonnement, kunt u een aanvraag verzendt naar 
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-Bijvoorbeeld, om een gebeurtenisabonnement voor een opslagaccount te maken met de naam `examplestorage` in een resourcegroep met de naam `examplegroup`, gebruik de volgende indeling:
+Als u bijvoorbeeld een gebeurtenis abonnement wilt maken voor een opslag account met de naam `examplestorage` in een resource groep met de naam `examplegroup`, gebruikt u de volgende indeling:
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
@@ -41,17 +41,17 @@ Naam van het abonnement van de gebeurtenis moet 3 tot 64 tekens lang zijn en mag
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| endpointType | string | Het type van het eindpunt voor het abonnement (webhook/HTTP, Event Hub of wachtrij). | 
-| endpointUrl | string | De doel-URL voor gebeurtenissen in dit gebeurtenisabonnement. | 
+| endpointType | tekenreeks | Het type van het eindpunt voor het abonnement (webhook/HTTP, Event Hub of wachtrij). | 
+| endpointUrl | tekenreeks | De doel-URL voor gebeurtenissen in dit gebeurtenisabonnement. | 
 
 ### <a name="filter-object"></a>Filter-object
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | includedEventTypes | matrix | Overeenkomst wanneer het gebeurtenistype bericht in de gebeurtenis is een exacte overeenkomst voor een van de namen van deze gebeurtenis. Wordt een fout gegenereerd als de naam van gebeurtenis komt niet overeen met de namen van de geregistreerde gebeurtenis type voor de gebeurtenisbron. Standaard komt overeen met alle gebeurtenistypen. |
-| subjectBeginsWith | string | Een voorvoegselovereenkomst filteren op het onderwerpveld in de gebeurtenis bericht. De standaard- of lege tekenreeks komt overeen met alle. | 
-| subjectEndsWith | string | Een achtervoegsel-match filteren op het onderwerpveld in de gebeurtenis bericht. De standaard- of lege tekenreeks komt overeen met alle. |
-| isSubjectCaseSensitive | string | Hoofdlettergevoelige overeenkomende filters voor besturingselementen. |
+| subjectBeginsWith | tekenreeks | Een voorvoegselovereenkomst filteren op het onderwerpveld in de gebeurtenis bericht. De standaard- of lege tekenreeks komt overeen met alle. | 
+| subjectEndsWith | tekenreeks | Een achtervoegsel-match filteren op het onderwerpveld in de gebeurtenis bericht. De standaard- of lege tekenreeks komt overeen met alle. |
+| isSubjectCaseSensitive | tekenreeks | Hoofdlettergevoelige overeenkomende filters voor besturingselementen. |
 
 
 ## <a name="example-subscription-schema"></a>Voorbeeld abonnementsschema
@@ -77,4 +77,4 @@ Naam van het abonnement van de gebeurtenis moet 3 tot 64 tekens lang zijn en mag
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor een inleiding tot Event Grid, [wat is Event Grid?](overview.md)
+* Zie [Wat is Event grid?](overview.md) voor een inleiding tot Event grid.

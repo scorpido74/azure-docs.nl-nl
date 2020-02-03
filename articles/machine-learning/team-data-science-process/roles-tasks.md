@@ -129,7 +129,7 @@ Gebruik de opslag plaats van de [project sjabloon](https://github.com/Azure/Azur
 
 Meer gedetailleerde beschrijvingen van de functies en taken die zijn gedefinieerd door het Team Data Science Process verkennen:
 
-- [Groepsbeheerder taken voor een team van gegevenswetenschappers](group-manager-tasks.md)
-- [Team Lead taken voor een team van gegevenswetenschappers](team-lead-tasks.md)
-- [Project Lead taken voor een team van gegevenswetenschappers](project-lead-tasks.md)
+- [Groeps Manager-taken voor een Data Science-Team](group-manager-tasks.md)
+- [Team lead taken voor een Data Science-Team](team-lead-tasks.md)
+- [Project Lead taken voor een Data Science-Team](project-lead-tasks.md)
 - [Individuele Inzender taken projecteren voor een Data Science-Team](project-ic-tasks.md)

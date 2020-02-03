@@ -257,7 +257,7 @@ Nu u de functie lokaal hebt getest en hebt gecontroleerd of een bericht naar de 
 
     ![De uitvoer van de functie die wordt uitgevoerd op Azure in een browser](./media/functions-create-first-function-python/function-test-cloud-browser.png)
 
-    # <a name="curltabcurl"></a>[curl](#tab/curl)
+    # <a name="curltabcurl"></a>[Ezelsoor](#tab/curl)
     
     Voer [krul](https://curl.haxx.se/) uit met de **aanroepende URL**en voeg de para meter `&name=Azure`toe. De uitvoer van de opdracht moet de tekst ' Hello Azure ' zijn.
     

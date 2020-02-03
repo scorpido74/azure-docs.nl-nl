@@ -82,7 +82,7 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Een Key Vault verwijzing toevoegen aan de app-configuratie
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer vervolgens de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**en selecteer vervolgens de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 1. Selecteer **Configuration Explorer**.
 
@@ -241,7 +241,7 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
 
     U hebt toegang tot de waarde van de Key Vault Reference **TestApp: Settings: KeyVaultMessage** op dezelfde manier als voor de configuratie waarde van **TestApp: Settings: Message**.
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
 1. Als u de app wilt bouwen met behulp van de .NET Core SLI, voert u de volgende opdracht uit in de opdracht shell:
 

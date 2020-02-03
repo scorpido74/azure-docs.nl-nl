@@ -43,7 +43,7 @@ Als u een bestaande virtuele machine met CoreOS Linux in azure hebt, kunt u er v
 Als u een virtuele machine met CoreOS Linux wilt maken of een test-VM wilt maken voor gebruik met dit artikel, kunt u een van de volgende methoden gebruiken:
 
 * [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
-* [Azure-CLI](../virtual-machines/linux/quick-create-cli.md)
+* [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
 Wanneer u de virtuele machine maakt, moet u aandacht best Eden aan de instellingen voor virtueel netwerk om ervoor te zorgen dat de virtuele machine kan communiceren met het door Azure AD DS beheerde domein:

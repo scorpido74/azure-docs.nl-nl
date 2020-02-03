@@ -134,7 +134,7 @@ Als u `Schedule.list(ws)` opnieuw uitvoert, moet u een lege lijst ophalen.
 
 In dit artikel hebt u de Azure Machine Learning SDK voor python gebruikt om een pijp lijn op twee verschillende manieren te plannen. Een planning wordt herhaald op basis van de verstreken klok tijd. Het andere schema wordt uitgevoerd als een bestand wordt gewijzigd op een opgegeven `Datastore` of in een map in dat archief. U hebt gezien hoe u de portal kunt gebruiken om de pijp lijn en de afzonderlijke uitvoeringen te onderzoeken. Ten slotte hebt u geleerd hoe u een schema kunt uitschakelen zodat de pijp lijn stopt met uitvoeren.
 
-Zie voor meer informatie:
+Ga voor meer informatie naar:
 
 > [!div class="nextstepaction"]
 > [Azure Machine Learning pijplijnen gebruiken voor batch scores](tutorial-pipeline-batch-scoring-classification.md)

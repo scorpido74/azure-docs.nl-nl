@@ -67,16 +67,16 @@ In dit artikel worden de volgende termen gebruikt:
 
 ### <a name="training-resources"></a>Trainings bronnen
 
-| Resources| Koppeling en beschrijving |
+| Bronnen| Koppeling en beschrijving |
 | - | - |
-| On-demand webinars| [Uw bedrijfs toepassingen beheren met Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Meer informatie over hoe u met Azure AD eenmalige aanmelding kunt verkrijgen voor uw zakelijke SaaS-toepassingen en aanbevolen procedures voor het beheren van de toegang. |
-| Video’s| [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Hoe kan ik de gebruikers inrichten in Active Azure Directory implementeren?](https://youtu.be/pKzyts6kfrw) <br> [Sales Force integreren met Azure AD: gebruikers inrichten automatiseren](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
-| Onlinecursussen| SkillUp online: [identiteiten beheren](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Leer hoe u Azure AD integreert met veel SaaS-toepassingen en gebruikers toegang tot deze toepassingen kunt beveiligen. |
+| Webinars op aanvraag| [Uw bedrijfs toepassingen beheren met Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Meer informatie over hoe u met Azure AD eenmalige aanmelding kunt verkrijgen voor uw zakelijke SaaS-toepassingen en aanbevolen procedures voor het beheren van de toegang. |
+| Video's| [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Hoe kan ik de gebruikers inrichten in Active Azure Directory implementeren?](https://youtu.be/pKzyts6kfrw) <br> [Sales Force integreren met Azure AD: gebruikers inrichten automatiseren](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
+| Online cursussen| SkillUp online: [identiteiten beheren](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Leer hoe u Azure AD integreert met veel SaaS-toepassingen en gebruikers toegang tot deze toepassingen kunt beveiligen. |
 | Boeken| [Moderne verificatie met Azure Active Directory voor webtoepassingen (Naslag informatie voor ontwikkel aars) 1e editie](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Dit is een gezaghebbende, diep gaande hand leiding voor het bouwen van Active Directory verificatie oplossingen voor deze nieuwe omgevingen. |
-| Zelfstudie| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md). |
+| Zelfstudies| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md). |
 | Veelgestelde vragen| [Veelgestelde vragen](user-provisioning.md) over het automatisch inrichten van gebruikers |
 
-### <a name="solution-architectures"></a>Architecturen voor oplossingen
+### <a name="solution-architectures"></a>Oplossings architecturen
 
 De Azure AD-inrichtings service voorziet gebruikers van SaaS-apps en andere systemen door verbinding te maken met gebruikers beheer-API-eind punten die door elke leverancier van de toepassing worden geleverd. Met deze gebruikers beheer-API-eind punten kan Azure AD programmatisch gebruikers maken, bijwerken en verwijderen.
 
@@ -228,7 +228,7 @@ Zorg er in elke fase van de implementatie voor dat u test dat de resultaten naar
 
 Zodra u automatische gebruikers inrichting voor de toepassing hebt geconfigureerd, voert u test cases uit om te controleren of deze oplossing voldoet aan de vereisten van uw organisatie.
 
-| Scenario's| Verwachte resultaten |
+| Scenario 's| Verwachte resultaten |
 | - | - |
 | Gebruiker wordt toegevoegd aan een groep die is toegewezen aan het doel systeem | Het gebruikers object is ingericht in het doel systeem. <br>De gebruiker kan zich aanmelden bij het doel systeem en de gewenste acties uitvoeren. |
 | De gebruiker wordt verwijderd uit een groep die is toegewezen aan het doel systeem | Het gebruikers object wordt ongedaan gemaakt in het doel systeem.<br>Gebruiker kan zich niet aanmelden bij het doel systeem. |
@@ -319,7 +319,7 @@ Raadpleeg de volgende koppelingen voor het oplossen van problemen die kunnen opt
 
 * [Azure AD Connect-inrichtings agent: release geschiedenis van versie](provisioning-agent-release-version-history.md)
 
-#### <a name="resources"></a>Resources
+#### <a name="resources"></a>Bronnen
 
 * [Product feedback geven](https://feedback.azure.com/forums/169401-azure-active-directory)
 

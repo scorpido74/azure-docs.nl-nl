@@ -18,7 +18,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721095"
 ---
-# <a name="heading"></a>Azure blob-gegevens verwerken met geavanceerde analyses
+# <a name="heading"></a>Azure Blob-gegevens verwerken met geavanceerde analyses
 In dit document bevat informatie over gegevens verkennen en genereren functies van de gegevens die zijn opgeslagen in Azure Blob-opslag. 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>De gegevens in een gegevensframe Pandas laden
@@ -94,7 +94,7 @@ Hier volgen enkele voorbeelden van manieren om met Pandas gegevens te verkennen:
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-## <a name="blob-featuregen"></a>Functie genereren
+## <a name="blob-featuregen"></a>Onderdelen genereren
 We kunt functies als volgt met behulp van Python genereren:
 
 ### <a name="blob-countfeature"></a>Indicator waarde gebaseerd op onderdelen genereren
@@ -116,7 +116,7 @@ Categorische functies kunnen als volgt worden gemaakt:
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="blob-binningfeature"></a>Genereren van de functie binning
+### <a name="blob-binningfeature"></a>Binning-functie generatie
 Voor het genereren van binned functies, gaan we als volgt:
 
 1. Een reeks van kolommen naar de opslaglocatie van een numerieke kolom toevoegen
@@ -130,7 +130,7 @@ Voor het genereren van binned functies, gaan we als volgt:
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="sql-featuregen"></a>Schrijven van gegevens terug naar Azure-blob en gebruiken in Azure Machine Learning
+## <a name="sql-featuregen"></a>Gegevens schrijven naar een Azure-Blob en gebruiken in Azure Machine Learning
 Nadat u de gegevens hebt bekeken en de benodigde functies hebt gemaakt, kunt u de gegevens (voor beeld of featurized) uploaden naar een Azure-Blob en deze gebruiken in Azure Machine Learning met behulp van de volgende stappen: u kunt extra functies maken in de Azure Machine Learning Studio (klassiek) ook. 
 
 1. Het gegevensframe schrijven naar een lokaal bestand

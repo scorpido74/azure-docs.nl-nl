@@ -28,7 +28,7 @@ Krijg antwoorden op enkele van de meest voorkomende vragen over klassikale Labs 
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>Is het quotum per gebruiker of per week of per volledige duur van het lab? 
 Het quotum dat u voor een Lab hebt ingesteld, is voor elke student voor een volledige duur van het lab. En de [geplande uitvoerings tijd van vm's](how-to-create-schedules.md) telt niet op het quotum dat aan een gebruiker is toegewezen. Het quotum geldt voor de tijd buiten de plannings uren die een student op Vm's doorbrengt.  Zie [quota's voor gebruikers instellen](how-to-configure-student-usage.md#set-quotas-for-users)voor meer informatie over quota's.
 
-## <a name="schedules"></a>Schema's
+## <a name="schedules"></a>Planningen
 
 ### <a name="do-all-vms-in-the-lab-start-automatically-when-a-schedule-is-set"></a>Worden alle Vm's in het lab automatisch gestart wanneer een planning wordt ingesteld? 
 Nee. Niet alle virtuele machines. Alleen de Vm's die aan gebruikers zijn toegewezen volgens een schema. De Vm's die niet aan een gebruiker zijn toegewezen, worden niet automatisch gestart. Het ontwerp is standaard. 

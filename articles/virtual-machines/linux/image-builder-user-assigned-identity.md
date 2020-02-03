@@ -187,7 +187,7 @@ az resource invoke-action \
 
 Wacht tot de build is voltooid. Dit kan ongeveer 15 minuten duren.
 
-## <a name="create-a-vm"></a>Een VM maken
+## <a name="create-a-vm"></a>Een virtuele machine maken
 
 Maak een virtuele machine op basis van de installatie kopie. 
 

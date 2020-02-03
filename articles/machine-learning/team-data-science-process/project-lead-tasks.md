@@ -48,7 +48,7 @@ In deze zelf studie wordt ervan uitgegaan dat uw [groeps Manager](group-manager-
 Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine of Data Science Virtual Machine (DSVM), of Azure File Storage wilt instellen en deze wilt koppelen aan uw DSVM, moet u ook rekening houden met de volgende controle lijst:
 
 - Een Azure-abonnement.
-- Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Raadpleeg anders de [platformen en hulpprogramma's voor bijlage](platforms-and-tools.md#appendix).
+- Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Anders raadpleegt u de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix).
 - Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](/azure/machine-learning/data-science-virtual-machine/)voor meer informatie en instructies.
 - Voor een Windows DSVM is [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) op uw computer geïnstalleerd. Schuif in het bestand *README.MD* omlaag naar de sectie **downloaden en installeren** en selecteer het **nieuwste installatie programma**. Down load het installatie programma *. exe* op de pagina installatie programma en voer het uit. 
 - Voor een Linux-DSVM is een open bare SSH-sleutel ingesteld op uw DSVM en toegevoegd aan Azure DevOps. Zie de sectie **open bare SSH-sleutel maken** in de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix)voor meer informatie en instructies. 
@@ -95,6 +95,6 @@ Als u de inhoud van de project opslagplaats moet aanpassen om te voldoen aan de 
 
 Hier vindt u koppelingen naar gedetailleerde beschrijvingen van de andere rollen en taken die worden gedefinieerd door het team data Science process:
 
-- [Groepsbeheerder taken voor een team van gegevenswetenschappers](group-manager-tasks.md)
-- [Team Lead taken voor een team van gegevenswetenschappers](team-lead-tasks.md)
+- [Groeps Manager-taken voor een Data Science-Team](group-manager-tasks.md)
+- [Team lead taken voor een Data Science-Team](team-lead-tasks.md)
 - [Individuele Inzender taken voor een Data Science-Team](project-ic-tasks.md)

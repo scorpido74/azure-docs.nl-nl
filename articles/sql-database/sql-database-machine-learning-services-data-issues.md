@@ -49,7 +49,7 @@ Eerst gaan we experimenteren met enkele Basic R-objecten-vectoren,-matrices en-l
 
 Vergelijk deze twee ' Hallo wereld-scripts in R. De scripts zien er bijna identiek uit, maar de eerste retourneert één kolom van drie waarden, terwijl de tweede drie kolommen retourneert met één waarde elk.
 
-**Voorbeeld 1**
+**Voor beeld 1**
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -59,7 +59,7 @@ OutputDataSet <- as.data.frame(mytextvariable);
     , @input_data_1 = N'';
 ```
 
-**Voorbeeld 2**
+**Voor beeld 2**
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -194,7 +194,7 @@ R retourneert nu één waarde als resultaat.
 |---|
 |1542|
 
-Waarom? In dit geval, omdat de twee argumenten als vectoren van dezelfde lengte kunnen worden verwerkt, retourneert R het binnenste product als een matrix.  Dit is het verwachte gedrag volgens de regels van lineaire algebra. Dit kan echter problemen veroorzaken als uw downstream-toepassing verwacht dat het uitvoer schema nooit wordt gewijzigd.
+Hoe komt dat? In dit geval, omdat de twee argumenten als vectoren van dezelfde lengte kunnen worden verwerkt, retourneert R het binnenste product als een matrix.  Dit is het verwachte gedrag volgens de regels van lineaire algebra. Dit kan echter problemen veroorzaken als uw downstream-toepassing verwacht dat het uitvoer schema nooit wordt gewijzigd.
 
 ## <a name="merge-or-multiply-columns-of-different-length"></a>Kolommen met een andere lengte samen voegen of vermenigvuldigen
 

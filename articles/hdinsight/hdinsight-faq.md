@@ -202,7 +202,7 @@ Als u Vm's wilt toevoegen aan een domein, moet u een domein controller hebben. A
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>Kan ik een zelfondertekend certificaat gebruiken in een beveiligde LDAP-installatie van AAD-DS en een ESP-cluster inrichten?
 
-Het gebruik van een certificaat dat is uitgegeven door een certificerings instantie wordt aanbevolen, maar het gebruik van een zelfondertekend certificaat wordt ook ondersteund op ESP. Zie voor meer informatie:
+Het gebruik van een certificaat dat is uitgegeven door een certificerings instantie wordt aanbevolen, maar het gebruik van een zelfondertekend certificaat wordt ook ondersteund op ESP. Ga voor meer informatie naar:
 
 - [Azure Active Directory Domain Services inschakelen](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -237,7 +237,7 @@ Op ESP Spark-clusters is LLAP ingeschakeld om beveiligings redenen (dat wil zegg
 Er zijn twee manieren om dit te doen: 1. u kunt het cluster opnieuw maken en de extra groep toevoegen op het moment dat het cluster wordt gemaakt. Als u scoped Synchronization in AAD-DS gebruikt, moet u ervoor zorgen dat groep B is opgenomen in de synchronisatie met het bereik.
 2: Voeg de groep toe als een geneste subgroep van de vorige groep die is gebruikt voor het maken van het ESP-cluster. Als u bijvoorbeeld een ESP-cluster met groeps `A`hebt gemaakt, kunt u later op groep toevoegen `B` als een geneste subgroep van `A` en na ongeveer één uur dat deze automatisch wordt gesynchroniseerd en beschikbaar is in het cluster. 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>Kan ik een Azure Data Lake Storage Gen2 toevoegen aan een bestaand HDInsight-cluster als een extra opslag account?
 
@@ -279,7 +279,7 @@ done
 
 Momenteel bestaat er geen zwerver-invoeg toepassing voor Blob Storage en Azure Data Lake Storage Gen1 of Gen2. Voor ESP-clusters moet u Azure Data Lake Storage gebruiken, omdat u Mini maal nauw keurige machtigingen hand matig op het bestandssysteem niveau kunt instellen met behulp van HDFS-hulpprogram ma's. Bij het gebruik van Azure Data Lake Storage worden ESP-clusters een deel van het toegangs beheer voor bestands systemen met behulp van Azure Active Directory op cluster niveau. 
 
-U kunt beleid voor gegevens toegang toewijzen aan de beveiligings groepen van uw gebruikers met behulp van de Azure Storage Explorer. Zie voor meer informatie:
+U kunt beleid voor gegevens toegang toewijzen aan de beveiligings groepen van uw gebruikers met behulp van de Azure Storage Explorer. Ga voor meer informatie naar:
 
 - [Hoe kan ik machtigingen instellen voor Azure AD-gebruikers om gegevens op te vragen in Data Lake Storage Gen2 met behulp van Hive of andere services?](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [Machtigingen voor bestanden en mapniveau instellen met behulp van Azure Storage Explorer met Azure Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
@@ -302,7 +302,7 @@ Nadat u een Edge-knoop punt hebt gemaakt, kunt u er verbinding mee maken via SSH
 
 U gebruikt persistente scripts om nieuwe worker-knoop punten die aan het cluster worden toegevoegd, aan te passen via schaal bewerkingen. Persistente scripts zijn niet van toepassing op Edge-knoop punten.
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 ### <a name="what-are-the-rest-api-calls-to-pull-a-tez-query-view-from-the-cluster"></a>Wat zijn de REST API-aanroepen om een TEZ-query weergave uit het cluster te halen?
 
@@ -345,7 +345,7 @@ Als u de opdracht van buiten het virtuele netwerk of vanuit een niet-gekoppeld v
 > [!NOTE]
 > Met krul wordt u om een wacht woord gevraagd. U moet een geldig wacht woord opgeven voor de gebruikers naam van het cluster.
 
-## <a name="billing"></a>Billing
+## <a name="billing"></a>Facturering
 
 ### <a name="how-much-does-it-cost-to-deploy-an-hdinsight-cluster"></a>Hoeveel kost het om een HDInsight-cluster te implementeren?
 

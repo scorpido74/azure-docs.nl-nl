@@ -118,7 +118,7 @@ Volg deze stappen om [extern REGI ster](https://support.microsoft.com/help/31483
 
 Als u een situatie hebt waarin u de virtuele machine niet op een wille keurige manier kunt bereiken, mislukt de aangepaste script extensie en moet u in de OFFLINE modus werken door rechtstreeks via de systeem schijf te werken. Voer hiervoor de volgende stappen uit:
 
-1.  [De schijf koppelen aan een virtuele machine voor herstel](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Koppel de systeem schijf aan een herstel-VM](troubleshoot-recovery-disks-portal-windows.md).
 
 2.  Start een externe bureaubladverbinding met de virtuele machine voor herstel.
 
@@ -160,6 +160,6 @@ Als u een situatie hebt waarin u de virtuele machine niet op een wille keurige m
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [De schijf loskoppelen en opnieuw maken van de virtuele machine](troubleshoot-recovery-disks-portal-windows.md).
+10. [Ontkoppel de systeem schijf en maak de virtuele machine opnieuw](troubleshoot-recovery-disks-portal-windows.md).
 
 11. Controleer of het probleem opgelost is.

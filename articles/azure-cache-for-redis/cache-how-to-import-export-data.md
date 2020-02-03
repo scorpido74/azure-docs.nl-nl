@@ -73,7 +73,7 @@ Met exporteren kunt u de gegevens die zijn opgeslagen in azure cache exporteren 
    > Exporteren werkt met pagina-blobs, die worden ondersteund door de klassieke en Resource Manager-opslag accounts, maar die op dit moment niet worden ondersteund door Blob Storage-accounts. Zie [Overzicht van Azure-opslagaccount](../storage/common/storage-account-overview.md) voor meer informatie.
    >
 
-    ![Opslagaccount](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
+    ![Storage-account](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
 3. Kies de gewenste BLOB-container en klik op **selecteren**. Als u een nieuwe container wilt gebruiken, klikt u op **container toevoegen** om deze eerst toe te voegen en selecteert u deze in de lijst.
 
     ![Opslag container kiezen](./media/cache-how-to-import-export-data/cache-export-data-container.png)

@@ -81,7 +81,7 @@ U gebruikt de [.net core-opdracht regel interface (CLI)](https://docs.microsoft.
     }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
 1. Stel een omgevings variabele met de naam **Connections Tring**in en stel deze in op de toegangs sleutel voor uw app-configuratie archief. Voer op de opdracht regel de volgende opdracht uit en start de opdracht prompt om de wijziging toe te passen:
 

@@ -20,7 +20,7 @@ ms.locfileid: "76720449"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>De levenscyclus van het Team Data Science Process
 
-Het Team Data Science Process (TDSP) biedt de levensduur van een aanbevolen die u gebruiken kunt voor het structureren van uw data-science-projecten. De levens cyclus geeft een overzicht van de volledige stappen die geslaagde projecten volgen. Als u een andere levenscyclus van wetenschappelijke gegevens, zoals de Cross-branche standaardproces voor datamining [(heldere-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), Knowledge Discovery in Databases [(KDD)](https://wikipedia.org/wiki/Data_mining#Process), of uw organisatie eigen aangepaste proces , u kunt nog steeds de TDSP op basis van een taak. 
+Het Team Data Science Process (TDSP) biedt de levensduur van een aanbevolen die u gebruiken kunt voor het structureren van uw data-science-projecten. De levens cyclus geeft een overzicht van de volledige stappen die geslaagde projecten volgen. Als u een andere data Science-levens cyclus gebruikt, zoals het proces voor de verwerking van de industrie standaard voor gegevens analyse [(scherp-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), kennis detectie in data bases [(KDD)](https://wikipedia.org/wiki/Data_mining#Process)of het eigen aangepaste proces van uw organisatie, kunt u nog steeds de op taken gebaseerde TDSP gebruiken. 
 
 Deze levenscyclus beheren is ontworpen voor data science-projecten die zijn bedoeld om te verzenden als onderdeel van intelligente toepassingen. Deze toepassingen machine learning of kunstmatige intelligentie modellen voor voorspellende analyses te implementeren. Experimentele projecten voor gegevens wetenschap en Improvised Analytics-projecten kunnen ook profiteren van het gebruik van dit proces. Maar voor deze projecten, sommige van de hier beschreven stappen mogelijk niet nodig. 
 
@@ -28,11 +28,11 @@ Deze levenscyclus beheren is ontworpen voor data science-projecten die zijn bedo
 
 De TDSP-levenscyclus bestaat uit vijf belangrijke fasen die iteratief worden uitgevoerd. Deze fasen zijn onder andere:
 
-   1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
-   2. [Gegevens verzamelen en begrijpen](lifecycle-data.md)
-   3. [Modeling](lifecycle-modeling.md)
+   1. [Zakelijke inzichten](lifecycle-business-understanding.md)
+   2. [Gegevens verkrijgen en meer informatie](lifecycle-data.md)
+   3. [Model](lifecycle-modeling.md)
    4. [Implementatie](lifecycle-deployment.md)
-   5. [Aanvaarding van de klant](lifecycle-acceptance.md)
+   5. [Klant acceptatie](lifecycle-acceptance.md)
 
 Hier volgt een visuele representatie van de TDSP-levenscyclus: 
 
@@ -43,12 +43,12 @@ De TDSP-levenscyclus is gemodelleerd als een reeks stappen herhaald die advies o
 
 Voor elke fase bieden we de volgende informatie:
 
-   * **Doelstellingen**: de specifieke doelstellingen.
-   * **Hoe voer ik**: een overzicht van de specifieke taken en richtlijnen over hoe u deze kunt uitvoeren.
-   * **Artefacten**: de producten en de ondersteuning voor het produceren van deze.
+   * **Doel**stellingen: de specifieke doel stellingen.
+   * **Hoe kan ik dit doen**: een overzicht van de specifieke taken en richt lijnen voor het volt ooien ervan.
+   * **Artefacten**: de producten en de ondersteuning voor het produceren hiervan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-We bieden volledige end-to-end-scenario's die laten zien van alle de stappen in het proces voor het specifieke scenario's. De [voorbeeld walkthroughs](walkthroughs.md) artikel geeft een lijst van de scenario's met koppelingen en beschrijvingen van miniaturen. De scenario's laten zien hoe u cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen. 
+We bieden volledige end-to-end-scenario's die laten zien van alle de stappen in het proces voor het specifieke scenario's. Het artikel [voorbeeld](walkthroughs.md) scenario's bevat een lijst met de scenario's met koppelingen en miniaturen. De scenario's laten zien hoe u cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen. 
 
-Zie voor meer voorbeelden van hoe u het uitvoeren van de stappen in TDSPs die gebruikmaken van Azure Machine Learning Studio [de TDSP gebruiken met Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Zie [de TDSP gebruiken met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)voor voor beelden van het uitvoeren van stappen in TDSPs die gebruikmaken van Azure machine learning Studio.

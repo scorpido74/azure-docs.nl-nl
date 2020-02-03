@@ -37,7 +37,7 @@ In deze zelf studie wordt beschreven hoe u het SSDT-database project (SQL Server
 
    ![Verbindingen beheren](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Verbindingen beheren")
 
-   ![Verbinding maken](media/sql-data-warehouse-source-control-integration/3-connect.png "Connect")
+   ![Verbinding maken](media/sql-data-warehouse-source-control-integration/3-connect.png "Verbinding maken")
 
 3. Uw Azure opslag plaats-opslag plaats vanuit uw project naar uw lokale machine klonen
 

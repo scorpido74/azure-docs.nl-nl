@@ -117,7 +117,7 @@ Het doel van deze sectie is het maken van een overzicht van het inschakelen van 
 
 Hiermee start u de initiële synchronisatie van gebruikers en/of groepen die zijn toegewezen aan Sales Force in de sectie gebruikers en groepen. Houd er rekening mee dat het uitvoeren van de eerste synchronisatie langer duurt dan volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen voor het inrichtings logboek, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtings service in uw Sales Force-app.
 
-Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
 ## <a name="common-issues"></a>Algemene problemen
 * Als u problemen ondervindt met het verlenen van toegang tot Sales Force, moet u het volgende doen:
@@ -132,7 +132,7 @@ Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [ra
 * Voor Sales Force moeten e-mail updates hand matig worden goedgekeurd voordat ze worden gewijzigd. Als gevolg hiervan ziet u mogelijk meerdere vermeldingen in de inrichtings Logboeken om het e-mail bericht van de gebruiker bij te werken (totdat de wijziging in het e-mail bericht is goedgekeurd).
 
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](tutorial-list.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

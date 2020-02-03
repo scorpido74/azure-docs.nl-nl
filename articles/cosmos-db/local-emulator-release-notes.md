@@ -17,7 +17,7 @@ ms.locfileid: "76719684"
 
 Dit artikel bevat de release opmerkingen voor de Azure Cosmos-emulator met een lijst met onderdeel updates die zijn gemaakt in elke release. Ook wordt de meest recente versie van de emulator weer gegeven die u kunt downloaden en gebruiken.
 
-## <a name="download"></a>Download
+## <a name="download"></a>Downloaden
 
 | | |
 |---------|---------|

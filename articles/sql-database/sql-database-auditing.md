@@ -16,7 +16,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76719803"
 ---
-# <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL Database Auditing
+# <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL database controle
 
 Controle voor Azure [SQL database](sql-database-technical-overview.md) en [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) houdt database gebeurtenissen bij en schrijft deze naar een audit logboek in uw Azure storage-account, Log Analytics werk ruimte of event hubs. Controleren is ook:
 
@@ -251,7 +251,7 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
 
     > [!IMPORTANT]
     > De instelling schrijven beveiligde toevoeg-blobs toestaan onder Bewaar periode is momenteel beschikbaar en alleen zichtbaar in de volgende regio's:
-    > - VS - oost
+    > - US - oost
     > - US - zuid-centraal
     > - US - west 2
 

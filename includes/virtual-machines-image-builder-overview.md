@@ -35,8 +35,8 @@ Voor de preview worden de volgende functies ondersteund:
 
 ## <a name="regions"></a>Regio's
 De Azure Image Builder-service is beschikbaar voor een preview in deze regio's. Installatie kopieën kunnen buiten deze regio's worden gedistribueerd.
-- VS - oost
-- VS - oost 2
+- US - oost
+- US - oost 2
 - US - west-centraal
 - US - west
 - US - west 2
@@ -60,7 +60,7 @@ AIB biedt ondersteuning voor RHEL ISO als bron voor:
 
 RHEL 7,6 Iso's worden niet ondersteund, maar worden getest.
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>How it works (Engelstalig artikel)
 
 
 ![Conceptuele tekening van Azure Image Builder](./media/virtual-machines-image-builder-overview/image-builder.png)

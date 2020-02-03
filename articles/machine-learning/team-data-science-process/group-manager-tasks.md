@@ -166,7 +166,7 @@ De inhoud van de opslag plaats aanpassen:
 Als u wijzigingen wilt aanbrengen met behulp van uw lokale machine of DSVM en de wijzigingen naar de groeps opslagplaatsen wilt pushen, moet u ervoor zorgen dat u beschikt over de vereisten voor het werken met Git en Dsvm:
 
 - Een Azure-abonnement als u een DSVM wilt maken.
-- Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Raadpleeg anders de [platformen en hulpprogramma's voor bijlage](platforms-and-tools.md#appendix).
+- Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Anders raadpleegt u de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix).
 - Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](/azure/machine-learning/data-science-virtual-machine/)voor meer informatie en instructies.
 - Voor een Windows DSVM is [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) op uw computer geïnstalleerd. Schuif in het bestand *README.MD* omlaag naar de sectie **downloaden en installeren** en selecteer het **nieuwste installatie programma**. Down load het installatie programma *. exe* op de pagina installatie programma en voer het uit. 
 - Voor een Linux-DSVM is een open bare SSH-sleutel ingesteld op uw DSVM en toegevoegd aan Azure DevOps. Zie de sectie **open bare SSH-sleutel maken** in de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix)voor meer informatie en instructies. 
@@ -258,6 +258,6 @@ Machtigingen voor leden configureren:
 
 Hier vindt u koppelingen naar gedetailleerde beschrijvingen van de andere rollen en taken in het team data Science process:
 
-- [Team Lead taken voor een team van gegevenswetenschappers](team-lead-tasks.md)
-- [Project Lead taken voor een team van gegevenswetenschappers](project-lead-tasks.md)
+- [Team lead taken voor een Data Science-Team](team-lead-tasks.md)
+- [Project Lead taken voor een Data Science-Team](project-lead-tasks.md)
 - [Individuele Inzender taken projecteren voor een Data Science-Team](project-ic-tasks.md)

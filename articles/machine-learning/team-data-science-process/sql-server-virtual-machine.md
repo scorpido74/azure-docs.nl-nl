@@ -18,7 +18,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76718477"
 ---
-# <a name="heading"></a>Gegevens verwerken in SQL Server-Machine op Azure
+# <a name="heading"></a>Gegevens verwerken in SQL Server virtuele machine op Azure
 Dit document wordt uitgelegd hoe u gegevens verkennen en functies voor gegevens die zijn opgeslagen in een SQL Server-VM op Azure te genereren. Dit doel kan worden voltooid door gegevens wrangling met behulp van SQL of door gebruik te maken van een programmeer taal zoals python.
 
 > [!NOTE]
@@ -26,17 +26,17 @@ Dit document wordt uitgelegd hoe u gegevens verkennen en functies voor gegevens 
 > 
 > 
 
-## <a name="SQL"></a>Met behulp van SQL
+## <a name="SQL"></a>SQL gebruiken
 We beschrijven de volgende data wrangling taken in deze sectie met behulp van SQL:
 
 1. [Gegevens verkennen](#sql-dataexploration)
-2. [Functie genereren](#sql-featuregen)
+2. [Onderdelen genereren](#sql-featuregen)
 
 ### <a name="sql-dataexploration"></a>Gegevens verkennen
 Hier volgen enkele voorbeelden SQL-scripts die kunnen worden gebruikt voor het verkennen van SQL Server voor gegevensopslag.
 
 > [!NOTE]
-> Voor een voorbeeld, kunt u de [NYC Taxi gegevensset](https://www.andresmh.com/nyctaxitrips/) en verwijzen naar de met de titel IPNB [NYC Data wrangling met behulp van IPython Notebook en SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) voor een overzicht van end-to-end.
+> Voor een praktijk voorbeeld kunt u de [NYC taxi-gegevensset](https://www.andresmh.com/nyctaxitrips/) gebruiken en verwijzen naar de IPNB getiteld [NYC data wrangling met behulp van IPython notebook en SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) voor een end-to-end-instructies.
 > 
 > 
 
@@ -53,19 +53,19 @@ Hier volgen enkele voorbeelden SQL-scripts die kunnen worden gebruikt voor het v
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
-### <a name="sql-featuregen"></a>Functie genereren
+### <a name="sql-featuregen"></a>Onderdelen genereren
 In deze sectie wordt beschreven manieren voor het genereren van functies met behulp van SQL:  
 
-1. [Aantal op basis van functie genereren](#sql-countfeature)
-2. [Genereren van de functie binning](#sql-binningfeature)
-3. [Implementeren van de functies van één kolom](#sql-featurerollout)
+1. [Telling op basis van onderdelen genereren](#sql-countfeature)
+2. [Binning-functie generatie](#sql-binningfeature)
+3. [De functies uit één kolom implementeren](#sql-featurerollout)
 
 > [!NOTE]
 > Nadat u extra functies genereert, kunt u ze als kolommen toevoegen aan de bestaande tabel of een nieuwe tabel maken met de aanvullende functies en de primaire sleutel, die kan worden samengevoegd met de oorspronkelijke tabel. 
 > 
 > 
 
-### <a name="sql-countfeature"></a>Aantal op basis van functie genereren
+### <a name="sql-countfeature"></a>Telling op basis van onderdelen genereren
 De volgende voorbeelden ziet twee manieren voor het genereren van het aantal functies. De eerste methode maakt gebruik van Voorwaardelijke som en de tweede methode maakt gebruik van de component 'where'. Deze resultaten kunnen vervolgens worden samengevoegd met de oorspronkelijke tabel (met behulp van primaire-sleutel kolommen), zodat het aantal functies naast de oorspronkelijke gegevens wordt weer gegeven.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
@@ -73,16 +73,16 @@ De volgende voorbeelden ziet twee manieren voor het genereren van het aantal fun
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
 
-### <a name="sql-binningfeature"></a>Genereren van de functie binning
+### <a name="sql-binningfeature"></a>Binning-functie generatie
 Het volgende voorbeeld laat zien hoe voor het genereren van binned functies door binning (met behulp van vijf opslaglocaties) een numerieke kolom die kan worden gebruikt als een functie in plaats daarvan:
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="sql-featurerollout"></a>Implementeren van de functies van één kolom
+### <a name="sql-featurerollout"></a>De functies uit één kolom implementeren
 In deze sectie laten we zien hoe u één kolom in een tabel voor het genereren van extra functies worden uitgerold. Het voorbeeld wordt ervan uitgegaan dat er een kolom voor breedtegraad of lengtegraad in de tabel waaruit u wilt genereren van functies.
 
-Hier volgt een korte uitleg van breedtegraad/lengtegraad locatiegegevens (resources voorzien van stackoverflow [hoe u voor het meten van de nauwkeurigheid van de breedtegraad en lengtegraad?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Deze richt lijnen zijn handig voor het opnemen van locaties als een of meer functies:
+Hier volgt een korte beschrijving van de locatie gegevens voor de breedte graad/lengte graad (vanaf stack overflow [hoe de nauw keurigheid van de breedte graad en lengte graad wordt gemeten?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Deze richt lijnen zijn handig voor het opnemen van locaties als een of meer functies:
 
 * De aanmelding kan worden achterhaald of we Noord of -Zuid, Oost- of -west op de hele wereld.
 * Een andere waarde dan nul honderden cijfers kan worden achterhaald dat we niet breedtegraad lengtegraad gebruiken!
@@ -111,7 +111,7 @@ De locatie-informatie kan worden boommodel als volgt scheiden van regio, locatie
 Deze functies op basis van locatie kunnen verder worden gebruikt voor het genereren van aantal extra functies, zoals eerder beschreven. 
 
 > [!TIP]
-> U kunt de records die met de taal van keuze programmatisch invoegen. U moet mogelijk om in te voegen van de gegevens in segmenten schrijven efficiëntie te verbeteren (Zie voor een voorbeeld van hoe u dit doet met pyodbc [een Hallo wereld-voorbeeld voor toegang tot SQL Server met python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Een ander alternatief is om in te voegen van gegevens in de database met de [hulpprogramma BCP](https://msdn.microsoft.com/library/ms162802.aspx).
+> U kunt de records die met de taal van keuze programmatisch invoegen. Mogelijk moet u de gegevens in segmenten invoegen om de schrijf efficiëntie te verbeteren (Zie voor een voor beeld van hoe u dit doet met pyodbc het voor beeld van [een HelloWorld om toegang te krijgen tot sqlserver met python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)). Een andere mogelijkheid is om gegevens in de data base in te voegen met behulp van het [bcp-hulp programma](https://msdn.microsoft.com/library/ms162802.aspx).
 > 
 > 
 
@@ -120,8 +120,8 @@ De nieuwe functie kan worden toegevoegd als een kolom aan een bestaande tabel of
 
 ![lezers van azureml][1] 
 
-## <a name="python"></a>Met behulp van een programmeertaal zoals Python
-Met behulp van Python voor gegevens verkennen en het genereren van functies als de gegevens in SQL Server is vergelijkbaar met het verwerken van gegevens in Azure blob met behulp van Python, zoals beschreven in [proces Azure Blob-gegevens in uw data science-omgeving](data-blob.md). Laad de gegevens uit de data base in een Pandas-gegevens frame voor meer verwerking. We leggen het proces van verbinding met de database en het laden van de gegevens in het kader van de gegevens in deze sectie.
+## <a name="python"></a>Een programmeer taal zoals python gebruiken
+Met python voor het verkennen van gegevens en het genereren van functies als de gegevens zich in SQL Server bevinden, is vergelijkbaar met het verwerken van gegevens in Azure-Blob met behulp van python zoals beschreven in [Azure Blob-gegevens in uw data Science-omgeving verwerken](data-blob.md). Laad de gegevens uit de data base in een Pandas-gegevens frame voor meer verwerking. We leggen het proces van verbinding met de database en het laden van de gegevens in het kader van de gegevens in deze sectie.
 
 De volgende indeling van de verbindingsreeks kan worden gebruikt voor het verbinding maken met een SQL Server-database vanuit Python met behulp van pyodbc (vervang servername, dbname, gebruikersnaam en wachtwoord met uw specifieke waarden):
 
@@ -129,15 +129,15 @@ De volgende indeling van de verbindingsreeks kan worden gebruikt voor het verbin
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-De [Pandas bibliotheek](https://pandas.pydata.org/) in Python biedt u een uitgebreide set gegevensstructuren en hulpprogramma's voor gegevensanalyse voor gegevensmanipulatie voor Python programmeren. De onderstaande code leest de resultaten van een SQL Server-database in een gegevensframe Pandas:
+De [bibliotheek Pandas](https://pandas.pydata.org/) in python biedt een uitgebreide set gegevens structuren en hulpprogram ma's voor gegevens analyse voor het bewerken van gegevens voor python-programmering. De onderstaande code leest de resultaten van een SQL Server-database in een gegevensframe Pandas:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
-Nu u met het Pandas dataframe werken kunt zoals beschreven in het artikel [proces Azure Blob-gegevens in uw data science-omgeving](data-blob.md).
+Nu kunt u met het frame Pandas-gegevens werken, zoals is beschreven in het artikel [Azure Blob-gegevens in uw data Science-omgeving verwerken](data-blob.md).
 
 ## <a name="azure-data-science-in-action-example"></a>Azure Data Science in actie voorbeeld
-Zie voor een overzicht van end-to-end-voorbeeld van het Azure Data Science Process met behulp van een openbare gegevensset, [Azure Data Science Process in actie](sql-walkthrough.md).
+Zie voor een volledig overzicht van het Azure data Science-proces met behulp van een open bare gegevensset het [Azure data Science-proces in actie](sql-walkthrough.md).
 
 [1]: ./media/sql-server-virtual-machine/reader_db_featurizedinput.png
 

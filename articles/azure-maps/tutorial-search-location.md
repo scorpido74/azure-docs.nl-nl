@@ -30,7 +30,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
@@ -39,8 +39,8 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com).
 Voer de volgende stappen uit om een nieuw Maps-account te maken:
 
 1. Klik in de linkerbovenhoek van [Azure Portal](https://portal.azure.com) op **Een resource maken**.
-2. Typ **Maps** in het vak *Marketplace doorzoeken*.
-3. Selecteer **Toewijzingen** in de *Resultaten*. Klik op de knop **Maken** die onder de kaart wordt weergegeven.
+2. Typ *Maps* in het vak **Marketplace doorzoeken**.
+3. Selecteer *Toewijzingen* in de **Resultaten**. Klik op de knop **Maken** die onder de kaart wordt weergegeven.
 4. Voer de volgende waarden in op de pagina **Azure Kaarten-account maken**:
     * Het *Abonnement* dat u wilt gebruiken voor dit account.
     * De naam van de *Resourcegroep* voor dit account. U kunt kiezen om een *Nieuwe* of *Bestaande* resourcegroep te gebruiken.
@@ -277,7 +277,7 @@ De kaart die we tot nu toe hebben gemaakt, is uitsluitend gebaseerd op de gegeve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een account van Azure Maps maken

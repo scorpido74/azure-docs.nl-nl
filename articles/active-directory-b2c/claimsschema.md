@@ -42,7 +42,7 @@ Het **ClaimsSchema** -element definieert de claim typen waarnaar kan worden verw
 
 Het element **claim** type bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Id | Ja | Een id die wordt gebruikt voor het claim type. Andere elementen kunnen deze id in het beleid gebruiken. |
 
@@ -69,7 +69,7 @@ De **DefaultPartnerClaimTypes** kan het volgende element bevatten:
 
 Het **protocol** element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Name | Ja | De naam van een geldig protocol dat door Azure AD B2C wordt ondersteund. Mogelijke waarden zijn: OAuth1, OAuth2, SAML2, OpenIdConnect. |
 | PartnerClaimType | Ja | De claim type naam die moet worden gebruikt. |
@@ -104,7 +104,7 @@ Als gevolg hiervan verzendt het JWT-token dat is uitgegeven door Azure AD B2C, h
 
 Het **masker** element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Het type van het claim masker. Mogelijke waarden: `Simple` of `Regex`. De waarde `Simple` geeft aan dat een eenvoudig tekst masker wordt toegepast op het voorste gedeelte van een teken reeks claim. De waarde `Regex` geeft aan dat een reguliere expressie wordt toegepast op de teken reeks claim als geheel.  Als de `Regex` waarde is opgegeven, moet er ook een optioneel kenmerk worden gedefinieerd met de reguliere expressie die moet worden gebruikt. |
 | `Regex` | Nee | Als **`Type`** is ingesteld op `Regex`, geeft u de reguliere expressie op die moet worden gebruikt.
@@ -144,7 +144,7 @@ In het Framework voor identiteits ervaring worden alleen de eerste letter van he
 
 Het **beperkings** element kan het volgende kenmerk bevatten:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nee | De methode die wordt gebruikt voor het samen voegen van opsommings waarden met een claim type in een bovenliggend beleid met dezelfde id. Gebruik dit kenmerk wanneer u een claim overschrijft die is opgegeven in het basis beleid. Mogelijke waarden: `Append`, `Prepend`of `ReplaceAll`. De `Append` waarde is een verzameling gegevens die moet worden toegevoegd aan het einde van de verzameling die in het bovenliggende beleid is opgegeven. De `Prepend` waarde is een verzameling gegevens die moet worden toegevoegd vóór de verzameling die in het bovenliggende beleid is opgegeven. De `ReplaceAll` waarde is een verzameling gegevens die is opgegeven in het bovenliggende beleid en die moet worden genegeerd. |
 
@@ -152,14 +152,14 @@ Het **beperkings** element bevat de volgende elementen:
 
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| Inventarisatie | 1: n | De beschik bare opties in de gebruikers interface waarmee de gebruiker een claim kan selecteren, zoals een waarde in een vervolg keuzelijst. |
+| Opsomming | 1: n | De beschik bare opties in de gebruikers interface waarmee de gebruiker een claim kan selecteren, zoals een waarde in een vervolg keuzelijst. |
 | Patroon | 1:1 | De reguliere expressie die moet worden gebruikt. |
 
-### <a name="enumeration"></a>Inventarisatie
+### <a name="enumeration"></a>Opsomming
 
 Het **opsommings** element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Tekst | Ja | De weergave teken reeks die wordt weer gegeven aan de gebruiker in de gebruikers interface voor deze optie. |
 |Waarde | Ja | De claim waarde die is gekoppeld aan het selecteren van deze optie. |
@@ -188,7 +188,7 @@ Lijst met vervolg steden met een standaard waarde ingesteld op New York:
 
 Het element **pattern** kan de volgende kenmerken bevatten:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | RegularExpression | Ja | De reguliere expressie die de claims van dit type moet overeenkomen om geldig te zijn. |
 | HelpText | Nee | Het patroon of de reguliere expressie voor deze claim. |

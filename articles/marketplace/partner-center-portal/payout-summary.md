@@ -32,7 +32,7 @@ Als u aanbiedingen in azure Marketplace verkoopt, ziet u ook informatie over ges
 
 ## <a name="roles-and-permission-to-access-the-payout-report"></a>Rollen en machtigingen voor toegang tot het uitbetalings rapport
 
-| Rapporten/pagina's    | Accounteigenaar    | Manager  | Developer | Zakelijke Inzender |  Bijdrage financier | Verkoper |
+| Rapporten/pagina's    | Accounteigenaar    | Manager  | Ontwikkelaar | Zakelijke Inzender |  Bijdrage financier | Verkoper |
 |------------------|------------------|----------|-----------|----|----|-----|
 | Verwervings rapport (inclusief bijna realtime gegevens) | Kan weer geven | Kan weer geven | Geen toegang | Geen toegang | Kan weer geven | Geen toegang |
 | Feedback rapport/reacties | Kan feedback weer geven en verzenden | Kan feedback weer geven en verzenden | Kan feedback weer geven en verzenden | Geen toegang | Geen toegang | Kan feedback weer geven en verzenden |
@@ -44,11 +44,11 @@ Als u aanbiedingen in azure Marketplace verkoopt, ziet u ook informatie over ges
 
 ## <a name="payout-report-difference-between-cloud-partner-portal-and-partner-center"></a>Uitbetalings rapport: verschil tussen Cloud Partner-portal en partner centrum
 
-| | Cloud Partner-portal | Partnercentrum |
+| | Cloud Partner-portal | Partner centrum |
 |---------|---------|---------|
 | Koppelingen | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory) en [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
 | Navigatie | Uitbetalings rapportage die is opgenomen in Insights-uitbetaling | Uitbetalings rapportage die is opgenomen in Partner Center: het pictogram voor uitbetaling |
-| Scope | <ul> <li>Trans actie per regel item is zichtbaar voor de verzameling die wordt uitgevoerd, verzameld en betaald </li> <li>Rapportage: geeft alle regel items weer zodra de aankoop order is gemaakt, inclusief de verzameling die wordt uitgevoerd en de facturering wordt uitgevoerd, en de verzamelings status en regel items die nog niet kunnen worden betaald. </li> </ul> | <ul> <li>Toont de regel items zodra deze als in aanmerking komende winst worden beschouwd.</li> <li>Klanten betalen eerst aan micro soft en vervolgens kunnen Isv's het rapport voor uitbetaling starten.</li> <li>In het uitbetalings rapport wordt de verzameling niet weer gegeven die wordt uitgevoerd en facturering wordt uitgevoerd.  </li> </ul>  |
+| Bereik | <ul> <li>Trans actie per regel item is zichtbaar voor de verzameling die wordt uitgevoerd, verzameld en betaald </li> <li>Rapportage: geeft alle regel items weer zodra de aankoop order is gemaakt, inclusief de verzameling die wordt uitgevoerd en de facturering wordt uitgevoerd, en de verzamelings status en regel items die nog niet kunnen worden betaald. </li> </ul> | <ul> <li>Toont de regel items zodra deze als in aanmerking komende winst worden beschouwd.</li> <li>Klanten betalen eerst aan micro soft en vervolgens kunnen Isv's het rapport voor uitbetaling starten.</li> <li>In het uitbetalings rapport wordt de verzameling niet weer gegeven die wordt uitgevoerd en facturering wordt uitgevoerd.  </li> </ul>  |
 | Trans actie niet gereed voor uitbetaling | Facturering wordt uitgevoerd | Volgende geschatte betaling: de status van de uitbetaling is in de niet-verwerkte staat.  |
 | Status uitbetaling |  | Verwerkte <br> Het verdienen komt in aanmerking voor betaling. Deze status blijft van toepassing op een koel periode zoals gedefinieerd in de programma gids voor het prestatie programma. <br> <br> Verschijnen <br> Door de betaling gegenereerde interne beoordelingen die in behandeling zijn, voordat de betaling wordt verwerkt. <br> <br> Zonden <br> De betaling is naar uw bank verzonden. |
 
@@ -68,7 +68,7 @@ Bijvoorbeeld als de klant inkopen met een credit card.
 
 ## <a name="corelation-between-payout-and-usage"></a>Relatie tussen uitbetaling en gebruik
 
-|Beschrijving    |    Datum  | Orders/gebruik  | Betalings |
+|Beschrijving    |    Date  | Orders/gebruik  | Betalings |
 |----------|----------|-----------|-------------|
 |Bestel periode   | 15 augustus 2019-aug 30, 2019 | **Correlatie kenmerken orders** <br> <ul> <li>Velden</li> <li>Nummer</li> </ul> <br> **Gebruik** <br> <ul> <li>Nummer </li> <li>Klant naam</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Geschatte berekende toeslag <br> Geschatte uitbetaling (PC) </li> </ul> |  |
 |Einde van de term (maand)   | 30 augustus 2019 | | |
@@ -82,12 +82,12 @@ Bijvoorbeeld als de klant inkopen met een credit card.
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Enter prise Agreement (kwartaal klanten/maandelijks)
 
-| Beschrijving |    Datum  | Gebruik | Betalings |
+| Beschrijving |    Date  | Gebruik | Betalings |
 |----------|----------|---------|-----------|
 |Bestel periode | 15 augustus 2019-aug 30, 2019 | **Correlatie kenmerken orders** <br> <ul> <li>Velden</li> <li>Nummer</li> </ul> <br> **Gebruiks rapport** <br> <ul> <li>Nummer </li> <li>Klant naam</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Geschatte berekende toeslag <br> Geschatte uitbetaling (PC) </li> </ul> | |
 |Einde van de term (kwar taal) | Sept 30, 2019 | | |
 |Factuur datum | 15 oktober 2019 | | |
-|Borg periode (alleen voor credit cards, 30 dagen) | n.v.t. | | |
+|Borg periode (alleen voor credit cards, 30 dagen) | N.v.t. | | |
 |Begin van verzamelings periode | 15 oktober 2019 | | |
 |Alleen credit cards, 30 dagen | 1 november 2019 tot 30 november 2019 | | |
 |Einde van verzamelings periode (Maxi maal 90 dagen) | 15 januari 2020 | | |

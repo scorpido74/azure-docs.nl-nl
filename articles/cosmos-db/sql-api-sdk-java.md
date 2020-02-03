@@ -18,7 +18,7 @@ ms.locfileid: "76718170"
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK voor SQL-API: releaseopmerkingen en resources
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-Wijzigingenfeed](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
@@ -30,16 +30,16 @@ ms.locfileid: "76718170"
 > * [Bulk-uitvoerder-.NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
 
-De SQL API Java-SDK biedt ondersteuning voor synchrone bewerkingen. Voor asynchrone ondersteuning, gebruikt u de [SQL API Async Java SDK](sql-api-sdk-async-java.md). 
+De SQL API Java-SDK biedt ondersteuning voor synchrone bewerkingen. Voor asynchrone ondersteuning gebruikt u de [SQL API async Java SDK](sql-api-sdk-async-java.md). 
 
 | |  |
 |---|---|
 |**SDK downloaden**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
-|**API-documentatie**|[Java API-referentiedocumentatie](/java/api/com.microsoft.azure.documentdb)|
-|**Bijdragen aan de SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**Aan de slag**|[Aan de slag met de Java-SDK](sql-api-java-get-started.md)|
-|**Zelfstudie-web-app**|[Ontwikkeling van webtoepassingen met Azure Cosmos DB](sql-api-java-application.md)|
-|**Minimaal ondersteunde runtime**|[Java Development Kit (JDK 7 +)](https://aka.ms/azure-jdks)|
+|**API-documentatie**|[Naslag documentatie voor Java API](/java/api/com.microsoft.azure.documentdb)|
+|**Bijdragen aan SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**Aan de slag**|[Aan de slag met de Java SDK](sql-api-java-get-started.md)|
+|**Zelf studie voor web-apps**|[Ontwikkeling van webtoepassingen met Azure Cosmos DB](sql-api-java-application.md)|
+|**Minimale ondersteunde runtime**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
@@ -127,7 +127,7 @@ De SQL API Java-SDK biedt ondersteuning voor synchrone bewerkingen. Voor asynchr
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 * Verbeterde prestaties van de Json-serialisatie.
-* Deze SDK-versie vereist de meest recente versie van Azure Cosmos DB Emulator beschikbaar voor downloaden van https://aka.ms/cosmosdb-emulator.
+* Voor deze SDK-versie is de nieuwste versie van Azure Cosmos DB emulator beschikbaar om te worden gedownload van https://aka.ms/cosmosdb-emulator.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 * Interne wijzigingen voor Microsoft vrienden bibliotheken.
@@ -212,7 +212,7 @@ De SQL API Java-SDK biedt ondersteuning voor synchrone bewerkingen. Voor asynchr
 * Toegevoegde tijd naar live (TTL) ondersteuning voor documenten.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
-* Geïmplementeerd [gepartitioneerde verzamelingen](partition-data.md) en [niveau van de gebruiker gedefinieerde prestaties](performance-levels.md).
+* Geïmplementeerde [gepartitioneerde verzamelingen](partition-data.md) en door de [gebruiker gedefinieerde prestatie niveaus](performance-levels.md).
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
 * Een bug opgelost in HashPartitionResolver voor het genereren van hash-waarden in weinig endian zodat deze overeenkomt met andere SDK's.
@@ -229,7 +229,7 @@ De SQL API Java-SDK biedt ondersteuning voor synchrone bewerkingen. Voor asynchr
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Ondersteunt georuimtelijke Index
-* Valideert de eigenschap ID voor alle resources. Kunnen geen id's voor resources bevatten?, /, #, \, tekens bevatten of eindigen met een spatie.
+* Valideert de eigenschap ID voor alle resources. Id's voor resources mogen geen?-,/, # \, tekens bevatten of eindigen met een spatie.
 * Nieuwe header 'index transformatie uitgevoerd' toevoegen aan ResourceResponse.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
@@ -239,7 +239,7 @@ De SQL API Java-SDK biedt ondersteuning voor synchrone bewerkingen. Voor asynchr
 * GA-SDK
 
 ## <a name="release-and-retirement-dates"></a>Release-en buiten gebruik stellen
-Microsoft biedt melding ten minste **12 maanden** voorafgaand aan buiten gebruik stellen van een SDK soepel te verwerken de overgang naar een nieuwere/ondersteunde versie.
+Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen van een SDK een melding ontvangen om de overgang naar een nieuwere/ondersteunde versie te versoepelen.
 
 Nieuwe functies en functionaliteit en -optimalisatie worden alleen toegevoegd aan de huidige SDK, daarom wordt aanbevolen dat u altijd een upgrade uitvoert naar de nieuwste SDK versie zo vroeg mogelijk.
 
@@ -251,16 +251,16 @@ Een aanvraag voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK w
 >
 
 > [!WARNING]
-> Alle versies van de SQL-SDK voor Java voorafgaand aan versie **1.0.0** zijn buiten gebruik gesteld op **en met 29 februari 2016**.
+> Alle versies van de SQL-SDK voor Java vóór versie **1.0.0** zijn ingetrokken op **29 februari 2016**.
 > 
 > 
 
 <br/>
 
-| Versie | Releasedatum | Vervaldatum |
+| Version | Releasedatum | Vervaldatum |
 | --- | --- | --- |
 | [2.1.3](#2.1.3) |13 maart 2018 |--- |
-| [2.1.2](#2.1.2) |9 maart 2018 |--- |
+| [omschreven](#2.1.2) |9 maart 2018 |--- |
 | [2.1.1](#2.1.1) |13 december 2018 |--- |
 | [2.1.0](#2.1.0) |20 november 2018 |--- |
 | [2.0.0](#2.0.0) |21 september 2018 |--- |
@@ -306,5 +306,5 @@ Een aanvraag voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK w
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Zie ook
-Zie voor meer informatie over Cosmos DB, [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) servicepagina.
+Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db.
 

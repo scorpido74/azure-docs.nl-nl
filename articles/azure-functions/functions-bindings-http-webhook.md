@@ -72,7 +72,7 @@ public static async Task<IActionResult> Run(
 
 In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie zoekt naar een `name`-para meter in de query reeks of de hoofd tekst van de HTTP-aanvraag.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -97,7 +97,7 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-De [configuratie](#trigger---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
 
 Dit is C# de script code die wordt gekoppeld aan `HttpRequest`:
 
@@ -148,7 +148,7 @@ public class Person {
 
 In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie zoekt naar een `name`-para meter in de query reeks of de hoofd tekst van de HTTP-aanvraag.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -169,7 +169,7 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-De [configuratie](#trigger---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
 
 Dit is de JavaScript-code:
 
@@ -197,7 +197,7 @@ module.exports = function(context, req) {
 
 In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie zoekt naar een `name`-para meter in de query reeks of de hoofd tekst van de HTTP-aanvraag.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -219,7 +219,7 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-De [configuratie](#trigger---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#trigger---configuration) sectie worden deze eigenschappen uitgelegd.
 
 Dit is de python-code:
 
@@ -258,7 +258,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 In de volgende voor beelden ziet u de binding HTTP-trigger in een *Function. json* -bestand en de respectieve [Java-functies](functions-reference-java.md) die gebruikmaken van de binding. 
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -513,15 +513,15 @@ Zie voor een volledig voor beeld het [voor beeld](#trigger---example)van de trig
 
 ## <a name="trigger---configuration"></a>Trigger - configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `HttpTrigger` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `HttpTrigger`.
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-| **type** | n.v.t.| Vereist: moet worden ingesteld op `httpTrigger`. |
-| **direction** | n.v.t.| Vereist: moet worden ingesteld op `in`. |
-| **De naam** | n.v.t.| Vereist: de naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. |
+| **type** | N.v.t.| Vereist: moet worden ingesteld op `httpTrigger`. |
+| **direction** | N.v.t.| Vereist: moet worden ingesteld op `in`. |
+| **naam** | N.v.t.| Vereist: de naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Bepaalt welke sleutels, indien aanwezig, moeten aanwezig zijn in de aanvraag om de functie te kunnen aanroepen. Het autorisatie niveau kan een van de volgende waarden hebben: <ul><li><code>anonymous</code>&mdash;er is geen API-sleutel vereist.</li><li><code>function</code>&mdash;een functie-specifieke API-sleutel is vereist. Dit is de standaard waarde als er geen is ingesteld.</li><li><code>admin</code>&mdash;de hoofd sleutel is vereist.</li></ul> Zie de sectie over [autorisatie sleutels](#authorization-keys)voor meer informatie. |
-| **methods** |**Technieken** | Een matrix van de HTTP-methoden waarop de functie reageert. Als deze niet wordt opgegeven, reageert de functie op alle HTTP-methoden. Zie [het HTTP-eind punt aanpassen](#customize-the-http-endpoint). |
+| **technieken** |**Technieken** | Een matrix van de HTTP-methoden waarop de functie reageert. Als deze niet wordt opgegeven, reageert de functie op alle HTTP-methoden. Zie [het HTTP-eind punt aanpassen](#customize-the-http-endpoint). |
 | **rond** | **Rond** | Hiermee wordt de route sjabloon gedefinieerd, waarmee wordt bepaald welke Url's van aanvragen uw functie reageert. De standaard waarde als er geen wordt gegeven, is `<functionname>`. Zie [het HTTP-eind punt aanpassen](#customize-the-http-endpoint)voor meer informatie. |
 | **webHookType** | **WebHookType** | _Alleen ondersteund voor de runtime van versie 1. x._<br/><br/>Hiermee wordt de HTTP-trigger geconfigureerd om te fungeren als een [webhook](https://en.wikipedia.org/wiki/Webhook) -ontvanger voor de opgegeven provider. Stel de eigenschap `methods` niet in als u deze eigenschap instelt. Het type webhook kan een van de volgende waarden hebben:<ul><li><code>genericJson</code>&mdash;een eind punt voor een webhook voor algemene doel einden zonder logica voor een specifieke provider. Met deze instelling worden aanvragen beperkt tot gebruikers met behulp van HTTP POST en met het inhouds type `application/json`.</li><li><code>github</code>&mdash;de functie reageert op [github-webhooks](https://developer.github.com/webhooks/). Gebruik niet de eigenschap _authLevel_ met github-webhooks. Zie de sectie GitHub-webhooks verderop in dit artikel voor meer informatie.</li><li><code>slack</code>&mdash;de functie reageert op [toegestane webhooks](https://api.slack.com/outgoing-webhooks). Gebruik niet de eigenschap _authLevel_ met toegestane webhooks. Zie de sectie over toegestane webhooks verderop in dit artikel voor meer informatie.</li></ul>|
 
@@ -880,9 +880,9 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 
 |Eigenschap  |Beschrijving  |
 |---------|---------|
-| **type** |Moet worden ingesteld op `http`. |
-| **direction** | Moet worden ingesteld op `out`. |
-| **De naam** | De naam van de variabele die wordt gebruikt in de functie code voor het antwoord of `$return` om de retour waarde te gebruiken. |
+| **type** |moet worden ingesteld op `http`. |
+| **direction** | moet worden ingesteld op `out`. |
+| **naam** | De naam van de variabele die wordt gebruikt in de functie code voor het antwoord of `$return` om de retour waarde te gebruiken. |
 
 ## <a name="output---usage"></a>Uitvoer - gebruik
 
@@ -895,7 +895,7 @@ Zie voor beeld van antwoorden het [voor beeld](#trigger---example)van de trigger
 In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x en hoger. In het voor beeld van een host. JSON-bestand bevat alleen de instellingen van versie 2. x + voor deze binding. Zie voor meer informatie over globale configuratie-instellingen in versie 2. x en hoger de [verwijzing host. json voor Azure functions](functions-host-json.md).
 
 > [!NOTE]
-> Voor een verwijzing van host.json in functies 1.x, Zie [naslaginformatie over host.json voor Azure Functions 1.x](functions-host-json-v1.md#http).
+> Zie [host. json Reference voor Azure functions 1. x](functions-host-json-v1.md#http)voor een verwijzing naar de host. json in functions 1. x.
 
 ```json
 {
@@ -929,4 +929,4 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over Azure functions-triggers en bindingen](functions-triggers-bindings.md)
+[Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)

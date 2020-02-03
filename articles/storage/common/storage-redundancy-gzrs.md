@@ -29,11 +29,11 @@ Alleen voor algemeen gebruik v2-opslag accounts bieden ondersteuning voor GZRS e
 
 GZRS en RA-GZRS zijn momenteel beschikbaar als preview-versie in de volgende regio's:
 
-- Azië (zuidoost)
-- Europa (noord)
-- Europa (west)
-- Japan - Oost
-- UK - zuid
+- Azië - zuidoost
+- Europa - noord
+- Europa - west
+- Japan - oost
+- Verenigd Koninkrijk Zuid
 - US - oost
 - US - oost 2
 - US - centraal

@@ -21,13 +21,13 @@ In dit artikel wordt uitgelegd hoe u tekst berichten verzendt met behulp van [Tw
 
 ## <a name="packages---functions-1x"></a>Pakketten - functies 1.x
 
-De Twilio-bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-pakket, versie 1. x. Broncode voor het pakket is in de [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub-opslagplaats.
+De Twilio-bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-pakket, versie 1. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) .
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x-and-higher"></a>Pakketten-functions 2. x en hoger
 
-De Twilio-bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-pakket, versie 3. x. Broncode voor het pakket is in de [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub-opslagplaats.
+De Twilio-bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet-pakket, versie 3. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) .
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -291,7 +291,7 @@ public class TwilioOutput {
 
 Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) .
 
-Zie [configuratie](#configuration)voor informatie over kenmerk eigenschappen die u kunt configureren. Hier volgt een `TwilioSms` kenmerk voorbeeld in een handtekeningmethode:
+Zie [configuratie](#configuration)voor informatie over kenmerk eigenschappen die u kunt configureren. Hier volgt een voor beeld van een `TwilioSms` kenmerk in een methode handtekening:
 
 ```csharp
 [FunctionName("QueueTwilio")]
@@ -325,22 +325,22 @@ Plaats [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `TwilioSms` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `TwilioSms`.
 
 | v1 function. json-eigenschap | v2 function. json-eigenschap | De kenmerkeigenschap |Beschrijving|
 |---------|---------|---------|----------------------|
 |**type**|**type**| moet worden ingesteld op `twilioSms`.|
 |**direction**|**direction**| moet worden ingesteld op `out`.|
-|**De naam**|**De naam**| De naam van de variabele die wordt gebruikt in de functie code voor het SMS-tekst bericht van Twilio. |
+|**naam**|**naam**| De naam van de variabele die wordt gebruikt in de functie code voor het SMS-tekst bericht van Twilio. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Deze waarde moet worden ingesteld op de naam van een app-instelling die uw Twilio-account-sid (`TwilioAccountSid`) bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling ' AzureWebJobsTwilioAccountSid '. |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Deze waarde moet worden ingesteld op de naam van een app-instelling die uw Twilio-verificatie token (`TwilioAccountAuthToken`) bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling ' AzureWebJobsTwilioAuthToken '. |
-|**to**| N.v.t.-opgeven in code | **Aan**| Deze waarde wordt ingesteld op het telefoon nummer waarnaar de SMS-tekst wordt verzonden.|
-|**Van**|**Van** | **From**| Deze waarde wordt ingesteld op het telefoon nummer van waaruit de SMS-tekst wordt verzonden.|
-|**body**|**body** | **Hoofdtekst**| Deze waarde kan worden gebruikt om het SMS-tekst bericht vast te maken als u het niet dynamisch hoeft in te stellen in de code voor uw functie. |  
+|**Aan**| N.v.t.-opgeven in code | **Aan**| Deze waarde wordt ingesteld op het telefoon nummer waarnaar de SMS-tekst wordt verzonden.|
+|**Van**|**Van** | **Van**| Deze waarde wordt ingesteld op het telefoon nummer van waaruit de SMS-tekst wordt verzonden.|
+|**organen**|**organen** | **Hoofdtekst**| Deze waarde kan worden gebruikt om het SMS-tekst bericht vast te maken als u het niet dynamisch hoeft in te stellen in de code voor uw functie. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Azure functions-triggers en bindingen](functions-triggers-bindings.md)
+> [Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)

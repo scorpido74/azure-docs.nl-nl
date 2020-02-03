@@ -21,7 +21,7 @@ In dit artikel wordt beschreven hoe u de portal kunt gebruiken om de status van 
 
 Event Grid biedt een duurzame levering. Het levert elk bericht ten minste één keer per abonnement. Gebeurtenissen worden direct naar de geregistreerde webhook van elk abonnement verzonden. Als een webhook de ontvangst van een gebeurtenis binnen 60 seconden van de eerste bezorgings poging niet bevestigt, Event Grid nieuwe pogingen van de gebeurtenis.
 
-Voor informatie over de bezorging van gebeurtenissen en nieuwe pogingen, [bezorging van berichten van Event Grid en probeer het opnieuw](delivery-and-retry.md).
+[Event grid aflevering van berichten en probeer het opnieuw](delivery-and-retry.md).
 
 ## <a name="delivery-metrics"></a>Metrische leverings gegevens
 
@@ -84,6 +84,6 @@ U kunt waarschuwingen instellen voor het onderwerp en metrische gegevens op dome
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor informatie over de bezorging van gebeurtenissen en nieuwe pogingen, [bezorging van berichten van Event Grid en probeer het opnieuw](delivery-and-retry.md).
+* [Event grid aflevering van berichten en probeer het opnieuw](delivery-and-retry.md).
 * Zie [Een inleiding tot Event Grid](overview.md) voor een inleiding tot Event Grid.
-* Als u wilt snel aan de slag met Event Grid, Zie [aangepaste gebeurtenissen maken en routeren met Azure Event Grid](custom-event-quickstart.md).
+* Zie [aangepaste gebeurtenissen maken en routeren met Azure Event grid](custom-event-quickstart.md)om snel aan de slag te gaan met Event grid.

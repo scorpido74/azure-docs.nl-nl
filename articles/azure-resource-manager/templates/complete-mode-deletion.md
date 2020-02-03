@@ -22,154 +22,154 @@ Als u naar [meer dan één resource groep in een sjabloon](cross-resource-group-
 
 Ga naar de naam ruimte van een resource provider:
 > [!div class="op_single_selector"]
-> - [Microsoft.AAD](#microsoftaad)
+> - [Micro soft. AAD](#microsoftaad)
 > - [Micro soft. Addons](#microsoftaddons)
 > - [Micro soft. ADHybridHealthService](#microsoftadhybridhealthservice)
 > - [Micro soft. Advisor](#microsoftadvisor)
-> - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
-> - [Microsoft.AnalysisServices](#microsoftanalysisservices)
-> - [Microsoft.ApiManagement](#microsoftapimanagement)
-> - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [Micro soft. AlertsManagement](#microsoftalertsmanagement)
+> - [Micro soft. AnalysisServices](#microsoftanalysisservices)
+> - [Micro soft. ApiManagement](#microsoftapimanagement)
+> - [Micro soft. AppConfiguration](#microsoftappconfiguration)
 > - [Micro soft. AppPlatform](#microsoftappplatform)
 > - [Micro soft. Attestation](#microsoftattestation)
 > - [Microsoft.Authorization](#microsoftauthorization)
-> - [Microsoft.Automation](#microsoftautomation)
+> - [Micro soft. Automation](#microsoftautomation)
 > - [Micro soft. Azconfig](#microsoftazconfig)
 > - [Micro soft. Azure. Genève](#microsoftazuregeneva)
-> - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
+> - [Micro soft. AzureActiveDirectory](#microsoftazureactivedirectory)
 > - [Micro soft. Azureworden](#microsoftazuredata)
-> - [Microsoft.AzureStack](#microsoftazurestack)
-> - [Microsoft.Batch](#microsoftbatch)
+> - [Micro soft. AzureStack](#microsoftazurestack)
+> - [Micro soft. batch](#microsoftbatch)
 > - [Micro soft. billing](#microsoftbilling)
-> - [Microsoft.BingMaps](#microsoftbingmaps)
-> - [Microsoft.Blockchain](#microsoftblockchain)
-> - [Microsoft.Blueprint](#microsoftblueprint)
-> - [Microsoft.BotService](#microsoftbotservice)
-> - [Microsoft.Cache](#microsoftcache)
+> - [Micro soft. BingMaps](#microsoftbingmaps)
+> - [Micro soft. Block Chain](#microsoftblockchain)
+> - [Micro soft. blauw druk](#microsoftblueprint)
+> - [Micro soft. BotService](#microsoftbotservice)
+> - [Micro soft. cache](#microsoftcache)
 > - [Micro soft. capacity](#microsoftcapacity)
-> - [Microsoft.Cdn](#microsoftcdn)
-> - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
-> - [Microsoft.ClassicCompute](#microsoftclassiccompute)
+> - [Micro soft. CDN](#microsoftcdn)
+> - [Micro soft. CertificateRegistration](#microsoftcertificateregistration)
+> - [Micro soft. ClassicCompute](#microsoftclassiccompute)
 > - [Micro soft. ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
-> - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
-> - [Microsoft.ClassicStorage](#microsoftclassicstorage)
-> - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
+> - [Micro soft. ClassicNetwork](#microsoftclassicnetwork)
+> - [Micro soft. ClassicStorage](#microsoftclassicstorage)
+> - [Micro soft. CognitiveServices](#microsoftcognitiveservices)
 > - [Micro soft. commerce](#microsoftcommerce)
-> - [Microsoft.Compute](#microsoftcompute)
+> - [Micro soft. compute](#microsoftcompute)
 > - [Micro soft. verbruik](#microsoftconsumption)
-> - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
-> - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
-> - [Microsoft.ContainerService](#microsoftcontainerservice)
-> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
-> - [Microsoft.CostManagement](#microsoftcostmanagement)
+> - [Micro soft. ContainerInstance](#microsoftcontainerinstance)
+> - [Micro soft. ContainerRegistry](#microsoftcontainerregistry)
+> - [Micro soft. container service](#microsoftcontainerservice)
+> - [Micro soft. CortanaAnalytics](#microsoftcortanaanalytics)
+> - [Micro soft. CostManagement](#microsoftcostmanagement)
 > - [Micro soft. CustomerLockbox](#microsoftcustomerlockbox)
 > - [Micro soft. CustomProviders](#microsoftcustomproviders)
-> - [Microsoft.DataBox](#microsoftdatabox)
-> - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
-> - [Microsoft.Databricks](#microsoftdatabricks)
-> - [Microsoft.DataCatalog](#microsoftdatacatalog)
-> - [Microsoft.DataFactory](#microsoftdatafactory)
-> - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
-> - [Microsoft.DataLakeStore](#microsoftdatalakestore)
-> - [Microsoft.DataMigration](#microsoftdatamigration)
+> - [Micro soft. DataBox](#microsoftdatabox)
+> - [Micro soft. DataBoxEdge](#microsoftdataboxedge)
+> - [Micro soft. Databricks](#microsoftdatabricks)
+> - [Micro soft. DataCatalog](#microsoftdatacatalog)
+> - [Micro soft. DataFactory](#microsoftdatafactory)
+> - [Micro soft. DataLakeAnalytics](#microsoftdatalakeanalytics)
+> - [Micro soft. data Lake Store](#microsoftdatalakestore)
+> - [Micro soft. DataMigration](#microsoftdatamigration)
 > - [Micro soft. DataShare](#microsoftdatashare)
-> - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
-> - [Microsoft.DBforMySQL](#microsoftdbformysql)
-> - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
-> - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
+> - [Micro soft. DBforMariaDB](#microsoftdbformariadb)
+> - [Micro soft. DBforMySQL](#microsoftdbformysql)
+> - [Micro soft. DBforPostgreSQL](#microsoftdbforpostgresql)
+> - [Micro soft. DeploymentManager](#microsoftdeploymentmanager)
 > - [Micro soft. DesktopVirtualization](#microsoftdesktopvirtualization)
-> - [Microsoft.Devices](#microsoftdevices)
+> - [Micro soft.-apparaten](#microsoftdevices)
 > - [Micro soft. DevOps](#microsoftdevops)
-> - [Microsoft.DevSpaces](#microsoftdevspaces)
-> - [Microsoft.DevTestLab](#microsoftdevtestlab)
-> - [Microsoft.DocumentDB](#microsoftdocumentdb)
-> - [Microsoft.DomainRegistration](#microsoftdomainregistration)
+> - [Micro soft. DevSpaces](#microsoftdevspaces)
+> - [Micro soft. DevTestLab](#microsoftdevtestlab)
+> - [Micro soft. DocumentDB](#microsoftdocumentdb)
+> - [Micro soft. DomainRegistration](#microsoftdomainregistration)
 > - [Micro soft. DynamicsLcs](#microsoftdynamicslcs)
-> - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
-> - [Microsoft.EventGrid](#microsofteventgrid)
-> - [Microsoft.EventHub](#microsofteventhub)
+> - [Micro soft. EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
+> - [Micro soft. EventGrid](#microsofteventgrid)
+> - [Micro soft. EventHub](#microsofteventhub)
 > - [Micro soft. features](#microsoftfeatures)
 > - [Micro soft. Gallery](#microsoftgallery)
-> - [Microsoft.Genomics](#microsoftgenomics)
+> - [Micro soft. Genomics](#microsoftgenomics)
 > - [Micro soft. GuestConfiguration](#microsoftguestconfiguration)
-> - [Microsoft.HanaOnAzure](#microsofthanaonazure)
+> - [Micro soft. HanaOnAzure](#microsofthanaonazure)
 > - [Micro soft. HardwareSecurityModules](#microsofthardwaresecuritymodules)
-> - [Microsoft.HDInsight](#microsofthdinsight)
-> - [Microsoft.HealthcareApis](#microsofthealthcareapis)
-> - [Microsoft.HybridCompute](#microsofthybridcompute)
-> - [Microsoft.HybridData](#microsofthybriddata)
+> - [Micro soft. HDInsight](#microsofthdinsight)
+> - [Micro soft. HealthcareApis](#microsofthealthcareapis)
+> - [Micro soft. HybridCompute](#microsofthybridcompute)
+> - [Micro soft. HybridData](#microsofthybriddata)
 > - [Micro soft. Hydra](#microsofthydra)
-> - [Microsoft.ImportExport](#microsoftimportexport)
+> - [Micro soft. ImportExport](#microsoftimportexport)
 > - [Micro soft. intune](#microsoftintune)
-> - [Microsoft.IoTCentral](#microsoftiotcentral)
-> - [Microsoft.IoTSpaces](#microsoftiotspaces)
-> - [Microsoft.KeyVault](#microsoftkeyvault)
-> - [Microsoft.Kusto](#microsoftkusto)
-> - [Microsoft.LabServices](#microsoftlabservices)
-> - [Microsoft.Logic](#microsoftlogic)
-> - [Microsoft.MachineLearning](#microsoftmachinelearning)
-> - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
-> - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
+> - [Micro soft. IoTCentral](#microsoftiotcentral)
+> - [Micro soft. IoTSpaces](#microsoftiotspaces)
+> - [Micro soft.-sleutel kluis](#microsoftkeyvault)
+> - [Micro soft. Kusto](#microsoftkusto)
+> - [Micro soft. LabServices](#microsoftlabservices)
+> - [Micro soft. Logic](#microsoftlogic)
+> - [Micro soft. MachineLearning](#microsoftmachinelearning)
+> - [Micro soft. MachineLearningServices](#microsoftmachinelearningservices)
+> - [Micro soft. ManagedIdentity](#microsoftmanagedidentity)
 > - [Micro soft. ManagedServices](#microsoftmanagedservices)
 > - [Micro soft. Management](#microsoftmanagement)
-> - [Microsoft.Maps](#microsoftmaps)
+> - [Micro soft. Maps](#microsoftmaps)
 > - [Micro soft. Marketplace](#microsoftmarketplace)
-> - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
+> - [Micro soft. MarketplaceApps](#microsoftmarketplaceapps)
 > - [Micro soft. MarketplaceOrdering](#microsoftmarketplaceordering)
-> - [Microsoft.Media](#microsoftmedia)
+> - [Micro soft. Media](#microsoftmedia)
 > - [Micro soft. Microservices4Spring](#microsoftmicroservices4spring)
-> - [Microsoft.Migrate](#microsoftmigrate)
+> - [Micro soft. migrate](#microsoftmigrate)
 > - [Micro soft. MixedReality](#microsoftmixedreality)
-> - [Microsoft.NetApp](#microsoftnetapp)
-> - [Microsoft.Network](#microsoftnetwork)
-> - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Micro soft. NetApp](#microsoftnetapp)
+> - [Micro soft. Network](#microsoftnetwork)
+> - [Micro soft. notification hubs](#microsoftnotificationhubs)
 > - [Micro soft. ObjectStore](#microsoftobjectstore)
 > - [Micro soft. OffAzure](#microsoftoffazure)
-> - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
-> - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
-> - [Microsoft.Peering](#microsoftpeering)
+> - [Micro soft. OperationalInsights](#microsoftoperationalinsights)
+> - [Micro soft. OperationsManagement](#microsoftoperationsmanagement)
+> - [Micro soft. peering](#microsoftpeering)
 > - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
-> - [Microsoft.Portal](#microsoftportal)
-> - [Microsoft.PowerBI](#microsoftpowerbi)
-> - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
+> - [Micro soft. Portal](#microsoftportal)
+> - [Micro soft. PowerBI](#microsoftpowerbi)
+> - [Micro soft. PowerBIDedicated](#microsoftpowerbidedicated)
 > - [Micro soft. ProjectBabylon](#microsoftprojectbabylon)
-> - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
-> - [Microsoft.Relay](#microsoftrelay)
+> - [Micro soft. Recovery Services](#microsoftrecoveryservices)
+> - [Micro soft. relay](#microsoftrelay)
 > - [Micro soft. RemoteApp](#microsoftremoteapp)
 > - [Micro soft. ResourceGraph](#microsoftresourcegraph)
 > - [Micro soft. ResourceHealth](#microsoftresourcehealth)
 > - [Micro soft. resources](#microsoftresources)
-> - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Scheduler](#microsoftscheduler)
-> - [Microsoft.Search](#microsoftsearch)
-> - [Microsoft.Security](#microsoftsecurity)
+> - [Micro soft. SaaS](#microsoftsaas)
+> - [Micro soft. scheduler](#microsoftscheduler)
+> - [Micro soft. Search](#microsoftsearch)
+> - [Micro soft. Security](#microsoftsecurity)
 > - [Micro soft. SecurityGraph](#microsoftsecuritygraph)
 > - [Micro soft. SecurityInsights](#microsoftsecurityinsights)
 > - [Microsoft.ServiceBus](#microsoftservicebus)
-> - [Microsoft.ServiceFabric](#microsoftservicefabric)
-> - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
+> - [Micro soft. ServiceFabric](#microsoftservicefabric)
+> - [Micro soft. ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Micro soft. Services](#microsoftservices)
-> - [Microsoft.SignalRService](#microsoftsignalrservice)
-> - [Microsoft.SiteRecovery](#microsoftsiterecovery)
+> - [Micro soft. SignalRService](#microsoftsignalrservice)
+> - [Micro soft. SiteRecovery](#microsoftsiterecovery)
 > - [Micro soft. SoftwarePlan](#microsoftsoftwareplan)
-> - [Microsoft.Solutions](#microsoftsolutions)
+> - [Micro soft. Solutions](#microsoftsolutions)
 > - [Micro soft. SQL](#microsoftsql)
-> - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
-> - [Microsoft.Storage](#microsoftstorage)
-> - [Microsoft.StorageCache](#microsoftstoragecache)
+> - [Micro soft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
+> - [Micro soft. Storage](#microsoftstorage)
+> - [Micro soft. StorageCache](#microsoftstoragecache)
 > - [Micro soft. StorageReplication](#microsoftstoragereplication)
-> - [Microsoft.StorageSync](#microsoftstoragesync)
-> - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
-> - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
-> - [Microsoft.StorSimple](#microsoftstorsimple)
-> - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
+> - [Micro soft. StorageSync](#microsoftstoragesync)
+> - [Micro soft. StorageSyncDev](#microsoftstoragesyncdev)
+> - [Micro soft. StorageSyncInt](#microsoftstoragesyncint)
+> - [Micro soft. StorSimple](#microsoftstorsimple)
+> - [Micro soft. StreamAnalytics](#microsoftstreamanalytics)
 > - [Micro soft. Subscription](#microsoftsubscription)
-> - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
-> - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Micro soft. TimeSeriesInsights](#microsofttimeseriesinsights)
+> - [Micro soft. VMwareCloudSimple](#microsoftvmwarecloudsimple)
 > - [Micro soft. VnfManager](#microsoftvnfmanager)
-> - [Microsoft.Web](#microsoftweb)
+> - [Micro soft. Web](#microsoftweb)
 > - [Micro soft. WindowsDefenderATP](#microsoftwindowsdefenderatp)
-> - [Microsoft.WindowsIoT](#microsoftwindowsiot)
+> - [Micro soft. WindowsIoT](#microsoftwindowsiot)
 > - [Micro soft. WorkloadMonitor](#microsoftworkloadmonitor)
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
@@ -234,7 +234,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | servers | Ja |
+> | Server | Ja |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
@@ -457,7 +457,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | blockchainMembers | Ja |
 > | cordaMembers | Ja |
-> | kijkers | Ja |
+> | Volg | Ja |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
@@ -503,7 +503,7 @@ Ga naar de naam ruimte van een resource provider:
 > | calculatePurchasePrice | Nee |
 > | catalogi | Nee |
 > | commercialReservationOrders | Nee |
-> | exchange | Nee |
+> | Exchange | Nee |
 > | placePurchaseOrder | Nee |
 > | reservationOrders | Nee |
 > | reservationOrders / calculateRefund | Nee |
@@ -757,7 +757,7 @@ Ga naar de naam ruimte van een resource provider:
 > | afdeling | Nee |
 > | Dimensies | Nee |
 > | EnrollmentAccounts | Nee |
-> | Exports | Nee |
+> | dump | Nee |
 > | ExternalBillingAccounts | Nee |
 > | ExternalBillingAccounts/waarschuwingen | Nee |
 > | ExternalBillingAccounts/dimensies | Nee |
@@ -769,7 +769,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ExternalSubscriptions/prognose | Nee |
 > | ExternalSubscriptions/query | Nee |
 > | Functies | Nee |
-> | Query | Nee |
+> | Query's uitvoeren | Nee |
 > | inschrijving | Nee |
 > | Reportconfigs | Nee |
 > | Rapporten | Nee |
@@ -889,7 +889,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | servers | Ja |
+> | Server | Ja |
 > | servers/adviseurs | Nee |
 > | servers/sleutels | Nee |
 > | servers/privateEndpointConnectionProxies | Nee |
@@ -906,7 +906,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | servers | Ja |
+> | Server | Ja |
 > | servers/adviseurs | Nee |
 > | servers/sleutels | Nee |
 > | servers/privateEndpointConnectionProxies | Nee |
@@ -924,7 +924,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | serverGroups | Ja |
-> | servers | Ja |
+> | Server | Ja |
 > | servers/adviseurs | Nee |
 > | servers/sleutels | Nee |
 > | servers/privateEndpointConnectionProxies | Nee |
@@ -1076,7 +1076,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | database | Nee |
+> | functies | Nee |
 > | Providers | Nee |
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
@@ -1084,7 +1084,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | Inge | Nee |
+> | inschrijven | Nee |
 > | galleryitems | Nee |
 > | generateartifactaccessuri | Nee |
 > | myareas | Nee |
@@ -1198,7 +1198,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
-> | Grafiek | Ja |
+> | Graph | Ja |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -1253,7 +1253,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | commitmentPlans | Ja |
 > | webServices | Ja |
-> | Werkruimten | Ja |
+> | Workspaces | Ja |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
@@ -1853,7 +1853,7 @@ Ga naar de naam ruimte van een resource provider:
 > | managedInstances/sleutels | Nee |
 > | managedInstances / restorableDroppedDatabases / backupShortTermRetentionPolicies | Nee |
 > | managedInstances / vulnerabilityAssessments | Nee |
-> | servers | Ja |
+> | Server | Ja |
 > | servers/beheerders | Nee |
 > | servers/communicationLinks | Nee |
 > | servers/data bases | Ja |

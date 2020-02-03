@@ -30,7 +30,7 @@ Wanneer u een schaalset opschaalt, wordt er een nieuw exemplaar gemaakt. De nieu
 
 Als u uw cluster in de Azure Portal hebt geïmplementeerd of de voor beeld-Azure Resource Manager sjabloon hebt gebruikt, worden alle resources onder een resource groep weer gegeven. U kunt de load balancers voor elke schaalset of elk knooppunt type bekijken. De naam van de load balancer gebruikt de volgende indeling: **lb-&lt;knooppunt type naam&gt;** . Een voor beeld is LB-sfcluster4doc-0, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Resources][Resources]
+![Bronnen][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Extensie van de virtuele machine Service Fabric
 
@@ -72,19 +72,19 @@ Hier volgen de eigenschaps beschrijvingen:
 
 | **Naam** | **Toegestane waarden** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-| name | string | unieke naam voor extensie |
+| naam | tekenreeks | unieke naam voor extensie |
 | type | "ServiceFabricLinuxNode" of "ServiceFabricWindowsNode" | Geeft aan dat het besturings systeem Service Fabric Boots trapt |
 | autoUpgradeMinorVersion | true of false | Automatische upgrade van secundaire versies van SF runtime inschakelen |
 | publisher | Microsoft.Azure.ServiceFabric | De naam van de uitgever van de Service Fabric extensie |
-| clusterEndpont | string | URI: poort voor beheer eindpunt |
-| nodeTypeRef | string | naam van nodeType |
+| clusterEndpont | tekenreeks | URI: poort voor beheer eindpunt |
+| nodeTypeRef | tekenreeks | naam van nodeType |
 | durabilityLevel | bronze, silver, gold, platinum | tijd die is toegestaan voor het onderbreken van een onveranderlijke Azure-infra structuur |
 | enableParallelJobs | true of false | Schakel Compute ParallelJobs in zoals virtuele machine verwijderen en start VM opnieuw op in dezelfde schaalset als parallel |
-| nicPrefixOverride | string | Subnetvoorvoegsel zoals "10.0.0.0/24" |
+| nicPrefixOverride | tekenreeks | Subnetvoorvoegsel zoals "10.0.0.0/24" |
 | commonNames | string[] | Algemene namen van geïnstalleerde cluster certificaten |
-| x509StoreName | string | De naam van het archief waar het geïnstalleerde cluster certificaat zich bevindt |
+| x509StoreName | tekenreeks | De naam van het archief waar het geïnstalleerde cluster certificaat zich bevindt |
 | typeHandlerVersion | 1.1 | De versie van de extensie. 1,0 de klassieke versie van de uitbrei ding wordt aanbevolen om te upgraden naar 1,1 |
-| dataPath | string | Het pad naar het station dat wordt gebruikt om de status voor Service Fabric systeem services en toepassings gegevens op te slaan.
+| dataPath | tekenreeks | Het pad naar het station dat wordt gebruikt om de status voor Service Fabric systeem services en toepassings gegevens op te slaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

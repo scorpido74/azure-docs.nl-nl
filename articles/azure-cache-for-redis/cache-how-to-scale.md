@@ -31,7 +31,7 @@ Als u vaststelt dat uw cache niet langer voldoet aan de vereisten van uw toepass
 ## <a name="scale-a-cache"></a>Een cache schalen
 Als u de cache wilt schalen, [bladert u naar de cache](cache-configure.md#configure-azure-cache-for-redis-settings) in de [Azure Portal](https://portal.azure.com) en klikt u op **schalen** in het **menu resource**.
 
-![Schaal](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![Schalen](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
 Selecteer de gewenste prijs categorie op de Blade **prijs categorie selecteren** en klik op **selecteren**.
 

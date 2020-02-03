@@ -50,13 +50,13 @@ Voer de volgende stappen uit om de meta gegevens of het certificaat van de toepa
 
 2. Open de **uitbrei ding Azure Active Directory** door te klikken op **alle services** boven aan het hoofd navigatie menu aan de linkerkant.
 
-3. Typ in **' Azure Active Directory**' in het zoekvak van filter en selecteer de **Azure Active Directory** item.
+3. Typ **' Azure Active Directory**' in het vak Zoek opdracht filteren en selecteer het **Azure Active Directory** item.
 
 4. Klik op **bedrijfs toepassingen** in het navigatie menu Azure Active Directory aan de linkerkant.
 
 5. Klik op **alle toepassingen** om een lijst met al uw toepassingen weer te geven.
 
-   * Als u de toepassing die u wilt weergeven die hier niet ziet, gebruikt u de **Filter** besturingselement aan de bovenkant van de **lijst met alle toepassingen** en stel de **weergeven** optie naar **alle Toepassingen.**
+   * Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u het **filter** besturings element boven aan de **lijst alle toepassingen** en stelt u de optie voor het **weer geven** van **alle toepassingen in.**
 
 6. Selecteer de toepassing waarvoor u eenmalige aanmelding hebt geconfigureerd.
 

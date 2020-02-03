@@ -36,7 +36,7 @@ U kunt open bare omgevingen inschakelen/uitschakelen voor uw Lab en alleen speci
 
 1. Selecteer **configuratie en beleid** voor uw Lab. 
 2. Selecteer in het gedeelte **virtuele machine bases** de optie **open bare omgevingen**.
-3. Als u open bare omgevingen voor het Lab wilt inschakelen, selecteert u **Ja**. Selecteer anders **Nee**. 
+3. Als u open bare omgevingen voor het Lab wilt inschakelen, selecteert u **Ja**. Anders selecteert u **Nee**. 
 4. Als u open bare omgevingen hebt ingeschakeld, worden alle omgevingen in de opslag plaats standaard ingeschakeld. U kunt de selectie van een omgeving ongedaan maken zodat deze niet beschikbaar is voor uw Lab-gebruikers. 
 
 ![Pagina open bare omgevingen](media/devtest-lab-configure-use-public-environments/public-environments-page.png)

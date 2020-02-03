@@ -20,7 +20,7 @@ Er zijn client bibliotheken nodig voor client toepassingen en hulpprogram ma's o
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Down load de nieuwste client bibliotheken (Windows Installer)  
 
-|Download  |Product versie  | 
+|Downloaden  |Product versie  | 
 |---------|---------|
 |[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.21.27    |
 |[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.21.27       |

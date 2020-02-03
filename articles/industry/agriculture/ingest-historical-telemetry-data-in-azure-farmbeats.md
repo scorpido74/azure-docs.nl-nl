@@ -59,7 +59,7 @@ Volg deze stappen.
 
 8. Ga naar de map waarin het bestand is geüpload. Standaard worden bestanden in de hoofdmap van de gebruikers naam geüpload naar de basismap.
 
-9. Voer het volgende script uit. Het script vraagt om de Tenant-ID die kan worden verkregen op basis van Azure Active Directory-> overzichts pagina.
+9. Voer het volgende script uit: Het script vraagt om de Tenant-ID die kan worden verkregen op basis van Azure Active Directory-> overzichts pagina.
 
     ```azurepowershell-interactive 
 
@@ -126,7 +126,7 @@ Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over o
 
 Als u een API-aanvraag wilt maken, combineert u de HTTP-methode (POST), de URL naar de API-service en de URI naar een resource om een query uit te voeren, gegevens te verzenden naar, te maken of te verwijderen. Vervolgens voegt u een of meer HTTP-aanvraag headers toe. De URL van de API-service is het API-eind punt, dat wil zeggen, de Datahub-URL (https://\<yourdatahub >. azurewebsites. net).  
 
-### <a name="authentication"></a>Verificatie
+### <a name="authentication"></a>Authentication
 
 FarmBeats Datahub maakt gebruik van Bearer-verificatie, die de volgende referenties nodig heeft die zijn gegenereerd in de vorige sectie:
 

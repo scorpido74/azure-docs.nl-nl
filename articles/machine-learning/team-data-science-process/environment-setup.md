@@ -21,19 +21,19 @@ ms.locfileid: "76722217"
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Gegevenswetenschapomgevingen instellen voor gebruik in Team Data Science Process
 Het Team Data Science Process maakt gebruik van verschillende gegevenswetenschapomgevingen voor de opslag, verwerking en analyse van gegevens. Ze bevatten verschillende typen virtuele machines van Azure, HDInsight (Hadoop)-clusters en Azure Machine Learning-werkruimten in Azure Blob Storage. De beslissing over welke omgeving u wilt gebruiken is afhankelijk van het type en de hoeveelheid gegevens die worden gemodelleerd en de bestemming voor die gegevens in de cloud. 
 
-* Zie voor hulp bij het vragen om te overwegen bij het maken van deze beslissing, [van plan bent uw Azure Machine Learning Data Science-omgeving](plan-your-environment.md). 
-* Zie voor een catalogus van enkele van de scenario's die optreden tijdens het uitvoeren van geavanceerde analyses, [scenario's voor het Team Data Science Process](plan-sample-scenarios.md)
+* Zie [uw Azure machine learning data Science Environment plannen](plan-your-environment.md)voor meer informatie over vragen over het nemen van deze beslissing. 
+* Zie [scenario's voor het team data Science process](plan-sample-scenarios.md) voor een catalogus met een aantal scenario's die u kunt tegen komen bij het uitvoeren van geavanceerde analyses.
 
 De volgende artikelen wordt beschreven hoe u de verschillende data science-omgevingen die worden gebruikt door het Team Data Science Process instelt.
 
-* [Azure storage-account](../../storage/common/storage-account-create.md)
-* [HDInsight (Hadoop)-cluster](customize-hadoop-cluster.md)
+* [Azure-opslag account](../../storage/common/storage-account-create.md)
+* [HDInsight-cluster (Hadoop)](customize-hadoop-cluster.md)
 * [Azure Machine Learning Studio (klassieke) werk ruimte](../studio/create-workspace.md)
 
-De **Microsoft Data Science Virtual Machine (DSVM)** is ook beschikbaar als een installatiekopie van een virtuele Azure-machine (VM). Deze virtuele machine is vooraf geïnstalleerd en geconfigureerd met verschillende populaire hulpprogramma's die vaak worden gebruikt voor gegevensanalyse en machine learning. De DSVM is beschikbaar voor zowel Windows als Linux. Zie voor meer informatie, [inleiding op de cloud gebaseerde Data Science Virtual Machine voor Linux en Windows](../data-science-virtual-machine/overview.md).
+**Micro soft data Science virtual machine (DSVM)** is ook beschikbaar als een installatie kopie van een virtuele machine van Azure (VM). Deze virtuele machine is vooraf geïnstalleerd en geconfigureerd met verschillende populaire hulpprogramma's die vaak worden gebruikt voor gegevensanalyse en machine learning. De DSVM is beschikbaar voor zowel Windows als Linux. Zie [Introduction to the cloud data Science virtual machine voor Linux en Windows](../data-science-virtual-machine/overview.md)voor meer informatie.
 
 Meer informatie over het maken van:
 
 - [Windows DSVM](../data-science-virtual-machine/provision-vm.md)
-- [Ubuntu-DSVM](../data-science-virtual-machine/dsvm-ubuntu-intro.md)
+- [Ubuntu DSVM](../data-science-virtual-machine/dsvm-ubuntu-intro.md)
 - [CentOS DSVM](../data-science-virtual-machine/linux-dsvm-intro.md)

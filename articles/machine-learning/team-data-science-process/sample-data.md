@@ -18,17 +18,17 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76718600"
 ---
-# <a name="heading"></a>Voorbeeldgegevens in Azure blob-containers, SQL Server en Hive-tabellen
+# <a name="heading"></a>Voorbeeld gegevens in Azure Blob-containers, SQL Server en Hive-tabellen
 
 De volgende artikelen wordt beschreven hoe u voorbeeldgegevens die zijn opgeslagen in een van drie verschillende Azure-locaties:
 
-* [**Azure blob-containergegevens** ](sample-data-blob.md) verzameld door via een programma downloaden en deze vervolgens een steekproef met Python-voorbeeldcode.
-* [**SQL Server-gegevens** ](sample-data-sql-server.md) verzameld met behulp van zowel SQL als de taal voor het programmeren van Python. 
-* [**Hive-tabelgegevens** ](sample-data-hive.md) verzameld met behulp van Hive-query's.
+* De gegevens van de [**Azure Blob-container**](sample-data-blob.md) worden voor bereid door deze programmatisch te downloaden en vervolgens te bemonsteren met een voor beeld van python-code.
+* [**SQL Server gegevens**](sample-data-sql-server.md) worden bemonsterd met behulp van SQL en de python-programmeer taal. 
+* Voor de [**Hive-tabel gegevens**](sample-data-hive.md) wordt gebruikgemaakt van Hive-query's.
 
-Deze taak steekproeven is een stap in de [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Deze steekproef taak is een stap in het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-**Waarom sample van gegevens?**
+**Waarom voorbeeld gegevens?**
 
 Als de gegevensset die u van plan bent om te analyseren groot is, is het doorgaans een goed idee om down-sampling van de gegevens om deze aan de grootte van een kleiner, maar representatieve en gemakkelijker. Overweeg kan bijdragen aan het leren, verkennen en functie techniek. Deze steekproef rol in het proces van Cortana Analytics is het snel maken van prototypen van de functies voor gegevens verwerking en het machine learning model.
 

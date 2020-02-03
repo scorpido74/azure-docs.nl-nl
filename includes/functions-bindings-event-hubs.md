@@ -333,7 +333,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Zie voor een compleet voorbeeld [Trigger - voorbeeld met C#](#trigger).
+Zie voor een volledig voor beeld [trigger- C# voor beeld](#trigger).
 
 # <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
@@ -355,18 +355,18 @@ Gebruik in de [runtime-bibliotheek](https://docs.microsoft.com/java/api/overview
 
 ## <a name="trigger---configuration"></a>Trigger - configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `EventHubTrigger` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `EventHubTrigger`.
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | n.v.t. | Moet worden ingesteld op `eventHubTrigger`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt.|
-|**direction** | n.v.t. | Moet worden ingesteld op `in`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt. |
-|**De naam** | n.v.t. | De naam van de variabele die het gebeurtenis item in functie code vertegenwoordigt. |
+|**type** | N.v.t. | moet worden ingesteld op `eventHubTrigger`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt.|
+|**direction** | N.v.t. | moet worden ingesteld op `in`. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt. |
+|**naam** | N.v.t. | De naam van de variabele die het gebeurtenis item in functie code vertegenwoordigt. |
 |**path** |**EventHubName** | Functions 1. x. De naam van de Event Hub. Wanneer de Event Hub naam ook aanwezig is in de connection string, overschrijft die waarde deze eigenschap tijdens runtime. |
 |**eventHubName** |**EventHubName** | Functions 2. x en hoger. De naam van de Event Hub. Wanneer de Event Hub naam ook aanwezig is in de connection string, overschrijft die waarde deze eigenschap tijdens runtime. Kan worden verwezen via de app-instellingen% eventHubName% |
 |**consumerGroup** |**ConsumerGroup** | Een optionele eigenschap waarmee de [Consumer groep](../articles/event-hubs/event-hubs-features.md#event-consumers) wordt ingesteld die wordt gebruikt om zich te abonneren op gebeurtenissen in de hub. Als u dit weglaat, wordt de `$Default` consumenten groep gebruikt. |
-|**kardinaliteit** | n.v.t. | Voor Java script. Stel deze optie in op `many` om batch verwerking in te scha kelen.  Als u niets opgeeft of instelt op `one`, wordt één bericht door gegeven aan de functie. |
-|**verbinding** |**Verbinding** | De naam van een app-instelling die de connection string aan de naam ruimte van de Event Hub bevat. Kopieer deze connection string door te klikken op de knop **verbindings gegevens** voor de [naam ruimte](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), niet op de Event hub zelf. Deze connection string moet mini maal lees machtigingen hebben om de trigger te activeren.|
+|**kardinaliteit** | N.v.t. | Voor Java script. Stel deze optie in op `many` om batch verwerking in te scha kelen.  Als u niets opgeeft of instelt op `one`, wordt één bericht door gegeven aan de functie. |
+|**Combi** |**Verbinding** | De naam van een app-instelling die de connection string aan de naam ruimte van de Event Hub bevat. Kopieer deze connection string door te klikken op de knop **verbindings gegevens** voor de [naam ruimte](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), niet op de Event hub zelf. Deze connection string moet mini maal lees machtigingen hebben om de trigger te activeren.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -384,7 +384,7 @@ De trigger Event Hubs biedt verschillende [Eigenschappen van meta gegevens](../a
 |`SequenceNumber`|`Int64`|Het logische Volg nummer van de gebeurtenis.|
 |`SystemProperties`|`IDictionary<String,Object>`|De systeem eigenschappen, met inbegrip van de gebeurtenis gegevens.|
 
-Zie [codevoorbeelden](#trigger) die eerder in dit artikel gebruikmaken van deze eigenschappen.
+Zie [code voorbeelden](#trigger) die gebruikmaken van deze eigenschappen eerder in dit artikel.
 
 ## <a name="trigger---hostjson-properties"></a>Trigger - eigenschappen voor host.json
 
@@ -600,7 +600,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-Zie voor een compleet voorbeeld [uitvoer - voorbeeld met C#](#output).
+Zie voor een volledig voor beeld [uitvoer- C# voor beeld](#output).
 
 # <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
 
@@ -622,16 +622,16 @@ Gebruik in de [runtime-bibliotheek van Java-functies](https://docs.microsoft.com
 
 ## <a name="output---configuration"></a>Uitvoer - configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `EventHub` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `EventHub`.
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | n.v.t. | Moet worden ingesteld op ' eventHub '. |
-|**direction** | n.v.t. | Moet worden ingesteld op 'out'. Deze para meter wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
-|**De naam** | n.v.t. | De naam van de variabele die wordt gebruikt in de functie code waarmee de gebeurtenis wordt aangeduid. |
+|**type** | N.v.t. | Moet worden ingesteld op ' eventHub '. |
+|**direction** | N.v.t. | Moet worden ingesteld op 'out'. Deze para meter wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
+|**naam** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code waarmee de gebeurtenis wordt aangeduid. |
 |**path** |**EventHubName** | Functions 1. x. De naam van de Event Hub. Wanneer de Event Hub naam ook aanwezig is in de connection string, overschrijft die waarde deze eigenschap tijdens runtime. |
 |**eventHubName** |**EventHubName** | Functions 2. x en hoger. De naam van de Event Hub. Wanneer de Event Hub naam ook aanwezig is in de connection string, overschrijft die waarde deze eigenschap tijdens runtime. |
-|**verbinding** |**Verbinding** | De naam van een app-instelling die de connection string aan de naam ruimte van de Event Hub bevat. Kopieer deze connection string door te klikken op de knop **verbindings gegevens** voor de *naam ruimte*, niet op de Event hub zelf. Deze connection string moet de machtiging verzenden hebben om het bericht naar de gebeurtenis stroom te verzenden.|
+|**Combi** |**Verbinding** | De naam van een app-instelling die de connection string aan de naam ruimte van de Event Hub bevat. Kopieer deze connection string door te klikken op de knop **verbindings gegevens** voor de *naam ruimte*, niet op de Event hub zelf. Deze connection string moet de machtiging verzenden hebben om het bericht naar de gebeurtenis stroom te verzenden.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -669,7 +669,7 @@ Er zijn twee opties voor het uitvoeren van een event hub-bericht van een functie
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonderingen en retourcodes
 
-| Binding | Referentie |
+| Binding | Naslaginformatie |
 |---|---|
 | Event Hub | [Bedienings handleiding](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
 
@@ -680,7 +680,7 @@ Er zijn twee opties voor het uitvoeren van een event hub-bericht van een functie
 In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x en hoger. In het voor beeld van een host. JSON-bestand bevat alleen de instellingen van versie 2. x + voor deze binding. Zie voor meer informatie over globale configuratie-instellingen in versie 2. x en hoger de [verwijzing host. json voor Azure functions](../articles/azure-functions/functions-host-json.md).
 
 > [!NOTE]
-> Voor een verwijzing van host.json in functies 1.x, Zie [naslaginformatie over host.json voor Azure Functions 1.x](../articles/azure-functions/functions-host-json-v1.md).
+> Zie [host. json Reference voor Azure functions 1. x](../articles/azure-functions/functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
 
 ```json
 {

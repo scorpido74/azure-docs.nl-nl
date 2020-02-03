@@ -26,7 +26,7 @@ Productie-implementatie kunt een model voor het een actieve rol spelen in een be
 Er zijn verschillende benaderingen en platforms modellen in productie te plaatsen. Hier zijn enkele opties:
 
 - [Het implementeren van modellen met Azure Machine Learning](../how-to-deploy-and-where.md)
-- [Implementatie van een model in SQL-server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Implementatie van een model in SQL-Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 >[!NOTE]
@@ -34,13 +34,13 @@ Er zijn verschillende benaderingen en platforms modellen in productie te plaatse
 >
 
 >[!NOTE]
->Zie voor een implementatie met behulp van Azure Machine Learning Studio, [een Azure Machine Learning-webservice implementeren](../studio/deploy-a-machine-learning-web-service.md).
+>Zie [Deploy a Azure machine learning web service](../studio/deploy-a-machine-learning-web-service.md)(Engelstalig) voor implementatie met behulp van Azure machine learning Studio.
 >
 
-## <a name="ab-testing"></a>A/B-testen
+## <a name="ab-testing"></a>A / B-tests
 
 Wanneer er meerdere modellen in productie zijn, kan [een/B-test](https://en.wikipedia.org/wiki/A/B_testing) worden gebruikt om de prestaties van het model te vergelijken. 
  
 ## <a name="next-steps"></a>Volgende stappen
 
-Scenario's die laten zien van alle de stappen in het proces voor het **specifieke scenario's** worden ook gegeven. Ze worden weergegeven en die is gekoppeld met miniaturen beschrijvingen in de [voorbeeld walkthroughs](walkthroughs.md) artikel. Ze laten zien hoe u naar de cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen. 
+Er zijn ook instructies voor het leveren van alle stappen in het proces voor **specifieke scenario's** . Ze worden weer gegeven en gekoppeld aan miniatuur beschrijvingen in het artikel [voorbeeld scenario's](walkthroughs.md) . Ze laten zien hoe u naar de cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen. 

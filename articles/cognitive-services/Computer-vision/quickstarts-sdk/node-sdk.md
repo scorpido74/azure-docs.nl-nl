@@ -106,7 +106,7 @@ Exemplaar een client met uw eind punt en sleutel. Maak een [ApiKeyCredentials](h
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_client)]
 
-## <a name="analyze-an-image"></a>Analyseer een afbeelding
+## <a name="analyze-an-image"></a>Een afbeelding analyseren
 
 De code in deze sectie analyseert externe installatie kopieën om verschillende visuele functies uit te pakken. U kunt deze bewerkingen uitvoeren als onderdeel van de methode **analyzeImage** van het client object, of u kunt ze aanroepen met behulp van afzonderlijke methoden. Raadpleeg de [referentie documentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) voor meer informatie.
 
@@ -259,7 +259,7 @@ node index.js
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure-CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -267,4 +267,4 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 >[Computer Vision-API referentie (node. js)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
 
 * [Wat is Computer Vision?](../Home.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js).
+* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js).

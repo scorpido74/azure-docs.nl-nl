@@ -19,9 +19,9 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721792"
 ---
 # <a name="architecture-of-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Architectuur van de sjabloon Cortana Intelligence-oplossing voor predictief onderhoud in de luchtvaart
-Het volgende diagram biedt een overzicht van de architectuur van de [sjabloon van Cortana Intelligence-oplossing voor predictief onderhoud](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1).
+In het onderstaande diagram vindt u een overzicht van de architectuur van de [sjabloon voor de Cortana intelligence oplossing voor voor speld onderhoud](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1).
 
-U kunt een volledige versie van het overzichtsdiagram hier downloaden: [Architectuurdiagram: sjabloon-oplossing voor predictief onderhoud](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
+U kunt hier een volledige versie van het diagram downloaden: [architectuur diagram: oplossings sjabloon voor predictief onderhoud](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
 
 ![Architectuurdiagram van oplossing sjabloon voor Voorspellend onderhoud][image]
 

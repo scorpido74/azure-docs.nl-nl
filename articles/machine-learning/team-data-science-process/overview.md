@@ -28,10 +28,10 @@ Dit artikel bevat een overzicht van TDSP en de belangrijkste onderdelen. We bied
 
 TDSP bestaat uit de volgende belangrijke onderdelen:
 
-- Een **levenscyclus van wetenschappelijke gegevens** definitie
-- Een **gestandaardiseerd projectstructuur**
-- **Infrastructuur en resources** voor data science-projecten
-- **Hulpprogramma's** voor de projectuitvoering van
+- Een definitie van een **Data Science-levens cyclus**
+- Een **gestandaardiseerde project structuur**
+- **Infra structuur en bronnen** voor data Science-projecten
+- **Hulpprogram ma's en hulpprogram ma's** voor het uitvoeren van projecten
 
 
 ## <a name="data-science-lifecycle"></a>Levenscyclus van wetenschappelijke gegevens
@@ -44,17 +44,17 @@ Deze levenscyclus beheren, is ontworpen voor data science-projecten die worden g
 
 De levenscyclus van geeft een overzicht van de belangrijke fasen die projecten doorgaans worden uitgevoerd, vaak iteratief:
 
-* **Inzicht in het bedrijf**
-* **Gegevens verzamelen en begrijpen**
-* **Modeling**
+* **Zakelijke inzichten**
+* **Gegevens verkrijgen en meer informatie**
+* **Model**
 * **Implementatie**
-* **Aanvaarding van de klant**
+* **Klant acceptatie**
 
-Hier volgt een visuele representatie van het **Team Data Science Process lifecycle**. 
+Hier volgt een visuele representatie van de **levens cyclus van team data Science process**. 
 
 ![TDSP-Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
 
-De doelen, taken en documentatie artefacten voor elke fase van de TDSP-levenscyclus worden beschreven in de [Team Data Science Process lifecycle](lifecycle.md) onderwerp. Deze taken en artefacten zijn gekoppeld aan het Projectrollen:
+De doel stellingen, taken en documentatie artefacten voor elke fase van de levens cyclus in TDSP worden beschreven in het onderwerp [team data Science process Lifecycle](lifecycle.md) . Deze taken en artefacten zijn gekoppeld aan het Projectrollen:
 
 - Oplossingsarchitect
 - Projectmanager
@@ -69,7 +69,7 @@ Het volgende diagram biedt een rasterweergave van de taken (in het blauw) en de 
 
 Met alle projecten delen van een mapstructuur en sjablonen gebruiken voor de project-documenten, kunt eenvoudig de teamleden voor informatie over hun projecten. Alle code en documenten worden opgeslagen in een versiebeheersysteem (Circuits), zoals Git, TFS of Subversion om in te schakelen samenwerking voor teams. Bijhouden van taken en -functies in een flexibele volgsysteem zoals Jira, Rally en Azure DevOps-project, kunt dichter in de buurt van de code voor afzonderlijke onderdelen bijhouden. Dergelijke bijhouden kan ook teams om op te halen beter kostenramingen. TDSP raadt aan om het maken van een aparte opslagplaats voor elk project in de Circuits voor versiebeheer, informatiebeveiliging en samenwerking. De gestandaardiseerde structuur voor alle projecten helpt met het bouwen van institutionele kennis in de hele organisatie.
 
-We bieden sjablonen voor de mapstructuur en de vereiste documenten in standaardlocaties. Deze mapstructuur organiseert de bestanden die code voor gegevensverkenning en het ophalen van functies bevatten en dat model iteraties opnemen. Deze sjablonen wordt het eenvoudiger voor teamleden om te begrijpen werk van anderen en nieuwe leden toevoegen aan teams. Het is gemakkelijk om te bekijken en bijwerken van sjablonen in markdown-indeling. Gebruik sjablonen om controle lijsten in te stellen met belang rijke vragen voor elk project om ervoor te zorgen dat het probleem goed is gedefinieerd en dat de resultaten voldoen aan de verwachte kwaliteit. Voorbeelden:
+We bieden sjablonen voor de mapstructuur en de vereiste documenten in standaardlocaties. Deze mapstructuur organiseert de bestanden die code voor gegevensverkenning en het ophalen van functies bevatten en dat model iteraties opnemen. Deze sjablonen wordt het eenvoudiger voor teamleden om te begrijpen werk van anderen en nieuwe leden toevoegen aan teams. Het is gemakkelijk om te bekijken en bijwerken van sjablonen in markdown-indeling. Gebruik sjablonen om controle lijsten in te stellen met belang rijke vragen voor elk project om ervoor te zorgen dat het probleem goed is gedefinieerd en dat de resultaten voldoen aan de verwachte kwaliteit. Voorbeelden zijn:
 
 - een project Handvest vastleggen van de zakelijke probleem en het bereik van het project
 - rapporten met gegevens naar het document de structuur en statistieken van de onbewerkte gegevens
@@ -77,7 +77,7 @@ We bieden sjablonen voor de mapstructuur en de vereiste documenten in standaardl
 - model maatstaven voor prestaties zoals ROC-curve of MSE
 
 
-[![TDSP-directories](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
+[![TDSP-directory's](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
 De mapstructuur kan worden gekloond van [github](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
 
@@ -94,7 +94,7 @@ De analyse-en opslag infrastructuur, waar RAW-en verwerkte gegevens sets worden 
 
 Hier volgt een voorbeeld van een team werkt aan meerdere projecten en het delen van verschillende onderdelen van de cloud analytics infrastructuur.
 
-[![TDSP-infrastructure](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
+[![TDSP-infra structuur](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Hulpprogramma's voor de projectuitvoering van
@@ -104,4 +104,4 @@ Maak kennis met de processen in de meeste organisaties uitdagingen met zich mee.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Team Data Science Process: Rollen en taken](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) geeft een overzicht van de functies key personeel en de bijbehorende taken voor een team van gegevenswetenschappers die over dit proces standaardiseert. 
+[Team data Science process: rollen en taken](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Geeft een overzicht van de belangrijkste personeels rollen en de bijbehorende taken voor een Data Science-team dat op dit proces wordt gestandaardiseerd. 

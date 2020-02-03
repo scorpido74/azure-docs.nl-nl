@@ -124,7 +124,7 @@ De cryptografische modules die Key Vault gebruikt, of HSM of software, FIPS (Fed
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/SLEUTEL UITPAKKEN, VERSLEUTELEN/ONTSLEUTELEN
 
--   **RSA1_5** - RSAES-PKCS1-V1_5 [RFC3447] key encryption  
+-   **RSA1_5** -RSAES-PKCS1-V1_5 [RFC3447] sleutel versleuteling  
 -   **RSA-OAEP** -RSAES met behulp van optimale geocoderings opvulling (OAEP) [RFC3447], waarbij de standaard parameters worden opgegeven door RFC 3447 in sectie A. 2.1. Deze standaard parameters maken gebruik van een hash-functie van SHA-1 en een masker functie voor het genereren van MGF1 met SHA-1.  
 
 #### <a name="signverify"></a>ONDERTEKENEN/CONTROLEREN
@@ -363,16 +363,16 @@ De volgende tabel geeft de toewijzing van het beleid voor x509-sleutel gebruik a
 
 |**Gebruiks vlaggen voor x509-sleutel**|**Key Vault Key OPS**|**Standaard gedrag**|
 |----------|--------|--------|
-|DataEncipherment|versleutelen, ontsleutelen| N/A |
-|DecipherOnly|crypto| N/A  |
+|DataEncipherment|versleutelen, ontsleutelen| N.v.t. |
+|DecipherOnly|crypto| N.v.t.  |
 |DigitalSignature|ondertekenen, controleren| Key Vault standaard zonder een gebruiks specificatie op het moment van aanmaken van het certificaat | 
-|EncipherOnly|encrypt| N/A |
-|KeyCertSign|ondertekenen, controleren|N/A|
+|EncipherOnly|encrypt| N.v.t. |
+|KeyCertSign|ondertekenen, controleren|N.v.t.|
 |KeyEncipherment|wrapKey, sleutel uitpakken| Key Vault standaard zonder een gebruiks specificatie op het moment van aanmaken van het certificaat | 
-|Authentic|ondertekenen, controleren| N/A |
-|crlsign|ondertekenen, controleren| N/A |
+|Authentic|ondertekenen, controleren| N.v.t. |
+|crlsign|ondertekenen, controleren| N.v.t. |
 
-### <a name="certificate-issuer"></a>Certificaat verlener
+### <a name="certificate-issuer"></a>Certificaatverlener
 
 Een Key Vault certificaat object bevat een configuratie die wordt gebruikt om te communiceren met een geselecteerde certificaat verlener-provider om x509-certificaten te best Ellen.  
 

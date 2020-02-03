@@ -86,7 +86,8 @@ Selecteert een kolom waarde op basis van de relatieve positie (1 gebaseerd) in d
 * ``toString(byName($colName))``
 * ``toString(byPosition(1234))``
 ___
-### <code>case</code>gebruiken.<br/><br/>
+### <code>case</code>gebruiken.
+<code><b>case(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, <i>&lt;false_expression&gt;</i> : any, ...) => any</b></code><br/><br/>
 Op basis van afwisselende voor waarden geldt een waarde of de andere. Als het aantal invoer waarden even is, wordt de andere standaard ingesteld op NULL voor de laatste voor waarde * ``case(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``
 * ``case(10 + 20 == 25, 'bojjus', 'do' < 'go', 'gunchus') -> 'gunchus'``
 * ``isNull(case(10 + 20 == 25, 'bojjus', 'do' > 'go', 'gunchus')) -> true``
@@ -192,7 +193,8 @@ Operator voor vergelijking gelijk aan. Hetzelfde als = = operator * ``equals(12,
 * ``isNull('good' == toString(null)) -> true``
 * ``isNull(null == null) -> true``
 ___
-### <code>equalsIgnoreCase</code><br/><br/>
+### <code>equalsIgnoreCase</code>
+<code><b>equalsIgnoreCase(<i>&lt;value1&gt;</i> : string, <i>&lt;value2&gt;</i> : string) => boolean</b></code><br/><br/>
 De vergelijkings operator is gelijk aan het hoofdletter gebruik negeren. Hetzelfde als < = > operator * ``'abc'<=>'Abc' -> true``
 * ``equalsIgnoreCase('abc', 'Abc') -> true``
 ___
@@ -481,7 +483,8 @@ Retourneert een NULL-waarde. Gebruik de functie syntaxis (Null ()) als er een ko
 * ``isNull(10 + 20) -> false``
 * ``isNull(10/0) -> true``
 ___
-### <code>or</code><br/><br/>
+### <code>or</code>
+<code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
 Logische OR-operator. Hetzelfde als | | * ``or(true, false) -> true``
 * ``true || false -> true``
 ___
@@ -524,7 +527,8 @@ Splitst een teken reeks op basis van een scheidings teken op basis van regex en 
 * ``(regexSplit('bojjusAgunchusBdumboC', `[CAB]`)[1]) -> 'bojjus'``
 * ``isNull(regexSplit('bojjusAgunchusBdumboC', `[CAB]`)[20]) -> true``
 ___
-### <code>replace</code><br/><br/>
+### <code>replace</code>
+<code><b>replace(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string, [<i>&lt;substring to replace&gt;</i> : string]) => string</b></code><br/><br/>
 Alle exemplaren van een subtekenreeks vervangen door een andere subtekenreeks in de opgegeven teken reeks. Als de laatste para meter wordt wegge laten, wordt standaard de lege teken reeks * ``replace('doggie dog', 'dog', 'cat') -> 'catgie cat'``
 * ``replace('doggie dog', 'dog', '') -> 'gie '``
 * ``replace('doggie dog', 'dog') -> 'gie '``
@@ -593,7 +597,8 @@ Hiermee wordt een subset van een matrix geëxtraheerd uit een positie. De positi
 * ``isNull(slice([10, 20, 30, 40], 2)[20]) -> true``
 * ``slice(['a', 'b', 'c', 'd'], 8) -> []``
 ___
-### <code>sort</code><br/><br/>
+### <code>sort</code>
+<code><b>sort(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => array</b></code><br/><br/>
 Sorteert de matrix met behulp van de meegeleverde predicaat functie. Bij het sorteren wordt een verwijzing verwacht naar twee opeenvolgende elementen in de expressie functie als #item1 en #item2 * ``sort([4, 8, 2, 3], compare(#item1, #item2)) -> [2, 3, 4, 8]``
 * ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``
 ___
@@ -611,7 +616,8 @@ Splitst een teken reeks op basis van een scheidings teken en retourneert een mat
 * ``isNull(split('bojjus, guchus, dumbo', ', ')[20]) -> true``
 * ``split('bojjusguchusdumbo', ',') -> ['bojjusguchusdumbo']``
 ___
-### <code>sqrt</code><br/><br/>
+### <code>sqrt</code>
+<code><b>sqrt(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Hiermee wordt de vierkantswortel van een getal berekend * ``sqrt(9) -> 3``
 ___
 ### <code>startsWith</code>

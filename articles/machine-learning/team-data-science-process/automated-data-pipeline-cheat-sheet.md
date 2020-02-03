@@ -19,7 +19,7 @@ ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721860"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Overzichtskaart voor een geautomatiseerde pijplijn voor voorspellingen van Azure Machine Learning
-De **Microsoft Azure Machine Learning geautomatiseerde data pipeline-overzichtskaart** helpt u door de technologie die u gebruiken navigeren kunt om uw gegevens op uw Machine Learning-webservice waar het kan worden beoordeeld door uw predictive analytics model.
+Het **Microsoft Azure machine learning Cheat van de automatische gegevens pijplijn** helpt u bij het navigeren door de technologie die u kunt gebruiken om uw gegevens naar uw machine learning-webservice te halen waar deze door uw Predictive Analytics model kunnen worden beoordeeld.
 
 Afhankelijk van of uw gegevens zich on-premises, in de Cloud of in realtime streamen bevinden, zijn er verschillende mechanismen beschikbaar voor het verplaatsen van de gegevens naar uw webservice-eind punt voor scores.
 Deze overzichtskaart begeleidt u bij de beslissingen die u wilt aanbrengen, en biedt koppelingen naar artikelen die kunnen helpen bij het ontwikkelen van uw oplossing.
@@ -27,7 +27,7 @@ Deze overzichtskaart begeleidt u bij de beslissingen die u wilt aanbrengen, en b
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Het referentiemateriaal voor Machine Learning geautomatiseerde pijplijn downloaden
 Nadat u het referentiemateriaal voor hebt gedownload, kunt u het kunt afdrukken in a3-grootte (11 x 17.).
 
-Het referentiemateriaal voor hier downloaden:  **[Microsoft Azure Machine Learning geautomatiseerde pijplijn overzichtskaart van gegevens](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+Down load het Cheat-blad hier:  **[Microsoft Azure machine learning model voor automatische gegevens pijplijn Cheat](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
 ![Overzicht van de mogelijkheden van Microsoft Azure Machine Learning Studio (klassiek)][op-cheat-sheet]
 
@@ -35,7 +35,7 @@ Het referentiemateriaal voor hier downloaden:  **[Microsoft Azure Machine Learni
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Meer hulp bij Machine Learning Studio
-* Zie voor een overzicht van Microsoft Azure Machine Learning, [Inleiding tot machine learning in Microsoft Azure](../studio/what-is-machine-learning.md).
-* Zie voor een uitleg van hoe u een scoringwebservice implementeert, [een Azure Machine Learning-webservice implementeren](../studio/deploy-a-machine-learning-web-service.md).
-* Zie voor een discussie over het gebruik van een scoringwebservice, [hoe u een Azure Machine Learning-webservice gebruiken](../studio/consume-web-services.md).
+* Zie [Inleiding tot machine learning op Microsoft Azure](../studio/what-is-machine-learning.md)voor een overzicht van Microsoft Azure machine learning.
+* Zie [Deploy a Azure machine learning web service](../studio/deploy-a-machine-learning-web-service.md)(Engelstalig) voor een uitleg over het implementeren van een score-webservice.
+* Zie [How to verbruik an Azure machine learning web service](../studio/consume-web-services.md)(Engelstalig) voor een bespreking van het gebruik van een score-webservice.
 

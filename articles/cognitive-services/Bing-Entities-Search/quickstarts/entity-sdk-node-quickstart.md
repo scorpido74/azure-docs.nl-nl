@@ -19,7 +19,7 @@ ms.locfileid: "76716388"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>Snelstartgids: een zoek opdracht verzenden met de Bing Entity Search SDK voor node. js
 
-Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entiteiten zoeken-SDK voor Node.js. Hoewel Bing Entiteiten zoeken een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js).
+Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entiteiten zoeken-SDK voor Node.js. Hoewel Bing Entity Search een REST-API heeft die compatibel is met de meeste moderne programmeertalen, biedt de SDK een eenvoudige manier om de service te integreren in uw toepassingen. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js).
 
 ## <a name="prerequisites"></a>Vereisten
 

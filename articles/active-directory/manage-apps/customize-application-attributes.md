@@ -109,7 +109,7 @@ Sommige toepassingen ondersteunen echter aangepaste kenmerken en de Azure AD-inr
 
 Toepassingen en systemen die ondersteuning bieden voor aanpassing van de lijst met kenmerken zijn onder andere:
 
-- Salesforce
+- SalesForce
 - ServiceNow
 - Workday
 - Azure Active Directory ([standaard kenmerken van Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) en aangepaste Directory-extensies worden ondersteund)
@@ -203,7 +203,7 @@ Volg de onderstaande stappen om rollen voor een gebruiker in te richten voor uw 
   - **Aandachtspunten**
     - Zorg ervoor dat er geen meerdere rollen aan een gebruiker zijn toegewezen. We kunnen niet garanderen welke rol zal worden ingericht.
     
-  - **Voorbeeld van uitvoer** 
+  - **Voorbeeld uitvoer** 
 
    ```json
     {
@@ -240,7 +240,7 @@ Volg de onderstaande stappen om rollen voor een gebruiker in te richten voor uw 
     - Alle rollen worden ingericht als primair = onwaar.
     - Het bericht bevat het type rol. De PATCH-aanvraag bevat geen type. Er wordt gewerkt aan het verzenden van het type in POST-en PATCH-aanvragen.
     
-  - **Voorbeeld van uitvoer** 
+  - **Voorbeeld uitvoer** 
   
    ```json
    {
@@ -318,8 +318,8 @@ Als u deze optie selecteert, wordt een hersynchronisatie van alle gebruikers gef
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Gebruiker inrichting/ongedaan maken van inrichting voor SaaS-toepassingen automatiseren](user-provisioning.md)
+- [Gebruikers inrichting en ongedaan maken van de inrichting van SaaS-apps automatiseren](user-provisioning.md)
 - [Expressies schrijven voor kenmerk toewijzingen](functions-for-customizing-application-data.md)
-- [Bereikfilters toevoegen voor het inrichten van gebruikers](define-conditional-rules-for-provisioning-user-accounts.md)
+- [Filters voor het inrichten van gebruikers in bereik](define-conditional-rules-for-provisioning-user-accounts.md)
 - [Using SCIM to enable automatic provisioning of users and groups from Azure Active Directory to applications](use-scim-to-provision-users-and-groups.md) (SCIM gebruiken om in te stellen dat gebruikers en groepen van Azure Active Directory automatisch worden ingericht voor toepassingen)
-- [Lijst met zelfstudies over het integreren van SaaS-Apps](../saas-apps/tutorial-list.md)
+- [Lijst met zelf studies voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)

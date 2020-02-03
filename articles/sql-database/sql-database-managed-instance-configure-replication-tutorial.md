@@ -135,7 +135,7 @@ Wanneer VPN-peering tot stand is gebracht, kunt u de connectiviteit testen door 
 Een privé-DNS-zone staat DNS-route ring tussen de beheerde instanties en de SQL Server toe. 
 
 ### <a name="create-private-dns-zone"></a>Een persoonlijke DNS-zone maken
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **een resource maken** om een nieuwe Azure-resource te maken. 
 1. Zoek naar `private dns zone` op Azure Marketplace. 
 1. Kies de **privé-DNS zone** resource die door micro soft is gepubliceerd en selecteer vervolgens **maken** om de DNS-zone te maken. 
@@ -392,7 +392,7 @@ Hoewel het mogelijk is dat dit fout bericht nauw keurig is en er geen publicatie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-### <a name="enable-security-features"></a>Beveiligingsfuncties in te schakelen
+### <a name="enable-security-features"></a>Beveiligingsfuncties inschakelen
 
 Zie het artikel [Beveiligingsfuncties voor mogelijkheden van beheerde exemplaren](sql-database-managed-instance.md#azure-sql-database-security-features) voor een uitgebreide lijst met manieren om uw database te beveiligen. De volgende beveiligingsfuncties worden besproken:
 

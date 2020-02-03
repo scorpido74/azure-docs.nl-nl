@@ -54,7 +54,7 @@ Hieronder ziet u de lijst met ondersteunde gegevens typen.
 | bool      |   Een gegevens type met een van de twee statussen: True of false.       |
 | Datum/tijd    |   Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. Datum-en tijd notatie moeten de ISO 8601-indeling hebben.      |
 | double    |   Een Double-Precision 64-bits IEEE 754 drijvende komma
-| string    |   Tekst waarden, bestaande uit Unicode-tekens.          |
+| tekenreeks    |   Tekst waarden, bestaande uit Unicode-tekens.          |
 
 #### <a name="objects-and-arrays"></a>Objecten en matrices
 

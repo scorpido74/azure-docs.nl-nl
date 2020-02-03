@@ -18,26 +18,26 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76717643"
 ---
-# <a name="heading"></a>Voorbeeldgegevens in SQL Server op Azure
+# <a name="heading"></a>Voorbeeld gegevens in SQL Server op Azure
 
 In dit artikel laat zien hoe sample van gegevens die zijn opgeslagen in SQL Server op Azure met behulp van SQL of de Python-programmeertaal. Ook ziet u hoe sample om gegevens te verplaatsen naar Azure Machine Learning door naar een bestand opslaat, uploaden naar een Azure-blob en vervolgens te lezen in Azure Machine Learning Studio.
 
-De steekproeven van Python gebruikt de [pyodbc](https://code.google.com/p/pyodbc/) ODBC-bibliotheek verbinding maken met SQL Server op Azure en de [Pandas](https://pandas.pydata.org/) bibliotheek doen de steekproeven.
+In de python-steek proef wordt gebruikgemaakt van de [pyodbc](https://code.google.com/p/pyodbc/) ODBC-bibliotheek om verbinding te maken met SQL Server op Azure en de [Panda](https://pandas.pydata.org/) -bibliotheek om de steek proeven te doen.
 
 > [!NOTE]
-> De SQL-voorbeeldcode in dit document wordt ervan uitgegaan dat de gegevens in een SQL Server op Azure. Als dit niet het geval is, raadpleegt u [gegevens verplaatsen naar SQL Server op Azure](move-sql-server-virtual-machine.md) artikel voor instructies over het verplaatsen van uw gegevens naar SQL Server op Azure.
+> De SQL-voorbeeldcode in dit document wordt ervan uitgegaan dat de gegevens in een SQL Server op Azure. Als dat niet het geval is, raadpleegt u [gegevens verplaatsen naar SQL Server in azure](move-sql-server-virtual-machine.md) article voor instructies over het verplaatsen van uw gegevens naar SQL Server in Azure.
 > 
 > 
 
-**Waarom sample van uw gegevens?**
-Als de gegevensset die u van plan bent om te analyseren groot is, is het doorgaans een goed idee om down-sampling van de gegevens om deze aan de grootte van een kleiner, maar representatieve en gemakkelijker. Bemonstering vereenvoudigt het leren van gegevens, het verkennen en functie-engineering. De rol in de [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) bestaat uit het inschakelen van snel ontwikkelen van prototypen van de functies voor het verwerken van gegevens en machine learning-modellen.
+**Waarom een voor beeld van uw gegevens?**
+Als de gegevensset die u van plan bent om te analyseren groot is, is het doorgaans een goed idee om down-sampling van de gegevens om deze aan de grootte van een kleiner, maar representatieve en gemakkelijker. Bemonstering vereenvoudigt het leren van gegevens, het verkennen en functie-engineering. De rol van het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) is om snel een prototype van de functies voor gegevens verwerking en machine learning modellen mogelijk te maken.
 
-Deze taak steekproeven is een stap in de [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Deze steekproef taak is een stap in het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-## <a name="SQL"></a>Met behulp van SQL
+## <a name="SQL"></a>SQL gebruiken
 Deze sectie beschrijft de verschillende methoden voor het uitvoeren van eenvoudige steekproeven ten opzichte van de gegevens in de database met behulp van SQL. Kies een methode op basis van de gegevensgrootte van uw en de distributie hiervan.
 
-De volgende twee items laten zien hoe u `newid` in SQL Server voor het uitvoeren van de steekproeven. De methode die u kiest, is afhankelijk van hoe wille keurig het voor beeld moet worden (pk_id in de volgende voorbeeld code wordt aangenomen dat het een automatisch gegenereerde primaire sleutel is).
+De volgende twee items laten zien hoe u `newid` in SQL Server kunt gebruiken om de steek proef uit te voeren. De methode die u kiest, is afhankelijk van hoe wille keurig het voor beeld moet worden (pk_id in de volgende voorbeeld code wordt aangenomen dat het een automatisch gegenereerde primaire sleutel is).
 
 1. Minder strikte steekproef
    
@@ -64,14 +64,14 @@ U kunt de bovenstaande voorbeeld query's rechtstreeks in de module Azure Machine
 
 ![lezer-sql][1]
 
-## <a name="python"></a>Met behulp van de programmeertaal Python
-Deze sectie wordt gedemonstreerd met behulp van de [pyodbc-bibliotheek](https://code.google.com/p/pyodbc/) tot stand brengen van een ODBC verbinding maken met een SQL server-database in Python. De data base connection string is als volgt: (Vervang servername, dbname, username en password door uw configuratie):
+## <a name="python"></a>De python-programmeer taal gebruiken
+In deze sectie wordt gedemonstreerd hoe u de [pyodbc-bibliotheek](https://code.google.com/p/pyodbc/) gebruikt om een ODBC-verbinding te maken met een SQL server-data base in python. De data base connection string is als volgt: (Vervang servername, dbname, username en password door uw configuratie):
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-De [Pandas](https://pandas.pydata.org/) in Python-bibliotheek biedt een uitgebreide set gegevensstructuren en hulpprogramma's voor gegevensanalyse voor gegevensmanipulatie voor Python programmeren. Met de volgende code wordt een voor beeld van 0,1% gelezen van de gegevens uit een tabel in Azure SQL Database naar een Panda-gegevens:
+De bibliotheek [Pandas](https://pandas.pydata.org/) in python biedt een uitgebreide set gegevens structuren en hulpprogram ma's voor gegevens analyse voor het bewerken van gegevens voor python-programmering. Met de volgende code wordt een voor beeld van 0,1% gelezen van de gegevens uit een tabel in Azure SQL Database naar een Panda-gegevens:
 
     import pandas as pd
 

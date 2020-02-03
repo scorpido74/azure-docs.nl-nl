@@ -15,15 +15,15 @@ ms.locfileid: "76715958"
 Nadat u de bewaking van uw AKS-cluster hebt ingeschakeld, kunt u de bewaking van het cluster als u besluit dat u niet meer om te controleren, wilt stoppen. Dit artikel wordt beschreven hoe u dit doen met de Azure CLI of met de opgegeven Azure Resource Manager-sjablonen.  
 
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
-Gebruik de [az aks disable--invoegtoepassingen](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) opdracht voor het uitschakelen van Azure Monitor voor containers. Met de opdracht wordt de agent uit de cluster knooppunten verwijderd, wordt de oplossing niet verwijderd of worden de gegevens die al zijn verzameld en opgeslagen in uw Azure Monitor-resource.  
+Gebruik de opdracht [AZ AKS Disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) om Azure monitor voor containers uit te scha kelen. Met de opdracht wordt de agent uit de cluster knooppunten verwijderd, wordt de oplossing niet verwijderd of worden de gegevens die al zijn verzameld en opgeslagen in uw Azure Monitor-resource.  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
-Opnieuw inschakelen van bewaking voor uw cluster [controle inschakelen met Azure CLI](container-insights-enable-new-cluster.md#enable-using-azure-cli).
+Zie [bewaking inschakelen met Azure cli](container-insights-enable-new-cluster.md#enable-using-azure-cli)om de bewaking van uw cluster weer in te scha kelen.
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
@@ -37,7 +37,7 @@ Als u niet bekend met het concept bent van het implementeren van resources met b
 >De sjabloon moet worden geïmplementeerd in dezelfde resource groep van het cluster. Als u andere eigenschappen of invoeg toepassingen weglaat wanneer u deze sjabloon gebruikt, kan dit leiden tot verwijdering van het cluster. Bijvoorbeeld *enableRBAC* voor RBAC-beleid dat is geïmplementeerd in uw cluster of *aksResourceTagValues* als er labels zijn opgegeven voor het AKS-cluster.  
 >
 
-Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet worden uitgevoerd van Azure CLI versie 2.0.27 of hoger. Voor het identificeren van uw versie uitvoeren `az --version`. Als u wilt installeren of upgraden van de Azure CLI, Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet worden uitgevoerd van Azure CLI versie 2.0.27 of hoger. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-template"></a>Sjabloon maken
 
@@ -89,7 +89,7 @@ Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lo
     }
     ```
 
-2. Sla dit bestand als **OptOutTemplate.json** naar een lokale map.
+2. Sla dit bestand op als **OptOutTemplate. json** naar een lokale map.
 
 3. Plak de volgende JSON-syntaxis in het bestand:
 
@@ -115,15 +115,15 @@ Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lo
     }
     ```
 
-4. Bewerk de waarden voor **aksResourceId** en **aksResourceLocation** met behulp van de waarden van het AKS-cluster dat u kunt vinden op de **eigenschappen** pagina voor het geselecteerde cluster .
+4. Bewerk de waarden voor **aksResourceId** en **aksResourceLocation** met behulp van de waarden van het AKS-cluster, dat u kunt vinden op de pagina **Eigenschappen** voor het geselecteerde cluster.
 
     ![De eigenschappenpagina van container](media/container-insights-optout/container-properties-page.png)
 
-    Als u zich op de **eigenschappen** pagina, kopieert u ook de **Resource-ID van werkruimte**. Deze waarde is vereist als u besluit dat u wilt verwijderen van de Log Analytics-werkruimte later opnieuw. Verwijderen van de Log Analytics-werkruimte wordt niet uitgevoerd als onderdeel van dit proces.
+    Terwijl u zich op de pagina **Eigenschappen** bevindt, kopieert u ook de **resource-id van de werk ruimte**. Deze waarde is vereist als u besluit dat u wilt verwijderen van de Log Analytics-werkruimte later opnieuw. Verwijderen van de Log Analytics-werkruimte wordt niet uitgevoerd als onderdeel van dit proces.
 
     Bewerk de waarden voor **aksResourceTagValues** zodat deze overeenkomen met de bestaande label waarden die zijn opgegeven voor het AKS-cluster.
 
-5. Sla dit bestand als **OptOutParam.json** naar een lokale map.
+5. Sla dit bestand op als **OptOutParam. json** naar een lokale map.
 
 6. U kunt deze sjabloon nu implementeren.
 
@@ -164,4 +164,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als de werkruimte alleen ter ondersteuning van de bewaking van het cluster is gemaakt en deze niet meer nodig hebt, hebt u deze handmatig te verwijderen. Als u niet bekend bent met het verwijderen van een werkruimte, Zie [verwijderen van een Azure Log Analytics-werkruimte met de Azure-portal](../../log-analytics/log-analytics-manage-del-workspace.md). Vergeet niet om de **resource-id van de werk ruimte** die u eerder in stap 4 hebt gekopieerd, te zien.
+Als de werkruimte alleen ter ondersteuning van de bewaking van het cluster is gemaakt en deze niet meer nodig hebt, hebt u deze handmatig te verwijderen. Als u niet bekend bent met het verwijderen van een werk ruimte, raadpleegt u [een Azure log Analytics-werk ruimte verwijderen met de Azure Portal](../../log-analytics/log-analytics-manage-del-workspace.md). Vergeet niet om de **resource-id van de werk ruimte** die u eerder in stap 4 hebt gekopieerd, te zien.

@@ -203,12 +203,12 @@ In de volgende tabel wordt beschreven welke status een taak kan hebben. Power Sh
 | Mislukt |Voor [grafische en Power shell-werk stroom-runbooks](automation-runbook-types.md)kan het runbook niet worden gecompileerd. Voor [Power shell-script-runbooks](automation-runbook-types.md)kan het runbook niet worden gestart of is er een uitzonde ring opgetreden in de taak. |
 | Mislukt, wachten op resources |De taak is mislukt omdat de limiet voor de [billijke share](#fair-share) drie keer is bereikt en vanaf hetzelfde controle punt of vanaf het begin van het runbook elke keer is gestart. |
 | In wachtrij |De taak wacht totdat de bronnen op een Automation Worker beschikbaar zijn, zodat de taak kan worden gestart. |
-| Starting |De taak is toegewezen aan een werk nemer en het systeem wordt gestart. |
+| Starten |De taak is toegewezen aan een werk nemer en het systeem wordt gestart. |
 | Hervatten |Het systeem hervat de taak nadat deze is onderbroken. |
 | In uitvoering |De taak wordt uitgevoerd. |
 | Uitvoeren, wachten op resources |De taak is uit het geheugen verwijderd omdat de limiet voor de [billijke share](#fair-share) is bereikt. Het wordt binnenkort hervat vanaf het laatste controle punt. |
-| Stopped |De gebruiker heeft de taak gestopt voordat deze is voltooid. |
-| Stopping |Het systeem stopt de taak. |
+| Gestopt |De gebruiker heeft de taak gestopt voordat deze is voltooid. |
+| Stoppen |Het systeem stopt de taak. |
 | Suspended |De taak is door de gebruiker, door het systeem of door een opdracht in het runbook onderbroken. Als een runbook geen controle punt heeft, begint het vanaf het begin van het runbook. Als er een controle punt is, kan het opnieuw worden gestart en wordt hervat vanaf het laatste controle punt. Het runbook wordt alleen door het systeem onderbroken als er een uitzonde ring optreedt. ErrorActionPreference is standaard ingesteld om door te **gaan**, wat inhoudt dat de taak wordt uitgevoerd op een fout. Als deze voorkeurs variabele is ingesteld op **Stop**, wordt een fout door de taak onderbroken. Is alleen van toepassing op [grafische en Power shell-werk stroom-runbooks](automation-runbook-types.md) . |
 | Onderbreken |Het systeem probeert de taak op verzoek van de gebruiker te onderbreken. Het runbook moet het volgende controle punt bereiken voordat het kan worden onderbroken. Als het laatste controle punt al is door gegeven, wordt het voltooid voordat het kan worden onderbroken. Is alleen van toepassing op [grafische en Power shell-werk stroom-runbooks](automation-runbook-types.md) . |
 

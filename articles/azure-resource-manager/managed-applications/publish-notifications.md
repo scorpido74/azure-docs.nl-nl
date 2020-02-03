@@ -28,12 +28,12 @@ Hier volgen de aanbevolen stappen om snel aan de slag te gaan:
 6. Volg de instructies in de sectie **meldings schema** van dit artikel om de meldings aanvragen te parseren en uw bedrijfs logica te implementeren op basis van de melding.
 
 ## <a name="add-service-catalog-application-definition-notifications"></a>Service catalogus-toepassings definitie meldingen toevoegen
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 Zie [een service catalogus toepassing publiceren via Azure Portal](./publish-portal.md)om aan de slag te gaan.
 
 ![Meldingen voor de toepassings definitie van de Service catalogus in de Azure Portal](./media/publish-notifications/service-catalog-notifications.png)
 
-#### <a name="rest-api"></a>REST API
+#### <a name="rest-api"></a>REST-API
 
 > [!NOTE]
 > Op dit moment kunt u slechts één eind punt opgeven in de `notificationEndpoints` in de eigenschappen van de toepassings definitie.
@@ -69,12 +69,12 @@ In de volgende tabel worden alle mogelijke combi Naties van Event type en Provis
 
 EventType | ProvisioningState | Trigger voor melding
 ---|---|---
-PUT | Afgewezen | De beheerde resource groep is gemaakt en geprojecteerd na het plaatsen van de toepassing (voordat de implementatie binnen de beheerde resource groep is gestart).
+PUT | Accepted | De beheerde resource groep is gemaakt en geprojecteerd na het plaatsen van de toepassing (voordat de implementatie binnen de beheerde resource groep is gestart).
 PUT | Geslaagd | Volledige inrichting van de beheerde toepassing is voltooid na een PUT.
 PUT | Mislukt | Fout bij het inrichten van een toepassings exemplaar op enig moment.
 VERZENDEN | Geslaagd | Na een geslaagde PATCH voor het exemplaar van de beheerde toepassing voor het bijwerken van tags, JIT-toegangs beleid of beheerde identiteit.
-DELETE | Deleting | Zodra de gebruiker een exemplaar van een beheerde app verwijdert.
-DELETE | Deleted | Na de volledige en geslaagde verwijdering van de beheerde toepassing.
+DELETE | Verwijder | Zodra de gebruiker een exemplaar van een beheerde app verwijdert.
+DELETE | Verwijderen | Na de volledige en geslaagde verwijdering van de beheerde toepassing.
 DELETE | Mislukt | Na een fout tijdens het ongedaan maken van de inrichting die de verwijdering blokkeert.
 ## <a name="notification-schema"></a>Meldings schema
 Wanneer u het webhook-eind punt voor het afhandelen van meldingen hebt ingesteld, moet u de payload parseren om belang rijke eigenschappen op te halen om vervolgens te reageren op de melding. Meldingen over beheerde toepassingen voor de Service catalogus en Azure Marketplace bieden veel van dezelfde eigenschappen. Er worden twee kleine verschillen beschreven in de tabel die volgt op de voor beelden.

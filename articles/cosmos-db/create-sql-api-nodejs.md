@@ -32,11 +32,11 @@ In deze Quick start ziet u hoe u een node. js-app gebruikt om verbinding te make
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* Daarnaast:
+* Daarnaast doet u het volgende:
     * [Node.js](https://nodejs.org/en/) versie v6.0.0 of hoger
     * [Git](https://git-scm.com/)
 
-## <a name="create-a-database"></a>Database maken 
+## <a name="create-a-database"></a>Een database maken 
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -76,7 +76,7 @@ We gaan nu een node. js-app klonen vanaf GitHub, de connection string instellen 
 
 ## <a name="review-the-code"></a>De code bekijken
 
-Deze stap is optioneel. Als u wilt weten hoe de Azure Cosmos-database resources in de code worden gemaakt, kunt u de volgende fragmenten bekijken. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsreeks bijwerken](#update-your-connection-string). 
+Deze stap is optioneel. Als u wilt weten hoe de Azure Cosmos-database resources in de code worden gemaakt, kunt u de volgende fragmenten bekijken. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsgegevens bijwerken](#update-your-connection-string). 
 
 Als u bekend bent met de vorige versie van de JavaScript SDK, komen de termen 'verzameling' en 'document' u vertrouwd voor. Azure Cosmos DB ondersteunt [meerdere API-modellen](https://docs.microsoft.com/azure/cosmos-db/introduction). Daarom maakt versie 2.0+ van de JavaScript SDK gebruik van de generieke termen 'verzameling', wat een collectie, een grafiek of tabel kan zijn, en 'item', om de inhoud van de container te beschrijven.
 
@@ -148,7 +148,7 @@ Ga nu terug naar de Azure Portal om de connection string Details van uw Azure Co
 
     `config.key = "<Your Azure Cosmos account key>"`
     
-## <a name="run-the-app"></a>De app uitvoeren
+## <a name="run-the-app"></a>De app kunt uitvoeren
 
 1. Voer `npm install` uit op een terminal zodat de vereiste npm-modules worden geïnstalleerd.
 

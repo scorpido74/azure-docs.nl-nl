@@ -30,7 +30,7 @@ Fout beschrijving bevat ' omzetting van hostnaam is mislukt '.
 
 Deze fout wijst op een probleem met de aangepaste DNS-configuratie. DNS-servers binnen een virtueel netwerk kunnen DNS-query's door sturen naar recursieve resolvers van Azure om hostnamen in dat virtuele netwerk op te lossen (Zie [naam omzetting in virtuele netwerken](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) voor meer informatie). Toegang tot recursieve resolvers van Azure wordt geboden via de 168.63.129.16 van het virtuele IP-adres. Dit IP-adres is alleen toegankelijk vanaf de Azure-Vm's. Het werkt dus niet als u een premises DNS-server gebruikt of als uw DNS-server een Azure-VM is die geen deel uitmaakt van het virtuele netwerk van het cluster.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 1. SSH naar de virtuele machine die deel uitmaakt van het cluster en voer de opdracht uit `hostname -f`. Hiermee wordt de Fully Qualified Domain Name van de host geretourneerd (aangeduid als `<host_fqdn>` in de onderstaande instructies).
 
@@ -56,7 +56,7 @@ Fout beschrijving bevat ' kan geen verbinding maken met Azure Storage account ' 
 
 Azure Storage en SQL hebben geen vaste IP-adressen, dus moeten uitgaande verbindingen met alle Ip's worden toegestaan om toegang tot deze services toe te staan. De exacte stappen zijn afhankelijk van het feit of u een netwerk beveiligings groep (NSG) of door de gebruiker gedefinieerde regels (UDR) hebt ingesteld. Raadpleeg de sectie over het [beheren van netwerk verkeer met HDInsight met netwerk beveiligings groepen en door de gebruiker gedefinieerde routes](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip) voor meer informatie over deze configuraties.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 * Als uw cluster gebruikmaakt van een [netwerk beveiligings groep (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md).
 
@@ -85,7 +85,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 Er is waarschijnlijk een probleem met de aangepaste DNS-installatie.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 Controleer of 168.63.129.16 zich in de aangepaste DNS-keten bevindt. DNS-servers binnen een virtueel netwerk kunnen DNS-query's door sturen naar recursieve resolvers van Azure om hostnamen in dat virtuele netwerk op te lossen. Zie [naam omzetting in virtuele netwerken](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)voor meer informatie. Toegang tot recursieve resolvers van Azure wordt geboden via de 168.63.129.16 van het virtuele IP-adres.
 
@@ -101,7 +101,7 @@ Controleer of 168.63.129.16 zich in de aangepaste DNS-keten bevindt. DNS-servers
     cat /etc/resolv.conf | grep nameserver*
     ```
 
-    Deze lijst ziet er ongeveer zo uit:
+    U ziet ongeveer het volgende:
 
     ```output
     nameserver 168.63.129.16

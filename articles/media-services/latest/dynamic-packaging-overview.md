@@ -296,7 +296,7 @@ U kunt *dynamische versleuteling* gebruiken om uw Live of on-demand inhoud dynam
 
 Raadpleeg [Azure Media Services Community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates over Media Services te krijgen.
 
-## <a name="need-help"></a>Hebt u hulp nodig?
+## <a name="need-help"></a>Hulp nodig?
 
 U kunt een ondersteunings ticket openen door te navigeren naar een [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

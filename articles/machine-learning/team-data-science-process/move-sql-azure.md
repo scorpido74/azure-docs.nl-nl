@@ -22,50 +22,50 @@ ms.locfileid: "76722455"
 
 In dit artikel vindt u een overzicht van de opties voor het verplaatsen van gegevens uit platte bestanden (CSV-of TSV-indelingen) of van gegevens die zijn opgeslagen in een on-premises SQL Server naar een Azure SQL Database. Deze taken voor het verplaatsen van gegevens naar de cloud maken deel uit van het Team Data Science Process.
 
-Zie voor een onderwerp dat geeft een overzicht van de opties voor het verplaatsen van gegevens naar een on-premises SQL Server voor Machine Learning, [gegevens verplaatsen naar SQL Server op een virtuele machine van Azure](move-sql-server-virtual-machine.md).
+Zie voor een onderwerp waarin de opties voor het verplaatsen van gegevens naar een on-premises SQL Server voor Machine Learning, [gegevens verplaatsen naar SQL Server op een virtuele machine van Azure](move-sql-server-virtual-machine.md).
 
 De volgende tabel geeft een overzicht van de opties voor het verplaatsen van gegevens naar een Azure SQL Database.
 
-| <b>BRON</b> | <b>BESTEMMING: Azure SQL Database</b> |
+| <b>Bron</b> | <b>DOEL: Azure SQL Database</b> |
 | --- | --- |
-| <b>Plat bestand (CSV- of TSV geformatteerd)</b> |[Bulksgewijs invoegen SQL-Query](#bulk-insert-sql-query) |
-| <b>On-premises SQL Server</b> |1.[exporteren naar platte bestanden](#export-flat-file)<br> 2. [SQL database wizard Migratie](#insert-tables-bcp)<br> 3. [back-up en herstel van data base](#db-migration)<br> 4. [Azure Data Factory](#adf) |
+| <b>Plat bestand (CSV of TSV Format teren)</b> |[SQL-query bulksgewijs invoegen](#bulk-insert-sql-query) |
+| <b>On-premises SQL Server</b> |1.[exporteren naar een plat bestand](#export-flat-file)<br> 2. [SQL database wizard Migratie](#insert-tables-bcp)<br> 3. [back-up en herstel van data base](#db-migration)<br> 4. [Azure Data Factory](#adf) |
 
 ## <a name="prereqs"></a>Vereisten
 De procedures die hier wordt beschreven, vereist dat u hebt:
 
 * Een **Azure-abonnement**. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/).
-* Een **Azure storage-account**. U kunt een Azure storage-account gebruiken voor het opslaan van de gegevens in deze zelfstudie. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) als u geen account Azure-opslagaccount hebt. Nadat u het opslagaccount hebt gemaakt, moet u de accountsleutel ophalen die wordt gebruikt voor toegang tot de opslag. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md).
-* Toegang tot een **Azure SQL Database**. Als u een Azure SQL-Database moet instellen [aan de slag met Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) bevat informatie over hoe u een nieuw exemplaar van een Azure SQL-Database inricht.
-* Geïnstalleerd en geconfigureerd **Azure PowerShell** lokaal. Zie voor instructies [hoe u Azure PowerShell installeren en configureren](/powershell/azure/overview).
+* Een **Azure-opslag account**. U kunt een Azure storage-account gebruiken voor het opslaan van de gegevens in deze zelfstudie. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) als u geen account Azure-opslagaccount hebt. Nadat u het opslagaccount hebt gemaakt, moet u de accountsleutel ophalen die wordt gebruikt voor toegang tot de opslag. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md).
+* Toegang tot een **Azure SQL database**. Als u een Azure SQL Database moet instellen, kunt u aan de [slag met Microsoft Azure SQL database](../../sql-database/sql-database-get-started.md) informatie over het inrichten van een nieuw exemplaar van een Azure SQL database.
+* **Azure PowerShell** lokaal geïnstalleerd en geconfigureerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor instructies.
 
-**Gegevens**: de migratie-processen worden gedemonstreerd met behulp van de [NYC Taxi gegevensset](https://chriswhong.com/open-data/foil_nyc_taxi/). De NYC Taxi-gegevensset bevat informatie over de reisgegevens en beurzen en is beschikbaar in Azure blob-opslag: [NYC Taxi gegevens](https://www.andresmh.com/nyctaxitrips/). Een voorbeeld en een beschrijving van deze bestanden zijn beschikbaar in [NYC Taxi Trips gegevensset beschrijving](sql-walkthrough.md#dataset).
+**Gegevens**: de migratie processen worden gedemonstreerd met behulp van de [NYC taxi-gegevensset](https://chriswhong.com/open-data/foil_nyc_taxi/). De NYC taxi-gegevensset bevat informatie over reis gegevens en beurzen en is beschikbaar in Azure Blob-opslag: [NYC taxi-gegevens](https://www.andresmh.com/nyctaxitrips/). Een voor beeld en een beschrijving van deze bestanden zijn te vinden in de beschrijving van de [NYC taxi trips](sql-walkthrough.md#dataset)van de verzameling.
 
-U kunt aanpassen van de procedures die hier wordt beschreven aan een set van uw eigen gegevens of volg de stappen beschreven met behulp van de NYC Taxi-gegevensset. Als u wilt uploaden de gegevensset NYC over taxi's in uw on-premises SQL Server-database, volgt u de procedure wordt beschreven in [bulksgewijs importeren van gegevens in SQL Server-Database](sql-walkthrough.md#dbload). Deze instructies zijn voor een SQL-Server op een Azure-Machine, maar de procedure voor het uploaden naar de on-premises SQL-Server is hetzelfde.
+U kunt aanpassen van de procedures die hier wordt beschreven aan een set van uw eigen gegevens of volg de stappen beschreven met behulp van de NYC Taxi-gegevensset. Als u de NYC taxi-gegevensset wilt uploaden naar uw on-premises SQL Server-Data Base, volgt u de procedure die wordt beschreven in [gegevens bulksgewijs importeren in SQL Server-Data Base](sql-walkthrough.md#dbload). Deze instructies zijn voor een SQL-Server op een Azure-Machine, maar de procedure voor het uploaden naar de on-premises SQL-Server is hetzelfde.
 
 ## <a name="file-to-azure-sql-database"></a>Gegevens verplaatsen van een bron met een plat bestand naar een Azure SQL Database
 Gegevens in platte bestanden (CSV of TSV) kunnen worden verplaatst naar een Azure SQL Database met behulp van een Bulk Insert SQL-query.
 
-### <a name="bulk-insert-sql-query"></a> Bulksgewijs invoegen SQL-Query
-De stappen voor de procedure met behulp van de bulksgewijze insert SQL-query zijn vergelijkbaar met de instructies voor het verplaatsen van gegevens van een platte bestands bron naar SQL Server op een virtuele machine van Azure. Zie voor meer informatie, [bulksgewijs invoegen SQL-Query](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
+### <a name="bulk-insert-sql-query"></a>SQL-query bulksgewijs invoegen
+De stappen voor de procedure met behulp van de bulksgewijze insert SQL-query zijn vergelijkbaar met de instructies voor het verplaatsen van gegevens van een platte bestands bron naar SQL Server op een virtuele machine van Azure. Zie [BULKSGEWIJZE SQL-query invoegen](move-sql-server-virtual-machine.md#insert-tables-bulkquery)voor meer informatie.
 
 ## <a name="sql-on-prem-to-sazure-sql-database"></a>Gegevens verplaatsen van on-premises SQL Server naar een Azure SQL Database
 Als de bron gegevens worden opgeslagen in een on-premises SQL Server, zijn er verschillende mogelijkheden om de gegevens naar een Azure SQL Database te verplaatsen:
 
-1. [Exporteren naar platte bestanden](#export-flat-file)
-2. [SQL Database-migratiewizard](#insert-tables-bcp)
-3. [Database back-en herstellen](#db-migration)
+1. [Exporteren naar plat bestand](#export-flat-file)
+2. [Wizard Migratie SQL Database](#insert-tables-bcp)
+3. [Back-up en herstel van data base](#db-migration)
 4. [Azure Data Factory](#adf)
 
 De stappen voor de eerste drie zijn vergelijkbaar met die secties in [gegevens verplaatsen naar SQL Server op een virtuele machine van Azure](move-sql-server-virtual-machine.md) die dezelfde procedures beslaan. Koppelingen naar de toepasselijke rubrieken in dit onderwerp vindt u in de volgende instructies.
 
-### <a name="export-flat-file"></a>Exporteren naar platte bestanden
+### <a name="export-flat-file"></a>Exporteren naar plat bestand
 De stappen voor het exporteren naar een plat bestand zijn vergelijkbaar met die voor het [exporteren naar een plat bestand](move-sql-server-virtual-machine.md#export-flat-file).
 
-### <a name="insert-tables-bcp"></a>SQL Database-migratiewizard
+### <a name="insert-tables-bcp"></a>Wizard Migratie SQL Database
 De stappen voor het gebruik van de wizard SQL Database Migration zijn vergelijkbaar met die van de instructies in de [wizard SQL database migratie](move-sql-server-virtual-machine.md#sql-migration).
 
-### <a name="db-migration"></a>Database back-en herstellen
+### <a name="db-migration"></a>Back-up en herstel van data base
 De stappen voor het gebruik van back-up en herstel van de Data Base zijn vergelijkbaar met die in de [back-up en herstel bewerking van de data base](move-sql-server-virtual-machine.md#sql-backup).
 
 ### <a name="adf"></a>Azure Data Factory

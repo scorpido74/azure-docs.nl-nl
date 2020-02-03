@@ -22,23 +22,23 @@ ms.locfileid: "76722166"
 
 Dit artikel bevat een voorbeeld van Hive-scripts die worden gebruikt om gegevens in Hive-tabellen in een HDInsight Hadoop-cluster te verkennen.
 
-Deze taak is een stap in de [Team Data Science Process](overview.md).
+Deze taak is een stap in het [team data Science process](overview.md).
 
 ## <a name="prerequisites"></a>Vereisten
 In dit artikel wordt ervan uitgegaan dat u hebt:
 
-* Een Azure storage-account gemaakt. Als u instructies nodig hebt, raadpleegt u [maken van een Azure Storage-account](../../storage/common/storage-account-create.md)
-* Een aangepaste Hadoop-cluster met de HDInsight-service wordt ingericht. Als u instructies nodig hebt, raadpleegt u [aanpassen Azure HDInsight Hadoop-Clusters voor Advanced Analytics](customize-hadoop-cluster.md).
-* De gegevens is geüpload naar de Hive-tabellen in Azure HDInsight Hadoop-clusters. Als dit niet het geval is, volgt u de instructies in [maken en gegevens laden met Hive-tabellen](move-hive-tables.md) het uploaden van gegevens met Hive-tabellen eerst.
-* Externe toegang tot het cluster ingeschakeld. Als u instructies nodig hebt, raadpleegt u [toegang tot de hoofd-knooppunt van Hadoop Cluster](customize-hadoop-cluster.md).
-* Als u instructies voor het indienen van Hive-query's nodig hebt, raadpleegt u [hoe u Hive-query's verzenden](move-hive-tables.md#submit)
+* Een Azure storage-account gemaakt. Als u instructies nodig hebt, raadpleegt u [een Azure Storage account maken](../../storage/common/storage-account-create.md)
+* Een aangepaste Hadoop-cluster met de HDInsight-service wordt ingericht. Zie [Azure HDInsight Hadoop clusters aanpassen voor geavanceerde analyse](customize-hadoop-cluster.md)als u instructies nodig hebt.
+* De gegevens is geüpload naar de Hive-tabellen in Azure HDInsight Hadoop-clusters. Als dat niet het geval is, volgt u de instructies in [maken en gegevens laden in Hive-tabellen](move-hive-tables.md) om eerst gegevens te uploaden naar Hive-tabellen.
+* Externe toegang tot het cluster ingeschakeld. Zie [toegang tot het hoofd knooppunt van het Hadoop-cluster](customize-hadoop-cluster.md)als u instructies nodig hebt.
+* Zie [Hive-Query's verzenden](move-hive-tables.md#submit) als u instructies nodig hebt voor het verzenden van Hive-query's.
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>Voorbeeld van de Hive-query scripts voor gegevens verkennen
-1. Het aantal opmerkingen per partitie ophalen  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. Het aantal opmerkingen per dag  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+1. Het aantal observaties per partitie ophalen `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. Het aantal observaties per dag ophalen `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
 3. De niveaus in een categorische kolom ophalen  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. Het aantal niveaus in de combinatie van twee categorische kolommen ophalen  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+4. Het aantal niveaus in combi natie van twee categorische kolommen ophalen `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 5. De verdeling van de numerieke kolommen ophalen  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. Records ophalen uit het koppelen van twee tabellen
@@ -69,5 +69,5 @@ In dit artikel wordt ervan uitgegaan dat u hebt:
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>Aanvullende query-scripts voor scenario's reis voor gegevens over taxi 's
-Voorbeelden van query's die specifiek zijn voor [NYC Taxi reisgegevens](https://chriswhong.com/open-data/foil_nyc_taxi/) scenario's zijn ook beschikbaar [GitHub-opslagplaats](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Deze query's al hebben gegevensschema opgegeven en kunnen worden verzonden om uit te voeren.
+Er worden ook voor beelden gegeven van query's die specifiek zijn voor [NYC-gegevens](https://chriswhong.com/open-data/foil_nyc_taxi/) Scenario's voor taxi's in de [github-opslag plaats](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Deze query's al hebben gegevensschema opgegeven en kunnen worden verzonden om uit te voeren.
 

@@ -20,15 +20,15 @@ ms.locfileid: "76722183"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Gegevens verkennen in Azure blob-opslag met pandas
 
-In dit artikel wordt uitgelegd hoe u gegevens die zijn opgeslagen in Azure blob-container met verkennen [pandas](https://pandas.pydata.org/) Python-pakket.
+In dit artikel wordt beschreven hoe u gegevens die zijn opgeslagen in Azure Blob-container kunt verkennen met behulp van het python-pakket van [Panda](https://pandas.pydata.org/) .
 
-Deze taak is een stap in de [Team Data Science Process](overview.md).
+Deze taak is een stap in het [team data Science process](overview.md).
 
 ## <a name="prerequisites"></a>Vereisten
 In dit artikel wordt ervan uitgegaan dat u hebt:
 
-* Een Azure storage-account gemaakt. Als u instructies nodig hebt, raadpleegt u [maken van een Azure Storage-account](../../storage/common/storage-account-create.md)
-* Uw gegevens opgeslagen in een Azure blob storage-account. Als u instructies nodig hebt, raadpleegt u [om gegevens te verplaatsen naar en van Azure Storage](../../storage/common/storage-moving-data.md)
+* Een Azure storage-account gemaakt. Als u instructies nodig hebt, raadpleegt u [een Azure Storage account maken](../../storage/common/storage-account-create.md)
+* Uw gegevens opgeslagen in een Azure blob storage-account. Zie [gegevens verplaatsen van en naar Azure Storage](../../storage/common/storage-moving-data.md) als u instructies nodig hebt.
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>De gegevens in een pandas DataFrame laden
 Om te verkennen en bewerken van een gegevensset, moet deze eerst worden gedownload van de bron-blob naar een lokaal bestand, die vervolgens kan worden geladen in een pandas DataFrame. Hier volgen de stappen voor deze procedure:
@@ -62,10 +62,10 @@ dataframe_blobdata = pd.read_csv(LOCALFILE)
 
 U bent nu klaar voor de gegevens verkennen en het genereren van functies voor deze gegevensset.
 
-## <a name="blob-dataexploration"></a>Voorbeelden van gegevens verkennen met behulp van pandas
+## <a name="blob-dataexploration"></a>Voor beelden van het verkennen van gegevens met behulp van Pandas
 Hier volgen enkele voorbeelden van manieren om met pandas gegevens te verkennen:
 
-1. Inspecteer de **aantal rijen en kolommen**
+1. Het **aantal rijen en kolommen** controleren
 
 ```python
 print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
@@ -79,14 +79,14 @@ dataframe_blobdata.head(10)
 dataframe_blobdata.tail(10)
 ```
 
-1. Controleer de **gegevenstype** elke kolom is geïmporteerd als het gebruik van de volgende voorbeeldcode
+1. Controleer het **gegevens type** dat elke kolom heeft geïmporteerd, zoals met behulp van de volgende voorbeeld code
 
 ```python
 for col in dataframe_blobdata.columns:
     print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
 ```
 
-1. Controleer de **elementaire statistieken** voor de kolommen in de gegevens als volgt instellen
+1. Controleer als volgt de **basis statistieken** voor de kolommen in de gegevensset
 
 ```python
 dataframe_blobdata.describe()
@@ -98,14 +98,14 @@ dataframe_blobdata.describe()
 dataframe_blobdata['<column_name>'].value_counts()
 ```
 
-1. **Ontbrekende waarden tellen** versus het werkelijke aantal vermeldingen in elke kolom met behulp van de volgende voorbeeldcode
+1. **Aantal ontbrekende waarden** ten opzichte van het werkelijke aantal vermeldingen in elke kolom met de volgende voorbeeld code
 
 ```python
 miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
 print miss_num
 ```
 
-1. Als u hebt **ontbrekende waarden** voor een bepaalde kolom in de gegevens, u kunt neerzetten ze als volgt:
+1. Als u de **waarden** voor een bepaalde kolom in de gegevens ontbreken, kunt u deze als volgt verwijderen:
 
 ```python
 dataframe_blobdata_noNA = dataframe_blobdata.dropna()
@@ -119,7 +119,7 @@ dataframe_blobdata_mode = dataframe_blobdata.fillna(
     {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
 ```
 
-1. Maak een **histogram** tekenen met behulp van het nummer van de variabele van de opslaglocaties voor het tekenen van de distributie van een variabele
+1. Een **histogram** maken met behulp van een variabel aantal opslag locaties om de distributie van een variabele uit te zetten
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
@@ -127,7 +127,7 @@ dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
 np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
 ```
 
-1. Bekijk **correlaties** tussen variabelen met behulp van een teststappen of de ingebouwde correlatiefunctie
+1. Bekijk **correlaties** tussen variabelen met behulp van een scatterplot of gebruik de ingebouwde correlatie functie
 
 ```python
 # relationship between column_a and column_b using scatter plot

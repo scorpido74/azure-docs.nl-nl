@@ -35,4 +35,4 @@ Alleen de volgende code ringen zijn toegestaan tijdens TLS-handshake:
 
 ## <a name="customer-feedback"></a>Feedback van klanten
 
-Hoewel het afdwingen van TLS 1.2 een keuze is voor de beste coderingsmethode in de branche en deze wordt ingevoerd zoals gepland, willen we graag de mening van klanten horen over hun specifieke implementaties en problemen bij het in gebruik nemen van TLS 1.2. Voor dit doel kunt u uw opmerkingen naar [iot_tls1_deprecation@microsoft.com](mailto:iot_tls1_deprecation@microsoft.com)verzenden.
+Hoewel de TLS 1,2-afdwinging een in de hele branche geschikte coderings keuze is en wordt ingeschakeld zoals gepland, zullen we graag horen van klanten over hun specifieke implementaties en problemen met het vaststellen van TLS 1,2. Voor dit doel kunt u uw opmerkingen naar [iot_tls1_deprecation@microsoft.com](mailto:iot_tls1_deprecation@microsoft.com)verzenden.

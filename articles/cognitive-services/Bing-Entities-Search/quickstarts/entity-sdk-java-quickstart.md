@@ -19,7 +19,7 @@ ms.locfileid: "76716470"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Snelstartgids: een zoek opdracht verzenden met de Bing Entity Search SDK voor Java
 
-Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entity Search SDK voor Java. Hoewel Bing Entiteiten zoeken een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
+Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entity Search SDK voor Java. Hoewel Bing Entity Search een REST-API heeft die compatibel is met de meeste moderne programmeertalen, biedt de SDK een eenvoudige manier om de service te integreren in uw toepassingen. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -67,7 +67,7 @@ Installeer de afhankelijkheden van Bing Entity Search SDK met Maven, Gradle of e
 
 ## <a name="create-a-search-client"></a>Een zoekclient maken
 
-1. Implementeer de client `dominantEntityLookup`, die uw API-eindpunt en een exemplaar van de klasse `ServiceClientCredentials` vereist. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+1. Implementeer de client `dominantEntityLookup`, die uw API-eindpunt vereist, en een exemplaar van de klasse `ServiceClientCredentials`. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {

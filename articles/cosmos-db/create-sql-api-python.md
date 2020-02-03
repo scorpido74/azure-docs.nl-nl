@@ -31,7 +31,7 @@ ms.locfileid: "76719531"
 
 Deze snelstart laat zien hoe u een [SQL API](sql-api-introduction.md)-account van Azure Cosmos DB, een documentdatabase en een container kunt maken met behulp van de Azure-portal. Vervolgens ontwikkelt u een console-app die is gebouwd met de Python SDK voor [SQL API](sql-api-sdk-python.md) en voert u deze uit.
 
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel documenten, sleutel/waarde, brede kolom-en grafiek databases maken en doorzoeken. Al deze bewerkingen profiteren van de distributie en schaal van Azure Cosmos DB.
+Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel documenten, sleutel/waarde, brede kolom-en grafiek databases maken en doorzoeken. Al deze bewerkingen profiteren van de distributie en schaal van Azure Cosmos DB.
 
 In deze Quick Start wordt versie 4 van de [python-SDK](https://pypi.org/project/azure-cosmos/#history)gebruikt.
 
@@ -154,7 +154,7 @@ De volgende codefragmenten zijn allemaal afkomstig uit het bestand `cosmos_get_s
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=query_items)]
    
-## <a name="run-the-app"></a>De app uitvoeren
+## <a name="run-the-app"></a>De app kunt uitvoeren
 
 1. Selecteer **View** > **Command Palette** in Visual Studio Code. 
 

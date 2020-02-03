@@ -30,7 +30,7 @@ De Key Vault VM-extensie ondersteunt deze Linux-distributies:
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de extensie zijn geen beveiligde instellingen vereist: alle instellingen ervan worden beschouwd als informatie zonder gevolgen voor de beveiliging. De uitbrei ding vereist een lijst met bewaakte geheimen, polling frequentie en het doel certificaat archief. Specifiek:  
+De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de extensie zijn geen beveiligde instellingen vereist: alle instellingen ervan worden beschouwd als informatie zonder gevolgen voor de beveiliging. De uitbrei ding vereist een lijst met bewaakte geheimen, polling frequentie en het doel certificaat archief. Met name:  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -70,14 +70,14 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 | Name | Waarde / voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | string |
-| type | KeyVaultForLinux | string |
+| publisher | Microsoft.Azure.KeyVault | tekenreeks |
+| type | KeyVaultForLinux | tekenreeks |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | string |
-| Naam certificaat archief | MY | string |
-| linkOnRenewal | false | booleaans |
-| certificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | waar | booleaans |
+| pollingIntervalInS | 3600 | tekenreeks |
+| Naam certificaat archief | MY | tekenreeks |
+| linkOnRenewal | onwaar | booleaans |
+| certificateStoreLocation  | LocalMachine | tekenreeks |
+| requiredInitialSync | true | booleaans |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | teken reeks matrix
 
 
@@ -202,11 +202,11 @@ Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald 
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
 
 ### <a name="support"></a>Ondersteuning
 
-Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnemen met de Azure-experts op het [forums voor Azure MSDN en Stack Overflow](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteuning van Azure site](https://azure.microsoft.com/support/options/) en selecteer Get-ondersteuning. Voor meer informatie over het gebruik van ondersteuning voor Azure, de [Veelgestelde vragen over Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/).
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.

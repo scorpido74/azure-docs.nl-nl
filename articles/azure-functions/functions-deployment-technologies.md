@@ -42,7 +42,7 @@ Elk plan heeft verschillende gedragingen. Niet alle implementatie technologieën
 <sup>1</sup> implementatie technologie waarvoor [hand matige synchronisatie](#trigger-syncing)van de trigger is vereist.  
 <sup>2</sup> het bewerken van de portal is alleen ingeschakeld voor http-en timer triggers voor functies op Linux met behulp van Premium-en speciale abonnementen.
 
-## <a name="key-concepts"></a>Belangrijke concepten
+## <a name="key-concepts"></a>Belangrijkste concepten
 
 Enkele belang rijke concepten zijn essentieel om te weten hoe implementaties werken in Azure Functions.
 

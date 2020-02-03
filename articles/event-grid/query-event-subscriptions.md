@@ -160,6 +160,6 @@ Get-AzEventGridSubscription -ResourceId $resourceid
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor informatie over de bezorging van gebeurtenissen en nieuwe pogingen, [bezorging van berichten van Event Grid en probeer het opnieuw](delivery-and-retry.md).
+* [Event grid aflevering van berichten en probeer het opnieuw](delivery-and-retry.md).
 * Zie [Een inleiding tot Event Grid](overview.md) voor een inleiding tot Event Grid.
-* Als u wilt snel aan de slag met Event Grid, Zie [aangepaste gebeurtenissen maken en routeren met Azure Event Grid](custom-event-quickstart.md).
+* Zie [aangepaste gebeurtenissen maken en routeren met Azure Event grid](custom-event-quickstart.md)om snel aan de slag te gaan met Event grid.

@@ -128,7 +128,7 @@ De query voegt elke seconde ongeveer acht rijen in. De rijen worden op verschill
    > Verlaat de query voor het genereren van gegevens en open een tweede psql-verbinding voor de resterende opdrachten in deze zelf studie.
    >
 
-## <a name="query"></a>Query
+## <a name="query"></a>Query's uitvoeren
 
 Met de optie voor het hosten van grootschalige kunnen meerdere knoop punten gelijktijdig query's verwerken voor snelheid. De data base berekent bijvoorbeeld aggregaties zoals SUM en COUNT op worker-knoop punten en combineert de resultaten in een eind antwoord.
 

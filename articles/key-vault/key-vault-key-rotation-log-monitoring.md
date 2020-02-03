@@ -40,7 +40,7 @@ In dit artikel wordt beschreven hoe u:
 
 Als u een toepassing wilt inschakelen voor het ophalen van een geheim van Key Vault, moet u eerst het geheim maken en dit uploaden naar uw kluis.
 
-Start een Azure PowerShell-sessie en gebruik de volgende opdracht om u aan te melden bij uw Azure-account:
+Start een Azure PowerShell-sessie en meld u aan bij uw Azure-account met de volgende opdracht:
 
 ```powershell
 Connect-AzAccount

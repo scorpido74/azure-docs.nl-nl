@@ -30,11 +30,11 @@ Network Watcher is ontworpen om de netwerk status van IaaS-onderdelen (Infrastru
 
 ### <a name="what-tools-does-network-watcher-provide"></a>Welke hulpprogram ma's Network Watcher bieden?
 Network Watcher biedt drie belang rijke sets mogelijkheden
-* Controleren
+* Bewaking
   * In de [topologie weergave](https://docs.microsoft.com/azure/network-watcher/view-network-topology) ziet u de resources in uw virtuele netwerk en de relaties daartussen.
   * Met [verbindings monitor](https://docs.microsoft.com/azure/network-watcher/connection-monitor) kunt u de connectiviteit en latentie tussen een virtuele machine en een andere netwerk bron bewaken.
   * Met [netwerk prestatie meter](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor) kunt u connectiviteit en latentie bewaken over hybride netwerk architecturen, Expressroute-circuits en service/toepassings eindpunten.  
-* Diagnostics
+* Diagnostiek
   * Met [IP-stroom controle](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) kunt u problemen met verkeer filteren op een VM-niveau detecteren.
   * [Volgende hop](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) helpt u bij het controleren van verkeers routes en het detecteren van routerings problemen.
   * [Met verbindings problemen oplossen](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal) kunt u een eenmalige verbinding en latentie controle tussen een virtuele machine en een andere netwerk bron.

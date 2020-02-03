@@ -25,7 +25,7 @@ In deze handleiding leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+- Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 - [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 - [Helm 3 is geïnstalleerd][helm-installed].
 

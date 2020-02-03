@@ -154,7 +154,7 @@ Als een fout in het doel systeem verhindert dat een afzonderlijke gebruiker word
 
 Los deze fouten op door de kenmerk waarden voor de betrokken gebruiker in het bron systeem aan te passen of door de kenmerk toewijzingen zo aan te passen dat er geen conflicten ontstaan.
 
-### <a name="quarantine"></a>Voorschriften
+### <a name="quarantine"></a>Quarantine
 
 Als de meeste of alle aanroepen die op het doel systeem worden uitgevoerd, consistent mislukken vanwege een fout (bijvoorbeeld ongeldige beheerders referenties), wordt de inrichtings taak de status ' quarantaine '. Deze status wordt aangegeven in het [overzichts rapport](check-status-user-account-provisioning.md) van de inrichting en via e-mail als e-mail meldingen zijn geconfigureerd in de Azure Portal.
 
