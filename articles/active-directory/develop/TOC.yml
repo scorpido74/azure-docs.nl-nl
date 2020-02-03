@@ -740,18 +740,18 @@
   items:
     - name: Woordenlijst
       href: developer-glossary.md
-    - name: Azure-roadmap
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Video's
+      href: identity-videos.md
     - name: Azure AD-blog
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Ontwikkelaarsblog van het Microsoft-identiteitsplatform
       href: 'https://developer.microsoft.com/en-us/identity/blogs/'
+    - name: Azure-roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Aanmelden met Microsoft uitproberen
       href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: Beheerde identiteiten voor Azure-resources
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
     - name: Ondersteuning vragen
       displayName: 'support, help options'
       href: developer-support-help-options.md
-    - name: Beheerde identiteiten voor Azure-resources
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
-    - name: Microsoft Identity Platform-video's
-      href: identity-videos.md
