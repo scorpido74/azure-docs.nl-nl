@@ -5,25 +5,25 @@ description: Bouw & meerdere ML regressie modellen vergelijkt om de prijs van ee
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: b2511feefbe419223f355509ecb435518ce8382e
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 189b36c8d9a7c1d1e247bb2cb34795dc4e3595ce
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311044"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963339"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Train & meerdere regressie modellen vergelijken om de prijzen van auto's te voors pellen met Azure Machine Learning Designer
 
-**Voor beeld van Designer 2**
+**Voor beeld van Designer (preview) 2**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Meer informatie over hoe u een machine learning pijp lijn bouwt zonder dat u maar één regel code hoeft te schrijven met behulp van de ontwerp functie. Dit voor beeld van treinen en vergelijkt meerdere regressie modellen om de prijs van een auto te voors pellen op basis van de technische functies. We bieden de reden voor de keuzes die u in deze pijp lijn hebt gemaakt zodat u uw eigen machine learning problemen kunt aanpakken.
+Meer informatie over het bouwen van een machine learning pijp lijn zonder het schrijven van één regel code met behulp van de ontwerp functie (preview). Dit voor beeld van treinen en vergelijkt meerdere regressie modellen om de prijs van een auto te voors pellen op basis van de technische functies. We bieden de reden voor de keuzes die u in deze pijp lijn hebt gemaakt zodat u uw eigen machine learning problemen kunt aanpakken.
 
 Als u net aan de slag gaat met machine learning, bekijkt u de [basis versie](how-to-designer-sample-regression-automobile-price-basic.md) van deze pijp lijn.
 

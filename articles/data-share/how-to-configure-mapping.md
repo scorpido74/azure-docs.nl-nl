@@ -6,16 +6,16 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 754977788c5f6e5e574500552f670ba9083cf683
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ff432c2073536448c8194ebe537c8bf8cf00663
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490651"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964240"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Een toewijzing van een gegevensset configureren voor een ontvangen share in de Azure-gegevens share
 
-In dit artikel wordt uitgelegd hoe u een toewijzing van een gegevensset configureert voor een ontvangen share met behulp van de Azure-gegevens share. U kunt dit doen als u een uitnodiging voor gegevens delen hebt geaccepteerd, maar u ervoor hebt gekozen om deze later te accepteren en te configureren. U kunt een toewijzing van een gegevensset configureren als u de bestemming wilt wijzigen voor gegevens die met u worden gedeeld, of als u gegevens wilt ontvangen in een SQL Server. 
+In dit artikel wordt uitgelegd hoe u een toewijzing van een gegevensset configureert voor een ontvangen share met behulp van de Azure-gegevens share. U kunt dit doen als u een uitnodiging voor gegevens delen hebt geaccepteerd, maar u hebt gekozen voor accepteren en configureren, of als de gegevens in-place worden gedeeld. U kunt een toewijzing van een gegevensset configureren als u de bestemming wilt wijzigen voor gegevens die met u worden gedeeld, of als u gegevens wilt ontvangen in een SQL Server. 
 
 ## <a name="navigate-to-a-received-data-share"></a>Navigeer naar een ontvangen gegevens share
 
@@ -27,9 +27,9 @@ Schakel het selectie vakje in naast de gegevensset waaraan u een bestemming wilt
 
 ![Toewijzen aan doel](./media/dataset-map-target.png "Toewijzen aan doel") 
 
-## <a name="select-a-new-destination-store"></a>Een nieuw doel archief selecteren
+## <a name="select-a-new-target-store"></a>Een nieuw doel archief selecteren
 
-Selecteer een doel gegevens type waarvan u wilt dat de gegevens binnenkomen. Alle gegevens die al in een eerder toegewezen opslag account bestaan, worden niet automatisch verplaatst naar de nieuwe bestemming.
+Selecteer een doel gegevens type waarvan u wilt dat de gegevens binnenkomen. Voor het delen op basis van moment opnamen worden alle gegevens die al in een eerder toegewezen opslag account bestaan, niet automatisch verplaatst naar het nieuwe doel archief. Selecteer voor in-place delen een gegevens archief op de opgegeven locatie. De locatie is het Azure Data Center waar de bron gegevens opslag van de gegevens provider zich bevindt.
 
 ![Doel opslag account](./media/dataset-map-target-sql.png "Doel opslag") 
 

@@ -51,7 +51,7 @@
       href: service-fabric-mesh-storing-state.md
     - name: Geheimen
       href: service-fabric-mesh-secrets-overview.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: De ontwikkelomgeving instellen
       href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
@@ -71,6 +71,8 @@
       href: service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md
     - name: Geheimen beheren
       href: service-fabric-mesh-howto-manage-secrets.md
+    - name: Een toepassing verplaatsen naar een andere Azure-regio
+      href: move-across-regions.md
     - name: Voorbeelden zoeken
       href: service-fabric-mesh-howto-find-samples.md
 - name: Naslaginformatie

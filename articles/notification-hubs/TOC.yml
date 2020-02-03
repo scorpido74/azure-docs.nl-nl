@@ -79,6 +79,8 @@
       href: samples-powershell.md
 - name: Concepten
   items:
+    - name: Transport Layer Security (TLS)
+      href: notification-hubs-tls12.md
     - name: Uitleg bij architectuur van pushmeldingen van het bedrijf
       href: notification-hubs-enterprise-push-notification-architecture.md
     - name: Apparaatregistraties
@@ -90,7 +92,7 @@
           href: notification-hubs-templates-cross-platform-push-messages.md
     - name: Beveiligingsmodel
       href: notification-hubs-push-notification-security.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Prijscategorie wijzigen
       href: change-pricing-tier.md

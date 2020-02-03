@@ -3,12 +3,12 @@ title: Azure Functions ontwikkelen met Visual Studio code
 description: Meer informatie over het ontwikkelen en testen van Azure Functions met behulp van de Azure Functions-extensie voor Visual Studio code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845403"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964007"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio code
 
@@ -79,6 +79,8 @@ Met de functie-extensie kunt u een functie-app-project maken, samen met uw eerst
 
     ![Met HTTP getriggerde functie sjabloon in Visual Studio code](./media/functions-develop-vs-code/new-function-full.png)
 
+### <a name="generated-project-files"></a>Gegenereerde project bestanden
+
 Met de project sjabloon maakt u een project in de taal die u hebt gekozen en installeert u de vereiste afhankelijkheden. Voor elke taal bevat het nieuwe project de volgende bestanden:
 
 * **host. json**: Hiermee kunt u de host voor functies configureren. Deze instellingen zijn van toepassing wanneer u functies lokaal uitvoert en wanneer u ze in azure uitvoert. Zie voor meer informatie [host. json Reference](functions-host-json.md).
@@ -87,6 +89,30 @@ Met de project sjabloon maakt u een project in de taal die u hebt gekozen en ins
 
     >[!IMPORTANT]
     >Omdat het bestand local. settings. json geheimen kan bevatten, moet u het uitsluiten van uw project broncode beheer.
+
+Afhankelijk van uw taal worden deze andere bestanden gemaakt:
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+* [HttpExample.cs Class-bibliotheek bestand](functions-dotnet-class-library.md#functions-class-library-project) dat de functie implementeert.
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+* Een package. JSON-bestand in de hoofdmap.
+
+* Een HttpExample-map die het [JSON-definitie bestand](functions-reference-node.md#folder-structure) van de functie en het [bestand index. js](functions-reference-node.md#exporting-a-function)bevat, een node. js-bestand dat de functie code bevat.
+
+<!-- # [PowerShell](#tab/powershell)
+
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the run.ps1 file, which contains the function code.
+ 
+# [Python](#tab/python)
+    
+* A project-level requirements.txt file that lists packages required by Functions.
+    
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the \_\_init\_\_.py file, which contains the function code.
+     -->
+---
 
 U kunt nu invoer-en uitvoer bindingen aan uw functie toevoegen door [het function. JSON-bestand te wijzigen](#add-a-function-to-your-project) of door [een para meter toe te C# voegen aan een functie van een klassen bibliotheek](#add-a-function-to-your-project).
 

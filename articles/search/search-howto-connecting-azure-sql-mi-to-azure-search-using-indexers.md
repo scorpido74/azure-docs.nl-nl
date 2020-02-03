@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0f91775e0175b4b4af9b57fa96e389c3a2a22564
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863118"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964886"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Een verbinding van een Azure Cognitive Search Indexeer functie configureren in een door SQL beheerd exemplaar
 
@@ -35,11 +35,14 @@ Controleer of de netwerk beveiligings groep de juiste **regels voor binnenkomend
    ![Binnenkomende beveiligings regel NSG](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "Binnenkomende beveiligings regel NSG")
 
 > [!NOTE]
-> U kunt ervoor kiezen om meer beperkend te zijn in de inkomende toegang tot uw beheerde SQL-exemplaar door de huidige regel (`public_endpoint_inbound`) te vervangen door 2 regels:
+> Indexeer functies vereisen nog steeds dat het beheerde exemplaar van SQL wordt geconfigureerd met een openbaar eind punt om gegevens te kunnen lezen.
+> U kunt er echter voor kiezen om de inkomende toegang tot dat open bare eind punt te beperken door de huidige regel (`public_endpoint_inbound`) te vervangen door de volgende twee regels:
 >
-> * Binnenkomende toegang vanaf [de `AzureCognitiveSearch` servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) toestaan (' Bron ' = `AzureCognitiveSearch`)
+> * Het toestaan van binnenkomende toegang vanaf [de `AzureCognitiveSearch` servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) (' Bron ' = `AzureCognitiveSearch`, ' naam ' = `cognitive_search_inbound`)
 >
-> * Het toestaan van binnenkomende toegang vanaf het IP-adres van de zoek service, die kan worden verkregen door de Fully Qualified Domain Name (bijvoorbeeld `<your-search-service-name>.search.windows.net`) te pingen. (' Bron ' = `IP address`)
+> * Het toestaan van binnenkomende toegang vanaf het IP-adres van de zoek service, die kan worden verkregen door de Fully Qualified Domain Name (bijvoorbeeld `<your-search-service-name>.search.windows.net`) te pingen. (' Bron ' = `IP address`, ' naam ' = `search_service_inbound`)
+>
+> Stel voor elk van deze twee regels ' poort ' = `3342`, ' PROTOCOL ' = `TCP`, "doel" = `Any`, "actie" = `Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>connection string van open bare eind punten ophalen
 Zorg ervoor dat u de connection string gebruikt voor het **open bare eind punt** (poort 3342, niet poort 1433).

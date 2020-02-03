@@ -5,25 +5,25 @@ description: Volg dit voor beeld van de classificatie om verloop met Azure Machi
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: sgilley
 ms.date: 12/25/2019
-ms.openlocfilehash: 88f688608a0ae3d435699362f9326c7c02d494a4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 701bf186080ef627ef4621e959b281fd58aa4132
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311111"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963359"
 ---
 # <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Versterkte beslissings structuur gebruiken om verloop te voors pellen met Azure Machine Learning Designer
 
-**Ontwerp voorbeeld 5**
+**Voor beeld van Designer (preview) 5**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Meer informatie over hoe u een complexe machine learning pijp lijn bouwt zonder dat u maar één regel code hoeft te schrijven met behulp van de ontwerp functie.
+Meer informatie over het bouwen van een complexe machine learning pijp lijn zonder dat u een regel code hoeft te schrijven met behulp van de ontwerp functie (preview).
 
 Deze pijp lijn treinen 2 **gestimuleerde classificaties voor de beslissings structuur van twee klassen** voor het voors pellen van algemene taken voor CRM-systemen (Customer Relationship Management)-klant verloop. De gegevens waarden en labels zijn gesplitst over meerdere gegevens bronnen en worden versleuteld naar anoniem maken klant gegevens. we kunnen de Designer echter nog steeds gebruiken om gegevens sets te combi neren en een model te trainen met behulp van de verborgen waarden.
 

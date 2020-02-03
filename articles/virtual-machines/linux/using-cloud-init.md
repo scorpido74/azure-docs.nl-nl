@@ -13,49 +13,81 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 01/23/2019
 ms.author: danis
-ms.openlocfilehash: 7b3f64d0629ba5d7aaf85b854e1ee8e5a1410f94
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e3a09a0d8412af711bfb6c539dc9d2829b1f0898
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458613"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964580"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init-ondersteuning voor virtuele machines in azure
-In dit artikel wordt de ondersteuning beschreven die bestaat voor [Cloud-init](https://cloudinit.readthedocs.io) voor het configureren van een virtuele machine (VM) of schaal sets voor virtuele machines bij het inrichten van de tijd in Azure. Deze Cloud-init-scripts worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure.  
+In dit artikel wordt de ondersteuning beschreven die bestaat voor [Cloud-init](https://cloudinit.readthedocs.io) voor het configureren van een virtuele machine (VM) of schaal sets voor virtuele machines bij het inrichten van de tijd in Azure. Deze Cloud-init-configuraties worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure.  
 
-## <a name="cloud-init-overview"></a>Overzicht van cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) is een veelgebruikte benadering voor het aanpassen van een Linux-VM als deze voor de eerste keer wordt opgestart. U kunt cloud-init gebruiken voor het installeren van pakketten en schrijven van bestanden, of om gebruikers en beveiliging te configureren. Omdat cloud-init wordt aangeroepen tijdens het opstartproces, zijn er geen extra stappen of agents vereist om toe te passen van uw configuratie.  Voor meer informatie over het juiste indeling uw `#cloud-config` bestanden, Zie de [cloud-init-documentatiesite](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` bestanden zijn tekstbestanden die zijn gecodeerd in base64.
+Inrichting van de VM is het proces waarbij Azure de parameter waarden voor de VM doorloopt, zoals hostnaam, gebruikers naam, wacht woord, enzovoort, en deze beschikbaar maken voor de virtuele machine wanneer deze wordt opgestart. Een ' inrichtings agent ' gebruikt deze waarden, configureert de virtuele machine en meldt zich terug wanneer deze is voltooid. 
 
-Cloud-init werkt ook in distributies. U gebruikt bijvoorbeeld niet **apt-get install** of **yum install** om een pakket te installeren. In plaats daarvan kunt u een lijst definiëren met te installeren pakketten. Cloud-init maakt automatisch gebruik van het hulpprogramma voor systeemeigen pakketbeheer voor de distro die u selecteert.
+Azure ondersteunt twee inrichtings agenten [Cloud-init](https://cloudinit.readthedocs.io)en de [Azure Linux-agent (Wala)](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux).
 
-We zijn actief werkt met onze onderschreven Linux-distributie partners om cloud-init ingeschakeld installatiekopieën die beschikbaar zijn in de Azure marketplace. Met deze installatie kopieën kunnen uw Cloud-init-implementaties en-configuraties naadloos werken met Vm's en virtuele-machine schaal sets. De volgende tabel geeft een overzicht van de huidige beschikbaarheid van de installatiekopieën van cloud-init ingeschakeld op het Azure-platform:
+## <a name="cloud-init-overview"></a>overzicht van Cloud-init
+[Cloud-init](https://cloudinit.readthedocs.io) is een veelgebruikte benadering voor het aanpassen van een virtuele Linux-machine wanneer deze voor de eerste keer wordt opgestart. U kunt cloud-init gebruiken voor het installeren van pakketten en schrijven van bestanden, of om gebruikers en beveiliging te configureren. Omdat cloud-init wordt aangeroepen tijdens het opstartproces, zijn er geen extra stappen of agents vereist om toe te passen van uw configuratie.  Zie de [Cloud-init-documentatie site](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)voor meer informatie over het correct format teren van uw `#cloud-config`-bestanden of andere invoer.  `#cloud-config` bestanden zijn tekstbestanden die zijn gecodeerd in base64.
 
-| Uitgever | Aanbieding | SKU | Versie | cloud-init gereed |
-|:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |nieuwste |ja | 
-|Canonical |UbuntuServer |16.04-LTS |nieuwste |ja | 
-|Canonical |UbuntuServer |14.04.5-LTS |nieuwste |ja |
-|CoreOS |CoreOS |Stabiel |nieuwste |ja |
-|Open Logic 7,7 |CentOS |7-CI |7.7.20190920 |preview |
-|Oracle 7,7 |Oracle-Linux |77-CI |7.7.01|preview |
-|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ja |
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
-    
-Momenteel Azure Stack biedt geen ondersteuning voor het inrichten van RHEL 7. x en CentOS 7. x met behulp van Cloud-init.
+Cloud-init werkt ook over distributies. U gebruikt bijvoorbeeld niet **apt-get install** of **yum install** om een pakket te installeren. In plaats daarvan kunt u een lijst definiëren met te installeren pakketten. Cloud-init maakt automatisch gebruik van het systeem eigen pakket beheer programma voor de distributie die u selecteert.
 
-* Voor RHEL 7,6, Cloud-init Package, is het ondersteunde pakket: *18.2-1. el7_6.2* 
-* Voor RHEL 7,7 (preview), Cloud-init Package, het preview-pakket is: *18.5 -3. EL7*
-* Voor CentOS 7,7 (preview), Cloud-init Package, het preview-pakket is: *18.5 -3. EL7. CentOS*
-* Voor Oracle 7,7 (preview), Cloud-init pakket, het preview-pakket is: *18.5-3.0.1. EL7*
+We zijn actief werkt met onze onderschreven Linux-distributie partners om cloud-init ingeschakeld installatiekopieën die beschikbaar zijn in de Azure marketplace. Met deze installatie kopieën kunnen uw Cloud-init-implementaties en-configuraties naadloos werken met Vm's en virtuele-machine schaal sets. In eerste instantie werken we samen met de getekende Linux distributie-partners en upstream om te zorgen voor Cloud-init-functies met het besturings systeem op Azure. vervolgens worden de pakketten bijgewerkt en openbaar gemaakt in de distributie-pakket opslagplaatsen. 
+
+Er zijn twee fasen om Cloud-init beschikbaar te maken voor het geviseerde besturings systeem van Linux distributie op Azure, pakket ondersteuning en vervolgens de ondersteuning van afbeeldingen:
+* ' Cloud-init-pakket ondersteuning op Azure ' documenteert welke Cloud-init-pakketten worden ondersteund of in de preview-versie, zodat u deze pakketten kunt gebruiken met het besturings systeem in een aangepaste installatie kopie.
+* ' afbeelding Cloud-initiated ' documenten als de installatie kopie al is geconfigureerd voor het gebruik van Cloud-init.
+
+
+### <a name="canonical"></a>Canonical
+| Uitgever/versie| Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+|Canonieke 18,04 |UbuntuServer |18.04-LTS |nieuwste |ja | ja |
+|Canonieke 16,04|UbuntuServer |16.04-LTS |nieuwste |ja | ja |
+|Canonieke 14,04|UbuntuServer |14.04.5-LTS |nieuwste |ja | ja |
+
+### <a name="rhel"></a>RHEL
+| Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ja | Ja, ondersteuning van pakket versie: *18.2-1. el7_6.2*|
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (Opmerking: dit is een preview-afbeelding en zodra alle RHEL 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit mid 2020 verwijderd, wordt de melding weer gegeven.) | Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
+|RedHat 7,7 |RHEL |7-RAW | n.v.t.| geen installatie kopieën om te starten 2020 februari| Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
+|RedHat 7,7 |RHEL |7-LVM | n.v.t.| geen installatie kopieën om te starten 2020 februari| Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
+|RedHat 7,7 |RHEL |7,7 | n.v.t.| geen installatie kopieën om te starten 2020 februari | Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
+|RedHat 7,7 |RHEL-BYOS | RHEL-lvm77 | n.v.t.|geen installatie kopieën om te starten 2020 februari  | Ja, ondersteuning van pakket versie: *18.5 -3. EL7*|
+
+### <a name="centos"></a>CentOS
+
+| Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+|Open Logic 7,7 |CentOS |7-CI |7.7.20190920 |Ja (Opmerking: dit is een preview-afbeelding en zodra alle CentOS 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit mid 2020 verwijderd, wordt de melding weer gegeven.) | Ja, ondersteuning van pakket versie: *18.5 -3. EL7. CentOS*|
+
+* CentOS 7,7-installatie kopieën die worden gebruikt voor de Cloud-init, worden hier in februari 2020 bijgewerkt 
+
+### <a name="oracle"></a>Oracle
+
+| Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+|Oracle 7,7 |Oracle-Linux |77-CI |7.7.01| Preview-afbeelding (Let op: dit is een voorbeeld afbeelding en zodra alle Oracle 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit mid 2020 verwijderd, maar wordt de melding weer gegeven.) | Nee, in de preview-versie is *het pakket: 18.5-3.0.1. EL7*
+
+### <a name="debian--suse-sles"></a>Debian & SuSE SLES
+We werken momenteel aan de preview-versie van de ondersteuning, verwacht updates in februari en maart 2020.
+
+Momenteel biedt Azure Stack ondersteuning voor het inrichten van installatie kopieën die zijn ingeschakeld voor Cloud-init.
+
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Wat is het verschil tussen Cloud-init en de Linux-agent (WALA)?
-WALA is een Azure-platformspecifieke agent die wordt gebruikt voor het inrichten en configureren van Vm's en het afhandelen van Azure-extensies. We verbeteren de taak voor het configureren van Vm's voor het gebruik van Cloud-init in plaats van de Linux-agent, zodat bestaande Cloud-init-klanten hun huidige Cloud-init-scripts kunnen gebruiken.  Als u beschikt over bestaande investeringen in Cloud-init-scripts voor het configureren van Linux-systemen, zijn er **geen aanvullende instellingen vereist** om deze in te scha kelen. 
+WALA is een Azure-platformspecifieke agent die wordt gebruikt voor het inrichten en configureren van Vm's en het afhandelen van [Azure-extensies](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux). 
 
-Als u de Azure CLI-`--custom-data` switch niet opneemt tijdens de inrichtings tijd, neemt WALA de minimale VM-inrichtings parameters op die nodig zijn voor het inrichten van de virtuele machine en het volt ooien van de implementatie met de standaard waarden.  Als u verwijst naar de Cloud-init `--custom-data` switch, ongeacht wat is opgenomen in uw aangepaste gegevens (afzonderlijke instellingen of volledig script), worden de standaard waarden van WALA genegeerd. 
+We verbeteren de taak van het configureren van Vm's voor het gebruik van Cloud-init in plaats van de Linux-agent om te zorgen dat bestaande Cloud-init-klanten hun huidige Cloud-init-scripts kunnen gebruiken, of nieuwe klanten om te profiteren van de geavanceerde configuratie functionaliteit voor Cloud-init. Als u beschikt over bestaande investeringen in Cloud-init-scripts voor het configureren van Linux-systemen, zijn er **geen aanvullende instellingen vereist** om Cloud-init in te scha kelen. 
 
-WALA configuraties van Vm's zijn beperkt tot het werk binnen de maximale VM-inrichtings tijd.  Cloud-init-configuraties die zijn toegepast op Vm's, hebben geen tijds beperkingen en veroorzaken geen implementaties vanwege een time-out. 
+Cloud-init kan geen Azure-extensies verwerken, dus WALA is nog steeds vereist in de installatie kopie om extensies te verwerken, maar de inrichtings code moet zijn uitgeschakeld voor goedgekeurde Linux distributies-installatie kopieën die worden geconverteerd naar inrichten door Cloud-init, ze hebben WALA geïnstalleerd en correct worden ingesteld.
+
+Bij het maken van een virtuele machine, als u de Azure CLI-`--custom-data` switch niet opneemt tijdens de inrichting, neemt Cloud-init of WALA de minimale VM-inrichtings parameters aan die nodig zijn om de virtuele machine in te richten en de implementatie te volt ooien met de standaard waarden.  Als u verwijst naar de Cloud-init-configuratie met de `--custom-data` switch, is de waarde die is opgenomen in uw aangepaste gegevens, beschikbaar voor Cloud-init wanneer de virtuele machine wordt opgestart.
+
+Cloud-init-configuraties die zijn toegepast op Vm's, hebben geen tijds beperkingen en veroorzaken geen implementaties vanwege een time-out. Dit geldt niet voor WALA als u de standaard instellingen van WALA wijzigt om aangepaste gegevens te verwerken, kan dit niet groter zijn dan de totale time-outwaarde voor de VM-inrichting van 40mins, als dit het geval is, mislukt de virtuele machine maken.
 
 ## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>Een virtuele machine die is ingeschakeld voor de Cloud-init implementeren
 Het implementeren van een virtuele machine die is ingeschakeld voor de Cloud, is net zo eenvoudig als verwijzingen naar een distributie met Cloud-init tijdens de implementatie.  De Linux-distributies kunnen ervoor kiezen om Cloud-init in te scha kelen en te integreren in de basis installatie kopieën van Azure. Wanneer u de installatie kopie die u wilt implementeren hebt bevestigd, is Cloud-init ingeschakeld. u kunt de Azure CLI gebruiken om de installatie kopie te implementeren. 
@@ -107,3 +139,4 @@ Raadpleeg de volgende documenten voor voor beelden van configuratie wijzigingen 
 - [Een pakket beheer programma uitvoeren om bestaande pakketten bij de eerste keer opstarten bij te werken](cloudinit-update-vm.md)
 - [Lokale hostnaam van VM wijzigen](cloudinit-update-vm-hostname.md) 
 - [Een toepassings pakket installeren, configuratie bestanden bijwerken en sleutels invoeren](tutorial-automate-vm-deployment.md)
+ 

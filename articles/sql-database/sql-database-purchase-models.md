@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/01/2020
+ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973523"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964767"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Kiezen tussen de vCore en de DTU-aankoop modellen
 
@@ -47,9 +47,9 @@ In de volgende tabel en grafiek worden de vCore en de op DTU gebaseerde inkoop m
 
 In de ingerichte Compute-laag weerspiegelt de reken kosten de totale reken capaciteit die is ingericht voor de toepassing.
 
-In de laag bedrijfskritische service worden automatisch ten minste drie replica's toegewezen. Om deze extra toewijzing van reken bronnen weer te geven, is de prijs in het op vCore gebaseerde aankoop model ongeveer 2,7 x hoger in de bedrijfskritische service tier dan in de servicelaag voor algemeen gebruik. De hogere opslag prijs per GB in de bedrijfskritische servicelaag weerspiegelt ook de hoge I/O-en lage latentie van de SSD-opslag.
+In de servicelaag Bedrijfskritiek worden automatisch ten minste drie replica's toegewezen. Om deze extra toewijzing van reken bronnen weer te geven, is de prijs in het op vCore gebaseerde aankoop model ongeveer 2,7 x hoger in het Bedrijfskritiek servicetier dan het deel uitmaakt van de Algemeen servicelaag. De hogere opslag prijs per GB in de Bedrijfskritiek servicelaag weerspiegelt ook de hogere i/o-limieten en de lagere latentie van de SSD-opslag.
 
-De kosten voor back-upopslag zijn hetzelfde voor de tier Business Critical service en de servicelaag voor algemeen gebruik, omdat beide lagen standaard opslag gebruiken.
+De kosten voor back-upopslag zijn hetzelfde voor de Bedrijfskritiek servicelaag en de Algemeen servicelaag omdat beide lagen standaard opslag gebruiken voor back-ups.
 
 ### <a name="serverless-compute-costs"></a>Reken kosten zonder server
 
@@ -67,7 +67,7 @@ Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/sql-data
 
 Een virtuele kern (vCore) vertegenwoordigt een logische CPU en biedt u de mogelijkheid om te kiezen tussen generaties van hardware en fysieke kenmerken van de hardware (bijvoorbeeld het aantal kernen, het geheugen en de opslag grootte). Het vCore-inkoop model biedt u flexibiliteit, controle, transparantie van het gebruik van afzonderlijke bronnen en een eenvoudige manier om on-premises werkbelasting vereisten te vertalen naar de Cloud. Met dit model kunt u reken-, geheugen-en opslag Resources kiezen op basis van de behoeften van uw werk belasting.
 
-In het op vCore gebaseerde aankoop model kunt u kiezen tussen de [algemene doel](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) -en [bedrijfskritische](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) service lagen voor [individuele data bases](sql-database-single-database-scale.md), [elastische Pools](sql-database-elastic-pool.md)en [beheerde exemplaren](sql-database-managed-instance.md). Voor afzonderlijke data bases kunt u ook de [grootschalige-servicelaag](sql-database-service-tier-hyperscale.md)kiezen.
+In het op vCore gebaseerde aankoop model kunt u kiezen tussen de [Algemeen](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) -en [bedrijfskritiek](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) -service lagen voor [afzonderlijke data bases](sql-database-single-database-scale.md), [elastische groepen](sql-database-elastic-pool.md)en [beheerde exemplaren](sql-database-managed-instance.md). Voor afzonderlijke data bases kunt u ook de [grootschalige-servicelaag](sql-database-service-tier-hyperscale.md)kiezen.
 
 Met het op vCore gebaseerde aankoop model kunt u afzonderlijke reken-en opslag Resources kiezen, de on-premises prestaties afstemmen en de prijs optimaliseren. In het op vCore gebaseerde aankoop model betaalt u voor:
 
@@ -83,8 +83,8 @@ Als uw afzonderlijke data base of elastische pool meer dan 300 Dtu's verbruikt, 
 
 Als u wilt omzetten van het op DTU gebaseerde aankoop model naar het op vCore gebaseerde aankoop model, selecteert u de reken grootte met behulp van de volgende vuist regels:
 
-- Voor elke 100 Dtu's in de laag standaard is ten minste 1 vCore vereist in de servicelaag voor algemeen gebruik.
-- Voor elke 125 Dtu's in de Premium-laag is ten minste 1 vCore vereist in de bedrijfskritische service-laag.
+- Voor elke 100 Dtu's in de laag standaard is ten minste één vCore in de servicelaag Algemeen vereist.
+- Voor elke 125 Dtu's in de Premium-laag is ten minste één vCore in de servicelaag Bedrijfskritiek vereist.
 
 ## <a name="dtu-based-purchasing-model"></a>Op DTU gebaseerd inkoop model
 
@@ -125,7 +125,19 @@ U kunt extra Edtu's toevoegen aan een bestaande pool zonder uitval tijd van de d
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Het aantal Dtu's bepalen dat nodig is voor een workload
 
-Als u een bestaande on-premises of SQL Server werk belasting van virtuele machine naar Azure SQL Database wilt migreren, gebruikt u de [DTU-reken machine](https://dtucalculator.azurewebsites.net/) om het aantal benodigde dtu's te benaderen. Gebruik voor een bestaande Azure SQL Database workload [query-prestatie inzichten](sql-database-query-performance.md) om inzicht te krijgen in uw database verbruik (dtu's) en krijg meer inzicht in het optimaliseren van uw werk belasting. Met de weer gave [sys. dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) dynamische beheer weergave (DMV) kunt u het Resource verbruik voor het afgelopen uur weer geven. In de catalogus weergave [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) wordt het Resource verbruik voor de afgelopen 14 dagen weer gegeven, maar een lagere betrouw baarheid van gemiddelden van vijf minuten.
+Als u een bestaande on-premises of SQL Server werk belasting van virtuele machine naar Azure SQL Database wilt migreren, gebruikt u de [DTU-reken machine](https://dtucalculator.azurewebsites.net/) om het aantal benodigde dtu's te benaderen. Gebruik voor een bestaande Azure SQL Database workload [query-prestatie inzichten](sql-database-query-performance.md) om inzicht te krijgen in uw database verbruik (dtu's) en krijg meer inzicht in het optimaliseren van uw werk belasting. Met de weer gave [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) Dynamic Management (DMV) kunt u het Resource verbruik voor het afgelopen uur weer geven. In de catalogus weergave [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) wordt het Resource verbruik voor de afgelopen 14 dagen weer gegeven, maar een lagere betrouw baarheid van gemiddelden van vijf minuten.
+
+### <a name="determine-dtu-utilization"></a>DTU-gebruik bepalen
+
+Gebruik de volgende formule om het gemiddelde percentage van DTU/eDTU-gebruik te bepalen ten opzichte van de DTU/eDTU-limiet van een Data Base of een elastische pool:
+
+`avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
+
+De invoer waarden voor deze formule kunnen worden verkregen uit [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)en [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) dmv's. Met andere woorden, om het percentage van DTU/eDTU-gebruik te bepalen ten opzichte van de DTU/eDTU-limiet van een Data Base of een elastische pool, kiest u de hoogste percentage waarde uit het volgende: `avg_cpu_percent`, `avg_data_io_percent`en `avg_log_write_percent` op een bepaald moment.
+
+> [!NOTE]
+> De DTU-limiet van een Data Base wordt bepaald door CPU, lees bewerkingen, schrijf bewerkingen en geheugen dat beschikbaar is voor de data base. Omdat de SQL Server data base-engine doorgaans al het beschik bare geheugen gebruikt voor de gegevens cache om de prestaties te verbeteren, is de `avg_memory_usage_percent`-waarde meestal bijna 100%, ongeacht de huidige laad capaciteit van de data base. Daarom wordt het niet gebruikt in de formule voor het DTU-gebruik, zelfs als het geheugen indirect van invloed is op de DTU-limiet.
+>
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Workloads die profiteren van een elastische groep resources
 

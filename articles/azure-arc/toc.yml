@@ -5,12 +5,12 @@
   items:
     - name: Wat is Azure Arc voor servers?
       href: ./servers/overview.md
-- name: Snelstartgidsen
+- name: Verbinding maken met Azure Arc
   expanded: true
   items:
-    - name: Computers verbinden met Azure met behulp van Azure Arc voor servers - Portal
+    - name: Machines verbinden met Azure Arc vanuit de Azure-portal
       href: ./servers/quickstart-onboard-portal.md
-    - name: Computers op schaal verbinden met behulp van Azure Arc voor servers - PowerShell
+    - name: Machines op schaal verbinden met een service-principal
       href: ./servers/quickstart-onboard-powershell.md
 - name: Naslaginformatie
   items:

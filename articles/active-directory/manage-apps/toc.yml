@@ -151,8 +151,8 @@
               href: methods-for-assigning-users-and-groups.md
             - name: Een gebruiker toewijzen aan een app
               href: assign-user-or-group-access-portal.md
-            - name: Werkruimten maken in Mijn apps (preview)
-              href: access-panel-workspaces.md
+            - name: Verzamelingen maken in mijn apps
+              href: access-panel-collections.md
             - name: Selfservice-app-toegang gebruiken
               href: access-panel-manage-self-service-access.md
             - name: Methoden om gebruikerstoegang aan een app te verwijderen

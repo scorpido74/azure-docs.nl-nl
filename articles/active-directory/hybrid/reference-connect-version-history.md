@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ba7ba4be103beb494c31a844d1871c22c25b8c6
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 75fdc59b9110c3bfc29fe52be917a7d6e6636b8a
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756297"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963203"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -39,7 +39,7 @@ Hoewel we dit proces door lopen, wordt het versie nummer van de release weer geg
 Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatische upgrade. De release status geeft aan of een release beschikbaar moet worden gesteld voor automatische upgrade of alleen voor down loads. Als automatische upgrade is ingeschakeld op uw Azure AD Connect server, wordt die server automatisch bijgewerkt naar de meest recente versie van Azure AD Connect die is uitgebracht voor automatische upgrade. Houd er rekening mee dat niet alle Azure AD Connect configuraties in aanmerking komen voor automatische upgrade. Volg deze link voor meer informatie over [automatische upgrade](how-to-connect-install-automatic-upgrade.md)
 
 >[!IMPORTANT]
-> Vanaf 1 november 2020 zullen we een afschaffing proces gaan implementeren waarbij versies van Azure AD Connect die meer dan 18 maanden geleden zijn uitgebracht, worden afgeschaft. Op dat moment gaan we dit proces beginnen door alle versies van Azure AD Connect uit te voeren met versie 1.1.751.0 (die is uitgebracht op 4/12/2018) en ouder, waarna we de afschaffing van oudere versies van Azure AD Connect kunnen evalueren wanneer een nieuwe versie wordt vrijgegeven.
+> Vanaf 1 november 2020 zullen we een afschaffing proces gaan implementeren waarbij versies van Azure AD Connect die meer dan 18 maanden geleden zijn uitgebracht, worden afgeschaft. Op dat moment gaan we dit proces beginnen door alle versies van Azure AD Connect uit te voeren met versie 1.3.20.0 (die is uitgebracht op 4/24/2019) en ouder, waarna we de afschaffing van oudere versies van Azure AD Connect kunnen evalueren wanneer een nieuwe versie wordt vrijgegeven.
 >
 > U moet ervoor zorgen dat u een recente versie van Azure AD Connect gebruikt om een optimale ondersteunings ervaring te krijgen. 
 >

@@ -64,15 +64,15 @@
 - name: Voorbeelden
   items:
     - name: 'C#-voorbeelden'
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=csharp'
     - name: Java-voorbeelden
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=java'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=java'
     - name: JavaScript-voorbeelden
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=javascript'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=javascript'
     - name: Python-voorbeelden
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=python'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST-voorbeelden
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=rest'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
 - name: Training
   items:
     - name: Inleiding (Microsoft Learn)
@@ -131,6 +131,8 @@
       items:
         - name: API-versies
           href: search-api-versions.md
+        - name: Lijst met preview-functies
+          href: search-api-preview.md
         - name: Ontwikkelen in .NET
           href: search-howto-dotnet-sdk.md
         - name: Upgrade uitvoeren voor de SDK
@@ -149,7 +151,7 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: Upgrade uitvoeren voor de REST-API
           href: search-api-migration.md
-    - name: Indexen maken
+    - name: Een index maken
       items:
         - name: Een basisindex maken
           href: search-what-is-an-index.md
@@ -181,7 +183,7 @@
           href: search-howto-complex-data-types.md
         - name: Relationele gegevens modelleren
           href: index-sql-relational-data.md
-    - name: Importeren (indexeren)
+    - name: Indexeren (importeren)
       items:
         - name: Overzicht van gegevensimport
           href: search-what-is-data-import.md
@@ -193,43 +195,45 @@
           href: search-howto-large-index.md
         - name: Gelijktijdige updates verwerken
           href: search-howto-concurrency.md
-    - name: Azure Blob-gegevens indexeren
+    - name: Een indexeerfunctie gebruiken
       items:
-        - name: AI gebruiken met blobgegevens
-          href: search-blob-ai-integration.md
-        - name: Zoeken in volledige tekst toevoegen
-          href: search-blob-storage-integration.md
-        - name: Een indexeerfunctie voor blob instellen
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: Een Azure Data Lake Storage Gen2-indexeerfunctie instellen
-          href: search-howto-index-azure-data-lake-storage.md
-        - name: Een-op-veel-blobs indexeren
-          href: search-howto-index-one-to-many-blobs.md
-        - name: CSV-blobs indexeren
-          href: search-howto-index-csv-blobs.md
-        - name: JSON-blobs indexeren
-          href: search-howto-index-json-blobs.md
-    - name: Indexeren met indexeerfuncties
-      items:
-        - name: Overzicht van indexeerfuncties
+        - name: Indexeerfuncties configureren
           href: search-indexer-overview.md
-        - name: Indexeerfunctie voor Azure Table Storage
-          href: search-howto-indexing-azure-tables.md
-        - name: Indexeerfunctie voor Azure SQL DB
-          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Indexeerfunctie voor Azure Cosmos DB
-          href: search-howto-index-cosmosdb.md
-        - name: Indexeerfuncties inplannen
-          href: search-howto-schedule-indexers.md
         - name: Velden toewijzen
           href: search-indexer-field-mappings.md
-        - name: Verbinding maken met beheerd SQL-exemplaar
-          href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
-        - name: Verbinding maken met SQL Server-VM's
-          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: Indexeerfuncties bewaken
           href: search-howto-monitor-indexers.md
-    - name: Verrijken met AI
+        - name: Indexeerfuncties inplannen
+          href: search-howto-schedule-indexers.md
+        - name: Gegevensbronnen
+          items:
+            - name: Azure-blobs
+              items:
+                - name: Zoeken in blobs
+                  href: search-blob-storage-integration.md
+                - name: Inzicht in blobs met AI
+                  href: search-blob-ai-integration.md
+                - name: Een indexeerfunctie voor blobs configureren
+                  href: search-howto-indexing-azure-blob-storage.md
+                - name: Een-op-veel-blobs indexeren
+                  href: search-howto-index-one-to-many-blobs.md
+                - name: CSV-blobs indexeren
+                  href: search-howto-index-csv-blobs.md
+                - name: JSON-blobs indexeren
+                  href: search-howto-index-json-blobs.md
+            - name: Azure Cosmos DB
+              href: search-howto-index-cosmosdb.md
+            - name: Azure Data Lake Storage Gen2
+              href: search-howto-index-azure-data-lake-storage.md
+            - name: Azure SQL Database
+              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+            - name: Azure-tabelopslag
+              href: search-howto-indexing-azure-tables.md
+            - name: Beheerde SQL-exemplaren
+              href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
+            - name: SQL Server-VM's
+              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+    - name: AI-verrijking
       items:
         - name: Een Cognitive Services-resource toevoegen
           href: cognitive-search-attach-cognitive-services.md
@@ -326,27 +330,31 @@
 - name: Naslaginformatie
   items:
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest'
+      href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search
-    - name: .NET
-      href: /dotnet/api/?term=microsoft.azure.search
-    - name: .NET (beheer)
-      href: /dotnet/api/?term=microsoft.azure.management.search
-    - name: Python (beheer)
-      href: /python/api/?view=azure-python&term=search
-    - name: REST
-      href: /rest/api/searchservice
-    - name: REST (beheer)
-      href: /rest/api/searchmanagement
-    - name: REST (preview)
-      items:
-        - name: API-versie 2019-05-06-preview
-          href: search-api-preview.md
-        - name: Skills-API opnieuw instellen
-          href: preview-api-resetskills.md
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.search/searchservices
+    - name: .NET
+      items:
+        - name: microsoft.azure.search
+          href: /dotnet/api/overview/azure/search?view=azure-dotnet
+        - name: microsoft.azure.management.search
+          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+    - name: REST
+      items:
+        - name: Search 2019-05-06
+          href: /rest/api/searchservice
+        - name: Vaardigheden opnieuw instellen (api-versie=2019-05-06-Preview)
+          href: preview-api-resetskills.md
+        - name: Management 2015-08-15
+          href: /rest/api/searchmanagement
+        - name: Management 2019-10-01-Preview
+          href: /rest/api/searchmanagement/index-2019-10-01-preview
+    - name: Python
+      items:
+        - name: Beheer-API
+          href: /python/api/overview/azure/search?view=azure-python
     - name: Naslaginformatie over de OData-taal
       items:
         - name: Overzicht
@@ -373,44 +381,47 @@
           href: search-query-odata-search-score-function.md
         - name: Grammatica van de OData-taal
           href: search-query-odata-syntax-reference.md
-    - name: Verwijzing voor cognitieve vaardigheden
-      href: cognitive-search-predefined-skills.md
+    - name: Verwijzingen voor vaardigheden
       items:
-        - name: Sleuteltermextractie
-          href: cognitive-search-skill-keyphrases.md
-        - name: Taaldetectie
-          href: cognitive-search-skill-language-detection.md
-        - name: Herkenning van entiteiten
-          href: cognitive-search-skill-entity-recognition.md
-        - name: Tekst samenvoegen
-          href: cognitive-search-skill-textmerger.md
-        - name: Tekst splitsen
-          href: cognitive-search-skill-textsplit.md
-        - name: Sentiment
-          href: cognitive-search-skill-sentiment.md
-        - name: Tekstomzetting
-          href: cognitive-search-skill-text-translation.md
-        - name: Analyse van de afbeelding
-          href: cognitive-search-skill-image-analysis.md
-        - name: OCR
-          href: cognitive-search-skill-ocr.md
-        - name: Shaper
-          href: cognitive-search-skill-shaper.md
-        - name: Voorwaardelijk
-          href: cognitive-search-skill-conditional.md
-        - name: Documentextractie
-          href: cognitive-search-skill-document-extraction.md
-        - name: PII-detectie
-          href: cognitive-search-skill-pii-detection.md
-    - name: Aangepaste vaardigheden
-      items:
-        - name: Aangepaste Web-API
-          href: cognitive-search-custom-skill-web-api.md
-    - name: Afgeschafte vaardigheden
-      href: cognitive-search-skill-deprecated.md
-      items:
-        - name: Herkenning van benoemde entiteiten
-          href: cognitive-search-skill-named-entity-recognition.md
+        - name: Ingebouwde vaardigheden
+          items:
+            - name: Overzicht
+              href: cognitive-search-predefined-skills.md
+            - name: Voorwaardelijk
+              href: cognitive-search-skill-conditional.md
+            - name: Documentextractie
+              href: cognitive-search-skill-document-extraction.md
+            - name: Herkenning van entiteiten
+              href: cognitive-search-skill-entity-recognition.md
+            - name: Analyse van de afbeelding
+              href: cognitive-search-skill-image-analysis.md
+            - name: Sleuteltermextractie
+              href: cognitive-search-skill-keyphrases.md
+            - name: Taaldetectie
+              href: cognitive-search-skill-language-detection.md
+            - name: OCR
+              href: cognitive-search-skill-ocr.md
+            - name: PII-detectie
+              href: cognitive-search-skill-pii-detection.md
+            - name: Sentiment
+              href: cognitive-search-skill-sentiment.md
+            - name: Shaper
+              href: cognitive-search-skill-shaper.md
+            - name: Tekst samenvoegen
+              href: cognitive-search-skill-textmerger.md
+            - name: Tekst splitsen
+              href: cognitive-search-skill-textsplit.md
+            - name: Tekstomzetting
+              href: cognitive-search-skill-text-translation.md
+        - name: Aangepaste vaardigheden
+          items:
+            - name: Aangepaste Web-API
+              href: cognitive-search-custom-skill-web-api.md
+        - name: Afgeschafte vaardigheden
+          href: cognitive-search-skill-deprecated.md
+          items:
+            - name: Herkenning van benoemde entiteiten
+              href: cognitive-search-skill-named-entity-recognition.md
 - name: Resources
   items:
     - name: Ondersteuning van de Azure-community

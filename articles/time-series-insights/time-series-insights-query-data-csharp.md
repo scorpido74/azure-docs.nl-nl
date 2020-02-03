@@ -11,16 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: a5cb435b38a776ba652854592bdc7d3e833742d1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c1c4f139dedc9be11a5f19730221ccec77139200
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935084"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962013"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Gegevens opvragen uit de Azure Time Series Insights GA-omgeving met behulp vanC#
 
 In C# dit voor beeld ziet u hoe u de [Ga query-api's](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) kunt gebruiken om gegevens uit Azure time series Insights ga-omgevingen op te vragen.
+
+> [!TIP]
+> GA C# code voorbeelden weer geven op [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="summary"></a>Samenvatting
 
@@ -42,9 +45,6 @@ De voorbeeld code hieronder bevat de volgende functies:
    * [Gestreamde API voor de omgevings gebeurtenissen ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
    * [Gestreamde API voor de omgeving ophalen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
 
-> [!NOTE]
-> De voorbeeld code is beschikbaar op [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
-
 ## <a name="prerequisites-and-setup"></a>Vereisten en installatie
 
 Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
@@ -58,9 +58,6 @@ Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 1. Bewerk de voorbeeld code hieronder door elk **#DUMMY #** te vervangen door de juiste omgevings-id.
 
 1. Voer de code in Visual Studio uit.
-
-> [!TIP]
-> * Bekijk andere voor C# beelden van Ga code op [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="project-dependencies"></a>Projectafhankelijkheden
 

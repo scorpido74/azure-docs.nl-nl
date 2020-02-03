@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 01/30/2020
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bf241bc15ccdcf9e7d65f277c235f1aa668fcbe0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bc906e1026dcc051ef152ff9fba94525ac700761
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696637"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962085"
 ---
 # <a name="authentication-flows"></a>Verificatie stromen
 
@@ -39,7 +39,7 @@ In dit artikel worden de verschillende verificatie stromen beschreven die worden
  
 Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verificatie stromen worden gebruikt die worden ondersteund door het micro soft Identity-platform.  Deze stromen kunnen een aantal tokens (id_tokens, vernieuwings tokens, toegangs tokens) en autorisatie codes produceren, en vereisen verschillende tokens om ze te laten werken. Dit diagram bevat een overzicht:
  
-|Stroom | Vereist | id_token | toegangs token | token vernieuwen | autorisatie code | 
+|Stroom | Nodig | id_token | toegangs token | token vernieuwen | autorisatie code | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Autorisatie code stroom](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Impliciete stroom](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
@@ -64,7 +64,7 @@ Zie voor meer informatie over het gebruik van MSAL.NET voor het interactief verk
 
 Zie voor meer informatie over interactieve aanroepen in MSAL. js [prompt gedrag in interactieve aanvragen van MSAL. js](msal-js-prompt-behavior.md).
 
-## <a name="implicit-grant"></a>Impliciete toewijzing
+## <a name="implicit-grant"></a>Impliciete toekenning
 
 MSAL ondersteunt de [OAuth 2 impliciete toekennings stroom](v2-oauth2-implicit-grant-flow.md), waarmee de app tokens kan ophalen van het micro soft-identiteits platform zonder een back-end-server referentie-uitwisseling uit te voeren. Hiermee kan de app zich aanmelden bij de gebruiker, de sessie onderhouden en tokens ophalen voor andere web-Api's, allemaal in de Java script-code van de client.
 
@@ -74,7 +74,7 @@ Veel moderne webtoepassingen zijn gebouwd als client-side, single page-toepassin
 
 Deze verificatie stroom bevat geen toepassings scenario's die gebruikmaken van platformoverschrijdende java script frameworks, zoals elektroden en reageren, omdat ze verdere mogelijkheden nodig hebben voor interactie met de systeem eigen platformen.
 
-## <a name="authorization-code"></a>Autorisatiecode
+## <a name="authorization-code"></a>autorisatie code
 
 MSAL ondersteunt de [autorisatie code toekenning van OAuth 2](v2-oauth2-auth-code-flow.md). Deze toekenning kan worden gebruikt in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Zo kunt u aanmelden en API-toegang toevoegen aan uw mobiele en desktop-apps. 
 
@@ -101,7 +101,7 @@ MSAL ondersteunt de [OAuth 2-verificatie stroom op naam](v2-oauth2-on-behalf-of-
 
 ![Diagram van namens-stroom](media/msal-authentication-flows/on-behalf-of.png)
 
-In het bovenstaande diagram:
+In het voor gaande diagram:
 
 1. De toepassing verkrijgt een toegangs token voor de Web-API.
 2. Een client (Web-, Desktop-, mobiele of toepassing met één pagina) roept een beveiligde web-API aan en voegt het toegangs token toe als Bearer-token in de verificatie header van de HTTP-aanvraag. De Web-API verifieert de gebruiker.
@@ -149,7 +149,7 @@ Door de apparaatcode stroom te gebruiken, haalt de toepassing tokens op via een 
 
 ![Diagram van de code stroom van het apparaat](media/msal-authentication-flows/device-code.png)
 
-In het bovenstaande diagram:
+In het voor gaande diagram:
 
 1. Wanneer gebruikers verificatie is vereist, biedt de app een code en wordt de gebruiker gevraagd een ander apparaat (zoals een smartphone met Internet verbinding) te gebruiken om naar een URL te gaan (bijvoorbeeld https://microsoft.com/devicelogin). De gebruiker wordt vervolgens gevraagd de code in te voeren en gaat verder met een normale verificatie-ervaring, inclusief toestemming prompts en multi-factor Authentication, indien nodig.
 

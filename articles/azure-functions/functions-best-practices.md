@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19674cb024bd9b9c9ea9f510080e30614fad8b60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f808ff2a88a86df25b555f94257168e2d176e7f8
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433302"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963650"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimaliseer de prestaties en betrouw baarheid van Azure Functions
 
@@ -74,7 +74,9 @@ Gebruik waar mogelijk verbindingen met externe resources. Zie [verbindingen behe
 
 ### <a name="avoid-sharing-storage-accounts"></a>Vermijd het delen van opslag accounts
 
-Wanneer u een functie-app maakt, moet u deze koppelen aan een opslag account. De verbinding van het opslag account wordt onderhouden in de [toepassings instelling AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage). Gebruik een afzonderlijk opslag account voor elke functie-app om de prestaties te maximaliseren. Dit is vooral belang rijk wanneer u Durable Functions of event hub geactiveerde functies hebt, waarbij beide een groot aantal opslag transacties genereren. Wanneer uw toepassings logica communiceert met Azure Storage, direct (met behulp van de opslag-SDK) of via een van de opslag bindingen, moet u een speciaal opslag account gebruiken. Als u bijvoorbeeld een event hub-functie hebt geactiveerd om bepaalde gegevens te schrijven naar Blob Storage, gebruikt u twee opslag accounts&mdash;een voor de functie-app en een andere voor de blobs die door de functie worden opgeslagen.
+Wanneer u een functie-app maakt, moet u deze koppelen aan een opslag account. De verbinding van het opslag account wordt onderhouden in de [toepassings instelling AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage). 
+
+[!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Test-en productie code niet combi neren in dezelfde functie-app
 

@@ -330,16 +330,13 @@
     - name: Controleren
       items:
         - name: Logische apps bewaken
-          href: logic-apps-monitor-your-logic-apps.md
+          href: monitor-logic-apps.md
         - name: Logische apps bewaken met Azure Monitor-logboeken
-          href: logic-apps-monitor-your-logic-apps-oms.md
+          href: monitor-logic-apps-log-analytics.md
         - name: B2B-berichten bewaken met Azure Monitor-logboeken
-          href: logic-apps-monitor-b2b-message.md
-          items:
-            - name: B2B-berichten bijhouden met Azure Monitor-logboeken
-              href: logic-apps-track-b2b-messages-omsportal.md
-            - name: Query's voor B2B-berichten maken met Azure Monitor-logboeken
-              href: logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md
+          href: monitor-b2b-messages-log-analytics.md
+        - name: Bewakings- en traceringsquery's maken
+          href: create-monitoring-tracking-queries.md
     - name: 'Voorbeelden, scenario''s en rondleidingen'
       href: logic-apps-examples-and-scenarios.md
       items:

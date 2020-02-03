@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438741"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964415"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Zelf studie: gegevens delen met Azure data share  
 
@@ -22,7 +22,7 @@ In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 > * Maak een gegevensshare.
 > * Voeg gegevenssets toe aan uw gegevensshare.
-> * Maak een synchronisatieschema mogelijk voor uw gegevensshare. 
+> * Maak een momentopname schema voor uw gegevens share. 
 > * Voeg ontvangers toe aan uw gegevensshare. 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -33,25 +33,36 @@ In deze zelfstudie leert u het volgende:
 ### <a name="share-from-a-storage-account"></a>Delen vanuit een opslag account:
 
 * Een Azure Storage account: als u er nog geen hebt, kunt u een [Azure Storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) maken
-* Machtiging voor het toevoegen van roltoewijzing aan het opslag account dat aanwezig is in de machtiging *micro soft. Authorization/roltoewijzingen/schrijven* . Deze machtiging bevindt zich in de rol van eigenaar. 
+* Toestemming om te schrijven naar het opslag account dat aanwezig is in *micro soft. Storage/Storage accounts/write*. Deze machtiging bevindt zich in de rol Inzender.
+* Machtiging voor het toevoegen van roltoewijzing aan het opslag account dat aanwezig is in *micro soft. autorisatie/roltoewijzingen/schrijven*. Deze machtiging bevindt zich in de rol van eigenaar. 
+
 
 ### <a name="share-from-a-sql-based-source"></a>Delen vanuit een bron op basis van SQL:
 
-* Een Azure SQL Database of Azure SQL Data Warehouse met tabellen en weer gaven die u wilt delen.
+* Een Azure SQL Database of Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) met tabellen en weer gaven die u wilt delen.
+* Toestemming om te schrijven naar de data bases op SQL Server, die aanwezig zijn in *micro soft. SQL/servers/data bases/schrijven*. Deze machtiging bevindt zich in de rol Inzender.
 * Machtiging voor de gegevens share om toegang te krijgen tot het Data Warehouse. U kunt dit doen door de volgende stappen uit te voeren: 
-    1. Stel uzelf in als de Azure Active Directory beheerder voor de-server.
+    1. Stel uzelf in als de Azure Active Directory beheerder voor de SQL-Server.
     1. Maak verbinding met de Azure SQL Database/data warehouse met behulp van Azure Active Directory.
-    1. Gebruik de query-editor (preview) om het volgende script uit te voeren om de gegevens share-MSI als db_owner toe te voegen. U moet verbinding maken met behulp van Active Directory en niet SQL Server-verificatie. 
+    1. Gebruik de query-editor (preview) om het volgende script uit te voeren om de door de resource beheerde identiteit als db_datareader toe te voegen. U moet verbinding maken met behulp van Active Directory en niet SQL Server-verificatie. 
     
-```sql
-    create user <share_acct_name> from external provider;     
-    exec sp_addrolemember db_owner, <share_acct_name>; 
-```                   
-Houd er rekening mee dat de *< share_acc_name >* de naam is van uw gegevens share-account. Als u nog geen gegevens share-account hebt gemaakt, kunt u later terugkeren naar deze vereiste.  
+        ```sql
+        create user "<share_acct_name>" from external provider;     
+        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
+        ```                   
+       Houd er rekening mee dat de *< share_acc_name >* de naam van uw gegevens share bron is. Als u nog geen resource voor gegevens delen hebt gemaakt, kunt u later terug naar deze vereiste.  
 
-* Een [Azure SQL database gebruiker met `db_owner` toegang](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users) om te navigeren en de tabellen en/of weer gaven te selecteren die u wilt delen. 
+* Een Azure SQL Database gebruiker met ' db_datareader ' toegang om te navigeren en de tabellen en/of weer gaven te selecteren die u wilt delen. 
 
-* Client-IP SQL Server toegang tot Firewall: dit kunt u doen door de volgende stappen uit te voeren: 1. Navigeer naar *firewalls en virtuele netwerken* 1. Klik op de **aan/uit** om toegang tot Azure-Services toe te staan. 
+* Client-IP SQL Server toegang tot Firewall. U kunt dit doen door de volgende stappen uit te voeren: 
+    1. Ga in SQL Server in Azure Portal naar *firewalls en virtuele netwerken*
+    1. Klik op de **aan/uit** om toegang tot Azure-Services toe te staan.
+    1. Klik op **+ client IP toevoegen** en klik op **Opslaan**. Het IP-adres van de client kan worden gewijzigd. U kunt ook een IP-bereik toevoegen. 
+
+### <a name="share-from-azure-data-explorer"></a>Delen vanuit Azure Data Explorer
+* Een Azure Data Explorer-cluster met data bases die u wilt delen.
+* Toestemming om te schrijven naar Azure Data Explorer cluster, dat aanwezig is in *micro soft. Kusto/clusters/schrijven*. Deze machtiging bevindt zich in de rol Inzender.
+* Machtiging voor het toevoegen van roltoewijzing aan het Azure Data Explorer-cluster, dat aanwezig is in *micro soft. autorisatie/roltoewijzingen/schrijven*. Deze machtiging bevindt zich in de rol van eigenaar.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -91,7 +102,7 @@ Een Azure-gegevens share bron maken in een Azure-resource groep.
 
 1. Selecteer **Maken**.   
 
-1. Vul de details in voor uw gegevens share. Geef een naam, beschrijving van de share-inhoud en gebruiks voorwaarden op (optioneel). 
+1. Vul de details in voor uw gegevens share. Geef een naam, type share, beschrijving van share-inhoud en gebruiks voorwaarden op (optioneel). 
 
     ![EnterShareDetails](./media/enter-share-details.png "Share gegevens invoeren") 
 
@@ -101,7 +112,7 @@ Een Azure-gegevens share bron maken in een Azure-resource groep.
 
     ![Gegevenssets](./media/datasets.png "Gegevenssets")
 
-1. Selecteer het type gegevensset dat u wilt toevoegen. Als u gegevens deelt vanuit een Azure SQL Database of Azure SQL Data Warehouse, wordt u gevraagd om een aantal SQL-referenties op te vragen. Verificatie met behulp van de gebruiker die u hebt gemaakt als onderdeel van de vereisten.
+1. Selecteer het type gegevensset dat u wilt toevoegen. U ziet een andere lijst met typen gegevensset, afhankelijk van het share type (moment opname of in-place) dat u in de vorige stap hebt geselecteerd. Als u het delen van een Azure SQL Database of Azure SQL Data Warehouse, wordt u gevraagd om een aantal SQL-referenties op te vragen. Verificatie met behulp van de gebruiker die u hebt gemaakt als onderdeel van de vereisten.
 
     ![AddDatasets](./media/add-datasets.png "Gegevens sets toevoegen")    
 
@@ -115,7 +126,7 @@ Een Azure-gegevens share bron maken in een Azure-resource groep.
 
 1. Selecteer **door gaan**
 
-1. Als u wilt dat uw gegevens gebruiker incrementele updates van uw gegevens kan ophalen, moet u het schema voor de moment opname inschakelen. 
+1. Als u het type snap shot share hebt geselecteerd, kunt u het momentopname schema configureren om updates van uw gegevens aan uw gegevens consument toe te voegen. 
 
     ![EnableSnapshots](./media/enable-snapshots.png "Moment opnamen inschakelen") 
 

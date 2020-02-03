@@ -26,13 +26,13 @@
           href: event-hubs-resource-manager-namespace-event-hub.md
     - name: Gebeurtenissen verzenden en ontvangen
       items:
-        - name: .NET Core
-          href: event-hubs-dotnet-standard-getstarted-send.md
-        - name: Java
+        - name: .NET Core (Azure.Messaging.EventHubs)
+          href: get-started-dotnet-standard-send-v2.md
+        - name: Java (azure-eventhubs)
           href: event-hubs-java-get-started-send.md
-        - name: Python
+        - name: Python (azure-eventhub versie 5)
           href: get-started-python-send-v2.md
-        - name: Node.js
+        - name: Node.js (azure/event-hubs versie 5)
           href: get-started-node-send-v2.md
         - name: Aan de slag
           href: event-hubs-go-get-started-send.md
@@ -40,15 +40,13 @@
           href: event-hubs-c-getstarted-send.md
         - name: Apache Storm (alleen ontvangen)
           href: event-hubs-storm-getstarted-receive.md
-        - name: .NET Framework
-          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Gebeurtenissen vastleggen
       items:
         - name: Azure Portal gebruiken om Event Hubs Capture in te schakelen
           href: event-hubs-capture-enable-through-portal.md
         - name: Resource Manager-sjabloon gebruiken om Event Hubs Capture in te schakelen
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: Gegevens van Event Hubs vastleggen met behulp van Python
+        - name: Gegevens van Event Hubs vastleggen met behulp van Python (azure-eventhub versie 5)
           href: get-started-capture-python-v2.md
     - name: Streamen naar Azure Event Hubs voor Apache Kafka
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
@@ -71,8 +69,10 @@
   items:
     - name: Event Hubs-terminologie
       href: event-hubs-features.md
-    - name: Gebeurtenisprocessorhost
+    - name: Gebeurtenisprocessorhost (verouderde SDK)
       href: event-hubs-event-processor-host.md
+    - name: Gebeurtenisprocessor (nieuwste SDK)
+      href: event-processor-balance-partition-load.md
     - name: Beschikbaarheid en consistentie
       href: event-hubs-availability-and-consistency.md
     - name: Schaalbaarheid
@@ -116,20 +116,26 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: Programmeerhandleidingen
           items:
-            - name: Python
+            - name: .NET (Azure.Messaging.EventHubs)
+              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/README.md'
+            - name: Python (azure-eventhub versie 5)
               href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/README.md'
-            - name: Javascript
+            - name: JavaScript (azure/event-hubs versie 5)
               href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
-            - name: .NET-programmeergids
+            - name: .NET (Microsoft.Azure.EventHubs)
               href: event-hubs-programming-guide.md
-        - name: Opgenomen gegevens lezen met Python (verouderd)
+        - name: Vastgelegde gegevens lezen met Python (azure-eventhub versie 1)
           href: event-hubs-capture-python.md
-        - name: Gebeurtenissen verzenden en ontvangen (verouderd)
+        - name: Gebeurtenissen verzenden en ontvangen (oude versies/pakketten)
           items:
-            - name: Python (verouderd)
+            - name: .NET Core (Microsoft.Azure.EventHubs)
+              href: event-hubs-dotnet-standard-getstarted-send.md
+            - name: Python (azure-eventhub versie 1)
               href: event-hubs-python-get-started-send.md
-            - name: Node.js (verouderd)
+            - name: Node.js (azure/event-hubs versie 2)
               href: event-hubs-node-get-started-send.md
+            - name: .NET Framework (Microsoft.Azure.EventHubs)
+              href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Gegevens verwerken
       items:
         - name: Gegevens verwerken met Azure Stream Analytics
@@ -186,34 +192,52 @@
           href: resource-manager-exceptions.md
 - name: Naslaginformatie
   items:
-    - name: Java
-      items:
-        - name: com.microsoft.azure.eventhubs
-          href: /java/api/com.microsoft.azure.eventhubs
-        - name: com.microsoft.azure.eventprocessorhost
-          href: /java/api/com.microsoft.azure.eventprocessorhost
     - name: .NET
       items:
-        - name: Microsoft.Azure.EventHubs
-          href: /dotnet/api/microsoft.azure.eventhubs
-        - name: Microsoft.Azure.EventHubs.Processor
-          href: /dotnet/api/microsoft.azure.eventhubs.processor
-        - name: Microsoft.ServiceBus.Messaging
-          href: /dotnet/api/microsoft.servicebus.messaging
-        - name: Microsoft.ServiceBus.Messaging.EventProcessorHost
-          href: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
-        - name: Microsoft.Azure.Management.EventHub
+        - name: Clientbibliotheek
+          items:
+            - name: Migreren van Microsoft.Azure.Event Hubs naar Azure.Messaging.EventHubs
+              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md'
+            - name: Azure.Messaging.EventHubs (nieuwste)
+              href: /dotnet/api/azure.messaging.eventhubs?view=azure-dotnet-preview
+            - name: Microsoft.Azure.EventHubs (verouderd)
+              href: /dotnet/api/microsoft.azure.eventhubs
+            - name: Microsoft.ServiceBus.Messaging (verouderd)
+              href: /dotnet/api/microsoft.servicebus.messaging
+        - name: Beheerbibliotheek
           href: /dotnet/api/microsoft.azure.management.eventhub
-    - name: Node.js
+    - name: Java
       items:
-        - name: Migreren van versie 2 naar versie 5
-          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
-        - name: API-verwijzing
-          href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+        - name: Clientbibliotheek
+          items:
+            - name: azure-eventhubs
+              href: /java/api/overview/azure/eventhubs/client?view=azure-java-stable
+        - name: Beheerbibliotheek
+          href: /java/api/com.microsoft.azure.management.eventhub?view=azure-java-stable
     - name: Python
       items:
-        - name: Migreren van versie 1 naar versie 5
+        - name: Migreren van azure-eventhub versie 1 naar versie 5
           href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md'
+        - name: Clientbibliotheek
+          items:
+            - name: azure-eventhub versie 5
+              href: /python/api/azure-eventhub/?view=azure-python-preview
+            - name: azure-eventhub versie 1
+              href: /python/api/azure-eventhub/?view=azure-python
+        - name: Beheerbibliotheek
+          href: /python/api/overview/azure/event-hub?view=azure-python
+    - name: Node.js
+      items:
+        - name: Migreren van azure/eventhubs versie 2 naar versie 5
+          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
+        - name: Clientbibliotheek
+          items:
+            - name: azure/eventhubs versie 5
+              href: /javascript/api/@azure/event-hubs/?view=azure-node-preview
+            - name: azure/eventhubs versie 2
+              href: /javascript/api/@azure/event-hubs/?view=azure-node-latest
+        - name: Beheerbibliotheek
+          href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
     - name: REST
       href: /rest/api/eventhub
     - name: Resource Manager-sjabloon

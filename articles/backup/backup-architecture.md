@@ -1,14 +1,14 @@
 ---
-title: Overzicht van de architectuur
+title: Architectuur overzicht
 description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450202"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963934"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -48,7 +48,7 @@ Recovery Services kluizen hebben de volgende kenmerken:
   - **Geografisch redundante opslag (GRS)** : als u wilt beveiligen tegen regionale storingen, kunt u GRS gebruiken. GRS repliceert uw gegevens naar een secundaire regio. [Meer informatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
   - Recovery Services kluizen gebruiken standaard GRS.
 
-## <a name="backup-agents"></a>Back-upagents
+## <a name="backup-agents"></a>Back-upagenten
 
 Azure Backup biedt verschillende back-upagenten, afhankelijk van het type computer waarvan een back-up wordt gemaakt:
 
@@ -101,6 +101,23 @@ Incrementele back-up uitvoeren |![Ja][green] |![Ja][green] |![Ja][green]
 Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> Voor DPM-MABS-servers die alleen on-premises worden geïmplementeerd.
 
 ![Tabel sleutel](./media/backup-architecture/table-key.png)
+
+## <a name="backup-policy-essentials"></a>Basis beginselen van back-upbeleid
+
+- Er wordt een back-upbeleid per kluis gemaakt.
+- Er kan een back-upbeleid worden gemaakt voor het maken van een back-up van de volgende werk belastingen
+  - Azure VM
+  - SQL in azure VM
+  - Azure-bestandsshare
+- Een beleid kan aan veel resources worden toegewezen. Een Azure VM-back-upbeleid kan worden gebruikt om veel virtuele Azure-machines te beveiligen.
+- Een beleid bestaat uit twee onderdelen
+  - Planning: wanneer de back-up moet worden gemaakt
+  - Bewaren: voor hoe lang elke back-up moet worden bewaard.
+- De planning kan worden gedefinieerd als dagelijks of wekelijks met een bepaald tijd punt.
+- U kunt Bewaar perioden definiëren voor ' dagelijks ', ' Wekelijks ', ' maandelijks ', ' jaarlijks ' back-uppunten.
+- ' Wekelijks ' verwijst naar een back-up op een bepaalde dag van de week, ' maandelijks ' betekent een back-up op een bepaalde dag van de maand en ' jaarlijks ' verwijst naar een back-up op een bepaalde dag van het jaar.
+- Het bewaren van ' maandelijks ', ' jaarlijks ' back-uppunten wordt ' LongTermRetention ' genoemd.
+- Wanneer een kluis wordt gemaakt, wordt er ook een beleid voor Azure VM-back-ups met de naam ' Defaultpolicy bij ' gemaakt en dit kan worden gebruikt voor het maken van back-ups van virtuele Azure-machines.
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architectuur: ingebouwde Azure VM-back-up
 

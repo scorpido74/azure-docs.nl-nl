@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/23/2019
-ms.openlocfilehash: f1fd776f903b4f5b4f315147f460143c7843fdc9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 02/03/2020
+ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
+ms.sourcegitcommit: 85d52b799621d35d7df32c2cb1e339071c619bb3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689065"
+ms.lasthandoff: 02/03/2020
+ms.locfileid: "76966092"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Naslag Gids voor het gebruik van functies in expressies voor Azure Logic Apps en energie automatisering
 
@@ -234,7 +234,7 @@ Deze werk stroom functies helpen u bij het volgende:
 U kunt bijvoorbeeld naar de uitvoer van de ene actie verwijzen en die gegevens gebruiken in een latere actie.
 Zie de [Alfabetische lijst](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)voor de volledige naslag informatie over elke functie.
 
-| Werkstroomfunctie | Taak |
+| Werk stroom functie | Taak |
 | ----------------- | ---- |
 | [optreden](../logic-apps/workflow-definition-language-functions-reference.md#action) | De uitvoer van de huidige actie tijdens runtime retour neren of waarden van andere JSON-naam-en-waardeparen. Zie ook [acties](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Retour neer de `body` uitvoer van een actie tijdens runtime. Zie ook [hoofd tekst](../logic-apps/workflow-definition-language-functions-reference.md#body). |
@@ -441,7 +441,7 @@ En retourneert dit resultaat:
 
 <a name="actions"></a>
 
-### <a name="actions"></a>acties
+### <a name="actions"></a>regelen
 
 De uitvoer van een actie tijdens runtime retour neren of waarden van andere JSON-naam-en-waardeparen, die u kunt toewijzen aan een expressie. De functie verwijst standaard naar het hele actie object, maar u kunt desgewenst een eigenschap opgeven waarvan u de waarde wilt bepalen.
 Zie [actionBody ()](#actionBody), [actionOutputs ()](#actionOutputs)en [Body ()](#body)voor steno versies.
@@ -1733,7 +1733,7 @@ En retourneert dit resultaat: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
-### <a name="empty"></a>leeg
+### <a name="empty"></a>gelaten
 
 Controleer of een verzameling leeg is.
 Retourneert waar als de verzameling leeg is of retourneert onwaar als deze niet leeg is.
@@ -1769,7 +1769,7 @@ En retourneert deze resultaten:
 
 <a name="endswith"></a>
 
-### <a name="endswith"></a>endsWith
+### <a name="endswith"></a>EndsWith
 
 Controleren of een teken reeks eindigt met een specifieke subtekenreeks.
 Retourneert waar als de subtekenreeks wordt gevonden, of retourneert False als het niet is gevonden.
@@ -2032,7 +2032,7 @@ formatNumber(<number>, <format>, <locale>?)
 Stel dat u het aantal `1234567890`wilt opmaken. In dit voor beeld wordt dat getal opgemaakt als de teken reeks "1.234.567.890,00".
 
 ```
-formatNumber(1234567890, "{0:0,0.00}", "en-us")
+formatNumber(1234567890, '{0:0,0.00}', 'en-us')
 ```
 
 \* Voor beeld 2 "
@@ -2040,7 +2040,7 @@ formatNumber(1234567890, "{0:0,0.00}", "en-us")
 Stel dat u het aantal `1234567890`wilt opmaken. In dit voor beeld wordt het getal opgemaakt als de teken reeks "1.234.567.890, 00".
 
 ```
-formatNumber(1234567890, "{0:0,0.00}", "is-is")
+formatNumber(1234567890, '{0:0,0.00}', 'is-is')
 ```
 
 *Voorbeeld 3*
@@ -2048,7 +2048,7 @@ formatNumber(1234567890, "{0:0,0.00}", "is-is")
 Stel dat u het aantal `17.35`wilt opmaken. In dit voor beeld wordt het getal opgemaakt op de teken reeks "$17,35".
 
 ```
-formatNumber(17.36, "{0:C2}")
+formatNumber(17.36, 'C2')
 ```
 
 *Voor beeld 4*
@@ -2056,7 +2056,7 @@ formatNumber(17.36, "{0:C2}")
 Stel dat u het aantal `17.35`wilt opmaken. In dit voor beeld wordt het getal op de teken reeks "17, 35 KR" opgemaakt.
 
 ```
-formatNumber(17.36, "{0:C2}", "is-is")
+formatNumber(17.36, 'C2', 'is-is')
 ```
 
 <a name="getFutureTime"></a>
@@ -2629,7 +2629,7 @@ En retourneert dit resultaat: `"a.b.c"`
 
 <a name="last"></a>
 
-### <a name="last"></a>laatste
+### <a name="last"></a>duren
 
 Het laatste item van een verzameling retour neren.
 
@@ -2728,7 +2728,7 @@ En retour neren dit resultaat: `4`
 
 <a name="less"></a>
 
-### <a name="less"></a>less
+### <a name="less"></a>jonge
 
 Controleer of de eerste waarde lager is dan de tweede waarde.
 Retourneert waar wanneer de eerste waarde kleiner is, of retourneert False als de eerste waarde meer is.
@@ -2824,7 +2824,7 @@ In dit voor beeld ziet u een voor beeld van een call back-URL die door deze func
 
 <a name="max"></a>
 
-### <a name="max"></a>max.
+### <a name="max"></a>Aantal
 
 Retourneert de hoogste waarde van een lijst of matrix met getallen die aan beide uiteinden zijn gekoppeld.
 
@@ -3581,7 +3581,7 @@ Hier is het bijgewerkte JSON-object:
 
 <a name="skip"></a>
 
-### <a name="skip"></a>skip
+### <a name="skip"></a>verdergaan
 
 Verwijder items van de voor kant van een verzameling en retour neer *alle andere* items.
 
@@ -4520,7 +4520,7 @@ En retourneert dit resultaat: `"http"`
 
 <a name="utcNow"></a>
 
-### <a name="utcnow"></a>UtcNow
+### <a name="utcnow"></a>utcNow
 
 De huidige tijds tempel retour neren.
 

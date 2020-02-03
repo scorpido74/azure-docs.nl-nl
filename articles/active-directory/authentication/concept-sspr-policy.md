@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e9a22e6ff76c0d26a346192c69bc067e7d42ccf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425327"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962489"
 ---
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Wachtwoordbeleid en -beperkingen in Azure Active Directory
+# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Wachtwoord beleid en-beperkingen in Azure Active Directory
 
 In dit artikel worden de wachtwoord beleidsregels en complexiteits vereisten beschreven die zijn gekoppeld aan gebruikers accounts in uw Azure Active Directory-Tenant (Azure AD).
 
@@ -32,24 +32,24 @@ Voor het twee-poort beleid zijn twee soorten verificatie gegevens vereist, zoals
 
 * Alle volgende Azure-beheerders rollen worden beïnvloed:
   * Helpdesk beheerder
-  * Serviceondersteuningsbeheerder
+  * Ondersteunings beheerder voor service
   * Factureringsbeheerder
   * Laag1-ondersteuning voor partner
   * Laag2-ondersteuning voor partner
   * Exchange-beheerder
-  * Skype voor Bedrijven-beheerder
+  * Skype voor bedrijven-beheerder
   * Gebruikers beheerder
   * Schrijvers van mappen
   * Globale beheerder of bedrijfs beheerder
   * SharePoint-beheerder
   * Beheerder voor naleving
-  * Toepassingsbeheerder
+  * Toepassings beheerder
   * Beveiligingsbeheerder
   * Beheerder van geprivilegieerde rol
-  * Intune-beheerder
+  * InTune-beheerder
   * Service beheerder van de toepassings proxy
   * Dynamics 365-beheerder
-  * Power BI-servicebeheerder
+  * Power BI-service beheerder
   * Verificatie beheerder
   * Beheerder voor geprivilegieerde authenticatie
 
@@ -85,11 +85,11 @@ In de volgende tabel worden de wachtwoord beleids instellingen beschreven die wo
 | Tekens niet toegestaan | Unicode-tekens. |
 | Wachtwoord beperkingen |<ul><li>Mini maal acht tekens en Maxi maal 256 tekens.</li><li>Vereist drie van de volgende vier:<ul><li>Kleine letters.</li><li>Hoofd letters.</li><li>Getallen (0-9).</li><li>Symbolen (Zie de vorige wachtwoord beperkingen).</li></ul></li></ul> |
 | Geldigheids duur van wacht woord (maximale wachtwoord duur) |<ul><li>Standaard waarde: **90** dagen.</li><li>De waarde kan worden geconfigureerd met behulp van de cmdlet `Set-MsolPasswordPolicy` van de Azure Active Directory-module voor Windows Power shell.</li></ul> |
-| Melding over het verlopen van wacht woorden (wanneer gebruikers op de hoogte worden gesteld van het verlopen van wacht woorden) |<ul><li>Standaard waarde: **14** dagen (voordat wacht woord verloopt).</li><li>De waarde kan worden geconfigureerd met behulp van de cmdlet `Set-MsolPasswordPolicy`.</li></ul> |
-| Wacht woord verlopen (wacht woorden ooit verlopen) |<ul><li>Standaard waarde: **False** dagen (geeft aan dat het wacht woord verloopt).</li><li>De waarde kan worden geconfigureerd voor afzonderlijke gebruikers accounts met behulp van de cmdlet `Set-MsolUser`.</li></ul> |
+| Melding over het verlopen van het wacht woord (wanneer gebruikers op de hoogte worden gesteld van het verlopen van wacht woorden) |<ul><li>Standaard waarde: **14** dagen (voordat wacht woord verloopt).</li><li>De waarde kan worden geconfigureerd met behulp van de cmdlet `Set-MsolPasswordPolicy`.</li></ul> |
+| Wacht woord verloopt (laat het wacht woord nooit verlopen) |<ul><li>Standaard waarde: **False** (geeft aan dat het wacht woord een verval datum heeft).</li><li>De waarde kan worden geconfigureerd voor afzonderlijke gebruikers accounts met behulp van de cmdlet `Set-MsolUser`.</li></ul> |
 | Geschiedenis van wachtwoord wijzigingen | Het laatste wacht woord *kan niet* opnieuw worden gebruikt wanneer de gebruiker een wacht woord wijzigt. |
 | Geschiedenis van wacht woord opnieuw instellen | Het laatste wacht woord *kan* opnieuw worden gebruikt wanneer de gebruiker een verg eten wacht woord opnieuw instelt. |
-| Accountvergrendeling | Na 10 mislukte aanmeldings pogingen met het verkeerde wacht woord, wordt de gebruiker één minuut geblokkeerd. Bij verdere onjuiste aanmeldings pogingen wordt de gebruiker vergrendeld om de duur van de tijd te verg Roten. [Slimme vergren deling](howto-password-smart-lockout.md) houdt de laatste drie ongeldige hashes met een onjuist wacht woord bij om te voor komen dat de vergrendelings teller voor hetzelfde wacht woord wordt verhoogd. Als iemand hetzelfde onjuiste wacht woord meermaals opgeeft, wordt het account niet vergrendeld. |
+| Account vergrendeling | Na 10 mislukte aanmeldings pogingen met het verkeerde wacht woord, wordt de gebruiker één minuut geblokkeerd. Bij verdere onjuiste aanmeldings pogingen wordt de gebruiker vergrendeld om de duur van de tijd te verg Roten. [Slimme vergren deling](howto-password-smart-lockout.md) houdt de laatste drie ongeldige hashes met een onjuist wacht woord bij om te voor komen dat de vergrendelings teller voor hetzelfde wacht woord wordt verhoogd. Als iemand hetzelfde onjuiste wacht woord meermaals opgeeft, wordt het account niet vergrendeld. |
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Beleids regels voor wachtwoord verloop instellen in azure AD
 

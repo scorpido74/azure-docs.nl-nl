@@ -3,12 +3,12 @@ title: De kosten van het verbruiks abonnement in Azure Functions schatten
 description: Meer informatie over hoe u de kosten die u kunt doen bij het uitvoeren van uw functie-app in een verbruiks abonnement in azure, beter kunt schatten.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890320"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963985"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Kosten voor verbruiks plan schatten
 
@@ -47,7 +47,7 @@ Gebruik de [Azure-prijs calculator](https://azure.microsoft.com/pricing/calculat
 
 | Gerelateerde kosten | Beschrijving |
 | ------------ | ----------- |
-| **Opslagaccount** | Voor elke functie-app moet u een gekoppeld Algemeen [Azure Storage account](../storage/common/storage-introduction.md#types-of-storage-accounts)hebben, dat [afzonderlijk wordt gefactureerd](https://azure.microsoft.com/pricing/details/storage/). Dit account wordt intern gebruikt door de functions-runtime, maar u kunt het ook gebruiken voor opslag triggers en bindingen. Als u geen opslag account hebt, wordt er één voor u gemaakt wanneer de functie-app wordt gemaakt. Zie [vereisten voor opslag accounts](functions-scale.md#storage-account-requirements)voor meer informatie.|
+| **Opslagaccount** | Voor elke functie-app moet u een gekoppeld Algemeen [Azure Storage account](../storage/common/storage-introduction.md#types-of-storage-accounts)hebben, dat [afzonderlijk wordt gefactureerd](https://azure.microsoft.com/pricing/details/storage/). Dit account wordt intern gebruikt door de functions-runtime, maar u kunt het ook gebruiken voor opslag triggers en bindingen. Als u geen opslag account hebt, wordt er één voor u gemaakt wanneer de functie-app wordt gemaakt. Zie [vereisten voor opslag accounts](storage-considerations.md#storage-account-requirements)voor meer informatie.|
 | **Application Insights** | Functies zijn afhankelijk van [Application Insights](../azure-monitor/app/app-insights-overview.md) om een krachtige bewakings ervaring te bieden voor uw functie-apps. Hoewel dit niet vereist is, moet u [Application Insights-integratie inschakelen](functions-monitoring.md#enable-application-insights-integration). Er wordt elke maand een gratis toekenning van telemetriegegevens opgenomen. Zie [de pagina met prijzen voor Azure monitor](https://azure.microsoft.com/pricing/details/monitor/)voor meer informatie. |
 | **Netwerk bandbreedte** | U betaalt niet voor gegevens overdracht tussen Azure-Services in dezelfde regio. U kunt echter kosten in rekening brengen voor uitgaande gegevens overdracht naar een andere regio of buiten Azure. Zie [prijs informatie voor band breedte](https://azure.microsoft.com/pricing/details/bandwidth/)voor meer informatie. |
 
@@ -208,12 +208,12 @@ De resultaten zien eruit als in het volgende voor beeld:
 
 | tijds tempel \[UTC-\]          | name          | waarde       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 uur | Eigen Bytes | 209.932.288 |
-| 9/12/2019, 1:06:14\.994 uur | Eigen Bytes | 212.189.184 |
-| 9/12/2019, 1:06:30\.010 | Eigen Bytes | 231.714.816 |
-| 9/12/2019, 1:07:15\.040 uur | Eigen Bytes | 210.591.744 |
-| 9/12/2019, 1:12:16\.285 uur | Eigen Bytes | 216.285.184 |
-| 9/12/2019, 1:12:31\.376 uur | Eigen Bytes | 235.806.720 |
+| 9/12/2019, 1:05:14\.947 uur | Privé-bytes | 209.932.288 |
+| 9/12/2019, 1:06:14\.994 uur | Privé-bytes | 212.189.184 |
+| 9/12/2019, 1:06:30\.010 | Privé-bytes | 231.714.816 |
+| 9/12/2019, 1:07:15\.040 uur | Privé-bytes | 210.591.744 |
+| 9/12/2019, 1:12:16\.285 uur | Privé-bytes | 216.285.184 |
+| 9/12/2019, 1:12:31\.376 uur | Privé-bytes | 235.806.720 |
 
 ## <a name="function-level-metrics"></a>Metrische functie niveaus
 

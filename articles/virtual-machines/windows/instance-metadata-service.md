@@ -11,15 +11,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 01/31/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 8849029f59ee4eef3baa43a6027022598e12d102
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 25b61b7e21e70c1cd4d27f88a0f5ce965c01c5a5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045885"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964648"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -104,7 +104,7 @@ De volgende tabel bevat een verwijzing naar andere Data Format-Api's die mogelij
 
 API | Standaard gegevens indeling | Andere indelingen
 --------|---------------------|--------------
-/Instance | json | tekst
+/instance | json | tekst
 /scheduledevents | json | geen
 /attested | json | geen
 
@@ -126,7 +126,7 @@ Aanvragen moeten ook een `Metadata: true`-header bevatten om ervoor te zorgen da
 
 Als er geen gegevens element is gevonden of een ongeldige aanvraag is, retourneert de Instance Metadata Service standaard HTTP-fouten. Bijvoorbeeld:
 
-HTTP-statuscode | Reden
+HTTP-status code | Reden
 ----------------|-------
 200 OK |
 400 ongeldige aanvraag | `Metadata: true` header ontbreekt of de indeling ontbreekt tijdens het uitvoeren van een query op een Leaf-knoop punt
@@ -471,10 +471,10 @@ name | Naam van de virtuele machine | 2017-04-02
 offer | Informatie over de installatie kopie van de virtuele machine weer geven en die alleen aanwezig is voor installatie kopieën die vanuit de Azure-installatie kopie galerie | 2017-04-02
 besturingssysteemtype | Linux of Windows | 2017-04-02
 placementGroupId | [Plaatsings groep](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) van de schaalset voor virtuele machines | 2017-08-01
-plannen | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) met naam, product en uitgever voor een virtuele machine als dit een Azure Marketplace-installatie kopie is | 2018-04-02
+Fonds | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) met naam, product en uitgever voor een virtuele machine als dit een Azure Marketplace-installatie kopie is | 2018-04-02
 platformUpdateDomain |  [Domein bijwerken](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
 platformFaultDomain | [Fout domein](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
-provider | Provider van de virtuele machine | 10-01-2018
+providers | Provider van de virtuele machine | 10-01-2018
 publicKeys | [Verzameling van open bare sleutels](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) die zijn toegewezen aan de virtuele machine en de paden | 2018-04-02
 publisher | Uitgever van de VM-installatie kopie | 2017-04-02
 resourceGroupName | [Resource groep](../../azure-resource-manager/management/overview.md) voor uw virtuele machine | 2017-08-01
@@ -542,7 +542,7 @@ De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie 
 
 Meta gegevens van exemplaren kunnen worden opgehaald in Windows via het hulp programma Power shell `curl`:
 
- ```bash
+ ```powershell
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
 ```
 
@@ -821,7 +821,7 @@ Verification successful
 Gegevens | Beschrijving
 -----|------------
 nonce | Door de gebruiker opgegeven optionele teken reeks met de aanvraag. Als er geen nonce in de aanvraag is opgegeven, wordt de huidige UTC-tijds tempel geretourneerd
-plannen | Een virtuele machine in een Azure Marketplace-installatie kopie [plannen](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) , met naam, product en uitgever
+Fonds | Een virtuele machine in een Azure Marketplace-installatie kopie [plannen](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) , met naam, product en uitgever
 timestamp/createdOn | De UTC-tijds tempel waarop het eerste ondertekende document is gemaakt
 timestamp/expiresOn | De UTC-tijds tempel waarop het ondertekende document verloopt
 vmId |  De [unieke id](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) voor de virtuele machine
@@ -930,7 +930,7 @@ diskSizeGB | Grootte van de schijf in GB
 installatiekopie   | Virtuele harde schijf voor installatie kopie van bron gebruiker
 LUN     | Nummer van de logische eenheid van de schijf
 managedDisk | Beheerde schijf parameters
-name    | Schijfnaam
+name    | Schijf naam
 schijven     | Virtuele harde schijf
 writeAcceleratorEnabled | Hiermee wordt aangegeven of Write Accelerator is ingeschakeld op de schijf
 
@@ -945,7 +945,7 @@ diskSizeGB | Grootte van de schijf in GB
 encryptionSettings | Versleutelings instellingen voor de schijf
 installatiekopie   | Virtuele harde schijf voor installatie kopie van bron gebruiker
 managedDisk | Beheerde schijf parameters
-name    | Schijfnaam
+name    | Schijf naam
 besturingssysteemtype  | Type besturings systeem dat is opgenomen in de schijf
 schijven     | Virtuele harde schijf
 writeAcceleratorEnabled | Hiermee wordt aangegeven of Write Accelerator is ingeschakeld op de schijf
@@ -1055,7 +1055,7 @@ Puppet | https://github.com/keirans/azuremetadata
 8. Hoe kan ik ondersteuning voor de service krijgen?
    * Als u ondersteuning voor de service wilt, maakt u een ondersteunings probleem in Azure Portal voor de virtuele machine waar u geen meta gegevens reacties meer kunt krijgen na lange pogingen.
 9. Er is een time-out opgetreden voor de aanvraag voor mijn oproep naar de service?
-   * Meta gegevens moeten worden gemaakt op basis van het primaire IP-adres dat is toegewezen aan de netwerk kaart van de virtuele machine. Als u uw routes hebt gewijzigd, moet u een route voor 169.254.0.0/16-adres uit uw netwerk kaart maken.
+   * Meta gegevens moeten worden gemaakt van het primaire IP-adres dat is toegewezen aan de primaire netwerk kaart van de virtuele machine, naast het geval u de routes hebt gewijzigd, moet u een route voor 169.254.0.0/16-adres uit uw netwerk kaart hebben.
 10. Ik heb mijn tags in de virtuele-machine schaalset bijgewerkt, maar ze worden niet weer gegeven in de instanties in tegens telling tot virtuele machines?
     * Momenteel worden alleen ScaleSets-Tags weer gegeven voor de VM op het opnieuw opstarten/terugzetten van de installatie kopie/of een schijf wijziging in het exemplaar.
 

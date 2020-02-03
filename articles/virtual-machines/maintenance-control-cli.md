@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 6172b5da60037051517a43b1b3b8b91b50ab2aac
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e2eb77bfd000ecaa3bad5fd3c5792d1aa3a81964
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895886"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964869"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>Voor beeld: updates beheren met onderhouds beheer en de Azure CLI
 
@@ -31,13 +31,13 @@ Met onderhouds controle kunt u het volgende doen:
 > [!IMPORTANT]
 > Onderhouds beheer is momenteel beschikbaar als open bare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
-> 
+>
 
 ## <a name="limitations"></a>Beperkingen
 
 - Vm's moeten op een [specifieke host](./linux/dedicated-hosts.md)staan of worden gemaakt met behulp van een [geïsoleerde VM-grootte](./linux/isolation.md).
 - Na 35 dagen wordt een update automatisch toegepast.
-- De gebruiker moet toegang hebben tot de **resource-eigenaar** .
+- De gebruiker moet toegang hebben tot de **resource bijdrager** .
 
 
 ## <a name="install-the-maintenance-extension"></a>De onderhouds uitbreiding installeren
@@ -151,6 +151,23 @@ az maintenance assignment list \
 
 Gebruik `az maintenance update list` om te zien of er updates in behandeling zijn. Update--abonnement als ID voor het abonnement dat de virtuele machine bevat.
 
+Als er geen updates zijn, wordt er een fout bericht weer gegeven met de volgende tekst: `Resource not found...StatusCode: 404`.
+
+Als er updates zijn, wordt er slechts één geretourneerd, zelfs als er meerdere updates in behandeling zijn. De gegevens voor deze update worden geretourneerd in een object:
+
+```text
+[
+  {
+    "impactDurationInSec": 9,
+    "impactType": "Freeze",
+    "maintenanceScope": "Host",
+    "notBefore": "2020-03-03T07:23:04.905538+00:00",
+    "resourceId": "/subscriptions/9120c5ff-e78e-4bd0-b29f-75c19cadd078/resourcegroups/DemoRG/providers/Microsoft.Compute/hostGroups/demoHostGroup/hosts/myHost",
+    "status": "Pending"
+  }
+]
+  ```
+
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 
 Controleren op updates die in behandeling zijn voor een geïsoleerde virtuele machine. In dit voor beeld wordt de uitvoer opgemaakt als een tabel voor de Lees baarheid.
@@ -166,7 +183,7 @@ az maintenance update list \
 
 ### <a name="dedicated-host"></a>Toegewezen host
 
-Controleren op updates die in behandeling zijn voor een specifieke host. In dit voor beeld wordt de uitvoer opgemaakt als een tabel voor de Lees baarheid. Vervang de waarden voor de resources door uw eigen gegevens.
+Controleren op updates die in behandeling zijn voor een speciale host (ADH). In dit voor beeld wordt de uitvoer opgemaakt als een tabel voor de Lees baarheid. Vervang de waarden voor de resources door uw eigen gegevens.
 
 ```azurecli-interactive
 az maintenance update list \
@@ -182,7 +199,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>Updates toepassen
 
-Gebruik `az maintenance apply update` om in behandeling zijnde updates toe te passen.
+Gebruik `az maintenance apply update` om in behandeling zijnde updates toe te passen. Als de opdracht is voltooid, wordt JSON geretourneerd met de details van de update.
 
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 
@@ -191,7 +208,7 @@ Een aanvraag maken om updates op een geïsoleerde virtuele machine toe te passen
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myMaintenanceRG\
+   --resource-group myMaintenanceRG \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute
@@ -205,7 +222,7 @@ Updates Toep assen op een specifieke host.
 ```azurecli-interactive
 az maintenance applyupdate create \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
-   -g myHostResourceGroup \
+   --resource-group myHostResourceGroup \
    --resource-name myHost \
    --resource-type hosts \
    --provider-name Microsoft.Compute \
@@ -217,9 +234,9 @@ az maintenance applyupdate create \
 
 U kunt de voortgang van de updates controleren met behulp van `az maintenance applyupdate get`. 
 
-### <a name="isolated-vm"></a>Geïsoleerde VM
+U kunt `default` gebruiken als update naam om de resultaten voor de laatste update te bekijken of om `myUpdateName` te vervangen door de naam van de update die werd geretourneerd tijdens het uitvoeren van `az maintenance applyupdate create`.
 
-Vervang `myUpdateName` door de naam van de update die is geretourneerd tijdens het uitvoeren van `az maintenance applyupdate create`.
+### <a name="isolated-vm"></a>Geïsoleerde VM
 
 ```azurecli-interactive
 az maintenance applyupdate get \
@@ -227,7 +244,7 @@ az maintenance applyupdate get \
    --resource-name myVM \
    --resource-type virtualMachines \
    --provider-name Microsoft.Compute \
-   --apply-update-name myUpdateName 
+   --apply-update-name default 
 ```
 
 ### <a name="dedicated-host"></a>Toegewezen host
@@ -241,7 +258,7 @@ az maintenance applyupdate get \
    --provider-name Microsoft.Compute \
    --resource-parent-name myHostGroup \ 
    --resource-parent-type hostGroups \
-   --apply-update-name default \
+   --apply-update-name myUpdateName \
    --query "{LastUpdate:lastUpdateTime, Name:name, ResourceGroup:resourceGroup, Status:status}" \
    --output table
 ```

@@ -4,33 +4,18 @@ description: In dit artikel vindt u informatie over het maken en beheren van bac
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554895"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963849"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Back-upbeleid voor Azure Recovery Services maken met behulp van REST API
 
 De stappen voor het maken van een back-upbeleid voor een Azure Recovery Services-kluis worden beschreven in het [beleid rest API document](/rest/api/backup/protectionpolicies/createorupdate). Laat ons dit document gebruiken als referentie voor het maken van een beleid voor back-ups van Azure-VM'S.
 
-## <a name="backup-policy-essentials"></a>Basis beginselen van back-upbeleid
-
-- Er wordt een back-upbeleid per kluis gemaakt.
-- Er kan een back-upbeleid worden gemaakt voor het maken van een back-up van de volgende werk belastingen
-  - Azure VM
-  - SQL in azure VM
-  - Azure-bestandsshare
-- Een beleid kan aan veel resources worden toegewezen. Een Azure VM-back-upbeleid kan worden gebruikt om veel virtuele Azure-machines te beveiligen.
-- Een beleid bestaat uit twee onderdelen
-  - Planning: wanneer de back-up moet worden gemaakt
-  - Bewaren: voor hoe lang elke back-up moet worden bewaard.
-- De planning kan worden gedefinieerd als dagelijks of wekelijks met een bepaald tijd punt.
-- U kunt Bewaar perioden definiëren voor ' dagelijks ', ' Wekelijks ', ' maandelijks ', ' jaarlijks ' back-uppunten.
-- ' Wekelijks ' verwijst naar een back-up op een bepaalde dag van de week, ' maandelijks ' betekent een back-up op een bepaalde dag van de maand en ' jaarlijks ' verwijst naar een back-up op een bepaalde dag van het jaar.
-- Het bewaren van ' maandelijks ', ' jaarlijks ' back-uppunten wordt ' LongTermRetention ' genoemd.
-- Wanneer een kluis wordt gemaakt, wordt er ook een beleid voor Azure VM-back-ups met de naam ' Defaultpolicy bij ' gemaakt en dit kan worden gebruikt voor het maken van back-ups van virtuele Azure-machines.
+## <a name="create-or-update-a-policy"></a>Een beleid maken of bijwerken
 
 Als u een Azure Backup beleid wilt maken of bijwerken, gebruikt u de volgende *put* -bewerking
 
@@ -44,7 +29,7 @@ De `{policyName}` en `{vaultName}` zijn opgenomen in de URI. Meer informatie vin
 
 Als u bijvoorbeeld een beleid voor Azure VM backup wilt maken, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-|Naam  |Verplicht  |Type  |Beschrijving  |
+|Name  |Verplicht  |Type  |Beschrijving  |
 |---------|---------|---------|---------|
 |properties     |   Waar      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-eigenschappen        |
 |tags     |         | Object        |  Resourcetags       |
@@ -152,7 +137,7 @@ Het maken/bijwerken van het back-upbeleid is een [asynchrone bewerking](https://
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Naam  |Type  |Beschrijving  |
+|Name  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |    [Beveiligings PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 geaccepteerd     |         |     Afgewezen    |

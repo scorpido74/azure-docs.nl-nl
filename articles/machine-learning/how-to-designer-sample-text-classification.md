@@ -5,25 +5,25 @@ description: Bouw een logistiek-classificatie van meer dan een klasse om de bedr
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 73861456edbb7493038fbf2adbf12300d170cab2
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4d22fd39eae5d5cf207d6d44819f0ce7ab2eceb5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311033"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963238"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Bouw een classificatie om de bedrijfs categorie te voors pellen met behulp van Azure Machine Learning Designer.
 
-**Voor beeld van Designer 7**
+**Voor beeld van Designer (preview) 7**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Dit voor beeld laat zien hoe u met behulp van tekst analyse modules een pijp lijn met tekst classificatie in Azure Machine Learning Designer kunt bouwen.
+Dit voor beeld laat zien hoe u met behulp van tekst analyse modules een pijp lijn met tekst classificatie kunt bouwen in Azure Machine Learning Designer (preview).
 
 Het doel van tekst classificatie is het toewijzen van een stuk tekst aan een of meer vooraf gedefinieerde klassen of categorieën. Het stuk tekst kan een document, nieuws artikel, zoek query, e-mail, Tweet, ondersteunings tickets, feedback van klanten, beoordeling van gebruikers producten, enzovoort zijn. Toepassingen van tekst classificatie zijn onder andere het categoriseren van kranten artikelen en de inhoud van nieuws draden in onderwerpen, het organiseren van webpagina's in hiërarchische categorieën, het filteren van ongewenste e-mail, sentiment analyse, het voors pellen van de gebruikers intentie van zoek query's, route ring ondersteunings tickets en analyse van feedback van klanten. 
 
@@ -35,7 +35,7 @@ De belangrijkste stappen van een cursus machine learning model met tekst gegeven
 
 1. De tekst gegevens vooraf verwerken
 
-1. Functie-engineering
+1. Functie techniek
 
    Tekst functie converteren naar de numerieke functie met de functie voor het uitpakken van functies, zoals functie-hashing, extra heren n-gram-functie uit de tekst gegevens.
 
@@ -65,7 +65,7 @@ Er zijn geen artikelen voor sommige bedrijven gevonden. het aantal records is du
 
 We gebruiken de **tekst module preprocess** om de tekst gegevens voor te verwerken, met inbegrip van de zinnen, Tokenize, enzovoort. U vindt alle ondersteunde opties in het artikel voor [**verwerking van tekst**](algorithm-module-reference/preprocess-text.md) . Nadat de TeX-gegevens vooraf zijn verwerkt, gebruiken we de module voor het **splitsen van gegevens** om de invoer gegevens wille keurig te verdelen, zodat de trainings gegevensset 50% van de oorspronkelijke gegevens bevat en de test-gegevensset 50% van de oorspronkelijke gegevens bevat.
 
-## <a name="feature-engineering"></a>Functie-engineering
+## <a name="feature-engineering"></a>Functie techniek
 In dit voor beeld gebruiken we twee methoden voor het uitvoeren van functie techniek.
 
 ### <a name="feature-hashing"></a>Functie-hashing

@@ -82,11 +82,7 @@
             - name: 4 - Metrische gegevens over doorvoer en latentie controleren
               href: storage-blob-scalable-app-verify-metrics.md
         - name: Een statische website hosten
-          items:
-            - name: 1 - Een statische website maken
-              href: storage-blob-static-website-host.md
-            - name: 2 - Een aangepast domein met SSL inschakelen
-              href: storage-blob-static-website-custom-domain.md
+          href: storage-blob-static-website-host.md
         - name: Toepassingen voor hoge beschikbaarheid ontwikkelen
           items:
             - name: 1 - Uw toepassing maximaal beschikbaar maken
@@ -383,10 +379,12 @@
             - name: De Azure Storage-emulator gebruiken
               href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Een statische website hosten
-          href: storage-blob-static-website-how-to.md
-        - name: Azure CDN toewijzen aan een aangepast domein voor toegang via HTTPS
-          href: storage-https-custom-domain-cdn.md
-        - name: Een aangepast domein configureren
+          items:
+            - name: Een statische website hosten
+              href: storage-blob-static-website-how-to.md
+            - name: Integreren met Azure CDN
+              href: static-website-content-delivery-network.md
+        - name: Een aangepast domein gebruiken
           href: storage-custom-domain-name.md
         - name: Gebeurtenissen routeren naar een aangepast eindpunt
           href: storage-blob-event-quickstart.md

@@ -5,33 +5,29 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 40037252ddf8e505ae7fe734813d598e7de96336
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 910b582cb40b9f8aff6a553621b4677d6b019826
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834236"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963883"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Problemen oplossen met functions runtime is onbereikbaar
 
-
-## <a name="error-text"></a>Fout tekst
-Dit artikel is bedoeld om de volgende fout op te lossen wanneer het wordt weer gegeven in de functions-Portal.
+Dit artikel is bedoeld voor het oplossen van problemen met het fout bericht ' functions runtime is onbereikbaar ' wanneer het wordt weer gegeven in de Azure Portal. Als deze fout optreedt, ziet u de volgende fout teken reeks die wordt weer gegeven in de portal.
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
-### <a name="summary"></a>Samenvatting
-Dit probleem treedt op wanneer de Azure Functions-runtime niet kan worden gestart. De meest voorkomende reden voor deze fout is dat de functie-app de toegang tot het opslag account kwijtraakt. [Lees hier meer over de vereisten voor het opslag account](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+Dit gebeurt wanneer de Azure Functions-runtime niet kan worden gestart. De meest voorkomende reden voor deze fout is dat de functie-app de toegang tot het opslag account kwijtraakt. Zie [vereisten voor opslag accounts](storage-considerations.md#storage-account-requirements)voor meer informatie.
 
-### <a name="troubleshooting"></a>Problemen oplossen
-We behandelen de vier meest voorkomende fout gevallen, het identificeren en het oplossen van elke case.
+De rest van dit artikel helpt u bij het oplossen van de volgende oorzaken van deze fout, inclusief het identificeren en oplossen van elke case.
 
-1. Opslag account verwijderd
-1. De toepassings instellingen voor het opslag account zijn verwijderd
-1. De referenties van het opslag account zijn ongeldig
-1. Het opslag account is niet toegankelijk
-1. Het dagelijkse uitvoerings quotum is vol
-1. App bevindt zich achter een firewall
++ [Opslagaccount verwijderd](#storage-account-deleted)
++ [De toepassingsinstellingen van het opslagaccount zijn verwijderd](#storage-account-application-settings-deleted)
++ [Opslagaccountreferenties ongeldig](#storage-account-credentials-invalid)
++ [Het opslagaccount is niet toegankelijk](#storage-account-inaccessible)
++ [Het dagelijkse uitvoerings quotum is overschreden](#daily-execution-quota-full)
++ [Uw app bevindt zich achter een firewall](#app-is-behind-a-firewall)
 
 
 ## <a name="storage-account-deleted"></a>Opslag account verwijderd
@@ -60,9 +56,9 @@ Als u in de vorige stap geen opslag account hebt connection string is het waarsc
 
 ### <a name="guidance"></a>Hulp
 
-* Schakel ' sleuf instelling ' niet in voor een van deze instellingen. Wanneer u implementatie sleuven verwisselt, wordt de functie onderbroken.
+* Schakel de optie ' sleuf instelling ' niet in voor een van deze instellingen. Wanneer u implementatie sleuven verwisselt, wordt de functie-app onderbroken.
 * Wijzig deze instellingen niet als onderdeel van automatische implementaties.
-* Deze instellingen moeten worden ingevoerd en geldig zijn tijdens het maken. Een geautomatiseerde implementatie die deze instellingen niet bevat, resulteert in een niet-functionele app, zelfs als de instellingen worden toegevoegd na het feit.
+* Deze instellingen moeten worden ingevoerd en geldig zijn tijdens het maken. Een geautomatiseerde implementatie die deze instellingen niet bevat, resulteert in een functie-app die niet wordt uitgevoerd, zelfs niet als de instellingen later worden toegevoegd.
 
 ## <a name="storage-account-credentials-invalid"></a>De referenties van het opslag account zijn ongeldig
 
@@ -70,36 +66,31 @@ De bovenstaande verbindings reeksen voor het opslag account moeten worden bijgew
 
 ## <a name="storage-account-inaccessible"></a>Het opslag account is niet toegankelijk
 
-Uw functie-app moet toegang hebben tot het opslag account. Veelvoorkomende problemen met het blok keren van een functie toegang tot een opslag account zijn:
+De functie-app moet toegang hebben tot het opslag account. Veelvoorkomende problemen met het blok keren van een functie toegang tot een opslag account zijn:
 
-* Functie-apps die zijn geïmplementeerd in App Service omgevingen zonder de juiste netwerk regels voor het toestaan van verkeer naar en van het opslag account
-* De firewall voor het opslag account is ingeschakeld en is niet geconfigureerd om verkeer van en naar functies toe te staan. [Lees hier meer over Firewall configuratie voor opslag accounts](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
++ functie-apps die zijn geïmplementeerd op App Service omgevingen (ASE) zonder de juiste netwerk regels voor het toestaan van verkeer naar en van het opslag account.
+
++ De firewall voor het opslag account is ingeschakeld en is niet geconfigureerd om verkeer van en naar functies toe te staan. Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](../storage/common/storage-network-security.md) voor meer informatie.
 
 ## <a name="daily-execution-quota-full"></a>Het dagelijkse uitvoerings quotum is vol
 
-Als u een dagelijks uitvoerings quotum hebt geconfigureerd, wordt uw functie-app tijdelijk uitgeschakeld en zijn veel van de besturings elementen van de portal niet meer beschikbaar. 
+Als u een dagelijks uitvoerings quotum hebt geconfigureerd, is de functie-app tijdelijk uitgeschakeld, waardoor veel van de besturings elementen van de portal niet meer beschikbaar zijn. 
 
-* Als u dit wilt controleren, opent u platform functies > functie-app instellingen in de portal. Het volgende bericht wordt weer gegeven als u het quotum overschrijdt:
-    * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
-* Verwijder het quotum en start de app opnieuw om het probleem op te lossen.
++ Als u wilt controleren in de [Azure Portal](https://portal.azure.com), opent u **Platform functies** > **functie-app instellingen** in uw functie-app. Wanneer u het quotum voor **dagelijks gebruik** dat u hebt ingesteld overschrijdt, wordt het volgende bericht weer gegeven:
+
+    `The function app has reached daily usage quota and has been stopped until the next 24 hours time frame.`
+
++ U kunt dit probleem oplossen door het dagelijkse quotum te verwijderen of te verhogen en de app opnieuw te starten. Anders wordt de uitvoering van uw app geblokkeerd tot de volgende dag.
 
 ## <a name="app-is-behind-a-firewall"></a>App bevindt zich achter een firewall
 
 De runtime van de functie is onbereikbaar als uw functie-app wordt gehost in een [app service Environment met interne taak verdeling](../app-service/environment/create-ilb-ase.md) en is geconfigureerd om inkomend Internet verkeer te blok keren of waarvoor [binnenkomende IP-beperkingen](functions-networking-options.md#inbound-ip-restrictions) zijn geconfigureerd om Internet toegang te blok keren. De Azure Portal maakt rechtstreeks aan de actieve app aanroepen om de lijst met functies op te halen en maakt ook HTTP-aanroepen naar het KUDU-eind punt. Instellingen op platform niveau onder het tabblad `Platform Features` zijn nog steeds beschikbaar.
 
-* Als u de ASE-configuratie wilt controleren, gaat u naar de NSG van het subnet waar ASE zich bevindt en valideert u regels voor binnenkomende verbindingen zodat verkeer afkomstig is van het open bare IP-adres van de computer waarop u de toepassing opent. U kunt de portal ook gebruiken vanaf een computer die is verbonden met het virtuele netwerk waarop uw app wordt uitgevoerd of een virtuele machine die wordt uitgevoerd in uw virtuele netwerk. [Lees hier meer over de configuratie van de inkomende regel](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
+Als u de ASE-configuratie wilt controleren, gaat u naar de NSG van het subnet waar ASE zich bevindt en valideert u regels voor binnenkomende verbindingen zodat verkeer afkomstig is van het open bare IP-adres van de computer waarop u de toepassing opent. U kunt de portal ook gebruiken vanaf een computer die is verbonden met het virtuele netwerk waarop uw app wordt uitgevoerd of een virtuele machine die wordt uitgevoerd in uw virtuele netwerk. [Lees hier meer over de configuratie van de inkomende regel](../app-service/environment/network-info.md#network-security-groups)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu uw functie-app terug en operationeel is, Bekijk onze Quick starts en naslag informatie voor ontwikkel aars om weer aan de slag te gaan.
+Meer informatie over het bewaken van uw functie-apps:
 
-* [Uw eerste Azure-functie maken](functions-create-first-azure-function.md)  
-  Ga meteen aan de slag en maak uw eerste functie met de Azure Functions-snelstartgids. 
-* [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)  
-  Biedt meer technische informatie over de Azure Functions-runtime en bevat gedetailleerde informatie over het coderen van functies en het definiëren van triggers en bindingen.
-* [Azure Functions testen](functions-test-a-function.md)  
-  Beschrijft de verschillende hulpprogramma’s en technieken voor het testen van uw functies.
-* [Azure Functions schalen](functions-scale.md)  
-  Beschrijft de serviceabonnementen die beschikbaar zijn voor Azure Functions, zoals het hostingabonnement Consumption, en helpt u bij het kiezen van het juiste abonnement. 
-* [Meer informatie over Azure App Service](../app-service/overview.md)  
-  Azure Functions maakt gebruik van Azure App Service voor kernfunctionaliteit zoals implementaties, omgevingsvariabelen en diagnostische procedures. 
+> [!div class="nextstepaction"]
+> [Azure Functions bewaken](functions-monitoring.md)

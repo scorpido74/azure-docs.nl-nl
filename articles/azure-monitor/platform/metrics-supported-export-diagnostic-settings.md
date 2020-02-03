@@ -8,12 +8,12 @@ ms.date: 05/20/2019
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 5d38786d3c7b852d3a9b65cd366eed68ebbb01e3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: dcf5276393400be864e738d89bc5713f5aac242b
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152949"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963475"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>De metrische gegevens van het Azure Monitor-platform exporteerbaar via Diagnostische instellingen
 
@@ -24,6 +24,19 @@ U kunt de platform metrieken van de Azure monitor-pijp lijn naar andere locaties
 2. De [metrische gegevens rest API](https://docs.microsoft.com/rest/api/monitor/metrics/list) gebruiken
 
 Vanwege complexiteit in de Azure Monitor back-end kunnen niet alle metrische gegevens exporteerbaar zijn met behulp van diagnostische instellingen. De volgende tabel bevat een lijst die kan en kan niet worden geëxporteerd met Diagnostische instellingen.
+
+De tabel bevat de volgende kolommen. 
+- Exporteerbaar via Diagnostische instellingen? 
+- ResourceType 
+- Gegevens 
+- MetricDisplayName
+- Eenheid 
+- AggregationType
+
+
+> [!NOTE]
+> De onderstaande tabel bevat mogelijk een horizontale schuif balk aan de onderkant. Als u van mening bent dat u de informatie ontbreekt, controleert u of de schuif balk helemaal naar links wordt weer gegeven.  
+
 
 Exporteerbaar via Diagnostische instellingen? | ResourceType | Gegevens | MetricDisplayName | Eenheid | AggregationType
 |----|-----|------|----|----|-----|
@@ -43,13 +56,13 @@ Ja | Microsoft.AnalysisServices/servers | mashup_engine_private_bytes_metric | M
 Ja | Microsoft.AnalysisServices/servers | mashup_engine_qpu_metric | M-engine QPU | Aantal | Average
 Ja | Microsoft.AnalysisServices/servers | mashup_engine_virtual_bytes_metric | M-engine virtuele bytes | Bytes | Average
 Ja | Microsoft.AnalysisServices/servers | memory_metric | Geheugen | Bytes | Average
-Ja | Microsoft.AnalysisServices/servers | memory_thrashing_metric | Geheugenthrashing | Procent | Average
+Ja | Microsoft.AnalysisServices/servers | memory_thrashing_metric | Geheugen overbelasting | Procent | Average
 Ja | Microsoft.AnalysisServices/servers | MemoryLimitHard | Geheugen: vaste geheugen limiet | Bytes | Average
 Ja | Microsoft.AnalysisServices/servers | MemoryLimitHigh | Geheugen: hoge geheugen limiet | Bytes | Average
 Ja | Microsoft.AnalysisServices/servers | MemoryLimitLow | Geheugen: lage geheugen limiet | Bytes | Average
 Ja | Microsoft.AnalysisServices/servers | MemoryLimitVertiPaq | Geheugen: VertiPaq-geheugen limiet | Bytes | Average
 Ja | Microsoft.AnalysisServices/servers | MemoryUsage | Geheugen: geheugen gebruik | Bytes | Average
-Ja | Microsoft.AnalysisServices/servers | private_bytes_metric | Eigen Bytes | Bytes | Average
+Ja | Microsoft.AnalysisServices/servers | private_bytes_metric | Privé-bytes | Bytes | Average
 Ja | Microsoft.AnalysisServices/servers | ProcessingPoolBusyIOJobThreads | Threads: bezig met verwerken van I/O-taak threads van pool | Aantal | Average
 Ja | Microsoft.AnalysisServices/servers | ProcessingPoolBusyNonIOThreads | Threads: bezig met het verwerken van niet-I/O-threads van de groep | Aantal | Average
 Ja | Microsoft.AnalysisServices/servers | ProcessingPoolIdleIOJobThreads | Threads: niet-actieve I/O-taak threads van de groep verwerken | Aantal | Average
@@ -171,7 +184,7 @@ Ja | Microsoft.Blockchain/blockchainMembers | CpuUsagePercentageInDouble | Perce
 Ja | Microsoft.Blockchain/blockchainMembers | IOReadBytes | I/o gelezen bytes | Bytes | Totaal
 Ja | Microsoft.Blockchain/blockchainMembers | IOWriteBytes | I/o-schrijf bytes | Bytes | Totaal
 Ja | Microsoft.Blockchain/blockchainMembers | MemoryLimit | Geheugen limiet | Bytes | Average
-Ja | Microsoft.Blockchain/blockchainMembers | MemoryUsage | Geheugengebruik | Bytes | Average
+Ja | Microsoft.Blockchain/blockchainMembers | MemoryUsage | Geheugen gebruik | Bytes | Average
 Ja | Microsoft.Blockchain/blockchainMembers | MemoryUsagePercentageInDouble | Percentage geheugen gebruik | Procent | Average
 Ja | Microsoft.Blockchain/blockchainMembers | PendingTransactions | Trans acties in behandeling | Aantal | Average
 Ja | Microsoft.Blockchain/blockchainMembers | ProcessedBlocks | Verwerkte blokken | Aantal | Totaal
@@ -302,7 +315,7 @@ Ja | Microsoft.Cache/redis | serverLoad6 | Server belasting (Shard 6) | Procent 
 Ja | Microsoft.Cache/redis | serverLoad7 | Server belasting (Shard 7) | Procent | Maximum
 Ja | Microsoft.Cache/redis | serverLoad8 | Server belasting (Shard 8) | Procent | Maximum
 Ja | Microsoft.Cache/redis | serverLoad9 | Server belasting (Shard 9) | Procent | Maximum
-Ja | Microsoft.Cache/redis | setcommands | Sets | Aantal | Totaal
+Ja | Microsoft.Cache/redis | setcommands | Groepen | Aantal | Totaal
 Ja | Microsoft.Cache/redis | setcommands0 | Sets (Shard 0) | Aantal | Totaal
 Ja | Microsoft.Cache/redis | setcommands1 | Sets (Shard 1) | Aantal | Totaal
 Ja | Microsoft.Cache/redis | setcommands2 | Sets (Shard 2) | Aantal | Totaal
@@ -384,7 +397,7 @@ Nee | Micro soft. ClassicStorage/Storage accounts/blobServices | BlobCapacity | 
 Nee | Micro soft. ClassicStorage/Storage accounts/blobServices | BlobCount | Aantal blobs | Aantal | Average
 Ja | Micro soft. ClassicStorage/Storage accounts/blobServices | ContainerCount | Aantal blobcontainers | Aantal | Average
 Ja | Micro soft. ClassicStorage/Storage accounts/blobServices | Uitgaand verkeer | Uitgaand verkeer | Bytes | Totaal
-Nee | Micro soft. ClassicStorage/Storage accounts/blobServices | IndexCapacity | Indexcapaciteit | Bytes | Average
+Nee | Micro soft. ClassicStorage/Storage accounts/blobServices | IndexCapacity | Index capaciteit | Bytes | Average
 Ja | Micro soft. ClassicStorage/Storage accounts/blobServices | Binnenkomend | Binnenkomend | Bytes | Totaal
 Ja | Micro soft. ClassicStorage/Storage accounts/blobServices | SuccessE2ELatency | Geslaagde E2E-latentie | Milliseconden | Average
 Ja | Micro soft. ClassicStorage/Storage accounts/blobServices | SuccessServerLatency | Geslaagde serverlatentie | Milliseconden | Average
@@ -423,19 +436,19 @@ Ja | Microsoft.CognitiveServices/accounts | BlockedCalls | Geblokkeerde aanroepe
 Ja | Microsoft.CognitiveServices/accounts | CharactersTrained | Getrainde tekens | Aantal | Totaal
 Ja | Microsoft.CognitiveServices/accounts | CharactersTranslated | Geconverteerde tekens | Aantal | Totaal
 Ja | Microsoft.CognitiveServices/accounts | ClientErrors | Client fouten | Aantal | Totaal
-Ja | Microsoft.CognitiveServices/accounts | DataIn | Inkomende gegevens | Bytes | Totaal
-Ja | Microsoft.CognitiveServices/accounts | DataOut | Uitgaande gegevens | Bytes | Totaal
+Ja | Microsoft.CognitiveServices/accounts | DataIn | Gegevens in | Bytes | Totaal
+Ja | Microsoft.CognitiveServices/accounts | DataOut | Gegevens uit | Bytes | Totaal
 Ja | Microsoft.CognitiveServices/accounts | Latentie | Latentie | MilliSeconds | Average
 Ja | Microsoft.CognitiveServices/accounts | ServerErrors | Server fouten | Aantal | Totaal
 Ja | Microsoft.CognitiveServices/accounts | SpeechSessionDuration | Spraak sessie duur | Seconden | Totaal
 Ja | Microsoft.CognitiveServices/accounts | SuccessfulCalls | Geslaagde aanroepen | Aantal | Totaal
 Ja | Microsoft.CognitiveServices/accounts | TotalCalls | Totaal aantal aanroepen | Aantal | Totaal
-Ja | Microsoft.CognitiveServices/accounts | TotalErrors | Totale aantal fouten | Aantal | Totaal
+Ja | Microsoft.CognitiveServices/accounts | TotalErrors | Totaal aantal fouten | Aantal | Totaal
 Ja | Microsoft.CognitiveServices/accounts | TotalTokenCalls | Totaal aantal token aanroepen | Aantal | Totaal
 Ja | Microsoft.CognitiveServices/accounts | TotalTransactions | Totaal aantal trans acties | Aantal | Totaal
 Ja | Microsoft.Compute/virtualMachines | Verbruikte CPU-tegoeden | Verbruikte CPU-tegoeden | Aantal | Average
 Ja | Microsoft.Compute/virtualMachines | Resterende CPU-tegoeden | Resterende CPU-tegoeden | Aantal | Average
-Ja | Microsoft.Compute/virtualMachines | Wachtrijlengte van gegevensschijf | Wachtrij diepte van gegevens schijf (preview-versie) | Aantal | Average
+Ja | Microsoft.Compute/virtualMachines | Wachtrij diepte van gegevens schijf | Wachtrij diepte van gegevens schijf (preview-versie) | Aantal | Average
 Ja | Microsoft.Compute/virtualMachines | Gegevens schijf gelezen bytes per seconde | Gegevens schijf gelezen bytes per seconde (preview) | CountPerSecond | Average
 Ja | Microsoft.Compute/virtualMachines | Lees bewerkingen op de gegevens schijf per seconde | Lees bewerkingen op de gegevens schijf per seconde (preview) | CountPerSecond | Average
 Ja | Microsoft.Compute/virtualMachines | Geschreven bytes per seconde gegevens schijf | Geschreven bytes per seconde (preview) gegevens schijf | CountPerSecond | Average
@@ -450,7 +463,7 @@ Ja | Microsoft.Compute/virtualMachines | Netwerk in | Netwerk in Factureerbaar (
 Ja | Microsoft.Compute/virtualMachines | Totaal netwerk | Totaal netwerk | Bytes | Totaal
 Ja | Microsoft.Compute/virtualMachines | Netwerk uit | Gefactureerd netwerk (afgeschaft) | Bytes | Totaal
 Ja | Microsoft.Compute/virtualMachines | Totaal aantal netwerk | Totaal aantal netwerk | Bytes | Totaal
-Ja | Microsoft.Compute/virtualMachines | Wachtrijlengte van besturingssysteemschijf | Wachtrij diepte van de besturingssysteem schijf (preview-versie) | Aantal | Average
+Ja | Microsoft.Compute/virtualMachines | Wachtrij diepte van besturingssysteem schijf | Wachtrij diepte van de besturingssysteem schijf (preview-versie) | Aantal | Average
 Ja | Microsoft.Compute/virtualMachines | BESTURINGSSYSTEEM schijf gelezen bytes per seconde | BESTURINGSSYSTEEM schijf gelezen bytes per seconde (preview) | CountPerSecond | Average
 Ja | Microsoft.Compute/virtualMachines | Lees bewerkingen van de besturingssysteem schijf per seconde | Lees bewerkingen op de besturingssysteem schijf per seconde (preview) | CountPerSecond | Average
 Ja | Microsoft.Compute/virtualMachines | Schrijf bewerkingen op de besturingssysteem schijf per seconde | Schrijf bewerkingen op de besturingssysteem schijf per seconde (preview) | CountPerSecond | Average
@@ -474,7 +487,7 @@ Ja | Microsoft.Compute/virtualMachines | Treffer voor Premium-besturingssysteem 
 Ja | Microsoft.Compute/virtualMachines | Leesmij voor Premium-besturingssysteem schijf cache lezen | Schijf cache voor Premium-Lees-missers (preview-versie) | Procent | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets | Verbruikte CPU-tegoeden | Verbruikte CPU-tegoeden | Aantal | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets | Resterende CPU-tegoeden | Resterende CPU-tegoeden | Aantal | Average
-Ja | Microsoft.Compute/virtualMachineScaleSets | Wachtrijlengte van gegevensschijf | Wachtrij diepte van gegevens schijf (preview-versie) | Aantal | Average
+Ja | Microsoft.Compute/virtualMachineScaleSets | Wachtrij diepte van gegevens schijf | Wachtrij diepte van gegevens schijf (preview-versie) | Aantal | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets | Gegevens schijf gelezen bytes per seconde | Gegevens schijf gelezen bytes per seconde (preview) | CountPerSecond | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets | Lees bewerkingen op de gegevens schijf per seconde | Lees bewerkingen op de gegevens schijf per seconde (preview) | CountPerSecond | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets | Geschreven bytes per seconde gegevens schijf | Geschreven bytes per seconde (preview) gegevens schijf | CountPerSecond | Average
@@ -489,7 +502,7 @@ Ja | Microsoft.Compute/virtualMachineScaleSets | Netwerk in | Netwerk in Facture
 Ja | Microsoft.Compute/virtualMachineScaleSets | Totaal netwerk | Totaal netwerk | Bytes | Totaal
 Ja | Microsoft.Compute/virtualMachineScaleSets | Netwerk uit | Gefactureerd netwerk (afgeschaft) | Bytes | Totaal
 Ja | Microsoft.Compute/virtualMachineScaleSets | Totaal aantal netwerk | Totaal aantal netwerk | Bytes | Totaal
-Ja | Microsoft.Compute/virtualMachineScaleSets | Wachtrijlengte van besturingssysteemschijf | Wachtrij diepte van de besturingssysteem schijf (preview-versie) | Aantal | Average
+Ja | Microsoft.Compute/virtualMachineScaleSets | Wachtrij diepte van besturingssysteem schijf | Wachtrij diepte van de besturingssysteem schijf (preview-versie) | Aantal | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets | BESTURINGSSYSTEEM schijf gelezen bytes per seconde | BESTURINGSSYSTEEM schijf gelezen bytes per seconde (preview) | CountPerSecond | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets | Lees bewerkingen van de besturingssysteem schijf per seconde | Lees bewerkingen op de besturingssysteem schijf per seconde (preview) | CountPerSecond | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets | Schrijf bewerkingen op de besturingssysteem schijf per seconde | Schrijf bewerkingen op de besturingssysteem schijf per seconde (preview) | CountPerSecond | Average
@@ -513,7 +526,7 @@ Ja | Microsoft.Compute/virtualMachineScaleSets | Treffer voor Premium-besturings
 Ja | Microsoft.Compute/virtualMachineScaleSets | Leesmij voor Premium-besturingssysteem schijf cache lezen | Schijf cache voor Premium-Lees-missers (preview-versie) | Procent | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Verbruikte CPU-tegoeden | Verbruikte CPU-tegoeden | Aantal | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Resterende CPU-tegoeden | Resterende CPU-tegoeden | Aantal | Average
-Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Wachtrijlengte van gegevensschijf | Wachtrij diepte van gegevens schijf (preview-versie) | Aantal | Average
+Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Wachtrij diepte van gegevens schijf | Wachtrij diepte van gegevens schijf (preview-versie) | Aantal | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Gegevens schijf gelezen bytes per seconde | Gegevens schijf gelezen bytes per seconde (preview) | CountPerSecond | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Lees bewerkingen op de gegevens schijf per seconde | Lees bewerkingen op de gegevens schijf per seconde (preview) | CountPerSecond | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Geschreven bytes per seconde gegevens schijf | Geschreven bytes per seconde (preview) gegevens schijf | CountPerSecond | Average
@@ -528,7 +541,7 @@ Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Netwerk in | Ne
 Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Totaal netwerk | Totaal netwerk | Bytes | Totaal
 Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Netwerk uit | Gefactureerd netwerk (afgeschaft) | Bytes | Totaal
 Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Totaal aantal netwerk | Totaal aantal netwerk | Bytes | Totaal
-Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Wachtrijlengte van besturingssysteemschijf | Wachtrij diepte van de besturingssysteem schijf (preview-versie) | Aantal | Average
+Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Wachtrij diepte van besturingssysteem schijf | Wachtrij diepte van de besturingssysteem schijf (preview-versie) | Aantal | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | BESTURINGSSYSTEEM schijf gelezen bytes per seconde | BESTURINGSSYSTEEM schijf gelezen bytes per seconde (preview) | CountPerSecond | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Lees bewerkingen van de besturingssysteem schijf per seconde | Lees bewerkingen op de besturingssysteem schijf per seconde (preview) | CountPerSecond | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Schrijf bewerkingen op de besturingssysteem schijf per seconde | Schrijf bewerkingen op de besturingssysteem schijf per seconde (preview) | CountPerSecond | Average
@@ -551,7 +564,7 @@ Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Lees missers ca
 Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Treffer voor Premium-besturingssysteem schijf cache lezen | Treffer voor het lezen van een Premium-besturingssysteem schijf cache (preview-versie) | Procent | Average
 Ja | Microsoft.Compute/virtualMachineScaleSets/virtualMachines | Leesmij voor Premium-besturingssysteem schijf cache lezen | Schijf cache voor Premium-Lees-missers (preview-versie) | Procent | Average
 Ja | Microsoft.ContainerInstance/containerGroups | CpuUsage | CPU-gebruik | Aantal | Average
-Ja | Microsoft.ContainerInstance/containerGroups | MemoryUsage | Geheugengebruik | Bytes | Average
+Ja | Microsoft.ContainerInstance/containerGroups | MemoryUsage | Geheugen gebruik | Bytes | Average
 Ja | Microsoft.ContainerInstance/containerGroups | NetworkBytesReceivedPerSecond | Ontvangen netwerk bytes per seconde | Bytes | Average
 Ja | Microsoft.ContainerInstance/containerGroups | NetworkBytesTransmittedPerSecond | Verzonden netwerk bytes per seconde | Bytes | Average
 Ja | Micro soft. ContainerRegistry/registers | RunDuration | Uitvoerings duur | Milliseconden | Totaal
@@ -576,7 +589,7 @@ Ja | Microsoft.DataBoxEdge/dataBoxEdgeDevices | HyperVVirtualProcessorUtilizatio
 Ja | Microsoft.DataBoxEdge/dataBoxEdgeDevices | NICReadThroughput | Lees doorvoer (netwerk) | BytesPerSecond | Average
 Ja | Microsoft.DataBoxEdge/dataBoxEdgeDevices | NICWriteThroughput | Schrijf doorvoer (netwerk) | BytesPerSecond | Average
 Ja | Microsoft.DataBoxEdge/dataBoxEdgeDevices | TotalCapacity | Totale capaciteit | Bytes | Average
-Ja | Microsoft.DataFactory/datafactories | FailedRuns | Mislukte verwerkingen | Aantal | Totaal
+Ja | Microsoft.DataFactory/datafactories | FailedRuns | Mislukte uitvoeringen | Aantal | Totaal
 Ja | Microsoft.DataFactory/datafactories | SuccessfulRuns | Geslaagde uitvoeringen | Aantal | Totaal
 Ja | Microsoft.DataFactory/factories | ActivityCancelledRuns | Metrische gegevens voor geannuleerde activiteit uitgevoerd | Aantal | Totaal
 Ja | Microsoft.DataFactory/factories | ActivityFailedRuns | Metrische gegevens mislukte uitvoering van activiteit | Aantal | Totaal
@@ -664,29 +677,29 @@ Ja | Micro soft. apparaten/account | digitaltwins. telemetrie. nodes | Tijdelijk
 Ja | Microsoft.Devices/IotHubs | c2d.commands.egress.abandon.success | C2D-berichten zijn afgebroken | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | C2D. commands. OUTuitgang. complete. geslaagd | C2D-bericht leveringen voltooid | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | c2d.commands.egress.reject.success | Geweigerde C2D-berichten | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | C2D. methods. failure | Mislukte aanroepen van de directe methode | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | C2D. methods. requestSize | Aanvraaggrootte van aanroepen van de directe methode | Bytes | Average
-Ja | Microsoft.Devices/IotHubs | C2D. methods. responseSize | Antwoordgrootte van aanroepen van de directe methode | Bytes | Average
+Ja | Microsoft.Devices/IotHubs | C2D. methods. failure | Mislukte directe aanroepen van methode | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | C2D. methods. requestSize | Aanvraag grootte van directe-methode aanroepen | Bytes | Average
+Ja | Microsoft.Devices/IotHubs | C2D. methods. responseSize | Antwoord grootte van directe methode aanroepen | Bytes | Average
 Ja | Microsoft.Devices/IotHubs | C2D. methods. geslaagd | Geslaagde directe aanroepen van de methode | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | c2d.twin.read.failure | Mislukte dubbele leesbewerkingen van back-end | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | c2d.twin.read.size | Antwoordgrootte van dubbele leesbewerkingen van back-end | Bytes | Average
+Ja | Microsoft.Devices/IotHubs | c2d.twin.read.failure | Mislukte dubbele Lees bewerkingen van back-end | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | c2d.twin.read.size | Reactie grootte van dubbele Lees bewerkingen van de back-end | Bytes | Average
 Ja | Microsoft.Devices/IotHubs | c2d.twin.read.success | Geslaagde dubbele Lees bewerkingen van back-end | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | C2D. dubbele. update. failure | Mislukte dubbele updates van back-end | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | C2D. dubbele. update. grootte | Grootte van dubbele updates van back-end | Bytes | Average
 Ja | Microsoft.Devices/IotHubs | c2d.twin.update.success | Geslaagde dubbele updates van back-end | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | C2DMessagesExpired | C2D-berichten verlopen (preview-versie) | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | configuraties | Metrische gegevens van configuratie | Aantal | Totaal
-Nee | Microsoft.Devices/IotHubs | connectedDeviceCount | Verbonden apparaten (preview) | Aantal | Average
+Ja | Microsoft.Devices/IotHubs | configuraties | Metrische configuratie gegevens | Aantal | Totaal
+Nee | Microsoft.Devices/IotHubs | connectedDeviceCount | Verbonden apparaten (preview-versie) | Aantal | Average
 Ja | Microsoft.Devices/IotHubs | D2C. endpoints. uitgangs punt. builtIn. Events | Route ring: berichten worden bezorgd bij berichten/gebeurtenissen | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | d2c.endpoints.egress.eventHubs | Route ring: berichten worden bezorgd bij Event hub | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | d2c.endpoints.egress.serviceBusQueues | Route ring: berichten worden bezorgd bij Service Bus wachtrij | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | d2c.endpoints.egress.serviceBusTopics | Route ring: berichten die worden bezorgd bij Service Bus onderwerp | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | d2c.endpoints.egress.storage | Route ring: berichten worden bezorgd bij de opslag | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | d2c.endpoints.egress.storage.blobs | Routering: aan opslag geleverde blobs | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | D2C. endpoints. out. storage. bytes | Routering: aan opslag geleverde gegevens | Bytes | Totaal
+Ja | Microsoft.Devices/IotHubs | d2c.endpoints.egress.storage.blobs | Route ring: blobs die aan de opslag worden geleverd | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | D2C. endpoints. out. storage. bytes | Route ring: gegevens worden geleverd aan de opslag | Bytes | Totaal
 Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.builtIn.events | Route ring: bericht latentie voor berichten/gebeurtenissen | Milliseconden | Average
-Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.eventHubs | Routering: berichtlatentie voor Event Hub | Milliseconden | Average
-Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusQueues | Routering: berichtlatentie voor Service Bus-wachtrij | Milliseconden | Average
+Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.eventHubs | Route ring: bericht latentie voor Event hub | Milliseconden | Average
+Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusQueues | Route ring: bericht latentie voor Service Bus wachtrij | Milliseconden | Average
 Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusTopics | Route ring: bericht latentie voor Service Bus onderwerp | Milliseconden | Average
 Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.storage | Route ring: bericht latentie voor opslag | Milliseconden | Average
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.dropped | Route ring: telemetrie-berichten verwijderd  | Aantal | Totaal
@@ -695,10 +708,10 @@ Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.invalid | Route ring: tele
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.orphaned | Route ring: telemetriegegevens van zwevende berichten  | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.success | Route ring: telemetrie-berichten | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.allProtocol | Verzend pogingen voor telemetrie-berichten | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.sendThrottle | Aantal netwerkbeperkingsfouten | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.success | Berichten over telemetrie verzonden | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | D2C. dubbele. Read. failure | Mislukte dubbele leesbewerkingen van apparaten | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | d2c.twin.read.size | Antwoordgrootte van dubbele leesbewerkingen van apparaten | Bytes | Average
+Ja | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.sendThrottle | Aantal beperkings fouten | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.success | Verzonden telemetriegegevens | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | D2C. dubbele. Read. failure | Mislukte dubbele Lees bewerkingen van apparaten | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | d2c.twin.read.size | Reactie grootte van dubbele Lees bewerkingen van apparaten | Bytes | Average
 Ja | Microsoft.Devices/IotHubs | d2c.twin.read.success | Geslaagde dubbele Lees bewerkingen van apparaten | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | D2C. dubbele. update. failure | Mislukte dubbele updates van apparaten | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | D2C. dubbele. update. grootte | Grootte van dubbele updates van apparaten | Bytes | Average
@@ -707,20 +720,20 @@ Ja | Microsoft.Devices/IotHubs | dailyMessageQuotaUsed | Totaal aantal gebruikte
 Ja | Microsoft.Devices/IotHubs | deviceDataUsage | Totale hoeveelheid gegevens gebruik van apparaat | Bytes | Totaal
 Ja | Microsoft.Devices/IotHubs | deviceDataUsageV2 | Totaal gebruik van apparaatgegevens (preview-versie) | Bytes | Totaal
 Ja | Microsoft.Devices/IotHubs | devices.connectedDevices.allProtocol | Verbonden apparaten (afgeschaft)  | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | devices.totalDevices | Alle apparaten (afgeschaft) | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | devices.totalDevices | Totaal aantal apparaten (afgeschaft) | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | EventGridDeliveries | Event Grid leveringen (preview-versie) | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | EventGridLatency | Event Grid latentie (preview-versie) | Milliseconden | Average
-Ja | Microsoft.Devices/IotHubs | jobs.cancelJob.failure | Mislukte taakannuleringen | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | jobs.cancelJob.failure | Mislukte taak annuleringen | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | jobs.cancelJob.success | Voltooide taak annuleringen | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | Jobs. voltooid | Voltooide taken | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | jobs.createDirectMethodJob.failure | Mislukte bewerkingen voor het maken van taken voor het aanroepen van methode | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | jobs.createDirectMethodJob.failure | Kan geen aanroepen van methode aanroep taken uitvoeren | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | jobs.createDirectMethodJob.success | Geslaagde creatie van methode aanroep taken | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | jobs.createTwinUpdateJob.failure | Mislukte bewerkingen voor het maken van dubbele taken voor bijwerken | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | jobs.createTwinUpdateJob.failure | Kan geen dubbele update taken uitvoeren | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | jobs.createTwinUpdateJob.success | Geslaagde creatie van dubbele update taken | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | Jobs. mislukt | Mislukte taken | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | jobs.listJobs.failure | Mislukte aanroepen naar taken op de lijst | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | jobs.listJobs.failure | Mislukte aanroepen naar lijst taken | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | jobs.listJobs.success | Geslaagde aanroepen naar lijst taken | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | jobs.queryJobs.failure | Mislukte taakquery's | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | jobs.queryJobs.failure | Mislukte taak query's | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | jobs.queryJobs.success | Geslaagde taak query's | Aantal | Totaal
 Nee | Microsoft.Devices/IotHubs | totalDeviceCount | Totaal aantal apparaten (preview-versie) | Aantal | Average
 Ja | Microsoft.Devices/IotHubs | twinQueries.failure | Mislukte dubbele query's | Aantal | Totaal
@@ -729,7 +742,7 @@ Ja | Microsoft.Devices/IotHubs | twinQueries.success | Geslaagde dubbele query's
 Ja | Microsoft.Devices/provisioningServices | AttestationAttempts | Attestation-pogingen | Aantal | Totaal
 Ja | Microsoft.Devices/provisioningServices | DeviceAssignments | Apparaten toegewezen | Aantal | Totaal
 Ja | Microsoft.Devices/provisioningServices | RegistrationAttempts | Registratie pogingen | Aantal | Totaal
-Nee | Microsoft.DocumentDB/databaseAccounts | AvailableStorage | Beschikbare opslag | Bytes | Totaal
+Nee | Microsoft.DocumentDB/databaseAccounts | AvailableStorage | Beschik bare opslag | Bytes | Totaal
 Nee | Microsoft.DocumentDB/databaseAccounts | CassandraConnectionClosures | Cassandra-verbinding sluiten | Aantal | Totaal
 Nee | Microsoft.DocumentDB/databaseAccounts | CassandraRequestCharges | Kosten voor Cassandra-aanvragen | Aantal | Totaal
 Nee | Microsoft.DocumentDB/databaseAccounts | CassandraRequests | Cassandra aanvragen | Aantal | Aantal
@@ -751,8 +764,8 @@ Ja | Microsoft.DocumentDB/databaseAccounts | ReplicationLatency | P99-replicatie
 Nee | Microsoft.DocumentDB/databaseAccounts | ServiceAvailability | Service beschikbaarheid | Procent | Average
 Ja | Microsoft.DocumentDB/databaseAccounts | TotalRequests | Totaal aantal aanvragen | Aantal | Aantal
 Ja | Microsoft.DocumentDB/databaseAccounts | TotalRequestUnits | Totaal aantal aanvraag eenheden | Aantal | Totaal
-Nee | Micro soft. EnterpriseKnowledgeGraph/Services | FailureCount | Aantal mislukt | Aantal | Aantal
-Nee | Micro soft. EnterpriseKnowledgeGraph/Services | SuccessCount | Aantal geslaagd | Aantal | Aantal
+Nee | Micro soft. EnterpriseKnowledgeGraph/Services | FailureCount | Aantal fouten | Aantal | Aantal
+Nee | Micro soft. EnterpriseKnowledgeGraph/Services | SuccessCount | Aantal geslaagde pogingen | Aantal | Aantal
 Nee | Micro soft. EnterpriseKnowledgeGraph/Services | SuccessLatency | Geslaagde latentie | MilliSeconds | Average
 Nee | Micro soft. EnterpriseKnowledgeGraph/Services | TransactionCount | Aantal trans acties | Aantal | Aantal
 Ja | Micro soft. EventGrid/domeinen | DeadLetteredCount | Gebeurtenissen met onbestelbare berichten | Aantal | Totaal
@@ -842,7 +855,7 @@ Ja | Microsoft.Insights/Components | availabilityResults/availabilityPercentage 
 Nee | Microsoft.Insights/Components | availabilityResults/aantal | Beschikbaarheidstests | Aantal | Aantal
 Ja | Microsoft.Insights/Components | availabilityResults/duur | Duur beschikbaarheids test | MilliSeconds | Average
 Ja | Microsoft.Insights/Components | browserTimings/networkDuration | Netwerk verbindings tijd voor laden van pagina | MilliSeconds | Average
-Ja | Microsoft.Insights/Components | browserTimings/processingDuration | Verwerkingstijd client | MilliSeconds | Average
+Ja | Microsoft.Insights/Components | browserTimings/processingDuration | Verwerkings tijd van client | MilliSeconds | Average
 Ja | Microsoft.Insights/Components | browserTimings/receiveDuration | Reactie tijd van ontvangst | MilliSeconds | Average
 Ja | Microsoft.Insights/Components | browserTimings/sendDuration | Aanvraag tijd verzenden | MilliSeconds | Average
 Ja | Microsoft.Insights/Components | browserTimings/totalDuration | Laad tijd van browser pagina | MilliSeconds | Average
@@ -864,10 +877,10 @@ Ja | Microsoft.Insights/Components | performanceCounters/requestExecutionTime | 
 Ja | Microsoft.Insights/Components | Performance Counters/requestsInQueue | HTTP-aanvragen in de toepassings wachtrij | Aantal | Average
 Ja | Microsoft.Insights/Components | performanceCounters/requestsPerSecond | Frequentie van HTTP-aanvragen | CountPerSecond | Average
 Nee | Microsoft.Insights/Components | aanvragen/aantal | Server aanvragen | Aantal | Aantal
-Ja | Microsoft.Insights/Components | aanvragen/duur | Serverreactietijd | MilliSeconds | Average
+Ja | Microsoft.Insights/Components | aanvragen/duur | Server reactietijd | MilliSeconds | Average
 Nee | Microsoft.Insights/Components | aanvragen/mislukt | Mislukte aanvragen | Aantal | Aantal
 Nee | Microsoft.Insights/Components | aanvragen/frequentie | Aantal server aanvragen | CountPerSecond | Average
-Ja | Microsoft.Insights/Components | traceringen/aantal | Traces | Aantal | Aantal
+Ja | Microsoft.Insights/Components | traceringen/aantal | Traceringen | Aantal | Aantal
 Ja | Microsoft.KeyVault/vaults | ServiceApiHit | Totaal aantal treffers in de service-API | Aantal | Aantal
 Ja | Microsoft.KeyVault/vaults | ServiceApiLatency | Algehele latentie van Service-API | Milliseconden | Average
 Ja | Microsoft.KeyVault/vaults | ServiceApiResult | Totale resultaten van Service-API | Aantal | Aantal
@@ -961,7 +974,7 @@ Ja | Microsoft.Logic/workflows | TriggerThrottledEvents | Trigger beperkings geb
 Ja | Microsoft.MachineLearningServices/workspaces | Actieve kernen | Actieve kernen | Aantal | Average
 Ja | Microsoft.MachineLearningServices/workspaces | Actieve knoop punten | Actieve knoop punten | Aantal | Average
 Ja | Microsoft.MachineLearningServices/workspaces | Voltooide uitvoeringen | Voltooide uitvoeringen | Aantal | Totaal
-Ja | Microsoft.MachineLearningServices/workspaces | Mislukte verwerkingen | Mislukte verwerkingen | Aantal | Totaal
+Ja | Microsoft.MachineLearningServices/workspaces | Mislukte uitvoeringen | Mislukte uitvoeringen | Aantal | Totaal
 Ja | Microsoft.MachineLearningServices/workspaces | Niet-actieve kernen | Niet-actieve kernen | Aantal | Average
 Ja | Microsoft.MachineLearningServices/workspaces | Niet-actieve knoop punten | Niet-actieve knoop punten | Aantal | Average
 Ja | Microsoft.MachineLearningServices/workspaces | Kernen verlaten | Kernen verlaten | Aantal | Average
@@ -1101,21 +1114,21 @@ Ja | Microsoft.Network/networkWatchers/connectionMonitors | ChecksFailedPercent 
 Ja | Microsoft.Network/networkWatchers/connectionMonitors | ProbesFailedPercent | % Tests mislukt | Procent | Average
 Ja | Microsoft.Network/networkWatchers/connectionMonitors | RoundTripTimeMs | Retour tijd (MS) (preview-versie) | MilliSeconds | Average
 Ja | Microsoft.Network/publicIPAddresses | ByteCount | Aantal bytes | Aantal | Totaal
-Ja | Microsoft.Network/publicIPAddresses | BytesDroppedDDoS | Verwijderde binnenkomende bytes DDoS | BytesPerSecond | Maximum
+Ja | Microsoft.Network/publicIPAddresses | BytesDroppedDDoS | Binnenkomende bytes verloren DDoS | BytesPerSecond | Maximum
 Ja | Microsoft.Network/publicIPAddresses | BytesForwardedDDoS | Doorgestuurde binnenkomende bytes DDoS | BytesPerSecond | Maximum
 Ja | Microsoft.Network/publicIPAddresses | BytesInDDoS | Binnenkomende bytes DDoS | BytesPerSecond | Maximum
-Ja | Microsoft.Network/publicIPAddresses | DDoSTriggerSYNPackets | Binnenkomende SYN-pakketten om DDoS-beperking te activeren | CountPerSecond | Maximum
+Ja | Microsoft.Network/publicIPAddresses | DDoSTriggerSYNPackets | Inkomende SYN-pakketten om DDoS-beperking te activeren | CountPerSecond | Maximum
 Ja | Microsoft.Network/publicIPAddresses | DDoSTriggerTCPPackets | Binnenkomende TCP-pakketten om DDoS-beperking te activeren | CountPerSecond | Maximum
 Ja | Microsoft.Network/publicIPAddresses | DDoSTriggerUDPPackets | Binnenkomende UDP-pakketten om DDoS-beperking te activeren | CountPerSecond | Maximum
 Ja | Microsoft.Network/publicIPAddresses | IfUnderDDoSAttack | Onder DDoS-aanval of niet | Aantal | Maximum
 Ja | Microsoft.Network/publicIPAddresses | PacketCount | Aantal pakketten | Aantal | Totaal
-Ja | Microsoft.Network/publicIPAddresses | PacketsDroppedDDoS | Verwijderde binnenkomende pakketten DDoS | CountPerSecond | Maximum
-Ja | Microsoft.Network/publicIPAddresses | PacketsForwardedDDoS | Doorgestuurde binnenkomende pakketten DDoS | CountPerSecond | Maximum
-Ja | Microsoft.Network/publicIPAddresses | PacketsInDDoS | Binnenkomende pakketten DDoS | CountPerSecond | Maximum
+Ja | Microsoft.Network/publicIPAddresses | PacketsDroppedDDoS | DDoS inkomende pakketten verwijderd | CountPerSecond | Maximum
+Ja | Microsoft.Network/publicIPAddresses | PacketsForwardedDDoS | DDoS inkomende pakketten doorgestuurd | CountPerSecond | Maximum
+Ja | Microsoft.Network/publicIPAddresses | PacketsInDDoS | DDoS inkomende pakketten | CountPerSecond | Maximum
 Ja | Microsoft.Network/publicIPAddresses | SynCount | SYN-aantal | Aantal | Totaal
 Ja | Microsoft.Network/publicIPAddresses | TCPBytesDroppedDDoS | DDoS binnenkomende TCP-bytes | BytesPerSecond | Maximum
 Ja | Microsoft.Network/publicIPAddresses | TCPBytesForwardedDDoS | DDoS doorgestuurde binnenkomende TCP-bytes | BytesPerSecond | Maximum
-Ja | Microsoft.Network/publicIPAddresses | TCPBytesInDDoS | Binnenkomende TCP-bytes DDoS | BytesPerSecond | Maximum
+Ja | Microsoft.Network/publicIPAddresses | TCPBytesInDDoS | DDoS binnenkomende TCP-bytes | BytesPerSecond | Maximum
 Ja | Microsoft.Network/publicIPAddresses | TCPPacketsDroppedDDoS | DDoS binnenkomende TCP-pakketten | CountPerSecond | Maximum
 Ja | Microsoft.Network/publicIPAddresses | TCPPacketsForwardedDDoS | Doorgestuurde binnenkomende TCP-pakketten DDoS | CountPerSecond | Maximum
 Ja | Microsoft.Network/publicIPAddresses | TCPPacketsInDDoS | Binnenkomende TCP-pakketten DDoS | CountPerSecond | Maximum
@@ -1247,9 +1260,9 @@ Ja | Microsoft.OperationalInsights/workspaces | Average_Free fysiek geheugen | V
 Ja | Microsoft.OperationalInsights/workspaces | Average_Free ruimte in wissel geheugen bestanden | Vrije ruimte in wissel geheugen bestanden | Aantal | Average
 Ja | Microsoft.OperationalInsights/workspaces | Virtueel geheugen Average_Free | Vrij virtueel geheugen | Aantal | Average
 Ja | Microsoft.OperationalInsights/workspaces | Average_Logical schijf bytes per seconde | Logische schijf Bytes per seconde | Aantal | Average
-Ja | Microsoft.OperationalInsights/workspaces | Average_Page Lees bewerkingen per seconde | paginaleesbewerkingen per seconde | Aantal | Average
-Ja | Microsoft.OperationalInsights/workspaces | Average_Page schrijf bewerkingen per seconde | paginaschrijfbewerkingen per seconde | Aantal | Average
-Ja | Microsoft.OperationalInsights/workspaces | Average_Pages/sec. | pagina's per seconde | Aantal | Average
+Ja | Microsoft.OperationalInsights/workspaces | Average_Page Lees bewerkingen per seconde | Gelezen pagina's per seconde | Aantal | Average
+Ja | Microsoft.OperationalInsights/workspaces | Average_Page schrijf bewerkingen per seconde | Geschreven pagina's per seconde | Aantal | Average
+Ja | Microsoft.OperationalInsights/workspaces | Average_Pages/sec. | Pagina's per seconde | Aantal | Average
 Ja | Microsoft.OperationalInsights/workspaces | Beschermde tijd van Average_Pct | Pct-geprivilegieerde tijd | Aantal | Average
 Ja | Microsoft.OperationalInsights/workspaces | Gebruikers tijd van Average_Pct | Pct-gebruikers tijd | Aantal | Average
 Ja | Microsoft.OperationalInsights/workspaces | Average_Physical schijf bytes per seconde | Bytes van fysieke schijf per seconde | Aantal | Average
@@ -1271,11 +1284,11 @@ Ja | Microsoft.OperationalInsights/workspaces | Average_Used geheugen MB | Gebru
 Ja | Microsoft.OperationalInsights/workspaces | Average_Users | Gebruikers | Aantal | Average
 Ja | Microsoft.OperationalInsights/workspaces | Average_Virtual gedeeld geheugen | Virtueel gedeeld geheugen | Aantal | Average
 Ja | Microsoft.OperationalInsights/workspaces | Gebeurtenis | Gebeurtenis | Aantal | Average
-Ja | Microsoft.OperationalInsights/workspaces | Hartslag | Hartslag | Aantal | Totaal
+Ja | Microsoft.OperationalInsights/workspaces | Hart | Hart | Aantal | Totaal
 Ja | Microsoft.OperationalInsights/workspaces | Update | Update | Aantal | Average
 Ja | Micro soft. PowerBIDedicated/capaciteiten | memory_metric | Geheugen | Bytes | Average
 Ja | Micro soft. PowerBIDedicated/capaciteiten | memory_thrashing_metric | Geheugen overbelasting (gegevens sets) | Procent | Average
-Ja | Micro soft. PowerBIDedicated/capaciteiten | qpu_high_utilization_metric | Hoog QPU-gebruik | Aantal | Totaal
+Ja | Micro soft. PowerBIDedicated/capaciteiten | qpu_high_utilization_metric | Hoog gebruik van QPU | Aantal | Totaal
 Ja | Micro soft. PowerBIDedicated/capaciteiten | QueryDuration | Query duur (gegevens sets) | Milliseconden | Average
 Ja | Micro soft. PowerBIDedicated/capaciteiten | QueryPoolJobQueueLength | Wachtrij lengte van de taak pool voor query's (gegevens sets) | Aantal | Average
 Nee | Micro soft. relay/naam ruimten | ActiveConnections | ActiveConnections | Aantal | Totaal
@@ -1304,7 +1317,7 @@ Ja | Microsoft.ServiceBus/namespaces | IncomingMessages | Inkomende berichten | 
 Ja | Microsoft.ServiceBus/namespaces | IncomingRequests | Binnenkomende aanvragen | Aantal | Totaal
 Nee | Microsoft.ServiceBus/namespaces | Berichten | Aantal berichten in een wachtrij/onderwerp. | Aantal | Average
 Nee | Microsoft.ServiceBus/namespaces | NamespaceCpuUsage | CPU | Procent | Maximum
-Nee | Microsoft.ServiceBus/namespaces | NamespaceMemoryUsage | Geheugengebruik | Procent | Maximum
+Nee | Microsoft.ServiceBus/namespaces | NamespaceMemoryUsage | Geheugen gebruik | Procent | Maximum
 Ja | Microsoft.ServiceBus/namespaces | OutgoingMessages | Uitgaande berichten | Aantal | Totaal
 Nee | Microsoft.ServiceBus/namespaces | ScheduledMessages | Aantal geplande berichten in een wachtrij/onderwerp. | Aantal | Average
 Nee | Microsoft.ServiceBus/namespaces | ServerErrors | Server fouten. | Aantal | Totaal
@@ -1415,7 +1428,7 @@ Nee | Microsoft.Storage/storageAccounts/blobServices | BlobCapacity | Blobcapaci
 Nee | Microsoft.Storage/storageAccounts/blobServices | BlobCount | Aantal blobs | Aantal | Average
 Ja | Microsoft.Storage/storageAccounts/blobServices | ContainerCount | Aantal blobcontainers | Aantal | Average
 Ja | Microsoft.Storage/storageAccounts/blobServices | Uitgaand verkeer | Uitgaand verkeer | Bytes | Totaal
-Nee | Microsoft.Storage/storageAccounts/blobServices | IndexCapacity | Indexcapaciteit | Bytes | Average
+Nee | Microsoft.Storage/storageAccounts/blobServices | IndexCapacity | Index capaciteit | Bytes | Average
 Ja | Microsoft.Storage/storageAccounts/blobServices | Binnenkomend | Binnenkomend | Bytes | Totaal
 Ja | Microsoft.Storage/storageAccounts/blobServices | SuccessE2ELatency | Geslaagde E2E-latentie | Milliseconden | Average
 Ja | Microsoft.Storage/storageAccounts/blobServices | SuccessServerLatency | Geslaagde serverlatentie | Milliseconden | Average
@@ -1526,9 +1539,9 @@ Ja | Microsoft.VMwareCloudSimple/virtualMachines | NetworkOutBytesPerSecond | Ne
 Ja | Microsoft.VMwareCloudSimple/virtualMachines | Percentage CPU | Percentage CPU | Procent | Average
 Ja | Microsoft.VMwareCloudSimple/virtualMachines | PercentageCpuReady | Percentage CPU gereed | Milliseconden | Totaal
 Ja | Microsoft.Web/hostingEnvironments/multiRolePools | ActiveRequests | Actieve aanvragen | Aantal | Totaal
-Ja | Microsoft.Web/hostingEnvironments/multiRolePools | AverageResponseTime | Gemiddelde reactietijd | Seconden | Average
-Ja | Microsoft.Web/hostingEnvironments/multiRolePools | BytesReceived | Inkomende gegevens | Bytes | Totaal
-Ja | Microsoft.Web/hostingEnvironments/multiRolePools | BytesSent | Uitgaande gegevens | Bytes | Totaal
+Ja | Microsoft.Web/hostingEnvironments/multiRolePools | AverageResponseTime | Gemiddelde reactie tijd | Seconden | Average
+Ja | Microsoft.Web/hostingEnvironments/multiRolePools | BytesReceived | Gegevens in | Bytes | Totaal
+Ja | Microsoft.Web/hostingEnvironments/multiRolePools | BytesSent | Gegevens uit | Bytes | Totaal
 Ja | Microsoft.Web/hostingEnvironments/multiRolePools | CpuPercentage | CPU-percentage | Procent | Average
 Ja | Microsoft.Web/hostingEnvironments/multiRolePools | DiskQueueLength | Wachtrij lengte voor schijf | Aantal | Average
 Ja | Microsoft.Web/hostingEnvironments/multiRolePools | Http101 | Http 101 | Aantal | Totaal
@@ -1552,8 +1565,8 @@ Ja | Microsoft.Web/hostingEnvironments/workerPools | MemoryPercentage | Geheugen
 Ja | Microsoft.Web/hostingEnvironments/workerPools | WorkersAvailable | Beschik bare werk nemers | Aantal | Average
 Ja | Microsoft.Web/hostingEnvironments/workerPools | WorkersTotal | Totaal aantal werk rollen | Aantal | Average
 Ja | Microsoft.Web/hostingEnvironments/workerPools | WorkersUsed | Gebruikte werk rollen | Aantal | Average
-Ja | Microsoft.Web/serverfarms | BytesReceived | Inkomende gegevens | Bytes | Totaal
-Ja | Microsoft.Web/serverfarms | BytesSent | Uitgaande gegevens | Bytes | Totaal
+Ja | Microsoft.Web/serverfarms | BytesReceived | Gegevens in | Bytes | Totaal
+Ja | Microsoft.Web/serverfarms | BytesSent | Gegevens uit | Bytes | Totaal
 Ja | Microsoft.Web/serverfarms | CpuPercentage | CPU-percentage | Procent | Average
 Ja | Microsoft.Web/serverfarms | DiskQueueLength | Wachtrij lengte voor schijf | Aantal | Average
 Ja | Microsoft.Web/serverfarms | HttpQueueLength | Lengte van http-wachtrij | Aantal | Average
@@ -1569,9 +1582,9 @@ Ja | Microsoft.Web/serverfarms | TcpSynSent | TCP SYN verzonden | Aantal | Avera
 Ja | Microsoft.Web/serverfarms | TcpTimeWait | Wacht tijd voor TCP-bewerking | Aantal | Average
 Ja | Microsoft.Web/sites | AppConnections | Verbindingen | Aantal | Average
 Ja | Microsoft.Web/sites | AverageMemoryWorkingSet | Gemiddelde werkset geheugen | Bytes | Average
-Ja | Microsoft.Web/sites | AverageResponseTime | Gemiddelde reactietijd | Seconden | Average
-Ja | Microsoft.Web/sites | BytesReceived | Inkomende gegevens | Bytes | Totaal
-Ja | Microsoft.Web/sites | BytesSent | Uitgaande gegevens | Bytes | Totaal
+Ja | Microsoft.Web/sites | AverageResponseTime | Gemiddelde reactie tijd | Seconden | Average
+Ja | Microsoft.Web/sites | BytesReceived | Gegevens in | Bytes | Totaal
+Ja | Microsoft.Web/sites | BytesSent | Gegevens uit | Bytes | Totaal
 Ja | Microsoft.Web/sites | CpuTime | CPU-tijd | Seconden | Totaal
 Ja | Microsoft.Web/sites | CurrentAssemblies | Huidige Assembly's | Aantal | Average
 Ja | Microsoft.Web/sites | FunctionExecutionCount | Aantal functie-uitvoeringen | Aantal | Totaal
@@ -1597,18 +1610,18 @@ Ja | Microsoft.Web/sites | IoReadBytesPerSecond | I/o gelezen bytes per seconde 
 Ja | Microsoft.Web/sites | IoReadOperationsPerSecond | I/o-Lees bewerkingen per seconde | BytesPerSecond | Totaal
 Ja | Microsoft.Web/sites | IoWriteBytesPerSecond | I/o-schrijf bewerkingen in bytes per seconde | BytesPerSecond | Totaal
 Ja | Microsoft.Web/sites | IoWriteOperationsPerSecond | I/o-schrijf bewerkingen per seconde | BytesPerSecond | Totaal
-Ja | Microsoft.Web/sites | MemoryWorkingSet | Geheugenwerkset | Bytes | Average
-Ja | Microsoft.Web/sites | PrivateBytes | Eigen Bytes | Bytes | Average
+Ja | Microsoft.Web/sites | MemoryWorkingSet | Werkset geheugen | Bytes | Average
+Ja | Microsoft.Web/sites | PrivateBytes | Privé-bytes | Bytes | Average
 Ja | Microsoft.Web/sites | Aanvragen | Aanvragen | Aantal | Totaal
 Ja | Microsoft.Web/sites | RequestsInApplicationQueue | Aanvragen in de wachtrij van de toepassing | Aantal | Average
-Ja | Microsoft.Web/sites | Threads | Aantal threads | Aantal | Average
+Ja | Microsoft.Web/sites | Lijnen | Aantal threads | Aantal | Average
 Ja | Microsoft.Web/sites | TotalAppDomains | Totaal aantal app-domeinen | Aantal | Average
 Ja | Microsoft.Web/sites | TotalAppDomainsUnloaded | Totaal aantal verwijderde app-domeinen | Aantal | Average
 Ja | Microsoft.Web/sites/slots | AppConnections | Verbindingen | Aantal | Average
 Ja | Microsoft.Web/sites/slots | AverageMemoryWorkingSet | Gemiddelde werkset geheugen | Bytes | Average
-Ja | Microsoft.Web/sites/slots | AverageResponseTime | Gemiddelde reactietijd | Seconden | Average
-Ja | Microsoft.Web/sites/slots | BytesReceived | Inkomende gegevens | Bytes | Totaal
-Ja | Microsoft.Web/sites/slots | BytesSent | Uitgaande gegevens | Bytes | Totaal
+Ja | Microsoft.Web/sites/slots | AverageResponseTime | Gemiddelde reactie tijd | Seconden | Average
+Ja | Microsoft.Web/sites/slots | BytesReceived | Gegevens in | Bytes | Totaal
+Ja | Microsoft.Web/sites/slots | BytesSent | Gegevens uit | Bytes | Totaal
 Ja | Microsoft.Web/sites/slots | CpuTime | CPU-tijd | Seconden | Totaal
 Ja | Microsoft.Web/sites/slots | CurrentAssemblies | Huidige Assembly's | Aantal | Average
 Ja | Microsoft.Web/sites/slots | FunctionExecutionCount | Aantal functie-uitvoeringen | Aantal | Totaal
@@ -1634,10 +1647,10 @@ Ja | Microsoft.Web/sites/slots | IoReadBytesPerSecond | I/o gelezen bytes per se
 Ja | Microsoft.Web/sites/slots | IoReadOperationsPerSecond | I/o-Lees bewerkingen per seconde | BytesPerSecond | Totaal
 Ja | Microsoft.Web/sites/slots | IoWriteBytesPerSecond | I/o-schrijf bewerkingen in bytes per seconde | BytesPerSecond | Totaal
 Ja | Microsoft.Web/sites/slots | IoWriteOperationsPerSecond | I/o-schrijf bewerkingen per seconde | BytesPerSecond | Totaal
-Ja | Microsoft.Web/sites/slots | MemoryWorkingSet | Geheugenwerkset | Bytes | Average
-Ja | Microsoft.Web/sites/slots | PrivateBytes | Eigen Bytes | Bytes | Average
+Ja | Microsoft.Web/sites/slots | MemoryWorkingSet | Werkset geheugen | Bytes | Average
+Ja | Microsoft.Web/sites/slots | PrivateBytes | Privé-bytes | Bytes | Average
 Ja | Microsoft.Web/sites/slots | Aanvragen | Aanvragen | Aantal | Totaal
 Ja | Microsoft.Web/sites/slots | RequestsInApplicationQueue | Aanvragen in de wachtrij van de toepassing | Aantal | Average
-Ja | Microsoft.Web/sites/slots | Threads | Aantal threads | Aantal | Average
+Ja | Microsoft.Web/sites/slots | Lijnen | Aantal threads | Aantal | Average
 Ja | Microsoft.Web/sites/slots | TotalAppDomains | Totaal aantal app-domeinen | Aantal | Average
 Ja | Microsoft.Web/sites/slots | TotalAppDomainsUnloaded | Totaal aantal verwijderde app-domeinen | Aantal | Average

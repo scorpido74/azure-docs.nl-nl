@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: e7770a3faef0ccf7ca0f5b8c56f98007b8d89436
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 52d8dda8b543e5bdf3ca88ae3784df65be3a2ba1
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719837"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962940"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -36,6 +36,13 @@ Als u wilt bijhouden met de meest recente ontwikkelingen, vindt in dit artikel u
 
 Zie voor meer informatie [migratie richtlijnen voor het overstappen van Media Services versie 2 tot v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="january-2020"></a>Januari 2020
+
+### <a name="improvements-in-media-processors"></a>Verbeteringen in Media-processors
+
+- Verbeterde ondersteuning voor geïnterlinieerde bronnen in video analyse: dergelijke inhoud wordt nu niet-geïnterlinieerd voordat ze worden verzonden naar interferentie-engines.
+- Wanneer u miniaturen genereert met de ' beste ' modus, zoekt het coderings programma nu meer dan 30 seconden om een frame te selecteren dat niet Monochromatic is.
+ 
 ## <a name="november-2019"></a>November 2019
 
 ### <a name="live-transcription-preview"></a>Live transcriptie preview
