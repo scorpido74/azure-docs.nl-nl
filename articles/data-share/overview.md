@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: d1665ef3e845491f116174cf1914c38e7cf5c691
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d1bfad64175ad5b29e4ec158ebe8d8e982b8b100
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660797"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964444"
 ---
 # <a name="what-is-azure-data-share"></a>Wat is Azure Data Share?
 
@@ -37,7 +37,7 @@ Een ander gebruiks voorbeeld voor een Azure-gegevens share is het maken van een 
 
 ## <a name="how-it-works"></a>Het werkt als volgt
 
-Azure data share biedt momenteel delen op basis van moment opnamen en in-place delen (in beperkte preview-versie). 
+Azure data share biedt momenteel delen op basis van moment opnamen en in-place delen. 
 
 Bij het delen op basis van moment opnamen worden gegevens verplaatst van het Azure-abonnement en de lands van de gegevens provider in het Azure-abonnement van de gegevens consument. Als gegevens provider kunt u een gegevens share inrichten en ontvangers uitnodigen voor de gegevens share. Gegevens gebruikers ontvangen via e-mail een uitnodiging voor uw gegevens share. Zodra een gegevens verbruiker de uitnodiging heeft geaccepteerd, kunnen ze een volledige moment opname van de gegevens die met hen zijn gedeeld, activeren. Deze gegevens worden ontvangen in het opslag account van de data consumers. Gegevens gebruikers kunnen regel matige, incrementele updates ontvangen van de gegevens die met hen worden gedeeld, zodat ze altijd over de meest recente versie van de gegevens beschikken. 
 
@@ -47,7 +47,7 @@ Gegevens providers kunnen hun klanten incrementele updates bieden voor de gegeve
 
 Wanneer een gegevens verbruiker een gegevens share accepteert, kunnen ze de gegevens in een gegevens archief van hun keuze ontvangen. Als de gegevens provider bijvoorbeeld gegevens deelt met Azure Blob Storage, kan de gegevens verbruiker deze gegevens in Azure Data Lake Store ontvangen. En als de gegevens provider gegevens deelt van een Azure SQL Data Warehouse, kan de gegevens verbruiker kiezen of ze de gegevens willen ontvangen in een Azure Data Lake Store, een Azure SQL Database of een Azure SQL Data Warehouse. In het geval van delen van bronnen op basis van SQL kan de gebruiker van gegevens ook kiezen of ze gegevens in Parquet of CSV ontvangen. 
 
-In-place delen is momenteel een beperkte preview voor Azure Data Explorer. Gegevens providers kunnen gegevens delen waar ze zich bevinden, zonder dat er gegevens worden verplaatst via een symbolische koppeling. Meld u aan voor de beperkte preview-versie van Azure Data Explorer in- [Place delen.](https://aka.ms/azuredatasharepreviewsignup) 
+Met het in-place delen kunnen gegevens providers gegevens delen waar ze zich bevinden zonder de gegevens te kopiëren. Nadat het delen van de relatie tot stand is gebracht via de uitnodigings stroom, wordt er een symbolische koppeling gemaakt tussen het brongegevens archief van de gegevens provider en het doel gegevens archief van de gegevens verbruiker. Gegevens verbruiker kan de gegevens in realtime lezen en er query's op uitvoeren met behulp van de eigen gegevens opslag. Wijzigingen in de brongegevens opslag zijn direct beschikbaar voor de gegevens verbruiker. In-place delen is momenteel beschikbaar als Preview voor Azure Data Explorer.
 
 ## <a name="key-capabilities"></a>Belangrijkste mogelijkheden
 
@@ -56,6 +56,8 @@ Met Azure data share kunnen gegevens providers het volgende:
 * Gegevens uit de lijst met [ondersteunde gegevens archieven](supported-data-stores.md) delen met klanten en partners buiten uw organisatie
 
 * Bijhouden wie u uw gegevens hebt gedeeld met
+
+* Keuze van moment opname of in-place delen
 
 * Hoe vaak uw gegevens gebruikers updates ontvangen van uw gegevens
 
@@ -69,13 +71,13 @@ Met Azure data share kunnen gegevens gebruikers het volgende doen:
 
 * Een uitnodiging voor een Azure-gegevens share accepteren of afwijzen
 
-* Een volledige of incrementele moment opname activeren van een gegevens share die een organisatie met u heeft gedeeld
-
-* Abonneer u op een gegevens share om de nieuwste kopie van de gegevens te ontvangen via een incrementele kopie van de moment opname
-
 * Gegevens die met u zijn gedeeld, accepteren in een [ondersteund gegevens archief](supported-data-stores.md).
 
-Alle belang rijke mogelijkheden die hierboven worden vermeld, worden ondersteund via Azure of via REST Api's. Raadpleeg onze referentie documentatie voor meer informatie over het gebruik van Azure data share via REST Api's. 
+* Een volledige of incrementele moment opname activeren van een gegevens share die een organisatie met u heeft gedeeld
+
+* Abonneren op een gegevens share om de meest recente kopie van de gegevens te ontvangen via een incrementele moment opname
+
+Alle belang rijke mogelijkheden die hierboven worden vermeld, worden ondersteund via de Azure Portal of via REST Api's. Raadpleeg onze referentie documentatie voor meer informatie over het gebruik van Azure data share via REST Api's. 
 
 ## <a name="security"></a>Beveiliging
 
@@ -88,9 +90,9 @@ Azure data share maakt gebruik van beheerde identiteiten voor Azure-resources (v
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 
-Raadpleeg de pagina met [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=data-share/) en zoek naar Azure data share voor een lijst met Azure-regio's waarmee de Azure-gegevens share beschikbaar wordt gemaakt. 
+Raadpleeg de pagina met [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=data-share) en zoek naar Azure data share voor een lijst met Azure-regio's waarmee de Azure-gegevens share beschikbaar wordt gemaakt. 
 
-De gegevens van een Azure-gegevens share worden niet opgeslagen. De gegevens worden opgeslagen in het onderliggende gegevens archief dat wordt gedeeld. Als een gegevens producent bijvoorbeeld hun gegevens opslaat in een Azure Data Lake Store account dat zich in VS West bevindt, waar de gegevens zijn opgeslagen. Als ze gegevens delen met een Azure Storage-account dat zich in Europa-west bevindt, worden de gegevens rechtstreeks overgedragen naar het Azure Storage-account dat zich in Europa-west bevindt. 
+De Azure-gegevens share slaat geen kopie van de gegevens op. De gegevens worden opgeslagen in het onderliggende gegevens archief dat wordt gedeeld. Als een gegevens producent bijvoorbeeld hun gegevens opslaat in een Azure Data Lake Store account dat zich in VS West bevindt, waar de gegevens zijn opgeslagen. Als ze gegevens delen met een Azure Storage account dat zich in Europa-west bevindt via een moment opname, worden de gegevens doorgaans rechtstreeks overgedragen naar het Azure Storage-account dat zich in Europa-west bevindt.
 
 De Azure data share-service hoeft niet beschikbaar te zijn in uw regio om gebruik te kunnen maken van de service. Als u bijvoorbeeld gegevens hebt opgeslagen in een Azure Storage-account dat zich bevindt in een regio waar Azure data share nog niet beschikbaar is, kunt u de service gebruiken om uw gegevens te delen. 
 
