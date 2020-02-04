@@ -6,14 +6,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 4e2fb81b19694136896b1dee07c3bd74c63fc01b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: a967fdb4b9c742a0ac7f372e5cd7eeb99171a906
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414468"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76966721"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -21,9 +21,22 @@ ms.locfileid: "74414468"
 * [Visual Studio code](https://code.visualstudio.com/) of uw favoriete IDE
 * ID van open bare app: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="get-luis-key"></a>LUIS-sleutel ophalen
+## <a name="create-luis-runtime-key-for-predictions"></a>Een LUIS-runtime sleutel maken voor voor spellingen
 
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Klik [op **Language Understanding** maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+1. Voer alle vereiste instellingen voor de runtime sleutel in:
+
+    |Instelling|Waarde|
+    |--|--|
+    |Name|Gewenste naam (2-64 tekens)|
+    |Abonnement|Selecteer het juiste abonnement|
+    |Locatie|Selecteer een locatie in de buurt en beschik bare locaties|
+    |Prijsniveau|`F0`-de minimale prijs categorie|
+    |Resourcegroep|Een beschik bare resource groep selecteren|
+
+1. Klik op **maken** en wacht tot de resource is gemaakt. Nadat deze is gemaakt, gaat u naar de pagina resource.
+1. Geconfigureerde `endpoint` en een `key`verzamelen.
 
 ## <a name="get-intent-programmatically"></a>De intentie programmatisch ophalen
 
@@ -47,70 +60,72 @@ Gebruik Java om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-predict
     import org.apache.http.client.utils.URIBuilder;
     import org.apache.http.impl.client.HttpClients;
     import org.apache.http.util.EntityUtils;
-    
+
     public class Predict {
-    
-        public static void main(String[] args) 
+
+        public static void main(String[] args)
         {
             HttpClient httpclient = HttpClients.createDefault();
-    
+
             try
             {
-    
+
                 // The ID of a public sample LUIS app that recognizes intents for turning on and off lights
                 String AppId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2";
-                
-                // Add your endpoint key 
+
+                // Add your endpoint key
                 String Key = "YOUR-KEY";
-    
-                // Add your endpoint, example is westus.api.cognitive.microsoft.com
+
+                // Add your endpoint, example is your-resource-name.api.cognitive.microsoft.com
                 String Endpoint = "YOUR-ENDPOINT";
-    
+
                 String Utterance = "turn on all lights";
-    
+
                 // Begin endpoint URL string building
                 URIBuilder endpointURLbuilder = new URIBuilder("https://" + Endpoint + "/luis/prediction/v3.0/apps/" + AppId + "/slots/production/predict?");
-    
+
                 // query string params
                 endpointURLbuilder.setParameter("query", Utterance);
                 endpointURLbuilder.setParameter("subscription-key", Key);
                 endpointURLbuilder.setParameter("show-all-intents", "true");
                 endpointURLbuilder.setParameter("verbose", "true");
-    
+
                 // create URL from string
                 URI endpointURL = endpointURLbuilder.build();
-    
+
                 // create HTTP object from URL
                 HttpGet request = new HttpGet(endpointURL);
-    
+
                 // access LUIS endpoint - analyze text
                 HttpResponse response = httpclient.execute(request);
-    
+
                 // get response
                 HttpEntity entity = response.getEntity();
-    
-    
-                if (entity != null) 
+
+
+                if (entity != null)
                 {
                     System.out.println(EntityUtils.toString(entity));
                 }
             }
-    
+
             catch (Exception e)
             {
                 System.out.println(e.getMessage());
             }
-        }   
-    }    
+        }
+    }
     ```
 
-1. Vervang de volgende waarden:
+1. Vervang de `YOUR-KEY` en `YOUR-ENDPOINT` waarden door uw eigen Voorspellings sleutel en-eind punt.
 
-    * `YOUR-KEY` met uw start sleutel
-    * `YOUR-ENDPOINT` met uw eind punt. Bijvoorbeeld `westus2.api.cognitive.microsoft.com`.
+    |Informatie|Doel|
+    |--|--|
+    |`YOUR-KEY`|Uw 32-teken Voorspellings sleutel.|
+    |`YOUR-ENDPOINT`| Het eind punt voor de voor Spellings-URL. Bijvoorbeeld `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 
-1. Compileer het Java-programma vanaf de opdracht regel: 
+1. Compileer het Java-programma vanaf de opdracht regel:
 
     ```console
     javac -cp ":lib/*" Predict.java
@@ -128,7 +143,7 @@ Gebruik Java om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-predict
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Het JSON-antwoord dat is opgemaakt voor de Lees baarheid: 
+    Het JSON-antwoord dat is opgemaakt voor de Lees baarheid:
 
     ```JSON
     {
@@ -171,13 +186,9 @@ Gebruik Java om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-predict
     }
     ```
 
-## <a name="luis-keys"></a>LUIS-sleutels
-
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
-
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem. 
+Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem.
 
 ## <a name="next-steps"></a>Volgende stappen
 

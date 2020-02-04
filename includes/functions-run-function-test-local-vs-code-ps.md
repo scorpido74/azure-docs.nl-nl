@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/16/2020
 ms.author: glenga
-ms.openlocfilehash: c54145cf48912d3911a39e681d85cb6907be8e52
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 916aa2552e5dd004ec767df98ce7c78f7320efd0
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842145"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964085"
 ---
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
 
@@ -28,11 +28,17 @@ Azure Functions Core Tools integreert met Visual Studio code zodat u een Azure F
     Hello PowerShell
     ```
 
-    U kunt ook de GET-aanvraag uitvoeren vanuit een browser.
+    U kunt ook de GET-aanvraag vanuit een browser uitvoeren via de volgende URL:
 
-    Wanneer u het http trigger-eind punt aanroept zonder een `name` para meter door te geven als query parameter of in de hoofd tekst, retourneert de functie een [http status code]:: onjuiste aanvraag-fout. Wanneer u de code in run. ps1 bekijkt, ziet u dat deze fout wordt veroorzaakt door het ontwerp.
+    <http://localhost:7071/api/HttpExample?name=PowerShell>
 
-1. Als u wilt stoppen met fouten opsporen, drukt u op Shift + F5.
+    Wanneer u het http trigger-eind punt aanroept zonder een `name` para meter door te geven als query parameter of in de hoofd tekst, retourneert de functie een `BadRequest` fout. Wanneer u de code in run. ps1 bekijkt, ziet u dat deze fout wordt veroorzaakt door het ontwerp.
+
+1. Informatie over de aanvraag wordt weer gegeven in het deel venster **Terminal** .
+
+    ![Uitvoering van functies in het Terminal paneel](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
+
+1. Als u het fout opsporingsprogramma wilt stoppen, drukt u op CTRL + C om de kern Hulpprogramma's te stoppen.
 
 Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale computer, is het tijd om het project te publiceren in Azure.
 

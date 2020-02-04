@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: f1553a5c9d55366b2764877b48d0606ff8e0b370
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8c63d314c253152d2815a70831870fe331071c68
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842132"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964088"
 ---
 ## <a name="publish-the-project-to-azure"></a>Het project naar Azure publiceren
 
@@ -21,29 +21,24 @@ In deze sectie maakt u een functie-app en gerelateerde resources in uw Azure-abo
 
 1. Geef de volgende informatie op bij de prompts:
 
-    ::: zone pivot="programming-language-csharp,programming-language-powershell"
+    + **Abonnement selecteren**: Kies het abonnement dat u wilt gebruiken. U ziet deze niet als u slechts één abonnement hebt.
 
-    | Vraag | Waarde | Beschrijving |
-    | ------ | ----- | ----- |
-    | Abonnement selecteren | Uw abonnement | Wordt weer gegeven wanneer u meerdere abonnementen hebt. |
-    | functie-app selecteren in azure | + Nieuwe functie-app maken | Als u in een bestaande functie-app publiceert, wordt de inhoud van die app in Azure overschreven. |
-    | Voer een wereld wijd unieke naam in voor de functie-app | Unieke naam | Geldige tekens voor de naam van en functie-app zijn `a-z`, `0-9` en `-`. |
-    | Selecteer een locatie voor nieuwe resources | Regio | Kies een [regio](https://azure.microsoft.com/regions/) bij u in de buurt. | 
-
+    + **Selecteer functie-app in azure**: Kies `+ Create new Function App` (niet `Advanced`). Dit artikel biedt geen ondersteuning voor de [Geavanceerde publicatie stroom](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options). 
+    
+    >[!IMPORTANT]
+    > Als u in een bestaande functie-app publiceert, wordt de inhoud van die app in Azure overschreven. 
+    
+    + **Voer een globaal unieke naam in voor de functie-app**: Typ een naam die geldig is in een URL-pad. De naam die u typt, wordt gevalideerd om er zeker van te zijn dat deze uniek is in Azure Functions. 
+    
+    ::: zone pivot="programming-language-python"
+    + **Selecteer een runtime**: Kies de versie van python die lokaal wordt uitgevoerd. U kunt de `python --version` opdracht gebruiken om uw versie te controleren.
     ::: zone-end
 
-    ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python"
-
-    | Vraag | Waarde | Beschrijving |
-    | ------ | ----- | ----- |
-    | Abonnement selecteren | Uw abonnement | Wordt weer gegeven wanneer u meerdere abonnementen hebt. |
-    | functie-app selecteren in azure | + Nieuwe functie-app maken | Als u in een bestaande functie-app publiceert, wordt de inhoud van die app in Azure overschreven. |
-    | Voer een wereld wijd unieke naam in voor de functie-app | Unieke naam | Geldige tekens voor de naam van en functie-app zijn `a-z`, `0-9` en `-`. |
-    | Een runtime selecteren | Uw versie | Kies de taal versie die u lokaal uitvoert. |
-    | Selecteer een locatie voor nieuwe resources | Regio | Kies een [regio](https://azure.microsoft.com/regions/) bij u in de buurt. | 
-
+    ::: zone pivot="programming-language-javascript,programming-language-typescript"
+    + **Selecteer een runtime**: Kies de versie van node. js die u lokaal uitvoert. U kunt de `node --version` opdracht gebruiken om uw versie te controleren.
     ::: zone-end
 
+    + **Selecteer een locatie voor nieuwe resources**: Kies voor betere prestaties een [regio](https://azure.microsoft.com/regions/) bij u in de buurt. 
     
 1.  Wanneer dit is voltooid, worden de volgende Azure-resources in uw abonnement gemaakt:
 
@@ -55,10 +50,6 @@ In deze sectie maakt u een functie-app en gerelateerde resources in uw Azure-abo
 
     Nadat de functie-app is gemaakt en het implementatiepakket is toegepast, wordt er een melding weergegeven. 
     
-1. Selecteer **uitvoer weer geven** in deze melding om de resultaten voor het maken en implementeren weer te geven, inclusief de Azure-resources die u hebt gemaakt.
+1. Selecteer **uitvoer weer geven** in deze melding om de resultaten voor het maken en implementeren weer te geven, inclusief de Azure-resources die u hebt gemaakt. Als u de melding mist, selecteert u in de rechter benedenhoek het klok pictogram om het weer te geven.
 
     ![Volledige melding maken](media/functions-publish-project-vscode/function-create-notifications.png)
-
-1. Ga terug naar het gebied **Azure: functions** in de zijbalk en vouw de nieuwe functie-app uit onder uw abonnement. Vouw **functies**uit, klik met de rechter muisknop (Windows) of CTRL + klik (MacOS) op **HttpExample**en kies **functie-URL kopiëren**.
-
-    ![Kopieer de functie-URL voor de nieuwe HTTP-trigger](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)
