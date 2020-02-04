@@ -14,17 +14,17 @@ ms.workload: na
 ms.date: 01/02/2020
 ms.author: banders
 ms.openlocfilehash: ae33d320213cc526710845e78c23a83143a73771
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989902"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Inzicht in Azure Enterprise Agreement-beheerdersrollen in Azure
 
 Voor het beheren van het gebruik en de uitgaven van uw organisatie kunnen Azure-klanten met een Enterprise Agreement (EA) vijf beheerdersrollen toewijzen:
 
-- Ondernemingsbeheerder
+- Zakelijke beheerder
 - Zakelijke beheerder (alleen lezen)
 - Afdelingsbeheerder
 - Afdelingsbeheerder (alleen lezen)
@@ -38,7 +38,7 @@ In de volgende secties worden de beperkingen en mogelijkheden van elke rol besch
 
 |Rol| Gebruikerslimiet|
 |---|---|
-|Ondernemingsbeheerder|Onbeperkt|
+|Zakelijke beheerder|Onbeperkt|
 |Zakelijke beheerder (alleen lezen)|Onbeperkt|
 |Afdelingsbeheerder|Onbeperkt|
 |Afdelingsbeheerder (alleen lezen)|Onbeperkt|
@@ -48,7 +48,7 @@ In de volgende secties worden de beperkingen en mogelijkheden van elke rol besch
 
 ## <a name="organization-structure-and-permissions-by-role"></a>De organisatiestructuur en machtigingen per rol
 
-|Taken| Ondernemingsbeheerder|Zakelijke beheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen)|Accounteigenaar|
+|Taken| Zakelijke beheerder|Zakelijke beheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen)|Accounteigenaar|
 |---|---|---|---|---|---|
 |Zakelijke beheerders weergeven|✔|✔|✘|✘|✘|
 |Zakelijke beheerders toevoegen of verwijderen|✔|✘|✘|✘|✘|
@@ -67,7 +67,7 @@ In de volgende secties worden de beperkingen en mogelijkheden van elke rol besch
 
 ## <a name="usage-and-costs-access-by-role"></a>Toegang tot gebruik en kosten per rol
 
-|Taken| Ondernemingsbeheerder|Zakelijke beheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen) |Accounteigenaar|
+|Taken| Zakelijke beheerder|Zakelijke beheerder (alleen lezen)|Afdelingsbeheerder|Afdelingsbeheerder (alleen lezen) |Accounteigenaar|
 |---|---|---|---|---|---|
 |Tegoedsaldo weergeven, inclusief financiële toezegging|✔|✔|✘|✘|✘|
 |Bestedingsquotum van afdeling weergeven|✔|✔|✘|✘|✘|

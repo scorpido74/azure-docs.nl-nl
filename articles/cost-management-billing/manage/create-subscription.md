@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
 ms.openlocfilehash: 33fa553e9148a1ac838e6bf53fc83cf7eadd7499
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992580"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Een extra Azure-abonnement maken:
@@ -36,11 +36,11 @@ U hebt de volgende machtigingen nodig voor het maken van abonnementen:
 |---------|---------|
 |Enterprise Agreement (EA) |  De rol van accounteigenaar voor de inschrijving van de Enterprise Agreement. Zie [Inzicht in Azure Enterprise Overeenkomst-beheerdersrollen in Azure](understand-ea-roles.md) voor meer informatie.    |
 |Microsoft-klantovereenkomst (MCA) |  De rol van eigenaar of inzender voor de factuursectie, het factureringsprofiel of de factureringsrekening. Of de rol Maker van Azure-abonnement voor de factuursectie.  Zie [Rollen en taken voor abonnementsfacturering](understand-mca-roles.md#subscription-billing-roles-and-tasks) voor meer informatie.    |
-|Microsoft Partner-overeenkomst (MPA) |   De rol Globale beheerder en Beheerderagent in de CSP-partnerorganisatie. Zie [Partner Center - Assign users roles and permissions](https://docs.microsoft.com/partner-center/permissions-overview) (Engelstalig) voor meer informatie.  De gebruiker moet zich aanmelden bij de partner-Tenant om Azure-abonnementen te maken.   |
+|Microsoft Partner-overeenkomst (MPA) |   De rol Globale beheerder en Beheerderagent in de CSP-partnerorganisatie. Zie [Partner Center - Assign users roles and permissions](https://docs.microsoft.com/partner-center/permissions-overview) (Engelstalig) voor meer informatie.  De gebruiker moet zich aanmelden bij de partnertenant om Azure-abonnementen te maken.   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Een abonnement maken in de Azure-portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek naar **Abonnementen**.
 
    ![Schermopname van zoekopdracht in portal naar abonnementen](./media/create-subscription/billing-search-subscription-portal.png)
@@ -57,7 +57,7 @@ U hebt de volgende machtigingen nodig voor het maken van abonnementen:
 
 |Veld  |Definitie  |
 |---------|---------|
-|Name     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
+|Naam     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
 |Aanbieding     | Selecteer EA Dev/Test als u van plan bent om dit abonnement te gebruiken voor ontwikkelings- of testworkloads. Gebruik anders Microsoft Azure Enterprise. De DevTest-aanbieding moet zijn ingeschakeld voor uw inschrijvingsaccount om EA Dev/Test-abonnementen te maken.|
 
 **Microsoft-klantovereenkomst**
@@ -66,8 +66,8 @@ U hebt de volgende machtigingen nodig voor het maken van abonnementen:
 |---------|---------|
 |Factureringsprofiel     | De kosten voor uw abonnement worden gefactureerd op het factureringsprofiel dat u selecteert. Als u toegang hebt tot slechts één factureringsprofiel, wordt de selectie grijs weergegeven.     |
 |Factuursectie     | De kosten voor uw abonnement worden weergegeven in deze factuursectie van het factureringsprofiel. Als u toegang hebt tot slechts één factuursectie, wordt de selectie grijs weergegeven.  |
-|Plan     | Selecteer Microsoft Azure Plan for DevTest als u van plan bent om dit abonnement te gebruiken voor ontwikkelings- of testworkloads. Gebruik anders Microsoft Azure Plan. Als er slechts één plan is ingeschakeld voor het factureringsprofiel, wordt de selectie grijs weergegeven.  |
-|Name     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
+|Plannen     | Selecteer Microsoft Azure Plan for DevTest als u van plan bent om dit abonnement te gebruiken voor ontwikkelings- of testworkloads. Gebruik anders Microsoft Azure Plan. Als er slechts één plan is ingeschakeld voor het factureringsprofiel, wordt de selectie grijs weergegeven.  |
+|Naam     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
 
 **Microsoft Partner-overeenkomst**
 
@@ -75,7 +75,7 @@ U hebt de volgende machtigingen nodig voor het maken van abonnementen:
 |---------|---------|
 |Klant    | Het abonnement wordt gemaakt voor de klant die u selecteert. Als u slechts één klant hebt, wordt de selectie grijs weergegeven.  |
 |Reseller    | De reseller die services levert aan de klant. Dit is een optioneel veld dat alleen van toepassing is op indirecte providers in het CSP-model met twee lagen. |
-|Name     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
+|Naam     | De weergavenaam helpt u om het abonnement in de Azure-portal gemakkelijk te identificeren.  |
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>Programmatisch een extra Azure-abonnement maken
 
@@ -85,9 +85,9 @@ U kunt ook programmatisch extra abonnementen maken. Zie [Programmatisch Azure-ab
 
 - [Azure-abonnementsbeheerders toevoegen of wijzigen](add-change-subscription-administrator.md)
 - [Move resources to new resource group or subscription (Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement)](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
-- [Beheergroepen maken voor het organiseren en beheren van resources](../../governance/management-groups/create.md)
+- [Beheergroepen maken voor resource-organisatie en -beheer](../../governance/management-groups/create.md)
 - [Uw Azure-abonnement opzeggen](cancel-azure-subscription.md)
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

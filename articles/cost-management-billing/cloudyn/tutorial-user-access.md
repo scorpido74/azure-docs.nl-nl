@@ -1,29 +1,28 @@
 ---
 title: 'Zelfstudie: Toegang beheren met Cloudyn in Azure | Microsoft Docs'
 description: In deze zelfstudie leest u hoe u de toegang tot gegevens van Cloudyn kunt beheren met behulp van gebruikersaccounts die toegangsniveaus voor entiteiten bepalen.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: 412b296ed13c7708ed1a79f39ff08c3c1c559d19
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986926"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774007"
 ---
-# <a name="tutorial-assign-access-to-cloudyn-data"></a>Zelfstudie: Toegang beheren tot Cloudyn-gegevens
+# <a name="tutorial-assign-access-to-cloudyn-data"></a>Zelfstudie: toegang tot Cloudyn-gegevens toewijzen
 
 De toegang tot gegevens van Cloudyn wordt beheerd door middel van gebruikers of -entiteitsbeheer. Gebruikersaccounts van Cloudyn bepalen de toegang tot *entiteiten* en beheerfuncties. Er zijn twee soorten toegang: beheerder en gebruiker. Tenzij dit per gebruiker is gewijzigd, biedt beheerderstoegang gebruikers onbeperkte toegang tot alle functies in de portal van Cloudyn, met inbegrip van: beheer van gebruikers en lijsten met ontvangers, toegang als hoofdentiteit tot alle entiteitsgegevens. Gebruikerstoegang is bedoeld voor eindgebruikers om rapporten weer te geven en om rapporten te maken met de toegang die ze hebben tot entiteitsgegevens.
 
 Entiteiten worden gebruikt om de hiërarchische structuur van de organisatie van uw bedrijf voor te stellen en vertegenwoordigen afdelingen, divisies en teams in uw organisatie in Cloudyn. De entiteitshiërarchie helpt u om nauwkeurig de uitgave bij te houden van de verschillende entiteiten.
 
-Op het moment dat u uw Azure overeenkomst of -account registreert, wordt er een account met beheerdersmachtigingen gemaakt in Cloudyn. Met behulp van dit account kunt u alle stappen in deze zelfstudie uitvoeren. In deze zelfstudie wordt aandacht besteed aan toegang tot gegevens van Cloudyn en entiteitsbeheer. Procedures voor:
+Op het moment dat u uw Azure overeenkomst of -account registreert, wordt er een account met beheerdersmachtigingen gemaakt in Cloudyn. Met behulp van dit account kunt u alle stappen in deze zelfstudie uitvoeren. In deze zelfstudie wordt aandacht besteed aan toegang tot gegevens van Cloudyn en entiteitsbeheer. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een gebruiker met beheerderstoegang maken
@@ -120,7 +119,7 @@ Als u een gebruiker bent van een Enterprise Agreement voor Azure, kunt u een vid
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een gebruiker met beheerderstoegang maken

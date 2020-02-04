@@ -1,5 +1,5 @@
 ---
-title: Beheer van Azure EA-portal
+title: Beheer van Azure EA Portal
 description: In dit artikel worden de algemene taken beschreven die een beheerder in Azure EA Portal uitvoert.
 keywords: ''
 author: bandersmsft
@@ -8,20 +8,20 @@ ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: effc7dfb8ca540d044b5698b90b3195da0f29b19
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.openlocfilehash: dfb46a40291a74cb8a2c172700f621ef835ef50e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547571"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769669"
 ---
-# <a name="azure-ea-portal-administration"></a>Beheer van Azure EA-portal
+# <a name="azure-ea-portal-administration"></a>Beheer van Azure EA Portal
 
 In dit artikel worden de algemene taken beschreven die een beheerder in Azure EA Portal uitvoert (https://ea.azure.com). Azure EA Portal is een online beheerportal waarmee klanten de kosten van hun Azure EA-services kunnen beheren. Zie het artikel [Aan de slag met Azure EA Portal](ea-portal-get-started.md) voor inleidende informatie over Azure EA Portal.
 
 ## <a name="add-a-new-enterprise-administrator"></a>Een nieuwe ondernemingsbeheerder toevoegen
 
-Ondernemingsbeheerders beschikken over de meeste bevoegdheden voor het beheren van een Azure EA-inschrijving. De eerste Azure EA-beheerder is gemaakt toen de EA-overeenkomst is gesloten. U kunt echter op elk moment nieuwe beheerders toevoegen of verwijderen. Nieuwe beheerders kunnen alleen worden toegevoegd door bestaande beheerders. Zie [een andere ondernemings beheerder maken](ea-portal-get-started.md#create-another-enterprise-admin)voor meer informatie over het toevoegen van aanvullende ondernemings Administrators. Zie [facturerings profiel rollen en taken](understand-mca-roles.md#billing-profile-roles-and-tasks)voor meer informatie over de functies en taken van het facturerings profiel.
+Ondernemingsbeheerders beschikken over de meeste bevoegdheden voor het beheren van een Azure EA-inschrijving. De eerste Azure EA-beheerder is gemaakt toen de EA-overeenkomst is gesloten. U kunt echter op elk moment nieuwe beheerders toevoegen of verwijderen. Nieuwe beheerders kunnen alleen worden toegevoegd door bestaande beheerders. Zie [Een andere ondernemingsbeheerder maken](ea-portal-get-started.md#create-another-enterprise-administrator) voor meer informatie over het toevoegen van ondernemingsbeheerders. Zie [Rollen en taken voor factureringsprofiel ](understand-mca-roles.md#billing-profile-roles-and-tasks) voor meer informatie over de rollen en taken voor het factureringsprofiel.
 
 ## <a name="update-user-state-from-pending-to-active"></a>De status van een gebruiker bijwerken van in behandeling naar actief
 
@@ -31,7 +31,7 @@ Wanneer nieuwe accounteigenaren (AO) voor de eerste keer worden toegevoegd aan e
 
 Nadat een Azure EA-beheerder een afdeling heeft gemaakt, kan de Azure Enterprise-beheerder afdelingsbeheerders toevoegen en deze koppelen aan een afdeling. Een afdelingsbeheerder kan nieuwe accounts maken. Nieuwe accounts zijn nodig om nieuwe Azure EA-abonnementen te maken.
 
-Raadpleeg [Een Azure EA-afdelingsbeheerder](ea-portal-get-started.md#add-a-department-admin) maken voor meer informatie over het toevoegen van een afdelingsbeheerder.
+Raadpleeg [Een Azure EA-afdelingsbeheerder](ea-portal-get-started.md#add-a-department-administrator) maken voor meer informatie over het toevoegen van een afdelingsbeheerder.
 
 ## <a name="associate-an-account-to-a-department"></a>Een account aan een afdeling koppelen
 
@@ -63,7 +63,7 @@ De afdelingsbeheerder kan het bestedingsquotum zien, maar de hoogte ervan kan ui
     - Op dit punt kunt u ook de Afdelingsnaam en de Kostenplaats bewerken.
  1. Druk op **Opslaan**.
 
-Het bestedings quotum van de afdeling wordt nu weer gegeven in de lijst weergave afdeling op het tabblad afdeling. Aan het einde van de huidige toezeg ging behouden de Azure EA-Portal de bestedings quota voor de volgende toezeggings periode.
+Het bestedingsquotum voor de afdeling is nu zichtbaar in de weergave Afdelingslijst op het tabblad Afdeling. Aan het einde van de huidige toezegging blijven de bestedingsquota voor de volgende toezeggingstermijn door Azure EA Portal gehandhaafd.
 
 De hoogte van het bestedingsquotum is onafhankelijk van de huidige financiële toezegging, en de hoogte van het quotum en meldingen zijn alleen van toepassing op gebruik van interne producten. Het bestedingsquotum voor de afdeling is alleen bedoeld ter informatie en kan niet worden gebruikt om bestedingslimieten af te dwingen.
 
@@ -208,7 +208,7 @@ Als het abonnement wordt overgedragen naar een account in een andere Azure AD-te
 
 Als ontvangers de toegang tot hun Azure-resources willen beperken, moeten ze overwegen om de geheimen bij te werken die zijn gekoppeld aan de service. De meeste resources kunnen worden bijgewerkt door de volgende stappen uit te voeren:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Selecteer in het Hub-menu **Alle resources**.
 3. Selecteer de resource.
 4. Klik op de resourcepagina op **Instellingen** om bestaande geheimen weer te geven en bij te werken.
@@ -368,4 +368,4 @@ Als u een abonnement van het Enterprise Azure-aanbiedingstype wilt maken, moet u
 ## <a name="next-steps"></a>Volgende stappen
 
 - Lees hoe u geld kunt besparen met [VM-reserveringen](ea-portal-vm-reservations.md).
-- Zie [Problemen met toegang tot Azure EA Portal oplossen](ea-portal-troubleshoot.md) als u hulp nodig hebt met het oplossen van problemen met Azure EA Portal.
+- Zie [Problemen met toegang tot Azure EA Portal](ea-portal-troubleshoot.md) als u hulp nodig hebt met het oplossen van problemen Azure EA Portal.

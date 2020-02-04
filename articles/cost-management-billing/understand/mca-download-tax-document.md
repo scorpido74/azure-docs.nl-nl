@@ -13,10 +13,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: ad2388e0e24b76d38a53ff2439deb6dccc8277d5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990955"
 ---
 # <a name="view-and-download-tax-documents-for-your-azure-invoice"></a>Belastingdocumenten voor uw Azure-factuur weergeven en downloaden
@@ -25,7 +25,7 @@ U kunt belastingdocumenten voor uw Azure-factuur downloaden als u toegang hebt t
 
 ## <a name="view-and-download-tax-documents"></a>Belastingdocumenten weergeven en downloaden
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek naar *Kostenbeheer en facturering*.
 1. Afhankelijk van uw toegang moet u mogelijk een factureringsrekening of factureringsprofiel selecteren.
 1. Selecteer **Facturen** onder **Facturering** in het menu aan de linkerkant.
@@ -38,5 +38,5 @@ U kunt belastingdocumenten voor uw Azure-factuur downloaden als u toegang hebt t
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw Microsoft Azure-factuur bekijken en downloaden](download-azure-invoice.md)
+- [Uw Microsoft Azure-factuur weergeven en downloaden](download-azure-invoice.md)
 - [Uw Microsoft Azure-gebruik en -kosten weergeven en downloaden](download-azure-daily-usage.md)

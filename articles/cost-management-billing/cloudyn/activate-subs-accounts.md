@@ -1,21 +1,20 @@
 ---
 title: Azure-abonnementen en -accounts activeren | Microsoft Docs
 description: Toegang met Azure Resource Manager-API's mogelijk maken voor nieuwe en bestaande accounts en oplossen van algemene accountproblemen.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/19/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: a3d40e478d1fbb4a789124b72b73268db37540ab
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 6b788df15b14f8e2e0b394cf7002a1c8236d2c67
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987752"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76770509"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Azure-abonnementen en -accounts activeren met Cloudyn
 
@@ -60,7 +59,7 @@ Wanneer u een account updatet een abonnement toevoegt, verleent u Cloudyn toegan
 1. Als u een _niet-geactiveerd_ abonnement wilt bijwerken dat al voorkomt in Cloudyn in Account-beheer, klikt u op het potloodsymbool bewerken rechts van de bovenliggende _tenant-GUID_. Abonnementen zijn gegroepeerd onder een bovenliggende tenant, dus vermijd het afzonderlijk activeren van abonnementen.
     ![uw tenant-id selecteren in het vak Abonnementen opnieuw detecteren](./media/activate-subs-accounts/existing-sub.png)
 2. Voer, indien nodig, de Tenant-ID in. Als u uw Tenant-ID niet weet, gebruikt u de volgende stappen om die te vinden:
-    1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+    1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
     2. Selecteer in de Azure-portal **Azure Active Directory**.
     3. Haal de tenant-id op door **Eigenschappen** voor uw Azure AD-tenant te selecteren.
     4. Kopieer de map-id-GUID. Deze waarde is uw tenant-id.
@@ -87,7 +86,7 @@ Wanneer u de beheerportal van Cloudyn voor het eerst gebruikt, ziet u mogelijk d
 
 - *De opgegeven API-sleutel is geen inschrijvingssleutel van het hoogste niveau* weergegeven in de wizard **Instellen van Cloudyn**.
 - *Directe inschrijving – Nee* weergegeven in de Enterprise Agreement-portal.
-- *Er zijn voor de afgelopen 30 dagen geen gebruiks gegevens gevonden. Neem contact op met uw Distributor om ervoor te zorgen dat uw Azure-account* wordt weer gegeven in de Cloudyn-Portal.
+- *Er zijn geen gebruiksgegevens gevonden voor de afgelopen 30 dagen. Neem contact op met uw leverancier om te controleren of de markering is ingeschakeld voor uw Azure-account* weergegeven in de Cloudyn-portal.
 
 De voorgaande berichten geven aan dat u een Azure Enterprise Agreement via een wederverkoper of CSP hebt aangeschaft. Uw wederverkoper of CSP moet _markeren_ inschakelen voor uw Azure-account zodat u uw gegevens kunt weergeven in Cloudyn.
 

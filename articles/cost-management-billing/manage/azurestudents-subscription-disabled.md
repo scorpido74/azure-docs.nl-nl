@@ -13,10 +13,10 @@ ms.date: 03/01/2018
 ms.author: banders
 ROBOTS: NOINDEX
 ms.openlocfilehash: 111b95ddcff3667fa3f1e7df694af1d38887710f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990019"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Waarom is mijn Azure for Students-abonnement uitgeschakeld en hoe kan ik het weer activeren?
@@ -40,9 +40,9 @@ U kunt het resterende tegoed controleren in de [Microsoft Azure Sponsorship-port
 
 De tabel heeft de volgende kolommen:
 
-* **Service naam:** Service die uw Azure-tegoed verbruikt.
-* **Service Resource:** Maat eenheid voor de service die wordt verbruikt.
-* **Uitgaven:** De hoeveelheid tegoed in USD ($) die is besteed aan de service.
+* **Servicenaam:** de service die uw Azure-tegoed verbruikt.
+* **Serviceresource:** maateenheid voor de service die wordt verbruikt.
+* **Uitgaven:** bedrag van het tegoed in USD ($) dat is besteed aan de service.
 
 ## <a name="your-credit-has-expired"></a>Uw tegoed is verlopen
 
@@ -54,4 +54,4 @@ Als u uw Azure for Students-abonnement per ongeluk hebt geannuleerd, kunt u het 
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

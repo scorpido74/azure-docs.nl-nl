@@ -1,5 +1,5 @@
 ---
-title: Kortingen voor het reserverings plan voor Red Hat-Azure
+title: Abonnementskortingen voor Red Hat-reserveringen - Azure
 description: Meer informatie over hoe Red Hat-abonnementskortingen worden toegepast op Red Hat-software op virtuele machines.
 services: billing
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/30/2019
 ms.author: cwatson
 ms.openlocfilehash: 280764d3b9185abd1d8112f641007a7dc1861b34
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995323"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Meer informatie over hoe de abonnementskorting voor Red Hat Linux Enterprise-softwarereservering wordt toegepast voor Azure
@@ -34,7 +34,7 @@ De korting is afhankelijk van de verhouding die in de volgende tabellen wordt we
 
 Als u bijvoorbeeld een abonnement voor Red Hat Linux Enterprise Server koopt voor een virtuele machine met 3 of 4 vCPU's, is de verhouding voor die reservering 2. De korting geldt voor de kosten van de Red Hat-software voor:
 
-- 2 geïmplementeerde VM's met 1 of 2 vCPU's
+- 2 geïmplementeerde VM's met 1 of 2 vCPU's,
 - 1 geïmplementeerde VM met 3 of 4 vCPU's
 - of 0,77 of ongeveer 77% van een VM machine met 5 of meer vCPU's
 
@@ -88,7 +88,7 @@ Naam op Marketplace van Azure-portal:
 |VM-licentie 1-4 vCPU's |4d902611-eed7-4060-a33e-3c7fdbac6406|1|D4s_v3|
 |VM-licentie 5+ vCPU's|6dfb482b-23ea-487f-810c-e66360f025de|2,333333333|D8s_v3|
 
-### <a name="red-hat-enterprise-linux-with-ha"></a>Red Hat Enterprise Linux met HA
+### <a name="red-hat-enterprise-linux-with-ha"></a>Red Hat Enterprise Linux met hoge beschikbaarheid
 
 Namen op Marketplace van Azure-portal:
 
@@ -156,7 +156,7 @@ Namen op Marketplace van Azure-portal:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over reserveringen:
+Raadpleeg voor meer informatie over reserveringen de volgende artikelen:
 
 - [Wat zijn reserveringen voor Azure?](save-compute-costs-reservations.md)
 - [Vooruitbetalen voor Red Hat-softwareabonnementen met Azure-reserveringen](../../virtual-machines/linux/prepay-rhel-software-charges.md)

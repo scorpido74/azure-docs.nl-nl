@@ -11,15 +11,15 @@ ms.workload: na
 ms.date: 10/24/2019
 ms.author: banders
 ms.openlocfilehash: 13ac51fc4cefa4d66cf9d8310dce80704454bd93
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76122148"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Aan de slag met uw factureringsrekening voor Microsoft Partner-overeenkomst
 
-Er wordt een factureringsaccount gemaakt wanneer u zich aanmeldt om Azure te gebruiken. U gebruikt uw factureringsaccount om facturen en betalingen te beheren en kosten bij te houden. U kunt toegang hebben tot meerdere factureringsaccounts. Stel dat u zich voor uw persoonlijke projecten hebt geregistreerd voor Azure. U kunt ook toegang hebben tot Azure via de Enterprise Agreement van uw organisatie of uw Microsoft-klantovereenkomst of Microsoft Partner-overeenkomst. Voor elk van deze scenario's hebt u dan een afzonderlijk factureringsaccount.
+Er wordt een factureringsaccount gemaakt wanneer u zich aanmeldt om Azure te gebruiken. U gebruikt uw factureringsaccount om facturen en betalingen te beheren en kosten bij te houden. U kunt toegang hebben tot meerdere factureringsaccounts. Stel dat u zich voor uw persoonlijke projecten hebt geregistreerd voor Azure. U kunt ook toegang hebben tot Azure via de Enterprise Agreement van uw organisatie of uw Microsoft-klantovereenkomst of Microsoft Partner-overeenkomst. Voor elk van deze scenario's hebt u een afzonderlijk factureringsaccount.
 
 Dit artikel is van toepassing op factureringsrekeningen voor Microsoft Partner-overeenkomsten. Deze rekeningen worden gemaakt voor Cloud Solution Providers (CSP's) voor het beheren van de facturering voor hun klanten in de nieuwe commerce-ervaring. De nieuwe ervaring is alleen beschikbaar voor partners, die ten minste één klant hebben die een Microsoft-klantovereenkomst heeft geaccepteerd en een Azure-plan heeft. [Controleer of u toegang hebt tot een Microsoft Partner-overeenkomst](#check-access-to-a-microsoft-partner-agreement). Een [Azure-plan](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) biedt klanten toegang tot Azure-services tegen tarieven voor betalen per gebruik onder een Microsoft-klantovereenkomst.
 
@@ -43,7 +43,7 @@ U kunt de factuur bekijken en de gerelateerde documenten, zoals het bestand met 
 >
 > De facturen voor factureringsprofielen bevatten kosten voor klanten met Azure-plannen, evenals SaaS, Azure Marketplace en reserveringsaankopen voor klanten die geen Microsoft-klantovereenkomst hebben geaccepteerd en geen Azure-plan hebben.
 
-## <a name="customers"></a>Klanten
+## <a name="customers"></a>Customers
 
 U kunt klanten bekijken en beheren die een Microsoft-klantovereenkomst hebben geaccepteerd en een Azure-plan hebben in de Azure-portal. U kunt kosten en transacties bekijken en Azure-abonnementen voor deze klanten maken en beheren.
 
@@ -53,11 +53,11 @@ U kunt beleid toepassen om te bepalen of gebruikers in de organisatie van de kla
 
 Het beleid inschakelen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek naar **kostenbeheer en facturering**.
 
-   ![Schermopname van zoekopdracht in de Azure-portal](./media/mpa-overview/search-cmb.png)
+   ![Schermopname van de zoekopdracht in de Azure-portal](./media/mpa-overview/search-cmb.png)
 
 1. Selecteer **Klanten** aan de linkerkant en selecteer vervolgens een klant in de lijst.
 
@@ -82,7 +82,7 @@ Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over uw factureringsrekening:
+Raadpleeg de volgende artikelen voor meer informatie over uw factureringsaccount:
 
 - [Een extra Azure-abonnement voor Microsoft Partner-overeenkomst maken](../manage/create-subscription.md)
 - Integreer factureringsgegevens met uw eigen rapportagesysteem met behulp van de [Azure Billing-API's](https://docs.microsoft.com/rest/api/billing/)

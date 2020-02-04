@@ -1,5 +1,5 @@
 ---
-title: Problemen met toegang tot Azure EA-portal oplossen
+title: Problemen met toegang tot Azure EA Portal oplossen
 description: In dit artikel worden enkele veelvoorkomende problemen beschreven die zich kunnen voordoen met een Azure Enterprise Agreement (EA) in Azure EA Portal.
 keywords: ''
 author: bandersmsft
@@ -9,13 +9,13 @@ ms.topic: troubleshooting
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 41af65c2bfa35da30a0172ae7a39b3bad56597b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992125"
 ---
-# <a name="troubleshoot-azure-ea-portal-access"></a>Problemen met toegang tot Azure EA-portal oplossen
+# <a name="troubleshoot-azure-ea-portal-access"></a>Problemen met toegang tot Azure EA Portal oplossen
 
 In dit artikel worden enkele veelvoorkomende problemen beschreven die zich kunnen voordoen met een Azure Enterprise Agreement (EA). Azure EA Portal wordt gebruikt om gebruikers en kosten voor een Enterprise Agreement te beheren. U kunt deze problemen tegenkomen wanneer u de toegang tot Azure EA Portal configureert of bijwerkt.
 
@@ -148,7 +148,7 @@ Als de bovenstaande stappen niet helpen om de probleem op te lossen, moet u een 
 
 **Microsoft-account:** Accounts die zijn gekoppeld aan Live ID op [https://signup.live.com](https://signup.live.com).
 
-**Werk-of school account:** Alleen beschikbaar voor bedrijven die Active Directory met Federatie hebben ingesteld voor de Cloud en alle accounts zich op één Tenant bevinden. Gebruikers kunnen worden toegevoegd met het verificatietype voor op het werk of op school, als de interne Active Directory van het bedrijf federatief is in de cloud.
+**Werk-/schoolaccount:** Alleen beschikbaar voor bedrijven die Active Directory met federatie hebben ingesteld voor de cloud en waarbij alle accounts zich in één tenant bevinden. Gebruikers kunnen worden toegevoegd met het verificatietype voor op het werk of op school, als de interne Active Directory van het bedrijf federatief is in de cloud.
 
   Vanaf september 2016 kan Microsoft e-mails voor werk of school niet meer registreren als Microsoft-account. Raadpleeg voor meer informatie de volgende bronnen: [https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/).
 

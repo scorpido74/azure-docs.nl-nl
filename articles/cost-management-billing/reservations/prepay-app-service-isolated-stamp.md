@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: 8161b169e8801fae4a9aa81290cf29ec28abf858
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995882"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Bespaar op zegelkosten voor Azure App Service Isolated met gereserveerde capaciteit
@@ -47,7 +47,7 @@ U kunt gereserveerde capaciteit voor Isolated-zegels kopen in [Azure Portal](htt
 **Kopen:**
 
 1. Ga naar [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D).
-1. Selecteer een abonnement. Gebruik de lijst **Abonnementen** om het abonnement te kiezen dat wordt gebruikt om te betalen voor de gereserveerde capaciteit. Via de betalingswijze voor het abonnement worden de kosten voor de gereserveerde capaciteit in rekening gebracht. Het abonnements type moet een Enter prise Agreement zijn (nummer van de aanbieding: MS-AZR-0017P of MS-AZR-0148P) of betalen naar gebruik (nummer van aanbieding: MS-AZR-0003P of MS-AZR-0023P) of een CSP-abonnement.
+1. Selecteer een abonnement. Gebruik de lijst **Abonnementen** om het abonnement te kiezen dat wordt gebruikt om te betalen voor de gereserveerde capaciteit. Via de betalingswijze voor het abonnement worden de kosten voor de gereserveerde capaciteit in rekening gebracht. Het abonnementstype moet een Enterprise-overeenkomst zijn (nummers van aanbieding: MS-AZR-0017P of MS-AZR-0148P) of Betalen per gebruik (nummers van aanbieding: MS-AZR-0003P of MS-AZR-0023P) of een CSP-abonnement.
     - Voor een Enterprise-abonnement worden de kosten in mindering gebracht op het toezeggingsbedrag of ze worden in rekening gebracht als overschrijding.
     - Voor een Betalen per gebruik-abonnement worden de kosten in rekening gebracht op de creditcard of de factuurbetalingswijze van het abonnement.
 1. Selecteer een waarde voor **Bereik** om een abonnementsbereik te kiezen.
@@ -57,14 +57,14 @@ U kunt gereserveerde capaciteit voor Isolated-zegels kopen in [Azure Portal](htt
 1. Selecteer een waarde voor **Regio** om een Azure-regio te kiezen die wordt gedekt door de gereserveerde capaciteit en voeg de reservering toe aan de winkelwagen.
 1. Selecteer een Isolated-abonnementstype en klik vervolgens op **Selecteren**.  
     ![Voorbeeld](./media/prepay-app-service-isolated-stamp/app-service-isolated-stamp-select.png)
-1. Voer het aantal te reserveren App Service Isolated-zegels in. Met een aantal van drie krijgt u bijvoorbeeld drie gereserveerde zegels per regio. Klik op **volgende: beoordelen en kopen**.
+1. Voer het aantal te reserveren App Service Isolated-zegels in. Met een aantal van drie krijgt u bijvoorbeeld drie gereserveerde zegels per regio. Klik op **Next: Controleren en kopen**.
 1. Controleer uw bestelling en klik op **Nu kopen**.
 
 Na de aankoop kunt u op elk gewenst moment naar [Reserveringen](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) gaan om de status van de aankoop te bekijken.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
 
-Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](exchange-and-refund-azure-reservations.md) voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfservice voor ruiling en terugbetaling van Azure-reserveringen](exchange-and-refund-azure-reservations.md) voor meer informatie.
 
 ## <a name="discount-application-shown-in-usage-data"></a>Kortingstoepassing weergeven in gebruiksgegevens
 

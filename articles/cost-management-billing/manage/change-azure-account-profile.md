@@ -14,10 +14,10 @@ ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a1cbbbcb110e9943f9714d9f6463c01b408fc1d7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993048"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>De profiel gegevens voor uw Azure-account wijzigen
@@ -76,7 +76,7 @@ U kunt uw e-mailadres voor contactpersonen wijzigen met behulp van een van de vo
 
 * Ga naar het gedeelte [Contactgegevens](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) in het Azure-portal en voer een e-mailadres in. Het adres dat u invoert, ontvangt service- en marketingberichten. Het e-mailadres in het Azure-accountcentrum profiel wordt automatisch bijgewerkt zodat het overeenkomt. Als u het e-mailadres van uw profiel bijwerkt, wordt uw e-mailadres voor aanmelding niet automatisch bijgewerkt.
 
-* Selecteer in de [Azure-portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) het pictogram met uw initialen of afbeelding. Selecteer vervolgens het snelmenu ( **...** ). Selecteer vervolgens **mijn contact gegevens** in het menu en voer een e-mail adres in. Het adres dat u invoert, ontvangt service- en marketingberichten. Het e-mailadres in het profiel van het Azure-accountcentrum wordt automatisch bijgewerkt zodat het overeenkomt. Als u het e-mailadres van uw profiel bijwerkt, wordt uw e-mailadres voor aanmelding niet automatisch bijgewerkt.
+* Selecteer in de [Azure-portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) het pictogram met uw initialen of afbeelding. Selecteer vervolgens het contextmenu ( **...** ). Selecteer vervolgens**Mijn contactgegevens** in het menu en voer een e-mailadres in. Het adres dat u invoert, ontvangt service- en marketingberichten. Het e-mailadres in het profiel van het Azure-accountcentrum wordt automatisch bijgewerkt zodat het overeenkomt. Als u het e-mailadres van uw profiel bijwerkt, wordt uw e-mailadres voor aanmelding niet automatisch bijgewerkt.
 
 ![Voorbeeld van het bijwerken van een e-mailadres in Azure](./media/change-azure-account-profile/azure-contact-information.png)
 

@@ -17,10 +17,10 @@ ms.date: 12/02/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 9f78675878bd7a36e27ec1bdce0f3e38540d6039
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991436"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Toegang tot factureringsgegevens beheren voor Azure
@@ -59,7 +59,7 @@ Nadat een accountbeheerder de juiste rollen aan andere gebruikers heeft toegewez
 
 1. Zoek naar **kostenbeheer en facturering**.
 
-    ![Schermopname van zoekopdracht in de Azure-portal](./media/manage-billing-access/billing-search-cost-management-billing.png)
+    ![Schermopname van de zoekopdracht in de Azure-portal](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
 1. Selecteer in het linkerdeelvenster **Abonnementen**. Afhankelijk van de toegangsmogelijkheden moet u mogelijk een factureringsbereik en vervolgens **Abonnementen** selecteren.
 
@@ -85,7 +85,7 @@ De functie Facturering voor lezer is beschikbaar als preview-versie en biedt nog
 
 1. Zoek naar **kostenbeheer en facturering**.
 
-    ![Schermopname van zoekopdracht in de Azure-portal](./media/manage-billing-access/billing-search-cost-management-billing.png)
+    ![Schermopname van de zoekopdracht in de Azure-portal](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
 1. Selecteer in het linkerdeelvenster **Abonnementen**. Afhankelijk van de toegangsmogelijkheden moet u mogelijk een factureringsbereik en vervolgens **Abonnementen** selecteren.
 
@@ -116,4 +116,4 @@ De functie Facturering voor lezer is beschikbaar als preview-versie en biedt nog
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: jaserano
 ms.openlocfilehash: 986af72ed2ac10a285cfe32768d8541b7fce2428
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989993"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Problemen met Azure-betalingen oplossen
@@ -50,7 +50,7 @@ Als u dit probleem wilt oplossen, raadpleegt u [Aanmeldingsfout dat er geen abon
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>Kan geen betaling doen voor een abonnement
 
-Als het volgende fout bericht wordt weer gegeven: *betaling is te laat. Er is een probleem met uw betalings wijze* of *de informatie kan niet worden opgeslagen. Sluit de browser en probeer het opnieuw.* , er is een betaling in behandeling op de kaart omdat de kaart door uw financiële instelling is geweigerd.
+Als u het volgende foutbericht krijgt: *De betaling is te laat. Er is een probleem met uw betalingswijze* of *De informatie kan niet worden opgeslagen. Sluit de browser en probeer het opnieuw*, is er een betaling die op de kaart in behandeling is, omdat de kaart is geweigerd door uw financiële instelling.
 
 Controleer of het saldo van de creditcard voldoende is om een betaling te doen. Als dat niet het geval is, gebruikt u een andere kaart om de betaling te doen of neemt u contact op met uw financiële instelling om het probleem op te lossen.
 

@@ -13,10 +13,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f94b79e03cf97275ec4dacf17e097e1678e81d10
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989421"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Inzicht in uw Azure-externe servicekosten
@@ -54,10 +54,10 @@ Als u een Microsoft-klantovereenkomst (MCA) of Microsoft Partner-overeenkomst (M
 
 Als u MCA of MPA hebt, hebt u aparte facturen voor de kosten van derden. U kunt uw Azure Marketplace-facturen bekijken en downloaden via de Azure-portal door de volgende stappen uit te voeren:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Zoek naar **Cost Management en facturering**.
 1. Selecteer **Facturen** in het menu aan de linkerkant.
-1. Klik op het tabblad **Azure Marketplace en reserve ringen** .  ![afbeelding van het tabblad Azure Marketplace en reserve ringen](./media/understand-azure-marketplace-charges/invoice-tabs.png)
+1. Klik op het tabblad **Azure Marketplace en reserveringen**.  ![Afbeelding van het tabblad Azure Marketplace en reserveringen](./media/understand-azure-marketplace-charges/invoice-tabs.png)
 1. Selecteer in de vervolgkeuzelijst Abonnementen het abonnement met de externe services waarvoor u facturen wilt bekijken.
 
 ## <a name="external-spending-for-ea-customers"></a>Externe uitgaven voor EA-klanten
@@ -68,7 +68,7 @@ EA-klanten kunnen de externe service-uitgaven bekijken en rapporten downloaden i
 
 Wanneer u een externe service aanschaft, kiest u een Azure-abonnement voor de resource. De betalingswijze van het geselecteerde Azure-abonnement wordt de betalingswijze voor de externe service. Als u de betalingswijze voor een externe service wilt wijzigen, moet u [de betalingswijze wijzigen van het Azure-abonnement](../manage/change-credit-card.md) dat is gekoppeld aan die externe service. U kunt nagaan aan welk abonnement uw externe service order is gekoppeld door de volgende stappen uit te voeren:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik op **Alle resources** in het navigatiemenu links.
      ![schermopname van menu-item alle resources](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Zoek naar uw externe service.
@@ -97,7 +97,7 @@ Wanneer u een externe service aanschaft, kiest u een Azure-abonnement voor de re
 ## <a name="cancel-an-external-service-order"></a>Een externe serviceorder annuleren
 Als u een externe serviceorder wilt annuleren, verwijdert u de resource in de [Azure-portal](https://portal.azure.com).
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik op **Alle resources** in het navigatiemenu links.
     ![Schermopname van menu-item Alle resources](./media/understand-azure-marketplace-charges/all-resources.png)
 1. Zoek naar uw externe service.
@@ -113,7 +113,7 @@ Als u een externe serviceorder wilt annuleren, verwijdert u de resource in de [A
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Beginnen met kosten analyseren](../costs/quick-acm-cost-analysis.md)

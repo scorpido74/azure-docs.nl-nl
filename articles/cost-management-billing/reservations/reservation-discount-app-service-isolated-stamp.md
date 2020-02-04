@@ -1,5 +1,5 @@
 ---
-title: Reserverings kortingen voor Azure App Service
+title: Reserveringskortingen voor Azure App Service
 description: Ontdek hoe reserveringskortingen worden toegepast op Azure App Service Isolated-zegels.
 services: billing
 author: yashesvi
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 1294ee126ecef1f635ffc4d6bec6da02c6171897
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995791"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>Hoe reserveringskortingen worden toegepast op Azure App Service Isolated-zegels
@@ -39,10 +39,10 @@ U moet dus alleen een Linux-reservering kopen als u van plan bent via de zegel _
 
 De volgende voorbeelden laten zien hoe de korting op de zegelkosten voor gereserveerde instanties van App Service Isolated voor verschillende implementaties wordt toegepast.
 
-- **Voor beeld 1**: u koopt één exemplaar van een geïsoleerde gereserveerde stempel capaciteit in een regio zonder app service isolated stem pels. U implementeert een nieuwe zegel in de betreffende regio en betaalt hiervoor het tarief voor gereserveerde capaciteit.
-- **Voor beeld 2**: u koopt één exemplaar van een geïsoleerde gereserveerde stempel capaciteit in een regio waarvoor al een app service isolated stempel is geïmplementeerd. U betaalt voor de geïmplementeerde zegel vanaf nu het tarief voor gereserveerde capaciteit.
-- **Voor beeld 3**: u koopt één exemplaar van een geïsoleerde gereserveerde stempel capaciteit in een regio met een app service isolated stempel al is geïmplementeerd. U betaalt voor de geïmplementeerde zegel vanaf nu het tarief voor gereserveerde capaciteit. Later verwijdert u de bestaande zegel en implementeert u een nieuwe zegel. U betaalt voor de nieuwe zegel het tarief voor gereserveerde capaciteit. De korting kan niet worden overgedragen als er geen geïmplementeerde zegels zijn.
-- **Voor beeld 4**: u koopt één exemplaar van de geïsoleerde, gereserveerde Linux-stempel capaciteit in een regio en implementeert vervolgens een nieuwe stempel in de regio. Als de zegel aanvankelijk zonder werkrollen wordt geïmplementeerd, wordt de Windows-zegelmeter gebruikt. Er wordt geen korting toegepast. Wanneer de eerste Linux-werkrol via de zegel wordt geïmplementeerd, wordt er overgeschakeld naar de Linux-zegelmeter en is de reserveringskorting van kracht. Als er later via de zegel een Windows-werkrol wordt geïmplementeerd, wordt er teruggeschakeld naar de Windows-zegelmeter. De korting voor Linux-specifieke gereserveerde App Service Isolated-zegelcapaciteit vervalt dan weer.
+- **Voorbeeld 1**: U koopt één instantie van gereserveerde App Service Isolated-zegelcapaciteit voor een regio zonder Isolated-zegels. U implementeert een nieuwe zegel in de betreffende regio en betaalt hiervoor het tarief voor gereserveerde capaciteit.
+- **Voorbeeld 2**: U koopt één instantie van gereserveerde App Service Isolated-zegelcapaciteit voor een regio waarin al een Isolated-zegel is geïmplementeerd. U betaalt voor de geïmplementeerde zegel vanaf nu het tarief voor gereserveerde capaciteit.
+- **Voorbeeld 3**: U koopt één instantie van gereserveerde App Service Isolated-zegelcapaciteit voor een regio waarin al een Isolated-zegel is geïmplementeerd. U betaalt voor de geïmplementeerde zegel vanaf nu het tarief voor gereserveerde capaciteit. Later verwijdert u de bestaande zegel en implementeert u een nieuwe zegel. U betaalt voor de nieuwe zegel het tarief voor gereserveerde capaciteit. De korting kan niet worden overgedragen als er geen geïmplementeerde zegels zijn.
+- **Voorbeeld 4**: U koopt één instantie van Linux-specifieke gereserveerde App Service Isolated-zegelcapaciteit voor een bepaalde regio en implementeert daar vervolgens een nieuwe zegel. Als de zegel aanvankelijk zonder werkrollen wordt geïmplementeerd, wordt de Windows-zegelmeter gebruikt. Er wordt geen korting toegepast. Wanneer de eerste Linux-werkrol via de zegel wordt geïmplementeerd, wordt er overgeschakeld naar de Linux-zegelmeter en is de reserveringskorting van kracht. Als er later via de zegel een Windows-werkrol wordt geïmplementeerd, wordt er teruggeschakeld naar de Windows-zegelmeter. De korting voor Linux-specifieke gereserveerde App Service Isolated-zegelcapaciteit vervalt dan weer.
 
 ## <a name="next-steps"></a>Volgende stappen
 

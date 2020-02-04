@@ -12,10 +12,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 3abfac5f915b5c1c6020701feaa356d7a043ef8d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991826"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Problemen met kostenweergaven van Enterprise oplossen
@@ -43,7 +43,7 @@ Als er een foutbericht wordt weergegeven dat een **asset niet beschikbaar** is w
 
 ![Schermopname met het bericht dat een asset niet beschikbaar is.](./media/enterprise-mgmt-grp-troubleshoot-cost-view/asset-not-found.png)
 
-Vraag uw Azure-abonnementsbeheerder of de beheerder van beheergroep om toegang. Zie [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
+Vraag uw Azure-abonnementsbeheerder of de beheerder van beheergroep om toegang. Zie [Toegang beheren met behulp van RBAC en de Azure-portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: a78edc29ef85430dc8af57e60dfcba1f2e46413e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991475"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Onverwachte kosten voorkomen met Azure-facturering en -kostenbeheer
@@ -82,7 +82,7 @@ Nadat u uw Azure-services bent gaan uitvoeren, moet u de kosten regelmatig contr
 
 4. U kunt de weergave filteren op verschillende eigenschappen, zoals labels, resourcetype en tijdsbestek. Klik op **Filter toevoegen** om het filter voor een eigenschap toe te voegen en selecteer de gewenste filterwaarden. Selecteer **Exporteren** als u de weergave wilt exporteren als bestand met door komma's gescheiden waarden (CSV).
 
-5. Daarnaast kunt u op de labels van het diagram klikken om de dagelijkse uitgavengeschiedenis voor dat label weer te geven. Bijvoorbeeld: in de onderstaande scherm afbeelding ziet u op virtuele machines de dagelijkse kosten van het uitvoeren van uw Vm's.
+5. Daarnaast kunt u op de labels van het diagram klikken om de dagelijkse uitgavengeschiedenis voor dat label weer te geven. Bijvoorbeeld: In de onderstaande schermopname worden de dagelijkse kosten van het uitvoeren van uw VM's weergegeven door op virtuele machines te klikken.
 
     ![Schermopname van de uitgavengeschiedenisweergave in Azure Portal](./media/getting-started/costhistory.png)
 
@@ -132,7 +132,7 @@ Ga in gesprek met uw accountbeheerder of Azure-partner om aan de slag te gaan.
 |-------------------------------|-----------------------------------------------------------------------------------|
 | Enterprise Agreement (EA) | [EA portal](https://ea.azure.com/), [helpdocumenten](https://ea.azure.com/helpdocs) en [Power BI-rapport](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
 | Cloud Solution Provider (CSP) | In gesprek gaan met uw provider |
-| Azure-sponsoring | [Sponsorship-portal](https://www.microsoftazuresponsorships.com/) |
+| Azure Sponsorship | [Sponsorship-portal](https://www.microsoftazuresponsorships.com/) |
 
 Als u IT voor een grote organisatie beheert, wordt aanbevolen de [zakelijke ondersteuning voor Azure](/azure/architecture/cloud-adoption-guide/subscription-governance) en het [zakelijke technische document voor IT](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) te lezen (PDF-downloads, alleen in het Engels).
 
@@ -166,7 +166,7 @@ In de SLA (Service Level Agreement) worden de toezeggingen van Microsoft voor be
 
 U kunt als volgt een tegoed aanvragen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/). Als u meerdere accounts hebt, controleert u of u het account gebruikt die door de uitvaltijd van Azure is beïnvloed.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Als u meerdere accounts hebt, controleert u of u het account gebruikt die door de uitvaltijd van Azure is beïnvloed.
 2. Maak een nieuwe ondersteuningsaanvraag.
 3. Onder **Probleemtype** selecteert u **Facturering**.
 4. Onder **Probleemtype** selecteert u **Restitutieaanvraag**.
@@ -181,7 +181,7 @@ Zie [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/) e
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over het gebruik van [bestedingslimieten](spending-limit.md) om te voorkomen dat u teveel uitgeeft.

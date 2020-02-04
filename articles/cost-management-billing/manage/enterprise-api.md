@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 513dac3a1cdcefa7a49116ea02af5410265af3ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991995"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Overzicht van rapportage-API's voor Enterprise-klanten
@@ -60,4 +60,4 @@ In de respons van alle bovenstaande API zijn Etags opgenomen. Een wijziging van 
 |401| Niet geautoriseerd| De API-sleutel is niet gevonden, is ongeldig, is verlopen, enzovoort.|
 |404| Niet beschikbaar| Rapporteindpunt niet gevonden|
 |400| Onjuiste aanvraag| Ongeldige parameters: datumbereiken, EA-nummers, enzovoort.|
-|500| Serverfout| Er is een onverwachte fout opgetreden bij het verwerken van de aanvraag|
+|500| Serverfout| Onverwachte fout opgetreden bij het verwerken van de aanvraag|

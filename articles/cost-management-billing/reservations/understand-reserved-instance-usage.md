@@ -1,5 +1,5 @@
 ---
-title: Gebruik van Azure-reserve ring voor een afzonderlijk abonnement
+title: Gebruik van Azure-reservering voor een afzonderlijk abonnement
 description: Lees hoe u uw gebruik kunt lezen om te begrijpen hoe de Azure-reservering voor uw afzonderlijke abonnement met tarieven voor betalen-naar-gebruik wordt toegepast.
 author: bandersmsft
 manager: yashr
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 1404f8626086124aa2c6affcf2d173cef0be7df3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995362"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Meer informatie over het gebruik van Azure-reserveringen voor uw afzonderlijke abonnement met tarieven op basis van betalen-naar-gebruik
@@ -33,7 +33,7 @@ Voor de volgende secties wordt ervan uitgegaan dat u een Standard_DS1_v2 Windows
 | Veld | Waarde |
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
-|Hoeveelheid |1|
+|Aantal |1|
 |SKU | Standard_DS1_v2|
 |Regio | eastus |
 
@@ -55,7 +55,7 @@ Filter op **Extra gegevens** en typ uw **Reserverings-id**. Op de volgende scher
 
 1. **ReservationId** in het veld **Aanvullende informatie** is de reservering die wordt toegepast op de virtuele machine.
 2. **ConsumptionMeter** is de meter-id voor de virtuele machine.
-3. De regel voor de **subcategorie** van de **reservering-basis-VM** meter vertegenwoordigt de sectie kosten in overzicht van $0. De kosten voor het uitvoeren van deze virtuele machine zijn al betaald door de reservering.
+3. De regel **Reservering - Basis-VM** **Subcategorie van de meter** vertegenwoordigt de kosten van $ 0 in de overzichtssectie. De kosten voor het uitvoeren van deze virtuele machine zijn al betaald door de reservering.
 4. **Meter-id** is de meter-id voor de reservering. De kosten van deze meter zijn $ 0. Deze meter-id wordt weergegeven voor elke VM die in aanmerking komt voor de reserveringskorting.
 5. Standard_DS1_v2 is een vCPU-VM en de virtuele machine wordt zonder Azure Hybrid Benefit geïmplementeerd. Deze meter dekt dus de extra kosten van de Windows-software. Zie [Windows-softwarekosten voor gereserveerde Azure VM-instanties](reserved-instance-windows-software-costs.md) als u de meter wilt vinden die overeenkomt met de D-serie 1-core-VM. Als u de Azure Hybrid Benefit hebt, worden deze extra kosten niet toegepast.
 
@@ -68,7 +68,7 @@ Stel dat u een SQL Database Gen 4 in de regio VS-Oost gebruikt en dat uw reserve
 | Veld | Waarde |
 |---| --- |
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
-|Hoeveelheid |2|
+|Aantal |2|
 |Product| SQL Database Gen 4 (2 Core)|
 |Regio | eastus |
 
@@ -104,4 +104,4 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 - [Azure-reserveringen beheren](manage-reserved-vm-instance.md)
 - [Begrijpen hoe de reserveringskorting wordt toegepast](../manage/understand-vm-reservation-charges.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)
-- [Kosten van Windows-software die niet zijn inbegrepen bij reserveringen](reserved-instance-windows-software-costs.md)
+- [Kosten van Windows-software zijn niet inbegrepen bij reserveringen](reserved-instance-windows-software-costs.md)

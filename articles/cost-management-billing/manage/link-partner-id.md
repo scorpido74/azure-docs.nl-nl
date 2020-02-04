@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: a67f2985e2db8c48d7e50a91d20c76b88c1c55e6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991917"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Een partner-id aan uw Azure-accounts koppelen
@@ -28,11 +28,11 @@ Microsoft-partners bieden services waarmee klanten bedrijfs- en missiedoelen kun
 
 Voordat u uw partner-id koppelt, moet uw klant u toegang geven tot hun Azure-resources door een van de volgende opties te gebruiken:
 
-- **Gast gebruiker**: uw klant kan u als gast gebruiker toevoegen en op rollen gebaseerd toegangs beheer (RBAC) rollen toewijzen. Zie [Gastgebruikers uit een andere directory toevoegen](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) voor meer informatie.
+- **Gastgebruiker**: Uw klant kan u als gastgebruiker toevoegen en elke willekeurige RBAC-rol (Role-Based Access Control) aan u toewijzen. Zie [Gastgebruikers uit een andere directory toevoegen](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) voor meer informatie.
 
-- **Directory-account**: uw klant kan een gebruikers account voor u maken in een eigen map en een RBAC-rol toewijzen.
+- **Directoryaccount**: Uw klant kan een gebruikersaccount voor u maken in zijn eigen directory en elke willekeurige RBAC-rol aan u toewijzen.
 
-- **Service-Principal**: uw klant kan een app of script toevoegen vanuit uw organisatie in hun Directory en een RBAC-rol toewijzen. De identiteit van de app of het script staat bekend als een service-principal.
+- **Service-principal**: Uw klant kan een app of script uit uw organisatie in zijn directory toevoegen en elke willekeurige RBAC-rol aan u toewijzen. De identiteit van de app of het script staat bekend als een service-principal.
 
 ## <a name="link-to-a-partner-id"></a>Koppelen aan een partner-id
 

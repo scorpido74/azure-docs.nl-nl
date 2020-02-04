@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 034df0de027a50c61e5a7cab3d1e829446002c86
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993594"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Registreren voor een Office 365-abonnement met uw Azure-account
@@ -54,7 +54,7 @@ Als u het Office 365-abonnement voor uw organisatie hebt gemaakt, gebruikt u de 
 Nadat u zich hebt aangemeld, wordt het Office 365-abonnement toegevoegd aan hetzelfde exemplaar van Azure Active Directory als uw Azure-abonnement. Zie [Meer informatie over Azure en Office 365-abonnementen](office-365-account-for-azure-subscription.md#more-about-subs) en [Hoe Azure-abonnementen worden gekoppeld aan Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md) voor meer informatie.
 
 ## <a id="RoleInAzureAD"></a>Accountmachtigingen controleren in azure AD
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Klik op **Alle services** en zoek naar **Active Directory**.
 
     ![Schermopname van Active Directory in het Azure-portal](./media/azure-account-for-office-365-subscription/billing-more-services-active-directory.png)
@@ -72,4 +72,4 @@ Nadat u zich hebt aangemeld, wordt het Office 365-abonnement toegevoegd aan hetz
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

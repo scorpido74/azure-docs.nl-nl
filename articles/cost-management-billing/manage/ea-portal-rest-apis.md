@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 8680a575872053f4b575db70ec649b6c1669b961
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992138"
 ---
 # <a name="azure-enterprise-rest-apis"></a>REST API's in Azure Enterprise
@@ -121,22 +121,22 @@ De JSON-indeling wordt gegenereerd op basis van het CSV-rapport. Als gevolg hier
 | SubscriptionId | SubscriptionId | SubscriptionId |   |
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | Abonnementsnaam | SubscriptionName | SubscriptionName |   |
-| Datum | Datum | Datum | Hier wordt de datum weergegeven waarop het servicecatalogusrapport is gemaakt. De indeling is een gegevenstekenreeks zonder tijdstempel. |
-| Month | Month | Month |   |
-| Dag | Dag | Dag |   |
-| Jaar | Jaar | Jaar |   |
+| Date | Date | Date | Hier wordt de datum weergegeven waarop het servicecatalogusrapport is gemaakt. De indeling is een gegevenstekenreeks zonder tijdstempel. |
+| Month | Maand | Month |   |
+| Dag | Day | Day |   |
+| Year | Year | Jaar |   |
 | Product | BillableItemName | Product |   |
 | Id van de meter | ResourceGUID | MeterId |   |
-| Metercategorie | Service | MeterCategory | Nuttig voor het zoeken van services. Relevant voor services met meerdere servicetypen (ServiceType). Voorbeeld: virtuele machines. |
-| Metersubcategorie | ServiceType | MeterSubCategory | Biedt een tweede detailniveau voor een service. Voorbeeld: A1 VM (niet-Windows).  |
+| De categorie van de meter | Service | MeterCategory | Nuttig voor het zoeken van services. Relevant voor services met meerdere servicetypen (ServiceType). Voorbeeld: virtuele machines. |
+| De subcategorie van de meter | ServiceType | MeterSubCategory | Biedt een tweede detailniveau voor een service. Voorbeeld: A1 VM (niet-Windows).  |
 | De regio van de meter | ServiceRegion | MeterRegion | Het derde detailniveau dat is vereist voor een service. Handig om de regiocontext van de ResourceGUID te vinden. |
-| Meternaam | ServiceResource | MeterName | De naam van de service. |
+| De naam van de meter | ServiceResource | MeterName | De naam van de service. |
 | Verbruikt aantal | ResourceQtyConsumed | ConsumedQuantity |   |
 | ResourceRate | ResourceRate | ResourceRate |   |
 | ExtendedCost | ExtendedCost | ExtendedCost |   |
 | Resourcelocatie | ServiceSubRegion | ResourceLocation |   |
 | Verbruikte service | ServiceInfo | ConsumedService |   |
-| Exemplaar-id | Component | InstanceId |   |
+| Exemplaar-id | Onderdeel | InstanceId |   |
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
 | ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
@@ -144,7 +144,7 @@ De JSON-indeling wordt gegenereerd op basis van het CSV-rapport. Als gevolg hier
 | Service-id voor de Store   | OrderNumber | StoreServiceIdentifier   |   |
 | Naam van de afdeling | DepartmentName | DepartmentName |   |
 | Kostenplaats | CostCenter | CostCenter |   |
-| Meeteenheid | UnitOfMeasure | UnitOfMeasure | Voorbeeld waarden: uren, GB, gebeurtenissen, pushes, eenheid, Eenheiduren, MB, eenheden per dag |
+| Meeteenheid | UnitOfMeasure | UnitOfMeasure | Voorbeeldwaarden: Uren, GB, gebeurtenissen, pushes, eenheid, eenheiduren, MB, dagelijkse eenheden |
 | ResourceGroup | ResourceGroup | ResourceGroup |   |
 
 #### <a name="azure-marketplace-report"></a>Azure Marketplace-rapport
@@ -156,13 +156,13 @@ De JSON-indeling wordt gegenereerd op basis van het CSV-rapport. Als gevolg hier
 | SubscriptionId | SubscriptionId | SubscriptionId |
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | Abonnementsnaam | SubscriptionName |  SubscriptionName |
-| Datum | BillingCycle |  Datum (Alleen datumreeks. Geen tijdstempel.)
-| Month | Month |  Month |
-| Dag | Dag |  Dag |
-| Jaar | Jaar |  Jaar |
+| Date | BillingCycle |  Datum (Alleen datumreeks. Geen tijdstempel.)
+| Month | Maand |  Month |
+| Dag | Day |  Day |
+| Year | Year |  Year |
 | Id van de meter | MeterResourceId |  MeterId |
 | Naam van de uitgever | PublisherFriendlyName |  PublisherName |
-| Naam van aanbieding: | OfferFriendlyName |  OfferName |
+| Naam van aanbieding | OfferFriendlyName |  OfferName |
 | Naam van het plan | PlanFriendlyName |  PlanName |
 | Verbruikt aantal | BilledQty |  ConsumedQuantity |
 | ResourceRate | ResourceRate | ResourceRate |

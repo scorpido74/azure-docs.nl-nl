@@ -17,10 +17,10 @@ ms.date: 05/11/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 1573a5d5d9b537b208b2f6d6aea29b9738ddad3e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988108"
 ---
 # <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Aanmeldingsfout Geen abonnementen gevonden voor Azure-portal of het Azure-accountcentrum
@@ -29,7 +29,7 @@ Mogelijk wordt het foutbericht 'Geen abonnementen gevonden' weergegeven wanneer 
 
 ## <a name="symptom"></a>Symptoom
 
-Als u probeert te melden bij de [Azure-portal](https://portal.azure.com/) of de [Azure account center](https://account.windowsazure.com/Subscriptions), ontvangt u de volgende strekking weergegeven: 'Geen abonnementen gevonden'.
+Wanneer u zich probeert aan te melden bij de [Azure-portal](https://portal.azure.com/) of het [Azure-accountcentrum](https://account.windowsazure.com/Subscriptions), wordt het volgende foutbericht weergegeven: 'Geen abonnementen gevonden'
 
 ## <a name="cause"></a>Oorzaak
 
@@ -37,7 +37,7 @@ Dit probleem treedt op als u de verkeerde map hebt geselecteerd of als uw accoun
 
 ## <a name="solution"></a>Oplossing
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>Scenario 1: Foutbericht wordt ontvangen in de [Azure-portal](https://portal.azure.com)
+### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>Scenario 1: Het foutbericht wordt ontvangen in de [Azure-portal](https://portal.azure.com)
 
 Dit probleem oplossen:
 
@@ -46,7 +46,7 @@ Dit probleem oplossen:
   ![Selecteer de map in de rechterbovenhoek van de Azure-portal](./media/no-subscriptions-found/directory-switch.png)
 * Als de juiste Azure-map is geselecteerd maar u nog steeds het foutbericht ontvangt, [wijst u de rol van Eigenaar toe aan uw account](../../role-based-access-control/role-assignments-portal.md).
 
-### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>Scenario 2: Foutbericht wordt ontvangen in de [Accountcentrum van Azure](https://account.windowsazure.com/Subscriptions)
+### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>Scenario 2: Het foutbericht wordt ontvangen in het [Azure-accountcentrum](https://account.windowsazure.com/Subscriptions)
 
 Controleer of het account dat u gebruikt de accountbeheerder is. Voer de volgende stappen uit om te controleren wie de accountbeheerder is:
 
@@ -56,4 +56,4 @@ Controleer of het account dat u gebruikt de accountbeheerder is. Voer de volgend
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

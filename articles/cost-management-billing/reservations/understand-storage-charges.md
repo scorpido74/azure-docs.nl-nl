@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.openlocfilehash: 40fba61b173979fb9362de73a87d6192aac9941d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995310"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-storage"></a>Leer hoe de reserveringskorting wordt toegepast op Azure Storage
@@ -25,7 +25,7 @@ Zie [Prijzen voor blok-blobs](https://azure.microsoft.com/pricing/details/storag
 
 De korting voor gereserveerde Azure Storage-capaciteit wordt op uurbasis toegepast op blok-blob- en Azure Data Lake Storage Gen2-resources.
 
-De korting op de gereserveerde Azure Storage-capaciteit gaat verloren wanneer u deze niet gebruikt. Als u geen blok-blob- of Azure Data Lake Storage Gen2-resources hebt die voldoen aan de reserveringsvoorwaarden voor een bepaald uur, verliest u een reserveringshoeveelheid voor dat uur. U kunt niet-gebruikte gereserveerde uren niet meenemen.
+De korting op de gereserveerde Azure Storage-capaciteit gaat verloren wanneer u deze niet gebruikt. Als u geen blok-blob- of Azure Data Lake Storage Gen2-resources hebt die voldoen aan de reserveringsvoorwaarden voor een bepaald uur, verliest u een reserveringshoeveelheid voor dat uur. U kunt ongebruikte gereserveerde uren niet meenemen.
 
 Wanneer u een resource verwijdert, wordt de reserveringskorting automatisch toegepast op een andere overeenkomstige resource in het opgegeven bereik. Als er geen overeenkomstige resources in het opgegeven bereik worden gevonden, verliest u de gereserveerde uren.
 

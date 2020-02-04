@@ -1,5 +1,5 @@
 ---
-title: Facturerings rollen voor micro soft-klant overeenkomsten-Azure
+title: Factureringsrollen voor Microsoft-klantovereenkomsten - Azure
 description: Meer informatie over factureringsrollen voor factureringsrekeningen in Azure voor Microsoft-klantovereenkomsten.
 author: amberbhargava
 manager: amberbhargava
@@ -11,17 +11,17 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: eaec828abe83164d18796cfb2e795a363353fab4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987939"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Informatie over beheerdersrollen voor Microsoft-klantovereenkomsten in Azure
 
 Als u uw factureringsrekening voor een Microsoft-klantovereenkomst wilt beheren, gebruikt u de rollen die in de volgende secties worden beschreven. Deze rollen zijn een aanvulling op de ingebouwde rollen in Azure voor het beheren van de toegang tot resources. Zie [Ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md) voor meer informatie.
 
-Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klantovereenkomst. Controleer of u toegang hebt tot een Microsoft-klantovereenkomst.
+Dit artikel is van toepassing op een factureringsrekening voor een Microsoft-klantovereenkomst. Controleer of u toegang hebt tot een Microsoft-klantovereenkomst.
 
 ## <a name="billing-role-definitions"></a>Roldefinities voor facturering
 
@@ -180,11 +180,11 @@ In de volgende tabel ziet u welke rol u nodig hebt om taken uit te voeren in de 
 
 ## <a name="manage-billing-roles-in-the-azure-portal"></a>Factureringsrollen beheren in de Azure-portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-   ![Schermopname van zoekopdracht in de Azure-portal](./media/understand-mca-roles/billing-search-cost-management-billing.png)
+   ![Schermopname van de zoekopdracht in de Azure-portal](./media/understand-mca-roles/billing-search-cost-management-billing.png)
 
 3. Selecteer **Toegangsbeheer (IAM)** bij een bereik zoals een factureringsrekening, factureringsprofiel of factuursectie waarvoor u toegangsrechten wilt verlenen.
 

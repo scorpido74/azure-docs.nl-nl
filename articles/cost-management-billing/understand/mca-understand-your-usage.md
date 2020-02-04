@@ -1,5 +1,5 @@
 ---
-title: Gebruiksrecht overeenkomst voor Azure-gebruik en kosten bestand voor micro soft-klanten
+title: Bestand met Azure-gebruik en -kosten voor een Microsoft-klantovereenkomst
 description: Lees hier alles over de secties van het CSV-bestand met gegevens van Azure-gebruik en -kosten voor uw factureringsprofiel.
 author: bandersmsft
 manager: jureid
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: b48cc5d5a36a382909adb250dd76b4f5783a4340
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990903"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Terminologie in het bestand met Azure-gebruik en -kosten voor een Microsoft-klantovereenkomst
@@ -34,10 +34,10 @@ Als u een EA-klant bent, zult u merken dat de terminologie in het CSV-bestand me
 
 | CSV met gegevens van Azure EA-gebruik | CSV met Azure-gebruik en -kosten voor Microsoft-klantovereenkomst |
 | --- | --- |
-| Datum | date |
+| Date | date |
 | Month| date |
-| Dag | date |
-| Jaar | date |
+| Day | date |
+| Year | date |
 | Product | product |
 | MeterId | meterId |
 | MeterCategory | meterCategory |
@@ -54,7 +54,7 @@ Als u een EA-klant bent, zult u merken dat de terminologie in het CSV-bestand me
 | ServiceInfo2 | serviceInfo2 |
 | AdditionalInfo | additionalInfo |
 | Tags | tags |
-| StoreServiceIdentifier | N/A |
+| StoreServiceIdentifier | N.v.t. |
 | DepartmentName | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
@@ -106,9 +106,9 @@ resourceType | Type resource-instantie
 resourceLocation | Hiermee wordt de locatie van het datacenter aangegeven waarin de resource wordt uitgevoerd.
 location | Genormaliseerde locatie van de resource als er verschillende resourcelocaties zijn geconfigureerd voor dezelfde regio's
 quantity | Het aantal eenheden dat is aangeschaft of verbruikt
-unitOfMeasure | De maateenheid voor facturering van de service. Berekeningsservices worden bijvoorbeeld per uur gefactureerd.
-chargeType | Het type kosten. Waarden: <ul><li>AsCharged: kosten die worden samengevoegd op basis van het gebruik van een Azure-service. Dit omvat het gebruik van virtuele machines dat niet in rekening word gebracht vanwege gereserveerde instanties.</li><li>AsCharged-PurchaseMarketplace: een eenmalige of vaste terugkerende kosten van Marketplace-aankopen</li><li>AsCharged-UsageMarketplace: kosten voor Marketplace-services die worden gefactureerd op basis van verbruiks eenheden</li></ul>
-isAzureCreditEligible | Vlag die aangeeft of de kosten voor de service in aanmerking komen voor betaling met Azure-tegoed (waarden: True, false)
+unitOfMeasure | De maateenheid voor facturering van de service. Computeservices worden bijvoorbeeld per uur gefactureerd.
+chargeType | Het type kosten. Waarden: <ul><li>AsCharged-Usage: Kosten die het gevolg zijn van het gebruik van een Azure-service. Dit omvat het gebruik van virtuele machines dat niet in rekening word gebracht vanwege gereserveerde instanties.</li><li>AsCharged-PurchaseMarketplace: Eenmalige of vaste terugkerende kosten van Marketplace-aankopen</li><li>AsCharged-UsageMarketplace: Kosten voor Marketplace-services die worden gefactureerd op basis van verbruikseenheden</li></ul>
+isAzureCreditEligible | Vlag die aangeeft of de kosten voor de service in aanmerking komen om te worden betaald met Azure-tegoed (waarden: True, False)
 serviceInfo1 | Servicespecifieke metagegevens
 serviceInfo2 | Verouderd veld met optionele, servicespecifieke metagegevens
 additionalInfo | Aanvullende servicespecifieke metagegevens.
@@ -127,5 +127,5 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw Microsoft Azure-factuur bekijken en downloaden](download-azure-invoice.md)
+- [Uw Microsoft Azure-factuur weergeven en downloaden](download-azure-invoice.md)
 - [Uw Microsoft Azure-gebruik en -kosten weergeven en downloaden](download-azure-daily-usage.md)

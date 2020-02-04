@@ -1,5 +1,5 @@
 ---
-title: Bespaar op SQL Data Warehouse kosten met gereserveerde Azure-capaciteit
+title: Bespaar op SQL Data Warehouse-kosten met gereserveerde Azure-capaciteit
 description: Meer informatie over hoe u kosten bespaart voor SQL Data Warehouse-kosten met gereserveerde capaciteit om geld te besparen.
 services: billing
 author: yashesvi
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: b4069c9b18f9591e79d983a1317f00df11cf0611
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995843"
 ---
 # <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Bespaar op SQL Data Warehouse-kosten met gereserveerde capaciteit
@@ -23,7 +23,7 @@ Wanneer u een reservering aanschaft, wordt het gebruik van SQL Data Warehouse da
 
 Een reservering omvat geen opslag- en netwerkkosten die samenhangen met het gebruik van SQL Data Warehouse.
 
-Wanneer de gereserveerde capaciteit vervalt, blijven de SQL Data Warehouse-exemplaren actief, maar wordt u gefactureerd tegen het tarief betalen per gebruik. Reserveringen worden niet automatisch vernieuwd.
+Wanneer de gereserveerde capaciteit vervalt, blijven de SQL Data Warehouse-exemplaren actief, maar wordt u gefactureerd tegen het tarief voor betalen per gebruik. Reserveringen worden niet automatisch vernieuwd.
 
 Raadpleeg het [aanbod voor SQL Data Warehouse-reserveringscapaciteit](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/) voor prijsinformatie.
 
@@ -43,9 +43,9 @@ Stel dat uw totale verbruik van SQL Data Warehouse DW3000c is. U wilt voor alles
 
 ## <a name="buy-sql-data-warehouse-reserved-capacity"></a>Gereserveerde capaciteit van SQL Data Warehouse kopen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Selecteer **Alle services** > **Reserveringen**.
-3. Selecteer een abonnement. Gebruik de lijst Abonnementen om het abonnement te kiezen dat wordt gebruikt om te betalen voor de gereserveerde capaciteit. Via de betalingswijze voor het abonnement worden de kosten voor de gereserveerde capaciteit in rekening gebracht. Het abonnements type moet een Enter prise Agreement zijn (nummer van de aanbieding: MS-AZR-0017P of MS-AZR-0148P) of betalen naar gebruik (nummer van aanbieding: MS-AZR-0003P of MS-AZR-0023P).
+3. Selecteer een abonnement. Gebruik de lijst Abonnementen om het abonnement te kiezen dat wordt gebruikt om te betalen voor de gereserveerde capaciteit. Via de betalingswijze voor het abonnement worden de kosten voor de gereserveerde capaciteit in rekening gebracht. Het abonnementstype moet een Enterprise-overeenkomst zijn (nummers van aanbieding: MS-AZR-0017P of MS-AZR-0148P) of Betalen per gebruik (nummers van aanbieding: MS-AZR-0003P of MS-AZR-0023P).
    - Voor een Enterprise-abonnement worden de kosten in mindering gebracht op het toezeggingsbedrag of ze worden in rekening gebracht als overschrijding.
    - Voor een Betalen per gebruik-abonnement worden de kosten in rekening gebracht op de creditcard of de factuurbetalingswijze van het abonnement.
 4. Selecteer een bereik. Gebruik de lijst Bereik om een abonnementsbereik te kiezen.
@@ -61,7 +61,7 @@ Stel dat uw totale verbruik van SQL Data Warehouse DW3000c is. U wilt voor alles
 8. Selecteer **Aankoop**.
 9. Selecteer **Deze reservering weergeven** om de status van uw aankoop te bekijken.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
+## <a name="cancel-exchange-or-refund-reservations"></a>Reserveringen annuleren, ruilen of terugbetalen
 
 Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](exchange-and-refund-azure-reservations.md) voor meer informatie.
 

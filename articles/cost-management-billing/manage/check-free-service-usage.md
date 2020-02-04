@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 83937e31d844ba0cc8efc17f1ecefa2ad6e7a7c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992827"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Gebruik van gratis services controleren die deel uitmaken van uw gratis Azure-account
@@ -24,7 +24,7 @@ Er worden geen kosten in rekening gebracht voor services die gratis worden gelev
 
 ## <a name="check-usage-in-the-azure-portal"></a>Gebruik controleren in het Azure-portal
 
-1.  Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1.  Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2.  Zoek naar **Abonnementen**.
 
@@ -38,13 +38,13 @@ Er worden geen kosten in rekening gebracht voor services die gratis worden gelev
 
     De tabel heeft de volgende kolommen:
 
-* **Meter:** Hiermee wordt de maat eenheid geïdentificeerd voor de service die wordt verbruikt.
-* **Gebruiks-en limiet:** Gebruik en limiet van huidige maand voor de meter.
-* **Status:** De gebruiks status van de service. Op basis van uw gebruik wordt een van de volgende statuswaarden weergegeven:
-  * **Niet in gebruik:** U hebt de meter niet gebruikt, of het gebruik van de meter heeft het facturerings systeem nog niet bereikt.
-  * **Overschreden op \<datum >:** U hebt de limiet voor de meter op \<datum overschreden >.
-  * **Onwaarschijnlijke overschrijding:** U bent waarschijnlijk niet langer dan de limiet voor de meter.
-  * **Is groter dan \<datum >:** Waarschijnlijk overschrijdt u de limiet voor de meter op \<datum >.
+* **Meter:** Identificeert de maateenheid voor de service die wordt verbruikt.
+* **Gebruik/limiet:** Gebruik en limiet voor de huidige maand voor de meter.
+* **Status:** Gebruiksstatus van de service. Op basis van uw gebruik wordt een van de volgende statuswaarden weergegeven:
+  * **Niet in gebruik:** u hebt de meter niet gebruikt of het gebruik voor de meter heeft het factureringssysteem niet bereikt.
+  * **Overschreden op \<datum>:** u hebt de limiet voor de meter overschreden op \<datum >.
+  * **Waarschijnlijk geen overschrijding:** de kans is klein dat de limiet voor de meter wordt overschreden.
+  * **Wordt overschreden op \<datum>:** de limiet voor de meter wordt waarschijnlijk overschreden op \<datum>.
 
 > [!IMPORTANT]
 >
@@ -52,7 +52,7 @@ Er worden geen kosten in rekening gebracht voor services die gratis worden gelev
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Uw gratis Azure-account upgraden](upgrade-azure-subscription.md)

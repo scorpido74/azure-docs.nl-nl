@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: d748be3a304222831a55bb9319a04fba1e28e955
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992359"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA-overeenkomsten en -aanpassingen
@@ -72,16 +72,16 @@ Microsoft heeft voor geen enkel doeleinde toegang tot de opgegeven prijsverhogin
 
 ### <a name="how-the-calculation-works"></a>Hoe werkt de berekening?
 
-De LSP geeft één percentagegetal op in EA Portal.  Alle commerciële gegevens op de portal worden opgedeeld op basis van het percentage van de LSP. Voorbeeld:
+De LSP geeft één percentagegetal op in EA Portal.  Alle commerciële gegevens op de portal worden verhoogd met het percentage dat is opgegeven door de LSP. Voorbeeld:
 
 - Een klant ondertekent een EA met een financiële toezegging van 100.000 USD.
 - Het metertarief voor service A is 10 USD/uur.
 - De LSP stelt in EA Portal het verhogingspercentage in op 10%.
 - Het volgende voorbeeld laat zien hoe de commerciële gegevens voor de klant worden weergegeven:
-    - Monetair saldo: USD 110.000.
-    - Meter frequentie voor Service A: USD 11/uur.
-    - Informatie over gebruik/hosting voor Service A als deze wordt gebruikt gedurende 100 uur: USD 1.100.
-    - Monetair saldo beschikbaar voor de klant post aftrek van service een verbruik: USD 108.900.
+    - Financieel saldo: 110.000 USD.
+    - Metertarief voor service A: 11 USD/uur.
+    - Informatie over het gebruik/de hosting voor service A als deze gedurende 100 uur wordt gebruikt: 1100 USD.
+    - Financieel saldo dat beschikbaar is voor de klant na kostenaftrek voor het gebruik van service A: 108.900 USD.
 
 ### <a name="when-to-use-a-markup"></a>Wanneer gebruikt u een prijsverhoging?
 
@@ -101,14 +101,14 @@ Controleer de commerciële gegevens (gegevens over het financiële saldo, de pri
 
 ### <a name="how-to-add-a-price-markup"></a>Een prijsverhoging toevoegen
 
-**Stap 1: prijs markeringen toevoegen**
+**Eerste stap: de prijsverhoging toevoegen**
 
 1. Klik in Enterprise Portal in het linkernavigatievenster op **Rapporten**.
 1. Klik onder _Gebruiksoverzicht_ op de blauwe tekst **Prijsverhoging**.
 1. Voer het prijsverhogingspercentage (tussen -100 en 100) in en klik op **Voorbeeld**.
 
 
-**Stap 2: controleren en valideren**
+**Tweede stap: controleren en valideren**
 
 Controleer de prijsverhoging in het _Gebruiksoverzicht_ voor de toezeggingsperiode in de klantweergave. De Microsoft-prijs wordt nog steeds weergegeven in de partnerweergave. De weergaven kunnen worden in- of uitgeschakeld met de schakeloptie voor de partnerprijsverhoging 'personen' in de rechterbovenhoek.
 
@@ -116,7 +116,7 @@ Controleer de prijsverhoging in het _Gebruiksoverzicht_ voor de toezeggingsperio
 1. U kunt wijzigingen aanbrengen voordat u publiceert door **Bewerken** te selecteren op het tabblad _Gebruiksoverzicht bekijken > Klantweergave_.  
   Zowel de serviceprijzen als de toezeggingssaldi worden met dezelfde percentages verhoogd. Als u verschillende percentages gebruikt voor het financiële saldo en de metertarieven of verschillende percentages gebruikt voor verschillende services, kunt u deze functie niet gebruiken.
 
-**Stap 3: publiceren**
+**Derde stap: publiceren**
 
 Nadat de prijzen zijn gecontroleerd en gevalideerd, klikt u op **Publiceren**.
   
@@ -124,7 +124,7 @@ De prijzen met verhogingen zijn direct beschikbaar voor ondernemingsbeheerders n
 
 ### <a name="which-enrollments-have-a-markup-enabled"></a>Voor welke inschrijvingen is een prijsverhoging ingeschakeld?
 
-Als u wilt controleren of een registratie is gepubliceerd, klikt u op **beheren** in de linkernavigatiebalk en klikt u op het tabblad **inschrijving** . Selecteer het inschrijvings venster dat u wilt controleren en Bekijk de status van de markering onder _inschrijvings Details_. Hier wordt de huidige status van de prijsverhogingsfunctie voor die EA weergegeven. Mogelijke statussen zijn: Uitgeschakeld, Preview-versie of Gepubliceerd.
+Als u wilt controleren of er voor een inschrijving een prijsverhoging is gepubliceerd, klikt u in het linkernavigatievenster op **Beheren** en klikt u vervolgens op het tabblad **Inschrijving**. Schakel het selectievakje in voor de inschrijving die u wilt controleren en bekijk de status van de prijsverhoging onder _Inschrijvingsgegevens_. Hier wordt de huidige status van de prijsverhogingsfunctie voor die EA weergegeven. Mogelijke statussen zijn: Uitgeschakeld, Preview-versie of Gepubliceerd.
 
 ### <a name="how-can-the-customer-download-usage-estimates"></a>Hoe kan de klant gebruiksramingen downloaden?
 
@@ -141,14 +141,14 @@ Partners kunnen de prijsverhogingsfunctie (in Azure EA) gebruiken nadat een wijz
 | **Resource** | **Standaardquotum** | **Opmerkingen** |
 | --- | --- | --- |
 | Microsoft Azure Compute-instanties | Twintig gelijktijdige kleine computinginstanties of hun equivalent van de andere grootten voor computinginstanties. | In de volgende tabel wordt getoond hoe het equivalente aantal kleine instanties wordt berekend:<ul><li> Extra klein: één equivalente kleine instantie </li><li> Klein: één equivalente kleine instantie </li><li> Middelgroot: twee equivalente kleine instanties </li><li> Groot: vier equivalente kleine instanties </li><li> Extra groot: acht equivalente kleine instanties </li> </ul>|
-| V2-VM's voor Microsoft Azure Compute-instanties | EA: 350 kern geheugens | V2-VM's voor IaaS voor algemene beschikbaarheid:<ul><li> A0\_A7-serie - 350 kernen </li><li> B\_A0\_A4-serie - 350 kernen </li><li> A8\_A9-serie - 350 kernen </li><li> DF-serie - 350 kernen</li><li> GF - 350 kernen </li></ul>|
+| V2-VM's voor Microsoft Azure Compute-instanties | EA: 350 kernen | V2-VM's voor IaaS voor algemene beschikbaarheid:<ul><li> A0\_A7-serie - 350 kernen </li><li> B\_A0\_A4-serie - 350 kernen </li><li> A8\_A9-serie - 350 kernen </li><li> DF-serie - 350 kernen</li><li> GF - 350 kernen </li></ul>|
 | Gehoste services van Microsoft Azure | Zes gehoste services | Het aantal gehoste services per afzonderlijk abonnement is maximaal zes services. Als u aanvullende gehoste services nodig hebt, moet u extra abonnementen toevoegen. |
 | Microsoft Azure Storage | Vijf opslagaccounts, elk met een maximale grootte van 100 TB. | U kunt het aantal opslagaccounts verhogen tot twintig accounts per abonnement. Als u aanvullende opslagaccounts nodig hebt, moet u extra abonnementen toevoegen. |
 | SQL Azure | 149 databases van een van de beschikbare typen (dat wil zeggen, Web Edition of Business Edition). |   |
-| Access Control | 50 naamruimten per account. 100 miljoen toegangsbeheertransacties per maand |   |
+| Toegangsbeheer | 50 naamruimten per account. 100 miljoen toegangsbeheertransacties per maand |   |
 | Service Bus | 50 naamruimten per account. 40 servicebusverbindingen | Klanten die servicebusverbindingen kopen via verbindingspakketten, beschikken over quota met een aantal dat halverwege ligt tussen het verbindingspakket dat ze hebben gekocht en het verbindingspakket met het opeenvolgende hogere aantal verbindingen. Klanten die een pakket met 500 verbindingen kiezen, beschikken over een quotum van 750 verbindingen. |
 
-## <a name="resource-commitment"></a>Toezegging van bronnen
+## <a name="resource-commitment"></a>Resourcetoezegging
 
 Microsoft biedt u services ten minste tot aan het niveau van het aangenomen gebruik behorend bij de maandelijkse toezegging die u hebt gekocht (de servicetoezegging), maar alle andere verhogingen in de gebruiksniveaus van serviceresources (bijvoorbeeld verhoging van het aantal actieve rekeninstanties of verhoging van de hoeveelheid gebruikte opslag) zijn afhankelijk van de beschikbaarheid van deze serviceresources.
 
@@ -228,7 +228,7 @@ Ondernemingsbeheerders kunnen nieuwe accounteigenaren toevoegen, een bestaande a
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Bestaande/nieuwe accounteigenaars die nieuwe abonnementen maken
 
-**Stap 1: aanmelden bij account**
+**Eerste stap: u aanmelden bij uw account**
 1. Selecteer in Azure EA Portal het tabblad **Beheren** en navigeer naar **Abonnement** in het menu bovenaan.
 1. Controleer of u bent aangemeld als de accounteigenaar van dit account.
 1. Klik op **+Abonnement toevoegen**.
@@ -238,7 +238,7 @@ De eerste keer dat u een abonnement aan een account toevoegt, moet u uw contactg
 
 De eerste keer dat u een abonnement aan uw account toevoegt, wordt u gevraagd de MOSA-overeenkomst en een tariefplan te accepteren. Deze secties zijn NIET van toepassing op Enterprise Agreement-klanten, maar zijn momenteel noodzakelijk om uw abonnement in te richten. Uw aangepaste Microsoft Azure Enterprise Agreement-inschrijving vervangt de bovenstaande items en uw contractuele relatie blijft ongewijzigd. Schakel het selectievakje in om aan te geven dat u akkoord gaat met de voorwaarden.
 
-**Stap 2: abonnements naam bijwerken**
+**Tweede stap: abonnementsnaam bijwerken**
 
 Alle nieuwe abonnementen worden toegevoegd met de standaardabonnementsnaam 'Microsoft Azure Enterprise'. Het is belangrijk dat u de abonnementsnaam bijwerkt zodat u deze kunt onderscheiden van de andere abonnementen in uw Enterprise-inschrijving en zodat deze kan worden herkend in rapporten op ondernemingsniveau.
 
@@ -259,11 +259,11 @@ Wanneer nieuwe accounteigenaren (AO) voor de eerste keer worden toegevoegd aan d
 
 Dit scenario vindt plaats wanneer de klant services heeft geïmplementeerd onder het verkeerde inschrijvingsnummer of als deze de verkeerde services heeft geselecteerd.
 
-Als u wilt controleren of u services implementeert voor de juiste inschrijving, kunt u de gegevens voor de inbegrepen eenheden controleren via het prijzenoverzicht. Meld u aan als ondernemings beheerder en klik op **rapporten** op de linkernavigatiebalk en selecteer het tabblad **prijs lijst** . Klik in de rechter bovenhoek op het pictogram voor het downloaden van het bijbehorende plan SKU-onderdeel nummers met filter op kolom inbegrepen hoeveelheid en selecteer waarden die groter zijn dan 0.
+Als u wilt controleren of u services implementeert voor de juiste inschrijving, kunt u de gegevens voor de inbegrepen eenheden controleren via het prijzenoverzicht. Meld u aan als Enterprise-beheerder, klik op **Rapporten** in het linkernavigatievenster en selecteer het tabblad **Prijzenoverzicht**. Klik op het downloadpictogram in de rechterbovenhoek, zoek de betreffende abonnements-SKU-onderdeelnummers met het filter in de kolom 'Inbegrepen hoeveelheid' en selecteer waarden die groter zijn dan 0.
 
 Controleer of uw OMS-abonnement wordt weergegeven in het prijzenoverzicht onder Inbegrepen eenheden. Als er geen inbegrepen eenheden voor het OMS-abonnement worden weergegeven voor uw inschrijving, is uw OMS-abonnement mogelijk opgenomen in een andere inschrijving. Neem contact op met Azure Enterprise Portal Support via [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).
 
-Als de inbegrepen eenheden voor de services in het prijzen overzicht niet overeenkomen met wat u hebt geïmplementeerd, bijvoorbeeld Operational Insights Premium-gegevens die zijn geanalyseerd versus Operational Insights standaard gegevens geanalyseerd, betekent dit dat u mogelijk geïmplementeerde Services hebt die niet onder het plan vallen. Neem contact op met de ondersteuning van Azure Enterprise Portal op [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) , zodat wij u verder kunnen helpen.
+Als de inbegrepen eenheden voor de services in het prijzenoverzicht niet overeenkomen met wat u hebt geïmplementeerd, bijvoorbeeld Geanalyseerde Premium-gegevens voor Operational Insights versus Geanalyseerde standaardgegevens voor Operational Insights, hebt u mogelijk services geïmplementeerd die niet onder het abonnement vallen. Neem contact op met Azure Enterprise Portal Support op [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) zodat we u verder kunnen helpen.
 
 **Services van een abonnements-SKU ingericht voor de verkeerde inschrijving**
 

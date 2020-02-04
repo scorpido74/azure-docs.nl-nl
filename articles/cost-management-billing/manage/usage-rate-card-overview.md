@@ -17,10 +17,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 766cfa38108faa0dbaa16a3d2596a4b34689553c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76121094"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Gebruik Azure Billing-API's voor het op programmatische wijze verkrijgen van inzicht in uw gebruik van Azure
@@ -38,7 +38,7 @@ Nadat het [aanmelden is voltooid](manage-billing-access.md#opt-in), kunt u factu
 ## <a name="azure-resource-usage-api-preview"></a>Azure-resourcegebruik-API (preview)
 Gebruik de [Azure-resourcegebruik-API](/previous-versions/azure/reference/mt219003(v=azure.100)) om geschatte gegevens over het Azure-gebruik op te halen. De API omvat:
 
-* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Facturering voor lezer, Lezer, Eigenaar of Bijdrager om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
+* **Op rollen gebaseerd toegangsbeheer van Azure**: configureer toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de gebruiksgegevens van het abonnement. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer van facturering, Lezer, Eigenaar of Inzender om toegang te krijgen tot de gebruiksgegevens voor een specifiek Azure-abonnement.
 * **Aggregaties per uur of per dag**: aanroepers kunnen opgeven of ze hun Azure-gebruiksgegevens in buckets per uur of per dag willen. De standaardinstelling is per dag.
 * **Metagegevens van exemplaren (inclusief resourcetags**): haal details op exemplaarniveau op, zoals de volledig gekwalificeerde resource-URI (/subscriptions/{subscription-id}/..), informatie over de resourcegroep en resourcetags. Deze metagegevens helpen u op een deterministische en programmatische manier gebruik toe te wijzen aan de tags, bijvoorbeeld voor kostendoorrekeningen.
 * **Metagegevens van resources**: resourcegegevens zoals de naam, categorie en subcategorie van de meter, eenheid en regio geven de aanroeper een beter inzicht in wat er is verbruikt. We werken ook aan het gelijktrekken van de terminologie voor resourcemetagegevens in de Azure-portal, CSV voor Azure-gebruik, EA Billing CSV en andere openbare ervaringen, zodat u gegevens in verschillende ervaringen kunt correleren.

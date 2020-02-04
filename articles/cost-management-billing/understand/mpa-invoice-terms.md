@@ -12,17 +12,17 @@ ms.workload: na
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 7555fc490804a847e61a46f194e77c62f0a985d9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989746"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>Terminologie in uw factuur voor een Microsoft Partner-overeenkomst
 
 Dit artikel is van toepassing op een Azure-factureringsaccount voor een Microsoft Partner-overeenkomst. [Controleer of u toegang hebt tot een Microsoft Partner-overeenkomst](#check-access-to-a-microsoft-partner-agreement).
 
-Uw factuur bevat een overzicht van uw kosten en instructies voor betaling. Het is beschikbaar als download in het Portable Document Format (.pdf) van de [Azure-portal](https://portal.azure.com/) of kan via e-mail worden verzonden. Zie [Uw Microsoft Azure-factuur weergeven en downloaden](download-azure-invoice.md) voor meer informatie.
+Uw factuur bevat een overzicht van uw kosten en instructies voor betaling. De factuur kan als PDF worden gedownload uit de [Azure-portal](https://portal.azure.com/) of kan per e-mail worden verzonden. Zie [Uw Microsoft Azure-factuur weergeven en downloaden](download-azure-invoice.md) voor meer informatie.
 
 De volgende secties bevatten belangrijke termen die op uw factuur worden gebruikt, inclusief beschrijvingen van elke term.
 
@@ -55,7 +55,7 @@ In het **factureringsoverzicht** worden de kosten voor het factureringsprofiel w
 | Termijn | Beschrijving |
 | --- | --- |
 | Kosten|Totaalbedrag van de Microsoft-kosten voor dit factureringsprofiel sinds de laatste factureringsperiode |
-| Credits |Tegoeden die u hebt ontvangen voor retouren |
+| Tegoeden |Tegoeden die u hebt ontvangen voor retouren |
 | Azure-tegoed toegepast | Azure-tegoeden die elke factureringsperiode automatisch worden verrekend met Azure-kosten |
 | Subtotaal |Het verschuldigde bedrag vóór btw |
 | Btw |Het type en het bedrag aan belasting dat u betaalt, afhankelijk van het land of de regio van uw factureringsprofiel. Als u geen btw hoeft te betalen, ziet u deze vermelding niet op uw factuur. |
@@ -83,7 +83,7 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Inzicht in de kosten voor de factuur van uw factureringsprofiel](review-customer-agreement-bill.md)
+- [Inzicht in de kosten op de factuur van uw Microsoft-klantovereenkomst](review-customer-agreement-bill.md)
 - [Uw Azure-factuur en de dagelijkse gebruiksgegevens ophalen](../manage/download-azure-invoice-daily-usage-date.md)
-- [De Azure-prijzen voor uw organisatie weergeven](../manage/ea-pricing.md)
+- [Azure-prijzen voor uw organisatie bekijken en downloaden](../manage/ea-pricing.md)
 - [Belastingdocumenten voor uw Microsoft-klantovereenkomst weergeven](mca-download-tax-document.md)

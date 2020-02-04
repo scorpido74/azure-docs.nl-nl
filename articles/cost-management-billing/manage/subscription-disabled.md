@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: be5c8cac1b0b7f926f97206ec27bf6fbc9914c91
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989915"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Een uitgeschakeld Azure-abonnement opnieuw activeren
@@ -59,7 +59,7 @@ Voor andere abonnementstypen [neemt u contact op met de ondersteuning](https://p
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 - Ontdek op welke manier u [factureringsactiviteit voor Azure bewaakt en beheert](getting-started.md).

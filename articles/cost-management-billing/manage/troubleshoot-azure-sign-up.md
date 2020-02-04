@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: e13a55143e554a55a2902fc2350f6fde6a8afb09
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989291"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Problemen met Azure-aanmelding oplossen
@@ -32,7 +32,7 @@ Er kan een probleem optreden wanneer u zich in Microsoft Azure Portal of het Azu
 
 Selecteer het probleem dat optreedt bij aanmelding voor Azure om fouten te corrigeren.
 
-### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Fout: *kan niet door gaan met aanmelden vanwege een probleem met uw account. Neem contact op met ondersteuning voor facturering.*
+### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>Fout: *De aanmelding kan niet worden voltooid vanwege een probleem met uw account. Neem contact op met ondersteuning voor facturering.*
 
 Volg deze stappen om het probleem op te lossen:
 
@@ -98,7 +98,7 @@ Zorg ervoor dat u de juiste aanmeldingsreferenties gebruikt. Controleer vervolge
 - MSDN
   - Controleer uw geschiktheidsstatus op uw [MSDN-accountpagina](https://msdn.microsoft.com/subscriptions/manage/default.aspx).
   - Als u uw status niet kunt controleren, neemt u contact op met de [klantenservicecenters voor MSDN-abonnementen](https://msdn.microsoft.com/library/aa493452.aspx).
-- Microsoft voor startups
+- Microsoft for Startups
   - Meld u aan bij de [Microsoft for Startups-portal](https://startups.microsoft.com/#start-two) om uw geschiktheidsstatus voor Microsoft te verifiëren voor opstarten.
   - Als u uw status niet kunt verifiëren, kunt u ondersteuning krijgen via de [Microsoft for Startups-forums](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups).
 - MPN
@@ -109,7 +109,7 @@ Zorg ervoor dat u de juiste aanmeldingsreferenties gebruikt. Controleer vervolge
 
 Als u een Azure In Open-abonnement wilt maken, moet u een geldige OSA-sleutel (Online Service Activation) hebben waaraan ten minste één Azure In Open-token is gekoppeld. Als u geen OSA-sleutel hebt, neemt u contact op met een van de Microsoft-partners die worden vermeld in [Microsoft Pinpoint](https://pinpoint.microsoft.com/).
 
-### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Fout: *u komt niet in aanmerking voor een Azure-abonnement*
+### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Fout: *U komt niet in aanmerking voor een Azure-abonnement*
 
 U kunt dit probleem oplossen door het volgende te controleren:
 
@@ -117,7 +117,7 @@ U kunt dit probleem oplossen door het volgende te controleren:
 - De creditcardgegevens zijn correct.
 - U hebt geen ander Microsoft-account waarvoor dezelfde gegevens worden gebruikt.
 
-### <a name="error-your-current-account-type-is-not-supported"></a>Fout: *uw huidige account type wordt niet ondersteund*
+### <a name="error-your-current-account-type-is-not-supported"></a>Fout: *Uw huidige accounttype wordt niet ondersteund*
 
 Dit probleem kan zich voordoen als het account is geregistreerd in een [niet-beheerde Azure AD-directory](../../active-directory/users-groups-roles/directory-self-service-signup.md) en niet is opgenomen in de Azure AD-directory van uw organisatie.
 

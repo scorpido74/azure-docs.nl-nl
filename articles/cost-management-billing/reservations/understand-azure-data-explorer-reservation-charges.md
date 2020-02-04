@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 88ab9c475d417bc935cf5d2d67f1678794fb74d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995622"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Reserveringskorting toepassen op Azure Data Explorer
@@ -21,7 +21,7 @@ Wanneer u gereserveerde capaciteit voor Azure Data Explorer hebt gekocht, wordt 
 
 ## <a name="how-reservation-discount-is-applied"></a>De manier waarop reserveringskorting wordt toegepast
 
-Voor een reserveringskorting geldt: '*gebruiken of verliezen*'. Als u voor een bepaald uur geen passende resources hebt, verliest u de reserveringshoeveelheid voor dat uur. U kunt niet-gebruikte gereserveerde uren niet meenemen.
+Voor een reserveringskorting geldt: '*gebruiken of verliezen*'. Als u voor een bepaald uur geen passende resources hebt, verliest u de reserveringshoeveelheid voor dat uur. U kunt ongebruikte gereserveerde uren niet meenemen.
 
 Wanneer u een resource afsluit, wordt de reserveringskorting automatisch toegepast op een andere overeenkomstige resource in het opgegeven bereik. Als er geen overeenkomstige resources in het opgegeven bereik worden gevonden, *verliest* u de gereserveerde uren.
 
@@ -36,7 +36,7 @@ Een reserveringskorting wordt op uurbasis toegepast op Azure Data Explorer-marke
 ## <a name="examples"></a>Voorbeelden
 
 In de volgende voorbeelden ziet u hoe de korting voor de gereserveerde capaciteit voor Azure Data Explorer wordt toegepast, afhankelijk van het aantal markeringseenheden dat u hebt aangeschaft en wanneer ze worden uitgevoerd.
-Voor de grootte van het engine-cluster: **2 D11_v2 vm's**zijn uw totale kosten op aanvraag voor vier eenheden van Azure Data Explorer een opslag meter per uur. 
+Bijvoorbeeld voor de engineclustergrootte: **2 D11_v2-VM's**, zijn uw totale kosten voor vier eenheden van Azure Data Explorer-markeringenmeters per uur. 
 
 **Scenario 1** 
 
@@ -67,7 +67,7 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
 * [Vooruitbetalen voor Azure Data Explorer-rekenresources met gereserveerde capaciteit voor Azure Data Explorer](../../data-explorer/pricing-reserved-capacity.md)  
-* [Wat zijn reserveringen voor Azure?](save-compute-costs-reservations.md)  
+* [Wat zijn reserveringen voor Azure](save-compute-costs-reservations.md)  
 * [Azure-reserveringen beheren](manage-reserved-vm-instance.md)  
 * [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](understand-reserved-instance-usage.md)
 * [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)

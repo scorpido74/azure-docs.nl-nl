@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
 ms.openlocfilehash: 6ae55e0075883de08af516b71089f00353975b34
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992840"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Een creditcard toevoegen, bijwerken of verwijderen voor Azure
@@ -93,7 +93,7 @@ Als u meer abonnementen heeft met dezelfde actieve betalingswijze, wordt de acti
 
 ## <a name="remove-a-credit-card-from-the-account"></a>Een creditcard verwijderen van het account
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **Kostenbeheer en facturering** aan de linkerkant van de pagina.
 
     ![Schermopname van de zoekopdracht](./media/change-credit-card/search.png)
@@ -113,7 +113,7 @@ Als u de betalingswijze voor een factureringsprofiel wilt wijzigen, moet u de pe
 
 Als u de standaardbetalingswijze wilt wijzigen in cheque/directe overboeking, leest u hoe u [een factureringsprofiel kunt wijzigen in een cheque/directe overboeking](pay-by-invoice.md).
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek naar **kostenbeheer en facturering**.
 1. Klik in het menu aan de linkerkant op **Factureringsprofielen**.
 
@@ -122,7 +122,7 @@ Als u de standaardbetalingswijze wilt wijzigen in cheque/directe overboeking, le
 1. Selecteer een factureringsprofiel.
 1. Selecteer in het menu aan de linkerkant de optie **Betalingsmethoden**.
 
-   ![Schermopname van de betalingsmethoden in het menu](./media/change-credit-card/billing-profile-payment-methods.png)
+   ![Schermopname van de betalingswijze in het menu](./media/change-credit-card/billing-profile-payment-methods.png)
 
 1. Klik boven de standaardbetalingswijze op **Wijzigen**.
 
@@ -165,7 +165,7 @@ Als u een btw-nummer wilt toevoegen of bijwerken, werkt u uw profiel bij in het 
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 - Krijg meer informatie over [Azure-reserveringen](../reservations/save-compute-costs-reservations.md) om te zien of ze geld kunnen besparen.

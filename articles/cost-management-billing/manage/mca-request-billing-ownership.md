@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: f7d6c6cbe5b99cb429b5399df7ba9765c1553901
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991111"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Eigendom van facturering van Azure-abonnementen van andere accounts krijgen
@@ -33,31 +33,31 @@ Als u het eigendom van facturering wilt aanvragen, moet u **eigenaar van de fact
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-    ![Schermopname van de zoekopdracht in Azure Portal naar kostenbeheer en facturering](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Schermopname van zoekopdracht in de Azure-portal naar kostenbeheer en facturering](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Selecteer op de pagina betaal bereik het facturerings account dat moet worden gebruikt om te betalen voor het gebruik van de abonnementen. Het facturerings account moet van het type **micro soft-klant overeenkomst**zijn.
+3. Selecteer op de pagina met factureringsbereiken het factureringsaccount dat zou worden gebruikt om het gebruik van de abonnementen te betalen. Het factureringsaccount moet van het type **Microsoft-klantovereenkomst** zijn.
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/mca-request-billing-ownership/list-of-scopes.png)
 
     > [!NOTE]
     >
-    > Azure Portal het laatste factuur bereik te onthouden dat u hebt geopend en geeft het bereik weer wanneer u de volgende keer aan de pagina van Cost Management en facturering bent. U ziet de pagina betaal bereik niet als u eerder Cost Management en facturering hebt bezocht. Als dit het geval is, controleert u of u zich in het [juiste bereik](#check-for-access)bevindt. Als dat niet het geval is, [schakelt u het bereik](view-all-accounts.md#switch-billing-scope-in-the-azure-portal) in om het facturerings account voor een micro soft-klant overeenkomst te selecteren.
+    > In de Azure-portal wordt het meest recente factureringsbereik dat u hebt geopend, onthouden. Dit bereik wordt weergegeven wanneer u de pagina Kostenbeheer en facturering de volgende keer opent. U ziet de pagina met factureringsbereiken niet als u Kostenbeheer en facturering eerder hebt bezocht. Als dit het geval is, controleert u of u zich in het [juiste bereik bevindt](#check-for-access). Zo niet, dan kunt u [Schakelen tussen bereiken](view-all-accounts.md#switch-billing-scope-in-the-azure-portal) om het factureringsaccount voor een Microsoft-klantovereenkomst te selecteren.
 
-4. Selecteer **facturerings profielen** aan de linkerkant.
+4. Selecteer aan de linkerkant de optie **Factureringsprofielen**.
 
-    ![Scherm opname van het selecteren van facturerings profielen](./media/mca-request-billing-ownership/mca-select-profiles.png)     
+    ![Schermopname van het selecteren van factureringsprofielen](./media/mca-request-billing-ownership/mca-select-profiles.png)     
 
     > [!Note]
     >
-    > Als u geen facturerings profielen ziet, bevindt u zich niet in het juiste facturerings bereik. U moet een facturerings account voor een micro soft-klant overeenkomst selecteren en vervolgens facturerings profielen selecteren. Zie voor meer informatie over het wijzigen van scopes [de optie facturerings bereik in de Azure Portal](view-all-accounts.md#switch-billing-scope-in-the-azure-portal).
+    > Als u geen factureringsprofielen ziet, bevindt u zich niet in het juiste factureringsbereik. U moet een factureringsaccount voor een Microsoft-klantovereenkomst selecteren en vervolgens Factureringsprofielen selecteren. Raadpleeg [Schakelen tussen bereiken in de Azure-portal](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)voor meer informatie over het wijzigen van bereiken.
 
-5. Selecteer een **facturerings profiel** in de lijst. Zodra u het eigendom van de abonnementen neemt, wordt het gebruik ervan in rekening gebracht voor dit facturerings profiel.
+5. Selecteer een **Factureringsprofiel** in de lijst. Zodra u het eigendom van de abonnementen hebt overgenomen, wordt het gebruik ervan in rekening gebracht bij dit factureringsprofiel.
 
 6. Selecteer **Factuursecties** aan de linkerkant.
 
     ![Schermopname van de selectie van factuursecties](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
 
-7. Selecteer een factuursectie in de lijst. Zodra u het eigendom van de abonnementen neemt, wordt het gebruik ervan toegewezen aan deze sectie van de factuur van het facturerings profiel.
+7. Selecteer een factuursectie in de lijst. Zodra u het eigendom van de abonnementen hebt overgenomen, wordt het gebruik ervan toegewezen aan deze sectie van de factuur voor het factureringsprofiel.
 
 8. Selecteer **Overdrachtsaanvragen** aan de linkerkant en selecteer vervolgens **Een nieuwe aanvraag toevoegen**.
 
@@ -77,25 +77,25 @@ Als u het eigendom van facturering wilt aanvragen, moet u **eigenaar van de fact
 
 ## <a name="check-the-transfer-request-status"></a>De status van de overdrachtsaanvraag controleren
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-    ![Schermopname van de zoekopdracht in Azure Portal naar kostenbeheer en facturering](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Schermopname van zoekopdracht in de Azure-portal naar kostenbeheer en facturering](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Selecteer op de pagina betaal bereik het facturerings account waarvoor de overdrachts aanvraag is verzonden.
+3. Selecteer op de pagina met factureringsbereiken het factureringsaccount waarvoor de overdrachtsaanvraag is verzonden.
 
-4. Selecteer **facturerings profielen** aan de linkerkant.
+4. Selecteer aan de linkerkant de optie **Factureringsprofielen**.
 
-    ![Scherm opname van het selecteren van facturerings profielen](./media/mca-request-billing-ownership/mca-select-profiles.png)     
+    ![Schermopname van het selecteren van factureringsprofielen](./media/mca-request-billing-ownership/mca-select-profiles.png)     
 
-5. Selecteer het **facturerings profiel** waarvoor de overdrachts aanvraag is verzonden.
+5. Selecteer het **Factureringsprofiel** waarvoor de overdrachtsaanvraag is verzonden.
 
 6. Selecteer **Factuursecties** aan de linkerkant.
 
     ![Schermopname van de selectie van factuursecties](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
 
-7. Selecteer de sectie factuur in de lijst waarvoor de overdrachts aanvraag is verzonden.
+7. Selecteer de factuursectie in de lijst waarvoor de overdrachtsaanvraag is verzonden.
 
 8. Selecteer **Overdrachtsaanvragen** aan de linkerkant. Op de pagina Overdrachtsaanvragen wordt de volgende informatie weergegeven:
 
@@ -113,7 +113,7 @@ Als u het eigendom van facturering wilt aanvragen, moet u **eigenaar van de fact
    |Status|Definitie|
    |---------|---------|
    |Wordt uitgevoerd|De gebruiker heeft de overdrachtsaanvraag niet geaccepteerd|
-   |Verwerken|De gebruiker heeft de overdrachtsaanvraag geaccepteerd. Facturering voor abonnementen die de gebruiker heeft geselecteerd, wordt overgebracht naar uw factuursectie|
+   |Wordt verwerkt|De gebruiker heeft de overdrachtsaanvraag geaccepteerd. Facturering voor abonnementen die de gebruiker heeft geselecteerd, wordt overgebracht naar uw factuursectie|
    |Voltooid| De facturering voor abonnementen die de gebruiker heeft geselecteerd, wordt overgebracht naar uw factuursectie|
    |Voltooid met fouten|De aanvraag is voltooid, maar de facturering voor sommige abonnementen die de gebruiker heeft geselecteerd, kan niet worden overgedragen|
    |Verlopen|De gebruiker heeft de aanvraag niet op tijd geaccepteerd en de aanvraag is verlopen|
@@ -126,7 +126,7 @@ Als u het eigendom van facturering wilt aanvragen, moet u **eigenaar van de fact
 
    |Kolom  |Definitie|
    |---------|---------|
-   |Id van overdrachtsaanvraag|De unieke id voor uw overdrachtsaanvraag. Als u een ondersteuningsaanvraag indient, deelt u deze id met de Azure-ondersteuning om uw ondersteuningsaanvraag te versnellen|
+   |Id van overdrachtsaanvraag|De unieke id voor uw overdrachtsaanvraag. Als u een ondersteuningsaanvraag indient, deelt u de id met de ondersteuning van Azure om uw ondersteuningsaanvraag te versnellen|
    |Overdracht aangevraagd op|De datum waarop de overdrachtsaanvraag is verzonden|
    |Overdracht aangevraagd door|Het e-mailadres van de gebruiker die de overdrachtsaanvraag heeft verzonden|
    |Overdrachtsaanvraag verloopt op| De datum waarop de overdrachtsaanvraag verloopt|

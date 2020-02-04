@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 08/06/2019
 ms.author: banders
 ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994049"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Reserveringen voor Azure-resources beheren
@@ -28,7 +28,7 @@ Als u voor Azure gereserveerde virtuele machine-instanties hebt aangeschaft, kun
 
 ## <a name="reservation-order-and-reservation"></a>Reserveringsorder en reservering
 
-Wanneer u een reserve ring koopt, worden er twee objecten gemaakt: **reserverings order** en **reserve ring**.
+Wanneer u een reservering aanschaft, worden twee objecten gemaakt: een **reserveringsorder** en een **reservering**.
 
 Op het moment van aankoop staat er één reservering onder een reserveringsorder. Door bepaalde acties, zoals splitsen, samenvoegen, gedeeltelijke restitutie of uitwisselen, worden nieuwe reserveringen gemaakt onder de **reserveringsorder**.
 
@@ -44,7 +44,7 @@ Voor een reservering worden de machtigingen van de bijbehorende reserveringsorde
 
 U kunt het bereik van een reservering als volgt wijzigen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Alle services** > **Reserveringen**.
 3. Selecteer de reservering.
 4. Selecteer **Instellingen** > **Configuratie**.
@@ -60,12 +60,12 @@ U kunt het reserveringsbeheer delegeren door personen toe te voegen aan rollen v
 
 U kunt de toegang tot reserveringsorders en reserveringen onafhankelijk van de abonnementen waarvoor de reserveringskorting geldt, beheren. Wanneer u iemand een machtiging geeft om een reserveringsorder of de reservering te beheren, geeft u die persoon hiermee geen machtiging om ook het abonnement te beheren. Evenzo is iemand die van u een machtiging krijgt om een abonnement in het bereik van de reservering te beheren, ook niet gemachtigd om de reserveringsorder of de reservering te beheren.
 
-Als de gebruiker een reservering wil inruilen of laten restitueren, heeft de gebruiker toegang nodig tot de reserveringsorder. Wanneer u machtigingen aan iemand toewijst, kunt u het beste machtigingen voor de reserveringsorder geven, niet voor de reservering.
+Als de gebruiker een uitwisseling of een restitutie wil uitvoeren, moet deze persoon toegang hebben tot de reserveringsorder. Wanneer u machtigingen aan iemand toewijst, kunt u het beste machtigingen voor de reserveringsorder geven, niet voor de reservering.
 
 
 U kunt het toegangsbeheer voor een reservering als volgt delegeren:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer**Alle services** > **Reservering** om de reserveringen te bekijken waartoe u toegang hebt.
 3. Selecteer de reservering waarvoor u de toegang wilt delegeren aan andere gebruikers.
 4. Klik op **Toegangsbeheer (IAM)** .
@@ -106,7 +106,7 @@ U kunt het toegangsbeheer voor een reservering als volgt delegeren:
     Update-AzReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
     ```
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
+## <a name="cancel-exchange-or-refund-reservations"></a>Reserveringen annuleren, ruilen of terugbetalen
 
 Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](exchange-and-refund-azure-reservations.md) voor meer informatie.
 
@@ -120,7 +120,7 @@ Voor reserveringen met het bereik Enkelvoudig kunt u de reservering optimalisere
 
 U kunt de optimalisatie-instelling voor de reservering als volgt bijwerken:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Alle services** > **Reserveringen**.
 3. Selecteer de reservering.
 4. Selecteer **Instellingen** > **Configuratie**.
@@ -134,7 +134,7 @@ Besparingen voor Azure-reserveringen zijn alleen mogelijk bij duurzaam gebruik v
 
 Een van de manieren om het gebruik van reserveringen weer te geven, is via Azure Portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Selecteer **Alle services** > [**Reserveringen**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) en bekijk het **Percentage gebruik** voor een reservering.  
   ![Afbeelding met de lijst met reserveringen](./media/manage-reserved-vm-instance/reservation-list.png)
 3. Selecteer een reservering.
@@ -159,7 +159,7 @@ Als u merkt dat de reserveringen van uw organisatie niet voldoende worden gebrui
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -183,4 +183,4 @@ Inzicht in kortingen en gebruik:
 - [Inzicht in de manier waarop andere reserveringskortingen worden toegepast](understand-reservation-charges.md)
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](understand-reserved-instance-usage.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)
-- [Kosten van Windows-software die niet zijn inbegrepen bij reserveringen](reserved-instance-windows-software-costs.md)
+- [Kosten van Windows-software zijn niet inbegrepen bij reserveringen](reserved-instance-windows-software-costs.md)

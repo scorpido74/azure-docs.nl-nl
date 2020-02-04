@@ -14,10 +14,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3e1e99313454c8352b96b8f11ec35f482521f7b5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989772"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Een upgrade uitvoeren voor uw gratis Azure-account of Microsoft Azure for Students Starter-account
@@ -30,7 +30,7 @@ Als u zich hebt geregistreerd voor een [Azure for Students Starter-account](http
 
 ## <a name="upgrade-your-azure-free-account"></a>Uw gratis Azure-account upgraden
 
-Wanneer u een upgrade uitvoert voor uw gratis Azure-account, behoudt u uw resterende tegoed voor de volledige 30 dagen vanaf het moment dat u zich registreert. Bijvoorbeeld: als u zich hebt geregistreerd op 1 november en u een upgrade uitvoert op 5 november, zullen alle ongebruikte tegoeden tot 30 november beschikbaar zijn. U hebt na de upgrade ook gedurende 12 maanden toegang tot gratis services.
+Wanneer u een upgrade uitvoert voor uw gratis Azure-account, behoudt u uw resterende tegoed voor de volledige 30 dagen vanaf het moment dat u zich registreert. Bijvoorbeeld: Als u zich registreert op 1 november en op 5 november een upgrade uitvoert, zijn alle ongebruikte tegoeden beschikbaar tot en met 30 november. U hebt na de upgrade ook gedurende 12 maanden toegang tot gratis services.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com)
 1. Zoek naar **Abonnementen**.

@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 553cc7fd27571ebc925e33f824060c023664a369
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75991774"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Uw abonnementsgegevens op het hoogste niveau exporteren en weergeven
@@ -28,9 +28,9 @@ Als u de set met abonnements-id's wilt weergeven die zijn gekoppeld aan uw gebru
 [!INCLUDE [gdpr-dsr-and-stp-note](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 Het gedownloade .json-bestand bevat de volgende informatie:
-- E-mail: het e-mail adres dat is gekoppeld aan uw account.
-- PUID: de unieke id die is gekoppeld aan uw facturerings account.
-- SubscriptionIds: een lijst met abonnementen die deel uitmaken van uw account, genummerd op abonnements-ID.
+- E-mail: Het e-mail adres dat is gekoppeld aan uw account.
+- PUID: De unieke id die is gekoppeld aan uw factureringsaccount.
+- Abonnements-id’s: Een lijst met abonnementen die deel uitmaken van uw account, geïnventariseerd op abonnements-id.
 
 ### <a name="subscriptionsjson-sample"></a>voorbeeld abonnementen.json
 

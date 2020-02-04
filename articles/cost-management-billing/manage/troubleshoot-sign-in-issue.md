@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
 ms.openlocfilehash: 74cf3f197895823bcbd94db0bf3c7bd8065df767
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988134"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Aanmeldingsproblemen voor Azure-abonnementen oplossen
@@ -26,13 +26,13 @@ Deze handleiding helpt bij het oplossen van problemen waardoor u zich niet kunt 
 
 ## <a name="issues"></a>Problemen
 
-### <a name="page-hangs-in-the-loading-status"></a>De pagina blijft hangen tijdens het laden
+### <a name="page-hangs-in-the-loading-status"></a>De pagina loopt vast tijdens de laadstatus
 
 Als uw internetbrowserpagina vastloopt, voert u elk van de volgende stappen uit totdat de Azure-portal bereikbaar is.
 
 - Vernieuw de pagina.
 - Gebruik een andere internetbrowser.
-- Gebruik de modus voor privé browsen van uw browser. Voor Internet Explorer: Klik op **extra** > **beveiliging** > **InPrivate-navigatie**en zoek vervolgens naar de [Azure Portal](https://portal.azure.com/) of het Azure- [account centrum](https://account.azure.com/Subscriptions).
+- Gebruik de modus voor privé browsen van uw browser. Voor Internet Explorer: Klik op **Extra** > **Veiligheid** > **InPrivate-browsing** en navigeer naar en meld u aan bij [Azure Portal](https://portal.azure.com/) of het [Azure-accountcentrum](https://account.azure.com/Subscriptions).
 
 ### <a name="you-are-automatically-signed-in-as-a-different-user"></a>U wordt automatisch aangemeld als een andere gebruiker
 
@@ -42,20 +42,20 @@ Probeer een van de volgende methoden om dit probleem op te lossen:
 
 - Wis de cache en verwijder internetcookies. Klik in Internet Explorer op **Extra** > **Internetopties** > **Verwijderen**. Zorg ervoor dat de selectievakjes voor tijdelijke bestanden, cookies, wachtwoorden en de browsegeschiedenis zijn geselecteerd en klik vervolgens op Verwijderen.
 - Stel de instellingen van Internet Explorer opnieuw in om eventuele persoonlijke instellingen die u hebt gemaakt, te herstellen. Klik op **Extra** > **Internetopties** > **Geavanceerd** > selecteer het vakje **Persoonlijke instellingen verwijderen** > **Opnieuw instellen**.
-- Gebruik de modus voor privé browsen van uw browser. Voor Internet Explorer: Klik op **extra** > **beveiliging** > **InPrivate-navigatie**en zoek vervolgens naar de [Azure Portal](https://portal.azure.com/) of het Azure- [account centrum](https://account.azure.com/Subscriptions).
+- Gebruik de modus voor privé browsen van uw browser. Voor Internet Explorer:  Klik op **Extra** > **Veiligheid** > **InPrivate-browsing** en navigeer naar en meld u aan bij [Azure Portal](https://portal.azure.com/) of het [Azure-accountcentrum](https://account.azure.com/Subscriptions).
 
 ### <a name="i-can-sign-in-but-i-see-no-subscriptions-found"></a>Ik kan me aanmelden, maar ik zie *Er zijn geen abonnementen gevonden*
 
 Dit probleem treedt op als u de verkeerde map hebt geselecteerd of als uw account niet over voldoende machtigingen beschikt.
 
-**Scenario 1:** Er wordt een fout bericht ontvangen in de [Azure Portal](https://portal.azure.com/)
+**Scenario 1:** Het foutbericht is ontvangen in [Azure Portal](https://portal.azure.com/)
 
 Dit probleem oplossen:
 
 - Zorg ervoor dat de juiste Azure-map is geselecteerd door in de rechterbovenhoek op uw account te klikken.
 - Als de juiste Azure-map is geselecteerd maar u nog steeds het foutbericht ontvangt, moet uw account worden [toegevoegd als eigenaar](add-change-subscription-administrator.md).
 
-**Scenario 2:** Er wordt een fout bericht ontvangen in de [Azure-Accountcentrum](https://account.windowsazure.com/Subscriptions)
+**Scenario 2:** Het foutbericht is ontvangen in het [Azure-accountcentrum](https://account.windowsazure.com/Subscriptions)
 
 Controleer of het account dat u gebruikt de accountbeheerder is. Voer de volgende stappen uit om te controleren wie de accountbeheerder is:
 

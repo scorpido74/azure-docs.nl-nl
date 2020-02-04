@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 632d8ef84fc30ee7e97b8961d74fbb95ced42234
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990058"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Vermijd kosten met uw gratis Azure-account
@@ -41,7 +41,7 @@ Na de upgrade van uw account krijgt u betalen-naar-gebruik-tarieven voor het geb
 
 Uw gratis services en hoeveelheden verlopen na van 12 maanden. U kunt nagaan wanneer uw gratis services verlopen in de Azure-portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer in het navigatiegebied links **Alle services**.
 
@@ -58,7 +58,7 @@ Zodra uw gratis services en hoeveelheden zijn verlopen, worden er betalen-per-ge
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Uw gratis Azure-account upgraden](upgrade-azure-subscription.md)

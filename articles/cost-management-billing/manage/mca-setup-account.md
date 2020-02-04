@@ -1,5 +1,5 @@
 ---
-title: Facturering instellen voor micro soft-klant overeenkomst-Azure
+title: Facturering instellen voor Microsoft-klantovereenkomst - Azure
 description: Informatie over hoe u uw factureringsrekening configureert voor een Microsoft-klantovereenkomst.
 author: amberbhargava
 manager: amberb
@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 117d657712eba8d24ab18987f3e761553c15a858
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994634"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Uw factureringsrekening configureren voor een Microsoft-klantovereenkomst
@@ -86,7 +86,7 @@ Uw nieuwe factureringsrekening vereenvoudigt de facturering voor uw organisatie 
 1. U gebruikt de factureringsrekening om de facturering voor uw Microsoft-klantovereenkomst te beheren. Enterprise-beheerders worden eigenaar van de factureringsrekening. Raadpleeg [Inzicht in de factureringsrekening](../understand/mca-overview.md#your-billing-account) voor meer informatie over de factureringsrekening.
 2. U gebruikt het factureringsprofiel om de facturering voor uw organisatie te beheren, vergelijkbaar met uw Enterprise Agreement-inschrijving. Ondernemingsbeheerders worden eigenaar van het factureringsprofiel. Raadpleeg [Inzicht in factureringsprofielen](../understand/mca-overview.md#billing-profiles) voor meer informatie over factureringsprofielen.
 3. U gebruikt een factuursectie om uw kosten te ordenen op basis van uw behoeften, net als de afdelingen in uw Enterprise Agreement-inschrijving. Afdelingen worden factuursecties en afdelingsbeheerders worden eigenaar van de respectieve factuursecties. Raadpleeg [inzicht in factuursecties](../understand/mca-overview.md#invoice-sections) voor meer informatie over factuursecties.
-4. De accounts die in uw Enterprise Agreement zijn gemaakt, worden niet ondersteund in het nieuwe factureringsaccount. De abonnementen van het account horen bij de respectieve factuursectie voor hun afdeling. Accounteigenaren kunnen abonnementen voor hun factuursecties maken en beheren.
+4. De accounts die in uw Enterprise Agreement zijn gemaakt, worden niet ondersteund in de nieuwe factureringsrekening. De abonnementen van het account horen bij de respectieve factuursectie voor hun afdeling. Accounteigenaren kunnen abonnementen voor hun factuursecties maken en beheren.
 
 ## <a name="changes-to-billing-administrator-access"></a>Wijzigingen in de toegang van de factureringsbeheerder
 
@@ -186,7 +186,7 @@ Als u de configuratie wilt afronden, hebt u toegang nodig tot zowel de nieuwe fa
 
     - In de nieuwe factureringsrekening wordt een factureringshiërarchie gemaakt die correspondeert met uw Enterprise Agreement-hiërarchie. Raadpleeg [inzicht in uw factureringshiërarchie begrijpen](#understand-changes-to-your-billing-hierarchy) voor meer informatie.
     - Beheerders van uw Enterprise Agreement-inschrijving krijgen toegang tot de nieuwe factureringsrekening, zodat zij de facturering voor uw organisatie kunnen blijven beheren.
-    - De facturering van uw Azure-abonnement wordt overgezet naar het nieuwe account. **Er zijn geen gevolgen voor uw Azure-Services tijdens deze overgang. Ze blijven actief zonder onderbrekingen**.
+    - De facturering van uw Azure-abonnement wordt overgezet naar het nieuwe account. **Er zijn tijdens deze overgang geen gevolgen voor uw Azure-Services. Ze blijven zonder onderbrekingen actief**.
     - Als u Azure-reserveringen hebt, worden die verplaatst naar uw nieuwe factureringsrekening met dezelfde voordelen en termijn.
 
 4. U kunt de status van de overgang controleren op de pagina **Overgangsstatus**.
@@ -199,11 +199,11 @@ Als u de configuratie wilt afronden, hebt u toegang nodig tot zowel de nieuwe fa
 
 ### <a name="azure-subscriptions"></a>Azure-abonnementen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-   ![Schermopname van zoekopdracht in de Azure-portal](./media/mca-setup-account/search-cmb.png)
+   ![Schermopname van de zoekopdracht in de Azure-portal](./media/mca-setup-account/search-cmb.png)
 
 3. Selecteer het factureringsaccount. Het type factureringsrekening is **Microsoft-klantovereenkomst**.
 
@@ -213,17 +213,17 @@ Als u de configuratie wilt afronden, hebt u toegang nodig tot zowel de nieuwe fa
 
 Azure-abonnementen die zijn overgezet van uw Enterprise Agreement-inschrijving naar de nieuwe factureringsrekening worden weergegeven op de pagina Azure-abonnementen. Als u denkt dat er een abonnement ontbreekt, kunt u de facturering van het abonnement handmatig overzetten in de Azure-portal. Raadpleeg [factureringseigendom krijgen van Azure-abonnementen van andere gebruikers](mca-request-billing-ownership.md) voor meer informatie
 
-### <a name="azure-reservations"></a>Azure Reservations
+### <a name="azure-reservations"></a>Azure-reserveringen
 
 Alle Azure-reserveringen in uw Enterprise Agreement-inschrijving worden verplaatst naar uw nieuwe factureringsrekening met dezelfde voordelen en termijn. Transacties die zijn voltooid vóór de overgang worden niet weergegeven in uw nieuwe factureringsrekening. U kunt echter controleren of de voordelen van uw reserveringen worden toegepast op uw abonnementen via de pagina [Azure-reserveringen ](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-account"></a>Toegang van ondernemingsbeheerders tot de factureringsrekening
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-   ![Schermopname van zoekopdracht in de Azure-portal](./media/mca-setup-account/search-cmb.png)
+   ![Schermopname van de zoekopdracht in de Azure-portal](./media/mca-setup-account/search-cmb.png)
 
 3. Selecteer de factureringsrekening voor uw **Microsoft-klantovereenkomst**.
 
@@ -235,11 +235,11 @@ Ondernemingsbeheerders worden vermeld als eigenaar van de factureringsrekening t
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-profile"></a>Toegang van ondernemingsbeheerders tot het factureringsprofiel
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-   ![Schermopname van zoekopdracht in de Azure-portal](./media/mca-setup-account/search-cmb.png)
+   ![Schermopname van de zoekopdracht in de Azure-portal](./media/mca-setup-account/search-cmb.png)
 
 3. Selecteer het factureringsprofiel dat voor uw inschrijving is gemaakt. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount selecteren. Selecteer in de factureringsrekening Factureringsprofielen en vervolgens het factureringsprofiel.
 
@@ -251,13 +251,13 @@ Ondernemingsbeheerders worden vermeld als eigenaar van factureringsprofielen ter
 
 ### <a name="access-of-enterprise-administrators-department-administrators-and-account-owners-on-invoice-sections"></a>Toegang van ondernemingsbeheerders, afdelingsbeheerders en accounteigenaren in factuursecties
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-   ![Schermopname van zoekopdracht in de Azure-portal](./media/mca-setup-account/search-cmb.png).
+   ![Schermopname van de zoekopdracht in de Azure-portal](./media/mca-setup-account/search-cmb.png).
 
-3. Selecteer een factuursectie. Factuursecties hebben dezelfde naam als hun respectieve afdelingen in Enterprise Agreement-inschrijvingen. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount selecteren. Selecteer in de factureringsrekening **Factureringsprofielen** en selecteer vervolgens **Factuursecties**. Selecteer een factuursectie in de lijst Factuursecties.
+3. Selecteer een factureringsgedeelte. Factuursecties hebben dezelfde naam als hun respectieve afdelingen in Enterprise Agreement-inschrijvingen. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount selecteren. Selecteer in de factureringsrekening **Factureringsprofielen** en selecteer vervolgens **Factuursecties**. Selecteer een factuursectie in de lijst Factuursecties.
 
    ![Schermopname van een lijst van de factuursectie na de overgang](./media/mca-setup-account/mca-invoice-sections-post-transition.png)
 

@@ -1,21 +1,20 @@
 ---
 title: 'Zelfstudie: Gebruik en kosten controleren met Cloudyn in Azure | Microsoft Docs'
 description: In deze zelfstudie bekijkt u gebruik en kosten om trends bij te houden, inefficiëntie te detecteren en waarschuwingen te maken.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: 1489c447513d2a470c75c909faf4ecccb6df5b17
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: a2d4525b0b29feb230f5496196a84e651e651e52
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986968"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774031"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -89,7 +88,7 @@ Bekijk de id's van de VM-exemplaren door te klikken op het plusteken naast **Lis
 
 Zie [Optimizing VM Size in Cloudyn](https://youtu.be/1xaZBNmV704) als u een zelfstudievideo wilt bekijken over het detecteren van inefficiënt gebruik.
 
-Azure Cost Management biedt ook aanbevelingen over kostenbesparingen voor Azure-services. Zie [Zelfstudie: kosten optimaliseren met behulp van aanbevelingen](../costs/tutorial-acm-opt-recommendations.md) voor meer informatie.
+Azure Cost Management biedt ook aanbevelingen over kostenbesparingen voor Azure-services. Zie [Zelfstudie: kosten optimaliseren op basis van aanbevelingen](../costs/tutorial-acm-opt-recommendations.md) voor meer informatie.
 
 ## <a name="create-alerts-for-unusual-spending"></a>Waarschuwingen maken voor ongebruikelijke uitgaven
 
@@ -101,7 +100,7 @@ In dit voorbeeld wordt het rapport **Actual Cost Over Time** (Werkelijke kosten 
 2. Stel **Groups** in op **Service** en stel **Filter on the service** in op **Azure/VM**.
 3. Selecteer rechtsboven in het rapport de optie **Actions** en selecteer **Schedule report**.
 4. Als u zelf op vaste tijden een e-mail met het rapport wilt ontvangen, selecteert u het tabblad **Scheduling** in het dialoogvenster **Save or Schedule this**. Selecteer **Send via email**. Alle labels, groepen en filters die u gebruikt, zijn opgenomen het rapport dat u per e-mail wordt toegezonden.
-5. Selecteer het tabblad **drempel waarde** en selecteer vervolgens **werkelijke kosten versus drempel waarde**.
+5. Selecteer het tabblad **Threshold** en selecteer **Actual Cost vs. Threshold**.
    1. In het vak voor de drempelwaarde **Red alert** voert u 10000 in.
    2. In het vak voor de drempelwaarde **Yellow alert** voert u 9000 in.
    3. In het vak **Number of consecutive alerts** voert u het aantal opeenvolgende te ontvangen waarschuwingen in. Wanneer u het totaal aantal waarschuwingen hebt ontvangen dat u hebt opgegeven, worden er geen extra waarschuwingen meer verzonden.
@@ -109,7 +108,7 @@ In dit voorbeeld wordt het rapport **Actual Cost Over Time** (Werkelijke kosten 
 
 ![Voorbeeld met rode en gele waarschuwingen op basis van uitgavedrempelwaarden](./media/tutorial-review-usage/schedule-alert01.png)
 
-U kunt ook het **kosten percentage versus de budget** drempelwaarde voor metrische gegevens kiezen om waarschuwingen te maken. Hiermee kunt u de drempels opgeven als percentage van uw budget in plaats van bedragen.
+U kunt ook de drempeloptie **Cost Percentage vs. Budget** kiezen om waarschuwingen te maken. Hiermee kunt u de drempels opgeven als percentage van uw budget in plaats van bedragen.
 
 ## <a name="export-data"></a>Gegevens exporteren
 
@@ -117,7 +116,7 @@ U kunt vanuit elk rapport gegevens exporteren op dezelfde manier waarop u waarsc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Gebruiks- en kostentrends bijhouden

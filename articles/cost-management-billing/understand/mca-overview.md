@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met micro soft Customer Agreement billing-Azure
+title: Aan de slag met facturering voor Microsoft-klantovereenkomst - Azure
 description: Uw factureringsaccount voor Microsoft-klantovereenkomst begrijpen
 author: bandersmsft
 manager: amberbhargava
@@ -11,15 +11,15 @@ ms.workload: na
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: 7d26c98ae8e5b9b95038a4a775134282703fa7c6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995115"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Aan de slag met uw factureringsaccount voor Microsoft-klantovereenkomst
 
-Er wordt een factureringsaccount gemaakt wanneer u zich aanmeldt om Azure te gebruiken. U gebruikt uw factureringsaccount om facturen en betalingen te beheren en kosten bij te houden. U kunt toegang hebben tot meerdere factureringsaccounts. Stel dat u zich voor uw persoonlijke projecten hebt geregistreerd voor Azure. U kunt ook toegang hebben tot Azure via de Enterprise Agreement van uw organisatie of de Microsoft-klantovereenkomst. Voor elk van deze scenario's hebt u dan een afzonderlijk factureringsaccount.
+Er wordt een factureringsaccount gemaakt wanneer u zich aanmeldt om Azure te gebruiken. U gebruikt uw factureringsaccount om facturen en betalingen te beheren en kosten bij te houden. U kunt toegang hebben tot meerdere factureringsaccounts. Stel dat u zich voor uw persoonlijke projecten hebt geregistreerd voor Azure. U kunt ook toegang hebben tot Azure via de Enterprise Agreement van uw organisatie of de Microsoft-klantovereenkomst. Voor elk van deze scenario's hebt u een afzonderlijk factureringsaccount.
 
 Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement).
 
@@ -45,7 +45,7 @@ Rollen in de factureringsprofielen hebben machtigingen om facturen en betalingsw
 
 Aan het begin van de maand wordt voor elk factureringsprofiel een maandelijkse factuur gegenereerd. De factuur bevat alle kosten van de vorige maand.
 
-In Azure Portal kunt u de factuur bekijken, documenten downloaden en de instelling wijzigen om toekomstige facturen per e-mail te ontvangen. Voor meer informatie, zie [Facturen downloaden voor een Microsoft-klantovereenkomst](../manage/download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement).
+In Azure Portal kunt u de factuur bekijken, documenten downloaden en de instelling wijzigen om toekomstige facturen per e-mail te ontvangen. Zie [Facturen voor een Microsoft-klantovereenkomst downloaden](../manage/download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement) voor meer informatie.
 
 ### <a name="invoice-payment-methods"></a>Betalingsmethoden voor facturen
 
@@ -65,7 +65,7 @@ Pas beleid toe om aankopen voor Azure Marketplace en Azure-reserveringen te behe
 
 Azure-plannen bepalen de prijzen en de serviceovereenkomsten voor Azure-abonnementen. Ze worden automatisch ingeschakeld wanneer u een factureringsprofiel maakt. Alle factuursecties die aan het factureringsprofiel zijn gekoppeld, kunnen gebruikmaken van deze plannen. Gebruikers met toegang tot de factuursectie gebruiken de plannen om Azure-abonnementen te maken. De volgende Azure-plannen worden ondersteund in factureringsaccounts voor een Microsoft-klantovereenkomst:
 
-| Plan             | Definitie  |
+| Plannen             | Definitie  |
 |------------------|-------------|
 |Microsoft Azure Plan   | Gebruikers toestaan abonnementen te maken die alle werkbelastingen kunnen uitvoeren.  |
 |Microsoft Azure Plan voor Dev/Test | Abonnees van Visual Studio toestaan abonnementen te maken die beperkt zijn tot het ontwikkelen of testen van werkbelastingen. Deze abonnementen krijgen voordelen zoals lagere tarieven en toegang tot exclusieve installatiekopieën van virtuele machines in Azure Portal. |
@@ -83,11 +83,11 @@ Rollen in de factuursecties hebben machtigingen om te bepalen wie Azure-abonneme
 
 ## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
 
-Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
+Als u hulp nodig hebt, neemt u [contact op met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over uw factureringsrekening:
+Raadpleeg de volgende artikelen voor meer informatie over uw factureringsaccount:
 
 - [Informatie over beheerdersrollen voor Microsoft-klantovereenkomsten in Azure](../manage/understand-mca-roles.md)
 - [Een extra Azure-abonnement voor Microsoft-klantovereenkomst maken](../manage/create-subscription.md)

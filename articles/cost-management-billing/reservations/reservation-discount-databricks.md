@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: c148351a4475bfdbee474a5e0951cc3b5717404e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995726"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Azure Databricks-korting bij aankoop vooraf toepassen
@@ -25,11 +25,11 @@ De korting bij aankoop vooraf geldt alleen voor het gebruik van Azure Databricks
 
 ## <a name="pre-purchase-discount-application"></a>Toepassing van korting bij aankoop vooraf
 
-Vooraf gekochte Databricks-capaciteit is van toepassing op alle Databricks-workloads en -servicelagen. U kunt de aankoop vooraf beschouwen als een pool met vooraf betaalde Databricks-doorvoereenheden. Het gebruik wordt in mindering gebracht op de pool, ongeacht de workload of de laag. Hierbij wordt de volgende verhouding gehanteerd:
+Databricks-korting bij aankoop vooraf is van toepassing op alle Databricks-workloads en -lagen. U kunt de aankoop vooraf beschouwen als een pool met vooraf betaalde Databricks-doorvoereenheden. Het gebruik wordt in mindering gebracht op de pool, ongeacht de workload of de laag. Hierbij wordt de volgende verhouding gehanteerd:
 
 | **Workload** | **Verhouding DBU-toepassing - Standard-laag** | **Verhouding DBU-toepassing - Premium-laag** |
 | --- | --- | --- |
-| Gegevensanalyse | 0,4 | 0,55 |
+| Data Analytics | 0,4 | 0,55 |
 | Data Engineering | 0,15 | 0,30 |
 | Data Engineering Light | 0,07 | 0,22 |
 

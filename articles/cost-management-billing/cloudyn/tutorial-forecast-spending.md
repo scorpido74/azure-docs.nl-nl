@@ -1,23 +1,22 @@
 ---
 title: 'Zelfstudie: uitgaven voorspellen met Cloudyn in Azure | Microsoft Docs'
 description: In deze zelfstudie leest u hoe u uitgaven kunt voorspellen met behulp van historische gegevens van gebruik en uitgaven.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: ab2a29eacbb2881dbfc0f383f70dbb5148506f5a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: 43b48cf96baaa01408d068de509e5be9fdf950ca
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987479"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769918"
 ---
-# <a name="tutorial-forecast-future-spending"></a>Zelfstudie: toekomstige uitgaven voorspellen
+# <a name="tutorial-forecast-future-spending"></a>Zelfstudie: Toekomstige uitgaven voorspellen
 
 Cloudyn helpt u bij het voorspellen van toekomstige uitgaven aan de hand van historische gegevens van gebruik en uitgaven. U gebruikt rapporten van Cloudyn om gegevens van alle geschatte kosten weer te geven. De voorbeelden in deze zelfstudie laten zien hoe u kostenschattingen kunt controleren met behulp van de rapporten. In deze zelfstudie leert u het volgende:
 
@@ -59,7 +58,7 @@ In de afbeelding hierboven worden de jaarlijkse kosten van virtuele machines van
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Toekomstige uitgaven voorspellen

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
 ms.openlocfilehash: 26c132d42bfc89c9b6e887c8ca02232848513698
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992073"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Gereserveerde exemplaren Azure EA-VM
@@ -54,7 +54,7 @@ Nadat de EA-inschrijving zo is ingesteld dat gereserveerde instanties kunnen wor
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>Aankoopgegevens bekijken van gereserveerde instanties
 
-U kunt de aankoopgegevens van uw gereserveerde instantie bekijken via het menu _Reservering_ aan de linkerzijde van de [Azure-portal](https://aka.ms/reservations) of via de [Azure EA-portal](https://ea.azure.com/). Selecteer **rapporten** in het menu aan de linkerkant en schuif omlaag naar de sectie _kosten per Services_ op het tabblad _gebruiks overzicht_ . Ga naar de onderkant van de sectie en uw gereserveerde instanties worden weer gegeven aan het einde zoals aangegeven door de aanduiding ' 1 jaar ' of ' 3 jaar ' naast de service naam, bijvoorbeeld: Standard_DS1_v2 Oost-1 jaar of Standard_D2s_v3 eastus2 3 jaar.
+U kunt de aankoopgegevens van uw gereserveerde instantie bekijken via het menu _Reservering_ aan de linkerzijde van de [Azure-portal](https://aka.ms/reservations) of via de [Azure EA-portal](https://ea.azure.com/). Selecteer **Rapporten** in het menu aan de linkerzijde en scrol naar beneden naar het gedeelte _Kosten per services_ in het tabblad _Gebruiksoverzicht_. Scrol naar de onderkant van het gedeelte, waar aankopen en gebruik van uw gereserveerde instanties worden vermeld met de aanduiding '1 jaar' of '3 jaar' naast de servicenaam, bijvoorbeeld: Standard_DS1_v2 eastus 1 jaar or Standard_D2s_v3 eastus2 3 jaar.
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>Hoe verander ik het abonnement dat bij de gereserveerde instantie hoort of hoe draag ik de voordelen van mijn gereserveerde instantie over aan een abonnement in hetzelfde account?
 
@@ -65,7 +65,7 @@ Er kan maar een abonnement profiteren van de voordelen van gereserveerde instant
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>Gebruiksgegevens van gereserveerde instanties bekijken
 
-U kunt de gebruiksgegevens van uw gereserveerde instanties bekijken in de [Azure-portal](https://aka.ms/reservations) of in de [Azure EA-portal](https://ea.azure.com/) (voor EA-klanten met toegang tot factureringsgegevens) in het gedeelte _Rapporten_ > _Gebruiksoverzicht_ > _Kosten per services_. Uw gereserveerde instanties kunnen worden geïdentificeerd als service namen met de naam ' reservation ', bijvoorbeeld: Reservering-Basis-VM of Virtual Machines reserve ring-Windows Server (1 kern geheugen).
+U kunt de gebruiksgegevens van uw gereserveerde instanties bekijken in de [Azure-portal](https://aka.ms/reservations) of in de [Azure EA-portal](https://ea.azure.com/) (voor EA-klanten met toegang tot factureringsgegevens) in het gedeelte _Rapporten_ > _Gebruiksoverzicht_ > _Kosten per services_. Uw gereserveerde instanties kunnen worden geïdentificeerd als servicenamen met 'Reservering', bijvoorbeeld: Reservering - Basis-VM of Virtuele Machine-reservering - Windows Svr (1 kern).
 
 Uw gebruiksgegevens en een geavanceerd CSV-rapport bevatten aanvullende gebruiksgegevens van de gereserveerde instantie. In het veld _Aanvullende informatie_ vindt u gebruiksgegevens van de gereserveerde instantie.
 

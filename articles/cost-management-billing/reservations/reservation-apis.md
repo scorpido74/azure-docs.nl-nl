@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 992e46cd8f10ff3c434f34a9f90c777870f3ada4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995817"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>API's voor automatisering van Azure-reserveringen
@@ -110,11 +110,11 @@ Gebruik de API [Reservering - Bijwerken](/rest/api/reserved-vm-instances/reserva
 
 ## <a name="learn-more"></a>Meer informatie
 
-- [Wat zijn reserveringen voor Azure?](save-compute-costs-reservations.md)
+- [Wat zijn reserveringen voor Azure](save-compute-costs-reservations.md)
 - [Inzicht in de manier waarop de korting voor VM-reserveringen wordt toegepast](../manage/understand-vm-reservation-charges.md)
 - [Inzicht in de manier waarop de korting voor het SUSE Linux Enterprise-softwareabonnement wordt toegepast](understand-suse-reservation-charges.md)
 - [Inzicht in de manier waarop andere reserveringskortingen worden toegepast](understand-reservation-charges.md)
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](understand-reserved-instance-usage.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)
 - [Kosten van Windows-software zijn niet inbegrepen in reserveringen](reserved-instance-windows-software-costs.md)
-- [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)
+- [Azure-reserveringen in CSP-programma (Cloud Solution Provider) van partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)

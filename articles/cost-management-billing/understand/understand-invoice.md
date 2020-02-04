@@ -1,6 +1,6 @@
 ---
 title: Meer informatie over uw Azure-factuur | Microsoft Docs
-description: Het gebruik en de factuur voor uw Azure-abonnement leren lezen en begrijpen
+description: Meer informatie over het gebruik van en de factuur voor uw Azure-abonnement
 services: ''
 documentationcenter: ''
 author: bandersmsft
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: e6858d51eec1bbcb100f71418337d74d19d6db5b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75994725"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>De voorwaarden op uw Microsoft Azure-factuur begrijpen
@@ -53,12 +53,12 @@ De sectie accountgegevens van de factuur bevindt zich bovenaan de eerste pagina 
 | Betalingswijze |Het type betaling dat is gebruikt voor het account (factuur of creditcard) |
 | Factureren aan |Het factuuradres dat voor het account wordt vermeld |
 | Abonnementsaanbieding ('Betalen-naar-gebruik') |Type abonnement dat is gekocht (Betalen-naar-gebruik, BizSpark Plus, Azure Pass, enz.). Zie [Soorten Azure-aanbiedingen](https://azure.microsoft.com/support/legal/offer-details/) voor meer informatie. |
-| E-mailadres van accounteigenaar | Het e-mailadres waaronder het Microsoft Azure-account is geregistreerd. <br /><br />Als u het e-mail adres wilt wijzigen, raadpleegt u [De profielgegevens van uw Azure-account wijzigen, zoals contact-e-mail, adres en telefoonnummer](../manage/change-azure-account-profile.md). |
+| E-mailadres van accounteigenaar | Het e-mailadres waarop het Microsoft Azure-account is geregistreerd. <br /><br />Als u het e-mail adres wilt wijzigen, raadpleegt u [De profielgegevens van uw Azure-account wijzigen, zoals contact-e-mail, adres en telefoonnummer](../manage/change-azure-account-profile.md). |
 
 ### <a name="understand-the-invoice-summary"></a>Meer informatie over het factuuroverzicht
 In de sectie **Factuuroverzicht** staat een overzicht van de transacties sinds uw laatste factuur en de huidige gebruikskosten.
 
-![Gedeelte Factureringsoverzicht](./media/understand-invoice/invoice-summary-section.png)
+![Sectie factuuroverzicht](./media/understand-invoice/invoice-summary-section.png)
 
 De naam bij Abonnement ("Productieopslag") is de naam van het abonnement voor deze factuur.
 
@@ -99,9 +99,9 @@ De volgende tabel beschrijft de kolomkoppen voor gebruikskosten die op uw factuu
 
 | Termijn |Beschrijving |
 | --- | --- |
-| Name |Identificeert de service op het hoogste niveau voor het gebruik |
+| Naam |Identificeert de service op het hoogste niveau voor het gebruik |
 | Type |Hiermee definieert u het type Azure-service dat van invloed kan zijn op het tarief |
-| Bron |Identificeert de maateenheid voor de meter die wordt verbruikt |
+| Resource |Identificeert de maateenheid voor de meter die wordt verbruikt |
 | Regio |Identificeert de datacentrumlocatie voor bepaalde services waarbij de prijs is gebaseerd op de datacentrumlocatie |
 | Verbruikt |De hoeveelheid van de meter die wordt gebruikt tijdens de factureringsperiode |
 | Inbegrepen |De hoeveelheid van de meter die gratis is inbegrepen in uw huidige factureringsperiode |
@@ -116,4 +116,4 @@ Als er kosten in rekening worden gebracht voor uw factuur waarover u meer inform
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

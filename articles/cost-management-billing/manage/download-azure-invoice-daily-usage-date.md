@@ -1,7 +1,7 @@
 ---
 title: Azure-factuur en dagelijkse gebruiksgegevens downloaden | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u uw Azure-factuur en de dagelijkse gebruiksgegevens kunt downloaden of weergeven.
-keywords: facturering, factuur, factuur downloaden, Azure-factuur, Azure-gebruik
+keywords: factuur,factuur downloaden,azure-factuur,azure-gebruik
 services: billing
 documentationcenter: ''
 author: genlin
@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: c5068dc38597d64634f19297fa7784de8d55d590
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992554"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Uw Azure-factuur en de dagelijkse gebruiksgegevens downloaden of weergeven
@@ -119,7 +119,7 @@ Als u een Microsoft-klantovereenkomst hebt, kunt u zich aanmelden om uw factuur 
 
 ### <a name="opt-out-of-getting-your-billing-profile-invoices-in-email"></a>Afmelden voor het via e-mail ontvangen van facturen
 
-U kunt uw factuur via e-mail afmelden door de bovenstaande stappen te volgen en vervolgens te klikken op **opt-out**. Alle eigen aars, mede werkers, lezers en factuur managers worden ook voor het ophalen van de factuur via e-mail afgemeld. Als u een lezer bent, kunt u de voorkeur voor e-mailfacturen niet wijzigen.
+Volg de bovenstaande stappen om u af te melden voor ontvangst van uw factuur via e-mail en klik op **Afmelden**. Ook alle eigenaren, bijdragers, lezers en factuurbeheerders worden afgemeld voor ontvangst van de factuur via e-mail. Als u een lezer bent, kunt u de voorkeur voor e-mailfacturen niet wijzigen.
 
 ## <a name="download-usage-in-azure-portal"></a>Uw gebruik downloaden in de Azure-portal
 
@@ -139,10 +139,10 @@ U kunt uw factuur via e-mail afmelden door de bovenstaande stappen te volgen en 
 
 Om als een EA-klant gebruiksgegevens weer te geven en te downloaden, moet u een Enterprise-beheerder, accounteigenaar of afdelingsbeheerder zijn en moet het beleid Kosten weergeven zijn ingeschakeld.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek naar *Kostenbeheer en facturering*.
 
-    ![Schermopname van zoekopdracht in de Azure-portal](./media/download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
+    ![Schermopname van de zoekopdracht in de Azure-portal](./media/download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
 
 1. Selecteer **Gebruik + kosten**.
 1. Selecteer **Downloaden** voor de maand waarvan u de gegevens wilt downloaden.
@@ -190,4 +190,4 @@ Als u een Microsoft-klantovereenkomst hebt, raadpleegt u:
 - [Informatie over begrippen op de factuur voor uw factureringsprofiel](../understand/mca-understand-your-invoice.md)
 - [Informatie over het bestand voor Azure-gebruik en -kosten voor uw factureringsprofiel](../understand/mca-understand-your-usage.md)
 - [Belastingdocumenten voor uw factureringsprofiel bekijken en downloaden](../understand/mca-download-tax-document.md)
-- [De Azure-prijzen voor uw organisatie weergeven](ea-pricing.md)
+- [Azure-prijzen voor uw organisatie bekijken en downloaden](ea-pricing.md)

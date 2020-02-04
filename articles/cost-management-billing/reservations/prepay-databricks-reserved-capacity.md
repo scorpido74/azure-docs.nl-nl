@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: bb3aa7970f993ec5e0ceb50d10cc0907ed225c2f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995869"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>De kosten voor Azure Databricks optimaliseren door hiervoor vooraf te betalen
@@ -29,7 +29,7 @@ Vooraf gekochte Databricks-capaciteit is van toepassing op alle Databricks-workl
 
 | **Workload** | **Verhouding DBU-toepassing - Standard-laag** | **Verhouding DBU-toepassing - Premium-laag** |
 | --- | --- | --- |
-| Gegevensanalyse | 0,4 | 0,55 |
+| Data Analytics | 0,4 | 0,55 |
 | Data Engineering | 0,15 | 0,30 |
 | Data Engineering Light | 0,07 | 0,22 |
 
@@ -41,18 +41,18 @@ Bereken voordat u tot aanschaf overgaat, het totale aantal DBU's dat voor versch
 
 U kunt Databricks-abonnementen kopen in de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D). Voor de aanschaf van gereserveerde capaciteit moet u de rol van eigenaar hebben voor ten minste één Enterprise Agreement.
 
-- U moet een rol van eigenaar zijn voor ten minste één Enterprise Agreement (nummer van de aanbieding: MS-AZR-0017P of MS-AZR-0148P) of een micro soft-klant overeenkomst of een afzonderlijk abonnement met betalen per gebruik-tarieven (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P).
-- Voor EA-abonnementen moet de optie gereserveerde instanties toevoegen zijn ingeschakeld in de EA-Portal. Als deze instelling is uitgeschakeld, moet u een EA-beheerder zijn voor het abonnement.
+- U moet beschikken over de rol Eigenaar voor minstens één Enterprise Agreement (aanbiedingsnummers: MS-AZR-0017P of MS-AZR-0148P), of Microsoft-klantovereenkomst of afzonderlijk abonnement met betalen-naar-gebruik-tarieven (aanbiedingsnummers: MS-AZR-0003P of MS-AZR-0023P).
+- Voor EA-abonnementen moet de optie Gereserveerde instanties toevoegen zijn ingeschakeld in de EA Portal. Of, als deze instelling is uitgeschakeld, moet u een EA-beheerder van het abonnement zijn.
 - Voor Enterprise Agreements moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in de [EA Portal](https://ea.azure.com/). Als die instelling is uitgeschakeld, moet u een EA-beheerder van het abonnement zijn.
 
-**Kopen:**
+**Ga als volgt te werk om gereserveerde capaciteit te kopen:**
 
 1. Ga naar de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D).
 1. Selecteer een abonnement. Selecteer in de lijst **Abonnementen** het abonnement dat u wilt gebruiken om voor de gereserveerde capaciteit te betalen. Via de betalingswijze voor het abonnement worden de kosten voor de gereserveerde capaciteit vooraf in rekening gebracht. De kosten worden in mindering gebracht op het toezeggingsbedrag van de inschrijving of in rekening gebracht als overschrijding.
 1. Selecteer een bereik. Gebruik de lijst **Bereik** om een abonnementsbereik te selecteren:
     - **Bereik van één resourcegroep**: de reserveringskorting wordt alleen toegepast op de overeenkomende resources in de geselecteerde resourcegroep.
     - **Bereik van één abonnement**: de reserveringskorting wordt toegepast op de overeenkomende resources in het geselecteerde abonnement.
-    - **Gedeeld bereik**: de reserveringskorting wordt toegepast op overeenkomende resources binnen in aanmerking komende abonnementen die zich in de factureringscontext bevinden. Voor Enterprise Agreement-klanten is de inschrijving de factureringscontext.
+    - **Gedeeld bereik**: de reserveringskorting wordt toegepast op overeenkomende resources binnen in aanmerking komende abonnementen die zich in de factureringscontext bevinden. Voor Enterprise Agreement-klanten is de factureringscontext de inschrijving.
 1. Selecteer hoeveel Azure Databricks-doorvoereenheden u wilt kopen en voltooi de aankoop.
 
 

@@ -10,10 +10,10 @@ ms.date: 09/30/2019
 ms.author: banders
 ms.reviewer: sngun
 ms.openlocfilehash: cb20c88577bba614c70fdf5a266d482d06aeca57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995557"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Reserveringskorting toepassen op Azure Cosmos DB
@@ -22,7 +22,7 @@ Wanneer u gereserveerde capaciteit voor Azure Cosmos DB hebt gekocht, wordt de r
 
 ## <a name="how-reservation-discount-is-applied"></a>De manier waarop reserveringskorting wordt toegepast
 
-Voor een reserveringskorting geldt: *gebruiken of verliezen*. Als u voor een bepaald uur geen passende resources hebt, verliest u de reserveringshoeveelheid voor dat uur. U kunt niet-gebruikte gereserveerde uren niet meenemen.
+Voor een reserveringskorting geldt: '*gebruiken of verliezen*'. Als u voor een bepaald uur geen passende resources hebt, verliest u de reserveringshoeveelheid voor dat uur. U kunt ongebruikte gereserveerde uren niet meenemen.
 
 Wanneer u een resource afsluit, wordt de reserveringskorting automatisch toegepast op een andere overeenkomstige resource in het opgegeven bereik. Als er geen overeenkomstige resources in het opgegeven bereik worden gevonden, *verliest* u de gereserveerde uren.
 
@@ -45,10 +45,10 @@ De reserveringskorting wordt toegepast op kosten van Azure Cosmos DB-doorvoer op
 |Azure Cosmos DB - 100 RU/s/uur - KR - zuid|    KR - zuid     |     1    |
 |Azure Cosmos DB - 100 RU/s/uur - EU - west|    EU - west     |      1   |
 |Azure Cosmos DB - 100 RU/s/uur - KR - centraal|   KR - centraal    |       1  |
-|Azure Cosmos DB - 100 RU/s/uur - UK - zuid|   UK - zuid      |     1    |
-|Azure Cosmos DB - 100 RU/s/uur - UK - west|   UK - west      |    1     |
+|Azure Cosmos DB - 100 RU/s/uur - UK - zuid|   Verenigd Koninkrijk Zuid      |     1    |
+|Azure Cosmos DB - 100 RU/s/uur - UK - west|   Verenigd Koninkrijk West      |    1     |
 |Azure Cosmos DB - 100 RU/s/uur - UK - noord |   UK - noord    |     1    |
-|Azure Cosmos DB - 100 RU/s/uur - UK - zuid 2|   UK - zuid      |     1    |
+|Azure Cosmos DB - 100 RU/s/uur - UK - zuid 2|   UK - zuid 2      |     1    |
 |Azure Cosmos DB - 100 RU/s/uur - US - oost 2|  US - oost 2     |     1    |
 |Azure Cosmos DB - 100 RU/s/uur - US - noord-centraal|   US - noord-centraal      |     1    |
 |Azure Cosmos DB - 100 RU/s/uur - US - west|   US - west      |     1    |
@@ -76,7 +76,7 @@ De reserveringskorting wordt toegepast op kosten van Azure Cosmos DB-doorvoer op
 
 Dit zijn de vereisten voor een reservering:
 
-* Vereiste door Voer: 50.000 RU/s  
+* Vereiste doorvoer: 50.000 RU/s  
 * Gebruikte regio's: 2
 
 In dit geval bestaan de totale kosten voor on-demand uit 500 x 100 RU/s in deze twee regio's. Het totale verbruik aan RU/s is dan 100.000 per uur.
@@ -103,7 +103,7 @@ Stel dat u Azure Cosmos DB implementaties nodig hebt in de regio's AU - centraal
 
 Een gebruik van 50.000 eenheden in de regio AU - centraal 2 komt overeen met 75.000 RU/s van het factureerbare gebruik (of genormaliseerd gebruik). Deze waarde wordt als berekend als: doorvoer * verhouding_reserveringskorting_voor_die_regio. De berekening is gelijk aan 75.000 RU/s factureerbaar of genormaliseerd gebruik. Deze waarde wordt berekend als: 50.000 * 1,5 = 75.000 RU/s.
 
-De 100.000 RU/s van de reserveringsaankoop worden eerst gebruikt voor de 75.000 RU/s in AU - centraal 2. Er blijven dan nog 25.000 RU/s over voor de regio FR - zuid. Van de resterende 25.000 RU/s wordt een reserveringskorting van 15,384 RU/s toegepast op de regio FR - zuid. De kortings waarde wordt berekend als: 25.000/1,625 = 15.384 RU/s. De resterende 34.616 RU/s in de regio FR - zuid worden in rekening gebracht tegen de normale tarieven voor betalen naar gebruik.
+De 100.000 RU/s van de reserveringsaankoop worden eerst gebruikt voor de 75.000 RU/s in AU - centraal 2. Er blijven dan nog 25.000 RU/s over voor de regio FR - zuid. Van de resterende 25.000 RU/s wordt een reserveringskorting van 15,384 RU/s toegepast op de regio FR - zuid. De kortingswaarde wordt berekend als: 25.000 / 1,625 = 15.384 RU/s. De resterende 34.616 RU/s in de regio FR - zuid worden in rekening gebracht tegen de normale tarieven voor betalen naar gebruik.
 
 Het factureringssysteem van Azure wijst het voordeel van de reserveringsfacturering toe aan de eerste instantie die wordt verwerkt en die overeenkomt met de reserveringsconfiguratie. In dit voorbeeld is dat AU - centraal 2.
 
@@ -117,7 +117,7 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
-* [Wat zijn reserveringen voor Azure?](save-compute-costs-reservations.md)  
+* [Wat zijn reserveringen voor Azure](save-compute-costs-reservations.md)  
 * [Vooruitbetalen voor Azure Cosmos DB-resources met gereserveerde capaciteit van Azure Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)  
 * [Vooruitbetalen voor compute-resources van SQL Database met gereserveerde capaciteit voor Azure SQL Database](../../sql-database/sql-database-reserved-capacity.md)  
 * [Reserveringen voor Azure beheren](manage-reserved-vm-instance.md)  

@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 26d130023a4ed7b4131af3963ae7afdb33e79bd7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75995180"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Azure-reserveringen weergeven in de Azure-portal
@@ -31,7 +31,7 @@ Zie [Gebruikers toevoegen of wijzigen die een reservering kunnen beheren](manage
 
 Een reservering weergeven als eigenaar of lezer:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zoek naar **Reserveringen**.
     ![Schermopname met zoekfunctie in de Azure-portal](./media/view-reservations/portal-reservation-search.png)  
 3. De lijst bevat alle reserveringen waarvoor u de rol Eigenaar of Lezer hebt. Voor elke reservering ziet u het laatst bekende gebruikspercentage.  
@@ -48,10 +48,10 @@ Als u het bereik van een reservering moet wijzigen, een reservering wilt splitse
 
 Reserveringstransacties weergeven in de Azure-portal:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek naar **Kostenbeheer en facturering**.
 
-    ![Schermopname van zoekopdracht in de Azure-portal](./media/view-reservations/portal-cm-billing-search.png)
+    ![Schermopname van de zoekopdracht in de Azure-portal](./media/view-reservations/portal-cm-billing-search.png)
 
 1. Selecteer **Reserveringstransacties**.
 1. Als u de resultaten wilt filteren , selecteert u **Duur**, **Type** of **Beschrijving**.
@@ -87,4 +87,4 @@ Inzicht in het gebruik:
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).

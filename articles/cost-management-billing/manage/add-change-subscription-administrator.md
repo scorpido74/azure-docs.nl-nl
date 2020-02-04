@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: banders
 ms.openlocfilehash: a35d7d4ef24218c96e305abf623f746c92c8aa87
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75993698"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure-abonnementsbeheerders toevoegen of wijzigen
@@ -74,7 +74,7 @@ Als u niet zeker weet wie de accountbeheerder is voor een abonnement, gebruikt u
 
 * [Wat is toegangsbeheer op basis van rollen (RBAC)?](../../role-based-access-control/overview.md)
 * [Inzicht in de verschillende rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Procedure: een Azure-abonnement koppelen aan of toevoegen aan Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* [Procedure: Een Azure-abonnement aan Azure Active Directory koppelen of toevoegen](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Machtigingen voor beheerrol in Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 
 ## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
