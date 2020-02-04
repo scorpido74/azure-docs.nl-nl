@@ -1,9 +1,9 @@
-- name: VMware-oplossing van CloudSimple
+- name: VMware Solution by CloudSimple
   href: /azure/vmware-cloudsimple
   items:
     - name: Overzicht
       items:
-        - name: Wat is de VMware-oplossing van CloudSimple?
+        - name: Wat is VMware Solution by CloudSimple?
           href: cloudsimple-vmware-solutions-overview.md
         - name: Belangrijkste concepten voor beheer
           href: key-concepts.md
@@ -112,7 +112,7 @@
               href: azure-create-vm.md
             - name: CloudSimple-VM's beheren in Azure
               href: azure-manage-vm.md
-    - name: Handleidingen
+    - name: Instructiegidsen
       items:
         - name: Uw omgeving beveiligen
           href: private-cloud-secure.md
@@ -136,6 +136,8 @@
               href: on-premises-dns-setup.md
             - name: Maximaal beschikbare site-naar-site-VPN-verbindingen configureren
               href: high-availability-vpn-connection.md
+            - name: DNS-configuratie van de privécloud naar on-premises
+              href: private-cloud-dns-forwarding.md
         - name: VMware-platform
           items:
             - name: Informatie over het machtigingsmodel van de privécloud

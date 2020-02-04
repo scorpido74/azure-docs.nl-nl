@@ -138,6 +138,8 @@
       href: custom-disaster-recovery.md
     - name: Problemen oplossen
       href: troubleshoot-errors.md
+    - name: Diagnostische logboeken inschakelen voor een onderwerp
+      href: enable-diagnostic-logs-topic.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

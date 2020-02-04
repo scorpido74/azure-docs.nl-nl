@@ -389,6 +389,8 @@
               href: cognitive-search-predefined-skills.md
             - name: Voorwaardelijk
               href: cognitive-search-skill-conditional.md
+            - name: Aangepaste entiteit zoeken
+              href: cognitive-search-skill-custom-entity-lookup.md
             - name: Documentextractie
               href: cognitive-search-skill-document-extraction.md
             - name: Herkenning van entiteiten

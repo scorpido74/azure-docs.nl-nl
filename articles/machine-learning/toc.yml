@@ -142,6 +142,8 @@
           href: how-to-manage-workspace.md
         - name: Azure CLI gebruiken
           href: how-to-manage-workspace-cli.md
+        - name: REST gebruiken
+          href: how-to-manage-rest.md
         - name: Resource Manager-sjabloon gebruiken
           displayName: arm
           href: how-to-create-workspace-template.md
@@ -194,6 +196,9 @@
         - name: Gegevensset maken met labels
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: DevOps voor gegevensopname
+          displayName: 'data, ingestion, devops'
+          href: how-to-cicd-data-ingestion.md
     - name: Modellen trainen
       items:
         - name: De ontwerper gebruiken

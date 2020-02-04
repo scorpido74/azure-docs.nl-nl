@@ -47,6 +47,7 @@
     - name: Azure Active Directory-verificatie met meerde toepassingen instellen voor gebruikers-VPN (preview)
       href: openvpn-azure-ad-tenant-multi-app.md
     - name: Automatisering configureren (Virtual WAN-partners)
+    - name: Wereldwijde en op de hub gebaseerde VPN-profielen downloaden
       href: virtual-wan-configure-automation-providers.md
     - name: Routering configureren
       items:
