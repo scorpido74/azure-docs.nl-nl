@@ -20,7 +20,7 @@
       href: features-linux.md
     - name: Windows
       href: features-windows.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Azure Disk Encryption
       items:
@@ -64,18 +64,26 @@
           href: hpccompute-gpu-linux.md
         - name: Windows
           href: hpccompute-gpu-windows.md
-    - name: Log Analytics
+    - name: Azure Monitor
       items:
-        - name: Linux
-          href: oms-linux.md
-        - name: Windows
-          href: oms-windows.md
-    - name: Azure Monitor voor virtuele machines
-      items:
-        - name: Agent voor Linux-afhankelijkheden
-          href: agent-dependency-linux.md
-        - name: Agent voor Windows-afhankelijkheden
-          href: agent-dependency-windows.md
+        - name: Diagnostics-extensie
+          items:
+            - name: Linux
+              href: diagnostics-linux.md
+            - name: Windows
+              href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/extensions/toc.json
+        - name: Log Analytics
+          items:
+            - name: Linux
+              href: oms-linux.md
+            - name: Windows
+              href: oms-windows.md
+        - name: Azure Monitor voor virtuele machines
+          items:
+            - name: Agent voor Linux-afhankelijkheden
+              href: agent-dependency-linux.md
+            - name: Agent voor Windows-afhankelijkheden
+              href: agent-dependency-windows.md
     - name: PowerShell DSC
       href: dsc-overview.md
       items:
@@ -89,14 +97,6 @@
           href: dsc-template.md
     - name: Toegang tot virtuele machines
       href: vmaccess.md
-    - name: Diagnostische gegevens van virtuele machines
-      items:
-        - name: Linux
-          href: diagnostics-linux.md
-        - name: Windows
-          href: diagnostics-windows.md
-        - name: Sjablonen gebruiken
-          href: diagnostics-template.md
     - name: Extensies van derden
       items:
         - name: Chef

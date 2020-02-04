@@ -25,7 +25,7 @@ Azure Cosmos DB is een snelle en flexibele gedistribueerde data base die naadloo
 
 Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd rekening met de volgende opties:
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Netwerken
 <a id="direct-connection"></a>
 
 1. **Verbindings beleid: modus directe verbinding gebruiken**

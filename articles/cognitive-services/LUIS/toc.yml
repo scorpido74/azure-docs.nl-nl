@@ -67,21 +67,11 @@
     - name: Gebruiken met een bot
       items:
         - name: 'Met C#'
-          items:
-            - name: 1. Een basis-bot maken
-              href: luis-csharp-tutorial-bf-v4.md
-              displayName: 'bot framework, framework, sdk, abs'
-            - name: 2. Telemetrie toevoegen aan Application Insights
-              href: luis-tutorial-bot-csharp-appinsights.md
-              displayName: 'Application insight, kusto'
+          href: luis-csharp-tutorial-bf-v4.md
+          displayName: 'bot framework, framework, sdk, abs'
         - name: Met Node.js
-          items:
-            - name: 1. Een basis-bot maken
-              displayName: 'bot framework, framework, sdk, abs'
-              href: luis-nodejs-tutorial-bf-v4.md
-            - name: 2. Telemetrie toevoegen aan Application Insights
-              displayName: 'Application insight, kusto'
-              href: luis-tutorial-bot-nodejs-appinsights.md
+          displayName: 'bot framework, framework, sdk, abs'
+          href: luis-nodejs-tutorial-bf-v4.md
 - name: Concepten
   items:
     - name: Levenscyclus van ontwikkeling

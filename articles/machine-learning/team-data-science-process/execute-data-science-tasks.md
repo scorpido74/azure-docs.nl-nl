@@ -19,10 +19,10 @@ ms.locfileid: "76722200"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Datatechnologietaken uitvoeren: gegevensonderzoek, modelleren en implementatie
 
-Datatechnologietaken doorgaans bevatten gegevens gegevensonderzoek, modelleren en implementatie. In dit artikel ziet u hoe u de **interactieve Gegevensverkenning, analyse en rapportage (IDEAR)** en **geautomatiseerde modelleren en rapportage (AMAR)** hulpprogramma's voor verschillende algemene datatechnologietaken uitvoeren zoals interactieve gegevensverkenning, gegevensanalyse, rapportage en model maken. De opties voor het implementeren van een model in een productie omgeving kunnen het volgende omvatten:
+Datatechnologietaken doorgaans bevatten gegevens gegevensonderzoek, modelleren en implementatie. In dit artikel wordt beschreven hoe u de Program ma's voor het **verkennen, analyseren en rapporteren van interactieve gegevens (ideeën)** en **geautomatiseerde modellen en rapporten (AMAR)** gebruikt voor het uitvoeren van verschillende algemene gegevens Science-taken, zoals het verkennen van interactieve gegevens, het analyseren van gegevens en het maken van een model. De opties voor het implementeren van een model in een productie omgeving kunnen het volgende omvatten:
 
 - [Azure Machine Learning](../index.yml)
-- [SQL-Server met ML-services](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
+- [SQL-Server met ML-Services](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 
@@ -38,7 +38,7 @@ Het product aan het einde van deze fase is een rapport verkennen. Het rapport mo
 
 Deze markdown op basis van R of Python-notebook-hulpprogramma biedt een flexibele en interactieve hulpprogramma om te evalueren en gegevenssets te verkennen. Gebruikers kunnen snel rapporten genereren van de gegevensset met minimale code schrijven. Gebruikers kunnen klikken op knoppen waarmee u kunt de resultaten verkennen in de interactieve hulpprogramma exporteren naar een uiteindelijke rapport, die kan worden bezorgd bij clients of gebruikt om beslissingen over welke variabelen om op te nemen in de modellering van de volgende stap.
 
-Op dit moment werkt het hulpprogramma alleen op gegevensframes in het geheugen. Een YAML-bestand is nodig om op te geven van de parameters van de gegevensset worden onderzocht. Zie voor meer informatie, [IDEAR in TDSP Data Science-hulpprogramma's](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
+Op dit moment werkt het hulpprogramma alleen op gegevensframes in het geheugen. Een YAML-bestand is nodig om op te geven van de parameters van de gegevensset worden onderzocht. Zie voor meer informatie [ideeën in TDSP data Science-Hulpprogram ma's](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
 
 
 ## 2. <a name='ModelingUtility-2'></a> model lering
@@ -51,7 +51,7 @@ De volgende sectie van de model-management laat zien hoe een systeem voor het re
 
 ### <a name="model-training-modeling-and-reporting-using-the-amar-utility"></a>Model voor training: gegevensmodellering en -rapportage met het hulpprogramma AMAR
 
-De [geautomatiseerde modelleren en hulpprogramma voor rapportage (AMAR)](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling) voorziet in een aanpasbare, semi-automatische hulpprogramma voor het uitvoeren van model maken met hyper-parameter sweeping en vergelijken van de nauwkeurigheid van deze modellen. 
+Het [hulp programma voor geautomatiseerd model leren en rapporteren (AMAR)](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling) biedt een aanpasbaar, semi-geautomatiseerd hulp programma voor het maken van modellen met Hyper-para meters sweep en om de nauw keurigheid van deze modellen te vergelijken. 
 
 Het model maken van het hulpprogramma is een R Markdown-bestand dat kan worden uitgevoerd om ingesloten HTML-uitvoer met een tabel met inhoud voor eenvoudige navigatie door de verschillende secties produceren. Drie algoritmen worden uitgevoerd wanneer het Markdown-bestand (knit) wordt uitgevoerd: overgegaan regression uit met behulp van de glmnet inpakken, willekeurige forest met behulp van het pakket randomForest en structuren met behulp van het pakket xgboost versterking). Elk van deze algoritmen produceert een getraind model. De nauwkeurigheid van deze modellen wordt vervolgens vergeleken en de functie voor relatieve belang grafieken worden gerapporteerd. Er zijn momenteel twee hulpprogramma's: één voor een taak binaire classificatie en één voor een taak regressie. De belangrijkste verschillen tussen deze is de parameters voor de manier en nauwkeurigheid metrische gegevens voor deze taken zijn opgegeven. 
 
@@ -68,14 +68,14 @@ Een YAML-bestand wordt gebruikt om op te geven:
 
 Het nummer van algoritmen, het aantal vouwen voor optimalisatie, de hyper-parameters en het aantal hyper-parameter opgegeven voor zwaaihoek via kan ook worden aangepast in het Yaml-bestand in de modellen snel worden uitgevoerd. Ze kunnen bijvoorbeeld worden uitgevoerd met een kleiner aantal vouwen CV, een kleiner aantal parametersets. Als het gerechtvaardigd is, kunnen ze ook worden uitgevoerd meer uitvoerig met een hoger aantal vouwen CV of een groter aantal parametersets.
 
-Zie voor meer informatie, [geautomatiseerde modelleren en hulpprogramma voor rapportage in TDSP Data Science-hulpprogramma's](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling).
+Zie het [hulp programma voor geautomatiseerd model leren en rapporteren in TDSP data Science-Hulpprogram ma's](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling)voor meer informatie.
 
 ### <a name="model-management"></a>Modelbeheer
 Nadat u meerdere modellen zijn gebouwd, moet u doorgaans een systeem voor het registreren en beheren van de modellen. Normaal gesproken moet u een combinatie van scripts of API's en een back-end-database of het versiebeheer systeem. Er zijn een aantal opties die u voor deze beheertaken overwegen kunt:
 
-1. [Azure Machine Learning - Modelbeheer-service](../index.yml)
+1. [Azure Machine Learning-model beheer service](../index.yml)
 2. [ModelDB van MIT](https://mitdbg.github.io/modeldb/) 
-3. [SQL-server als een model management-systeem](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
+3. [SQL-Server als model beheersysteem](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 ## 3. <a name='Deployment-3'></a> implementatie
@@ -87,7 +87,7 @@ Er zijn verschillende benaderingen en platforms modellen in productie te plaatse
 
 
 - [Model implementatie in Azure Machine Learning](../how-to-deploy-and-where.md)
-- [Implementatie van een model in SQL-server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Implementatie van een model in SQL-Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 > [!NOTE]
@@ -95,21 +95,21 @@ Er zijn verschillende benaderingen en platforms modellen in productie te plaatse
 >
 >
 
-Meer voorbeelden zijn beschikbaar in scenario's die laten zien van alle de stappen in het proces voor het **specifieke scenario's**. Ze worden weergegeven en die is gekoppeld met miniaturen beschrijvingen in de [voorbeeld walkthroughs](walkthroughs.md) artikel. Ze laten zien hoe u naar de cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen.
+Meer voor beelden zijn beschikbaar in een scenario waarin alle stappen in het proces voor **specifieke scenario's**worden getoond. Ze worden weer gegeven en gekoppeld aan miniatuur beschrijvingen in het artikel [voorbeeld scenario's](walkthroughs.md) . Ze laten zien hoe u naar de cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen.
 
 > [!NOTE]
-> Zie voor een implementatie met behulp van Azure Machine Learning Studio, [een Azure Machine Learning-webservice implementeren](../studio/deploy-a-machine-learning-web-service.md).
+> Zie [Deploy a Azure machine learning web service](../studio/deploy-a-machine-learning-web-service.md)(Engelstalig) voor implementatie met behulp van Azure machine learning Studio.
 >
 >
 
-### <a name="ab-testing"></a>A/B-testen
-Als meerdere modellen in productie, kan het nuttig zijn om uit te voeren [A / B-tests](https://en.wikipedia.org/wiki/A/B_testing) kunnen de prestaties van de modellen. 
+### <a name="ab-testing"></a>A / B-tests
+Wanneer er meerdere modellen in productie zijn, kan het nuttig zijn om [een/B-test](https://en.wikipedia.org/wiki/A/B_testing) uit te voeren om de prestaties van de modellen te vergelijken. 
 
  
 ## <a name="next-steps"></a>Volgende stappen
 
-[Voortgang van de data science-projecten volgen](track-progress.md) laat zien hoe een gegevenswetenschapper de voortgang van een data science-project kunt volgen.
+[Houd de voortgang bij van data Science-projecten](track-progress.md) om te zien hoe een gegevens wetenschapper de voortgang van een Data Science-project kan volgen.
 
-[Model voor bewerking en CI/CD](ci-cd-flask.md) laat zien hoe CI/CD met ontwikkelde modellen kunnen worden uitgevoerd.
+[Model bewerking en CI/cd](ci-cd-flask.md) laat zien hoe CI/cd kan worden uitgevoerd met ontwikkelde modellen.
 
 
