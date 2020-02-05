@@ -14,12 +14,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18510bd7ace6ca87278b5bf68f79b372251ac0e1
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: b0259a8d9fcb4c9c513ab2c31103c9a8488e90ae
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807813"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025738"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Wachtwoord voor eenmalige aanmelding met Application Proxy vaulting
 
@@ -34,9 +34,11 @@ U moet al hebt gepubliceerd en uw app met Application Proxy getest. Als dit niet
 1. Meld u als beheerder aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer **Azure Active Directory** > **bedrijfstoepassingen** > **alle toepassingen**.
 1. Selecteer de app die u wilt instellen met eenmalige aanmelding in de lijst.  
+1. Selecteer **toepassingsproxy**. 
+1. Wijzig het **type verificatie vooraf** in **passthrough** en selecteer **Opslaan**. U kunt later weer overschakelen naar **Azure Active Directory** type. 
 1. Selecteer **eenmalige aanmelding**.
 
-   ![Schakel eenmalige aanmelding van de pagina overzicht van de app](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
+   ![Eenmalige aanmelding selecteren op de overzichts pagina van de app](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
 
 1. Kies voor de SSO-modus, **op basis van wachtwoorden Sign-on**.
 1. Voer de URL voor de aanmeldings-URL voor de pagina waar gebruikers hun gebruikersnaam en wachtwoord aanmelden bij uw app buiten het bedrijfsnetwerk invoeren. Dit kan zijn dat de externe URL die u hebt gemaakt toen u de app via de toepassingsproxy hebt gepubliceerd.
@@ -44,6 +46,17 @@ U moet al hebt gepubliceerd en uw app met Application Proxy getest. Als dit niet
    ![Kies op basis van wachtwoorden Sign-on en voer de URL van uw](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
 1. Selecteer **Opslaan**.
+1. Selecteer **toepassingsproxy**. 
+1. Wijzig het **type verificatie vooraf** in **Azure Active Directory** en selecteer **Opslaan**. 
+1. Selecteer **gebruikers en groepen**.
+1. Gebruikers toewijzen aan de toepassing met de optie **gebruiker toevoegen**. 
+1. Als u de referenties voor een gebruiker vooraf wilt definiëren, schakelt u het selectie vakje voor de gebruikers naam in en selecteert u **referenties bijwerken**.
+1. Selecteer **Azure Active Directory** > **app-registraties** **alle toepassingen**te > .
+1. Selecteer in de lijst de app die u hebt geconfigureerd met wacht woord-SSO.
+1. Selecteer **huis stijl**. 
+1. Werk de **URL van de start pagina** bij met de **aanmeldings-URL** op de SSO-pagina van het wacht woord en selecteer **Opslaan**.  
+
+
 
 <!-- Need to repro?
 7. The page should tell you that a sign-in form was successfully detected at the provided URL. If it doesn't, select **Configure [your app name] Password Single Sign-on Settings** and choose **Manually detect sign-in fields**. Follow the instructions to point out where the sign-in credentials go. 
@@ -51,7 +64,7 @@ U moet al hebt gepubliceerd en uw app met Application Proxy getest. Als dit niet
 
 ## <a name="test-your-app"></a>Uw app testen
 
-Ga naar de externe URL die u hebt geconfigureerd voor externe toegang tot uw toepassing. Meld u aan met uw referenties voor die app (of de referenties voor een testaccount dat u toegang hebt ingesteld). Zodra u zich is aanmeldt, zou het mogelijk de app verlaten en keert u terug zonder uw referenties opnieuw in te voeren.
+Ga naar de portal mijn apps. Meld u aan met uw referenties (of de referenties voor een test account dat u hebt ingesteld met toegang). Nadat u zich hebt aangemeld, klikt u op het pictogram van de app. Hiermee wordt mogelijk de installatie van de extensie voor beveiligde aanmelding van mijn apps geactiveerd. Als uw gebruiker vooraf gedefinieerde referenties had, moet de verificatie voor de app automatisch plaatsvinden, anders moet u de gebruikers naam of het wacht woord voor de eerste keer opgeven. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

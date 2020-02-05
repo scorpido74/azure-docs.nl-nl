@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 1c65a456270cdca345504c07b927a7ef7e1f725b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b631c068d1a444691345e054219208c4c8b0b8c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440276"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020043"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Trans formatie sinken bij toewijzing van gegevens stroom
 
@@ -47,11 +47,17 @@ Nadat u een Sink hebt toegevoegd, configureert u via het tabblad **sink** . Hier
 
 **Schema valideren:** Als validate schema is geselecteerd, mislukt de gegevens stroom als een van de kolommen in het gedefinieerde schema van de gegevensset niet is gevonden.
 
-## <a name="field-mapping"></a>Veldtoewijzing
+## <a name="field-mapping"></a>Veld toewijzing
 
 Net als bij een trans formatie selecteren kunt u op het tabblad **toewijzing** van de Sink bepalen welke binnenkomende kolommen worden geschreven. Standaard worden alle invoer kolommen, inclusief gedrijfde kolommen, toegewezen. Dit wordt **automatische toewijzing**genoemd.
 
 Wanneer u automatische toewijzing uitschakelt, hebt u de mogelijkheid om vaste toewijzingen op basis van een kolom of op basis van een regel toe te voegen. Met op regels gebaseerde toewijzingen kunt u expressies met patroon overeenkomsten schrijven, terwijl vaste toewijzing logische en fysieke kolom namen toewijst. Zie voor meer informatie over op regels gebaseerde toewijzing [kolom patronen in gegevens stroom toewijzen](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
+
+## <a name="custom-sink-ordering"></a>Aangepaste Sink-ordening
+
+Standaard worden gegevens in een niet-deterministische volg orde naar meerdere sinks geschreven. De uitvoerings engine schrijft gegevens parallel als de transformatie logica is voltooid en de Sink-bestelling kan elke uitvoering variëren. Als u een exacte Sink-bestelling wilt opgeven, schakelt u **aangepaste Sink-ordening** in op het tabblad Algemeen van de gegevens stroom. Als deze functie is ingeschakeld, worden de sinks opeenvolgend geschreven in een oplopende volg orde.
+
+![Aangepaste Sink-ordening](media/data-flow/custom-sink-ordering.png "Aangepaste Sink-ordening")
 
 ## <a name="data-preview-in-sink"></a>Voor beeld van gegevens in Sink
 

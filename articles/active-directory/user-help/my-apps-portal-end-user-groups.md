@@ -2,22 +2,22 @@
 title: Uw groeps gegevens bijwerken op de portal mijn apps-Azure AD
 description: Meer informatie over het weer geven en bijwerken van uw groeps gegevens, zoals het weer geven van de groepen waarvan u de eigenaar bent, het maken van nieuwe groepen, het weer geven van de groepen waartoe u al lid bent en het koppelen van groepen waarvan u nog geen deel uitmaakt.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: de7fa1952b2e23276a9f088f5840e54675b44d01
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 00639462fce4e67561b8e50609264d4423872c82
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704949"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022293"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Uw groeps gegevens bijwerken op de portal mijn apps
 
@@ -98,8 +98,6 @@ Als uw beheerder u toestemming heeft gegeven om de tegel **groepen** weer te gev
 
 Nadat u een groep hebt gemaakt, kunt u de details ervan bewerken, inclusief het bijwerken van de bestaande informatie.
 
-### <a name="to-edit-your-details"></a>Uw gegevens bewerken
-
 1. Selecteer de groep die u wilt bewerken op de pagina **groepen** en selecteer vervolgens **Details bewerken** op de pagina *&lt;group_name&gt;* .
 
     Het vak **Details bewerken** wordt weer gegeven en u kunt de informatie bijwerken die u hebt toegevoegd tijdens de eerste keer dat u de groep hebt gemaakt.
@@ -108,9 +106,7 @@ Nadat u een groep hebt gemaakt, kunt u de details ervan bewerken, inclusief het 
 
 ## <a name="add-or-remove-a-member"></a>Een lid toevoegen of verwijderen
 
-U kunt leden toevoegen aan of verwijderen uit een van uw eigen groepen.
-
-### <a name="to-add-or-remove-a-member"></a>Een lid toevoegen of verwijderen
+U kunt leden toevoegen aan of verwijderen uit elke groep waarvan u eigenaar bent.
 
 1. Selecteer de groep waaraan u leden wilt toevoegen en selecteer vervolgens **+** op de pagina *&lt;group_name&gt;* .
 
@@ -130,8 +126,6 @@ U kunt leden toevoegen aan of verwijderen uit een van uw eigen groepen.
 
 Als uw organisatie dit toestaat, kunt u een Office 365-groep vernieuwen en de verval datum verlengen.
 
-### <a name="to-renew-a-group"></a>Een groep vernieuwen
-
 1. Selecteer de Office 365-groep die u wilt verlengen en selecteer vervolgens **groep vernieuwen**.
 
     ![Een Office 365-groep vernieuwen en de verval datum verlengen](media/my-apps-portal/my-apps-portal-renew-group-link.png)
@@ -144,8 +138,6 @@ Als uw organisatie dit toestaat, kunt u een Office 365-groep vernieuwen en de ve
 
 U kunt uw eigen groepen op elk gewenst moment verwijderen. Als u echter een groep per ongeluk verwijdert, moet u deze maken en opnieuw leden toevoegen.
 
-### <a name="to-delete-the-group"></a>De groep verwijderen
-
 1. Selecteer de groep die u definitief wilt verwijderen en selecteer vervolgens **groep verwijderen** op de pagina *&lt;group_name&gt;* .
 
     ![< pagina Group_name > met de koppeling groep verwijderen gemarkeerd](media/my-apps-portal/my-apps-portal-delete-group-link.png)
@@ -156,9 +148,7 @@ U kunt uw eigen groepen op elk gewenst moment verwijderen. Als u echter een groe
 
 ## <a name="join-an-existing-group"></a>Lid worden van een bestaande groep
 
-U kunt lid worden van een bestaande groep van de pagina **groepen** .
-
-### <a name="to-join-or-leave-a-group"></a>Om lid te worden van een groep of deze te verlaten
+U kunt een bestaande groep toevoegen aan of laten staan op de pagina **groepen** .
 
 1. Selecteer op de pagina **groepen** de optie **groep samen voegen** in het gedeelte **groepen die ik bevindt** .
 
@@ -172,7 +162,7 @@ U kunt lid worden van een bestaande groep van de pagina **groepen** .
 
 3. Als u per ongeluk lid is van een groep of als u geen deel ervan hoeft te maken, kunt u de groeps naam selecteren op de pagina **join-groepen** en vervolgens **groep verlaten**selecteren.
 
-    ![Pagina lid worden van groepen, waarbij de knop groep verlaten is gemarkeerd](media/my-apps-portal/my-apps-portal-leave-group-link.png)    
+    ![Pagina lid worden van groepen, waarbij de knop groep verlaten is gemarkeerd](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

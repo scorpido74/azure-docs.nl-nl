@@ -3,8 +3,8 @@ title: Azure-bestands share voor Azure Batch Pools | Microsoft Docs
 description: Een Azure Files-share koppelen vanuit reken knooppunten in een Linux-of Windows-groep in Azure Batch.
 services: batch
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/24/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: ''
-ms.openlocfilehash: d84fdd4635a7a9227e29fe3cd8c43a1fc4cbeb5b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 156dad25af5abd1b4d5db32569faf09a23fadfb1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029445"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022508"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Een Azure-bestands share gebruiken met een batch-pool
 

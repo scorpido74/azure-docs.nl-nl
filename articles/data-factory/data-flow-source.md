@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 128b15bd5b3ba3c3ac891719bf5c3ec8e5137cce
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440221"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023511"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Bron transformatie in gegevens stroom toewijzen 
 
@@ -44,6 +44,8 @@ Nadat u een bron hebt toegevoegd, configureert u via het tabblad **bron instelli
 
 ![Tabblad Bron instellingen](media/data-flow/source1.png "Tabblad Bron instellingen")
 
+**Verbinding testen:** Testen of de Spark-service van de gegevens stroom verbinding kan maken met de gekoppelde service die in de bron-gegevensset wordt gebruikt. De foutopsporingsmodus moet zijn ingeschakeld om deze functie in te scha kelen.
+
 **Schema-drift:** [schema-drift](concepts-data-flow-schema-drift.md) Data Factory is de mogelijkheid van een systeem eigen flexibele schema's in uw gegevens stromen zonder dat er expliciet kolom wijzigingen hoeven te worden gedefinieerd.
 
 * Schakel het selectie vakje **schema-drift toestaan** in als de bron kolommen vaak worden gewijzigd. Met deze instelling kunnen alle binnenkomende bron velden door de trans formaties worden getransporteerd naar de sink.
@@ -69,13 +71,17 @@ Net als schema's in gegevens sets definieert de projectie in een bron de gegeven
 
 ![Instellingen op het tabblad projectie](media/data-flow/source3.png "Projectie")
 
-Als uw tekst bestand geen gedefinieerd schema heeft, selecteert u **gegevens type detecteren** zodat Data Factory de gegevens typen worden gesampled en afgeleid. Selecteer **standaard indeling instellen** op automatische detectie van de standaard gegevens indelingen. 
+Als uw tekst bestand geen gedefinieerd schema heeft, selecteert u **gegevens type detecteren** zodat Data Factory de gegevens typen worden gesampled en afgeleid. Selecteer **standaard indeling instellen** op automatische detectie van de standaard gegevens indelingen.
+
+Als u het **schema opnieuw instelt** , wordt de projectie ingesteld op wat is gedefinieerd in de gegevensset waarnaar wordt verwezen.
 
 U kunt de kolom gegevens typen wijzigen in een trans formatie die is afgeleid van een dalende stroom kolom. Gebruik een SELECT trans formatie om de kolom namen te wijzigen.
 
 ### <a name="import-schema"></a>Schema importeren
 
-Gegevens sets zoals Avro en CosmosDB die ondersteuning bieden voor complexe gegevens structuren, vereisen niet dat schema definities aanwezig zijn in de gegevensset. Daarom kunt u klikken op de knop **schema importeren** op het tabblad **projectie** voor deze typen bronnen.
+Met de knop **schema importeren** op het tabblad **projectie** kunt u een actief debug-cluster gebruiken om een schema projectie te maken. Bij het importeren van het schema dat in elk bron type beschikbaar is, wordt de projectie die in de gegevensset is gedefinieerd, overschreven. Het object dataset wordt niet gewijzigd.
+
+Dit is handig in gegevens sets zoals Avro en CosmosDB die ondersteuning bieden voor complexe gegevens structuren waarvoor geen schema definities in de gegevensset bestaan.
 
 ## <a name="optimize-the-source-transformation"></a>De bron transformatie optimaliseren
 

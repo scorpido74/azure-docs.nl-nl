@@ -7,22 +7,22 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a862a221f9fe2db5448473bddcca2a9932716e0e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 159691ee101e586419d2fd8df314947af28219dd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464079"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016507"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Oplossingen voor de overheid bouwen met Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Aan de slag met het bouwen van Smart City-oplossingen met Azure IoT Central toepassings sjablonen. Begin nu met de **bewaking van water kwaliteit**, **bewaking van water verbruik**en het **beheer van verbonden afval**.
+
+Aan de slag met het bouwen van Smart City-oplossingen met behulp van Azure IoT Central-toepassings sjablonen. Begin nu met de **bewaking van water kwaliteit**, **bewaking van water verbruik**en het **beheer van verbonden afval**.
 
 ## <a name="what-is-water-quality-monitoring-application-template"></a>Wat is de toepassings sjabloon water kwaliteit controleren?   
 
-Bewaking van traditionele water kwaliteit is afhankelijk van de hand matige bemonsterings technieken en veld laboratorium analyse, wat tijd verbruikt en kostbaar is. Door de water kwaliteit op afstand in realtime te bewaken, kunnen problemen met water kwaliteit worden beheerd voordat de burgers worden beïnvloed. Bovendien kunnen met geavanceerde analyses, water hulpprogramma's en omgevings organisaties vroegtijdige waarschuwingen over mogelijke problemen met water kwaliteit optreden en vooraf worden gepland.  
+Bewaking van traditionele water kwaliteit is afhankelijk van de hand matige bemonsterings technieken en veld laboratorium analyse, wat tijd verbruikt en kostbaar is. Door de water kwaliteit op afstand in realtime te bewaken, kunnen problemen met water kwaliteit worden beheerd voordat de burgers worden aangetast. Bovendien kunnen met geavanceerde analyses, water hulpprogramma's en omgevings organisaties vroegtijdige waarschuwingen over mogelijke problemen met water kwaliteit optreden en vooraf worden gepland.  
 
 De app voor het controleren van water kwaliteit is een IoT Central app-sjabloon waarmee u de ontwikkeling van uw IoT-oplossing kunt kickstart en water-hulpprogram ma's kunt inschakelen voor het digitaal bewaken van de water kwaliteit in Smart steden. 
 
@@ -40,14 +40,14 @@ Aan de slag met de zelf studie voor het controleren van de [water kwaliteit-toep
 
 ## <a name="what-is-water-consumption-monitoring-application-template"></a>Wat is een toepassings sjabloon voor het bewaken van water verbruik? 
 
-Het bijhouden van traditionele water verbruiks is afhankelijk van water deelnemers die hand matig water verbruiks meters lezen op de meet punten. Voor meer en meer steden worden traditionele meters vervangen door geavanceerde slimme meters voor het inschakelen van externe bewaking van het verbruik en het op afstand beheren van kleppen om water stromen te best uren. Bewaking van water verbruik, gecombineerd met digitaal feedback bericht aan de burger, kan het bewustzijn verhogen en het water verbruik verminderen. 
+Het bijhouden van traditionele water verbruiks is afhankelijk van water deelnemers die hand matig water verbruiks meters lezen op de meet punten. Voor meer en meer steden worden traditionele meters vervangen door geavanceerde slimme meters die het op afstand meten van verbruik en het op afstand beheren van kleppen mogelijk maakt. Bewaking van water verbruik, gecombineerd met digitaal feedback bericht aan de burger, kan het bewustzijn verhogen en het water verbruik verminderen. 
 
 
 De bewakings-app voor water verbruik is een IoT Central app-sjabloon waarmee u de ontwikkeling van uw IoT-oplossing kunt kickstart om water middelen en steden op afstand te bewaken en te beheren om het verbruik te verminderen. 
 
   ![App-sjabloon voor bewaking van water verbruik](./media/overview-iotcentral-government/waterconsumptionmonitoring-dashboardfull.png)
 
-De sjabloon voor het controleren van het water verbruik van de app bestaat uit vooraf geconfigureerd:
+De sjabloon voor de bewaking van water verbruik-apps bestaat uit vooraf geconfigureerd:
 * Voor beeld-operator dashboards
 * Voor beeld van een monitor met water kwaliteit Apparaatbeheer
 * Bewakings apparaten voor gesimuleerde water kwaliteit

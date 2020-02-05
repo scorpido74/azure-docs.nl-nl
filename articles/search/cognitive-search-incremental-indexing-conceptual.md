@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: f0e7c3bbbdcd1edad24422163fde38e3fdce7e27
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988648"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024140"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Inleiding tot incrementele verrijking en caching in azure Cognitive Search
 
@@ -26,7 +26,7 @@ Incrementele verrijking voegt caching en statefulness toe aan een verrijkings pi
 
 Incrementele verrijking voegt een cache toe aan de verrijkings pijplijn. De Indexeer functie slaat de resultaten van het kraken van documenten op en de uitvoer van elke vaardigheid voor elk document. Wanneer een vakkennisset wordt bijgewerkt, worden alleen de gewijzigde of downstream-vaardig heden opnieuw uitgevoerd. De bijgewerkte resultaten worden naar de cache geschreven en het document wordt bijgewerkt in de zoek index of in het kennis archief.
 
-Fysiek wordt de cache opgeslagen in een BLOB-container in uw Azure Storage-account. Alle indexen in een zoek service delen mogelijk hetzelfde opslag account voor de indexer-cache. Aan elke Indexeer functie is een unieke en onveranderbare cache-id toegewezen voor de container die wordt gebruikt.
+Fysiek wordt de cache opgeslagen in een BLOB-container in uw Azure Storage-account. De cache gebruikt ook Table Storage voor een interne record van verwerkings updates. Alle indexen in een zoek service delen mogelijk hetzelfde opslag account voor de indexer-cache. Aan elke Indexeer functie is een unieke en onveranderbare cache-id toegewezen voor de container die wordt gebruikt.
 
 ## <a name="cache-configuration"></a>Cache configuratie
 

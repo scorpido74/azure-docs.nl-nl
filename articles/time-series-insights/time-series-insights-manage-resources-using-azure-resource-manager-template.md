@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 02/04/2020
 ms.custom: seodec18
-ms.openlocfilehash: b60b036954691bdea12dfff559ceee86f179d44d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1caa80469504d52d3103fb2776fb3e7210971690
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973210"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024395"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights-resources maken met behulp van Azure Resource Manager sjablonen
 
@@ -29,7 +29,7 @@ Time Series Insights ondersteunt de volgende bronnen:
    | Omgeving | Een Time Series Insights omgeving is een logische groepering van gebeurtenissen die worden gelezen vanuit gebeurtenis-Brokers, opgeslagen en beschikbaar worden gesteld voor query's. Lees [uw Azure time series Insights-omgeving plannen](time-series-insights-environment-planning.md) voor meer informatie |
    | Bron van gebeurtenis | Een gebeurtenis bron is een verbinding met een gebeurtenis-Broker van waaruit Time Series Insights gebeurtenissen in de omgeving leest en opneemt. De momenteel ondersteunde gebeurtenis bronnen zijn IoT Hub en Event hub. |
    | Gegevensset voor referentie | Referentie gegevens sets bevatten meta gegevens over de gebeurtenissen in de omgeving. Meta gegevens in de referentie gegevens sets worden samengevoegd met gebeurtenissen tijdens de ingang. Referentie gegevens sets worden als resources gedefinieerd op basis van hun gebeurtenis sleutel eigenschappen. De daad werkelijke meta gegevens waaruit de referentie gegevensverzameling bestaat, worden geüpload of gewijzigd via data plan-Api's. |
-   | Toegangsbeleid | Toegangs beleid verleent machtigingen voor het uitgeven van gegevens query's, het bewerken van referentie gegevens in de omgeving en het delen van opgeslagen query's en perspectieven die aan de omgeving zijn gekoppeld. Lees [granting Data Access to a time series Insights environment using Azure Portal](time-series-insights-data-access.md) voor meer informatie. |
+   | Toegangs beleid | Toegangs beleid verleent machtigingen voor het uitgeven van gegevens query's, het bewerken van referentie gegevens in de omgeving en het delen van opgeslagen query's en perspectieven die aan de omgeving zijn gekoppeld. Lees [granting Data Access to a time series Insights environment using Azure Portal](time-series-insights-data-access.md) voor meer informatie. |
 
 Een resource manager-sjabloon is een JSON-bestand dat de infra structuur en configuratie van resources in een resource groep definieert. De volgende documenten beschrijven sjabloon bestanden in meer detail:
 
@@ -57,7 +57,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
     <div id="required-parameters"></div>
 
-   * Vereiste parameters
+   * Vereiste para meters
 
      | Parameter | Beschrijving |
      | --- | --- |
@@ -69,7 +69,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
     <div id="optional-parameters"></div>
 
-   * Optionele parameters
+   * Optionele para meters
 
      | Parameter | Beschrijving |
      | --- | --- |

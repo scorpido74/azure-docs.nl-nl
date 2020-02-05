@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 6d45e3d911b8070529c43d9069a3d0d2fa5d3e69
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0429bf4968f457e201491db3df16f0004f216f30
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979001"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023273"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Een peering voor een virtueel netwerk maken-verschillende implementatie modellen en abonnementen
 
@@ -325,4 +325,4 @@ Wanneer u deze zelf studie hebt voltooid, kunt u de resources die u in de zelf s
 
 - U moet de belang rijke [beperkingen en het gedrag van peering voor het virtuele netwerk](virtual-network-manage-peering.md#requirements-and-constraints) zorgvuldig kennen voordat u een peering voor het virtuele netwerk maakt voor productie gebruik.
 - Meer informatie over alle [instellingen van peering voor virtuele netwerken](virtual-network-manage-peering.md#create-a-peering).
-- Meer informatie over het [maken van een hub-en-spoke-netwerk topologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) met peering voor virtuele netwerken.
+- Meer informatie over het [maken van een hub-en-spoke-netwerk topologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) met peering voor virtuele netwerken.

@@ -10,15 +10,17 @@
       items:
         - name: Azure Portal
           href: create-private-endpoint-portal.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: create-private-endpoint-cli.md
         - name: Azure PowerShell
           href: create-private-endpoint-powershell.md
     - name: Een Private Link-service maken
       items:
+        - name: Azure Portal
+          href: create-private-link-service-portal.md
         - name: Azure PowerShell
           href: create-private-link-service-powershell.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: create-private-link-service-cli.md
 - name: Concepten
   items:
@@ -40,7 +42,7 @@
       href: manage-private-endpoint.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/network
     - name: Azure PowerShell
       href: /powershell/module/az.network

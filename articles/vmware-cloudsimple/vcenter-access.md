@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing op CloudSimple-Access vSphere-client
-description: Hierin wordt beschreven hoe u toegang krijgt tot de vCenter van uw Privécloud.
+title: Azure VMware-oplossingen (AVS)-Access vSphere-client
+description: Hierin wordt beschreven hoe u toegang krijgt tot vCenter vanuit de Privécloud van uw AVS.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/30/2019
@@ -8,25 +8,25 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 18d9463bc512257034860e1188372879524924f7
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ad018ea89b194d42ab1867a0569725c4c3680f7d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196125"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022661"
 ---
-# <a name="access-your-private-cloud-vcenter-portal"></a>Toegang tot uw Private Cloud vCenter-Portal
+# <a name="access-your-avs-private-cloud-vcenter-portal"></a>Toegang tot de vCenter-portal van uw AVS-Privécloud
 
-U kunt uw Private Cloud vCenter-Portal starten vanuit Azure Portal of CloudSimple Portal.  met de vCenter-Portal kunt u de VMware-infra structuur beheren in uw Privécloud.
+U kunt uw AVS-portal voor de Privécloud van uw Cloud starten vanuit Azure Portal of de AVS-Portal. met de vCenter-Portal kunt u VMware-infra structuur beheren in de Privécloud van uw AVS.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Er moet een netwerk verbinding tot stand worden gebracht en DNS-naam omzetting moet zijn ingeschakeld voor toegang tot de vCenter-Portal.  U kunt met behulp van de onderstaande opties netwerk verbinding maken met uw Privécloud.
+Er moet een netwerk verbinding tot stand worden gebracht en DNS-naam omzetting moet zijn ingeschakeld voor toegang tot de vCenter-Portal. U kunt met behulp van de onderstaande opties een netwerk verbinding met de Privécloud van uw AVS tot stand brengen.
 
-* [Verbinding maken tussen on-premises en CloudSimple met behulp van ExpressRoute](on-premises-connection.md)
-* [Een VPN-verbinding met uw CloudSimple-Privécloud configureren](set-up-vpn.md)
+* [Verbinding maken tussen on-premises en AVS met ExpressRoute](on-premises-connection.md)
+* [Een VPN-verbinding met de Privécloud van uw AVS configureren](set-up-vpn.md)
 
-Voor het instellen van de DNS-naam omzetting van uw onderdelen van de VMware-infra structuur van uw Privécloud, raadpleegt u [DNS configureren voor naam omzetting voor Private Cloud vCenter-toegang vanaf on-premises werk stations](on-premises-dns-setup.md)
+Voor het instellen van de DNS-naam omzetting van uw onderdelen uit de VMware-infra structuur van uw AVS, raadpleegt [u DNS configureren voor naam omzetting voor automatische AVS-toegang tot de Cloud vCenter vanaf on-premises werk stations](on-premises-dns-setup.md)
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -34,37 +34,37 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="access-vcenter-from-azure-portal"></a>Toegang tot vCenter vanuit Azure Portal
 
-U kunt de vCenter-portal van uw Privécloud starten vanuit Azure Portal.
+U kunt de vCenter-portal van de Privécloud van uw AVS starten vanuit Azure Portal.
 
 1. Selecteer **Alle services**.
 
-2. Zoek naar **CloudSimple Services**.
+2. Zoeken naar **AVS-Services**.
 
-3. Selecteer de CloudSimple-service van de Privécloud waarmee u verbinding wilt maken.
+3. Selecteer de AVS-service van de Privécloud van uw AVS waarmee u verbinding wilt maken.
 
-4. Klik op de pagina **overzicht** op **persoonlijke VMware-Clouds weer geven**
+4. Klik op de pagina **overzicht** op **persoonlijke Clouds van VMware-AVS weer geven**
 
-    ![Overzicht van de CloudSimple-service](media/cloudsimple-service-overview.png)
+    ![Overzicht van AVS-service](media/cloudsimple-service-overview.png)
 
-5. Selecteer de privécloud in de lijst met persoonlijke Clouds en klik op **vSphere-client starten**.
+5. Selecteer in de lijst met persoonlijke Clouds de AVS en klik op **vSphere-client starten**.
 
     ![VSphere-client starten](media/cloudsimple-service-launch-vsphere-client.png)
 
-## <a name="access-vcenter-from-cloudsimple-portal"></a>Toegang tot vCenter vanuit CloudSimple-Portal
+## <a name="access-vcenter-from-avs-portal"></a>Toegang tot vCenter vanuit de AVS-Portal
 
-U kunt de vCenter-portal van uw Privécloud starten vanuit de CloudSimple-Portal.
+U kunt de vCenter-portal van de Privécloud van uw AVS starten vanuit de AVS-Portal.
 
-1. Toegang tot uw [CloudSimple-Portal](access-cloudsimple-portal.md).
+1. Toegang tot uw [AVS-Portal](access-cloudsimple-portal.md).
 
-2. Selecteer in de **resources** de privécloud die u wilt openen en klik op **VSphere-client starten**.
+2. Selecteer vanuit de **resources** de automatische AVS-Cloud die u wilt openen en klik op **VSphere-client starten**.
 
     ![VSphere-client starten-resources](media/cloudsimple-portal-resources-launch-vcenter.png)
 
-3. U kunt ook de vCenter-Portal starten vanuit het overzichts scherm van uw Privécloud.
+3. U kunt ook de vCenter-Portal starten vanuit het overzichts scherm van de Privécloud van uw AVS.
 
     ![VSphere-client starten-samen vatting](media/cloudsimple-resources-summary-launch-vcenter.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [VLAN'S/subnetten voor uw privé-clouds maken en beheren](create-vlan-subnet.md)
-* [CloudSimple Private Cloud permission model van VMware vCenter](learn-private-cloud-permissions.md)
+* [VLAN'S/subnetten maken en beheren voor uw AVS-persoonlijke Clouds](create-vlan-subnet.md)
+* [Machtigings model voor de Privécloud van de cloud van VMware vCenter](learn-private-cloud-permissions.md)

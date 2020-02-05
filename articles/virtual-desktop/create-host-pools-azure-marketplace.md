@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: e5be2490ebf756c030e6a53b226f91c49c7bccaf
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 25dd4810cf8cccab8bcbf211da4f6abbcd147056
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605590"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020026"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Zelf studie: een hostgroep maken met behulp van Azure Marketplace
 
@@ -55,7 +55,7 @@ Ga als volgt te werk voor de Blade **basis beginselen** :
 3. Voer een door komma's gescheiden lijst in van gebruikers die zich kunnen aanmelden bij de virtueel-bureaubladclient van Windows en toegang hebben tot een bureau blad nadat de Azure Marketplace-aanbieding is voltooid. Als u bijvoorbeeld user1@contoso.com en user2@contoso.com toegang wilt toewijzen, typt uuser1@contoso.com,user2@contoso.com.
 4. Selecteer **nieuwe maken** en geef een naam op voor de nieuwe resource groep.
 5. Voor **locatie**selecteert u dezelfde locatie als het virtuele netwerk dat verbinding heeft met de Active Directory-server.
-6. Selecteer **OK**.
+6. Selecteer **volgende: virtuele machines > configureren**.
 
 >[!IMPORTANT]
 >Als u een zuivere Azure Active Directory Domain Services en Azure Active Directory oplossing gebruikt, moet u ervoor zorgen dat u uw hostgroep in dezelfde regio als uw Azure Active Directory Domain Services implementeert om domein-en referentie fouten te voor komen.
@@ -66,7 +66,7 @@ Voor de Blade **virtuele machines configureren** :
 
 1. Accepteer de standaard waarden of pas het aantal en de grootte van de virtuele machines aan.
 2. Voer een voor voegsel voor de namen van de virtuele machines in. Als u bijvoorbeeld de naam "voor voegsel" opgeeft, worden de virtuele machines "voor voegsel-0," "voor voegsel-1," genoemd.
-3. Selecteer **OK**.
+3. Selecteer **volgende: instellingen van de virtuele machine**.
 
 ### <a name="virtual-machine-settings"></a>Instellingen voor virtuele machines
 
@@ -80,7 +80,7 @@ Voor de Blade instellingen van de **virtuele machine** :
 1. Voor **installatie kopie bron**selecteert u de bron en voert u de juiste informatie in voor het vinden ervan en hoe u deze kunt opslaan. Als u ervoor kiest geen Managed disks te gebruiken, selecteert u het opslag account dat het. VHD-bestand bevat.
 2. Voer de user principal name en het wacht woord in voor het domein account dat wordt toegevoegd aan de virtuele machines in het Active Directory domein. Dezelfde gebruikers naam en hetzelfde wacht woord worden als een lokaal account op de virtuele machines gemaakt. U kunt deze lokale accounts later opnieuw instellen.
 3. Selecteer het virtuele netwerk dat verbinding met de Active Directory server heeft en kies vervolgens een subnet om de virtuele machines te hosten.
-4. Selecteer **OK**.
+4. Selecteer **volgende: informatie over virtueel Windows-bureau blad**.
 
 ### <a name="windows-virtual-desktop-tenant-information"></a>Windows-Tenant gegevens voor virtueel bureau blad
 
@@ -90,15 +90,14 @@ Voor de Blade **Tenant gegevens van Windows virtueel bureau blad** :
 2. Voer de naam in van de Tenant waar u deze hostgroep gaat maken voor de **Windows-Tenant naam van het virtuele bureau blad**.
 3. Geef het type referenties op dat u wilt gebruiken voor verificatie als de RDS-eigenaar van het Windows Virtual Desktop Tenant. Als u de [zelf studie service-principals en roltoewijzingen maken met Power shell](./create-service-principal-role-powershell.md)hebt voltooid, selecteert u **Service-Principal**. Wanneer de **Azure AD-Tenant-id** wordt weer gegeven, voert u de id in voor het Azure Active Directory exemplaar dat de service-principal bevat.
 4. Voer de referenties in voor het Tenant beheerders account. Alleen service-principals met een wachtwoord referentie worden ondersteund.
-5. Selecteer **OK**.
+5. Selecteer **volgende: controleren + maken**.
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>De installatie volt ooien en de virtuele machine maken
 
 Voor de laatste twee blades:
 
-1. Controleer de installatie gegevens op de Blade **samen vatting** . Als u iets wilt wijzigen, gaat u terug naar de juiste Blade en brengt u de wijzigingen aan voordat u doorgaat. Als de gegevens er rechts uitzien, selecteert u **OK**.
-2. Bekijk op de Blade **kopen** de aanvullende informatie over uw aankoop op de Azure Marketplace.
-3. Selecteer **maken** om uw hostgroep te implementeren.
+1. Controleer de installatie gegevens op de Blade **controleren en maken** . Als u iets wilt wijzigen, gaat u terug naar de juiste Blade en brengt u de wijzigingen aan voordat u doorgaat. Als de gegevens er rechts uitzien, selecteert u **OK**.
+2. Selecteer **maken** om uw hostgroep te implementeren.
 
 Afhankelijk van het aantal Vm's dat u maakt, kan dit proces 30 minuten of langer duren.
 

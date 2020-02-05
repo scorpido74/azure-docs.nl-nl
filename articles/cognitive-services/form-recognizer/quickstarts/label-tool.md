@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: f00702326cf6fe2efd8d4abbfce7174815ea0b1d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 158faaba1525e162c40c44179f30f7c3cea83b38
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770285"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025908"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Een model voor het herkennen van een formulier met labels trainen met behulp van het voor beeld-label programma
 
@@ -26,7 +26,6 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 - Toegang tot de preview-versie van beperkte toegang van de formulier herkenning. Als u toegang wilt krijgen tot de preview, vult u het [formulier voor de toegangs aanvraag voor de formulier herkenning](https://aka.ms/FormRecognizerRequestAccess)in en verzendt u dit. U ontvangt een e-mail met een koppeling om een formulier Recognizer-resource te maken.
-- Toegang tot het hulp programma voor het labelen van het voor beeld van een formulier herkenning. Als u toegang wilt krijgen, vult u het [aanvraag formulier voor het hulp programma voor de formulier herkennings label](https://aka.ms/LabelToolRequestAccess)in en verzendt u dit. U ontvangt een e-mail met instructies om uw referenties te verkrijgen en toegang te krijgen tot het persoonlijke container register. 
 - Een set van ten minste zes soorten van hetzelfde type. U gebruikt deze gegevens om het model te trainen en een formulier te testen. U kunt een voor [beeld](https://go.microsoft.com/fwlink/?linkid=2090451) van een gegevensset voor deze Quick Start gebruiken. Upload de trainings bestanden naar de hoofdmap van een BLOB storage-container in een Azure Storage-account.
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Het hulp programma voor het labelen van het voor beeld instellen
@@ -38,18 +37,13 @@ U gebruikt de docker-engine voor het uitvoeren van het hulp programma voor het l
     |:--|:--|:--|
     |Voor beeld van een label programma|2 Core, 4 GB geheugen|4 kern geheugen van 8 GB|
     
-1. Daarna hebt u de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)nodig. Installeer dit op uw computer als u dat nog niet hebt gedaan.
-1. Voer vervolgens de volgende opdracht in bij een opdracht prompt. De waarden voor `<username>` en `<password>` bevinden zich in het welkomst scherm van de formulier herkennings-e-mail.
-    ```
-    docker login containerpreview.azurecr.io -u <username> -p <password>
-    ```
 1. Haal de voor beeld-container met de `docker pull` opdracht.
     ```
-    docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool:latest
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
 1. U bent nu klaar om de container met `docker run`uit te voeren.
     ```
-    docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
    Met deze opdracht wordt het hulp programma voor het labelen van het voor beeld beschikbaar gemaakt via een webbrowser. Ga naar [http://localhost:3000](http://localhost:3000).

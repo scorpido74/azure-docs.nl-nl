@@ -5,18 +5,18 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 6bc6f1ca29343e027730cbbd99d210f911fcb492
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967303"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023409"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Een aangepaste domein naam voor Azure App Service kopen
 
 App Service domeinen zijn domeinen op het hoogste niveau die rechtstreeks in Azure worden beheerd. Ze maken het eenvoudig om aangepaste domeinen voor [Azure app service](overview.md)te beheren. Deze zelf studie laat zien hoe u een App Service domein kunt kopen en DNS-namen kunt toewijzen aan Azure App Service.
 
-Zie [app service domein toewijzen aan Azure VM of Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/)voor Azure vm of Azure Storage. Zie voor Cloud Services [een aangepaste domein naam configureren voor een Azure-Cloud service](../cloud-services/cloud-services-custom-domain-name-portal.md).
+Zie [app service domein toewijzen aan Azure VM of Azure Storage](https://azure.github.io/AppService/2017/07/31/Assign-App-Service-domain-to-Azure-VM-or-Azure-Storage)voor Azure vm of Azure Storage. Zie voor Cloud Services [een aangepaste domein naam configureren voor een Azure-Cloud service](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -108,7 +108,7 @@ Selecteer vervolgens de gewenste opties voor uw domein. Zie de volgende tabel vo
 
 | Instelling | Voorgestelde waarde | Beschrijving |
 |-|-|-|
-|Privacybescherming | Inschakelen | Meld u aan als privacy-beveiliging, die in de _gratis_aankoop prijs is opgenomen. Sommige domeinen op het hoogste niveau worden beheerd door registraties die geen ondersteuning bieden voor privacy-bescherming en ze worden vermeld op de pagina **privacy-beveiliging** . |
+|Privacy-beveiliging | Inschakelen | Meld u aan als privacy-beveiliging, die in de _gratis_aankoop prijs is opgenomen. Sommige domeinen op het hoogste niveau worden beheerd door registraties die geen ondersteuning bieden voor privacy-bescherming en ze worden vermeld op de pagina **privacy-beveiliging** . |
 | Standaard hostnamen toewijzen | **www** en **\@** | Selecteer de gewenste hostnamen bindingen, indien gewenst. Wanneer de aankoop bewerking van het domein is voltooid, kan uw app worden geopend op de geselecteerde hostnamen. Als de app zich achter [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)bevindt, ziet u de optie voor het toewijzen van het hoofd domein (@) niet, omdat Traffic Manager geen records ondersteunt. U kunt wijzigingen aanbrengen in de hostname-toewijzingen nadat de domein aankoop is voltooid. |
 
 ### <a name="accept-terms-and-purchase"></a>Voor waarden accepteren en kopen

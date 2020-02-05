@@ -117,7 +117,7 @@
       href: concept-recognizing-text.md
     - name: Detectie van erotische inhoud
       href: concept-detecting-adult-content.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: De Computer Vision-API aanroepen
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
@@ -135,13 +135,11 @@
         - name: Containerinstanties gebruiken
           href: deploy-computer-vision-on-container-instances.md
           displayName: 'container instances, container, containers, images'
-    - name: De verbonden service Computer Vision gebruiken
-      href: vs-computer-vision-connected-service.md
     - name: Video's in realtime analyseren
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'

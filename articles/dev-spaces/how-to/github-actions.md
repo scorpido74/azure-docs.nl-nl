@@ -1,17 +1,17 @@
 ---
 title: GitHub-acties & Azure Kubernetes-service
 services: azure-dev-spaces
-ms.date: 11/04/2019
+ms.date: 02/04/2020
 ms.topic: conceptual
 description: Wijzigingen van een pull-aanvraag rechtstreeks controleren en testen in azure Kubernetes service met GitHub-acties en Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, GitHub acties, helm, Service-Mesh, Service-Mesh-route ring, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 7d96726e829154847744d9aec07a9cb0938f75de
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771118"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026095"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub acties & Azure Kubernetes service (preview)
 
@@ -29,7 +29,7 @@ In deze handleiding leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 * [Azure CLI geïnstalleerd][azure-cli-installed].
 * [Helm 3 is geïnstalleerd][helm-installed].
 * Een GitHub-account waarvoor [github-acties zijn ingeschakeld][github-actions-beta-signup].
@@ -57,7 +57,6 @@ az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
 Sla de JSON-uitvoer op omdat deze wordt gebruikt in een latere stap.
-
 
 Gebruik [AZ AKS show][az-aks-show] om de id van uw AKS *-* cluster weer te geven:
 
@@ -93,7 +92,6 @@ Navigeer naar uw gevorkte opslag plaats en klik op *instellingen*. Klik op *gehe
 1. *CLUSTER_NAME*: de naam van uw AKS-cluster, in dit voor beeld *MyAKS*.
 1. *CONTAINER_REGISTRY*: de *login server* voor de ACR.
 1. *Host*: de host voor uw dev-ruimte, die de vorm *< MASTER_SPACE >. < APP_NAME >. <* HOST_SUFFIX >, die in dit voor beeld is *dev.bikesharingweb.fedcab0987.Eus.azds.io*.
-1. *HOST_SUFFIX*: het achtervoegsel van de host voor uw dev-ruimte, in dit voor beeld *fedcab0987.Eus.azds.io*.
 1. *IMAGE_PULL_SECRET*: de naam van het geheim dat u wilt gebruiken, bijvoorbeeld *demo-geheim*.
 1. *MASTER_SPACE*: de naam van de bovenliggende ontwikkel ruimte, die in dit voor beeld *dev*is.
 1. *REGISTRY_USERNAME*: de *CLIENTID* van de JSON-uitvoer van de Service-Principal is gemaakt.
@@ -101,6 +99,8 @@ Navigeer naar uw gevorkte opslag plaats en klik op *instellingen*. Klik op *gehe
 
 > [!NOTE]
 > Al deze geheimen worden gebruikt door de GitHub-actie en zijn geconfigureerd in [. github/workflows/Bikes. yml][github-action-yaml].
+
+Indien gewenst kunt u, als u de Master ruimte wilt bijwerken nadat de PR is samengevoegd, het *GATEWAY_HOST* geheim toevoegen, waarmee de formulier *< MASTER_SPACE >. gateway. <* HOST_SUFFIX de >, die in dit voor beeld is *dev.gateway.fedcab0987.Eus.azds.io*. Wanneer u de wijzigingen in de hoofd vertakking in uw Fork samenvoegt, wordt er een andere actie uitgevoerd om uw hele toepassing opnieuw te bouwen en uit te voeren in de hoofd ontwikkelaars ruimte. In dit voor beeld is de hoofd ruimte *dev*. Deze actie is geconfigureerd in [. github/workflows/bikesharing. yml][github-action-bikesharing-yaml].
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Een nieuwe vertakking maken voor code wijzigingen
 

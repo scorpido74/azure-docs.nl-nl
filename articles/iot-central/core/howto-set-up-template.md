@@ -1,332 +1,270 @@
 ---
-title: Een sjabloon voor een apparaat instellen in een Azure IoT Central-toepassing | Microsoft Docs
-description: Meer informatie over het instellen van een apparaatprofiel met metingen, instellingen, eigenschappen, regels en een dash board.
-author: viv-liu
-ms.author: viviali
-ms.date: 06/19/2019
-ms.topic: conceptual
+title: Geef een nieuw IoT-apparaattype op in azure IoT Central | Microsoft Docs
+description: In deze zelf studie wordt uitgelegd hoe u als Builder een nieuwe Azure IoT-apparaatprofiel maakt in uw Azure IoT Central-toepassing. U definieert de telemetrie, de status, de eigenschappen en de opdrachten voor uw type.
+author: dominicbetts
+ms.author: dobett
+ms.date: 12/06/2019
+ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c4df07174a5d8826acd7682fa3035fcfd201c5c9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2313c347e3836b6fa9d6055f99c258624e44c51f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953094"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023783"
 ---
-# <a name="set-up-a-device-template"></a>Een sjabloon van het apparaat instellen
-
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+# <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Een nieuw IoT-apparaattype definiëren in uw Azure IoT Central-toepassing
 
 Een sjabloon voor een apparaat is een blauw druk die de kenmerken en het gedrag definieert van een type apparaat dat verbinding maakt met een Azure IoT Central-toepassing.
 
 Een opbouw functie kan bijvoorbeeld een apparaatprofiel maken voor een verbonden ventilator die de volgende kenmerken heeft:
 
-- Meting van de telemetrische Tempe ratuur
-- Locatie meting
-- Meting van fout gebeurtenis door ventilator motor
-- Meting van de operationele status van ventilator
-- Instelling voor ventilator snelheid
-- Regels voor het verzenden van waarschuwingen
-- Dash board waarmee u een algemene weer gave van het apparaat krijgt
+- Verzendt een telemetrie van de Tempe ratuur
+- Eigenschap voor verzenden van locatie
+- Hiermee worden fout gebeurtenissen van een ventilator motor verzonden
+- Hiermee wordt de status van de ventilator verzonden
+- Biedt een Beschrijf bare ventilator snelheids eigenschap
+- Biedt een opdracht voor het opnieuw opstarten van het apparaat
+- Geeft een algemeen overzicht van het apparaat via een dash board
 
-Met deze apparaatprofiel kan een operator echte ventilator apparaten maken en verbinden met namen als **ventilator-1** en **ventilator-2**. Al deze ventilatoren hebben metingen, instellingen, eigenschappen, regels en een dash board die gebruikers van uw toepassing kunnen bewaken en beheren.
-
-> [!NOTE]
-> Alleen bouwers en beheerders kunnen sjablonen voor apparaten maken, bewerken en verwijderen. Elke gebruiker kan op de **device Explorer** pagina apparaten maken op basis van bestaande Apparaatinstellingen.
-
-## <a name="create-a-device-template"></a>Een sjabloon voor een apparaat maken
-
-1. Navigeer naar de pagina met **Apparaatinstellingen** .
-
-2. Als u een sjabloon wilt maken, begint u met selecteren en selecteert u **+ Nieuw**.
-
-3. Als u snel aan de slag wilt gaan, kiest u uit de bestaande vooraf gemaakte sjablonen. Anders selecteert u **aangepast**, voert u een naam in en klikt u op **maken** om uw eigen sjabloon helemaal zelf te bouwen.
-
-   ![Bibliotheek met Apparaatbeheer](./media/howto-set-up-template/newtemplate.png)
-
-4. Wanneer u een aangepaste sjabloon maakt, ziet u de pagina met details van het **apparaat** voor de nieuwe sjabloon. IoT Central maakt automatisch een gesimuleerd apparaat wanneer u een sjabloon voor een apparaat maakt. Met een gesimuleerd apparaat kunt u het gedrag van uw toepassing testen voordat u een echt apparaat verbindt.
-
-In de volgende secties wordt elk van de tabbladen op de pagina **Apparaatbeheer** beschreven.
-
-## <a name="measurements"></a>Metingen
-
-Metingen zijn de gegevens die afkomstig zijn van uw apparaat. U kunt meerdere metingen toevoegen aan uw apparaatprofiel zodat deze overeenkomen met de mogelijkheden van uw apparaat.
-
-- **Telemetrie** -metingen zijn de numerieke gegevens punten die uw apparaat in de loop van de tijd verzamelt. Ze worden weer gegeven als een doorlopende stroom. Een voor beeld is een Tempe ratuur.
-- **Gebeurtenis** metingen zijn tijdgebonden gegevens die een betekenis hebben op het apparaat. Een Ernst niveau vertegenwoordigt het belang van een gebeurtenis. Een voor beeld is een ventilator fout.
-- **Status** metingen vertegenwoordigen de status van het apparaat of de onderdelen ervan gedurende een bepaalde periode. Een ventilator modus kan bijvoorbeeld worden gedefinieerd als het **besturings systeem** en worden **gestopt** als de twee mogelijke statussen.
-- **Locatie** metingen zijn de lengte-en breedte coördinaten van het apparaat gedurende een bepaalde periode in. Een ventilator kan bijvoorbeeld van de ene locatie naar de andere worden verplaatst.
-
-### <a name="create-a-telemetry-measurement"></a>Een telemetrie-meting maken
-
-Als u een nieuwe telemetrische meting wilt toevoegen, selecteert u **+ nieuwe meting**, kiest u **telemetrie** als meet type en voert u de details in het formulier in.
+Met deze apparaatprofiel kan een operator echte ventilator apparaten maken en verbinden. Al deze ventilatoren hebben metingen, eigenschappen en opdrachten die Opera tors gebruiken om ze te controleren en te beheren. Opera tors van het dash board en de formulieren worden gebruikt om te communiceren met de ventilator apparaten.
 
 > [!NOTE]
-> De veld namen in de sjabloon van het apparaat moeten overeenkomen met de namen van de eigenschappen in de bijbehorende apparaatcode, zodat de telemetrische meting in de toepassing wordt weer gegeven wanneer een echt apparaat is verbonden. Doe hetzelfde wanneer u instellingen, apparaateigenschappen en opdrachten configureert terwijl u de sjabloon voor het apparaat in de volgende secties blijft definiëren.
+> Alleen bouwers en beheerders kunnen sjablonen voor apparaten maken, bewerken en verwijderen. Elke gebruiker kan apparaten op de pagina **apparaten** maken op basis van bestaande Apparaatinstellingen.
 
-U kunt bijvoorbeeld een nieuwe meting van de telemetrische Tempe ratuur toevoegen:
+Met [IoT Plug en Play (preview)](../../iot-pnp/overview-iot-plug-and-play.md) kunnen apparaten worden geïntegreerd in IOT Central, zonder dat u de code van een Inge sloten apparaat hoeft te schrijven. De kern van IoT Plug en Play (preview) is een schema voor het capaciteits model van het apparaat dat de mogelijkheden van apparaten beschrijft. In een IoT Central-toepassing gebruiken Apparaatinstellingen deze IoT Plug en Play (preview)-mogelijkheden voor apparaten.
 
-| Weergavenaam        | Veldnaam    |  Eenheden    | Min.   |Max.|
-| --------------------| ------------- |-----------|-------|---|
-| Temperatuur         | ratuur          |  degC     |  0    |100|
+Als opbouw functie hebt u verschillende opties voor het maken van Apparaatinstellingen:
 
-![Formulier telemetrie maken met Details voor de meting van de Tempe ratuur](./media/howto-set-up-template/measurementsform.png)
+- Ontwerp de sjabloon voor het apparaat in IoT Central en implementeer vervolgens het hulp model van het apparaat in de code van uw apparaat.
+- Importeer een mogelijkheidsprofiel vanuit de [Azure Certified voor IOT-apparaat Catalog](https://aka.ms/iotdevcat). Voeg vervolgens alle Cloud eigenschappen, aanpassingen en dash boards toe die uw IoT Central toepassing nodig heeft.
+- Maak een mogelijkheidsprofiel met Visual Studio code. Implementeer uw apparaatcode vanuit het model. Importeer het mogelijkheidsprofiel hand matig in uw IoT Central-toepassing en voeg vervolgens alle Cloud eigenschappen, aanpassingen en dash boards toe die uw IoT Central toepassing nodig heeft.
+- Maak een mogelijkheidsprofiel met Visual Studio code. Implementeer uw apparaatcode vanuit het model en verbind uw echte apparaat met uw IoT Central-toepassing met behulp van een apparaat-eerste verbinding. IoT Central zoekt en importeert het mogelijkheidsprofiel uit de open bare opslag plaats voor u. U kunt vervolgens alle Cloud eigenschappen, aanpassingen en dash boards toevoegen die uw IoT Central toepassing nodig heeft voor de sjabloon voor het apparaat.
 
-Nadat u **Opslaan**hebt geselecteerd, wordt de meting van de **Tempe ratuur** weer gegeven in de lijst met metingen. Kortom, u ziet de visualisatie van de temperatuur gegevens van het gesimuleerde apparaat.
+## <a name="create-a-device-template-from-the-device-catalog"></a>Een sjabloon voor een apparaat maken vanuit de catalogus met apparaten
 
-Bij het weer geven van telemetrie kunt u kiezen uit de volgende aggregatie opties: gemiddelde, minimum, maximum, som en aantal. **Gemiddelde** is geselecteerd als de standaard aggregatie in de grafiek.
+Als bouwer kunt u snel beginnen met het bouwen van uw oplossing met behulp van een IoT-Plug en Play (preview) gecertificeerd apparaat. Zie de lijst in de [Azure IOT-Apparaatbeheer](https://catalog.azureiotsolutions.com/alldevices). IoT Central integreert met de-catalogus, zodat u een mogelijkheidsprofiel kunt importeren uit een van deze IoT Plug en Play (preview) gecertificeerde apparaten. Een sjabloon voor een apparaat maken op basis van een van deze apparaten in IoT Central:
 
-> [!NOTE]
-> Het gegevens type van de telemetrie-meting is een getal met drijvende komma.
+1. Ga naar de pagina met **Apparaatinstellingen** in uw IOT Central-toepassing.
+1. Selecteer **+ Nieuw**en selecteer vervolgens een van de IoT-Plug en Play (preview) gecertificeerde apparaten uit de catalogus. IoT Central maakt een sjabloon op basis van dit mogelijkheidsprofiel.
+1. Voeg Cloud eigenschappen, aanpassingen of weer gaven toe aan de sjabloon voor uw apparaat.
+1. Selecteer **publiceren** om de sjabloon beschikbaar te maken voor Opera tors om apparaten weer te geven en te verbinden.
 
-### <a name="create-an-event-measurement"></a>Een gebeurtenis meting maken
+## <a name="create-a-device-template-from-scratch"></a>Een volledig nieuwe sjabloon voor een apparaat maken
 
-Als u een nieuwe gebeurtenis meting wilt toevoegen, selecteert u **+ nieuwe meting** en selecteert u **gebeurtenis** als metings type. Voer de details in op het **gebeurtenis formulier maken** .
+Een sjabloon voor het apparaat bevat:
 
-Geef de **weergave naam**, **veld naam**en **Ernst** Details op voor de gebeurtenis. U kunt kiezen uit de drie beschik bare niveaus van Ernst: **fout**, **waarschuwing**en **informatie**.
+- Een _mogelijkheidsprofiel_ waarmee de telemetrie, eigenschappen en opdrachten worden opgegeven die het apparaat implementeert. Deze mogelijkheden zijn ingedeeld in een of meer interfaces.
+- _Cloud eigenschappen_ waarmee informatie wordt gedefinieerd die uw IOT Central-app over uw apparaten opslaat. Een Cloud eigenschap kan bijvoorbeeld de datum vastleggen waarop een apparaat voor het laatst is verwerkt. Deze informatie wordt nooit gedeeld met het apparaat.
+- Met _aanpassingen_ kunnen de opbouw functie sommige definities in het mogelijkheidsprofiel overschrijven. De opbouw functie kan bijvoorbeeld de naam van een eigenschap apparaat onderdrukken. Eigenschaps namen worden weer gegeven in IoT Central Dash boards en formulieren.
+- Met _Dash boards en formulieren_ kan de opbouw functie een gebruikers interface maken waarmee Opera tors de apparaten kunnen controleren en beheren die zijn verbonden met uw toepassing.
 
-U kunt bijvoorbeeld een nieuwe fout gebeurtenis voor een **ventilator motor** toevoegen.
+Een sjabloon voor een apparaat maken in IoT Central:
 
-| Weergavenaam        | Veldnaam    |  Standaard Ernst |
-| --------------------| ------------- |-----------|
-| Storing ventilatormotor     | fanmotorerror |  Fout    |
+1. Ga naar de pagina met **Apparaatinstellingen** in uw IOT Central-toepassing.
+1. Selecteer **+ nieuw** > **aangepast**.
+1. Voer een naam in voor de sjabloon, zoals **omgevings sensor**.
+1. Druk op **Enter**. IoT Central maakt een lege sjabloon voor het apparaat.
 
-![Formulier gebeurtenis maken met Details voor een ventilator motor gebeurtenis](./media/howto-set-up-template/eventmeasurementsform.png)
+## <a name="manage-a-device-template"></a>Een sjabloon voor een apparaat beheren
 
-Nadat u **Opslaan**hebt geselecteerd, wordt de fout meting van de **ventilator motor** weer gegeven in de lijst met metingen. Kortom, u ziet de visualisatie van de gebeurtenis gegevens van het gesimuleerde apparaat.
+U kunt de naam van een sjabloon wijzigen of verwijderen via de start pagina van de sjabloon.
 
-Als u meer informatie over een gebeurtenis wilt weer geven, selecteert u het gebeurtenis pictogram in de grafiek:
+Nadat u een mogelijkheidsprofiel aan uw sjabloon hebt toegevoegd, kunt u dit model publiceren. Totdat u de sjabloon hebt gepubliceerd, kunt u op de pagina **apparaten** geen verbinding maken met een apparaat dat is gebaseerd op deze sjabloon voor uw Opera tors.
 
-![Details voor de gebeurtenis ' ventilator motor error '](./media/howto-set-up-template/eventmeasurementsdetail.png)
+## <a name="create-a-capability-model"></a>Een mogelijkheidsprofiel maken
 
-> [!NOTE]
-> Het gegevens type van de gebeurtenis meting is teken reeks.
+Als u een mogelijkheidsprofiel wilt maken, kunt u het volgende doen:
 
-### <a name="create-a-state-measurement"></a>Een status meting maken
+- Gebruik IoT Central om een volledig aangepast model te maken.
+- Importeer een model uit een JSON-bestand. Een opbouw functie voor apparaten kan Visual Studio code gebruiken om een mogelijkheidsprofiel voor uw toepassing te ontwerpen.
+- Selecteer een van de apparaten in de catalogus met apparaten. Met deze optie wordt het mogelijkheidsprofiel geïmporteerd dat de fabrikant heeft gepubliceerd voor dit apparaat. Een functionaliteits model voor apparaten dat is geïmporteerd zoals dit wordt automatisch gepubliceerd.
 
-Als u een nieuwe status meting wilt toevoegen, selecteert u de knop **+ nieuwe meting** en selecteert u **status** als metings type. Voer de details in op het formulier **status maken** .
+## <a name="manage-a-capability-model"></a>Een mogelijkheidsprofiel beheren
 
-Geef de details op voor de **weergave naam**, de **veld naam**en de **waarden** van de status. Elke waarde kan ook een weergave naam hebben die wordt gebruikt wanneer de waarde wordt weer gegeven in grafieken en tabellen.
+Nadat u een mogelijkheidsprofiel hebt gemaakt, kunt u het volgende doen:
 
-U kunt bijvoorbeeld een nieuwe status voor de **ventilator modus** toevoegen die twee mogelijke waarden heeft die het apparaat kan **verzenden, gebruiken** en **stoppen**.
+- Interfaces toevoegen aan het model. Een model moet ten minste één interface hebben.
+- Meta gegevens van het model bewerken, zoals de ID, naam ruimte en naam.
+- Verwijder het model.
 
-| Weergavenaam | Veldnaam    |  Waarde 1   | Weergavenaam | Waarde 2    |Weergavenaam  |
-| -------------| ------------- |----------- | -------------| -----------| -------------|
-| Ventilatormodus     | ventilatormodus       |  1         | Actief    |     0      | Stopped      |
+## <a name="create-an-interface"></a>Een interface maken
 
-![Formulier status bewerken met Details voor de ventilator modus](./media/howto-set-up-template/statemeasurementsform.png)
+De capaciteit van een apparaat moet ten minste één interface hebben. Een interface is een herbruikbare verzameling mogelijkheden.
 
-Nadat u **Opslaan**hebt geselecteerd, wordt de meting van de status van de **ventilator modus** weer gegeven in de lijst met metingen. Kortom, u ziet de visualisatie van de status gegevens van het gesimuleerde apparaat.
+Een interface maken:
 
-Als het apparaat te veel gegevens punten in een kleine duur verzendt, wordt de status meting weer gegeven met een ander visueel element. Selecteer de grafiek om alle gegevens punten binnen die periode in chronologische volg orde weer te geven. U kunt ook het tijds bereik beperken om de meting te zien die is uitgezet in de grafiek.
+1. Ga naar het mogelijkheidsprofiel en kies **+ interface toevoegen**.
 
-> [!NOTE]
-> Het gegevens type van de status meting is teken reeks.
+1. Op de pagina **een interface selecteren** kunt u het volgende doen:
 
-### <a name="create-a-location-measurement"></a>Een locatie meting maken
+    - Een volledig nieuwe aangepaste interface maken.
+    - Importeer een bestaande interface uit een bestand. Een opbouw functie voor apparaten kan Visual Studio code gebruiken om een interface voor uw apparaat te maken.
+    - Kies een van de standaard interfaces, zoals de **apparaatgegevens** interface. Standaard interfaces geven de mogelijkheden die voor veel apparaten worden gebruikt. Deze standaard interfaces worden gepubliceerd door Azure IoT en kunnen niet worden geversied of bewerkt.
 
-Als u een nieuwe locatie meting wilt toevoegen, selecteert u **+ nieuwe meting**, kiest u **locatie** als het meet type en voert u de details in het formulier **meting maken** in.
+1. Nadat u een interface hebt gemaakt, kiest u **identiteit bewerken** om de weergave naam van de interface te wijzigen.
 
-U kunt bijvoorbeeld een nieuwe telemetrie-meting voor de locatie toevoegen:
+1. Als u een volledig nieuwe aangepaste interface wilt maken, kunt u de mogelijkheden van uw apparaat toevoegen. De mogelijkheden van apparaten zijn telemetrie, eigenschappen en opdrachten.
 
-| Weergavenaam        | Veldnaam    |
-| --------------------| ------------- |
-| Locatie van activum      |  assetloc     |
+### <a name="telemetry"></a>Telemetrie
 
-![Formulier ' locatie maken ' met Details voor de locatie meting](./media/howto-set-up-template/locationmeasurementsform.png)
+Telemetrie is een stroom van waarden die van het apparaat worden verzonden, meestal van een sensor. Een sensor kan bijvoorbeeld de omgevings temperatuur rapporteren.
 
-Nadat u **Opslaan**hebt geselecteerd, wordt de **locatie** meting weer gegeven in de lijst met metingen. Kortom, u ziet de visualisatie van de locatie gegevens van het gesimuleerde apparaat.
+De volgende tabel bevat de configuratie-instellingen voor een telemetrie-mogelijkheid:
 
-Bij het weer geven van de locatie kunt u kiezen uit de volgende opties: meest recente locatie en locatie geschiedenis. De **locatie geschiedenis** wordt alleen toegepast gedurende het geselecteerde tijds bereik.
+| Veld | Beschrijving |
+| ----- | ----------- |
+| Weergavenaam | De weergave naam voor de telemetrie-waarde die wordt gebruikt voor dash boards en formulieren. |
+| Name | De naam van het veld in het telemetrie-bericht. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
+| Type capaciteit | Telemetrie. |
+| Semantisch type | Het semantische type van de telemetrie, zoals de Tempe ratuur, de status of de gebeurtenis. De keuze van semantisch type bepaalt welke van de volgende velden beschikbaar zijn. |
+| Schema | Het gegevens type telemetrie, zoals double, String of vector. Welke opties beschikbaar zijn, wordt bepaald door het semantische type. Schema is niet beschikbaar voor de semantische typen gebeurtenis en status. |
+| Ernst | Alleen beschikbaar voor het semantische gebeurtenis type. De ernst is **fout**, **informatie**of **waarschuwing**. |
+| Status waarden | Alleen beschikbaar voor het semantische type status. Definieer de mogelijke status waarden, die elk een weergave naam, naam, opsommings type en waarde hebben. |
+| Eenheid | Een eenheid voor de telemetrische waarde, zoals **mph**, **%** of **&deg;C**. |
+| Eenheid weer geven | Een weergave-eenheid voor gebruik in dash boards en formulieren. |
+| Opmerking | Eventuele opmerkingen over de telemetrie-mogelijkheid. |
+| Beschrijving | Een beschrijving van de telemetrie-mogelijkheid. |
 
-Het gegevens type van de meting van de locatie is een object dat een lengte graad, breedte graad en een optionele hoogte bevat. In het volgende code fragment wordt de Java script-structuur weer gegeven:
+### <a name="properties"></a>Eigenschappen
 
-```javascript
-assetloc: {
-  lon: floating point number,
-  lat: floating point number,
-  alt?: floating point number
-}
-```
+Eigenschappen vertegenwoordigen waarden van het tijdstip. Een apparaat kan bijvoorbeeld een eigenschap gebruiken om de doel temperatuur te rapporteren die het probeert te bereiken. U kunt schrijf bare eigenschappen instellen van IoT Central.
 
-Zodra het apparaat is verbonden, wordt de locatie die u hebt toegevoegd als meting bijgewerkt met de waarde die wordt verzonden door het apparaat. Nadat u uw locatie meting hebt geconfigureerd, kunt u [een kaart toevoegen om de locatie in het dash board van het apparaat te visualiseren](#add-a-location-measurement-in-the-dashboard).
+De volgende tabel bevat de configuratie-instellingen voor een eigenschaps mogelijkheid:
 
-## <a name="settings"></a>Instellingen
+| Veld | Beschrijving |
+| ----- | ----------- |
+| Weergavenaam | De weergave naam voor de waarde van de eigenschap die wordt gebruikt in dash boards en formulieren. |
+| Name | De naam van de eigenschap. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
+| Type capaciteit | Eigenschap. |
+| Semantisch type | Het semantische type van de eigenschap, zoals de Tempe ratuur, de status of de gebeurtenis. De keuze van semantisch type bepaalt welke van de volgende velden beschikbaar zijn. |
+| Schema | Het gegevens type van de eigenschap, zoals double, String of vector. Welke opties beschikbaar zijn, wordt bepaald door het semantische type. Schema is niet beschikbaar voor de semantische typen gebeurtenis en status. |
+| Beschrijf bare | Als de eigenschap niet schrijfbaar is, kan het apparaat eigenschaps waarden rapporteren aan IoT Central. Als de eigenschap schrijfbaar is, kan het apparaat eigenschaps waarden rapporteren aan IoT Central en IoT Central eigenschaps updates naar het apparaat verzenden.
+| Ernst | Alleen beschikbaar voor het semantische gebeurtenis type. De ernst is **fout**, **informatie**of **waarschuwing**. |
+| Status waarden | Alleen beschikbaar voor het semantische type status. Definieer de mogelijke status waarden, die elk een weergave naam, naam, opsommings type en waarde hebben. |
+| Eenheid | Een eenheid voor de waarde van de eigenschap, zoals **mph**, **%** of **&deg;C**. |
+| Eenheid weer geven | Een weergave-eenheid voor gebruik in dash boards en formulieren. |
+| Opmerking | Eventuele opmerkingen over de eigenschaps mogelijkheid. |
+| Beschrijving | Een beschrijving van de eigenschaps mogelijkheid. |
 
-Instellingen bepalen een apparaat. Hiermee kunnen Opera tors invoer leveren aan het apparaat. U kunt meerdere instellingen toevoegen aan de sjabloon voor het apparaat die als tegels worden weer gegeven op het tabblad **instellingen** voor het gebruik van Opera tors. U kunt veel soorten instellingen toevoegen: getal, tekst, datum, wissel knop en sectie label.
+### <a name="commands"></a>Opdrachten
 
-De instellingen kunnen een van de drie statussen hebben. Het apparaat rapporteert deze statussen.
+U kunt de opdrachten van een apparaat aanroepen vanuit IoT Central. Opdrachten geven optioneel para meters door aan het apparaat en ontvangen een reactie van het apparaat. U kunt bijvoorbeeld een opdracht aanroepen om een apparaat binnen tien seconden opnieuw op te starten.
 
-- **Gesynchroniseerd**: het apparaat is gewijzigd om de waarde van de instelling weer te geven.
+De volgende tabel bevat de configuratie-instellingen voor een opdracht mogelijkheid:
 
-- **In behandeling**: het apparaat wordt momenteel gewijzigd in de waarde voor de instelling.
+| Veld | Beschrijving |
+| ----- | ----------- |
+| Weergavenaam | De weergave naam voor de opdracht die wordt gebruikt voor dash boards en formulieren. |
+| Name | De naam van de opdracht. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
+| Type capaciteit | Cmd. |
+| Opdracht | `SynchronousExecutionType`. |
+| Opmerking | Eventuele opmerkingen over de opdracht mogelijkheid. |
+| Beschrijving | Een beschrijving van de opdracht mogelijkheid. |
+| Aanvraag | Indien ingeschakeld, een definitie van de aanvraag parameter, met inbegrip van: naam, weergave naam, schema, eenheid en weer gave-eenheid. |
+| Antwoord | Als deze optie is ingeschakeld, wordt een definitie van het opdracht antwoord gegeven, waaronder: naam, weergave naam, schema, eenheid en weer gave-eenheid. |
 
-- **Fout**: het apparaat heeft een fout geretourneerd.
+## <a name="manage-an-interface"></a>Een interface beheren
 
-U kunt bijvoorbeeld een nieuwe instelling voor de ventilator snelheid toevoegen door **instellingen** te selecteren en in te voeren in de nieuwe **nummer** instelling:
+Als u de interface nog niet hebt gepubliceerd, kunt u de mogelijkheden bewerken die door de interface zijn gedefinieerd. Als u de interface hebt gepubliceerd en u wijzigingen wilt aanbrengen, moet u een nieuwe versie van de sjabloon voor het apparaat maken en de interface versie. In het gedeelte **aanpassen** kunt u wijzigingen aanbrengen waarvoor geen versie beheer nodig is, zoals het weer geven van namen of eenheden.
 
-| Weergavenaam  | Veldnaam    |  Eenheden  | decimalen |Itiaal|
-| --------------| ------------- |---------| ---------|---- |
-| Snelheid van ventilator     | fanSpeed      | RPM     | 2        | 0   |
+U kunt de interface ook exporteren als een JSON-bestand als u het opnieuw wilt gebruiken in een ander model voor functionaliteit.
 
-![Formulier nummer configureren met Details voor snelheids instellingen](./media/howto-set-up-template/settingsform.png)
+## <a name="add-cloud-properties"></a>Cloud eigenschappen toevoegen
 
-Nadat u **Opslaan**hebt geselecteerd, wordt de instelling voor de **ventilator snelheid** weer gegeven als een tegel. Een operator kan de instelling op de pagina **device Explorer** gebruiken om de snelheid van de ventilator van het apparaat te wijzigen.
+Gebruik Cloud eigenschappen om informatie over apparaten op te slaan in IoT Central. Cloud eigenschappen worden nooit verzonden naar een apparaat. U kunt bijvoorbeeld Cloud eigenschappen gebruiken om de naam op te slaan van de klant die het apparaat heeft geïnstalleerd of de laatste service datum van het apparaat.
 
-## <a name="properties"></a>Eigenschappen
+De volgende tabel bevat de configuratie-instellingen voor een Cloud eigenschap:
 
-Eigenschappen zijn meta gegevens die zijn gekoppeld aan het apparaat, zoals een vaste locatie van het apparaat en een serie nummer. Voeg meerdere eigenschappen toe aan de sjabloon van het apparaat die als tegels worden weer gegeven op het tabblad **Eigenschappen** . Een eigenschap heeft een type zoals getal, tekst, datum, wissel knop, apparaat-eigenschap, label of vaste locatie. Een operator geeft de waarden voor eigenschappen op wanneer ze een apparaat maken en ze kunnen deze waarden op elk gewenst moment bewerken. Apparaateigenschappen zijn alleen-lezen en worden vanaf het apparaat naar de toepassing verzonden. Een operator kan de apparaateigenschappen niet wijzigen. Wanneer een echt apparaat verbinding maakt, wordt de tegel van de apparaat-eigenschap bijgewerkt in de toepassing.
+| Veld | Beschrijving |
+| ----- | ----------- |
+| Weergavenaam | De weergave naam voor de waarde van de Cloud eigenschap die wordt gebruikt in dash boards en formulieren. |
+| Name | De naam van de Cloud eigenschap. IoT Central genereert een waarde voor dit veld van de weergave naam, maar u kunt indien nodig uw eigen waarde kiezen. |
+| Semantisch type | Het semantische type van de eigenschap, zoals de Tempe ratuur, de status of de gebeurtenis. De keuze van semantisch type bepaalt welke van de volgende velden beschikbaar zijn. |
+| Schema | Het gegevens type van de Cloud eigenschap, zoals double, String of vector. Welke opties beschikbaar zijn, wordt bepaald door het semantische type. |
 
-Er zijn twee categorieën eigenschappen:
+## <a name="add-customizations"></a>Aanpassingen toevoegen
 
-- _Apparaateigenschappen_ die het apparaat rapporteert aan de IOT Central-toepassing. Apparaateigenschappen zijn alleen-lezen waarden die worden gerapporteerd door het apparaat en die in de toepassing worden bijgewerkt wanneer een echt apparaat is verbonden.
-- _Toepassings eigenschappen_ die in de toepassing zijn opgeslagen en kunnen worden bewerkt door de operator. Toepassings eigenschappen worden alleen in de toepassing opgeslagen en worden nooit door een apparaat gedetecteerd.
+Gebruik aanpassingen wanneer u een geïmporteerde interface wilt wijzigen of IoT Central-specifieke functies aan een mogelijkheid wilt toevoegen. U kunt alleen velden aanpassen die de interface compatibiliteit niet verstoren. U kunt bijvoorbeeld:
 
-U kunt bijvoorbeeld de laatste service datum voor het apparaat toevoegen als een nieuwe **datum** eigenschap (een toepassings eigenschap) op het tabblad **Eigenschappen** :
+- Pas de weergave naam en de eenheden van een mogelijkheid aan.
+- Een standaard kleur toevoegen die moet worden gebruikt wanneer de waarde in een grafiek wordt weer gegeven.
+- Geef de initiële, minimale en maximale waarde voor een eigenschap op.
 
-| Weergavenaam  | Veldnaam | Initiële waarde   |
-| --------------| -----------|-----------------|
-| Laatste servicebeurt      | lastServiced        | 01/29/2019     |
+U kunt de naam of het type van de mogelijkheid niet aanpassen. Als er wijzigingen zijn die u niet in de sectie **aanpassen** kunt aanbrengen, moet u de sjabloon voor het apparaat en de interface voor het wijzigen van de functionaliteit.
 
-![Het formulier ' laatste service is geconfigureerd ' op het tabblad ' Eigenschappen '](./media/howto-set-up-template/propertiesform.png)
+### <a name="generate-default-views"></a>Standaard weergaven genereren
 
-Nadat u **Opslaan**hebt geselecteerd, wordt de laatste service datum voor het apparaat weer gegeven als een tegel.
+Het genereren van standaard weergaven is een snelle manier om uw belang rijke apparaatgegevens te visualiseren. U hebt Maxi maal drie standaard weergaven gegenereerd voor uw apparaatprofiel:
 
-Nadat u de tegel hebt gemaakt, kunt u de waarde van de toepassings eigenschap in de **device Explorer**wijzigen.
+- **Opdrachten** bieden een weer gave met opdrachten op het apparaat, zodat uw operator ze naar uw apparaat kan verzenden.
+- **Overzicht** biedt een weer gave met telemetrie van apparaten, weer geven van grafieken en metrische gegevens.
+- **Informatie over** het weer geven van informatie over apparaten en de weer gave van apparaateigenschappen.
 
-### <a name="create-a-location-property"></a>Een locatie-eigenschap maken
+Nadat u **Standaard weergaven genereren**hebt geselecteerd, ziet u dat ze automatisch zijn toegevoegd onder het gedeelte **weer gaven** van de sjabloon voor uw apparaat.
 
-U kunt geografische context aan uw locatie gegevens in azure IoT Central geven en de breedte-en lengte coördinaten of een straat toewijzen. Azure Maps schakelt deze functionaliteit in IoT Central.
+## <a name="add-dashboards"></a>Dash boards toevoegen
 
-U kunt twee typen locatie-eigenschappen toevoegen:
+Voeg Dash boards toe aan een apparaatprofiel om Opera tors in staat te stellen een apparaat te visualiseren met behulp van grafieken en metrische gegevens. U kunt meerdere Dash boards voor een sjabloon voor het apparaat hebben.
 
-- **Locatie als een toepassings eigenschap**, die wordt opgeslagen in de toepassing. Toepassings eigenschappen worden alleen in de toepassing opgeslagen en worden nooit door een apparaat gedetecteerd.
-- **Locatie als een eigenschap**van het apparaat, die wordt gerapporteerd aan de toepassing. Dit type eigenschap kan het beste worden gebruikt voor een statische locatie.
+Een dash board toevoegen aan een sjabloon voor het apparaat:
 
-> [!NOTE]
-> De locatie als een eigenschap bevat geen geschiedenis. Als de geschiedenis gewenst is, gebruikt u een locatie meting.
+1. Ga naar de sjabloon voor het apparaat en selecteer **weer gaven**.
+1. Kies **het apparaat visualiseren**.
+1. Voer een naam in voor uw dash board in de naam van het **dash board**.
+1. Tegels toevoegen aan uw dash board vanuit de lijst met statische, eigenschap, Cloud eigenschap, telemetrie en opdracht tegels. Sleep de tegels die u wilt toevoegen aan uw dash board en zet deze neer.
+1. Als u meerdere telemetrie-waarden wilt tekenen op één grafiek tegel, selecteert u de telemetriegegevens en selecteert u vervolgens **combi neren**.
+1. Configureer elke tegel die u toevoegt om de manier aan te passen waarop gegevens worden weer gegeven. U kunt dit doen door het tandwiel pictogram te selecteren of door **configuratie wijzigen** te selecteren in de grafiek tegel.
+1. De tegels op uw dash board rangschikken en het formaat ervan wijzigen.
+1. Sla de wijzigingen op.
 
-#### <a name="add-location-as-an-application-property"></a>Locatie toevoegen als een toepassings eigenschap
+### <a name="configure-preview-device-to-view-dashboard"></a>Preview-apparaat configureren om het dash board weer te geven
 
-U kunt een locatie-eigenschap maken als eigenschap van een toepassing met behulp van Azure Maps in uw IoT Central toepassing. U kunt bijvoorbeeld het installatie adres van het apparaat toevoegen:
+Selecteer **Preview-apparaat configureren**om uw dash board weer te geven en te testen. Op deze manier kunt u het dash board weer geven als uw operator ziet na publicatie. Gebruik deze optie om te controleren of de juiste gegevens in uw weer gaven worden weer gegeven. U kunt kiezen uit de volgende opties:
 
-1. Ga naar het tabblad **Eigenschappen** .
+- Geen preview-apparaat.
+- Het echte test apparaat dat u hebt geconfigureerd voor de sjabloon voor het apparaat.
+- Een bestaand apparaat in uw toepassing met behulp van de apparaat-ID.
 
-2. Selecteer in de bibliotheek **locatie**.
+## <a name="add-forms"></a>Formulieren toevoegen
 
-3. Configureer **weergave naam**, **veld naam**en (optioneel) **aanvankelijke waarde** voor de locatie.
+Voeg formulieren toe aan een apparaatprofiel om Opera tors in staat te stellen om een apparaat te beheren door eigenschappen te bekijken en in te stellen. Opera tors kunnen alleen eigenschappen van Cloud eigenschappen en beschrijf bare apparaten bewerken. U kunt meerdere formulieren voor een sjabloon voor het apparaat hebben.
 
-    | Weergavenaam  | Veldnaam | Initiële waarde |
-    | --------------| -----------|---------|
-    | Installatie adres | installAddress | Micro soft, 1 micro soft Way, Redmond, WA 98052   |
+Een formulier toevoegen aan een sjabloon voor een apparaat:
 
-   ![Formulier locatie configureren met Details voor de locatie](./media/howto-set-up-template/locationcloudproperty2.png)
+1. Ga naar de sjabloon voor het apparaat en selecteer **weer gaven**.
+1. Kies **apparaat-en Cloud gegevens bewerken**.
+1. Voer een naam in voor het formulier in de vorm van een **formulier naam**.
+1. Selecteer het aantal kolommen dat moet worden gebruikt om het formulier in te delen.
+1. Voeg eigenschappen toe aan een bestaande sectie in het formulier of selecteer Eigenschappen en kies **sectie toevoegen**. Gebruik secties om eigenschappen in uw formulier te groeperen. U kunt een titel toevoegen aan een sectie.
+1. Configureer elke eigenschap op het formulier om het gedrag aan te passen.
+1. De eigenschappen van het formulier rangschikken.
+1. Sla de wijzigingen op.
 
-   Er zijn twee ondersteunde indelingen voor het toevoegen van een locatie:
-   - **Locatie als een adres**
-   - **Locatie als coördinaten**
+## <a name="publish-a-device-template"></a>Een sjabloon voor een apparaat publiceren
 
-4. Selecteer **Opslaan**. Een operator kan de locatie waarde in het **device Explorer**bijwerken.
+Voordat u verbinding kunt maken met een apparaat dat het mogelijkheidsprofiel implementeert, moet u de sjabloon voor het apparaat publiceren.
 
-#### <a name="add-location-as-a-device-property"></a>Locatie toevoegen als eigenschap van het apparaat
+Nadat u een sjabloon voor een apparaat hebt gepubliceerd, kunt u alleen beperkte wijzigingen aanbrengen in het functionaliteits model van het apparaat. Als u een interface wilt wijzigen, moet u [een nieuwe versie maken en publiceren](./howto-version-device-template.md).
 
-U kunt een locatie-eigenschap maken als eigenschap van het apparaat die het apparaat rapporteert. Als u bijvoorbeeld de locatie van het apparaat wilt bijhouden:
+Als u een sjabloon voor een apparaat wilt publiceren, gaat u naar uw apparaatprofiel en selecteert u **publiceren**.
 
-1. Ga naar het tabblad **Eigenschappen** .
+Nadat u een sjabloon voor een apparaat hebt gepubliceerd, kan een operator naar de pagina **apparaten** gaan en een echte of gesimuleerde apparaten toevoegen die gebruikmaken van de sjabloon van het apparaat. U kunt door gaan met het wijzigen en opslaan van de sjabloon voor het apparaat wanneer u wijzigingen aanbrengt. Wanneer u deze wijzigingen wilt pushen naar de operator om weer te geven op de pagina **apparaten** , moet u elke keer **publiceren** selecteren.
 
-2. Selecteer de **eigenschap apparaat** in de bibliotheek.
-
-3. Configureer de weergave naam en de naam van het veld en selecteer **locatie** als het gegevens type:
-
-    | Weergavenaam  | Veldnaam | Gegevenstype |
-    | --------------| -----------|-----------|
-    | Locatie apparaat | deviceLocation | location  |
-
-   > [!NOTE]
-   > De veld namen moeten overeenkomen met de namen van de eigenschappen in de bijbehorende apparaatcode
-
-   ![Formulier eigenschappen van een apparaat configureren met Details voor de locatie](./media/howto-set-up-template/locationdeviceproperty2.png)
-
-Zodra het werkelijke apparaat is verbonden, wordt de locatie die u hebt toegevoegd als eigenschap apparaat bijgewerkt met de waarde die wordt verzonden door het apparaat. Nadat u uw locatie-eigenschap hebt geconfigureerd, kunt u [een kaart toevoegen om de locatie in het dash board van het apparaat te visualiseren](#add-a-location-property-in-the-dashboard).
-
-## <a name="commands"></a>Opdrachten
-
-Opdrachten worden gebruikt voor het extern beheren van een apparaat. Ze kunnen Opera tors gebruiken om opdrachten uit te voeren op het apparaat. U kunt meerdere opdrachten toevoegen aan de sjabloon voor het apparaat die als tegels worden weer gegeven op het tabblad **opdrachten** voor Opera tors die moeten worden gebruikt. Als de opbouw functie van het apparaat, hebt u de flexibiliteit om opdrachten te definiëren op basis van uw vereisten.
-
-Wat is een andere opdracht dan een instelling?
-
-- **Instelling**: een instelling is een configuratie die u wilt Toep assen op een apparaat. U wilt dat het apparaat de configuratie persistent maken totdat u het wijzigt. U wilt bijvoorbeeld de Tempe ratuur van uw Vries instellen en u wilt die instelling zelfs wanneer de Vries opnieuw wordt gestart.
-
-- **Opdracht**: u kunt opdrachten gebruiken om direct vanaf IOT Central een opdracht op het apparaat uit te voeren. Als een apparaat niet is verbonden, treedt er een time-out op in de opdracht. Stel dat u een apparaat opnieuw wilt opstarten.
-
-U kunt bijvoorbeeld een nieuwe **echo** opdracht toevoegen door het tabblad **opdrachten** te selecteren, vervolgens **+ nieuwe opdracht**te selecteren en de nieuwe opdracht Details in te voeren:
-
-| Weergavenaam  | Veldnaam | Standaardtime-out | Gegevenstype |
-| --------------| -----------|---------------- | --------- |
-| Opdracht Echo  | echo       |  30             | tekst      |
-
-![Het formulier opdracht configureren met Details voor echo's](./media/howto-set-up-template/commandsecho1.png)
-
-Nadat u **Opslaan**hebt geselecteerd, wordt de **echo** opdracht weer gegeven als een tegel en is deze klaar om te worden gebruikt vanaf de **device Explorer** wanneer uw echte apparaat verbinding maakt. De veld namen van de opdracht moeten overeenkomen met de namen van de eigenschappen in de bijbehorende apparaatcode, zodat de opdrachten kunnen worden uitgevoerd.
-
-[Hier volgt een koppeling naar voorbeeld code C-apparaat.](https://github.com/Azure/iot-central-firmware/blob/ad40358906aeb8f2040a822ba5292df866692c16/MXCHIP/mxchip_advanced/src/AzureIOTClient.cpp#L34)
-
-## <a name="rules"></a>Regels
-
-Met regels kunnen Opera tors apparaten in bijna realtime bewaken. Regels roepen automatisch acties aan, zoals het verzenden van een e-mail bericht wanneer de regel wordt geactiveerd. Er is momenteel één type regel beschikbaar:
-
-- **Telemetrie-regel**, die wordt geactiveerd wanneer de geselecteerde telemetrie van het apparaat een opgegeven drempel overschrijdt. Meer [informatie over regels voor telemetrie](howto-create-telemetry-rules.md).
-
-## <a name="dashboard"></a>Dashboard
-
-Het dash board gaat naar een operator om informatie over een apparaat te bekijken. Als ontwerper voegt u tegels toe aan deze pagina om Opera tors te helpen begrijpen hoe het apparaat zich gedraagt. U kunt een groot aantal typen dashboard tegels toevoegen, zoals afbeelding, lijn diagram, staaf diagram, Key Performance Indicator (KPI), instellingen en eigenschappen, en label.
-
-U kunt bijvoorbeeld een tegel met **instellingen en eigenschappen** toevoegen om een selectie van de huidige waarden van instellingen en eigenschappen weer te geven door het tabblad **dash board** en de tegel uit de bibliotheek te selecteren:
-
-![Formulier Details van apparaat configureren met Details voor instellingen en eigenschappen](./media/howto-set-up-template/dashboardsettingsandpropertiesform1.png)
-
-Wanneer een operator nu het dash board weergeeft in de **device Explorer**, kunnen ze de tegel zien.
-
-### <a name="add-a-location-measurement-in-the-dashboard"></a>Een locatie meting in het dash board toevoegen
-
-Als u een locatie meting hebt geconfigureerd, kunt u de locatie visualiseren met een kaart in het dash board van uw apparaat. Voor locatie metingen hebt u de optie om de locatie geschiedenis uit te zetten.
-
-1. Ga naar het tabblad **dash board** .
-
-1. Op het dash board van het apparaat selecteert u **kaart** uit de bibliotheek.
-
-1. Geef de kaart een titel. In het volgende voor beeld wordt de **huidige locatie**van het apparaat van de titel. Kies vervolgens de locatie meting die u eerder hebt geconfigureerd op het tabblad **metingen** . In het volgende voor beeld wordt de meting van de **bedrijfs locatie** geselecteerd:
-
-   ![Het formulier toewijzing configureren met Details voor titel en eigenschappen](./media/howto-set-up-template/locationcloudproperty5map.png)
-
-1. Selecteer **Opslaan**. Op de kaart tegel wordt nu de locatie weer gegeven die u hebt geselecteerd.
-
-U kunt de grootte van de kaart tegel wijzigen. Wanneer een operator het dash board weergeeft in de **device Explorer**, zijn alle dashboard tegels die u hebt geconfigureerd, met inbegrip van een locatie kaart zichtbaar.
-
-### <a name="add-a-location-property-in-the-dashboard"></a>Een locatie-eigenschap toevoegen in het dash board
-
-Als u een locatie-eigenschap hebt geconfigureerd, kunt u de locatie visualiseren met een kaart in het dash board van uw apparaat.
-
-1. Ga naar het tabblad **dash board** .
-
-1. Op het dash board van het apparaat selecteert u **kaart** uit de bibliotheek.
-
-1. Geef de kaart een titel. In het volgende voor beeld wordt de **huidige locatie**van het apparaat van de titel. Kies vervolgens de locatie-eigenschap die u eerder hebt geconfigureerd op het tabblad **Eigenschappen** . In het volgende voor beeld wordt de locatie voor de **apparaatnaam** geselecteerd:
-
-   ![Kaart formulier configureren met Details voor titel en eigenschappen](./media/howto-set-up-template/locationcloudproperty6map.png)
-
-1. Selecteer **Opslaan**. Op de kaart tegel wordt nu de locatie weer gegeven die u hebt geselecteerd.
-
-U kunt de grootte van de kaart tegel wijzigen. Wanneer een operator het dash board weergeeft in de **device Explorer**, zijn alle dashboard tegels die u hebt geconfigureerd, met inbegrip van een locatie kaart zichtbaar.
-
-Zie [Dashboard tegels gebruiken](howto-use-tiles.md)voor meer informatie over het gebruik van tegels in azure IOT Central.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u een sjabloon voor een apparaat instelt in uw Azure IoT Central-toepassing, kunt u het volgende doen:
+In deze zelfstudie hebt u het volgende geleerd:
 
-- [Een nieuwe sjabloon versie voor een apparaat maken](howto-version-device-template.md)
-- [Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing](howto-connect-devkit.md)
-- [Een algemene client toepassing verbinden met uw Azure IoT Central-toepassing (node. js)](howto-connect-nodejs.md)
+* Maak een nieuwe sjabloon voor IoT-apparaten.
+* Cloud eigenschappen maken.
+* Aanpassingen maken.
+* Definieer een visualisatie voor de telemetrie van het apparaat.
+* De sjabloon van het apparaat publiceren.
+
+U kunt nu het volgende doen:
+
+> [!div class="nextstepaction"]
+> [Een apparaat verbinden](howto-connect-devkit.md)

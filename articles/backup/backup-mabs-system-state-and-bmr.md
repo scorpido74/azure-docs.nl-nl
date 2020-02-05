@@ -3,12 +3,12 @@ title: Systeem status-en Bare Metal Recovery-beveiliging
 description: Gebruik Azure Backup Server om een back-up te maken van uw systeem status en BMR-beveiliging (Bare Metal Recovery) te bieden.
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2940ef5b8c0c2a7d751c46209253d4f4dbe6d13f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0e89b149fe8b06bdd70c72aa442f50125c5e3786
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172252"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025500"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Maak een back-up van de systeem status en herstel op bare metal met Azure Backup Server
 
@@ -23,7 +23,7 @@ Azure Backup Server maakt een back-up van de systeem status en biedt BMR-beveili
 
 De volgende tabel bevat een overzicht van waar u een back-up kunt maken en herstellen. Voor gedetailleerde informatie over de app-versies die kunnen worden beveiligd met systeem status-en BMR, Zie [waarover Azure backup server back-ups maken?](backup-mabs-protection-matrix.md).
 
-|Backup|Probleem|Herstellen van Azure Backup Server back-up|Herstellen van systeem status back-up|BMR|
+|Back-up|Probleem|Herstellen van Azure Backup Server back-up|Herstellen van systeem status back-up|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**Bestands gegevens**<br /><br />Reguliere gegevens back-up<br /><br />BMR/systeem status back-up|Verloren bestands gegevens|J|N|N|
 |**Bestands gegevens**<br /><br />Azure Backup Server back-up van bestands gegevens<br /><br />BMR/systeem status back-up|Verloren of beschadigd besturings systeem|N|J|J|
@@ -90,7 +90,7 @@ Wanneer de back-up is voltooid, wordt het bestand overgebracht naar de back-upse
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-1. **Azure backup server implementeren**. Controleer of de back-upserver op de juiste wijze is geïmplementeerd. Ga voor meer informatie naar:
+1. **Azure backup server implementeren**. Controleer of de back-upserver op de juiste wijze is geïmplementeerd. Zie voor meer informatie:
     * [Systeem vereisten voor Azure Backup Server](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
     * [Beveiligings matrix van de back-upserver](backup-mabs-protection-matrix.md)
 
@@ -120,7 +120,7 @@ Stel een beveiligings groep in zoals beschreven in [beveiligings groepen impleme
     1. Voor de **frequentie van back-ups**selecteert u hoe vaak back-ups op tape moeten worden uitgevoerd. De frequentie is gebaseerd op de Bewaar termijn die u hebt geselecteerd:
         * Wanneer de Bewaar termijn 1-99 jaar is, kunt u back-ups selecteren die dagelijks, wekelijks, twee wekelijks, maandelijks, elk kwar taal, halfjaarlijks of jaarlijks moeten worden uitgevoerd.
         * Wanneer de Bewaar termijn 1-11 maanden bedraagt, kunt u back-ups selecteren die dagelijks, wekelijks, twee wekelijks of maandelijks worden uitgevoerd.
-        * Wanneer de Bewaar termijn 1-4 weken is, kunt u back-ups dagelijks of wekelijks selecteren.
+        * Wanneer de bewaartermijn 1-4 weken is, kunt u ervoor kiezen om back-ups dagelijks of wekelijks te maken.
 
     2. Selecteer op de pagina **Details van tape en bibliotheek selecteren** de tape en bibliotheek die u wilt gebruiken en geef aan of gegevens moeten worden gecomprimeerd en versleuteld.
 
@@ -128,7 +128,7 @@ Stel een beveiligings groep in zoals beschreven in [beveiligings groepen impleme
 
     1. **Totale gegevens grootte** is de grootte van de gegevens waarvan u een back-up wilt maken.
     2. **Schijf ruimte die moet worden ingericht op Azure backup server** is de ruimte die de back-upserver voor de beveiligings groep adviseert. Met de back-upserver wordt het ideale back-upvolume gekozen op basis van de instellingen. U kunt de keuze van het back-upvolume echter bewerken in **schijf toewijzings Details**.
-    3. Voor werk belastingen selecteert u in de vervolg keuzelijst de voorkeurs opslag. Met uw wijzigingen wijzigt u de waarden voor de **totale opslag** en **vrije opslag ruimte** in het deel venster **beschik bare Disk Storage** . Onderingerichte ruimte is de hoeveelheid opslag die door de back-upserver wordt voorgesteld om aan het volume toe te voegen, om soepele back-ups te garanderen.
+    3. Voor werk belastingen selecteert u in de vervolg keuzelijst de voorkeurs opslag. Met uw bewerkingen worden de waarden voor **Totale opslag** en **Vrije opslagruimte** in het deelvenster **Beschikbare schijfopslag** gewijzigd. Onderingerichte ruimte is de hoeveelheid opslag die door de back-upserver wordt voorgesteld om aan het volume toe te voegen, om soepele back-ups te garanderen.
 
 8. Op de pagina **methode voor maken van replica** selecteren selecteert u hoe u de eerste volledige gegevens replicatie wilt verwerken. Als u ervoor kiest om via het netwerk te repliceren, wordt u aangeraden een rustige tijd te kiezen. Voor grote hoeveel heden gegevens of voor netwerk omstandigheden die minder dan optimaal zijn, kunt u overwegen om de gegevens offline te repliceren met behulp van Verwissel bare media.
 
@@ -136,11 +136,11 @@ Stel een beveiligings groep in zoals beschreven in [beveiligings groepen impleme
 
 10. Als u ervoor hebt gekozen om een back-up naar de cloud te maken met behulp van Azure Backup, moet u op de pagina **gegevens voor online beveiliging opgeven** de werk belastingen selecteren waarvan u een back-up wilt maken naar Azure.
 
-11. Selecteer op de pagina **online back-upschema opgeven** hoe vaak incrementele back-ups naar Azure worden uitgevoerd. U kunt back-ups plannen die elke dag, week, maand en jaar worden uitgevoerd en de tijd en datum selecteren waarop ze moeten worden uitgevoerd. Back-ups kunnen Maxi maal twee keer per dag plaatsvinden. Telkens wanneer een back-up wordt uitgevoerd, wordt er een gegevens herstel punt gemaakt in azure van de kopie van de back-upgegevens die zijn opgeslagen op de back-upserver schijf.
+11. Selecteer op de pagina **online back-upschema opgeven** hoe vaak incrementele back-ups naar Azure worden uitgevoerd. U kunt back-ups plannen die elke dag, week, maand en jaar worden uitgevoerd en de tijd en datum selecteren waarop ze moeten worden uitgevoerd. U kunt maximaal twee keer per dag back-ups uitvoeren. Telkens wanneer een back-up wordt uitgevoerd, wordt er een gegevens herstel punt gemaakt in azure van de kopie van de back-upgegevens die zijn opgeslagen op de back-upserver schijf.
 
 12. Selecteer op de pagina **online retentie beleid opgeven** hoe de herstel punten die zijn gemaakt op basis van de dagelijkse, wekelijkse, maandelijkse en jaarlijkse back-ups, worden bewaard in Azure.
 
-13. Selecteer op de pagina **online replicatie kiezen** hoe de eerste volledige replicatie van gegevens wordt uitgevoerd. U kunt repliceren via het netwerk of een offline back-up uitvoeren (offline seeding). Offline back-up maakt gebruik van de Azure import-functie. Zie [offline back-upwerk stroom in azure backup](backup-azure-backup-import-export.md)voor meer informatie.
+13. Selecteer op de pagina **online replicatie kiezen** hoe de eerste volledige replicatie van gegevens wordt uitgevoerd. U kunt repliceren via het netwerk of een offline back-up uitvoeren (offline seeding). Voor offlineback-ups wordt gebruikgemaakt van de functie Azure Import. Zie [offline back-upwerk stroom in azure backup](offline-backup-azure-data-box.md)voor meer informatie.
 
 14. Controleer uw instellingen op de pagina **samen vatting** . Nadat u **groep maken**hebt geselecteerd, vindt de initiële replicatie van de gegevens plaats. Wanneer de gegevens replicatie is voltooid, is de status van de beveiligings groep op de pagina **status** **OK**. De back-up wordt uitgevoerd volgens de instellingen van de beveiligings groep.
 

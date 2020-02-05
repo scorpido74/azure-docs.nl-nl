@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4926cb2bb4cb1aa15b212cc7130e0db995a24ed9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: eec8e47e75a6c92be8f893af893761a9ccddc650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910436"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025432"
 ---
 # <a name="localization-support-in-azure-maps"></a>Ondersteuning voor lokalisatie in Azure Maps
 
@@ -64,7 +64,7 @@ Azure Maps zijn gelokaliseerd in verschillende talen in de services. De volgende
 | IT-IT      | Italiaans                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | Japans               |       |        |         |     ✓    |                   |                |
 | KN-IN      | Kanarees                |       |       |         |     ✓    |                   |                |
-| kk-KZ      | Kazachs                 |       |    ✓   |         |     ✓    |                   |                |
+| kk-KZ      | Kazachstaans                 |       |    ✓   |         |     ✓    |                   |                |
 | ko-KR      | Koreaans                 |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
 | es-419     | Latijns-Amerikaans-Spaans |       |    ✓   |         |         |                   |                |
 | lv-LV      | Lets                |       |    ✓   |         |     ✓    |         ✓         |                |
@@ -72,7 +72,7 @@ Azure Maps zijn gelokaliseerd in verschillende talen in de services. De volgende
 | MK-MK      | Macedonisch             |       |       |         |     ✓    |                   |                |
 | ms-MY      | Maleis (Latijns)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
 | Mr-IN      | Marathi                 |       |       |         |     ✓    |                   |                |
-| nb-NO      | Noors - Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| nb-NO      | Noors Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | NGT        | Neutrale waarheid-officiële talen voor alle regio's in lokale scripts indien beschikbaar |   ✓     |        |         |       |        |      ✓          |
 | NGT-Latn   | Neutrale waarheid-Latijns exonyms. Latijns script wordt gebruikt indien beschikbaar |   ✓     |        |         |         |                |        ✓         |
 | pl-PL      | Pools                 |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
@@ -101,13 +101,15 @@ Azure Maps zijn gelokaliseerd in verschillende talen in de services. De volgende
 ## <a name="azure-maps-supported-views"></a>Ondersteunde weer gaven Azure Maps
 
 > [!Note]
-> Azure Maps is in de volgende landen/regio's uitgebracht op 1 augustus 2019:
+> Op 1 augustus 2019 is Azure Maps uitgebracht in de volgende landen/regio's:
 >  * Argentinië
 >  * India
 >  * Marokko
 >  * Pakistan
 >
-> Na 1 augustus **2019 wordt de** geretourneerde kaart inhoud gedefinieerd voor de nieuwe regio's/landen die hierboven worden vermeld. We raden u aan om ervoor te zorgen dat u de weer gave-para meter hebt ingesteld zoals vereist voor de REST Api's en Sdk's die door uw services worden gebruikt.
+> Na 1 augustus 2019 wordt met de **weer gave** -para meter de geretourneerde kaart inhoud voor de hierboven genoemde nieuwe regio's/landen gedefinieerd. Azure Maps **weer gave** -para meter (ook wel ' para meter gebruikers regio ' genoemd) is een ISO-3166-land code van twee letters waarmee de juiste toewijzingen voor dat land of deze regio worden weer gegeven waarmee wordt aangegeven welke set van geopolitieke inhoud wordt geretourneerd via Azure Maps Services, met inbegrip van randen en labels die op de kaart worden weer gegeven. 
+
+Zorg ervoor dat u de **weer gave** -para meter hebt ingesteld zoals vereist voor de rest Api's en sdk's die door uw services worden gebruikt.
 >  
 >
 >  **Rest-Api's:**
@@ -135,15 +137,12 @@ Azure Maps zijn gelokaliseerd in verschillende talen in de services. De volgende
 >    
 >  **Sdk's**
 >
->  Zorg ervoor dat u de weer gave-para meter hebt ingesteld als vereist en u de meest recente versie van de Web-SDK en Android-SDK hebt. Betrokken Sdk's:
+>  Zorg ervoor dat u de **weer gave** -para meter hebt ingesteld als vereist en u de meest recente versie van de Web-SDK en ANDROID-SDK hebt. Betrokken Sdk's:
 >
 >    * Azure Maps Web SDK
 >    * Azure Maps Android-SDK
 
-
-Azure Maps **weer gave** -para meter (ook wel ' para meter gebruikers regio ' genoemd) is een ISO-3166-land code van twee letters waarmee de juiste toewijzingen voor dat land of deze regio worden weer gegeven waarmee wordt aangegeven welke set van geopolitieke inhoud wordt geretourneerd via Azure Maps Services, met inbegrip van randen en labels die op de kaart worden weer gegeven. 
-
-Standaard is de weer gave-para meter ingesteld op **Unified**, zelfs als u deze niet in de aanvraag hebt gedefinieerd. Het is uw verantwoordelijkheid om de locatie van uw gebruikers te bepalen en de weer gave-para meter voor die locatie op de juiste manier in te stellen. U kunt ook de optie weer gave = automatisch instellen, waardoor de kaart gegevens worden geretourneerd op basis van het IP-adres van de aanvraag.  De weer gave-para meter in Azure Maps moet worden gebruikt in overeenstemming met de toepasselijke wetten, waaronder die welke betrekking hebben op de toewijzing van het land waar kaarten, afbeeldingen en andere gegevens en inhoud van derden waartoe u toegang wilt krijgen via Azure Maps beschikbaar worden gesteld.
+De weer gave-para meter is standaard ingesteld op **Unified**, zelfs als u deze niet in de aanvraag hebt gedefinieerd. Bepaal de locatie van uw gebruikers en stel de **weer gave** -para meter op de juiste wijze in voor die locatie. U kunt ook ' weer gave = automatisch ' instellen, waardoor de kaart gegevens worden geretourneerd op basis van het IP-adres van de aanvraag.  De **weer gave** -para meter in azure Maps moet worden gebruikt in overeenstemming met de toepasselijke wetgeving, waaronder die wetten over de toewijzing van het land waar kaarten, afbeeldingen en andere gegevens en inhoud van derden waartoe u toegang wilt krijgen via Azure Maps beschikbaar worden gesteld.
 
 
 De volgende tabel bevat ondersteunde weer gaven.
@@ -166,5 +165,5 @@ De volgende tabel bevat ondersteunde weer gaven.
 | SA           | Saudi-Arabië (Arabische weer gave)            |   ✓   |        |     ✓          |
 | SY           | Syrië (Arabische weer gave)                   |   ✓   |        |     ✓          |
 | TEZAM           | Jemen (Arabische weer gave)                   |   ✓   |        |     ✓          |
-| Automatisch         | De kaart gegevens retour neren op basis van het IP-adres van de aanvraag.|   ✓   |    ✓   |     ✓          |
+| Auto         | De kaart gegevens retour neren op basis van het IP-adres van de aanvraag.|   ✓   |    ✓   |     ✓          |
 | Gecentraliseerd      | Unified View (overige)                  |   ✓   |   ✓     |     ✓          |

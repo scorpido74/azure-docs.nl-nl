@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760824"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026146"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Functies zijn informatie over acties en context
 
@@ -132,6 +132,8 @@ De volgende secties bevatten algemene procedures voor het verbeteren van functie
 Het is mogelijk om uw functie sets te verbeteren door ze te bewerken zodat deze groter en meer of minder compacte zijn.
 
 Een time stamp voor het tweede is bijvoorbeeld een zeer verspreide functie. Dit kan een meer compacte (effectief) zijn door tijden te classificeren naar 's ochtends, rond middaguur, 's middags enzovoort.
+
+Locatie gegevens hebben doorgaans voor delen ten opzichte van het maken van grotere classificaties. Een coördinaat van een breedte graad zoals lat: 47,67402 ° N, Long: 122,12154 ° W is bijvoorbeeld te nauw keurig en dwingt het model om de breedte graad en lengte graad als afzonderlijke dimensies te ontdekken. Wanneer u probeert te personaliseren op basis van locatie-informatie, is het handig om locatie gegevens te groeperen in grotere sectoren. Een eenvoudige manier om dat te doen is door een geschikte Afrondings precisie te kiezen voor de lat-lange getallen en de breedte graad en lengte graad te combi neren in ' gebieden ' door ze in één teken reeks te maken. Een goede manier om 47,67402 ° N te vertegenwoordigen, lang: 122,12154 ° W in regio's ongeveer een paar kilo meters is ' locatie ': ' 34.3, 12,1 '.
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Functie sets met extrapolatie gegevens uitvouwen

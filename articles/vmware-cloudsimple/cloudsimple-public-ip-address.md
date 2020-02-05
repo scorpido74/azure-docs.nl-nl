@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing op CloudSimple-openbaar IP-adres
-description: Meer informatie over open bare IP-adressen en hun voor delen van Azure VMware-oplossing door CloudSimple
+title: Azure VMware-oplossingen (AVS)-openbaar IP-adres
+description: Meer informatie over open bare IP-adressen en hun voor delen van Azure VMware-oplossingen (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2cb9d0e33da4447760ae0be216c1dd9868c498bd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877686"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024973"
 ---
-# <a name="cloudsimple-public-ip-address-overview"></a>Overzicht van open bare IP-adressen CloudSimple
+# <a name="avs-public-ip-address-overview"></a>Overzicht van openbaar IP-adres van AVS
 
-Met een openbaar IP-adres kunnen Internet bronnen inkomend communiceren met persoonlijke cloud resources op een privé-IP-adres. Het privé-IP-adres is een virtuele machine of een software load balancer in uw Privécloud. Met het open bare IP-adres kunt u de services die in uw Privécloud worden uitgevoerd, beschikbaar maken op internet.
+Met een openbaar IP-adres kunnen Internet bronnen inkomend communiceren met de persoonlijke cloud resources van een privé-IP-adres. Het privé-IP-adres is een virtuele machine of een software load balancer op uw AVS-persoonlijke Cloud-vCenter. Met het open bare IP-adres kunt u services weer geven die worden uitgevoerd op uw automatische AVS-Cloud op internet.
 
 Het open bare IP-adres is toegewezen aan het privé-IP-adres totdat u de toewijzing ervan ongedaan maakt. Een openbaar IP-adres kan alleen worden toegewezen aan één privé-IP-adres.
 

@@ -8,14 +8,19 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a9817205a419e2b61af66dba16d09620e2c1dec9
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2bac317d6a3a5c6895a3cea4dae22694b603cabf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310860"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024021"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Problemen met het inschakelen of weer geven van Application Insights Profiler oplossen
+
+## <a name="active-issues"></a>Actieve problemen
+
+* Profile ring voor ASP.NET Core 3. x-toepassingen worden nog niet ondersteund.
+  * Als u Profiler moet hebben op, is het gebruik [van Application Insights Profiler voor ASP.net core](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore). De Profiler is voorzien van een label voor Linux, maar werkt ook met .NET Core 3.0 +-toepassingen in Windows. Zie [ondersteunde versies](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions)voor meer informatie.
 
 ## <a id="troubleshooting"></a>Algemene probleem oplossing
 

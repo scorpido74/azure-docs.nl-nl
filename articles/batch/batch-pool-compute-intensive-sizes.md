@@ -2,8 +2,8 @@
 title: Reken intensief Azure-Vm's gebruiken met batch
 description: Profiteren van de grootte van HPC en GPU-virtuele machines in Azure Batch groepen. Meer informatie over afhankelijkheden van besturings systemen en een aantal voor beelden van scenario's weer geven.
 documentationcenter: ''
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -11,13 +11,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
-ms.author: jushiman
-ms.openlocfilehash: 1fb490c6db5115edf32ff2562e43cf1084e0a6c8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 17cd9db1e86a66630d3b93c8295915933abb1ec2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026789"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023596"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-of GPU-instanties gebruiken in batch-Pools
 
@@ -42,7 +42,7 @@ De RDMA-of GPU-mogelijkheden van Compute-grootten in batch worden alleen onderst
 
 ### <a name="linux-pools---virtual-machine-configuration"></a>Linux-Pools-virtuele-machine configuratie
 
-| Grootte | Mogelijkheid | Besturingssystemen | Vereiste software | Poolinstellingen |
+| Grootte | Mogelijkheid | Besturingssystemen | Vereiste software | Groeps instellingen |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16,04 LTS, of<br/>HPC op basis van CentOS<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA-Stuur Programma's | Communicatie tussen knoop punten inschakelen, gelijktijdige taak uitvoering uitschakelen |
 | [NC, NCv2, NCv3, NDv2-serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (per serie) | Ubuntu 16,04 LTS, of<br/>CentOS 7,3 of 7,4<br/>(Azure Marketplace) | NVIDIA CUDA-of CUDA Toolkit-Stuur Programma's | N/A | 
@@ -52,7 +52,7 @@ De RDMA-of GPU-mogelijkheden van Compute-grootten in batch worden alleen onderst
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Windows-Pools-virtuele-machine configuratie
 
-| Grootte | Mogelijkheid | Besturingssystemen | Vereiste software | Poolinstellingen |
+| Grootte | Mogelijkheid | Besturingssystemen | Vereiste software | Groeps instellingen |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 of<br/>2012 (Azure Marketplace) | Micro soft MPI 2012 R2 of hoger, of<br/> Intel MPI 5<br/><br/>Windows RDMA-Stuur Programma's | Communicatie tussen knoop punten inschakelen, gelijktijdige taak uitvoering uitschakelen |
 | [NC, NCv2, NCv3, ND, NDv2-serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (per serie) | Windows Server 2016 of <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA-of CUDA Toolkit-Stuur Programma's| N/A | 
@@ -66,7 +66,7 @@ De RDMA-of GPU-mogelijkheden van Compute-grootten in batch worden alleen onderst
 > De grootte van een N-serie wordt niet ondersteund in batch-Pools met de configuratie van de Cloud service.
 >
 
-| Grootte | Mogelijkheid | Besturingssystemen | Vereiste software | Poolinstellingen |
+| Grootte | Mogelijkheid | Besturingssystemen | Vereiste software | Groeps instellingen |
 | -------- | ------- | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016, 2012 R2, 2012 of<br/>2008 R2 (gast besturingssysteem familie) | Micro soft MPI 2012 R2 of hoger, of<br/>Intel MPI 5<br/><br/>Windows RDMA-Stuur Programma's | Communicatie tussen knoop punten inschakelen,<br/> gelijktijdige taak uitvoering uitschakelen |
 

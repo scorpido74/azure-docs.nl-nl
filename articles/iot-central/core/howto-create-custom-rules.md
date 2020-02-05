@@ -3,20 +3,22 @@ title: Azure-IoT Central uitbreiden met aangepaste regels en meldingen | Microso
 description: Als oplossings ontwikkelaar kunt u een IoT Central-toepassing configureren om e-mail meldingen te verzenden wanneer een apparaat stopt met het verzenden van telemetrie. Deze oplossing maakt gebruik van Azure Stream Analytics, Azure Functions en SendGrid.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 541cbc0c34a691f51c1a3a53f71920379c447f5d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987591"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022440"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Azure IoT Central uitbreiden met aangepaste regels met behulp van Stream Analytics, Azure Functions en SendGrid
+
+
 
 In deze hand leiding wordt uitgelegd hoe u als ontwikkel aars van oplossingen uw IoT Central-toepassing kunt uitbreiden met aangepaste regels en meldingen. Het voor beeld toont het verzenden van een melding naar een operator wanneer een apparaat stopt met het verzenden van telemetrie. De oplossing gebruikt een [Azure stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) query om te detecteren wanneer een apparaat stopt met het verzenden van telemetrie. De Stream Analytics taak gebruikt [Azure functions](https://docs.microsoft.com/azure/azure-functions/) om e-mail meldingen te verzenden met [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/).
 
@@ -41,14 +43,16 @@ Maak een IoT Central-toepassing op de website van [Azure IOT Central Application
 | Instelling | Waarde |
 | ------- | ----- |
 | Prijs plan | Standard |
-| Toepassingsjabloon | Oudere toepassing |
+| Toepassingsjabloon | Analyses in de Store-voor waarde |
 | De naam van de toepassing | Accepteer de standaard waarde of kies uw eigen naam |
 | URL | Accepteer de standaard waarde of kies uw eigen unieke URL-voor voegsel |
 | Directory | Uw Azure Active Directory-Tenant |
 | Azure-abonnement | Uw Azure-abonnement |
-| Regio | Verenigde Staten |
+| Regio | Uw dichtstbijzijnde regio |
 
 In de voor beelden en scherm afbeeldingen in dit artikel wordt gebruikgemaakt van de **Verenigde Staten** regio. Kies een locatie dicht bij u en zorg ervoor dat u alle resources in dezelfde regio maakt.
+
+Deze toepassings sjabloon bevat twee gesimuleerde Thermo staat-apparaten die telemetrie verzenden.
 
 ### <a name="resource-group"></a>Resourcegroep
 
@@ -237,7 +241,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 Deze oplossing maakt gebruik van een Stream Analytics query om te detecteren wanneer een apparaat meer dan 120 seconden stopt met het verzenden van telemetrie. De query gebruikt de telemetrie van de Event Hub als invoer. De taak verzendt de query resultaten naar de functie-app. In deze sectie configureert u de Stream Analytics taak:
 
-1. Ga in het Azure Portal naar uw stream Analytics-taak en selecteer **invoer**onder taak **topologie** , kies **+ stroom invoer toevoegen**en kies vervolgens **Event hub**.
+1. Navigeer in het Azure Portal naar uw Stream Analytics-taak, onder **taak topologie** Selecteer **invoer**, kies **+ stroom invoer toevoegen**en kies vervolgens **Event hub**.
 1. Gebruik de informatie in de volgende tabel om de invoer te configureren met behulp van de Event Hub die u eerder hebt gemaakt en kies vervolgens **Opslaan**:
 
     | Instelling | Waarde |
@@ -307,7 +311,7 @@ Deze oplossing maakt gebruik van een Stream Analytics query om te detecteren wan
 
 Ga op de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) naar de IOT Central toepassing die u hebt gemaakt op basis van de contoso-sjabloon. In deze sectie configureert u de toepassing voor het streamen van de telemetrie van de gesimuleerde apparaten naar uw Event Hub. Het exporteren configureren:
 
-1. Ga naar de pagina **continue gegevens export** , selecteer **+ Nieuw**en klik vervolgens op **Azure Event hubs**.
+1. Ga naar de pagina voor het **exporteren van gegevens** , selecteer **+ Nieuw**en klik vervolgens op **Azure Event hubs**.
 1. Gebruik de volgende instellingen om het exporteren te configureren en selecteer vervolgens **Opslaan**:
 
     | Instelling | Waarde |
@@ -328,15 +332,15 @@ Wacht tot de export status **actief** is voordat u doorgaat.
 
 Als u de oplossing wilt testen, kunt u de continue gegevens export uitschakelen van IoT Central naar gesimuleerde gestopte apparaten:
 
-1. Navigeer in uw IoT Central-toepassing naar de pagina **continue gegevens export** en selecteer de configuratie **exporteren naar Event hubs** exporteren.
+1. Navigeer in uw IoT Central-toepassing naar de pagina voor het **exporteren van gegevens** en selecteer de configuratie **exporteren naar Event hubs** exporteren.
 1. Stel **ingeschakeld** in op **uit** en kies **Opslaan**.
 1. Na ten minste twee minuten ontvangt het **e-** mail adres een of meer e-mails die eruitzien als de volgende voorbeeld inhoud:
 
     ```txt
     The following device(s) have stopped sending telemetry:
 
-    Device ID   Time
-    7b169aee-c843-4d41-9f25-7a02671ee659    2019-05-09T14:28:59.954Z
+    Device ID         Time
+    Thermostat-Zone1  2019-11-01T12:45:14.686Z
     ```
 
 ## <a name="tidy-up"></a>Opruimen

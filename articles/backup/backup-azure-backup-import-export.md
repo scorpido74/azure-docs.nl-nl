@@ -4,12 +4,12 @@ description: Meer informatie over hoe u met behulp van Azure Backup gegevens via
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 47d4c4fb63c2aa0e2944456048b06070e235f012
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 162d129eaea83ef6623daaa063e8a088c021e25d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997357"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022610"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Werkstroom voor offline back-ups maken in Azure Backup
 
@@ -75,6 +75,15 @@ In deze sectie wordt de werk stroom voor offline back-ups beschreven, zodat uw g
 
     ![Scherm importeren](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
+2. Selecteer de optie **overdracht met mijn eigen schijven**.
+
+    >[!NOTE]
+    >U kunt het beste de Azure Data Box-optie gebruiken om de eerste back-upgegevens offline te zetten. Met deze optie bespaart u de inspanningen die nodig zijn om uw eigen Azure-compatibele schijven aan te schaffen door middel van micro soft-eigen, veilige en onrecht matige proef abonnementen van Azure data Box-apparaten waarmee back-upgegevens rechtstreeks kunnen worden geschreven door de MARS-agent.
+
+3. Klik op **volgende** en vul de invoer zorgvuldig in:
+
+    ![Voer de details van uw schijf in](./media/backup-azure-backup-import-export/your-disk-details.png)
+
    De beschrijving van de invoer is als volgt:
 
     * **Faserings locatie**: de tijdelijke opslag locatie waarnaar de eerste back-up wordt geschreven. De faserings locatie kan zich op een netwerk share of een lokale computer bezien. Als de computer en bron computer verschillend zijn, raden we u aan het volledige netwerkpad van de faserings locatie op te geven.
@@ -85,15 +94,15 @@ In deze sectie wordt de werk stroom voor offline back-ups beschreven, zodat uw g
   
    Geef de invoer op het scherm op en klik op **volgende**. Sla de opgegeven *faserings locatie* en de naam van de *Azure import-taak*op, omdat deze informatie vereist is om de schijven voor te bereiden.
 
-2. Meld u aan bij uw Azure-abonnement wanneer u hierom wordt gevraagd. U moet zich aanmelden zodat Azure Backup de Azure Active Directory-toepassing kunt maken en de vereiste machtigingen geeft voor toegang tot de Azure import-service.
+4. Meld u aan bij uw Azure-abonnement wanneer u hierom wordt gevraagd. U moet zich aanmelden zodat Azure Backup de Azure Active Directory-toepassing kunt maken en de vereiste machtigingen geeft voor toegang tot de Azure import-service.
 
-    ![Nu back-up maken](./media/backup-azure-backup-import-export/azurelogin.png)
+    ![Nu back-up maken](./media/backup-azure-backup-import-export/azure-login.png)
 
-3. Voltooi de werk stroom en klik in de Azure Backup Agent-console op **Nu back**-up maken.
+5. Voltooi de werk stroom en klik in de Azure Backup Agent-console op **Nu back**-up maken.
 
     ![Nu back-up maken](./media/backup-azure-backup-import-export/backupnow.png)
 
-4. Klik op de pagina Bevestiging van de wizard op **back-up**. De eerste back-up wordt naar het faserings gebied geschreven als onderdeel van de installatie.
+6. Klik op de pagina Bevestiging van de wizard op **back-up**. De eerste back-up wordt naar het faserings gebied geschreven als onderdeel van de installatie.
 
    ![Bevestig dat u nu een back-up wilt maken](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
@@ -206,4 +215,3 @@ Zodra de eerste back-up is voltooid, kunt u de gegevens die zijn geïmporteerd i
 ## <a name="next-steps"></a>Volgende stappen
 
 * Voor vragen over de Azure import/export-werk stroom raadpleegt u [de Microsoft Azure import/export-service gebruiken om gegevens over te dragen naar de Blob-opslag](../storage/common/storage-import-export-service.md).
-

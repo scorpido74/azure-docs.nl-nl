@@ -1,6 +1,6 @@
 ---
-title: 'Azure VMware-oplossing op CloudSimple: Firewall tabellen en-regels instellen'
-description: Hierin wordt beschreven hoe u Firewall tabellen en-regels voor de Privécloud instelt om verkeer op subnetten en VLAN'S te beperken.
+title: Azure VMware-oplossingen (AVS)-firewall tabellen en-regels instellen
+description: Hierin wordt beschreven hoe u de firewall-tabellen en-regels voor de persoonlijke cloud van AVS instelt om verkeer op subnetten en VLAN'S te beperken.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: d133f4d0ac8cc8b70060563ad07da35e9fdf2d37
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606443"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025279"
 ---
-# <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Firewall tabellen en-regels voor persoonlijke Clouds instellen
+# <a name="set-up-firewall-tables-and-rules-for-avs-private-clouds"></a>Firewall tabellen en-regels voor het genereren van persoonlijke Clouds voor AVS instellen
 
 Met de firewall tabellen en de gekoppelde regels kunt u beperkingen opgeven voor het verkeer dat moet worden toegepast op bepaalde subnetten en VLAN'S.
 
@@ -24,7 +24,7 @@ Met de firewall tabellen en de gekoppelde regels kunt u beperkingen opgeven voor
 
 ## <a name="add-a-new-firewall-table"></a>Een nieuwe firewall tabel toevoegen
 
-1. [Open de CloudSimple-Portal](access-cloudsimple-portal.md) en selecteer **netwerk** in het menu aan de zijkant.
+1. [Open de AVS-Portal](access-cloudsimple-portal.md) en selecteer **netwerk** in het menu aan de zijkant.
 2. Selecteer **firewall tabellen**.
 3. Selecteer **firewall tabel maken**.
 
@@ -51,7 +51,7 @@ Firewall regels bepalen hoe de firewall specifieke typen verkeer behandelt. Het 
 2. Stel de regel als volgt in:
     * **Naam**. Geef een naam op voor de regel.
     * **Prioriteit**. Wijs een prioriteit toe aan de regel. Regels met lagere getallen worden eerst uitgevoerd.
-    * **Verkeers type**. Selecteer of de regel voor Privécloud, Internet of VPN-verkeer (stateless) of voor een openbaar IP-adres (stateful) is.
+    * **Verkeers type**. Selecteer of de regel voor de automatische AVS-Cloud, het internet of VPN-verkeer (stateless) of voor een openbaar IP-adres (stateful) is.
     * **Protocol**. Selecteer het protocol dat onder de regel valt (TCP, UDP of een Protocol).
     * **Richting**. Selecteer of de regel voor inkomend of uitgaand verkeer is. U moet afzonderlijke regels voor binnenkomend en uitgaand verkeer definiëren.
     * **Actie**. Selecteer de actie die moet worden uitgevoerd als de regel overeenkomt (toestaan of weigeren).
@@ -75,5 +75,5 @@ Nadat u een firewall tabel hebt gedefinieerd, kunt u de subnetten opgeven waarop
 1. Selecteer een firewall tabel op de pagina **netwerk** > **firewall tabellen** .
 2. Open het tabblad **gekoppelde vlan's/subnet** .
 3. Klik op **koppelen aan een VLAN/subnet**.
-4. Selecteer de Privécloud en het VLAN. De bijbehorende subnetnaam en het CIDR-blok worden weer gegeven.
+4. Selecteer de geavse Privécloud en het VLAN. De bijbehorende subnetnaam en het CIDR-blok worden weer gegeven.
 5. Klik op **Submit**

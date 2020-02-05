@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: ajburnle
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef577f5d086b22779392cd6d8b5d43a340f7329
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de205beaf9800c2061cc41343b4153bd0e2b5dc7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423105"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024599"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Snelstartgids: een nieuwe Tenant maken in Azure Active Directory
 U kunt al uw administratieve taken uitvoeren met behulp van de portal van Azure Active Directory (Azure AD), met inbegrip van het maken van een nieuwe tenant voor uw organisatie. 
@@ -31,7 +31,7 @@ Nadat u zich bij Azure Portal aanmeldt, kunt u een nieuwe tenant maken voor uw o
 
 ### <a name="to-create-a-new-tenant"></a>Een nieuwe tenant maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) van uw organisatie met een Globale-administratoraccount.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/)van uw organisatie.
 
 1. Selecteer in het menu Azure Portal de optie **een resource maken**.  
 
@@ -58,6 +58,7 @@ De nieuwe tenant wordt gemaakt met het domein contoso.onmicrosoft.com.
 ## <a name="clean-up-resources"></a>Resources opschonen
 Als u deze toepassing niet verder gebruikt, kunt u de tenant met de volgende stappen verwijderen:
 
+- Zorg ervoor dat u bent aangemeld bij de map die u wilt verwijderen via het **Directory-en abonnements** filter in azure Portal en zo nodig naar de doelmap wilt overschakelen.
 - Selecteer **Azure Active Directory**, en klik vervolgens op de pagina **Contoso - Overzicht** en selecteer **Map verwijderen**.
 
     De tenant en de bijbehorende informatie wordt verwijderd.

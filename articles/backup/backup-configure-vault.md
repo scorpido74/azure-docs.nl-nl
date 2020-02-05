@@ -3,12 +3,12 @@ title: Back-ups maken van Windows-machines met de MARS-agent
 description: Gebruik de Azure Backup micro soft Recovery Services-agent (MARS) om een back-up te maken van Windows-machines.
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: c6e5ea1ed1ec9dd922793dfc6834238c431ddc38
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 990929cc95d1c25117873ca39415d33370456b91
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "76290866"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025534"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>Back-up maken van Windows-machines met de Azure Backup MARS-agent
 
@@ -49,7 +49,7 @@ Waarvan u een back-up kunt maken, is afhankelijk van waar de agent is geïnstall
 
 Als uw computer beperkte internet toegang heeft, moet u ervoor zorgen dat de firewall-instellingen op de computer of de proxy deze Url's en dit IP-adres toestaan:
 
-#### <a name="urls"></a>URL's
+#### <a name="urls"></a>Adres
 
 * www\.msftncsi.com
 * *.Microsoft.com
@@ -68,7 +68,7 @@ De toegang tot alle hierboven vermelde Url's en IP-adressen maakt gebruik van he
 
 Een Recovery Services kluis slaat alle back-ups en herstel punten op die u in de loop van de tijd maakt en bevat het back-upbeleid dat wordt toegepast op back-upcomputers. Maak als volgt een kluis:
 
-1. Gebruik uw Azure-abonnement om u aan te melden bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met uw Azure-abonnement.
 
 2. Zoek en selecteer **Recovery Services kluizen**.
 
@@ -215,10 +215,10 @@ Maak als volgt een beleid:
         -   Back-ups die zijn gemaakt op zaterdag in de afgelopen week van de maand om middernacht en 6:00 uur, worden twaalf maanden bewaard.
         -   Back-ups die zijn gemaakt op een zaterdag in de afgelopen week van maart worden tien jaar bewaard.
 
-    ![Voor beeld van Bewaar periode](./media/backup-configure-vault/retention-example.png)
+        ![Voor beeld van Bewaar periode](./media/backup-configure-vault/retention-example.png)
 
 
-11. In **eerste back-uptype kiezen** beslist u of u de eerste back-up via het netwerk wilt maken of offline back-ups wilt gebruiken (zie dit [artikel](backup-azure-backup-import-export.md)voor meer informatie over offline back-up). Als u de eerste back-up via het netwerk wilt maken, selecteert u **automatisch via het netwerk** en klikt u op **volgende**.
+11. In **eerste back-uptype kiezen** beslist u of u de eerste back-up via het netwerk wilt maken of offline back-ups wilt gebruiken (zie dit [artikel](offline-backup-azure-data-box.md)voor meer informatie over offline back-up). Als u de eerste back-up via het netwerk wilt maken, selecteert u **automatisch via het netwerk** en klikt u op **volgende**.
 
     ![eerste back-uptype](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
 
@@ -245,7 +245,7 @@ U kunt automatisch een initiële back-up uitvoeren via het netwerk of offline. O
 5. In het Data Center worden de schijf gegevens gekopieerd naar een Azure-opslag account.
 6. Azure Backup kopieert de gegevens van het opslag account naar de kluis en incrementele back-ups worden gepland.
 
-[Meer informatie](backup-azure-backup-import-export.md) over offline seeding.
+[Meer informatie](offline-backup-azure-data-box.md) over offline seeding.
 
 ### <a name="enable-network-throttling"></a>Netwerk beperking inschakelen
 
@@ -259,7 +259,7 @@ Schakel als volgt netwerk beperking in:
 1. Klik in de MARS-agent op **Eigenschappen wijzigen**.
 2. Schakel op het tabblad **beperken** het selectie vakje **bandbreedte beperking van Internet bandbreedte voor back-upbewerkingen inschakelen**in.
 
-    ![Netwerkbeperking](./media/backup-configure-vault/throttling-dialog.png)
+    ![Netwerk beperking](./media/backup-configure-vault/throttling-dialog.png)
 3. Geef de toegestane band breedte op tijdens het werk en buiten kantoor uren. Bandbreedte waarden beginnen bij 512 kbps en gaan tot 1.023 MBps. Klik vervolgens op **OK**.
 
 ## <a name="run-an-on-demand-backup"></a>Een back-up op aanvraag uitvoeren

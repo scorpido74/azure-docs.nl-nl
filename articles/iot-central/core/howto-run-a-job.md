@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 114946fa37ae161aeb2efd5b7cd50444c5df4c2b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 68d4dbff364f8d3fda72fc2377722031e9cccc3d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906708"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018887"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Een taak maken en uitvoeren in uw Azure IoT Central-toepassing
 
@@ -38,7 +38,9 @@ In deze sectie wordt beschreven hoe u een taak maakt en uitvoert. U ziet hoe u d
 
     ![Taak configureren](./media/howto-run-a-job/configurejob.png)
 
-6. Nadat u uw apparaten hebt geselecteerd, kiest u **uitvoeren** of **Opslaan**. De taak wordt nu weer gegeven op de pagina met hoofd **taken** . In deze weer gave ziet u de taak die momenteel wordt uitgevoerd en de geschiedenis van eerder uitgevoerde taken. De taak die wordt uitgevoerd, wordt altijd bovenaan de lijst weer gegeven. Uw opgeslagen taak kan op elk gewenst moment opnieuw worden geopend om door te gaan met bewerken of om te worden uitgevoerd.
+6. Kies aan de rechter kant de apparaten waarop u de taak wilt uitvoeren. Als u het selectie vakje boven selecteert, worden alle apparaten geselecteerd in de hele apparaatset. Als u het selectie vakje bij **naam**selecteert, worden alle apparaten op de huidige pagina geselecteerd.
+
+7. Nadat u uw apparaten hebt geselecteerd, kiest u **uitvoeren** of **Opslaan**. De taak wordt nu weer gegeven op de pagina met hoofd **taken** . In deze weer gave ziet u de taak die momenteel wordt uitgevoerd en de geschiedenis van eerder uitgevoerde taken. De taak die wordt uitgevoerd, wordt altijd bovenaan de lijst weer gegeven. Uw opgeslagen taak kan op elk gewenst moment opnieuw worden geopend om door te gaan met bewerken of om te worden uitgevoerd.
 
     ![Taak weer geven](./media/howto-run-a-job/viewjob.png)
 
@@ -103,6 +105,5 @@ Als u de status van de taak en alle betrokken apparaten wilt weer geven, selecte
 
 Nu u hebt geleerd hoe u taken kunt maken in uw Azure IoT Central-toepassing, kunt u het volgende doen:
 
-- [Apparaatsets gebruiken](howto-use-device-sets.md)
 - [Uw apparaten beheren](howto-manage-devices.md)
 - [De sjabloon van uw apparaat versie](howto-version-device-template.md)

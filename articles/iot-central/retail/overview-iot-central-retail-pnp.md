@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: bff6731e767fccb0800c30dfe3e75a800f54c59d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773054"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022134"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Oplossingen voor de detailhandel bouwen met Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Azure IoT Central is een IoT app-platform waarmee de belasting en de kosten voor het ontwikkelen, beheren en onderhouden van IoT-oplossingen op bedrijfs niveau worden verminderd. Als u ervoor kiest om met Azure IoT Central te bouwen, kunt u zich richten op uw tijd, geld en energie over het trans formatie van uw bedrijf met IoT-gegevens, in plaats van alleen maar een complexe en voortdurend veranderende IoT-infra structuur te onderhouden en bij te werken.
 
@@ -65,7 +65,7 @@ De voor delen van een digitaal distributie centrum zijn:
 * Camera's bewaken de goederen wanneer ze binnenkomen en door het transport systeem bladeren.
 * Automatische identificatie van defecte goederen.
 * Efficiënte order tracering.
-* Lagere kosten, verbeterde productiviteit en optimaal gebruik.
+* Lagere kosten, verbeterde productiviteit en geoptimaliseerd gebruik.
 
 In de volgende scherm afbeelding ziet u het out-of-the-box-dash board in de toepassings sjabloon. Het dash board is volledig aanpasbaar om te voldoen aan uw specifieke oplossings vereisten: 
 
@@ -78,7 +78,7 @@ Meer informatie vindt u in de zelf studie [een digitale distributie centrum-toep
 
 Voor veel detail handelaren zijn omgevings voorwaarden in hun winkels een belang rijke onderscheid van hun concurrenten. Detail handelaren willen voor deel van hun klanten onaangename voor waarden in hun winkels onderhouden.  
 
-Als oplossings bouwer kunt u de toepassings sjabloon IoT Central in-Store analyse voorwaarde bewaking gebruiken om een end-to-end oplossing te bouwen. Met de toepassings sjabloon kunt u een winkel omgeving digitaal verbinden met en bewaken met behulp van verschillende sensor apparaten. Deze sensor apparaten genereren telemetrie die u kunt omzetten in Business Insights om de bedrijfs kosten te verlagen en een geweldige ervaring voor hun klanten te creëren.
+Als oplossings bouwer kunt u de toepassings sjabloon IoT Central in-Store analyse voorwaarde bewaking gebruiken om een end-to-end oplossing te bouwen. Met de toepassings sjabloon kunt u een Retail Store-omgeving digitaal verbinden en bewaken met verschillende typen sensor apparaten. Deze sensor apparaten genereren telemetrie die u kunt omzetten in Business Insights om de bedrijfs kosten te verlagen en een geweldige ervaring voor hun klanten te creëren.
 
 Gebruik de toepassings sjabloon voor het volgende:
 
@@ -149,7 +149,7 @@ Met de IoT Central micro fulfillment Center-toepassings sjabloon kunnen bouwers 
 
 Met de toepassings sjabloon kunt u het volgende doen: 
 
-- Verbind op naadloze manieren een aantal IoT-Sens oren zoals robots of condition bewaking Sens oren aan een IoT Central toepassings exemplaar.
+- Verbind verschillende soorten IoT-Sens oren, zoals robots of condition bewaking Sens oren, naadloos met een IoT Central toepassings exemplaar.
 - Bewaak en beheer de status van het sensor netwerk en alle gateway apparaten in de omgeving.
 - Maak aangepaste regels rondom de omgevings voorwaarden binnen een fulfillment-centrum om de juiste waarschuwingen te activeren.
 - Transformeer de omgevings voorwaarden binnen uw fulfillment Center in inzichten die kunnen worden gebruikt door het retail warehouse-team.

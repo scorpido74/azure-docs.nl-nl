@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 5f6825243b7e410b49b54d04a028b5d71610ea68
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: b373691a6b9649a43d68c9da93b49fd20536c42b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561951"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024633"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-abonnement voor Azure Functions
 
@@ -37,7 +37,7 @@ De volgende functies zijn beschikbaar voor het werken met apps die zijn geïmple
 
 ### <a name="pre-warmed-instances"></a>Vooraf gewarmde instanties
 
-Als er vandaag geen gebeurtenissen en uitvoeringen in het verbruiks abonnement worden uitgevoerd, kan uw app omlaag worden geschaald naar nul exemplaren. Wanneer er nieuwe gebeurtenissen binnenkomen in, moet er een nieuw exemplaar worden gespecialiseerd in de app die erop wordt uitgevoerd.  Het maken van nieuwe instanties kan enige tijd duren, afhankelijk van de app.  Deze extra latentie bij de eerste aanroep wordt vaak app koude start genoemd.
+Als er vandaag geen gebeurtenissen en uitvoeringen in het verbruiks abonnement worden uitgevoerd, kan uw app worden geschaald naar nul instanties. Wanneer er nieuwe gebeurtenissen binnenkomen in, moet er een nieuw exemplaar worden gespecialiseerd in de app die erop wordt uitgevoerd.  Het maken van nieuwe instanties kan enige tijd duren, afhankelijk van de app.  Deze extra latentie bij de eerste aanroep wordt vaak app koude start genoemd.
 
 In het Premium-abonnement kunt u uw app vooraf laten opwarmen op een opgegeven aantal exemplaren, tot aan de minimale plan grootte.  Met vooraf gewarmde instanties kunt u een app vooraf schalen voor een hoge belasting. Wanneer de app wordt geschaald, wordt deze voor het eerst geschaald naar de vooraf gewarmde instanties. Aanvullende instanties blijven in de voor bereiding van de volgende schaal bewerking direct in de buffer worden geplaatst en warme. Door een buffer van vooraf gewarmde instanties te hebben, kunt u de latentie van koude start effectief vermijden.  Voor bereide instanties is een functie van het Premium-abonnement en u moet ten minste één instantie actief houden en op elk moment dat het abonnement actief is.
 
@@ -102,11 +102,11 @@ Hieronder ziet u de regio's die momenteel worden ondersteund voor elk besturings
 |--| -- | -- |
 |Australië - centraal| ✔<sup>1</sup> | |
 |Australië - centraal 2| ✔<sup>1</sup> | |
-|Australië - oost| ✔ | |
-|Australië - zuidoost | ✔ | ✔<sup>1</sup> |
+|Australië - Oost| ✔ | |
+|Australië - Zuidoost | ✔ | ✔<sup>1</sup> |
 |Brazilië - Zuid| ✔<sup>2</sup> |  |
 |Canada-Midden| ✔ |  |
-|US - centraal| ✔ |  |
+|VS - centraal| ✔ |  |
 |Azië - oost| ✔ |  |
 |VS - oost | ✔ | ✔<sup>1</sup> |
 |VS - oost 2| ✔ |  |
@@ -124,7 +124,7 @@ Hieronder ziet u de regio's die momenteel worden ondersteund voor elk besturings
 |UK - west| ✔ |  |
 |Europa - west| ✔ | ✔<sup>1</sup> |
 |India - west| ✔ |  |
-|US - west| ✔ | ✔<sup>1</sup> |
+|VS - west| ✔ | ✔<sup>1</sup> |
 |US - west 2| ✔ |  |
 
 <sup>1</sup> Maxi maal aantal uitschalen is beperkt tot 20 exemplaren.  

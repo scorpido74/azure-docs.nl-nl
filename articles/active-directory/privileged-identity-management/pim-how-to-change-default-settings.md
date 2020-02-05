@@ -14,12 +14,12 @@ ms.date: 11/13/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e15418524790e2169a6f60b79629f15f1d141ec4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 60a480327efacee2d1eb74353b2d0ef7885a6194
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429659"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024208"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Instellingen voor Azure AD-functies configureren in Privileged Identity Management
 
@@ -35,93 +35,6 @@ Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged I
     ![Nieuwe versie van Azure AD-rollen](./media/pim-how-to-add-role-to-user/pim-new-version.png)
 
 Volg de stappen in dit artikel voor het goed keuren of weigeren van aanvragen voor Azure AD-rollen.
-
-# <a name="previous-versiontabprevious"></a>[Vorige versie](#tab/previous)
-
-## <a name="open-role-settings"></a>Rolinstellingen openen
-
-Volg deze stappen om de instellingen voor een Azure AD-functie te openen.
-
-1. Open **Azure AD privileged Identity Management**.
-
-1. Selecteer **Azure AD-rollen**.
-
-1. Selecteer **instellingen**.
-
-    ![Azure AD-rollen-instellingen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
-
-1. Selecteer **rollen**.
-
-1. Selecteer de rol waarvan u de instellingen wilt configureren.
-
-    ![Azure AD-rollen-instellingen rollen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
-
-    Op de pagina instellingen voor elke rol zijn verschillende instellingen die u kunt configureren. Deze instellingen zijn alleen van invloed op gebruikers die **in aanmerking komen** voor toewijzingen, niet **permanente** toewijzingen.
-
-## <a name="activations"></a>Activeringen
-
-Gebruik de schuif regelaar **activeringen** om de maximale tijd in uren in te stellen dat een rol actief blijft voordat deze verloopt. Deze waarde kan tussen 1 en 72 uur liggen.
-
-## <a name="notifications"></a>Meldingen
-
-Gebruik de optie **meldingen** om op te geven of beheerders e-mail meldingen zullen ontvangen wanneer rollen worden geactiveerd. Deze melding kan handig zijn voor het detecteren van ongeoorloofde of illegitimate activeringen.
-
-Wanneer deze optie is ingesteld op **inschakelen**, worden meldingen verzonden naar:
-
-- Beheerder van geprivilegieerde rol
-- Beveiligingsbeheerder
-- Globale beheerder
-
-Zie [e-mail meldingen in privileged Identity Management](pim-email-notifications.md)voor meer informatie.
-
-## <a name="incidentrequest-ticket"></a>Incident/aanvraag ticket
-
-Gebruik de switch **incident/aanvraag ticket** om in aanmerking komende beheerders te vragen om een ticket nummer op te nemen wanneer ze hun rol activeren. Met deze procedure kunt u toegangs controles voor rollen effectiever uitvoeren.
-
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
-
-Gebruik de schakel optie **multi-factor Authentication** om op te geven of gebruikers hun identiteit moeten verifiëren met MFA voordat ze hun rollen kunnen activeren. Ze hoeven hun identiteit slechts eenmaal per sessie te verifiëren, niet elke keer dat ze een rol activeren. Er zijn twee tips die u moet onthouden wanneer u MFA inschakelt:
-
-- Gebruikers met micro soft-accounts voor hun e-mail adressen (meestal @outlook.com, maar niet altijd) kunnen zich niet registreren voor Azure Multi-Factor Authentication. Als u rollen wilt toewijzen aan gebruikers met micro soft-accounts, moet u deze permanent beheerder maken of multi-factor Authentication uitschakelen voor die rol.
-- U kunt Azure Multi-Factor Authentication niet uitschakelen voor rollen met een hoge bevoegdheden voor Azure AD en Office 365. Deze veiligheids functie helpt bij het beveiligen van de volgende rollen:  
-  
-  - Azure Information Protection beheerder
-  - Factureringsbeheerder
-  - Beheerder van de Cloud toepassing
-  - Beheerder voor naleving
-  - Voorwaardelijke-toegangsbeheerder
-  - Dynamics 365-beheerder
-  - Toegangs fiatteur voor klanten-LockBox
-  - Schrijvers van mappen
-  - Exchange-beheerder
-  - Globale beheerder
-  - Intune-beheerder
-  - Power BI beheerder
-  - Beheerder van geprivilegieerde rol
-  - Beveiligingsbeheerder
-  - SharePoint-beheerder
-  - Skype voor Bedrijven-beheerder
-  - Gebruikers beheerder
-
-Zie [multi-factor Authentication en privileged Identity Management](pim-how-to-require-mfa.md)voor meer informatie.
-
-## <a name="require-approval"></a>Goed keuring vereisen
-
-Als u de vereiste goed keuring wilt delegeren om een rol te activeren, voert u de volgende stappen uit.
-
-1. Stel de schakel optie **goed keuring vereisen** in op **ingeschakeld**. Het deel venster wordt uitgebreid met opties voor het selecteren van goed keurders.
-
-    ![Azure AD-rollen-instellingen-goed keuring vereisen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
-
-    Als u geen goed keurders opgeeft, wordt de beheerder van de bevoegde rol de standaard fiatteur. vervolgens moet alle activerings aanvragen voor deze rol worden goedgekeurd.
-
-1. Als u goed keurders wilt toevoegen, klikt u op **fiatteurs selecteren**.
-
-    ![Azure AD-rollen-instellingen-goed keuring vereisen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
-
-1. Selecteer een of meer goed keurders naast de beheerder van de geprivilegieerde rol en klik vervolgens op **selecteren**. U kunt gebruikers of groepen selecteren. We raden u aan ten minste twee goed keurders toe te voegen. Zelfs als u uzelf als fiatteur toevoegt, kunt u een functie activering niet zelf goed keuren. Uw selecties worden weer gegeven in de lijst met geselecteerde goed keurders.
-
-1. Nadat u de instellingen van uw rol hebt opgegeven, selecteert u **Opslaan** om uw wijzigingen op te slaan.
 
 # <a name="new-versiontabnew"></a>[Nieuwe versie](#tab/new)
 
@@ -211,6 +124,93 @@ Als u wilt dat goed keuring vereist is om een rol te activeren, voert u de volge
     Uw selecties worden weer gegeven in de lijst met geselecteerde goed keurders.
 
 1. Wanneer u de instellingen van uw rol hebt opgegeven, selecteert u **bijwerken** om uw wijzigingen op te slaan.
+
+# <a name="previous-versiontabprevious"></a>[Vorige versie](#tab/previous)
+
+## <a name="open-role-settings"></a>Rolinstellingen openen
+
+Volg deze stappen om de instellingen voor een Azure AD-functie te openen.
+
+1. Open **Azure AD privileged Identity Management**.
+
+1. Selecteer **Azure AD-rollen**.
+
+1. Selecteer **instellingen**.
+
+    ![Azure AD-rollen-instellingen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
+
+1. Selecteer **rollen**.
+
+1. Selecteer de rol waarvan u de instellingen wilt configureren.
+
+    ![Azure AD-rollen-instellingen rollen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
+
+    Op de pagina instellingen voor elke rol zijn verschillende instellingen die u kunt configureren. Deze instellingen zijn alleen van invloed op gebruikers die **in aanmerking komen** voor toewijzingen, niet **permanente** toewijzingen.
+
+## <a name="activations"></a>Activeringen
+
+Gebruik de schuif regelaar **activeringen** om de maximale tijd in uren in te stellen dat een rol actief blijft voordat deze verloopt. Deze waarde kan tussen 1 en 72 uur liggen.
+
+## <a name="notifications"></a>Meldingen
+
+Gebruik de optie **meldingen** om op te geven of beheerders e-mail meldingen zullen ontvangen wanneer rollen worden geactiveerd. Deze melding kan handig zijn voor het detecteren van ongeoorloofde of illegitimate activeringen.
+
+Wanneer deze optie is ingesteld op **inschakelen**, worden meldingen verzonden naar:
+
+- Beheerder van geprivilegieerde rol
+- Beveiligingsbeheerder
+- Globale beheerder
+
+Zie [e-mail meldingen in privileged Identity Management](pim-email-notifications.md)voor meer informatie.
+
+## <a name="incidentrequest-ticket"></a>Incident/aanvraag ticket
+
+Gebruik de switch **incident/aanvraag ticket** om in aanmerking komende beheerders te vragen om een ticket nummer op te nemen wanneer ze hun rol activeren. Met deze procedure kunt u toegangs controles voor rollen effectiever uitvoeren.
+
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+
+Gebruik de schakel optie **multi-factor Authentication** om op te geven of gebruikers hun identiteit moeten verifiëren met MFA voordat ze hun rollen kunnen activeren. Ze hoeven hun identiteit slechts eenmaal per sessie te verifiëren, niet elke keer dat ze een rol activeren. Er zijn twee tips die u moet onthouden wanneer u MFA inschakelt:
+
+- Gebruikers met micro soft-accounts voor hun e-mail adressen (meestal @outlook.com, maar niet altijd) kunnen zich niet registreren voor Azure Multi-Factor Authentication. Als u rollen wilt toewijzen aan gebruikers met micro soft-accounts, moet u deze permanent beheerder maken of multi-factor Authentication uitschakelen voor die rol.
+- U kunt Azure Multi-Factor Authentication niet uitschakelen voor rollen met een hoge bevoegdheden voor Azure AD en Office 365. Deze veiligheids functie helpt bij het beveiligen van de volgende rollen:  
+  
+  - Azure Information Protection beheerder
+  - Factureringsbeheerder
+  - Beheerder van de Cloud toepassing
+  - Beheerder voor naleving
+  - Voorwaardelijke-toegangsbeheerder
+  - Dynamics 365-beheerder
+  - Toegangs fiatteur voor klanten-LockBox
+  - Schrijvers van mappen
+  - Exchange-beheerder
+  - Globale beheerder
+  - InTune-beheerder
+  - Power BI beheerder
+  - Beheerder van geprivilegieerde rol
+  - Beveiligingsbeheerder
+  - SharePoint-beheerder
+  - Skype voor bedrijven-beheerder
+  - Gebruikers beheerder
+
+Zie [multi-factor Authentication en privileged Identity Management](pim-how-to-require-mfa.md)voor meer informatie.
+
+## <a name="require-approval"></a>Goed keuring vereisen
+
+Als u de vereiste goed keuring wilt delegeren om een rol te activeren, voert u de volgende stappen uit.
+
+1. Stel de schakel optie **goed keuring vereisen** in op **ingeschakeld**. Het deel venster wordt uitgebreid met opties voor het selecteren van goed keurders.
+
+    ![Azure AD-rollen-instellingen-goed keuring vereisen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+
+    Als u geen goed keurders opgeeft, wordt de beheerder van de bevoegde rol de standaard fiatteur. vervolgens moet alle activerings aanvragen voor deze rol worden goedgekeurd.
+
+1. Als u goed keurders wilt toevoegen, klikt u op **fiatteurs selecteren**.
+
+    ![Azure AD-rollen-instellingen-goed keuring vereisen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
+
+1. Selecteer een of meer goed keurders naast de beheerder van de geprivilegieerde rol en klik vervolgens op **selecteren**. U kunt gebruikers of groepen selecteren. We raden u aan ten minste twee goed keurders toe te voegen. Zelfs als u uzelf als fiatteur toevoegt, kunt u een functie activering niet zelf goed keuren. Uw selecties worden weer gegeven in de lijst met geselecteerde goed keurders.
+
+1. Nadat u de instellingen van uw rol hebt opgegeven, selecteert u **Opslaan** om uw wijzigingen op te slaan.
 
 ---
 

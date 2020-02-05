@@ -11,18 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: f9624f516d5f38f1db02c6a103c40d01f8dc26ca
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: fea3440dd7c017b85d6fffa2ec0fe5d26cd98b97
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702693"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022168"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Zelf studie: het operator dashboard aanpassen en apparaten beheren in azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-In deze zelf studie ziet u als een bouwer hoe u het operator dashboard kunt aanpassen in uw Azure IoT Central in-Store Analytics-toepassing. Toepassings exploitanten kunnen het aangepaste dash board gebruiken om de toepassing uit te voeren en de gekoppelde apparaten te beheren.
+In deze zelf studie leert u hoe u het operator dashboard kunt aanpassen in uw Azure IoT Central in-Store Analytics-toepassing. Toepassings exploitanten kunnen het aangepaste dash board gebruiken om de toepassing uit te voeren en de gekoppelde apparaten te beheren.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -35,12 +34,12 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u met deze zelf studie begint, moet de opbouw functie de eerste zelf studie volt ooien om de Azure IoT Central in-Store Analytics-toepassing te maken en apparaten toe te voegen:
+De opbouw functie moet de zelf studie volt ooien om de Azure IoT Central in-Store Analytics-toepassing te maken en apparaten toe te voegen:
 
 * [Een in-Store Analytics-toepassing maken in Azure IOT Central](./tutorial-in-store-analytics-create-app-pnp.md) (vereist)
 
 ## <a name="change-the-dashboard-name"></a>De naam van het dash board wijzigen
-Als u het operator dashboard wilt aanpassen, bewerkt u het standaard dashboard in uw toepassing. U kunt desgewenst extra nieuwe Dash boards maken. De eerste stap bij het aanpassen van het dash board in uw toepassing is het wijzigen van de naam.
+Als u het operator dashboard wilt aanpassen, moet u het standaard dashboard in uw toepassing bewerken. U kunt ook extra nieuwe Dash boards maken. De eerste stap bij het aanpassen van het dash board in uw toepassing is het wijzigen van de naam.
 
 1. Ga naar de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) .
 
@@ -54,7 +53,7 @@ Als u het operator dashboard wilt aanpassen, bewerkt u het standaard dashboard i
 
 1. Voer een beschrijvende naam in voor uw dash board in de naam van het **dash board.** In deze zelf studie wordt gebruikgemaakt van een fictief bedrijf met de naam Contoso en de naam van het voorbeeld dashboard is *Contoso dash board*. 
 
-1. Selecteer **Opslaan**. Hiermee slaat u de wijzigingen in het dash board op en schakelt u de bewerkings modus uit.
+1. Selecteer **Opslaan**. Uw wijzigingen worden opgeslagen in het dash board en de bewerkings modus is uitgeschakeld.
 
     ![Dash board naam van Azure IoT Central wijzigen](./media/tutorial-in-store-analytics-customize-dashboard-pnp/dashboard-change-name.png)
 
@@ -93,7 +92,7 @@ De tegel installatie kopie aanpassen waarin een kaart van de sensor zones in de 
 
     ![Archief overzicht van Azure IoT Central opslaan](./media/tutorial-in-store-analytics-customize-dashboard-pnp/store-map-save.png)
 
-    In het voor beeld contoso Store Maps worden vier zones weer gegeven: twee afhandelings zones, een zone voor kleding en persoonlijke verzorging, en een zone voor boodschappen en r. In deze zelf studie koppelt u Sens oren aan deze zones om telemetrie te leveren.
+    In het voor beeld contoso Store Maps worden vier zones weer gegeven: twee afhandelings zones, een zone voor kleding en persoonlijke verzorging, en een zone voor boodschappen en r. In deze zelf studie koppelt u Sens oren aan deze zones om telemetrie te bieden.
 
     ![Azure IoT Central Store-zones](./media/tutorial-in-store-analytics-customize-dashboard-pnp/store-zones.png)
 
@@ -108,7 +107,7 @@ Tegels verwijderen die u niet in uw toepassing wilt gebruiken:
 
 1. Selecteer **bewerken** op de werk balk van het dash board. 
 
-1. Selecteer **X verwijderen** om de volgende tegels te verwijderen: **terug naar alle zones**, **Ga naar de Store-dash board**, **wacht tijd**en alle drie de tegels die zijn gekoppeld aan de **kassa 3**. Het contoso Store-dash board maakt geen gebruik van deze tegels. 
+1. Selecteer **X verwijderen** om de volgende tegels te verwijderen: **terug naar alle zones**, **Ga naar de Store-dash board**, **wacht tijd**en alle drie de tegels die zijn gekoppeld aan de **kassa 3**. De tegels van het contoso Store-dash board worden niet gebruikt. 
 
     ![Tegels van Azure IoT Central verwijderen](./media/tutorial-in-store-analytics-customize-dashboard-pnp/delete-tiles.png)
 
@@ -185,7 +184,7 @@ De tegel **personen verkeer** bewerken om telemetrie weer te geven voor slechts 
 
 1. Selecteer in **telemetrie** de optie **aantal 1**, **aantal 2**en **aantal 3**. 
 
-1. Selecteer **update configuratie**. Hiermee wist u de bestaande configuratie op de tegel. 
+1. Selecteer **update configuratie**. De bestaande configuratie op de tegel wordt gewist. 
 
 1. Selecteer opnieuw **configureren** op de tegel **personen verkeer** .
 
@@ -233,7 +232,7 @@ Een opdracht tegel toevoegen om de gateway opnieuw op te starten:
 
 1. Selecteer **Bewerken**. 
 
-1. Selecteer `C500` in de lijst met **apparaatprofielen** . Dit is de sjabloon voor de Rigado C500-gateway. 
+1. Selecteer `C500` in de lijst met **apparaatprofielen** . Het is de sjabloon voor de Rigado C500-gateway. 
 
 1. Selecteer de instantie van de gateway in het **apparaatexemplaar**.
 

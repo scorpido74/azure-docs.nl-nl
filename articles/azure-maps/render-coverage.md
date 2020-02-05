@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 84d5d7fc6490420857032ead964f5bccea8f397a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 04e7aeddaa4e3aba38f1bf08893b0b0487109653
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910676"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025449"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps weergave dekking
 
-Azure Maps maakt gebruik van raster tegels en vector tegels om kaarten te maken. Bij de laagste resolutie past de hele wereld op één tegel. Bij de hoogste resolutie vertegenwoordigt één tegel een vier Kante meter van 38. Wanneer u inzoomt op een kaart, ziet u daarom steeds meer details over de continenten, regio's, steden en individuele Streets. Zie [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md)voor meer informatie.
+Azure Maps maakt gebruik van raster tegels en vector tegels om kaarten te maken. Bij de laagste resolutie past de hele wereld aan op één tegel. Bij de hoogste resolutie vertegenwoordigt één tegel een vier Kante meter van 38. Wanneer u inzoomt, worden er meer details weer geven over continenten, regio's, steden en afzonderlijke straten. Zie [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md)voor meer informatie over tegels.
 
-Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle regio's. De volgende tabellen bevatten informatie over het niveau van de weer gegeven details die u van elke regio kunt verwachten.
+Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle regio's. De volgende tabellen beschrijven het informatie niveau dat u voor elke regio kunt weer geven.
 
-## <a name="legend"></a>Legenda
+## <a name="legend"></a>Labels
 
-| Symbool | Betekenis |
+| Valuta | Betekenis |
 |--------|---------|
 | ✓ | Regio wordt weer gegeven met gedetailleerde gegevens.   |
 | Ø | Regio wordt weer gegeven met vereenvoudigde gegevens. |
@@ -46,7 +46,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Tsjaad                             | ✓ | Ø |
 | Comoren                          | ✓ | Ø |
 | Congo (DRC) | ✓ | ✓ |
-| Ivoorkust (Côte d’Ivoire)                    | ✓ | Ø |
+| Côte d'Ivoire                    | ✓ | Ø |
 | Djibouti                         | ✓ | Ø |
 | Egypte                            | ✓ | ✓ |
 | Equatoriaal-Guinea                | ✓ | Ø |
@@ -75,12 +75,12 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Réunion                          | ✓ | ✓ |
 | Rwanda                           | ✓ | ✓ |
 | Sint-Helena, Ascension en Tristan da Cunha | ✓ | Ø |
-| São Tomé en Principe            | ✓ | Ø |
+| Sao Tomé en principe            | ✓ | Ø |
 | Senegal                          | ✓ | ✓ |
 | Sierra Leone                     | ✓ | ✓ |
 | Somalië                          | ✓ | ✓ |
 | Zuid-Afrika                     | ✓ | ✓ |
-| Zuid-Sudan                      | ✓ | ✓ |
+| Zuid-Soedan                      | ✓ | ✓ |
 | Soedan                            | ✓ | ✓ |
 | Swaziland                        | ✓ | ✓ |
 | Verenigde Republiek Tanzania      | ✓ | ✓ |
@@ -164,9 +164,9 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Brunei                    | ✓ | ✓ |
 | Cambodja                  |   | Ø |
 | China                     |   | Ø |
-| Cocoseilanden   |   | Ø |
+| Cocos-Keeling-eilanden   |   | Ø |
 | Noord-Korea |   | Ø |
-| Hongkong SAR             | ✓ | ✓ |
+| Hong Kong SAR             | ✓ | ✓ |
 | India                     | Ø | ✓ | 
 | Indonesië                 | ✓ | ✓ |
 | Iran                      |   | Ø |
@@ -206,7 +206,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Vietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
 
-## <a name="oceania"></a>Oceanië
+## <a name="oceania"></a>Oceania
 
 | Land/regio | Geïntegreerde raster tegels | Geïntegreerde vector tegels |
 | ------ | :------------------: | :------------------: |
@@ -217,16 +217,16 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Frans-Polynesië          |   | Ø |
 | Guam                      | ✓ | ✓ |
 | Kiribati                  |   | Ø |
-| Marshalleilanden          |   | Ø |
+| Marshall eilanden          |   | Ø |
 | Micronesia                |   | Ø |
 | Nauru                     |   | Ø |
 | Nieuw-Caledonië             |   | Ø |
 | Nieuw-Zeeland               | ✓ | ✓ |
 | Niue                      |   | Ø |
-| Norfolk            |   | Ø |
+| Norfolk eiland            |   | Ø |
 | Palau                     |   | Ø |
 | Papoea-Nieuw-Guinea          |   | Ø |
-| Pitcairn                  |   | Ø |
+| Pitcairneilanden                  |   | Ø |
 | Samoa                     |   | Ø |
 | Salomonseilanden           |   | Ø|
 | Tokelau                   |   | Ø |
@@ -296,7 +296,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Turkije                    | ✓ | ✓ |
 | Oekraïne                   | ✓ | ✓ |
 | Verenigd Koninkrijk            | ✓ | ✓ |
-| Vaticaanstad              | ✓ | ✓ |
+| Vaticaan stad              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>Volgende stappen
 

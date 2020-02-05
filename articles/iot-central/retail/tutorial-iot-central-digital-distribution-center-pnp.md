@@ -7,22 +7,22 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 90d171e3353061ffd855d9132c8a7fe40116e3cd
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 93a77d73b5cc249c39609f98f055a7b1927dd6ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984086"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025483"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Zelf studie: een Digital Distribution Center-toepassings sjabloon implementeren en door lopen
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 In deze zelf studie wordt uitgelegd hoe u aan de slag gaat door een IoT Central **Digital Distribution Center** -toepassings sjabloon te implementeren. U leert hoe u de sjabloon implementeert, wat is opgenomen in het vak en wat u mogelijk op de volgende manier wilt doen.
 
 In deze zelf studie leert u hoe u 
 * Digital Distribution Center-toepassing maken 
-* Door loop de toepassing 
+* door loop de toepassing 
 
 ## <a name="prerequisites"></a>Vereisten
 * Er zijn geen specifieke vereisten vereist voor het implementeren van deze app
@@ -116,4 +116,4 @@ Als u deze toepassing niet meer wilt gebruiken, verwijdert u de toepassings sjab
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het Digital Distribution Center- [concept](./architecture-digital-distribution-center-pnp.md) van Digital Distribution Center (oplossings architectuur)
 * Meer informatie over andere [IOT Central Retail-sjablonen](./overview-iot-central-retail-pnp.md)
-* Raadpleeg [IOT Central Overview](../preview/overview-iot-central.md) voor meer informatie over IOT Central
+* Raadpleeg [IOT Central Overview](../core/overview-iot-central.md) voor meer informatie over IOT Central

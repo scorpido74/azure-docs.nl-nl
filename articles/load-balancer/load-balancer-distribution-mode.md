@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: ddccd02e7157792d942309ae4f74933322f246f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225379"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023528"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>De distributiemodus configureren voor Azure Load Balancer
 
@@ -154,7 +154,7 @@ Het volgende voorbeeld ziet u hoe de distributiemodus voor load balancer voor ee
 
 ### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>Distributiemodus voor geïmplementeerde load balancer-set wijzigen
 
-Het model van de klassieke Azure-implementatie gebruiken om een bestaande implementatieconfiguratie te wijzigen. Voeg de `x-ms-version` header toe en stel de waarde in op versie 2014-09-01 of hoger.
+Het model van de klassieke Azure-implementatie gebruiken om een bestaande implementatieconfiguratie te wijzigen. Voeg de `x-ms-version` kop- en stel de waarde in op versie 2014-09-01 of hoger.
 
 #### <a name="request"></a>Aanvraag
 
@@ -193,6 +193,6 @@ Zoals eerder beschreven, stelt u het `LoadBalancerDistribution`-element in op so
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van Azure interne Load Balancer](load-balancer-internal-overview.md)
-* [Aan de slag met het configureren van een Internet gerichte load balancer](load-balancer-get-started-internet-arm-ps.md)
+* [Overzicht van de interne Load Balancer van Azure](load-balancer-internal-overview.md)
+* [Aan de slag met het configureren van een internetgerichte load balancer](quickstart-create-standard-load-balancer-powershell.md)
 * [TCP-time-outinstellingen voor inactiviteit voor de load balancer configureren](load-balancer-tcp-idle-timeout.md)

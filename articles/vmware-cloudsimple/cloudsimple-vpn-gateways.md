@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing door CloudSimple-VPN-gateways
-description: Meer informatie over CloudSimple voor site-naar-site VPN en punt-naar-site-VPN-concepten
+title: Azure VMware-oplossingen (AVS)-VPN-gateways
+description: Meer informatie over AVS site-naar-site VPN en punt-naar-site-VPN-concepten
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,40 +8,40 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 73171e2c46bdf6c934db5777efe36ba51153a686
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244769"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024854"
 ---
 # <a name="vpn-gateways-overview"></a>Overzicht van VPN-gateways
 
-Een VPN-gateway wordt gebruikt voor het verzenden van versleuteld verkeer tussen een CloudSimple regio netwerk op een on-premises locatie of een computer via het open bare Internet.  Elke regio kan één VPN-gateway hebben, die meerdere verbindingen kan ondersteunen. Wanneer u meerdere verbindingen naar dezelfde VPN-gateway hebt gemaakt, delen alle VPN-tunnels de bandbreedte die voor de gateway beschikbaar is.
+Een VPN-gateway wordt gebruikt voor het verzenden van versleuteld verkeer tussen een AVS-regio netwerk op een on-premises locatie of een computer via het open bare Internet. Elke regio kan één VPN-gateway hebben, die meerdere verbindingen kan ondersteunen. Wanneer u meerdere verbindingen naar dezelfde VPN-gateway hebt gemaakt, delen alle VPN-tunnels de bandbreedte die voor de gateway beschikbaar is.
 
-CloudSimple biedt twee soorten VPN-gateways:
+AVS biedt twee soorten VPN-gateways:
 
 * Site-naar-site VPN-gateway
 * Punt-naar-site-VPN-gateway
 
 ## <a name="site-to-site-vpn-gateway"></a>Site-naar-site VPN-gateway
 
-Een site-naar-site-VPN-gateway wordt gebruikt voor het verzenden van versleuteld verkeer tussen een CloudSimple-regio netwerk en een on-premises Data Center. Gebruik deze verbinding om de subnetten/CIDR-bereik te definiëren voor netwerk verkeer tussen uw on-premises netwerk en het CloudSimple Region-netwerk.
+Een site-naar-site-VPN-gateway wordt gebruikt voor het verzenden van versleuteld verkeer tussen een AVS-regio netwerk en een on-premises Data Center. Gebruik deze verbinding om de subnetten/CIDR-bereik te definiëren voor netwerk verkeer tussen uw on-premises netwerk en het AVS-regio netwerk.
 
-Met de VPN-gateway kunt u services van on-premises gebruiken in uw Privécloud en de services in uw Privécloud vanuit het on-premises netwerk.  CloudSimple biedt een op beleid gebaseerde VPN-server voor het tot stand brengen van de verbinding vanaf uw on-premises netwerk.
+De VPN-gateway stelt u in staat om services van on-premises te gebruiken op de privécloud van uw AVS en op de services van uw automatische AVS-Cloud vanuit het on-premises netwerk. AVS biedt een op beleid gebaseerde VPN-server voor het tot stand brengen van de verbinding vanaf uw on-premises netwerk.
 
 Gebruiks voorbeelden voor site-naar-site-VPN:
 
-* Toegankelijkheid van uw persoonlijke Cloud-vCenter vanaf elk werk station in uw on-premises netwerk.
+* Toegankelijkheid van uw AVS-persoonlijke Cloud-vCenter vanaf elk werk station in uw on-premises netwerk.
 * Gebruik van uw on-premises Active Directory als een vCenter-identiteits bron.
-* Handige overdracht van VM-sjablonen, Iso's en andere bestanden van uw on-premises bronnen naar uw Privécloud.
-* Toegankelijkheid van werk belastingen die worden uitgevoerd in uw Privécloud vanuit uw on-premises netwerk.
+* Handige overdracht van VM-sjablonen, Iso's en andere bestanden van uw on-premises resources naar uw AVS-persoonlijke Cloud-vCenter.
+* Toegankelijkheid van werk belastingen die worden uitgevoerd op uw AVS-Privécloud vanuit uw on-premises netwerk.
 
 ![Topologie van site-naar-site-VPN-verbinding](media/cloudsimple-site-to-site-vpn-connection.png)
 
 ### <a name="cryptographic-parameters"></a>Cryptografische para meters
 
-Een site-naar-site-VPN-verbinding maakt gebruik van de volgende standaard cryptografie parameters om een beveiligde verbinding tot stand te brengen.  Wanneer u een verbinding maakt vanaf uw on-premises VPN-apparaat, gebruikt u een van de volgende para meters die worden ondersteund door uw on-premises VPN-gateway.
+Een site-naar-site-VPN-verbinding maakt gebruik van de volgende standaard cryptografie parameters om een beveiligde verbinding tot stand te brengen. Wanneer u een verbinding maakt vanaf uw on-premises VPN-apparaat, gebruikt u een van de volgende para meters die worden ondersteund door uw on-premises VPN-gateway.
 
 #### <a name="phase-1-proposals"></a>Voorst Ellen fase 1
 
@@ -70,7 +70,7 @@ Een site-naar-site-VPN-verbinding maakt gebruik van de volgende standaard crypto
 
 ## <a name="point-to-site-vpn-gateway"></a>Punt-naar-site-VPN-gateway
 
-Een punt-naar-site-VPN wordt gebruikt voor het verzenden van versleuteld verkeer tussen een CloudSimple-regio netwerk en een client computer.  Punt-naar-site-VPN is de eenvoudigste manier om toegang te krijgen tot uw particuliere cloud netwerk, met inbegrip van de virtuele machines van uw privécloud en werk belasting.  Gebruik een punt-naar-site-VPN-verbinding als u extern verbinding maakt met de Privécloud.
+Een punt-naar-site-VPN wordt gebruikt voor het verzenden van versleuteld verkeer tussen een AVS-regio netwerk en een client computer. Punt-naar-site-VPN is de eenvoudigste manier om toegang te krijgen tot uw persoonlijke Cloud netwerk van uw AVS, met inbegrip van uw AVS-Vm's voor Privécloud en werk belastingen. Gebruik punt-naar-site-VPN-verbinding als u extern verbinding maakt met de automatische AVS-Cloud.
 
 ## <a name="next-steps"></a>Volgende stappen
 

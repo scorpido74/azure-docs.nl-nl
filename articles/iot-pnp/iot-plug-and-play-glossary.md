@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b6516b07f24c40fcb95d47e05b22dd7672c10f2a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ef5ce9cc1cda7f1ff6b1985771e20cb20123e264
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531198"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025636"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Verklarende woorden lijst voor de preview-versie van IoT Plug en Play
 
@@ -117,7 +117,7 @@ Een ontwikkelaar van een apparaat maakt gebruik van een [mogelijkheidsprofiel](#
 
 ## <a name="device-provisioning-service"></a>Device Provisioning Service
 
-[Azure IOT Central](#azure-iot-central) maakt gebruik van de Device Provisioning Service voor het beheer van alle apparaatregistratie en de verbinding. Zie [connectiviteit van apparaten in Azure IOT Central](../iot-central/preview/overview-iot-central-get-connected.md)voor meer informatie. U kunt ook de Device Provisioning Service gebruiken voor het beheren van apparaatregistratie en verbinding met uw op IoT Hub gebaseerde IoT-oplossing. Zie [apparaten inrichten met Azure IOT hub Device Provisioning Service](../iot-dps/about-iot-dps.md)voor meer informatie.
+[Azure IOT Central](#azure-iot-central) maakt gebruik van de Device Provisioning Service voor het beheer van alle apparaatregistratie en de verbinding. Zie [connectiviteit van apparaten in Azure IOT Central](../iot-central/core/concepts-get-connected.md)voor meer informatie. U kunt ook de Device Provisioning Service gebruiken voor het beheren van apparaatregistratie en verbinding met uw op IoT Hub gebaseerde IoT-oplossing. Zie [apparaten inrichten met Azure IOT hub Device Provisioning Service](../iot-dps/about-iot-dps.md)voor meer informatie.
 
 ## <a name="device-registration"></a>Apparaatregistratie
 
@@ -155,7 +155,7 @@ De IoT Hub query taal wordt gebruikt voor meerdere doel einden. U kunt bijvoorbe
 
 Een IoT-Plug en Play apparaat is doorgaans een klein, zelfstandig computer apparaat waarmee gegevens worden verzameld of andere apparaten worden beheerd, en waarmee software of firmware wordt uitgevoerd waarmee een [mogelijkheidsprofiel](#device-capability-model)wordt geïmplementeerd.  Een IoT-Plug en Play apparaat kan bijvoorbeeld een milieubewakings apparaat zijn of een controller voor een irrigatie systeem met een slimme land bouw. U kunt een in de Cloud gehoste IoT-oplossing schrijven naar de opdracht, het besturings element en de gegevens van IoT Plug en Play-apparaten ontvangen. Het [Azure Certified for IOT-apparaat Catalog](#certified-for-iot-device-catalog) bevat een lijst met beschik bare IoT-Plug en Play apparaten. Elk IoT Plug en Play-apparaat in de catalogus is gevalideerd en heeft een [functionaliteits model voor apparaten](#device-capability-model).
 
-## <a name="microsoft-partner-center"></a>Microsoft Partnercentrum
+## <a name="microsoft-partner-center"></a>Micro soft partner centrum
 
 [Micro soft Partner Center](https://docs.microsoft.com/partner-center/) is de plek waar uw organisatie zijn end-to-end-relatie beheert met micro soft. U hebt een micro soft Partner Center-account nodig voordat u uw [IoT Plug en Play-apparaat](#iot-plug-and-play-device) kunt certificeren in de [Azure Certified voor IOT-Portal](#azure-certified-for-iot-portal).
 
@@ -179,7 +179,7 @@ Eigenschappen zijn gegevens velden die zijn gedefinieerd in een [Interface](#int
 
 Er is één open bare model opslagplaats waarmee [modellen](#device-capability-model) en [interfaces](#interface) voor apparaten worden opgeslagen voor [gecertificeerde apparaten](#device-certification). De open bare model opslagplaats bevat ook [algemene interface](#common-interface) definities.
 
-## <a name="registration-id"></a>Registratie-id
+## <a name="registration-id"></a>Registratie-ID
 
 Een registratie-ID is een unieke aanduiding van een apparaat in de [Device Provisioning Service](#device-provisioning-service). Deze ID is niet hetzelfde als de apparaat-ID die een unieke id is voor een apparaat in een [IOT-hub](#azure-iot-hub).
 

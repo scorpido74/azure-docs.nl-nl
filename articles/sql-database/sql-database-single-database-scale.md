@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: e23a4c39f93ea4de7f5dd38bb266d63ed52913cb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845858"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023137"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Enkele database resources in Azure SQL Database schalen
 
@@ -93,8 +93,8 @@ else {
 - Als u een upgrade uitvoert naar een hogere servicelaag of reken grootte, wordt de maximale grootte van de data base niet verhoogd, tenzij u expliciet een grotere grootte (maxSize) opgeeft.
 - Om een Data Base te downgradeen, moet de gebruikte data base kleiner zijn dan de Maxi maal toegestane grootte van de doellaag en de grootte van de berekening.
 - Bij downgrade van **Premium** naar de laag **standaard** geldt een extra opslag kosten als beide (1) de maximale grootte van de Data Base worden ondersteund in de doel berekenings grootte, en (2) de maximale grootte de inbegrepen opslag hoeveelheid van de doel berekenings grootte overschrijdt. Als een P1-data base met een maximale grootte van 500 GB bijvoorbeeld verkleind is aan S3, geldt er een extra opslag kosten, aangezien S3 een maximum grootte van 1 TB ondersteunt en de inbegrepen opslag hoeveelheid alleen 250 GB is. De extra opslag ruimte is dus 500 GB – 250 GB = 250 GB. Zie voor prijzen voor extra opslag [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/). Als de daad werkelijke hoeveelheid gebruikte ruimte kleiner is dan het totale aantal opslag, kunnen deze extra kosten worden vermeden door de maximale grootte van de data base te verlagen tot het opgenomen bedrag.
-- Bij het bijwerken van een Data Base waarvoor [geo-replicatie](sql-database-geo-replication-portal.md) is ingeschakeld, werkt u de secundaire data bases bij naar de gewenste servicelaag en de berekenings grootte vóór de upgrade van de primaire data base (algemene richt lijnen voor de beste prestaties). Wanneer u een upgrade naar een andere uitvoert, moet u eerst een upgrade uitvoeren van de secundaire data base.
-- Bij het downgradeen van een Data Base met [geo-replicatie](sql-database-geo-replication-portal.md) is ingeschakeld, downgradet u de primaire data bases naar de gewenste servicelaag en reken grootte voordat u de secundaire data base downgradet (algemene richt lijnen voor de beste prestaties). Wanneer u een downgrade naar een andere editie uitvoert, is de primaire data base het eerst te downgradeen vereist.
+- Bij het bijwerken van een Data Base waarvoor [geo-replicatie](sql-database-geo-replication-portal.md) is ingeschakeld, werkt u de secundaire data bases bij naar de gewenste servicelaag en de berekenings grootte vóór de upgrade van de primaire data base (algemene richt lijnen voor de beste prestaties). Wanneer u een upgrade uitvoert naar een andere editie, is het een vereiste dat de secundaire data base eerst wordt geüpgraded.
+- Bij het downgradeen van een Data Base met [geo-replicatie](sql-database-geo-replication-portal.md) is ingeschakeld, downgradet u de primaire data bases naar de gewenste servicelaag en reken grootte voordat u de secundaire data base downgradet (algemene richt lijnen voor de beste prestaties). Bij downgrade naar een andere editie is het een vereiste dat de primaire data base het eerst downgradet.
 - De mogelijkheden om de service te herstellen verschillen voor de verschillende servicelagen. Als u downgradet naar de laag **basis** , is er een lagere Bewaar periode voor back-ups. Zie [Azure SQL database back-ups](sql-database-automated-backups.md).
 - De nieuwe eigenschappen voor de database worden pas toegepast nadat de wijzigingen zijn voltooid.
 

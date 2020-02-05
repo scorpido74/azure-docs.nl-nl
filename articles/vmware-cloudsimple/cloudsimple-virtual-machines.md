@@ -1,7 +1,7 @@
 ---
-title: Overzicht van virtuele machines
-titleSuffix: Azure VMware Solution by CloudSimple
-description: Meer informatie over virtuele machines van CloudSimple en hun voor delen.
+title: Azure VMware Solutions (AVS)-overzicht van virtuele machines
+description: Meer informatie over de virtuele machines van AVS en hun voor delen.
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,28 +9,28 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 436a5ab6fb286ce206f981487b6a29d774ecd1a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e6cc6d51e37cea98cc553a236295311d21f595a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372786"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024905"
 ---
-# <a name="cloudsimple-virtual-machines-overview"></a>Overzicht van virtuele CloudSimple-machines
+# <a name="avs-virtual-machines-overview"></a>Overzicht van virtuele machines voor AVS
 
-Met CloudSimple kunt u virtuele VMware-machines (Vm's) beheren vanuit het Azure Portal.  Een cluster of een resource groep van uw vSphere-cluster wordt beheerd via Azure door het toe te wijzen aan uw abonnement.
+Met AVS kunt u virtuele VMware-machines (Vm's) beheren vanuit het Azure Portal. Een cluster of een resource groep van uw vSphere-cluster wordt beheerd via Azure door het toe te wijzen aan uw abonnement.
 
-Als u een CloudSimple-VM wilt maken vanuit Azure, moet er een VM-sjabloon bestaan in uw Privécloud.  De sjabloon wordt gebruikt om het besturings systeem en de toepassingen aan te passen.  De VM van de sjabloon kan worden gehard om te voldoen aan het beveiligings beleid van de onderneming.  U kunt de sjabloon gebruiken om virtuele machines te maken en deze vervolgens uit het Azure Portal te gebruiken met behulp van een self-service model.
+Als u een AVS-VM vanuit Azure wilt maken, moet er een VM-sjabloon bestaan in uw AVS-Privécloud. De sjabloon wordt gebruikt om het besturings systeem en de toepassingen aan te passen. De VM van de sjabloon kan worden gehard om te voldoen aan het beveiligings beleid van de onderneming. U kunt de sjabloon gebruiken om virtuele machines te maken en deze vervolgens uit het Azure Portal te gebruiken met behulp van een self-service model.
 
 ## <a name="benefits"></a>Voordelen
 
-CloudSimple virtual machines van Azure Portal een self-service mechanisme bieden waarmee gebruikers virtuele VMware-machines kunnen maken en beheren.
+Virtuele machines van de AVS van Azure Portal bieden een self-service mechanisme waarmee gebruikers virtuele VMware-machines kunnen maken en beheren.
 
-* Een CloudSimple-VM maken in uw Privécloud-vCenter
+* Een AVS-VM maken op uw AVS-vCenter-Privécloud
 * VM-eigenschappen beheren
   * Schijven toevoegen/verwijderen
   * Nic's toevoegen/verwijderen
-* Energie bewerkingen van uw CloudSimple-VM
+* Energie bewerkingen van uw AVS-VM
   * Inschakelen en uitschakelen
   * VM opnieuw instellen
 * VM verwijderen

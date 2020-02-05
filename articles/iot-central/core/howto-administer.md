@@ -1,27 +1,27 @@
 ---
-title: Uw Azure IoT Central-toepassing beheren | Microsoft Docs
-description: Als beheerder kunt u uw Azure IoT Central-toepassing beheren door de toepassings naam, URL, afbeelding uploaden, kopiëren en verwijderen van een toepassing te wijzigen
+title: Instellingen van Azure IoT Central-toepassing wijzigen | Microsoft Docs
+description: Als beheerder kunt u uw Azure IoT Central-toepassing beheren door de toepassings naam, URL, afbeelding uploaden en een toepassing te verwijderen
 author: viv-liu
 ms.author: viviali
-ms.date: 08/26/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 89c4dd294cbbf0953545e1055e32adfc5f7cce28
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ae0b4c1675228bfa2083b37a0460ff85c2714f50
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990790"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025789"
 ---
-# <a name="manage-your-iot-central-application"></a>Uw IoT Central-toepassing beheren
+# <a name="change-iot-central-application-settings"></a>IoT Central toepassings instellingen wijzigen
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-In dit artikel wordt beschreven hoe u, als beheerder, de toepassing kunt beheren door de naam en URL van de toepassing te wijzigen, een installatie kopie te uploaden, ook kunt u leren hoe u een toepassing kopieert en verwijdert in uw Azure IoT Central-toepassing.
 
-Voor toegang tot en gebruik van de sectie **beheer** moet u de rol **beheerder** hebben voor een Azure IOT Central-toepassing. Als u een Azure IoT Central-toepassing maakt, wordt u automatisch toegewezen aan **de beheerdersrol** voor die toepassing. 
+In dit artikel wordt beschreven hoe u, als beheerder, de toepassing kunt beheren door de naam en URL van de toepassing te wijzigen, een installatie kopie te uploaden en een toepassing te verwijderen in uw Azure IoT Central-toepassing.
+
+Voor toegang tot en gebruik van de sectie **beheer** moet u de rol **beheerder** hebben voor een Azure IOT Central-toepassing. Als u een Azure IoT Central-toepassing maakt, wordt u automatisch toegewezen aan **de beheerdersrol** voor die toepassing.
 
 ## <a name="change-application-name-and-url"></a>Toepassings naam en-URL wijzigen
 
@@ -29,31 +29,10 @@ Op de pagina **Toepassings instellingen** kunt u de naam en URL van uw toepassin
 
 ![Pagina Toepassings instellingen](media/howto-administer/image0-a.png)
 
-Als uw beheerder een aangepast thema voor uw toepassing maakt, bevat deze pagina een optie om de **toepassings naam** in de gebruikers interface te verbergen. Dit is handig als het toepassings logo in het aangepaste thema de naam van de toepassing bevat. Zie [de Azure IOT Central-gebruikers interface aanpassen](./howto-customize-ui.md)voor meer informatie.
+Als uw beheerder een aangepast thema voor uw toepassing maakt, bevat deze pagina een optie om de **toepassings naam** in de gebruikers interface te verbergen. Deze optie is handig als het toepassings logo in het aangepaste thema de naam van de toepassing bevat. Zie [de Azure IOT Central-gebruikers interface aanpassen](./howto-customize-ui.md)voor meer informatie.
 
 > [!Note]
 > Als u uw URL wijzigt, kan uw oude URL worden overgenomen door een andere Azure IoT Central-klant. Als dat het geval is, kan het niet meer worden gebruikt. Wanneer u uw URL wijzigt, werkt de oude URL niet meer en moet u uw gebruikers op de hoogte stellen van de nieuwe URL die u wilt gebruiken.
-
-## <a name="prepare-and-upload-image"></a>Installatiekopie voorbereiden en uploaden
-
-Zie [installatie kopieën voorbereiden en uploaden naar uw Azure IOT Central-toepassing](howto-prepare-images.md)om de installatie kopie van de toepassing te wijzigen.
-
-## <a name="copy-an-application"></a>Een toepassing kopiëren
-
-U kunt een kopie maken van elke toepassing, min eventuele exemplaren van apparaten, geschiedenis van apparaatgegevens en gebruikers gegevens. De kopie gebruikt een Standard-prijs plan waarvoor u wordt gefactureerd. U kunt op deze manier geen toepassing maken die gebruikmaakt van het gratis prijs plan.
-
-Selecteer **kopiëren**. Voer in het dialoog venster de details in voor de nieuwe toepassing. Selecteer vervolgens **kopiëren** om te bevestigen dat u wilt door gaan. Meer informatie over de velden in dit formulier vindt u in Snelstartgids voor het [maken van een toepassing](quick-deploy-iot-central.md) .
-
-![Pagina Toepassings instellingen](media/howto-administer/appcopy2.png)
-
-Nadat de Kopieer bewerking van de app is voltooid, kunt u naar de nieuwe toepassing navigeren met behulp van de koppeling.
-
-![Pagina Toepassings instellingen](media/howto-administer/appcopy3a.png)
-
-Als u een toepassing kopieert, wordt ook de definitie van regels en e-mail acties gekopieerd. Sommige acties zoals flow, Logic Apps enz. zijn gekoppeld aan specifieke regels via de regel-ID. Wanneer een regel naar een andere toepassing wordt gekopieerd, krijgt deze een eigen regel-ID. In dit geval moeten gebruikers een nieuwe actie maken en vervolgens de nieuwe regel koppelen. Over het algemeen is het een goed idee om de regels en acties te controleren om ervoor te zorgen dat ze up-to-date zijn in de nieuwe app.
-
-> [!WARNING]
-> Als een dash board tegels bevat waarin informatie over specifieke apparaten wordt weer gegeven, worden in die tegels **de aangevraagde bron niet** in de nieuwe toepassing gevonden. U moet deze tegels opnieuw configureren om informatie weer te geven over apparaten in de nieuwe toepassing.
 
 ## <a name="delete-an-application"></a>Een toepassing verwijderen
 
@@ -62,8 +41,7 @@ Gebruik de knop **verwijderen** om uw IOT Central-toepassing permanent te verwij
 > [!Note]
 > Als u een toepassing wilt verwijderen, moet u ook machtigingen hebben om resources te verwijderen in het Azure-abonnement dat u hebt gekozen tijdens het maken van de toepassing. Zie op [rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot uw Azure-abonnements resources](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)voor meer informatie.
 
-
-## <a name="manage-programatically"></a>Programmatisch beheren
+## <a name="manage-programmatically"></a>Programmatisch beheren
 
 IoT Central Azure Resource Manager SDK-pakketten zijn beschikbaar voor knoop punt, C#python,, Ruby, Java en go. U kunt deze pakketten gebruiken om IoT Central-toepassingen te maken, weer te geven, bij te werken of te verwijderen. De pakketten bevatten helpers voor het beheren van verificatie en het afhandelen van fouten.
 
@@ -81,5 +59,5 @@ Voor meer informatie raadpleegt u de volgende GitHub-opslag plaatsen en-pakkette
 | Go | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="next-steps"></a>Volgende stappen
- 
+
 Nu u hebt geleerd hoe u uw Azure IoT Central-toepassing beheert, is de voorgestelde volgende stap meer informatie over het [beheren van gebruikers en rollen](howto-manage-users-roles.md) in azure IOT Central.

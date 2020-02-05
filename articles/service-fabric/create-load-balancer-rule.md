@@ -3,12 +3,12 @@ title: Een Azure Load Balancer-regel voor een cluster maken
 description: Configureer een Azure Load Balancer voor het openen van poorten voor uw Azure Service Fabric-cluster.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 5cc392a74b8cf5ef92be8b5783b5b70289e602af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351487"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025381"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Poorten openen voor een Service Fabric cluster
 
@@ -60,7 +60,7 @@ De Azure CLI-opdracht heeft een aantal para meters die in de volgende tabel word
 
 
 >[!NOTE]
->Zie [een Load Balancer maken met de Azure cli](../load-balancer/load-balancer-get-started-internet-arm-cli.md)voor meer informatie over het maken van een Load Balancer met de Azure cli.
+>Zie [een Load Balancer maken met de Azure cli](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)voor meer informatie over het maken van een Load Balancer met de Azure cli.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -96,7 +96,7 @@ $lb | Set-AzLoadBalancer
 Met betrekking tot de `New-AzLoadBalancerRuleConfig` opdracht, de `-FrontendPort` vertegenwoordigt de poort die door de load balancer wordt weer gegeven voor externe verbindingen, en de `-BackendPort` vertegenwoordigt de poort waarnaar de service Fabric-app luistert.
 
 >[!NOTE]
->Zie [een Load Balancer maken met Power shell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)voor meer informatie over het maken van een Load Balancer met Power shell.
+>Zie [een Load Balancer maken met Power shell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)voor meer informatie over het maken van een Load Balancer met Power shell.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,7 +1,7 @@
 ---
-title: Toegang tot de Azure VMware-oplossing via CloudSimple van on-premises
-titleSuffix: Azure VMware Solution by CloudSimple
-description: Toegang tot uw Azure VMware-oplossing via CloudSimple van uw on-premises netwerk via een firewall
+title: Toegang tot Azure VMware-oplossingen (AVS) vanuit on-premises
+description: Toegang tot uw Azure VMware-oplossingen (AVS) vanaf uw on-premises netwerk via een firewall
+titleSuffix: Azure VMware Solutions (AVS)
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/08/2019
@@ -9,54 +9,54 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 09b25dbdc8fc13c40ccd89b2cfd78611cedaac9d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452413"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024463"
 ---
-# <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Toegang tot uw persoonlijke cloud omgeving en-toepassingen van CloudSimple vanuit on-premises
+# <a name="accessing-your-avs-private-cloud-environment-and-applications-from-on-premises"></a>Toegang tot uw persoonlijke cloud omgeving en-toepassingen van uw AVS vanuit on-premises
 
-Een verbinding kan worden ingesteld vanuit een on-premises netwerk naar CloudSimple met behulp van Azure ExpressRoute of site-naar-site-VPN.  Open uw CloudSimple Private Cloud vCenter en alle workloads die u op de Privécloud uitvoert met behulp van de verbinding.  U kunt bepalen welke poorten op de verbinding worden geopend met behulp van een firewall in uw on-premises netwerk.  In dit artikel worden enkele van de typische poort vereisten voor toepassingen besproken.  Raadpleeg de documentatie van de toepassing voor de poort vereisten voor andere toepassingen.
+Een verbinding kan worden ingesteld vanuit een on-premises netwerk om te AVS met Azure ExpressRoute of site-naar-site-VPN. Toegang krijgen tot uw AVS-privécloud en alle werk belastingen die u uitvoert op de automatische AVS-Cloud met behulp van de verbinding. U kunt bepalen welke poorten op de verbinding worden geopend met behulp van een firewall in uw on-premises netwerk. In dit artikel worden enkele van de typische poort vereisten voor toepassingen besproken. Raadpleeg de documentatie van de toepassing voor de poort vereisten voor andere toepassingen.
 
 ## <a name="ports-required-for-accessing-vcenter"></a>Poorten die nodig zijn voor toegang tot vCenter
 
-Om toegang te krijgen tot uw Privécloud en NSX-T-beheer, moeten de poorten die in de onderstaande tabel zijn gedefinieerd, worden geopend op de on-premises firewall.  
+Om toegang te krijgen tot uw AVS-NSX en-T-beheer, moeten de poorten die in de onderstaande tabel zijn gedefinieerd, worden geopend op de on-premises firewall. 
 
 | Port       | Bron                           | Bestemming                      | Doel                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| 53 (UDP)   | On-premises DNS-servers          | DNS-servers in privécloud        | Vereist voor het door sturen van de DNS-zoek opdracht van *AZ.cloudsimple.io* naar DNS-servers in de privécloud vanuit het on-premises netwerk.       |
-| 53 (UDP)   | DNS-servers in privécloud        | On-premises DNS-servers          | Vereist voor het door sturen van DNS-zoek acties van on-premises domein namen van de Privécloud naar on-premises DNS-servers. |
-| 80 (TCP)   | On-premises netwerk              | Particulier Cloud beheer netwerk | Vereist voor het omleiden van de vCenter *-* URL van http naar *https*.                                                           |
-| 443 (TCP)  | On-premises netwerk              | Particulier Cloud beheer netwerk | Vereist voor toegang tot vCenter en NSX-T-beheer vanuit een on-premises netwerk.                                             |
-| 8000 (TCP) | On-premises netwerk              | Particulier Cloud beheer netwerk | Vereist voor vMotion van virtuele machines van on-premises naar een Privécloud.                                            |
-| 8000 (TCP) | Particulier Cloud beheer netwerk | On-premises netwerk              | Vereist voor vMotion van virtuele machines van de Privécloud naar on-premises.                                            |
+| 53 (UDP)   | On-premises DNS-servers          | DNS-servers voor de Privécloud in de Cloud        | Vereist voor het door sturen van de DNS-zoek opdracht *AZ. AVS.io* van een on-premises netwerk een automatische AVS-DNS-server.     |
+| 53 (UDP)   | DNS-servers voor de Privécloud in de Cloud        | On-premises DNS-servers          | Vereist voor het door sturen van DNS-zoek acties naar on-premises domein namen van AVS Private Cloud vCenter to on-premises DNS-servers. |
+| 80 (TCP)   | On-premises netwerk              | Beheer netwerk voor een privé-cloud van AVS | Vereist voor het omleiden van de vCenter *-* URL van http naar *https*.                                                         |
+| 443 (TCP)  | On-premises netwerk              | Beheer netwerk voor een privé-cloud van AVS | Vereist voor toegang tot vCenter en NSX-T-beheer vanuit een on-premises netwerk.                                           |
+| 8000 (TCP) | On-premises netwerk              | Beheer netwerk voor een privé-cloud van AVS | Vereist voor vMotion van virtuele machines van on-premises tot de AVS-Privécloud.                                          |
+| 8000 (TCP) | Beheer netwerk voor een privé-cloud van AVS | On-premises netwerk              | Vereist voor vMotion van virtuele machines van de Privécloud naar on-premises.                                          |
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>Poorten die vereist zijn voor het gebruik van on-premises Active Directory als een identiteits bron
 
-Als u een on-premises Active Directory als een identiteits bron wilt configureren op een Privécloud-vCenter, moeten de poorten die in de tabel zijn gedefinieerd, worden geopend.  Zie [Azure AD gebruiken als een id-provider voor vCenter op CloudSimple Private Cloud](https://docs.azure.cloudsimple.com/azure-ad/) voor configuratie stappen.
+Voor het configureren van een on-premises Active Directory als een identiteits bron op de AVS-Privécloud, moeten de poorten die in de tabel zijn gedefinieerd, worden geopend. Zie [Azure AD gebruiken als een id-provider voor vCenter in de privécloud](https://docs.azure.cloudsimple.com/azure-ad/) AVS voor configuratie stappen.
 
 | Port         | Bron                           | Bestemming                                         | Doel                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| 53 (UDP)      | DNS-servers in privécloud        | On-premises DNS-servers                             | Vereist voor het door sturen van DNS-zoek acties van on-premises Active Directory-domein namen van Privécloud naar on-premises DNS-servers.          |
-| 389 (TCP/UDP) | Particulier Cloud beheer netwerk | On-premises Active Directory-domein controllers     | Vereist voor LDAP-communicatie van particuliere cloud vCenter-Server naar Active Directory-domein controllers voor gebruikers verificatie.                |
-| 636 (TCP)     | Particulier Cloud beheer netwerk | On-premises Active Directory-domein controllers     | Vereist voor secure LDAP-communicatie (LDAPS) van de Privécloud-server naar Active Directory-domein controllers voor gebruikers verificatie. |
-| 3268 (TCP)    | Particulier Cloud beheer netwerk | On-premises Active Directory Global Catalog-servers | Vereist voor LDAP-communicatie in een implementatie van meerdere domein controllers.                                                                        |
-| 3269 (TCP)    | Particulier Cloud beheer netwerk | On-premises Active Directory Global Catalog-servers | Vereist voor LDAPS-communicatie in een implementatie van meerdere domein controllers.                                                                       |                                           |
+| 53 (UDP)      | DNS-servers voor de Privécloud in de Cloud        | On-premises DNS-servers                             | Vereist voor het door sturen van DNS-zoek acties van on-premises Active Directory-domein namen van AVS Private Cloud vCenter naar on-premises DNS-servers.        |
+| 389 (TCP/UDP) | Beheer netwerk voor een privé-cloud van AVS | On-premises Active Directory-domein controllers     | Vereist voor LDAP-communicatie van AVS Private Cloud vCenter Server naar Active Directory-domein controllers voor gebruikers verificatie.              |
+| 636 (TCP)     | Beheer netwerk voor een privé-cloud van AVS | On-premises Active Directory-domein controllers     | Vereist voor secure LDAP-communicatie (LDAPS) van AVS Private Cloud vCenter Server naar Active Directory-domein controllers voor gebruikers verificatie. |
+| 3268 (TCP)    | Beheer netwerk voor een privé-cloud van AVS | On-premises Active Directory Global Catalog-servers | Vereist voor LDAP-communicatie in een implementatie van meerdere domein controllers.                                                                      |
+| 3269 (TCP)    | Beheer netwerk voor een privé-cloud van AVS | On-premises Active Directory Global Catalog-servers | Vereist voor LDAPS-communicatie in een implementatie van meerdere domein controllers.                                                                     |                                           |
 
 ## <a name="common-ports-required-for-accessing-workload-virtual-machines"></a>Algemene poorten die vereist zijn voor toegang tot virtuele workload-machines
 
-Voor toegang tot virtuele machines van de werk belasting die worden uitgevoerd op een Privécloud, moeten poorten worden geopend op uw on-premises firewall.  In de onderstaande tabel ziet u een aantal algemene poorten die vereist zijn en hun doel.  Raadpleeg de documentatie van de toepassing voor alle toepassingsspecifieke poort vereisten.
+Voor toegang tot virtuele machines van workload die worden uitgevoerd op de AVS-Privécloud, moeten poorten worden geopend op de on-premises firewall. In de onderstaande tabel ziet u een aantal algemene poorten die vereist zijn en hun doel. Raadpleeg de documentatie van de toepassing voor alle toepassingsspecifieke poort vereisten.
 
 | Port         | Bron                         | Bestemming                          | Doel                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
-| 22 (TCP)      | On-premises netwerk            | Werkbelasting netwerk voor de privécloud       | Beveiligde shell toegang tot virtuele Linux-machines die worden uitgevoerd op een Privécloud.              |
-| 3389 (TCP)    | On-premises netwerk            | Werkbelasting netwerk voor de privécloud       | Extern bureau blad naar virtuele Windows-machines die worden uitgevoerd op een Privécloud.                 |
-| 80 (TCP)      | On-premises netwerk            | Werkbelasting netwerk voor de privécloud       | Toegang tot alle webservers die zijn geïmplementeerd op virtuele machines die worden uitgevoerd op een Privécloud.        |
-| 443 (TCP)     | On-premises netwerk            | Werkbelasting netwerk voor de privécloud       | Toegang krijgen tot beveiligde webservers die zijn geïmplementeerd op virtuele machines die worden uitgevoerd op een Privécloud. |
-| 389 (TCP/UDP) | Werkbelasting netwerk voor de privécloud | On-premises Active Directory-netwerk | Virtuele Windows-werk belasting machines toevoegen aan een on-premises Active Directory-domein.       |
-| 53 (UDP)      | Werkbelasting netwerk voor de privécloud | On-premises netwerk                  | Toegang tot de DNS-service voor virtuele werkbelasting machines naar on-premises DNS-servers.         |
+| 22 (TCP)      | On-premises netwerk            | Het werkbelasting netwerk van de AVS-Cloud       | Beveiligde shell toegang tot virtuele Linux-machines die worden uitgevoerd op de cloud van de AVS.            |
+| 3389 (TCP)    | On-premises netwerk            | Het werkbelasting netwerk van de AVS-Cloud       | Extern bureau blad naar virtuele Windows-machines die worden uitgevoerd op de cloud van de AVS.               |
+| 80 (TCP)      | On-premises netwerk            | Het werkbelasting netwerk van de AVS-Cloud       | U hebt toegang tot alle webservers die zijn geïmplementeerd op virtuele machines waarop de Privécloud wordt uitgevoerd.      |
+| 443 (TCP)     | On-premises netwerk            | Het werkbelasting netwerk van de AVS-Cloud       | Toegang krijgen tot beveiligde webservers die zijn geïmplementeerd op virtuele machines waarop de Privécloud wordt uitgevoerd. |
+| 389 (TCP/UDP) | Het werkbelasting netwerk van de AVS-Cloud | On-premises Active Directory-netwerk | Virtuele Windows-werk belasting machines toevoegen aan een on-premises Active Directory-domein.     |
+| 53 (UDP)      | Het werkbelasting netwerk van de AVS-Cloud | On-premises netwerk                  | Toegang tot de DNS-service voor virtuele werkbelasting machines naar on-premises DNS-servers.       |
 
 ## <a name="next-steps"></a>Volgende stappen
 

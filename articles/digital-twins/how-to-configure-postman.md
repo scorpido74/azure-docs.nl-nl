@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/03/2020
+ms.openlocfilehash: 377639d7a88478308709743ab842db71028686ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765403"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023307"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postman configureren voor Azure Digital Apparaatdubbels
 
@@ -33,45 +33,15 @@ Met de Postman-client kunnen ontwikkel aars van oplossingen het type HTTP-aanvra
 
 ## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>Azure Active Directory configureren voor het gebruik van de OAuth 2,0 impliciete toekennings stroom
 
-Configureer uw Azure Active Directory-app om de OAuth 2,0 impliciet-toekennings stroom te gebruiken.
-
-1. Open het deel venster **API-machtigingen** voor de registratie van uw app. Selecteer **een machtigings knop toevoegen** . Selecteer in het deel venster **API-machtigingen voor aanvragen** de api's die **Mijn organisatie gebruikt** tabblad en zoek naar:
-    
-    1. `Azure Digital Twins`. Selecteer de **Azure Digital apparaatdubbels** -API.
-
-        [![Search-API of Azure Digital Apparaatdubbels](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
-
-    1. U kunt ook zoeken naar `Azure Smart Spaces Service`. Selecteer de **Azure Smart Spaces-service** -API.
-
-        [![Search-API voor Azure Smart Spaces](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
-
-    > [!IMPORTANT]
-    > De naam en ID van de Azure AD-API die wordt weer gegeven, is afhankelijk van uw Tenant:
-    > * Test Tenant-en klant accounts moeten zoeken naar `Azure Digital Twins`.
-    > * Andere micro soft-accounts moeten zoeken naar `Azure Smart Spaces Service`.
-
-1. De geselecteerde API wordt weer gegeven als **Azure Digital apparaatdubbels** in het deel venster **API-machtigingen voor aanvragen** . Selecteer de vervolg keuzelijst **lezen (1)** en selecteer vervolgens **lezen. Schrijf** selectie vakje. Selecteer de knop **machtigingen toevoegen** .
-
-    [API-machtigingen voor Azure Digital Apparaatdubbels ![toevoegen](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
-
-1. Afhankelijk van de instellingen van uw organisatie moet u mogelijk extra stappen uitvoeren om beheerders toegang tot deze API te verlenen. Neem contact op met de beheerder voor meer informatie. Zodra de beheerders toegang is goedgekeurd, wordt de kolom **beheerder toestemming vereist** in het deel venster **API-machtigingen** weer gegeven, zoals in het volgende voor uw api's:
-
-    [goed keuring van beheerders toestemming ![configureren](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
-
-1. Configureer een tweede **omleidings-URI** naar `https://www.getpostman.com/oauth2/callback`.
+1. Volg de stappen in [de Quick](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) start om een Azure Active Directory-toepassing te maken en te configureren. U kunt ook een bestaande app-registratie hergebruiken.
 
     [![een nieuwe postman omleidings-URI configureren](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-1. Als u er zeker van wilt zijn dat [de app is geregistreerd als een **open bare client**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), opent u het deel venster **verificatie** voor uw app-registratie en schuift u omlaag in het deel venster. Kies in het gedeelte **standaard client type** de optie **Ja** voor **behandelen van toepassing als een open bare client**en druk op **Opslaan**.
+1. Voeg nu een **omleidings-URI** toe aan `https://www.getpostman.com/oauth2/callback`.
 
-    Controleer **toegangs tokens** om de instelling **Oauth2AllowImplicitFlow** in uw manifest. json in te scha kelen.
+1. Schakel het selectie vakje impliciete **toegangs tokens** voor **granting** > in om toe te staan dat de OAuth 2,0 impliciete toekennings stroom moet worden gebruikt. Selecteer **configureren**en vervolgens **Opslaan**.
 
-    [configuratie-instelling ![open bare client](../../includes/media/digital-twins-permissions/aad-configure-public-client.png)](../../includes/media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
-
-1. Kopieer de **toepassings-id** van uw Azure Active Directory-app en bewaar deze. Dit wordt gebruikt in de volgende stappen.
-
-   [Azure Active Directory toepassings-ID ![](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
-
+1. Kopieer de **client-id** van uw Azure Active Directory-app.
 
 ## <a name="obtain-an-oauth-20-token"></a>Een OAuth 2,0-token verkrijgen
 
@@ -91,15 +61,13 @@ Postman instellen en configureren om een Azure Active Directory token te verkrij
 
 1. Ga naar [www.getpostman.com](https://www.getpostman.com/) om de app te downloaden.
 
-1. Open de Postman-app en klik op New | Create new en selecteer Request. Voer de naam van een aanvraag in. Selecteer een verzameling of map om deze op te slaan en klik op opslaan. 
-
 1. We willen een GET-aanvraag maken. Selecteer het tabblad **autorisatie** , selecteer OAuth 2,0 en selecteer vervolgens **nieuw toegangs Token ophalen**.
 
     | Veld  | Waarde |
     |---------|---------|
     | Toekennings type | `Implicit` |
     | URL voor terugbellen | `https://www.getpostman.com/oauth2/callback` |
-    | Verificatie-URL | Gebruik de **autorisatie-URL** uit **stap 2** |
+    | Verificatie-URL | Gebruik de **autorisatie-URL** uit **stap 1** |
     | Client-id | Gebruik de **toepassings-id** voor de app Azure Active Directory die is gemaakt of opnieuw is gebruikt in de vorige sectie |
     | Scope | Leeg laten |
     | Staat | Leeg laten |

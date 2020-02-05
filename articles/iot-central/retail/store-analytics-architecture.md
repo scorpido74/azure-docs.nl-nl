@@ -9,18 +9,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 728c5dcbf94e030e860a222add6498824c66930d
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615404"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022117"
 ---
 # <a name="in-store-analytics-architecture"></a>Architectuur van de in-Store-analyses
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-In-Store Analytics-oplossingen kunt u verschillende voor waarden in de Retail Store-omgeving bewaken. Deze oplossingen kunnen worden gebouwd door gebruik te maken van een van de toepassings sjablonen in IoT Central en de architectuur hieronder als richt lijn.
+
+In-Store Analytics-oplossingen kunt u verschillende voor waarden in de Retail Store-omgeving bewaken. Deze oplossingen kunnen worden gemaakt met behulp van een van de toepassings sjablonen in IoT Central en de architectuur hieronder als richt lijn.
 
 
 ![Azure IoT Central Store-analyses](./media/architecture/store-analytics-architecture-frame.png)
@@ -35,7 +35,7 @@ Laten we eens kijken naar belang rijke onderdelen die doorgaans een deel spelen 
 
 ## <a name="condition-monitoring-sensors"></a>Sens oren voor voorwaarde bewaking
 
-Een IoT-oplossing begint met een set Sens oren die zinvolle signalen in een Retail Store-omgeving vastleggen. Het wordt weer gegeven door een aantal Sens oren helemaal links in het architectuur diagram hierboven.
+Een IoT-oplossing begint met een set Sens oren die zinvolle signalen in een Retail Store-omgeving vastleggen. Het wordt weer gegeven door verschillende Sens oren helemaal links in het architectuur diagram hierboven.
 
 ## <a name="gateway-devices"></a>Gateway-apparaten
 
@@ -43,7 +43,7 @@ Veel IoT Sens oren kunnen onbewerkte signalen rechtstreeks in de Cloud of op een
 
 ## <a name="iot-central-application"></a>IoT Central toepassing
 
-Met de Azure IoT Central-toepassing worden gegevens uit verschillende IoT-Sens oren opgenomen als gateway apparaten in de Retail Store-omgeving en wordt er een set zinvolle inzichten gegenereerd.
+De Azure IoT Central-toepassing neemt gegevens uit verschillende soorten IoT-Sens oren op als gateway apparaten in de Retail Store-omgeving en genereert een set zinvolle inzichten.
 
 Azure IoT Central biedt ook een aangepaste ervaring met de opslag operator, zodat deze de infrastructuur apparaten op afstand kunnen bewaken en beheren.
 
@@ -51,8 +51,8 @@ Azure IoT Central biedt ook een aangepaste ervaring met de opslag operator, zoda
 De Azure IoT Central-toepassing binnen een oplossing kan worden geconfigureerd voor het exporteren van RAW of geaggregeerde inzichten naar een set Azure PaaS (platform-as-a-Service) waarmee gegevens kunnen worden gemanipuleerd en die inzichten kan worden verrijkd voordat ze in een bedrijf worden geaanvoer modules. 
 
 ## <a name="business-application"></a>Zakelijke toepassing
-De IoT-gegevens kunnen worden gebruikt om diverse zakelijke toepassingen die in een bedrijfs omgeving worden geïmplementeerd, uit te scha kelen. Een winkel manager of een personeelslid kan gebruikmaken van deze toepassingen om zakelijke inzichten te visualiseren en in real-time zinvolle acties uit te voeren. Volg de [zelf studie](./tutorial-in-store-analytics-create-app-pnp.md)als u wilt weten hoe u een real-time Power bi dash board kunt maken voor uw Retail team.
+De IoT-gegevens kunnen worden gebruikt om verschillende soorten zakelijke toepassingen uit te scha kelen die in een bedrijfs omgeving worden geïmplementeerd. Een winkel manager of een personeelslid kan deze toepassingen gebruiken om zakelijke inzichten te visualiseren en in real-time zinvolle acties uit te voeren. Volg de [zelf studie](./tutorial-in-store-analytics-create-app-pnp.md)als u wilt weten hoe u een real-time Power bi dash board kunt maken voor uw Retail team.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Ga aan de slag met de [Uitchecken in-Store Analytics](https://aka.ms/checkouttemplate) en [in-Store Analytics-voor waarde bewaking](https://aka.ms/conditiontemplate) toepassings sjablonen. 
-* Bekijk de [end-to-end-zelf studie](https://aka.ms/storeanalytics-tutorial) waarin wordt uitgelegd hoe u een oplossing kunt bouwen met een van de in-Store Analytics-toepassings sjablonen.
+* Bekijk de [end-to-end-zelf studie](https://aka.ms/storeanalytics-tutorial) waarin wordt uitgelegd hoe u een oplossing bouwt met behulp van een van de in-Store Analytics-toepassings sjablonen.

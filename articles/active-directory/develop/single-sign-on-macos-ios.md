@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2019
+ms.date: 02/03/2020
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: ecc55c0d41f552d2c29fe5c964a7c40ab9e382ba
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bfc656911abf3349e03543e6bb668db977422738
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701379"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022627"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Procedure: SSO configureren in macOS en iOS
 
@@ -71,7 +71,9 @@ Voor het micro soft Identity-platform om te weten welke toepassingen tokens kunn
 
 De manier waarop het micro soft Identity-platform voor apps die gebruikmaken van dezelfde toepassings-ID, wordt door de **omleidings-uri's**verteld. Voor elke toepassing kunnen meerdere omleidings-Uri's zijn geregistreerd in de onboarding-Portal. Elke app in uw suite krijgt een andere omleidings-URI. Bijvoorbeeld:
 
-App1 omleidings-URI: `msauth.com.contoso.mytestapp1://auth` App2 omleidings-URI: `msauth.com.contoso.mytestapp2://auth` App3 omleidings-URI: `msauth.com.contoso.mytestapp3://auth`
+App1 omleidings-URI: `msauth.com.contoso.mytestapp1://auth`  
+App2 omleidings-URI: `msauth.com.contoso.mytestapp2://auth`  
+App3 omleidings-URI: `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
 > De indeling van omleidings-uri's moet compatibel zijn met de indeling MSAL ondersteunt, die wordt beschreven in de [vereisten voor MSAL omleidings-URI-indeling](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
@@ -96,6 +98,18 @@ Wanneer u de rechten op de juiste manier hebt ingesteld, ziet u een `entitlement
 </plist>
 ```
 
+#### <a name="add-a-new-keychain-group"></a>Een nieuwe sleutel keten groep toevoegen
+
+Voeg een nieuwe sleutel keten groep toe aan de project **mogelijkheden**. De sleutel keten groep moet:
+* `com.microsoft.adalcache` op iOS 
+* `com.microsoft.identity.universalstorage` in macOS.
+
+![voor beeld van sleutel hanger](media/single-sign-on-macos-ios/keychain-example.png)
+
+Zie [sleutel hanger groepen](howto-v2-keychain-objc.md)voor meer informatie.
+
+## <a name="configure-the-application-object"></a>Het toepassings object configureren
+
 Zodra u de sleutel hanger hebt ingeschakeld in elk van uw toepassingen en u klaar bent om SSO te gebruiken, moet u `MSALPublicClientApplication` configureren met de toegangs groep voor de sleutel hanger, zoals in het volgende voor beeld:
 
 Doel-C:
@@ -113,16 +127,14 @@ Swift
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
 config.cacheConfig.keychainSharingGroup = "my.keychain.group"
-        
+
 do {
-    let application = try MSALPublicClientApplication(configuration: config)
-  // continue on with application          
+   let application = try MSALPublicClientApplication(configuration: config)
+  // continue on with application
 } catch let error as NSError {
   // handle error here
-}       
+}
 ```
-
-
 
 > [!WARNING]
 > Wanneer u een sleutel hanger in uw toepassingen deelt, kan elke toepassing gebruikers of zelfs alle tokens in uw toepassing verwijderen.
@@ -206,7 +218,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
 ```
-    
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over [verificatie stromen en toepassings scenario's](authentication-flows-app-scenarios.md)

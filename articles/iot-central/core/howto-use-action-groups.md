@@ -4,22 +4,20 @@ description: Meerdere acties uitvoeren vanuit één IoT Central regel en herbrui
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: 1992b8925d5d9ba59c36452187f5b6eb510e72dc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7c60728ab501d03e9c40928e730225575e76efbc
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990807"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023817"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Meerdere acties groeperen om uit te voeren vanuit een of meer regels
 
 *Dit artikel is van toepassing op bouwers en beheerders.*
-
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
 In azure IoT Central maakt u regels om acties uit te voeren wanneer aan een voor waarde wordt voldaan. Regels zijn gebaseerd op telemetrie van apparaten of gebeurtenissen. U kunt bijvoorbeeld een operator waarschuwen wanneer de Tempe ratuur van een apparaat een drempel waarde overschrijdt. In dit artikel wordt beschreven hoe u [Azure monitor](../../azure-monitor/overview.md) *actie groepen* kunt gebruiken om meerdere acties aan een IOT Central regel te koppelen. U kunt een actie groep koppelen aan meerdere regels. Een [actie groep](../../azure-monitor/platform/action-groups.md) is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement.
 
@@ -45,7 +43,7 @@ Als u een actie groep wilt gebruiken in een IoT Central regel, moet de actie gro
 
 ## <a name="use-an-action-group"></a>Een actie groep gebruiken
 
-Als u een actie groep wilt gebruiken in uw IoT Central-toepassing, maakt u eerst een telemetrie of een regel voor een gebeurtenis. Wanneer u een actie aan de regel toevoegt, selecteert u **Azure monitor actie groepen**:
+Als u een actie groep wilt gebruiken in uw IoT Central-toepassing, maakt u eerst een regel. Wanneer u een actie aan de regel toevoegt, selecteert u **Azure monitor actie groepen**:
 
 ![Actie kiezen](media/howto-use-action-groups/chooseaction.png)
 
@@ -64,52 +62,11 @@ De volgende tabel bevat een overzicht van de informatie die wordt verzonden naar
 | E-mail       | E-mail sjabloon standaard IoT Central |
 | Sms         | Azure IoT Central-waarschuwing: $ {ApplicationName}-"$ {ruleNaam} ' geactiveerd op ' $ {DeviceName} ' op $ {triggerDate} $ {triggerTime} |
 | Spraak       | Azure I. O. T Central alert: regel "$ {DeviceName}" geactiveerd op apparaat "$ {apparaatnaam}" op $ {triggerDate} $ {triggerTime}, in toepassing $ {ApplicationName} |
-| Webhook     | {"schemaId": "AzureIoTCentralRuleWebhook", "gegevens": {[normale webhook Payload](#payload)}} |
+| Webhook     | {"schemaId": "AzureIoTCentralRuleWebhook", "gegevens": {[normale webhook Payload](howto-create-webhooks.md#payload)}} |
 
 De volgende tekst is een voor beeld van een SMS-bericht van een actie groep:
 
-`iotcentral: Azure IoT Central alert: Sample Contoso 22xu4spxjve - "Low pressure alert" triggered on "Refrigerator 2" at March 20, 2019 10:12 UTC`
-
-<a id="payload"></a>In de volgende JSON ziet u een voor beeld van een webhook-actie Payload:
-
-```json
-{
-  "schemaId":"AzureIoTCentralRuleWebhook",
-  "data":{
-    "id":"97ae27c4-17c5-4e13-9248-65c7a2c57a1b",
-    "timestamp":"2019-03-20T10:53:17.059Z",
-    "rule":{
-      "id":"031b660e-528d-47bb-b33d-f1158d7e31bf",
-      "name":"Low pressure alert",
-      "enabled":true,
-      "deviceTemplate":{
-        "id":"c318d580-39fc-4aca-b995-843719821049",
-        "version":"1.0.0"
-      }
-    },
-    "device":{
-      "id":"2383d8ba-c98c-403a-b4d5-8963859643bb",
-      "name":"Refrigerator 2",
-      "simulated":true,
-      "deviceId":"2383d8ba-c98c-403a-b4d5-8963859643bb",
-      "deviceTemplate":{
-        "id":"c318d580-39fc-4aca-b995-843719821049",
-        "version":"1.0.0"
-      },
-      "measurements":{
-        "telemetry":{
-           "pressure":343.269190673549
-        }
-      }
-    },
-    "application":{
-      "id":"8e70742b-0d5c-4a1d-84f1-4dfd42e61c7b",
-      "name":"Sample Contoso",
-      "subdomain":"sample-contoso"
-    }
-  }
-}
-```
+`iotcentral: Azure IoT Central alert: Contoso - "Low pressure alert" triggered on "Motion sensor 2" at March 20, 2019 10:12 UTC`
 
 ## <a name="next-steps"></a>Volgende stappen
 

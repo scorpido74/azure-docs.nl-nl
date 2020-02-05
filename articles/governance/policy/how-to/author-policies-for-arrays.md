@@ -3,12 +3,12 @@ title: Beleid voor het schrijven van matrix eigenschappen voor bronnen
 description: Meer informatie over het werken met matrix parameters en matrix-taal expressies, de alias [*] evalueren en elementen toevoegen met Azure Policy definitie regels.
 ms.date: 11/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 915f50945e0c2520fbda09c4db1b581c9381073b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 462d9acbda37bbbd007af6d6d1267e9b0e7d3e0a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873094"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023188"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Beleid voor het schrijven van matrix eigenschappen op Azure-resources
 
@@ -140,7 +140,8 @@ Het verwachte **type** voor waarde `equals` is _teken reeks_. Omdat **allowedLoc
 
 ### <a name="evaluating-the--alias"></a>De alias [*] evalueren
 
-Aliassen waaraan **\[\*\]** zijn gekoppeld aan hun naam, geven aan dat het **type** een _matrix_is. In plaats van de waarde van de volledige matrix te evalueren, is **\[\*\]** het mogelijk om elk element van de matrix te evalueren. Er zijn drie standaard scenario's waarin de evaluatie per item nuttig is: geen, alle en alle. Voor complexe scenario's gebruikt u [Count](../concepts/definition-structure.md#count).
+Aliassen waaraan **\[\*\]** zijn gekoppeld aan hun naam, geven aan dat het **type** een _matrix_is. In plaats van de waarde van de volledige matrix te evalueren, is **\[\*\]** het mogelijk om elk element van de matrix afzonderlijk te evalueren, met logische en daartussen. Er zijn drie standaard scenario's waarin de evaluatie per item kan worden gebruikt: _geen_, _any_of _alle_ elementen komen niet overeen.
+Voor complexe scenario's gebruikt u [Count](../concepts/definition-structure.md#count).
 
 De beleids engine activeert alleen het **effect** in **then** wanneer de **if** -regel als waar evalueert.
 Dit is belang rijk om te begrijpen in context van de manier waarop **\[\*\]** elk afzonderlijk element van de matrix evalueert.
@@ -183,16 +184,16 @@ Voor elk voor beeld hieronder, vervangt u `<field>` door `"field": "Microsoft.St
 
 De volgende resultaten zijn het resultaat van de combi natie van de voor waarde en de beleids regel voor het voor beeld en de matrix van bestaande waarden hierboven:
 
-|Voorwaarde |Resultaat |Uitleg |
-|-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Niets |Eén matrix element evalueert als onwaar (127.0.0.1! = 127.0.0.1) en een als waar (127.0.0.1! = 192.168.1.1), zodat de **notEquals** -voor waarde _False_ is en het effect niet wordt geactiveerd. |
-|`{<field>,"notEquals":"10.0.4.1"}` |Beleids effect |Beide matrix elementen evalueren als True (10.0.4.1! = 127.0.0.1 en 10.0.4.1! = 192.168.1.1), dus de **notEquals** -voor waarde is _True_ en het effect wordt geactiveerd. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |Beleids effect |Eén matrix element evalueert als True (127.0.0.1 = = 127.0.0.1) en een als onwaar (127.0.0.1 = = 192.168.1.1), dus is de waarde **equals** _False_. De logische operator evalueert als True (**niet** _waar_), zodat het effect wordt geactiveerd. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |Beleids effect |Beide matrix elementen evalueren als onwaar (10.0.4.1 = = 127.0.0.1 en 10.0.4.1 =/192.168.1.1), zodat de waarde **equals is ingesteld** op _False_. De logische operator evalueert als True (**niet** _waar_), zodat het effect wordt geactiveerd. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |Beleids effect |Eén matrix element evalueert als onwaar (127.0.0.1! = 127.0.0.1) en een als waar (127.0.0.1! = 192.168.1.1), zodat de **notEquals** -voor waarde _False_is. De logische operator evalueert als True (**niet** _waar_), zodat het effect wordt geactiveerd. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Niets |Beide matrix elementen evalueren als True (10.0.4.1! = 127.0.0.1 en 10.0.4.1! = 192.168.1.1), dus de **notEquals** -voor waarde is _True_. De logische operator evalueert als onwaar (**niet** _waar_), dus het effect wordt niet geactiveerd. |
-|`{<field>,"Equals":"127.0.0.1"}` |Niets |Eén matrix element evalueert als True (127.0.0.1 = = 127.0.0.1) en een als onwaar (127.0.0.1 = = 192.168.1.1), dus is de waarde **equals** _False_ en wordt het effect niet geactiveerd. |
-|`{<field>,"Equals":"10.0.4.1"}` |Niets |Beide matrix elementen evalueren als False (10.0.4.1 = = 127.0.0.1 en 10.0.4.1 = 192.168.1.1), dus de voor waarde **equals** is _False_ en het effect wordt niet geactiveerd. |
+|Voorwaarde |Resultaat | Scenario |Uitleg |
+|-|-|-|-|
+|`{<field>,"notEquals":"127.0.0.1"}` |Nul |Geen overeenkomst |Eén matrix element evalueert als onwaar (127.0.0.1! = 127.0.0.1) en een als waar (127.0.0.1! = 192.168.1.1), zodat de **notEquals** -voor waarde _False_ is en het effect niet wordt geactiveerd. |
+|`{<field>,"notEquals":"10.0.4.1"}` |Beleids effect |Geen overeenkomst |Beide matrix elementen evalueren als True (10.0.4.1! = 127.0.0.1 en 10.0.4.1! = 192.168.1.1), dus de **notEquals** -voor waarde is _True_ en het effect wordt geactiveerd. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |Beleids effect |Een of meer overeenkomsten |Eén matrix element evalueert als onwaar (127.0.0.1! = 127.0.0.1) en een als waar (127.0.0.1! = 192.168.1.1), zodat de **notEquals** -voor waarde _False_is. De logische operator evalueert als True (**niet** _waar_), zodat het effect wordt geactiveerd. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nul |Een of meer overeenkomsten |Beide matrix elementen evalueren als True (10.0.4.1! = 127.0.0.1 en 10.0.4.1! = 192.168.1.1), dus de **notEquals** -voor waarde is _True_. De logische operator evalueert als onwaar (**niet** _waar_), dus het effect wordt niet geactiveerd. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |Beleids effect |Niet alle overeenkomsten |Eén matrix element evalueert als True (127.0.0.1 = = 127.0.0.1) en een als onwaar (127.0.0.1 = = 192.168.1.1), dus is de waarde **equals** _False_. De logische operator evalueert als True (**niet** _waar_), zodat het effect wordt geactiveerd. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |Beleids effect |Niet alle overeenkomsten |Beide matrix elementen evalueren als onwaar (10.0.4.1 = = 127.0.0.1 en 10.0.4.1 =/192.168.1.1), zodat de waarde **equals is ingesteld** op _False_. De logische operator evalueert als True (**niet** _waar_), zodat het effect wordt geactiveerd. |
+|`{<field>,"Equals":"127.0.0.1"}` |Nul |Alle overeenkomsten |Eén matrix element evalueert als True (127.0.0.1 = = 127.0.0.1) en een als onwaar (127.0.0.1 = = 192.168.1.1), dus is de waarde **equals** _False_ en wordt het effect niet geactiveerd. |
+|`{<field>,"Equals":"10.0.4.1"}` |Nul |Alle overeenkomsten |Beide matrix elementen evalueren als False (10.0.4.1 = = 127.0.0.1 en 10.0.4.1 = 192.168.1.1), dus de voor waarde **equals** is _False_ en het effect wordt niet geactiveerd. |
 
 ## <a name="the-append-effect-and-arrays"></a>Het toevoeg effect en de arrays
 

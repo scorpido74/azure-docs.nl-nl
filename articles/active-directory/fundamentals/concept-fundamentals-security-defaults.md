@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fbb6170aa54c286a5a2d8353c1dd951859fdf8a0
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978890"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024582"
 ---
 # <a name="what-are-security-defaults"></a>Wat zijn de standaard beveiligings instellingen?
 
@@ -95,6 +95,8 @@ Nadat u de standaard instellingen voor beveiliging in uw Tenant hebt ingeschakel
 
 Als de gebruiker niet is geregistreerd voor Multi-Factor Authentication, moet de gebruiker zich registreren met behulp van de Microsoft Authenticator-app om door te gaan. Er wordt geen Multi-Factor Authentication registratie periode van 14 dagen gegeven.
 
+De pre-2017 Exchange Online-tenants hebben moderne verificatie standaard uitgeschakeld. Om te voor komen dat een aanmeldings proces tijdens het verifiëren via deze tenants mogelijk is, moet u [moderne verificatie inschakelen](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+
 > [!NOTE]
 > Het Azure AD Connect synchronisatie account wordt uitgesloten van de standaard instellingen voor beveiliging en wordt niet gevraagd om u te registreren voor of om multi-factor Authentication uit te voeren. Organisaties mogen dit account niet voor andere doel einden gebruiken.
 
@@ -109,8 +111,8 @@ Met de standaard instellingen voor beveiliging kunt u de registratie en het gebr
 |   | Standaardinstellingen voor de beveiliging | Voorwaardelijke toegang |
 | --- | --- | --- |
 | Melding via mobiele app | X | X |
-| Verificatiecode van mobiele app of hardwaretoken |   | X |
-| Sms-bericht naar telefoon |   | X |
+| Verificatie code van de mobiele app of het hardware-token |   | X |
+| SMS-bericht naar telefoon |   | X |
 | Bellen naar telefoon |   | X |
 | App-wachtwoorden |   | X * * |
 

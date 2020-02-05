@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9633975f53b3e398537067b17a870f621d9a7435
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045063"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025704"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Een standaard SKU-load balancer gebruiken in azure Kubernetes service (AKS)
 
@@ -26,7 +26,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.74 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.81 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -162,9 +162,14 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-## <a name="show-the-outbound-rule-for-your-load-balancer"></a>De uitgaande regel voor uw load balancer weer geven
+## <a name="configure-outbound-ports-and-idle-timeout"></a>Uitgaande poorten en time-out voor inactiviteit configureren
 
-Als u de uitgaande regel die in de load balancer is gemaakt wilt weer geven, gebruikt u [AZ Network lb outbound-Rule List][az-network-lb-outbound-rule-list] en geeft u de resource groep van het knoop punt van uw AKS-cluster op:
+> [!WARNING]
+> De volgende sectie is bedoeld voor geavanceerde scenario's van grotere netwerken of voor het adresseren van SNAT-uitputting met de standaard configuraties. U moet een nauw keurige inventaris van het beschik bare quotum voor Vm's en IP-adressen hebben voordat u *AllocatedOutboundPorts* of *IdleTimeoutInMinutes* van de standaard waarde wijzigt om gezonde clusters te kunnen onderhouden.
+> 
+> Het wijzigen van de waarden voor *AllocatedOutboundPorts* en *IdleTimeoutInMinutes* kan het gedrag van de uitgaande regel voor uw Load Balancer aanzienlijk aanpassen. Bekijk de [Load Balancer uitgaande regels][azure-lb-outbound-rules-overview], [Uitgaande regels voor Load Balancer][azure-lb-outbound-rules]en [uitgaande verbindingen in azure][azure-lb-outbound-connections] voordat u deze waarden bijwerkt om de impact van uw wijzigingen volledig te begrijpen.
+
+Uitgaande toegewezen poorten en de time-outs voor inactiviteit worden gebruikt voor [SNAT][azure-lb-outbound-connections]. Standaard gebruikt de *standaard* -SKU Load Balancer [automatische toewijzing voor het aantal uitgaande poorten op basis van de back-endadresgroep][azure-lb-outbound-preallocatedports] en een time-out van 30 minuten voor elke poort. Als u deze waarden wilt zien, gebruikt u [AZ Network lb outbound-Rule List][az-network-lb-outbound-rule-list] om de uitgaande regel voor de Load Balancer weer te geven:
 
 ```azurecli-interactive
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
@@ -179,7 +184,46 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-In de voorbeeld uitvoer is *AllocatedOutboundPorts* 0. De waarde voor *AllocatedOutboundPorts* betekent dat de toewijzing van de SNAT-poort terugkeert naar automatische toewijzing op basis van de grootte van de back-endserver. Zie [Load Balancer uitgaande regels][azure-lb-outbound-rules] en [uitgaande verbindingen in azure][azure-lb-outbound-connections] voor meer informatie.
+In de voorbeeld uitvoer ziet u de standaard waarde voor *AllocatedOutboundPorts* en *IdleTimeoutInMinutes*. Een waarde van 0 voor *AllocatedOutboundPorts* stelt het aantal uitgaande poorten in dat automatisch wordt toegewezen voor het aantal uitgaande poorten op basis van de grootte van de back-endserver. Als het cluster bijvoorbeeld 50 of minder knoop punten heeft, worden 1024 poorten voor elk knoop punt toegewezen.
+
+Wijzig de instelling van *allocatedOutboundPorts* of *IdleTimeoutInMinutes* als u verwacht dat de SNAT-uitputting op basis van de bovenstaande standaard configuratie is. Met elk extra IP-adres kunnen 64.000 extra poorten worden toegewezen, maar de Azure Standard Load Balancer verhoogt de poorten per knoop punt niet automatisch wanneer er meer IP-adressen worden toegevoegd. U kunt deze waarden wijzigen door de para meters *Load Balancer-outbound-ports* en *Load Balancer-timeout-Time-out* in te stellen. Bijvoorbeeld:
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+> [!IMPORTANT]
+> U moet [uw vereiste quota berekenen][calculate-required-quota] voordat u *allocatedOutboundPorts* aanpast om connectiviteits-of schaal problemen te voor komen. De waarde die u opgeeft voor *allocatedOutboundPorts* moet ook een meervoud van 8 zijn.
+
+U kunt ook de para meters van de *Load Balancer-outbound-ports* en *Load-Balancer-time-out* gebruiken bij het maken van een cluster, maar u moet ook een *Load Balancer-Managed-outbound-IP-Count*, *Load Balancer-outbound-ip's*of *Load Balancer-uitgaand-IP-voor voegsels* opgeven.  Bijvoorbeeld:
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-managed-outbound-ip-count 2 \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+Bij het wijzigen van de para meters van de *Load Balancer-uitgaand-poorten* en de *time-outwaarde voor taak verdeling* van de standaard waarde, is dit van invloed op het gedrag van het Load Balancer profiel, dat van invloed is op het hele cluster.
+
+### <a name="required-quota-for-customizing-allocatedoutboundports"></a>Vereist quotum voor het aanpassen van allocatedOutboundPorts
+U moet voldoende uitgaande IP-capaciteit hebben op basis van het aantal VM-knoop punten en de gewenste toegewezen uitgaande poorten. Gebruik de volgende formule om te controleren of u voldoende uitgaande IP-capaciteit hebt: 
+ 
+*outboundIPs* \* 64.000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
+ 
+Als u bijvoorbeeld drie *nodeVMs*en 50.000 *desiredAllocatedOutboundPorts*hebt, moet u Mini maal drie *outboundIPs*hebben. Het wordt aanbevolen dat u extra uitgaande IP-capaciteit opneemt dan wat u nodig hebt. Daarnaast moet u de cluster automatisch schalen en de mogelijkheid van upgrades van knooppunt groepen voor het berekenen van de uitgaande IP-capaciteit. Bekijk het huidige aantal knoop punten en het maximum aantal knoop punten en gebruik de hogere waarde voor het cluster automatisch schalen. Voor het uitvoeren van een upgrade moet u een extra VM-knoop punt voor elke knooppunt groep waarmee een upgrade kan worden uitgevoerd.
+ 
+Wanneer u *IdleTimeoutInMinutes* instelt op een andere waarde dan de standaard instelling van 30 minuten, kunt u overwegen hoe lang uw workloads een uitgaande verbinding nodig hebben. Houd ook rekening met de standaardtime-outwaarde voor een *standaard* -SKU Load Balancer die buiten AKS wordt gebruikt, is 4 minuten. Een *IdleTimeoutInMinutes* -waarde die uw specifieke AKS-werk belasting nauw keuriger maakt, kan de SNAT-uitputting afnemen als gevolg van het koppelen van verbindingen die niet meer worden gebruikt.
 
 ## <a name="restrict-access-to-specific-ip-ranges"></a>De toegang tot specifieke IP-bereiken beperken
 
@@ -239,9 +283,12 @@ Meer informatie over Kubernetes Services vindt u in de [documentatie van Kuberne
 [azure-lb-comparison]: ../load-balancer/concepts-limitations.md#skus
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
+[azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
+[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[calculate-required-quota]: #required-quota-for-customizing-allocatedoutboundports

@@ -7,16 +7,16 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: cffa571028dac192e8b8806ee9ec932cf89eb1fe
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0c4b13c56a68205195bd5ad4b696d9e01786a8dd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498791"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016541"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>Referentiearchitectuur voor de bewaking van waterkwaliteit 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 De oplossing voor het controleren van water kwaliteit kan worden gebouwd met de **Azure IOT Central app-sjabloon** als een toepassing voor het maken van een starter IOT. In dit artikel vindt u richt lijnen voor referentie architectuur op hoog niveau voor het bouwen van een end-to-end-oplossing. 
 
@@ -33,7 +33,7 @@ Concepten:
 Laten we eens kijken naar belang rijke onderdelen die doorgaans een deel spelen in een oplossing voor water kwaliteit.
 
 ## <a name="devices-and-connectivity"></a>Apparaten en connectiviteit 
-In deze sectie wordt verwezen naar apparaten die worden gebruikt voor de bewaking van water kwaliteit of water verbruik, in het algemeen als slimme water apparaten. Smart-water apparaten kunnen stroom meters, monitors voor water kwaliteit, slimme kleppen, lekkages, enz.
+In deze sectie wordt verwezen naar apparaten die worden gebruikt voor de bewaking van water kwaliteit of water verbruik, in het algemeen als slimme water apparaten. Smart-water apparaten kunnen stroom meters, monitors voor water kwaliteit, slimme kleppen, lekkage, enzovoort.
 
 Apparaten die worden gebruikt in Smart water oplossingen, worden in het algemeen verbonden via LPWAN (Wide Area Networks) via een externe netwerk provider. Voor deze typen apparaten kunt u gebruikmaken van de [azure IOT Central Device Bridge](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) om uw apparaatgegevens te verzenden naar uw IOT-toepassing in azure IOT Central. Het is ook mogelijk dat de gateways van het IP-adres compatibel zijn en rechtstreeks verbinding kunnen maken met IoT Central.
 
@@ -44,7 +44,7 @@ Nadat u uw slimme water apparaten hebt aangesloten op IoT Central, krijgt u de o
 ## <a name="extensibility-and-integrations"></a>Uitbreid baarheid en integraties 
 U kunt uw IoT-toepassing uitbreiden in IoT Central en optioneel:
 * Transformeer en Integreer uw IoT-gegevens voor geavanceerde analyses, bijvoorbeeld trainingen machine learning modellen, door doorlopende gegevens export vanuit IoT Central toepassing
-* werk stromen automatiseren in andere systemen door acties te activeren via Microsoft Flow of webhooks van IoT Central toepassing
+* werk stromen automatiseren in andere systemen door acties te activeren met behulp van Microsoft Flow of webhooks van IoT Central toepassing
 * programmatisch toegang tot uw IoT-toepassing in IoT Central via IoT Central Api's
 
 ## <a name="business-applications"></a>Bedrijfsapplicaties 

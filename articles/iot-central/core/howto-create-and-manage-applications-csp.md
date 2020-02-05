@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 22ed36c3c55d55ab9a733c2a0552f0ac3dcce1f5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 40c5f612b5b1571bb3d39f452d64a7005701f7c1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987653"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023800"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Een Azure IoT Central-toepassing maken en beheren vanuit de CSP-Portal
 
@@ -23,29 +23,31 @@ Als CSP kunt u Microsoft Azure IoT Central-toepassingen maken en beheren namens 
 
 Meld u aan bij uw account in de micro soft-Partner Portal en selecteer een klant voor wie u een Azure IoT Central-toepassing wilt maken. Navigeer naar Service beheer voor de klant in het linkernavigatievenster.
 
-![Micro soft Partner Center, klant weergave](media/howto-create-application-csp/image1.png)
+![Micro soft Partner Center, klant weergave](media/howto-create-and-manage-applications-csp/image1.png)
 
 Azure IoT Central wordt vermeld als een service die beschikbaar is voor beheer. Selecteer de koppeling Azure IoT Central op de pagina om nieuwe toepassingen te maken of bestaande toepassingen voor deze klant te beheren.
 
-![Azure IoT Central beschikbaar voor beheer](media/howto-create-application-csp/image2.png)
+![Azure IoT Central beschikbaar voor beheer](media/howto-create-and-manage-applications-csp/image2.png)
 
 U bent op de pagina Azure IoT Central Application Manager. Azure IoT Central houdt u de context van het micro soft partner centrum en u hebt deze gearriveerd om die bepaalde klant te beheren. U ziet dit bevestigd in de koptekst van de pagina Toepassings beheer. Hier kunt u navigeren naar een bestaande toepassing die u eerder hebt gemaakt voor deze klant om een nieuwe toepassing voor de klant te beheren of maken.
 
-![Manager voor Csp's maken](media/howto-create-application-csp/image3.png)
+![Manager voor Csp's maken](media/howto-create-and-manage-applications-csp/image3.png)
 
 Als u een Azure IoT Central-toepassing wilt maken, selecteert u **samen stellen** in het menu links. Kies een van de branche sjablonen of kies **verouderde toepassing** om een volledig nieuwe toepassing te maken. Hiermee wordt de pagina voor het maken van de toepassing geladen. U moet alle velden op deze pagina volt ooien en vervolgens **maken**kiezen. U vindt meer informatie over elk van de onderstaande velden.
 
-![Toepassings pagina voor Csp's maken](media/howto-create-application-csp/image4.png)
+![Toepassings pagina voor Csp's maken](media/howto-create-and-manage-applications-csp/image4.png)
 
-![Toepassings pagina voor Csp's maken](media/howto-create-application-csp/image4-1.png)
+![Toepassings pagina voor Csp's maken](media/howto-create-and-manage-applications-csp/image4-1.png)
 
-![Een toepassings pagina maken voor Csp's facturerings gegevens](media/howto-create-application-csp/image4-2.png)
+![Een toepassings pagina maken voor Csp's facturerings gegevens](media/howto-create-and-manage-applications-csp/image4-2.png)
 
 ## <a name="pricing-plan"></a>Prijs plan
 
 U kunt alleen toepassingen maken die gebruikmaken van een standaard prijs plan als CSP. Als u Azure IoT Central wilt presen teren aan uw klant, kunt u een toepassing maken die gebruikmaakt van het gratis prijs plan afzonderlijk. Meer informatie over de gratis en standaard prijzen abonnementen op de [pagina met prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
-## <a name="application-name"></a>Naam van de toepassing
+U kunt alleen toepassingen maken die gebruikmaken van een standaard prijs plan als CSP. Als u Azure IoT Central wilt presen teren aan uw klant, kunt u een toepassing maken die gebruikmaakt van het gratis prijs plan afzonderlijk. Meer informatie over de gratis en standaard prijzen abonnementen op de [pagina met prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/).
+
+## <a name="application-name"></a>De naam van de toepassing
 
 De naam van uw toepassing wordt weer gegeven op de pagina **toepassings beheer** en binnen elke Azure IOT Central-toepassing. U kunt een wille keurige naam kiezen voor uw Azure IoT Central-toepassing. Kies een naam die voor u en anderen in uw organisatie zinvol is.
 
@@ -75,9 +77,6 @@ Zie [Azure-abonnementen](https://docs.microsoft.com/azure/guides/developer/azure
 
 Kies de regio of [geografische](https://azure.microsoft.com/global-infrastructure/geographies/) locatie waar u de Azure IOT Central-toepassing wilt maken. Normaal gesp roken moet u de regio kiezen die het meest geschikt is voor uw apparaten om optimaal te kunnen profiteren van de prestaties.
 
-> [!NOTE]
-> De preview-toepassings sjablonen zijn momenteel alleen beschikbaar in de locaties **Europa** en **Verenigde Staten** .
-
 Zie [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/) en [Azure-geografi](https://azure.microsoft.com/global-infrastructure/geographies/)voor meer informatie.
 
 U kunt de regio's bekijken waarin Azure IoT Central beschikbaar is op de pagina [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) .
@@ -87,11 +86,7 @@ U kunt de regio's bekijken waarin Azure IoT Central beschikbaar is op de pagina 
 
 ## <a name="application-template"></a>Toepassingsjabloon
 
-U kunt de onderstaande toepassings sjabloon kiezen voor uw nieuwe Azure IoT Central-toepassing.
-
-| Toepassingsjabloon | Beschrijving |
-| -------------------- | ----------- |
-| Oudere toepassing   | Hiermee maakt u een lege toepassing die u kunt vullen met uw eigen apparaatsjablonen en apparaten. |
+Kies de toepassings sjabloon die u wilt gebruiken voor uw toepassing.
 
 
 ## <a name="next-steps"></a>Volgende stappen

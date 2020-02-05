@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 4c3d2352467a1ed8e7979acac403908303ba3bc4
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 3f0f3528a59c721fe6926dd4c8c5039b680e1588
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834556"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025755"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>VPN-gatewayoverdracht configureren voor peering voor virtuele netwerken
 
@@ -156,4 +156,4 @@ Add-AzVirtualNetworkPeering `
 ## <a name="next-steps"></a>Volgende stappen
 
 * Raadpleeg [beperkingen en gedrag van peering voor virtuele netwerken](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) en [instellingen voor peering voor virtuele netwerken](../virtual-network/virtual-network-manage-peering.md#create-a-peering) voordat u peering voor virtuele netwerken instelt voor gebruik in productie.
-* Meer informatie over het [maken van een hub en spoke netwerktopologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) met peering voor virtuele netwerken en gatewayoverdracht
+* Meer informatie over het [maken van een hub en spoke netwerktopologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) met peering voor virtuele netwerken en gatewayoverdracht

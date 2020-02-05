@@ -4,12 +4,12 @@ description: Meer informatie over hoe de MARS-agent de back-upscenario's onderst
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d558a19b3025ab1400e873f97b0ce5e5a860c75a
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 348980b840b814c09ce46627f286489d4caa9f8f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902867"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023953"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Informatie over de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -58,8 +58,7 @@ De MARS-agent ondersteunt de volgende herstel scenario's:
 ### <a name="additional-scenarios"></a>Overige scenario's
 -   **Back-ups maken van specifieke bestanden en mappen in azure virtual machines**: de primaire methode voor het maken van back-ups van virtuele Azure-machines (vm's) is het gebruik van een Azure backup-extensie op de VM. De uitbrei ding maakt een back-up van de volledige VM. Als u een back-up wilt maken van specifieke bestanden en mappen in een VM, kunt u de MARS-agent installeren in de virtuele machines van Azure. Zie [architectuur: ingebouwde Azure VM-back-up](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup)voor meer informatie.
 
--   **Offline seeding**: eerste volledige back-ups van gegevens naar Azure worden doorgaans grote hoeveel heden gegevens overgebracht en vereisen meer netwerk bandbreedte. Bij de volgende back-ups wordt alleen de Delta, of incrementele hoeveelheid gegevens overgedragen. Azure Backup comprimeert de eerste back-ups. Dankzij het proces van *offline seeding*kan Azure backup schijven gebruiken om de gecomprimeerde initiële back-upgegevens offline te uploaden naar Azure. Zie [werk stroom voor offline back-ups voor dpm en Azure backup server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-)voor meer informatie.
-
+-   **Offline seeding**: eerste volledige back-ups van gegevens naar Azure worden doorgaans grote hoeveel heden gegevens overgebracht en vereisen meer netwerk bandbreedte. Bij de volgende back-ups wordt alleen de Delta, of incrementele hoeveelheid gegevens overgedragen. Azure Backup comprimeert de eerste back-ups. Dankzij het proces van *offline seeding*kan Azure backup schijven gebruiken om de gecomprimeerde initiële back-upgegevens offline te uploaden naar Azure. Zie [Azure backup offline back-up maken met Azure data Box](offline-backup-azure-data-box.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Ondersteunings matrix voor MARS-agent](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)

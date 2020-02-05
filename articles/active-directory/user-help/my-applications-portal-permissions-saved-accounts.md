@@ -1,27 +1,27 @@
 ---
-title: Toepassings machtigingen beheren vanuit de portal mijn apps (preview)-Azure Active Directory | Microsoft Docs
-description: Meer informatie over het beheren van toepassings machtigingen voor apps in de cloud van uw organisatie vanuit de portal mijn apps (preview-versie).
+title: Toepassings machtigingen beheren via de portal mijn apps-Azure Active Directory | Microsoft Docs
+description: Meer informatie over het beheren van toepassings machtigingen voor apps in de cloud van uw organisatie vanuit de portal mijn apps.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: kasimpso
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 36abbee0bf25550425f4e476e6a4e7b75df815a6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bac33386371b13950163727497cabd0f262df135
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705051"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022406"
 ---
-# <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>Toepassings machtigingen bewerken of intrekken in de portal mijn apps (preview-versie)
+# <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Toepassings machtigingen bewerken of intrekken in de portal mijn apps
 
-Wanneer u organisatie toepassingen in de portal **mijn apps** (preview) gebruikt, verleent u vaak machtigingen en kunt u account gegevens opslaan. Als u uw gegevens beveiligd wilt houden, kunt u de machtigingen controleren en intrekken of opgeslagen account referenties wissen. Het verwijderen van machtigingen of accounts kan enige functionaliteit van apps veroorzaken. Als u problemen ondervindt nadat u machtigingen of accounts hebt verwijderd, neemt u contact op met de Help Desk van uw organisatie voor meer hulp.
+Wanneer u organisatie toepassingen in de portal **mijn apps** gebruikt, verleent u vaak machtigingen en kunt u account gegevens opslaan. Als u uw gegevens beveiligd wilt houden, kunt u de machtigingen controleren en intrekken of opgeslagen account referenties wissen. Het verwijderen van machtigingen of accounts kan enige functionaliteit van apps veroorzaken. Als u problemen ondervindt nadat u machtigingen of accounts hebt verwijderd, neemt u contact op met de Help Desk van uw organisatie voor meer hulp.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -46,11 +46,11 @@ In het onderste gedeelte van het venster met machtigingen ziet u hoe uw beheerde
 
 Nadat u app-machtigingen en opgeslagen accounts in de portal **mijn apps** hebt beheerd, kunt u het volgende doen:
 
-- Organiseer uw apps in de verschillende categorieën die door uw organisatie zijn gemaakt en verschaft. Zie [werk ruimten openen en gebruiken in de portal mijn apps (preview)](my-applications-portal-workspaces.md)voor meer informatie.
+- Organiseer uw apps in de verschillende categorieën die door uw organisatie zijn gemaakt en verschaft. Zie voor meer informatie [verzamelingen openen en gebruiken in de portal mijn apps](my-applications-portal-workspaces.md).
 
 ## <a name="related-articles"></a>Verwante artikelen:
 
-- [Werk uw profiel en account gegevens](my-account-portal-overview.md)bij. Instructies voor het bijwerken van uw persoonlijke gegevens die worden weer gegeven op de portal **Mijn profiel** (preview-versie).
+- [Werk uw profiel en account gegevens](my-account-portal-overview.md)bij. Instructies voor het bijwerken van uw persoonlijke gegevens die worden weer gegeven in de portal **Mijn profiel** .
 
 - [Beheer uw organisaties](my-account-portal-organizations-page.md). Instructies voor het weer geven en beheren van de gegevens van uw organisatie op de pagina **organisaties** van de portal **Mijn profiel** .
 

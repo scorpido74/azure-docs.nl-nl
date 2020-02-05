@@ -1,6 +1,6 @@
 ---
 title: Hoge Beschik baarheid van toepassingen garanderen bij uitvoering in VMware op Azure
-description: Beschrijft CloudSimple-functies voor hoge Beschik baarheid om veelvoorkomende scenario's voor toepassings fouten te verhelpen voor toepassingen die worden uitgevoerd in een CloudSimple-Privécloud
+description: Beschrijft functies van AVS voor hoge Beschik baarheid om veelvoorkomende scenario's voor toepassings fouten te verhelpen voor toepassingen die worden uitgevoerd in een AVS-privécloud
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b32f7f3f38098f935382cce46d8251340784b940
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206529"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025347"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Hoge Beschik baarheid van toepassingen garanderen bij uitvoering in VMware op Azure
 
-De CloudSimple-oplossing biedt hoge Beschik baarheid voor uw toepassingen die in VMware worden uitgevoerd in de Azure-omgeving. De volgende tabel geeft een overzicht van fout scenario's en de bijbehorende functies voor hoge Beschik baarheid.
+De AVS-oplossing biedt hoge Beschik baarheid voor uw toepassingen die in VMware worden uitgevoerd in de Azure-omgeving. De volgende tabel geeft een overzicht van fout scenario's en de bijbehorende functies voor hoge Beschik baarheid.
 
 | Fout scenario | Toepassing beveiligd? | Functie platform HA | VMware HA-functie | Functie Azure HA |
 ------------ | ------------- | ------------ | ------------ | ------------- |
@@ -25,7 +25,7 @@ De CloudSimple-oplossing biedt hoge Beschik baarheid voor uw toepassingen die in
 | Fout met ventilator | KLIKT | Redundante ventilatoren, snelle vervanging van een mislukt knoop punt |  |  |
 | NIC-fout | KLIKT | Redundante NIC, snelle vervanging van een mislukt knoop punt
 | Stroom storing host | KLIKT | Redundante voeding |  |  |
-| ESXi-host-fout | KLIKT | Snelle vervanging van een uitgevallen knoop punt | [VMware vSphere hoge Beschik baarheid](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
+| ESXi-host-fout | KLIKT | snelle vervanging van een uitgevallen knoop punt | [VMware vSphere hoge Beschik baarheid](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
 | VM-fout | KLIKT | [Load balancers](load-balancers.md)  | [VMware vSphere hoge Beschik baarheid](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer voor stateless VMware-Vm's |
 | Fout in knooppunt switch poort | KLIKT | Redundante NIC |  |  |
 | Knooppunt switch is mislukt | KLIKT | Redundante Blade Switches |  |  |
@@ -35,15 +35,15 @@ De CloudSimple-oplossing biedt hoge Beschik baarheid voor uw toepassingen die in
 | Fout in Data Center | KLIKT |  |  | Beschikbaarheidszones |
 | Regionale fout | KLIKT  |  |  | Azure-regio's |
 
-Azure VMware-oplossing per CloudSimple biedt de volgende functies voor hoge Beschik baarheid.
+De Azure VMware-oplossing per AVS biedt de volgende functies voor hoge Beschik baarheid.
 
 ## <a name="fast-replacement-of-failed-node"></a>Snelle vervanging van een uitgevallen knoop punt
 
-De CloudSimple-besturings vlak software bewaakt voortdurend de status van VMware-clusters en detecteert wanneer een ESXi-knoop punt mislukt. Vervolgens wordt er automatisch een nieuwe ESXi-host aan het betrokken VMware-cluster toegevoegd vanuit de groep van de gemakkelijk beschik bare knoop punten en neemt het knoop punt uit het cluster niet uit. Deze functionaliteit zorgt ervoor dat de reserve capaciteit in het VMware-cluster snel wordt hersteld, zodat de tolerantie van het cluster die wordt verschaft door vSAN en VMware HA, wordt hersteld.
+De AVS-besturings vlak software bewaakt voortdurend de status van VMware-clusters en detecteert wanneer een ESXi-knoop punt mislukt. Vervolgens wordt er automatisch een nieuwe ESXi-host aan het betrokken VMware-cluster toegevoegd vanuit de groep van de gemakkelijk beschik bare knoop punten en neemt het knoop punt uit het cluster niet uit. Deze functionaliteit zorgt ervoor dat de reserve capaciteit in het VMware-cluster snel wordt hersteld, zodat de tolerantie van het cluster die wordt verschaft door vSAN en VMware HA, wordt hersteld.
 
 ## <a name="placement-groups"></a>Plaatsingsgroepen
 
-Een gebruiker die een Privécloud maakt, kan een Azure-regio en een plaatsings groep in de geselecteerde regio selecteren. Een plaatsings groep is een verzameling knoop punten verdeeld over meerdere racks, maar binnen hetzelfde spin-netwerk segment. Knoop punten binnen dezelfde plaatsings groep kunnen elkaar bereiken met Maxi maal twee extra switch-hops. Een plaatsings groep is altijd binnen één Azure-beschikbaarheids zone en omvat meerdere racks. Het CloudSimple-besturings vlak distribueert knoop punten van een Privécloud in meerdere racks op basis van de beste inspanningen. Knoop punten in verschillende plaatsings groepen worden gegarandeerd in verschillende racks geplaatst.
+Een gebruiker die een automatische AVS-Cloud maakt, kan een Azure-regio en een plaatsings groep in de geselecteerde regio selecteren. Een plaatsings groep is een verzameling knoop punten verdeeld over meerdere racks, maar binnen hetzelfde spin-netwerk segment. Knoop punten binnen dezelfde plaatsings groep kunnen elkaar bereiken met Maxi maal twee extra switch-hops. Een plaatsings groep is altijd binnen één Azure-beschikbaarheids zone en omvat meerdere racks. Het AVS-besturings vlak distribueert knoop punten van een automatische AVS-Cloud in meerdere racks op basis van de beste inspanningen. Knoop punten in verschillende plaatsings groepen worden gegarandeerd in verschillende racks geplaatst.
 
 ## <a name="availability-zones"></a>Beschikbaarheidszones
 
@@ -55,7 +55,7 @@ Data Center-connectiviteit met Azure vNet met behulp van ExpressRoute heeft redu
 
 ## <a name="redundant-networking-services"></a>Redundante netwerk services
 
-Alle CloudSimple-netwerk services voor de Privécloud (inclusief VLAN, firewall, open bare IP-adressen, Internet en VPN) zijn zo ontworpen dat ze Maxi maal beschikbaar zijn en de service-SLA kunnen ondersteunen.
+Alle AVS-netwerk services voor de cloud van de AVS (inclusief VLAN, firewall, open bare IP-adressen, Internet en VPN) zijn ontworpen om Maxi maal beschikbaar te zijn en ondersteuning te bieden voor de service-SLA.
 
 ## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>Azure Layer 7 Load Balancer voor stateless VMware-Vm's
 

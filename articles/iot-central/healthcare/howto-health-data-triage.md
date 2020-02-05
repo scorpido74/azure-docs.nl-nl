@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 40e850bcbd177b15c91e57ec369c6b04963ffb84
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 99b27ec53d955079b5f73986408e698955c0969b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132278"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021641"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Zelf studie: een Power BI provider-dash board maken
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Wanneer u uw oplossing voor continue patiënten-bewaking bouwt, kunt u ook een dash board maken voor een ziekenhuis Care team om patiënten-gegevens te visualiseren. Deze zelf studie begeleidt u stapsgewijs door de stappen voor het maken van een Power BI realtime streaming-dash board vanuit uw IoT Central toepassing voor continue patiënten-bewaking.
+
+Wanneer u uw oplossing voor continue patiënten-bewaking bouwt, kunt u ook een dash board maken voor een ziekenhuis Care team om patiënten-gegevens te visualiseren. In deze zelf studie leert u hoe u een Power BI realtime streaming-dash board kunt maken op basis van uw IoT Central toepassing voor continue patiënten-bewaking.
 
 >[!div class="mx-imgBorder"]
 >GIF-](media/dashboard-gif-3.gif) ![dash board
@@ -51,7 +51,7 @@ In deze zelfstudie leert u het volgende:
 * Een Power BI-service-account. Als u er nog geen hebt, kunt u [een gratis proef account maken voor Power bi-service](https://app.powerbi.com/). Als u Power BI nog niet eerder hebt gebruikt, kan het nuttig zijn om aan de slag te gaan [met Power bi](https://docs.microsoft.com/power-bi/service-get-started).
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Een continue gegevens export naar Azure Event Hubs instellen
-U moet eerst een continue gegevens export instellen vanuit uw Azure IoT Central app-sjabloon naar de Azure Event hub in uw abonnement. U kunt dit doen door de stappen in deze Azure IoT Central-zelf studie [te volgen om naar Event hubs te exporteren](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data). Voor de doel einden van deze zelf studie hoeft u alleen voor de telemetrie te exporteren.
+U moet eerst een continue gegevens export instellen vanuit uw Azure IoT Central app-sjabloon naar de Azure Event hub in uw abonnement. U kunt dit doen door de stappen in deze Azure IoT Central-zelf studie [te volgen om naar Event hubs te exporteren](https://docs.microsoft.com/azure/iot-central/core/howto-export-data). Voor de doel einden van deze zelf studie hoeft u alleen voor de telemetrie te exporteren.
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Een gegevensset voor Power BI stream maken
 
@@ -86,12 +86,12 @@ Als u uw logische app wilt verbinden met Azure Event Hubs, kunt u de instructies
 Aan het einde van deze stap moet de ontwerp functie voor logische apps er als volgt uitzien:
 
 >[!div class="mx-imgBorder"] 
->![Logic Apps verbinding maken met Event Hubs](media/eh-logic-app.png)
+>![Logic Apps verbinding maakt met Event Hubs](media/eh-logic-app.png)
 
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Gegevens streamen naar Power BI vanuit uw logische app
 De volgende stap is het parseren van de gegevens die afkomstig zijn van uw event hub om deze te streamen naar de Power BI gegevens sets die u eerder hebt gemaakt.
 
-1. Voordat u dit kunt doen, moet u weten wat de JSON-nettolading is die vanaf uw apparaat wordt verzonden naar uw event hub. U kunt dit doen door te kijken naar dit [voorbeeld schema](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data#telemetry) en dit te wijzigen zodat dit overeenkomt met uw schema of [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) gebruiken om de berichten te controleren. Als u de toepassingen doorlopende patiënten-bewaking gebruikt, ziet uw berichten er als volgt uit:
+1. Voordat u dit kunt doen, moet u weten wat de JSON-nettolading is die vanaf uw apparaat wordt verzonden naar uw event hub. U kunt dit doen door te kijken naar dit [voorbeeld schema](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) en dit te wijzigen zodat dit overeenkomt met uw schema of [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) gebruiken om de berichten te controleren. Als u de toepassingen doorlopende patiënten-bewaking gebruikt, ziet uw berichten er als volgt uit:
 
 **Intelligente essentiële patch-telemetrie**
 
@@ -143,7 +143,7 @@ De volgende stap is het parseren van de gegevens die afkomstig zijn van uw event
 
     |Parameter|Waarde|
     |---|---|
-    |Naam|Interface naam|
+    |Name|Interface naam|
     |Type|Tekenreeks|
 
     Druk op **Opslaan**. 

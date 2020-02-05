@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 52bec8bba7bb3ddf545e3bd1866775f0964c6ad3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6e9e1d54599ab88092638762ccd7974e44c82cbf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893145"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025806"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Gegevens in Azure Cosmos DB (SQL API) kopiëren en transformeren met behulp van Azure Data Factory
 
@@ -24,7 +24,7 @@ ms.locfileid: "75893145"
 > * [Versie 1:](v1/data-factory-azure-documentdb-connector.md)
 > * [Huidige versie](connector-azure-cosmos-db.md)
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van en naar Azure Cosmos DB (SQL-API), en gegevens stroom te gebruiken om gegevens te transformeren in Azure Cosmos DB (SQL-API). Lees voor meer informatie over Azure Data Factory, de [inleidende artikel](introduction.md).
+In dit artikel wordt beschreven hoe u de kopieeractiviteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van en naar Azure Cosmos DB (SQL API), en een gegevensstroom kunt gebruiken om gegevens in Azure Cosmos DB (SQL API) te transformeren. Lees voor meer informatie over Azure Data Factory, de [inleidende artikel](introduction.md).
 
 >[!NOTE]
 >Deze connector ondersteunt alleen Cosmos DB SQL-API. Raadpleeg voor MongoDB-API [de connector voor de API van Azure Cosmos DB voor MongoDb](connector-azure-cosmos-db-mongodb-api.md). Andere API-typen worden momenteel niet ondersteund.
@@ -249,7 +249,7 @@ Als u een bron van het type ' DocumentDbCollectionSink ' gebruikt, wordt deze no
 ]
 ```
 
-### <a name="schema-mapping"></a>Schematoewijzing
+### <a name="schema-mapping"></a>Schema toewijzing
 
 Als u gegevens wilt kopiëren van Azure Cosmos DB naar tabellaire sink of omgekeerd, raadpleegt u [schema toewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
@@ -268,6 +268,18 @@ Instellingen die specifiek zijn voor Azure Cosmos DB, zijn beschikbaar op het ta
 **Door Voer:** Stel een optionele waarde in voor het aantal RUs dat u wilt Toep assen op uw CosmosDB-verzameling voor elke uitvoering van deze gegevens stroom tijdens de Lees bewerking. Minimum is 400.
 
 **Voorkeurs regio's:** Kies de gewenste Lees regio's voor dit proces.
+
+#### <a name="json-settings"></a>JSON-instellingen
+
+**Eén document:** Selecteer deze optie als ADF het hele bestand moet behandelen als één JSON-document.
+
+Niet- **geciteerde kolom namen:** Selecteer deze optie als kolom namen in de JSON niet in een aanhalings teken staan.
+
+**Bevat opmerkingen:** Gebruik deze selectie als uw JSON-documenten opmerkingen hebben in de gegevens.
+
+**Enkel aanhalings teken:** Dit moet worden geselecteerd als de kolommen en waarden in uw document worden genoteerd met enkele aanhalings tekens.
+
+**Back slash-Escape:** Als u backslashes gebruikt om tekens in uw JSON te escapen, kiest u deze optie.
 
 ### <a name="sink-transformation"></a>Sink-trans formatie
 

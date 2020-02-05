@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 5af73e166f3caa4997851ae4b17d8377550bf40a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961542"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024276"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problemen met & beperkingen van Azure Cloud Shell oplossen
 
@@ -36,8 +36,8 @@ Bekende oplossingen voor het oplossen van problemen in Azure Cloud Shell zijn on
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Cloud Shell uitschakelen in een vergrendelde netwerk omgeving
 
-- **Details**: beheerders kunnen de toegang tot Cloud shell voor hun gebruikers uitschakelen. Cloud Shell maakt gebruik van toegang tot het `ux.console.azure.com` domein, dat kan worden geweigerd, waardoor alle toegang tot de entrypoints van Cloud Shell, waaronder portal.azure.com, shell.azure.com, Visual Studio code Azure-account extensie en docs.microsoft.com, wordt gestopt.
-- **Oplossing**: Beperk de toegang tot `ux.console.azure.com` via netwerk instellingen tot uw omgeving. Het pictogram Cloud Shell blijft aanwezig in portal.azure.com, maar er wordt geen verbinding gemaakt met de service.
+- **Details**: beheerders kunnen de toegang tot Cloud shell voor hun gebruikers uitschakelen. Cloud Shell maakt gebruik van toegang tot het `ux.console.azure.com` domein, dat kan worden geweigerd, waardoor alle toegang tot de entrypoints van Cloud Shell, waaronder portal.azure.com, shell.azure.com, Visual Studio code Azure-account extensie en docs.microsoft.com, wordt gestopt. Het toegangs punt in de cloud van de Amerikaanse overheid is `ux.console.azure.us`; Er is geen bijbehorende shell.azure.us.
+- **Oplossing**: Beperk de toegang tot `ux.console.azure.com` of `ux.console.azure.us` via netwerk instellingen voor uw omgeving. Het Cloud Shell pictogram blijft aanwezig in de Azure Portal, maar er wordt geen verbinding gemaakt met de service.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Opslag dialoogvenster-fout: 403 RequestDisallowedByPolicy
 

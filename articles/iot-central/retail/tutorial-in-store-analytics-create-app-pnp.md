@@ -11,16 +11,16 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 6fa4521cb50ecfc37004cbf9cff08644dc53f000
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 6b89b667855d827acfb7c181da014cd0d0b4bfc4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990630"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022100"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Zelf studie: een in-Store Analytics-toepassing maken in azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 In de zelf studie worden oplossingen bouwers weer gegeven voor het maken van een Azure IoT Central in de Store Analytics-toepassing. De voorbeeld toepassing is voor een Retail Store. Het is een oplossing voor de gemeen schappelijke bedrijfs behoefte om bezetting en omgevings omstandigheden te bewaken en aan te passen.
 
@@ -64,7 +64,7 @@ Een nieuwe Azure IoT Central-toepassing maken:
 
 1. Selecteer **detail handel**.  Op de pagina Retail worden verschillende sjablonen voor de retail toepassing weer gegeven.
 
-Voor het maken van een nieuwe toepassing in de Store Analytics-uitchecking die gebruikmaakt van preview-functies:  
+Een nieuwe toepassing voor de afhandeling van in-Store-analyses maken:  
 
 1. Selecteer de toepassings sjabloon **in de Store Analytics-uitchecken** . Deze sjabloon bevat sjablonen voor alle apparaten die in de zelf studie worden gebruikt, met uitzonde ring van RuuviTag Sens oren. De sjabloon biedt ook een operator dashboard voor het controleren van de afhandelings-en omgevings voorwaarden en de Apparaatstatus. 
 
@@ -75,7 +75,7 @@ Voor het maken van een nieuwe toepassing in de Store Analytics-uitchecking die g
 
 1. Als u een Azure-abonnement hebt, voert u uw *adres lijst, het Azure-abonnement en de regio*in. Als u geen abonnement hebt, kunt u een **gratis proef versie van 7 dagen** inschakelen en de vereiste contact gegevens volt ooien.  
 
-    Zie de [snelstart over het maken van een toepassing](../preview/quick-deploy-iot-central.md)voor meer informatie over directory's en abonnementen.
+    Zie de [snelstart over het maken van een toepassing](../core/quick-deploy-iot-central.md)voor meer informatie over directory's en abonnementen.
 
 1. Selecteer **Maken**.
 
@@ -84,6 +84,7 @@ Voor het maken van een nieuwe toepassing in de Store Analytics-uitchecking die g
     ![Facturerings gegevens van de toepassing Azure IoT Central maken](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template-billinginfo.png)
 
 ## <a name="customize-application-settings"></a>Toepassings instellingen aanpassen
+
 Als ontwerper kunt u verschillende instellingen wijzigen om de gebruikers ervaring in uw toepassing aan te passen. In deze sectie selecteert u een vooraf gedefinieerd toepassings thema. U leert ook hoe u een aangepast thema maakt en hoe u de installatie kopie van de toepassing bijwerkt. Met een aangepast thema kunt u de kleuren van de toepassings browser, het browser pictogram en het toepassings logo dat wordt weer gegeven in het Impressum instellen.
 
 Een vooraf gedefinieerd toepassings thema selecteren:
@@ -162,7 +163,7 @@ Ten tweede kunt u uw Apparaatinstellingen aanpassen door Cloud eigenschappen toe
 
 Ten derde kunt u ook de apparaatinstellingen aanpassen door aangepaste weer gaven te maken. Weer gaven bieden Opera tors voor het visualiseren van telemetriegegevens en meta gegevens voor uw apparaten, zoals metrische gegevens over apparaten en status.
 
-Hier kunt u de eerste twee methoden gebruiken om de Device-sjabloon voor uw RuuviTag-Sens oren aan te passen. Meer informatie over het maken van weer gaven voor uw Sens oren vindt [u in de Snelstartgids een gesimuleerd apparaat toevoegen aan de IOT Central-toepassing](../preview/quick-create-pnp-device.md) .
+Hier kunt u de eerste twee methoden gebruiken om de Device-sjabloon voor uw RuuviTag-Sens oren aan te passen. Meer informatie over het maken van weer gaven voor uw Sens oren vindt [u in de Snelstartgids een gesimuleerd apparaat toevoegen aan de IOT Central-toepassing](../core/quick-create-pnp-device.md) .
 
 De ingebouwde interfaces van de sjabloon voor het RuuviTag-apparaat aanpassen:
 
@@ -202,7 +203,7 @@ Geef de volgende waarden op om een aangepaste eigenschap te maken voor het opsla
 
 1. Voer de *locatie* van de waarde in voor de **weergave naam**. Deze waarde wordt automatisch gekopieerd naar het veld **naam** , een beschrijvende naam voor de eigenschap. U kunt de gekopieerde waarde gebruiken of wijzigen.
 
-1. Selecteer *teken reeks* in de vervolg keuzelijst **schema** . Met een teken reeks type kunt u een locatie naam reeks koppelen aan elk apparaat op basis van de sjabloon. U kunt bijvoorbeeld een gebied in een archief koppelen aan elk apparaat. Desgewenst kunt u het **semantische type** van uw eigenschap instellen op *locatie*en wordt het **schema** automatisch ingesteld op *geopunt*. Zo kunt u GPS-coördinaten koppelen aan een apparaat. 
+1. Selecteer *teken reeks* in de vervolg keuzelijst **schema** . Met een teken reeks type kunt u een locatie naam reeks koppelen aan elk apparaat op basis van de sjabloon. U kunt bijvoorbeeld een gebied in een archief koppelen aan elk apparaat. Desgewenst kunt u het **semantische type** van uw eigenschap instellen op *locatie*en wordt het **schema** automatisch ingesteld op *geopunt*. U kunt GPS-coördinaten koppelen aan een apparaat. 
 
 1. Stel de **minimum lengte** in op *2*. 
 
@@ -229,8 +230,8 @@ Voor deze zelf studie gebruikt u de volgende set echte en gesimuleerde apparaten
 
 Volg de stappen in de volgende twee artikelen om een echte Rigado-gateway en RuuviTag Sens oren te verbinden. Wanneer u klaar bent, keert u terug naar deze zelf studie. Omdat u al Device-sjablonen in deze zelf studie hebt gemaakt, hoeft u deze niet opnieuw te maken in de volgende reeks richtingen.
 
-- Zie [verbinding maken met een Rigado Cascade 500 met uw Azure IOT Central-toepassing](../preview/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)om verbinding te maken met een Rigado-gateway.
-- Zie [een RuuviTag-sensor verbinden met uw Azure IOT Central-toepassing](../preview/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)om verbinding te maken met RuuviTag Sens oren. U kunt deze instructies ook gebruiken om twee gesimuleerde Sens oren te maken, indien nodig.
+- Zie [verbinding maken met een Rigado Cascade 500 met uw Azure IOT Central-toepassing](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)om verbinding te maken met een Rigado-gateway.
+- Zie [een RuuviTag-sensor verbinden met uw Azure IOT Central-toepassing](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)om verbinding te maken met RuuviTag Sens oren. U kunt deze instructies ook gebruiken om twee gesimuleerde Sens oren te maken, indien nodig.
 
 ## <a name="add-rules-and-actions"></a>Regels en acties toevoegen
 Als onderdeel van het gebruik van Sens oren in uw Azure IoT Central-toepassing om voor waarden te bewaken, kunt u regels maken voor het uitvoeren van acties wanneer aan bepaalde voor waarden wordt voldaan. Een regel is gekoppeld aan een apparaatprofiel en een of meer apparaten en bevat voor waarden waaraan moet worden voldaan op basis van telemetrie van apparaten of gebeurtenissen. Een regel heeft ook een of meer gekoppelde acties. De acties omvatten mogelijk het verzenden van e-mail meldingen of het activeren van een webhook-actie voor het verzenden van gegevens naar andere services. De toepassings sjabloon **in de Store analyse-uitchecken** bevat enkele vooraf gedefinieerde regels voor de apparaten in de toepassing.
@@ -249,7 +250,7 @@ Een regel maken:
 
 1. Kies het RuuviTag in **scopes**. De regel die u definieert, wordt toegepast op alle Sens oren op basis van die sjabloon. U kunt eventueel een filter maken waarmee de regel wordt toegepast op een gedefinieerde subset van de Sens oren. 
 
-1. Kies `Relative humidity` als **telemetrie**. Dit is de functionaliteit van het apparaat die u in een vorige stap hebt aangepast.
+1. Kies `Relative humidity` als **telemetrie**. Het is de mogelijkheid van het apparaat dat u in een vorige stap hebt aangepast.
 
 1. Kies `Is greater than` als **operator**. 
 

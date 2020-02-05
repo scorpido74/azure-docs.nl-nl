@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 02/04/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 8efbf2107104f31bcfc5e4e5669dbed1835a034b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f9889f58ead8d1dd35ceb50fa100b2b466cbe7cf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457408"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022389"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Geavanceerde bedreigings beveiliging voor Azure Storage configureren
 
@@ -29,7 +29,7 @@ Geavanceerde bedreigings beveiliging voor Azure Storage opname van Diagnostische
 
 ## <a name="set-up-advanced-threat-protection"></a>Geavanceerde bedreigings beveiliging instellen
 
-Advanced Threat Protection is standaard ingeschakeld voor uw opslag account. U kunt geavanceerde beveiliging tegen bedreigingen op verschillende manieren configureren, zoals beschreven in de volgende secties.
+U kunt geavanceerde beveiliging tegen bedreigingen op verschillende manieren configureren, zoals beschreven in de volgende secties.
 
 ### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -101,7 +101,7 @@ Gebruik de volgende Power shell-cmdlets:
 Wanneer er afwijkingen optreden bij de opslag activiteit, ontvangt u een e-mail melding met informatie over de verdachte beveiligings gebeurtenis. Details van de gebeurtenis zijn onder andere:
 
 * De aard van de anomalie
-* Naam van het opslagaccount
+* De naam van het opslag account
 * De tijd van de gebeurtenis
 * Het opslag type
 * De mogelijke oorzaken

@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc3c4a943f24ba1f987aa1daf513b9e05ada65a7
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309996"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020757"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Veelgestelde vragen over Azure Active Directory Connect
 
@@ -31,6 +31,10 @@ De inrichting van de Cloud is gepland om elke 2 minuten te worden uitgevoerd. El
 **V: bekijken van mislukte wachtwoord-hash-synchronisaties bij de eerste uitvoering. Waarom?**
 
 Dit is normaal gedrag. De fouten worden veroorzaakt doordat het gebruikers object niet aanwezig is in azure AD. Zodra de gebruiker is ingericht voor Azure AD, moeten wacht woord-hashes in de volgende uitvoering worden ingericht. Wacht op een aantal uitvoeringen en controleer of de wachtwoord-hash-synchronisatie geen fouten meer bevat.
+
+**V: wat gebeurt er als het Active Directory-exemplaar kenmerken heeft die niet worden ondersteund door Cloud provisoning (bijvoorbeeld Directory-extensies)?**
+
+De inrichting van de Cloud wordt uitgevoerd en de ondersteunde kenmerken worden ingericht. De niet-ondersteunde kenmerken worden niet ingericht in azure AD. Controleer de Directory-extensies in Active Directory en zorg ervoor dat u dit kenmerk niet nodig hebt om naar Azure AD te stromen. Als er een of meer kenmerken zijn vereist, kunt u overwegen Azure AD Connect synchronisatie te gebruiken of de vereiste gegevens te verplaatsen naar een van de ondersteunde kenmerken (bijvoorbeeld extensie kenmerken 1-15).
 
 **V: wat is het verschil tussen Azure AD Connect synchronisatie en Cloud inrichting?**
 

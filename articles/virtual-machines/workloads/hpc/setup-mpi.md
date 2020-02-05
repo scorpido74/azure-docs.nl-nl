@@ -1,6 +1,6 @@
 ---
-title: Instellen van de Message Passing Interface voor HPC - Azure Virtual Machines | Microsoft Docs
-description: Meer informatie over het instellen van de MPI voor HPC in Azure.
+title: Message Passing Interface instellen voor HPC-Azure-Virtual Machines | Microsoft Docs
+description: Meer informatie over het instellen van MPI voor HPC op Azure.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -12,22 +12,22 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 541e42a72ea604c4d71dc546b14dea2f0857bcc1
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 469e926932ffa11ef9f2a262b78a587ba435549e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797518"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023987"
 ---
-# <a name="set-up-message-passing-interface-for-hpc"></a>Instellen van de Message Passing Interface voor HPC
+# <a name="set-up-message-passing-interface-for-hpc"></a>Bericht interface voor het door geven van HPC instellen
 
-Message Passing Interface (MPI) werkbelastingen zijn een aanzienlijk deel van traditionele HPC-workloads. De SR-IOV ingeschakeld VM-grootten in Azure vrijwel elk smaak van MPI kunnen moet worden gebruikt. 
+MPI-workloads (Message Passing Interface) zijn een belang rijk onderdeel van traditionele HPC-workloads. Met de VM-grootten van SR-IOV in azure kunt u bijna alle MPI gebruiken. 
 
-MPI-opdrachten uitvoeren op virtuele machines vereist instellen van partitiesleutels (p-sleutels) voor een tenant. Volg de stappen in de [detecteren partitiesleutels](#discover-partition-keys) sectie voor meer informatie over het bepalen van de p-sleutelwaarden.
+Voor het uitvoeren van MPI-taken op Vm's is het instellen van partitie sleutels (p-sleutels) in een Tenant vereist. Volg de stappen in de sectie [partitie sleutels detecteren](#discover-partition-keys) voor meer informatie over het bepalen van de p-sleutel waarden.
 
 ## <a name="ucx"></a>UCX
 
-[UCX](https://github.com/openucx/ucx) biedt de beste prestaties op IB en werkt met MPICH en OpenMPI.
+[UCX](https://github.com/openucx/ucx) biedt de beste prestaties op IB en werkt met mpich en openmpi.
 
 ```bash
 wget https://github.com/openucx/ucx/releases/download/v1.4.0/ucx-1.4.0.tar.gz
@@ -45,7 +45,7 @@ Installeer UCX zoals eerder is beschreven.
 sudo yum install –y openmpi
 ```
 
-Bouw OpenMPI.
+OpenMPI bouwen.
 
 ```bash
 wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.0.tar.gz
@@ -55,19 +55,19 @@ cd openmpi-4.0.0
 make -j 8 && make install
 ```
 
-OpenMPI worden uitgevoerd.
+Voer OpenMPI uit.
 
 ```bash
 <ompi-install-path>/bin/mpirun -np 2 --map-by node --hostfile ~/hostfile -mca pml ucx --mca btl ^vader,tcp,openib -x UCX_NET_DEVICES=mlx5_0:1  -x UCX_IB_PKEY=0x0003  ./osu_latency
 ```
 
-Controleer uw partitiesleutel zoals hierboven vermeld.
+Controleer de hierboven vermelde partitie sleutel.
 
 ## <a name="mpich"></a>MPICH
 
 Installeer UCX zoals eerder is beschreven.
 
-Bouw MPICH.
+MPICH bouwen.
 
 ```bash
 wget https://www.mpich.org/static/downloads/3.3/mpich-3.3.tar.gz
@@ -77,17 +77,17 @@ cd mpich-3.3
 make -j 8 && make install
 ```
 
-MPICH uitgevoerd.
+MPICH uitvoeren.
 
 ```bash
 <mpich-install-path>/bin/mpiexec -n 2 -hostfile ~/hostfile -env UCX_IB_PKEY=0x0003 -bind-to hwthread ./osu_latency
 ```
 
-Controleer uw partitiesleutel zoals hierboven vermeld.
+Controleer de hierboven vermelde partitie sleutel.
 
 ## <a name="mvapich2"></a>MVAPICH2
 
-Bouw MVAPICH2.
+MVAPICH2 bouwen.
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.tar.gz
@@ -97,15 +97,15 @@ cd mvapich2-2.3
 make -j 8 && make install
 ```
 
-MVAPICH2 uitgevoerd.
+MVAPICH2 uitvoeren.
 
 ```bash
 <mvapich2-install-path>/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=48 ./osu_latency
 ```
 
-## <a name="platform-mpi-community-edition"></a>Platform MPI Community-editie
+## <a name="platform-mpi-community-edition"></a>Platform MPI Community Edition
 
-Installeer de vereiste pakketten voor MPI-Platform.
+Installeer de vereiste pakketten voor platform MPI.
 
 ```bash
 sudo yum install libstdc++.i686
@@ -114,19 +114,19 @@ Download platform MPI at https://www.ibm.com/developerworks/downloads/im/mpi/ind
 sudo ./platform_mpi-09.01.04.03r-ce.bin
 ```
 
-Volg het installatieproces.
+Volg het installatie proces.
 
 ## <a name="intel-mpi"></a>Intel MPI
 
-[Downloaden van Intel MPI](https://software.intel.com/mpi-library/choose-download).
+[Down load Intel mpi](https://software.intel.com/mpi-library/choose-download).
 
-De omgevingsvariabele I_MPI_FABRICS afhankelijk van de versie wijzigen. Gebruik voor Intel MPI 2018 `I_MPI_FABRICS=shm:ofa` en gebruik voor 2019, `I_MPI_FABRICS=shm:ofi`.
+Wijzig de I_MPI_FABRICS omgevings variabele, afhankelijk van de versie. Gebruik `I_MPI_FABRICS=shm:ofa` voor Intel MPI 2018 en gebruik voor 2019 `I_MPI_FABRICS=shm:ofi`.
 
-Proces vastmaken werkt goed voor 15, 30 en 60 PPN standaard.
+Proces vastmaken werkt standaard goed voor 15, 30 en 60 PPN.
 
-## <a name="osu-mpi-benchmarks"></a>OSU MPI Benchmarks
+## <a name="osu-mpi-benchmarks"></a>OSU MPI-benchmarks
 
-[Download OSU MPI Benchmarks](http://mvapich.cse.ohio-state.edu/benchmarks/) en untar.
+[Down load OSU mpi-benchmarks](http://mvapich.cse.ohio-state.edu/benchmarks/) en untar.
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.5.tar.gz
@@ -134,26 +134,26 @@ tar –xvf osu-micro-benchmarks-5.5.tar.gz
 cd osu-micro-benchmarks-5.5
 ```
 
-Bouw Benchmarks met behulp van een bepaalde MPI-bibliotheek:
+Benchmarks bouwen met een bepaalde MPI-bibliotheek:
 
 ```bash
 CC=<mpi-install-path/bin/mpicc>CXX=<mpi-install-path/bin/mpicxx> ./configure 
 make
 ```
 
-MPI Benchmarks zijn onder `mpi/` map.
+MPI-benchmarks bevinden zich onder `mpi/` map.
 
 
-## <a name="discover-partition-keys"></a>Partitiesleutels detecteren
+## <a name="discover-partition-keys"></a>Partitie sleutels detecteren
 
-Ontdek partitiesleutels (p-sleutels) om te communiceren met andere VM's binnen dezelfde tenant (Beschikbaarheidsset of VM-Schaalset).
+Detectie van partitie sleutels (p-sleutels) voor communicatie met andere Vm's binnen dezelfde Tenant (Beschikbaarheidsset of VM-Schaalset).
 
 ```bash
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 ```
 
-De grootste van de twee is de tenantsleutel die moet worden gebruikt met MPI. Voorbeeld: Als de volgende de p-sleutels zijn, moet 0x800b met MPI worden gebruikt.
+Hoe groter de twee is, is de Tenant sleutel die moet worden gebruikt met MPI. Voor beeld: als het volgende de p-sleutels zijn, moet 0x800b worden gebruikt met MPI.
 
 ```bash
 cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
@@ -162,14 +162,14 @@ cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 0x7fff
 ```
 
-Gebruik de partitie dan de partitiesleutel standaard (0x7fff). UCX vereist maximaal tien van p-sleutel die moet worden gewist. Bijvoorbeeld, UCX_IB_PKEY ingesteld als 0x000b voor 0x800b.
+Gebruik de partitie sleutel anders dan standaard (0x7fff). UCX vereist dat de MSB van p-sleutel moet worden gewist. Stel bijvoorbeeld UCX_IB_PKEY in als 0x000b voor 0x800b.
 
-Houd er ook rekening mee dat zolang de tenant (AVSet of VMSS) bestaat, de PKEYs hetzelfde blijven. Dit geldt zelfs wanneer knooppunten toegevoegd of verwijderd zijn. Nieuwe tenants ophalen verschillende PKEYs.
+Houd er ook rekening mee dat als de Tenant (AVSet of VMSS) bestaat, de PKEYs hetzelfde blijft. Dit geldt ook wanneer er knoop punten worden toegevoegd of verwijderd. Nieuwe tenants krijgen verschillende PKEYs.
 
 
-## <a name="set-up-user-limits-for-mpi"></a>Gebruikerslimieten instellen voor MPI
+## <a name="set-up-user-limits-for-mpi"></a>Gebruikers limieten instellen voor MPI
 
-Gebruikerslimieten instellen voor MPI.
+Gebruikers limieten instellen voor MPI.
 
 ```bash
 cat << EOF | sudo tee -a /etc/security/limits.conf
@@ -183,7 +183,7 @@ EOF
 
 ## <a name="set-up-ssh-keys-for-mpi"></a>SSH-sleutels voor MPI instellen
 
-Instellen van SSH-sleutels voor MPI-typen die moeten worden opgeslagen.
+Stel SSH-sleutels voor MPI-typen in waarvoor deze nodig is.
 
 ```bash
 ssh-keygen -f /home/$USER/.ssh/id_rsa -t rsa -N ''
@@ -192,10 +192,11 @@ Host *
     StrictHostKeyChecking no
 EOF
 cat /home/$USER/.ssh/id_rsa.pub >> /home/$USER/.ssh/authorized_keys
+chmod 600 /home/$USER/.ssh/authorized_keys
 chmod 644 /home/$USER/.ssh/config
 ```
 
-De bovenstaande syntaxis wordt ervan uitgegaan dat een gedeelde-basismap, anders .ssh directory moet worden gekopieerd naar elk knooppunt.
+De bovenstaande syntaxis gaat ervan uit dat een gedeelde basismap, else. ssh-map, naar elk knoop punt moet worden gekopieerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

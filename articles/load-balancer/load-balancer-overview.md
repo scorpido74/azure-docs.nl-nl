@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 186e8ee232fc8e0500f55404b65e00d7af696230
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 376741005f0755d01c95baad8d3a3d33e9952933
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760926"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023902"
 ---
 # <a name="what-is-azure-load-balancer"></a>Wat is Azure Load Balancer?
 
-*Taak verdeling* verwijst naar een gelijkmatige verdeling van belasting (binnenkomend netwerk verkeer) in een groep back-endservers of servers. Azure biedt [verschillende opties voor taak verdeling](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) die u kunt kiezen op basis van uw behoeften. In dit document worden de Azure Load Balancer beschreven.
+*Taak verdeling* verwijst naar een gelijkmatige verdeling van belasting (binnenkomend netwerk verkeer) in een groep back-endservers of servers. 
 
 Azure Load Balancer werkt op laag 4 van het OSI-model (Open Systems Interconnection). Het is het enige contact punt voor clients. Load Balancer distribueert inkomende stromen die binnenkomen bij de front-end van de load balancer voor back-endservers. Deze stromen zijn gebaseerd op geconfigureerde taakverdelings regels en status controles. De exemplaren van de back-endadresgroep kunnen Azure Virtual Machines of exemplaren in een schaalset voor virtuele machines zijn.
 
@@ -38,6 +38,11 @@ Een **[intern (of privé) Load Balancer](./concepts-limitations.md#internalloadb
 *Afbeelding: toepassingen met meerdere lagen verdelen met behulp van zowel open bare als interne Load Balancer*
 
 Zie [Azure Load Balancer onderdelen en beperkingen](./concepts-limitations.md) voor meer informatie over de afzonderlijke Load Balancer onderdelen
+
+>[!NOTE]
+> Azure biedt een pakket volledig beheerde oplossingen voor taakverdeling voor uw scenario's. Zie [Wat is Azure Load Balancer?](../load-balancer/load-balancer-overview.md) als u behoefte hebt aan hoge prestaties en lage latentie, laag-4 taak verdeling. Als u op zoek bent naar globale DNS-taak verdeling, raadpleegt u [Wat is Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Uw end-to-end-scenario's kunnen van pas komen bij het combi neren van deze oplossingen.
+>
+> Zie [overzicht van opties voor taak verdeling in azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)voor een vergelijking van Azure-opties voor taak verdeling.
 
 ## <a name="why-use-azure-load-balancer"></a>Waarom Azure Load Balancer gebruiken?
 Met Standard Load Balancer kunt u uw toepassingen schalen en Maxi maal beschik bare Services maken. De Load Balancer ondersteunt zowel binnenkomende als uitgaande scenario's. De Load Balancer biedt lage latentie en hoge door Voer en schaalt Maxi maal miljoenen stromen voor alle TCP-en UDP-toepassingen.

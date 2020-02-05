@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b13349ae4293f6377429e9dc72b6c2cb43f92348
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 35965f238ed5b7768dd174788453838c917adb32
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435115"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023222"
 ---
 # <a name="configure-the-application-dashboard"></a>Het toepassings dashboard configureren
 
@@ -48,7 +48,6 @@ Wanneer een operator nu het standaard toepassings dashboard weergeeft, zien ze d
 > [!div class="mx-imgBorder"]
 > ![tabblad dash board met weer gegeven instellingen en eigenschappen voor de tegel](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png)
 
-
 ## <a name="edit-tiles"></a>Tegels bewerken
 
 Als u een tegel op het dash board wilt bewerken, klikt u eerst op **bewerken** in de linkerbovenhoek van de pagina, waardoor de bewerkings modus voor het dash board en alle tegels wordt geopend. 
@@ -70,21 +69,21 @@ U kunt de grafiek visualisatie ook wijzigen door op het **liniaal** pictogram op
 
 De volgende tabel bevat een overzicht van het gebruik van tegels in azure IoT Central:
  
-| Tile | Dashboard | Beschrijving
+| Tegel | Dashboard | Beschrijving
 | ----------- | ------- | ------- |
 | Inhoud | Dash boards van toepassingen en apparaten instellen |Ondersteunde tegels kunnen worden weer gegeven op tegels die kop-en beschrijvings tekst bevatten. U kunt deze tegel ook gebruiken als koppelings tegel om een gebruiker in staat te stellen te navigeren naar een URL die betrekking heeft op uw toepassing.|
 | afbeelding | Dash boards van toepassingen en apparaten instellen |Afbeeldings tegels geven een aangepaste afbeelding weer en kunnen worden geklikt. Gebruik een tegel voor afbeeldingen om afbeeldingen toe te voegen aan een dash board en schakel optioneel een gebruiker in om naar een URL te navigeren die relevant is voor uw toepassing.|
 | Label | Toepassings dashboards |Met label tegels wordt aangepaste tekst op een dash board weer gegeven. U kunt de grootte van de tekst kiezen. Gebruik een label tegel om relevante informatie toe te voegen aan het dash board, zoals beschrijvingen, contact gegevens of Help.|
 | Kaart | Dash boards van toepassingen en apparaten instellen |Kaart tegels geven de locatie en status van een apparaat op een kaart weer. U kunt bijvoorbeeld weer geven waar een apparaat zich bevindt en of de ventilator is ingeschakeld.|
-| Lijndiagram | Dash boards van toepassingen en apparaten |Met lijn diagram tegels wordt een diagram weer gegeven van de cumulatieve meting voor een apparaat gedurende een bepaalde periode. U kunt bijvoorbeeld een lijn diagram weer geven waarin de gemiddelde Tempe ratuur en druk van een apparaat gedurende het afgelopen uur worden weer gegeven.|
-| Staafdiagram | Dash boards van toepassingen en apparaten |In staafdiagram tegels wordt een grafiek weer gegeven met statistische metingen voor een apparaat gedurende een bepaalde periode. U kunt bijvoorbeeld een staaf diagram weer geven waarin de gemiddelde Tempe ratuur en druk van een apparaat gedurende het afgelopen uur worden weer gegeven.|
+| Lijn diagram | Dash boards van toepassingen en apparaten |Met lijn diagram tegels wordt een diagram weer gegeven van de cumulatieve meting voor een apparaat gedurende een bepaalde periode. U kunt bijvoorbeeld een lijn diagram weer geven waarin de gemiddelde Tempe ratuur en druk van een apparaat gedurende het afgelopen uur worden weer gegeven.|
+| Staaf diagram | Dash boards van toepassingen en apparaten |In staafdiagram tegels wordt een grafiek weer gegeven met statistische metingen voor een apparaat gedurende een bepaalde periode. U kunt bijvoorbeeld een staaf diagram weer geven waarin de gemiddelde Tempe ratuur en druk van een apparaat gedurende het afgelopen uur worden weer gegeven.|
 | Cirkel diagram | Dash boards van toepassingen en apparaten instellen |Cirkel diagram tegels geven een diagram van geaggregeerde metingen voor een apparaat gedurende een bepaalde periode.|
 | Heat Map | Dash boards van toepassingen en apparaten instellen |Heatmap tegels geven informatie weer over de apparaatset, weer gegeven als kleuren.|
-| Gebeurtenishistorie | Dash boards van toepassingen en apparaten |Met de tegels van gebeurtenis geschiedenis worden de gebeurtenissen voor een apparaat gedurende een bepaalde periode weer gegeven. U kunt dit bijvoorbeeld gebruiken om alle temperatuur wijzigingen voor een apparaat in het afgelopen uur weer te geven.|
-| Statusgeschiedenis | Dash boards van toepassingen en apparaten |In tegels met status geschiedenis worden de meet waarden voor een tijds periode weer gegeven. U kunt dit bijvoorbeeld gebruiken om de temperatuur waarden voor een apparaat in het afgelopen uur weer te geven.|
+| Gebeurtenis geschiedenis | Dash boards van toepassingen en apparaten |Met de tegels van gebeurtenis geschiedenis worden de gebeurtenissen voor een apparaat gedurende een bepaalde periode weer gegeven. U kunt dit bijvoorbeeld gebruiken om alle temperatuur wijzigingen voor een apparaat in het afgelopen uur weer te geven.|
+| Status geschiedenis | Dash boards van toepassingen en apparaten |In tegels met status geschiedenis worden de meet waarden voor een tijds periode weer gegeven. U kunt dit bijvoorbeeld gebruiken om de temperatuur waarden voor een apparaat in het afgelopen uur weer te geven.|
 | KPI | Dash boards van toepassingen en apparaten | KPI-tegels geven een geaggregeerde telemetrie of gebeurtenis meting voor een tijds periode weer. U kunt dit bijvoorbeeld gebruiken om de maximale Tempe ratuur voor een apparaat in het afgelopen uur weer te geven.|
-| Laatste bekende waarde | Dash boards van toepassingen en apparaten |De laatste bekende waarde-tegels geven de meest recente waarde weer voor een telemetrie of status meting. U kunt deze tegel bijvoorbeeld gebruiken om de meest recente metingen van de Tempe ratuur, druk en lucht vochtigheid voor een apparaat weer te geven.|
+| Laatst bekende waarde | Dash boards van toepassingen en apparaten |De laatste bekende waarde-tegels geven de meest recente waarde weer voor een telemetrie of status meting. U kunt deze tegel bijvoorbeeld gebruiken om de meest recente metingen van de Tempe ratuur, druk en lucht vochtigheid voor een apparaat weer te geven.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u uw Azure IoT Central standaard toepassings dashboard configureert, kunt u [leren hoe u installatie kopieën voorbereidt en uploadt](howto-prepare-images.md).
+Nu u hebt geleerd hoe u uw Azure IoT Central standaard toepassings dashboard configureert, kunt u [meer informatie over het maken van een persoonlijk dash board](howto-create-personal-dashboards.md).

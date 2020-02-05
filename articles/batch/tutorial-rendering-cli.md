@@ -2,19 +2,19 @@
 title: Een scène renderen in de cloud - Azure Batch
 description: 'Zelfstudie: Een Autodesk 3ds Max-scène renderen met Arnold met behulp van de Batch-renderingservice en de Azure-opdrachtregelinterface'
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: tutorial
 ms.date: 12/11/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: e63bd26ec226cfeba1c11570b085fd88570fbb2d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 12205fd04b015ac3cfe32765779808b636f53946
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029190"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023069"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Zelfstudie: Een scène renderen met Azure Batch 
 
@@ -70,7 +70,7 @@ az batch account create \
     --location eastus2
 ```
 
-Als u rekenpools en -taken wilt maken en beheren, moet u zich verifiëren bij Batch. Meld u aan bij het account met behulp van de opdracht [az batch account login](/cli/azure/batch/account#az-batch-account-login). Nadat u zich hebt aangemeld, maken uw `az batch`-opdrachten gebruik van deze accountcontext. In het volgende voorbeeld wordt verificatie met gedeelde sleutels gebruikt, op basis van de naam en sleutel van het Batch-account. Batch ondersteunt ook verificatie via [Azure Active Directory](batch-aad-auth.md) om afzonderlijke gebruikers of een toepassing zonder toezicht te verifiëren.
+Als u rekenpools en -taken wilt maken en beheren, moet u zich verifiëren bij Batch. Meld u aan bij het account met behulp van de opdracht [az batch account login](/cli/azure/batch/account#az-batch-account-login). Nadat u zich hebt aangemeld, maken de `az batch`-opdrachten gebruik van deze accountcontext. In het volgende voorbeeld wordt verificatie met gedeelde sleutels gebruikt, op basis van de naam en sleutel van het Batch-account. Batch ondersteunt ook verificatie via [Azure Active Directory](batch-aad-auth.md) om afzonderlijke gebruikers of een toepassing zonder toezicht te verifiëren.
 
 ```azurecli-interactive 
 az batch account login \
@@ -332,7 +332,7 @@ Open een van de bestanden op uw computer. Het gerenderde frame 6 ziet er als vol
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt de opdracht [az group delete](/cli/azure/group#az-group-delete) gebruiken om de resourcegroep, het Batch-account, de pools en alle gerelateerde resources te verwijderen wanneer u deze niet meer nodig hebt. U verwijdert de resources als volgt:
+U kunt de opdracht [az group delete](/cli/azure/group#az-group-delete) gebruiken om de resourcegroep, het Batch-account, de pools en alle gerelateerde resources te verwijderen wanneer u deze niet meer nodig hebt. Het verwijderen van de resources gaat als volgt:
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

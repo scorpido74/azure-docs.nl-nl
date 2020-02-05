@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d1fde92e9315e8df3f65b2ab91ced74b377c0a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 70fe718884796ac127be38c375003dd728089be8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293450"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016031"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -85,7 +85,7 @@ Een Windows Server 2019 Data Center-VM maken in azure met Azure AD-aanmelding:
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com), met een account dat toegang heeft tot het maken van vm's en selecteer **+ een resource maken**.
 1. Typ **Windows Server** in zoeken in de zoek balk van Marketplace.
    1. Klik op **Windows Server** en kies **Windows Server 2019 Data Center** in een vervolg keuzelijst software plan selecteren.
-   1. Klik op **Maken**.
+   1. Klik op **maken**.
 1. Schakel op het tabblad beheer de optie in om u aan te **melden met Aad-referenties (preview)** onder de sectie Azure Active Directory van van **uit op aan.**
 1. Zorg ervoor dat door het **systeem toegewezen beheerde identiteit** onder het gedeelte identiteit is ingesteld op **aan**. Deze actie moet automatisch worden uitgevoerd wanneer u aanmelden met Azure AD-referenties inschakelt.
 1. Bespreek de rest van de ervaring van het maken van een virtuele machine. Tijdens dit voor beeld moet u een gebruikers naam en wacht woord voor de beheerder voor de virtuele machine maken.
@@ -239,9 +239,9 @@ De AADLoginForWindows-extensie moet worden geïnstalleerd om de virtuele machine
 
    | Opdracht die moet worden uitgevoerd | Verwachte uitvoer |
    | --- | --- |
-   | krul-H meta gegevens: True "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Juiste informatie over de Azure VM |
-   | krul-H meta gegevens: True "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Geldige Tenant-ID die is gekoppeld aan het Azure-abonnement |
-   | krul-H meta gegevens: True "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Geldig toegangs token dat is uitgegeven door Azure Active Directory voor de beheerde identiteit die aan deze VM is toegewezen |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/instance?api-version=2017-08-01"` | Juiste informatie over de Azure VM |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01"` | Geldige Tenant-ID die is gekoppeld aan het Azure-abonnement |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | Geldig toegangs token dat is uitgegeven door Azure Active Directory voor de beheerde identiteit die aan deze VM is toegewezen |
 
    > [!NOTE]
    > Het toegangs token kan worden gedecodeerd met een hulp programma als [http://calebb.net/](http://calebb.net/). Controleer of de ' AppID ' in het toegangs token overeenkomt met de beheerde identiteit die is toegewezen aan de virtuele machine.

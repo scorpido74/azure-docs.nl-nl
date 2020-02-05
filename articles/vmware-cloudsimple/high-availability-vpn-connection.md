@@ -1,6 +1,6 @@
 ---
-title: 'Azure VMware-oplossing op CloudSimple: Configureer een hoge Beschik baarheid van on-premises naar CloudSimple VPN-gateway'
-description: Hierin wordt beschreven hoe u een Maxi maal beschik bare verbinding van uw on-premises omgeving configureert met een CloudSimple VPN-gateway die is ingeschakeld voor hoge Beschik baarheid
+title: 'Azure VMware-oplossingen (AVS): Configureer hoge Beschik baarheid van on-premises naar AVS VPN gateway'
+description: Hierin wordt beschreven hoe u een verbinding met hoge Beschik baarheid configureert vanuit uw on-premises omgeving naar een AVS VPN-gateway die is ingeschakeld voor hoge Beschik baarheid
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b6dc309c1405a07cf192301208a97975ca9ce256
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927294"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025262"
 ---
-# <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Een verbinding met hoge Beschik baarheid van on-premises naar CloudSimple VPN-gateway configureren
+# <a name="configure-a-high-availability-connection-from-on-premises-to-an-avs-vpn-gateway"></a>Een Maxi maal beschik bare verbinding van on-premises naar een AVS VPN-gateway configureren
 
-Netwerk beheerders kunnen een VPN-verbinding tussen sites van Maxi maal Beschik baarheid configureren van de on-premises omgeving naar een CloudSimple VPN-gateway.
+Netwerk beheerders kunnen een VPN-verbinding tussen sites van Maxi maal Beschik baarheid configureren van de on-premises omgeving naar een AVS VPN-gateway.
 
 Deze hand leiding bevat stappen voor het configureren van een on-premises Firewall voor een VPN-verbinding met hoge Beschik baarheid van IPsec-site-naar-site. De gedetailleerde stappen zijn specifiek voor het type on-premises firewall. Als voor beeld bevat deze hand leiding stappen voor twee typen firewalls: Cisco ASA en Palo Alto Networks.
 
@@ -25,8 +25,8 @@ Deze hand leiding bevat stappen voor het configureren van een on-premises Firewa
 
 Voer de volgende taken uit voordat u de on-premises firewall configureert.
 
-1. Controleer of uw organisatie de vereiste knoop punten heeft [ingericht](create-nodes.md) en ten minste één CloudSimple-privécloud heeft gemaakt.
-2. [Configureer een site-naar-site-VPN-gateway](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) tussen uw on-premises netwerk en uw CloudSimple-privécloud.
+1. Controleer of uw organisatie de vereiste knoop punten heeft [ingericht](create-nodes.md) en ten minste één privécloud heeft gemaakt.
+2. [Configureer een site-naar-site-VPN-gateway](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) tussen uw on-premises netwerk en de privécloud van uw AVS.
 
 Zie [overzicht van VPN-gateways](cloudsimple-vpn-gateways.md) voor ondersteunde fase 1 en fase 2-Voorst Ellen.
 
@@ -34,7 +34,7 @@ Zie [overzicht van VPN-gateways](cloudsimple-vpn-gateways.md) voor ondersteunde 
 
 De instructies in deze sectie zijn van toepassing op Cisco ASA versie 8,4 en hoger. In het configuratie voorbeeld wordt Cisco Adaptive Security-toestel software versie 9,10 geïmplementeerd en geconfigureerd in de modus IKEv1.
 
-Voor een goede werking van site-naar-site-VPN moet u UDP 500/4500 en ESP (IP-protocol 50) van de CloudSimple Primary en secundair open bare IP (peer-IP) toestaan op de buitenste interface van de on-premises Cisco ASA VPN-gateway.
+Voor een goede werking van het site-naar-site-VPN moet u UDP 500/4500 en ESP (IP-protocol 50) van de AVS primaire en secundaire open bare IP (peer-IP) toestaan op de externe interface van de on-premises Cisco ASA VPN-gateway.
 
 ### <a name="1-configure-phase-1-ikev1"></a>1. fase 1 (IKEv1) configureren
 
@@ -71,7 +71,7 @@ ikev1 pre-shared-key *****
 
 ### <a name="4-configure-phase-2-ipsec"></a>4. fase 2 (IPsec) configureren
 
-Als u fase 2 (IPsec) wilt configureren, maakt u een toegangs beheer lijst (ACL) waarmee het verkeer dat moet worden versleuteld en getunneld, wordt gedefinieerd. In het volgende voor beeld is het verkeer van belang van de tunnel die is gebrond vanuit het on-premises lokale subnet (10.16.1.0/24) naar het externe subnet van de Privécloud (192.168.0.0/24). De ACL kan meerdere vermeldingen bevatten als er meerdere subnetten tussen de sites zijn.
+Als u fase 2 (IPsec) wilt configureren, maakt u een toegangs beheer lijst (ACL) waarmee het verkeer dat moet worden versleuteld en getunneld, wordt gedefinieerd. In het volgende voor beeld is het verkeer van belang van de tunnel die is gebrond vanuit het on-premises lokale subnet (10.16.1.0/24) naar het externe subnet van de AVS-privécloud (192.168.0.0/24). De ACL kan meerdere vermeldingen bevatten als er meerdere subnetten tussen de sites zijn.
 
 In Cisco ASA-versies 8,4 en hoger kunnen objecten of object groepen worden gemaakt die fungeren als containers voor de netwerken, subnetten, IP-adressen van hosts of meerdere objecten. Maak een object voor het lokale en een object voor de externe subnetten en gebruik het voor de crypto-ACL en de NAT-instructies.
 
@@ -82,7 +82,7 @@ object network AZ_inside
 subnet 10.16.1.0 255.255.255.0
 ```
 
-#### <a name="define-the-cloudsimple-remote-subnet-as-an-object"></a>Het CloudSimple-externe subnet definiëren als een object
+#### <a name="define-the-avs-remote-subnet-as-an-object"></a>Het externe subnet AVS als een object definiëren
 
 ```
 object network CS_inside
@@ -97,7 +97,7 @@ access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 
 ### <a name="5-configure-the-transform-set"></a>5. de transformatie set configureren
 
-Configureer de transformatieset (TS), die het trefwoord ```ikev1```moet omvatten. De versleutelings-en hash-kenmerken die zijn opgegeven in de TS moeten overeenkomen met de para meters die worden vermeld in de [standaard configuratie voor CloudSimple VPN-gateways](cloudsimple-vpn-gateways.md).
+Configureer de transformatieset (TS), die het trefwoord ```ikev1```moet omvatten. De versleutelings-en hash-kenmerken die zijn opgegeven in de TS moeten overeenkomen met de para meters die worden vermeld in de [standaard configuratie voor AVS VPN-gateways](cloudsimple-vpn-gateways.md#cryptographic-parameters).
 
 ```
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 
@@ -143,13 +143,13 @@ Uitvoer fase 2:
 
 De instructies in deze sectie zijn van toepassing op Palo Alto Networks versie 7,1 en hoger. In dit configuratie voorbeeld wordt de software versie 8.1.0 van de VM-serie Palo Alto Networks geïmplementeerd en geconfigureerd in de modus IKEv1.
 
-Voor een goede werking van het site-naar-site-VPN moet u UDP 500/4500 en ESP (IP-protocol 50) van de CloudSimple Primary en secundair open bare IP (peer-IP) toestaan op de buitenste interface van de on-premises Palo Alto Networks gateway.
+Voor een goede werking van het site-naar-site-VPN moet u UDP 500/4500 en ESP (IP-protocol 50) van de AVS primaire en secundaire open bare IP (peer-IP) toestaan op de buitenste interface van de on-premises Palo Alto Networks-gateway.
 
 ### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. primaire en secundaire tunnel interfaces maken
 
 Meld u aan bij de Palo Alto firewall, selecteer **Network** > **Interfaces** > **tunnel** > **toevoegen**, Configureer de volgende velden en klik op **OK**.
 
-* Interface naam. Het eerste veld wordt automatisch ingevuld met het sleutel woord tunnel. Voer in het veld aangrenzend een getal in tussen 1 en 9999. Deze interface wordt gebruikt als een primaire tunnel interface om site-naar-site-verkeer tussen het on-premises Data Center en de Privécloud uit te voeren.
+* Interface naam. Het eerste veld wordt automatisch ingevuld met het sleutel woord tunnel. Voer in het veld aangrenzend een getal in tussen 1 en 9999. Deze interface wordt gebruikt als een primaire tunnel interface om site-naar-site-verkeer tussen het on-premises Data Center en de Privécloud van de AVS over te dragen.
 * Heffen. Voer opmerkingen in om het doel van de tunnel eenvoudig te identificeren
 * Netstroom profiel. De standaard waarde laten staan.
 * Configuraties. Interface toewijzen aan: virtuele router: Selecteer **standaard**. 
@@ -158,14 +158,16 @@ Meld u aan bij de Palo Alto firewall, selecteer **Network** > **Interfaces** > *
 
 Omdat deze configuratie voor een VPN met hoge Beschik baarheid is, zijn twee tunnel interfaces vereist: één primaire en een secundaire. Herhaal de vorige stappen om de secundaire tunnel interface te maken. Selecteer een andere tunnel-ID en een ander ongebruikt/32 IP-adres.
 
-### <a name="2-set-up-static-routes-for-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. Stel statische routes in voor de subnetten van de Privécloud die moeten worden bereikt via de site-naar-site-VPN
+### <a name="2-set-up-static-routes-for-avs-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. Stel statische routes in voor de automatische AVS-Cloud subnetten die moeten worden bereikt via de site-naar-site-VPN
 
-Routes zijn nodig om de on-premises subnetten CloudSimple Private Cloud-subnetten te bereiken.
+Routes zijn nodig om de on-premises subnetten te bereiken in de Cloud-subnetten van de AVS.
 
 Selecteer **netwerk** > **virtuele Routers** > *standaard* > **statische routes** > **toevoegen**, Configureer de volgende velden en klik op **OK**.
 
-* naam. Voer een naam in voor een eenvoudige identificatie van het doel van de route.
-* Beoogde. Geef de CloudSimple particuliere cloud subnetten op die via S2S-tunnel interfaces van on-premises moeten worden bereikt
+* Naam. Voer een naam in voor een eenvoudige identificatie van het doel van de route.
+
+* Beoogde. Geef de Cloud subnets van de AVS op die van on-premises moeten worden bereikt via S2S-tunnel interfaces
+
 * Interface. Selecteer in de vervolg keuzelijst de primaire tunnel interface die u hebt gemaakt in stap-1 (sectie-2). In dit voor beeld is tunnel. 20.
 * Volgende hop. Selecteer **Geen**.
 * Beheer afstand. De standaard waarde laten staan.
@@ -174,7 +176,7 @@ Selecteer **netwerk** > **virtuele Routers** > *standaard* > **statische routes*
 * BFD-profiel. De standaard waarde laten staan.
 * Pad bewaken. Schakel dit selectie vakje uit.
 
-Herhaal de vorige stappen om een andere route te maken voor particuliere cloud-subnetten om te gebruiken als een secundaire/back-uproute via een secundaire tunnel interface. Selecteer deze keer een andere tunnel-ID en een hogere metrische waarde dan voor de primaire route.
+Herhaal de vorige stappen om een andere route te maken voor nieuwe AVS-subnetten in de cloud om te gebruiken als secundaire/back-uproute via de secundaire tunnel interface. Selecteer deze keer een andere tunnel-ID en een hogere metrische waarde dan voor de primaire route.
 
 ### <a name="3-define-the-cryptographic-profile"></a>3. het cryptografische profiel definiëren
 
@@ -182,7 +184,7 @@ Definieer een cryptografisch profiel waarmee de protocollen en algoritmen voor i
 
 Selecteer **netwerk** > **netwerk profielen uit te vouwen** > **IKE-crypto** > **toevoegen**, Configureer de volgende velden en klik op **OK**.
 
-* naam. Voer een naam in voor het IKE-crypto profiel.
+* Naam. Voer een naam in voor het IKE-crypto profiel.
 * DH-groep. Klik op **toevoegen** en selecteer de juiste DH-groep.
 * Versleuteling. Klik op **toevoegen** en selecteer de juiste versleutelings methode.
 * Verificatie. Klik op **toevoegen** en selecteer de juiste verificatie methode.
@@ -197,17 +199,17 @@ Selecteer **netwerk** > **netwerk profielen uit te vouwen** > **IKE-gateways** >
 
 Tabblad Algemeen:
 
-* naam. Voer de naam in voor de IKE-gateway die moet worden gekoppeld aan de primaire CloudSimple VPN-peer.
+* Naam. Voer de naam in voor de IKE-gateway die moet worden gekoppeld aan de primaire AVS VPN-peer.
 * Versie. Selecteer de **modus alleen IKEv1**.
 * Adres type. Selecteer **IPv4**.
 * Interface. Selecteer de open bare interface voor Facing of buiten.
 * Lokaal IP-adres. De standaard waarde laten staan.
 * IP-adres type van peer. Selecteer **IP**.
-* Adres van peer. Voer het primaire IP-adres van CloudSimple VPN peer in.
+* Adres van peer. Voer het IP-adres van de primaire AVS VPN-peer in.
 * Verificatie. Selecteer een **vooraf gedeelde sleutel**.
-* Vooraf gedeelde sleutel/Bevestig de vooraf gedeelde sleutel. Voer de vooraf gedeelde sleutel in die overeenkomt met de CloudSimple VPN-gateway sleutel.
+* Vooraf gedeelde sleutel/Bevestig de vooraf gedeelde sleutel. Voer de vooraf gedeelde sleutel in die overeenkomt met de sleutel van de AVS VPN-gateway.
 * Lokale identificatie. Voer het open bare IP-adres van de on-premises Palo Alto firewall in.
-* Peer-identificatie. Voer het primaire IP-adres van CloudSimple VPN peer in.
+* Peer-identificatie. Voer het IP-adres van de primaire AVS VPN-peer in.
 
 Tabblad Geavanceerde opties:
 
@@ -226,7 +228,7 @@ Herhaal de vorige stappen om de secundaire IKE-gateway te maken.
 
 Selecteer **netwerk** > **netwerk profielen uit te vouwen** > **IPSec crypto** > **toevoegen**, Configureer de volgende velden en klik op **OK**.
 
-* naam. Voer een naam in voor het IPsec-crypto profiel.
+* Naam. Voer een naam in voor het IPsec-crypto profiel.
 * IPsec-protocol. Selecteer **ESP**.
 * Versleuteling. Klik op **toevoegen** en selecteer de juiste versleutelings methode.
 * Verificatie. Klik op **toevoegen** en selecteer de juiste verificatie methode.
@@ -234,13 +236,13 @@ Selecteer **netwerk** > **netwerk profielen uit te vouwen** > **IPSec crypto** >
 * Dood. Stel in op 30 minuten.
 * Kunt. Schakel het selectie vakje uit.
 
-Herhaal de vorige stappen om een ander IPsec-crypto profiel te maken, dat wordt gebruikt als de secundaire CloudSimple VPN-peer. Hetzelfde IPSEC-crypto profiel kan ook worden gebruikt voor de primaire en secundaire IPsec-tunnels (Zie de volgende procedure).
+Herhaal de vorige stappen om een ander IPsec-crypto profiel te maken, dat wordt gebruikt als de secundaire AVS VPN-peer. Hetzelfde IPSEC-crypto profiel kan ook worden gebruikt voor de primaire en secundaire IPsec-tunnels (Zie de volgende procedure).
 
 ### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. Monitor profielen definiëren voor tunnel bewaking
 
 Selecteer **netwerk** > **netwerk profielen uit te breiden** ** >  > ** **toevoegen**, Configureer de volgende velden en klik op **OK**.
 
-* naam. Voer een naam in van het monitor profiel dat moet worden gebruikt voor het controleren van de tunnel voor proactieve reactie op de fout.
+* Naam. Voer een naam in van het monitor profiel dat moet worden gebruikt voor het controleren van de tunnel voor proactieve reactie op de fout.
 * Optreden. Selecteer **failover**.
 * Bereik. Voer de waarde **3**in.
 * Spreek. Voer de waarde **7**in.
@@ -251,7 +253,7 @@ Selecteer **netwerk** > **IPSec-tunnels** > **toevoegen**, Configureer de volgen
 
 Tabblad Algemeen:
 
-* naam. Voer een naam in voor de primaire IPSEC-tunnel die moet worden gekoppeld aan de primaire CloudSimple VPN-peer.
+* Naam. Voer een naam in voor de primaire IPSEC-tunnel die moet worden gekoppeld aan de primaire AVS VPN-peer.
 * Tunnel interface. Selecteer de primaire tunnel interface.
 * voert. De standaard waarde laten staan.
 * Adres type. Selecteer **IPv4**.
@@ -260,19 +262,19 @@ Tabblad Algemeen:
 * Replay-beveiliging inschakelen. De standaard waarde laten staan.
 * TOS-header kopiëren. Schakel het selectie vakje uit.
 * Tunnel monitor. Schakel het selectie vakje in.
-* Doel-IP. Voer een IP-adres in dat deel uitmaakt van het CloudSimple Private Cloud-subnet dat is toegestaan via de site-naar-site-verbinding. Zorg ervoor dat de tunnel interfaces (zoals tunnel. 20-10.64.5.2/32 en tunnel. 30-10.64.6.2/32) op Palo Alto het IP-adres van de CloudSimple Privécloud kunnen bereiken via de site-naar-site-VPN. Zie de volgende configuratie voor proxy-Id's.
+* Doel-IP. Voer een IP-adres in dat deel uitmaakt van het subnet van de AVS-Privécloud dat is toegestaan via de site-naar-site-verbinding. Zorg ervoor dat de tunnel interface (zoals tunnel. 20-10.64.5.2/32 en tunnel. 30-10.64.6.2/32) op Palo Alto toestemming heeft om het IP-adres van de AVS-Privécloud te bereiken via de site-naar-site VPN. Zie de volgende configuratie voor proxy-Id's.
 * Uplinkpoortprofiel. Selecteer het monitor profiel.
 
 Tabblad Proxy-Id's: Klik op **IPv4** > het volgende **toe te voegen** en te configureren:
 
 * Proxy-ID. Voer een naam in voor het interessante verkeer. Er kunnen meerdere proxy-Id's binnen één IPsec-tunnel worden uitgevoerd.
-* Lokale. Geef de on-premises lokale subnetten op die via de site-naar-site-VPN mogen communiceren met Privécloud-subnetten.
-* Beveiligingslek. Geef de externe subnetten voor de Privécloud op die mogen communiceren met de lokale subnetten.
+* Lokale. Geef de on-premises lokale subnetten op die via de site-naar-site-VPN mogen communiceren met de subnetten van de Privécloud persoonlijke Clouds.
+* Beveiligingslek. Geef de automatische AVS-subnetten voor de Privécloud op die mogen communiceren met de lokale subnetten.
 * Protocolsubstatus. Selecteer **een**.
 
-Herhaal de vorige stappen om nog een IPsec-tunnel te maken die u voor de secundaire CloudSimple VPN-peer kunt gebruiken.
+Herhaal de vorige stappen om nog een IPsec-tunnel te maken die u voor de secundaire AVS VPN-peer kunt gebruiken.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Naslaginformatie
 
 NAT configureren op Cisco ASA:
 

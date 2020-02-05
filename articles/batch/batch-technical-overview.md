@@ -4,7 +4,7 @@ description: Meer informatie over het gebruik van de Azure Batch-service voor gr
 services: batch
 documentationcenter: ''
 author: mscurrell
-manager: gwallace
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
-ms.openlocfilehash: ee61f0f550a09640469914d29bde175028b59142
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094328"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022797"
 ---
 # <a name="what-is-azure-batch"></a>Wat is Azure Batch?
 
@@ -63,7 +63,7 @@ Workload-specifieke mogelijkheden van een hoger niveau zijn voor Azure Batch ook
 U kunt ook Batch-taken uitvoeren als onderdeel van een grotere Azure-werkstroom, beheerd door hulpprogramma's zoals [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md).
 
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 Een gangbare oplossing voor Batch, bestaat uit het uitschalen van intrinsiek parallel werk, zoals de rendering van beelden voor 3D-scènes, op een pool van rekenknooppunten. Deze pool van rekenknooppunten kan uw "render farm" zijn, die tientallen, honderden of zelfs duizenden kernen aan uw renderingjob beschikbaar stelt.
 
 Het volgende diagram toont een algemene Batch-werkstroom, met een clienttoepassing of gehoste service die gebruikmaakt van Batch om een parallelle workload uit te voeren.
@@ -71,14 +71,14 @@ Het volgende diagram toont een algemene Batch-werkstroom, met een clienttoepassi
 ![Overzicht van Batch-oplossing](./media/batch-technical-overview/tech_overview_03.png)
 
 
-|Stap  |Description  |
+|Stap  |Beschrijving  |
 |---------|---------|
-|1.  Upload de **invoerbestanden** en de **toepassingen** die deze bestanden zullen verwerken naar uw Azure Storage-account.     |De invoerbestanden kunnen alle gegevens zijn die uw toepassing zal verwerken, zoals de modellering van financiële gegevens of te transcoderen videobestanden. De toepassingsbestanden kunnen scripts of toepassingen bevatten die de gegevens verwerken, zoals een mediatranscoder.|
-|2.  Maak een Batch-**pool** van rekenknooppunten in uw Batch-account, een **taak** voor het uitvoeren van de workload op de groep, en **opdrachten** binnen de taak.     | Pool-knooppunten zijn de virtuele machines die uw taken uitvoeren. Geef eigenschappen op, zoals het aantal en de grootte van de knooppunten, een Windows- of Linux-VM-installatiekopie, en een toepassing wordt geïnstalleerd wanneer de knooppunten aan de pool worden toegevoegd. Beheer de kosten en de grootte van de pool met behulp van [Lage-prioriteit VM’s](batch-low-pri-vms.md) of [automatisch schalen](batch-automatic-scaling.md) van het aantal knooppunten als de workload wordt gewijzigd. <br/><br/>Wanneer u taken aan een taak toevoegt, plant de Batch-service automatisch de taken voor uitvoering op de rekenknooppunten in de pool. Elke taak maakt gebruik van de toepassing die u hebt geüpload om de invoerbestanden te verwerken. |
-|3.  Download **invoerbestanden** en de **toepassingen** in Batch     |Voordat elke taak wordt uitgevoerd, kan deze de invoerbestanden naar het toegewezen rekenknooppunt downloaden. Als de toepassing nog niet op de pool-knooppunten is geïnstalleerd, kan deze in plaats daarvan hier worden gedownload. Als het downloaden vanuit Azure Storage is voltooid, wordt de taak wordt uitgevoerd op het toegewezen knooppunt.|
-|4.  **Taakuitvoering** controleren     |Wanneer de taken worden uitgevoerd, kunt u in Batch een query uitvoeren om de voortgang van de taak en de bijbehorende opdrachten te controleren. Uw clienttoepassing of -service communiceert met de Batch-service via HTTPS. Omdat u mogelijk duizenden taken bewaakt die worden uitgevoerd op duizenden rekenknooppunten, moet u ervoor zorgen dat u [een query op de Batch-service op efficiënte wijze uitvoert](batch-efficient-list-queries.md).|
-|5.  **Taakuitvoer** uploaden     |Nadat de taken zijn voltooid, kunnen ze hun resultaatgegevens uploaden naar Azure Storage. U kunt ook bestanden rechtstreeks ophalen van het bestandssysteem op een rekenknooppunt.|
-|6.  **Uitvoerbestanden** downloaden     |Wanneer u bij uw controle detecteert dat de taken in uw job zijn voltooid, kan uw clienttoepassing of service de uitvoergegevens downloaden voor verdere verwerking.|
+|1. upload **invoer bestanden** en de **toepassingen** om deze bestanden te verwerken naar uw Azure Storage-account.     |De invoerbestanden kunnen alle gegevens zijn die uw toepassing zal verwerken, zoals de modellering van financiële gegevens of te transcoderen videobestanden. De toepassingsbestanden kunnen scripts of toepassingen bevatten die de gegevens verwerken, zoals een mediatranscoder.|
+|2. Maak een batch- **pool** van reken knooppunten in uw batch-account, een **taak** voor het uitvoeren van de werk belasting voor de groep en de **taken** in de taak.     | Pool-knooppunten zijn de virtuele machines die uw taken uitvoeren. Geef eigenschappen op, zoals het aantal en de grootte van de knooppunten, een Windows- of Linux-VM-installatiekopie, en een toepassing wordt geïnstalleerd wanneer de knooppunten aan de pool worden toegevoegd. Beheer de kosten en de grootte van de pool met behulp van [Lage-prioriteit VM’s](batch-low-pri-vms.md) of [automatisch schalen](batch-automatic-scaling.md) van het aantal knooppunten als de workload wordt gewijzigd. <br/><br/>Wanneer u taken aan een taak toevoegt, plant de Batch-service automatisch de taken voor uitvoering op de rekenknooppunten in de pool. Elke taak maakt gebruik van de toepassing die u hebt geüpload om de invoerbestanden te verwerken. |
+|3. down load **invoer bestanden** en de **toepassingen** naar batch     |Voordat elke taak wordt uitgevoerd, kan deze de invoerbestanden naar het toegewezen rekenknooppunt downloaden. Als de toepassing nog niet op de pool-knooppunten is geïnstalleerd, kan deze in plaats daarvan hier worden gedownload. Als het downloaden vanuit Azure Storage is voltooid, wordt de taak wordt uitgevoerd op het toegewezen knooppunt.|
+|4. de **uitvoering van de taak** controleren     |Wanneer de taken worden uitgevoerd, kunt u in Batch een query uitvoeren om de voortgang van de taak en de bijbehorende opdrachten te controleren. Uw clienttoepassing of -service communiceert met de Batch-service via HTTPS. Omdat u mogelijk duizenden taken bewaakt die worden uitgevoerd op duizenden rekenknooppunten, moet u ervoor zorgen dat u [een query op de Batch-service op efficiënte wijze uitvoert](batch-efficient-list-queries.md).|
+|5. **taak uitvoer** uploaden     |Nadat de taken zijn voltooid, kunnen ze hun resultaatgegevens uploaden naar Azure Storage. U kunt ook bestanden rechtstreeks ophalen van het bestandssysteem op een rekenknooppunt.|
+|6. **uitvoer bestanden** downloaden     |Wanneer u bij uw controle detecteert dat de taken in uw job zijn voltooid, kan uw clienttoepassing of service de uitvoergegevens downloaden voor verdere verwerking.|
 
 
 

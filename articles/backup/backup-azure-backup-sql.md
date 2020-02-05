@@ -3,12 +3,12 @@ title: Back-ups maken van SQL Server naar Azure als een DPM-workload
 description: Een inleiding tot het maken van back-ups van SQL Server-data bases met de Azure Backup-Service
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: b5709eb845d07e3638e0c100c857e5538e293317
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ea55081d6f3b58c6c64c16e64c7a9d0f673ec196
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173266"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025398"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Back-ups maken van SQL Server naar Azure als een DPM-workload
 
@@ -103,7 +103,7 @@ Voordat u begint, moet u ervoor zorgen dat aan alle [vereisten](backup-azure-dpm
 14. Klik op **volgende** en selecteer de juiste optie om de eerste back-up naar Azure te verplaatsen. U kunt **automatisch kiezen via het netwerk** of **offline back-up**.
 
     * **Automatisch via het netwerk** worden de back-upgegevens overgebracht naar Azure volgens het schema dat voor back-up is gekozen.
-    * Hoe **offline back-up** werkt, wordt uitgelegd [in de offline back-upwerk stroom in azure backup](backup-azure-backup-import-export.md).
+    * Hoe **offline back-up** werkt, wordt uitgelegd in [overzicht van offline back-ups](offline-backup-overview.md).
 
     Kies het relevante overdrachts mechanisme om de eerste back-up naar Azure te verzenden en klik op **volgende**.
 15. Wanneer u de details van het beleid in het scherm **samen vatting** hebt bekeken, klikt u op de knop **groep maken** om de werk stroom te volt ooien. U kunt op de knop **sluiten** klikken en de voortgang van de taak in de werk ruimte bewaking bewaken.

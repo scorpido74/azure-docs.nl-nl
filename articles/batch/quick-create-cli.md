@@ -2,20 +2,20 @@
 title: Azure-snelstartgids - Batch-taak uitvoeren - CLI
 description: Leer snel hoe u een Batch-taak kunt uitvoeren met behulp van Azure CLI. Maak en beheer Azure-resources vanaf de opdracht regel of in scripts.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 73dc180b905dd8a7e2f0d2b09666e91cced771fb
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 9106741e18354d39909fa84ce6e9f3a66ccf2014
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932245"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024497"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Snelstartgids: Uw eerste Batch-taak uitvoeren met Azure CLI
 

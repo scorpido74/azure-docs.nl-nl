@@ -2,20 +2,20 @@
 title: Azure-snelstartgids - Batch-taak uitvoeren - .NET
 description: U kunt snel een Azure Batch voorbeeld taak en-taken C# uitvoeren vanuit een toepassing met de batch .net-client bibliotheek.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: a11bc1d7b9c1f3443e9d066ac18d172ff027169e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 809ca9d9aafa813e05dea81eb05616eefcc65472
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029405"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017204"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Snelstartgids: Uw eerste Azure Batch-taak uitvoeren met .NET API
 
@@ -70,7 +70,7 @@ Als u de Batch-werkstroom in actie wilt zien, bouwt u de toepassing in Visual St
 
 * Bevestig het herstel van alle NuGet-pakketten als dit wordt gevraagd. Als u ontbrekende pakketten moet downloaden, zorgt u ervoor dat [NuGet Package Manager](https://docs.nuget.org/consume/installing-nuget) is geïnstalleerd.
 
-Voer dit pakketbeheer vervolgens uit. Wanneer u de voorbeeldtoepassing uitvoert, ziet de uitvoer van de console er ongeveer als volgt uit. De actieve uitvoering wordt bij `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` onderbroken terwijl de rekenknooppunten van de pool worden gestart. Taken worden in de wachtrij geplaatst om te worden uitgevoerd zodra het eerste rekenknooppunt actief is. Ga naar uw Batch-account in [Azure Portal](https://portal.azure.com) om de pool, rekenknooppunten en taken te controleren.
+Voer dit pakketbeheer vervolgens uit. Wanneer u de voorbeeldtoepassing uitvoert, ziet de uitvoer van de console er ongeveer als volgt uit. Tijdens de uitvoering wordt bij `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` gewacht terwijl de rekenknooppunten van de pool worden gestart. Taken worden in de wachtrij geplaatst om te worden uitgevoerd zodra het eerste rekenknooppunt actief is. Ga naar uw Batch-account in [Azure Portal](https://portal.azure.com) om de pool, rekenknooppunten en taken te controleren.
 
 ```
 Sample start: 11/16/2018 4:02:54 PM
@@ -137,7 +137,7 @@ foreach (string filePath in inputFilePaths)
 }
 ```
 
-De app maakt een [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient)-object om pools, jobs en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie op basis van gedeelde sleutels. (Batch ondersteunt ook Azure Active Directory-verificatie.)
+De app maakt een [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient)-object om pools, jobs en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie met gedeelde sleutels. (Batch ondersteunt ook Azure Active Directory-verificatie.)
 
 ```csharp
 BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials(BatchAccountUrl, BatchAccountName, BatchAccountKey);

@@ -2,21 +2,21 @@
 title: Gebeurtenis voor het wijzigen van de grootte van de groep Azure Batch
 description: Verwijzing voor de begin gebeurtenis van de grootte van de batch-pool. Voor beeld toont de hoofd tekst van de start gebeurtenis voor het wijzigen van een pool voor een groep waarvan de grootte wordt gewijzigd van 0 naar 2 knoop punten met een hand matige grootte van het formaat.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: jushiman
-ms.openlocfilehash: 8e2df1c2264392ab79e2dcbb7e58977f341b14d9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 1866e51da30fe5ed148d019c8720755e99757df7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026627"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023579"
 ---
 # <a name="pool-resize-start-event"></a>Gebeurtenis formaat pool wijzigen starten
 

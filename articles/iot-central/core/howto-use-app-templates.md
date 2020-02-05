@@ -1,25 +1,49 @@
 ---
-title: Toepassings sjablonen gebruiken in azure IoT Central | Microsoft Docs
-description: Als operator kunt u de apparaatsets gebruiken in uw Azure IoT Central-toepassing.
+title: Een Azure IoT Central-toepassing exporteren | Microsoft Docs
+description: Als oplossings beheerder wilt u een toepassings sjabloon exporteren zodat deze opnieuw kan worden gebruikt.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/30/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3cc6f82676f426240fba4cc4910246073aa9a556
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b5c8f7fd1c87ce279a8edd39aacb332b8aef28be
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982457"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023443"
 ---
-# <a name="use-application-templates"></a>Toepassingssjablonen gebruiken
+# <a name="export-your-application"></a>Uw toepassing exporteren
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-In dit artikel wordt beschreven hoe u als oplossings Manager toepassings sjablonen kunt maken en gebruiken.
+
+In dit artikel wordt beschreven hoe, als oplossings beheerder, een IoT Central toepassing moet exporteren om deze opnieuw te kunnen gebruiken.
+
+U hebt hiervoor twee opties:
+
+- U kunt een kopie van uw toepassing maken als u alleen een duplicaat kopie van uw toepassing wilt maken.
+- U kunt een toepassings sjabloon maken op basis van uw toepassing als u meerdere kopieën wilt maken.
+
+## <a name="copy-your-application"></a>Uw toepassing kopiëren
+
+U kunt een kopie maken van elke toepassing, min eventuele exemplaren van apparaten, geschiedenis van apparaatgegevens en gebruikers gegevens. De kopie gebruikt een Standard-prijs plan waarvoor u wordt gefactureerd. U kunt geen toepassing maken die gebruikmaakt van het gratis prijs plan door een toepassing te kopiëren.
+
+Selecteer **kopiëren**. Voer in het dialoog venster de details in voor de nieuwe toepassing. Selecteer vervolgens **kopiëren** om te bevestigen dat u wilt door gaan. Zie de Snelstartgids [een toepassing maken](quick-deploy-iot-central.md) voor meer informatie over de velden in het formulier.
+
+![Pagina Toepassings instellingen](media/howto-use-app-templates/appcopy2.png)
+
+Nadat de Kopieer bewerking van de app is voltooid, kunt u naar de nieuwe toepassing navigeren met behulp van de koppeling.
+
+![Pagina Toepassings instellingen](media/howto-use-app-templates/appcopy3a.png)
+
+Als u een toepassing kopieert, wordt ook de definitie van regels en e-mail acties gekopieerd. Sommige acties, zoals flow en Logic Apps, zijn gekoppeld aan specifieke regels via de regel-ID. Wanneer een regel naar een andere toepassing wordt gekopieerd, krijgt deze een eigen regel-ID. In dit geval moeten gebruikers een nieuwe actie maken en vervolgens de nieuwe regel koppelen. Over het algemeen is het een goed idee om de regels en acties te controleren om er zeker van te zijn dat ze up-to-date zijn in de nieuwe app.
+
+> [!WARNING]
+> Als een dash board tegels bevat waarin informatie over specifieke apparaten wordt weer gegeven, worden in die tegels **de aangevraagde bron niet** in de nieuwe toepassing gevonden. U moet deze tegels opnieuw configureren om informatie weer te geven over apparaten in de nieuwe toepassing.
+
+## <a name="create-an-application-template"></a>Een toepassings sjabloon maken
 
 Wanneer u een Azure IoT Central-toepassing maakt, hebt u de keuze uit ingebouwde voorbeeld sjablonen. U kunt ook uw eigen toepassings sjablonen maken op basis van bestaande IoT Central toepassingen. U kunt vervolgens uw eigen toepassings sjablonen gebruiken wanneer u nieuwe toepassingen maakt.
 
@@ -42,8 +66,6 @@ Wanneer u een toepassings sjabloon maakt, bevat deze geen de volgende items:
 
 Voeg deze items hand matig toe aan alle toepassingen die zijn gemaakt op basis van een toepassings sjabloon.
 
-## <a name="create-an-application-template"></a>Een toepassings sjabloon maken
-
 Een toepassings sjabloon maken op basis van een bestaande IoT Central-toepassing:
 
 1. Ga naar de sectie **beheer** in uw toepassing.
@@ -53,7 +75,7 @@ Een toepassings sjabloon maken op basis van een bestaande IoT Central-toepassing
 
 ![Een toepassings sjabloon maken](media/howto-use-app-templates/create-template.png)
 
-## <a name="use-an-application-template"></a>Een toepassings sjabloon gebruiken
+### <a name="use-an-application-template"></a>Een toepassings sjabloon gebruiken
 
 Als u een toepassings sjabloon wilt gebruiken om een nieuwe IoT Central-toepassing te maken, hebt u een eerder gemaakte **deel bare koppeling**nodig. Plak de **koppeling** die u wilt delen in de adres balk van uw browser. De pagina **een toepassing maken** wordt weer gegeven als u uw aangepaste toepassings sjabloon hebt geselecteerd:
 
@@ -61,7 +83,7 @@ Als u een toepassings sjabloon wilt gebruiken om een nieuwe IoT Central-toepassi
 
 Selecteer uw prijs plan en vul de andere velden in het formulier in. Selecteer vervolgens **maken** om een nieuwe IOT Central-toepassing te maken op basis van de toepassings sjabloon.
 
-## <a name="manage-application-templates"></a>Toepassings sjablonen beheren
+### <a name="manage-application-templates"></a>Toepassings sjablonen beheren
 
 Op de pagina **exporteren van toepassings sjablonen** kunt u de toepassings sjabloon verwijderen of bijwerken.
 

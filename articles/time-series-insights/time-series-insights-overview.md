@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 12/11/2019
+ms.date: 02/04/2020
 ms.custom: seodec18
-ms.openlocfilehash: c068e33bc7844c464bc8a289387990128d96dd35
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a938dc69b2b0401a062b1db314d71100b4fbbc4f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861792"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024378"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Wat is Azure Time Series Insights?
 
@@ -84,7 +84,7 @@ Voer de volgende stappen uit om aan de slag te gaan.
 1. Upload referentie gegevens. Dit is geen aanvullende service.
 1. Uw gegevens in enkele minuten bekijken en weer geven met de Time Series Insights Explorer.
 
-## <a name="explorer"></a>Verkenner
+## <a name="explorer"></a>Nerve
 
 Bekijk, analyseer en ontdek trends in uw gegevens met behulp van de Azure Time Series Insights Explorer.
 

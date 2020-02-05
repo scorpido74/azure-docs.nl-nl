@@ -2,20 +2,20 @@
 title: Een parallelle workload uitvoeren - Azure Batch Python
 description: 'Zelfstudie: Mediabestanden parallel verwerken met ffmpeg in Azure Batch met behulp van de clientbibliotheek Batch Python'
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: bc73c3c40754d1c3eeb6c86f6c9578047a22d73e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: d4277e383a5cb69ef5395cb6dc477d888abd1d0d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029243"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023086"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Zelfstudie: Een parallelle workload uitvoeren met Azure Batch met behulp van de Python API
 
@@ -84,7 +84,7 @@ Het script uitvoeren:
 python batch_python_tutorial_ffmpeg.py
 ```
 
-Wanneer u de voorbeeldtoepassing uitvoert, ziet de uitvoer van de console er ongeveer als volgt uit. De actieve uitvoering wordt bij `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` onderbroken terwijl de rekenknooppunten van de pool worden gestart. 
+Wanneer u de voorbeeldtoepassing uitvoert, ziet de uitvoer van de console er ongeveer als volgt uit. Tijdens de uitvoering wordt bij `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` gewacht terwijl de rekenknooppunten van de pool worden gestart. 
    
 ```
 Sample start: 11/28/2018 3:20:21 PM
@@ -123,7 +123,7 @@ In de volgende secties wordt de voorbeeldtoepassing uitgesplitst in de stappen d
 
 ### <a name="authenticate-blob-and-batch-clients"></a>Blob- en Batch-clients verifiëren
 
-Voor het werken met een opslagaccount gebruikt de app het [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob)-pakket om een [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice)-object te maken.
+Voor het werken met een opslagaccount gebruikt de app het pakket [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) om een [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice)-object te maken.
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -131,7 +131,7 @@ blob_client = azureblob.BlockBlobService(
     account_key=_STORAGE_ACCOUNT_KEY)
 ```
 
-De app maakt een [BatchServiceClient](/python/api/azure.batch.batchserviceclient)-object om pools, Batch-taken en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie op basis van gedeelde sleutels. Batch ondersteunt ook verificatie via [Azure Active Directory](batch-aad-auth.md) om afzonderlijke gebruikers of een toepassing zonder toezicht te verifiëren.
+De app maakt een [BatchServiceClient](/python/api/azure.batch.batchserviceclient)-object om pools, jobs en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie met gedeelde sleutels. Batch ondersteunt ook verificatie via [Azure Active Directory](batch-aad-auth.md) om afzonderlijke gebruikers of een toepassing zonder toezicht te verifiëren.
 
 ```python
 credentials = batchauth.SharedKeyCredentials(_BATCH_ACCOUNT_NAME,
@@ -171,7 +171,7 @@ Het aantal knooppunten en de VM-grootte worden ingesteld met behulp van gedefini
 
 Naast fysieke eigenschappen van knooppunten bevat deze poolconfiguratie het object [StartTask](/python/api/azure-batch/azure.batch.models.starttask). StartTask wordt in elk knooppunt uitgevoerd wanneer dat knooppunt aan de pool wordt toegevoegd en telkens wanneer dat knooppunt opnieuw wordt opgestart. In dit voorbeeld voert StartTask Bash-shell-opdrachten uit om het ffmpeg-pakket en afhankelijkheden op de knooppunten te installeren.
 
-Met de [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations)-methode wordt de pool naar de Batch-service verzonden.
+Met de methode [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) wordt de pool naar de Batch-service verzonden.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -201,7 +201,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-job"></a>Een taak maken
 
-Een Batch-taak (job) geeft een pool op die taken moet uitvoeren en optionele instellingen, zoals een prioriteit en planning voor het werk. In het voorbeeld wordt een job gemaakt met een aanroep naar `create_job`. De app gebruikt de klasse [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) om een taak te maken in de pool. Met de [job.add](/python/api/azure-batch/azure.batch.operations.joboperations)-methode wordt de pool naar de Batch-service verzonden. De Batch-taak heeft in eerste instantie geen taken.
+Een Batch-taak (job) geeft een pool op die taken moet uitvoeren en optionele instellingen, zoals een prioriteit en planning voor het werk. In het voorbeeld wordt een job gemaakt met een aanroep naar `create_job`. De app gebruikt de klasse [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) om een taak te maken in de pool. Met de methode [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) wordt de pool naar de Batch-service verzonden. De Batch-taak heeft in eerste instantie geen taken.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -217,7 +217,7 @@ De app maakt taken in de Batch-taak met een aanroep naar `add_tasks`. Deze gedef
 
 Het voorbeeld maakt een [OutputFile](/python/api/azure-batch/azure.batch.models.outputfile)-object voor het MP3-bestand nadat de opdrachtregel is uitgevoerd. De uitvoerbestanden van elke taak (één in dit geval) worden geüpload naar een container in het gekoppelde opslagaccount met behulp van de eigenschap `output_files` van de taak.
 
-Vervolgens worden met de app taken toegevoegd aan de Batch-taak met behulp van de [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations)-methode. Deze methode plaatst de taken in een wachtrij voor uitvoering op de rekenknooppunten. 
+Vervolgens worden met de app taken toegevoegd aan de Batch-taak met behulp van de methode [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations). Deze methode plaatst de taken in een wachtrij voor uitvoering op de rekenknooppunten. 
 
 ```python
 tasks = list()

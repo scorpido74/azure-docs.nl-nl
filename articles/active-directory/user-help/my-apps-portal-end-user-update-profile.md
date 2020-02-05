@@ -2,31 +2,38 @@
 title: Profiel gegevens van &-account bijwerken vanuit de portal mijn apps-Azure AD
 description: Meer informatie over het bijwerken van uw profiel en uw werk-of school accountgegevens, zoals het wijzigen van uw wacht woord, het inschakelen van wacht woord opnieuw instellen, het bijwerken van uw beveiligings verificatie methoden, het weer geven van de gebruiks voorwaarden van uw organisatie en het afmelden van overal waar u bent aangemeld met uw werk-of school account.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704864"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022276"
 ---
-# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>De gegevens van uw profiel en werk-of school account bijwerken in de portal mijn apps
+# <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>Uw profiel-en account gegevens bijwerken in de portal mijn apps
 
-U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en **toegangs beoordelingen** uit te voeren voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
+U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web om 
+
+- Veel Cloud-apps in uw organisatie weer geven en starten
+- Een aantal van uw profiel-en account gegevens bijwerken
+- Uw **groeps** gegevens weer geven
+- Voer **toegangs beoordelingen** uit voor uw apps en groepen. 
+
+Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw Cloud-apps in de documentatie van [toepassings beheer](https://docs.microsoft.com/azure/active-directory/manage-apps).
+> [!Important]
+> Deze inhoud is bedoeld voor gebruikers van **mijn apps** . Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw Cloud-apps in de documentatie van [toepassings beheer](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="view-your-organization-related-profile-information"></a>De profiel gegevens van uw organisatie weer geven
 

@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a07d019893e69308b35b4a941fe50d2736efe01
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921917"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024650"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions schalen en hosten
 
@@ -44,9 +44,9 @@ In de volgende tabel wordt het huidige ondersteunings niveau voor de drie hostin
 
 ## <a name="consumption-plan"></a>Verbruiksabonnement
 
-Wanneer u het verbruiks abonnement gebruikt, worden instanties van de Azure Functions-host dynamisch toegevoegd en verwijderd op basis van het aantal binnenkomende gebeurtenissen. Dit serverloze abonnement wordt automatisch geschaald en u betaalt alleen voor rekenresources wanneer uw functies worden uitgevoerd. Bij een verbruiksabonnement treedt er na een ingestelde periode een time-out op voor een functie-uitvoering.
+Wanneer u het verbruiks abonnement gebruikt, worden instanties van de Azure Functions-host dynamisch toegevoegd en verwijderd op basis van het aantal binnenkomende gebeurtenissen. Dit serverloze plan wordt automatisch geschaald en er worden alleen kosten in rekening gebracht voor reken resources wanneer uw functies worden uitgevoerd. Bij een verbruiks abonnement wordt een time-out van de functie uitgevoerd na een Configureer bare periode.
 
-De facturering is dan ook gebaseerd op het aantal uitvoeringen, de uitvoeringstijd en het gebruikte geheugen. De facturering wordt samengevoegd voor alle functies in een functie-app. Zie de pagina met prijzen voor [Azure functions](https://azure.microsoft.com/pricing/details/functions/)voor meer informatie.
+De facturering is gebaseerd op het aantal uitvoeringen, de uitvoerings tijd en het gebruikte geheugen. Facturering wordt samengevoegd over alle functies in een functie-app. Zie de pagina met prijzen voor [Azure functions](https://azure.microsoft.com/pricing/details/functions/)voor meer informatie.
 
 Het verbruiks abonnement is het standaard hosting plan en biedt de volgende voor delen:
 
@@ -152,7 +152,7 @@ De eenheid van de schaal voor Azure Functions is de functie-app. Wanneer de func
 
 Schalen kan variëren op basis van een aantal factoren en op verschillende manieren schalen, afhankelijk van de geselecteerde trigger en taal. Er zijn een aantal complexiteit waarmee u rekening moet houden:
 
-* Een functie-app kan zelfstandig omhoog worden geschaald naar maximaal 200 exemplaren. Eén exemplaar kan echter meer dan één bericht of aanvraag tegelijk verwerken, dus er is geen limiet ingesteld voor het aantal gelijktijdige uitvoeringen.
+* Een app met één functie wordt alleen geschaald naar Maxi maal 200 exemplaren. Eén exemplaar kan echter meer dan één bericht of aanvraag tegelijk verwerken, dus er is geen limiet ingesteld voor het aantal gelijktijdige uitvoeringen.
 * Voor HTTP-triggers worden nieuwe instanties slechts elke 1 seconde toegewezen.
 * Voor niet-HTTP-triggers worden nieuwe instanties Maxi maal elke 30 seconden toegewezen.
 

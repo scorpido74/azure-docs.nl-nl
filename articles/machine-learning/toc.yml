@@ -284,7 +284,7 @@
         - name: Metrische gegevens registreren voor trainingsuitvoeringen
           href: how-to-track-experiments.md
         - name: Experimenten bijhouden met MLflow
-          displayName: 'log, monitor, metrics'
+          displayName: 'log, monitor, metrics, Databricks'
           href: how-to-use-mlflow.md
         - name: Uitvoeringen visualiseren met TensorBoard
           displayName: 'log, monitor, metrics'

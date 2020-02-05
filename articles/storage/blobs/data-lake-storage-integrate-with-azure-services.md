@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
-ms.openlocfilehash: de57776ea3bcc7486c5c26182c7e2a65e643d81c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7f43f69ebdac05b8f99739ea6b51453671b9a70a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862999"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024548"
 ---
 # <a name="integrate-azure-data-lake-storage-with-azure-services"></a>Azure Data Lake Storage integreren met Azure-Services
 
@@ -34,7 +34,7 @@ De volgende tabel geeft een lijst van de Azure-Services die Azure Data Lake Stor
 |Data Box|  [Gebruik Azure Data Box om gegevens van een on-premises HDFS-Store te migreren naar Azure Storage](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
 |HDInsight | [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[De HDFS CLI gebruiken met Data Lake Storage Gen2](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Zelf studie: gegevens extra heren, transformeren en laden met behulp van Apache Hive in azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md) |
 |IoT Hub | [IoT Hub bericht routering gebruiken om apparaat-naar-Cloud-berichten te verzenden naar verschillende eind punten](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|
-|Power BI|  [Gegevens analyseren in Data Lake Storage Gen2 met behulp van Power BI](data-lake-storage-use-power-bi.md) |
+|Power BI|  [Gegevens analyseren in Data Lake Storage Gen2 met behulp van Power BI](https://docs.microsoft.com/power-query/connectors/datalakestorage) |
 |SQL Data Warehouse | [Gebruiken met Azure SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
 |SQL Server Integration Services (SSIS) | [Verbindings beheer Azure Storage](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
 

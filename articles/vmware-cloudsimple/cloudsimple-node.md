@@ -1,6 +1,6 @@
 ---
-title: Overzicht van Azure VMware-oplossing per CloudSimple-knoop punten
-description: Meer informatie over CloudSimple-knoop punten en-concepten.
+title: Azure VMware Solutions (AVS)-overzicht van knoop punten
+description: Meer informatie over AVS-knoop punten en-concepten.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,22 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 08d8fc3e6f1f2f83cf3c4fee3fdafb0bd07e336c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899018"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024922"
 ---
-# <a name="cloudsimple-nodes-overview"></a>Overzicht van CloudSimple-knoop punten
+# <a name="avs-nodes-overview"></a>Overzicht van AVS-knoop punten
 
 Knoop punten zijn de bouw stenen van een Privécloud. Een knoop punt is:
 
 * Een toegewezen bare-metal Compute-host waarop een VMware ESXi Hyper Visor is geïnstalleerd  
-* Een reken eenheid die u kunt inrichten of reserveren voor het maken van persoonlijke Clouds
-* Beschikbaar voor het inrichten of reserveren van een regio waar de CloudSimple-service beschikbaar is
+* Een reken eenheid die u kunt aanschaffen of reserveren voor het maken van AVS-persoonlijke Clouds
+* Beschikbaar voor aankoop of reserve ring in een regio waar de AVS-service beschikbaar is
 
-U kunt een Privécloud maken op basis van de ingerichte knoop punten. Als u een Privécloud wilt maken, hebt u Mini maal drie knoop punten van dezelfde SKU nodig. Als u een Privécloud wilt uitbreiden, voegt u extra knoop punten toe.  U kunt knoop punten toevoegen aan een bestaand cluster of een nieuw cluster maken door knoop punten in de Azure Portal in te richten en deze te koppelen aan de CloudSimple-service.  Alle ingerichte knoop punten zijn zichtbaar in de CloudSimple-service.  
+U maakt een automatische AVS-Cloud op basis van de aangeschafte knoop punten. Voor het maken van een AVS-Privécloud hebt u Mini maal drie knoop punten van dezelfde SKU nodig. Voeg extra knoop punten toe om een nieuwe AVS-Cloud uit te breiden. U kunt knoop punten toevoegen aan een bestaand cluster of een nieuw cluster maken door de knoop punten in de Azure Portal te kopen en ze te koppelen aan de AVS-service. Alle aangeschafte knoop punten zijn zichtbaar onder de AVS-service. 
 
 ## <a name="provisioned-nodes"></a>Ingerichte knoop punten
 
@@ -32,7 +32,7 @@ Ingerichte knoop punten bieden een betalen naar gebruik-capaciteit. Met het inri
 * Als u betaalt voor uw Azure-abonnement per credit card, wordt de kaart onmiddellijk gefactureerd.
 * Als u per factuur factureert, worden de kosten op uw volgende factuur weer gegeven.
 
-## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>VMware-oplossing op CloudSimple knoop punten SKU
+## <a name="vmware-solution-by-avs-nodes-sku"></a>VMware-oplossing op AVS-knoop punten SKU
 
 De volgende typen knoop punten zijn beschikbaar voor inrichting of reserve ring.
 
@@ -47,16 +47,18 @@ De volgende typen knoop punten zijn beschikbaar voor inrichting of reserve ring.
 
 ## <a name="limits"></a>Beperkingen
 
-De volgende limieten voor knoop punten zijn van toepassing op persoonlijke Clouds.
+De volgende limieten voor knoop punten zijn van toepassing op de AVS-persoonlijke Clouds.
 
 | Bron | Limiet |
 |----------|-------|
-| Minimum aantal knoop punten voor het maken van een Privécloud | 3 |
-| Maximum aantal knoop punten in een cluster in een Privécloud | 16 |
-| Maximum aantal knoop punten in een Privécloud | 64 |
+| Minimum aantal knoop punten voor het maken van een AVS-Privécloud | 3 |
+| Maximum aantal knoop punten in een cluster op een Privécloud-Cloud | 16 |
+| Maximum aantal knoop punten in een Privécloud in de Cloud | 64 |
 | Minimum aantal knoop punten op een nieuw cluster | 3 |
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* Meer informatie over het [aanschaffen van knoop punten](create-nodes.md)
+* Informatie over [persoonlijke Clouds van AVS](cloudsimple-private-cloud.md)
 * Meer informatie over het [inrichten van knoop punten](create-nodes.md)
 * Meer informatie over [persoonlijke Clouds](cloudsimple-private-cloud.md)

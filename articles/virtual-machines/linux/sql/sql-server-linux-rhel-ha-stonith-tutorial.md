@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 01/27/2020
-ms.openlocfilehash: e48f41f1e13346f551f1d83f462de697631d1b9a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3f5f51c944cab84c00e29b2f72433a726ed70d33
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775380"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024344"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Zelf studie: beschikbaarheids groepen configureren voor SQL Server op virtuele RHEL-machines in azure 
 
@@ -782,7 +782,7 @@ Als de `synchronization_state_desc` lijst is GESYNCHRONISEERD voor `db1`, beteke
 
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Resources van een beschikbaarheids groep maken in het pacemaker-cluster
 
-We volgen de hand leiding voor het [maken van de resources van de beschikbaarheids groep in het pacemaker-cluster](/sql/linux/sql-server-linux-create-availability-group]#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only).
+We volgen de hand leiding voor het [maken van de resources van de beschikbaarheids groep in het pacemaker-cluster](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only).
 
 ### <a name="create-the-ag-cluster-resource"></a>De AG-cluster resource maken
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: fc9ffc62e765f3b8c8fa418f3189f84686987821
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c8c6e2741eeeadf2afc0c027da8f9cf957c29c95
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907115"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023239"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Gebeurtenissen verzenden naar of ontvangen gebeurtenissen van Azure Event Hubs-.NET core (Azure. Messa ging. Event hubs) 
 Event Hubs is een service die grote hoeveelheden gebeurtenisgegevens (telemetrie) van verbonden apparaten en toepassingen verwerkt. Nadat u gegevens hebt verzameld in Event Hubs, kunt u de gegevens opslaan met behulp van een opslag cluster of proces gebeurtenissen. U kunt bijvoorbeeld gebeurtenis gegevens transformeren met behulp van een real-time analyse provider. Deze functie voor grootschalige gebeurtenis verzameling en-verwerking is een belang rijk onderdeel van moderne toepassings architecturen, met inbegrip van de Internet of Things (IoT). Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs.
@@ -118,9 +118,9 @@ In deze sectie wordt beschreven hoe u een .NET core-console toepassing schrijft 
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Een Azure Storage en een BLOB-container maken
 In deze Quick Start gebruikt u Azure Storage als controlepunt opslag. Volg deze stappen om een Azure Storage-account te maken. 
 
-1. [Een Azure Storage-account maken](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal)
-2. [Een BLOB-container maken](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [De connection string ophalen voor het opslag account](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)
+1. [Een Azure Storage-account maken](/azure/storage/common/storage-account-create?tabs=azure-portal)
+2. [Een BLOB-container maken](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+3. [De connection string ophalen voor het opslag account](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
     Noteer de connection string en de naam van de container. U gebruikt deze in de receive-code. 
 

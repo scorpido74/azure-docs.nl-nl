@@ -99,10 +99,8 @@
           href: ea-portal-rest-apis.md
         - name: Gereserveerde exemplaren Azure EA-VM
           href: ea-portal-vm-reservations.md
-        - name: Problemen met toegang tot Azure EA-portal oplossen
+        - name: Problemen met toegang tot Azure EA Portal oplossen
           href: ea-portal-troubleshoot.md
-        - name: EA-taken in Microsoft-klantovereenkomst
-          href: mca-enterprise-operations.md
 - name: Problemen oplossen
   items:
     - name: Geen abonnementen gevonden
