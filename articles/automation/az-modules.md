@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8c832982a5525b0296155197d89684932cebaa95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418829"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986101"
 ---
 # <a name="az-module-support-in-azure-automation"></a>AZ-module ondersteuning in Azure Automation
 
@@ -18,7 +18,7 @@ Azure Automation ondersteunt de mogelijkheid om de [Azure Power shell AZ-module]
 
 ## <a name="considerations"></a>Overwegingen
 
-Er zijn veel dingen waarmee u rekening moet houden bij het gebruik van de AZ-module in Azure Automation. Runbooks en modules kunnen worden gebruikt door oplossingen van een hoger niveau in uw Automation-account. Het bewerken van runbooks of het bijwerken van modules kan leiden tot problemen met runbooks. U moet alle runbooks en oplossingen zorgvuldig testen in een afzonderlijk Automation-account voordat u de nieuwe `Az`-modules importeert. Eventuele wijzigingen in modules kunnen de oplossing voor [starten en stoppen](automation-solution-vm-management.md) negatief beïnvloeden. Het is raadzaam om geen modules en runbooks te wijzigen in Automation-accounts die oplossingen bevatten. Dit gedrag is niet specifiek voor de AZ-modules. Dit gedrag moet worden meegenomen bij het introduceren van wijzigingen aan uw Automation-account.
+Er zijn veel dingen waarmee u rekening moet houden bij het gebruik van de AZ-module in Azure Automation. Runbooks en modules kunnen worden gebruikt door oplossingen van een hoger niveau in uw Automation-account. Het bewerken van runbooks of het bijwerken van modules kan leiden tot problemen met runbooks. U moet alle runbooks en oplossingen zorgvuldig testen in een afzonderlijk Automation-account voordat u de nieuwe `Az`-modules importeert. Wijzigingen in modules kunnen een negatieve invloed hebben op de oplossing voor [starten/stoppen](automation-solution-vm-management.md) . Het is niet raadzaam om modules en runbooks te wijzigen in Automation-accounts die oplossingen bevatten. Dit gedrag is niet specifiek voor de AZ-modules. Dit gedrag moet worden meegenomen bij het introduceren van wijzigingen aan uw Automation-account.
 
 Bij het importeren van een `Az` module in uw Automation-account wordt de module niet automatisch geïmporteerd in de Power shell-sessie die door de runbooks wordt gebruikt. Modules worden in de volgende situaties geïmporteerd in de Power shell-sessie:
 

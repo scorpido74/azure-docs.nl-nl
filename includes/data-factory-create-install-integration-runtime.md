@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 12c2f1bd2a3185d26eae02b5cd756392b5b87c16
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533252"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989078"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Een zelf-hostende Integration Runtime maken
 
@@ -83,7 +83,8 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
 
 5. Kopieer een van de sleutels (zonder de dubbele aanhalingstekens) om de zelf-hostende Integration Runtime te registeren die u in de volgende stappen op uw computer gaat installeren.  
 
-## <a name="install-the-integration-runtime"></a>Integration Runtime installeren
+## <a name="install-the-integration-runtime-tool"></a>Het hulp programma Integration runtime installeren
+
 1. Als u de Integration Runtime al op uw computer heeft, verwijdert u deze met behulp van **Programma's toevoegen of verwijderen**. 
 
 2. [Download](https://www.microsoft.com/download/details.aspx?id=39717) de zelf-hostende Integration Runtime op een lokale Windows-computer. Voer de installatie uit.
@@ -135,5 +136,4 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
     h. Selecteer **Test** om te controleren of Integration Runtime verbinding kan maken met SQL Server. U ziet een groen vinkje als het gelukt is om verbinding te maken. U ziet een foutbericht als er geen verbinding kan worden gemaakt. Los eventuele problemen op en zorg ervoor dat de Integration Runtime verbinding met SQL Server kan maken.    
 
     > [!NOTE]
-    > Noteer de waarden voor het verificatietype, de server, de database, de gebruiker en het wachtwoord. U hebt deze waarden verderop in deze zelfstudie nodig. 
-    
+    > Noteer de waarden voor het verificatietype, de server, de database, de gebruiker en het wachtwoord. U hebt deze waarden verderop in deze zelfstudie nodig.

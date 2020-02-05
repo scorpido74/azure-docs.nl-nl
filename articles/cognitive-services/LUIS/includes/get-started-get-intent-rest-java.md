@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: a967fdb4b9c742a0ac7f372e5cd7eeb99171a906
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 1bd7a2bb6d3393aca397686a2817f1dcd5f89a38
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966721"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987763"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -25,7 +25,7 @@ ms.locfileid: "76966721"
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
 1. Klik [op **Language Understanding** maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Voer alle vereiste instellingen voor de runtime sleutel in:
+1. Voer alle vereiste instellingen voor de **runtime** sleutel in:
 
     |Instelling|Waarde|
     |--|--|
@@ -73,7 +73,7 @@ Gebruik Java om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-predict
                 // The ID of a public sample LUIS app that recognizes intents for turning on and off lights
                 String AppId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2";
 
-                // Add your endpoint key
+                // Add your prediction Runtime key
                 String Key = "YOUR-KEY";
 
                 // Add your endpoint, example is your-resource-name.api.cognitive.microsoft.com
@@ -117,11 +117,11 @@ Gebruik Java om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-predict
     }
     ```
 
-1. Vervang de `YOUR-KEY` en `YOUR-ENDPOINT` waarden door uw eigen Voorspellings sleutel en-eind punt.
+1. Vervang de `YOUR-KEY` en `YOUR-ENDPOINT` waarden door uw eigen Voorspellings **runtime** sleutel en-eind punt.
 
     |Informatie|Doel|
     |--|--|
-    |`YOUR-KEY`|Uw 32-teken Voorspellings sleutel.|
+    |`YOUR-KEY`|De **runtime** -sleutel voor de voor spelling van 32-tekens.|
     |`YOUR-ENDPOINT`| Het eind punt voor de voor Spellings-URL. Bijvoorbeeld `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 

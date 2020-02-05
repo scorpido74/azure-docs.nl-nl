@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770081"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985999"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -68,7 +68,9 @@ Als u een openbaar IP-adres gebruikt als een eind punt, vindt u de IP-en DNS-inf
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Wat zijn de instellingen voor Keep-Alive time-out en TCP-time-out voor inactiviteit?
 
- In de SKU van Application Gateway v1 is de Keep-Alive-time-out 120 seconden. De time-out voor Keep-Alive voor de v2-SKU is 75 seconden. De time-out voor TCP-inactiviteit is een standaard waarde van 4 minuten voor het virtuele frontend-IP-adres (VIP) van Application Gateway.
+*Keep-Alive time-out* bepaalt hoe lang de Application Gateway wacht totdat een client een andere HTTP-aanvraag verzendt naar een permanente verbinding voordat deze opnieuw gebruikt of wordt gesloten. *TCP-time-out voor inactiviteit* bepaalt hoe lang een TCP-verbinding open blijft in het geval van geen activiteit. 
+
+De *time-out voor Keep-Alive* in de Application Gateway v1-sku is 120 seconden en in de v2-sku is 75 seconden. De *time-out voor TCP-inactiviteit* is een standaard waarde van 4 minuten voor het frontend-VIP (Virtual IP) van zowel de v1-als v2 SKU van Application Gateway. 
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Verandert de IP-of DNS-naam gedurende de levens duur van de toepassings gateway?
 

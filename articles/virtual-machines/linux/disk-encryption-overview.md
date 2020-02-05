@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f78ef583a58b8a51276823a2a4730540b6735bb0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 96ac1becfed74141b3b1544646f5d82bd0985045
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896361"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988417"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption voor Linux-Vm's 
 
-Azure Disk Encryption helpt om uw gegevens te beschermen en te beveiligen, zodat u aan de beveiligings- en nalevingsafspraken van uw organisatie voldoet. Het maakt gebruik van de [DM-cryptografie](https://en.wikipedia.org/wiki/Dm-crypt) functie van Linux om volume versleuteling te bieden voor het besturings systeem en de gegevens schijven van Azure virtual machines (vm's), en is geïntegreerd met [Azure Key Vault](../../key-vault/index.yml) om u te helpen de coderings sleutels en geheimen voor schijven te controleren en te beheren. 
+Azure Disk Encryption helpt uw gegevens te beschermen en beschermen om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Het maakt gebruik van de [DM-cryptografie](https://en.wikipedia.org/wiki/Dm-crypt) functie van Linux om volume versleuteling te bieden voor het besturings systeem en de gegevens schijven van Azure virtual machines (vm's), en is geïntegreerd met [Azure Key Vault](../../key-vault/index.yml) om u te helpen de coderings sleutels en geheimen voor schijven te controleren en te beheren. 
 
 Als u [Azure Security Center](../../security-center/index.yml)gebruikt, wordt u gewaarschuwd als u virtuele machines hebt die niet zijn versleuteld. De waarschuwingen worden weergegeven als hoge urgentie en de aanbeveling is voor het versleutelen van deze VM's.
 
@@ -58,16 +58,16 @@ Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen onde
 | Ubuntu | 18,04| Besturingssysteem- en schijf |
 | Ubuntu | 16.04| Besturingssysteem- en schijf |
 | Ubuntu | 14.04.5</br>[met een afgestemde kernel van Azure bijgewerkt tot 4,15 of hoger](disk-encryption-troubleshooting.md) | Besturingssysteem- en schijf |
-| RHEL | 7.7 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
-| RHEL | 7.6 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
+| RHEL | 7,7 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
+| RHEL | 7,6 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RHEL | 7.5 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RHEL | 7.4 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RHEL | 7.3 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RHEL | 7.2 | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RHEL | 6.8 | Gegevens schijf (zie opmerking hieronder) |
 | RHEL | 6.7 | Gegevens schijf (zie opmerking hieronder) |
-| CentOS | 7.7 | Besturingssysteem- en schijf |
-| CentOS | 7.6 | Besturingssysteem- en schijf |
+| CentOS | 7,7 | Besturingssysteem- en schijf |
+| CentOS | 7,6 | Besturingssysteem- en schijf |
 | CentOS | 7.5 | Besturingssysteem- en schijf |
 | CentOS | 7.4 | Besturingssysteem- en schijf |
 | CentOS | 7.3 | Besturingssysteem- en schijf |
@@ -78,7 +78,9 @@ Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen onde
 | SLES | 12-SP3 | Gegevensschijf |
 
 > [!NOTE]
-> De nieuwe ADE-implementatie wordt ondersteund voor RHEL-besturings systeem en gegevens schijf voor RHEL7 betalen per gebruik-installatie kopieën. ADE wordt momenteel niet ondersteund voor RHEL (BYOS)-installatie kopieën van uw eigen abonnement. 
+> De nieuwe Azure Disk Encryption-implementatie wordt ondersteund voor RHEL-besturings systeem en gegevens schijf voor RHEL7 betalen per gebruik-installatie kopieën.  
+>
+> ADE wordt ook ondersteund voor RHEL-uw eigen abonnementen, maar pas **nadat** het abonnement is geregistreerd. Zie [Red Hat Enterprise Linux uw gouden installatie kopieën met uw eigen abonnement in azure](../workloads/redhat/byos.md##encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images) voor meer informatie.
 
 ## <a name="additional-vm-requirements"></a>Aanvullende VM-vereisten
 

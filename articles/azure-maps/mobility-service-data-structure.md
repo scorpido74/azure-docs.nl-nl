@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 213910ee2439fa958b9f1d4926883eb8e066ba41
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: ceecdcc508e5b43c8775b6a88f9b4e4f0eb23c77
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910723"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989005"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Gegevens structuren in de Azure Maps Mobility-service
 
-In dit artikel wordt het concept van het metro gebied van [Azure Maps Mobility-service](https://aka.ms/AzureMapsMobilityService) en enkele van de gemeen schappelijke velden die door de services worden geretourneerd, geïntroduceerd wanneer deze worden opgevraagd voor open bare doorvoer onderbrekingen en-lijnen. We raden u aan dit artikel te door lopen voordat u begint met de Api's van de Mobility-service. Hieronder vindt u een beschrijving van deze algemene velden.
+In dit artikel wordt het concept van metro gebied in [Azure Maps Mobility-service](https://aka.ms/AzureMapsMobilityService)geïntroduceerd. We bespreken enkele algemene velden die worden geretourneerd wanneer deze service wordt opgevraagd voor open bare doorvoer onderbrekingen en-lijnen. We raden u aan dit artikel te lezen voordat u met de Mobility service-Api's ontwikkelt.
 
 ## <a name="metro-area"></a>Metro gebied
 
-De gegevens van de Mobility-service worden opgesplitst in ondersteunde metro gebieden. Metro gebieden volgen niet de grenzen van steden, een metro gebied kan meerdere steden bevatten, bijvoorbeeld een met hoge bewoonde stad en de bijbehorende steden. een land/regio kan een metro gebied zijn. 
+De gegevens van de Mobility-service worden gegroepeerd op ondersteunde metro gebieden. Metro gebieden volgen niet de grenzen van steden. Een metro gebied kan meerdere steden, gevulde stad en rond steden bevatten. Een land/regio kan eigenlijk een metro gebied zijn. 
 
-De `metroID` is de ID van een metro gebied dat kan worden gebruikt voor het aanroepen van de informatie-API voor het weer geven van een [metro gebied](https://aka.ms/AzureMapsMobilityMetroAreaInfo) om ondersteunde doorvoer typen en aanvullende informatie te vragen voor het metro gebied, zoals doorvoer instanties en actieve waarschuwingen. U kunt met behulp van de Azure Maps een metro-API ophalen om de ondersteunde metro gebieden en metroIDs aan te vragen. De Id's van een metro gebied kunnen worden gewijzigd.
+De `metroID` is de ID van een metro gebied dat kan worden gebruikt voor het aanroepen van de informatie-API voor het ophalen van een [metro gebied](https://aka.ms/AzureMapsMobilityMetroAreaInfo). Gebruik Azure Maps ' "een metro-API verkrijgen" om doorvoer typen, doorvoer instanties, actieve waarschuwingen en aanvullende Details voor de gekozen metro lijn aan te vragen. U kunt ook de ondersteunde metro gebieden en metroIDs aanvragen. De Id's van een metro gebied kunnen worden gewijzigd.
 
 **metroID:** 522- **naam:** Seattle-Tacoma-Bellevue
 
@@ -31,25 +31,25 @@ De `metroID` is de ID van een metro gebied dat kan worden gebruikt voor het aanr
 
 ## <a name="stop-ids"></a>Stop-Id's
 
-Door doorvoer onderbrekingen kunnen worden verwezen door twee typen Id's, de GFTS-id ( [General Transit feed Specification)](https://gtfs.org/) (aangeduid als stopKey) en de Azure Maps stop-id (aangeduid als stopId). Als er wordt gebruikgemaakt van een onderbreking in de loop van de tijd, wordt het aanbevolen om de Azure Maps stop-ID te gebruiken, omdat deze ID stabieler is en waarschijnlijk niet wordt gewijzigd zolang de fysieke stop bestaat. De GTFS stop-ID wordt vaker bijgewerkt, bijvoorbeeld als de GTFS-provider deze moet wijzigen of als de nieuwe GTFS-versie wordt vrijgegeven, hoewel de fysieke stop geen wijziging heeft.
+Er kunnen door doorvoer beëindigingen worden verwezen door twee typen Id's, de GFTS-id [(General Transit feed Specification)](https://gtfs.org/) en de Azure Maps stop-id. De GFTS-ID wordt aangeduid als de stopKey en de Azure Maps stop-ID wordt stopID genoemd. Wanneer vaak door Voer wordt geadviseerd, wordt u aangeraden de Azure Maps stop-ID te gebruiken. stopID is stabieler en waarschijnlijk hetzelfde, zolang de fysieke stop bestaat. De GTFS-stop-ID wordt vaker bijgewerkt. Bijvoorbeeld, GTFS stop-ID kan worden bijgewerkt per GTFS provider aanvraag of wanneer een nieuwe GTFS-versie wordt uitgebracht. Hoewel de fysieke stop geen wijziging heeft, kan de GTFS-stop-ID worden gewijzigd.
 
-Als u wilt starten, kunt u stoppen in de buurt van de transit door gebruik te maken van de [API voor binnenkomend verkeer ophalen](https://aka.ms/AzureMapsMobilityNearbyTransit)
+Als u wilt beginnen, kunt u stoppen met het verzoek om een transit op te halen met behulp van de [API](https://aka.ms/AzureMapsMobilityNearbyTransit)voor het
 
 ## <a name="line-groups-and-lines"></a>Lijn groepen en-regels
 
-Mobility service maakt gebruik van een parallel gegevens model voor lijnen en lijn groepen voor een betere afronding van de wijzigingen die zijn overgenomen van [GTFS](https://gtfs.org/) routes en trips data model.
+Mobility service maakt gebruik van een parallel gegevens model voor lijnen en lijn groepen. Dit model wordt gebruikt om beter te kunnen omgaan met wijzigingen die zijn overgenomen van [GTFS](https://gtfs.org/) -routes en de TRIPS-gegevens.
 
 
 ### <a name="line-groups"></a>Regel groepen
 
-Een regel groep is een entiteit waarmee alle regels die logisch deel uitmaken van dezelfde groep worden gegroepeerd. Normaal gesp roken bevat een lijn groep twee regels, één van punt A tot en met B, en de andere retour van punt B naar A, beide tot hetzelfde open bare transport Agentschap en met hetzelfde regel nummer. Het kan echter voor komen dat een regel groep meer dan twee regels of één regel bevat.
+Een regel groep is een entiteit waarmee alle regels die logisch deel uitmaken van dezelfde groep worden gegroepeerd. Normaal gesp roken bevat een lijn groep twee regels, één van punt A tot en met B, en de andere retour van punt B naar A. Beide regels behoren tot hetzelfde open bare transport Agentschap en hebben hetzelfde regel nummer. Het kan echter voor komen dat een regel groep meer dan twee regels of één regel bevat.
 
 
-### <a name="lines"></a>Lijnen
+### <a name="lines"></a>Transferorderregels
 
-Zoals hierboven is beschreven, bestaat elke regel groep uit een set regels. Vaak wordt in elke regel een richting beschreven en elke regel groep bestaat uit twee regels. Er zijn echter gevallen waarin meer regels bestaan uit een regel groep, bijvoorbeeld een regel die soms door een bepaalde groep wordt omgeleid en soms niet, en die in beide gevallen onder hetzelfde regel nummer wordt gebruikt en er andere gevallen zijn waarin een regel g groeperen bestaat uit één regel, bijvoorbeeld een ronde lijn met één richting.
+Zoals hierboven is beschreven, bestaat elke regel groep uit een set regels. Elke regel groep bestaat uit twee regels en elke regel beschrijft een richting.  Er zijn echter gevallen waarin meer regels een regel groep vormen. Er is bijvoorbeeld een regel die soms een bepaalde groep afrondt en soms niet. In beide gevallen werkt deze onder hetzelfde regel nummer. Een regel groep kan ook bestaan uit één regel. Een ronde lijn met één richting is een groep met één regel.
 
-Als u wilt beginnen, kunt u regel groepen aanvragen met behulp van de [regel-API voor transit ophalen](https://aka.ms/AzureMapsMobilityTransitLine) en later inzoomen op regels.
+Als u wilt beginnen, kunt u regel groepen aanvragen met behulp van de [regel-API voor transit ophalen](https://aka.ms/AzureMapsMobilityTransitLine).
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 22ed36c3c55d55ab9a733c2a0552f0ac3dcce1f5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453977"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987653"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Een Azure IoT Central-toepassing maken en beheren vanuit de CSP-Portal
 
@@ -39,9 +39,11 @@ Als u een Azure IoT Central-toepassing wilt maken, selecteert u **samen stellen*
 
 ![Toepassings pagina voor Csp's maken](media/howto-create-application-csp/image4-1.png)
 
-## <a name="payment-plan"></a>Betalings plan
+![Een toepassings pagina maken voor Csp's facturerings gegevens](media/howto-create-application-csp/image4-2.png)
 
-U kunt alleen betalen naar gebruik-toepassingen maken als CSP. Als u Azure IoT Central wilt presen teren aan uw klant, kunt u een proef toepassing afzonderlijk maken. Meer informatie over proef abonnementen en betalen per gebruik-toepassingen vindt u op de [pagina met prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/).
+## <a name="pricing-plan"></a>Prijs plan
+
+U kunt alleen toepassingen maken die gebruikmaken van een standaard prijs plan als CSP. Als u Azure IoT Central wilt presen teren aan uw klant, kunt u een toepassing maken die gebruikmaakt van het gratis prijs plan afzonderlijk. Meer informatie over de gratis en standaard prijzen abonnementen op de [pagina met prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
 ## <a name="application-name"></a>Naam van de toepassing
 
@@ -63,7 +65,7 @@ Zie [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 
 ## <a name="azure-subscription"></a>Azure-abonnement
 
-Met een Azure-abonnement kunt u exemplaren maken van Azure-services. Azure IoT Central detecteert automatisch alle Azure-abonnementen van de klant naar wie u toegang hebt en geeft deze weer in een vervolg keuzelijst op de pagina **toepassing maken** . Kies een Azure-abonnement om een nieuwe Azure IoT Central-toepassing te maken.
+Met een Azure-abonnement kunt u exemplaren van Azure-Services maken. Azure IoT Central detecteert automatisch alle Azure-abonnementen van de klant naar wie u toegang hebt en geeft deze weer in een vervolg keuzelijst op de pagina **toepassing maken** . Kies een Azure-abonnement om een nieuwe Azure IoT Central-toepassing te maken.
 
 Als u geen Azure-abonnement hebt, kunt u er een maken in het micro soft partner centrum. Nadat u het Azure-abonnement hebt gemaakt, gaat u terug naar de pagina **Toepassing maken**. Uw nieuwe abonnement wordt weergegeven in de vervolgkeuzelijst.**Azure-abonnement**.
 

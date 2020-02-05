@@ -3,21 +3,21 @@ title: Module voor teken hulpprogramma's | Microsoft Azure kaarten
 description: In dit artikel leert u hoe u gegevens voor teken opties kunt instellen met behulp van de Microsoft Azure Maps Web SDK
 author: walsehgal
 ms.author: v-musehg
-ms.date: 09/04/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2f23d4d7962fc4a01ac2f9d20dc834bcd2f08be5
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6c64820cdfa03e833bfd2fbad3ba7489170b14e5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910585"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988920"
 ---
 # <a name="use-the-drawing-tools-module"></a>De module voor tekenprogramma's gebruiken
 
-De Azure Maps Web-SDK bevat een *module voor teken hulpprogramma's*. Met deze module kunt u gemakkelijk shapes op de kaart tekenen en bewerken met behulp van een invoer apparaat, zoals een muis, ons aanraak scherm. De kern klasse van deze module is de [teken Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-) en biedt alle mogelijkheden die nodig zijn om shapes op de kaart te tekenen en te bewerken. De drawing Manager kan rechtstreeks worden gebruikt en geïntegreerd met een aangepaste werk balk GEBRUIKERSINTERFACE, of u kunt gebruikmaken van de ingebouwde [werk balk voor tekenen](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) . 
+De Azure Maps Web-SDK bevat een *module voor teken hulpprogramma's*. Met deze module kunt u gemakkelijk shapes op de kaart tekenen en bewerken met behulp van een invoer apparaat, zoals een muis of aanraak scherm. De kern klasse van deze module is het [teken beheer](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). De teken beheerder biedt alle mogelijkheden die nodig zijn om shapes op de kaart te tekenen en te bewerken. Het kan rechtstreeks worden gebruikt en is geïntegreerd met een aangepaste werk balk GEBRUIKERSINTERFACE. U kunt ook de ingebouwde [werk balk voor tekenen](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) gebruiken. 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>De module teken hulpprogramma's laden op een webpagina
 
@@ -30,7 +30,7 @@ De Azure Maps Web-SDK bevat een *module voor teken hulpprogramma's*. Met deze mo
         <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0.1/atlas-drawing.min.js"></script>
         ```
 
-    - U kunt ook de module teken hulpprogramma's laden voor de Azure Maps Web SDK-bron code lokaal met behulp van het NPM-pakket [Azure-Maps-drawing tools](https://www.npmjs.com/package/azure-maps-drawing-tools) en het vervolgens hosten met uw app. Dit pakket bevat ook type script definities. Gebruik deze opdracht:
+    - U kunt ook de module teken hulpprogramma's voor de Azure Maps Web SDK-bron code lokaal laden met behulp van het NPM-pakket [Azure-Maps-drawing tools](https://www.npmjs.com/package/azure-maps-drawing-tools) en het vervolgens hosten met uw app. Dit pakket bevat ook type script definities. Gebruik deze opdracht:
     
         > **NPM Azure-Maps-draw-tools installeren**
     
@@ -43,7 +43,7 @@ De Azure Maps Web-SDK bevat een *module voor teken hulpprogramma's*. Met deze mo
 
 ## <a name="use-the-drawing-manager-directly"></a>De tekening Manager rechtstreeks gebruiken
 
-Nu de module teken hulpprogramma's in uw toepassing is geladen, kunt u de [tekening Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-) gebruiken om de mogelijkheden voor tekenen en bewerken in de kaart in te scha kelen. U kunt opties voor de tekening beheerder opgeven tijdens het instantiëren of de functie `drawingManager.setOptions()` gebruiken.
+Zodra de module voor teken hulpprogramma's in uw toepassing is geladen, kunt u teken-en bewerk mogelijkheden inschakelen met behulp van de [tekening beheerder](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). U kunt opties voor de tekening beheerder opgeven tijdens het instantiëren of de functie `drawingManager.setOptions()` gebruiken.
 
 ### <a name="set-the-drawing-mode"></a>De teken modus instellen
 
@@ -83,7 +83,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 });
 ```
 
-Hieronder ziet u het code voorbeeld waarmee u een veelhoek op de kaart vrij kunt tekenen, terwijl u de linkermuisknop ingedrukt houdt en sleept. 
+ Dit code voorbeeld implementeert de functionaliteit van het tekenen van een veelhoek op de kaart. Houd de linkermuisknop ingedrukt en sleep deze rond, vrij.
 
 <br/>
 
@@ -121,7 +121,7 @@ Meer informatie over het gebruik van aanvullende functies van de module teken hu
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Drawing Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
