@@ -3,13 +3,13 @@ title: Offline back-ups voor DPM en Azure Backup Server
 description: Met Azure Backup kunt u gegevens van het netwerk verzenden met behulp van de Azure import/export-service. In dit artikel wordt de werk stroom voor offline back-ups voor DPM en Azure Backup Server (MABS) uitgelegd.
 ms.reviewer: saurse
 ms.topic: conceptual
-ms.date: 05/08/2018
-ms.openlocfilehash: 259be99efdef29e3f7971632adf76c03175bba01
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 1/28/2020
+ms.openlocfilehash: 6be75062ab0ce06784d8cd7c833e0070476acf60
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996320"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022576"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Werk stroom voor offline back-ups voor DPM en Azure Backup Server
 
@@ -56,13 +56,74 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan voordat u de werk stroom
     | Verenigde Staten | [Koppeling](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
     | China | [Koppeling](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
-* Een Azure Storage account met het *klassieke* implementatie model is gemaakt in het abonnement van waaruit u het bestand met publicatie-instellingen hebt gedownload, zoals hieronder wordt weer gegeven:
+* Een Azure Storage account met het *Resource Manager* -implementatie model is gemaakt in het abonnement van waaruit u het bestand met publicatie-instellingen hebt gedownload, zoals hieronder wordt weer gegeven:
 
-  ![Een klassiek opslag account maken](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
+  ![Een opslag account maken met Resource Manager-ontwikkeling](./media/backup-azure-backup-import-export/storage-account-resource-manager.png)
 
 * Een faserings locatie, die een netwerk share kan zijn of een extra station op de computer, intern of extern, met voldoende schijf ruimte om uw eerste kopie te bewaren, wordt gemaakt. Als u bijvoorbeeld een back-up probeert te maken van een bestands server van 500 GB, moet u ervoor zorgen dat de tijdelijke ruimte ten minste 500 GB is. (Er wordt een kleiner bedrag gebruikt vanwege compressie.)
 * Met betrekking tot schijven die naar Azure worden verzonden, moet u ervoor zorgen dat er slechts 2,5-SSD-of 2,5-inch of 3,5-inch interne harde schijven van SATA worden gebruikt. U kunt harde schijven van Maxi maal 10 TB gebruiken. Raadpleeg de [documentatie van de Azure import/export-service](../storage/common/storage-import-export-requirements.md#supported-hardware) voor de meest recente set stations die door de service worden ondersteund.
 * De SATA-schijven moeten worden aangesloten op een computer (waarnaar wordt verwezen als een *Kopieer computer*) van waaruit de kopie van de back-upgegevens van de *faserings locatie* naar de SATA-schijven is voltooid. Zorg ervoor dat BitLocker is ingeschakeld op de *Kopieer computer*
+
+## <a name="prepare-the-server-for-the-offline-backup-process"></a>De server voorbereiden voor het offline back-upproces
+
+>[!NOTE]
+> Als u de vermelde hulpprogram ma's, zoals *AzureOfflineBackupCertGen. exe* , niet kunt vinden in uw installatie van de Mars-agent, schrijft u naar AskAzureBackupTeam@microsoft.com om toegang te krijgen.
+
+* Open een opdracht prompt met verhoogde bevoegdheid op de server en voer de volgende opdracht uit:
+
+    ```cmd
+    AzureOfflineBackupCertGen.exe CreateNewApplication SubscriptionId:<Subs ID>
+    ```
+
+    Het hulp programma maakt een Azure offline back-upad-toepassing, als deze niet bestaat.
+
+    Als een toepassing al bestaat, wordt u door dit uitvoer bare programma gevraagd het certificaat hand matig te uploaden naar de toepassing in de Tenant. Volg de onderstaande stappen in [deze sectie](#manually-upload-offline-backup-certificate) om het certificaat hand matig te uploaden naar de toepassing.
+
+* Het hulp programma AzureOfflineBackup. exe genereert een OfflineApplicationParams. XML-bestand.  Kopieer dit bestand naar de server met MABS of DPM.
+* Installeer de [nieuwste Mars-agent](https://aka.ms/azurebackup_agent) op de DPM/Azure backup-server (MABS).
+* Registreer de server bij Azure.
+* Voer de volgende opdracht uit:
+
+    ```cmd
+    AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname configured with Azure Data Box>
+    ```
+
+* Met de bovenstaande opdracht wordt het bestand gemaakt `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch\MicrosoftBackupProvider\OfflineApplicationParams_<Storageaccountname>.xml`
+
+## <a name="manually-upload-offline-backup-certificate"></a>Offline back-upcertificaat hand matig uploaden
+
+Volg de onderstaande stappen om het offline back-upcertificaat hand matig te uploaden naar een eerder gemaakte Azure Active Directory toepassing die bedoeld is voor offline back-ups.
+
+1. Meld u aan bij Azure Portal.
+2. Ga naar **Azure Active Directory** > **app-registraties**
+3. Ga naar het tabblad **toepassingen in eigendom** en zoek een toepassing met de indeling weergave naam `AzureOfflineBackup _<Azure User Id`, zoals hieronder wordt weer gegeven:
+
+    ![Zoek naar de toepassing op het tabblad toepassingen in eigendom](./media/backup-azure-backup-import-export/owned-applications.png)
+
+4. Klik op de toepassing. Ga naar het tabblad **beheren** en klik in het linkerdeel venster op **Certificaten & geheimen**.
+5. Controleer op bestaande certificaten of open bare sleutels. Als er geen is, kunt u de toepassing veilig verwijderen door te klikken op de knop **verwijderen** op de pagina **overzicht** van de toepassing. Hierna kunt u de stappen opnieuw uitvoeren om [de server voor te bereiden voor het offline back-](#prepare-the-server-for-the-offline-backup-process) upproces en de onderstaande stappen over te slaan. Voer anders de volgende stappen uit vanaf de DPM/Azure Backup Server-server (MABS) waar u offline back-ups wilt configureren.
+6. Open het tabblad **computer certificaat toepassing beheren** > **persoonlijk** en zoek naar het certificaat met de naam `CB_AzureADCertforOfflineSeeding_<ResourceId>`
+7. Selecteer het certificaat hierboven, klik met de rechter muisknop op **alle taken** en **Exporteer**, zonder persoonlijke sleutel, in de CER-indeling.
+8. Ga naar de Azure-toepassing voor offline back-ups in de Azure Portal.
+9. Klik op > certificaten **beheren** **& geheimen** > **Upload certificaat**en upload het certificaat dat u in de vorige stap hebt geëxporteerd.
+
+    ![Het certificaat uploaden](./media/backup-azure-backup-import-export/upload-certificate.png)
+10. Open het REGI ster op de server door **regedit** te typen in het venster uitvoeren.
+11. Ga naar de register vermelding *computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider*.
+12. Klik met de rechter muisknop op **CloudBackupProvider** en voeg een nieuwe teken reeks waarde toe met de naam `AzureADAppCertThumbprint_<Azure User Id>`
+
+    >[!NOTE]
+    > Opmerking: Voer een van de volgende stappen uit om de gebruikers-id van Azure te vinden:
+    >
+    >1. Voer de `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as appears in the portal”` opdracht uit van de Azure Connected Power shell.
+    >2. Navigeer naar het registerpad: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;`
+
+13. Klik met de rechter muisknop op de teken reeks die u in de vorige stap hebt toegevoegd en selecteer **wijzigen**. Geef in de waarde de vinger afdruk op van het certificaat dat u in stap 7 hebt geëxporteerd en klik op **OK**.
+14. Als u de waarde van de vinger afdruk wilt ophalen, dubbelklikt u op het certificaat, selecteert u het tabblad **Details** en schuift u omlaag totdat u het veld vinger afdruk ziet. Klik op **vinger afdruk** en kopieer de waarde.
+
+    ![Waarde kopiëren uit het veld vinger afdruk](./media/backup-azure-backup-import-export/thumbprint-field.png)
+
+15. Ga door naar de [werk stroom](#workflow) sectie om door te gaan met het offline back-upproces.
 
 ## <a name="workflow"></a>Werkstroom
 
@@ -104,7 +165,7 @@ De informatie in deze sectie helpt u bij het volt ooien van de werk stroom voor 
 
 Het hulp programma *AzureOfflineBackupDiskPrep* wordt gebruikt om de SATA-schijven voor te bereiden die worden verzonden naar het dichtstbijzijnde Azure-Data Center. Dit hulp programma is beschikbaar in de installatiemap van de Recovery Services agent in het volgende pad:
 
-    *\\Microsoft Azure Recovery Services Agent\\Utils\\*
+`*\\Microsoft Azure Recovery Services Agent\Utils\*`
 
 1. Ga naar de map en kopieer de Directory **AzureOfflineBackupDiskPrep** naar een kopie van de computer waarop de SATA-schijven die moeten worden voor bereid, zijn verbonden. Zorg ervoor dat het volgende betrekking heeft op de Kopieer computer:
 
@@ -218,4 +279,3 @@ Op het moment van de volgende geplande back-up voert Azure Backup incrementele b
 ## <a name="next-steps"></a>Volgende stappen
 
 * Voor vragen over de Azure import/export-werk stroom raadpleegt u [de Microsoft Azure import/export-service gebruiken om gegevens over te dragen naar de Blob-opslag](../storage/common/storage-import-export-service.md).
-

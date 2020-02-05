@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 4e4d4c69eb51e0058d3b6b561b5167051079bf89
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 129f407dd66b32ea097daf4ed9110ffbba23660c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442691"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017596"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integreren in een intern VNET met Application Gateway
 
@@ -185,6 +185,9 @@ $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $l
 Nadat de bovenstaande opdracht is uitgevoerd, raadpleegt u de [DNS-configuratie die is vereist om toegang te krijgen tot de interne VNET-API Management service](api-management-using-with-internal-vnet.md#apim-dns-configuration) om deze te openen. Deze stap kan meer dan een helft van een uur duren.
 
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>Een aangepaste domein naam instellen in API Management
+
+> [!IMPORTANT]
+> De [nieuwe ontwikkelaars Portal](api-management-howto-developer-portal.md) moet ook verbinding met het beheer eindpunt van de API Management inschakelen, naast de onderstaande stappen.
 
 ### <a name="step-1"></a>Stap 1
 

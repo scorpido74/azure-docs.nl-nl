@@ -11,12 +11,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ae0e87fddabee9f42cbb5506dce4cd7a5f4f082
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64918858"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019278"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect-database verplaatsen van SQL Server Express naar SQL Server 
 
@@ -25,24 +25,24 @@ In dit document wordt beschreven hoe u de Azure AD Connect-database verplaatst v
 ## <a name="about-this-scenario"></a>Over dit scenario
 Hier volgt kort wat informatie over dit scenario.  In dit scenario is Azure AD Connect-versie (1.1.819.0) geïnstalleerd op een enkele Windows Server 2016-domeincontroller.  Voor de bijbehorende database wordt gebruikgemaakt van het ingebouwde SQL Server 2012 Express Edition.  De database wordt verplaatst naar een SQL Server 2017-server.
 
-![Scenario-architectuur](media/how-to-connect-install-move-db/move1.png)
+![scenario architectuur](media/how-to-connect-install-move-db/move1.png)
 
 ## <a name="move-the-azure-ad-connect-database"></a>De Azure AD Connect-database verplaatsen
 Voer de volgende stappen uit om de Azure AD Connect-database te verplaatsen naar een externe SQL-server.
 
 1. Ga op de Azure AD Connect-server naar **Services** en stop de service **Microsoft Azure AD Sync**.
-2. Ga naar de map **%Program Files%\Microsoft Azure AD Sync/Data/** en kopieer de bestanden **ADSync.mdf** en **ADSync_log.ldf** naar de externe SQL-server.
+2. Ga naar de map **%ProgramFiles%\Microsoft Azure AD Sync\Data** en kopieer de bestanden **ADSync. MDF** en **ADSync_log. ldf** naar de externe SQL Server.
 3. Start de service **Microsoft Azure AD Sync** opnieuw op de Azure AD Connect-server.
 4. Verwijder Azure AD Connect in het configuratiescherm bij Programma’s > Programma's en onderdelen.  Selecteer Microsoft Azure AD Connect en klik bovenaan op Verwijderen.
 5. Open SQL Server Management Studio op de externe SQL-server.
 6. Klik met de rechtermuisknop op Databases en selecteer Bijvoegen.
 7. Klik op het scherm **Databases bijvoegen** op **Toevoegen** en ga naar het bestand ADSync.mdf.  Klik op **OK**.
-   ![database koppelen](media/how-to-connect-install-move-db/move2.png)
+   ![data base koppelen](media/how-to-connect-install-move-db/move2.png)
 
 8. Zodra de database is bijgevoegd, gaat u terug naar de Azure AD Connect-server en installeert u Azure AD Connect.
 9. Zodra de MSI-installatie is voltooid, wordt de wizard Azure AD Connect gestart met de Express-installatiemodus. Sluit het scherm door op het pictogram Afsluiten te klikken.
    ![Welkom](./media/how-to-connect-install-move-db/db1.png)
-10. Start een nieuwe opdrachtprompt of PowerShell-sessie. Navigeer naar de map \<station > \program files\Microsoft Azure AD Connect. Voer de opdracht .\AzureADConnect.exe /useexistingdatabase uit om de wizard Azure AD Connect te starten in de installatiemodus Bestaande database gebruiken.
+10. Start een nieuwe opdrachtprompt of PowerShell-sessie. Navigeer naar map \<station > \Program files\Microsoft Azure AD Connect. Voer de opdracht .\AzureADConnect.exe /useexistingdatabase uit om de wizard Azure AD Connect te starten in de installatiemodus Bestaande database gebruiken.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. U wordt verwelkomd met het scherm Welkom bij Azure AD Connect. Nadat u akkoord bent gegaan met de licentievoorwaarden en privacyverklaring, klikt u op **Doorgaan**.
     ![Welkom](./media/how-to-connect-install-move-db/db3.png)
@@ -60,7 +60,7 @@ Voer de volgende stappen uit om de Azure AD Connect-database te verplaatsen naar
     ![Welkom](./media/how-to-connect-install-move-db/db7.png)
  
  
-16. Zodra de referenties zijn opgegeven, verandert het rode kruis in een groen vinkje. Klik op **volgende**.
+16. Zodra de referenties zijn opgegeven, verandert het rode kruis in een groen vinkje. Klik op **Volgende**.
     ![Welkom](./media/how-to-connect-install-move-db/db8.png)
  
  
@@ -72,7 +72,7 @@ Voer de volgende stappen uit om de Azure AD Connect-database te verplaatsen naar
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory ](whatis-hybrid-identity.md).
+- Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).
 - [Azure AD Connect installeren met behulp van een bestaande ADSync-database](how-to-connect-install-existing-database.md)
 - [Azure AD Connect installeren met SQL-gedelegeerde beheerdersmachtigingen](how-to-connect-install-sql-delegation.md)
 

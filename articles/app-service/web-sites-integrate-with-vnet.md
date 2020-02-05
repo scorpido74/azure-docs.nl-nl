@@ -6,13 +6,13 @@ ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 71dc37fc000b2f195478e06f7e755fa8df926444
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 472fe621fc7a95317f143ef96a1d7f8b5adfe581
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688292"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016966"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uw app integreren met een Azure-Virtual Network
 In dit document wordt de Azure App Service functie voor de integratie van virtuele netwerken beschreven en wordt uitgelegd hoe u deze kunt instellen met apps in de [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Met [Azure Virtual Networks][VNETOverview] (VNets) kunt u veel van uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen.  
@@ -34,7 +34,7 @@ Een app kan slechts één vorm van de VNet-integratie functie tegelijk gebruiken
 | Probleem  | Oplossing | 
 |----------|----------|
 | U wilt een RFC 1918-adres bereiken (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) in dezelfde regio | regionale VNet-integratie |
-| U wilt bronnen bereiken in een klassiek VNet of een VNet in een andere regio | Vereiste VNet-integratie voor gateway |
+| U wilt bronnen bereiken in een klassiek VNet of een VNet in een andere regio | vereiste VNet-integratie voor gateway |
 | U wilt RFC 1918-eind punten bereiken via ExpressRoute | regionale VNet-integratie |
 | Resources willen bereiken tussen service-eind punten | regionale VNet-integratie |
 
@@ -56,7 +56,7 @@ Er zijn enkele zaken die VNet-integratie niet ondersteunt, waaronder:
 * AD-integratie 
 * NetBios
 
-## <a name="regional-vnet-integration"></a>regionale VNet-integratie 
+## <a name="regional-vnet-integration"></a>Regionale VNet-integratie 
 
 > [!NOTE]
 > Peering is nog niet beschikbaar voor op Linux gebaseerde App Service.
@@ -74,7 +74,7 @@ Deze functie is beschikbaar als preview-versie, maar wordt wel ondersteund voor 
 * U kunt alleen adressen bereiken die zich in het RFC 1918-bereik bevinden. Dit zijn adressen in de blokken 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16.
 * U kunt geen resources bereiken in globale peering-verbindingen
 * U kunt geen routes instellen voor het verkeer dat afkomstig is van uw app naar uw VNet
-* De functie is alleen beschikbaar vanaf nieuwere App Service schaal eenheden die ondersteuning bieden voor PremiumV2 App Service-plannen.
+* De functie is alleen beschikbaar vanaf nieuwere App Service schaal eenheden die ondersteuning bieden voor PremiumV2 App Service-plannen. Houd er rekening mee dat uw app niet moet worden uitgevoerd op een PremiumV2-SKU, alleen dat deze moet worden uitgevoerd op een App Service plan waarbij de optie PremiumV2 beschikbaar is (wat impliceert dat het een nieuwere schaal eenheid is waar deze VNet-integratie functie vervolgens ook beschikbaar is).
 * Het integratie subnet kan slechts door één App Service plan worden gebruikt
 * De functie kan niet worden gebruikt door toepassingen van het geïsoleerde abonnement in een App Service Environment
 * Voor de functie is een ongebruikt subnet met een/27 met 32-adressen of groter vereist in uw Resource Manager VNet

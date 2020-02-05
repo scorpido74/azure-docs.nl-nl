@@ -1,6 +1,6 @@
 ---
-title: 'Azure VMware-oplossing door CloudSimple: een oplossing voor taak verdeling kiezen voor CloudSimple-persoonlijke Clouds'
-description: Hierin worden de opties voor taak verdeling beschreven voor het implementeren van een toepassing in een Privécloud
+title: 'Azure VMware-oplossingen (AVS): Kies een taakverdelings oplossing voor persoonlijke Clouds van AVS'
+description: Hierin worden de opties voor taak verdeling beschreven voor het implementeren van een toepassing in een geavse Privécloud
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 405bc9d95b8d82e2181e2fb828d6bcc00c8c4639
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045730"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014875"
 ---
-# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Een taakverdelings oplossing kiezen voor CloudSimple persoonlijke Clouds
+# <a name="choose-a-load-balancing-solution-for-avs-private-clouds"></a>Een taakverdelings oplossing kiezen voor persoonlijke Clouds van AVS
 
-Wanneer u een toepassing implementeert in een Privécloud in CloudSimple, kunt u kiezen uit verschillende opties voor taak verdeling.
+Wanneer u een toepassing implementeert in een Privécloud in de Cloud, kunt u een van de verschillende opties voor taak verdeling kiezen.
 
-U kunt een virtuele-of software-load balancer in uw CloudSimple-privécloud kiezen of zelfs Azure N7 gebruiken load balancer die worden uitgevoerd in uw Azure-abonnement om de front-end van uw weblaag te starten die wordt uitgevoerd in de Privécloud van CloudSimple. Hier worden enkele opties vermeld:
+U kunt een virtuele-of software-load balancer in de privécloud van uw AVS kiezen of Azure N7 gebruiken load balancer die worden uitgevoerd in uw Azure-abonnement om de front-end van uw weblaag in de Privécloud te starten. Hier worden enkele opties vermeld:
 
 ## <a name="virtual-load-balancers"></a>Virtuele load balancers
 
@@ -29,13 +29,13 @@ Enkele populaire leveranciers zijn: NginX: http://nginx.org/en/docs/http/load_ba
 
 ## <a name="azure-l7-load-balancer"></a>Azure N7-load balancer
 
-Wanneer u Azure-toepassing gateway als een N7-load balancer gebruikt voor uw toepassing die in een Privécloud wordt uitgevoerd, hoeft u de load balancer software niet te beheren. De load balancer-software wordt beheerd door Azure. Alle virtuele machines op de weblaag in de Privécloud gebruiken privé-IP-adressen en vereisen geen aanvullende NAT-regels of open bare IP-adressen voor het omzetten van namen. Vm's met een weblaag communiceren met de Azure-toepassing-gateway via een particuliere verbinding met lage latentie en een hoge band breedte.
+Wanneer u Azure-toepassing gateway als een N7-load balancer gebruikt voor uw toepassing die wordt uitgevoerd in een AVS-Privécloud, hoeft u de load balancer software niet te beheren. De load balancer-software wordt beheerd door Azure. Alle virtuele machines in de AVS-privécloud gebruiken privé-IP-adressen en vereisen geen aanvullende NAT-regels of open bare Ip's-adressen om namen om te zetten. Vm's met een weblaag communiceren met de Azure-toepassing-gateway via een particuliere verbinding met lage latentie en een hoge band breedte.
 
 Voor meer informatie over het configureren van deze oplossing raadpleegt u de hand leiding voor oplossingen over het gebruik van Azure-toepassing gateway als een N7-load balancer.
 
 ## <a name="azure-internal-load-balancer"></a>Interne load balancer van Azure
 
-Als u ervoor kiest om uw toepassing uit te voeren in een hybride implementatie waarbij de web-front-end-laag wordt uitgevoerd in een Azure-vNet in uw Azure-abonnement en de DB-laag van de toepassing wordt uitgevoerd in virtuele VMware-machines in CloudSimple-Privécloud, kunt u de interne belasting van Azure gebruiken de balancer (N4 load balancer) vóór de Vm's van de DB-laag voor verkeer beheer.
+Als u ervoor kiest om uw toepassing uit te voeren in een hybride implementatie waarbij de web-front-end-laag wordt uitgevoerd in een Azure-vNet in uw Azure-abonnement en de DB-laag van de toepassing wordt uitgevoerd in VMware-Vm's in de Privécloud-Cloud, kunt u Azure Internal load balancer gebruiken (L 4 load balancer) vóór de Vm's van de DB-laag voor verkeer beheer.
 
 Zie de documentatie van Azure [Internal Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) voor meer informatie.
 

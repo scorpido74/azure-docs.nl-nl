@@ -1,58 +1,72 @@
 ---
-title: Apparaatbeheer versie beheer voor Azure IoT Central-apps | Microsoft Docs
+title: Informatie over het versie beheer van de app voor uw Azure IoT Central-apps | Microsoft Docs
 description: Herhaal uw Apparaatinstellingen door nieuwe versies te maken en zonder uw live verbonden apparaten te beïnvloeden
-author: sandeeppujar
-ms.author: sandeepu
-ms.date: 07/08/2019
+author: sarahhubbard
+ms.author: sahubbar
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: feaa8abcb6635573b3680b77befa5ccb462ec73a
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 530208ed82c95187fac2173aa763ef5507f56b0b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930127"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018207"
 ---
 # <a name="create-a-new-device-template-version"></a>Een nieuwe sjabloon versie voor een apparaat maken
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-Met Azure IoT Central kunt u IoT-toepassingen snel ontwikkelen. U kunt de ontwerpen van uw device-sjablonen snel herhalen door metingen, instellingen of eigenschappen toe te voegen, te bewerken of te verwijderen. Sommige van deze wijzigingen kunnen zich voor de momenteel verbonden apparaten voordoen. Azure IoT Central identificeert deze laatste wijzigingen en biedt een manier om deze updates veilig te implementeren op de apparaten.
 
-Een sjabloon voor een apparaat heeft een versie nummer wanneer u deze maakt. Het versie nummer is standaard 1.0.0. Als u een sjabloon voor een apparaat bewerkt en als die wijziging invloed kan hebben op Live Connected-apparaten, wordt u door Azure IoT Central gevraagd om een nieuwe versie van de sjabloon voor het apparaat te maken.
+Met Azure IoT Central kunt u IoT-toepassingen snel ontwikkelen. U kunt de ontwerp functie van uw apparaat snel herhalen door de mogelijkheden, weer gaven en aanpassingen van het apparaat toe te voegen, te bewerken of te verwijderen. Wanneer u de sjabloon voor het apparaat hebt gepubliceerd, wordt het hulp model van het apparaat weer gegeven als **gepubliceerd** met vergrendelings pictogrammen naast het model. Als u wijzigingen wilt aanbrengen in het functionaliteits model van het apparaat, moet u een nieuwe versie van de sjabloon voor het apparaat maken. Ondertussen kunnen de Cloud eigenschappen,-aanpassingen en-weer gaven op elk gewenst moment worden bewerkt zonder dat ze de sjabloon voor het apparaat hoeven op te geven. Zodra u een van deze wijzigingen hebt opgeslagen, kunt u de sjabloon voor het apparaat publiceren om de meest recente wijzigingen beschikbaar te maken die de operator kan weer geven in Device Explorer.
 
 > [!NOTE]
-> Zie [een sjabloon instellen](howto-set-up-template.md) voor meer informatie over het maken van een sjabloon voor een apparaat
+> Zie [een sjabloon instellen en beheren](howto-set-up-template.md) voor meer informatie over het maken van een sjabloon voor een apparaat.
 
-## <a name="changes-that-prompt-a-version-change"></a>Wijzigingen die een versie wijziging vragen
+## <a name="add-customizations-to-the-device-template-without-versioning"></a>Aanpassingen toevoegen aan de sjabloon voor het apparaat zonder versie beheer
 
-In algemene wijzigingen in instellingen of eigenschappen van uw apparaatprofiel wordt een versie wijziging gevraagd.
+Bepaalde elementen van de mogelijkheden van uw apparaat kunnen worden bewerkt zonder dat ze de sjabloon en interfaces van uw apparaat hoeven te maken. Enkele van deze velden bevatten bijvoorbeeld weergave naam, semantisch type, minimum waarde, maximum waarde, decimaal posities, kleur, eenheid, weergave-eenheid, opmerking en beschrijving. Een van deze aanpassingen toevoegen:
+
+1. Ga naar de pagina met **Apparaatinstellingen** .
+1. Selecteer de sjabloon die u wilt aanpassen.
+1. Kies het tabblad **aanpassen** .
+1. Alle mogelijkheden die zijn gedefinieerd in het mogelijkheidsprofiel, worden hier weer gegeven. Alle velden die u hier kunt bewerken, kunnen worden opgeslagen en gebruikt in uw toepassing, zonder dat u de sjabloon van uw apparaat hoeft te gebruiken. Als er velden zijn die u wilt bewerken die alleen-lezen zijn, moet u de sjabloon van uw apparaat versie om deze te wijzigen. Selecteer een veld dat u wilt bewerken en voer een nieuwe waarde in.
+1. Klik op **Opslaan**. Deze waarden overschrijven nu alle items die in de sjabloon voor het eerst zijn opgeslagen en die in de toepassing worden gebruikt.
+
+## <a name="versioning-a-device-template"></a>Versie beheer van een apparaatprofiel
+
+Als u een nieuwe versie van uw apparaatprofiel maakt, wordt er een concept versie van de sjabloon gemaakt waarin het mogelijkheidsprofiel kan worden bewerkt. Gepubliceerde interfaces blijven gepubliceerd totdat ze afzonderlijk zijn geversied. Als u een gepubliceerde interface wilt wijzigen, moet u eerst een nieuwe versie van de sjabloon voor het apparaat maken.
+
+De sjabloon voor het apparaat moet alleen worden genoteerd als u probeert een deel van het mogelijkheidsprofiel te bewerken dat u niet kunt bewerken in de sectie aanpassingen van de sjabloon. 
+
+Als u een sjabloon voor een apparaat wilt versie:
+
+1. Ga naar de pagina met **Apparaatinstellingen** .
+1. Selecteer de sjabloon voor het apparaat waarvoor u een versie wilt maken.
+1. Klik boven aan de pagina op de knop **versie** en geef de sjabloon een nieuwe naam. We hebben een nieuwe naam voorgesteld die kan worden bewerkt.
+1. Klik op **Maken**.
+1. Uw sjabloon voor het apparaat bevindt zich nu in de concept modus. U ziet dat uw interfaces nog steeds zijn vergrendeld en moeten afzonderlijk worden bijgewerkt om te worden bewerkt. 
+
+### <a name="versioning-an-interface"></a>Versie beheer van een interface
+
+Met versie beheer van een interface kunt u de mogelijkheden in de interface die u al hebt gemaakt, toevoegen, bijwerken en verwijderen. 
+
+Als u een interface wilt versie:
+
+1. Ga naar de pagina met **Apparaatinstellingen** .
+1. Selecteer de Device-sjabloon die u in een concept modus hebt.
+1. Selecteer de interface in de gepubliceerde modus die u wilt versie en bewerken.
+1. Klik boven aan de interface pagina op de knop **versie** . 
+1. Klik op **Maken**.
+1. Uw interface bevindt zich nu in de concept modus. U kunt mogelijkheden aan uw interface toevoegen of deze bewerken zonder bestaande aanpassingen en weer gaven te verbreken. 
 
 > [!NOTE]
-> Wijzigingen die zijn aangebracht in de sjabloon voor het apparaat, wordt niet gevraagd om een nieuwe versie te maken wanneer er geen apparaat of het meeste apparaat is verbonden.
+> Standaard interfaces die zijn gepubliceerd door Azure IoT, kunnen niet worden geversied of bewerkt. Deze standaard interfaces worden gebruikt voor de certificering van apparaten.
 
-In de volgende lijst worden de gebruikers acties beschreven waarvoor een nieuwe versie kan zijn vereist:
+> [!NOTE]
+> Zodra de interface is gepubliceerd, kunt u deze mogelijkheden niet verwijderen, zelfs niet in een concept modus. Mogelijkheden kunnen alleen worden bewerkt of toegevoegd aan de interface in de concept modus.
 
-* Eigenschappen (vereist)
-    * Toevoegen of verwijderen van een vereiste eigenschap
-    * Het wijzigen van de veld naam van een eigenschap, veld naam die door uw apparaten wordt gebruikt om berichten te verzenden.
-*  Eigenschappen (optioneel)
-    * Een optionele eigenschap verwijderen
-    * Het wijzigen van de veld naam van een eigenschap, veld naam die door uw apparaten wordt gebruikt om berichten te verzenden.
-    * Een optionele eigenschap wijzigen in een vereiste eigenschap
-*  Instellingen
-    * Een instelling toevoegen of verwijderen
-    * Het wijzigen van de veld naam van een instelling, veld naam die door uw apparaten wordt gebruikt voor het verzenden en ontvangen van berichten.
-
-## <a name="what-happens-on-version-change"></a>Wat gebeurt er bij de versie wijziging?
-
-Wat gebeurt er met regels en dash boards van het apparaat als er een versie wijziging is?
-
-**Regels** in de vorige versie van de sjabloon voor het apparaat blijven ongewijzigd. Regels worden niet automatisch gemigreerd naar de nieuwe sjabloon versie van het apparaat. U kunt op de gebruikelijke wijze regels maken voor de nieuwe sjabloon versie. Zie voor meer informatie de [regel een telemetrie maken en meldingen instellen in uw Azure IOT Central-artikel voor het Toep assen van toepassingen](howto-create-telemetry-rules.md) .
-
-**Dash boards van apparaten** kunnen verschillende typen tegels bevatten. Sommige tegels kunnen instellingen en eigenschappen bevatten. Wanneer een eigenschap of instelling die in een tegel wordt gebruikt, wordt verwijderd, is de tegel volledig of gedeeltelijk verbroken. U kunt naar de tegel gaan om het probleem op te lossen door de tegel te verwijderen of de inhoud van de tegel bij te werken.
 
 ## <a name="migrate-a-device-across-device-template-versions"></a>Een apparaat migreren in de sjabloon versies van een apparaat
 
@@ -60,8 +74,8 @@ U kunt meerdere versies van de sjabloon voor het apparaat maken. In de loop van 
 
 1. Ga naar de pagina **device Explorer** .
 1. Selecteer het apparaat dat u naar een andere versie wilt migreren.
-1. Kies **apparaat migreren**.
-1. Selecteer het versie nummer waarnaar u het apparaat wilt migreren en kies **migreren**.
+1. Kies **migreren**.
+1. Selecteer de sjabloon van het-apparaat met het versie nummer waarnaar u het apparaat wilt migreren en kies **migreren**.
 
 ![Een apparaat migreren](media/howto-version-device-template/pick-version.png)
 
@@ -70,4 +84,4 @@ U kunt meerdere versies van de sjabloon voor het apparaat maken. In de loop van 
 Nu u hebt geleerd hoe u versie van Apparaatbeheer kunt gebruiken in uw Azure IoT Central-toepassing, is dit de voorgestelde volgende stap:
 
 > [!div class="nextstepaction"]
-> [Telemetrie-regels maken](howto-create-telemetry-rules.md)
+> [Telemetrie-regels maken](tutorial-create-telemetry-rules.md)

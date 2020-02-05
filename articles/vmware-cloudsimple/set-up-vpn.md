@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing door CloudSimple-VPN configureren tussen on-premises en Privécloud
-description: Hierin wordt beschreven hoe u een site-naar-site-of punt-naar-site-VPN-verbinding configureert tussen uw on-premises netwerk en uw CloudSimple-Privécloud
+title: 'Azure VMware-oplossingen (AVS): VPN configureren tussen on-premises en AVS Privécloud'
+description: Hierin wordt beschreven hoe u een site-naar-site-of punt-naar-site-VPN-verbinding configureert tussen uw on-premises netwerk en de Privécloud van uw AVS
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,21 +8,21 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: fbd2b227c9292593a7652044ef4c013bf0cfaf8e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972383"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017000"
 ---
-# <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Een VPN-verbinding met uw CloudSimple-Privécloud configureren
+# <a name="configure-a-vpn-connection-to-your-avs-private-cloud"></a>Een VPN-verbinding met de Privécloud van uw AVS configureren
 
-Met VPN-gateways kunt u op afstand verbinding maken met CloudSimple-netwerk vanaf uw on-premises netwerk en vanaf een client computer.  In dit artikel vindt u informatie over het instellen van VPN-gateways in de CloudSimple-Portal.  Een VPN-verbinding tussen uw on-premises netwerk en uw CloudSimple-netwerk biedt toegang tot de vCenter en workloads in uw Privécloud. CloudSimple biedt ondersteuning voor Point-to-site VPN-en site-naar-site VPN-gateways.
+Met VPN-gateways kunt u op afstand verbinding maken met het AVS-netwerk vanaf uw on-premises netwerk en vanaf een client computer. In dit artikel vindt u informatie over het instellen van VPN-gateways via de AVS-Portal. Een VPN-verbinding tussen uw on-premises netwerk en uw AVS-netwerk biedt toegang tot de vCenter en werk belastingen op uw AVS-Privécloud. AVS ondersteunt zowel punt-naar-site VPN-als site-naar-site VPN-gateways.
 
 ## <a name="vpn-gateway-types"></a>VPN-gateway typen
 
-* **Punt-naar-site-VPN-** verbinding is de eenvoudigste manier om verbinding te maken met uw privécloud vanaf uw computer. Gebruik een punt-naar-site-VPN-verbinding om extern verbinding te maken met de Privécloud.
-* Met **site-naar-site-VPN-** verbinding kunt u uw werk belastingen voor de privécloud instellen voor toegang tot on-premises Services. U kunt ook on-premises Active Directory als een identiteits bron gebruiken voor verificatie bij uw Privécloud.  Op dit moment wordt **op beleid gebaseerd VPN-** type ondersteund.
+* **Punt-naar-site-VPN-** verbinding is de eenvoudigste manier om vanaf uw computer verbinding te maken met uw persoonlijke AVS-Cloud. Gebruik een punt-naar-site-VPN-verbinding om extern verbinding te maken met de automatische AVS-Cloud.
+* Met **site-naar-site-VPN-** verbinding kunt u uw werk belastingen in de privécloud instellen voor toegang tot on-premises Services. U kunt ook on-premises Active Directory gebruiken als een id-bron voor verificatie bij uw automatische AVS-Cloud-vCenter. Op dit moment wordt **op beleid gebaseerd VPN-** type ondersteund.
 
 In een regio kunt u een site-naar-site-VPN-gateway en één punt-naar-site-VPN-gateway maken.
 
@@ -30,11 +30,11 @@ In een regio kunt u een site-naar-site-VPN-gateway en één punt-naar-site-VPN-g
 
 Zie [Create Point-to-site VPN gateway](vpn-gateway.md#create-point-to-site-vpn-gateway)om een punt-naar-site-VPN-gateway te maken.
 
-### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Verbinding maken met CloudSimple met behulp van punt-naar-site-VPN
+### <a name="connect-to-avs-using-point-to-site-vpn"></a>Verbinding maken met AVS met behulp van punt-naar-site-VPN
 
-VPN-client is nodig om vanaf uw computer verbinding te maken met CloudSimple.  Down load de [openvpn-client](https://openvpn.net/community-downloads/) voor Windows of [viscositeit](https://www.sparklabs.com/viscosity/download/) voor macOS en OS X.
+VPN-client is vereist om verbinding te maken met AVS vanaf uw computer. Down load de [openvpn-client](https://openvpn.net/community-downloads/) voor Windows of [viscositeit](https://www.sparklabs.com/viscosity/download/) voor macOS en OS X.
 
-1. Start de CloudSimple-Portal en selecteer **netwerk**.
+1. Start de AVS-Portal en selecteer **netwerk**.
 2. Selecteer **VPN gateway**.
 3. Klik in de lijst met VPN-gateways op de punt-naar-site-VPN-gateway.
 4. Selecteer **gebruikers**.
@@ -47,7 +47,7 @@ VPN-client is nodig om vanaf uw computer verbinding te maken met CloudSimple.  D
     * Instructies voor het [importeren van de configuratie op Windows-client](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program)
     * Instructies voor het [importeren van de configuratie in macOS of OS X](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)
 
-7. Verbinding maken met CloudSimple VPN-gateway.
+7. Verbinding maken met de AVS VPN-gateway.
 
 Hieronder ziet u een voor beeld van het importeren van een verbinding met de **viscositeit-client**.
 
@@ -57,7 +57,7 @@ Hieronder ziet u een voor beeld van het importeren van een verbinding met de **v
 
 2. Open viscositeit op uw computer.
 
-3. Klik op **+** het pictogram en selecteer **verbinding** > importeren**uit bestand**.
+3. Klik op het pictogram **+** en selecteer **verbindings > importeren** **uit bestand**.
 
     ![VPN-configuratie importeren uit bestand](media/import-p2s-vpn-config.png)
 
@@ -73,23 +73,23 @@ Als u verbinding wilt maken met VPN met behulp van de viscositeit OpenVPN-Client
 
 ![VPN](media/vis03.png)
 
-### <a name="connecting-to-multiple-private-clouds"></a>Verbinding maken met meerdere persoonlijke Clouds
+### <a name="connecting-to-multiple-avs-private-clouds"></a>Verbinding maken met persoonlijke Clouds van meerdere AVS
 
-Met een punt-naar-site-VPN-verbinding worden de DNS-namen van de eerste Privécloud die u maakt, omgezet. Wanneer u toegang wilt krijgen tot andere persoonlijke Clouds, moet u de DNS-server bijwerken op uw VPN-client.
+Met een punt-naar-site-VPN-verbinding worden de DNS-namen van de eerste AVS-privécloud die u maakt, omgezet. Wanneer u toegang wilt krijgen tot andere AVS-persoonlijke Clouds, moet u de DNS-server bijwerken op uw VPN-client.
 
-1. Start de [CloudSimple-Portal](access-cloudsimple-portal.md).
+1. [AVS-Portal](access-cloudsimple-portal.md)starten.
 
-2. Navigeer naar**persoonlijke Clouds** van **resources** > en selecteer de privécloud waarmee u verbinding wilt maken.
+2. Navigeer naar **Resources** > automatische **AVS-Clouds** en selecteer de AVS-privécloud waarmee u verbinding wilt maken.
 
-3. Op de pagina **samen vatting** van de privécloud kopieert u het IP-adres van de DNS-server van de Privécloud onder **basis informatie**.
+3. Op de pagina **samen vatting** van de privécloud van de AVS kopieert u het IP-adres van de automatische AVS-Cloud DNS-server onder **basis informatie**.
 
-    ![DNS-servers in privécloud](media/private-cloud-dns-server.png)
+    ![DNS-servers voor de Privécloud in de Cloud](media/private-cloud-dns-server.png)
 
 4. Klik met de rechter muisknop op het Viscositeits pictogram in de systeem balk van de computer en selecteer **voor keuren**.
 
     ![VPN](media/vis00.png)
 
-5. Selecteer de CloudSimple-VPN-verbinding.
+5. Selecteer de AVS VPN-verbinding.
 
     ![VPN-verbinding](media/viscosity-client.png)
 
@@ -97,24 +97,24 @@ Met een punt-naar-site-VPN-verbinding worden de DNS-namen van de eerste Privécl
 
     ![VPN-verbinding bewerken](media/viscosity-edit-connection.png)
 
-7. Klik op het tabblad **netwerken** en voer de IP-adressen van de DNS-server voor de privécloud in, gescheiden door ```cloudsimple.io```een komma of een spatie en het domein.  Selecteer **DNS-instellingen negeren die worden verzonden door de VPN-server**.
+7. Klik op het tabblad **netwerken** en voer het IP-adres van de DNS-server van de AVS-privécloud in, gescheiden door een komma of een spatie en het domein als ```AVS.io```. Selecteer **DNS-instellingen negeren die worden verzonden door de VPN-server**.
 
     ![VPN-netwerken](media/viscosity-edit-connection-networking.png)
 
 > [!IMPORTANT]
-> Als u verbinding wilt maken met uw eerste Privécloud, verwijdert u deze instellingen en maakt u verbinding met de VPN-server.
+> Als u verbinding wilt maken met uw eerste AVS-privécloud, verwijdert u deze instellingen en maakt u verbinding met de VPN-server.
 
 ## <a name="site-to-site-vpn"></a>Site-to-Site VPN
 
-Zie [site-naar-site-VPN-gateway maken](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)voor het maken van een site-naar-site-VPN-gateway.  Site-naar-site-VPN-verbinding van uw on-premises netwerk naar uw Privécloud biedt deze voor delen.  
+Zie [site-naar-site-VPN-gateway maken](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)voor het maken van een site-naar-site-VPN-gateway. Site-naar-site-VPN-verbinding van uw on-premises netwerk naar uw AVS-privécloud biedt deze voor delen. 
 
-* Toegankelijkheid van uw persoonlijke Cloud-vCenter vanaf elk werk station in uw on-premises netwerk
+* Toegankelijkheid van uw AVS-persoonlijke Cloud-vCenter vanaf elk werk station in uw on-premises netwerk
 * Gebruik van uw on-premises Active Directory als een vCenter-identiteits bron
-* Handige overdracht van VM-sjablonen, Iso's en andere bestanden van uw on-premises bronnen naar uw Privécloud-vCenter
-* Toegankelijkheid van werk belastingen die worden uitgevoerd in uw Privécloud vanuit uw on-premises netwerk
+* Handige overdracht van VM-sjablonen, Iso's en andere bestanden van uw on-premises resources naar uw AVS-persoonlijke Cloud-vCenter
+* Toegankelijkheid van workloads die worden uitgevoerd op uw AVS-Privécloud vanuit uw on-premises netwerk
 
 Zie [een VPN-verbinding met hoge Beschik baarheid configureren](high-availability-vpn-connection.md)voor het instellen van uw on-PREMISES VPN-gateway in de modus voor hoge Beschik baarheid.
 
 > [!IMPORTANT]
 >    1. Stel TCP MSS in op 1200 op uw VPN-apparaat. Als uw VPN-apparaten geen ondersteuning bieden voor MSS-bekleming, kunt u in plaats daarvan ook de MTU op de tunnel interface instellen op 1240 bytes.
-> 2. Nadat site-naar-site-VPN is ingesteld, stuurt u de DNS-aanvragen voor *. cloudsimple.io door naar de DNS-servers van de Privécloud.  Volg de instructies in [on-premises DNS-installatie](on-premises-dns-setup.md).
+> 2. Nadat het site-naar-site-VPN is ingesteld, stuurt u de DNS-aanvragen voor * door. AVS.io naar de AVS-DNS-servers in de Privécloud. Volg de instructies in [on-premises DNS-installatie](on-premises-dns-setup.md).

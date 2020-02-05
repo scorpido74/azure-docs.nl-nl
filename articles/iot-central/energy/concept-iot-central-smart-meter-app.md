@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: cab593990369bb8a4135e82534a2eb409b574e96
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8f3772c1d65780337c421cfaaa7b70d7ac7186cf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582764"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024310"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central-app-architectuur voor slimme meter
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Dit artikel bevat een overzicht van de app-sjabloon architectuur voor het bewaken van slimme meters. In het onderstaande diagram ziet u een veelgebruikte architectuur voor slimme meter-app op Azure met behulp van IoT Central-platform.
 
@@ -28,7 +28,7 @@ Deze architectuur bestaat uit de volgende onderdelen. Voor sommige oplossingen i
 
 ## <a name="smart-meters-and-connectivity"></a>Slimme meters en connectiviteit 
 
-Een slimme meter is een van de belangrijkste apparaten onder alle energie-assets. Het registreert en communiceert gegevens over energie verbruik naar hulpprogram ma's voor bewaking en andere gebruiks gevallen, zoals facturering en respons op aanvraag. Op basis van het meter type kan verbinding worden gemaakt met IoT Central via gateways of via andere tussenliggende apparaten of systemen, zoals de rand apparaten en de hoofd systemen. Bouw IoT Central apparaats brug om apparaten te verbinden die niet rechtstreeks kunnen worden aangesloten. De IoT Central Device Bridge is een open-source oplossing en u vindt [hier](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)de volledige informatie. 
+Een slimme meter is een van de belangrijkste apparaten onder alle energie-assets. Het registreert en communiceert gegevens over energie verbruik naar hulpprogram ma's voor bewaking en andere gebruiks gevallen, zoals facturering en respons op aanvraag. Op basis van het meter type kan verbinding worden gemaakt met IoT Central met behulp van gateways of andere tussenliggende apparaten of systemen, zoals de rand apparaten en de hoofd systemen. Bouw IoT Central apparaats brug om apparaten te verbinden die niet rechtstreeks kunnen worden aangesloten. De IoT Central Device Bridge is een open-source oplossing en u vindt [hier](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)de volledige informatie. 
 
 
 ## <a name="iot-central-platform"></a>IoT Central platform

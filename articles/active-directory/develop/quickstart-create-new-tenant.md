@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 860577938eab0f7561e9b66d0f58c9fc0d077b26
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e4a4e9d8d1d100fe2e8c35053cea31c55b0f030d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704150"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023154"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Snelstartgids: een Tenant instellen
 
@@ -57,7 +57,7 @@ Als er geen bestaande tenant is gekoppeld aan uw account, ziet u een GUID onder 
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Een nieuwe Azure AD-tenant maken
 
-Als u nog geen Azure AD-tenant hebt of een nieuwe wilt maken voor ontwikkeling, kan dat met behulp van de [interface voor het maken van een map](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). U moet de volgende informatie opgeven voor het maken van de nieuwe tenant:
+Als u nog geen Azure AD-Tenant hebt of een nieuwe wilt maken voor ontwikkeling, raadpleegt u de [Snelstartgids](../fundamentals/active-directory-access-create-new-tenant.md) of volgt u de [ervaring](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)voor het maken van mappen. U moet de volgende informatie opgeven voor het maken van de nieuwe tenant:
 
 - **Naam van de organisatie**
 - **Eerste domein**: dit wordt onderdeel van *. onmicrosoft.com. U kunt het domein later nog aanpassen.

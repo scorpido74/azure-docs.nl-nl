@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: bba4196547bda3d3ddcf3344032de5b9286639a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996745"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026112"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Ondersteunde Kubernetes-versies in azure Kubernetes service (AKS)
 
@@ -96,7 +96,7 @@ New Supported Version List
 * Voor nieuwe **secundaire** versies van Kubernetes
   * Alle gebruikers worden op de hoogte gesteld van de nieuwe versie en de versie die wordt verwijderd.
   * Wanneer een nieuwe patch versie wordt uitgebracht, wordt de oudste patch release op hetzelfde moment verwijderd.
-  * Klanten hebben **60 dagen** vanaf de datum van de open bare melding om een upgrade naar een ondersteunde versie van de kleine release te kunnen uitvoeren.
+  * Klanten hebben **30 dagen** na de datum van de open bare melding voor een upgrade naar een ondersteunde versie van de secundaire release.
 * Voor nieuwe **patch** versies van Kubernetes
   * Alle gebruikers ontvangen een melding dat de nieuwe patch versie wordt vrijgegeven en een upgrade naar de nieuwste patch release.
   * Gebruikers hebben **30 dagen** een upgrade naar een nieuwere, ondersteunde patch release. Gebruikers hebben **30 dagen** voor een upgrade naar een ondersteunde patch release voordat de oudste wordt verwijderd.

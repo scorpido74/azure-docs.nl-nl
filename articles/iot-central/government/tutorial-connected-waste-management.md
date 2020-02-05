@@ -7,22 +7,23 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 771e4a822df3e7d8eeee53174d657426bf226372
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990017"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016490"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Zelf studie: een verbonden afval beheer toepassing maken in IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 In deze zelf studie wordt u begeleid bij het maken van een met Azure IoT Central verbonden afval beheer toepassing vanuit de sjabloon IoT Central **verbonden afval beheer** toepassing. 
 
-In deze zelf studie leert u het volgende: 
+In deze zelfstudie leert u het volgende: 
 
 > [!div class="checklist"]
+
 > * Gebruik de sjabloon voor het beheer van verbonden **afval** van Azure IOT Central om uw verbonden afval beheer toepassing te maken
 > * Het dash board van de operator verkennen en aanpassen 
 > * Sjabloon voor het apparaat voor verbonden afval bakken verkennen
@@ -33,12 +34,12 @@ In deze zelf studie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt het volgende nodig om deze zelf studie te volt ooien:
+Voor deze zelfstudie hebt u het volgende nodig:
 -  U wordt aangeraden een Azure-abonnement te nemen. U kunt eventueel een gratis proef versie van 7 dagen gebruiken. Als u geen Azure-abonnement hebt, kunt u er een maken op de [Azure-aanmeldings pagina](https://aka.ms/createazuresubscription).
 
 ## <a name="create-connected-waste-management-app-in-iot-central"></a>Een verbonden afval beheer-app maken in IoT Central
 
-In deze sectie gebruiken we de Azure IoT Central-sjabloon voor het **beheer van verbonden afval** om uw verbonden afval beheer toepassing in IOT Central te maken.
+In deze sectie gebruikt u de Azure IoT Central- **sjabloon voor het beheer van verbonden afval** om uw verbonden afval beheer toepassing te maken in IOT Central.
 
 Een nieuwe Azure IoT Central-toepassing voor het beheer van verbonden afval maken:  
 
@@ -59,7 +60,7 @@ Een nieuwe Azure IoT Central-toepassing voor het beheer van verbonden afval make
     * **URL** : u kunt desgewenst de gewenste URL kiezen. U kunt de URL later ook wijzigen. 
     * Als u een Azure-abonnement hebt, voert u uw *adres lijst, het Azure-abonnement en de regio*in. Als u geen abonnement hebt, kunt u een **gratis proef versie van 7 dagen** inschakelen en de vereiste contact gegevens volt ooien.  
 
-    Zie de [snelstart over het maken van een toepassing](../preview/quick-deploy-iot-central.md)voor meer informatie over directory's en abonnementen.
+    Zie de [snelstart over het maken van een toepassing](../core/quick-deploy-iot-central.md)voor meer informatie over directory's en abonnementen.
 
 5. Klik op de knop **maken** onder aan de pagina. 
 
@@ -134,7 +135,7 @@ De sjabloon voor het apparaat weer geven:
 
 2. In de lijst met Apparaatinstellingen ziet u de **gekoppelde afval lade**. Open door op de naam te klikken.
 
-3. Raadpleeg de mogelijkheden van de sjabloon voor het apparaat. U kunt zien dat Sens oren als *opvul niveau*, *odor meter*, *gewicht*, *locatie* , enzovoort worden gedefinieerd.
+3. Raadpleeg de mogelijkheden van de sjabloon voor het apparaat. U kunt zien dat Sens oren als *opvul niveau*, *odor meter*, *gewicht*, *locatie*en andere worden gedefinieerd.
 
    ![Apparaatprofiel](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -152,7 +153,7 @@ Probeer het volgende aan te passen:
 ### <a name="add-a-cloud-property"></a>Een Cloud eigenschap toevoegen 
 
 1. Ga naar de **eigenschap Cloud** in het menu van de sjabloon voor het apparaat
-2. Voeg een nieuwe Cloud eigenschap toe door op **+ Cloud eigenschap toevoegen**te klikken. In IoT Central kunt u een eigenschap toevoegen die relevant is voor het apparaat, maar niet naar verwachting door een apparaat wordt verzonden. Een voor beeld: een Cloud eigenschap kan een drempel waarde zijn die specifiek is voor de installatie, informatie over activa of onderhouds informatie, enzovoort. 
+2. Voeg een nieuwe Cloud eigenschap toe door op **+ Cloud eigenschap toevoegen**te klikken. In IoT Central kunt u een eigenschap toevoegen die relevant is voor het apparaat, maar niet naar verwachting door een apparaat wordt verzonden. Een voor beeld: een Cloud eigenschap kan een drempel waarde zijn die specifiek is voor de installatie, informatie over activa of onderhouds informatie en andere informatie. 
 3. Wijzigingen **Opslaan** 
  
 ### <a name="views"></a>Weergaven 

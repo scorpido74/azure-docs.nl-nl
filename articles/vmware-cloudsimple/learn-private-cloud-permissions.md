@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing door CloudSimple-machtigings model voor Privécloud
-description: Hierin worden het machtigings model, de groepen en de categorieën CloudSimple Private Cloud beschreven
+title: Azure VMware-oplossingen (AVS)-machtigings model voor de Privécloud-Cloud
+description: Hierin worden het machtigings model, groepen en categorieën van de AVS-Privécloud beschreven
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,39 +8,39 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 28c4dc7831f97d66eb4d47f08e640344d5cca0d1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 9488c59ead23fb68633ccc56a0df905ebfeea079
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544307"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014943"
 ---
-# <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>CloudSimple Private Cloud permission model van VMware vCenter
+# <a name="avs-private-cloud-permission-model-of-vmware-vcenter"></a>Machtigings model voor de Privécloud van de cloud van VMware vCenter
 
-CloudSimple behoudt volledige beheerders toegang tot de Privécloud. Elke CloudSimple-klant krijgt voldoende beheerders bevoegdheden om de virtuele machines in hun omgeving te kunnen implementeren en beheren.  Als dat nodig is, kunt u uw bevoegdheden tijdelijk escaleren om beheer functies uit te voeren.
+AVS behoudt volledige beheerders toegang tot de cloud omgeving van de AVS-Privécloud. Aan elke AVS-klant worden voldoende beheerders bevoegdheden verleend om de virtuele machines in hun omgeving te kunnen implementeren en beheren. Als dat nodig is, kunt u uw bevoegdheden tijdelijk escaleren om beheer functies uit te voeren.
 
 ## <a name="cloud-owner"></a>Cloud eigenaar
 
-Wanneer u een Privécloud maakt, wordt er een **CloudOwner** -gebruiker gemaakt in het vCenter-domein voor eenmalige aanmelding, met toegang tot de **rol van Cloud-eigenaar** om objecten in de privécloud te beheren. Deze gebruiker kan ook extra vCenter- [identiteits bronnen](set-vcenter-identity.md)instellen en andere gebruikers naar de privécloud van de Cloud.
+Wanneer u een Privécloud maakt, wordt er een **CloudOwner** -gebruiker gemaakt in het vCenter-domein voor eenmalige aanmelding, met toegang tot de **rol van Cloud-eigenaar** om objecten in de AVS-privécloud te beheren. Deze gebruiker kan ook extra VCenter- [identiteits bronnen](set-vcenter-identity.md)instellen, en andere gebruikers naar de AVS-Privécloud voor persoonlijke Clouds.
 
 > [!NOTE]
-> De standaard gebruiker voor uw CloudSimple Private Cloud vCenter is cloudowner@cloudsimple.local wanneer een Privécloud wordt gemaakt.
+> De standaard gebruiker voor uw AVS-Privécloud is cloudowner@AVS.local wanneer er een Privécloud wordt gemaakt.
 
 ## <a name="user-groups"></a>Gebruikersgroepen
 
-Een groep met de naam **Cloud-eigenaar-groep** wordt gemaakt tijdens de implementatie van een privécloud. Gebruikers in deze groep kunnen verschillende onderdelen van de vSphere omgeving beheren op de Privécloud. Deze groep krijgt automatisch machtigingen voor de **rol van Cloud-eigenaar** en de **CloudOwner** -gebruiker wordt toegevoegd als lid van deze groep.  CloudSimple maakt extra groepen met beperkte bevoegdheden voor eenvoudig beheer.  U kunt elke wille keurige gebruiker toevoegen aan deze vooraf gemaakte groepen en de bevoegdheden die hieronder zijn gedefinieerd, worden automatisch toegewezen aan de gebruikers in de groepen.
+Een groep met de naam **Cloud-eigenaar-groep** wordt gemaakt tijdens de implementatie van een privécloud in de Cloud. Gebruikers in deze groep kunnen verschillende onderdelen van de vSphere omgeving beheren in de Privécloud van de AVS. Deze groep krijgt automatisch machtigingen voor de **rol van Cloud-eigenaar** en de **CloudOwner** -gebruiker wordt toegevoegd als lid van deze groep. AVS maakt extra groepen met beperkte bevoegdheden voor eenvoudig beheer. U kunt elke wille keurige gebruiker toevoegen aan deze vooraf gemaakte groepen en de bevoegdheden die hieronder zijn gedefinieerd, worden automatisch toegewezen aan de gebruikers in de groepen.
 
 ### <a name="pre-created-groups"></a>Vooraf gemaakte groepen
 
 | Groepsnaam | Doel | Rol |
 | -------- | ------- | ------ |
-| Cloud-eigenaar-groep | Leden van deze groep hebben beheerders bevoegdheden voor de vCenter van de Privécloud | [Cloud-eigenaar-rol](#cloud-owner-role) |
-| Cloud-globaal-Cluster-beheer groep | Leden van deze groep hebben beheerders bevoegdheden op het vCenter-cluster van de Privécloud | [Cloud-cluster-beheerder-rol](#cloud-cluster-admin-role) |
-| Cloud-Global-Storage-admin-Group | Leden van deze groep kunnen opslag in de Privécloud van de Cloud beheren | [Cloud-opslag-beheerder-rol](#cloud-storage-admin-role) |
-| Cloud-globaal-netwerk-beheerder-groep | Leden van deze groep kunnen netwerk-en gedistribueerde poort groepen beheren in de Privécloud-vCenter | [Cloud-netwerk-admin-rol](#cloud-network-admin-role) |
-| Cloud-Global-VM-beheerder-groep | Leden van deze groep kunnen virtuele machines op de vCenter van de Privécloud beheren | [Cloud-VM-beheerder-rol](#cloud-vm-admin-role) |
+| Cloud-eigenaar-groep | Leden van deze groep hebben beheerders bevoegdheden voor de automatische AVS-Cloud-vCenter | [Cloud-eigenaar-rol](#cloud-owner-role) |
+| Cloud-globaal-Cluster-beheer groep | Leden van deze groep hebben beheerders bevoegdheden op de AVS Private Cloud vCenter-cluster | [Cloud-cluster-beheerder-rol](#cloud-cluster-admin-role) |
+| Cloud-Global-Storage-admin-Group | Leden van deze groep kunnen opslag in de automatische AVS-Cloud-vCenter beheren | [Cloud-opslag-beheerder-rol](#cloud-storage-admin-role) |
+| Cloud-globaal-netwerk-beheerder-groep | Leden van deze groep kunnen netwerk-en gedistribueerde poort groepen beheren in de automatische AVS-Cloud-vCenter | [Cloud-netwerk-admin-rol](#cloud-network-admin-role) |
+| Cloud-Global-VM-beheerder-groep | Leden van deze groep kunnen virtuele machines op de AVS-Privécloud beheren | [Cloud-VM-beheerder-rol](#cloud-vm-admin-role) |
 
-Als u afzonderlijke gebruikers machtigingen wilt verlenen voor het beheren van de Privécloud, maakt u gebruikers accounts toevoegen aan de juiste groepen.
+Als u afzonderlijke gebruikers machtigingen wilt verlenen voor het beheren van de automatische AVS-Cloud, maakt u gebruikers accounts toevoegen aan de juiste groepen.
 
 > [!CAUTION]
 > Nieuwe gebruikers moeten alleen worden toegevoegd aan de *Cloud-eigenaar-groep*, *Cloud-Global-cluster-admin groep*, *Cloud-Global-Storage-admin-Group*, Cloud-Global: *Network-Administrator-* Group of Cloud-Global:- *beheer groep*.  Gebruikers die zijn toegevoegd aan de groep *Administrators* , worden automatisch verwijderd.  Alleen service accounts moeten worden toegevoegd aan de groep *Administrators* en service accounts moeten worden gebruikt om u aan te melden bij de vSphere-webgebruikersinterface.

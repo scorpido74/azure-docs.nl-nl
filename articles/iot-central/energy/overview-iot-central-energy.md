@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8c7d2481fe3ef361386bacc652d87744c1c790bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 13b626945743c17bad8df58fba77e1c960e90ef3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581508"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016559"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Oplossingen voor de energiesector bouwen met IoT Central 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 
 Slimme meters en zonne panelen spelen een belang rijke rol in de trans formatie van de energie-industrie. De slimme meters geven meer besturings elementen en real-time inzichten over het energie verbruik en de groei van het zonne deel van de schermen door braak in Hernieuw bare energie generatie. Het slimme meter-en zonne deel venster voor monitor-apps zijn voorbeeld sjablonen waarmee de verschillende mogelijkheden worden weer gegeven. Partners kunnen gebruikmaken van deze sjablonen om energie oplossingen te bouwen met IoT Central voor hun specifieke behoeften. Geen nieuwe code ring en er zijn geen extra kosten vereist voor het implementeren en gebruiken van deze toepassingen. Meer informatie over energie toepassings sjablonen en hun mogelijkheden.

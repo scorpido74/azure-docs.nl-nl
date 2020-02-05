@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 86b7a1b373d80f0e6bb7f40f57f71d20e396a6c1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 27874e5731bd6fb9821e7aeda9333adbdbb79099
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934603"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023290"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Naslag documentatie voor Azure Digital Apparaatdubbels Swagger
 
@@ -93,11 +93,11 @@ De voor beelden bevatten ook fout codes voor het oplossen van fouten of het verb
 ## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2,0-autorisatie
 
 > [!NOTE]
-> * De gebruikers-principal die de Azure Digital Apparaatdubbels-resource heeft gemaakt, heeft een rol voor ruimte-beheerdersrol en kan extra roltoewijzingen maken voor andere gebruikers. Dergelijke gebruikers en hun rollen kunnen worden gemachtigd om de Api's aan te roepen.
+> * De gebruikers-principal die de Azure Digital Apparaatdubbels-resource heeft gemaakt, heeft een rol voor ruimte-beheerdersrol en kan extra roltoewijzingen maken voor andere gebruikers. Deze gebruikers en hun rollen kunnen worden gemachtigd om de Api's aan te roepen.
 
-1. Volg de stappen in [deze Snelstartgids](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) om een Azure AD-toepassing te maken en te configureren. U kunt ook een bestaande app-registratie hergebruiken.
+1. Volg de stappen in [de Quick](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) start om een Azure Active Directory-toepassing te maken en te configureren. U kunt ook een bestaande app-registratie hergebruiken.
 
-1. Voeg de volgende **omleidings-URL** toe aan uw Azure AD-App-registratie:
+1. Voeg de volgende **omleidings-URI** toe aan de registratie van uw Azure Active Directory-app:
 
     [URL voor Swagger-omleiding ![registreren in AAD](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
@@ -108,7 +108,9 @@ De voor beelden bevatten ook fout codes voor het oplossen van fouten of het verb
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Uw management REST API-documentatie-URL gevonden in de portal  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Kopieer de **client-id** van uw Azure AD-app.
+1. Schakel het selectie vakje impliciete **toegangs tokens** voor **granting** > in om toe te staan dat de OAuth 2,0 impliciete toekennings stroom moet worden gebruikt. Selecteer **configureren**en vervolgens **Opslaan**.
+
+1. Kopieer de **client-id** van uw Azure Active Directory-app.
 
 Na het volt ooien van de Azure Active Directory registratie:
 

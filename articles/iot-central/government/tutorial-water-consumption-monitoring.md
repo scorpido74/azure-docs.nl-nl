@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d31ef856103d809fc02a183603bc45f9d94939c8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1bad4ab6320e757ac766776a95b8dbe6ebaa3259
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990545"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016422"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Zelf studie: een toepassing voor het controleren van water verbruik maken in IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 In deze zelf studie wordt u begeleid bij het maken van een Azure IoT Central-bewakings toepassing voor water gebruik vanuit de sjabloon voor de bewaking van IoT Central water verbruik. 
 
-In deze zelf studie leert u het volgende: 
+In deze zelfstudie leert u het volgende: 
 
 > [!div class="checklist"]
 > * Gebruik de sjabloon voor het **controleren** van het water verbruik van Azure IOT Central voor het maken van uw water verbruik-bewakings toepassing
@@ -34,12 +34,12 @@ In deze zelf studie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt het volgende nodig om deze zelf studie te volt ooien:
+Voor deze zelfstudie hebt u het volgende nodig:
 -  U wordt aangeraden een Azure-abonnement te nemen. Als u geen Azure-abonnement hebt, kunt u er een maken op de [Azure-aanmeldings pagina](https://aka.ms/createazuresubscription).
 
 ## <a name="create-water-consumption-monitoring-app-in-iot-central"></a>Een app voor het controleren van water verbruik maken in IoT Central
 
-In deze sectie gebruiken we de sjabloon voor de bewaking van Azure IoT Central **water verbruik** om uw toepassing voor water gebruik in IOT Central te maken.
+In deze sectie gebruikt u de **bewakings sjabloon Azure IOT Central water verbruik** om uw toepassing voor water gebruik in IOT Central te maken.
 
 Voor het maken van een nieuwe Azure IoT Central-bewakings toepassing voor water verbruik:  
 
@@ -60,13 +60,14 @@ Voor het maken van een nieuwe Azure IoT Central-bewakings toepassing voor water 
     * **URL**: IOT Central automatisch een URL genereren op basis van de naam van de toepassing. U kunt ervoor kiezen om de URL naar uw eigen smaak bij te werken. U kunt de URL later ook wijzigen. 
     * Als u een Azure-abonnement hebt, voert u uw *adres lijst, het Azure-abonnement en de regio*in. Als u geen abonnement hebt, kunt u een **gratis proef versie van 7 dagen** inschakelen en de vereiste contact gegevens volt ooien.  
 
-    Zie de [snelstart over het maken van een toepassing](../preview/quick-deploy-iot-central.md)voor meer informatie over directory's en abonnementen.
+    Zie de [snelstart over het maken van een toepassing](../core/quick-deploy-iot-central.md)voor meer informatie over directory's en abonnementen.
 
 5. Klik op de knop **maken** onder aan de pagina. 
 
     ![Pagina Toepassing maken van Azure IoT Central](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
 
     ![Facturerings gegevens van de toepassing Azure IoT Central maken](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
+
 6. U hebt nu een water bewakings-app gemaakt met behulp van de Azure IoT Central **water bewakings** sjabloon.
 
 Gefeliciteerd! U bent klaar met het maken van de bewakings toepassing voor water kwaliteit, die wordt geleverd met vooraf geconfigureerde:
@@ -94,7 +95,7 @@ Het dash board bestaat uit verschillende soorten tegels:
 
 * **Gemiddelde water stroom-KPI-tegel**: de KPI-tegel is geconfigureerd om te worden weer gegeven als een voor beeld *van het gemiddelde van de afgelopen 30 minuten*. U kunt KPI-tegels aanpassen en instellen op een ander type en tijds bereik.
 
-* Vervolgens is het direct in de opdracht tegels van het dash board- *apparaat* om klep, **Open klep**of **instellen klep positie**te **sluiten**. Als u op de opdrachten klikt, gaat u naar de opdracht pagina apparaat gesimuleerd apparaat. In IoT Central een *opdracht* is een type *apparaat* dat u later kunt verkennen in het **gedeelte Device Temp late** van deze zelf studie.
+* Vervolgens is het direct in de opdracht tegels van het dash board- *apparaat* om klep, **Open klep**of **instellen klep positie**te **sluiten**. Als u op de opdrachten klikt, gaat u naar de opdracht pagina gesimuleerd apparaat. In IoT Central is een *opdracht* een type *apparaat* dat u later kunt verkennen in het **gedeelte Device Temp late** van deze zelf studie.
 
 *  **Kaart voor water distributiegebied**: de kaart maakt gebruik van Azure Maps, die u rechtstreeks in azure IOT Central kunt configureren. Op de kaart tegel wordt de locatie van het apparaat weer gegeven. Beweeg de muis aanwijzer over de kaart en probeer de besturings elementen op de kaart uit, zoals *Inzoomen*, *uitzoomen* of *uitvouwen*. 
 
@@ -106,7 +107,7 @@ Het dash board bestaat uit verschillende soorten tegels:
 
 * De **tegel inhoud van waarschuwings drempelwaarde opnieuw instellen**: u kunt oproep naar actie-inhouds tegels opnemen in het insluiten van een koppeling naar een actie pagina. In dit geval stelt u de waarschuwings drempel opnieuw in voor de toepassings **taken** waar u updates kunt uitvoeren voor de apparaten-eigenschappen, die later worden besproken in de sectie **taken configureren** van deze zelf studie.
 
-* **Eigenschappen tegels**: in het dash board worden de bewerkings gegevens van de **klep**weer gegeven, de **drempel waarden voor stroom waarschuwingen**en **onderhouds informatie over** Apparaateigenschappen.  
+* **Eigenschappen tegels**: in het dash board worden de **operationele gegevens**van de klep weer gegeven, de **drempel waarden voor stroom waarschuwingen**en **onderhouds informatie**. 
 
 
 ### <a name="customize-dashboard"></a>Dash board aanpassen 
@@ -147,7 +148,7 @@ Probeer het volgende aan te passen:
 ### <a name="add-a-cloud-property"></a>Een Cloud eigenschap toevoegen 
 1. Ga naar de **eigenschap Cloud** in het menu van de sjabloon voor het apparaat
 2. Voeg een nieuwe Cloud eigenschap toe door op **+ Cloud eigenschap toevoegen**te klikken. 
-    In IoT Central kunt u een eigenschap toevoegen die relevant is voor het apparaat. Een voor beeld: een Cloud eigenschap kan een drempel waarde zijn die specifiek is voor de installatie, informatie over activa of onderhouds informatie, enzovoort. 
+    In IoT Central kunt u een eigenschap toevoegen die relevant is voor het apparaat. Een Cloud eigenschap kan bijvoorbeeld een drempel waarde voor waarschuwingen zijn die specifiek is voor de installatie, informatie over activa of andere onderhouds informatie. 
 3. Wijzigingen **Opslaan** 
  
 ### <a name="views"></a>Weergaven 
@@ -193,7 +194,7 @@ De toepassing voor het **controleren van water verbruik** waarvoor u een sjabloo
 
    ![Regels](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-rules.png)
 
-2. Selecteer en klik op **hoge pH-waarschuwing** . Dit is een van de vooraf geconfigureerde regels in de toepassing.
+2. Selecteer en klik op **hoge pH-waarschuwing**. Dit is een van de vooraf geconfigureerde regels in de toepassing.
 
      ![Hoge pH-waarschuwing](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 

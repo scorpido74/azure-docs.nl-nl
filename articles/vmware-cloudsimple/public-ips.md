@@ -1,6 +1,6 @@
 ---
-title: 'Azure VMware-oplossing op CloudSimple: open bare IP-adressen toewijzen'
-description: Hierin wordt beschreven hoe u open bare IP-adressen toewijst voor virtuele machines in de Privécloud.
+title: 'Azure VMware-oplossingen (AVS): open bare IP-adressen toewijzen'
+description: Hierin wordt beschreven hoe u open bare IP-adressen toewijst voor virtuele machines in de cloud omgeving van de AVS
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 87133f5efb9f096d3fdb0956aab1caac58b4bd94
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773790"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024293"
 ---
-# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Open bare IP-adressen toewijzen voor een privé-cloud omgeving
+# <a name="allocate-public-ip-addresses-for-avs-private-cloud-environment"></a>Open bare IP-adressen voor de cloud omgeving van de AVS toewijzen
 
-Open het tabblad open bare Ip's op de pagina netwerk om open bare IP-adressen toe te wijzen voor virtuele machines in uw Privécloud.
+Open het tabblad open bare Ip's op de pagina netwerk om open bare IP-adressen toe te wijzen voor virtuele machines in de cloud omgeving van uw AVS.
 
-1. [Open de CloudSimple-Portal](access-cloudsimple-portal.md) en selecteer **netwerk** in het menu aan de zijkant.
+1. [Open de AVS-Portal](access-cloudsimple-portal.md) en selecteer **netwerk** in het menu aan de zijkant.
 2. Selecteer **open bare ip's**.
 3. Klik op **nieuw openbaar IP-adres**.
 
@@ -30,7 +30,7 @@ Open het tabblad open bare Ip's op de pagina netwerk om open bare IP-adressen to
 6. Gebruik de schuif regelaar om, indien nodig, de time-out voor inactiviteit te wijzigen.
 7. Voer het lokale IP-adres in waarvoor u een openbaar IP-adres wilt toewijzen.
 8. Voer een bijbehorende DNS-naam in.
-9. Klik op **Indienen**.
+9. Klik op **Submit**
 
 ![Open bare IP-adressen toewijzen](media/network-public-ip-allocate.png)
 

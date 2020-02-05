@@ -1,5 +1,5 @@
 ---
-title: 'Azure VMware-oplossing door CloudSimple: Optimaliseer uw CloudSimple-Privécloud voor Oracle RAC'
+title: 'Azure VMware-oplossingen (AVS): Optimaliseer de Privécloud van uw AVS voor Oracle RAC'
 description: Hierin wordt beschreven hoe u een nieuw cluster implementeert en een virtuele machine optimaliseert voor de installatie en configuratie van Oracle Real Application Clusters (RAC)
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,29 +8,29 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 733a225c66040cb2ab819f041647120c8b63b6a0
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: fe4f7bf71b4836404a4f878b37c3ea7fab138588
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972413"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016014"
 ---
-# <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimaliseer uw CloudSimple-Privécloud voor het installeren van Oracle RAC
+# <a name="optimize-your-avs-private-cloud-for-installing-oracle-rac"></a>Optimaliseer de Privécloud van uw AVS voor het installeren van Oracle RAC
 
-U kunt Oracle Real Application Clusters (RAC) implementeren in uw persoonlijke cloud omgeving van CloudSimple. In deze hand leiding wordt beschreven hoe u een nieuw cluster implementeert en hoe u een virtuele machine voor de Oracle RAC-oplossing optimaliseert. Nadat u de stappen in dit onderwerp hebt voltooid, kunt u Oracle RAC installeren en configureren.
+U kunt Oracle Real Application Clusters (RAC) implementeren in uw cloud omgeving in de Privécloud. In deze hand leiding wordt beschreven hoe u een nieuw cluster implementeert en hoe u een virtuele machine voor de Oracle RAC-oplossing optimaliseert. Nadat u de stappen in dit onderwerp hebt voltooid, kunt u Oracle RAC installeren en configureren.
 
 ## <a name="storage-policy"></a>Opslag beleid
 
-Voor een geslaagde implementatie van Oracle RAC is een voldoende aantal knoop punten in het cluster vereist.  In vSAN-opslag beleid worden storingen (FTT) toegepast op gegevens schijven die worden gebruikt voor het opslaan van de data base, het registreren van en het opnieuw uitvoeren van de schijven.  Het vereiste aantal knoop punten om fouten effectief te verdragen is 2N + 1 waarbij N de waarde is van FTT.
+Voor een geslaagde implementatie van Oracle RAC is een voldoende aantal knoop punten in het cluster vereist. In vSAN-opslag beleid worden storingen (FTT) toegepast op gegevens schijven die worden gebruikt voor het opslaan van de data base, het registreren van en het opnieuw uitvoeren van de schijven. Het vereiste aantal knoop punten om fouten effectief te verdragen is 2N + 1 waarbij N de waarde is van FTT.
 
-Voorbeeld: Als de gewenste FTT 2 is, moet het totale aantal knoop punten in het cluster 2 * 2 + 1 = 5 zijn.
+Voor beeld: als de gewenste FTT 2 is, moet het totale aantal knoop punten in het cluster 2 * 2 + 1 = 5 zijn.
 
 ## <a name="overview-of-deployment"></a>Overzicht van implementatie
 
-In de volgende secties wordt beschreven hoe u uw CloudSimple Private Cloud Environment instelt voor Oracle RAC.
+In de volgende secties wordt beschreven hoe u uw Privécloud-cloud omgeving instelt voor Oracle RAC.
 
 1. Aanbevolen procedures voor schijf configuratie
-2. CloudSimple Private Cloud vSphere-cluster implementeren
+2. Het vSphere-cluster van de AVS-Privécloud implementeren
 3. Netwerken voor Oracle RAC instellen
 4. VSAN-opslag beleid instellen
 5. Oracle Vm's maken en gedeelde VM-schijven maken
@@ -38,7 +38,7 @@ In de volgende secties wordt beschreven hoe u uw CloudSimple Private Cloud Envir
 
 ## <a name="best-practices-for-disk-configuration"></a>Aanbevolen procedures voor schijf configuratie
 
-Virtuele Oracle RAC-machines hebben meerdere schijven die worden gebruikt voor een specifieke functie.  Gedeelde schijven worden gekoppeld op alle virtuele machines, die worden gebruikt door het Oracle RAC-cluster.  De schijven van het besturings systeem en de software-installatie worden alleen op de afzonderlijke virtuele machines gekoppeld.  
+Virtuele Oracle RAC-machines hebben meerdere schijven die worden gebruikt voor een specifieke functie. Gedeelde schijven worden gekoppeld op alle virtuele machines, die worden gebruikt door het Oracle RAC-cluster. De schijven van het besturings systeem en de software-installatie worden alleen op de afzonderlijke virtuele machines gekoppeld. 
 
 ![Overzicht van virtuele-machine schijven van Oracle RAC](media/oracle-vm-disks-overview.png)
 
@@ -46,7 +46,7 @@ In het volgende voor beeld worden de schijven gebruikt die in de onderstaande ta
 
 | Schijf                                      | Doel                                       | Gedeelde schijf |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| OS                                        | Besturingssysteemschijf                         | Nee          |
+| Besturingssysteem                                        | Besturingssysteemschijf                         | Nee          |
 | YRASTER                                      | Installatie locatie voor Oracle grid software     | Nee          |
 | ENDDATABASE                                  | Installatie locatie voor Oracle data base-software | Nee          |
 | ORAHOME                                   | Basis locatie voor binaire bestanden van Oracle-data base    | Nee          |
@@ -57,7 +57,7 @@ In het volgende voor beeld worden de schijven gebruikt die in de onderstaande ta
 
 ![Schijf configuratie van de virtuele Oracle-machine](media/oracle-vmdk.png)
 
-### <a name="virtual-machine-configuration"></a>Configuratie van virtuele machine
+### <a name="virtual-machine-configuration"></a>Configuratie van de virtuele machine
 
 * Elke virtuele machine is geconfigureerd met vier SCSI-controllers.
 * Het type SCSI-controller is ingesteld op VMware pvscsi.
@@ -68,44 +68,44 @@ In het volgende voor beeld worden de schijven gebruikt die in de onderstaande ta
 
 ### <a name="operating-system-and-software-disk-configuration"></a>Configuratie van besturings systeem en software schijf
 
-Elke Oracle-virtuele machine is geconfigureerd met meerdere schijven voor het hostbesturingssysteem, wisselen, software-installatie en andere functies van het besturings systeem.  Deze schijven worden niet gedeeld tussen de virtuele machines.  
+Elke Oracle-virtuele machine is geconfigureerd met meerdere schijven voor het hostbesturingssysteem, wisselen, software-installatie en andere functies van het besturings systeem. Deze schijven worden niet gedeeld tussen de virtuele machines. 
 
 * Drie schijven voor elke virtuele machine worden geconfigureerd als virtuele schijven en gekoppeld op virtuele Oracle RAC-machines.
     * Besturingssysteemschijf
     * Schijf voor het opslaan van Oracle-raster bestanden installeren
     * Schijf voor het opslaan van Oracle data base-installatie bestanden
-* Schijven kunnen worden geconfigureerd als **Thin**provisioned.
-* Elke schijf wordt gekoppeld op de eerste SCSI-controller (SCSI0).  
+* Schijven kunnen worden geconfigureerd als **Thin provisioned**.
+* Elke schijf wordt gekoppeld op de eerste SCSI-controller (SCSI0). 
 * Delen is ingesteld op **geen delen**.
-* Redundantie wordt gedefinieerd op de opslag met behulp van vSAN-beleid.  
+* Redundantie wordt gedefinieerd op de opslag met behulp van vSAN-beleid. 
 
 ![Configuratie van Oracle RAC Data Disk-groep](media/oracle-vm-os-disks.png)
 
 ### <a name="data-disk-configuration"></a>Configuratie van de gegevens schijf
 
-Gegevens schijven worden voornamelijk gebruikt voor het opslaan van database bestanden.  
+Gegevens schijven worden voornamelijk gebruikt voor het opslaan van database bestanden. 
 
 * Vier schijven worden geconfigureerd als virtuele schijven en gekoppeld op alle virtuele Oracle RAC-machines.
 * Elke schijf wordt gekoppeld op een andere SCSI-controller.
-* Elke virtuele schijf is geconfigureerd als een **brede inrichting**die in de regel is ingesteld op nul.  
-* Delen is ingesteld op **multi Writer**.  
-* De schijven moeten worden geconfigureerd als een schijf groep voor automatische opslag beheer (ASM).  
-* Redundantie wordt gedefinieerd op de opslag met behulp van vSAN-beleid.  
+* Elke virtuele schijf is geconfigureerd als een **brede inrichting**die in de regel is ingesteld op nul. 
+* Delen is ingesteld op **multi Writer**. 
+* De schijven moeten worden geconfigureerd als een schijf groep voor automatische opslag beheer (ASM). 
+* Redundantie wordt gedefinieerd op de opslag met behulp van vSAN-beleid. 
 * ASM-redundantie is ingesteld op **externe** redundantie.
 
 ![Configuratie van Oracle RAC Data Disk-groep](media/oracle-vm-data-disks.png)
 
 ### <a name="redo-log-disk-configuration"></a>De configuratie van de logboek schijf opnieuw uitvoeren
 
-Logboek bestanden opnieuw uitvoeren worden gebruikt voor het opslaan van een kopie van de wijzigingen die zijn aangebracht in de data base.  De logboek bestanden worden gebruikt wanneer gegevens moeten worden hersteld na storingen.
+Logboek bestanden opnieuw uitvoeren worden gebruikt voor het opslaan van een kopie van de wijzigingen die zijn aangebracht in de data base. De logboek bestanden worden gebruikt wanneer gegevens moeten worden hersteld na storingen.
 
-* Logboek schijven opnieuw moeten worden geconfigureerd als meerdere schijf groepen.  
+* Logboek schijven opnieuw moeten worden geconfigureerd als meerdere schijf groepen. 
 * Er worden zes schijven gemaakt en gekoppeld op alle virtuele Oracle RAC-machines.
 * Schijven zijn gekoppeld op verschillende SCSI-controllers
 * Elke virtuele schijf is geconfigureerd als een **brede inrichting**die in de regel is ingesteld op nul.
-* Delen is ingesteld op **multi Writer**.  
+* Delen is ingesteld op **multi Writer**. 
 * De schijven moeten worden geconfigureerd als twee ASM-schijf groepen.
-* Elke ASM-schijf groep bevat drie schijven die zich op verschillende SCSI-controllers bevinden.  
+* Elke ASM-schijf groep bevat drie schijven die zich op verschillende SCSI-controllers bevinden. 
 * ASM-redundantie is ingesteld op **normale** redundantie.
 * Vijf logboek bestanden voor opnieuw uitvoeren worden gemaakt voor de logboek groep voor opnieuw uitvoeren van ASM
 
@@ -139,7 +139,7 @@ Stem schijven bieden functionaliteit voor quorum schijven als een extra communic
 
 ### <a name="oracle-fast-recovery-area-disk-configuration-optional"></a>Schijf configuratie voor snel herstel gebied van Oracle (optioneel)
 
-De snelle herstel ruimte (FRA) is het bestands systeem dat wordt beheerd door de Oracle ASM-schijf groep.  FRA biedt een gedeelde opslag locatie voor back-up-en herstel bestanden. Oracle maakt gearchiveerde logboeken en Flashback-Logboeken in het gebied voor snel herstel. Oracle Recovery Manager (RMAN) kan optioneel de back-upsets en installatie kopieën van afbeeldingen opslaan in het gebied voor snel herstel en deze gebruiken bij het herstellen van bestanden tijdens herstel van media.
+De snelle herstel ruimte (FRA) is het bestands systeem dat wordt beheerd door de Oracle ASM-schijf groep. FRA biedt een gedeelde opslag locatie voor back-up-en herstel bestanden. Oracle maakt gearchiveerde logboeken en Flashback-Logboeken in het gebied voor snel herstel. Oracle Recovery Manager (RMAN) kan optioneel de back-upsets en installatie kopieën van afbeeldingen opslaan in het gebied voor snel herstel en deze gebruiken bij het herstellen van bestanden tijdens herstel van media.
 
 * Er worden twee schijven gemaakt en gekoppeld op alle virtuele Oracle RAC-machines.
 * Schijven zijn gekoppeld op een andere SCSI-controller
@@ -150,38 +150,38 @@ De snelle herstel ruimte (FRA) is het bestands systeem dat wordt beheerd door de
 
 ![Configuratie van de stemmings schijf groep van Oracle RAC](media/oracle-vm-fra-disks.png)
 
-## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>CloudSimple Private Cloud vSphere-cluster implementeren
+## <a name="deploy-avs-private-cloud-vsphere-cluster"></a>Het vSphere-cluster van de AVS-Privécloud implementeren
 
-Ga als volgt te werk om een vSphere-cluster te implementeren in uw Privécloud:
+Als u een vSphere-cluster wilt implementeren in de Privécloud van uw AVS, volgt u dit proces:
 
-1. Maak in de CloudSimple-Portal [een privécloud](create-private-cloud.md). CloudSimple maakt een standaard-vCenter-gebruiker met de naam ' cloudowner ' in de zojuist gemaakte Privécloud. Zie voor meer informatie over het standaard model gebruiker en machtiging van de privécloud [het machtigings model privécloud](learn-private-cloud-permissions.md).  Met deze stap maakt u het primaire beheer cluster voor uw Privécloud.
+1. Maak vanuit de AVS-Portal [een privécloud](create-private-cloud.md)in de Cloud. AVS maakt een standaard-vCenter-gebruiker met de naam ' cloudowner ' in de zojuist gemaakte nieuwe AVS-Cloud. Zie voor meer informatie over het standaard gebruikers-en machtigings model van de automatische AVS-Cloud [het machtigings model voor de privécloud-persoonlijke Cloud](learn-private-cloud-permissions.md). Met deze stap maakt u het primaire beheer cluster voor de Privécloud van uw AVS.
 
-2. Vouw in de CloudSimple-Portal [de privécloud](expand-private-cloud.md) uit met een nieuw cluster.  Dit cluster wordt gebruikt voor het implementeren van Oracle RAC.  Selecteer het aantal knoop punten op basis van de gewenste fout tolerantie (mini maal drie knoop punten).
+2. Vouw in de AVS-Portal [de automatische AVS-Cloud](expand-private-cloud.md) uit met een nieuw cluster. Dit cluster wordt gebruikt voor het implementeren van Oracle RAC. Selecteer het aantal knoop punten op basis van de gewenste fout tolerantie (mini maal drie knoop punten).
 
 ## <a name="set-up-networking-for-oracle-rac"></a>Netwerken voor Oracle RAC instellen
 
-1. Maak in uw Privécloud [twee vlan's](create-vlan-subnet.md), één voor het open bare Oracle-netwerk en een voor het Oracle-particuliere netwerk en wijs de juiste SUBNET-CIDR toe.
-2. Nadat de VLAN'S zijn gemaakt, maakt u de [gedistribueerde poort groepen op de privécloud](create-vlan-subnet.md#use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere).
+1. Maak in de Privécloud van uw Cloud [twee vlan's](create-vlan-subnet.md), een voor het open bare Oracle-netwerk en een voor het Oracle-particuliere netwerk en wijs de juiste SUBNET-CIDR-bevindt.
+2. Nadat de VLAN'S zijn gemaakt, maakt u de [gedistribueerde poort groepen op de AVS privécloud-vCenter](create-vlan-subnet.md#use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere).
 3. Stel een [virtuele machine voor de DHCP-en DNS-server](dns-dhcp-setup.md) in op uw beheer cluster voor de Oracle-omgeving.
-4. [Configureer DNS-door sturen op de DNS-server die](on-premises-dns-setup.md#create-a-conditional-forwarder) in de privécloud is geïnstalleerd.
+4. [Configureer DNS-door sturen op de DNS-server die](on-premises-dns-setup.md#create-a-conditional-forwarder) is geïnstalleerd in de AVS-privécloud.
 
 ## <a name="set-up-vsan-storage-policies"></a>VSAN-opslag beleid instellen
 
-met vSAN-beleid worden de fouten gedefinieerd die moeten worden toegestaan en schijf striping voor de gegevens die op de VM-schijven zijn opgeslagen.  Het gemaakte opslag beleid moet worden toegepast op de VM-schijven tijdens het maken van de VM.
+met vSAN-beleid worden de fouten gedefinieerd die moeten worden toegestaan en schijf striping voor de gegevens die op de VM-schijven zijn opgeslagen. Het gemaakte opslag beleid moet worden toegepast op de VM-schijven tijdens het maken van de VM.
 
-1. [Meld u aan bij de vSphere-client](https://docs.azure.cloudsimple.com/vsphere-access) van uw privécloud.
+1. [Meld u aan bij de vSphere-client](https://docs.azure.cloudsimple.com/vsphere-access) van de privécloud van uw AVS.
 2. Selecteer in het bovenste menu **beleids regels en profielen**.
 3. Selecteer in het menu links **VM-opslag beleid** en selecteer vervolgens **een VM-opslag beleid maken**.
 4. Voer een duidelijke naam in voor het beleid en klik op **volgende**.
 5. Selecteer in de sectie **beleids structuur** de optie **regels inschakelen voor vSAN-opslag** en klik op **volgende**.
-6. Selecteer in > de sectie**Beschik baarheid** van vSAN **geen** voor site ramp tolerantie. Selecteer de optie voor **RAID-mirroring** voor de gewenste FTT als u niet wilt dat deze kan worden toegelaten.
-    ![vSAN-](media/oracle-rac-storage-wizard-vsan.png)instellingen.
+6. Selecteer in de sectie **Beschik baarheid** van **VSAN** - > **geen** voor site ramp tolerantie. Selecteer de optie voor **RAID-mirroring** voor de gewenste FTT als u niet wilt dat deze kan worden toegelaten.
+    ![vSAN-instellingen](media/oracle-rac-storage-wizard-vsan.png).
 7. Selecteer in de sectie **Geavanceerd** het aantal schijf Stripes per object. Voor object ruimte reservering selecteert u **dik ingericht**. Selecteer **object controlesom uitschakelen**. Klik op **volgende**.
 8. Volg de instructies op het scherm om de lijst met compatibele vSAN-gegevens opslag te bekijken, de instellingen te controleren en de installatie te volt ooien.
 
 ## <a name="create-oracle-vms-and-create-shared-vm-disks-for-oracle"></a>Oracle Vm's maken en gedeelde VM-schijven maken voor Oracle
 
-Als u een virtuele machine voor Oracle wilt maken, moet u een bestaande virtuele machine klonen of een nieuwe maken.  In deze sectie wordt beschreven hoe u een nieuwe virtuele machine maakt en deze vervolgens kloont om een tweede te maken nadat u het basis besturingssysteem hebt geïnstalleerd.  Nadat de Vm's zijn gemaakt, kunt u hieraan een add-schijf toevoegen.  Oracle-cluster maakt gebruik van gedeelde schijven voor het opslaan, gegevens, logboeken en opnieuw uitvoeren van Logboeken.
+Als u een virtuele machine voor Oracle wilt maken, moet u een bestaande virtuele machine klonen of een nieuwe maken. In deze sectie wordt beschreven hoe u een nieuwe virtuele machine maakt en deze vervolgens kloont om een tweede te maken nadat u het basis besturingssysteem hebt geïnstalleerd. Nadat de Vm's zijn gemaakt, kunt u hieraan een add-schijf toevoegen. Oracle-cluster maakt gebruik van gedeelde schijven voor het opslaan, gegevens, logboeken en opnieuw uitvoeren van Logboeken.
 
 ### <a name="create-vms"></a>Virtuele machines maken
 
@@ -205,7 +205,7 @@ Nadat het besturings systeem is geïnstalleerd, kunt u een tweede virtuele machi
 
 ### <a name="create-shared-disks-for-vms"></a>Gedeelde schijven voor virtuele machines maken
 
-Oracle gebruikt een gedeelde schijf voor het opslaan van de gegevens, het registreren en opnieuw uitvoeren van logboek bestanden.  U kunt een gedeelde schijf maken op vCenter en deze koppelen op beide Vm's.  Voor betere prestaties plaatst u de gegevens schijven in verschillende stappen van SCSI-controllers hieronder laten zien hoe u een gedeelde schijf maakt in vCenter en deze vervolgens koppelt aan een virtuele machine. vCenter Flash-client wordt gebruikt voor het wijzigen van de VM-eigenschappen.
+Oracle gebruikt een gedeelde schijf voor het opslaan van de gegevens, het registreren en opnieuw uitvoeren van logboek bestanden. U kunt een gedeelde schijf maken op vCenter en deze koppelen op beide Vm's. Voor betere prestaties plaatst u de gegevens schijven in verschillende stappen van SCSI-controllers hieronder laten zien hoe u een gedeelde schijf maakt in vCenter en deze vervolgens koppelt aan een virtuele machine. vCenter Flash-client wordt gebruikt voor het wijzigen van de VM-eigenschappen.
 
 #### <a name="create-disks-on-the-first-vm"></a>Schijven maken op de eerste VM
 
@@ -241,10 +241,10 @@ Herhaal stap 2 tot en met 7 voor alle nieuwe schijven die nodig zijn voor de Ora
 
 ## <a name="set-up-vm-host-affinity-rules"></a>Regels voor de affiniteit van de VM-host instellen
 
-Regels voor affiniteit tussen de virtuele machine en de host zorgen ervoor dat de VM wordt uitgevoerd op de gewenste host.  U kunt regels definiëren in vCenter om ervoor te zorgen dat de Oracle-VM wordt uitgevoerd op de host met voldoende bronnen en om te voldoen aan de specifieke licentie vereisten.
+Regels voor affiniteit tussen de virtuele machine en de host zorgen ervoor dat de VM wordt uitgevoerd op de gewenste host. U kunt regels definiëren in vCenter om ervoor te zorgen dat de Oracle-VM wordt uitgevoerd op de host met voldoende bronnen en om te voldoen aan de specifieke licentie vereisten.
 
-1. [Escaleren de bevoegdheden](escalate-private-cloud-privileges.md) van de cloudowner-gebruiker in de CloudSimple-Portal.
-2. [Meld u aan bij de vSphere-client](https://docs.azure.cloudsimple.com/vsphere-access) van uw privécloud.
+1. [Escaleren de bevoegdheden](escalate-private-cloud-privileges.md) van de cloudowner-gebruiker in de AVS-Portal.
+2. [Meld u aan bij de vSphere-client](https://docs.azure.cloudsimple.com/vsphere-access) van de privécloud van uw AVS.
 3. Selecteer in de vSphere-client het cluster waar Oracle Vm's worden geïmplementeerd en klik op **configureren**.
 4. Onder configureren selecteert u **virtuele machines/hostgroepen**.
 5. Klik op **+** .
@@ -259,7 +259,7 @@ Regels voor affiniteit tussen de virtuele machine en de host zorgen ervoor dat d
 13. Selecteer de hostgroep die u hebt gemaakt.
 14. Klik op **OK** om de regel te maken.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Naslaginformatie
 
 * [Over vSAN-beleid](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
 * [VMware multi-Writer-kenmerk voor gedeelde Vmdk's](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)

@@ -3,12 +3,12 @@ title: Ondersteuning voor VMware-migratie in Azure Migrate
 description: Meer informatie over ondersteuning voor de migratie van virtuele VMware-machines in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 6593d4de6823f15f570ab8922d76cbe84fb0e348
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901542"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77013991"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Ondersteunings matrix voor VMware-migratie
 
@@ -123,7 +123,7 @@ Wanneer u het replicatie apparaat instelt met behulp van de eicellen-sjabloon di
 
 - Meer informatie over de [vereisten voor replicatie-apparaten](migrate-replication-appliance.md#appliance-requirements) voor VMware.
 - MySQL moet op het apparaat zijn geïnstalleerd. Meer informatie over [installatie opties](migrate-replication-appliance.md#mysql-installation).
-- Meer informatie over [url's](migrate-replication-appliance.md#url-access) en [poorten]() waarvoor het replicatie apparaat toegang moet hebben.
+- Meer informatie over [url's](migrate-replication-appliance.md#url-access) en [poorten](migrate-replication-appliance.md#port-access) waarvoor het replicatie apparaat toegang moet hebben.
 
 ## <a name="agent-based-ports"></a>Poorten op basis van agents
 

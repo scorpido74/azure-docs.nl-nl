@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 50dd6e2387abbf5b24adcee708dd2ff387e33261
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845376"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019414"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Configuratie-en beheer problemen voor Azure Cloud Services: veelgestelde vragen (FAQ)
 
@@ -174,11 +174,11 @@ Zie [Nieuw: Configureer bare time-out voor inactiviteit voor Azure Load Balancer
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Hoe kan ik een statisch IP-adres koppelen aan mijn Cloud service?
 Als u een statisch IP-adres wilt instellen, moet u een gereserveerde IP maken. Dit gereserveerde IP-adres kan worden gekoppeld aan een nieuwe Cloud service of aan een bestaande implementatie. Raadpleeg de volgende documenten voor meer informatie:
-* [Een gereserveerd IP-adres maken](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [Het IP-adres van een bestaande Cloud service reserveren](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [Een gereserveerd IP-adres koppelen aan een nieuwe Cloud service](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [Een gereserveerd IP-adres aan een actieve implementatie koppelen](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [Een gereserveerd IP-adres koppelen aan een Cloud service met behulp van een service configuratie bestand](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [Een gereserveerd IP-adres maken](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#manage-reserved-vips)
+* [Het IP-adres van een bestaande Cloud service reserveren](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+* [Een gereserveerd IP-adres koppelen aan een nieuwe Cloud service](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-new-cloud-service)
+* [Een gereserveerd IP-adres aan een actieve implementatie koppelen](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-running-deployment)
+* [Een gereserveerd IP-adres koppelen aan een Cloud service met behulp van een service configuratie bestand](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Wat zijn de functies en mogelijkheden die Azure Basic IP'S/ID'S en DDOS biedt?
 Azure heeft IP'S/ID'S in fysieke Data Center-servers om tegen bedreigingen te beschermen. Daarnaast kunnen klanten beveiligings oplossingen van derden implementeren, zoals firewalls voor webtoepassingen, netwerk firewalls, antimalware, detectie van indringers, preventie van systemen (ID'S/IP'S) en meer. Zie [uw gegevens en assets beveiligen en voldoen aan de algemene beveiligings normen](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)voor meer informatie.

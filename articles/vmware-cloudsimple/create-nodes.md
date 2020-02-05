@@ -1,6 +1,6 @@
 ---
-title: Knoop punten inrichten voor VMware-oplossing door CloudSimple-Azure
-description: Meer informatie over het toevoegen van knoop punten aan uw VMWare met CloudSimple-implementatie
+title: Knoop punten inrichten voor VMware-oplossingen (AVS)-Azure
+description: Meer informatie over het toevoegen van knoop punten aan uw VMWare met AVS-implementatie
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -8,34 +8,34 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 94ca681153f1e3ccd9ff628b41a9d0e547be5802
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828182"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024803"
 ---
-# <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Knoop punten inrichten voor Azure VMware-oplossing op CloudSimple
+# <a name="provision-nodes-for-azure-vmware-solutions-avs"></a>Knoop punten inrichten voor Azure VMware-oplossingen (AVS)
 
-Knoop punten inrichten in de Azure Portal. Vervolgens kunt u betalen naar gebruik-capaciteit instellen voor uw persoonlijke cloud omgeving van CloudSimple.
+Knoop punten inrichten in de Azure Portal. Vervolgens kunt u betalen naar gebruik-capaciteit instellen voor uw cloud omgeving in de privécloud.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>Een knoop punt toevoegen aan uw CloudSimple-privécloud
+## <a name="add-a-node-to-your-avs-private-cloud"></a>Een knoop punt toevoegen aan de privécloud van uw AVS
 
 1. Selecteer **Alle services**.
-2. Zoek naar **CloudSimple-knoop punten**.
+2. Zoeken naar **AVS-knoop punten**.
 
-   ![CloudSimple-knoop punten zoeken](media/create-cloudsimple-node-search.png)
+   ![AVS-knoop punten zoeken](media/create-cloudsimple-node-search.png)
 
-3. Selecteer **CloudSimple-knoop punten**.
+3. Selecteer de **AVS-knoop punten**.
 4. Klik op **toevoegen** om knoop punten te maken.
 
-    ![CloudSimple-knoop punten toevoegen](media/create-cloudsimple-node-add.png)
+    ![AVS-knoop punten toevoegen](media/create-cloudsimple-node-add.png)
 
-5. Selecteer het abonnement waar u de CloudSimple-knoop punten wilt inrichten.
+5. Selecteer het abonnement waar u de AVS-knoop punten wilt inrichten.
 6. Selecteer de resource groep voor de knoop punten. Klik op **nieuwe maken**om een nieuwe resource groep toe te voegen.
 7. Voer het voor voegsel in om de knoop punten te identificeren.
 8. Selecteer de locatie voor de knooppunt resources.
@@ -48,4 +48,4 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Privécloud maken](create-private-cloud.md)
+* [Een Privécloud maken](create-private-cloud.md)

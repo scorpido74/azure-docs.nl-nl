@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 50b751d8e4e1a69a34e6421884f8b99c3eeb5924
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895984"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016745"
 ---
 # <a name="vpn-gateway-faq"></a>Veelgestelde vragen over VPN Gateways
 
@@ -34,7 +34,7 @@ U kunt verbinding maken met meerdere sites met behulp van Windows PowerShell en 
 
 Nee. 
 
-### <a name="what-are-my-cross-premises-connection-options"></a>Wat zijn de opties voor cross-premises-verbinding?
+### <a name="what-are-my-cross-premises-connection-options"></a>Wat zijn mijn opties voor verbinding in meerdere gebouwen?
 
 De volgende cross-premises verbindingen worden ondersteund:
 
@@ -68,14 +68,15 @@ Op beleid gebaseerde gateways implementeren op beleid gebaseerde VPN's. Op belei
 
 Op route gebaseerde gateways implementeren op route gebaseerde VPN's. Op route gebaseerde VPN's gebruiken 'routes' in de IP-doorstuurtabel of routeringstabel om pakketten naar de bijbehorende tunnelinterfaces te sturen. De tunnelinterfaces versleutelen of ontsleutelen de pakketten vervolgens naar en vanuit de tunnels. Het beleid of de verkeersselector voor op route gebaseerde VPN's is geconfigureerd als alles-naar-alles (of jokertekens).
 
-### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Kan ik mijn op beleid gebaseerde VPN-gateway bijwerken naar een op route gebaseerde gateway?
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Kan ik mijn op beleid gebaseerde VPN-gateway bijwerken naar op route gebaseerd?
+
 Nee. Een Azure Vnet-gateway type kan niet worden gewijzigd van beleid op basis van route ring of op een andere manier. De gateway moet worden verwijderd en opnieuw worden gemaakt. Dit duurt ongeveer 60 minuten. Het IP-adres van de gateway en ook de PSK (vooraf gedeelde sleutel) blijven niet behouden.
 1. Verwijder alle verbindingen die zijn gekoppeld aan de gateway die moet worden verwijderd.
 1. Gateway verwijderen:
-1. [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-1. [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-1. [Azure Powershell - klassiek](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [Een nieuwe gateway van het gewenste type maken en de VPN-installatie voltooien](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+   - [Azure PowerShell-klassiek](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [Maak een nieuwe gateway van het type dat u wilt en voltooi de VPN-installatie](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Heb ik een gatewaysubnet nodig?
 
@@ -89,11 +90,15 @@ Nee.
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>Kan ik het IP-adres van de VPN-gateway verkrijgen voordat ik de gateway maak?
 
-Nee. U moet een gateway maken voordat u het IP-adres kunt verkrijgen. Het IP-adres verandert als u een VPN-gateway verwijdert en opnieuw maakt.
+Zone-redundante en zonegebonden-gateways (gateway-Sku's die _AZ_ in de naam hebben) beide vertrouwen op een _standaard-SKU_ Azure open bare IP-resource. Open bare IP-resources voor Azure Standard SKU moeten een statische toewijzings methode gebruiken. Daarom hebt u het open bare IP-adres voor uw VPN-gateway wanneer u de open bare standaard-SKU-resource maakt die u wilt gebruiken.
+
+Voor niet-zone-redundante en niet-zonegebonden gateways (gateway-Sku's _zonder_ _AZ_ in de naam), kunt u het IP-adres van de VPN-gateway niet ophalen voordat het wordt gemaakt. Het IP-adres wordt alleen gewijzigd als u de VPN-gateway verwijdert en opnieuw maakt.
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>Kan ik een statisch openbaar IP-adres voor mijn VPN-gateway aanvragen?
 
-Nee. Alleen dynamische IP-adrestoewijzing wordt ondersteund. Dit betekent echter niet dat het IP-adres wordt gewijzigd nadat het aan uw VPN Gateway is toegewezen. Het IP-adres van de VPN-gateway verandert alleen wanneer de gateway wordt verwijderd en opnieuw wordt gemaakt. Het openbare IP-adres van de VPN-gateway verandert niet wanneer de grootte van uw VPN-gateway verandert, wanneer deze gateway opnieuw wordt ingesteld of wanneer andere interne onderhoudswerkzaamheden of upgrades worden uitgevoerd. 
+Zoals hierboven vermeld, zijn zone-redundante en zonegebonden-gateways (gateway-Sku's met _AZ_ in de naam) beide gebaseerd op een _standaard-SKU_ Azure open bare IP-resource. Open bare IP-resources voor Azure Standard SKU moeten een statische toewijzings methode gebruiken.
+
+Voor niet-zone-redundante en niet-zonegebonden gateways (gateway-Sku's _zonder_ _AZ_ in de naam) wordt alleen dynamische IP-adres toewijzing ondersteund. Dit betekent echter niet dat het IP-adres verandert nadat het aan uw VPN-gateway is toegewezen. De enige keer dat het IP-adres van de VPN-gateway verandert wanneer de gateway wordt verwijderd en opnieuw wordt gemaakt. Het open bare IP-adres van de VPN-gateway verandert niet wanneer u het formaat van het apparaat wijzigt, opnieuw instelt of een ander intern onderhoud en upgrades van uw VPN-gateway uitvoert.
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>Hoe wordt mijn VPN-tunnel geverifieerd?
 

@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 7b04251211e716ef8e5f8c77aa3a2e74f6e9ef77
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982488"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77015997"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Zelf studie: de sjabloon voor het bewakings programma voor slimme meters maken en door lopen 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 In deze zelf studie wordt u begeleid bij het maken van de toepassing voor het controleren van slimme meters, die een voorbeeld model bevat met gesimuleerde gegevens. In deze zelfstudie leert u:
 
@@ -50,10 +50,11 @@ U kunt deze toepassing in drie eenvoudige stappen maken:
     * **URL**: kies een IOT Central URL, het platform controleert de uniekheid ervan.
     * **gratis proef versie van 7 dagen**: als u al een Azure-abonnement hebt, wordt de standaard instelling aanbevolen. Als u geen Azure-abonnement hebt, kunt u beginnen met een gratis proef versie.
     * **Facturerings gegevens**: de toepassing zelf is gratis. De informatie over de adres lijst, het Azure-abonnement en de regio is vereist voor het inrichten van de resources voor uw app.
-    * Klik op de knop **maken** onder aan de pagina en uw app wordt binnen een minuut gemaakt.     
-         ![nieuw toepassings formulier](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+    * Klik op de knop **maken** onder aan de pagina en uw app wordt binnen een minuut gemaakt.
 
-         ![Nieuwe facturerings gegevens voor het toepassings formulier](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
+        ![Nieuw toepassings formulier](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+
+        ![Nieuwe facturerings gegevens voor het toepassings formulier](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>De toepassing en gesimuleerde gegevens controleren

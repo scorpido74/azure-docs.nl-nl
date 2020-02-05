@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 12c624c6798ca48cad9312cafaf3425091a82a71
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: fde46ddfe85ca2cd1aa4ba65c8bd93d4db328410
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867447"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019040"
 ---
 # <a name="what-are-application-templates"></a>Wat zijn toepassingssjablonen?
 
@@ -26,33 +26,16 @@ Toepassings sjablonen bestaan uit:
 - Vooraf geconfigureerde regels en taken
 - Uitgebreide documentatie, inclusief zelf studies en uitleg
 
-## <a name="preview-templates"></a>Preview-sjablonen
+U kiest de toepassings sjabloon wanneer u uw toepassing maakt. U kunt de sjabloon niet meer wijzigen nadat de toepassing is gemaakt.
 
-Uw keuze van de toepassings sjabloon bepaalt of uw toepassing gebruikmaakt van IoT Central preview-functies, zoals Plug en Play voor apparaten.
+## <a name="custom-templates"></a>Aangepaste sjablonen
 
-Op dit moment is de toepassings sjabloon met _Algemeen beschik bare_ functies:
+Als u een volledig nieuwe toepassing wilt maken, kiest u een van de twee aangepaste toepassings sjablonen:
 
-- Aangepaste app > oudere toepassing
+- Aangepaste toepassing
+- Aangepaste toepassing (verouderd)
 
-
-Momenteel zijn de toepassings sjablonen die gebruikmaken van _open bare preview_ -functies:
-
-- Voorbeeld toepassing aangepaste app >
-- Retail > verbonden logistiek
-- Retail > Digital Distribution Center
-- Retail > in-Store-analyses-voor waarden controleren
-- Retail > in-Store-analyses: afhandeling
-- Retail > micro-fulfillment Center
-- Retail-> slim voorraad beheer
-- Energie > Slimme meter bewaking
-- Bewaking van energie > zonne paneel
-- Overheid > verbonden afval beheer
-- Bewaking van overheids > water verbruik
-- Bewaking van overheids > water kwaliteit
-- Gezondheids zorg > voortdurende patiënt bewaking
-
-> [!NOTE]
-> De **verouderde toepassings** sjablonen zijn momenteel beschikbaar in de **Verenigde Staten**, **Australië**, **Azië en Stille Oceaan**of in de **Europe** -locaties, terwijl andere sjablonen momenteel alleen beschikbaar zijn op de locaties van **Europa** en de **VS** .
+Kies de sjabloon voor **aangepaste toepassingen** , tenzij u een specifieke reden hebt om de oude sjabloon te gebruiken.
 
 ## <a name="industry-focused-templates"></a>Sjablonen voor branche gerichte
 
@@ -63,7 +46,7 @@ Azure IoT Central is een branche neutraal-toepassings platform. Toepassings sjab
   - Digitaal distributiecentrum
   - Bewaking in de Store-voor waarden
   - In-Store-analyses-uitchecken
-  - Intelligent inventaris beheer
+  - Slim voorraadbeheer
 - [Energie](../energy/overview-iot-central-energy.md)
   - Bewaking met slimme meters
   - Bewaking van zonnepanelen

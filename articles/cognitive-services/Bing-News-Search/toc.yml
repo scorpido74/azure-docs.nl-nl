@@ -44,7 +44,7 @@
   items:
     - name: Codevoorbeelden
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search'
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Markering van treffers afhandelen
       href: ../Bing-Web-Search/hit-highlighting.md
@@ -56,10 +56,6 @@
       href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Upgrade uitvoeren van v5 van de API naar v7
       href: bing-news-upgrade-guide-v5-to-v7.md
-    - name: Werken met Visual Studio
-      items:
-        - name: De verbonden service Bing Nieuws zoeken gebruiken
-          href: vs-bing-news-search-connected-service.md
 - name: Concepten
   items:
     - name: Zoekquery's verzenden

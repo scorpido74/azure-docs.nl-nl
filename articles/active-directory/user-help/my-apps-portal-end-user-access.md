@@ -2,31 +2,38 @@
 title: Zoek & apps gebruiken op de portal mijn apps-Azure AD
 description: Meer informatie over hoe u de portal van mijn apps kunt vinden en hoe u toegang krijgt tot de Cloud-apps van uw organisatie.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c15580481c153a58122db593f678998be485b57d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a5dae30c8b8f43602581b39005389211da83cb9e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705000"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022270"
 ---
-# <a name="locate-and-use-your-organizations-cloud-based-apps-on-the-my-apps-portal"></a>De Cloud-apps in uw organisatie zoeken en gebruiken in de portal mijn apps
+# <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Meld u aan en start apps vanuit de portal mijn apps
 
-U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en **toegangs beoordelingen** uit te voeren voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
+U kunt uw werk-of school account gebruiken met de portal op het web van **mijn apps** om het volgende te doen:
+
+- Veel Cloud-apps in uw organisatie weer geven en starten
+- Uw profiel en account gegevens bijwerken
+- Uw **groeps** gegevens weer geven
+- **Toegangs beoordelingen** voor uw apps en groepen uitvoeren
+
+Als u geen toegang hebt tot de portal **mijn apps** , neemt u contact op met de Help Desk voor toestemming.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw Cloud-apps in de documentatie van [toepassings beheer](https://docs.microsoft.com/azure/active-directory/manage-apps).
+> [!Important]
+> Deze inhoud is bedoeld voor gebruikers van mijn apps. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw Cloud-apps in de documentatie van [toepassings beheer](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="supported-browsers"></a>Ondersteunde browsers
 
@@ -66,7 +73,8 @@ Down load en installeer de uitbrei ding op basis van de browser die u gebruikt:
 
 Er wordt aan de rechter kant van de **adres** balk een pictogram toegevoegd, zodat u zich kunt aanmelden en de uitbrei ding kunt aanpassen.
 
-#### <a name="to-change-your-my-apps-portal-using-the-extension"></a>De portal van mijn apps wijzigen met behulp van de extensie
+## <a name="to-change-your-my-apps-portal-using-the-extension"></a>De portal van mijn apps wijzigen met behulp van de extensie
+
 U kunt kiezen hoeveel apps worden weer gegeven in het gedeelte **recent used** en bepalen of de interne url's van uw organisatie mogen worden omgeleid.
 
 1. Selecteer het pictogram uitbrei ding ![pictogram](media/my-apps-portal/my-apps-portal-extension-icon.png) voor **beveiligde aanmeldings extensie van mijn apps** rechts van de **adres** balk en selecteer **aanmelden om aan de slag te gaan**.
@@ -78,18 +86,20 @@ U kunt kiezen hoeveel apps worden weer gegeven in het gedeelte **recent used** e
     ![Pagina instellingen van de uitbrei ding, waarin de beschik bare aanpassingen worden weer gegeven](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
 
 ## <a name="access-and-use-the-my-apps-portal-by-device"></a>De portal mijn apps per apparaat openen en gebruiken
+
 U kunt de portal mijn apps openen en gebruiken op uw computer, vanuit een door intune beheerde browser of op een mobiel apparaat met iOS of Android.
 
 ![Pagina apps in de portal mijn apps](media/my-apps-portal/my-apps-portal-apps-page.png)
 
 ### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>De portal mijn apps op uw computer openen en gebruiken
+
 Als u toegang hebt tot de Cloud-apps van uw organisatie, kunt u deze bekijken via de portal **mijn apps** .
 
-1. Meld u aan bij uw werk-of school account.
+1. Meld u op uw computer aan bij uw werk-of school account.
 
-2. Open uw webbrowser en ga naar https://myapps.microsoft.com of gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Open in een ondersteunde webbrowser en ga naar https://myapps.microsoft.com of gebruik de koppeling van uw organisatie als u naar een aangepaste pagina gaat, zoals `https://myapps.microsoft.com/contoso.com`.
 
-    De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
+    De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie die u kunt gebruiken.
 
 3. Selecteer op de pagina **apps** de app die u wilt gaan gebruiken.
 
@@ -101,7 +111,7 @@ De apps van uw organisatie weer geven en gebruiken vanaf een Intune Managed Brow
 
 1. Down load en installeer de Intune Managed Browser-app op uw mobiele apparaat vanuit de [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) en de [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-2. Open de Intune Managed Browser-app, ga naar https://myapps.microsoft.com of gebruik de koppeling die wordt weer gegeven door uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Open de Intune Managed Browser-app, ga naar https://myapps.microsoft.com of gebruik de koppeling die u hebt gekregen van uw organisatie als u naar een aangepaste pagina gaat, zoals https://myapps.microsoft.com/contoso.com.
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -111,13 +121,13 @@ De apps van uw organisatie weer geven en gebruiken vanaf een Intune Managed Brow
 
 ### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>De portal mijn apps op een iOS-apparaat openen en gebruiken
 
-De portal voor **mijn apps** bekijken en gebruiken vanaf een iPhone of iPad-apparaat waarop IOS versie 7 of hoger wordt uitgevoerd. U kunt ook de [mobiele app mijn apps](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) installeren om toegang te krijgen tot de apps van uw organisatie op uw IOS-apparaten. 
+De portal voor **mijn apps** bekijken en gebruiken vanaf een iPhone of iPad-apparaat waarop IOS versie 7 of hoger wordt uitgevoerd. U kunt ook de [mobiele app mijn apps](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) installeren om toegang te krijgen tot de apps van uw organisatie op uw IOS-apparaten.
 
 1. Start een webbrowser-app, zoals Safari, op uw mobiele apparaat.
 
-2. Ga naar https://myapps.microsoft.com of gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Ga naar https://myapps.microsoft.com of gebruik de koppeling die u hebt gekregen van uw organisatie als u naar een aangepaste pagina gaat, zoals https://myapps.microsoft.com/contoso.com.
 
-    De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
+    De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie die u kunt gebruiken.
 
 3. Selecteer op de pagina **apps** de app die u wilt gaan gebruiken.
 
@@ -129,7 +139,7 @@ De portal **mijn apps** op een Android-apparaat weer geven en gebruiken.
 
 1. Start op uw mobiele apparaat een webbrowser-app, zoals Google Chrome.
 
-2. Ga naar https://myapps.microsoft.com of gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Ga naar https://myapps.microsoft.com of gebruik de koppeling die u hebt gekregen van uw organisatie als u naar een aangepaste pagina gaat, zoals https://myapps.microsoft.com/contoso.com.
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -141,17 +151,39 @@ De portal **mijn apps** op een Android-apparaat weer geven en gebruiken.
 
 Als uw beheerder u toestemming heeft gegeven, kunt u een nieuwe app toevoegen aan de pagina **apps** .
 
-1. Selecteer op de pagina **apps** de optie **app toevoegen**.
+1. Voer op de pagina **apps** een van de volgende handelingen uit:
+    - Als u de oorspronkelijke ervaring voor mijn apps hebt, selecteert u **app toevoegen** zoals wordt weer gegeven.
 
-    De pagina **apps toevoegen** wordt weer gegeven.
+      ![De pagina apps toevoegen in de portal mijn apps](media/my-apps-portal/my-apps-portal-add-apps-page.png)
 
-    ![De pagina apps toevoegen in de portal mijn apps](media/my-apps-portal/my-apps-portal-add-apps-page.png)
+    - Als u de bijgewerkte ervaring voor mijn apps hebt, selecteert u **self-service-apps toevoegen**.
+
+       ![Pagina apps toevoegen in de portal mijn apps op myapplications.microsoft.com](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
 2. Selecteer de app die u wilt toevoegen in de lijst met de apps en selecteer vervolgens **toevoegen**.
 
 3. De app wordt toegevoegd aan de lijst op de pagina **apps** .
 
-    Voor sommige apps is mogelijk een goed keuring van de beheerder vereist voordat deze wordt toegevoegd. In dit geval wordt de app niet toegevoegd aan de pagina **apps** totdat de beheerder deze goedkeurt.
+    Voor sommige apps is mogelijk een goed keuring van de beheerder vereist voordat deze wordt toegevoegd. Als dat gebeurt, wordt de app niet toegevoegd aan de pagina **apps** totdat de beheerder deze goedkeurt.
+
+## <a name="start-a-cloud-based-app"></a>Een Cloud-app starten
+
+U kunt een van de beschik bare Cloud-apps starten vanuit de portal **mijn apps** . U ziet alleen apps die u mag gebruiken.
+
+- Selecteer op de pagina **apps** de app die u wilt gaan gebruiken.
+
+    Er wordt een nieuwe pagina geopend voor de app, waar u zich kunt aanmelden (indien nodig) of als u de app wilt gaan gebruiken.
+
+## <a name="activities-in-the-my-apps-portal"></a>Activiteiten in de portal mijn apps
+
+Nadat u toegang hebt tot de portal van **mijn apps** , kunt u het volgende doen:
+
+- Organiseer uw apps in de verschillende categorieën die door uw organisatie zijn gemaakt en verschaft. Zie voor meer informatie [verzamelingen openen en gebruiken in de portal mijn apps](my-applications-portal-workspaces.md).
+
+- Machtigingen die zijn verleend aan toepassingen controleren, bijwerken of intrekken. Zie [toepassings machtigingen bewerken of intrekken in de portal mijn apps](my-applications-portal-permissions-saved-accounts.md)voor meer informatie.
+
+>[!Note]
+>Als er geen verzamelingen of beschik bare categorieën worden weer geven, betekent dit dat uw beheerder geen met u heeft ingesteld of gedeeld. Neem contact op met de Help Desk van uw organisatie voor aanvullende assistentie of machtigingen om gedeelde verzamelingen te bekijken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

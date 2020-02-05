@@ -3,23 +3,23 @@ title: De Azure IoT Central-gebruikers interface aanpassen | Microsoft Docs
 description: Het thema en de Help-koppelingen voor uw Azure IoT Central-toepassing aanpassen
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 829ea1bcca36dfba2da3e3946b48b7249f69ee62
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3afa86aae3b51ea20610dcbff5211e59fb341650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953588"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018428"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>De Azure IoT Central-gebruikers interface aanpassen
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+In dit artikel wordt beschreven hoe u als beheerder de gebruikers interface van uw toepassing kunt aanpassen door aangepaste Thema's toe te passen en de Help-koppelingen te wijzigen zodat deze naar uw eigen aangepaste Help-bronnen verwijzen. 
 
-In dit artikel wordt beschreven hoe u als beheerder de gebruikers interface van uw toepassing kunt aanpassen door aangepaste Thema's toe te passen en de Help-koppelingen te wijzigen zodat deze naar uw eigen aangepaste Help-bronnen verwijzen.
+
 
 Op de volgende scherm afbeelding ziet u een pagina met het standaard thema:
 
@@ -41,7 +41,7 @@ Op deze pagina kunt u de volgende aspecten van uw toepassing aanpassen:
 
 Een PNG-afbeelding, niet groter dan 1 MB, met een transparante achtergrond. Dit logo wordt links op de titel balk van de IoT Central toepassing weer gegeven.
 
-Als uw logo afbeelding de naam van uw toepassing bevat, kunt u de tekst van de toepassings naam verbergen. Zie [uw toepassing beheren](./howto-administer.md#change-application-name-and-url)voor meer informatie.
+Als uw logo afbeelding de naam van uw toepassing bevat, kunt u de tekst van de toepassings naam verbergen. Zie [uw toepassing beheren](howto-administer.md#change-application-name-and-url)voor meer informatie.
 
 ### <a name="browser-icon-favicon"></a>Browser pictogram (favicon)
 
@@ -78,4 +78,4 @@ U kunt ook nieuwe vermeldingen toevoegen aan het menu Help en standaard vermeldi
 Nu u hebt geleerd hoe u de gebruikers interface in uw IoT Central-toepassing kunt aanpassen, volgt u een aantal voorgestelde volgende stappen:
 
 - [Uw toepassing beheren](./howto-administer.md)
-- [Tegels toevoegen aan uw dash board](./howto-add-tiles-to-your-dashboard.md)
+- [Tegels toevoegen aan uw dash board](howto-add-tiles-to-your-dashboard.md)

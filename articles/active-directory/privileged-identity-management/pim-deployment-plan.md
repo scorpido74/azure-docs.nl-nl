@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 02/04/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef096322c8a8cfbf1618447529d46f6fbfd13b1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021854"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025993"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management implementeren (PIM)
 
@@ -99,7 +99,7 @@ De volgende sectie helpt u bij het identificeren van alle belanghebbenden die be
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Belanghebbenden: Privileged Identity Management voor Azure AD-rollen
 
-| Naam | Rol | Actie |
+| Name | Rol | Actie |
 | --- | --- | --- |
 | Naam en e-mail adres | **Identiteits architect of Azure Global-beheerder**<br/>Een vertegenwoordiger van het team voor identiteits beheer dat verantwoordelijk is voor het bepalen van de manier waarop deze wijziging wordt afgestemd op de infra structuur voor identiteits beheer in uw organisatie. | SO/R/I |
 | Naam en e-mail adres | **Eigenaar van service/regel beheer**<br/>Een vertegenwoordiger van de IT-eigen aars van een service of een groep services. Ze zijn belang rijk voor het nemen van beslissingen en het helpen bij het inrollen van Privileged Identity Management voor hun team. | SO/R/I |
@@ -109,7 +109,7 @@ De volgende sectie helpt u bij het identificeren van alle belanghebbenden die be
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Belanghebbenden: Privileged Identity Management voor Azure-resource rollen
 
-| Naam | Rol | Actie |
+| Name | Rol | Actie |
 | --- | --- | --- |
 | Naam en e-mail adres | **Eigenaar van abonnement/resource**<br/>Een vertegenwoordiger van de IT-eigen aars van elk abonnement of resource dat u wilt implementeren Privileged Identity Management voor | SO/R/I |
 | Naam en e-mail adres | **Eigenaar van beveiliging**<br/>Een vertegenwoordiger van het beveiligings team dat zich kan afmelden dat het plan voldoet aan de beveiligings vereisten van uw organisatie. | SO/R |
@@ -120,7 +120,7 @@ De volgende sectie helpt u bij het identificeren van alle belanghebbenden die be
 
 Als onderdeel van het plannings proces moet u eerst toestemming geven voor Privileged Identity Management en deze inschakelen door [gebruik](pim-getting-started.md) te maken van het privileged Identity Management-artikel. Als u Privileged Identity Management inschakelt, hebt u toegang tot bepaalde functies die specifiek zijn ontworpen om u te helpen bij de implementatie.
 
-Als uw doel is om Privileged Identity Management voor Azure-resources te implementeren, moet u onze [Azure-resources ontdekken om te beheren in privileged Identity Management](pim-resource-roles-discover-resources.md) artikel. Alleen eigen aren van elke resource, resource groep en abonnement kunnen ze in Privileged Identity Management ontdekken. Als u een globale beheerder bent die probeert Privileged Identity Management te implementeren voor uw Azure-resources, kunt u toegang tot het [beheer van alle Azure-abonnementen verhogen](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) om uzelf toegang te geven tot alle Azure-resources in de Directory voor detectie. Er wordt echter wel geadviseerd om goed keuring te krijgen van elk van uw abonnements eigenaren voordat u hun resources beheert met Privileged Identity Management.
+Als uw doel is om Privileged Identity Management voor Azure-resources te implementeren, moet u onze [Azure-resources ontdekken om te beheren in privileged Identity Management](pim-resource-roles-discover-resources.md) artikel. Alleen eigen aren van abonnementen en beheer groepen kunnen deze resources op Privileged Identity Management ontdekken en onboarden. Nadat de service onboarding is uitgevoerd, is de PIM-functionaliteit beschikbaar voor eigen aars op alle niveaus, waaronder beheer groep, abonnement, resource groep en resource. Als u een globale beheerder bent die probeert Privileged Identity Management te implementeren voor uw Azure-resources, kunt u toegang tot het [beheer van alle Azure-abonnementen verhogen](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) om uzelf toegang te geven tot alle Azure-resources in de Directory voor detectie. Er wordt echter wel geadviseerd om goed keuring te krijgen van elk van uw abonnements eigenaren voordat u hun resources beheert met Privileged Identity Management.
 
 ### <a name="enforce-principle-of-least-privilege"></a>Principe van minimale bevoegdheid afdwingen
 
@@ -198,7 +198,7 @@ Als er rollen zijn waaraan gast gebruikers zijn toegewezen, zijn ze met name kwe
 > [!TIP]
 > : heavy_check_mark: **micro soft raadt** u aan om alle rollen met gast gebruikers te beheren met privileged Identity Management om het risico te verminderen dat is gekoppeld aan gast gebruikers accounts.
 
-Lees functies zoals de Directory Reader, Message Center Reader en Security Reader worden soms minder belang rijk vergeleken met andere rollen, aangezien ze geen schrijf machtiging hebben. Er zijn echter ook enkele klanten die deze rollen beschermen, omdat aanvallers die toegang tot deze accounts hebben verkregen, mogelijk gevoelige gegevens kunnen lezen, zoals persoonlijk identificeer bare informatie (PII). Houd rekening met het volgende wanneer u wilt bepalen of lezer-rollen in uw organisatie moeten worden beheerd met Privileged Identity Management.
+Lees functies zoals de Directory Reader, Message Center Reader en Security Reader worden soms minder belang rijk vergeleken met andere rollen, aangezien ze geen schrijf machtiging hebben. Er zijn echter ook enkele klanten die deze rollen beschermen, omdat aanvallers die toegang tot deze accounts hebben verkregen, mogelijk gevoelige gegevens kunnen lezen, zoals persoons gegevens. Houd rekening met het volgende wanneer u wilt bepalen of lezer-rollen in uw organisatie moeten worden beheerd met Privileged Identity Management.
 
 #### <a name="azure-resource-roles"></a>Azure-resourcerollen
 
@@ -243,16 +243,16 @@ Voordat u uw Privileged Identity Management-oplossing implementeert, is het vers
 | Rol | MFA vereisen | Melding | Incident ticket | Goed keuring vereisen | Fiatteur | Activerings duur | Permanente beheerder |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globale beheerder | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere globale beheerders | 1 uur | Accounts voor toegang in nood gevallen |
-| Exchange-beheerder | :heavy_check_mark: | :heavy_check_mark: | BxDxH | BxDxH | None | 2 uur | None |
-| Helpdesk beheerder | BxDxH | BxDxH | :heavy_check_mark: | BxDxH | None | 8 uur | None |
+| Exchange-beheerder | :heavy_check_mark: | :heavy_check_mark: | BxDxH | BxDxH | Geen | 2 uur | Geen |
+| Helpdesk beheerder | BxDxH | BxDxH | :heavy_check_mark: | BxDxH | Geen | 8 uur | Geen |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Privileged Identity Management instellingen voor Azure-resource rollen
 
 | Rol | MFA vereisen | Melding | Goed keuring vereisen | Fiatteur | Activerings duur | Actieve beheerder | Actieve verval datum | Verval datum in aanmerking komend |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Eigenaar van kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere eigen aars van het abonnement | 1 uur | None | N.v.t. | 3 maand |
-| Gebruikers toegangs beheerder van minder kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | BxDxH | None | 1 uur | None | N.v.t. | 3 maand |
-| Inzender voor virtuele machines | BxDxH | :heavy_check_mark: | BxDxH | None | 3 uur | None | N.v.t. | 6 maanden |
+| Eigenaar van kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere eigen aars van het abonnement | 1 uur | Geen | n.v.t. | 3 maand |
+| Gebruikers toegangs beheerder van minder kritieke abonnementen | :heavy_check_mark: | :heavy_check_mark: | BxDxH | Geen | 1 uur | Geen | n.v.t. | 3 maand |
+| Inzender voor virtuele machines | BxDxH | :heavy_check_mark: | BxDxH | Geen | 3 uur | Geen | n.v.t. | 6 maanden |
 
 In de volgende tabel worden de instellingen beschreven.
 

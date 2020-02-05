@@ -1,6 +1,6 @@
 ---
-title: 'Azure VMware-oplossing op basis van CloudSimple: vCenter-identiteits bronnen in Privécloud instellen'
-description: Hierin wordt beschreven hoe u uw Privécloud kunt instellen om te verifiëren met Active Directory voor VMware-beheerders om toegang te krijgen tot vCenter
+title: 'Azure VMware-oplossingen (AVS): vCenter-identiteits bronnen instellen op de AVS-privécloud'
+description: Hierin wordt beschreven hoe u de automatische AVS-Cloud-vCenter instelt om te verifiëren met Active Directory voor VMware-beheerders om toegang te krijgen tot vCenter
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,27 +8,27 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eeced5205b836a15a43fbccfb8c6cb60b4bec29f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ad4a7b2bc67b7d50d9e9a5f8337a09dbe77366ea
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76542862"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014212"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identiteits bronnen instellen voor het gebruik van Active Directory
 
 ## <a name="about-vmware-vcenter-identity-sources"></a>Over VMware vCenter-identiteits bronnen
 
-VMware vCenter ondersteunt verschillende identiteits bronnen voor verificatie van gebruikers die toegang hebben tot vCenter.  Uw CloudSimple Private Cloud vCenter kan worden ingesteld om te verifiëren met Active Directory voor uw VMware-beheerders om toegang te krijgen tot vCenter. Wanneer de installatie is voltooid, kan de gebruiker van **cloudowner** gebruikers van de identiteits bron toevoegen aan vCenter.  
+VMware vCenter ondersteunt verschillende identiteits bronnen voor verificatie van gebruikers die toegang hebben tot vCenter. Uw AVS Private Cloud vCenter kan worden ingesteld om te verifiëren met Active Directory voor uw VMware-beheerders om toegang te krijgen tot vCenter. Wanneer de installatie is voltooid, kan de gebruiker van **cloudowner** gebruikers van de identiteits bron toevoegen aan vCenter. 
 
 U kunt uw Active Directory domein-en domein controllers op een van de volgende manieren instellen:
 
 * Active Directory domein-en domein controllers die on-premises worden uitgevoerd
 * Active Directory domein en domein controllers die op Azure worden uitgevoerd als virtuele machines in uw Azure-abonnement
-* Nieuwe Active Directory domein-en domein controllers die worden uitgevoerd in uw Privécloud
+* Nieuwe Active Directory domein-en domein controllers die worden uitgevoerd in uw AVS-Privécloud
 * Azure Active Directory-service
 
-In deze hand leiding worden de taken beschreven voor het instellen van Active Directory domein en domein controllers die on-premises of als virtuele machines in uw abonnementen worden uitgevoerd.  Als u Azure AD wilt gebruiken als de identiteits bron, raadpleegt u [Azure AD gebruiken als een id-provider voor vCenter op CloudSimple Private Cloud](azure-ad.md) voor gedetailleerde instructies voor het instellen van de identiteits bron.
+In deze hand leiding worden de taken beschreven voor het instellen van Active Directory domein en domein controllers die on-premises of als virtuele machines in uw abonnementen worden uitgevoerd. Als u Azure AD wilt gebruiken als de identiteits bron, raadpleegt u [Azure AD gebruiken als een id-provider voor vCenter in de privécloud van de AVS](azure-ad.md) voor gedetailleerde instructies voor het instellen van de identiteits bron.
 
 Voordat u [een identiteits bron toevoegt](#add-an-identity-source-on-vcenter), moet [u uw vCenter-bevoegdheden tijdelijk escaleren](escalate-private-cloud-privileges.md).
 
@@ -39,14 +39,14 @@ Voordat u [een identiteits bron toevoegt](#add-an-identity-source-on-vcenter), m
 ## <a name="identity-source-options"></a>Opties voor identiteits bron
 
 * [On-premises Active Directory toevoegen als identiteits bron met eenmalige aanmelding](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
-* [Nieuwe Active Directory in een Privécloud instellen](#set-up-new-active-directory-on-a-private-cloud)
+* [Nieuwe Active Directory instellen op een AVS-Privécloud](#set-up-new-active-directory-on-an-avs-private-cloud)
 * [Active Directory instellen op Azure](#set-up-active-directory-on-azure)
 
 ## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>On-premises Active Directory toevoegen als identiteits bron met eenmalige aanmelding
 
 U hebt het volgende nodig om uw on-premises Active Directory in te stellen als id-bron voor eenmalige aanmelding:
 
-* [Site-naar-site-VPN-verbinding](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) van uw on-premises Data Center naar uw privécloud.
+* [Site-naar-site-VPN-verbinding](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) van uw on-premises Data Center naar de privécloud van uw AVS.
 * IP-adres van on-premises DNS-server is toegevoegd aan vCenter-en platform Services controller (PSC).
 
 Gebruik de informatie in de volgende tabel bij het instellen van uw Active Directory domein.
@@ -69,9 +69,9 @@ Wanneer u de gegevens in de vorige tabel hebt, kunt u uw on-premises Active Dire
 > [!TIP]
 > U vindt meer informatie over identiteits bronnen voor eenmalige aanmelding op de [documentatie pagina van VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html).
 
-## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Nieuwe Active Directory in een Privécloud instellen
+## <a name="set-up-new-active-directory-on-an-avs-private-cloud"></a>Nieuwe Active Directory instellen op een AVS-Privécloud
 
-U kunt een nieuw Active Directory domein instellen in uw Privécloud en dit als een identiteits bron gebruiken voor eenmalige aanmelding.  Het Active Directory domein kan deel uitmaken van een bestaand Active Directory forest of kunnen worden ingesteld als een onafhankelijk forest.
+U kunt een nieuw Active Directory domein instellen in de Privécloud van uw AVS en dit als een identiteits bron gebruiken voor eenmalige aanmelding. Het Active Directory domein kan deel uitmaken van een bestaand Active Directory forest of kunnen worden ingesteld als een onafhankelijk forest.
 
 ### <a name="new-active-directory-forest-and-domain"></a>Nieuw Active Directory forest en domein
 
@@ -100,15 +100,15 @@ Nadat u het Active Directory domein hebt ingesteld, kunt u [een id-bron toevoege
 
 ## <a name="set-up-active-directory-on-azure"></a>Active Directory instellen op Azure
 
-Active Directory op Azure wordt uitgevoerd, is vergelijkbaar met Active Directory die on-premises worden uitgevoerd.  Als u Active Directory die op Azure wordt uitgevoerd als id-bron voor eenmalige aanmelding op vCenter wilt instellen, moet de vCenter-Server en de PSC netwerk verbinding hebben met de Azure-Virtual Network waar Active Directory Services worden uitgevoerd.  U kunt deze verbinding tot stand brengen met behulp van [azure Virtual Network verbinding met ExpressRoute](azure-expressroute-connection.md) van het virtuele Azure-netwerk waar Active Directory Services worden uitgevoerd op CloudSimple-privécloud.
+Active Directory op Azure wordt uitgevoerd, is vergelijkbaar met Active Directory die on-premises worden uitgevoerd. Als u Active Directory die op Azure wordt uitgevoerd als id-bron voor eenmalige aanmelding op vCenter wilt instellen, moet de vCenter-Server en de PSC netwerk verbinding hebben met de Azure-Virtual Network waar Active Directory Services worden uitgevoerd. U kunt deze verbinding tot stand brengen met behulp van [azure Virtual Network verbinding met behulp van ExpressRoute](azure-expressroute-connection.md) van het virtuele Azure-netwerk waar Active Directory Services worden uitgevoerd voor de AVS-privécloud.
 
-Nadat de netwerk verbinding tot stand is gebracht, volgt u de stappen in [on-premises Active Directory toevoegen als id-bron voor eenmalige aanmelding](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) om deze als een identiteits bron toe te voegen.  
+Nadat de netwerk verbinding tot stand is gebracht, volgt u de stappen in [on-premises Active Directory toevoegen als id-bron voor eenmalige aanmelding](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) om deze als een identiteits bron toe te voegen. 
 
 ## <a name="add-an-identity-source-on-vcenter"></a>Een identiteits bron toevoegen aan vCenter
 
-1. [Escalatie bevoegdheden](escalate-private-cloud-privileges.md) voor uw privécloud.
+1. [Bevoegdheden](escalate-private-cloud-privileges.md) voor de privécloud van uw AVS escaleren.
 
-2. Meld u aan bij de vCenter voor uw Privécloud.
+2. Meld u aan bij de vCenter voor de Privécloud van uw AVS.
 
 3. Selecteer **Home >-beheer**.
 

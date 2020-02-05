@@ -6,13 +6,13 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 01/21/2020
-ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: fcdcef5d63163b24fe5de0f547dc2dde00cd674f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715838"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016252"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Bijwerken naar Azure-activiteiten logboek verzamelen en exporteren
 Het [Azure-activiteiten logboek](platform-logs-overview.md) is een [platform logboek](platform-logs-overview.md) dat inzicht biedt in gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. De methode voor het verzenden van activiteiten logboek vermeldingen naar [een event hub-of opslag account](activity-log-export.md) of naar een [log Analytics werk ruimte](activity-log-collect.md) is gewijzigd voor het gebruik van [Diagnostische instellingen](diagnostic-settings.md). In dit artikel wordt het verschil tussen de methoden beschreven en wordt uitgelegd hoe u verouderde instellingen in de voor bereiding kunt wissen om de diagnostische instellingen te wijzigen.
@@ -53,6 +53,9 @@ De volgende kolom zijn toegevoegd:
 - Authorization_d
 - Claims_d
 - Properties_d
+
+> [!IMPORTANT]
+> In sommige gevallen kunnen de waarden in deze kolommen in hoofd letters worden getypt. Als u een query hebt die deze kolommen bevat, moet u de [operator = ~](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) gebruiken om een niet-hoofdletter gevoelige vergelijking te maken.
 
 ## <a name="work-with-legacy-settings"></a>Werken met oude instellingen
 De oude instellingen voor het verzamelen van het activiteiten logboek blijven werken als u er niet voor kiest om te vervangen door een diagnostische instelling. Gebruik de volgende methode voor het beheren van het logboek profiel voor een abonnement.

@@ -2,19 +2,19 @@
 title: Azure-snelstartgids - Batch-taak uitvoeren - Portal
 description: Meer informatie over het gebruik van de Azure Portal voor het maken van een batch-account, een pool van reken knooppunten en een taak waarmee basis taken worden uitgevoerd op de groep.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 9a166d20e402ed7b23fda4745c50aaf1a505b3aa
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 8d725834cb2dd86163909b2ae598e61026ae4bb9
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932270"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024106"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Snelstart: uw eerste Batch-taak uitvoeren in Azure Portal
 

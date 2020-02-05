@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: a5a8c8e52c4bebda4e22e592fefa3801449504e3
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 2aee5c56b267f9243b69a48dfd0f5f64196c5f23
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027462"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021483"
 ---
-# <a name="building-healthcare-solutions-with-azure-iot-central"></a>Gezondheids oplossingen bouwen met Azure IoT Central 
+# <a name="building-healthcare-solutions-with-azure-iot-central"></a>Oplossingen voor de gezondheidszorg bouwen met Azure IoT Central 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Meer informatie over het bouwen van gezondheids oplossingen met Azure IoT Central met behulp van toepassings sjablonen.
 
@@ -26,15 +26,15 @@ Meer informatie over het bouwen van gezondheids oplossingen met Azure IoT Centra
 In de IoT-ruimte in de gezondheids zorg is doorlopende patiënt bewaking een van de belangrijkste mogelijkheden van het verminderen van het risico van het vrijmaken van de informatie, het beheer van chronische ziekten effectiever en het verbeteren van de resultaten van patiënten. Doorlopende patiënt bewaking kan worden opgesplitst in twee hoofd categorieën:
 
 1. **Bewaking in de patiënt**: door gebruik te maken van medische wearables en andere apparaten in het zieken huis kunnen zorg teams de vitale symptomen en medische omstandigheden controleren zonder dat ze een verpleegt te hoeven verzenden om meerdere keren per dag op een patiënt te controleren. Care teams kunnen inzicht krijgen in het moment dat een patiënt essentiële aandacht nodig heeft via meldingen en de prioriteit van hun tijd kan aanpassen.
-1. **Bewaking van externe patiënten**: door gebruik te maken van medische wearables en door patiënten gerapporteerde uitkomsten voor het bewaken van patiënten buiten het zieken huis, kan het risico van hersynchronisatie aanzienlijk worden verminderd. Gegevens van de chronische ziekte patiënten en de versterkings patiënten kunnen worden verzameld om ervoor te zorgen dat patiënten zich houden aan de onderhouds plannen en dat waarschuwingen over de verslechtering van de patiënt kunnen worden afgesteld op Care teams voordat ze van belang zijn.
+1. **Bewaking van externe patiënten**: door gebruik te maken van medische wearables en patiënten (voor delen) om patiënten buiten het zieken huis te bewaken, kan het risico van de hertoelating worden verlaagd. Gegevens van de chronische ziekte patiënten en de versterkings patiënten kunnen worden verzameld om ervoor te zorgen dat patiënten zich houden aan de onderhouds plannen en dat waarschuwingen over de verslechtering van de patiënt kunnen worden afgesteld op Care teams voordat ze van belang zijn.
 
 Deze toepassings sjabloon kan worden gebruikt voor het ontwikkelen van oplossingen voor beide categorieën van voortdurende patiënten-bewaking. De voor delen zijn onder andere:
 
-* Verbind op naadloze manieren een verscheidenheid aan medische Wearables met een IoT Central-exemplaar.
+* Verbind de verschillende soorten medische Wearables naadloos met een IoT Central-exemplaar.
 * Bewaak en beheer de apparaten om ervoor te zorgen dat ze in orde blijven.
 * Aangepaste regels rond apparaatgegevens maken om de juiste waarschuwingen te activeren.
 * Exporteer uw patiënten-status gegevens naar de Azure-API voor FHIR, een compatibele gegevens opslag.
-* De geaggregeerde inzichten exporteren naar bestaande of nieuwe zakelijke toepassingen die zorg teams bieden.
+* De geaggregeerde inzichten exporteren naar bestaande of nieuwe zakelijke toepassingen.
 
 >[!div class="mx-imgBorder"] 
 >![CPM-dash board](media/in-patient-dashboard.png)

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 27b430ca6e90eba933662bd35d8d97b08234c84e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: cbb5882950636e281d311bf0536acf5b92cf11ea
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989022"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018598"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -61,6 +61,7 @@ Een persoonlijke koppelings bron is het doel doel van een gegeven persoonlijk ei
 |**Azure Database for PostgreSQL-één server** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
+|**Azure Key Vault** | Microsoft.KeyVault/vaults    | kluis |
  
 ## <a name="network-security-of-private-endpoints"></a>Netwerk beveiliging van privé-eind punten 
 Wanneer u privé-eind punten voor Azure-Services gebruikt, wordt het verkeer beveiligd met een specifieke persoonlijke koppelings bron. Het platform voert een toegangs controle uit om netwerk verbindingen te valideren die alleen de opgegeven persoonlijke koppelings bron bereiken. Als u toegang wilt krijgen tot extra resources binnen dezelfde Azure-service, zijn er extra persoonlijke eind punten vereist. 
@@ -118,6 +119,7 @@ Voor Azure-Services gebruikt u de aanbevolen zone namen zoals beschreven in de v
 |Azure Database for PostgreSQL-één server (micro soft. DBforPostgreSQL/servers)|postgresqlServer|privatelink.postgres.database.azure.com|
 |Azure Database for MySQL (micro soft. DBforMySQL/servers)|mysqlServer|privatelink.mysql.database.azure.com|
 |Azure Database for MariaDB (micro soft. DBforMariaDB/servers)|mariadbServer|privatelink.mariadb.database.azure.com|
+|Azure Key Vault (micro soft.-sleutel kluis/kluizen)|kluis|privatelink.vaultcore.azure.net|
  
 Azure maakt een canonieke naam DNS-record (CNAME) op de open bare DNS om de oplossing om te leiden naar de voorgestelde domein namen. U kunt de oplossing overschrijven met het privé-IP-adres van uw privé-eind punten. 
  

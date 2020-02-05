@@ -3,24 +3,24 @@ title: Azure IoT Central uitbreiden met aangepaste analyses | Microsoft Docs
 description: Configureer als ontwikkelaar van oplossingen een IoT Central-toepassing om aangepaste analyses en visualisaties uit te voeren. Deze oplossing maakt gebruik van Azure Databricks.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 39d99b8b6167411fc75677878b7f82a27deab958
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7e5e8331509e99a7e556105ff1ea8ca2d0b285e7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987625"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023834"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure IoT Central uitbreiden met aangepaste analyses met behulp van Azure Databricks
 
 In deze hand leiding wordt uitgelegd hoe u, als oplossings ontwikkelaar, uw IoT Central-toepassing kunt uitbreiden met aangepaste analyses en visualisaties. In het voor beeld wordt een [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) -werk ruimte gebruikt voor het analyseren van de IOT Central telemetrische stroom en voor het genereren van visualisaties zoals [box plots](https://wikipedia.org/wiki/Box_plot).
 
-In deze hand leiding wordt uitgelegd hoe u IoT Central uitbreidt dan wat u al kunt doen met de [ingebouwde analyse hulpprogramma's](howto-create-analytics.md).
+In deze hand leiding wordt uitgelegd hoe u IoT Central uitbreidt dan wat u al kunt doen met de [ingebouwde analyse hulpprogramma's](./howto-create-custom-analytics.md).
 
 In deze hand leiding leert u het volgende:
 
@@ -40,14 +40,16 @@ Maak een IoT Central-toepassing op de website van [Azure IOT Central Application
 | Instelling | Waarde |
 | ------- | ----- |
 | Prijs plan | Standard |
-| Toepassingsjabloon | Oudere toepassing |
+| Toepassingsjabloon | Analyses in de Store-voor waarde |
 | De naam van de toepassing | Accepteer de standaard waarde of kies uw eigen naam |
 | URL | Accepteer de standaard waarde of kies uw eigen unieke URL-voor voegsel |
 | Directory | Uw Azure Active Directory-Tenant |
 | Azure-abonnement | Uw Azure-abonnement |
-| Regio | Verenigde Staten |
+| Regio | Uw dichtstbijzijnde regio |
 
 In de voor beelden en scherm afbeeldingen in dit artikel wordt gebruikgemaakt van de **Verenigde Staten** regio. Kies een locatie dicht bij u en zorg ervoor dat u alle resources in dezelfde regio maakt.
+
+Deze toepassings sjabloon bevat twee gesimuleerde Thermo staat-apparaten die telemetrie verzenden.
 
 ### <a name="resource-group"></a>Resourcegroep
 
@@ -101,7 +103,7 @@ De naam ruimte van uw Event Hubs ziet eruit als in de volgende scherm afbeelding
 
 Ga op de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) naar de IOT Central toepassing die u hebt gemaakt op basis van de contoso-sjabloon. In deze sectie configureert u de toepassing voor het streamen van de telemetrie van de gesimuleerde apparaten naar uw Event Hub. Het exporteren configureren:
 
-1. Ga naar de pagina **continue gegevens export** , selecteer **+ Nieuw**en klik vervolgens op **Azure Event hubs**.
+1. Ga naar de pagina voor het **exporteren van gegevens** , selecteer **+ Nieuw**en klik vervolgens op **Azure Event hubs**.
 1. Gebruik de volgende instellingen om het exporteren te configureren en selecteer vervolgens **Opslaan**:
 
     | Instelling | Waarde |
@@ -114,7 +116,7 @@ Ga op de website van [Azure IOT Central Application Manager](https://aka.ms/iotc
     | Apparaten | Uit |
     | Apparaatsjablonen | Uit |
 
-![Configuratie continue gegevens export](media/howto-create-custom-analytics/cde-configuration.png)
+![Configuratie voor gegevens export](media/howto-create-custom-analytics/cde-configuration.png)
 
 Wacht tot de export status **actief** is voordat u doorgaat.
 
@@ -132,7 +134,7 @@ Gebruik de informatie in de volgende tabel om uw cluster te maken:
 | ------- | ----- |
 | Clusternaam | centralanalysis |
 | Cluster modus | Standard |
-| Databricks Runtime versie | 5,3 (scala 2,11, Spark 2.4.0) |
+| Databricks Runtime versie | 5,5 LTS (scala 2,11, Spark 2.4.3) |
 | Python-versie | 3 |
 | Automatisch schalen inschakelen | Nee |
 | Beëindigen na minuten van inactiviteit | 30 |
@@ -229,4 +231,4 @@ In deze hand leiding hebt u het volgende geleerd:
 * Telemetrie streamen vanuit een IoT Central-toepassing met *doorlopende gegevens export*.
 * Maak een Azure Databricks omgeving om telemetriegegevens te analyseren en af te zetten.
 
-Nu u weet hoe u aangepaste analyses maakt, is de voorgestelde volgende stap informatie over het [visualiseren en analyseren van uw Azure IOT Central-gegevens in een Power bi dash board](howto-connect-powerbi.md).
+Nu u weet hoe u aangepaste analyses maakt, is de voorgestelde volgende stap om te leren hoe u [uw toepassing beheert](howto-administer.md).

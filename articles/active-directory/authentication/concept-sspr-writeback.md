@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ddd7160a56a4529ee31c111f0e202ca235c71af
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 70d3e17a007e8cfa7eed299659d4cff114f72158
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544018"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023120"
 ---
 # <a name="what-is-password-writeback"></a>Wat is wacht woord terugschrijven?
 
@@ -164,7 +164,7 @@ Wacht woorden worden *niet* weer gegeven in een van de volgende situaties:
    * Een door de beheerder geïnitieerde wachtwoord herstel voor eind gebruikers vanuit het [Microsoft 365-beheer centrum](https://admin.microsoft.com)
 
 > [!WARNING]
-> Gebruik van het selectie vakje ' gebruiker moet wacht woord bij volgende aanmelding wijzigen ' in on-premises Active Directory beheer Programma's, zoals Active Directory gebruikers en computers, of de Active Directory-beheercentrum wordt ondersteund als een preview-functie van Azure AD Connect. Zie het artikel [wachtwoord hash-synchronisatie implementeren met Azure AD Connect Sync](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon)voor meer informatie.
+> Gebruik van het selectie vakje ' gebruiker moet wacht woord bij volgende aanmelding wijzigen ' in on-premises Active Directory beheer Programma's, zoals Active Directory gebruikers en computers, of de Active Directory-beheercentrum wordt ondersteund als een preview-functie van Azure AD Connect. Zie het artikel [wachtwoord hash-synchronisatie implementeren met Azure AD Connect Sync](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
