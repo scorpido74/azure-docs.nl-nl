@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cd2e34be7ef55c4ee6d18c6db6010134a7d935d1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76895955"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020621"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Documenten in Azure Blob Storage indexeren met Azure Cognitive Search
 
@@ -136,7 +137,7 @@ Afhankelijk van de configuratie van de [Indexeer](#PartsOfBlobToIndex)functie ka
 > [!NOTE]
 > Azure Cognitive Search beperkt hoeveel tekst er wordt geëxtraheerd, afhankelijk van de prijs categorie: 32.000 tekens voor de gratis laag, 64.000 voor Basic, 4.000.000 voor Standard, 8.000.000 voor Standard S2 en 16.000.000 voor Standard S3. Er is een waarschuwing opgenomen in het indexeer programma status antwoord voor afgekapte documenten.  
 
-* Door de gebruiker opgegeven eigenschappen van meta gegevens in de blob, indien aanwezig, worden geëxtraheerd Verbatim.
+* Door de gebruiker opgegeven eigenschappen van meta gegevens in de blob, indien aanwezig, worden geëxtraheerd Verbatim. Houd er rekening mee dat hiervoor een veld moet worden gedefinieerd in de index met dezelfde naam als de meta gegevens sleutel van de blob. Als uw BLOB bijvoorbeeld een meta gegevens sleutel bevat van `Sensitivity` met de waarde `High`, moet u een veld met de naam `Sensitivity` in uw zoek index definiëren. dit wordt ingevuld met de waarde `High`.
 * Standaard eigenschappen van BLOB-meta gegevens worden in de volgende velden geëxtraheerd:
 
   * **meta gegevens\_storage\_name** (EDM. String): de bestands naam van de blob. Als u bijvoorbeeld een BLOB-/My-container/My-Folder/subfolder/resume.PDF hebt, is de waarde van dit veld `resume.pdf`.
