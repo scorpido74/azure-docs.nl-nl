@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Promapp | Microsoft Docs'
-description: In deze zelfstudie leert u hoe het configureren van eenmalige aanmelding tussen Azure Active Directory en Promapp.
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Nintex Promapp | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Nintex Promapp.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,103 +11,80 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 01/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 2ddb8777a6470c0e739545e71867a694022d1723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 581c850801c153996031378cbf470457264cad3d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67093605"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984423"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Zelfstudie: Azure Active Directory-integratie met Promapp
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nintex-promapp"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Nintex Promapp
 
-In deze zelfstudie leert u hoe u Promapp integreert met Azure Active Directory (Azure AD).
-Deze integratie biedt de volgende voordelen:
+In deze zelf studie leert u hoe u Nintex Promapp integreert met Azure Active Directory (Azure AD). Wanneer u Nintex Promapp integreert met Azure AD, kunt u het volgende doen:
 
-* U kunt Azure AD om te bepalen wie toegang tot Promapp heeft gebruiken.
-* U kunt uw gebruikers kunnen automatisch worden aangemeld bij Promapp (eenmalige aanmelding) met hun Azure AD-accounts inschakelen.
-* U kunt uw accounts in één centrale locatie kunt beheren: de Azure-portal.
+* Controle in azure AD die toegang heeft tot Nintex Promapp.
+* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Nintex Promapp met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
-
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Promapp, moet u beschikken over:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u zich aanmelden voor een [proefversie van één maand](https://azure.microsoft.com/pricing/free-trial/).
-* Een Promapp-abonnement met eenmalige aanmelding ingeschakeld.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Nintex Promapp-abonnement met eenmalige aanmelding (SSO) ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en Azure AD eenmalige aanmelding testen in een testomgeving.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* Promapp ondersteunt SP geïnitieerde en IdP gestart door SSO.
+* Nintex Promapp ondersteunt **SP en IDP** GEÏNITIEERDe SSO
+* Nintex Promapp ondersteunt **just-in-time** -gebruikers inrichting
 
-* Promapp ondersteunt het inrichten van just-in-time-gebruikers.
+## <a name="adding-nintex-promapp-from-the-gallery"></a>Nintex Promapp toevoegen vanuit de galerie
 
-## <a name="add-promapp-from-the-gallery"></a>Promapp uit de galerie toevoegen
+Als u de integratie van Nintex Promapp wilt configureren in azure AD, moet u Nintex Promapp van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-Als u de integratie van Promapp in Azure AD instelt, moet u Promapp uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **Nintex Promapp** in het zoekvak.
+1. Selecteer **Nintex Promapp** in het resultaten paneel en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-1. In de [Azure-portal](https://portal.azure.com), selecteer in het linkerdeelvenster **Azure Active Directory**:
+## <a name="configure-and-test-azure-ad-single-sign-on-for-nintex-promapp"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor Nintex Promapp
 
-    ![Selecteer Azure Active Directory](common/select-azuread.png)
+Azure AD SSO configureren en testen met Nintex Promapp met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Nintex Promapp.
 
-2. Ga naar **bedrijfstoepassingen** > **alle toepassingen**:
+Als u Azure AD SSO wilt configureren en testen met Nintex Promapp, voltooit u de volgende bouw stenen:
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Nintex PROMAPP SSO configureren](#configure-nintex-promapp-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    * **[Maak Nintex Promapp test User](#create-nintex-promapp-test-user)** -als u een tegen hanger van B. Simon in Nintex Promapp wilt hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-3. Als u wilt een toepassing hebt toegevoegd, selecteert u **nieuwe toepassing** aan de bovenkant van het venster:
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-    ![Nieuwe toepassing selecteren](common/add-new-app.png)
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-4. Voer in het zoekvak **Promapp**. Selecteer **Promapp** in de zoekresultaten en selecteer vervolgens **toevoegen**.
+1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Nintex Promapp** Application Integration de sectie **Manage** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
-     ![Zoekresultaten](common/search-new-app.png)
+   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
+1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
 
-In deze sectie maakt u configureren en testen van Azure AD eenmalige aanmelding met Promapp met behulp van een testgebruiker met de naam Britta Simon.
-Om in te schakelen eenmalige aanmelding, moet u een relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Promapp vast te stellen.
+    1. Voer in het vak **id** een URL in dit patroon in:
 
-Als u wilt configureren en Azure AD eenmalige aanmelding met Promapp testen, moet u deze stappen:
-
-1. **[Azure AD eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**  om in te schakelen van de functie voor uw gebruikers.
-2. **[Configureren van eenmalige aanmelding Promapp](#configure-promapp-single-sign-on)**  aan de toepassing.
-3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  voor het testen van Azure AD eenmalige aanmelding.
-4. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  zodat Azure AD eenmalige aanmelding voor de gebruiker.
-5. **[Eenmalige aanmelding testen](#test-single-sign-on)**  om te controleren of de configuratie werkt.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
-
-In deze sectie schakelt u Azure AD eenmalige aanmelding in de Azure-portal.
-
-Voor het configureren van Azure AD eenmalige aanmelding met Promapp, de volgende stappen uitvoeren:
-
-1. In de [Azure-portal](https://portal.azure.com/), selecteert u op de pagina Promapp toepassingen integratie **eenmalige aanmelding**:
-
-    ![Schakel eenmalige aanmelding](common/select-sso.png)
-
-2. In de **selecteert u een methode voor eenmalige aanmelding** in het dialoogvenster, selecteer **SAML/WS-Federation** modus voor eenmalige aanmelding inschakelen:
-
-    ![Selecteer een methode voor eenmalige aanmelding](common/select-saml-option.png)
-
-3. Op de **instellen van eenmalige aanmelding met SAML** weergeeft, schakelt de **bewerken** pictogram opent de **SAML-basisconfiguratie** in het dialoogvenster:
-
-    ![Pictogram bewerken](common/edit-urls.png)
-
-4. In de **SAML-basisconfiguratie** in het dialoogvenster, als u wilt configureren van de toepassing in de modus voor IdP gestart door de volgende stappen uitvoeren.
-
-    ![In het dialoogvenster van Basic SAML-configuratie](common/idp-intiated.png)
-
-    1. In de **id** vak, een URL opgeven in dit patroon:
-
-       | |
+        | |
         |--|
         | `https://go.promapp.com/TENANTNAME/`|
         | `https://au.promapp.com/TENANTNAME/`|
@@ -117,129 +94,101 @@ Voor het configureren van Azure AD eenmalige aanmelding met Promapp, de volgende
         |   |
 
        > [!NOTE]
-       > Azure AD-integratie met Promapp is momenteel alleen geconfigureerd voor verificatie van service gestart. (Dat wil zeggen, start te gaan naar een URL Promapp het verificatieproces uit.) Maar de **antwoord-URL** veld is een verplicht veld.
+       > Azure AD-integratie met Nintex Promapp is momenteel alleen geconfigureerd voor door de service geïnitieerde authenticatie. (Dat wil zeggen: naar een Nintex Promapp-URL wordt het verificatie proces gestart.) Maar het veld **antwoord-URL** is een verplicht veld.
 
-    1. In de **antwoord-URL** vak, een URL opgeven in dit patroon:
+    1. Voer in het vak **antwoord-URL** een URL in dit patroon in:
 
        `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate.aspx`
 
-5. Als u configureren van de toepassing in de modus SP geïnitieerde wilt, selecteert u **extra URL's instellen**. In de **aanmeldings-URL** vak, een URL opgeven in dit patroon:
+1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-      `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate`
-
-    ![Promapp domein en URL's, eenmalige aanmelding informatie](common/metadata-upload-additional-signon.png)
-
-   
+    Voer in het vak **URL voor aanmelden** een URL in dit patroon in: `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate`
 
     > [!NOTE]
-    > Deze waarden zijn tijdelijke aanduidingen. U moet gebruiken de werkelijke-id, antwoord-URL en aanmeldings-URL. Neem contact op met de [Promapp ondersteuningsteam](https://www.promapp.com/about-us/contact-us/) om de waarden te verkrijgen. U kunt ook verwijzen naar de patronen die wordt weergegeven in de **SAML-basisconfiguratie** in het dialoogvenster in de Azure-portal.
+    > Deze waarden zijn tijdelijke aanduidingen. U moet de daad werkelijke id, de antwoord-URL en de aanmeldings-URL gebruiken. Neem contact op met het [ondersteunings team van Nintex Promapp](https://www.promapp.com/about-us/contact-us/) om de waarden op te halen. U kunt ook verwijzen naar de patronen die worden weer gegeven in het dialoog venster **basis configuratie van SAML** in de Azure Portal.
 
-6. Op de **instellen van eenmalige aanmelding met SAML** pagina, in de **SAML-handtekeningcertificaat** sectie, selecteer de **downloaden** koppelen naast **certificaat (Base64)** , overeenkomstig uw vereisten en sla het certificaat op uw computer:
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-    ![De koppeling om het certificaat te downloaden](common/certificatebase64.png)
+    ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-7. In de **Promapp instellen** sectie, kopieert u de juiste URL's, op basis van uw vereisten:
+1. Op de **Nintex Promapp instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
-    ![De configuratie van URL's kopiëren](common/copy-configuration-urls.png)
-
-    1. **Aanmeldings-URL**.
-
-    1. **Azure AD Identifier**.
-
-    1. **Afmeldings-URL van**.
-
-### <a name="configure-promapp-single-sign-on"></a>Promapp eenmalige aanmelding configureren
-
-1. Aanmelden bij uw bedrijf Promapp site als een beheerder.
-
-2. Selecteer in het menu aan de bovenkant van het venster **Admin**:
-   
-    ![Selecteer beheerder][12]
-
-3. Selecteer **configureren**:
-   
-    ![Selecteer configureren][13]
-
-4. In de **Security** dialoogvenster vak, voer de volgende stappen uit.
-   
-    ![Het dialoogvenster Beveiliging][14]
-    
-    1. Plak de **aanmeldings-URL** die u hebt gekopieerd vanuit de Azure portal in de **SSO-aanmeldings-URL** vak.
-    
-    1. In de **SSO - modus voor eenmalige aanmelding** in de lijst met **optioneel**. Selecteer **Opslaan**.
-
-       > [!NOTE]
-       > Optionele modus is alleen voor testdoeleinden. Nadat u tevreden met de configuratie bent, selecteert u **vereist** in de **SSO - modus voor eenmalige aanmelding** lijst om af te dwingen van alle gebruikers om te verifiëren met Azure AD.
-
-    1. Open in Kladblok het certificaat dat u in de vorige sectie hebt gedownload. Kopieer de inhoud van het certificaat zonder de eerste regel ( **---BEGIN CERTIFICATE---** ) of de laatste regel ( **---END CERTIFICATE---** ). Plak de inhoud in certificaat de **SSO-x.509-certificaat** vak en selecteer vervolgens **opslaan**.
+    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker Britta Simon met de naam in Azure portal.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in de Azure portal, **Azure Active Directory** selecteren in het linkerdeelvenster **gebruikers**, en selecteer vervolgens **alle gebruikers**:
-
-    ![Selecteer alle gebruikers](common/users.png)
-
-2. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm:
-
-    ![Nieuwe gebruiker selecteren](common/new-user.png)
-
-3. In de **gebruiker** dialoogvenster vak, voer de volgende stappen uit.
-
-    ![In het dialoogvenster](common/user-properties.png)
-
-    1. Voer in het vak **Naam** **Britta Simon**in.
-  
-    1. In de **gebruikersnaam** Voer **BrittaSimon @\<uwbedrijfsdomein >.\< extensie >** . (Bijvoorbeeld BrittaSimon@contoso.com.)
-
-    1. Selecteer **wachtwoord weergeven**, en noteer de waarde in de **wachtwoord** vak.
-
-    1. Selecteer **Maken**.
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Britta Simon Azure eenmalige aanmelding door haar toegang verlenen tot Promapp gebruiken.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Nintex Promapp.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**, en selecteer vervolgens **Promapp**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **Nintex Promapp**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-2. Selecteer in de lijst met toepassingen **Promapp**.
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![Lijst met toepassingen](common/all-applications.png)
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-3. Selecteer in het linkerdeelvenster **gebruikers en groepen**:
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-    ![Gebruikers en groepen selecteren](common/users-groups-blade.png)
+## <a name="configure-nintex-promapp-sso"></a>Nintex Promapp SSO configureren
 
-4. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
+1. Meld u aan bij uw Nintex Promapp-bedrijfs site als beheerder.
 
-    ![Gebruiker toevoegen selecteren](common/add-assign-user.png)
+2. Selecteer in het menu boven aan het venster de optie **beheerder**:
 
-5. In de **gebruikers en groepen** in het dialoogvenster, selecteer **Britta Simon** in de lijst met gebruikers, en klik op de **Selecteer** knop aan de onderkant van het scherm.
+    ![Beheerder selecteren][12]
 
-6. Als u een waarde voor de rol in het SAML-verklaring verwacht in de **rol selecteren** dialoogvenster Selecteer de juiste rol voor de gebruiker in de lijst. Klik op de **Selecteer** knop aan de onderkant van het scherm.
+3. Selecteer **configureren**:
 
-7. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
+    ![Selecteer configureren][13]
 
-### <a name="just-in-time-user-provisioning"></a>De Just-in-time gebruikersinrichting
+4. In het dialoog venster **beveiliging** voert u de volgende stappen uit.
 
-Promapp ondersteunt het inrichten van just-in-time-gebruikers. Deze functie is standaard ingeschakeld. Als een gebruiker nog niet in Promapp bestaat, wordt een nieuw gemaakt nadat verificatie.
+    ![Het dialoog venster beveiliging][14]
 
-### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
+    1. Plak de **aanmeldings-URL** die u hebt gekopieerd van de Azure Portal naar het vak **SSO-aanmeld-URL** .
 
-Nu moet u uw configuratie Azure AD eenmalige aanmelding testen met behulp van het toegangsvenster.
+    1. Selecteer **optioneel**in de **modus SSO-** eenmalige aanmelding. Selecteer **Opslaan**.
 
-Wanneer u de tegel Promapp in het toegangsvenster selecteert, moet u worden automatisch aangemeld bij de Promapp-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie voor meer informatie over het toegangsvenster, [toegang en gebruik apps op de portal mijn Apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+       > [!NOTE]
+       > De optionele modus is alleen voor test doeleinden. Wanneer u tevreden bent met de configuratie, selecteert u **vereist** in de lijst **SSO-eenmalige aanmelding** om ervoor te zorgen dat alle gebruikers worden geverifieerd bij Azure AD.
 
-## <a name="additional-resources"></a>Aanvullende resources
+    1. Open in Klad blok het certificaat dat u in de vorige sectie hebt gedownload. Kopieer de inhoud van het certificaat zonder de eerste regel ( **-----begin certificaat-----** ) of de laatste regel ( **-----End Certificate-----** ). Plak de certificaat inhoud in het vak **SSO-x. 509-certificaat** en selecteer vervolgens **Opslaan**.
 
-- [Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+### <a name="create-nintex-promapp-test-user"></a>Nintex Promapp-test gebruiker maken
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in Nintex Promapp. Nintex Promapp ondersteunt just-in-time-gebruikers inrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker zich nog niet in Nintex Promapp bevindt, wordt er na verificatie een nieuwe gemaakt.
+
+## <a name="test-sso"></a>SSO testen
+
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
+
+Wanneer u op de tegel Nintex Promapp in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Nintex Promapp waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+
+## <a name="additional-resources"></a>Aanvullende bronnen
+
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Probeer Nintex Promapp met Azure AD](https://aad.portal.azure.com/)
 
 <!--Image references-->
 

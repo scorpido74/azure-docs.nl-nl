@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: caa7cbed7c56b63bcbf5ad8f287ab6cf32575c15
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7659c8187f7f4763b51b09362c94dad9554ed1c0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840295"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982837"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -126,6 +126,8 @@ Het element **SingleSignOn** bevat in het volgende kenmerk:
 | --------- | -------- | ----------- |
 | Scope | Ja | Het bereik van het gedrag bij eenmalige aanmelding. Mogelijke waarden: `Suppressed`, `Tenant`, `Application`of `Policy`. De waarde `Suppressed` geeft aan dat het gedrag wordt onderdrukt. In het geval van een eenmalige aanmeldings sessie wordt er bijvoorbeeld geen sessie voor de gebruiker onderhouden en wordt de gebruiker altijd gevraagd om een id-provider te selecteren. De waarde `TrustFramework` geeft aan dat het gedrag wordt toegepast voor alle beleids regels in het vertrouwens raamwerk. Bijvoorbeeld: een gebruiker die door twee beleids trajecten voor een vertrouwens raamwerk navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Tenant` geeft aan dat het gedrag wordt toegepast op alle beleids regels in de Tenant. Bijvoorbeeld: een gebruiker die door twee beleids ritten voor een Tenant navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Application` geeft aan dat het gedrag wordt toegepast op alle beleids regels voor de toepassing die de aanvraag maakt. Bijvoorbeeld: een gebruiker die door twee beleids ritten voor een toepassing navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Policy` geeft aan dat het gedrag alleen van toepassing is op een beleid. Bijvoorbeeld: een gebruiker die door twee beleids trajecten voor een vertrouwens raamwerk navigeert, wordt gevraagd een id-provider selectie in te scha kelen bij het overschakelen tussen de beleids regels. |
 | KeepAliveInDays | Ja | Hiermee wordt bepaald hoe lang de gebruiker aangemeld blijft. Als u de waarde instelt op 0, wordt de KMSI-functionaliteit uitgeschakeld. Zie [me aangemeld blijven](custom-policy-keep-me-signed-in.md)voor meer informatie. |
+|EnforceIdTokenHintOnLogout| Nee|  Forceren dat een eerder uitgegeven ID-token wordt door gegeven aan het afmeldings eindpunt als hint voor de huidige geverifieerde sessie van de eind gebruiker met de client. Mogelijke waarden: `false` (standaard) of `true`. Zie voor meer informatie [Web Sign-in with OpenID Connect Connect](openid-connect.md).  |
+
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -176,12 +178,12 @@ De **TechnicalProfile** bevat de volgende elementen:
 
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | De teken reeks die de naam bevat van het technische profiel dat wordt weer gegeven voor gebruikers. |
-| Beschrijving | 0:1 | De teken reeks die de beschrijving bevat van het technische profiel dat wordt weer gegeven voor gebruikers. |
+| DisplayName | 1:1 | De teken reeks die de naam van het technische profiel bevat. |
+| Beschrijving | 0:1 | De teken reeks die de beschrijving van het technische profiel bevat. |
 | Protocol | 1:1 | Het protocol dat wordt gebruikt voor de Federatie. |
 | Metagegevens | 0:1 | De verzameling sleutel /waarde-paren die wordt gebruikt door het protocol voor communicatie met het eind punt in de loop van een trans actie om de interactie tussen de Relying Party en andere deel nemers van de community te configureren. |
-| OutputClaims | 0:1 | Een lijst met claim typen die worden beschouwd als uitvoer in het technische profiel. Elk van deze elementen bevat een verwijzing naar een **claim** type dat al is gedefinieerd in de sectie **ClaimsSchema** of in een beleid van waaruit dit beleids bestand wordt overgenomen. |
-| SubjectNamingInfo | 0:1 | De onderwerpnaam die wordt gebruikt in tokens. |
+| OutputClaims | 1:1 | Een lijst met claim typen die worden beschouwd als uitvoer in het technische profiel. Elk van deze elementen bevat een verwijzing naar een **claim** type dat al is gedefinieerd in de sectie **ClaimsSchema** of in een beleid van waaruit dit beleids bestand wordt overgenomen. |
+| SubjectNamingInfo | 1:1 | De onderwerpnaam die wordt gebruikt in tokens. |
 
 Het **protocol** element bevat het volgende kenmerk:
 

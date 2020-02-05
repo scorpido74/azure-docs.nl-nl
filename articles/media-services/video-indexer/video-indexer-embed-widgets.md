@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/29/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: b9fb15fc9f3dc51a0df40a4ccb738a97d4558dff
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ed3e2cf9830e3776886e662fd27f43f76728d6b2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545888"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988716"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Video Indexer widgets insluiten in uw toepassingen
 
@@ -86,9 +86,9 @@ Als u een privé video wilt insluiten, moet u een toegangs token in het **src** 
     
 Als u de inhoud van het cognitieve Insights-object wilt ophalen, gebruikt u een van de volgende opties:<br/>
 - De API voor het [verkrijgen van inzichten-widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) .<br/>
-- Het [token voor video toegang ophalen](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?). Voeg het als een query parameter toe aan de URL. Geef deze URL op als de **src** -waarde voor de iframe, zoals eerder is weer gegeven.
+- Het [token voor video toegang ophalen](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Voeg het als een query parameter toe aan de URL. Geef deze URL op als de **src** -waarde voor de iframe, zoals eerder is weer gegeven.
 
-Als u de mogelijkheden voor het bewerken van inzichten in uw Inge sloten object wilt bieden, moet u een toegangs token door geven dat bewerkings machtigingen bevat. Gebruik de widget voor het [verkrijgen van inzichten](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) of [Haal token voor video toegang](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) op met `&allowEdit=true`. 
+Als u de mogelijkheden voor het bewerken van inzichten in uw Inge sloten object wilt bieden, moet u een toegangs token door geven dat bewerkings machtigingen bevat. Gebruik de widget voor het [verkrijgen van inzichten](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) of [Haal token voor video toegang](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) op met `&allowEdit=true`. 
 
 ## <a name="widgets-interaction"></a>Interactie van widgets
 
@@ -264,6 +264,23 @@ Als u bijschriften wilt uitschakelen, kunt u de waarde van de `captions` paramet
 
 #### <a name="autoplay"></a>Zorgen
 Standaard wordt de video afgespeeld met de speler. u kunt ervoor kiezen om `&autoplay=false` niet door te geven aan de voor gaande Inge sloten URL.
+
+## <a name="code-samples"></a>Codevoorbeelden
+
+Zie de [code voorbeelden](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets) opslag plaats die voor beelden bevatten voor video INDEXER-API en widgets:
+
+| Bestand/map                       | Beschrijving                                |
+|-----------------------------------|--------------------------------------------|
+| `azure-media-player`              | Video indexer video laden in een aangepaste Azure Media Player                        |
+| `azure-media-player-vi-insights`  | VI Insights insluiten met een aangepaste Azure Media Player                             |
+| `control-vi-embedded-player`      | Sluit VI Player en beheer deze van buiten                                    |
+| `custom-index-location`           | VI Insights insluiten vanaf een aangepaste externe locatie (kan klant een BLOB zijn)     |
+| `embed-both-insights`             | Basis gebruik van VI Insights zowel spelers als inzichten                            |
+| `embed-insights-with-AMP`         | Het object VI Insights insluiten met een aangepaste Azure Media Player                      |
+| `customize-the-widgets`           | Sluit VI-widgets met een aangepaste opties                                     |
+| `embed-both-widgets`              | Sluit VI Player en inzichten toe en communiceer ertussen                      |
+| `url-generator`                   | Hiermee wordt een aangepaste Inge sloten URL voor widgets gegenereerd op basis van de door de gebruiker opgegeven opties             |
+| `html5-player`                    | VI Insights insluiten met een standaard HTML5-Video speler                            |
 
 ## <a name="next-steps"></a>Volgende stappen
 

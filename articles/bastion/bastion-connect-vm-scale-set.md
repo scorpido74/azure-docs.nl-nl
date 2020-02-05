@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 446784155cf6f72cfaa80523ed3913eacc7e5cfc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f513aaf113ef4bd6e75e5c4b31e0f0252d45f10
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513131"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988087"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Verbinding maken met een schaalset voor virtuele machines met behulp van Azure Bastion
 
@@ -26,7 +26,7 @@ Zorg ervoor dat u een Azure bastion-host hebt ingesteld voor het virtuele netwer
 
 1. Open de [Azure Portal](https://portal.azure.com). Ga naar de schaalset voor virtuele machines waarmee u verbinding wilt maken.
 
-   ![Scha](./media/bastion-connect-vm-scale-set/1.png)
+   ![scha](./media/bastion-connect-vm-scale-set/1.png)
 2. Navigeer naar het exemplaar van de virtuele-machine Scale set waarmee u verbinding wilt maken en selecteer vervolgens **verbinding maken**. Wanneer u een RDP-verbinding gebruikt, moet de schaalset van de virtuele machine een Windows-schaalset voor virtuele machines zijn.
 
    ![schaalset voor virtuele machines](./media/bastion-connect-vm-scale-set/2.png)

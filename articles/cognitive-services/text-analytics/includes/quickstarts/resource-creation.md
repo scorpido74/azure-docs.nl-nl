@@ -4,15 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 9623398e51260d88df3d8fd88e3affaf7f906a64
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 254fe3602bdb6a05f3a3225035460b88ebd3e23f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76159260"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987353"
 ---
-Begin met het gebruik van de Text Analytics-API met een van de volgende opties.
-
+U hebt een sleutel en een eind punt van een Text Analytics bron nodig om verbinding te maken met uw toepassing. U kunt ze ophalen door een van de volgende resources te maken:
 
 * <a href="https://azure.microsoft.com/try/cognitive-services/my-apis/?api=text-analytics" title="een proef Text Analytics resource maken" target="_blank">een proef resource <span class="docon docon-navigate-external x-hidden-focus"></span> maken</a>
     * Er is geen Azure-abonnement nodig. 

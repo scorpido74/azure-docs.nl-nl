@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 742cb76f491e76db6dc9ec415c6718066b46f137
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 06fdb9733ad9c173c88936e5502214b58f5d10ee
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911080"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985914"
 ---
 # <a name="interact-with-the-map"></a>Interactie met de kaart
 
-In dit artikel wordt beschreven hoe u de eigenschap eigenschappen van de [kaart klasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events) gebruikt om gebeurtenissen te markeren op de kaart en op verschillende lagen van de kaart. U ziet ook hoe u de eigenschap gebeurtenis klasse gebeurtenissen kunt gebruiken om gebeurtenissen te markeren wanneer u met een HTML-markering communiceert.
+Dit artikel laat u zien hoe u de [klasse map-gebeurtenissen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)kunt gebruiken. De eigenschap markeringen gebeurtenissen op de kaart en op verschillende lagen van de kaart. U kunt ook gebeurtenissen markeren wanneer u communiceert met een HTML-markering.
 
 ## <a name="interact-with-the-map"></a>Interactie met de kaart
 
-Speel met de onderstaande kaart en Bekijk de bijbehorende muis gebeurtenissen die aan de rechter kant zijn gemarkeerd. U kunt op het **tabblad js** klikken om de Java script-code weer te geven en te bewerken. U kunt ook klikken op de knop **bewerken op CodePen** en de code bewerken op CodePen.
+Speel met de onderstaande kaart en Bekijk de bijbehorende muis gebeurtenissen die aan de rechter kant zijn gemarkeerd. U kunt op het **tabblad js** klikken om de Java script-code weer te geven en te bewerken. U kunt ook klikken op **bewerken op CodePen** om de code op CodePen te wijzigen.
 
 <br/>
 
@@ -31,7 +31,7 @@ Speel met de onderstaande kaart en Bekijk de bijbehorende muis gebeurtenissen di
 
 ## <a name="interact-with-map-layers"></a>Communiceren met kaart lagen
 
-De volgende code markeert de naam van de gebeurtenissen die worden geactiveerd tijdens de interactie met de symbool-laag. De laag symbool, bellen, lijn en veelhoek bieden ondersteuning voor dezelfde set gebeurtenissen. De heatmap en tegel lagen bieden geen ondersteuning voor een van deze gebeurtenissen.
+Met de volgende code wordt de gebrande gebeurtenis gemarkeerd tijdens de interactie met de symbool-laag. De laag symbool, bellen, lijn en veelhoek bieden ondersteuning voor dezelfde set gebeurtenissen. De heatmap en tegel lagen bieden geen ondersteuning voor een van deze gebeurtenissen.
 
 <br/>
 

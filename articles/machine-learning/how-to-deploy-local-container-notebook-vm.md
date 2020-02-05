@@ -10,19 +10,19 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 45f9f9d1c9c8414f7d3c97aab05b012a16079f40
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c07e880ea9b3c382d3c6ecde51dfe8f4ab5c24fc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843528"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988410"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Een model implementeren om reken instanties te Azure Machine Learning
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 > [!NOTE]
-> Reken instanties (preview) zijn alleen beschikbaar voor werk ruimten met een **Noord-Centraal VS**, * * VS-Oost 2 * *, **Europa-Noord** of **UK-Zuid**.
+> Reken instanties (preview) zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS**, **VS-oost 2**, **Europa-Noord** of **UK-Zuid**, met ondersteuning voor andere regio's binnenkort.
 >Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken.  U kunt met behulp van de stappen in dit artikel een model implementeren op een reken instantie of een notebook-VM.
 
 Meer informatie over het gebruik van Azure Machine Learning voor het implementeren van een model als een webservice op uw Azure Machine Learning Reken exemplaar. Reken instanties gebruiken als aan een van de volgende voor waarden wordt voldaan:

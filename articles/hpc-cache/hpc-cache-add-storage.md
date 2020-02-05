@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 75d657fd9f3ee13c331450b324fd3b99e9cb6ca5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647209"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990603"
 ---
 # <a name="add-storage-targets"></a>Opslagdoelen toevoegen
 
@@ -38,8 +38,6 @@ U kunt op deze pagina een nieuwe container maken voordat u deze toevoegt.
 Als u een Azure Blob-container wilt definiëren, voert u deze informatie in.
 
 ![scherm afbeelding van de pagina opslag doel toevoegen, gevuld met informatie voor een nieuw Azure Blob-opslag doel](media/hpc-cache-add-blob.png)
-
-<!-- need to replace screenshot after note text is updated with both required RBAC roles and also with correct search term -->
 
 * **Naam van opslag doel** : Stel een naam in die dit opslag doel identificeert in de Azure HPC-cache.
 * **Doel type** : Kies **BLOB**.

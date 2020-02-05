@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: alsin
-ms.openlocfilehash: 911d86dd7cb03479d9bde49d8fce0f7861e32e27
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: afda502bcd89423ecdd008c0297c85dd8a5b61fb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980141"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989838"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux uw gouden installatie kopieën met uw eigen abonnement in azure
+
 Red Hat Enterprise Linux-installatie kopieën (RHEL) zijn beschikbaar in azure via een PAYG-model (betalen per gebruik) of uw eigen abonnement (Red Hat Gold image). Dit document bevat een overzicht van de Red Hat Gold-installatie kopieën in Azure.
 
 ## <a name="important-points-to-consider"></a>Belang rijke punten om rekening mee te houden
@@ -170,25 +171,41 @@ Hier volgt een voor beeld van een script. U moet de resource groep, de locatie, 
     New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
+## <a name="encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images"></a>Red Hat Enterprise Linux your-eigen abonnementen van Gold-installatie kopieën versleutelen
+
+Red Hat Enterprise Linux uw installatie kopieën van uw eigen abonnementen kunnen worden beveiligd met behulp van [Azure Disk Encryption](../../linux/disk-encryption-overview.md). Het abonnement **moet** echter worden geregistreerd voordat versleuteling kan worden ingeschakeld.  Meer informatie over het registreren van een RHEL BYOS Gold-installatie kopie is beschikbaar op de Red Hat-site. Zie [een systeem registreren en abonneren op de Red Hat-klanten Portal met behulp van Red Hat Subscription-Manager](https://access.redhat.com/solutions/253273); Als u een actief Red Hat-abonnement hebt, kunt u ook de [activerings sleutels voor Red Hat-klanten portal maken](https://access.redhat.com/articles/1378093)lezen.
+
+Azure Disk Encryption wordt niet ondersteund op [aangepaste Red Hat-installatie kopieën](/linux/redhat-create-upload-vhd). Aanvullende ADE-vereisten en-vereisten worden beschreven in [Azure Disk Encryption voor Linux-vm's](../../linux/disk-encryption-overview.md#additional-vm-requirements).
+
+De stappen voor het Toep assen van Azure Disk Encryption zijn beschikbaar in [Azure Disk Encryption scenario's voor Linux-vm's](../../linux/disk-encryption-linux.md) en gerelateerde artikelen.  
+
 ## <a name="additional-information"></a>Aanvullende informatie
-- Als u probeert een virtuele machine in te richten op een abonnement dat niet is ingeschakeld voor deze aanbieding, wordt de volgende fout weer geven en moet u contact opnemen met micro soft of Red Hat om uw abonnement in te scha kelen.
+
+- Als u probeert een virtuele machine in te richten op een abonnement dat niet is ingeschakeld voor deze aanbieding, wordt de volgende fout weer geven:
+
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
+    
+    Neem in dit geval contact op met micro soft of Red Hat om uw abonnement in te scha kelen.
 
-- Als u een moment opname maakt van de RHEL BYOS-installatie kopie en de installatie kopie in de [Galerie met gedeelde afbeeldingen](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)publiceert, moet u plan gegevens opgeven die overeenkomen met de oorspronkelijke bron van de moment opname. De opdracht kan er bijvoorbeeld als volgt uitzien (Let op de plan parameters op de laatste regel):
+- Als u een moment opname van een RHEL BYOS-installatie kopie wijzigt en probeert die aangepaste installatie kopie te publiceren naar de [Galerie met gedeelde afbeeldingen](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries), moet u plan gegevens opgeven die overeenkomen met de oorspronkelijke bron van de moment opname. De opdracht kan er bijvoorbeeld als volgt uitzien:
+
     ```azurecli
     az vm create –image \
     "/subscriptions/GUID/resourceGroups/GroupName/providers/Microsoft.Compute/galleries/GalleryName/images/ImageName/versions/1.0.0" \
     -g AnotherGroupName --location EastUS2 -n VMName \
     --plan-publisher redhat --plan-product rhel-byos --plan-name rhel-lvm75
     ```
+    Let op de plan parameters op de laatste regel hierboven.
+
+    [Azure Disk Encryption](#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images) wordt niet ondersteund op aangepaste installatie kopieën.
 
 - Als u Automation gebruikt om Vm's in te richten vanuit de RHEL BYOS-installatie kopieën, moet u plan parameters opgeven die vergelijkbaar zijn met wat hierboven is weer gegeven. Als u bijvoorbeeld terraform gebruikt, geeft u de plan gegevens op in een [plan blok](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan).
 
 ## <a name="next-steps"></a>Volgende stappen
-* Stapsgewijze hand leidingen en programma Details voor Cloud toegang zijn beschikbaar in de [Red Hat Cloud Access-documentatie.](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)
-* Meer informatie over de [Azure Red Hat-update-infra structuur](./redhat-rhui.md).
-* Ga naar de [documentatie pagina](./redhat-images.md)voor meer informatie over alle Red Hat-afbeeldingen in Azure.
-* Informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL vindt u op de pagina [levens cyclus van Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .
-* Meer documentatie over de RHEL-gouden installatie kopieën vindt u in de [documentatie van Red Hat](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).
+- Stapsgewijze hand leidingen en programma Details voor Cloud toegang zijn beschikbaar in de [Red Hat Cloud Access-documentatie.](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)
+- Meer informatie over de [Azure Red Hat-update-infra structuur](./redhat-rhui.md).
+- Ga naar de [documentatie pagina](./redhat-images.md)voor meer informatie over alle Red Hat-afbeeldingen in Azure.
+- Informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL vindt u op de pagina [levens cyclus van Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .
+- Meer documentatie over de RHEL-gouden installatie kopieën vindt u in de [documentatie van Red Hat](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).

@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c085ce4aba6760b09dcc3eaf2f6232c5cc904706
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 922e8a71a22db975685cb82bbd51a125c619ccf2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469376"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989486"
 ---
 ### <a name="regions"></a>Welke regio's zijn er beschikbaar?
 
@@ -21,7 +21,7 @@ ms.locfileid: "75469376"
 
 ### <a name="publicip"></a>Heb ik een openbaar IP-adres nodig op mijn virtuele machine?
 
-U hebt geen openbaar IP-adres nodig op de virtuele Azure-machine waarmee u verbinding maakt met de Azure Bastion-service. De Bastion-service opent de RDP/SSH-sessie/verbinding met uw virtuele machine via het privé-IP-adres van uw virtuele machine in het virtuele netwerk.
+Wanneer u verbinding maakt met een virtuele machine met behulp van Azure Bastion, hebt u geen openbaar IP-adres nodig op de virtuele machine van Azure waarmee u verbinding maakt. De Bastion-service opent de RDP/SSH-sessie/verbinding met uw virtuele machine via het privé-IP-adres van uw virtuele machine in het virtuele netwerk.
 
 ### <a name="is-ipv6-supported"></a>Wordt IPv6 ondersteund?
 
@@ -33,7 +33,7 @@ U hebt geen RDP- of SSH-client nodig voor RDP/SSH-toegang tot uw virtuele Azure-
 
 ### <a name="agent"></a>Heb ik een agent nodig die wordt uitgevoerd op de virtuele machine van Azure?
 
-U hoeft geen agent of aanvullende software te installeren in uw browser of op uw virtuele Azure-machine. De Bastion-service werkt zonder agent en vereist geen aanvullende software voor RDP/SSH.
+U hoeft geen agent of software in uw browser of uw Azure virtual machine te installeren. De Bastion-service werkt zonder agent en vereist geen aanvullende software voor RDP/SSH.
 
 ### <a name="browsers"></a>Welke browsers worden ondersteund?
 

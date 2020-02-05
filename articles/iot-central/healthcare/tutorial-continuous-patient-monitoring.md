@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 97a215d8f111753c8fcc857fe4c48956c1236b3b
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c9a153cc5b1b8c43a42b37d591a8946a545f63ff
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027450"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986415"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Zelf studie: een sjabloon voor het controleren van doorlopende patiënten implementeren en bewaken
 
@@ -36,14 +36,15 @@ Ga naar de [website van Azure IOT Central Application Manager](https://apps.azur
 
 Klik op de knop **app maken** om de toepassing te gaan maken en meld u aan met een persoonlijk, werk-of school account van micro soft. Hiermee gaat u naar de **nieuwe toepassings** pagina.
 
->[!div class="mx-imgBorder"] 
->![gezondheids zorg](media/app-manager-health-create.png) maken
+![Gezondheids zorg voor de toepassing maken](media/app-manager-health-create.png)
+
+![Facturerings gegevens voor de betalings zorg van de toepassing maken](media/app-manager-health-create-billinginfo.png)
 
 Uw toepassing maken:
 
 1. In azure IoT Central wordt automatisch een toepassings naam voorgesteld op basis van de sjabloon die u hebt geselecteerd. U kunt deze naam accepteren of uw eigen beschrijvende toepassings naam invoeren, zoals een **voortdurende patiënt bewaking**. Azure IoT Central genereert ook een uniek URL-voor voegsel voor u op basis van de naam van de toepassing. Als u wilt, kunt u dit URL-voor voegsel wijzigen in iets eenvoudiger te onthouden.
 
-2. U kunt aangeven of u een **proef** toepassing of een toepassing met **betalen per gebruik** wilt maken. **Proef** toepassingen zijn zeven dagen gratis beschikbaar voordat ze verlopen en Maxi maal vijf gratis apparaten toestaan. Voordat ze verlopen, kunnen ze op elk gewenst moment worden geconverteerd naar betalen per gebruik. Als u een proef toepassing maakt, moet u uw contact gegevens invoeren en kiezen of u informatie en tips van micro soft wilt ontvangen. **Betalen per gebruik** -toepassingen bieden ondersteuning voor Maxi maal twee gratis apparaten en u moet uw Azure-abonnements gegevens invoeren.
+2. U kunt kiezen of u de toepassing wilt maken met behulp van het *gratis* prijs plan of een van de *standaard* prijzen plannen. Toepassingen die u maakt met behulp van het gratis abonnement, zijn zeven dagen beschikbaar voordat ze verlopen en bieden Maxi maal vijf gratis apparaten. U kunt een toepassing verplaatsen van het gratis abonnement naar een Standard-prijs plan op elk moment voordat het verloopt. Als u kiest voor het gratis abonnement, moet u uw contact gegevens invoeren en kiezen of u informatie en tips van micro soft wilt ontvangen. Toepassingen die u maakt met behulp van een Standard-abonnement ondersteunen Maxi maal twee gratis apparaten en u moet uw Azure-abonnements gegevens invoeren voor facturering.
 
 3. Selecteer onder aan de pagina **maken** om uw toepassing te implementeren.
 

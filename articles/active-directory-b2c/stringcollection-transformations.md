@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fbbd7b4bdddf2b58e66cb1203414b5a63eec2f27
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8f91db91eff3320691a5979d9453bf515ccd59a2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951000"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982293"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection-claim transformaties
 
@@ -31,8 +31,8 @@ Voegt een teken reeks claim toe aan een nieuwe stringCollection-claim.
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | string | Het claim type dat aan de uitvoer claim moet worden toegevoegd. |
-| InputClaim | verzameling | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
-| OutputClaim | verzameling | stringCollection | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
+| InputClaim | innings | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
+| OutputClaim | innings | stringCollection | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
 Gebruik deze claim transformatie om een teken reeks toe te voegen aan een nieuwe of bestaande stringCollection. Dit wordt vaak gebruikt in een **Aad-UserWriteUsingAlternativeSecurityId-** technisch profiel. Voordat een nieuw sociaal account wordt gemaakt, leest **CreateOtherMailsFromEmail** claims Transform het claim type en voegt de waarde toe aan het **otherMails** claim type.
 
@@ -64,9 +64,9 @@ Voegt een teken reeks parameter toe aan een nieuwe stringCollection-claim.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | verzameling | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
+| InputClaim | innings | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
 | InputParameter | item | string | De waarde die moet worden toegevoegd aan de uitvoer claim. |
-| OutputClaim | verzameling | stringCollection | De ClaimTypes die wordt geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
+| OutputClaim | innings | stringCollection | De ClaimTypes die wordt geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
 Gebruik deze claim transformatie om een teken reeks waarde toe te voegen aan een nieuwe of bestaande stringCollection. In het volgende voor beeld wordt een constant e-mail adres (admin@contoso.com) aan de claim **otherMails** toegevoegd.
 
@@ -88,7 +88,7 @@ Gebruik deze claim transformatie om een teken reeks waarde toe te voegen aan een
 
 - Invoer claims:
   - **verzameling**: ["someone@outlook.com"]
-- Invoerparameters
+- Invoer parameters
   - **item**: "admin@contoso.com"
 - Uitvoer claims:
   - **verzameling**: ["someone@outlook.com", "admin@contoso.com"]
@@ -99,7 +99,7 @@ Hiermee wordt het eerste item opgehaald uit de gegeven teken reeks verzameling.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | verzameling | stringCollection | De ClaimTypes die worden gebruikt door de claim transformatie om het item op te halen. |
+| InputClaim | innings | stringCollection | De ClaimTypes die worden gebruikt door de claim transformatie om het item op te halen. |
 | OutputClaim | extractedItem | string | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. Het eerste item in de verzameling. |
 
 In het volgende voor beeld wordt de **otherMails** -claim gelezen en wordt het eerste item in de **e-mail** claim geretourneerd.
@@ -121,4 +121,42 @@ In het volgende voor beeld wordt de **otherMails** -claim gelezen en wordt het e
   - **verzameling**: ["someone@outlook.com", "someone@contoso.com"]
 - Uitvoer claims:
   - **extractedItem**:someone@outlook.com
+
+
+## <a name="stringcollectioncontains"></a>StringCollectionContains
+
+Hiermee wordt gecontroleerd of een StringCollection claim type een-element bevat
+
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | stringCollection | Het claim type dat moet worden doorzocht. |
+|InputParameter|item|string|De waarde waarnaar moet worden gezocht.|
+|InputParameter|ignoreCase|string|Hiermee geeft u op of deze vergelijking het hoofdletter gebruik moet negeren van de teken reeksen die worden vergeleken.|
+| OutputClaim | outputClaim | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. Een Booleaanse indicator als de verzameling een dergelijke teken reeks bevat |
+
+In het volgende voor beeld wordt gecontroleerd of het claim type `roles` stringCollection de waarde **admin**bevat.
+
+```XML
+<ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <InputParameters>
+    <InputParameter  Id="item" DataType="string" Value="Admin"/>
+    <InputParameter  Id="ignoreCase" DataType="string" Value="true"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+- Invoer claims:
+    - **input claim**: [' lezer ', ' Auteur ', ' beheerder ']
+- Invoer parameters:
+    - **item**: "beheerder"
+    - **ignoreCase**: "True"
+- Uitvoer claims:
+    - **output claim**: "True"
+
 

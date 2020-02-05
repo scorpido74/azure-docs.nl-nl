@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: b88327ea0b5d2958cc1c86fa317415f2441af894
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7fe1c2f74ca2a7b0fa4aefad934c45edd6f85a73
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494478"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990438"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Via SSH verbinding maken met een virtuele Linux-machine met behulp van Azure Bastion
 
@@ -27,13 +27,24 @@ De persoonlijke SSH-sleutel moet een indeling hebben die begint met `"-----BEGIN
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Zorg ervoor dat u een Azure bastion-host hebt ingesteld voor het virtuele netwerk waarin de VM zich bevindt. Zie [een Azure bastion-host maken](bastion-create-host-portal.md)voor meer informatie. Zodra de Bastion-service is ingericht en geïmplementeerd in uw virtuele netwerk, kunt u deze gebruiken om verbinding te maken met elke virtuele machine in dit virtuele netwerk. Wanneer u Bastion gebruikt om verbinding te maken, wordt ervan uitgegaan dat u RDP gebruikt om verbinding te maken met een Windows-VM, en SSH om verbinding te maken met uw Linux-Vm's.
+Zorg ervoor dat u een Azure bastion-host hebt ingesteld voor het virtuele netwerk waarin de VM zich bevindt. Zie [een Azure bastion-host maken](bastion-create-host-portal.md)voor meer informatie. Zodra de Bastion-service is ingericht en geïmplementeerd in uw virtuele netwerk, kunt u deze gebruiken om verbinding te maken met elke virtuele machine in dit virtuele netwerk. 
+
+Wanneer u Bastion gebruikt om verbinding te maken, wordt ervan uitgegaan dat u RDP gebruikt om verbinding te maken met een Windows-VM, en SSH om verbinding te maken met uw Linux-Vm's. Zie [verbinding maken met een VM-Windows](bastion-connect-vm-rdp.md)voor meer informatie over het maken van een verbinding met een virtuele Windows-machine.
+
+### <a name="required-roles"></a>Vereiste rollen
 
 De volgende rollen zijn vereist om een verbinding te maken:
 
 * Rol van lezer op de virtuele machine
 * De rol van lezer op de NIC met het privé-IP-adres van de virtuele machine
 * Rol van lezer in de Azure Bastion-resource
+
+### <a name="ports"></a>Poorten
+
+Om via SSH verbinding te maken met de virtuele Linux-machine, moeten de volgende poorten zijn geopend op uw VM:
+
+* Binnenkomende poort: SSH (22)
+
 
 ## <a name="username"></a>Verbinding maken: gebruikers naam en wacht woord gebruiken
 

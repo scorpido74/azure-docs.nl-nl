@@ -4,50 +4,49 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over de Az
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 9cf7bf49d29b5faa9811a591b45179fe83c1d483
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172916"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989566"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Bewakings waarschuwing Azure Backup-Veelgestelde vragen
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over de bewakings waarschuwing van Azure.
+In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Backup bewaking en rapportage.
 
 ## <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>Hoe kan ik controleren of rapport gegevens zijn begonnen met stroom naar een opslag account?
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Hoe kan ik controleren of rapport gegevens in een werk ruimte van Log Analytics (LA) zijn gestart?
 
-Ga naar het opslag account dat u hebt geconfigureerd en selecteer containers. Als de container een vermelding voor inzichten-logs-azurebackupreport bevat, geeft deze aan dat rapport gegevens in de stroom zijn begonnen.
+Ga naar de LA-werk ruimte die u hebt geconfigureerd, navigeer naar het menu-item **logs** en voer de query CoreAzureBackup | 1 nemen. Als u een record ziet die wordt geretourneerd, betekent dit dat gegevens zijn gestart in de werk ruimte. Het pushen van de eerste gegevens kan tot wel 24 uur duren.
 
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Wat is de frequentie van het pushen van gegevens naar een opslag account en het Azure Backup-inhouds pakket in Power BI?
+### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Wat is de frequentie van het pushen van gegevens naar een LA-werk ruimte?
 
-  Voor dag 0-gebruikers duurt het circa 24 uur om gegevens naar een opslag account te pushen. Nadat deze eerste push is voltooid, worden de gegevens vernieuwd met de frequentie die in de volgende afbeelding wordt weer gegeven.
+De diagnostische gegevens van de kluis worden naar de Log Analytics-werk ruimte gepompt met enige vertraging. Elke gebeurtenis arriveert in de Log Analytics werk ruimte van 20 tot 30 minuten nadat deze is gepusht vanuit de Recovery Services kluis. Hier vindt u meer informatie over de vertraging:
 
-* Gegevens met betrekking tot **taken**, **waarschuwingen**, **Back-upitems**, **kluizen**, **beveiligde servers**en **beleids regels** worden gepusht naar een opslag account van de klant als en wanneer het wordt geregistreerd.
+* In alle oplossingen worden de ingebouwde waarschuwingen van de back-upservice gepusht zodra ze zijn gemaakt. Deze worden doorgaans weer gegeven in de Log Analytics-werk ruimte na 20 tot 30 minuten.
+* In alle oplossingen worden back-uptaken op aanvraag en herstel taken gepusht zodra deze zijn voltooid.
+* Voor alle oplossingen behalve SQL backup worden geplande back-uptaken gepusht zodra deze zijn voltooid.
+* Voor SQL backup, omdat logboek back-ups om de 15 minuten kunnen worden uitgevoerd, worden de gegevens voor alle voltooide geplande back-uptaken, inclusief logboeken, batches en elke 6 uur gepusht.
+* Voor alle oplossingen worden andere gegevens, zoals het back-upitem, het beleid, de herstel punten, de opslag, enzovoort, ten minste één keer per dag gepusht.
+* Een wijziging in de back-upconfiguratie (zoals het wijzigen van beleid of het bewerken van beleid) activeert een push van alle gerelateerde back-upgegevens.
 
-* Gegevens met betrekking tot **opslag** worden elke 24 uur gepusht naar een opslag account van de klant.
+### <a name="how-long-can-i-retain-reporting-data"></a>Hoe lang kan ik rapport gegevens behouden?
 
-    ![Gegevens push frequentie van Azure Backup-rapporten](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+Nadat u een werk ruimte van LA hebt gemaakt, kunt u ervoor kiezen om Maxi maal 2 jaar gegevens te bewaren. Standaard behoudt een LA-werk ruimte gegevens 31 dagen.
 
-* Power BI heeft [eenmaal per dag een geplande vernieuwing](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). U kunt de gegevens in Power BI voor het inhouds pakket hand matig vernieuwen.
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>Worden al mijn gegevens weer gegeven in rapporten nadat ik de werk ruimte LA heb geconfigureerd?
 
-### <a name="how-long-can-i-retain-reports"></a>Hoe lang kan ik rapporten behouden?
-
-Wanneer u een opslag account configureert, kunt u een Bewaar periode voor rapport gegevens in het opslag account selecteren. Voer stap 6 in het gedeelte [opslag account voor rapporten configureren](backup-azure-configure-reports.md#configure-storage-account-for-reports) uit. U kunt ook [rapporten in Excel analyseren](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) en deze opslaan voor een langere Bewaar periode, op basis van uw behoeften.
-
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>Worden alle gegevens in rapporten weer gegeven nadat ik het opslag account heb geconfigureerd?
-
- Alle gegevens die worden gegenereerd nadat u een opslag account hebt geconfigureerd, worden gepusht naar het opslag account en zijn beschikbaar in rapporten. Taken in uitvoering worden niet gepusht voor rapportage. Nadat de taak is voltooid of mislukt, wordt deze naar rapporten verzonden.
-
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>Als ik het opslag account al heb geconfigureerd om rapporten weer te geven, kan ik dan de configuratie wijzigen zodat er een ander opslag account wordt gebruikt?
-
-Ja, u kunt de configuratie wijzigen zodat deze naar een ander opslag account wijst. Gebruik het zojuist geconfigureerde opslag account terwijl u verbinding maakt met het Azure Backup-inhouds pakket. Nadat een ander opslag account is geconfigureerd, worden er ook nieuwe gegevens stromen in dit opslag account. Oudere gegevens (voordat u de configuratie wijzigt) blijven behouden in het oudere opslag account.
+ Alle gegevens die zijn gegenereerd nadat u de diagnostische instellingen hebt geconfigureerd, worden naar de werk ruimte LA gepusht en zijn beschikbaar in rapporten. Taken in uitvoering worden niet gepusht voor rapportage. Nadat de taak is voltooid of mislukt, wordt deze naar rapporten verzonden.
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Kan ik rapporten weer geven over kluizen en abonnementen?
 
-Ja, u kunt hetzelfde opslag account configureren voor verschillende kluizen om rapporten over meerdere kluizen weer te geven. U kunt ook hetzelfde opslag account configureren voor kluizen in abonnementen. U kunt dit opslag account vervolgens gebruiken terwijl u verbinding maakt met het Azure Backup-inhouds pakket in Power BI om de rapporten weer te geven. Het geselecteerde opslag account moet zich in dezelfde regio bevinden als de Recovery Services kluis.
+Ja, u kunt rapporten weer geven in kluizen en abonnementen, evenals in regio's. Uw gegevens kunnen zich bevinden in een enkele LA-werk ruimte of een groep LA-werk ruimten.
+
+### <a name="can-i-view-reports-across-tenants"></a>Kan ik rapporten weer geven over tenants?
+
+Als u een [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) -gebruiker bent met gedelegeerde toegang tot de abonnementen of La-werk ruimten van uw klanten, kunt u back-uprapporten gebruiken om gegevens in al uw tenants weer te geven.
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Hoe lang duurt het voordat de taak status van de Azure backup-agent in de portal wordt weer gegeven?
 
@@ -87,5 +86,5 @@ Ja. In de volgende situaties worden er geen meldingen verzonden:
 
 Lees de andere veelgestelde vragen:
 
-* [Veelgestelde vragen](backup-azure-vm-backup-faq.md) over back-ups van Azure-vm's.
-* [Veelgestelde vragen](backup-azure-file-folder-backup-faq.md) over de Azure backup-agent
+* [Veelgestelde vragen](backup-azure-vm-backup-faq.md) over Azure VM-back-ups.
+* [Veelgestelde vragen](backup-azure-file-folder-backup-faq.md) over de Azure Backup-agent

@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: c2d6e3e42c581c255f207af4a5008e2d09c50a7d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 1a413ce55604ef8b5c3219e8de466fcc23d41bac
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887118"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990938"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen
 
@@ -168,7 +168,7 @@ De SAP NetWeaver-architectuur die in dit artikel wordt gepresenteerd, maakt gebr
    
 In dit voor beeld hebben we Azure NetApp Files voor alle SAP NetWeaver-bestands systemen gebruikt om te laten zien hoe Azure NetApp Files kunnen worden gebruikt. SAP-bestands systemen die niet via NFS moeten worden gekoppeld, kunnen ook worden geïmplementeerd als [Azure-schijf opslag](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) . In dit voor beeld moet <b>a-e</b> zich bevindt op Azure NetApp files en <b>f-g</b> (dat wil zeggen,/usr/sap/<b>QAS</b>/d<b>02</b>,/usr/sap/<b>QAS</b>/d<b>03</b>) kan worden geïmplementeerd als Azure-schijf opslag. 
 
-### <a name="important-considerations"></a>Belangrijke overwegingen
+### <a name="important-considerations"></a>Belang rijke overwegingen
 
 Houd rekening met de volgende belang rijke overwegingen bij het overwegen van Azure NetApp Files voor de SAP net-Weaver op SUSE-architectuur met hoge Beschik baarheid:
 
@@ -185,7 +185,7 @@ Houd rekening met de volgende belang rijke overwegingen bij het overwegen van Az
 Eerst moet u de Azure NetApp Files volumes maken. Implementeer de Vm's. Daarna maakt u een load balancer en gebruikt u de virtuele machines in de back-endservers.
 
 1. Een resourcegroep maken
-1. Een virtueel netwerk maken
+1. Een Virtual Network maken
 1. Een Beschikbaarheidsset maken voor ASCS  
    Maximum aantal update domeinen instellen
 1. Virtuele machine 1 maken  
@@ -341,7 +341,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    </code></pre>
 
    > [!NOTE]
-   > Gebruik geen streepjes in de hostnamen van de cluster knooppunten. Als dat niet het geval is, werkt het cluster niet. Dit is een bekende beperking en SUSE werkt aan een oplossing. De oplossing wordt uitgebracht als patch van het SAP-SuSE-Cloud connector-pakket.
+   > Het bekende probleem met het gebruik van een streepje in hostnamen is opgelost met versie **3.1.1** van het pakket **SAP-SuSE-cluster-connector**. Zorg ervoor dat u ten minste versie 3.1.1 van package SAP-SuSE-cluster-connector gebruikt, als cluster knooppunten worden gebruikt met een streepje in de hostnaam. Als dat niet het geval is, werkt het cluster niet. 
 
    Zorg ervoor dat u de nieuwe versie van de SAP SUSE-cluster connector hebt geïnstalleerd. Het oude werd sap_suse_cluster_connector genoemd en de nieuwe heet **SAP-SuSE-cluster-connector**.
 
@@ -907,7 +907,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de 
    <pre><code>sudo service waagent restart
    </code></pre>
 
-## <a name="install-database"></a>Database installeren
+## <a name="install-database"></a>Data base installeren
 
 In dit voor beeld is SAP NetWeaver geïnstalleerd op SAP HANA. U kunt elke ondersteunde Data Base voor deze installatie gebruiken. Zie voor meer informatie over het installeren van SAP HANA in azure [hoge Beschik baarheid van SAP Hana op Azure virtual machines (vm's)][sap-hana-ha]. Zie [SAP Note 1928533][1928533]voor een lijst met ondersteunde data bases.
 

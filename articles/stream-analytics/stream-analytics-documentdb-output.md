@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: cf6b94418516f681bf6c782fe02f3434faa5374e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426285"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986985"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics-uitvoer naar Azure Cosmos DB  
 Azure Stream Analytics kan gericht zijn op [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) voor json-uitvoer, waardoor gegevens worden gearchiveerd en query's met lage latentie worden uitgevoerd op ONgestructureerde JSON-gegevens. In dit document staan enkele aanbevolen procedures voor het implementeren van deze configuratie.
@@ -97,7 +97,7 @@ De binnenkomende gebeurtenis snelheid in Event Hubs is twee keer hoger dan Azure
 
 Met 1,2 is Stream Analytics intelligenter in het gebruik van 100 procent van de beschik bare door Voer in Azure Cosmos DB met weinig herverzendingen tegen beperking of frequentie beperking. Dit biedt een betere ervaring voor andere werk belastingen, zoals query's die op de container worden uitgevoerd. Als u wilt zien hoe Stream Analytics met Azure Cosmos DB wordt geschaald als een Sink voor 1.000 tot 10.000 berichten per seconde, probeert u [Dit Azure-voorbeeld project](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb).
 
-De door Voer van Azure Cosmos DB uitvoer is identiek aan 1,0 en 1,1. Omdat 1,2 momenteel niet de standaard waarde is, kunt u [het compatibiliteits niveau](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) voor een stream Analytics-taak instellen met behulp van de portal of met behulp van de [Stream Analytics-taak maken rest API aanroepen](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). We *raden u ten zeerste* aan dat u het compatibiliteits niveau 1,2 in stream Analytics gebruikt met Azure Cosmos db.
+De door Voer van Azure Cosmos DB uitvoer is identiek aan 1,0 en 1,1. We *raden u ten zeerste* aan dat u het compatibiliteits niveau 1,2 in stream Analytics gebruikt met Azure Cosmos db.
 
 ## <a name="azure-cosmos-db-settings-for-json-output"></a>Azure Cosmos DB instellingen voor JSON-uitvoer
 

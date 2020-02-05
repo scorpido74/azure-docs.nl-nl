@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 38da444779a56f39d4119f3797ddb5bd2f31aeae
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 771e4a822df3e7d8eeee53174d657426bf226372
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112638"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990017"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Zelf studie: een verbonden afval beheer toepassing maken in IoT Central
 
@@ -64,10 +64,13 @@ Een nieuwe Azure IoT Central-toepassing voor het beheer van verbonden afval make
 5. Klik op de knop **maken** onder aan de pagina. 
 
     ![Azure IoT Central-pagina voor het maken van een verbonden afval toepassing](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
+    
+    ![Azure IoT Central gekoppelde facturerings gegevens maken](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
+ 
 6. U hebt nu een verbonden afval beheer-app gemaakt met behulp van de sjabloon voor het **beheer van verbonden afval**van Azure IOT Central. 
 
-Gefeliciteerd. Uw zojuist gemaakte toepassing wordt geleverd met vooraf geconfigureerd:
+Gefeliciteerd! Uw zojuist gemaakte toepassing wordt geleverd met vooraf geconfigureerd:
 * Voor beeld-operator dashboards
 * Voor beeld van vooraf gedefinieerde gekoppelde afval lade-sjablonen voor apparaten
 * Gesimuleerde gekoppelde afval bakken-apparaten
@@ -131,7 +134,7 @@ De sjabloon voor het apparaat weer geven:
 
 2. In de lijst met Apparaatinstellingen ziet u de **gekoppelde afval lade**. Open door op de naam te klikken.
 
-3. Familirize met de mogelijkheden van het apparaat. U kunt zien dat Sens oren als *opvul niveau*, *odor meter*, *gewicht*, *locatie* , enzovoort worden gedefinieerd.
+3. Raadpleeg de mogelijkheden van de sjabloon voor het apparaat. U kunt zien dat Sens oren als *opvul niveau*, *odor meter*, *gewicht*, *locatie* , enzovoort worden gedefinieerd.
 
    ![Apparaatprofiel](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 

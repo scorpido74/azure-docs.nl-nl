@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6e375e809308da8be0723fb2fcbdf718e9fb5479
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1f71476e398d5fd4466fd861e35ecc3f5b3666b9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957767"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987608"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Kennismaking met de gebruikersinterface van Azure IoT Central
 
@@ -71,7 +71,7 @@ Het bovenste menu wordt op elke pagina weergegeven:
 - Als u wilt zoeken naar Apparaatinstellingen en apparaten, voert u een **Zoek** waarde in.
 - Als u de taal of het thema van de gebruikers interface wilt wijzigen, kiest u het pictogram **instellingen** .
 - Kies het **account** pictogram om u af te melden bij de toepassing.
-- Als u hulp en ondersteuning nodig hebt, kiest u het keuzemenu **Help** voor een lijst met bronnen. In een proef toepassing omvatten de ondersteunings bronnen toegang tot [Live Chat](howto-show-hide-chat.md).
+- Als u hulp en ondersteuning nodig hebt, kiest u het keuzemenu **Help** voor een lijst met bronnen. In een toepassing op het prijs plan gratis, bevatten de ondersteunings bronnen toegang tot [Live Chat](howto-show-hide-chat.md).
 
 Voor de gebruikersinterface kunt u kiezen tussen een licht thema of een donker thema:
 
@@ -88,7 +88,7 @@ Voor de gebruikersinterface kunt u kiezen tussen een licht thema of een donker t
 
 * Als operator kunt u persoonlijke Dash boards maken en scha kelen tussen deze en het standaard dashboard. Zie het artikel [Azure IOT Central persoonlijke Dash boards maken](howto-create-personal-dashboards.md) voor meer informatie.
 
-## <a name="device-explorer"></a>Apparatenverkenner
+## <a name="device-explorer"></a>Device Explorer
 
 ![Device Explorer-pagina](media/overview-iot-central-tour/explorer.png)
 
@@ -103,7 +103,7 @@ Op de Device Explorer-pagina worden de _apparaten_ in uw Azure IoT Central-toepa
 
 Op de pagina _Apparaatsets_ worden de apparaatsets getoond die door de maker zijn gemaakt. Een apparaatset is een verzameling verwante apparaten. Een maker definieert een query om de apparaten te identificeren die in een apparaatset zijn opgenomen. U gebruikt apparaatsets wanneer u de analytische gegevens in uw toepassing aanpast. Raadpleeg voor meer informatie het artikel [Use device sets in your Azure IoT Central application](howto-use-device-sets.md) (Apparaatsets gebruiken in uw Azure IoT Central-toepassing).
 
-## <a name="analytics"></a>Analyse
+## <a name="analytics"></a>Analytische gegevens
 
 ![Analysepagina](media/overview-iot-central-tour/analytics.png)
 

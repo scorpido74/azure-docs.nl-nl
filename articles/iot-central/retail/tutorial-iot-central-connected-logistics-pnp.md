@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 17d429444b81746a5c5082b8310c5208bc35f3d2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 6ddf0a5300caa5e202b16fc4f376056489cd9b61
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889028"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984273"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Zelf studie: een verbonden sjabloon voor een logistiek-toepassing implementeren en door lopen
 
@@ -22,7 +22,7 @@ In deze zelf studie leert u hoe u aan de slag gaat door een IoT Central verbonde
 
 In deze zelf studie leert u hoe u 
 * een verbonden logistiek-toepassing maken 
-* Door loop de toepassing 
+* door loop de toepassing 
 
 ## <a name="prerequisites"></a>Vereisten
 * Er zijn geen specifieke vereisten vereist voor het implementeren van deze app
@@ -32,19 +32,22 @@ In deze zelf studie leert u hoe u
 U kunt een toepassing maken met behulp van de volgende stappen
 1. Ga naar de website van Azure IoT Central Application Manager. Selecteer **samen stellen** in de navigatie balk aan de linkerkant en klik vervolgens op het tabblad **detail handel** .
 
-> [!div class="mx-imgBorder"]
-> ![verbonden logistiek-dash board](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
+    > [!div class="mx-imgBorder"]
+    > ![verbonden logistiek-dash board](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
 
 2. Selecteer **app maken** onder **verbonden logistiek-toepassing**
 
 3. Bij het maken van de **app** wordt een nieuw toepassings formulier geopend en worden de aangevraagde gegevens ingevuld zoals hieronder wordt weer gegeven.
    * **Toepassings naam**: u kunt de voorgestelde standaard naam gebruiken of een beschrijvende toepassings naam invoeren.
-   * **URL**: u kunt een aanbevolen standaard-URL gebruiken of uw BESCHRIJVENDE unieke URL voor onthouden opgeven. De standaard instelling wordt aanbevolen als u al een Azure-abonnement hebt. u kunt ook beginnen met een gratis proef versie van zeven dagen en ervoor kiezen om op elk gewenst moment betalen per gebruik te converteren voordat de gratis Trail verlopen.
+   * **URL**: u kunt een aanbevolen standaard-URL gebruiken of uw BESCHRIJVENDE unieke URL voor onthouden opgeven. Vervolgens wordt de standaard instelling aanbevolen als u al een Azure-abonnement hebt. U kunt beginnen met een gratis proef abonnement van 7 dagen en ervoor kiezen om op elk gewenst moment te converteren naar een Standard-prijs plan voordat het gratis Trail verloopt.
    * **Facturerings gegevens**: de adres lijst, het Azure-abonnement en de regio gegevens zijn vereist om de resources in te richten.
    * **Maken** : Selecteer maken onder aan de pagina om uw toepassing te implementeren.
 
-> [!div class="mx-imgBorder"]
-> ![verbonden logistiek-dash board](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
+    > [!div class="mx-imgBorder"]
+    > ![verbonden logistiek-dash board](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
+
+    > [!div class="mx-imgBorder"]
+    > facturerings gegevens voor ![verbonden logistiek](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
 
 ## <a name="walk-through-the-application"></a>Door loop de toepassing 
 

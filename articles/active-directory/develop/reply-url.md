@@ -10,17 +10,22 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 7e289b83daa9c30703d94a7f4c0ff459f96256c0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702518"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983092"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Beperkingen voor omleidings-URI en antwoord-URL
 
 Een omleidings-URI of antwoord-URL is de locatie waarnaar de autorisatie server de gebruiker verzendt zodra de app is geautoriseerd en een autorisatie code of toegangs token heeft verleend. De code of het token bevindt zich in de omleidings-URI of het antwoord token. het is belang rijk dat u de juiste locatie registreert als onderdeel van het registratie proces van de app.
 
+ De volgende beperkingen zijn van toepassing op antwoord-Url's:
+
+    * De antwoord-URL moet beginnen met het schema `https`.
+    * De antwoord-URL is hoofdletter gevoelig. Het hoofdletter gebruik moet overeenkomen met het URL-pad van de actieve toepassing. Als uw toepassing bijvoorbeeld een deel van het pad bevat `.../abc/response-oidc`, geeft u geen `.../ABC/response-oidc` op in de antwoord-URL. Omdat de webbrowser paden als hoofdletter gevoelig behandelt, kunnen cookies die zijn gekoppeld aan `.../abc/response-oidc`, worden uitgesloten als ze worden omgeleid naar de niet-overeenkomende `.../ABC/response-oidc` URL.
+    
 ## <a name="maximum-number-of-redirect-uris"></a>Maximum aantal omleidings-Uri's
 
 In de volgende tabel ziet u het maximum aantal omleidings-Uri's dat u kunt toevoegen wanneer u uw app registreert.

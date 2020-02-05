@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 11dae2b6d771138503643c402ba4525df1f04a88
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f311d2772a6a60798795b4f2e6237e8153b9547
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430749"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76981209"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Ontwikkelaars accounts autoriseren met behulp van Azure Active Directory B2C in azure API Management
 
@@ -38,61 +38,65 @@ Azure Active Directory B2C is een oplossing voor het beheer van Cloud identiteit
    > [!NOTE]
    > Als u nog geen API Management service-exemplaar hebt gemaakt, raadpleegt u [een API Management service-exemplaar maken][Create an API Management service instance] in de [zelf studie aan de slag met Azure API Management][Get started with Azure API Management].
 
-2. Onder **identiteiten**. Klik bovenaan op **+ toevoegen** .
+1. Onder **identiteiten**. Klik bovenaan op **+ toevoegen** .
 
    Het deel venster **ID-provider toevoegen** wordt aan de rechter kant weer gegeven. Kies **Azure Active Directory B2C**.
     
    ![AAD B2C toevoegen als id-provider][api-management-howto-add-b2c-identity-provider]
 
-3. Kopieer de **omleidings-URL**.
+1. Kopieer de **omleidings-URL**.
 
    ![Omleidings-URL van AAD B2C ID-provider][api-management-howto-copy-b2c-identity-provider-redirect-url]
 
-4. Ga op een nieuw tabblad naar uw Azure Active Directory B2C-Tenant in de Azure Portal en open de Blade **toepassingen** .
+1. Ga op een nieuw tabblad naar uw Azure Active Directory B2C-Tenant in de Azure Portal en open de Blade **toepassingen** .
 
    ![Een nieuwe toepassing registreren 1][api-management-howto-aad-b2c-portal-menu]
 
-5. Klik op de knop **toevoegen** om een nieuwe Azure Active Directory B2C-toepassing te maken.
+1. Klik op de knop **toevoegen** om een nieuwe Azure Active Directory B2C-toepassing te maken.
 
    ![Een nieuwe toepassing registreren 2][api-management-howto-aad-b2c-add-button]
 
-6. Voer op de Blade **nieuwe toepassing** een naam in voor de toepassing. Kies **Ja** onder **Web-app/Web-API**en kies **Ja** onder **impliciete stroom toestaan**. Plak vervolgens de **omleidings-URL** die u in stap 3 hebt gekopieerd in het tekstvak **antwoord-URL** .
+1. Voer op de Blade **nieuwe toepassing** een naam in voor de toepassing. Kies **Ja** onder **Web-app/Web-API**en kies **Ja** onder **impliciete stroom toestaan**. Plak vervolgens de **omleidings-URL** die u in stap 3 hebt gekopieerd in het tekstvak **antwoord-URL** .
 
    ![Een nieuwe toepassing registreren 3][api-management-howto-aad-b2c-app-details]
 
-7. Klik op de knop **Maken**. Wanneer de toepassing wordt gemaakt, wordt deze weer gegeven op de Blade **toepassingen** . Klik op de naam van de toepassing om de details ervan weer te geven.
+1. Als u de nieuwe ontwikkelaars Portal gebruikt (niet de verouderde ontwikkelaars Portal), neemt u in de toepassings claims de **opgegeven naam** **en de** **object-id** van de gebruiker op.
+
+    ![Toepassings claims](./media/api-management-howto-aad-b2c/api-management-application-claims.png)
+
+1. Klik op de knop **Maken**. Wanneer de toepassing wordt gemaakt, wordt deze weer gegeven op de Blade **toepassingen** . Klik op de naam van de toepassing om de details ervan weer te geven.
 
    ![Een nieuwe toepassing registreren 4][api-management-howto-aad-b2c-app-created]
 
-8. Kopieer de **toepassings-id** van de Blade **Eigenschappen** naar het klem bord.
+1. Kopieer de **toepassings-id** van de Blade **Eigenschappen** naar het klem bord.
 
    ![Toepassings-ID 1][api-management-howto-aad-b2c-app-id]
 
-9. Ga terug naar het API Management deel venster id- **provider toevoegen** en plak de id in het tekstvak **client-id** .
+1. Ga terug naar het API Management deel venster id- **provider toevoegen** en plak de id in het tekstvak **client-id** .
     
-10. Ga terug naar de registratie van de B2C-app, klik op de knop **sleutels** en klik vervolgens op **sleutel genereren**. Klik op **Opslaan** om de configuratie op te slaan en de **app-sleutel**weer te geven. Kopieer de sleutel naar het klem bord.
+1.  Ga terug naar de registratie van de B2C-app, klik op de knop **sleutels** en klik vervolgens op **sleutel genereren**. Klik op **Opslaan** om de configuratie op te slaan en de **app-sleutel**weer te geven. Kopieer de sleutel naar het klem bord.
 
     ![App-sleutel 1][api-management-howto-aad-b2c-app-key]
 
-11. Ga terug naar het deel venster API Management **ID-provider toevoegen** en plak de sleutel in het tekstvak **client Secret** .
+1.  Ga terug naar het deel venster API Management **ID-provider toevoegen** en plak de sleutel in het tekstvak **client Secret** .
     
-12. Geef de domein naam van de Azure Active Directory B2C Tenant op in de **signin-Tenant**.
+1.  Geef de domein naam van de Azure Active Directory B2C Tenant op in de **signin-Tenant**.
 
-13. Met het veld **Authority** kunt u de AANMELDINGS-URL van Azure AD B2C voor gebruik beheren. Stel de waarde in op **< your_b2c_tenant_name >. b2clogin. com**.
+1.  Met het veld **Authority** kunt u de AANMELDINGS-URL van Azure AD B2C voor gebruik beheren. Stel de waarde in op **< your_b2c_tenant_name >. b2clogin. com**.
 
-14. Geef het **aanmeldings beleid** en het aanmeldings **beleid** op uit het Tenant beleid voor B2C. U kunt eventueel ook het beleid voor het **bewerken van profielen** en het beleid voor het **opnieuw instellen van wacht woorden**opgeven.
+1. Geef het **aanmeldings beleid** en het aanmeldings **beleid** op uit het Tenant beleid voor B2C. U kunt eventueel ook het beleid voor het **bewerken van profielen** en het beleid voor het **opnieuw instellen van wacht woorden**opgeven.
 
-15. Nadat u de gewenste configuratie hebt opgegeven, klikt u op **Opslaan**.
+1. Nadat u de gewenste configuratie hebt opgegeven, klikt u op **Opslaan**.
 
     Nadat de wijzigingen zijn opgeslagen, kunnen ontwikkel aars nieuwe accounts maken en zich aanmelden bij de ontwikkelaars Portal met behulp van Azure Active Directory B2C.
 
 ## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>Ontwikkelaars Portal-verificatie van Azure AD B2C-account toevoegen
 
-Meld u in de ontwikkelaars portal aan met AAD B2C is mogelijk met de widget **OAuth buttons** . De widget is al opgenomen op de aanmeldings pagina van de standaard inhoud van de ontwikkelaars Portal.
-
-![Widget AAD-knoppen](./media/api-management-howto-aad/portal-oauth-widget.png)
+Meld u in de ontwikkelaars portal aan met AAD B2C is mogelijk met de **knop Aanmelden: OAuth** -widget. De widget is al opgenomen op de aanmeldings pagina van de standaard inhoud van de ontwikkelaars Portal.
 
 Hoewel een nieuw account automatisch wordt gemaakt wanneer een nieuwe gebruiker zich aanmeldt met AAD B2C, kunt u overwegen om dezelfde widget toe te voegen aan de registratie pagina.
+
+Het **registratie formulier: OAuth** -widget vertegenwoordigt een formulier dat wordt gebruikt om u aan te melden bij OAuth.
 
 > [!IMPORTANT]
 > U moet [de portal opnieuw publiceren](api-management-howto-developer-portal-customize.md#publish) om de Aad-wijzigingen van kracht te laten worden.

@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 30083b4f2f5f9b69368a47ecaf5505c04ccd6df9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530694"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988172"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL migratie en application development-partners
 
@@ -21,7 +21,6 @@ Van de migratie van de NoSQL ontwikkeling van toepassingen, kunt u kiezen uit ta
 
 |**Partner**  |**Mogelijkheden en ervaring**  |**Ondersteunde landen/regio's**  |**Neem contact op met**  |
 |---------|---------|---------|---------|
-|![ImanisData][1]   | Gegevens migratie van MongoDB naar Azure Cosmos DB. <br/> Imanis gegevens kunt wereldwijd opererende ondernemingen snel en eenvoudig migreren van hun on-premises of in de cloud met Azure Cosmos DB MongoDB-databases. Imanis gegevens biedt een benadering van de migratie zonder agent, incrementele permanent cloud voor MongoDB-gegevensarchieven die vereenvoudigt de migratie en hebt u aanzienlijk minder uitvaltijd.|  USA  |   [Website](https://www.cohesity.com/products/imanis-data/)      |
 |![Realtimeplatform][2]    |  [Realtime gegevens verplaatsen met Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) uit een groot aantal gegevensbronnen. <br/> Realtimeplatform vereenvoudigt het real-time verzamelen en verplaatsen van gegevens uit een groot aantal on-premises bronnen, waaronder ondernemings documenten en relationele data bases, Sens oren en logboek bestanden in Azure Cosmos DB. |   USA   |  [Website](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Systeemintegratorpartners
@@ -59,7 +58,6 @@ Van de migratie van de NoSQL ontwikkeling van toepassingen, kunt u kiezen uit ta
 Zie voor meer informatie over een aantal andere partners van Microsoft, de [Microsoft-Partner site](https://partner.microsoft.com/en-US/).
 
 <!--Image references-->
-[1]: ./media/partners-migration-cosmosdb/imanisdata_logo.png
 [2]: ./media/partners-migration-cosmosdb/striim_logo.png
 [3]: ./media/partners-migration-cosmosdb/altoros_logo.png
 [4]: ./media/partners-migration-cosmosdb/attunix_logo.png

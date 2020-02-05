@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: f6e16ed6646340a5c623ecd027e8b0fe323bf7f9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: b19c23c7adb8dce84530b8f3f8d994f4e32869cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910611"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988937"
 ---
 # <a name="azure-maps-routing-coverage"></a>Routerings dekking Azure Maps
 
-In dit artikel vindt u informatie over de dekking van Azure Maps route ring. Wanneer u een optimale route zoekt vanaf locatie A naar B, kunnen Azure Maps zeer nauw keurige reis tijden, Live bijgewerkte reis gegevens en route-instructies bieden. De route houdt rekening met aanvullende zoek termen, zoals huidig verkeer, type Voer tuig en voor waarden om te voor komen. De mogelijkheid om de route te optimaliseren, is afhankelijk van de regio, omdat Azure Maps verschillende niveaus van informatie en nauw keurigheid voor verschillende regio's heeft. De volgende tabel geeft een lijst van de regio's en wat voor soort informatie u kunt aanvragen.
+In dit artikel vindt u informatie over de dekking van Azure Maps route ring. Bij een zoek opdracht retourneert Azure Maps een optimale route van locatie A naar locatie B. U krijgt de beschikking over nauw keurige reis tijden, actuele updates van reis gegevens en route-instructies. U kunt ook aanvullende zoek parameters toevoegen, zoals het huidige verkeer, het type Voer tuig en voor waarden om te voor komen. De optimalisatie van de route is afhankelijk van de regio. Dat komt omdat Azure Maps verschillende niveaus van informatie en nauw keurigheid voor verschillende regio's heeft. De volgende tabel geeft een lijst van de regio's en wat voor soort informatie u kunt aanvragen.
  
 Bekijk de dekking voor [**geocodering**](geocoding-coverage.md).       
 Bekijk de dekking van [**verkeer**](traffic-coverage.md).  
 Bekijk de dekking voor [**weer gave**](render-coverage.md).
 <br>  
-**Legenda**
+**Labels**
 
-| Symbool             | Betekenis                                |
+| Valuta             | Betekenis                                |
 |--------------------|----------------------------------------|
 | ✓                  | Het land/de regio is voorzien van gedetailleerde gegevens.   |
 | Ø                  | Het land of de regio die is meegeleverd met vereenvoudigde gegevens. |
@@ -69,7 +69,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Nigeria                        |        ✓       |         ✓            |             |
 | Rwanda                         |        ✓       |                       |             |
 | Senegal                        |        ✓       |                       |             |
-| Seychellen                     |        ✓       |                       |             |
+| Seychell                     |        ✓       |                       |             |
 | Zuid-Afrika                   |        ✓       ||         ✓            |             |
 | Swaziland                      |        ✓       |                       |             |
 | Tanzania                       |        ✓       |                       |             |
@@ -125,7 +125,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Venezuela                      |        ✓       |                      |             |
 
 
-## <a name="asia-pacific"></a>Azië en Stille Oceaan
+## <a name="asia-pacific"></a>Azië-Pacific
 
 | Land/regio                 | Routes         | Route ring met verkeer | Vracht routering |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
@@ -135,7 +135,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | Cambodja                       |        ✓       |                      |             |
 | Fiji                           |        ✓       |                      |             |
 | Guam                           |        ✓       |                      |             |
-| Hongkong SAR                  |        ✓       |         ✓            |             |
+| Hong Kong SAR                  |        ✓       |         ✓            |             |
 | India                          |        ✓       |         ✓            |             |
 | Indonesië                      |        ✓       |         ✓            |             |
 | Kazachstan                |        ✓       |                     |             |
@@ -223,7 +223,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps route ring.
 | \+ Gibraltar                     |        ✓       |         ✓            |             | 
 | +Montserrat                    |        ✓       |                      |             |
 | \+ Turks-en Caicos-eilanden      |        ✓       |                      |             |
-| Vaticaanstad                   |        ✓       |         ✓            |             |
+| Vaticaan stad                   |        ✓       |         ✓            |             |
 | Man                    |        ✓       |                      |             |
 
 

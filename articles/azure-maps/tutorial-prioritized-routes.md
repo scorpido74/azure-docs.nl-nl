@@ -3,22 +3,22 @@ title: 'Zelf studie: meerdere routes zoeken op reis wijze | Microsoft Azure kaar
 description: In deze zelf studie leert u hoe u routes kunt vinden voor verschillende reis methoden met behulp van Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 258572d4451be6d9a1090c032467e85889148d14
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 73cc2ff49653c91d635d52b79a92d1974bfd895b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910850"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989651"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Zelf studie: routes voor verschillende manieren van reizen zoeken met behulp van Azure Maps
 
-Deze zelfstudie laat zien hoe u uw Azure Maps-account en de routeservice gebruikt om de route naar uw nuttige plaats te vinden, gerangschikt naar uw manier van reizen. U geeft twee verschillende routes op de kaart weer: een voor auto's en een voor vrachtwagens waarvoor mogelijk routebeperkingen gelden qua hoogte, gewicht of gevaarlijke lading. In deze zelfstudie leert u het volgende:
+Deze zelf studie laat zien hoe u uw Azure Maps-account en de route service kunt gebruiken. De route service kan de route naar uw interesse punt vinden, met een prioriteit van uw reis wijze. U kunt twee verschillende routes weer geven op uw kaart, één voor auto's en één voor vracht wagens. De Routing-service houdt rekening met de beperkingen vanwege de hoogte en het gewicht van het Voer tuig, of als het Voer tuig gevaarlijke lading verzorgt. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een nieuwe webpagina maken met de kaartbesturingselement-API
@@ -27,7 +27,7 @@ Deze zelfstudie laat zien hoe u uw Azure Maps-account en de routeservice gebruik
 > * Meerdere routes op de kaart weergeven
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u verdergaat, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps account met de prijs categorie S1 en volgt u de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
+Voordat u doorgaat, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) en selecteert u de prijs categorie S1. Volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
 ## <a name="create-a-new-map"></a>Een nieuwe kaart maken
 
@@ -123,7 +123,7 @@ Gebruik de volgende stappen voor het maken van een statische HTML-pagina, ingesl
 
 ## <a name="define-how-the-route-will-be-rendered"></a>Definiëren hoe de route wordt weergegeven
 
-In deze zelfstudie worden twee routes berekend en weergegeven op de kaart. Eén route die toegankelijk is voor auto's en de andere die toegankelijk is voor vrachtwagens. Samen met de routes wordt een pictogram met een symbool weergegeven dat het begin- en het eindpunt van elke route aanduidt evenals lijnen met een andere kleur voor elk routepad.
+In deze zelfstudie worden twee routes berekend en weergegeven op de kaart. Eén route die toegankelijk is voor auto's en de andere die toegankelijk is voor vrachtwagens. Bij het renderen wordt een symbool pictogram weer gegeven voor het begin en het einde van de route, en verschillende gekleurde lijnen voor elk traject.
 
 1. Nadat u de kaart hebt geïnitialiseerd, voegt u de volgende Java script-code toe in de gebeurtenis-handler Maps `ready`.
 
@@ -158,7 +158,7 @@ In deze zelfstudie worden twee routes berekend en weergegeven op de kaart. Eén 
     });
     ```
     
-    In de gebeurtenis-handler Maps `ready` wordt een gegevens bron gemaakt voor het opslaan van de route regels en de begin-en eind punten. Er wordt een lijnlaag gemaakt en aan de gegevensbron gekoppeld waarmee wordt gedefinieerd hoe de routelijn wordt weergegeven. Er wordt gebruikgemaakt van expressies om de lijndikte en kleur op te halen uit de eigenschappen van de routelijnfunctie. Als u de laag toevoegt aan de kaart wordt een tweede parameter met de waarde `'labels'` doorgegeven. Hiermee wordt bepaald dat deze laag onder de kaartlabels wordt weergegeven. Zo kunt u er zeker van zijn dat de routelijnen de straatlabels niet bedekken. Er wordt een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de begin- en eindpunten worden weergegeven. In dit geval zijn er expressies toegevoegd om de afbeelding van het pictogram en de tekstlabelgegevens op te halen uit de eigenschappen van elk puntobject. 
+    In de gebeurtenis-handler Maps `ready` wordt een gegevens bron gemaakt voor het opslaan van de route lijnen en de begin-en eind punten. Er wordt een lijnlaag gemaakt en aan de gegevensbron gekoppeld waarmee wordt gedefinieerd hoe de routelijn wordt weergegeven. Er wordt gebruikgemaakt van expressies om de lijndikte en kleur op te halen uit de eigenschappen van de routelijnfunctie. Als u de laag toevoegt aan de kaart wordt een tweede parameter met de waarde `'labels'` doorgegeven. Hiermee wordt bepaald dat deze laag onder de kaartlabels wordt weergegeven. Zo kunt u er zeker van zijn dat de routelijnen de straatlabels niet bedekken. Er wordt een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de begin-en eind punten worden weer gegeven. In dit geval zijn er expressies toegevoegd voor het ophalen van de pictogram afbeelding en tekst label informatie uit eigenschappen van elk object Point. 
     
 2. Voor deze zelfstudie, moet u een fictief bedrijf in Seattle, genaamd Fabrikam, instellen als beginpunt, en een kantoor van Microsoft als eindpunt (bestemming). Voeg de volgende code toe in de gebeurtenis-handler Maps `ready`.
 
@@ -192,7 +192,7 @@ In deze zelfstudie worden twee routes berekend en weergegeven op de kaart. Eén 
 
     De begin- en eindpunten worden toegevoegd aan de gegevensbron. Het begrenzingsvak voor de begin- en eindpunten wordt berekend met behulp van de functie `atlas.data.BoundingBox.fromData`. Dit begrenzingsvak wordt gebruikt om de weer gave van de kaart camera's voor de volledige route in te stellen met behulp van de functie `map.setCamera`. Er wordt opvulling toegevoegd om de grootte van de pixels in de symboolpictogrammen te compenseren.
 
-4. Sla het bestand op en vernieuw de browser. De spelden worden weergegeven op de kaart. De kaart is nu gecentreerd op Seattle en u ziet de ronde blauwe speld die het beginpunt aangeeft en de blauwe speld die het eindpunt aangeeft.
+4. Sla het bestand op en vernieuw de browser. De spelden worden weergegeven op de kaart. De kaart is nu gecentreerd op Seattle. U ziet de ronde blauwe pincode die het begin punt markeert en de blauwe pincode markeert het eind punt.
 
    ![Kaart met begin- en eindpunt weergeven](./media/tutorial-prioritized-routes/pins-map.png)
 
@@ -244,7 +244,7 @@ In deze sectie wordt beschreven hoe u de Maps route Service-API gebruikt om meer
     });
     ```
 
-    Dit code fragment hierboven voert een query uit op de Azure Maps Routing-service via de methode [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . De route lijn wordt vervolgens geëxtraheerd uit de verzameling geojson-functies uit het antwoord dat is geëxtraheerd met behulp van de `geojson.getFeatures()` methode. De route lijn wordt vervolgens toegevoegd aan de gegevens bron. Er wordt ook een index van 0 toegevoegd om ervoor te zorgen dat deze wordt gerenderd vóór andere regels in de gegevens bron. Dit gebeurt omdat de berekende vrachtwagenroute vaak langzamer uitvalt dan een autoroute, en als de vrachtwagenroute na de autoroute aan de gegevensbron wordt toegevoegd, wordt de vrachtwagenroute bovenop de autoroute weergegeven. Er worden twee eigenschappen toegevoegd aan de route lijn van de vracht wagen, een streek kleur die een fraaie tint van blauw is en een streek breedte van negen pixels.
+    Dit code fragment hierboven voert een query uit op de Azure Maps Routing-service via de methode [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . De route lijn wordt vervolgens geëxtraheerd uit de verzameling geojson-functies uit het antwoord dat is geëxtraheerd met behulp van de `geojson.getFeatures()` methode. De route lijn wordt vervolgens toegevoegd aan de gegevens bron. Een index van 0 zorgt ervoor dat deze wordt weer gegeven vóór andere regels in de gegevens bron. Dit gebeurt omdat de berekende vrachtwagenroute vaak langzamer uitvalt dan een autoroute, en als de vrachtwagenroute na de autoroute aan de gegevensbron wordt toegevoegd, wordt de vrachtwagenroute bovenop de autoroute weergegeven. Er worden twee eigenschappen toegevoegd aan de route lijn van de vracht wagen, een streek kleur die een fraaie tint van blauw is en een streek breedte van negen pixels.
 
 3. Voeg de volgende Java script-code toe om een route voor een auto te maken en de resultaten weer te geven.
 

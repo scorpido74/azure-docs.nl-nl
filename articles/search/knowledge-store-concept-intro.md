@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 9a6fa62384615f60da88bb41da8ad3538d34e62a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754108"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988631"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Inleiding tot kennis winkels in azure Cognitive Search
 
@@ -133,147 +133,11 @@ Zodra de verrijkingen in de opslag ruimte bestaan, kunnen alle hulp middelen of 
 
 ## <a name="api-reference"></a>API-referentie
 
-Deze sectie is een versie van het verwijzings document [Create vaardig heden (rest API)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) , aangepast aan het toevoegen van een `knowledgeStore` definitie. 
+REST API versie `2019-05-06-Preview` biedt kennis opslag via aanvullende definities op vaardig heden. Naast de referentie raadpleegt u [een kennis archief maken met behulp van Postman](knowledge-store-create-rest.md) voor meer informatie over het aanroepen van de api's.
 
-### <a name="example---knowledgestore-embedded-in-a-skillset"></a>Voor beeld-knowledgeStore Inge sloten in een vaardig heden
++ [Vaardig heden maken (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
++ [Update vaardig heden (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
 
-In het volgende voor beeld ziet u de `knowledgeStore` aan de onderkant van een definitie van een vakkennisset. 
-
-* Gebruik **post** of **put** om de aanvraag te formuleren.
-* Gebruik de `api-version=2019-05-06-Preview` versie van de REST API om de functionaliteit van het kennis archief te openen. 
-
-```http
-POST https://[servicename].search.windows.net/skillsets?api-version=2019-05-06-Preview
-api-key: [admin key]
-Content-Type: application/json
-```
-
-De hoofd tekst van de aanvraag is een JSON-document dat een vaardig heden definieert, waaronder `knowledgeStore`.
-
-```json
-{
-  "name": "my-skillset-name",
-  "description": "Extract organization entities and generate a positive-negative sentiment score from each document.",
-  "skills":
-  [
-    {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "organizations",
-          "targetName": "organizations"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "score",
-          "targetName": "mySentiment"
-        }
-      ]
-    },
-  ],
-  "cognitiveServices": 
-    {
-    "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-    "description": "mycogsvcs resource in West US 2",
-    "key": "<YOUR-COGNITIVE-SERVICES-KEY>"
-    },
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [  
-                { "tableName": "Organizations", "generatedKeyName": "OrganizationId", "source": "/document/organizations*"}, 
-                { "tableName": "Sentiment", "generatedKeyName": "SentimentId", "source": "/document/mySentiment"}
-                ], 
-                "objects": [ ], 
-                "files": [  ]       
-            }    
-        ]     
-    } 
-}
-```
-
-### <a name="request-body-syntax"></a>Syntaxis van aanvraag tekst  
-
-De volgende JSON geeft een `knowledgeStore`, die deel uitmaakt van een [`skillset`](https://docs.microsoft.com/rest/api/searchservice/create-skillset), dat wordt aangeroepen door een `indexer` (niet weer gegeven). Als u al bekend bent met AI-verrijking, bepaalt een vaardig heden de samen stelling van een verrijkt document. Een vaardig heden moet ten minste één vaardigheid bevatten, waarschijnlijk een shaper-vaardigheid als u gegevens structuren gemoduleerd.
-
-De syntaxis voor het structureren van de aanvraag lading is als volgt.
-
-```json
-{   
-    "name" : "Required for POST, optional for PUT requests which sets the name on the URI",  
-    "description" : "Optional. Anything you want, or null",  
-    "skills" : "Required. An array of skills. Each skill has an odata.type, name, input and output parameters",
-    "cognitiveServices": "A key to Cognitive Services, used for billing.",
-    "knowledgeStore": { 
-        "storageConnectionString": "<YOUR-AZURE-STORAGE-ACCOUNT-CONNECTION-STRING>", 
-        "projections": [ 
-            { 
-                "tables": [ 
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    { "tableName": "<NAME>", "generatedKeyName": "<FIELD-NAME>", "source": "<DOCUMENT-PATH>" },
-                    . . .
-                ], 
-                "objects": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>", 
-                    "source": "<DOCUMENT-PATH>", 
-                    }
-                ], 
-                "files": [ 
-                    {
-                    "storageContainer": "<BLOB-CONTAINER-NAME>",
-                    "source": "/document/normalized_images/*"
-                    }
-                ]  
-            },
-            {
-                "tables": [ ],
-                "objects": [ ],
-                "files":  [ ]
-            }  
-        ]     
-    } 
-}
-```
-
-Een `knowledgeStore` heeft twee eigenschappen: een `storageConnectionString` aan een Azure Storage-account en `projections` die de fysieke opslag definieert. U kunt elk opslag account gebruiken, maar dit is rendabel om services in dezelfde regio te gebruiken.
-
-Een `projections` verzameling bevat projectie objecten. Elk projectie object moet `tables`, `objects`, `files` (een van beide) bevatten, die zijn opgegeven of null zijn. In de bovenstaande syntaxis ziet u twee objecten, een volledig opgegeven en de andere volledig null. Binnen een projectie object, zodra het is uitgedrukt in de opslag, blijven de relaties tussen de gegevens, indien gedetecteerd, behouden. 
-
-Maak zoveel projectie-objecten als u nodig hebt om isolatie en specifieke scenario's te ondersteunen (bijvoorbeeld gegevens structuren die worden gebruikt voor het verkennen, en die nodig zijn in een Data Science-werk belasting). U kunt isolatie en aanpassingen voor specifieke scenario's verkrijgen door `source` en `storageContainer` in te stellen of te `table` op verschillende waarden binnen een object. Zie [werken met projecties in een Knowledge Store](knowledge-store-projection-overview.md)voor meer informatie en voor beelden.
-
-|Eigenschap      | Van toepassing op | Beschrijving|  
-|--------------|------------|------------|  
-|`storageConnectionString`| `knowledgeStore` | Vereist. In deze indeling: `DefaultEndpointsProtocol=https;AccountName=<ACCOUNT-NAME>;AccountKey=<ACCOUNT-KEY>;EndpointSuffix=core.windows.net`|  
-|`projections`| `knowledgeStore` | Vereist. Een verzameling eigenschappen objecten die bestaan uit `tables`, `objects`, `files` en de bijbehorende eigenschappen. Ongebruikte projecties kunnen worden ingesteld op null.|  
-|`source`| Alle projecties| Het pad naar het knoop punt van de verrijkings structuur die de basis vormt van de projectie. Dit knoop punt is de uitvoer van een van de vaardig heden in de vaardig heden. Paden beginnen met `/document/`, die het verrijkte document vertegenwoordigen, maar kunnen worden uitgebreid naar `/document/content/` of knoop punten in de document structuur. Voor beelden: `/document/countries/*` (alle landen) of `/document/countries/*/states/*` (alle staten in alle landen). Zie [concepten en samen stelling van vaardig heden](cognitive-search-working-with-skillsets.md)voor meer informatie over document paden.|
-|`tableName`| `tables`| Een tabel die moet worden gemaakt in azure-tabel opslag. |
-|`storageContainer`| `objects`, `files`| De naam van een container die moet worden gemaakt in Azure Blob-opslag. |
-|`generatedKeyName`| `tables`| Een kolom die wordt gemaakt in de tabel die een unieke identificatie vormt voor een document. Met de verrijkings pijplijn wordt deze kolom gevuld met gegenereerde waarden.|
-
-
-### <a name="response"></a>Antwoord  
-
- Voor een succes volle aanvraag ziet u de status code ' 201 gemaakt '. Standaard bevat de antwoord tekst de JSON voor de definitie van de vaardig heden die is gemaakt. U herinnert dat het kennis archief pas wordt gemaakt als u een Indexeer functie aanroept die verwijst naar deze vaardig heden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 52791719e518f6a6b1a4178d8b9a010f1db14fc4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4078f2a005dcd324fa9c1d31cdca4b1f8337eecd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003852"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988376"
 ---
-# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Zelfstudie: Azure Key Vault gebruiken met een virtuele Windows-machine in python
+# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Zelf studie: Azure Key Vault gebruiken met een virtuele Windows-machine in python
 
 Azure Key Vault helpt u bij het beveiligen van geheimen zoals API-sleutels, de database verbindings reeksen die u nodig hebt om toegang te krijgen tot uw toepassingen, services en IT-resources.
 
@@ -80,7 +80,7 @@ In deze zelf studie gebruikt u de zojuist gemaakte resource groep.
 Als u een sleutel kluis wilt maken in de resource groep die u in de vorige stap hebt gemaakt, geeft u de volgende informatie op:
 
 * Sleutel kluis naam: een teken reeks van 3 tot 24 tekens die alleen getallen (0-9), letters (a-z, A-Z) en afbreek streepjes (-) kan bevatten
-* Resourcegroepnaam
+* Naam van de resourcegroep
 * Locatie: **US - west**
 
 ```azurecli
@@ -136,7 +136,7 @@ Als u zich wilt aanmelden bij de virtuele machine, volgt u de instructies in [ve
 
 ## <a name="create-and-run-a-sample-python-app"></a>Een voor beeld van een python-app maken en uitvoeren
 
-In de volgende sectie vindt u een voorbeeld bestand met de naam *sample.py*. Er wordt gebruikgemaakt van een bibliotheek [aanvragen](http://docs.python-requests.org/en/master/) om http-aanroepen te maken.
+In de volgende sectie vindt u een voorbeeld bestand met de naam *sample.py*. Er wordt gebruikgemaakt van een bibliotheek [aanvragen](https://2.python-requests.org/en/master/) om http-aanroepen te maken.
 
 ## <a name="edit-samplepy"></a>Sample.py bewerken
 

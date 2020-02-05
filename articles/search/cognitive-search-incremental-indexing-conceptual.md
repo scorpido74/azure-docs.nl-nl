@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 285b3608bc57d88ca2e81ed14355923436ed9d8d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f0e7c3bbbdcd1edad24422163fde38e3fdce7e27
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028507"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988648"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Inleiding tot incrementele verrijking en caching in azure Cognitive Search
 
@@ -97,7 +97,7 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 Het doel van de cache is om onnodige verwerking te voor komen, maar stel dat u een wijziging aanbrengt in een vaardigheid die de Indexeer functie niet detecteert (bijvoorbeeld het wijzigen van iets in externe code, zoals een aangepaste vaardigheid).
 
-In dit geval kunt u de [vaardig heden opnieuw instellen](preview-api-resetskills.md) gebruiken om het opnieuw verwerken van een bepaalde vaardigheid af te dwingen, inclusief eventuele downstream-vaardig heden die een afhankelijkheid hebben van de uitvoer van die vaardigheid. Deze API accepteert een POST-aanvraag met een lijst met vaardig heden die ongeldig moeten worden gemaakt en moeten worden gemarkeerd voor opnieuw verwerken. Nadat u vaardig heden hebt ingesteld, voert u de Indexeer functie uit om de pijp lijn aan te roepen.
+In dit geval kunt u de [vaardig heden opnieuw instellen](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) gebruiken om het opnieuw verwerken van een bepaalde vaardigheid af te dwingen, inclusief eventuele downstream-vaardig heden die een afhankelijkheid hebben van de uitvoer van die vaardigheid. Deze API accepteert een POST-aanvraag met een lijst met vaardig heden die ongeldig moeten worden gemaakt en moeten worden gemarkeerd voor opnieuw verwerken. Nadat u vaardig heden hebt ingesteld, voert u de Indexeer functie uit om de pijp lijn aan te roepen.
 
 ## <a name="change-detection"></a>Wijzigings detectie
 
@@ -109,7 +109,7 @@ Een ongeldige wijziging is een van de wijzigingen die niet meer geldig zijn in d
 
 * Overschakelen naar het type gegevens bron
 * Wijzigen in gegevens bron container
-* Gegevensbronreferenties
+* Gegevens bron referenties
 * Beleid voor wijzigings detectie van gegevens bronnen
 * Gegevens bronnen detectie beleid verwijderen
 * Indexeer functie veld toewijzingen
@@ -136,39 +136,27 @@ Met incrementele verwerking wordt de definitie van uw vaardig heden geëvalueerd
 * Wijzigingen in de projecties van de kennis opslag, resultaten voor het opnieuw projecteren van documenten
 * Uitvoer veld toewijzingen die zijn gewijzigd op een Indexeer functie, leiden ertoe dat documenten opnieuw worden geprojecteerd naar de index
 
-## <a name="api-reference-content-for-incremental-enrichment"></a>API-referentie-inhoud voor incrementele verrijking
+## <a name="api-reference"></a>API-referentie
 
-REST `api-version=2019-05-06-Preview` levert de Api's voor incrementele verrijking, met toevoegingen aan Indexeer functies, vaardig heden en gegevens bronnen. [Officiële referentie documentatie](https://docs.microsoft.com/rest/api/searchservice/) is voor algemeen beschik bare api's en biedt geen voor beeld van preview-functies. De volgende sectie bevat de referentie-inhoud voor beïnvloede Api's.
+REST API versie `2019-05-06-Preview` voorziet in incrementele verrijking via extra eigenschappen voor Indexeer functies, vaardig heden en gegevens bronnen. Zie [caching configureren voor incrementele verrijking](search-howto-incremental-index.md) in aanvulling op de referentie documentatie voor meer informatie over het aanroepen van de api's.
 
-Gebruiks informatie en voor beelden vindt u in [caching configureren voor incrementele verrijking](search-howto-incremental-index.md).
++ [Indexeer functie maken (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
 
-### <a name="indexers"></a>Indexeerfuncties
++ [Indexeer functie bijwerken (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
 
-Met [Create Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer) en [Update Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/update-indexer) worden nu nieuwe eigenschappen voor de cache beschikbaar gemaakt:
++ [Update vaardig heden (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) (nieuwe Uri-para meter voor de aanvraag)
 
-+ `StorageAccountConnectionString`: de connection string naar het opslag account dat wordt gebruikt om de tussenliggende resultaten in de cache op te slaan.
++ [Vaardig heden opnieuw instellen (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
 
-+ `EnableReprocessing`: standaard ingesteld op `true`, wanneer deze is ingesteld op `false`, worden documenten nog steeds naar de cache geschreven, maar worden er geen bestaande documenten opnieuw verwerkt op basis van de gegevens in de cache.
++ Database Indexeer functies (Azure SQL, Cosmos DB). Met sommige Indexeer functies worden gegevens opgehaald via query's. Voor query's waarmee gegevens worden opgehaald, ondersteunt de [gegevens bron update](https://docs.microsoft.com/rest/api/searchservice/update-data-source) een nieuwe para meter voor een aanvraag **ignoreResetRequirement**, die moet worden ingesteld op `true` wanneer uw update-actie de cache niet ongeldig moet maken. 
 
-+ `ID` (alleen-lezen): de `ID` is de id van de container binnen het `annotationCache` Storage-account dat wordt gebruikt als cache voor deze Indexeer functie. Deze cache is uniek voor deze Indexeer functie en als de Indexeer functie wordt verwijderd en opnieuw wordt gemaakt met dezelfde naam, worden de `ID` opnieuw gegenereerd. De `ID` kan niet worden ingesteld en wordt altijd gegenereerd door de service.
-
-### <a name="skillsets"></a>Vaardighedensets
-
-+ [Update kwalificatieset](https://docs.microsoft.com/rest/api/searchservice/update-skillset) ondersteunt een nieuwe para meter voor de aanvraag: `disableCacheReprocessingChangeDetection`, die moet worden ingesteld op `true` wanneer u wilt dat bestaande documenten niet worden bijgewerkt op basis van de huidige actie.
-
-+ Het [opnieuw instellen van vaardig heden](preview-api-resetskills.md) is een nieuwe bewerking die wordt gebruikt om een vaardig heden ongeldig te maken.
-
-### <a name="datasources"></a>Gegevensbronnen
-
-+ Met sommige Indexeer functies worden gegevens opgehaald via query's. Voor query's waarmee gegevens worden opgehaald, ondersteunt de [gegevens bron update](https://docs.microsoft.com/rest/api/searchservice/update-data-source) een nieuwe para meter voor een aanvraag `ignoreResetRequirement`, die moet worden ingesteld op `true` wanneer de update-actie de cache niet moet valideren.
-
-Gebruik het `ignoreResetRequirement` spaarzaam als dit kan leiden tot onbedoelde inconsistentie in uw gegevens die niet eenvoudig kunnen worden gedetecteerd.
+  Gebruik **ignoreResetRequirement** spaarzaam, omdat dit kan leiden tot onbedoelde inconsistentie in uw gegevens die niet eenvoudig kunnen worden gedetecteerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Incrementele verrijking is een krachtige functie waarmee wijzigingen in vaardig heden en AI-verrijking worden uitgebreid. Net als vaardig heden ontwikkeling zorgt incrementele verrijking ervoor dat de minst mogelijke werkzaamheden worden uitgevoerd terwijl uw documenten nog steeds consistent zijn.
+Incrementele verrijking is een krachtige functie waarmee wijzigingen in vaardig heden en AI-verrijking worden uitgebreid. AIncremental-verrijking maakt het hergebruik van bestaande verwerkte inhoud mogelijk tijdens het herhalen van het ontwerp van de vaardig heden.
 
-Ga aan de slag door een cache aan een bestaande Indexeer functie toe te voegen of de cache toe te voegen bij het definiëren van een nieuwe Indexeer functie.
+Als volgende stap moet u caching inschakelen voor een bestaande Indexeer functie of een cache toevoegen bij het definiëren van een nieuwe Indexeer functie.
 
 > [!div class="nextstepaction"]
 > [Caching configureren voor incrementele verrijking](search-howto-incremental-index.md)

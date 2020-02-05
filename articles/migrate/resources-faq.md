@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: d06e75ec900faa17ed4441c20a52d8da60ee4d97
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a9d008406e59c66a8b742194e2e2d388c778ac9e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289455"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989345"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: algemene vragen
 
@@ -62,14 +62,14 @@ U kunt het hulp programma identificeren dat u nodig hebt en dit toevoegen aan ee
 - In elk hulp programma is er een optie om verbinding te maken met Azure Migrate. Volg de instructies en documentatie van het hulp programma om het hulp programma te verbinden met Azure Migrate.
 U kunt uw migratie traject centraal volgen vanuit het Azure Migrate project, over Azure en andere hulpprogram ma's.
 
-### <a name="how-do-i-delete-a-project"></a>Een project Hoe kan ik verwijderen?
+## <a name="how-do-i-delete-a-project"></a>Een project Hoe kan ik verwijderen?
 
 [Meer informatie over het](how-to-delete-project.md) verwijderen van een project. 
 
 
+## <a name="do-machines-retain-domain-identity-after-migration"></a>Behouden computers de domein identiteit na de migratie?
 
-
-
+Ervan uitgaande dat domein Services zijn [geïntegreerd in azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/), wordt het lidmaatschap van een domein en de computer-ID in het domein na de migratie bewaard. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees het [Azure migrate overzicht](migrate-services-overview.md).

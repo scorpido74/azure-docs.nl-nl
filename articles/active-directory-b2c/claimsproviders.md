@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/29/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5a20f40c893c36823906d5cecadd9be21b8a4fd2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0bda94344a22f39daf104e7b95e33723187c4aa1
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836011"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983007"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -52,7 +52,7 @@ Het **ClaimsProvider** -element bevat de volgende onderliggende elementen:
 | Element | Instanties | Beschrijving |
 | ------- | ---------- | ----------- |
 | Domain | 0:1 | Een teken reeks die de domein naam voor de claim provider bevat. Als uw claim provider bijvoorbeeld het technische profiel voor Facebook bevat, is de domein naam Facebook.com. Deze domein naam wordt gebruikt voor alle technische profielen die zijn gedefinieerd in de claim provider, tenzij deze wordt overschreven door het technische profiel. Er kan ook worden verwezen naar de domein naam in een **domain_hint**. Zie voor meer informatie de sectie **Aanmelden omleiden naar een sociale provider** van het [rechtstreeks aanmelden instellen met behulp van Azure Active Directory B2C](direct-signin.md). |
-| DisplayName | 1:1 | Een teken reeks die de naam van de claim provider bevat die kan worden weer gegeven voor gebruikers. |
+| DisplayName | 1:1 | Een teken reeks die de naam van de claim provider bevat. |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | Een set technische profielen die worden ondersteund door de claim provider |
 
 **ClaimsProvider** organiseert hoe uw technische profielen verband houden met de claim provider. In het volgende voor beeld ziet u de Azure Active Directory claim provider met de Azure Active Directory technische profielen:

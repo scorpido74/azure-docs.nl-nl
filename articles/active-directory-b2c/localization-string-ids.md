@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/31/2020
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 349932073394a967da58bf521449d22a48c1f91d
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cd5e543a6d5dc2b59847a78bd925be68f8cdde25
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931722"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982854"
 ---
 # <a name="localization-string-ids"></a>Id's van lokalisatiereeksen
 
@@ -216,7 +216,8 @@ Hier volgen de Id's voor een [besturings element voor controle weergave](display
 |verification_control_but_send_new_code |Nieuwe code verzenden |
 |verification_control_but_verify_code |Code verifiëren |
 
-### <a name="verification-display-control-error-messages"></a>Controle van controle fout berichten
+## <a name="one-time-password-error-messages"></a>Eenmalige fout berichten voor wacht woord
+Hier volgen de Id's voor een eenmalig [wacht woord technische profiel](one-time-password-technical-profile.md) fout berichten
 
 | Id | Standaardwaarde |
 | -- | ------------- |

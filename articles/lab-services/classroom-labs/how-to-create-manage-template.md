@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: fd3396a98359aef966cd8bb2f984e556fc6abcc7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 08fbe9565356dc1b7db952fdd265770fef600ca8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584788"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989039"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Een leslokaal sjabloon maken en beheren in Azure Lab Services
 Een sjabloon in een lab is een basiskopie van de virtuele machine waarvan de virtuele machines van alle gebruikers worden gemaakt. Stel de sjabloon voor de virtuele machine zo in dat deze is geconfigureerd met precies wat u de labgebruikers wilt bieden. U kunt een naam en een beschrijving opgeven voor de sjabloon die de gebruikers van het lab kunnen zien. Vervolgens publiceert u de sjabloon om exemplaren van de sjabloon-VM beschikbaar te maken voor uw test gebruikers. Wanneer u een sjabloon publiceert, maakt Azure Lab Services virtuele machines in het lab met behulp van de sjabloon. Het aantal virtuele machines dat in dit proces wordt gemaakt, is hetzelfde als het maximum aantal gebruikers dat in het lab is toegestaan. Dit kunt u instellen in het gebruiksbeleid van het lab. Alle virtuele machines hebben dezelfde configuratie als de sjabloon.
@@ -39,17 +39,15 @@ Gebruik de volgende stappen om de titel en beschrijving voor de eerste keer in t
 ## <a name="update-a-template-vm"></a>Een sjabloon-VM bijwerken
 Gebruik de volgende stappen om een sjabloon-VM bij te werken.  
 
-1. Selecteer op de pagina **sjabloon** de optie **sjabloon aanpassen** op de werk balk. 
-2. Selecteer **door gaan**in het dialoog venster **sjabloon aanpassen** . Zodra u de sjabloon hebt gestart en wijzigingen hebt aangebracht, heeft deze niet langer dezelfde instellingen als de virtuele machines die voor het laatst zijn gepubliceerd naar uw gebruikers. Sjabloon wijzigingen worden pas weer gegeven op de bestaande virtuele machines van uw gebruikers nadat u de publicatie opnieuw hebt gepubliceerd.
-
-    ![Het dialoog venster aanpassen](../media/how-to-create-manage-template/customize-template-dialog.png)
 1. Wacht totdat de sjabloon-VM is gestart en selecteer vervolgens **verbinding maken met sjabloon** op de werk balk om verbinding te maken met de sjabloon-VM en volg de instructies. Als het een Windows-computer is, ziet u een optie voor het downloaden van het RDP-bestand. 
+1. Zodra u verbinding hebt gemaakt met de sjabloon en wijzigingen aanbrengt, heeft deze niet langer dezelfde instellingen als de virtuele machines die voor het laatst zijn gepubliceerd naar uw gebruikers. Sjabloon wijzigingen worden pas weer gegeven op de bestaande virtuele machines van uw gebruikers nadat u de publicatie opnieuw hebt gepubliceerd.
 
     ![Verbinding maken met de sjabloon-VM](../media/how-to-create-manage-template/connect-template-vm.png)
+    
 1. Installeer alle software die de studenten nodig hebben om het lab te doorlopen (bijvoorbeeld Visual Studio, Azure Storage Explorer, enzovoort). 
-2. Verbreek de verbinding met de sjabloon-VM (sluit de Extern bureaublad-sessie). 
-3. **Stop** de sjabloon-VM door **sjabloon stoppen**te selecteren. 
-4. Volg de stappen in de volgende sectie om de bijgewerkte sjabloon-VM te **publiceren** . 
+1. Verbreek de verbinding met de sjabloon-VM (sluit de Extern bureaublad-sessie). 
+1. **Stop** de sjabloon-VM door **sjabloon stoppen**te selecteren. 
+1. Volg de stappen in de volgende sectie om de bijgewerkte sjabloon-VM te **publiceren** . 
 
 ## <a name="publish-the-template-vm"></a>De sjabloon-VM publiceren  
 Als u de sjabloon niet publiceert tijdens het maken van het lab, kunt u deze later publiceren. Voordat u publiceert, kunt u verbinding maken met de VM van de sjabloon en deze bijwerken met alle software. Wanneer u een sjabloon publiceert, maakt Azure Lab Services virtuele machines in het lab met behulp van de sjabloon. Het aantal Vm's dat in dit proces is gemaakt, is het aantal Vm's dat u hebt opgegeven voor de eerste keer of wat u hebt opgegeven op de pagina van de virtuele-machine groep. Alle virtuele machines hebben dezelfde configuratie als de sjabloon. 
@@ -61,7 +59,7 @@ Als u de sjabloon niet publiceert tijdens het maken van het lab, kunt u deze lat
 
     > [!IMPORTANT]
     > Zodra een sjabloon is gepubliceerd, kan dit niet meer ongedaan worden gemaakt. U kunt de sjabloon echter opnieuw publiceren. 
-4. U kunt de status van het publicatie proces zien op de pagina sjabloon. Wacht tot de status van de sjabloon is gewijzigd in **gepubliceerd**. 
+1. U kunt de status van het publicatie proces zien op de pagina sjabloon. Wacht tot de status van de sjabloon is gewijzigd in **gepubliceerd**. 
 
     ![Publicatie status](../media/how-to-create-manage-template/publish-status.png)
 1. Ga naar de pagina **Virtuele machines** en controleer of u virtuele machines ziet met de status **Niet-toegewezen**. Deze virtuele machines zijn nog niet toegewezen aan studenten. Wacht totdat de virtuele machines zijn gemaakt. Deze horen de status **Gestopt** te hebben. Op deze pagina kunt u een student-VM starten, verbinding maken met de virtuele machine, de virtuele machine stoppen en de virtuele machine verwijderen. U kunt ze op deze pagina starten of uw studenten de Vm's laten starten. 

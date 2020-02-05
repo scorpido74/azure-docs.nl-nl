@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor de MARS-agent
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij het maken van een back-up van computers waarop de Microsoft Azure Recovery Services-agent (MARS) wordt uitgevoerd.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: a87d778bff5a52f4251d83e401028c9949713e33
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281271"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988070"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -72,7 +72,7 @@ De toegang tot alle hierboven vermelde Url's en IP-adressen maakt gebruik van he
 **Functie** | **Details**
 --- | ---
 Bandbreedte regeling | Ondersteund. In de MARS-agent gebruikt u **Eigenschappen wijzigen** om de band breedte aan te passen.
-Netwerkbeperking | Niet beschikbaar voor back-ups van computers waarop Windows Server 2008 R2, Windows Server 2008 SP2 of Windows 7 wordt uitgevoerd.
+Netwerk beperking | Niet beschikbaar voor back-ups van computers waarop Windows Server 2008 R2, Windows Server 2008 SP2 of Windows 7 wordt uitgevoerd.
 
 ## <a name="support-for-direct-backups"></a>Ondersteuning voor directe back-ups
 
@@ -95,8 +95,6 @@ Windows 7 (Ultimate, Enter prise, Pro, Home Premium/Basic, starter) | Ja | Nee |
 Windows Server 2016 (Standard, Data Center, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 Windows Server 2012 R2 (Standard, Data Center, Foundation, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 Windows Server 2012 (Standard, Data Center, Foundation) | Ja | Ja |-.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0 <br> -Deployment Image Servicing and Management (DISM. exe)
-Windows Server 2008 R2 (Standard, Enter prise, Data Center, Foundation) | Ja | Ja | -.NET 3,5, .net 4,5 <br> -Windows Power shell <br> -Compatibel micro soft VC + + Redistributable <br> -Micro soft Management Console (MMC) 3,0 <br> -Deployment Image Servicing and Management (DISM. exe)
-Windows Server 2008 SP2 (Standard, Data Center, Foundation) | Ja | Nee | -.NET 3,5, .net 4,5 <br> -Windows Power shell <br> -Compatibel micro soft VC + + Redistributable <br> -Micro soft Management Console (MMC) 3,0 <br> -Deployment Image Servicing and Management (DISM. exe) <br> -Virtual Server 2005 base + KB KB948515
 Windows Storage Server 2016/2012 R2/2012 (standaard, werk groep) | Ja | Nee | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 Windows Server 2019 (Standard, Data Center, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 
@@ -131,7 +129,7 @@ Gecomprimeerd en verspreid |Ondersteund.
 Vaste koppelingen| Wordt niet ondersteund. Genegeerd.
 Reparsepunt| Wordt niet ondersteund. Genegeerd.
 Versleuteld en verspreid |Wordt niet ondersteund. Genegeerd.
-Gecomprimeerde stream| Wordt niet ondersteund. Genegeerd.
+Gecomprimeerde stroom| Wordt niet ondersteund. Genegeerd.
 Sparse stream| Wordt niet ondersteund. Genegeerd.
 OneDrive (gesynchroniseerde bestanden zijn sparse-streams)| Wordt niet ondersteund.
 

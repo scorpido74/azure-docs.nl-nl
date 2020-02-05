@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 01/13/2020
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 3a5ddf5bd4614b68e97e7616173a3e0640007530
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1f3d442ea7cf6d95427aaa9c072410119e2735af
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941557"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989804"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Snelstartgids: aanmelden en uw eerste video uploaden
 
@@ -49,15 +49,17 @@ Zie het artikel [invoer container/bestands indelingen](../latest/media-encoder-s
 
     Wanneer Video Indexer klaar is met analyseren, ontvangt u een melding met een link naar uw video en een korte beschrijving van wat is gevonden in uw video. Bijvoorbeeld: mensen, onderwerpen, OCR's.
 
-## <a name="next-steps"></a>Volgende stappen
+## <a name="see-also"></a>Zie ook
 
 Zie [Video's uploaden en indexeren](upload-index-videos.md) voor meer informatie.
 
 Nadat u een video hebt geüpload en geïndexeerd, kunt u [video indexer](video-indexer-view-edit.md) website of [video indexer ontwikkelaars Portal](video-indexer-use-apis.md) gaan gebruiken om de inzichten van de video te bekijken. 
 
-## <a name="see-also"></a>Zie ook
+[Beginnen met het gebruik van Api's](video-indexer-use-apis.md)
 
-[Overzicht van Video Indexer](video-indexer-overview.md)
+## <a name="next-steps"></a>Volgende stappen
 
-[Starten met het gebruik van API's](video-indexer-use-apis.md).
+Voor gedetailleerde inleiding gaat u naar ons [Introductie Lab](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md). 
+
+Aan het einde van de workshop hebt u een goed inzicht in het soort informatie dat kan worden geëxtraheerd uit video-en audio-inhoud. u bent meer voor bereid op het identificeren van mogelijkheden met betrekking tot inhouds intelligentie, het verkopen van video AI op Azure en het maken van demo scenario's op Video Indexer.
 

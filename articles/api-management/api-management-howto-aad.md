@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 131621e05d7800e59ce3bbdec5c11c1da9facf11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: df640f11e8a0e8af22c96a662a602e0de508715c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442802"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985047"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Ontwikkel ontwikkelaars accounts met behulp van Azure Active Directory in azure API Management
 
@@ -50,17 +50,17 @@ Dit artikel laat u zien hoe u toegang tot de ontwikkelaars Portal kunt inschakel
    ![Stappen voor het toevoegen van een id-provider in de Azure Portal](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. Open een ander tabblad in uw browser. 
 11. Ga naar de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) om een App in Active Directory te registreren.
-12. Selecteer **App-registraties** onder **Beheren**.
+12. Selecteer onder **beheren**de optie **app-registraties**.
 13. Selecteer **nieuwe registratie**. Stel op de pagina **een toepassing registreren** de volgende waarden in:
     
-* Stel **name** in op een duidelijke naam. e.g., *developer-portal*
-* Stel **ondersteunde account typen** **in op accounts in deze directory van de organisatie**. 
-* Stel de **omleidings-URI** in op de waarde die u in stap 9 hebt ontvangen. 
-* Kies **registreren**. 
+    * Stel **name** in op een duidelijke naam. e.g., *developer-portal*
+    * Stel **ondersteunde account typen** **in op accounts in deze directory van de organisatie**. 
+    * Stel de **omleidings-URI** in op de waarde die u in stap 9 hebt ontvangen. 
+    * Kies **registreren**. 
 
 14.  Nadat de toepassing is geregistreerd, kopieert u de **toepassings-id (client)** van de pagina **overzicht** . 
 15. Ga terug naar uw API Management-exemplaar. Plak in het venster **ID-provider toevoegen** de waarde van de **toepassing (client)** in het vak **client-id** .
-16. Ga terug naar de Azure AD-configuratie en selecteer **certificaten & geheimen** onder **beheren**. Selecteer de knop **Nieuw clientgeheim**. Voer een waarde in voor **Beschrijving**, selecteer een optie voor **Verloopt** en kies **Toevoegen**. Kopieer de waarde van het client geheim voordat u de pagina verlaat. U hebt deze nodig in de volgende stap. 
+16. Ga terug naar de Azure AD-configuratie en selecteer **certificaten & geheimen** onder **beheren**. Selecteer de knop **Nieuw client geheim** . Voer een waarde in het veld **Beschrijving**in, selecteer een optie voor **verloopt** en kies **toevoegen**. Kopieer de waarde van het client geheim voordat u de pagina verlaat. U hebt deze nodig in de volgende stap. 
 17. Selecteer onder **beheren**de optie **verificatie** en selecteer **id-tokens** onder **impliciete toekenning**
 18. Ga terug naar uw API Management-exemplaar en plak het geheim in het vak **client Secret** .
 
@@ -71,10 +71,10 @@ Dit artikel laat u zien hoe u toegang tot de ontwikkelaars Portal kunt inschakel
 
 19. Het venster **ID-provider toevoegen** bevat ook het tekstvak **toegestane tenants** . Hier geeft u de domeinen van de Azure AD-exemplaren op waaraan u toegang wilt verlenen tot de Api's van het API Management service-exemplaar. U kunt meerdere domeinen van elkaar scheiden met nieuwe voor-en spaties of komma's.
 
-> [!NOTE]
-> U kunt meerdere domeinen opgeven in de sectie **toegestane tenants** . Voordat een gebruiker zich kan aanmelden vanuit een ander domein dan het oorspronkelijke domein waarin de toepassing is geregistreerd, moet een globale beheerder van het andere domein toestemming verlenen voor toegang tot Directory gegevens van de toepassing. De globale beheerder moet het volgende doen om toestemming te verlenen: a. Ga naar `https://<URL of your developer portal>/aadadminconsent` (bijvoorbeeld https://contoso.portal.azure-api.net/aadadminconsent).
-> b. Typ de domein naam van de Azure AD-Tenant waarmee u toegang wilt verlenen.
-> c. Selecteer **Indienen**. 
+    > [!NOTE]
+    > U kunt meerdere domeinen opgeven in de sectie **toegestane tenants** . Voordat een gebruiker zich kan aanmelden vanuit een ander domein dan het oorspronkelijke domein waarin de toepassing is geregistreerd, moet een globale beheerder van het andere domein toestemming verlenen voor toegang tot Directory gegevens van de toepassing. De globale beheerder moet het volgende doen om toestemming te verlenen: a. Ga naar `https://<URL of your developer portal>/aadadminconsent` (bijvoorbeeld https://contoso.portal.azure-api.net/aadadminconsent).
+    > b. Typ de domein naam van de Azure AD-Tenant waarmee u toegang wilt verlenen.
+    > c. Selecteer **Indienen**. 
 
 20.  Nadat u de gewenste configuratie hebt opgegeven, selecteert u **toevoegen**.
 
@@ -95,7 +95,7 @@ U kunt nu externe Azure AD-groepen toevoegen via het tabblad **groepen** van uw 
 
 1. Selecteer de tab **Groepen**.
 2. Selecteer de knop **Aad-groep toevoegen** .
-   ![knop ' AAD-groep toevoegen '](./media/api-management-howto-aad/api-management-with-aad008.png)
+    ![knop ' AAD-groep toevoegen '](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. Selecteer de groep die u wilt toevoegen.
 4. Druk op de knop **selecteren** .
 
@@ -105,11 +105,11 @@ Gebruikers van het geconfigureerde Azure AD-exemplaar kunnen zich nu aanmelden b
 
 ## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> ontwikkelaars Portal-Azure AD-account verificatie toevoegen
 
-In de ontwikkelaars Portal is aanmelden met AAD mogelijk met de widget **OAuth buttons** . De widget is al opgenomen op de aanmeldings pagina van de standaard inhoud van de ontwikkelaars Portal.
-
-![Widget AAD-knoppen](./media/api-management-howto-aad/portal-oauth-widget.png)
+In de ontwikkelaars Portal kunt u zich aanmelden met AAD met de **aanmeldings knop: OAuth-** widget. De widget is al opgenomen op de aanmeldings pagina van de standaard inhoud van de ontwikkelaars Portal.
 
 Hoewel een nieuw account automatisch wordt gemaakt wanneer een nieuwe gebruiker zich aanmeldt met AAD, kunt u overwegen om dezelfde widget toe te voegen aan de registratie pagina.
+
+Het **registratie formulier: OAuth** -widget vertegenwoordigt een formulier dat wordt gebruikt om u aan te melden bij OAuth.
 
 > [!IMPORTANT]
 > U moet [de portal opnieuw publiceren](api-management-howto-developer-portal-customize.md#publish) om de Aad-wijzigingen van kracht te laten worden.

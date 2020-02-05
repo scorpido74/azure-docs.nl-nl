@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 879e1911c715688c2fed4044e23f437b3bbef7b2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 90d171e3353061ffd855d9132c8a7fe40116e3cd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890663"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984086"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Zelf studie: een Digital Distribution Center-toepassings sjabloon implementeren en door lopen
 
@@ -34,19 +34,22 @@ U kunt een toepassing maken met behulp van de volgende stappen
 
 1. Ga naar de website van Azure IoT Central Application Manager. Selecteer **samen stellen** in de navigatie balk aan de linkerkant en klik vervolgens op het tabblad **detail handel** .
 
-> [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    > [!div class="mx-imgBorder"]
+    > ![Digital Distribution Center](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
 
-2. Selecteer het tabblad **detail handel** en selecteer **app maken** onder * * Digital Distribution Center-toepassing * *
+2. Selecteer het tabblad **detail handel** en selecteer **app maken** onder **Digital Distribution Center-toepassing**
 
 3. Bij het maken van de **app** wordt een nieuw toepassings formulier geopend en worden de aangevraagde gegevens ingevuld zoals hieronder wordt weer gegeven.
    **Toepassings naam**: u kunt de voorgestelde standaard naam gebruiken of een beschrijvende toepassings naam invoeren.
-   **URL**: u kunt de voorgestelde standaard-URL gebruiken of uw beschrijvende, unieke, onthouden-URL invoeren. Vervolgens wordt de standaard instelling aanbevolen als u al een Azure-abonnement hebt. U kunt ook beginnen met een gratis proef versie van zeven dagen en ervoor kiezen om op elk gewenst moment betalen per gebruik te converteren voordat de gratis Trail-periode verloopt.
+   **URL**: u kunt een aanbevolen standaard-URL gebruiken of uw BESCHRIJVENDE unieke URL voor onthouden opgeven. Vervolgens wordt de standaard instelling aanbevolen als u al een Azure-abonnement hebt. U kunt beginnen met een gratis proef abonnement van 7 dagen en ervoor kiezen om op elk gewenst moment te converteren naar een Standard-prijs plan voordat het gratis Trail verloopt.
    **Facturerings gegevens**: de adres lijst, het Azure-abonnement en de regio gegevens zijn vereist om de resources in te richten.
    **Maken**: Selecteer maken onder aan de pagina om uw toepassing te implementeren.
 
-> [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-create.png)
+    > [!div class="mx-imgBorder"]
+    > ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-create.png)
+
+    > [!div class="mx-imgBorder"]
+    > ![informatie over de facturering van digitale distributie](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
 ## <a name="walk-through-the-application-dashboard"></a>Het toepassings dashboard door lopen 
 

@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 3360209e9de54d6011a2a430cd2c1fb54a315c43
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e82c325ad5ad91e6b4503949e6534b054023f1f2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327607"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990960"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Migreren van on-premises HDFS-opslag naar Azure Storage met Azure Data Box
 
@@ -282,7 +282,7 @@ Voordat u uw gegevens naar een Data Box apparaat verplaatst, moet u sommige Help
    sudo apt-get install jq
    ```
 
-3. Installeer het python-pakket [aanvragen](http://docs.python-requests.org/en/master/) .
+3. Installeer het python-pakket [aanvragen](https://2.python-requests.org/en/master/) .
 
    ```bash
    

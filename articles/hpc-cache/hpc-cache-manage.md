@@ -4,18 +4,18 @@ description: De Azure HPC-cache beheren en bijwerken met behulp van de Azure Por
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867087"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988843"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Uw cache beheren via de Azure Portal
 
-Op de pagina cache-overzicht in de Azure Portal worden project details, de cache status en de basis statistieken voor uw cache weer gegeven. Het bevat ook besturings elementen voor het verwijderen van de cache, het leegmaken van gegevens naar lange termijn opslag of het bijwerken van software.
+Op de pagina cache-overzicht in de Azure Portal worden project details, de cache status en de basis statistieken voor uw cache weer gegeven. Het bevat ook besturings elementen voor het stoppen of starten van de cache, het verwijderen van de cache, het leegmaken van gegevens naar lange termijn opslag en het bijwerken van software.
 
 Als u de overzichts pagina wilt openen, selecteert u uw cache resource in het Azure Portal. Laad bijvoorbeeld de pagina **alle resources** en klik op de naam van de cache.
 
@@ -23,12 +23,29 @@ Als u de overzichts pagina wilt openen, selecteert u uw cache resource in het Az
 
 Met de knoppen boven aan de pagina kunt u de cache beheren:
 
+* De cache bewerking **starten** en [**stoppen**](#stop-the-cache) onderbreken
 * [**Flush**](#flush-cached-data) -schrijft gewijzigde gegevens naar opslag doelen
 * [**Upgrade**](#upgrade-cache-software) -de cache software bijwerken
 * **Vernieuwen** : Hiermee wordt de pagina Overzicht opnieuw geladen
 * [**Verwijderen**](#delete-the-cache) : de cache wordt definitief vernietigd
 
 Meer informatie over deze opties vindt u hieronder.
+
+## <a name="stop-the-cache"></a>De cache stoppen
+
+U kunt de cache stoppen om de kosten te verlagen tijdens een inactieve periode. Er worden geen kosten in rekening gebracht voor de actieve tijds duur tijdens het stoppen van de cache, maar er worden kosten in rekening gebracht voor de toegewezen schijf ruimte in de cache. (Zie de pagina met [prijzen](https://aka.ms/hpc-cache-pricing) voor meer informatie.)
+
+Een gestopte cache reageert niet op client aanvragen. U moet clients ontkoppelen voordat u de cache stopt.
+
+Met de knop **stoppen** wordt een actieve cache onderbroken. De knop **stoppen** is beschikbaar wanneer de status van een cache **in orde** is of **gedegradeerd**is.
+
+![scherm afbeelding van de bovenste knoppen met een stop markering en een pop-upbericht waarin de actie stoppen wordt beschreven en u wordt gevraagd om door te gaan? met Ja (standaard) en geen knoppen](media/stop-cache.png)
+
+Nadat u op Ja hebt geklikt om het stoppen van de cache te bevestigen, wordt de inhoud van de cache automatisch leeg gemaakt naar de opslag doelen. Dit proces kan enige tijd duren, maar Hiermee wordt de consistentie van gegevens gegarandeerd. Ten slotte wordt de cache status gewijzigd in **gestopt**.
+
+Als u een gestopt cache opnieuw wilt activeren, klikt u op de knop **starten** . Er is geen bevestiging nodig.
+
+![scherm afbeelding van de bovenste knoppen met de markering begin gemarkeerd](media/start-cache.png)
 
 ## <a name="flush-cached-data"></a>In cache opgeslagen gegevens wissen
 
@@ -68,13 +85,14 @@ De back-end-opslag volumes die als opslag doelen worden gebruikt, worden niet be
 > [!NOTE]
 > Azure HPC cache schrijft niet automatisch gewijzigde gegevens van de cache naar de back-end-opslag systemen voordat de cache wordt verwijderd.
 >
-> Voer de volgende procedure uit om ervoor te zorgen dat alle gegevens in de cache naar lange termijn opslag zijn geschreven:
+> Om ervoor te zorgen dat alle gegevens in de cache naar lange termijn opslag zijn geschreven, moet u [de cache stoppen](#stop-the-cache) voordat u deze verwijdert. Zorg ervoor dat de status wordt weer **gegeven voordat u** op de knop verwijderen klikt.
+<!--... written to long-term storage, follow this procedure:
 >
-> 1. [Verwijder](hpc-cache-edit-storage.md#remove-a-storage-target) elke opslag doel uit de Azure HPC-cache met behulp van de knop verwijderen op de pagina opslag doelen. Het systeem schrijft automatisch gewijzigde gegevens van de cache naar het back-end-opslag systeem voordat het doel wordt verwijderd.
-> 1. Wacht totdat het opslag doel volledig is verwijderd. Het proces kan een uur of langer duren als er veel gegevens moeten worden geschreven uit de cache. Wanneer dit is gebeurd, geeft een portal melding aan dat de Verwijder bewerking is geslaagd en verdwijnt het opslag doel uit de lijst.
-> 1. Nadat alle beïnvloede opslag doelen zijn verwijderd, is het veilig om de cache te verwijderen.
+> 1. [Remove](hpc-cache-edit-storage.md#remove-a-storage-target) each storage target from the Azure HPC Cache by using the delete button on the Storage targets page. The system automatically writes any changed data from the cache to the back-end storage system before removing the target.
+> 1. Wait for the storage target to be completely removed. The process can take an hour or longer if there is a lot of data to write from the cache. When it is done, a portal notification says that the delete operation was successful, and the storage target disappears from the list.
+> 1. After all affected storage targets have been deleted, it is safe to delete the cache.
 >
-> U kunt ook de optie [leegmaken](#flush-cached-data) gebruiken om gegevens in de cache op te slaan, maar er is een klein risico van het verlies van werk wanneer een client een wijziging in de cache schrijft nadat de leegmaak bewerking is voltooid, maar voordat de cache-instantie wordt vernietigd.
+> Alternatively, you can use the [flush](#flush-cached-data) option to save cached data, but there is a small risk of losing work if a client writes a change to the cache after the flush completes but before the cache instance is destroyed.-->
 
 ## <a name="cache-metrics-and-monitoring"></a>Metrische gegevens over cache en bewaking
 

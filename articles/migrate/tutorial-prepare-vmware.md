@@ -1,18 +1,15 @@
 ---
 title: VMware-Vm's voorbereiden voor evaluatie/migratie met Azure Migrate
 description: Meer informatie over het voorbereiden van de evaluatie/migratie van VMware-Vm's met Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4dec76140f61c433561ccfea07b833d9821acfc5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 25dab303ce62e33a09346d14c0a08a43b715075d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028902"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989131"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware-Vm's voorbereiden voor evaluatie en migratie naar Azure
 
@@ -41,8 +38,12 @@ U hebt deze machtigingen nodig.
 **Taak** | **Machtigingen**
 --- | ---
 **Een Azure Migrate-project maken** | Uw Azure-account heeft machtigingen nodig om een project te maken.
-**Het Azure Migrate apparaat registreren** | Azure Migrate maakt gebruik van een licht gewicht Azure Migrate apparaat om virtuele VMware-machines te beoordelen met de evaluatie van Azure Migrate server, en voor het uitvoeren van [agentloze migratie](server-migrate-overview.md) van virtuele VMware-machines met Azure migrate server migratie. Dit apparaat detecteert Vm's en verzendt de meta gegevens en prestatie gegevens van de virtuele machine naar Azure Migrate.<br/><br/>Tijdens de registratie worden door Azure Migrate twee Azure Active Directory-apps (Azure AD) gemaakt waarmee het apparaat uniek wordt geïdentificeerd, en moeten machtigingen voor het maken van deze apps zijn vereist.<br/> -De eerste app communiceert met Azure Migrate service-eind punten.<br/> -De tweede app heeft toegang tot een Azure Key Vault die tijdens de registratie is gemaakt voor het opslaan van Azure AD-App-gegevens en configuratie-instellingen voor het apparaat.
+**Het Azure Migrate apparaat registreren** | Azure Migrate maakt gebruik van een licht gewicht Azure Migrate apparaat om virtuele VMware-machines te beoordelen met de evaluatie van Azure Migrate server, en voor het uitvoeren van [agentloze migratie](server-migrate-overview.md) van virtuele VMware-machines met Azure migrate server migratie. Dit apparaat detecteert Vm's en verzendt de meta gegevens en prestatie gegevens van de virtuele machine naar Azure Migrate.<br/><br/>Tijdens de registratie van het apparaat worden de volgende registratie providers geregistreerd bij het abonnement dat is gekozen in het apparaat: micro soft. OffAzure, micro soft. migrate en micro soft. sleutel kluis. Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Als u de resource providers wilt registreren, hebt u een rol voor Inzender of eigenaar nodig voor het abonnement.<br/><br/> Als onderdeel van het onboarding-Azure Migrate maakt u twee Azure Active Directory (Azure AD)-apps:<br/> -De eerste app wordt gebruikt voor communicatie (verificatie en autorisatie) tussen de agents die op het apparaat worden uitgevoerd en de services die worden uitgevoerd op Azure. Deze app heeft geen bevoegdheden om ARM-aanroepen of RBAC-toegang te maken voor een bron.<br/> -De tweede app wordt alleen gebruikt voor toegang tot de sleutel kluis die is gemaakt in het abonnement van de gebruiker voor de migratie zonder agent. Het wordt voorzien van een RBAC-toegang op de Azure Key Vault (gemaakt in de Tenant van de klant) wanneer detectie vanaf het apparaat wordt gestart.
 **Een Key Vault maken** | Als u virtuele VMware-machines wilt migreren met Azure Migrate server-migratie, Azure Migrate maakt u een Key Vault voor het beheren van toegangs sleutels voor het replicatie-opslag account in uw abonnement. Als u de kluis wilt maken, moet u machtigingen voor roltoewijzing hebben voor de resource groep waarin het Azure Migrate-project zich bevindt.
+
+
+
+
 
 
 ### <a name="assign-permissions-to-create-project"></a>Machtigingen toewijzen voor het maken van een project
@@ -80,9 +81,9 @@ De Tenant/globale beheerder kan machtigingen als volgt verlenen
 
 De Tenant/globale beheerder kan de rol van toepassings ontwikkelaar toewijzen aan een account. [Meer informatie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
-### <a name="assign-role-assignment-permissions"></a>Toewijzings machtigingen voor rollen toewijzen
+### <a name="assign-permissions-to-create-a-key-vault"></a>Machtigingen toewijzen voor het maken van een Key Vault
 
-Als u Azure Migrate wilt inschakelen om een Key Vault te maken, wijst u toewijzings machtigingen voor rollen als volgt toe:
+Als u wilt instellen dat Azure Migrate een Key Vault maakt, moet u machtigingen als volgt toewijzen:
 
 1. Selecteer in de resource groep in de Azure Portal **toegangs beheer (IAM)** .
 2. Zoek in **toegang controleren**het relevante account en klik erop om de machtigingen weer te geven.

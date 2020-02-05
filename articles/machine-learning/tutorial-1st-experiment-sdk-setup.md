@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 84fa6b1d7f48ac7aea44e693a7df8945ba180d29
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 125cde85d3caa6fd1a33045e85c5383f83a669bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658641"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982531"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelf studie: aan de slag met het maken van uw eerste ML-experiment met de python-SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,7 +101,7 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
 Als u aangepaste widgets hebt of liever Jupyter/Jjupyterlab gebruikt, selecteert u de vervolg keuzelijst **Jupyter** helemaal rechts en selecteert u **Jupyter** of **jjupyterlab**. Het nieuwe browser venster wordt geopend.
 
 > [!NOTE]
-> Reken instanties (preview) zijn momenteel alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**, met ondersteuning voor andere regio's binnenkort.
+> Reken instanties (preview) zijn momenteel alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS**, **VS-oost 2**, **Europa-Noord** of **UK-Zuid**, met ondersteuning voor andere regio's binnenkort.
 >Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken.  U kunt een notebook-VM of een reken instantie gebruiken om uw notitie blok uit te voeren. Een virtuele machine blijft actief en er worden kosten in rekening gebracht, tenzij u deze stopt. U kunt deze hand matig stoppen vanaf het tabblad **Compute** in de studio of het [blog bericht](https://techcommunity.microsoft.com/t5/educator-developer-blog/azure-virtual-machine-auto-shutdown/ba-p/379342) raadplegen over het inschakelen van gepland automatisch afsluiten voor Azure-vm's.
 
 ## <a name="next-steps"></a>Volgende stappen

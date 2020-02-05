@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: c1c4f139dedc9be11a5f19730221ccec77139200
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 9f7819974e3548baf5e10f0bf9a2d656d9412beb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962013"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987968"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Gegevens opvragen uit de Azure Time Series Insights GA-omgeving met behulp vanC#
 
@@ -50,13 +50,9 @@ De voorbeeld code hieronder bevat de volgende functies:
 Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
 1. [Richt een GA Azure time series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) -omgeving in.
-
 1. Configureer uw Azure Time Series Insights-omgeving voor Azure Active Directory zoals beschreven in [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md). 
-
 1. Installeer de vereiste project afhankelijkheden.
-
 1. Bewerk de voorbeeld code hieronder door elk **#DUMMY #** te vervangen door de juiste omgevings-id.
-
 1. Voer de code in Visual Studio uit.
 
 ## <a name="project-dependencies"></a>Projectafhankelijkheden
@@ -70,7 +66,9 @@ De voorbeeld code bevat twee vereiste afhankelijkheden:
 * Het pakket [micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -3.13.9.
 * [Newton soft. json](https://www.nuget.org/packages/Newtonsoft.Json) -9.0.1-pakket.
 
-De pakketten toevoegen met behulp van [NuGet 2.12 +](https://www.nuget.org/):
+Down load de pakketten in Visual Studio 2019 door de optie **build** > **Build-oplossing** te selecteren.
+
+U kunt de pakketten ook toevoegen met behulp van [NuGet 2.12 +](https://www.nuget.org/):
 
 * `dotnet add package Newtonsoft.Json --version 9.0.1`
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 3.13.9`

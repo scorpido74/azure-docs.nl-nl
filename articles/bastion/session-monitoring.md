@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a4a97ebd0e44bfd3b0ee167a2f3a7da435ac5087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f56a724174b81966642b2870360014597436eade
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513001"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76981086"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Sessie bewaking en-beheer voor Azure Bastion
 
@@ -40,7 +40,7 @@ U kunt een set sessie (s) selecteren en de verbinding forceren. De volgende stap
 
 1. Navigeer naar uw Azure Bastion-resource en selecteer **sessies** op de Azure Bastion-pagina.
 
-   ![Scha](./media/session-monitoring/navigate.png)
+   ![scha](./media/session-monitoring/navigate.png)
 2. Nadat u sessies hebt geselecteerd, ziet u een lijst met externe sessies.
 
    ![sessies weer geven](./media/session-monitoring/list.png)

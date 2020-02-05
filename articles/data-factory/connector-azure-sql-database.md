@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/13/2019
-ms.openlocfilehash: 1268dc0d78bf64e0a4b79592c28a9c1e70db7bf3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/28/2020
+ms.openlocfilehash: def57dc125a148abd330643fc5848a35cd3b52bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892922"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990999"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Gegevens in Azure SQL Database kopiëren en transformeren met behulp van Azure Data Factory
 
@@ -589,6 +589,10 @@ Instellingen die specifiek zijn voor Azure SQL Database, zijn beschikbaar op het
 Instellingen die specifiek zijn voor Azure SQL Database, zijn beschikbaar op het tabblad **instellingen** van de Sink-trans formatie.
 
 **Update methode:** Hiermee wordt bepaald welke bewerkingen zijn toegestaan voor uw database bestemming. De standaard instelling is alleen invoegen toestaan. Als u rijen wilt bijwerken, upsert of verwijderen, moet u een alter-Row trans formatie voor deze acties labelen. Voor updates, upsert en verwijderen moet een sleutel kolom of-kolommen worden ingesteld om te bepalen welke rij moet worden gewijzigd.
+
+![Sleutel kolommen](media/data-flow/keycolumn.png "Sleutel kolommen")
+
+De kolom naam die u als de sleutel opgeeft, wordt gebruikt door ADF als onderdeel van de volgende update, upsert, verwijderen. Daarom moet u een kolom kiezen die in de Sink-toewijzing voor komt. Als u de waarde niet naar deze sleutel kolom wilt schrijven, klikt u op "sleutel kolommen overs Laan".
 
 **Tabel actie:** Hiermee wordt bepaald of alle rijen van de doel tabel opnieuw moeten worden gemaakt of verwijderd voordat er wordt geschreven.
 * Geen: er wordt geen actie uitgevoerd voor de tabel.

@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: cc89033cedcdf185ce7e18c3981045e2a20569f5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1992b8925d5d9ba59c36452187f5b6eb510e72dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952171"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990807"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Meerdere acties groeperen om uit te voeren vanuit een of meer regels
 
@@ -25,7 +25,7 @@ In azure IoT Central maakt u regels om acties uit te voeren wanneer aan een voor
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een betalen naar gebruik-toepassing
+- Een toepassing die is gemaakt met een Standard-prijs plan
 - Een Azure-account en-abonnement om Azure Monitor actie groepen te maken en te beheren
 
 ## <a name="create-action-groups"></a>Actiegroepen maken

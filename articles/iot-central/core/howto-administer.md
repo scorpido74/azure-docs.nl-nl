@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4c729d2502464df021df4d03e989d489b2d1ecea
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 89c4dd294cbbf0953545e1055e32adfc5f7cce28
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954589"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990790"
 ---
 # <a name="manage-your-iot-central-application"></a>Uw IoT Central-toepassing beheren
 
@@ -40,9 +40,9 @@ Zie [installatie kopieën voorbereiden en uploaden naar uw Azure IOT Central-toe
 
 ## <a name="copy-an-application"></a>Een toepassing kopiëren
 
-U kunt een kopie maken van elke toepassing, min eventuele exemplaren van apparaten, geschiedenis van apparaatgegevens en gebruikers gegevens. De kopie is een betalen per gebruik-toepassing waarvoor u kosten in rekening brengt. U kunt op deze manier geen proef toepassing maken.
+U kunt een kopie maken van elke toepassing, min eventuele exemplaren van apparaten, geschiedenis van apparaatgegevens en gebruikers gegevens. De kopie gebruikt een Standard-prijs plan waarvoor u wordt gefactureerd. U kunt op deze manier geen toepassing maken die gebruikmaakt van het gratis prijs plan.
 
-Selecteer **kopiëren**. Voer in het dialoog venster de details in voor de nieuwe toepassing voor betalen naar gebruik. Selecteer vervolgens **kopiëren** om te bevestigen dat u wilt door gaan. Meer informatie over de velden in dit formulier vindt u in Snelstartgids voor het [maken van een toepassing](quick-deploy-iot-central.md) .
+Selecteer **kopiëren**. Voer in het dialoog venster de details in voor de nieuwe toepassing. Selecteer vervolgens **kopiëren** om te bevestigen dat u wilt door gaan. Meer informatie over de velden in dit formulier vindt u in Snelstartgids voor het [maken van een toepassing](quick-deploy-iot-central.md) .
 
 ![Pagina Toepassings instellingen](media/howto-administer/appcopy2.png)
 
@@ -71,7 +71,7 @@ In [https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/
 
 Voor meer informatie raadpleegt u de volgende GitHub-opslag plaatsen en-pakketten:
 
-| Taal | Opslag plaats | Pakket |
+| Taal | Opslagplaats | Pakket |
 | ---------| ---------- | ------- |
 | Knooppunt | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
 | Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)

@@ -11,16 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/31/2019
-ms.openlocfilehash: 40660c0397f8b7fd7c370e2e0f697cae26b9bb48
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/28/2020
+ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927154"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990518"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integration Runtime in Azure Data Factory
-De Integration Runtime (IR) is de rekeninfrastructuur die Azure Data Factory gebruikt om de volgende mogelijkheden voor gegevensintegratie in verschillende netwerkomgevingen te bieden:
+De Integratie Runtime (IR) is de rekeninfrastructuur die Azure Data Factory gebruikt om de volgende mogelijkheden voor gegevensintegratie in verschillende netwerkomgevingen te bieden:
 
 - **Gegevens stroom**: een [gegevens stroom](concepts-data-flow-overview.md) uitvoeren in een beheerde Azure Compute-omgeving.  
 - **Gegevens verplaatsing**: gegevens kopiëren tussen gegevens archieven in openbaar netwerk en gegevens archieven in een particulier netwerk (on-premises of een virtueel particulier netwerk). Deze optie biedt ondersteuning voor ingebouwde connectors, indelingsconversie, kolomtoewijzing en hoogwaardige en schaalbare gegevensoverdracht.
@@ -82,7 +82,7 @@ Een zelf-hostende IR is geschikt voor:
 > [!NOTE] 
 > Java Runtime Environment (JRE) is een afhankelijkheid van zelf-Hostende IR. Zorg ervoor dat JRE is geïnstalleerd op dezelfde host.
 
-### <a name="self-hosted-ir-network-environment"></a>Zelf-hostende IR-netwerkomgeving
+### <a name="self-hosted-ir-network-environment"></a>Zelf-hostende Azure IR-netwerkomgeving
 Als u gegevensintegratie veilig wilt uitvoeren in een privénetwerkomgeving zonder rechtstreekse zichtbaarheid vanuit de openbare cloudomgeving, kunt u een zelf-hostende on-premises IR installeren achter de firewall van het bedrijf of in een virtueel privénetwerk.  De zelf-hostende Integration Runtime maakt alleen uitgaande HTTP-gebaseerde verbindingen met het openbare internet.
 
 ### <a name="self-hosted-ir-compute-resource-and-scaling"></a>Zelf-hostende IR-rekenresource en -schalen
@@ -112,7 +112,7 @@ Zie de volgende artikelen voor meer informatie over Azure-SSIS Runtime:
 ## <a name="integration-runtime-location"></a>Locatie van Integration Runtime
 De Data Factory-locatie is waar de metagegevens van de data factory worden opgeslagen en waar van het activeren van de pijplijn wordt gestart. Ondertussen heeft een data factory wel toegang tot gegevensarchieven en Compute Services in andere Azure-regio’s om gegevens te verplaatsen tussen gegevensarchieven of om gegevens te verwerken middels Compute Services. Dit gedrag wordt gerealiseerd via de [IR die algemeen beschikbaar](https://azure.microsoft.com/global-infrastructure/services/) is om de gegevensnaleving, efficiëntie en verminderde kosten voor uitgaand netwerkverkeer te realiseren.
 
-De locatie van de IR definieert de locatie van de back-endrekenkracht en in wezen de locatie waar de gegevensverplaatsing, het verzenden van activiteit en de uitvoering van het SSIS-pakket worden uitgevoerd. De locatie van de IR kan afwijken van de locatie van de data factory waar hij bij hoort. 
+De locatie van de IR definieert de locatie van de back-end rekenkracht en in wezen de locatie waar de verplaatsing van gegevens, het verzenden van activiteit en de uitvoering van het SSIS-pakket worden uitgevoerd. De locatie van de IR kan afwijken van de locatie van de data factory waar hij bij hoort. 
 
 ### <a name="azure-ir-location"></a>Locatie van Azure IR
 U kunt een bepaalde locatie van een Azure IR instellen, in welk geval de gegevensverplaatsing of verzendactiviteit in die specifieke regio plaatsvindt. 
@@ -141,9 +141,9 @@ Wanneer de zelf-hostende IR wordt gebruikt voor het uitvoeren van de gegevensver
 ### <a name="azure-ssis-ir-location"></a>Locatie Azure-SSIS IR
 Het selecteren van de juiste locatie voor uw Azure-SSIS IR is essentieel voor het bereiken van hoge prestaties in uw ETL-werkstromen (extract-transform-load).
 
-- De locatie van uw Azure-SSIS IR hoeft niet hetzelfde te zijn als de locatie van uw data factory, maar moet hetzelfde zijn als de locatie van uw eigen Azure SQL Database/Managed instance server waar SSISDB moet worden gehost. Op deze manier heeft uw Azure-SSIS Integration Runtime eenvoudig toegang tot SSISDB, zonder overmatig verkeer tussen verschillende locaties.
-- Als u geen bestaande Azure SQL Database/beheerde exemplaar server hebt om SSISDB te hosten, maar u beschikt over on-premises gegevens bronnen/-bestemmingen, moet u een nieuwe Azure SQL Database/beheerde exemplaar server maken op dezelfde locatie als een virtueel netwerk dat is verbonden met uw on-premises netwerk.  Op deze manier kunt u uw Azure-SSIS IR maken met behulp van de nieuwe Azure SQL Database/Managed instance server en dat virtuele netwerk samen voegen, allemaal op dezelfde locatie, waardoor gegevens verkeer tussen verschillende locaties effectief wordt geminimaliseerd.
-- Als de locatie van de bestaande Azure SQL Database/beheerde exemplaar server waar SSISDB wordt gehost, niet hetzelfde is als de locatie van een virtueel netwerk dat is verbonden met uw on-premises netwerk, maakt u uw Azure-SSIS IR eerst met een bestaande Azure SQL Database/beheerde exemplaar server en verbindt u een virtueel netwerk op dezelfde locatie. vervolgens configureert u een virtueel netwerk naar een virtueel netwerk tussen verschillende locaties.
+- De locatie van uw Azure-SSIS IR hoeft niet hetzelfde te zijn als de locatie van uw data factory, maar moet hetzelfde zijn als de locatie van uw eigen Azure SQL Database of Managed instance server waar SSISDB moet worden gehost. Op deze manier heeft uw Azure-SSIS Integration Runtime eenvoudig toegang tot SSISDB, zonder overmatig verkeer tussen verschillende locaties.
+- Als u geen bestaande Azure SQL Database of Managed instance server hebt om SSISDB te hosten, maar u beschikt over on-premises gegevens bronnen/-bestemmingen, moet u een nieuwe Azure SQL Database of beheerde exemplaar server maken op dezelfde locatie als een virtueel netwerk dat is verbonden met uw on-premises netwerk.  Op deze manier kunt u uw Azure-SSIS IR maken met behulp van de nieuwe Azure SQL Database of Managed instance server en dat virtuele netwerk samen voegen, allemaal op dezelfde locatie, waardoor gegevens verkeer tussen verschillende locaties effectief wordt geminimaliseerd.
+- Als de locatie van uw bestaande Azure SQL Database of Managed instance server waar SSISDB wordt gehost niet hetzelfde is als de locatie van een virtueel netwerk dat is verbonden met uw on-premises netwerk, maakt u uw Azure-SSIS IR eerst met een bestaande Azure SQL Database of Beheerde exemplaar server en toevoegen van een ander virtueel netwerk op dezelfde locatie en vervolgens configureert u een virtueel netwerk naar een virtueel netwerk verbinding tussen verschillende locaties.
 
 Het volgende diagram toont de locatie-instellingen van Data Factory en het aantal keren dat de integratie wordt uitgevoerd:
 
@@ -163,13 +163,13 @@ Voor de kopieeractiviteit, zijn de gekoppelde bron- en sinkservices vereist voor
 
 De activiteit Lookup en GetMetadata wordt uitgevoerd voor de integratieruntime die is gekoppeld aan de service die aan de gegevensopslag is gekoppeld.
 
-### <a name="transformation-activity"></a>Transformatieactiviteit
+### <a name="external-transformation-activity"></a>Externe trans formatie-activiteit
 
-Elke transformatieactiviteit heeft een gekoppelde doelrekenservice die naar een Integration Runtime verwijst. Vanuit dit exemplaar van de Integration Runtime wordt de transformatieactiviteit verzonden.
+Elke externe transformatie activiteit die gebruikmaakt van een externe Compute-engine heeft een gekoppelde doel compute-service, die verwijst naar een Integration runtime. Dit exemplaar van Integration runtime bepaalt de locatie waar de externe hand code van de transformatie activiteit wordt verzonden.
 
 ### <a name="data-flow-activity"></a>Activiteit gegevens stroom
 
-De gegevens stroom activiteit wordt uitgevoerd op de Integration runtime die eraan is gekoppeld. 
+Gegevens stroom activiteiten worden uitgevoerd op de Azure Integration runtime die eraan is gekoppeld. De mousserende Compute die wordt gebruikt door gegevens stromen, wordt bepaald door de eigenschappen van de gegevens stroom in uw Azure Integration Runtime en worden volledig beheerd door ADF.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:

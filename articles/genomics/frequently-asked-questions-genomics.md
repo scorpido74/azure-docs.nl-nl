@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: 4a2b66f95467e7f6cb99f632548351f827e259c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476434"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986033"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: algemene vragen
 
@@ -24,6 +24,8 @@ Dit artikel bevat een overzicht van de belangrijkste query's die u mogelijk hebt
 ## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>GATK4-werk stromen op Microsoft Genomics Hoe kan ik uitvoeren?
 Geef in het bestand config. txt van de Microsoft Genomics-service de process_name op die u wilt `gatk4`. Houd er rekening mee dat u rekening moet houden met de normale facturerings tarieven.
 
+## <a name="how-do-i-enable-output-compression"></a>Uitvoer compressie Hoe kan ik inschakelen?
+U kunt de uitvoer-vcf of gvcf comprimeren met een optioneel argument voor uitvoer compressie. Dit komt overeen met het uitvoeren van `-bgzip`, gevolgd door `-tabix` op de VCF-of gvcf-uitvoer, om `.gz` (bgzip output) en `.tbi` (tabix output)-bestanden te maken. `bgzip` comprimeert het VCF-of gvcf-bestand en `tabix` maakt een index voor het gecomprimeerde bestand. Het argument is een Booleaanse waarde, die wordt ingesteld op `false` standaard voor de VCF-uitvoer en `true` standaard voor gcvf-uitvoer. Als u wilt gebruiken op de opdracht regel, geeft u `-bz` of `--bgzip-output` op als `true` (Voer bgzip en tabix) of `false`uit. Als u dit argument wilt gebruiken in het bestand config. txt, voegt u `bgzip_output: true` of `bgzip_output: false` toe aan het bestand.
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Wat is de SLA voor Microsoft Genomics?
 Wij garanderen dat 99,9% van de tijd Microsoft Genomics service beschikbaar is voor het ontvangen van werk stroom API-aanvragen. Zie [Sla](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/)voor meer informatie.
@@ -61,7 +63,7 @@ De sleutel van uw opslag account wordt gebruikt om toegangs tokens voor de korte
 
 Deze verwijzingen worden ondersteund:
 
- |Naslaginformatie              | Waarde van `-pa/--process-args` |
+ |Referentie              | Waarde van `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      
@@ -79,8 +81,8 @@ msgen begrijpt configuratie bestanden in de volgende indeling:
   |Opdracht regel argument            | Regel van configuratie bestand |
   |:-------------                   |:-------------                 |
   |`-u/--api-url-base https://url`  | *api_url_base: https://url*    |
-  |`-k/--access-key KEY`            | *access_key: sleutel*              |      
-  |`-pa/--process-args R=B37m1`     | *process_args: R-b37m1*        |  
+  |`-k/--access-key KEY`            | *access_key:KEY*              |      
+  |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
 
 ## <a name="next-steps"></a>Volgende stappen
 

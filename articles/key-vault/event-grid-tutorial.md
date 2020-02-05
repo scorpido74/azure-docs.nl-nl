@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 77bc092c7d44e559562699d9177c2bd168f7dea0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5c959dc7fa36fb41307d286b1e7d0b475d5b56c6
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981594"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988461"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Belang rijke kluis meldingen ontvangen en hierop reageren met Azure Event Grid (preview-versie)
 
@@ -120,8 +120,6 @@ Maak een webhook om uw zojuist gemaakte runbook te activeren.
 
 Maak een Event Grid-abonnement via de [Azure Portal](https://portal.azure.com).
 
-1.  Open de [Azure Portal](https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true).
-
 1.  Ga naar de sleutel kluis en selecteer het tabblad **gebeurtenissen** . Als u deze niet kunt zien, moet u ervoor zorgen dat u de [Preview-versie van de portal](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)gebruikt.
 
     ![Tabblad gebeurtenissen in Azure Portal](media/image7.png)
@@ -188,7 +186,7 @@ Registreer Event Grid en de sleutel kluis provider in de resource providers van 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gefeliciteerd. Als u al deze stappen hebt uitgevoerd, bent u nu klaar om programmatisch te reageren op status wijzigingen van geheimen die zijn opgeslagen in uw sleutel kluis.
+Gefeliciteerd! Als u al deze stappen hebt uitgevoerd, bent u nu klaar om programmatisch te reageren op status wijzigingen van geheimen die zijn opgeslagen in uw sleutel kluis.
 
 Als u een systeem op basis van een polling hebt gebruikt om te zoeken naar status wijzigingen van geheimen in uw sleutel kluizen, kunt u nu beginnen met het gebruik van deze meldings functie. U kunt ook het test script in uw runbook vervangen door code om uw geheimen op een programmatische manier te vernieuwen wanneer ze op het punt staan te verlopen.
 

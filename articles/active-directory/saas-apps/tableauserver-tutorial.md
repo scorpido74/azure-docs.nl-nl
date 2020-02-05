@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met tableau-server | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met tableau-server | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en tableau server.
 services: active-directory
 documentationCenter: na
@@ -11,19 +11,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b07c6d6317d8ca284008d271f507b965414bfbc1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d19a7cc8d81f9e6e913f147b24c5cce03ff82027
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257503"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986730"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met tableau-server
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met tableau-server
 
 In deze zelf studie leert u hoe u tableau Server integreert met Azure Active Directory (Azure AD). Wanneer u tableau Server integreert met Azure AD, kunt u het volgende doen:
 
@@ -45,6 +44,7 @@ U hebt de volgende items nodig om aan de slag te gaan:
 In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * Tableau-server ondersteunt door **SP** GEÏNITIEERDe SSO
+* Zodra u tableau server hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor de gevoelige gegevens van uw organisatie in realtime worden beschermd door exfiltration en onfiltratie. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-tableau-server-from-the-gallery"></a>De tableau-server toevoegen vanuit de galerie
 
@@ -93,23 +93,23 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-    ![De downloadkoppeling certificaat](common/metadataxml.png)
+    ![De link om het certificaat te downloaden](common/metadataxml.png)
 
 1. Kopieer op de sectie **tableau-server instellen** de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -119,7 +119,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Selecteer in de lijst toepassingen de optie **tableau server**.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -145,7 +145,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     b. Schakel het selectie vakje in **voor het inschakelen van SAML-verificatie voor de-server**.
 
-    c. Tableau server-retour-URL: de URL van tableau Server-gebruikers die toegang krijgen <http://tableau_server>, zoals. Gebruiken `http://localhost` wordt niet aanbevolen. Het gebruik van een URL met een slash (bijvoorbeeld `http://tableau_server/`) wordt niet ondersteund. Kopieer de URL van de **tableau-server** en plak deze in om het **URL** -tekstvak op te geven in de sectie **basis configuratie van SAML** in de Azure Portal
+    c. Tableau server-retour-URL: de URL van tableau Server-gebruikers die toegang krijgen, zoals <http://tableau_server>. Het gebruik van `http://localhost` wordt niet aanbevolen. Het gebruik van een URL met een slash (bijvoorbeeld `http://tableau_server/`) wordt niet ondersteund. Kopieer de URL van de **tableau-server** en plak deze in om het **URL** -tekstvak op te geven in de sectie **basis configuratie van SAML** in de Azure Portal
 
     d. SAML-entiteit-ID: de entiteit-ID is een unieke aanduiding voor uw tableau-server installatie naar de IdP. U kunt de URL van uw tableau-server hier hier opgeven, maar dit is niet uw tableau-server-URL. Kopieer de ID van de **SAML-entiteit** en plak deze in het tekstvak **id** in de sectie **basis configuratie van SAML** in de Azure Portal
 
@@ -155,7 +155,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     g. Voer de namen in voor de kenmerken die de IdP gebruikt om de gebruikers namen, weergave namen en e-mail adressen op te slaan.
 
-    h. Klik op **Opslaan**
+    h. Klik op **Opslaan**.
 
     > [!NOTE]
     > De klant moet een certificaat uploaden in de SAML SSO-configuratie van de tableau-server en wordt genegeerd in de SSO-stroom. Als u hulp nodig hebt bij het configureren van SAML op tableau server, raadpleegt u dit artikel [SAML configureren](https://help.tableau.com/current/online/en-us/saml_config_azure_ad.htm).
@@ -171,11 +171,11 @@ De gebruikers naam van de gebruiker moet overeenkomen met de waarde die u hebt g
 
 ## <a name="test-sso"></a>SSO testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel tableau server in het toegangs venster klikt, moet u automatisch worden aangemeld bij de tableau-server waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
@@ -184,3 +184,5 @@ Wanneer u op de tegel tableau server in het toegangs venster klikt, moet u autom
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer tableau server met Azure AD](https://aad.portal.azure.com/)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

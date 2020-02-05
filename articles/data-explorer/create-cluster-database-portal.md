@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een Azure Data Explorer-cluster en -database maken'
+title: 'Snelstartgids: Azure Data Explorer-cluster en-data base maken'
 description: In deze snelstart leert u hoe u een Azure Data Explorer-cluster en -database maakt en hoe u gegevens opneemt (laadt).
 author: orspod
 ms.author: orspodek
@@ -7,14 +7,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: 10030cf69009c59fa607ad68c3b7ab19c7a22860
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 895b26fc7f35303cbef6c9df543c87ca435c2290
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326711"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984350"
 ---
-# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Quickstart: Een Azure Data Explorer-cluster en -database maken
+# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Snelstart: een Azure Data Explorer-cluster en -database maken
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
@@ -25,13 +25,13 @@ ms.locfileid: "71326711"
 > * [ARM-sjabloon](create-cluster-database-resource-manager.md)
 
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetrie te verkennen. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster. Daarna maakt u een of meer databases in het cluster. De volgende stap is het opnemen (laden) van gegevens in een database, zodat u er query's op kunt uitvoeren. In deze snelstart maakt u een cluster en een database.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster. Daarna maakt u een of meer databases in het cluster. De volgende stap is het opnemen (laden) van gegevens in een database, zodat u er query's op kunt uitvoeren. In deze snelstart maakt u een cluster en een database.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-cluster"></a>Een cluster maken
 
@@ -51,21 +51,21 @@ Maak een Azure Data Explorer-cluster met een gedefinieerde set met reken- en ops
 
     **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
-    | Subscription | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw cluster.|
-    | Resource group | De resource groep | Gebruik een bestaande resourcegroep of maak een nieuwe. |
+    | Abonnement | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw cluster.|
+    | Resourcegroep | De resource groep | Gebruik een bestaande resourcegroep of maak een nieuwe. |
     | Clusternaam | Een unieke clusternaam | Kies een unieke naam die uw cluster identificeert. De domeinnaam *[regio].kusto.windows.net* wordt toegevoegd aan de clusternaam die u opgeeft. De naam mag alleen kleine letters en cijfers bevatten. De waarde moet tussen 4 en 22 tekens bevatten.
     | Regio | VS- *West* en VS-West *2* | Selecteer VS- *West* of *VS-West 2* (als u beschikbaarheids zones gebruikt) voor deze Quick Start. Selecteer voor een productiesysteem de regio die het beste voldoet aan uw behoeften.
     | Beschikbaarheidszones | *1*, *2*en/of *3* | Plaats de cluster exemplaren in verschillende beschikbaarheids zones in dezelfde regio (optioneel). [Azure-beschikbaarheidszones](/azure/availability-zones/az-overview) zijn unieke fysieke locaties binnen dezelfde Azure-regio. Ze beschermen een Azure Data Explorer-cluster en gegevens van een gedeeltelijke fout in de regio. De cluster knooppunten worden standaard gemaakt in hetzelfde Data Center. Als u verschillende beschikbaarheids zones selecteert, kunt u een Single Point of Failure elimineren en zorgen voor hoge Beschik baarheid. Implementatie in beschikbaarheids zones is alleen mogelijk tijdens het maken van het cluster en kan niet worden gewijzigd op een later tijdstip.
-    | Rekenspecificaties | *D13_v2* | Selecteer de laagste prijsspecificatie voor deze snelstart. Selecteer voor een productiesysteem de specificatie die het beste voldoet aan uw behoeften.
+    | Specificaties voor rekenkracht | *D13_v2* | Selecteer de laagste prijsspecificatie voor deze snelstart. Selecteer voor een productiesysteem de specificatie die het beste voldoet aan uw behoeften.
     | | | |
 
 1. Selecteer **Bekijken + maken** om de gegevens van uw cluster te controleren, en **Maken** voor het inrichten van het cluster. Het inrichten duurt doorgaans ongeveer 10 minuten.
 
 1. Nadat de implementatie is voltooid, selecteert u **Ga naar resource**.
 
-    ![Naar de resource gaan](media/create-cluster-database-portal/notification-resource.png)
+    ![Ga naar resource](media/create-cluster-database-portal/notification-resource.png)
 
-## <a name="create-a-database"></a>Een database maken
+## <a name="create-a-database"></a>Database maken
 
 U bent nu klaar voor de tweede stap in het proces: het maken van de database.
 
@@ -73,14 +73,14 @@ U bent nu klaar voor de tweede stap in het proces: het maken van de database.
 
     ![Stap 2: een database maken](media/create-cluster-database-portal/database-creation.png)
 
-1. Vul het formulier in met de volgende gegevens.
+1. Vul in het formulier de volgende gegevens in.
 
     ![Een databaseformulier maken](media/create-cluster-database-portal/create-database.png)
 
     **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
-    | De naam van database | *TestDatabase* | De databasenaam moet uniek zijn binnen het cluster.
-    | Retentieperiode | *3650* | De periode (in dagen) dat de gegevens gegarandeerd beschikbaar blijven voor query's. De periode wordt gemeten vanaf het moment dat de gegevens zijn opgenomen.
+    | Databasenaam | *TestDatabase* | De databasenaam moet uniek zijn binnen het cluster.
+    | Bewaarperiode | *3650* | De periode (in dagen) dat de gegevens gegarandeerd beschikbaar blijven voor query's. De periode wordt gemeten vanaf het moment dat de gegevens zijn opgenomen.
     | Cacheperiode | *31* | De periode (in dagen) dat vaak opgevraagde gegevens beschikbaar blijven in de SSD-opslag of het RAM-geheugen in plaats van in de langetermijnopslag.
     | | | |
 
@@ -123,6 +123,6 @@ Als u onze andere quickstarts en zelfstudies wilt volgen, behoudt u de gemaakte 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Snelstart: Gegevens uit Event Hub opnemen in Azure Data Explorer](ingest-data-event-hub.md)
+> [Snelstart: gegevens uit Event Hub opnemen in Azure Data Explorer](ingest-data-event-hub.md)
 
 

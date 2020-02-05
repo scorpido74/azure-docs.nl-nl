@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: bewakings gegevens opnemen in azure Data Explorer zonder één regel code'
+title: 'Zelf studie: bewakings gegevens opnemen zonder code Azure Data Explorer'
 description: In deze zelf studie leert u hoe u bewakings gegevens kunt opnemen in azure Data Explorer zonder één regel code en hoe u deze gegevens doorzoekt.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: c160f04ef7120a6c90991d8e6ecdf98b2f0d348e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 24e09f6578431e6b7f2a83be13bae59bf2e707de
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836556"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986203"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Zelf studie: gegevens opnemen en controleren in azure Data Explorer 
 

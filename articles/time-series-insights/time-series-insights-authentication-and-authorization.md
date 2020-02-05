@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863475"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984540"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Verificatie en autorisatie voor Azure Time Series Insights-API
 
@@ -28,7 +28,7 @@ In dit document wordt beschreven hoe u een app in Azure Active Directory kunt re
 > * De recentere [micro soft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
 > * De [Azure Active Directory-verificatie bibliotheek (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
-## <a name="service-principal"></a>Service-principal
+## <a name="service-principal"></a>Service-Principal
 
 In de volgende secties wordt beschreven hoe u een toepassing kunt configureren voor toegang tot de Time Series Insights-API namens een app. De toepassing kan vervolgens met behulp van de referenties van de eigen toepassing een query uitvoeren op of publiceren naar referentie gegevens in de Time Series Insights omgeving via Azure Active Directory.
 
@@ -93,7 +93,7 @@ In het volgende voor **stap 3**kunt u met behulp van de referenties van uw toepa
 
    1. Het token kan vervolgens worden door gegeven in de `Authorization`-header wanneer de toepassing de Time Series Insights-API aanroept.
 
-* Ontwikkel aars kunnen er ook voor kiezen om te verifiëren met behulp van MSAL. Lees meer informatie over [migreren naar MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) voor meer informatie. 
+* Ontwikkel aars kunnen er ook voor kiezen om te verifiëren met behulp van MSAL. Meer informatie over het [migreren naar MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) vindt u in onze [referentie gegevens voor beheer van een Azure time series Insights C# omgeving voor](time-series-insights-manage-reference-data-csharp.md) meer info. 
 
 ## <a name="common-headers-and-parameters"></a>Algemene kopteksten en para meters
 
@@ -102,7 +102,7 @@ In deze sectie worden algemene HTTP-aanvraag headers en-para meters beschreven d
 > [!TIP]
 > Lees de [Referentie van Azure rest API](https://docs.microsoft.com/rest/api/azure/) voor meer informatie over het gebruik van rest-api's, het maken van HTTP-aanvragen en het afhandelen van http-antwoorden.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Als u geverifieerde query's wilt uitvoeren op de [Time Series INSIGHTS rest api's](https://docs.microsoft.com/rest/api/time-series-insights/), moet er een geldig OAuth 2,0 Bearer-token worden door gegeven in de [autorisatie-header](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) met behulp van een rest C#-client naar keuze (Postman, java script,). 
 

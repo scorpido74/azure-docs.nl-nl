@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: fafb40c8505b7178782ab15c14184c5bec052a1b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937862"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988211"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten beveiligen en taken in een Azure-Virtual Network afzorgen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -180,8 +180,8 @@ Als u de standaard regels voor uitgaande verbindingen niet wilt gebruiken en u d
 - Uitgaande Internet verbinding weigeren met behulp van de NSG-regels.
 
 - Beperk het uitgaande verkeer voor een __reken instantie__ of een __berekenings cluster__tot de volgende items:
-   - Azure Storage, met behulp van het __service label__ __opslag__
-   - Azure Container Registry, met behulp van het __service label__ __AzureContainerRegistry__
+   - Azure Storage, door gebruik te maken van de __service tag__ __Storage. regionaam__. Waarbij `{RegionName}` de naam is van een Azure-regio.
+   - Azure Container Registry, met behulp van de __service-tag__ __AzureContainerRegistry. regionaam__. Waarbij `{RegionName}` de naam is van een Azure-regio.
    - Azure Machine Learning, met behulp van het __service label__ __AzureMachineLearning__
    
 - Voor een __reken instantie__voegt u ook de volgende items toe:

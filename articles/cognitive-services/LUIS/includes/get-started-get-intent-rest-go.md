@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 2dd74f13f9342e45e38dafed2de8338876c8ae36
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 02cb7738e20df6aba8690c9fe2ee718144bad114
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966901"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987764"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -25,7 +25,7 @@ ms.locfileid: "76966901"
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
 1. Klik [op **Language Understanding** maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Voer alle vereiste instellingen voor de runtime sleutel in:
+1. Voer alle vereiste instellingen voor de **runtime** sleutel in:
 
     |Instelling|Waarde|
     |--|--|
@@ -63,7 +63,7 @@ Gebruik Go om een query uit te geven op het [Voorspellings eindpunt](https://aka
         // utterance for public app
         var utterance = "turn on all lights"
 
-        // YOUR-KEY - your  key
+        // YOUR-KEY - your **Runtime** key
         var endpointKey = "YOUR-KEY"
 
         // YOUR-ENDPOINT - example is your-resource-name.api.cognitive.microsoft.com
@@ -96,11 +96,11 @@ Gebruik Go om een query uit te geven op het [Voorspellings eindpunt](https://aka
     }
     ```
 
-1. Vervang de `YOUR-KEY` en `YOUR-ENDPOINT` waarden door uw eigen Voorspellings sleutel en-eind punt.
+1. Vervang de `YOUR-KEY` en `YOUR-ENDPOINT` waarden door uw eigen Voorspellings **runtime** sleutel en-eind punt.
 
     |Informatie|Doel|
     |--|--|
-    |`YOUR-KEY`|Uw 32-teken Voorspellings sleutel.|
+    |`YOUR-KEY`|De **runtime** -sleutel voor de voor spelling van 32-tekens.|
     |`YOUR-ENDPOINT`| Het eind punt voor de voor Spellings-URL. Bijvoorbeeld `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 1. Voer bij een opdracht prompt in de map waarin u het bestand hebt gemaakt de volgende opdracht in om het Go-bestand te compileren:

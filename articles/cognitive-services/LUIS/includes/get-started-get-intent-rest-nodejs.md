@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: c7354ecce9873cd65580dc2a9d79f9f3b8ac37db
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 9252fbbf0895bf821c119272ac37d3af1c91fc89
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966992"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987762"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -25,7 +25,7 @@ ms.locfileid: "76966992"
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
 1. Klik [op **Language Understanding** maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Voer alle vereiste instellingen voor de runtime sleutel in:
+1. Voer alle vereiste instellingen voor de **runtime** sleutel in:
 
     |Instelling|Waarde|
     |--|--|
@@ -89,11 +89,11 @@ Gebruik node. js om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-pre
     getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-1. Vervang de `YOUR-KEY` en `YOUR-ENDPOINT` waarden door uw eigen Voorspellings sleutel en-eind punt.
+1. Vervang de `YOUR-KEY` en `YOUR-ENDPOINT` waarden door uw eigen Voorspellings **runtime** sleutel en-eind punt.
 
     |Informatie|Doel|
     |--|--|
-    |`YOUR-KEY`|Uw 32-teken Voorspellings sleutel.|
+    |`YOUR-KEY`|De **runtime** -sleutel voor de voor spelling van 32-tekens.|
     |`YOUR-ENDPOINT`| Het eind punt voor de voor Spellings-URL. Bijvoorbeeld `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 1. Installeer de `request`, `request-promise`en `querystring` afhankelijkheden met deze opdracht:

@@ -3,17 +3,17 @@ title: Verificatie beheren | Microsoft Azure kaarten
 description: U kunt de Azure Portal gebruiken om verificatie te beheren in Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 01/16/2020
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1f7f128898089292a8ccd92686af5d68fe328f3c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f856aebe5e3acaca142e460d18ec8c6498b18787
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766097"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989197"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verificatie in Azure Maps beheren
 
@@ -21,40 +21,40 @@ Nadat u een Azure Maps-account hebt gemaakt, worden er een client-ID en-sleutels
 
 ## <a name="view-authentication-details"></a>Verificatie gegevens weer geven
 
-Nadat het Azure Maps-account is gemaakt, worden de primaire en secundaire sleutels gegenereerd. Gebruik de primaire sleutel als abonnements sleutel, soms worden deze namen door elkaar gebruikt. De secundaire sleutel kan worden gebruikt in scenario's zoals wijzigingen in de Rolling sleutel. In beide gevallen is er een sleutel nodig om Azure Maps aan te roepen. Dit proces wordt [gedeelde sleutel verificatie](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication)genoemd. Zie [verificatie met Azure Maps](https://aka.ms/amauth) voor meer informatie over gedeelde sleutel en Azure AD-verificatie.
+Nadat het Azure Maps-account is gemaakt, worden de primaire en secundaire sleutels gegenereerd. Het is raadzaam om de primaire sleutel als abonnements sleutel te gebruiken wanneer u Azure Maps aanroept met behulp van [gedeelde sleutel verificatie](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication). Secundaire sleutel kan worden gebruikt in scenario's zoals het wijzigen van de toetstoewijzingen. Zie [verificatie met Azure Maps](https://aka.ms/amauth)voor meer informatie.
 
 U kunt uw verificatie gegevens weer geven op de Azure Portal. Ga naar uw account en selecteer **verificatie** in het menu **instellingen** .
 
 ![Verificatie gegevens](./media/how-to-manage-authentication/how-to-view-auth.png)
 
 
-## <a name="set-up-azure-ad-app-registration"></a>Azure AD-App-registratie instellen
+## <a name="configure-azure-ad-app-registration"></a>Azure AD-app registratie configureren
 
-Nadat u een Azure Maps-account hebt gemaakt, moet u een koppeling tot stand brengen tussen uw Azure AD-Tenant en de Azure Maps-resource.
-
-1. Selecteer **Azure Active Directory** in het menu van de portal. Geef een naam op voor de registratie. Klik op **app-registraties** klik vervolgens op **nieuwe registratie**. Geef in het vak **URI omleiden** de start pagina van de web-app op. Bijvoorbeeld https://localhost/. Als u al een geregistreerde app hebt, gaat u naar stap 2.
+1. Selecteer **Azure Active Directory** in de lijst met Azure-services in azure Portal.  Selecteer **app-registraties** en klik op **nieuwe registratie**.  Omruil. Voer een **naam**in, kies het **type ondersteunings account**en klik op **registreren**.  Als u al een geregistreerde app hebt, gaat u verder met stap 2. 
 
     ![App-registratie](./media/how-to-manage-authentication/app-registration.png)
 
     ![Details van app-registratie](./media/how-to-manage-authentication/app-create.png)
 
-2. Als u gedelegeerde API-machtigingen aan Azure Maps wilt toewijzen, gaat u naar de toepassing onder **app-registraties**en selecteert u **API-machtigingen**. Selecteer **machtiging toevoegen**. Zoek en selecteer **Azure Maps** onder **Selecteer een API**.
+2. Als u gedelegeerde API-machtigingen aan Azure Maps wilt toewijzen, gaat u naar de toepassing onder **app-registraties**. Selecteer vervolgens **API-machtigingen**en selecteer vervolgens **een machtiging toevoegen**. Zoek en selecteer **Azure Maps** onder **api's mijn organisatie gebruikt**.
 
     ![API-machtigingen voor apps](./media/how-to-manage-authentication/app-permissions.png)
 
-3. Schakel onder **machtigingen selecteren**het selectie vakje in voor **gebruikers imitatie**en klik vervolgens op de knop **selecteren** onder aan het venster.
+3. Controleer de **toegangs Azure Maps** en klik vervolgens op **machtigingen toevoegen**.
 
     ![App API-machtigingen selecteren](./media/how-to-manage-authentication/select-app-permissions.png)
 
-4. Voltooi stap a of b, afhankelijk van uw verificatie methode.
+4. Voltooi stap a of b, afhankelijk van uw verificatie methode. 
 
-    1. Als uw toepassing gebruikmaakt van verificatie op basis van gebruikers tokens met de websdk van Azure Maps, schakelt u `oauth2AllowImplicitFlow` in door deze in te stellen op True in de manifest sectie van de registratie van uw app.
+    1. Als uw toepassing gebruikmaakt van verificatie op basis van gebruikers tokens met de Azure Maps Web-SDK, schakelt u `oauth2AllowImplicitFlow`in. Als u `oauth2AllowImplicitFlow`wilt inschakelen, stelt u deze in op True in het manifest gedeelte van de registratie van uw app. 
     
        ![App-manifest](./media/how-to-manage-authentication/app-manifest.png)
 
-    2. Als uw toepassing server/toepassings verificatie gebruikt, gaat u naar de Blade **certificaten & geheimen** in de app-registratie en maakt u een wacht woord of uploadt u een certificaat met een open bare sleutel naar de registratie van de app. Als u een wacht woord maakt, moet u het veilig opslaan voor later gebruik. U gebruikt dit wacht woord voor het verkrijgen van tokens van Azure AD.
+    2. Als uw toepassing server/toepassings verificatie gebruikt, gaat u naar de Blade **certificaten & geheimen** op de pagina voor de registratie van uw app en maakt u een wacht woord door te klikken op **Nieuw client geheim** of een certificaat met een open bare sleutel naar de registratie van de app te uploaden. Als u een wacht woord maakt nadat u op **toevoegen**hebt geklikt, kopieert u het wacht woord voor later en slaat u het veilig op. U gebruikt dit wacht woord voor het verkrijgen van tokens van Azure AD.
 
        ![App-sleutels](./media/how-to-manage-authentication/app-keys.png)
+
+       ![Sleutel toevoegen](./media/how-to-manage-authentication/add-key.png)
 
 
 ## <a name="grant-role-based-access-control-rbac-to-azure-maps"></a>Op rollen gebaseerd toegangs beheer (RBAC) toekennen aan Azure Maps

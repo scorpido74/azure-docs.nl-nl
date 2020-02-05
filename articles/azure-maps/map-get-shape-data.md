@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ca1b9854b118d359167873313f1fcb11bfecee52
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: d74a7906157eed33487a5f88082701da1b2269dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911015"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988546"
 ---
 # <a name="get-shape-data"></a>Vormgegevens ophalen
 
-In dit artikel wordt beschreven hoe u shape-gegevens kunt ophalen die op de kaart zijn getekend met de functie **drawingManager. getSource ()** van het [tekening beheer](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--) . Er kunnen verschillende scenario's zijn waarin u de geojson-gegevens van een getekende vorm wilt extra heren en deze elders kunt gebruiken.  
+Dit artikel laat u zien hoe u gegevens kunt ophalen van shapes die op de kaart worden getekend. We gebruiken de functie **drawingManager. getSource ()** in [Draw Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--). Er zijn verschillende scenario's waarin u de geojson-gegevens van een getekende vorm wilt extra heren en deze elders kunt gebruiken.  
 
 
 ## <a name="get-data-from-drawn-shape"></a>Gegevens ophalen van een teken vorm
 
-De volgende functie haalt de bron gegevens van de getekende vorm op en voert deze uit op het scherm. 
+De volgende functie haalt de bron gegevens van de getekende vorm op en voert deze uit naar het scherm. 
 
 ```Javascript
 function getDrawnShapes() {
@@ -53,7 +53,7 @@ Meer informatie over het gebruik van aanvullende functies van de module teken hu
 Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [Drawing Manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a5885df67464095061d9a95aa59010a1629fb8f8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d5adc94061cd656b0654fba6609d36ecfd38c75d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930349"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988036"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Problemen met Hybrid Runbook Workers oplossen
 
@@ -22,7 +22,7 @@ Dit artikel bevat informatie over het oplossen van problemen met Hybrid Runbook 
 
 ## <a name="general"></a>Algemeen
 
-De Hybrid Runbook Worker is afhankelijk van een agent om te communiceren met uw Automation-account om de werk nemer te registreren, Runbook-taken te ontvangen en de status van het rapport. Voor Windows is deze agent de Log Analytics-agent voor Windows (ook wel micro soft Monitoring Agent (MMA) genoemd). Voor Linux is het de Log Analytics-agent voor Linux.
+De Hybrid Runbook Worker is afhankelijk van een agent om te communiceren met uw Automation-account om de werk nemer te registreren, Runbook-taken te ontvangen en de status van het rapport. Voor Windows is deze agent de Log Analytics-agent voor Windows, ook wel micro soft Monitoring Agent (MMA) genoemd. Voor Linux is het de Log Analytics-agent voor Linux.
 
 ### <a name="runbook-execution-fails"></a>Scenario: het uitvoeren van een Runbook mislukt
 
@@ -34,11 +34,11 @@ De Runbook-uitvoering is mislukt en de volgende fout wordt weer gegeven:
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-Uw runbook is onderbroken kort nadat dit drie keer is geprobeerd uit te voeren. Er zijn omstandigheden waardoor het runbook kan worden onderbroken. Het gerelateerde fout bericht bevat mogelijk geen aanvullende informatie.
+Het runbook is onderbroken kort nadat het drie keer is geprobeerd uit te voeren. Er zijn omstandigheden waardoor het runbook kan worden onderbroken. Het gerelateerde fout bericht bevat mogelijk geen aanvullende informatie.
 
 #### <a name="cause"></a>Oorzaak
 
-Hier volgen mogelijke oorzaken:
+Hier volgen enkele mogelijke oorzaken:
 
 * De runbooks kunnen niet worden geverifieerd met lokale resources
 
@@ -52,7 +52,7 @@ Hier volgen mogelijke oorzaken:
 
 Controleer of de computer uitgaande toegang heeft tot *. azure-automation.net op poort 443.
 
-Computers die de Hybrid Runbook Worker uitvoeren, moeten voldoen aan de minimale hardwarevereisten voordat de werk nemer is geconfigureerd voor het hosten van deze functie. Runbooks en de achtergrond processen die ze gebruiken, kunnen ertoe leiden dat het systeem wordt gebruikt en vertraging of time-outs veroorzaakt.
+Computers die de Hybrid Runbook Worker uitvoeren, moeten voldoen aan de minimale hardwarevereisten voordat de werk nemer is geconfigureerd voor het hosten van deze functie. Runbooks en het achtergrond proces dat door ze worden gebruikt, kunnen ertoe leiden dat het systeem wordt gebruikt en vertraging of time-outs veroorzaakt.
 
 Controleer of de computer waarop de Hybrid Runbook Worker-functie wordt uitgevoerd, voldoet aan de minimale hardwarevereisten. Als dit het geval is, controleert u het CPU-en geheugen gebruik om de correlatie tussen de prestaties van Hybrid Runbook Worker processen en Windows te bepalen. Elk geheugen of CPU-druk kan erop wijzen dat er resources moeten worden bijgewerkt. U kunt ook een andere reken resource selecteren die de minimale vereisten ondersteunt en schalen wanneer de werkbelasting vraag aangeeft dat er een verhoging nodig is.
 
@@ -72,7 +72,6 @@ At line:3 char:1
     + CategoryInfo          : CloseError: (:) [Connect-AzureRmAccount], ArgumentException
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
 ```
-
 #### <a name="cause"></a>Oorzaak
 
 Deze fout treedt op wanneer u een [uitvoeren als-account](../manage-runas-account.md) probeert te gebruiken in een runbook dat wordt uitgevoerd op een Hybrid Runbook worker waarbij het certificaat van het run as-account niet aanwezig is. Hybrid Runbook Workers beschikken standaard niet over het lokale certificaat, wat vereist is voor een goede werking van het run as-account.
@@ -80,6 +79,33 @@ Deze fout treedt op wanneer u een [uitvoeren als-account](../manage-runas-accoun
 #### <a name="resolution"></a>Resolutie
 
 Als uw Hybrid Runbook Worker een Azure-VM is, kunt u in plaats daarvan [beheerde identiteiten voor Azure-resources](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) gebruiken. Dit scenario vereenvoudigt verificatie door u in plaats van het run as-account te verifiëren bij Azure-resources met behulp van de beheerde identiteit van de virtuele Azure-machine. Wanneer de Hybrid Runbook Worker een on-premises machine is, moet u het certificaat van het uitvoeren als-account op de computer installeren. Zie de stappen voor het uitvoeren van de Power shell-RunAsCertificateToHybridWorker in [runbooks uitvoeren op een Hybrid Runbook worker](../automation-hrw-run-runbooks.md)voor meer informatie over het installeren van het certificaat.
+
+### <a name="error-403-on-registration"></a>Scenario: fout 403 tijdens de registratie van Hybrid Runbook Worker
+
+#### <a name="issue"></a>Probleem
+
+De eerste registratie fase van de werk nemer mislukt en u ontvangt de volgende fout (403).
+
+```error
+"Forbidden: You don't have permission to access / on this server."
+```
+
+#### <a name="cause"></a>Oorzaak
+
+Hier volgen enkele mogelijke oorzaken:
+* Er is een niet-getypte werk ruimte-ID of werkruimte sleutel (primair) aanwezig in de instellingen van de agent. 
+* De Hybrid Runbook Worker kan de configuratie niet downloaden, waardoor een fout met een account wordt gekoppeld. Wanneer Azure oplossingen biedt, worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Het is ook mogelijk dat er een onjuiste datum en/of tijd op de computer is ingesteld. Als de tijd +/-15 minuten vanaf de huidige tijd is, mislukt de onboarding.
+
+#### <a name="resolution"></a>Resolutie
+
+##### <a name="mistyped-workspace-idkey"></a>Niet-getypte werk ruimte-ID/sleutel
+Als u wilt controleren of de werk ruimte-ID of de werk ruimte sleutel van de agent is getypt, raadpleegt u [een werk ruimte toevoegen of verwijderen: Windows agent](../../azure-monitor/platform/agent-manage.md#windows-agent) voor de Windows-agent of [een werk ruimte toevoegen of verwijderen. Dit is een Linux-agent](../../azure-monitor/platform/agent-manage.md#linux-agent) voor de Linux-agent.  Zorg ervoor dat u de volledige teken reeks selecteert in het Azure Portal en kopieer en plak deze zorgvuldig.
+
+##### <a name="configuration-not-downloaded"></a>De configuratie is niet gedownload
+
+Uw Log Analytics-werk ruimte en het Automation-account moeten zich in een gekoppelde regio bevinden. Zie [Azure Automation en log Analytics werkruimte toewijzingen](../how-to/region-mappings.md)voor een lijst met ondersteunde regio's.
+
+Mogelijk moet u ook de datum en/of tijd zone van uw computer bijwerken. Als u een aangepast tijds bereik selecteert, moet u ervoor zorgen dat het bereik zich in UTC bevindt. Dit kan afwijken van uw lokale tijd zone.
 
 ## <a name="linux"></a>Linux
 
@@ -108,40 +134,13 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 De volgende lijst bevat de processen die zijn gestart voor een Linux-Hybrid Runbook Worker. Ze bevinden zich allemaal in de `/var/opt/microsoft/omsagent/state/automationworker/` Directory.
 
 
-* **OMS. conf** -deze waarde is het Work Manager-proces. Het wordt direct vanuit DSC gestart.
+* **OMS. conf** -het worker-proces. Het wordt direct vanuit DSC gestart.
 
-* **werk nemer. conf** : dit proces is het automatische geregistreerde Hybrid worker-proces, dat door de worker Manager wordt gestart. Dit proces wordt gebruikt door Updatebeheer en is transparant voor de gebruiker. Dit proces is niet aanwezig als de Updatebeheer-oplossing niet is ingeschakeld op de computer.
+* **Worker. conf** -het automatische geregistreerde Hybrid worker-proces, wordt gestart door de worker-Manager. Dit proces wordt gebruikt door Updatebeheer en is transparant voor de gebruiker. Dit proces is niet aanwezig als de Updatebeheer-oplossing niet is ingeschakeld op de computer.
 
-* **zelf/Worker. conf** : dit proces is het proces van de zelf Hybrid Worker. Het zelf Hybrid worker-werk proces wordt gebruikt om gebruikers runbooks uit te voeren op de Hybrid Runbook Worker. Dit verschilt alleen van het automatische geregistreerde Hybrid worker-proces in de sleutel Details waarvoor een andere configuratie wordt gebruikt. Dit proces is niet aanwezig als de Azure Automation oplossing is uitgeschakeld en de zelf Linux-Hybrid Worker niet is geregistreerd.
+* **zelf/Worker. conf** -het proces van de zelf Hybrid Worker. Het zelf Hybrid worker-werk proces wordt gebruikt om gebruikers runbooks uit te voeren op de Hybrid Runbook Worker. Dit verschilt alleen van het automatische geregistreerde Hybrid worker-proces in de sleutel Details waarvoor een andere configuratie wordt gebruikt. Dit proces is niet aanwezig als de Azure Automation oplossing is uitgeschakeld en de zelf Linux-Hybrid Worker niet is geregistreerd.
 
 Als de agent niet wordt uitgevoerd, voert u de volgende opdracht uit om de service te starten: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
-
-### <a name="error-403-on-registration"></a>Scenario: fout 403 tijdens de registratie van Hybrid Runbook Worker
-
-#### <a name="issue"></a>Probleem
-
-De eerste registratie fase van de werk nemer mislukt en u ontvangt de volgende fout (403).
-
-```error
-"Forbidden: You don't have permission to access / on this server."
-```
-
-#### <a name="cause"></a>Oorzaak
-
-Hier volgen enkele mogelijke oorzaken:
-* Er is een niet-getypte werk ruimte-ID of werkruimte sleutel (primair) aanwezig in de instellingen van de agent. 
-* De Hybrid Runbook Worker kan de configuratie niet downloaden, waardoor een fout met een account wordt gekoppeld. Wanneer Azure oplossingen biedt, worden alleen bepaalde regio's ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account. Het is ook mogelijk dat er een onjuiste datum en/of tijd op de computer is ingesteld. Als de tijd +/-15 minuten vanaf de huidige tijd is, mislukt de onboarding.
-
-#### <a name="resolution"></a>Resolutie
-
-##### <a name="mistyped-workspace-idkey"></a>Niet-getypte werk ruimte-ID/sleutel
-Als u wilt controleren of de werk ruimte-ID of de werk ruimte sleutel van de agent is getypt, raadpleegt u [een werk ruimte toevoegen of verwijderen: Windows agent](../../azure-monitor/platform/agent-manage.md#windows-agent) voor de Windows-agent of [een werk ruimte toevoegen of verwijderen. Dit is een Linux-agent](../../azure-monitor/platform/agent-manage.md#linux-agent) voor de Linux-agent.  Zorg ervoor dat u de volledige teken reeks selecteert in het Azure Portal en kopieer en plak deze zorgvuldig.
-
-##### <a name="configuration-not-downloaded"></a>De configuratie is niet gedownload
-
-Uw Log Analytics-werk ruimte en het Automation-account moeten zich in een gekoppelde regio bevinden. Zie [Azure Automation en log Analytics werkruimte toewijzingen](../how-to/region-mappings.md)voor een lijst met ondersteunde regio's.
-
-Mogelijk moet u ook de datum en/of tijd zone van uw computer bijwerken. Als u een aangepast tijds bereik selecteert, moet u ervoor zorgen dat het bereik zich in UTC bevindt. Dit kan afwijken van uw lokale tijd zone.
 
 ### <a name="class-does-not-exist"></a>Scenario: de opgegeven klasse bestaat niet
 
@@ -181,7 +180,7 @@ Dit probleem kan worden veroorzaakt door uw proxy of netwerk firewall die commun
 
 #### <a name="resolution"></a>Resolutie
 
-Logboeken worden lokaal opgeslagen op elke Hybrid worker op C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. U kunt controleren of er sprake is van waarschuwingen of fouten in het gebeurtenis logboek van de **toepassing en het Services-Logs\Microsoft-SMA\Operations** en het **toepassings-en servicelogboeken\operations beheer** dat een verbinding of een ander probleem aanduidt dat van invloed is op de onboarding van de rol tot Azure Automation of probleem terwijl de normale bewerkingen worden uitgevoerd. Zie problemen [met de log Analytics Windows-agent oplossen](../../azure-monitor/platform/agent-windows-troubleshoot.md)voor meer informatie over het oplossen van problemen met de log Analytics-agent.
+Logboeken worden lokaal opgeslagen op elke Hybrid worker op C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. U kunt controleren of er waarschuwingen of fouten zijn in het gebeurtenis logboek van de **toepassing en het Services-Logs\Microsoft-SMA\Operations** en de **toepassing en services van servicelogboeken\operations Manager** die duiden op een connectiviteit of een ander probleem dat van invloed is op de onboarding van de rol aan Azure Automation of probleem tijdens normale bewerkingen. Zie problemen [met de log Analytics Windows-agent oplossen](../../azure-monitor/platform/agent-windows-troubleshoot.md)voor meer informatie over het oplossen van problemen met de log Analytics-agent.
 
 [Runbook-uitvoer en-berichten](../automation-runbook-output-and-messages.md) worden naar Azure Automation verzonden vanuit Hybrid Workers, net zoals met runbook-taken die worden uitgevoerd in de Cloud. U kunt de uitgebreide en voortgangs stromen ook op dezelfde manier inschakelen als voor andere runbooks.
 

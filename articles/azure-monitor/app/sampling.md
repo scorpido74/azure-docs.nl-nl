@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c851978ea1b5af3006f1835f022c30aa7e7128f7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9fda3bb0188a2030572ee686ff5a942aca61ea36
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899073"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989974"
 ---
 # <a name="sampling-in-application-insights"></a>Steekproeven in Application Insights
 
@@ -347,12 +347,13 @@ De typen telemetrie die kunnen worden opgenomen in of uitgesloten van steek proe
 
 ### <a name="configuring-fixed-rate-sampling-for-opencensus-python-applications"></a>Bemonsterde vaste frequentie configureren voor opentellingen python-toepassingen
 
-1. Instrumenteer uw toepassing met de meest recente [Opentellings Azure monitor exporteurs](../../azure-monitor/app/opencensus-python.md).
+Instrumenteer uw toepassing met de meest recente [Opentellings Azure monitor exporteurs](../../azure-monitor/app/opencensus-python.md).
 
 > [!NOTE]
-> Steek proeven met een vaste frequentie zijn alleen beschikbaar via de trace-export functie. Dit betekent dat binnenkomende en uitgaande aanvragen de enige typen telemetrie zijn waar steek proeven kunnen worden geconfigureerd.
+> Er zijn geen steek proeven met een vaste rente beschikbaar voor de metrische gegevens Exporter. Dit betekent dat aangepaste metrische gegevens de enige typen telemetrie zijn waar steek proeven niet kunnen worden geconfigureerd. De export functie voor metrische gegevens stuurt alle telemetrie-tracerer.
 
-2. U kunt een `sampler` opgeven als onderdeel van uw `Tracer`-configuratie. Als er geen expliciete Voorbeeldset wordt gegeven, wordt de `ProbabilitySampler` standaard gebruikt. Voor de `ProbabilitySampler` wordt standaard een rente 1/10000 gebruikt, wat betekent dat één van elke 10000 aanvragen wordt verzonden naar Application Insights. Zie hieronder als u zelf een samplefrequentie wilt opgeven.
+#### <a name="fixed-rate-sampling-for-tracing"></a>Steek proeven met een vast aantal voor tracering ####
+U kunt een `sampler` opgeven als onderdeel van uw `Tracer`-configuratie. Als er geen expliciete Voorbeeldset wordt gegeven, wordt de `ProbabilitySampler` standaard gebruikt. Voor de `ProbabilitySampler` wordt standaard een rente 1/10000 gebruikt, wat betekent dat één van elke 10000 aanvragen wordt verzonden naar Application Insights. Zie hieronder als u zelf een samplefrequentie wilt opgeven.
 
 Als u de sampling frequentie wilt opgeven, moet u ervoor zorgen dat uw `Tracer` een pipet met een sampling frequentie tussen 0,0 en 1,0. Een sampling frequentie van 1,0 vertegenwoordigt 100%, wat betekent dat al uw aanvragen worden verzonden als telemetrie naar Application Insights.
 
@@ -362,6 +363,16 @@ tracer = Tracer(
         instrumentation_key='00000000-0000-0000-0000-000000000000',
     ),
     sampler=ProbabilitySampler(1.0),
+)
+```
+
+#### <a name="fixed-rate-sampling-for-logs"></a>Steek proeven met een vaste frequentie voor logboeken ####
+U kunt een vast aantal steek proeven voor `AzureLogHandler` configureren door het optionele argument `logging_sampling_rate` te wijzigen. Als er geen argument wordt opgegeven, wordt er een sampling frequentie van 1,0 gebruikt. Een sampling frequentie van 1,0 vertegenwoordigt 100%, wat betekent dat al uw aanvragen worden verzonden als telemetrie naar Application Insights.
+
+```python
+exporter = metrics_exporter.new_metrics_exporter(
+    instrumentation_key='00000000-0000-0000-0000-000000000000',
+    logging_sampling_rate=0.5,
 )
 ```
 

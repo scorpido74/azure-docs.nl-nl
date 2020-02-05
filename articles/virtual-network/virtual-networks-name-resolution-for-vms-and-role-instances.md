@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 246af99cfec5ca41347da70e80bfc6dfff448eb3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75368032"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991028"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Naam omzetting voor bronnen in azure Virtual Networks
 
@@ -31,13 +31,13 @@ Wanneer resources die zijn geïmplementeerd in virtuele netwerken domeinnamen mo
 Welk type naamomzetting u gebruikt, is afhankelijk van hoe uw resources met elkaar moeten communiceren. In de volgende tabel ziet u scenario's en bijbehorende oplossingen voor naam omzetting:
 
 > [!NOTE]
-> Afhankelijk van uw scenario wilt u mogelijk de functie Azure DNS Private Zones gebruiken, die momenteel beschikbaar is als open bare preview. Zie voor meer informatie [Azure DNS gebruiken voor privédomeinen](../dns/private-dns-overview.md).
+> Afhankelijk van uw scenario wilt u mogelijk Azure DNS particuliere zones gebruiken. Zie voor meer informatie [Azure DNS gebruiken voor privédomeinen](../dns/private-dns-overview.md).
 >
 
 | **Scenario** | **Oplossing** | **Suffix** |
 | --- | --- | --- |
-| Naam omzetting tussen virtuele machines die zich in hetzelfde virtuele netwerk bevinden, of Azure Cloud Services Role-instanties in dezelfde Cloud service. | [Naam omzetting van](#azure-provided-name-resolution) [Azure DNS private zones](../dns/private-dns-overview.md) of door Azure |Hostnaam of FQDN |
-| Naam omzetting tussen Vm's in verschillende virtuele netwerken of rolinstanties in verschillende Cloud Services. |[Azure DNS private zones](../dns/private-dns-overview.md) of, door de klant beheerde DNS-servers, waarmee query's tussen virtuele netwerken worden doorgestuurd voor omzetting door Azure (DNS-proxy). Zie [naam omzetting met uw eigen DNS-server](#name-resolution-that-uses-your-own-dns-server). |Alleen FQDN |
+| Naam omzetting tussen virtuele machines die zich in hetzelfde virtuele netwerk bevinden, of Azure Cloud Services Role-instanties in dezelfde Cloud service. | [Azure DNS persoonlijke zones](../dns/private-dns-overview.md) of door [Azure aangelegde naam omzetting](#azure-provided-name-resolution) |Hostnaam of FQDN |
+| Naam omzetting tussen Vm's in verschillende virtuele netwerken of rolinstanties in verschillende Cloud Services. |[Azure DNS particuliere zones](../dns/private-dns-overview.md) of, door de klant beheerde DNS-servers, waarmee query's tussen virtuele netwerken worden doorgestuurd voor omzetting door Azure (DNS-proxy). Zie [naam omzetting met uw eigen DNS-server](#name-resolution-that-uses-your-own-dns-server). |Alleen FQDN |
 | Naam omzetting van een Azure App Service (Web-app, functie of bot) met behulp van virtuele netwerk integratie met rolinstanties of Vm's in hetzelfde virtuele netwerk. |Door de klant beheerde DNS-servers query's door sturen tussen virtuele netwerken voor omzetting door Azure (DNS-proxy). Zie [naam omzetting met uw eigen DNS-server](#name-resolution-that-uses-your-own-dns-server). |Alleen FQDN |
 | Naam omzetting van App Service Web Apps naar Vm's in hetzelfde virtuele netwerk. |Door de klant beheerde DNS-servers query's door sturen tussen virtuele netwerken voor omzetting door Azure (DNS-proxy). Zie [naam omzetting met uw eigen DNS-server](#name-resolution-that-uses-your-own-dns-server). |Alleen FQDN |
 | Naam omzetting van App Service Web Apps in één virtueel netwerk naar virtuele machines in een ander virtueel netwerk. |Door de klant beheerde DNS-servers query's door sturen tussen virtuele netwerken voor omzetting door Azure (DNS-proxy). Zie [naam omzetting met uw eigen DNS-server](#name-resolution-that-uses-your-own-dns-server). |Alleen FQDN |

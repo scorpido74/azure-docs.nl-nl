@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b5875d0672fc187920883abe208ad30c4d2b1051
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 77b95806c2040e7950e1133fcc4c7bc5e0e2ab53
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898554"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989600"
 ---
 # <a name="azure-maps-weather-coverage"></a>Weer dekking Azure Maps
 
-In dit artikel vindt u informatie over de dekking van Azure Maps [weer Services](https://aka.ms/AzureMapsWeatherService). Azure Maps weer gegevens Services kunnen Details retour neren zoals radar tegels, huidige weers omstandigheden, weers verwachtingen en weers lijnen langs een route.
+In dit artikel vindt u informatie over de dekking van Azure Maps [weer Services](https://aka.ms/AzureMapsWeatherService). Azure Maps weer gegevens Services retourneert details zoals radar tegels, actuele weers omstandigheden, weers verwachtingen en weers lijnen langs een route.
 
 Azure Maps heeft niet hetzelfde niveau van informatie en nauw keurigheid voor alle landen en regio's.
 

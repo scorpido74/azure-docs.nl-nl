@@ -3,18 +3,18 @@ title: host. json-verwijzing voor Azure Functions 2. x
 description: Referentie documentatie voor het Azure Functions host. JSON-bestand met v2 runtime.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 782998e49b9af3bf4d2ae5a561faaca399c6809f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6c4cfbb40c0337a6141d3b1f9844a33227a4963f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978820"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988699"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host. json-verwijzing voor Azure Functions 2. x en hoger 
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Azure Functions runtime die u gebruikt: "]
 > * [Versie 1:](functions-host-json-v1.md)
-> * [Versie 2](functions-host-json.md)
+> * [Versie 2 +](functions-host-json.md)
 
 Het meta gegevensbestand van de *host. json* bevat globale configuratie opties die van invloed zijn op alle functies voor een functie-app. In dit artikel vindt u een lijst met de instellingen die vanaf versie 2. x van de Azure Functions runtime beschikbaar zijn.  
 
@@ -27,7 +27,7 @@ Sommige host. json-instellingen worden alleen gebruikt wanneer lokaal wordt uitg
 
 ## <a name="sample-hostjson-file"></a>Voor beeld van host. JSON-bestand
 
-In het volgende voor beeld van een *host. json* -bestand zijn alle mogelijke opties opgegeven (exclusief voor intern gebruik).
+In het volgende voor beeld van een *host. json* -bestand voor versie 2. x + zijn alle mogelijke opties opgegeven (exclusief voor intern gebruik).
 
 ```json
 {
@@ -280,7 +280,7 @@ Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure
 
 Configuratie-instellingen vindt u in [http-triggers en-bindingen](functions-bindings-http-webhook.md#hostjson-settings).
 
-## <a name="logging"></a>logboekregistratie
+## <a name="logging"></a>Userenv
 
 Hiermee bepaalt u het gedrag van logboek registratie van de functie-app, met inbegrip van Application Insights.
 
@@ -377,7 +377,7 @@ Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [git
 
 ## <a name="version"></a>versie
 
-De versie teken reeks `"version": "2.0"` is vereist voor een functie-app die de v2-runtime bedoelt.
+Deze waarde geeft de schema versie van host. json aan. De versie teken reeks `"version": "2.0"` is vereist voor een functie-app die is gericht op de v2-runtime of een latere versie. Er zijn geen host. json-schema wijzigingen tussen v2 en v3.
 
 ## <a name="watchdirectories"></a>watchDirectories
 

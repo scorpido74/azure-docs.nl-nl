@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7547608e227ca6b8d57bc1d4384ccdee181d9970
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b5d74c7c599f31694a68e7582a6447af8471508
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430857"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984945"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory cmdlets voor het configureren van groepsinstellingen
 
@@ -178,9 +178,9 @@ Dit zijn de instellingen die zijn gedefinieerd in de groep. Unified SettingsTemp
    ```powershell
    $Setting = $template.CreateDirectorySetting()
    ```  
-4. Werk de instelling AllowAddGuests vervolgens bij
+4. Werk de instelling AllowToAddGuests vervolgens bij
    ```powershell
-   $Setting["AllowAddGuests"] = $False
+   $Setting["AllowToAddGuests"] = $False
    ```  
 5. Pas vervolgens de instelling toe:
   
@@ -234,7 +234,7 @@ Met deze stappen leest u de instellingen op mapniveau, die van toepassing zijn o
    AllowGuestsToAccessGroups     True
    GuestUsageGuidelinesUrl
    GroupCreationAllowedGroupId
-   AllowAddGuests              True
+   AllowToAddGuests              True
    UsageGuidelinesUrl            https://guideline.example.com
    ClassificationList
    EnableGroupCreation           True
@@ -271,7 +271,7 @@ Met deze stap worden de instellingen op mapniveau verwijderd, die van toepassing
 
 4. Stel de instelling in op de vereiste waarde:
    ```powershell
-   $SettingCopy["AllowAddGuests"]=$False
+   $SettingCopy["AllowToAddGuests"]=$False
    ```
 5. Haal de ID op van de groep waarop u deze instelling wilt Toep assen:
    ```powershell
@@ -297,7 +297,7 @@ Met deze stap worden de instellingen op mapniveau verwijderd, die van toepassing
    ```
 3. Werk de instelling van de groep zo nodig bij, bijvoorbeeld
    ```powershell
-   $Setting["AllowAddGuests"] = $True
+   $Setting["AllowToAddGuests"] = $True
    ```
 4. Vervolgens krijgt u de ID van de instelling voor deze specifieke groep:
    ```powershell

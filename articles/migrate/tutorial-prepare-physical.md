@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f81f47349610cd72489df305ccf544c8346cb9b3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a487e0c9d565993b45f7e271af23a622e61389ad
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028669"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990824"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Voor bereiding voor de evaluatie en migratie van fysieke servers naar Azure
 
@@ -41,10 +41,10 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 U moet machtigingen instellen voor Azure Migrate-implementatie.
 
-- Machtigingen voor uw Azure-account om een Azure Migrate project te maken.
-- Machtigingen voor uw account om het Azure Migrate apparaat te registreren. Het apparaat wordt gebruikt voor Hyper-V-detectie en-migratie. Tijdens de registratie van het apparaat maakt Azure Migrate twee Azure Active Directory (Azure AD)-apps waarmee het apparaat op unieke wijze wordt geïdentificeerd:
-    - De eerste app communiceert met Azure Migrate service-eind punten.
-    - De tweede app heeft toegang tot een Azure Key Vault die tijdens de registratie is gemaakt voor het opslaan van Azure AD-app-informatie en toestel configuratie-instellingen.
+**Taak** | **Machtigingen**
+--- | ---
+**Een Azure Migrate-project maken** | Uw Azure-account heeft machtigingen nodig om een project te maken.
+**Het Azure Migrate apparaat registreren** | Azure Migrate maakt gebruik van een licht gewicht Azure Migrate apparaat om fysieke servers te detecteren en te beoordelen met de evaluatie van Azure Migrate server. Dit apparaat detecteert servers en stuurt de meta gegevens en prestatie gegevens naar Azure Migrate.<br/><br/>Tijdens de registratie van het apparaat worden de volgende registratie providers geregistreerd bij het abonnement dat is gekozen in het apparaat: micro soft. OffAzure, micro soft. migrate en micro soft. sleutel kluis. Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Als u de resource providers wilt registreren, hebt u een rol voor Inzender of eigenaar nodig voor het abonnement.<br/><br/> Azure Migrate maakt een Azure Active Directory Azure AD-app als onderdeel van de onboarding:<br/> De AAD-app wordt gebruikt voor communicatie (verificatie en autorisatie) tussen de agents die op het apparaat worden uitgevoerd en de services die worden uitgevoerd op Azure. Deze app heeft geen bevoegdheden om ARM-aanroepen of RBAC-toegang te maken voor een bron.
 
 
 
@@ -61,15 +61,14 @@ Controleer of u gemachtigd bent om een Azure Migrate project te maken.
 
 ### <a name="assign-permissions-to-register-the-appliance"></a>Machtigingen toewijzen om het apparaat te registreren
 
-Met een van de volgende methoden kunt u machtigingen voor Azure Migrate toewijzen om de Azure AD-apps te maken tijdens de registratie van het apparaat:
+U kunt aan de hand van een van de volgende methoden machtigingen voor Azure Migrate toewijzen om de Azure AD-app te maken tijdens de registratie van het apparaat:
 
 - Een Tenant/globale beheerder kan machtigingen verlenen aan gebruikers in de Tenant om Azure AD-apps te maken en registreren.
 - Een Tenant/globale beheerder kan de rol van toepassings ontwikkelaar (die de machtigingen heeft) toewijzen aan het account.
 
-Het is een goed idee dat:
-
-- De apps hebben geen andere toegangs machtigingen voor het abonnement dan de hierboven beschreven.
-- U hebt deze machtigingen alleen nodig wanneer u een nieuw apparaat registreert. U kunt de machtigingen verwijderen nadat het apparaat is ingesteld.
+> [!NOTE]
+> - De app heeft geen andere toegangs machtigingen voor het abonnement dan de hierboven beschreven.
+> - U hebt deze machtigingen alleen nodig wanneer u een nieuw apparaat registreert. U kunt de machtigingen verwijderen nadat het apparaat is ingesteld.
 
 
 #### <a name="grant-account-permissions"></a>Account machtigingen verlenen

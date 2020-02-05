@@ -9,21 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 36914240caf3c1321dfa0102bd87cb29173f8b1d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f01e07ea2bbfd0f6b3b0cc19dd219d71984a0d45
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911056"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988563"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Een laag met een polygoon effect toevoegen aan de kaart
 
-In dit artikel leest u hoe u de laag met de polygoon extrusie kunt gebruiken om gebieden van `Polygon` en `MultiPolygon` functie geometrie te renderen als geëxtrudeerde vormen op de kaart. De websdk van Azure Maps biedt ook ondersteuning voor het maken van cirkel geometrie zoals gedefinieerd in het [uitgebreide GEOjson-schema](extend-geojson.md#circle). Deze cirkels worden omgezet in veelhoeken wanneer ze op de kaart worden weer gegeven. Alle functie-geometrieën kunnen ook eenvoudig worden bijgewerkt als deze met de [Atlas wordt verpakt. ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)Klasse van vorm.
-
+In dit artikel leest u hoe u de laag met de polygoon extrusie kunt gebruiken om gebieden van `Polygon` en `MultiPolygon` functie geometrie te renderen als geëxtrudeerde vormen. De Azure Maps Web-SDK ondersteunt rendering van cirkel geometrie zoals gedefinieerd in het [uitgebreide GEOjson-schema](extend-geojson.md#circle). Deze cirkels kunnen worden omgezet in veelhoeken wanneer ze op de kaart worden weer gegeven. Alle functie-geometrieën kunnen eenvoudig worden bijgewerkt wanneer deze met de [Atlas wordt verpakt. ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)Klasse van vorm.
 
 ## <a name="use-a-polygon-extrusion-layer"></a>Een laag met een polygoon effect gebruiken
 
-Wanneer een [laag](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) met het 3D-effect is verbonden met de gegevens bron en op de kaart wordt geladen, worden de gebieden van een `Polygon` en `MultiPolygon` functies als geëxtrudeerde vormen weer gegeven. De eigenschappen `height` en `base` van de laag met het polygoon 3D-effect bepalen de basis afstand van de grond en hoogte van de geëxtrudeerde vorm in **meters**. De volgende code laat zien hoe u een veelhoek maakt, voegt deze toe aan een gegevens bron en geeft deze weer met behulp van de klasse van de polygoon laag.
+Verbind de laag met de [polygoon extrusie](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) met een gegevens bron. Vervolgens wordt deze op de kaart geladen. De laag met het polygoon reliëf geeft de gebieden van een `Polygon` en `MultiPolygon` functies weer als geëxtrudeerde vormen. De eigenschappen `height` en `base` van de laag met het polygoon 3D-effect bepalen de basis afstand van de grond en hoogte van de geëxtrudeerde vorm in **meters**. De volgende code laat zien hoe u een veelhoek maakt, voegt deze toe aan een gegevens bron en geeft deze weer met behulp van de klasse van de polygoon laag.
 
 > [!Note]
 > De `base` waarde die is gedefinieerd in de Layer extrusie laag moet kleiner zijn dan of gelijk zijn aan die van de `height`.
@@ -34,9 +33,9 @@ Wanneer een [laag](https://docs.microsoft.com/javascript/api/azure-maps-control/
 Bekijk de pen <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>geëxtrudeerde veelhoek</a> per Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.</iframe>
 
 
-## <a name="add-data-driven-multipolygons"></a>Op gegevens gebaseerde multiveelhoeken toevoegen
+## <a name="add-data-driven-polygons"></a>Gegevensgestuurde veelhoeken toevoegen
 
-Een choropleth-kaart kan worden weer gegeven met de laag 3D-extrusie door de `height` en `fillColor` eigenschappen in te stellen op basis van de meting van de statistische variabele in de `Polygon` en `MultiPolygon` functie geometrie. Het volgende code voorbeeld toont een geëxtrudeerde choropleth toewijzing van de U. S op basis van de meting van de populatie densiteit per status.
+Een choropleth-kaart kan worden gerenderd met behulp van de Layer extrusie-laag. Stel de eigenschappen `height` en `fillColor` van de laag extrusie in op de meting van de statistische variabele in de functies `Polygon` en `MultiPolygon` functie geometrie. Het volgende code voorbeeld toont een geëxtrudeerde choropleth toewijzing van de U. S op basis van de meting van de populatie densiteit per status.
 
 <br/>
 
@@ -62,7 +61,7 @@ Azure Maps maakt gebruik van een uitgebreide versie van het geojson-schema met e
 } 
 ```
 
-Met de Azure Maps Web-SDK worden deze `Point` functies geconverteerd naar `Polygon` functies onder de motorkap en kunnen ze worden weer gegeven op de kaart met behulp van de Layer extrusie-laag zoals wordt weer gegeven in het volgende code voorbeeld.
+Met de Azure Maps Web-SDK worden deze `Point` functies geconverteerd naar `Polygon` functies onder de schermen. Deze `Point` functies kunnen worden weer gegeven op de kaart met behulp van de Layer extrusie-laag, zoals wordt weer gegeven in het volgende code voorbeeld.
 
 <br/>
 
@@ -72,7 +71,7 @@ Bekijk de pen <a href='https://codepen.io/azuremaps/pen/zYYYrxo'>drone lucht spa
 
 ## <a name="customize-a-polygon-extrusion-layer"></a>Een laag met een polygoon effect aanpassen
 
-De laag met het polygoon reliëf heeft verschillende stijlen. Hier volgt een hulp programma om het uit te proberen.
+De laag met polygoon extrusie heeft verschillende opties voor opmaak. Hier volgt een hulp programma om het uit te proberen.
 
 <br/>
 

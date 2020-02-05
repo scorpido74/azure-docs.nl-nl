@@ -1,6 +1,6 @@
 ---
 title: De Azure Maps Services-module gebruiken | Microsoft Azure kaarten
-description: In dit artikel wordt beschreven hoe u met behulp van de Azure Maps Services-module de Microsoft Azure Maps REST-services kunt gebruiken.
+description: In dit artikel leert u hoe u met behulp van de Azure Maps Services-module de Microsoft Azure Maps REST-services kunt gebruiken.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 6bfbbb38d164dcb179541084de3ffeb89f44668d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e985fdda4638529e8ade2c700456d595ff355e8a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911319"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988733"
 ---
 # <a name="use-the-azure-maps-services-module"></a>De Azure Maps Services-module gebruiken
 
@@ -31,7 +31,7 @@ De Azure Maps Web-SDK biedt een *Services-module*. Deze module is een helper-bib
 
     - U kunt ook de Services-module voor de Azure Maps Web SDK-bron code lokaal laden met behulp van het [Azure-Maps-rest NPM-](https://www.npmjs.com/package/azure-maps-rest) pakket en dit vervolgens hosten met uw app. Dit pakket bevat ook type script definities. Gebruik deze opdracht:
     
-        > **npm install azure-maps-rest**
+        > **NPM Azure-Maps installeren-rest**
     
         Voeg vervolgens een script verwijzing toe naar het `<head>`-element van het bestand:
 

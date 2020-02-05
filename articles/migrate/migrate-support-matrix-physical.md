@@ -3,12 +3,12 @@ title: Ondersteuning voor fysieke server evaluatie met Azure Migrate
 description: Meer informatie over ondersteuning voor fysieke server beoordeling met Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 489f95bbbbeb261b56f1a3a86da44f5fcce0adf5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2698d0ff046147599a8c5c791a0980a54090932
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846572"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990331"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Ondersteunings matrix voor fysieke server evaluatie 
 
@@ -38,7 +38,7 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
 | **Fysieke server implementatie**       | De fysieke server kan zelfstandig of in een cluster worden geïmplementeerd. |
-| **Machtigingen**           | **Windows:** Stel een lokale gebruikers account in op alle Windows-servers die u wilt toevoegen in de detectie. Het gebruikers account moet worden toegevoegd aan deze groepen-Extern bureaublad gebruikers, prestatie meter gebruikers en prestatie logboek gebruikers. <br/> **Linux:** U hebt een hoofd account nodig op de Linux-servers die u wilt detecteren. |
+| **Machtigingen**           | **Windows:** Stel een lokaal of domein gebruikers account in op alle Windows-servers die u wilt toevoegen in de detectie. Het gebruikers account moet worden toegevoegd aan deze groepen-Extern bureaublad gebruikers, prestatie meter gebruikers en prestatie logboek gebruikers. <br/> **Linux:** U hebt een hoofd account nodig op de Linux-servers die u wilt detecteren. |
 | **Besturingssysteem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -besturings systemen worden ondersteund, met uitzonde ring van het volgende:<br/> Windows Server 2003 <br/> SUSE Linux|
 
 

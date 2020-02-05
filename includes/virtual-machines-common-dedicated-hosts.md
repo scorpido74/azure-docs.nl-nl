@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833869"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77013796"
 ---
 ## <a name="limitations"></a>Beperkingen
 
 - Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
-- De volgende VM-serie worden ondersteund: DSv3 en ESv3. 
+- De volgende VM-reeksen worden ondersteund: DSv3, ESv3 en Fsv2. 
 
 ## <a name="benefits"></a>Voordelen 
 
@@ -73,7 +73,7 @@ De infra structuur die uw virtuele machines ondersteunt, kan af en toe worden bi
 **Onderhouds beheer** biedt klanten een optie voor het overs laan van regel matige platform updates die zijn gepland op hun toegewezen hosts en pas deze toe op het tijdstip van hun keuze in een voortschrijdende periode van 35 dagen.
 
 > [!NOTE]
->  Onderhouds beheer bevindt zich momenteel in een beperkte preview-fase en vereist een voorbereidings proces. Gelden voor deze preview door een [inspectie enquête](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)in te dienen.
+>  Onderhouds beheer is momenteel beschikbaar als open bare preview. Zie **updates beheren met onderhouds beheer met [cli](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) of [Power shell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)** voor meer informatie.
 
 ## <a name="capacity-considerations"></a>Overwegingen voor capaciteit
 

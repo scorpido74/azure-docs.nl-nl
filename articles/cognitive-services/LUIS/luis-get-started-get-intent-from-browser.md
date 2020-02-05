@@ -9,44 +9,44 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/17/2019
+ms.date: 02/03/2020
 ms.author: diberry
-ms.openlocfilehash: 2ca0f9faf1623df9212072abbc960cba41a6414b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165750"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987951"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>Quick Start: gebruik een browser voor de bedoeling
 
-Om te begrijpen wat een LUIS-voorspellingseindpunt retourneert, kunt u het resultaat van een voorspelling in een webbrowser bekijken. 
+Om te begrijpen wat een LUIS-voorspellingseindpunt retourneert, kunt u het resultaat van een voorspelling in een webbrowser bekijken.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u een query wilt uitvoeren op een open bare app, hebt u het volgende nodig:
 
-* Uw eigen Language Understanding (LUIS) ontwerpen of Voorspellings sleutel die kan worden verkregen via de [Luis-Portal (preview)](https://preview.luis.ai/). Als u nog geen abonnement hebt om een sleutel te maken, kunt u zich registreren voor een [gratis account](https://azure.microsoft.com/free/). 
-* De ID van de open bare app: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. 
+* Uw eigen Language Understanding (LUIS) ontwerpen of Voorspellings sleutel die kan worden verkregen via de [Luis-Portal (preview)](https://preview.luis.ai/). Als u nog geen abonnement hebt om een sleutel te maken, kunt u zich registreren voor een [gratis account](https://azure.microsoft.com/free/).
+* De ID van de open bare app: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`.
 
 ## <a name="use-the-browser-to-see-predictions"></a>De browser gebruiken om voor spellingen te bekijken
 
-1. Open een webbrowser. 
+1. Open een webbrowser.
 1. Gebruik de volledige Url's hieronder om `YOUR-KEY` te vervangen door uw eigen LUIS-ontwerp of Voorspellings sleutel. De aanvragen zijn GET-aanvragen en bevatten de autorisatie, met uw LUIS-ontwerp of Voorspellings sleutel, als een query reeks parameter.
 
     #### <a name="v3-prediction-requesttabv3-1-1"></a>[V3-Voorspellings aanvraag](#tab/V3-1-1)
-    
-    
+
+
     De indeling van de V3-URL voor een aanvraag voor het **ophalen** van een eind punt (per sleuf) is:
-    
+
     `
     https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
     `
 
     #### <a name="v2-prediction-requesttabv2-1-2"></a>[V2-Voorspellings aanvraag](#tab/V2-1-2)
-    
+
     De indeling van de v2-URL voor een aanvraag voor het **ophalen** van een eind punt is:
-    
+
     `
     https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-KEY&q=turn on all lights
     `
@@ -97,7 +97,7 @@ Als u een query wilt uitvoeren op een open bare app, hebt u het volgende nodig:
 
     * * *
 
-1. Als u alle intenties wilt zien, voegt u de juiste query teken reeks parameter toe. 
+1. Als u alle intenties wilt zien, voegt u de juiste query teken reeks parameter toe.
 
     #### <a name="v3-prediction-endpointtabv3-3-1"></a>[V3-Voorspellings eindpunt](#tab/V3-3-1)
 
@@ -174,7 +174,7 @@ Als u een query wilt uitvoeren op een open bare app, hebt u het volgende nodig:
     ```
 
 
-<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->   
+<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->
 
 ## <a name="next-steps"></a>Volgende stappen
 

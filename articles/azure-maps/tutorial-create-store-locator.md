@@ -3,18 +3,18 @@ title: 'Zelf studie: een Store Locator-toepassing maken met behulp van Azure Map
 description: In deze zelf studie leert u hoe u een web-app voor Store Locator maakt met behulp van Microsoft Azure Maps Web SDK.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 830641ae1421b799ab8e7d8b47a1c1a6e38419cf
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 063f085de875272a7b1ba4f52aeceb8f36114cca
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910955"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987002"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Zelf studie: een Store-Locator maken met behulp van Azure Maps
 
@@ -51,7 +51,7 @@ Om de bruikbaarheid van deze winkelzoeker te maximaliseren, gebruiken we een res
 
 ![draad model van de toepassing contoso Coffee Store Locator op een mobiel apparaat](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
-De draadmodellen tonen een redelijk eenvoudige toepassing. De toepassing heeft een zoekvak, een lijst met winkels in de buurt, een kaart met enkele markeringen (symbolen) en een pop-upvenster met extra informatie wanneer de gebruiker een markering selecteert. Meer specifiek zijn hier de functies die we in deze zelfstudie inbouwen in de winkelzoeker:
+De draadmodellen tonen een redelijk eenvoudige toepassing. De toepassing heeft een zoekvak, een lijst met in de buurt opgeslagen winkels en een kaart die een aantal markeringen heeft, zoals symbolen. En er wordt een pop-upvenster weer gegeven met aanvullende informatie wanneer de gebruiker een markering selecteert. Meer specifiek zijn hier de functies die we in deze zelfstudie inbouwen in de winkelzoeker:
 
 * Alle locaties van het geïmporteerde door tabs gescheiden gegevensbestand worden op de kaart geladen.
 * De gebruiker kan de kaart verschuiven en zoomen, een zoekopdracht uitvoeren en de GPS-knop Mijn locatie selecteren.
@@ -81,12 +81,12 @@ Als we de schermopname van de gegevens bekijken, zien we het volgende:
     
 * Locatiegegevens worden opgeslagen in de kolommen **AddressLine** (adresregel), **City** (plaats), **Municipality** (gemeente), **AdminDivision** (staat/provincie), **PostCode** (postcode) en **Country** (land).  
 * De kolommen **Latitude** (breedtegraad) en **Longitude** (lengtegraad) bevatten de coördinaten van elke locatie van een Contoso Coffee-koffiebar. Als u geen coördinatengegevens hebt, kunt u de zoekservices van Azure Maps gebruiken om de coördinaten van de locaties te bepalen.
-* Enkele extra kolommen bevatten metagegevens met betrekking tot de koffiebars: een telefoonnummer, booleaanse kolommen voor Wi-Fi-hotspot en rolstoeltoegankelijkheid en winkelopenings- en sluitingstijden in 24-uurs notatie. U kunt uw eigen kolommen maken met metagegevens die relevanter zijn voor uw locatiegegevens.
+* Enkele aanvullende kolommen bevatten meta gegevens met betrekking tot de koffie winkels: een telefoon nummer, Booleaanse kolommen en de openings-en sluitings tijd in 24-uurs notatie. De Booleaanse kolommen zijn voor de toegankelijkheid van Wi-Fi en rolstoelen. U kunt uw eigen kolommen maken met metagegevens die relevanter zijn voor uw locatiegegevens.
 
 > [!Note]
 > In Azure Maps worden gegevens weergegeven in de sferische Mercator-projectie EPSG:3857, maar worden de gegevens gelezen in EPSG:4325 dat gebruikmaakt van de datum WGS84. 
 
-Er zijn veel manieren om de gegevensset in de toepassing beschikbaar te maken. Eén aanpak is om de gegevens in een database te laden en een webservice beschikbaar te maken die de gegevens opvraagt ​​en de resultaten naar de browser van de gebruiker verzendt. Deze optie is ideaal voor grote gegevenssets of voor gegevenssets die regelmatig worden bijgewerkt. Deze optie vereist echter aanzienlijk meer ontwikkelingswerk en heeft hogere kosten. 
+Er zijn veel manieren om de gegevensset in de toepassing beschikbaar te maken. Een aanpak is het laden van de gegevens in een Data Base en het beschikbaar maken van een webservice die de gegevens opvraagt. U kunt de resultaten vervolgens naar de browser van de gebruiker verzenden. Deze optie is ideaal voor grote gegevenssets of voor gegevenssets die regelmatig worden bijgewerkt. Deze optie vereist echter meer ontwikkel werkzaamheden en heeft een hogere prijs. 
 
 Een andere benadering is om deze dataset om te zetten in een bestand met platte tekst dat de browser gemakkelijk kan parseren. Het bestand zelf kan worden gehost bij de rest van de toepassing. Deze optie houdt het eenvoudig, maar het is alleen een goede optie voor kleinere gegevenssets, omdat de gebruiker alle gegevens downloadt. We gebruiken het platte-tekstbestand voor deze gegevensset, omdat de bestandsgrootte kleiner is dan 1 MB.  
 
@@ -105,7 +105,7 @@ Als u het bestand in Kladblok opent, ziet dit eruit als in de volgende afbeeldin
 
 ## <a name="set-up-the-project"></a>Het project instellen
 
-Voor het maken van het project kunt u [Visual Studio](https://visualstudio.microsoft.com) of de code-editor van uw keuze gebruiken. Maak in de projectmap drie bestanden: *index.html*, *index.css* en *index.js*. Deze bestanden definiëren de lay-out, stijl en logica voor de toepassing. Maak een map met de naam *data* en voeg *ContosoCoffee.txt* toe aan deze map. Maak een andere map met de naam *images* (afbeeldingen). We gebruiken tien afbeeldingen in deze toepassing, voor pictogrammen, knoppen en markeringen op de kaart. U kunt [deze afbeeldingen downloaden](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Uw projectmap zou er nu uit moeten zien als in de volgende afbeelding:
+Voor het maken van het project kunt u [Visual Studio](https://visualstudio.microsoft.com) of de code-editor van uw keuze gebruiken. Maak in de projectmap drie bestanden: *index.html*, *index.css* en *index.js*. Deze bestanden definiëren de lay-out, stijl en logica voor de toepassing. Maak een map met de naam *data* en voeg *ContosoCoffee.txt* toe aan deze map. Maak een andere map met de naam *images* (afbeeldingen). We gebruiken 10 afbeeldingen in deze toepassing voor pictogrammen, knoppen en markeringen op de kaart. U kunt [deze afbeeldingen downloaden](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Uw projectmap zou er nu uit moeten zien als in de volgende afbeelding:
 
 <center>
 
@@ -115,7 +115,7 @@ Voor het maken van het project kunt u [Visual Studio](https://visualstudio.micro
 
 Voor het maken van de gebruikersinterface voegt u code toe aan *index.html*:
 
-1. Voeg de volgende `meta`-tags toe aan de `head` van *index.html*. De tags definiëren de tekenset (UTF-8), geven aan dat Internet Explorer en Microsoft Edge de nieuwste browserversies moeten gebruiken en specificeren een viewport die goed werkt voor responsieve lay-outs.
+1. Voeg de volgende `meta`-tags toe aan de `head` van *index.html*. De `charset` tag definieert de tekenset (UTF-8). De waarde van `http-equiv` vertelt Internet Explorer en micro soft Edge de nieuwste browser versies te gebruiken. En de laatste `meta`-tag geeft een View Port op die geschikt is voor responsieve indelingen.
 
     ```HTML
     <meta charset="utf-8">
@@ -375,13 +375,13 @@ De volgende stap is het definiëren van de CSS-stijlen. CSS-stijlen definiëren 
     }
    ```
 
-Als u nu toepassing uitvoert, ziet u de header, het zoekvak en de zoekknop, maar de kaart is niet zichtbaar omdat deze nog niet is geladen. Als u een zoekopdracht probeert uit te voeren, gebeurt er niets. We moeten de JavaScript-logica instellen die in de volgende sectie wordt beschreven om toegang te krijgen tot alle functionaliteit van de winkelzoeker.
+De toepassing nu uitvoeren, ziet u de knop koptekst, zoekvak en zoeken. Maar de kaart is niet zichtbaar omdat deze nog niet is geladen. Als u een zoekopdracht probeert uit te voeren, gebeurt er niets. We moeten de Java script-logica instellen, die wordt beschreven in de volgende sectie. Deze logica heeft toegang tot alle functies van de Store-Locator.
 
 ## <a name="wire-the-application-with-javascript"></a>De toepassing aansluiten met JavaScript
 
-Op dit punt is alles ingesteld in de gebruikersinterface. Nu moeten we de JavaScript toevoegen om de gegevens te laden en te parseren, en de gegevens vervolgens weergeven op de kaart. Open *index.js* en voeg code toe zoals beschreven in de volgende stappen.
+Alles is nu ingesteld in de gebruikers interface. We moeten nog steeds de Java script toevoegen om de gegevens te laden en te parseren, en vervolgens de gegevens op de kaart weer geven. Open *index.js* en voeg code toe zoals beschreven in de volgende stappen.
 
-1. Voeg algemene opties toe om het gemakkelijker te maken instellingen bij te werken. Definieer ook variabelen voor de kaart, een pop-upvenster, een gegevensbron, een pictogramlaag, een HTML-markering die het midden van een zoekgebied weergeeft, en een exemplaar van de zoekserviceclient van Azure Maps.
+1. Voeg algemene opties toe om het gemakkelijker te maken instellingen bij te werken. Definieer de variabelen voor de kaart, het pop-upvenster, de gegevens bron, een laag met een pictogram, een HTML-markering waarmee het middel punt van een zoek gebied en een exemplaar van de Azure Maps Search-serviceclient wordt weer gegeven.
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -395,7 +395,7 @@ Op dit punt is alles ingesteld in de gebruikersinterface. Nu moeten we de JavaSc
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Voeg code toe aan *index.js*. De volgende code initialiseert de kaart, voegt een [gebeurtenislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) toe die wacht totdat de pagina is geladen, gebeurtenissen aansluit om het laden van de kaart te controleren en de zoekknop en de knop Mijn locatie aandrijft.
+1. Voeg code toe aan *index.js*. De volgende code initialiseert de kaart. Er is een [gebeurtenislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) toegevoegd om te wachten tot de pagina is geladen. Vervolgens worden er gebeurtenissen vastgelegd voor het bewaken van het laden van de kaart en bieden ze functionaliteit aan de zoek knop en de knop mijn locatie.
 
    Wanneer de gebruiker de zoekknop selecteert, of wanneer de gebruiker op Enter drukt nadat een locatie in het zoekvak is ingevoerd, wordt een fuzzy zoekopdracht gestart met de zoekopdracht van de gebruiker. Geef een matrix van ISO 2-waarden van het land door en de optie `countrySet` om de zoek resultaten te beperken tot die landen/regio's. Het beperken van de landen/regio's voor zoeken helpt de nauw keurigheid van de geretourneerde resultaten te verg Roten. 
   
@@ -544,7 +544,7 @@ Op dit punt is alles ingesteld in de gebruikersinterface. Nu moeten we de JavaSc
 
 1. Nadat u de gegevensset in de `ready`-gebeurtenislistener van de kaart hebt geladen, definieert u een set lagen om de gegevens weer te geven. Er wordt een bellenlaag gebruikt om geclusterde gegevenspunten weer te geven. Er wordt een symboollaag wordt gebruikt om het aantal punten in elk cluster boven de bellenlaag weer te geven. Met een tweede symboollaag wordt een aangepast pictogram voor afzonderlijke locaties op de kaart weergegeven.
 
-   Voeg `mouseover`- en `mouseout`-gebeurtenissen toe aan de bellen- en pictogramlagen om de muisaanwijzer te wijzigen wanneer de gebruiker een cluster of pictogram op de kaart aanwijst. Voeg een `click`-gebeurtenis toe aan de clusterbellenlaag. Deze `click`-gebeurtenis zoomt twee niveaus in op de kaart en centreert de kaart op een cluster wanneer de gebruiker een cluster selecteert. Voeg een `click`-gebeurtenis toe aan de pictogramlaag. Deze `click`-gebeurtenis geeft een pop-upvenster met de details van een koffiebar weer wanneer een gebruiker een individueel locatiepictogram selecteert. Voeg een gebeurtenis toe aan de kaart om te controleren wanneer de kaart klaar is met bewegen. Wanneer deze gebeurtenis wordt geactiveerd, worden de items in het deelvenster met de lijst bijgewerkt.  
+   Voeg `mouseover`- en `mouseout`-gebeurtenissen toe aan de bellen- en pictogramlagen om de muisaanwijzer te wijzigen wanneer de gebruiker een cluster of pictogram op de kaart aanwijst. Voeg een `click`-gebeurtenis toe aan de clusterbellenlaag. Met deze `click` gebeurtenis wordt ingezoomd op de kaart twee niveaus en wordt de kaart in een cluster gecentreerd wanneer de gebruiker een cluster selecteert. Voeg een `click`-gebeurtenis toe aan de pictogramlaag. Deze `click`-gebeurtenis geeft een pop-upvenster met de details van een koffiebar weer wanneer een gebruiker een individueel locatiepictogram selecteert. Voeg een gebeurtenis toe aan de kaart om te controleren wanneer de kaart klaar is met bewegen. Wanneer deze gebeurtenis wordt geactiveerd, worden de items in het deelvenster met de lijst bijgewerkt.  
 
     ```JavaScript
     //Create a bubble layer to render clustered data points.
@@ -686,7 +686,7 @@ Op dit punt is alles ingesteld in de gebruikersinterface. Nu moeten we de JavaSc
     }
     ```
 
-1. Wanneer het lijstvenster wordt bijgewerkt, wordt de afstand van het midden van de kaart tot alle puntelementen in de huidige kaartweergave berekend. De punten worden vervolgens gesorteerd op afstand. Er wordt HTML-code gegenereerd om elke locatie in het lijstvenster weer te geven.
+1. Wanneer het deel venster lijst wordt bijgewerkt, wordt de afstand berekend. Deze afstand is van het midden van de kaart tot alle punt functies in de huidige kaart weergave. De punten worden vervolgens gesorteerd op afstand. Er wordt HTML-code gegenereerd om elke locatie in het lijstvenster weer te geven.
 
     ```JavaScript
     var listItemTemplate = '<div class="listItem" onclick="itemSelected(\'{id}\')"><div class="listItem-title">{title}</div>{city}<br />Open until {closes}<br />{distance} miles away</div>';

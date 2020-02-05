@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0e841b1f386d45ddb4af8598855d8e739750307e
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 1f6f282406c6813b2b126c300f21bda21e8f9464
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910743"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988971"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>Migreren van Google-kaarten naar Azure Maps
 
@@ -22,11 +22,11 @@ In deze zelf studie vindt u informatie over het migreren van web-, mobiele en se
 
 ## <a name="azure-maps-platform-overview"></a>Overzicht van Azure Maps platform
 
-Azure Maps biedt ontwikkel aars van alle industrie krachtige georuimtelijke mogelijkheden, verpakt met de regel matig bijgewerkte kaart gegevens om geografische context te bieden voor web-en mobiele toepassingen. Azure Maps heeft een Azure One API-compatibele set REST-Api's voor kaarten, zoek functies, route ring, verkeer, tijd zones, geolocatie, geoomheining, kaart gegevens, weer, mobiliteit en ruimtelijke bewerkingen, samen met zowel web-als Android-Sdk's, om ontwikkel gemak te maken, flexibeler en draagbaar op meerdere platforms.
+Azure Maps biedt ontwikkel aars van alle industrie krachtige georuimtelijke mogelijkheden, verpakt met de regel matig bijgewerkte kaart gegevens om geografische context te bieden voor web-en mobiele toepassingen. Azure Maps heeft een Azure One API-compatibele set REST-Api's. Deze REST Api's bieden kaarten, zoek functies, route ring, verkeer, tijd zones, geolocatie, geoomheining, kaart gegevens, weer, mobiliteit en ruimtelijke bewerkingen. Bewerkingen worden gecombineerd met zowel web-als Android-Sdk's om ontwikkel gemak, flexibel en draagbaar te maken op meerdere platforms.
 
 ## <a name="high-level-platform-comparison"></a>Vergelijking van platform op hoog niveau
 
-De volgende tabel bevat een lijst op hoog niveau van de functies van Google Maps en de relatieve ondersteuning voor die functies in Azure Maps. Deze lijst bevat geen aanvullende Azure Maps functies, zoals toegankelijkheid, Api's voor geoomheining, van isochronen, ruimtelijke bewerkingen, direct toegang tot de kaart tegel, batch Services en vergelijking van gegevens behoeften (d.w.z. dekking van afbeeldingen).
+De volgende tabel bevat een lijst op hoog niveau van Azure Maps functies die overeenkomen met de functies van Google Maps. In deze lijst worden niet alle Azure Maps-functies weer gegeven. Aanvullende Azure Maps omvatten onder meer toegankelijkheid, geoomheinings-Api's, van isochronen, ruimtelijke bewerkingen, directe toegang tot kaart tegels, batch Services en vergelijking van gegevens behoeften (dat wil zeggen, afbeeldings dekking).
 
 | Google Maps-functie         | Ondersteuning voor Azure Maps                     |
 |-----------------------------|:--------------------------------------:|
@@ -49,14 +49,14 @@ De volgende tabel bevat een lijst op hoog niveau van de functies van Google Maps
 | Maps-Inge sloten API           | N/A                                    |
 | Kaart-Url's                    | N/A                                    |
 
-Google Maps biedt basis verificatie op basis van een sleutel. Azure Maps biedt zowel basis verificatie op basis van sleutels als zeer veilige Azure Active Directory authenticatie.
+Google Maps biedt de basis verificatie op basis van sleutels. Azure Maps biedt zowel de basis verificatie op basis van sleutels als de uiterst veilige Azure Active Directory authenticatie.
 
 ## <a name="licensing-considerations"></a>Licentie overwegingen
 
 Bij de migratie naar Azure Maps van Google Maps, moeten de volgende punten worden overwogen met betrekking tot licenties.
 
-- Azure Maps kosten voor het gebruik van interactieve kaarten op basis van het aantal geladen kaart tegels, terwijl Google kaarten toerekent voor het laden van het kaart besturings element. In de interactieve Azure Maps Sdk's worden kaart tegels automatisch in de cache geplaatst om de kosten voor de ontwikkelaar te verminderen. Er wordt één Azure Maps trans actie gegenereerd voor elke 15 kaart tegels die worden geladen. De interactieve Azure Maps Sdk's gebruiken tegels van 512 pixels en gemiddeld genereert een of minder trans acties per pagina weergave.
-- Het is vaak veel rendabeler om statische kaart installatie kopieën van Google Maps Web Services te vervangen door de Azure Maps Web-SDK. Dit maakt gebruik van kaart tegels en tenzij de gebruiker de kaart pannt en inzoomt, worden er vaak slechts een fractie van een trans actie per kaart belasting gegenereerd. De Azure Maps Web-SDK bevat opties voor het uitschakelen van pannen en zoomen. Daarnaast biedt de Azure Maps Web-SDK veel meer visualisatie opties dan een statische map-webservice.
+- Azure Maps kosten voor het gebruik van interactieve kaarten, die zijn gebaseerd op het aantal geladen kaart tegels, maar Google Maps-kosten voor het laden van het kaart besturings element. In de interactieve Azure Maps Sdk's worden kaart tegels automatisch in de cache geplaatst om de kosten voor de ontwikkelaar te verminderen. Er wordt één Azure Maps trans actie gegenereerd voor elke 15 kaart tegels die worden geladen. De interactieve Azure Maps Sdk's gebruiken tegels van 512 pixels en gemiddeld genereert een of minder trans acties per pagina weergave.
+- Het is vaak veel rendabeler om statische kaart installatie kopieën van Google Maps Web Services te vervangen door de Azure Maps Web-SDK. De Azure Maps Web-SDK gebruikt kaart tegels en tenzij de gebruiker de kaart pannt en inzoomt, wordt er vaak slechts een fractie van een trans actie per kaart belasting gegenereerd. De Azure Maps Web-SDK bevat opties voor het uitschakelen van pannen en zoomen. Daarnaast biedt de Azure Maps Web-SDK veel meer visualisatie opties dan een statische map-webservice.
 - Met Azure Maps kunnen gegevens van het platform worden opgeslagen in Azure. Het kan ook ergens anders in de cache worden opgeslagen gedurende een periode [van](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)Maxi maal zes maanden.
 
 Hier volgen enkele verwante resources voor Azure Maps:

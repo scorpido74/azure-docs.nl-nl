@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772036"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990705"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Problemen met het Azure Migrate apparaat en de detectie oplossen
 
@@ -39,14 +39,7 @@ Ga als volgt te werk als u de fout melding ' het opgegeven manifest bestand is o
 Dit kan gebeuren als de apparaatapparaat zich achter een proxy bevindt.
 
 - Zorg ervoor dat u de autorisatie referenties opgeeft als de proxy deze nodig heeft.
-- Als u een firewall proxy op basis van een URL gebruikt om de uitgaande connectiviteit te beheren, voegt u deze Url's toe aan een acceptatie lijst:
-
-    - [Url's voor VMware-evaluatie](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Url's voor Hyper-V-evaluatie](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-    - [Url's voor VMware-agentloze migratie](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [URL'S voor migratie op basis van VMware-agents](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [Url's voor Hyper-V-migratie](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-
+- Als u een firewall proxy op basis van een URL gebruikt om de uitgaande connectiviteit te beheren, voegt u [deze url's](migrate-appliance.md#url-access) toe aan een acceptatie lijst.
 - Als u een interceptie proxy gebruikt om verbinding te maken met internet, importeert u het proxy certificaat op de apparaat-VM met behulp van de [volgende stappen](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
 ##  <a name="datetime-synchronization-error"></a>Fout bij de synchronisatie van datum en tijd

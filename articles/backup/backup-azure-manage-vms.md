@@ -4,12 +4,12 @@ description: Meer informatie over het beheren en bewaken van back-ups van Azure-
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 3c4c4341286b7ee4f382192d291e08c83ff64994
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172979"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989685"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Back-ups van Azure-VM'S beheren met Azure Backup-Service
 
@@ -38,19 +38,19 @@ Vm's op het kluis dashboard weer geven:
 3. Voor gebruiks gemak klikt u met de rechter muisknop op de kluis en selecteert **u vastmaken aan dash board**.
 4. Open het kluis dashboard.
 
-    ![Open de Blade kluis dashboard en instellingen](./media/backup-azure-manage-vms/full-view-rs-vault.png)
+    ![Het deel venster kluis en instellingen openen](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
 5. Selecteer **Azure virtual machines**op de tegel **Back-upitems** .
 
     ![De tegel back-upitems openen](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. Op de Blade **Back-upitems** kunt u de lijst met beveiligde vm's weer geven. In dit voor beeld beveiligt de kluis één virtuele machine: demobackup.  
+6. In het deel venster **Back-upitems** kunt u de lijst met beveiligde vm's weer geven. In dit voor beeld beveiligt de kluis één virtuele machine: demobackup.  
 
-    ![De Blade back-upitems weer geven](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![Het deel venster Back-upitems weer geven](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 7. In het dash board van het kluis-item kunt u het back-upbeleid wijzigen, een back-up op aanvraag uitvoeren, de beveiliging van Vm's stoppen of hervatten, back-upgegevens verwijderen, herstel punten weer geven en een herstel bewerking uitvoeren.
 
-    ![Het dash board back-upitems en de Blade instellingen](./media/backup-azure-manage-vms/item-dashboard-settings.png)
+    ![Het dash board back-upitems en het deel venster instellingen](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
 ## <a name="manage-backup-policy-for-a-vm"></a>Back-upbeleid voor een VM beheren
 
@@ -61,9 +61,9 @@ Een back-upbeleid beheren:
 
     ![De tegel back-upitems openen](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. Op de Blade **Back-upitems** kunt u de lijst met beveiligde vm's en de laatste back-upstatus met de meest recente tijd voor herstel punten weer geven.
+3. In het deel venster **Back-upitems** kunt u de lijst met beveiligde vm's en de laatste back-upstatus met de meest recente tijd voor herstel punten weer geven.
 
-    ![De Blade back-upitems weer geven](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![Het deel venster Back-upitems weer geven](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 4. Vanuit het dash board van het kluis item kunt u een back-upbeleid selecteren.
 
@@ -85,8 +85,8 @@ Een back-up op aanvraag activeren:
 
     ![De optie nu back-up maken](./media/backup-azure-manage-vms/backup-now-button.png)
 
-2. Selecteer **Azure virtual machine**in het **type back-upbeheer**. De Blade **back-upitem (virtuele machine van Azure)** wordt weer gegeven.
-3. Selecteer een virtuele machine en selecteer **Nu back-up** om een back-up op aanvraag te maken. De Blade **nu een back-up maken** wordt weer gegeven.
+2. Selecteer **Azure virtual machine**in het **type back-upbeheer**. Het deel venster **back-upitem (virtuele machine van Azure)** wordt weer gegeven.
+3. Selecteer een virtuele machine en selecteer **Nu back-up** om een back-up op aanvraag te maken. Het deel venster **Nu back-up** wordt weer gegeven.
 4. Geef in het veld **Backup-kassa bewaren** een datum op voor de back-up die moet worden bewaard.
 
     ![De agenda nu een back-up maken](./media/backup-azure-manage-vms/backup-now-check.png)
@@ -157,6 +157,8 @@ Er zijn twee manieren om de back-upgegevens van een VM te verwijderen:
     ![Back-upgegevens verwijderen](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
   * Selecteer **verwijderen**als u de back-upgegevens voor het item wilt verwijderen. Een meldings bericht laat u weten dat de back-upgegevens zijn verwijderd.
+
+Voor het beveiligen van uw gegevens bevat Azure Backup de functie voor voorlopig verwijderen. Met zacht verwijderen, zelfs nadat de back-up (alle herstel punten) van een virtuele machine is verwijderd, worden de back-upgegevens 14 extra dagen bewaard. Zie [de documentatie voor voorlopig verwijderen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)voor meer informatie.
 
   > [!NOTE]
   > Wanneer u back-upgegevens verwijdert, verwijdert u alle gekoppelde herstel punten. U kunt geen specifieke herstel punten kiezen die u wilt verwijderen.

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769100"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984843"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning Compute-instantie?
 
@@ -27,7 +27,7 @@ Gebruik een reken instantie als uw volledig geconfigureerde en beheerde ontwikke
 Reken instanties worden meestal gebruikt als ontwikkel omgevingen.  Ze kunnen ook worden gebruikt als een reken doel voor training en voor het afleiden van ontwikkel-en test doeleinden.  Voor grote taken is een [Azure machine learning Compute-Cluster](how-to-set-up-training-targets.md#amlcompute) met schaal mogelijkheden voor meerdere knoop punten een betere reken doel keuze.
 
 > [!NOTE]
-> Reken instanties zijn momenteel alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**, met ondersteuning voor andere regio's binnenkort.
+> Reken instanties zijn momenteel alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS**, **VS-oost 2**, **Europa-Noord** of **UK-Zuid**, met ondersteuning voor andere regio's binnenkort.
 >Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken. 
 
 ## <a name="why-use-a-compute-instance"></a>Waarom een reken instantie gebruiken?

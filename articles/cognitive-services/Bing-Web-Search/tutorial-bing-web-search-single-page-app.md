@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: ec6c1ef31b6cf92629be600b3b139bb2e1a0d3ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1acc17f9c2fbeb53b992891174866433d14f128d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977247"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986658"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Webzoekopdrachten-API
 
@@ -105,7 +105,7 @@ function bingSearchOptions(form) {
     // Where option.
     options.push("mkt=" + form.where.value);
     // SafeSearch option.
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
     // Freshness option.
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -128,7 +128,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-`SafeSearch` kan worden ingesteld op `strict`, `moderate` of `off`, waarbij `moderate` de standaardinstelling voor Bing Web Search is. In dit formulier wordt een selectievakje met twee statussen gebruikt. In dit fragment is SafeSearch ingesteld op `strict` of `off`; `moderate` wordt niet gebruikt.
+`SafeSearch` kan worden ingesteld op `strict`, `moderate` of `off`, waarbij `moderate` de standaardinstelling voor Bing Web Search is. Dit formulier gebruikt een selectie vakje met twee statussen: `strict` of `moderate`.
 
 Als een van de **Promoten**-selectievakjes is geselecteerd, wordt de `answerCount`-parameter toegevoegd aan de query. `answerCount` is vereist wanneer u de `promote`-parameter gebruikt. In dit fragment is de waarde ingesteld op `9` zodat alle beschikbare resultaattypen worden geretourneerd.
 > [!NOTE]
@@ -421,7 +421,7 @@ De afbeeldingsrenderer:
 * Hiermee wordt de grootte van de miniatuur van de afbeelding (de breedte varieert, terwijl de hoogte altijd 60 pixels bedraagt) berekend.
 * Hiermee wordt de HTML ingevoegd die voorafgaat aan het afbeeldingsresultaat op basis van de context.
 * Hiermee wordt de HTML-`<a>`-tag gebouwd die is gekoppeld aan de pagina die de afbeelding bevat.
-* De HTML-`<img>`-code wordt gebouwd om de miniatuur weer te geven.
+* De HTML-`<img>`-tag wordt gebouwd om de miniatuur weer te geven.
 
 De afbeeldingsrenderer gebruikt de variabelen `section` en `index` om resultaten verschillend weer te geven, afhankelijk van de locatie waar ze worden weergegeven. Tussen afbeeldingsresultaten wordt in de zijbalk een regeleinde (`<br>`-tag) ingevoegd, zodat in de zijbalk een kolom met afbeeldingen wordt weergegeven. In andere secties wordt het eerste afbeeldingsresultaat `(index === 0)` voorafgegaan door een `<p>`-tag.
 
@@ -435,7 +435,7 @@ Hier ziet u een voorbeeld van de manier waarop afbeeldingen worden weergegeven i
 
 Antwoorden van de Bing Zoeken-API kunnen een `X-MSEdge-ClientID`-header omvatten die bij elke volgende aanvraag moet worden teruggestuurd naar de API. Als meer dan één van de Bing Zoeken-API's door uw app wordt gebruikt, moet u ervoor zorgen dat dezelfde client-id wordt verzonden bij elke aanvraag vanuit alle services.
 
-Door de `X-MSEdge-ClientID`-header op te geven kunnen met Bing-API's zoekopdrachten van gebruikers worden gekoppeld. Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de aanvraag. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen' de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen. Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies uit te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven, zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
+Door de `X-MSEdge-ClientID`-header op te geven kunnen met Bing-API's zoekopdrachten van gebruikers worden gekoppeld. Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de aanvraag. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen’ de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen. Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies uit te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven, zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
 
 Met beveiligingsbeleid voor de browser, zoals Cross-Origin Resource Sharing (CORS), kan worden voorkomen dat de voorbeeld-app toegang heeft tot de `X-MSEdge-ClientID`-header. Deze beperking treedt op wanneer het antwoord op een zoekopdracht een andere oorsprong heeft dan de pagina waarop de zoekopdracht is uitgevoerd. In een productieomgeving kunt u dit beleid omzeilen door een serverscript te hosten waarmee de API wordt aangeroepen in hetzelfde domein als de webpagina. Omdat het script dezelfde oorsprong heeft als de webpagina, is de `X-MSEdge-ClientID`-header vervolgens beschikbaar voor JavaScript.
 

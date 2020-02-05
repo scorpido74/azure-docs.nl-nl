@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: de44d07b5ebc6a898e3c098f16e553e9d4a46150
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9dbcae6e3947576a7d2bc204c2a3a6fb2e95953d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910415"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988281"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps ondersteunde Categorieën
 
-Wanneer u een [categorie zoekt](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) naar interessante onderwerpen, zijn er meer dan honderd ondersteunde categorieën. Hieronder ziet u een lijst met de categorie codes voor ondersteunde categorie namen. Categorie codes worden gegenereerd voor categorieën op het hoogste niveau. Alle onderliggende categorieën delen dezelfde categorie code. Houd er rekening mee dat deze categorie lijst kan worden gewijzigd met nieuwe gegevens releases.
+Wanneer u een [categorie zoekt](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) naar interessante onderwerpen, zijn er meer dan honderd ondersteunde categorieën. Hieronder ziet u een lijst met de categorie codes voor ondersteunde categorie namen. Categorie codes worden gegenereerd voor categorieën op het hoogste niveau. Alle onderliggende categorieën delen dezelfde categorie code. Deze categorie lijst kan worden gewijzigd met nieuwe gegevens releases.
 
 <br/>
 
@@ -86,7 +86,7 @@ Wanneer u een [categorie zoekt](https://docs.microsoft.com/rest/api/maps/search/
 | NIGHTLIFE | staaf, Karaoke-Club, Jazz-Club, persoonlijke Club, wijn staaf, Comedy Club, tal Bar, Discotheque, Nightlife |
 | NIET-\_gouvernementele\_organisatie | niet-gouvernementele organisatie |
 | \_parkeer\_gebied openen | parkeer ruimte openen, parkeer partij |
-| OVERIGE | locatie, vrije handels zone, verkeers cirkel, onbekend |
+| DAARENTEG | locatie, vrije handels zone, verkeers cirkel, onbekend |
 | GARAGE\_ | Parkeer garage |
 | \_recreatie\_gebied van PARK | historische site, Lakeshore, Seashore, rivier scenicgebied, visserij-jacht, Battlefield, winter sport, boot lanceer platform, bewaren, forestgebied, recreatiegebied, ski-redmiddel, Cemetery, historisch park, Parkway, Memorial, Fairground, picknick wildernessgebied, regio voor recreatie, forest ('s), gefossield forest, Tuin (en), in het wild levende reserves, aard reserves, bosbouw station, jacht reserve, Forest-Reserve, Park |
 | BENZINE\_STATION | benzine station |

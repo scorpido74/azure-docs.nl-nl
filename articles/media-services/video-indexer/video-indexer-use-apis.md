@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 4da437fecf0529194d72b2d403302ff81055ec0f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8b6d160f71bfe8b2e5c447296d511b54ce6542c8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892682"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989770"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Zelfstudie: de Video Indexer-API gebruiken
 
@@ -86,7 +86,7 @@ De parameter Account-id is vereist in alle operationele API-aanroepen. Account-i
 
 * Gebruik de **Video Indexer-ontwikkelaarsportal** om de account-id programmatisch op te halen.
 
-    Gebruik de API [Accounts ophalen](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?).
+    Gebruik de [Get account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) API.
 
     > [!TIP]
     > U kunt de toegangstokens voor de accounts genereren door `generateAccessTokens=true` te definiëren.
@@ -214,4 +214,6 @@ Debug.WriteLine(playerWidgetLink);
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Details van de JSON-uitvoer bekijken](video-indexer-output-json-v2.md)
+- [Details van de JSON van de uitvoer bekijken](video-indexer-output-json-v2.md)
+- Bekijk de [voorbeeld code](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/API) die belang rijk aspect van het uploaden en indexeren van een video toont. Na de code wordt krijgt u een goed idee hoe u onze API kunt gebruiken voor basis functionaliteiten. Lees de opmerkingen in inline en noteer de aanbevelingen voor best practices.
+

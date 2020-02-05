@@ -1,21 +1,21 @@
 ---
 title: WHERE-component in Azure Cosmos DB
 description: Meer informatie over SQL WHERE-component voor Azure Cosmos DB
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: mjbrown
-ms.openlocfilehash: cd5643d8be06afcd43c5bfe38d6f5e9caa6f906e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 02/03/2020
+ms.author: tisande
+ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326645"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982226"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>WHERE-component in Azure Cosmos DB
 
-De optionele component WHERE (`WHERE <filter_condition>`) geeft voor waarde (n) aan waaraan de bron-JSON-items moeten voldoen om ze in de resultaten op te vragen. Voor een JSON-item moet de opgegeven voor waarden worden geëvalueerd om `true` te kunnen worden overwogen voor het resultaat. De index laag maakt gebruik van de WHERE-component om de kleinste subset van bron items te bepalen die deel kunnen uitmaken van het resultaat.
+De optionele component WHERE (`WHERE <filter_condition>`) geeft voor waarde (n) aan waaraan de bron-JSON-items moeten voldoen om ze in de resultaten op te vragen. Een JSON-item moet de opgegeven voor waarden evalueren om te `true` dat voor het resultaat wordt overwogen. De index laag maakt gebruik van de WHERE-component om de kleinste subset van bron items te bepalen die deel kunnen uitmaken van het resultaat.
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -29,20 +29,20 @@ WHERE <filter_condition>
 
 - `<filter_condition>`  
   
-   Hiermee geeft u de voor waarde op waaraan moet worden voldaan om de documenten te retour neren.  
+   Hiermee geeft u de voorwaarde moet worden voldaan voor de documenten die moeten worden geretourneerd.  
   
 - `<scalar_expression>`  
   
-   Expressie die de waarde vertegenwoordigt die moet worden berekend. Zie [scalaire expressies](sql-query-scalar-expressions.md) voor meer informatie.  
+   Expressie voor de waarde die moet worden berekend. Zie [scalaire expressies](sql-query-scalar-expressions.md) voor meer informatie.  
   
 
 ## <a name="remarks"></a>Opmerkingen
   
-  Om het document als resultaat te retour neren moet een expressie worden geretourneerd die is opgegeven als filter voorwaarde, waarna resulteert in waar. Alleen Boole-waarde waar wordt voldaan aan de voor waarde, een andere waarde: niet gedefinieerd, null, onwaar, getal, matrix of object voldoet niet aan de voor waarde. 
+  Opdat het document dat moet worden geretourneerd van een expressie die is opgegeven als filter moet voorwaarde resulteren in waar. Alleen Booleaanse waarde ' True ', voldoen aan de voorwaarde, een andere waarde: niet-gedefinieerde, null, ingesteld op false, getal, matrix of Object zal voldoen niet aan de voorwaarde. 
 
 ## <a name="examples"></a>Voorbeelden
 
-Met de volgende query worden items opgevraagd die een eigenschap `id` bevatten waarvan de waarde `AndersenFamily` is. Hiermee wordt een item uitgesloten dat geen eigenschap `id` heeft of waarvan de waarde niet overeenkomt met `AndersenFamily`.
+Met de volgende query worden items opgevraagd die een `id` eigenschap bevatten waarvan de waarde `AndersenFamily`is. Hiermee wordt een item uitgesloten dat geen `id`-eigenschap heeft of waarvan de waarde niet overeenkomt met `AndersenFamily`.
 
 ```sql
     SELECT f.address
@@ -104,10 +104,10 @@ U kunt ook de unaire Opera Tors +,-, ~ en niet in query's gebruiken, zoals wordt
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-U kunt ook eigenschaps verwijzingen gebruiken in query's. @No__t-0 retourneert bijvoorbeeld het JSON-item met de eigenschap `isRegistered` met een waarde die gelijk is aan `true`. Elke andere waarde, zoals `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>` of `<array>`, sluit het item uit van het resultaat. 
+U kunt ook eigenschaps verwijzingen gebruiken in query's. `SELECT * FROM Families f WHERE f.isRegistered` retourneert bijvoorbeeld het JSON-item met de eigenschap `isRegistered` met een waarde die gelijk is aan `true`. Elke andere waarde, zoals `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>`of `<array>`, sluit het item uit van het resultaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Aan de slag](sql-query-getting-started.md)
-- [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [IN sleutel woord](sql-query-keywords.md#in)
 - [FROM-component](sql-query-from.md)

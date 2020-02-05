@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 65bc11282726d9e66dbed8fa1fbb75fc1b89c1d1
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 3dfb2c201138a65379aa509ce1bf10894ab6819b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615500"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984707"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Diep gaande lessen en AI-frameworks voor Azure Data Science VM
 Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
@@ -115,7 +115,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 |    |           |
 | ------------- | ------------- |
-| Ondersteunde versies | 1.2.0 |
+| Ondersteunde versies | 1.2.0 (Ubuntu 16,04, Windows 2016, Windows 2019), 1.4.0 (Ubuntu 18,04) |
 | Ondersteunde DSVM-edities      | Linux |
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Geïnstalleerd in [Python 3,5](dsvm-tools-languages.md#python-linux-edition). Voor beelden van Jupyter-notebooks zijn opgenomen. |
 | Het uitvoeren van het programma      | Terminal: Activeer de juiste omgeving en voer python uit.<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Maak verbinding en open vervolgens de map PyTorch voor voor beelden.  |
@@ -124,7 +124,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 |    |           |
 | ------------- | ------------- |
-| Ondersteunde versies | 1.13 |
+| Ondersteunde versies | 1,13 |
 | Ondersteunde DSVM-edities      | Windows, Linux |
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Geïnstalleerd in Python 3,5 onder [Linux](dsvm-tools-languages.md#python-linux-edition) en python 3,6 op [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) |
 | Het uitvoeren van het programma      | Terminal: Activeer de juiste omgeving en voer python uit. <br/> * Jupyter: Maak verbinding met [Jupyter](provision-vm.md) of [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)en open vervolgens de map tensor flow voor voor beelden.   |
@@ -133,7 +133,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 |    |           |
 | ------------- | ------------- |
-| Ondersteunde versies | 1.12 |
+| Ondersteunde versies | 1,12 |
 | Ondersteunde DSVM-edities      | Linux |
 | Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | tensorflow_model_server is beschikbaar op de Terminal. |
 | Het uitvoeren van het programma      |  Voorbeelden zijn beschikbaar [online](https://www.tensorflow.org/serving/).   |

@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van beheerde identiteiten voor Azu
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: f477acab332cf39de2504c675b04abb5b14a305f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 06ebcfdf3d6a3815908752153acb09437d745d15
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934971"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986747"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>Beheerde identiteiten gebruiken voor Azure met Service Fabric (preview-versie)
 
@@ -30,7 +30,7 @@ Beheerde identiteiten voor Azure zijn gebaseerd op verschillende belang rijke co
 
 - **Service-Principal** : een Azure Active Directory-object dat de projectie van een Aad-toepassing in een bepaalde Tenant vertegenwoordigt (ook [Service-Principal](../active-directory/develop/developer-glossary.md#service-principal-object)weer gegeven.)
 
-De twee typen beheerde identiteiten zijn:
+Er zijn twee typen beheerde identiteit:
 
 - Een door het **systeem toegewezen beheerde identiteit** wordt rechtstreeks ingeschakeld voor een Azure-service-exemplaar.  De levens cyclus van een door het systeem toegewezen identiteit is uniek voor het Azure-service-exemplaar waarop het is ingeschakeld.
 - Een **door de gebruiker toegewezen beheerde identiteit** wordt gemaakt als een zelfstandige Azure-resource. De identiteit kan worden toegewezen aan een of meer Azure-service-exemplaren en wordt onafhankelijk van de levens cyclus van die instanties beheerd.
@@ -39,7 +39,7 @@ Zie [Hoe worden beheerde identiteiten voor Azure-resources werken?](../active-di
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Ondersteunde scenario's voor Service Fabric toepassingen
 
-Beheerde identiteiten voor Service Fabric worden alleen ondersteund in door Azure geïmplementeerde Service Fabric-clusters en alleen voor toepassingen die zijn geïmplementeerd als Azure-resources. Er kan geen identiteit worden toegewezen aan een toepassing die niet is geïmplementeerd als een Azure-resource. De ondersteuning voor beheerde identiteiten in azure Service Fabric cluster bestaat uit twee fasen:
+Beheerde identiteiten voor Service Fabric worden alleen ondersteund in door Azure geïmplementeerde Service Fabric-clusters en alleen voor toepassingen die zijn geïmplementeerd als Azure-resources. Er kan geen identiteit worden toegewezen aan een toepassing die niet is geïmplementeerd als een Azure-resource. De ondersteuning voor beheerde identiteiten in een Azure Service Fabric-cluster bestaat uit twee fasen:
 
 1. Een of meer beheerde identiteiten toewijzen aan de resource van de toepassing. aan een toepassing kunnen respectievelijk een door het systeem toegewezen identiteit en/of Maxi maal 32 door de gebruiker toegewezen identiteiten worden toegewezen.
 

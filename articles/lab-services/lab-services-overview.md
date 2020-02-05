@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/26/2019
+ms.date: 02/03/2020
 ms.author: spelluru
-ms.openlocfilehash: 4258bec3ceacd52f9679f48d8357be558ee0e27f
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: ef296035ee8f0c80b4ee078303639d7aedf5a91d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561634"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986628"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Een inleiding tot Azure Lab Services
 Er zijn twee services in azure waarmee u test omgevingen in de cloud kunt instellen. 
@@ -35,9 +35,6 @@ Deze services (Azure DevTest Labs en Azure Lab Services) ondersteunen de volgend
 - **Optimalisatie van kosten en analyse**. De eigenaar van een lab kan planningen voor het lab instellen om virtuele machines automatisch af te sluiten en op te starten. De eigenaar van het lab kan een planning instellen om de tijdstippen op te geven wanneer de virtuele machines van het lab toegankelijk zijn voor gebruikers. De eigenaar kan bovendien een gebruiksbeleid per gebruiker of per lab instellen om de kosten te optimaliseren, en om gebruiks- en activiteitstrends te analyseren. Voor beheerde labs zoals leslokaal-labs is momenteel een kleinere subset met opties voor kostenoptimalisatie en -analyse beschikbaar.
 - **Ingesloten beveiliging**. De eigenaar van een lab kan particuliere virtuele netwerken en een subnet inrichten voor een lab, en een gedeeld openbaar IP-adres inschakelen. Labgebruikers hebben op een veilige manier toegang tot resources met behulp van een virtueel netwerk dat is geconfigureerd met ExpressRoute of site-naar-site-VPN. (momenteel alleen beschikbaar in DevTest Labs)
 - **Integratie met uw werkstromen en hulpprogramma's**. Met behulp van Azure Lab Services kunt u de labs integreren met de website en beheersystemen van uw organisatie. U kunt vanuit uw hulpprogramma's voor continue integratie/continue implementatie (CI/CD) automatisch omgevingen inrichten. (momenteel alleen beschikbaar in DevTest Labs)
-
-> [!NOTE]
-> Azure Lab Services ondersteunt momenteel alleen VM's die zijn gemaakt op basis van Microsoft Azure Marketplace-installatiekopieën. Als u aangepaste installatiekopieën wilt gebruiken of andere PaaS-resources wilt maken in een testomgeving, gebruikt u DevTest Labs. Zie [een aangepaste installatie kopie maken in DevTest Labs](devtest-lab-create-custom-image-from-vm-using-portal.md) en [test omgevingen maken met Resource Manager-sjablonen](devtest-lab-create-environment-from-arm.md)voor meer informatie.
 
 ## <a name="scenarios"></a>Scenario's
 

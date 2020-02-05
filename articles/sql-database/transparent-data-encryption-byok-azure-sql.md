@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 11/19/2019
-ms.openlocfilehash: 4f1fe1ea031cd7831ffb24ee4302d6834a8d9976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/03/2019
+ms.openlocfilehash: 305af8e8acd7e7a54fae8c831d36bee0aad4ad6b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981890"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990977"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutel
 
@@ -124,7 +124,7 @@ Nadat de toegang tot de sleutel is hersteld, is voor de Data Base weer online ex
 
 - Als de sleutel toegang binnen acht uur wordt hersteld, wordt de data base binnen het volgende uur automatisch opnieuw geactiveerd.
 
-- Als de sleutel toegang na meer dan acht uur wordt hersteld, is het automatisch herstellen niet mogelijk en kan de Data Base een aanzienlijke hoeveelheid tijd in beslag nemen, afhankelijk van de grootte van de data base en moet er een ondersteunings ticket worden geopend. Zodra de Data Base weer online is, eerder geconfigureerde instellingen op server niveau, zoals [failover-groeps](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group) configuratie, punt-in-time-herstel geschiedenis en Tags gaan verloren. Daarom is het raadzaam om een meldings systeem te implementeren waarmee u de onderliggende sleutel toegangs problemen binnen acht uur kunt identificeren en oplossen.
+- Als de sleutel toegang na meer dan acht uur wordt hersteld, is het automatisch herstellen niet mogelijk en hebt u voor de data base extra stappen nodig op de portal. Dit kan een aanzienlijke hoeveelheid tijd duren, afhankelijk van de grootte van de data base. Zodra de Data Base weer online is, eerder geconfigureerde instellingen op server niveau, zoals [failover-groeps](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group) configuratie, punt-in-time-herstel geschiedenis en tags **gaan verloren**. Daarom is het raadzaam om een meldings systeem te implementeren waarmee u de onderliggende sleutel toegangs problemen binnen acht uur kunt identificeren en oplossen.
 
 ### <a name="accidental-tde-protector-access-revocation"></a>Onopzettelijke toegang tot TDE-Protector
 

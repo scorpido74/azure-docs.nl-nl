@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 963572e19be71bf572357aadeee443696210a262
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546347"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984962"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
@@ -1236,7 +1236,7 @@ De [`PipelineEndpoint`](https://docs.microsoft.com/python/api/azureml-pipeline-c
 
 ### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Azure Machine Learning data prep SDK v 1.1.2
 
-Opmerking: de python-SDK voor gegevens voorbereiding wordt niet meer `numpy` en `pandas` pakketten geïnstalleerd. Zie [bijgewerkte installatie-instructies](https://aka.ms/aml-data-prep-installation).
+Opmerking: de python-SDK voor gegevens voorbereiding wordt niet meer `numpy` en `pandas` pakketten geïnstalleerd. Zie [bijgewerkte installatie-instructies](https://github.com/Microsoft/AMLDataPrepDocs).
 
 + **Nieuwe functies**
   + U kunt nu de draai transformatie gebruiken.
@@ -1417,11 +1417,11 @@ Opmerking: de python-SDK voor gegevens voorbereiding wordt niet meer `numpy` en 
 + Nieuwe grafiek ervaring voor slepen en neerzetten voor rapporten. Gebruikers kunnen een kolom of kenmerk van het ene naar het grafiek gebied slepen, waar het systeem automatisch een geschikt grafiek type voor de gebruiker selecteert op basis van het type gegevens. Gebruikers kunnen het grafiek type wijzigen in andere toepasselijke typen of extra kenmerken toevoegen.
 
     Ondersteunde grafiek typen:
-    - Lijndiagram
+    - Lijn diagram
     - Histogram
     - Gestapeld staaf diagram
     - Boxplot
-    - Spreidingsplot
+    - Spreidings plot
     - Ballon tekening
 + De portal genereert nu dynamisch rapporten voor experimenten. Wanneer een gebruiker een uitvoering naar een experiment verzendt, wordt er automatisch een rapport gegenereerd met vastgelegde metrische gegevens en grafieken om vergelijking te maken tussen de verschillende uitvoeringen.
 

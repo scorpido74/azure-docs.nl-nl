@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bde2fcad6f84e4a2df5268d1135e88a263b65ee0
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: b831a3175e1dc8b19395d1c923b076ac9428690c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949113"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982905"
 ---
 # <a name="date-claims-transformations"></a>Datum claim transformaties
 
@@ -114,6 +114,35 @@ In het volgende voor beeld wordt de conversie van de claim `dateOfBirth` (gegeve
 - Uitvoer claims:
     - **output claim**: 1559347200 (1 juni 2019 12:00:00 uur)
 
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim 
+
+Converteert een datum **/tijd** -claim type naar een **date** claim type. De claim transformatie verwijdert de tijd notatie van de datum.
+
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | Datum/tijd | Het claim type dat moet worden geconverteerd. |
+| OutputClaim | outputClaim | date | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
+
+In het volgende voor beeld ziet u de conversie van de claim `systemDateTime` (gegevens type dateTime) naar een andere claim `systemDate` (gegevens type datum).
+
+```XML
+<ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="systemDate" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Voorbeeld
+
+- Invoer claims:
+  - **input claim**: 1559347200 (1 juni 2019 12:00:00 uur)
+- Uitvoer claims:
+  - **output claim**: 2019-06-01
+
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
 De huidige UTC-datum en-tijd ophalen en de waarde toevoegen aan een claim type.
@@ -143,7 +172,7 @@ Bepalen of een datum/tijd later, eerder of gelijk aan een andere dateTime is. He
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | firstDateTime | Datum/tijd | De eerste datum/tijd om te vergelijken of deze eerder of later is dan de tweede datum/tijd. Null-waarde genereert een uitzonde ring. |
 | InputClaim | secondDateTime | Datum/tijd | De tweede datum/tijd om te vergelijken of deze eerder of later is dan de eerste datum/tijd. Null-waarde wordt beschouwd als de huidige datetTime. |
-| InputParameter | operator | string | Een van de volgende waarden: zelfde, later dan of eerder dan. |
+| InputParameter | and | string | Een van de volgende waarden: zelfde, later dan of eerder dan. |
 | InputParameter | timeSpanInSeconds | int | De time span toevoegen aan de eerste datum/tijd. |
 | OutputClaim | Resultaat | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dcebcc3e2021938f3fd3bde236ef08e4f26b8a97
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: f0d6d74271cc4ff0be4a653b389cc70ad5c56ef9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949888"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983075"
 ---
 # <a name="boolean-claims-transformations"></a>Booleaanse claim transformaties
 
@@ -114,6 +114,44 @@ Het zelfondertekende technische profiel aanroept het technische profiel voor val
     - **valueToCompareTo**: True
 - Resultaat: er is een fout opgetreden
 
+## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
+
+Controleert of de Booleaanse waarde van een claims gelijk is aan `true` of `false`en retourneert het resultaat van de compressie. 
+
+| Item | TransformationClaimType  | Gegevenstype  | Opmerkingen |
+| ---- | ------------------------ | ---------- | ----- |
+| inputClaim | inputClaim | booleaans | Het claim type dat moet worden bevestigd. |
+| InputParameter |valueToCompareTo | booleaans | De waarde die moet worden vergeleken (waar of onwaar). |
+| OutputClaim | inputClaim | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
+
+
+De volgende claim transformatie laat zien hoe u de waarde van een Booleaanse claim type met een `true` waarde controleert. Als de waarde van de `IsAgeOver21Years` claim type gelijk is aan `true`, retourneert de claim transformatie `true`, anders `false`.
+
+```XML
+<ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="IsAgeOver21Years" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="valueToCompareTo" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+      <OutputClaim  ClaimTypeReferenceId="accountEnabled" TransformationClaimType="compareResult"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Voorbeeld
+
+- Invoer claims:
+    - **input claim**: False
+- Invoer parameters:
+    - **valueToCompareTo**: True
+- Uitvoer claims:
+    - **compareResult**: False 
+
+
+
 ## <a name="notclaims"></a>NotClaims
 
 Hiermee wordt een niet-bewerking uitgevoerd van de Booleaanse input claim en wordt de output claim ingesteld met het resultaat van de bewerking.
@@ -174,4 +212,3 @@ De volgende claims transformatie laat zien hoe u `Or` twee Booleaanse ClaimTypes
     - **inputClaim2**: False
 - Uitvoer claims:
     - **output claim**: True
-

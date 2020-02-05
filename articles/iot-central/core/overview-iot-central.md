@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a1aa2f12f62a95ac14750c821079df2bac46e8ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6c62b247da9447138bd7e5d84dfe49fdf75a06fd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434973"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990756"
 ---
 <!---
 Purpose of an Overview article: 
@@ -69,6 +69,13 @@ Als maker kunt u de gebruikersinterface van de Azure IoT Central-toepassing ook 
 - Het definiëren van de indeling van eigenschappen en instellingen in een apparaatsjabloon.
 - Het configureren van aangepaste dashboards, zodat operators nieuwe inzichten kunnen krijgen en problemen sneller kunnen oplossen.
 - Het configureren van aangepaste analyses om tijdseriegegevens van uw verbonden apparaten te verkennen.
+
+## <a name="pricing"></a>Prijzen
+
+U kunt IoT Central-toepassing maken met een gratis proef versie van 7 dagen of een Standard-prijs plan gebruiken.
+
+- Toepassingen die u maakt met behulp van het *gratis* abonnement, zijn zeven dagen gratis en ondersteunen Maxi maal vijf apparaten. U kunt ze op elk gewenst moment converteren om een standaard-prijs plan te gebruiken voordat ze verlopen.
+- Toepassingen die u maakt met behulp van het *Standard* -abonnement, worden per apparaat gefactureerd. u kunt het prijs plan **Standard 1** of **Standard 2** kiezen waarbij de eerste twee apparaten gratis zijn. Meer informatie over [IOT Central prijzen](https://aka.ms/iotcentral-pricing).
 
 ## <a name="connect-your-devices"></a>Uw apparaten verbinden
 

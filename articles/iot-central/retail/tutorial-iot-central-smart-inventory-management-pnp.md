@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: d72636265ff3ac654faba91d1420b502b35d3192
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ce1b8e80806935ca3d35814e73790f191b3e4733
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889006"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984016"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Zelf studie: een sjabloon voor slimme inventaris beheer toepassing implementeren en door lopen
 
@@ -22,7 +22,7 @@ In deze zelf studie leert u hoe u aan de slag gaat door een IoT Central **Smart 
 
 In deze zelf studie leert u hoe u 
 * Smart Inventory Management-toepassing maken 
-* Door loop de toepassing 
+* door loop de toepassing 
 
 ## <a name="prerequisites"></a>Vereisten
 * Er zijn geen specifieke vereisten vereist voor het implementeren van deze app
@@ -33,19 +33,22 @@ In deze zelf studie leert u hoe u
 U kunt een toepassing maken met behulp van de volgende stappen
 1. Ga naar de website van Azure IoT Central Application Manager. Selecteer **samen stellen** in de navigatie balk aan de linkerkant en klik vervolgens op het tabblad **detail handel** .
 
-> [!div class="mx-imgBorder"]
-> ![dash board voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    > [!div class="mx-imgBorder"]
+    > ![dash board voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
 
-2. Selecteer het tabblad **Retail** en selecteer **app maken** onder * * Smart Inventory Management * *
+2. Selecteer het tabblad **Retail** en selecteer **app maken** onder **Smart Inventory Management**
 
 3. Bij het maken van de **app** wordt een nieuw toepassings formulier geopend en worden de aangevraagde gegevens ingevuld zoals hieronder wordt weer gegeven.
    **Toepassings naam**: u kunt de voorgestelde standaard naam gebruiken of een beschrijvende toepassings naam invoeren.
-   **URL**: u kunt een aanbevolen standaard-URL gebruiken of uw BESCHRIJVENDE unieke URL voor onthouden opgeven. Vervolgens wordt de standaard instelling aanbevolen als u al een Azure-abonnement hebt of als u nog meer kunt beginnen met een gratis proef versie van zeven dagen en u op elk gewenst moment betaalt voor betalen per gebruik.
+   **URL**: u kunt een aanbevolen standaard-URL gebruiken of uw BESCHRIJVENDE unieke URL voor onthouden opgeven. Vervolgens wordt de standaard instelling aanbevolen als u al een Azure-abonnement hebt. U kunt beginnen met een gratis proef abonnement van 7 dagen en ervoor kiezen om op elk gewenst moment te converteren naar een Standard-prijs plan voordat het gratis Trail verloopt.
    **Facturerings gegevens**: de adres lijst, het Azure-abonnement en de regio gegevens zijn vereist om de resources in te richten.
    **Maken**: Selecteer maken onder aan de pagina om uw toepassing te implementeren.
 
-> [!div class="mx-imgBorder"]
-> ![dash board voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    > [!div class="mx-imgBorder"]
+    > ![dash board voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+
+    > [!div class="mx-imgBorder"]
+    > facturerings gegevens voor Smart Inventory Management ![](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
 
 ## <a name="walk-through-the-application"></a>Door loop de toepassing 
 

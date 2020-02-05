@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 145aa87841c6334f7fa12535103b5e97db9c6918
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6fa4521cb50ecfc37004cbf9cff08644dc53f000
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702026"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990630"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Zelf studie: een in-Store Analytics-toepassing maken in azure IoT Central
 
@@ -80,6 +80,8 @@ Voor het maken van een nieuwe toepassing in de Store Analytics-uitchecking die g
 1. Selecteer **Maken**.
 
     ![Pagina Toepassing maken van Azure IoT Central](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template.png)
+
+    ![Facturerings gegevens van de toepassing Azure IoT Central maken](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template-billinginfo.png)
 
 ## <a name="customize-application-settings"></a>Toepassings instellingen aanpassen
 Als ontwerper kunt u verschillende instellingen wijzigen om de gebruikers ervaring in uw toepassing aan te passen. In deze sectie selecteert u een vooraf gedefinieerd toepassings thema. U leert ook hoe u een aangepast thema maakt en hoe u de installatie kopie van de toepassing bijwerkt. Met een aangepast thema kunt u de kleuren van de toepassings browser, het browser pictogram en het toepassings logo dat wordt weer gegeven in het Impressum instellen.
@@ -186,7 +188,7 @@ Voor het `humidity` type telemetrie brengt u de volgende wijzigingen aan:
 
 1. Wijzig de optie **semantisch type** van *geen* in *vochtigheid*.  Stel eventueel schema waarden in voor het type telemetrie van de vochtigheid in de uitgevouwen schema weergave. Met schema-instellingen kunt u gedetailleerde validatie vereisten maken voor de gegevens die uw Sens oren volgen. U kunt bijvoorbeeld minimum-en maximum waarden voor het besturings bereik instellen voor een bepaalde interface.
 
-1. Selecteer **Opslaan** om uw wijzigingen op te slaan.
+1. Selecteer **opslaan** uw wijzigingen op te slaan.
 
     ![Aanpassing van Azure IoT Central RuuviTag-Apparaatbeheer](./media/tutorial-in-store-analytics-create-app-pnp/ruuvitag-device-template-customize.png)
 

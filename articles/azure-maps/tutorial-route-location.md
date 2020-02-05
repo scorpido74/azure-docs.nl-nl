@@ -3,18 +3,18 @@ title: 'Zelf studie: route naar een locatie zoeken | Microsoft Azure kaarten'
 description: Deze zelf studie laat zien hoe u route naar een locatie (belang rijke punt) kunt weer geven op een kaart met behulp van Microsoft Azure Maps Routing-service.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 3fedb045773cb975d37e2d866862e7863a6232e3
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910839"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989634"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Zelf studie: route naar een nuttige plaats met behulp van Azure Maps
 
@@ -27,7 +27,7 @@ Deze zelfstudie laat zien hoe u uw Azure Maps-account en de Route Service SDK ge
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u verdergaat, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps account met de prijs categorie S1 en volgt u de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
+Voordat u doorgaat, volgt u de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps). u hebt een abonnement met de prijs categorie S1 nodig. Volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
 <a id="getcoordinates"></a>
 
@@ -139,7 +139,7 @@ In deze zelfstudie wordt een eenvoudige route weergegeven met behulp van een sym
     });
     ```
     
-    In de gebeurtenis-handler Maps `ready` wordt een gegevens bron gemaakt voor het opslaan van de route lijn en de begin-en eind punten. Er wordt een lijnlaag gemaakt en aan de gegevensbron gekoppeld waarmee wordt gedefinieerd hoe de routelijn wordt weergegeven. De routelijn wordt weergegeven met een blauwe schaduw met een breedte van 5 pixels, en afgeronde verbindingen en eindstukken. Als u de laag toevoegt aan de kaart wordt een tweede parameter met de waarde `'labels'` doorgegeven. Hiermee wordt bepaald dat deze laag onder de kaartlabels wordt weergegeven. Zo kunt u er zeker van zijn dat de routelijnen de straatlabels niet bedekken. Er wordt een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de begin- en eindpunten worden weergegeven. In dit geval zijn er expressies toegevoegd om de afbeelding van het pictogram en de tekstlabelgegevens op te halen uit de eigenschappen van elk puntobject. 
+    In de gebeurtenis-handler Maps `ready` wordt een gegevens bron gemaakt voor het opslaan van de route lijn en de begin-en eind punten. Er wordt een lijnlaag gemaakt en aan de gegevensbron gekoppeld waarmee wordt gedefinieerd hoe de routelijn wordt weergegeven. De route lijn wordt weer gegeven als een fraaie tint van blauw. Het heeft een breedte van vijf pixels, afgeronde lijn koppelingen en cap's. Als u de laag toevoegt aan de kaart wordt een tweede parameter met de waarde `'labels'` doorgegeven. Hiermee wordt bepaald dat deze laag onder de kaartlabels wordt weergegeven. Zo kunt u er zeker van zijn dat de routelijnen de straatlabels niet bedekken. Er wordt een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de begin-en eind punten worden weer gegeven. In dit geval zijn er expressies toegevoegd voor het ophalen van de pictogram afbeelding en tekst label informatie uit eigenschappen van elk object Point. 
     
 2. Voor deze zelfstudie stelt u Microsoft in als beginpunt en een benzinestation in Seattle als eindpunt. Voeg de volgende code toe in de gebeurtenis-handler Maps `ready`.
 
@@ -164,7 +164,7 @@ In deze zelfstudie wordt een eenvoudige route weergegeven met behulp van een sym
     });
     ```
 
-    Deze code maakt twee [GEOjson-punt objecten](https://en.wikipedia.org/wiki/GeoJSON) die de begin-en eind punten van de route vertegenwoordigen en voegt de punten aan de gegevens bron toe. Aan elk punt wordt een eigenschap `title` en `icon` toegevoegd. In de laatste blok kering wordt de camera weergave ingesteld met behulp van de breedte-en lengte graadgegevens van het begin-en eind punt, met behulp van de eigenschap [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) van de kaart.
+    Deze code maakt twee [GEOjson-punt objecten](https://en.wikipedia.org/wiki/GeoJSON) die de begin-en eind punten van de route vertegenwoordigen en voegt de punten aan de gegevens bron toe. Aan elk punt wordt een eigenschap `title` en `icon` toegevoegd. In de laatste blok kering wordt de camera weergave ingesteld met behulp van de breedte graad en de lengte graad van het begin-en eind punt, met behulp van de eigenschap [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) van de kaart.
 
 3. Sla het bestand **MapRoute.html** op en vernieuw de browser. De kaart is nu gecentreerd op Seattle en u ziet de blauwe pincode die het begin punt markeert en de ronde blauwe PIN die het eind punt markeert.
 
@@ -174,9 +174,9 @@ In deze zelfstudie wordt een eenvoudige route weergegeven met behulp van een sym
 
 ## <a name="get-directions"></a>Routebeschrijving ophalen
 
-In deze sectie wordt uitgelegd hoe u Azure Maps route Service-API kunt gebruiken om de route van een bepaald begin punt naar het eind punt te vinden. De routeservice biedt API's om de *snelste*, *kortste*, *zuinigste* of *leukste* route tussen twee locaties te plannen. Ook kunnen gebruikers in de toekomst routes plannen met behulp van de uitgebreide historische verkeersdatabase van Azure en de duur van de route voor elke dag en tijd voorspellen. Zie [Routebeschrijvingen ophalen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) voor meer informatie. Alle van de volgende functies moeten worden toegevoegd aan **de eventListener van de kaart** . zo kunt u ervoor zorgen dat ze worden geladen nadat de kaart bronnen gereed zijn om te worden geopend.
+In deze sectie wordt beschreven hoe u Azure Maps route Service-API gebruikt. De route Service-API vindt de route van een bepaald begin punt naar een eind punt. Binnen deze service zijn er Api's voor het plannen van *snelste*, *kortste*, *milieu*-of *Thrilling* routes tussen twee locaties. Met deze service kunnen gebruikers ook in de toekomst routes plannen met behulp van de uitgebreide data base van het historische verkeer van Azure. Gebruikers kunnen de voor spelling van de route duur op elke gekozen dag en tijd zien. Zie [Routebeschrijvingen ophalen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) voor meer informatie. Alle van de volgende functies moeten worden toegevoegd aan **de eventListener van de kaart** . zo kunt u ervoor zorgen dat ze worden geladen nadat de kaart bronnen gereed zijn om te worden geopend.
 
-1. Voeg in de functie GetMap het volgende toe aan java script-code.
+1. Voeg in de functie GetMap het volgende toe aan de Java script-code.
 
     ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key

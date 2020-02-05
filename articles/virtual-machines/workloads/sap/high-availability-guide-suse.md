@@ -3,8 +3,8 @@ title: Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op SUSE L
 description: Hand leiding voor hoge Beschik baarheid voor SAP NetWeaver op SUSE Linux Enterprise Server voor SAP-toepassingen
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
-ms.author: sedusch
-ms.openlocfilehash: d08f17bd22188f3d969261d8626d47a9e0faf08e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 02/03/2020
+ms.author: radeltch
+ms.openlocfilehash: 77a26d229ddc4ce5f35fde3db010e3b7c146a563
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839612"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985514"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server voor SAP-toepassingen
 
@@ -159,7 +159,7 @@ U kunt een van de Quick Start-sjablonen op GitHub gebruiken voor het implementer
    9. Gebruikers naam en beheerders wachtwoord voor beheerder  
       Er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
    10. Subnet-ID  
-   Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID is doorgaans hetzelfde als/Subscriptions/ **&lt;abonnement-id&gt;** /resourceGroups/ **&lt;resource groeps naam&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;naam van het virtuele netwerk&gt;** /subnets/ **&lt;subnet naam&gt;**
+   Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De ID is doorgaans hetzelfde als/Subscriptions/ **&lt;abonnement-id&gt;** /resourceGroups/ **&lt;resource groeps naam&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;naam van het virtuele netwerk&gt;** /subnets/&lt;naam van het **subnet&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Linux hand matig implementeren via Azure Portal
 
@@ -269,7 +269,7 @@ Volg de stappen bij het [instellen van pacemaker op SuSE Linux Enterprise Server
 
 ### <a name="installation"></a>Installeren
 
-De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1 of **[2]** -alleen van toepassing op knoop punt 2.
+De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle knooppunten **[1]** - alleen van toepassing op knooppunt 1 of **[2]** - alleen van toepassing op knooppunt 2.
 
 1. **[A]** SuSE-connector installeren
 
@@ -277,7 +277,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    </code></pre>
 
    > [!NOTE]
-   > Gebruik geen streepjes in de hostnamen van de cluster knooppunten. Als dat niet het geval is, werkt het cluster niet. Dit is een bekende beperking en SUSE werkt aan een oplossing. De oplossing wordt uitgebracht als patch van het SAP-SuSE-Cloud connector-pakket.
+   > Het bekende probleem met het gebruik van een streepje in hostnamen is opgelost met versie **3.1.1** van het pakket **SAP-SuSE-cluster-connector**. Zorg ervoor dat u ten minste versie 3.1.1 van package SAP-SuSE-cluster-connector gebruikt, als cluster knooppunten worden gebruikt met een streepje in de hostnaam. Als dat niet het geval is, werkt het cluster niet. 
 
    Zorg ervoor dat u de nieuwe versie van de SAP SUSE-cluster connector hebt geïnstalleerd. Het oude werd sap_suse_cluster_connector genoemd en de nieuwe heet **SAP-SuSE-cluster-connector**.
 
@@ -319,15 +319,15 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    sudo zypper in -t patch SUSE-SLE-HA-12-SP2-2017-886=1
    </code></pre>
 
-1. **[A]** omzetting van hostnaam van installatie
+1. **[A]**  Omzetten van de hostnaam instellen
 
-   U kunt een DNS-server gebruiken of de bestand/etc/hosts wijzigen op alle knoop punten. In dit voor beeld ziet u hoe u het bestand/etc/hosts-bestand gebruikt.
+   U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Voeg de volgende regels toe aan/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving   
+   Voeg de volgende regels/etc/hosts. De IP-adres en hostnaam zodat deze overeenkomen met uw omgeving wijzigen   
 
    <pre><code># IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
@@ -446,7 +446,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 
 1. **[1]** SAP NetWeaver ASCS installeren  
 
-   Installeer SAP NetWeaver ASCS als root op het eerste knoop punt met behulp van een virtuele hostnaam die verwijst naar het IP-adres van de load balancer frontend-configuratie voor de ASCS, bijvoorbeeld <b>NW1-ASCS</b>, <b>10.0.0.7</b> en het instantie nummer dat u hebt gebruikt voor de test van de load balancer, bijvoorbeeld <b>00</b>.
+   Installeer SAP NetWeaver ASCS als root op het eerste knoop punt met behulp van een virtuele hostnaam die verwijst naar het IP-adres van de load balancer frontend-configuratie voor de ASCS, bijvoorbeeld <b>NW1-ASCS</b>, <b>10.0.0.7</b> en het exemplaar nummer dat u hebt gebruikt voor de test van de Load Balancer, bijvoorbeeld <b>00</b>.
 
    U kunt de para meter sapinst SAPINST_REMOTE_ACCESS_USER gebruiken om een niet-hoofd gebruiker verbinding te laten maken met sapinst.
 
@@ -505,7 +505,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 
 1. **[2]** SAP NetWeaver ers installeren
 
-   Installeer SAP NetWeaver ERS als root op het tweede knoop punt met behulp van een virtuele hostnaam die verwijst naar het IP-adres van de load balancer frontend-configuratie voor de ERS, bijvoorbeeld <b>NW1-Aers</b>, <b>10.0.0.8</b> en het instantie nummer dat u hebt gebruikt voor de test van de load balancer, bijvoorbeeld <b>02</b>.
+   Installeer SAP NetWeaver ERS als root op het tweede knoop punt met behulp van een virtuele hostnaam die verwijst naar het IP-adres van de load balancer frontend-configuratie voor de ERS, bijvoorbeeld <b>NW1-Aers</b>, <b>10.0.0.8</b> en het exemplaar nummer dat u hebt gebruikt voor de test van de Load Balancer, bijvoorbeeld <b>02</b>.
 
    U kunt de para meter sapinst SAPINST_REMOTE_ACCESS_USER gebruiken om een niet-hoofd gebruiker verbinding te laten maken met sapinst.
 
@@ -669,7 +669,7 @@ In de stappen onderstaande wordt ervan uitgegaan dat u de toepassings server ins
 
 1. Besturings systeem configureren
 
-   Verklein de omvang van de gewijzigde cache. Zie [lage schrijf prestaties op SLES 11/12-servers met grote hoeveel heden RAM-geheugen](https://www.suse.com/support/kb/doc/?id=7010287)voor meer informatie.
+   Reduceer de grootte van de vervuilde cache. Zie voor meer informatie, [laag schrijfvaardigheden op SLES 11/12 servers met grote RAM](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>sudo vi /etc/sysctl.conf
 
@@ -680,14 +680,14 @@ In de stappen onderstaande wordt ervan uitgegaan dat u de toepassings server ins
 
 1. Omzetting van hostnamen instellen
 
-   U kunt een DNS-server gebruiken of de bestand/etc/hosts wijzigen op alle knoop punten. In dit voor beeld ziet u hoe u het bestand/etc/hosts-bestand gebruikt.
+   U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
 
    ```bash
    sudo vi /etc/hosts
    ```
 
-   Voeg de volgende regels toe aan/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving
+   Voeg de volgende regels/etc/hosts. De IP-adres en hostnaam zodat deze overeenkomen met uw omgeving wijzigen
 
    <pre><code># IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
@@ -909,7 +909,7 @@ De volgende tests zijn een kopie van de test cases in de best practices-gidsen v
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-1. HAFailoverToNode testen
+1. Test HAFailoverToNode
 
    Resource status voordat u begint met testen:
 

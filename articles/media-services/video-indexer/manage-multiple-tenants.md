@@ -1,6 +1,6 @@
 ---
-title: Beheren van meerdere tenants met Video Indexer - Azure
-description: Dit artikel bevat verschillende integratie-opties voor het beheren van meerdere tenants met Video Indexer.
+title: Meerdere tenants beheren met Video Indexer-Azure
+description: In dit artikel worden verschillende integratie opties voor het beheren van meerdere tenants met Video Indexer voorgesteld.
 services: media-services
 documentationcenter: ''
 author: ika-microsoft
@@ -13,69 +13,69 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: a9b75c3454c67112b0e00c7ea4b4e8c676ebcc97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65949463"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990501"
 ---
 # <a name="manage-multiple-tenants"></a>Meerdere tenants beheren
 
-Dit artikel worden verschillende opties voor het beheren van meerdere tenants met Video Indexer. Kies een methode die het meest geschikt is voor uw scenario:
+In dit artikel worden verschillende opties beschreven voor het beheren van meerdere tenants met Video Indexer. Kies een methode die het meest geschikt is voor uw scenario:
 
-* Video Indexer-account per tenant
-* Enkele Video Indexer-account voor alle tenants
-* Azure-abonnement per tenant
+* Video Indexer account per Tenant
+* Eén Video Indexer account voor alle tenants
+* Azure-abonnement per Tenant
 
-## <a name="video-indexer-account-per-tenant"></a>Video Indexer-account per tenant
+## <a name="video-indexer-account-per-tenant"></a>Video Indexer account per Tenant
 
-Wanneer u deze architectuur gebruikt, wordt voor elke tenant een Video Indexer-account gemaakt. De tenants hebben volledige isolatie in de permanente en compute-laag.  
+Wanneer u deze architectuur gebruikt, wordt er voor elke Tenant een Video Indexer-account gemaakt. De tenants hebben een volledige isolatie in de permanente en Compute-laag.  
 
-![Video Indexer-account per tenant](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
+![Video Indexer account per Tenant](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
 
 ### <a name="considerations"></a>Overwegingen
 
-* Klanten delen geen storage-accounts (tenzij handmatig worden geconfigureerd door de klant).
-* Klanten delen geen compute (gereserveerde eenheden) en niet van invloed zijn op taken verwerkingstijden van elkaar.
-* U kunt gemakkelijk een tenant verwijderen uit het systeem door het verwijderen van de Video Indexer-account.
-* Er is geen mogelijkheid voor het delen van aangepaste modellen tussen tenants.
+* Klanten delen geen opslag accounts (tenzij ze hand matig zijn geconfigureerd door de klant).
+* Klanten delen geen reken capaciteit (gereserveerde eenheden) en hebben geen invloed op de verwerkings taken van elkaar.
+* U kunt eenvoudig een Tenant verwijderen uit het systeem door het Video Indexer-account te verwijderen.
+* Het is niet mogelijk om aangepaste modellen te delen tussen tenants.
 
-    Zorg ervoor dat er geen bedrijfsvereiste voor het delen van aangepaste modellen.
-* Moeilijker vanwege meerdere Video Indexer (en bijbehorende Media Services) om accounts te beheren per tenant.
+    Zorg ervoor dat er geen zakelijke vereiste is om aangepaste modellen te delen.
+* Moeilijker te beheren vanwege meerdere Video Indexer (en gekoppelde Media Services) accounts per Tenant.
 
 > [!TIP]
-> Maak een gebruiker met beheerdersrechten voor uw systeem in [Video Indexer-Ontwikkelaarsportal](https://api-portal.videoindexer.ai/) en gebruik van de autorisatie-API voor uw tenants de relevante [toegangstoken voor account](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token).
+> Maak een gebruiker met beheerders rechten voor uw systeem in [video indexer ontwikkelaars Portal](https://api-portal.videoindexer.ai/) en gebruik de autorisatie-API om uw tenants het relevante [account toegangs token](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token)te geven.
 
-## <a name="single-video-indexer-account-for-all-users"></a>Enkele Video Indexer-account voor alle gebruikers
+## <a name="single-video-indexer-account-for-all-users"></a>Eén Video Indexer account voor alle gebruikers
 
-Wanneer u deze architectuur, is de klant verantwoordelijk voor isolatie van tenants. Alle tenants hebben voor het gebruik van een enkele Video Indexer-account met één Azure Media Service-account. Tijdens het uploaden, moet te zoeken of verwijderen van inhoud, de klant de juiste resultaten filteren voor de tenant.
+Wanneer deze architectuur wordt gebruikt, is de klant verantwoordelijk voor de isolatie van tenants. Alle tenants moeten één Video Indexer account gebruiken met één Azure media service-account. Wanneer u inhoud uploadt, zoekt of verwijdert, moet de klant de juiste resultaten voor die Tenant filteren.
 
-![Enkele Video Indexer-account voor alle gebruikers](./media/manage-multiple-tenants/single-video-indexer-account-for-all-users.png)
+![Eén Video Indexer account voor alle gebruikers](./media/manage-multiple-tenants/single-video-indexer-account-for-all-users.png)
 
-Met deze optie kunnen aanpassing modellen (persoon, taal en merken) worden gedeeld of geïsoleerd tussen tenants door het filteren van de modellen door de tenant.
+Met deze optie kunnen aanpassings modellen (persoon, taal en merken) worden gedeeld of geïsoleerd tussen tenants door de modellen te filteren op Tenant.
 
-Wanneer [video's uploaden](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), kunt u een andere partitie kenmerk per tenant. Hierdoor kunnen isolatie in de [zoeken-API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Door het kenmerk partitie op te geven in de search-API wordt u alleen de resultaten van de opgegeven partitie ophalen. 
+Wanneer u [Video's uploadt](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), kunt u een ander partitie kenmerk per Tenant opgeven. Hiermee wordt isolatie in de [zoek-API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?)toegestaan. Door het partitie kenmerk in de zoek-API op te geven, krijgt u alleen resultaten van de opgegeven partitie. 
 
 ### <a name="considerations"></a>Overwegingen
 
-* De mogelijkheid voor het delen van inhoud en aanpassing modellen tussen tenants.
-* Een tenant heeft gevolgen voor de prestaties van andere tenants.
-* Klant nodig heeft om te maken van een complexe beheerscenario laag bovenop Video Indexer.
+* De mogelijkheid om inhoud en aanpassings modellen te delen tussen tenants.
+* Eén Tenant heeft invloed op de prestaties van andere tenants.
+* De klant moet een complexe Management-laag op Video Indexer bouwen.
 
 > [!TIP]
-> U kunt de [prioriteit](upload-index-videos.md) kenmerk om tenants taken prioriteit te geven.
+> U kunt het kenmerk [Priority](upload-index-videos.md) gebruiken om taken voor tenants prioriteit te geven.
 
-## <a name="azure-subscription-per-tenant"></a>Azure-abonnement per tenant 
+## <a name="azure-subscription-per-tenant"></a>Azure-abonnement per Tenant 
 
-Wanneer u deze architectuur gebruikt, wordt elke tenant hun eigen Azure-abonnement hebt. Voor elke gebruiker maakt u een nieuwe Video Indexer-account in de tenantabonnement.
+Wanneer u deze architectuur gebruikt, heeft elke Tenant hun eigen Azure-abonnement. Voor elke gebruiker maakt u een nieuw Video Indexer-account in het Tenant abonnement.
 
-![Azure-abonnement per tenant](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
+![Azure-abonnement per Tenant](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 
 ### <a name="considerations"></a>Overwegingen
 
-* Dit is de enige optie waarmee facturering scheiding.
-* Deze integratie heeft meer beheer-overhead vereist dan Video Indexer-account per tenant. Als de facturering is geen vereiste, wordt het aanbevolen gebruik van een van de andere opties die in dit artikel wordt beschreven.
+* Dit is de enige optie voor het inschakelen van factuur scheiding.
+* Deze integratie heeft meer beheer overhead dan Video Indexer account per Tenant. Als facturering geen vereiste is, kunt u het beste een van de andere opties gebruiken die in dit artikel worden beschreven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

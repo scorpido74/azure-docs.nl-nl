@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/23/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f67a5b5513ad5d8a07551b2a9f5605fc32a9bf6
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 6c80963976783321d05fc6f32bb24daed36fa105
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561844"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985530"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met toegestane vertraging
 
@@ -46,6 +46,7 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 * Slack ondersteunt eenmalige aanmelding die wordt gestart vanuit **SP**
 * Slack biedt ondersteuning voor het **Just In Time** inrichten van gebruikers
 * Slack biedt ondersteuning voor het [**geautomatiseerd**](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial) inrichten van gebruikers
+* Zodra u de toegestane vertraging hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
@@ -193,3 +194,5 @@ Wanneer u op de tegel Slack in het toegangsvenster klikt, zou u automatisch moet
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer vertraging met Azure AD](https://aad.portal.azure.com/)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

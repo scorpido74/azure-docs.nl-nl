@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: bcf100236d4a2a707a007a24e9e51105cc9ca0ac
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911032"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991194"
 ---
 # <a name="weather-services-in-azure-maps"></a>Weer Services in Azure Maps
 
@@ -21,13 +21,13 @@ In dit artikel worden concepten geïntroduceerd die van toepassing zijn op de [A
 
 ## <a name="unit-types"></a>Eenheids typen
 
-Sommige van de weers-Api's kunnen gebruikers toestaan om op te geven of de gegevens worden geretourneerd in metrische eenheden of als Britse maat eenheid. Het geretourneerde antwoord voor deze Api's bevat ook unit type, een numerieke waarde die kan worden gebruikt voor eenheids vertalingen. Raadpleeg de onderstaande tabel om deze waarden te interpreteren.
+Sommige van de weers-Api's kunnen gebruikers toestaan om op te geven of de gegevens worden geretourneerd in metrische eenheden of als Britse maat eenheid. De geretourneerde antwoorden voor deze Api's zijn unit type en een numerieke waarde die kan worden gebruikt voor eenheids vertalingen. Zie de tabel hieronder om deze waarden te interpreteren.
 
 |Unit type|Beschrijving         |
 |--------|--------------------|
 |0       |meter                |
 |1       |Mm              |
-|2       |mijl               |
+|2       |km               |
 |3       |millimeter          |
 |4       |x          |
 |5       |verbinding               |
@@ -52,7 +52,7 @@ Sommige van de weers-Api's kunnen gebruikers toestaan om op te geven of de gegev
 
 ## <a name="weather-icons"></a>Weer pictogrammen
 
-Sommige van de weer service-Api's retour neren pictogram codes (iconCode) in het antwoord, een numerieke waarde die kan worden gebruikt om het pictogram te definiëren. Koppel geen rechtstreeks aan deze installatie kopieën vanuit uw toepassingen. de Url's kunnen worden gewijzigd.
+Sommige van de weer service-Api's retour neren de `iconCode` in het antwoord. De `iconCode` is een numerieke waarde die wordt gebruikt om het pictogram te definiëren. U kunt niet rechtstreeks vanuit uw toepassingen een koppeling naar deze installatie kopieën maken, de Url's kunnen worden gewijzigd.
 
 | Pictogram nummer |Pictogram| Dag | 'S | Tekst |
 |-------------|:----:|-----|-------|------|
@@ -82,7 +82,7 @@ Sommige van de weer service-Api's retour neren pictogram codes (iconCode) in het
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Ja |  Ja   | Vries regen|
 | 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Ja |  Ja   | Regen en sneeuw|
 | 30           |![](./media/weather-services-concepts/hot-i.png)                       | Ja |  Ja   | Warm|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Ja |  Ja   | Koud|
+| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Ja |  Ja   | Huizen|
 | 32           |![](./media/weather-services-concepts/windy-i.png)                     | Ja |  Ja   | Wikkeling|
 | 33           |![](./media/weather-services-concepts/clear-night.png)                | Nee  |  Ja   | Wissen|
 | 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Nee  |  Ja   | Voornamelijk wissen|
@@ -100,7 +100,7 @@ Sommige van de weer service-Api's retour neren pictogram codes (iconCode) in het
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>Kleuren schaal radar-en satelliet afbeelding
 
-Via de [kaart tegel ophalen v2 API](https://aka.ms/AzureMapsWeatherTiles) kunnen gebruikers nieuwste radar-en infra rood satelliet installatie kopieën aanvragen. Zie de onderstaande hand leiding voor informatie over het interpreteren van kleuren die worden gebruikt voor radar-en satelliet tegels.
+Via de [kaart tegel ophalen v2 API](https://aka.ms/AzureMapsWeatherTiles) kunnen gebruikers nieuwste radar-en infra rood satelliet installatie kopieën aanvragen. Zie de onderstaande hand leiding voor het interpreteren van kleuren die worden gebruikt voor radar-en satelliet tegels.
 
 ### <a name="radar-images"></a>Radar afbeeldingen
 

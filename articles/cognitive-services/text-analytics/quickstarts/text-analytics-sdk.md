@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: Text Analytics-client bibliotheek v3 | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: In deze Snelstartgids kunt u de taal detecteren met behulp van de Text Analytics-API van Azure Cognitive Services.
+description: Gebruik deze Quick Start om uw toepassingen te verbinden met de Text Analytics-API van Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,46 +10,79 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/23/2020
 ms.author: aahi
-zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 89680ad61296cd225bb87d2d6b46259586304da2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+zone_pivot_groups: programming-languages-text-analytics
+ms.openlocfilehash: 87cf5f226a8b2d1efcc0ee967d84f6e0002cb03d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774114"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987884"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-v3"></a>Snelstartgids: de Text Analytics-client bibliotheek v3 gebruiken
+# <a name="quickstart-use-the-text-analytics-client-library"></a>Snelstartgids: de Text Analytics-client bibliotheek gebruiken
 
 Aan de slag met de Text Analytics-client bibliotheek. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
 
-Gebruik de Text Analytics-`3.0-preview` versie van de client bibliotheek om de volgende handelingen uit te voeren:
+De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 
-* Sentiment analyse (open bare preview)
+* Sentimentanalyse
 * Taaldetectie
-* Herkenning van benoemde entiteiten (open bare preview)
+* Herkenning van entiteiten
 * Sleuteluitdrukkingen extraheren
 
 ::: zone pivot="programming-language-csharp"
 
-[!INCLUDE [C# quickstart](../includes/quickstarts/v3/csharp.md)]
+> [!IMPORTANT]
+> * De nieuwste preview-versie van de Text Analytics-API is `3.0-preview`, dat een open bare Preview bevat voor verbeterde [sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) en [benoemde entiteits herkenning (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). De nieuwste stabiele versie is `2.1`.
+>    * Volg alleen de instructies voor de versie die u gebruikt.
+> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie.
+
+[!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 
-[!INCLUDE [Python quickstart](../includes/quickstarts/v3/python-sdk.md)]
+> [!IMPORTANT]
+> * De nieuwste preview-versie van de Text Analytics-API is `3.0-preview`, dat een open bare Preview bevat voor verbeterde [sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) en [benoemde entiteits herkenning (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). De nieuwste stabiele versie is `2.1`.
+>    * Volg alleen de instructies voor de versie die u gebruikt.
+> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie. 
+
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 
-[!INCLUDE [Java quickstart](../includes/quickstarts/v3/java-sdk.md)]
+> [!IMPORTANT]
+> * Deze Quick start is alleen voor versie `3.0-preview` van de Text Analytics-client bibliotheek, die een open bare Preview bevat voor verbeterde [sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) en [named entity Recognition (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
+>    * Volg alleen de instructies voor de versie die u gebruikt.
+> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie.
+
+[!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
 
 ::: zone-end
 
-::: zone pivot="programming-language-nodejs"
+::: zone pivot="programming-language-javascript"
 
-[!INCLUDE [NodeJS quickstart](../includes/quickstarts/v3/nodejs-sdk.md)]
+> [!IMPORTANT]
+> * De nieuwste preview-versie van de Text Analytics-API is `3.0-preview`, dat een open bare Preview bevat voor verbeterde [sentimentanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) en [benoemde entiteits herkenning (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). De nieuwste stabiele versie is `2.1`.
+>    * Volg alleen de instructies voor de versie die u gebruikt.
+> * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie.
+
+[!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-other"
+
+## <a name="additional-language-support"></a>Aanvullende taal ondersteuning
+
+Als u op dit tabblad hebt geklikt, ziet u waarschijnlijk geen Snelstartgids in uw favoriete programmeer taal. U hebt geen zorgen. er zijn nog meer Quick starts beschikbaar. Gebruik de tabel om het juiste voor beeld voor uw programmeer taal te vinden.
+
+| Taal | Beschik bare versie | 
+|----------|------------------------|
+| Ruby     | [Versie 2,1](ruby-sdk.md)          | 
+| Go       | [Versie 2,1](go-sdk.md)          | 
 
 ::: zone-end
 

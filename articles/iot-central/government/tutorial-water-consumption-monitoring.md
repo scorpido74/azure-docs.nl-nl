@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 0b100e0bebc7c5b26449e396650da5434334075d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d31ef856103d809fc02a183603bc45f9d94939c8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112618"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990545"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Zelf studie: een toepassing voor het controleren van water verbruik maken in IoT Central
 
@@ -66,9 +66,10 @@ Voor het maken van een nieuwe Azure IoT Central-bewakings toepassing voor water 
 
     ![Pagina Toepassing maken van Azure IoT Central](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
 
+    ![Facturerings gegevens van de toepassing Azure IoT Central maken](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
 6. U hebt nu een water bewakings-app gemaakt met behulp van de Azure IoT Central **water bewakings** sjabloon.
 
-Gefeliciteerd. U bent klaar met het maken van de bewakings toepassing voor water kwaliteit, die wordt geleverd met vooraf geconfigureerde:
+Gefeliciteerd! U bent klaar met het maken van de bewakings toepassing voor water kwaliteit, die wordt geleverd met vooraf geconfigureerde:
 * Voor beeld-operator dashboards
 * Voor beeld van vooraf gedefinieerde water stroom-en klep-Apparaatinstellingen
 * Gesimuleerde water stroom-en slimme kleppen apparaten

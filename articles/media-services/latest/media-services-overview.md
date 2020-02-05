@@ -14,15 +14,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 09/17/2019
+ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c17f1094e562960e851204b40281f5b04c1d40ce
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 559050d11b6b85a9842c679b94e0e5b2fd5dd0f8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186064"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987710"
 ---
 # <a name="azure-media-services-v3-overview"></a>Overzicht van Azure Media Services v3
 
@@ -32,6 +32,14 @@ De Media Services v3 Sdk's zijn gebaseerd op [Media Services v3 OpenAPI Specific
 
 > [!NOTE]
 > Op dit moment kunt u de Azure Portal niet gebruiken voor het beheren van v3-resources. Gebruik de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+
+## <a name="compliance-privacy-and-security"></a>Naleving, privacy en beveiliging
+ 
+Als belang rijke herinnering moet u zich houden aan alle toepasselijke wetten, in het gebruik van Azure Media Services en mag u Azure Media Services of een andere Azure-service niet gebruiken op een manier die de rechten van anderen schendt of schadelijk voor anderen is. 
+
+Voordat u Video's/installatie kopieën, inclusief biometrische gegevens, uploadt naar Media Services voor verwerking en opslag, moet u (1) alle juiste rechten hebben op de Video's/installatie kopieën. en (2) hebben alle passende toestemmingen van de afzonderlijke (en) in de Video's, waardoor de biometrische gegevens in Media Services kunnen worden gebruikt en opgeslagen. 
+
+Ga naar het [vertrouwens centrum](https://www.microsoft.com/trust-center/?rtc=1)van Azure voor meer informatie over naleving, privacy en hoe micro soft uw gegevens beschermt en beveiligt in azure Media Services. Raadpleeg [de privacyverklaring van micro soft, de](https://privacy.microsoft.com/PrivacyStatement) [voor waarden voor Online Services](https://www.microsoft.com/licensing/product-licensing/products) ("Ost") en de [addendum op gegevens verwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") voor meer informatie over de privacy van micro soft en het afhandelen van uw gegevens. Informatie over het bewaren en verwijderen van klant gegevens is beschikbaar in de DPA. Door Azure Media Services te gebruiken, gaat u akkoord met de OST, de DPA en de privacyverklaring.
 
 ## <a name="what-can-i-do-with-media-services"></a>Wat kan ik doen met Media Services?
 
@@ -66,7 +74,7 @@ In de Quick starts worden de belangrijkste dag-1 instructies voor nieuwe klanten
 * [Video bestanden streamen-CLI](stream-files-cli-quickstart.md)
 * [Video bestanden streamen: node. js](stream-files-nodejs-quickstart.md)
 
-### <a name="tutorials"></a>Zelfstudies
+### <a name="tutorials"></a>Zelfstudie
 
 De zelf studies tonen op scenario's gebaseerde procedures voor een aantal van de belangrijkste Media Services taken.
 

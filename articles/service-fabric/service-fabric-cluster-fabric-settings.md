@@ -3,12 +3,12 @@ title: Instellingen van Azure Service Fabric cluster wijzigen
 description: In dit artikel worden de infrastructuur instellingen en het Fabric-upgrade beleid beschreven dat u kunt aanpassen.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 284e8ad566192f027d466ad08d66c2fc5265381d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f42cfd1b41ab463c3c3042987b5d0a0b3b00f67e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905199"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986186"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric cluster instellingen aanpassen
 In dit artikel worden de verschillende infrastructuur instellingen voor uw Service Fabric cluster beschreven die u kunt aanpassen. Voor clusters die worden gehost in azure, kunt u instellingen aanpassen via de [Azure Portal](https://portal.azure.com) of met behulp van een Azure Resource Manager sjabloon. Zie [de configuratie van een Azure-cluster upgraden](service-fabric-cluster-config-upgrade-azure.md)voor meer informatie. Voor zelfstandige clusters past u de instellingen aan door het bestand *ClusterConfig. json* bij te werken en een configuratie-upgrade uit te voeren op uw cluster. Zie [de configuratie van een zelfstandig cluster upgraden](service-fabric-cluster-config-upgrade-windows-server.md)voor meer informatie.
@@ -831,7 +831,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 | **Parameter** | **Toegestane waarden** | **Upgrade beleid** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|teken reeks, standaard instelling is| Statisch |De netwerk naam die moet worden gebruikt bij het instellen van een container netwerk.|
-|ContainerNetworkSetup|BOOL, default is FALSE| Statisch |Hiermee wordt aangegeven of een container netwerk moet worden ingesteld.|
+|ContainerNetworkSetup|BOOL, default is FALSE (Linux) en de standaard waarde is TRUE (Windows)| Statisch |Hiermee wordt aangegeven of een container netwerk moet worden ingesteld.|
 |FabricDataRoot |Tekenreeks | Niet toegestaan |Service Fabric data root directory. De standaard instelling voor Azure is d:\svcfab |
 |FabricLogRoot |Tekenreeks | Niet toegestaan |Basismap van het service Fabric-logboek. Hier worden SF-logboeken en-traceringen geplaatst. |
 |NodesToBeRemoved|teken reeks, standaard instelling is| Dynamisch |De knoop punten die moeten worden verwijderd als onderdeel van de configuratie-upgrade. (Alleen voor zelfstandige implementaties)|

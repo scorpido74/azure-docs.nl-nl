@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 5560cb31e31f7cf33ac8ae71d649e88be3dbb6e6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1f04bc18405c5a5a9612c0de6dd76f22450c7f04
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112503"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990373"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Zelf studie: de sjabloon voor het bewaken van het zonne deel venster maken en door lopen 
 
@@ -31,7 +31,7 @@ Deze zelf studie leidt u door het proces van het maken van de toepassing voor he
 Als u geen abonnement hebt, [maakt u een account voor een gratis proef versie](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Vereisten
-- None
+- Geen
 - Azure-abonnement wordt aanbevolen, maar is niet vereist voor het uitproberen
 
 
@@ -52,8 +52,9 @@ U kunt deze toepassing in drie eenvoudige stappen maken:
     * **gratis proef versie van 7 dagen**: als u al een Azure-abonnement hebt, wordt de standaard instelling aanbevolen. Als u geen Azure-abonnement hebt, kunt u beginnen met een gratis proef versie.
     * **Facturerings gegevens**: de toepassing zelf is gratis. De informatie over de adres lijst, het Azure-abonnement en de regio is vereist voor het inrichten van de resources voor uw app.
     * Klik op de knop **maken** onder aan de pagina en uw app wordt binnen een minuut gemaakt.
-        > [!div class="mx-imgBorder"]
-        > ![nieuw toepassings formulier](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        ![nieuw toepassings formulier](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        
+        ![Nieuwe facturerings gegevens voor het toepassings formulier](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>De toepassing en gesimuleerde gegevens controleren

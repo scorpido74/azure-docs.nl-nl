@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 98b5cc707ca8b5ebd1ee88f02082fd3f10fa73dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9042f3d34ee550af50e043167db6339f36b71bd0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435007"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987591"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Azure IoT Central uitbreiden met aangepaste regels met behulp van Stream Analytics, Azure Functions en SendGrid
 
@@ -40,7 +40,7 @@ Maak een IoT Central-toepassing op de website van [Azure IOT Central Application
 
 | Instelling | Waarde |
 | ------- | ----- |
-| Betalings plan | Betalen per gebruik |
+| Prijs plan | Standard |
 | Toepassingsjabloon | Oudere toepassing |
 | De naam van de toepassing | Accepteer de standaard waarde of kies uw eigen naam |
 | URL | Accepteer de standaard waarde of kies uw eigen unieke URL-voor voegsel |
@@ -67,7 +67,7 @@ Gebruik de [Azure Portal om een event hubs naam ruimte te maken](https://portal.
 | Locatie | VS - oost |
 | Eenheden gegevensdoorvoer | 1 |
 
-### <a name="stream-analytics-job"></a>Stream Analytics-taak
+### <a name="stream-analytics-job"></a>Stream Analytics taak
 
 Gebruik de [Azure Portal om een stream Analytics-taak te maken](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) met de volgende instellingen:
 
@@ -90,9 +90,9 @@ Gebruik de [Azure Portal om een functie-app te maken](https://portal.azure.com/#
 | Abonnement | Uw abonnement |
 | Resourcegroep | DetectStoppedDevices |
 | Besturingssysteem | Windows |
-| Hostingabonnement | Verbruiksabonnement |
+| Hosting plan | Verbruiksabonnement |
 | Locatie | VS - oost |
-| Runtimestack | .NET |
+| Runtime stack | .NET |
 | Storage | Nieuwe maken |
 
 ### <a name="sendgrid-account"></a>SendGrid-account
