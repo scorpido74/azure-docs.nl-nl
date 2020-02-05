@@ -2,17 +2,17 @@
 title: 'Zelf studie: een alias record voor Azure DNS maken om te verwijzen naar een openbaar IP-adres van Azure'
 description: In deze zelfstudie leert u hoe u een Azure DNS-aliasrecord zo configureert dat deze naar een openbaar Azure-IP-adres verwijst.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 81dfbe5f46116d263c4a04d6178437a2c8bc1185
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: rohink
+ms.openlocfilehash: d601d19a786613f674f7b941becc5e97d84e6fce
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072130"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939266"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Zelfstudie: Een aliasrecord zo configureren dat deze naar een openbaar Azure-IP-adres verwijst 
 
@@ -21,7 +21,7 @@ In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 > * Een netwerkinfrastructuur maken.
 > * Een virtuele webserver maken.
-> * Een aliasrecord maken.
+> * Een aliasrecord maken
 > * De aliasrecord testen.
 
 
@@ -44,7 +44,7 @@ Maak eerst een virtueel netwerk en een subnet waaraan u de webservers gaat toevo
 ## <a name="create-a-web-server-virtual-machine"></a>Een virtuele webserver maken
 1. Selecteer **Een resource maken** > **Windows Server 2016 VM**.
 2. Geef **Web-01** op als naam en plaats de virtuele machine in de resourcegroep **RG-DNS-Alias-TM**. Voer een gebruikersnaam en wachtwoord in en selecteer **OK**.
-3. Voor **Grootte**, selecteert u een SKU met 8 GB RAM-geheugen.
+3. Voor **grootte**, selecteert u een SKU met 8 GB RAM-geheugen.
 4. Selecteer voor **Instellingen** het virtuele netwerk **VNet-Servers** en het subnet **SN-Web**. Selecteer voor openbare inkomende poorten **HTTP** > **HTTPS** > **RDP (3389)** en selecteer vervolgens **OK**.
 5. Op de pagina**Overzicht** selecteert u **Maken**.
 
@@ -70,10 +70,10 @@ Maak een aliasrecord dat naar het openbare IP-adres verwijst.
 2. Selecteer **Recordset**.
 3. Selecteer **web01** in het tekstvak **Naam**.
 4. Laat het **Type** een **A**-record.
-5. Schakel het selectievakje **Alias Record Set** in.
+5. Schakel het selectievakje **Alias recordset** in.
 6. Selecteer **Azure-service kiezen** en selecteer vervolgens het openbare IP-adres **Web-01-ip**.
 
-## <a name="test-the-alias-record"></a>De aliasrecord testen
+## <a name="test-the-alias-record"></a>Het aliasrecord testen
 
 1. Selecteer in de resourcegroep **RG-DNS-Alias-pip** de virtuele machine **Web-01**. Noteer het openbare IP-adres.
 1. Ga in een webbrowser naar de Fully Qualified Domain Name voor de virtuele machine Web01-01. Een voorbeeld is **web01.contoso.com**. De IIS-standaardwebpagina wordt nu weergegeven.

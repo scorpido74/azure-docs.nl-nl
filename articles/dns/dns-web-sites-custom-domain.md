@@ -2,17 +2,17 @@
 title: 'Zelfstudie: aangepaste Azure DNS-records voor een web-app maken'
 description: In deze zelfstudie maakt u DNS-records voor een web-app in een aangepast domein met behulp van Azure DNS.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: e0a0129f45e5e7612b6ecd79475a49822b42ba19
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211205"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939105"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Zelfstudie: DNS-records voor een web-app in een aangepast domein maken 
 
@@ -92,7 +92,7 @@ New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
  -DnsRecords (New-AzDnsRecordConfig -Value  "contoso.azurewebsites.net")
 ```
 
-## <a name="create-the-cname-record"></a>Het CNAME-record maken
+## <a name="create-the-cname-record"></a>De CNAME-record maken
 
 Als uw domein al wordt beheerd door Azure DNS (zie [DNS domain delegation](dns-domain-delegation.md) (Delegering van DNS-domeinen)) kunt u het volgende voorbeeld gebruiken om een CNAME-record voor contoso.azurewebsites.net te maken.
 
@@ -121,7 +121,7 @@ Het volgende voorbeeld is het antwoord:
 
 ## <a name="test-the-new-records"></a>De nieuwe records testen
 
-U kunt controleren of de records correct zijn gemaakt door een query uit te voeren op „www.contoso.com“ en contoso.com met behulp van nslookup, zoals hieronder wordt weergegeven:
+U kunt controleren of de records correct zijn gemaakt door een query uit te voeren op www.contoso.com en contoso.com met behulp van nslookup, zoals hieronder wordt weergegeven:
 
 ```
 PS C:\> nslookup

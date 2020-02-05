@@ -2,7 +2,7 @@
 title: Zelf studie-reacties op websites verbeteren met Azure Traffic Manager
 description: In deze zelf studie wordt beschreven hoe u een Traffic Manager profiel maakt om een zeer responsieve website te bouwen.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to route traffic so I can improve website response by choosing the endpoint with lowest latency.
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
-ms.author: allensu
-ms.openlocfilehash: 3686e9a7d82f8134b44cd40468c5e430eb2e72f3
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: 9027b1574144e2addbc84fceb16deba9014826fe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422854"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938399"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Zelf studie: het antwoord van websites verbeteren met behulp van Traffic Manager
 
@@ -141,7 +141,7 @@ Maak een Traffic Manager profiel dat gebruikers verkeer verstuurt door het naar 
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
-    | Naam                   | Deze naam moet uniek zijn binnen de zone trafficmanager.net en resulteert in de DNS-naam, trafficmanager.net, die wordt gebruikt voor het openen van uw Traffic Manager-profiel.                                   |
+    | Name                   | Deze naam moet uniek zijn binnen de zone trafficmanager.net en resulteert in de DNS-naam, trafficmanager.net, die wordt gebruikt voor het openen van uw Traffic Manager-profiel.                                   |
     | Routeringsmethode          | Selecteer de methode voor de **prestaties** van de route ring.                                       |
     | Abonnement            | Selecteer uw abonnement.                          |
     | Resourcegroep          | Selecteer de resource groep *myResourceGroupTM1*. |
@@ -161,7 +161,7 @@ Voeg de twee virtuele machines met de IIS-servers- *myIISVMEastUS* & *myIISVMWes
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | Type                    | Azure-eindpunt                                   |
-    | Naam           | myEastUSEndpoint                                        |
+    | Name           | myEastUSEndpoint                                        |
     | Doelbrontype           | Openbaar IP-adres                          |
     | Doelbron          | **Kies een openbaar IP-adres** om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam *myIISVMEastUS-ip*. Dit is het openbare IP-adres van de IIS-server VM in US - oost.|
     |        |           |

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/04/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 72b3349e0ad4fd86b91a7a02f70b2bcf1efbc271
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 774d3325cff98ef01dc0b2e8d5c1db38e449d1b5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712852"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982754"
 ---
 # <a name="string-claims-transformations"></a>Teken reeks claim transformaties
 
@@ -499,6 +499,47 @@ Gebruik deze claim transformatie voor het parseren van de domein naam na het @-s
 - Uitvoer claims:
     - **domein**: Outlook.com
 
+## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
+
+Hiermee wordt gecontroleerd of een teken reeks claim `claimToMatch` en `matchTo` invoer parameter gelijk is en worden de uitvoer claims ingesteld met de waarde die aanwezig is in `outputClaimIfMatched` invoer parameter, samen met de resulterende uitvoer claim vergelijken, die moet worden ingesteld als `true` of `false` op basis van het resultaat van de vergelijking.
+
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| ---- | ----------------------- | --------- | ----- |
+| inputClaim | claimToMatch | tekenreeks | Het claim type, dat moet worden vergeleken. |
+| InputParameter | matchTo | tekenreeks | De reguliere expressie die moet worden vergeleken. |
+| InputParameter | outputClaimIfMatched | tekenreeks | De waarde die moet worden ingesteld als teken reeksen gelijk zijn. |
+| OutputClaim | outputClaim | tekenreeks | Als de reguliere expressie overeenkomt, bevat deze uitvoer claim de waarde van `outputClaimIfMatched` invoer parameter. Of null, als deze niet overeenkomt. |
+| OutputClaim | regexCompareResultClaim | booleaans | De reguliere expressie komt overeen met het resultaat type van de uitvoer van resultaten, dat moet worden ingesteld als `true` of `false` op basis van het resultaat van de overeenkomst. |
+
+Controleert bijvoorbeeld of het gegeven telefoon nummer geldig is, op basis van reguliere-expressie patroon voor telefoon nummer.  
+
+```XML
+<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="^[0-9]{4,16}$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isPhone" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isPhoneBoolean" TransformationClaimType="regexCompareResultClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Voorbeeld
+
+- Invoer claims:
+    - **claimToMatch**: "64854114520"
+- Invoer parameters:
+    - **matchTo**: ^ [0-9]{4,16}$
+    - **outputClaimIfMatched**: "isPhone"
+- Uitvoer claims:
+    - **output claim**: "isPhone"
+    - **regexCompareResultClaim**: True
+
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
 Controleert of een teken reeks claim en `matchTo` invoer parameter gelijk zijn, en stelt de uitvoer claims in met de waarde die aanwezig is in `stringMatchMsg` en `stringMatchMsgCode` invoer parameters, samen met de resultaat uitvoer-claim, die moet worden ingesteld als `true` of `false` op basis van het resultaat van de vergelijking.
@@ -592,3 +633,188 @@ De volgende claim transformatie controleert bijvoorbeeld of de waarde van de cla
     - **isMinorResponseCode**: B2C_V1_90001
     - **isMinor**: True
 
+
+## <a name="stringcontains"></a>StringContains
+
+Bepalen of een opgegeven subtekenreeks in de invoer claim voor komt. Het resultaat is een nieuw Boolean-claim type met de waarde `true` of `false`. `true` als de waarde-para meter in deze teken reeks voor komt, anders `false`.
+
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | tekenreeks | Het claim type, dat moet worden doorzocht. |
+|InputParameter|bevat|tekenreeks|De waarde waarnaar moet worden gezocht.|
+|InputParameter|ignoreCase|tekenreeks|Hiermee geeft u op of deze vergelijking het hoofdletter gebruik moet negeren van de teken reeks die wordt vergeleken.|
+| OutputClaim | outputClaim | tekenreeks | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. Een Booleaanse indicator als de subtekenreeks in de invoer claim voor komt. |
+
+Gebruik deze claim transformatie om te controleren of een teken reeks claim type een subtekenreeks bevat. In het volgende voor beeld wordt gecontroleerd of het `roles` type teken reeks claim de waarde **beheerder**bevat.
+
+```XML
+<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains"> 
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <InputParameters>
+    <InputParameter  Id="contains" DataType="string" Value="admin"/>
+    <InputParameter  Id="ignoreCase" DataType="string" Value="true"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Voorbeeld
+
+- Invoer claims:
+    - **input claim**: "beheerder, goed keurder, editor"
+- Invoer parameters:
+    - **bevat**: "beheerder"
+    - **ignoreCase**: True
+- Uitvoer claims:
+    - **output claim**: True 
+
+## <a name="stringsubstring"></a>StringSubstring
+
+Haalt delen van een teken reeks claim type op, beginnend bij het teken op de opgegeven positie en retourneert het opgegeven aantal tekens.
+
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | tekenreeks | Het claim type, dat de teken reeks bevat. |
+| InputParameter | startIndex | int | De op nul gebaseerde positie van het begin teken van een subtekenreeks in dit exemplaar. |
+| InputParameter | length | int | Het aantal tekens in de subtekenreeks. |
+| OutputClaim | outputClaim | booleaans | Een teken reeks die overeenkomt met de subtekenreeks van lengte lengte die begint bij start index in dit exemplaar, of leeg als start index gelijk is aan de lengte van deze instantie en de lengte nul is. |
+
+U kunt bijvoorbeeld het land voorvoegsel telefoon nummer ophalen.  
+
+
+```XML
+<ClaimsTransformation Id="GetPhonePrefix" TransformationMethod="StringSubstring">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
+  </InputClaims>
+<InputParameters>
+  <InputParameter Id="startIndex" DataType="int" Value="0" />
+  <InputParameter Id="length" DataType="int" Value="2" />
+</InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phonePrefix" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+### <a name="example"></a>Voorbeeld
+
+- Invoer claims:
+    - **input claim**: "+ 1644114520"
+- Invoer parameters:
+    - **Start index**: 0
+    - **lengte**: 2
+- Uitvoer claims:
+    - **output claim**: "+ 1"
+
+## <a name="stringreplace"></a>StringReplace
+
+Zoekt een claim type teken reeks voor een opgegeven waarde en retourneert een nieuwe claim type teken reeks waarin alle exemplaren van een opgegeven teken reeks in de huidige teken reeks worden vervangen door een andere opgegeven teken reeks.
+
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | tekenreeks | Het claim type, dat de teken reeks bevat. |
+| InputParameter | oldValue | tekenreeks | De teken reeks die moet worden doorzocht. |
+| InputParameter | newValue | tekenreeks | De teken reeks om alle exemplaren van `oldValue` te vervangen |
+| OutputClaim | outputClaim | booleaans | Een teken reeks die overeenkomt met de huidige teken reeks, behalve dat alle exemplaren van oldValue worden vervangen door newValue. Als oldValue niet wordt gevonden in het huidige exemplaar, retourneert de methode het huidige exemplaar ongewijzigd. |
+
+U kunt bijvoorbeeld een telefoon nummer normaliseren door de `-` tekens te verwijderen  
+
+
+```XML
+<ClaimsTransformation Id="NormalizePhoneNumber" TransformationMethod="StringReplace">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
+  </InputClaims>
+<InputParameters>
+  <InputParameter Id="oldValue" DataType="string" Value="-" />
+  <InputParameter Id="newValue" DataType="string" Value="" />
+</InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+### <a name="example"></a>Voorbeeld
+
+- Invoer claims:
+    - **input claim**: "+ 164-411-452-054"
+- Invoer parameters:
+    - **oldValue**: "-"
+    - **lengte**: ""
+- Uitvoer claims:
+    - **output claim**: "+ 164411452054"
+
+## <a name="stringjoin"></a>StringJoin
+
+Voegt de elementen van een opgegeven type teken reeks verzamelings claim toe met behulp van het opgegeven scheidings teken tussen elk element of lid.
+
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | stringCollection | Een verzameling die de teken reeksen bevat die u wilt samen voegen. |
+| InputParameter | vorm | tekenreeks | De teken reeks die als schei ding moet worden gebruikt, zoals een komma `,`. |
+| OutputClaim | outputClaim | tekenreeks | Een teken reeks die bestaat uit de leden van de teken reeks verzameling `inputClaim`, gescheiden door de invoer parameter `delimiter`. |
+  
+In het volgende voor beeld wordt een teken reeks verzameling van gebruikers rollen gebruikt en geconverteerd naar een komma als scheidings teken reeks. U kunt deze methode gebruikt om een teken reeks verzameling op te slaan in een Azure AD-gebruikers account. Wanneer u later het account uit de map leest, gebruikt u de `StringSplit` om de teken reeks van het komma scheidings punt terug te converteren naar de teken reeks verzameling.
+
+```XML
+<ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">
+  <InputClaims>
+   <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter DataType="string" Id="delimiter" Value="," />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="rolesCommaDelimiterConverted" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Voorbeeld
+
+- Invoer claims:
+  - **input claim**: ["beheerder", "Auteur", "lezer"]
+- Invoer parameters:
+  - **scheidings teken**: ","
+- Uitvoer claims:
+  - **output claim**: "beheerder, auteur, lezer"
+
+
+## <a name="stringsplit"></a>StringSplit
+
+Retourneert een teken reeks matrix die de subtekenreeksen in dit exemplaar bevat die worden gescheiden door elementen van een opgegeven teken reeks.
+
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | tekenreeks | Een type teken reeks claim dat de subtekenreeksen bevat die moeten worden gesplitst. |
+| InputParameter | vorm | tekenreeks | De teken reeks die als schei ding moet worden gebruikt, zoals een komma `,`. |
+| OutputClaim | outputClaim | stringCollection | Een teken reeks verzameling waarvan de elementen de subtekenreeksen in deze teken reeks bevatten die worden gescheiden door de `delimiter` invoer parameter. |
+  
+In het volgende voor beeld wordt een teken reeks met scheidings tekens van gebruikers rollen gebruikt en geconverteerd naar een teken reeks verzameling.
+
+```XML
+<ClaimsTransformation Id="ConvertRolesToStringCollection" TransformationMethod="StringSplit">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="rolesCommaDelimiter" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+  <InputParameter DataType="string" Id="delimiter" Value="," />
+    </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="roles" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Voorbeeld
+
+- Invoer claims:
+  - **input claim**: "beheerder, auteur, lezer"
+- Invoer parameters:
+  - **scheidings teken**: ","
+- Uitvoer claims:
+  - **output claim**: ["beheerder", "Auteur", "lezer"]

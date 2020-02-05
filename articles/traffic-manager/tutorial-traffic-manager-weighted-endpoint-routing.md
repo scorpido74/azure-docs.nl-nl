@@ -2,18 +2,18 @@
 title: 'Zelf studie: verkeer routeren naar gewogen eind punten-Azure Traffic Manager'
 description: In dit artikel wordt beschreven hoe u verkeer routeert naar gewogen eindpunten met behulp van Traffic Manager.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: allensu
-ms.openlocfilehash: 45ece08599722e04c4e6799fa5c3589cba1fca42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037920"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939486"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Zelfstudie: Verkeersroutering met gewogen eindpunten beheren met behulp van Traffic Manager
 
@@ -25,7 +25,7 @@ In deze zelfstudie leert u het volgende:
 > * Twee virtuele machines maken met daarop een eenvoudige website in IIS.
 > * Twee virtuele machines voor tests maken om Traffic Manager in actie te zien.
 > * Een DNS-naam configureren voor de VM's met behulp van IIS.
-> * Een Traffic Manager-profiel maken.
+> * Een Traffic Manager-profiel maken
 > * VM-eindpunten toevoegen aan het Traffic Manager-profiel.
 > * Zie Traffic Manager in werking.
 
@@ -40,7 +40,7 @@ Als u Traffic Manager in actie wilt zien, implementeert u het volgende voor deze
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ### <a name="create-websites"></a>Websites maken
 
@@ -139,7 +139,7 @@ Maak een Traffic Manager-profiel op basis van de routeringsmethode **Gewogen**.
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
-    | Naam                   | Voer een unieke naam binnen de trafficmanager.net-zone in. Dit resulteert in de DNS-naam trafficmanager.net, die wordt gebruikt voor toegang tot uw Traffic Manager-profiel.                                   |
+    | Name                   | Voer een unieke naam binnen de trafficmanager.net-zone in. Dit resulteert in de DNS-naam trafficmanager.net, die wordt gebruikt voor toegang tot uw Traffic Manager-profiel.                                   |
     | Routeringsmethode          | Selecteer de routeringsmethode **Gewogen**.                                       |
     | Abonnement            | Selecteer uw abonnement.                          |
     | Resourcegroep          | Selecteer **Bestaande gebruiken** en selecteer vervolgens **myResourceGroupTM1**. |
@@ -158,7 +158,7 @@ Voeg de twee virtuele machines waarop de IIS-servers myIISVMEastUS en myIISVMWes
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | Type                    | Voer het Azure-eindpunt in.                                   |
-    | Naam           | Voer **myEastUSEndpoint** in.                                        |
+    | Name           | Voer **myEastUSEndpoint** in.                                        |
     | Doelbrontype           | Selecteer **Openbaar IP-adres**.                          |
     | Doelbron          | Kies een openbaar IP-adres om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam **myIISVMEastUS-ip**. Dit is het openbare IP-adres van de IIS-server VM in US - oost.|
     |  Gewicht      | Voer **100** in.        |

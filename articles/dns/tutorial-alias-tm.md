@@ -3,17 +3,17 @@ title: 'Zelf studie: een alias record maken ter ondersteuning van domein Apex-na
 titleSuffix: Azure DNS
 description: In deze zelfstudie wordt uitgelegd hoe u een Azure DNS-aliasrecord kunt configureren om het gebruik van uw hoofddomeinnaam met Traffic Manager te ondersteunen.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 3834b782be054611de67b782b7fcd0c46cbf3a19
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 749e5eae64aa0d33c90ef8694da9a093647b8a8b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082255"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937926"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Zelfstudie: een Azure DNS-aliasrecord configureren om het gebruik van hoofddomeinnaam met Traffic Manager te ondersteunen 
 
@@ -24,8 +24,8 @@ In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een host-VM en netwerkinfrastructuur maken
-> * Een Traffic Manager-profiel maken.
-> * Een aliasrecord maken.
+> * Een Traffic Manager-profiel maken
+> * Een aliasrecord maken
 > * De aliasrecord testen.
 
 
@@ -48,7 +48,7 @@ Maak eerst een virtueel netwerk en een subnet waaraan u de webservers gaat toevo
 ## <a name="create-two-web-server-virtual-machines"></a>Maak twee virtuele machines die als webserver dienen
 1. Selecteer **Een resource maken** > **Windows Server 2016 VM**.
 2. Geef **Web-01** op als naam en plaats de virtuele machine in de resourcegroep **RG-DNS-Alias-TM**. Voer een gebruikersnaam en wachtwoord in en selecteer **OK**.
-3. Voor **Grootte**, selecteert u een SKU met 8 GB RAM-geheugen.
+3. Voor **grootte**, selecteert u een SKU met 8 GB RAM-geheugen.
 4. Selecteer voor **Instellingen** het virtuele netwerk **VNet-Servers** en het subnet **SN-Web**.
 5. Selecteer **Openbaar IP-adres**. Bij **Toewijzing** selecteer t u **Statisch** en selecteert u vervolgens **OK**.
 6. Selecteer voor openbare inkomende poorten **HTTP** > **HTTPS** > **RDP (3389)** en selecteer vervolgens **OK**.
@@ -103,10 +103,10 @@ Maak een aliasrecord dat naar het Traffic Manager-profiel verwijst.
 2. Selecteer **Recordset**.
 3. Laat het tekstvak **Naam** leeg om de hoofddomeinnaam te vertegenwoordigen. Bijvoorbeeld: contoso.com.
 4. Laat het **Type** een **A**-record.
-5. Schakel het selectievakje **Alias Record Set** in.
+5. Schakel het selectievakje **Alias recordset** in.
 6. Selecteer **Azure-service kiezen** en selecteer het Traffic Manager-profiel **TM-alias-test**.
 
-## <a name="test-the-alias-record"></a>De aliasrecord testen
+## <a name="test-the-alias-record"></a>Het aliasrecord testen
 
 1. Blader in een webbrowser naar uw hoofddomeinnaam. Bijvoorbeeld: contoso.com. De IIS-standaardwebpagina wordt nu weergegeven. Sluit de webbrowser.
 2. Sluit de virtuele machine **Web-01**. Wacht een paar minuten totdat deze volledig is afgesloten.

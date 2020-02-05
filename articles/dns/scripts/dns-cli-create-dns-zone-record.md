@@ -2,17 +2,17 @@
 title: Een DNS-zone en-record maken voor een domein naam-Azure CLI-Azure DNS
 description: In dit voorbeeld van een Azure CLI-script ziet u hoe u een DNS-zone maakt en registreert voor een domeinnaam
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: sample
 ms.date: 09/20/2019
-ms.author: allensu
-ms.openlocfilehash: 8f5dde0a35f31d2c33ab2857659efc88339c2ead
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b1db9ffb895470dd9224dc020eb82b0bbf6560c1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210403"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939310"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Voorbeeld van Azure CLI-script: een DNS-zone maken en registreren
 
@@ -40,11 +40,11 @@ Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep,
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [az group create](/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) | Hiermee wordt een Azure DNS-zone gemaakt. |
 | [az network dns record-set a add-record](/cli/azure/network/dns/record-set) | Hiermee wordt een *A*-record toegevoegd aan een DNS-zone. |
 | [az network dns record-set list](/cli/azure/network/dns/record-set) | Hiermee worden alle *A*-recordsets in een DNS-zone weergegeven. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
