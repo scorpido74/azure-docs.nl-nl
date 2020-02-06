@@ -14,11 +14,11 @@
       href: learn/quick-monitor-azure-resource.md
     - name: Virtuele machines bewaken
       items:
-        - name: Verzamelen - Azure-VM's
+        - name: Azure-VM's
           href: learn/quick-collect-azurevm.md
-        - name: Verzamelen - Linux-computer
+        - name: Linux-computer
           href: learn/quick-collect-linux-computer.md
-        - name: Verzamelen - Windows-computer
+        - name: Windows-computer
           href: learn/quick-collect-windows-computer.md
     - name: Toepassingen bewaken
       items:
@@ -439,6 +439,8 @@
               href: app/configuration-with-applicationinsights-config.md
             - name: Aangepaste gegevensbronnen correleren
               href: app/custom-data-correlation.md
+            - name: Verbindingsreeksen
+              href: app/sdk-connection-string.md
             - name: Speciale onderwerpen
               items:
                 - name: Diepe diagnostische gegevens voor web-apps en services
@@ -535,23 +537,18 @@
               href: 'faq.md#agents'
             - name: Azure Diagnostics-extensie
               items:
-                - name: Overzicht
-                  href: platform/diagnostics-extension-overview.md
-                - name: Logboeken verzamelen
-                  href: platform/azure-storage-iis-table.md
                 - name: Windows
+                  displayname: diagnostics extension
                   items:
-                    - name: Versiegeschiedenis
-                      href: platform/diagnostics-extension-schema.md
-                    - name: Schema
-                      href: platform/diagnostics-extension-schema-1dot3.md
-                    - name: Verzenden naar Azure Storage
-                      href: platform/diagnostics-extension-to-storage.md
-                    - name: Verzenden naar Application Insights
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Verzenden naar Event Hubs
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Verzenden naar Azure Monitor als aangepaste metrische gegevens
+                    - name: Overzicht
+                      href: platform/diagnostics-extension-overview.md
+                    - name: Installeren en configureren
+                      items:
+                        - name: PowerShell
+                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                        - name: Resource Manager-sjabloon
+                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                    - name: Verzenden naar metrische gegevens van Azure Monitor
                       items:
                         - name: Virtuele machine
                           href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
@@ -561,17 +558,28 @@
                           href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: Cloudservice
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: Verzenden naar Event Hubs
+                      href: platform/diagnostics-extension-stream-event-hubs.md
+                    - name: Verzenden naar logboeken
+                      href: platform/azure-storage-iis-table.md
+                    - name: Verzenden naar Azure Storage
+                      href: platform/diagnostics-extension-to-storage.md
+                    - name: Verzenden naar Application Insights
+                      href: platform/diagnostics-extension-to-application-insights.md
+                    - name: Versiegeschiedenis
+                      href: platform/diagnostics-extension-schema.md
                     - name: Indelingen van resourcelogboeken van JSON-regels
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Problemen oplossen
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
+                  displayname: diagnostics extension
                   items:
-                    - name: Gebruiken met VM's
-                      href: ../virtual-machines/extensions/diagnostics-linux.md
-                    - name: Aangepaste metrische gegevens met Telegraf
+                    - name: Overzicht
+                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                    - name: Metrische gegevens verzamelen met Telegraf
                       href: platform/collect-custom-metrics-linux-telegraf.md
-            - name: Log Analytics-agents
+            - name: Log Analytics-agent
               items:
                 - name: Overzicht
                   href: platform/log-analytics-agent.md
@@ -589,6 +597,28 @@
                   href: platform/agent-manage.md
                 - name: Status van agent
                   href: insights/solution-agenthealth.md
+                - name: Gegevensbronnen
+                  items:
+                    - name: Overzicht
+                      href: platform/agent-data-sources.md
+                    - name: Windows-gebeurtenissen
+                      href: platform/data-sources-windows-events.md
+                    - name: Aangepaste JSON-gegevens
+                      href: platform/data-sources-json.md
+                    - name: Verzamelde prestatiegegevens
+                      href: platform/data-sources-collectd.md
+                    - name: Syslog
+                      href: platform/data-sources-syslog.md
+                    - name: Prestatiemeteritems
+                      href: platform/data-sources-performance-counters.md
+                    - name: Prestaties van Linux-toepassingen
+                      href: platform/data-sources-linux-applications.md
+                    - name: IIS-logboeken
+                      href: platform/data-sources-iis-logs.md
+                    - name: Aangepaste logboeken
+                      href: platform/data-sources-custom-logs.md
+                    - name: Aangepaste velden
+                      href: platform/custom-fields.md
             - name: Problemen oplossen
               items:
                 - name: VM-extensie voor Log Analytics
@@ -600,28 +630,6 @@
                 - name: Linux-agent voor Log Analytics
                   displayname: 'troubleshoot, troubleshooting'
                   href: platform/agent-linux-troubleshoot.md
-        - name: Agent-gegevensbronnen
-          items:
-            - name: Overzicht
-              href: platform/agent-data-sources.md
-            - name: Windows-gebeurtenissen
-              href: platform/data-sources-windows-events.md
-            - name: Aangepaste JSON-gegevens
-              href: platform/data-sources-json.md
-            - name: Verzamelde prestatiegegevens
-              href: platform/data-sources-collectd.md
-            - name: Syslog
-              href: platform/data-sources-syslog.md
-            - name: Prestatiemeteritems
-              href: platform/data-sources-performance-counters.md
-            - name: Prestaties van Linux-toepassingen
-              href: platform/data-sources-linux-applications.md
-            - name: IIS-logboeken
-              href: platform/data-sources-iis-logs.md
-            - name: Aangepaste logboeken
-              href: platform/data-sources-custom-logs.md
-            - name: Aangepaste velden
-              href: platform/custom-fields.md
         - name: Azure Monitor voor virtuele machines
           items:
             - name: Overzicht
@@ -660,14 +668,16 @@
               href: insights/vminsights-dependency-agent-maintenance.md
             - name: Bewaking uitschakelen
               href: insights/vminsights-optout.md
-        - name: Oplossing voor capaciteit en prestaties
-          href: insights/capacity-performance.md
-        - name: Oplossing voor VMware-analyse
-          href: insights/vmware.md
-        - name: Oplossing voor bedradingsgegevens
-          href: insights/wire-data.md
-        - name: Oplossing voor servicetoewijzing
-          href: insights/service-map.md
+        - name: Oplossingen
+          items:
+            - name: Oplossing voor capaciteit en prestaties
+              href: insights/capacity-performance.md
+            - name: Oplossing voor VMware-analyse
+              href: insights/vmware.md
+            - name: Oplossing voor bedradingsgegevens
+              href: insights/wire-data.md
+            - name: Oplossing voor servicetoewijzing
+              href: insights/service-map.md
         - name: Computergroepen
           href: platform/computer-groups.md
     - name: Containers bewaken
@@ -1125,6 +1135,10 @@
   items:
     - name: Servicelimieten
       href: service-limits.md
+    - name: Diagnostics-extensie
+      items:
+        - name: Schema
+          href: platform/diagnostics-extension-schema-1dot3.md
     - name: Application Insights
       items:
         - name: Afhankelijkheden automatisch verzamelen

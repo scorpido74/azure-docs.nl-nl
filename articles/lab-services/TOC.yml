@@ -152,6 +152,8 @@
           href: deploy-nested-template-environments.md
         - name: Beheerde Azure-identiteiten gebruiken om omgevingen te implementeren
           href: use-managed-identities-environments.md
+        - name: Beveiligingswaarschuwingen voor omgevingen
+          href: environment-security-alerts.md
     - name: Herbruikbare sjablonen beheren
       items:
         - name: Aangepaste installatiekopieën versus formules

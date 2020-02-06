@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Documentatie voor Azure Data Explorer
 metadata:
-  title: 'Documentatie voor Azure Data Explorer - quickstarts, zelfstudies en taal- en API-referenties'
+  title: Quickstartsm zelfstudies en docs over taal/API - Azure Data Explorer
   description: Azure Data Explorer is een cloudplatform voor logboekanalyses dat is geoptimaliseerd voor ad-hoc big data-query's.
   author: orspod
   ms.author: orspodek

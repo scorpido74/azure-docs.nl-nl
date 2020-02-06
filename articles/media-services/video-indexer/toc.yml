@@ -15,6 +15,10 @@
   items:
     - name: Video Indexer-API gebruiken
       href: video-indexer-use-apis.md
+- name: Voorbeelden
+  items:
+    - name: Video Indexer-voorbeelden
+      href: 'https://github.com/Azure-Samples/media-services-video-indexer'
 - name: Concepten
   items:
     - name: Overzicht
