@@ -164,8 +164,6 @@
               href: concepts-data-flow-overview.md
             - name: Foutopsporingsmodus
               href: concepts-data-flow-debug-mode.md
-            - name: JSON-verwerking
-              href: concepts-data-flow-json.md
             - name: Schema-afwijking
               href: concepts-data-flow-schema-drift.md
             - name: Kolompatronen

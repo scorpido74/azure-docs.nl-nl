@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het maken van een back-up va
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 8125f6d98151f91faaccef512e4bcfd2946fcdd0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 10f55bb4c5c488975f075aa0382296f808a9a5b1
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773116"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029568"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Back-ups maken van SQL Server-databases in virtuele Azure-machines
 
@@ -109,6 +109,9 @@ Vermijd het gebruik van de volgende elementen in database namen:
 * Slash/
 
 Aliasing is beschikbaar voor niet-ondersteunde tekens, maar we raden u aan om deze te vermijden. Zie [Het gegevensmodel van de tabelservice](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN) voor meer informatie.
+
+>[!NOTE]
+>Het **configureren** van de beveiliging voor data bases met speciale tekens zoals "+" of "&" in hun naam wordt niet ondersteund. U kunt de naam van de data base wijzigen of **automatische beveiliging**inschakelen, waardoor deze data bases kunnen worden beveiligd.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -281,7 +284,7 @@ Als u automatische beveiliging wilt uitschakelen, selecteert u de naam van het e
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Procedures voor:
+Leer hoe u het volgende doet:
 
 * [Back-ups van SQL Server-data bases herstellen](restore-sql-database-azure-vm.md)
 * [Back-ups van SQL Server-data bases beheren](manage-monitor-sql-database-backup.md)
