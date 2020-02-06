@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/01/2019
-ms.openlocfilehash: e253d168fadd5aff46e70ba00a4021415c0ea6f7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 76360ec8de645d926daec0db878906c73d0da948
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242036"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030005"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Snelstartgids: Apache Kafka cluster maken in azure HDInsight met behulp van Azure Portal
 
@@ -49,7 +49,7 @@ Gebruik de volgende stappen om een Apache Kafka-cluster te maken in HDInsight:
     |Resourcegroep     | Maak een resourcegroep of selecteer een bestaande resourcegroep.  Een resourcegroep is een container met Azure-onderdelen.  In dit geval bevat de resourcegroep het HDInsight-cluster en het afhankelijke Azure Storage-account. |
     |Clusternaam   | Voer een naam in voor het Hadoop-cluster. Omdat alle clusters in HDInsight dezelfde DNS-naamruimte delen, moet deze naam uniek zijn. De naam mag Maxi maal 59 tekens bevatten, inclusief letters, cijfers en afbreek streepjes. De eerste en laatste tekens van de naam mogen geen streepjes zijn. |
     |Locatie    | Selecteer een Azure-locatie waar u het cluster wilt maken.  Kies een locatie zo dicht mogelijk bij u in de buurt voor betere prestaties. |
-    |Clustertype| Selecteer **cluster type selecteren**. Selecteer vervolgens **Kafka** als het cluster type.|
+    |Cluster type| Selecteer **cluster type selecteren**. Selecteer vervolgens **Kafka** als het cluster type.|
     |Version|De standaard versie voor het cluster type wordt opgegeven. Selecteer in de vervolg keuzelijst de optie als u een andere versie wilt opgeven.|
     |Gebruikers naam en wacht woord voor cluster aanmelding    | De standaard aanmeldings naam is **admin**. Het wacht woord moet uit minstens tien tekens bestaan en moet ten minste één cijfer, één hoofd letter en één kleine letters bevatten, één niet-alfanumeriek teken (met uitzonde ring van de tekens ' ") \). Zorg ervoor dat u **geen makkelijk te raden** wachtwoorden gebruikt, zoals 'Pass@word1'.|
     |SSH-gebruikersnaam (Secure Shell) | De standaardgebruikersnaam is **sshuser**.  U kunt hier echter een andere naam opgeven als u dat wilt. |
@@ -72,7 +72,7 @@ Gebruik de volgende stappen om een Apache Kafka-cluster te maken in HDInsight:
     |Primair opslagaccount|Gebruik de vervolg keuzelijst om een bestaand opslag account te selecteren of selecteer **nieuwe maken**. Als u een nieuw account maakt, moet de naam tussen de 3 en 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten|
     |Container|De automatisch gevulde waarde gebruiken.|
 
-    ![HDInsight Linux aan de slag waarden voor cluster opslag opgeven](./media/apache-kafka-get-started/azure-portal-cluster-storage-blank.png "Opslag waarden opgeven voor het maken van een HDInsight-cluster")
+    ![HDInsight Linux aan de slag waarden voor cluster opslag opgeven](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "Opslag waarden opgeven voor het maken van een HDInsight-cluster")
 
     Selecteer het tabblad **beveiliging en netwerk** .
 
@@ -80,7 +80,7 @@ Gebruik de volgende stappen om een Apache Kafka-cluster te maken in HDInsight:
 
    Als u uw cluster verbinding wilt laten maken met een virtueel netwerk, selecteert u een virtueel netwerk in de vervolgkeuzelijst **Virtueel netwerk**.
 
-   ![Cluster toevoegen aan virtueel netwerk](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vn.png)
+   ![Cluster toevoegen aan virtueel netwerk](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
 
     Selecteer het tabblad **configuratie + prijzen** .
 
@@ -280,7 +280,7 @@ Gebruik de volgende stappen om records op te slaan in het testonderwerp dat u ee
 
     Vervang `--bootstrap-server $KAFKABROKERS` door `--zookeeper $KAFKAZKHOSTS` als u een oudere versie van Kafka gebruikt.
 
-4. Gebruik __Ctrl+C__ om de consument te stoppen.
+4. Gebruik __Ctrl + C__ om de consument te stoppen.
 
 U kunt ook programmatisch producenten en consumenten maken. Zie het document [Producer and Consumer API van Apache Kafka met HDInsight](apache-kafka-producer-consumer-api.md) voor een voorbeeld van het gebruik van deze API.
 

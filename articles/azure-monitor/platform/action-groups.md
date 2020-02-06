@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: cc01145423d2961e32bf17313a2873633399d21a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 01d3edb3de9e57fa7fa8db2ede863c2aa3e100ed
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901467"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030741"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actie groepen maken en beheren in de Azure Portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -62,7 +62,7 @@ Zie voor meer informatie over het gebruik van Azure Resource Manager sjablonen v
 
 ## <a name="manage-your-action-groups"></a>Uw actie groepen beheren
 
-Nadat u een actie groep hebt gemaakt, wordt deze weer gegeven in de sectie **actie groepen** van het deel venster **monitor** . Selecteer de actie groep die u wilt beheren:
+Nadat u een actie groep hebt gemaakt, kunt u **actie groepen** weer geven door **acties beheren** te selecteren op de pagina **waarschuwings signalen** in het deel venster **monitor** . Selecteer de actie groep die u wilt beheren:
 
 * Acties toevoegen, bewerken of verwijderen.
 * De actie groep verwijderen.
@@ -80,7 +80,7 @@ Mogelijk hebt u een beperkt aantal Runbook-acties in een actie groep.
 ### <a name="azure-app-push-notifications"></a>Push meldingen van Azure-app
 Mogelijk hebt u een beperkt aantal Azure-app-acties in een actie groep.
 
-### <a name="email"></a>E-mail
+### <a name="email"></a>Email
 E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-mail filtering op de juiste wijze is geconfigureerd
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -103,7 +103,7 @@ Voor de actie ITSM is een ITSM-verbinding vereist. Meer informatie over het make
 
 Mogelijk hebt u een beperkt aantal ITSM-acties in een actie groep. 
 
-### <a name="logic-app"></a>Logische app
+### <a name="logic-app"></a>Logische apps
 Mogelijk hebt u een beperkt aantal logische app-acties in een actie groep.
 
 ### <a name="secure-webhook"></a>Beveiligde webhook

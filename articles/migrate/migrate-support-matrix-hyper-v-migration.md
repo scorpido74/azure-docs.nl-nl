@@ -3,18 +3,18 @@ title: Ondersteuning voor Hyper-V-migratie in Azure Migrate
 description: Meer informatie over ondersteuning voor Hyper-V-migratie met Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 96bf423f25911d0befbfd420ac2fb01ba6c8fb65
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 4ca946597417ccde0e00c8bf09c70207bc4f85b9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030261"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031643"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Ondersteunings matrix voor Hyper-V-migratie
 
 In dit artikel vindt u een overzicht van de ondersteunings instellingen en beperkingen voor het migreren van virtuele Hyper-V-machines met [Azure migrate: Server migratie](migrate-services-overview.md#azure-migrate-server-migration-tool) . Als u op zoek bent naar informatie over het evalueren van Hyper-V-Vm's voor migratie naar Azure, raadpleegt u de [ondersteunings matrix voor evaluatie](migrate-support-matrix-hyper-v.md).
 
-## <a name="migration-limitations"></a>Migratiebeperkingen
+## <a name="migration-limitations"></a>Migratie beperkingen
 
 U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer computers wilt migreren, repliceert u in groepen van 10.
 
@@ -36,7 +36,7 @@ U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer compute
 | **Besturingssysteem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -besturings systemen die worden ondersteund door Azure. |
 | **Machtigingen**           | U hebt beheerders machtigingen nodig op elke Hyper-V-VM die u wilt beoordelen. |
 | **Integratie Services**       | [Hyper-V-integratie Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) moeten worden uitgevoerd op vm's die u controleert, om informatie over het besturings systeem vast te leggen. |
-| **Vereiste wijzigingen voor Azure** | Voor sommige Vm's zijn mogelijk wijzigingen vereist zodat ze kunnen worden uitgevoerd in Azure. Azure Migrate worden deze wijzigingen automatisch aangebracht voor de volgende besturings systemen:<br/> - Red Hat Enterprise Linux 6.5+, 7.0+<br/> - CentOS 6.5+, 7.0+</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> Voor andere besturings systemen moet u hand matig aanpassingen maken voordat u de migratie uitvoert. De relevante artikelen bevatten instructies over hoe u dit doet. |
+| **Vereiste wijzigingen voor Azure** | Voor sommige Vm's zijn mogelijk wijzigingen vereist zodat ze kunnen worden uitgevoerd in Azure. U moet hand matig aanpassingen maken voordat u de migratie uitvoert. De relevante artikelen bevatten instructies over hoe u dit doet. |
 | **Linux-opstart**                 | Als/boot zich op een toegewezen partitie bevindt, moet deze zich op de besturingssysteem schijf bevinden en niet over meerdere schijven worden verspreid.<br/> Als/boot deel uitmaakt van de hoofd partitie (/), moet de partitie '/' zich op de besturingssysteem schijf bevindt en niet over andere schijven beschikken. |
 | **UEFI-opstart**                  | De gemigreerde VM in azure wordt automatisch geconverteerd naar een BIOS-opstart-VM. Op de VM moet Windows Server 2012 en hoger worden uitgevoerd. De besturingssysteem schijf moet Maxi maal vijf partities of minder hebben en de grootte van de besturingssysteem schijf moet kleiner zijn dan 300 GB.
   |
@@ -45,7 +45,7 @@ U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer compute
 | **Versleutelde schijven/volumes**    | Niet ondersteund voor migratie. |
 | **RDM/passthrough-schijven**      | Niet ondersteund voor migratie. |
 | **Gedeelde schijf** | Vm's die gebruikmaken van gedeelde schijven, worden niet ondersteund voor migratie.
-| **NFS**                        | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd. |
+| **NBS**                        | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd. |
 | **SCSI**                      | Vm's met iSCSI-doelen worden niet ondersteund voor migratie.
 | **Doel schijf**                | U kunt alleen migreren naar Azure-Vm's met Managed disks. |
 | **Ipconfiguration** | Wordt niet ondersteund.
@@ -59,13 +59,13 @@ Alle on-premises Vm's die naar Azure worden gerepliceerd, moeten voldoen aan de 
 
 **Onderdeel** | **Vereisten** | **Details**
 --- | --- | ---
-Gastbesturingssysteem | Controleert ondersteunde VMware-VM-besturings systemen voor migratie.<br/> U kunt elke werk belasting migreren die wordt uitgevoerd op een ondersteund besturings systeem. | De controle is mislukt als dit niet wordt ondersteund.
+Gast besturingssysteem | Controleert ondersteunde VMware-VM-besturings systemen voor migratie.<br/> U kunt elke werk belasting migreren die wordt uitgevoerd op een ondersteund besturings systeem. | De controle is mislukt als dit niet wordt ondersteund.
 Architectuur van gast besturingssysteem | 64-bits. | De controle is mislukt als dit niet wordt ondersteund.
 Schijf grootte van het besturings systeem | Maxi maal 2.048 GB. | De controle is mislukt als dit niet wordt ondersteund.
 Aantal besturingssysteem schijven | 1 | De controle is mislukt als dit niet wordt ondersteund.
 Aantal gegevens schijven | 64 of minder. | De controle is mislukt als dit niet wordt ondersteund.
 Grootte van de gegevens schijf | Maxi maal 4.095 GB | De controle is mislukt als dit niet wordt ondersteund.
-Netwerkadapters | Meerdere adapters worden ondersteund. |
+Netwerk adapters | Meerdere adapters worden ondersteund. |
 Gedeelde VHD | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
 FC-schijf | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
 BitLocker | Wordt niet ondersteund. | BitLocker moet worden uitgeschakeld voordat u replicatie voor een machine inschakelt.

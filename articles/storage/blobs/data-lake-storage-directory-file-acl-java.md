@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 575f3ed1a692087cc99881798f7f0ca74c5d3a66
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0f9489cd702eab6038689f6ac710c32427665093
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024446"
+ms.locfileid: "77031115"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Java gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2 (preview)
 
@@ -258,8 +258,6 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 ## <a name="download-from-a-directory"></a>Downloaden uit een directory
 
 Maak eerst een **DataLakeFileClient** -exemplaar dat het bestand vertegenwoordigt dat u wilt downloaden. Gebruik de methode **DataLakeFileClient. Read** om het bestand te lezen. Gebruik een API voor het verwerken van .NET-bestanden om bytes van de stroom naar een bestand op te slaan. 
-
-Zorg ervoor dat u de down load voltooit door de methode **DataLakeFileClient. Flush** aan te roepen.
 
 ```java
 static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: 8c63d314c253152d2815a70831870fe331071c68
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 256510f855256e648ae9203f46eb9f66c9ffaed6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964088"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029151"
 ---
 ## <a name="publish-the-project-to-azure"></a>Het project naar Azure publiceren
 
@@ -46,7 +46,7 @@ In deze sectie maakt u een functie-app en gerelateerde resources in uw Azure-abo
     + **[Opslag account](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** : een standaard opslag account wordt gemaakt met een unieke naam die is gebaseerd op de naam van uw functie-app.
     + **[Hosting plan](../articles/azure-functions/functions-scale.md)** : er wordt een verbruiks abonnement in de regio vs West gemaakt om uw serverloze functie-app te hosten.
     + **Functie-app**: uw project wordt geïmplementeerd naar en wordt uitgevoerd in deze nieuwe functie-app.
-    + **[Application Insights]()** : een exemplaar, dat is verbonden met uw functie-app, wordt gemaakt op basis van de functie naam.
+    + **Application Insights**: een exemplaar, dat is verbonden met uw functie-app, wordt gemaakt op basis van de functie naam.
 
     Nadat de functie-app is gemaakt en het implementatiepakket is toegepast, wordt er een melding weergegeven. 
     

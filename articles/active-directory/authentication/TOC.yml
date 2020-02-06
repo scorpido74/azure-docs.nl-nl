@@ -4,16 +4,13 @@
   items:
     - name: Wat is verificatie?
       href: overview-authentication.md
-- name: Snelstartgids
-  items:
-    - name: Opnieuw instellen van wachtwoord configureren
-      href: quickstart-sspr.md
 - name: Zelfstudies
+  expanded: true
   items:
-    - name: 1 MFA voor toepassingen inschakelen
+    - name: Selfservice voor wachtwoordherstel inschakelen
+      href: tutorial-enable-sspr.md
+    - name: MFA voor toepassingen inschakelen
       href: tutorial-mfa-applications.md
-    - name: 2 Een proef voor selfservice voor wachtwoordherstel beginnen
-      href: tutorial-sspr-pilot.md
     - name: On-premises integratie van selfservice voor wachtwoordherstel inschakelen
       href: tutorial-enable-writeback.md
     - name: Azure Identity Protection integreren

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: b4550f55d160a77c2fb149dd509ca1cfad784f79
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: ba8a76cd4d3804bcb062ae0554e3fe7002804ed2
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513453"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031677"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Gegevens verzameling, retentie en opslag in Application Insights
 
@@ -175,11 +175,22 @@ Standaard `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` wordt gebruikt voor het
 
 Het `appInsights-node` van de map kan worden overschreven door de runtime-waarde van de statische variabele `Sender.TEMPDIR_PREFIX` gevonden in [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)te wijzigen.
 
+### <a name="opencensus-python"></a>Opentellingen python
 
+Standaard gebruikt de python-SDK voor opentellingen de huidige map `%username%/.opencensus/.azure/`. Machtigingen voor toegang tot deze map zijn beperkt tot de huidige gebruiker en beheerders. (Zie hier [implementatie](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) .) De map met de persistente gegevens krijgt de naam na het python-bestand dat de telemetrie heeft gegenereerd.
+
+U kunt de locatie van uw opslag bestand wijzigen door door te geven in de para meter `storage_path` in de constructor van de export functie die u gebruikt.
+
+```python
+AzureLogHandler(
+  connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000',
+  storage_path='<your-path-here>',
+)
+```
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Hoe kan ik gegevens naar Application Insights verzenden met behulp van TLS 1,2?
 
-Om ervoor te zorgen dat de beveiliging van gegevens die onderweg zijn naar de eind punten van de Application Insights, raden we klanten ten zeerste aan om hun toepassing te configureren voor het gebruik van ten minste Transport Layer Security (TLS) 1,2. Oudere versies van TLS/Secure Sockets Layer (SSL) kwetsbaar zijn gevonden en hoewel ze op dit moment nog steeds werken om toe te staan achterwaartse compatibiliteit, zijn ze onderling **niet aanbevolen**, en de branche is snel veranderende te breken ondersteuning voor deze oudere protocollen. 
+Om ervoor te zorgen dat de beveiliging van gegevens die onderweg zijn naar de eind punten van de Application Insights, raden we klanten ten zeerste aan om hun toepassing te configureren voor het gebruik van ten minste Transport Layer Security (TLS) 1,2. Oudere versies van TLS/Secure Sockets Layer (SSL) zijn kwetsbaar voor aanvallen en terwijl ze nog steeds werken om achterwaartse compatibiliteit mogelijk te maken, worden ze **niet aanbevolen**en wordt de branche snel verplaatst om ondersteuning voor deze oudere protocollen te annuleren. 
 
 De [PCI Security Standards Council](https://www.pcisecuritystandards.org/) heeft een [deadline ingesteld van 30 juni 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) om oudere versies van TLS/SSL uit te scha kelen en te upgraden naar meer beveiligde protocollen. Als de ondersteuning voor Azure is verbroken, kunt u, als uw toepassing/clients geen communicatie meer over ten minste TLS 1,2, gegevens verzenden naar Application Insights. De aanpak die u moet nemen om de TLS-ondersteuning van uw toepassing te testen en te valideren, varieert afhankelijk van het besturings systeem/platform en de taal/het Framework dat door uw toepassing wordt gebruikt.
 
@@ -190,17 +201,17 @@ Het wordt niet aanbevolen om uw toepassing expliciet in te stellen voor gebruik 
 |Platform/taal | Ondersteuning | Meer informatie |
 | --- | --- | --- |
 | Azure App Services  | Wordt ondersteund. de configuratie is mogelijk vereist. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [meer informatie](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)over de configuratie.  |
-| Azure Function-apps | Wordt ondersteund. de configuratie is mogelijk vereist. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [meer informatie](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)over de configuratie. |
+| Azure function-apps | Wordt ondersteund. de configuratie is mogelijk vereist. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [meer informatie](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)over de configuratie. |
 |.NET | Ondersteund, de configuratie is afhankelijk van versie. | Raadpleeg [deze instructies](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)voor gedetailleerde informatie over de configuratie van .net 4,7 en eerdere versies.  |
 |Status Monitor | Ondersteund, configuratie vereist | Status Monitor is afhankelijk van de [besturingssysteem configuratie](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET-configuratie](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) ter ondersteuning van TLS 1,2.
 |Node.js |  In v 10.5.0 is configuratie mogelijk vereist. | Gebruik de [officiële node. js TLS/SSL-documentatie](https://nodejs.org/api/tls.html) voor elke toepassingsspecifieke configuratie. |
 |Java | Ondersteund, JDK-ondersteuning voor TLS 1,2 is toegevoegd in [JDK 6 update 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) en [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 maakt [standaard gebruik van TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
-|Linux | Linux-distributies meestal afhankelijk zijn van [OpenSSL](https://www.openssl.org) voor ondersteuning van TLS 1.2.  | Controleer de [OpenSSL Changelog](https://www.openssl.org/news/changelog.html) om te bevestigen van uw versie van OpenSSL wordt ondersteund.|
-| Windows 8.0-10 | Ondersteund en standaard ingeschakeld. | Om te bevestigen dat u nog steeds gebruikt de [standaardinstellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
-| WindowsServer 2012-2016 | Ondersteund en standaard ingeschakeld. | Om te bevestigen dat u nog steeds gebruikt de [standaardinstellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar niet standaard ingeschakeld. | Zie de [registerinstellingen voor Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) pagina voor meer informatie over het inschakelen.  |
-| Windows Server 2008 SP2 | Ondersteuning voor TLS 1.2 is een update vereist. | Zie [Update voor het toevoegen van ondersteuning voor TLS 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) in Windows Server 2008 SP2. |
-|Windows Vista | Niet ondersteund. | N/A
+|Linux | Linux-distributies zijn vaak afhankelijk van [openssl](https://www.openssl.org) voor TLS 1,2-ondersteuning.  | Controleer de [openssl wijzigingen logboek](https://www.openssl.org/news/changelog.html) om te bevestigen dat uw versie van openssl wordt ondersteund.|
+| Windows 8.0-10 | Ondersteund en standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)gebruikt.  |
+| WindowsServer 2012-2016 | Ondersteund en standaard ingeschakeld. | Controleren of u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) gebruikt |
+| Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar niet standaard ingeschakeld. | Zie de pagina met [register instellingen voor Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) voor meer informatie over het inschakelen van.  |
+| Windows Server 2008 SP2 | Ondersteuning voor TLS 1.2 is een update vereist. | Zie [Update voor het toevoegen van ondersteuning voor TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) in Windows Server 2008 SP2. |
+|Windows Vista | Niet ondersteund. | N.v.t.
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Controleren welke versie van OpenSSL uw Linux-distributie wordt uitgevoerd
 
@@ -237,7 +248,7 @@ De Sdk's verschillen tussen platforms en er zijn verschillende onderdelen die u 
 | [Application Insights SDK toevoegen aan een .NET-webproject][greenbrown] |ServerContext<br/>Afgeleid<br/>Prestatiemeteritems<br/>Aanvragen<br/>**Uitzonderingen**<br/>Sessie<br/>gebruikers |
 | [Status Monitor installeren op IIS][redfield] |Afhankelijkheden<br/>ServerContext<br/>Afgeleid<br/>Prestatiemeteritems |
 | [Application Insights SDK toevoegen aan een Java-Web-app][java] |ServerContext<br/>Afgeleid<br/>Aanvraag<br/>Sessie<br/>gebruikers |
-| [Java script-SDK toevoegen aan de webpagina][client] |ClientContext <br/>Afgeleid<br/>Pagina<br/>ClientPerf<br/>Ajax |
+| [Java script-SDK toevoegen aan de webpagina][client] |ClientContext <br/>Afgeleid<br/>Faxvoorblad<br/>ClientPerf<br/>Ajax |
 | [Standaard eigenschappen definiëren][apiproperties] |**Eigenschappen** voor alle standaard-en aangepaste gebeurtenissen |
 | [TrackMetric aanroepen][api] |Numerieke waarden<br/>**Eigenschappen** |
 | [Nummer van oproep *][api] |Gebeurtenisnaam<br/>**Eigenschappen** |
@@ -257,7 +268,7 @@ Voor [sdk's voor andere platforms][platforms]raadpleegt u hun documenten.
 | ServerContext |Computer naam, land instelling, besturings systeem, apparaat, gebruikers sessie, gebruikers context, bewerking |
 | Afgeleid |Geo-locatie van IP-adres, tijds tempel, besturings systeem, browser |
 | Metrische gegevens |Naam en waarde van de metriek |
-| Evenements |Gebeurtenis naam en-waarde |
+| Gebeurtenissen |Gebeurtenis naam en-waarde |
 | PageViews |URL en pagina naam of scherm naam |
 | Client prestaties |URL/pagina naam, laad tijd browser |
 | Ajax |HTTP-aanroepen van de webpagina naar de server |
@@ -275,7 +286,7 @@ U kunt [een aantal van de gegevens uitschakelen door ApplicationInsights. config
 > [!NOTE]
 > Client-IP wordt gebruikt om geografische locatie af te leiden, maar standaard worden IP-gegevens niet meer opgeslagen en worden alle nullen naar het gekoppelde veld geschreven. Voor meer informatie over het afhandelen van persoonlijke gegevens kunt u dit [artikel](../../azure-monitor/platform/personal-data-mgmt.md#application-data)aanbevelen. Als u IP-adres gegevens moet opslaan in het artikel over de [IP-adres verzameling](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) , wordt u door de opties geleid.
 
-## <a name="credits"></a>Credits
+## <a name="credits"></a>Tegoeden
 Dit product bevat GeoLite2-gegevens die zijn gemaakt door MaxMind, die beschikbaar zijn via [https://www.maxmind.com](https://www.maxmind.com).
 
 

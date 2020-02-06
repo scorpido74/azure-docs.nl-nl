@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b2f9853c2699b69a0c9be13e6925a4b30f358f7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f5ea0ddff38532b119d8d984f2dabd6d898b44a5
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102031"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031353"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Veiligheidsoverwegingen voor SQL Server in Azure Virtual Machines
+# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Beveiligings overwegingen voor SQL Server in azure Virtual Machines
 
 Dit onderwerp bevat algemene beveiligings richtlijnen die u helpen bij het opzetten van beveiligde toegang tot SQL Server exemplaren in een virtuele Azure-machine (VM).
 
@@ -55,7 +55,11 @@ Naast NSG-regels om netwerk verkeer te beperken, kunt u ook de Windows Firewall 
 
 Als u eind punten met het klassieke implementatie model gebruikt, verwijdert u alle eind punten op de virtuele machine als u deze niet gebruikt. Zie [de ACL voor een eind punt beheren](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)voor instructies over het gebruik van acl's met eind punten. Dit is niet nodig voor Vm's die gebruikmaken van Resource Manager.
 
-Ten slotte kunt u versleutelde verbindingen inschakelen voor het exemplaar van de SQL Server data base-engine in uw virtuele Azure-machine. Configureer het SQL Server-exemplaar met een ondertekend certificaat. Zie versleutelde [verbindingen met de data base-engine en de](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) syntaxis van de [verbindings reeks](https://msdn.microsoft.com/library/ms254500.aspx)inschakelen voor meer informatie.
+Ten slotte kunt u versleutelde verbindingen inschakelen voor het exemplaar van de SQL Server data base-engine in uw virtuele Azure-machine. Configureer het SQL Server-exemplaar met een ondertekend certificaat. Zie [versleutelde verbindingen met de data base-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) en de [syntaxis van de verbindings reeks](https://msdn.microsoft.com/library/ms254500.aspx)inschakelen voor meer informatie.
+
+## <a name="encryption"></a>Versleuteling
+
+Beheerde schijven bieden versleuteling aan de server zijde en Azure Disk Encryption. [Versleuteling aan de server zijde](/azure/virtual-machines/windows/disk-encryption) biedt versleuteling-at-rest en beschermt uw gegevens om te voldoen aan de verplichtingen van de beveiliging en naleving van uw organisatie. [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) maakt gebruik van een BitLocker-of DM-cryptografie technologie en integreert met Azure Key Vault om zowel het besturings systeem als de gegevens schijven te versleutelen. 
 
 ## <a name="use-a-non-default-port"></a>Een niet-standaard poort gebruiken
 
@@ -74,7 +78,7 @@ Als u dit na de inrichting wilt configureren, hebt u twee opties:
 > [!IMPORTANT]
 > Het is een goed idee om een niet-standaard poort op te geven als uw SQL Server poort is geopend voor open bare Internet verbindingen.
 
-Wanneer SQL Server op een niet-standaard poort luistert, moet u de poort opgeven wanneer u verbinding maakt. Denk bijvoorbeeld aan een scenario waarbij het IP-adres van de server 13.55.255.255 is en SQL Server luistert op poort 1401. Als u verbinding wilt maken met SQL Server, `13.55.255.255,1401` geeft u in de Connection String op.
+Wanneer SQL Server op een niet-standaard poort luistert, moet u de poort opgeven wanneer u verbinding maakt. Denk bijvoorbeeld aan een scenario waarbij het IP-adres van de server 13.55.255.255 is en SQL Server luistert op poort 1401. Als u verbinding wilt maken met SQL Server, geeft u `13.55.255.255,1401` op in de connection string.
 
 ## <a name="manage-accounts"></a>Accounts beheren
 
@@ -93,9 +97,14 @@ U wilt niet dat aanvallers eenvoudig account namen of wacht woorden raden. Gebru
 
   - Als u de **sa** -aanmelding moet gebruiken, schakelt u de aanmelding na het inrichten in en wijst u een nieuw sterk wacht woord toe.
 
-## <a name="follow-on-premises-best-practices"></a>Volg de aanbevolen procedures voor het uitvoeren van on-premises
+## <a name="additional-best-practices"></a>Aanvullende aanbevolen procedures
 
-Naast de procedures die in dit onderwerp worden beschreven, raden we u aan de traditionele lokale beveiligings procedures te controleren en te implementeren, indien van toepassing. Zie [beveiligings overwegingen voor een SQL Server-installatie](https://docs.microsoft.com/sql/sql-server/install/security-considerations-for-a-sql-server-installation) voor meer informatie.
+Naast de procedures die in dit onderwerp worden beschreven, raden we u aan om de aanbevolen procedures voor beveiliging te controleren en implementeren vanuit zowel traditionele on-premises beveiligings procedures als aanbevolen procedures voor de beveiliging van virtuele machines. 
+
+Zie [beveiligings overwegingen voor een SQL Server-installatie](/sql/sql-server/install/security-considerations-for-a-sql-server-installation) en het [Security Center](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)voor meer informatie over on-premises beveiligings procedures. 
+
+Voor meer informatie over beveiliging van de virtuele machine raadpleegt u het [overzicht van beveiliging van virtuele machines](/azure/security/fundamentals/virtual-machines-overview).
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect-inrichtings agent: Release geschiedenis van versie | Microsoft Docs'
+title: 'Azure AD Connect-inrichtings agent: release geschiedenis van versie | Microsoft Docs'
 description: In dit artikel vindt u een overzicht van alle releases van Azure AD Connect-inrichtings agent en worden nieuwe functies en problemen opgelost
 services: active-directory
 documentationcenter: ''
@@ -12,27 +12,38 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 02/04/2020
 ms.subservice: app-mgmt
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ce9549765f6a912b3e95f99d11da20347b82ad8
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: cac9eac2d17fa0a4f1db487d4c7f8beb67de24a9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326467"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030664"
 ---
-# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect-inrichtings agent: Releasegeschiedenis van versie
+# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect-inrichtings agent: release geschiedenis van versie
 Dit artikel bevat een overzicht van de versies en functies van Azure Active Directory Connect Provisioning agent die is uitgebracht. Het Azure AD-team werkt de inrichtings agent regel matig bij met nieuwe functies en functionaliteit. De inrichtings agent wordt automatisch bijgewerkt wanneer er een nieuwe versie wordt uitgebracht. 
 
 U wordt aangeraden automatische updates in te scha kelen voor uw agents om ervoor te zorgen dat u beschikt over de nieuwste functies en oplossingen voor fouten. Micro soft biedt direct ondersteuning voor de nieuwste versie van de agent en één versie voor.
+
+## <a name="11960"></a>1.1.96.0
+
+### <a name="release-status"></a>Release status
+
+4 december 2019: uitgebracht voor downloaden
+
+### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
+
+* Biedt ondersteuning voor [Azure AD Connect Cloud inrichting](../cloud-provisioning/what-is-cloud-provisioning.md) voor het synchroniseren van gebruikers, het contact opnemen en groeperen van gegevens van on-premises Active Directory naar Azure AD
+
 
 ## <a name="11670"></a>1.1.67.0
 
 ### <a name="release-status"></a>Release status
 
-9 september 2019: Uitgebracht voor automatische updates
+9 september 2019: uitgebracht voor automatische updates
 
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 
@@ -49,7 +60,7 @@ U wordt aangeraden automatische updates in te scha kelen voor uw agents om ervoo
 
 ### <a name="release-status"></a>Release status
 
-23 januari 2019: Uitgebracht voor downloaden
+23 januari 2019: uitgebracht voor downloaden
 
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 

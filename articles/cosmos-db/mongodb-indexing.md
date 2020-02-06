@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: e51e96c0c553bcf37284878cab11f3ec592ddd05
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c8879884cf3d882e6a6b441244ed139072bedeeb
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753380"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029466"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>Indexeren met de API van Azure Cosmos DB voor MongoDB
 
@@ -32,6 +32,89 @@ Voor accounts voor wire-protocol versie 3,6 is de enige standaard index _id, die
 Echte samengestelde indexen worden ondersteund voor accounts met het 3,6-bedradings protocol. Met de volgende opdracht wordt een samengestelde index gemaakt op de velden ' a ' en ' b ': `db.coll.createIndex({a:1,b:1})`
 
 Samengestelde indexen kunnen worden gebruikt om efficiënt te sorteren op meerdere velden tegelijk, zoals: `db.coll.find().sort({a:1,b:1})`
+
+### <a name="track-the-index-progress"></a>De voortgang van de index volgen
+
+De 3,6-versie van de API van Azure Cosmos DB voor MongoDB-accounts ondersteunt de `currentOp()`-opdracht om de voortgang van de index voor een Data Base-exemplaar bij te houden. Met deze opdracht wordt een document geretourneerd dat informatie bevat over de bewerkingen die worden uitgevoerd op een Data Base-exemplaar. De opdracht `currentOp` wordt gebruikt om alle bewerkingen in de interne MongoDB bij te houden, terwijl in de API van Azure Cosmos DB voor MongoDB, deze opdracht alleen ondersteuning biedt voor het bijhouden van de index bewerking.
+
+Hier volgen enkele voor beelden die laten zien hoe u de `currentOp` opdracht kunt gebruiken om de voortgang van de index bij te houden:
+
+• De voortgang van de index voor een verzameling ophalen:
+
+   ```shell
+   db.currentOp({"command.createIndexes": <collectionName>, "command.$db": <databaseName>})
+   ```
+
+• De voortgang van de index voor alle verzamelingen in een Data Base ophalen:
+
+  ```shell
+  db.currentOp({"command.$db": <databaseName>})
+  ```
+
+• De voortgang van de index voor alle data bases en verzamelingen in een Azure Cosmos-account ophalen:
+
+  ```shell
+  db.currentOp({"command.createIndexes": { $exists : true } })
+  ```
+
+De details van de index voortgang bevatten het percentage voortgang van de huidige index bewerking. In het volgende voor beeld ziet u de indeling van het uitvoer document voor verschillende stadia van de index voortgang:
+
+1. Als de index bewerking voor een Data Base van de verzameling ' foo ' en ' bar ' met 60% indexering is voltooid, de volgende uitvoer document. `Inprog[0].progress.total` geeft 100 weer als de voltooiing van het doel.
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 60 %",
+                "progress" : {
+                        "done" : 60,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+        "ok" : 1
+   }
+   ```
+
+2. Voor een index bewerking die zojuist is gestart op een ' foo '-verzameling en ' bar '-data base, wordt in het uitvoer document de voortgang van 0% weer gegeven totdat het is bereikt tot een meetbaar niveau.
+
+   ```json
+   {
+        "inprog" : [
+        {
+                ………………...
+                "command" : {
+                        "createIndexes" : foo
+                        "indexes" :[ ],
+                        "$db" : bar
+                },
+                "msg" : "Index Build (background) Index Build (background): 0 %",
+                "progress" : {
+                        "done" : 0,
+                        "total" : 100
+                },
+                …………..…..
+        }
+        ],
+       "ok" : 1
+   }
+   ```
+
+3. Wanneer de uitgevoerde index bewerking is voltooid, worden in het uitvoer document lege unprog-bewerkingen weer gegeven.
+
+   ```json
+   {
+      "inprog" : [],
+      "ok" : 1
+   }
+   ```
 
 ## <a name="indexing-for-version-32"></a>Indexering voor versie 3,2
 
@@ -59,7 +142,7 @@ De volgende bewerkingen zijn gebruikelijk voor beide accounts voor wire-protocol
 >[!Important]
 > Op dit moment kunnen alleen unieke indexen worden gemaakt wanneer de verzameling leeg is (bevat geen documenten).
 
-Met de volgende opdracht maakt u een unieke index voor het veld ' student_id ':
+Met de volgende opdracht maakt u een unieke index voor het veld student_id:
 
 ```shell
 globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1 }, {unique:true} )

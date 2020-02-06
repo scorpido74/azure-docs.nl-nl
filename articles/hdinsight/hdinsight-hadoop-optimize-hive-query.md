@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 33b000d0ca5cdd4af2ed57c5db6e71ae5a1e4c58
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215797"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030953"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive query's optimaliseren in azure HDInsight
 
@@ -29,11 +29,11 @@ Door het aantal worker-knoop punten in een HDInsight-cluster te verg Roten, kan 
 
 * Op het moment dat u een cluster maakt, kunt u het aantal worker-knoop punten opgeven met behulp van de Azure Portal, Azure PowerShell of de opdracht regel interface.  Zie [HDInsight-clusters maken](hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie. Op de volgende scherm afbeelding ziet u de configuratie van het worker-knoop punt op de Azure Portal:
   
-    ![Knoop punten van Azure Portal cluster grootte](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration-pricing-hadoop.png "scaleout_1")
+    ![Knoop punten van Azure Portal cluster grootte](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
 * Nadat u hebt gemaakt, kunt u het aantal worker-knoop punten ook bewerken om een cluster verder te schalen zonder dat u er een hoeft te maken:
 
-    ![Grootte van Azure Portal schaal cluster](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
+    ![Grootte van Azure Portal schaal cluster](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
 
 Zie [hdinsight-clusters schalen](hdinsight-scaling-best-practices.md) voor meer informatie over het schalen van hdinsight.
 

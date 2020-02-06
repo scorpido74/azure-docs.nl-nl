@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 68f4eb4fbad2a571e078cb9aedcfd56c80ffe054
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8c3e377faef4e18bff01fd7001751d1f1e347b8d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747873"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030864"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight
 
@@ -38,7 +38,7 @@ Als u de hostnamen voor verschillende knooppunt typen in uw cluster wilt ophalen
 > [!IMPORTANT]  
 > Koppel de numerieke waarde niet aan de vraag of een knoop punt primair of secundair is. De numerieke waarde is alleen aanwezig om een unieke naam op te geven voor elk knoop punt.
 
-### <a name="nimbus-nodes"></a>Nimbus-knooppunten
+### <a name="nimbus-nodes"></a>Nimbus-knoop punten
 
 Nimbus-knoop punten zijn beschikbaar met Apache Storm clusters. De Nimbus-knoop punten bieden vergelijk bare functionaliteit aan de Hadoop-JobTracker door verwerking te distribueren en te bewaken op werk knooppunten. HDInsight biedt twee Nimbus-knoop punten voor Storm-clusters
 
@@ -46,7 +46,7 @@ Nimbus-knoop punten zijn beschikbaar met Apache Storm clusters. De Nimbus-knoop 
 
 [ZooKeeper](https://zookeeper.apache.org/) -knoop punten worden gebruikt voor de Leader verkiezing van Master Services op hoofd knooppunten. Ze worden ook gebruikt om ervoor te zorgen dat services, gegevens (worker) knoop punten en gateways weten op welke hoofd knooppunt een Master-service actief is. HDInsight biedt standaard drie ZooKeeper-knoop punten.
 
-### <a name="worker-nodes"></a>Werkknooppunten
+### <a name="worker-nodes"></a>Worker-knooppunten
 
 Worker-knoop punten voeren de werkelijke gegevens analyse uit wanneer een taak wordt verzonden naar het cluster. Als een werk knooppunt mislukt, wordt de taak die het heeft uitgevoerd, verzonden naar een ander worker-knoop punt. Standaard maakt HDInsight vier worker-knoop punten. U kunt dit nummer tijdens en na het maken van het cluster aanpassen aan uw behoeften.
 
@@ -64,7 +64,7 @@ Toegang tot het cluster via internet wordt via een open bare gateway gegeven. De
 
 Toegang via de open bare gateway is beperkt tot poorten 443 (HTTPS), 22 en 23.
 
-|Port |Beschrijving |
+|Poort |Beschrijving |
 |---|---|
 |443|Wordt gebruikt voor toegang tot Ambari en andere web-UI of REST-Api's die worden gehost op de hoofd knooppunten.|
 |22|Wordt gebruikt om toegang te krijgen tot het primaire knoop punt of Edge-knoop punt met SSH.|
@@ -101,7 +101,7 @@ U kunt verbinding maken met knoop punten die niet rechtstreeks toegankelijk zijn
 |---|---|
 |SSH|Wanneer u met SSH verbinding hebt gemaakt met een hoofd knooppunt, kunt u vervolgens SSH van het hoofd knooppunt gebruiken om verbinding te maken met andere knoop punten in het cluster. Zie het document [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie.|
 |SSH-tunnel|Als u toegang wilt krijgen tot een webservice die wordt gehost op een van de knoop punten die niet beschikbaar zijn op internet, moet u een SSH-tunnel gebruiken. Zie het document [een SSH-tunnel gebruiken met HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) voor meer informatie.|
-|Virtual Network van Azure|Als uw HDInsight-cluster deel uitmaakt van een Azure-Virtual Network, heeft elke resource op dezelfde Virtual Network rechtstreeks toegang tot alle knoop punten in het cluster. Zie het document [een virtueel netwerk voor HDInsight plannen](hdinsight-plan-virtual-network-deployment.md) voor meer informatie.|
+|Azure Virtual Network|Als uw HDInsight-cluster deel uitmaakt van een Azure-Virtual Network, heeft elke resource op dezelfde Virtual Network rechtstreeks toegang tot alle knoop punten in het cluster. Zie het document [een virtueel netwerk voor HDInsight plannen](hdinsight-plan-virtual-network-deployment.md) voor meer informatie.|
 
 ## <a name="how-to-check-on-a-service-status"></a>De status van een service controleren
 
@@ -119,7 +119,7 @@ Er kan een reeks pictogrammen naast een service worden weer gegeven om de status
 
 De volgende waarschuwingen helpen bij het bewaken van de beschik baarheid van een cluster:
 
-| Naam waarschuwing                               | Beschrijving                                                                                                                                                                                  |
+| Naam van waarschuwing                               | Beschrijving                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Status van metrische monitor                    | Deze waarschuwing geeft de status van het bewakings proces voor metrische gegevens aan, zoals bepaald door het controle status script.                                                                                   |
 | Heartbeat van de Ambari-agent                   | Deze waarschuwing wordt geactiveerd als de server contact met een agent heeft verloren.                                                                                                                        |
@@ -270,7 +270,7 @@ Wanneer u een cluster maakt, kunt u de grootte van de knoop punten opgeven. De v
 
 * **Azure Portal**: wanneer u een cluster maakt, kunt u de grootte van de knoop punten instellen die door het cluster worden gebruikt:
 
-    ![Afbeelding van de wizard voor het maken van een cluster met een knooppunt grootte selectie](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
+    ![Afbeelding van de wizard voor het maken van een cluster met een knooppunt grootte selectie](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
 * **Azure cli**: wanneer u de [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) -opdracht gebruikt, kunt u de grootte van de hoofd-, werk-en ZooKeeper-knoop punten instellen met behulp van de para meters `--headnode-size`, `--workernode-size`en `--zookeepernode-size`.
 

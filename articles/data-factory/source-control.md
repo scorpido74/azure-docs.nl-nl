@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: fc38dce3deaa601c9ed36f60439a08bb89cc7630
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1cc5932eca520b0bbc0c592b54d36ea8b5942b08
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646894"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031626"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Broncode beheer in Azure Data Factory
 
@@ -157,7 +157,7 @@ In het deel venster configuratie worden de volgende instellingen voor de GitHub-
 
 - GitHub-integratie met de Data Factory Visual authoring-hulpprogram ma's werkt alleen in de algemeen beschik bare versie van Data Factory.
 
-- Er kunnen Maxi maal 1.000 entiteiten per resource type (zoals pijp lijnen en gegevens sets) worden opgehaald uit één GitHub-vertakking. Als deze limiet is bereikt, wordt u geadviseerd om uw resources te splitsen in afzonderlijke fabrieken.
+- Er kunnen Maxi maal 1.000 entiteiten per resource type (zoals pijp lijnen en gegevens sets) worden opgehaald uit één GitHub-vertakking. Als deze limiet is bereikt, wordt u geadviseerd om uw resources te splitsen in afzonderlijke fabrieken. Deze beperking is niet van Azure DevOps git.
 
 ## <a name="switch-to-a-different-git-repo"></a>Overschakelen naar een andere Git-opslag plaats
 
@@ -249,8 +249,13 @@ Als de publicatie vertakking niet is gesynchroniseerd met de Master vertakking e
 
 1. Uw huidige Git-opslag plaats verwijderen
 1. Configureer Git opnieuw met dezelfde instellingen, maar zorg ervoor dat **bestaande Data Factory resources importeren in opslag plaats** is geselecteerd en kies **nieuwe vertakking**
-1. Alle resources uit uw samenwerkings vertakking verwijderen
 1. Een pull-aanvraag maken om de wijzigingen aan de collaboration Branch samen te voegen 
+
+Hieronder ziet u enkele voor beelden van situaties die een verouderde publicatie vertakking kunnen veroorzaken:
+- Een gebruiker heeft meerdere vertakkingen. In één functie vertakking hebben ze een gekoppelde service verwijderd waaraan geen Azure is gekoppeld (niet Azure gekoppelde services worden onmiddellijk gepubliceerd, ongeacht of ze al dan niet in Git of niet zijn) en voegen de functie vertakking nooit toe aan de brnach voor samen werking.
+- Een gebruiker heeft de data factory gewijzigd met de SDK of Power shell
+- Een gebruiker heeft alle resources naar een nieuwe vertakking verplaatst en heeft geprobeerd om de eerste keer te publiceren. Gekoppelde services moeten hand matig worden gemaakt bij het importeren van resources.
+- Een gebruiker uploadt een niet-Azure gekoppelde service of een Integration Runtime JSON hand matig. Ze verwijzen naar die resource vanuit een andere resource, zoals een gegevensset, een gekoppelde service of een pijp lijn. Een niet-Azure gekoppelde service die via de UX is gemaakt, wordt onmiddellijk gepubliceerd, omdat de referenties moeten worden versleuteld. Als u een gegevensset uploadt die verwijst naar die gekoppelde service en probeert te publiceren, wordt deze door de UX toegestaan omdat deze zich in de Git-omgeving bevindt. Deze wordt op het moment van publicatie geweigerd omdat deze niet bestaat in de data factory service.
 
 ## <a name="provide-feedback"></a>Feedback geven
 Selecteer **feedback** om commentaar te geven over functies of om micro soft op de hoogte te stellen over problemen met het hulp programma:

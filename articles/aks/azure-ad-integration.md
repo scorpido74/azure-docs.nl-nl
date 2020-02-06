@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 02/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 9a82b51083a7d31bc39c4556712c1489bad8bca0
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103794"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031472"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory integreren met de Azure Kubernetes-service
 
@@ -50,13 +50,13 @@ Als u Azure AD-verificatie voor een AKS-cluster wilt bieden, worden er twee Azur
 
 De eerste Azure AD-toepassing wordt toegepast om het lidmaatschap van de Azure AD-groep van een gebruiker op te halen. Als u deze toepassing wilt maken in de Azure Portal:
 
-1. Selecteer **Azure Active Directory** > app-registratiesnieuwe > **registratie**.
+1. Selecteer **Azure Active Directory** > **app-registraties** > **nieuwe registratie**.
 
     a. Geef de toepassing een naam, bijvoorbeeld *AKSAzureADServer*.
 
     b. Selecteer voor **ondersteunde account typen** **alleen accounts in deze organisatie Directory**.
     
-    c. Kies **Web** voor het omleidings-URI-type en voer vervolgens een waarde in *https://aksazureadserver* voor de URI-indeling, zoals.
+    c. Kies **Web** voor het omleidings-URI-type en voer vervolgens een waarde in voor de URI-indeling, zoals *https://aksazureadserver* .
 
     d. Selecteer **registreren** wanneer u klaar bent.
 
@@ -110,13 +110,20 @@ De eerste Azure AD-toepassing wordt toegepast om het lidmaatschap van de Azure A
 
 De tweede Azure AD-toepassing wordt gebruikt wanneer u zich aanmeldt met de Kubernetes CLI (kubectl).
 
-1. Selecteer **Azure Active Directory** > app-registratiesnieuwe > **registratie**.
+1. Selecteer **Azure Active Directory** > **app-registraties** > **nieuwe registratie**.
 
     a. Geef de toepassing een naam, bijvoorbeeld *AKSAzureADClient*.
 
     b. Selecteer voor **ondersteunde account typen** **alleen accounts in deze organisatie Directory**.
 
-    c. Selecteer **Web** voor het omleidings-URI-type en voer vervolgens een waarde in *https://aksazureadclient* met de URI-indeling, zoals.
+    c. Selecteer **Web** voor het omleidings-URI-type en voer vervolgens een waarde in voor de URI-indeling, zoals *https://aksazureadclient* .
+
+    >[!NOTE]
+    >Als u een nieuw cluster met RBAC-functionaliteit maakt ter ondersteuning van Azure Monitor voor containers, voegt u de volgende twee aanvullende omleidings-Url's naar deze lijst toe als **webtoepassings typen** . De eerste basis-URL-waarde moet `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` zijn en de tweede basis-URL-waarde moet `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`zijn.
+    >
+    >Als u deze functie in azure China gebruikt, moet de eerste basis-URL-waarde `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` zijn en moet de tweede basis-URL-waarde `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`zijn.
+    >
+    >Zie [How to set the live data (preview)-functie](../azure-monitor/insights/container-insights-livedata-setup.md) voor Azure monitor voor containers en de stappen voor het configureren van verificatie via de sectie [ad Integrated Authentication configureren](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication) voor meer informatie.
 
     d. Selecteer **registreren** wanneer u klaar bent.
 
@@ -180,7 +187,7 @@ Het duurt enkele minuten om een AKS-cluster te maken.
 
 Voordat u een Azure Active Directory-account gebruikt met een AKS-cluster, moet u een rol-binding of cluster functie-binding maken. Rollen definiëren de machtigingen die moeten worden verleend en bindingen worden toegepast op de gewenste gebruikers. Deze toewijzingen kunnen worden toegepast op een bepaalde naam ruimte of in het hele cluster. Zie [using RBAC Authorization][rbac-authorization](Engelstalig) voor meer informatie.
 
-Gebruik eerst de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] met het `--admin` argument om u aan te melden bij het cluster met beheerders toegang.
+Gebruik eerst de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] met het argument `--admin` om u bij het cluster aan te melden met beheerders toegang.
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
@@ -278,7 +285,7 @@ error: You must be logged in to the server (Unauthorized)
 
 - U hebt de juiste object-ID of UPN-naam gedefinieerd, afhankelijk van of het gebruikers account zich in dezelfde Azure AD-Tenant bevindt of niet.
 - De gebruiker is geen lid van meer dan 200 groepen.
-- Het geheim dat is gedefinieerd in de registratie van de toepassing voor de server, `--aad-server-app-secret`komt overeen met de waarde die is geconfigureerd met.
+- Het geheim dat is gedefinieerd in de registratie van de toepassing voor de server overeenkomt met de waarde die is geconfigureerd met behulp van `--aad-server-app-secret`.
 
 ## <a name="next-steps"></a>Volgende stappen
 

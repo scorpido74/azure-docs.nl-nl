@@ -4,12 +4,12 @@ description: Meer informatie over het voorbereiden van de evaluatie/migratie van
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 25dab303ce62e33a09346d14c0a08a43b715075d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f00d5ba4841427098b0ab79ad1930e357008b6e0
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989131"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030792"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware-Vm's voorbereiden voor evaluatie en migratie naar Azure
 
@@ -38,7 +38,7 @@ U hebt deze machtigingen nodig.
 **Taak** | **Machtigingen**
 --- | ---
 **Een Azure Migrate-project maken** | Uw Azure-account heeft machtigingen nodig om een project te maken.
-**Het Azure Migrate apparaat registreren** | Azure Migrate maakt gebruik van een licht gewicht Azure Migrate apparaat om virtuele VMware-machines te beoordelen met de evaluatie van Azure Migrate server, en voor het uitvoeren van [agentloze migratie](server-migrate-overview.md) van virtuele VMware-machines met Azure migrate server migratie. Dit apparaat detecteert Vm's en verzendt de meta gegevens en prestatie gegevens van de virtuele machine naar Azure Migrate.<br/><br/>Tijdens de registratie van het apparaat worden de volgende registratie providers geregistreerd bij het abonnement dat is gekozen in het apparaat: micro soft. OffAzure, micro soft. migrate en micro soft. sleutel kluis. Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Als u de resource providers wilt registreren, hebt u een rol voor Inzender of eigenaar nodig voor het abonnement.<br/><br/> Als onderdeel van het onboarding-Azure Migrate maakt u twee Azure Active Directory (Azure AD)-apps:<br/> -De eerste app wordt gebruikt voor communicatie (verificatie en autorisatie) tussen de agents die op het apparaat worden uitgevoerd en de services die worden uitgevoerd op Azure. Deze app heeft geen bevoegdheden om ARM-aanroepen of RBAC-toegang te maken voor een bron.<br/> -De tweede app wordt alleen gebruikt voor toegang tot de sleutel kluis die is gemaakt in het abonnement van de gebruiker voor de migratie zonder agent. Het wordt voorzien van een RBAC-toegang op de Azure Key Vault (gemaakt in de Tenant van de klant) wanneer detectie vanaf het apparaat wordt gestart.
+**Het Azure Migrate apparaat registreren** | Azure Migrate maakt gebruik van een licht gewicht Azure Migrate apparaat om virtuele VMware-machines te beoordelen met de evaluatie van Azure Migrate server, en voor het uitvoeren van [agentloze migratie](server-migrate-overview.md) van virtuele VMware-machines met Azure migrate server migratie. Dit apparaat detecteert Vm's en verzendt de meta gegevens en prestatie gegevens van de virtuele machine naar Azure Migrate.<br/><br/>Tijdens de registratie van het apparaat worden de volgende resource providers geregistreerd bij het abonnement dat is gekozen in het apparaat: micro soft. OffAzure, micro soft. migrate en micro soft. sleutel kluis. Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Als u de resource providers wilt registreren, hebt u een rol voor Inzender of eigenaar nodig voor het abonnement.<br/><br/> Als onderdeel van het onboarding-Azure Migrate maakt u twee Azure Active Directory (Azure AD)-apps:<br/> -De eerste app wordt gebruikt voor communicatie (verificatie en autorisatie) tussen de agents die op het apparaat worden uitgevoerd en de services die worden uitgevoerd op Azure. Deze app heeft geen bevoegdheden om ARM-aanroepen of RBAC-toegang te maken voor een bron.<br/> -De tweede app wordt alleen gebruikt voor toegang tot de sleutel kluis die is gemaakt in het abonnement van de gebruiker voor de migratie zonder agent. Het wordt voorzien van een RBAC-toegang op de Azure Key Vault (gemaakt in de Tenant van de klant) wanneer detectie vanaf het apparaat wordt gestart.
 **Een Key Vault maken** | Als u virtuele VMware-machines wilt migreren met Azure Migrate server-migratie, Azure Migrate maakt u een Key Vault voor het beheren van toegangs sleutels voor het replicatie-opslag account in uw abonnement. Als u de kluis wilt maken, moet u machtigingen voor roltoewijzing hebben voor de resource groep waarin het Azure Migrate-project zich bevindt.
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 6a9385a49e85806464e8f9ccf11d9232fae42435
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461124"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906772"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Een VHD of VHDX van Windows voorbereiden om te uploaden naar Azure
 
@@ -33,6 +33,22 @@ Zie [micro soft-server software ondersteuning voor Azure-vm's](https://support.m
 > De instructies in dit artikel zijn van toepassing op:
 >1. De 64-bits versie van Windows Server 2008 R2 en latere Windows Server-besturings systemen. Voor informatie over het uitvoeren van een 32-bits besturings systeem in azure, Zie [ondersteuning voor 32-bits besturings systemen in azure vm's](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
 >2. Als een hulp programma voor herstel na nood gevallen wordt gebruikt voor het migreren van de werk belasting, zoals Azure Site Recovery of Azure Migrate, moet dit proces nog steeds worden uitgevoerd en worden gevolgd op het gast besturingssysteem om de installatie kopie voor te bereiden vóór de migratie.
+
+## <a name="system-file-checker-sfc-command"></a>System File Checker (SFC) opdracht
+
+### <a name="run-windows-system-file-checker-utility-run-sfc-scannow-on-os-prior-to-generalization-step-of-creating-customer-os-image"></a>Windows System File Checker-hulp programma uitvoeren (sfc/scannow uitvoeren) op het besturings systeem voorafgaand aan de generalisatie stap van het maken van een installatie kopie van een klant besturingssysteem
+
+De opdracht System File Checker (SFC) wordt gebruikt om Windows-systeem bestanden te controleren en te vervangen.
+
+De SFC-opdracht uitvoeren:
+
+1. Open een opdracht prompt met verhoogde bevoegdheden als beheerder.
+1. Typ `sfc /scannow` en selecteer **Enter**.
+
+    ![System File Checker](media/prepare-for-upload-vhd-image/system-file-checker.png)
+
+
+Nadat de SFC-scan is voltooid, probeert u Windows-updates te installeren en start u de computer opnieuw op.
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>De virtuele schijf converteren naar een vaste grootte en naar een VHD
 
@@ -225,7 +241,7 @@ Controleer of de volgende instellingen juist zijn geconfigureerd voor externe to
     | NLA-groeps beleid                         | Settings\Administrative Templates\Components\Remote Desktop Host\Security                                                    | Gebruikers verificatie vereisen voor externe toegang met behulp van NLA |
     | Keep-Alive instellingen                      | Computer Ga Settings\Administrativee bureaublad-services\Extern bureau blad-sessie Host\Connections | Keep-Alive-verbindings interval configureren                                                 |
     | Instellingen opnieuw verbinden                       | Computer Ga Settings\Administrativee bureaublad-services\Extern bureau blad-sessie Host\Connections | Automatisch opnieuw verbinding maken                                                                   |
-    | Beperkt aantal verbindings instellingen | Computer Ga Settings\Administrativee bureaublad-services\Extern bureau blad-sessie Host\Connections | Het aantal verbindingen beperken                                                              |
+    | Beperkt aantal verbindings instellingen | Computer Ga Settings\Administrativee bureaublad-services\Extern bureau blad-sessie Host\Connections | Aantal verbindingen beperken                                                              |
 
 ## <a name="configure-windows-firewall-rules"></a>Windows Firewall-regels configureren
 1. Schakel Windows Firewall in voor de drie profielen (domein, standaard en openbaar):
@@ -346,7 +362,7 @@ Zorg ervoor dat de VM in orde, veilig en RDP toegankelijk is:
 
    - Beheerders
 
-   - Back-Operators
+   - Back-upoperators
 
    - Iedereen
 

@@ -4,12 +4,12 @@ description: Meer informatie over het voorbereiden van de evaluatie/migratie van
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 1315b52e4ee6f39c27d21e3307d228219bc953d7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1d327f558806e0205540c183c56b92ba31e33cb7
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984741"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031217"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Voor bereiding voor de evaluatie en migratie van virtuele Hyper-V-machines naar Azure
 
@@ -42,7 +42,7 @@ U moet machtigingen instellen voor Azure Migrate-implementatie.
 **Taak** | **Machtigingen**
 --- | ---
 **Een Azure Migrate-project maken** | Uw Azure-account heeft machtigingen nodig om een project te maken.
-**Het Azure Migrate apparaat registreren** | Azure Migrate maakt gebruik van een licht gewicht Azure Migrate apparaat om virtuele Hyper-v-machines te detecteren en te beoordelen met de evaluatie van Azure Migrate server. Dit apparaat detecteert Vm's en verzendt de meta gegevens en prestatie gegevens van de virtuele machine naar Azure Migrate.<br/><br/>Tijdens de registratie van het apparaat worden de volgende registratie providers geregistreerd bij het abonnement dat is gekozen in het apparaat: micro soft. OffAzure, micro soft. migrate en micro soft. sleutel kluis. Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Als u de resource providers wilt registreren, hebt u een rol voor Inzender of eigenaar nodig voor het abonnement.<br/><br/> Azure Migrate maakt een Azure Active Directory Azure AD-app als onderdeel van de onboarding:<br/> De AAD-app wordt gebruikt voor communicatie (verificatie en autorisatie) tussen de agents die op het apparaat worden uitgevoerd en de services die worden uitgevoerd op Azure. Deze app heeft geen bevoegdheden om ARM-aanroepen of RBAC-toegang te maken voor een bron.
+**Het Azure Migrate apparaat registreren** | Azure Migrate maakt gebruik van een licht gewicht Azure Migrate apparaat om virtuele Hyper-V-machines te detecteren en te beoordelen met de evaluatie van Azure Migrate server. Dit apparaat detecteert Vm's en verzendt de meta gegevens en prestatie gegevens van de virtuele machine naar Azure Migrate.<br/><br/>Tijdens de registratie van het apparaat worden de volgende resource providers geregistreerd bij het abonnement dat is gekozen in het apparaat: micro soft. OffAzure, micro soft. migrate en micro soft. sleutel kluis. Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Als u de resource providers wilt registreren, hebt u een rol voor Inzender of eigenaar nodig voor het abonnement.<br/><br/> Azure Migrate maakt een Azure Active Directory Azure AD-app als onderdeel van de onboarding:<br/> De AAD-app wordt gebruikt voor communicatie (verificatie en autorisatie) tussen de agents die op het apparaat worden uitgevoerd en de services die worden uitgevoerd op Azure. Deze app heeft geen bevoegdheden om ARM-aanroepen of RBAC-toegang te maken voor een bron.
 
 
 
@@ -139,7 +139,7 @@ Voer het script als volgt uit:
 
 Hash-waarden zijn:
 
-| **Hash** | **Waarde** |
+| **Eigenaar** | **Waarde** |
 | --- | --- |
 | **MD5** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |

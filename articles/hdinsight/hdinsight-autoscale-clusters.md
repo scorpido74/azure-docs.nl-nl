@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 45804bd3e81e7363010979b7a6e028356b3a5080
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: ace9794bd72aa124137a6b543c79979e8f5ca7c0
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780059"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031246"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisch schalen van Azure HDInsight-clusters
 
@@ -26,7 +26,7 @@ Met de functie voor automatisch schalen van Azure HDInsight wordt het aantal wor
 
 In de volgende tabel worden de cluster typen en versies beschreven die compatibel zijn met de functie voor automatisch schalen.
 
-| Versie | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| Version | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
 | HDInsight 3,6 zonder ESP | Ja | Ja | Ja | Ja* | Nee | Nee | Nee |
 | HDInsight 4,0 zonder ESP | Ja | Ja | Ja | Ja* | Nee | Nee | Nee |
@@ -35,7 +35,7 @@ In de volgende tabel worden de cluster typen en versies beschreven die compatibe
 
 \* HBase-clusters kunnen alleen worden geconfigureerd voor schalen op basis van een planning, niet op basis van de belasting.
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>How it works (Engelstalig artikel)
 
 U kunt schalen op basis van een werk belasting of schalen op basis van een planning voor uw HDInsight-cluster kiezen. Schalen op basis van een belasting wijzigt het aantal knoop punten in het cluster, binnen een bereik dat u instelt, om ervoor te zorgen dat het CPU-gebruik optimaal verloopt en de lopende kosten worden geminimaliseerd.
 
@@ -192,7 +192,7 @@ U kunt een HDInsight-cluster maken met behulp van automatisch schalen op basis v
 
 Selecteer **cluster grootte** onder **instellingen**om automatisch schalen in te scha kelen op een actief cluster. Klik vervolgens op **automatisch schalen inschakelen**. Selecteer het gewenste type automatisch schalen en voer de opties in voor schalen op basis van de belasting of op basis van een planning. Klik ten slotte op **Opslaan**.
 
-![Op schema gebaseerde automatische schaal aanpassing van werk knooppunten inschakelen](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+![Op schema gebaseerde automatische schaal aanpassing van werk knooppunten inschakelen](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
 
 #### <a name="using-the-rest-api"></a>Met behulp van de REST API
 
@@ -235,7 +235,7 @@ De actieve taken blijven worden uitgevoerd en voltooid. De taken die in behandel
 
 Schaal uw cluster niet op minder dan drie knoop punten. Het schalen van uw cluster naar minder dan drie knoop punten kan ertoe leiden dat de veilige modus vastloopt vanwege onvoldoende bestands replicatie. Zie [vastzitten in de veilige modus]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode) voor meer informatie.
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 ### <a name="cluster-status"></a>De clusterstatus
 

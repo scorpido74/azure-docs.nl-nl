@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.custom: mvc
-ms.openlocfilehash: 214a88ad8b0f5dd0352004edc125705ad2f04fc7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2751f30bdea46a30aa12bd458a12d7640cba404
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494141"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029539"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>Snelstartgids: Apache Spark cluster maken in azure HDInsight met behulp van Azure Portal
 
@@ -40,7 +40,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
     |Resourcegroep | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. De naam van de resource groep die voor deze Quick Start wordt gebruikt, is **myResourceGroup**. |
     |Clusternaam | Geef een naam op voor het HDInsight Spark-cluster. De cluster naam die voor deze Quick Start wordt gebruikt, is **myspark2019**.|
     |Locatie   | Selecteer een locatie voor de resourcegroep. De sjabloon gebruikt deze locatie voor het maken van het cluster en als standaardclusteropslag. De locatie die wordt gebruikt voor deze Quick start is **VS-Oost**. |
-    |Clustertype| Selecteer **Spark** als het cluster type.|
+    |Cluster type| Selecteer **Spark** als het cluster type.|
     |Cluster versie|Dit veld wordt automatisch ingevuld met de standaard versie zodra het cluster type is geselecteerd.|
     |Gebruikersnaam voor clusteraanmeldgegevens| Voer de gebruikersnaam voor aanmelding bij het cluster in.  De standaard naam is *admin*. U kunt dit account gebruiken om u later in de Quick Start aan te melden bij de Jupyter-notebook. |
     |Wachtwoord voor clusteraanmeldgegevens| Voer het wachtwoord voor aanmelding bij het cluster in. |
@@ -59,7 +59,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
     |Primair opslagaccount|De automatisch ingevulde waarde gebruiken.|
     |Container|De automatisch ingevulde waarde gebruiken.|
 
-    ![Basis configuraties van HDInsight Spark-cluster maken](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage-spark.png "Een Spark-cluster maken in HDInsight de basis configuraties")
+    ![Basis configuraties van HDInsight Spark-cluster maken](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "Een Spark-cluster maken in HDInsight de basis configuraties")
 
     Selecteer **controleren + maken** om door te gaan.
 
@@ -71,7 +71,7 @@ Als u een probleem ondervindt met het maken van HDInsight-clusters, beschikt u m
 
 Jupyter Notebook is een interactieve notitieblokomgeving die ondersteuning biedt voor verschillende programmeertalen. Via het notitieblok kunt u interactie hebben met uw gegevens, code combineren met markdown-tekst en eenvoudige visualisaties uitvoeren.
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **HDInsight-clusters** en selecteer vervolgens het cluster dat u hebt gemaakt.
 

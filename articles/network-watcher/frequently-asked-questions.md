@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 1cc3664ff8472a6b5a73fa89588611f59ac27e6a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: de644e49d998ad260532078de5c93c482cbc6fbc
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720263"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029488"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Veelgestelde vragen over Azure Network Watcher
 De [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) -service biedt een reeks hulpprogram ma's voor het bewaken, diagnosticeren, weer geven van metrische gegevens en het in-of uitschakelen van Logboeken voor bronnen in een virtueel Azure-netwerk. In dit artikel vindt u antwoorden op veelgestelde vragen over de service.
@@ -54,17 +54,29 @@ Ga naar de [pagina met prijzen](https://azure.microsoft.com/pricing/details/netw
 ### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>Welke regio's worden Network Watcher ondersteund/beschikbaar in?
 U kunt de nieuwste regionale Beschik baarheid bekijken op de [pagina Beschik baarheid van Azure-service](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)
 
-### <a name="what-are-resource-limits-on-network-watcher"></a>Wat zijn de limieten voor resources op Network Watcher?
-Zie de pagina met [service beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) voor alle limieten.  
+### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Welke machtigingen zijn er nodig om Network Watcher te gebruiken?
+Zie de lijst met [RBAC-machtigingen die zijn vereist voor het gebruik van Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions). Voor het implementeren van resources hebt u Inzender machtigingen nodig voor de NetworkWatcherRG (zie hieronder).
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Waarom is er slechts één exemplaar van Network Watcher per regio toegestaan?
-Network Watcher hoeft alleen maar één keer te worden ingeschakeld voor een abonnement, maar dit is geen service limiet.
+### <a name="how-do-i-enable-network-watcher"></a>Hoe kan ik Network Watcher inschakelen?
+De Network Watcher-service wordt [automatisch ingeschakeld](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) voor elk abonnement.
+
+### <a name="what-is-the-network-watcher-deployment-model"></a>Wat is het Network Watcher-implementatie model?
+De Network Watcher bovenliggende resource wordt geïmplementeerd met een uniek exemplaar in elke regio. Naamgevings indeling: NetworkWatcher_RegionName. Voor beeld: NetworkWatcher_centralus is de Network Watcher resource voor de regio ' centraal VS '.
+
+### <a name="what-is-the-networkwatcherrg"></a>Wat is de NetworkWatcherRG?
+Network Watcher resources bevinden zich in de verborgen **NetworkWatcherRG** -resource groep die automatisch wordt gemaakt. De NSG-stroom logboeken resource is bijvoorbeeld een onderliggende bron van Network Watcher en is ingeschakeld in de NetworkWatcherRG.
 
 ### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Waarom moet ik de Network Watcher-extensie installeren? 
 De uitbrei ding Network Watcher is vereist voor elke functie die verkeer van een virtuele machine moet genereren of onderscheppen. 
 
 ### <a name="which-features-require-the-network-watcher-extension"></a>Voor welke functies is de Network Watcher-extensie vereist?
-Alleen pakket opname, verbindings problemen oplossen en verbindings monitor moeten de Network Watcher extensie bevatten.
+De pakket opname, verbindings problemen en de functies voor verbindings controle moeten de Network Watcher extensie bevatten.
+
+### <a name="what-are-resource-limits-on-network-watcher"></a>Wat zijn de limieten voor resources op Network Watcher?
+Zie de pagina met [service beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) voor alle limieten.  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Waarom is er slechts één exemplaar van Network Watcher per regio toegestaan?
+Network Watcher hoeft alleen maar één keer te worden ingeschakeld voor een abonnement, maar dit is geen service limiet.
 
 ## <a name="nsg-flow-logs"></a>NSG-stroom logboeken
 
@@ -85,7 +97,7 @@ U kunt de Storage-logboeken na enkele minuten controleren. U ziet dan een bijgew
 
 ### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>Hoe kan ik NSG-stroom Logboeken gebruiken met een opslag account achter een service-eind punt?
 
-NSG-stroom logboeken zijn compantible met Service-eind punten zonder extra configuratie. Raadpleeg de [zelf studie over het inschakelen van service-eind punten](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) in uw virtuele netwerk.
+NSG-stroom logboeken zijn compatibel met Service-eind punten zonder extra configuratie. Raadpleeg de [zelf studie over het inschakelen van service-eind punten](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint) in uw virtuele netwerk.
 
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Wat is het verschil tussen stroom logboeken versie 1 & 2?

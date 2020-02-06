@@ -9,134 +9,132 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: Een nieuwe toepassing maken
+    - name: 1. Een nieuwe toepassing maken
       href: quick-deploy-iot-central.md
+    - name: 2. Een gesimuleerd apparaat toevoegen
+      href: quick-create-pnp-device.md
+    - name: 3. Regels en acties configureren
+      href: quick-configure-rules.md
+    - name: 4. Uw apparaten bewaken
+      href: quick-monitor-devices.md
 - name: Zelfstudies
   items:
-    - name: 1 - Een nieuw apparaattype definiëren
-      href: tutorial-define-device-type.md
-    - name: 2 - Regels configureren
-      href: tutorial-configure-rules.md
-    - name: 3 - De weergave van de operator aanpassen
-      href: tutorial-customize-operator.md
-    - name: 4 - Uw apparaten controleren
-      href: tutorial-monitor-devices.md
-    - name: 5 - Een apparaat toevoegen
-      href: tutorial-add-device.md
+    - name: Verbinding maken
+      items:
+        - name: Een Plug en Play-apparaat (preview) verbinden
+          href: tutorial-connect-pnp-device.md
+        - name: Een gateway-apparaatsjabloon maken
+          href: tutorial-define-gateway-device-type.md
+        - name: Een IoT Edge-apparaat verbinden
+          href: tutorial-add-edge-as-leaf-device.md
+    - name: Blijf verbonden
+      items:
+        - name: Een apparaatgroep maken
+          href: tutorial-use-device-groups.md
+    - name: Transformeren
+      items:
+        - name: Een regel maken
+          href: tutorial-create-telemetry-rules.md
+        - name: REST-API gebruiken
+          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: Concepten
   items:
     - name: Architectuur
       href: concepts-architecture.md
-    - name: Connectiviteit
-      href: concepts-connectivity.md
     - name: Wat zijn toepassingssjablonen?
       href: concepts-app-templates.md
+    - name: Verbinding maken
+      href: concepts-get-connected.md
+    - name: IoT Edge-apparaten verbinden
+      href: concepts-iot-edge.md
 - name: Instructiegidsen
   items:
-    - name: Apparaten verbinden
-      items:
-        - name: Een Node.js-toepassing (algemeen) voorbereiden en aansluiten
-          href: howto-connect-nodejs.md
-        - name: Een MXChip IoT DevKit voorbereiden en aansluiten
-          href: howto-connect-devkit.md
-        - name: Een Raspberry Pi (Python) voorbereiden en aansluiten
-          href: howto-connect-raspberry-pi-python.md
-        - name: 'Een Raspberry Pi (C#) voorbereiden en aansluiten'
-          href: howto-connect-raspberry-pi-csharp.md
-        - name: Een Windows-IoT Core-apparaat voorbereiden en aansluiten
-          href: howto-connect-windowsiotcore.md
-        - name: Een SensorTile.box-apparaat voorbereiden en verbinden
-          href: howto-connect-sensortile.md
-        - name: Apparaatconnectiviteit controleren met opdrachtregels
-          href: howto-use-iotc-explorer.md
-    - name: Apparaten beheren
+    - name: Verbinding maken
       items:
         - name: Een sjabloon van het apparaat instellen
           href: howto-set-up-template.md
-        - name: Uw apparaten beheren
-          href: howto-manage-devices.md
-        - name: Een taak uitvoeren
-          href: howto-run-a-job.md
-        - name: Apparaatsets gebruiken
-          href: howto-use-device-sets.md
-        - name: Versie van de sjabloon van het apparaat
-          href: howto-version-device-template.md
-    - name: Bewaking en analytische gegevens
-      items:
-        - name: Telemetrie-regel maken
-          href: howto-create-telemetry-rules.md
-        - name: Een gebeurtenisregel maken
-          href: howto-create-event-rules.md
-        - name: Uw apparaatgegevens analyseren
-          href: howto-create-analytics.md
-    - name: Acties en uitbreidingsmogelijkheden
-      items:
-        - name: Meerdere acties voor regels combineren
-          href: howto-use-action-groups.md
-        - name: Webhookacties op basis van regels maken
-          href: howto-create-webhooks.md
-        - name: Werkstromen bouwen in Microsoft Flow
-          href: howto-add-microsoft-flow.md
-        - name: Werkstromen bouwen in Azure Logic Apps
-          href: howto-build-azure-logic-apps.md
-        - name: Azure Functions activeren
-          href: howto-trigger-azure-functions.md
-        - name: Uw gegevens exporteren
-          items:
-            - name: Exporteren naar Event Hubs en Service Bus
-              href: howto-export-data-event-hubs-service-bus.md
-            - name: Exporteren naar Blob Storage
-              href: howto-export-data-blob-storage.md
-        - name: Aangepaste regels maken
-          href: howto-create-custom-rules.md
-        - name: Aangepaste analyses maken
-          href: howto-create-custom-analytics.md
-        - name: Uw gegevens visualiseren in Power BI
-          href: howto-connect-powerbi.md
+        - name: Een MXChip IoT DevKit voorbereiden en aansluiten
+          href: howto-connect-devkit.md
+        - name: Een RuuviTag-apparaat voorbereiden en verbinden
+          href: howto-connect-ruuvi.md
+        - name: Een Rigado Cascade 500 voorbereiden en verbinden
+          href: howto-connect-rigado-cascade-500.md
         - name: Verbinding maken met andere IoT-clouds
           href: howto-build-iotc-device-bridge.md
+    - name: Blijf verbonden
+      items:
+        - name: Apparaatconnectiviteit bewaken met Azure CLI
+          href: howto-monitor-devices-azure-cli.md
+        - name: Versie van de sjabloon van het apparaat
+          href: howto-version-device-template.md
+        - name: Uw apparaten beheren
+          href: howto-manage-devices.md
+        - name: Regels configureren
+          href: howto-configure-rules.md
+        - name: Uw apparaatgegevens analyseren
+          href: howto-create-analytics.md
+        - name: Tegels toevoegen aan uw dashboard
+          href: howto-add-tiles-to-your-dashboard.md
+        - name: Persoonlijke Azure IoT Central-dashboards maken
+          href: howto-create-personal-dashboards.md
+        - name: Een taak uitvoeren
+          href: howto-run-a-job.md
+        - name: Versie van de sjabloon van het apparaat
+          href: howto-version-device-template.md
+    - name: Transformeren
+      items:
+        - name: Continue gegevensexport configureren
+          href: howto-export-data.md
+        - name: Webhooks voor regels maken
+          href: howto-create-webhooks.md
+        - name: Azure Monitor-actiegroepen verbinden met regels
+          href: howto-use-action-groups.md
+        - name: Aangepaste regels maken
+          href: howto-create-custom-rules.md
+        - name: Aangepaste analyses maken met Databricks
+          href: howto-create-custom-analytics.md
     - name: Beheer
       items:
         - name: Uw toepassing beheren
-          href: howto-administer.md
-        - name: Gebruikers en rollen beheren
-          href: howto-manage-users-roles.md
-        - name: Uw factuur weergeven
-          href: howto-view-bill.md
-        - name: De gebruikersinterface van de toepassing aanpassen
-          href: howto-customize-ui.md
-        - name: Installatiekopie voorbereiden en uploaden
-          href: howto-prepare-images.md
-        - name: Tegels toevoegen aan uw dashboard
-          href: howto-add-tiles-to-your-dashboard.md
-        - name: Dashboardtegels gebruiken
-          href: howto-use-tiles.md
-        - name: Toepassingssjablonen gebruiken
-          href: howto-use-app-templates.md
-        - name: Beheren vanuit de Azure-portal
-          href: howto-manage-iot-central-from-portal.md
-        - name: Beheren vanuit Azure CLI
-          href: howto-manage-iot-central-from-cli.md
-        - name: Beheren vanuit Azure PowerShell
-          href: howto-manage-iot-central-from-powershell.md
-        - name: Een toepassing maken en beheren als een CSP
-          href: howto-create-and-manage-applications-csp.md
-    - name: Personalisatie
-      items:
-        - name: Persoonlijke Azure IoT Central-dashboards maken
-          href: howto-create-personal-dashboards.md
-        - name: Uw voorkeuren beheren
-          href: howto-manage-preferences.md
-        - name: Live chat in-/uitschakelen
-          href: howto-show-hide-chat.md
+          items:
+            - name: Toepassingsinstellingen wijzigen
+              href: howto-administer.md
+            - name: Gebruikers en rollen beheren
+              href: howto-manage-users-roles.md
+            - name: Uw factuur beheren
+              href: howto-view-bill.md
+            - name: De gebruikersinterface van de toepassing aanpassen
+              href: howto-customize-ui.md
+            - name: Uw toepassing exporteren
+              href: howto-use-app-templates.md
+        - name: Beheren vanuit andere locaties
+          items:
+            - name: Beheren vanuit de Azure-portal
+              href: howto-manage-iot-central-from-portal.md
+            - name: Beheren vanuit Azure CLI
+              href: howto-manage-iot-central-from-cli.md
+            - name: Beheren vanuit Azure PowerShell
+              href: howto-manage-iot-central-from-powershell.md
+            - name: Beheren vanuit CSP-portal
+              href: howto-create-and-manage-applications-csp.md
+        - name: Toepassing personaliseren
+          items:
+            - name: Uw persoonlijke voorkeuren beheren
+              href: howto-manage-preferences.md
+            - name: Live chat in-/uitschakelen
+              href: howto-show-hide-chat.md
 - name: Verwant
   items:
-    - name: Oplossingen
+    - name: Toepassingssjablonen uit de branche
       items:
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: IoT-oplossingsversnellers
-          href: /azure/iot-accelerators
+        - name: Retail
+          href: ../retail/overview-iot-central-retail-pnp.md
+        - name: Energie
+          href: ../energy/overview-iot-central-energy.md
+        - name: Overheid
+          href: ../government/overview-iot-central-government.md
+        - name: Gezondheidszorg
+          href: ../healthcare/overview-iot-central-healthcare.md
     - name: Platformservices
       items:
         - name: IoT Hub
@@ -161,6 +159,8 @@
   items:
     - name: Opties voor ondersteuning en hulp
       href: /azure/iot-fundamentals/iot-support-help
+    - name: REST-API
+      href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: Aanvragen van klantgegevens
       href: iot-central-customer-data-requests.md
     - name: Ondersteunde browsers

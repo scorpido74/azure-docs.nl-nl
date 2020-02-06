@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 555596ba1040fcbd5c9131869fd275d749e0d734
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0930bbcfff41a667f08f5dfc5744c16476ddd8a1
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934023"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031442"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-clusters aanpassen met behulp van script acties
 
@@ -147,7 +147,7 @@ HDInsight biedt scripts voor het installeren van de volgende onderdelen op HDIns
 | Name | Script |
 | --- | --- |
 | Een Azure Storage-account toevoegen |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Zie [extra opslag accounts toevoegen aan HDInsight](hdinsight-hadoop-add-storage.md). |
-| Hue installeren |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zie [kleur Toon installeren en gebruiken op HDInsight Hadoop-clusters](hdinsight-hadoop-hue-linux.md). |
+| Kleur Toon installeren |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zie [kleur Toon installeren en gebruiken op HDInsight Hadoop-clusters](hdinsight-hadoop-hue-linux.md). |
 | Hive-bibliotheken vooraf laden |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Zie [aangepaste Apache Hive bibliotheken toevoegen bij het maken van uw HDInsight-cluster](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Een script actie gebruiken tijdens het maken van een cluster
@@ -156,9 +156,9 @@ In deze sectie worden de verschillende manieren beschreven waarop u script actie
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Een script actie gebruiken tijdens het maken van het cluster vanuit het Azure Portal
 
-1. Begin met het maken van een cluster zoals beschreven in op [Linux gebaseerde clusters in HDInsight maken met behulp van de Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md). Tijdens het maken van het cluster arriveert u bij stap 6, **script acties**. Navigeer naar **optionele** >  **+ nieuwe verzenden**.
+1. Begin met het maken van een cluster zoals beschreven in op [Linux gebaseerde clusters in HDInsight maken met behulp van de Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md). Op het tabblad **configuratie en prijzen** selecteert u **+ script actie toevoegen**.
 
-    ![Script actie voor Azure Portal cluster](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-classic-script-action.png)
+    ![Script actie voor Azure Portal cluster](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
 
 1. Gebruik het __script item selecteren__ om een vooraf gemaakt script te selecteren. Als u een aangepast script wilt gebruiken, selecteert u __aangepast__. Geef vervolgens de __naam__ en de __bash-script-URI__ voor uw script op.
 
@@ -180,9 +180,9 @@ In deze sectie worden de verschillende manieren beschreven waarop u script actie
 
     ![Meervoudige HDInsight-script acties](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
-    Wanneer u klaar bent met het toevoegen van scripts, selecteert u de knop __selecteren__ en vervolgens de knop __volgende__ om door te gaan naar de sectie __cluster samenvatting__ .
+    Wanneer u klaar bent met het toevoegen van scripts, gaat u terug naar het tabblad **configuratie en prijzen** .
 
-1. Als u het cluster wilt maken, selecteert u __maken__ op basis van de selectie van de __cluster samenvatting__ .
+1. Voltooi de resterende stappen voor het maken van het cluster zoals gebruikelijk.
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Een script actie uit Azure Resource Manager sjablonen gebruiken
 
@@ -327,7 +327,7 @@ Zie [een script actie Toep assen op een op Linux gebaseerd HDInsight-cluster](ht
 
 ### <a name="the-azure-portal"></a>Azure Portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Ga in het menu links naar **alle services** > **Analytics** - > **HDInsight-clusters**.
 
@@ -495,7 +495,7 @@ Zie [verbinding maken met HDInsight (Apache Hadoop) met behulp van SSH](hdinsigh
 
 Als uw cluster vóór 15 maart 2016 is gemaakt, ziet u mogelijk geen vermelding in de script actie geschiedenis. Het wijzigen van het formaat van het cluster leidt ertoe dat de scripts worden weer gegeven in de geschiedenis van de script actie.
 
-Er zijn twee uitzonderingen:
+Er zijn twee uitzonde ringen:
 
 * Uw cluster is gemaakt vóór 1 september 2015. Deze datum is wanneer script acties zijn geïntroduceerd. Alle clusters die vóór deze datum zijn gemaakt, kunnen geen script acties hebben voor het maken van het cluster.
 

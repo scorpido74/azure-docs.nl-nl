@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/23/2020
+ms.date: 02/03/2020
 ms.custom: include file
-ms.openlocfilehash: a1576e4a97af5de0b936c662de636aae542a19b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: cfe3eb4c0ac1378b7c519b3b34094945612d8508
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748922"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029269"
 ---
 >[!NOTE]
 >Deze sectie bevat instructies voor de [registratie van Azure AD-apps](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
@@ -27,24 +27,40 @@ ms.locfileid: "76748922"
 
     [![de knop nieuwe registratie selecteren](./media/digital-twins-permissions/aad-app-register.png)](./media/digital-twins-permissions/aad-app-register.png#lightbox)
 
-1. Geef een beschrijvende naam voor deze app-registratie op in het vak **Naam**. Kies in de vervolg keuzelijst **URI omleiden (optioneel)** de optie **open bare client/systeem eigen (mobiele & bureau blad)** en voer `https://microsoft.com` in het tekstvak aan de rechter kant in. Selecteer **Registreren**.
+1. Geef een beschrijvende naam voor deze app-registratie op in het vak **Naam**. 
+
+    1. Voer `https://microsoft.com` in het tekstvak in bij **omleidings-URI (optioneel)** .     
+
+    1. Controleer welke accounts en tenants worden ondersteund door uw Azure Active Directory-app.
+
+    1. Selecteer **Registreren**.
 
     [deel venster ![maken](./media/digital-twins-permissions/aad-app-reg-create.png)](./media/digital-twins-permissions/aad-app-reg-create.png#lightbox)
 
-1. Als u er zeker van wilt zijn dat [de app is geregistreerd als een **open bare client**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), opent u het deel venster **verificatie** voor uw app-registratie en schuift u omlaag in het deel venster. Kies in het gedeelte **standaard client type** de optie **Ja** voor **behandelen van toepassing als een open bare client**en druk op **Opslaan**.
+1. De Blade **verificatie** specificeert belang rijke instellingen voor verificatie configuratie. 
+
+    1. Voeg **omleidings-uri's** toe en configureer **toegangs tokens** door **+ een platform toe te voegen**.
+
+    1. Selecteer **Ja** om op te geven dat de app een **open bare client**is.
+
+    1. Controleer welke accounts en tenants worden ondersteund door uw Azure Active Directory-app.
+
+    [configuratie-instelling ![open bare client](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+
+1. Nadat u het juiste platform hebt geselecteerd, configureert u de **omleidings-uri's** en **toegangs tokens** in het deel venster aan de rechter kant van de gebruikers interface.
 
     1. **Omleidings-uri's** moeten overeenkomen met het adres dat is opgegeven door de verificatie aanvraag:
 
-        * Voor apps die worden gehost in een lokale ontwikkel omgeving selecteert u **open bare client (mobiele & bureau blad)** . Zorg ervoor dat het **standaard client type** is ingesteld op Ja.
+        * Voor apps die worden gehost in een lokale ontwikkel omgeving selecteert u **open bare client (mobiele & bureau blad)** . Zorg ervoor dat de **open bare client** is ingesteld op **Ja**.
         * Voor apps met één pagina die worden gehost op Azure App Service, selecteert u **Web**.
 
-        Selecteer **open bare client (mobiele & bureau blad)** en voer `http://localhost:8080/`in.
+    1. Bepaal of een **Afmeldings-URL** geschikt is.
 
-        [omleidings-Uri's ![configureren](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
+    1. Schakel de impliciete toekennings stroom in door **toegangs tokens** of **id-tokens**te controleren.
+                
+    [omleidings-Uri's ![configureren](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
 
-    1. Controleer **toegangs tokens** voor het configureren van de **oauth2AllowImplicitFlow** -instelling voor het `true` in de JSON van de resource **manifest** .
-
-        [configuratie-instelling ![open bare client](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+    Klik op **configureren**en vervolgens op **Opslaan**.
 
 1.  Open het deel venster **overzicht** van de geregistreerde app en kopieer de waarden van de volgende entiteiten naar een tijdelijk bestand. U gebruikt deze waarden om uw voorbeeld toepassing te configureren in de volgende secties.
 

@@ -3,12 +3,12 @@ title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 6311f24a9c977b5f8b34384f0754f041a0c57ce7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990739"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031660"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -63,12 +63,12 @@ Fysieke machine |  Azure Migrate: Server evaluatie |  Fysieke servers detecteren
 
 **Vereiste** | **Werkelijke** 
 --- | ---
-**Indeling voor downloaden** | Gezipte map (met Power shell-installatie script)
+**Indeling voor downloaden** | Gezipte map (met installatie script op basis van Power shell)
 **Download koppeling** | [Download koppeling](https://go.microsoft.com/fwlink/?linkid=2105112)
 **Download grootte** | 59,7 MB
-**Hardware** | Toegewezen fysieke machine of VM. Voor de computer met het apparaat is 16 GB RAM, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte en een externe switch vereist.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
+**Hardware** | Toegewezen fysieke machine of een virtuele machine gebruiken. Voor de computer met het apparaat is 16 GB RAM, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte en een externe switch vereist.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
 **Hash-waarde** | MD5:1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
-**Software** | Apparaatapparaat moet Windows Server 2016 uitvoeren. 
+**Besturingssysteem** | Op de apparaatapparaat moet Windows Server 2016 worden uitgevoerd. 
 **Implementatie van het apparaat**   |  Het toestel installatie script wordt gedownload van de portal (in een gezipte map). <br/> U comprimeert de map en voert het Power shell-script (AzureMigrateInstaller. ps1) uit.
 **Detectie** | Een apparaat kan Maxi maal 250 fysieke servers detecteren.
 **Toestel onderdelen** | Beheer-app: Web-app in het apparaat voor gebruikers invoer tijdens de implementatie.<br/> Detectie agent: verzamelt computer configuratie gegevens.<br/> Beoordelings agent: prestatie gegevens verzamelen.<br/>  Service voor automatische updates: onderdelen bijwerken (elke 24 uur wordt uitgevoerd).
@@ -91,9 +91,10 @@ dc.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor i
 *.vault.azure.net | Geheimen beheren in de Azure Key Vault.
 aka.ms/* | Toegang tot ook wel-koppelingen toestaan. Wordt gebruikt voor Azure Migrate apparaat-updates.
 download.microsoft.com/download | Down loads van micro soft downloaden toestaan.
-*.servicebus.windows.net | **Gebruikt voor VMware-migratie zonder agent**<br/><br/> Communicatie tussen het apparaat en de Azure Migrate service.
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | **Gebruikt voor VMware-migratie zonder agent**<br/><br/> Verbinding maken met Azure Migrate service-Url's.
-*.blob.core.windows.net |  **Gebruikt voor VMware-migratie zonder agent**<br/><br/>Gegevens uploaden naar opslag.
+*.servicebus.windows.net | Communicatie tussen het apparaat en de Azure Migrate service.
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Verbinding maken met Azure Migrate service-Url's.
+*.hypervrecoverymanager.windowsazure.com | **Gebruikt voor VMware-migratie zonder agent**<br/><br/> Verbinding maken met Azure Migrate service-Url's.
+*.blob.core.windows.net |  **Gebruikt voor VMware-migratie zonder agent**<br/><br/>Gegevens uploaden naar de opslag voor migratie.
 
 
 
@@ -133,7 +134,7 @@ VM-beschrijving | vm.Summary.Config.Annotation
 Licentie product naam | vm.Client.ServiceContent.About.LicenseProductName
 Type besturings systeem | vm.SummaryConfig.GuestFullName
 Opstart type | vm.Config.Firmware
-Aantal kerngeheugens | vm.Config.Hardware.NumCPU
+Aantal kernen | vm.Config.Hardware.NumCPU
 Geheugen (MB) | vm.Config.Hardware.MemoryMB
 Aantal schijven | VM. Config. hardware. device. ToList (). FindAll (x = > is VirtualDisk). Count
 Lijst met schijf grootte | VM. Config. hardware. device. ToList (). FindAll (x = > is VirtualDisk)

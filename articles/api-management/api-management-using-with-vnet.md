@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 26a353251bd85a30ab26c86f3d6b363b0a84e074
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 59839df1e67c5ea7f18df373ad0530a2ea740209
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889532"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030894"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -70,7 +70,7 @@ Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u h
     > [!IMPORTANT]
     > Bij het implementeren van een Azure API Management-exemplaar naar een resource manager VNET, moet de service zich in een toegewijd subnet bevinden dat geen andere resources bevat, met uitzonde ring van Azure API Management-exemplaren. Als er wordt geprobeerd een Azure API Management-exemplaar te implementeren in een resource manager VNET-subnet dat andere resources bevat, mislukt de implementatie.
 
-    Selecteer vervolgens **Toepassen**. De pagina **virtueel netwerk** van uw API Management-exemplaar wordt bijgewerkt met de nieuwe opties voor het virtuele netwerk en het subnet.
+    Selecteer vervolgens **Toep assen**. De pagina **virtueel netwerk** van uw API Management-exemplaar wordt bijgewerkt met de nieuwe opties voor het virtuele netwerk en het subnet.
 
     ![VPN selecteren][api-management-setup-vpn-select]
 
@@ -136,9 +136,9 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 
     | Azure-omgeving | Eindpunten                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Openbare Azure-peering      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com waarbij `East US 2` eastus2.warm.ingestion.msftcloudes.com is</li></ul> |
+    | Open bare Azure      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com waarbij `East US 2` eastus2.warm.ingestion.msftcloudes.com is</li></ul> |
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
 + **SMTP-relay**: uitgaande netwerk verbinding voor de SMTP-relay, die wordt omgezet onder de host `smtpi-co1.msn.com`, `smtpi-ch1.msn.com`, `smtpi-db3.msn.com`, `smtpi-sin.msn.com` en `ies.global.microsoft.com`
 
@@ -150,13 +150,7 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 
   * Schakel service-eind punten in op het subnet waarin de API Management-service is geïmplementeerd. [Service-eind punten][ServiceEndpoints] moeten worden ingeschakeld voor Azure Sql, Azure Storage, Azure EventHub en Azure ServiceBus. Als u eind punten rechtstreeks vanuit API Management overgedragen subnet naar deze services inschakelt, kunnen ze het Microsoft Azure backbone-netwerk gebruiken dat een optimale route ring voor service verkeer biedt. Als u service-eind punten gebruikt met een API-beheer met geforceerde tunneling, wordt het bovenstaande verkeer van Azure-Services niet geforceerd getunneld. Het andere API Management verkeer met Service afhankelijkheid wordt geforceerd getunneld en kan niet verloren gaan of de API Management-service werkt niet goed.
     
-  * Alle verkeer van het besturings element van Internet naar het beheer eindpunt van uw API Management-service wordt doorgestuurd via een specifieke set inkomende IP-adressen die worden gehost door API Management. Wanneer het verkeer geforceerde tunneling is, worden de antwoorden niet symmetrisch toegewezen aan deze IP-adressen voor binnenkomende bronnen. Om de beperking te overwinnen, moeten we de volgende door de gebruiker gedefinieerde routes ([udr's][UDRs]) toevoegen aan het stuur verkeer terug naar Azure door het doel van deze hostroutes in te stellen op internet. De set met inkomende Ip's voor besturings vlak verkeer is als volgt:
-    
-     | Azure-omgeving | IP-adressen van beheer                                                                                                                                                                                                                                                                                                                                                              |
-    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Openbare Azure-peering      | 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 52.159.16.255/32, 40.82.157.167/32, 51.137.136.0/32, 40.81.185.8/32, 40.81.47.216/32, 51.145.56.125/32, 40.81.89.24/32, 52.224.186.99/32, 51.145.179.78/32, 52.140.238.179/32, 40.66.60.111/32, 52.139.80.117/32, 20.46.144.85/32, 191.233.24.179/32, 40.90.185.46/32, 102.133.130.197/32, 52.139.20.34/32, 40.80.232.185/32, 13.71.49.1/32, 13.64.39.16/32, 20.40.160.107/32 20.37.52.67/32, 20.44.33.246/32, 13.86.102.66/32, 20.40.125.155/32, 51.143.127.203/32, 52.253.225.124/32, 52.253.159.160/32, 20.188.77.119/32, 20.44.72.3/32, 52.142.95.35/32, 52.139.152.27/32, 20.39.80.2/32, 51.107.96.8/32, 20.39.99.81/32, 20.37.81.41/32, 51.107.0.91/32, 102.133.0.79/32, 51.116.96.0/32, 51.116.0.0/32 |
-    | Azure Government  | 52.127.42.160/32, 52.127.34.192/32 |
-    | Azure China       | 139.217.51.16/32, 139.217.171.176/32 |
+  * Alle verkeer van het besturings element van Internet naar het beheer eindpunt van uw API Management-service wordt doorgestuurd via een specifieke set inkomende IP-adressen die worden gehost door API Management. Wanneer het verkeer geforceerde tunneling is, worden de antwoorden niet symmetrisch toegewezen aan deze IP-adressen voor binnenkomende bronnen. Om de beperking te overwinnen, moeten we de volgende door de gebruiker gedefinieerde routes ([udr's][UDRs]) toevoegen aan het stuur verkeer terug naar Azure door het doel van deze hostroutes in te stellen op internet. De set met inkomende Ip's voor besturings vlak verkeer is gedocumenteerd [IP-adressen van besturings elementen](#control-plane-ips)
 
   * Voor andere API Management-service afhankelijkheden die geforceerde tunnels zijn, moet er een manier zijn om de hostnaam op te lossen en te bereiken aan het eind punt. Dit zijn onder andere
       - Metrische gegevens en status controle
@@ -182,9 +176,9 @@ Azure reserveert een aantal IP-adressen binnen elk subnet en deze adressen kunne
 
 Naast de IP-adressen die worden gebruikt door de Azure VNET-infra structuur, maakt elk API Management-exemplaar in het subnet gebruik van twee IP-adressen per eenheid van Premium SKU of één IP-adres voor de Developer-SKU. Elk exemplaar reserveert een extra IP-adres voor de externe load balancer. Bij implementatie in een intern vnet is een extra IP-adres voor de interne load balancer vereist.
 
-Gezien de berekening boven de minimale grootte van het subnet, waarin API Management kan worden geïmplementeerd is/29, waardoor drie IP-adressen worden geleverd.
+Gezien de berekening boven de minimale grootte van het subnet, waarbij API Management kan worden geïmplementeerd, is/29 dat drie bruikbare IP-adressen bevat.
 
-## <a name="routing"> </a> Routing
+## <a name="routing"></a> Route ring
 + Een openbaar IP-adres (VIP) met gelijke taak verdeling wordt gereserveerd om toegang te bieden tot alle service-eind punten.
 + Een IP-adres uit een subnet IP-bereik (DIP) wordt gebruikt voor toegang tot bronnen binnen het vnet en een openbaar IP-adres (VIP) wordt gebruikt voor toegang tot bronnen buiten het vnet.
 + Het open bare IP-adres met taak verdeling vindt u op de Blade Overzicht/essentiële elementen in het Azure Portal.
@@ -196,6 +190,70 @@ Gezien de berekening boven de minimale grootte van het subnet, waarin API Manage
 * Voor API Management implementaties in meerdere regio's die in de interne virtuele netwerk modus zijn geconfigureerd, zijn gebruikers verantwoordelijk voor het beheer van de taak verdeling over meerdere regio's, aangezien ze eigenaar zijn van de route ring.
 * De connectiviteit van een bron in een globaal gepeerd VNET in een andere regio naar API Management service in de interne modus werkt niet als gevolg van de platform beperking. Zie [resources in één virtueel netwerk kunnen niet communiceren met interne Load Balancer van Azure in een peered virtueel netwerk](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) voor meer informatie
 
+## <a name="control-plane-ips"></a> IP-adressen van besturings vlak
+
+De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor binnenkomende aanvragen dat is gemarkeerd met **Global** moet worden white list samen met het specifieke IP-adres van de **regio** .
+
+| **Azure-omgeving**|   **Regio**|  **IP-adres**|
+|-----------------|-------------------------|---------------|
+| Open bare Azure| VS Zuid-Centraal (wereld wijd)| 104.214.19.224|
+| Open bare Azure| VS Noord-Centraal (wereld wijd)| 52.162.110.80|
+| Open bare Azure| US - west-centraal| 52.253.135.58|
+| Open bare Azure| Korea - centraal| 40.82.157.167|
+| Open bare Azure| Verenigd Koninkrijk West| 51.137.136.0|
+| Open bare Azure| Japan - west| 40.81.185.8|
+| Open bare Azure| US - noord-centraal| 40.81.47.216|
+| Open bare Azure| Verenigd Koninkrijk Zuid| 51.145.56.125|
+| Open bare Azure| India - west| 40.81.89.24|
+| Open bare Azure| US - oost| 52.224.186.99|
+| Open bare Azure| Europa -west| 51.145.179.78|
+| Open bare Azure| Japan - oost| 52.140.238.179|
+| Open bare Azure| Frankrijk - centraal| 40.66.60.111|
+| Open bare Azure| Canada - oost| 52.139.80.117|
+| Open bare Azure| UAE - noord| 20.46.144.85|
+| Open bare Azure| Brazilië - zuid| 191.233.24.179|
+| Open bare Azure| Azië - zuidoost| 40.90.185.46|
+| Open bare Azure| Zuid-Afrika - noord| 102.133.130.197|
+| Open bare Azure| Canada - midden| 52.139.20.34|
+| Open bare Azure| Korea - zuid| 40.80.232.185|
+| Open bare Azure| India - centraal| 13.71.49.1|
+| Open bare Azure| US - west| 13.64.39.16|
+| Open bare Azure| Australië - zuidoost| 20.40.160.107|
+| Open bare Azure| Australië - centraal| 20.37.52.67|
+| Open bare Azure| India - zuid| 20.44.33.246|
+| Open bare Azure| US - centraal| 13.86.102.66|
+| Open bare Azure| Australië - oost| 20.40.125.155|
+| Open bare Azure| US - west 2| 51.143.127.203|
+| Open bare Azure| VS-Oost 2 EUAP| 52.253.229.253|
+| Open bare Azure| Centrale VS-EUAP| 52.253.159.160|
+| Open bare Azure| US - zuid-centraal| 20.188.77.119|
+| Open bare Azure| US - oost 2| 20.44.72.3|
+| Open bare Azure| Europa - noord| 52.142.95.35|
+| Open bare Azure| Azië - oost| 52.139.152.27|
+| Open bare Azure| Frankrijk - zuid| 20.39.80.2|
+| Open bare Azure| Zwitserland - west| 51.107.96.8|
+| Open bare Azure| Australië - centraal 2| 20.39.99.81|
+| Open bare Azure| UAE - centraal| 20.37.81.41|
+| Open bare Azure| Zwitserland - noord| 51.107.0.91|
+| Open bare Azure| Zuid-Afrika - west| 102.133.0.79|
+| Open bare Azure| Duitsland - west-centraal| 51.116.96.0|
+| Open bare Azure| Duitsland - noord| 51.116.0.0|
+| Open bare Azure| Noor wegen-Oost| 51.120.2.185|
+| Open bare Azure| Noor wegen West| 51.120.130.134|
+| Azure China 21Vianet| China-noord (globaal)| 139.217.51.16|
+| Azure China 21Vianet| China-oost (globaal)| 139.217.171.176|
+| Azure China 21Vianet| China - noord| 40.125.137.220|
+| Azure China 21Vianet| China East| 40.126.120.30|
+| Azure China 21Vianet| China-noord 2| 40.73.41.178|
+| Azure China 21Vianet| China-oost 2| 40.73.104.4|
+| Azure Government| USGove Virginia (Global)| 52.127.42.160|
+| Azure Government| USGov Texas (wereld wijd)| 52.127.34.192|
+| Azure Government| USGove Virginia| 52.227.222.92|
+| Azure Government| USGov Iowa| 13.73.72.21|
+| Azure Government| USGov Arizona| 52.244.32.39|
+| Azure Government| USGov Texas| 52.243.154.118|
+| Azure Government| USDoD-centraal| 52.182.32.132|
+| Azure Government| USDoD-Oost| 52.181.32.192|
 
 ## <a name="related-content"> </a>Gerelateerde inhoud
 * [Een Virtual Network met back-end verbinden via een VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)

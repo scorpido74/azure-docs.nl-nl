@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossing van CloudSimple
-description: Documentatie-portal voor Azure VMware-oplossing van CloudSimple.
+title: Azure VMware Solutions (AVS)
+description: Documentatie-portal voor Azure VMware Solution (AVS).
 author: sharaths-cs
 ms.author: b-mashar
 ms.date: 08/20/2019
@@ -8,23 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 936a9eb4d9b33b45800fab213fc72a306a04146e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: d81ea6778f3ba31d72c34334b1439994b076647c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972745"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025211"
 ---
-# <a name="azure-vmware-solution-by-cloudsimple"></a>Azure VMware-oplossing van CloudSimple
+# <a name="azure-vmware-solution-by-avs"></a>Azure VMware Solution by AVS
 
-Welkom bij de portal voor complete hulp met de Azure VMware-oplossing van CloudSimple.
+Welkom bij de portal voor complete hulp met Azure VMware Solution by AVS.
 Op deze documentatiesite vindt u meer informatie over de volgende onderwerpen:
 
 ## <a name="overview"></a>Overzicht
 
-Meer informatie over de Azure VMware-oplossing van CloudSimple
+Meer informatie over Azure VMware Solution (AVS)
 
-* Meer informatie over de functies, voordelen en gebruiksscenario's in [Wat is de Azure VMware-oplossing van CloudSimple?](cloudsimple-vmware-solutions-overview.md)
+* Meer informatie over de functies, voordelen en gebruiksscenario's in [Wat is de Azure VMware Solution by AVS?](cloudsimple-vmware-solutions-overview.md)
 * Meer informatie over de [belangrijkste concepten voor beheer](key-concepts.md)
 
 ## <a name="quickstart"></a>Snelstartgids
@@ -32,17 +32,17 @@ Meer informatie over de Azure VMware-oplossing van CloudSimple
 Meer informatie over hoe u aan de slag kunt met de oplossing
 
 * Meer informatie over [het initialiseren van de service en het kopen van capaciteit](quickstart-create-cloudsimple-service.md)
-* Meer informatie over het maken van een nieuwe VMware-omgeving in [Een privécloudomgeving configureren](quickstart-create-private-cloud.md)
+* Meer informatie over het maken van een nieuwe VMware-omgeving in [Een AVS-privécloudomgeving configureren](quickstart-create-private-cloud.md)
 * Meer informatie over hoe u het beheer van VMware en Azure kunt samenbrengen in het artikel [VMware-VM's in Azure gebruiken](quickstart-create-vmware-virtual-machine.md)
 
 ## <a name="concepts"></a>Concepten
 
 Meer informatie over de volgende concepten
 
-* Een [CloudSimple-service](cloudsimple-service.md) (ook wel 'Azure VMware-oplossing van CloudSimple - service' genoemd). Deze resource moet eenmaal per regio worden gemaakt.
-* Koop capaciteit voor uw omgeving door een of meer [CloudSimple-knooppuntresources](cloudsimple-node.md) te maken. Deze resources worden ook wel 'Azure VMware-oplossing van CloudSimple - node' genoemd.
-* Initialiseer en configureer uw VMware-omgeving met behulp van [privéclouds](cloudsimple-private-cloud.md).
-* Breng uw beheer samen met [Virtuele CloudSimple-machines](cloudsimple-virtual-machines.md) (ook wel 'Azure VMware-oplossing door CloudSimple - virtuele machine' genoemd).
+* Een [AVS-service](cloudsimple-service.md) (ook bekend als 'Azure VMware Solutions (AVS) - Service'). Deze resource moet eenmaal per regio worden gemaakt.
+* Koop capaciteit voor uw omgeving door een of meer [AVS-knooppuntresources](cloudsimple-node.md) te maken. Deze resources worden ook wel 'Azure VMware Solution by AVS - node' genoemd.
+* Initialiseer en configureer uw VMware-omgeving met behulp van [AVS-privéclouds](cloudsimple-private-cloud.md).
+* Breng uw beheer samen met [Virtuele AVS-machines](cloudsimple-virtual-machines.md) (ook wel 'Azure VMware Solution by AVS - virtuele machine' genoemd).
 * Ontwerp het onderliggende netwerk met behulp van [VLAN's/subnetten](cloudsimple-vlans-subnets.md).
 * Segmenteer en beveilig uw onderliggende netwerk met behulp van de resource [Firewall-tabel](cloudsimple-firewall-tables.md).
 * Krijg beveiligde toegang tot uw VMware-omgevingen via het WAN met behulp van [VPN-gateways](cloudsimple-vpn-gateways.md).
@@ -56,10 +56,10 @@ Meer informatie over de volgende concepten
 
 Leer hoe u algemene taken kunt uitvoeren, zoals:
 
-* [Een CloudSimple-service maken](create-cloudsimple-service.md), eenmaal per regio waar u VMware-omgevingen wilt implementeren.
-* Kernfunctionaliteit van de service beheren in de [CloudSimple-portal](access-cloudsimple-portal.md).
-* Capaciteit inschakelen en facturering optimaliseren voor uw infrastructuur door [CloudSimple-knooppunten te kopen](create-nodes.md).
-* Configuraties voor VMware-omgevingen beheren met behulp van privéclouds. U kunt privéclouds [maken](create-private-cloud.md), [beheren](manage-private-cloud.md), [uitbreiden](expand-private-cloud.md) of [verkleinen](shrink-private-cloud.md).
+* [Een AVS-service maken](create-cloudsimple-service.md), eenmaal per regio waar u VMware-omgevingen wilt implementeren.
+* Kernfunctionaliteit van de service beheren in de [AVS-portal](access-cloudsimple-portal.md).
+* Capaciteit inschakelen en facturering optimaliseren voor uw infrastructuur door [AVS-knooppunten te kopen](create-nodes.md).
+* Configuraties voor VMware-omgevingen beheren met behulp van AVS-privéclouds. U kunt AVS-privéclouds [maken](create-private-cloud.md), [beheren](manage-private-cloud.md), [uitbreiden](expand-private-cloud.md) of [verkleinen](shrink-private-cloud.md).
 * Gecombineerd beheer inschakelen door [Azure-abonnementen toe te wijzen](azure-subscription-mapping.md).
 * Gebruikers- en systeemactiviteiten bewaken met behulp van de [activiteitenpagina's](monitor-activity.md).
 * Netwerken voor uw omgevingen configureren door [subnetten te maken en beheren](create-vlan-subnet.md).
@@ -68,7 +68,7 @@ Leer hoe u algemene taken kunt uitvoeren, zoals:
 * Connectiviteit van uw interne netwerken of clientwerkstations inschakelen door [een VPN in te stellen](vpn-gateway.md).
 * Communicatie van uw [on-premises omgevingen](on-premises-connection.md) en [Azure Virtual Networks](virtual-network-connection.md) inschakelen.
 * Waarschuwingsdoelen configureren en de totale aangeschafte capaciteit weergeven in de [accountsamenvatting](account.md)
-* [Gebruikers](users.md) weergeven die de CloudSimple-portal hebben geopend.
+* [Gebruikers](users.md) weergeven die de AVS-portal hebben geopend.
 * Virtuele VMware-machines beheren vanuit de Azure-portal:
     * [Virtuele machines maken](azure-create-vm.md) in de Azure-portal.
     * [Virtuele machines beheren](azure-manage-vm.md) die u hebt gemaakt.

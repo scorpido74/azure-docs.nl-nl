@@ -3,12 +3,12 @@ title: Setup Azure Monitor voor containers live data (preview) | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de real-time weer gave van container Logboeken (stdout/stderr) en gebeurtenissen kunt instellen zonder kubectl te gebruiken met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404701"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030672"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>De functie voor live data (preview) instellen
 
@@ -33,7 +33,7 @@ In dit artikel wordt uitgelegd hoe u verificatie configureert om de toegang tot 
 >[!NOTE]
 >Deze functie is beschikbaar in alle Azure-regio's, inclusief Azure China. Het is momenteel niet beschikbaar in de Amerikaanse overheid van Azure.
 
-## <a name="authentication-model"></a>Verificatiemodel
+## <a name="authentication-model"></a>Verificatie model
 
 De functies van live data (preview) maken gebruik van de Kubernetes-API, identiek aan het opdracht regel programma `kubectl`. In de Kubernetes API-eind punten wordt gebruikgemaakt van een zelfondertekend certificaat, dat niet kan worden gevalideerd door de browser. Deze functie maakt gebruik van een interne proxy om het certificaat te valideren met de AKS-service, zodat het verkeer wordt vertrouwd.
 
@@ -101,7 +101,7 @@ De registratie van de Azure AD-client moet opnieuw worden geconfigureerd zodat d
 Raadpleeg de [Kubernetes-documentatie](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)voor meer informatie over geavanceerde beveiligings instellingen in Kubernetes. 
 
 >[!NOTE]
->Als u een nieuw cluster met RBAC-functionaliteit wilt maken, raadpleegt u [Azure Active Directory integreren met de Azure Kubernetes-service](../../aks/azure-ad-integration.md) en volgt u de stappen voor het configureren van Azure AD-verificatie. Tijdens de stappen voor het maken van de client toepassing, worden in deze sectie de twee omleidings-Url's beschreven die u moet maken voor Azure Monitor voor containers. 
+>Als u een nieuw cluster met RBAC-functionaliteit wilt maken, raadpleegt u [Azure Active Directory integreren met de Azure Kubernetes-service](../../aks/azure-ad-integration.md) en volgt u de stappen voor het configureren van Azure AD-verificatie. Tijdens de stappen voor het maken van de client toepassing, worden in deze sectie de twee omleidings-Url's beschreven die u moet maken voor Azure Monitor voor containers die overeenkomen met die in stap 3 hieronder.
 
 ### <a name="client-registration-reconfiguration"></a>Client registratie opnieuw configureren
 

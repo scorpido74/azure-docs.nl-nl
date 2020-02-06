@@ -4,12 +4,12 @@ description: Het Hyperledger Fabric consortium-netwerk implementeren en configur
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 93f78f2c8bc32a2012e5635e0daec10b8c51d167
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5aed420295fd17cf4e7b26c86e8b84c4687e6545
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901629"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029908"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
 
@@ -48,7 +48,7 @@ Met de sjabloon voor implementatie worden verschillende Azure-resources in uw ab
 
 ## <a name="hyperledger-fabric-blockchain-network-setup"></a>Hyperledger Fabric Block chain-netwerk installatie
 
-Om te beginnen hebt u een Azure-abonnement nodig dat ondersteuning biedt voor de implementatie van verschillende virtuele machines en standaardopslagaccounts. Als u geen Azure-abonnement hebt, kunt u een [gratis Azure-account maken](https://azure.microsoft.com/free/).
+Om te beginnen hebt u een Azure-abonnement nodig dat ondersteuning biedt voor de implementatie van verschillende virtuele machines en standaardopslagaccounts. Als u geen Azure-abonnement hebt, kunt u [een gratis Azure-account maken](https://azure.microsoft.com/free/).
 
 Stel Hyperledger Fabric Block Chain Network in met behulp van de volgende stappen:
 
@@ -143,7 +143,6 @@ SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 -
 ORDERER_AKS_SUBSCRIPTION=<ordererAKSClusterSubscriptionID>
 ORDERER_AKS_RESOURCE_GROUP=<ordererAKSClusterResourceGroup>
 ORDERER_AKS_NAME=<ordererAKSClusterName>
-ORDERER_DNS_ZONE=
 ORDERER_DNS_ZONE=$(az aks show --resource-group $ORDERER_AKS_RESOURCE_GROUP --name $ORDERER_AKS_NAME --subscription $ORDERER_AKS_SUBSCRIPTION -o json | jq .addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName | tr -d '"')
 ORDERER_END_POINT="orderer1.$ORDERER_DNS_ZONE:443"
 CHANNEL_NAME=<channelName>

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a487e0c9d565993b45f7e271af23a622e61389ad
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 42eb603be0152b9e8cfb36d02e8f0602c40afe54
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990824"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031200"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Voor bereiding voor de evaluatie en migratie van fysieke servers naar Azure
 
@@ -44,7 +44,7 @@ U moet machtigingen instellen voor Azure Migrate-implementatie.
 **Taak** | **Machtigingen**
 --- | ---
 **Een Azure Migrate-project maken** | Uw Azure-account heeft machtigingen nodig om een project te maken.
-**Het Azure Migrate apparaat registreren** | Azure Migrate maakt gebruik van een licht gewicht Azure Migrate apparaat om fysieke servers te detecteren en te beoordelen met de evaluatie van Azure Migrate server. Dit apparaat detecteert servers en stuurt de meta gegevens en prestatie gegevens naar Azure Migrate.<br/><br/>Tijdens de registratie van het apparaat worden de volgende registratie providers geregistreerd bij het abonnement dat is gekozen in het apparaat: micro soft. OffAzure, micro soft. migrate en micro soft. sleutel kluis. Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Als u de resource providers wilt registreren, hebt u een rol voor Inzender of eigenaar nodig voor het abonnement.<br/><br/> Azure Migrate maakt een Azure Active Directory Azure AD-app als onderdeel van de onboarding:<br/> De AAD-app wordt gebruikt voor communicatie (verificatie en autorisatie) tussen de agents die op het apparaat worden uitgevoerd en de services die worden uitgevoerd op Azure. Deze app heeft geen bevoegdheden om ARM-aanroepen of RBAC-toegang te maken voor een bron.
+**Het Azure Migrate apparaat registreren** | Azure Migrate maakt gebruik van een licht gewicht Azure Migrate apparaat om fysieke servers te detecteren en te beoordelen met de evaluatie van Azure Migrate server. Dit apparaat detecteert servers en stuurt de meta gegevens en prestatie gegevens naar Azure Migrate.<br/><br/>Tijdens de registratie van het apparaat worden de volgende resource providers geregistreerd bij het abonnement dat is gekozen in het apparaat: micro soft. OffAzure, micro soft. migrate en micro soft. sleutel kluis. Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Als u de resource providers wilt registreren, hebt u een rol voor Inzender of eigenaar nodig voor het abonnement.<br/><br/> Azure Migrate maakt een Azure Active Directory Azure AD-app als onderdeel van de onboarding:<br/> De AAD-app wordt gebruikt voor communicatie (verificatie en autorisatie) tussen de agents die op het apparaat worden uitgevoerd en de services die worden uitgevoerd op Azure. Deze app heeft geen bevoegdheden om ARM-aanroepen of RBAC-toegang te maken voor een bron.
 
 
 

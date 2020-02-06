@@ -44,6 +44,8 @@
           href: ./ag/application-gateway-waf-configuration.md
         - name: WAF-beleidsoverzicht
           href: ./ag/policy-overview.md
+        - name: Overzicht van bot-bescherming
+          href: ./ag/bot-protection-overview.md
     - name: Front Door
       items:
         - name: Aangepaste regels

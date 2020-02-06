@@ -6,15 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.openlocfilehash: 382205a958030d2a6d1c199627a591978ef8708a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.custom: hdinsightactive,hdiseo17may2017,seodec18
+ms.date: 02/03/2020
+ms.openlocfilehash: 2c9c5b35110be8f9e51d2205f9fe63dfa4ef8e10
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934616"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031016"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Clusters in HDInsight instellen met Apache Hadoop, Apache Spark, Apache Kafka en meer
 
@@ -31,11 +31,11 @@ Een Hadoop-cluster bestaat uit meerdere virtuele machines (knoop punten) die wor
 
 In de volgende tabel ziet u de verschillende methoden die u kunt gebruiken om een HDInsight-cluster in te stellen.
 
-| Clusters die zijn gemaakt met | Webbrowser | Opdrachtregel | REST API | SDK |
+| Clusters die zijn gemaakt met | Webbrowser | Opdrachtregel | REST-API | SDK |
 | --- |:---:|:---:|:---:|:---:|
 | [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
-| [Azure-CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
+| [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Azure Resource Manager sjablonen](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
@@ -65,7 +65,7 @@ Azure HDInsight biedt momenteel de volgende cluster typen, elk met een aantal on
 > [!IMPORTANT]  
 > HDInsight-clusters zijn beschikbaar in verschillende typen, elk voor één werk belasting of technologie. Er is geen ondersteunde methode voor het maken van een cluster dat meerdere typen combineert, zoals Storm en HBase op één cluster. Als uw oplossing technologieën vereist die verspreid zijn over meerdere typen HDInsight-clusters, kan een [virtueel Azure-netwerk](https://docs.microsoft.com/azure/virtual-network) verbinding maken met de vereiste cluster typen.
 
-| Clustertype | Functionaliteit |
+| Cluster type | Functionaliteit |
 | --- | --- |
 | [Hadoop](hadoop/apache-hadoop-introduction.md) |Batch-query en analyse van opgeslagen gegevens |
 | [HBase](hbase/apache-hbase-overview.md) |Verwerking voor grote hoeveel heden schemaloos, NoSQL-gegevens |
@@ -73,7 +73,7 @@ Azure HDInsight biedt momenteel de volgende cluster typen, elk met een aantal on
 | [Kafka](kafka/apache-kafka-introduction.md) | Een gedistribueerd streaming-platform dat kan worden gebruikt om realtime streaming-gegevens pijplijnen en toepassingen te maken |
 | [ML Services](r-server/r-server-overview.md) |Diverse big data statistieken, voorspellende modellen en machine learning mogelijkheden |
 | [Spark](spark/apache-spark-overview.md) |Verwerking in het geheugen, interactieve query's, micro batch-stroom verwerking |
-| [Storm](storm/apache-storm-overview.md) |Gebeurtenissen in realtime verwerken |
+| [Storm](storm/apache-storm-overview.md) |Verwerking van real-time gebeurtenis |
 
 ### <a name="hdinsight-version"></a>HDInsight-versie
 
@@ -134,7 +134,7 @@ Zie voor meer informatie over opslag opties met HDInsight de [Opties voor het ve
 
 Tijdens de configuratie geeft u voor het standaard opslag eindpunt een BLOB-container van een Azure Storage account of Data Lake Storage op. De standaard opslag bevat toepassings-en systeem Logboeken. Desgewenst kunt u aanvullende gekoppelde Azure Storage accounts en Data Lake Storage accounts opgeven waartoe het cluster toegang heeft. Het HDInsight-cluster en de afhankelijke opslag accounts moeten zich op dezelfde Azure-locatie beslaan.
 
-![Instellingen voor cluster opslag: HDFS-compatibele opslag eindpunten](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage-blank.png)
+![Instellingen voor cluster opslag: HDFS-compatibele opslag eindpunten](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
@@ -211,7 +211,7 @@ Als u alleen een HDInsight probeert uit te voeren, raden we u aan om één worke
 
 Wanneer u de Azure Portal gebruikt om het cluster te configureren, is de grootte van het knoop punt beschikbaar via het tabblad **configuratie en prijzen** . In de portal kunt u ook de kosten zien die zijn gekoppeld aan de verschillende knooppunt grootten.
 
-![HDInsight de grootte van het knoop punt kiezen](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration-pricing-hadoop.png)
+![HDInsight de grootte van het knoop punt kiezen](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
 
 ### <a name="virtual-machine-sizes"></a>Grootten van virtuele machines
 
@@ -225,14 +225,7 @@ Als u wilt weten welke waarde u moet gebruiken om een VM-grootte op te geven tij
 > [!IMPORTANT]  
 > Als u meer dan 32 worker-knoop punten in een cluster nodig hebt, moet u een hoofd knooppunt grootte selecteren met ten minste 8 kernen en 14 GB aan RAM-geheugen.
 
-Zie voor meer informatie, [grootten voor virtuele machines](../virtual-machines/windows/sizes.md). Zie [prijzen voor HDInsight](https://azure.microsoft.com/pricing/details/hdinsight)voor meer informatie over de prijzen van de verschillende grootten.
-
-## <a name="classic-cluster-setup"></a>Klassieke cluster installatie
-
-Klassieke cluster installatie bouwt voort op de standaard instellingen voor maken en voegt de volgende opties toe:
-
-* [HDInsight-toepassingen](#install-hdinsight-applications-on-clusters)
-* [Script acties](#advanced-settings-script-actions)
+Zie [grootten voor virtuele machines](../virtual-machines/windows/sizes.md)voor meer informatie. Zie [prijzen voor HDInsight](https://azure.microsoft.com/pricing/details/hdinsight)voor meer informatie over de prijzen van de verschillende grootten.
 
 ## <a name="install-hdinsight-applications-on-clusters"></a>HDInsight-toepassingen installeren op clusters
 
@@ -240,9 +233,13 @@ Een HDInsight-toepassing is een toepassing die gebruikers kunnen installeren op 
 
 De meeste HDInsight-toepassingen worden geïnstalleerd op een leeg Edge-knoop punt.  Een lege Edge-knoop punt is een virtuele Linux-machine waarop dezelfde client hulpprogramma's zijn geïnstalleerd en geconfigureerd als in het hoofd knooppunt. U kunt het Edge-knoop punt gebruiken om toegang te krijgen tot het cluster, uw client toepassingen te testen en uw client toepassingen te hosten. Zie [lege Edge-knoop punten in HDInsight gebruiken](hdinsight-apps-use-edge-node.md)voor meer informatie.
 
-## <a name="advanced-settings-script-actions"></a>Geavanceerde instellingen: script acties
+![Azure Portal cluster configuratie toepassingen](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration-applications.png)
+
+## <a name="script-actions"></a>Script acties
 
 U kunt extra onderdelen installeren of cluster configuratie aanpassen met behulp van scripts tijdens het maken. Dergelijke scripts worden aangeroepen via **script actie**, een configuratie optie die kan worden gebruikt vanuit de Azure Portal, Hdinsight Windows Power shell-cmdlets of de HDINSIGHT .NET SDK. Zie [HDInsight-cluster aanpassen met script actie](hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie.
+
+![Script acties voor cluster configuratie Azure Portal](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration-scriptaction.png)
 
 Sommige systeem eigen Java-onderdelen, zoals Apache mahout en trapsgewijs, kunnen worden uitgevoerd op het cluster als Java Archive-bestanden (JAR). Deze JAR-bestanden kunnen worden gedistribueerd naar Azure Storage en worden verzonden naar HDInsight-clusters met een Hadoop-taak indienings mechanismen. Zie [Apache Hadoop-taken via een programma verzenden](hadoop/submit-apache-hadoop-jobs-programmatically.md)voor meer informatie.
 

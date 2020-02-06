@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6c4363d6124a7cec075003f7b54a2825c3f489a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1f5446e836a65c6d40c2cc6703757670988593bd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977972"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896596"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Wat zijn beheerde identiteiten voor Azure-resources?
 
@@ -60,7 +60,7 @@ In het volgende diagram ziet u hoe beheerde service-identiteiten samenwerken met
 
 |  Eigenschap    | Door het systeem toegewezen beheerde identiteit | Door een gebruiker toegewezen beheerde identiteit |
 |------|----------------------------------|--------------------------------|
-| Maken |  Gemaakt als onderdeel van een Azure-resource (bijvoorbeeld een virtuele machine van Azure of Azure App Service) | Gemaakt als een zelfstandige Azure-resource |
+| Zelf |  Gemaakt als onderdeel van een Azure-resource (bijvoorbeeld een virtuele machine van Azure of Azure App Service) | Gemaakt als een zelfstandige Azure-resource |
 | Levenscyclus | Gedeelde levens cyclus met de Azure-resource waarmee de beheerde identiteit wordt gemaakt. <br/> Wanneer de bovenliggende resource wordt verwijderd, wordt ook de beheerde identiteit verwijderd. | Onafhankelijke levens cyclus. <br/> Moet expliciet worden verwijderd. |
 | Delen tussen Azure-resources | Kan niet worden gedeeld. <br/> Deze kan alleen worden gekoppeld aan één Azure-resource. | Kan worden gedeeld <br/> Dezelfde door de gebruiker toegewezen beheerde identiteit kan worden gekoppeld aan meer dan één Azure-resource. |
 | Algemene use cases | Werk belastingen die zijn opgenomen in één Azure-resource <br/> Werk belastingen waarvoor u onafhankelijke identiteiten nodig hebt. <br/> Bijvoorbeeld een toepassing die op één virtuele machine wordt uitgevoerd | Workloads die worden uitgevoerd op meerdere resources en die één identiteit kunnen delen. <br/> Workloads waarvoor vooraf autorisatie is vereist voor een beveiligde bron als onderdeel van een inrichtings stroom. <br/> Werk belastingen waarbij resources regel matig worden gerecycled, maar de machtigingen moeten consistent blijven. <br/> Bijvoorbeeld een werk belasting waarbij meerdere virtuele machines toegang moeten hebben tot dezelfde resource |
@@ -135,7 +135,7 @@ Informatie over het gebruik van een beheerde identiteit met andere Azure-service
 * [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure Container Instances](../../container-instances/container-instances-managed-identity.md)
 * [Azure Container Registry taken](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
-* [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
+* [Azure Event Hubs](../../event-hubs/authenticate-managed-identity.md)
 * [Azure Functions](/azure/app-service/overview-managed-identity)
 * [Azure Kubernetes Service](/azure/aks/use-managed-identity)
 * [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)

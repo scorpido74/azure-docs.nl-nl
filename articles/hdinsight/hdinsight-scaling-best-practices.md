@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 2d26cbce3398b9a44530553fbff0413c631b7579
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744771"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030916"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters schalen
 
@@ -29,15 +29,15 @@ U kunt een cluster hand matig schalen met behulp van een van de hieronder beschr
 
 Micro soft biedt de volgende hulpprogram ma's om clusters te schalen:
 
-|Utility | Beschrijving|
+|NUTS | Beschrijving|
 |---|---|
 |[Power shell AZ](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -clustername \<cluster naam >-TargetInstanceCount \<NewSize >|
-|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -clustername \<cluster naam >-TargetInstanceCount \<NewSize >|
-|[Azure-CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [AZ hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource groep \<resource groep >--name \<Cluster name >--target-instance-Count \<NewSize >|
-|[Azure-CLI](hdinsight-administer-use-command-line.md)|Azure hdinsight-cluster verg Roten/verkleinen \<clustername > \<aantal doel instanties > |
+|[Power shell-AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -clustername \<cluster naam >-TargetInstanceCount \<NewSize >|
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [AZ hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource groep \<resource groep >--name \<Cluster name >--target-instance-Count \<NewSize >|
+|[Azure CLI](hdinsight-administer-use-command-line.md)|Azure hdinsight-cluster verg Roten/verkleinen \<clustername > \<aantal doel instanties > |
 |[Azure Portal](https://portal.azure.com)|Open het deel venster HDInsight-cluster, selecteer **cluster grootte** in het menu aan de linkerkant en typ in het deel venster cluster grootte het aantal worker-knoop punten en selecteer Opslaan.|  
 
-![Optie voor Azure Portal schaal cluster](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
+![Optie voor Azure Portal schaal cluster](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
 Met een van deze methoden kunt u uw HDInsight-cluster binnen enkele minuten omhoog of omlaag schalen.
 

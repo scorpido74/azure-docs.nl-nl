@@ -3,19 +3,19 @@ title: Een Event Hubs toegewezen cluster maken met behulp van de Azure Portal
 description: In deze Quick Start leert u hoe u een Azure Event Hubs-cluster maakt met behulp van Azure Portal.
 services: event-hubs
 documentationcenter: ''
-author: xurui203
+author: femila
 manager: ''
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/20/2019
-ms.author: xurui
-ms.openlocfilehash: dbe34b95652d972a9e75f4ab8f2c208061359ae9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: femila
+ms.openlocfilehash: 7003cc90bdb456eba9cfaebc1e24332d2e4a6251
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437213"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029925"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Snelstartgids: een toegewezen Event Hubs-cluster maken met behulp van Azure Portal 
 Event Hubs-clusters bieden implementaties met één Tenant voor klanten met de meest veeleisende streaming behoeften. Deze aanbieding heeft een gegarandeerde 99,99%-SLA en is alleen beschikbaar in onze speciale prijs categorie. Een [Event hubs cluster](event-hubs-dedicated-overview.md) kan miljoenen gebeurtenissen per seconde met gegarandeerde capaciteit en een subseconde van de seconden binnenkomen. Naam ruimten en Event hubs die zijn gemaakt in een cluster, bevatten alle functies van de Standard-aanbieding en meer, maar zonder ingangs limieten. De speciale aanbieding bevat ook de populaire [Event hubs Capture](event-hubs-capture-overview.md) -functie zonder extra kosten, zodat u automatisch gegevens stromen naar [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) of [Azure data Lake Storage gen 1](../data-lake-store/data-lake-store-overview.md)kunt vastleggen in batches.
@@ -31,7 +31,7 @@ Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
 - Een Azure-account. Als u nog geen account hebt, kunt u [het](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) pas doen voordat u begint. Deze functie wordt niet ondersteund met een gratis Azure-account. 
 - [Visual Studio](https://visualstudio.microsoft.com/vs/) 2017 update 3 (versie 15,3, 26730,01) of hoger.
-- [.NET Standard SDK](https://dotnet.microsoft.com/download), versie 2.0 of hoger.
+- [.NET Standard SDK](https://dotnet.microsoft.com/download), versie 2.0 of later.
 - [Een resource groep gemaakt](../event-hubs/event-hubs-create.md#create-a-resource-group).
 
 ## <a name="create-an-event-hubs-dedicated-cluster"></a>Een Event Hubs Dedicated-cluster maken

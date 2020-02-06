@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: c5cb8366465d5983823184c87eb54fad6aaffbd0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705918"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031609"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute direct configureren
 
 ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde netwerk van Microsoft op peeringlocaties strategisch verdeeld over de hele wereld verbinding te maken. Zie [About ExpressRoute Direct](expressroute-erdirect-about.md) (Over ExpressRoute Direct) voor meer informatie.
 
-## <a name="resources"></a>Maken van de resource
+## <a name="resources"></a>De resource maken
 
 1. Aanmelden bij Azure en selecteer het abonnement. De resource Direct van ExpressRoute en ExpressRoute-circuits moeten zich in hetzelfde abonnement.
 
@@ -27,13 +27,19 @@ ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde net
 
    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
-2. Lijst met alle locaties waar ExpressRoute Direct wordt ondersteund.
+   
+2. Registreer uw abonnement opnieuw bij het micro soft. Network om toegang te krijgen tot de expressrouteportslocation-en expressrouteport-Api's.
+
+   ```powershell
+   Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
+   ```   
+3. Lijst met alle locaties waar ExpressRoute Direct wordt ondersteund.
   
    ```powershell
    Get-AzExpressRoutePortsLocation
    ```
 
-   **Voorbeeld van uitvoer**
+   **Voorbeeld uitvoer**
   
    ```powershell
    Name                : Equinix-Ashburn-DC2
@@ -60,13 +66,13 @@ ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde net
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-3. Bepalen of een locatie die hierboven vermeld beschikbare bandbreedte heeft
+4. Bepalen of een locatie die hierboven vermeld beschikbare bandbreedte heeft
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
    ```
 
-   **Voorbeeld van uitvoer**
+   **Voorbeeld uitvoer**
 
    ```powershell
    Name                : Equinix-San-Jose-SV1
@@ -82,7 +88,7 @@ ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde net
                           }
                         ]
    ```
-4. Maak een ExpressRoute-Direct-resource op basis van de hierboven gekozen locatie
+5. Maak een ExpressRoute-Direct-resource op basis van de hierboven gekozen locatie
 
    ExpressRoute Direct biedt ondersteuning voor zowel QinQ en Dot1Q inkapseling. Als QinQ is ingeschakeld, wordt elk ExpressRoute-circuit wordt dynamisch toegewezen een S-Tag en is uniek in de resource ExpressRoute Direct. Elke C-code op het circuit moet uniek zijn voor het circuit, maar ook niet voor de ExpressRoute-Direct.  
 
@@ -100,7 +106,7 @@ ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde net
    > Het kenmerk inkapseling kan ook worden ingesteld op Dot1Q. 
    >
 
-   **Voorbeeld van uitvoer:**
+   **Voorbeeld uitvoer:**
 
    ```powershell
    Name                       : Contoso-Direct
@@ -149,7 +155,7 @@ ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde net
    Circuits                   : []
    ```
 
-## <a name="state"></a>Status van beheerder wijzigen van koppelingen
+## <a name="state"></a>De beheer status van koppelingen wijzigen
 
   Dit proces moet worden gebruikt voor het uitvoeren van een laag 1-test, ervoor zorgen dat elke cross-verbinding juist patches naar elke router voor primaire en secundaire.
 1. ExpressRoute Direct details ophalen.
@@ -168,7 +174,7 @@ ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde net
    $ERDirect.Links[1].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    ```
-   **Voorbeeld van uitvoer:**
+   **Voorbeeld uitvoer:**
 
    ```powershell
    Name                       : Contoso-Direct
@@ -217,7 +223,7 @@ ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde net
    Circuits                   : []
    ```
 
-   Gebruik dezelfde procedure met `AdminState = "Disabled"` om in te schakelen de poorten.
+   Gebruik dezelfde procedure met `AdminState = "Disabled"` om de poorten in te scha kelen.
 
 ## <a name="circuit"></a>Een circuit maken
 
@@ -237,7 +243,7 @@ Een circuit maken op de resource ExpressRoute Direct.
 
   Andere bandbreedten opnemen: 5.0, 10.0 en 40,0
 
-  **Voorbeeld van uitvoer:**
+  **Voorbeeld uitvoer:**
 
   ```powershell
   Name                             : ExpressRoute-Direct-ckt
@@ -271,4 +277,4 @@ Een circuit maken op de resource ExpressRoute Direct.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over ExpressRoute Direct de [overzicht](expressroute-erdirect-about.md).
+Zie het [overzicht](expressroute-erdirect-about.md)voor meer informatie over ExpressRoute direct.

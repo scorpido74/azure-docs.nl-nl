@@ -17,12 +17,12 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 567df85fa634570b0ac04fe6da906776a74c0550
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e673c2dfd9b3bef6d443498fc96a8c71e0737851
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833343"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030758"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Machtigingen en toestemming in het micro soft Identity platform-eind punt
 
@@ -204,11 +204,11 @@ Wanneer u klaar bent om machtigingen aan te vragen bij de beheerder van uw organ
 
 | Parameter     | Voorwaarde     | Beschrijving                                                                               |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | Verplicht | De Directory-Tenant waarvan u toestemming wilt aanvragen. Kan worden geleverd in de indeling GUID of beschrijvende naam of in het algemeen waarnaar wordt verwezen met `common`, zoals wordt weer gegeven in het voor beeld. |
-| `client_id` | Verplicht | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
-| `redirect_uri` | Verplicht |De omleidings-URI waar u het antwoord voor uw app wilt laten afhandelen. Het moet exact overeenkomen met een van de omleidings-Uri's die u hebt geregistreerd in de app-registratie Portal. |
+| `tenant` | Vereist | De Directory-Tenant waarvan u toestemming wilt aanvragen. Kan worden weer gegeven in de indeling GUID of beschrijvende naam of in het algemeen waarnaar wordt verwezen met organisaties zoals in het voor beeld. Gebruik ' common ' niet, omdat persoonlijke accounts geen toestemming van de beheerder kunnen bieden, behalve in de context van een Tenant. Gebruik, indien mogelijk, de Tenant-ID om te zorgen voor optimale compatibiliteit met persoonlijke accounts die tenants beheren. |
+| `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
+| `redirect_uri` | Vereist |De omleidings-URI waar u het antwoord voor uw app wilt laten afhandelen. Het moet exact overeenkomen met een van de omleidings-Uri's die u hebt geregistreerd in de app-registratie Portal. |
 | `state` | Aanbevolen | Een waarde die in de aanvraag is opgenomen en die ook wordt geretourneerd in de token reactie. Dit kan een teken reeks zijn van elke gewenste inhoud. Gebruik de status om informatie over de status van de gebruiker in de app te coderen voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin deze zijn aangemeld. |
-|`scope`        | Verplicht      | Hiermee wordt de set machtigingen gedefinieerd die worden aangevraagd door de toepassing. Dit kan statisch zijn (met behulp van [`/.default`](#the-default-scope)) of dynamische bereiken.  Dit kan bestaan uit de OIDC-bereiken (`openid`, `profile``email`). Als u toepassings machtigingen nodig hebt, moet u `/.default` gebruiken om de statisch geconfigureerde lijst met machtigingen aan te vragen.  | 
+|`scope`        | Vereist      | Hiermee wordt de set machtigingen gedefinieerd die worden aangevraagd door de toepassing. Dit kan statisch zijn (met behulp van [`/.default`](#the-default-scope)) of dynamische bereiken.  Dit kan bestaan uit de OIDC-bereiken (`openid`, `profile``email`). Als u toepassings machtigingen nodig hebt, moet u `/.default` gebruiken om de statisch geconfigureerde lijst met machtigingen aan te vragen.  | 
 
 
 Op dit moment heeft Azure AD een Tenant beheerder nodig om zich aan te melden om de aanvraag te volt ooien. De beheerder wordt gevraagd om alle machtigingen die u in de para meter `scope` hebt aangevraagd goed te keuren.  Als u een statische (`/.default`)-waarde hebt gebruikt, werkt deze als het eind punt v 1.0-beheerder toestemming en vraagt u toestemming aan voor alle scopes die zijn gevonden in de vereiste machtigingen voor de app.

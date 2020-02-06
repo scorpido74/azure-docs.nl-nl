@@ -7,114 +7,64 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 06746cfc3b39a242c16a6b4f4c95b3c212a9abd5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/04/2020
+ms.openlocfilehash: 901868da8ed859a846a507557d383db760f297c9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443949"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029517"
 ---
-# <a name="troubleshoot-azure-data-factory-data-flows"></a>Problemen met Azure Data Factory gegevens stromen oplossen
+# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Problemen met gegevens stromen in Azure Data Factory oplossen
 
 In dit artikel worden algemene probleemoplossings methoden voor gegevens stromen in Azure Data Factory besproken.
 
 ## <a name="common-errors-and-messages"></a>Veelvoorkomende fouten en berichten
 
-### <a name="error-message-df-sys-01-shadeddatabricksorgapachehadoopfsazureazureexception-commicrosoftazurestoragestorageexception-the-specified-container-does-not-exist"></a>Fout bericht: DF-SYS-01: gearceerd. databricks. org. apache. Hadoop. FS. Azure. AzureException: com. micro soft. Azure. storage. StorageException: de opgegeven container bestaat niet.
+### <a name="error-code-df-executor-sourceinvalidpayload"></a>Fout code: DF-uitvoerder-SourceInvalidPayload
+- **Bericht**: uitvoering van voor beeld, fout opsporing en pipeline-gegevens stroom is mislukt omdat de container niet bestaat
+- **Oorzaken**: wanneer dataset een container bevat die niet voor komt in de opslag
+- **Aanbeveling**: Controleer of de container waarnaar wordt verwezen in uw gegevensset bestaat of toegankelijk is.
 
-- **Symptomen**: de uitvoering van voor beeld, fout opsporing en pipeline-gegevens stroom is mislukt omdat de container niet bestaat
+### <a name="error-code-df-executor-systemimplicitcartesian"></a>Fout code: DF-uitvoerder-SystemImplicitCartesian
 
-- **Oorzaak**: wanneer dataset een container bevat die niet voor komt in de opslag
+- **Bericht**: impliciet Cartesisch product voor Inner join wordt niet ondersteund. gebruik in plaats daarvan cross join. Kolommen die in de samen voeging worden gebruikt, moeten een unieke sleutel voor rijen maken.
+- **Oorzaken**: impliciet Cartesisch product voor Inner join tussen logische abonnementen wordt niet ondersteund. Als de kolommen die in de samen voeging worden gebruikt, de unieke sleutel maken
+- **Aanbeveling**: voor niet-gelijkheid gebaseerde samen voegingen moet u kiezen voor cross-koppeling.
 
-- **Oplossing**: Zorg ervoor dat de container waarnaar u verwijst in uw gegevensset bestaat
+### <a name="error-code-df-executor-systeminvalidjson"></a>Fout code: DF-uitvoerder-SystemInvalidJson
 
-### <a name="error-message-df-sys-01-javalangassertionerror-assertion-failed-conflicting-directory-structures-detected-suspicious-paths"></a>Fout bericht: DF-SYS-01: Java. lang. AssertionError: Assertion is mislukt: er is een conflicterende Directory-structuur gedetecteerd. Verdachte paden
+- **Bericht**: JSON-Parseerfout, niet-ondersteunde code ring of meerdere regels
+- **Oorzaken**: mogelijke problemen met het JSON-bestand: niet-ondersteunde code ring, beschadigde bytes of het gebruik van JSON-bron als één document op veel geneste lijnen
+- **Aanbeveling**: Controleer of de code ring van het JSON-bestand wordt ondersteund. Op de bron transformatie die gebruikmaakt van een JSON-gegevensset, vouwt u JSON-instellingen uit en schakelt u ' single document ' in.
+ 
+### <a name="error-code-df-executor-broadcasttimeout"></a>Fout code: DF-uitvoerder-BroadcastTimeout
 
-- **Symptomen**: Joker tekens gebruiken in bron transformatie met Parquet-bestanden
+- **Bericht**: er is een time-out opgetreden voor de broadcast. Zorg ervoor dat de stroom van de uitzending gegevens binnen 60 seconden produceert in debug-uitvoeringen en 300 seconden bij uitvoering
+- **Oorzaken**: Broadcast heeft een standaard time-out van 60 seconden in debug-uitvoeringen en 300 seconden in de uitvoering van taken. De stroom die is gekozen voor de broadcast lijkt groot te zijn voor het produceren van gegevens binnen deze limiet.
+- **Aanbeveling**: Vermijd het uitzenden van grote gegevens stromen waarbij de verwerking meer dan 60 seconden kan duren. Kies in plaats daarvan een kleinere stroom om te broadcasten. Grote SQL/DW-tabellen en-bron bestanden zijn meestal onjuiste kandidaten.
 
-- **Oorzaak**: onjuiste of ongeldige Joker teken syntaxis
+### <a name="error-code-df-executor-conversion"></a>Fout code: DF-uitvoeringen-conversie
 
-- **Oplossing**: Controleer de syntaxis van de joker tekens die u gebruikt in de opties voor de bron transformatie
+- **Bericht**: converteren naar een datum of tijd is mislukt vanwege een ongeldig teken
+- **Oorzaken**: gegevens hebben niet de verwachte indeling
+- **Aanbeveling**: gebruik het juiste gegevens type
 
-### <a name="error-message-df-src-002-container-container-name-is-required"></a>Fout bericht: DF-SRC-002: container (container name) is vereist
+### <a name="error-code-df-executor-invalidcolumn"></a>Fout code: DF-uitvoerder-InvalidColumn
 
-- **Symptomen**: de uitvoering van voor beeld, fout opsporing en pipeline-gegevens stroom is mislukt omdat de container niet bestaat
-
-- **Oorzaak**: wanneer dataset een container bevat die niet voor komt in de opslag
-
-- **Oplossing**: Zorg ervoor dat de container waarnaar u verwijst in uw gegevensset bestaat
-
-### <a name="error-message-df-uni-001-primarykeyvalue-has-incompatible-types-integertype-and-stringtype"></a>Fout bericht: DF-UNI-001: PrimaryKeyValue heeft incompatibele typen IntegerType en StringType
-
-- **Symptomen**: de uitvoering van voor beeld, fout opsporing en pipeline-gegevens stroom is mislukt omdat de container niet bestaat
-
-- **Oorzaak**: er is een fout opgetreden bij het invoegen van een onjuist primair sleutel type in data base-sinks
-
-- **Oplossing**: gebruik een afgeleide kolom om de kolom te casten die u gebruikt voor de primaire sleutel in uw gegevens stroom, zodat deze overeenkomt met het gegevens type van uw doel database
-
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-the-tcpip-connection-to-the-host-xxxxxdatabasewindowsnet-port-1433-has-failed-error-xxxxdatabasewindowsnet-verify-the-connection-properties-make-sure-that-an-instance-of-sql-server-is-running-on-the-host-and-accepting-tcpip-connections-at-the-port-make-sure-that-tcp-connections-to-the-port-are-not-blocked-by-a-firewall"></a>Fout bericht: DF-SYS-01: com. micro soft. sqlserver. JDBC. SQLServerException: de TCP/IP-verbinding met de host xxxxx.database.windows.net poort 1433 is mislukt. Fout: xxxx.database.windows.net. Controleer de verbindings eigenschappen. Zorg ervoor dat een exemplaar van SQL Server wordt uitgevoerd op de host en TCP/IP-verbindingen accepteert op de poort. Zorg ervoor dat TCP-verbindingen met de poort niet worden geblokkeerd door een firewall. "
-
-- **Symptomen**: kan geen voor beeld van gegevens weer geven of een pijp lijn uitvoeren met de database bron of sink
-
-- **Oorzaak**: de data base wordt beveiligd door een firewall
-
-- **Oplossing**: Open de firewall toegang tot de data base
-
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-there-is-already-an-object-named-xxxxxx-in-the-database"></a>Fout bericht: DF-SYS-01: com. micro soft. sqlserver. JDBC. SQLServerException: er bevindt zich al een object met de naam ' xxxxxx ' in de data base.
-
-- **Symptomen**: de Sink kan geen tabel maken
-
-- **Oorzaak**: er bestaat al een bestaande tabel naam in de doel database met dezelfde naam die is gedefinieerd in uw bron of in de gegevensset
-
-- **Oplossing**: Wijzig de naam van de tabel die u wilt maken
-
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-string-or-binary-data-would-be-truncated"></a>Fout bericht: DF-SYS-01: com. micro soft. sqlserver. JDBC. SQLServerException: teken reeks of binaire gegevens worden afgekapt. 
-
-- **Symptomen**: wanneer u gegevens naar een SQL-Sink schrijft, mislukt uw gegevens stroom bij het uitvoeren van de pijp lijn met mogelijke Afbrekings fout.
-
-- **Oorzaak**: een veld van uw gegevens stroom wordt toegewezen aan een kolom in uw SQL database niet breed genoeg is om de waarde op te slaan, waardoor het SQL-stuur programma deze fout kan genereren
-
-- **Oplossing**: u kunt de lengte van de gegevens voor teken reeks kolommen met ```left()``` in een afgeleide kolom beperken of het [patroon "fout rijen" implementeren.](how-to-data-flow-error-rows.md)
-
-### <a name="error-message-since-spark-23-the-queries-from-raw-jsoncsv-files-are-disallowed-when-the-referenced-columns-only-include-the-internal-corrupt-record-column"></a>Fout bericht: sinds Spark 2,3 worden de query's van onbewerkte JSON/CSV-bestanden niet toegestaan wanneer de kolommen waarnaar wordt verwezen alleen de kolom interne beschadigde record bevatten. 
-
-- **Symptomen**: het lezen van een JSON-bron mislukt
-
-- **Oorzaak**: wanneer het lezen van een JSON-bron met één document op veel geneste regels, ADF, via Spark, niet kan bepalen waar een nieuw document begint en het vorige document eindigt.
-
-- **Oplossing**: voor de bron transformatie die gebruikmaakt van een JSON-gegevensset, vouwt u JSON-instellingen uit en schakelt u ' Eén document ' in.
-
-### <a name="error-message-duplicate-columns-found-in-join"></a>Fout bericht: dubbele kolommen gevonden in samen voeging
-
-- **Symptomen**: deelname aan trans formatie resulteerde in kolommen aan de linkerkant en aan de rechter kant die dubbele kolom namen bevatten
-
-- **Oorzaak**: de stromen die worden toegevoegd, hebben algemene kolom namen
-
-- **Oplossing**: Voeg een trans formatie toe die volgt op de koppeling en selecteer dubbele kolommen verwijderen voor zowel de invoer als de uitvoer.
-
-### <a name="error-message-possible-cartesian-product"></a>Fout bericht: mogelijk Cartesisch product
-
-- **Symptomen**: trans formatie koppelen of opzoeken detecteert mogelijk Cartesisch product bij de uitvoering van uw gegevens stroom
-
-- **Oorzaak**: als u ADF niet expliciet hebt aangegeven om een cross-koppeling te gebruiken, kan de gegevens stroom mislukken
-
-- **Oplossing**: Wijzig uw opzoek-of koppelings transformatie in een samen voeging met behulp van aangepaste cross-koppeling en voer in de expressie-editor uw zoek-of samenvoeg voorwaarde in. Als u een volledig Cartesisch product expliciet wilt maken, gebruikt u de afgeleide kolom transformatie in elk van de twee onafhankelijke streams voordat de koppeling wordt gemaakt om een synthetische sleutel te maken die overeenkomt met. Maak bijvoorbeeld een nieuwe kolom in de afgeleide kolom in elke stroom met de naam ```SyntheticKey``` en stel deze in op ```1```. Gebruik vervolgens ```a.SyntheticKey == b.SyntheticKey``` als uw aangepaste joinexpressie voor samen voegen.
-
-> [!NOTE]
-> Zorg ervoor dat u ten minste één kolom toevoegt aan elke zijde van uw linker-en rechter relatie in een aangepaste cross-koppeling. Het uitvoeren van cross-join's met statische waarden in plaats van kolommen van elke kant resulteert in volledige scans van de hele gegevensset, waardoor uw gegevens stroom slecht kan worden uitgevoerd.
+- **Bericht**: de kolom naam moet worden opgegeven in de query, een alias instellen als u een SQL-functie gebruikt
+- **Oorzaken**: er is geen kolom naam opgegeven
+- **Aanbeveling**: Stel een alias in als u een SQL-functie gebruikt, zoals min ()/Max (), enzovoort.
 
 ## <a name="general-troubleshooting-guidance"></a>Algemene richt lijnen voor probleem oplossing
 
 1. Controleer de status van uw gegevensset-verbindingen. Ga in elke bron-en Sink-trans formatie naar de gekoppelde service voor elke gegevensset die u gebruikt en test verbindingen.
-2. Controleer de status van uw bestands-en tabel verbindingen van de ontwerp functie voor gegevens stromen. Schakel over op fout opsporing en klik op voor beeld van gegevens op de bron transformaties om ervoor te zorgen dat u toegang hebt tot uw gegevens.
-3. Als alles er goed uitziet in de preview van gegevens, gaat u naar de ontwerp functie voor pijp lijnen en plaatst u uw gegevens stroom in een pijplijn activiteit. Fout opsporing voor de pijp lijn voor een end-to-end-test.
+1. Controleer de status van uw bestands-en tabel verbindingen van de ontwerp functie voor gegevens stromen. Schakel over op fout opsporing en klik op voor beeld van gegevens op de bron transformaties om ervoor te zorgen dat u toegang hebt tot uw gegevens.
+1. Als alles er goed uitziet in de preview van gegevens, gaat u naar de ontwerp functie voor pijp lijnen en plaatst u uw gegevens stroom in een pijplijn activiteit. Fout opsporing voor de pijp lijn voor een end-to-end-test.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Probeer deze bronnen voor meer informatie over probleem oplossing:
-
 *  [Data Factory Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory functie aanvragen](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-Video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
