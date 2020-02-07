@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0c6fab0c9e26630bd54830044da56dba20564b3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3723631609a04f6d12abcaac1f9d7733bf3caa01
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025893"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048635"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Een Batch-account maken met behulp van Azure Portal
 
@@ -27,11 +27,11 @@ Meer informatie over het maken van een Azure Batch-account in de [Azure Portal][
 
 Zie [Overzicht van de functies](batch-api-basics.md) voor achtergrondinformatie over Batch-accounts en scenario's.
 
-## <a name="create-a-batch-account"></a>Een Batch-account maken
+## <a name="create-a-batch-account"></a>Batch-account maken
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. Meld u aan bij de [Azure Portal][azure_portal].
+1. Meld u aan bij de [Azure-portal][azure_portal].
 
 1. Selecteer **Resource maken** > **Compute** > **Batch-service**.
 
@@ -39,7 +39,7 @@ Zie [Overzicht van de functies](batch-api-basics.md) voor achtergrondinformatie 
 
 1. Voer instellingen in voor **Nieuw Batch-account**. Zie de volgende details.
 
-    ![Een Batch-account maken][account_portal]
+    ![Batch-account maken][account_portal]
 
     a. **Abonnement**: het abonnement waarin het Batch-account moet worden gemaakt. Als u slechts één abonnement hebt, is het standaard geselecteerd.
 
@@ -51,9 +51,9 @@ Zie [Overzicht van de functies](batch-api-basics.md) voor achtergrondinformatie 
 
     e. **Opslag account**: een optioneel Azure Storage account dat u aan uw batch-account koppelt. Een v2-opslagaccount voor algemeen gebruik wordt aanbevolen voor de beste prestaties. Zie het [Overzicht van Batch-functies](batch-api-basics.md#azure-storage-account) voor alle opslagaccountopties in Batch. Selecteer in de portal een bestaand opslagaccount of maak een nieuw opslagaccount.
 
-      ![Maak een opslagaccount][storage_account]
+      ![Create a storage account][storage_account]
 
-    f. **Groeps toewijzings modus**: op het tabblad **Geavanceerde** instellingen kunt u de groeps toewijzings modus opgeven als **batch-service** of **gebruikers abonnement**. Voor de meeste scenario's accepteert u de standaard **batch-service**.
+    f. **Groeps toewijzings modus**: op het tabblad **Geavanceerde** instellingen kunt u de groeps toewijzings modus opgeven als **batch-service** of **gebruikers abonnement**. Voor de meeste scenario's kunt u de standaardinstelling **Batch-service** accepteren.
 
       ![Groepstoewijzingsmodus van Batch][pool_allocation]
 
@@ -83,7 +83,7 @@ Als u ervoor kiest een Batch-account te maken in de modus Gebruikersabonnement, 
 
 Wanneer u uw eerste Batch-account maakt in de modus Gebruikersabonnement, moet u de volgende stappen uitvoeren om uw abonnement te registreren bij Batch. (Als u dit eerder hebt gedaan, gaat u naar de volgende sectie.)
 
-1. Meld u aan bij de [Azure Portal][azure_portal].
+1. Meld u aan bij de [Azure-portal][azure_portal].
 
 1. Selecteer **Meer services** > **Abonnementen** en selecteer het abonnement dat u wilt gebruiken voor het Batch-account.
 
@@ -118,6 +118,14 @@ Als u liever hand matig toegang tot de sleutel kluis wilt verlenen, gaat u naar 
 
 ![Geheime machtigingen voor Azure Batch](./media/batch-account-create-portal/secret-permissions.png)
 
+
+> [!NOTE]
+> Zorg ervoor dat de selectie vakjes **Azure virtual machines voor implementatie** en **Azure Resource Manager voor implementatie van sjabloon** zijn geselecteerd onder **toegangs beleid** voor de gekoppelde **Key Vault** resource.
+> 
+> ![verplichte Key Vault toegangs beleid](./media/batch-account-create-portal/key-vault-access-policy.png) dit is niet verplicht bij het maken van een batch-account in de Azure Portal. De optie is standaard geselecteerd.
+
+
+
 ### <a name="configure-subscription-quotas"></a>Abonnementquota configureren
 
 Kerngeheugenquota worden niet standaard ingesteld voor Batch-accounts van gebruikersabonnementen. Kerngeheugenquota moeten handmatig worden ingesteld, omdat Batch-kerngeheugenquota standaard niet van toepassing zijn op accounts in de modus voor gebruikersabonnementen.
@@ -133,7 +141,7 @@ Raadpleeg [Quota en limieten voor Batch-service](batch-quota-limit.md) voor meer
 Naast het gebruik van Azure Portal kunt u met de volgende hulpprogramma's Batch-accounts maken en beheren:
 
 * [Batch-PowerShell-cmdlets](batch-powershell-cmdlets-get-started.md)
-* [Azure-CLI](batch-cli-get-started.md)
+* [Azure CLI](batch-cli-get-started.md)
 * [Batch Management .NET](batch-management-dotnet.md)
 
 ## <a name="next-steps"></a>Volgende stappen

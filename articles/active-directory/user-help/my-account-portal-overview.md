@@ -2,7 +2,7 @@
 title: Wat is de portal Mijn account? -Azure AD
 description: Ga naar de portal van mijn account en de bijbehorende functies, waaronder het instellen en beheren van uw beveiligings gegevens, apparaten, wacht woord, organisaties, privacy en mijn aanmeldingen.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
 ms.date: 01/15/2020
-ms.author: lizross
-ms.openlocfilehash: 4e165bad33e46b91a63fc1be72a57bf192b59789
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 4c9d421fd9ac8305c27dfa798f2869e59a04f9fb
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705068"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062452"
 ---
 # <a name="what-is-the-my-account-portal"></a>Wat is de portal Mijn account?
 

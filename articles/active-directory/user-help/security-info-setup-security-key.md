@@ -2,7 +2,7 @@
 title: Stel een beveiligings sleutel in als uw verificatie methode-Azure AD
 description: De pagina beveiligings gegevens (preview) instellen om uw identiteit te verifiëren voor het gebruik van een snelle FIDO2-beveiligings sleutel (Identity online) als verificatie methode.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: librown
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.author: lizross
-ms.openlocfilehash: 3e16602128a70077d0a7962522ad3898421c8997
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: ee868ded0dc3a46f2ec20d0141aa2576cbf71f45
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704915"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062333"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Stel een beveiligings sleutel in als uw verificatie methode
 

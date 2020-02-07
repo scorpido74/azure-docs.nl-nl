@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/18/2019
+ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3d9316f42c8d0ac5b44cda2e484ca4c92110813d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2bda00924015bf5abc616b7c346eacfeda53c2ed
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479148"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045944"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Aangepaste e-mail verificatie in Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Zorg ervoor dat u de sectie waarin u [een SENDGRID API-sleutel maakt](../sendgri
 
 Sla vervolgens de SendGrid API-sleutel op in een Azure AD B2C-beleids sleutel voor uw beleids regels waarnaar moet worden verwezen.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies uw Azure AD B2C Directory.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
@@ -389,6 +389,36 @@ Zie voor meer informatie [het zelf beweringen technisch profiel](restful-technic
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
+```
+
+## <a name="optional-localize-your-email"></a>Beschrijving Uw e-mail adres lokaliseren
+
+Als u het e-mail bericht wilt lokaliseren, moet u gelokaliseerde teken reeksen verzenden naar SendGrid of uw e-mail provider. Bijvoorbeeld voor het lokaliseren van het e-mail onderwerp, de hoofd tekst, het code bericht of de hand tekening van de e-mail. Hiervoor kunt u de [GetLocalizedStringsTransformation](string-transformations.md) -claim transformatie gebruiken om gelokaliseerde teken reeksen te kopiëren naar claim typen. In de `GenerateSendGridRequestBody` claim transformatie, waarmee de JSON-nettolading wordt gegenereerd, gebruikt invoer claims die de gelokaliseerde teken reeksen bevatten.
+
+1. Definieer in uw beleid de volgende teken reeks claims: onderwerp, bericht, codeIntro en hand tekening.
+1. Definieer een [GetLocalizedStringsTransformation](string-transformations.md) -claim transformatie om gelokaliseerde teken reeks waarden in de claims uit stap 1 te vervangen.
+1. Wijzig de `GenerateSendGridRequestBody` claim transformatie voor het gebruik van invoer claims met het volgende XML-code fragment.
+1. Werk uw SendGrind-sjabloon bij om dynamische para meters te gebruiken in plaats van alle teken reeksen die worden gelokaliseerd door Azure AD B2C.
+
+```XML
+<ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.to.0.email" />
+    <InputClaim ClaimTypeReferenceId="subject" TransformationClaimType="personalizations.0.dynamic_template_data.subject" />
+    <InputClaim ClaimTypeReferenceId="otp" TransformationClaimType="personalizations.0.dynamic_template_data.otp" />
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.dynamic_template_data.email" />
+    <InputClaim ClaimTypeReferenceId="message" TransformationClaimType="personalizations.0.dynamic_template_data.message" />
+    <InputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="personalizations.0.dynamic_template_data.codeIntro" />
+    <InputClaim ClaimTypeReferenceId="signature" TransformationClaimType="personalizations.0.dynamic_template_data.signature" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="template_id" DataType="string" Value="d-1234567890" />
+    <InputParameter Id="from.email" DataType="string" Value="my_email@mydomain.com" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="sendGridReqBody" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

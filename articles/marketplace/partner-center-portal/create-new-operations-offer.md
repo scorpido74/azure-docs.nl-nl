@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1ba7fca7576c6f015ad7bbcb47909b90c3065d58
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 7d897b9f85ce6565cbdc1a253a0e20b989539cae
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045956"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048667"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Een nieuwe aanbieding voor Dynamics 365 for Operations maken
 
@@ -62,7 +62,7 @@ Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versi
 
 Contact gegevens van klanten verzamelen door verbinding te maken met uw CRM-systeem (Customer Relationship Management). De klant wordt gevraagd om toestemming te krijgen om hun gegevens te delen. Deze klant gegevens, samen met de naam van de aanbieding, ID en Marketplace-bron waar ze uw aanbieding vinden, worden verzonden naar het CRM-systeem dat u hebt geconfigureerd. Zie [Connect lead management](#connect-lead-management)(Engelstalig) voor meer informatie over het configureren van uw CRM. 
 
-### <a name="test-drive"></a>Test drive
+### <a name="test-drive"></a>Station testen
 
 Een test drive is een fantastische manier om uw aanbieding aan potentiële klanten te laten presen teren door hen de mogelijkheid te geven voor ' voor u ' te kopen, wat resulteert in een verhoogde conversie en de generatie van uiterst gekwalificeerde leads. [Meer informatie over test stations.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
@@ -70,7 +70,7 @@ Als u een test drive wilt inschakelen, schakelt u het selectie vakje **een test 
 
 #### <a name="type-of-test-drive"></a>Type test drive
 
-Maak een keuze uit de volgende opties:
+Selecteer een van de volgende opties:
 
 - **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : een implementatie sjabloon die alle Azure-resources bevat waaruit uw oplossing bestaat. Voor producten die in dit scenario passen, worden alleen Azure-resources gebruikt.
 - **[Dynamics 365 voor bedrijven Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : micro soft host en onderhoudt de Test Drive-service (met inbegrip van inrichting en implementatie) voor een bedrijf voor bedrijfs centrale bedrijfs resources (Financiën, bewerkingen, toeleverings keten, CRM, enzovoort).  
@@ -101,7 +101,7 @@ Op de pagina **Eigenschappen** kunt u de categorieën en industrieën definiëre
 
 Selecteer mini maal één en Maxi maal drie categorieën. Deze categorieën worden gebruikt om uw aanbieding in de juiste Zoek gebieden voor Marketplace te plaatsen. Neem contact op met de manier waarop uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding.
 
-### <a name="industry"></a>Industrie
+### <a name="industry"></a>Branche
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
@@ -109,19 +109,9 @@ Selecteer mini maal één en Maxi maal drie categorieën. Deze categorieën word
 
 Voer het versie nummer van uw aanbieding in. Klanten zien dat deze versie wordt weer gegeven op de detail pagina van de aanbieding.
 
-### <a name="standard-contract"></a>Standaardcontract
+### <a name="terms-and-conditions"></a>Voor waarden
 
-Om het aankoop proces voor klanten te vereenvoudigen en de juridische complexiteit voor software leveranciers te verminderen, biedt micro soft een standaard contract sjabloon om een trans actie in de Marketplace te vergemakkelijken.
-
-In plaats van aangepaste voor waarden te gebruiken, kunt u ervoor kiezen om uw software aan te bieden onder het Standard-contract, wat klanten alleen maar één keer hoeven te accepteren.
-
-Het standaard contract vindt u hier: https://go.microsoft.com/fwlink/?linkid=2041178
-
-Als u het standaard contract wilt gebruiken, schakelt u het selectie vakje **standaard contract gebruiken** in.
-
-#### <a name="terms-of-use"></a>Gebruiksvoorwaarden
-
-Als u het selectie vakje **standaard contract gebruiken** niet inschakelt, moet u uw eigen juridische voor waarden opgeven in het veld **Gebruiksvoorwaarden** . Voer Maxi maal 10.000 tekens in of, als u de gebruiks voorwaarden een langere beschrijving nodig hebt, geeft u de URL op waar u de aanvullende licentie voorwaarden kunt vinden. Klanten moeten deze voor waarden accepteren voordat ze uw app kunnen proberen.
+Geef uw eigen juridische voor waarden op in het veld voor **waarden** . U kunt ook de URL opgeven waar uw voor waarden kunnen worden gevonden. Klanten moeten deze voor waarden accepteren voordat ze uw aanbieding kunnen proberen.
 
 ## <a name="offer-listing"></a>Aanbieding weer geven
 
@@ -173,7 +163,7 @@ Gebruik de volgende instructies voor het gebruik van de RTF-editor:
 
      ![De Rich Text Editor gebruiken om in te springen](./media/text-editor5.png)
 
-### <a name="search-keywords"></a>Sleutelwoorden zoeken
+### <a name="search-keywords"></a>Tref woorden zoeken
 
 U kunt eventueel Maxi maal drie Zoek trefwoorden invoeren om klanten te helpen uw aanbieding op Marketplace te vinden. Probeer deze tref woorden ook in uw beschrijving te gebruiken voor de beste resultaten.
 
@@ -219,7 +209,7 @@ De afbeelding van de held is optioneel. Als u een waarde opgeeft, moet deze 815 
 
 Scherm afbeeldingen toevoegen die laten zien hoe uw aanbieding werkt. Ten minste één scherm opname is vereist en u kunt Maxi maal vijf toevoegen. Alle scherm afbeeldingen moeten 1280 x 720 pixels zijn.
 
-#### <a name="videos"></a>Video’s
+#### <a name="videos"></a>Video's
 
 U kunt optioneel Maxi maal vier Video's toevoegen die uw aanbieding aantonen. Deze Video's moeten worden gehost op YouTube en/of Vimeo. Voer voor elke video de naam, de URL en een miniatuur afbeelding van de video in (1280 x 720 pixels)
 
@@ -372,11 +362,11 @@ Dit bestand moet de indeling. xls of. xlsx hebben. Als u meer dan één rapport 
 
 ### <a name="does-solution-include-localizations"></a>Bevat de oplossing lokalisatie?
 
-Selecteer **Ja** als de oplossing gebruik kan maken van lokale standaarden en beleids regels (bijvoorbeeld als deze voldoen aan de verschillende salaris regels die worden vereist door verschillende landen/regio's). Selecteer anders **Nee**.
+Selecteer **Ja** als de oplossing gebruik kan maken van lokale standaarden en beleids regels (bijvoorbeeld als deze voldoen aan de verschillende salaris regels die worden vereist door verschillende landen/regio's). Anders selecteert u **Nee**.
 
 ### <a name="does-solution-enable-translations"></a>Is het mogelijk om vertalingen in te scha kelen?
 
-Beantwoord **Ja** als de tekst in uw oplossing kan worden vertaald naar andere talen. Selecteer anders **Nee**.
+Beantwoord **Ja** als de tekst in uw oplossing kan worden vertaald naar andere talen. Anders selecteert u **Nee**.
 
 ## <a name="publish"></a>Publiceren
 

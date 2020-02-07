@@ -16,28 +16,31 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 monikerRange: vsts
-ms.openlocfilehash: 11edeb35119e2c598fd83fd89c65ba4dc4679650
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 35eebeaa393ff75ada11752aaf9f195efddfa12b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256140"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049809"
 ---
 #  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>Snelstartgids: een CI/CD-pijp lijn maken in azure-pijp lijnen voor node. js met Azure DevOps Projects
 
-Azure DevOps Projects biedt een vereenvoudigde ervaring voor het maken van Azure-resources en stelt een pijplijn in voor CI (Continue Integratie) en CD (Continue levering) voor uw Node.js-app in Azure Pipelines.  
+In deze Quick Start gebruikt u de vereenvoudigde Azure DevOps Projects-ervaring voor het instellen van een pipeline voor continue integratie (CI) en continue levering (CD) voor uw node. js-app in azure-pijp lijnen. U kunt Azure DevOps Projects gebruiken voor het instellen van alles wat u nodig hebt voor het ontwikkelen, implementeren en bewaken van uw app. 
 
-Als u geen Azure-abonnement hebt, kunt u er gratis een krijgen via [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
+## <a name="prerequisites"></a>Vereisten
+
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- Een [Azure DevOps](https://azure.microsoft.com/services/devops/) -account en-organisatie.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
 In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. Met DevOps Projects worden ook Azure-resources gemaakt in het Azure-abonnement van uw keuze.
 
-1. Meld u aan bij de [Microsoft Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer in het linkerdeel venster **een resource maken**. 
 
-1. Selecteer in het linkerdeelvenster de optie **Een resource selecteren**, en zoek vervolgens naar **DevOps Projects**. 
+   ![Een Azure-resource maken in Azure Portal](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-    ![Resource voor continue leverings configuratie maken](_img/azure-devops-project-nodejs/create-azure-resource.png)
+1. Zoek en selecteer **DevOps projects**en selecteer vervolgens **maken**.
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Een voorbeeldtoepassing en Azure-service selecteren
 
@@ -45,23 +48,23 @@ In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt e
     De Node.js-voorbeelden omvatten een keuze uit verschillende toepassingsframeworks.
 
 1. Het standaardvoorbeeldframework is Express.js. Laat de standaardinstelling ongewijzigd en selecteer **Volgende**.  
-    **Web App on Windows** is het standaardimplementatiedoel.  Het toepassingsframework dat u eerder hebt gekozen, bepaalt welk type implementatiedoel hier beschikbaar is voor de Azure-service.  
+    **Web App on Windows** is het standaardimplementatiedoel.  Het toepassingsframework, dat u eerder hebt gekozen, bepaalt welk type implementatiedoel hier beschikbaar is voor de Azure-service.  
 
 2. Laat de standaardservice ongewijzigd en selecteer **Volgende**.
  
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps en een Azure-abonnement configureren 
 
 1. Maak een nieuwe Azure DevOps-organisatie of kies een bestaande organisatie. 
+   
+   1. Voer een naam in voor het project.
+      
+   1. Selecteer uw Azure-abonnement en locatie, voer een naam in voor uw toepassing en selecteer **Gereed**.  
+      Na enkele minuten wordt het DevOps Projects-dashboard weergegeven in de Azure-portal. Er wordt een voorbeeldtoepassing ingesteld in een opslagplaats in uw Azure DevOps-organisatie, er wordt een build uitgevoerd en de toepassing wordt geïmplementeerd in Azure. Dit dashboard biedt meer inzicht in uw codeopslagplaats, CI/CD-pijplijn en toepassing in Azure.
+   
+1. Selecteer **Bladeren** om de actieve toepassing weer te geven.
+   
+   ![Dashboard weergave van CI/CD-pijp lijn](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-    a. Voer een naam in voor het project.
-
-    b. Selecteer uw Azure-abonnement en locatie, voer een naam in voor de toepassing en selecteer **Gereed**.  
-    Na enkele minuten wordt het DevOps Projects-dashboard weergegeven in de Azure-portal. Er wordt een voorbeeldtoepassing ingesteld in een opslagplaats in uw Azure DevOps-organisatie, er wordt een build uitgevoerd en de toepassing wordt geïmplementeerd in Azure. Dit dashboard biedt meer inzicht in uw codeopslagplaats, CI/CD-pijplijn en toepassing in Azure.
-     
-3. Selecteer **Bladeren** om de actieve toepassing weer te geven.
-
-    ![Dashboard weergave van CI/CD-pijp lijn](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
-    
 In DevOps Projects worden automatisch een CI-build en een releasetrigger geconfigureerd.  U bent nu klaar om met een team samen te werken aan uw Node.js-app met een CI/CD-proces dat automatisch uw meest recente werk op uw website implementeert.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Codewijzigingen doorvoeren en CI/CD uitvoeren
@@ -79,7 +82,7 @@ Met deze koppeling opent u een weergave in de zojuist gemaakte Git-opslagplaats.
 1. Selecteer **Bewerken** en breng vervolgens een wijziging aan in de h2-kop.  
     Voer bijvoorbeeld meteen aan de **slag met Azure DevOps projects** of breng een andere wijziging aan.
 
-1. Selecteer **Doorvoeren** en sla vervolgens de wijzigingen op.
+1. Selecteer **Doorvoeren** en sla de wijzigingen op.
 
 1. Ga in de browser naar het DevOps Projects-dashboard.   
 Als het goed is, ziet u nu dat er een build wordt gemaakt. De zojuist aangebrachte wijzigingen worden automatisch gebouwd en geïmplementeerd via een CI/CD-pijplijn.
@@ -96,15 +99,15 @@ Met deze koppeling worden een browsertabblad en de build-pijplijn voor het nieuw
 
 1. Selecteer **Bewerken**.
 
-1. In dit deelvenster kunt u de verschillende taken voor de build-pijplijn onderzoeken.  
+1. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken.  
 In de build worden verschillende taken uitgevoerd, zoals het ophalen van bronnen uit de Git-opslagplaats, het herstellen van afhankelijkheden, en het publiceren van uitvoergegevens die worden gebruikt voor implementaties.
 
-1. Selecteer boven aan de build-pijplijn de naam van de build-pijplijn.
+1. Selecteer bovenaan de build-pijplijn de naam van de build-pijplijn.
 
-1. Wijzig de naam van de build-pijplijn in een meer beschrijvende naam. Selecteer **Opslaan en wachtrij** en selecteer vervolgens **Opslaan**.
+1. Wijzig de naam van de build-pijplijn in een gebruiksvriendelijkere naam. Selecteer **Opslaan en wachtrij** en selecteer **Opslaan**.
 
-1. Selecteer onder de naam van de build-pipeline de optie **Geschiedenis**.   
-In het deelvenster **Geschiedenis** ziet u een audittrail van recente wijzigingen voor de build.  Azure Pipelines houdt alle wijzigingen in de build-pipeline bij en biedt de mogelijkheid om versies te vergelijken.
+1. Selecteer onder de naam van de build-pijplijn de optie **Geschiedenis**.   
+In het deelvenster **Geschiedenis** ziet u een audittrail van recente wijzigingen voor de build.  Azure Pipelines houdt alle wijzigingen in de build-pijplijn bij en biedt de mogelijkheid om versies te vergelijken.
 
 1. Selecteer **Triggers**.   
  In DevOps Projects is automatisch een CI-trigger gemaakt en met elke doorvoering naar de opslagplaats wordt een nieuwe build gestart.  U kunt desgewenst kiezen of u vertakkingen van het CI-proces wilt opnemen of uitsluiten.
@@ -133,7 +136,7 @@ De taken zijn de acties die tijdens het implementatieproces worden uitgevoerd. I
 In deze weergave wordt een versiesgeschiedenis weergegeven.
 
 1. Selecteer het beletselteken naast een van de releases en selecteer vervolgens **Openen**.  
-U kunt verschillende menu's verkennen, zoals een releaseoverzicht, gekoppelde werkitems en tests.
+Er zijn verschillende menu's die u kunt verkennen, zoals een versieoverzicht, gekoppelde werkitems en tests.
 
 1. Selecteer **Doorvoeringen**.   
 In deze weergave worden codedoorvoeringen getoond die zijn gekoppeld aan de specifieke implementatie.
@@ -153,6 +156,6 @@ De build en pijplijnen zijn automatisch gemaakt toen u het CI/CD-proces configur
 > [!div class="nextstepaction"]
 > [CD-proces aanpassen](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
-## <a name="videos"></a>Video’s
+## <a name="videos"></a>Video's
 
 > [!VIDEO https://www.youtube.com/embed/3etwjubReJs]

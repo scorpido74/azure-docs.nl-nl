@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: cbb5882950636e281d311bf0536acf5b92cf11ea
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: dd73f42aaa0d0bd1884892143d96446935a401a5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018598"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048447"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -54,7 +54,7 @@ Een persoonlijke koppelings bron is het doel doel van een gegeven persoonlijk ei
 |---------|---------|---------|
 |**Privé koppelings service** (uw eigen service)   |  Micro soft. Network/privateLinkServices       | gelaten |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
-|**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
+|**Azure Synapse Analytics** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
 |**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (BLOB, blob_secondary)<BR> Tabel (tabel, table_secondary)<BR> Wachtrij (wachtrij, queue_secondary)<BR> Bestand (bestand, file_secondary)<BR> Web (Web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (BLOB, blob_secondary)<BR> Data Lake File System Gen2 (DFS, dfs_secondary)       |
 |**Azure Cosmos DB** | Micro soft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabel|

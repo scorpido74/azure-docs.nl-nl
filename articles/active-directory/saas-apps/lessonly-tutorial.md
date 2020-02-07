@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa22b46dabcc5c8b2db5997ffc9b2f2480846d6f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 727d4ec79b142595e59ff63a4afbcbe4a51c2a6d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074639"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057428"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Lesson.ly
 
@@ -83,23 +83,25 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
-    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.lessonly.com/signin`
+     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.lessonly.com/signin`
 
     > [!NOTE]
     > In een praktijksituatie moet het gedeelte **companyname** worden vervangen door een daadwerkelijke bedrijfsnaam.
+    
+     b. Typ in het tekstvak **antwoord-URL (assertion Customer Service-URL)** een URL met het volgende patroon: `https://<companyname>.lessonly.com/auth/saml/callback`
 
-    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://<companyname>.lessonly.com/auth/saml/metadata`
-
+     c. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://<companyname>.lessonly.com/auth/saml/metadata`
+    
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [ondersteuningsteam van Lessonly.com](mailto:support@lessonly.com) om deze waarden op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, antwoord-URL en id. Neem contact op met het [ondersteuningsteam van Lessonly.com](mailto:support@lessonly.com) om deze waarden op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. De Lesson.ly-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![installatiekopie](common/default-attributes.png)
+    ![image](common/default-attributes.png)
 
 1. Daarnaast verwacht Lesson.ly toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
 
-    | Naam | Bronkenmerk|
+    | Name | Bronkenmerk|
     | ---------------  | ----------------|
     | urn:oid:2.5.4.42 | user.givenname |
     | urn:oid:2.5.4.4  | user.surname |
@@ -121,10 +123,10 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -163,7 +165,7 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel Lesson.ly in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Lesson.ly waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 

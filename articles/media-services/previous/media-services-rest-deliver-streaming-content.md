@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8e3c2b7f4087f0f47466eff47b22c59dad19892e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774945"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050009"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>Azure Media Services inhoud publiceren met REST 
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ U kunt een adaptieve bitsnelheid-MP4 streamen die is ingesteld door een OnDemand
 
 U kunt ook een OnDemand streaming-Locator gebruiken om Url's te bouwen die verwijzen naar MP4-bestanden die progressief kunnen worden gedownload.  
 
-In dit artikel wordt beschreven hoe u een OnDemand streaming-Locator maakt om uw asset te publiceren en een vloeiende, MPEG-DASH en HLS streaming-Url's te bouwen. Ook wordt weer gegeven hoe u progressieve down load-Url's kunt bouwen.
+In dit artikel wordt beschreven hoe u een OnDemand streaming-Locator maakt om uw asset te publiceren en een vloeiende, MPEG-DASH en HLS streaming-Url's te bouwen. Ook wordt uitgelegd hoe u progressieve down load-Url's bouwt.
 
 In de [volgende](#types) sectie worden de Enum-typen weer gegeven waarvan de waarden worden gebruikt in de rest-aanroepen.   
 
@@ -41,7 +41,7 @@ In de [volgende](#types) sectie worden de Enum-typen weer gegeven waarvan de waa
 > Wanneer u entiteiten in Media Services opent, moet u specifieke header-velden en-waarden in uw HTTP-aanvragen instellen. Zie [Setup for Media Services rest API Development](media-services-rest-how-to-use.md)(Engelstalig) voor meer informatie.
 > 
 
-## <a name="connect-to-media-services"></a>Maak verbinding met Media Services
+## <a name="connect-to-media-services"></a>Verbinding met Media Services maken
 
 Zie [toegang tot de Azure Media Services-API met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor meer informatie over het maken van een verbinding met de AMS-API. 
 

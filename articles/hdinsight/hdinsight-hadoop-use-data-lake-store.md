@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 309af904f0dbfc0664c4341803cb6a4dc8a2c8a4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 23c292a950deea262ee063b4141b07a4f64f9f84
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839291"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061309"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Data Lake Storage Gen1 gebruiken met Azure HDInsight-clusters
 
@@ -210,7 +210,7 @@ LOCATION 'adl:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-abmari"></a>Pad naar opslag van Abmari identificeren
+## <a name="identify-storage-path-from-ambari"></a>Pad naar opslag van Ambari identificeren
 
 Als u het volledige pad naar het geconfigureerde standaard archief wilt identificeren, gaat u naar **HDFS** > **configuraties** en voert u `fs.defaultFS` in het vak invoer filteren.
 
@@ -301,7 +301,7 @@ Invoke-AzResourceAction `
 
 In dit artikel hebt u geleerd hoe u HDFS-compatibele Azure Data Lake Storage Gen1 met HDInsight kunt gebruiken. Zodoende kunt u een schaalbare, duurzame, archiveringsoplossing voor gegevensverzameling bouwen en HDInsight gebruiken om de informatie te ontsluiten in de opgeslagen gestructureerde en ongestructureerde gegevens.
 
-Zie voor meer informatie:
+Ga voor meer informatie naar:
 
 * [Aan de slag met Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Snelstartgids: Clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)

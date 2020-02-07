@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: da8dfe61e92c4839deb1f7fbc289be0136087720
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: d814058866991b3d94363125870c27ae170b3ae8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497294"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064356"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-gegevens versleuteling-at-rest
 
@@ -117,7 +117,7 @@ Het client versleutelings model verwijst naar de versleuteling die buiten de res
 
 Versleutelings modellen aan de server zijde verwijzen naar versleuteling die wordt uitgevoerd door de Azure-service. In dat model voert de resource provider de bewerkingen versleutelen en ontsleutelen uit. Azure Storage kunnen bijvoorbeeld gegevens ontvangen in bewerkingen met tekst zonder opmaak en de versleuteling en ontsleuteling intern uitvoeren. De resource provider kan gebruikmaken van versleutelings sleutels die door micro soft of door de klant worden beheerd, afhankelijk van de ingestelde configuratie.
 
-![server](./media/encryption-atrest/azure-security-encryption-atrest-fig3.png)
+![Server](./media/encryption-atrest/azure-security-encryption-atrest-fig3.png)
 
 ### <a name="server-side-encryption-key-management-models"></a>Beheer modellen voor versleutelings sleutels aan server zijde
 
@@ -262,64 +262,77 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Server-side met door service beheerde sleutel**     | **Server-zijde met door de klant beheerde sleutel**             | **Client-side met door client beheerde sleutel**      |
 | **AI en Machine Learning**      |                    |                    |                    |
-| Azure Cognitive Search                     | Ja                | Preview            | -                  |
-| Azure Machine Learning   | Ja                | -                  | -                  |
-| Microsoft Azure Machine Learning Studio    | Ja                | Preview, RSA 2048-bits | -               |
+| Azure Cognitive Search           | Ja                | Ja                | -                  |
+| Azure Machine Learning           | Ja                | Ja                | -                  |
+| Azure Machine Learning Studio    | Ja                | Preview, RSA 2048-bits | -               |
 | Power BI                         | Ja                | Preview, RSA 2048-bits | -                  |
 | **Analytische gegevens**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ja                | -                  | -                  |
-| Event Hubs                       | Ja                | Preview, alle RSA-lengten. | -                  |
+| Event Hubs                       | Ja                | Ja, alle RSA-lengten. | -                  |
+| Functies                        | Ja                | Ja, alle RSA-lengten. | -                  |
 | Azure Analysis Services          | Ja                | -                  | -                  |
 | Azure Data Catalog               | Ja                | -                  | -                  |
 | Apache Kafka in azure HDInsight  | Ja                | Alle RSA-lengten.   | -                  |
-| Azure Data Explorer              | Ja                | -                  | -                  |
+| Azure Monitor Application Insights | Ja                | Ja                | -                  |
+| Azure Monitor Log Analytics | Ja                | Ja                | -                  |
+| Azure Data Explorer              | Ja                | Ja                | -                  |
 | Azure Data Factory               | Ja                | Ja                | -                  |
 | Azure Data Lake Store            | Ja                | Ja, RSA 2048-bits  | -                  |
 | **Containers**                   |                    |                    |                    |
-| Azure Kubernetes Service         | Ja                | -                  | -                  |
-| Container Registry               | Ja                | -                  | -                  |
+| Azure Kubernetes Service         | Ja                | Ja                | -                  |
+| Container Instances              | Ja                | Ja                | -                  |
+| Container Registry               | Ja                | Ja                | -                  |
 | **Compute**                      |                    |                    |                    |
-| Virtual Machines                 | Ja                | Ja, RSA 2048-bits  | -                  |
+| Virtuele machines                 | Ja                | Ja, RSA 2048-bits  | -                  |
 | Schaalset voor virtuele machines        | Ja                | Ja, RSA 2048-bits  | -                  |
 | SAP HANA                         | Ja                | Ja, RSA 2048-bits  | -                  |
+| App Service                      | Ja                | Ja                | -                  |
+| Automatisering                       | Ja                | Ja                | -                  |
+| Azure Portal                     | Ja                | Ja                | -                  |
+| Logic Apps                       | Ja                | Ja                | -                  |
+| Azure Managed Applications       | Ja                | Ja                | -                  |
+| Service Bus                      | Ja                | Ja                | -                  |
+| Site Recovery                    | Ja                | Ja                | -                  |
 | **Databases**                    |                    |                    |                    |
 | SQL Server op Virtual Machines   | Ja                | Ja, RSA 2048-bits  | Ja                |
 | Azure SQL Database               | Ja                | Ja, RSA 2048-bits  | Ja                |
 | Azure SQL Database voor MariaDB   | Ja                | -                  | -                  |
-| Azure SQL Database voor MySQL     | Ja                | -                  | -                  |
-| Azure SQL Database voor PostgreSQL | Ja                | -                  | -                  |
-| Azure SQL Data Warehouse         | Ja                | Ja, RSA 2048-bits  | Ja                |
+| Azure SQL Database voor MySQL     | Ja                | Ja                | -                  |
+| Azure SQL Database voor PostgreSQL | Ja               | Ja                | -                  |
+| Azure Synapse Analytics          | Ja                | Ja, RSA 2048-bits  | Ja                |
 | SQL Server Stretch Database      | Ja                | Ja, RSA 2048-bits  | Ja                |
-| Tabel Storage                    | Ja                | -                  | Ja                |
-| Azure Cosmos DB                  | Ja                | -                  | -                  |
+| Table Storage                    | Ja                | Ja                | Ja                |
+| Azure Cosmos DB                  | Ja                | Ja                | -                  |
+| Azure Databricks                 | Ja                | Ja                | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps                     | Ja                | -                  | Ja                |
-| Azure Repos                      | Ja                | -                  | Ja                |
+| Azure-opslag plaatsen                      | Ja                | -                  | Ja                |
 | **Identity**                     |                    |                    |                    |
 | Azure Active Directory           | Ja                | -                  | -                  |
 | Azure Active Directory Domain Services | Ja          | Ja, RSA 2048-bits  | -                  |
-| **Integratie**                  |                    |                    |                    |
-| Service Bus                      | Ja                | -                  | Ja                |
+| **Opneming**                  |                    |                    |                    |
+| Service Bus                      | Ja                | Ja                | Ja                |
 | Event Grid                       | Ja                | -                  | -                  |
-| API Management                   | Ja                | -                  | -                  |
+| API-beheer                   | Ja                | -                  | -                  |
 | **IoT-Services**                 |                    |                    |                    |
-| IoT Hub                          | Ja                | -                  | Ja                |
+| IoT Hub                          | Ja                | Ja                | Ja                |
 | **Beheer en governance**    |                    |                    |                    |
 | Azure Site Recovery              | Ja                | -                  | -                  |
-| **Media**                        |                    |                    |                    |
+| **Tussenliggend**                        |                    |                    |                    |
 | Media Services                   | Ja                | -                  | Ja                |
-| **Opslag**                      |                    |                    |                    |
-| Blobopslag                     | Ja                | Ja, RSA 2048-bits  | Ja                |
-| Disk-opslag                     | Ja                | -                  | -                  |
-| Beheerde schijfopslag             | Ja                | -                  | -                  |
-| Bestandsopslag                     | Ja                | Ja, RSA 2048-bits  | -                  |
-| Queue Storage                    | Ja                | -                  | Ja                |
+| **Storage**                      |                    |                    |                    |
+| Blob Storage                     | Ja                | Ja, RSA 2048-bits  | Ja                |
+| Disk Storage                     | Ja                | Ja                | -                  |
+| Beheerde Disk Storage             | Ja                | Ja                | -                  |
+| File Storage                     | Ja                | Ja, RSA 2048-bits  | -                  |
+| Queue Storage                    | Ja                | Ja                | Ja                |
 | Avere vFXT                       | Ja                | -                  | -                  |
 | Azure NetApp Files               | Ja                | -                  | -                  |
-| Archiefopslag                  | Ja                | Ja, RSA 2048-bits  | -                  |
+| Archive Storage                  | Ja                | Ja, RSA 2048-bits  | -                  |
 | StorSimple                       | Ja                | Ja, RSA 2048-bits  | Ja                |
-| Azure Backup                     | Ja                | -                  | Ja                |
+| Azure Backup                     | Ja                | Ja                | Ja                |
 | Data Box                         | Ja                | -                  | Ja                |
+| Data Box Edge                    | Ja                | Ja                | -                  |
 
 ## <a name="conclusion"></a>Conclusie
 

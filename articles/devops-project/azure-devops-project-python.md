@@ -16,36 +16,37 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: cb4e27aeada4f1b5f9e06279382327dcc51cc7dc
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b912dfe3fb6461a925977192a6631ecac1357d35
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899608"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049811"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-projects"></a>Een CI/CD-pijplijn voor Python maken met Azure DevOps Projects
 
-Azure DevOps Projects biedt een vereenvoudigde ervaring voor het maken van Azure-resources en stelt een pijplijn in voor CI (Continue Integratie) en CD (Continue levering) voor uw Python-app.  
+In deze Quick Start gebruikt u de vereenvoudigde Azure DevOps Projects-ervaring voor het instellen van een doorlopende integratie (CI) en een continue levering (CD)-pijp lijn voor uw python-app in azure-pijp lijnen. U kunt Azure DevOps Projects gebruiken voor het instellen van alles wat u nodig hebt voor het ontwikkelen, implementeren en bewaken van uw app. 
 
-Als u geen Azure-abonnement hebt, kunt u er gratis een krijgen via [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
+## <a name="prerequisites"></a>Vereisten
+
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- Een [Azure DevOps](https://azure.microsoft.com/services/devops/) -account en-organisatie.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
- In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines.  U kunt gratis een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. Met DevOps Projects worden ook Azure-resources gemaakt in het Azure-abonnement van uw keuze.
+In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. Met DevOps Projects worden ook Azure-resources gemaakt in het Azure-abonnement van uw keuze.
 
-1. Meld u aan bij de [Microsoft Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer in het linkerdeel venster **een resource maken**. 
 
-2. Selecteer het pictogram **Een resource maken** in het linkerdeelvenster en ga vervolgens naar **DevOps Projects**.  
+   ![Een Azure-resource maken in Azure Portal](_img/azure-devops-project-python/fullbrowser.png)
 
-3. Selecteer **Maken**.
-
-    ![Configuratie voor continue levering starten](_img/azure-devops-project-python/fullbrowser.png)
+1. Zoek en selecteer **DevOps projects**en selecteer vervolgens **maken**.
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Een voorbeeldtoepassing en Azure-service selecteren
 
 1. Selecteer de Python-voorbeeldtoepassing. De Python-voorbeelden omvatten een keuze uit verschillende toepassingsframeworks.
 
-1. Het standaardvoorbeeldframework is Django. Laat de standaardinstelling ongewijzigd en selecteer vervolgens **Volgende**.    
+1. Het standaardvoorbeeldframework is Django. Laat de standaardinstelling ongewijzigd en selecteer **Volgende**.    
 Web App for Containers is het standaardimplementatiedoel. Het toepassingsframework, dat u eerder hebt gekozen, bepaalt welk type implementatiedoel hier beschikbaar is voor de Azure-service. 
 
 3. Laat de standaardservice ongewijzigd en selecteer **Volgende**.
@@ -54,9 +55,9 @@ Web App for Containers is het standaardimplementatiedoel. Het toepassingsframewo
 
 1. Maak een nieuwe Azure DevOps-organisatie of kies een bestaande organisatie. 
 
-    a. Voer in Azure DevOps een naam in voor het project.  
+    a. Voer in Azure DevOps een naam in voor uw project.  
 
-    b. Selecteer uw Azure-abonnement en locatie, voer een naam in voor de toepassing en selecteer **Gereed**.  
+    b. Selecteer uw Azure-abonnement en locatie, voer een naam in voor uw toepassing en selecteer **Gereed**.  
      Na enkele minuten wordt het DevOps Projects-dashboard weergegeven in de Azure-portal. Er wordt een voorbeeldtoepassing ingesteld in een opslagplaats in uw Azure DevOps-organisatie, er wordt een build uitgevoerd en de toepassing wordt geïmplementeerd in Azure. Dit dashboard biedt meer inzicht in uw codeopslagplaats, CI/CD-pijplijn en toepassing in Azure.  
     
 2. Selecteer **Bladeren** om de actieve toepassing weer te geven.
@@ -89,7 +90,7 @@ U kunt uw Git-opslagplaats klonen in uw favoriete IDE.  In de volgende stappen k
 In de vorige stap werd in DevOps Projects automatisch een volledige CI/CD-pijplijn geconfigureerd. U kunt de pijplijn verkennen en zo nodig aanpassen. Ga als volgt te werk om vertrouwd te raken met de build- en release-pijplijnen:
 
 1. Selecteer boven in het DevOps Projects-dashboard de optie **Build-pijplijnen**.  
-Op een browsertabblad wordt de build-pijplijn voor het nieuwe project weergegeven.
+Op een tabblad in de browser wordt de build-pijplijn voor het nieuwe project weergegeven.
 
 1. Wijs het veld **Status** aan en selecteer het **beletselteken** (...).  
         Er wordt een menu met verschillende opties weergegeven, bijvoorbeeld om een nieuwe build in de wachtrij te plaatsen, een build te onderbreken of de build-pijplijn te bewerken.
@@ -99,7 +100,7 @@ Op een browsertabblad wordt de build-pijplijn voor het nieuwe project weergegeve
 1. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken.  
         In de build worden verschillende taken uitgevoerd, zoals het ophalen van bronnen uit de Git-opslagplaats, het herstellen van afhankelijkheden, en het publiceren van uitvoergegevens die worden gebruikt voor implementaties.
 
-1. Selecteer boven aan de build-pijplijn de naam van de build-pijplijn.
+1. Selecteer bovenaan de build-pijplijn de naam van de build-pijplijn.
 
 1. Wijzig de naam van de build-pijplijn in een gebruiksvriendelijkere naam. Selecteer **Opslaan en wachtrij** en selecteer **Opslaan**.
 
@@ -136,7 +137,7 @@ De taken zijn de acties die tijdens het implementatieproces worden uitgevoerd. I
         In deze weergave worden de codedoorvoeringen getoond die zijn gekoppeld aan de specifieke implementatie. 
 
 1. Selecteer **Logboeken**.   
-De logboeken bevatten nuttige informatie over het implementatieproces. U kunt beide weergeven tijdens en na de implementaties.
+De logboeken bevatten nuttige informatie over het implementatieproces. U kunt ze zowel tijdens als na de implementaties weergeven.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

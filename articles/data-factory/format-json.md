@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 02/05/2020
 ms.author: jingwang
-ms.openlocfilehash: e7a6e819676752aac679a36221eb60f9ad767071
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 7dac8d21e3b45307284ece15ca5ddbcc69db909b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830153"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049851"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON-indeling in Azure Data Factory
 
@@ -24,15 +24,15 @@ JSON-indeling wordt ondersteund voor de volgende connectors: [Amazon S3](connect
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die door de JSON-gegevensset worden ondersteund.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die door de JSON-gegevensset worden ondersteund.
 
-| Eigenschap         | Beschrijving                                                  | Verplicht |
+| Eigenschap         | Beschrijving                                                  | Vereist |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | De eigenschap type van de gegevensset moet worden ingesteld op **JSON**. | Ja      |
-| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`. **Zie de sectie Details in connector artikel-> Eigenschappen van gegevensset**. | Ja      |
+| locatie         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`. **Zie de sectie Details in connector artikel-> Eigenschappen van gegevensset**. | Ja      |
 | encodingName     | Het coderings type dat wordt gebruikt voor het lezen/schrijven van test bestanden. <br>Toegestane waarden zijn als volgt: ' UTF-8 ', ' UTF-16 ', ' UTF-16BE ', ' UTF-32 ', ' UTF-32BE ', ' US-ASCII "," UTF-7 "," BIG5 "," EUC-JP "," EUC-KR "," GB2312 "," GB18030 "," JOHAB "," SHIFT-JIS "," CP875 "," CP866 "," IBM00858 "," IBM037 "," IBM273 "," IBM437 "," IBM500 "," IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252 ', ' WINDOWS-1253 ', ' WINDOWS-1254 ', ' WINDOWS-1255 ', ' WINDOWS-1256 ', ' WINDOWS-1257 ', ' WINDOWS-1258 '.| Nee       |
 | compressionCodec | De compressie-codec die wordt gebruikt om tekst bestanden te lezen/schrijven. <br>Toegestane waarden zijn **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **Snappy**of **LZ4**. te gebruiken bij het opslaan van het bestand. <br>Houd er rekening mee dat de activiteit die momenteel wordt gekopieerd, geen ondersteuning biedt voor "Snappy" & "LZ4".<br>Opmerking Wanneer u Kopieer activiteit gebruikt om ZipDeflate-bestand (en) te decomprimeren en te schrijven naar op bestanden gebaseerde Sink-gegevens opslag, worden bestanden uitgepakt naar de map: `<path specified in dataset>/<folder named as source zip file>/`. | Nee       |
-| compressionLevel | De compressie ratio. <br>Toegestane waarden zijn **optimaal** of **snelst**.<br>- **snelst:** de compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **optimaal**: de compressie bewerking moet optimaal worden gecomprimeerd, zelfs als het volt ooien van de bewerking langer duurt. Zie voor meer informatie, [compressieniveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) onderwerp. | Nee       |
+| compressionLevel | De compressie ratio. <br>Toegestane waarden zijn **optimaal** of **snelst**.<br>- **snelst:** de compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **optimaal**: de compressie bewerking moet optimaal worden gecomprimeerd, zelfs als het volt ooien van de bewerking langer duurt. Zie het onderwerp [compressie niveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie. | Nee       |
 
 Hieronder ziet u een voor beeld van JSON-gegevensset op Azure Blob Storage:
 
@@ -61,13 +61,13 @@ Hieronder ziet u een voor beeld van JSON-gegevensset op Azure Blob Storage:
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de JSON-bron en Sink.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de JSON-bron en Sink.
 
 ### <a name="json-as-source"></a>JSON als bron
 
 De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*bron\**** .
 
-| Eigenschap      | Beschrijving                                                  | Verplicht |
+| Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **JSONSource**. | Ja      |
 | storeSettings | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
@@ -76,7 +76,7 @@ De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***
 
 De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*sink\**** .
 
-| Eigenschap      | Beschrijving                                                  | Verplicht |
+| Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **JSONSink**. | Ja      |
 | formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor **JSON-schrijf instellingen** . | Nee       |
@@ -84,7 +84,7 @@ De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***
 
 Ondersteunde **instellingen voor json-schrijf bewerkingen** onder `formatSettings`:
 
-| Eigenschap      | Beschrijving                                                  | Verplicht                                              |
+| Eigenschap      | Beschrijving                                                  | Vereist                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | Het type formatSettings moet zijn ingesteld op **JsonWriteSettings**. | Ja                                                   |
 | filePattern |Hiermee geeft u het patroon aan van gegevens die zijn opgeslagen in elk JSON-bestand. Toegestane waarden zijn **setOfObjects** en **arrayOfObjects**. De **standaardwaarde** is **setOfObjects**. Zie het gedeelte [JSON-bestandpatronen](#json-file-patterns) voor meer informatie over deze patronen. |Nee |
@@ -183,11 +183,152 @@ Met de Kopieer activiteit kan de volgende patronen van JSON-bestanden automatisc
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschappen van gegevens stroom toewijzen
 
-Meer informatie over de [bron transformatie](data-flow-source.md) en [sink-trans formatie](data-flow-sink.md) in de toewijzing van gegevens stroom.
+JSON-bestands typen kunnen worden gebruikt als Sink en als bron in de toewijzing van gegevens stroom.
+
+### <a name="creating-json-structures-in-a-derived-column"></a>JSON-structuren maken in een afgeleide kolom
+
+U kunt een complexe kolom toevoegen aan uw gegevens stroom via de afgeleide column Expression Builder. Voeg in de afgeleide kolom transformatie een nieuwe kolom toe en open de opbouw functie voor expressies door te klikken op het blauwe vak. Als u een kolom complex wilt maken, kunt u de JSON-structuur hand matig invoeren of de UX gebruiken om subkoloms interactief toe te voegen.
+
+#### <a name="using-the-expression-builder-ux"></a>De Expression Builder UX gebruiken
+
+Beweeg de muis aanwijzer over een kolom in het deel venster uitvoer schema en klik op het plus pictogram. Selecteer **subkolom toevoegen** om de kolom een complex type te maken.
+
+![Subkolom toevoegen](media/data-flow/addsubcolumn.png "Subkolom toevoegen")
+
+U kunt op dezelfde manier extra kolommen en subkolomlen toevoegen. Voor elk niet-complex veld kan een expressie in de expressie-editor aan de rechter kant worden toegevoegd.
+
+![Complexe kolom](media/data-flow/complexcolumn.png "Complexe kolom")
+
+#### <a name="entering-the-json-structure-manually"></a>De JSON-structuur hand matig invoeren
+
+Als u hand matig een JSON-structuur wilt toevoegen, voegt u een nieuwe kolom toe en voert u de expressie in de editor in. De expressie volgt de volgende algemene notatie:
+
+```
+@(
+    field1=0,
+    field2=@(
+        field1=0
+    )
+)
+```
+
+Als deze expressie is ingevoerd voor een kolom met de naam ' complexColumn ', wordt deze als de volgende JSON naar de Sink geschreven:
+
+```
+{
+    "complexColumn": {
+        "field1": 0,
+        "field2": {
+            "field1": 0
+        }
+    }
+}
+```
+
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>Voor beeld hand matig script voor de volledige hiërarchische definitie
+```
+@(
+    title=Title,
+    firstName=FirstName,
+    middleName=MiddleName,
+    lastName=LastName,
+    suffix=Suffix,
+    contactDetails=@(
+        email=EmailAddress,
+        phone=Phone
+    ),
+    address=@(
+        line1=AddressLine1,
+        line2=AddressLine2,
+        city=City,
+        state=StateProvince,
+        country=CountryRegion,
+        postCode=PostalCode
+    ),
+    ids=[
+        toString(CustomerID), toString(AddressID), rowguid
+    ]
+)
+```
+
+### <a name="source-format-options"></a>Opties voor bron indeling
+
+U kunt met behulp van een JSON-gegevensset als bron in uw gegevens stroom vijf extra instellingen instellen. Deze instellingen kunt u vinden onder de accordeon van de **JSON-instellingen** op het tabblad **bron opties** .  
+
+![JSON-instellingen](media/data-flow/json-settings.png "JSON-instellingen")
+
+#### <a name="default"></a>Standaard
+
+JSON-gegevens worden standaard in de volgende indeling gelezen.
+
+```
+{ "json": "record 1" }
+{ "json": "record 2" }
+{ "json": "record 3" }
+```
+
+#### <a name="single-document"></a>Eén document
+
+Als er **één document** is geselecteerd, stroomt de toewijzing van gegevens een JSON-document uit elk bestand. 
+
+``` json
+File1.json
+{
+    "json": "record 1"
+}
+File2.json
+{
+    "json": "record 2"
+}
+File3.json
+{
+    "json": "record 3"
+}
+```
+
+#### <a name="unquoted-column-names"></a>Niet-geciteerde kolom namen
+
+Als **kolom namen die geen aanhalings tekens** zijn geselecteerd, worden door het toewijzen van gegevens stromen JSON-kolommen gelezen die niet tussen aanhalings tekens staan. 
+
+```
+{ json: "record 1" }
+{ json: "record 2" }
+{ json: "record 3" }
+```
+
+#### <a name="has-comments"></a>Bevat opmerkingen
+
+Selecteer **opmerkingen bevat** als de JSON-gegevens C of C++ stijl opmerkingen hebben.
+
+``` json
+{ "json": /** comment **/ "record 1" }
+{ "json": "record 2" }
+{ /** comment **/ "json": "record 3" }
+```
+
+#### <a name="single-quoted"></a>Enkel aanhalings teken
+
+**Eén aanhalings** teken selecteren als de JSON-velden en-waarden enkele aanhalings tekens gebruiken in plaats van dubbele aanhalings tekens.
+
+```
+{ 'json': 'record 1' }
+{ 'json': 'record 2' }
+{ 'json': 'record 3' }
+```
+
+#### <a name="backslash-escaped"></a>Back slash met escape-teken
+
+**Eén aanhalings** teken selecteren als backslashes worden gebruikt om tekens in de JSON-gegevens te escapepen.
+
+```
+{ "json": "record 1" }
+{ "json": "\} \" \' \\ \n \\n record 2" }
+{ "json": "record 3" }
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht kopieeractiviteit](copy-activity-overview.md)
+- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
 - [Gegevens stroom toewijzen](concepts-data-flow-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)

@@ -3,12 +3,12 @@ title: Setup Azure Monitor voor containers live data (preview) | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de real-time weer gave van container Logboeken (stdout/stderr) en gebeurtenissen kunt instellen zonder kubectl te gebruiken met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: cf42eea99e437a76bb437b23f6eaffae1f1f3bc6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030672"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063761"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>De functie voor live data (preview) instellen
 
@@ -114,7 +114,7 @@ Raadpleeg de [Kubernetes-documentatie](https://kubernetes.io/docs/reference/acce
     >[!NOTE]
     >Als u deze functie in azure China gebruikt, moet de eerste basis-URL-waarde `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` zijn en moet de tweede basis-URL-waarde `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`zijn. 
     
-4. Nadat u de omleidings-Url's hebt geregistreerd, selecteert u onder **Geavanceerde instellingen**de opties **toegangs tokens** en **-id-tokens** en slaat u de wijzigingen op.
+4. Nadat u de omleidings-Url's hebt geregistreerd, selecteert u onder **impliciete toekenning**de opties **toegangs tokens** en **id-tokens** en slaat u de wijzigingen op.
 
 >[!NOTE]
 >Het configureren van verificatie met Azure Active Directory voor eenmalige aanmelding kan alleen worden uitgevoerd tijdens de eerste implementatie van een nieuw AKS-cluster. U kunt eenmalige aanmelding niet configureren op voor een AKS-cluster die al zijn geïmplementeerd.

@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 37da62a4eb0f934133d6486872ba319138299614
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990705"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048688"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Problemen met het Azure Migrate apparaat en de detectie oplossen
 
@@ -78,7 +78,7 @@ Als deze verbindings fout optreedt, kunt u mogelijk geen verbinding maken met vC
 Ga als volgt te werk als de fout 60030 of 60031 wordt weer gegeven: ' een Azure Key Vault beheer bewerking is mislukt '
 - Zorg ervoor dat het Azure-gebruikers account dat wordt gebruikt om het apparaat te registreren, ten minste Inzender machtigingen heeft voor het abonnement.
 - Zorg ervoor dat het account toegang heeft tot de sleutel kluis die is opgegeven in het fout bericht en voer de bewerking opnieuw uit.
-- Neem contact op met micro soft ondersteuning als het probleem zich blijft voordoen.
+- Als het probleem zich blijft voordoen, neemt u contact op met Microsoft-ondersteuning.
 - Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) over de vereiste Azure-rollen en-machtigingen.
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>Fout 60028: detectie kan niet worden gestart
@@ -139,7 +139,7 @@ Als u Vm's verwijdert en deze nog steeds worden weer gegeven in de portal, wacht
 
 Azure Migrate ondersteunt de detectie van toepassingen, functies en onderdelen met behulp van Azure Migrate: Server Assessment. App-detectie wordt momenteel alleen ondersteund voor VMware. Meer [informatie](how-to-discover-applications.md) over de vereisten en stappen voor het instellen van app-detectie.
 
-Veelvoorkomende fouten bij het detecteren van apps worden in de tabel samenvatten.
+Veelvoorkomende fouten bij het detecteren van apps worden in de tabel samenvatten. 
 
 **Optreedt** | **Oorzaak** | **Actie**
 --- | --- | --- | ---

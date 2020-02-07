@@ -12,16 +12,16 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d1ebb4b094ab5c03343486e7af6624273288453
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 7ca73fac06649f801461e53130a67aa9ec0ad0d0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421203"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063319"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Toepassingsbeheer met Azure Active Directory
 
-Azure Active Directory (Azure AD) vereenvoudigt de manier waarop u uw toepassingen beheert door één identiteits systeem te bieden voor uw Cloud-en on-premises apps. U kunt uw SaaS-toepassingen (Software as a Service), on-premises toepassingen en LOB-apps (line-of-Business) toevoegen aan Azure AD. Gebruikers melden zich vervolgens eenmaal aan voor veilige en naadloze toegang tot deze toepassingen, samen met Office 365 en andere zakelijke toepassingen van micro soft. U kunt de beheer kosten verlagen door de [gebruikers inrichting te automatiseren](user-provisioning.md). U kunt ook multi-factor Authentication en beleid voor voorwaardelijke toegang gebruiken om toegang tot beveiligde toepassingen te bieden.
+Azure Active Directory (Azure AD) vereenvoudigt de manier waarop u uw toepassingen beheert door één identiteits systeem te bieden voor uw Cloud-en on-premises apps. U kunt uw SaaS-toepassingen (Software as a Service), on-premises toepassingen en LOB-apps (line-of-Business) toevoegen aan Azure AD. Gebruikers melden zich vervolgens eenmaal aan voor veilige en naadloze toegang tot deze toepassingen, samen met Office 365 en andere zakelijke toepassingen van micro soft. U kunt de beheer kosten verlagen door de [gebruikers inrichting te automatiseren](../app-provisioning/user-provisioning.md). U kunt ook multi-factor Authentication en beleid voor voorwaardelijke toegang gebruiken om toegang tot beveiligde toepassingen te bieden.
 
 ![Diagram waarin de apps worden weer gegeven die Federated zijn via Azure AD](media/what-is-application-management/app-management-overview.png)
 
@@ -62,4 +62,4 @@ Door te migreren naar Azure AD, kunt u kosten besparen en wordt het beheer van o
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wat is toepassings proxy?](what-is-application-proxy.md)
-- [Snelstart: Een galerie toepassing toevoegen aan uw Azure AD-Tenant](add-application-portal.md)
+- [Snelstartgids: een galerie toepassing toevoegen aan uw Azure AD-Tenant](add-application-portal.md)

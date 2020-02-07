@@ -3,12 +3,12 @@ title: Indeling voor prijs verlaging-QnA Maker
 description: Hieronder ziet u de lijst met indelingen voor prijs opgaven die u kunt gebruiken in de antwoord tekst van QnA Maker.
 ms.topic: reference
 ms.date: 01/09/2020
-ms.openlocfilehash: f3c51052abeb48584df8fa1e831dc4605d471741
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3fb7d73afdfd5ab7f1fb56a685b21538b97c8ea4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898562"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045397"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>De indeling voor prijs verlaging wordt ondersteund in QnA Maker antwoord tekst
 
@@ -20,21 +20,21 @@ Gebruik de **[CommonMark](https://commonmark.org/help/tutorial/index.html)** -ze
 
 Hieronder ziet u de lijst met indelingen voor prijs opgaven die u kunt gebruiken in de antwoord tekst van QnA Maker.
 
-|Doel|Indeling|Voorbeeld voor Markdown|Rendering<br>zoals weer gegeven in de chat-bot|
+|Doel|Indeling|Voor beeld van prijs verlaging|Rendering<br>zoals weer gegeven in de chat-bot|
 |--|--|--|--|
 Een nieuwe regel tussen twee zinnen.|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![nieuwe lijn tussen twee zinnen opmaken](./media/qnamaker-concepts-datasources/format-newline.png)|
 |Headers van H1 tot H6, het aantal `#` geeft aan welke header er is. 1 `#` is de H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![indeling met kopteksten voor korting](./media/qnamaker-concepts-datasources/format-headers.png)<br>![notatie met de koppen H1 tot en met H5](./media/qnamaker-concepts-datasources/format-h1-h5.png)|
 |Cursief |`*text*`|`How do I create a bot with *QnA Maker*?`|![opmaken met cursief](./media/qnamaker-concepts-datasources/format-italics.png)|
-|Teken reeks (vet)|`**text**`|`How do I create a bot with **QnA Maker**?`|![indeling met sterke markering voor vet](./media/qnamaker-concepts-datasources/format-strong.png)|
+|Sterk (vet)|`**text**`|`How do I create a bot with **QnA Maker**?`|![indeling met sterke markering voor vet](./media/qnamaker-concepts-datasources/format-strong.png)|
 |URL voor koppeling|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![indeling voor URL (Hyper Link)](./media/qnamaker-concepts-datasources/format-url.png)|
 |\* URL voor de open bare afbeelding|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![indeling voor URL van open bare afbeelding ](./media/qnamaker-concepts-datasources/format-image-url.png)|
-|Doorhalen|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![opmaak voor door halen](./media/qnamaker-concepts-datasources/format-strikethrough.png)|
+|Door|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![opmaak voor door halen](./media/qnamaker-concepts-datasources/format-strikethrough.png)|
 |Vet en cursief|`***text***`|`How can I create a ***QnA Maker*** bot?`|![opmaak voor vet en cursief](./media/qnamaker-concepts-datasources/format-bold-italics.png)|
 |Vetgedrukte URL voor koppeling|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![notatie voor vetgedrukte URL](./media/qnamaker-concepts-datasources/format-bold-url.png)|
 |Cursieve URL voor koppeling|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![notatie voor cursieve URL](./media/qnamaker-concepts-datasources/format-url-italics.png)|
 |Symbolen voor kortings symbool voor Escape|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![notatie voor cursieve URL](./media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Geordende lijst|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>In het voor gaande voor beeld wordt gebruikgemaakt van automatische nummering in korting.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>In het vorige voor beeld wordt gebruikgemaakt van expliciete nummering.|![indeling voor geordende lijst](./media/qnamaker-concepts-datasources/format-ordered-list.png)|
-|Ongeordende lijst|`\n * item1 \n * item2`<br>of<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![indeling voor niet-geordende lijst](./media/qnamaker-concepts-datasources/format-unordered-list.png)|
+|Niet-geordende lijst|`\n * item1 \n * item2`<br>of<br>`\n - item1 \n - item2`|`This is an unordered list: \n * List item 1 \n * List item 2`|![indeling voor niet-geordende lijst](./media/qnamaker-concepts-datasources/format-unordered-list.png)|
 |Geneste lijsten|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>U kunt bestelde en niet-geordende lijsten samen nesten. Het tabblad, `\t`, geeft het inspring niveau van het onderliggende element aan.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![indeling voor geneste niet-geordende lijst](./media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![indeling voor geneste geordende lijst](./media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
 \* QnA Maker de afbeelding niet op enigerlei manier verwerken. Het is de rol van de client toepassing om de installatie kopie weer te geven.

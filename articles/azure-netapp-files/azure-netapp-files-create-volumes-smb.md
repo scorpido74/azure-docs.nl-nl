@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 6b1946cdaebd01a0742f9ce2b2efb5054ac9d2a8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867438"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049890"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -40,12 +40,12 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 * De juiste poorten moeten geopend zijn op de betreffende Windows Active Directory (AD)-server.  
     De vereiste poorten zijn als volgt: 
 
-    |     Service           |     Port     |     Protocol     |
+    |     Service           |     Poort     |     Protocol     |
     |-----------------------|--------------|------------------|
     |    AD-webservices    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    N/A       |    ECHO antwoord    |
+    |    ICMPv4             |    N.v.t.       |    ECHO antwoord    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -73,6 +73,8 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
     Als u domein controllers hebt die niet bereikbaar zijn via het Azure NetApp Files gedelegeerde subnet, kunt u een ondersteunings aanvraag voor Azure verzenden om de scope te wijzigen van **Algemeen** (standaard) naar **site**.  Azure NetApp Files moet alleen communiceren met domein controllers in de site waar de Azure NetApp Files adres ruimte van het geplaatste subnet zich bevindt.
 
     Zie [de site topologie ontwerpen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) over AD-sites en-services. 
+    
+Zie Azure NetApp Files [SMB Veelgestelde vragen](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) over extra AD-informatie. 
 
 ## <a name="create-an-active-directory-connection"></a>Een Active Directory verbinding maken
 
@@ -86,7 +88,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
         Dit is de DNS-server die is vereist voor de Active Directory domein deelname en SMB-verificatie bewerkingen. 
     * **Secundaire DNS-**    
         Dit is de secundaire DNS-server voor het controleren van redundante naam Services. 
-    * **Domein**  
+    * **Domeinen**  
         Dit is de domein naam van de Active Directory Domain Services die u wilt toevoegen.
     * **Voor voegsel van SMB-server (computer-account)**  
         Dit is het naam voorvoegsel voor het machine account in Active Directory dat Azure NetApp Files gebruikt voor het maken van nieuwe accounts.

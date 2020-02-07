@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81988f2643fd9acb911e6f70765cedbb4786f14c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c64c40d93f9b525ac6adeca276797df65f32ef3e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278262"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061272"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Zelf studie: Pingboard configureren voor automatische gebruikers inrichting
 
@@ -88,7 +88,7 @@ In deze sectie wordt u begeleid bij het koppelen van uw Azure AD aan de inrichti
 
 1. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Pingboard**.
 
-1. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die moeten worden gesynchroniseerd van Azure AD naar Pingboard. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Pingboard voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren. Zie [toewijzings kenmerk toewijzingen voor gebruikers aanpassen](../manage-apps/customize-application-attributes.md)voor meer informatie.
+1. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die moeten worden gesynchroniseerd van Azure AD naar Pingboard. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Pingboard voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren. Zie [toewijzings kenmerk toewijzingen voor gebruikers aanpassen](../app-provisioning/customize-application-attributes.md)voor meer informatie.
 
 1. Als u de Azure AD-inrichtings service voor Pingboard wilt inschakelen, wijzigt u de **inrichtings status** in het gedeelte **instellingen** in **op aan**.
 
@@ -96,10 +96,10 @@ In deze sectie wordt u begeleid bij het koppelen van uw Azure AD aan de inrichti
 
 Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. Gebruik de sectie **synchronisatie Details** om de voortgang te bewaken en de koppelingen naar de activiteiten logboeken te volgen. In de logboeken worden alle acties beschreven die worden uitgevoerd door de inrichtings service in uw Pingboard-app.
 
-Zie [rapport over automatische toewijzing van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [rapport over automatische toewijzing van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 * [Eenmalige aanmelding configureren](pingboard-tutorial.md)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbf8923d62b49ed5341776aef03bc1bc2dabeaa9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f789f82288c9820214c4ab32c271bb547945d4d1
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276810"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057376"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Zelf studie: LinkedIn Sales Navigator configureren voor automatische gebruikers inrichting
 
@@ -119,9 +119,9 @@ De eerste stap bestaat uit het ophalen van uw LinkedIn-toegangs token. Als u een
 
 Hiermee wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn toegewezen aan de LinkedIn Sales navigator in de sectie gebruikers en groepen. Houd er rekening mee dat de initiële synchronisatie langer duurt dan volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. U kunt de sectie **synchronisatie gegevens** gebruiken voor het bewaken van de voortgang en het volgen van koppelingen naar de inrichtings activiteiten Logboeken. hierin worden alle acties beschreven die worden uitgevoerd door de inrichtings service in uw LinkedIn-verkoop Navigator-app.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

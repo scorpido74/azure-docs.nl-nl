@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: a46bca5c5c55338f8bea7e1ff370f92ce6a2d577
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841043"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048606"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Herstel na nood geval instellen voor virtuele Hyper-V-machines naar een secundaire site met behulp van Power shell (Resource Manager)
 
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u de stappen voor replicatie van virtuele Hy
 - Zorg ervoor dat Virtual Machine Manager-servers en Hyper-V-hosts voldoen aan de [ondersteunings vereisten](site-recovery-support-matrix-to-sec-site.md).
 - Controleer of de virtuele machines die u wilt repliceren, voldoen aan de ondersteuning van de [gerepliceerde machine](site-recovery-support-matrix-to-sec-site.md).
 
-## <a name="prepare-for-network-mapping"></a>Voorbereiden op netwerkkoppeling
+## <a name="prepare-for-network-mapping"></a>Voorbereiden op netwerktoewijzing
 
 [Netwerk toewijzing](hyper-v-vmm-network-mapping.md) wordt toegewezen tussen on-premises VM-netwerken van Virtual Machine Manager in bron-en doel-Clouds. Bij toewijzing gebeurt het volgende:
 
@@ -219,9 +219,9 @@ Volg de stappen in [activiteit controleren](#monitor-activity)om de voltooiing v
 1. Voer deze opdracht uit om de netwerken op te halen voor de virtuele bron machine Manager-server en de doel-Virtual Machine Manager-server.
 
    ```azurepowershell
-   $PrimaryNetworks = Get-AzRecoveryServicesAsrNetwork -Name $Servers[0]
+   $PrimaryNetworks = Get-AzRecoveryServicesAsrNetwork -Fabric $Servers[0]
 
-   $RecoveryNetworks = Get-AzRecoveryServicesAsrNetwork -Name $Servers[1]
+   $RecoveryNetworks = Get-AzRecoveryServicesAsrNetwork -Fabric $Servers[1]
    ```
 
    > [!NOTE]

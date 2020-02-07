@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4396c82851969b39841ba77fb8aba9679363474
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986492"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048569"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatische ML experimenten configureren in python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,20 +45,20 @@ Geautomatiseerde machine learning ondersteunt de volgende algoritmen tijdens de 
 
 Classificatie | Regressie | Tijd reeks prognose
 |-- |-- |--
-[Logistic Regression](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastische Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastische Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Logistiek regressie](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastisch net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastisch net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Licht GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Licht GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Licht GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[Versterking van kleurovergang](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Versterking van kleurovergang](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Versterking van kleurovergang](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[Beslissingsstructuur](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Beslissingsstructuur](https://scikit-learn.org/stable/modules/tree.html#regression)|[Beslissingsstructuur](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K dichtstbijzijnde Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K dichtstbijzijnde Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K dichtstbijzijnde Neighbors](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Lineaire SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[Vector classificatie (SVC) ondersteunen](https://scikit-learn.org/stable/modules/svm.html#classification)|[De toolkit leren met stochastische Gradiëntdaling (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[De toolkit leren met stochastische Gradiëntdaling (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[Willekeurige Forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Willekeurige Forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Willekeurige Forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Zeer willekeurige structuren](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Zeer willekeurige structuren](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Zeer willekeurige structuren](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Kleur overgang verhogen](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Kleur overgang verhogen](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Kleur overgang verhogen](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Beslissings structuur](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Beslissings structuur](https://scikit-learn.org/stable/modules/tree.html#regression)|[Beslissings structuur](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K dichtstbijzijnde neighbors](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K dichtstbijzijnde neighbors](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K dichtstbijzijnde neighbors](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Lineair-SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Vector classificatie (SVC) ondersteunen](https://scikit-learn.org/stable/modules/svm.html#classification)|[Stochastische kleur overgang Daal (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Stochastische kleur overgang Daal (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Wille keurig forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Wille keurig forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Wille keurig forest](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[Zeer wille keurige structuren](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Zeer wille keurige structuren](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Zeer wille keurige structuren](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
 [Classificatie DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN Regressor hierop](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regressor hierop](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
 [Lineaire classificatie DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineaire Regressor hierop](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Lineaire Regressor hierop](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
 [Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Snelle lineaire Regressor hierop](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Automatische ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[De toolkit leren met stochastische Gradiëntdaling (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Online verloop Daal Regressor hierop](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[Stochastische kleur overgang Daal (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Online verloop Daal Regressor hierop](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
 |[Gemiddelde Perceptron-classificatie](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
 |[Classificatie van lineaire SVM](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
 
@@ -117,11 +117,11 @@ U kunt afzonderlijke treinen en validatie sets rechtstreeks in de `AutoMLConfig`
 
 ### <a name="k-folds-cross-validation"></a>K-vouwen Kruisvalidatie
 
-Gebruik `n_cross_validations` instelling om op te geven van het aantal cross-bevestigingen. De set trainingsgegevens wordt willekeurig worden gesplitst in `n_cross_validations` vouwen van gelijke grootte. Tijdens elke cross validatie ronde, een van de vouwen dat wordt gebruikt voor de validatie van het model is getraind op de resterende vouwen. Dit proces wordt herhaald voor `n_cross_validations` totdat elke vouwen één keer wordt gebruikt als validatie afgerond. De gemiddelde scores voor alle `n_cross_validations` Rondt worden gerapporteerd, en de bijbehorende model zal opnieuw worden getraind op de gehele training gegevensset.
+Gebruik `n_cross_validations` instelling om het aantal Kruis validaties op te geven. De training gegevensset wordt wille keurig gesplitst in `n_cross_validations` vouwen van gelijke grootte. Tijdens elke cross validatie ronde, een van de vouwen dat wordt gebruikt voor de validatie van het model is getraind op de resterende vouwen. Dit proces wordt herhaald om `n_cross_validations` af te ronden totdat elke vouw als validatieset wordt gebruikt. De gemiddelde scores voor alle `n_cross_validations` rondingen worden gerapporteerd en het bijbehorende model wordt opnieuw getraind op de hele set trainings gegevens.
 
 ### <a name="monte-carlo-cross-validation-repeated-random-sub-sampling"></a>Monte Carlo-Kruis validatie (herhaalde, wille keurige subsampling)
 
-Gebruik `validation_size` om op te geven van het percentage van de training-gegevensset die moet worden gebruikt voor validatie en gebruik `n_cross_validations` om op te geven van het aantal cross-bevestigingen. Tijdens elke cross-validatie afgerond, een subset van de grootte van `validation_size` willekeurig worden geselecteerd voor de validatie van het model is getraind op de resterende gegevens. Ten slotte het gemiddelde voor alle beoordeelt `n_cross_validations` Rondt worden gerapporteerd, en de bijbehorende model zal opnieuw worden getraind op de gehele training gegevensset. Monte Carlo wordt niet ondersteund voor time series-prognoses.
+Gebruik `validation_size` om het percentage van de trainings gegevensset op te geven die moet worden gebruikt voor validatie, en gebruik `n_cross_validations` om het aantal Kruis validaties op te geven. Tijdens elke Kruis validatie ronde wordt een subset van grootte `validation_size` wille keurig geselecteerd voor validatie van het model dat is getraind voor de resterende gegevens. Ten slotte worden de gemiddelde scores voor alle `n_cross_validations` rondingen gerapporteerd en wordt het bijbehorende model opnieuw getraind op de hele set met trainings gegevens. Monte Carlo wordt niet ondersteund voor time series-prognoses.
 
 ### <a name="custom-validation-dataset"></a>Aangepaste validatie-gegevensset
 
@@ -131,7 +131,7 @@ Aangepaste validatie gegevensset gebruiken als wille keurige splitsing niet acce
 
 Vervolgens kunt u bepalen waar u het model wordt getraind. Een geautomatiseerde machine learning-trainingsexperiment kunt uitvoeren op de volgende compute-opties:
 *   Uw lokale machine, zoals een lokale desktop of laptop – algemeen wanneer u kleine gegevensset hebt en u bent nog steeds in de fase verkennen.
-*   Een externe computer in de cloud, [Azure Machine Learning-beheerd Compute](concept-compute-target.md#amlcompute) is een beheerde service die het mogelijk om te trainen op clusters virtuele machines van Azure machine learning-modellen.
+*   Een externe computer in de Cloud – [Azure machine learning beheerde Compute](concept-compute-target.md#amlcompute) is een beheerde service waarmee u machine learning modellen kunt trainen op clusters van virtuele machines van Azure.
 
     Bekijk deze [github-site](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) voor voor beelden van notitie blokken met lokale en externe Compute-doelen.
 
@@ -143,7 +143,7 @@ Vervolgens kunt u bepalen waar u het model wordt getraind. Een geautomatiseerde 
 
 ## <a name="configure-your-experiment-settings"></a>Uw experiment-instellingen configureren
 
-Er zijn diverse opties, kunt u uw geautomatiseerde machine learning-experiment configureren. Deze parameters zijn ingesteld door het instantiëren van een `AutoMLConfig` object. Zie de [klasse AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) voor een volledige lijst met para meters.
+Er zijn diverse opties, kunt u uw geautomatiseerde machine learning-experiment configureren. Deze para meters worden ingesteld door een `AutoMLConfig`-object te instantiëren. Zie de [klasse AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) voor een volledige lijst met para meters.
 
 Voorbeelden zijn:
 
@@ -189,12 +189,18 @@ Meer informatie over de specifieke definities van deze metrische gegevens in [in
 
 ### <a name="data-featurization"></a>Gegevens parametrisatie
 
-In elk automatisch machine learning experiment worden uw gegevens [automatisch geschaald en genormaliseerd](concept-automated-ml.md#preprocess) om *bepaalde* algoritmen te helpen die gevoelig zijn voor functies die op verschillende schalen zijn.  U kunt echter ook extra parametrisatie inschakelen, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-create-portal-experiments.md#preprocess).
+In elk automatisch machine learning experiment worden uw gegevens [automatisch geschaald en genormaliseerd](concept-automated-ml.md#preprocess) om *bepaalde* algoritmen te helpen die gevoelig zijn voor functies die op verschillende schalen zijn.  U kunt echter ook extra parametrisatie inschakelen, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-create-portal-experiments.md#featurization).
 
-Als u deze parametrisatie wilt inschakelen, geeft u `"featurization": 'auto'` op voor de [`AutoMLConfig` klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+Wanneer u uw experimenten configureert, kunt u de geavanceerde instelling `featurization`. De volgende tabel bevat de geaccepteerde instellingen voor parametrisatie in de [klasse`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+
+|Parametrisatie-configuratie | Beschrijving |
+| ------------- | ------------- |
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| Hiermee wordt aangegeven dat er een aangepaste parametrisatie-stap moet worden gebruikt. [Meer informatie over het aanpassen van parametrisatie](how-to-configure-auto-train.md#customize-feature-engineering).|
+|`"featurization": 'off'`| Hiermee wordt aangegeven dat de parametrisatie-stap niet automatisch moet worden uitgevoerd.|
+|`"featurization": 'auto'`| Geeft aan dat als onderdeel van de voor verwerking, [gegevens Guardrails en parametrisatie-stappen](how-to-create-portal-experiments.md#advanced-featurization-options) automatisch worden uitgevoerd.|
 
 > [!NOTE]
-> Automatische machine learning vooraf verwerkte stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde vooraf verwerkings stappen die tijdens de training worden toegepast, automatisch toegepast op uw invoer gegevens.
+> Automatische machine learning parametrisatie stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde parametrisatie-stappen die tijdens de training worden toegepast, automatisch toegepast op de invoer gegevens.
 
 ### <a name="time-series-forecasting"></a>Tijd reeks prognose
 De time series-`forecasting` taak vereist extra para meters in het configuratie object:
@@ -301,7 +307,7 @@ project_folder = './sample_projects/automl-classification'
 experiment = Experiment(ws, experiment_name)
 ```
 
-Het experiment uitvoeren en het genereren van een model verzenden. Geeft de `AutoMLConfig` naar de `submit` methode voor het genereren van het model.
+Het experiment uitvoeren en het genereren van een model verzenden. Geef het `AutoMLConfig` door aan de methode `submit` om het model te genereren.
 
 ```python
 run = experiment.submit(automl_config, show_output=True)
@@ -309,7 +315,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 >[!NOTE]
 >Afhankelijkheden zijn geïnstalleerd op een nieuwe virtuele machine.  Het kan maximaal 10 minuten duren voordat uitvoer wordt weergegeven.
->Instellen van `show_output` naar `True` resulteert in de uitvoer wordt weergegeven op de console.
+>Het instellen van `show_output` op `True` resultaten in uitvoer die worden weer gegeven op de-console.
 
 ### <a name="exit-criteria"></a>Afsluit criteria
 Er zijn enkele opties die u kunt definiëren om uw experiment te beëindigen.
@@ -319,7 +325,7 @@ Er zijn enkele opties die u kunt definiëren om uw experiment te beëindigen.
 
 ### <a name="explore-model-metrics"></a>Model metrische gegevens verkennen
 
-U kunt uw trainings resultaten weer geven in een widget of inline als u zich in een notebook bevindt. Zie [bijhouden en evalueren van modellen](how-to-track-experiments.md#view-run-details) voor meer informatie.
+U kunt uw trainings resultaten weer geven in een widget of inline als u zich in een notebook bevindt. Zie [modellen volgen en evalueren](how-to-track-experiments.md#view-run-details) voor meer informatie.
 
 ## <a name="understand-automated-ml-models"></a>Meer informatie over geautomatiseerde modellen van ML
 
@@ -408,7 +414,7 @@ Gebruik deze 2 Api's voor de eerste stap van het model voor meer informatie.  Be
    |Transformaties|Lijst met trans formaties die zijn toegepast op de invoer functies voor het genereren van ontworpen functies.|
    
 ### <a name="customize-feature-engineering"></a>Functie techniek aanpassen
-Als u functie techniek wilt aanpassen, geeft u `"feauturization":FeaturizationConfig`op.
+Als u functie techniek wilt aanpassen, geeft u `"featurization": FeaturizationConfig`op.
 
 Ondersteunde aanpassingen zijn onder andere:
 
@@ -515,6 +521,6 @@ Voor algemene informatie over hoe model toelichtingen en functie belang kunnen w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [hoe en waar u kunt een model implementeren](how-to-deploy-and-where.md).
+Meer informatie over [hoe en waar een model moet worden geïmplementeerd](how-to-deploy-and-where.md).
 
 Meer informatie over [het trainen van een regressie model met geautomatiseerde machine learning](tutorial-auto-train-models.md) of [hoe u het gebruik van geautomatiseerde machine learning op een externe bron kunt trainen](how-to-auto-train-remote.md).

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 9fdbf3888b4302946fe20259a333842caa122836
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f27d398af723a54443f531c05a503a5f2fbe13f6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717791"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064832"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Veelgestelde vragen over het gebruik van Azure Database Migration Service
 
@@ -46,7 +46,7 @@ U kunt Azure Database Migration Service gebruiken om offline-en online migraties
 > Als u Azure Database Migration Service voor het uitvoeren van een online migratie wilt gebruiken, moet u een instantie maken op basis van de prijs categorie Premium. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/database-migration/) van Azure Database Migration Service voor meer informatie.
 
 **V. Hoe komt Azure Database Migration Service te vergelijken met andere hulpprogram ma's voor migratie van micro soft-data bases, zoals de data base Migration Assistant (DMA) of SQL Server Migration Assistant (SSMA)?**
-Azure Database Migration Service is de voorkeurs methode voor database migratie naar Microsoft Azure op schaal. Zie voor meer informatie over de manier waarop Azure Database Migration Service vergelijkt met andere hulpprogram ma's voor migratie van micro soft-data bases en voor aanbevelingen over het gebruik van de service voor verschillende scenario's, de blog berichten over de [hulp middelen en services voor database migratie van micro soft](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/).
+Azure Database Migration Service is de voorkeurs methode voor database migratie naar Microsoft Azure op schaal. Zie voor meer informatie over de manier waarop Azure Database Migration Service vergelijkt met andere hulpprogram ma's voor migratie van micro soft-data bases en voor aanbevelingen over het gebruik van de service voor verschillende scenario's, de blog berichten over de [hulp middelen en services voor database migratie van micro soft](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529).
 
 **V. Hoe werkt Azure Database Migration Service vergelijken met de Azure Migrate-aanbieding?**
 Azure Migrate helpt bij het migreren van on-premises virtuele machines naar Azure IaaS. De service beoordeelt de geschiktheid voor migratie en op basis van prestaties en biedt een schatting van de kosten voor het uitvoeren van uw on-premises virtuele machines in Azure. Azure Migrate is nuttig voor lift-en-Shift-migraties van on-premises VM-gebaseerde workloads naar Azure IaaS Vm's. Maar in tegens telling tot Azure Database Migration Service is Azure Migrate geen gespecialiseerde data base Migration service voor Azure PaaS relationele data base-platformen, zoals Azure SQL Database of Azure SQL Database beheerd exemplaar.

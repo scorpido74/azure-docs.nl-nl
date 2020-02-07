@@ -3,12 +3,12 @@ title: Veelgestelde vragen over het Azure Migrate apparaat
 description: Antwoorden vinden op veelgestelde vragen over het Azure Migrate apparaat
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c9727287160f996059e9c1fb2d1fb5aec5900ab5
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: de9583b7983dda904e06ea258ecb0d202644586b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292329"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064696"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate apparaat: veelgestelde vragen
 
@@ -16,6 +16,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over het Azure Migrate 
 
 - [Algemene vragen](resources-faq.md) over Azure Migrate.
 - [Vragen](common-questions-discovery-assessment.md) over de visualisatie van detectie, beoordeling en afhankelijkheid.
+- [Vragen](common-questions-server-migration.md) over server migratie.
 
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Wat is het Azure Migrate apparaat?

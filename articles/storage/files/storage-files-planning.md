@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5a9e5e014740302c439036bd3889761f4750344f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906264"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062860"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
-[Azure Files](storage-files-introduction.md) biedt volledig beheerde bestandsshares in de cloud die toegankelijk zijn via het industriestandaard SMB-protocol. Omdat Azure Files volledig wordt beheerd, is het implementeren van de implementatie in productie scenario's veel eenvoudiger dan het implementeren en beheren van een bestands server of een NAS-apparaat. In dit artikel worden de onderwerpen behandeld waarmee u rekening moet houden bij het implementeren van een Azure-bestands share voor productie gebruik binnen uw organisatie.
+[Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard SMB-protocol. Omdat Azure Files volledig wordt beheerd, is het implementeren van de implementatie in productie scenario's veel eenvoudiger dan het implementeren en beheren van een bestands server of een NAS-apparaat. In dit artikel worden de onderwerpen behandeld waarmee u rekening moet houden bij het implementeren van een Azure-bestands share voor productie gebruik binnen uw organisatie.
 
 ## <a name="management-concepts"></a>Beheer concepten
 
@@ -53,7 +53,7 @@ In de volgende tabel ziet u hoe uw gebruikers en toepassingen toegang hebben tot
 | Waar wordt uw werk belasting uitgevoerd? | **In azure**: Azure files biedt directe toegang tot uw gegevens. | **On-premises met langzaam netwerk**: Windows-, Linux-en macOS-clients kunnen een lokale on-premises Windows-bestands share koppelen als een snelle cache van uw Azure-bestands share. |
 | Welk toegangs niveau hebt u nodig? | Share-en bestands niveau. | Share-, bestands-en gebruikers niveau. |
 
-## <a name="data-security"></a>Databeveiliging
+## <a name="data-security"></a>Gegevensbeveiliging
 
 Azure Files heeft verschillende ingebouwde opties voor het garanderen van gegevens beveiliging:
 
@@ -120,7 +120,7 @@ Het is mogelijk om de grootte van uw ingerichte share onder uw gebruikte GiB te 
 
 In de volgende tabel ziet u enkele voor beelden van deze formules voor de ingerichte grootte van de shares:
 
-|Capaciteit (GiB) | IOPS-basislijn | Burst IOPS | Uitgang (MiB/s) | Ingangs (MiB/s) |
+|Capaciteit (GiB) | IOPS basis lijn | Burst IOPS | Uitgang (MiB/s) | Ingangs (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Maxi maal 300     | 66   | 44   |
 |500         | 500     | Maxi maal 1.500   | 90   | 60   |
@@ -204,8 +204,7 @@ Deze sectie is alleen van toepassing op de standaard bestands shares. Alle Premi
 Standaard bestands shares met een capaciteits limiet van 100 TiB zijn wereld wijd beschikbaar in alle Azure-regio's.
 
 - LRS: alle regio's, met uitzonde ring van Zuid-Afrika-noord en Zuid-Afrika-west.
-   - Nationale Clouds (Government, Duitsland, China) worden ondersteund via Power shell en de Azure-opdracht regel interface (CLI). Geen portal ondersteuning. 
-   - VS-Oost, Oost-VS2, Europa-west: alle nieuwe accounts worden ondersteund. Het upgrade proces is niet voltooid voor een klein aantal bestaande accounts. U kunt controleren of uw bestaande opslag accounts het upgrade proces hebben voltooid door te proberen [grote bestands shares in te scha kelen](storage-files-how-to-create-large-file-share.md).
+   - VS-Oost en Europa-west: alle nieuwe accounts worden ondersteund. Het upgrade proces is niet voltooid voor een klein aantal bestaande accounts. U kunt controleren of uw bestaande opslag accounts het upgrade proces hebben voltooid door te proberen [grote bestands shares in te scha kelen](storage-files-how-to-create-large-file-share.md).
 
 - ZRS: alle regio's, met uitzonde ring van Japan-Oost, Europa-noord, Zuid-Afrika-noord.
 - GRS/GZRS: wordt niet ondersteund.

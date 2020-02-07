@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Kiesvenster configureren voor het automatisch gebruikers inrichten met Azure Active Directory | Microsoft Docs'
-description: Informatie over het configureren van Azure Active Directory voor het automatisch inrichten en inrichting ongedaan maken-gebruikersaccounts met kiesvenster.
+title: 'Zelf studie: dialpad configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op dialpad.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,163 +15,163 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 32e634bc089417aaa8080b30a5f77f663a3d8b33
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9f39277644547a625d87a39681f0c5520996cbd6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611767"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058339"
 ---
-# <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Zelfstudie: Kiesvenster configureren voor het automatisch inrichten van gebruikers
+# <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Zelf studie: dialpad configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is ter illustratie van de stappen om te worden uitgevoerd in de kiesvenster en Azure Active Directory (Azure AD) naar Azure AD configureren voor automatisch inrichten en verwijdering van gebruikers en/of groepen aan kiesvenster.
+Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in dialpad en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in dialpad.
 
 > [!NOTE]
->  Deze zelfstudie beschrijft een connector die is gebaseerd op de Provisioning-Service van Azure AD-gebruiker. Zie voor belangrijke informatie over wat deze service biedt, hoe het werkt en veelgestelde vragen [automatiseren van gebruikersinrichting en -opheffing in SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md).
+>  In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 
-> Deze connector is momenteel in Preview. Zie voor meer informatie over de algemene Microsoft Azure gebruiksvoorwaarden voor Preview-functies, [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze connector is momenteel beschikbaar als preview-versie. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario in deze zelfstudie wordt ervan uitgegaan dat u al de volgende vereisten hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * Een Azure AD-tenant.
-* [Een tenant kiesvenster](https://www.dialpad.com/pricing/).
-* Een gebruikersaccount in kiesvenster met beheerdersmachtigingen.
+* [Een dialpad-Tenant](https://www.dialpad.com/pricing/).
+* Een gebruikers account in dialpad met beheerders machtigingen.
 
-## <a name="assign-users-to-dialpad"></a>Gebruikers toewijzen aan kiesvenster
-Azure Active Directory maakt gebruik van een concept genaamd toewijzingen om te bepalen welke gebruikers krijgen toegang tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers, worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
+## <a name="assign-users-to-dialpad"></a>Gebruikers toewijzen aan dialpad
+Azure Active Directory gebruikt een concept met de naam toewijzingen om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u configureren en inschakelen van automatische inrichten van gebruikers, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang hebben tot kiesvenster moeten. Wanneer u beslist, kunt u deze gebruikers en/of groepen toewijzen aan kiesvenster door de instructies hier:
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot dialpad. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan dialpad door de volgende instructies te volgen:
  
-* [Een gebruiker of groep toewijzen aan een enterprise-app](../manage-apps/assign-user-or-group-access-portal.md) 
+* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md) 
 
- ## <a name="important-tips-for-assigning-users-to-dialpad"></a>Belangrijke tips voor het toewijzen van gebruikers aan kiesvenster
+ ## <a name="important-tips-for-assigning-users-to-dialpad"></a>Belang rijke tips voor het toewijzen van gebruikers aan dialpad
 
- * Het wordt aanbevolen dat één Azure AD-gebruiker is toegewezen aan kiesvenster voor het testen van de configuratie van de automatische gebruikersinrichting. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+ * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan dialpad om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer een gebruiker aan kiesvenster toewijzen, moet u alle geldige toepassingsspecifieke rollen (indien beschikbaar) selecteren in het dialoogvenster toewijzing. Gebruikers met de functie standaardtoegang worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Dialpad, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol standaard toegang worden uitgesloten van het inrichten.
 
-## <a name="setup-dialpad-for-provisioning"></a>Kiesvenster instellen voor het inrichten van
+## <a name="setup-dialpad-for-provisioning"></a>Dialpad instellen voor inrichting
 
-Voordat u kiesvenster configureert voor automatisch gebruikers inrichten met Azure AD, moet u enkele inrichting gegevens ophalen uit kiesvenster.
+Voordat u dialpad configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u bepaalde inrichtings gegevens ophalen van dialpad.
 
-1. Aanmelden bij uw [kiesvenster-beheerconsole](https://dialpadbeta.com/login) en selecteer **beheerdersinstellingen**. Zorg ervoor dat **mijn bedrijf** is geselecteerd in de vervolgkeuzelijst. Navigeer naar **verificatie > API-sleutels**.
+1. Meld u aan bij de [dialpad-beheer console](https://dialpadbeta.com/login) en selecteer **beheer instellingen**. Controleer of **mijn bedrijf** is geselecteerd in de vervolg keuzelijst. Navigeer naar **Authentication > API-sleutels**.
 
-    ![Kiesvenster SCIM toevoegen](media/dialpad-provisioning-tutorial/dialpad01.png)
+    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/dialpad01.png)
 
-2. Genereer een nieuwe sleutel door te klikken op **toevoegen van een sleutel** en de eigenschappen van het token voor geheim configureren.
+2. Genereer een nieuwe sleutel door te klikken op **een sleutel toevoegen** en de eigenschappen van uw geheime token te configureren.
 
-    ![Kiesvenster SCIM toevoegen](media/dialpad-provisioning-tutorial/dialpad02.png)
+    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/dialpad02.png)
 
-    ![Kiesvenster SCIM toevoegen](media/dialpad-provisioning-tutorial/dialpad03.png)
+    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/dialpad03.png)
 
-3. Klik op de **Klik hierop om waarde** knop voor het laatst gemaakte API-sleutel en kopieer de waarde die wordt weergegeven. Deze waarde moet worden ingevoerd in de **geheim Token** veld op het tabblad inrichten van uw toepassing kiesvenster in Azure portal. 
+3. Klik op de knop **Klik om de waarde weer te geven** voor de API-sleutel die u hebt gemaakt en kopieer de weer gegeven waarde. Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw dialpad-toepassing in de Azure Portal. 
 
-    ![Kiesvenster Token maken](media/dialpad-provisioning-tutorial/dialpad04.png)
+    ![Dialpad-token maken](media/dialpad-provisioning-tutorial/dialpad04.png)
 
-## <a name="add-dialpad-from-the-gallery"></a>Kiesvenster uit de galerie toevoegen
+## <a name="add-dialpad-from-the-gallery"></a>Dialpad toevoegen vanuit de galerie
 
-Met het configureren van kiesvenster voor automatisch gebruikers inrichten met Azure AD, moet u kiesvenster uit de galerie met Azure AD toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Als u dialpad wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u dialpad van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Als u wilt toevoegen kiesvenster uit de galerie met Azure AD, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om dialpad toe te voegen vanuit de Azure AD-toepassings galerie:**
 
-1. In de  **[Azure-portal](https://portal.azure.com)** , selecteer in het navigatievenster aan de linkerkant **Azure Active Directory**.
+1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
 
-    ![De Azure Active Directory-knop](common/select-azuread.png)
+    ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfstoepassingen**, en selecteer vervolgens **alle toepassingen**.
-
-    ![De blade Enterprise-toepassingen](common/enterprise-applications.png)
-
-3. Als u wilt een nieuwe toepassing toevoegen, selecteert u de **nieuwe toepassing** knop aan de bovenkant van het deelvenster.
-
-    ![De knop nieuwe toepassing](common/add-new-app.png)
-
-4. Voer in het zoekvak **kiesvenster**, selecteer **kiesvenster** in het deelvenster resultaten.
-    ![Kiesvenster in de lijst met resultaten](common/search-new-app.png)
-
-5. Navigeer naar de **URL** hieronder gemarkeerd in een afzonderlijke browser. 
-
-    ![Kiesvenster SCIM toevoegen](media/dialpad-provisioning-tutorial/dialpad05.png)
-
-6. Selecteer in de rechterbovenhoek **aanmelden > Gebruik kiesvenster online**.
-
-    ![Kiesvenster SCIM toevoegen](media/dialpad-provisioning-tutorial/dialpad06.png)
-
-7. Als Kiesvenster van een app OpenIDConnect is, kiest u aanmelden bij kiesvenster met uw Microsoft-werkaccount.
-
-    ![Kiesvenster SCIM toevoegen](media/dialpad-provisioning-tutorial/loginpage.png)
-
-8. Na een geslaagde verificatie door de toestemmingsprompt voor voor de pagina toestemming te accepteren. De toepassing wordt vervolgens automatisch worden toegevoegd aan uw tenant en u wordt omgeleid naar uw account kiesvenster.
-
-    ![Kiesvenster SCIM toevoegen](media/dialpad-provisioning-tutorial/redirect.png)
-
- ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Automatisch gebruikers inrichten voor kiesvenster configureren
-
-Deze sectie helpt u bij de stappen voor het configureren van de Azure AD-inrichtingsservice als u wilt maken, bijwerken en uitschakelen van gebruikers en/of groepen in kiesvenster op basis van gebruiker en/of groep toewijzingen in Azure AD.
-
-### <a name="to-configure-automatic-user-provisioning-for-dialpad-in-azure-ad"></a>Het configureren van automatisch gebruikers inrichten voor kiesvenster in Azure AD:
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfstoepassingen**en selecteer vervolgens **alle toepassingen**.
+2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **kiesvenster**.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
-    ![De koppeling kiesvenster in de lijst met toepassingen](common/all-applications.png)
+    ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-3. Selecteer de **Provisioning** tabblad.
+4. Typ **dialpad**in het zoekvak en selecteer **dialpad** in het deel venster resultaten.
+    ![dialpad in de lijst met resultaten](common/search-new-app.png)
 
-    ![Inrichting](common/provisioning.png)
+5. Navigeer naar de hieronder gemarkeerde **URL** in een afzonderlijke browser. 
 
-4. Stel de **Inrichtingsmodus** naar **automatische**.
+    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/dialpad05.png)
 
-    ![Inrichting](common/provisioning-automatic.png)
+6. Selecteer in de rechter bovenhoek **aanmelden > dialpad online gebruiken**.
 
-5. Onder de **beheerdersreferenties** sectie invoer `https://dialpad.com/scim` in **Tenant-URL**. De waarde die u hebt opgehaald en eerder hebt opgeslagen van kiesvenster in invoer **geheim Token**. Klik op **testverbinding** om te controleren of Azure AD kunt verbinden met kiesvenster. Als de verbinding is mislukt, zorg ervoor dat uw account kiesvenster beheerdersmachtigingen heeft en probeer het opnieuw.
+    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/dialpad06.png)
 
-    ![Tenant-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
+7. Als dialpad een OpenIDConnect-app is, kiest u aanmelden bij dialpad met uw micro soft-werk account.
 
-6. In de **e-mailmelding** en voer het e-mailadres van een persoon of groep die u moet de inrichting fout ontvangen en schakel het selectievakje in - **een e-mailmelding verzenden wanneer een foutoptreedt**.
+    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/loginpage.png)
 
-    ![E-mailmelding](common/provisioning-notification-email.png)
+8. Accepteer na een geslaagde verificatie de toestemming prompt voor de pagina toestemming. De toepassing wordt vervolgens automatisch toegevoegd aan uw Tenant en u wordt doorgestuurd naar uw dialpad-account.
+
+    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/redirect.png)
+
+ ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Automatische gebruikers inrichting configureren voor dialpad
+
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in dialpad te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+
+### <a name="to-configure-automatic-user-provisioning-for-dialpad-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor dialpad in azure AD:
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+
+    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+
+2. Selecteer in de lijst toepassingen de optie **dialpad**.
+
+    ![De koppeling dialpad in de lijst met toepassingen](common/all-applications.png)
+
+3. Selecteer het tabblad **inrichten** .
+
+    ![Tabblad inrichten](common/provisioning.png)
+
+4. Stel de **inrichtings modus** in op **automatisch**.
+
+    ![Tabblad inrichten](common/provisioning-automatic.png)
+
+5. Selecteer in de sectie **beheerders referenties** de invoer `https://dialpad.com/scim` in de **Tenant-URL**. Voer de waarde in die u hebt opgehaald en eerder hebt opgeslagen uit dialpad in een **geheim token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met dialpad. Als de verbinding mislukt, zorg er dan voor dat uw dialpad-account beheerders machtigingen heeft en probeer het opnieuw.
+
+    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
+
+6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+
+    ![E-mail melding](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
-8. Onder de **toewijzingen** sectie, selecteer **synchroniseren Azure Active Directory: gebruikers aan kiesvenster**.
+8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met dialpad**.
 
-    ![Kiesvenster gebruikerstoewijzingen](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
+    ![Dialpad-gebruikers toewijzingen](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
 
-9. Controleer de kenmerken van de gebruiker die van Azure AD worden gesynchroniseerd naar kiesvenster in de **kenmerk toewijzing** sectie. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt zodat deze overeenkomen met de gebruikersaccounts in kiesvenster voor update-bewerkingen. Selecteer de **opslaan** knop wijzigingen doorvoeren.
+9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar dialpad in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in dialpad voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Kiesvenster gebruikerskenmerken](media/dialpad-provisioning-tutorial/dialpad07.png)
+    ![Dialpad-gebruikers kenmerken](media/dialpad-provisioning-tutorial/dialpad07.png)
 
-10. Als u wilt configureren bereikfilters, raadpleegt u de volgende instructies in de [Scoping filter zelfstudie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
-11. Om in te schakelen in de Azure AD-inrichtingsservice voor kiesvenster, wijzigen de **Inrichtingsstatus** naar **op** in de **instellingen** sectie.
+11. Als u de Azure AD-inrichtings service voor **dialpad wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Inrichtingsstatus ingeschakeld](common/provisioning-toggle-on.png)
+    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-12. De gebruikers en/of groepen die u wilt definiëren voor het inrichten van kiesvenster door het kiezen van de gewenste waarden in **bereik** in de **instellingen** sectie.
+12. Definieer de gebruikers en/of groepen die u wilt inrichten voor dialpad door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
-    ![Inrichting van bereik](common/provisioning-scope.png)
+    ![Inrichtings bereik](common/provisioning-scope.png)
 
-13. Wanneer u klaar om in te richten bent, klikt u op **opslaan**.
+13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Bezig met opslaan van de Inrichtingsconfiguratie](common/provisioning-configuration-save.png)
+    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt gestart voor de initiële synchronisatie van alle gebruikers en/of groepen die zijn gedefinieerd **bereik** in de **instellingen** sectie. De eerste synchronisatie langer duren om uit te voeren dan het volgende wordt gesynchroniseerd, die ongeveer elke 40 minuten optreden als de Azure AD-inrichtingsservice wordt uitgevoerd. U kunt de **synchronisatiedetails** sectie voortgang en koppelingen volgen voor het inrichten van rapport van de activiteit, die alle acties die worden uitgevoerd door de Azure AD-inrichtingsservice op kiesvenster beschrijft.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op dialpad.
 
-Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md)
-##  <a name="connector-limitations"></a>Connector-beperkingen
-* Kiesvenster ondersteunt geen naam van de groep vandaag nog. Dit betekent dat eventuele wijzigingen in de **displayName** van een groep in Azure AD niet worden bijgewerkt en weergegeven in kiesvenster.
+Voor meer informatie over het lezen van de Azure AD-inrichtings logboeken raadpleegt u [rapportage over automatische gebruikers accounts inrichten](../app-provisioning/check-status-user-account-provisioning.md)
+##  <a name="connector-limitations"></a>Connector beperkingen
+* Dialpad biedt geen ondersteuning voor de naam van een groep. Dit betekent dat wijzigingen in de **DisplayName** van een groep in azure ad niet worden bijgewerkt en niet worden weer gegeven in dialpad.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Het inrichten van gebruikersaccounts voor bedrijfs-Apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en rapporten over het inrichten van activiteit ophalen](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)

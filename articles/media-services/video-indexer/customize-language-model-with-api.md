@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: anzaman
-ms.openlocfilehash: e8df7ffd285b0d49f5d4a87585e769b5b0bbafe9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 01ea4d9ef943183f09baa86b729ec69344d4309e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513147"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049029"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Een taal model aanpassen met de Video Indexer-Api's
 
@@ -105,9 +105,8 @@ Het antwoord geeft de meta gegevens van het zojuist getrainde taal model samen m
 }
 ```
 
-U moet de geretourneerde **id-** waarde van het taal model voor de para meter **linguisticModelId** gebruiken wanneer u [een video uploadt naar index](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) en voor de para meter **languageModelId** wanneer u [een video opnieuw indexeert](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+De geretourneerde **id** is een unieke id die wordt gebruikt om onderscheid te maken tussen taal modellen, terwijl **languageModelId** wordt gebruikt voor het [uploaden](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) van een video en [het opnieuw indexeren van een video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) -api's (ook wel bekend als **linguisticModelId** in video indexer-api's voor uploaden/opnieuw indexeren).
 
- 
 ## <a name="delete-a-language-model"></a>Een taal model verwijderen
 
 Met de API voor het [verwijderen van een taal model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) wordt een aangepast taal model uit het opgegeven account verwijderd. Alle Video's die het verwijderde taal model gebruiken, blijven dezelfde index totdat u de video opnieuw indexeert. Als u de video opnieuw indexeert, kunt u een nieuw taal model toewijzen aan de video. Anders wordt het standaard model van Video Indexer gebruikt om de video opnieuw te indexeren.

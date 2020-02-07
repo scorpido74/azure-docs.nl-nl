@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Smartsheet configureren voor het automatisch gebruikers inrichten met Azure Active Directory | Microsoft Docs'
-description: Informatie over het configureren van Azure Active Directory voor het automatisch inrichten en inrichting ongedaan maken-gebruikersaccounts met Smartsheet.
+title: 'Zelf studie: Smart Sheet configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Smart Sheet.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,185 +15,185 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f0ca2dfa90e1312db664962e7ffbe6b3f4dd96e1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9fbdf8a1c4b1881fc6dfd9d7b95a4103761e9ce7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670940"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063183"
 ---
-# <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Zelfstudie: Smartsheet voor het automatisch inrichten van gebruikers configureren
+# <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Zelf studie: Smart Sheet configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is ter illustratie van de stappen worden uitgevoerd in Smartsheet en Azure Active Directory (Azure AD) naar Azure AD configureren voor het automatisch inrichten en de inrichting ongedaan maken van gebruikers en/of groepen met Smartsheet.
+Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in Smart Sheet en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in Smart Sheet.
 
 > [!NOTE]
-> Deze zelfstudie beschrijft een connector die is gebaseerd op de Provisioning-Service van Azure AD-gebruiker. Zie voor belangrijke informatie over wat deze service biedt, hoe het werkt en veelgestelde vragen [automatiseren van gebruikersinrichting en -opheffing in SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md).
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 >
-> Deze connector is momenteel in openbare Preview. Zie voor meer informatie over de algemene Microsoft Azure gebruiksvoorwaarden voor Preview-functies, [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario in deze zelfstudie wordt ervan uitgegaan dat u al de volgende vereisten hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
-* Een Azure AD-tenant
-* [Een Smartsheet-tenant](https://www.smartsheet.com/pricing)
-* Een gebruikersaccount op een Smartsheet Enterprise of Premier Enterprise-plan met de systeembeheerder machtigingen.
+* Een Azure AD-Tenant
+* [Een Smart Sheet-Tenant](https://www.smartsheet.com/pricing)
+* Een gebruikers account op een Smart Sheet Enter prise-of ENTER prise Premier-abonnement met systeembeheerders machtigingen.
 
-## <a name="assign-users-to-smartsheet"></a>Gebruikers toewijzen aan een Smartsheet
+## <a name="assign-users-to-smartsheet"></a>Gebruikers toewijzen aan Smart Sheet
 
-Azure Active Directory maakt gebruik van een concept genaamd *toewijzingen* om te bepalen welke gebruikers krijgen toegang tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers, worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u configureren en inschakelen van automatische inrichten van gebruikers, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang hebben tot Smartsheet moeten. Wanneer u beslist, kunt u deze gebruikers en/of groepen toewijzen aan Smartsheet door de instructies hier:
+Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot Smart Sheet. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan Smart Sheet door de volgende instructies te volgen:
 
-* [Een gebruiker of groep toewijzen aan een enterprise-app](../manage-apps/assign-user-or-group-access-portal.md)
+* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-smartsheet"></a>Belangrijke tips voor het toewijzen van gebruikers met Smartsheet
+### <a name="important-tips-for-assigning-users-to-smartsheet"></a>Belang rijke tips voor het toewijzen van gebruikers aan Smart Sheet
 
-* Het wordt aanbevolen dat één Azure AD-gebruiker is toegewezen aan de Smartsheet voor het testen van de configuratie van de automatische gebruikersinrichting. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Smart sheet om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Bij het toewijzen van een gebruiker met Smartsheet, moet u een geldige toepassingsspecifieke-rol (indien beschikbaar) in het dialoogvenster toewijzing selecteren. Gebruikers met de **standaardtoegang** rol worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Smart Sheet, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
 
-* Om ervoor te zorgen pariteit in roltoewijzingen gebruiker tussen Smartsheet en Azure AD, is het aanbevolen gebruikmaken van de dezelfde roltoewijzingen ingevuld in de volledige lijst met een Smartsheet-gebruikers. Als u wilt deze lijst met gebruikers uit Smartsheet ophalen, gaat u naar **accountbeheerder > Gebruikersbeheer > meer acties > downloaden van de gebruikerslijst (csv)** .
+* Om ervoor te zorgen dat pariteit in gebruikersrol toewijzingen tussen Smart Sheet en Azure AD wordt gebruikt, is het raadzaam om dezelfde roltoewijzingen te gebruiken die zijn ingevuld in de volledige Smart Sheet-gebruikers lijst. Als u deze gebruikers lijst van Smart sheet wilt ophalen, gaat u naar **account beheerder > gebruikers beheer > meer acties > Download gebruikers lijst (CSV)** .
 
-* Smartsheet vereist voor toegang tot bepaalde functies in de app moet een gebruiker meerdere rollen hebben. Voor meer informatie over de gebruikerstypen en machtigingen in Smartsheet, gaat u naar [gebruikerstypen en machtigingen](https://help.smartsheet.com/learning-track/shared-users/user-types-and-permissions).
+* Voor toegang tot bepaalde functies in de app vereist Smart Sheet dat een gebruiker meerdere rollen heeft. Ga voor meer informatie over gebruikers typen en machtigingen in Smart Sheet naar [gebruikers typen en machtigingen](https://help.smartsheet.com/learning-track/shared-users/user-types-and-permissions).
 
-*  Als een gebruiker meerdere rollen toegewezen in Smartsheet, heeft u **moet** ervoor te zorgen dat deze roltoewijzingen in Azure AD om te voorkomen dat een scenario waarbij gebruikers kunnen geen toegang meer tot Smartsheet objecten definitief worden gerepliceerd. Elke unieke rol in Smartsheet **moet** worden toegewezen aan een andere groep in Azure AD. De gebruiker **moet** en vervolgens worden toegevoegd aan elk van de groepen die overeenkomt met de gewenste rollen. 
+*  Als aan een gebruiker meerdere rollen zijn toegewezen in Smart Sheet, **moet** u ervoor zorgen dat deze roltoewijzingen worden gerepliceerd in azure AD om een scenario te vermijden waarin gebruikers de toegang tot Smart Sheet-objecten permanent kunnen verliezen. Elke unieke rol in Smart Sheet **moet** worden toegewezen aan een andere groep in azure AD. De gebruiker **moet** vervolgens worden toegevoegd aan elk van de groepen die overeenkomen met de gewenste rollen. 
 
-## <a name="set-up-smartsheet-for-provisioning"></a>Smartsheet instellen voor het inrichten van
+## <a name="set-up-smartsheet-for-provisioning"></a>Smart Sheet instellen voor inrichting
 
-Voordat u Smartsheet configureert voor automatisch gebruikers inrichten met Azure AD, moet u SCIM inrichting op Smartsheet inschakelen.
+Voordat u Smart Sheet configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op Smart Sheet.
 
-1. Meld u aan als een **SysAdmin** in de **[Smartsheet portal](https://app.smartsheet.com/b/home)** en navigeer naar **accountbeheerder**.
+1. Meld u aan als **sysadmin** in de **[Smart Sheet-Portal](https://app.smartsheet.com/b/home)** en navigeer naar **account beheerder**.
 
-    ![Beheerder van het Smartsheet-Account](media/smartsheet-provisioning-tutorial/smartsheet-accountadmin.png)
+    ![Smart Sheet-account beheerder](media/smartsheet-provisioning-tutorial/smartsheet-accountadmin.png)
 
-2. Ga naar **beveiligingsmechanismen > gebruiker automatisch ingericht > bewerken**.
+2. Ga naar **beveiligings controles > gebruikers automatisch inrichten > bewerken**.
 
-    ![Maatregelen voor Smartsheet](media/smartsheet-provisioning-tutorial/smartsheet-securitycontrols.png)
+    ![Smart Sheet-beveiligings controles](media/smartsheet-provisioning-tutorial/smartsheet-securitycontrols.png)
 
-3. Voeg en valideren van de e-maildomeinen voor de gebruikers die u van plan om in te richten van Azure AD met Smartsheet bent. Kies **niet ingeschakeld** om ervoor te zorgen dat alle inrichting acties alleen afkomstig zijn uit Azure AD, en ook voor zorgen dat de lijst van uw Smartsheet-gebruiker is gesynchroniseerd met Azure AD-toewijzingen.
+3. Voeg en valideer de e-mail domeinen voor de gebruikers die u van plan bent vanuit Azure AD in te richten op Smart Sheet. Kies **niet ingeschakeld** om ervoor te zorgen dat alle inrichtings acties alleen afkomstig zijn van Azure AD en om er ook voor te zorgen dat uw Smart Sheet-gebruikers lijst wordt gesynchroniseerd met Azure AD-toewijzingen.
 
-    ![Smartsheet gebruikers inrichten](media/smartsheet-provisioning-tutorial/smartsheet-userprovisioning.png)
+    ![Smart Sheet gebruikers inrichten](media/smartsheet-provisioning-tutorial/smartsheet-userprovisioning.png)
 
-4. Als validatie voltooid is, moet u het domein te activeren. 
+4. Nadat de validatie is voltooid, moet u het domein activeren. 
 
-    ![Smartsheet domein activeren](media/smartsheet-provisioning-tutorial/smartsheet-activatedomain.png)
+    ![Domein Smart Sheet activeren](media/smartsheet-provisioning-tutorial/smartsheet-activatedomain.png)
 
-5. Genereren van de **geheim Token** vereist voor het configureren van automatisch gebruikers inrichten met Azure AD door te navigeren naar **Apps en integraties**.
+5. Genereer het **geheime token** dat vereist is voor het configureren van automatische gebruikers inrichting met Azure AD door te navigeren naar **apps en integraties**.
 
-    ![Smartsheet installeren](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
+    ![Smart Sheet-installatie](media/smartsheet-provisioning-tutorial/Smartsheet05.png)
 
-6. Kies **API-toegang**. Klik op **genereren nieuw toegangstoken**.
+6. Kies **API-toegang**. Klik op **nieuw toegangs token genereren**.
 
-    ![Smartsheet installeren](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
+    ![Smart Sheet-installatie](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
 
-7. De naam van de API-toegangstoken definiëren. Klik op **OK**.
+7. Definieer de naam van het API-toegangs token. Klik op **OK**.
 
-    ![Smartsheet installeren](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
+    ![Smart Sheet-installatie](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
 
-8. De API-toegangstoken kopiëren en opslaan als dit is de enige keer dat u deze kunt bekijken. Dit is vereist de **geheim Token** veld in Azure AD.
+8. Kopieer het API-toegangs token en sla het op omdat dit de enige keer is dat u deze kunt bekijken. Dit is vereist in het veld **geheime token** in azure AD.
 
-    ![Smartsheet-token](media/smartsheet-provisioning-tutorial/Smartsheet08.png)
+    ![Smart Sheet-token](media/smartsheet-provisioning-tutorial/Smartsheet08.png)
 
-## <a name="add-smartsheet-from-the-gallery"></a>Smartsheet uit de galerie toevoegen
+## <a name="add-smartsheet-from-the-gallery"></a>Smart Sheet toevoegen vanuit de galerie
 
-Smartsheet configureren voor automatisch gebruikers inrichten met Azure AD, moet u Smartsheet uit de galerie met Azure AD toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Als u Smart sheet wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u Smart Sheet van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-1. In de  **[Azure-portal](https://portal.azure.com)** , selecteer in het navigatievenster aan de linkerkant **Azure Active Directory**.
+1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
 
-    ![De Azure Active Directory-knop](common/select-azuread.png)
+    ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfstoepassingen**, en selecteer vervolgens **alle toepassingen**.
-
-    ![De blade Enterprise-toepassingen](common/enterprise-applications.png)
-
-3. Als u wilt een nieuwe toepassing toevoegen, selecteert u de **nieuwe toepassing** knop aan de bovenkant van het deelvenster.
-
-    ![De knop nieuwe toepassing](common/add-new-app.png)
-
-4. Voer in het zoekvak **Smartsheet**, selecteer **Smartsheet** in het deelvenster resultaten. 
-
-    ![Smartsheet in de lijst met resultaten](common/search-new-app.png)
-
-5. Selecteer de **Meld u aan voor Smartsheet** knop waarmee u wordt omgeleid naar de Smartsheet-aanmeldingspagina. 
-
-    ![Smartsheet OIDC toevoegen](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-add.png)
-
-6. Smartsheet is een app OpenIDConnect, kiest u aanmelden bij Smartsheet met uw Microsoft-werkaccount.
-
-    ![Smartsheet OIDC-aanmelding](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-login.png)
-
-7. Na een geslaagde verificatie door de toestemmingsprompt voor voor de pagina toestemming te accepteren. De toepassing wordt vervolgens automatisch worden toegevoegd aan uw tenant en u wordt omgeleid naar uw Smartsheet-account.
-
-    ![Smartsheet OIDc toestemming](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-consent.png)
-
-## <a name="configure-automatic-user-provisioning-to-smartsheet"></a>Automatisch gebruikers inrichten met Smartsheet configureren 
-
-Deze sectie helpt u bij de stappen voor het configureren van de Azure AD-inrichtingsservice als u wilt maken, bijwerken en uitschakelen van gebruikers en/of groepen in Smartsheet op basis van gebruiker en/of groep toewijzingen in Azure AD.
-
-### <a name="to-configure-automatic-user-provisioning-for-smartsheet-in-azure-ad"></a>Het configureren van automatisch gebruikers inrichten voor Smartsheet in Azure AD:
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfstoepassingen**en selecteer vervolgens **alle toepassingen**.
+2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Smartsheet**.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
-    ![De Smartsheet-koppeling in de lijst met toepassingen](common/all-applications.png)
+    ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-3. Selecteer de **Provisioning** tabblad.
+4. Typ **Smart Sheet**in het zoekvak en selecteer **Smart Sheet** in het deel venster resultaten. 
 
-    ![Inrichting](common/provisioning.png)
+    ![Smart sheet in de lijst met resultaten](common/search-new-app.png)
 
-4. Stel de **Inrichtingsmodus** naar **automatische**.
+5. Selecteer de knop **Aanmelden voor Smart Sheet** , waarmee u wordt doorgestuurd naar de aanmeldings pagina van Smart Sheet. 
 
-    ![Inrichting](common/provisioning-automatic.png)
+    ![Smart Sheet OIDC toevoegen](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-add.png)
 
-5. Onder de **beheerdersreferenties** sectie invoer `https://scim.smartsheet.com/v2/` in **Tenant-URL**. De waarde die u hebt opgehaald en eerder hebt opgeslagen vanuit Smartsheet in invoer **geheim Token**. Klik op **testverbinding** om te controleren of Azure AD verbinding kunt maken met Smartsheet. Als de verbinding is mislukt, zorg ervoor dat uw Smartsheet-account SysAdmin-machtigingen heeft en probeer het opnieuw.
+6. Als Smart Sheet een OpenIDConnect-app is, kiest u aanmelden bij Smart Sheet met uw micro soft-werk account.
+
+    ![Smart Sheet OIDC-aanmelding](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-login.png)
+
+7. Accepteer na een geslaagde verificatie de toestemming prompt voor de pagina toestemming. De toepassing wordt vervolgens automatisch toegevoegd aan uw Tenant en u wordt doorgestuurd naar uw Smart Sheet-account.
+
+    ![Smart Sheet OIDc toestemming](media/smartsheet-provisioning-tutorial/smartsheet-OIDC-consent.png)
+
+## <a name="configure-automatic-user-provisioning-to-smartsheet"></a>Automatische gebruikers inrichting configureren voor Smart Sheet 
+
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Smart Sheet te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+
+### <a name="to-configure-automatic-user-provisioning-for-smartsheet-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Smart sheet in azure AD:
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+
+    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+
+2. Selecteer in de lijst toepassingen de optie **Smart Sheet**.
+
+    ![De koppeling Smart sheet in de lijst met toepassingen](common/all-applications.png)
+
+3. Selecteer het tabblad **inrichten** .
+
+    ![Tabblad inrichten](common/provisioning.png)
+
+4. Stel de **inrichtings modus** in op **automatisch**.
+
+    ![Tabblad inrichten](common/provisioning-automatic.png)
+
+5. Selecteer in de sectie **beheerders referenties** de invoer `https://scim.smartsheet.com/v2/` in de **Tenant-URL**. Voer de waarde in die u hebt opgehaald en eerder hebt opgeslagen uit Smart sheet in een **geheim token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Smart Sheet. Als de verbinding mislukt, zorg er dan voor dat uw Smart Sheet-account SysAdmin-machtigingen heeft en probeer het opnieuw.
 
     ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. In de **e-mailmelding** en voer het e-mailadres van een persoon of groep die u moet de inrichting fout ontvangen en schakel het selectievakje in - **een e-mailmelding verzenden wanneer een foutoptreedt**.
+6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
 
-    ![E-mailmelding](common/provisioning-notification-email.png)
+    ![E-mail melding](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
-8. Onder de **toewijzingen** sectie, selecteer **synchroniseren Azure Active Directory: gebruikers met Smartsheet**.
+8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Smart Sheet**.
 
-    ![Smartsheet gebruikerstoewijzingen](media/smartsheet-provisioning-tutorial/smartsheet-user-mappings.png)
+    ![Smart Sheet-gebruikers toewijzingen](media/smartsheet-provisioning-tutorial/smartsheet-user-mappings.png)
 
-9. Controleer de kenmerken van de gebruiker die worden gesynchroniseerd vanuit Azure AD met Smartsheet in de **kenmerk toewijzing** sectie. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt zodat deze overeenkomen met de gebruikersaccounts in Smartsheet voor update-bewerkingen. Selecteer de **opslaan** knop wijzigingen doorvoeren.
+9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Smart sheet in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Smart Sheet voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Gebruikerskenmerken Smartsheet](media/smartsheet-provisioning-tutorial/smartsheet-user-attributes.png)
+    ![Smart Sheet-gebruikers kenmerken](media/smartsheet-provisioning-tutorial/smartsheet-user-attributes.png)
 
-10. Als u wilt configureren bereikfilters, raadpleegt u de volgende instructies in de [Scoping filter zelfstudie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
-11. Wijzigen zodat de Azure AD-inrichtingsservice voor Smartsheet de **Inrichtingsstatus** naar **op** in de **instellingen** sectie.
+11. Als u de Azure AD-inrichtings service voor **Smart sheet wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Inrichtingsstatus ingeschakeld](common/provisioning-toggle-on.png)
+    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-12. De gebruikers en/of groepen die u wilt inrichten met Smartsheet definiëren door het kiezen van de gewenste waarden in **bereik** in de **instellingen** sectie.
+12. Definieer de gebruikers en/of groepen die u wilt inrichten voor Smart Sheet door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
-    ![Inrichting van bereik](common/provisioning-scope.png)
+    ![Inrichtings bereik](common/provisioning-scope.png)
 
-13. Wanneer u klaar om in te richten bent, klikt u op **opslaan**.
+13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Bezig met opslaan van de Inrichtingsconfiguratie](common/provisioning-configuration-save.png)
+    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt gestart voor de initiële synchronisatie van alle gebruikers en/of groepen die zijn gedefinieerd **bereik** in de **instellingen** sectie. De eerste synchronisatie langer duren om uit te voeren dan het volgende wordt gesynchroniseerd, die ongeveer elke 40 minuten optreden als de Azure AD-inrichtingsservice wordt uitgevoerd. U kunt de **synchronisatiedetails** sectie voortgang en koppelingen volgen voor het inrichten van rapport van de activiteit, die alle acties die worden uitgevoerd door de Azure AD-inrichtingsservice op Smartsheet beschrijft.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Smart Sheet.
 
-Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="connector-limitations"></a>Connector-beperkingen
+## <a name="connector-limitations"></a>Connector beperkingen
 
-* Smartsheet biedt geen ondersteuning voor voorlopig verwijderen. Wanneer een gebruiker **active** kenmerk is ingesteld op False, Smartsheet wordt de gebruiker permanent verwijderd.
+* Smart Sheet biedt geen ondersteuning voor soft-verwijderingen. Wanneer het **actieve** kenmerk van een gebruiker is ingesteld op ONWAAR, wordt de gebruiker in Smart Sheet permanent verwijderd.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Het inrichten van gebruikersaccounts voor bedrijfs-Apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en rapporten over het inrichten van activiteit ophalen](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)

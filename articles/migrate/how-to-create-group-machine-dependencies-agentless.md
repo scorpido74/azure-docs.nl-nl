@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c8ddd343cd00b24506382521361ebad33ad112a7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288949"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049750"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Visualisatie van de afhankelijkheid van agents instellen voor evaluatie
 
@@ -62,7 +62,7 @@ Voor visualisatie zonder agent hoeft u geen agents op computers te installeren. 
 
 Stel een gebruikers account in met de vereiste machtigingen zodat de server evaluatie toegang kan krijgen tot de virtuele machine voor detectie. U kunt één gebruikers account opgeven.
 
-- **Vereiste machtiging voor Windows-vm's: voor**het gebruikers account is de toegang ' gast ' vereist.
+- **Vereiste machtiging voor Windows-vm's**: het gebruikers account moet een lokale of een domein beheerder zijn.
 - **Vereiste machtiging voor Linux-vm's**: de hoofd bevoegdheid is vereist voor het account. De gebruikers account vereist ook deze twee mogelijkheden op/bin/netstat-en/bin/ls-bestanden: CAP_DAC_READ_SEARCH en CAP_SYS_PTRACE.
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Het gebruikers account toevoegen aan het apparaat

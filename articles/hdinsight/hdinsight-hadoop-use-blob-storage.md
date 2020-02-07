@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 1e115c59cab4c340f927da516b5f937abf42e985
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 55cddf5317938dea353517cde7260a1aa531d1df
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839664"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061255"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure-opslag gebruiken met Azure HDInsight-clusters
 
 Als u gegevens in een HDInsight-cluster wilt analyseren, kunt u de gegevens opslaan in [Azure Storage](../storage/common/storage-introduction.md), [Azure Data Lake Storage gen 1](../data-lake-store/data-lake-store-overview.md)/[Azure data Lake Storage gen 2](../storage/blobs/data-lake-storage-introduction.md)of een combi natie hiervan. Met deze opslag opties kunt u HDInsight-clusters die worden gebruikt voor berekeningen, veilig verwijderen zonder dat er gebruikers gegevens verloren gaan.
 
-Apache Hadoop ondersteunt een principe van het standaard bestandssysteem. Het standaardbestandssysteem impliceert een standaardschema en instantie. De toepassing kan ook worden gebruikt om relatieve paden om te zetten. Tijdens het maken van het HDInsight-cluster kunt u een BLOB-container opgeven in Azure Storage als het standaard bestandssysteem, of met HDInsight 3,6, kunt u Azure Storage of Azure Data Lake Storage gen 1/Azure Data Lake Storage gen 2 als de standaard bestanden selecteren systeem met enkele uitzonde ringen. Zie [Beschik baarheid voor HDInsight-cluster](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)voor de ondersteuning van het gebruik van data Lake Storage gen 1 als standaard-en gekoppelde opslag.
+Apache Hadoop ondersteunt een principe van het standaard bestandssysteem. Het standaardbestandssysteem impliceert een standaardschema en instantie. De toepassing kan ook worden gebruikt om relatieve paden om te zetten. Tijdens het maken van het HDInsight-cluster kunt u een BLOB-container opgeven in Azure Storage als het standaard bestandssysteem, of met HDInsight 3,6, kunt u Azure Storage of Azure Data Lake Storage gen 1/Azure Data Lake Storage gen 2 selecteren als het standaard bestanden systeem met enkele uitzonde ringen. Zie [Beschik baarheid voor HDInsight-cluster](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)voor de ondersteuning van het gebruik van data Lake Storage gen 1 als standaard-en gekoppelde opslag.
 
 In dit artikel wordt uitgelegd hoe Azure Storage werkt met HDInsight-clusters. Zie [Azure data Lake Storage gebruiken met Azure hdinsight-clusters](hdinsight-hadoop-use-data-lake-store.md)voor meer informatie over hoe data Lake Storage gen 1 werkt met hdinsight-clusters. Zie [Apache Hadoop clusters maken in HDInsight](hdinsight-hadoop-provision-linux-clusters.md)voor meer informatie over het maken van een HDInsight-cluster.
 
@@ -122,7 +122,7 @@ LOCATION 'wasbs:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-abmari"></a>Pad naar opslag van Abmari identificeren
+## <a name="identify-storage-path-from-ambari"></a>Pad naar opslag van Ambari identificeren
 
 * Als u het volledige pad naar het geconfigureerde standaard archief wilt identificeren, gaat u naar:
 
@@ -164,7 +164,7 @@ Tijdens het maken van een HDInsight-cluster geeft u het Azure Storage-account op
 
 In dit artikel hebt u geleerd hoe u HDFS-compatibele Azure-opslag kunt gebruiken met HDInsight. Zodoende kunt u een schaalbare, duurzame, archiveringsoplossing voor gegevensverzameling bouwen en HDInsight gebruiken om de informatie te ontsluiten in de opgeslagen gestructureerde en ongestructureerde gegevens.
 
-Zie voor meer informatie:
+Ga voor meer informatie naar:
 
 * [Aan de slag met Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Aan de slag met Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md)

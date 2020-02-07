@@ -8,19 +8,19 @@ ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: gregman
-ms.openlocfilehash: 99474246bf1ff5cbcc39861d56f05aa38f177f31
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.author: philmea
+ms.openlocfilehash: 5f88a21efd04c9dd24fe31e925a3b911b5ec9df2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510036"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045906"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Azure IoT Edge uitvoeren op Windows Server Virtual Machines
 
 De Azure IoT Edge-runtime is wat een apparaat verandert in een IoT Edge-apparaat. De runtime kan worden geïmplementeerd op apparaten als klein is als een Raspberry Pi of even groot zijn als een industrie-server. Wanneer een apparaat is geconfigureerd met de IoT Edge-runtime, kun u bedrijfslogica toe vanuit de cloud implementeren.
 
-Zie voor meer informatie over de werking van de IoT Edge-runtime en welke onderdelen zijn opgenomen, [inzicht in de Azure IoT Edge-runtime en de bijbehorende architectuur](iot-edge-runtime.md).
+Voor meer informatie over de werking van de IoT Edge runtime en welke onderdelen zijn opgenomen, raadpleegt u [de Azure IOT Edge runtime en de bijbehorende architectuur](iot-edge-runtime.md).
 
 In dit artikel worden de stappen beschreven voor het uitvoeren van de Azure IoT Edge runtime op een virtuele machine met Windows Server 2019, met behulp van de [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace-aanbieding. Volg de instructies in [de Azure IOT Edge runtime installeren](how-to-install-iot-edge-windows.md) op Windows voor gebruik met andere versies.
 
@@ -98,7 +98,7 @@ In dit artikel worden de stappen beschreven voor het uitvoeren van de Azure IoT 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een IoT Edge-apparaat dat is ingericht met de runtime geïnstalleerd hebt, kunt u [IoT Edge-modules implementeren](how-to-deploy-modules-portal.md).
+Nu u een IoT Edge apparaat hebt ingericht terwijl de runtime is geïnstalleerd, kunt u [IOT Edge modules implementeren](how-to-deploy-modules-portal.md).
 
 Als u problemen ondervindt met het installeren van de Edge-runtime, raadpleegt u de pagina [probleem oplossing](troubleshoot.md) .
 

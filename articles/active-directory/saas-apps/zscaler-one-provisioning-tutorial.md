@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Configureer Zscaler één voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+title: 'Zelf studie: een Zscaler configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Zscaler.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: de9dce04b6f27b6ae6f5c5caeed5728370359558
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 87413932acee576934ee50b59546371b03ceaf7e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515388"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064169"
 ---
-# <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Zelfstudie: Zscaler configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Zelf studie: een Zscaler configureren voor het automatisch inrichten van gebruikers
 
 In deze zelf studie ziet u de stappen voor het uitvoeren van Zscaler één en Azure Active Directory (Azure AD) voor het configureren van Azure AD voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en groepen tot Zscaler één.
 
@@ -53,11 +53,11 @@ Voer de volgende stappen uit om Zscaler één van de Marketplace toe te voegen.
 
 2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
-    ![De blade Enterprise-toepassingen](common/enterprise-applications.png)
+    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
 3. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing** bovenaan het dialoogvenster.
 
-    ![De knop nieuwe toepassing](common/add-new-app.png)
+    ![De knop Nieuwe toepassing](common/add-new-app.png)
 
 4. Voer in het zoekvak **Zscaler One** in en selecteer **Zscaler One** in het deel venster voor resultaten. Selecteer **toevoegen**om de toepassing toe te voegen.
 
@@ -84,7 +84,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Zscaler één in azure AD
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen** > **alle toepassingen** > **Zscaler een**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen** > **alle toepassingen** > **Zscaler**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -102,7 +102,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 5. Vul in het gedeelte **beheerders referenties** de vakken **Tenant-URL** en **geheim token** in met de instellingen voor uw Zscaler één account zoals beschreven in stap 6.
 
-6. Als u de Tenant-URL en het geheime token wilt ophalen, gaat u naar **beheer** > **verificatie-instellingen** in de Zscaler-gebruikers interface van de portal. Onder **verificatie type**selecteert u **SAML**.
+6. Als u de Tenant-URL en het geheime token wilt ophalen, gaat u naar **beheer** > **verificatie-instellingen** in de gebruikers interface van Zscaler One Portal. Onder **verificatie type**selecteert u **SAML**.
 
     ![Zscaler één verificatie-instellingen](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
@@ -110,7 +110,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Zscaler-SAML configureren](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
-    b. Selecteer **op scim gebaseerde inrichting inschakelen** om de instellingen in basis- **URL** en Bearer- **token**op te halen. Sla vervolgens de instellingen op. Kopieer de **basis-URL** -instelling naar de **Tenant-url** in de Azure Portal. Kopieer de **Bearer-token** instelling naar een **geheim token** in de Azure Portal.
+    b. Selecteer **op scim gebaseerde inrichting inschakelen** om de instellingen in basis- **URL** en **Bearer-token**op te halen. Sla vervolgens de instellingen op. Kopieer de **basis-URL** -instelling naar de **Tenant-url** in de Azure Portal. Kopieer de **Bearer-token** instelling naar een **geheim token** in de Azure Portal.
 
 7. Nadat u de vakken in stap 5 hebt ingevuld, selecteert u **verbinding testen** om te controleren of Azure AD verbinding kan maken met Zscaler One. Als de verbinding mislukt, moet u ervoor zorgen dat uw Zscaler één account beheerders machtigingen heeft en probeer het opnieuw.
 
@@ -140,7 +140,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 14. Als u bereik filters wilt configureren, volgt u de instructies in de [zelf studie](./../active-directory-saas-scoping-filters.md)voor het filteren op bereik.
 
-15. Als u de Azure AD-inrichtings service voor Zscaler één wilt inschakelen, wijzigt u in de sectie **instellingen** de inrichtings **status** in **op aan**.
+15. Als u de Azure AD-inrichtings service voor Zscaler één wilt inschakelen, wijzigt u in de sectie **instellingen** de **inrichtings status** in **op aan**.
 
     ![Zscaler één inrichtings status](./media/zscaler-one-provisioning-tutorial/provisioning-status.png)
 
@@ -160,7 +160,7 @@ Zie [rapportage over het automatisch inrichten van gebruikers accounts](../activ
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen

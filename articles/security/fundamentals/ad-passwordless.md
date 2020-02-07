@@ -1,5 +1,6 @@
 ---
-title: Meer informatie over een wereld zonder wacht woorden met Azure Active Directory | Microsoft Docs
+title: Verificatie zonder wacht woord met Azure AD
+titleSuffix: Active Directory
 description: Deze hand leiding helpt CEOs, Cio's, CISOs, Chief Identity Architects, Enter prise Architects en Security en IT-besluit vormers die verantwoordelijk zijn voor het kiezen van een verificatie methode met een wacht woord voor hun Azure Active Directory-implementatie.
 keywords: geen wacht woord, azuread
 author: martincoetzer
@@ -9,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 5fc6a4a23573995cf791a21ec7cf3a7d68d048e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945587"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064475"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Een wereld zonder wacht woorden met Azure Active Directory
 
@@ -208,7 +209,7 @@ Beheerders kunnen FIDO2-ondersteuning inschakelen in azure AD en de mogelijkheid
 
 * Azure AD
 
-* Verificatie op basis van meerdere factoren van Azure
+* Azure Multi-Factor Authentication
 
 * Preview van gecombineerde registratie
 
@@ -284,7 +285,7 @@ Hier volgen enkele factoren waarmee u rekening moet houden bij het kiezen van mi
 ||**Windows Hello voor Bedrijven**|**Aanmelding zonder wacht woord met de Microsoft Authenticator-app**|**FIDO2-beveiligings sleutels**|
 |:-|:-|:-|:-|
 |**Vereiste**| Windows 10, versie 1809 of hoger<br>Azure Active Directory| Microsoft Authenticator-app<br>Telefoon (iOS-en Android-apparaten met Android 6,0 of hoger.)|Windows 10, versie 1809 of hoger<br>Azure Active Directory|
-|**Mode**|Platform|Software|Hardware|
+|**Penmodus**|Platform|Software|Hardware|
 |**Systemen en apparaten**|PC met ingebouwde Trusted Platform Module (TPM)<br>Herkenning van PINCODEs en biometrie |Herkenning van PINCODEs en biometrie op telefoon|FIDO2-beveiligings apparaten die compatibel zijn met micro soft|
 |**Gebruikers ervaring**|Meld u aan met een pincode of biometrische herkenning (gezicht, Iris of vinger afdruk) met Windows-apparaten.<br>Windows hello-verificatie is gekoppeld aan het apparaat. de gebruiker heeft het apparaat en een aanmeldings onderdeel zoals een pincode of biometrische factor nodig om toegang te krijgen tot bedrijfs bronnen.|Meld u aan met een mobiele telefoon met vingerafdruk scan, gezichts controle of Iris herkenning of pincode.<br>Gebruikers melden zich aan bij een werk-of persoonlijk account vanaf hun PC of mobiele telefoon.|Aanmelden met FIDO2-beveiligings apparaat (biometrie, PIN en NFC)<br>Gebruiker heeft toegang tot het apparaat op basis van organisatie besturings elementen en verificatie op basis van pincode, biometrie met behulp van apparaten zoals USB-beveiligings sleutels en met NFC ingeschakelde Smart Cards, sleutels of Wearables.|
 |**Ingeschakelde scenario's**| Wachtwoord minder ervaring met Windows-apparaat.<br>Van toepassing op toegewezen werk computer met mogelijkheid voor eenmalige aanmelding bij apparaten en toepassingen.|Een wacht woord met een mobiele telefoon.<br>Van toepassing voor toegang tot zakelijke of persoonlijke toepassingen op het web vanaf elk apparaat.|Wacht woord minder ervaring voor werk nemers met biometrie, PIN en NFC.<br>Van toepassing op gedeelde Pc's en waar een mobiele telefoon geen geschikte optie is (zoals voor helpdesk personeel, open bare kiosk of ziekenhuis team)|

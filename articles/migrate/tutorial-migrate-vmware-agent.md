@@ -4,12 +4,12 @@ description: Meer informatie over het uitvoeren van een op agents gebaseerde mig
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: MVC
-ms.openlocfilehash: c6e0b65a586bfd629244404933836cde7287ae29
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028948"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057274"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Virtuele VMware-machines migreren naar Azure (op basis van een agent)
 
@@ -402,12 +402,12 @@ Nadat u hebt gecontroleerd of de test migratie werkt zoals verwacht, kunt u de o
 
 2. Klik in **Machines repliceren** met de rechtermuisknop op de VM > **Migreren**.
 3. In **Migreren** > **Virtuele machines afsluiten en geplande migratie uitvoeren zonder gegevensverlies** selecteert u **Ja** > **OK**.
-    - Azure Migrate sluit standaard de on-premises VM af en voert de replicatie op aanvraag uit om VM-wijzigingen die sinds de laatste replicatie zijn opgetreden, te synchroniseren. Zo gaan er geen gegevens verloren.
+    - Standaard Azure Migrate de on-premises VM afsluit om te zorgen voor mini maal gegevens verlies. 
     - Als u de VM niet wilt afsluiten, selecteert u **Nee**
 4. Er wordt een migratietaak gestart voor de VM. Volg de taak in Azure-meldingen.
 5. Nadat de taak is afgerond, kunt u de VM bekijken en beheren vanaf de pagina **Virtuele machines**.
 
-## <a name="complete-the-migration"></a>De migratie voltooien
+## <a name="complete-the-migration"></a>Migratie voltooien
 
 1. Nadat de migratie is voltooid, klikt u met de rechter muisknop op de virtuele machine > de **migratie stoppen**. Hiermee wordt de replicatie voor de on-premises computer gestopt en worden de gegevens van de replicatie status voor de virtuele machine opgeschoond.
 2. Installeer de Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) -of [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) -agent op de gemigreerde computers.

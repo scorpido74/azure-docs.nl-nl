@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/03/2020
+ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 49c5566454a93307dedd150a3508b33dbd7506e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1abcd22621d427244f9b0533aaea46cbf1f356ad
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022355"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064033"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Verzamelingen gebruiken in de portal mijn apps
 
-Werk ruimten zijn verschillende app-weer gaven die u ziet in de portal **mijn apps** . Apps kunnen bijvoorbeeld worden gegroepeerd in verzamelingen per afdelings functie of gebruikersrol. Als er geen verzamelingen of beschik bare categorieën worden weer geven, betekent dit dat uw beheerder geen met u heeft ingesteld of gedeeld. Neem contact op met de Help Desk van uw organisatie voor aanvullende assistentie of machtigingen om gedeelde verzamelingen te bekijken.
+Verzamelingen zijn verschillende app-weer gaven die in de portal **mijn apps** worden weer gegeven. Apps kunnen bijvoorbeeld worden gegroepeerd in verzamelingen per afdelings functie of gebruikersrol. Als er geen verzamelingen of beschik bare categorieën worden weer geven, betekent dit dat uw beheerder geen met u heeft ingesteld of gedeeld. Neem contact op met de Help Desk van uw organisatie voor aanvullende assistentie of machtigingen om gedeelde verzamelingen te bekijken.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 

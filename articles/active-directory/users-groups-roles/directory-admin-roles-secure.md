@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5f36e82c2ff95800a058f56f9cc6b80ddf02dbf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967710"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063846"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Uitgebreide toegang beveiligen voor hybride en Cloud implementaties in azure AD
 
@@ -44,7 +44,7 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 does the article really start here?-->
 Voor de meeste organisaties is de beveiliging van bedrijfs assets afhankelijk van de integriteit van de bevoegde accounts waarmee IT-systemen worden beheerd en beheerd. Cyber aanvallers richten zich op bevoorrechte toegang tot infrastructuur systemen (zoals Active Directory en Azure Active Directory) om toegang te krijgen tot gevoelige gegevens van een organisatie. 
 
-Traditionele benaderingen die zich richten op het beveiligen van de ingangs-en uitgangs punten van een netwerk, omdat de primaire beveiligings verbinding minder effectief is vanwege de toename van het gebruik van SaaS-apps en persoonlijke apparaten op internet. De natuurlijke vervanging voor de netwerkbeveiligingsperimeter in een complexe moderne onderneming is het gebruik van verificatie- en autorisatie-elementen in de identiteitslaag van een organisatie.
+Traditionele benaderingen die zich richten op het beveiligen van de ingangs-en uitgangs punten van een netwerk, omdat de primaire beveiligings verbinding minder effectief is vanwege de toename van het gebruik van SaaS-apps en persoonlijke apparaten op internet. De natuurlijke vervanging voor de netwerk beveiligings verbinding in een complexe moderne onderneming is de verificatie-en autorisatie controles in de laag van een organisatie.
 
 Geprivilegieerde beheerders accounts zijn effectief in het beheer van dit nieuwe beveiligings netwerk. Het is van cruciaal belang om de toegang te beschermen, ongeacht of de omgeving on-premises, Cloud of hybride on-premises en in de Cloud gehoste services is. Voor het beveiligen van administratieve toegang tegen de vastgestelde aanvallers moet u een volledige en doordachte benadering nemen voor het isoleren van de systemen van uw organisatie tegen Risico's. 
 
@@ -241,7 +241,7 @@ Beheer van C-Suite, managers op hoog niveau, kritiek IT-en beveiligings personee
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Speciale werk stations gebruiken voor beheer voor Azure AD
 
-Aanvallers kunnen proberen zich te richten op bevoegde accounts om toegang te krijgen tot de gegevens en systemen van een organisatie, zodat ze de integriteit en authenticiteit van gegevens kunnen verstoren door middel van schadelijke code die de programma logica wijzigt of de beheerder die een referentie invoert, ondervindt. Privileged Access Workstations (PAW's) beschikken over een speciaal besturingssysteem voor gevoelige taken dat is beveiligd tegen aanvallen via internet en dreigingsvectoren. Het scheiden van deze gevoelige taken en accounts van de werk stations en apparaten die dagelijks worden gebruikt, biedt zeer sterke bescherming tegen phishing-aanvallen, problemen met toepassingen en besturings systemen, verschillende imitatie aanvallen en aanvallen met referentie diefstal, zoals toetsaanslag logboek registratie, Pass-the-hash en Pass-the-ticket. Door privileged Access workstations te implementeren, kunt u het risico dat beheerders beheerders referenties invoeren, beperken, behalve op een desktop omgeving die is gehard. Zie [privileged Access workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)(Engelstalig) voor meer informatie.
+Aanvallers kunnen proberen zich te richten op bevoegde accounts om toegang te krijgen tot de gegevens en systemen van een organisatie, zodat ze de integriteit en authenticiteit van gegevens kunnen verstoren door middel van schadelijke code die de programma logica wijzigt of de beheerder die een referentie invoert, ondervindt. Privileged Access workstations (Paw's) bieden een speciaal besturings systeem voor gevoelige taken die worden beschermd tegen aanvallen via internet en bedreigings vectoren. Het scheiden van deze gevoelige taken en accounts van de werk stations en apparaten die dagelijks worden gebruikt, biedt zeer sterke bescherming tegen phishing-aanvallen, problemen met toepassingen en besturings systemen, verschillende imitatie aanvallen en aanvallen met referentie diefstal, zoals toetsaanslag logboek registratie, Pass-the-hash en Pass-the-ticket. Door privileged Access workstations te implementeren, kunt u het risico dat beheerders beheerders referenties invoeren, beperken, behalve op een desktop omgeving die is gehard. Zie [privileged Access workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)(Engelstalig) voor meer informatie.
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Bestudeer het National Institute of Standards and Technology aanbevelingen voor het afhandelen van incidenten 
 
@@ -298,11 +298,11 @@ Met Azure-logboek integratie kunt u onbewerkte logboeken van uw Azure-resources 
 
 #### <a name="implement-user-provisioning-for-connected-apps"></a>Gebruikers inrichten voor verbonden Apps implementeren
 
-Met Azure AD kunt u het maken, onderhouden en verwijderen van gebruikers identiteiten in Cloud toepassingen (SaaS), zoals Dropbox, Sales Force, ServiceNow, enzovoort automatiseren. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure AD automatiseren](../manage-apps/user-provisioning.md)voor meer informatie.
+Met Azure AD kunt u het maken, onderhouden en verwijderen van gebruikers identiteiten in Cloud toepassingen (SaaS), zoals Dropbox, Sales Force, ServiceNow, enzovoort automatiseren. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure AD automatiseren](../app-provisioning/user-provisioning.md)voor meer informatie.
 
 #### <a name="integrate-information-protection"></a>Gegevens beveiliging integreren
 
-Met MCAS kunt u bestanden onderzoeken en beleid instellen op basis van Azure Information Protection classificatie labels, waardoor uw gegevens in de Cloud beter zichtbaar zijn en kunnen worden beheerd. Bestanden in de Cloud scannen en classificeren en Azure Information Protection-labels Toep assen. Zie voor meer informatie, [integratie van Azure Information Protection](https://docs.microsoft.com/cloud-app-security/azip-integration).
+Met MCAS kunt u bestanden onderzoeken en beleid instellen op basis van Azure Information Protection classificatie labels, waardoor uw gegevens in de Cloud beter zichtbaar zijn en kunnen worden beheerd. Bestanden in de Cloud scannen en classificeren en Azure Information Protection-labels Toep assen. Zie [Azure Information Protection-integratie](https://docs.microsoft.com/cloud-app-security/azip-integration)voor meer informatie.
 
 #### <a name="configure-conditional-access"></a>Voorwaardelijke toegang configureren
 
@@ -318,7 +318,7 @@ Om ervoor te zorgen dat de toegang van gebruikers wordt beschermd in verbonden t
 * Lekkage van gegevens voor komen
 * Risico's en automatische bedreigings preventie en beleids afdwinging minimaliseren
 
-De Cloud App Security SIEM-Agent integreert Cloud App Security met uw SIEM-server om gecentraliseerde bewaking van Office 365-waarschuwingen en-activiteiten mogelijk te maken. Het wordt uitgevoerd op uw server en er worden waarschuwingen en activiteiten opgehaald van Cloud App Security en deze worden naar de SIEM-server gestreamd. Zie voor meer informatie, [SIEM-integratie](https://docs.microsoft.com/cloud-app-security/siem).
+De Cloud App Security SIEM-Agent integreert Cloud App Security met uw SIEM-server om gecentraliseerde bewaking van Office 365-waarschuwingen en-activiteiten mogelijk te maken. Het wordt uitgevoerd op uw server en er worden waarschuwingen en activiteiten opgehaald van Cloud App Security en deze worden naar de SIEM-server gestreamd. Zie [Siem-integratie](https://docs.microsoft.com/cloud-app-security/siem)voor meer informatie.
 
 ## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>Fase 4: door gaan met het bouwen van beveiliging in een proactieve beveiligings postuur
 

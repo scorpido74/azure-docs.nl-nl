@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6a17570a62728d5b4f9c99e3c4c939b5c77cb3df
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 47ee05113d46f66efd02978fed09cf72edc5ac1c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080216"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049945"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>ExpressRoute direct configureren met behulp van de Azure CLI
 
-U kunt Azure ExpressRoute Direct rechtstreeks verbinding maken met het wereldwijde netwerk van Microsoft op peeringlocaties strategisch verdeeld over de hele wereld. Zie voor meer informatie, [over ExpressRoute rechtstreeks verbinding maken met](expressroute-erdirect-about.md).
+U kunt Azure ExpressRoute Direct rechtstreeks verbinding maken met het wereldwijde netwerk van Microsoft op peeringlocaties strategisch verdeeld over de hele wereld. Zie [about ExpressRoute Direct Connect](expressroute-erdirect-about.md)(Engelstalig) voor meer informatie.
 
-## <a name="resources"></a>Maken van de resource
+## <a name="resources"></a>De resource maken
 
 1. Aanmelden bij Azure en selecteer het abonnement met ExpressRoute. De resource Direct van ExpressRoute en uw ExpressRoute-circuits moeten zich in hetzelfde abonnement. Voer de volgende opdrachten in de Azure-CLI:
 
@@ -38,13 +38,18 @@ U kunt Azure ExpressRoute Direct rechtstreeks verbinding maken met het wereldwij
    az account set --subscription "<subscription ID>"
    ```
 
-2. Een overzicht van alle locaties waar ExpressRoute Direct wordt ondersteund:
+2. Registreer uw abonnement opnieuw voor het micro soft. Network om toegang te krijgen tot de expressrouteportslocation-en expressrouteport-Api's
+
+   ```azurecli
+   az provider register --namespace Microsoft.Network
+   ```
+3. Een overzicht van alle locaties waar ExpressRoute Direct wordt ondersteund:
     
    ```azurecli
    az network express-route port location list
    ```
 
-   **Voorbeeld van uitvoer**
+   **Voorbeeld uitvoer**
   
    ```azurecli
    [
@@ -105,13 +110,13 @@ U kunt Azure ExpressRoute Direct rechtstreeks verbinding maken met het wereldwij
    }
    ]
    ```
-3. Bepalen of een van de locaties die worden vermeld in de vorige stap beschikbare bandbreedte heeft:
+4. Bepalen of een van de locaties die worden vermeld in de vorige stap beschikbare bandbreedte heeft:
 
    ```azurecli
    az network express-route port location show -l "Equinix-Ashburn-DC2"
    ```
 
-   **Voorbeeld van uitvoer**
+   **Voorbeeld uitvoer**
 
    ```azurecli
    {
@@ -131,7 +136,7 @@ U kunt Azure ExpressRoute Direct rechtstreeks verbinding maken met het wereldwij
    "type": "Microsoft.Network/expressRoutePortsLocations"
    }
    ```
-4. Maak een ExpressRoute-Direct-resource die gebaseerd op de locatie die u hebt gekozen in de voorgaande stappen.
+5. Maak een ExpressRoute-Direct-resource die gebaseerd op de locatie die u hebt gekozen in de voorgaande stappen.
 
    ExpressRoute Direct biedt ondersteuning voor zowel QinQ en Dot1Q inkapseling. Als u QinQ selecteert, wordt elk ExpressRoute-circuit wordt dynamisch toegewezen een S-Tag en is uniek zijn in de resource ExpressRoute Direct. Elke C-code op het circuit moet uniek zijn voor het circuit, maar ook niet voor de resource ExpressRoute Direct.  
 
@@ -146,10 +151,10 @@ U kunt Azure ExpressRoute Direct rechtstreeks verbinding maken met het wereldwij
    ```
 
    > [!NOTE]
-   > U kunt ook instellen de **inkapseling** kenmerk **Dot1Q**. 
+   > U kunt ook het **encapsulation** -kenmerk instellen op **Dot1Q**. 
    >
 
-   **Voorbeeld van uitvoer**
+   **Voorbeeld uitvoer**
 
    ```azurecli
    {
@@ -203,11 +208,11 @@ U kunt Azure ExpressRoute Direct rechtstreeks verbinding maken met het wereldwij
    }  
    ```
 
-## <a name="state"></a>Wijziging AdminState voor koppelingen
+## <a name="state"></a>AdminState wijzigen voor koppelingen
 
 Dit proces gebruiken voor het uitvoeren van een laag 1-test. Zorg ervoor dat elke cross-verbinding naar elke router in de primaire en secundaire poorten is gepatcht.
 
-1. Koppelingen ingesteld op **ingeschakeld**. Herhaal deze stap voor elke koppeling ingesteld op **ingeschakeld**.
+1. Stel links in op **ingeschakeld**. Herhaal deze stap om elke koppeling in te stellen op **ingeschakeld**.
 
    Koppelingen [0] is de primaire-poort en koppelingen [1] is de secundaire-poort.
 
@@ -217,7 +222,7 @@ Dit proces gebruiken voor het uitvoeren van een laag 1-test. Zorg ervoor dat elk
    ```azurecli
    az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[1].adminState="Enabled"
    ```
-   **Voorbeeld van uitvoer**
+   **Voorbeeld uitvoer**
 
    ```azurecli
    {
@@ -271,7 +276,7 @@ Dit proces gebruiken voor het uitvoeren van een laag 1-test. Zorg ervoor dat elk
    }
    ```
 
-   Gebruik dezelfde procedure en de poorten met behulp van `AdminState = "Disabled"`.
+   U kunt dezelfde procedure gebruiken om de poorten te verlagen met behulp van `AdminState = "Disabled"`.
 
 ## <a name="circuit"></a>Een circuit maken
 
@@ -290,7 +295,7 @@ Een circuit maken op de resource ExpressRoute Direct:
 
   Andere bandbreedten zijn 5 Gbps en 10 Gbps 40 Gbps.
 
-  **Voorbeeld van uitvoer**
+  **Voorbeeld uitvoer**
 
   ```azurecli
   {
@@ -328,4 +333,4 @@ Een circuit maken op de resource ExpressRoute Direct:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over ExpressRoute Direct de [overzicht](expressroute-erdirect-about.md).
+Zie het [overzicht](expressroute-erdirect-about.md)voor meer informatie over ExpressRoute direct.

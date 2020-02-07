@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 84ab5da993541012fd2199a30d03f5c69e88bf2c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2de0cdd32428884170f549afacdbd52c3a10c93f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530031"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060045"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>Zelf studie: kenmerk terugschrijven van Azure AD naar SAP SuccessFactors configureren (preview)
 Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren voor het terugschrijven van kenmerken van Azure AD naar SuccessFactors Employee Central. Het enige kenmerk dat momenteel wordt ondersteund voor write-back is het e-mail kenmerk. 
@@ -183,8 +183,8 @@ Zodra de configuratie van de SuccessFactors-inrichting is voltooid, kunt u de in
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
 * [Meer informatie over het configureren van eenmalige aanmelding tussen SuccessFactors en Azure Active Directory](successfactors-tutorial.md)
 * [Meer informatie over het integreren van andere SaaS-toepassingen met Azure Active Directory](tutorial-list.md)
-* [Meer informatie over het exporteren en importeren van uw inrichtings configuraties](../manage-apps/export-import-provisioning-configuration.md)
+* [Meer informatie over het exporteren en importeren van uw inrichtings configuraties](../app-provisioning/export-import-provisioning-configuration.md)
 

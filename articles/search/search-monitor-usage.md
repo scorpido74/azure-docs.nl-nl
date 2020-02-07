@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7ef868f156ac537cb066f293872f69135c4df25f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793491"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059642"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Resource verbruik en query activiteit bewaken in azure Cognitive Search
 
@@ -26,7 +26,7 @@ In dit artikel vindt u meer informatie over uw bewakings opties, het inschakelen
 
 ## <a name="metrics-at-a-glance"></a>Metrische gegevens in één oogopslag
 
-De bewerkings-en **bewakings** secties die in het overzichts venster zijn **ingebouwd, worden** opgenomen in het Resource verbruik en de metrische gegevens van de query uitvoering Deze informatie wordt beschikbaar zodra u de service gaat gebruiken, zonder dat de configuratie is vereist. Deze pagina wordt om de paar minuten vernieuwd. Als u besluit [om te bepalen welke laag moet worden gebruikt voor werk belastingen voor de productie](search-sku-tier.md), of als u [het aantal actieve replica's en partities wilt aanpassen](search-capacity-planning.md), kunt u aan de hand van deze maat regelen zien hoe snel resources worden verbruikt. en hoe goed de huidige configuratie de bestaande belasting verwerkt.
+De bewerkings-en **bewakings** secties die in het overzichts venster zijn **ingebouwd, worden** opgenomen in het Resource verbruik en de metrische gegevens van de query uitvoering Deze informatie wordt beschikbaar zodra u de service gaat gebruiken, zonder dat de configuratie is vereist. Deze pagina wordt om de paar minuten vernieuwd. Als u besluit [om te bepalen welke laag moet worden gebruikt voor werk belastingen voor de productie](search-sku-tier.md), of als u [het aantal actieve replica's en partities wilt aanpassen](search-capacity-planning.md), kunt u aan de hand van deze maat regelen zien hoe snel resources worden verbruikt en hoe goed de huidige configuratie de bestaande belasting afhandelt.
 
 Op het tabblad **gebruik** ziet u de beschik baarheid van resources ten opzichte van huidige [limieten](search-limits-quotas-capacity.md). De volgende afbeelding is voor de gratis service, die wordt afgelimiteerd bij 3 objecten van elk type en 50 MB aan opslag. Een Basic-of Standard-Service heeft hogere limieten en als u het aantal partities verhoogt, wordt de maximale opslag proportioneel.
 
@@ -56,7 +56,7 @@ Azure Cognitive Search slaat geen gegevens buiten de beheerde objecten op, wat b
 
 De volgende tabel vergelijkt de opties voor het opslaan van Logboeken en het toevoegen van uitgebreide bewaking van service bewerkingen en het uitvoeren van query's op werk belastingen via Application Insights.
 
-| Bron | Gebruikt voor |
+| Resource | Gebruikt voor |
 |----------|----------|
 | [Azure Monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Vastgelegde gebeurtenissen en query gegevens, op basis van de onderstaande schema's. Gebeurtenissen worden geregistreerd in een Log Analytics-werk ruimte. U kunt query's uitvoeren op een werk ruimte om gedetailleerde informatie uit het logboek te retour neren. Zie [aan de slag met Azure monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) voor meer informatie. |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Vastgelegde gebeurtenissen en query gegevens, op basis van de onderstaande schema's. Gebeurtenissen worden geregistreerd in een BLOB-container en opgeslagen in JSON-bestanden. Een JSON-editor gebruiken om de inhoud van een bestand weer te geven.|
@@ -76,24 +76,26 @@ In deze sectie leert u hoe u Blob Storage kunt gebruiken voor het opslaan van va
 
    Uw opslag account moet zich in dezelfde regio bevinden als Azure Cognitive Search.
 
-2. Open de overzichts pagina van de zoek service. Schuif in het linkerdeel venster omlaag naar **bewaking** en klik op **bewaking inschakelen**.
+2. Open de overzichts pagina van de zoek service. Schuif in het linkerdeel venster omlaag naar **bewaking** en klik op **Diagnostische instellingen**.
 
-   ![Bewaking inschakelen](./media/search-monitor-usage/enable-monitoring.png "Bewaking inschakelen")
+   ![Diagnostische instellingen](./media/search-monitor-usage/diagnostic-settings.png "Diagnostische instellingen")
 
-3. Kies de gegevens die u wilt exporteren: Logboeken, metrieken of beide. U kunt het kopiëren naar een opslag account, het naar een Event Hub verzenden of het exporteren naar Azure Monitor-Logboeken.
+3. **Diagnostische instelling toevoegen** selecteren
+
+4. Kies de gegevens die u wilt exporteren: Logboeken, metrische gegevens of beide. U kunt het kopiëren naar een opslag account, het naar een Event Hub verzenden of het exporteren naar Azure Monitor-Logboeken.
 
    Voor archivering naar Blob Storage moet alleen het opslag account bestaan. Containers en blobs worden zo gemaakt als nodig wanneer logboek gegevens worden geëxporteerd.
 
    ![Blob Storage-archief configureren](./media/search-monitor-usage/configure-blob-storage-archive.png "Blob Storage-archief configureren")
 
-4. Sla het profiel op.
+5. Het profiel opslaan
 
-5. Test logboek registratie door het maken of verwijderen van objecten (logboek gebeurtenissen maken) en door het verzenden van query's (metrische gegevens worden gegenereerd). 
+6. Test logboek registratie door het maken of verwijderen van objecten (logboek gebeurtenissen maken) en door het verzenden van query's (metrische gegevens worden gegenereerd). 
 
 Logboek registratie is ingeschakeld wanneer u het profiel opslaat. Containers worden alleen gemaakt als er een activiteit is die moet worden geregistreerd of gemeten. Wanneer de gegevens naar een opslag account worden gekopieerd, worden de gegevens ingedeeld als JSON en in twee containers geplaatst:
 
-* Insights-logboeken-operationlogs: voor logboeken met Zoek opdrachten
-* inzichten-metrische gegevens-pt1m: voor metrische gegevens
+* Insights-logs-operationlogs: voor zoeken in logboeken over webverkeer
+* Insights-metrics-pt1m: voor metrische gegevens
 
 **Het duurt één uur voordat de containers worden weer gegeven in de Blob-opslag. Er is één blob, per uur, per container.**
 
@@ -105,52 +107,52 @@ U kunt [Visual Studio code](#download-and-open-in-visual-studio-code) of een and
 resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json
 ```
 
-## <a name="log-schema"></a>Logboek schema
+## <a name="log-schema"></a>Logboek-schema
 Blobs met uw verkeers logboeken van de zoek service zijn gestructureerd zoals beschreven in deze sectie. Elke BLOB heeft één hoofd object met de naam **records** die een matrix met logboek objecten bevatten. Elke BLOB bevat records voor alle bewerkingen die plaatsvonden tijdens hetzelfde uur.
 
-| Naam | Type | Voorbeeld | Opmerkingen |
+| Name | Type | Voorbeeld | Opmerkingen |
 | --- | --- | --- | --- |
-| tijd |datum/tijd |"2018-12-07T00:00:43.6872559 Z" |Tijds tempel van de bewerking |
-| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/STANDAARD/PROVIDERS/<br/> Micro soft. SEARCH/SEARCHSERVICES/SEARCHSERVICE " |Uw ResourceId |
-| operationName |string |Query. Search |De naam van de bewerking |
-| operationVersion |string |"2019-05-06" |De API-versie die wordt gebruikt |
-| category |string |"OperationLogs" |bedrag |
-| resultType |string |Geleverd |Mogelijke waarden: geslaagd of mislukt |
-| resultSignature |int |200 |HTTP-resultaat code |
-| durationMS |int |50 |De duur van de bewerking in milliseconden |
-| properties |object |Raadpleeg de volgende tabel |Object met toepassingsspecifieke gegevens |
+| tijd |datum/tijd |"2018-12-07T00:00:43.6872559 Z" |Tijdstempel van de bewerking |
+| resourceId |tekenreeks |' / SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>STANDAARD-RESOURCEGROUPS-PROVIDERS /<br/> MICROSOFT. ZOEKEN/SEARCHSERVICES/SEARCHSERVICE" |Uw ResourceId |
+| operationName |tekenreeks |"Query.Search" |De naam van de bewerking |
+| operationVersion |tekenreeks |"2019-05-06" |De api-versie die wordt gebruikt |
+| category |tekenreeks |"OperationLogs" |constante |
+| resultType |tekenreeks |"Geslaagd" |Mogelijke waarden: slagen of mislukken |
+| resultSignature |int |200 |HTTP-resultaatcode |
+| durationMS |int |50 |Duur van de bewerking in milliseconden |
+| properties |object |Zie de volgende tabel |Object met de bewerking-specifieke gegevens |
 
 **Eigenschappen schema**
 
-| Naam | Type | Voorbeeld | Opmerkingen |
+| Name | Type | Voorbeeld | Opmerkingen |
 | --- | --- | --- | --- |
-| Beschrijving |string |' GET/Indexes (' content ')/docs ' |Het eind punt van de bewerking |
-| Query |string |"? Search = AzureSearch & $count = True & API-Version = 2019-05-06" |De query parameters |
+| Beschrijving |tekenreeks |'/Indexes('content')/docs ophalen' |Eindpunt van de bewerking |
+| Query's uitvoeren |tekenreeks |"?search=AzureSearch&$count=true&api-version=2019-05-06" |De queryparameters |
 | Documenten |int |42 |Aantal verwerkte documenten |
-| indexName |string |"testindex" |De naam van de index die is gekoppeld aan de bewerking |
+| Index |tekenreeks |"testindex" |Naam van de index die is gekoppeld aan de bewerking |
 
-## <a name="metrics-schema"></a>Schema voor metrische gegevens
+## <a name="metrics-schema"></a>Schema van de metrische gegevens
 
 Metrische gegevens worden vastgelegd voor query aanvragen.
 
-| Naam | Type | Voorbeeld | Opmerkingen |
+| Name | Type | Voorbeeld | Opmerkingen |
 | --- | --- | --- | --- |
-| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/STANDAARD/PROVIDERS/<br/>Micro soft. SEARCH/SEARCHSERVICES/SEARCHSERVICE " |de resource-ID |
-| metricName |string |Periode |de naam van de metriek |
-| tijd |datum/tijd |"2018-12-07T00:00:43.6872559 Z" |de tijds tempel van de bewerking |
-| evenredig |int |64 |De gemiddelde waarde van de onbewerkte voor beelden in het tijds interval voor metrische gegevens |
-| Maal |int |37 |De minimale waarde van de onbewerkte voor beelden in het tijds interval voor metrische gegevens |
-| Gehalte |int |78 |De maximum waarde van de onbewerkte voor beelden in het tijds interval voor metrische gegevens |
-| eind |int |258 |De totale waarde van de onbewerkte voor beelden in het tijds interval voor metrische gegevens |
-| count |int |4 |Het aantal onbewerkte voor beelden dat wordt gebruikt voor het genereren van de metriek |
-| timegrain |string |"PT1M" |De tijd korrel van de metriek in ISO 8601 |
+| resourceId |tekenreeks |' / SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>STANDAARD-RESOURCEGROUPS-PROVIDERS /<br/>MICROSOFT. ZOEKEN/SEARCHSERVICES/SEARCHSERVICE" |de resource-ID |
+| MetricName |tekenreeks |"Latentie" |de naam van de metrische gegevens |
+| tijd |datum/tijd |"2018-12-07T00:00:43.6872559 Z" |tijdstempel van de bewerking |
+| gemiddeld |int |64 |De gemiddelde waarde van de onbewerkte voorbeelden in de metrische tijdsinterval |
+| minimum |int |37 |De minimumwaarde van de onbewerkte voorbeelden in de metrische tijdsinterval |
+| maximum |int |78 |De maximale waarde van de onbewerkte voorbeelden in de metrische tijdsinterval |
+| totaal |int |258 |De totale waarde van de onbewerkte voorbeelden in de metrische tijdsinterval |
+| count |int |4 |Het aantal onbewerkte voorbeelden die worden gebruikt voor het genereren van de metrische gegevens |
+| timegrain |tekenreeks |"PT1M" |Het tijdsinterval van de metrische gegevens in de ISO 8601 |
 
-Alle metrische gegevens worden binnen een interval van één minuut gerapporteerd. Bij elke metriek worden minimum-, maximum-en gemiddelde waarden per minuut weer gegeven.
+Alle metrische gegevens worden gerapporteerd in één minuut intervallen. Elke metriek wordt de minimale, maximale en gemiddelde waarden per minuut.
 
-Voor de metriek SearchQueriesPerSecond is minimum de laagste waarde voor zoek query's per seconde die tijdens die minuut zijn geregistreerd. Hetzelfde geldt voor de maximum waarde. Gemiddelde, is de aggregatie over de hele minuut.
-Denk na over dit scenario gedurende één minuut: één seconde van een hoge belasting die het maximum voor SearchQueriesPerSecond is, gevolgd door 58 seconden gemiddeld laden, en ten slotte één seconde met slechts één query, wat het minimum is.
+Voor de metriek SearchQueriesPerSecond is minimaal de laagste waarde voor zoekquery's per seconde dat is geregistreerd gedurende die minuut. Dit geldt ook voor de maximale waarde. Gemiddelde, wordt de statistische functie voor de hele minuut.
+Denk aan dit scenario gedurende één minuut: één seconde van hoog laden dat wil zeggen het maximum voor SearchQueriesPerSecond, gevolgd door 58 seconden gemiddelde belasting, en tot slot een tweede met slechts één query die is de minimale.
 
-Voor ThrottledSearchQueriesPercentage, minimum, maximum, Average en Total hebben allemaal dezelfde waarde: het percentage Zoek query's dat is beperkt tot het totale aantal Zoek query's gedurende één minuut.
+ThrottledSearchQueriesPercentage, minimum, maximum, gemiddelde en totale, een hebben dezelfde waarde: het percentage van zoekquery's die zijn beperkt, van het totale aantal zoekquery's gedurende één minuut.
 
 ## <a name="download-and-open-in-visual-studio-code"></a>Downloaden en openen in Visual Studio code
 

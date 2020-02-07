@@ -3,12 +3,12 @@ title: Ondersteuning voor Hyper-V-migratie in Azure Migrate
 description: Meer informatie over ondersteuning voor Hyper-V-migratie met Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 4ca946597417ccde0e00c8bf09c70207bc4f85b9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031643"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064458"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Ondersteunings matrix voor Hyper-V-migratie
 
@@ -23,10 +23,10 @@ U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer compute
 
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
-| **Implementatie**       | De Hyper-V-host kan zelfstandig of in een cluster worden geïmplementeerd. |
+| **Implementatie**       | De Hyper-V-host kan zelfstandig of in een cluster worden geïmplementeerd. <br/>Azure Migrate replicatie software (Hyper-V-replicatie provider) moet worden geïnstalleerd op de Hyper-V-hosts.|
 | **Machtigingen**           | U hebt beheerders machtigingen nodig op de Hyper-V-host. |
 | **Besturings systeem van host** | Windows Server 2019, Windows Server 2016 of Windows Server 2012 R2. |
-| **URL-toegang** | Hyper-V-hosts moeten toegang hebben tot deze URL'S:<br/><br/> -login.microsoftonline.com: toegangs beheer en identiteits beheer met behulp van Active Directory.<br/><br/> -*. backup.windowsazure.com: replicatie gegevens overdracht en coördinatie. Migreer service-Url's.<br/><br/> -*. blob.core.windows.net: gegevens uploaden naar opslag accounts.<br/><br/> -dc.services.visualstudio.com: app-logboeken uploaden die worden gebruikt voor interne bewaking.<br/><br/> - time.windows.com | Hiermee wordt de tijd synchronisatie tussen systeem en Global time gecontroleerd.
+| **URL-toegang** | De software van de replicatie provider op de Hyper-V-hosts heeft toegang tot deze URL'S nodig:<br/><br/> -login.microsoftonline.com: toegangs beheer en identiteits beheer met behulp van Active Directory.<br/><br/> -*. backup.windowsazure.com: replicatie gegevens overdracht en coördinatie. Migreer service-Url's.<br/><br/> -*. blob.core.windows.net: gegevens uploaden naar opslag accounts.<br/><br/> -dc.services.visualstudio.com: app-logboeken uploaden die worden gebruikt voor interne bewaking.<br/><br/> -time.windows.com: Hiermee wordt de tijd synchronisatie tussen systeem en Global time gecontroleerd.
 | **Poort toegang** |  Uitgaande verbindingen op HTTPS-poort 443 voor het verzenden van VM-replicatie gegevens.
 
 ## <a name="hyper-v-vms"></a>Virtuele Hyper-V-machines
@@ -34,8 +34,6 @@ U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer compute
 | **Ondersteuning**                  | **Details**               
 | :----------------------------- | :------------------- |
 | **Besturingssysteem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -besturings systemen die worden ondersteund door Azure. |
-| **Machtigingen**           | U hebt beheerders machtigingen nodig op elke Hyper-V-VM die u wilt beoordelen. |
-| **Integratie Services**       | [Hyper-V-integratie Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) moeten worden uitgevoerd op vm's die u controleert, om informatie over het besturings systeem vast te leggen. |
 | **Vereiste wijzigingen voor Azure** | Voor sommige Vm's zijn mogelijk wijzigingen vereist zodat ze kunnen worden uitgevoerd in Azure. U moet hand matig aanpassingen maken voordat u de migratie uitvoert. De relevante artikelen bevatten instructies over hoe u dit doet. |
 | **Linux-opstart**                 | Als/boot zich op een toegewezen partitie bevindt, moet deze zich op de besturingssysteem schijf bevinden en niet over meerdere schijven worden verspreid.<br/> Als/boot deel uitmaakt van de hoofd partitie (/), moet de partitie '/' zich op de besturingssysteem schijf bevindt en niet over andere schijven beschikken. |
 | **UEFI-opstart**                  | De gemigreerde VM in azure wordt automatisch geconverteerd naar een BIOS-opstart-VM. Op de VM moet Windows Server 2012 en hoger worden uitgevoerd. De besturingssysteem schijf moet Maxi maal vijf partities of minder hebben en de grootte van de besturingssysteem schijf moet kleiner zijn dan 300 GB.
@@ -55,15 +53,13 @@ U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer compute
 
 ## <a name="azure-vm-requirements"></a>Vereisten voor Azure VM
 
-Alle on-premises Vm's die naar Azure worden gerepliceerd, moeten voldoen aan de vereisten voor de Azure-VM die in deze tabel worden samenvatten. Wanneer Site Recovery een controle op vereisten uitvoert voor replicatie, mislukt de controle als aan sommige vereisten niet wordt voldaan.
+Alle on-premises Vm's die naar Azure worden gerepliceerd, moeten voldoen aan de vereisten voor de Azure-VM die in deze tabel worden samenvatten.
 
 **Onderdeel** | **Vereisten** | **Details**
 --- | --- | ---
-Gast besturingssysteem | Controleert ondersteunde VMware-VM-besturings systemen voor migratie.<br/> U kunt elke werk belasting migreren die wordt uitgevoerd op een ondersteund besturings systeem. | De controle is mislukt als dit niet wordt ondersteund.
-Architectuur van gast besturingssysteem | 64-bits. | De controle is mislukt als dit niet wordt ondersteund.
 Schijf grootte van het besturings systeem | Maxi maal 2.048 GB. | De controle is mislukt als dit niet wordt ondersteund.
 Aantal besturingssysteem schijven | 1 | De controle is mislukt als dit niet wordt ondersteund.
-Aantal gegevens schijven | 64 of minder. | De controle is mislukt als dit niet wordt ondersteund.
+Aantal gegevens schijven | 16 of minder. | De controle is mislukt als dit niet wordt ondersteund.
 Grootte van de gegevens schijf | Maxi maal 4.095 GB | De controle is mislukt als dit niet wordt ondersteund.
 Netwerk adapters | Meerdere adapters worden ondersteund. |
 Gedeelde VHD | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.

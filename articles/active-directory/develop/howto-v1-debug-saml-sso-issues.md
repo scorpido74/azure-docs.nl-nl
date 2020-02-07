@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
-ms.openlocfilehash: 630d178a4f1a802d5c98b570544822e4f4013a5a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 648338f2ba57ad1c460c1c5b4a8d9a2ee91ebb1b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697010"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063710"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Fout opsporing op SAML gebaseerde eenmalige aanmelding bij toepassingen in Azure Active Directory
 
@@ -30,7 +30,7 @@ U wordt aangeraden de [beveiligde aanmeldings extensie voor mijn apps](../user-h
 Gebruik een van de volgende koppelingen om de beveiligde aanmeldings extensie voor mijn apps te downloaden en te installeren.
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Micro soft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 ## <a name="test-saml-based-single-sign-on"></a>Op SAML gebaseerde eenmalige aanmelding testen
@@ -101,4 +101,4 @@ U kunt de fout oplossen door de volgende stappen uit:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu eenmalige aanmelding aan uw toepassing werkt, kunt u het inrichten van [gebruikers en](../manage-apps/user-provisioning.md) het ongedaan maken van de inrichting van SaaS-toepassingen automatiseren of aan de [slag met voorwaardelijke toegang](../conditional-access/app-based-conditional-access.md).
+Nu eenmalige aanmelding aan uw toepassing werkt, kunt u het inrichten van [gebruikers en](../app-provisioning/user-provisioning.md) het ongedaan maken van de inrichting van SaaS-toepassingen automatiseren of aan de [slag met voorwaardelijke toegang](../conditional-access/app-based-conditional-access.md).

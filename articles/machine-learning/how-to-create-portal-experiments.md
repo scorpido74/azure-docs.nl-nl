@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: 620aab2d2104c9e08de6e7ea47511ff45a482ec4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720398"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046119"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Automatische machine learning experimenten maken, verkennen en implementeren met Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -47,7 +47,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
 ## <a name="create-and-run-experiment"></a>Experiment maken en uitvoeren
 
-1. Selecteer **+ experiment maken** en vul het formulier in.
+1. Selecteer **+ nieuwe automatische ml run** en vul het formulier in.
 
 1. Selecteer een gegevensset uit uw opslag container of maak een nieuwe gegevensset. Gegevens sets kunnen worden gemaakt op basis van lokale bestanden, Web-url's, gegevens opslag of Azure open gegevens sets. 
 
@@ -113,16 +113,19 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
         1. Prognose horizon selecteren: Geef aan hoeveel tijds eenheden (minuten/uren/dagen/weken/maanden/jaar) het model op de toekomst kan voors pellen. Verder is het model vereist om in de toekomst te voors pellen, hoe minder nauw keurig wordt. Meer [informatie over prognoses en prognoses horizon](how-to-auto-train-forecast.md).
 
-1. Beschrijving Aanvullende configuraties: extra instellingen die u kunt gebruiken om de trainings taak beter te beheren. Anders worden de standaard waarden toegepast op basis van het experiment en de gegevens. 
+1. Beschrijving Aanvullende configuratie-instellingen weer geven: extra instellingen die u kunt gebruiken om de trainings taak beter te beheren. Anders worden de standaard waarden toegepast op basis van het experiment en de gegevens. 
 
     Aanvullende configuraties|Beschrijving
     ------|------
     Primaire metriek| De belangrijkste waarde die wordt gebruikt voor het scoren van uw model. Meer [informatie over de metrische gegevens van modellen](how-to-configure-auto-train.md#explore-model-metrics).
-    Automatische parametrisatie| Selecteer deze optie om de voor verwerking van automatische machine learning in of uit te scha kelen. Preverwerking omvat het automatisch opschonen van gegevens, voorbereiden en transformeren voor het genereren van synthetische functies. [Meer informatie over voor verwerking](#preprocess).
+    Automatische parametrisatie| Selecteer deze optie om de voor verwerking van automatische machine learning in of uit te scha kelen. Preverwerking omvat het automatisch opschonen van gegevens, voorbereiden en transformeren voor het genereren van synthetische functies. Niet ondersteund voor het taak type time series-prognose. [Meer informatie over voor verwerking](#featurization). 
+    Aanbevolen model uitleggen | Schakel deze optie in of uit om de uitleg mogelijkheid van het aanbevolen model weer te geven
     Geblokkeerd algoritme| Selecteer de algoritmen die u wilt uitsluiten van de trainings taak.
     Criterium afsluiten| Wanneer aan een van deze criteria wordt voldaan, wordt de trainings taak gestopt. <br> *Tijd van trainings taak (uren)* : hoe lang het mogelijk is om de trainings taak uit te voeren. <br> *Drempel waarde voor metrische Score*: minimale metrische score voor alle pijp lijnen. Dit zorgt ervoor dat als u een gedefinieerde doel metriek hebt die u wilt bereiken, u niet meer tijd op de trainings taak brengt dan nodig is.
     Validatie| Selecteer een van de opties voor kruis validatie die u wilt gebruiken in de trainings taak. Meer [informatie over Kruis validatie](how-to-configure-auto-train.md).
-    Gelijktijdigheid| Maximum aantal *gelijktijdige herhalingen*: Maxi maal toegestane pijp lijnen (iteraties) om in de trainings taak te testen. De taak wordt niet meer uitgevoerd dan het opgegeven aantal iteraties. <br> *Max. aantal kernen per iteratie*: Selecteer de multi-core-limieten die u wilt gebruiken bij het gebruik van multi-core compute.
+    Gelijktijdigheid| Maximum aantal *gelijktijdige herhalingen*: Maxi maal toegestane pijp lijnen (iteraties) om in de trainings taak te testen. De taak wordt niet meer uitgevoerd dan het opgegeven aantal iteraties.
+
+1. Beschrijving Parametrisatie-instellingen weer geven: als u ervoor kiest om **automatische parametrisatie** in te scha kelen in het formulier **aanvullende configuratie-instellingen** , is dit formulier waar u kunt opgeven welke kolommen u wilt uitvoeren voor deze featurizations en selecteert u welke statistische waarde moet worden gebruikt voor ontbrekende waarde-toerekeningen.
 
 <a name="profile"></a>
 
@@ -151,17 +154,13 @@ Asymmetrie| Meting van de manier waarop de gegevens van de andere kolom van een 
 Kurtosis| Meting van hoe sterk de gegevens van deze kolom worden vergeleken met een normale distributie.
 
 
-<a name="preprocess"></a>
+<a name="featurization"></a>
 
 ## <a name="advanced-featurization-options"></a>Geavanceerde opties voor parametrisatie
 
-Wanneer u uw experimenten configureert, kunt u de geavanceerde instelling `feauturization`. 
+Automatische machine learning biedt automatisch voor verwerkings-en gegevens Guardrails, om u te helpen bij het identificeren en beheren van potentiële problemen met uw gegevens. 
 
-|Parametrisatie-configuratie | Beschrijving |
-| ------------- | ------------- |
-|"feauturization" = ' FeaturizationConfig '| Hiermee wordt aangegeven dat er een aangepaste parametrisatie-stap moet worden gebruikt. [Meer informatie over het aanpassen van parametrisatie](how-to-configure-auto-train.md#customize-feature-engineering).|
-|"feauturization" = "off"| Hiermee wordt aangegeven dat de parametrisatie-stap niet automatisch moet worden uitgevoerd.|
-|"feauturization" = ' auto '| Geeft aan dat als onderdeel van de voor verwerking van de volgende gegevens Guardrails en parametrisatie-stappen automatisch worden uitgevoerd.|
+### <a name="preprocessing"></a>Verwerking
 
 |&nbsp;stappen voor voor verwerking| Beschrijving |
 | ------------- | ------------- |
@@ -177,7 +176,7 @@ Wanneer u uw experimenten configureert, kunt u de geavanceerde instelling `feaut
 
 ### <a name="data-guardrails"></a>Gegevens Guardrails
 
-Automatische machine learning biedt gegevens Guardrails om u te helpen potentiële problemen met uw gegevens te identificeren (bijvoorbeeld ontbrekende waarden, klasse onevenwichtigheid) en de juiste maat regelen te nemen voor betere resultaten. Er zijn veel aanbevolen procedures beschikbaar die kunnen worden toegepast om betrouw bare resultaten te krijgen. 
+Data Guardrails worden automatisch toegepast om u te helpen potentiële problemen met uw gegevens te identificeren (bijvoorbeeld ontbrekende waarden, klasse onevenwicht) en corrigerende maat regelen te nemen voor betere resultaten. Er zijn veel aanbevolen procedures beschikbaar die kunnen worden toegepast om betrouw bare resultaten te krijgen. 
 
 In de volgende tabel worden de momenteel ondersteunde gegevens Guardrails beschreven, evenals de bijbehorende statussen die gebruikers kunnen krijgen wanneer ze hun experiment verzenden.
 
@@ -191,14 +190,11 @@ Consistentie van de gegevens van de tijd reeks|**Buffer** <br><br><br><br> **Vas
 
 ## <a name="run-experiment-and-view-results"></a>Experiment uitvoeren en resultaten weer geven
 
-Selecteer **Start** om uw experiment uit te voeren. Het voorbereiden van het experiment kan tot 10 minuten duren. Voor het uitvoeren van de uitvoering van trainings taken kan een extra 2-3 minuten voor elke pijp lijn langer duren.
+Selecteer **volt ooien** om uw experiment uit te voeren. Het voorbereiden van het experiment kan tot 10 minuten duren. Voor het uitvoeren van de uitvoering van trainings taken kan een extra 2-3 minuten voor elke pijp lijn langer duren.
 
 ### <a name="view-experiment-details"></a>Details van experiment weer geven
 
->[!NOTE]
-> Selecteer regel matig **vernieuwen** om de status van de uitvoering weer te geven. 
-
-Het scherm **detail uitvoeren** wordt geopend op het tabblad **Details** . In dit scherm ziet u een overzicht van de uitvoering van het experiment, met inbegrip van de **uitvoerings status**. 
+Het scherm **detail uitvoeren** wordt geopend op het tabblad **Details** . In dit scherm ziet u een overzicht van de uitvoering van het experiment, met inbegrip van een status balk bovenaan naast het uitvoerings nummer. 
 
 Het tabblad **modellen** bevat een lijst met de modellen die zijn gemaakt op basis van de metrische Score. Standaard beoordeelt het model dat het hoogste verlaagt op basis van de gekozen metriek boven aan de lijst. Wanneer de trainings taak meer modellen probeert, worden deze toegevoegd aan de lijst. Gebruik deze om een snelle vergelijking te krijgen van de metrische gegevens voor de modellen die tot nu toe zijn geproduceerd.
 
@@ -218,9 +214,9 @@ Automatische ML helpt u bij het implementeren van het model zonder code te schri
 
 1. U hebt een aantal opties voor implementatie. 
 
-    + Optie 1: als u het beste model wilt implementeren (volgens de criteria die u hebt gedefinieerd), selecteert u beste model implementeren op het tabblad Details.
+    + Optie 1: als u het beste model wilt implementeren (volgens de criteria die u hebt gedefinieerd), selecteert u de knop **beste model implementeren** op het tabblad **Details** .
 
-    + Optie 2: als u een specifieke model herhaling van dit experiment wilt implementeren, zoomt u in op het model om het tabblad model details te openen en selecteert u model implementeren.
+    + Optie 2: als u een specifieke model herhaling van dit experiment wilt implementeren, zoomt u in op het model om het tabblad **model Details** te openen en selecteert u **model implementeren**.
 
 1. Vul het deel venster **model implementeren** in.
 
@@ -229,7 +225,7 @@ Automatische ML helpt u bij het implementeren van het model zonder code te schri
     Name| Voer een unieke naam in voor uw implementatie.
     Beschrijving| Voer een beschrijving in om beter te kunnen identificeren waarvoor deze implementatie is.
     Reken type| Selecteer het type eind punt dat u wilt implementeren: *Azure Kubernetes service (AKS)* of *Azure container instance (ACI)* .
-    Name| *Is alleen van toepassing op AKS:* Selecteer de naam van het AKS-cluster waarnaar u wilt implementeren.
+    Compute name| *Is alleen van toepassing op AKS:* Selecteer de naam van het AKS-cluster waarnaar u wilt implementeren.
     Verificatie inschakelen | Selecteer deze optie om verificatie op basis van tokens of sleutel toe te staan.
     Aangepaste implementatie-assets gebruiken| Schakel deze functie in als u uw eigen score script en omgevings bestand wilt uploaden. Meer [informatie over Score scripts](how-to-deploy-and-where.md#script).
 
@@ -244,7 +240,7 @@ U hebt nu een Operational web service voor het genereren van voor spellingen. U 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Probeer de end-to-end- [zelf studie voor het maken van uw eerste geautomatiseerde ml experiment met Azure machine learning](tutorial-first-experiment-automated-ml.md). 
+* Probeer de end-to-end- [zelf studie voor het maken van uw eerste automatische ml-experiment met Azure machine learning Studio](tutorial-first-experiment-automated-ml.md). 
 * Meer [informatie over automatische machine learning](concept-automated-ml.md) en Azure machine learning.
 * Krijg [inzicht in geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md).
 * [Meer informatie over het gebruik van een webservice](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service).

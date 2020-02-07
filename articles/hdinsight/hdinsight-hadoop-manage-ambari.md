@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 81b57191a02dd3214928ac90e2761f5f8dfb2cfc
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: d8cb8bfa32db958b6dfdda0df23429669ce2a439
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311655"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063795"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-clusters beheren met de Web-UI van Apache Ambari
 
@@ -32,7 +32,7 @@ In dit document leert u hoe u de Ambari-webgebruikersinterface kunt gebruiken me
 De Ambari-webgebruikersinterface is beschikbaar op uw HDInsight-cluster op `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
 > [!IMPORTANT]  
-> Voor het maken van verbinding met Ambari op HDInsight is HTTPS vereist. Wanneer u om verificatie wordt gevraagd, gebruikt u de account naam en het wacht woord van de beheerder die u hebt opgegeven toen het cluster werd gemaakt.
+> Voor het maken van verbinding met Ambari op HDInsight is HTTPS vereist. Wanneer u om verificatie wordt gevraagd, gebruikt u de account naam en het wacht woord van de beheerder die u hebt opgegeven toen het cluster werd gemaakt. Als u niet wordt gevraagd om referenties, controleert u uw netwerk instellingen om te bevestigen dat er geen connectiviteits problemen zijn tussen de client en de Azure HDInsight-clusters.
 
 ## <a name="ssh-tunnel-proxy"></a>SSH-tunnel (proxy)
 
@@ -58,10 +58,10 @@ Wanneer de pagina wordt geopend, ziet u de balk aan de bovenkant. Deze balk beva
 |Services|Informatie en configuratie-instellingen voor de services in het cluster.|
 |Hosts|Informatie en configuratie-instellingen voor de knoop punten in het cluster.|
 |Waarschuwingen|Een logboek met informatie, waarschuwingen en kritieke waarschuwingen.|
-|Beheerder|Software stack/services die zijn geïnstalleerd op het cluster, informatie over service accounts en Kerberos-beveiliging.|
+|beheerder|Software stack/services die zijn geïnstalleerd op het cluster, informatie over service accounts en Kerberos-beveiliging.|
 |Knop beheer|Ambari-beheer, gebruikers instellingen en afmelden.|
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 ### <a name="alerts"></a>Waarschuwingen
 
@@ -115,7 +115,7 @@ Als u een service selecteert, wordt gedetailleerde informatie over de service we
 
 ![Overzichts gegevens van Apache Ambari-service](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
 
-#### <a name="quick-links"></a>Snelkoppelingen
+#### <a name="quick-links"></a>Snelle koppelingen
 
 Voor sommige Services wordt boven aan de pagina een koppeling **naar de snelkoppeling links** weer gegeven. Dit kan worden gebruikt om toegang te krijgen tot servicespecifieke Web-UIs, zoals:
 
@@ -156,10 +156,10 @@ Op de pagina **hosts** worden alle hosts in het cluster weer gegeven. Voer de vo
     |Alle onderdelen starten|Start alle onderdelen op de host.|
     |Alle onderdelen stoppen|Stop alle onderdelen op de host.|
     |Alle onderdelen opnieuw starten|Stop en start alle onderdelen op de host.|
-    |Onderhouds modus inschakelen|Onderdrukt waarschuwingen voor de host. Deze modus moet zijn ingeschakeld als u acties uitvoert waarmee waarschuwingen worden gegenereerd. Bijvoorbeeld, het stoppen en starten van een service.|
+    |Onderhouds modus inschakelen|Onderdrukt waarschuwingen voor de host. Deze modus moet zijn ingeschakeld als u acties wilt uitvoeren die waarschuwingen genereren. Bijvoorbeeld, het stoppen en starten van een service.|
     |Onderhouds modus uitschakelen|Retourneert de host naar normale waarschuwingen.|
     |Stoppen|Stopt DataNode of NodeManagers op de host.|
-    |Beginnen|Start DataNode of NodeManagers op de host.|
+    |Starten|Start DataNode of NodeManagers op de host.|
     |Opnieuw starten|Stopt en start DataNode of NodeManagers op de host.|
     |Uit bedrijf nemen|Hiermee verwijdert u een host uit het cluster. **Gebruik deze actie niet op HDInsight-clusters.**|
     |Opnieuw provisie|Voegt een eerder buiten gebruik gestelde host toe aan het cluster. **Gebruik deze actie niet op HDInsight-clusters.**|

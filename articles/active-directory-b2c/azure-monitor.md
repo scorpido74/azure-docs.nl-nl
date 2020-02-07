@@ -10,17 +10,17 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/03/2020
-ms.openlocfilehash: 108c9c1112327a3fcadeff4c4074f31f976a4e3d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.date: 02/05/2020
+ms.openlocfilehash: b701449e8cfb7a379522ee6ccb93f5569bd703d8
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026755"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046022"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C met Azure Monitor bewaken
 
-Gebruik Azure Monitor voor het routeren van Azure Active Directory B2C (Azure AD B2C) gebeurtenissen voor gebruiks activiteiten naar verschillende bewakings oplossingen. U kunt de logboeken bewaren voor lange termijn gebruik of integratie met SIEM-hulpprogram ma's (Security Information and Event Management) van derden om inzicht te krijgen in uw omgeving.
+Gebruik Azure Monitor om Azure Active Directory B2C (Azure AD B2C) aanmeld-en [audit](view-audit-logs.md) logboeken te routeren naar verschillende bewakings oplossingen. U kunt de logboeken bewaren voor lange termijn gebruik of integratie met SIEM-hulpprogram ma's (Security Information and Event Management) van derden om inzicht te krijgen in uw omgeving.
 
 U kunt logboek gebeurtenissen door sturen naar:
 
@@ -84,8 +84,8 @@ Voor een onboarding van uw Azure AD-Tenant (de **klant**), maakt u een [Azure Re
 
 De Azure Resource Manager sjabloon en de parameter bestanden downloaden:
 
-- [rgDelegatedResourceManagement.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegatedResourceManagement.parameters.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegatedResourceManagement. json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegatedResourceManagement. para meters. json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
 Werk vervolgens het parameter bestand bij met de waarden die u eerder hebt vastgelegd. Het volgende JSON-code fragment toont een voor beeld van een bestand met Azure Resource Manager sjabloon parameters. Voor `authorizations.value.roleDefinitionId`gebruikt u de [ingebouwde rol](../role-based-access-control/built-in-roles.md) waarde voor de *rol Inzender*`b24988ac-6180-42a0-ab88-20f7382dd24c`.
 
@@ -213,10 +213,10 @@ Nadat u resource beheer hebt gedelegeerd en uw abonnement hebt geselecteerd, ben
 
 Controle-instellingen voor Azure AD B2C activiteiten logboeken configureren:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. **Azure Active Directory** selecteren
-1. Onder **bewaking**, selecteer **diagnostische instellingen**.
+1. Onder **bewaking**selecteert u **Diagnostische instellingen**.
 1. Selecteer **+ Diagnostische instelling toevoegen**.
 
     ![Het deel venster Diagnostische instellingen in Azure Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)

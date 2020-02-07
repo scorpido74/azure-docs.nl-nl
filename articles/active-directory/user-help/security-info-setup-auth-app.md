@@ -2,7 +2,7 @@
 title: Stel de Microsoft Authenticator-app in als uw verificatie methode-Azure AD
 description: Hoe u uw beveiligings informatie pagina (preview) instelt om uw identiteit te verifiëren met behulp van de Microsoft Authenticator-app als verificatie methode.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.author: lizross
-ms.openlocfilehash: 9a3efc6f6b1b7137e8e29e37edd968765712fef5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 16cb512d3f8f8afcc199cb52c13e09b12107576f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704966"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062418"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Stel de Microsoft Authenticator-app in als uw verificatie methode
 

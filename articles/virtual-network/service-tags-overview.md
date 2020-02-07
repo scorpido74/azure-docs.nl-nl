@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 1fec2778ce8c839c5bac0c1d74085db0f8b283ce
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 26906f2a7343dbaf09f3107d2598e81a42c65091
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903001"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064645"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk 
 <a name="network-service-tags"></a>
@@ -40,7 +40,7 @@ De kolommen geven aan of de tag:
 
 Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige service Tags bieden ook een nauw keurigere controle door de overeenkomende IP-bereiken te beperken tot een bepaalde regio. De service tags **opslag** vertegenwoordigt bijvoorbeeld Azure Storage voor de hele Cloud, maar **opslag. westus** beperkt het bereik tot alleen de IP-adresbereiken van het opslag gebied van de regio westus. In de volgende tabel wordt aangegeven of elk servicetag het regionale bereik ondersteunt.  
 
-| Tag | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
+| Label | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Beheer verkeer voor Azure API Management-specifieke implementaties. | Beide | Nee | Ja |
 | **ApplicationInsightsAvailability** | Beschik baarheid van Application Insights. | Inkomend | Nee | Nee |
@@ -81,14 +81,14 @@ Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige servic
 | **GatewayManager** | Beheer verkeer voor implementaties die zijn toegewezen aan Azure VPN Gateway en Application Gateway. | Inkomend | Nee | Nee |
 | **GuestAndHybridManagement** | Azure Automation-en gast configuratie. | Uitgaand | Nee | Ja |
 | **HDInsight** | Azure HDInsight. | Inkomend | Ja | Nee |
-| **Internet** | De IP-adres ruimte die zich buiten het virtuele netwerk bevindt en bereikbaar is via het open bare Internet.<br/><br/>Het adres bereik bevat de [open bare IP-adres ruimte van Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Beide | Nee | Nee |
+| **Browser** | De IP-adres ruimte die zich buiten het virtuele netwerk bevindt en bereikbaar is via het open bare Internet.<br/><br/>Het adres bereik bevat de [open bare IP-adres ruimte van Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Beide | Nee | Nee |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Uitgaand | Nee | Nee |
 | **MicrosoftContainerRegistry** | Container register voor micro soft container-installatie kopieën. <br/><br/>*Opmerking:* U kunt ook white list volgende IP-adres (deze afhankelijkheid wordt binnenkort verwijderd): 204.79.197.219. | Uitgaand | Ja | Ja |
 | **ServiceBus** | Azure Service Bus verkeer dat gebruikmaakt van de Premium-servicelaag. | Uitgaand | Ja | Ja |
-| **ServiceFabric** | Azure Service Fabric. | Uitgaand | Nee | Nee |
+| **ServiceFabric** | Azure Service Fabric.<br/><br/>*Opmerking:* Deze tag vertegenwoordigt het Service Fabric service-eind punt voor besturings vlak per regio. Hierdoor kunnen klanten beheer bewerkingen uitvoeren voor hun Service Fabric clusters vanuit hun VNET (eind punt. https://westus.servicefabric.azure.com) | Beide | Nee | Nee |
 | **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL en Azure SQL Data Warehouse.<br/><br/>*Opmerking:* Deze tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure SQL Database, maar geen specifieke SQL-database of -server. | Uitgaand | Ja | Ja |
 | **SqlManagement** | Beheer verkeer voor SQL-specifieke implementaties. | Beide | Nee | Ja |
-| **Opslag** | Azure Storage. <br/><br/>*Opmerking:* Deze tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure Storage, maar geen specifiek Azure Storage-account. | Uitgaand | Ja | Ja |
+| **Storage** | Azure Storage. <br/><br/>*Opmerking:* Deze tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure Storage, maar geen specifiek Azure Storage-account. | Uitgaand | Ja | Ja |
 | **VirtualNetwork** | De adres ruimte van het virtuele netwerk (alle IP-adresbereiken die zijn gedefinieerd voor het virtuele netwerk), alle verbonden on-premises adres ruimten, [peered](virtual-network-peering-overview.md) virtuele netwerken, virtuele netwerken die zijn verbonden met een [virtuele netwerk gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), het [virtuele IP-adres van de host](security-overview.md#azure-platform-considerations)en adres voorvoegsels die worden gebruikt voor door de [gebruiker gedefinieerde routes](virtual-networks-udr-overview.md). Deze tag kan ook standaard routes bevatten. | Beide | Nee | Nee |
 
 >[!NOTE]
@@ -114,7 +114,7 @@ U kunt de huidige lijst met Service Tags op een programmatische manier ophalen i
 
 - [REST](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
-- [Azure-CLI](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
+- [Azure CLI](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
 
 > [!NOTE]
 > In de open bare preview-versie kan de detectie-API informatie retour neren die minder actueel is dan gegevens die door de JSON-down loads worden geretourneerd. (Zie de volgende sectie.)

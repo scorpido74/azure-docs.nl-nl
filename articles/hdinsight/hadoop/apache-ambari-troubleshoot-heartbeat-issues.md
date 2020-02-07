@@ -1,18 +1,18 @@
 ---
 title: Problemen met Apache Ambari heartbeat in azure HDInsight
 description: Bekijk de verschillende redenen voor Apache Ambari heartbeat-problemen in azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 09/11/2019
-ms.openlocfilehash: ae05a0d0866c38c2414bacb638fa90936bb6dc15
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 02/06/2020
+ms.openlocfilehash: ab88f65d535be2aef5f0b26fa1171c03276466e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964614"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057070"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Problemen met Apache Ambari heartbeat in azure HDInsight
 
@@ -22,13 +22,13 @@ In dit artikel worden de stappen beschreven voor het oplossen van problemen en m
 
 ### <a name="issue"></a>Probleem
 
-De Ambari-agent heeft een hoog CPU-gebruik, wat leidt tot waarschuwingen van de Ambari-gebruikers interface die voor bepaalde knoop punten de Ambari-agent heartbeat verloren zijn gegaan. De waarschuwing heartbeat verloren is doorgaans tijdelijk. 
+De Ambari-agent heeft een hoog CPU-gebruik, wat leidt tot waarschuwingen van de Ambari-gebruikers interface die voor bepaalde knoop punten de Ambari-agent heartbeat verloren zijn gegaan. De waarschuwing heartbeat verloren is doorgaans tijdelijk.
 
 ### <a name="cause"></a>Oorzaak
 
 Vanwege verschillende ambari-agent fouten kan uw ambari-agent in zeldzame gevallen een hoog CPU-gebruik hebben (dicht tot 100).
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 1. Proces-ID (PID) van ambari-agent identificeren:
 
@@ -61,13 +61,13 @@ Vanwege verschillende ambari-agent fouten kan uw ambari-agent in zeldzame gevall
 
 ### <a name="issue"></a>Probleem
 
-De Ambari-agent is niet gestart, waardoor er waarschuwingen van de Ambari-gebruikers interface worden gegenereerd die voor bepaalde knoop punten de heartbeat van de Ambari-agent verloren zijn gegaan.
+De Ambari-agent is nog niet gestart, waardoor er waarschuwingen zijn van de Ambari-gebruikers interface die voor bepaalde knoop punten de heartbeat van de Ambari-agent is verbroken.
 
 ### <a name="cause"></a>Oorzaak
 
 De waarschuwingen worden veroorzaakt door de Ambari-agent die niet wordt uitgevoerd.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
 1. Status van ambari-agent bevestigen:
 
@@ -81,7 +81,7 @@ De waarschuwingen worden veroorzaakt door de Ambari-agent die niet wordt uitgevo
     ps -ef | grep failover
     ```
 
-    Als failover controller-Services niet worden uitgevoerd, is er waarschijnlijk een probleem met het voor komen van hdinsight-agent om failover controller te starten. Controleer het logboek van hdinsight-agent van `/var/log/hdinsight-agent/hdinsight-agent.out` bestand.
+    Als failover controller-Services niet worden uitgevoerd, is er waarschijnlijk een probleem met het niet toestaan van hdinsight-agent om failover controller te starten. Controleer het logboek van hdinsight-agent van `/var/log/hdinsight-agent/hdinsight-agent.out` bestand.
 
 ## <a name="scenario-heartbeat-lost-for-ambari"></a>Scenario: heartbeat verloren voor Ambari
 
@@ -93,9 +93,9 @@ De Ambari heartbeat-agent is verloren gegaan.
 
 OMS-logboeken veroorzaken een hoog CPU-gebruik.
 
-### <a name="resolution"></a>Resolutie
+### <a name="resolution"></a>Oplossing
 
-* Schakel OMS-logboek registratie uit met de Power shell [-module Disable-AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite?view=azps-2.8.0) . 
+* Schakel Azure Monitor logboek registratie uit met de Power shell [-cmdlet Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) .
 * Het `mdsd.warn` logboek bestand verwijderen
 
 ---

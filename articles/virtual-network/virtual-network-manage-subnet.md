@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
-ms.openlocfilehash: e8717d10f61dfd50b9cdfa20a91203a5842d4c7d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: de80094c3fd2df7d2f8b32d1e968e9bebea847a1
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185387"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064339"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Een subnet van een virtueel netwerk toevoegen, wijzigen of verwijderen
 
@@ -49,11 +49,12 @@ Het account waarmee u zich aanmeldt of verbinding maakt met Azure met, moet word
    - **Netwerk beveiligings groep**: u kunt nul of één bestaande netwerk beveiligings groep koppelen aan een subnet voor het filteren van binnenkomend en uitgaand netwerk verkeer voor het subnet. De netwerk beveiligings groep moet zich in hetzelfde abonnement en dezelfde locatie bevinden als het virtuele netwerk. Meer informatie over [netwerk beveiligings groepen](security-overview.md) en [het maken van een netwerk beveiligings groep](tutorial-filter-network-traffic.md).
    - **Route tabel**: u kunt nul of één bestaande route tabel koppelen aan een subnet om de route ring van netwerk verkeer naar andere netwerken te beheren. De route tabel moet zich in hetzelfde abonnement en dezelfde locatie bevinden als het virtuele netwerk. Meer informatie over [Azure-route ring](virtual-networks-udr-overview.md) en [het maken van een route tabel](tutorial-create-route-table-portal.md)
    - **Service-eind punten:** Er kunnen voor een subnet nul of meerdere service-eind punten worden ingeschakeld. Als u een service-eind punt voor een service wilt inschakelen, selecteert u de service of services waarvoor u service-eind punten in de lijst met **Services** wilt inschakelen. De locatie wordt automatisch voor een eind punt geconfigureerd. Standaard worden service-eind punten geconfigureerd voor de regio van het virtuele netwerk. Voor Azure Storage voor de ondersteuning van regionale failover-scenario's, worden eind punten automatisch geconfigureerd voor [gekoppelde Azure-regio's](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
-   - **Subnet-overdracht:** Er kunnen voor een subnet nul naar meerdere delegaties worden ingeschakeld. Subnet delegering geeft expliciete machtigingen voor de service om servicespecifieke bronnen in het subnet te maken met behulp van een unieke id bij het implementeren van de service. Als u een service wilt delegeren, selecteert u de service die u wilt delegeren in de lijst met **Services** .
-
+   
        Als u een service-eind punt wilt verwijderen, moet u de service waarvoor u het service-eind punt wilt verwijderen, uitschakelen. Zie [overzicht van virtuele netwerk service-eind punten](virtual-network-service-endpoints-overview.md)voor meer informatie over service-eind punten en de services waarvoor ze kunnen worden ingeschakeld. Zodra u een service-eind punt voor een service inschakelt, moet u ook netwerk toegang inschakelen voor het subnet voor een resource die is gemaakt met de service. Als u bijvoorbeeld het service-eind punt voor *micro soft. Storage*inschakelt, moet u ook netwerk toegang inschakelen voor alle Azure Storage accounts waaraan u netwerk toegang wilt verlenen. Voor meer informatie over het inschakelen van netwerk toegang tot subnetten waarvoor een service-eind punt is ingeschakeld, raadpleegt u de documentatie voor de afzonderlijke service waarvoor u het service-eind punt hebt ingeschakeld.
 
      Als u wilt controleren of een service-eind punt is ingeschakeld voor een subnet, bekijkt u de [efficiënte routes](diagnose-network-routing-problem.md) voor elke netwerk interface in het subnet. Wanneer een eind punt is geconfigureerd, ziet u een *standaard* route met de adres voorvoegsels van de service en een NextHopType van **VirtualNetworkServiceEndpoint**. Zie [route ring-overzicht](virtual-networks-udr-overview.md)voor meer informatie over route ring.
+   - **Subnet-overdracht:** Er kunnen voor een subnet nul naar meerdere delegaties worden ingeschakeld. Subnet delegering geeft expliciete machtigingen voor de service om servicespecifieke bronnen in het subnet te maken met behulp van een unieke id bij het implementeren van de service. Als u een service wilt delegeren, selecteert u de service die u wilt delegeren in de lijst met **Services** .
+
 6. Selecteer **OK**om het subnet toe te voegen aan het virtuele netwerk dat u hebt geselecteerd.
 
 **Opdrachten**
@@ -99,7 +100,7 @@ U kunt een subnet alleen verwijderen als er geen resources in het subnet aanwezi
 
 Voor het uitvoeren van taken op subnetten moet uw account worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-|Actie                                                                   |   Naam                                       |
+|Bewerking                                                                   |   Name                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft.Network/virtualNetworks/subnets/read                           |   Een subnet van een virtueel netwerk lezen              |
 |Microsoft.Network/virtualNetworks/subnets/write                          |   Een subnet van een virtueel netwerk maken of bijwerken  |

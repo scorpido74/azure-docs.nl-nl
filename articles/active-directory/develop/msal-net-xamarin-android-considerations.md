@@ -13,12 +13,12 @@ ms.date: 04/24/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c916ac98774600c16eb26ed43b8ae4b273137865
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
-ms.translationtype: MT
+ms.openlocfilehash: 54df91d38541fbe17a28c9ae083ae0e7d0c9d88d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695004"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063659"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Xamarin Android-specifieke overwegingen met MSAL.NET
 In dit artikel worden specifieke overwegingen beschreven voor het gebruik van Xamarin Android met de micro soft Authentication Library voor .NET (MSAL.NET).
@@ -71,16 +71,19 @@ Deze regel zorgt ervoor dat het besturings element terugkeert naar MSAL zodra he
 
 ## <a name="update-the-android-manifest"></a>Het Android-manifest bijwerken
 De `AndroidManifest.xml` moet de volgende waarden bevatten:
-```csharp
+```xml
 <activity android:name="microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="msal{client_id}" android:host="auth" />
+        <data android:scheme="msauth"
+              android:host="Enter_the_Package_Name"
+              android:path="/Enter_the_Signature_Hash"/>
          </intent-filter>
 </activity>
 ```
+Vervang de naam van het pakket die u hebt geregistreerd in het Azure Portal voor de `android:host=` waarde. Vervang de sleutel-hash die u hebt geregistreerd in het Azure Portal voor de `android:path=` waarde. De hash van de hand tekening mag **geen** URL-code ring zijn. Zorg ervoor dat er een toonaangevende `/` aan het begin van uw hand tekening-hash.
 
 U kunt ook [de activiteit in code maken](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) en niet hand matig bewerken `AndroidManifest.xml`. Hiervoor moet u een klasse met het kenmerk `Activity` en `IntentFilter` maken. Een klasse die dezelfde waarden van de bovenstaande XML vertegenwoordigt, is als volgt:
 

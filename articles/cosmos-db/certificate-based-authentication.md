@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 9e9dd529edea23b27de2e3841079244558d6689a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: acdf268874b1dc1c24116ba36e2b4233a2702a5f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442103"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064492"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Verificatie op basis van certificaten voor een Azure AD-identiteit om toegang te krijgen tot sleutels van een Azure Cosmos DB-account
 
-Met verificatie op basis van certificaten kan uw client toepassing worden geverifieerd door gebruik te maken van Azure Active Directory (Azure AD) met een client certificaat. U kunt verificatie op basis van certificaten uitvoeren op een computer waar u een identiteit nodig hebt, zoals een on-premises machine of virtuele machine in Azure. Uw toepassing kan vervolgens Azure Cosmos DB sleutels lezen zonder de sleutels rechtstreeks in de toepassing te hebben. In dit artikel wordt beschreven hoe u een voor beeld van een Azure AD-toepassing maakt, hoe u deze configureert voor verificatie op basis van certificaten, zich aanmeldt bij Azure met de nieuwe toepassings-id en vervolgens de sleutels uit uw Azure Cosmos-account haalt. In dit artikel worden Azure PowerShell gebruikt voor het instellen van de identiteiten en biedt een C# voor beeld-app waarmee sleutels worden geverifieerd en geopend vanuit uw Azure Cosmos-account.  
+Met verificatie op basis van certificaten kan de clienttoepassing worden geverifieerd door Azure AD (Azure Active Directory) te gebruiken met een clientcertificaat. U kunt verificatie op basis van certificaten uitvoeren op een computer waarvoor u een id nodig hebt, zoals een on-premises computer of virtuele machine in Azure. Uw toepassing kan vervolgens Azure Cosmos DB sleutels lezen zonder de sleutels rechtstreeks in de toepassing te hebben. In dit artikel wordt beschreven hoe u een voor beeld van een Azure AD-toepassing maakt, hoe u deze configureert voor verificatie op basis van certificaten, zich aanmeldt bij Azure met de nieuwe toepassings-id en vervolgens de sleutels uit uw Azure Cosmos-account haalt. In dit artikel worden Azure PowerShell gebruikt voor het instellen van de identiteiten en biedt een C# voor beeld-app waarmee sleutels worden geverifieerd en geopend vanuit uw Azure Cosmos-account.  
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -24,11 +24,11 @@ Met verificatie op basis van certificaten kan uw client toepassing worden geveri
 
 * Als u geen [Azure-abonnement](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
 
-## <a name="register-an-app-in-azure-ad"></a>Een app bij Azure AD registreren
+## <a name="register-an-app-in-azure-ad"></a>Een app registreren in azure AD
 
 In deze stap maakt u een voor beeld van een webtoepassing in uw Azure AD-account. Deze toepassing wordt later gebruikt voor het lezen van de sleutels uit uw Azure Cosmos DB-account. Gebruik de volgende stappen om een toepassing te registreren: 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Open het deel venster **Active Directory** van Azure, ga naar het deel venster **app-registraties** en selecteer **nieuwe registratie**. 
 
@@ -55,7 +55,6 @@ In deze stap installeert u de Azure AD Power shell-module. Deze module is vereis
 1. Open Windows PowerShell ISE met beheerders rechten. Als u dit nog niet hebt gedaan, installeert u de AZ Power shell-module en maakt u verbinding met uw abonnement. Als u meerdere abonnementen hebt, kunt u de context van het huidige abonnement instellen, zoals wordt weer gegeven in de volgende opdrachten:
 
    ```powershell
-
    Install-Module -Name Az -AllowClobber
    Connect-AzAccount
 
@@ -104,7 +103,7 @@ De bovenstaande opdracht resulteert in de uitvoer die lijkt op de onderstaande s
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Uw Azure Cosmos-account configureren voor het gebruik van de nieuwe identiteit
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Ga naar uw Azure Cosmos-account en open de Blade **toegangs beheer (IAM)** .
 
@@ -120,7 +119,7 @@ U kunt de op certificaten gebaseerde referentie koppelen aan de client toepassin
 
 In de registratie van de Azure-app voor de client toepassing:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Open het deel venster **Active Directory** van Azure, ga naar het deel venster **app-registraties** en open de voor beeld-app die u in de vorige stap hebt gemaakt. 
 

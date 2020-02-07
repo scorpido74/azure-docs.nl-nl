@@ -1,19 +1,19 @@
 ---
-title: Video-zelf studies voor gegevens stroom toewijzen
+title: Videozelfstudies om gegevens toe te wijzen
 description: Een lijst met video-zelf studies waarin de toewijzing van gegevens stroom wordt uitgelegd
 author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 01/14/2020
-ms.openlocfilehash: dee8c919b815c6f22b171f58be9fc6a38167056a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
-ms.translationtype: MT
+ms.openlocfilehash: 543d1599201a318a399b98ff855fd9cf241f1f4c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030025"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048261"
 ---
-# <a name="mapping-data-flow-video-tutorials"></a>Video-zelf studies voor gegevens stroom toewijzen
+# <a name="mapping-data-flow-video-tutorials"></a>Videozelfstudies om gegevens toe te wijzen
 
 Hieronder vindt u een lijst met de zelf studie Video's met toewijzings gegevens stromen die zijn gemaakt door het Azure Data Factory team.
 
@@ -42,6 +42,8 @@ Wanneer updates worden doorgevoerd in het product, hebben sommige functies in de
 [Afgeleide kolom transformatie](https://www.youtube.com/watch?v=FFCbU4ujCiY)
 
 [Trans formatie koppelen](https://www.youtube.com/watch?v=zukwayEXRtg)
+
+[Self-deelname patroon](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
 
 [Zoek transformatie](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 

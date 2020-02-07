@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 808a17fcf303c6eb72f11f5379fa172302dc782a
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022134"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059846"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Oplossingen voor de detailhandel bouwen met Azure IoT Central
 
@@ -160,7 +160,7 @@ In de volgende scherm afbeelding ziet u het out-of-the-box-dash board in de toep
 > [!div class="mx-imgBorder"]
 > ![micro fulfillment Center](./media/overview-iot-central-retail/MFC-Dashboard.png)
 
-Raadpleeg voor meer informatie de zelf studie over [het implementeren en door lopen van de toepassing van de micro-fulfillment Center-toepassings sjabloon](./tutorial-iot-central-smart-inventory-management-pnp.md) .
+Raadpleeg voor meer informatie de zelf studie over [het implementeren en door lopen van de toepassing van de micro-fulfillment Center-toepassings sjabloon](./tutorial-micro-fulfillment-center-pnp.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -170,5 +170,5 @@ Om aan de slag te gaan met het bouwen van een handels oplossing:
 * [Een verbonden logistiek-toepassings sjabloon implementeren en door lopen](./tutorial-iot-central-connected-logistics-pnp.md).
 * [Een Digital Distribution Center-toepassings sjabloon implementeren en door lopen](./tutorial-iot-central-digital-distribution-center-pnp.md).
 * [Een sjabloon voor slimme inventaris beheer toepassing implementeren en door lopen](./tutorial-iot-central-smart-inventory-management-pnp.md).
-* [Implementeer en volg de toepassings sjabloon van het micro uitvoerings centrum](./tutorial-iot-central-smart-inventory-management-pnp.md).
+* [Implementeer en volg de toepassings sjabloon van het micro uitvoerings centrum](./tutorial-micro-fulfillment-center-pnp.md).
 * Meer informatie over IoT Central vindt u in het [overzicht IOT Central](../preview/overview-iot-central.md).

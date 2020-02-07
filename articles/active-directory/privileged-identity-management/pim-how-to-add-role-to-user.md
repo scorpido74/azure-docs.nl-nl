@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/17/2019
+ms.date: 01/05/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7cbb8c07b75509825795da45d8352140afd0864
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024225"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047106"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-rollen toewijzen in Privileged Identity Management
 
@@ -61,19 +61,9 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
 1. Selecteer een rol die u wilt toewijzen en klik vervolgens op **selecteren**.
 
-    De pagina **een lid of groep selecteren** wordt geopend.
+1. Selecteer een lid waaraan u de rol wilt toewijzen en selecteer vervolgens **selecteren**.
 
-1. Selecteer een lid of groep die u aan de rol wilt toewijzen en selecteer vervolgens **selecteren**.
-
-    ![Een lid of groeps deel venster selecteren](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
-
-    Het deel venster lidmaatschaps instellingen wordt geopend.
-
-1. Selecteer in **aanmerking komend** of **actief**in de lijst **toewijzings type** .
-
-    ![Deel venster instellingen voor lidmaatschappen](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
-
-    Privileged Identity Management voor Azure-resources biedt twee verschillende toewijzings typen:
+1. Selecteer in de lijst **toewijzings type** in het deel venster **lidmaatschaps instellingen** in **aanmerking komend** of **actief**.
 
     - Voor **in aanmerking komende** toewijzingen moet het lid van de rol een actie uitvoeren om de rol te gebruiken. Acties kunnen bijvoorbeeld een meervoudige verificatiecontrole, het opgeven van een zakelijke reden of het vragen om toestemming bij aangewezen fiatteurs zijn.
 
@@ -83,13 +73,9 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
     Afhankelijk van de rolinstellingen, wordt het selectie vakje mogelijk niet weer gegeven of kan het niet worden gewijzigd.
 
-1. Als u een specifieke duur voor de toewijzing wilt opgeven, schakelt u het selectie vakje uit en wijzigt u de begin-en/of eind datum en-tijd vakken.
+1. Als u een specifieke duur voor de toewijzing wilt opgeven, schakelt u het selectie vakje uit en wijzigt u de begin-en/of eind datum en-tijd vakken. Als u klaar bent, selecteert u **gereed**.
 
     ![Instellingen voor lidmaatschappen-datum en tijd](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. Als u klaar bent, selecteert u **gereed**.
-
-    ![Nieuwe toewijzing-toevoegen](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
 
 1. Als u de nieuwe roltoewijzing wilt maken, selecteert u **toevoegen**. Er wordt een melding van de status weer gegeven.
 
@@ -131,11 +117,11 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
 1. Selecteer **een rol selecteren**, selecteer een rol die u wilt beheren en selecteer vervolgens **selecteren**.
 
-    ![Een rol selecteren](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
+    ![Rol selecteren](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
 
 1. Selecteer **leden selecteren**, selecteer de gebruikers die u aan de rol wilt toewijzen en selecteer vervolgens **selecteren**.
 
-    ![Een rol selecteren](./media/pim-how-to-add-role-to-user/pim-select-members.png)
+    ![Rol selecteren](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
 1. Selecteer in **beheerde leden toevoegen**de optie **OK** om de gebruiker aan de rol toe te voegen.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: juliako
-ms.openlocfilehash: 457f5b8eb0a740800f9cc0fa69bd554f0679ae9a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.openlocfilehash: bbf3ba17e7f91e88136f2dac50c908262100e77a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509169"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048782"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services verouderde onderdelen
 
@@ -26,7 +26,7 @@ Na verloop van tijd zijn er stabiele verbeteringen en verbeteringen aangebracht 
  
 ## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>Pensioen plannen van verouderde onderdelen en migratie richtlijnen
 
-Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd. Deze processors worden op 1 maart 2020 buiten gebruik gesteld.
+Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd. Deze processors worden op 31 maart 2020 buiten gebruik gesteld.
 
 * [Migreren van Windows Azure Media Encoder naar Media Encoder Standard](migrate-windows-azure-media-encoder.md)
 * [Migreren van Azure Media Encoder naar Media Encoder Standard](migrate-azure-media-encoder.md)

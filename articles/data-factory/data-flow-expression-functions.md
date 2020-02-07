@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 68771ee3d2ae2d43245bd217bedcf59b987786f1
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5492850944b04ea4b4d30dd206e7b297b34c075c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716737"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062843"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Gegevens transformatie expressies in gegevens stroom toewijzen 
 
@@ -934,8 +934,8 @@ De functie CumeDist berekent de positie van een waarde ten opzichte van alle waa
 * ``cumeDist()``
 ___
 ### <code>denseRank</code>
-<code><b>denseRank(<i>&lt;value1&gt;</i> : any, ...) => integer</b></code><br/><br/>
-Hiermee wordt de positie van een waarde in een groep waarden berekend. Het resultaat is één plus het aantal rijen dat voorafgaat aan of gelijk is aan de huidige rij in de volg orde van de partitie. De waarden veroorzaken geen hiaten in de reeks. Een dichte rang werkt zelfs wanneer er geen gegevens worden gesorteerd en er wordt gezocht naar wijziging in waarden * ``denseRank(salesQtr, salesAmt)``
+<code><b>denseRank() => integer</b></code><br/><br/>
+Hiermee wordt de positie van een waarde berekend in een groep waarden die is opgegeven in de component order by van een venster. Het resultaat is één plus het aantal rijen dat voorafgaat aan of gelijk is aan de huidige rij in de volg orde van de partitie. De waarden veroorzaken geen hiaten in de reeks. Een dichte rang werkt zelfs wanneer er geen gegevens worden gesorteerd en er wordt gezocht naar wijziging in waarden * ``denseRank()``
 ___
 ### <code>lag</code>
 <code><b>lag(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look before&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
@@ -954,8 +954,8 @@ Met de functie NTile worden de rijen voor elke venster partitie verdeeld over `n
 * ``nTile(numOfBuckets)``
 ___
 ### <code>rank</code>
-<code><b>rank(<i>&lt;value1&gt;</i> : any, ...) => integer</b></code><br/><br/>
-Hiermee wordt de positie van een waarde in een groep waarden berekend. Het resultaat is één plus het aantal rijen dat voorafgaat aan of gelijk is aan de huidige rij in de volg orde van de partitie. De waarden veroorzaken hiaten in de reeks. Rang werkt zelfs wanneer er geen gegevens worden gesorteerd en er wordt gezocht naar wijziging in waarden * ``rank(salesQtr, salesAmt)``
+<code><b>rank() => integer</b></code><br/><br/>
+Hiermee wordt de positie van een waarde berekend in een groep waarden die is opgegeven in de component order by van een venster. Het resultaat is één plus het aantal rijen dat voorafgaat aan of gelijk is aan de huidige rij in de volg orde van de partitie. De waarden veroorzaken hiaten in de reeks. Rang werkt zelfs wanneer er geen gegevens worden gesorteerd en er wordt gezocht naar wijziging in waarden * ``rank()``
 ___
 ### <code>rowNumber</code>
 <code><b>rowNumber() => integer</b></code><br/><br/>

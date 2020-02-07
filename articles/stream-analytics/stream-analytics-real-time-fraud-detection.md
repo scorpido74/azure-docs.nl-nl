@@ -8,16 +8,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 168f11e82305a0e08923289e71ae6ea0d36c1734
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0273a0a729d39de27b9e417c23624992d1d55b42
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458788"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064383"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Aan de slag met Azure Stream Analytics: fraude detectie in realtime
 
-Deze zelf studie biedt een end-to-end illustratie van het gebruik van Azure Stream Analytics. Procedures voor: 
+Deze zelf studie biedt een end-to-end illustratie van het gebruik van Azure Stream Analytics. In deze zelfstudie leert u procedures om het volgende te doen: 
 
 * Streaming-gebeurtenissen naar een exemplaar van Azure Event Hubs brengen. In deze zelf studie gebruikt u een app die een stroom van de meta gegevens van mobiele telefoon records simuleert.
 
@@ -55,26 +55,33 @@ Als u een gegevens stroom wilt analyseren, neemt *u deze op* in Azure. Een typis
 ### <a name="create-a-namespace-and-event-hub"></a>Een naamruimte en event hub maken
 In deze procedure maakt u eerst een Event Hub naam ruimte en voegt u vervolgens een Event Hub aan die naam ruimte toe. Event hub-naam ruimten worden gebruikt om gerelateerde exemplaren van de gebeurtenis-bus logisch te groeperen. 
 
-1. Meld u aan bij de Azure Portal en klik op **een resource maken** > **Internet of Things** > **Event hub**. 
+1. Meld u aan bij de Azure Portal en klik op **een resource maken** in de linkerbovenhoek van het scherm.
 
-2. Voer in het deel venster **naam ruimte maken** de naam van een naam ruimte in, zoals `<yourname>-eh-ns-demo`. U kunt een wille keurige naam voor de naam ruimte gebruiken, maar de naam moet geldig zijn voor een URL en moet uniek zijn binnen Azure. 
+2. Selecteer **Alle services** in het menu aan de linkerkant en selecteer de **ster (`*`)** naast **Event Hubs** in de categorie **Analyse**. Controleer of **Event Hubs** is toegevoegd aan **FAVORIETEN** in het navigatiemenu aan de linkerkant. 
+
+   ![Zoeken naar Event Hubs](./media/stream-analytics-real-time-fraud-detection/select-event-hubs-menu.png)
+
+3. Selecteer **Event Hubs** onder **FAVORIETEN** in het navigatiemenu links en selecteer **Toevoegen** op de werkbalk.
+
+   ![Knop Toevoegen](./media/stream-analytics-real-time-fraud-detection/event-hubs-add-toolbar.png)
+
+4. Voer in het deel venster **naam ruimte maken** de naam van een naam ruimte in, zoals `<yourname>-eh-ns-demo`. U kunt een wille keurige naam voor de naam ruimte gebruiken, maar de naam moet geldig zijn voor een URL en moet uniek zijn binnen Azure. 
     
-3. Selecteer een abonnement en maak of kies een resource groep en klik vervolgens op **maken**.
+5. Selecteer een abonnement en maak of kies een resource groep en klik vervolgens op **maken**.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
 
-4. Wanneer de implementatie van de naam ruimte is voltooid, zoekt u de Event Hub naam ruimte in de lijst met Azure-resources. 
+6. Wanneer de implementatie van de naam ruimte is voltooid, zoekt u de Event Hub naam ruimte in de lijst met Azure-resources. 
 
-5. Klik op de nieuwe naam ruimte en klik in het deel venster naam ruimte op **Event hub**.
+7. Klik op de nieuwe naam ruimte en klik in het deel venster naam ruimte op **Event hub**.
 
    ![De knop Event hub toevoegen voor het maken van een nieuwe Event Hub](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. Geef een naam op voor het nieuwe Event Hub `asa-eh-frauddetection-demo`. U kunt ook een andere naam gebruiken. Als u dat wel doet, noteert u deze, omdat u de naam later nodig hebt. U hoeft op dit moment geen andere opties voor de Event Hub in te stellen.
+8. Geef een naam op voor het nieuwe Event Hub `asa-eh-frauddetection-demo`. U kunt ook een andere naam gebruiken. Als u dat wel doet, noteert u deze, omdat u de naam later nodig hebt. U hoeft op dit moment geen andere opties voor de Event Hub in te stellen.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
- 
-7. Klik op **Maken**.
+9. Klik op **Create**.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Toegang verlenen tot de event hub en een verbindingsreeks ophalen
 
@@ -91,7 +98,7 @@ Voordat een proces gegevens naar een Event Hub kan verzenden, moet de Event Hub 
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.  Klik op **Maken**.
+4.  Klik op **Create**.
 
 5.  Nadat het beleid is geïmplementeerd, klikt u erop in de lijst met beleid voor gedeelde toegang.
 
@@ -171,7 +178,7 @@ Nu u een stroom van oproep gebeurtenissen hebt, kunt u een Stream Analytics taak
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. Klik op **Maken**.
+3. Klik op **Create**.
 
     De taak wordt gemaakt en er worden taak details weer gegeven in de portal. Er wordt nog niets uitgevoerd, maar u moet de taak configureren voordat deze kan worden gestart.
 
@@ -196,7 +203,7 @@ Nu u een stroom van oproep gebeurtenissen hebt, kunt u een Stream Analytics taak
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. Klik op **Maken**.
+4. Klik op **Create**.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Query's maken om real-time gegevens te transformeren
 
@@ -358,7 +365,7 @@ Als u een bestaand Blob Storage-account hebt, kunt u dat gebruiken. Voor deze ze
    |---------|---------|---------|
    |Uitvoeralias  |  CallStream-FraudulentCalls   |  Voer een unieke naam in voor de uitvoer van de taak.   |
    |Abonnement   |  \<Uw abonnement\> |  Selecteer het Azure-abonnement met het opslagaccount dat u hebt gemaakt. Het opslagaccount kan voor hetzelfde of een ander abonnement gelden. Voor dit voorbeeld wordt aangenomen dat u een opslagaccount voor hetzelfde abonnement hebt gemaakt. |
-   |Opslagaccount  |  asaehstorage |  Voer de naam in van het opslag account dat u hebt gemaakt. |
+   |Storage-account  |  asaehstorage |  Voer de naam in van het opslag account dat u hebt gemaakt. |
    |Container  | ASA-fraudulentcalls-demo | Kies Nieuw maken en voer een container naam in. |
 
     <br/>
@@ -403,9 +410,9 @@ Als u echter klaar bent en u de resources die u hebt gemaakt, niet nodig hebt, k
 5. Verwijder de Event Hub.
 6. Verwijder de Event Hub naam ruimte.
 
-## <a name="get-support"></a>Krijg ondersteuning
+## <a name="get-support"></a>Ondersteuning krijgen
 
-Voor verdere ondersteuning kunt u proberen de [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Probeer het [Azure stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)voor meer hulp.
 
 ## <a name="next-steps"></a>Volgende stappen
 

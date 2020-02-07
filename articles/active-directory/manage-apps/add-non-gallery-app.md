@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6656361fd4634c46cd5216b57eb8465536319f09
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: bd5a5f100dbe09c3b82f58183a118ee3bf455f70
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062763"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063608"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Een niet-gevermeldde (niet-Gallery) toepassing toevoegen aan uw Azure AD-organisatie
 
@@ -25,7 +25,7 @@ Naast de opties in de [Azure AD-toepassings galerie](https://azure.microsoft.com
 
 - Selfservice-integratie van elke toepassing die ondersteuning biedt voor services van [Security Assertion Markup Language (SAML) 2,0](https://wikipedia.org/wiki/SAML_2.0) (door SP geïnitieerd of IDP)
 - Self-Service-integratie van elke webtoepassing met een op een HTML gebaseerde aanmeldings pagina met [SSO op basis van wacht woorden](what-is-single-sign-on.md#password-based-sso)
-- Selfservice verbinding van toepassingen die gebruikmaken van het [systeem voor het scim-Protocol (Cross-Domain Identity Management) voor het inrichten van gebruikers](use-scim-to-provision-users-and-groups.md)
+- Selfservice verbinding van toepassingen die gebruikmaken van het [systeem voor het scim-Protocol (Cross-Domain Identity Management) voor het inrichten van gebruikers](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 - Mogelijkheid om koppelingen toe te voegen aan een toepassing in het [Start programma voor Office 365-apps](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) of het [Azure AD-toegangs venster](what-is-single-sign-on.md#linked-sign-on)
 
 In dit artikel wordt beschreven hoe u een niet-galerie toepassing kunt toevoegen aan **bedrijfs toepassingen** in het Azure Portal zonder code te schrijven. Zie [verificatie scenario's voor Azure AD](../develop/authentication-scenarios.md)als u in plaats daarvan de richt lijnen voor ontwikkel aars zoekt over het integreren van aangepaste apps met Azure AD. Wanneer u een App ontwikkelt die gebruikmaakt van een modern protocol zoals [OpenID Connect Connect/OAuth](../develop/active-directory-v2-protocols.md) om gebruikers te verifiëren, kunt u dit registreren bij het micro soft Identity-platform met behulp van de [app-registraties](../develop/quickstart-register-app.md) -ervaring in de Azure Portal.

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
-ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dcbc03257b8bfeacda700f60f2724f2d02ec147d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429272"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048275"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Direct methoden van IoT Hub begrijpen en aanroepen
 
@@ -73,7 +73,10 @@ Directe methode aanroepen op een apparaat zijn HTTPS-aanroepen die bestaan uit d
     }
     ```
 
-Time-out in seconden. Als er geen time-out is ingesteld, wordt standaard 30 seconden gebruikt.
+De waarde die wordt gegeven als `responseTimeoutInSeconds` in de aanvraag is de hoeveelheid tijd die IoT Hub-service moet wachten tot de uitvoering van een directe methode op een apparaat is voltooid. Stel deze time-out in op mini maal zo lang als de verwachte uitvoerings tijd van een directe methode door een apparaat. Als er geen time-out wordt gegeven, wordt de standaard waarde van 30 seconden gebruikt. De minimum-en maximum waarden voor `responseTimeoutInSeconds` zijn respectievelijk 5 en 300 seconden.
+
+De waarde die wordt gegeven als `connectTimeoutInSeconds` in de aanvraag, is de hoeveelheid tijd die nodig is voor het aanroepen van een directe methode die IoT Hub-service moet wachten totdat een apparaat zonder verbinding online kan worden gezet. De standaard waarde is 0, wat betekent dat apparaten al online moeten zijn bij het aanroepen van een directe methode. De maximum waarde voor `connectTimeoutInSeconds` is 300 seconden.
+
 
 #### <a name="example"></a>Voorbeeld
 
@@ -98,7 +101,10 @@ curl -X POST \
 
 De back-end-app ontvangt een antwoord dat bestaat uit de volgende items:
 
-* *HTTP-status code*, die wordt gebruikt voor fouten die afkomstig zijn van de IOT hub, met inbegrip van een 404-fout voor apparaten die momenteel niet zijn verbonden.
+* *HTTP-status code*:
+  * 200 geeft een geslaagde uitvoering van de directe methode aan.
+  * 404 geeft aan dat de apparaat-ID ongeldig is, of dat het apparaat niet online was bij het aanroepen van een directe methode en voor `connectTimeoutInSeconds` daarna (gebruik een gevolgde fout melding om de hoofd oorzaak te achterhalen).
+  * 504 geeft de time-out van de gateway aan die door het apparaat niet reageert op een directe aanroep van de methode binnen `responseTimeoutInSeconds`.
 
 * *Headers* die de ETAG, aanvraag-id, inhouds type en inhouds codering bevatten.
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b49b10acb7f2deaed217bb28478d2c98a033eab9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 83133fed401dac51a8dd6a653ccfd86117e956ed
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768674"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046463"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Het verloop beleid voor Office 365-groepen configureren
 
@@ -28,10 +28,10 @@ In dit artikel leest u hoe u de levens cyclus van Office 365-groepen kunt behere
 
 Zodra u een groep hebt ingesteld op verlopen:
 
-- Groepen met gebruikers activiteiten worden automatisch vernieuwd als de verlopen bijna
-- Eigen aren van de groep worden gewaarschuwd om de groep te vernieuwen als de groep niet automatisch wordt vernieuwd
-- Een groep die niet wordt vernieuwd, wordt verwijderd
-- Elke Office 365-groep die wordt verwijderd, kan binnen 30 dagen worden hersteld door de groeps eigenaren of de beheerder
+- Groepen met gebruikers activiteiten worden automatisch vernieuwd als de verval datum bijna is bereikt.
+- Eigen aren van de groep worden gewaarschuwd om de groep te vernieuwen als de groep niet automatisch wordt vernieuwd.
+- Alle groepen die niet worden vernieuwd, worden verwijderd.
+- Elke Office 365-groep die wordt verwijderd, kan binnen 30 dagen worden hersteld door de groeps eigenaren of de beheerder.
 
 Op dit moment kan slechts één verloop beleid worden geconfigureerd voor alle Office 365-groepen in een Azure AD-organisatie.
 
@@ -42,7 +42,7 @@ Zie [Azure Active Directory Power shell for graph 2.0.0.137](https://www.powersh
 
 ## <a name="activity-based-automatic-renewal"></a>Automatische verlenging op basis van activiteit
 
-Met Azure AD Intelligence worden groepen nu automatisch vernieuwd op basis van het feit of ze recent zijn gebruikt. Deze functie elimineert de nood zaak voor hand matige actie door groeps eigenaren, omdat deze is gebaseerd op gebruikers activiteit in groepen tussen Office 365-services zoals Outlook, share point, teams of Yammer. Als een eigenaar of een groepslid bijvoorbeeld een document uploadt in share point, gaat u naar een teams-kanaal of stuurt u een e-mail naar de groep in Outlook, wordt de groep automatisch vernieuwd en worden er geen meldingen over verlenging ontvangen.
+Met Azure AD Intelligence worden groepen nu automatisch vernieuwd op basis van het feit of ze onlangs zijn gebruikt. Deze functie elimineert de nood zaak voor hand matige actie door groeps eigenaren, omdat deze is gebaseerd op gebruikers activiteit in groepen tussen Office 365-services zoals Outlook, share point, teams of Yammer. Als een eigenaar of een groepslid bijvoorbeeld een document uploadt in share point, gaat u naar een teams-kanaal of stuurt u een e-mail naar de groep in Outlook, wordt de groep automatisch vernieuwd en worden er geen meldingen over verlenging ontvangen.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Activiteiten die het verlopen van groepen automatisch vernieuwen
 
@@ -55,6 +55,8 @@ De volgende gebruikers acties veroorzaken automatische groeps verlenging:
 ### <a name="auditing-and-reporting"></a>Controle en rapportage
 
 Beheerders kunnen een lijst met automatisch hernieuwde groepen ophalen uit de audit logboeken voor activiteiten in azure AD.
+
+![Automatisch verlengen van groepen op basis van activiteit](./media/groups-lifecycle/audit-logs-autorenew-group.png)
 
 ## <a name="roles-and-permissions"></a>Rollen en machtigingen
 

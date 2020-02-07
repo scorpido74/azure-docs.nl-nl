@@ -3,12 +3,12 @@ title: Bron vergrendeling begrijpen
 description: Meer informatie over de vergrendelings opties in azure blauw drukken om resources te beveiligen wanneer u een blauw druk toewijst.
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406413"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057342"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Meer informatie over het vergren delen van resources in azure-blauw drukken
 
@@ -102,6 +102,26 @@ In sommige ontwerp-of beveiligings scenario's kan het nodig zijn om een principa
   }
 }
 ```
+
+## <a name="exclude-an-action-from-a-deny-assignment"></a>Een actie uitsluiten van een weiger toewijzing
+
+Net als bij het uitsluiten van [een principal](#exclude-a-principal-from-a-deny-assignment) op een [toekennings toewijzing](../../../role-based-access-control/deny-assignments.md) in een blauw druk-toewijzing, kunt u specifieke [RBAC-bewerkingen](../../../role-based-access-control/resource-provider-operations.md)uit te sluiten. Binnen het blok **Properties. Locks** , op dezelfde locatie die **excludedPrincipals** is, kan een **excludedActions** worden toegevoegd:
+
+```json
+"locks": {
+    "mode": "AllResourcesDoNotDelete",
+    "excludedPrincipals": [
+        "7be2f100-3af5-4c15-bcb7-27ee43784a1f",
+        "38833b56-194d-420b-90ce-cff578296714"
+    ],
+    "excludedActions": [
+        "Microsoft.ContainerRegistry/registries/push/write",
+        "Microsoft.Authorization/*/read"
+    ]
+},
+```
+
+Hoewel **excludedPrincipals** moet expliciet zijn, kunnen **excludedActions** -vermeldingen gebruikmaken van `*` voor het vergelijken van het Joker teken van RBAC-bewerkingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

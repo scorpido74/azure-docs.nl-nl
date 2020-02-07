@@ -7,14 +7,14 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1052ef799949550ddaf492b8aa5b77ab9526d092
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780280"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064985"
 ---
-# <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Gegevens opnemen van IoT Hub in azure Data Explorer (preview-versie)
+# <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>Gegevens opnemen van IoT Hub in azure Data Explorer 
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
@@ -22,7 +22,7 @@ ms.locfileid: "75780280"
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager-sjabloon](data-connection-iot-hub-resource-manager.md)
 
-Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Data Explorer biedt opname (gegevens laden) van IoT Hub, een big data streaming platform en IoT-opname service.
+Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen. Azure Data Explorer biedt opname (gegevens laden) van IoT Hub, een big data streaming platform en IoT-opname service.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -169,7 +169,7 @@ Als u niet van plan bent om uw IoT Hub opnieuw te gebruiken, schoont u **test-hu
 
 1. Selecteer in Azure Portal **Resourcegroepen** aan de linkerkant en selecteer vervolgens de resourcegroep die u hebt gemaakt.  
 
-    Wanneer het menu links is samengevouwen, klikt u op ![Knop Uitvouwen](media/ingest-data-event-hub/expand.png) om het menu uit te vouwen.
+    Als het menu links is samengevouwen, selecteert u ![Knop Uitvouwen](media/ingest-data-event-hub/expand.png) om het menu uit te vouwen.
 
    ![Resourcegroep selecteren die moet worden verwijderd](media/ingest-data-event-hub/delete-resources-select.png)
 

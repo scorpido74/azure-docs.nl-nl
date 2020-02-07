@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a647f4a5f051ec89bb82b6e7f89dcb677c95371
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027743"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046327"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Gebruikers, groepen, licentieverlening en rollen voor grote organisaties
 
@@ -31,7 +31,7 @@ In dit artikel maakt de Azure AD-beheerder kennis met de relatie tussen de belan
 
 ## <a name="assign-users-to-groups"></a>Gebruikers toewijzen aan groepen
 
-U kunt groepen in Azure AD gebruiken om licenties toe te wijzen aan grote aantallen gebruikers, of om gebruikerstoegang toe te wijzen aan geïmplementeerde bedrijfsapps. U kunt groepen gebruiken om beheerdersrollen toe te wijzen in Azure AD, of u kunt toegang verlenen tot externe resources, zoals SaaS-toepassingen of SharePoint-sites.
+U kunt groepen in Azure AD gebruiken om licenties toe te wijzen aan grote aantallen gebruikers, of om gebruikerstoegang toe te wijzen aan geïmplementeerde bedrijfsapps. U kunt groepen gebruiken om alle beheerders rollen toe te wijzen, met uitzonde ring van globale beheerder in azure AD, of u kunt toegang verlenen tot externe bronnen, zoals SaaS-toepassingen of share point-sites.
 
 Voor meer flexibiliteit en om de hoeveelheid werk voor het beheer van groepslidmaatschappen te verminderen, kunt u [dynamische groepen](groups-create-rule.md) in Azure AD gebruiken om groepslidmaatschappen automatisch uit te breiden of te beperken. U hebt een Azure AD Premium P1-licentie nodig voor elke unieke gebruiker die lid is van een of meer dynamische groepen.
 

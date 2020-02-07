@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Ga naar de voor instellingen voor automatische gebruikers inrichten met Azure Active Directory | Microsoft Docs'
+title: 'Zelf studie: configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en inrichten van gebruikers accounts.
 services: active-directory
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 942f0aa685ff7e2278aae159f7e97917a105f5fa
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 73cc1a58689db7902843f222aa4874a5e188be44
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840147"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063153"
 ---
-# <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Zelfstudie: Ga naar de voor instellingen voor automatische gebruikers inrichting
+# <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Zelf studie: voor het automatisch inrichten van gebruikers naar een andere configuratie
 
 Het doel van deze zelf studie is het demonstreren van de stappen die u in een stap en Azure Active Directory (Azure AD) uitvoert om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers of groepen.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen [gebruikers automatisch inrichten en ongedaan maken van de inrichting van SaaS-toepassingen (Software-as-a-Service) met Azure Active Directory](../manage-apps/user-provisioning.md).
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen [gebruikers automatisch inrichten en ongedaan maken van de inrichting van SaaS-toepassingen (Software-as-a-Service) met Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
 
@@ -56,7 +56,7 @@ Voordat u het automatisch inrichten van gebruikers configureert en inschakelt, m
 
 Voordat u voor het eerst de configuratie van automatische gebruikers met Azure AD configureert, moet u het systeem voor het inrichten van SCIM (Cross-Domain Identity Management) op een bezoek brengen.
 
-1. Meld u aan om te [bezoeken](https://app.visitly.io/login). Selecteer **integraties** > -**host synchronisatie**.
+1. Meld u aan om te [bezoeken](https://app.visitly.io/login). Selecteer **integraties** > **synchronisatie**van de host.
 
     ![Host-synchronisatie](media/Visitly-provisioning-tutorial/login.png)
 
@@ -77,15 +77,15 @@ Als u een bezoek wilt toevoegen vanuit de Azure AD-toepassings galerie, voert u 
 
 1. Selecteer **Azure Active Directory**in de [Azure Portal](https://portal.azure.com)in het navigatie deel venster links.
 
-    ![De Azure Active Directory-knop](common/select-azuread.png)
+    ![De knop Azure Active Directory](common/select-azuread.png)
 
 2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
-    ![De blade Enterprise-toepassingen](common/enterprise-applications.png)
+    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
 3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
-    ![De knop nieuwe toepassing](common/add-new-app.png)
+    ![De knop Nieuwe toepassing](common/add-new-app.png)
 
 4. Voer in het zoekvak **Ga naar**, ga **naar** de slag paneel en selecteer vervolgens **toevoegen** om de toepassing toe te voegen.
 
@@ -100,7 +100,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Automatisch gebruikers inrichten configureren voor bezoek aan Azure AD
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen** > **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen** > **alle toepassingen**.
 
     ![Alle toepassingen](common/enterprise-applications.png)
 
@@ -116,13 +116,13 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Inrichtings modus ingesteld op automatisch](common/provisioning-automatic.png)
 
-5. In het gedeelte beheerders referenties voert u de `https://api.visitly.io/v1/usersync/SCIM`-en **API-sleutel** waarden in die respectievelijk eerder zijn opgehaald in de TENANT- **URL** en het **geheime token**. Selecteer **verbinding testen** om ervoor te zorgen dat Azure AD kan worden verbonden met een bezoek. Als de verbinding mislukt, moet u ervoor zorgen dat uw account voor beheerders machtigingen heeft en probeer het opnieuw.
+5. Geef in de sectie beheerders referenties de `https://api.visitly.io/v1/usersync/SCIM`-en **API-sleutel** waarden op die respectievelijk eerder zijn opgehaald in de **Tenant-URL** en het **geheime token**. Selecteer **verbinding testen** om ervoor te zorgen dat Azure AD kan worden verbonden met een bezoek. Als de verbinding mislukt, moet u ervoor zorgen dat uw account voor beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
 6. Voer in het vak **e-mail bericht** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen. Schakel het selectie vakje **e-mail melding verzenden wanneer een fout optreedt** in.
 
-    ![E-mailadres voor meldingen](common/provisioning-notification-email.png)
+    ![E-mail melding](common/provisioning-notification-email.png)
 
 7. Selecteer **Opslaan**.
 
@@ -134,7 +134,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Gebruikers kenmerken voor het bezoek](media/visitly-provisioning-tutorial/userattribute.png)
 
-10. Als u bereik filters wilt configureren, volgt u de instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik.
+10. Als u bereik filters wilt configureren, volgt u de instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik.
 
 11. Als u de Azure AD-inrichtings service voor het bezoek wilt inschakelen, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
@@ -148,9 +148,9 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan bij de volgende synchronisaties. Voor meer informatie over hoe lang het duurt voor het inrichten van gebruikers of groepen, raadpleeg dan [hoe lang het duurt om gebruikers in te richten?](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan bij de volgende synchronisaties. Voor meer informatie over hoe lang het duurt voor het inrichten van gebruikers of groepen, raadpleeg dan [hoe lang het duurt om gebruikers in te richten?](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)
 
-U kunt de **huidige status** sectie gebruiken om de voortgang te controleren en koppelingen naar uw inrichtings activiteiten rapport te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service. Zie [de status van gebruikers inrichten controleren](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
+U kunt de **huidige status** sectie gebruiken om de voortgang te controleren en koppelingen naar uw inrichtings activiteiten rapport te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service. Zie [de status van gebruikers inrichten controleren](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
 
 ## <a name="connector-limitations"></a>Connector beperkingen
 
@@ -158,9 +158,9 @@ Biedt geen ondersteuning voor harde verwijderingen. Alles is alleen zacht verwij
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/19/2017
-ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/06/2020
+ms.openlocfilehash: 9a7cb80b5510ff0ac4a2491d896aded866180c19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402435"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062129"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Status van agent oplossing in Azure Monitor
 De Status van agent oplossing in azure helpt u te begrijpen, voor alle agents die rechtstreeks aan de Log Analytics-werk ruimte rapporteren in Azure Monitor of een System Center Operations Manager beheer groep die is verbonden met Azure Monitor, die niet reageert en het verzenden van operationele gegevens.  U kunt ook bijhouden hoeveel agents er zijn geïmplementeerd en waar deze zich geografisch gezien bevinden. Bovendien kunt u query's uitvoeren om op de hoogte te blijven van de verdeling van agents over Azure, andere cloudomgevingen of on-premises.    
@@ -54,9 +54,9 @@ Klik op de tegel **Status van agent** om het **gelijknamige** dashboard te opene
 | Agent count over time | Een trend van het aantal agents gedurende een periode van zeven dagen voor Linux- en Windows-agents.|
 | Count of unresponsive agents | Een lijst met agents die in de afgelopen 24 uur geen heartbeat hebben verzonden.|
 | Distribution by OS Type | Een visualisatie van het aantal Windows- en Linux-agents in uw omgeving.|
-| Verdeling naar agent-versie | Een visualisatie van de verschillende agentversies die zijn geïnstalleerd in uw omgeving en het aantal van elke versie.|
-| Verdeling naar agent-catgeorie | Een visualisatie van de verschillende categorieën agents die heartbeat-gebeurtenissen verzenden: directe agents, OpsMgr-agents of OpsMgr Management Server.|
-| Verdeling naar beheergroep | Een partitie van de verschillende Operations Manager-beheer groepen in uw omgeving.|
+| Distribution by Agent Version | Een visualisatie van de verschillende agentversies die zijn geïnstalleerd in uw omgeving en het aantal van elke versie.|
+| Distribution by Agent Category | Een visualisatie van de verschillende categorieën agents die heartbeat-gebeurtenissen verzenden: directe agents, OpsMgr-agents of OpsMgr Management Server.|
+| Distribution by Management Group | Een partitie van de verschillende Operations Manager-beheer groepen in uw omgeving.|
 | Geo-location of Agents | Een partitie van de verschillende landen/regio's waar u agents hebt en het totale aantal agents dat in elk land of elke regio is geïnstalleerd.|
 | Count of Gateways Installed | Het aantal servers waarop de Log Analytics-gateway is geïnstalleerd en een lijst met deze servers.|
 
@@ -79,7 +79,7 @@ Er wordt een record van het type **Heartbeat** gemaakt.  Deze records hebben de 
 | `Version` | Versie van Log Analytics agent of Operations Manager agent.|
 | `SCAgentChannel` | De waarde is *Direct* en/of *SCManagementServer*.|
 | `IsGatewayInstalled` | Als Log Analytics gateway is geïnstalleerd, is waarde *True*, anders is de waarde *False*.|
-| `ComputerIP` | Het IP-adres van de computer.|
+| `ComputerIP` | Het open bare IP-adres van de computer. Op virtuele machines van Azure wordt het open bare IP-adres weer gegeven als er een beschikbaar is. Voor Vm's die persoonlijke Ip's gebruiken, wordt hiermee het Azure SNAT-adres weer gegeven (niet het privé-IP-adres). |
 | `RemoteIPCountry` | De geografische locatie waar de computer is geïmplementeerd.|
 | `ManagementGroupName` | De naam van de beheergroep van Operations Manager.|
 | `SourceComputerId` | De unieke ID van de computer.|
@@ -91,7 +91,7 @@ Elke agent die aan een Operations Manager-beheer Server rapporteert, verzendt tw
 ## <a name="sample-log-searches"></a>Voorbeeldzoekopdrachten in logboeken
 De volgende tabel bevat voorbeelden van zoekopdrachten in logboeken voor records die zijn verzameld met deze oplossing.
 
-| Query | Beschrijving |
+| Query's uitvoeren | Beschrijving |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Het totale aantal agents |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Het aantal agents dat de afgelopen 24 uur niet heeft gereageerd |
@@ -100,9 +100,9 @@ De volgende tabel bevat voorbeelden van zoekopdrachten in logboeken voor records
 | Heartbeat &#124; where TimeGenerated > ago(24h) and Computer !in ((Heartbeat &#124; where TimeGenerated > ago(30m) &#124; distinct Computer)) &#124; summarize LastCall = max(TimeGenerated) by Computer |Het totale aantal agents dat offline was in de afgelopen 30 minuten (voor de afgelopen 24 uur) |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by OSType |Een trend van het aantal agents in de tijd per type besturingssysteem|
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by OSType |Distribution by OS Type |
-| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by Version |Verdeling naar agent-versie |
-| Heartbeat &#124; summarize AggregatedValue = count() by Category |Verdeling naar agent-catgeorie |
-| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | Verdeling naar beheergroep |
+| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by Version |Distribution by Agent Version |
+| Heartbeat &#124; summarize AggregatedValue = count() by Category |Distribution by Agent Category |
+| Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | Distribution by Management Group |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |Geo-location of Agents |
 | Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |Aantal geïnstalleerde Log Analytics gateways |
 

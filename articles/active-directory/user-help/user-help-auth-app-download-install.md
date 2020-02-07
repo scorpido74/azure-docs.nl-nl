@@ -2,7 +2,7 @@
 title: De Microsoft Authenticator-app downloaden en installeren-Azure AD
 description: Down load en installeer de Microsoft Authenticator-app om uw identiteit te verifiëren tijdens het gebruik van twee ledige verificatie.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: ba6f4d8d7c8bae73d998ee09de3adba7601e25b8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9d8ea02c91dc6aec41a1b548eff148e85111fc32
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704711"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063897"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>De Microsoft Authenticator-app downloaden en installeren
 
@@ -55,7 +55,7 @@ Installeer de nieuwste versie van de Microsoft Authenticator-app op basis van uw
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de app hebt gedownload en geïnstalleerd, moet u uw diverse accounts toevoegen. Zie voor meer informatie:
+Nadat u de app hebt gedownload en geïnstalleerd, moet u uw diverse accounts toevoegen. Ga voor meer informatie naar:
 
 - **Verificator-app.** Down load en gebruik een verificator-app om een goedkeurings melding of een wille keurig gegenereerde goedkeurings code te verkrijgen voor verificatie in twee stappen of het opnieuw instellen van wacht woorden. Zie [beveiligings informatie instellen voor het gebruik van een verificator-app](security-info-setup-auth-app.md)voor stapsgewijze instructies voor het instellen en gebruiken van de app Microsoft Authenticator.
 

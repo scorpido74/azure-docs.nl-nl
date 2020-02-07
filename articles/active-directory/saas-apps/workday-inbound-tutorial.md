@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: a7e5dc9c177dbddda8bf229ec7949f53b70e616c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613756"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064303"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
 
@@ -28,7 +28,7 @@ Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoe
 
 ## <a name="overview"></a>Overzicht
 
-De [Azure Active Directory User Provisioning Service](../manage-apps/user-provisioning.md) kan worden geïntegreerd met de [HR Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) om gebruikers accounts in te richten. Azure AD gebruikt deze verbinding voor het inschakelen van de volgende werk stromen voor gebruikers inrichting:
+De [Azure Active Directory User Provisioning Service](../app-provisioning/user-provisioning.md) kan worden geïntegreerd met de [HR Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) om gebruikers accounts in te richten. Azure AD gebruikt deze verbinding voor het inschakelen van de volgende werk stromen voor gebruikers inrichting:
 
 * **Gebruikers inrichten voor het Active Directory** inrichten van geselecteerde sets gebruikers van workday in een of meer Active Directory domeinen.
 
@@ -40,13 +40,13 @@ De [Azure Active Directory User Provisioning Service](../manage-apps/user-provis
 
 De werk stroom die door de gebruiker wordt ondersteund door de Azure AD User Provisioning-Service, biedt de mogelijkheid om de volgende scenario's voor human resources en Identity Lifecycle Management te automatiseren:
 
-* **Nieuwe werk nemers inhuren** : wanneer een nieuwe werk nemer wordt toegevoegd aan workday, wordt automatisch een gebruikers account gemaakt in Active Directory, Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../manage-apps/user-provisioning.md), met een terugschrijf bewerking van het e-mail adres naar workday.
+* **Nieuwe werk nemers inhuren** : wanneer een nieuwe werk nemer wordt toegevoegd aan workday, wordt automatisch een gebruikers account gemaakt in Active Directory, Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md), met een terugschrijf bewerking van het e-mail adres naar workday.
 
-* **Updates van werknemers kenmerken en-profielen** : wanneer een werknemers record wordt bijgewerkt in workday (zoals hun naam, titel of Manager), wordt het gebruikers account automatisch bijgewerkt in Active Directory, Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../manage-apps/user-provisioning.md).
+* **Updates van werknemers kenmerken en-profielen** : wanneer een werknemers record wordt bijgewerkt in workday (zoals hun naam, titel of Manager), wordt het gebruikers account automatisch bijgewerkt in Active Directory, Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
 
-* **Beëindiging van werk nemers** : wanneer een werk nemer wordt beëindigd in workday, wordt het gebruikers account automatisch uitgeschakeld in Active Directory, Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../manage-apps/user-provisioning.md).
+* **Beëindiging van werk nemers** : wanneer een werk nemer wordt beëindigd in workday, wordt het gebruikers account automatisch uitgeschakeld in Active Directory, Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
 
-* Opnieuw **inhuren van werk nemers** : wanneer een werk nemer in workday opnieuw wordt ingehuurd, kan het oude account automatisch opnieuw worden geactiveerd of worden ingericht (afhankelijk van uw voor keur) tot Active Directory, Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../manage-apps/user-provisioning.md).
+* Opnieuw **inhuren van werk nemers** : wanneer een werk nemer in workday opnieuw wordt ingehuurd, kan het oude account automatisch opnieuw worden geactiveerd of worden ingericht (afhankelijk van uw voor keur) tot Active Directory, Azure Active Directory en optioneel Office 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Wie is deze oplossing voor het inrichten van de gebruiker geschikt voor?
 
@@ -62,7 +62,7 @@ De oplossing voor de gebruikers inrichting van deze werkdag is in het ideale gev
 
 * Organisaties die Office 365 gebruiken voor e-mail
 
-## <a name="solution-architecture"></a>Architectuur voor de oplossing
+## <a name="solution-architecture"></a>Architectuur van de oplossing
 
 In deze sectie wordt de end-to-end-oplossings architectuur voor gebruikers ingericht voor algemene hybride omgevingen beschreven. Er zijn twee gerelateerde stromen:
 
@@ -312,9 +312,9 @@ In deze stap verleent u machtigingen voor domein beleid voor de gegevens van de 
    | ---------- | ---------- |
    | Ophalen en plaatsen | Werknemers gegevens: rapporten van open bare werk nemers |
    | Ophalen en plaatsen | Persoons gegevens: contact gegevens voor werk |
-   | Ontvang | Werknemers gegevens: alle posities |
-   | Ontvang | Werknemers gegevens: huidige informatie over personeel |
-   | Ontvang | Werknemers gegevens: zakelijke titel op het werknemers profiel |
+   | Ophalen | Werknemers gegevens: alle posities |
+   | Ophalen | Werknemers gegevens: huidige informatie over personeel |
+   | Ophalen | Werknemers gegevens: zakelijke titel op het werknemers profiel |
    | Ophalen en plaatsen | Workday-accounts |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Machtigingen voor het beveiligings beleid voor het bedrijfs proces configureren
@@ -472,7 +472,7 @@ In deze stap maken we verbinding met werkdag en Active Directory in de Azure Por
 
    * Klik op de knop **verbinding testen** . Als de verbindings test is geslaagd, klikt u bovenaan op de knop **Opslaan** . Als dit mislukt, controleert u of de workday-referenties en de AD-referenties die zijn geconfigureerd voor de installatie van de agent geldig zijn.
 
-     ![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
+     ![Azure-portal](./media/workday-inbound-tutorial/wd_1.png)
 
    * Zodra de referenties zijn opgeslagen, wordt in de sectie **toewijzingen** de standaard toewijzing voor **werk dagen op locatie Active Directory**
 
@@ -502,7 +502,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
    > Wanneer u de inrichtings-app voor de eerste keer configureert, moet u de kenmerk toewijzingen en expressies testen en controleren om ervoor te zorgen dat het gewenste resultaat wordt weer geven. Micro soft raadt aan om de bereik filters onder het bereik van de **bron object** te gebruiken om uw toewijzingen te testen met een aantal test gebruikers van workday. Wanneer u hebt gecontroleerd of de toewijzingen werken, kunt u het filter verwijderen of het bestand geleidelijk uitbreiden om meer gebruikers op te geven.
 
    > [!CAUTION] 
-   > Het standaard gedrag van de inrichtings engine is het uitschakelen/verwijderen van gebruikers die buiten het bereik vallen. Dit is mogelijk niet wenselijk in uw werkdag tot AD-integratie. Als u dit standaard gedrag wilt overschrijven, raadpleegt u het artikel [verwijdering overs laan van gebruikers accounts die buiten het bereik](../manage-apps/skip-out-of-scope-deletions.md) vallen
+   > Het standaard gedrag van de inrichtings engine is het uitschakelen/verwijderen van gebruikers die buiten het bereik vallen. Dit is mogelijk niet wenselijk in uw werkdag tot AD-integratie. Als u dit standaard gedrag wilt overschrijven, raadpleegt u het artikel [verwijdering overs laan van gebruikers accounts die buiten het bereik](../app-provisioning/skip-out-of-scope-deletions.md) vallen
   
 1. In het veld **acties doel object** kunt u globaal filteren welke acties er worden uitgevoerd op Active Directory. **Create** en **Update** worden het meest gebruikt.
 
@@ -516,7 +516,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 
          * **Constante** : een statische, constante teken reeks waarde schrijven naar het AD-kenmerk
 
-         * **Expressie** : Hiermee kunt u een aangepaste waarde naar het AD-kenmerk schrijven op basis van een of meer workday-kenmerken. [Zie dit artikel over expressies voor meer informatie](../manage-apps/functions-for-customizing-application-data.md).
+         * **Expressie** : Hiermee kunt u een aangepaste waarde naar het AD-kenmerk schrijven op basis van een of meer workday-kenmerken. [Zie dit artikel over expressies voor meer informatie](../app-provisioning/functions-for-customizing-application-data.md).
 
       * **Bron kenmerk** : het gebruikers kenmerk van workday. Als het kenmerk dat u zoekt niet aanwezig is, raadpleegt u [de lijst met gebruikers kenmerken voor workday aanpassen](#customizing-the-list-of-workday-user-attributes).
 
@@ -537,29 +537,29 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 
 1. Klik boven aan de sectie kenmerk toewijzing op **Opslaan** om uw toewijzingen op te slaan.
 
-   ![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
+   ![Azure-portal](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Hieronder ziet u enkele voor beelden van kenmerk toewijzingen tussen werk dagen en Active Directory, met enkele algemene expressies
 
 * De expressie die wordt toegewezen aan het kenmerk *parentDistinguishedName* wordt gebruikt om een gebruiker in te richten op verschillende organisatie-eenheden op basis van een of meer workday-bron kenmerken. In dit voor beeld worden gebruikers in verschillende organisatie-eenheden geplaatst op basis van de plaats waar ze zich bevinden.
 
-* Het kenmerk *userPrincipalName* in Active Directory wordt gegenereerd met behulp van de [SelectUniqueValue](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue) -functie voor het maken van een gegenereerde waarde in het doel-AD-domein en stelt deze alleen in als deze uniek is.  
+* Het kenmerk *userPrincipalName* in Active Directory wordt gegenereerd met behulp van de [SelectUniqueValue](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) -functie voor het maken van een gegenereerde waarde in het doel-AD-domein en stelt deze alleen in als deze uniek is.  
 
-* [Hier vindt u documentatie over het schrijven van expressies](../manage-apps/functions-for-customizing-application-data.md). In deze sectie vindt u voor beelden van het verwijderen van speciale tekens.
+* [Hier vindt u documentatie over het schrijven van expressies](../app-provisioning/functions-for-customizing-application-data.md). In deze sectie vindt u voor beelden van het verwijderen van speciale tekens.
 
 | KENMERK WORKDAY | ACTIVE DIRECTORY-KENMERK |  OVEREENKOMENDE ID? | MAKEN/BIJWERKEN |
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Ja** | Geschreven bij alleen maken |
 | **PreferredNameData**    |  algemene naam    |   |   Geschreven bij alleen maken |
 | **SelectUniqueValue (toevoegen ('\@', samen voegen ('. ', \[voor naam\], \[LastName\]), ' contoso.com '), samen voegen ('\@', samen voegen ('. ', Mid (\[voor naam\], 1, 1), \[achternaam\]), ' contoso.com '), deel nemen ('\@', lid worden ('. ', Mid (\[FirstName\], 1, 2), \[LastName\])**   | userPrincipalName     |     | Geschreven bij alleen maken 
-| **Vervang(Mid(Vervang(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Geschreven bij alleen maken |
+| **Vervang (Mid (vervangen door\[gebruikers-id\],, "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\]) ",," ",,", 1, 20),, "([\\\\.)\*\$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Geschreven bij alleen maken |
 | **Switch (\[actieve\],, "0", "True", "1", "false")** |  accountDisabled      |     | \+ Update maken |
-| **Voornaam**   | givenName       |     |    \+ Update maken |
-| **LastName**   |   SN   |     |  \+ Update maken |
+| **Voor**   | givenName       |     |    \+ Update maken |
+| **Naam**   |   SN   |     |  \+ Update maken |
 | **PreferredNameData**  |  displayName |     |   \+ Update maken |
-| **Bedrijf**         | bedrijf   |     |  \+ Update maken |
+| **Bedrijfs**         | bedrijf   |     |  \+ Update maken |
 | **SupervisoryOrganization**  | department  |     |  \+ Update maken |
-| **ManagerReference**   | beheerder  |     |  \+ Update maken |
+| **ManagerReference**   | Manager  |     |  \+ Update maken |
 | **BusinessTitle**   |  titel     |     |  \+ Update maken | 
 | **AddressLineData**    |  streetAddress  |     |   \+ Update maken |
 | **Gemeenschap**   |   l   |     | \+ Update maken |
@@ -567,10 +567,10 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 | **CountryReferenceTwoLetter**    |  c  |     |         \+ Update maken |
 | **CountryRegionReference** |  St     |     | \+ Update maken |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  \+ Update maken |
-| **PostalCode**  |   Postcode  |     | \+ Update maken |
+| **Code**  |   Postcode  |     | \+ Update maken |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | \+ Update maken |
-| **Fax**      | facsimileTelephoneNumber     |     |    \+ Update maken |
-| **Mobile**  |    mobiele       |     |       \+ Update maken |
+| **Faxtaken**      | facsimileTelephoneNumber     |     |    \+ Update maken |
+| **Provider**  |    mobiele       |     |       \+ Update maken |
 | **LocalReference** |  preferredLanguage  |     |  \+ Update maken |                                               
 | **Switch (\[gemeente\], "OE = standaard gebruikers, OE = gebruikers, OE = standaard, OE = locaties, DC = contoso, DC = com", "Rotterdam", "OE = Standard users, OU = gebruikers, OE = Rotterdam, OU = locations, DC = contoso, DC = com", "Austin", "OE = Standard users, OU = Users, OU = Austin, OE = locaties, DC = contoso, DC = com", "Seattle", "OE = standaard gebruikers, OU = gebruikers, OE = Seattle, OU = locaties, DC = contoso, DC = com", "Londen", "OE = Standard users, OU = gebruikers, OU = Londen, DC =", DC = contoso, DC'S = com ")**  | parentDistinguishedName     |     |  \+ Update maken |
 
@@ -653,7 +653,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 
       * **Constante** : een statische, constante teken reeks waarde schrijven naar het AD-kenmerk
 
-      * **Expressie** : Hiermee kunt u een aangepaste waarde naar het AD-kenmerk schrijven op basis van een of meer workday-kenmerken. [Zie dit artikel over expressies voor meer informatie](../manage-apps/functions-for-customizing-application-data.md).
+      * **Expressie** : Hiermee kunt u een aangepaste waarde naar het AD-kenmerk schrijven op basis van een of meer workday-kenmerken. [Zie dit artikel over expressies voor meer informatie](../app-provisioning/functions-for-customizing-application-data.md).
 
    * **Bron kenmerk** : het gebruikers kenmerk van workday. Als het kenmerk dat u zoekt niet aanwezig is, raadpleegt u [de lijst met gebruikers kenmerken voor workday aanpassen](#customizing-the-list-of-workday-user-attributes).
 
@@ -745,9 +745,9 @@ Zodra de configuratie van de app voor workday-inrichting is voltooid, kunt u de 
 
 5. Zodra de initiële synchronisatie is voltooid, wordt een overzichts rapport van de controle op het tabblad **inrichten** geschreven, zoals hieronder wordt weer gegeven.
 
-   ![Azure Portal](./media/workday-inbound-tutorial/wd_3.png)
+   ![Azure-portal](./media/workday-inbound-tutorial/wd_3.png)
 
-## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
+## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ)
 
 * **Vragen over oplossings mogelijkheden**
   * [Hoe stelt de oplossing bij het verwerken van een nieuwe huur bewerking vanuit workday het wacht woord in voor het nieuwe gebruikers account in Active Directory?](#when-processing-a-new-hire-from-workday-how-does-the-solution-set-the-password-for-the-new-user-account-in-active-directory)
@@ -848,7 +848,7 @@ Wanneer u een nieuw idee bekijkt, moet u controleren of iemand anders een vergel
 * Ga naar **configuratie scherm** -> **een programma menu te verwijderen of te wijzigen**
 * Zoek naar de versie die overeenkomt met de vermelding **Microsoft Azure AD inrichtings agent verbinden**
 
-  ![Azure Portal](./media/workday-inbound-tutorial/pa_version.png)
+  ![Azure-portal](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>Pusht micro soft automatisch de updates voor de inrichtings agent?
 
@@ -984,7 +984,7 @@ Hier vindt u informatie over het afhandelen van zulke vereisten voor het samen s
      | ----------------- | -------------------- |
      | PreferredFirstName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:First_Name/text() |
      | PreferredLastName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:Last_Name/text() |
-     | Bedrijf | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data[wd:Organization_Data/wd:Organization_Type_Reference/wd:ID[@wd:type='Organization_Type_ID']='Company']/wd:Organization_Reference/@wd:Descriptor |
+     | Bedrijf | Word: worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: ID [@wd:type= ' Organization_Type_ID '] = ' bedrijf ']/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | Word: worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: ID [@wd:type= ' Organization_Type_ID '] = ' toezicht ']/WD: Organization_Name/text () |
   
    Bevestig met uw werkdag team dat de API-expressie hierboven geldig is voor de Tenant configuratie van uw werkdag. Indien nodig kunt u deze bewerken zoals beschreven in de sectie [de lijst met gebruikers kenmerken van workday aanpassen](#customizing-the-list-of-workday-user-attributes).
@@ -995,10 +995,10 @@ Hier vindt u informatie over het afhandelen van zulke vereisten voor het samen s
 
      | Kenmerk workday | API XPATH-expressie |
      | ----------------- | -------------------- |
-     | CountryReference | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Alpha-3_Code']/text() |
+     | CountryReference | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= ' ISO_3166-1_Alpha-3_Code ']/text () |
      | CountryReferenceFriendly | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/@wd:Descriptor |
-     | CountryReferenceNumeric | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Numeric-3_Code']/text() |
-     | CountryReferenceTwoLetter | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/wd:ID[@wd:type='ISO_3166-1_Alpha-2_Code']/text() |
+     | CountryReferenceNumeric | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= ' ISO_3166-1_Numeric-3_Code ']/text () |
+     | CountryReferenceTwoLetter | Word: worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= ' ISO_3166-1_Alpha-2_Code ']/text () |
      | CountryRegionReference | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Region_Reference/@wd:Descriptor |
 
   Bevestig met uw werkdag team dat de API-expressies hierboven geldig zijn voor de Tenant configuratie van uw werkdag. Indien nodig kunt u deze bewerken zoals beschreven in de sectie [de lijst met gebruikers kenmerken van workday aanpassen](#customizing-the-list-of-workday-user-attributes).
@@ -1023,9 +1023,9 @@ Hier vindt u informatie over het afhandelen van zulke vereisten voor het samen s
     )
      ```
     Zie ook:
-  * [Syntaxis van de functie Switch](../manage-apps/functions-for-customizing-application-data.md#switch)
-  * [Syntaxis van de functie samen voegen](../manage-apps/functions-for-customizing-application-data.md#join)
-  * [Syntaxis van de functie Append](../manage-apps/functions-for-customizing-application-data.md#append)
+  * [Syntaxis van de functie Switch](../app-provisioning/functions-for-customizing-application-data.md#switch)
+  * [Syntaxis van de functie samen voegen](../app-provisioning/functions-for-customizing-application-data.md#join)
+  * [Syntaxis van de functie Append](../app-provisioning/functions-for-customizing-application-data.md#append)
 
 #### <a name="how-can-i-use-selectuniquevalue-to-generate-unique-values-for-samaccountname-attribute"></a>Hoe kan ik SelectUniqueValue gebruiken om unieke waarden voor het kenmerk samAccountName te genereren?
 
@@ -1043,17 +1043,17 @@ Hoe de bovenstaande expressie werkt: als de gebruiker John Smith is, probeert he
 
 Zie ook:
 
-* [Syntaxis van de mid-functie](../manage-apps/functions-for-customizing-application-data.md#mid)
-* [Syntaxis van de functie Replace](../manage-apps/functions-for-customizing-application-data.md#replace)
-* [SelectUniqueValue Function Syntax](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue)
+* [Syntaxis van de mid-functie](../app-provisioning/functions-for-customizing-application-data.md#mid)
+* [Syntaxis van de functie Replace](../app-provisioning/functions-for-customizing-application-data.md#replace)
+* [Syntaxis van de functie SelectUniqueValue](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue)
 
 #### <a name="how-do-i-remove-characters-with-diacritics-and-convert-them-into-normal-english-alphabets"></a>Hoe kan ik tekens verwijderen en deze converteren naar gewone Engelse alfabetten?
 
-Gebruik de functie [NormalizeDiacritics](../manage-apps/functions-for-customizing-application-data.md#normalizediacritics) om speciale tekens in de voor naam en achternaam van de gebruiker te verwijderen en tegelijkertijd het e-mail adres of de CN-waarde voor de gebruiker samen te stellen.
+Gebruik de functie [NormalizeDiacritics](../app-provisioning/functions-for-customizing-application-data.md#normalizediacritics) om speciale tekens in de voor naam en achternaam van de gebruiker te verwijderen en tegelijkertijd het e-mail adres of de CN-waarde voor de gebruiker samen te stellen.
 
-## <a name="troubleshooting-tips"></a>Tips om problemen op te lossen
+## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
-In deze sectie vindt u specifieke richt lijnen voor het oplossen van problemen met het inrichten van uw workday met behulp van de Azure AD-controle logboeken en Windows Server Logboeken-Logboeken. Het is gebaseerd op de algemene stappen voor probleem oplossing en de concepten die in de [zelf studie zijn vastgelegd: rapportage over automatische toewijzing van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)
+In deze sectie vindt u specifieke richt lijnen voor het oplossen van problemen met het inrichten van uw workday met behulp van de Azure AD-controle logboeken en Windows Server Logboeken-Logboeken. Het is gebaseerd op de algemene stappen voor probleem oplossing en de concepten die in de [zelf studie zijn vastgelegd: rapportage over automatische toewijzing van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)
 
 In deze sectie worden de volgende aspecten van het oplossen van problemen behandeld:
 
@@ -1209,7 +1209,7 @@ Als de inrichtings service geen verbinding kan maken met workday of Active Direc
 |#|Fout scenario |Mogelijke oorzaken|Aanbevolen oplossing|
 |--|---|---|---|
 |1.| Mislukte export bewerkingen in het audit logboek met de *volgende bericht fout: OperationsError-SvcErr: er is een bewerkings fout opgetreden. Er is geen bovenliggende verwijzing geconfigureerd voor de Directory service. De Directory service kan daarom geen verwijzingen uitgeven naar objecten buiten dit forest.* | Deze fout wordt meestal weer gegeven als de *Active Directory container* -OE niet juist is ingesteld of als er problemen zijn met de expressie toewijzing die voor *parentDistinguishedName*wordt gebruikt. | Schakel de para meter *Active Directory container* OE in voor type fouten. Als u *parentDistinguishedName* gebruikt in de kenmerktoewijzing, zorg er dan voor dat het altijd resulteert in een bekende container binnen het AD-domein. Controleer de gebeurtenis *exporteren* in de audit Logboeken om de gegenereerde waarde te bekijken. |
-|2.| Mislukte export bewerkingen in het audit logboek met fout code: *SystemForCrossDomainIdentityManagementBadResponse* en bericht *fout: ConstraintViolation-AtrErr: een waarde in de aanvraag is ongeldig. Een waarde voor het kenmerk bevindt zich niet in het acceptabele bereik van waarden. Details van \nError: CONSTRAINT_ATT_TYPE-Company*. | Hoewel deze fout specifiek is voor het kenmerk *bedrijf* , wordt deze fout mogelijk ook weer geven voor andere kenmerken, zoals *CN* . Deze fout wordt weer gegeven als gevolg van een AD-afgedwongen schema beperking. Standaard hebben de kenmerken als *bedrijf* en *CN* in AD een maximum van 64 tekens. Als de waarde die afkomstig is van workday meer is dan 64 tekens, wordt dit fout bericht weer gegeven. | Controleer de gebeurtenis *exporteren* in de audit Logboeken om de waarde te zien voor het kenmerk dat in het fout bericht is gerapporteerd. Overweeg het afkappen van de waarde die afkomstig is van workday met de functie [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) of het wijzigen van toewijzingen in een AD-kenmerk dat geen vergelijk bare lengte beperkingen heeft.  |
+|2.| Mislukte export bewerkingen in het audit logboek met fout code: *SystemForCrossDomainIdentityManagementBadResponse* en bericht *fout: ConstraintViolation-AtrErr: een waarde in de aanvraag is ongeldig. Een waarde voor het kenmerk bevindt zich niet in het acceptabele bereik van waarden. Details van \nError: CONSTRAINT_ATT_TYPE-Company*. | Hoewel deze fout specifiek is voor het kenmerk *bedrijf* , wordt deze fout mogelijk ook weer geven voor andere kenmerken, zoals *CN* . Deze fout wordt weer gegeven als gevolg van een AD-afgedwongen schema beperking. Standaard hebben de kenmerken als *bedrijf* en *CN* in AD een maximum van 64 tekens. Als de waarde die afkomstig is van workday meer is dan 64 tekens, wordt dit fout bericht weer gegeven. | Controleer de gebeurtenis *exporteren* in de audit Logboeken om de waarde te zien voor het kenmerk dat in het fout bericht is gerapporteerd. Overweeg het afkappen van de waarde die afkomstig is van workday met de functie [Mid](../app-provisioning/functions-for-customizing-application-data.md#mid) of het wijzigen van toewijzingen in een AD-kenmerk dat geen vergelijk bare lengte beperkingen heeft.  |
 
 #### <a name="ad-user-account-update-errors"></a>Fouten bij het bijwerken van het AD-gebruikers account
 
@@ -1348,7 +1348,7 @@ Als u deze wijziging wilt uitvoeren, moet u [werkdag Studio](https://community.w
 
 ### <a name="exporting-and-importing-your-configuration"></a>Uw configuratie exporteren en importeren
 
-Raadpleeg het artikel [inrichtings configuratie exporteren en importeren](../manage-apps/export-import-provisioning-configuration.md)
+Raadpleeg het artikel [inrichtings configuratie exporteren en importeren](../app-provisioning/export-import-provisioning-configuration.md)
 
 ## <a name="managing-personal-data"></a>Persoonlijke gegevens beheren
 
@@ -1362,7 +1362,7 @@ Ten aanzien van gegevens retentie, genereert de Azure AD-inrichtings service gee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
 * [Meer informatie over het configureren van eenmalige aanmelding tussen werk dagen en Azure Active Directory](workday-tutorial.md)
 * [Meer informatie over het integreren van andere SaaS-toepassingen met Azure Active Directory](tutorial-list.md)
 * [Meer informatie over het gebruik van Microsoft Graph-Api's voor het beheren van inrichtings configuraties](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

@@ -1,62 +1,66 @@
 ---
-title: Gegevensvisualisatie met Azure Data Explorer
-description: Meer informatie over de verschillende manieren die kunt u uw Azure Data Explorer-gegevens visualiseren
+title: Gegevens visualisatie van Azure Data Explorer
+description: Meer informatie over de verschillende manieren waarop u uw Azure Data Explorer-gegevens kunt visualiseren
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/30/2019
-ms.openlocfilehash: d1c73d8eb65ed5d67d5250b4a3bca3b80450001e
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.date: 01/30/2020
+ms.openlocfilehash: 32ccc5ad236c87d3609798a8432db14ee440d067
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536724"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064560"
 ---
-# <a name="data-visualization-with-azure-data-explorer"></a>Gegevensvisualisatie met Azure Data Explorer 
+# <a name="data-visualization-with-azure-data-explorer"></a>Gegevens visualisatie met Azure Data Explorer 
 
-Azure Data Explorer is een snelle en schaalbare data exploration-service voor logboek- en telemetrie-gegevens die wordt gebruikt voor het bouwen van complexe analytics-oplossingen voor grote hoeveelheden gegevens. Azure Data Explorer kan worden geïntegreerd met verschillende hulpprogramma's voor visualisatie, zodat u kunt uw gegevens visualiseren en delen van de resultaten in uw organisatie. Deze gegevens kan worden omgezet in bruikbare inzichten om indruk te maken van uw bedrijf.
+Azure Data Explorer is een snelle en zeer schaal bare service voor gegevens onderzoek voor logboek-en telemetriegegevens die worden gebruikt voor het bouwen van complexe analyse oplossingen voor enorme hoeveel heden gegevens. Azure Data Explorer kan worden geïntegreerd met verschillende visualisatie hulpprogramma's, zodat u uw gegevens kunt visualiseren en de resultaten van uw organisatie in uw hele bedrijf moet delen. Deze gegevens kunnen worden omgezet in inzichten die op actie kan worden uitgevoerd om een invloed te hebben op uw bedrijf.
 
-Gegevensvisualisatie en rapportage is een belangrijke stap in de data analytics-proces. Azure Data Explorer ondersteunt veel BI-services, zodat u kunt gebruiken die het beste past bij uw scenario en budget.
+Gegevens visualisatie en-rapportage is een belang rijke stap in het proces van gegevens analyse. Azure Data Explorer ondersteunt een groot aantal BI-Services, zodat u het kunt gebruiken dat het beste past bij uw scenario en budget.
 
-## <a name="kusto-query-language-visualizations"></a>Kusto-query language visualisaties
+## <a name="kusto-query-language-visualizations"></a>Visualisaties van Kusto-query taal
 
-De querytaal Kusto [ `render operator` ](/azure/kusto/query/renderoperator) biedt verschillende visualisaties, zoals tabellen, cirkeldiagrammen en staafdiagrammen tot queryresultaten weer. Queryvisualisaties zijn handig bij het detecteren van afwijkingen en prognoses, machine learning en meer.
+De Kusto-query taal [`render operator`](/azure/kusto/query/renderoperator) biedt verschillende visualisaties, zoals tabellen, cirkel diagrammen en staaf diagrammen, om query resultaten weer te gegeven. Query visualisaties zijn handig in anomalie detectie en prognoses, machine learning en meer.
 
 ## <a name="power-bi"></a>Power BI
 
-Azure Data Explorer biedt de mogelijkheid om te verbinden met [Power BI](https://powerbi.microsoft.com) verschillende methoden gebruiken: 
+Azure Data Explorer biedt de mogelijkheid om met behulp van verschillende methoden verbinding te maken met [Power bi](https://powerbi.microsoft.com) : 
 
-  * [Ingebouwde systeemeigen Power BI-connector](/azure/data-explorer/power-bi-connector)
+  * [Ingebouwde systeem eigen Power BI-connector](/azure/data-explorer/power-bi-connector)
 
-  * [Query importeren uit Azure Data Explorer in Power BI](/azure/data-explorer/power-bi-imported-query)
+  * [Query's importeren vanuit Azure Data Explorer naar Power BI](/azure/data-explorer/power-bi-imported-query)
  
   * [SQL-query](/azure/data-explorer/power-bi-sql-query)
 
 ## <a name="microsoft-excel"></a>Microsoft Excel
 
-Azure Data Explorer biedt de mogelijkheid om te verbinden met [Microsoft Excel](https://products.office.com/excel) met behulp van de ingebouwde native connector voor Excel of een query importeren uit Azure Data Explorer in Excel.
+Azure Data Explorer biedt de mogelijkheid om verbinding te maken met [micro soft Excel](https://products.office.com/excel) met behulp van de [ingebouwde systeem eigen Excel-connector](excel-connector.md)of [een query](excel-blank-query.md) vanuit Azure Data Explorer te importeren in Excel.
 
 ## <a name="grafana"></a>Grafana
 
-[Grafana](https://grafana.com) biedt een invoegtoepassing van Azure Data Explorer waarmee u voor het visualiseren van gegevens uit Azure Data Explorer. U [Azure Data Explorer instellen als een gegevensbron voor Grafana en visualiseren van de gegevens](/azure/data-explorer/grafana). 
+[Grafana](https://grafana.com) biedt een Azure Data Explorer-invoeg toepassing waarmee u gegevens kunt visualiseren vanuit Azure Data Explorer. U hebt [Azure Data Explorer ingesteld als gegevens bron voor Grafana en vervolgens de gegevens visualiseren](/azure/data-explorer/grafana). 
 
 ## <a name="odbc-connector"></a>ODBC-connector
 
-Azure Data Explorer biedt een [Open Database Connectivity (ODBC)-connector](connect-odbc.md) zodat alle toepassingen die ondersteuning biedt voor ODBC verbinding met Azure Data Explorer maken kan.
+Azure Data Explorer biedt een [Open Database Connectivity (ODBC)-connector](connect-odbc.md) , zodat elke toepassing die ODBC ondersteunt, verbinding kan maken met Azure Data Explorer.
 
 ## <a name="tableau"></a>Tableau
 
-Azure Data Explorer biedt de mogelijkheid om te verbinden met [Tableau](https://www.tableau.com) met behulp van de [ODBC connector](/azure/data-explorer/connect-odbc) en vervolgens [de gegevens visualiseren in Tableau](tableau.md).
+Azure Data Explorer biedt de mogelijkheid om verbinding te maken met [tableau](https://www.tableau.com) met behulp van de [ODBC-Connector](/azure/data-explorer/connect-odbc) en vervolgens [de gegevens in tableau te visualiseren](tableau.md).
 
 ## <a name="qlik"></a>Qlik
 
-Azure Data Explorer biedt de mogelijkheid om te verbinden met [Qlik](https://www.qlik.com) met behulp van de [ODBC connector](/azure/data-explorer/connect-odbc) en Qlik Sense-dashboards maken en de gegevens visualiseren. Met behulp van de volgende video, kunt u leren om gegevens van Azure Data Explorer met Qlik te visualiseren. 
+Azure Data Explorer biedt de mogelijkheid om verbinding te maken met [Qlik](https://www.qlik.com) met behulp van de [ODBC-Connector](/azure/data-explorer/connect-odbc) en vervolgens Qlik Sense-Dash boards te maken en de gegevens te visualiseren. Met behulp van de volgende video leert u hoe u Azure Data Explorer-gegevens kunt visualiseren met Qlik. 
 
 > [!VIDEO https://www.youtube.com/embed/nhWIiBwxjjU]  
 
 ## <a name="sisense"></a>Sisense
 
-Azure Data Explorer biedt de mogelijkheid om te verbinden met [Sisense](https://www.sisense.com) met behulp van de connector JDBC. U [Azure Data Explorer instellen als een gegevensbron voor Sisense en visualiseren van de gegevens](/azure/data-explorer/sisense).
+Azure Data Explorer biedt de mogelijkheid om verbinding te maken met [Sisense](https://www.sisense.com) met behulp van de JDBC-connector. U hebt [Azure Data Explorer ingesteld als gegevens bron voor Sisense en vervolgens de gegevens visualiseren](/azure/data-explorer/sisense).
+
+## <a name="redash"></a>Redash
+
+U kunt [restreep](https://redash.io/) gebruiken om Dash boards te maken en gegevens te visualiseren. [Stel Azure Data Explorer in als gegevens bron voor het opnieuw insluiten en Visualiseer vervolgens de gegevens](/azure/data-explorer/redash).

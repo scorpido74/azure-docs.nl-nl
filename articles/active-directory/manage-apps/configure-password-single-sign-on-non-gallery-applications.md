@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d191abafbaad123ed47f8eaae6cdd4e48478da7a
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422632"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063523"
 ---
 # <a name="configure-password-single-sign-on"></a>Eenmalige aanmelding met een wacht woord configureren
 
@@ -56,7 +56,7 @@ Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een g
 
 7. Voer de URL in van de webgebaseerde aanmeldings pagina van de toepassing. Deze teken reeks moet de pagina zijn die het invoergegevens veld van de gebruikers naam bevat.
 
-   ![Eenmalige aanmelding op basis van wachtwoord](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+   ![Eenmalige aanmelding op basis van wacht woorden](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
 8. Selecteer **Opslaan**. Azure AD probeert de aanmeldings pagina te parseren voor een gebruikersnaam invoer en een wachtwoord invoer. Als de poging slaagt, bent u klaar. 
  
@@ -68,14 +68,14 @@ Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een g
 
 Als het parseren van de Azure AD-poging mislukt, kunt u hand matig aanmelden configureren.
 
-1. Selecteer onder  **\<toepassings naam > configuratie**de **optie \<toepassings naam > wacht woord instellingen voor eenmalige aanmelding configureren** om de **aanmeldings** pagina te openen. 
+1. Selecteer onder **\<toepassings naam > configuratie**de optie **\<toepassings naam > wachtwoord instellingen voor eenmalige aanmelding configureren** om de pagina **aanmelden configureren** weer te geven. 
 
 2. Selecteer **aanmeldings velden hand matig detecteren**. Aanvullende instructies voor het beschrijven van de hand matige detectie van aanmeldings velden worden weer gegeven.
 
    ![Hand matige configuratie van op wacht woord gebaseerde eenmalige aanmelding](./media/configure-password-single-sign-on/password-configure-sign-on.png)
 3. Selecteer **aanmeldings velden voor vastleggen**. De pagina vastleg status wordt geopend op een nieuw tabblad, waarin wordt weer gegeven **dat het vastleggen van meta gegevens op het bericht wordt uitgevoerd**.
 
-4. Als het vak uitbrei ding van het **toegangs paneel vereist** wordt weer gegeven op een nieuw tabblad, selecteert u **nu installeren** om de extensie browser extensies voor **beveiligde aanmelding van mijn apps** te installeren. (Voor de browser extensie is micro soft Edge, Chrome of Firefox vereist.) Vervolgens installeert, start en activeert u de extensie en vernieuwt u de pagina vastleg status.
+4. Als het vak **uitbrei ding van het toegangs paneel vereist** wordt weer gegeven op een nieuw tabblad, selecteert u **nu installeren** om de extensie browser extensies voor **beveiligde aanmelding van mijn apps** te installeren. (Voor de browser extensie is micro soft Edge, Chrome of Firefox vereist.) Vervolgens installeert, start en activeert u de extensie en vernieuwt u de pagina vastleg status.
 
    De browser uitbreiding opent vervolgens een ander tabblad met de ingevoerde URL.
 5. Ga op het tabblad met de ingevoerde URL naar het aanmeldings proces. Vul de velden gebruikers naam en wacht woord in en probeer u aan te melden. (U hoeft het juiste wacht woord niet op te geven.)
@@ -95,4 +95,4 @@ Nadat u de aanmeldings pagina hebt vastgelegd, kunt u gebruikers en groepen toew
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Gebruikers of groepen toewijzen aan de toepassing](methods-for-assigning-users-and-groups.md)
-- [Automatisch inrichten van gebruikers accounts configureren](configure-automatic-user-provisioning-portal.md)
+- [Automatisch inrichten van gebruikers accounts configureren](../app-provisioning/configure-automatic-user-provisioning-portal.md)

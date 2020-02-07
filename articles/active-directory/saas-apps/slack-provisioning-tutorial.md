@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cd8e483d6c189e311fdb1925ad0f2effc2affe1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: cdc912c2df435f9b7e591d7c5475e126e6b0aeb7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849140"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062826"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Zelf studie: toegestane vertraging voor automatische gebruikers inrichting configureren
 
@@ -106,7 +106,7 @@ U kunt eventueel het inrichten van groeps objecten van Azure AD inschakelen voor
 
 Dit heeft tot gevolg dat groeps objecten die zijn toegewezen aan toegestane vertraging in de sectie **gebruikers en groepen** , volledig worden gesynchroniseerd van Azure AD naar een toegestane vertraging. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen voor het inrichtings logboek, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtings service in de app voor de toegestane vertraging.
 
-Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
 ## <a name="connector-limitations"></a>Connector beperkingen
 
@@ -126,5 +126,5 @@ Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [ra
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

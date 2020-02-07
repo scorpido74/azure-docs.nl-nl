@@ -3,16 +3,18 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7502c1c9a2e125052abf71e50273fbd9bab15cd1
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ba974228d63c542027ea5191d2c5877e7288b331
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989872"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050025"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
-Resource-beleidsdefinities worden gebruikt door Azure Policy tot stand brengen van conventies voor resources. Elke definitie beschrijft resourcenaleving en wat moet worden uitgevoerd wanneer een resource niet compatibel is zijn doorgevoerd.
+Azure Policy legt conventies voor resources vast. Beleids definities beschrijven de nalevings [voorwaarden voor](#conditions) bronnen en het effect dat moet worden genomen als aan een voor waarde wordt voldaan. Met een voor waarde wordt een [veld](#fields) van een resource-eigenschap vergeleken met een vereiste waarde. Resource-eigenschaps velden worden geopend met behulp van [aliassen](#aliases). Een resource-eigenschaps veld is een veld met één waarde of een [matrix](#understanding-the--alias) met meerdere waarden. De evaluatie van de voor waarde wijkt af van matrices.
+Meer informatie over [voor waarden](#conditions).
+
 Door te definiëren verdragen, kunt u kosten beheren en meer resources eenvoudig beheren. U kunt bijvoorbeeld opgeven dat alleen bepaalde typen virtuele machines zijn toegestaan. Of u kunt vereisen dat alle resources een bepaald label hebben. Beleidsregels worden overgenomen door alle onderliggende resources. Als een beleid wordt toegepast op een resourcegroep, is het van toepassing op alle resources in die resourcegroep.
 
 Het schema voor het definitie beleid vindt u hier: [https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
@@ -69,14 +71,16 @@ De **modus** is geconfigureerd, afhankelijk van of het beleid is gericht op een 
 
 ### <a name="resource-manager-modes"></a>Resource Manager-modi
 
-De **modus** bepaalt welke resourcetypen voor een beleid wordt geëvalueerd. De ondersteunde modi zijn:
+De **modus** bepaalt welke resource typen worden geëvalueerd voor een beleid. De ondersteunde modi zijn:
 
-- `all`: resourcegroepen en alle resourcetypen evalueren
-- `indexed`: alleen evalueren resourcetypen die ondersteuning bieden voor labels en de locatie
+- `all`: resource groepen en alle resource typen evalueren
+- `indexed`: alleen resource typen evalueren die tags en locatie ondersteunen
 
-We raden u aan **modus** naar `all` in de meeste gevallen. Alle beleidsdefinities die zijn gemaakt via de portal gebruiken de `all` modus. Als u PowerShell of Azure CLI gebruikt, kunt u opgeven de **modus** parameter handmatig. Als de beleidsdefinitie bevat geen een **modus** waarde, wordt standaard `all` in Azure PowerShell en in het `null` in de Azure CLI. Een `null` modus is hetzelfde als wanneer u `indexed` ter ondersteuning van achterwaartse compatibiliteit.
+Resource `Microsoft.Network/routeTables` ondersteunt bijvoorbeeld labels en locatie en wordt in beide modi geëvalueerd. `Microsoft.Network/routeTables/routes` van resources kan echter niet worden gelabeld in `Indexed` modus.
 
-`indexed` moet worden gebruikt bij het maken van beleid dat labels of locaties worden afgedwongen. Hoewel dit niet vereist is, voor komt u dat resources die tags en locaties ondersteunen, niet kunnen worden weer gegeven als niet-compatibel in de nalevings resultaten. De uitzondering hierop is **resourcegroepen**. Voor die locatie of de tags voor een resourcegroep afdwingen moeten ingesteld **modus** naar `all` en een specifiek doel de `Microsoft.Resources/subscriptions/resourceGroups` type. Zie voor een voorbeeld [afdwingen groep resourcetags](../samples/enforce-tag-rg.md). Zie [tag-ondersteuning voor Azure-resources](../../../azure-resource-manager/management/tag-support.md)voor een lijst met resources die Tags ondersteunen.
+In de meeste gevallen is het raadzaam om de **modus** in te stellen op `all`. Alle beleids definities die via de portal zijn gemaakt, gebruiken de `all` modus. Als u Power shell of Azure CLI gebruikt, kunt u de para meter **mode** hand matig opgeven. Als de beleids definitie geen **modus** waarde bevat, wordt standaard de `all` in Azure PowerShell en `null` in azure cli. Een `null` modus is hetzelfde als het gebruik van `indexed` om achterwaartse compatibiliteit te ondersteunen.
+
+`indexed` moet worden gebruikt bij het maken van beleids regels voor het afdwingen van tags of locaties. Hoewel dit niet vereist is, voor komt u dat resources die tags en locaties ondersteunen, niet kunnen worden weer gegeven als niet-compatibel in de nalevings resultaten. De uitzonde ring is **resource groepen**. Beleids regels die de locatie of tags voor een resource groep afdwingen, moeten de **modus** instellen op `all` en specifiek gericht zijn op het `Microsoft.Resources/subscriptions/resourceGroups` type. Zie Labels voor een [resource groep afdwingen](../samples/enforce-tag-rg.md)voor een voor beeld. Zie [tag-ondersteuning voor Azure-resources](../../../azure-resource-manager/management/tag-support.md)voor een lijst met resources die Tags ondersteunen.
 
 ### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a><a name="resource-provider-modes" />resource provider modi (preview-versie)
 
@@ -92,7 +96,7 @@ De volgende resource provider modi worden momenteel ondersteund tijdens de previ
 
 ## <a name="parameters"></a>Parameters
 
-Parameters helpen uw beleidsbeheer te vereenvoudigen door het aantal beleidsdefinities te verminderen. Met parameters, zoals de velden in een formulier – `name`, `address`, `city`, `state`. Deze parameters altijd hetzelfde blijven, maar hun waarden worden gewijzigd op basis van het afzonderlijke invullen van het formulier.
+Parameters helpen uw beleidsbeheer te vereenvoudigen door het aantal beleidsdefinities te verminderen. U kunt para meters zien zoals de velden in een formulier – `name`, `address`, `city``state`. Deze parameters altijd hetzelfde blijven, maar hun waarden worden gewijzigd op basis van het afzonderlijke invullen van het formulier.
 Parameters werken op dezelfde manier als het samenstellen van beleid. Door parameters te nemen in de beleidsdefinitie van een, kunt u beleid voor verschillende scenario's met behulp van verschillende waarden gebruiken.
 
 > [!NOTE]
@@ -149,7 +153,7 @@ Dit voor beeld verwijst naar de **allowedLocations** -para meter die is gedemons
 
 ### <a name="strongtype"></a>strongType
 
-Binnen de `metadata` eigenschap kunt u **strongType** gebruiken om een multi-select lijst met opties te bieden in de Azure Portal. Toegestane waarden voor **strongType** momenteel opnemen:
+Binnen de `metadata` eigenschap kunt u **strongType** gebruiken om een multi-select lijst met opties te bieden in de Azure Portal. Toegestane waarden voor **strongType** zijn momenteel:
 
 - `location`
 - `resourceTypes`
@@ -169,21 +173,21 @@ Tijdens het maken van een initiatief of het beleid, is het nodig zijn om de defi
 
 Als de locatie van de definitie a:
 
-- **Abonnement** - alleen de resources in dat abonnement aan het beleid kunnen worden toegewezen.
-- **Beheergroep** - alleen resources in de onderliggende beheergroepen en onderliggende abonnementen kunnen worden toegewezen op het beleid. Als u van plan bent om toe te passen van de beleidsdefinitie voor verschillende abonnementen, is de locatie moet een beheergroep met deze abonnementen.
+- Voor alleen **abonnements** resources binnen dit abonnement kan het beleid worden toegewezen.
+- **Beheer groep** -alleen resources binnen onderliggende beheer groepen en onderliggende abonnementen kunnen het beleid toewijzen. Als u van plan bent om toe te passen van de beleidsdefinitie voor verschillende abonnementen, is de locatie moet een beheergroep met deze abonnementen.
 
 ## <a name="display-name-and-description"></a>Weergavenaam en beschrijving
 
-U gebruikt **displayName** en **beschrijving** om te bepalen van de beleidsdefinitie en een context bieden voor wanneer deze wordt gebruikt. **DisplayName** heeft een maximale lengte van _128_ tekens en een **Beschrijving** van Maxi maal _512_ tekens.
+U gebruikt **DisplayName** en **Beschrijving** om de beleids definitie te identificeren en context op te geven wanneer deze wordt gebruikt. **DisplayName** heeft een maximale lengte van _128_ tekens en een **Beschrijving** van Maxi maal _512_ tekens.
 
 > [!NOTE]
 > Tijdens het maken of bijwerken van een beleids definitie, de **id**, het **type**en de **naam** worden gedefinieerd door de Eigenschappen extern van de JSON en zijn deze niet nodig in het JSON-bestand. Het ophalen van de beleids definitie via SDK retourneert de eigenschappen **id**, **type**en **naam** als onderdeel van de JSON, maar elk is een alleen-lezen informatie met betrekking tot de beleids definitie.
 
 ## <a name="policy-rule"></a>Beleidsregel
 
-De beleidsregel bestaat uit **als** en **vervolgens** blokken. In de **als** blok, definieert u een of meer voorwaarden die opgeven wanneer het beleid wordt afgedwongen. U kunt logische operators toepassen op deze voorwaarden voor het definiëren van het scenario voor een beleid nauwkeurig.
+De beleids regel bestaat uit **als** en **vervolgens** blokken. In het **if** -blok definieert u een of meer voor waarden die aangeven wanneer het beleid wordt afgedwongen. U kunt logische operators toepassen op deze voorwaarden voor het definiëren van het scenario voor een beleid nauwkeurig.
 
-In de **vervolgens** blok, definieert u het effect dat gebeurt er wanneer de **als** voorwaarden is voldaan.
+In de **blok kering** definieert u het effect dat optreedt wanneer aan de voor waarden voor de **if** wordt voldaan.
 
 ```json
 {
@@ -204,9 +208,9 @@ Ondersteunde logische operators zijn:
 - `"allOf": [{condition or operator},{condition or operator}]`
 - `"anyOf": [{condition or operator},{condition or operator}]`
 
-De **niet** syntaxis keert het resultaat van de voorwaarde. De **allOf** syntaxis (vergelijkbaar met de logische **en** bewerking) vereist dat alle voorwaarden wordt voldaan. De **dragen** syntaxis (vergelijkbaar met de logische **of** bewerking) vereist een of meer voorwaarden wordt voldaan.
+De syntaxis **not** keert het resultaat van de voor waarde. De **overzet** -syntaxis (vergelijkbaar met de logische **en** -bewerking) vereist dat alle voor waarden waar zijn. Voor de syntaxis van de **anyOf** (vergelijkbaar met de logische **of** bewerking) moeten een of meer voor waarden waar zijn.
 
-U kunt logische operators nesten. Het volgende voorbeeld wordt een **niet** bewerking die is genest in een **allOf** bewerking.
+U kunt logische operators nesten. In het volgende voor beeld ziet u een **niet** -bewerking die is genest in een **overzet** -bewerking.
 
 ```json
 "if": {
@@ -248,10 +252,12 @@ In een voor waarde wordt geëvalueerd of een **veld** of de **waarde** -accessor
 - `"greaterOrEquals": "value"`
 - `"exists": "bool"`
 
-Wanneer u de **zoals** en **notlike zijn** voorwaarden bieden u een jokerteken `*` in de waarde.
-De waarde mag niet meer dan één jokerteken hebben `*`.
+Wanneer u de voor waarden **like** en **notLike** gebruikt, geeft u een Joker teken `*` in de waarde.
+De waarde mag niet meer dan één Joker teken `*`hebben.
 
-Wanneer u de voor waarden **match** en **notMatch** gebruikt, geeft u `#` een cijfer, `?` voor een letter, `.` op te zoeken naar een wille keurig teken en elk ander teken dat overeenkomt met het werkelijke teken. Hoewel **match** en **notMatch** hoofdletter gevoelig zijn, zijn alle andere voor waarden die een _stringValue_ evalueren niet hoofdletter gevoelig. Hoofdletter gevoelige alternatieven zijn beschikbaar in **matchInsensitively** en **notMatchInsensitively**. Zie voor voorbeelden van [toestaan verschillende bestandsnaampatronen](../samples/allow-multiple-name-patterns.md).
+Wanneer u de voor waarden **match** en **notMatch** gebruikt, geeft u `#` een cijfer, `?` voor een letter, `.` op te zoeken naar een wille keurig teken en elk ander teken dat overeenkomt met het werkelijke teken. Hoewel **match** en **notMatch** hoofdletter gevoelig zijn, zijn alle andere voor waarden die een _stringValue_ evalueren niet hoofdletter gevoelig. Hoofdletter gevoelige alternatieven zijn beschikbaar in **matchInsensitively** en **notMatchInsensitively**. Zie [meerdere naam patronen toestaan](../samples/allow-multiple-name-patterns.md)voor voor beelden.
+
+In een **\[\*\] alias** matrix veld waarde, wordt elk element in de matrix afzonderlijk geëvalueerd met logische **en** tussen elementen. Zie [de \[\*\]-alias evalueren](../how-to/author-policies-for-arrays.md#evaluating-the--alias)voor meer informatie.
 
 ### <a name="fields"></a>Velden
 
@@ -271,13 +277,13 @@ De volgende velden worden ondersteund:
 - `tags`
 - `tags['<tagName>']`
   - De syntaxis van het haakje ondersteunt label namen met lees tekens zoals een afbreek streepje, een punt of een spatie.
-  - Waar **\<tagName\>** is de naam van de code voor het valideren van de voorwaarde voor.
+  - Hierbij **\<tagName\>** de naam van het label voor het valideren van de voor waarde voor.
   - Voor beelden: `tags['Acct.CostCenter']` waarbij **acct. CostCenter** de naam van de tag is.
 - `tags['''<tagName>''']`
   - De syntaxis van het haakje ondersteunt label namen met apostrofs in het teken met dubbele apostrofs.
   - Waarbij **'\<tagName\>'** de naam van het label is voor het valideren van de voor waarde voor.
   - Voor beeld: `tags['''My.Apostrophe.Tag''']` waarbij **' My. apostrof. tag '** de naam van de tag is.
-- de eigenschap aliassen - Zie voor een lijst [aliassen](#aliases).
+- eigenschaps aliassen: Zie [aliassen](#aliases)voor een lijst.
 
 > [!NOTE]
 > `tags.<tagName>`, `tags[tagName]`en `tags[tag.with.dots]` zijn nog steeds acceptabele manieren om een label veld te declareren. De voorkeurs expressies zijn echter die in de bovenstaande lijst.
@@ -396,7 +402,7 @@ Gebruik in plaats daarvan de functie [als ()](../../../azure-resource-manager/te
 
 Met de gereviseerde beleids regel controleert `if()` de lengte van de **naam** voordat er wordt geprobeerd een `substring()` op te halen met een waarde van minder dan drie tekens. Als de **naam** te kort is, wordt de waarde ' niet beginnend met ABC ' geretourneerd in plaats van **ABC**. Een resource met een korte naam die niet met **ABC** begint, mislukt nog steeds de beleids regel, maar veroorzaakt geen fout meer tijdens de evaluatie.
 
-### <a name="count"></a>Aantal
+### <a name="count"></a>Count
 
 Voor waarden die tellen hoeveel leden van een matrix in de resource-nettolading voldoen aan een voor waarde-expressie, kunnen worden gevormd met de expressie **Count** . Bij algemene scenario's wordt gecontroleerd of ten minste één van ', ' precies één van ', ' alle of ' geen van ' de matrix leden voldoen aan de voor waarde. **aantal** evalueert elke [\[\*\]](#understanding-the--alias) lid van de alias matrix voor een voorwaarde expressie en geeft een som van de _werkelijke_ resultaten, die vervolgens vergeleken met de expressie operator.
 
@@ -540,12 +546,12 @@ Voor beeld 7: Controleer of ten minste één matrixlid overeenkomt met meerdere 
 
 Azure Policy ondersteunt de volgende typen effect:
 
-- **Toevoeg-** : voegt de gedefinieerde set velden toe aan de aanvraag
-- **Audit**: genereert een waarschuwingsgebeurtenis in het activiteitenlogboek, maar niet de aanvraag mislukt
+- **Toevoegen**: Hiermee voegt u de gedefinieerde set velden toe aan de aanvraag
+- **Controle**: er wordt een waarschuwings gebeurtenis gegenereerd in het activiteiten logboek, maar de aanvraag mislukt niet
 - **AuditIfNotExists**: er wordt een waarschuwings gebeurtenis in het activiteiten logboek gegenereerd als een gerelateerde resource niet bestaat
-- **Weigeren**: genereert een gebeurtenis in het activiteitenlogboek en de aanvraag is mislukt
+- **Weigeren**: er wordt een gebeurtenis in het activiteiten logboek gegenereerd en de aanvraag mislukt
 - **DeployIfNotExists**: implementeert een gerelateerde resource als deze nog niet bestaat
-- **Uitgeschakelde**: resources voor naleving van de beleidsregel niet evalueren
+- **Uitgeschakeld**: resources worden niet geëvalueerd voor naleving van de beleids regel
 - **EnforceOPAConstraint** (preview): Hiermee configureert u de open Policy Agent Admissions controller met gate keeper v3 voor zelf-beheerde Kubernetes-clusters in azure (preview-versie)
 - **EnforceRegoPolicy** (preview): Hiermee configureert u de open Policy Agent Admissions-controller met gate keeper v2 in de Azure Kubernetes-service
 - **Wijzigen**: de gedefinieerde labels worden toegevoegd, bijgewerkt of verwijderd uit een resource
@@ -574,11 +580,11 @@ De volgende functies zijn beschikbaar voor gebruik in een beleids regel, maar ve
 - utcNow ()-in tegens telling tot een resource manager-sjabloon, kan dit buiten de standaard waarde worden gebruikt.
   - Retourneert een teken reeks die is ingesteld op de huidige datum en tijd 8601 in de indeling JJJJ-MM-DDTuu: mm: SS. fffffffZ
 
-Bovendien de `field` functie is beschikbaar voor de regels. `field` wordt voornamelijk gebruikt met **AuditIfNotExists** en **DeployIfNotExists** verwijzing velden op de resource die worden geëvalueerd. Een voorbeeld van het gebruik kan worden weergegeven de [DeployIfNotExists voorbeeld](effects.md#deployifnotexists-example).
+Daarnaast is de functie `field` beschikbaar voor beleids regels. `field` wordt hoofd zakelijk gebruikt in combi natie met **AuditIfNotExists** en **DeployIfNotExists** om te verwijzen naar velden in de resource die worden geëvalueerd. Een voor beeld van dit gebruik is te zien in het [DeployIfNotExists-voor beeld](effects.md#deployifnotexists-example).
 
 #### <a name="policy-function-example"></a>Voor beeld van beleids functie
 
-In dit voorbeeld van beleid voor regel maakt gebruik van de `resourceGroup` resource-functie om op te halen de **naam** eigenschap in combinatie met de `concat` matrix- en -functie voor het bouwen een `like` voorwaarde dat de naam van de resource te starten met de naam van de resourcegroep.
+In dit voor beeld van een beleids regel wordt de functie resource `resourceGroup` gebruikt voor het ophalen van de eigenschap **name** , gecombineerd met de `concat` matrix en object functie om een `like`-voor waarde te maken waarmee de resource naam wordt afgedwongen met de naam van de resource groep.
 
 ```json
 {
@@ -637,7 +643,7 @@ De lijst met aliassen groeien blijft. Als wilt weten welke aliassen worden momen
   (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
   ```
 
-- Azure-CLI
+- Azure CLI
 
   ```azurecli-interactive
   # Login first with az login if not using Cloud Shell
@@ -695,7 +701,7 @@ Zie [de alias [\*] evalueren](../how-to/author-policies-for-arrays.md#evaluating
 
 Initiatieven kunnen u verschillende beleidsdefinities toewijzingen en het beheer vereenvoudigen omdat u met een groep als één item werkt verwante groeperen. Bijvoorbeeld, kunt u gerelateerde tagging beleidsdefinities in een enkele initiatief groeperen. In plaats van elk beleid afzonderlijk toewijst, moet u het initiatief toepassen.
 
-Het volgende voorbeeld wordt het maken van een initiatief voor het verwerken van twee labels: `costCenter` en `productName`. Het maakt gebruik van twee ingebouwde beleidsregels om toe te passen van de standaardwaarde van de tag.
+In het volgende voor beeld ziet u hoe u een initiatief maakt voor het afhandelen van twee Tags: `costCenter` en `productName`. Het maakt gebruik van twee ingebouwde beleidsregels om toe te passen van de standaardwaarde van de tag.
 
 ```json
 {

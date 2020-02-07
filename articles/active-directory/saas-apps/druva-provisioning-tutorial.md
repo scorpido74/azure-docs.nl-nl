@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Druva configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+title: 'Zelf studie: Druva configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Druva.
 services: active-directory
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 27c8ca3a4b68d5f3a42777ff2cf9afa4b923c00b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 3d1bb0bcbc0df98d7a884004cf96fe9810589185
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641823"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058107"
 ---
-# <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Zelfstudie: Druva configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Zelf studie: Druva configureren voor automatische gebruikers inrichting
 
 Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in Druva en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in Druva.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)previews voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -60,7 +60,7 @@ Voordat u Druva configureert voor het automatisch inrichten van gebruikers met A
 
     ![Druva-beheer console](media/druva-provisioning-tutorial/menubar.png)
 
-2. Ga naar > **implementaties** > **gebruikers**beheren.
+2. Navigeer om > - **implementaties** > **gebruikers**te **beheren** .
 
     ![SCIM Druva toevoegen](media/druva-provisioning-tutorial/manage.png)
 
@@ -80,15 +80,15 @@ Als u Druva wilt configureren voor het automatisch inrichten van gebruikers met 
 
 1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
 
-    ![De Azure Active Directory-knop](common/select-azuread.png)
+    ![De knop Azure Active Directory](common/select-azuread.png)
 
 2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
-    ![De blade Enterprise-toepassingen](common/enterprise-applications.png)
+    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
 3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
-    ![De knop nieuwe toepassing](common/add-new-app.png)
+    ![De knop Nieuwe toepassing](common/add-new-app.png)
 
 4. Typ **Druva**in het zoekvak, selecteer **Druva** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
@@ -103,7 +103,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-druva-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Druva in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -119,13 +119,13 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5.  Selecteer in de sectie beheerders referenties de `https://apis.druva.com/insync/scim` invoer in de **Tenant-URL**. Voer de waarde van het **auth-token** in een **geheim token**in. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Druva. Als de verbinding mislukt, zorg er dan voor dat uw Druva-account beheerders machtigingen heeft en probeer het opnieuw.
+5.  Selecteer in de sectie beheerders referenties de invoer `https://apis.druva.com/insync/scim` in de **Tenant-URL**. Voer de waarde van het **auth-token** in een **geheim token**in. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Druva. Als de verbinding mislukt, zorg er dan voor dat uw Druva-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
 6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en selecteer **een e-mail melding verzenden wanneer er een fout optreedt**.
 
-    ![E-mailmelding](common/provisioning-notification-email.png)
+    ![E-mail melding](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
@@ -138,9 +138,9 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
     ![Druva-gebruikers kenmerken](media/druva-provisioning-tutorial/userattribute.png)
 
 
-10. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
-11. Als u de Azure AD-inrichtings service voor Druva wilt inschakelen, **wijzigt u de** inrichtings **status** in in het gedeelte **instellingen** .
+11. Als u de Azure AD-inrichtings service voor **Druva wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
     ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
@@ -154,7 +154,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Druva.
 
-    Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
+    Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
     
 ## <a name="connector-limitations"></a>Connector beperkingen
 
@@ -162,9 +162,9 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* Het [inrichten van een gebruikers account voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md).
+* Het [inrichten van een gebruikers account voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over inrichtings activiteiten](../manage-apps/check-status-user-account-provisioning.md).
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over inrichtings activiteiten](../app-provisioning/check-status-user-account-provisioning.md).

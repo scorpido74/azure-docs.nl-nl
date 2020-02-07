@@ -2,13 +2,13 @@
 title: Resource Manager en klassieke implementatie
 description: Lees hier wat de verschillen zijn tussen het implementatiemodel van Resource Manager en het klassieke implementatiemodel (of Service Management).
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: 4d7f17dace81198724a62dcc665c8c31acbcf6de
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.date: 02/06/2020
+ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168834"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064509"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager vergeleken met klassieke implementatie: implementatiemodellen en de status van uw resources begrijpen
 
@@ -76,7 +76,7 @@ Tags worden alleen ondersteund door resources die via Resource Manager zijn gema
 
 In het volgende diagram ziet u de reken-, netwerk- en opslagresources die zijn geïmplementeerd via Resource Manager.
 
-![Resource Manager-architectuur](./media/deployment-models/arm_arch3.png)
+![Architectuur van Resource Manager](./media/deployment-models/arm_arch3.png)
 
 Dit zijn de verschillende relaties tussen de resources:
 

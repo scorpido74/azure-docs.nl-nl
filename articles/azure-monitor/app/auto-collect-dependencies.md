@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6fe43eb5963f2918f41ad15f1904f883b5e9c298
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e774690fae2314b8db6e14f19a67c7ae1ce3a203
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678307"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064271"
 ---
 # <a name="dependency-auto-collection"></a>Afhankelijkheden automatisch verzamelen
 
@@ -24,12 +24,12 @@ Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen 
 | App-Frameworks| Versies |
 | ------------------------|----------|
 | ASP.NET-webformulieren | 4.5 + |
-| ASP.NET MVC | 4 + |
+| ASP.NET MVC | 4+ |
 | ASP.NET WebAPI | 4.5 + |
 | ASP.NET Core | 1.1 + |
 | <b>Communicatie bibliotheken</b> |
 | [Httpclient maakt](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
-| [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
+| [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0+, NuGet 4.3.0 |
 | [Event hubs-client-SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0 |
 | [ServiceBus-client-SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | 3.0.0 |
 | <b>Storage-clients</b>|  |
@@ -43,8 +43,8 @@ Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen 
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
 | <b>App-Frameworks</b> |  |
 | [Spring](https://spring.io/) | 3.0 |
-| [Spring boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup> *</sup> |
-| Java-servlet | 3.1 + |
+| [Spring boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup>*</sup> |
+| Java-servlet | 3.1+ |
 | <b>Communicatie bibliotheken</b> |  |
 | [Apache HTTP-client](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3 +<sup>†</sup> |
 | <b>Storage-clients</b> | |
@@ -53,7 +53,7 @@ Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen 
 | [Oracle]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1 +<sup>†</sup> |
 | [MySql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1 +<sup>†</sup> |
 | <b>Bibliotheken voor logboek registratie</b> | |
-| [Logback](https://logback.qos.ch/) | 1 + |
+| [Logback](https://logback.qos.ch/) | 1+ |
 | [Log4j](https://logging.apache.org/log4j/) | 1.2 + |
 | <b>Metrische bibliotheken</b> |  |
 | JMX | 1.0 + |
@@ -82,12 +82,13 @@ Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen 
 
 | Communicatie bibliotheken | Versies |
 | ------------------------|----------|
-| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Alles |
+| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Alle |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Aangepaste afhankelijkheden bijhouden instellen voor [.net](../../azure-monitor/app/asp-net-dependencies.md).
 - Aangepaste afhankelijkheden bijhouden instellen voor [Java](../../azure-monitor/app/java-agent.md).
+- Aangepaste afhankelijkheden bijhouden instellen voor [Opentellingen python](../../azure-monitor/app/opencensus-python-dependency.md).
 - [Aangepaste telemetrie van afhankelijkheid schrijven](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
 - Zie [gegevens model](../../azure-monitor/app/data-model.md) voor Application Insights typen en gegevens model.
 - Bekijk de [platforms](../../azure-monitor/app/platforms.md) die door Application Insights worden ondersteund.

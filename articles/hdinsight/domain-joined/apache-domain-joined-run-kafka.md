@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: a0205d57fa68585b1a91b99b19e008eb92e73c0d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a0ffa6e20b42ed8ac145b50c062f5c0a8998add0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435859"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061638"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Zelfstudie: Apache Kafka-beleidsregels configureren in HDInsight met Enterprise Security Package (preview)
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u het volgende:
 > * Onderwerpen in een Kafka-cluster maken
 > * Ranger-beleidsregels testen
 
-## <a name="prerequisite"></a>Vereisten
+## <a name="prerequisite"></a>Vereiste
 
 Een [HDInsight Kafka-cluster met Enterprise Security Package](./apache-domain-joined-configure-using-azure-adds.md).
 
@@ -93,7 +93,7 @@ Twee onderwerpen, `salesevents` en `marketingspend`, maken:
    ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   Vervang `DOMAINADMIN` door de beheerder van het cluster dat u hebt geconfigureerd tijdens het [maken van het cluster](./apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp) en vervang `CLUSTERNAME` door de naam van uw cluster. Voer het wachtwoord voor het beheerdersaccount in wanneer hierom wordt gevraagd. Zie [SSH gebruiken met HDInsight](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie over het gebruik van `SSH` met HDInsight.
+   Vervang `DOMAINADMIN` door de beheerder van het cluster dat u hebt geconfigureerd tijdens het [maken van het cluster](./apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp) en vervang `CLUSTERNAME` door de naam van uw cluster. Voer het wachtwoord voor het beheerdersaccount in wanneer hierom wordt gevraagd. Zie `SSH`SSH gebruiken met HDInsight[ voor meer informatie over het gebruik van ](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) met HDInsight.
 
 2. Gebruik de volgende opdrachten om de clusternaam op te slaan in een variabele en een hulpprogramma voor het parseren van JSON (`jq`) te installeren. Wanneer u daarom wordt gevraagd, geeft u de naam van het Kafka-cluster op.
 
@@ -147,6 +147,8 @@ Op basis van de geconfigureerde Ranger-beleidsregels kan **sales_user** het onde
 
 4. Volg stap 3 onder **Build en implementeer het voor beeld** in [zelf studie: gebruik de Apache Kafka producer-en Consumer-api's](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) om ervoor te zorgen dat de `kafka-producer-consumer.jar` ook beschikbaar is voor **sales_user**.
 
+**Opmerking: voor deze zelf studie gebruikt u het project Kafka-producer-Consumer. jar onder ' DomainJoined-producer-consumer ' (niet de naam onder het project van de producent-consument, dat wil zeggen voor scenario's die niet aan een domein zijn gekoppeld).**
+
 5. Controleer of **sales_user1** het onderwerp `salesevents` kan produceren. Voer hiervoor de volgende opdracht uit:
 
    ```bash
@@ -189,11 +191,14 @@ Op basis van de geconfigureerde Ranger-beleidsregels kan **sales_user** het onde
 
 Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het Kafka-cluster dat u hebt gemaakt met de volgende stappen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Typ **HDInsight** in het **Zoekvak** bovenaan.
 1. Selecteer onder **Services** de optie **HDInsight-clusters**.
 1. Klik in de lijst met HDInsight-clusters die wordt weergegeven, op de **...** naast het cluster dat u voor deze zelfstudie hebt gemaakt. 
 1. Klik op **Verwijderen**. Klik op **Ja**.
+
+## <a name="troubleshooting"></a>Problemen oplossen
+Als Kafka-producer-Consumer. jar niet werkt in een cluster dat lid is van een domein, moet u ervoor zorgen dat u de Kafka-producer-Consumer. jar gebruikt onder het project DomainJoined-producer-Consumer (niet de naam onder het project van de producent-consument, dat wil zeggen voor niet-domein gekoppelde scenario's).
 
 ## <a name="next-steps"></a>Volgende stappen
 

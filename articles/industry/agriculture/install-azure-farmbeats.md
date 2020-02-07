@@ -3,14 +3,14 @@ title: Azure FarmBeats installeren
 description: In dit artikel wordt beschreven hoe u Azure FarmBeats installeert in uw Azure-abonnement
 author: usha-rathnavel
 ms.topic: article
-ms.date: 12/11/2019
-ms.author: usrathna
-ms.openlocfilehash: d1a6bdfb38431e18eb305b223ce8ee2467804052
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.date: 1/17/2020
+ms.author: atinb
+ms.openlocfilehash: 0702b302af1c964014a6649f5f3e86ce47b4600a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482450"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048367"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats installeren
 
@@ -20,9 +20,10 @@ Azure FarmBeats is een Business-to-Business-aanbieding die beschikbaar is in azu
 
 - **Datahub**: een API-laag die aggregatie, normalisatie en contextualization van verschillende agrarische gegevens sets in verschillende providers mogelijk maakt.
 
-- **Accelerator**: een voor beeld-webtoepassing die is gebouwd op Datahub. Het gaat hier om de ontwikkeling en visualisatie van uw model. De Accelerator maakt gebruik van Azure FarmBeats-Api's om de visualisatie van opgenomen sensor gegevens te demonstreren als grafieken en visualisatie van model uitvoer als kaarten.
+- **Accelerator**: Web-app die is gebouwd op Datahub. Het gaat hier om de ontwikkeling en visualisatie van uw model. De Accelerator maakt gebruik van Azure FarmBeats-Api's om de visualisatie van opgenomen sensor gegevens te demonstreren als grafieken en visualisatie van model uitvoer als kaarten.
 
-## <a name="before-you-start"></a>Voordat u begint
+## <a name="general-information"></a>Algemene informatie
+
 ### <a name="components-installed"></a>Geïnstalleerde onderdelen
 
 Wanneer u Azure FarmBeats installeert, worden de volgende resources ingericht in uw Azure-abonnement:
@@ -40,7 +41,7 @@ Wanneer u Azure FarmBeats installeert, worden de volgende resources ingericht in
 | Azure Key Vault |  Datahub & Accelerator        |
 | Azure Maps-account       |     Snelle    |
 | Event hub-naam ruimte    |     Datahub      |
-| Logische app      |  Datahub       |
+| Logische apps      |  Datahub       |
 | Opslagaccount      |     Datahub & Accelerator      |
 | Time Series Insights     |    Datahub    |
 
@@ -48,40 +49,43 @@ Wanneer u Azure FarmBeats installeert, worden de volgende resources ingericht in
 
 De kosten van Azure FarmBeats zijn een samen vatting van de kosten van de onderliggende Azure-Services. Prijs informatie voor Azure-Services kan worden berekend met behulp van de [prijs calculator](https://azure.microsoft.com/pricing/calculator). De werkelijke kosten van de totale installatie variëren op basis van het gebruik. De constante status kosten voor de twee onderdelen zijn:
 
-* Datahub-minder dan $10 per dag
-* Accelerator-minder dan $2 per dag
+- Datahub-minder dan $10 per dag
+- Accelerator-minder dan $2 per dag
 
 ### <a name="regions-supported"></a>Regio's worden ondersteund
 
 Momenteel wordt Azure FarmBeats ondersteund in open bare Cloud omgevingen in de volgende regio's:
-* Australië - oost
-* US - centraal
-* VS - oost
-* VS - oost 2
-* US - west
-* US - west 2
-* Europa - noord
-* Europa - west
-* Azië - zuidoost
+
+- Australië - oost
+- US - centraal
+- US - oost
+- US - oost 2
+- US - west
+- US - west 2
+- Europa - noord
+- Europa -west
+- Azië - oost
+- Zuidoost-Azië
 
 ### <a name="time-taken"></a>Gebruikte tijd
 
 De volledige installatie van Azure FarmBeats, met inbegrip van de voor bereiding en installatie, duurt minder dan een uur.
 
-## <a name="prerequisites"></a>Vereisten    
+## <a name="prerequisites"></a>Vereisten
 
 Voordat u begint met de daad werkelijke installatie van Azure FarmBeats, moet u de volgende stappen uitvoeren:
 
-### <a name="create-sentinel-account"></a>Verklikker account maken
-Met de Azure FarmBeats-installatie kunt u gratis satelliet afbeelding van het Euro pees ruimte [-](https://scihub.copernicus.eu/) Instituut voor uw farm ontvangen. Als u deze configuratie wilt configureren, hebt u een Sentinel-account nodig.
+### <a name="verify-permissions"></a>Machtigingen verifiëren
 
-Volg de stappen voor het maken van een gratis account met Sentinel:
+U hebt de volgende machtigingen nodig in de Azure-Tenant die u wilt installeren Azure FarmBeats-
 
-1. Ga naar de officiële [registratie](https://scihub.copernicus.eu/dhus/#/self-registration) pagina.
-2. Geef de vereiste gegevens op (voor naam, achternaam, gebruikers naam, wacht woord en e-mail-ID) en vul het formulier in.
-3. Er wordt een verificatie koppeling verzonden naar de ID van het geregistreerde e-mail bericht. Selecteer de koppeling die in het e-mail bericht wordt gegeven en voltooi de verificatie.
+- Tenant: AAD-app-maker
+- Abonnement-eigenaar
+- De resource groep waarin FarmBeats wordt geïnstalleerd-eigenaar
 
-Het registratie proces is voltooid zodra u de verificatie hebt voltooid. Noteer uw **Sentinel-gebruikers naam** en **verklikker wachtwoord**.
+De eerste twee machtigingen zijn nodig voor [het maken van de procedure voor de Aad-toepassing](#create-an-aad-application) . Als dat nodig is, kunt u iemand met de juiste machtigingen krijgen voor het maken van de AAD-toepassing. De persoon die FarmBeats installeert, moet een eigenaar zijn van de resource groep waarin FarmBeats wordt geïnstalleerd.
+
+U kunt uw toegangs machtigingen in de Azure Portal controleren door de instructies te volgen op [op rollen gebaseerd toegangs beheer](https://docs.microsoft.com/azure/role-based-access-control/check-access)
 
 ### <a name="decide-subscription-and-region"></a>Abonnement en regio kiezen
 
@@ -89,177 +93,104 @@ U hebt de Azure-abonnements-ID en de regio waar u Azure FarmBeats wilt installer
 
 Noteer de ID van het **Azure-abonnement** en de **Azure-regio**.
 
-### <a name="verify-permissions"></a>Machtigingen verifiëren
+### <a name="create-an-aad-application"></a>Een AAD-toepassing maken
 
-U moet controleren of u voldoende bevoegdheden en machtigingen hebt in de Azure-Tenant die u wilt installeren van Azure FarmBeats.
+Voor Azure FarmBeats moet Azure Active Directory toepassing worden gemaakt en geregistreerd. Als u het AAD-script wilt maken, moet u de volgende machtigingen hebben:
 
-U kunt uw toegangs machtigingen in de Azure Portal controleren door de instructies te volgen op [op rollen gebaseerd toegangs beheer](https://docs.microsoft.com/azure/role-based-access-control/check-access)
+- Tenant: AAD-app-maker
+- Abonnement-eigenaar
 
-Voor het installeren van Azure FarmBeats hebt u de volgende machtigingen nodig:
-- Tenant-Lees toegang
-- Abonnement: Inzender of eigenaar
-- Resource groep-eigenaar.
+Voer de volgende stappen uit in een Cloud Shell-exemplaar met behulp van de Power shell-omgeving. De eerste keer dat gebruikers worden gevraagd om een abonnement te selecteren en een opslag account te maken. Voltooi de installatie volgens de instructies.
 
-Bovendien vereist Azure FarmBeats Azure Active Directory toepassings registraties. Er zijn twee manieren om de vereiste Azure AD-installatie te volt ooien:
+1. Het [Aad-app-Generator script](https://aka.ms/FarmBeatsAADScript) downloaden
 
-Voor **Beeld 1**: u hebt **Schrijf** machtigingen in de Azure-Tenant waarop u installeert. Dit betekent dat u over de benodigde machtigingen beschikt om de registratie van AAD-apps dynamisch te maken tijdens de installatie.
-
-U kunt direct door gaan naar de sectie [de inschrijving voor Marketplace volt ooien](#complete-azure-marketplace-sign-up) .
-
-
-Voor **Beeld 2**: u hebt geen **Schrijf** machtigingen in de Azure-Tenant. Dit is gebruikelijk bij het installeren van Azure FarmBeats in het Azure-abonnement van uw bedrijf en uw **Schrijf** toegang is beperkt tot alleen de resource groep die u hebt.
-Vraag uw IT-beheerder in dit geval de onderstaande stappen uit om de registratie van de Azure AD-app in de Azure Portal automatisch te genereren en te volt ooien.
-
-1. Down load en pak het pakket voor de [Aad-app-Generator](https://aka.ms/FarmBeatsAADScript) naar uw lokale machine.
-2. Meld u aan bij de Azure Portal en selecteer uw abonnement en de Azure AD-Tenant.
-3. Start Cloud Shell vanuit de werk balk boven aan het Azure Portal.
-
-    ![Project FarmBeats](./media/install-azure-farmbeats/navigation-bar-1.png)
-
-4. Kies Power shell als de voorkeurs shell-ervaring. De eerste keer dat gebruikers wordt gevraagd om een abonnement te selecteren en een opslag account te maken. Voltooi de installatie volgens de instructies.
-5. Upload het script (uit stap 1) naar Cloud Shell en noteer de locatie van het geüploade bestand.
-
-    > [!NOTE]
-    > Standaard wordt het bestand geüpload naar uw basismap.
-
-6. Ga naar de basismap met behulp van de opdracht ' cd ' en voer het volgende script uit:
-
-      ```azurepowershell-interactive
-            ./create_aad_script.ps1
-      ```
-7. Voer de naam van de **Datahub-website** en de naam van de **Accelerator website** in. Noteer de uitvoer van het script en deel het met de persoon die Azure FarmBeats installeert.
-
-Zodra de IT-beheerder u de vereiste details heeft, noteert u de **Aad-client-id, het Aad-client geheim, de naam van de Datahub-website & de naam**van de website van de Accelerator.
-
-   > [!NOTE]
-   > Als u de volgende instructies van case 2 wilt, vergeet dan niet om de AAD-client-ID & het AAD-client geheim toe te voegen als afzonderlijke para meters in het [parameter bestand](#prepare-parameters-file)
-
-U hebt nu alle informatie die nodig is om door te gaan naar de volgende sectie.
-
-### <a name="complete-azure-marketplace-sign-up"></a>Azure Marketplace-aanmelding volt ooien
-
-U moet de registratie van de Azure FarmBeats-aanbieding in azure Marketplace volt ooien voordat u het installatie proces van de Cloud-shell kunt starten. Volg de onderstaande stappen om de registratie te volt ooien:
-
-1.  Meld u aan bij Azure Portal. Selecteer uw account in de rechter bovenhoek en schakel over naar de Azure AD-Tenant waar u Azure FarmBeats wilt installeren.
-
-2.  Ga naar Azure Marketplace in de portal en zoek naar **Azure FarmBeats** in Marketplace
-
-3.  Er wordt een nieuw venster met een overzicht van Azure FarmBeats weer gegeven. Selecteer de **maken**.
-
-4.  Een nieuw venster wordt weergegeven. Voltooi het registratie proces door het juiste abonnement, de resource groep en de locatie te kiezen waarop u Azure FarmBeats wilt installeren.
-
-5.  Zodra de ingevoerde gegevens zijn gevalideerd, selecteert u **OK**. De pagina Gebruiksvoorwaarden wordt weer gegeven. Bekijk de voor waarden en selecteer **maken** om het registratie proces te volt ooien.
-
-Met deze stap wordt het registratie proces in azure Marketplace voltooid. U bent nu klaar om de voor bereiding van het parameter bestand te starten.
-
-### <a name="prepare-parameters-file"></a>Parameter bestand voorbereiden
-De laatste stap in de vereisten fase is het maken van een JSON-bestand dat als invoer wordt gebruikt tijdens de installatie van Cloud Shell. De para meters in het JSON-bestand moeten worden vervangen door de juiste waarden.
-
-Hieronder vindt u een voor beeld van een JSON-bestand. Down load het voor beeld en werk de vereiste gegevens bij.
-
-```json
-{  
-    "sku":"both",
-    "subscriptionId":"da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx",
-    "datahubResourceGroup":"dummy-test-dh1",
-    "location":"westus2",
-    "datahubWebsiteName":"dummy-test-dh1",
-    "acceleratorResourceGroup":"dummy-test-acc1",
-    "acceleratorWebsiteName":"dummy-test-acc1",
-    "sentinelUsername":"dummy-dev",
-    "notificationEmailAddress":"dummy@yourorg.com",
-    "updateIfExists":true
-}
-```
-
-U kunt de onderstaande parameter tabel raadplegen voor meer informatie over elk van de para meters.
-
-| Parameter | Waarde|
-|--- | ---|
-|sku  | Biedt de gebruiker een keuze om zowel Datahub als Accelerator of alleen de Datahub te installeren. Als u alleen Datahub wilt installeren, gebruikt u ' Datahub '. Als u Datahub en Accelerator wilt installeren, gebruikt u ' beide '|
-|subscriptionId | Hiermee geeft u het Azure-abonnement op voor het installeren van Azure FarmBeats|
-|datahubResourceGroup| Hiermee geeft u de naam van de resource groep voor uw Datahub-resources op. Voer hier de naam in van de resource groep die u hebt gemaakt in azure Marketplace|
-|location |De locatie/Azure-regio waar u Azure FarmBeats wilt installeren|
-|datahubWebsiteName  | Het unieke URL-voor voegsel voor uw Datahub-webtoepassing |
-|acceleratorResourceGroup  | Hiermee geeft u de naam van de resource groep voor uw resources voor Accelerators op|
-|acceleratorWebsiteName |Het unieke URL-voor voegsel voor uw webtoepassing voor Accelerators|
-|sentinelUsername | De gebruikers naam voor het ophalen van de afbeelding van de verklikker satelliet|
-|notificationEmailAddress  | Het e-mail adres voor het ontvangen van meldingen voor waarschuwingen die u in uw Datahub configureert|
-|updateIfExists| Beschrijving Een para meter die alleen in het parameter bestand moet worden meegenomen als u een bestaand exemplaar van Azure FarmBeats wilt bijwerken. Voor een upgrade moeten andere details, zoals de namen en locaties van de resource groep, hetzelfde zijn|
-|aadAppClientId | Beschrijving Een para meter die alleen in het parameter bestand moet worden opgenomen als u een vooraf gemaakte AAD-app gebruikt. Raadpleeg Case 2 in het gedeelte [machtigingen controleren](#verify-permissions) voor meer informatie |
-|aadAppClientSecret  | Beschrijving Beschrijving Een para meter die alleen in het parameter bestand moet worden opgenomen als u een vooraf gemaakte AAD-app gebruikt. Raadpleeg Case 2 in het gedeelte [machtigingen controleren](#verify-permissions) voor meer informatie|
-
-Maak op basis van de bovenstaande tabel en het JSON-voorbeeld bestand het JSON-bestand voor de para meters en sla het op uw lokale computer op.
-
-## <a name="install"></a>Installatie
-
-De werkelijke installatie van Azure FarmBeats-resources vindt plaats in Cloud Shell opdracht regel interface op basis van een browser met behulp van de bash-omgeving. Volg de onderstaande instructies voor het installeren van Azure FarmBeats:
-
-1. Meld u aan bij Azure Portal. Selecteer het Azure-abonnement en de Tenant waarvoor u Azure FarmBeats wilt installeren.
-2. Start **Cloud shell** vanuit de werk balk in de rechter bovenhoek van de Azure Portal.
-3. Kies bash als de voorkeurs shell-ervaring. Selecteer de knop **uploaden** (gemarkeerd in de onderstaande afbeelding) en upload het JSON-bestand voor bereide para meters.
-
-      ![Project FarmBeats](./media/install-azure-farmbeats/bash-2-1.png)
-
-4. **Kopieer** de onderstaande opdracht en **Vervang de \<gebruikers naam >** door de juiste waarde zodat de opdracht naar het juiste pad van het geüploade bestand wijst.
-
-    ```bash
-          wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
+    ```azurepowershell-interactive
+        wget -q https://aka.ms/FarmBeatsAADScript -O ./create_aad_script.ps1
     ```
-5. Voer de gewijzigde opdracht uit om het installatie proces te starten. U wordt gevraagd het volgende te doen:
- - Ga akkoord met de licentie voorwaarden voor **Azure FarmBeats** . Voer ' Y ' in om door te gaan naar de volgende stap als u akkoord gaat met de Gebruiksvoorwaarden. Voer ' N ' in om de installatie te beëindigen als u niet akkoord gaat met de gebruiks voorwaarden.
 
- - Vervolgens wordt u gevraagd om een toegangs token voor de installatie op te geven. Kopieer de gegenereerde code en meld u aan bij de [aanmeldings pagina](https://microsoft.com/devicelogin) van het apparaat met uw **Azure-referenties**.
+2. Standaard wordt het bestand gedownload naar uw basismap. Navigeer naar de map.
 
- - Zodra het aanmelden is voltooid, wordt gevraagd om het wacht woord voor uw Sentinel-account. Voer het **wacht woord**voor het Sentinel-account in.
+    ```azurepowershell-interactive
+        cd
+    ```
 
-6. Het parameter bestand wordt gevalideerd en de installatie van de Azure-resources wordt gestart. Het duurt ongeveer **25 minuten** om de installatie te volt ooien.    
-> [!NOTE]
-> Inactieve Cloud Shell sessies verlopen na **20 minuten**. Houd de Cloud Shell sessie actief terwijl het installatie programma de Azure-resources implementeert. Als er een time-out optreedt voor de sessie, moet u het installatie proces opnieuw starten.
+3. Het AAD-script uitvoeren
 
-Zodra de installatie is voltooid, ontvangt u de volgende uitvoer koppelingen:
-* **DATAHUB URL**: de Swagger-koppeling voor toegang tot de Datahub-api's.
-* **URL voor Accelerator**: de webtoepassing voor het verkennen van de Azure FarmBeats-Accelerator.
-* **Installer-logboek bestand**: het logboek bestand met details van de installatie. Dit logboek bestand kan worden gebruikt voor het oplossen van problemen met de installatie, indien nodig.
+    ```azurepowershell-interactive
+        ./create_aad_script.ps1
+    ```
 
-U kunt de voltooiing van uw Azure FarmBeats-installatie controleren door de volgende controles uit te voeren:
+4. Het AAD-script neemt ongeveer 2 minuten in beslag en voert waarden voor het scherm uit en naar een JSON-bestand in dezelfde map. Als u iemand anders het script hebt uitgevoerd, vraagt u hen deze uitvoer met u te delen.
 
-**Datahub**
-1. Meld u aan bij de beschik bare Accelerator-URL (in de notatie **https://\<yourdatahub-website-name >. azurewebsites. net/Swagger**) met uw Azure-referenties.
-2. U zou de verschillende FarmBeats-API-objecten moeten kunnen zien en REST-bewerkingen op de Api's moeten uitvoeren.
+### <a name="create-sentinel-account"></a>Verklikker account maken
 
-**Snelle**
-1. Meld u aan bij de beschik bare Accelerator-URL (in de notatie **https://\<youraccelerator-website-name >. azurewebsites. net/Swagger**) met uw Azure-referenties.
-2. U zou de gebruikers interface van de Accelerator moeten kunnen zien met een optie voor het maken van Farms in uw browser.
+Met de Azure FarmBeats-installatie kunt u satelliet installatie kopieën van de inspectie missie van de [Sentinel-2-](https://scihub.copernicus.eu/) satelliet van het Euro pees ruimte-agentschap verkrijgen voor uw farm. Als u deze configuratie wilt configureren, hebt u een Sentinel-account nodig.
 
-De mogelijkheid om de bovenstaande bewerkingen uit te voeren, wijst op een geslaagde installatie van Azure FarmBeats.
+Volg de stappen voor het maken van een gratis account met Sentinel:
+
+1. Ga naar de officiële [registratie](https://aka.ms/SentinelRegistration) pagina.
+2. Geef de vereiste gegevens op (voor naam, achternaam, gebruikers naam, wacht woord en e-mail-ID) en vul het formulier in.
+3. Er wordt een verificatie koppeling verzonden naar de ID van het geregistreerde e-mail bericht. Selecteer de koppeling die in het e-mail bericht wordt gegeven en voltooi de verificatie.
+
+Het registratie proces is voltooid zodra u de verificatie hebt voltooid. Noteer uw **Sentinel-gebruikers naam** en **verklikker wachtwoord**.
+
+## <a name="install"></a>Installeren
+
+U bent nu klaar om FarmBeats te installeren. Voer de volgende stappen uit om de installatie te starten:
+
+1. Meld u aan bij Azure Portal. Selecteer uw account in de rechter bovenhoek en schakel over naar de Azure AD-Tenant waar u Azure FarmBeats wilt installeren.
+
+2. Ga in de portal naar Azure Marketplace en zoek naar **Azure FarmBeats** in de Marketplace.
+
+3. Er wordt een nieuw venster met een overzicht van Azure FarmBeats weer gegeven. Selecteer **Maken**.
+
+4. Er wordt een nieuw venster weer gegeven. Voltooi het registratie proces door het juiste abonnement, de resource groep en de locatie te kiezen waarop u Azure FarmBeats wilt installeren.
+
+5. Geef het e-mail adres op waarvoor service waarschuwingen met betrekking tot Azure FarmBeats moeten worden ontvangen in de sectie **FarmBeats service Alerts** . Klik onder aan de pagina op volgende om naar het tabblad **afhankelijkheden** te gaan. ![tabblad basis](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
+
+6. Kopieer de afzonderlijke vermeldingen van de uitvoer van [Aad-script](#create-an-aad-application) naar de invoer in de sectie Aad-toepassing.
+
+7. Voer de gebruikers naam en het wacht woord van het [Sentinel-account](#create-sentinel-account) in het gedeelte verklikker account in. Klik op volgende om naar het tabblad **controleren en maken** ![afhankelijkheden te gaan](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
+
+8. Zodra de ingevoerde gegevens zijn gevalideerd, selecteert u **OK**. De pagina Gebruiksvoorwaarden wordt weer gegeven. Bekijk de voor waarden en selecteer **maken** om de installatie te starten. U wordt automatisch omgeleid naar een pagina waar u de voortgang van de installatie kunt volgen.
+
+Nadat de installatie is voltooid, kunt u de installatie controleren en FarmBeats-portal gaan gebruiken door te navigeren naar de naam van de website die u tijdens de installatie hebt ingesteld: https://\<FarmBeats-website-name >. azurewebsites. net. U ziet de FarmBeats-gebruikers interface met een optie voor het maken van farms.
+
+**Datahub** kan worden gevonden op https://\<FarmBeats-website-name >-API. azurewebsites. net/Swagger. Hier ziet u de verschillende API-objecten van FarmBeats en worden REST-bewerkingen uitgevoerd op de Api's.
 
 ## <a name="upgrade"></a>Upgraden
-Als u in de open bare preview-versie een bestaande installatie van Azure FarmBeats wilt bijwerken, moet u de installatie opdracht opnieuw uitvoeren in Cloud Shell opnieuw, met een extra para meter '**updateIfExists**' in het bestand para meters ingesteld op '**True**'. Raadpleeg de laatste regel van het onderstaande JSON-voor beeld voor de update-para meter.
 
-```json
-{
-    "sku":"both",
-    "subscriptionId":"da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx",
-    "datahubResourceGroup":"dummy-test-dh1",
-    "location":"westus2",
-    "datahubWebsiteName":"dummy-test-dh1",
-    "acceleratorResourceGroup":" dummy-test-acc1",
-    "acceleratorWebsiteName":" dummy-test-acc1",
-    "sentinelUsername":"dummy-dev",
-    "notificationEmailAddress":"dummy@yourorg.com",
-    "updateIfExists":true
-}
-```
-De opdracht werkt de bestaande installatie van Azure FarmBeats bij naar de meest recente versie en biedt u de uitvoer koppelingen.
+Als u de FarmBeats wilt bijwerken naar de nieuwste versie, voert u de volgende stappen uit in een Cloud Shell-exemplaar met behulp van de Power shell-omgeving. De gebruiker moet de eigenaar zijn van het abonnement waarin FarmBeats is geïnstalleerd.
+De eerste keer dat gebruikers worden gevraagd om een abonnement te selecteren en een opslag account te maken. Voltooi de installatie volgens de instructies.
+
+1. Het [upgrade script](https://aka.ms/FarmBeatsUpgradeScript) downloaden
+
+    ```azurepowershell-interactive
+        wget –q https://aka.ms/FarmBeatsUpgradeScript -O ./update-farmbeats.ps1
+    ```
+
+2. Standaard wordt het bestand gedownload naar uw basismap. Navigeer naar de map.
+
+    ```azurepowershell-interactive
+        cd
+    ```
+
+3. Het upgrade script uitvoeren
+
+    ```azurepowershell-interactive
+        ./upgrade-farmbeats.ps1 -InputFilePath [Path to input.json file]
+    ```
+
+Het pad naar het bestand input. json is optioneel. Als dat niet is opgegeven, wordt u door het script gevraagd om alle vereiste invoer. De upgrade moet in ongeveer 30 minuten worden voltooid.
 
 ## <a name="uninstall"></a>Verwijderen
 
 Voer de volgende stappen uit om Azure FarmBeats Datahub of Accelerator te verwijderen:
 
-1.  Meld u aan bij de Azure Portal en **Verwijder de resource groepen** waarin deze onderdelen zijn geïnstalleerd.
+1. Meld u aan bij de Azure Portal en **Verwijder de resource groepen** waarin deze onderdelen zijn geïnstalleerd.
 
-2.  Ga naar Azure Active Directory & **de Azure AD-toepassing te verwijderen** die aan de Azure FarmBeats-installatie is gekoppeld. Hiermee wordt de installatie van Azure FarmBeats verwijderd uit uw Azure-abonnement.
+2. Ga naar Azure Active Directory & **de Azure AD-toepassing te verwijderen** die aan de Azure FarmBeats-installatie is gekoppeld.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 U hebt geleerd hoe u Azure FarmBeats kunt installeren in uw Azure-abonnement. Nu leert u hoe u [gebruikers kunt toevoegen](manage-users-in-azure-farmbeats.md#manage-users) aan uw Azure FarmBeats-exemplaar.

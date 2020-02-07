@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9519aaf7b57f5f4fbafa7248d3d524aea5d22c46
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8dcbfe7a47dba5a1783d6010d41e33073bc0bb20
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922408"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048924"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Mobiliteits dekking Azure Maps
 
-Met de Azure Maps [Mobility-service](https://aka.ms/AzureMapsMobilityService) kunt u de functionaliteit van een open bare door Voer, Bike share en scooter delen met multimodale reis plannings opties. Voor open bare door Voer biedt de service zoeken naar nabijgelegen stations, stoppen en lijnen en biedt informatie zoals geplande en real-time open bare aankomsten, een lijst van stops en route handleidingen, evenals gedetailleerde en multimodale stapsgewijze route ring en Service waarschuwingen. De Mobility-service retourneert ook real-time en statische beschikbaarheids informatie om auto's te delen en gedeelde Bikes en scooters.
+Azure Maps biedt een [Mobility-service](https://aka.ms/AzureMapsMobilityService). De Mobility-service verbetert de ontwikkelings tijd voor toepassingen met functies voor openbaar door Voer, Bike share en scooter-share. Het biedt een optie om te routeren met multimodale reis plannings opties. Functies voor open bare door Voer zijn zoeken naar nabijgelegen stations, zoeken naar stops, zoeken naar doorlopende regels, plannings gegevens ophalen, inkomend openbaar door Voer, ophalen en weer geven van stops en route richtlijnen. De service retourneert gegevens in realtime en statische Beschik baarheid naar gedeelde Voer tuigen, zoals auto's, Bikes en scooters. De API retourneert gedetailleerde en multimodale stapsgewijze routes en service waarschuwingen.
 
-Azure Maps heeft niet hetzelfde niveau van informatie en nauw keurigheid voor alle steden en landen/regio's. De mogelijkheid om doorvoer gegevens aan te roepen, is afhankelijk van de plaats en de gegevens bevatten mogelijk niet alle open bare doorvoer opties en instanties die de plaats van dienst zijn.
+Azure Maps heeft niet hetzelfde niveau van informatie en nauw keurigheid voor alle steden en landen/regio's. De mogelijkheid om doorvoer gegevens aan te roepen, is afhankelijk van de plaats. De gegevens bevatten mogelijk niet alle open bare doorvoer opties en instanties die de plaats van dienst zijn.
 
 De volgende tabel bevat informatie over de dekking van Azure Maps Mobility-service.
 
 
-| Symbool | Betekenis |
+| Valuta | Betekenis |
 |--------|---------|
 | *      |Bijna volledige dekking voor het land/de regio.|
 
@@ -63,7 +63,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps Mobility-servi
 | Japan | Shizuoka prefectuur, Tokio, Wakkanai, Yamanashi prefectuur |
 | Maleisië | Ipoh, Johar Bahru, Kuala Lumpur, Penang |
 | Nieuw-Zeeland | Auckland, Christchurch, Dunedin, Queenstown, Timaru, Wellington|
-| Filippijnen | Manilla |
+| Filipijnen | Manilla |
 | Singapore | Singapore |
 | Zuid-Korea | Busan, Seoul |
 | Taiwan | Changhua County, Taipei | 
@@ -78,7 +78,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps Mobility-servi
 | Andorra        | Andorra la Vella |
 | Athene         | Chios | 
 | Oostenrijk        | Wenen |
-| Wit-Rusland        | Gomel, Grodno, Polotsk & Novopolotsk, Zhlobin, Vileyka, Maladziečna, Minsk, Rechytsa | 
+| Belarus        | Gomel, Grodno, Polotsk & Novopolotsk, Zhlobin, Vileyka, Maladziečna, Minsk, Rechytsa | 
 | België        | België |
 | Bolivia        | La Paz, Santa Cruz de la Sierra | 
 | Bosnië en Herzegovina | Sarajevo | 
@@ -102,7 +102,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps Mobility-servi
 | Letland | Rīga |
 | Litouwen | Druskininkai, Kauno, Klaipėda, Panevėžys, Vilnius |
 | Luxemburg | Luxemburg |
-| Moldavië | Chisinau |
+| Werden | Chisinau |
 | Montenegro | Podgorica |
 | Nederland | Nl |
 | Noorwegen | Noor wegen | 
@@ -134,7 +134,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps Mobility-servi
 | Marokko | Casablanca, Khouribga, Tétouan|
 | Qatar| Doha|
 | Saoedi-Arabië | Thuwal |
-| Zuid-Afrika | Kaapstad |
+| Zuid-Afrika | Kaap stad |
 | Tunesië | Kairouan |
 | Verenigde Arabische Emiraten  | Abu Dhabi, Dubai |
 

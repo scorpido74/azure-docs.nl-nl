@@ -2,20 +2,20 @@
 title: Wat is de pagina Aanvullende verificatie? -Azure AD
 description: Ga naar de extra beveiligings verificatie pagina voor twee ledige verificatie.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 01/15/2020
-ms.author: lizross
-ms.openlocfilehash: d7ec884cb55d876edd93f9fe1c5cc59f5ee13295
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 5a7f0e10b23bf1a541fe83c3112962c38f7e1331
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705289"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062554"
 ---
 # <a name="what-is-the-additional-verification-page"></a>Wat is de pagina Aanvullende verificatie?
 
@@ -49,13 +49,13 @@ Nadat uw organisatie twee ledige verificatie heeft ingeschakeld en ingesteld, wo
 
     De pagina **aanvullende beveiligings verificatie** wordt weer gegeven.
 
-2. Op de pagina **aanvullende beveiligings verificatie** moet u bepalen welke verificatie methode met twee factoren u wilt gebruiken om te controleren of u bent wie u zegt nadat u zich hebt aangemeld bij uw werk-of school account. U kunt de volgende selecties maken:
+2. Op de pagina **aanvullende beveiligings verificatie** moet u bepalen welke verificatie methode met twee factoren u wilt gebruiken om te controleren of u bent wie u zegt nadat u zich hebt aangemeld bij uw werk-of school account. U kunt het volgende selecteren:
 
     | Contactmethode | Beschrijving |
     | --- | --- |
     | Mobiele app | <ul><li>**Meldingen ontvangen voor verificatie.** Met deze optie wordt een melding naar de verificator-app op uw smartphone of Tablet gepusht. Bekijk de melding en selecteer **verifiëren** in de app als deze geldig is. Uw werk of school vereist mogelijk dat u een pincode invoert voordat u zich verifieert.</li><li>**Verificatie code gebruiken.** In deze modus genereert de verificator-app een verificatie code die elke 30 seconden wordt bijgewerkt. Voer de meest actuele verificatie code in het aanmeldings scherm in.<br>De Microsoft Authenticator-app is beschikbaar voor [Android](https://go.microsoft.com/fwlink/?linkid=866594) en [iOS](https://go.microsoft.com/fwlink/?linkid=866594).</li></ul> |
-    | Verificatietelefoon | <ul><li>Met **telefoon oproep** wordt een geautomatiseerd telefoon gesprek met het door u geleverde nummer geplaatst. Beantwoord de oproep en druk op het hekje (#) op het telefoon blok om te verifiëren.</li><li>**SMS-bericht** eindigt een tekst bericht met een verificatie code. Na de prompt in de tekst antwoordt u op het tekst bericht of voert u de verificatie code in die u in de aanmeldings interface hebt opgegeven.</li></ul> |
-    | Zakelijke telefoon | Hiermee wordt een geautomatiseerd telefoon gesprek met het door u verstrekte nummer geplaatst. Beantwoord de oproep en druk op het hekje (#) op het telefoon blok om te verifiëren. |
+    | Telefoon voor authenticatie | <ul><li>Met **telefoon oproep** wordt een geautomatiseerd telefoon gesprek met het door u geleverde nummer geplaatst. Beantwoord de oproep en druk op het hekje (#) op het telefoon blok om te verifiëren.</li><li>**SMS-bericht** eindigt een tekst bericht met een verificatie code. Na de prompt in de tekst antwoordt u op het tekst bericht of voert u de verificatie code in die u in de aanmeldings interface hebt opgegeven.</li></ul> |
+    | Telefoon (werk) | Hiermee wordt een geautomatiseerd telefoon gesprek met het door u verstrekte nummer geplaatst. Beantwoord de oproep en druk op het hekje (#) op het telefoon blok om te verifiëren. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -67,7 +67,7 @@ Nadat u de pagina **aanvullende beveiligings verificatie** hebt geopend, moet u 
 
 - [Stel de Microsoft Authenticator-app in als uw verificatie methode](multi-factor-authentication-setup-auth-app.md)
 
-## <a name="related-resources"></a>Gerelateerde bronnen
+## <a name="related-resources"></a>Gerelateerde resources
 
 - [De instellingen voor de verificatie methode met twee factoren beheren](multi-factor-authentication-end-user-manage-settings.md)
 

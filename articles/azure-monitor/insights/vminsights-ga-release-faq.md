@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/24/2020
-ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 01/31/2020
+ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765753"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047850"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor voor VM's algemeen beschikbaar (GA)
 
@@ -37,7 +37,9 @@ In het verleden hebben we de ServiceMap-oplossing ingeschakeld in uw werk ruimte
 
 
 ## <a name="how-do-i-upgrade"></a>Hoe kan ik upgrade?
-Elke VM die moet worden bijgewerkt, wordt geïdentificeerd op het tabblad **aan de slag** in azure monitor voor VM's in het Azure Portal. U kunt één virtuele machine upgraden of meerdere selecteren om samen te upgraden. Gebruik de volgende opdracht om een upgrade uit te kunnen maken met Power shell:
+Wanneer een upgrade van een Log Analytics-werk ruimte naar de nieuwste versie van Azure Monitor naar Vm's wordt uitgevoerd, wordt de afhankelijkheids agent bijgewerkt op elke virtuele machine die aan die werk ruimte is gekoppeld. Elke VM die moet worden bijgewerkt, wordt geïdentificeerd op het tabblad **aan de slag** in azure monitor voor VM's in het Azure Portal. Wanneer u ervoor kiest om een virtuele machine te upgraden, wordt de werk ruimte voor die VM bijgewerkt, samen met eventuele andere virtuele machines die aan die werk ruimte zijn gekoppeld. U kunt één virtuele machine of meerdere Vm's, resource groepen of abonnementen selecteren. 
+
+Gebruik de volgende opdracht om een werk ruimte bij te werken met Power shell:
 
 ```PowerShell
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
@@ -97,7 +99,7 @@ We verwachten dat de update voor Azure Monitor voor VM's in eerste januari 2020 
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>Health-functie heeft een beperkte open bare preview
 
-We hebben een groot aantal fantastische feedback ontvangen van klanten over onze VM-status functie ingesteld. Er is zeer veel interesse in deze functie, met name vanwege de mogelijkheid om bewakingswerkstromen te ondersteunen. We zijn van plan een reeks wijzigingen door te voeren om functionaliteit toe te voegen en hierin de ontvangen feedback te verwerken. 
+We hebben een groot aantal fantastische feedback ontvangen van klanten over onze VM-status functie ingesteld. Er is veel belang aan deze functie en de kans op het ondersteunen van bewakings werk stromen. We zijn van plan een reeks wijzigingen aan te brengen om functionaliteit toe te voegen en de ontvangen feedback te verhelpen. 
 
 Om de gevolgen van deze wijzigingen aan nieuwe klanten te beperken, hebben we deze functie verplaatst naar een **beperkte open bare preview**. Deze update is opgetreden in oktober 2019.
 
@@ -119,4 +121,4 @@ Als u een bestaande klant bent die gebruikmaakt van de Health-functie en deze wi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk voor meer informatie over de vereisten en de methoden die u helpen bij uw virtuele machines controleren, [implementeert Azure Monitor voor virtuele machines](vminsights-enable-overview.md).
+Raadpleeg [Deploy Azure monitor voor VM's](vminsights-enable-overview.md)voor meer informatie over de vereisten en methoden die u helpen bij het bewaken van uw virtuele machines.

@@ -3,12 +3,12 @@ title: Wat is er nieuw in Azure Site Recovery
 description: Biedt een samen vatting van nieuwe functies en de meest recente updates in de Azure Site Recovery-service.
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cae653c9e51e2a497d6fa3781415a1f836053593
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934926"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064526"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -16,13 +16,11 @@ De [Azure site Recovery](site-recovery-overview.md) -service wordt voortdurend b
 
 U kunt volgen en u abonneren op Site Recovery update meldingen in het [Azure-updates](https://azure.microsoft.com/updates/?product=site-recovery) kanaal.
 
-
-
 ## <a name="supported-updates"></a>Ondersteunde updates
 
 Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest recente versie is van de release. Deze worden in de volgende tabel samenvatten.
 
-**Update** |  **Unified Setup** | **Eicellen van de configuratie server** | **Mobility Service-agent** | **Site Recovery provider** | **Recovery Services-agent**
+**Bijwerken** |  **Unified Setup** | **Eicellen van de configuratie server** | **Mobility Service-agent** | **Site Recovery provider** | **Recovery Services-agent**
 --- | --- | --- | --- | --- | ---
 [Pakket 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [Pakket 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
@@ -30,18 +28,18 @@ Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest re
 [Pakket 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Pakket 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 
-
-
 Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning van de update.
 
 ## <a name="updates-january-2020"></a>Updates (januari 2020)
 
 ### <a name="update-rollup-44"></a>Update pakket 44
+
 [Update pakket 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
-**Problemen/verbeteringen van het probleem** | Een aantal updates voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
+**Providers en agents** | Er zijn geen updates voor de Site Recovery providers en agents.
+**Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen zoals beschreven in de samen telling.
 
 ### <a name="azure-vmware-disaster-recovery"></a>Herstel na nood gevallen voor Azure VMware
 
@@ -52,7 +50,7 @@ Virtuele Azure-machines ondersteunen nu Vm's voor versleuteling-at-rest met door
 
 [Update pakket 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -64,7 +62,7 @@ Virtuele Azure-machines ondersteunen nu Vm's voor versleuteling-at-rest met door
 
 [Update pakket 42](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -111,7 +109,7 @@ Voor herstel na nood gevallen van virtuele Azure-machines naar een secundaire re
 
 [Update pakket 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -142,7 +140,7 @@ De tabel bevat een overzicht van de nieuwe functies voor VMware naar Azure voor 
 
 [Update pakket 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -173,7 +171,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-Opslagaccount | Site Recovery ondersteunt nu het gebruik van opslag accounts waarvoor Firewall is ingeschakeld voor Hyper-V naar Azure-herstel na nood gevallen.  U kunt opslag accounts met firewall mogelijkheden selecteren als doel account of voor cache opslag. Als u gebruikmaakt van Firewall-account, moet u ervoor zorgen dat u de optie voor het toestaan van vertrouwde micro soft-Services hebt ingeschakeld.<br/><br/> Dit wordt ondersteund voor virtuele Hyper-V-machines met of zonder System Center VMM.
+Storage-account | Site Recovery ondersteunt nu het gebruik van opslag accounts waarvoor Firewall is ingeschakeld voor Hyper-V naar Azure-herstel na nood gevallen.  U kunt opslag accounts met firewall mogelijkheden selecteren als doel account of voor cache opslag. Als u gebruikmaakt van Firewall-account, moet u ervoor zorgen dat u de optie voor het toestaan van vertrouwde micro soft-Services hebt ingeschakeld.<br/><br/> Dit wordt ondersteund voor virtuele Hyper-V-machines met of zonder System Center VMM.
 
 
 ## <a name="updates-august-2019"></a>Updates (augustus 2019)
@@ -182,7 +180,7 @@ Opslagaccount | Site Recovery ondersteunt nu het gebruik van opslag accounts waa
 
 [Update pakket 39](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -199,11 +197,11 @@ Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel s
 
 ## <a name="updates-july-2019"></a>Updates (juli 2019)
 
-### <a name="update-rollup-38"></a>Updatepakket 38
+### <a name="update-rollup-38"></a>Update pakket 38
 
 [Update pakket 38](https://support.microsoft.com/help/4513507/) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -224,7 +222,7 @@ U kunt schijven nu tot 8 TB repliceren, wanneer u naar een Azure-VM met beheerde
 
 [Update pakket 37](https://support.microsoft.com/help/4508614/) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -242,11 +240,11 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 ## <a name="updates-may-2019"></a>Updates (mei 2019)
 
-### <a name="update-rollup-36"></a>Updatepakket 36
+### <a name="update-rollup-36"></a>Update pakket 36
 
 [Update pakket 36](https://support.microsoft.com/help/4503156) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -279,7 +277,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 35](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in de rollup)
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
@@ -300,7 +298,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 34](https://support.microsoft.com/help/4490016/update-rollup-34-for-azure-site-recovery) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -310,7 +308,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 33](https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -350,7 +348,7 @@ Versneld netwerken maken gebruik van I/O-virtualisatie met één hoofdmap (SR-IO
 
 [Update pakket 32](https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -377,7 +375,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -432,7 +430,7 @@ Herstel na nood gevallen van virtuele Azure-machines, en netwerk-en opslag koste
 
 [Update pakket 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30) biedt de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -452,7 +450,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery) biedt de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -464,7 +462,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).
@@ -493,7 +491,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 [Update pakket 27](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery) bevat de volgende updates.
 
-**Update** | **Details**
+**Bijwerken** | **Details**
 --- | ---
 **Providers en agents** | Een update voor het Site Recovery van agents en providers (zoals beschreven in het pakket).
 **Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in het pakket).

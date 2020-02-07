@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 02/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a480327efacee2d1eb74353b2d0ef7885a6194
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024208"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048088"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Instellingen voor Azure AD-functies configureren in Privileged Identity Management
 
@@ -43,12 +43,8 @@ Volg de stappen in dit artikel voor het goed keuren of weigeren van aanvragen vo
 Volg deze stappen om de instellingen voor een Azure AD-functie te openen.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker in de beheerdersrol [privileged Role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
-
-1. Open **Azure AD privileged Identity Management**.
-
-1. Selecteer **Azure AD-rollen**.
-
-1. Selecteer **rolinstellingen**.
+gt
+1. Open **Azure AD Privileged Identity Management** &gt; **functies van Azure AD** &gt; **rol**.
 
     ![Pagina rolinstellingen met een lijst met Azure-resource rollen](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
@@ -89,7 +85,7 @@ Privileged Identity Management biedt een optionele afdwinging van Azure Multi-Fa
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>Multi-Factor Authentication vereisen voor actieve toewijzing
 
-In sommige gevallen wilt u mogelijk een gebruiker of groep toewijzen aan een rol voor een korte duur (bijvoorbeeld één dag). In dit geval hoeven de toegewezen gebruikers geen activering aan te vragen. In dit scenario kan Privileged Identity Management multi-factor Authentication niet afdwingen wanneer de gebruiker hun roltoewijzing gebruikt, omdat ze al actief zijn in de rol vanaf het moment dat deze wordt toegewezen.
+In sommige gevallen wilt u mogelijk een gebruiker toewijzen aan een rol voor een korte duur (bijvoorbeeld één dag). In dit geval hoeven de toegewezen gebruikers geen activering aan te vragen. In dit scenario kan Privileged Identity Management multi-factor Authentication niet afdwingen wanneer de gebruiker hun roltoewijzing gebruikt, omdat ze al actief zijn in de rol vanaf het moment dat deze wordt toegewezen.
 
 Als u er zeker van wilt zijn dat de resource beheerder die aan de toewijzing voldoet, weet wie ze zijn, kunt u multi-factor Authentication afdwingen voor actieve toewijzing door het selectie vakje **multi-factor Authentication op actieve toewijzing vereisen** in te scha kelen.
 
@@ -115,11 +111,11 @@ Als u wilt dat goed keuring vereist is om een rol te activeren, voert u de volge
 
 1. Controleer het selectie vakje **goed keuring vereisen om te activeren** .
 
-1. Selecteer **goed keurders selecteren** om de pagina **een lid of groep selecteren** te openen.
+1. Selecteer **goed keurders selecteren**.
 
     ![Selecteer een gebruikers-of groeps deel venster voor het selecteren van goed keurders](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. Selecteer ten minste één gebruiker of groep en klik vervolgens op **selecteren**. U kunt een wille keurige combi natie van gebruikers en groepen toevoegen. U moet ten minste één fiatteur selecteren. Er zijn geen standaard fiatteurs.
+1. Selecteer ten minste één gebruiker en klik vervolgens op **selecteren**. U moet ten minste één fiatteur selecteren. Er zijn geen standaard fiatteurs.
 
     Uw selecties worden weer gegeven in de lijst met geselecteerde goed keurders.
 
@@ -135,7 +131,7 @@ Volg deze stappen om de instellingen voor een Azure AD-functie te openen.
 
 1. Selecteer **Azure AD-rollen**.
 
-1. Selecteer **instellingen**.
+1. **Instellingen**selecteren.
 
     ![Azure AD-rollen-instellingen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
@@ -167,7 +163,7 @@ Zie [e-mail meldingen in privileged Identity Management](pim-email-notifications
 
 Gebruik de switch **incident/aanvraag ticket** om in aanmerking komende beheerders te vragen om een ticket nummer op te nemen wanneer ze hun rol activeren. Met deze procedure kunt u toegangs controles voor rollen effectiever uitvoeren.
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Meervoudige verificatie
 
 Gebruik de schakel optie **multi-factor Authentication** om op te geven of gebruikers hun identiteit moeten verifiëren met MFA voordat ze hun rollen kunnen activeren. Ze hoeven hun identiteit slechts eenmaal per sessie te verifiëren, niet elke keer dat ze een rol activeren. Er zijn twee tips die u moet onthouden wanneer u MFA inschakelt:
 
@@ -208,7 +204,7 @@ Als u de vereiste goed keuring wilt delegeren om een rol te activeren, voert u d
 
     ![Azure AD-rollen-instellingen-goed keuring vereisen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
-1. Selecteer een of meer goed keurders naast de beheerder van de geprivilegieerde rol en klik vervolgens op **selecteren**. U kunt gebruikers of groepen selecteren. We raden u aan ten minste twee goed keurders toe te voegen. Zelfs als u uzelf als fiatteur toevoegt, kunt u een functie activering niet zelf goed keuren. Uw selecties worden weer gegeven in de lijst met geselecteerde goed keurders.
+1. Selecteer een of meer goed keurders naast de beheerder van de geprivilegieerde rol en klik vervolgens op **selecteren**. We raden u aan ten minste twee goed keurders toe te voegen. Zelfs als u uzelf als fiatteur toevoegt, kunt u een functie activering niet zelf goed keuren. Uw selecties worden weer gegeven in de lijst met geselecteerde goed keurders.
 
 1. Nadat u de instellingen van uw rol hebt opgegeven, selecteert u **Opslaan** om uw wijzigingen op te slaan.
 

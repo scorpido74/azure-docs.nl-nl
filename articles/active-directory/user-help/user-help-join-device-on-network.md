@@ -2,7 +2,7 @@
 title: Uw werk apparaat toevoegen aan het netwerk-AD van uw organisatie
 description: Meer informatie over het toevoegen van uw werk apparaat aan het netwerk van uw organisatie.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 149c0298ee7883aa130756bfc4d0cbbb9e002065
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0ff8b85a15d94ded2d702e0df247f9ebc4d3f923
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704643"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062265"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Uw werk apparaat toevoegen aan het netwerk van uw organisatie
 Voeg uw werkend Windows 10-apparaat toe aan het netwerk van uw organisatie, zodat u mogelijk beperkte bronnen kunt openen.
@@ -85,7 +85,7 @@ Als u uw apparaat al een tijdje hebt en het reeds is ingesteld, kunt u deze stap
 
 5. Typ uw wacht woord in het scherm **wacht woord invoeren** en selecteer **Aanmelden**.
 
-    ![Wachtwoord invoeren](./media/user-help-join-device-on-network/join-device-setup-password.png)
+    ![Wacht woord invoeren](./media/user-help-join-device-on-network/join-device-setup-password.png)
 
 6. Goed keuren uw apparaat op uw mobiele apparaat om toegang tot uw account te krijgen. 
 

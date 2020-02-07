@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f578840726543027a8c1b1db9bd88ea42f6e85fa
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264064"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062146"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Een on-premises gegevensgateway installeren en configureren
 
@@ -22,12 +22,12 @@ Zie [verbinding maken met on-premises gegevens bronnen](analysis-services-gatewa
 
 ## <a name="prerequisites"></a>Vereisten
 
-**Minimale vereisten**
+**Minimale vereisten:**
 
-* .NET 4.5 Framework
+* .NET 4,5-Framework
 * 64-bits versie van Windows 8/Windows Server 2012 R2 (of hoger)
 
-**Aanbevolen:**
+**Aanbevelingen**
 
 * 8-core CPU
 * 8 GB geheugen
@@ -43,8 +43,6 @@ Zie [verbinding maken met on-premises gegevens bronnen](analysis-services-gatewa
 * Bij de installatie van de gateway moet het gebruikers account waarmee u bent aangemeld bij uw computer, aanmelden als service bevoegdheden hebben. Wanneer de installatie is voltooid, maakt de on-premises gegevens Gateway-Service gebruik van het NT SERVICE\PBIEgwService-account om u aan te melden als een service. U kunt een ander account opgeven tijdens de installatie of in Services nadat de installatie is voltooid. Zorg ervoor dat met groepsbeleid instellingen zowel het account waarmee u bent aangemeld bij het installeren en het service account dat u kiest aanmelden als service privileges.
 * Meld u aan bij Azure met een account in azure AD voor dezelfde [Tenant](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) als het abonnement waarmee u de gateway wilt registreren. Accounts voor Azure B2B (gast) worden niet ondersteund bij het installeren en registreren van een gateway.
 * Als gegevens bronnen zich op een Azure Virtual Network (VNet) bevinden, moet u de eigenschap [AlwaysUseGateway](analysis-services-vnet-gateway.md) van de server configureren.
-* De (Unified) gateway die hier wordt beschreven, wordt niet ondersteund in azure Duitsland-regio's. Gebruik in plaats daarvan **toegewezen on-premises gateway voor Azure Analysis Services**, geïnstalleerd vanaf de **Quick Start** van uw server in de portal. 
-
 
 ## <a name="download"></a>Update
 

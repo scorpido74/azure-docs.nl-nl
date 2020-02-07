@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: c5876dd293a97414ff4f48dbb8645e64226a6ba8
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 89e86a6702be7314b99975cac90818252eb07df7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834112"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046237"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding van machines voor beheer door Azure Automation status configuratie
 
@@ -53,7 +53,7 @@ In de volgende secties wordt beschreven hoe u elk type machine kunt toevoegen aa
 Met de configuratie van de Azure Automation-status kunt u Azure virtual machines eenvoudig voor configuratie beheer uitvoeren met behulp van de Azure Portal, Azure Resource Manager sjablonen of Power shell. Op de schermen en zonder een beheerder die op afstand in de virtuele machine moet worden uitgevoerd, registreert de Azure VM desired state Configuration extension de VM met Azure Automation status configuratie.
 Omdat de configuratie-uitbrei ding desired state van Azure VM asynchroon wordt uitgevoerd, stappen om de voortgang op te sporen of problemen op te lossen, vindt u in de volgende sectie [**problemen met het voorbereiden van een virtuele machine in azure oplossen**](#troubleshooting-azure-virtual-machine-onboarding) .
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Ga in het [Azure Portal](https://portal.azure.com/)naar het Azure Automation account waar u virtuele machines wilt voorbereiden. Klik op de pagina status configuratie en het tabblad **knoop punten** op **+ toevoegen**.
 

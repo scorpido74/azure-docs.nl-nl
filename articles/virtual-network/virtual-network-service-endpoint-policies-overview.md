@@ -11,20 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumi
-ms.openlocfilehash: 86726eefb53638036a4e9207c648bf5ffe6c866e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 1aa4328a6d5367ef356ce33807289a873c93d90f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595384"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056696"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Beleid voor service-eindpunten voor virtuele netwerken (preview)
 
 Met beleid voor service-eindpunten voor Virtual Network (VNet) kunt u via service-eindpunten verkeer van Virtual Network naar Azure-services filteren, waardoor alleen bepaalde Azure-serviceresources worden toegelaten. Beleid voor eindpunten zorgt voor nauwkeurig toegangsbeheer voor verkeer van Virtual Network naar Azure-services.
 
-Deze functie is beschikbaar als __preview__ voor de volgende Azure-services en regio's:
-
-__Azure Storage__: WestCentralUS, WestUS2, NorthCentralUS, SouthCentralUS, CentralUS, EastUS2.
+Deze functie is beschikbaar als __Preview-versie__ in alle open bare Azure-regio's voor Azure STorage.
 
 Voor de nieuwste updates over de preview gaat u naar de pagina [Updates voor Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -140,11 +138,11 @@ Het beleid voor service-eindpunten voor virtuele netwerken biedt de volgende voo
   > [!WARNING]  
   > Als een netwerkbeveiligingsgroep niet is geconfigureerd om de toegang van een Azure-service van een virtueel netwerk te beperken tot eindpuntregio's, hebt u toegang tot serviceresources in andere regio's, zelfs als het beleid voor service-eindpunten wordt toegepast.
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
-- **Virtuele netwerken met peers, verbonden of meerdere virtuele netwerken**: Als u het verkeer in gekoppelde virtuele netwerken wilt filteren, moeten de beleidsregels voor eindpunten afzonderlijk op deze virtuele netwerken worden toegepast.
+- **Gekoppelde, verbonden of meerdere virtuele netwerken**: Als u het verkeer in gekoppelde virtuele netwerken wilt filteren, moeten de beleidsregels voor eindpunten afzonderlijk op deze virtuele netwerken worden toegepast.
 - **Internetverkeer filteren met netwerkapparaten of Azure Firewall**: Filter het verkeer van Azure-services met behulp van beleid, via eindpunten, en filter de rest van het internet- of Azure-verkeer via apparaten of Azure Firewall. 
-- **Verkeer filteren van Azure-services die zijn geïmplementeerd in virtuele netwerken**: In de preview-fase wordt het beleid voor service-eindpunten niet ondersteund voor eventuele beheerde Azure-services die in uw virtuele netwerk zijn geïmplementeerd. 
+- **Verkeer filteren op Azure-services die in virtuele netwerken zijn geïmplementeerd**: Tijdens de preview wordt het beleid voor service-eindpunten niet ondersteund voor eventuele beheerde Azure-services die in uw virtuele netwerk zijn geïmplementeerd. 
  Zie [beperkingen](#limitations) voor de betreffende services.
 - **Verkeer vanaf on-premises naar Azure-services filteren**: Het beleid voor service-eindpunten is alleen van toepassing op het verkeer van de subnetten die aan het beleid zijn gekoppeld. Als u toegang vanaf on-premises tot bepaalde Azure-serviceresources wilt toestaan, moet het verkeer worden gefilterd met behulp van virtuele netwerkapparaten of firewalls.
 

@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 2195056ec66550063aba5ce5e2b977b51a6dc5e3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170076"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057803"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Zelf studie: de levens gebruiker configureren voor het automatisch inrichten van gebruikers
 
 In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD) configureert in de levens groep en Azure AD, zodat gebruikers of groepen automatisch worden ingericht of ongedaan worden gemaakt voor de levens groep.
 
 > [!NOTE]
-> In dit artikel wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor meer informatie over de werking van deze service en hoe deze werkt, en om antwoorden te krijgen op veelgestelde vragen.
+> In dit artikel wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor meer informatie over de werking van deze service en hoe deze werkt, en om antwoorden te krijgen op veelgestelde vragen.
 >
-> Deze connector is momenteel beschikbaar als preview-versie. Voor meer informatie over de functie Azure-gebruiks voorwaarden voor preview-functies gaat u naar [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze connector is momenteel in preview. Voor meer informatie over de functie Azure-gebruiks voorwaarden voor preview-functies gaat u naar [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -118,7 +118,7 @@ Configureer de automatische gebruikers inrichting voor de levensmiddelen gebruik
 
 1. Ga als volgt te werk onder **beheerders referenties**:
 
-   a. Voer in het vak **Tenant-URL** de **https: \//Concierge. Food. ee/scim/v2** -waarde in die u eerder hebt opgehaald.
+   a. Voer in het vak **Tenant-URL** de **https:\/-Concierge.Food.ee/scim/v2-** waarde in die u eerder hebt opgehaald.
 
    b. Voer in het vak **geheim token** de waarde van het **API-token** in die u eerder hebt opgehaald.
    
@@ -150,7 +150,7 @@ Configureer de automatische gebruikers inrichting voor de levensmiddelen gebruik
     ![Gebruikers toewijzingen van een gebruiker](media/Foodee-provisioning-tutorial/groupattribute.png)
 
 1. Selecteer **Opslaan**om uw wijzigingen door te voeren.
-1. De bereik filters configureren. Raadpleeg de instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor meer informatie.
+1. De bereik filters configureren. Raadpleeg de instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor meer informatie.
 
 1. Als u de Azure AD-inrichtings service voor de levens middelen wilt inschakelen, wijzigt u de **inrichtings status** in het gedeelte **instellingen** in **op aan**.
 
@@ -164,15 +164,15 @@ Configureer de automatische gebruikers inrichting voor de levensmiddelen gebruik
 
     ![De knop voor het inrichten van de configuratie](common/provisioning-configuration-save.png)
 
-Met de voor gaande bewerking wordt de eerste synchronisatie gestart van de gebruikers of groepen die u hebt gedefinieerd in de vervolg keuzelijst **bereik** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan bij de volgende synchronisaties. Zie [hoe lang duurt het voor het inrichten van gebruikers?](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)voor meer informatie.
+Met de voor gaande bewerking wordt de eerste synchronisatie gestart van de gebruikers of groepen die u hebt gedefinieerd in de vervolg keuzelijst **bereik** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan bij de volgende synchronisaties. Zie [hoe lang duurt het voor het inrichten van gebruikers?](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)voor meer informatie.
 
-U kunt de **huidige status** sectie gebruiken om de voortgang te bewaken en koppelingen naar uw inrichtings activiteiten rapport te volgen. In het rapport worden alle acties beschreven die worden uitgevoerd door de Azure AD-inrichtings service op de levens plaats. Zie [de status van gebruikers inrichten controleren](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
+U kunt de **huidige status** sectie gebruiken om de voortgang te bewaken en koppelingen naar uw inrichtings activiteiten rapport te volgen. In het rapport worden alle acties beschreven die worden uitgevoerd door de Azure AD-inrichtings service op de levens plaats. Zie [de status van gebruikers inrichten controleren](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
-* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)

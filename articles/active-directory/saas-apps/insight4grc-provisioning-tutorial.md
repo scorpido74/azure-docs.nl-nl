@@ -1,99 +1,80 @@
 ---
-title: 'Zelfstudie: Insight4GRC configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Insight4GRC.
+title: 'Zelf studie: Insight4GRC configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts van Azure AD naar Insight4GRC.
 services: active-directory
 documentationcenter: ''
-author: zchia
-writer: zchia
+author: Zhchia
+writer: Zhchia
 manager: beatrizd
-ms.assetid: 34718201-4f0e-4260-9af0-b3b70a1e8265
+ms.assetid: d0eab8a0-571b-4609-96b1-bdbc761a25de
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 7e8c6c2277f29fc114033aac24844e9e85816b78
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.date: 02/04/2020
+ms.author: Zhchia
+ms.openlocfilehash: 0ca9ed8781a13f9ab5e949e0e5f019a851dc75f4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951034"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057478"
 ---
-# <a name="tutorial-configure-insight4grc--for-automatic-user-provisioning"></a>Zelfstudie: Insight4GRC configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Zelf studie: Insight4GRC configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in Insight4GRC en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in Insight4GRC.
+In deze zelf studie worden de stappen beschreven die u moet uitvoeren in zowel Insight4GRC als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting. Wanneer de configuratie is geconfigureerd, worden gebruikers en groepen door Azure AD automatisch ingericht en [GeInsight4GRCd](https://www.rsmuk.com/) met behulp van de Azure AD-inrichtings service. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen. 
 
-> [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
->
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)previews voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+
+## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
+> [!div class="checklist"]
+> * Gebruikers maken in Insight4GRC
+> * Gebruikers in Insight4GRC verwijderen wanneer ze niet meer toegang nodig hebben
+> * Gebruikers kenmerken gesynchroniseerd laten tussen Azure AD en Insight4GRC
+> * Inrichtings groepen en groepslid maatschappen in Insight4GRC
+> * [Eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial) bij Insight4GRC (aanbevolen)
 
 ## <a name="prerequisites"></a>Vereisten
 
 In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
-* Een Azure AD-tenant.
-* [Een Insight4GRC-Tenant](https://www.rsmuk.com/).
+* [Een Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassings beheerder, Cloud toepassings beheerder, eigenaar van de toepassing of globale beheerder). 
 * Een gebruikers account in Insight4GRC met beheerders machtigingen.
 
-## <a name="assigning-users-to-insight4grc"></a>Gebruikers toewijzen aan Insight4GRC 
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
+1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
+3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en Insight4GRC](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
-
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot Insight4GRC. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan Insight4GRC door de volgende instructies te volgen:
-
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
-
-## <a name="important-tips-for-assigning-users-to-insight4grc"></a>Belang rijke tips voor het toewijzen van gebruikers aan Insight4GRC 
-
-* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Insight4GRC om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
-
-* Wanneer u een gebruiker toewijst aan Insight4GRC, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
-
-## <a name="setup-insight4grc-for-provisioning"></a>Insight4GRC instellen voor inrichting
+## <a name="step-2-configure-insight4grc-to-support-provisioning-with-azure-ad"></a>Stap 2. Insight4GRC configureren voor ondersteuning bij het inrichten met Azure AD
 
 Voordat u Insight4GRC configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op Insight4GRC.
 
-1. Om het Bearer-token te verkrijgen, moet de eind gebruiker contact opnemen met het ondersteunings [team](mailto:support.ss@rsmuk.com) en kunnen zij het Bearer-token aan de klanten leveren.
-
+1. Om het Bearer-token te verkrijgen, moet de eind gebruiker contact opnemen met het [ondersteunings team](mailto:support.ss@rsmuk.com).
 2. Als u de URL van het SCIM-eind punt wilt ophalen, moet u de Insight4GRC-domein naam gereed hebben, omdat deze wordt gebruikt om uw SCIM-eind punt-URL te maken. U kunt uw Insight4GRC-domein naam ophalen als onderdeel van de oorspronkelijke software-aankoop met Insight4GRC.
 
+## <a name="step-3-add-insight4grc-from-the-azure-ad-application-gallery"></a>Stap 3. Insight4GRC toevoegen vanuit de Azure AD-toepassings galerie
 
-## <a name="add-insight4grc--from-the-gallery"></a>Insight4GRC toevoegen vanuit de galerie
+Voeg Insight4GRC toe vanuit de Azure AD-toepassings galerie om het beheren van de inrichting van Insight4GRC te starten. Als u eerder Insight4GRC voor SSO hebt ingesteld, kunt u dezelfde toepassing gebruiken. Het is echter raadzaam dat u een afzonderlijke app maakt wanneer u de integratie in eerste instantie test. Meer informatie over het toevoegen van een toepassing uit [de galerie.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
-Als u Insight4GRC wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u Insight4GRC van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Definiëren wie binnen het bereik van de inrichting valt 
 
-**Voer de volgende stappen uit om Insight4GRC toe te voegen vanuit de Azure AD-toepassings galerie:**
+Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basis van de toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker/groep. Als u ervoor kiest om te bepalen wie wordt ingericht voor uw app op basis van de toewijzing, kunt u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen toe te wijzen aan de toepassing. Als u kiest voor het bereik dat alleen wordt ingericht op basis van kenmerken van de gebruiker of groep, kunt u een bereik filter gebruiken zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)wordt beschreven. 
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+* Wanneer u gebruikers en groepen toewijst aan Insight4GRC, moet u een andere rol dan **standaard toegang**selecteren. Gebruikers met de rol standaard toegang worden uitgesloten van inrichting en worden gemarkeerd als niet effectief in de inrichtings Logboeken. Als de enige rol die beschikbaar is op de toepassing de standaard rol Access is, kunt u [het toepassings manifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
 
-    ![De Azure Active Directory-knop](common/select-azuread.png)
+* Begin klein. Test met een klein aantal gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen toe te wijzen aan de app. Wanneer bereik is ingesteld op alle gebruikers en groepen, kunt u een [kenmerk op basis van bereik filteren](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
-    ![De blade Enterprise-toepassingen](common/enterprise-applications.png)
+## <a name="step-5-configure-automatic-user-provisioning-to-insight4grc"></a>Stap 5. Automatische gebruikers inrichting configureren voor Insight4GRC 
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
+In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in TestApp te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
-    ![De knop nieuwe toepassing](common/add-new-app.png)
+### <a name="to-configure-automatic-user-provisioning-for-insight4grc-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Insight4GRC in azure AD:
 
-4. Typ **Insight4GRC**in het zoekvak, selecteer **Insight4GRC** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
-
-    ![Insight4GRC in de lijst met resultaten](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-insight4grc"></a>Automatische gebruikers inrichting configureren voor Insight4GRC  
-
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Insight4GRC te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
-
-> [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Insight4GRC, gevolgd door de instructies in de [zelf studie Insight4GRC-eenmalige aanmelding](insight4grc-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
-
-### <a name="to-configure-automatic-user-provisioning-for-insight4grc--in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Insight4GRC in azure AD:
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -109,39 +90,48 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5.  Typ in de sectie beheerders referenties de `https://{Insight4GRC Domain Name}.insight4grc.com/public/api/scim/v2` invoer in de **Tenant-URL** met de waarde {Insight4GRC domain name} die eerder is opgehaald. Voer de **token waarde** in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Insight4GRC. Als de verbinding mislukt, zorg er dan voor dat uw Insight4GRC-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Geef in de sectie **beheerders referenties** de referenties van uw Insight4GRC en de gebruikers naam op. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Insight4GRC. Als de verbinding mislukt, zorg er dan voor dat uw Insight4GRC-account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![inrichtings](./media/insight4grc-provisioning-tutorial/provisioning.png)
 
-6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje **e-mail melding verzenden wanneer een fout optreedt** in.
 
-    ![E-mailmelding](common/provisioning-notification-email.png)
+    ![E-mail melding](common/provisioning-notification-email.png)
 
-7. Klik op **Opslaan**.
+7. Selecteer **Opslaan**.
 
 8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Insight4GRC**.
 
-    ![Insight4GRC-gebruikers toewijzingen](media/insight4grc-provisioning-tutorial/usermapping.png)
+9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Insight4GRC in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Insight4GRC voor bijwerk bewerkingen. Als u ervoor kiest om het [overeenkomende doel kenmerk](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)te wijzigen, moet u ervoor zorgen dat de INSIGHT4GRC-API het filteren van gebruikers op basis van dat kenmerk ondersteunt. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Insight4GRC in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Insight4GRC voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+   |Kenmerk|Type|
+   |---|---|
+   |userName|Tekenreeks|
+   |externalId|Tekenreeks|
+   |actief|Booleaans|
+   |titel|Tekenreeks|
+   |name.givenName|Tekenreeks|
+   |name.familyName|Tekenreeks|
+   |e-mailberichten [type eq 'werk'] .value|Tekenreeks|
+   |phoneNumbers [type eq 'werk'] .value|Tekenreeks|
 
-    ![Insight4GRC-gebruikers toewijzingen](media/insight4grc-provisioning-tutorial/userattribute.png)
+10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met Insight4GRC**.
 
-10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groep synchroniseren naar Insight4GRC**
+11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Insight4GRC in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om de groepen in Insight4GRC te vergelijken voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Insight4GRC-groeps toewijzingen](media/insight4grc-provisioning-tutorial/groupmapping.png)
+      |Kenmerk|Type|
+      |---|---|
+      |displayName|Tekenreeks|
+      |externalId|Tekenreeks|
+      |leden|Naslaginformatie|
 
-11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Insight4GRC in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de groeps accounts in Insight4GRC voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
-    ![Insight4GRC-groeps toewijzingen](media/insight4grc-provisioning-tutorial/groupattribute.png)
-
-10. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
-
-11. Als u de Azure AD-inrichtings service voor Insight4GRC wilt inschakelen, wijzigt u de inrichtings **status** in in het gedeelte **instellingen** .
+13. Als u de Azure AD-inrichtings service voor **Insight4GRC wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
     ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-12. Definieer de gebruikers en/of groepen die u wilt inrichten voor Insight4GRC door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+14. Definieer de gebruikers en/of groepen die u wilt inrichten voor Insight4GRC door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
     ![Inrichtings bereik](common/provisioning-scope.png)
 
@@ -149,16 +139,20 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Insight4GRC.
+Met deze bewerking wordt de initiële synchronisatie cyclus gestart van alle gebruikers en groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . De eerste cyclus duurt langer dan volgende cycli, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. 
 
-Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
+## <a name="step-6-monitor-your-deployment"></a>Stap 6. Uw implementatie bewaken
+Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw implementatie te bewaken:
 
+* Gebruik de [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) om te bepalen welke gebruikers al dan niet met succes zijn ingericht.
+* Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus weer te geven en te zien hoe sluiten deze moet worden voltooid.
+* Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* Het [inrichten van een gebruikers account voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md).
+* Het [inrichten van een gebruikers account voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over inrichtings activiteiten](../manage-apps/check-status-user-account-provisioning.md).
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over inrichtings activiteiten](../app-provisioning/check-status-user-account-provisioning.md).

@@ -3,12 +3,12 @@ title: Beleid voor het schrijven van matrix eigenschappen voor bronnen
 description: Meer informatie over het werken met matrix parameters en matrix-taal expressies, de alias [*] evalueren en elementen toevoegen met Azure Policy definitie regels.
 ms.date: 11/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 462d9acbda37bbbd007af6d6d1267e9b0e7d3e0a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023188"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050066"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Beleid voor het schrijven van matrix eigenschappen op Azure-resources
 
@@ -140,8 +140,7 @@ Het verwachte **type** voor waarde `equals` is _teken reeks_. Omdat **allowedLoc
 
 ### <a name="evaluating-the--alias"></a>De alias [*] evalueren
 
-Aliassen waaraan **\[\*\]** zijn gekoppeld aan hun naam, geven aan dat het **type** een _matrix_is. In plaats van de waarde van de volledige matrix te evalueren, is **\[\*\]** het mogelijk om elk element van de matrix afzonderlijk te evalueren, met logische en daartussen. Er zijn drie standaard scenario's waarin de evaluatie per item kan worden gebruikt: _geen_, _any_of _alle_ elementen komen niet overeen.
-Voor complexe scenario's gebruikt u [Count](../concepts/definition-structure.md#count).
+Aliassen waaraan **\[\*\]** zijn gekoppeld aan hun naam, geven aan dat het **type** een _matrix_is. In plaats van de waarde van de volledige matrix te evalueren, is **\[\*\]** het mogelijk om elk element van de matrix afzonderlijk te evalueren, met logische en daartussen. Er zijn drie standaard scenario's waarin de evaluatie per item kan worden gebruikt: _geen_, _any_of _alle_ elementen komen niet overeen. Voor complexe scenario's gebruikt u [Count](../concepts/definition-structure.md#count).
 
 De beleids engine activeert alleen het **effect** in **then** wanneer de **if** -regel als waar evalueert.
 Dit is belang rijk om te begrijpen in context van de manier waarop **\[\*\]** elk afzonderlijk element van de matrix evalueert.

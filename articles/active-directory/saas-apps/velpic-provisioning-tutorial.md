@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Velpic configureren voor het automatisch gebruikers inrichten met Azure Active Directory | Microsoft Docs'
-description: Informatie over het configureren van Azure Active Directory voor het automatisch inrichten en inrichting ongedaan maken-gebruikersaccounts met Velpic.
+title: 'Zelf studie: Velpic configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Velpic.
 services: active-directory
 documentationcenter: ''
 author: zhchia
@@ -16,88 +16,88 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c302fbe151d6cd8c2198240bc31a2bd69dbd7b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9b7a6c2c9b7ecb0b160f7481d95f7682f3f7a109
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337653"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064118"
 ---
-# <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Zelfstudie: Velpic configureren voor het automatisch inrichten van gebruikers
+# <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Zelf studie: Velpic configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om weer te geven u de stappen die u uitvoeren in Velpic en Azure AD wilt voor het automatisch inrichten en inrichting van gebruikersaccounts vanuit Azure AD naar Velpic ongedaan maken.
+Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoeren in Velpic en Azure AD om gebruikers accounts van Azure AD automatisch in te richten en te deactiveren naar Velpic.
 
 > [!NOTE]
-> Deze zelfstudie beschrijft een connector die is gebaseerd op de Provisioning-Service van Azure AD-gebruiker. Zie voor belangrijke informatie over wat deze service biedt, hoe het werkt en veelgestelde vragen [automatiseren van gebruikersinrichting en -opheffing in SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md).
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario in deze zelfstudie wordt ervan uitgegaan dat u al de volgende items hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
 
 * Een Azure Active Directory-tenant
-* Een tenant Velpic met de [Enterprise-plan](https://www.velpic.com/pricing.html) of beter ingeschakeld
-* Een gebruikersaccount in Velpic met beheerdersmachtigingen
+* Een Velpic-Tenant met het [ondernemings plan](https://www.velpic.com/pricing.html) of beter ingeschakeld
+* Een gebruikers account in Velpic met beheerders machtigingen
 
 ## <a name="assigning-users-to-velpic"></a>Gebruikers toewijzen aan Velpic
 
-Azure Active Directory maakt gebruik van een concept genaamd "toewijzingen" om te bepalen welke gebruikers krijgen toegang tot geselecteerde apps. In de context van het inrichten van automatische gebruikersaccounts, worden alleen de gebruikers en groepen die '' aan een toepassing in Azure AD toegewezen zijn gesynchroniseerd. 
+Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd. 
 
-Voordat u configureren en inschakelen van de inrichtingsservice, moet u om te bepalen welke gebruikers en/of groepen in Azure AD de gebruikers die toegang nodig tot uw app Velpic vertegenwoordigen. Als besloten, kunt u deze gebruikers toewijzen aan uw app Velpic door de instructies hier:
+Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw Velpic-app. Nadat u hebt besloten, kunt u deze gebruikers toewijzen aan uw Velpic-app door de volgende instructies te volgen:
 
-[Een gebruiker of groep toewijzen aan een enterprise-app](../manage-apps/assign-user-or-group-access-portal.md)
+[Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-velpic"></a>Belangrijke tips voor het toewijzen van gebruikers aan Velpic
+### <a name="important-tips-for-assigning-users-to-velpic"></a>Belang rijke tips voor het toewijzen van gebruikers aan Velpic
 
-* Het wordt aanbevolen dat één Azure AD-gebruiker worden toegewezen aan Velpic voor het testen van de configuratie van de inrichting. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Velpic om de inrichtings configuratie te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer een gebruiker aan Velpic toewijzen, moet u ofwel de **gebruiker** functie of een andere geldige toepassingsspecifieke-rol (indien beschikbaar) in het dialoogvenster toewijzing. Houd er rekening mee dat de **standaardtoegang** rol werkt niet voor het inrichten en deze gebruikers worden overgeslagen.
+* Wanneer u een gebruiker toewijst aan Velpic, moet u **de gebruikersrol** of een andere geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Houd er rekening mee dat de rol **standaard toegang** niet werkt voor inrichten en dat deze gebruikers worden overgeslagen.
 
-## <a name="configuring-user-provisioning-to-velpic"></a>Inrichten van gebruikers naar Velpic configureren
+## <a name="configuring-user-provisioning-to-velpic"></a>Gebruikers inrichten configureren voor Velpic
 
-Deze sectie helpt u bij uw Azure AD verbinden met de Velpic gebruikersaccount Inrichtings-API en configureren van de provisioning-service voor het maken, bijwerken en uitschakelen toegewezen gebruikersaccounts in Velpic op basis van gebruiker en groepstoewijzing in Azure AD.
+In deze sectie vindt u instructies voor het verbinden van uw Azure AD-Velpic en het configureren van de inrichtings service om toegewezen gebruikers accounts in Velpic te maken, bij te werken en uit te scha kelen op basis van de gebruikers-en groeps toewijzing in azure AD.
 
 > [!TIP]
-> U kunt ook op SAML gebaseerde eenmalige aanmelding ingeschakeld voor Velpic, vindt u de instructies te volgen in [Azure-portal](https://portal.azure.com). Eenmalige aanmelding kan worden geconfigureerd onafhankelijk van automatische inrichting, hoewel deze twee functies een fraaie aanvulling in elkaar.
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Velpic, volgens de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>Het configureren van automatische inrichten van gebruikersaccounts aan Velpic in Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor Velpic in azure AD:
 
-1. In de [Azure-portal](https://portal.azure.com), blader naar de **Azure Active Directory > Bedrijfsapps > alle toepassingen** sectie.
+1. Blader in het [Azure Portal](https://portal.azure.com)naar het gedeelte **Azure Active Directory > Enter prise-apps > alle toepassingen** .
 
-2. Als u al Velpic hebt geconfigureerd voor eenmalige aanmelding, zoeken naar uw exemplaar van Velpic met behulp van het zoekveld. Selecteer anders **toevoegen** en zoek naar de **Velpic** in de toepassingengalerie. Selecteer Velpic in de resultaten voor zoeken en toe te voegen aan uw lijst met toepassingen.
+2. Als u Velpic al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw instantie van Velpic met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **Velpic** in de toepassings galerie. Selecteer Velpic in de zoek resultaten en voeg deze toe aan uw lijst met toepassingen.
 
-3. Selecteer uw exemplaar van Velpic en selecteer vervolgens de **Provisioning** tabblad.
+3. Selecteer uw exemplaar van Velpic en selecteer vervolgens het tabblad **inrichten** .
 
-4. Stel de **Inrichtingsmodus** naar **automatische**.
+4. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Velpic inrichten](./media/velpic-provisioning-tutorial/Velpic1.png)
+    ![Velpic-inrichting](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. Onder de **beheerdersreferenties** sectie, voer de **Tenant-URL en geheim Token** van Velpic. () U kunt deze waarden vinden onder uw account Velpic: **Beheren** > **integratie** > **invoegtoepassing** > **SCIM**)
+5. Geef in het gedeelte **beheerders referenties** de **Tenant-URL op & geheime token** van Velpic. (U kunt deze waarden vinden onder uw Velpic-account: > **Integration** > - **invoeg toepassing** **beheren** > **scim**)
 
-    ![Autorisatiewaarden](./media/velpic-provisioning-tutorial/Velpic2.png)
+    ![Autorisatie waarden](./media/velpic-provisioning-tutorial/Velpic2.png)
 
-6. Klik in de Azure-portal op **testverbinding** om te controleren of Azure AD kunt verbinden met uw app Velpic. Als de verbinding is mislukt, zorg ervoor dat uw account Velpic beheerdersmachtigingen heeft en probeer het opnieuw stap 5.
+6. Klik in het Azure Portal op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw Velpic-app. Als de verbinding mislukt, zorgt u ervoor dat uw Velpic-account beheerders machtigingen heeft en voert u stap 5 opnieuw uit.
 
-7. Voer het e-mailadres van een persoon of groep die inrichting fout meldingen moet ontvangen de **e-mailmelding** veld en schakel het onderstaande selectievakje in.
+7. Voer het e-mail adres in van een persoon of groep die inrichtings fout meldingen moet ontvangen in het veld **e-mail melding** en schakel het selectie vakje hieronder in.
 
 8. Klik op **Opslaan**.
 
-9. Selecteer onder de sectie toewijzingen **synchroniseren Azure Active Directory: gebruikers aan Velpic**.
+9. Selecteer in de sectie toewijzingen de optie **Azure Active Directory gebruikers synchroniseren met Velpic**.
 
-10. In de **kenmerktoewijzingen** sectie, controleert u de kenmerken van de gebruiker die van Azure AD worden gesynchroniseerd met Velpic. Houd er rekening mee dat de kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen wordt gebruikt zodat deze overeenkomen met de gebruikersaccounts in Velpic voor update-bewerkingen. Selecteer de knop Opslaan om door te voeren van eventuele wijzigingen.
+10. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die worden gesynchroniseerd vanuit Azure AD naar Velpic. Houd er rekening mee dat de kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om te voldoen aan de gebruikers accounts in Velpic voor bijwerk bewerkingen. Selecteer de knop Opslaan om door te voeren van eventuele wijzigingen.
 
-11. Wijzigen zodat de Azure AD-inrichtingsservice voor Velpic de **Inrichtingsstatus** naar **op** in de **instellingen** sectie
+11. Als u de Azure AD-inrichtings service voor Velpic wilt inschakelen, wijzigt u de **inrichtings status** **in in het** gedeelte **instellingen**
 
 12. Klik op **Opslaan**.
 
-Hiermee start u de initiële synchronisatie van alle gebruikers en/of groepen die zijn toegewezen aan Velpic in de sectie gebruikers en groepen. Houd er rekening mee dat de eerste synchronisatie langer dan het volgende wordt gesynchroniseerd, die ongeveer elke 40 minuten optreden duurt als de service wordt uitgevoerd. U kunt de **synchronisatiedetails** sectie voortgang en koppelingen volgen voor het inrichten van activiteitenrapporten, waarin alle acties die worden uitgevoerd door de inrichtingsservice worden beschreven.
+Hiermee wordt de eerste synchronisatie gestart van gebruikers en/of groepen die zijn toegewezen aan Velpic in de sectie gebruikers en groepen. Houd er rekening mee dat de initiële synchronisatie langer duurt dan volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar de inrichtings activiteiten rapporten te volgen. hierin worden alle acties beschreven die worden uitgevoerd door de inrichtings service.
 
-Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Het inrichten van gebruikersaccounts voor bedrijfs-Apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en rapporten over het inrichten van activiteit ophalen](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)

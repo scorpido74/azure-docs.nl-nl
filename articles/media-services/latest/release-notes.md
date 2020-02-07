@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 52d8dda8b543e5bdf3ca88ae3784df65be3a2ba1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: b3d5e1f814a8eb083ab01623051f1b5b3723a9f1
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962940"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049629"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -54,7 +54,7 @@ Live transcriptie is ontworpen om samen te werken met Live-gebeurtenissen als ee
 > [!NOTE]
 > Live transcriptie is momenteel alleen beschikbaar als preview-functie in de regio vs-West 2. Het biedt alleen ondersteuning voor transcriptie van gesp roken woorden in het Engels (en-US).
 
-### <a name="content-protection"></a>Content Protection
+### <a name="content-protection"></a>Inhoudsbeveiliging
 
 De functie voor het voor *komen van tokens* voor het opnieuw afspelen in een beperkt aantal regio's in september is nu beschikbaar in alle regio's.
 Media Services klanten kunnen nu een limiet instellen voor het aantal keren dat hetzelfde token kan worden gebruikt om een sleutel of licentie aan te vragen. Zie [token replay voor komen](content-protection-overview.md#token-replay-prevention)voor meer informatie.
@@ -90,7 +90,7 @@ Media Services v3 kondigt de preview van 24 uur x 365 dagen aan live lineaire co
 
 #### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
 
-Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Preview*aangekondigd. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](../previous/legacy-components.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processors.
+Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Preview*aangekondigd. Zie het onderwerp [oudere onderdelen](../previous/legacy-components.md) voor de pensioen datums. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processors.
 
 Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md)voor meer informatie.
 
@@ -114,7 +114,7 @@ Zie [WAME migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/
  
 ## <a name="july-2019"></a>Juli 2019
 
-### <a name="content-protection"></a>Content Protection
+### <a name="content-protection"></a>Inhoudsbeveiliging
 
 Wanneer inhoud die wordt beveiligd met token beperking wordt gestreamd, moeten eind gebruikers een token verkrijgen dat wordt verzonden als onderdeel van de aanvraag voor de sleutel levering. Met de functie voor het voor *komen van tokens* kunnen Media Services klanten een limiet instellen voor het aantal keren dat hetzelfde token kan worden gebruikt om een sleutel of licentie aan te vragen. Zie [token replay voor komen](content-protection-overview.md#token-replay-prevention)voor meer informatie.
 
@@ -204,13 +204,13 @@ De CLI 2,0-module is nu beschikbaar voor [Azure Media Services v3 ga](https://do
 ### <a name="new-commands"></a>Nieuwe opdrachten
 
 - [AZ AMS account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [AZ AMS account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
 - [AZ AMS Asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
+- [AZ AMS Asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [AZ AMS content-Key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [AZ AMS job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [AZ AMS Live-Event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
+- [AZ AMS live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [AZ AMS streaming-Endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [AZ AMS streaming-Locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
 - [AZ AMS account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) -Hiermee kunt u gereserveerde media-eenheden beheren. Zie [gereserveerde media-eenheden schalen](media-reserved-units-cli-how-to.md)voor meer informatie.

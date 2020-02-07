@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5b1daab724d979206983ee758760790967abc06d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 310b3778a43c74db30940368d35c39c99f64a28c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513385"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049994"
 ---
 # <a name="azure-media-services-release-notes"></a>Opmerkingen bij de release Azure Media Services
 
@@ -27,7 +27,7 @@ In deze release opmerkingen voor Azure Media Services worden wijzigingen in eerd
 > [!NOTE]
 > Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen van problemen die van invloed zijn op u. Als u een probleem wilt melden of vragen wilt stellen, verzendt u een bericht in het [Azure Media Services MSDN Forum]. 
+We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen van problemen die van invloed zijn op u. Als u een probleem wilt melden of vragen wilt stellen, verzendt u een bericht in het [MSDN-forum Azure Media Services]. 
 
 ## <a name="a-idissuesknown-issues"></a>Bekende problemen <a id="issues"/>
 ### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services algemene problemen
@@ -60,7 +60,7 @@ Zie ook [migreren van Azure media indexer en Azure media indexer 2 naar Azure Me
 
 ### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
 
-Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd die worden ingetrokken op 1 maart 2020.
+Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) .
 
 Zie [WAME migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) en [aam migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)voor meer informatie.
 
@@ -172,7 +172,7 @@ Na het volt ooien van een coderings taak waarmee een of meer MP4-bestanden worde
 > 
 > 
 
-Lees [deze blog](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/) voor meer informatie.
+Zie [deze blog](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/)voor meer informatie.
 
 ### <a name="known-issues"></a>Bekende problemen
 Sommige clients kunnen een herhaald label probleem hebben in het Smooth Streaming-manifest. Zie [deze sectie](media-services-deliver-content-overview.md#known-issues)voor meer informatie.
@@ -208,7 +208,7 @@ De gereserveerde eenheden Basic, Standard en Premium encoding hebben respectieve
 ### <a name="azure-sdk-for-php"></a>Azure SDK voor PHP
 Het Azure SDK-team heeft een nieuwe release gepubliceerd van het pakket [Azure SDK voor php](https://github.com/Azure/azure-sdk-for-php) met updates en nieuwe functies voor Media Services. Met name de Media Services SDK voor PHP ondersteunt nu de nieuwste functies voor [inhouds beveiliging](media-services-content-protection-overview.md) . Deze functies zijn dynamische versleuteling met AES en DRM (PlayReady en Widevine) met en zonder token beperkingen. Het biedt ook ondersteuning voor het schalen van [coderings eenheden](media-services-dotnet-encoding-units.md).
 
-Zie voor meer informatie:
+Ga voor meer informatie naar:
 
 * De volgende [code voorbeelden](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) helpen u snel aan de slag te gaan:
   * **vodworkflow_aes. php**: in dit php-bestand ziet u hoe u met aes-128 dynamische versleuteling en de key delivery-service kunt gebruiken. Het is gebaseerd op het .NET-voor beeld dat is uitgelegd in [use AES-128 Dynamic Encryption en de key delivery service](media-services-protect-with-aes128.md).
@@ -216,9 +216,9 @@ Zie voor meer informatie:
   * **scale_encoding_units. php**: in dit php-bestand ziet u hoe u gereserveerde encoding-eenheden kunt schalen.
 
 ## <a id="nov_changes_15"></a>Release van november 2015
- Media Services biedt nu de Widevine-licentie leverings service in de Cloud. Lees [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/) voor meer informatie. Zie ook [deze zelf studie](media-services-protect-with-playready-widevine.md) en de [github-opslag plaats](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
+ Media Services biedt nu de Widevine-licentie leverings service in de Cloud. Zie [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)voor meer informatie. Zie ook [deze zelf studie](media-services-protect-with-playready-widevine.md) en de [github-opslag plaats](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
 
-Widevine License Delivery Services van Media Services zijn beschikbaar als preview-versie. Lees [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/) voor meer informatie.
+Widevine License Delivery Services van Media Services zijn beschikbaar als preview-versie. Zie [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)voor meer informatie.
 
 ## <a id="oct_changes_15"></a>Release van oktober 2015
 Media Services is nu live in de volgende data centers: Brazilië-zuid, India-West, India-Zuid en India-centraal. U kunt nu de Azure Portal gebruiken om [media service-accounts te maken](media-services-portal-create-account.md) en diverse taken uit te voeren die worden beschreven op de [webpagina van Media Services documentatie](https://azure.microsoft.com/documentation/services/media-services/). Live Encoding is niet ingeschakeld in deze data centers. Verder zijn niet alle typen gereserveerde encoding-eenheden beschikbaar in deze data centers.
@@ -232,30 +232,30 @@ Media Services biedt nu de mogelijkheid om zowel video on demand als live stream
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 
-Lees [deze blog](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) voor meer informatie.
+Zie [deze blog](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)voor meer informatie.
   
 U kunt de [.NET SDK van Media Services](https://www.nuget.org/packages/windowsazure.mediaservices/) (vanaf versie 3.5.1) of de REST API gebruiken om AssetDeliveryConfiguration voor het gebruik van Widevine te configureren. 
-* Media Services heeft ondersteuning toegevoegd voor Apple ProRes-Video's. U kunt nu uw QuickTime-bron Video's uploaden die gebruikmaken van Apple ProRes of andere codecs. Lees [deze blog](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/) voor meer informatie.
-* U kunt nu Media Encoder Standard gebruiken om subfragmenten en het uitpakken van Live-Archief uit te voeren. Lees [deze blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/) voor meer informatie.
+* Media Services heeft ondersteuning toegevoegd voor Apple ProRes-Video's. U kunt nu uw QuickTime-bron Video's uploaden die gebruikmaken van Apple ProRes of andere codecs. Zie [deze blog](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/)voor meer informatie.
+* U kunt nu Media Encoder Standard gebruiken om subfragmenten en het uitpakken van Live-Archief uit te voeren. Zie [deze blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)voor meer informatie.
 * De volgende filter-updates zijn uitgevoerd: 
   
   * U kunt nu de Apple HLS-indeling met een filter voor alleen audio gebruiken. U kunt deze update gebruiken om een audio-alleen track te verwijderen door (alleen audio = false) in de URL op te geven.
   * Wanneer u filters voor uw assets definieert, kunt u nu meerdere (Maxi maal drie) filters combi neren in één URL.
     
-    Lees [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) voor meer informatie.
+    Zie [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)voor meer informatie.
 * Media Services ondersteunt nu I-frames in HLS versie 4. Met de ondersteuning van I-frames optimaliseert u bewerkingen voor snel vooruitspoelen en terugspoelen. Alle uitvoer van de HLS-versie 4 bevatten standaard de I-frame-afspeel lijst (EXT-X-I-FRAME-STREAM-INF).
-Lees [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) voor meer informatie.
+Zie [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)voor meer informatie.
 
 ## <a id="august_changes_15"></a>Release van augustus 2015
-* De Media Services SDK voor de 0.8.0-release van Java versie en nieuwe voor beelden zijn nu beschikbaar. Zie voor meer informatie:
+* De Media Services SDK voor de 0.8.0-release van Java versie en nieuwe voor beelden zijn nu beschikbaar. Ga voor meer informatie naar:
     
-* De Azure Media Player is bijgewerkt met ondersteuning voor meerdere audio stromen. Lees [dit blogbericht](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/) voor meer informatie.
+* De Azure Media Player is bijgewerkt met ondersteuning voor meerdere audio stromen. Zie [dit blog bericht](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/)voor meer informatie.
 
 ## <a id="july_changes_15"></a>Release van juli 2015
-* De algemene Beschik baarheid van Media Encoder Standard is aangekondigd. Lees [dit blogbericht](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/) voor meer informatie.
+* De algemene Beschik baarheid van Media Encoder Standard is aangekondigd. Zie [dit blog bericht](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)voor meer informatie.
   
     Media Encoder Standard maakt gebruik van voor instellingen, zoals beschreven in [deze sectie](https://go.microsoft.com/fwlink/?LinkId=618336). Wanneer u een vooraf ingestelde voor 4 KB-code ring gebruikt, haalt u het gereserveerde type voor de Premium-eenheid op. Zie [schaal codering](media-services-scale-media-processing-overview.md)voor meer informatie.
-* Er zijn live real-time bijschriften gebruikt met Media Services en de Media Player. Lees [dit blogbericht](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/) voor meer informatie.
+* Er zijn live real-time bijschriften gebruikt met Media Services en de Media Player. Zie [dit blog bericht](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)voor meer informatie.
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-updates
 De Media Services .NET SDK is nu versie 3.4.0.0. De volgende updates zijn uitgevoerd: 
@@ -291,7 +291,7 @@ De volgende nieuwe functies zijn aangekondigd:
 * Ondersteuning voor Spaanse taal is toegevoegd.
 * Er is een nieuwe configuratie voor de XML-indeling toegevoegd.
 
-Lees [deze blog](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/) voor meer informatie.
+Zie [deze blog](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/)voor meer informatie.
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-updates
 De Media Services .NET SDK is nu versie 3.2.0.0. De volgende updates zijn uitgevoerd:
@@ -476,7 +476,7 @@ De volgende wijzigingen die in deze sectie worden vermeld, zijn updates die zijn
 * Aan meldingen gerelateerde entiteiten en eigenschappen: 
     * JobNotificationSubscription
     * NotificationEndPoint
-    * Taak
+    * Job
 * Asset.Uri 
 * Locator.Name 
 
@@ -569,7 +569,7 @@ De volgende functionaliteit was nieuw in de release van november van de SDK:
 <!-- Images. -->
 
 <!--- URLs. --->
-[Azure Media Services MSDN Forum]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
+[MSDN-forum Azure Media Services]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Naslag informatie over Azure Media Services REST API]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
 [Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
 [Invoermetagegevens]: https://msdn.microsoft.com/library/azure/dn783120.aspx

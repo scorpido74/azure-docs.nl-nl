@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 04fb34ff9c0ba9822e9760bcd3989bd0b5675506
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 5e954de97e6573e330c42915b44bbc0c40abc54d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044732"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063241"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Zelf studie: ServiceNow configureren voor automatische gebruikers inrichting
 
-In deze zelf studie worden de stappen beschreven die u moet uitvoeren in zowel ServiceNow als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting. Wanneer de configuratie is geconfigureerd, worden gebruikers en groepen door Azure AD automatisch ingericht en [GeServiceNowd](https://www.servicenow.com/) met behulp van de Azure AD-inrichtings service. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen. 
+In deze zelf studie worden de stappen beschreven die u moet uitvoeren in zowel ServiceNow als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting. Wanneer de configuratie is geconfigureerd, worden gebruikers en groepen door Azure AD automatisch ingericht en [GeServiceNowd](https://www.servicenow.com/) met behulp van de Azure AD-inrichtings service. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen. 
 
 
 ## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
@@ -45,7 +45,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 * Een [ServiceNow Express-exemplaar](https://www.servicenow.com/) van Helsinki of hoger
 * Een gebruikers account in ServiceNow met de rol Admin
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtings implementatie plannen
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
 1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
 3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en ServiceNow](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
@@ -80,7 +80,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-servicenow-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor ServiceNow in azure AD:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -114,7 +114,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar ServiceNow in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om de groepen in ServiceNow te vergelijken voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-12. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+12. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
 13. Als u de Azure AD-inrichtings service voor **ServiceNow wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
@@ -137,18 +137,18 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 2. Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
 3. Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
-## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
+## <a name="troubleshooting-tips"></a>Tips voor probleem oplossing
 * **InvalidLookupReference:** Bij het inrichten van bepaalde kenmerken, zoals afdeling en locatie in ServiceNow, moeten de waarden al bestaan in een verwijzings tabel in ServiceNow. U kunt bijvoorbeeld twee locaties (Seattle, Los Angeles) en drie afdelingen (verkoop, financiën, marketing) hebben in de tabel tabel **naam invoegen** in ServiceNow. Als u een gebruiker wilt inrichten waarbij zijn afdeling ' verkoop ' is en de locatie ' Seattle ' is, wordt hij met succes ingericht. Als u probeert een gebruiker in te richten met afdeling "verkoop" en locatie "LA", wordt de gebruiker niet ingericht. De locatie LA moet worden toegevoegd aan de verwijzings tabel in ServiceNow of het gebruikers kenmerk in azure AD moet worden bijgewerkt zodat dit overeenkomt met de indeling in ServiceNow. 
 * **EntryJoiningPropertyValueIsMissing:** Controleer de [kenmerk toewijzingen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) om het overeenkomende kenmerk te identificeren. Deze waarde moet aanwezig zijn op de gebruiker of groep die u wilt inrichten. 
 * Bekijk de [SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) om inzicht te krijgen in vereisten of beperkingen (bijvoorbeeld indeling om land code op te geven voor een gebruiker)
 * Voor sommige ServiceNow-implementaties is het toestaan van IP-adresbereiken vereist voor de Azure AD-inrichtings service. De gereserveerde IP-bereiken voor de Azure AD-inrichtings service vindt u [hier](https://www.microsoft.com/download/details.aspx?id=56519) onder "AzureActiveDirectoryDomainServices".
 * Het is momenteel niet mogelijk om gebruikers in te richten op de ServiceNow Government-Cloud.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)

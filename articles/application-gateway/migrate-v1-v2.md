@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 719686cb123355359391c5cb1e517ff9cfd88371
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9909c46015fffb3bea3eef094599312e28b935c5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231731"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046203"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure-toepassing gateway en Web Application firewall migreren van v1 naar v2
 
@@ -25,7 +25,7 @@ Er zijn twee fasen in een migratie:
 
 In dit artikel wordt beschreven hoe u de configuratie migreert. Migratie van client verkeer varieert afhankelijk van uw specifieke omgeving. Er zijn echter algemene aanbevelingen [van](#migrate-client-traffic)een hoog niveau.
 
-## <a name="migration-overview"></a>Overzicht migratie
+## <a name="migration-overview"></a>Migratie overzicht
 
 Er is een Azure PowerShell script beschikbaar dat het volgende doet:
 
@@ -102,7 +102,7 @@ Het script uitvoeren:
    * **appgwName: [teken reeks]: optioneel**. Dit is een teken reeks die u opgeeft om te gebruiken als de naam voor de nieuwe Standard_v2 of WAF_v2 gateway. Als deze para meter niet wordt opgegeven, wordt de naam van uw bestaande v1-gateway gebruikt met het achtervoegsel *_v2* toegevoegd.
    * **sslCertificates: [PSApplicationGatewaySslCertificate]: optioneel**.  Een door komma's gescheiden lijst met PSApplicationGatewaySslCertificate-objecten die u maakt om de SSL-certificaten van uw v1-gateway te vertegenwoordigen, moet worden geüpload naar de nieuwe v2-gateway. Voor elk van de SSL-certificaten die zijn geconfigureerd voor uw Standard v1-of WAF v1-gateway, kunt u een nieuw PSApplicationGatewaySslCertificate-object maken via de `New-AzApplicationGatewaySslCertificate`-opdracht die hier wordt weer gegeven. U hebt het pad naar uw SSL-certificaat bestand en het wacht woord nodig.
 
-       Deze para meter is alleen optioneel als u geen HTTPS-listeners hebt geconfigureerd voor uw v1-gateway of WAF. Als u ten minste één HTTPS-listener-installatie hebt, moet u deze para meter opgeven.
+     Deze para meter is alleen optioneel als u geen HTTPS-listeners hebt geconfigureerd voor uw v1-gateway of WAF. Als u ten minste één HTTPS-listener-installatie hebt, moet u deze para meter opgeven.
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -114,12 +114,17 @@ Het script uitvoeren:
         -Password $password
       ```
 
-      U kunt in het vorige voor beeld door geven `$mySslCert1, $mySslCert2` (gescheiden door komma's) als waarden voor deze para meter in het script.
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: optioneel**. Een door komma's gescheiden lijst met PSApplicationGatewayTrustedRootCertificate-objecten die u maakt om de [vertrouwde basis certificaten](ssl-overview.md) te vertegenwoordigen voor verificatie van uw back-end-instanties vanuit uw v2-gateway.  
+     U kunt in het vorige voor beeld door geven `$mySslCert1, $mySslCert2` (gescheiden door komma's) als waarden voor deze para meter in het script.
+   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: optioneel**. Een door komma's gescheiden lijst met PSApplicationGatewayTrustedRootCertificate-objecten die u maakt om de [vertrouwde basis certificaten](ssl-overview.md) te vertegenwoordigen voor verificatie van uw back-end-instanties vanuit uw v2-gateway.
+   
+      ```azurepowershell
+      $certFilePath = ".\rootCA.cer"
+      $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
+      ```
 
       Zie [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)als u een lijst met PSApplicationGatewayTrustedRootCertificate-objecten wilt maken.
    * **privateIpAddress: [teken reeks]: optioneel**. Een specifiek privé-IP-adres dat u wilt koppelen aan uw nieuwe v2-gateway.  Dit moet afkomstig zijn uit hetzelfde VNet dat u toewijst voor uw nieuwe v2-gateway. Als dit niet is opgegeven, wordt door het script een persoonlijk IP-adres voor uw v2-gateway toegewezen.
-    * **publicIpResourceId: [teken reeks]: optioneel**. De resourceId van een open bare IP-adres resource (standaard-SKU) in uw abonnement dat u wilt toewijzen aan de nieuwe v2-gateway. Als dit niet is opgegeven, wijst het script een nieuw openbaar IP-adres toe aan dezelfde resource groep. De naam is de naam van de v2-gateway met *-IP* toegevoegd.
+   * **publicIpResourceId: [teken reeks]: optioneel**. De resourceId van een bestaande open bare IP-adres resource (standaard-SKU) in uw abonnement dat u wilt toewijzen aan de nieuwe v2-gateway. Als dit niet is opgegeven, wijst het script een nieuw openbaar IP-adres toe aan dezelfde resource groep. De naam is de naam van de v2-gateway met *-IP* toegevoegd.
    * **validateMigration: [Switch]: optioneel**. Gebruik deze para meter als u wilt dat het script enkele validaties op basis van de configuratie van de 2-en de configuratie kopie van de v2-gateway. Standaard wordt er geen validatie uitgevoerd.
    * **enableAutoScale: [Switch]: optioneel**. Gebruik deze para meter als u wilt dat het script automatisch schalen inschakelt op de nieuwe v2-gateway nadat deze is gemaakt. Automatisch schalen is standaard uitgeschakeld. U kunt dit later altijd hand matig inschakelen op de zojuist gemaakte v2-gateway.
 
@@ -132,10 +137,10 @@ Het script uitvoeren:
       -resourceId /subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/applicationGateways/myv1appgateway `
       -subnetAddressRange 10.0.0.0/24 `
       -appgwname "MynewV2gw" `
-      -sslCertificates $Certs `
+      -sslCertificates $mySslCert1,$mySslCert2 `
       -trustedRootCertificates $trustedCert `
       -privateIpAddress "10.0.0.1" `
-      -publicIpResourceId "MyPublicIP" `
+      -publicIpResourceId "/subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/publicIPAddresses/MyPublicIP" `
       -validateMigration -enableAutoScale
    ```
 
