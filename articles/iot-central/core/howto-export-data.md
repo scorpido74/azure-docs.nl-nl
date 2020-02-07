@@ -8,12 +8,12 @@ ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 058fe9aea87879fe85dcbc6dcb864fd841fcb049
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a3d60bf38c4a9dad13dacf8ba9798c4078c1df1a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026794"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049717"
 ---
 # <a name="export-your-azure-iot-central-data"></a>Uw Azure IoT Central-gegevens exporteren
 
@@ -62,10 +62,14 @@ Wanneer u Service Bus als een export bestemming kiest, moeten de wacht rijen en 
 
 Als u geen bestaand Azure Storage-account hebt om naar te exporteren, voert u de volgende stappen uit:
 
-1. Maak een [Nieuw opslag account in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Meer informatie over het maken van nieuwe [Azure Blob Storage-accounts](https://aka.ms/blobdocscreatestorageaccount) of [Azure data Lake Storage v2-opslag accounts](../../storage/blobs/data-lake-storage-quickstart-create-account.md).
+1. Maak een [Nieuw opslag account in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Meer informatie over het maken van nieuwe [Azure Blob Storage-accounts](https://aka.ms/blobdocscreatestorageaccount) of [Azure data Lake Storage v2-opslag accounts](../../storage/blobs/data-lake-storage-quickstart-create-account.md). Gegevens export kan alleen gegevens schrijven naar opslag accounts die ondersteuning bieden voor blok-blobs. Hier volgt een lijst met bekende compatibele typen opslag accounts: 
 
-    - Als u ervoor kiest om gegevens te exporteren naar een Azure Data Lake Storage v2-opslag account, moet u **BlobStorage** als het **soort account**kiezen.
-    - U kunt gegevens exporteren naar opslag accounts in andere abonnementen dan die voor uw IoT Central-toepassing. In dit geval kunt u verbinding maken met behulp van een connection string.
+    |Prestatie niveau|Account type|
+    |-|-|
+    |Standard|Algemeen v2|
+    |Standard|Algemeen v1|
+    |Standard|Blob Storage|
+    |Premium|Blob Storage blok keren|
 
 2. Maak een container in uw opslag account. Ga naar uw opslagaccount. Selecteer onder **BLOB**-service **Bladeren door blobs**. Selecteer **+ container** aan de bovenkant om een nieuwe container te maken.
 

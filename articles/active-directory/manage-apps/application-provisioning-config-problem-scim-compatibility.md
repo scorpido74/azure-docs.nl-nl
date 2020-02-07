@@ -16,18 +16,18 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6da171db6535100342342571a5c1f6468abd0fc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cae5458a9b9456d26363802ee9b06aaa842e72
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712358"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063591"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekende problemen en oplossingen met SCIM 2,0-protocol compatibiliteit van de Azure AD User Provisioning Service
 
 Azure Active Directory (Azure AD) kan gebruikers en groepen automatisch inrichten voor elke toepassing of elk systeem dat wordt gefronteerd door een webservice met de interface die is gedefinieerd in het [systeem voor Identity Management (scim) 2,0-protocol specificatie](https://tools.ietf.org/html/draft-ietf-scim-api-19). 
 
-De ondersteuning van Azure AD voor het SCIM 2,0-protocol wordt beschreven in [met behulp van systeem voor Cross-Domain Identity Management (scim) voor het automatisch inrichten van gebruikers en groepen van Azure Active Directory naar toepassingen](use-scim-to-provision-users-and-groups.md), waarin de specifieke onderdelen van het door IT geïmplementeerde protocol worden vermeld om automatisch gebruikers en groepen van Azure AD in te richten op toepassingen die scim 2,0 ondersteunen.
+De ondersteuning van Azure AD voor het SCIM 2,0-protocol wordt beschreven in [met behulp van systeem voor Cross-Domain Identity Management (scim) voor het automatisch inrichten van gebruikers en groepen van Azure Active Directory naar toepassingen](../app-provisioning/use-scim-to-provision-users-and-groups.md), waarin de specifieke onderdelen van het door IT geïmplementeerde protocol worden vermeld om automatisch gebruikers en groepen van Azure AD in te richten op toepassingen die scim 2,0 ondersteunen.
 
 In dit artikel worden huidige en eerdere problemen beschreven met betrekking tot het SCIM 2,0-protocol van Azure AD User Provisioning Service, en hoe u deze problemen omzeilt.
 
@@ -113,5 +113,5 @@ Ja. Als u een toepassing hebt gecodeerd voor het oude gedrag dat vóór de oplos
 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over het inrichten en ongedaan maken van de inrichting van SaaS-toepassingen](user-provisioning.md)
+[Meer informatie over het inrichten en ongedaan maken van de inrichting van SaaS-toepassingen](../app-provisioning/user-provisioning.md)
 

@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
-ms.author: cynthn
-ms.openlocfilehash: e590c07c3969865d573838352a8a778caa1cc799
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 02/06/2020
+ms.author: tanmaygore
+ms.openlocfilehash: 3632e12f5e58f8cadefb1e666cf4014026e24358
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901843"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057007"
 ---
 In dit artikel behandelen we de meest voorkomende fouten en oplossingen tijdens de migratie van IaaS-resources van het klassieke Azure-implementatiemodel naar de Azure Resource Manager-stack.
 
@@ -25,7 +25,7 @@ In dit artikel behandelen we de meest voorkomende fouten en oplossingen tijdens 
 | Het virtuele netwerk {naam-virtueel-netwerk} bestaat niet. |Dit kan gebeuren als u het virtuele netwerk hebt gemaakt in de nieuwe Azure portal. De werkelijke Virtual Network naam volgt het patroon ' groep * \<VNET-naam > ' |
 | VM {vm-naam} in HostedService {naam-gehoste-service} bevat de extensie {naam-extensie}. Deze wordt niet ondersteund in Azure Resource Manager. We raden u aan deze te verwijderen uit de virtuele machine voordat u doorgaat met de migratie. |XML-extensies zoals BGInfo 1.\* worden niet ondersteund in Azure Resource Manager. Daarom kunnen deze extensies niet worden gemigreerd. Als deze uitbreidingen geïnstalleerd blijven op de virtuele machine, worden ze automatisch verwijderd voordat de migratie is voltooid. |
 | VM {vm-naam} in HostedService {naam-gehoste-service} bevat de extensie VMSnapshot/VMSnapshotLinux. Deze wordt momenteel niet ondersteund voor migratie. Verwijder deze uit de virtuele machine en voeg de extensie opnieuw toe met Azure Resource Manager nadat de migratie is voltooid |Dit is het scenario waarin de virtuele machine is geconfigureerd voor Azure Backup. Omdat dit momenteel een niet-ondersteund scenario is, volgt u de tijdelijke oplossing op https://aka.ms/vmbackupmigration |
-| VM {vm-naam} in HostedService {naam-gehoste-service} bevat de extensie {naam-extensie}. De status van deze extensie wordt niet gerapporteerd door de VM. Daarom kan deze virtuele machine niet worden gemigreerd. Zorg ervoor dat de status van de extensie wordt gerapporteerd of verwijder de extensie uit de virtuele machine en voer de migratie nogmaals uit. <br><br> VM {vm-naam} in HostedService {naam-gehoste-service} bevat de extensie {naam-extensie}. Deze rapporteert de volgende handlerstatus: {handlerstatus}. Hence, the VM cannot be migrated. Zorg ervoor dat de status van de extensiehandler die wordt gerapporteerd {handlerstatus} is of verwijder de extensie uit de virtuele machine en voer de migratie nogmaals uit. <br><br> VM-agent voor de virtuele machine {vm-naam} in HostedService {naam-gehoste-service} rapporteert de algehele agentstatus Niet gereed. Daarom kan de virtuele machine niet worden gemigreerd, als deze een extensie heeft die kan worden gemigreerd. Zorg ervoor dat de VM-agent de algehele agentstatus Gereed rapporteert. Raadpleeg https://aka.ms/classiciaasmigrationfaqs. |De Azure-gastagent en VM-extensies hebben uitgaande internettoegang nodig tot het VM-opslagaccount om hun status te vullen. Algemene oorzaken van de statusfout zijn <li> een netwerkbeveiligingsgroep waarmee uitgaande toegang tot het internet wordt geblokkeerd <li> Als het VNET lokale DNS-servers heeft en de DNS-connectiviteit is verbroken <br><br> Als de melding dat een extensie niet wordt ondersteund nog steeds wordt weergegeven, kunt u de extensies verwijderen om deze controle over te slaan en verder te gaan met de migratie. |
+| VM {vm-naam} in HostedService {naam-gehoste-service} bevat de extensie {naam-extensie}. De status van deze extensie wordt niet gerapporteerd door de VM. Daarom kan deze virtuele machine niet worden gemigreerd. Zorg ervoor dat de status van de extensie wordt gerapporteerd of verwijder de extensie uit de virtuele machine en voer de migratie nogmaals uit. <br><br> VM {vm-naam} in HostedService {naam-gehoste-service} bevat de extensie {naam-extensie}. Deze rapporteert de volgende handlerstatus: {handlerstatus}. Daarom kan de virtuele machine niet worden gemigreerd. Zorg ervoor dat de status van de extensiehandler die wordt gerapporteerd {handlerstatus} is of verwijder de extensie uit de virtuele machine en voer de migratie nogmaals uit. <br><br> VM-agent voor de virtuele machine {vm-naam} in HostedService {naam-gehoste-service} rapporteert de algehele agentstatus Niet gereed. Daarom kan de virtuele machine niet worden gemigreerd, als deze een extensie heeft die kan worden gemigreerd. Zorg ervoor dat de VM-agent de algehele agentstatus Gereed rapporteert. Raadpleeg https://aka.ms/classiciaasmigrationfaqs. |De Azure-gastagent en VM-extensies hebben uitgaande internettoegang nodig tot het VM-opslagaccount om hun status te vullen. Algemene oorzaken van de statusfout zijn <li> een netwerkbeveiligingsgroep waarmee uitgaande toegang tot het internet wordt geblokkeerd <li> Als het VNET lokale DNS-servers heeft en de DNS-connectiviteit is verbroken <br><br> Als de melding dat een extensie niet wordt ondersteund nog steeds wordt weergegeven, kunt u de extensies verwijderen om deze controle over te slaan en verder te gaan met de migratie. |
 | Migratie wordt niet ondersteund voor de implementatie {naam-implementatie} in HostedService {naam-gehoste-service} omdat deze meerdere beschikbaarheidssets heeft. |Op dit moment kunnen alleen gehoste services die maximaal één beschikbaarheidsset hebben worden gemigreerd. U kunt dit probleem omzeilen. Verplaats de extra beschikbaarheidssets en virtuele machines in deze beschikbaarheidssets naar een andere gehoste service. |
 | Migratie wordt niet ondersteund voor de implementatie {naam-implementatie} in HostedService {naam-gehoste-service} omdat deze VM's bevat die geen deel uitmaken van de beschikbaarheidsset, hoewel de HostedService wel één van de VM's bevat. |De tijdelijke oplossing voor dit scenario is om alle virtuele machines te verplaatsen naar een enkele beschikbaarheidsset. U kunt ook alle virtuele machines verwijderen uit de beschikbaarheidsset in de gehoste service. |
 | Opslagaccount/HostedService/virtueel netwerk {naam-virtueel-netwerk} wordt gemigreerd en kan daarom niet worden gewijzigd |Deze fout treedt op wanneer de migratiebewerking 'Voorbereiden' is voltooid op de resource en een bewerking die een wijziging aanbrengt in de resource wordt geactiveerd. Vanwege de vergrendeling op het beheervlak na de bewerking 'Voorbereiden' worden eventuele wijzigingen in de resource geblokkeerd. Als u het beheervlak wilt ontgrendelen, kunt u de migratiebewerking 'Doorvoeren' uitvoeren om de migratie te voltooien. U kunt ook de migratiebewerking 'Afbreken' uitvoeren om de bewerking 'Voorbereiden' terug te draaien. |
@@ -169,7 +169,7 @@ $vm = Get-AzVM -ResourceGroupName "MyRG" -Name "MyVM"
 Remove-AzVMSecret -VM $vm
 Update-AzVM -ResourceGroupName "MyRG" -VM $vm
 ```
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 ```bash
 az vm update -g "myrg" -n "myvm" --set osProfile.Secrets=[]

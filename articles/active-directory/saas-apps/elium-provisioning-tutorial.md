@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: a4ddcf27869ea7484f98329d14d01bfad83af219
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709524"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058460"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Zelf studie: Elium configureren voor automatische gebruikers inrichting
 
 In deze zelf studie leert u hoe u Elium en Azure Active Directory (Azure AD) configureert om automatisch gebruikers of groepen in te richten en te deactiveren naar Elium.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie Gebruikers inrichten en de inrichting ongedaan maken voor [SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service en hoe deze werkt, en voor veelgestelde vragen.
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie Gebruikers inrichten en de inrichting ongedaan maken voor [SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service en hoe deze werkt, en voor veelgestelde vragen.
 >
 > Deze connector is momenteel in preview. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor de algemene gebruiks voorwaarden voor Azure-functies in preview.
 
@@ -130,7 +130,7 @@ Voer de volgende stappen uit om de automatische gebruikers inrichting voor Elium
 
     ![Kenmerk toewijzingen tussen Azure AD en Elium](media/Elium-provisioning-tutorial/userattribute.png)
 
-1. Als u bereik filters wilt configureren, volgt u de instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik.
+1. Als u bereik filters wilt configureren, volgt u de instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik.
 
 1. Als u de Azure AD-inrichtings service voor **Elium wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
@@ -144,15 +144,15 @@ Voer de volgende stappen uit om de automatische gebruikers inrichting voor Elium
 
     ![De knop Opslaan voor het inrichten van de configuratie](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Dit initiële synchronisatie proces duurt langer dan latere synchronisaties. Zie [hoe lang het duurt om gebruikers in te richten](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)voor meer informatie over de tijd die nodig is voor het inrichten van de inrichting?.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Dit initiële synchronisatie proces duurt langer dan latere synchronisaties. Zie [hoe lang het duurt om gebruikers in te richten](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)voor meer informatie over de tijd die nodig is voor het inrichten van de inrichting?.
 
-Gebruik de sectie **huidige status** om de voortgang te bewaken en koppelingen naar uw inrichtings activiteiten rapport te volgen. In het rapport inrichtings activiteit worden alle acties beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Elium. Zie [de status van gebruikers inrichten controleren](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
+Gebruik de sectie **huidige status** om de voortgang te bewaken en koppelingen naar uw inrichtings activiteiten rapport te volgen. In het rapport inrichtings activiteit worden alle acties beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Elium. Zie [de status van gebruikers inrichten controleren](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
-* Het [inrichten van een gebruikers account voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md).
+* Het [inrichten van een gebruikers account voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)

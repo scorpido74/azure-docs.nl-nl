@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: DocuSign configureren voor het automatisch gebruikers inrichten met Azure Active Directory | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en DocuSign.
+title: 'Zelf studie: DocuSign configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en DocuSign.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,89 +15,89 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121d147a3f8c91f17e955120b2c14f7dbd3da592
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 88b65c8e8962ad8420ded47da1a343672123c589
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60280092"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058175"
 ---
-# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Zelfstudie: DocuSign voor het automatisch inrichten van gebruikers configureren
+# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Zelf studie: DocuSign configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om u de stappen die u uitvoeren in de DocuSign en Azure AD wilt voor het automatisch inrichten en verwijdering van gebruikersaccounts vanuit Azure AD naar DocuSign weer te geven.
+Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoeren in DocuSign en Azure AD om gebruikers accounts van Azure AD automatisch in te richten en te deactiveren naar DocuSign.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario in deze zelfstudie wordt ervan uitgegaan dat u al de volgende items hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
 
-*   Een Azure Active directory-tenant.
-*   Een DocuSign eenmalige aanmelding ingeschakeld abonnement.
-*   Een gebruikersaccount in DocuSign met Team beheerdersmachtigingen.
+*   Een Azure Active Directory-Tenant.
+*   Een DocuSign-abonnement met eenmalige aanmelding.
+*   Een gebruikers account in DocuSign met team beheerders machtigingen.
 
 ## <a name="assigning-users-to-docusign"></a>Gebruikers toewijzen aan DocuSign
 
-Azure Active Directory maakt gebruik van een concept genaamd "toewijzingen" om te bepalen welke gebruikers krijgen toegang tot geselecteerde apps. In de context van het inrichten van automatische gebruikersaccounts, worden alleen de gebruikers en groepen die '' aan een toepassing in Azure AD toegewezen zijn gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts, worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u configureren en inschakelen van de inrichtingsservice, moet u om te bepalen welke gebruikers en/of groepen in Azure AD de gebruikers die toegang nodig tot uw app DocuSign vertegenwoordigen. Als besloten, kunt u deze gebruikers toewijzen aan uw app DocuSign en volg de instructies hier:
+Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw DocuSign-app. Nadat u hebt besloten, kunt u deze gebruikers toewijzen aan uw DocuSign-app door de volgende instructies te volgen:
 
-[Een gebruiker of groep toewijzen aan een enterprise-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Een gebruiker of groep toewijzen aan een bedrijfs-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-docusign"></a>Belangrijke tips voor het toewijzen van gebruikers aan DocuSign
+### <a name="important-tips-for-assigning-users-to-docusign"></a>Belang rijke tips voor het toewijzen van gebruikers aan DocuSign
 
-*   Het wordt aanbevolen dat één Azure AD-gebruiker is toegewezen aan DocuSign voor het testen van de configuratie van de inrichting. Extra gebruikers kunnen later worden toegewezen.
+*   U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan DocuSign om de inrichtings configuratie te testen. Extra gebruikers kunnen later worden toegewezen.
 
-*   Wanneer een gebruiker aan DocuSign toewijzen, moet u een geldige gebruikersrol selecteren. De rol 'standaardtoegang' werkt niet voor het inrichten.
+*   Wanneer u een gebruiker toewijst aan DocuSign, moet u een geldige gebruikersrol selecteren. De rol ' standaard toegang ' werkt niet voor het inrichten.
 
 > [!NOTE]
-> Azure AD biedt geen ondersteuning voor het inrichten van de groep met de Docusign-toepassing, kunnen alleen gebruikers worden ingericht.
+> Azure AD biedt geen ondersteuning voor het inrichten van groepen met de Docusign-toepassing, alleen gebruikers kunnen worden ingericht.
 
-## <a name="enable-user-provisioning"></a>Inrichting van de gebruiker inschakelen
+## <a name="enable-user-provisioning"></a>Gebruikers inrichten inschakelen
 
-In deze sectie helpt u bij uw Azure AD verbinden met de DocuSign-gebruikersaccount Inrichtings-API en configureren van de provisioning-service voor het maken, bijwerken en uitschakelen van toegewezen gebruikersaccounts in DocuSign op basis van gebruikers en groepen in Azure AD.
+In deze sectie vindt u instructies voor het verbinden van uw Azure AD-DocuSign en het configureren van de inrichtings service om toegewezen gebruikers accounts in DocuSign te maken, bij te werken en uit te scha kelen op basis van de gebruikers-en groeps toewijzing in azure AD.
 
 > [!Tip]
-> U kunt ook op SAML gebaseerde eenmalige aanmelding ingeschakeld voor DocuSign, vindt u de instructies te volgen in [Azure-portal](https://portal.azure.com). Eenmalige aanmelding kan worden geconfigureerd onafhankelijk van automatische inrichting, hoewel deze twee functies een fraaie aanvulling in elkaar.
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor DocuSign, volgens de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
 
-### <a name="to-configure-user-account-provisioning"></a>Het configureren van het inrichten van gebruikersaccounts:
+### <a name="to-configure-user-account-provisioning"></a>Het inrichten van een gebruikers account configureren:
 
-Het doel van deze sectie is om een overzicht van het inschakelen van het inrichten van gebruikers van Active Directory-gebruikersaccounts met DocuSign te.
+Het doel van deze sectie is het maken van een overzicht van de gebruikers inrichting van Active Directory gebruikers accounts in te stellen op DocuSign.
 
-1. In de [Azure-portal](https://portal.azure.com), blader naar de **Azure Active Directory > Bedrijfsapps > alle toepassingen** sectie.
+1. Blader in het [Azure Portal](https://portal.azure.com)naar het gedeelte **Azure Active Directory > Enter prise-apps > alle toepassingen** .
 
-1. Als u al DocuSign hebt geconfigureerd voor eenmalige aanmelding, zoeken naar uw exemplaar van DocuSign met behulp van het zoekveld. Selecteer anders **toevoegen** en zoek naar de **DocuSign** in de toepassingengalerie. Selecteer DocuSign in de resultaten voor zoeken en toe te voegen aan uw lijst met toepassingen.
+1. Als u DocuSign al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw instantie van DocuSign met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **DocuSign** in de toepassings galerie. Selecteer DocuSign in de zoek resultaten en voeg deze toe aan uw lijst met toepassingen.
 
-1. Selecteer uw exemplaar van DocuSign en selecteer vervolgens de **Provisioning** tabblad.
+1. Selecteer uw exemplaar van DocuSign en selecteer vervolgens het tabblad **inrichten** .
 
-1. Stel de **Inrichtingsmodus** naar **automatische**. 
+1. Stel de **inrichtings modus** in op **automatisch**. 
 
-    ![Inrichting](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![inrichtings](./media/docusign-provisioning-tutorial/provisioning.png)
 
-1. Onder de **beheerdersreferenties** sectie, geeft u de volgende configuratie-instellingen:
+1. Geef onder de sectie **beheerders referenties** de volgende configuratie-instellingen op:
    
-    a. In de **beheerdersnaam** tekstvak, type een DocuSign-accountnaam waarvoor de **systeembeheerder** profiel in DocuSign.com toegewezen.
+    a. Typ in het tekstvak **gebruikers naam beheerder** een DocuSign-account naam waaraan het profiel van de **systeem beheerder** is toegewezen in DocuSign.com.
    
-    b. In de **beheerderswachtwoord** tekstvak typt u het wachtwoord voor dit account.
+    b. Typ in het tekstvak **beheerders wachtwoord** het wacht woord voor dit account.
 
-1. Klik in de Azure-portal op **testverbinding** om te controleren of Azure AD kunt verbinden met uw app in DocuSign.
+1. Klik in het Azure Portal op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw DocuSign-app.
 
-1. In de **e-mailmelding** en voer het e-mailadres van een persoon of groep die moet inrichten fout meldingen ontvangen, en schakel het selectievakje in.
+1. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in.
 
 1. Klik op **opslaan.**
 
-1. Selecteer onder de sectie toewijzingen **synchroniseren Azure Active Directory: gebruikers aan DocuSign.**
+1. Selecteer in de sectie toewijzingen de optie **Azure Active Directory gebruikers synchroniseren met DocuSign.**
 
-1. In de **kenmerktoewijzingen** sectie, controleert u de kenmerken van de gebruiker die van Azure AD worden gesynchroniseerd naar DocuSign. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt zodat deze overeenkomen met de gebruikersaccounts in DocuSign voor update-bewerkingen. Selecteer de knop Opslaan om door te voeren van eventuele wijzigingen.
+1. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar DocuSign. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in DocuSign voor bijwerk bewerkingen. Selecteer de knop Opslaan om door te voeren van eventuele wijzigingen.
 
-1. Om in te schakelen in de Azure AD-inrichtingsservice voor DocuSign, wijzigen de **Inrichtingsstatus** naar **op** in de sectie instellingen
+1. Als u de Azure AD-inrichtings service voor DocuSign wilt inschakelen, wijzigt u de **inrichtings status** **in in het** gedeelte instellingen
 
 1. Klik op **opslaan.**
 
-De initiële synchronisatie van alle gebruikers die zijn toegewezen aan DocuSign in de sectie gebruikers en groepen wordt gestart. De eerste synchronisatie langer duren om uit te voeren dan het volgende wordt gesynchroniseerd, die ongeveer elke 40 minuten optreden als de service wordt uitgevoerd. U kunt de **synchronisatiedetails** sectie voortgang en koppelingen volgen voor het inrichten van activiteitenlogboeken, waarin alle acties die worden uitgevoerd door de provisioning-service in de DocuSign-app worden beschreven.
+Hiermee start u de initiële synchronisatie van gebruikers die zijn toegewezen aan DocuSign in de sectie gebruikers en groepen. De eerste synchronisatie langer duren om uit te voeren dan het volgende wordt gesynchroniseerd, die ongeveer elke 40 minuten optreden als de service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen voor het inrichtings logboek, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtings service in uw DocuSign-app.
 
-Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Het inrichten van gebruikersaccounts voor bedrijfs-Apps beheren](tutorial-list.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](tutorial-list.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 * [Eenmalige aanmelding configureren](docusign-tutorial.md)

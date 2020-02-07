@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 02/06/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8a222aa63387f7c57f8896b013f71f0c1bf40b2e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2f7bf9fea1b1e15d1ca24686a84e272dd60ceaf5
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849615"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061587"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden voor multi tenant-Azure Active Directory instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B
 
 Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant van de organisatie.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map gebruikt die de Azure AD-Tenant van uw organisatie bevat (bijvoorbeeld contoso.com). Selecteer het **filter Directory + abonnement** in het bovenste menu en kies vervolgens de map die uw Tenant bevat.
 1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 1. Selecteer **nieuwe registratie**.
@@ -63,6 +63,19 @@ U moet de toepassings sleutel opslaan die u hebt gemaakt in uw Azure AD B2C-Tena
 1. Voer in het **geheim**uw client geheim in dat u eerder hebt vastgelegd.
 1. Selecteer `Signature`voor **sleutel gebruik**.
 1. Selecteer **Maken**.
+
+## <a name="configuring-optional-claims"></a>Optionele claims configureren
+
+Als u de `family_name` en `given_name` claims van Azure AD wilt ophalen, kunt u optionele claims voor uw toepassing configureren in de Azure Portal gebruikers interface of het toepassings manifest. Zie [optionele claims voor uw Azure AD-app bieden](../active-directory/develop/active-directory-optional-claims.md)voor meer informatie.
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Zoek en selecteer **Azure Active Directory**.
+1. Selecteer in de sectie **beheren** de optie **app-registraties**.
+1. Selecteer in de lijst de toepassing waarvoor u de optionele claims wilt configureren.
+1. Selecteer in de sectie **beheren** de optie **token configuratie (preview)** .
+1. Selecteer **optionele claim toevoegen**.
+1. Selecteer het token type dat u wilt configureren.
+1. Selecteer de optionele claims die u wilt toevoegen.
+1. Klik op **Toevoegen**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 

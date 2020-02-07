@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: c993a08a4163d50a9632055da355e39b5bdde004
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026885"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049207"
 ---
-# <a name="overview"></a>Overzicht
+# <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>Geïntegreerde controle van connectiviteit met verbindings monitor (preview-versie)
 
 Verbindings monitor (preview) biedt een geïntegreerde end-to-end functionaliteit voor verbindings bewaking in azure Network Watcher voor hybride en Azure-Cloud implementaties. Azure Network Watcher biedt hulpprogram ma's voor het bewaken, diagnosticeren en weer geven van connectiviteits gegevens voor uw Azure-implementaties.
 
@@ -78,8 +78,8 @@ Met _verbindings monitor_ wordt de communicatie met regel matige tussen pozen be
 
 ### <a name="accessing-connection-monitor-preview"></a>Toegang tot de verbindings monitor (preview-versie)
 
-1. Gebruik de volgende koppeling om toegang te krijgen tot Network Watcher:[https://ms.portal.azure.com/?Microsoft\_Azure\_Network\_connectionmonitorpreview=true#blade/Microsoft\_Azure\_Network/NetworkWatcherMenuBlade/connectionMonitorPreview](https://ms.portal.azure.com/?Microsoft_Azure_Network_connectionmonitorpreview=true#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/connectionMonitorPreview)
-2. Klik in het linkerdeel venster van Network Watcher op het tabblad verbindings monitor (preview). Dit tabblad is alleen zichtbaar als Network Watcher wordt geopend met behulp van de koppeling die u in stap 1 hebt opgegeven.
+1. Ga vanaf de start pagina van Azure Portal naar Network Watcher
+2. Klik in het linkerdeel venster van Network Watcher op het tabblad verbindings monitor (preview).
 3. U kunt alle verbindings monitors weer geven die zijn gemaakt met behulp van de ervaring van de verbindings monitor (preview). Alle verbindings monitors die zijn gemaakt met behulp van de klassieke ervaring van het tabblad verbindings controle, worden weer gegeven op het tabblad verbindings controle.
 
     ![Een verbindings monitor maken](./media/connection-monitor-2-preview/cm-resource-view.png)
@@ -431,7 +431,7 @@ Alle bronnen en bestemmingen die zijn toegevoegd aan een test groep met de opgeg
 * Test configuratie: 2 (configuratie 1, configuratie 2)
 * Gemaakte tests: totaal = 12
 
-| **Test nummer** | **Bron** | **Destination** | **Configuratie naam testen** |
+| **Test nummer** | **Bron** | **Beoogde** | **Configuratie naam testen** |
 | --- | --- | --- | --- |
 | 1 | A | D | Configuratie 1 |
 | 2 | A | D | Configuratie 2 |
@@ -578,8 +578,8 @@ Resource type: micro soft. Network/networkWatchers/connectionMonitors
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % Tests mislukt | Procent | Average | % van de controles van connectiviteits controle is mislukt | Er zijn geen dimensies |
 | AverageRoundtripMs | Gem. retour tijd (MS) | MilliSeconds | Average | Gemiddelde Round-retour tijd van het netwerk (MS) voor connectiviteits controle tests die zijn verzonden tussen de bron en het doel |             Er zijn geen dimensies |
-| ChecksFailedPercent (preview-versie) | % Controles mislukt (preview-versie) | Procent | Average | % van de controles voor een test is mislukt |Lijst:-ConnectionMonitorResourceId-SourceAddress-SourceName-SourceResourceId-source type-protocol-DestinationAddress-Destination-DestinationResourceId-DestinationType-DestinationPort-TestGroupName-TestConfigurationName- Deel |
-| RoundTripTimeMs (preview-versie) | Retour tijd (MS) (preview-versie) | Milliseconden | Average | Retour tijd (MS) voor controles die worden verzonden tussen de bron en de bestemming. Deze waarde is niet gemiddeld | Lijst:-ConnectionMonitorResourceId-SourceAddress-SourceName-SourceResourceId-source type-protocol-DestinationAddress-Destination-DestinationResourceId-DestinationType-DestinationPort-TestGroupName-TestConfigurationName- Deel |
+| ChecksFailedPercent (preview-versie) | % Controles mislukt (preview-versie) | Procent | Average | % van de controles voor een test is mislukt | * ConnectionMonitorResourceId <br> * SourceAddress <br> * Bronnaam <br> * SourceResourceId <br> * Source type <br> *-Protocol <br> * DestinationAddress <br> * Doelpad <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * Regio |
+| RoundTripTimeMs (preview-versie) | Retour tijd (MS) (preview-versie) | Milliseconden | Average | Retour tijd (MS) voor controles die worden verzonden tussen de bron en de bestemming. Deze waarde is niet gemiddeld | * ConnectionMonitorResourceId <br> * SourceAddress <br> * Bronnaam <br> * SourceResourceId <br> * Source type <br> *-Protocol <br> * DestinationAddress <br> * Doelpad <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * Regio |
 
  ![Metrische gegevens bewaken](./media/connection-monitor-2-preview/monitor-metrics.png)
 

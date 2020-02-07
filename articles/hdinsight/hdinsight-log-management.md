@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: e5abc9e75e11424b5d0dc4c260b412d0e414ad83
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837949"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064679"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Logboeken beheren voor een HDInsight-cluster
 
@@ -69,7 +69,7 @@ Het is belang rijk om inzicht te krijgen in de werkbelasting typen die op uw HDI
 
 * Overweeg of een bewakings oplossing of service een nuttig voor deel zou zijn. Micro soft System Center biedt een [HDInsight-Management Pack](https://www.microsoft.com/download/details.aspx?id=42521). U kunt ook hulpprogram ma's van derden, zoals Apache Chukwa en ganglia, gebruiken om logboeken te verzamelen en te centraliseren. Veel bedrijven bieden services om op Hadoop gebaseerde big data oplossingen te bewaken, bijvoorbeeld: Centeriteit, Compuware APM, Sematext SPM en Zettaset Orchestrator.
 
-## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>Stap 2: Cluster service versies beheren en script actie logboeken weer geven
+## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>Stap 2: Cluster-service versies beheren en logboeken weer geven
 
 Een typisch HDInsight-cluster maakt gebruik van verschillende services en open-source software pakketten (zoals Apache HBase, Apache Spark, enzovoort). Voor sommige werk belastingen, zoals Bioinformatics, moet u mogelijk ook de logboek geschiedenis van de service configuratie behouden naast de logboeken voor taak uitvoering.
 
@@ -89,15 +89,27 @@ Met de Ambari-gebruikers interface kunt u de configuratie voor alle (of alle) se
 
 Met HDInsight- [script acties](hdinsight-hadoop-customize-cluster-linux.md) worden scripts uitgevoerd op een cluster, hetzij hand matig of indien opgegeven. Script acties kunnen bijvoorbeeld worden gebruikt voor het installeren van extra software op het cluster of voor het wijzigen van de configuratie-instellingen van de standaard waarden. Script actie logboeken kunnen inzicht geven in fouten die zijn opgetreden tijdens de installatie van het cluster, en ook wijzigingen in de configuratie-instellingen die van invloed kunnen zijn op de prestaties en beschik baarheid van het cluster.  Als u de status van een script actie wilt zien, selecteert u de knop **OPS** in uw Ambari-gebruikers interface of opent u de status Logboeken in het standaard opslag account. De opslag logboeken zijn beschikbaar op `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`.
 
+### <a name="view-ambari-alerts-status-logs"></a>Status logboeken van Ambari-waarschuwingen weer geven
+
+Apache Ambari schrijft waarschuwings status wijzigingen naar `ambari-alerts.log`. Het volledige pad is `/var/log/ambari-server/ambari-alerts.log`. Als u fout opsporing wilt inschakelen voor het logboek, wijzigt u een eigenschap in `/etc/ambari-server/conf/log4j.properties.` wijziging vervolgens vermelding onder `# Log alert state changes` van:
+
+```
+log4j.logger.alerts=INFO,alerts
+
+to
+
+log4j.logger.alerts=DEBUG,alerts
+```
+
 ## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>Stap 3: de logboek bestanden voor de cluster taak uitvoering beheren
 
-De volgende stap is het controleren van de logboek bestanden voor taak uitvoering voor de verschillende services.  Services kunnen Apache HBase, Apache Spark en vele andere zijn. Een Hadoop-cluster produceert een groot aantal uitgebreide logboeken, zodat u kunt bepalen welke logboeken nuttig zijn (en dat niet) het tijdrovender is.  Meer informatie over het logboek registratie systeem is belang rijk voor het beheer van logboek bestanden.  Hier volgt een voor beeld van een logboek bestand.
+De volgende stap is het controleren van de logboek bestanden voor taak uitvoering voor de verschillende services.  Services kunnen Apache HBase, Apache Spark en vele andere zijn. Een Hadoop-cluster produceert een groot aantal uitgebreide logboeken, zodat u kunt bepalen welke logboeken nuttig zijn (en dat niet) het tijdrovender is.  Meer informatie over het logboek registratie systeem is belang rijk voor het beheer van logboek bestanden.  De volgende afbeelding is een voor beeld van een logboek bestand.
 
 ![Voor beeld van een logboek bestand van HDInsight voorbeeld uitvoer](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Toegang tot de Hadoop-logboek bestanden
 
-HDInsight slaat de logboek bestanden op in het cluster bestandssysteem en in azure Storage. U kunt logboek bestanden in het cluster onderzoeken door een [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) -verbinding met het cluster te openen en door het bestands systeem te bladeren of door de Hadoop-status Portal op de externe hoofd knooppunt server te gebruiken. U kunt de logboek bestanden in azure Storage controleren met behulp van de hulpprogram ma's die gegevens uit Azure Storage kunnen openen en downloaden. Voor beelden zijn [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)en Visual Studio Server Explorer. U kunt ook Power shell en de Azure Storage-client bibliotheken of de Azure .NET-Sdk's gebruiken om toegang te krijgen tot gegevens in Azure Blob-opslag.
+HDInsight slaat de logboek bestanden op in het cluster bestandssysteem en in Azure Storage. U kunt logboek bestanden in het cluster onderzoeken door een [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) -verbinding met het cluster te openen en door het bestands systeem te bladeren of door de Hadoop-status Portal op de externe hoofd knooppunt server te gebruiken. U kunt de logboek bestanden in Azure Storage bekijken met een van de hulpprogram ma's waarmee u gegevens van Azure Storage kunt openen en downloaden. Voor beelden zijn [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)en Visual Studio Server Explorer. U kunt ook Power shell en de Azure Storage-client bibliotheken of de Azure .NET-Sdk's gebruiken om toegang te krijgen tot gegevens in Azure Blob-opslag.
 
 Hadoop voert het werk van de taken uit als *taak pogingen* op verschillende knoop punten in het cluster. HDInsight kan speculatieve taak pogingen initiëren en eventuele andere taak pogingen beëindigen die niet eerst worden voltooid. Hiermee genereert u belang rijke activiteiten die op het moment van de-vlucht worden vastgelegd in de controller, stderr en syslog-logboek bestanden. Daarnaast worden meerdere taak pogingen tegelijk uitgevoerd, maar een logboek bestand kan alleen de resultaten lineair weer geven.
 
@@ -140,7 +152,7 @@ Nadat u de voor gaande stappen hebt voltooid, hebt u een goed idee van de typen 
 
 Analyseer daarna het volume van de logboek gegevens in de opslag locaties van het sleutel logboek gedurende een bepaalde tijd. U kunt bijvoorbeeld het volume en de groei gedurende 30-60-90 dagen analyseren.  Neem deze informatie op in een werk blad of gebruik andere hulpprogram ma's, zoals Visual Studio, de Azure Storage Explorer of Power Query voor Excel. Zie [HDInsight-logboeken analyseren](hdinsight-debug-jobs.md)voor meer informatie.  
 
-U hebt nu voldoende informatie om een strategie voor logboek beheer voor de sleutel logboeken te maken.  Gebruik uw werk blad (of hulp programma) om zowel de groei van de logboek grootte als de logboek opslag van Azure-service kosten in de toekomst te ramen.  Houd ook rekening met de vereisten voor het bewaren van Logboeken voor de set met logboeken die u wilt onderzoeken.  Nu kunt u toekomstige kosten voor de opslag van het logboek opnieuw ramen nadat u hebt bepaald welke logboek bestanden kunnen worden verwijderd (indien van toepassing) en welke logboeken moeten worden bewaard en gearchiveerd naar minder dure Azure-opslag.
+U hebt nu voldoende informatie om een strategie voor logboek beheer voor de sleutel logboeken te maken.  Gebruik uw werk blad (of hulp programma) om zowel de groei van de logboek grootte als de logboek opslag van Azure-service kosten in de toekomst te ramen.  Houd ook rekening met de vereisten voor het bewaren van Logboeken voor de set met logboeken die u wilt onderzoeken.  Nu kunt u toekomstige kosten voor de opslag van het logboek opnieuw ramen nadat u hebt bepaald welke logboek bestanden kunnen worden verwijderd (indien van toepassing) en welke logboeken moeten worden bewaard en naar minder dure Azure Storage worden gearchiveerd.
 
 ## <a name="step-5-determine-log-archive-policies-and-processes"></a>Stap 5: beleid en processen voor logboek archivering bepalen
 
@@ -152,10 +164,10 @@ Voor bepaalde logboek bestanden kunt u gebruikmaken van een gereduceerde aanpak 
 
 U kunt ook scripts archiveren in het logboek met Power shell.  Zie [Azure Automation logboeken archiveren in Azure Blob Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8)voor een voor beeld van een Power shell-script.
 
-### <a name="accessing-azure-storage-metrics"></a>Toegang tot metrische gegevens van Azure Storage
+### <a name="accessing-azure-storage-metrics"></a>Toegang tot Azure Storage metrische gegevens
 
-Azure Storage kan worden geconfigureerd om opslag bewerkingen en toegang te registreren. U kunt deze zeer gedetailleerde logboeken gebruiken voor het bewaken van capaciteit en het plannen van aanvragen voor opslag. De vastgelegde informatie bevat latentie Details, waarmee u de prestaties van uw oplossingen kunt bewaken en verfijnen.
-U kunt de .NET SDK voor Hadoop gebruiken om de logboek bestanden te controleren die zijn gegenereerd voor de Azure-opslag die de gegevens voor een HDInsight-cluster bevatten.
+Azure Storage kunnen worden geconfigureerd voor het vastleggen van opslag bewerkingen en toegang. U kunt deze zeer gedetailleerde logboeken gebruiken voor het bewaken van capaciteit en het plannen van aanvragen voor opslag. De vastgelegde informatie bevat latentie Details, waarmee u de prestaties van uw oplossingen kunt bewaken en verfijnen.
+U kunt de .NET SDK voor Hadoop gebruiken om de logboek bestanden te controleren die zijn gegenereerd voor de Azure Storage die de gegevens voor een HDInsight-cluster bevatten.
 
 ### <a name="control-the-size-and-number-of-backup-indexes-for-old-log-files"></a>De grootte en het aantal back-upindexen voor oude logboek bestanden bepalen
 

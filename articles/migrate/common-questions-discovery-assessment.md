@@ -3,12 +3,12 @@ title: Veelgestelde vragen-detectie, evaluatie en afhankelijkheids analyse in Az
 description: Krijg antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 0132563072ed04a52e4937da7a8df69196f1a91f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513283"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059484"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse
 
@@ -16,6 +16,8 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over detectie, evaluati
 
 - [Algemene vragen](resources-faq.md) over Azure Migrate.
 - [Vragen](common-questions-appliance.md) over het Azure migrate apparaat.
+- [Vragen](common-questions-server-migration.md) over server migratie.
+
 
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Hoeveel Vm's kan ik vinden met een apparaat?

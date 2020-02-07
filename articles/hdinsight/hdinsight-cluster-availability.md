@@ -1,20 +1,19 @@
 ---
 title: 'Bewaking: Apache Ambari & Azure Monitor-logboeken-Azure HDInsight'
 description: Informatie over het gebruik van Ambari-en Azure Monitor-logboeken voor het bewaken van de cluster status en beschik baarheid.
-keywords: bewaking, ambari, monitor, log Analytics, waarschuwing, Beschik baarheid, status
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/25/2019
-ms.openlocfilehash: a21610fefcfe1632dffbfd8e055497476f7e59c1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.date: 02/06/2020
+ms.openlocfilehash: 383366fa3e436c79bed28a7c47f1e9daa5f0d9de
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687837"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060168"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-and-azure-monitor-logs"></a>De beschik baarheid van clusters bewaken met Apache Ambari en Azure Monitor logs
 
@@ -96,9 +95,9 @@ Als vereiste hebt u een Log Analytics-werk ruimte nodig om de verzamelde gegeven
 
 ### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>Integratie van HDInsight Azure Monitor-logboeken inschakelen
 
-Selecteer op de pagina HDInsight-cluster resource in de portal **Operations Management Suite**. Selecteer vervolgens **inschakelen** en selecteer uw log Analytics-werk ruimte in de vervolg keuzelijst.
+Selecteer op de pagina HDInsight-cluster resource in de Portal de optie **Azure monitor**. Selecteer vervolgens **inschakelen** en selecteer uw log Analytics-werk ruimte in de vervolg keuzelijst.
 
-![HDInsight Operations Management Suite](media/hdinsight-cluster-availability/hdi-portal-oms-enable.png)
+![HDInsight Operations Management Suite](media/hdinsight-cluster-availability/azure-portal-monitoring.png)
 
 ### <a name="query-metrics-and-logs-tables"></a>Query's uitvoeren op metrische gegevens en logboeken van tabellen
 

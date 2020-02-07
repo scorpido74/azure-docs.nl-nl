@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: f7d62487605c26a68e7c71b6d95d7814da0a07c9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776389"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049672"
 ---
-# <a name="linux-support"></a>Linux-ondersteuning
+# <a name="linux-support"></a>Linux Support
 
 U kunt de Linux SDK voor Windows Virtual Desktop gebruiken om een zelfstandige virtueel-bureaubladclient voor Windows te bouwen. U kunt dit ook gebruiken om ondersteuning van Windows virtueel bureau blad in te scha kelen voor uw client toepassing. In deze korte hand leiding wordt uitgelegd wat de Linux SDK is en hoe u deze kunt gebruiken.
 
@@ -55,7 +55,7 @@ Voordat u een Linux-client voor Windows virtueel bureau blad kunt ontwikkelen, m
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt toegang tot de Linux-SDK aanvragen op ons [tech Community-Forum](https://go.microsoft.com/fwlink/?linkid=2116541).
+De SDK is momenteel in ontwikkeling. Dit document wordt bijgewerkt met instructies voor toegang tot de SDK wanneer deze beschikbaar is.
 
 Bekijk onze documentatie voor de volgende clients:
 

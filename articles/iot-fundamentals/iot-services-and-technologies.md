@@ -1,18 +1,18 @@
 ---
 title: Technologieën en oplossingen voor Azure IoT (Internet of Things)
 description: Beschrijft de verzameling technologieën en services die u kunt gebruiken om een Azure IoT-oplossing te bouwen.
-author: robinsh
+author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 10/09/2018
-ms.author: robinsh
-ms.openlocfilehash: cf707a0ddc3d5b46c7be7944a911ee03f00fc064
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.author: dobett
+ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457164"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046064"
 ---
 # <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>Azure-technologieën en-services voor het maken van IoT-oplossingen
 
@@ -34,15 +34,15 @@ Kies apparaten in de [Azure Certified voor IOT-Apparaatbeheer](https://catalog.a
 
 Als volledig beheerd toepassings platform heeft IoT Central een eenvoudig, voorspelbaar prijs model.
 
-## <a name="azure-iot-solution-accelerators"></a>Accelerators voor Azure IoT-oplossing
+## <a name="azure-iot-solution-accelerators"></a>Azure IoT-oplossingsversnellers
 
 De [Azure IOT-oplossings versnellers](https://www.azureiotsolutions.com) zijn een verzameling aanpas bare oplossingen voor bedrijfs kwaliteit. U kunt deze oplossingen implementeren zoals ze zijn, of een aangepaste IoT-oplossing ontwikkelen met behulp van de open-source Java-of .NET-bron code.
 
 Azure IoT-oplossings Accelerators bieden een hoog niveau van controle over uw IoT-oplossing. De oplossings Accelerators bevatten vooraf ontwikkelde oplossingen voor veelvoorkomende IoT-scenario's die u binnen enkele minuten kunt implementeren in uw Azure-abonnement. De scenario's zijn onder andere:
 
-  - Externe monitoring
-  - Verbonden fabriek
-  - Predictive maintenance
+  - Externe bewaking
+  - Verbonden factory
+  - Voorspellend onderhoud
   - Apparaatsimulatie
 
 De open source code base voor alle oplossings versnellers is beschikbaar op GitHub. Down load de code om een oplossings versneller aan te passen om te voldoen aan uw specifieke IoT-vereisten.
@@ -83,6 +83,8 @@ IOT Central maakt gebruik van digitale apparaatdubbels om apparaten en gegevens 
 ### <a name="data-and-analytics"></a>Gegevens en analyse
 
 IoT-apparaten genereren doorgaans grote hoeveel heden tijdreeks gegevens, zoals temperatuur metingen van Sens oren. [Azure time series Insights](../time-series-insights/time-series-insights-overview.md) kunt verbinding maken met een IOT-hub, de telemetrie-stroom van uw apparaten lezen, die gegevens opslaan en u in staat stellen om query's uit te voeren en te visualiseren.
+
+[Azure Maps](/azure/azure-maps) is een verzameling georuimtelijke services die gebruikmaken van nieuwe toewijzings gegevens om de juiste geografische context te bieden voor web-en mobiele toepassingen. U kunt een REST API, een webgebaseerd java script-besturings element of een Android-SDK gebruiken om uw toepassingen te bouwen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

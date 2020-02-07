@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 774d3325cff98ef01dc0b2e8d5c1db38e449d1b5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 69091fbcc2b6789abc7825632a56197427d34e4c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982754"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045345"
 ---
 # <a name="string-claims-transformations"></a>Teken reeks claim transformaties
 
@@ -81,7 +81,7 @@ Het zelfondertekende technische profiel aanroept het technische profiel voor val
 - Invoer claims:
   - **inputClaim1**: someone@contoso.com
   - **inputClaim2**: someone@outlook.com
-    - Invoer parameters:
+- Invoer parameters:
   - **stringComparison**: ordinalIgnoreCase
 - Resultaat: er is een fout opgetreden
 
@@ -326,7 +326,7 @@ Gebruik deze claim transformatie voor het format teren van een wille keurige tek
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
-Indeling van twee claims volgens de gegeven teken reeks voor opmaak. Deze trans formatie maakt C# gebruik van de methode **String. Format** .
+Indeling van twee claims volgens de gegeven teken reeks voor opmaak. Deze trans formatie maakt C# gebruik van de `String.Format` methode.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
@@ -361,6 +361,76 @@ Gebruik deze claim transformatie om een wille keurige teken reeks te Format tere
     - **stringFormat**: {0} {1}
 - Uitvoer claims:
     - **output claim**: Joe Fernando
+
+## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation 
+
+Hiermee worden gelokaliseerde teken reeksen naar claims gekopieerd.
+
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| ---- | ----------------------- | --------- | ----- |
+| OutputClaim | De naam van de gelokaliseerde teken reeks | tekenreeks | Lijst met claim typen die worden geproduceerd nadat deze claim transformatie is aangeroepen. |
+
+De GetLocalizedStringsTransformation-claim transformatie gebruiken:
+
+1. Definieer een [lokalisatie teken reeks](localization.md) en koppel deze aan een [zelfbevestigend technisch profiel](self-asserted-technical-profile.md).
+1. De `ElementType` van het `LocalizedString` element moet zijn ingesteld op `GetLocalizedStringsTransformationClaimType`.
+1. De `StringId` is een unieke id die u definieert en deze later in uw claim transformatie kunt gebruiken.
+1. Geef in de claim transformatie de lijst met claims op die moeten worden ingesteld met de gelokaliseerde teken reeks. De `ClaimTypeReferenceId` is een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid. De `TransformationClaimType` is de naam van de gelokaliseerde teken reeks, zoals gedefinieerd in de `StringId` van het element `LocalizedString`.
+1. In een niet [-bevestigd technisch profiel](self-asserted-technical-profile.md)of een invoer-of uitvoer claim transformatie voor [weer gave](display-controls.md) kunt u een verwijzing naar uw claim transformatie maken.
+
+![GetLocalizedStringsTransformation](./media/string-transformations/get-localized-strings-transformation.png)
+
+In het volgende voor beeld wordt gezocht naar het onderwerp van de e-mail, de hoofd tekst, uw code bericht en de hand tekening van het e-mail bericht, van gelokaliseerde teken reeksen. Deze claims worden later gebruikt door de aangepaste sjabloon voor e-mail verificatie.
+
+Gelokaliseerde teken reeksen definiëren voor Engels (standaard) en Spaans.
+
+```XML
+<Localization Enabled="true">
+  <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+    <SupportedLanguage>en</SupportedLanguage>
+    <SupportedLanguage>es</SupportedLanguage>
+   </SupportedLanguages>
+
+  <LocalizedResources Id="api.localaccountsignup.en">
+    <LocalizedStrings>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for verifying your account!</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Your code is</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
+     </LocalizedStrings>
+   </LocalizedResources>
+   <LocalizedResources Id="api.localaccountsignup.es">
+     <LocalizedStrings>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Código de verificación del correo electrónico de la cuenta de Contoso</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Gracias por comprobar la cuenta de </LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Su código es</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Atentamente</LocalizedString>
+    </LocalizedStrings>
+  </LocalizedResources>
+</Localization>
+```
+
+De claim transformatie stelt de waarde van het claim type *onderwerp* in met de waarde van de `StringId` *email_subject*.
+
+```XML
+<ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
+    <OutputClaim ClaimTypeReferenceId="message" TransformationClaimType="email_message" />
+    <OutputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="email_code" />
+    <OutputClaim ClaimTypeReferenceId="signature" TransformationClaimType="email_signature" />
+   </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Voorbeeld
+
+- Uitvoer claims:
+  - **onderwerp**: e-mail verificatie code van Contoso-account
+  - **bericht**: Bedankt voor het verifiëren van je account. 
+  - **codeIntro**: uw code is 
+  - **hand tekening**: met vriendelijke groet  
+
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
@@ -414,7 +484,7 @@ Zoek een claim waarde op uit een lijst met waarden op basis van de waarde van ee
 | InputClaim | inputParameterId | tekenreeks | De claim die de opzoek waarde bevat |
 | InputParameter | |tekenreeks | Verzameling invoer parameters. |
 | InputParameter | errorOnFailedLookup | booleaans | Controleren of er een fout wordt geretourneerd als er geen overeenkomende zoek actie is. |
-| OutputClaim | inputParameterId | tekenreeks | De ClaimTypes die wordt geproduceerd nadat deze claim transformatie is aangeroepen. De waarde van de overeenkomende id. |
+| OutputClaim | inputParameterId | tekenreeks | De ClaimTypes die wordt geproduceerd nadat deze claim transformatie is aangeroepen. De waarde van de overeenkomende `Id`. |
 
 In het volgende voor beeld wordt de domein naam in een van de input parameters-verzamelingen opgezocht. De claim transformatie zoekt de domein naam in de id en retourneert de waarde (een toepassings-ID).
 
@@ -479,7 +549,7 @@ Hiermee wordt het domein gedeelte van een e-mail adres opgehaald.
 | InputClaim | emailAddress | tekenreeks | Het claim type dat het e-mail adres bevat. |
 | OutputClaim | domeinen | tekenreeks | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen-het domein. |
 
-Gebruik deze claim transformatie voor het parseren van de domein naam na het @-symbool van de gebruiker. Dit kan handig zijn bij het verwijderen van persoons gegevens (PII) uit controle gegevens. De volgende claim transformatie laat zien hoe u de domein naam kunt parseren vanuit een **e-mail** claim.
+Gebruik deze claim transformatie voor het parseren van de domein naam na het @-symbool van de gebruiker. De volgende claim transformatie laat zien hoe u de domein naam kunt parseren vanuit een **e-mail** claim.
 
 ```XML
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
@@ -681,7 +751,7 @@ Haalt delen van een teken reeks claim type op, beginnend bij het teken op de opg
 | InputClaim | inputClaim | tekenreeks | Het claim type, dat de teken reeks bevat. |
 | InputParameter | startIndex | int | De op nul gebaseerde positie van het begin teken van een subtekenreeks in dit exemplaar. |
 | InputParameter | length | int | Het aantal tekens in de subtekenreeks. |
-| OutputClaim | outputClaim | booleaans | Een teken reeks die overeenkomt met de subtekenreeks van lengte lengte die begint bij start index in dit exemplaar, of leeg als start index gelijk is aan de lengte van deze instantie en de lengte nul is. |
+| OutputClaim | outputClaim | booleaans | Een teken reeks die overeenkomt met de subtekenreeks van length die begint bij start index in dit exemplaar, of leeg als start index gelijk is aan de lengte van deze instantie en de lengte nul is. |
 
 U kunt bijvoorbeeld het land voorvoegsel telefoon nummer ophalen.  
 
@@ -758,7 +828,7 @@ Voegt de elementen van een opgegeven type teken reeks verzamelings claim toe met
 | InputParameter | vorm | tekenreeks | De teken reeks die als schei ding moet worden gebruikt, zoals een komma `,`. |
 | OutputClaim | outputClaim | tekenreeks | Een teken reeks die bestaat uit de leden van de teken reeks verzameling `inputClaim`, gescheiden door de invoer parameter `delimiter`. |
   
-In het volgende voor beeld wordt een teken reeks verzameling van gebruikers rollen gebruikt en geconverteerd naar een komma als scheidings teken reeks. U kunt deze methode gebruikt om een teken reeks verzameling op te slaan in een Azure AD-gebruikers account. Wanneer u later het account uit de map leest, gebruikt u de `StringSplit` om de teken reeks van het komma scheidings punt terug te converteren naar de teken reeks verzameling.
+In het volgende voor beeld wordt een teken reeks verzameling van gebruikers rollen gebruikt en wordt deze geconverteerd naar een komma als scheidings teken reeks. U kunt deze methode gebruiken om een teken reeks verzameling op te slaan in een Azure AD-gebruikers account. Wanneer u later het account uit de map leest, gebruikt u de `StringSplit` om de teken reeks van het komma scheidings punt terug te converteren naar de teken reeks verzameling.
 
 ```XML
 <ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">

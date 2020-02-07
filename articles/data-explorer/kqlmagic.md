@@ -7,17 +7,17 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: ba21ec6ba82ac4984d3c51fc46f88de2cd56b2b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 83902ea5a3e73603311a0c469126ed603d0ebd16
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933698"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064866"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Een Jupyter Notebook-en Kqlmagic-extensie gebruiken voor het analyseren van gegevens in azure Data Explorer
 
 Jupyter Notebook is een open-source webtoepassing waarmee u documenten kunt maken en delen met Live code, vergelijkingen, visualisaties en tekst. Gebruik omvat het opschonen van gegevens en trans formatie, het numeriek simuleren, statistisch model leren, gegevens visualisatie en machine learning.
-[Jupyter notebook](https://jupyter.org/) ondersteunt Magic-functies die de mogelijkheden van de kernel uitbreiden door extra opdrachten te ondersteunen. KQL Magic is een opdracht waarmee de mogelijkheden van de python-kernel in Jupyter Notebook worden uitgebreid, zodat u Kusto taal query's systeem eigen kunt uitvoeren. U kunt de python-en Kusto-query taal eenvoudig combi neren om gegevens op te vragen en te visualiseren met de uitgebreide plot.ly-bibliotheek, geïntegreerd met `render` opdrachten. Gegevens bronnen voor het uitvoeren van query's worden ondersteund. Deze gegevens bronnen zijn onder andere Azure Data Explorer, een snelle en zeer schaal bare service voor gegevens verkenning voor logboek-en telemetriegegevens, evenals Azure Monitor logboeken en Application Insights. KQL Magic werkt ook met de extensie Azure Notebooks, Jupyter Lab en Visual Studio code Jupyter.
+[Jupyter notebook](https://jupyter.org/) ondersteunt Magic-functies die de mogelijkheden van de kernel uitbreiden door extra opdrachten te ondersteunen. KQL Magic is een opdracht waarmee de mogelijkheden van de python-kernel in Jupyter Notebook worden uitgebreid, zodat u Kusto taal query's systeem eigen kunt uitvoeren. U kunt de python-en Kusto-query taal eenvoudig combi neren om gegevens op te vragen en te visualiseren met de uitgebreide Plot.ly-bibliotheek, geïntegreerd met `render`-opdrachten. Gegevens bronnen voor het uitvoeren van query's worden ondersteund. Deze gegevens bronnen zijn onder andere Azure Data Explorer, een snelle en zeer schaal bare service voor gegevens verkenning voor logboek-en telemetriegegevens, evenals Azure Monitor logboeken en Application Insights. KQL Magic werkt ook met de extensie Azure Notebooks, Jupyter Lab en Visual Studio code Jupyter.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -44,7 +44,7 @@ Jupyter Notebook is een open-source webtoepassing waarmee u documenten kunt make
     
 ## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Verbinding maken met het Azure Data Explorer Help-cluster
 
-Gebruik de volgende opdracht om verbinding te maken met de *voorbeeld* database die op het *Help* -cluster wordt gehost. Voor gebruikers die niet van micro soft zijn Aad, vervangt `Microsoft.com` u de naam van de Tenant door uw Aad-Tenant.
+Gebruik de volgende opdracht om verbinding te maken met de *voorbeeld* database die op het *Help* -cluster wordt gehost. Voor gebruikers die niet van micro soft zijn AAD, vervangt u de Tenant naam `Microsoft.com` met uw AAD-Tenant.
 
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
@@ -52,7 +52,7 @@ Gebruik de volgende opdracht om verbinding te maken met de *voorbeeld* database 
 
 ## <a name="query-and-visualize"></a>Query's uitvoeren en visualiseren
 
-Gegevens opvragen met behulp van de [render-operator](/azure/kusto/query/renderoperator) en gegevens visualiseren met behulp van de Ploy.ly-bibliotheek. Deze query en visualisatie biedt een geïntegreerde ervaring waarbij gebruik wordt gemaakt van systeem eigen KQL. Kqlmagic ondersteunt de meeste grafieken `timepivot`, `pivotchart`behalve, `ladderchart`, en. Rendering wordt ondersteund met alle kenmerken behalve `kind`, `ysplit`en `accumulate`. 
+Gegevens opvragen met behulp van de [render-operator](/azure/kusto/query/renderoperator) en gegevens visualiseren met behulp van de Ploy.ly-bibliotheek. Deze query en visualisatie biedt een geïntegreerde ervaring waarbij gebruik wordt gemaakt van systeem eigen KQL. Kqlmagic biedt ondersteuning voor de meeste grafieken, behalve `timepivot`, `pivotchart`en `ladderchart`. Rendering wordt ondersteund met alle kenmerken behalve `kind`, `ysplit`en `accumulate`. 
 
 ### <a name="query-and-render-piechart"></a>Piechart opvragen en weer geven
 
@@ -79,7 +79,7 @@ StormEvents
 
 ### <a name="customize-the-chart-colors"></a>De grafiek kleuren aanpassen
 
-Als u het standaardkleuren palet niet mooi vindt, past u de grafieken aan met behulp van de palet opties. De beschik bare paletten vindt u hier: [Kleuren palet kiezen voor het KQL Magic-query diagram resultaat](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
+Als u het standaardkleuren palet niet mooi vindt, past u de grafieken aan met behulp van de palet opties. De beschik bare paletten vindt u hier: [kleuren palet kiezen voor het KQL Magic-query diagram resultaat](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
 
 1. Voor een lijst met paletten:
 
@@ -100,7 +100,7 @@ Als u het standaardkleuren palet niet mooi vindt, past u de grafieken aan met be
 
 ## <a name="parameterize-a-query-with-python"></a>Een query para meters met python
 
-KQL Magic maakt eenvoudige uitwisseling mogelijk tussen Kusto-query taal en python. Voor meer informatie: [Para meters uw KQL Magic-query met python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
+KQL Magic maakt eenvoudige uitwisseling mogelijk tussen Kusto-query taal en python. Voor meer informatie: [para meters your KQL Magic query with python](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb)
 
 ### <a name="use-a-python-variable-in-your-kql-query"></a>Een python-variabele gebruiken in uw KQL-query
 
@@ -121,7 +121,7 @@ StormEvents
 
 ### <a name="convert-query-results-to-pandas-dataframe"></a>Query resultaten converteren naar Panda data frame
 
-U kunt de resultaten van een KQL-query openen in Pandas data frame. Open de laatst uitgevoerde query resultaten per `_kql_raw_result_` variabele en converteer de resultaten eenvoudig naar een Panda data frame als volgt:
+U kunt de resultaten van een KQL-query openen in Pandas data frame. Open de laatst uitgevoerde query resultaten op variabele `_kql_raw_result_` en converteer de resultaten eenvoudig naar een Panda data frame als volgt:
 
 ```python
 df = _kql_raw_result_.to_dataframe()
@@ -130,9 +130,9 @@ df.head(10)
 
 ### <a name="example"></a>Voorbeeld
 
-In veel analyse scenario's wilt u mogelijk herbruikbare notitie blokken maken die veel query's bevatten en de resultaten van een query in de volgende query's invoeren. In het volgende voor beeld wordt de `statefilter` python-variabele gebruikt om de gegevens te filteren.
+In veel analyse scenario's wilt u mogelijk herbruikbare notitie blokken maken die veel query's bevatten en de resultaten van een query in de volgende query's invoeren. In het volgende voor beeld wordt de python-variabele `statefilter` gebruikt om de gegevens te filteren.
 
-1. Voer een query uit om de tien statussen met het `DamageProperty`maximum te bekijken:
+1. Voer een query uit om de tien statussen met het maximum aantal `DamageProperty`weer te geven:
 
     ```python
     %%kql
@@ -150,7 +150,7 @@ In veel analyse scenario's wilt u mogelijk herbruikbare notitie blokken maken di
     statefilter
     ```
 
-1. Voer een query uit met `let` behulp van de-instructie en de python-variabele:
+1. Voer een query uit met behulp van de `let`-instructie en de python-variabele:
 
     ```python
     %%kql
@@ -168,7 +168,7 @@ In veel analyse scenario's wilt u mogelijk herbruikbare notitie blokken maken di
     ```
 
 > [!TIP]
-> Voor informatie over het gebruik `%config KQLmagic`van alle beschik bare configuraties. Voor het oplossen van problemen met Kusto en het vastleggen van fouten in de verbinding, zoals verbindings problemen en onjuiste query's, gebruikt u`%config Kqlmagic.short_errors=False`
+> Gebruik `%config Kqlmagic`om informatie over alle beschik bare configuraties te ontvangen. Gebruik `%config Kqlmagic.short_errors=False` om problemen met Kusto op te lossen en vast te leggen, zoals verbindings problemen en onjuiste query's.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een CI/CD-pijp lijn maken voor Java-Azure DevOps Projects'
+title: 'Snelstartgids: een CI/CD-pijp lijn maken voor Java-Azure DevOps Projects'
 description: Met DevOps Projects kunt u eenvoudig aan de slag met Azure. Hiermee kunt u een web-app voor een Azure-service van uw keuze starten in slechts enkele stappen.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -16,30 +16,31 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: 49514022dc00afcd07002c7a3278c18a606e5ad5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1a276770887bee39972ba8630fb13f52bcbe802d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203717"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049948"
 ---
-# <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>Quickstart: Een CI/CD-pijp lijn instellen voor een Java-app met Azure DevOps Projects
+# <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>Snelstartgids: een CI/CD-pijp lijn instellen voor een Java-app met Azure DevOps Projects
 
-In dit Quick Start-artikel gebruikt u Azure DevOps Projects vereenvoudigde ervaring voor het instellen van een doorlopende integratie (CI) en een continue levering (CD)-pijp lijn voor uw Java-app in azure-pijp lijnen. U kunt Azure DevOps Projects ook gebruiken om andere Azure-resources te maken.  
+In deze Quick Start gebruikt u de vereenvoudigde Azure DevOps Projects-ervaring voor het instellen van een doorlopende integratie (CI) en een continue levering (CD)-pijp lijn voor uw Java-app in azure-pijp lijnen. U kunt Azure DevOps Projects gebruiken voor het instellen van alles wat u nodig hebt voor het ontwikkelen, implementeren en bewaken van uw app. 
 
-Als u geen Azure-abonnement hebt, kunt u er gratis een krijgen via [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
+## <a name="prerequisites"></a>Vereisten
+
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- Een [Azure DevOps](https://azure.microsoft.com/services/devops/) -account en-organisatie.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-  In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. Met DevOps Projects worden ook Azure-resources gemaakt in het Azure-abonnement van uw keuze.
+In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. Met DevOps Projects worden ook Azure-resources gemaakt in het Azure-abonnement van uw keuze.
 
-1. Meld u aan bij de [Microsoft Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer in het linkerdeel venster **een resource maken**. 
 
-1. Selecteer in het linkerdeelvenster de optie **Een resource maken**, en zoek vervolgens naar **DevOps Projects**.  
+   ![Een Azure-resource maken in Azure Portal](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
 
-2. Selecteer **Maken**.
-
-    ![Een Azure-resource maken in DevOps Projects](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
+1. Zoek en selecteer **DevOps projects**en selecteer vervolgens **maken**.
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Een voorbeeldtoepassing en Azure-service selecteren
 
@@ -53,18 +54,17 @@ De Java-voorbeelden omvatten een keuze uit verschillende toepassingsframeworks.
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps en een Azure-abonnement configureren 
 
 1. Maak een nieuwe Azure DevOps-organisatie of kies een bestaande organisatie. 
-
-    a. Kies een naam voor het project. 
-
-    b. Selecteer uw Azure-abonnement en locatie, kies een naam voor de toepassing en selecteer vervolgens **Gereed**.  
-    Na enkele minuten wordt het DevOps Projects-dashboard weergegeven in de Azure-portal. Er wordt een voorbeeldtoepassing ingesteld in een opslagplaats in uw Azure DevOps-organisatie, er wordt een build uitgevoerd en de toepassing wordt geïmplementeerd in Azure. Dit dashboard biedt meer inzicht in uw codeopslagplaats, CI/CD-pijplijn en toepassing in Azure.
-    
-
+   
+   1. Kies een naam voor het project. 
+   
+   1. Selecteer uw Azure-abonnement en locatie, kies een naam voor de toepassing en selecteer vervolgens **Gereed**.  
+   Na enkele minuten wordt het DevOps Projects-dashboard weergegeven in de Azure-portal. Er wordt een voorbeeldtoepassing ingesteld in een opslagplaats in uw Azure DevOps-organisatie, er wordt een build uitgevoerd en de toepassing wordt geïmplementeerd in Azure. Dit dashboard biedt meer inzicht in uw codeopslagplaats, CI/CD-pijplijn en toepassing in Azure.
+   
 2. Selecteer **Bladeren** om de actieve toepassing weer te geven.
+   
+   ![Toepassings dashboard in Azure Portal weer geven](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
 
-    ![Toepassings dashboard in Azure Portal weer geven](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
-    
-   In DevOps Projects worden automatisch een CI-build en een releasetrigger geconfigureerd.  U bent nu klaar om samen met een team te werken aan uw Java-app met een CI/CD-proces dat automatisch uw meest recente werk in uw website implementeert.
+In DevOps Projects worden automatisch een CI-build en een releasetrigger geconfigureerd.  U bent nu klaar om samen met een team te werken aan uw Java-app met een CI/CD-proces dat automatisch uw meest recente werk in uw website implementeert.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Codewijzigingen doorvoeren en CI/CD uitvoeren
 
@@ -132,11 +132,11 @@ De taken zijn de acties die tijdens het implementatieproces worden uitgevoerd. I
 1. Selecteer aan de rechterkant **Releases weergeven**.  
 In deze weergave wordt een versiesgeschiedenis weergegeven.
 
-1. Selecteer het beletselteken (...) naast een van de releases en selecteer vervolgens **Openen**.  
-U kunt verschillende menu's verkennen, zoals een releaseoverzicht, gekoppelde werkitems en tests.
+1. Selecteer het beletselteken naast een van de releases en selecteer vervolgens **Openen**.  
+Er zijn verschillende menu's die u kunt verkennen, zoals een versieoverzicht, gekoppelde werkitems en tests.
 
 1. Selecteer **Doorvoeringen**.   
-In deze weergave worden de codedoorvoeringen weergegeven die zijn gekoppeld aan deze implementatie. 
+In deze weergave worden codedoorvoeringen getoond die zijn gekoppeld aan de specifieke implementatie. 
 
 1. Selecteer **Logboeken**.  
 De logboeken bevatten nuttige informatie over het implementatieproces. Ze kunnen worden weergegeven tijdens en na de implementaties.

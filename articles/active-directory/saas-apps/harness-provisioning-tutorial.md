@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 9d00024351c18789e26120cc2af006b9aac4232d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767837"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057830"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Zelf studie: harnas configureren voor automatische gebruikers inrichting
 
 In dit artikel vindt u informatie over het configureren van Azure Active Directory (Azure AD) voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers of groepen.
 
 > [!NOTE]
-> In dit artikel wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie Gebruikers inrichten en de inrichting ongedaan maken voor [SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over deze service en antwoorden op veelgestelde vragen.
+> In dit artikel wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie Gebruikers inrichten en de inrichting ongedaan maken voor [SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over deze service en antwoorden op veelgestelde vragen.
 >
 > Deze connector is momenteel in preview. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
@@ -156,7 +156,7 @@ Ga als volgt te werk om het automatisch inrichten van gebruikers voor harnas in 
 
     ![Deel venster kenmerk toewijzingen van harnas groep](media/harness-provisioning-tutorial/groupattributes.png)
 
-1. Zie op [kenmerken gebaseerde toepassing inrichten met bereik filters](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het configureren van bereik filters.
+1. Zie op [kenmerken gebaseerde toepassing inrichten met bereik filters](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het configureren van bereik filters.
 
 1. Onder **instellingen**, om de Azure AD-inrichtings service voor harnas in te scha kelen, schakelt u de **inrichtings status** in **op aan**.
 
@@ -172,13 +172,13 @@ Ga als volgt te werk om het automatisch inrichten van gebruikers voor harnas in 
 
 Met deze bewerking wordt de eerste synchronisatie gestart van de gebruikers of groepen die u wilt inrichten. Het duurt langer voordat de initiële synchronisatie is uitgevoerd. Synchronisaties vinden ongeveer elke 40 minuten plaats, mits de Azure AD-inrichtings service wordt uitgevoerd. Als u de voortgang wilt bewaken, gaat u naar de sectie **synchronisatie Details** . U kunt ook koppelingen volgen naar een rapport met inrichtings activiteiten, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op harnas.
 
-Zie [rapport over automatische toewijzing van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [rapport over automatische toewijzing van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
-* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)

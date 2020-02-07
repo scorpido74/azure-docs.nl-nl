@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 72fd23e4283925b91d749fef0afac4e87e93405c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cba8a4fd64b948d7a3e443426ca1f779af68a3fe
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841641"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048989"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Uw eigen sleutel voor Apache Kafka in azure HDInsight nemen
 
@@ -95,9 +95,13 @@ HDInsight ondersteunt alleen Azure Key Vault. Als u uw eigen sleutel kluis hebt,
 
 ## <a name="create-hdinsight-cluster"></a>HDInsight-cluster maken
 
-U bent nu klaar om een nieuw HDInsight-cluster te maken. BYOK kan alleen worden toegepast op nieuwe clusters tijdens het maken van het cluster. Versleuteling kan niet worden verwijderd uit BYOK-clusters en BYOK kan niet worden toegevoegd aan bestaande clusters.
+U bent nu klaar om een nieuw HDInsight-cluster te maken. Selecteer **Kafka** voor **cluster type**op het tabblad **basis beginselen** .
 
-![Kafka-schijf versleuteling in Azure Portal](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka.png)
+![Azure Portal type Kafka selecteren](./media/apache-kafka-byok/azure-portal-cluster-basics-type-kafka.png)
+
+BYOK kan alleen worden toegepast op nieuwe clusters tijdens het maken van het cluster. Versleuteling kan niet worden verwijderd uit BYOK-clusters en BYOK kan niet worden toegevoegd aan bestaande clusters.
+
+![Kafka-schijf versleuteling in Azure Portal](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
 
 Geef tijdens het maken van het cluster de volledige sleutel-URL op, met inbegrip van de sleutel versie. Bijvoorbeeld `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. U moet ook de beheerde identiteit toewijzen aan het cluster en de sleutel-URI opgeven. Zie [Apache Hadoop clusters maken met behulp van de Azure portal voor de](./apache-kafka-get-started.md) volledige details van het maken van het cluster.
 

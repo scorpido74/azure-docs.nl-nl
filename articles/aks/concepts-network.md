@@ -1,18 +1,17 @@
 ---
 title: Concepten-netwerken in azure Kubernetes Services (AKS)
 description: Meer informatie over netwerken in azure Kubernetes service (AKS), waaronder kubenet-en Azure CNI-netwerken, ingangs controllers, load balancers en statische IP-adressen.
-services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 86fa59a3d1c07aae842404c465b908e550708071
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547962"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047458"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netwerk concepten voor toepassingen in azure Kubernetes service (AKS)
 
@@ -91,7 +90,7 @@ Zowel kubenet als Azure CNI bieden netwerk connectiviteit voor uw AKS-clusters. 
     * Maakt gebruik van Kubernetes intern of extern load balancer om het bereik van buiten het cluster te bereiken.
     * U moet door de gebruiker gedefinieerde routes (Udr's) hand matig beheren en onderhouden.
     * Maxi maal 400 knoop punten per cluster.
-* **Azure CNI**
+* **Azure-CNI**
     * Het is de volledige connectiviteit van een virtueel netwerk en kan rechtstreeks worden bereikt via het privé-IP-adres van verbonden netwerken.
     * Vereist meer IP-adres ruimte.
 
@@ -132,7 +131,7 @@ In AKS kunt u een ingangs bron maken met behulp van iets zoals NGINX, of de AKS 
 
 Een andere algemene functie van inkomend verkeer is SSL/TLS-beëindiging. Bij grote webtoepassingen die via HTTPS worden geopend, kan de TLS-beëindiging worden verwerkt door de ingangs bron in plaats van in de toepassing zelf. Als u het genereren en configureren van TLS-certificering wilt bieden, kunt u de bron van de ingang configureren voor het gebruik van providers zoals versleutelen. Zie binnenkomend [en TLS][aks-ingress-tls]voor meer informatie over het configureren van een NGINX ingress-controller met de code ring.
 
-U kunt ook uw ingangs controller configureren om het client bron-IP te behouden op aanvragen voor containers in uw AKS-cluster. Wanneer de aanvraag van een client wordt doorgestuurd naar een container in uw AKS-cluster via de ingangs controller, is de oorspronkelijke bron-IP van die aanvraag niet beschikbaar voor de doel container. Wanneer u *IP-behoud van client bron*inschakelt, is het bron-IP-adres voor de client beschikbaar in de aanvraag header onder *X-doorgestuurd-voor*. Als u gebruikmaakt van IP-behoud van client bronnen op uw ingangs controller, kunt u SSL Pass-Through niet gebruiken. IP-behoud van client bron en SSL Pass-Through kunnen worden gebruikt met andere services, zoals het type *Load Balancer* .
+U kunt ook uw ingangs controller configureren om het client bron-IP te behouden op aanvragen voor containers in uw AKS-cluster. Wanneer de aanvraag van een client wordt doorgestuurd naar een container in uw AKS-cluster via uw ingangs controller, is de oorspronkelijke bron-IP van die aanvraag niet beschikbaar voor de doel container. Wanneer u *IP-behoud van client bron*inschakelt, is het bron-IP-adres voor de client beschikbaar in de aanvraag header onder *X-doorgestuurd-voor*. Als u gebruikmaakt van IP-behoud van client bronnen op uw ingangs controller, kunt u SSL Pass-Through niet gebruiken. IP-behoud van client bron en SSL Pass-Through kunnen worden gebruikt met andere services, zoals het type *Load Balancer* .
 
 ## <a name="network-security-groups"></a>Netwerkbeveiligingsgroepen
 

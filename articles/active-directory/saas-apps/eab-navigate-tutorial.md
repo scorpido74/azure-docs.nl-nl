@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03de10f9ea3bc3bf13a0fffaf22805412456a6f9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8e185f4065fee0399104feadc27f038dd9c4a612
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992350"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046693"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met EAB-navigatie
 
@@ -45,7 +45,8 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * EAB Navigate ondersteunt door **SP** GEÏNITIEERDe SSO
 
-* Zodra u de EAB-navigatie hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waarmee u de gevoelige gegevens van uw organisatie in realtime beschermt. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+> [!NOTE]
+> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
 
 ## <a name="adding-eab-navigate-from-the-gallery"></a>EAB-navigatie toevoegen vanuit de galerie
 
@@ -57,7 +58,6 @@ Als u de integratie van EAB wilt configureren, gaat u naar Azure AD en voegt u E
 1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
 1. Typ in de sectie **toevoegen vanuit de galerie** **EAB navigeren** in het zoekvak.
 1. Selecteer **EAB navigeren** vanuit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-eab-navigate"></a>Eenmalige aanmelding van Azure AD voor EAB-navigatie configureren en testen
 
@@ -82,32 +82,21 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit als u beschikt over een **bestand met metagegevens van de serviceprovider**:
+1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
+    
+    Voer in het tekstvak **id (Entiteits-ID)** precies de volgende waarde in: `https://bouncer.eab.com`
+    
+    Voer in het tekstvak **antwoord-URL (assertion Consumer Service-URL)** de volgende waarden in als afzonderlijke rijen: `https://bouncer.eab.com/sso/saml2/acs`
+    `https://bouncer.eab.com/sso/saml2/acs/`
+    
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.navigate.eab.com/`
 
-    a. Klik op **Metagegevensbestand uploaden**.
+    > [!NOTE]
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [EAB](mailto:EABTechSupport@eab.com) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-    ![Metagegevensbestand uploaden](common/upload-metadata.png)
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL van de **app Federation-meta gegevens** te kopiëren en op uw computer op te slaan.
 
-    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden**.
-
-    ![Metagegevensbestand kiezen](common/browse-upload-metadata.png)
-
-    c. Nadat het meta gegevensbestand is geüpload, wordt de **id** -waarde automatisch ingevuld in de basis configuratie sectie voor SAML.
-
-    ![EAB navigeren in domein en Url's eenmalige aanmelding](common/sp-identifier.png)
-
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.navigate.eab.com`
-
-    > [!Note]
-    > Als de waard voor **Id** niet automatisch wordt ingevuld, kunt u de waarde zelf invullen afhankelijk van uw behoeften. De waarde voor de aanmeldings-URL is niet echt. Werk deze waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [EAB](mailto:jmahoney@eab.com) om deze waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
-
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , **certificaat (RAW)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
-
-    ![De link om het certificaat te downloaden](common/certificateraw.png)
-
-1. Kopieer op de sectie **EAB-navigatie instellen** de gewenste URL ('s) op basis van uw vereiste.
-
-    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
+    ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -119,7 +108,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -141,19 +130,19 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-eab-navigate-sso"></a>SSO van EAB-navigatie configureren
 
-Als u eenmalige aanmelding wilt configureren op **EAB** , moet u het gedownloade **certificaat (RAW)** en de juiste gekopieerde url's verzenden van Azure Portal naar [EAB Navigate-ondersteunings team](mailto:jmahoney@eab.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **EAB** , moet u de URL voor de **federatieve meta gegevens** van de app verzenden naar [EAB navigatie ondersteunings team](mailto:EABTechSupport@eab.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-eab-navigate-test-user"></a>EAB-navigatie test gebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in EAB navigate. Werk met [EAB Navigate ondersteunings team](mailto:jmahoney@eab.com) om de gebruikers toe te voegen in het EAB-navigatie platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam B. Simon in EAB navigate. Werk met [EAB Navigate ondersteunings team](mailto:EABTechSupport@eab.com) om de gebruikers toe te voegen in het EAB-navigatie platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>SSO testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel EAB navigeren in het toegangs venster klikt, moet u automatisch worden aangemeld bij de EAB-navigatie waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/12/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aa2d58a40c623cc451ca30aaa9d75a4a6b3d4c0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7902112c1694bacfeb45b5f20db80d5136642169
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983858"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047955"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Azure AD SAML Toolkit
 
@@ -45,6 +45,7 @@ U hebt de volgende items nodig om aan de slag te gaan:
 In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * Azure AD SAML Toolkit ondersteunt door **SP** GEÏNITIEERDe SSO
+* Zodra u Azure AD SAML Toolkit hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-azure-ad-saml-toolkit-from-the-gallery"></a>Azure AD SAML Toolkit toevoegen vanuit de galerie
 
@@ -76,17 +77,17 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Azure AD SAML Toolkit** Application Integration de sectie **beheren** en selecteer **eenmalige aanmelding**.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken. U kunt instellingen ophalen via de SAML-configuratie pagina van SAML Toolkit. 
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
 1. Voer op de pagina **basis configuratie van SAML** de waarden in voor de volgende velden:
 
-    a. In het tekstvak **Aanmeldings-URL** typt u een URL: `https://samltoolkit.azurewebsites.net/SAML/Login/<3digitnumber>`
+    a. In het tekstvak **Aanmeldings-URL** typt u een URL: `https://samltoolkit.azurewebsites.net/`
 
     b. Typ een URL in het vak **Id (Entiteits-id)** : `https://samltoolkit.azurewebsites.net`
 
-    c. In het tekstvak **Antwoord-URL** typt u een URL: `https://samltoolkit.azurewebsites.net/SAML/Consume/<3digitnumber>`
+    c. In het tekstvak **Antwoord-URL** typt u een URL: `https://samltoolkit.azurewebsites.net/SAML/Consume`
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , **certificaat (RAW)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
@@ -106,7 +107,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
    1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -136,7 +137,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     ![SAML-configuratie voor Azure AD SAML Toolkit](./media/saml-toolkit-tutorial/saml-configure.png)
 
-1. Klik op **Maken**.
+1. Klik op **Create**.
 
     ![Azure AD SAML Toolkit SSO maken](./media/saml-toolkit-tutorial/createsso.png)
 
@@ -152,7 +153,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     1. Klik op **bestand kiezen** en upload het **certificaat bestand (RAW)** dat u hebt gedownload van de Azure Portal.
 
-    1. Klik op **Maken**.
+    1. Klik op **Create**.
 
 ### <a name="create-azure-ad-saml-toolkit-test-user"></a>Test gebruiker voor Azure AD SAML Toolkit maken
 
@@ -164,7 +165,7 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel Azure AD SAML Toolkit klikt in het toegangs venster, moet u automatisch worden aangemeld bij de Azure AD SAML Toolkit waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
@@ -173,3 +174,7 @@ Wanneer u op de tegel Azure AD SAML Toolkit klikt in het toegangs venster, moet 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer Azure AD SAML Toolkit uit met Azure AD](https://aad.portal.azure.com/)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Azure AD SAML Toolkit beveiligen met geavanceerde zicht baarheid en besturings elementen](https://docs.microsoft.com/cloud-app-security/protect-azure)

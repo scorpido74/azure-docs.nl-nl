@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 2ae6314accf5ad9143e1e103239c2e7c884ec947
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6980518da00e6849c327ca712bbeadaa816ae479
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776636"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056662"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>NSG-stroom logboeken van een Azure Resource Manager sjabloon configureren
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-> - [Azure-CLI](network-watcher-nsg-flow-logging-cli.md)
-> - [REST API](network-watcher-nsg-flow-logging-rest.md)
+> - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
+> - [REST-API](network-watcher-nsg-flow-logging-rest.md)
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
@@ -38,7 +38,7 @@ Dit artikel laat u zien hoe u [NSG-stroom logboeken](https://docs.microsoft.com/
 
 ## <a name="nsg-flow-logs-object"></a>Object voor NSG-stroom logboeken
 
-De NSG-stroom logboeken object met alle para meters worden hieronder weer gegeven.
+Hieronder ziet u het object NSG flow-logboeken met alle para meters.
 Voor een volledig overzicht van de eigenschappen kunt u de referentie van de [sjabloon NSG-stroom logboeken](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)lezen.
 
 ```json
@@ -171,6 +171,6 @@ Er zijn een aantal manieren om te controleren of uw implementatie is geslaagd. D
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het visualiseren van uw NSG-stroom gegevens met behulp van:
-* [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+* [Micro soft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 * [Open-source hulpprogramma's](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 * [Azure Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)

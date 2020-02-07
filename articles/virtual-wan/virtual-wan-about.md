@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 11/13/2019
+ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 3b33015b3a69372f6783d59b28a111ec279dd860
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048476"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056339"
 ---
 # <a name="about-azure-virtual-wan"></a>Over Azure Virtual WAN
 
@@ -37,6 +37,13 @@ Er zijn twee typen virtuele Wan's: Basic en Standard. De volgende tabel bevat de
 
 Zie [een virtuele WAN upgraden van Basic naar Standard](upgrade-virtual-wan.md)voor stappen om een virtueel WAN bij te werken.
 
+## <a name="architecture"></a>Opstelling
+
+Raadpleeg de volgende artikelen voor meer informatie over de Virtual WAN-architectuur en het migreren naar Virtual WAN:
+
+* [Virtuele WAN-architectuur](migrate-from-hub-spoke-topology.md)
+* [Wereld wijde doorvoer netwerk architectuur](virtual-wan-global-transit-network-architecture.md)
+
 ## <a name="resources"></a>Virtual WAN-resources
 
 Als u een end-to-end virtuele WAN wilt configureren, maakt u de volgende resources:
@@ -57,7 +64,7 @@ Als u een end-to-end virtuele WAN wilt configureren, maakt u de volgende resourc
 
   * **Site:** Deze bron wordt alleen gebruikt voor site-naar-site-verbindingen. De site resource is **vpnsite**. Het staat voor uw on-premises VPN-apparaat en de bijbehorende instellingen. Wanneer u met een Virtual WAN-partner werkt, beschikt u over een geïntegreerde oplossing die deze gegevens automatisch naar Azure exporteert.
 
-## <a name="connectivity"></a>Mogelijkheden
+## <a name="connectivity"></a>Typen connectiviteit
 
 Met Virtual WAN kunt u de volgende typen connectiviteit: site-naar-site-VPN, gebruikers-VPN (punt-naar-site) en ExpressRoute.
 

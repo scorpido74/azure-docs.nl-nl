@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f5284f95f6157c70461179177179a9fbee4fe0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c18613233d6dec59c76db120ed7f089dfbb5fbac
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293688"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046723"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met ServiceNow
 
@@ -52,7 +52,7 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * ServiceNow ondersteunt [geautomatiseerde gebruikers inrichting](servicenow-provisioning-tutorial.md).
 
-* Zodra u de ServiceNow hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Nadat u ServiceNow hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 * U kunt de klassieke ServiceNow-toepassing (Mobile) configureren met Azure AD voor het inschakelen van SSO. Het ondersteunt zowel Android-als iOS-gebruikers. In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
@@ -141,7 +141,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
     ![Scherm opname van gebruikers en groepen, met gemarkeerde gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en kies vervolgens **selecteren**.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies dan de optie **Selecteren**.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens **selecteren**.
 1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
 
 ### <a name="configure-azure-ad-sso-for-servicenow-express"></a>Azure AD SSO voor ServiceNow Express configureren
@@ -300,7 +300,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
         1. Voer de **URL voor de federatieve meta gegevens** van de app in die u hebt gekopieerd uit de Azure Portal.
 
-        1. Selecteer **Importeren**.
+        1. Selecteer **importeren**.
 
     1. Hiermee wordt de URL van de IdP-meta gegevens gelezen en worden alle veld gegevens ingevuld.
 
@@ -455,7 +455,7 @@ Wanneer u de tegel ServiceNow in het toegangs venster selecteert, wordt u automa
 
         ![Scherm opname van de start pagina van de toepassing](./media/servicenow-tutorial/test02.png)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -467,6 +467,6 @@ Wanneer u de tegel ServiceNow in het toegangs venster selecteert, wordt u automa
 
 - [Probeer ServiceNow met Azure AD](https://aad.portal.azure.com)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [ServiceNow beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [ServiceNow beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/protect-servicenow)

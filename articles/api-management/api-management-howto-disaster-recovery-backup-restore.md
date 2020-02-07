@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: fccb9dfe88d39849fb87bdce4b81ac9ee22fada5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f748764d0f61e4932b2d4710f5a6805a5eddf0e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430701"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047468"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Herstel na nood geval implementeren met behulp van back-up en herstel van de service in azure API Management
 
@@ -55,7 +55,7 @@ Alle taken die u op resources uitvoert met behulp van de Azure Resource Manager 
 
 ### <a name="create-an-azure-active-directory-application"></a>Een Azure Active Directory-toepassing maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Ga met het abonnement dat uw API Management service-exemplaar bevat naar het tabblad **app-registraties** in **Azure Active Directory** (Azure Active Directory > beheer/app-registraties).
 
     > [!NOTE]
@@ -68,15 +68,14 @@ Alle taken die u op resources uitvoert met behulp van de Azure Resource Manager 
 4. Voer een naam in voor de toepassing.
 5. Selecteer **systeem eigen**voor het toepassings type.
 6. Voer een URL voor de tijdelijke aanduiding in, zoals `http://resources` voor de **omleidings-URI**, omdat het een vereist veld is, maar de waarde niet later wordt gebruikt. Klik op het selectie vakje om de toepassing op te slaan.
-7. Klik op **Maken**.
+7. Klik op **Create**.
 
 ### <a name="add-an-application"></a>Een toepassing toevoegen
 
-1. Zodra de toepassing is gemaakt, klikt u op **instellingen**.
-2. Klik op **vereiste machtigingen**.
-3. Klik op **+ toevoegen**.
-4. Druk op **een API selecteren**.
-5. Kies **Windows** **Azure Service Management-API**.
+1. Zodra de toepassing is gemaakt, klikt u op **API-machtigingen**.
+2. Klik op **+ een machtiging toevoegen**.
+4. Klik op **micro soft-Api's selecteren**.
+5. Kies **Azure Service Management**.
 6. Druk op **selecteren**.
 
     ![Machtigingen toevoegen](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
@@ -148,7 +147,7 @@ Als u een back-up wilt maken van een API Management service, geeft u de volgende
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
 ```
 
-Hierbij
+positie
 
 -   `subscriptionId`-ID van het abonnement dat de API Management-service bevat waarvan u een back-up wilt maken
 -   `resourceGroupName`-naam van de resource groep van uw Azure API Management-service
@@ -170,17 +169,20 @@ Stel de waarde van de `Content-Type` aanvraag header in op `application/json`.
 
 Het maken van een back-up is een langlopende bewerking die langer dan een minuut kan duren. Als de aanvraag is voltooid en het back-upproces is gestart, ontvangt u een `202 Accepted` antwoord status code met een `Location`-header. Stel GET-aanvragen in op de URL in de `Location`-header om de status van de bewerking te bepalen. Terwijl de back-up wordt uitgevoerd, blijft de status code ' 202 geaccepteerd ' ontvangen. Met een antwoord code van `200 OK` wordt aangegeven dat de back-upbewerking is voltooid.
 
-Houd rekening met de volgende beperkingen bij het maken van een back-upaanvraag:
+Houd rekening met de volgende beperkingen bij het maken van een back-up-of herstel aanvraag:
 
 -   De in de hoofd tekst van de aanvraag opgegeven **container** **moet bestaan**.
--   Zorg dat er een back-up wordt gemaakt **van wijzigingen in Service beheer** , zoals SKU-upgrade of downgrade, wijziging in domein naam en meer.
+-   Terwijl de back-up wordt uitgevoerd, kunt u **beheer wijzigingen in de service voor komen** , zoals SKU-upgrade of downgrade, wijzigt u in domein naam en nog veel meer.
 -   Het terugzetten van een **back-up wordt alleen 30 dagen** na het moment van maken gegarandeerd.
 -   **Gebruiks gegevens** die worden gebruikt voor het maken van analyse rapporten, worden **niet opgenomen** in de back-up. Gebruik [Azure API Management rest API][azure api management rest api] om periodiek analyse rapporten op te halen voor het bewaren van gegevens.
 -   Daarnaast maken de volgende items geen deel uit van de back-upgegevens: SSL-certificaten voor aangepaste domeinen en alle tussenliggende of basis certificaten die zijn geüpload door de klant, de inhoud van de ontwikkelaars Portal en de integratie-instellingen van het virtuele netwerk.
 -   De frequentie waarmee u Service back-ups uitvoert, is van invloed op uw Recovery Point Objective. Om het te minimaliseren, wordt u aangeraden regel matige back-ups te implementeren en back-ups op aanvraag uit te voeren nadat u wijzigingen hebt aangebracht in uw API Management-service.
 -   **Wijzigingen** in de service configuratie, (bijvoorbeeld api's, beleids regels en ontwikkelaars Portal) terwijl de back-upbewerking wordt uitgevoerd, wordt **mogelijk uitgesloten van de back-up en gaat verloren**.
--   Toegang vanaf het besturings element tot Azure Storage account **toestaan** . De klant moet de volgende set inkomende Ip's op hun opslag account openen voor back-up. 
-    > 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 13.64.39.16/32, 40.81.47.216/32, 51.145.179.78/32, 52.142.95.35/32, 40.90.185.46/32, 20.40.125.155/32
+-   Toegang **toestaan** vanuit het beheer vlak naar Azure Storage account, als er een [firewall][azure-storage-ip-firewall] is ingeschakeld. De klant moet de set met [IP-adressen van Azure API Management Control vlak][control-plane-ip-address] op hun opslag account openen voor back-up of herstel van. 
+
+> [!NOTE]
+> Als u probeert een back-up/herstel uit te voeren van/naar een API Management-service met een opslag account waarvoor [firewall][azure-storage-ip-firewall] is ingeschakeld, in dezelfde Azure-regio, werkt dit niet. Dit komt doordat de aanvragen voor Azure Storage niet worden omgezet naar een openbaar IP-adres van Compute > (beheer vlak van Azure API Management). De opslag aanvraag voor meerdere regio's wordt omgezet.
+
 ### <a name="step2"> </a>Een API Management-service herstellen
 
 Als u een API Management-service van een eerder gemaakte back-up wilt herstellen, moet u de volgende HTTP-aanvraag doen:
@@ -189,7 +191,7 @@ Als u een API Management-service van een eerder gemaakte back-up wilt herstellen
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
 ```
 
-Hierbij
+positie
 
 -   `subscriptionId`-ID van het abonnement dat de API Management-service bevat waarvan u een back-up wilt terugzetten
 -   `resourceGroupName`: de naam van de resource groep die de Azure API Management-service bevat waarnaar u een back-up wilt herstellen
@@ -241,3 +243,5 @@ Bekijk de volgende bronnen voor verschillende scenario's van het back-up-en hers
 [api-management-aad-resources]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-resources.png
 [api-management-arm-token]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-arm-token.png
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
+[control-plane-ip-address]: api-management-using-with-vnet.md#control-plane-ips
+[azure-storage-ip-firewall]: ../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range

@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 56c2d96e6e4a5900770aaefcabb424eddb1cbde6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8f91ed926c733b211443805722b6817b1ce005b6
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531378"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048348"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Wat zijn wrangling-gegevens stromen?
 
@@ -24,7 +24,7 @@ Wrangling-gegevens stroom vertaalt M die is gegenereerd door Power Query online 
 
 Wrangling-gegevens stromen zijn vooral nuttig voor gegevens technici of ' burger data Integrators '.
 
-## <a name="use-cases"></a>Use cases
+## <a name="use-cases"></a>Gebruiksvoorbeelden
 
 ### <a name="fast-interactive-data-exploration-and-preparation"></a>Snel interactieve gegevens verkennen en voorbereiden
 
@@ -42,9 +42,9 @@ Scan uw gegevens visueel op een code-Free manier om uitschieters en afwijkingen 
 
 | Connector | Gegevensindeling | Verificatietype |
 | -- | -- | --|
-| [Azure Blob Storage](connector-azure-blob-storage.md) | BESTAND | Account sleutel |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | BESTAND | Service-principal |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | BESTAND | Account sleutel, Service-Principal |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, Parquet | Accountsleutel |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Service-principal |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, Parquet | Account sleutel, Service-Principal |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | SQL-verificatie |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL-verificatie |
 

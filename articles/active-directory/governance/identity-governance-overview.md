@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c90052d1d75ba65a8e0b0e7a2cd26a279019a82d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: bd319dd6a83a392f6df26d07a58be22a9c8bdb61
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173151"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063676"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Wat is Azure AD Identity Governance?
 
@@ -29,7 +29,7 @@ Met Identity governance van Azure Active Directory (Azure AD) kunt u de behoefte
 
 Identiteits beheer biedt organisaties de mogelijkheid om de volgende taken uit te voeren voor werk nemers, zakelijke partners en leveranciers, en in verschillende services en toepassingen, zowel on-premises als in Clouds:
 
-- De identiteitslevenscyclus beheren
+- De levens cyclus van identiteiten bepalen
 - De toegangs levenscyclus bepalen
 - Beveiligde privileged Access for Administration
 
@@ -58,7 +58,7 @@ Organisaties hebben een proces nodig om toegang te beheren dan wat oorspronkelij
 
 Normaal gesp roken worden de toegangs goedkeurings beslissingen overgedragen aan besluit vormers van uw bedrijf.  Daarnaast kunnen de gebruikers zelf gebruikmaken van deze.  Gebruikers die toegang hebben tot vertrouwelijke klant gegevens in de marketing toepassing van een bedrijf in Europa, moeten bijvoorbeeld het beleid van het bedrijf weten. Gast gebruikers zijn mogelijk niet op de hoogte van de verwerkings vereisten voor gegevens in een organisatie waarvoor ze zijn uitgenodigd.
 
-Organisaties kunnen het toegangs levenscyclus proces automatiseren door middel van technologieën zoals [dynamische groepen](../users-groups-roles/groups-dynamic-membership.md), samen met het inrichten van gebruikers tot [SaaS-apps](../saas-apps/tutorial-list.md) of apps die zijn [geïntegreerd met scim](../manage-apps/use-scim-to-provision-users-and-groups.md).  Organisaties kunnen ook bepalen welke [gast gebruikers toegang hebben tot on-premises toepassingen](../b2b/hybrid-cloud-to-on-premises.md).  Deze toegangs rechten kunnen vervolgens regel matig worden gecontroleerd met behulp van terugkerende [Azure AD-toegangs beoordelingen](access-reviews-overview.md).   Met het [beheer van rechten van Azure AD](entitlement-management-overview.md) kunt u ook definiëren hoe gebruikers toegang aanvragen via pakketten van groeps-en team lidmaatschappen, toepassings rollen en share point online-rollen.
+Organisaties kunnen het toegangs levenscyclus proces automatiseren door middel van technologieën zoals [dynamische groepen](../users-groups-roles/groups-dynamic-membership.md), samen met het inrichten van gebruikers tot [SaaS-apps](../saas-apps/tutorial-list.md) of apps die zijn [geïntegreerd met scim](../app-provisioning/use-scim-to-provision-users-and-groups.md).  Organisaties kunnen ook bepalen welke [gast gebruikers toegang hebben tot on-premises toepassingen](../b2b/hybrid-cloud-to-on-premises.md).  Deze toegangs rechten kunnen vervolgens regel matig worden gecontroleerd met behulp van terugkerende [Azure AD-toegangs beoordelingen](access-reviews-overview.md).   Met het [beheer van rechten van Azure AD](entitlement-management-overview.md) kunt u ook definiëren hoe gebruikers toegang aanvragen via pakketten van groeps-en team lidmaatschappen, toepassings rollen en share point online-rollen.
 
 Wanneer een gebruiker probeert toegang te krijgen tot toepassingen, dwingt Azure AD beleids regels voor [voorwaardelijke toegang](/azure/active-directory/conditional-access/) af. Het beleid voor voorwaardelijke toegang kan bijvoorbeeld bestaan uit het weer geven [van gebruiks voorwaarden](../conditional-access/terms-of-use.md) en [ervoor zorgen dat de gebruiker akkoord gaat met deze voor waarden](../conditional-access/require-tou.md) voordat ze toegang kunnen krijgen tot een toepassing.
 
@@ -91,7 +91,7 @@ Het is een best practice om de minst privileged Role te gebruiken voor het uitvo
 | Functie | Minst geprivilegieerde rol |
 | ------- | --------------------- |
 | Rechtenbeheer | Gebruikers beheerder (met uitzonde ring van het toevoegen van share point online-sites aan catalogi, waarvoor globale beheerder is vereist) |
-| Toegangscontroles | Gebruikers beheerder (met uitzonde ring van toegangs beoordelingen van Azure-of Azure AD-rollen, waarvoor beheerders van een bevoegde rol zijn vereist) |
+| Toegangsbeoordelingen | Gebruikers beheerder (met uitzonde ring van toegangs beoordelingen van Azure-of Azure AD-rollen, waarvoor beheerders van een bevoegde rol zijn vereist) |
 |Privileged Identity Management | Beheerder van geprivilegieerde rol |
 | Gebruiksvoorwaarden | Beveiligings beheerder of beheerder van voorwaardelijke toegang |
 

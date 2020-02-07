@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 39535a895dd0ec4a851f0576acf8696ae99e3259
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e61e0477e6687dd54713deea03e2b42774edf0bc
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454212"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059739"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informatie over MSP-partners voor Azure-netwerken
 
@@ -43,11 +43,13 @@ Gebruik de koppelingen in deze sectie voor meer informatie over beheerde Cloud n
 |[Macquarie Telecom](https://macquariecloudservices.com/azure-managed-services/)|[Macquarie Cloud Services raadplegen: 2-HR workshop](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/macquariecloudservices.clear_for_takeoff_consulting_service)||[SD-WAN-installatie van virtuele rand door Macquarie Cloud](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.nanaged_network_services?tab=Overview)|||
 |[Oncore Cloud Services]( https://www.oncore.cloud/services/ue-for-expressroute/)||[UniversalEdge voor Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oncore_cloud_services-4944214.universaledge_for_expressroute?tab=Overview)||||
 |[Orixcom]( https://www.orixcom.com/cloud-solutions/)|||[Orixcom SD-WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_sd_wan?tab=Overview)|||
+|[SoftBank]( https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_az/)|[Azure Network Consulting Service: 1-WK-evaluatie](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_nw_msp_service_azure); [Azure-evaluatie service: 1Week](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_msp_service_azure_01?tab=Overview&pub_source=email&pub_status=success)|||||
 |[TCTS](https://www.tatacommunications-ts.com/index.php)|[Azure-migratie: evaluatie van 3 weken](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||
-|[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Beheerde ExpressRoute Vandis](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Door Vandis beheerde VWAN aangedreven door Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Vandis Managed VWAN powereded by Palo Alto Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|||
+|[Tata-communicatie](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)||[Beheerde Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_expressroute?tab=Overview)|[Beheerd virtueel WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_azure_vwan_for_sdwan?tab=Overview)|||
 |[Vigilant](https://vigilant.it/manage-cloud-service/)|[Azure-status controle: evaluatie van 5 dagen](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: implementatie van 5 dagen](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
+|[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Beheerde ExpressRoute Vandis](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Door Vandis beheerde VWAN aangedreven door Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Vandis Managed VWAN powereded by Palo Alto Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Azure Marketplace biedt ook nieuwe beheerde beveiligings Services en beheerde MEC services van de volgende Azure-netwerken MSP-partners zijn op ons schema: [Amdocs](https://www.amdocs.com/);  [Coontwikkeling](https://www.coevolve.com/services/azure-networking-services/);  [IX bereik](https://www.ixreach.com/services/sdn-cloud-connect/);  [Intercloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [Mega Port](https://www.megaport.com/services/microsoft-expressroute/);  [OmniClouds](https://omniclouds.com/services/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms);  [Softbank](https://www.softbank.jp/biz/cloud/microsoft/azure/);  [Tata-communicatie](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/);  [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)
+Azure Marketplace biedt ook nieuwe beheerde beveiligings Services en beheerde MEC services van de volgende Azure-netwerken MSP-partners zijn op ons schema: [Amdocs](https://www.amdocs.com/); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);  [Coontwikkeling](https://www.coevolve.com/services/azure-networking-services/);  [IX bereik](https://www.ixreach.com/services/sdn-cloud-connect/);  [Intercloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [Mega Port](https://www.megaport.com/services/microsoft-expressroute/);  [OmniClouds](https://omniclouds.com/services/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms);  [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)
 
 ## <a name="expressroute"></a>ExpressRoute-partners
 

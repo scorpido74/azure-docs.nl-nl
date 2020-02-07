@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Zendesk configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+title: 'Zelf studie: Zendesk configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Zendesk.
 services: active-directory
 documentationcenter: ''
@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f9d819533b97a126a324ab867b7185fd6415847
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a480119ee88521b920be88669f6d80e3754d24d3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851964"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062739"
 ---
-# <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Zelfstudie: Zendesk configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Zelf studie: Zendesk configureren voor automatische gebruikers inrichting
 
 In deze zelf studie ziet u de stappen voor het uitvoeren van Zendesk en Azure Active Directory (Azure AD) voor het configureren van Azure AD voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en groepen in Zendesk.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie voor meer informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen [gebruikers automatisch inrichten en ongedaan maken van de inrichting van SaaS-toepassingen (Software-as-a-Service) met Azure Active Directory](../manage-apps/user-provisioning.md).
+> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie voor meer informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen [gebruikers automatisch inrichten en ongedaan maken van de inrichting van SaaS-toepassingen (Software-as-a-Service) met Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -50,11 +50,11 @@ Voer de volgende stappen uit om Zendesk toe te voegen vanuit de Marketplace.
 
 2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
-    ![De blade Enterprise-toepassingen](common/enterprise-applications.png)
+    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
 3. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing** bovenaan het dialoogvenster.
 
-    ![De knop nieuwe toepassing](common/add-new-app.png)
+    ![De knop Nieuwe toepassing](common/add-new-app.png)
 
 4. Typ **Zendesk** in het zoekvak en selecteer **Zendesk** in het deel venster resultaten. Selecteer **toevoegen**om de toepassing toe te voegen.
 
@@ -83,7 +83,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="configure-automatic-user-provisioning-for-zendesk-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Zendesk in azure AD
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer**alle toepassingen** > in > bedrijfs toepassingen Zendesk.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen** > **alle toepassingen** > **Zendesk**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -107,7 +107,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
    * Vul in het vak **domein** het subdomein van uw Zendesk-Tenant in. Voor een account met een Tenant-URL van `https://my-tenant.zendesk.com`is uw subdomein bijvoorbeeld **mijn Tenant**.
 
-6. Het geheime token voor uw Zendesk-account bevindt zich in de **beheer** > -**API** > -**instellingen**. Zorg ervoor dat **token toegang** is ingesteld op **ingeschakeld**.
+6. Het geheime token voor uw Zendesk-account bevindt zich in de **beheer** > **API** - **instellingen** > . Zorg ervoor dat **token toegang** is ingesteld op **ingeschakeld**.
 
     ![Zendesk-beheerders instellingen](./media/zendesk-provisioning-tutorial/ZenDesk4.png)
 
@@ -139,9 +139,9 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Zendesk die overeenkomen met groeps kenmerken](./media/zendesk-provisioning-tutorial/ZenDesk13.png)
 
-14. Als u bereik filters wilt configureren, volgt u de instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik.
+14. Als u bereik filters wilt configureren, volgt u de instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik.
 
-15. Als u de Azure AD-inrichtings service voor Zendesk wilt inschakelen, wijzigt u de inrichtings **status** in het gedeelte **instellingen** in **op aan**.
+15. Als u de Azure AD-inrichtings service voor Zendesk wilt inschakelen, wijzigt u de **inrichtings status** in het gedeelte **instellingen** in **op aan**.
 
     ![Zendesk-inrichtings status](./media/zendesk-provisioning-tutorial/ZenDesk14.png)
 
@@ -157,7 +157,7 @@ Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers of
 
 U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen. In het rapport worden alle acties beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Zendesk.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
 ## <a name="connector-limitations"></a>Connector beperkingen
 
@@ -167,12 +167,12 @@ Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manag
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zendesk-tutorial/tutorial_general_01.png

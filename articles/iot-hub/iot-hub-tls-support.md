@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
-ms.openlocfilehash: ce8ef987adc0cec4fcd8acef4cc075d50c92d62a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 244a71d400493a2029e831b729c63bc0b0dfe559
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722887"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049653"
 ---
 # <a name="tls-support-in-iot-hub"></a>TLS-ondersteuning in IoT Hub
 
@@ -78,13 +78,13 @@ IoT-hubs die zijn geconfigureerd om alleen TLS 1,2 te accepteren, afdwingen ook 
 
 Gebruik de onderstaande koppelingen voor het configureren van TLS 1,2 en toegestane code ringen in IoT Hub client-Sdk's.
 
-| Taal | TLS 1,2 ondersteund | Documentatie |
-|----------|-------------------|---------------|
-| C        | Ja               | [Koppeling](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Ja               | [Koppeling](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Ja               | [Koppeling](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Ja               | [Koppeling](https://aka.ms/Tls_Java_SDK_IoT) |
-| Node.js   | Ja               | [Koppeling](https://aka.ms/Tls_Node_SDK_IoT) |
+| Taal | Versies die TLS 1,2 ondersteunen | Documentatie |
+|----------|------------------------------------|---------------|
+| C        | Tag 2019-12-11 of hoger            | [Koppeling](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Versie 2.0.0 of nieuwer             | [Koppeling](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Versie 1.21.4 of nieuwer            | [Koppeling](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Versie 1.19.0 of nieuwer            | [Koppeling](https://aka.ms/Tls_Java_SDK_IoT) |
+| Node.js   | Versie 1.12.2 of nieuwer            | [Koppeling](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ### <a name="use-tls-12-in-your-iot-edge-setup"></a>TLS 1,2 gebruiken in uw IoT Edge-installatie

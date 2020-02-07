@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: d097894c841d91d344b5958e7f5e1c10249f8b6e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 15eaba5b1102ddb282d72497093b8554a6b4cf56
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904871"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061621"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Apparaten inrichten met Azure IoT Hub Device Provisioning Service
 Microsoft Azure biedt een uitgebreide set geïntegreerde openbare cloudservices om tegemoet te komen aan al uw IoT-vragen. De IoT Hub Device Provisioning Service (DPS) is een Helper-service voor IoT Hub die Zero-Touch, just-in-time inrichting naar de juiste IoT-hub biedt zonder menselijke tussen komst. Met DPS kunnen miljoenen apparaten op een veilige en schaal bare manier worden ingericht.
@@ -80,8 +80,10 @@ DPS heeft veel functies, waardoor deze ideaal is voor het inrichten van apparate
 * **Lijst van registraties** met een volledig overzicht van de apparaten/groepen apparaten die op enige moment kunnen worden geregistreerd. De registratielijst bevat informatie over de gewenste configuratie van het apparaat als dit wordt geregistreerd en de lijst kan op elk gewenst moment worden bijgewerkt.
 * **Meerdere toewijzings beleidsregels** om te bepalen hoe met DPS apparaten worden toegewezen aan IOT-hubs ter ondersteuning van uw Scenario's: laagste latentie, gelijkmatig gewogen distributie (standaard) en statische configuratie via de registratie lijst. De latentie wordt bepaald op basis van dezelfde methode als [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
 * **Controle en logboekregistratie van diagnostische gegevens** om ervoor te zorgen dat alles goed werkt.
-* Met **ondersteuning voor meerdere hubs** kan DPS aan de slag met het binden van apparaten aan een IOT-hub tijdens runtime. DPS kan communiceren met hubs in meerdere Azure-abonnementen.
-* **Ondersteuning voor meerdere regio's** stelt DPS in staat om apparaten toe te wijzen aan IOT-hubs in andere regio's.
+* **Ondersteuning voor meerdere hubs** zorgt ervoor dat Device Provisioning Service apparaten kan toewijzen aan meer dan één IoT-hub. Device Provisioning Service kan communiceren met hubs binnen verschillende Azure-abonnementen.
+* **Ondersteuning voor meerdere regio's** zorgt ervoor dat Device Provisioning Service apparaten kan toewijzen aan IoT-hubs in andere regio's.
+* **Versleuteling voor gegevens in rust** maakt het mogelijk gegevens in Device Provisioning Service te versleutelen en op transparante wijze te ontsleutelen met behulp van 256-bits AES-versleuteling, een van de krach tigste blok cijfers die beschikbaar zijn en FIPS 140-2 compatibel is.
+
 
 Zie [apparaatconcepten](concepts-device.md), [serviceconcepten](concepts-service.md) en [veiligheidsconcepten](concepts-security.md) voor meer informatie over de concepten en functies die zijn betrokken bij het inrichten van apparaten.
 

@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709f8083e50391718d34587bd0ea1d847cc41923
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cf6c89e5f891c5f16551885fb40e8d5082fd6ba5
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841962"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063506"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Eenmalige aanmelding op basis van SAML configureren voor niet-galerie toepassingen
 
@@ -32,7 +32,7 @@ Als u eenmalige SAML-aanmelding wilt configureren voor een niet-galerie toepassi
 
 Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een niet-galerie-app toevoegen](add-non-gallery-app.md).
 
-## <a name="step-1-edit-the-basic-saml-configuration"></a>Step 1. De basis-SAML-configuratie bewerken
+## <a name="step-1-edit-the-basic-saml-configuration"></a>Stap 1. De basis-SAML-configuratie bewerken
 
 1. Meld u bij [Azure Portal](https://portal.azure.com) aan als beheerder van de cloudtoepassing of als toepassingsbeheerder voor uw Azure Active Directory-tenant.
 
@@ -53,8 +53,8 @@ Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een n
     | Basis configuratie-instelling voor SAML | SP-geïnitieerd | idP-geïnitieerd | Beschrijving |
     |:--|:--|:--|:--|
     | **Id (Entiteits-ID)** | Vereist voor sommige apps | Vereist voor sommige apps | Unieke identificatie van de toepassing. Azure Active Directory stuurt de id naar de toepassing als parameter van de doelgroep van het SAML-token. Er wordt verwacht dat de toepassing deze valideert. Deze waarde wordt ook weergegeven als de entiteit-ID in SAML-metagegevens die worden geleverd door de toepassing. Voer een URL in die gebruikmaakt van het volgende patroon: ' https://<subdomain>. contoso.com ' *u kunt deze waarde vinden als het element van de **Uitgever** in de **AuthnRequest** (SAML-aanvraag) die door de toepassing is verzonden.* |
-    | **Antwoord-URL** | Verplicht | Verplicht | Hiermee geeft u op waar de toepassing verwacht het SAML-token te ontvangen. De antwoord-URL wordt ook de ACS-URL (Assertion Consumer Service) genoemd. U kunt de extra antwoord-URL velden gebruiken om meerdere antwoord-Url's op te geven. Stel dat u aanvullende antwoord-Url's nodig hebt voor meerdere subdomeinen. Voor test doeleinden kunt u meerdere antwoord-Url's (lokale host en open bare Url's) tegelijk opgeven. |
-    | **Aanmeldings-URL** | Verplicht | Niet opgeven | Wanneer een gebruiker deze URL opent, leidt de serviceprovider hem om naar Azure Active Directory om de gebruiker te verifiëren en aan te melden. Azure Active Directory maakt gebruik van de URL om de toepassing te starten vanuit Office 365 of het toegangsvenster van Azure Active Directory. Als deze leeg is, voert Azure AD een door IdP geïnitieerde aanmelding uit wanneer een gebruiker de toepassing start vanuit Office 365, het Azure AD-toegangs venster of de Azure AD SSO-URL.|
+    | **Antwoord-URL** | Vereist | Vereist | Hiermee geeft u op waar de toepassing verwacht het SAML-token te ontvangen. De antwoord-URL wordt ook de ACS-URL (Assertion Consumer Service) genoemd. U kunt de extra antwoord-URL velden gebruiken om meerdere antwoord-Url's op te geven. Stel dat u aanvullende antwoord-Url's nodig hebt voor meerdere subdomeinen. Voor test doeleinden kunt u meerdere antwoord-Url's (lokale host en open bare Url's) tegelijk opgeven. |
+    | **Aanmeldings-URL** | Vereist | Niet opgeven | Wanneer een gebruiker deze URL opent, leidt de serviceprovider hem om naar Azure Active Directory om de gebruiker te verifiëren en aan te melden. Azure Active Directory maakt gebruik van de URL om de toepassing te starten vanuit Office 365 of het toegangsvenster van Azure Active Directory. Als deze leeg is, voert Azure AD een door IdP geïnitieerde aanmelding uit wanneer een gebruiker de toepassing start vanuit Office 365, het Azure AD-toegangs venster of de Azure AD SSO-URL.|
     | **Relay-status** | Optioneel | Optioneel | Hiermee geeft u aan de toepassing op waar de gebruiker naar moet worden omgeleid nadat de verificatie is voltooid. De waarde is doorgaans een geldige URL voor de toepassing. Sommige toepassingen gebruiken dit veld echter anders. Vraag de leverancier van de toepassing voor meer informatie.
     | **Afmeldings-URL** | Optioneel | Optioneel | Wordt gebruikt om de antwoorden op SAML-afmeldingen terug te sturen naar de toepassing.
 
@@ -163,4 +163,4 @@ Zie voor meer informatie [debug op SAML gebaseerde eenmalige aanmelding bij toep
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Gebruikers of groepen toewijzen aan de toepassing](methods-for-assigning-users-and-groups.md)
-- [Automatisch inrichten van gebruikers accounts configureren](configure-automatic-user-provisioning-portal.md)
+- [Automatisch inrichten van gebruikers accounts configureren](../app-provisioning/configure-automatic-user-provisioning-portal.md)

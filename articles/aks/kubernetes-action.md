@@ -7,20 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: cc2d6df952b2e0aa9b9f4d4e1dcb4859a5bb3790
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 62fcdf01250728cf84726db7e9b39452a4d4e5ff
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130527"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046349"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>GitHub acties voor het implementeren van de Kubernetes-service
 
 [Github-acties](https://help.github.com/en/articles/about-github-actions) bieden u de flexibiliteit om een geautomatiseerde werk stroom voor de levens cyclus van software ontwikkeling te bouwen. De Kubernetes-actie [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) implementaties van Azure Kubernetes-Service clusters vergemakkelijken. Met deze actie wordt de doel context van de AKS-cluster ingesteld, die kan worden gebruikt door andere acties zoals [Azure/K8S-Deploy](https://github.com/Azure/k8s-deploy/tree/master), [Azure/K8S-Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) , enzovoort. u kunt ook kubectl-opdrachten uitvoeren.
-
-> [!IMPORTANT]
-> GitHub-acties zijn momenteel in een bèta versie. U moet [zich eerst aanmelden om lid te worden van het voor beeld](https://github.com/features/actions) met behulp van uw github-account.
-> 
 
 Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het pad `/.github/workflows/` in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom.
 
@@ -78,7 +74,7 @@ Volg de stappen voor het configureren van de geheimen:
 
 Het bouwen en pushen van de container installatie kopieën wordt uitgevoerd met `Azure/docker-login@v1` actie. Als u een container installatie kopie wilt implementeren in AKS, moet u de actie `Azure/k8s-deploy@v1` gebruiken. Deze actie heeft vijf para meters:
 
-| **Parameter**  | **Uitleg**  |
+| **Bepaalde**  | **Uitleg**  |
 |---------|---------|
 | **naam ruimte** | Beschrijving Kies de doel-Kubernetes naam ruimte. Als de naam ruimte niet wordt gegeven, worden de opdrachten uitgevoerd in de standaard naam ruimte | 
 | **manifesten** |  Lang Pad naar de manifest bestanden die worden gebruikt voor implementatie |

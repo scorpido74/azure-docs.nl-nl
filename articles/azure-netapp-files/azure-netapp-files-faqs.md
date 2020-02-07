@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 9559f1d52f87314670162482e10714dad13be5bb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: aaa7e5e65ced2a9899bef5a811ee74be42a8548f
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046152"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048815"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -131,7 +131,9 @@ Ja, u moet een Active Directory verbinding maken voordat u een SMB-volume implem
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Hoeveel Active Directory verbindingen worden ondersteund?
 
-Azure NetApp Files ondersteunt momenteel slechts één Active Directory verbinding per NetApp-account, per abonnement en in elke regio. de verbinding wordt niet gedeeld tussen NetApp-accounts.
+Azure NetApp Files biedt geen ondersteuning voor meerdere Active Directory (AD)-verbindingen in één *regio*, zelfs als de AD-verbindingen zich in verschillende NetApp-accounts bevinden. U kunt echter meerdere AD-verbindingen hebben in één *abonnement*, zolang de AD-verbindingen zich in verschillende regio's bevinden. Als u meerdere AD-verbindingen in één regio nodig hebt, kunt u hiervoor afzonderlijke abonnementen gebruiken. 
+
+Een AD-verbinding wordt geconfigureerd per NetApp-account; de AD-verbinding wordt alleen weer gegeven via het NetApp-account dat wordt gemaakt in.
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Ondersteunt Azure NetApp Files Azure Active Directory? 
 

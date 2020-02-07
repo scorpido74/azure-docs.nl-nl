@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 3ef584c48ab44fd3616b5c7897d589bddbe45dc0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549254"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063812"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Hand matig een NFS-server volume (Network File System) maken en gebruiken met Azure Kubernetes service (AKS)
 Het delen van gegevens tussen containers is vaak een benodigd onderdeel van op containers gebaseerde services en toepassingen. Normaal gesp roken hebt u verschillende peulen die toegang nodig hebben tot dezelfde informatie op een extern permanent volume.    
@@ -74,7 +74,7 @@ echo "/export        localhost(rw,async,insecure,fsid=0,crossmnt,no_subtree_chec
 
 nohup service nfs-kernel-server restart
 ```
-De server wordt opnieuw opgestart (vanwege het script) en u kunt de NFS-server koppelen aan AKS
+De server wordt opnieuw opgestart (vanwege het script) en u kunt de NFS-server koppelen aan AKS.
 
 >[!IMPORTANT]  
 >Zorg ervoor dat u de **AKS_SUBNET** vervangt door het juiste in het cluster of door ' * ' te vervangen door de NFS-server naar alle poorten en verbindingen.
@@ -93,7 +93,8 @@ chmod +x ~/nfs-server-setup.sh
 ```
 
 ## <a name="connecting-aks-cluster-to-nfs-server"></a>AKS-cluster verbinden met NFS-server
-We kunnen de NFS-server koppelen aan het cluster door een permanent volume en een permanente volume claim in te richten waarmee wordt aangegeven hoe het volume moet worden geopend.  
+We kunnen de NFS-server koppelen aan het cluster door een permanent volume en een permanente volume claim in te richten waarmee wordt aangegeven hoe het volume moet worden geopend.
+
 Het koppelen van de twee services in dezelfde of gekoppelde virtuele netwerken is nood zakelijk. Instructies voor het instellen van het cluster in hetzelfde VNET vindt u in het volgende: [AKS-cluster maken in bestaand vnet][aks-virtual-network]
 
 Zodra ze zich in hetzelfde virtuele netwerk (of een peered) bevinden, moet u een permanent volume en een permanente volume claim inrichten in uw AKS-cluster. De containers kunnen vervolgens het NFS-station koppelen aan de lokale map.

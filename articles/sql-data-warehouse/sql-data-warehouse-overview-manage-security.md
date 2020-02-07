@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8e9ab9dddad35708b58d32802452789adf84a19e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 5eeb1c25264c36909774ec689b7410765881c8e2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759462"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064730"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Een data base in SQL Data Warehouse beveiligen
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "76759462"
 
 In dit artikel worden de basis beginselen beschreven van het beveiligen van uw Azure SQL Data Warehouse-data base. In dit artikel wordt met name aan de slag met resources voor het beperken van toegang, het beveiligen van gegevens en het bewaken van activiteiten in een Data Base.
 
-## <a name="connection-security"></a>Beveiligde verbinding
+## <a name="connection-security"></a>Verbindingsbeveiliging
 Verbindingsbeveiliging verwijst naar de manier waarop u verbindingen met uw database beperkt en beveiligt met behulp van firewallregels en verbindingsversleuteling.
 
 Firewall regels worden door de server en de data base gebruikt om verbindings pogingen af te wijzen van IP-adressen die niet expliciet zijn white list. Als u verbindingen van uw toepassing of het open bare IP-adres van de client computer wilt toestaan, moet u eerst een firewall regel op server niveau maken met behulp van de Azure Portal, REST API of Power shell. 
@@ -40,7 +40,7 @@ Azure Synapse gebruikt IP-firewall regels op server niveau. Het biedt geen onder
 
 Verbindingen met uw SQL Data Warehouse worden standaard versleuteld.  Het wijzigen van de verbindings instellingen om versleuteling uit te scha kelen, wordt genegeerd.
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 Verificatie verwijst naar hoe u uw identiteit bewijst bij het maken van verbinding met de database. SQL Data Warehouse ondersteunt momenteel SQL Server-verificatie met een gebruikers naam en wacht woord en met Azure Active Directory. 
 
 Wanneer u de logische server voor uw database hebt gemaakt, hebt u een aanmelding 'serverbeheerder' opgegeven met een gebruikersnaam en wachtwoord. Met deze referenties kunt u zich bij elke Data Base op die server als de eigenaar van de data base of "dbo" verifiëren via SQL Server-verificatie.

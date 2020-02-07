@@ -1,38 +1,32 @@
 ---
-title: 'Zelf studie: integreren met een pijp lijn voor continue integratie en levering'
-titleSuffix: Azure App Configuration
-description: In deze zelf studie leert u hoe u een configuratie bestand genereert met behulp van gegevens in Azure-app configuratie tijdens continue integratie en levering
+title: Azure-app configuratie integreren met behulp van een continue integratie-en leverings pijplijn
+description: Meer informatie over het implementeren van doorlopende integratie en levering met Azure-app configuratie
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 02/24/2019
+ms.date: 01/30/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: cd40b52c20a3cafdbbeef093b574d44b9163c7b2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c744557471a9b37bd620bb9195bdb709c24649ab
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899387"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047290"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integreren met een CI/CD-pijplijn
 
-In dit artikel worden verschillende manieren beschreven om gegevens te gebruiken van Azure-app configuratie in een continue integratie en doorlopend implementatie systeem.
+In dit artikel wordt uitgelegd hoe u gegevens van Azure-app configuratie gebruikt in een continue integratie en doorlopend implementatie systeem.
 
 ## <a name="use-app-configuration-in-your-azure-devops-pipeline"></a>App-configuratie in uw Azure DevOps-pijp lijn gebruiken
 
-Als u een Azure DevOps-pijp lijn hebt, kunt u sleutel waarden ophalen uit de app-configuratie en deze instellen als taak variabelen. De [DevOps-extensie voor de Azure-app configuratie](https://go.microsoft.com/fwlink/?linkid=2091063) is een invoeg toepassings module die deze functionaliteit biedt. Volg de instructies voor het gebruik van de extensie in een taken reeks voor Build of release.
+Als u een Azure DevOps-pijp lijn hebt, kunt u sleutel waarden ophalen uit de app-configuratie en deze instellen als taak variabelen. De [DevOps-extensie voor de Azure-app configuratie](https://go.microsoft.com/fwlink/?linkid=2091063) is een invoeg toepassings module die deze functionaliteit biedt. Volg de instructies voor het gebruik van de uitbrei ding in een taken reeks voor Build of release.
 
 ## <a name="deploy-app-configuration-data-with-your-application"></a>App-configuratie gegevens implementeren met uw toepassing
 
-Uw toepassing kan mogelijk niet worden uitgevoerd als deze afhankelijk is van Azure-app configuratie en deze niet kan bereiken. U kunt de tolerantie van uw toepassing verbeteren om een dergelijke gebeurtenis te behandelen, maar dit is echter niet waarschijnlijk. Als u dit wilt doen, moet u de huidige configuratie gegevens inpakken in een bestand dat met de toepassing is geïmplementeerd en lokaal worden geladen tijdens het opstarten. Deze aanpak zorgt ervoor dat de standaard instellings waarden van uw toepassing mini maal zijn. Deze waarden worden overschreven door nieuwere wijzigingen in een app-configuratie archief wanneer deze beschikbaar zijn.
+Uw toepassing kan mogelijk niet worden uitgevoerd als deze afhankelijk is van Azure-app configuratie en deze niet kan bereiken. Verbeter de tolerantie van uw toepassing door configuratie gegevens te verpakken in een bestand dat met de toepassing is geïmplementeerd en lokaal te worden geladen tijdens het opstarten van de toepassing. Deze aanpak zorgt ervoor dat uw toepassing standaard instellings waarden heeft bij het opstarten. Deze waarden worden overschreven door nieuwere wijzigingen in een app-configuratie archief wanneer deze beschikbaar zijn.
 
-Met de functie [exporteren](./howto-import-export-data.md#export-data) van Azure-app configuratie kunt u het proces voor het ophalen van de huidige configuratie gegevens als één bestand automatiseren. Sluit dit bestand vervolgens in in een build-of implementatie stap in uw pijp lijn voor continue integratie en continue implementatie (CI/CD).
+Met de functie [exporteren](./howto-import-export-data.md#export-data) van Azure-app configuratie kunt u het proces voor het ophalen van de huidige configuratie gegevens als één bestand automatiseren. U kunt dit bestand vervolgens insluiten in een build-of implementatie stap in uw pijp lijn voor continue integratie en continue implementatie (CI/CD).
 
 In het volgende voor beeld ziet u hoe u app-configuratie gegevens opneemt als een build-stap voor de web-app die is geïntroduceerd in de Quick starts. Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configuratie](./quickstart-aspnet-core-app.md) .
 
@@ -54,10 +48,7 @@ Als u een Cloud-build wilt maken, kunt u met Azure DevOps bijvoorbeeld controler
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-
-    Voeg de *Connections Tring* gekoppeld aan uw app-configuratie archief toe als een omgevings variabele.
-
-2. Open *Program.cs*en werk de `CreateWebHostBuilder`-methode bij om het GEËXPORTEERDe JSON-bestand te gebruiken door de `config.AddJsonFile()`-methode aan te roepen.
+1. Open *Program.cs*en werk de `CreateWebHostBuilder`-methode bij om het GEËXPORTEERDe JSON-bestand te gebruiken door de `config.AddJsonFile()`-methode aan te roepen.  Voeg ook de naam ruimte `System.Reflection` toe.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -73,9 +64,10 @@ Als u een Cloud-build wilt maken, kunt u met Azure DevOps bijvoorbeeld controler
             .UseStartup<Startup>();
     ```
 
-### <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
+### <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
-1. Stel een omgevings variabele met de naam **Connections Tring**in en stel deze in op de toegangs sleutel voor uw app-configuratie archief. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit en start u de opdracht prompt zodat de wijziging kan worden doorgevoerd:
+1. Stel een omgevings variabele met de naam **Connections Tring**in en stel deze in op de toegangs sleutel voor uw app-configuratie archief. 
+    Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit en start u de opdracht prompt zodat de wijziging kan worden doorgevoerd:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

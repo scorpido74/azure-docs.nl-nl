@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: a693b14bb61eb52a09ab1f1ecd5d00b339357d5d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.date: 02/06/2020
+ms.openlocfilehash: 980569edf8322c6c22a4357a5b946ded85f0ebe4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240374"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063731"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor Logboeken gebruiken om HDInsight-clusters te bewaken
 
@@ -26,9 +26,9 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Een Log Analytics-werkruimte**. U kunt deze werk ruimte zien als een unieke Azure Monitor-logboek omgeving met een eigen gegevensopslag plaats, gegevens bronnen en oplossingen. Zie voor instructies [een Log Analytics-werkruimte maken](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace).
+* Een Log Analytics-werkruimte. U kunt deze werk ruimte zien als een unieke Azure Monitor-logboek omgeving met een eigen gegevensopslag plaats, gegevens bronnen en oplossingen. Zie [een log Analytics-werk ruimte maken](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)voor instructies.
 
-* **Een Azure HDInsight-cluster**. Op dit moment kunt u Azure Monitor-Logboeken gebruiken met de volgende HDInsight-cluster typen:
+* Een Azure HDInsight-cluster. Op dit moment kunt u Azure Monitor-Logboeken gebruiken met de volgende HDInsight-cluster typen:
 
   * Hadoop
   * HBase
@@ -37,9 +37,9 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
   * Spark
   * Storm
 
-  Zie voor instructies over het maken van een HDInsight-cluster [aan de slag met Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
+  Zie [aan de slag met Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)voor instructies over het maken van een HDInsight-cluster.  
 
-* **Azure PowerShell AZ-module**.  Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
+* Azure PowerShell AZ-module.  Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
 
 > [!NOTE]  
 > Het verdient aanbeveling om zowel het HDInsight-cluster en de Log Analytics-werkruimte in dezelfde regio voor betere prestaties. Azure Monitor-logboeken zijn niet beschikbaar in alle Azure-regio's.
@@ -50,15 +50,15 @@ In deze sectie configureert u een bestaand HDInsight Hadoop-cluster voor het geb
 
 1. Selecteer uw cluster in de [Azure Portal](https://portal.azure.com/).  Zie de [lijst en clusters weer geven](./hdinsight-administer-use-portal-linux.md#showClusters) voor de instructies. Het cluster wordt geopend op een nieuwe portal-pagina.
 
-1. Selecteer aan de linkerkant, onder **bewaking**, **Operations Management Suite**.
+1. Selecteer aan de linkerkant, onder **bewaking**, de optie **Azure monitor**.
 
-1. Selecteer in de hoofd weergave onder **OMS-controle**de optie **inschakelen**.
+1. Selecteer in de hoofd weergave onder **Azure monitor-integratie**de optie **inschakelen**.
 
 1. Selecteer een bestaande Log Analytics-werk ruimte in de vervolg keuzelijst **Selecteer een werk ruimte** .
 
 1. Selecteer **Opslaan**.  Het duurt een paar minuten om op te slaan van de instelling.
 
-    ![Schakel de bewaking voor HDInsight-clusters](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "Schakel bewaking voor HDInsight-clusters")
+    ![Bewaking voor HDInsight-clusters inschakelen](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "Bewaking voor HDInsight-clusters inschakelen")
 
 ## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>Azure Monitor logboeken inschakelen met behulp van Azure PowerShell
 
@@ -100,7 +100,7 @@ Dit zijn de beschikbare HDInsight-oplossingen:
 * HDInsight Spark-bewaking
 * HDInsight Storm-bewaking
 
-Zie voor instructies voor het installeren van een oplossing voor [oplossingen in Azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Als u wilt experimenteren, installeert u een HDInsight Hadoop-bewakings oplossing. Wanneer dit is voltooid, ziet u een **HDInsightHadoop** tegel vermeld onder **samenvatting**. Selecteer de **HDInsightHadoop** tegel. De oplossing HDInsightHadoop ziet eruit zoals:
+Zie [beheer oplossingen in azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution)voor instructies voor het installeren van een beheer oplossing. Als u wilt experimenteren, installeert u een HDInsight Hadoop-bewakings oplossing. Wanneer u klaar bent, ziet u een **HDInsightHadoop** -tegel die wordt weer gegeven onder **samen vatting**. Selecteer de tegel **HDInsightHadoop** . De oplossing HDInsightHadoop ziet eruit zoals:
 
 ![Bewakingsweergave oplossing voor HDInsight](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
@@ -114,10 +114,10 @@ Azure monitor biedt ook ondersteuning voor het verzamelen en analyseren van pres
 
 HDInsight ondersteunt cluster controle met Azure Monitor-logboeken door de volgende typen logboeken te importeren:
 
-* `log_gateway_audit_CL`-deze tabel bevat audit logboeken van cluster gateway knooppunten die geslaagde en mislukte aanmeldings pogingen tonen.
-* `log_auth_CL`-deze tabel bevat SSH-logboeken met geslaagde en mislukte aanmeldings pogingen.
-* `log_ambari_audit_CL`-deze tabel bevat audit logboeken van Ambari.
-* `log_ranger_audti_CL`-deze tabel bevat audit logboeken van Apache zwerver op ESP-clusters.
+* `log_gateway_audit_CL`: deze tabel bevat audit logboeken van cluster gateway knooppunten die geslaagde en mislukte aanmeldings pogingen tonen.
+* `log_auth_CL`: deze tabel bevat SSH-logboeken met geslaagde en mislukte aanmeldings pogingen.
+* `log_ambari_audit_CL`: deze tabel bevat audit logboeken van Ambari.
+* `log_ranger_audti_CL`: deze tabel bevat audit logboeken van Apache zwerver op ESP-clusters.
 
 ## <a name="next-steps"></a>Volgende stappen
 

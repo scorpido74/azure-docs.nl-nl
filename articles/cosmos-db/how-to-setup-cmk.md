@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 7a77a54dc59ec427bf6abdf8fc1d410533b5be44
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 56cbae7ae56c4b482ac6de201c7a2c8aacb81e59
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771889"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048596"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Door de klant beheerde sleutels voor uw Azure Cosmos-account configureren met Azure Key Vault
 
@@ -21,14 +21,14 @@ ms.locfileid: "76771889"
 
 Gegevens die zijn opgeslagen in uw Azure Cosmos-account, worden automatisch en naadloos versleuteld. Azure Cosmos DB biedt twee opties voor het beheren van de sleutels die worden gebruikt voor het versleutelen van de gegevens in rust:
 
-- Door **service beheerde sleutels** : standaard beheert micro soft de sleutels die worden gebruikt voor het versleutelen van de gegevens in uw Azure Cosmos-account.
+- Door **service beheerde sleutels**: standaard beheert micro soft de sleutels die worden gebruikt voor het versleutelen van de gegevens in uw Azure Cosmos-account.
 
 - Door de **klant beheerde sleutels (CMK)** : u kunt ervoor kiezen om een tweede laag versleuteling toe te voegen met uw eigen sleutels.
 
-U moet door de klant beheerde sleutels opslaan in de [Azure Key Vault](../key-vault/key-vault-overview.md) en een sleutel opgeven voor elk Azure Cosmos-account dat is ingeschakeld met door de klant beheerde sleutels. Deze sleutel wordt gebruikt voor het versleutelen van alle gegevens die in dat account zijn opgeslagen.
+U moet door de klant beheerde sleutels opslaan in [Azure Key Vault](../key-vault/key-vault-overview.md) en een sleutel opgeven voor elk Azure Cosmos-account dat is ingeschakeld met door de klant beheerde sleutels. Deze sleutel wordt gebruikt voor het versleutelen van alle gegevens die in dat account zijn opgeslagen.
 
 > [!NOTE]
-> Op dit moment zijn door de klant beheerde sleutels alleen beschikbaar voor nieuwe Azure Cosmos-accounts. u moet ze configureren tijdens het maken van het account.
+> Op dit moment zijn door de klant beheerde sleutels alleen beschikbaar voor nieuwe Azure Cosmos-accounts. U moet ze configureren tijdens het maken van het account.
 
 ## <a id="register-resource-provider"></a>De Azure Cosmos DB resource provider registreren voor uw Azure-abonnement
 
@@ -42,7 +42,7 @@ U moet door de klant beheerde sleutels opslaan in de [Azure Key Vault](../key-va
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Uw Azure Key Vault-exemplaar configureren
 
-Voor het gebruik van door de klant beheerde sleutels met Azure Cosmos DB moet u twee eigenschappen instellen voor het Azure Key Vault exemplaar dat u wilt gebruiken voor het hosten van de versleutelings sleutels. Deze eigenschappen zijn onder meer **zacht verwijderen** en **niet opschonen**. Deze eigenschappen zijn niet standaard ingeschakeld, u kunt ze inschakelen via Power shell of de Azure CLI.
+Voor het gebruik van door de klant beheerde sleutels met Azure Cosmos DB moet u twee eigenschappen instellen voor het Azure Key Vault exemplaar dat u wilt gebruiken voor het hosten van de versleutelings sleutels. Deze eigenschappen zijn onder meer **zacht verwijderen** en **niet opschonen**. Deze eigenschappen zijn niet standaard ingeschakeld. U kunt deze inschakelen door Power shell of de Azure CLI te gebruiken.
 
 Voor informatie over het inschakelen van deze eigenschappen voor een bestaand Azure Key Vault-exemplaar, zie de secties ' voorlopig verwijderen inschakelen ' en ' beveiliging opschonen inschakelen ' in een van de volgende artikelen:
 
@@ -55,17 +55,17 @@ Voor informatie over het inschakelen van deze eigenschappen voor een bestaand Az
 
    ![' Toegangs beleid ' in het menu links](./media/how-to-setup-cmk/portal-akv-ap.png)
 
-1. Selecteer **+ toegangs beleid toevoegen**
+1. Selecteer **+ toegangs beleid toevoegen**.
 
-1. Selecteer in het vervolg keuzemenu **sleutel machtigingen** de optie **Get**, **dewrap Key** en Key voor de juiste **tekst** :
+1. Selecteer in de vervolg keuzelijst **sleutel machtigingen** de optie **ophalen**, **uitpakken van sleutel**en **verpakkende sleutel** :
 
    ![De juiste machtigingen selecteren](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-1. Selecteer onder **Principal selecteren**de optie **geen geselecteerd**. Zoek vervolgens naar **Azure Cosmos DB** Principal en selecteer deze. Klik ten slotte op **selecteren** onderaan (als de principal van de **Azure Cosmos DB** zich niet in de lijst bevindt, moet u de resource provider **micro soft. DocumentDB** mogelijk opnieuw registreren zoals beschreven in [de sectie resource provider registreren](#register-resource-provider) in dit artikel):
+1. Selecteer onder **Principal selecteren**de optie **geen geselecteerd**. Zoek vervolgens naar **Azure Cosmos DB** Principal en selecteer deze. Kies tot slot onderaan **selecteren** . Als de principal van de **Azure Cosmos DB** zich niet in de lijst bevindt, moet u de resource provider **micro soft. DocumentDB** mogelijk opnieuw registreren zoals beschreven in de sectie [de resource provider registreren](#register-resource-provider) in dit artikel.
 
    ![Selecteer de Azure Cosmos DB-Principal](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
-1. Selecteer **toevoegen** om het nieuwe toegangs beleid toe te voegen
+1. Selecteer **toevoegen** om het nieuwe toegangs beleid toe te voegen.
 
 ## <a name="generate-a-key-in-azure-key-vault"></a>Een sleutel in Azure Key Vault genereren
 
@@ -73,13 +73,13 @@ Voor informatie over het inschakelen van deze eigenschappen voor een bestaand Az
 
    ![Vermelding ' Keys ' in het menu links](./media/how-to-setup-cmk/portal-akv-keys.png)
 
-1. Selecteer **genereren/importeren**, geef een naam op voor de nieuwe sleutel, selecteer een RSA-sleutel grootte (mini maal 3072 wordt aanbevolen voor de beste beveiliging) en selecteer vervolgens **maken**:
+1. Selecteer **genereren/importeren**, geef een naam op voor de nieuwe sleutel en selecteer een RSA-sleutel grootte. Mini maal 3072 wordt aanbevolen voor de beste beveiliging. Selecteer vervolgens **maken**:
 
    ![Een nieuwe sleutel maken](./media/how-to-setup-cmk/portal-akv-gen.png)
 
-1. Nadat de sleutel is gemaakt, selecteert u de zojuist gemaakte sleutel en vervolgens op de huidige versie.
+1. Nadat de sleutel is gemaakt, selecteert u de zojuist gemaakte sleutel en vervolgens de huidige versie.
 
-1. Kopieer de sleutel- **id** van de sleutel, behalve het deel na de laatste slash:
+1. Kopieer de sleutel- **id**van de sleutel, behalve het deel na de laatste slash:
 
    ![De sleutel-id van de sleutel kopiëren](./media/how-to-setup-cmk/portal-akv-keyid.png)
 
@@ -93,9 +93,9 @@ Wanneer u een nieuw Azure Cosmos DB-account maakt vanuit de Azure Portal, kiest 
 
 ### <a name="using-azure-powershell"></a>Azure PowerShell gebruiken
 
-Wanneer u een nieuw Azure Cosmos DB-account maakt met Power shell,
+Wanneer u een nieuw Azure Cosmos DB-account maakt met Power shell:
 
-- Geef de URI van de Azure Key Vault sleutel die is gekopieerd van eerder onder de eigenschap **keyVaultKeyUri** in de **PropertyObject**
+- Geef de URI van de Azure Key Vault sleutel die u eerder hebt gekopieerd door in de eigenschap **keyVaultKeyUri** in **PropertyObject**.
 
 - Gebruik **2019-12-12** als de API-versie.
 
@@ -122,9 +122,9 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Location $accountLocation -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-### <a name="using-azure-resource-manager-template"></a>Azure Resource Manager-sjabloon gebruiken
+### <a name="using-an-azure-resource-manager-template"></a>Een Azure Resource Manager-sjabloon gebruiken
 
-Bij het maken van een nieuw Azure Cosmos-account via een Azure Resource Manager sjabloon:
+Wanneer u een nieuw Azure Cosmos-account maakt met behulp van een Azure Resource Manager sjabloon:
 
 - Geef de URI van de Azure Key Vault sleutel die u eerder hebt gekopieerd, op onder de eigenschap **keyVaultKeyUri** in het object **Properties** .
 
@@ -191,9 +191,9 @@ New-AzResourceGroupDeployment `
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="is-there-any-additional-charge-when-using-customer-managed-keys"></a>Zijn er extra kosten verbonden aan het gebruik van door de klant beheerde sleutels?
+### <a name="is-there-any-additional-charge-for-using-customer-managed-keys"></a>Zijn er extra kosten verbonden aan het gebruik van door de klant beheerde sleutels?
 
-Ja. Voor de extra reken belasting die is vereist voor het beheren van gegevens versleuteling en ontsleuteling met door de klant beheerde sleutels, gebruiken alle bewerkingen die worden uitgevoerd op het Azure Cosmos-account een toename van 25% in de [aanvraag eenheden](./request-units.md).
+Ja. Voor de extra reken belasting die is vereist voor het beheren van gegevens versleuteling en ontsleuteling met door de klant beheerde sleutels, gebruiken alle bewerkingen die worden uitgevoerd op het Azure Cosmos-account een toename van 25 procent in de [aanvraag eenheden](./request-units.md).
 
 ### <a name="what-data-gets-encrypted-with-the-customer-managed-keys"></a>Welke gegevens worden versleuteld met de door de klant beheerde sleutels?
 
@@ -205,7 +205,7 @@ Alle gegevens die zijn opgeslagen in uw Azure Cosmos-account, worden versleuteld
 
 - De eigenschaps paden die zijn gedeclareerd in uw [indexerings beleid](./index-policy.md)
 
-- De waarden van de [partitie sleutel](./partitioning-overview.md) van uw containers
+- De waarden van de [partitie sleutels](./partitioning-overview.md) van de containers
 
 ### <a name="are-customer-managed-keys-supported-for-existing-azure-cosmos-accounts"></a>Worden door de klant beheerde sleutels ondersteund voor bestaande Azure Cosmos-accounts?
 
@@ -213,11 +213,11 @@ Deze functie is momenteel alleen beschikbaar voor nieuwe accounts.
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>Is er een plan om de nauw keurigheid van sleutels op account niveau te ondersteunen?
 
-Momenteel worden er geen sleutels op container niveau in overweging genomen.
+Momenteel worden er geen sleutels op container niveau overwogen.
 
-### <a name="how-does-customer-managed-keys-affect-a-backup"></a>Wat is de invloed van door de klant beheerde sleutels op een back-up?
+### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Wat is de invloed van door de klant beheerde sleutels op een back-up?
 
-Azure Cosmos DB maakt [regel matig en automatisch een back-up](./online-backup-and-restore.md) van de gegevens die in uw account zijn opgeslagen. Met deze bewerking wordt een back-up gemaakt van de versleutelde gegevens. Als u de herstelde back-up wilt gebruiken, is de versleutelings sleutel die u hebt gebruikt op het moment van de back-up, vereist. Dit betekent dat er geen intrekken is gemaakt en dat de versie van de sleutel die op het moment van de back-up is gebruikt, nog steeds is ingeschakeld.
+Azure Cosmos DB maakt [regel matig en automatisch een back-up](./online-backup-and-restore.md) van de gegevens die in uw account zijn opgeslagen. Met deze bewerking wordt een back-up gemaakt van de versleutelde gegevens. Als u de herstelde back-up wilt gebruiken, is de versleutelings sleutel die u hebt gebruikt op het moment van de back-up, vereist. Dit betekent dat er geen intrekken is gemaakt en dat de versie van de sleutel die werd gebruikt op het moment van de back-up nog steeds is ingeschakeld.
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Hoe kan ik een versleutelings sleutel intrekken?
 
@@ -235,5 +235,5 @@ De enige bewerking die mogelijk is wanneer de versleutelings sleutel is ingetrok
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [gegevens versleuteling in azure Cosmos DB](./database-encryption-at-rest.md)
-- Bekijk een overzicht van [beveiligde toegang tot gegevens in Cosmos DB](secure-access-to-data.md)
+- Meer informatie over [gegevens versleuteling in azure Cosmos DB](./database-encryption-at-rest.md).
+- Bekijk een overzicht van [beveiligde toegang tot gegevens in Cosmos DB](secure-access-to-data.md).

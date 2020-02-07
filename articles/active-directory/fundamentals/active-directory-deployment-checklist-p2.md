@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc06931dd36c9ecd91ec1d748b9463f47f7afafc
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880592"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063642"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Implementatie handleiding voor Azure Active Directory feature
 
@@ -41,7 +41,7 @@ Meer informatie over licentie verlening vindt u op de volgende pagina's:
 
 In deze fase scha kelen beheerders basis beveiligings functies in om een beter beveiligde en gebruiks vriendelijke basis te maken in azure AD voordat we normale gebruikers accounts importeren of maken. Deze kern fase zorgt ervoor dat u een veiligere status hebt van het begin en dat uw eind gebruikers alleen maar één keer aan nieuwe concepten moeten worden toegevoegd.
 
-| Taak | Specificatie | Vereiste licentie |
+| Taak | Details | Vereiste licentie |
 | ---- | ------ | ---------------- |
 | [Meer dan één globale beheerder aanwijzen](../users-groups-roles/directory-emergency-access.md) | Wijs ten minste twee permanente globale beheerders accounts toe die u kunt gebruiken als er sprake is van een nood geval. Deze accounts worden niet dagelijks gebruikt en moeten lange en complexe wacht woorden bevatten. | Azure AD Free |
 | [Indien mogelijk niet-globale beheerders rollen gebruiken](../users-groups-roles/directory-assign-admin-roles.md) | Geef uw beheerders alleen de toegang die ze nodig hebben tot de gebieden waartoe ze toegang moeten hebben. Niet alle beheerders moeten globale beheerders zijn. | Azure AD Free |
@@ -62,7 +62,7 @@ In deze fase scha kelen beheerders basis beveiligings functies in om een beter b
 
 We voegen vervolgens toe aan de basis die in fase 1 is vastgelegd door de gebruikers te importeren en synchronisatie in te scha kelen, te plannen voor gast toegang en de ondersteuning van aanvullende functionaliteit voor te bereiden.
 
-| Taak | Specificatie | Vereiste licentie |
+| Taak | Details | Vereiste licentie |
 | ---- | ------ | ---------------- |
 | [Azure AD Connect installeren](../connect/active-directory-aadconnect-select-installation.md) | Bereid u voor op het synchroniseren van gebruikers van uw bestaande on-premises Directory naar de Cloud. | Azure AD Free |
 | [Wachtwoord-hash-synchronisatie implementeren](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Synchroniseer wachtwoord hashes zodat wachtwoord wijzigingen kunnen worden gerepliceerd, ongeldige wachtwoord detectie en herstel en gelekte referentie rapportage. | Azure AD Free |
@@ -78,7 +78,7 @@ We voegen vervolgens toe aan de basis die in fase 1 is vastgelegd door de gebrui
 
 Omdat we de vorige fasen blijven ontwikkelen, identificeren we kandidaat-toepassingen voor migratie en integratie met Azure AD en volt ooien we de installatie van deze toepassingen.
 
-| Taak | Specificatie | Vereiste licentie |
+| Taak | Details | Vereiste licentie |
 | ---- | ------ | ---------------- |
 | Uw toepassingen identificeren | Bepaal welke toepassingen in uw organisatie worden gebruikt: on-premises, SaaS-toepassingen in de Cloud en andere line-of-business-toepassingen. Bepaal of deze toepassingen kunnen en moeten worden beheerd met Azure AD. | Geen licentie vereist |
 | [Ondersteunde SaaS-toepassingen integreren in de galerie](../manage-apps/add-application-portal.md) | Azure AD bevat een galerie met duizenden vooraf geïntegreerde toepassingen. Sommige van de toepassingen die door uw organisatie worden gebruikt, zijn waarschijnlijk rechtstreeks vanuit de Azure Portal toegankelijk in de galerie. | Azure AD Free |
@@ -88,13 +88,13 @@ Omdat we de vorige fasen blijven ontwikkelen, identificeren we kandidaat-toepass
 
 Fase 4 ziet beheerders de mogelijkheid om minimale bevoegdheids principes voor beheer af te dwingen, hun eerste toegangs beoordelingen te volt ooien en automatisering van algemene gebruikers levenscyclus taken in te scha kelen.
 
-| Taak | Specificatie | Vereiste licentie |
+| Taak | Details | Vereiste licentie |
 | ---- | ------ | ---------------- |
 | [Het gebruik van Privileged Identity Management afdwingen](../privileged-identity-management/pim-security-wizard.md) | Beheer rollen verwijderen van normale dag-naar-dag-gebruikers accounts. Zorg ervoor dat gebruikers met beheerders rechten hun rol kunnen gebruiken nadat ze een multi-factor Authentication-controle hebben uitgevoerd, een zakelijke reden bieden of goed keuring aanvragen van aangewezen goed keurders. | Azure AD Premium P2 |
 | [Een toegangs beoordeling voor Azure AD-Directory functies in PIM volt ooien](../privileged-identity-management/pim-how-to-start-security-review.md) | Werk samen met uw beveiligings-en leiderschaps teams om een toegangs beoordelings beleid te maken om beheerders toegang te controleren op basis van het beleid van uw organisatie. | Azure AD Premium P2 |
 | [Beleid voor dynamische groepslid maatschappen implementeren](../users-groups-roles/groups-dynamic-membership.md) | Gebruik dynamische groepen om automatisch gebruikers toe te wijzen aan groepen op basis van hun kenmerken van HR (of uw bron van waarheid), zoals afdeling, titel, regio en andere kenmerken. |  |
 | [Implementatie op basis van groepen implementeren](../manage-apps/what-is-access-management.md) | Gebruik het inrichten van toegangs beheer op basis van groepen om automatisch gebruikers in te richten voor SaaS-toepassingen. |  |
-| [Gebruikers inrichting en het ongedaan maken van de inrichting automatiseren](../manage-apps/user-provisioning.md) | Verwijder hand matige stappen uit de levens duur van uw werknemers account om onbevoegde toegang te voor komen. Identiteiten van uw bron van waarheid (HR-systeem) synchroniseren met Azure AD. |  |
+| [Gebruikers inrichting en het ongedaan maken van de inrichting automatiseren](../app-provisioning/user-provisioning.md) | Verwijder hand matige stappen uit de levens duur van uw werknemers account om onbevoegde toegang te voor komen. Identiteiten van de bron van de waarheid (HR-systeem) naar Azure AD synchroniseren. |  |
 
 ## <a name="next-steps"></a>Volgende stappen
 

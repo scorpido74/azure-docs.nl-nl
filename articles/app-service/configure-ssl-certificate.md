@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: acf7fd91eff6a868074c61d557effa076033e799
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845925"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046421"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Een SSL-certificaat in Azure App Service toevoegen
 
@@ -37,6 +37,9 @@ Als u deze hand leiding wilt volgen:
 - Gratis certificaat: wijs een subdomein (bijvoorbeeld `www.contoso.com`) toe aan App Service met een CNAME- [record](app-service-web-tutorial-custom-domain.md#map-a-cname-record).
 
 ## <a name="private-certificate-requirements"></a>Vereisten voor persoonlijke certificaten
+
+> [!NOTE]
+> Azure Web Apps biedt **geen** ondersteuning voor AES256 en alle pfx-bestanden moeten worden versleuteld met TrippleDES.
 
 Het [gratis door app service beheerde certificaat](#create-a-free-certificate-preview) of het [app service certificaat](#import-an-app-service-certificate) voldoet al aan de vereisten van app service. Als u ervoor kiest om een persoonlijk certificaat te uploaden of te importeren naar App Service, moet uw certificaat voldoen aan de volgende vereisten:
 
@@ -358,7 +361,7 @@ U kunt nu het App Service certificaat verwijderen. Selecteer **overzicht** > **v
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
@@ -366,7 +369,7 @@ U kunt nu het App Service certificaat verwijderen. Selecteer **overzicht** > **v
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>Meer informatiebronnen
+## <a name="more-resources"></a>Meer bronnen
 
 * [Een aangepaste DNS-naam beveiligen met een SSL-binding](configure-ssl-bindings.md)
 * [HTTPS afdwingen](configure-ssl-bindings.md#enforce-https)

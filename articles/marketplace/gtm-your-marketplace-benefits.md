@@ -6,14 +6,14 @@ author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 02/08/2020
 ms.author: evansma
-ms.openlocfilehash: 21bbd34520283620626aff27439e89058a534f4e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 1ecb48751715d32e1e67f09e0e3d4bf9577c8eab
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121808"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064915"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw voor delen voor commerciële Marketplace
 
@@ -45,7 +45,7 @@ De stappen om aan de slag te gaan zijn eenvoudig:
 2. Het team bereikt de aanbieding ' eigenaar ' of ' primaire contact persoon ' per Marketplace. Het is een best practice om een individu of een alias in te voeren die u regel matig controleert: berichten die worden verzonden naar aliassen, zoals info@company.com vaak verloren gaan.
 
 >[!Note]
->Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in Cloud Partner-portal of in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd. <br> <br> Als u de eigenaar niet kunt bepalen of als de eigenaar uw bedrijf heeft verlaten, kunt u op https://aka.ms/marketplacepublishersupport een ondersteunings ticket genereren.
+>Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in Cloud Partner-portal of in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd. <br> <br> Als u de eigenaar niet kunt bepalen of als de eigenaar uw bedrijf heeft verlaten, kunt u op https://aka.ms/marketplacepublishersupporteen ondersteunings ticket genereren.
 
 Het bereik van de activiteiten die voor u beschikbaar zijn, wordt uitgebreid naarmate u uw aanbiedingen in de Marketplace verg root. Alle vermeldingen ontvangen een basis niveau van optimalisatie aanbevelingen en promotie als onderdeel van een eigen e-mail van resources en aanbevolen procedures.
 
@@ -88,7 +88,7 @@ Naast de voor delen van beloningen, hebben zakelijke toepassings partners met Dy
 
 Alle activiteiten die op deze pagina worden beschreven, worden gedekt door de [uitgevers overeenkomst voor Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) en zijn onderworpen aan de addendum van het programma voor commerciële voor delen.
 
-### <a name="cancellation-policy"></a>Annuleringsbeleid
+### <a name="cancellation-policy"></a>Annulerings beleid
 
 Uitgevers van [lijsten en proef](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) abonnementen kunnen in-of afmelden voor activiteiten per aanbiedings publicatie. Partners kunnen zich op elk gewenst moment afmelden bij elke afspraak. 
 
@@ -99,7 +99,7 @@ Micro soft behoudt zich het recht voor de voor delen van Marketplace-beloningen 
 * gebruik hun aanbieding om marketing of andere inhoud weer te geven die in strijd is met copyright-of handelsmerk wetgeving.
 * de beleids regels van het [Azure sponsoring-programma](https://azure.microsoft.com/offers/ms-azr-0036p/), inclusief, maar niet beperkt tot, worden geschonden met behulp van de Azure sponsor-financiering voor hun eigen interne bewerkingen of bitcoine-analyse. 
 
-### <a name="offer-availability"></a>Beschikbaarheid van het aanbod
+### <a name="offer-availability"></a>Beschik baarheid van aanbieding
 
 Deze aanbieding wordt in het Engels uitgevoerd voor alle partners met een live aanbieding in azure Marketplace of Microsoft AppSource.
 

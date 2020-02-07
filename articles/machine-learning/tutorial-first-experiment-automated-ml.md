@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/04/2020
+ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982439"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048288"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -69,11 +69,15 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
 
 1. Maak een nieuwe gegevensset door te selecteren **uit lokale bestanden** in de vervolg keuzelijst **+ gegevensset maken** . 
 
+    1. Geef in het formulier **basis informatie** uw gegevensset een naam en geef een optionele beschrijving op. Automatische ML in Azure Machine Learning Studio ondersteunt momenteel alleen tabellaire gegevens sets, zodat het type gegevensset standaard wordt ingesteld op Tabellair.
+
+    1. Selecteer **volgende** linksonder
+
+    1. Selecteer op het formulier **gegevens opslag en bestands selectie** de standaard gegevens opslag die automatisch is ingesteld tijdens het maken van de werk ruimte, **workspaceblobstore (Azure Blob Storage)** . Hier uploadt u uw gegevens bestand om het beschikbaar te maken voor uw werk ruimte.
+
     1. Selecteer **Bladeren**.
     
     1. Kies het **bankmarketing_train. CSV** -bestand op uw lokale computer. Dit is het bestand dat u hebt gedownload als een [vereiste](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
-
-    1. Selecteer **tabellair** als type gegevensset. 
 
     1. Geef uw gegevensset een unieke naam en geef een optionele beschrijving op. 
 
@@ -86,10 +90,10 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
         Veld|Beschrijving| Waarde voor zelf studie
         ---|---|---
         Bestands indeling|Hiermee definieert u de indeling en het type van de gegevens die zijn opgeslagen in een bestand.| Gescheiden
-        Scheidingsteken|Een of meer tekens voor het opgeven van de grens tussen&nbsp; afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen. |Komma
+        Scheidingsteken|Een of meer tekens voor het opgeven van de grens tussen&nbsp; afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen. |Geplaatst
         Encoding|Hiermee wordt aangegeven welke bits-schema tabel moet worden gebruikt om de gegevensset te lezen.| UTF-8
-        Kolomkoppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.| Alle bestanden hebben dezelfde headers
-        Rijen overs Laan | Hiermee wordt aangegeven hoeveel, indien van toepassing, rijen in de gegevensset worden overgeslagen.| Geen
+        Kolom koppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.| Alle bestanden hebben dezelfde headers
+        Rijen overs Laan | Hiermee wordt aangegeven hoeveel, indien van toepassing, rijen in de gegevensset worden overgeslagen.| None
 
     1. Met het **schema** formulier kunt u uw gegevens voor dit experiment verder configureren. Voor dit voor beeld selecteert u de wissel knop voor de functie **day_of_week** , zodat u deze niet voor dit experiment kunt gebruiken. Selecteer **Next**.
 
@@ -133,21 +137,21 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
         ------|---------|---
         Primaire metriek| Evaluatie-metrische gegevens waarop het algoritme van de machine learning wordt gemeten.|AUC_weighted
         Automatische parametrisatie| Hiermee wordt voor verwerking ingeschakeld. Dit omvat het automatisch opschonen, voorbereiden en transformeren van gegevens voor het genereren van synthetische functies.| Inschakelen
-        Geblokkeerde algoritmen | Algoritmen die u wilt uitsluiten van de trainings taak| Geen
+        Geblokkeerde algoritmen | Algoritmen die u wilt uitsluiten van de trainings taak| None
         Criterium afsluiten| Als aan een criterium wordt voldaan, wordt de trainings taak gestopt. |&nbsp;taak voor trainings&nbsp;tijd (uren): 1 <br> Drempel waarde voor&nbsp;van metrische&nbsp;-Score: geen
         Validatie | Kies een type Kruis validatie en aantal testen.|Validatie type:<br>Kruis validatie &nbsp;k-vouwen&nbsp; <br> <br> Aantal validaties: 2
-        Gelijktijdigheid| Het maximum aantal parallelle iteraties dat wordt uitgevoerd en gebruikte kernen per herhaling| Maxi maal aantal&nbsp;gelijktijdige&nbsp;herhalingen: 5<br> Maxi maal aantal&nbsp;kernen&nbsp;per&nbsp;herhaling: geen
+        Gelijktijdigheid| Het maximum aantal parallelle iteraties dat per iteratie wordt uitgevoerd| Maxi maal aantal&nbsp;gelijktijdige&nbsp;herhalingen: 5
         
         Selecteer **Opslaan**.
 
-1. Selecteer **volt ooien** om het experiment uit te voeren. Het scherm **Details uitvoeren** wordt geopend met de **uitvoerings status** , omdat de voor bereiding van het experiment begint.
+1. Selecteer **volt ooien** om het experiment uit te voeren. Het scherm **Details uitvoeren** wordt geopend met de **uitvoerings status** aan de bovenkant wanneer de voor bereiding van het experiment begint.
 
 >[!IMPORTANT]
 > Voor bereiding duurt **10-15 minuten** om de uitvoering van het experiment voor te bereiden.
 > Na de uitvoering duurt **2-3 minuten meer voor elke iteratie**.  
 > Selecteer regel matig **vernieuwen** om de status van de uitvoering van het experiment te bekijken.
 >
-> In productie zou u waarschijnlijk een beetje weg lopen. Voor deze zelf studie wordt u echter aangeraden om de geteste algoritmen op het tabblad modellen te verkennen wanneer deze zijn voltooid terwijl de andere nog actief zijn. 
+> In productie zou u waarschijnlijk een beetje weg lopen. Voor deze zelf studie wordt u echter aangeraden om de geteste algoritmen op het tabblad **modellen** te verkennen wanneer deze zijn voltooid terwijl de andere nog actief zijn. 
 
 ##  <a name="explore-models"></a>Modellen verkennen
 
@@ -165,7 +169,7 @@ Met geautomatiseerde machine learning in Azure Machine Learning Studio kunt u in
 
 Voor dit experiment betekent de implementatie van een webservice dat de financiële instelling nu een iteratieve en schaal bare weboplossing heeft voor het identificeren van potentiële klanten met vaste termijn storting. 
 
-Zodra de uitvoering is voltooid, gaat u terug naar de **detail pagina uitvoeren** en selecteert u het tabblad **modellen** . Selecteer **vernieuwen**. 
+Zodra de uitvoering is voltooid, gaat u terug naar de **detail pagina uitvoeren** en selecteert u het tabblad **modellen** .
 
 In dit experiment wordt **VotingEnsemble** beschouwd als het beste model, op basis van de **AUC_weighted** metriek.  We implementeren dit model, maar u wordt aangeraden de implementatie ongeveer 20 minuten te volt ooien. Het implementatie proces omvat verschillende stappen, waaronder het registreren van het model, het genereren van resources en het configureren van deze voor de webservice.
 
@@ -177,9 +181,9 @@ In dit experiment wordt **VotingEnsemble** beschouwd als het beste model, op bas
     ----|----
     Implementatie naam| mijn-automl-implementeren
     Beschrijving van implementatie| Mijn eerste geautomatiseerde machine learning-experiment implementatie
-    Rekentype | Azure Compute-instantie (ACI) selecteren
-    Authenticatie inschakelen| Uitschakelen. 
-    Aangepaste implementaties gebruiken| Uitschakelen. Hiermee staat u toe dat het standaard stuurprogrammabestand (Score script) en het omgevings bestand automatisch worden gegenereerd. 
+    Reken type | Azure Compute-instantie (ACI) selecteren
+    Verificatie inschakelen| Scha. 
+    Aangepaste implementaties gebruiken| Scha. Hiermee staat u toe dat het standaard stuurprogrammabestand (Score script) en het omgevings bestand automatisch worden gegenereerd. 
     
     In dit voor beeld gebruiken we de standaard instellingen in het menu *Geavanceerd* . 
 
@@ -205,7 +209,7 @@ Verwijder alleen het implementatie-exemplaar uit de Azure Machine Learning Studi
 
 1. Selecteer **door gaan**.
 
-### <a name="delete-the-resource-group"></a>De resourcegroep verwijderen
+### <a name="delete-the-resource-group"></a>De resource groep verwijderen
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
@@ -216,11 +220,11 @@ In deze automatische machine learning zelf studie hebt u Azure Machine Learning 
 > [!div class="nextstepaction"]
 > [Een webservice gebruiken](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ Meer informatie over voor [verwerking](how-to-create-portal-experiments.md#preprocess).
++ Meer informatie over [parametrisatie](how-to-create-portal-experiments.md#featurization).
 + Meer informatie over [gegevens profilering](how-to-create-portal-experiments.md#profile).
 + Meer informatie over [automatische machine learning](concept-automated-ml.md).
 + Voor meer informatie over metrische classificaties en grafieken raadpleegt u het artikel over [automatische machine learning resultaten begrijpen](how-to-understand-automated-ml.md#classification) .
 
 >[!NOTE]
 > Deze gegevensset voor Bank marketing wordt beschikbaar gesteld in het [Creative Commons-licentie (CCO: Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/). Alle rechten in de afzonderlijke inhoud van de Data Base worden in licentie gegeven onder de licentie voor de [Data Base-inhoud](https://creativecommons.org/publicdomain/zero/1.0/) en beschikbaar op [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset). Deze gegevensset is oorspronkelijk beschikbaar in de [icb machine learning-data base](https://archive.ics.uci.edu/ml/datasets/bank+marketing).<br><br>
-> [Moro et al., 2014] S. Moro, P. Cortez en P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. Decision Support Systems, Elsevier, 62:22-31, juni 2014.
+> [Moro et al., 2014] S. Moro, P. Cortez en P. Rita. Een gegevensgestuurde benadering voor het voors pellen van het slagen van Bank telemarketing. Decision Support Systems, Elsevier, 62:22-31, juni 2014.

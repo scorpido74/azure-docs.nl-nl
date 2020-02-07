@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/05/2020
+ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030916"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064628"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters schalen
 
@@ -216,6 +216,10 @@ Als Hive zich achter tijdelijke bestanden bevindt, kunt u deze bestanden hand ma
 Als uw clusters regel matig worden vastgehouden in de veilige modus wanneer ze naar minder dan drie werk knooppunten worden geschaald, en de vorige stappen niet werken, kunt u voor komen dat uw cluster in de veilige modus wordt gebruikt door ten minste drie werk knooppunten te gebruiken.
 
 Het behouden van drie worker-knoop punten is kostbaarer dan naar slechts één worker-knoop punt, maar hierdoor wordt voor komen dat uw cluster vastloopt in de veilige modus.
+
+### <a name="scale-hdinsight-down-to-one-worker-node"></a>HDInsight omlaag schalen naar één worker-knoop punt
+
+Zelfs als het cluster omlaag wordt geschaald naar 1 knoop punt, blijft werk knooppunt 0 overstaan. Worker-knoop punt 0 kan nooit buiten gebruik worden gesteld.
 
 #### <a name="run-the-command-to-leave-safe-mode"></a>Voer de opdracht uit om de veilige modus te verlaten
 
