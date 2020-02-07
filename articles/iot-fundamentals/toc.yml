@@ -4,6 +4,8 @@
   items:
     - name: Inleiding
       href: iot-introduction.md
+    - name: De juiste IoT-oplossing kiezen
+      href: iot-solution-options.md
     - name: Azure IoT-services en -technologieën
       href: iot-services-and-technologies.md
     - name: Opties voor ondersteuning en hulp

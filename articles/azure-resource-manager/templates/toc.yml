@@ -161,6 +161,8 @@
         - name: Implementeren - REST API
           displayName: deployment
           href: deploy-rest.md
+        - name: Implementeren vanuit GitHub
+          href: deploy-to-azure-button.md
         - name: What if-implementatie
           href: template-deploy-what-if.md
         - name: Opnieuw implementeren bij fout
