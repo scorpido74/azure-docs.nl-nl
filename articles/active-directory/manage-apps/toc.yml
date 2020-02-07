@@ -5,10 +5,10 @@
   items:
     - name: Wat houdt beheer van cloud-apps en eenmalige aanmelding in?
       href: what-is-application-management.md
-    - name: Wat is toepassingsinrichting?
-      href: user-provisioning.md
     - name: Wat is een toepassingsproxy voor on-premises apps?
       href: what-is-application-proxy.md
+    - name: Wat is toepassingsinrichting?
+      href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Snelstartgidsen
   items:
     - name: Een cloud-app uit de galerie toevoegen
@@ -72,16 +72,6 @@
               href: howto-saml-token-encryption.md
             - name: Portals voor eindgebruikers
               href: end-user-experiences.md
-    - name: Toepassingsinrichting (SCIM)
-      items:
-        - name: Hoe inrichting werkt
-          href: how-provisioning-works.md
-        - name: Implementatie van een automatische gebruikersinrichting plannen
-          href: plan-auto-user-provisioning.md
-    - name: HR-inrichting in de cloud
-      items:
-        - name: Implementatie van een HR-gebruikersinrichting in de cloud plannen
-          href: plan-cloud-hr-provision.md
     - name: Toepassingsproxy voor on-premises apps
       items:
         - name: Toepassingsproxy
@@ -237,60 +227,6 @@
                   href: access-panel-extension-problem-installing.md
                 - name: Fout bij selfservice-app-toegang gebruiken
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: Toepassingsinrichting (SCIM)
-      items:
-        - name: Inrichting configureren voor een galerie-app
-          href: configure-automatic-user-provisioning-portal.md
-        - name: Een SCIM-eindpunt bouwen en inrichting configureren
-          href: use-scim-to-provision-users-and-groups.md
-        - name: De kenmerktoewijzingen bewerken
-          items:
-            - name: Kenmerktoewijzingen aanpassen
-              href: Customize-application-attributes.md
-            - name: Expressies schrijven voor kenmerktoewijzingen
-              href: functions-for-customizing-application-data.md
-        - name: Gebruikers en groepen opnemen of uitsluiten in bereik
-          items:
-            - name: Bereik van gebruikers of groepen die moeten worden ingericht
-              href: define-conditional-rules-for-provisioning-user-accounts.md
-            - name: Verwijdering overslaan voor gebruikers buiten het bereik
-              href: skip-out-of-scope-deletions.md
-        - name: Inrichting bewaken en erover rapporteren
-          items:
-            - name: Inrichtingsstatus en prestaties bewaken
-              href: application-provisioning-when-will-provisioning-finish-specific-user.md
-            - name: Rapport over app-inrichting
-              href: check-status-user-account-provisioning.md
-            - name: Uw configuratie exporteren en importeren
-              href: export-import-provisioning-configuration.md
-        - name: Configuratie automatiseren met behulp van MS Graph
-          href: application-provisioning-configure-api.md
-        - name: Problemen met het automatisch inrichten van gebruikers oplossen
-          items:
-            - name: Problemen met app-inrichting oplossen
-              href: application-provisioning-config-problem.md
-            - name: Quarantinestatus
-              href: application-provisioning-quarantine-status.md
-            - name: Inrichtingslogboeken
-              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: Een kenmerk synchroniseren voor toewijzing - galerie-app
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: Uurregistratie - galerie-app
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Autorisatieprobleem (kan beheerdersreferenties niet opslaan)
-              href: application-provisioning-config-problem-storage-limit.md
-            - name: Gebruikers zijn niet ingericht
-              href: application-provisioning-config-problem-no-users-provisioned.md
-            - name: Verkeerde gebruikers ingericht
-              href: application-provisioning-config-problem-wrong-users-provisioned.md
-            - name: Inrichtingstaak in quarantaine
-              href: application-provisioning-quarantine-status.md
-            - name: Bronkenmerk ontbreekt
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: Inrichtingstaak is traag
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Inrichtingslogboeken
-              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
     - name: Toepassingsproxy voor on-premises apps
       items:
         - name: Connectors configureren
@@ -391,28 +327,10 @@
           href: secure-hybrid-access.md
 - name: Naslaginformatie
   items:
-    - name: Toepassingsinrichting (SCIM)
-      items:
-        - name: Expressies schrijven voor kenmerktoewijzingen
-          href: functions-for-customizing-application-data.md
-        - name: Een inrichtingsmethode kiezen
-          href: isv-automatic-provisioning-multi-tenant-apps.md
-    - name: HR-inrichting in de cloud
-      items:
-        - name: Verwijzing naar SuccessFactors-kenmerken
-          href: sap-successfactors-attribute-reference.md
-        - name: Verwijzing naar Workday-kenmerk
-          href: workday-attribute-reference.md
-    - name: Azure AD Connect-inrichtingsagent
-      items:
-        - name: Versiegeschiedenis van de inrichtingsagent
-          href: provisioning-agent-release-version-history.md
-    - name: Toepassingsproxy voor on-premises apps
-      items:
-        - name: Veelgestelde vragen over toepassingsproxy's
-          href: application-proxy-faq.md
-        - name: Versiegeschiedenis van toepassingsproxy
-          href: application-proxy-release-version-history.md
+    - name: Veelgestelde vragen over toepassingsproxy's
+      href: application-proxy-faq.md
+    - name: Versiegeschiedenis van toepassingsproxy
+      href: application-proxy-release-version-history.md
 - name: Resources
   items:
     - name: Ondersteunings- en Help-opties voor ontwikkelaars
