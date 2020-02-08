@@ -3,22 +3,22 @@ title: MSAL. js-client-apps initialiseren | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het initialiseren van client toepassingen met behulp van de micro soft-verificatie bibliotheek voor Java script (MSAL. js).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e350f4fc3d40b45a1308e1edd9331dc7f71399c5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696126"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084038"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Client toepassingen initialiseren met MSAL. js
 In dit artikel wordt beschreven hoe u de micro soft-verificatie bibliotheek voor Java script (MSAL. js) initialiseert met een exemplaar van een toepassing van een gebruikers agent. De toepassing van de gebruikers agent is een vorm van een open bare client toepassing waarin de client code wordt uitgevoerd in een gebruikers agent, zoals een webbrowser. Deze clients slaan geen geheimen op omdat de browser context geopend is. Lees het [overzicht](msal-client-applications.md)voor meer informatie over de client toepassings typen en configuratie opties voor toepassingen.
@@ -120,11 +120,11 @@ Hieronder ziet u de totale set Configureer bare opties die momenteel worden onde
 
 - **validateAuthority**: optioneel.  Valideer de verlener van tokens. De standaardwaarde is `true`. Voor B2C-toepassingen, omdat de waarde van de autoriteit bekend is en per beleid kan verschillen, werkt de verificatie van de certificerings instantie niet en moet deze worden ingesteld op `false`.
 
-- **redirectUri**: optioneel.  De omleidings-URI van uw app, waar verificatie reacties kunnen worden verzonden en ontvangen door uw app. Het moet exact overeenkomen met een van de omleidings-Uri's die u in de portal hebt geregistreerd. Standaard ingesteld op `window.location.href`.
+- **redirectUri**: optioneel.  De omleidings-URI van uw app, waar verificatie reacties kunnen worden verzonden en ontvangen door uw app. Het moet exact overeenkomen met een van de omleidings-Uri's die u in de portal hebt geregistreerd. De standaard instelling is `window.location.href`.
 
 - **postLogoutRedirectUri**: optioneel.  De gebruiker wordt omgeleid naar `postLogoutRedirectUri` na het afmelden. De standaard waarde is `redirectUri`.
 
-- **navigateToLoginRequestUrl**: optioneel. De mogelijkheid om de standaard navigatie voor het starten van de pagina na de aanmelding uit te scha kelen. De standaardwaarde is true. Dit wordt alleen gebruikt voor omleidings stromen.
+- **navigateToLoginRequestUrl**: optioneel. De mogelijkheid om de standaard navigatie voor het starten van de pagina na de aanmelding uit te scha kelen. De standaard waarde is True. Dit wordt alleen gebruikt voor omleidings stromen.
 
 - **cacheLocation**: optioneel.  Hiermee stelt u de browser opslag in op `localStorage` of `sessionStorage`. De standaardwaarde is `sessionStorage`.
 
@@ -139,6 +139,6 @@ Hieronder ziet u de totale set Configureer bare opties die momenteel worden onde
 - **navigateFrameWait**: optioneel. Het aantal milliseconden waarmee de wacht tijd wordt ingesteld voordat verborgen iframes naar het doel worden genavigeerd. De standaard waarde is 500 milliseconden.
 
 Deze zijn alleen van toepassing op door gegeven in de MSAL-hoek wrapper-bibliotheek:
-- **unprotectedResources**: optioneel.  Matrix van Uri's die niet-beveiligde resources zijn. MSAL koppelt geen token aan uitgaande aanvragen die deze URI hebben. Standaard ingesteld op `null`.
+- **unprotectedResources**: optioneel.  Matrix van Uri's die niet-beveiligde resources zijn. MSAL koppelt geen token aan uitgaande aanvragen die deze URI hebben. De standaard instelling is `null`.
 
-- **protectedResourceMap**: optioneel.  Dit is een toewijzing van resources aan scopes die worden gebruikt door MSAL voor het automatisch koppelen van toegangs tokens in Web API-aanroepen. Er wordt één toegangs token opgehaald voor de resource. U kunt bijvoorbeeld als volgt een specifiek bronpad toewijzen: {"https://graph.microsoft.com/v1.0/me", ["gebruiker. Read"]}, of de app-URL van de resource als: {"https://graph.microsoft.com/", ["gebruiker. Read", "mail. Send"]}. Dit is vereist voor CORS-aanroepen. Standaard ingesteld op `null`.
+- **protectedResourceMap**: optioneel.  Dit is een toewijzing van resources aan scopes die worden gebruikt door MSAL voor het automatisch koppelen van toegangs tokens in Web API-aanroepen. Er wordt één toegangs token opgehaald voor de resource. U kunt bijvoorbeeld als volgt een specifiek bronpad toewijzen: {"https://graph.microsoft.com/v1.0/me", ["gebruiker. Read"]}, of de app-URL van de resource als: {"https://graph.microsoft.com/", ["gebruiker. Read", "mail. Send"]}. Dit is vereist voor CORS-aanroepen. De standaard instelling is `null`.

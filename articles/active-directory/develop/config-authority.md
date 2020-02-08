@@ -3,22 +3,22 @@ title: Id-providers configureren (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het gebruik van verschillende instanties, zoals B2C, soevereine Clouds en gast gebruikers, met MSAL voor iOS en macOS.
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: aaef7c4c0e2fa295e6e20976df5cce1523a70c43
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697775"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085206"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Procedure: MSAL voor iOS en macOS configureren voor het gebruik van verschillende id-providers
 
@@ -35,7 +35,7 @@ In dit artikel wordt uitgelegd hoe u uw micro soft-verificatie bibliotheek-app v
 
 In sommige scenario's, zoals Business-to-consumer (B2C), moet u mogelijk de standaard instantie wijzigen.
 
-### <a name="b2c"></a>Business to consumer
+### <a name="b2c"></a>B2C
 
 Voor het werken met B2C is voor de [micro soft Authentication Library (MSAL)](reference-v2-libraries.md) een andere certificerings instantie geconfigureerd. MSAL herkent één instantie-URL-indeling als B2C. De herkende indeling voor de B2C-instantie is `https://<host>/tfp/<tenant>/<policy>`, bijvoorbeeld `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy`. U kunt echter ook andere ondersteunde B2C ca-Url's gebruiken door instanties expliciet te declareren als B2C-instantie.
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bbb0992eaeef7892e5940130131ac139a339b47d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932379"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083231"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen met Azure Machine Learning implementeren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -172,24 +172,24 @@ Voor eind punten van meerdere modellen wordt een gedeelde container gebruikt voo
 
 Voor een E2E-voor beeld waarin wordt getoond hoe u meerdere modellen achter één container-eind punt kunt gebruiken, raadpleegt u [dit voor beeld](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)
 
-## <a name="prepare-to-deploy"></a>Implementatie voorbereiden
+## <a name="prepare-deployment-artifacts"></a>Implementatie artefacten voorbereiden
 
-Voor het implementeren van het model hebt u de volgende items nodig:
+Voor het implementeren van het model hebt u het volgende nodig:
 
-* **Een invoer script**. Met dit script worden aanvragen geaccepteerd, worden de aanvragen met behulp van het model gescoord en worden de resultaten geretourneerd.
+* **Invoer script & bron code afhankelijkheden**. Met dit script worden aanvragen geaccepteerd, worden de aanvragen met behulp van het model gescoord en worden de resultaten geretourneerd.
 
     > [!IMPORTANT]
     > * Het invoer script is specifiek voor uw model. Het moet inzicht krijgen in de indeling van de gegevens van de inkomende aanvraag, de indeling van de gegevens die worden verwacht door uw model en de indeling van de gegevens die aan clients worden geretourneerd.
     >
     >   Als de gegevens van de aanvraag een indeling hebben die niet kan worden gebruikt door uw model, kan het script deze omzetten in een acceptabele indeling. Het kan ook de reactie transformeren voordat deze wordt geretourneerd naar de client.
     >
-    > * De SDK van Azure Machine Learning biedt geen manier voor webservices of IoT Edge implementaties om toegang te krijgen tot uw gegevens archief of data sets. Als uw geïmplementeerde model toegang moet hebben tot gegevens die buiten de implementatie zijn opgeslagen, zoals gegevens in een Azure Storage-account, moet u een aangepaste code oplossing ontwikkelen met behulp van de relevante SDK. Bijvoorbeeld de [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python).
+    > * Webservices en IoT Edge-implementaties hebben geen toegang tot werk ruimten of gegevens sets in de data Workspace. Als uw geïmplementeerde service toegang moet hebben tot gegevens die buiten de implementatie zijn opgeslagen, zoals gegevens in een Azure Storage-account, moet u een aangepaste code oplossing ontwikkelen met behulp van de relevante SDK. Bijvoorbeeld de [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python).
     >
     >   Een alternatief dat kan worden gebruikt voor uw scenario is [batch voorspelling](how-to-use-parallel-run-step.md), waarmee tijdens de Score toegang wordt geboden tot gegevens archieven.
 
-* **Afhankelijkheden**, zoals helper-scripts of python/Conda-pakketten die zijn vereist voor het uitvoeren van het script of model van de vermelding.
+* **Omgeving**afwijzen. De basis installatie kopie met de geïnstalleerde pakket afhankelijkheden die zijn vereist voor het uitvoeren van het model.
 
-* **De implementatie configuratie** voor het reken doel dat als host fungeert voor het geïmplementeerde model. In deze configuratie worden de vereisten voor geheugen en CPU beschreven die nodig zijn om het model uit te voeren.
+* **Implementatie configuratie** voor het reken doel dat als host fungeert voor het geïmplementeerde model. In deze configuratie worden de vereisten voor geheugen en CPU beschreven die nodig zijn om het model uit te voeren.
 
 Deze items worden ingekapseld in een Afleidings *configuratie* en een *implementatie configuratie*. De configuratie voor afwijzen verwijst naar het script voor de vermelding en andere afhankelijkheden. U definieert deze configuraties programmatisch wanneer u de SDK gebruikt om de implementatie uit te voeren. U definieert ze in JSON-bestanden wanneer u de CLI gebruikt.
 
@@ -201,7 +201,7 @@ Het script bevat twee functies die het model laden en uitvoeren:
 
 * `init()`: deze functie laadt meestal het model in een globaal object. Deze functie wordt slechts één keer uitgevoerd wanneer de docker-container voor uw webservice wordt gestart.
 
-* `run(input_data)`: Met deze functie maakt gebruik van het model om te voorspellen van een waarde op basis van de ingevoerde gegevens. Invoer en uitvoer van de run worden meestal JSON gebruikt voor serialisatie en deserialisatie. U kunt ook werken met onbewerkte binaire gegevens. U kunt de gegevens transformeren voordat u deze naar het model verzendt of voordat u deze naar de client stuurt.
+* `run(input_data)`: deze functie maakt gebruik van het model voor het voors pellen van een waarde op basis van de invoer gegevens. Invoer en uitvoer van de run worden meestal JSON gebruikt voor serialisatie en deserialisatie. U kunt ook werken met onbewerkte binaire gegevens. U kunt de gegevens transformeren voordat u deze naar het model verzendt of voordat u deze naar de client stuurt.
 
 #### <a name="locate-model-files-in-your-entry-script"></a>Model bestanden zoeken in uw invoer script
 
@@ -485,7 +485,7 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inferenceconfig"></a>2. Definieer uw InferenceConfig
+### <a name="2-define-your-inference-environment"></a>2. uw Afleidings omgeving bepalen
 
 De configuratie voor afnemen beschrijft hoe u het model configureert om voor spellingen te maken. Deze configuratie maakt geen deel uit van uw invoer script. Het verwijst naar uw invoer script en wordt gebruikt voor het zoeken van alle resources die vereist zijn voor de implementatie. Het wordt later gebruikt wanneer u het model implementeert.
 
@@ -547,41 +547,6 @@ De klassen voor lokale, Azure Container Instances-en AKS-webservices kunnen vanu
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-#### <a name="profiling"></a>Profileren
-
-Voordat u uw model als een service implementeert, kunt u het beste een profiel voor het bepalen van de optimale CPU-en geheugen vereisten gebruiken. U kunt de SDK of de CLI gebruiken om uw model te profileren. In de volgende voor beelden ziet u hoe u een model kunt profielen met behulp van de SDK.
-
-> [!IMPORTANT]
-> Wanneer u profileren gebruikt, kan de configuratie voor het afwijzen van de deinterferentie niet verwijzen naar een Azure Machine Learning omgeving. Definieer in plaats daarvan de software afhankelijkheden met behulp van de para meter `conda_file` van het object `InferenceConfig`.
-
-```python
-import json
-test_data = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10]
-]})
-
-profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
-profile.wait_for_profiling(True)
-profiling_results = profile.get_results()
-print(profiling_results)
-```
-
-Met deze code wordt een resultaat weer gegeven dat vergelijkbaar is met de volgende uitvoer:
-
-```python
-{'cpu': 1.0, 'memoryInGB': 0.5}
-```
-
-Model profilerings resultaten worden verzonden als een `Run`-object.
-
-Zie [AZ ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile)(Engelstalig) voor meer informatie over het gebruik van profile ring van de cli.
-
-Zie de volgende documenten voor meer informatie:
-
-* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [Profiel ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
-* [Schema voor de configuratie van het Afleidings bestand](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Implementeren naar doel
 
@@ -1085,8 +1050,8 @@ docker kill mycontainer
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u wilt verwijderen van een geïmplementeerde webservice, gebruikt u `service.delete()`.
-Als u wilt een geregistreerde model verwijderen, gebruikt u `model.delete()`.
+Als u een geïmplementeerde webservice wilt verwijderen, gebruikt u `service.delete()`.
+Als u een geregistreerd model wilt verwijderen, gebruikt u `model.delete()`.
 
 Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) en [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)voor meer informatie.
 
@@ -1094,7 +1059,7 @@ Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/pyth
 
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie oplossen](how-to-troubleshoot-deployment.md)
-* [Azure Machine Learning-webservices met SSL beveiligde](how-to-secure-web-service.md)
+* [Azure Machine Learning webservices beveiligen met SSL](how-to-secure-web-service.md)
 * [Een Azure Machine Learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)

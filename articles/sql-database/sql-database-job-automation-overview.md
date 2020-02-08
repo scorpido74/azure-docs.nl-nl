@@ -9,13 +9,13 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 01/25/2019
-ms.openlocfilehash: c2548bb4537d17a3dab94d5476c743e2a70faad0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/07/2020
+ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810094"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083116"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Beheertaken automatiseren met behulp van databasetaken
 
@@ -66,7 +66,7 @@ Er zijn enkele belangrijke concepten in SQL Agent-taken:
 ### <a name="job-steps"></a>Taakstappen
 
 SQL Agent-taakstappen zijn reeksen met acties die door SQL Agent moeten worden uitgevoerd. Elke stap bevat de volgende stap die moet worden uitgevoerd als de stap is geslaagd of mislukt en in het laatste geval het aantal nieuwe pogingen in geval van een fout.
-Met SQL-Agent kunt u verschillende typen taak stappen maken, zoals een Transact-SQL-taak stap die één Transact-SQL-batch uitvoert op de data base, of de besturingssysteem opdracht/Power shell-stappen waarmee een aangepast besturings systeem script kan worden uitgevoerd. SSIS-taak stappen bieden u de mogelijkheid om gegevens te laden met behulp van SSIS-runtime of [replicatie](sql-database-managed-instance-transactional-replication.md) stappen die wijzigingen kunnen publiceren vanuit uw Data Base naar andere data bases.
+Met SQL-Agent kunt u verschillende typen taak stappen maken, zoals Transact-SQL-taak stap die één Transact-SQL-batch uitvoert op de data base, of met de opdracht/Power shell-stappen van het besturings systeem, waarmee u een aangepast besturings systeem script kunt uitvoeren. SSIS-taak stappen bieden u de mogelijkheid om gegevens te laden met SSIS runtime of [replicatie](sql-database-managed-instance-transactional-replication.md) stappen die wijzigingen vanuit uw data base
 
 [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) is een Database-Engine-functie waarmee u de wijzigingen die zijn aangebracht in een of meer tabellen in de ene database kunt publiceren en naar een set abonneedatabases kunt publiceren/distribueren. Publicatie van de wijzigingen wordt geïmplementeerd met behulp van de volgende staptypen voor de SQL Agent-taak:
 
@@ -168,9 +168,9 @@ Enkele van de SQL Agent-functies die beschikbaar zijn in SQL Server worden niet 
 
 Zie [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) voor meer informatie over SQL Server Agent.
 
-## <a name="elastic-database-jobs-preview"></a>Taken van Elastic Database (preview)
+## <a name="elastic-database-jobs-preview"></a>Elastic Database taken (preview-versie)
 
-**Taken voor Elastic Database** bieden de mogelijkheid om een of meer T-SQL-scripts parallel in een groot aantal databases uit te voeren volgens een schema of op aanvraag.
+**Taak voor Elastic Database** biedt de mogelijkheid om een of meer T-SQL-scripts parallel in een groot aantal databases uit te voeren volgens een schema of op aanvraag.
 
 **Taken uitvoeren voor een willekeurige combinatie van databases**: een of meer afzonderlijke databases, alle databases op een server, alle databases in een elastische pool of shardkaart, met de extra flexibiliteit om een specifieke database al dan niet op te nemen. **Taken kunnen worden uitgevoerd op meerdere servers en meerdere pools, en kunnen zelfs worden uitgevoerd voor databases in verschillende abonnementen.** Servers en pools worden dynamisch opgesomd tijdens runtime, zodat taken worden uitgevoerd voor alle databases die op het moment van de uitvoering in de doelgroep aanwezig zijn.
 
@@ -202,7 +202,9 @@ De *taakdatabase* wordt gebruikt voor het definiëren van taken en het bijhouden
 
 Voor de huidige preview is een bestaande Azure SQL-database (S0 of hoger) vereist om een elastische-taakagent te kunnen maken.
 
-De *taakdatabase* hoeft niet letterlijk nieuw te zijn, maar het moet een schone, lege database op servicelaag S0 of hoger zijn. De aanbevolen servicelaag van de *taakdatabase* is S1 of hoger. Dit hangt echter af van de prestatiebehoeften van uw taken: het aantal taakstappen, het aantal keer en met welke frequentie de taken worden uitgevoerd. Zo is een S0-database misschien voldoende voor een taakagent die enkele taken per uur uitvoert, maar als een taak elke minuut moet worden uitgevoerd, presteert deze database misschien onvoldoende en is een hogere servicelaag misschien beter.
+De *taak database* hoeft niet letterlijk nieuw te zijn, maar moet een schone, lege, S0 of hogere service doelstelling zijn. De aanbevolen Service doelstelling van de *taak database* is S1 of hoger, maar de optimale keuze is afhankelijk van de prestatie behoeften van uw taak (s): het aantal taak stappen, het aantal taak doelen en hoe vaak taken worden uitgevoerd. Een S0-data base kan bijvoorbeeld voldoende zijn voor een taak agent waarop weinig taken worden uitgevoerd die zijn gericht op minder dan tien data bases, maar waarbij elke minuut een taak wordt uitgevoerd, mogelijk niet snel genoeg is met een S0-data base en een hogere servicelaag mogelijk beter is. 
+
+Als bewerkingen voor de taak database langzamer zijn dan verwacht, [bewaakt](sql-database-monitor-tune-overview.md#monitor-database-performance) u de prestaties van de data base en het resource gebruik in de taak database tijdens peri Oden met een snelheid van Azure portal of [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dmv. Als er gebruik wordt gemaakt van een resource, zoals CPU, data IO of logboek schrijf methoden van 100% en correleert met peri Oden van tragheid, kunt u overwegen om de data base stapsgewijs te schalen naar hogere service doelstellingen (in het [DTU-model](sql-database-service-tiers-dtu.md) of in het [vCore-model](sql-database-service-tiers-vcore.md)) totdat de prestaties van de taak database voldoende zijn verbeterd.
 
 
 ##### <a name="job-database-permissions"></a>Machtigingen voor taakdatabase
@@ -212,7 +214,7 @@ Tijdens het maken van een taakagent worden er een schema, tabellen en een rol me
 
 |Rolnaam  |Machtigingen voor schema 'jobs'  |Machtigingen voor schema 'jobs_internal'  |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    Geen     |
+|**jobs_reader**     |    SELECT     |    None     |
 
 > [!IMPORTANT]
 > Houd rekening met de beveiligingsaspecten voordat u iemand als een databasebeheerder toegang verleent tot de *taakdatabase*. Een kwaadwillende gebruiker met machtigingen voor het maken of bewerken van taken kan een taak die gebruikmaakt van een opgeslagen referentie, maken of bewerken om verbinding te maken met een database onder het beheer van de kwaadwillende gebruiker. Op die manier kan de kwaadwillende gebruiker het wachtwoord van de referenties achterhalen.
@@ -224,12 +226,12 @@ Tijdens het maken van een taakagent worden er een schema, tabellen en een rol me
 Een *doelgroep* definieert de verzameling databases waarvoor een taakstap wordt uitgevoerd. Een doelgroep kan een willekeurig aantal en een willekeurige combinatie van de volgende elementen bevatten:
 
 - **SQL Database-server**: als een server is opgegeven, maken alle databases die op het moment waarop de taak wordt uitgevoerd aanwezig zijn in de server, deel uit van de groep. De referenties van de hoofddatabase moeten worden opgegeven zodat de groep kan worden opgesomd en worden bijgewerkt voordat de taak wordt uitgevoerd.
-- **Elastische pool**: als een elastische groep is opgegeven, maken alle databases die zich op het moment dat de taak wordt uitgevoerd in de elastische groep bevinden, deel uit van de groep. Wat de server betreft, moeten de referenties van de hoofddatabase worden opgegeven zodat de groep kan worden bijgewerkt voordat de taak wordt uitgevoerd.
+- **Elastische pool**: als een elastische pool is opgegeven, maken alle databases die zich in de elastische pool bevinden op het moment dat de taak wordt uitgevoerd, deel uit van de groep. Wat de server betreft, moeten de referenties van de hoofddatabase worden opgegeven zodat de groep kan worden bijgewerkt voordat de taak wordt uitgevoerd.
 - **Individuele database**: geef een of meer afzonderlijke databases op als onderdeel van de groep.
 - **Shardkaart**: databases van een shardkaart.
 
 > [!TIP]
-> Op het moment dat de taak wordt uitgevoerd, wordt de reeks databases in de doelgroepen die servers of pools bevatten, opnieuw geëvalueerd met behulp van *dynamische opsomming*. Dynamische opsomming zorgt ervoor dat **taken worden uitgevoerd voor alle databases die in de server of de groep bestaan op het moment dat de taak wordt uitgevoerd**. Een herevaluatie van de lijst met databases tijdens runtime is met name nuttig als het lidmaatschap van de pool of server regelmatig verandert.
+> Op het moment dat de taak wordt uitgevoerd, wordt de reeks databases in de doelgroepen die servers of pools bevatten, opnieuw geëvalueerd met behulp van *dynamische opsomming*. Dynamische opsomming zorgt ervoor dat **taken worden uitgevoerd voor alle databases die in de server of de pool bestaan op het moment dat de taak wordt uitgevoerd**. Een herevaluatie van de lijst met databases tijdens runtime is met name nuttig als het lidmaatschap van de pool of server regelmatig verandert.
 
 Pools en individuele databases kunnen worden opgegeven als ingesloten in of uitgesloten van de groep. Zo kunt u een doelgroep maken met een willekeurige combinatie van databases. Zo kunt u bijvoorbeeld een server toevoegen aan een doelgroep, maar specifieke databases in een elastische pool (of een hele pool) uitsluiten.
 
@@ -250,6 +252,10 @@ In **Voorbeeld 4** ziet u een doelgroep die een elastische pool als doel heeft. 
 
 **Voor beeld 5** en **voor beeld 6** worden geavanceerde Scenario's weer gegeven waarin Azure SQL-servers, elastische Pools en data bases kunnen worden gecombineerd met behulp van regels voor opnemen en uitsluiten.<br>
 In **Voorbeeld 7** ziet u dat de shards in een shardkaart ook kunnen worden geëvalueerd tijden het uitvoeren van de taak.
+
+> [!NOTE]
+> De taak database zelf kan het doel van een taak zijn. In dit scenario wordt de taak database behandeld net als elke andere doel database. De taak gebruiker moet zijn gemaakt en voldoende machtigingen hebben in de taak database en de data base-referentie voor de taak gebruiker moet ook bestaan in de taak database, net als bij elke andere doel database.
+>
 
 #### <a name="job"></a>Job
 

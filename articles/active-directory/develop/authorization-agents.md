@@ -2,22 +2,22 @@
 title: Autorisatie agenten en hoe ze kunnen worden ingeschakeld | Azure
 description: Meer informatie over de verschillende autorisatie agenten in de micro soft Authentication Library (MSAL) kan uw Android-app gebruiken en hoe deze kunnen worden ingeschakeld.
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.openlocfilehash: c2d0c8a877ba856aa7a93bfc960c44b63cbe8f9c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697996"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085331"
 ---
 # <a name="authorization-agents-android"></a>Machtigingsagenten (Android)
 
@@ -79,14 +79,14 @@ De volgende browsers zijn getest om te zien of ze correct worden omgeleid naar d
 | | Ingebouwde browser | Chrome | Opera  | Microsoft Edge | UC-browser | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
 | Nexus 4 (API 17) | Door | Door |niet van toepassing |niet van toepassing |niet van toepassing |niet van toepassing |
-| Samsung S7 (API 25) | door | Door | Door | Door | mislukt |Door |
-| Huawei (API 26) |Pass-* * | Door | mislukt | Door | Door |Door |
-| Vivo (API 26) |Door|Door|Door|Door|Door|mislukt|
-| Pixel 2 (API 26) |Door | Door | Door | Door | mislukt |Door |
+| Samsung S7 (API 25) | door | Door | Door | Door | daarvan |Door |
+| Huawei (API 26) |Pass-* * | Door | daarvan | Door | Door |Door |
+| Vivo (API 26) |Door|Door|Door|Door|Door|daarvan|
+| Pixel 2 (API 26) |Door | Door | Door | Door | daarvan |Door |
 | Oppo | Door | niet van toepassing * * * |niet van toepassing  |niet van toepassing |niet van toepassing | niet van toepassing|
-| OnePlus (API 25) |Door | Door | Door | Door | mislukt |Door |
-| Nexus (API 28) |Door | Door | Door | Door | mislukt |Door |
-|MI | Door | Door | Door | Door | mislukt |Door |
+| OnePlus (API 25) |Door | Door | Door | Door | daarvan |Door |
+| Nexus (API 28) |Door | Door | Door | Door | daarvan |Door |
+|MI | Door | Door | Door | Door | daarvan |Door |
 
 \* De ingebouwde browser van Samsung is Samsung internet.  
 \* * De ingebouwde browser van Huawei is de Huawei-browser.  

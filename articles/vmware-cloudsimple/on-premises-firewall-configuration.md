@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 09b25dbdc8fc13c40ccd89b2cfd78611cedaac9d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a9760b5c7a70c58a1afe1b14b781a35f2b9b18
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024463"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082964"
 ---
 # <a name="accessing-your-avs-private-cloud-environment-and-applications-from-on-premises"></a>Toegang tot uw persoonlijke cloud omgeving en-toepassingen van uw AVS vanuit on-premises
 
@@ -24,9 +24,9 @@ Een verbinding kan worden ingesteld vanuit een on-premises netwerk om te AVS met
 
 Om toegang te krijgen tot uw AVS-NSX en-T-beheer, moeten de poorten die in de onderstaande tabel zijn gedefinieerd, worden geopend op de on-premises firewall. 
 
-| Port       | Bron                           | Bestemming                      | Doel                                                                                                                |
+| Poort       | Bron                           | Doel                      | Doel                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| 53 (UDP)   | On-premises DNS-servers          | DNS-servers voor de Privécloud in de Cloud        | Vereist voor het door sturen van de DNS-zoek opdracht *AZ. AVS.io* van een on-premises netwerk een automatische AVS-DNS-server.     |
+| 53 (UDP)   | On-premises DNS-servers          | DNS-servers voor de Privécloud in de Cloud        | Vereist voor het door sturen van de DNS-zoek opdracht van *AZ.cloudsimple.io* naar automatische AVS-DNS-servers in de Cloud vanuit een on-premises netwerk.     |
 | 53 (UDP)   | DNS-servers voor de Privécloud in de Cloud        | On-premises DNS-servers          | Vereist voor het door sturen van DNS-zoek acties naar on-premises domein namen van AVS Private Cloud vCenter to on-premises DNS-servers. |
 | 80 (TCP)   | On-premises netwerk              | Beheer netwerk voor een privé-cloud van AVS | Vereist voor het omleiden van de vCenter *-* URL van http naar *https*.                                                         |
 | 443 (TCP)  | On-premises netwerk              | Beheer netwerk voor een privé-cloud van AVS | Vereist voor toegang tot vCenter en NSX-T-beheer vanuit een on-premises netwerk.                                           |
@@ -37,7 +37,7 @@ Om toegang te krijgen tot uw AVS-NSX en-T-beheer, moeten de poorten die in de on
 
 Voor het configureren van een on-premises Active Directory als een identiteits bron op de AVS-Privécloud, moeten de poorten die in de tabel zijn gedefinieerd, worden geopend. Zie [Azure AD gebruiken als een id-provider voor vCenter in de privécloud](https://docs.azure.cloudsimple.com/azure-ad/) AVS voor configuratie stappen.
 
-| Port         | Bron                           | Bestemming                                         | Doel                                                                                                                                          |
+| Poort         | Bron                           | Doel                                         | Doel                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)      | DNS-servers voor de Privécloud in de Cloud        | On-premises DNS-servers                             | Vereist voor het door sturen van DNS-zoek acties van on-premises Active Directory-domein namen van AVS Private Cloud vCenter naar on-premises DNS-servers.        |
 | 389 (TCP/UDP) | Beheer netwerk voor een privé-cloud van AVS | On-premises Active Directory-domein controllers     | Vereist voor LDAP-communicatie van AVS Private Cloud vCenter Server naar Active Directory-domein controllers voor gebruikers verificatie.              |
@@ -49,7 +49,7 @@ Voor het configureren van een on-premises Active Directory als een identiteits b
 
 Voor toegang tot virtuele machines van workload die worden uitgevoerd op de AVS-Privécloud, moeten poorten worden geopend op de on-premises firewall. In de onderstaande tabel ziet u een aantal algemene poorten die vereist zijn en hun doel. Raadpleeg de documentatie van de toepassing voor alle toepassingsspecifieke poort vereisten.
 
-| Port         | Bron                         | Bestemming                          | Doel                                                                              |
+| Poort         | Bron                         | Doel                          | Doel                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
 | 22 (TCP)      | On-premises netwerk            | Het werkbelasting netwerk van de AVS-Cloud       | Beveiligde shell toegang tot virtuele Linux-machines die worden uitgevoerd op de cloud van de AVS.            |
 | 3389 (TCP)    | On-premises netwerk            | Het werkbelasting netwerk van de AVS-Cloud       | Extern bureau blad naar virtuele Windows-machines die worden uitgevoerd op de cloud van de AVS.               |

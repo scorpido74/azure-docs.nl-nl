@@ -3,22 +3,22 @@ title: UWP overwegingen (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over specifieke overwegingen bij het gebruik van Universeel Windows-platform met de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 549e36099e06d665ecab879ceb3c38987d000852
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4803b2bda63ef0e14137aaafe95a422089e7f671
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695089"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083656"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>Universeel Windows-platform-specifieke overwegingen met MSAL.NET
 In UWP moet u rekening houden met verschillende overwegingen bij het gebruik van MSAL.NET.
@@ -29,7 +29,7 @@ In het WinRT-platform heeft `PublicClientApplication` de volgende Booleaanse eig
 > [!IMPORTANT]
 > Als u deze eigenschap instelt op True, wordt ervan uitgegaan dat de ontwikkelaar van de toepassing geïntegreerde Windows-authenticatie (IWA) in de toepassing heeft ingeschakeld. Voor dit:
 > - In de ``Package.appxmanifest`` voor uw UWP-toepassing schakelt u op het tabblad **mogelijkheden** de volgende mogelijkheden in:
->   - Enterprise-verificatie
+>   - Ondernemings verificatie
 >   - Particuliere netwerken (client & Server)
 >   - Gedeeld gebruikers certificaat
 
@@ -65,5 +65,5 @@ Meer informatie vindt u in de volgende voor beelden:
 
 Voorbeeld | Platform | Beschrijving 
 |------ | -------- | -----------|
-|[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Een Universeel Windows-platform-client toepassing met behulp van msal.net, die toegang heeft tot de Microsoft Graph voor een gebruiker die is geverifieerd met het Azure AD v 2.0-eind punt. <br>![Topologie](media/msal-net-uwp-considerations/topology-native-uwp.png)|
+|[Active-Directory-DotNet-native-UWP-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Een Universeel Windows-platform-client toepassing met behulp van msal.net, die toegang heeft tot de Microsoft Graph voor een gebruiker die is geverifieerd met het Azure AD v 2.0-eind punt. <br>![Topologie](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Een eenvoudige Xamarin Forms-app die laat zien hoe u MSAL kunt gebruiken om MSA en Azure AD te verifiëren via het AAD v 2.0-eind punt en toegang te krijgen tot de Microsoft Graph met het resulterende token. <br>![Topologie](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

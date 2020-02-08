@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: d5ecc104c7845a1881cbcdecfbccb75148f6e070
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ca7e7f7460db82a357ed8aa240467a6894254217
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "74815369"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086989"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech Service-containers installeren en uitvoeren (preview-versie)
 
@@ -26,7 +26,7 @@ Met spraak containers kunnen klanten een spraak toepassings architectuur maken d
 > [!IMPORTANT]
 > Alle spraak containers worden momenteel aangeboden als onderdeel van een [open bare preview-versie](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio). Er wordt een aankondiging gedaan wanneer de voortgang van de spraak containers op algemene Beschik baarheid (GA) wordt weer gegeven.
 
-| Functie | Functies | Meest recent |
+| Functie | Functies | Jongste |
 |--|--|--|
 | Spraak naar tekst | Transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.0.0 |
 | Custom Speech-naar-tekst | Door gebruik te maken van een aangepast model van de [Custom speech Portal](https://speech.microsoft.com/customspeech), transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.0.0 |
@@ -39,9 +39,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 De volgende vereisten voordat u spraak containers gebruikt:
 
-| Verplicht | Doel |
+| Vereist | Doel |
 |--|--|
-| Docker-engine | De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie voor een uitleg van de basisprincipes van Docker en containers, de [dockeroverzicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br> |
+| Docker-engine | De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie het [docker-overzicht](https://docs.docker.com/engine/docker-overview/)voor een primer op basis van docker en container.<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br> |
 | Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker`-opdrachten. |
 | Spraak resource | Als u deze containers wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure- _spraak_ bron om de bijbehorende API-sleutel en eind punt-URI op te halen. Beide waarden zijn beschikbaar op het **spraak** overzicht van de Azure Portal en op de pagina sleutels. Ze zijn beide nodig om de container te starten.<br><br>**{API_KEY}** : een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}** : het eind punt op de pagina **overzicht** |
 
@@ -252,7 +252,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Met deze opdracht gebeurt het volgende:
+Deze opdracht:
 
 * Voert een *spraak-naar-tekst* -container uit vanuit de container installatie kopie.
 * Wijst 4 CPU-kernen en 4 GB aan geheugen toe.
@@ -292,7 +292,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Met deze opdracht gebeurt het volgende:
+Deze opdracht:
 
 * Hiermee wordt een *Custom speech-naar-tekst* -container uitgevoerd vanuit de container installatie kopie.
 * Wijst 4 CPU-kernen en 4 GB aan geheugen toe.
@@ -314,7 +314,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Met deze opdracht gebeurt het volgende:
+Deze opdracht:
 
 * Voert een *tekst-naar-spraak* -container uit vanuit de container installatie kopie.
 * Wijst twee CPU-kernen en een gigabyte (GB) aan geheugen toe.
@@ -354,7 +354,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Met deze opdracht gebeurt het volgende:
+Deze opdracht:
 
 * Hiermee wordt een *aangepaste tekst-naar-spraak-* container uitgevoerd vanuit de container installatie kopie.
 * Wijst twee CPU-kernen en een gigabyte (GB) aan geheugen toe.
@@ -367,7 +367,7 @@ Met deze opdracht gebeurt het volgende:
 ***
 
 > [!IMPORTANT]
-> De `Eula`, `Billing`, en `ApiKey` opties moeten worden opgegeven voor het uitvoeren van de container; anders wordt de container niet start.  Zie voor meer informatie, [facturering](#billing).
+> De opties `Eula`, `Billing`en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Query uitvoeren op het prediction-eind punt van de container
 
@@ -402,13 +402,13 @@ Wanneer u de container start of uitvoert, kunnen er problemen optreden. Gebruik 
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Billing
+## <a name="billing"></a>Facturering
 
 De spraak containers verzenden facturerings gegevens naar Azure met behulp van een *spraak* bron op uw Azure-account.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Zie voor meer informatie over deze opties [containers configureren](speech-container-configuration.md).
+Zie [containers configureren](speech-container-configuration.md)voor meer informatie over deze opties.
 
 <!--blogs/samples/video courses -->
 
@@ -425,7 +425,7 @@ In dit artikel hebt u concepten en werk stromen geleerd om spraak containers te 
   * *Aangepaste tekst-naar-spraak*
 * Container installatie kopieën worden gedownload uit het container register in Azure.
 * Containerinstallatiekopieën uitvoeren in Docker.
-* U kunt de REST API of SDK gebruiken voor het aanroepen van bewerkingen in spraak containers door de URI van de host op te geven van de container.
+* Of u de REST API (alleen tekst naar spraak) of de SDK (spraak naar tekst of tekst naar spraak) wilt gebruiken, geeft u de URI van de host op. 
 * U moet facturerings gegevens opgeven bij het instantiëren van een container.
 
 > [!IMPORTANT]

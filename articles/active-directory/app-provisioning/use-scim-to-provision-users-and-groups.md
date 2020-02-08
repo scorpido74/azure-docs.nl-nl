@@ -11,19 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 2/7/2019
+ms.date: 2/7/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55b31dec0531add8e8c3b40bd9cc3e031ef30000
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b5a74e03a5b166af85c809725c2c8b9a13b7e4f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066380"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085444"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten configureren met Azure Active Directory (Azure AD)
+# <a name="develop-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Een SCIM-eind punt ontwikkelen en gebruikers inrichten configureren met Azure Active Directory (Azure AD)
 
 Als ontwikkelaar van een toepassing kunt u het systeem gebruiken voor SCIM-gebruikers beheer-API (Cross-Domain Identity Management) om het automatisch inrichten van gebruikers en groepen tussen uw toepassing en Azure AD mogelijk te maken. In dit artikel wordt beschreven hoe u een SCIM-eind punt bouwt en integreert met de Azure AD-inrichtings service. De SCIM-specificatie biedt een gemeen schappelijk gebruikers schema voor het inrichten van. Bij gebruik in combi natie met Federatie standaarden zoals SAML of OpenID Connect Connect biedt beheerders een end-to-end, op standaarden gebaseerde oplossing voor toegangs beheer.
 
@@ -722,6 +722,34 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 
 *HTTP/1.1 204 geen inhoud*
 
+### <a name="security-requirements"></a>Beveiligings vereisten
+**TLS-protocol versies**
+
+De enige acceptabele TLS-protocol versies zijn TLS 1,2 en TLS 1,3. Er zijn geen andere versies van TLS toegestaan. Er is geen SSL-versie toegestaan. 
+- RSA-sleutels moeten ten minste 2.048 bits zijn.
+- ECC-sleutels moeten ten minste 256 bits zijn en worden gegenereerd met een goedgekeurde elliptische curve
+
+
+**Sleutel lengten**
+
+Alle services moeten X. 509-certificaten gebruiken die zijn gegenereerd met cryptografische sleutels van voldoende lengte, wat betekent het volgende:
+
+**Coderings suites**
+
+Alle services moeten worden geconfigureerd voor het gebruik van de volgende coderings suites in de exacte volg orde die hieronder is opgegeven. Houd er rekening mee dat als u alleen een RSA-certificaat hebt, de installatie van de ECDSA-coderings suites geen effect heeft. </br>
+
+Minimale staaf voor TLS 1,2-coderings suites:
+
+- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
+
 ## <a name="step-3-build-a-scim-endpoint"></a>Stap 3: een SCIM-eind punt bouwen
 
 Als u een SCIM-webservice maakt die interfaces met Azure Active Directory, kunt u automatische gebruikers inrichting inschakelen voor vrijwel elke toepassing of identiteits opslag.
@@ -814,10 +842,6 @@ Ontwikkel aars die gebruikmaken van de CLI-bibliotheken kunnen hun services host
 ```csharp
  private static void Main(string[] arguments)
  {
- // Microsoft.SystemForCrossDomainIdentityManagement.IMonitor, 
- // Microsoft.SystemForCrossDomainIdentityManagement.IProvider and 
- // Microsoft.SystemForCrossDomainIdentityManagement.Service are all defined in 
- // Microsoft.SystemForCrossDomainIdentityManagement.Service.dll.  
 
  Microsoft.SystemForCrossDomainIdentityManagement.IMonitor monitor = 
    new DevelopersMonitor();
@@ -907,10 +931,6 @@ Als u de service in Internet Information Services wilt hosten, bouwt een ontwikk
 ```csharp
  public class Startup
  {
- // Microsoft.SystemForCrossDomainIdentityManagement.IWebApplicationStarter, 
- // Microsoft.SystemForCrossDomainIdentityManagement.IMonitor and  
- // Microsoft.SystemForCrossDomainIdentityManagement.Service are all defined in 
- // Microsoft.SystemForCrossDomainIdentityManagement.Service.dll.  
 
  Microsoft.SystemForCrossDomainIdentityManagement.IWebApplicationStarter starter;
 
@@ -1448,7 +1468,7 @@ Laat het ons weten op [UserVoice](https://aka.ms/appprovisioningfeaturerequest)v
 
 Bepaalde apps staan inkomend verkeer naar hun app toe. De Azure AD-inrichtings service werkt alleen zoals verwacht als de gebruikte IP-adressen zijn toegestaan. Zie voor een lijst met IP-adressen voor elke servicetag/regio het JSON-bestand- [Azure IP-bereiken en de service Tags – open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519). U kunt deze Ip's naar behoefte downloaden en Program meren in uw firewall. De gereserveerde IP-bereiken voor Azure AD-inrichting vindt u onder ' AzureActiveDirectoryDomainServices '.
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 
 * [Gebruikers inrichten en het ongedaan maken van de inrichting van SaaS-apps automatiseren](user-provisioning.md)
 * [Kenmerk toewijzingen voor gebruikers inrichting aanpassen](customize-application-attributes.md)

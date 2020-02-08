@@ -9,12 +9,12 @@ ms.date: 12/13/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 2f52d72a1f2e3c3d1f3495c4b7f6f633db30778e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437283"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086601"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Zelf studie: reageren op Blob Storage gebeurtenissen in IoT Edge (preview-versie)
 Dit artikel laat u zien hoe u de Azure Blob Storage kunt implementeren in IoT-module, die als Event Grid Publisher kan fungeren voor het verzenden van gebeurtenissen bij het maken van een BLOB en het verwijderen van een BLOB naar Event Grid.  
@@ -47,7 +47,7 @@ Er zijn verschillende manieren om modules op een IoT Edge apparaat te implemente
 
 ### <a name="configure-a-deployment-manifest"></a>Een manifest van de implementatie configureren
 
-Het manifest voor een implementatie is een JSON-document waarin wordt beschreven welke modules te implementeren, hoe gegevens stromen tussen de modules, en de gewenste eigenschappen van de moduledubbels. De Azure Portal bevat een wizard die u helpt bij het maken van een implementatie manifest, in plaats van het JSON-document hand matig te bouwen.  Er drie stappen: **modules toevoegen**, **routes opgeven**, en **implementatie bekijken**.
+Het manifest voor een implementatie is een JSON-document waarin wordt beschreven welke modules te implementeren, hoe gegevens stromen tussen de modules, en de gewenste eigenschappen van de moduledubbels. De Azure Portal bevat een wizard die u helpt bij het maken van een implementatie manifest, in plaats van het JSON-document hand matig te bouwen.  Er zijn drie stappen: **modules toevoegen**, **routes opgeven**en de **implementatie controleren**.
 
 ### <a name="add-modules"></a>Modules toevoegen
 
@@ -62,9 +62,8 @@ Het manifest voor een implementatie is een JSON-document waarin wordt beschreven
     ```json
         {
           "Env": [
-           "inbound:serverAuth:tlsPolicy=enabled",
-           "inbound:clientAuth:clientCert:enabled=false",
-           "outbound:webhook:httpsOnly=false"
+           "inbound__serverAuth__tlsPolicy=enabled",
+           "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -79,18 +78,15 @@ Het manifest voor een implementatie is een JSON-document waarin wordt beschreven
     ```    
 
  1. Klik op **Opslaan**.
- 1. Ga door naar de volgende sectie om de module Azure Functions toe te voegen
+ 1. Ga verder met de volgende sectie om de Azure Event Grid Subscriber module toe te voegen voordat u ze samen implementeert.
 
     >[!IMPORTANT]
-    > In deze zelf studie leert u hoe u de Event Grid-module implementeert om HTTP/HTTPs-aanvragen toe te staan, client verificatie is uitgeschakeld en HTTP-abonnees zijn toegestaan. Voor werk belastingen wordt u aangeraden alleen HTTPs-aanvragen en abonnees in te scha kelen met client verificatie ingeschakeld. Zie [beveiliging en verificatie](security-authentication.md)voor meer informatie over het veilig configureren van Event grid module.
+    > In deze zelf studie leert u hoe u de Event Grid-module implementeert om HTTP/HTTPs-aanvragen toe te staan. client verificatie is uitgeschakeld. Voor werk belastingen wordt u aangeraden alleen HTTPs-aanvragen en abonnees in te scha kelen met client verificatie ingeschakeld. Zie [beveiliging en verificatie](security-authentication.md)voor meer informatie over het veilig configureren van Event grid module.
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>Azure function IoT Edge-module implementeren
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Event Grid Subscriber IoT Edge-module implementeren
 
-In deze sectie wordt beschreven hoe u de Azure Functions IoT-module implementeert, die als Event Grid-abonnee zou fungeren waaraan gebeurtenissen kunnen worden geleverd.
-
->[!IMPORTANT]
->In deze sectie gaat u een voor beeld van een op Azure-functie gebaseerde Abonneer module implementeren. Het kan natuurlijk een aangepaste IoT-module zijn die kan Luis teren naar HTTP POST-aanvragen.
+In deze sectie wordt beschreven hoe u een andere IoT-module implementeert die als een gebeurtenis-handler zou fungeren waarmee gebeurtenissen kunnen worden geleverd.
 
 ### <a name="add-modules"></a>Modules toevoegen
 
@@ -99,23 +95,8 @@ In deze sectie wordt beschreven hoe u de Azure Functions IoT-module implementeer
 1. Geef de naam, de afbeelding en de opties voor het maken van de container op van de container:
 
    * **Naam**: abonnee
-   * **Afbeeldings-URI**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **Opties**voor het maken van containers:
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
+   * **Afbeeldings-URI**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Opties**voor het maken van containers: geen
 1. Klik op **Opslaan**.
 1. Ga door naar de volgende sectie om de Azure Blob Storage-module toe te voegen
 
@@ -133,7 +114,7 @@ In deze sectie wordt beschreven hoe u de Azure Blob Storage-module implementeert
    * **Afbeeldings-URI**: mcr.Microsoft.com/Azure-Blob-Storage:Latest
    * **Opties**voor het maken van containers:
 
-```json
+   ```json
        {
          "Env":[
            "LOCAL_STORAGE_ACCOUNT_NAME=<your storage account name>",
@@ -149,19 +130,18 @@ In deze sectie wordt beschreven hoe u de Azure Blob Storage-module implementeert
            }
          }
        }
-```
-> [!IMPORTANT]
-> - De module Blob Storage kan gebeurtenissen met zowel HTTPS als HTTP publiceren. 
-> - Als u de op client gebaseerde verificatie voor EventGrid hebt ingeschakeld, moet u ervoor zorgen dat u de waarde van EVENTGRID_ENDPOINT bijwerkt om HTTPS als volgt toe te staan: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438` 
-> - En voeg nog een omgevings variabele toe `AllowUnknownCertificateAuthority=true` aan de bovenstaande JSON. Bij het praten met EventGrid via HTTPS kan met **AllowUnknownCertificateAuthority** de opslag module zelfondertekende EventGrid-server certificaten vertrouwen.
+   ```
 
-
+   > [!IMPORTANT]
+   > - De module Blob Storage kan gebeurtenissen met zowel HTTPS als HTTP publiceren. 
+   > - Als u de verificatie op basis van de client voor EventGrid hebt ingeschakeld, moet u ervoor zorgen dat u de waarde van EVENTGRID_ENDPOINT bijwerkt om HTTPS toe te staan, zoals: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438`.
+   > - Voeg ook nog een omgevings variabele `AllowUnknownCertificateAuthority=true` toe aan de bovenstaande JSON. Bij het praten met EventGrid via HTTPS kan met **AllowUnknownCertificateAuthority** de opslag module zelfondertekende EventGrid-server certificaten vertrouwen.
 
 4. Werk de JSON bij die u hebt gekopieerd met de volgende gegevens:
 
    - Vervang `<your storage account name>` door een naam die u kunt onthouden. Account namen moeten 3 tot 24 tekens lang zijn, met kleine letters en cijfers. Geen spaties.
 
-   - Vervang `<your storage account key>` door een base64-sleutel van 64-bytes. U kunt een sleutel met de hulpprogramma's zoals genereren [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64). U gebruikt deze referenties voor toegang tot de blob-opslag van andere modules.
+   - Vervang `<your storage account key>` door een base64-sleutel van 64-bytes. U kunt een sleutel met hulpprogram ma's zoals [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64)genereren. U gebruikt deze referenties voor toegang tot de blob-opslag van andere modules.
 
    - Vervang `<event grid module name>` door de naam van uw Event Grid-module.
    - Vervang `<storage mount>` volgens het besturings systeem van de container.
@@ -181,7 +161,7 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
 ### <a name="review-deployment"></a>Implementatie bekijken
 
 1. In het gedeelte beoordeling ziet u het JSON-implementatie manifest dat is gemaakt op basis van uw selecties in de vorige sectie. Controleer of de volgende vier modules worden weer geven: **$edgeAgent**, **$edgeHub**, **eventgridmodule**, **Subscriber** en **azureblobstorageoniotedge** die allemaal worden geïmplementeerd.
-2. Lees de informatie van uw implementatie, en selecteer vervolgens **indienen**.
+2. Controleer uw implementatie gegevens en selecteer vervolgens **verzenden**.
 
 ## <a name="verify-your-deployment"></a>Uw implementatie verifiëren
 
@@ -221,42 +201,41 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
 2. Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp worden gepubliceerd. Als u een gebeurtenis wilt ontvangen, moet u een Event Grid-abonnement maken voor **MicrosoftStorage** -onderwerp.
     1. Maak blobsubscription. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
-    ```json
+       ```json
         {
           "properties": {
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
         }
-    ```
+       ```
 
-    >[!NOTE]
-    > De eigenschap **endpointType** geeft aan dat de abonnee een **webhook**is.  De **endpointUrl** geeft de URL aan waar de abonnee naar gebeurtenissen luistert. Deze URL komt overeen met de Azure function-voor beeld die u eerder hebt geïmplementeerd.
+       >[!NOTE]
+       > De eigenschap **endpointType** geeft aan dat de abonnee een **webhook**is.  De **endpointUrl** geeft de URL aan waar de abonnee naar gebeurtenissen luistert. Deze URL komt overeen met de Azure function-voor beeld die u eerder hebt geïmplementeerd.
 
     2. Voer de volgende opdracht uit om een abonnement voor het onderwerp te maken. Controleer of de HTTP-status code is `200 OK`.
 
-    ```sh
-    curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
-    ```
+       ```sh
+       curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
+       ```
 
-    > [!IMPORTANT]
-    > - Als de client verificatie is ingeschakeld via SAS-sleutel, moet de eerder opgegeven SAS-sleutel worden toegevoegd als een header voor de HTTPS-stroom. De krul aanvraag is daarom: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
-    > - Voor de HTTPS-stroom geldt dat als de client verificatie via het certificaat is ingeschakeld, het krul verzoek:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-
+       > [!IMPORTANT]
+       > - Als de client verificatie is ingeschakeld via SAS-sleutel, moet de eerder opgegeven SAS-sleutel worden toegevoegd als een header voor de HTTPS-stroom. De krul aanvraag is daarom: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
+       > - Voor de HTTPS-stroom geldt dat als de client verificatie via het certificaat is ingeschakeld, het krul verzoek:`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
     3. Voer de volgende opdracht uit om het abonnement te controleren dat is gemaakt. De HTTP-status code van 200 OK moet worden geretourneerd.
 
-    ```sh
-    curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
-    ```
+       ```sh
+       curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
+       ```
 
-    Voorbeelduitvoer:
+       Voorbeelduitvoer:
 
-    ```json
+       ```json
         {
           "id": "/iotHubs/eg-iot-edge-hub/devices/eg-edge-device/modules/eventgridmodule/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5",
           "type": "Microsoft.EventGrid/eventSubscriptions",
@@ -266,18 +245,18 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
         }
-    ```
+       ```
 
-    > [!IMPORTANT]
-    > - Als de client verificatie is ingeschakeld via SAS-sleutel, moet de eerder opgegeven SAS-sleutel worden toegevoegd als een header voor de HTTPS-stroom. De krul aanvraag is daarom: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-    > - Voor de HTTPS-stroom geldt dat als de client verificatie via het certificaat is ingeschakeld, het krul verzoek: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > [!IMPORTANT]
+       > - Als de client verificatie is ingeschakeld via SAS-sleutel, moet de eerder opgegeven SAS-sleutel worden toegevoegd als een header voor de HTTPS-stroom. De krul aanvraag is daarom: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - Voor de HTTPS-stroom geldt dat als de client verificatie via het certificaat is ingeschakeld, het krul verzoek: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
-2. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) downloaden en [verbinding maken met uw lokale opslag](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer)
+3. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) downloaden en [verbinding maken met uw lokale opslag](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer)
 
 ## <a name="verify-event-delivery"></a>Gebeurtenis levering verifiëren
 
@@ -289,7 +268,7 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
     Voorbeeld uitvoer:
 
     ```json
-            Received event data [
+            Received Event:
             {
               "id": "d278f2aa-2558-41aa-816b-e6d8cc8fa140",
               "topic": "MicrosoftStorage",
@@ -309,7 +288,6 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
                 "blobType": "BlockBlob"
               }
             }
-          ]
     ```
 
 ### <a name="verify-blobdeleted-event-delivery"></a>Levering van BlobDeleted-gebeurtenis verifiëren
@@ -320,7 +298,7 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
     Voorbeeld uitvoer:
     
     ```json
-            Received event data [
+            Received Event:
             {
               "id": "ac669b6f-8b0a-41f3-a6be-812a3ce6ac6d",
               "topic": "MicrosoftStorage",
@@ -340,10 +318,9 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
                 "blobType": "BlockBlob"
               }
             }
-          ]
     ```
 
-Gefeliciteerd! U hebt de zelf studie voltooid. De volgende secties bevatten informatie over de gebeurtenis eigenschappen.
+Gefeliciteerd. U hebt de zelf studie voltooid. De volgende secties bevatten informatie over de gebeurtenis eigenschappen.
 
 ### <a name="event-properties"></a>Gebeurtenis eigenschappen
 
@@ -351,27 +328,27 @@ Hier ziet u de lijst met ondersteunde gebeurtenis eigenschappen en hun typen en 
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| onderwerp | string | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
-| subject | string | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| eventType | string | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
-| eventTime | string | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
-| id | string | De unieke id voor de gebeurtenis. |
+| onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid levert deze waarde. |
+| subject | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp. |
+| eventType | tekenreeks | Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron. |
+| eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
+| id | tekenreeks | De unieke id voor de gebeurtenis. |
 | data | object | Gebeurtenis gegevens van Blob-opslag. |
-| dataVersion | string | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
-| metadataVersion | string | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
+| dataVersion | tekenreeks | De schema versie van het gegevens object. De uitgever definieert de schema versie. |
+| metadataVersion | tekenreeks | De schema versie van de meta gegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid levert deze waarde. |
 
 Het gegevens object heeft de volgende eigenschappen:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| api | string | De bewerking die de gebeurtenis heeft geactiveerd. Dit kan een van de volgende waarden zijn: <ul><li>BlobCreated-toegestane waarden zijn: `PutBlob` en `PutBlockList`</li><li>BlobDeleted-toegestane waarden zijn `DeleteBlob`, `DeleteAfterUpload` en `AutoDelete`. <p>De gebeurtenis `DeleteAfterUpload` wordt gegenereerd wanneer de blob automatisch wordt verwijderd, omdat de gewenste eigenschap deleteAfterUpload is ingesteld op True. </p><p>Er wordt een `AutoDelete` gebeurtenis gegenereerd wanneer de blob automatisch wordt verwijderd, omdat de gewenste eigenschaps waarde voor deleteAfterMinutes is verlopen.</p></li></ul>|
-| clientRequestId | string | een aanvraag-id van de client voor de bewerking van de opslag-API. Deze id kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld ' client-request-id ' in de logboeken, en kan worden verschaft in client aanvragen via de header ' x-MS-Client-Request-id '. Zie [logboek indeling](/rest/api/storageservices/storage-analytics-log-format)voor meer informatie. |
-| requestId | string | Door de service gegenereerde aanvraag-id voor de bewerking van de opslag-API. Kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld aanvraag-id-header in de logboeken en wordt geretourneerd van het initiëren van de API-aanroep in de header x-MS-Request-id. Zie de [logboek indeling](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-| eTag | string | De waarde die u kunt gebruiken om bewerkingen voorwaardelijk uit te voeren. |
-| contentType | string | Het opgegeven inhouds type voor de blob. |
+| api | tekenreeks | De bewerking die de gebeurtenis heeft geactiveerd. Dit kan een van de volgende waarden zijn: <ul><li>BlobCreated-toegestane waarden zijn: `PutBlob` en `PutBlockList`</li><li>BlobDeleted-toegestane waarden zijn `DeleteBlob`, `DeleteAfterUpload` en `AutoDelete`. <p>De gebeurtenis `DeleteAfterUpload` wordt gegenereerd wanneer de blob automatisch wordt verwijderd, omdat de gewenste eigenschap deleteAfterUpload is ingesteld op True. </p><p>Er wordt een `AutoDelete` gebeurtenis gegenereerd wanneer de blob automatisch wordt verwijderd, omdat de gewenste eigenschaps waarde voor deleteAfterMinutes is verlopen.</p></li></ul>|
+| clientRequestId | tekenreeks | een aanvraag-ID van de client voor de bewerking van de opslag-API. Deze ID kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld ' client-request-id ' in de logboeken, en kan worden verschaft in client aanvragen via de header ' x-MS-Client-Request-id '. Zie [logboek indeling](/rest/api/storageservices/storage-analytics-log-format)voor meer informatie. |
+| requestId | tekenreeks | Door de service gegenereerde aanvraag-ID voor de bewerking van de opslag-API. Kan worden gebruikt om te correleren Azure Storage Diagnostische logboeken met behulp van het veld aanvraag-id-header in de logboeken en wordt geretourneerd van het initiëren van de API-aanroep in de header x-MS-Request-id. Zie de [logboek indeling](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| eTag | tekenreeks | De waarde die u kunt gebruiken om bewerkingen voorwaardelijk uit te voeren. |
+| contentType | tekenreeks | Het opgegeven inhouds type voor de blob. |
 | contentLength | geheel getal | De grootte van de BLOB in bytes. |
-| blobType | string | Het type blob. Geldige waarden zijn ' BlockBlob ' of ' PageBlob '. |
-| url | string | Het pad naar de blob. <br>Als de client gebruikmaakt van een BLOB-REST API, heeft de URL deze structuur: *\<Storage-account naam\>. blob.core.windows.net/\<container naam\>/\<bestands naam* \>. <br>Als de client een Data Lake Storage REST API gebruikt, heeft de URL deze structuur: *\<Storage-account-name\>. dfs.core.windows.net/\<bestands* naam\>/\<bestandsnaam\>. |
+| blobType | tekenreeks | Het type blob. Geldige waarden zijn ' BlockBlob ' of ' PageBlob '. |
+| url | tekenreeks | Het pad naar de blob. <br>Als de client gebruikmaakt van een BLOB-REST API, heeft de URL deze structuur: *\<Storage-account naam\>. blob.core.windows.net/\<container naam\>/\<bestands naam* \>. <br>Als de client een Data Lake Storage REST API gebruikt, heeft de URL deze structuur: *\<Storage-account-name\>. dfs.core.windows.net/\<bestands* naam\>/\<bestandsnaam\>. |
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d4e25074203ddcc016f54842f25f52017c6137f0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019822"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083222"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Workloads migreren met behulp van uitgerekte netwerken van Laag 2
 
@@ -48,7 +48,7 @@ Controleer of de volgende locaties aanwezig zijn voordat u de oplossing implemen
 * De versie van het zelfstandige NSX-T-rand apparaat is compatibel met de NSX-T-beheer versie (NSX-T 2.3.0) die wordt gebruikt in de cloud omgeving van uw AVS.
 * Er is een trunk-poort groep gemaakt in de on-premises vCenter met vervalste overdrachten ingeschakeld.
 * Een openbaar IP-adres is gereserveerd voor gebruik voor het NSX-T-client-uplink-IP-adres en 1:1 NAT is aanwezig voor de omzetting tussen de twee adressen.
-* DNS-door sturen is ingesteld op de on-premises DNS-servers voor de AZ. AVS.io domein om te verwijzen naar de DNS-servers van de AVS-Privécloud.
+* Het door sturen van DNS is ingesteld op de on-premises DNS-servers voor het az.cloudsimple.io-domein om te verwijzen naar de DNS-servers van de AVS-Privécloud.
 * De RTT-latentie is kleiner dan of gelijk aan 150 MS, zoals vereist voor het werken met vMotion op de twee sites.
 
 ## <a name="limitations-and-considerations"></a>Beperkingen en overwegingen
@@ -57,10 +57,10 @@ De volgende tabel geeft een lijst van ondersteunde vSphere-versies en typen netw
 
 | vSphere-versie | Type bron-vSwitch | Virtuele NIC-stuur programma | Type doel-vSwitch | Ondersteund? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Alles | DVS | Alles | DVS | Ja |
+| Alle | DVS | Alle | DVS | Ja |
 | vSphere 6,7 UI of hoger, 6.5 P03 of hoger | DVS | VMXNET3 | N-VDS | Ja |
 | vSphere 6,7 UI of hoger, 6.5 P03 of hoger | DVS | E1000 | N-VDS | [Niet ondersteund per VWware](https://kb.vmware.com/s/article/56991) |
-| vSphere 6,7 UI of 6.5 P03, NSX-V of-versies onder NSX-T 2.2, 6.5 P03 of hoger | Alles | Alles | N-VDS | [Niet ondersteund per VWware](https://kb.vmware.com/s/article/56991) |
+| vSphere 6,7 UI of 6.5 P03, NSX-V of-versies onder NSX-T 2.2, 6.5 P03 of hoger | Alle | Alle | N-VDS | [Niet ondersteund per VWware](https://kb.vmware.com/s/article/56991) |
 
 Vanaf de VMware NSX-T 2,3 release:
 
@@ -75,7 +75,7 @@ Zie voor meer informatie [virtuele particuliere netwerken](https://docs.vmware.c
 
 | **Item** | **Waarde** |
 |------------|-----------------|
-| Netwerk naam | MGMT_NET_VLAN469 |
+| Netwerknaam | MGMT_NET_VLAN469 |
 | VLAN | 469 |
 | CIDR| 10.250.0.0/24 |
 | Zelfstandig edge-apparaat-IP-adres | 10.250.0.111 |
@@ -154,11 +154,11 @@ Voor het tot stand brengen van een VPN-route op basis van IPsec tussen de NSX-T 
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Het IP-adres van de loop back-interface adverteren naar het aan-netwerk
 
-1. Maak een null-route voor het loop back-interface netwerk. Meld u aan bij NSX-T-beheer en selecteer **netwerk** > **routerings** > **Routers** > **provider-LR** > **route ring** > **statische routes**. Klik op **Add**. Voor **netwerk**voert u het IP-adres van de loop back-interface in. Klik voor **volgende hops**op **toevoegen**, geef ' null ' op voor de volgende hop en behoud de standaard waarde van 1 voor de beheer afstand.
+1. Maak een null-route voor het loop back-interface netwerk. Meld u aan bij NSX-T-beheer en selecteer **netwerk** > **routerings** > **Routers** > **provider-LR** > **route ring** > **statische routes**. Klik op **Toevoegen**. Voor **netwerk**voert u het IP-adres van de loop back-interface in. Klik voor **volgende hops**op **toevoegen**, geef ' null ' op voor de volgende hop en behoud de standaard waarde van 1 voor de beheer afstand.
 
     ![Statische route toevoegen](media/l2vpn-routing-security01.png)
 
-2. Een IP-voorvoegsel lijst maken. Meld u aan bij NSX-T-beheer en selecteer **network** > **routing** > **Routers** > **provider-LR** > **route ring** > **IP-voorvoegsel lijsten**. Klik op **Add**. Voer een naam in om de lijst aan te duiden. Voor voor **voegsels**klikt u twee keer op **toevoegen** . Voer op de eerste regel ' 0.0.0.0/0 ' in voor het **netwerk** en ' weigeren ' voor de **actie**. Selecteer in de tweede regel **een** voor **netwerk** en **toestaan** om **actie te ondernemen**.
+2. Een IP-voorvoegsel lijst maken. Meld u aan bij NSX-T-beheer en selecteer **network** > **routing** > **Routers** > **provider-LR** > **route ring** > **IP-voorvoegsel lijsten**. Klik op **Toevoegen**. Voer een naam in om de lijst aan te duiden. Voor voor **voegsels**klikt u twee keer op **toevoegen** . Voer op de eerste regel ' 0.0.0.0/0 ' in voor het **netwerk** en ' weigeren ' voor de **actie**. Selecteer in de tweede regel **een** voor **netwerk** en **toestaan** om **actie te ondernemen**.
 3. Koppel de IP-voorvoegsel lijst aan beide BGP-neighbors (TOR). Als u de lijst met IP-voor voegsels aan de BGP-neighbor koppelt, wordt voor komen dat de standaard route in BGP wordt geadverteerd naar de TOR-switches. Elke andere route die de null-route bevat, adverteert echter het IP-adres van de loop back-interface aan de TOR-switches.
 
     ![Lijst met IP-voor voegsels maken](media/l2vpn-routing-security02.png)

@@ -3,22 +3,22 @@ title: Webbrowsers (MSAL.NET) gebruiken | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over specifieke overwegingen bij het gebruik van Xamarin Android met de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b0b0ac05e54619af0b1dd4a68918a89681f845bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695072"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084597"
 ---
 # <a name="using-web-browsers-msalnet"></a>Webbrowsers (MSAL.NET) gebruiken
 
@@ -43,7 +43,7 @@ MSAL.NET is een multi Framework-bibliotheek en heeft Framework-specifieke code v
 
 Over het algemeen is het raadzaam om de standaard waarde van het platform te gebruiken. Dit is doorgaans de systeem browser. De systeem browser is beter dan de gebruikers die zich hebben aangemeld. Als u dit gedrag wilt wijzigen, gebruikt u `WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>Een overzicht
+### <a name="at-a-glance"></a>In één oogopslag
 
 | Framework        | Geïntegreerde | Systeem | Standaard |
 | ------------- |-------------| -----| ----- |
@@ -149,7 +149,7 @@ Er zijn enkele visuele verschillen tussen de Inge sloten webweergave en de syste
 
 **Interactief aanmelden met MSAL.NET met behulp van de Inge sloten webweergave:**
 
-![ingesloten](media/msal-net-web-browsers/embedded-webview.png)
+![geïntegreerde](media/msal-net-web-browsers/embedded-webview.png)
 
 **Interactief aanmelden met MSAL.NET met behulp van de systeem browser:**
 

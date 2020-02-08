@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: b9060823c997391d02eae61911f8aa748f191657
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 99f4d8d854334b047caf36406f21890cde7eda16
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260851"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082949"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning gegevens sets maken
 
@@ -45,7 +45,7 @@ Als u gegevens sets wilt maken en gebruiken, hebt u het volgende nodig:
 > [!NOTE]
 > Voor sommige verzamelings klassen zijn afhankelijkheden van het pakket voor [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . Voor Linux-gebruikers worden deze klassen alleen ondersteund in de volgende distributies: Red Hat Enterprise Linux, Ubuntu, Fedora en CentOS.
 
-## <a name="dataset-types"></a>Typen gegevenssets
+## <a name="dataset-types"></a>Typen gegevensset
 
 Er zijn twee typen gegevensset, op basis van hoe gebruikers ze in de training gebruiken:
 
@@ -109,11 +109,11 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Dummy tekst|Pclass|Name|Seks|Leeftijd|SibSp|Parch|Ticket|Tickets|Hand|Ingeschepend
+| |PassengerId|Dummy tekst|Pclass|Naam|Seks|Leeftijd|SibSp|Parch|Kaart|Tickets|Hand|Ingeschepend
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|Onwaar|3|Braund, Mr. Owen Harris|man|22,0|1|0|A/5 21171|7,2500||S
-1|2|Waar|1|Cumings, Mevr. John Bradley (Florence Briggs th...|vrouwelijk|38,0|1|0|PC 17599|71,2833|C85|C
-2|3|Waar|3|Heikkinen, missen. Laina|vrouwelijk|26,0|0|0|STON/O2. 3101282|7,9250||S
+0|1|False|3|Braund, Mr. Owen Harris|man|22,0|1|0|A/5 21171|7,2500||S
+1|2|True|1|Cumings, Mevr. John Bradley (Florence Briggs th...|vrouwelijk|38,0|1|0|PC 17599|71,2833|C85|C
+2|3|True|3|Heikkinen, missen. Laina|vrouwelijk|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Gebruik de methode [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) op de `TabularDatasetFactory` klasse om te lezen uit Azure SQL database:
 
@@ -162,7 +162,7 @@ web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-ima
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
-#### <a name="on-the-web"></a>Op het Web 
+#### <a name="on-the-web"></a>Op het web 
 In de volgende stappen en animatie ziet u hoe u een gegevensset maakt in Azure Machine Learning Studio, https://ml.azure.com.
 
 ![Een gegevensset maken met de gebruikers interface](./media/how-to-create-register-datasets/create-dataset-ui.gif)
@@ -177,7 +177,7 @@ Een gegevensset maken in Studio:
 
 ## <a name="register-datasets"></a>Gegevens sets registreren
 
-Als u het aanmaak proces wilt volt ooien, registreert u uw gegevens sets met een werk ruimte. Gebruik de methode [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) om gegevens sets te registreren bij uw werk ruimte om ze te delen met anderen en ze opnieuw te gebruiken in verschillende experimenten:
+Als u het aanmaak proces wilt volt ooien, registreert u uw gegevens sets met een werk ruimte. Gebruik de methode [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) om gegevens sets te registreren bij uw werk ruimte om ze te delen met anderen en ze opnieuw te gebruiken in verschillende experimenten:
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,

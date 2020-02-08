@@ -1,14 +1,14 @@
 ---
-title: Voor beeld-FedRAMP hoge blauw druk-beheer toewijzing
+title: Voorbeeld besturings elementen voor FedRAMP hoge blauw druk
 description: De toewijzing van het FedRAMP-hoge blauw druk-voor beeld beheren. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 4b4d644497eb98ed88f57803e99cf27a419523fe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 93e2de3f19e0577645337df029789336a35b024d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76941379"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087344"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>De toewijzing van het FedRAMP-hoge blauw druk-voor beeld bepalen
 

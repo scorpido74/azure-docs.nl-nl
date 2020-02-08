@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/22/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7f903ca541582dfa0f3980bb65a3fef3c4b774a7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 75893a85f975d5d1454f1b93535a1df7a45e8731
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916771"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084015"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL-uitzonde ringen en-fouten verwerken
 
@@ -78,7 +78,7 @@ In MSAL wordt een `Classification` veld weer gegeven, dat u kunt lezen om een be
 | UserPasswordExpired | Het wacht woord van de gebruiker is verlopen. | Roep AcquireTokenInteractively () aan zodat gebruikers hun wacht woord opnieuw kunnen instellen. |
 | PromptNeverFailed| Interactieve verificatie is aangeroepen met de parameter prompt = Never, het afdwingen van MSAL om te vertrouwen op browser cookies en niet om de browser weer te geven. Dit is mislukt. | Roep AcquireTokenInteractively () aan zonder prompt. none |
 | AcquireTokenSilentFailed | De SDK voor MSAL heeft niet genoeg informatie om een token uit de cache op te halen. Dit kan zijn omdat er geen tokens in de cache staan of omdat er geen account is gevonden. Het fout bericht bevat meer details.  | Roep AcquireTokenInteractively () aan. |
-| Geen    | Er worden geen verdere details gegeven. De voor waarde kan worden opgelost door de gebruikers interactie tijdens de interactieve verificatie stroom. | Roep AcquireTokenInteractively () aan. |
+| None    | Er worden geen verdere details gegeven. De voor waarde kan worden opgelost door de gebruikers interactie tijdens de interactieve verificatie stroom. | Roep AcquireTokenInteractively () aan. |
 
 ## <a name="net-code-example"></a>Voor beeld van .NET-code
 
@@ -160,7 +160,7 @@ Door de fout klasse uit te breiden, hebt u toegang tot de volgende eigenschappen
 - `AuthError.message`: hetzelfde als de `errorMessage`.
 - `AuthError.stack`: Stack tracering voor gegenereerde fouten.
 
-### <a name="error-types"></a>Fouttypen
+### <a name="error-types"></a>Fout typen
 
 De volgende fout typen zijn beschikbaar:
 

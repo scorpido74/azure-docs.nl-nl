@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 42f7b5315cecd75e2aaf67145c57982872f43550
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844612"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086621"
 ---
 # <a name="persist-state-in-windows"></a>Status voor persistent in Windows
 
@@ -212,13 +212,13 @@ In plaats van een volume te koppelen, kunt u een map op het hostsysteem maken en
     ```
 ## <a name="persist-events"></a>Gebeurtenissen persistent maken
 
-Als u gebeurtenis persistentie wilt inschakelen, moet u eerst meta gegevens persistentie via volume koppeling of host Directory koppelen inschakelen met behulp van de bovenstaande secties.
+Als u gebeurtenis persistentie wilt inschakelen, moet u eerst gebeurtenissen persistentie via volume koppeling of host Directory koppelen inschakelen met behulp van de bovenstaande secties.
 
 Belang rijke aandachtspunten voor het aanhouden van persistente gebeurtenissen:
 
 * Het persistent maken van gebeurtenissen wordt ingeschakeld per gebeurtenis abonnement en is een opt-in nadat een volume of map is gekoppeld.
 * Gebeurtenis persistentie wordt tijdens het maken geconfigureerd op een gebeurtenis abonnement en kan niet worden gewijzigd nadat het gebeurtenis abonnement is gemaakt. Als u wilt overschakelen op gebeurtenis persistentie, moet u het gebeurtenis abonnement verwijderen en opnieuw maken.
-* Het persistent maken van gebeurtenissen is bijna altijd langzamer dan in geheugen bewerkingen, maar het snelheids verschil is echter zeer afhankelijk van de kenmerken van het station. De verhouding tussen snelheid en betrouw baarheid is inherent aan alle berichten systemen, maar wordt alleen een noticible op grote schaal.
+* Het persistent maken van gebeurtenissen is bijna altijd langzamer dan in geheugen bewerkingen, maar het snelheids verschil is echter zeer afhankelijk van de kenmerken van het station. De verhouding tussen snelheid en betrouw baarheid is inherent aan alle Messa ging-systemen, maar wordt alleen merkbaar op grote schaal.
 
 Als u gebeurtenis persistentie wilt inschakelen voor een gebeurtenis abonnement, stelt u `persistencePolicy` in op `true`:
 

@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 4bdf842ae24d90850280a5a19038dbd00168ff2c
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/07/2020
+ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053368"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087081"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Ingerichte doorvoer kosten optimaliseren in Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Dankzij een ingericht doorvoer model biedt Azure Cosmos DB voorspel bare prestat
 
 U kunt beginnen met een minimale door Voer van 400 RU/SEC en tot tien tallen miljoenen aanvragen per seconde of zelfs meer schalen. Elke aanvraag die u uitgeeft tegen uw Azure Cosmos-container of-Data Base, zoals een lees aanvraag, schrijf aanvraag, query aanvraag, opgeslagen procedures hebben een overeenkomende kosten die worden afgetrokken van uw ingerichte door voer. Als u 400 RU/s inricht en een query uitgeeft die de kosten 40 RUs heeft, kunt u 10 dergelijke query's per seconde verzenden. Alle aanvragen die groter zijn dan de frequentie beperkt zijn en u moet de aanvraag opnieuw proberen. Als u client Stuur Programma's gebruikt, ondersteunen ze de automatische logica voor opnieuw proberen.
 
-U kunt de door Voer inrichten voor data bases of containers en elke strategie kan u helpen bij het besparen van kosten, afhankelijk van het scenario.
+U kunt doorvoer inrichten in databases of containers, en elke strategie kan helpen kosten te besparen, afhankelijk van het scenario.
 
 ## <a name="optimize-by-provisioning-throughput-at-different-levels"></a>Optimaliseren door door Voer in te richten op verschillende niveaus
 
@@ -57,8 +57,8 @@ Zoals in de volgende tabel wordt weer gegeven, is afhankelijk van de keuze van d
 |----|----|----|
 |SQL-API|Database|Container|
 |Azure Cosmos DB-API voor MongoDB|Database|Verzameling|
-|Cassandra-API|Keys Pace|Tabel|
-|Gremlin-API|Database account|Grafiek|
+|Cassandra-API|Keyspace|Tabel|
+|Gremlin-API|Database account|Graph|
 |Tabel-API|Database account|Tabel|
 
 Door de door Voer op verschillende niveaus in te richten, kunt u uw kosten optimaliseren op basis van de kenmerken van uw werk belasting. Zoals eerder vermeld, kunt u programmatisch en op elk gewenst moment uw ingerichte door Voer verg Roten of verkleinen voor afzonderlijke container (s) of gezamenlijk over een set containers. Door de door voer te verg Roten of verkleinen als uw werk belasting wordt gewijzigd, betaalt u alleen voor de door u geconfigureerde door voer. Als uw container of een set containers wordt gedistribueerd over meerdere regio's, wordt de door u geconfigureerde door Voer voor de container of een set containers gegarandeerd in alle regio's beschikbaar gesteld.
@@ -123,7 +123,7 @@ U kunt ook waarschuwingen instellen om te controleren of het aantal aanvragen me
 
 ## <a name="scale-your-throughput-elastically-and-on-demand"></a>Uw door Voer elastisch en op aanvraag schalen 
 
-Omdat u de ingerichte door Voer hebt gefactureerd, kunt u met de ingerichte door Voer aan uw behoeften het voor komen van de kosten voor de ongebruikte door voer. U kunt uw ingerichte door Voer op elk gewenst moment omhoog of omlaag schalen, indien nodig.  
+Omdat u de ingerichte door Voer hebt gefactureerd, kunt u met de ingerichte door Voer aan uw behoeften het voor komen van de kosten voor de ongebruikte door voer. U kunt uw ingerichte door Voer op elk gewenst moment omhoog of omlaag schalen, indien nodig. Als uw doorvoer behoeften zeer voorspelbaar zijn, kunt u Azure Functions gebruiken en een timer trigger gebruiken om [de door Voer van een planning te verg Roten of verkleinen](scale-on-schedule.md). 
 
 * Het bewaken van het verbruik van uw RUs en de verhouding van aanvragen met beperkte snelheid kan ertoe leiden dat u gedurende de hele dag of de week niet over de gehele constante hoeft te beschikken. Mogelijk ontvangt u 's nachts of tijdens het weekend minder verkeer. Door gebruik te maken van Azure Portal of Azure Cosmos DB systeem eigen Sdk's of REST API kunt u de ingerichte door Voer op elk gewenst moment schalen. De REST API van Azure Cosmos DB biedt eind punten om het prestatie niveau van uw containers programmatisch bij te werken, waardoor het eenvoudig is om de door Voer van uw code aan te passen, afhankelijk van de tijd van de dag of de dag van de week. De bewerking wordt uitgevoerd zonder uitval tijd en duurt meestal minder dan een minuut. 
 

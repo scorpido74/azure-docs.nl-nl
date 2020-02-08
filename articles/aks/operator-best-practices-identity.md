@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 06d15d66df0b2ec0049d4b2fffae6a9909b05dca
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 35cded14977988c80455a9c28a0e01e7913d58f4
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549135"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069503"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor verificatie en autorisatie in azure Kubernetes service (AKS)
 
@@ -122,7 +122,7 @@ Dit artikel Best practices is gericht op verificatie en autorisatie voor uw clus
 
 Zie voor meer informatie over cluster bewerkingen in AKS de volgende aanbevolen procedures:
 
-* [Multitenancy en cluster isolatie][aks-best-practices-scheduler]
+* [Multitenancy en cluster isolatie][aks-best-practices-cluster-isolation]
 * [Functies van de Basic Kubernetes scheduler][aks-best-practices-scheduler]
 * [Geavanceerde functies van Kubernetes scheduler][aks-best-practices-advanced-scheduler]
 

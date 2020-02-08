@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 0f836553c3c3bb324d76d022af189f154b5b1972
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 36a492f6a3e86cfb2fc9505550cc2d9f4746e070
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964461"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087169"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Rollen en vereisten voor Azure Data Share 
 
@@ -59,7 +59,7 @@ De gebruiker kan ook de eigenaar van de Azure-gegevens opslag de beheerde identi
 Volg de onderstaande stappen voor het maken van een roltoewijzing voor de beheerde identiteit van de gegevens share Bron:
 
 1. Navigeer naar de Azure-gegevens opslag.
-1. Selecteer **toegangsbeheer (IAM)** .
+1. Selecteer **Access Control (IAM)** .
 1. Selecteer **een roltoewijzing toevoegen**.
 1. Selecteer onder *rol*de rol in de bovenstaande tabel met roltoewijzingen (bijvoorbeeld voor opslag account, selecteer *BLOB-gegevens lezer voor opslag*).
 1. Typ onder *selecteren*de naam van uw Azure-gegevens share-resource.
@@ -77,7 +77,7 @@ De gebruiker kan ook de eigenaar van de Azure-gegevens opslag de beheerde identi
 Volg de onderstaande stappen voor het maken van een roltoewijzing voor de beheerde identiteit van de gegevens share bron hand matig:
 
 1. Navigeer naar de Azure-gegevens opslag.
-1. Selecteer **toegangsbeheer (IAM)** .
+1. Selecteer **Access Control (IAM)** .
 1. Selecteer **een roltoewijzing toevoegen**.
 1. Selecteer onder *rol*de rol in de bovenstaande tabel met roltoewijzingen (bijvoorbeeld voor opslag account, selecteer *BLOB-gegevens lezer voor opslag*).
 1. Typ onder *selecteren*de naam van uw Azure-gegevens share-resource.
@@ -91,7 +91,7 @@ Raadpleeg [deze documentatie](https://docs.microsoft.com/azure/role-based-access
 
 ## <a name="resource-provider-registration"></a>Registratie van resource provider 
 
-Als u de uitnodiging voor Azure data share voor het eerst wilt weer geven in uw Azure-Tenant, moet u de resource provider micro soft. DataShare mogelijk hand matig registreren in uw Azure-abonnement. Volg deze stappen om de resource provider micro soft. DataShare te registreren bij uw Azure-abonnement. 
+Als u de uitnodiging voor Azure data share voor het eerst wilt weer geven in uw Azure-Tenant, moet u de resource provider micro soft. DataShare mogelijk hand matig registreren in uw Azure-abonnement. Volg deze stappen om de resource provider micro soft. DataShare te registreren bij uw Azure-abonnement. U hebt *Inzender* toegang tot het Azure-abonnement nodig om de resource provider te registreren.
 
 1. Ga in het Azure Portal naar **abonnementen**.
 1. Selecteer het abonnement dat u voor Azure-gegevens share gebruikt.

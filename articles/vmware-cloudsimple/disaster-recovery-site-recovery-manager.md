@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0bbd8a12820432ce2f131dda29af6740a2f04e18
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ccdf385d2581923e1fad4fa5c42f351c4f0947ca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024718"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083153"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Een persoonlijke cloud van AVS instellen als een nood herstel doel met VMware Site Recovery Manager
 
@@ -101,7 +101,7 @@ U kunt een externe ID-provider toevoegen, zoals wordt beschreven in [Azure AD ge
 
 Als u IP-adres zoeken, IP-adres beheer en naamomzettingsservices wilt bieden voor uw workloads in de Privécloud, stelt u een DHCP-en DNS-server in zoals beschreven in [DNS-en DHCP-toepassingen en werk belastingen instellen in de privécloud van uw AVS](dns-dhcp-setup.md).
 
-Het domein *. avs.io wordt gebruikt door Management-Vm's en-hosts in de Privécloud van uw AVS. Als u aanvragen voor dit domein wilt omzetten, configureert u het door sturen van DNS op de DNS-server zoals beschreven in [een voorwaardelijke forwarder maken](on-premises-dns-setup.md#create-a-conditional-forwarder).
+Het domein *. cloudsimple.io wordt gebruikt door Management-Vm's en-hosts in de Privécloud van uw AVS. Als u aanvragen voor dit domein wilt omzetten, configureert u het door sturen van DNS op de DNS-server zoals beschreven in [een voorwaardelijke forwarder maken](on-premises-dns-setup.md#create-a-conditional-forwarder).
 
 ### <a name="install-vsphere-replication-appliance-in-your-on-premises-environment"></a>VSphere-replicatie apparaat installeren in uw on-premises omgeving
 
@@ -219,7 +219,7 @@ U hebt volledige controle over de vSphere-replicatie en de beveiligings-software
 
  [Replicatie-en vSphere-replicatie technologieën kunnen zowel op de matrix als](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication) op dezelfde tijd worden gebruikt. Ze moeten echter worden toegepast op een afzonderlijke set virtuele machines (een bepaalde virtuele machine kan worden beveiligd door replicatie op basis van een matrix of vSphere, maar niet voor beide). Bovendien kan de AVS-site worden geconfigureerd als een herstel site voor meerdere beveiligde sites. Zie de opties voor de meerdere locaties van de [website](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) voor meer informatie over configuraties voor meerdere locaties.
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Verwijzingen
 
 * [Documentatie voor VMware Site Recovery Manager](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
 * [Operationele limieten voor Site Recovery Manager 6,5](https://kb.vmware.com/s/article/2147110)

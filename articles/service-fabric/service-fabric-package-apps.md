@@ -3,12 +3,12 @@ title: Een Azure Service Fabric-app inpakken
 description: Meer informatie over het inpakken van een Azure Service Fabric-toepassing en hoe u de implementatie kunt voorbereiden op een cluster.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 16bd48963040a8e30ff81f40c01134014eaccf48
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639680"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083607"
 ---
 # <a name="package-an-application"></a>Toepassingspakket maken
 
@@ -56,9 +56,9 @@ Zie voor meer informatie over het configureren van de **SetupEntryPoint** [het b
 
 ### <a name="build-a-package-by-using-visual-studio"></a>Een pakket bouwen met Visual Studio
 
-Als u Visual Studio 2015 gebruikt om uw toepassing te maken, kunt u de pakket opdracht gebruiken om automatisch een pakket te maken dat overeenkomt met de indeling die hierboven wordt beschreven.
+Als u Visual Studio hebt gebruikt om uw toepassing te maken, kunt u de *pakket* opdracht gebruiken om automatisch een pakket te maken dat overeenkomt met de indeling die hierboven wordt beschreven.
 
-Als u een pakket wilt maken, klikt u met de rechter muisknop op het toepassings project in Solution Explorer en kiest u de pakket opdracht, zoals hieronder wordt weer gegeven:
+Als u een pakket wilt maken, klikt u met de rechter muisknop op het toepassings project in *Solution Explorer* en kiest u de **pakket** opdracht:
 
 ![Een toepassing verpakken met Visual Studio][vs-package-command]
 

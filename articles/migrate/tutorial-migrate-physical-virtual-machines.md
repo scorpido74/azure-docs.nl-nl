@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe u fysieke machines naar Azure m
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3fbc94464c139add6e275890e1a1e415b2826f0d
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989753"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069520"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Machines als fysieke servers migreren naar Azure
 
@@ -194,7 +194,7 @@ De eerste stap van de migratie is het instellen van het replicatie apparaat. U d
 
     ![Registratie volt ooien](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-Het kan tot 15 minuten duren nadat de registratie is voltooid totdat gedetecteerde computers worden weer gegeven in Azure Migrate server migratie. Naarmate er Vm's worden gedetecteerd, nemen het aantal **gedetecteerde servers** toe.
+Het kan enige tijd duren nadat de registratie is voltooid totdat gedetecteerde computers worden weer gegeven in Azure Migrate server migratie. Naarmate er Vm's worden gedetecteerd, nemen het aantal **gedetecteerde servers** toe.
 
 ![Gedetecteerde servers](./media/tutorial-migrate-physical-virtual-machines/discovered-servers.png)
 
@@ -359,7 +359,7 @@ Nadat u hebt gecontroleerd of de test migratie werkt zoals verwacht, kunt u de o
 4. Er wordt een migratietaak gestart voor de VM. Volg de taak in Azure-meldingen.
 5. Nadat de taak is afgerond, kunt u de VM bekijken en beheren vanaf de pagina **Virtuele machines**.
 
-## <a name="complete-the-migration"></a>De migratie voltooien
+## <a name="complete-the-migration"></a>Migratie voltooien
 
 1. Nadat de migratie is voltooid, klikt u met de rechter muisknop op de virtuele machine > de **migratie stoppen**. Hiermee wordt de replicatie voor de on-premises computer gestopt en worden de gegevens van de replicatie status voor de virtuele machine opgeschoond.
 2. Installeer de Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) -of [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) -agent op de gemigreerde computers.

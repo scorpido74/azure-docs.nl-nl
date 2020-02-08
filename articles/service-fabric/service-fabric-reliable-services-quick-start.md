@@ -1,27 +1,26 @@
 ---
 title: Uw eerste Service Fabric-toepassing maken inC#
 description: Inleiding tot het maken van een Microsoft Azure Service Fabric-toepassing met stateless en stateful Services.
-author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: vturecek
-ms.openlocfilehash: e7c5c30dc7cbfa0a3f5a8dc76899c5c8bad6e6ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: 15dd9bf6ac19bdac7bc8b50fc70e0b3b0a4e9a83
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462817"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083753"
 ---
-# <a name="get-started-with-reliable-services"></a>Aan de slag met betrouwbare services
+# <a name="get-started-with-reliable-services"></a>Aan de slag met Reliable Services
+
 > [!div class="op_single_selector"]
 > * [C# op Windows](service-fabric-reliable-services-quick-start.md)
 > * [Java op Linux](service-fabric-reliable-services-quick-start-java.md)
-> 
-> 
 
 Een Azure Service Fabric-toepassing bevat een of meer services waarop de code wordt uitgevoerd. Deze hand leiding laat zien hoe u stateless en stateful Service Fabric-toepassingen kunt maken met [reliable Services](service-fabric-reliable-services-introduction.md).  
 
 ## <a name="basic-concepts"></a>Basisbegrippen
+
 Om aan de slag te gaan met Reliable Services hoeft u slechts enkele basis concepten te begrijpen:
 
 * **Service type**: dit is de service-implementatie. Het wordt gedefinieerd door de klasse die u schrijft, waarmee `StatelessService` worden uitgebreid en alle andere code of afhankelijkheden die erin worden gebruikt, samen met een naam en versie nummer.
@@ -30,6 +29,7 @@ Om aan de slag te gaan met Reliable Services hoeft u slechts enkele basis concep
 * **Service registratie**: registratie brengt alles samen. Het Service type moet worden geregistreerd bij de Service Fabric runtime in een servicehost om Service Fabric toe te staan dat er exemplaren van worden gemaakt om te worden uitgevoerd.  
 
 ## <a name="create-a-stateless-service"></a>Een stateless service maken
+
 Een stateless service is een type service dat momenteel de norm is in Cloud toepassingen. Het wordt beschouwd als stateless omdat de service zelf geen gegevens bevat die op betrouw bare wijze moeten worden opgeslagen of Maxi maal beschikbaar moeten worden gemaakt. Als een exemplaar van een stateless service afgesloten, gaat de interne status verloren. In dit type service moet de status worden opgeslagen in een externe opslag, zoals Azure-tabellen of een SQL database, zodat deze Maxi maal beschikbaar en betrouwbaar kan worden gemaakt.
 
 Start Visual Studio 2017 of Visual Studio 2019 als beheerder en maak een nieuw Service Fabric toepassings project met de naam *HelloWorld*:
@@ -46,6 +46,7 @@ Uw oplossing bevat nu twee projecten:
 * *HelloWorldStateless*. Dit is het service project. Het bevat de stateless service-implementatie.
 
 ## <a name="implement-the-service"></a>De service implementeren
+
 Open het **HelloWorldStateless.cs** -bestand in het service project. In Service Fabric kan een service elke bedrijfs logica uitvoeren. De service-API biedt twee toegangs punten voor uw code:
 
 * Een open-end-invoer punt methode met de naam *RunAsync*, waar u werk belastingen kunt uitvoeren, inclusief langlopende Compute-workloads.
@@ -70,11 +71,10 @@ In deze zelf studie gaat u de focus op de `RunAsync()` entry point-methode. Hier
 De project sjabloon bevat een voorbeeld implementatie van `RunAsync()` die een aantal rollen verhoogt.
 
 > [!NOTE]
-> Zie [service Fabric Web API-services met OWIN self-hosting](service-fabric-reliable-services-communication-webapi.md) voor meer informatie over het werken met een communicatie stack
-> 
-> 
+> Zie [service communicatie met ASP.net core](service-fabric-reliable-services-communication-aspnetcore.md) voor meer informatie over het werken met een communicatie stack
 
 ### <a name="runasync"></a>RunAsync
+
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
@@ -110,6 +110,7 @@ Het annuleren van uw werk belasting is een gezamenlijke inspanning die wordt geo
 In dit stateless service voor beeld wordt het aantal opgeslagen in een lokale variabele. Maar omdat dit een stateless service is, bestaat de opgeslagen waarde alleen voor de huidige levens duur van het service-exemplaar. Wanneer de service wordt verplaatst of opnieuw wordt gestart, gaat de waarde verloren.
 
 ## <a name="create-a-stateful-service"></a>Een stateful service maken
+
 Service Fabric introduceert een nieuwe soort service die stateful is. Een stateful service kan de status op betrouw bare wijze in de service zelf onderhouden, naast de code die deze gebruikt. De status wordt Maxi maal beschikbaar gemaakt door Service Fabric zonder dat de status in een externe opslag moet worden bewaard.
 
 Als u een item waarde wilt converteren van stateless naar Maxi maal beschikbaar en permanent, zelfs wanneer de service wordt verplaatst of opnieuw wordt opgestart, hebt u een stateful service nodig.
@@ -159,9 +160,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 ```
 
 ### <a name="runasync"></a>RunAsync
+
 `RunAsync()` werkt op dezelfde manier als stateful en stateless Services. In een stateful service voert het platform echter namens u extra werkzaamheden uit voordat het wordt uitgevoerd `RunAsync()`. Dit werk kan erop kunnen toezien dat de betrouw bare status Manager en de betrouw bare verzamelingen klaar zijn voor gebruik.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Betrouw bare verzamelingen en de betrouw bare status Manager
+
 ```csharp
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
@@ -178,6 +181,7 @@ In betrouw bare verzamelingen kan elk .NET-type worden opgeslagen, inclusief uw 
 De betrouw bare status beheerder beheert betrouw bare verzamelingen voor u. U kunt op elk gewenst moment een betrouw bare status Manager vragen voor een betrouw bare verzameling op naam en op elke plaats in uw service. De betrouw bare status beheerder zorgt ervoor dat u een referentie back-up krijgt. Het is niet raadzaam om verwijzingen naar betrouw bare verzamelings instanties in variabelen of eigenschappen van klassen leden op te slaan. Er moet speciale aandacht worden besteed om ervoor te zorgen dat de verwijzing op elk moment in de levens cyclus van de service wordt ingesteld op een exemplaar. De betrouw bare status manager behandelt dit werk voor u en is geoptimaliseerd voor herhaalde bezoeken.
 
 ### <a name="transactional-and-asynchronous-operations"></a>Transactionele en asynchrone bewerkingen
+
 ```csharp
 using (ITransaction tx = this.StateManager.CreateTransaction())
 {
@@ -189,7 +193,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-Betrouw bare verzamelingen hebben veel van de bewerkingen die hun `System.Collections.Generic` en `System.Collections.Concurrent`e equivalenten doen, met uitzonde ring van LINQ. Bewerkingen voor betrouw bare verzamelingen zijn asynchroon. Dit is omdat schrijf bewerkingen met betrouw bare verzamelingen I/O-bewerkingen uitvoeren om gegevens te repliceren en te persistent maken op schijf.
+Betrouw bare verzamelingen hebben veel van de bewerkingen die hun `System.Collections.Generic` en `System.Collections.Concurrent`e equivalenten doen, met uitzonde ring van language integrated query (LINQ). Bewerkingen voor betrouw bare verzamelingen zijn asynchroon. Dit is omdat schrijf bewerkingen met betrouw bare verzamelingen I/O-bewerkingen uitvoeren om gegevens te repliceren en te persistent maken op schijf.
 
 Betrouw bare verzamelings bewerkingen zijn *Transactioneel*, zodat u de status consistent kunt blijven tussen meerdere betrouw bare verzamelingen en bewerkingen. U kunt bijvoorbeeld een werk item uit een betrouw bare wachtrij verwijderen, een bewerking hierop uitvoeren en het resultaat opslaan in een betrouw bare woorden lijst, allemaal binnen één trans actie. Dit wordt behandeld als een Atomic-bewerking en garandeert dat de gehele bewerking slaagt of dat de hele bewerking wordt teruggedraaid. Als er een fout optreedt nadat u het item in de wachtrij hebt geplaatst, maar voordat u het resultaat opslaat, wordt de hele trans actie teruggedraaid en blijft het item in de wachtrij voor verwerking.
 

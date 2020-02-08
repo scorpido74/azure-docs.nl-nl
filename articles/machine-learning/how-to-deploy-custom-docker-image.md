@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 5d828ab59f790bab1003f0ad73fc7be1b77410bb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 05a466d52d89fa021235c10e7187900c350b5e50
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044887"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086928"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,10 +45,10 @@ Dit document is onderverdeeld in twee secties:
 
 * Een Azure Machine Learning werk groep. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
 * De [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
-* De [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * De [cli-extensie voor Azure machine learning](reference-azure-machine-learning-cli.md).
 * Een [Azure container Registry](/azure/container-registry) of een ander docker-REGI ster dat toegankelijk is op internet.
-* Bij de stappen in dit document wordt ervan uitgegaan dat u bekend bent met het maken en gebruiken van een inkomend __configuratie__ object als onderdeel van de implementatie van het model. Zie voor meer informatie de sectie ' voor bereiding implementeren ' van [waar u wilt implementeren en hoe](how-to-deploy-and-where.md#prepare-to-deploy).
+* Bij de stappen in dit document wordt ervan uitgegaan dat u bekend bent met het maken en gebruiken van een inkomend __configuratie__ object als onderdeel van de implementatie van het model. Zie voor meer informatie de sectie ' voor bereiding implementeren ' van [waar u wilt implementeren en hoe](how-to-deploy-and-where.md#prepare-deployment-artifacts).
 
 ## <a name="create-a-custom-base-image"></a>Een aangepaste basis installatie kopie maken
 
@@ -181,7 +181,7 @@ Als u een aangepaste installatie kopie wilt gebruiken, hebt u de volgende inform
 
 Micro soft biedt verschillende docker-installatie kopieën op een openbaar toegankelijke opslag plaats die kan worden gebruikt met de stappen in deze sectie:
 
-| afbeelding | Beschrijving |
+| Installatiekopie | Beschrijving |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Basis installatie kopie voor Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Bevat ONNX-runtime voor CPU-de |

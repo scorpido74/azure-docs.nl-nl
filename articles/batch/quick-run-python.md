@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een Azure Batch-taak uitvoeren-python-API'
+title: Python-API gebruiken om een Azure Batch-taak uit te voeren
 description: Voer snel een Azure Batch voorbeeld taak en taken uit met behulp van de batch python-client bibliotheek. Meer informatie over de belangrijkste concepten van de batch-service.
 services: batch
 author: LauraBrenner
@@ -12,30 +12,26 @@ ms.author: labrenne
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 87c08c403a1e5eefd7645572f593b20037a8212b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 140ae0fc9f9a8daba193aa05e0800d83b7b6b963
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017102"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086040"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Snelstartgids: Uw eerste Batch-taak uitvoeren met de Python API
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Snelstartgids: gebruik python API om een Azure Batch-taak uit te voeren
 
-In deze snelstartgids wordt een Azure Batch-taak uitgevoerd vanuit een toepassing die is gebouwd op de Azure Batch Python API.  Nadat u deze snelstartgids hebt voltooid, begrijpt u de belangrijkste principes van de Batch-service en bent u er klaar voor om Batch op grotere schaal te gebruiken voor meer realistische workloads.
+In deze Quick Start gebruikt u de python API om een Azure Batch-taak uit een app uit te voeren. De app uploadt invoer gegevensbestand naar Azure Storage en maakt een *pool* met batch-reken knooppunten (virtuele machines). Vervolgens wordt er een *taak* gemaakt waarmee *taken* worden uitgevoerd voor het verwerken van elk invoer bestand in de pool met behulp van een basis opdracht.
 
-Met de app worden verschillende invoerbestanden geüpload naar Azure-opslag en wordt vervolgens een *pool* met Batch-rekenknooppunten (virtuele machines) gemaakt. Vervolgens wordt een *Batch-voorbeeldtaak* gemaakt waarmee *taken* worden uitgevoerd om elk invoerbestand in de pool te verwerken met behulp van een basisopdracht.
- 
+Hier vindt u belang rijke concepten van de batch-service en kunt u een batch maken met meer realistische workloads op grotere schaal.
+
 ![Overzicht van de Azure Batch werk stroom](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python-versie 2.7 of 3.3 of later](https://www.python.org/downloads/)
-
-* [PIP](https://pip.pypa.io/en/stable/installing/)-pakketbeheer
-
-* Een Azure Batch-account en een gekoppeld Azure Storage-account. Raadpleeg de Batch-snelstartgidsen via de [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies over het maken van deze accounts. 
+- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Een **Azure batch** -account en een gekoppeld **Azure Storage** -account. Gebruik de [Azure Portal](quick-create-portal.md) of [cli](quick-create-cli.md) om deze accounts te maken.
+- [Python](https://python.org/downloads), versie 2,7 3,3 of hoger, inclusief [PIP](https://pip.pypa.io/en/stable/installing/) -pakket beheer
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -69,7 +65,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-## <a name="run-the-app"></a>De app uitvoeren
+## <a name="run-the-app"></a>De app kunt uitvoeren
 
 Als u de werking van de Batch-werkstroom wilt zien, voert u het volgende script uit:
 
@@ -128,7 +124,7 @@ blob_client = azureblob.BlockBlobService(
     account_key=config._STORAGE_ACCOUNT_KEY)
 ```
 
-De app gebruikt de `blob_client`-verwijzing om een container te maken in het opslagaccount en om gegevensbestanden naar de container te uploaden. De bestanden in de opslag zijn gedefinieerd als Batch [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile)-objecten die Batch later kan downloaden naar rekenknooppunten.
+De app gebruikt de `blob_client`-verwijzing om een container te maken in het opslagaccount en om gegevensbestanden naar de container te uploaden. De bestanden in de opslag zijn gedefinieerd als Batch [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile)-objecten die later met Batch kunnen worden gedownload op rekenknooppunten.
 
 ```python
 input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),
@@ -140,7 +136,7 @@ input_files = [
     for file_path in input_file_paths]
 ```
 
-De app maakt een [BatchServiceClient](/python/api/azure.batch.batchserviceclient)-object om pools, jobs en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie met gedeelde sleutels. Batch ondersteunt ook Azure Active Directory-verificatie.
+De app maakt een [BatchServiceClient](/python/api/azure.batch.batchserviceclient)-object om pools, jobs en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie op basis van gedeelde sleutels. Batch ondersteunt ook Azure Active Directory-verificatie.
 
 ```python
 credentials = batch_auth.SharedKeyCredentials(config._BATCH_ACCOUNT_NAME,
@@ -151,7 +147,7 @@ batch_client = batch.BatchServiceClient(
     batch_url=config._BATCH_ACCOUNT_URL)
 ```
 
-### <a name="create-a-pool-of-compute-nodes"></a>Een pool met rekenknooppunten maken
+### <a name="create-a-pool-of-compute-nodes"></a>Een pool van rekenknooppunten maken
 
 Voor het maken van een Batch-pool gebruikt de app de [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter)-klasse om het aantal rekenknooppunten, de VM-grootte en een poolconfiguratie in te stellen. Hier geeft het object [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) een [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) naar een Ubuntu Server 18.04 LTS-installatiekopie op die is gepubliceerd in de Azure Marketplace. Batch ondersteunt diverse Linux- en Windows Server-installatiekopieën in Azure Marketplace, evenals aangepaste VM-installatiekopieën.
 

@@ -9,30 +9,30 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6e54d8ea44b6c322f311cc1baeb6ca3ab6715aee
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 855036a5a8e87bd10e9a4d524a1e8ea8bcdccf50
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989957"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086294"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Een Android-app migreren vanuit Google Maps
 
-De Azure Maps Android SDK bevat een API-interface die vergelijkbaar is met de Web-SDK. Als u met een van deze Sdk's hebt ontwikkeld, zijn veel van dezelfde concepten, aanbevolen procedures en architecturen van toepassing. U moet uw kennis gemakkelijk van de ene naar de andere kunnen overdragen.
+De Azure Maps Android SDK bevat een API-interface die vergelijkbaar is met de Web-SDK. Als u met een van deze Sdk's hebt ontwikkeld, zijn veel van dezelfde concepten, aanbevolen procedures en architecturen van toepassing.
 
 De Azure Maps Android SDK ondersteunt een minimale Android-versie van API 21: Android 5.0.0 (Lollipop).
 
-Alle voor beelden zijn opgenomen in Java, maar Kotlin kan ook worden gebruikt met de Azure Maps Android SDK.
+Alle voor beelden zijn opgenomen in Java. u kunt Kotlin echter gebruiken met de Azure Maps Android SDK.
 
 Voor meer informatie over het ontwikkelen met de Android SDK door Azure Maps, raadpleegt u de [hand leidingen voor de Azure Maps ANDROID SDK](how-to-use-android-map-control-library.md).
 
 ## <a name="load-a-map"></a>Een kaart laden
 
-Het laden van een kaart in een Android-app met Google of Azure Maps bestaat uit veel dezelfde stappen. Wanneer u een van de SDK gebruikt, moet u het volgende doen:
+Het laden van een kaart in een Android-app met Google of Azure Maps bestaat uit soort gelijke stappen. Wanneer u een van de SDK gebruikt, moet u het volgende doen:
 
 - Down load een API of abonnements sleutel voor toegang tot een van beide platforms.
 - Voeg wat XML toe aan een activiteit om op te geven waar de kaart moet worden gerenderd en hoe deze moet worden ingedeeld.
-- Alle levenscyclus methoden van de activiteit met de kaart weergave door sturen naar de corresponderende procedures in de klasse map. In het bijzonder moet u de volgende methoden onderdrukken:
+- Alle levenscyclus methoden van de activiteit met de kaart weergave vervangen door de overeenkomstige methoden in de kaart klasse. In het bijzonder moet u de volgende methoden onderdrukken:
     - `onCreate(Bundle)`
     - `onStart()`
     - `onResume()`
@@ -41,7 +41,7 @@ Het laden van een kaart in een Android-app met Google of Azure Maps bestaat uit 
     - `onDestroy()`
     - `onSaveInstanceState(Bundle)`
     - `onLowMemory()`
-- Wacht totdat de kaart gereed is voordat u deze via een programma probeert te openen.
+- Wacht totdat de kaart gereed is voordat u deze probeert te openen en Program meren.
 
 **Voor: Google Maps**
 
@@ -67,7 +67,7 @@ Als u een kaart wilt weer geven met behulp van de Google Maps SDK voor Android, 
             android:layout_height="match_parent"/>
     ```
 
-1.  In het bestand MainActivity. Java moet u import bewerkingen toevoegen voor de SDK van Google Maps. Alle levenscyclus methoden van de activiteit met de kaart weergave door sturen naar de corresponderende procedures in de klasse map. Een `MapView`-exemplaar kan worden opgehaald uit het kaart fragment met behulp van de methode `getMapAsync(OnMapReadyCallback)`. De `MapView` initialiseert automatisch het kaarten systeem en de weer gave. Bewerk het bestand **MainActivity. java** als volgt:
+1.  In het bestand **MainActivity. java** moet u de SDK van Google Maps importeren. Alle levenscyclus methoden van de activiteit met de kaart weergave door sturen naar de corresponderende procedures in de klasse map. Haal een `MapView` exemplaar op uit het kaart fragment met behulp van de methode `getMapAsync(OnMapReadyCallback)`. De `MapView` initialiseert automatisch het kaarten systeem en de weer gave. Bewerk het bestand **MainActivity. java** als volgt:
 
     ```java
     import com.google.android.gms.maps.GoogleMap;
@@ -142,7 +142,7 @@ Als u een kaart wilt weer geven met behulp van de Google Maps SDK voor Android, 
     }
     ```
 
-Wanneer u een toepassing hebt uitgevoerd, wordt het kaart besturings element als volgt geladen.
+Wanneer u een toepassing uitvoert, wordt het kaart besturings element geladen zoals in de volgende afbeelding.
 
 <center>
 
@@ -166,20 +166,20 @@ Als u een kaart wilt weer geven met behulp van de Azure Maps SDK voor Android, m
 
     2. Voeg de volgende code toe aan de sectie Android:
 
-        ```JAVA
+        ```java
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
-    3. Werk het blok met afhankelijkheden bij en voeg een nieuwe implementatie afhankelijkheids regel toe voor de nieuwste Azure Maps Android SDK:
+    3. Werk het blok met afhankelijkheden bij. Voeg een nieuwe regel voor de implementatie afhankelijkheid toe voor de nieuwste Azure Maps Android SDK:
 
-        ```JAVA
+        ```java
         implementation "com.microsoft.azure.maps:mapcontrol:0.2"
         ```
 
         > [!Note]
-        > De Azure Maps Android SDK wordt regel matig bijgewerkt en uitgebreid. U kunt de documentatie aan de [slag met Android map-beheer](how-to-use-android-map-control-library.md) zien om het meest recente Azure Maps versie nummer te verkrijgen. U kunt ook het versie nummer van ' 0,2 ' instellen op ' 0 + ' zodat uw code altijd naar de meest recente versie verwijst.
+        > De Azure Maps Android SDK wordt regel matig geüpgraded en uitgebreid. U kunt aan de slag [met Android map control](how-to-use-android-map-control-library.md) het meest recente Azure Maps versie nummer ophalen. U kunt ook het versie nummer van ' 0,2 ' instellen op ' 0 + ' zodat uw code altijd naar de meest recente versie verwijst.
     
     4. Ga naar het **bestand** in de werk balk en klik vervolgens op **project synchroniseren met Gradle-bestanden**.
 3. Voeg een kaart fragment toe aan de hoofd activiteit (resources \> indeling \> activiteit\_Main. XML):
@@ -203,13 +203,13 @@ Als u een kaart wilt weer geven met behulp van de Azure Maps SDK voor Android, m
 
 4. In het bestand **MainActivity. java** moet u het volgende doen:
     
-    * import bewerkingen toevoegen voor de Azure Maps SDK
-    * uw Azure Maps-verificatie-informatie instellen
-    * het kaart besturings exemplaar ophalen in de methode **onCreate**
+    * Hiermee wordt de Azure Maps SDK geïmporteerd
+    * Uw Azure Maps-verificatie-informatie instellen
+    * Het kaart besturings exemplaar ophalen in de methode **onCreate**
 
-    Als u de verificatie gegevens voor de klasse `AzureMaps` globaal instelt met behulp van de `setSubscriptionKey`-of `setAadProperties`-methoden, is het niet nodig om uw verificatie gegevens toe te voegen aan elke weer gave. 
+     Stel de verificatie gegevens in de klasse `AzureMaps` in met behulp van de `setSubscriptionKey`-of `setAadProperties`-methoden. Deze globale update, zorg ervoor dat u uw verificatie gegevens toevoegt aan elke weer gave.
 
-    Het kaart besturings element bevat eigen levenscyclus methoden voor het beheren van de OpenGL-levens duur van Android, die rechtstreeks vanuit de insluitende activiteit moet worden aangeroepen. Als u de levenscyclus methoden van het kaart besturings element correct wilt aanroepen, moet u de volgende levenscyclus methoden in de activiteit die het kaart besturings element bevat, overschrijven en de desbetreffende kaart beheer methode aanroepen. 
+    Het kaart besturings element bevat eigen levenscyclus methoden voor het beheren van de OpenGL-levens duur van Android. Deze methoden moeten rechtstreeks vanuit de Inge sloten activiteit worden aangeroepen. Als u de levenscyclus methoden van het kaart besturings element correct wilt aanroepen, moet u de volgende levenscyclus methoden overschrijven in de activiteit die het kaart besturings element bevat. Roep de desbetreffende kaart beheer methode aan.
 
     * `onCreate(Bundle)` 
     * `onStart()` 
@@ -301,7 +301,7 @@ Als u een kaart wilt weer geven met behulp van de Azure Maps SDK voor Android, m
     }
     ```
 
-Als u uw toepassing uitvoert, wordt het kaart besturings element als volgt geladen.
+Als u uw toepassing uitvoert, wordt het kaart besturings element geladen zoals in de volgende afbeelding.
 
 <center>
 
@@ -310,15 +310,15 @@ Als u uw toepassing uitvoert, wordt het kaart besturings element als volgt gelad
 U ziet dat het Azure Maps besturings element ondersteunt meer uitzoomen en biedt meer een wereld wijde weer gave.
 
 > [!TIP]
-> Als u een Android-Emulator in Windows gebruikt, wordt de kaart mogelijk niet gerenderd als gevolg van conflicten met OpenGL en geversnellene grafische weer gave van software. Dit probleem kan worden opgelost met een van de volgende oplossingen. Open AVD Manager en selecteer het virtuele apparaat dat u wilt bewerken. Schuif omlaag in het **configuratie venster controleren** . Stel in het gedeelte **geëmuleerde prestaties** de **grafische** optie in op **Hardware**.
+> Als u een Android-Emulator op een Windows-computer gebruikt, wordt de kaart mogelijk niet weer gegeven vanwege conflicten met OpenGL-en software matige grafische rendering. Het volgende heeft voor sommige personen gewerkt, om dit probleem op te lossen. Open AVD Manager en selecteer het virtuele apparaat dat u wilt bewerken. Schuif omlaag in het deel venster **Configuratie controleren** . Stel in het gedeelte **geëmuleerde prestaties** de **grafische** optie in op **Hardware**.
 
 ## <a name="localizing-the-map"></a>De kaart lokaliseren
 
-Als uw doel groep is verspreid over meerdere landen of andere talen spreekt, is lokalisatie belang rijk.
+Lokalisatie is belang rijk als uw doel groep is verspreid over meerdere landen of andere talen spreekt.
 
 **Voor: Google Maps**
 
-De taal van de kaart kan worden ingesteld in de `onCreate` methode van de hoofd activiteit door de volgende code toe te voegen. De code moet worden toegevoegd voordat u de context weergave van de kaart instelt. Hiermee wordt de taal beperkt tot het Frans met behulp van de taal code fr.
+Voeg de volgende code toe aan de methode `onCreate` om de taal van de kaart in te stellen. De code moet worden toegevoegd voordat u de context weergave van de kaart instelt. De taal code FR beperkt de taal tot het Frans.
 
 ```java
 String languageToLoad = "fr";
@@ -338,7 +338,7 @@ lokalisatie van Google Maps ![](media/migrate-google-maps-android-app/google-map
 
 **Na: Azure Maps**
 
-Azure Maps biedt drie verschillende manieren om de taal en de regionale weer gave van de kaart in te stellen. De eerste optie is om de taal-en regionale weergave gegevens door te geven aan de klasse `AzureMaps` met behulp van de statische `setLanguage` en `setView` methoden wereld wijd. Hiermee stelt u de standaard taal en de regionale weer gave in voor alle Azure Maps-besturings elementen die in uw app worden geladen. Hieronder wordt de taal beperkt tot Frans met de taal code fr-FR.
+Azure Maps biedt drie verschillende manieren om de taal en de regionale weer gave van de kaart in te stellen. De eerste optie is om de taal-en regionale weergave gegevens door te geven aan de `AzureMaps` klasse. Deze optie maakt gebruik van de statische `setLanguage`-en `setView`-methoden wereld wijd. Dit betekent dat de standaard taal en de regionale weer gave worden ingesteld voor alle Azure Maps besturings elementen die in uw app worden geladen. In dit voor beeld wordt Frans gebruikt met de taal code ' fr-FR '.
 
 ```java
 static {
@@ -353,7 +353,7 @@ static {
 }
 ```
 
-De tweede optie is de taal door geven en informatie weer geven in de XML van het kaart besturings element.
+De tweede optie is om de taal door te geven en informatie te bekijken in de XML-code voor het kaart besturings element.
 
 ```xml
 <com.microsoft.azure.maps.mapcontrol.MapControl
@@ -365,7 +365,7 @@ De tweede optie is de taal door geven en informatie weer geven in de XML van het
     />
 ```
 
-U kunt de derde optie gebruiken om de taal en de regionale weer gave van de kaart programmatisch in te stellen met behulp van de Maps `setStyle` methode. Deze optie kan op elk gewenst moment worden ingesteld om de taal en de regionale weer gave van de kaart te wijzigen.
+De derde optie is om de taal-en regionale kaart weergave te Program meren met de methode Maps `setStyle`. Met deze optie worden de taal-en regionale weer gave bijgewerkt telkens wanneer de code wordt uitgevoerd.
 
 ```java
 mapControl.onReady(map -> {
@@ -380,18 +380,15 @@ Hier volgt een voor beeld van Azure Maps met de taal ingesteld op "fr-FR".
 
 ![Azure Maps lokalisatie](media/migrate-google-maps-android-app/azure-maps-localization.png)</center>
 
-Een volledige lijst met ondersteunde talen en regionale weer gaven wordt [hier](supported-languages.md)beschreven.
+Bekijk de volledige lijst met [ondersteunde talen](supported-languages.md).
 
 ## <a name="setting-the-map-view"></a>De kaart weergave instellen
 
-Dynamische toewijzingen in zowel Azure Maps als Google Maps kunnen programmatisch worden verplaatst naar nieuwe geografische locaties door de juiste methoden aan te roepen. In de onderstaande voor beelden ziet u hoe u de kaart kunt weer geven satelliet lucht afbeelding, centreert u de kaart over een locatie met coördinaten (breedte graad: 35,0272, lengte graad:-111,0225) en wijzigt u het zoom niveau in 15 in Google Maps.
-
-> [!NOTE]
-> Google Maps maakt gebruik van tegels van 256 pixels in dimensies terwijl Azure Maps een grotere 512 pixels-tegel gebruikt. Dit beperkt het aantal netwerk aanvragen dat nodig is voor Azure Maps om hetzelfde kaart gebied als Google Maps te laden. Als gevolg van de manier waarop tegel piramides werken in kaart besturings elementen, de grotere tegels in Azure Maps betekent dat u hetzelfde zicht bare gebied als een kaart in Google Maps wilt gebruiken, moet u het zoom niveau dat in Google Maps wordt gebruikt, aftrekken door 1 bij het gebruik van Azure Maps. 
+Dynamische toewijzingen in zowel Azure Maps als Google Maps kunnen programmatisch worden verplaatst naar nieuwe geografische locaties door de juiste methoden aan te roepen. Laten we de kaart weer geven satelliet lucht afbeelding, centreren op een locatie met coördinaten en wijzig het zoom niveau. Voor dit voor beeld gebruiken we Latitude: 35,0272, lengte graad:-111,0225 en zoom niveau 15.
 
 **Voor: Google Maps**
 
-De camera van het kaart besturings element Google Maps kan via een programma worden verplaatst met behulp van de methode `moveCamera`, waarmee u het midden van de kaart en een zoom niveau kunt opgeven. De methode `setMapType` kan worden gebruikt om het type kaart te wijzigen dat wordt weer gegeven.
+De camera van het kaart besturings element Google Maps kan via een programma worden verplaatst met behulp van de `moveCamera` methode. Met de `moveCamera` methode kunt u het middel punt van de kaart en een zoom niveau opgeven. Met de methode `setMapType` wordt het type kaart gewijzigd dat wordt weer gegeven.
 
 ```java
 @Override
@@ -407,9 +404,12 @@ public void onMapReady(GoogleMap googleMap) {
 
 ![Google Maps set-weer gave](media/migrate-google-maps-android-app/google-maps-set-view.png)</center>
 
+> [!NOTE]
+> Google Maps maakt gebruik van tegels van 256 pixels in dimensies terwijl Azure Maps een grotere 512 pixels-tegel gebruikt. Dit beperkt het aantal netwerk aanvragen dat nodig is voor Azure Maps om hetzelfde kaart gebied als Google Maps te laden. Als u hetzelfde zicht bare gebied als een kaart in Google Maps wilt gebruiken, moet u het zoom niveau dat in Google Maps wordt gebruikt, aftrekken wanneer u Azure Maps gebruikt. 
+
 **Na: Azure Maps**
 
-Zoals eerder is vermeld, kunt u het zoom niveau dat in Google Maps wordt gebruikt, aftrekken om hetzelfde zicht bare gebied in Azure Maps te halen, in dit geval een zoom niveau van 14 te gebruiken.
+Zoals eerder is vermeld, kunt u hetzelfde zicht bare gebied in Azure Maps het zoom niveau dat in Google Maps wordt gebruikt, aftrekken met één. In dit geval gebruikt u een zoom niveau van 14.
 
 De eerste kaart weergave kan worden ingesteld in XML-kenmerken op het kaart besturings element.
 
@@ -425,7 +425,7 @@ De eerste kaart weergave kan worden ingesteld in XML-kenmerken op het kaart best
     />
 ```
 
-De kaart weergave kan via een programma worden bijgewerkt met de methoden `setCamera` en `setStyle`.
+De kaart weergave kan worden geprogrammeerd met de methoden `setCamera` en `setStyle`.
 
 ```java
 mapControl.onReady(map -> {
@@ -447,7 +447,7 @@ weer gave ![Azure Maps instellen](media/migrate-google-maps-android-app/azure-ma
 
 ## <a name="adding-a-marker"></a>Een markering toevoegen
 
-Punt gegevens worden vaak op de kaart weer gegeven met behulp van een afbeelding op de kaart. Deze installatie kopieën worden vaak markeringen, markerings punten, pincodes of symbolen genoemd. De volgende voor beelden genereren punt gegevens als markeringen op de kaart op (Latitude: 51,5, lengte graad:-0,2).
+Punt gegevens worden vaak weer gegeven met behulp van een afbeelding op de kaart. Deze installatie kopieën worden aangeduid als markeringen, markerings punten, pincodes of symbolen. De volgende voor beelden genereren punt gegevens als markeringen op de kaart met de breedte graad: 51,5, lengte graad:-0,2.
 
 **Voor: Google Maps**
 
@@ -468,7 +468,7 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Na: Azure Maps**
 
-In Azure Maps kunnen punt gegevens op de kaart worden weer gegeven door de gegevens eerst toe te voegen aan een gegevens bron. Vervolgens maakt u de verbinding tussen die gegevens bron en een symbool laag. De gegevens bron optimaliseert het beheer van ruimtelijke gegevens in het kaart besturings element. Met de laag symbool geeft u op hoe punt gegevens moeten worden weer gegeven als een afbeelding en/of tekst.
+In Azure Maps rendert u punt gegevens op de kaart door de gegevens eerst toe te voegen aan een gegevens bron. Vervolgens maakt u de verbinding tussen die gegevens bron en een symbool laag. De gegevens bron optimaliseert het beheer van ruimtelijke gegevens in het kaart besturings element. Met de laag symbool geeft u op hoe punt gegevens moeten worden weer gegeven als een afbeelding of tekst.
 
 ```java
 mapControl.onReady(map -> {
@@ -490,7 +490,7 @@ mapControl.onReady(map -> {
 
 ## <a name="adding-a-custom-marker"></a>Een aangepaste markering toevoegen
 
-Aangepaste installatie kopieën kunnen worden gebruikt om punten op een kaart weer te geven. De kaart in de onderstaande voor beelden maakt gebruik van een aangepaste afbeelding om een punt op de kaart weer te geven. Het punt bevindt zich op breedte graad: 51,5 en lengte graad:-0,2. De kaart verschuift de positie van de markering zodat het punt van het punaise pictogram wordt uitgelijnd met de juiste positie op de kaart.
+Aangepaste installatie kopieën kunnen worden gebruikt om punten op een kaart weer te geven. De map in de onderstaande voor beelden maakt gebruik van een aangepaste afbeelding om een punt op de kaart weer te geven. Het punt bevindt zich op breedte graad: 51,5 en lengte graad:-0,2. Het anker verschuift de positie van de markering, zodat het punt van het pictogram punaise wordt uitgelijnd met de juiste positie op de kaart.
 
 <center>
 
@@ -501,7 +501,7 @@ In beide voor beelden wordt de bovenstaande afbeelding toegevoegd aan de map dra
 
 **Voor: Google Maps**
 
-Met Google Maps kunnen aangepaste installatie kopieën worden gebruikt voor markeringen. Laad aangepaste installatie kopieën met de optie `icon` van de markering. Als u het punt van de afbeelding wilt uitlijnen op de coördinaat, gebruikt u de optie `anchor`. Het anker is relatief ten opzichte van de afmetingen van de afbeelding, in dit geval 0,2 eenheden breed en 1 eenheid hoog.
+Met Google Maps kunnen aangepaste installatie kopieën worden gebruikt voor markeringen. Laad aangepaste installatie kopieën met de optie `icon` van de markering. Als u het punt van de afbeelding wilt uitlijnen op de coördinaat, gebruikt u de optie `anchor`. Het anker is relatief ten opzichte van de afmetingen van de afbeelding. In dit geval is het anker 0,2 eenheden breed en 1 eenheid hoog.
 
 ```java
 @Override
@@ -520,7 +520,7 @@ aangepaste markering voor ![Google Maps](media/migrate-google-maps-android-app/g
 
 **Na: Azure Maps**
 
-Symbool lagen in Azure Maps aangepaste installatie kopieën ondersteunen, maar eerst moet de afbeelding worden geladen in de kaart bronnen en een unieke ID worden toegewezen. De Symbol-laag kan vervolgens naar deze ID verwijzen. Verschuif het symbool om af te stemmen op het juiste punt op de afbeelding met behulp van de `iconOffset` optie. De pictogram verschuiving is in pixels. Standaard is de offset relatief ten opzichte van het midden van de afbeelding, maar deze offset waarde kan worden aangepast met de optie `iconAnchor`. In dit voor beeld wordt de `iconAnchor` optie ingesteld op `"center"` en wordt een pictogram verschuiving gebruikt om de afbeelding vijf pixels naar rechts te verplaatsen en 15 pixels omhoog om af te stemmen met het punt van de punaise afbeelding.
+Symbool lagen in Azure Maps aangepaste installatie kopieën ondersteunen, maar eerst moet de afbeelding worden geladen naar de kaart bronnen en een unieke ID worden toegewezen. Vervolgens moet de Symbol-laag verwijzen naar deze ID. Verschuif het symbool om af te stemmen op het juiste punt op de afbeelding met behulp van de `iconOffset` optie. De pictogram verschuiving is in pixels. Standaard is de offset relatief ten opzichte van het midden van de afbeelding, maar deze offset waarde kan worden aangepast met de optie `iconAnchor`. In dit voor beeld wordt de `iconAnchor`-optie ingesteld op `"center"`. Er wordt een pictogram verschuiving gebruikt om de afbeelding vijf pixels naar rechts te verplaatsen en 15 pixels omhoog om uit te lijnen met het punt van de punaise afbeelding.
 
 ```java
 mapControl.onReady(map -> {
@@ -552,7 +552,7 @@ Polylines worden gebruikt om een lijn of pad op de kaart weer te geven. In de vo
 
 **Voor: Google Maps**
 
-Met Google Maps kan een poly lijn worden gemaakt met behulp van de klasse `PolylineOptions` en met behulp van de methode `addPolyline` aan de kaart worden toegevoegd. De lijn kleur kan worden ingesteld met behulp van de `color` optie, de lijn breedte wordt ingesteld met de optie breedte en een streek streepje-matrix kan worden ingesteld met behulp van de `pattern` optie.
+Met Google Maps rendert u een poly lijn met behulp van de klasse `PolylineOptions`. Voeg de poly lijn toe aan de kaart met behulp van de `addPolyline` methode. Stel de lijn kleur in met behulp van de optie `color`. Stel de lijn dikte in met behulp van de optie `width`. Voeg een streek streepje-matrix met de optie `pattern` toe.
 
 ```java
 @Override
@@ -580,7 +580,9 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Na: Azure Maps**
 
-In Azure Maps worden polylinen `LineString` of `MultiLineString` objecten genoemd. Deze objecten kunnen worden toegevoegd aan een gegevens bron en worden weer gegeven met behulp van een laag. De eenheden lijn breedte en streepjes matrix ' pixel ' worden uitgelijnd met de Azure Maps Web-SDK in die dezelfde waarden gebruiken in beide Sdk's die dezelfde resultaten opleveren.
+In Azure Maps worden polylinen `LineString` of `MultiLineString` objecten genoemd. Deze objecten toevoegen aan een gegevens bron en weer geven met behulp van een laag. Stel de lijn dikte in met behulp van de optie `strokeWidth`. Voeg een streek streepje-matrix met de optie `strokeDashArray` toe.
+
+De streek breedte en de streepjes matrix pixel eenheden in de Azure Maps Web-SDK zijn hetzelfde als in de Google Maps-service. Beide accepteren dezelfde waarden om dezelfde resultaten te produceren.
 
 ```java
 mapControl.onReady(map -> {
@@ -611,11 +613,11 @@ mapControl.onReady(map -> {
 
 ## <a name="adding-a-polygon"></a>Een veelhoek toevoegen
 
-Veelhoeken worden gebruikt om een gebied op de kaart weer te geven. In de volgende voor beelden ziet u hoe u een veelhoek maakt die een drie hoek vormt op basis van de middelste coördinaat van de kaart.
+Veelhoeken worden gebruikt om een gebied op de kaart weer te geven. In de volgende voor beelden ziet u hoe u een veelhoek maakt. Deze veelhoek vormt een drie hoek op basis van de middelste coördinaat van de kaart.
 
 **Voor: Google Maps**
 
-Met Google Maps kan een veelhoek worden gemaakt met behulp van de klasse `PolygonOptions` en met behulp van de methode `addPolygon` aan de kaart worden toegevoegd. De vulling-en lijn kleuren kunnen worden ingesteld met behulp van de optie `fillColor` en `strokeColor`, de breedte van de lijn wordt ingesteld met de optie `strokeWidth`.
+Met Google Maps kunt u een veelhoek renderen met behulp van de klasse `PolygonOptions`. Voeg de veelhoek aan de kaart toe met behulp van de `addPolygon` methode. Stel de vulling-en lijn kleuren in met behulp van de opties `fillColor` en `strokeColor`. Stel de lijn dikte in met behulp van de optie `strokeWidth`.
 
 ```java
 @Override
@@ -643,7 +645,9 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Na: Azure Maps**
 
-In Azure Maps kunnen `Polygon` en `MultiPolygon` objecten worden toegevoegd aan een gegevens bron en met behulp van lagen worden weer gegeven op de kaart. Het gebied van een veelhoek kan worden weer gegeven in een polygoon laag. Het overzicht van een veelhoek kan worden gerenderd met behulp van een line-laag. De eenheden lijn breedte en streepjes matrix ' pixel ' worden uitgelijnd met de Azure Maps Web-SDK in die dezelfde waarden gebruiken in beide Sdk's die dezelfde resultaten opleveren.
+Voeg in Azure Maps `Polygon` en `MultiPolygon` objecten toe aan een gegevens bron en Genereer ze op de kaart met behulp van lagen. Het gebied van een veelhoek in een polygoon laag weer geven. De omtrek van een veelhoek weer geven met behulp van een line-laag. Stel de kleur en breedte van de lijn in met behulp van de opties `strokeColor` en `strokeWidth`.
+
+De eenheden lijn breedte en streepjes matrix ' pixel ' in Azure Maps Web SDK worden uitgelijnd met de betreffende eenheden in Google Maps. Beide accepteren dezelfde waarden en produceren dezelfde resultaten.
 
 ```java
 mapControl.onReady(map -> {
@@ -679,13 +683,13 @@ mapControl.onReady(map -> {
 
 ## <a name="overlay-a-tile-layer"></a>Een tegel laag bedekken
 
- Met de tegel lagen kunt u laag afbeeldingen die zijn opgesplitst in kleinere naast elkaar geplaatste afbeeldingen, die worden uitgelijnd met het kaarten tegel systeem. Deze benadering is een veelgebruikte manier voor het bedekken van laag afbeeldingen of grote gegevens sets. Tegel lagen worden afbeeldings-overlays genoemd in Google Maps.
+ Gebruik tegel lagen om laag afbeeldingen te bedekken die zijn opgesplitst in kleinere naast elkaar geplaatste afbeeldingen, die worden uitgelijnd met het kaarten tegel systeem. Deze benadering is een veelgebruikte manier voor het bedekken van laag afbeeldingen of grote gegevens sets. Tegel lagen worden afbeeldings-overlays genoemd in Google Maps.
 
 De volgende voor beelden bedekken een weer gave laag van Iowa Environment Mesonet van Iowa State University. De tegels zijn 256 pixels groot.
 
 **Voor: Google Maps**
 
-Met Google Maps kan een tegel laag boven op de kaart worden geplaatst. Gebruik de `TileOverlayOptions`-klasse en voeg deze toe aan de kaart met behulp van de methode `addTileLauer`. Als u de tegels semi-transparant wilt maken, is de optie `transparency` ingesteld op 0,2 of 20% transparant.
+Met Google Maps kan een tegel laag boven op de kaart worden overlapt. Gebruik de klasse `TileOverlayOptions`. Voeg de laag tegel toe aan de kaart met behulp van de `addTileLauer` methode. Als u de tegels semi-transparant wilt maken, is de optie `transparency` ingesteld op 0,2 of 20% transparant.
 
 ```java
 @Override
@@ -718,10 +722,10 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Na: Azure Maps**
 
-Een tegel laag kan op een vergelijk bare manier worden toegevoegd aan de kaart als elke andere laag. Een opgemaakte URL met de tijdelijke aanduidingen x, y en zoomen; `{x}`, `{y}``{z}` respectievelijk wordt gebruikt om de laag voor toegang tot de tegels te geven. De tegel lagen in Azure Maps ondersteunen ook `{quadkey}`, `{bbox-epsg-3857}`en `{subdomain}` tijdelijke aanduidingen. Om de tegel laag semi-transparant te maken, wordt een dekkings waarde van 0,8 gebruikt. Dekking en transparantie, hoewel ze vergelijkbaar zijn, gebruikt u omgekeerde waarden. Als u ertussen wilt omzetten, trekt u de waarde van het getal één af.
+Een tegel laag kan op een vergelijk bare manier worden toegevoegd aan de kaart als elke andere laag. Een opgemaakte URL met de tijdelijke aanduidingen x, y en zoomen; `{x}`, `{y}``{z}` respectievelijk wordt gebruikt om de laag voor toegang tot de tegels te geven. Daarnaast bieden tegel lagen in Azure Maps `{quadkey}`, `{bbox-epsg-3857}`en `{subdomain}` tijdelijke aanduidingen. Om de tegel laag semi-transparant te maken, wordt een dekkings waarde van 0,8 gebruikt. Dekking en transparantie, hoewel ze vergelijkbaar zijn, gebruikt u omgekeerde waarden. Als u beide opties wilt converteren, trekt u de waarde van het getal één af.
 
 > [!TIP]
-> In Azure Maps lagen kunnen eenvoudig worden weer gegeven onder andere lagen, waaronder basis kaart lagen. Vaak is het wenselijk om tegel lagen onder de kaart labels weer te geven, zodat ze gemakkelijk te lezen zijn. De `map.layers.add`-methode heeft een tweede para meter die de id is van de laag waarin de nieuwe laag moet worden ingevoegd. Als u een tegel laag wilt invoegen onder de kaart labels, kunt u de volgende code gebruiken: `map.layers.add(myTileLayer, "labels");`
+> In Azure Maps is het handig om lagen onder andere lagen weer te geven, waaronder basis kaart lagen. Vaak is het wenselijk om tegel lagen onder de kaart labels weer te geven, zodat ze gemakkelijk te lezen zijn. De `map.layers.add`-methode heeft een tweede para meter die de id is van de laag waarin de nieuwe laag moet worden ingevoegd. Als u een tegel laag wilt invoegen onder de kaart labels, kunt u de volgende code gebruiken: `map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {
@@ -740,7 +744,7 @@ mapControl.onReady(map -> {
 
 ## <a name="show-traffic"></a>Verkeer weergeven
 
-Verkeers gegevens kunnen in Azure Maps-en Google-kaarten worden weer gegeven.
+Zowel Azure Maps als Google Maps bevatten opties voor het overlayen van verkeers gegevens.
 
 **Voor: Google Maps**
 
@@ -761,7 +765,7 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Na: Azure Maps**
 
-Azure Maps biedt verschillende opties voor het weer geven van verkeer. Verkeers incidenten, zoals het sluiten van wegsluitingen en ongel ukken, kunnen als pictogrammen op de kaart worden weer gegeven. Verkeers stromen, wegen met kleur code kunnen op de kaart worden overlapt. De kleuren kunnen worden gewijzigd om te worden weer gegeven ten opzichte van de limiet voor de geboekte snelheid, ten opzichte van de normale verwachte vertraging of de absolute vertraging. Incident gegevens in Azure Maps worden elke minuut bijgewerkt en stroom gegevens worden elke twee minuten bijgewerkt.
+Azure Maps biedt verschillende opties voor het weer geven van verkeer. Verkeers incidenten, zoals het sluiten van wegsluitingen en ongel ukken, kunnen als pictogrammen op de kaart worden weer gegeven. De netwerk stroom en de kleurgecodeerde wegen kunnen worden overlapt op de kaart. De kleuren kunnen worden gewijzigd om te worden weer gegeven ten opzichte van de limiet voor de geboekte snelheid, ten opzichte van de normale verwachte vertraging of de absolute vertraging. Incident gegevens in Azure Maps worden elke minuut bijgewerkt en stroom gegevens worden elke twee minuten bijgewerkt.
 
 ```java
 mapControl.onReady(map -> {

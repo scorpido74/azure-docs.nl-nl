@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 62be78df28d65c2ed16a9f45295edec8c5c360c4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e494a5141a96409fc6691df3a5f1194600ad0c32
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901519"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086467"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -565,7 +565,7 @@ Het kan een paar minuten duren voordat u uw AKS-cluster bijwerkt, afhankelijk va
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Een openbaar IP-adres per knoop punt in een knooppunt groep toewijzen
 
 > [!WARNING]
-> Tijdens de preview van het toewijzen van een openbaar IP-adres per knoop punt, kan het niet worden gebruikt met de *Standard load BALANCER SKU in AKS* vanwege mogelijke Load Balancer regels die conflicteren met de inrichting van de virtuele machine. In de preview-versie moet u de *Basic Load BALANCER SKU* gebruiken als u een openbaar IP-adres per knoop punt moet toewijzen.
+> Tijdens de preview van het toewijzen van een openbaar IP-adres per knoop punt, kan het niet worden gebruikt met de *Standard load BALANCER SKU in AKS* vanwege mogelijke Load Balancer regels die conflicteren met de inrichting van de virtuele machine. Als gevolg van deze beperking worden Windows-agent groepen niet ondersteund met deze preview-functie. In de preview-versie moet u de *Basic Load BALANCER SKU* gebruiken als u een openbaar IP-adres per knoop punt moet toewijzen.
 
 AKS-knoop punten vereisen geen eigen open bare IP-adressen voor communicatie. Het kan echter voor komen dat knoop punten in een knooppunt groep hun eigen open bare IP-adressen hebben. Een voor beeld is gaming, waarbij een-console een directe verbinding moet maken met een virtuele machine in de cloud om hops te minimaliseren. Dit kan worden bereikt door te registreren voor een afzonderlijke preview-functie, open bare IP-adres (preview) van het knoop punt.
 

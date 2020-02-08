@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43787bfffcb04e816f58cdcc0d9e61a61f1f16fd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 684b8c31524c55ad3335c02ec1268f1afea78a93
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050247"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086585"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-syxsense"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Syxsense
 
@@ -30,7 +30,7 @@ In deze zelf studie leert u hoe u Syxsense integreert met Azure Active Directory
 * Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Syxsense met hun Azure AD-accounts.
 * Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -85,7 +85,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.cloudmanagementsuite.com/samlautologin`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.cloudmanagementsuite.com/Saml2/Acs`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
@@ -100,9 +100,9 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Daarnaast verwacht Syxsense toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
 
-    | Name | Bronkenmerk|
+    | Naam | Bronkenmerk|
     | ------------ | --------- |
-    | Email | Gebruiker. e-mail adres |
+    | Email | gebruiker. e-mail adres |
 
 1. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL van de **app Federation-meta gegevens** te kopiëren en op uw computer op te slaan.
 
@@ -144,11 +144,11 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 1. Klik op het **pictogram instellingen**.
 
-    ![Syssense-configuratie](./media/syxsense-tutorial/configure1.png)
+    ![Syxsense-configuratie](./media/syxsense-tutorial/configure1.png)
 
 1. Klik op de **externe verificatie** en geef de URL-waarde voor de **app Federation-meta gegevens** op in het tekstvak van de **SAML 2.0-meta gegevens** en klik op **Opslaan**.
 
-    ![Syssense-configuratie](./media/syxsense-tutorial/configure2.png)
+    ![Syxsense-configuratie](./media/syxsense-tutorial/configure2.png)
 
 ### <a name="create-syxsense-test-user"></a>Syxsense-test gebruiker maken
 
@@ -156,18 +156,17 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 1. Klik op **gebruikers accounts** in het navigatie venster aan de linkerkant.
 
-    ![Syssense-configuratie](./media/syxsense-tutorial/user1.png)
+    ![Syxsense-configuratie](./media/syxsense-tutorial/user1.png)
 
 1. Klik op **Toevoegen**.
 
-    ![Syssense-configuratie](./media/syxsense-tutorial/user2.png)
+    ![Syxsense-configuratie](./media/syxsense-tutorial/user2.png)
 
 1. Geef de gebruikers gegevens op volgens de vereisten van uw organisatie en klik op **Opslaan**.
 
-    ![Syssense-configuratie](./media/syxsense-tutorial/user3.png)
+    ![Syxsense-configuratie](./media/syxsense-tutorial/user3.png)
 
-
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>SSO testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
@@ -175,9 +174,9 @@ Wanneer u op de tegel Syxsense in het toegangs venster klikt, moet u automatisch
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

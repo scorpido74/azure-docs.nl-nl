@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 0702b302af1c964014a6649f5f3e86ce47b4600a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: HT
+ms.openlocfilehash: 7d3c70695000ae62f374bc558d4b408733968b83
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048367"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069282"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats installeren
 
@@ -73,11 +73,11 @@ De volledige installatie van Azure FarmBeats, met inbegrip van de voor bereiding
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint met de daad werkelijke installatie van Azure FarmBeats, moet u de volgende stappen uitvoeren:
+U moet de volgende stappen uitvoeren voordat u begint met de daad werkelijke installatie van Azure FarmBeats:
 
 ### <a name="verify-permissions"></a>Machtigingen verifiëren
 
-U hebt de volgende machtigingen nodig in de Azure-Tenant die u wilt installeren Azure FarmBeats-
+U hebt de volgende machtigingen nodig in de Azure-Tenant om Azure FarmBeats te installeren:
 
 - Tenant: AAD-app-maker
 - Abonnement-eigenaar
@@ -85,7 +85,7 @@ U hebt de volgende machtigingen nodig in de Azure-Tenant die u wilt installeren 
 
 De eerste twee machtigingen zijn nodig voor [het maken van de procedure voor de Aad-toepassing](#create-an-aad-application) . Als dat nodig is, kunt u iemand met de juiste machtigingen krijgen voor het maken van de AAD-toepassing. De persoon die FarmBeats installeert, moet een eigenaar zijn van de resource groep waarin FarmBeats wordt geïnstalleerd.
 
-U kunt uw toegangs machtigingen in de Azure Portal controleren door de instructies te volgen op [op rollen gebaseerd toegangs beheer](https://docs.microsoft.com/azure/role-based-access-control/check-access)
+U kunt uw toegangs machtigingen in de Azure Portal controleren door de instructies te volgen op [op rollen gebaseerd toegangs beheer](https://docs.microsoft.com/azure/role-based-access-control/check-access).
 
 ### <a name="decide-subscription-and-region"></a>Abonnement en regio kiezen
 
@@ -120,7 +120,7 @@ Voer de volgende stappen uit in een Cloud Shell-exemplaar met behulp van de Powe
         ./create_aad_script.ps1
     ```
 
-4. Het AAD-script neemt ongeveer 2 minuten in beslag en voert waarden voor het scherm uit en naar een JSON-bestand in dezelfde map. Als u iemand anders het script hebt uitgevoerd, vraagt u hen deze uitvoer met u te delen.
+4. Het AAD-script duurt ongeveer twee minuten om waarden op het scherm uit te voeren en af te ronden op een JSON-bestand in dezelfde map. Als u iemand anders het script hebt uitgevoerd, vraagt u hen deze uitvoer met u te delen.
 
 ### <a name="create-sentinel-account"></a>Verklikker account maken
 
@@ -130,13 +130,13 @@ Volg de stappen voor het maken van een gratis account met Sentinel:
 
 1. Ga naar de officiële [registratie](https://aka.ms/SentinelRegistration) pagina.
 2. Geef de vereiste gegevens op (voor naam, achternaam, gebruikers naam, wacht woord en e-mail-ID) en vul het formulier in.
-3. Er wordt een verificatie koppeling verzonden naar de ID van het geregistreerde e-mail bericht. Selecteer de koppeling die in het e-mail bericht wordt gegeven en voltooi de verificatie.
+3. Er wordt een verificatie koppeling naar de geregistreerde e-mail-ID verzonden. Selecteer de koppeling die in het e-mail bericht wordt gegeven en voltooi de verificatie.
 
-Het registratie proces is voltooid zodra u de verificatie hebt voltooid. Noteer uw **Sentinel-gebruikers naam** en **verklikker wachtwoord**.
+Het registratie proces is voltooid. Noteer uw **Sentinel-gebruikers naam** en **verklikker wachtwoord**wanneer de verificatie ook is voltooid.
 
 ## <a name="install"></a>Installeren
 
-U bent nu klaar om FarmBeats te installeren. Voer de volgende stappen uit om de installatie te starten:
+U bent nu klaar om FarmBeats te installeren. Volg de onderstaande stappen om de installatie te starten:
 
 1. Meld u aan bij Azure Portal. Selecteer uw account in de rechter bovenhoek en schakel over naar de Azure AD-Tenant waar u Azure FarmBeats wilt installeren.
 
@@ -146,13 +146,17 @@ U bent nu klaar om FarmBeats te installeren. Voer de volgende stappen uit om de 
 
 4. Er wordt een nieuw venster weer gegeven. Voltooi het registratie proces door het juiste abonnement, de resource groep en de locatie te kiezen waarop u Azure FarmBeats wilt installeren.
 
-5. Geef het e-mail adres op waarvoor service waarschuwingen met betrekking tot Azure FarmBeats moeten worden ontvangen in de sectie **FarmBeats service Alerts** . Klik onder aan de pagina op volgende om naar het tabblad **afhankelijkheden** te gaan. ![tabblad basis](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
+5. Geef het e-mail adres op waarvoor service waarschuwingen met betrekking tot Azure FarmBeats moeten worden ontvangen in de sectie **FarmBeats service Alerts** . Selecteer **volgende** onder aan de pagina om naar het tabblad **afhankelijkheden** te gaan.
+
+    ![Tabblad basis beginselen](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
 
 6. Kopieer de afzonderlijke vermeldingen van de uitvoer van [Aad-script](#create-an-aad-application) naar de invoer in de sectie Aad-toepassing.
 
-7. Voer de gebruikers naam en het wacht woord van het [Sentinel-account](#create-sentinel-account) in het gedeelte verklikker account in. Klik op volgende om naar het tabblad **controleren en maken** ![afhankelijkheden te gaan](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
+7. Voer de gebruikers naam en het wacht woord van het [Sentinel-account](#create-sentinel-account) in het gedeelte verklikker account in. Selecteer **volgende** om naar het tabblad **controleren + maken** te gaan.
 
-8. Zodra de ingevoerde gegevens zijn gevalideerd, selecteert u **OK**. De pagina Gebruiksvoorwaarden wordt weer gegeven. Bekijk de voor waarden en selecteer **maken** om de installatie te starten. U wordt automatisch omgeleid naar een pagina waar u de voortgang van de installatie kunt volgen.
+    ![Tabblad Afhankelijkheden](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
+
+8. Zodra de ingevoerde gegevens zijn gevalideerd, selecteert u **OK**. De pagina Gebruiksvoorwaarden wordt weer gegeven. Bekijk de voor waarden en selecteer **maken** om de installatie te starten. U wordt omgeleid naar de pagina waar u de voortgang van de installatie kunt volgen.
 
 Nadat de installatie is voltooid, kunt u de installatie controleren en FarmBeats-portal gaan gebruiken door te navigeren naar de naam van de website die u tijdens de installatie hebt ingesteld: https://\<FarmBeats-website-name >. azurewebsites. net. U ziet de FarmBeats-gebruikers interface met een optie voor het maken van farms.
 
@@ -161,6 +165,7 @@ Nadat de installatie is voltooid, kunt u de installatie controleren en FarmBeats
 ## <a name="upgrade"></a>Upgraden
 
 Als u de FarmBeats wilt bijwerken naar de nieuwste versie, voert u de volgende stappen uit in een Cloud Shell-exemplaar met behulp van de Power shell-omgeving. De gebruiker moet de eigenaar zijn van het abonnement waarin FarmBeats is geïnstalleerd.
+
 De eerste keer dat gebruikers worden gevraagd om een abonnement te selecteren en een opslag account te maken. Voltooi de installatie volgens de instructies.
 
 1. Het [upgrade script](https://aka.ms/FarmBeatsUpgradeScript) downloaden
@@ -181,7 +186,7 @@ De eerste keer dat gebruikers worden gevraagd om een abonnement te selecteren en
         ./upgrade-farmbeats.ps1 -InputFilePath [Path to input.json file]
     ```
 
-Het pad naar het bestand input. json is optioneel. Als dat niet is opgegeven, wordt u door het script gevraagd om alle vereiste invoer. De upgrade moet in ongeveer 30 minuten worden voltooid.
+Het pad naar het bestand input. json is optioneel. Als u dit niet opgeeft, wordt u door het script gevraagd om alle vereiste invoer. De upgrade moet in ongeveer 30 minuten worden voltooid.
 
 ## <a name="uninstall"></a>Verwijderen
 

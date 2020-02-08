@@ -4,7 +4,7 @@ titleSuffix: Microsoft identity platform
 description: Meer informatie over diverse problemen met het gebruik van SSL-certificaten met de MSAL. Doel-C-bibliotheek.
 services: active-directory
 documentationcenter: ''
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: fef1e1df15fed8452066f06a351452a83f73d89b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e278b928cc7f1e7f830ba246545ea52944a2e252
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701345"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084362"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>Procedure: problemen oplossen met MSAL voor iOS-en macOS SSL-problemen
 
 In dit artikel vindt u informatie over het oplossen van problemen die kunnen optreden tijdens het gebruik [van de micro soft Authentication Library (MSAL) voor IOS en macOS](reference-v2-libraries.md)
 
-## <a name="network-issues"></a>Netwerkproblemen
+## <a name="network-issues"></a>Netwerk problemen
 
 **Fout-1200**: er is een SSL-fout opgetreden en een beveiligde verbinding met de server kan niet worden gemaakt.
 

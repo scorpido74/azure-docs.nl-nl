@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f2f2e02cdb5698d7569e5be177d54ca4dcb0ae02
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985999"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086533"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -134,7 +134,7 @@ Ja. U kunt de verbinding verbreken instellen om leden binnen een back-end-groep 
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Kan ik de instantie grootte wijzigen van gemiddeld in groot, zonder onderbreking?
 
-Ja. Azure distribueert exemplaren in update-en fout domeinen om ervoor te zorgen dat de exemplaren niet allemaal op hetzelfde moment worden uitgevoerd. Application Gateway ondersteunt schalen door meerdere exemplaren van dezelfde gateway toe te voegen om de belasting te delen.
+Ja.
 
 ## <a name="configuration"></a>Configuratie
 
@@ -322,7 +322,7 @@ Zie [OWASP Top-10-beveiligings problemen](https://www.owasp.org/index.php/Top10#
 
 ### <a name="does-waf-support-ddos-protection"></a>Biedt WAF ondersteuning voor DDoS-beveiliging?
 
-Ja. U kunt DDoS-beveiliging inschakelen op het virtuele netwerk waarop de toepassingsgateway is geïmplementeerd. Door deze instelling zorgt u ervoor dat met de Azure DDoS-beveiligingsservice ook het virtuele IP-adres (VIP) van de toepassingsgateway wordt beveiligd.
+Ja. U kunt DDoS-beveiliging inschakelen voor het virtuele netwerk waarin de toepassings gateway is geïmplementeerd. Met deze instelling zorgt u ervoor dat de Azure DDoS Protection-Service ook de virtuele IP-adressen van de toepassings gateway (VIP) beveiligt.
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Zijn er richt lijnen beschikbaar om te migreren van de V1-SKU naar de v2-SKU?
 

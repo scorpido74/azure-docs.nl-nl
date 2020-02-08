@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2019
-ms.openlocfilehash: a01258799efa81c8d3ddba398facaa90c24c2513
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ae799e9a852b8700399ef695c54b3348174b560c
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150028"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069401"
 ---
 # <a name="overview-of-the-azure-monitor-agents"></a>Overzicht van de Azure Monitor agents 
 Reken resources zoals virtuele machines genereren gegevens om de prestaties en beschik baarheid te controleren, net als [andere cloud resources](../insights/monitor-azure-resource.md). Reken resources hebben ook een gast besturingssysteem en werk belastingen die moeten worden bewaakt. Voor het verzamelen van deze bewakings gegevens in de resource is een agent vereist. In dit artikel worden de agents beschreven die door Azure Monitor worden gebruikt en kunt u bepalen wat u moet doen aan de vereisten voor uw specifieke omgeving.
@@ -63,7 +63,7 @@ De volgende scenario's worden ondersteund door de uitbrei ding van de Azure Diag
 ## <a name="log-analytics-agent"></a>Log Analytics-agent
 De [log Analytics-agent](log-analytics-agent.md) verzamelt bewakings gegevens van het gast besturingssysteem en werk belastingen van virtuele machines in azure, andere cloud providers en on-premises. Hiermee worden gegevens verzameld in een Log Analytics-werk ruimte.
 
-De Log Analytics-agent is dezelfde agent die wordt gebruikt door System Center Operations Manager en u kunt computers met meerdere thuis agenten communiceren met uw beheer groep en Azure Monitor tegelijk. Deze agent is ook vereist voor bepaalde oplossingen in Azure Monitor.
+De Log Analytics-agent is dezelfde agent die wordt gebruikt door System Center Operations Manager en de multihome agent computers om te communiceren met uw beheer groep en Azure Monitor tegelijk. Deze agent is ook vereist voor bepaalde oplossingen in Azure Monitor.
 
 De Log Analytics-agent voor Windows wordt vaak aangeduid als micro soft Management Agent (MMA). De Log Analytics-agent voor Linux wordt vaak OMS-agent genoemd.
 

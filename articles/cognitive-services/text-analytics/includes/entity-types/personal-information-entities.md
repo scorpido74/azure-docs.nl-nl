@@ -6,30 +6,110 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/21/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3aa4da9a9cf3d1d4b664e81f1fd18f2b225d731d
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799801"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086901"
 ---
 ## <a name="personal-information-entity-types"></a>Entiteit typen persoonlijke informatie:
 
+### <a name="person"></a>Person
+Herken namen van personen in de tekst.
+
+Talen:
+* Open bare Preview: `English`
+
+| Naam subtype | Beschrijving                                               | Beschikbaar vanaf model versie |
+|--------------|-----------------------------------------------------------|----------------------------------------|
+| N.v.t.          | Herkende namen, bijvoorbeeld `Bill Gates`, `Marie Curie` | `2020-02-01`                           |
+
+### <a name="organization"></a>Organisatie  
+
+Organisaties, ondernemingen, agentschappen, bedrijven, klaveren en andere groepen mensen te herkennen.
+
+Talen: 
+
+* Open bare Preview: `English`
+
+| Naam subtype | Beschrijving                                                                                       | Beschikbaar vanaf model versie|
+|--------------|---------------------------------------------------------------------------------------------------|--------------|
+| N.v.t.          | organisaties, bijvoorbeeld `Microsoft`, `NASA``National Oceanic and Atmospheric Administration` | `2020-02-01` |
+
 ### <a name="phone-number"></a>Telefoonnummer
 
-Telefoon nummers. 
+Telefoon nummers (alleen Amerikaanse telefoon nummers). 
 
 Talen:
 
 * Open bare Preview: `English`
 
-| Naam subtype           | Beschrijving                                           |
-|------------------------|-------------------------------------------------------|
-| N.v.t.                    | Telefoon nummers, bijvoorbeeld `+1 123-123-123`.          |
-| EU-telefoon nummer        | Telefoon nummers die specifiek zijn voor de Europese Unie.         |
-| Mobiele telefoon nummer van de EU | Mobiele telefoon nummers die specifiek zijn voor de Europese Unie. |
+| Naam subtype | Beschrijving                                    | Beschikbaar vanaf model versie |
+|--------------|------------------------------------------------|----------------------------------------|
+| N.v.t.          | Telefoon nummers (VS), bijvoorbeeld `(312) 555-0176` | `2020-02-01`                           |
+
+### <a name="email"></a>Email
+
+E-mailadres. 
+
+Talen:
+
+* Open bare Preview: `English`
+
+| Naam subtype | Beschrijving                                      | Beschikbaar vanaf model versie |
+|--------------|--------------------------------------------------|----------------------------------------|
+| N.v.t.          | E-mail adres, bijvoorbeeld `support@contoso.com` | `2020-02-01`                           |
+
+### <a name="url"></a>URL
+
+Internet-Url's.
+
+Talen:
+
+* Open bare Preview: `English`
+
+| Naam subtype | Beschrijving                                          | Beschikbaar vanaf model versie |
+|--------------|------------------------------------------------------|----------------------------------------|
+| N.v.t.          | Url's naar websites, bijvoorbeeld `https://www.bing.com` | `2020-02-01`                           |
+
+### <a name="ip-address"></a>IP-adres
+
+Internet Protocol adres
+
+Talen:
+
+* Open bare Preview: `English`
+
+| Naam subtype | Beschrijving                              | Beschikbaar vanaf model versie |
+|--------------|------------------------------------------|----------------------------------------|
+| N.v.t.          | Netwerk adres bijvoorbeeld `10.0.0.101` | `2020-02-01`                           |
+
+### <a name="quantity"></a>Aantal 
+
+Numerieke aantallen
+
+Talen:
+
+* Open bare Preview: `English`
+
+| Naam subtype | Beschrijving                   | Beschikbaar vanaf model versie |
+|--------------|-------------------------------|----------------------------------------|
+| Leeftijd          | `90 days old`, `30 years old` | `2020-02-01`                           |
+
+### <a name="datetime"></a>DateTime
+
+Datum-en tijd entiteiten
+
+Talen:
+
+* Open bare Preview: `English`
+
+| Naam subtype | Beschrijving                   | Beschikbaar vanaf model versie |
+|--------------|-------------------------------|----------------------------------------|
+| Date         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
 
 ### <a name="eu-gps-coordinates"></a>EU GPS-coördinaten
 
@@ -39,13 +119,15 @@ Talen:
 
 * Open bare Preview: `English`
 
-| Naam subtype | Beschrijving                               |
-|--------------|-------------------------------------------|
-| N.v.t.          | GPS-coördinaten binnen de Europese Unie |
+| Naam subtype | Beschrijving                               | Beschikbaar vanaf model versie |
+|--------------|-------------------------------------------|----------------------------------------|
+| N.v.t.          | GPS-coördinaten binnen de Europese Unie | `2019-10-01`                           |
 
 ### <a name="azure-information"></a>Azure-gegevens
 
 Identificeer bare Azure-informatie, inclusief verificatie gegevens en verbindings reeksen. 
+
+* Beschikbaar vanaf model versie `2019-10-01`.
 
 Talen:
 
@@ -66,6 +148,8 @@ Talen:
 | Verbindings reeks SQL Server          | Verbindings reeks voor een SQL-Server.                                         |
 
 ### <a name="identification"></a>Aanduiding
+
+* Beschikbaar vanaf model versie `2019-10-01`.
 
 Talen:
 

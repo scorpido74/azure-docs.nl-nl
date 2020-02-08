@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fbd2b227c9292593a7652044ef4c013bf0cfaf8e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8188fac270eadb6e09cc3561ddefb05aa59ba661
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017000"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087138"
 ---
 # <a name="configure-a-vpn-connection-to-your-avs-private-cloud"></a>Een VPN-verbinding met de Privécloud van uw AVS configureren
 
@@ -97,7 +97,7 @@ Met een punt-naar-site-VPN-verbinding worden de DNS-namen van de eerste AVS-priv
 
     ![VPN-verbinding bewerken](media/viscosity-edit-connection.png)
 
-7. Klik op het tabblad **netwerken** en voer het IP-adres van de DNS-server van de AVS-privécloud in, gescheiden door een komma of een spatie en het domein als ```AVS.io```. Selecteer **DNS-instellingen negeren die worden verzonden door de VPN-server**.
+7. Klik op het tabblad **netwerken** en voer het IP-adres van de DNS-server van de AVS-privécloud in, gescheiden door een komma of een spatie en het domein als ```az.cloudsimple.io```. Selecteer **DNS-instellingen negeren die worden verzonden door de VPN-server**.
 
     ![VPN-netwerken](media/viscosity-edit-connection-networking.png)
 
@@ -117,4 +117,4 @@ Zie [een VPN-verbinding met hoge Beschik baarheid configureren](high-availabilit
 
 > [!IMPORTANT]
 >    1. Stel TCP MSS in op 1200 op uw VPN-apparaat. Als uw VPN-apparaten geen ondersteuning bieden voor MSS-bekleming, kunt u in plaats daarvan ook de MTU op de tunnel interface instellen op 1240 bytes.
-> 2. Nadat het site-naar-site-VPN is ingesteld, stuurt u de DNS-aanvragen voor * door. AVS.io naar de AVS-DNS-servers in de Privécloud. Volg de instructies in [on-premises DNS-installatie](on-premises-dns-setup.md).
+> 2. Nadat site-naar-site-VPN is ingesteld, stuurt u de DNS-aanvragen voor *. cloudsimple.io door naar de DNS-servers van de AVS-Privécloud. Volg de instructies in [on-premises DNS-installatie](on-premises-dns-setup.md).

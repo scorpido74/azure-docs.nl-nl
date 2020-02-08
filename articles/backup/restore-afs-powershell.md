@@ -3,18 +3,21 @@ title: Azure Files herstellen met Power shell
 description: In dit artikel leert u hoe u Azure Files kunt herstellen met behulp van de Azure Backup-service en Power shell.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: c1c116033dbf44e6e1f332195a18c7dfdbcd6c71
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776337"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086820"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Azure Files herstellen met Power shell
 
 In dit artikel wordt uitgelegd hoe u een volledige bestands share of specifieke bestanden herstelt vanaf een herstel punt dat is gemaakt door de [Azure backup](backup-overview.md) -service met behulp van Azure Power shell.
 
 U kunt een volledige bestands share of specifieke bestanden op de share herstellen. U kunt herstellen naar de oorspronkelijke locatie of naar een andere locatie.
+
+> [!WARNING]
+> Zorg ervoor dat de PS-versie is bijgewerkt naar de minimale versie van AZ. Recovery Services 2.6.0 voor AFS-back-ups. Raadpleeg de [sectie](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) overzicht van de vereiste voor deze wijziging voor meer informatie.
 
 ## <a name="fetch-recovery-points"></a>Herstel punten ophalen
 

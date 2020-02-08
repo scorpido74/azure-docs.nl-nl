@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: a8265680f74b2d5679d1ebfbb2873dd096f498a3
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964415"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083047"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Zelf studie: gegevens delen met Azure data share  
 
@@ -29,6 +29,7 @@ In deze zelfstudie leert u het volgende:
 
 * Azure-abonnement: als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 * Het e-mail adres van uw ontvanger voor Azure (met hun e-mail alias werkt niet).
+* Als de bron-Azure-gegevens opslag zich in een ander Azure-abonnement bevindt dan de service die u gebruikt om een gegevens share bron te maken, registreert u de [resource provider micro soft. DataShare](concepts-roles-permissions.md#resource-provider-registration) in het abonnement waar het Azure-gegevens archief zich bevindt. 
 
 ### <a name="share-from-a-storage-account"></a>Delen vanuit een opslag account:
 
@@ -57,7 +58,7 @@ In deze zelfstudie leert u het volgende:
 * Client-IP SQL Server toegang tot Firewall. U kunt dit doen door de volgende stappen uit te voeren: 
     1. Ga in SQL Server in Azure Portal naar *firewalls en virtuele netwerken*
     1. Klik op de **aan/uit** om toegang tot Azure-Services toe te staan.
-    1. Klik op **+ client IP toevoegen** en klik op **Opslaan**. Het IP-adres van de client kan worden gewijzigd. U kunt ook een IP-bereik toevoegen. 
+    1. Klik op **+ client IP toevoegen** en klik op **Opslaan**. Het IP-adres van de client kan worden gewijzigd. Dit proces moet mogelijk worden herhaald wanneer u de volgende keer dat u SQL-gegevens deelt van Azure Portal. U kunt ook een IP-bereik toevoegen. 
 
 ### <a name="share-from-azure-data-explorer"></a>Delen vanuit Azure Data Explorer
 * Een Azure Data Explorer-cluster met data bases die u wilt delen.
@@ -66,7 +67,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-share-account"></a>Een gegevens share-account maken
 
@@ -82,7 +83,7 @@ Een Azure-gegevens share bron maken in een Azure-resource groep.
 
      **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
-    | Name | *datashareacount* | Geef een naam op voor uw gegevens share-account. |
+    | Naam | *datashareacount* | Geef een naam op voor uw gegevens share-account. |
     | Abonnement | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw gegevens share-account.|
     | Resourcegroep | *test-resource-group* | Gebruik een bestaande resourcegroep of maak een nieuwe. |
     | Locatie | *VS-Oost 2* | Selecteer een regio voor uw gegevens share-account.

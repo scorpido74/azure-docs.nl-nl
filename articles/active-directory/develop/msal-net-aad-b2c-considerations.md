@@ -3,7 +3,7 @@ title: Azure AD B2C (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over specifieke overwegingen bij het gebruik van Azure AD B2C met de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f28b7abc2b3a9ba753a2f7923c9cfed1897c8522
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 697b4bc8e3a25085ac6f7d600ea2227dd30a6624
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834192"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084002"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET gebruiken om gebruikers aan te melden met sociale identiteiten
 
@@ -124,7 +124,7 @@ Raadpleeg deze [documentatie](v2-oauth-ropc.md)voor meer informatie over de ROPC
 Deze stroom wordt **niet aanbevolen** omdat uw toepassing die een gebruiker vraagt om zijn of haar wacht woord niet veilig is. Zie [dit artikel](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)voor meer informatie over dit probleem. 
 
 Door gebruikers naam/wacht woord te gebruiken, geeft u een aantal dingen:
-- kern principes van moderne identiteit: wacht woord wordt gevist, opnieuw afgespeeld. Omdat we dit concept hebben van een share geheim dat kan worden onderschept. Dit is niet compatibel met een wacht woord.
+- Kern principes van moderne identiteit: wacht woord wordt gevist, opnieuw afgespeeld. Omdat we dit concept hebben van een share geheim dat kan worden onderschept. Dit is niet compatibel met een wacht woord.
 - Gebruikers die MFA nodig hebben, kunnen zich niet aanmelden (omdat er geen interactie is).
 - Gebruikers kunnen eenmalige aanmelding niet uitvoeren.
 
@@ -184,4 +184,4 @@ Meer informatie over het interactief verkrijgen van tokens met MSAL.NET voor Azu
 
 | Voorbeeld | Platform | Beschrijving|
 |------ | -------- | -----------|
-|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Een eenvoudige Xamarin Forms-app die laat zien hoe u MSAL.NET kunt gebruiken om gebruikers te verifiëren via Azure AD B2C en toegang te krijgen tot een web-API met de resulterende tokens.|
+|[Active-Directory-B2C-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Een eenvoudige Xamarin Forms-app die laat zien hoe u MSAL.NET kunt gebruiken om gebruikers te verifiëren via Azure AD B2C en toegang te krijgen tot een web-API met de resulterende tokens.|

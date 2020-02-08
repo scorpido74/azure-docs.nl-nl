@@ -2,7 +2,7 @@
 title: Migratie handleiding voor ADAL naar MSAL voor Android | Azure
 description: Informatie over het migreren van uw Android-app voor Azure Active Directory Authentication Library (ADAL) naar de micro soft Authentication Library (MSAL).
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
 ms.date: 09/6/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 0c7b059fd8d9b34ad6d1e565431d39ffc706cb45
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696704"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084051"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Migratie handleiding voor ADAL naar MSAL voor Android
 
@@ -56,7 +56,7 @@ De open bare API MSAL introduceert belang rijke wijzigingen, waaronder:
 - MSAL ondersteunt declaratieve configuratie voor:
   - Client-ID, omleidings-URI.
   - Inge sloten versus standaard browser
-  - ca's
+  - Ca's
   - HTTP-instellingen, zoals lees-en verbindingstime-out
 
 ## <a name="your-app-registration-and-migration-to-msal"></a>Uw app-registratie en-migratie naar MSAL

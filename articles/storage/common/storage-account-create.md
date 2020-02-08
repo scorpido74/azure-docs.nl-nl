@@ -1,20 +1,20 @@
 ---
-title: Maak een opslagaccount
+title: Create a storage account
 titleSuffix: Azure Storage
 description: Meer informatie over het maken van een opslag account met behulp van de Azure Portal, Azure PowerShell of de Azure CLI. Een Azure-opslag account biedt een unieke naam ruimte in Microsoft Azure om uw gegevens op te slaan en te openen.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/17/2020
+ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2ef90e1cb883a2d22b355ff4105ae0ce3c73ad6d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 86aaebe652968a2ea33fd8e15f9de9c1dff31a30
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759843"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086959"
 ---
 # <a name="create-an-azure-storage-account"></a>Een Azure Storage-account maken
 
@@ -34,9 +34,17 @@ Geen.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Voor dit procedure-artikel is de Azure PowerShell-module AZ versie 0,7 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om uw huidige versie te vinden. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
+Als u een Azure-opslag account wilt maken met Power shell, moet u Azure PowerShell module AZ versie 0,7 of hoger hebben geïnstalleerd. Zie [Inleiding tot de Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie.
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+Voer de volgende opdracht uit om uw huidige versie te vinden:
+
+```powershell
+Get-InstalledModule -Name "Az"
+```
+
+Als u Azure PowerShell wilt installeren of upgraden, raadpleegt u [Azure PowerShell module installeren](/powershell/azure/install-Az-ps).
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 U kunt zich aanmelden bij Azure en Azure CLI-opdrachten uitvoeren op een van de volgende twee manieren:
 
@@ -67,33 +75,33 @@ Geen.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Aanmelden bij uw Azure-abonnement met de `Connect-AzAccount` opdracht en volg de aanwijzingen aanwijzingen om te verifiëren.
+Meld u aan bij uw Azure-abonnement met de `Connect-AzAccount`-opdracht en volg de instructies op het scherm om te verifiëren.
 
 ```powershell
 Connect-AzAccount
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Meld u aan bij de [Azure Portal](https://portal.azure.com)om Azure Cloud shell te starten.
 
 Als u zich wilt aanmelden bij de lokale installatie van de CLI, voert u de opdracht [AZ login](/cli/azure/reference-index#az-login) :
 
-```cli
+```azurecli-interactive
 az login
 ```
 
 # <a name="templatetabtemplate"></a>[Sjabloon](#tab/template)
 
-N/A
+N.v.t.
 
 ---
 
-## <a name="create-a-storage-account"></a>Maak een opslagaccount
+## <a name="create-a-storage-account"></a>Create a storage account
 
 U bent nu klaar om een opslag account te maken.
 
@@ -113,6 +121,7 @@ Maak eerst een nieuwe resourcegroep met PowerShell met behulp van de opdracht [N
 # put resource group in a variable so you can use the same group name going forward,
 # without hard-coding it repeatedly
 $resourceGroup = "storage-resource-group"
+$location = "westus"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
@@ -120,7 +129,6 @@ Als u niet zeker weet welke regio u moet opgeven voor de parameter `-Location`, 
 
 ```powershell
 Get-AzLocation | select Location
-$location = "westus"
 ```
 
 Maak vervolgens een voor algemeen gebruik v2-opslag account met geografisch redundante opslag met lees toegang (RA-GRS) met behulp van de opdracht [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) . Houd er rekening mee dat de naam van uw opslag account uniek moet zijn in azure, dus Vervang de waarde van de tijdelijke aanduiding tussen vier Kante haken door uw eigen unieke waarde:
@@ -134,7 +142,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 ```
 
 > [!IMPORTANT]
-> Als u [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, moet u `-EnableHierarchicalNamespace $True` opnemen in deze lijst met para meters. 
+> Als u [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, moet u `-EnableHierarchicalNamespace $True` opnemen in deze lijst met para meters.
 
 Als u een v2-opslag account voor algemeen gebruik met een andere replicatie optie wilt maken, vervangt u de gewenste waarde in de onderstaande tabel voor de para meter **SkuName** .
 
@@ -147,7 +155,7 @@ Als u een v2-opslag account voor algemeen gebruik met een andere replicatie opti
 |Geo-zone-redundante opslag (GZRS) (preview)    |Standard_GZRS         |
 |Geo-zone-redundante opslag met lees toegang (RA-GZRS) (preview)    |Standard_RAGZRS         |
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Gebruik eerst de opdracht [az group create](/cli/azure/group#az_group_create) om een nieuwe resourcegroep te maken met Azure CLI.
 
@@ -238,7 +246,7 @@ Als u het opslag account wilt verwijderen, gebruikt u de opdracht [Remove-AzStor
 Remove-AzStorageAccount -Name <storage-account> -ResourceGroupName <resource-group>
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u het opslag account wilt verwijderen, gebruikt u de opdracht [AZ Storage account delete](/cli/azure/storage/account#az-storage-account-delete) :
 
@@ -287,7 +295,7 @@ In dit procedure-artikel hebt u een standaard v2-opslag account voor algemeen ge
 > [!div class="nextstepaction"]
 > [Werken met blobs met behulp van PowerShell](../blobs/storage-quickstart-blobs-powershell.md)
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!div class="nextstepaction"]
 > [Werken met blobs met behulp van Azure CLI](../blobs/storage-quickstart-blobs-cli.md)

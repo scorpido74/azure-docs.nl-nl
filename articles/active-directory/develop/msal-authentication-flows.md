@@ -3,22 +3,22 @@ title: MSAL-verificatie stromen | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over de verificatie stromen en subsidies die worden gebruikt door de micro soft Authentication Library (MSAL).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/30/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bc906e1026dcc051ef152ff9fba94525ac700761
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: ace636152f6a0c9bf3896860eb17cc291bef2887
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962085"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085129"
 ---
 # <a name="authentication-flows"></a>Verificatie stromen
 
@@ -39,7 +39,7 @@ In dit artikel worden de verschillende verificatie stromen beschreven die worden
  
 Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verificatie stromen worden gebruikt die worden ondersteund door het micro soft Identity-platform.  Deze stromen kunnen een aantal tokens (id_tokens, vernieuwings tokens, toegangs tokens) en autorisatie codes produceren, en vereisen verschillende tokens om ze te laten werken. Dit diagram bevat een overzicht:
  
-|Stroom | Nodig | id_token | toegangs token | token vernieuwen | autorisatie code | 
+|Stroom | Nodig | id_token | toegangs token | token vernieuwen | Autorisatie code | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Autorisatie code stroom](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Impliciete stroom](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
@@ -74,7 +74,7 @@ Veel moderne webtoepassingen zijn gebouwd als client-side, single page-toepassin
 
 Deze verificatie stroom bevat geen toepassings scenario's die gebruikmaken van platformoverschrijdende java script frameworks, zoals elektroden en reageren, omdat ze verdere mogelijkheden nodig hebben voor interactie met de systeem eigen platformen.
 
-## <a name="authorization-code"></a>autorisatie code
+## <a name="authorization-code"></a>Autorisatie code
 
 MSAL ondersteunt de [autorisatie code toekenning van OAuth 2](v2-oauth2-auth-code-flow.md). Deze toekenning kan worden gebruikt in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Zo kunt u aanmelden en API-toegang toevoegen aan uw mobiele en desktop-apps. 
 

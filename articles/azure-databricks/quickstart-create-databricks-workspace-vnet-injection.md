@@ -8,32 +8,32 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: 8d118170de01c7685ac9dba65c7e22cefb6d4829
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 046b2da7cdb966192e485ff9f5510eb63c9e0008
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263128"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086559"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>Quick Start: een Azure Databricks-werk ruimte maken in uw eigen Virtual Network
 
 De standaard implementatie van Azure Databricks maakt een nieuw virtueel netwerk dat wordt beheerd door Databricks. In deze Quick start ziet u hoe u in plaats daarvan een Azure Databricks werkruimte maakt in uw eigen virtuele netwerk. U maakt ook een Apache Spark cluster binnen die werk ruimte. 
 
-Zie [Deploy Azure Databricks in uw Azure Virtual Network (VNet-injectie)] (/databricks/Administration-Guide/Cloud-configurations/Azure/vnet-Inject) voor meer informatie over het maken van een Azure Databricks-werk ruimte in uw eigen virtuele netwerk.
+Zie [deploying Azure Databricks in Azure Virtual Network (VNet-injectie)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)voor meer informatie over de reden waarom u een Azure Databricks-werk ruimte in uw eigen virtuele netwerk kunt maken.
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/databricks/) aan.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
 > Als u een gratis account hebt, gaat u naar uw profiel en wijzigt u uw abonnement in **betalen per gebruik**. Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie. Vervolgens [verwijdert u de bestedings limiet](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)en [vraagt u een quotum toename](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) aan voor vcpu's in uw regio. Wanneer u uw Azure Databricks-werk ruimte maakt, kunt u de prijs categorie **Trial (Premium-14-dagen gratis dbu's)** selecteren om de werk ruimte gedurende 14 dagen toegang te geven tot gratis premium Azure Databricks dbu's.
 
-## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-1. Selecteer **Een resource maken** in het Azure Portal-menu. Selecteer vervolgens **netwerk > virtueel netwerk**.
+1. Selecteer in het menu Azure Portal de optie **een resource maken**. Selecteer vervolgens **netwerk > virtueel netwerk**.
 
     ![Een virtueel netwerk maken op Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-portal.png)
 
@@ -43,7 +43,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/).
     |-------|---------------|-----------|
     |Abonnement|\<Uw abonnement\>|Selecteer het Azure-abonnement dat u wilt gebruiken.|
     |Resourcegroep|databricks-Quick Start|Selecteer **nieuwe maken** en voer een nieuwe resource groeps naam in voor uw account.|
-    |Name|databricks-Quick Start|Selecteer een naam voor het virtuele netwerk.|
+    |Naam|databricks-Quick Start|Selecteer een naam voor het virtuele netwerk.|
     |Regio|\<Selecteer de regio die het dichtst bij uw gebruikers is gelegen\>|Selecteer een geografische locatie waar u uw virtuele netwerk kunt hosten. Gebruik de locatie die het dichtst bij uw gebruikers is.|
 
     ![Basis beginselen voor een virtueel netwerk op Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
@@ -64,7 +64,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Een Azure Databricks-werkruimte maken
 
-1. Selecteer **Een resource maken** in het Azure Portal-menu. Selecteer vervolgens **Analytics > Databricks**.
+1. Selecteer in het menu Azure Portal de optie **een resource maken**. Selecteer vervolgens **Analytics > Databricks**.
 
     ![Een Azure Databricks-werk ruimte maken op Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-portal.png)
 
@@ -72,11 +72,11 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
     |Instelling|Voorgestelde waarde|Beschrijving|
     |-------|---------------|-----------|
-    |Naam van de werkruimte|databricks-Quick Start|Selecteer een naam voor uw Azure Databricks-werk ruimte.|
+    |Werkruimte naam|databricks-Quick Start|Selecteer een naam voor uw Azure Databricks-werk ruimte.|
     |Abonnement|\<Uw abonnement\>|Selecteer het Azure-abonnement dat u wilt gebruiken.|
     |Resourcegroep|databricks-Quick Start|Selecteer dezelfde resource groep die u hebt gebruikt voor het virtuele netwerk.|
     |Locatie|\<Selecteer de regio die het dichtst bij uw gebruikers is gelegen\>|Kies dezelfde locatie als het virtuele netwerk.|
-    |Prijsniveau|Kies tussen Standard of Premium.|Zie de [pagina met prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/)voor meer informatie over prijs categorieën.|
+    |Prijscategorie|Kies tussen Standard of Premium.|Zie de [pagina met prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/)voor meer informatie over prijs categorieën.|
 
     ![Basis beginselen van Azure Databricks werk ruimte maken](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
 
@@ -85,7 +85,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/).
     |Instelling|Voorgestelde waarde|Beschrijving|
     |-------|---------------|-----------|
     |Azure Databricks-werk ruimte in uw Virtual Network (VNet) implementeren|Ja|Met deze instelling kunt u een Azure Databricks-werk ruimte in uw virtuele netwerk implementeren.|
-    |Virtual Network|databricks-Quick Start|Selecteer het virtuele netwerk dat u in de vorige sectie hebt gemaakt.|
+    |Virtueel netwerk|databricks-Quick Start|Selecteer het virtuele netwerk dat u in de vorige sectie hebt gemaakt.|
     |Naam van openbaar subnet|openbaar subnet|Gebruik de standaard naam van het open bare subnet.|
     |CIDR-bereik openbaar subnet|10.179.64.0/18|Gebruik een CIDR-bereik tot en met/26.|
     |Naam van particulier subnet|persoonlijk subnet|De standaard naam van het particuliere subnet gebruiken.|

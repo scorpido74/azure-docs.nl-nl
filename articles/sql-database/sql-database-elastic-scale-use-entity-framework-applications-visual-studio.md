@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: 4198b3a9213ed535c6649c50a20f2ff957d60c94
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1653a904875964d86864c59c718603a6dacdcbda
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823490"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087183"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Client bibliotheek Elastic Database met Entity Framework
 
@@ -27,7 +27,7 @@ Dit document toont de wijzigingen in een Entity Framework toepassing die nodig z
 Voor het downloaden van de code voor dit artikel:
 
 * Visual Studio 2012 of hoger is vereist. 
-* Down load de [elastische DB-Hulpprogram ma's voor Azure SQL-Entity Framework Integration-voor beeld](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba) van MSDN. Pak het voor beeld uit naar een locatie van uw keuze.
+* Down load de [elastische DB-Hulpprogram ma's voor Azure SQL-Entity Framework Integration-voor beeld](https://github.com/Azure/elastic-db-tools/). Pak het voor beeld uit naar een locatie van uw keuze.
 * Start Visual Studio. 
 * Selecteer in Visual Studio file-> open project/Solution. 
 * In het dialoog venster **project openen** gaat u naar het voor beeld dat u hebt gedownload en selecteert u **EntityFrameworkCodeFirst. SLN** om het voor beeld te openen. 

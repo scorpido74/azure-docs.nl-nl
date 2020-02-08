@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: f2acb89597ef877543a2c4cc46f395aede41034b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 5b7d9cd7e7d438cf2beac76d5d8bcc78d377a8f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964495"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083100"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Zelf studie: gegevens accepteren en ontvangen met behulp van Azure-gegevens share  
 
@@ -30,7 +30,7 @@ Zorg ervoor dat alle vereisten zijn voltooid voordat u een uitnodiging voor een 
 
 * Azure-abonnement: als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 * Een uitnodiging voor een gegevens share: een uitnodiging van Microsoft Azure met een onderwerp met de titel ' uitnodiging voor Azure-gegevens delen van **<yourdataprovider@domain.com>** '.
-* Registreer de resource provider micro soft. DataShare. Volg de instructies in [Troubleshooting Azure data share](data-share-troubleshoot.md) om de resource provider van de gegevens share te registreren.
+* Registreer de [resource provider micro soft. DataShare](concepts-roles-permissions.md#resource-provider-registration) in het Azure-abonnement waar u een gegevens share bron en het Azure-abonnement maakt waarin uw doel-Azure-gegevens archieven zich bevinden.
 
 ### <a name="receive-data-into-a-storage-account"></a>Gegevens ontvangen in een opslag account: 
 
@@ -57,7 +57,7 @@ Zorg ervoor dat alle vereisten zijn voltooid voordat u een uitnodiging voor een 
 * Client-IP SQL Server toegang tot Firewall. U kunt dit doen door de volgende stappen uit te voeren: 
     1. Ga in SQL Server in Azure Portal naar *firewalls en virtuele netwerken*
     1. Klik op de **aan/uit** om toegang tot Azure-Services toe te staan.
-    1. Klik op **+ client IP toevoegen** en klik op **Opslaan**. Het IP-adres van de client kan worden gewijzigd. Dit proces moet mogelijk worden herhaald wanneer u de volgende keer dat u SQL-gegevens deelt van Azure Portal. U kunt ook een IP-bereik toevoegen. 
+    1. Klik op **+ client IP toevoegen** en klik op **Opslaan**. Het IP-adres van de client kan worden gewijzigd. Dit proces moet mogelijk worden herhaald wanneer u de volgende keer gegevens in een SQL-doel ontvangt van Azure Portal. U kunt ook een IP-bereik toevoegen. 
 
 
 ### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Gegevens ontvangen in een Azure Data Explorer-cluster: 
@@ -68,7 +68,7 @@ Zorg ervoor dat alle vereisten zijn voltooid voordat u een uitnodiging voor een 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="open-invitation"></a>Uitnodiging openen
 

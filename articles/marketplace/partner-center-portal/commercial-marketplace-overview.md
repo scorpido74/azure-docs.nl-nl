@@ -7,33 +7,34 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f6ba5c240a9ad74d9a2fab41496ce519f25fc4dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+ms.openlocfilehash: 2e5ae90cf6ee8bccc9919c88bc695bf944f58a67
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812061"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069435"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Overzicht van de portal voor commerciële Marketplace in het partner centrum
 
 Welkom bij de portal voor commerciële Marketplace in het micro soft partner centrum. De [Portal voor commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/) is ontworpen om u te helpen bij het geld verdienen van uw producten en services, het bereiken van klanten en het uitbreiden van uw bedrijf.
 
-In deze documentatie worden de basis beginselen besproken van het maken en gebruiken van uw partner centrum-account, het maken van nieuwe SaaS-aanbiedingen (Software as a Service) die kunnen worden vermeld op [Azure Marketplace](https://azuremarketplace.microsoft.com/) of [AppSource](https://appsource.microsoft.com/), het beheren van uw bestaande SaaS-aanbiedingen en bied bronnen om u te helpen met vragen en om uw feedback te verzamelen. 
+In deze documentatie worden de basis beginselen besproken van het maken en gebruiken van uw partner centrum-account, het maken van nieuwe SaaS-aanbiedingen (Software as a Service) die kunnen worden vermeld op [Azure Marketplace](https://azuremarketplace.microsoft.com/) of [AppSource](https://appsource.microsoft.com/), het beheren van uw bestaande SaaS-aanbiedingen en het leveren van uw feedback. 
 
 ## <a name="about-microsofts-commercial-marketplace"></a>Over de commerciële Marketplace van micro soft
 
-Ondernemingen, overheden en organisaties van alle grootten vinden bedrijfs oplossingen, innovatieve technologie en activerings Services via de [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en [AppSource](https://appsource.microsoft.com/) -webwinkels, [de in-the-product ervaring van Azure Portal](https://portal.azure.com), [Cloud Solution Providers](https://partner.microsoft.com/cloud-solution-provider)en verkoop teams van micro soft. 
+Ondernemingen, overheden en organisaties van alle grootten vinden bedrijfs oplossingen, innovatieve technologie en activerings Services via de [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en [AppSource](https://appsource.microsoft.com/) -webwinkels, [de product ervaring van Azure Portal](https://portal.azure.com), [Cloud Solution Providers](https://partner.microsoft.com/cloud-solution-provider)en verkoop teams van micro soft. 
 
 Partner centrum is de hub van de ervaring van een micro soft-partner. Voor organisaties die naar de markt gaan met micro soft en profiteren van Marketplace, partner centrum is de portal via welke uitgevers aanbiedingen maken en beheren, voorzien in test drive demonstraties en analyse van aanbod prestaties weer geven. 
 
 ## <a name="migration-from-cloud-partner-portal"></a>Migratie van Cloud Partner-portal
 
-Het partner centrum is in ontwikkeling om alle aspecten van de relatie van micro soft met software-uitgevers beter te integreren. Als onderdeel van deze evolutie migreert u de functies van de [Cloud Partner-Portal](https://cloudpartner.azure.com/) naar het partner centrum. 
+Het partner centrum is in ontwikkeling om alle aspecten van de relatie van micro soft met software-uitgevers beter te integreren. Als onderdeel van deze evolutie migreert u de functies van de [Cloud Partner-Portal](https://cloudpartner.azure.com/) naar het partner centrum.
 
-**Op dit moment ondersteunt het partner centrum alleen het maken en beheren van SaaS-aanbiedingen (Software-as-a-Service).**
+>[!NOTE]
+>Het partner centrum biedt momenteel ondersteuning voor het maken en beheren van SaaS-aanbiedingen (Software-as-a-Service), Azure-toepassings aanbiedingen, Dynamics 365 voor klanten aanbiedingen, betrokkenheid & PowerApps-aanbiedingen, Dynamics 365 voor operationele aanbiedingen en Dynamics 365 voor Business Central-aanbiedingen. Binnenkort worden er meer aanbiedingen ondersteund.
 
-Bestaande Marketplace-uitgevers vinden een vertrouwde, maar verbeterde gebruikers ervaring met een intuïtieve interface. Meldingen in de portal en via e-mail stellen uitgevers van de migratie op de hoogte. Gebruikers worden probleemloos omgeleid naar de juiste locatie. Deze upgrade van partner ervaring heeft geen invloed op klanten. 
+Bestaande Marketplace-uitgevers vinden een vertrouwde, maar verbeterde gebruikers ervaring met een intuïtieve interface. Meldingen in de portal en via e-mail stellen uitgevers van de migratie op de hoogte. Gebruikers worden probleemloos omgeleid naar de juiste locatie. Deze upgrade van partner ervaring heeft geen invloed op klanten.
 
 ### <a name="improvements-on-user-experience-and-billing"></a>Verbeteringen op het gebied van gebruikers ervaring en facturering
 

@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844535"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086637"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Zelf studie: publiceren, lokaal abonneren op gebeurtenissen
 
@@ -47,7 +47,7 @@ Er zijn verschillende manieren om modules op een IoT Edge apparaat te implemente
 
 ### <a name="configure-a-deployment-manifest"></a>Een manifest van de implementatie configureren
 
-Het manifest voor een implementatie is een JSON-document waarin wordt beschreven welke modules te implementeren, hoe gegevens stromen tussen de modules, en de gewenste eigenschappen van de moduledubbels. De Azure Portal bevat een wizard die u helpt bij het maken van een implementatie manifest, in plaats van het JSON-document hand matig te bouwen.  Er drie stappen: **modules toevoegen**, **routes opgeven**, en **implementatie bekijken**.
+Het manifest voor een implementatie is een JSON-document waarin wordt beschreven welke modules te implementeren, hoe gegevens stromen tussen de modules, en de gewenste eigenschappen van de moduledubbels. De Azure Portal bevat een wizard die u helpt bij het maken van een implementatie manifest, in plaats van het JSON-document hand matig te bouwen.  Er zijn drie stappen: **modules toevoegen**, **routes opgeven**en de **implementatie controleren**.
 
 ### <a name="add-modules"></a>Modules toevoegen
 
@@ -64,8 +64,7 @@ Het manifest voor een implementatie is een JSON-document waarin wordt beschreven
     ```json
         {
           "Env": [
-            "inbound__clientAuth__clientCert__enabled=false",
-            "outbound__webhook__httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -79,21 +78,17 @@ Het manifest voor een implementatie is een JSON-document waarin wordt beschreven
         }
     ```    
  1. Klik op **Opslaan**.
- 1. Ga door naar de volgende sectie om de module Azure Functions toe te voegen voordat u ze samen implementeert.
+ 1. Ga verder met de volgende sectie om de Azure Event Grid Subscriber module toe te voegen voordat u ze samen implementeert.
 
     >[!IMPORTANT]
-    > In deze zelf studie implementeert u de module Event Grid met client verificatie uitgeschakeld en kunt u HTTP-abonnees toestaan. Voor werk belastingen wordt u aangeraden de client verificatie in te scha kelen en alleen HTTPs-abonnees toe te staan. Zie [beveiliging en verificatie](security-authentication.md)voor meer informatie over het veilig configureren van Event grid module.
+    > In deze zelf studie implementeert u de module Event Grid met client verificatie uitgeschakeld. Voor werk belastingen wordt u aangeraden de client verificatie in te scha kelen. Zie [beveiliging en verificatie](security-authentication.md)voor meer informatie over het veilig configureren van Event grid module.
     > 
     > Als u een virtuele machine van Azure als een edge-apparaat gebruikt, voegt u een regel voor binnenkomende poort toe om binnenkomend verkeer op poort 4438 toe te staan. Zie [poorten openen voor een virtuele machine](../../virtual-machines/windows/nsg-quickstart-portal.md)voor instructies over het toevoegen van de regel.
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>Azure function IoT Edge-module implementeren
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Event Grid Subscriber IoT Edge-module implementeren
 
-In deze sectie wordt beschreven hoe u de Azure Functions IoT-module implementeert, die als Event Grid-abonnee zou fungeren waaraan gebeurtenissen kunnen worden geleverd.
-
->[!IMPORTANT]
->In deze sectie gaat u een voor beeld van een op Azure-functie gebaseerde Abonneer module implementeren. Het kan natuurlijk een aangepaste IoT-module zijn die kan Luis teren naar HTTP POST-aanvragen.
-
+In deze sectie wordt beschreven hoe u een andere IoT-module implementeert die als een gebeurtenis-handler zou fungeren waarmee gebeurtenissen kunnen worden geleverd.
 
 ### <a name="add-modules"></a>Modules toevoegen
 
@@ -102,23 +97,8 @@ In deze sectie wordt beschreven hoe u de Azure Functions IoT-module implementeer
 1. Geef de naam, de afbeelding en de opties voor het maken van de container op van de container:
 
    * **Naam**: abonnee
-   * **Afbeeldings-URI**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **Opties**voor het maken van containers:
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
+   * **Afbeeldings-URI**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Opties**voor het maken van containers: geen
 1. Klik op **Opslaan**.
 1. Klik op **volgende** om door te gaan naar de sectie routes
 
@@ -129,7 +109,7 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
 ### <a name="submit-the-deployment-request"></a>De implementatie aanvraag verzenden
 
 1. In het gedeelte beoordeling ziet u het JSON-implementatie manifest dat is gemaakt op basis van uw selecties in de vorige sectie. Controleer of de modules: **eventgridmodule** en **Subscriber** in de JSON worden weer gegeven. 
-1. Lees de informatie van uw implementatie, en selecteer vervolgens **indienen**. Nadat u de implementatie hebt verzonden, keert u terug naar de pagina **apparaat** .
+1. Controleer uw implementatie gegevens en selecteer vervolgens **verzenden**. Nadat u de implementatie hebt verzonden, keert u terug naar de pagina **apparaat** .
 1. Controleer in de **sectie modules**of zowel de **eventgrid** -als de **abonnee** modules worden weer gegeven. Controleer of de **opgegeven in-implementatie** en **gerapporteerd door** de kolom apparaat is ingesteld op **Ja**.
 
     Het kan even duren voordat de module op het apparaat is gestart en vervolgens weer aan IoT Hub is gemeld. Vernieuw de pagina om de bijgewerkte status weer te geven.
@@ -191,7 +171,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -199,7 +179,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
     ```
 
     >[!NOTE]
-    > De eigenschap **endpointType** geeft aan dat de abonnee een **webhook**is.  De **endpointUrl** geeft de URL aan waar de abonnee naar gebeurtenissen luistert. Deze URL komt overeen met de Azure function-voor beeld die u eerder hebt geïmplementeerd.
+    > De eigenschap **endpointType** geeft aan dat de abonnee een **webhook**is.  De **endpointUrl** geeft de URL aan waar de abonnee naar gebeurtenissen luistert. Deze URL komt overeen met het voor beeld van Azure Subscriber dat u eerder hebt geïmplementeerd.
 2. Voer de volgende opdracht uit om een abonnement voor het onderwerp te maken. Controleer of de HTTP-status code is `200 OK`.
 
     ```sh
@@ -223,7 +203,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -275,7 +255,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
     Voorbeelduitvoer:
 
     ```sh
-        Received event data [
+        Received Event:
             {
               "id": "eventId-func-0",
               "topic": "sampleTopic1",
@@ -289,7 +269,6 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
                 "model": "Monster"
               }
             }
-          ]
     ```
 
 ## <a name="cleanup-resources"></a>Resources opruimen

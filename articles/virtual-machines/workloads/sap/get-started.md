@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42df2d24aad1465a200203e648feb97d4e96fd18
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8e5ea4bba693a6785dae4075da7b13154593bb4c
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989821"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087365"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -37,7 +37,7 @@ Bij het hosten van SAP-werkbelasting scenario's in azure kunnen ook vereisten vo
 Wijzigingen in documenten in de sectie SAP on Azure workload worden aan het einde van dit artikel vermeld.
 
 
-## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA op Azure (grote instanties)
+## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA op Azure (grote exemplaren)
 
 Een reeks documenten leidt u door SAP HANA op Azure (grote instanties) of voor korte, HANA grote instanties. Zie voor informatie over de volgende gebieden van HANA grote instanties:
 
@@ -119,8 +119,9 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 - [Azure Data Factory biedt integratie van SAP HANA- en Business Warehouse-gegevens](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 
 
-## <a name="change-log"></a>Wijzigingenlogboek
+## <a name="change-log"></a>Wijzigingslogboek
 
+- 02/07/2020: wijziging in de [connectiviteit van open bare eind punten voor virtuele machines met behulp van Azure Standard ILB in SAP ha-scenario's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) voor het bijwerken van de voorbeeld scherm afbeelding
 - 02/03/2020: wijziging in [hoge Beschik baarheid voor SAP NW op Azure vm's op SLES voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse) en [hoge beschik BAARHEID voor SAP NW op Azure vm's op SLES met ANF for SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) om de waarschuwing over het gebruik van een streepje in de hostnamen van cluster knooppunten op SLES te verwijderen
 - 01/28/2020: wijziging in [hoge Beschik baarheid van SAP Hana op virtuele machines van Azure op RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) om de time-outs van de SAP Hana cluster resources af te stemmen op de aanbevelingen voor Red Hat time-out
 - 01/17/2020: wijziging in [Azure proximity-plaatsings groepen voor optimale netwerk latentie met SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) om de sectie van het verplaatsen van bestaande vm's in een proximity-plaatsings groep te wijzigen

@@ -3,22 +3,22 @@ title: Meer informatie over MSAL | Azure
 titleSuffix: Microsoft identity platform
 description: Met micro soft Authentication Library (MSAL) kunnen ontwikkel aars van toepassingen tokens verkrijgen om beveiligde web-Api's aan te roepen. Deze web-Api's kunnen de Microsoft Graph, andere micro soft-API'S, Web-Api's van derden of uw eigen web-API zijn. MSAL ondersteunt meerdere toepassings architecturen en-platforms.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5e0ad98b24b0e917d079d72ecc7e1930d30cc04a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c20d93c70484dc7ea800898da4309af2699c718e
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699560"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085736"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Overzicht van micro soft Authentication Library (MSAL)
 Met micro soft Authentication Library (MSAL) kunnen ontwikkel aars [tokens](developer-glossary.md#security-token) verkrijgen van het micro soft Identity platform-eind punt om toegang te krijgen tot beveiligde web-api's. Deze web-Api's kunnen de Microsoft Graph, andere micro soft-API'S, Web-Api's van derden of uw eigen web-API zijn. MSAL is beschikbaar voor .NET, java script, Android en iOS, die ondersteuning bieden voor veel verschillende toepassings architecturen en-platforms.
@@ -51,7 +51,7 @@ MSAL kan worden gebruikt in veel toepassings scenario's, waaronder de volgende:
 | Bibliotheek | Ondersteunde platforms en frameworks|
 | --- | --- |
 | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework, .NET Core, Xamarin Android, Xamarin iOS, Universal Windows Platform|
-| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| Java script-type script frameworks zoals AngularJS, wordt. js of Durandal. js|
+| [MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| Java script-type script frameworks zoals AngularJS, wordt. js of Durandal. js|
 | [MSAL voor Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | [MSAL voor iOS en macOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS en macOS|
 | [MSAL java (preview-versie)](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|

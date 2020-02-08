@@ -3,7 +3,7 @@ title: Gebruikers in-en uitloggen &-oproep Microsoft Graph (Android)-micro soft 
 description: Een toegangs Token ophalen en Microsoft Graph of Api's aanroepen waarvoor toegangs tokens zijn vereist van micro soft Identity platform (Android)
 services: active-directory
 documentationcenter: dev-center-name
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -15,12 +15,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d851e23e8f6915c7d52565f18eff4a73bd96c9c0
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4366f95a9c6d5c0e6b851583ac6001b3b413c08a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758832"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085403"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Zelf studie: gebruikers aanmelden en de Microsoft Graph aanroepen vanuit een Android-toepassing 
 
@@ -46,7 +46,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 De app in deze zelf studie meldt zich aan bij gebruikers en haalt gegevens op uit hun naam. Deze gegevens worden geopend via een beveiligde API (Microsoft Graph-API) waarvoor autorisatie is vereist en wordt beveiligd door het micro soft Identity-platform.
 
-Meer details:
+Met name:
 
 * Uw app meldt zich aan bij de gebruiker via een browser of de Microsoft Authenticator en Intune-bedrijfsportal.
 * De eind gebruiker accepteert de machtigingen die uw toepassing heeft aangevraagd.
@@ -476,7 +476,7 @@ private void performOperationOnSignOut() {
             .show();
 }
 ```
-### <a name="layout"></a>Layout 
+### <a name="layout"></a>Indeling 
 
 Voor beeld `activity_main.xml`-bestand om knoppen en tekst vakken weer te geven. 
 
@@ -583,7 +583,7 @@ De eerste keer dat een gebruiker zich bij uw app aanmeldt, wordt de micro soft-i
 
 Wanneer u deze niet meer nodig hebt, verwijdert u het app-object dat u hebt gemaakt in de stap [uw toepassing registreren](#register-your-application) .
 
-## <a name="get-help"></a>Hulp krijgen
+## <a name="get-help"></a>Help opvragen
 
 Ga naar [Help en ondersteuning](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) als u problemen ondervindt met deze zelf studie of met het micro soft Identity-platform.
 

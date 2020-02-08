@@ -2,21 +2,21 @@
 title: Micro soft Identity platform Android Quick Start | Azure
 description: Meer informatie over hoe Android-toepassingen een API kunnen aanroepen waarvoor toegangs tokens zijn vereist door het micro soft Identity platform-eind punt.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/15/2019
-ms.author: twhitney
+ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: e0616ae2c3b58c694e300abca28a9e34f8442fcb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bbaaf4b26beec56cd8608abc8a2f9cdd3a4cda3f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703708"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084527"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Snelstart: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een Android-app
 
@@ -154,7 +154,7 @@ Toepassingen moeten worden vertegenwoordigd door een app-object in Azure Active 
 
 De code is ingedeeld in fragmenten die laten zien hoe u een MSAL-app met één en meerdere accounts schrijft. De code bestanden zijn als volgt ingedeeld:
 
-| Bestand  | Hier ziet u  |
+| File  | Hier ziet u  |
 |---------|---------|
 | MainActivity | Beheert de gebruikers interface |
 | MSGraphRequestWrapper  | Roept de Microsoft Graph-API aan met behulp van het token dat is verschaft door MSAL |
@@ -536,7 +536,7 @@ In tegens telling tot het configuratie bestand [auth_config_single_account. json
 
 ## <a name="next-steps"></a>Volgende stappen
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>De stappen voor het maken van de toepassing die wordt gebruikt in deze snelstart
+### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Leer wat de stappen zijn voor het maken van de toepassing die wordt gebruikt in deze quickstart
 
 Probeer de [aanmeldings gebruikers uit en bel de Microsoft Graph vanuit een Android-app](tutorial-v2-android.md) -zelf studie voor een stapsgewijze hand leiding voor het bouwen van een Android-app waarmee een toegangs token wordt opgehaald en wordt gebruikt om de Microsoft Graph-API aan te roepen.
 

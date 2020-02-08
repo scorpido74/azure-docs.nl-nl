@@ -15,24 +15,20 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ab1eba3de474d9ff985e62f491c24fa63be0fa63
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844340"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069622"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics op het Media Services platform 
 
 ## <a name="retirement-plans"></a>Pensioen plannen
 
 > [!IMPORTANT]
-> De volgende verouderde media processor wordt buiten gebruik gesteld in 2020. Zie de volgende tabel voor meer informatie. 
+> Sommige media processors worden buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de pensioen datums en meer informatie. 
 
-|Naam van mediaprocessor|Buitengebruikstellings datum|Aanvullende opmerkingen|
-|---|---|
-|[Azure Media Indexer](media-services-index-content.md)|1 oktober van 2020|Deze media processor wordt vervangen door [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Zie voor meer informatie [migreren van Azure media indexer naar Azure Media Services video indexer](migrate-indexer-v1-v2.md)
- 
 ## <a name="overview"></a>Overzicht
 
 Meer organisaties gebruiken video als voorkeurs medium om hun werk nemers te trainen, hun klanten te laten deel nemen en zakelijke functies te documenteren. Cloud Computing biedt een manier om deze grote media bestanden op te slaan, te streamen en te openen. Maar als de bibliotheek met video-inhoud van een bedrijf groeit, heeft IT een even efficiënte manier nodig om inzichten uit de inhoud te halen. 
@@ -49,7 +45,7 @@ Media Analytics-mediaprocessoren produceren MP4- of JSON-bestanden. Als een medi
 
 ## <a name="media-analytics-services"></a>Media Analytics Services
 
-### <a name="indexer"></a>Indexer
+### <a name="indexer"></a>Indexeer functie
 Met Azure Media Indexer kunt u inhoud doorzoekbaar maken en ondertitelings tracks genereren. Zie [Media bestanden indexeren met Azure media indexer](media-services-index-content.md)voor gedetailleerde informatie en voor beelden.
 
 ### <a name="motion-detector"></a>Bewegingsherkenning
@@ -65,7 +61,7 @@ Met Azure media OCR (optische teken herkenning) kunt u tekst inhoud in video bes
 ### <a name="scalable-face-redaction"></a>Schaal bare gezichts redactie
 Azure Media Redactor is een Media Analytics media processor die schaal bare gezichts redactie in de Cloud biedt. Door gebruik te maken van gezichts redactie kunt u uw video aanpassen om gezichten van geselecteerde personen te vervagen. Mogelijk wilt u de gezichts redactie service gebruiken in nieuws media of wanneer de open bare veiligheid betrokken is. Een paar minuten van beeld materiaal dat meerdere gezichten bevat, kan uren duren om hand matig te worden geredigeerd, maar bij deze service nemen gezichts redactie slechts enkele eenvoudige stappen in beslag. Zie voor meer informatie de [reredactie-gezichten met Azure Media Analytics](media-services-face-redaction.md) -artikel.
 
-### <a name="content-moderation"></a>Content Moderation
+### <a name="content-moderation"></a>Inhouds toezicht
 Met Azure Content Moderator kunt u op uw Video's machine-ondersteunde toezicht gebruiken. Stel, u wilt mogelijk erotische en racistische inhoud detecteren in video's en de gemarkeerde inhoud laten controleren door uw team. Het hand matig toezicht op Video's voor ongewenste inhoud is een tijdrovende en dure taak. Met deze service en de bijbehorende beoordelings tools combineert u door de machine ondersteunde toezicht met Human-in-the-loop-mogelijkheden voor de beste resultaten efficiënt en rendabel. Zie het artikel [uw Video's verwerken met Azure content moderator](media-services-content-moderation.md) voor meer informatie.
 
 ## <a name="common-scenarios"></a>Algemene scenario's
@@ -136,13 +132,13 @@ Reactie:
        ]
     }
 
-## <a name="demos"></a>Demo’s
+## <a name="demos"></a>Demo 's
 Zie [Azure Media Analytics demo's](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 Zie [Media Services Analytics-aankondiging](https://azure.microsoft.com/blog/introducing-azure-media-analytics/).
 
 <!-- Images -->

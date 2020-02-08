@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6e2c1af03d5d6ccfbcb15a2dd33bc2e987be4d48
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 810f2b376e9983743617dae77d74d596a7fbe663
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543117"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084196"
 ---
-# <a name="what-is-azure-private-link-preview"></a>Wat is Azure Private Link? (Preview)
+# <a name="what-is-azure-private-link-preview"></a>Wat is Azure Private Link? (Preview-versie)
 Met Azure private link kunt u toegang krijgen tot Azure PaaS-Services (bijvoorbeeld Azure Storage, Azure Cosmos DB en SQL Database) en Azure hostende klanten/partner services via een [persoonlijk eind punt](private-endpoint-overview.md) in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt ook uw eigen [privé koppelings service](private-link-service-overview.md) maken in uw virtuele netwerk (VNet) en deze privé leveren aan uw klanten. De installatie en consumptie-ervaring met behulp van persoonlijke Azure-koppeling is consistent voor Azure PaaS-, klanten-en Shared partner services.
 
 > [!IMPORTANT]
@@ -39,7 +39,7 @@ Persoonlijke Azure-koppeling biedt de volgende voor delen:
 ## <a name="availability"></a>Beschikbaarheid 
  De volgende tabel geeft een lijst van de services voor persoonlijke koppelingen en de regio's waar ze beschikbaar zijn. 
 
-|Scenario  |Ondersteunde services  |Beschikbare regio's | Status  |
+|Scenario  |Ondersteunde services  |Beschik bare regio's | Status  |
 |:---------|:-------------------|:-----------------|:--------|
 |Persoonlijke koppeling voor services die eigendom zijn van de klant|Persoonlijke koppelings Services achter Standard Load Balancer | Alle open bare regio's  | Preview  |
 |Persoonlijke koppeling voor Azure PaaS Services   | Azure Storage        |  Alle open bare regio's      | Preview <br/> [Meer informatie](/azure/storage/common/storage-private-endpoints).  |
@@ -48,8 +48,9 @@ Persoonlijke Azure-koppeling biedt de volgende voor delen:
 ||Azure SQL Data Warehouse| Alle open bare regio's |Preview|
 ||Azure Cosmos DB| West-Centraal VS, Westus, Noord-Centraal VS |Preview|
 |  |  Azure Database for PostgreSQL-één server         | Alle open bare regio's      |   Preview      |
-|  |  Azure Database voor MySQL         | Alle open bare regio's      |   Preview      |
-|  |  Azure Database voor MariaDB         | Alle open bare regio's      |   Preview      |
+|  |  Azure Database for MySQL         | Alle open bare regio's      |   Preview      |
+|  |  Azure Database for MariaDB         | Alle open bare regio's      |   Preview      |
+|  |  Azure Key Vault         | Alle open bare regio's      |   Preview      |
 
 Controleer de [pagina Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network)voor de meest recente meldingen.
 
@@ -68,7 +69,7 @@ Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pr
 ## <a name="faqs"></a>Veelgestelde vragen  
 Zie [Veelgestelde vragen over Azure private link](private-link-faq.md)voor veelgestelde vragen.
  
-## <a name="limits"></a>Beperkingen  
+## <a name="limits"></a>Limieten  
 Zie [limieten voor persoonlijke Azure-koppelingen](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits)voor limieten.
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -3,12 +3,12 @@ title: Back-up maken van Azure Files met Power shell
 description: In dit artikel vindt u informatie over het maken van een back-up van Azure Files met behulp van de Azure Backup-service en Power shell.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 5147ab893d4ebad395d7dbd8cc25872177ec10a2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a80589fb45937949b3612e12139ab1615bc1620d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773104"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086940"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Back-up maken van Azure Files met Power shell
 
@@ -44,6 +44,13 @@ Raadpleeg de naslag informatie **AZ. Recovery Services** [cmdlet](/powershell/mo
 Stel Power shell als volgt in:
 
 1. [Down load de nieuwste versie van AZ Power shell](/powershell/azure/install-az-ps). De mini maal vereiste versie is 1.0.0.
+
+> [!WARNING]
+> De mini maal vereiste versie van PS voor de preview is AZ 1.0.0. Als gevolg van aanstaande wijzigingen voor GA, is de mini maal vereiste PS-versie ' AZ. Recovery Services 2.6.0 '. Het is belang rijk dat u alle bestaande PS-versies bijwerkt naar deze versie. Als dat niet het geval is, worden de bestaande scripts na GA verbroken. Installeer de minimale versie met de volgende PS-opdrachten
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
 
 2. Zoek de Azure Backup Power shell-cmdlets met de volgende opdracht:
 
@@ -241,19 +248,32 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
+## <a name="important-notice---backup-item-identification-for-afs-backups"></a>Belang rijke kennisgeving-back-upitem-id voor AFS-back-ups
+
+In deze sectie vindt u een overzicht van de wijzigingen in het back-upitem ophalen voor AFS-back-ups van de preview-versie tot GA.
+
+Bij het inschakelen van de back-up voor AFS levert de gebruiker de beschrijvende bestands share naam van de klant op als de naam van de entiteit en wordt er een back-upitem gemaakt. De naam van het back-upitem is een unieke id die is gemaakt door Azure Backup service. Normaal gesp roken is de id een gebruiks vriendelijke naam. Maar er is een wijziging aangebracht in de manier waarop Azure-Services een Azure-bestands share intern identificeren. Dit betekent dat de unieke naam van het back-upitem voor AFS Backup een GUID is en geen relatie heeft met de beschrijvende naam van de klant. Als u de unieke naam van elk item wilt weten, voert u de ```Get-AzRecoveryServicesBackupItem``` opdracht uit met de relevante filters voor backupManagementType en WorkloadType om alle relevante items te verkrijgen en bekijkt u vervolgens het veld naam in het geretourneerde PS-object/-antwoord. Het wordt altijd aanbevolen om items in een lijst weer te geven en vervolgens hun unieke naam op te halen uit het veld naam in antwoord. Gebruik deze waarde om de items te filteren met de naam parameter. Gebruik anders de para meter FriendlyName om het item op te halen met de beschrijvende naam/id van de klant.
+
+> [!WARNING]
+> Zorg ervoor dat de PS-versie is bijgewerkt naar de minimale versie van AZ. Recovery Services 2.6.0 voor AFS-back-ups. Met deze versie is het filter ' FriendlyName ' beschikbaar voor de opdracht ```Get-AzRecoveryServicesBackupItem```. Geef de naam van de Azure-bestands share door aan de FriendlyName-para meter. Als u de naam van de Azure-bestands share doorgeeft aan de naam parameter, genereert deze versie een waarschuwing om deze beschrijvende naam door te geven aan de beschrijvende naam parameter. Als u deze minimale versie niet installeert, kan dit leiden tot een fout in bestaande scripts. Installeer de minimale versie van PS met de volgende opdracht.
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
+
 ## <a name="trigger-an-on-demand-backup"></a>Een back-up op aanvraag activeren
 
 Gebruik [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) om een back-up op aanvraag uit te voeren voor een beveiligde Azure-bestands share.
 
-1. Haal het opslag account en de bestands share op uit de container in de kluis die uw back-upgegevens bevat met [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
-2. Als u een back-uptaak wilt starten, haalt u informatie op over de virtuele machine met [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
+1. Haal het opslag account op uit de container in de kluis die uw back-upgegevens bevat met [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
+2. Als u een back-uptaak wilt starten, haalt u informatie op over de Azure-bestands share met [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
 3. Voer een back-up op aanvraag uit met[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
 
 Voer de back-up op aanvraag als volgt uit:
 
 ```powershell
 $afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
-$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -Name "testAzureFS"
+$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -FriendlyName "testAzureFS"
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
@@ -272,6 +292,9 @@ De moment opnamen van Azure-bestands shares worden gebruikt tijdens het maken va
 Back-ups op aanvraag kunnen worden gebruikt om uw moment opnamen gedurende tien jaar te bewaren. U kunt planners gebruiken om Power shell-scripts op aanvraag uit te voeren met de gekozen Bewaar periode en zo elke week, maand of jaar moment opnamen te maken. Raadpleeg de [beperkingen van back-ups op aanvraag](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share) met Azure backup bij het maken van reguliere moment opnamen.
 
 Als u een voor beeld van scripts zoekt, kunt u het voorbeeld script in GitHub (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>) raadplegen met Azure Automation runbook waarmee u periodiek back-ups kunt plannen en ze zelfs tot wel tien jaar behoudt.
+
+> [!WARNING]
+> Zorg ervoor dat de PS-versie is bijgewerkt naar de minimale versie van AZ. Recovery Services 2.6.0 voor AFS-back-ups in uw Automation-runbooks. U moet de oude ' AzureRM-module vervangen door de module AZ. Met deze versie is het filter ' FriendlyName ' beschikbaar voor de opdracht ```Get-AzRecoveryServicesBackupItem```. Geef de naam van de Azure-bestands share door aan de FriendlyName-para meter. Als u de naam van de Azure-bestands share doorgeeft aan de naam parameter, genereert deze versie een waarschuwing om deze beschrijvende naam door te geven aan de beschrijvende naam parameter.
 
 ## <a name="next-steps"></a>Volgende stappen
 

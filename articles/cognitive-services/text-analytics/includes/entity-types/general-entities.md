@@ -6,48 +6,99 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/18/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: a4c911fa077c2ec332974fb2f0c5abcdef21307c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f95d7613926cf332a498cca84563dbc0ebcbbe9b
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284101"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086891"
 ---
 ## <a name="general-entity-types"></a>Algemene entiteits typen:
 
 ### <a name="person"></a>Person
-Herkende namen en andere personen in de tekst.
+
+Herken namen van personen in de tekst.
+
 Talen:
 * Open bare Preview: `English`
 
-| Naam subtype | Beschrijving             |
-|--------------|-------------------------|
-| N.v.t.          | Herkende namen, bijvoorbeeld `Bill Gates`, `Marie Curie` |
+| Naam subtype | Beschrijving                                                      | Beschikbaar vanaf model versie |
+|--------------|------------------------------------------------------------------|---------------------------------------|
+| N.v.t.          | Herken bare namen van personen, bijvoorbeeld `Bill Gates`, `Marie Curie` | `2019-10-01`                          | 
+
+### <a name="persontype"></a>PersonType
+Het taak type of de rol van een persoon.
+
+Talen:
+* Open bare Preview: `English`
+
+| Naam subtype | Beschrijving                                                                                | Beschikbaar vanaf model versie |
+|--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
+| N.v.t.          | Taak typen bijvoorbeeld `civil engineer`, `salesperson`, `chef`, `librarian`, `nursing aide` | `2020-02-01`                           |
 
 ### <a name="location"></a>Locatie
 
-Natuurlijke en door de mens gemaakte bezienswaardigheden, structuren en geografische functies.
+Natuurlijke en door de mens gemaakte bezienswaardigheden, structuren, geografische functies en geopolitieke entiteiten.
 
 Talen:
 
-
 * Open bare Preview: `English`
 
-| Naam subtype | Beschrijving                                                                                      |
-|--------------|--------------------------------------------------------------------------------------------------|
-| N.v.t.          | locaties, bijvoorbeeld `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty` |
+| Naam subtype              | Beschrijving                                                                              | Beschikbaar vanaf model versie |
+|---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
+| N.v.t.                       | locaties, bijvoorbeeld `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty`  | `2019-10-01`                           |
+| Geopolitieke entiteit (GPE) | Steden, landen, statussen bijvoorbeeld `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Organisatie  
 
-Erkende organisaties, ondernemingen, agentschappen en andere groepen personen. Bijvoorbeeld: bedrijven, politieke groepen, muziek banden, sport clubs, overheids instanties en open bare organisaties. Nationale en religions zijn niet opgenomen in dit entiteits type. Talen: 
+Erkende organisaties, ondernemingen, agentschappen en andere groepen personen. Bijvoorbeeld: bedrijven, politieke groepen, muziek banden, sport clubs, overheids instanties en open bare organisaties. Nationale en religions zijn niet opgenomen in dit entiteits type. 
+
+Talen: 
 
 * Open bare Preview: `English`
 
-| Naam subtype | Beschrijving                                                                                      |
-|--------------|--------------------------------------------------------------------------------------------------|
-| N.v.t.          | organisaties, bijvoorbeeld `Microsoft`, `NASA` `National Oceanic and Atmospheric Administration` |
+| Naam subtype | Beschrijving                                                                                             | Beschikbaar vanaf model versie |
+|--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
+| N.v.t.          | organisaties, bijvoorbeeld `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration`,`VOA` | `2019-10-01`                           |
+
+### <a name="event"></a>Gebeurtenis  
+
+Historische, sociale en natuurlijke gebeurtenissen.  
+
+Talen: 
+
+* Open bare Preview: `English`
+
+| Naam subtype | Beschrijving                                                            | Beschikbaar vanaf model versie |
+|--------------|------------------------------------------------------------------------|----------------------------------------|
+| N.v.t.          | Gebeurtenissen zoals `wedding`, `hurricane`, `car accident`, `solar eclipse`, `American Revolution` | `2020-02-01`                           |
+
+### <a name="product"></a>Product  
+
+Fysieke objecten van verschillende categorieën.  
+
+Talen: 
+
+* Open bare Preview: `English`
+
+| Naam subtype | Beschrijving                                                                        | Beschikbaar vanaf model versie |
+|--------------|------------------------------------------------------------------------------------|----------------------------------------|
+| N.v.t.          | Bijvoorbeeld `Microsoft Surface laptop`, `sunglasses`, `motorcycle`, `bag`, `Xbox` | `2020-02-01`                           |
+| Berekenen    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
+
+### <a name="skill"></a>Eigen  
+
+Een entiteit die een functie of expertise beschrijft.  
+
+Talen: 
+
+* Open bare Preview: `English`
+
+| Naam subtype | Beschrijving                                                                 | Beschikbaar vanaf model versie |
+|--------------|-----------------------------------------------------------------------------|----------------------------------------|
+| N.v.t.          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
 
 ### <a name="phone-number"></a>Telefoonnummer
 
@@ -55,12 +106,11 @@ Telefoon nummers (alleen Amerikaanse telefoon nummers).
 
 Talen:
 
-
 * Open bare Preview: `English`
 
-| Naam subtype | Beschrijving                                  |
-|----------|----------------------------------------------|
-| N.v.t.         | Telefoon nummers (VS), bijvoorbeeld `(312) 555-0176`. |
+| Naam subtype | Beschrijving                                    | Beschikbaar vanaf model versie |
+|--------------|------------------------------------------------|----------------------------------------|
+| N.v.t.          | Telefoon nummers (VS), bijvoorbeeld `(312) 555-0176` | `2019-10-01`                           |
 
 ### <a name="email"></a>Email
 
@@ -68,12 +118,11 @@ E-mailadres.
 
 Talen:
 
-
 * Open bare Preview: `English`
 
-| Naam subtype | Beschrijving                                  |
-|----------|----------------------------------------------|
-| N.v.t.         | E-mail adres, bijvoorbeeld `support@contoso.com` |
+| Naam subtype | Beschrijving                                      | Beschikbaar vanaf model versie |
+|--------------|--------------------------------------------------|----------------------------------------|
+| N.v.t.          | E-mail adres, bijvoorbeeld `support@contoso.com` | `2019-10-01`                           |
 
 ### <a name="url"></a>URL
 
@@ -81,27 +130,60 @@ Internet-Url's.
 
 Talen:
 
-
 * Open bare Preview: `English`
 
-| Naam subtype | Beschrijving                                           |
-|----------|-------------------------------------------------------|
-| N.v.t.         | Url's naar websites, bijvoorbeeld `https://www.bing.com`. |
+| Naam subtype | Beschrijving                                          | Beschikbaar vanaf model versie |
+|--------------|------------------------------------------------------|----------------------------------------|
+| N.v.t.          | Url's naar websites, bijvoorbeeld `https://www.bing.com` | `2019-10-01`                           |
 
-###  <a name="number"></a>Aantal
+### <a name="ip-address"></a>IP-adres
 
-Cijfers en numerieke aantallen. 
+Internet Protocol adres
 
 Talen:
 
+* Open bare Preview: `English`
+
+| Naam subtype | Beschrijving                              | Beschikbaar vanaf model versie |
+|--------------|------------------------------------------|----------------------------------------|
+| N.v.t.          | Netwerk adres bijvoorbeeld `10.0.0.101` | `2019-10-01`                           |
+
+###  <a name="datetime"></a>DateTime
+
+Datum-en tijd entiteiten. 
+
+* Beschikbaar vanaf model versie `2019-10-01`
+
+Talen:
 
 * Open bare Preview: `English`
 
 | Naam subtype    | Voorbeelden                     |
 |-------------|------------------------------|
-| N.v.t.         | `6`, `six`                   |
+| N.v.t.         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
+| Date  | `May 2nd, 2017`, `05/02/2017`       |
+| Time     | `8:15`, `6AM`              |
+| DateRange    | `August 2nd to August 5th`         |
+| TimeRange   | `4-6PM`, `10:00AM to Noon`          |
+| Duur | `2.5 minutes`, `one and a half hours`         |
+| Instellen | `every Saturday`         |
+
+###  <a name="quantity"></a>Aantal
+
+Cijfers en numerieke aantallen. 
+
+* Beschikbaar vanaf model versie `2019-10-01`
+
+Talen:
+
+* Open bare Preview: `English`
+
+| Naam subtype    | Voorbeelden                     |
+|-------------|------------------------------|
+| Aantal         | `6`, `six`                   |
 | Percentage  | `50%`, `fifty percent`       |
-| Rangtelwoord     | `2nd`, `second`              |
+| Rang telwoord     | `2nd`, `second`              |
+| Leeftijd         | `90 day old`, `30 years old` |
 | Valuta    | `$10.99`, `€30.00`           |
-| Dimensie   | `10 miles`, `40 cm`          |
+| Dimensielideigenschap   | `10 miles`, `40 cm`          |
 | Temperatuur | `32 degrees`, `10°C`         |

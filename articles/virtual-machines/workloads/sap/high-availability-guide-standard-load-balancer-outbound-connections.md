@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/28/2019
+ms.date: 02/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 179df26eb0cc75899c9b509ebe00410ffa916dc8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 52179f15829981d59ff060784a49eccef89bb186
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935184"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083716"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Connectiviteit van open bare eind punten voor Virtual Machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP
 
@@ -106,7 +106,7 @@ De configuratie zou er als volgt uitzien:
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
    ```
 
-4. Maak regels voor netwerk beveiligings groepen om de toegang tot specifieke open bare eind punten te beperken. Als er een bestaande netwerk beveiligings groep bestaat, kunt u deze aanpassen. In het onderstaande voor beeld ziet u hoe u alleen toegang tot de Azure-beheer-API kunt toestaan: 
+4. Maak regels voor netwerk beveiligings groepen om de toegang tot specifieke open bare eind punten te beperken. Als er een bestaande netwerk beveiligings groep bestaat, kunt u deze aanpassen. In het volgende voor beeld ziet u hoe u toegang tot de Azure Management API kunt inschakelen: 
    1. Ga naar de netwerk beveiligings groep
    1. Klik op uitgaande beveiligings regels
    1. Voeg een regel toe om alle uitgaande toegang tot **Internet**te **weigeren** .

@@ -3,16 +3,19 @@ title: Back-ups van Azure-bestands shares beheren met Power shell
 description: Informatie over het gebruik van Power shell voor het beheren en bewaken van Azure-bestands shares waarvan een back-up is gemaakt door de Azure Backup service.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9004e16c4b7c6ee704460d744612bafcd32831b9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a9dc421db740963fc5cd11e868eb383694376ce1
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776415"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083175"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>Back-ups van Azure-bestands shares beheren met Power shell
 
 In dit artikel wordt beschreven hoe u Azure PowerShell gebruikt voor het beheren en bewaken van de Azure-bestands shares waarvan een back-up wordt gemaakt door de Azure Backup-service.
+
+> [!WARNING]
+> Zorg ervoor dat de PS-versie is bijgewerkt naar de minimale versie van AZ. Recovery Services 2.6.0 voor AFS-back-ups. Raadpleeg de [sectie](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) overzicht van de vereiste voor deze wijziging voor meer informatie.
 
 ## <a name="modify-the-protection-policy"></a>Het beveiligings beleid wijzigen
 

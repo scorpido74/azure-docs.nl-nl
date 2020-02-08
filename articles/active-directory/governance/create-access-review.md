@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/21/2019
+ms.date: 02/06/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65eb08873da71c7683fe3347484831dfff58793
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fcb2198ea3f01e923022c205e478167240a01894
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932629"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084442"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Een toegangs beoordeling maken voor groepen en toepassingen in azure AD-toegangs beoordelingen
 
@@ -127,6 +127,20 @@ Zodra u de instellingen voor een toegangs beoordeling hebt opgegeven, klikt u op
 Standaard verzendt Azure AD een e-mail naar revisoren kort nadat de controle is gestart. Als u ervoor kiest om Azure AD de e-mail niet te laten verzenden, moet u de revisoren informeren dat een toegangs beoordeling wacht totdat deze is voltooid. U kunt de instructies weer geven voor het controleren van de [toegang tot groepen of toepassingen](perform-access-review.md). Als u wilt controleren of gasten hun eigen toegang kunnen bekijken, geeft u de instructies weer voor het [controleren van de toegang tot groepen of toepassingen](review-your-access.md).
 
 Als gasten als revisoren zijn toegewezen en ze de uitnodiging niet hebben geaccepteerd, ontvangen ze geen e-mail berichten van toegangs beoordelingen omdat ze de uitnodiging eerst moeten accepteren voordat ze kunnen beoordelen.
+
+## <a name="access-review-status-table"></a>Status tabel toegangs beoordeling
+
+| Status | Definitie |
+|--------|------------|
+|NotStarted | De controle is gemaakt, de gebruikers detectie wacht op starten. |
+|Initialiseren   | Gebruikers detectie wordt uitgevoerd om alle gebruikers te identificeren die deel uitmaken van de beoordeling. |
+|Starten | De beoordeling wordt gestart. Als e-mail meldingen zijn ingeschakeld, worden e-mails naar revisoren verzonden. |
+|Wordt uitgevoerd | De beoordeling is gestart. Als e-mail meldingen zijn ingeschakeld, worden e-mails naar revisoren verzonden. Revisoren kunnen beslissingen verzenden tot de verval datum. |
+|Invullen | De beoordeling wordt voltooid en e-mail berichten worden verzonden naar de eigenaar van de beoordeling. |
+|Autobeoordeling | Beoordeling bevindt zich in een systeem revisie fase. Het systeem is bezig met het vastleggen van beslissingen voor gebruikers die niet zijn gecontroleerd op basis van aanbevelingen of vooraf geconfigureerde beslissingen. |
+|Autobeoordeling | Er zijn beslissingen vastgelegd door het systeem voor alle gebruikers die niet zijn gecontroleerd. Beoordeling is gereed om verder te gaan met het **Toep assen van de toepassing** als automatisch Toep assen is ingeschakeld. |
+|Aanvragen | Er is geen wijziging in de toegang voor gebruikers die zijn goedgekeurd. |
+|Gehanteerd | Geweigerde gebruikers, indien van toepassing, zijn verwijderd uit de resource of map. |
 
 ## <a name="create-reviews-via-apis"></a>Beoordelingen maken via Api's
 

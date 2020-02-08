@@ -7,26 +7,29 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 12/04/2019
 ms.author: dibotero
-ms.openlocfilehash: 74bf0422bbe6c2c1c84365c1e8f9329a01ff9fdd
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: a265278652c16b4682707470d183a02a55b9a0ec
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75909043"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069214"
 ---
 # <a name="azure-internet-analyzer-troubleshooting"></a>Problemen met Azure Internet Analyzer oplossen
 
 Dit artikel bevat probleemoplossings stappen voor veelvoorkomende problemen met Internet Analyzer.
 
-## <a name="azure-portal"></a>Azure-portal
-**Er zijn niet genoeg metingen verzameld voor deze score card in de sectie Score cards**
-
-Opmerking:
+## <a name="things-to-keep-in-mind"></a>Dingen die u moet onthouden
 - Het client script moet worden inge sloten in een **https** -website. Metingen worden niet verzameld als het script wordt uitgevoerd op een**http://** -of lokale (**File://** )-website.
 - Meet gegevens worden alleen verzameld als het client script van het Internet Analyzer-profiel is inge sloten in een toepassing die werkelijk gebruikers verkeer ontvangt. Synthetische verkeer (bijvoorbeeld prestatie tests van Azure WebApp) voert doorgaans geen Inge sloten java script-code uit, dus er worden geen metingen gegenereerd door dat type verkeer.
-- De tijd reeks wordt één keer per uur gegenereerd, dus u moet ten minste de tijd wachten waarop nieuwe meet gegevens moeten worden weer gegeven.
+
+## <a name="azure-portal"></a>Azure-portal
+**' Er is geen Score Card gegenereerd voor de geselecteerde filter combinatie ' in de sectie Score cards**
 - Score cards worden dagelijks gegenereerd (aan het einde van elke dag, UTC-tijd).
 - Score cards worden alleen gegenereerd als er meer dan 100 metingen zijn verzameld voor de geselecteerde filter combinatie (test, tijds periode, land, enzovoort).
+
+**"Totaal aantal metingen" is nul voor een of beide eind punten in een test**
+- Tijds reeksen en meet aantallen worden één keer per uur berekend. u moet er dus voor zorgen dat er ten minste een hoeveelheid tijd nodig is om nieuwe meet gegevens weer te geven.
+- Internet Analyzer omvat alleen geslaagde metingen (zoals HTTP 200-antwoorden) voor de analyse. Als een of beide eind punten in een test onbereikbaar zijn of een niet-200 HTTP-code retour neren, worden ze weer gegeven met een totaal van nul metingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees de [Veelgestelde vragen over Internet analyse](internet-analyzer-faq.md)

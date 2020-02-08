@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1f34c4fb89d28a001a4af4d21879403a9ac5e860
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e5ee43af97e79f1e835787d61bd79cfb256ef445
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024701"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083129"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Een persoonlijke cloud van AVS instellen als een nood herstel site voor on-premises VMware-workloads
 
@@ -51,7 +51,7 @@ In de volgende secties wordt beschreven hoe u een DR-oplossing implementeert met
 Als u virtuele Zerto-replicatie van uw on-premises omgeving naar uw AVS-Privécloud wilt inschakelen, moet u de volgende vereisten volt ooien.
 
 1. [Stel een site-naar-site-VPN-verbinding in tussen uw on-premises netwerk en de privécloud van uw AVS](set-up-vpn.md).
-2. [Stel de DNS-zoek opdracht in zodat uw beheer onderdelen van de Privécloud Private Cloud worden doorgestuurd naar de GEavse DNS-servers van de privécloud](on-premises-dns-setup.md). Als u het door sturen van DNS-lookup wilt inschakelen, maakt u een doorstuur zone vermelding in uw on-premises DNS-server voor `*.AVS.io` om DNS-servers te AVS.
+2. [Stel de DNS-zoek opdracht in zodat uw beheer onderdelen van de Privécloud Private Cloud worden doorgestuurd naar de GEavse DNS-servers van de privécloud](on-premises-dns-setup.md). Als u het door sturen van DNS-lookup wilt inschakelen, maakt u een doorstuur zone vermelding in uw on-premises DNS-server voor `*.cloudsimple.io` om DNS-servers te AVS.
 3. Stel de DNS-zoek opdracht zodanig in dat de on-premises vCenter-onderdelen worden doorgestuurd naar lokale DNS-servers. De DNS-servers moeten bereikbaar zijn vanuit uw automatische AVS-Cloud via site-naar-site-VPN. Voor hulp dient u een [ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)in te dienen, waarbij de volgende informatie wordt verstrekt. 
 
     * Naam van on-premises DNS-domein
@@ -93,6 +93,6 @@ Als u virtuele Zerto-replicatie van uw on-premises omgeving naar uw AVS-Privécl
 6. Pas zo nodig de netwerk instellingen voor afzonderlijke Vm's aan en maak de VPG.
 7. Testfailover wanneer de replicatie is voltooid.
 
-## <a name="reference"></a>Referentie
+## <a name="reference"></a>Naslaginformatie
 
 [Documentatie voor Zerto](https://www.zerto.com/myzerto/technical-documentation/)

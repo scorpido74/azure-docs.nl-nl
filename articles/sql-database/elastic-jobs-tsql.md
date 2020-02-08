@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-ms.date: 01/25/2019
-ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/07/2020
+ms.openlocfilehash: c228f3d6591cd72845101c00188f3fc4a55be644
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861333"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087361"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) gebruiken om Elastic Database taken te maken en te beheren
 
@@ -189,10 +189,13 @@ Als u bijvoorbeeld alle resultaten van dezelfde taak uitvoering samen wilt groep
 
 In het volgende voor beeld wordt een nieuwe taak gemaakt voor het verzamelen van prestatie gegevens uit meerdere data bases.
 
-De taak agent zoekt standaard de tabel voor het opslaan van de geretourneerde resultaten in. Als gevolg hiervan moet de aanmelding die is gekoppeld aan de referentie die wordt gebruikt voor de uitvoer referentie, voldoende machtigingen hebben om dit uit te voeren. Als u de tabel vooraf hand matig wilt maken, moet deze de volgende eigenschappen hebben:
+Standaard maakt de taak agent de uitvoer tabel om geretourneerde resultaten op te slaan. Daarom moet de databaseprincipal die is gekoppeld aan de uitvoer referentie mini maal de volgende machtigingen hebben: `CREATE TABLE` op de data base, `ALTER`, `SELECT`, `INSERT`, `DELETE` in de uitvoer tabel of het bijbehorende schema, en `SELECT` in de catalogus weergave [sys. Indexes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) .
+
+Als u de tabel vooraf hand matig wilt maken, moet deze de volgende eigenschappen hebben:
 1. Kolommen met de juiste naam en gegevens typen voor de resultatenset.
 2. Aanvullende kolom voor internal_execution_id met het gegevens type UniqueIdentifier.
 3. Een niet-geclusterde index met de naam `IX_<TableName>_Internal_Execution_ID` op de kolom internal_execution_id.
+4. Alle machtigingen die hierboven worden vermeld, met uitzonde ring van `CREATE TABLE` machtiging voor de data base.
 
 Maak verbinding met de [*taak database*](sql-database-job-automation-overview.md#job-database) en voer de volgende opdrachten uit:
 
@@ -521,7 +524,7 @@ De beschrijving van de taak. de beschrijving is nvarchar (512).
 [ **\@ingeschakeld =** ] ingeschakeld  
 Hiermee geeft u op of de planning van de taak is ingeschakeld (1) of niet is ingeschakeld (0). Ingeschakeld is bit.
 
-[ **\@schedule_interval_type=** ] schedule_interval_type  
+[ **\@schedule_interval_type =** ] schedule_interval_type  
 De waarde geeft aan wanneer de taak moet worden uitgevoerd. schedule_interval_type is nvarchar (50) en kan een van de volgende waarden hebben:
 
 - Eenmaal,
@@ -664,7 +667,7 @@ Het aantal keren dat de uitvoering opnieuw moet worden uitgevoerd als de eerste 
 [ **\@step_timeout_seconds =** ] step_timeout_seconds  
 De maximale hoeveelheid tijd die is toegestaan om de stap uit te voeren. Als deze tijd wordt overschreden, wordt de uitvoering van de taak beëindigd met een levens cyclus van out. step_timeout_seconds is int, met de standaard waarde van 43.200 seconden (12 uur).
 
-[ **\@output_type =** ] 'output_type'  
+[ **\@output_type =** ] ' output_type '  
 Als dit niet het geval is, is dit het type bestemming waarnaar de eerste resultatenset van de opdracht wordt geschreven. output_type is nvarchar (50), met een standaard waarde van NULL.
 
 Indien opgegeven, moet de waarde SqlDatabase zijn.
@@ -794,7 +797,7 @@ Het aantal keren dat de uitvoering opnieuw moet worden uitgevoerd als de eerste 
 [ **\@step_timeout_seconds =** ] step_timeout_seconds  
 De maximale hoeveelheid tijd die is toegestaan om de stap uit te voeren. Als deze tijd wordt overschreden, wordt de uitvoering van de taak beëindigd met een levens cyclus van out. step_timeout_seconds is int, met de standaard waarde van 43.200 seconden (12 uur).
 
-[ **\@output_type =** ] 'output_type'  
+[ **\@output_type =** ] ' output_type '  
 Als dit niet het geval is, is dit het type bestemming waarnaar de eerste resultatenset van de opdracht wordt geschreven. Als u de waarde van output_type weer opnieuw wilt instellen op NULL, stelt u de waarde van deze para meter in op (lege teken reeks). output_type is nvarchar (50), met een standaard waarde van NULL.
 
 Indien opgegeven, moet de waarde SqlDatabase zijn.
@@ -1027,7 +1030,7 @@ De naam van de doel groep waaraan het lid wordt toegevoegd. target_group_name is
 [ **\@membership_type =** ] ' membership_type '  
 Hiermee geeft u op of het lid van de doel groep wordt opgenomen of uitgesloten. target_group_name is nvarchar (128), waarbij de standaard waarde ' include ' is. Geldige waarden voor target_group_name zijn ' include ' of ' exclude '.
 
-[ **\@target_type =** ] 'target_type'  
+[ **\@target_type =** ] ' target_type '  
 Het type doel database of verzameling data bases, inclusief alle data bases op een server, alle data bases in een elastische pool, alle data bases in een Shard-kaart of een afzonderlijke data base. target_type is nvarchar (128), zonder standaard waarde. Geldige waarden voor target_type zijn ' SqlServer ', ' SqlElasticPool ', ' SqlDatabase ' of ' SqlShardMap '. 
 
 [ **\@refresh_credential_name =** ] ' refresh_credential_name '  
@@ -1105,7 +1108,7 @@ Hiermee verwijdert u een lid van een doel groep uit een doel groep.
 
 
 
-Arguments [ @target_group_name = ] 'target_group_name'  
+Argumenten [@target_group_name =] target_group_name  
 De naam van de doel groep waaruit het lid van de doel groep moet worden verwijderd. target_group_name is nvarchar (128), zonder standaard waarde.
 
 [@target_id =] target_id  
@@ -1192,10 +1195,10 @@ GO
 De volgende weer gaven zijn beschikbaar in de [Jobs-data base](sql-database-job-automation-overview.md#job-database).
 
 
-|Weergeven  |Beschrijving  |
+|Weergave  |Beschrijving  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Taak uitvoerings geschiedenis weer geven.      |
-|[jobs](#jobs-view)     |   Hiermee worden alle taken weer gegeven.      |
+|[functies](#jobs-view)     |   Hiermee worden alle taken weer gegeven.      |
 |[job_versions](#job_versions-view)     |   Alle taak versies worden weer gegeven.      |
 |[jobsteps](#jobsteps-view)     |     Hiermee worden alle stappen in de huidige versie van elke taak weer gegeven.    |
 |[jobstep_versions](#jobstep_versions-view)     |     Toont alle stappen in alle versies van elke taak.    |
@@ -1210,7 +1213,7 @@ De volgende weer gaven zijn beschikbaar in de [Jobs-data base](sql-database-job-
 Taak uitvoerings geschiedenis weer geven.
 
 
-|Kolomnaam|   Gegevenstype   |Beschrijving|
+|kolom naam|   Gegevenstype   |Beschrijving|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  Unieke ID van een exemplaar van de uitvoering van een taak.
 |**job_name**   |nvarchar (128)  |De naam van de taak.
@@ -1238,12 +1241,12 @@ Taak uitvoerings geschiedenis weer geven.
 
 Hiermee worden alle taken weer gegeven.
 
-|Kolomnaam|   Gegevenstype|  Beschrijving|
+|kolom naam|   Gegevenstype|  Beschrijving|
 |------|------|-------|
 |**job_name**|  nvarchar (128)   |De naam van de taak.|
 |**job_id**|    uniqueidentifier    |De unieke ID van de taak.|
 |**job_version**    |int    |De versie van de taak (automatisch bijgewerkt telkens wanneer de taak wordt gewijzigd).|
-|**description**    |nvarchar(512)| Beschrijving voor de taak. ingeschakelde bit geeft aan of de taak is ingeschakeld of uitgeschakeld. 1 geeft ingeschakelde taken aan en 0 duidt op uitgeschakelde taken.|
+|**beschrijvingen**    |nvarchar(512)| Beschrijving voor de taak. ingeschakelde bit geeft aan of de taak is ingeschakeld of uitgeschakeld. 1 geeft ingeschakelde taken aan en 0 duidt op uitgeschakelde taken.|
 |**schedule_interval_type** |nvarchar (50)   |Waarde die aangeeft wanneer de taak moet worden uitgevoerd: ' Once ', ' minutes ', ' hours ', ' Days ', ' weken ', ' months '
 |**schedule_interval_count**|   int|    Aantal schedule_interval_type Peri Oden dat moet worden uitgevoerd tussen elke uitvoering van de taak.|
 |**schedule_start_time**    |DATETIME2 (7)|  De datum en tijd waarop de taak voor het laatst is gestart.|
@@ -1256,7 +1259,7 @@ Hiermee worden alle taken weer gegeven.
 
 Alle taak versies worden weer gegeven.
 
-|Kolomnaam|   Gegevenstype|  Beschrijving|
+|kolom naam|   Gegevenstype|  Beschrijving|
 |------|------|-------|
 |**job_name**|  nvarchar (128)   |De naam van de taak.|
 |**job_id**|    uniqueidentifier    |De unieke ID van de taak.|
@@ -1269,7 +1272,7 @@ Alle taak versies worden weer gegeven.
 
 Hiermee worden alle stappen in de huidige versie van elke taak weer gegeven.
 
-|Kolomnaam    |Gegevenstype| Beschrijving|
+|kolom naam    |Gegevenstype| Beschrijving|
 |------|------|-------|
 |**job_name**   |nvarchar (128)| De naam van de taak.|
 |**job_id** |uniqueidentifier   |De unieke ID van de taak.|
@@ -1282,7 +1285,7 @@ Hiermee worden alle stappen in de huidige versie van elke taak weer gegeven.
 |**credential_name**|   nvarchar (128)   |De naam van de data base-bereik referentie die wordt gebruikt om de taak uit te voeren.|
 |**target_group_name**| nvarchar (128)   |De naam van de doel groep.|
 |**target_group_id**|   uniqueidentifier|   De unieke ID van de doel groep.|
-|**initial_retry_interval_seconds**|    int |De vertraging voor de eerste nieuwe poging. De standaardwaarde is 1.|
+|**initial_retry_interval_seconds**|    int |De vertraging voor de eerste nieuwe poging. De standaard waarde is 1.|
 |**maximum_retry_interval_seconds** |int|   De maximale vertraging tussen nieuwe pogingen. Als de vertraging tussen nieuwe pogingen groter is dan deze waarde, wordt deze waarde in plaats daarvan beperkt. De standaard waarde is 120.|
 |**retry_interval_backoff_multiplier**  |real|  De vermenigvuldiger die moet worden toegepast op de vertraging voor nieuwe pogingen als de uitvoering van meerdere taak stappen mislukt. De standaard waarde is 2,0.|
 |**retry_attempts** |int|   Het aantal nieuwe pogingen om te gebruiken als deze stap mislukt. De standaard waarde is 10, waarmee wordt aangegeven dat er geen nieuwe pogingen moeten worden gedaan.|
@@ -1310,7 +1313,7 @@ Toont alle stappen in alle versies van elke taak. Het schema is identiek aan [jo
 
 Een lijst met alle doel groepen.
 
-|Kolomnaam|Gegevenstype| Beschrijving|
+|kolom naam|Gegevenstype| Beschrijving|
 |-----|-----|-----|
 |**target_group_name**| nvarchar (128)   |De naam van de doel groep, een verzameling data bases. 
 |**target_group_id**    |uniqueidentifier   |De unieke ID van de doel groep.
@@ -1321,7 +1324,7 @@ Een lijst met alle doel groepen.
 
 Toont alle leden van alle doel groepen.
 
-|Kolomnaam|Gegevenstype| Beschrijving|
+|kolom naam|Gegevenstype| Beschrijving|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar (128|De naam van de doel groep, een verzameling data bases. |
 |**target_group_id**    |uniqueidentifier   |De unieke ID van de doel groep.|
@@ -1337,7 +1340,7 @@ Toont alle leden van alle doel groepen.
 |**shard_map_name** |nvarchar (128)| De naam van de Shard-kaart die deel uitmaakt van de doel groep. Wordt alleen opgegeven als target_type is ingesteld op SqlShardMap.|
 
 
-## <a name="resources"></a>Resources
+## <a name="resources"></a>Bronnen
 
  - ![Onderwerp koppeling pictogram](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Pictogram koppeling onderwerp") [Transact-SQL-syntaxis conventies](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 

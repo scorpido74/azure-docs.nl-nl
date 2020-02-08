@@ -4,14 +4,14 @@ description: Biedt een lijst met algemene Azure-abonnementen en service limieten
 tags: billing
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b209bc3e60f50ac363d3426d6c87f206b016d711
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901422"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087421"
 ---
-# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnement en servicelimieten, quota's en beperkingen
+# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnements-en service limieten, quota's en beperkingen
 
 Dit document bevat enkele van de meest voorkomende Microsoft Azure limieten, ook wel quota's genoemd. Dit document geldt momenteel niet voor alle Azure-Services. De lijst wordt na verloop van tijd uitgebreid en bijgewerkt om meer services te kunnen behandelen.
 
@@ -22,7 +22,7 @@ Zie [naamgevings regels en beperkingen voor Azure-resources](resource-name-rules
 > [!NOTE]
 > Als u de limiet of het quotum boven de standaard limiet wilt verhogen, kunt u gratis [een online klant ondersteuning-aanvraag openen](../templates/error-resource-quota.md). De limieten kunnen niet hoger zijn dan de limiet waarde die in de volgende tabellen wordt weer gegeven. Als er geen kolom maximum limiet is, heeft de resource geen aanpas bare limieten.
 >
-> [Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u hebt een [gratis proefabonnement](https://azure.microsoft.com/offers/ms-azr-0044p), kunt u upgraden naar een [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) abonnement. Zie voor meer informatie [uw abonnement op gratis proef versie van Azure bijwerken naar een betalen per gebruik-abonnement](../../billing/billing-upgrade-azure-subscription.md) en de [Veelgestelde vragen over het gratis proef abonnement](https://azure.microsoft.com/free/free-account-faq).
+> [Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u een [gratis proef abonnement](https://azure.microsoft.com/offers/ms-azr-0044p)hebt, kunt u een upgrade uitvoeren naar een abonnement met [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) . Zie voor meer informatie [uw abonnement op gratis proef versie van Azure bijwerken naar een betalen per gebruik-abonnement](../../billing/billing-upgrade-azure-subscription.md) en de [Veelgestelde vragen over het gratis proef abonnement](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Limieten en Azure Resource Manager
@@ -44,7 +44,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [API Management](#api-management-limits)
 * [App Service](#app-service-limits)
 * [Application Gateway](#application-gateway-limits)
-* [Automatisering](#automation-limits)
+* [Automation](#automation-limits)
 * [Azure Cache voor Redis](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
 * [Azure Cognitive Search](#azure-cognitive-search-limits)
@@ -71,6 +71,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
+* [Gegevens share](#data-share-limits)
 * [Database Migration Service](#database-migration-service-limits)
 * [Event Grid](#event-grid-limits)
 * [Event Hubs](#event-hubs-limits)
@@ -105,7 +106,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
-* [Opslag](#storage-limits)
+* [Storage](#storage-limits)
 * [StorSimple systeem](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Abonnement](#subscription-limits)
@@ -193,7 +194,7 @@ De volgende tabel is van toepassing op v1-, v2-, Standard-en WAF-Sku's, tenzij a
 
 [!INCLUDE [network-watcher-limits](../../../includes/network-watcher-limits.md)]
 
-#### <a name="private-link-limits"></a>Limieten voor persoonlijke koppelingen
+#### <a name="private-link-limits"></a>Private Link-limieten
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
 
@@ -307,11 +308,11 @@ Zie [limieten in azure Cosmos DB](../../cosmos-db/concepts-limits.md)voor Azure 
 
 [!INCLUDE [azure-data-explorer-limits](../../../includes/data-explorer-limits.md)]
 
-### <a name="azure-database-for-mysql"></a>Azure Database voor MySQL
+### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 
 Zie [beperkingen in azure database for MySQL](../../mysql/concepts-limits.md)voor Azure database for MySQL limieten.
 
-### <a name="azure-database-for-postgresql"></a>Azure Database voor PostgreSQL
+### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 
 Zie [beperkingen in azure database for PostgreSQL](../../postgresql/concepts-limits.md)voor Azure database for PostgreSQL limieten.
 
@@ -404,6 +405,10 @@ Zie [service limieten in Azure Cognitive Search](../../search/search-limits-quot
 ### <a name="data-lake-store-limits"></a>Data Lake Store limieten
 
 [!INCLUDE [azure-data-lake-store-limits](../../../includes/azure-data-lake-store-limits.md)]
+
+### <a name="data-share-limits"></a>Limieten voor gegevens delen
+
+[!INCLUDE [azure-data-share-limits](../../../includes/azure-data-share-limits.md)]
 
 ### <a name="database-migration-service-limits"></a>Database Migration Service limieten
 

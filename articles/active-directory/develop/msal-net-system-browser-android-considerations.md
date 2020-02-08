@@ -3,22 +3,22 @@ title: Xamarin Android-systeem browser overwegingen (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over specifieke overwegingen bij het gebruik van systeem browsers op Xamarin Android met micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9346a4d5eaabb2af490afc13d5785a8f8233e53f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c144c6dd090669ca16c03050cbb8b59ff0cc224f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695042"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084590"
 ---
 #  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>Xamarin Android-systeem browser overwegingen met MSAL.NET
 
@@ -28,9 +28,9 @@ Vanaf MSAL.NET 2.4.0-Preview ondersteunt MSAL.NET andere browsers dan Chrome en 
 
 We raden u aan om browsers te gebruiken die aangepaste tabbladen ondersteunen, zoals deze:
 
-| Browsers met aangepaste tabbladen ondersteunen | Pakketnaam |
+| Browsers met aangepaste tabbladen ondersteunen | Pakket naam |
 |------| ------- |
-|Chrome | com.android.chrome|
+|Chrome | com. Android. Chrome|
 |Microsoft Edge | com.microsoft.emmx|
 |Firefox | org. mozilla. Firefox|
 |Ecosia | com.ecosia.android|
@@ -54,8 +54,8 @@ De volgende tabel geeft een lijst van de apparaten en browsers die zijn getest.
 | | Browser&ast;     |  Resultaat  | 
 | ------------- |:-------------:|:-----:|
 | Huawei/één + | Chrome&ast; | Door|
-| Huawei/één + | Edge&ast; | Door|
-| Huawei/één + | Firefox&ast; | Door|
+| Huawei/één + | Edge-&ast; | Door|
+| Huawei/één + | Firefox-&ast; | Door|
 | Huawei/één + | Brave&ast; | Door|
 | Eén + | Ecosia&ast; | Door|
 | Eén + | Kiwi&ast; | Door|

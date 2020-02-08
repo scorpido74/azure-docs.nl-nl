@@ -4,17 +4,17 @@ description: Azure Storage beveiligt uw gegevens door deze automatisch te versle
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: abb9325510b52672027338314e02466f2d28e701
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86d6a63601036abdde4ee7ae73114566d749feca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942195"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082831"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage versleuteling voor Data-at-rest
 
@@ -43,10 +43,10 @@ U kunt gebruikmaken van door micro soft beheerde sleutels voor de versleuteling 
 
 De volgende tabel vergelijkt de opties voor sleutel beheer voor Azure Storage versleuteling.
 
-|                                        |    Door micro soft beheerde sleutels                             |    Door de klant beheerde sleutels                                                                                                                        |    Door de klant verschafte sleutels                                                          |
+|                                        |    Door micro soft beheerde sleutels                             |    Door klant beheerde sleutels                                                                                                                        |    Door de klant verschafte sleutels                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    Bewerkingen voor versleuteling/ontsleuteling    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    Azure Storage services ondersteund    |    Alles                                                |    Blob-opslag, Azure Files<sup>1, 2</sup>                                                                                                               |    Blob-opslag                                                                  |
+|    Azure Storage services ondersteund    |    Alle                                                |    Blob-opslag, Azure Files<sup>1, 2</sup>                                                                                                               |    Blob Storage                                                                  |
 |    Sleutel opslag                         |    Micro soft-sleutel archief    |    Azure Key Vault                                                                                                                              |    Azure Key Vault of een ander sleutel archief                                                                 |
 |    Verantwoordelijkheid voor sleutel rotatie         |    Microsoft                                          |    Klant                                                                                                                                     |    Klant                                                                      |
 |    Sleutelgebruik                           |    Microsoft                                          |    Azure Portal, opslag Resource provider REST API, Azure Storage beheer Bibliotheken, Power shell, CLI        |    Azure Storage REST API (Blob Storage), Azure Storage client bibliotheken    |
@@ -154,7 +154,7 @@ Het opgeven van de versleutelings sleutels voor de aanvraag is optioneel. Als u 
 
 De volgende bewerkingen voor Blob Storage ondersteunen het verzenden van door de klant verschafte versleutelings sleutels voor een aanvraag:
 
-- [Blob plaatsen](/rest/api/storageservices/put-blob)
+- [BLOB plaatsen](/rest/api/storageservices/put-blob)
 - [Blokkerings lijst plaatsen](/rest/api/storageservices/put-block-list)
 - [Blok keren](/rest/api/storageservices/put-block)
 - [Blok van URL plaatsen](/rest/api/storageservices/put-block-from-url)
@@ -164,9 +164,9 @@ De volgende bewerkingen voor Blob Storage ondersteunen het verzenden van door de
 - [BLOB-eigenschappen instellen](/rest/api/storageservices/set-blob-properties)
 - [BLOB-meta gegevens instellen](/rest/api/storageservices/set-blob-metadata)
 - [BLOB ophalen](/rest/api/storageservices/get-blob)
-- [Get Blob Properties](/rest/api/storageservices/get-blob-properties) (Blob-eigenschappen ophalen)
+- [BLOB-eigenschappen ophalen](/rest/api/storageservices/get-blob-properties)
 - [BLOB-meta gegevens ophalen](/rest/api/storageservices/get-blob-metadata)
-- [Momentopname maken van blob](/rest/api/storageservices/snapshot-blob)
+- [Moment opname-BLOB](/rest/api/storageservices/snapshot-blob)
 
 ### <a name="rotate-customer-provided-keys"></a>Door de klant verschafte sleutels draaien
 

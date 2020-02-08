@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/19/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6fd8d6187c86306840c33b3aaf334e71086b20a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452746"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083524"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Aanbevolen procedures voor het kiezen van een Time Series-ID
 
@@ -36,7 +36,7 @@ Het selecteren van de juiste tijd reeks-ID is van cruciaal belang. Het kiezen va
 De belangrijkste aanbevolen procedures zijn:
 
 * Kies een partitie sleutel met veel afzonderlijke waarden (bijvoorbeeld honderden of duizenden). In veel gevallen kan dit de apparaat-ID, sensor-ID of label-ID in uw JSON zijn.
-* De Time Series-ID moet uniek zijn op het niveau van de leaf-knooppunt van uw [Tijdreeksmodel](./time-series-insights-update-tsm.md).
+* De time series-ID moet uniek zijn op het leaf-knooppunt niveau van uw [Time Series-model](./time-series-insights-update-tsm.md).
 * De teken limiet voor de eigenschaps naam van de tijd reeks-ID is 128. De teken limiet voor de eigenschaps waarde van de tijd reeks-ID is 1.024.
 * Als een unieke eigenschaps waarde voor de time series-ID ontbreekt, wordt deze behandeld als een null-waarde en volgt dezelfde regel van de uniekheids beperking.
 * U kunt ook Maxi maal *drie* sleutel eigenschappen selecteren als uw tijd reeks-id. De combi natie hiervan is een samengestelde sleutel die de tijd reeks-ID vertegenwoordigt.  

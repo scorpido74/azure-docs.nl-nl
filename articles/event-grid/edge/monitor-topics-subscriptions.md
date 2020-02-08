@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 79b223de7a0a0cfdaf799b1f80e585a2a55f7e82
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849732"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086674"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Onderwerpen en gebeurtenis abonnementen bewaken
 
@@ -40,7 +40,7 @@ Configureer de module voor het verzenden van metrische gegevens door de omgeving
         }
  ```    
 
-Metrische gegevens zijn beschikbaar op `5888/metrics` van de module voor http en `4438/metrics` voor HTTPS. Bijvoorbeeld `http://<modulename>:4438/metrics?api-version=2019-01-01-preview` voor http. Op dit moment kan een metrische module het eind punt pollen om metrische gegevens te verzamelen, zoals in deze [voorbeeld architectuur](https://github.com/veyalla/ehm).
+Metrische gegevens zijn beschikbaar op `5888/metrics` van de module voor http en `4438/metrics` voor HTTPS. Bijvoorbeeld `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` voor http. Op dit moment kan een metrische module het eind punt pollen om metrische gegevens te verzamelen, zoals in deze [voorbeeld architectuur](https://github.com/veyalla/ehm).
 
 ## <a name="available-metrics"></a>Beschikbare metrische gegevens
 
@@ -63,9 +63,9 @@ In zowel onderwerpen als gebeurtenis abonnementen worden metrische gegevens gege
 | Gegevens | Beschrijving |
 | ------ | ----------- |
 | deliverySuccessCounts | Aantal gebeurtenissen dat is bezorgd bij het geconfigureerde eind punt
-| deliveryFailureCounts | Aantal pogingen voor het leveren van gebeurtenissen met het geconfigureerde eind punt is mislukt
+| deliveryFailureCounts | Aantal gebeurtenissen dat niet kan worden bezorgd bij het geconfigureerde eind punt
 | deliverySuccessLatencyMs | Latentie van geslaagde gebeurtenissen in milliseconden
 | deliveryFailureLatencyMs | Latentie van bezorgings fouten van gebeurtenissen in milliseconden
 | systemDelayForFirstAttemptMs | Systeem vertraging van gebeurtenissen vóór eerste bezorg poging in milliseconden
 | deliveryAttemptsCount | Aantal pogingen voor gebeurtenis verzendingen-geslaagd en mislukt
-| expiredCounts | Aantal gebeurtenissen kan niet worden bezorgd 
+| expiredCounts | Aantal gebeurtenissen dat is verlopen en niet is bezorgd bij het geconfigureerde eind punt

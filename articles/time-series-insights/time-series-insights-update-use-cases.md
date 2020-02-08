@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85b724a62f778620264ae308aa316e046a0e9f59
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 50ac2a728750c6b01dfc57fa7e20df25c856395a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896080"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087387"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights preview-cases gebruiken
 
@@ -34,9 +34,9 @@ Een overzicht van deze gebruiks scenario's wordt beschreven in de volgende secti
 
 Azure Time Series Insights is een end-to-end-, platform-as-a-service-aanbieding. Het wordt gebruikt voor het verzamelen, verwerken, opslaan, analyseren en opvragen van zeer contextuele, time-series geoptimaliseerde gegevens voor IoT-schaal. Time Series Insights is ideaal voor ad-hoc gegevensverkenning en voor operationele analyse. Time Series Insights is een unieke uitbreid bare, aangepaste service aanbieding die voldoet aan de uitgebreide behoeften van industriële IoT-implementaties.
 
-## <a name="data-exploration-and-visual-anomaly-detection"></a>Gegevensverkenning en visuele afwijkingsdetectie
+## <a name="data-exploration-and-visual-anomaly-detection"></a>Gegevens verkennen en visuele anomalie detectie
 
-Verken en analyseer direct miljarden gebeurtenissen om afwijkingen te vinden en verborgen trends in uw gegevens te ontdekken. Time Series Insights biedt near realtime-prestaties voor uw IoT- en DevOps-analyseworkloads.
+Verken en analyseer miljarden gebeurtenissen om afwijkingen op te sporen en de verborgen trends in uw gegevens te ontdekken. Time Series Insights biedt bijna realtime prestaties voor uw IoT-en DevOps-analyse werk belastingen.
 
 [![Data Explorer](media/v2-update-use-cases/data-explorer.png)](media/v2-update-use-cases/data-explorer.png#lightbox)
 
@@ -62,11 +62,11 @@ Er zijn drie manieren om te communiceren met gegevens die zijn opgeslagen in Tim
 
 * De derde manier om te beginnen is het gebruik van de krachtige Api's om query's uit te voeren op gegevens die zijn opgeslagen in Time Series Insights. Time Series Insights heeft tijdelijke Opera tors zoals `from`, `to`, `first`en `last`. Het bevat aggregaties en trans formaties zoals `average`, `min`, `max`, `split by`, `order by`en `DateHistogram`. Er zijn ook filter operatoren, zoals `has`, `in`, `and`, `or`, `greater than`en `REGEX`. Al deze opera tors bieden downstream-toepassingen de mogelijkheid om snel interessante trends en patronen in uw gegevens te vinden. Gebruik ze om Homegrown-visualisaties te vullen om afwijkingen op te sporen.
 
-## <a name="operational-analysis-and-driving-process-efficiency"></a>Operationele analyse en efficiëntere processen
+## <a name="operational-analysis-and-driving-process-efficiency"></a>Operationele analyse en efficiëntie van het proces
 
-Gebruik Time Series Insights om de status, het gebruik en de prestaties van apparatuur op schaal te bewaken. Time Series Insights biedt een eenvoudige manier om de operationele efficiëntie te meten. Time Series Insights helpt bij het beheer van uiteenlopende en onvoorspelbare IoT-workloads, zonder de opname- en queryprestaties te verminderen.
+Gebruik Time Series Insights om de status, het gebruik en de prestaties van apparatuur op schaal te bewaken. Time Series Insights biedt een eenvoudige manier om de operationele efficiëntie te meten. Time Series Insights helpt bij het beheren van uiteenlopende en onvoorspelbare IoT-workloads zonder dat er opname-of query prestaties worden geoffert.
 
-[![Overzicht](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[Overzicht van ![](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 Streaming en doorlopende verwerking van gegevens die afkomstig zijn van operationele processen kunnen alle bedrijven omzetten als deze worden gecombineerd met de juiste technologie of oplossing. Vaak zijn deze oplossingen een combi natie van meerdere systemen. Ze maken het mogelijk om gegevens te verkennen en te analyseren die voortdurend worden gewijzigd, met name in de IoT-realm en een gemeen schappelijk patroon delen.
 
@@ -82,7 +82,7 @@ De oplossings architectuur kan op de volgende manier worden bereikt:
 
 Time Series Insights biedt een bijna realtime gegevens onderzoek en inzichten op basis van een activum via historische gegevens. Afhankelijk van de behoeften van uw bedrijf, kunnen MapReduce en Hive-taken worden uitgevoerd op gegevens die zijn opgeslagen in Time Series Insights door Time Series Insights te verbinden met Azure HDInsight. Gegevens die zijn opgeslagen in Time Series Insights, zijn beschikbaar voor Power BI en andere klant toepassingen via de Time Series Insights open bare Surface-query-Api's. Deze gegevens kunnen worden gebruikt voor uitgebreide bedrijfs-en operationele informatie scenario's.
 
-## <a name="advanced-analytics"></a>Advanced analytics
+## <a name="advanced-analytics"></a>Geavanceerde analyse
 
 Integreer met geavanceerde analyse services zoals Machine Learning en Azure Databricks. Time Series Insights ingresses onbewerkte gegevens van miljoenen apparaten. Het voegt contextuele gegevens toe die naadloos kunnen worden gebruikt door een suite van Azure Analytics Services.
 

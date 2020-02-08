@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2469745edb5b8b3696478603cfe874bcabc8c1ff
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a22a36d5e6c36008c3a574cbcf9be8ec4f52b82b
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231957"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086452"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Boomi
 
@@ -31,7 +30,7 @@ In deze zelf studie leert u hoe u Boomi integreert met Azure Active Directory (A
 * Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Boomi met hun Azure AD-accounts.
 * Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -45,6 +44,7 @@ U hebt de volgende items nodig om aan de slag te gaan:
 In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * Boomi biedt ondersteuning voor door **IDP** geïnitieerde eenmalige aanmelding
+* Zodra u de Boomi hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-boomi-from-the-gallery"></a>Boomi toevoegen vanuit de galerie
 
@@ -81,18 +81,26 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer op de pagina **eenmalige aanmelding met SAML instellen** de waarden in voor de volgende velden:
+1. Voer de volgende stappen uit in de sectie **basis configuratie van SAML** als u het **META gegevensbestand van de service provider** hebt en wilt configureren in de gestarte modus **IDP** :
 
-    a. In het tekstvak **Id** typt u een URL: `https://platform.boomi.com/`
+    a. Klik op **Metagegevensbestand uploaden**.
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://platform.boomi.com/sso/<boomi-tenant>/saml`
+    ![Metagegevensbestand uploaden](common/upload-metadata.png)
 
-    > [!NOTE]
-    > De waarde van de antwoord-URL is niet de echte waarde. Werk de waarde bij met de werkelijke antwoord-URL. Neem contact op met het [klantondersteuningsteam van Boomi](https://boomi.com/company/contact/) om deze waarde op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden**.
+
+    ![Metagegevensbestand kiezen](common/browse-upload-metadata.png)
+
+    c. Nadat het meta gegevensbestand is geüpload, worden de waarden voor de **id** en de **antwoord-URL** automatisch ingevuld in de basis configuratie sectie voor SAML.
+
+    ![image](common/idp-intiated.png)
+
+    > [!Note]
+    > U krijgt het **META gegevensbestand van de service provider** via de **Boomi SSO-sectie configure** . dit wordt verderop in de zelf studie beschreven. Als de waarden voor **Id** en **Antwoord-URL** niet automatisch worden ingevuld, kunt u de waarden zelf invullen afhankelijk van uw behoeften.
 
 1. De Boomi-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![installatiekopie](common/default-attributes.png)
+    ![image](common/default-attributes.png)
 
 1. Daarnaast verwacht Boomi toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
 
@@ -115,7 +123,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Create**.
@@ -154,9 +162,11 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     c. Plak in het tekstvak **Identity Provider Login URL** de waarde van **Aanmeldings-URL** uit het configuratievenster van de toepassing in Azure AD.
 
-    d. Schakel bij **Federation Id Location** het keuzerondje **Federation Id is in FEDERATION_ID Attribute element** in.
+    d. Voor **federatieve id-locatie**selecteert u de **Federatie-id bevindt zich in FEDERATION_ID keuze rondje kenmerk element** .
 
-    e. Klik op de knop **Save**.
+    e. Kopieer de **URL van de AtomSphere-meta gegevens**, ga naar de **meta gegevens-URL** via de browser van uw keuze en sla de uitvoer op in een bestand. Upload de **meta gegevens-URL** in het gedeelte **basis configuratie van SAML** in de Azure Portal.
+
+    f. Klik op de knop **Save**.
 
 ### <a name="create-boomi-test-user"></a>Een testgebruiker maken voor Boomi
 
@@ -189,7 +199,7 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij Boomi, moe
     f. Klik op **OK**.
 
     > [!NOTE]
-    > De gebruiker ontvangt geen welkomst meldings-e-mail met een wacht woord dat kan worden gebruikt om u aan te melden bij het AtomSphere-account, omdat het wacht woord wordt beheerd via de ID-provider. U kunt alle andere hulpprogram ma's voor het maken van Boomi-gebruikers accounts of Api's die worden geleverd door Boomi, gebruiken om Azure AD-gebruikers accounts in te richten.
+    > De gebruiker ontvangt geen welkomst meldings-e-mail met een wacht woord dat kan worden gebruikt om u aan te melden bij het AtomSphere-account, omdat het wacht woord wordt beheerd via de ID-provider. U kunt andere hulpprogramma's of API's van Boomi gebruiken voor het inrichten van AAD-gebruikersaccounts.
 
 ## <a name="test-sso"></a>SSO testen
 
@@ -201,8 +211,10 @@ Wanneer u in het toegangsvenster op de tegel Boomi klikt, wordt u automatisch aa
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [Probeer Boomi met Azure AD](https://aad.portal.azure.com/)

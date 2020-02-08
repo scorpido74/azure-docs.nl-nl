@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9824f5cfd7b42860079536232b8a5ad40ea608c9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3243aa4c68e1cd6030986dc44cca47a555dc5356
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638354"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087148"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en Azure Machine Learning voor probleem oplossing
 
@@ -46,7 +46,7 @@ Onder afbeelding ziet u hoe: ![data](./media/resource-known-issues/aml-visualize
 
 ## <a name="sdk-installation-issues"></a>Problemen met de SDK-installatie
 
-**Foutmelding: 'PyYAML' niet verwijderen**
+**Fout bericht: kan PyYAML niet verwijderen**
 
 Azure Machine Learning-SDK voor Python: PyYAML is een project distutils geïnstalleerd. Daarom kunnen we niet nauw keurig bepalen welke bestanden er bij gedeeltelijk verwijderen horen. Gebruik het volgende om door te gaan met het installeren van de SDK tijdens deze fout negeren:
 
@@ -76,7 +76,7 @@ Als u `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Sign
 
 ## <a name="fpgas"></a>FPGAs
 
-Niet mogelijk om te implementeren van modellen op FPGA's totdat u hebt aangevraagd en goedgekeurd voor FPGA quotum. Vul het aanvraagformulier voor de quota voor het aanvragen van toegang: https://aka.ms/aml-real-time-ai
+Niet mogelijk om te implementeren van modellen op FPGA's totdat u hebt aangevraagd en goedgekeurd voor FPGA quotum. Vul het quotum aanvraag formulier in om toegang aan te vragen: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Geautomatiseerde Machine Learning
 
@@ -125,7 +125,7 @@ Problemen met Databricks en Azure Machine Learning.
 
 ### <a name="failure-when-installing-packages"></a>Fout bij het installeren van pakketten
 
-Azure Machine Learning SDK-installatie mislukt op Azure Databricks wanneer er meer pakketten zijn geïnstalleerd. Sommige pakketten, zoals `psutil`, kan leiden tot conflicten. Installeer pakketten door de bibliotheek versie te blok keren om installatie fouten te voor komen. Dit probleem heeft betrekking op Databricks en niet op de Azure Machine Learning SDK. Dit probleem kan ook optreden met andere bibliotheken. Voorbeeld:
+Azure Machine Learning SDK-installatie mislukt op Azure Databricks wanneer er meer pakketten zijn geïnstalleerd. Sommige pakketten, zoals `psutil`, kunnen conflicten veroorzaken. Installeer pakketten door de bibliotheek versie te blok keren om installatie fouten te voor komen. Dit probleem heeft betrekking op Databricks en niet op de Azure Machine Learning SDK. Dit probleem kan ook optreden met andere bibliotheken. Voorbeeld:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -172,7 +172,7 @@ Als er een `FailToSendFeather` fout optreedt bij het lezen van gegevens op Azure
 * Voeg `azureml-dataprep` versie 1.1.8 of hoger toe.
 * Voeg `pyarrow` versie 0,11 of hoger toe.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portal
 
 Als u rechtstreeks naar het weergeven van uw werkruimte van een koppeling voor het delen van de SDK of de portal gaat, wordt het niet mogelijk om de normale overzichtspagina met abonnementsgegevens in de extensie weer te geven. U wordt ook niet mogelijk om over te schakelen naar een andere werkruimte. Als u een andere werk ruimte wilt weer geven, gaat u rechtstreeks naar [Azure machine learning Studio](https://ml.azure.com) en zoekt u naar de naam van de werk ruimte.
 
@@ -191,7 +191,7 @@ Sommige van deze acties worden weer gegeven in het gebied __activiteiten__ van u
 
 ## <a name="resource-quotas"></a>Resourcequota
 
-Meer informatie over de [resourcequota](how-to-manage-quotas.md) optreden tijdens het werken met Azure Machine Learning.
+Meer informatie over de [resource quota](how-to-manage-quotas.md) die u kunt tegen komen bij het werken met Azure machine learning.
 
 ## <a name="authentication-errors"></a>Verificatiefouten
 
@@ -306,3 +306,9 @@ Als u alle gelabelde afbeeldingen wilt laden, kiest u de **eerste** knop. Met de
 ### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>Druk op ESC-toets terwijl labels voor object detectie een label met een grootte van nul maken in de linkerbovenhoek. Het verzenden van labels met deze status mislukt.
 
 Verwijder het label door te klikken op de kruis markering ernaast.
+
+## <a name="run-or-experiment-deletion"></a>Uitvoeren of experimenteren verwijderen
+
+Experimenten kunnen worden gearchiveerd met de methode [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) of vanuit de weer gave van het tabblad experiment in azure machine learning Studio-client. Met deze actie wordt het experiment verborgen in lijst query's en weer gaven, maar wordt het niet verwijderd.
+
+Het permanent verwijderen van afzonderlijke experimenten of uitvoeringen wordt momenteel niet ondersteund. Zie [uw machine learning service-werkruimte gegevens exporteren of verwijderen](how-to-export-delete-data.md)voor meer informatie over het verwijderen van werk ruimte-assets.

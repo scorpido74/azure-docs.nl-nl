@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eadedcea7e6010cf93d118b3781630053609d29f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 12c4362ae1b075af132d5971f4fe0461c9d91733
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019601"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083078"
 ---
 # <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS configureren voor het omzetten van namen voor de automatische AVS-toegang via de Cloud vCenter vanaf on-premises werk stations
 
@@ -32,10 +32,10 @@ Als u toegang wilt krijgen tot de vCenter-Server op een AVS-Privécloud vanuit o
 
 Gebruik een van deze opties voor de DNS-configuratie.
 
-* [Maak een zone op de DNS-server voor *. AVS.io](#create-a-zone-on-a-microsoft-windows-dns-server)
-* [Maak een voorwaardelijke doorstuur server op uw lokale DNS-servers om * op te lossen. AVS.io](#create-a-conditional-forwarder)
+* [Maak een zone op de DNS-server voor *. cloudsimple.io](#create-a-zone-on-a-microsoft-windows-dns-server)
+* [Een voorwaardelijke doorstuur server maken op uw lokale DNS-servers om *. cloudsimple.io te kunnen oplossen](#create-a-conditional-forwarder)
 
-## <a name="create-a-zone-on-the-dns-server-for-avsio"></a>Maak een zone op de DNS-server voor *. AVS.io
+## <a name="create-a-zone-on-the-dns-server-for-cloudsimpleio"></a>Maak een zone op de DNS-server voor *. cloudsimple.io
 
 U kunt een zone instellen als stub-zone en verwijzen naar de DNS-servers in de Privécloud voor naam omzetting. Deze sectie bevat informatie over het gebruik van een BIND-DNS-server of een micro soft Windows DNS-server.
 
@@ -78,7 +78,7 @@ zone "az.cloudsimple.io"
 
 ## <a name="create-a-conditional-forwarder"></a>Een voorwaardelijke doorstuur server maken
 
-Een voorwaardelijke doorstuur server stuurt alle aanvragen voor DNS-naam omzetting door naar de aangewezen server. Bij deze installatie wordt elke aanvraag aan *. AVS.io wordt doorgestuurd naar de DNS-servers die zich bevinden in de Privécloud van de AVS. In de volgende voor beelden ziet u hoe u doorstuur servers instelt op verschillende typen DNS-server.
+Een voorwaardelijke doorstuur server stuurt alle aanvragen voor DNS-naam omzetting door naar de aangewezen server. Bij deze installatie wordt elke aanvraag voor *. cloudsimple.io doorgestuurd naar de DNS-servers die zich bevinden in de Privécloud van de AVS. In de volgende voor beelden ziet u hoe u doorstuur servers instelt op verschillende typen DNS-server.
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>Voorwaardelijke doorstuur servers maken op een BIND-DNS-server
 

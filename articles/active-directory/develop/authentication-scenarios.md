@@ -13,18 +13,18 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 841ff610509c0d580ff8dca3a9fc14b816d56f1c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9760f09f2588f09263c96cf8c1be74129b117009
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983219"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085377"
 ---
 # <a name="authentication-basics"></a>Basisbeginselen van verificatie
 
 ## <a name="what-is-authentication"></a>Wat is verificatie?
 
-In dit artikel worden veel van de verificatie concepten beschreven die u moet begrijpen om beveiligde web-apps, Web-Api's of apps te maken die beveiligde web-Api's aanroepen. Als u een term ziet die u niet kent, probeert u onze (verklarende woorden lijst) [Developer-glossary.md].
+In dit artikel worden veel van de verificatie concepten beschreven die u moet begrijpen om beveiligde web-apps, Web-Api's of apps te maken die beveiligde web-Api's aanroepen. Als u een term ziet die u niet kent, probeert u onze [woorden lijst](developer-glossary.md).
 
 **Verificatie** is het proces van waaruit u wordt gedicteerd. Verificatie wordt soms afgekort tot 'AuthN'.
 
@@ -38,7 +38,7 @@ Een gecentraliseerde ID-provider is nog belang rijker voor apps die over de hele
 
 Het micro soft Identity platform vereenvoudigt de verificatie voor toepassings ontwikkelaars door identiteit als service te bieden, met ondersteuning voor de industrie standaard protocollen zoals [OAuth 2,0](https://oauth.net/2/) en [OpenID Connect Connect](https://openid.net/connect/), evenals open-source-bibliotheken voor verschillende platformen, zodat u snel kunt beginnen met coderen. Ontwikkel aars kunnen toepassingen bouwen die zich aanmelden bij alle micro soft-identiteiten, tokens verkrijgen om [Microsoft Graph](https://developer.microsoft.com/graph/), andere Api's van micro soft of api's te roepen die ontwikkel aars hebben gebouwd. Zie [ontwikkeling van micro soft Identity platform](about-microsoft-identity-platform.md)voor meer informatie.
 
-### <a name="tenants"></a>tenants
+### <a name="tenants"></a>Tenants
 
 Een Cloud-ID-provider fungeert als veel organisaties. Om gebruikers van verschillende organisaties gescheiden te houden, wordt Azure AD gepartitioneerd in tenants, met één Tenant per organisatie.
 
@@ -85,9 +85,9 @@ Als een id-provider weet dat een gebruiker toegang heeft tot een bepaalde app, m
 
 * Pas de huis stijl van uw toepassing aan in het dialoog venster voor aanmelden. Dit is belang rijk omdat dit de eerste ervaring is die een gebruiker heeft met uw app.
 * Bepaal of u gebruikers alleen wilt laten aanmelden als ze tot uw organisatie behoren. Dit is één Tenant toepassing. Of sta gebruikers toe om zich aan te melden met een werk-of school account. Dit is een toepassing met meerdere tenants. U kunt ook persoonlijke micro soft-accounts of een sociaal account van LinkedIn, Google, enzovoort toestaan.
-* machtigingen voor het bereik van aanvragen. U kunt bijvoorbeeld het bereik ' gebruiker. read ' aanvragen, dat toestemming geeft om het profiel van de aangemelde gebruiker te lezen.
+* Machtigingen voor het bereik van aanvragen. U kunt bijvoorbeeld het bereik ' gebruiker. read ' aanvragen, dat toestemming geeft om het profiel van de aangemelde gebruiker te lezen.
 * Definieer bereiken waarmee de toegang tot uw web-API wordt gedefinieerd. Wanneer een app toegang wil krijgen tot uw API, moet dit doorgaans machtigingen aanvragen voor de bereiken die u definieert.
-* deel een geheim met Azure AD om de identiteit van de app aan Azure AD te bewijzen.  Dit is van belang voor het geval dat de app een vertrouwelijke client toepassing is. Een vertrouwelijke client toepassing is een toepassing die referenties veilig kan bevatten. Er is een vertrouwde back-end-server nodig om de referenties op te slaan.
+* Deel een geheim met Azure AD om de identiteit van de app aan Azure AD te bewijzen.  Dit is van belang voor het geval dat de app een vertrouwelijke client toepassing is. Een vertrouwelijke client toepassing is een toepassing die referenties veilig kan bevatten. Er is een vertrouwde back-end-server nodig om de referenties op te slaan.
 
 Na de registratie krijgt de toepassing een unieke id die de App deelt met Azure AD wanneer tokens worden aangevraagd. Als de app een [vertrouwelijke client toepassing](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application)is, deelt deze ook het geheim of de open bare sleutel *, afhankelijk van het feit of er certificaten of geheimen zijn gebruikt.
 

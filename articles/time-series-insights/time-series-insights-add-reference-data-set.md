@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.custom: seodec18
-ms.openlocfilehash: 71041012bc77da6d7613deb178c3cec1413e57e2
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/07/2020
+ms.custom: seodec18~~~~
+ms.openlocfilehash: 79628ed44753577023464ef6208027e1b7996d30
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314879"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087258"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Maak een referentie gegevensverzameling voor uw Time Series Insights-omgeving met behulp van de Azure Portal
 
@@ -34,7 +34,7 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
 
 ## <a name="add-a-reference-data-set"></a>Een set met referentie gegevens toevoegen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek uw bestaande Azure Time Series Insights-omgeving. Selecteer **alle resources** in het menu aan de linkerkant van het Azure Portal. Selecteer uw Time Series Insights-omgeving.
 

@@ -3,22 +3,22 @@ title: Logboek registratie in MSAL-apps | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over logboek registratie in micro soft Authentication Library (MSAL)-toepassingen.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/11/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: cba213824cba86b4ea54e852b7e2f1ede83abfea
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 58697cc535357710c6889f05060b5e04e129ae7d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695803"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084890"
 ---
 # <a name="logging-in-msal-applications"></a>Logboek registratie in MSAL-toepassingen
 
@@ -214,7 +214,7 @@ Gebruik een van de volgende waarden om het logboek registratie niveau in te stel
 |---------|---------|
 | `MSALLogLevelNothing`| Alle logboek registratie uitschakelen |
 | `MSALLogLevelError` | Standaard niveau, alleen informatie afdrukken wanneer er fouten optreden |
-| `MSALLogLevelWarning` | Waarschuwingen |
+| `MSALLogLevelWarning` | Berichten |
 | `MSALLogLevelInfo` |  Bibliotheek ingangs punten, met para meters en verschillende sleutel hanger bewerkingen |
 |`MSALLogLevelVerbose`     |  API-tracering |
 
@@ -291,7 +291,7 @@ Gebruik een van de volgende waarden om het logboek registratie niveau in te stel
 |---------|---------|
 | `MSALLogLevelNothing`| Alle logboek registratie uitschakelen |
 | `MSALLogLevelError` | Standaard niveau, alleen informatie afdrukken wanneer er fouten optreden |
-| `MSALLogLevelWarning` | Waarschuwingen |
+| `MSALLogLevelWarning` | Berichten |
 | `MSALLogLevelInfo` |  Bibliotheek ingangs punten, met para meters en verschillende sleutel hanger bewerkingen |
 |`MSALLogLevelVerbose`     |  API-tracering |
 

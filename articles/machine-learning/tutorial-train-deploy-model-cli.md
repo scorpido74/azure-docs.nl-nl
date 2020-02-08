@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841111"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087023"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Zelf studie: een model trainen en implementeren vanuit de CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -381,7 +381,7 @@ Met deze opdracht wordt een nieuwe service met de naam `myservice`geïmplementee
 
 Het `inferenceConfig.yml` bestand bevat informatie over het gebruik van het model voor demijnen. Er wordt bijvoorbeeld verwezen naar het entry-script (`score.py`) en software-afhankelijkheden. 
 
-Voor meer informatie over de structuur van dit bestand raadpleegt u het schema voor het afzien van de [configuratie](reference-azure-machine-learning-cli.md#inference-configuration-schema). Zie [modellen implementeren met de Azure machine learning](how-to-deploy-and-where.md#prepare-to-deploy)voor meer informatie over invoer scripts.
+Voor meer informatie over de structuur van dit bestand raadpleegt u het schema voor het afzien van de [configuratie](reference-azure-machine-learning-cli.md#inference-configuration-schema). Zie [modellen implementeren met de Azure machine learning](how-to-deploy-and-where.md#prepare-deployment-artifacts)voor meer informatie over invoer scripts.
 
 De `aciDeploymentConfig.yml` beschrijft de implementatie omgeving die wordt gebruikt voor het hosten van de service. De implementatie configuratie is specifiek voor het reken type dat u gebruikt voor de implementatie. In dit geval wordt een exemplaar van Azure container gebruikt. Zie het [implementatie configuratie schema](reference-azure-machine-learning-cli.md#deployment-configuration-schema)voor meer informatie.
 

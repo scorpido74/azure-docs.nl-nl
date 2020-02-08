@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6342e6a75c8397712e028874b4d727bf3d6f5ff4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529640"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087120"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
 
@@ -49,11 +49,11 @@ Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight
 
 HDInsight Spark-cluster wordt gemaakt met Anaconda-installatie. Er zijn twee python-installaties in het cluster, Anaconda python 2,7 en python 3,5. In de volgende tabel ziet u de standaard python-instellingen voor Spark, livy en Jupyter.
 
-| |Python 2.7|Python 3,5|
+| |Python 2,7|Python 3,5|
 |----|----|----|
 |Pad|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Standaard ingesteld op 2,7|N/A|
-|Livy|Standaard ingesteld op 2,7|N/A|
+|Spark|Standaard ingesteld op 2,7|N.v.t.|
+|Livy|Standaard ingesteld op 2,7|N.v.t.|
 |Jupyter|PySpark-kernel|PySpark3-kernel|
 
 ## <a name="safely-install-external-python-packages"></a>Externe Python-pakketten veilig installeren
@@ -122,7 +122,7 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
 
 ## <a name="known-issue"></a>Bekend probleem
 
-Er is een bekende fout voor Anaconda-versie 4.7.11 en 4.7.12. Als uw script acties zijn vastgelopen op `"Collecting package metadata (repodata.json): ...working..."` en er een fout optreedt bij het `"Python script has been killed due to timeout after waiting 3600 secs"`. U kunt [Dit script](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) downloaden en uitvoeren als script acties op alle knoop punten om het probleem op te lossen.
+Er is een bekende fout voor Anaconda-versie 4.7.11, 4.7.12 en 4.8.0. Als uw script acties zijn vastgelopen op `"Collecting package metadata (repodata.json): ...working..."` en er een fout optreedt bij het `"Python script has been killed due to timeout after waiting 3600 secs"`. U kunt [Dit script](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) downloaden en uitvoeren als script acties op alle knoop punten om het probleem op te lossen.
 
 Als u uw Anaconda-versie wilt controleren, kunt u SSHen naar het cluster header-knoop punt en `/usr/bin/anaconda/bin/conda --v`uitvoeren.
 
@@ -130,7 +130,7 @@ Als u uw Anaconda-versie wilt controleren, kunt u SSHen naar het cluster header-
 
 * [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Scenario's
+### <a name="scenarios"></a>Scenario 's
 
 * [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)

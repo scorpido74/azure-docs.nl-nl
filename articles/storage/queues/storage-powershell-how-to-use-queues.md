@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 94e28c59c3281dc6c1d65ce782568233d0e23f03
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: bd2f372bdcb949b64f748d186a9b060bb9cbec4a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313838"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087072"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-bewerkingen uitvoeren met Azure PowerShell
 
-Azure Queue-opslag is een service voor het opslaan van grote aantallen berichten die vanaf elke locatie in de wereld toegankelijk zijn via HTTP of HTTPS. Zie [Inleiding tot Azure queues](storage-queues-introduction.md)voor gedetailleerde informatie. In dit artikel wordt beschreven hoe algemene wachtrij opslag bewerkingen worden uitgevoerd. Procedures voor:
+Azure Queue-opslag is een service voor het opslaan van grote aantallen berichten die vanaf elke locatie in de wereld toegankelijk zijn via HTTP of HTTPS. Zie [Inleiding tot Azure queues](storage-queues-introduction.md)voor gedetailleerde informatie. In dit artikel wordt beschreven hoe algemene wachtrij opslag bewerkingen worden uitgevoerd. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 >
@@ -78,7 +78,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>Een wachtrij maken
 
-In het volgende voor beeld wordt eerst een verbinding tot stand gebracht met Azure Storage met behulp van de context van het opslag account, die de naam van het opslag account en de bijbehorende toegangs sleutel bevat. Vervolgens wordt de cmdlet [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) aangeroepen om een wachtrij te maken met de naam queuenaam.
+In het volgende voor beeld wordt eerst een verbinding tot stand gebracht met Azure Storage met behulp van de context van het opslag account, die de naam van het opslag account en de bijbehorende toegangs sleutel bevat. Vervolgens wordt de cmdlet [New-AzStorageQueue](/powershell/module/az.storage/New-AzStorageQueue) aangeroepen om een wachtrij te maken met de naam ' howtoqueue '.
 
 ```powershell
 $queueName = "howtoqueue"
@@ -128,7 +128,7 @@ Als u de [Azure Storage Explorer](https://storageexplorer.com)gebruikt, kunt u v
 
 Berichten worden in de best mogelijke eerst-try-volg orde gelezen. Dit is niet gegarandeerd. Wanneer u het bericht uit de wachtrij leest, wordt het onzichtbaar voor alle andere processen die in de wachtrij kijken. Dit zorgt ervoor dat als uw code het bericht niet kan verwerken vanwege een hardware-of software fout, een ander exemplaar van uw code hetzelfde bericht kan ophalen en probeer het opnieuw.  
 
-Deze **time-out voor onzichtbaarheid** bepaalt hoe lang het bericht onzichtbaar blijft voordat het weer beschikbaar is voor verwerking. De standaardwaarde is 30 seconden.
+Deze **time-out voor onzichtbaarheid** bepaalt hoe lang het bericht onzichtbaar blijft voordat het weer beschikbaar is voor verwerking. De standaard waarde is 30 seconden.
 
 Uw code leest een bericht uit de wachtrij in twee stappen. Wanneer u de methode [micro soft. Azure. storage. Queue. CloudQueue. GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) aanroept, wordt het volgende bericht in de wachtrij weer gegeven. Een bericht dat wordt geretourneerd door **GetMessage**, wordt onzichtbaar voor andere codes die berichten lezen uit deze wachtrij. Als u het bericht uit de wachtrij wilt verwijderen, roept u de methode [micro soft. Azure. storage. Queue. CloudQueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) aan.
 

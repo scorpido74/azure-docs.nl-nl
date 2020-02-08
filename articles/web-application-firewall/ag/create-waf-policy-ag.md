@@ -5,21 +5,18 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/19/2019
+ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3f7d213aed82d1cb94bb96b9e212d3b255851afd
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171225"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086977"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Een firewall beleid voor webtoepassingen voor Application Gateway maken
 
 Als u een WAF-beleid aan listeners koppelt, kunnen meerdere sites achter één WAF worden beveiligd door verschillende beleids regels. Als er bijvoorbeeld vijf sites achter uw WAF zijn, kunt u vijf afzonderlijke WAF-beleids regels (één voor elke listener) hebben om de uitsluitingen, aangepaste regels en beheerde Rules voor één site aan te passen zonder dat dit van invloed is op de andere. Als u een beleid wilt Toep assen op alle sites, kunt u het beleid alleen koppelen aan de Application Gateway, in plaats van de afzonderlijke listeners, om het globaal van toepassing te laten zijn. Beleids regels kunnen ook worden toegepast op een op een pad gebaseerde routerings regel. 
-
-   > [!NOTE]
-   > WAF-beleid per site is beschikbaar in Zuid-Centraal VS en Europa-noord. Als u toegang wilt krijgen tot de portals, gebruikt u [deze koppeling](https://aka.ms/AppgwwafWithAllFeatureFlags) totdat deze Live voor iedereen actief is.  
 
 U kunt zoveel beleids regels maken als u wilt. Als u een beleid hebt gemaakt, moet dit zijn gekoppeld aan een Application Gateway om van kracht te worden, maar dit kan worden gekoppeld aan een combi natie van toepassings gateways en listeners. 
 
@@ -42,7 +39,7 @@ Maak eerst een Basic-WAF-beleid met een beheerde standaard regelset (DRS) met be
    |Beleid voor     |Regionale WAF (Application Gateway)|
    |Abonnement     |De naam van uw abonnement selecteren|
    |Resourcegroep     |Uw resourcegroep selecteren|
-   |Beleids naam     |Typ een unieke naam voor uw WAF-beleid.|
+   |Naam van beleid     |Typ een unieke naam voor uw WAF-beleid.|
 3. Voer een van de volgende instellingen in op het tabblad **koppeling** en selecteer vervolgens **toevoegen**:
 
    |Instelling  |Waarde  |
