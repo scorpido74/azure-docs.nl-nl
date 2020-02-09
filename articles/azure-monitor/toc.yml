@@ -4,8 +4,6 @@
   items:
     - name: Wat is Azure Monitor?
       href: overview.md
-    - name: Terminologiewijzigingen
-      href: terminology.md
     - name: Veelgestelde vragen
       href: faq.md
     - name: Wat is nieuw?
@@ -1141,6 +1139,8 @@
       items:
         - name: Schema
           href: platform/diagnostics-extension-schema-1dot3.md
+    - name: Terminologiewijzigingen
+      href: terminology.md
     - name: Application Insights
       items:
         - name: Afhankelijkheden automatisch verzamelen

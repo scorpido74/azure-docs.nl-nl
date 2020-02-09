@@ -463,6 +463,8 @@
                       href: saas-multitenantdb-schema-management.md
                     - name: ETL voor analyse
                       href: saas-multitenantdb-tenant-analytics.md
+        - name: Verhogingen van quotum aanvragen
+          href: quota-increase-request.md
 - name: SQL-databases
   items:
     - name: Documentatie over SQL-databases
