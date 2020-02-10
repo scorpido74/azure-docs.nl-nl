@@ -64,7 +64,7 @@
           href: set-up-customize-master-image.md
         - name: Office installeren op een master-VHD-installatiekopie
           href: install-office-on-wvd-master-image.md
-    - name: Schaalsessie host dynamisch
+    - name: Sessiehosts automatisch schalen
       href: set-up-scaling-script.md
     - name: Feed aanpassen
       href: customize-feed-for-virtual-desktop-users.md

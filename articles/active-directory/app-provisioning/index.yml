@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: Documentatie voor toepassings- en HR-inrichting
+summary: Met app-inrichting van Azure Active Directory kunt u automatisch gebruikersidentiteiten maken en beheren in uw cloud-apps (SaaS). Azure AD biedt ook inrichting met cloud-toepassingen voor HR. Leer aan de hand van onze snelstartgidsen, zelfstudies en richtlijnen hoe u app- en HR-inrichting in de cloud beheert en implementeert.
+metadata:
+  title: Documentatie voor toepassingsinrichting
+  description: Met app-inrichting van Azure Active Directory kunt u automatisch gebruikersidentiteiten maken en beheren in uw cloud-apps (SaaS). Azure AD biedt ook inrichting met cloud-toepassingen voor HR. Leer aan de hand van onze snelstartgidsen, zelfstudies en richtlijnen hoe u app- en HR-inrichting in de cloud beheert en implementeert.
+  ms.service: active-directory
+  ms.subservice: app-mgmt
+  ms.workload: identity
+  ms.topic: landing-page
+  ms.date: 02/06/2020
+  author: msmimart
+  ms.author: mimart
+  manager: celested
+  ms.openlocfilehash: 02d9ee235de798e0c6095e0cbf60c08eabec53cd
+  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 02/07/2020
+  ms.locfileid: "77065498"
+landingContent:
+- title: Gebruikers en groepen inrichten in een cloud-app
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is toepassingsinrichting?
+      url: user-provisioning.md
+    - text: Hoe inrichting werkt
+      url: how-provisioning-works.md
+  - linkListType: tutorial
+    links:
+    - text: Inrichting voor SAP Cloud Platform Identity Authentication
+      url: /azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Inrichting voor Oracle Fusion ERP
+      url: /azure/active-directory/saas-apps/oracle-fusion-erp-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Inrichting voor Atlassian Cloud
+      url: /azure/active-directory/saas-apps/atlassian-cloud-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+  - linkListType: how-to-guide
+    links:
+    - text: Een galerie-app toevoegen? Inrichting in de app configureren
+      url: configure-automatic-user-provisioning-portal.md
+    - text: Kenmerktoewijzingen aanpassen
+      url: customize-application-attributes.md
+    - text: Bereikfilters toevoegen
+      url: define-conditional-rules-for-provisioning-user-accounts.md
+- title: Een app ontwikkelen met inrichting met behulp van SCIM
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Inrichten met SCIM (Identity Standards-blog)
+      url: https://techcommunity.microsoft.com/t5/identity-standards-blog/provisioning-with-scim-getting-started/ba-p/880010
+  - linkListType: how-to-guide
+    links:
+    - text: Ontwikkelt u een app? SCIM gebruiken voor automatische inrichting
+      url: use-scim-to-provision-users-and-groups.md
+- title: Inkomende HR-inrichting in de cloud beheren
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Implementatie van een HR-gebruikersinrichting in de cloud plannen
+      url: plan-cloud-hr-provision.md
+  - linkListType: tutorial
+    links:
+    - text: Workday-inrichting
+      url: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: SAP SuccessFactors-inrichting
+      url: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context

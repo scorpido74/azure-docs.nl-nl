@@ -1,0 +1,107 @@
+- name: Documentatie voor toepassings- en HR-inrichting
+  href: index.yml
+- name: Overzicht
+  expanded: true
+  items:
+    - name: Wat is toepassingsinrichting?
+      href: user-provisioning.md
+- name: Zelfstudies
+  items:
+    - name: G Suite
+      href: /azure/active-directory/saas-apps/google-apps-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: ServiceNow
+      href: /azure/active-directory/saas-apps/servicenow-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Amazon Web Services (AWS) - Inrichten van rollen
+      href: '/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-ont?context=azure/active-directory/app-provisioning/context/app-provisioning-context'
+    - name: Workday
+      href: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: SAP SuccessFactors
+      href: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Alle geïntegreerde galerie-apps
+      href: /azure/active-directory/saas-apps
+- name: Concepten
+  expanded: true
+  items:
+    - name: Hoe toepassingsinrichting werkt
+      href: how-provisioning-works.md
+    - name: Implementatie van een toepassinginrichting plannen
+      href: plan-auto-user-provisioning.md
+    - name: Cloud-implementatie van een HR-inrichting plannen
+      href: plan-cloud-hr-provision.md
+- name: Instructiegidsen
+  expanded: true
+  items:
+    - name: Inrichting configureren voor een galerie-app
+      href: configure-automatic-user-provisioning-portal.md
+    - name: De kenmerktoewijzingen bewerken
+      items:
+        - name: Kenmerktoewijzingen aanpassen
+          href: customize-application-attributes.md
+        - name: Expressies schrijven voor kenmerktoewijzingen
+          href: functions-for-customizing-application-data.md
+    - name: Gebruikers en groepen opnemen of uitsluiten in bereik
+      items:
+        - name: Bereik van gebruikers of groepen die moeten worden ingericht
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: Verwijdering overslaan voor gebruikers buiten het bereik
+          href: skip-out-of-scope-deletions.md
+    - name: Inrichting bewaken en erover rapporteren
+      items:
+        - name: Inrichtingsstatus en prestaties bewaken
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: Rapport over app-inrichting
+          href: check-status-user-account-provisioning.md
+        - name: Uw configuratie exporteren en importeren
+          href: export-import-provisioning-configuration.md
+    - name: Problemen met toepassingsinrichting oplossen
+      items:
+        - name: Problemen met app-inrichting oplossen
+          href: application-provisioning-config-problem.md
+        - name: Quarantinestatus
+          href: application-provisioning-quarantine-status.md
+        - name: Autorisatieprobleem (kan beheerdersreferenties niet opslaan)
+          href: application-provisioning-config-problem-storage-limit.md
+        - name: Gebruikers zijn niet ingericht
+          href: application-provisioning-config-problem-no-users-provisioned.md
+        - name: Verkeerde gebruikers ingericht
+          href: application-provisioning-config-problem-wrong-users-provisioned.md
+        - name: Bronkenmerk ontbreekt
+          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: Inrichtingstaak is traag
+          href: application-provisioning-when-will-provisioning-finish.md
+        - name: Inrichtingslogboeken
+          href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Een SCIM-eindpunt bouwen en inrichting configureren
+      href: use-scim-to-provision-users-and-groups.md
+    - name: Configuratie automatiseren met behulp van MS Graph
+      href: application-provisioning-configure-api.md
+- name: Naslaginformatie
+  items:
+    - name: Een inrichtingsmethode kiezen
+      href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: HR-inrichting in de cloud
+      items:
+        - name: Verwijzing naar SuccessFactors-kenmerken
+          href: sap-successfactors-attribute-reference.md
+        - name: Verwijzing naar Workday-kenmerk
+          href: workday-attribute-reference.md
+    - name: Azure AD Connect-inrichtingsagent
+      items:
+        - name: Versiegeschiedenis van de inrichtingsagent
+          href: provisioning-agent-release-version-history.md
+- name: Resources
+  items:
+    - name: Ondersteunings- en Help-opties voor ontwikkelaars
+      href: /azure/active-directory/develop/developer-support-help-options
+    - name: Azure-feedbackforum
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN-forum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Prijzen
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: Service-updates
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Video's
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
