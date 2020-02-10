@@ -137,8 +137,6 @@
               href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
         - name: Toewijzing van cloudservice is mislukt
           href: cloud-services-allocation-failures.md
-        - name: Toepassingen ondersteunen TLS 1.2 niet
-          href: applications-dont-support-TLS-1-2.md
         - name: Veelvoorkomende oorzaken voor het recyclen van cloudservicerollen
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
         - name: Toepassing biedt geen ondersteuning voor TLS 1.2
