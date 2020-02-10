@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor MABS & System Center DPM
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning wanneer u Microsoft Azure Backup Server (MABS) of System Center DPM gebruikt om back-ups te maken van on-premises en Azure VM-resources.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f9ee31525f2ee5a19aebe0a9258dff3ecfdcbb92
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 211a7e39dc9cda9e4bd96e3a66924b2195524be7
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841164"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111461"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Ondersteunings matrix voor back-up met Microsoft Azure Backup Server of System Center DPM
 
@@ -24,7 +24,7 @@ MABS is gebaseerd op System Center DPM en biedt vergelijk bare functionaliteit m
 
 - Er is geen System Center-licentie vereist om MABS uit te voeren.
 - Voor zowel MABS als DPM biedt Azure lange termijn back-upopslag. Daarnaast kunt u met DPM back-ups maken van gegevens voor lange termijn opslag op tape. MABS biedt deze functionaliteit niet.
-- U kunt een back-up maken van een primaire DPM-server met een secundaire DPM-server. De secundaire server beveiligt de database van de primaire server en de gegevensbronreplica's die op de primaire server zijn opgeslagen. Als de primaire server mislukt, kan de secundaire server werkbelastingen blijven beveiligen die door de primaire server worden beveiligd, totdat de primaire server weer beschikbaar is.  MABS biedt deze functionaliteit niet.
+- U kunt een back-up maken van een primaire DPM-server met een secundaire DPM-server. De secundaire server beveiligt de data base van de primaire server en de gegevens bron replica's die op de primaire server zijn opgeslagen. Als de primaire server uitvalt, kan de secundaire server werk belastingen blijven beveiligen die door de primaire server worden beveiligd, totdat de primaire server weer beschikbaar is.  MABS biedt deze functionaliteit niet.
 
 U kunt MABS downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=57520). Het kan on-premises of op een virtuele machine van Azure worden uitgevoerd.
 
@@ -60,7 +60,7 @@ DPM/MABS kan worden geïmplementeerd, zoals in de volgende tabel wordt samenvatt
 
 **Implementatie** | **Ondersteuning** | **Details**
 --- | --- | ---
-**On-premises geïmplementeerd** | Fysieke server<br/><br/>Hyper-V VM<br/><br/> VMware-VM | Als DPM/MABS is geïnstalleerd als een VMware-VM, wordt alleen een back-up gemaakt van virtuele VMware-machines en workloads die worden uitgevoerd op deze Vm's.
+**On-premises geïmplementeerd** | Fysieke server<br/><br/>Virtuele Hyper-V-machine<br/><br/> VMware-VM | Als DPM/MABS is geïnstalleerd als een VMware-VM, wordt alleen een back-up gemaakt van virtuele VMware-machines en workloads die worden uitgevoerd op deze Vm's.
 **Geïmplementeerd als een Azure Stack VM** | Alleen MABS | DPM kan niet worden gebruikt om back-ups te maken van Azure Stack Vm's.
 **Geïmplementeerd als een virtuele machine van Azure** | Beveiligt Azure-Vm's en-workloads die worden uitgevoerd op deze Vm's | DPM-MABS die in Azure worden uitgevoerd, kunnen geen back-ups maken van on-premises machines.
 
@@ -75,12 +75,15 @@ Azure Backup kunt een back-up maken van DPM-MABS-exemplaren waarop een van de vo
 **On-premises MABS** | Ondersteunde 64-bits besturings systemen:<br/><br/> MABS v3 en hoger: Windows Server 2019 (Standard, Data Center, Essentials). <br/><br/> MABS v2 en hoger: Windows Server 2016 (Standard, Data Center, Essentials).<br/><br/> Alle MABS-versies: Windows Server 2012 R2.<br/><br/>Alle MABS-versies: Windows Storage Server 2012 R2.
 **On-premises DPM** | Fysieke server/Hyper-V-VM: System Center 2012 SP1 of hoger.<br/><br/> VMware VM: System Center 2012 R2 met Update 5 of hoger.
 
+>[!NOTE]
+>Het installeren van Azure Backup Server wordt niet ondersteund op Windows Server Core-of Microsoft Hyper-V-Server.
+
 ## <a name="management-support"></a>Beheer ondersteuning
 
-**Probleem** | **Details**
+**Name** | **Details**
 --- | ---
 **Installatie** | Installeer DPM-MABS op een computer met één doel.<br/><br/> Installeer DPM/MABS niet op een domein controller, op een computer met de installatie van de functie toepassings server op een computer waarop micro soft Exchange Server of System Center Operations Manager, of op een cluster knooppunt.<br/><br/> [Controleer alle DPM-systeem vereisten](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
-**Domein** | DPM/MABS moet lid zijn van een domein. Installeer eerst en voeg vervolgens DPM-MABS toe aan een domein. Het verplaatsen van DPM-MABS naar een nieuw domein na implementatie wordt niet ondersteund.
+**Domeinen** | DPM/MABS moet lid zijn van een domein. Installeer eerst en voeg vervolgens DPM-MABS toe aan een domein. Het verplaatsen van DPM-MABS naar een nieuw domein na implementatie wordt niet ondersteund.
 **Storage** | Moderne back-upopslag (MBS) wordt ondersteund vanuit DPM 2016/MABS v2 en hoger. Het is niet beschikbaar voor MABS v1.
 **MABS-upgrade** | U kunt MABS v3 rechtstreeks installeren of een upgrade uitvoeren naar MABS v3 vanuit MABS v2. [Meer informatie](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **MABS verplaatsen** | Het is niet mogelijk om MABS naar een nieuwe server te verplaatsen terwijl de opslag wordt behouden als u MBS gebruikt.<br/><br/> De server moet dezelfde naam hebben als de oorspronkelijke. U kunt de naam niet wijzigen als u dezelfde opslag groep wilt bewaren en dezelfde MABS-Data Base wilt gebruiken om gegevens herstel punten op te slaan.<br/><br/> U hebt een back-up van de MABS-data base nodig, omdat u deze moet herstellen.
@@ -133,7 +136,7 @@ Gegevens waarvan een back-up is gemaakt naar DPM/MABS, worden opgeslagen op de l
 
 **Storage** | **Details**
 --- | ---
-**MBS** | Moderne back-upopslag (MBS) wordt ondersteund vanuit DPM 2016/MABS v2 en hoger. Het is niet beschikbaar voor MABS v1.
+**MB'S** | Moderne back-upopslag (MBS) wordt ondersteund vanuit DPM 2016/MABS v2 en hoger. Het is niet beschikbaar voor MABS v1.
 **MABS-opslag op Azure VM** | Gegevens worden opgeslagen op Azure-schijven die zijn gekoppeld aan de DPM/MABS-VM en die worden beheerd in DPM/MABS. Het aantal schijven dat kan worden gebruikt voor de DPM/MABS-opslag groep wordt beperkt door de grootte van de virtuele machine.<br/><br/> A2 VM: 4 schijven; A3 VM: 8 schijven; A4 VM: 16 schijven, met een maximale grootte van 1 TB voor elke schijf. Hiermee bepaalt u de totale beschik bare back-upopslaggroep.<br/><br/> De hoeveelheid gegevens waarvan u een back-up kunt maken, is afhankelijk van het aantal en de grootte van de gekoppelde schijven.
 **MABS voor het bewaren van gegevens op Azure VM** | We raden u aan gegevens voor één dag op de DPM-MABS Azure-schijf te bewaren en een back-up te maken van DPM/MABS naar de kluis voor een langere Bewaar periode. Zo kunt u een grotere hoeveelheid gegevens beveiligen door deze naar Azure Backup te offloaden.
 

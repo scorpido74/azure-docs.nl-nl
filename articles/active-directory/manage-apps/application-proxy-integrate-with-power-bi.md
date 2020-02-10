@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275509"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111584"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Externe toegang tot Power BI-Mobiel met Azure AD-toepassingsproxy inschakelen
 
@@ -138,9 +138,6 @@ Voordat de Power BI mobiele app verbinding kan maken en toegang kan krijgen tot 
 3. Voer geldige referenties in voor uw gebruiker en selecteer **Aanmelden**. U ziet de elementen van de Reporting Services-server.
 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>Stap 5: intune-beleid voor beheerde apparaten configureren (optioneel)
-
-> [!NOTE]
-> Deze functionaliteit is momenteel alleen beschikbaar op iOS.
 
 U kunt Microsoft Intune gebruiken om de client-apps te beheren die het personeel van uw bedrijf gebruikt. Met intune kunt u gebruikmaken van mogelijkheden zoals gegevens versleuteling en aanvullende toegangs vereisten. Zie intune app Management voor meer informatie over app-beheer via intune. Voer de volgende stappen uit om de Power BI mobiele toepassing in te scha kelen voor gebruik met het intune-beleid.
 

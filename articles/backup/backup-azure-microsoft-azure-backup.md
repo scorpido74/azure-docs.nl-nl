@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: db2bac3464939edc5dec2ee2947faf7a05ad6812
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ff5df19d3e2d42af9a45fbc1b71980cee1cdb8a0
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979866"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111597"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -66,6 +66,8 @@ U kunt de DPM-opslag ontdubbelen met behulp van Windows Server ontdubbeling. Mee
 > * Een computer die een System Center Operations Manager-beheerserver is
 > * Een computer waarop Exchange Server wordt uitgevoerd
 > * Een computer die een knooppunt van een cluster is
+>
+> Het installeren van Azure Backup Server wordt niet ondersteund op Windows Server Core-of Microsoft Hyper-V-Server.
 
 Voeg Azure Backup Server altijd toe aan een domein. Als u van plan bent om de server naar een ander domein te verplaatsen, installeert u Azure Backup Server eerst en voegt u vervolgens de-server toe aan het nieuwe domein. Het verplaatsen van een bestaande Azure Backup Server machine naar een nieuw domein na implementatie wordt *niet ondersteund*.
 
@@ -90,7 +92,7 @@ De instelling voor opslagreplicatie bewerken:
 
 ### <a name="downloading-the-software-package"></a>Het software pakket downloaden
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Als er al een Recovery Services kluis is geopend, gaat u verder met stap 3. Als er geen Recovery Services kluis is geopend, maar wel in de Azure Portal, klikt u in het hoofd menu op **Bladeren**.
 
    * Typ in de lijst met resources **Recovery Services**.
@@ -215,7 +217,7 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de vers ge√
     ![Azure Backup Server PreReq2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Zodra de registratie van de Microsoft Azure Backup-Server is voltooid, wordt de installatie en configuratie van SQL Server en de Azure Backup Server-onderdelen voortgezet. Zodra de installatie van het SQL Server onderdeel is voltooid, worden de Azure Backup Server-onderdelen ge√Ønstalleerd.
 
-    ![Azure Backup Server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
+    ![Azure Backup-server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
 Wanneer de installatie stap is voltooid, worden ook de bureaublad pictogrammen van het product gemaakt. Dubbel klik op het pictogram om het product te starten.
 
@@ -275,7 +277,7 @@ Hier volgen de stappen als u MABS moet verplaatsen naar een nieuwe server, terwi
 
     Als u nieuwe schijven aan de DPM-opslag groep hebt toegevoegd in plaats van de oude te verplaatsen, voert u DPMSYNC-Reallocatereplica uit uit.
 
-## <a name="network-connectivity"></a>Netwerkverbinding
+## <a name="network-connectivity"></a>Netwerk verbinding
 
 Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, gebruikt u de cmdlet ```Get-DPMCloudConnection``` in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet TRUE is, is er verbinding, maar is er geen verbinding.
 
@@ -283,14 +285,14 @@ Op hetzelfde moment moet het Azure-abonnement de status in orde hebben. Als u de
 
 Zodra u de status van de Azure-verbinding en het Azure-abonnement kent, kunt u de onderstaande tabel gebruiken om de gevolgen van de functionaliteit voor back-up/herstel te bepalen.
 
-| Connectiviteits status | Azure-abonnement | Back-up naar Azure | Back-up op schijf maken | Herstellen vanuit Azure | Herstellen uit een schijf |
+| Connectiviteits status | Azure-abonnement | Back-ups maken naar Azure | Back-up op schijf maken | Herstellen vanuit Azure | Herstellen uit een schijf |
 | --- | --- | --- | --- | --- | --- |
 | Verbonden |Actief |Toegestaan |Toegestaan |Toegestaan |Toegestaan |
-| Verbonden |Verlopen |Stopped |Stopped |Toegestaan |Toegestaan |
-| Verbonden |Ongedaan gemaakt |Stopped |Stopped |Gestopt en Azure-herstel punten zijn verwijderd |Stopped |
-| Verbroken Connectiviteit > 15 dagen |Actief |Stopped |Stopped |Toegestaan |Toegestaan |
-| Verbroken Connectiviteit > 15 dagen |Verlopen |Stopped |Stopped |Toegestaan |Toegestaan |
-| Verbroken Connectiviteit > 15 dagen |Ongedaan gemaakt |Stopped |Stopped |Gestopt en Azure-herstel punten zijn verwijderd |Stopped |
+| Verbonden |Verlopen |Gestopt |Gestopt |Toegestaan |Toegestaan |
+| Verbonden |Ongedaan gemaakt |Gestopt |Gestopt |Gestopt en Azure-herstel punten zijn verwijderd |Gestopt |
+| Verbroken Connectiviteit > 15 dagen |Actief |Gestopt |Gestopt |Toegestaan |Toegestaan |
+| Verbroken Connectiviteit > 15 dagen |Verlopen |Gestopt |Gestopt |Toegestaan |Toegestaan |
+| Verbroken Connectiviteit > 15 dagen |Ongedaan gemaakt |Gestopt |Gestopt |Gestopt en Azure-herstel punten zijn verwijderd |Gestopt |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Herstellen van connectiviteits verlies
 

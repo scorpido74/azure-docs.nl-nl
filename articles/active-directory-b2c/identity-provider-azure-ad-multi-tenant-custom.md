@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f7bf9fea1b1e15d1ca24686a84e272dd60ceaf5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 9d8d13ec955867eb574b5f0d782727d6ff8d063a
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061587"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111539"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden voor multi tenant-Azure Active Directory instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -50,6 +50,19 @@ Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt
 1. Selecteer **certificaten & geheimen**en selecteer vervolgens **Nieuw client geheim**.
 1. Voer een **Beschrijving** in voor het geheim, selecteer een verloop en selecteer vervolgens **toevoegen**. Noteer de **waarde** van het geheim voor gebruik in een latere stap.
 
+## <a name="configuring-optional-claims"></a>Optionele claims configureren
+
+Als u de `family_name` en `given_name` claims van Azure AD wilt ophalen, kunt u optionele claims voor uw toepassing configureren in de Azure Portal gebruikers interface of het toepassings manifest. Zie [optionele claims voor uw Azure AD-app bieden](../active-directory/develop/active-directory-optional-claims.md)voor meer informatie.
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Zoek en selecteer **Azure Active Directory**.
+1. Selecteer in de sectie **beheren** de optie **app-registraties**.
+1. Selecteer in de lijst de toepassing waarvoor u de optionele claims wilt configureren.
+1. Selecteer in de sectie **beheren** de optie **token configuratie (preview)** .
+1. Selecteer **optionele claim toevoegen**.
+1. Selecteer het token type dat u wilt configureren.
+1. Selecteer de optionele claims die u wilt toevoegen.
+1. Klik op **Toevoegen**.
+
 ## <a name="create-a-policy-key"></a>Een beleids sleutel maken
 
 U moet de toepassings sleutel opslaan die u hebt gemaakt in uw Azure AD B2C-Tenant.
@@ -63,19 +76,6 @@ U moet de toepassings sleutel opslaan die u hebt gemaakt in uw Azure AD B2C-Tena
 1. Voer in het **geheim**uw client geheim in dat u eerder hebt vastgelegd.
 1. Selecteer `Signature`voor **sleutel gebruik**.
 1. Selecteer **Maken**.
-
-## <a name="configuring-optional-claims"></a>Optionele claims configureren
-
-Als u de `family_name` en `given_name` claims van Azure AD wilt ophalen, kunt u optionele claims voor uw toepassing configureren in de Azure Portal gebruikers interface of het toepassings manifest. Zie [optionele claims voor uw Azure AD-app bieden](../active-directory/develop/active-directory-optional-claims.md)voor meer informatie.
-
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Zoek en selecteer **Azure Active Directory**.
-1. Selecteer in de sectie **beheren** de optie **app-registraties**.
-1. Selecteer in de lijst de toepassing waarvoor u de optionele claims wilt configureren.
-1. Selecteer in de sectie **beheren** de optie **token configuratie (preview)** .
-1. Selecteer **optionele claim toevoegen**.
-1. Selecteer het token type dat u wilt configureren.
-1. Selecteer de optionele claims die u wilt toevoegen.
-1. Klik op **Toevoegen**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 

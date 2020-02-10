@@ -47,6 +47,8 @@
             - name: Azure Monitor voor containers uitschakelen
               href: ../azure-monitor/insights/container-insights-optout-openshift.md
               maintainContext: true
+    - name: Bevoorrechte containers uitvoeren in een Azure Red Hat OpenShift-cluster
+      href: howto-run-privileged-containers.md
 - name: Naslaginformatie
   items:
     - name: CLI voor Azure Red Hat OpenShift

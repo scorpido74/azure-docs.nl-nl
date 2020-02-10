@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: b2f5a9bacf96eb098e307a6a8df3e13cb9d04bd0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513413"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111761"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Een door Azure beheerde identiteit gebruiken in ACR-taken 
 
@@ -84,19 +84,19 @@ U kunt de resource-ID van de identiteit ophalen door de opdracht [AZ Identity sh
 
 ### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. Ken de identiteits machtigingen toe om toegang te krijgen tot andere Azure-resources
 
-Geef, afhankelijk van de vereisten van uw taak, de identiteits machtigingen voor toegang tot andere Azure-resources. Voorbeelden:
+Geef, afhankelijk van de vereisten van uw taak, de identiteits machtigingen voor toegang tot andere Azure-resources. Voorbeelden zijn:
 
 * Wijs de beheerde identiteit een rol toe met pull, push en pull of andere machtigingen voor een doel container register in Azure. Zie [Azure container Registry rollen en machtigingen](container-registry-roles.md)voor een volledige lijst met register rollen. 
 * Wijs de beheerde identiteit een rol toe voor het lezen van geheimen in een Azure-sleutel kluis.
 
 Gebruik de [Azure cli](../role-based-access-control/role-assignments-cli.md) -of andere Azure-hulpprogram ma's om op rollen gebaseerde toegang tot resources te beheren. Voer bijvoorbeeld de opdracht [AZ Role Assignment Create][az-role-assignment-create] uit om de identiteit van een rol toe te wijzen aan de resource. 
 
-In het volgende voor beeld wordt een beheerde identiteit toegewezen om uit een container register te halen. Met de opdracht wordt de *Service-Principal-id* van de identiteit en de *bron-id* van het doel register opgegeven.
+In het volgende voor beeld wordt een beheerde identiteit toegewezen om uit een container register te halen. Met de opdracht wordt de *Principal-id* van de taak identiteit en de *resource-id* van het doel register opgegeven.
 
 
 ```azurecli
 az role assignment create \
-  --assignee <servicePrincipalID> \
+  --assignee <principalID> \
   --scope <registryID> \
   --role acrpull
 ```

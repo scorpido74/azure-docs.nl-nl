@@ -72,6 +72,8 @@
               href: howto-saml-token-encryption.md
             - name: Portals voor eindgebruikers
               href: end-user-experiences.md
+    - name: Zichtbaarheid en beheer van cloud-apps
+      href: cloud-app-security.md
     - name: Toepassingsproxy voor on-premises apps
       items:
         - name: Toepassingsproxy

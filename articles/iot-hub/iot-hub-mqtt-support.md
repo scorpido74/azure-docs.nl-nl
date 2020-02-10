@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: e1559dbab2503ded957b17c0cc6a61a06c53fffc
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 694697be85b61ad2d59a0a4be1ced3581873cb77
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110723"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111749"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Communiceren met uw IoT-hub met behulp van het MQTT-Protocol
 
@@ -175,7 +175,7 @@ Deze opslag plaats bevat:
 
 • LinuxConsoleVS2019: bevat dezelfde code, maar in een VS2019-project gericht WSL (Windows Linux-subsysteem). Met dit project kunt u fouten opsporen in de code die wordt uitgevoerd in Linux stap voor stap van Visual Studio.
 
-**Voor mosquito_pub:**
+**Voor mosquitto_pub:**
 
 • Deze map bevat twee voor beelden van opdrachten die worden gebruikt met mosquitto_pub hulp programma dat wordt meegeleverd door Mosquitto.org.
 

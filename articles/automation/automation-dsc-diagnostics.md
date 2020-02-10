@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fa84b5e87581fad4a7ada5fda074429409d2f8f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bbc9048452c5361306dd05e712090543bb1066ce
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850343"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111525"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Automation status configuratie rapport gegevens door sturen naar Azure Monitor-logboeken
 
@@ -74,9 +74,9 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 
 ## <a name="view-the-state-configuration-logs"></a>De status configuratie logboeken weer geven
 
-Nadat u de integratie met Azure Monitor Logboeken hebt ingesteld voor de configuratie gegevens van de automatiserings status, wordt een knop **Zoeken in Logboeken** weer gegeven op de Blade **DSC-knoop punten** van uw Automation-account. Klik op de knop **Zoeken in Logboeken** om de logboeken voor DSC-knooppunt gegevens weer te geven.
+Nadat u de integratie met Azure Monitor Logboeken hebt ingesteld voor de configuratie gegevens van uw automatisering, kunnen ze worden weer gegeven door **Logboeken** te selecteren in het gedeelte **bewaking** in het linkerdeel venster van de pagina status configuratie (DSC).  
 
-![Knop logboek zoeken](media/automation-dsc-diagnostics/log-search-button.png)
+![Logboeken](media/automation-dsc-diagnostics/automation-dsc-logs-toc-item.png)
 
 De Blade **Zoeken in Logboeken** wordt geopend en u ziet een **DscNodeStatusData** -bewerking voor elk status configuratie knooppunt en een **DscResourceStatusData** -bewerking voor elke [DSC-resource](/powershell/scripting/dsc/resources/resources) met de naam in de knooppunt configuratie die op het knoop punt wordt toegepast.
 
@@ -84,11 +84,14 @@ De bewerking **DscResourceStatusData** bevat fout gegevens voor eventuele DSC-re
 
 Klik op elke bewerking in de lijst om de gegevens voor die bewerking weer te geven.
 
-U kunt de logboeken ook weer geven door in Azure Monitor logboeken te zoeken.
-Zie [gegevens zoeken met Zoek opdrachten in Logboeken](../log-analytics/log-analytics-log-searches.md).
-Typ de volgende query om uw logboeken met status configuratie te vinden: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
+U kunt de logboeken ook weer geven door in Azure Monitor logboeken te zoeken. Zie [gegevens zoeken met Zoek opdrachten in Logboeken](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview). Typ de volgende query om de logboeken voor de status configuratie te vinden.
 
-U kunt de query ook beperken op basis van de naam van de bewerking. Bijvoorbeeld: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
+```
+AzureDiagnostics
+| where Category == 'DscNodeStatus' 
+| where OperationName contains 'DSCNodeStatusData'
+| where ResultType != 'Compliant'
+```
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>Een e-mail verzenden wanneer een controle op naleving van de status configuratie mislukt
 
@@ -136,9 +139,9 @@ Diagnostische gegevens van Azure Automation twee categorieën records maken in A
 | DscReportStatus |Of de nalevings controle is uitgevoerd. |
 | ConfigurationMode | Hoe de configuratie wordt toegepast op het knoop punt. Mogelijke waarden zijn __"ApplyOnly"__ , __"ApplyandMonitior"__ en __"ApplyandAutoCorrect"__ . <ul><li>__ApplyOnly__: DSC past de configuratie toe en doet niets verder tenzij een nieuwe configuratie wordt gepusht naar het doel knooppunt of wanneer een nieuwe configuratie wordt opgehaald van een server. Na de eerste toepassing van een nieuwe configuratie controleert DSC niet op een eerder geconfigureerde status. DSC probeert de configuratie toe te passen totdat deze is voltooid voordat __ApplyOnly__ van kracht worden. </li><li> __ApplyAndMonitor__: dit is de standaard waarde. De LCM past nieuwe configuraties toe. Als er na de eerste toepassing van een nieuwe configuratie het doel knooppunt van de gewenste status is, wordt de discrepantie in de logboeken door DSC gerapporteerd. DSC probeert de configuratie toe te passen totdat deze is voltooid voordat __ApplyAndMonitor__ van kracht worden.</li><li>__ApplyAndAutoCorrect__: DSC past nieuwe configuraties toe. Als er na de eerste toepassing van een nieuwe configuratie het doel knooppunt van de gewenste status is, wordt de discrepantie in de logboeken door DSC gerapporteerd en wordt de huidige configuratie opnieuw toegepast.</li></ul> |
 | HostName_s | De naam van het beheerde knoop punt. |
-| IPAddress | Het IPv4-adres van het beheerde knoop punt. |
+| IP-adres | Het IPv4-adres van het beheerde knoop punt. |
 | Category | DscNodeStatus |
-| Bron | De naam van het Azure Automation-account. |
+| Resource | De naam van het Azure Automation-account. |
 | Tenant_g | GUID waarmee de Tenant voor de oproepende functie wordt geïdentificeerd. |
 | NodeId_g |GUID waarmee het beheerde knoop punt wordt aangeduid. |
 | DscReportId_g |GUID waarmee het rapport wordt geïdentificeerd. |
@@ -149,11 +152,11 @@ Diagnostische gegevens van Azure Automation twee categorieën records maken in A
 | SourceSystem | Hoe Azure Monitor Logboeken de gegevens verzamelen. Altijd *Azure* voor Azure Diagnostics. |
 | ResourceId |Hiermee geeft u het Azure Automation-account. |
 | ResultDescription | De beschrijving voor deze bewerking. |
-| SubscriptionId | De id (GUID) van het Azure-abonnement voor het Automation-account. |
+| SubscriptionId | De ID (GUID) van het Azure-abonnement voor het Automation-account. |
 | ResourceGroup | De naam van de resource groep voor het Automation-account. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |GUID die de correlatie-id van het nalevings rapport is. |
+| CorrelationId |GUID die de correlatie-ID van het nalevings rapport is. |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
@@ -164,7 +167,7 @@ Diagnostische gegevens van Azure Automation twee categorieën records maken in A
 | ResultType |Hiermee wordt aangegeven of de resource compatibel is. |
 | NodeName_s |De naam van het beheerde knoop punt. |
 | Category | DscNodeStatus |
-| Bron | De naam van het Azure Automation-account. |
+| Resource | De naam van het Azure Automation-account. |
 | Tenant_g | GUID waarmee de Tenant voor de oproepende functie wordt geïdentificeerd. |
 | NodeId_g |GUID waarmee het beheerde knoop punt wordt aangeduid. |
 | DscReportId_g |GUID waarmee het rapport wordt geïdentificeerd. |
@@ -180,11 +183,11 @@ Diagnostische gegevens van Azure Automation twee categorieën records maken in A
 | SourceSystem | Hoe Azure Monitor Logboeken de gegevens verzamelen. Altijd *Azure* voor Azure Diagnostics. |
 | ResourceId |Hiermee geeft u het Azure Automation-account. |
 | ResultDescription | De beschrijving voor deze bewerking. |
-| SubscriptionId | De id (GUID) van het Azure-abonnement voor het Automation-account. |
+| SubscriptionId | De ID (GUID) van het Azure-abonnement voor het Automation-account. |
 | ResourceGroup | De naam van de resource groep voor het Automation-account. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
-| CorrelationId |GUID die de correlatie-id van het nalevings rapport is. |
+| CorrelationId |GUID die de correlatie-ID van het nalevings rapport is. |
 
 ## <a name="summary"></a>Samenvatting
 

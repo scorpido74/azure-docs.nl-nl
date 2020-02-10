@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: c9c47506e61c665da459558735a3afc93e8b9806
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 11607ffe03d5d2519df1b1199a741dfb55aff2f4
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659777"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111619"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure CNI-netwerken configureren in azure Kubernetes service (AKS)
 
@@ -52,9 +52,9 @@ Het IP-adres schema voor een AKS-cluster bestaat uit een virtueel netwerk, ten m
 | --------- | ------------- |
 | Virtueel netwerk | Het virtuele netwerk van Azure kan zo groot zijn als/8, maar is beperkt tot 65.536 geconfigureerde IP-adressen. |
 | Subnet | Moet groot genoeg zijn voor de knoop punten, peulen en alle Kubernetes en Azure-resources die in uw cluster kunnen worden ingericht. Als u bijvoorbeeld een interne Azure Load Balancer implementeert, worden de front-end Ip's toegewezen vanuit het subnet van het cluster, niet open bare Ip's. De grootte van het subnet moet ook worden toegepast op upgrades van het account of voor toekomstige schaal behoeften.<p />De *minimale* subnet grootte berekenen, inclusief een extra knoop punt voor upgrade bewerkingen: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Voor beeld voor een 50-knooppunt cluster: `(51) + (51  * 30 (default)) = 1,581` (/21 of groter)<p/>Voor beeld voor een cluster met een 50-knoop punt dat daarnaast voorziet in het opschalen van een extra 10 knoop punten: `(61) + (61 * 30 (default)) = 1,891` (/21 of groter)<p>Als u tijdens het maken van het cluster niet het maximum aantal peulen per knoop punt opgeeft, wordt het maximum aantal per knoop punt ingesteld op *30*. Het minimum aantal vereiste IP-adressen is gebaseerd op die waarde. Als u de minimum vereisten voor IP-adressen op een andere maximum waarde berekent, raadpleegt u [het maximum aantal per knoop punt configureren](#configure-maximum---new-clusters) om deze waarde in te stellen wanneer u uw cluster implementeert. |
-| Adres bereik van de Kubernetes-service | Dit bereik mag niet worden gebruikt door elk netwerk element op of er is geen verbinding met dit virtuele netwerk. Het service adres CIDR moet kleiner zijn dan/12. |
+| Adres bereik van de Kubernetes-service | Dit bereik mag niet worden gebruikt door elk netwerk element op of er is geen verbinding met dit virtuele netwerk. Het service adres CIDR moet kleiner zijn dan/12. U kunt dit bereik opnieuw gebruiken in verschillende AKS-clusters. |
 | IP-adres van Kubernetes DNS-service | IP-adres binnen het adres bereik van de Kubernetes-service dat wordt gebruikt door de Cluster-service detectie (uitvoeren-DNS). Gebruik niet het eerste IP-adres in uw adres bereik, zoals 1. Het eerste adres in het bereik van uw subnet wordt gebruikt voor het adres *kubernetes. default. SVC. cluster. local* . |
-| Docker Bridge-adres | Het netwerk adres van docker-brug vertegenwoordigt het standaard *docker0* -brug netwerk adres dat aanwezig is in alle docker-installaties. Hoewel de *docker0* -brug niet wordt gebruikt door aks-clusters of de peul zelf, moet u dit adres instellen om te blijven ondersteuning bieden voor scenario's zoals *docker build* in het AKS-cluster. U moet een CIDR voor het netwerk adres van de docker-brug selecteren, omdat in een andere docker automatisch een subnet wordt gekozen dat strijdig zou kunnen zijn met andere CIDR. U moet een adres ruimte kiezen die niet in conflict is met de rest van de CIDR-Services in uw netwerken, met inbegrip van de service-CIDR van het cluster en pod CIDR. Standaard waarde van 172.17.0.1/16. |
+| Docker Bridge-adres | Het netwerk adres van docker-brug vertegenwoordigt het standaard *docker0* -brug netwerk adres dat aanwezig is in alle docker-installaties. Hoewel de *docker0* -brug niet wordt gebruikt door aks-clusters of de peul zelf, moet u dit adres instellen om te blijven ondersteuning bieden voor scenario's zoals *docker build* in het AKS-cluster. U moet een CIDR voor het netwerk adres van de docker-brug selecteren, omdat in een andere docker automatisch een subnet wordt gekozen dat strijdig zou kunnen zijn met andere CIDR. U moet een adres ruimte kiezen die niet in conflict is met de rest van de CIDR-Services in uw netwerken, met inbegrip van de service-CIDR van het cluster en pod CIDR. Standaard waarde van 172.17.0.1/16. U kunt dit bereik opnieuw gebruiken in verschillende AKS-clusters. |
 
 ## <a name="maximum-pods-per-node"></a>Maxi maal aantal peulen per knoop punt
 
@@ -62,7 +62,7 @@ Het maximum aantal peulen per knoop punt in een AKS-cluster is 250. Het *maximum
 
 | Implementatie methode | Kubenet standaard | Standaard instelling van Azure CNI | Configureerbaar tijdens implementatie |
 | -- | :--: | :--: | -- |
-| Azure-CLI | 110 | 30 | Ja (Maxi maal 250) |
+| Azure CLI | 110 | 30 | Ja (Maxi maal 250) |
 | Resource Manager-sjabloon | 110 | 30 | Ja (Maxi maal 250) |
 | Portal | 110 | 30 | Nee |
 
@@ -72,7 +72,7 @@ U kunt het maximum aantal veroudering per knoop punt *alleen configureren tijden
 
 Een minimum waarde voor het maximale aantal peulen per knoop punt wordt afgedwongen om ruimte te garanderen voor het systeem van cruciaal belang voor de cluster status. De minimum waarde die kan worden ingesteld voor een maximum van peulen per knoop punt is 10 als en alleen als de configuratie van elke knooppunt groep ruimte heeft voor mini maal 30%. Voor het instellen van het maximale aantal peulen per knoop punt op het minimum van 10 moet elke afzonderlijke knooppunt groep mini maal 3 knoop punten hebben. Deze vereiste geldt ook voor elke nieuwe knooppunt groep die wordt gemaakt, dus als 10 is gedefinieerd als het maximum aantal peulen per knoop punt elke volgende knooppunt groep die wordt toegevoegd, moet ten minste drie knoop punten hebben.
 
-| Networking | Minimum | Maximum |
+| Netwerken | Minimum | Maximum |
 | -- | :--: | :--: |
 | Azure-CNI | 10 | 250 |
 | Kubenet | 10 | 110 |

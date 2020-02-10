@@ -1087,9 +1087,20 @@
             - name: Passthrough van Azure Data Lake Storage-referenties inschakelen
               href: /azure/databricks/administration-guide/access-control/credential-passthrough
               maintainContext: true
-        - name: Werkruimteopslag beheren
-          href: /azure/databricks/administration-guide/workspace-storage/storage
-          maintainContext: true
+        - name: Werkruimteobjecten en -gedrag beheren
+          items:
+            - name: Werkruimten beheren - overzicht
+              href: /azure/databricks/administration-guide/workspace/index
+              maintainContext: true
+            - name: Werkruimteopslag beheren
+              href: /azure/databricks/administration-guide/workspace/storage
+              maintainContext: true
+            - name: Beveiligingskopteksten voor werkruimten beheren
+              href: /azure/databricks/administration-guide/workspace/security
+              maintainContext: true
+            - name: Toegang tot notebookfuncties beheren
+              href: /azure/databricks/administration-guide/workspace/notebooks
+              maintainContext: true
         - name: Clusterconfiguratie inschakelen
           items:
             - name: Overzicht van clusterconfiguratie
@@ -1609,6 +1620,9 @@
             - name: Opmerkingen bij de release van het platform
               href: /azure/databricks/release-notes/product/index
               maintainContext: true
+            - name: Februari 2020
+              href: /azure/databricks/release-notes/product/2020/february
+              maintainContext: true
             - name: Januari 2020
               href: /azure/databricks/release-notes/product/2020/january
               maintainContext: true
@@ -1757,9 +1771,6 @@
                 - name: Databricks Runtime 5.2 ML
                   href: /azure/databricks/release-notes/runtime/5.2ml
                   maintainContext: true
-                - name: Databricks Runtime 3.5
-                  href: /azure/databricks/release-notes/runtime/3.5
-                  maintainContext: true
             - name: Niet ondersteund
               items:
                 - name: Niet-ondersteunde runtimereleases
@@ -1792,6 +1803,9 @@
                 - name: Databricks Runtime 4.0
                   href: /azure/databricks/release-notes/runtime/4.0
                   maintainContext: true
+                - name: Databricks Runtime 3.5 LTS
+                  href: /azure/databricks/release-notes/runtime/3.5
+                  maintainContext: true
                 - name: Databricks Runtime 3.4
                   href: /azure/databricks/release-notes/runtime/3.4
                   maintainContext: true
@@ -1803,6 +1817,9 @@
               maintainContext: true
         - name: Releasetypen
           href: /azure/databricks/release-notes/release-types
+          maintainContext: true
+        - name: Statuspagina van Azure Databricks
+          href: /azure/databricks/status
           maintainContext: true
     - name: Gids voor R-ontwikkelaars
       href: /azure/machine-learning/r-developers-guide
