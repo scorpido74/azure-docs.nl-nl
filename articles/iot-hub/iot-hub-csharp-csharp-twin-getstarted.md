@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: c07b110f0d4c31713ab432b5b5e337f3b69dfc55
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 426430c075cfcb084cfe3238ebd83a19e909369b
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147719"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110764"
 ---
 # <a name="get-started-with-device-twins-net"></a>Aan de slag met Device apparaatdubbels (.NET)
 
@@ -37,6 +37,8 @@ In deze zelf studie maakt u deze .NET-console-apps:
 * Visual Studio.
 
 * Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
+
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -70,13 +72,13 @@ In deze sectie maakt u een .NET-console-app met C#, waarmee de meta gegevens van
 
    Met deze stap wordt een verwijzing naar het [Azure IOT Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
+1. Voeg aan het begin van het bestand `using`Program.cs**de volgende**-instructies toe:
 
     ```csharp  
     using Microsoft.Azure.Devices;
     ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang `{iot hub connection string}` door de IOT hub-Connection String die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang `{iot hub connection string}` door de IoT Hub connection string die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
 
     ```csharp  
     static RegistryManager registryManager;
@@ -148,7 +150,7 @@ In deze sectie maakt u een .NET-console-app die als **myDeviceId**verbinding maa
 
    Met deze stap wordt een verwijzing naar het [Azure IOT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
+1. Voeg aan het begin van het bestand `using`Program.cs**de volgende**-instructies toe:
 
     ```csharp  
     using Microsoft.Azure.Devices.Client;
@@ -156,7 +158,7 @@ In deze sectie maakt u een .NET-console-app die als **myDeviceId**verbinding maa
     using Newtonsoft.Json;
     ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang `{device connection string}` door het apparaat Connection String dat u hebt genoteerd in [een nieuw apparaat registreren in IOT hub](#register-a-new-device-in-the-iot-hub).
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang `{device connection string}` door het connection string apparaat dat u hebt genoteerd in [een nieuw apparaat registreren bij de IOT-hub](#register-a-new-device-in-the-iot-hub).
 
     ```csharp  
     static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
@@ -231,15 +233,15 @@ In deze sectie maakt u een .NET-console-app die als **myDeviceId**verbinding maa
 
 1. Klik in Solution Explorer met de rechter muisknop op uw oplossing en selecteer vervolgens **opstart projecten instellen**.
 
-1. Selecteer in **algemene eigenschappen** > **opstart project** **meerdere opstart projecten**. Selecteer voor **ReportConnectivity**de optie **Start** als **actie**. Selecteer **OK** om uw wijzigingen op te slaan.  
+1. In **algemene eigenschappen** > **project opstarten**selecteert u **meerdere opstart projecten**. Selecteer voor **ReportConnectivity**de optie **Start** als **actie**. Selecteer **OK** om uw wijzigingen op te slaan.  
 
-1. Voer deze app uit door met de rechter muisknop op het **ReportConnectivity** -project te klikken en vervolgens **debug**te selecteren en vervolgens **nieuw exemplaar te starten**. U ziet dat de app de dubbele gegevens ophaalt en vervolgens de connectiviteit verzendt als een gerapporteerde ***eigenschap***.
+1. Voer deze app uit door met de rechter muisknop op het **ReportConnectivity** -project te klikken en vervolgens **debug**te selecteren en vervolgens **nieuw exemplaar te starten**. U ziet dat de app de dubbele gegevens ophaalt en vervolgens de connectiviteit verzendt als een ***gerapporteerde eigenschap***.
 
     ![De app van het apparaat uitvoeren voor het rapporteren van de connectiviteit](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
 
    Nadat het apparaat de verbindings gegevens heeft gerapporteerd, zou het in beide query's moeten worden weer gegeven.
 
-1. Klik met de rechter muisknop op het **AddTagsAndQuery** -project en selecteer **debug** > **starten nieuwe instantie** om de query's opnieuw uit te voeren. Deze keer worden **myDeviceId** weer gegeven in de query resultaten.
+1. Klik met de rechter muisknop op het project **AddTagsAndQuery** en selecteer **fout opsporing** > **nieuwe instantie starten** om de query's opnieuw uit te voeren. Deze keer worden **myDeviceId** weer gegeven in de query resultaten.
 
     ![De connectiviteit van het apparaat is gerapporteerd](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
 
@@ -249,7 +251,7 @@ In deze handleiding hebt u een nieuwe IoT-hub geconfigureerd in Azure Portal en 
 
 Meer informatie vindt u in de volgende bronnen:
 
-* Zie de zelf studie telemetrie [van een apparaat verzenden naar een IOT-hub](quickstart-send-telemetry-dotnet.md) voor meer informatie over het verzenden van telemetrie van apparaten.
+* Zie de zelf studie [telemetrie van een apparaat verzenden naar een IOT-hub](quickstart-send-telemetry-dotnet.md) voor meer informatie over het verzenden van telemetrie van apparaten.
 
 * Zie de zelf studie [gewenste eigenschappen gebruiken om apparaten te configureren](tutorial-device-twins.md) voor meer informatie over het configureren van apparaten met behulp van de gewenste eigenschappen van het apparaat.
 

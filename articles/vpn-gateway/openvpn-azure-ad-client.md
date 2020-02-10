@@ -5,16 +5,16 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 02/07/2020
 ms.author: alzam
-ms.openlocfilehash: 59af4189b52c2ad7a1109ffb03accedbc69dc6c6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 045d1cad130adad34d74009b34b193ce0d3d4dc9
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647914"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110555"
 ---
-# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>Een VPN-client configureren voor P2S OpenVPN-protocol verbindingen: Azure AD-verificatie (preview)
+# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Een VPN-client configureren voor P2S OpenVPN-protocol verbindingen: Azure AD-verificatie
 
 Dit artikel helpt u bij het configureren van een VPN-client om verbinding te maken met een virtueel netwerk met behulp van punt-naar-site-VPN en Azure Active Directory-verificatie. Voordat u verbinding kunt maken met en verifiëren met Azure AD, moet u eerst uw Azure AD-Tenant configureren. Zie [een Azure AD-Tenant configureren](openvpn-azure-ad-tenant.md)voor meer informatie.
 
@@ -24,11 +24,11 @@ Dit artikel helpt u bij het configureren van een VPN-client om verbinding te mak
 
 ## <a name="profile"></a>Werken met client profielen
 
-Als u verbinding wilt maken, moet u de Azure VPN-client (preview) downloaden en een VPN-client profiel configureren op elke computer die verbinding wil maken met het VNet. U kunt een client profiel maken op een computer, het exporteren en vervolgens importeren naar extra computers.
+Als u verbinding wilt maken, moet u de Azure VPN-client downloaden en een VPN-client profiel configureren op elke computer die verbinding wil maken met het VNet. U kunt een client profiel maken op een computer, het exporteren en vervolgens importeren naar extra computers.
 
 ### <a name="to-download-the-azure-vpn-client"></a>De Azure VPN-client downloaden
 
-Gebruik deze [koppeling](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) om de Azure VPN-client te downloaden (preview).
+Gebruik deze [koppeling](https://go.microsoft.com/fwlink/?linkid=2117554) om de Azure VPN-client te downloaden.
 
 ### <a name="cert"></a>Een client profiel op basis van een certificaat maken
 
@@ -50,33 +50,33 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
 1. Markeer het VPN-client profiel dat u wilt exporteren, selecteer de **...** en selecteer vervolgens **exporteren**.
 
-    ![Gegevensexporttabel](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![gegevensexporttabel](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Selecteer de locatie waar u dit profiel wilt opslaan, behoud de bestands naam en selecteer vervolgens **Opslaan** om het XML-bestand op te slaan.
 
-    ![Gegevensexporttabel](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![gegevensexporttabel](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="import"></a>Een client profiel importeren
 
 1. Selecteer op de pagina **importeren**.
 
-    ![importeren](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![wederinvoer](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. Blader naar het profiel XML-bestand en selecteer het. Selecteer **openen**terwijl het bestand is geselecteerd.
 
-    ![importeren](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![wederinvoer](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. Geef de naam van het profiel op en selecteer **Opslaan**.
 
-    ![importeren](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![wederinvoer](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. Selecteer **verbinding maken** om verbinding te maken met het VPN.
 
-    ![importeren](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![wederinvoer](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. Zodra de verbinding is gemaakt, wordt het pictogram groen en vervolgens **verbonden**.
 
-    ![importeren](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![wederinvoer](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="delete"></a>Een client profiel verwijderen
 

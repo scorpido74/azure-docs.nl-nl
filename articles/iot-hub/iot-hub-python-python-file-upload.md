@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 6dfbcc7a3e76842546326742d801c913451855f3
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f1c0c046c40ff8edbc33c5e93e4207d9fe2fc67a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001128"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110745"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Bestanden van uw apparaat uploaden naar de Cloud met IoT Hub (python)
 
@@ -43,6 +43,8 @@ Aan het einde van deze zelf studie voert u de python-console-app uit:
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Een bestand uploaden vanuit een apparaat-app
@@ -62,7 +64,7 @@ In deze sectie maakt u de app apparaat om een bestand te uploaden naar IoT hub.
 
 3. Maak met behulp van een tekst editor een **FileUpload.py** -bestand in de werkmap.
 
-4. Voeg de volgende `import` instructies en variabelen toe aan het begin van het **FileUpload.py** -bestand. 
+4. Voeg de volgende `import`-instructies en-variabelen toe aan het begin van het **FileUpload.py** -bestand. 
 
     ```python
     import time
@@ -78,9 +80,9 @@ In deze sectie maakt u de app apparaat om een bestand te uploaden naar IoT hub.
     FILENAME = "[File name for storage]"
     ```
 
-5. Vervang `[Device Connection String]` in het bestand door de Connection String van uw IOT hub-apparaat. Vervang `[Full path to file]` door het pad naar het test bestand dat u hebt gemaakt of een bestand op het apparaat dat u wilt uploaden. Vervang `[File name for storage]` door de naam die u wilt toewijzen aan het bestand nadat het is geüpload naar de Blob-opslag. 
+5. Vervang `[Device Connection String]` in uw bestand door de connection string van uw IoT hub-apparaat. Vervang `[Full path to file]` door het pad naar het test bestand dat u hebt gemaakt of een bestand op het apparaat dat u wilt uploaden. Vervang `[File name for storage]` door de naam die u wilt toewijzen aan het bestand nadat het is geüpload naar de Blob-opslag. 
 
-6. Een call back maken voor de functie **upload_blob** :
+6. Een call back maken voor de **upload_blob** functie:
 
     ```python
     def blob_upload_conf_callback(result, user_context):
@@ -90,7 +92,7 @@ In deze sectie maakt u de app apparaat om een bestand te uploaden naar IoT hub.
             print ( "...file upload callback returned: " + str(result) )
     ```
 
-7. Voeg de volgende code toe om verbinding te maken met de client en het bestand te uploaden. Neem ook de `main` routine op:
+7. Voeg de volgende code toe om verbinding te maken met de client en het bestand te uploaden. Neem ook de `main`-routine op:
 
     ```python
     def iothub_file_upload_sample_run():

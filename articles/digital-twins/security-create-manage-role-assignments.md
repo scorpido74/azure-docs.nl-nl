@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438059"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110402"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Roltoewijzingen in azure Digital Apparaatdubbels maken en beheren
 
@@ -36,12 +36,12 @@ Elke roltoewijzing voldoet aan de volgende definitie:
 
 In de volgende tabel wordt elk kenmerk beschreven:
 
-| Kenmerk | Name | Verplicht | Type | Beschrijving |
+| Kenmerk | Naam | Vereist | Type | Beschrijving |
 | --- | --- | --- | --- | --- |
 | roleId | Roldefinitie-id | Ja | Tekenreeks | De unieke ID van de gewenste roltoewijzing. Zoek roldefinities en hun id door een query uit te zoeken naar de onderstaande systeem-API of-tabel. |
 | object-id | Object-id | Ja | Tekenreeks | Een Azure Active Directory-ID, Service-Principal object-ID of domein naam. Waaraan de roltoewijzing is toegewezen. De roltoewijzing moet worden ingedeeld volgens het bijbehorende type. Voor de `DomainName` objectIdType moet objectId beginnen met het `“@”` teken. |
 | objectIdType | Type object-id | Ja | Tekenreeks | Het soort object-id dat wordt gebruikt. Zie de **ondersteunde ObjectIdTypes** hieronder. |
-| Pad | Pad naar Space | Ja | Tekenreeks | Het volledige pad naar het `Space`-object. Een voorbeeld is `/{Guid}/{Guid}`. Als een id de roltoewijzing voor de hele grafiek vereist, geeft u `"/"`op. Met dit teken wordt de hoofdmap aangeduid, maar het gebruik ervan wordt afgeraden. Volg altijd het principe van minimale bevoegdheden. |
+| pad | Pad naar Space | Ja | Tekenreeks | Het volledige pad naar het `Space`-object. Een voorbeeld is `/{Guid}/{Guid}`. Als een id de roltoewijzing voor de hele grafiek vereist, geeft u `"/"`op. Met dit teken wordt de hoofdmap aangeduid, maar het gebruik ervan wordt afgeraden. Volg altijd het principe van minimale bevoegdheden. |
 | tenantId | Tenant-id | Varieert | Tekenreeks | In de meeste gevallen wordt de Tenant-ID van Azure Active Directory. Niet toegestaan voor `DeviceId` en `TenantId` ObjectIdTypes. Vereist voor `UserId` en `ServicePrincipalId` ObjectIdTypes. Optioneel voor de DomainName-ObjectIdType. |
 
 ### <a name="supported-role-definition-identifiers"></a>Definitie-id's van ondersteunde rollen
@@ -94,7 +94,7 @@ Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 
 Een gebruiker met de rol **admin** kan de rol van de ruimte beheerder vervolgens toewijzen aan een gebruiker door een geverifieerde HTTP POST-aanvraag naar de URL te maken:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
@@ -116,7 +116,7 @@ Met de volgende JSON-hoofd tekst:
 
 Als u alle beschik bare rollen (roldefinities) wilt weer geven, maakt u een geverifieerde HTTP GET-aanvraag naar:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/system/roles
 ```
 
@@ -157,16 +157,16 @@ Een geslaagde aanvraag retourneert een JSON-matrix met vermeldingen voor elke ro
 
 Als u een specifieke roltoewijzing wilt controleren, maakt u een geverifieerde HTTP GET-aanvraag naar:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
 | **Parameter waarde** | **Vereist** |  **Type** |  **Beschrijving** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  Waar | Tekenreeks |   De objectId voor de gebruikers-id objectIdType. |
-| YOUR_PATH | Waar | Tekenreeks |   Het gekozen pad om de toegang voor te controleren. |
-| YOUR_ACCESS_TYPE |  Waar | Tekenreeks |   *Lezen*, *maken*, *bijwerken*of *verwijderen* |
-| YOUR_RESOURCE_TYPE | Waar | Tekenreeks |  *Apparaat*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *Extended type*, *eind punt* *, Keys*, *Matcher*, *Ontology*, *rapport*, *RoleDefinition*, *sensor*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *systeem*,  *UerDefinedFunction*, *User*, *UserBlobMetadata*of *UserExtendedProperty* |
+| YOUR_USER_ID |  True | Tekenreeks |   De objectId voor de gebruikers-id objectIdType. |
+| YOUR_PATH | True | Tekenreeks |   Het gekozen pad om de toegang voor te controleren. |
+| YOUR_ACCESS_TYPE |  True | Tekenreeks |   *Lezen*, *maken*, *bijwerken*of *verwijderen* |
+| YOUR_RESOURCE_TYPE | True | Tekenreeks |  *Apparaat*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *Extended type*, *eind punt* *, Keys*, *Matcher*, *Ontology*, *rapport*, *RoleDefinition*, *sensor*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *systeem*,  *UerDefinedFunction*, *User*, *UserBlobMetadata*of *UserExtendedProperty* |
 
 Een geslaagde aanvraag retourneert een Booleaanse `true` of `false` om aan te geven of het toegangs type is toegewezen aan de gebruiker voor het gegeven pad en de opgegeven bron.
 
@@ -174,7 +174,7 @@ Een geslaagde aanvraag retourneert een Booleaanse `true` of `false` om aan te ge
 
 Als u alle roltoewijzingen voor een pad wilt ophalen, maakt u een geverifieerde HTTP GET-aanvraag naar:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
@@ -200,7 +200,7 @@ Een geslaagde aanvraag retourneert een JSON-matrix met elke roltoewijzing die is
 
 Als u een machtiging van een ontvanger wilt intrekken, verwijdert u de roltoewijzing door een geverifieerde HTTP-aanvraag te verwijderen:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 ```
 
@@ -214,7 +214,7 @@ Een geslaagde VERWIJDERings aanvraag retourneert een 204-antwoord status. Contro
 
 Als u een roltoewijzing wilt maken, maakt u een geverifieerde HTTP POST-aanvraag naar de URL:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
@@ -236,7 +236,7 @@ Een geslaagde aanvraag retourneert een 201-reactie status samen met de **id** va
 "d92c7823-6e65-41d4-aaaa-f5b32e3f01b9"
 ```
 
-## <a name="configuration-examples"></a>Configuratievoorbeelden
+## <a name="configuration-examples"></a>Configuratie voorbeelden
 
 De volgende voor beelden laten zien hoe u uw JSON-hoofd tekst kunt configureren in verschillende scenario's voor het toewijzen van rollen.
 

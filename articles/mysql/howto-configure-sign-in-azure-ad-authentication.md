@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 10dae81bf0ca8958f7c10aebef501fc604c4839c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706048"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110609"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
 
@@ -40,42 +40,7 @@ Er kan slechts één Azure AD-beheerder per MySQL-server worden gemaakt en de be
 
 In een toekomstige versie bieden we ondersteuning voor het opgeven van een Azure AD-groep in plaats van een afzonderlijke gebruiker om meerdere beheerders te hebben, maar dit wordt momenteel nog niet ondersteund.
 
-## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>Azure AD-gebruikers maken in Azure Database for MySQL
-
-Als u een Azure AD-gebruiker wilt toevoegen aan uw Azure Database for MySQL-data base, voert u de volgende stappen uit nadat u verbinding hebt gemaakt (zie verderop in dit onderwerp voor verbinding maken):
-
-1. Controleer eerst of de Azure AD-gebruikers `<user>@yourtenant.onmicrosoft.com` een geldige gebruiker is in de Azure AD-Tenant.
-2. Meld u aan bij uw Azure Database for MySQL-exemplaar als de gebruiker van de Azure AD-beheerder.
-3. Maak gebruikers `<user>@yourtenant.onmicrosoft.com` in Azure Database for MySQL.
-
-**Voorbeeld:**
-
-```sql
-CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
-```
-
-Voor gebruikers namen die 32 tekens overschrijden, is het raadzaam om in plaats daarvan een alias te gebruiken voor gebruik bij het maken van verbinding: 
-
-Voorbeeld:
-
-```sql
-CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
-```
-
-> [!NOTE]
-> Het verifiëren van een gebruiker via Azure AD geeft de gebruiker geen machtigingen voor toegang tot objecten binnen de Azure Database for MySQL data base. U moet de gebruiker hand matig de vereiste machtigingen verlenen.
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>Azure AD-groepen maken in Azure Database for MySQL
-
-Als u een Azure AD-groep wilt inschakelen voor toegang tot uw data base, gebruikt u hetzelfde mechanisme als voor gebruikers, maar geeft u in plaats daarvan de groeps naam op:
-
-**Voorbeeld:**
-
-```sql
-CREATE AADUSER 'Prod_DB_Readonly';
-```
-
-Wanneer u zich aanmeldt, gebruiken leden van de groep hun persoonlijke toegangs tokens, maar u moet zich aanmelden met de groeps naam die is opgegeven als de gebruikers naam.
+Nadat u de beheerder hebt geconfigureerd, kunt u zich nu aanmelden:
 
 ## <a name="connecting-to-azure-database-for-mysql-using-azure-ad"></a>Verbinding maken met Azure Database for MySQL met behulp van Azure AD
 
@@ -156,12 +121,53 @@ Wanneer u verbinding maakt, moet u het toegangs token gebruiken als het MySQL-ge
 Wanneer u de CLI gebruikt, kunt u deze korte hand gebruiken om verbinding te maken: 
 
 **Voor beeld (Linux/macOS):**
-
-MySQL-h mydb.mysql.database.azure.com \--User user@tenant.onmicrosoft.com@mydb \--Enable-outlees bare-plugin \--Password =`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`  
+```
+mysql -h mydb.mysql.database.azure.com \ 
+  --user user@tenant.onmicrosoft.com@mydb \ 
+  --enable-cleartext-plugin \ 
+  --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
+```
 
 Let op de instelling ' Enable-anti-tekst-plugin ': u moet een vergelijk bare configuratie met andere clients gebruiken om ervoor te zorgen dat het token wordt verzonden naar de server zonder hash-bewerking.
 
 U bent nu geverifieerd voor uw MySQL-server met behulp van Azure AD-verificatie.
+
+## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>Azure AD-gebruikers maken in Azure Database for MySQL
+
+Als u een Azure AD-gebruiker wilt toevoegen aan uw Azure Database for MySQL-data base, voert u de volgende stappen uit nadat u verbinding hebt gemaakt (zie verderop in dit onderwerp voor verbinding maken):
+
+1. Controleer eerst of de Azure AD-gebruikers `<user>@yourtenant.onmicrosoft.com` een geldige gebruiker is in de Azure AD-Tenant.
+2. Meld u aan bij uw Azure Database for MySQL-exemplaar als de gebruiker van de Azure AD-beheerder.
+3. Maak gebruikers `<user>@yourtenant.onmicrosoft.com` in Azure Database for MySQL.
+
+**Voorbeeld:**
+
+```sql
+CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
+```
+
+Voor gebruikers namen die 32 tekens overschrijden, is het raadzaam om in plaats daarvan een alias te gebruiken voor gebruik bij het maken van verbinding: 
+
+Voorbeeld:
+
+```sql
+CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
+```
+
+> [!NOTE]
+> Het verifiëren van een gebruiker via Azure AD geeft de gebruiker geen machtigingen voor toegang tot objecten binnen de Azure Database for MySQL data base. U moet de gebruiker hand matig de vereiste machtigingen verlenen.
+
+## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>Azure AD-groepen maken in Azure Database for MySQL
+
+Als u een Azure AD-groep wilt inschakelen voor toegang tot uw data base, gebruikt u hetzelfde mechanisme als voor gebruikers, maar geeft u in plaats daarvan de groeps naam op:
+
+**Voorbeeld:**
+
+```sql
+CREATE AADUSER 'Prod_DB_Readonly';
+```
+
+Wanneer u zich aanmeldt, gebruiken leden van de groep hun persoonlijke toegangs tokens, maar u moet zich aanmelden met de groeps naam die is opgegeven als de gebruikers naam.
 
 ## <a name="token-validation"></a>Token validatie
 
@@ -176,7 +182,7 @@ Met Azure AD-verificatie in Azure Database for MySQL wordt gegarandeerd dat de g
 
 De meeste Stuur Programma's worden ondersteund, maar u moet de instellingen voor het verzenden van het wacht woord in ongecodeerde tekst gebruiken, zodat het token zonder aanpassing wordt verzonden.
 
-* C/C++
+* GC++
   * libmysqlclient: ondersteund
   * mysql-connector-c + +: ondersteund
 * Java
@@ -194,7 +200,7 @@ De meeste Stuur Programma's worden ondersteund, maar u moet de instellingen voor
 * Perl
   * DBD:: mysql: ondersteund
   * Net:: MySQL: niet ondersteund
-* Go
+* Aan de slag
   * Go-SQL-stuur programma: ondersteund, `?tls=true&allowCleartextPasswords=true` toevoegen aan connection string
 
 ## <a name="next-steps"></a>Volgende stappen

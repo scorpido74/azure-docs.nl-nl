@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 81b80edcd2e880488e203960f8e2a6aa71b69679
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: fcc2013f67c6e91182979a9bcab683894088a1d5
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161819"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110377"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Bestanden van uw apparaat uploaden naar de Cloud met IoT Hub (Java)
 
@@ -52,15 +52,17 @@ Aan het einde van deze zelf studie voert u twee Java Console-apps uit:
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
 
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Een bestand uploaden vanuit een apparaat-app
 
 In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [Cloud-naar-apparaat-berichten verzenden met IOT hub](iot-hub-java-java-c2d.md) om een bestand te uploaden naar IOT hub.
 
-1. Kopieer een afbeeldings bestand naar `simulated-device` de map en `myimage.png`Wijzig de naam ervan.
+1. Kopieer een afbeeldings bestand naar de map `simulated-device` en wijzig de naam ervan `myimage.png`.
 
-2. Open het `simulated-device\src\main\java\com\mycompany\app\App.java` bestand met behulp van een tekst editor.
+2. Open het `simulated-device\src\main\java\com\mycompany\app\App.java`-bestand met behulp van een tekst editor.
 
 3. Voeg de variabele-declaratie toe aan de **app** -klasse:
 
@@ -114,7 +116,7 @@ In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [Cloud-naar-appar
     MessageSender sender = new MessageSender();
     ```
 
-7. Gebruik de volgende opdracht om de gesimuleerde **apparaat-** app te bouwen en te controleren op fouten:
+7. Gebruik de volgende opdracht om de **gesimuleerde apparaat-** app te bouwen en te controleren op fouten:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -122,7 +124,7 @@ In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [Cloud-naar-appar
 
 ## <a name="get-the-iot-hub-connection-string"></a>De IoT hub-connection string ophalen
 
-In dit artikel maakt u een back-end-service om meldings berichten over het uploaden van bestanden te ontvangen van de IoT-hub die u hebt gemaakt in telemetrie [van een apparaat naar een IOT-hub verzenden](quickstart-send-telemetry-java.md). Als u meldings berichten over het uploaden van bestanden wilt ontvangen, moet u de service **Connect** -machtiging hebben. Standaard wordt elke IoT Hub gemaakt met een gedeeld toegangs beleid met de naam **service** dat deze machtiging verleent.
+In dit artikel maakt u een back-end-service om meldings berichten over het uploaden van bestanden te ontvangen van de IoT-hub die u hebt gemaakt in [telemetrie van een apparaat naar een IOT-hub verzenden](quickstart-send-telemetry-java.md). Als u meldings berichten over het uploaden van bestanden wilt ontvangen, moet u de service **Connect** -machtiging hebben. Standaard wordt elke IoT Hub gemaakt met een gedeeld toegangs beleid met de naam **service** dat deze machtiging verleent.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -136,9 +138,9 @@ In deze sectie maakt u een Java-Console-app die meldings berichten voor het uplo
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-file-upload-notification -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Ga bij de opdracht prompt naar de nieuwe `read-file-upload-notification` map.
+2. Ga bij de opdracht prompt naar de map nieuw `read-file-upload-notification`.
 
-3. Open het `pom.xml` bestand in de `read-file-upload-notification` map met een tekst editor en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Door de afhankelijkheid toe te voegen, kunt u het **iothub-Java-service-client-** pakket in uw toepassing gebruiken om te communiceren met uw IOT hub-service:
+3. Open met een tekst editor het `pom.xml`-bestand in de map `read-file-upload-notification` en voeg de volgende afhankelijkheid toe aan het knoop punt **afhankelijkheden** . Door de afhankelijkheid toe te voegen, kunt u het **iothub-Java-service-client-** pakket in uw toepassing gebruiken om te communiceren met uw IOT hub-service:
 
     ```xml
     <dependency>
@@ -151,9 +153,9 @@ In deze sectie maakt u een Java-Console-app die meldings berichten voor het uplo
     > [!NOTE]
     > U kunt de meest recente versie van **IOT-service-client** controleren met behulp van [maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. Sla het bestand op `pom.xml` en sluit het.
+4. Sla het `pom.xml` bestand op en sluit het.
 
-5. Open het `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` bestand met behulp van een tekst editor.
+5. Open het `read-file-upload-notification\src\main\java\com\mycompany\app\App.java`-bestand met behulp van een tekst editor.
 
 6. Voeg de volgende **import**instructies toe aan het bestand:
 
@@ -165,7 +167,7 @@ In deze sectie maakt u een Java-Console-app die meldings berichten voor het uplo
     import java.util.concurrent.Executors;
     ```
 
-7. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang de waarde van de tijdelijkeaanduidingdoordeIOThub-ConnectionStringdieueerderhebtgekopieerdindeIOThub-ConnectionStringophalen:`{Your IoT Hub connection string}` [](#get-the-iot-hub-connection-string)
+7. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang de waarde van de tijdelijke aanduiding `{Your IoT Hub connection string}` door de IoT hub-connection string die u eerder hebt gekopieerd in [de IOT hub ophalen Connection String](#get-the-iot-hub-connection-string):
 
     ```java
     private static final String connectionString = "{Your IoT Hub connection string}";
@@ -228,7 +230,7 @@ In deze sectie maakt u een Java-Console-app die meldings berichten voor het uplo
     }
     ```
 
-10. Sla het bestand op `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` en sluit het.
+10. Sla het `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` bestand op en sluit het.
 
 11. Gebruik de volgende opdracht om de app **read-file-upload-melding** te maken en te controleren op fouten:
 
@@ -240,19 +242,19 @@ In deze sectie maakt u een Java-Console-app die meldings berichten voor het uplo
 
 U kunt nu de toepassingen gaan uitvoeren.
 
-Voer de volgende opdracht uit vanaf `read-file-upload-notification` een opdracht prompt in de map:
+Voer de volgende opdracht uit vanaf een opdracht prompt in de map `read-file-upload-notification`:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 ```
 
-Voer de volgende opdracht uit vanaf `simulated-device` een opdracht prompt in de map:
+Voer de volgende opdracht uit vanaf een opdracht prompt in de map `simulated-device`:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 ```
 
-In de volgende scherm afbeelding ziet u de uitvoer van de gesimuleerde **apparaat-** app:
+In de volgende scherm afbeelding ziet u de uitvoer van de **gesimuleerde apparaat-** app:
 
 ![Uitvoer van gesimuleerde apparaat-app](media/iot-hub-java-java-upload/simulated-device.png)
 

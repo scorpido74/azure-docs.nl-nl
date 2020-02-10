@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 4f9f4661a2c6c78438414029e803abc624a773ca
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e0114c37b2204a7ad1d7b0cf9c7f336dcd85883a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161981"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110485"
 ---
 # <a name="get-started-with-device-twins-java"></a>Aan de slag met Device apparaatdubbels (Java)
 
@@ -35,6 +35,8 @@ In deze zelf studie maakt u twee Java Console-apps:
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
+
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -64,7 +66,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
 
 3. Ga bij de opdracht prompt naar de map **Add-Tags-query** .
 
-4. Open met een tekst editor het bestand **pom. XML** in de map **Add-Tags-query** en voeg de volgende afhankelijkheden toe aan het knoop punt afhankelijkheden. Met deze afhankelijkheid kunt u het **IOT-service-client-** pakket in uw app gebruiken om te communiceren met uw IOT-hub:
+4. Open met een tekst editor het bestand **pom. XML** in de map **Add-Tags-query** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het **IOT-service-client-** pakket in uw app gebruiken om te communiceren met uw IOT-hub:
 
     ```xml
     <dependency>
@@ -78,7 +80,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     > [!NOTE]
     > U kunt de meest recente versie van **IOT-service-client** controleren met behulp van [maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-5. Voeg het volgende **Build** -knoop punt toe na het knoop punt afhankelijkheden. Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen.
+5. Voeg het volgende **Build** -knoop punt toe na het knoop punt **afhankelijkheden** . Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen.
 
     ```xml
     <build>
@@ -111,7 +113,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     import java.util.Set;
     ```
 
-9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{youriothubconnectionstring}` door de IOT hub-Connection String die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
+9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{youriothubconnectionstring}` door de IoT hub-connection string die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -121,7 +123,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     public static final String plant = "Redmond43";
     ```
 
-10. Werk de hand tekening van de **hoofd** methode bij `throws` zodat deze de volgende component bevat:
+10. Werk de hand tekening van de **hoofd** methode bij om de volgende `throws`-component op te genomen:
 
     ```java
     public static void main( String[] args ) throws IOException
@@ -135,7 +137,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     DeviceTwinDevice device = new DeviceTwinDevice(deviceId);
     ```
 
-12. Voeg het volgende `try/catch` blok toe aan de methode **Main** :
+12. Voeg het volgende `try/catch`-blok toe aan de methode **Main** :
 
     ```java
     try {
@@ -147,7 +149,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     }
     ```
 
-13. Voeg de volgende code toe aan het blok om de dubbele labels van de **regio** en het **centrale** apparaat in `try` het apparaat te wijzigen:
+13. Als u de dubbele labels van de **regio** en het **centrale** apparaat in het dubbele apparaat wilt bijwerken, voegt u de volgende code toe in het `try` blok:
 
     ```java
     // Get the device twin from IoT Hub
@@ -176,7 +178,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
     System.out.println(device);
     ```
 
-14. Als u een query wilt uitvoeren voor het apparaat apparaatdubbels in IOT hub, voegt `try` u de volgende code toe aan de blok kering na de code die u in de vorige stap hebt toegevoegd. De code voert twee query's uit. Elke query retourneert een maximum van 100 apparaten.
+14. Als u een query wilt uitvoeren voor het apparaat apparaatdubbels in IoT hub, voegt u de volgende code toe aan het `try` blok na de code die u in de vorige stap hebt toegevoegd. De code voert twee query's uit. Elke query retourneert een maximum van 100 apparaten.
 
     ```java
     // Query the device twins in IoT Hub
@@ -217,7 +219,7 @@ In deze sectie maakt u een Java-app waarmee de meta gegevens van een locatie wor
 
 In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenschaps waarde wordt ingesteld die wordt verzonden naar IoT Hub.
 
-1. Maak in de map **IOT-Java-dubbele-getstarted** een Maven-project met de naam gesimuleerd **apparaat** met behulp van de volgende opdracht bij de opdracht prompt:
+1. Maak in de map **IOT-Java-dubbele-getstarted** een Maven-project met de naam **gesimuleerd apparaat** met behulp van de volgende opdracht bij de opdracht prompt:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -238,7 +240,7 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
     > [!NOTE]
     > U kunt de meest recente versie van **IOT-Device-client** controleren met behulp van [maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. Voeg de volgende afhankelijkheden toe aan het knoop punt afhankelijkheden. Met deze afhankelijkheid wordt een NOP geconfigureerd voor de Apache [SLF4J](https://www.slf4j.org/) logging-gevel, die wordt gebruikt door de client-SDK voor het implementeren van logboek registratie. Deze configuratie is optioneel, maar als u deze weglaat, wordt er mogelijk een waarschuwing weer gegeven in de console wanneer u de app uitvoert. Zie [logboek registratie](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) in de *voor beelden voor het* leesmij-bestand voor Azure IOT Device SDK voor Java voor meer informatie over logboek registratie in de client-SDK.
+4. Voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid wordt een NOP geconfigureerd voor de Apache [SLF4J](https://www.slf4j.org/) logging-gevel, die wordt gebruikt door de client-SDK voor het implementeren van logboek registratie. Deze configuratie is optioneel, maar als u deze weglaat, wordt er mogelijk een waarschuwing weer gegeven in de console wanneer u de app uitvoert. Zie [logboek registratie](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) in de *voor beelden voor het* leesmij-bestand voor Azure IOT Device SDK voor Java voor meer informatie over logboek registratie in de client-SDK.
 
     ```xml
     <dependency>
@@ -248,7 +250,7 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
     </dependency>
     ```
 
-5. Voeg het volgende **Build** -knoop punt toe na het knoop punt afhankelijkheden. Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen:
+5. Voeg het volgende **Build** -knoop punt toe na het knoop punt **afhankelijkheden** . Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen:
 
     ```xml
     <build>
@@ -281,7 +283,7 @@ In deze sectie maakt u een Java-Console-app waarmee een gerapporteerde eigenscha
     import java.util.Scanner;
     ```
 
-9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{yourdeviceconnectionstring}` door het apparaat Connection String dat u hebt gekopieerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
+9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{yourdeviceconnectionstring}` door het apparaat dat connection string u hebt gekopieerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
 
     ```java
     private static String connString = "{yourdeviceconnectionstring}";
@@ -381,7 +383,7 @@ U bent nu klaar om de console-apps uit te voeren.
 
     U kunt de **fabrieks** -en **regio** Tags zien die zijn toegevoegd aan het apparaat dubbele. De eerste query retourneert uw apparaat, maar de tweede niet.
 
-2. Voer bij een opdracht prompt in de map met gesimuleerde **apparaten** de volgende opdracht uit om de gerapporteerde eigenschap **connectivityType** toe te voegen aan het apparaat dubbele:
+2. Voer bij een opdracht prompt in de map met **gesimuleerde apparaten** de volgende opdracht uit om de gerapporteerde eigenschap **connectivityType** toe te voegen aan het apparaat dubbele:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"

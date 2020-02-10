@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 2c2ac5d3de37a1a89ebd63b89666f164444e0a63
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d16954760d1f2bf11ec5575f912ee32810696590
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773779"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108215"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Zelf studie: verrijkingen van Azure IoT Hub-berichten gebruiken
 
@@ -39,6 +39,9 @@ Hier volgen de taken die u uitvoert om deze zelf studie te volt ooien:
 
 * U hebt een abonnement op Azure nodig. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 * Installeer [Visual Studio](https://www.visualstudio.com/).
+
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in deze zelf studie maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -73,7 +76,7 @@ Als u dit nog niet hebt gedaan, opent u een Azure [Cloud shell-venster](https://
 
 Dit zijn de resources die zijn gemaakt door het script. *Verrijkt* betekent dat de resource is bedoeld voor berichten met verrijkingen. *Oorspronkelijk* betekent dat de resource is bedoeld voor berichten die niet zijn verrijkt.
 
-| Name | Waarde |
+| Naam | Waarde |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | container naam | Origineel  |
@@ -293,7 +296,7 @@ U kunt een resource manager-sjabloon gebruiken om de resources, bericht Routerin
 
    Hier vindt u de resources die zijn gemaakt door het laden van de sjabloon. **Verrijkt** betekent dat de resource is bedoeld voor berichten met verrijkingen. **Oorspronkelijk** betekent dat de resource is bedoeld voor berichten die niet zijn verrijkt. Dit zijn dezelfde waarden die worden gebruikt in het Azure CLI-script.
 
-   | Name | Waarde |
+   | Naam | Waarde |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | container naam | Origineel  |

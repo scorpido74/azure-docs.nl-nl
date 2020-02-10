@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 98ec53d384186968d69c3f84cdfa12fbdbe92b71
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 5b2e4c03347020b5d5fc67927165403f06854e0b
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147446"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110911"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Aan de slag met Apparaatbeheer (node. js)
 
@@ -38,6 +38,8 @@ Aan het einde van deze zelf studie hebt u twee node. js-console-apps:
 * Node. js versie 10.0. x of hoger. [Uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) hierin wordt beschreven hoe u node. js installeert voor deze zelf studie op Windows of Linux.
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
+
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -80,7 +82,7 @@ In deze sectie doet u het volgende:
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Voeg een **connectionString**-variabele toe en gebruik deze om een **client**exemplaar te maken.  Vervang de `{yourdeviceconnectionstring}` waarde van de tijdelijke aanduiding door het apparaat Connection String u eerder hebt gekopieerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).  
+5. Voeg een **connectionString**-variabele toe en gebruik deze om een **client**exemplaar te maken.  Vervang de waarde van de tijdelijke aanduiding `{yourdeviceconnectionstring}` door het connection string apparaat dat u eerder hebt gekopieerd in [een nieuw apparaat in de IOT-hub registreren](#register-a-new-device-in-the-iot-hub).  
 
     ```javascript
     var connectionString = '{yourdeviceconnectionstring}';
@@ -180,7 +182,7 @@ In deze sectie maakt u een node. JS-Console-app die een op afstand opnieuw opsta
     var Client = require('azure-iothub').Client;
     ```
 
-5. Voeg de volgende variabelen declaraties toe en `{iothubconnectionstring}` Vervang de waarde van de tijdelijke aanduiding door de IOT hub Connection String u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string):
+5. Voeg de volgende variabelen declaraties toe en vervang de tijdelijke aanduiding voor de `{iothubconnectionstring}` door de IoT-hub connection string die u eerder hebt gekopieerd in [de IOT hub ophalen Connection String](#get-the-iot-hub-connection-string):
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';

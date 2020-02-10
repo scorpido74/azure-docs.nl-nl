@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: caa249dda4215dfcef13df96d2dd4245cae49efd
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 5d84b1b951cd1a48a385083f5ce2e2aaf1cba8d7
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595751"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110642"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Zelfstudie: Een gesimuleerd apparaat gebruiken om connectiviteit met uw IoT-hub te testen
 
@@ -39,7 +39,7 @@ De CLI-scripts die u in deze zelfstudie uitvoert, gebruiken de [Microsoft Azure 
 az extension add --name azure-cli-iot-ext
 ```
 
-De apparaatsimulatietoepassing die u in deze zelfstudie uitvoert is geschreven in Node.js. U moet Node.js v10.x.x of hoger op uw ontwikkelcomputer.
+De apparaatsimulatietoepassing die u in deze zelfstudie uitvoert is geschreven in Node.js. U hebt node. js V10 toevoegen. x. x of hoger nodig op uw ontwikkel machine.
 
 U kunt Node.js voor meerdere platforms downloaden van [nodejs.org](https://nodejs.org).
 
@@ -50,6 +50,8 @@ node --version
 ```
 
 Download het Node.js-voorbeeldapparaatsimulatieproject van https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip en pak het ZIP-archief uit.
+
+Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in deze zelf studie maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -176,7 +178,7 @@ Haal eerst de huidige verbindingsreeks op voor uw gesimuleerd apparaat met de vo
 az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
-Als u wilt uitvoeren van een gesimuleerd apparaat waarmee berichten worden verzonden, gaat u naar de **iot-hub\Tutorials\ConnectivityTests** map in de code die u hebt gedownload.
+Als u een gesimuleerd apparaat wilt uitvoeren dat berichten verzendt, gaat u naar de map **IOT-hub\Tutorials\ConnectivityTests** in de code die u hebt gedownload.
 
 Voer in het terminalvenster de volgende opdrachten uit om de vereiste bibliotheken te installeren en de toepassing voor het gesimuleerde apparaat uit te voeren:
 

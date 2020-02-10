@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: bbb78dcd36ec986cefc1d57e01396f285a6b30dd
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 9227192b2f7c554943fb3716ba1d1066f814c447
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161967"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110316"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Taken plannen en uitzenden (Java)
 
@@ -30,9 +30,9 @@ Een taak verpakt een van deze acties en houdt de uitvoering bij van een set appa
 
 Zie voor meer informatie over elk van deze mogelijkheden:
 
-* Dubbele en eigenschappen van apparaat: [Aan de slag met apparaatdubbels](iot-hub-java-java-twin-getstarted.md)
+* Dubbele en eigenschappen van apparaat: [aan de slag met apparaat apparaatdubbels](iot-hub-java-java-twin-getstarted.md)
 
-* Directe methoden: [IOT hub ontwikkelaars handleiding-directe methoden](iot-hub-devguide-direct-methods.md) en [zelf studie: Directe methoden gebruiken](quickstart-control-device-java.md)
+* Directe methoden: [IOT hub ontwikkelaars handleiding-directe methoden](iot-hub-devguide-direct-methods.md) en [zelf studie: directe methoden gebruiken](quickstart-control-device-java.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -58,6 +58,8 @@ Aan het einde van deze zelf studie hebt u een app voor het maken van een Java-Co
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
+
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -95,7 +97,7 @@ De app maken:
 
 3. Ga bij de opdracht prompt naar de map **Schedule-taken** .
 
-4. Open met een tekst editor het bestand **pom. XML** in de map **Schedule Jobs** en voeg de volgende afhankelijkheden toe aan het knoop punt afhankelijkheden. Met deze afhankelijkheid kunt u het **IOT-service-client-** pakket in uw app gebruiken om te communiceren met uw IOT-hub:
+4. Open met een tekst editor het bestand **pom. XML** in de map **Schedule Jobs** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het **IOT-service-client-** pakket in uw app gebruiken om te communiceren met uw IOT-hub:
 
     ```xml
     <dependency>
@@ -109,7 +111,7 @@ De app maken:
     > [!NOTE]
     > U kunt de meest recente versie van **IOT-service-client** controleren met behulp van [maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-5. Voeg het volgende **Build** -knoop punt toe na het knoop punt afhankelijkheden. Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen:
+5. Voeg het volgende **Build** -knoop punt toe na het knoop punt **afhankelijkheden** . Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen:
 
     ```xml
     <build>
@@ -149,7 +151,7 @@ De app maken:
     import java.util.UUID;
     ```
 
-9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{youriothubconnectionstring}` door uw IOT hub-Connection String die u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string):
+9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{youriothubconnectionstring}` door uw IoT-hub connection string die u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string):
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -258,7 +260,7 @@ De app maken:
     }
     ```
 
-14. Werk de hand tekening van de **hoofd** methode bij `throws` zodat deze de volgende component bevat:
+14. Werk de hand tekening van de **hoofd** methode bij om de volgende `throws`-component op te genomen:
 
     ```java
     public static void main( String[] args ) throws Exception
@@ -303,7 +305,7 @@ De app maken:
 
 In deze sectie maakt u een Java-Console-app die de gewenste eigenschappen van IoT Hub verwerkt en de directe methode aanroep implementeert.
 
-1. Maak in de map **IOT-Java-Schedule-Jobs** een Maven-project met de naam gesimuleerd **apparaat** met behulp van de volgende opdracht bij de opdracht prompt. Let op: dit is één enkele, lange opdracht:
+1. Maak in de map **IOT-Java-Schedule-Jobs** een Maven-project met de naam **gesimuleerd apparaat** met behulp van de volgende opdracht bij de opdracht prompt. Let op: dit is één enkele, lange opdracht:
 
    ```cmd/sh
    mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -324,7 +326,7 @@ In deze sectie maakt u een Java-Console-app die de gewenste eigenschappen van Io
     > [!NOTE]
     > U kunt de meest recente versie van **IOT-Device-client** controleren met behulp van [maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. Voeg de volgende afhankelijkheden toe aan het knoop punt afhankelijkheden. Met deze afhankelijkheid wordt een NOP geconfigureerd voor de Apache [SLF4J](https://www.slf4j.org/) logging-gevel, die wordt gebruikt door de client-SDK voor het implementeren van logboek registratie. Deze configuratie is optioneel, maar als u deze weglaat, wordt er mogelijk een waarschuwing weer gegeven in de console wanneer u de app uitvoert. Zie [logboek registratie](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)in de *voor beelden voor het* leesmij-bestand voor Azure IOT Device SDK voor Java voor meer informatie over logboek registratie in de client-SDK.
+4. Voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid wordt een NOP geconfigureerd voor de Apache [SLF4J](https://www.slf4j.org/) logging-gevel, die wordt gebruikt door de client-SDK voor het implementeren van logboek registratie. Deze configuratie is optioneel, maar als u deze weglaat, wordt er mogelijk een waarschuwing weer gegeven in de console wanneer u de app uitvoert. Zie [logboek registratie](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)in de *voor beelden voor het* leesmij-bestand voor Azure IOT Device SDK voor Java voor meer informatie over logboek registratie in de client-SDK.
 
     ```xml
     <dependency>
@@ -334,7 +336,7 @@ In deze sectie maakt u een Java-Console-app die de gewenste eigenschappen van Io
     </dependency>
     ```
 
-5. Voeg het volgende **Build** -knoop punt toe na het knoop punt afhankelijkheden. Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen:
+5. Voeg het volgende **Build** -knoop punt toe na het knoop punt **afhankelijkheden** . Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen:
 
     ```xml
     <build>
@@ -367,7 +369,7 @@ In deze sectie maakt u een Java-Console-app die de gewenste eigenschappen van Io
     import java.util.Scanner;
     ```
 
-9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{yourdeviceconnectionstring}` door het apparaat Connection String dat u eerder hebt gekopieerd in het gedeelte [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub) :
+9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{yourdeviceconnectionstring}` door het connection string apparaat dat u eerder hebt gekopieerd in het gedeelte [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub) :
 
     ```java
     private static String connString = "{yourdeviceconnectionstring}";
@@ -425,7 +427,7 @@ In deze sectie maakt u een Java-Console-app die de gewenste eigenschappen van Io
     }
     ```
 
-13. Werk de hand tekening van de **hoofd** methode bij `throws` zodat deze de volgende component bevat:
+13. Werk de hand tekening van de **hoofd** methode bij om de volgende `throws`-component op te genomen:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException
@@ -491,7 +493,7 @@ In deze sectie maakt u een Java-Console-app die de gewenste eigenschappen van Io
 
 U bent nu klaar om de console-apps uit te voeren.
 
-1. Voer bij een opdracht prompt in de map met gesimuleerde **apparaten** de volgende opdracht uit om de apparaat-app te laten Luis teren naar gewenste eigenschaps wijzigingen en directe-methode aanroepen:
+1. Voer bij een opdracht prompt in de map met **gesimuleerde apparaten** de volgende opdracht uit om de apparaat-app te laten Luis teren naar gewenste eigenschaps wijzigingen en directe-methode aanroepen:
 
    ```cmd/sh
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
@@ -499,7 +501,7 @@ U bent nu klaar om de console-apps uit te voeren.
 
    ![De apparaatclient wordt gestart](./media/iot-hub-java-java-schedule-jobs/device-app-1.png)
 
-2. Voer bij een opdracht prompt in `schedule-jobs` de map de volgende opdracht uit om de service **-app Schedule-taken** uit te voeren om twee taken uit te voeren. Met de eerste worden de gewenste eigenschaps waarden ingesteld, de tweede roept de directe methode aan:
+2. Voer bij een opdracht prompt in de map `schedule-jobs` de volgende opdracht uit om de service **-app Schedule-taken** uit te voeren om twee taken uit te voeren. Met de eerste worden de gewenste eigenschaps waarden ingesteld, de tweede roept de directe methode aan:
 
    ```cmd\sh
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"

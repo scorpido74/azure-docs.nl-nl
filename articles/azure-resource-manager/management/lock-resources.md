@@ -2,40 +2,39 @@
 title: Resources vergren delen om wijzigingen te voor komen
 description: Voor komen dat gebruikers essentiële Azure-resources bijwerken of verwijderen door een vergren deling toe te passen op alle gebruikers en rollen.
 ms.topic: conceptual
-ms.date: 05/14/2019
-ms.openlocfilehash: b7c6c7980f12e7f9015f4504f461733100b14ea8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/07/2020
+ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644355"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109540"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Resources vergren delen om onverwachte wijzigingen te voor komen
 
 Als beheerder moet u een ​​abonnement, resourcegroep of resource mogelijk vergrendelen om te voorkomen dat andere gebruikers in uw organisatie per ongeluk kritieke resources verwijderen of wijzigen. U kunt de vergrendeling instellen op **CanNotDelete** of **ReadOnly**. In de portal worden de vergren delingen respectievelijk **verwijderen** en **alleen-lezen** genoemd.
 
 * **CanNotDelete** betekent dat geautoriseerde gebruikers nog steeds een resource kunnen lezen en wijzigen, maar de resource niet kan verwijderen. 
-* **Alleen-lezen** houdt in dat gemachtigde gebruikers een resource kunnen lezen, maar de resource niet kunnen verwijderen of bijwerken. Het Toep assen van deze vergren deling is vergelijkbaar met het beperken van alle gemachtigde gebruikers tot de machtigingen die door de rol van **lezer** worden verleend. 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* **Alleen-lezen** houdt in dat gemachtigde gebruikers een resource kunnen lezen, maar de resource niet kunnen verwijderen of bijwerken. Het Toep assen van deze vergren deling is vergelijkbaar met het beperken van alle gemachtigde gebruikers tot de machtigingen die door de rol van **lezer** worden verleend.
 
 ## <a name="how-locks-are-applied"></a>Hoe vergrendelingen worden toegepast
 
 Wanneer u een vergren deling toepast op een bovenliggend bereik, nemen alle resources binnen die scope dezelfde vergren deling. Zelfs resources die u later toevoegt, nemen de vergren deling van het bovenliggende knoop punt over. De meest beperkende vergren deling in de overname heeft prioriteit.
 
-In tegenstelling tot op rollen gebaseerd toegangsbeheer wordt met beheervergrendelingen een beperking toegepast op alle gebruikers en rollen. Zie [Access Control op basis van rollen](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van machtigingen voor gebruikers en rollen.
+In tegens telling tot op rollen gebaseerd toegangs beheer kunt u beheer vergrendelingen gebruiken om een beperking toe te passen op alle gebruikers en rollen. Zie [Access Control op basis van rollen](../../role-based-access-control/role-assignments-portal.md)voor meer informatie over het instellen van machtigingen voor gebruikers en rollen.
 
-Vergrendelingen van Resource Manager gelden alleen voor bewerkingen die zich op beheerniveau voordoen, wat bewerkingen zijn die worden verzonden naar `https://management.azure.com`. De vergrendelingen hebben geen invloed op hoe resources hun eigen functies uitvoeren. Resourcewijzigingen worden beperkt, maar resourcebewerkingen worden niet beperkt. Een alleen-lezen vergrendeling op een SQL Database voor komt dat u de Data Base kunt verwijderen of wijzigen. Het is niet mogelijk om gegevens in de data base te maken, bij te werken of te verwijderen. Gegevens transacties zijn toegestaan omdat deze bewerkingen niet naar `https://management.azure.com`worden verzonden.
+De vergren delingen van resources gelden alleen voor bewerkingen die zich in het beheer vlak voordoen, dat bestaat uit bewerkingen die naar `https://management.azure.com`worden verzonden. De vergren delingen beperken niet hoe resources hun eigen functies uitvoeren. Resource wijzigingen zijn beperkt, maar resource bewerkingen zijn niet beperkt. Een alleen-lezen vergrendeling op een SQL Database voor komt dat u de Data Base kunt verwijderen of wijzigen. Het is niet mogelijk om gegevens in de data base te maken, bij te werken of te verwijderen. Gegevens transacties zijn toegestaan omdat deze bewerkingen niet naar `https://management.azure.com`worden verzonden.
 
 Toep assen van **alleen-lezen** kan leiden tot onverwachte resultaten omdat sommige bewerkingen die de resource niet hoeven te wijzigen, acties vereisen die door de vergren deling worden geblokkeerd. De **alleen-lezen** vergrendeling kan worden toegepast op de resource of aan de resource groep met de resource. Enkele algemene voor beelden van bewerkingen die worden geblokkeerd door een **alleen-lezen** vergrendeling zijn:
 
-* Als u een **alleen-lezen** vergrendeling op een opslag account instelt, kunnen alle gebruikers de sleutels niet weer geven. De bewerking voor het weergeven van de lijst met sleutels wordt verwerkt via een POST-aanvraag, omdat de geretourneerde sleutels beschikbaar zijn voor schrijfbewerkingen.
+* Als u een **alleen-lezen** vergrendeling op een opslag account instelt, kunnen alle gebruikers de sleutels niet weer geven. De bewerking lijst sleutels wordt verwerkt via een POST-aanvraag omdat de geretourneerde sleutels beschikbaar zijn voor schrijf bewerkingen.
 
 * Met een **alleen-lezen** vergrendeling voor een app service resource kan Visual Studio Server Explorer bestanden voor de resource niet weer geven omdat die interactie schrijf toegang vereist.
 
 * Een **alleen-lezen** vergrendeling voor een resource groep die een virtuele machine bevat, voor komt dat alle gebruikers de virtuele machine starten of opnieuw starten. Deze bewerkingen vereisen een POST-aanvraag.
 
 ## <a name="who-can-create-or-delete-locks"></a>Wie kan vergren delingen maken of verwijderen?
+
 Als u beheer vergrendelingen wilt maken of verwijderen, moet u toegang hebben tot `Microsoft.Authorization/*`-of `Microsoft.Authorization/locks/*`-acties. Van de ingebouwde rollen worden deze acties alleen toegekend aan **Eigenaar** en **Administrator voor gebruikerstoegang**.
 
 ## <a name="managed-applications-and-locks"></a>Beheerde toepassingen en vergren delingen
@@ -58,10 +57,15 @@ Als u alles wilt verwijderen voor de service, inclusief de resource groep vergre
 
 ![Service verwijderen](./media/lock-resources/delete-service.png)
 
+## <a name="azure-backups-and-locks"></a>Back-ups en vergren delingen van Azure
+
+Als u de resource groep die is gemaakt met Azure Backup-Service vergrendelt, mislukken de back-ups. De service ondersteunt Maxi maal 18 herstel punten. Met een **CanNotDelete** -vergren deling kan de back-upservice geen herstel punten opschonen. Zie [Veelgestelde vragen-back-ups maken van Azure vm's](../../backup/backup-azure-vm-backup-faq.md)voor meer informatie.
+
 ## <a name="portal"></a>Portal
+
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
-## <a name="template"></a>Sjabloon
+## <a name="template"></a>Template
 
 Wanneer u een resource manager-sjabloon gebruikt om een vergren deling te implementeren, gebruikt u verschillende waarden voor de naam en het type, afhankelijk van het bereik van de vergren deling.
 
@@ -174,7 +178,7 @@ $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceN
 Remove-AzResourceLock -LockId $lockId
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 U vergrendelt geïmplementeerde resources met Azure CLI met behulp van de opdracht [AZ Lock Create](/cli/azure/lock#az-lock-create) .
 
@@ -215,7 +219,7 @@ lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --re
 az lock delete --ids $lockid
 ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 U kunt geïmplementeerde resources vergren delen met de [rest API voor beheer vergrendelingen](https://docs.microsoft.com/rest/api/resources/managementlocks). Met de REST API kunt u vergren delingen maken en verwijderen, en informatie over bestaande vergren delingen ophalen.
 
 Voer de volgende handelingen uit om een vergren deling te maken:

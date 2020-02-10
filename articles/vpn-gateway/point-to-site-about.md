@@ -5,18 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6084eca4f7d2d6040eb3f32a9b28cfc50922d200
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896104"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110442"
 ---
 # <a name="about-point-to-site-vpn"></a>Over punt-naar-site-VPN
 
-Met een point-to-site-VPN-gatewayverbinding (P2S) kunt u vanaf een afzonderlijke clientcomputer een beveiligde verbinding maken met uw virtuele netwerk. Een P2S-verbinding wordt tot stand gebracht door deze vanaf de clientcomputer te starten. Deze oplossing is handig voor telewerkers die verbinding willen maken met een Azure VNet vanaf een externe locatie, zoals vanaf thuis of een conferentie. P2S-VPN is ook een uitstekende oplossing in plaats van een S2S-VPN wanneer u maar een paar clients hebt die verbinding moeten maken met een VNet. Dit artikel is van toepassing op het Resource Manager-implementatiemodel.
+Met een point-to-site-VPN-gatewayverbinding (P2S) kunt u vanaf een afzonderlijke clientcomputer een beveiligde verbinding maken met uw virtuele netwerk. Een P2S-verbinding wordt tot stand gebracht door deze te starten vanaf de clientcomputer. Deze oplossing is handig voor telewerkers die verbinding willen maken met een Azure VNet vanaf een externe locatie, zoals vanaf thuis of een conferentie. P2S-VPN is ook een uitstekende oplossing in plaats van een S2S-VPN wanneer u maar een paar clients hebt die verbinding moeten maken met een VNet. Dit artikel is van toepassing op het Resource Manager-implementatiemodel.
 
 ## <a name="protocol"></a>Welk protocol gebruikt P2S?
 
@@ -45,7 +45,7 @@ De validatie van het client certificaat wordt uitgevoerd door de VPN-gateway en 
 
 ### <a name="authenticate-using-native-azure-active-directory-authentication"></a>Verifiëren met behulp van systeem eigen Azure Active Directory authenticatie
 
-Met Azure AD-verificatie kunnen gebruikers verbinding maken met Azure met behulp van hun Azure Active Directory referenties. Systeem eigen Azure AD-verificatie wordt alleen ondersteund voor het OpenVPN-protocol en Windows 10 en vereist het gebruik van de [Azure VPN-client (preview)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab).
+Met Azure AD-verificatie kunnen gebruikers verbinding maken met Azure met behulp van hun Azure Active Directory referenties. Systeem eigen Azure AD-verificatie wordt alleen ondersteund voor het OpenVPN-protocol en Windows 10 en vereist het gebruik van de [Azure VPN-client](https://go.microsoft.com/fwlink/?linkid=2117554).
 
 Met systeem eigen Azure AD-verificatie kunt u gebruikmaken van de voorwaardelijke toegang van Azure AD en de functies van Multi-Factor Authentication (MFA) voor VPN.
 
@@ -55,7 +55,7 @@ Op hoog niveau moet u de volgende stappen uitvoeren om Azure AD-verificatie te c
 
 2. [Azure AD-verificatie inschakelen op de gateway](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-3. [Azure VPN-client downloaden en configureren (preview-versie)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [Azure VPN-client downloaden en configureren](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Verifiëren met behulp van de domein server van Active Directory (AD)
@@ -68,7 +68,7 @@ De RADIUS-server kan ook worden geïntegreerd met AD Certificate Services. Hierm
 
 Een RADIUS-server kan ook worden geïntegreerd met andere externe identiteits systemen. Hiermee opent u veel verificatie opties voor P2S VPN, waaronder multi-factor-opties.
 
-![punt-naar-site](./media/point-to-site-about/p2s.png "Point-to-Site")
+![punt-naar-site](./media/point-to-site-about/p2s.png "Punt-naar-site")
 
 ## <a name="what-are-the-client-configuration-requirements"></a>Wat zijn de client configuratie vereisten?
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: ed1abe3565805810a6a3fe383e1ddfa209950469
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bed6736fda0c1815964f9017adb1e6fffa9335d9
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935380"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110684"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>De verbinding met Azure IoT Hub controleren, vaststellen en problemen oplossen
 
@@ -27,13 +27,13 @@ Gebruik Azure Monitor om waarschuwingen op te halen en logboeken te schrijven wa
 
 Schakel diagnostische gegevens in voor IoT Hub om de gebeurtenissen en fouten van het apparaat vast te leggen. We raden u aan deze logboeken zo snel mogelijk in te scha kelen, want als de diagnostische logboeken niet zijn ingeschakeld, hebt u geen informatie om het probleem op te lossen.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Blader naar uw IoT-hub.
 
 3. Selecteer **instellingen voor diagnostische gegevens**.
 
-4. Selecteer **diagnostische gegevens inschakelen**.
+4. Selecteer **Diagnostische gegevens inschakelen**.
 
 5. De logboeken voor het verzamelen van **verbindingen** inschakelen.
 
@@ -47,7 +47,7 @@ Zie [de status van Azure IOT hub controleren en problemen snel](iot-hub-monitor-
 
 Als u waarschuwingen wilt ontvangen wanneer apparaten de verbinding verbreken, configureert u waarschuwingen op de metrische gegevens van de **verbonden apparaten (preview-versie)** .
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Blader naar uw IoT-hub.
 
@@ -69,7 +69,7 @@ Als u het verbreken van een *apparaat* wilt detecteren, bijvoorbeeld wanneer u w
 
 Wanneer u Diagnostische logboeken en waarschuwingen voor verbonden apparaten inschakelt, ontvangt u waarschuwingen wanneer er fouten optreden. In deze sectie wordt beschreven hoe u veelvoorkomende problemen kunt controleren wanneer u een waarschuwing ontvangt. In de onderstaande stappen wordt ervan uitgegaan dat u Azure Monitor logboeken voor uw Diagnostische logboeken hebt ingesteld.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Blader naar uw IoT-hub.
 
@@ -101,6 +101,8 @@ Als de vorige stappen niet zijn uitgevoerd, probeert u het volgende:
 * Als u toegang hebt tot de problematische apparaten, fysiek of extern (zoals SSH), volgt u de [probleem Oplosser](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices) voor het oplossen van problemen door te gaan met het oplossen van het probleem.
 
 * Controleer of uw apparaten zijn **ingeschakeld** in de Azure Portal > uw IOT-hub > IOT-apparaten.
+
+* Als uw apparaat gebruikmaakt van het MQTT-protocol, controleert u of poort 8883 is geopend. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie.
 
 * Krijg hulp van [azure IOT hub forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub), [stack overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub)of [ondersteuning voor Azure](https://azure.microsoft.com/support/options/).
 

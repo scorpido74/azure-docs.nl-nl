@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: db020092c076680eddd575f8e7e85a2060603dd8
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: b379f158672a9df3056acb09c63c392869a53283
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147774"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108708"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Bestanden van uw apparaat uploaden naar de Cloud met IoT Hub (.NET)
 
@@ -53,13 +53,15 @@ Aan het einde van deze zelf studie voert u twee .NET-console-apps uit:
 
 * Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
 
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Een bestand uploaden vanuit een apparaat-app
 
 In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [Cloud-naar-apparaat-berichten verzenden met IOT hub](iot-hub-csharp-csharp-c2d.md) om Cloud-naar-apparaat-berichten van de IOT-hub te ontvangen.
 
-1. Klik in Visual Studio Solution Explorer met de rechter muisknop op het project **SimulatedDevice** en selecteer**bestaand item** **toevoegen** > . Zoek een afbeeldings bestand en voeg dit toe aan uw project. In deze zelf studie wordt ervan uitgegaan `image.jpg`dat de installatie kopie een naam heeft.
+1. Klik in Visual Studio Solution Explorer met de rechter muisknop op het project **SimulatedDevice** en selecteer > **bestaand item** **toevoegen** . Zoek een afbeeldings bestand en voeg dit toe aan uw project. In deze zelf studie wordt ervan uitgegaan dat de afbeelding de naam `image.jpg`heeft.
 
 1. Klik met de rechter muisknop op de afbeelding en selecteer vervolgens **Eigenschappen**. Zorg ervoor dat de **map kopiëren naar uitvoermap** is ingesteld op **kopiëren altijd**.
 
@@ -90,9 +92,9 @@ In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [Cloud-naar-appar
     }
     ```
 
-    De `UploadToBlobAsync` -methode neemt de bestands naam en stroom bron van het bestand dat moet worden geüpload en verwerkt het uploaden naar de opslag. De console-app geeft de tijd weer die nodig is om het bestand te uploaden.
+    De `UploadToBlobAsync`-methode neemt de bestands naam en stroom bron van het bestand dat moet worden geüpload en verwerkt het uploaden naar de opslag. De console-app geeft de tijd weer die nodig is om het bestand te uploaden.
 
-1. Voeg de volgende regel toe aan de methode **Main** , rechts `Console.ReadLine()`voor:
+1. Voeg de volgende regel in de methode **Main** toe, rechts voor `Console.ReadLine()`:
 
     ```csharp
     SendToBlobAsync();
@@ -103,7 +105,7 @@ In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [Cloud-naar-appar
 
 ## <a name="get-the-iot-hub-connection-string"></a>De IoT hub-connection string ophalen
 
-In dit artikel maakt u een back-end-service om meldings berichten over het uploaden van bestanden te ontvangen van de IoT-hub die u hebt gemaakt in telemetrie [van een apparaat naar een IOT-hub verzenden](quickstart-send-telemetry-dotnet.md). Als u meldings berichten over het uploaden van bestanden wilt ontvangen, moet u de service **Connect** -machtiging hebben. Standaard wordt elke IoT Hub gemaakt met een gedeeld toegangs beleid met de naam **service** dat deze machtiging verleent.
+In dit artikel maakt u een back-end-service om meldings berichten over het uploaden van bestanden te ontvangen van de IoT-hub die u hebt gemaakt in [telemetrie van een apparaat naar een IOT-hub verzenden](quickstart-send-telemetry-dotnet.md). Als u meldings berichten over het uploaden van bestanden wilt ontvangen, moet u de service **Connect** -machtiging hebben. Standaard wordt elke IoT Hub gemaakt met een gedeeld toegangs beleid met de naam **service** dat deze machtiging verleent.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -111,7 +113,7 @@ In dit artikel maakt u een back-end-service om meldings berichten over het uploa
 
 In deze sectie schrijft u een .NET-console-app die berichten over het uploaden van bestanden van IoT Hub ontvangt.
 
-1. Selecteer in de huidige Visual Studio-oplossing **bestand** > **Nieuw** > **project**. Selecteer in **een nieuw project maken de**optie **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
+1. Selecteer in de huidige Visual Studio-oplossing **File** > **New** > **project**. Selecteer in **een nieuw project maken de**optie **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
 
 1. Geef het project de naam *ReadFileUploadNotification*. Onder **oplossing**selecteert **u toevoegen aan oplossing**. Selecteer **Maken** om het project te maken.
 
@@ -129,7 +131,7 @@ In deze sectie schrijft u een .NET-console-app die berichten over het uploaden v
     using Microsoft.Azure.Devices;
     ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de waarde van de tijdelijkeaanduidingdoordeIOThub-ConnectionStringdieueerderhebtgekopieerdindeIOThub-ConnectionStringophalen:`{iot hub connection string}` [](#get-the-iot-hub-connection-string)
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de waarde van de tijdelijke aanduiding `{iot hub connection string}` door de IoT hub-connection string die u eerder hebt gekopieerd in [de IOT hub ophalen Connection String](#get-the-iot-hub-connection-string):
 
     ```csharp
     static ServiceClient serviceClient;
@@ -177,7 +179,7 @@ U kunt nu de toepassingen gaan uitvoeren.
 
 1. Klik in Solution Explorer met de rechter muisknop op uw oplossing en selecteer vervolgens **opstart projecten instellen**.
 
-1. Selecteer in **algemene eigenschappen** > **opstart project** **meerdere opstart projecten**en selecteer vervolgens de actie **starten** voor **ReadFileUploadNotification** en **SimulatedDevice**. Selecteer **OK** om uw wijzigingen op te slaan.
+1. In **algemene eigenschappen** > **project opstarten**selecteert u **meerdere opstart projecten**en selecteert u vervolgens de actie **starten** voor **ReadFileUploadNotification** en **SimulatedDevice**. Selecteer **OK** om uw wijzigingen op te slaan.
 
 1. Druk op **F5**. Beide toepassingen moeten worden gestart. U ziet dat de Upload voltooid is in één console-app en het bericht voor het uploaden van meldingen dat is ontvangen door de andere console-app. U kunt de Server Explorer [Azure Portal](https://portal.azure.com/) of Visual Studio gebruiken om te controleren of het geüploade bestand aanwezig is in uw Azure Storage-account.
 

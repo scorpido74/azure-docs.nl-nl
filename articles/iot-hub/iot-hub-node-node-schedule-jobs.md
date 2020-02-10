@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: 124af71e458e103392c554a9c86d679f691df5b9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 5053935f52153f0cd6ff2f05c5153732f5bda945
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147647"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110857"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Taken plannen en uitzenden (node. js)
 
@@ -30,7 +30,7 @@ Met een taak wordt een van deze acties gewikkeld en wordt de voortgang van de ui
 
 Meer informatie over elk van deze mogelijkheden vindt u in de volgende artikelen:
 
-* Dubbele en eigenschappen van apparaat: [Aan de slag met apparaatdubbels](iot-hub-node-node-twin-getstarted.md) en [zelf studie: De dubbele eigenschappen van een apparaat gebruiken](tutorial-device-twins.md)
+* Apparaat-dubbele en eigenschappen: [aan de slag met apparaatdubbels](iot-hub-node-node-twin-getstarted.md) en [zelf studie: een dubbele eigenschappen van het apparaat gebruiken](tutorial-device-twins.md)
 
 * Directe methoden: [IOT hub ontwikkelaars handleiding-directe methoden](iot-hub-devguide-direct-methods.md) en [zelf studie: directe methoden](quickstart-control-device-node.md)
 
@@ -53,6 +53,8 @@ Aan het einde van deze zelf studie hebt u twee node. js-apps:
 * Node. js versie 10.0. x of hoger. [Uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) hierin wordt beschreven hoe u node. js installeert voor deze zelf studie op Windows of Linux.
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
+
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -89,7 +91,7 @@ In deze sectie maakt u een node. JS-Console-app die reageert op een directe meth
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Voeg een **connectionString**-variabele toe en gebruik deze om een **client**exemplaar te maken. Vervang de `{yourDeviceConnectionString}` waarde van de tijdelijke aanduiding door het apparaat Connection String u eerder hebt gekopieerd.
+5. Voeg een **connectionString**-variabele toe en gebruik deze om een **client**exemplaar te maken. Vervang de waarde van de tijdelijke aanduiding `{yourDeviceConnectionString}` door het apparaat connection string dat u eerder hebt gekopieerd.
 
     ```javascript
     var connectionString = '{yourDeviceConnectionString}';
@@ -166,7 +168,7 @@ In deze sectie maakt u een node. JS-Console-app die een externe **lockDoor** op 
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. Voeg de volgende variabelen declaraties toe. Vervang de waarde van de tijdelijkeaanduidingdoordewaardedieuhebtgekopieerdindeIOThubophalenConnectionString.`{iothubconnectionstring}` [](#get-the-iot-hub-connection-string) Als u een ander apparaat dan **myDeviceId**hebt geregistreerd, moet u dit wijzigen in de query voorwaarde.
+5. Voeg de volgende variabelen declaraties toe. Vervang de waarde van de tijdelijke aanduiding `{iothubconnectionstring}` door de waarde die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Als u een ander apparaat dan **myDeviceId**hebt geregistreerd, moet u dit wijzigen in de query voorwaarde.
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -295,6 +297,6 @@ U kunt nu de toepassingen gaan uitvoeren.
 
 In deze zelf studie hebt u een taak gebruikt voor het plannen van een directe methode op een apparaat en het bijwerken van de eigenschappen van het apparaat.
 
-Zie [zelf studie als u aan de slag wilt gaan met IOT hub-en Apparaatbeheer patronen zoals extern via de firmware-update. Een firmware-update](tutorial-firmware-update.md)uitvoeren.
+Zie [zelf studie: een firmware-update uitvoeren](tutorial-firmware-update.md)om aan de slag te gaan met IOT hub en patronen voor Apparaatbeheer, zoals extern via de Air firmware-update.
 
 Zie aan de slag [met Azure IOT Edge](../iot-edge/tutorial-simulate-device-linux.md)om aan de slag te gaan met IOT hub.

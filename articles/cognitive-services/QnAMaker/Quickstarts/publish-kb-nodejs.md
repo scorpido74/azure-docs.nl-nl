@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 3ca664afc458f794e07782354d0bad5c46c66537
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3df0a486baa2184a58ac33c24a5d13973885890f
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474023"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109501"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Snelstartgids: QnA Maker REST-Api's voor node. js
 
@@ -23,7 +23,7 @@ Ga aan de slag met de QnA Maker REST-Api's voor node. js. Volg deze stappen om d
 
 Gebruik de QnA Maker REST-Api's voor node. js voor het volgende:
 
-* Een knowledge base maken
+* Een kennisdatabase maken
 * Een kennis database vervangen
 * Een kennisdatabase publiceren
 * Een knowledge base verwijderen
@@ -68,7 +68,7 @@ Voeg de `reqeuestretry`-en `request` NPM-pakketten toe:
 npm install requestretry request --save
 ```
 
-## <a name="code-examples"></a>Codevoorbeelden
+## <a name="code-examples"></a>Code voorbeelden
 
 Deze code fragmenten laten zien hoe u het volgende kunt doen met de QnA Maker REST-Api's voor node. js:
 
@@ -98,7 +98,7 @@ Stel de volgende omgevings waarden in:
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
 
-## <a name="create-a-knowledge-base"></a>Een knowledge base maken
+## <a name="create-a-knowledge-base"></a>Een kennisdatabase maken
 
 In een Knowledge Base worden vraag-en antwoord paren opgeslagen, gemaakt op basis van een JSON-object van:
 
@@ -162,7 +162,7 @@ node rest-apis.js
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure-CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -170,6 +170,6 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 >[Zelf studie: een KB maken en beantwoorden](../tutorials/create-publish-query-in-portal.md)
 
 * [Wat is de QnA Maker-API?](../Overview/overview.md)
-* [Een kennisdatabase bewerken](../how-to/edit-knowledge-base.md)
+* [Een kennis database bewerken](../how-to/edit-knowledge-base.md)
 * [Gebruiks analyse ophalen](../how-to/get-analytics-knowledge-base.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/rest-api/rest-api.js).
+* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/rest-api/rest-api.js).

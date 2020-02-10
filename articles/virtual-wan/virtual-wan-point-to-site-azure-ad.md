@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 02/07/2019
 ms.author: alzam
-ms.openlocfilehash: 19aa029311584b5a9762691d24ed10c1666a032c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: cad502dc759a4d481f3071a8a27ddeca79fbc18c
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782429"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108305"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>Zelf studie: een VPN-verbinding voor een gebruiker maken met behulp van Azure Virtual WAN
 
@@ -55,7 +55,7 @@ Open een browser, ga naar [Azure Portal](https://portal.azure.com) en meld u aan
 2. Selecteer **virtueel WAN** in de resultaten. Klik op de pagina virtueel WAN op **maken** om de pagina WAN maken te openen.
 3. Vul op de pagina **WAN maken** op het tabblad **basis beginselen** de volgende velden in:
 
-   ![Virtual WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
+   ![Virtuele WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
 
    * **Abonnement** - selecteer het abonnement dat u wilt gebruiken.
    * **Resource groep** : nieuwe maken of bestaande gebruiken.
@@ -86,19 +86,17 @@ Open een browser, ga naar [Azure Portal](https://portal.azure.com) en meld u aan
 
 Een P2S-configuratie definieert de parameters om verbinding te maken met externe clients.
 
-1. Stel de volgende variabelen in en vervang waarden naar behoefte voor uw omgeving.
+1. Onder uw virtuele WAN selecteert u **VPN-configuraties voor gebruikers**.
 
-   ```powershell
-   $aadAudience = "00000000-abcd-abcd-abcd-999999999999"
-   $aadIssuer = "https://sts.windows.net/00000000-abcd-abcd-abcd-999999999999/"
-   $aadTenant = "https://login.microsoftonline.com/00000000-abcd-abcd-abcd-999999999999"    
-   ```
+   ![nieuwe configuratie](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
 
-2. Voer de volgende opdrachten uit om de configuratie te maken:
+2. Klik op **+ VPN-configuratie voor gebruiker maken**.
 
-   ```powershell
-   $aadConfig = New-AzVpnServerConfiguration -ResourceGroupName <ResourceGroup> -Name newAADConfig -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudience -Location westcentralus
-   ```
+   ![nieuwe configuratie](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
+
+3. Voer de gegevens in en klik op **maken**
+
+   ![nieuwe configuratie](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
 ## <a name="hub"></a>Hub-toewijzing bewerken
 

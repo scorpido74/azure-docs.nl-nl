@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/24/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8f22e575b609b0dcd56bf9a1f49fffd41f14e898
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b5f2b42728fd6f3d61695b4f88cc416015dd97cb
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062197"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108270"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Meld u aan bij uw accounts met behulp van de app Microsoft Authenticator
 
@@ -116,7 +116,7 @@ Voor de stappen die nodig zijn om u aan te melden bij uw werk of school of uw pe
 | Als ik verificatie in twee stappen voor mijn account inschakel, moet ik dan twee meldingen goed keuren? | Nee. Als u zich aanmeldt bij uw Microsoft-account met behulp van uw telefoon, telt dit ook op als verificatie in twee stappen, dus er is geen tweede goed keuring vereist. |
 | Wat moet ik doen als ik mijn telefoon kwijt ben? Hoe kan ik toegang tot mijn account? | U kunt altijd de koppeling een wacht woord gebruiken in plaats daarvan op de aanmeldings pagina selecteren om terug te gaan naar het gebruik van uw wacht woord. Als u echter verificatie in twee stappen gebruikt, moet u nog steeds een tweede methode gebruiken om uw identiteit te verifiëren.<br><br>**Belangrijk**<br>We raden u ten zeerste aan om ervoor te zorgen dat er meer dan één, up-to-date en verificatie methode zijn gekoppeld aan uw account.<br><br>U kunt uw verificatie methoden voor persoonlijke accounts beheren via de pagina [beveiligings instellingen](https://account.live.com/proofs/manage) . Voor werk-of school accounts gaat u naar de [aanvullende beveiligings verificatie](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) pagina van uw organisatie of de pagina **uw account beveiligen** als uw beheerder beveiligings gegevens heeft ingeschakeld. Zie voor meer informatie over beveiligings informatie [overzicht van beveiligings gegevens (preview)](user-help-security-info-overview.md).<br><br>Als u uw verificatie methoden niet kunt beheren, moet u contact opnemen met uw beheerder. |
 | Hoe kan ik deze functie niet meer gebruiken en gaat u terug naar mijn wacht woord gebruiken? | Voor persoonlijke accounts selecteert u de koppeling **een wacht woord gebruiken** tijdens het aanmelden. De meest recente keuze is onthouden en wordt standaard aangeboden als u zich de volgende keer aanmeldt. Als u ooit terug wilt gaan naar het gebruik van de aanmelding via de telefoon, selecteert u de koppeling **een app gebruiken tijdens het** aanmelden.<br><br>Voor werk-of school accounts moet u de registratie van het apparaat opheffen via de pagina **instellingen** van de app Microsoft Authenticator of het apparaat uitschakelen vanuit het gebied **apparaten & activiteit** van uw profiel. Zie [uw profiel-en account gegevens bijwerken in de portal mijn apps](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information)voor meer informatie over het uitschakelen van uw apparaat uit uw profiel. |
-| Waarom kan ik niet meer dan één werk-of school account gebruiken voor aanmelding via de telefoon? | Een telefoon moet worden geregistreerd bij één werk-of school account. Als u aanmelden via telefoon wilt inschakelen voor een ander werk-of school account, moet u eerst de registratie van het oude apparaat opheffen via de pagina **instellingen** . |
+| Waarom kan ik niet meer dan één werk-of school account gebruiken voor aanmelding via de telefoon? | Een telefoon moet worden geregistreerd bij één werk-of school account. Als u aanmelden via telefoon wilt inschakelen voor een ander werk-of school account, moet u de registratie van uw account bij dit apparaat ongedaan maken via de pagina **instellingen** . |
 | Kan ik me via mijn telefoon aanmelden bij mijn computer? | Voor uw computer wordt u aangeraden zich aan te melden met Windows hello op Windows 10. Met Windows hello kunt u zich aanmelden met uw gezicht, vinger afdruk of pincode. |
 
 ## <a name="next-steps"></a>Volgende stappen

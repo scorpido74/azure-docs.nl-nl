@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/19/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 9483db2187c05fe8e0f4fa2d41c17b8748ba3db7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474037"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108994"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Snelstartgids: Knowledge Base testen met batch vragen en verwachte antwoorden
 
@@ -24,7 +24,7 @@ Gebruik het hulp programma voor het testen van de QnA Maker om de kennis bases i
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Maak een QnA Maker-service](create-publish-knowledge-base.md#create-a-new-qna-maker-knowledge-base) of gebruik een bestaande service, die gebruikmaakt van de Engelse taal voor het voorbeeld document dat in deze Quick Start wordt gebruikt.
+* [Maak een QnA Maker-service](create-publish-knowledge-base.md) of gebruik een bestaande service, die gebruikmaakt van de Engelse taal.
 * Down load het [multi-`.docx`-voorbeeld bestand](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)
 * Down load het [hulp programma voor batch tests](https://aka.ms/qnamakerbatchtestingtool), pak het uitvoer bare bestand uit het `.zip`-bestand uit.
 
@@ -41,9 +41,16 @@ Gebruik het hulp programma voor het testen van de QnA Maker om de kennis bases i
     * Naam van de Azure QnA-service
     * Taal: de Engelse taal
 1. Voer de naam `Multi-turn batch test quickstart` in als de naam van uw Knowledge Base.
-1. Schakel in **stap 4** **het inschakelen van meerdere Schakel extractie uit vanuit url's, PDF-of DOCX-bestanden**.
-1. Voer de **standaard antwoord tekst** van `Quickstart - can't find answer`in. In een productie Knowledge Base moet deze informatie meer instructies voor de gebruiker zijn, maar voor deze Snelstartgids geldt een eenvoudig antwoord.
-1. Selecteer in **stap 4**nog **+ bestand toevoegen** en selecteer vervolgens de lijst met gedownloade `.docx` bestanden in de vereisten.
+
+1. Configureer in **stap 4**de instellingen met de volgende tabel:
+
+    |Instelling|Waarde|
+    |--|--|
+    |**Schakel het ophalen van meerdere schakelingen uit vanuit Url's, PDF-of DOCX-bestanden.**|Geselecteerd|
+    |**Standaard antwoord tekst**| `Batch test - default answer not found.`|
+    |**+ Bestand toevoegen**|Selecteer de gedownloade `.docx` bestands vermelding in de vereisten.|
+    |**Chit-Chat**|**Professionele** selecteren|
+
 1. Selecteer in **stap 5** **de optie uw KB maken**.
 
     Wanneer het maken van het proces is voltooid, wordt in de Portal de Bewerk bare Knowledge Base weer gegeven.
@@ -57,7 +64,7 @@ Gebruik het hulp programma voor het testen van de QnA Maker om de kennis bases i
     |--|--|
     |Gepubliceerde host|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
     |Gepubliceerde sleutel|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` teken reeks van 32 weer gegeven na `Endpoint`)|
-    |App-id|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` teken reeks (36) die als onderdeel van `POST`wordt weer gegeven |
+    |App-ID|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` teken reeks (36) die als onderdeel van `POST`wordt weer gegeven |
 
 ## <a name="create-batch-test-file-with-question-ids"></a>Batch test bestand maken met vraag-Id's
 
@@ -67,9 +74,9 @@ Als u het hulp programma voor batch testen wilt gebruiken, maakt u een bestand m
 |--|--|--|
 |Knowledge Base-ID|Uw Knowledge Base-ID vindt u op de pagina publiceren. Test verschillende kennis grondslagen in dezelfde service in één keer in één bestand met behulp van verschillende Knowledge Base-Id's in één bestand.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` teken reeks (36) die als onderdeel van `POST`wordt weer gegeven |
 |Vraag|De vraag tekst die een gebruiker invoert. Maxi maal 1.000 tekens.|`How do I sign out?`|
-|Tags met metagegevens|optioneel|`topic:power` maakt gebruik van de indeling _Key: waarde_|
-|Bovenste para meter|optioneel|`25`|
-|Verwachte antwoord-ID|optioneel|`13`|
+|Tags met metagegevens|Beschrijving|`topic:power` maakt gebruik van de indeling _Key: waarde_|
+|Bovenste para meter|Beschrijving|`25`|
+|Verwachte antwoord-ID|Beschrijving|`13`|
 
 Voor deze Knowledge Base voegt u drie rijen van alleen de 2 vereiste kolommen toe aan het bestand. De eerste kolom is uw Knowledge Base-ID en de tweede kolom moet de volgende lijst met vragen zijn:
 
@@ -130,14 +137,14 @@ Gebruik de volgende tabel om te begrijpen hoe u de veld waarden voor optionele g
 |Kolom nummer|Optionele kolom|Gegevenslocatie|
 |--|--|--|
 |3|metagegevens|Bestaande Knowledge Base exporteren voor bestaande _sleutel:_ waardeparen.|
-|4|top|De standaard waarde van `25` wordt aanbevolen.|
+|4|Boven|De standaard waarde van `25` wordt aanbevolen.|
 |5|ID van de vraag en de set met antwoorden|Bestaande Knowledge Base exporteren voor ID-waarden. U ziet ook dat de Id's zijn geretourneerd in het uitvoer bestand.|
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>Meta gegevens toevoegen aan de Knowledge Base
 
 1. Voeg in de QnA-Portal op de pagina **bewerken** meta gegevens van `topic:power` toe aan de volgende vragen:
 
-    |Vragen|
+    |Beantwoorden|
     |--|
     |Uw Surface Pro 4 in rekening brengen|
     |Het accu niveau controleren|
@@ -160,7 +167,7 @@ Er zijn twee belang rijke scenario's voor batch tests:
 * **Chat-logboek bestanden verwerken** : het meest voorkomende antwoord op een eerder getwijfelde vraag bepalen: de meestvoorkomende situatie is dat u het logboek bestand van query's moet verwerken, zoals de gebruikers vragen van een chat-bot. Een test voor een batch-bestand maken met alleen de vereiste kolommen. De test retourneert het eerste antwoord voor elke vraag. Dat betekent niet dat het beste antwoord het juiste antwoord is. Wanneer u deze test hebt voltooid, gaat u verder met de validatie test.
 * **Validatie test** : Valideer het verwachte antwoord. Deze test vereist dat alle vragen en overeenkomende verwachte antwoorden in de batch test zijn gevalideerd. Dit kan hand matig proces vereisen.
 
-In de volgende procedure wordt ervan uitgegaan dat het scenario is voor het verwerken van chat-logboeken met 
+In de volgende procedure wordt ervan uitgegaan dat het scenario is voor het verwerken van chat-logboeken met
 
 1. Maak een nieuw batch-test bestand voor het toevoegen van optionele gegevens `batch-test-data-2.tsv`. Voeg de 6 rijen van het oorspronkelijke invoer bestand voor batch tests toe en voeg vervolgens de set-ID voor meta gegevens, top en QnA toe voor elke rij.
 

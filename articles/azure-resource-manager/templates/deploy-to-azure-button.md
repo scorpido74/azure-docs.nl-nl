@@ -2,13 +2,13 @@
 title: Knop implementeren naar Azure
 description: Gebruik de knop om Azure Resource Manager sjablonen te implementeren vanuit een GitHub-opslag plaats.
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: cf22203b843f4483f495b6eba9a522267c010a79
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/07/2020
+ms.openlocfilehash: 88436eac970b252d7b0bc7bccee4131e06e9e0cf
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050588"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109042"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Een implementatie knop gebruiken voor het implementeren van sjablonen uit de GitHub-opslag plaats
 
@@ -62,7 +62,15 @@ U hebt de volledige URL voor de koppeling.
 
 ## <a name="create-deploy-to-azure-button"></a>Knop voor implementeren naar Azure maken
 
-Ten slotte plaatst u de koppeling en de afbeelding samen. U kunt deze HTML toevoegen aan het README.md-bestand in uw GitHub-opslag plaats of op een webpagina.
+Ten slotte plaatst u de koppeling en de afbeelding samen.
+
+Als u de knop met prijs verlaging in het README.md-bestand in uw GitHub-opslag plaats of een webpagina wilt toevoegen, gebruikt u:
+
+```markdown
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
+```
+
+Gebruik voor HTML:
 
 ```html
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
@@ -73,10 +81,8 @@ Ten slotte plaatst u de koppeling en de afbeelding samen. U kunt deze HTML toevo
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 Selecteer de volgende knop om de volledige oplossing te testen:
-<br><br>
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
-  <img src="https://aka.ms/deploytoazurebutton"/>
-</a>
+
+[![Implementeren in Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
 
 In de portal wordt een deel venster weer gegeven waarmee u eenvoudig parameter waarden kunt opgeven. De para meters worden vooraf ingevuld met de standaard waarden van de sjabloon.
 

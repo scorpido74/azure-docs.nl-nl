@@ -9,18 +9,18 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 79e65671613364f5cc05153d90cfdcd5959a279f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 3b37d7e049e7daabbbb4fe1a7b49feb654e8accc
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939314"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110254"
 ---
 # <a name="get-started-with-device-management-net"></a>Aan de slag met Apparaatbeheer (.NET)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
-In deze handleiding ontdekt u hoe u:
+In deze zelfstudie ontdekt u hoe u:
 
 * Gebruik de Azure Portal om een IoT-hub te maken en een apparaat-id te maken in uw IoT-hub.
 
@@ -39,6 +39,8 @@ Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 * Visual Studio.
 
 * Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
+
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -74,7 +76,7 @@ In deze sectie maakt u een .NET-console-app die C#wordt gebruikt, waarmee een ap
 
    Met deze stap wordt een verwijzing naar het [Azure IOT Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg aan het begin van het bestand **Program.cs** de volgende `using`-instructies toe:
+1. Voeg aan het begin van het bestand `using`Program.cs**de volgende**-instructies toe:
 
    ```csharp
    using Microsoft.Azure.Devices;
@@ -157,7 +159,7 @@ Als u de gesimuleerde apparaat-app wilt maken, volgt u deze stappen:
 
    Met deze stap wordt een verwijzing naar het [Azure IOT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg aan het begin van het bestand **Program.cs** de volgende `using`-instructies toe:
+1. Voeg aan het begin van het bestand `using`Program.cs**de volgende**-instructies toe:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;

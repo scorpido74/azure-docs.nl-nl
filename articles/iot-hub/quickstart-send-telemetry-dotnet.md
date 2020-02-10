@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 33d0e5c40e4c7d404558fe8fa7a5fb8f5967924e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4df1070fed456cc8f1d53d1b83b6d9b42ad0df03
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773807"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110552"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Quick Start: verzend telemetrie van een apparaat naar een IoT-hub en lees het met een back-end-toepassing (.NET)
 
@@ -49,6 +49,8 @@ az extension add --name azure-cli-iot-ext
 
 Down load de Azure C# IOT-voor beelden van https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip en pak het zip-archief uit.
 
+Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in deze Snelstartgids maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
@@ -75,7 +77,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
     ```
 
-    Noteer de apparaatverbindingsreeks. Deze ziet er ongeveer als volgt uit:
+    Noteer de apparaatverbindingsreeks, die er ongeveer zo uitziet:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDotnetDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -149,7 +151,7 @@ De back-endtoepassing maakt verbinding met het eindpunt **Events** aan de servic
 
     In de volgende schermafbeelding ziet u de uitvoer op het moment dat de back-endtoepassing telemetriegegevens ontvangt die door het gesimuleerde apparaat naar de hub zijn verzonden:
 
-    ![De back-endtoepassing uitvoeren](media/quickstart-send-telemetry-dotnet/ReadDeviceToCloud.png)
+    ![Het hulpprogramma uitvoeren](media/quickstart-send-telemetry-dotnet/ReadDeviceToCloud.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -8,12 +8,12 @@ ms.date: 01/14/2020
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 5f4728c4b604c606d12edcc7a00879b31e54bc85
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f016902f6cf7e0238dadb97d816f4590caec112e
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264268"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109340"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Problemen met query's oplossen bij het gebruik van Azure Cosmos DB
 
@@ -224,8 +224,8 @@ Indexerings beleid:
 Bijgewerkte query (bevat beide eigenschappen in de `ORDER BY`-component):
 
 ```sql
-SELECT * FROM c 
-WHERE c.foodGroup = “Soups, Sauces, and Gravies” 
+SELECT * FROM c
+WHERE c.foodGroup = “Soups, Sauces, and Gravies”
 ORDER BY c.foodGroup, c._ts ASC
 ```
 
@@ -262,7 +262,7 @@ Bijgewerkt indexerings beleid:
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>Expressies voor samen voegen optimaliseren met behulp van een subquery
 Subquery's voor meerdere waarden kunnen `JOIN`-expressies optimaliseren door predikaten te pushen na elke Select-many-expressie in plaats van na alle kruis koppelingen in de `WHERE`-component.
 
-Laten we nu eens naar deze query kijken:
+Bekijk de volgende query:
 
 ```sql
 SELECT Count(1) AS Count
@@ -315,7 +315,7 @@ Deze query's worden ook geoptimaliseerd door de partitie sleutel in de query op 
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup IN(“Soups, Sauces, and Gravies”, “"Vegetables and Vegetable Products”) and  c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup IN("Soups, Sauces, and Gravies", "Vegetables and Vegetable Products") and c.description = "Mushroom, oyster, raw"
 ```
 
 Query's die bereik filters hebben op de partitie sleutel of die geen filters hebben op de partitie sleutel, moeten ' uitwaaieren ' hebben en de index van elke fysieke partitie controleren op resultaten.

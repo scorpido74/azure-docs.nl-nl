@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 52d7eb035ed06c368214b8b5cb7ef583cd99b51b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f68e25a618f5c6499ccc9d76c510eab8f1650330
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161987"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110882"
 ---
 # <a name="get-started-with-device-management-java"></a>Aan de slag met Apparaatbeheer (Java)
 
@@ -40,7 +40,7 @@ Aan het einde van deze zelf studie hebt u twee Java Console-apps:
 
 * Hiermee wordt de tijd gerapporteerd waarop de laatste keer opnieuw is opgestart via een gerapporteerde eigenschap.
 
-**trigger-reboot**. Deze app:
+**trigger-opnieuw opstarten**. Deze app:
 
 * Roept een directe methode aan in de gesimuleerde apparaat-app.
 
@@ -58,6 +58,8 @@ Aan het einde van deze zelf studie hebt u twee Java Console-apps:
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
+
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -95,7 +97,7 @@ Met deze console-app maakt u verbinding met uw IoT Hub om de directe methode aan
 
 3. Ga bij de opdracht prompt naar de map **trigger-reboot** .
 
-4. Open met een tekst editor het bestand **pom. XML** in de map **trigger-reboot** en voeg de volgende afhankelijkheden toe aan het knoop punt afhankelijkheden. Met deze afhankelijkheid kunt u het IOT-service-client-pakket in uw app gebruiken om te communiceren met uw IoT-hub:
+4. Open met een tekst editor het bestand **pom. XML** in de map **trigger-reboot** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het IOT-service-client-pakket in uw app gebruiken om te communiceren met uw IoT-hub:
 
     ```xml
     <dependency>
@@ -109,7 +111,7 @@ Met deze console-app maakt u verbinding met uw IoT Hub om de directe methode aan
     > [!NOTE]
     > U kunt de meest recente versie van **IOT-service-client** controleren met behulp van [maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-5. Voeg het volgende **Build** -knoop punt toe na het knoop punt afhankelijkheden. Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen:
+5. Voeg het volgende **Build** -knoop punt toe na het knoop punt **afhankelijkheden** . Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen:
 
     ```xml
     <build>
@@ -146,7 +148,7 @@ Met deze console-app maakt u verbinding met uw IoT Hub om de directe methode aan
     import java.util.concurrent.ExecutorService;
     ```
 
-9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{youriothubconnectionstring}` door de IOT hub Connection String u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string):
+9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{youriothubconnectionstring}` door de IoT Hub connection string u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string):
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -238,7 +240,7 @@ Met deze console-app maakt u verbinding met uw IoT Hub om de directe methode aan
 
 In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app luistert naar de herstart directe methode aanroep van uw IoT-hub en reageert onmiddellijk op die aanroep. De app wordt vervolgens gedurende een tijdje geslapen om het opstart proces te simuleren voordat er een gerapporteerde eigenschap wordt gebruikt om de back-end-app voor het starten van de **trigger** te melden dat de computer opnieuw moet worden opgestart.
 
-1. Maak in de map **DM-Get-Started** een Maven-project met de naam gesimuleerd **apparaat** met behulp van de volgende opdracht bij de opdracht prompt:
+1. Maak in de map **DM-Get-Started** een Maven-project met de naam **gesimuleerd apparaat** met behulp van de volgende opdracht bij de opdracht prompt:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -259,7 +261,7 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     > [!NOTE]
     > U kunt de meest recente versie van **IOT-Device-client** controleren met behulp van [maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. Voeg de volgende afhankelijkheden toe aan het knoop punt afhankelijkheden. Met deze afhankelijkheid wordt een NOP geconfigureerd voor de Apache [SLF4J](https://www.slf4j.org/) logging-gevel, die wordt gebruikt door de client-SDK voor het implementeren van logboek registratie. Deze configuratie is optioneel, maar als u deze weglaat, wordt er mogelijk een waarschuwing weer gegeven in de console wanneer u de app uitvoert. Zie [logboek registratie](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) in de *voor beelden voor het* leesmij-bestand voor Azure IOT Device SDK voor Java voor meer informatie over logboek registratie in de client-SDK.
+4. Voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid wordt een NOP geconfigureerd voor de Apache [SLF4J](https://www.slf4j.org/) logging-gevel, die wordt gebruikt door de client-SDK voor het implementeren van logboek registratie. Deze configuratie is optioneel, maar als u deze weglaat, wordt er mogelijk een waarschuwing weer gegeven in de console wanneer u de app uitvoert. Zie [logboek registratie](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) in de *voor beelden voor het* leesmij-bestand voor Azure IOT Device SDK voor Java voor meer informatie over logboek registratie in de client-SDK.
 
     ```xml
     <dependency>
@@ -269,7 +271,7 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     </dependency>
     ```
 
-5. Voeg het volgende **Build** -knoop punt toe na het knoop punt afhankelijkheden. Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen:
+5. Voeg het volgende **Build** -knoop punt toe na het knoop punt **afhankelijkheden** . Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen:
 
     ```xml
     <build>
@@ -305,7 +307,7 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     import java.util.HashSet;
     ```
 
-9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{yourdeviceconnectionstring}` door het apparaat Connection String u hebt genoteerd in het gedeelte [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub) :
+9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{yourdeviceconnectionstring}` door het apparaat connection string u hebt genoteerd in het gedeelte [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub) :
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -460,7 +462,7 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
 
 U bent nu klaar om de apps uit te voeren.
 
-1. Voer bij een opdracht prompt in de map met gesimuleerde **apparaten** de volgende opdracht uit om te beginnen met Luis teren naar de aanroepen van de methode reboot van uw IOT-hub:
+1. Voer bij een opdracht prompt in de map met **gesimuleerde apparaten** de volgende opdracht uit om te beginnen met Luis teren naar de aanroepen van de methode reboot van uw IOT-hub:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"

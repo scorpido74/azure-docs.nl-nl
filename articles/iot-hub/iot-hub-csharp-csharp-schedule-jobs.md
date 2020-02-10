@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: db4824203f63fa2fe0d4256a475d18a501b17e0e
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 7925ca5c69d01b098764ff744fb832eaa43118d6
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147742"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108970"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Taken plannen en uitzenden (.NET)
 
@@ -31,9 +31,9 @@ Een taak verpakt een van deze acties en traceert de uitvoering op basis van een 
 
 Zie voor meer informatie over elk van deze mogelijkheden:
 
-* Dubbele en eigenschappen van apparaat: [Aan de slag met apparaatdubbels](iot-hub-csharp-csharp-twin-getstarted.md) en [zelf studie: De dubbele eigenschappen van een apparaat gebruiken](tutorial-device-twins.md)
+* Apparaat-dubbele en eigenschappen: [aan de slag met apparaatdubbels](iot-hub-csharp-csharp-twin-getstarted.md) en [zelf studie: een dubbele eigenschappen van het apparaat gebruiken](tutorial-device-twins.md)
 
-* Directe methoden: [IOT hub ontwikkelaars handleiding-directe methoden](iot-hub-devguide-direct-methods.md) en [zelf studie: Directe methoden gebruiken](quickstart-control-device-dotnet.md)
+* Directe methoden: [IOT hub ontwikkelaars handleiding-directe methoden](iot-hub-devguide-direct-methods.md) en [zelf studie: directe methoden gebruiken](quickstart-control-device-dotnet.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -54,6 +54,8 @@ Aan het einde van deze zelf studie hebt u twee .NET (C#)-console-apps:
 * Visual Studio.
 
 * Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
+
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -81,7 +83,7 @@ In deze sectie maakt u een .NET-console-app die reageert op een directe methode 
 
     Met deze stap wordt een verwijzing naar het [Azure IOT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
+1. Voeg aan het begin van het bestand `using`Program.cs**de volgende**-instructies toe:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -176,14 +178,14 @@ In deze sectie maakt u een .NET-console-app ( C#met) die gebruikmaakt van taken 
 
    Met deze stap wordt een verwijzing naar het [Azure IOT Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
+1. Voeg aan het begin van het bestand `using`Program.cs**de volgende**-instructies toe:
 
     ```csharp
     using Microsoft.Azure.Devices;
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Voeg de volgende `using` instructie toe als deze niet al aanwezig is in de standaard-instructies.
+1. Voeg de volgende `using`-instructie toe als deze niet al aanwezig is in de standaard-instructies.
 
     ```csharp
     using System.Threading;
@@ -292,9 +294,9 @@ U kunt nu de apps uitvoeren.
 
 1. Klik in Visual Studio Solution Explorer met de rechter muisknop op uw oplossing en selecteer vervolgens **opstart projecten instellen**.
 
-1. Selecteer **algemene eigenschappen** > **Start project**en selecteer vervolgens **meerdere opstart projecten**.
+1. Selecteer **algemene eigenschappen** > **opstart project**en selecteer vervolgens **meerdere opstart projecten**.
 
-1. Zorg ervoor `SimulateDeviceMethods` dat boven aan de lijst wordt gevolgd door. `ScheduleJob` Stel beide acties in op **Start** en selecteer **OK**.
+1. Zorg ervoor dat `SimulateDeviceMethods` boven aan de lijst staat, gevolgd door `ScheduleJob`. Stel beide acties in op **Start** en selecteer **OK**.
 
 1. Voer de projecten uit door te klikken op **Start** of ga naar het menu **fout opsporing** en klik op **fout opsporing starten**.
 
@@ -306,6 +308,6 @@ U kunt nu de apps uitvoeren.
 
 In deze zelf studie hebt u een taak gebruikt voor het plannen van een directe methode op een apparaat en het bijwerken van de eigenschappen van het apparaat.
 
-* Lees [zelf studie als u aan de slag wilt gaan met IOT hub en patronen voor Apparaatbeheer, zoals extern via de firmware-update: Een firmware-update](tutorial-firmware-update.md)uitvoeren.
+* Lees [zelf studie: instructies voor het uitvoeren van een firmware-update](tutorial-firmware-update.md)om door te gaan met IOT hub en patronen voor Apparaatbeheer, zoals extern via de Air firmware-update.
 
 * Zie aan de slag [met IOT Edge](../iot-edge/tutorial-simulate-device-linux.md)voor meer informatie over het implementeren van AI naar edge-apparaten met Azure IOT Edge.
