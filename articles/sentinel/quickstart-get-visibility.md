@@ -7,15 +7,15 @@ manager: rkarlin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: fasttrack-edit
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 35ecb5c4e3987676d235fc6fd09f58c046301cda
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: d91567f10b33717b157bd0b839d2706996c5b591
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548030"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087196"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Snelstartgids: aan de slag met Azure Sentinel
 
@@ -53,7 +53,7 @@ De hoofd tekst van de overzichts pagina geeft inzicht in de beveiligings status 
 
 ## Ingebouwde werkmappen gebruiken<a name="dashboards"></a>
 
-Ingebouwde werkmappen bieden geïntegreerde gegevens van uw verbonden gegevens bronnen om u te laten overgaan op de gebeurtenissen die in deze services worden gegenereerd. De ingebouwde werkmappen omvatten Azure ID, Azure-activiteiten gebeurtenissen en on-premises. dit kunnen gegevens zijn van Windows-gebeurtenissen van servers, van de eerste partij, van derden, waaronder firewall verkeers logboeken, Office 365 en onveilige protocollen op basis van Windows evenementen. De werkmappen zijn gebaseerd op Azure Monitor werkmappen om u te voorzien van verbeterde aanpassings mogelijkheden en flexibiliteit bij het ontwerpen van uw eigen werkmap. Zie [werkmappen](../azure-monitor/app/usage-workbooks.md)voor meer informatie.
+Ingebouwde werkmappen bieden geïntegreerde gegevens van uw verbonden gegevens bronnen om u te laten overgaan op de gebeurtenissen die in deze services worden gegenereerd. De ingebouwde werkmappen omvatten Azure AD, gebeurtenissen voor Azure-activiteiten en on-premises, die gegevens kunnen bevatten van Windows-gebeurtenissen van servers, van de eerste partij, van derden, waaronder firewall verkeers logboeken, Office 365 en onveilige protocollen op basis van Windows evenementen. De werkmappen zijn gebaseerd op Azure Monitor werkmappen om u te voorzien van verbeterde aanpassings mogelijkheden en flexibiliteit bij het ontwerpen van uw eigen werkmap. Zie [werkmappen](../azure-monitor/app/usage-workbooks.md)voor meer informatie.
 
 1. Onder **instellingen**selecteert u **werkmappen**. Onder **geïnstalleerd**ziet u alle geïnstalleerde werkmappen. Onder **alle**kunt u de volledige galerie met ingebouwde werkmappen zien die beschikbaar zijn voor installatie. 
 2. Zoek naar een specifieke werkmap om de hele lijst en een beschrijving van de Voorst Ellen te bekijken. 

@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/24/2020
+ms.date: 02/07/2020
 ms.author: raiye
-ms.openlocfilehash: a38685ba4cca4df2c2ae1a52e46626072135408d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: cca79946c0537b75335eb2e64ae1fa429f2c8d18
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049864"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087226"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
@@ -42,9 +42,9 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 |  Rel 20-01  |  [4494174]  |  Micro code v4  | [6,15] | 29 aug, 2019 |
 |  Rel 20-01  |  [4532947]  |  Windows-beveiliging  | [6,15] | 14 januari 2020 |
 |  Rel 20-01  |  [4534273]  |  LCU  | [6,15] | 14 januari 2020 |
-|  Rel 20-01  |  [4530734]  |  Niet-beveiliging  | [2,94] | 10 december 2019 |
+|  Rel 20-01  |  [4530734]  |  Maandelijks samen vouwen  | [2,94] | 10 december 2019 |
 |  Rel 20-01  |  [4530691]  |  Maandelijks samen vouwen   | [3,81] | 10 december 2019 |
-|  Rel 20-01  |  [4530702]  |  Niet-beveiliging  | [4,74] | 10 december 2019 |
+|  Rel 20-01  |  [4530702]  |  Maandelijks samen vouwen  | [4,74] | 10 december 2019 |
 
 [4532960]: https://support.microsoft.com/kb/4532960
 [4534251]: https://support.microsoft.com/kb/4534251
