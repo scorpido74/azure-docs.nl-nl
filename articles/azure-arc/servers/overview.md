@@ -7,15 +7,15 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Azure Automation, DSC, Power shell, desired state Configuration, update beheer, bijhouden van wijzigingen, inventaris, runbooks, Python, grafisch, hybride
-ms.date: 01/29/2020
+ms.date: 02/03/2020
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: b0f1d235391c4c4e3804a6dccc8174e946035b6a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c38bc2d5d9a7e23c0bb3041a5cb3b5cd1da9adb1
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899196"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114239"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Wat is Azure Arc voor servers (preview-versie)
 
@@ -55,6 +55,12 @@ De volgende versies van het Windows-en Linux-besturings systeem worden officieel
 >Deze preview-versie van de verbonden machine-agent voor Windows ondersteunt alleen Windows Server die is geconfigureerd voor gebruik van de Engelse taal.
 >
 
+### <a name="required-permissions"></a>Vereiste machtigingen
+
+- Voor de onboarding van machines bent u lid van de rol **Azure Connected machine** .
+
+- Als u een machine wilt lezen, wijzigen, opnieuw wilt indelen en verwijderen, bent u lid van de **Azure Connected machine resource Administrator** -rol. 
+
 ### <a name="azure-subscription-and-service-limits"></a>Azure-abonnement en service limieten
 
 Voordat u uw computers met Azure-Arc voor servers (preview) configureert, moet u de limieten voor het Azure Resource Manager- [abonnement](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager) en de [limieten van de resource groep](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) controleren om het aantal machines te plannen dat moet worden verbonden.
@@ -89,7 +95,7 @@ De Url's in de vorige tabel zijn vereist naast de IP-adres bereik gegevens van d
 
 Azure Arc voor servers (preview) is afhankelijk van de volgende Azure-resource providers in uw abonnement om deze service te kunnen gebruiken:
 
-- **Microsoft.HybridCompute**
+- **Micro soft. HybridCompute**
 - **Micro soft. GuestConfiguration**
 
 Als ze niet zijn geregistreerd, kunt u ze registreren met de volgende opdrachten:
