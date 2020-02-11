@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: 83c4ad92cc367deb52e4e9e5cd8b76ddab409933
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/10/2020
+ms.openlocfilehash: 75e61ea3f4fa6c2b346f912a9effd66ad94e7e93
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533277"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116445"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Zelf studie: automatische machine learning gebruiken om taxi tarieven te voors pellen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begin
 ## <a name="prerequisites"></a>Vereisten
 
 * Voltooi de [installatie handleiding](tutorial-1st-experiment-sdk-setup.md) als u nog geen virtuele Machine met Azure machine learning-werk ruimte of-notebook hebt.
-* Nadat u de installatie zelf studie hebt voltooid, opent u de notebook **zelf studies/Regression-Automated-ml. ipynb** met dezelfde notebook server.
+* Nadat u de installatie zelf studie hebt voltooid, opent u het notitie blok *zelf studies/Regression-automl-NYC-taxi-data/Regression-Automated-ml. ipynb* met dezelfde notebook server.
 
 Deze zelf studie is ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u deze wilt uitvoeren in uw eigen [lokale omgeving](how-to-configure-environment.md#local). Voer `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` uit om de vereiste pakketten op te halen.
 
@@ -115,8 +115,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,88</td>
       <td>40,84</td>
       <td>-73,94</td>
@@ -139,8 +139,8 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
       <td>0,69</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,81</td>
       <td>-73,96</td>
@@ -163,8 +163,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
       <td>0,45</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,91</td>
@@ -187,8 +187,8 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
       <td>0,00</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,81</td>
       <td>40,70</td>
       <td>-73,82</td>
@@ -211,8 +211,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
       <td>0,50</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,92</td>
@@ -234,9 +234,9 @@ green_taxi_df.head(10)
       <td>2015-01-04 19:57:51</td>
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
-      <td>1.10</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>1,10</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,95</td>
@@ -259,8 +259,8 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
       <td>0,90</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,88</td>
       <td>40,76</td>
       <td>-73,87</td>
@@ -283,8 +283,8 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
       <td>3,30</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,91</td>
@@ -307,8 +307,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
       <td>1,19</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,95</td>
@@ -331,8 +331,8 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
       <td>0,65</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,94</td>
@@ -416,8 +416,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,88</td>
       <td>40,84</td>
       <td>-73,94</td>
@@ -440,8 +440,8 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
       <td>0,69</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,81</td>
       <td>-73,96</td>
@@ -464,8 +464,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
       <td>0,45</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,91</td>
@@ -488,8 +488,8 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
       <td>0,00</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,81</td>
       <td>40,70</td>
       <td>-73,82</td>
@@ -512,8 +512,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
       <td>0,50</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,92</td>
@@ -535,9 +535,9 @@ green_taxi_df.head(10)
       <td>2015-01-04 19:57:51</td>
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
-      <td>1.10</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>1,10</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,95</td>
@@ -560,8 +560,8 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
       <td>0,90</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,88</td>
       <td>40,76</td>
       <td>-73,87</td>
@@ -584,8 +584,8 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
       <td>3,30</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,91</td>
@@ -608,8 +608,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
       <td>1,19</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,95</td>
@@ -632,8 +632,8 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
       <td>0,65</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,94</td>
@@ -738,8 +738,8 @@ green_taxi_df.describe()
     <tr>
       <th>Std</th>
       <td>0.41</td>
-      <td>1.04</td>
-      <td>2.93</td>
+      <td>1,04</td>
+      <td>2,93</td>
       <td>2,76</td>
       <td>1,52</td>
       <td>2.61</td>
@@ -769,7 +769,7 @@ green_taxi_df.describe()
       <th>25%</th>
       <td>2,00</td>
       <td>1,00</td>
-      <td>1.06</td>
+      <td>1,06</td>
       <td>-73,96</td>
       <td>40,70</td>
       <td>-73,97</td>
@@ -898,7 +898,7 @@ Definieer de para meter voor het experiment en de model instellingen voor traini
 |----|----|---|
 |**iteration_timeout_minutes**|2|Tijdslimiet in minuten voor elke iteratie. Verklein deze waarde als u de totale uitvoeringstijd wilt verminderen.|
 |**experiment_timeout_minutes**|20|Maximale tijds duur in minuten dat alle iteraties worden gecombineerd voordat het experiment wordt beëindigd.|
-|**enable_early_stopping**|Waar|Vlag waarmee vroegtijdige beëindiging kan worden ingeschakeld als de score niet op de korte termijn wordt verbeterd.|
+|**enable_early_stopping**|True|Vlag waarmee vroegtijdige beëindiging kan worden ingeschakeld als de score niet op de korte termijn wordt verbeterd.|
 |**primary_metric**| spearman_correlation | De metrische gegevens die u wilt optimaliseren. Het optimale model wordt gekozen op basis van deze metrische waarde.|
 |**parametrisatie**| Auto | Door **auto**te gebruiken, kan het experiment de invoer gegevens voorverwerken (waarbij ontbrekende gegevens worden verwerkt, tekst naar numerieke waarde worden geconverteerd, enzovoort).|
 |**uitgebreidheid**| logging.INFO | Hiermee bepaalt u het niveau van logboekregistratie.|

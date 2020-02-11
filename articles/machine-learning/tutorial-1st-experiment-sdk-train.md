@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: c38347a03ddc0ef5f6c1bd3118696062db9a8254
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/10/2020
+ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533424"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116533"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Zelf studie: uw eerste ML model trainen
 
@@ -35,7 +35,7 @@ In deze zelfstudie leert u het volgende:
 
 De enige vereiste is om deel één van deze zelf studie, [installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md)uit te voeren.
 
-In dit gedeelte van de zelf studie voert u de code in het voor beeld-Jupyter-notebook uit `tutorials/tutorial-1st-experiment-sdk-train.ipynb` geopend aan het einde van deel 1. In dit artikel wordt uitgelegd hoe dezelfde code in het notitie blok zich bevindt.
+In dit gedeelte van de zelf studie voert u de code uit in de voor beelden van Jupyter *-notebook-zelf studies/Create-First-ml-experiment/tutorial-1st-experiment-SDK-Train. ipynb* , die aan het einde van deel 1 wordt geopend. In dit artikel wordt uitgelegd hoe dezelfde code in het notitie blok zich bevindt.
 
 ## <a name="open-the-notebook"></a>Open het notitie blok
 
@@ -45,7 +45,7 @@ In dit gedeelte van de zelf studie voert u de code in het voor beeld-Jupyter-not
 
 
 > [!Warning]
-> Maak **geen** *Nieuw* notitie blok in de Jupyter-interface. Het notitie blok `tutorials/tutorial-1st-experiment-sdk-train.ipynb` is inclusief **alle code en gegevens die nodig zijn** voor deze zelf studie.
+> Maak **geen** *Nieuw* notitie blok in de Jupyter-interface. De notebook *zelf studies/Create-First-ml-experiment/tutorial-1st-experiment-SDK-Train. ipynb* is inclusief **alle code en gegevens die nodig zijn** voor deze zelf studie.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Verbinding maken met werk ruimte en experiment maken
 
@@ -133,7 +133,7 @@ Nadat de training is voltooid, roept u de `experiment`-variabele aan om een kopp
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name</th><th>Werkruimte</th><th>Rapport pagina</th><th>Documentatiepagina</th></tr><tr><td>diabetes-experiment</td><td>uw-werkruimte naam</td><td>Koppeling naar Azure Portal</td><td>Koppeling naar documentatie</td></tr></table>
+<table style="width:100%"><tr><th>Naam</th><th>Werkruimte</th><th>Rapport pagina</th><th>Pagina docs</th></tr><tr><td>diabetes-experiment</td><td>uw-werkruimte naam</td><td>Koppeling naar Azure Portal</td><td>Koppeling naar documentatie</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Trainings resultaten weer geven in Portal
 

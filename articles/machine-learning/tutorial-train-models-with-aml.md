@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 95e5754c440cc591444df8960fde34de6fc384f0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5a2ff4d78c1e0e67b390f607da69cc299e2dce4a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261361"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116490"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Zelf studie: classificatie modellen van een installatie kopie trainen met MNIST-gegevens en scikit-informatie met behulp van Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,7 +46,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begin
     * Kopieer de notebooks van de zelf studies naar uw map in de werk ruimte.
     * Maak een cloud-gebaseerd reken exemplaar.
 
-* Open in de map gekloonde **zelf studies** de notebook **IMG-classificatie-part1-training. ipynb** . 
+* Open in uw gekloonde *zelf studies/afbeelding-classificatie-mnist-data* -map het notitie blok *IMG-classificatie-part1-training. ipynb* . 
 
 
 De zelf studie en het bijbehorende **utils.py** -bestand zijn ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u het wilt gebruiken in uw eigen [lokale omgeving](how-to-configure-environment.md#local). Voer `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` uit om afhankelijkheden te installeren voor deze zelf studie.

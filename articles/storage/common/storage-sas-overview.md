@@ -10,18 +10,18 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ceee257cd09589fc953c2b32e978a35433b0a49b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7a5967f52a187fe289c6fb1ca72af2d5fd17f010
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371816"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121918"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)
 
 Een Shared Access Signature (SAS) biedt beveiligde gedelegeerde toegang tot resources in uw opslag account zonder de beveiliging van uw gegevens in gevaar te brengen. Met een SAS hebt u gedetailleerde controle over hoe een client toegang heeft tot uw gegevens. U kunt bepalen welke resources de client mag openen, welke machtigingen ze hebben op deze resources en hoe lang de SAS geldig is, onder andere para meters.
 
-## <a name="types-of-shared-access-signatures"></a>Typen handtekeningen voor gedeelde toegang
+## <a name="types-of-shared-access-signatures"></a>Typen Shared Access signatures
 
 Azure Storage ondersteunt drie typen hand tekeningen voor gedeelde toegang:
 
@@ -76,13 +76,13 @@ Hier volgt een voor beeld van een SAS-URI van de service, waarin de bron-URI en 
 
 Gebruik een SAS wanneer u beveiligde toegang tot resources in uw opslag account wilt verlenen aan elke client die anders geen machtigingen voor die bronnen heeft.
 
-Een veelvoorkomend scenario waarbij een SAS handig is, is een service waar gebruikers hun eigen gegevens lezen en schrijven naar uw opslag account. In een scenario waarin een opslagaccount gebruikersgegevens opslaat, zijn er twee typische ontwerppatronen:
+Een veelvoorkomend scenario waarbij een SAS handig is, is een service waar gebruikers hun eigen gegevens lezen en schrijven naar uw opslag account. In een scenario waarin gebruikers gegevens worden opgeslagen in een opslag account, zijn er twee typische ontwerp patronen:
 
-1. Clients uploaden en downloaden gegevens via een front-endproxyservice, waarmee verificatie wordt uitgevoerd. Deze front-end proxy service heeft het voor deel dat het mogelijk is om validatie van bedrijfs regels toe te staan, maar voor grote hoeveel heden gegevens of trans acties met veel volumes is het maken van een service die kan worden geschaald naar wens, duur of lastig.
+1. Clients uploaden en downloaden gegevens via een front-end-proxy service, die verificatie uitvoert. Deze front-end proxy service heeft het voor deel dat het mogelijk is om validatie van bedrijfs regels toe te staan, maar voor grote hoeveel heden gegevens of trans acties met veel volumes is het maken van een service die kan worden geschaald naar wens, duur of lastig.
 
    ![Scenario diagram: front-end proxy service](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
-1. Met een eenvoudige service wordt de client indien nodig geverifieerd en vervolgens een SAS gegenereerd. Zodra de client toepassing de SAS heeft ontvangen, kunnen ze rechtstreeks toegang krijgen tot Storage-account bronnen met de machtigingen die zijn gedefinieerd door de SA'S en voor het interval dat is toegestaan door de SAS. Dankzij de SAS hoeven alle gegevens niet via de front-endproxyservice te worden doorgestuurd.
+1. Een licht gewicht service verifieert de client naar behoefte en genereert vervolgens een SAS. Zodra de client toepassing de SAS heeft ontvangen, kunnen ze rechtstreeks toegang krijgen tot Storage-account bronnen met de machtigingen die zijn gedefinieerd door de SA'S en voor het interval dat is toegestaan door de SAS. De SAS verkleint de nood zaak om alle gegevens door te sturen via de front-end-proxy service.
 
    ![Scenario diagram: SAS-Provider service](./media/storage-sas-overview/sas-storage-provider-service.png)
 
@@ -110,6 +110,7 @@ De volgende aanbevelingen voor het gebruik van hand tekeningen voor gedeelde toe
 - **De bijna-termijn verloop tijden voor een ad-hoc SAS-service SAS of account-SA'S gebruiken.** Op deze manier, zelfs als er een SAS is aangetast, is deze alleen geldig voor een korte periode. Deze procedure is vooral belang rijk als u niet kunt verwijzen naar een opgeslagen toegangs beleid. De bijna-termijn verloop tijd beperkt ook de hoeveelheid gegevens die naar een BLOB kan worden geschreven door de beschik bare tijd voor het uploaden ervan te beperken.
 - **Laat clients automatisch de SA'S vernieuwen als dat nodig is.** Clients moeten de SA'S goed vernieuwen voordat het verloopt, om tijd te bieden voor nieuwe pogingen als de service die de SAS biedt, niet beschikbaar is. Als uw SAS is bedoeld om te worden gebruikt voor een klein aantal directe, korte, langdurige bewerkingen die naar verwachting binnen de verloop periode zullen worden voltooid, kan dit onnodig zijn omdat de SA'S niet naar verwachting worden verlengd. Als u echter een client hebt die regel matig aanvragen maakt via SAS, is het mogelijk dat de verval datum wordt afgespeeld. De belangrijkste overweging is om de nood zaak van de SA'S te verkorten (zoals eerder vermeld), met de nood zaak om ervoor te zorgen dat de client de vernieuwing vroeg genoeg aanvraagt (om onderbrekingen te voor komen vanwege de verstrijking van SAS vóór een geslaagde vernieuwing).
 - **Wees voorzichtig met de start tijd van SAS.** Als u de begin tijd voor een SAS op dit **moment**instelt, dan kan de eerste paar minuten afnemen als gevolg van de klok scheefheid (verschillen in de huidige tijd op basis van verschillende computers). In het algemeen stelt u de start tijd in op ten minste 15 minuten in het verleden. U kunt de service ook niet instellen, waardoor deze onmiddellijk in alle gevallen geldig is. Dit geldt ook voor verloop tijd. Vergeet niet dat u tot wel 15 minuten aan de hand van een wille keurige aanvraag kunt zien. Voor clients die gebruikmaken van een REST-versie van vóór 2012-02-12, is de maximale duur voor een SAS die niet verwijst naar een opgeslagen toegangs beleid, 1 uur en alle beleids regels die een langere termijn opgeven dan mislukt.
+- **Wees voorzichtig met de SAS DateTime-indeling.** Als u de start tijd en/of het verloop voor een SAS instelt voor sommige hulpprogram ma's (bijvoorbeeld voor het opdracht regel hulpprogramma AzCopy), hebt u de datum notatie nodig in +% Y-% m-% dT% H:%M:% SZ, met name de seconden om te werken met het SAS-token.  
 - **De resource moet specifiek zijn voor toegang tot de bron.** Een beveiligings best practice is om een gebruiker te voorzien van de mini maal vereiste bevoegdheden. Als een gebruiker alleen lees toegang nodig heeft tot één entiteit, dan verlenen zij Lees-en schrijf toegang tot de ene entiteit en niet lezen/schrijven/verwijderen voor alle entiteiten. Dit helpt ook de schade te beperken als een SAS is aangetast omdat de SAS minder kracht in de handen van een aanvaller heeft.
 - **U begrijpt dat uw account wordt gefactureerd voor gebruik, inclusief via een SAS.** Als u schrijf toegang voor een BLOB biedt, kan een gebruiker ervoor kiezen om een 200 GB-BLOB te uploaden. Als u de gebruikers ook lees toegang hebt gegeven, kunnen ze het 10 keer downloaden, waardoor er 2 TB worden bespaard op basis van de kosten voor u. U kunt ook beperkte machtigingen opgeven om de mogelijke acties van kwaadwillende gebruikers te helpen voor komen. Gebruik SA'S met een korte levens duur om deze dreiging te verminderen (maar mindful aan de eind tijd te scheefen).
 - **Valideer gegevens die zijn geschreven met behulp van een SAS.** Wanneer een client toepassing gegevens naar uw opslag account schrijft, houd er dan rekening mee dat er problemen met die gegevens kunnen optreden. Als uw toepassing vereist dat gegevens worden gevalideerd of geautoriseerd voordat deze klaar is voor gebruik, moet u deze validatie uitvoeren nadat de gegevens zijn geschreven en voordat deze door uw toepassing worden gebruikt. Deze oefening beschermt ook tegen beschadigde of schadelijke gegevens die naar uw account worden geschreven, hetzij door een gebruiker die de SA'S heeft aangeschaft, hetzij door een gebruiker die misbruik maakt van een gelekte SAS.

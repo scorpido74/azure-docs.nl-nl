@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 864cccc4629140754a326823cbaebd7ad8933d3d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8c6b7b4d64b3a4f504cc9aef275b3d48cd62a3d8
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75765066"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116835"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Een gegevens label project maken en labels exporteren 
 
@@ -125,7 +125,7 @@ Voor selectie kaders zijn belang rijke vragen:
 
 ## <a name="initialize-the-labeling-project"></a>Het label project initialiseren
 
-Nadat het label project is geïnitialiseerd, zijn sommige aspecten van het project onveranderbaar. U kunt het taak type of de gegevensset niet wijzigen. U *kunt* labels en de URL voor de taak beschrijving wijzigen. Controleer de instellingen zorgvuldig voordat u het project maakt. Nadat u het project hebt verzonden, keert u terug naar de start pagina van de **Label** , waarmee het project als **initialisatie**wordt weer gegeven. Deze pagina wordt niet automatisch vernieuwd. Daarom moet u na een onderbreking de pagina hand matig vernieuwen om de status van het project weer te **geven.**
+Nadat het label project is geïnitialiseerd, zijn sommige aspecten van het project onveranderbaar. U kunt het taak type of de gegevensset niet wijzigen. U *kunt* labels en de URL voor de taak beschrijving wijzigen. Controleer de instellingen zorgvuldig voordat u het project maakt. Nadat u het project hebt verzonden, keert u terug naar de start pagina van de **gegevens label** , waarmee het project wordt weer gegeven als **bezig met initialiseren**. Deze pagina wordt niet automatisch vernieuwd. Daarom moet u na een onderbreking de pagina hand matig vernieuwen om de status van het project weer te **geven.**
 
 ## <a name="manage-teams-and-people"></a>Teams en personen beheren
 
@@ -139,7 +139,7 @@ Als u een e-mail bericht wilt verzenden naar het team, selecteert u het team om 
 
 ## <a name="run-and-monitor-the-project"></a>Het project uitvoeren en bewaken
 
-Nadat u het project hebt geïnitialiseerd, wordt het met Azure gestart. Selecteer het project op de hoofd pagina **labelen** om naar **Project Details**te gaan. Op het tabblad **dash board** ziet u de voortgang van de taak labelen.
+Nadat u het project hebt geïnitialiseerd, wordt het met Azure gestart. Selecteer het project op de pagina hoofd **gegevens labelen** om naar **Project Details**te gaan. Op het tabblad **dash board** ziet u de voortgang van de taak labelen.
 
 Op het tabblad **gegevens** kunt u uw gegevensset bekijken en gelabelde gegevens bekijken. Als u onjuist gelabelde gegevens ziet, selecteert u deze en kiest u **weigeren**, waardoor de labels worden verwijderd en de gegevens weer in de niet-gelabelde wachtrij worden geplaatst.
 
@@ -148,6 +148,24 @@ Gebruik het tabblad **team** om teams toe te wijzen of te verwijderen aan het pr
 Selecteer de knop **pause**/**Start** om het project te onderbreken of opnieuw te starten. U kunt alleen gegevens labelen wanneer het project wordt uitgevoerd.
 
 U kunt gegevens rechtstreeks labelen op de pagina **Project Details** door **Label gegevens**te selecteren.
+
+## <a name="add-labels-to-a-project"></a>Labels toevoegen aan een project
+
+Tijdens het labelen is het mogelijk dat er extra labels nodig zijn om uw afbeeldingen te classificeren.  U kunt bijvoorbeeld een label "onbekend" of "Overig" toevoegen om ongemerkte afbeeldingen aan te duiden.
+
+Gebruik deze stappen om een of meer labels aan een project toe te voegen:
+
+1. Selecteer het project op de pagina belangrijkste **gegevens labelen** .
+1. Selecteer aan de bovenkant van de pagina **onderbreken** om de labels te stoppen vanuit hun activiteit.
+1. Selecteer het tabblad **Details** .
+1. Selecteer in de lijst aan de linkerkant **Label klassen**.
+1. Selecteer boven aan de lijst **+ labels toevoegen** ![een label toe te voegen](media/how-to-create-labeling-projects/add-label.png)
+1. Voeg in het formulier het nieuwe label toe en kies hoe u wilt door gaan.  Omdat u de beschik bare labels voor een afbeelding hebt gewijzigd, kiest u hoe u de al gelabelde gegevens wilt behandelen:
+    * Opnieuw beginnen, waarbij alle bestaande labels worden verwijderd.  Kies deze optie als u alle bestaande labels wilt wissen zodat de volledige set kan worden gebruikt om alle installatie kopieën te labelen.
+    * Opnieuw beginnen, waarbij alle bestaande labels behouden blijven.  Kies deze optie om alle gegevens als niet-gelabeld te markeren, maar behoud de bestaande labels als een standaard label voor installatie kopieën die zijn gelabeld.
+    * Ga door en behoud alle bestaande labels. Kies deze optie om ervoor te zorgen dat alle gegevens al worden gelabeld als is en begin het nieuwe label te gebruiken voor gegevens die nog niet zijn geclassificeerd.
+1. Wijzig uw instructies pagina indien nodig voor de nieuwe label (s).
+1. Zodra u alle nieuwe labels hebt toegevoegd, klikt u boven aan de pagina op **Start** om het project opnieuw te starten.  
 
 ## <a name="export-the-labels"></a>De labels exporteren
 

@@ -3,19 +3,19 @@ title: Wat is de Speech-service?
 titleSuffix: Azure Cognitive Services
 description: De speech-service is de combineert van spraak naar tekst, tekst naar spraak en spraak omzetting in één Azure-abonnement. Voeg spraak toe aan uw toepassingen, hulpprogram ma's en apparaten met de Speech SDK, de speech-apparaten SDK of REST Api's.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 11/05/2019
-ms.author: erhopf
-ms.openlocfilehash: df0ce5efefe86ed3b7e2e8ccf5a2bd9011e168e6
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 7ddfae430e6aa4ec9549e40c937e5edcfd927f6d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261429"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119920"
 ---
 # <a name="what-is-the-speech-service"></a>Wat is de Speech-service?
 
@@ -37,24 +37,6 @@ Deze functies vormen de spraak service. Gebruik de koppelingen in deze tabel voo
 | | [Aangepaste stemmen maken](#customize-your-speech-experience) | Aangepaste spraak lettertypen maken die uniek zijn voor uw merk of product. | Nee | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Spraakomzetting](speech-translation.md) | Spraakomzetting | Met spraak omzetting kan spraak op meerdere talen worden omgezet in uw toepassingen, hulpprogram ma's en apparaten. Gebruik deze service voor conversie van spraak naar spraak en spraak naar tekst. | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Nee |
 | [Spraak assistenten](voice-assistants.md) | Spraakassistenten | Met de spraak service kunnen ontwikkel aars natuurlijke, menselijke-achtige gespreks interfaces maken voor hun toepassingen en ervaringen. De Voice Assistant-service biedt een snelle, betrouw bare interactie tussen een apparaat en een assistent-implementatie die gebruikmaakt van het directe lijn spraak kanaal van het bot-Framework of de geïntegreerde service voor het uitvoeren van aangepaste opdrachten (preview) voor taak voltooiing. | [Ja](voice-assistants.md) | Nee |
-
-## <a name="news-and-updates"></a>Nieuws en updates
-
-Meer informatie over wat er nieuw is in de speech service.
-
-- November 2019
-  - Er zijn twee nieuwe spraak stijlen toegevoegd [`newscast`](speech-synthesis-markup.md#adjust-speaking-styles) en [`customerservice`](speech-synthesis-markup.md#adjust-speaking-styles) voor de `en-US-JessaNeural`e stem.
-- September 2019
-  - 1\.7.0 van vrijgegeven spraak-SDK. Zie [release opmerkingen](releasenotes.md)voor een volledige lijst met updates, verbeteringen en bekende problemen.
-- Augustus 2019
-  - **Nieuwe zelf studie**: [stem uw bot in met de Speech SDK C# ,](tutorial-voice-enable-your-bot-speech-sdk.md)
-  - Er is voor de `en-US-JessaNeural` spraak een nieuwe spraak stijl, [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)toegevoegd.
-- Juni 2019
-  - 1\.6.0 van vrijgegeven spraak-SDK. Zie [release opmerkingen](releasenotes.md)voor een volledige lijst met updates, verbeteringen en bekende problemen.
-- Mei 2019-documentatie is nu beschikbaar voor [transcriptie](conversation-transcription-service.md), [Call Center transcriptie](call-center-transcription.md)en [Voice Assistants](voice-assistants.md).
-- Mei 2019
-  - 1\.5.1 van vrijgegeven spraak-SDK. Zie [release opmerkingen](releasenotes.md)voor een volledige lijst met updates, verbeteringen en bekende problemen.
-  - 1\.5.0 van vrijgegeven spraak-SDK. Zie [release opmerkingen](releasenotes.md)voor een volledige lijst met updates, verbeteringen en bekende problemen.
 
 ## <a name="try-the-speech-service"></a>Probeer de speech-service
 
@@ -90,10 +72,10 @@ De spraak service is goed geschikt voor ingebouwde modellen, maar u kunt de erva
 
 | Speech Service | Platform | Beschrijving |
 | -------------- | -------- | ----------- |
-| Spraak naar tekst | [Aangepaste spraak](https://aka.ms/customspeech) | Pas de modellen voor spraak herkenning aan uw behoeften en beschik bare gegevens aan. Elimineer hindernissen bij spraakherkenning, zoals spreekstijl, vocabulaire en achtergrondgeluiden. |
+| Spraak naar tekst | [Custom Speech](https://aka.ms/customspeech) | Pas de modellen voor spraak herkenning aan uw behoeften en beschik bare gegevens aan. U kunt de belemmeringen voor spraak herkenning, zoals spreek stijl, vocabulaire en achtergrond ruis, overwinnen. |
 | Tekst naar spraak | [Aangepaste spraak](https://aka.ms/customvoice) | Bouw een herkenbare, eenduidige stem voor uw tekst-naar-spraak-apps met uw beschikbare gesproken gegevens. U kunt de spraak uitvoer verder verfijnen door een set spraak parameters aan te passen. |
 
-## <a name="reference-docs"></a>Referentiedocumenten
+## <a name="reference-docs"></a>Referentie documenten
 
 - [Speech-SDK](speech-sdk-reference.md)
 - [SDK voor spraak apparaten](speech-devices-sdk.md)

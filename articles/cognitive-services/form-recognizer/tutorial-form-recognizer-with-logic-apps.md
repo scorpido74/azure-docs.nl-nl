@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d71d9c7e6570e562fe4c692ede1d07b70c923cb6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773087"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118264"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Zelf studie: formulier herkenner gebruiken met Azure Logic Apps voor het analyseren van facturen
 
@@ -34,10 +34,6 @@ Deze zelf studie bevat de volgende onderwerpen:
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: [Maak een gratis versie](https://azure.microsoft.com/free/).
-
-## <a name="request-access-for-form-recognizer"></a>Toegang aanvragen voor de formulier herkenning
-
-Formulier herkenner is beschikbaar in een preview-versie van beperkte toegang. Als u toegang wilt krijgen tot de preview, vult u het formulier voor de [toegangs aanvraag voor de formulier herkenning](https://aka.ms/FormRecognizerRequestAccess) in en verzendt u dit. Zodra uw aanvraag is goedgekeurd door het team van Azure Cognitive Services, ontvangt u een e-mail met instructies voor het openen van de service.
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>De te analyseren factuur begrijpen
 
@@ -83,7 +79,7 @@ Volg deze stappen om uw werk stroom in te stellen.
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **Naam** | <*logic-app-name*> | De naam van de logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt ' mijn-eerste logica-app ' gebruikt. |
+   | **Naam** | <*Logic-app-naam*> | De naam van de logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt ' mijn-eerste logica-app ' gebruikt. |
    | **Abonnement** | <*Azure-subscription-name*> | De naam van uw Azure-abonnement |
    | **Resourcegroep** | <*Azure-resource-group-name*> | De naam voor de [Azure-resource groep](./../../azure-resource-manager/management/overview.md) die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' My-First-LA-RG ' gebruikt. |
    | **Locatie** | <*Azure-regio*> | De regio waar u de gegevens van uw logische app opslaat. In dit voor beeld wordt ' West US ' gebruikt. |
@@ -131,7 +127,7 @@ Voordat u de Form Recognizer-service kunt gebruiken voor het analyseren van fact
     > [!div class="mx-imgBorder"]
     > de naam van de ![-verbinding voor de herkenning van het formulier](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-create-connection.png)
 
-    Klik op **Maken**.
+    Klik op **Create**.
 
 1. Voer in het dialoog venster **Train model** , voor **bron**, de URL in voor de container waarnaar u de voorbeeld gegevens hebt geüpload.
 

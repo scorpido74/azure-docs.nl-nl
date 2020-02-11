@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 10/26/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 4fec6b93ad206ae3052df5f7763f3c146b7aa680
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 54e2516211495f7f044f716c518291ca8008f92d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446788"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118926"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Zelf studie: een Tenant model maken (preview)
 
@@ -37,13 +37,13 @@ In deze zelfstudie leert u het volgende:
 
 Voordat u uw Tenant model kunt implementeren, moet u worden inge schreven bij de service Tenant model. De inschrijving is voltooid in het beheer centrum van Microsoft 365 en kan alleen worden uitgevoerd door uw Microsoft 365-beheerder.
 
-1. Meld u aan bij het [Microsoft 365-beheercentrum](https://admin.microsoft.com).
+1. Meld u aan bij het [Microsoft 365-beheer centrum](https://admin.microsoft.com).
 
-1. Selecteer in het linkerdeel venster **instellingen**, selecteer **apps**en selecteer vervolgens **Azure speech Services**.
+1. Selecteer in het linkerdeel venster **instellingen**, selecteer **instellingen** in het geneste menu en selecteer vervolgens **Azure speech Services** in het hoofd venster.
 
    ![Het deel venster Services &-invoeg toepassingen](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-1. Schakel het selectie vakje **het taal model voor de hele organisatie toestaan** in en selecteer vervolgens **wijzigingen opslaan**. 
+1. Schakel het selectie vakje **het taal model voor de hele organisatie toestaan** in en selecteer vervolgens **wijzigingen opslaan**.
 
    ![Het deel venster spraak services van Azure](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
@@ -55,11 +55,11 @@ Het Tenant model exemplaar uitschakelen:
 
 Als u uw Tenant model wilt gebruiken met de Speech SDK, hebt u een spraak bron en de bijbehorende abonnements sleutel nodig.
 
-1. Meld u aan bij de [Azure Portal](https://aka.ms/azureportal).
+1. Meld u aan bij de [Azure-portal](https://aka.ms/azureportal).
 1. Selecteer **Een resource maken**.
 1. Typ in het **zoekvak** **spraak**.
 1. Selecteer in de lijst met resultaten **spraak**en selecteer vervolgens **maken**.
-1. Volg de instructies op het scherm om de resource te maken. Vereisten:
+1. Volg de instructies op het scherm om de resource te maken. Zorg ervoor dat:
    * De **locatie** is ingesteld op **Oost** -of **westus**.
    * **Prijs categorie** wordt ingesteld op **s0**.
 1. Selecteer **Maken**.
@@ -83,7 +83,7 @@ Nadat de beheerder Tenant model heeft ingeschakeld voor uw organisatie, kunt u e
    > * [Klant sleutel](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
    > * [Office 365 Government](https://www.microsoft.com/microsoft-365/government)
 
-1. Selecteer **Aanmelden**. 
+1. Selecteer **Aanmelden**.
 
    Wanneer uw Tenant model klaar is, ontvangt u een bevestigings e-mail bericht met verdere instructies.
 

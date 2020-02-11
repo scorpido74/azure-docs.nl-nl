@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453458"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116918"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure functions aanroepen vanuit Azure Logic Apps
 
@@ -200,11 +200,11 @@ Wanneer u een logische app vanuit een Azure-functie wilt activeren, moet de logi
 
 Voor het verifiëren van toegang tot resources in andere Azure Active Directory (Azure AD)-tenants zonder dat u zich hoeft aan te melden en referenties of geheimen te verstrekken, kan uw logische app gebruikmaken van een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) (voorheen bekend als managed service Identity of MSI). Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien. Meer informatie over [Azure-Services die ondersteuning bieden voor beheerde identiteiten voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-Als u uw logische app instelt voor het gebruik van de door het systeem toegewezen beheerde identiteit, kunnen de Azure functions in uw logische app ook dezelfde identiteit voor verificatie gebruiken. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over verificatie ondersteuning voor Azure functions in Logic apps.
+Als u uw logische app instelt voor het gebruik van de door het systeem toegewezen identiteit of een hand matig gemaakte door de gebruiker toegewezen identiteit, kunnen de Azure functions in uw logische app ook dezelfde identiteit voor verificatie gebruiken. Zie [verificatie toevoegen aan uitgaande oproepen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)voor meer informatie over verificatie ondersteuning voor Azure functions in Logic apps.
 
-Voer de volgende stappen uit om de door het systeem toegewezen identiteit in te stellen en te gebruiken met uw functie:
+Voer de volgende stappen uit om de beheerde identiteit in te stellen en te gebruiken met uw functie:
 
-1. Schakel de door het systeem toegewezen identiteit in voor uw logische app en stel de toegang van die identiteit in op de doel bron. Zie [toegang tot Azure-resources verifiëren door beheerde identiteiten te gebruiken in azure Logic apps](../logic-apps/create-managed-service-identity.md).
+1. Schakel de beheerde identiteit in voor uw logische app en stel de toegang van die identiteit in op de doel bron. Zie [toegang tot Azure-resources verifiëren door beheerde identiteiten te gebruiken in azure Logic apps](../logic-apps/create-managed-service-identity.md).
 
 1. Schakel de volgende stappen uit in uw Azure-functie en-functie-app:
 
@@ -215,7 +215,7 @@ Voer de volgende stappen uit om de door het systeem toegewezen identiteit in te 
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>Anonieme verificatie instellen in uw functie
 
-Als u de door het systeem toegewezen identiteit van uw logische app in uw Azure-functie wilt gebruiken, stelt u het verificatie niveau van uw functie in op anoniem. Anders genereert uw logische app de fout ' onjuiste aanvraag '.
+Als u de beheerde identiteit van uw logische app in uw Azure-functie wilt gebruiken, stelt u het verificatie niveau van uw functie in op anoniem. Anders genereert uw logische app de fout ' onjuiste aanvraag '.
 
 1. Zoek in het [Azure Portal](https://portal.azure.com)de functie-app en selecteer deze. Deze stappen gebruiken ' FabrikamFunctionApp ' als de voor beeld-functie-app.
 

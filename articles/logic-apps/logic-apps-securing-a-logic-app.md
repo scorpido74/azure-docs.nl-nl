@@ -1,17 +1,17 @@
 ---
 title: Toegang en gegevens beveiligen
-description: Beveiliging toevoegen voor het beveiligen van invoer, uitvoer, op aanvragen gebaseerde triggers, uitvoerings geschiedenis, beheer taken en toegang tot andere resources in Azure Logic Apps
+description: Veilige toegang tot invoer, uitvoer, op aanvragen gebaseerde triggers, uitvoerings geschiedenis, beheer taken en toegang tot andere resources in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 73b8a559eddec51dbc01f1d55f70414360ff2956
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/04/2020
+ms.openlocfilehash: 47b9c0f89cb3db1610b8e3d98f408283c6ff9980
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898428"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116927"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -590,7 +590,7 @@ Hier volgen enkele manieren waarop u eind punten kunt beveiligen die oproepen of
 
   Azure Logic Apps biedt integratie met deze services voor veilige en betrouw bare on-premises communicatie.
 
-  * On-premises gegevensgateway
+  * On-premises gegevens gateway
 
     Veel beheerde connectors in Azure Logic Apps bieden beveiligde verbindingen met on-premises systemen, zoals bestands systeem, SQL, share point en DB2. De Gateway verzendt gegevens via on-premises bronnen op versleutelde kanalen via de Azure Service Bus. Al het verkeer is afkomstig van het beveiligde uitgaande verkeer van de gateway-agent. Meer informatie [over de werking van de on-premises gegevens gateway](logic-apps-gateway-install.md#gateway-cloud-service).
 
@@ -604,17 +604,17 @@ Hier volgen enkele manieren waarop u eind punten kunt beveiligen die oproepen of
 
 HTTP-en HTTPS-eind punten ondersteunen verschillende soorten verificatie. Op basis van de trigger of actie die u gebruikt om uitgaande aanroepen of aanvragen voor toegang tot deze eind punten te maken, kunt u kiezen uit verschillende soorten verificatie typen. Gebruik beveiligde para meters en codeer gegevens als dat nodig is om ervoor te zorgen dat u gevoelige informatie beveiligt die door uw logische app wordt verwerkt. Zie [toegang tot para meters invoeren](#secure-action-parameters)voor meer informatie over het gebruik en het beveiligen van para meters.
 
+> [!NOTE]
+> In de ontwerp functie voor logische apps is de eigenschap **Authentication** mogelijk verborgen voor sommige triggers en acties waarbij u het verificatie type kunt opgeven. Als u wilt dat de eigenschap wordt weer gegeven in deze gevallen, opent u de lijst **nieuwe para meter toevoegen** op de trigger of actie en selecteert u **verificatie**. Zie [toegang verifiëren met beheerde identiteit](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)voor meer informatie.
+
 | Verificatietype | Ondersteund door |
 |---------------------|--------------|
 | [Basic](#basic-authentication) | Azure API Management, Azure-app Services, HTTP, HTTP + Swagger, HTTP-webhook |
 | [Client certificaat](#client-certificate-authentication) | Azure API Management, Azure-app Services, HTTP, HTTP + Swagger, HTTP-webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management, Azure-app Services, Azure Functions, HTTP, HTTP + Swagger, HTTP-webhook |
 | [Uitgang](#raw-authentication) | Azure API Management, Azure-app Services, Azure Functions, HTTP, HTTP + Swagger, HTTP-webhook |
-| [Beheerde identiteit](#managed-identity-authentication) (alleen door systeem toegewezen) | Azure API Management, Azure-app Services, Azure Functions, HTTP, HTTP + Swagger, HTTP-webhook |
+| [Beheerde identiteit](#managed-identity-authentication) | Azure API Management, Azure-app Services, Azure Functions, HTTP, HTTP + Swagger, HTTP-webhook |
 |||
-
-> [!NOTE]
-> In de ontwerp functie voor logische apps is de eigenschap **Authentication** mogelijk verborgen voor sommige triggers en acties waarbij u het verificatie type kunt opgeven. Als u wilt dat de eigenschap wordt weer gegeven in deze gevallen, opent u de lijst **nieuwe para meter toevoegen** op de trigger of actie en selecteert u **verificatie**. Zie [toegang verifiëren met beheerde identiteit](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)voor meer informatie.
 
 <a name="basic-authentication"></a>
 
@@ -622,7 +622,7 @@ HTTP-en HTTPS-eind punten ondersteunen verschillende soorten verificatie. Op bas
 
 Als de optie [basis](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md) beschikbaar is, geeft u de volgende eigenschaps waarden op:
 
-| Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
+| Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Ja | Basic | Het te gebruiken verificatie type |
 | **Gebruikersnaam** | `username` | Ja | <*gebruikers naam*>| De gebruikers naam voor het verifiëren van de toegang tot het eind punt van de doel service |
@@ -653,11 +653,11 @@ Wanneer u [beveiligde para meters](#secure-action-parameters) gebruikt voor het 
 
 Als de optie [client certificaat](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) beschikbaar is, geeft u de volgende eigenschaps waarden op:
 
-| Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
+| Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Ja | **Client certificaat** <br>of <br>`ClientCertificate` | Het verificatie type dat moet worden gebruikt voor client certificaten voor Secure Sockets Layer (SSL). Zelfondertekende certificaten worden ondersteund, maar zelfondertekende certificaten voor SSL worden niet ondersteund. |
 | **Pfx** | `pfx` | Ja | <*encoded-pfx-bestand-inhoud*> | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) <p><p>Als u het PFX-bestand wilt converteren naar een base64-gecodeerde indeling, kunt u Power shell gebruiken door de volgende stappen uit te voeren: <p>1. Sla de certificaat inhoud op in een variabele: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Converteer de certificaat inhoud met behulp van de functie `ToBase64String()` en sla die inhoud op in een tekst bestand: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
-| **Wachtwoord** | `password`| Zie beschrijving | <*wacht woord voor pfx-bestand*> | Het wacht woord voor toegang tot het PFX-bestand. <p><p>**Opmerking**: deze eigenschaps waarde is vereist wanneer u werkt in de ontwerp functie voor logische apps en is *niet* vereist wanneer u in de code weergave werkt. |
+| **Wachtwoord** | `password`| Nee | <*wacht woord voor pfx-bestand*> | Het wacht woord voor toegang tot het PFX-bestand |
 |||||
 
 Wanneer u [beveiligde para meters](#secure-action-parameters) gebruikt voor het afhandelen en beveiligen van gevoelige informatie, bijvoorbeeld in een [Azure Resource Manager sjabloon voor het automatiseren van de implementatie](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), kunt u expressies gebruiken om toegang te krijgen tot deze parameter waarden tijdens runtime. In dit voor beeld van een HTTP-actie definitie geeft u de verificatie `type` als `ClientCertificate` en gebruikt u de [functie para meters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) om de parameter waarden op te halen:
@@ -692,9 +692,10 @@ Zie de volgende onderwerpen voor meer informatie over het beveiligen van service
 
 Als de optie [OAuth Active Directory](../active-directory/develop/about-microsoft-identity-platform.md) beschikbaar is, geeft u de volgende eigenschaps waarden op:
 
-| Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
+| Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Ja | **Active Directory OAuth** <br>of <br>`ActiveDirectoryOAuth` | Het verificatietype te gebruiken. Het [OAuth 2,0-protocol](../active-directory/develop/v2-overview.md)wordt momenteel gevolgd door Logic apps. |
+| **Provider** | `authority` | Nee | <*URL-voor-Authority-token-verlener*> | De URL voor de instantie die het verificatie token levert. Deze waarde is standaard `https://login.windows.net`. |
 | **Bouw** | `tenant` | Ja | *Tenant-id* van <> | De Tenant-ID voor de Azure AD-Tenant |
 | **Gericht** | `audience` | Ja | <> voor de goed keuring van *resources* | De resource die u wilt gebruiken voor autorisatie, bijvoorbeeld `https://management.core.windows.net/` |
 | **Client ID** | `clientId` | Ja | <*client-ID*> | De client-ID voor de app die autorisatie aanvraagt |
@@ -702,7 +703,6 @@ Als de optie [OAuth Active Directory](../active-directory/develop/about-microsof
 | **Geheim** | `secret` | Ja, maar alleen voor het referentie type ' geheim ' | <*client-geheim*> | Het client geheim voor het aanvragen van autorisatie |
 | **Pfx** | `pfx` | Ja, maar alleen voor het referentie type ' certificaat ' | <*encoded-pfx-bestand-inhoud*> | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) |
 | **Wachtwoord** | `password` | Ja, maar alleen voor het referentie type ' certificaat ' | <*wacht woord voor pfx-bestand*> | Het wacht woord voor toegang tot het PFX-bestand |
-| **Provider** | `authority` | Nee | <*URL-voor-Authority-token-verlener*> | De URL voor de instantie die het verificatie token levert. Deze waarde is standaard `https://login.windows.net`. <p>**Opmerking**: als u deze eigenschap zichtbaar wilt maken in de ontwerp functie, klikt u op de trigger of actie, opent u de lijst **nieuwe para meter toevoegen** en selecteert u **instantie**. |
 |||||
 
 Wanneer u [beveiligde para meters](#secure-action-parameters) gebruikt voor het afhandelen en beveiligen van gevoelige informatie, bijvoorbeeld in een [Azure Resource Manager sjabloon voor het automatiseren van de implementatie](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), kunt u expressies gebruiken om toegang te krijgen tot deze parameter waarden tijdens runtime. In dit voor beeld van een HTTP-actie definitie geeft u de verificatie `type` als `ActiveDirectoryOAuth`, het referentie type als `Secret`en gebruikt u de [functie para meters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) om de parameter waarden op te halen:
@@ -746,7 +746,7 @@ Authorization: OAuth realm="Photos",
 
 Geef in de trigger of actie die onbewerkte authenticatie ondersteunt de volgende eigenschaps waarden op:
 
-| Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
+| Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Ja | Uitgang | Het te gebruiken verificatie type |
 | **Waarde** | `value` | Ja | <*autorisatie-header-waarde*> | De waarde van de autorisatie-header die moet worden gebruikt voor verificatie |
@@ -773,18 +773,19 @@ Wanneer u [beveiligde para meters](#secure-action-parameters) gebruikt voor het 
 
 ### <a name="managed-identity-authentication"></a>Verificatie van beheerde identiteit
 
-Als de optie [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) beschikbaar is, kan uw logische app gebruikmaken van de door het systeem toegewezen identiteit voor het verifiëren van de toegang tot bronnen in andere Azure Active Directory (Azure AD)-tenants zonder u aan te melden. Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien. Meer informatie over [Azure-Services die ondersteuning bieden voor beheerde identiteiten voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Als de optie [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) beschikbaar is, kan uw logische app gebruikmaken van de door het systeem toegewezen identiteit of een *enkele* hand matig gemaakte door de gebruiker toegewezen identiteit voor het verifiëren van toegang tot resources in andere Azure Active Directory (Azure AD)-tenants zonder zich aan te melden. Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien. Meer informatie over [Azure-Services die ondersteuning bieden voor beheerde identiteiten voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-1. Voordat uw logische app de door het systeem toegewezen identiteit kan gebruiken, volgt u de stappen in [toegang tot Azure-resources verifiëren met behulp van beheerde identiteiten in azure Logic apps](../logic-apps/create-managed-service-identity.md). Met deze stappen wordt de beheerde identiteit voor uw logische app ingeschakeld en wordt de toegang tot de Azure-doel bron ingesteld.
+1. Voordat uw logische app een beheerde identiteit kan gebruiken, volgt u de stappen in [toegang tot Azure-resources verifiëren door beheerde identiteiten te gebruiken in azure Logic apps](../logic-apps/create-managed-service-identity.md). Met deze stappen wordt de beheerde identiteit voor uw logische app ingeschakeld en wordt de toegang tot de Azure-doel bron ingesteld.
 
-2. Voordat een Azure-functie de door het systeem toegewezen identiteit kan gebruiken, moet u eerst [verificatie voor Azure functions inschakelen](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
+1. Voordat een Azure-functie een beheerde identiteit kan gebruiken, moet u eerst [verificatie voor Azure functions inschakelen](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
 
-3. Geef in de trigger of actie waar u de beheerde identiteit wilt gebruiken, de volgende eigenschaps waarden op:
+1. Geef in de trigger of actie waar u de beheerde identiteit wilt gebruiken, de volgende eigenschaps waarden op:
 
-   | Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
+   | Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
    |---------------------|-----------------|----------|-------|-------------|
    | **Verificatie** | `type` | Ja | **Beheerde identiteit** <br>of <br>`ManagedServiceIdentity` | Het te gebruiken verificatie type |
-   | **Gericht** | `audience` | Ja | <*doel-Resource-ID*> | De resource-ID voor de doel resource waartoe u toegang wilt krijgen. <p>`https://storage.azure.com/` maakt bijvoorbeeld de toegangs tokens voor verificatie geldig voor alle opslag accounts. U kunt echter ook een URL voor de basis service opgeven, zoals `https://fabrikamstorageaccount.blob.core.windows.net` voor een specifiek opslag account. <p>**Opmerking**: deze eigenschap is mogelijk verborgen in sommige triggers of acties. Als u deze eigenschap zichtbaar wilt maken, opent u de lijst **nieuwe para meter toevoegen** in de trigger of actie en selecteert u **doel groep**. <p><p>**Belang rijk**: Zorg ervoor dat deze doel resource-id precies overeenkomt met de waarde die door Azure AD wordt verwacht, inclusief alle vereiste afsluitende slashes. Daarom vereist de `https://storage.azure.com/` Resource-ID voor alle Azure Blob Storage-accounts een afsluitende slash. De resource-ID voor een specifiek opslag account vereist echter geen afsluitende slash. Zie [Azure-Services die ondersteuning bieden voor Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)om deze resource-id's te vinden. |
+   | **Beheerde identiteit** | `identity` | Ja | door het **systeem toegewezen beheerde identiteit** *  <br>of <br>`SystemAssigned` <p><p>* < door de*gebruiker toegewezen identiteits*> | De beheerde identiteit die moet worden gebruikt |
+   | **Gericht** | `audience` | Ja | <*doel-Resource-ID*> | De resource-ID voor de doel resource waartoe u toegang wilt krijgen. <p>`https://storage.azure.com/` maakt bijvoorbeeld de toegangs tokens voor verificatie geldig voor alle opslag accounts. U kunt echter ook een URL voor de basis service opgeven, zoals `https://fabrikamstorageaccount.blob.core.windows.net` voor een specifiek opslag account. <p>**Opmerking**: de eigenschap **doel groep** kan in sommige triggers of acties worden verborgen. Als u deze eigenschap zichtbaar wilt maken, opent u de lijst **nieuwe para meter toevoegen** in de trigger of actie en selecteert u **doel groep**. <p><p>**Belang rijk**: Zorg ervoor dat deze doel resource-id *precies overeenkomt* met de waarde die door Azure AD wordt verwacht, inclusief alle vereiste afsluitende slashes. Daarom vereist de `https://storage.azure.com/` Resource-ID voor alle Azure Blob Storage-accounts een afsluitende slash. De resource-ID voor een specifiek opslag account vereist echter geen afsluitende slash. Zie [Azure-Services die ondersteuning bieden voor Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)om deze resource-id's te vinden. |
    |||||
 
    Wanneer u [beveiligde para meters](#secure-action-parameters) gebruikt voor het afhandelen en beveiligen van gevoelige informatie, bijvoorbeeld in een [Azure Resource Manager sjabloon voor het automatiseren van de implementatie](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), kunt u expressies gebruiken om toegang te krijgen tot deze parameter waarden tijdens runtime. In dit voor beeld van een HTTP-actie definitie geeft u de verificatie `type` als `ManagedServiceIdentity` en gebruikt u de [functie para meters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) om de parameter waarden op te halen:
@@ -797,6 +798,7 @@ Als de optie [beheerde identiteit](../active-directory/managed-identities-azure-
          "uri": "@parameters('endpointUrlParam')",
          "authentication": {
             "type": "ManagedServiceIdentity",
+            "identity": "SystemAssigned",
             "audience": "https://management.azure.com/"
          },
       },

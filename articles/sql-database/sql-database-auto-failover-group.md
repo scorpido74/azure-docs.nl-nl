@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 1/05/2020
-ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 2/10/2020
+ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768663"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116186"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 
@@ -31,7 +31,7 @@ Daarnaast bieden automatische-failover-groepen alleen-lezen-en alleen-lezen list
 
 Wanneer u groepen voor automatische failover gebruikt met automatische failoverbeleid, resulteert elke storing die van invloed is op data bases in de SQL Database Server of het beheerde exemplaar tot een automatische failover. U kunt de groep voor automatische failover beheren met:
 
-- [Azure Portal](sql-database-implement-geo-distributed-database.md)
+- [Azure-portal](sql-database-implement-geo-distributed-database.md)
 - [Azure CLI: failover-groep](scripts/sql-database-add-single-db-to-failover-group-cli.md)
 - [Power shell: failover-groep](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 - [Rest API: failovergroep](/rest/api/sql/failovergroups).
@@ -242,7 +242,7 @@ Omdat elk exemplaar is geïsoleerd in een eigen VNet, moet twee richtings verkee
 U kunt in twee verschillende abonnementen een failover-groep maken tussen beheerde exemplaren. Wanneer u Power shell API gebruikt, kunt u dit doen door de para meter `PartnerSubscriptionId` op te geven voor het secundaire exemplaar. Wanneer u REST API gebruikt, kan elke exemplaar-ID die is opgenomen in de para meter `properties.managedInstancePairs` een eigen subscriptionID hebben.
   
 > [!IMPORTANT]
-> Azure Portal biedt geen ondersteuning voor failover-groepen in verschillende abonnementen.
+> Azure Portal biedt geen ondersteuning voor het maken van failover-groepen voor verschillende abonnementen. Voor de bestaande failover-groepen in verschillende abonnementen en/of resource groepen kan failover ook niet hand matig worden gestart via de portal van het primaire exemplaar. Start de service vanuit het geo-secundaire exemplaar.
 
 ### <a name="managing-failover-to-secondary-instance"></a>Failover naar een secundair exemplaar beheren
 
@@ -413,7 +413,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Hiermee wordt een failover van een failovergroep naar het secundaire exemplaar geactiveerd|
 | [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Hiermee verwijdert u een failovergroep|
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>SQL database failover beheren met afzonderlijke data bases en elastische Pools
 

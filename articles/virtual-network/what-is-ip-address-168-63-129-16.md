@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: e061d503254ba7aa7735a97a060fc63f96b3fb61
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 287f881fb17dd84357f540ee562e21c66c11ab95
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196675"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114357"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Wat is het IP-adres 168.63.129.16?
 
@@ -34,10 +34,11 @@ IP-adres 168.63.129.16 is een virtueel openbaar IP-adres dat wordt gebruikt om e
 
 ## <a name="scope-of-ip-address-1686312916"></a>Bereik van IP-adres 168.63.129.16
 
-Het open bare IP-adres 168.63.129.16 wordt gebruikt in alle regio's en alle nationale Clouds. Dit speciale open bare IP-adres is eigendom van micro soft en kan niet worden gewijzigd. Het wordt toegestaan door de standaard regel voor de netwerk beveiligings groep. U wordt aangeraden dit IP-adres in alle lokale firewall-beleids regels in zowel binnenkomende als uitgaande richting toe te staan. De communicatie tussen dit speciale IP-adres en de bronnen is veilig, omdat alleen het interne Azure-platform een bericht kan bron van dit IP-adres. Als dit adres wordt geblokkeerd, kan onverwacht gedrag optreden in verschillende scenario's.
-De volgende poorten moeten worden geopend om communicatie met WireServer: 80, 443 en 32526 toe te staan.
+Het open bare IP-adres 168.63.129.16 wordt gebruikt in alle regio's en alle nationale Clouds. Dit speciale open bare IP-adres is eigendom van micro soft en kan niet worden gewijzigd. U wordt aangeraden dit IP-adres toe te staan in een lokaal (in het VM-) firewall beleid (uitgaande richting). De communicatie tussen dit speciale IP-adres en de bronnen is veilig, omdat alleen het interne Azure-platform een bericht kan bron van dit IP-adres. Als dit adres wordt geblokkeerd, kan onverwacht gedrag optreden in verschillende scenario's. 168.63.129.16 is een [virtueel IP-adres van het host-knoop punt](../virtual-network/security-overview.md#azure-platform-considerations) en is niet onderhevig aan door de gebruiker gedefinieerde routes.
 
-[Azure Load Balancer status tests](../load-balancer/load-balancer-custom-probe-overview.md) zijn afkomstig van dit IP-adres. Als u dit IP-adres blokkeert, zullen uw tests mislukken.
+- De VM-agent vereist uitgaande communicatie via de poorten 80, 443, 32526 met WireServer (168.63.129.16). Deze moeten worden geopend in de lokale firewall op de VM. De communicatie over deze poorten met 168.63.129.16 is niet van toepassing op de geconfigureerde netwerk beveiligings groepen.
+- 168.63.129.16 kunnen DNS-services leveren aan de virtuele machine. Als dit niet gewenst is, kan dit verkeer worden geblokkeerd in de lokale firewall op de VM. Standaard is DNS-communicatie niet van toepassing op de geconfigureerde netwerk beveiligings groepen, tenzij specifiek is gericht op het [AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags) -service label.
+- Wanneer de virtuele machine deel uitmaakt van een load balancer back-end-groep, moet de [status test](../load-balancer/load-balancer-custom-probe-overview.md) communicatie worden toegestaan vanuit 168.63.129.16. De standaard configuratie van de netwerk beveiligings groep heeft een regel die deze communicatie mogelijk maakt. Deze regel maakt gebruik van het [AzureLoadBalancer](../virtual-network/service-tags-overview.md#available-service-tags) -service label. Als dit verkeer gewenst kan worden geblokkeerd door de netwerk beveiligings groep te configureren, resulteert dit echter in tests die mislukken.
 
 In een scenario met een niet-virtueel netwerk (klassiek), wordt de status test gebrond op basis van een privé-IP-adres en 168.63.129.16 wordt niet gebruikt.
 

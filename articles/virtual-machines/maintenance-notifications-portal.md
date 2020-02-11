@@ -1,20 +1,18 @@
 ---
-title: De portal gebruiken voor onderhouds meldingen voor Azure-Vm's
+title: De portal gebruiken voor onderhouds meldingen
 description: Bekijk onderhouds meldingen voor virtuele machines die in Azure worden uitgevoerd en start self-service onderhoud met behulp van de portal.
-services: virtual-machines
 author: shants123
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 759fbc5ba3c5eaa78fec1045bcf41969108d39b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535819"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115734"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Geplande onderhouds meldingen verwerken met behulp van de portal
 
@@ -36,7 +34,7 @@ U kunt de Azure Portal gebruiken en zoeken naar Vm's die zijn gepland voor onder
       
       | Waarde | Beschrijving |
       |-------|-------------|
-      | Aan de slag | De virtuele machine bevindt zich in het self-service-onderhouds venster waarmee u het onderhoud zelf kunt initiëren. Hieronder vindt u informatie over het starten van onderhoud op uw virtuele machine. | 
+      | Nu starten | De virtuele machine bevindt zich in het self-service-onderhouds venster waarmee u het onderhoud zelf kunt initiëren. Hieronder vindt u informatie over het starten van onderhoud op uw virtuele machine. | 
       | Gepland | Er is onderhoud gepland voor uw virtuele machine, zonder mogelijkheid dit onderhoud zelf te starten. U kunt het onderhouds venster leren door het venster onderhoud gepland te selecteren in deze weer gave of door te klikken op de virtuele machine. | 
       | Al bijgewerkt | De virtuele machine is al bijgewerkt en er is op dit moment geen verdere actie vereist. | 
       | Later opnieuw proberen | U hebt onderhoud gestart zonder slagen. U kunt de optie voor selfservice onderhoud op een later tijdstip gebruiken. | 

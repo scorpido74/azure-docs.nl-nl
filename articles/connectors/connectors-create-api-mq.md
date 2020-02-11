@@ -3,18 +3,18 @@ title: Verbinding maken met de IBM MQ-server
 description: Berichten verzenden en ophalen met een Azure-of on-premises IBM MQ-server en Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: valrobb
-ms.author: valthom
-ms.reviewer: chrishou, logicappspm
+author: ChristopherHouser
+ms.author: chrishou
+ms.reviewer: valthom, logicappspm
 ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: ef9e91b526055ece58ce283572deb98cff951653
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 489f53a4f4c1c0d5bd782f42a9daf73217234793
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789588"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118046"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Verbinding maken met een IBM MQ-server vanaf Azure Logic Apps
 
@@ -66,7 +66,7 @@ De IBM MQ-connector bevat deze acties, maar biedt geen triggers:
    
       Uw verbinding ziet eruit als in dit voor beeld:
 
-      ![Verbindings eigenschappen](media/connectors-create-api-mq/Connection_Properties.png)
+      ![Verbindingseigenschappen](media/connectors-create-api-mq/Connection_Properties.png)
 
 1. De eigenschappen van de actie instellen:
 

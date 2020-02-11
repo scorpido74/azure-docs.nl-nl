@@ -2,13 +2,13 @@
 title: EmptyDir volume koppelen aan container groep
 description: Meer informatie over het koppelen van een emptyDir-volume voor het delen van gegevens tussen de containers in een container groep in Azure Container Instances
 ms.topic: article
-ms.date: 02/08/2018
-ms.openlocfilehash: 955423b685ebb3979271c7c2dc7e835a16100c2b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 01/31/2020
+ms.openlocfilehash: 64a3c83008f163167528a5e5987fe2316942d5bc
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552454"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117749"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Een emptyDir-volume koppelen in Azure Container Instances
 
@@ -29,23 +29,25 @@ Een voor beeld van een *emptyDir* -volume:
 
 Gegevens in een *emptyDir* -volume blijven behouden via container crashes. Containers die opnieuw worden opgestart, zijn echter niet gegarandeerd de gegevens in een *emptyDir* -volume op te slaan. Als u een container groep stopt, wordt het *emptyDir* -volume niet persistent gemaakt.
 
+De maximale grootte van een Linux *emptyDir* -volume is 50 GB.
+
 ## <a name="mount-an-emptydir-volume"></a>Een emptyDir-volume koppelen
 
-Als u een emptyDir-volume in een container exemplaar wilt koppelen, moet u implementeren met behulp van een [Azure Resource Manager sjabloon](/azure/templates/microsoft.containerinstance/containergroups).
+Als u een emptyDir-volume in een container exemplaar wilt koppelen, kunt u implementeren met behulp van een [Azure Resource Manager-sjabloon](/azure/templates/microsoft.containerinstance/containergroups), een [yaml-bestand](container-instances-reference-yaml.md)of andere programmatische methoden voor het implementeren van een container groep.
 
-Vul eerst de `volumes`-matrix in het gedeelte `properties` van de container groep van de sjabloon. Voor elke container in de container groep waarin u het *emptyDir* -volume wilt koppelen, vult u de `volumeMounts`-matrix in het gedeelte `properties` van de container definitie.
+Vul eerst de `volumes`-matrix in het gedeelte `properties` van de container groep van het bestand. Voor elke container in de container groep waarin u het *emptyDir* -volume wilt koppelen, vult u de `volumeMounts`-matrix in het gedeelte `properties` van de container definitie.
 
 De volgende Resource Manager-sjabloon maakt bijvoorbeeld een container groep die bestaat uit twee containers, die elk het *emptyDir* -volume koppelen:
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
 [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
-Zie [groepen met meerdere containers implementeren in azure container instances](container-instances-multi-container-group.md)om een voor beeld te zien van implementatie van container instanties met een Azure Resource Manager sjabloon.
+Zie [een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](container-instances-multi-container-group.md) en [een groep met meerdere containers implementeren met behulp van een yaml-bestand](container-instances-multi-container-yaml.md)om voor beelden te bekijken van implementatie van container groep.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het koppelen van andere volume typen in Azure Container Instances:
 
 * [Een Azure-bestandsshare koppelen in Azure Container Instances](container-instances-volume-azure-files.md)
-* [Koppelen van een volume gitRepo in Azure Containerexemplaren](container-instances-volume-gitrepo.md)
+* [Een gitRepo-volume koppelen in Azure Container Instances](container-instances-volume-gitrepo.md)
 * [Een geheim volume koppelen in Azure Container Instances](container-instances-volume-secret.md)

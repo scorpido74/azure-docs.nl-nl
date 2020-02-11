@@ -1,6 +1,6 @@
 ---
-title: Leslokaal Labs-concepten - Azure Lab-Services | Microsoft Docs
-description: Leer de basisconcepten van Lab-Services en hoe deze kan gemakkelijk te maken en beheren van labs.
+title: Lessen over klassikale Labs-Azure Lab Services | Microsoft Docs
+description: Leer de basis concepten van Lab-Services en hoe u hiermee eenvoudig Labs kunt maken en beheren.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,52 +13,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 8bbb486b0dbf1a5e25f5ee4d1f8e5e01b999a8ba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 348340516f9332f5492c7ce60c3d164da44a008c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067381"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120896"
 ---
 # <a name="classroom-labs-concepts"></a>Concepten van leslokaallabs
-De volgende lijst bevat belangrijke concepten voor Lab-Services en definities:
 
-## <a name="quota"></a>Quota
-Quotum is de tijdslimiet (in uren) die een docent kunt instellen voor een student een lab-virtuele machine gebruiken. Het kan worden ingesteld op 0 of een bepaald aantal uren. Als het quotum is ingesteld op 0, kunt een student de virtuele machine alleen gebruiken als een planning wordt uitgevoerd of als een docent handmatig op de virtuele machine voor de studenten wordt.
- 
+De volgende lijst bevat concepten en definities voor de belangrijkste Lab-Services:
+
+## <a name="quota"></a>Overschreden
+
+Quota is de tijds limiet (in uren) die een docent kan instellen voor een student om een Lab-VM te gebruiken. De waarde kan worden ingesteld op 0 of een bepaald aantal uren. Als het quotum is ingesteld op 0, kan een student alleen de virtuele machine gebruiken als er een planning wordt uitgevoerd of wanneer een docent de virtuele machine hand matig inschakelt voor de student.  
+
+De quota uren worden geteld wanneer de student de VM van het lab zelf start.  Als een docent de Lab-VM voor een student hand matig start, worden er geen quota uren gebruikt voor die student.
+
 ## <a name="schedules"></a>Planningen
-Schema's zijn de time-sleuven (één keer of terugkerende) die een docent kunt maken voor de klasse. Alle virtuele machines in het lab worden automatisch gestart aan het begin aan de planning en ze gestopt zijn aan het einde van de planning. Quotum uur worden niet gebruikt wanneer een schema wordt uitgevoerd.
 
-## <a name="template-virtual-machine"></a>Sjabloon voor virtuele machine
-Een sjabloon voor virtuele machine in een testomgeving is een basis van base VM-installatiekopie waarin alle gebruikers virtuele machines zijn gemaakt. Makers van trainers/lab instellen van de sjabloon voor virtuele machine en configureer deze met de software die ze willen om deelnemers willen labs training te geven. Wanneer u een VM-sjabloon publiceert, wordt Azure Lab-Services wordt gemaakt of bijgewerkt lab-virtuele machines op basis van de VM-sjabloon. 
+Schema's zijn de tijd sleuven (één keer of periodiek) die een docent voor de klasse kan maken. Alle virtuele machines in het lab worden automatisch aan het begin van het schema gestart en aan het einde van het schema gestopt. Quota-uren worden niet gebruikt wanneer een schema wordt uitgevoerd.
 
+## <a name="template-virtual-machine"></a>Virtuele machine van sjabloon
+
+Een sjabloon van een virtuele machine in een Lab is een basis installatie kopie van een virtuele machine waarvan de virtuele machines van alle gebruikers worden gemaakt. Trainers/Lab-makers stellen de virtuele machine van de sjabloon in en configureren deze met de software die ze nodig hebben om deel nemers te trainen om Labs uit te voeren. Wanneer u een sjabloon-VM publiceert, worden in Azure Lab Services Lab-Vm's gemaakt of bijgewerkt op basis van de VM van de sjabloon.
 
 ## <a name="user-profiles"></a>Gebruikersprofielen
-In dit artikel worden de verschillende gebruikersprofielen in Azure Lab Services beschreven. 
+
+In dit artikel worden de verschillende gebruikersprofielen in Azure Lab Services beschreven.
 
 ### <a name="lab-account-owner"></a>Labeigenaar
-Meestal fungeert een IT-beheerder van de cloudresources van de organisatie, die ook eigenaar is van het Azure-abonnement, als de eigenaar van een lab-account. Deze persoon is verantwoordelijk voor de volgende taken:   
+
+Meestal fungeert een IT-beheerder van de cloudresources van de organisatie, die ook eigenaar is van het Azure-abonnement, als de eigenaar van een lab-account. Deze persoon is verantwoordelijk voor de volgende taken:
 
 - Een lab-account instellen voor uw organisatie.
 - Beleidsregels beheren en configureren voor alle labs.
 - Machtigingen verlenen aan personen binnen de organisatie voor het maken van een lab onder het lab-account.
 
-### <a name="professor"></a>Professor
-Normaal gesproken maken gebruikers, bijvoorbeeld een leraar of onlinedocent leslokaallabs in een labaccount. Een docent voert de volgende taken uit: 
+### <a name="professor"></a>Wetenschappers
+
+Normaal gesproken maken gebruikers, bijvoorbeeld een leraar of onlinedocent leslokaallabs in een labaccount. Een docent voert de volgende taken uit:
 
 - Leslokaallab maken.
-- Virtuele machines maken in het lab. 
+- Virtuele machines maken in het lab.
 - De juiste software installeren op virtuele machines.
 - Instellen wie toegang heeft tot het lab.
 - Registratiekoppeling naar het lab doorgeven aan studenten.
 
 ### <a name="student"></a>Student
+
 Een student voert de volgende taken uit:
 
-- De registratiekoppeling volgen die is verstuurd door een labmaker om zich te registreren bij het lab. 
-- Verbinding maken met een virtuele machine in het lab en deze gebruiken voor het maken van klassikale oefeningen, huiswerk en projecten. 
+- De registratiekoppeling volgen die is verstuurd door een labmaker om zich te registreren bij het lab.
+- Verbinding maken met een virtuele machine in het lab en deze gebruiken voor het maken van klassikale oefeningen, huiswerk en projecten.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Aan de slag met het instellen van een labaccount dat is vereist voor het maken van een leslokaallab met Azure Lab Services:
 
 - [Een lab-account maken](tutorial-setup-lab-account.md)

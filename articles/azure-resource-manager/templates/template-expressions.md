@@ -2,19 +2,21 @@
 title: Sjabloon syntaxis en expressies
 description: Beschrijft de declaratieve JSON-syntaxis voor Azure Resource Manager sjablonen.
 ms.topic: conceptual
-ms.date: 09/03/2019
-ms.openlocfilehash: b7682ba10c30290e5935bc2dd17e2a83852d92f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: 42649d4b04b03de32b82335fce68401192de75a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484192"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120596"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntaxis en expressies in Azure Resource Manager sjablonen
 
-De basis syntaxis van de sjabloon is JSON. U kunt echter expressies gebruiken om de JSON-waarden uit te breiden die beschikbaar zijn in de sjabloon.  Expressies staan respectievelijk tussen de vierkante haken `[` en `]`. De waarde van de expressie wordt geëvalueerd als de sjabloon wordt geïmplementeerd. Een expressie kan een tekenreeks, een geheel getal, een booleaanse waarde of een object retourneren.
+De basis syntaxis van de sjabloon is JSON. U kunt echter expressies gebruiken om de JSON-waarden uit te breiden die beschikbaar zijn in de sjabloon.  Expressies beginnen en eindigen met haakjes: respectievelijk `[` en `]`. De waarde van de expressie wordt geëvalueerd wanneer de sjabloon wordt geïmplementeerd. Een expressie kan een teken reeks, een geheel getal, een Booleaanse waarde, een matrix of een object retour neren.
 
 Een sjabloon expressie mag niet langer zijn dan 24.576 tekens.
+
+Expressies ondersteunen JSON (' null ') en eigenschappen bieden ondersteuning voor een letterlijke waarde van Null. In beide gevallen behandelen Resource Manager-sjablonen dit alsof de eigenschap niet aanwezig is.
 
 ## <a name="use-functions"></a>Functies gebruiken
 

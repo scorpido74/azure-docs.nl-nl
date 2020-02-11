@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 2ec8d389c99ad96e59bf49d4345855fa44d6c7aa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ec5c1295f883bb37ad5f016bc3346c134863e6bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901996"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118808"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Ondersteuning van talen en regio's voor de Translator Text-API
 
@@ -42,92 +42,92 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 
 |Taal|  Taalcode|  V3 API|
 |:-----|:-----:|:-----|
-|Afrikaans| `af`|   Neuraal|
-|Arabisch|    `ar`    |   Neuraal|
-|Bengalees|    `bn`    |   Neuraal|
-|Bosnisch (Latijns)|   `bs`    |   Neuraal|
-|Bulgaars| `bg`    |   Neuraal|
+|Afrikaans| `af`|   Neural|
+|Arabisch|    `ar`    |   Neural|
+|Bengalees|    `bn`    |   Neural|
+|Bosnisch (Latijns)|   `bs`    |   Neural|
+|Bulgaars| `bg`    |   Neural|
 |Kantonees (Traditioneel)|   `yue`|  Statische|
 |Catalaans|   `ca`    |   Statische|
-|Vereenvoudigd Chinees|    `zh-Hans`|Neuraal|
-|Traditioneel Chinees|   `zh-Hant`       |Neuraal|
-|Kroatisch|  `hr`    |Neuraal|
-|Tsjechisch| `cs`    |   Neuraal|
-|Deens|    `da`        |Neuraal|
-|Nederlands| `nl`|   Neuraal|
-|Nederlands|   `en`    |   Neuraal|
-|Estisch|  `et`    |   Neuraal|
+|Vereenvoudigd Chinees|    `zh-Hans`|Neural|
+|Traditioneel Chinees|   `zh-Hant`       |Neural|
+|Kroatisch|  `hr`    |Neural|
+|Tsjechisch| `cs`    |   Neural|
+|Deens|    `da`        |Neural|
+|Dutch| `nl`|   Neural|
+|Nederlands|   `en`    |   Neural|
+|Estlands|  `et`    |   Neural|
 |Fiji|    `fj`    |   Statische|
 |Filipijns|  `fil`   |   Statische|
-|Fins|   `fi`    |   Neuraal|
-|Frans|    `fr`    |   Neuraal|
-|Duits|    `de`    |   Neuraal|
-|Grieks| `el`    |   Neuraal|
+|Fins|   `fi`    |   Neural|
+|Frans|    `fr`    |   Neural|
+|Duits|    `de`    |   Neural|
+|Grieks| `el`    |   Neural|
 |Haïtiaans|    `ht`        |Statische|
-|Hebreeuws |`he`   |Neuraal
-|Hindi| `hi`    |   Neuraal|
+|Hebreeuws |`he`   |Neural
+|Hindi| `hi`    |   Neural|
 |Hmong Daw| `mww`   |   Statische|
-|Hongaars| `hu`    |   Neuraal|
-|IJslands| `is`    |   Neuraal|
-|Indonesisch|    `id`    |   Statische|
-|Iers | `ga`| Neuraal
-|Italiaans|   `it`    |   Neuraal|
-|Japans|  `ja`    |   Neuraal|
-|Kanarees|`kn`| Neuraal
+|Hongaars| `hu`    |   Neural|
+|IJslands| `is`    |   Neural|
+|Bahasa Indonesia|    `id`    |   Statische|
+|Iers | `ga`| Neural
+|Italiaans|   `it`    |   Neural|
+|Japans|  `ja`    |   Neural|
+|Kanarees|`kn`| Neural
 |Swahili| `sw`    |   Statische|
 |Klingon|   `tlh`   |   Statische|
 |Klingon (plqaD)|   `tlh-Qaak`  |   Statische|
-|Koreaans |`ko`   |   Neuraal|
-|Lets|   `lv`    |   Neuraal|
-|Litouws|    `lt`    |   Neuraal|
+|Koreaans |`ko`   |   Neural|
+|Lets|   `lv`    |   Neural|
+|Litouws|    `lt`    |   Neural|
 |Malagassische|  `mg`    |   Statische|
 |Maleis| `ms`        |Statische|
-|Malayalam| `ml` | Neuraal
+|Malayalam| `ml` | Neural
 |Maltees|   `mt`    |   Statische|
-|Maori| `mi`  | Neuraal|
-|Noors| `nb`    |   Neuraal|
-|Perzisch|   `fa`    |   Neuraal|
-|Pools|    `pl`    |   Neuraal|
-|Portugees (Brazilië)|   `pt-br` |   Neuraal|
-|Portugees (Portugal)| `pt-pt` | Neuraal
-|Punjabi|`pa`|Neuraal
+|Maori| `mi`  | Neural|
+|Noors| `nb`    |   Neural|
+|Perzisch|   `fa`    |   Neural|
+|Pools|    `pl`    |   Neural|
+|Portugees (Brazilië)|   `pt-br` |   Neural|
+|Portugees (Portugal)| `pt-pt` | Neural
+|Punjabi|`pa`|Neural
 |Queretaro Otomi|   `otq`   |   Statische|
-|Roemeens|  `ro`    |   Neuraal|
-|Russisch|   `ru`    |   Neuraal|
+|Roemeens|  `ro`    |   Neural|
+|Russisch|   `ru`    |   Neural|
 |Samoaanse|    `sm`    |   Statische|
 |Servisch (Cyrillisch)|    `sr-Cyrl`|  Statische|
 |Servisch (Latijns)|   `sr-Latn`       |Statische|
-|Slowaaks|    `sk`    |   Neuraal|
-|Sloveens| `sl`    |   Neuraal|
-|Spaans|   `es`    |   Neuraal|
-|Zweeds|   `sv`    |Neuraal|
+|Slowaaks|    `sk`    |   Neural|
+|Sloveens| `sl`    |   Neural|
+|Spaans|   `es`    |   Neural|
+|Zweeds|   `sv`    |Neural|
 |Tahitian|  `ty`    |Statische|
-|Tamil| `ta`    |   Neuraal|
-|Telugu|    `te`    |   Neuraal|
-|Thais|  `th`    |   Neuraal|
+|Tamil| `ta`    |   Neural|
+|Telugu|    `te`    |   Neural|
+|Thais|  `th`    |   Neural|
 |Tongan|    `to`    |   Statische|
-|Turks|   `tr`        |Neuraal|
-|Oekraïens| `uk`    |   Neuraal|
+|Turks|   `tr`        |Neural|
+|Oekraïens| `uk`    |   Neural|
 |Urdu|  `ur`    |   Statische|
-|Vietnamees|    `vi`    |   Neuraal|
-|Welsh| `cy`    |   Neuraal|
+|Vietnamees|    `vi`    |   Neural|
+|Welsh| `cy`    |   Neural|
 |Yucatec Maya|  `yua`   |   Statische|
 
 > [!NOTE]
 > De taal code `pt` wordt standaard ingesteld op `pt-br`, Portugees (Brazilië).
 
-## <a name="transliteration"></a>Transliteratie
+## <a name="transliteration"></a>Vele
 
 De methode transtranscrib ondersteunt de volgende talen. In de ' aan/van ', ' <-> ' geeft aan dat de taal kan worden getranscribeerd van of naar een van de vermelde scripts. De '--> ' geeft aan dat de taal alleen kan worden getranscribeerd van het ene script naar het andere.
 
 | Taal    | Taalcode | Script | Naar/van | Script|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabisch | `ar` | Arabische `Arab` | <--> | Latijns `Latn` |
-|Bengalees  | `bn` | Bengali `Beng` | <--> | Latijns `Latn` |
+|Bengalees  | `bn` | Bengaals `Beng` | <--> | Latijns `Latn` |
 | Chinees (vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Latijns `Latn` |
 | Chinees (vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Traditioneel Chinees `Hant`|
-| Chinees (traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Latijns `Latn` |
-| Chinees (traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Vereenvoudigd Chinees `Hans` |
+| Chinees (Traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Latijns `Latn` |
+| Chinees (Traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Vereenvoudigd Chinees `Hans` |
 | Gujarati | `gu`  | Gujarati `Gujr` | --> | Latijns `Latn` |
 | Hebreeuws | `he` | Hebreeuws `Hebr` | <--> | Latijns `Latn` |
 | Hindi | `hi` | Devanagari `Deva` | <--> | Latijns `Latn` |
@@ -159,8 +159,8 @@ De woorden lijst ondersteunt de volgende talen in of vanuit het Engels met behul
 | Kroatisch      | `hr`          |
 | Tsjechisch      | `cs`          |
 | Deens      | `da`          |
-| Nederlands      | `nl`          |
-| Estisch      | `et`          |
+| Dutch      | `nl`          |
+| Estlands      | `et`          |
 | Fins      | `fi`          |
 | Frans      | `fr`          |
 | Duits      | `de`          |
@@ -171,7 +171,7 @@ De woorden lijst ondersteunt de volgende talen in of vanuit het Engels met behul
 | Hmong Daw      | `mww`          |
 | Hongaars      | `hu`          |
 | IJslands    | `is`  |
-| Indonesisch      | `id`          |
+| Bahasa Indonesia      | `id`          |
 | Italiaans      | `it`          |
 | Japans      | `ja`          |
 | Swahili      | `sw`          |
@@ -226,9 +226,9 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Kroatisch      | `hr`          |
 | Tsjechisch      | `cs`          |
 | Deens      | `da`          |
-| Nederlands      | `nl`          |
+| Dutch      | `nl`          |
 | Nederlands    | `en`     |
-| Estisch      | `et`          |
+| Estlands      | `et`          |
 | Fins      | `fi`          |
 | Frans      | `fr`          |
 | Duits      | `de`          |
@@ -237,7 +237,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Hindi      | `hi`          |
 | Hongaars      | `hu`          |
 | IJslands | `is` |
-| Indonesisch|   `id`    |
+| Bahasa Indonesia|   `id`    |
 | Iers | `ga`  |
 | Italiaans      | `it`          |
 | Japans      | `ja`          |

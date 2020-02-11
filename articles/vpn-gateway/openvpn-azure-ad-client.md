@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.author: alzam
-ms.openlocfilehash: 045d1cad130adad34d74009b34b193ce0d3d4dc9
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 3072fc3a82cfe85649cf080c9def69cc4869b7ec
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110555"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122496"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Een VPN-client configureren voor P2S OpenVPN-protocol verbindingen: Azure AD-verificatie
 
@@ -163,6 +163,24 @@ U kunt het gedownloade XML-profiel bestand wijzigen en de **\<dnssuffixes >\<dns
           <dnssuffix>.xyz.com</dnssuffix>
           <dnssuffix>.etc.net</dnssuffix>
     </dnssuffixes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Hoe kan ik aangepaste routes toevoegen aan de VPN-client?
+
+U kunt het gedownloade XML-profiel bestand wijzigen en de **\<route toevoegen >\<includeroutes >\<bestemming >\<masker > \</route >\</includeroutes >\</destionation >\</mask >** Tags
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <includeroutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </includeroutes>
     
 </clientconfig>
 </azvpnprofile>

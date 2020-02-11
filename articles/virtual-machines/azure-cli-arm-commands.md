@@ -1,36 +1,29 @@
 ---
-title: Azure CLI-opdrachten in de Resource Manager-modus | Microsoft Docs
-description: Azure opdracht regel interface-opdrachten (CLI) voor het beheren van resources in het Resource Manager-implementatie model
-services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
-documentationcenter: ''
+title: Klassieke Azure CLI-opdrachten
+description: Azure opdracht regel interface-opdrachten (CLI) voor het beheren van resources.
 author: cynthn
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: be37da5b-72fe-41a1-9fa0-8937b69464ec
-ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: command-line-interface
-ms.devlang: na
+ms.service: virtual-machines
+ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 7fd06a620c695b3be49a116c89f63507cee9c07c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355930"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122450"
 ---
-# <a name="azure-cli-commands-in-resource-manager-mode"></a>Azure CLI-opdrachten in de Resource Manager-modus
-In dit artikel vindt u de syntaxis en opties voor de Azure-opdracht regel interface (CLI)-opdrachten die u vaak gebruikt voor het maken en beheren van Azure-resources in het Azure Resource Manager-implementatie model. U opent deze opdrachten door de CLI in de modus Resource Manager (arm) uit te voeren. Dit is geen volledige verwijzing en uw CLI-versie kan enigszins verschillende opdrachten of para meters bevatten. Zie [Azure Resource Manager Overview](../azure-resource-manager/management/overview.md)voor een algemeen overzicht van Azure-resources en-resource groepen.  
+# <a name="azure-classic-cli-commands"></a>Klassieke Azure CLI-opdrachten 
 
-> [!NOTE]
-> In dit artikel worden de opdrachten van de modus Resource Manager in de Azure CLI weer gegeven, ook wel Azure Classic CLI genoemd. Als u wilt werken in het Resource Manager-model, kunt u ook de [Azure cli](/cli/azure/install-az-cli2)proberen, onze volgende generatie multi-platform cli.
->Meer informatie over de [oude en nieuwe Azure-cli's](/cli/azure/old-and-new-clis).
->
+> [!IMPORTANT]
+> In dit onderwerp wordt beschreven hoe u de klassieke Azure CLI installeert. De klassiek CLI wordt buiten gebruik gesteld en kan alleen worden gebruikt met het klassieke implementatiemodel.
+> Voor alle andere implementaties gebruikt u de [Azure cli](https://docs.microsoft.com/cli/azure/).
 
-Als u aan de slag wilt gaan, installeert u eerst [de Azure cli](../cli-install-nodejs.md) en [maakt u verbinding met uw Azure-abonnement](/cli/azure/authenticate-azure-cli).
+Dit artikel bevat de syntaxis en opties voor de klassieke opdracht regel interface (CLI)-opdrachten van Azure die u vaak gebruikt om Azure-resources te maken en te beheren. Dit is geen volledige verwijzing en uw CLI-versie kan enigszins verschillende opdrachten of para meters bevatten. 
+
+Als u aan de slag wilt gaan, installeert u eerst [de klassieke Azure-cli](../cli-install-nodejs.md) en [maakt u verbinding met uw Azure-abonnement](/cli/azure/authenticate-azure-cli).
 
 Voor de syntaxis en opties van de huidige opdracht op de opdracht regel in de modus Resource Manager typt u `azure help` of, om de Help voor een specifieke opdracht weer te geven `azure help [command]`. Ook vindt u hier CLI-voor beelden in de documentatie voor het maken en beheren van specifieke Azure-Services.
 
@@ -45,10 +38,10 @@ Gebruik de volgende opdracht om de modus opdrachten van Azure CLI Resource Manag
 
 > [!NOTE]
 > De Azure Resource Manager modus van de CLI en de Azure Service Management-modus sluiten elkaar wederzijds uit. Dat wil zeggen dat resources die zijn gemaakt in de ene modus, niet kunnen worden beheerd vanuit de andere modus.
-> 
-> 
+>
 
-## <a name="azure-account-manage-your-account-information"></a>Azure-account: uw account gegevens beheren
+
+## <a name="account-information"></a>Accountgegevens
 Uw Azure-abonnements gegevens worden gebruikt door het hulp programma om verbinding te maken met uw account.
 
 **De geïmporteerde abonnementen weer geven**
@@ -75,7 +68,7 @@ Uw Azure-abonnements gegevens worden gebruikt door het hulp programma om verbind
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Azure AD: opdrachten voor het weer geven van Active Directory objecten
+## <a name="active-directory-objects"></a>Active Directory-objecten
 **Opdrachten voor het weer geven van Active Directory-toepassingen**
 
     ad app create [options]
@@ -102,7 +95,7 @@ Uw Azure-abonnements gegevens worden gebruikt door het hulp programma om verbind
     ad user list [options]
     ad user show [options]
 
-## <a name="azure-availset-commands-to-manage-your-availability-sets"></a>beschik bare Azure-set: opdrachten voor het beheren van uw beschikbaarheids sets
+## <a name="availability-sets"></a>Beschikbaarheidssets
 **Hiermee maakt u een beschikbaarheidsset in een resource groep**
 
     availset create [options] <resource-group> <name> <location> [tags]
@@ -119,7 +112,7 @@ Uw Azure-abonnements gegevens worden gebruikt door het hulp programma om verbind
 
     availset delete [options] <resource-group> <name>
 
-## <a name="azure-config-commands-to-manage-your-local-settings"></a>Azure config: opdrachten voor het beheren van uw lokale instellingen
+## <a name="local-settings"></a>Lokale instellingen
 **Azure CLI-configuratie-instellingen weer geven**
 
     config list [options]
@@ -137,7 +130,7 @@ Uw Azure-abonnements gegevens worden gebruikt door het hulp programma om verbind
     config mode [options] <modename>
 
 
-## <a name="azure-feature-commands-to-manage-account-features"></a>Azure-functie: opdrachten voor het beheren van account functies
+## <a name="account-features"></a>Account functies
 **Alle beschik bare functies voor uw abonnement weer geven**
 
     feature list [options]
@@ -150,7 +143,7 @@ Uw Azure-abonnements gegevens worden gebruikt door het hulp programma om verbind
 
     feature register [options] <providerName> <featureName>
 
-## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Azure-groep: opdrachten voor het beheren van uw resource groepen
+## <a name="resource-groups"></a>Resourcegroepen
 **Hiermee maakt u een resource groep**
 
     group create [options] <name> <location>
@@ -189,12 +182,13 @@ Uw Azure-abonnements gegevens worden gebruikt door het hulp programma om verbind
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>Azure hdinsight: opdrachten voor het beheren van uw HDInsight-clusters
+## <a name="hdinsight-clusters"></a>HDInsight-clusters
 **Opdrachten om een cluster configuratie bestand te maken of toe te voegen**
 
     hdinsight config create [options] <configFilePath> <overwrite>
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
+
 
 Voor beeld: Maak een configuratie bestand dat een script actie bevat die moet worden uitgevoerd bij het maken van een cluster.
 
@@ -307,17 +301,17 @@ Parameter opties:
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure Insights: opdrachten met betrekking tot het bewaken van inzichten (gebeurtenissen, waarschuwings regels, instellingen voor automatisch schalen, metrische gegevens)
+## <a name="insights-events-alert-rules-autoscale-settings-metrics"></a>Inzichten (gebeurtenissen, waarschuwings regels, instellingen voor automatisch schalen, metrische gegevens)
 **Bewerkings logboeken ophalen voor een abonnement, een correlationId, een resource groep, resource of resource provider**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Azure-locatie: opdrachten voor het ophalen van de beschik bare locaties voor alle resource typen
+## <a name="locations"></a>Locaties 
 **De beschik bare locaties weer geven**
 
     location list [options]
 
-## <a name="azure-network-commands-to-manage-network-resources"></a>Azure-netwerk: opdrachten voor het beheren van netwerk bronnen
+## <a name="network-resources"></a>Netwerk bronnen
 **Opdrachten voor het beheren van virtuele netwerken**
 
     network vnet create [options] <resource-group> <name> <location>
@@ -1509,7 +1503,7 @@ Parameter opties:
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Azure-provider: opdrachten voor het beheren van resource provider registraties
+## <a name="resource-provider-registrations"></a>Registraties van resource provider
 **Geregistreerde providers in Resource Manager weer geven**
 
     provider list [options]
@@ -1526,7 +1520,7 @@ Parameter opties:
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>Azure-resource: opdrachten voor het beheren van uw resources
+## <a name="resources"></a>Bronnen
 **Hiermee maakt u een resource in een resource groep**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1547,7 +1541,7 @@ Parameter opties:
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Azure Role: opdrachten voor het beheren van uw Azure-rollen
+## <a name="azure-roles"></a>Azure-rollen
 **Alle beschik bare roldefinities ophalen**
 
     role list [options]
@@ -1562,7 +1556,7 @@ Parameter opties:
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Azure Storage: opdrachten voor het beheren van uw opslag objecten
+## <a name="storage-objects"></a>Opslag objecten
 **Opdrachten voor het beheren van uw opslag accounts**
 
     storage account list [options]
@@ -1685,7 +1679,7 @@ Parameter opties:
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>Azure tag: opdrachten voor het beheren van uw Resource Manager-tag
+## <a name="tags"></a>Tags
 **Een tag toevoegen**
 
     tag create [options] <name> <value>
@@ -1702,7 +1696,7 @@ Parameter opties:
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>Azure VM: opdrachten voor het beheren van uw Azure-Virtual Machines
+## <a name="virtual-machines"></a>Virtuele machines
 **Een virtuele machine maken**
 
     vm create [options] <resource-group> <name> <location> <os-type>

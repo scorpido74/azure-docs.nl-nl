@@ -3,19 +3,19 @@ title: 'Snelstartgids: aangepaste spraak assistent voor Java (Windows, Linux)-sp
 titleSuffix: Azure Cognitive Services
 description: In deze Quick Start leert u hoe u de Cognitive Services Speech SDK kunt gebruiken in een Java-Console toepassing. U leert hoe u uw client toepassing kunt verbinden met een eerder gemaakte bot-Framework-bot die is geconfigureerd om het directe lijn spraak kanaal te gebruiken en een spraak assistent in te scha kelen.
 services: cognitive-services
-author: bidishac
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: bidishac
-ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815851"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119698"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Snelstartgids: een spraak assistent maken met de spraak-SDK, java (preview)
 

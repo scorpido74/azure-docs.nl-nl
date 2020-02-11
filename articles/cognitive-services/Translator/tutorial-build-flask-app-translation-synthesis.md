@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 0075862e198ce67cc7367efe94d624ad18e6eb3b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b41b68725b6747cbada13a9acc321724b3f89d67
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984164"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118572"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Zelf studie: een kolf-app bouwen met Azure Cognitive Services
 
@@ -474,7 +474,7 @@ Druk op **CTRL + c** om de app te beëindigen en vervolgens de kop naar de volge
 
 ## <a name="analyze-sentiment"></a>Stemming analyseren
 
-De [Text Analytics-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) kan worden gebruikt voor het uitvoeren van sentiment-analyse, het uitpakken van sleutel zinnen uit tekst of het detecteren van de bron taal. In deze app gaan we sentiment-analyse gebruiken om te bepalen of de gegeven tekst positief, neutraal of negatief is. De API retourneert een numerieke score tussen 0 en 1. Scores dicht bij 1 geven een positieve stemming aan en scores dicht bij 0 geven een negatieve stemming aan.
+De [Text Analytics-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) kan worden gebruikt voor het uitvoeren van sentiment-analyse, het uitpakken van sleutel zinnen uit tekst of het detecteren van de bron taal. In deze app gaan we sentiment-analyse gebruiken om te bepalen of de gegeven tekst positief, neutraal of negatief is. De API retourneert een numerieke score tussen 0 en 1. Scores dicht bij 1 geven een positieve sentiment aan en scores dicht bij 0 geven een negatieve sentiment aan.
 
 In deze sectie gaat u een aantal dingen doen:
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 91ea2b68828ac54d4128a90550e9c60e065b719d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379424"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118537"
 ---
 # <a name="what-is-form-recognizer"></a>Wat is Form Recognizer?
 
@@ -51,17 +51,9 @@ Formulier herkenning bevat ook een model voor het lezen van Engelse verkoop bewi
 
 Formulier herkenning kan ook tekst-en tabel structuur (de rij-en kolom nummers die zijn gekoppeld aan de tekst) extra heren met high-definition optische teken herkenning (OCR). 
 
-## <a name="where-do-i-start"></a>Waar moet ik beginnen?
+## <a name="get-started"></a>Aan de slag
 
-**Stap 1:** Toegang aanvragen:
-
-Formulier herkenner is beschikbaar in een preview-versie van beperkte toegang. Als u toegang wilt krijgen tot de preview, vult u het formulier voor de [toegangs aanvraag voor de formulier herkenning](https://aka.ms/FormRecognizerRequestAccess) in en verzendt u dit. Het formulier vraagt informatie over u, uw bedrijf en het scenario waarin u de formulier herkenner gaat gebruiken.
-
-**Stap 2:** Een resource voor een formulier herkenning maken in de Azure Portal:
-
-Wanneer u toegang hebt tot het gebruik van de formulier herkenning, ontvangt u een welkomst-e-mail met verschillende koppelingen en bronnen. Gebruik de koppeling ' Azure Portal ' in dat bericht om de Azure Portal te openen en een resource voor een formulier herkenning te maken.
-
-**Stap 3:** Gegevens uit uw formulieren extra heren:
+Volg een Snelstartgids om aan de slag te gaan met het extra heren van gegevens uit uw formulieren. U wordt aangeraden de gratis service te gebruiken wanneer u de technologie bekijkt. Houd er rekening mee dat het aantal beschik bare pagina's beperkt is tot 500 per maand.
 
 * Aangepast: een model trainen op uw formulieren
   * Trainen zonder labels
@@ -76,13 +68,11 @@ Wanneer u toegang hebt tot het gebruik van de formulier herkenning, ontvangt u e
 * Indeling: tekst-en tabel structuur uit formulieren extra heren
   * [Snelstartgids: indelings gegevens extra heren met behulp van python](quickstarts/python-layout.md)
 
-U wordt aangeraden de gratis service te gebruiken wanneer u de technologie bekijkt. Houd er rekening mee dat het aantal beschik bare pagina's beperkt is tot 500 per maand.
-
-**Stap 4:** Bekijk de REST-Api's:
+### <a name="review-the-rest-apis"></a>De REST-Api's controleren
 
 U gebruikt de volgende Api's om modellen te trainen en gestructureerde gegevens uit formulieren op te halen.
 
-|Name |Beschrijving |
+|Naam |Beschrijving |
 |---|---|
 | **Aangepast model trainen**| Train een nieuw model om uw formulieren te analyseren met behulp van vijf soorten formulieren van hetzelfde type. Stel de para meter _useLabelFile_ in op `true` om met hand matig gelabelde gegevens te trainen. |
 | **Formulier analyseren** |Analyseer één document dat is door gegeven als een stroom voor het extra heren van tekst, sleutel-waardeparen en tabellen uit het formulier met uw aangepaste model.  |

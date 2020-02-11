@@ -3,17 +3,17 @@ title: C#zelf studie over het ordenen van resultaten
 titleSuffix: Azure Cognitive Search
 description: In deze zelf studie wordt gedemonstreerd hoe u zoek resultaten kunt ordenen. Het maakt deel uit van een vorig project van een hotels, wordt geordend op basis van de eigenschap Primary, de secundaire eigenschap en bevat een score profiel voor het toevoegen van Boosting criteria.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112683"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121559"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#zelf studie: de resultaten best Ellen-Azure Cognitive Search
 
@@ -956,7 +956,7 @@ Laten we eens kijken naar drie voor beelden van Score profielen _en bepalen hoe 
 
 4. Probeer het profiel ' op renovated datum/beoordeling ' om te zien of u de verwachte waarde krijgt. Alleen onlangs gerenovatedeerde hotels moeten een _nieuwe_ verbetering hebben.
 
-### <a name="resources"></a>Resources
+### <a name="resources"></a>Bronnen
 
 Zie voor meer informatie de volgende [Score profielen toevoegen aan een Azure Cognitive search-index](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
 

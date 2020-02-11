@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 158faaba1525e162c40c44179f30f7c3cea83b38
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8ab673c1a268f5ab663e8f423dd9b60cdfde14ab
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025908"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118367"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Een model voor het herkennen van een formulier met labels trainen met behulp van het voor beeld-label programma
 
@@ -25,12 +25,12 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
-- Toegang tot de preview-versie van beperkte toegang van de formulier herkenning. Als u toegang wilt krijgen tot de preview, vult u het [formulier voor de toegangs aanvraag voor de formulier herkenning](https://aka.ms/FormRecognizerRequestAccess)in en verzendt u dit. U ontvangt een e-mail met een koppeling om een formulier Recognizer-resource te maken.
+
 - Een set van ten minste zes soorten van hetzelfde type. U gebruikt deze gegevens om het model te trainen en een formulier te testen. U kunt een voor [beeld](https://go.microsoft.com/fwlink/?linkid=2090451) van een gegevensset voor deze Quick Start gebruiken. Upload de trainings bestanden naar de hoofdmap van een BLOB storage-container in een Azure Storage-account.
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Het hulp programma voor het labelen van het voor beeld instellen
 
-U gebruikt de docker-engine voor het uitvoeren van het hulp programma voor het labelen van voor beelden. Volg deze stappen om de docker-container in te stellen. Zie voor een uitleg van de basisprincipes van Docker en containers, de [dockeroverzicht](https://docs.docker.com/engine/docker-overview/).
+U gebruikt de docker-engine voor het uitvoeren van het hulp programma voor het labelen van voor beelden. Volg deze stappen om de docker-container in te stellen. Zie het [docker-overzicht](https://docs.docker.com/engine/docker-overview/)voor een primer op basis van docker en container.
 1. Installeer eerst docker op een hostcomputer. De hostcomputer kan uw lokale computer zijn ([Windows](https://docs.docker.com/docker-for-windows/), [MacOS](https://docs.docker.com/docker-for-mac/)of [Linux](https://docs.docker.com/install/)). U kunt ook een docker-hosting service gebruiken in azure, zoals de [Azure Kubernetes-service](https://docs.microsoft.com/azure/aks/index), [Azure container instances](https://docs.microsoft.com/azure/container-instances/index)of een Kubernetes-cluster [dat is geïmplementeerd op een Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910). De hostcomputer moet voldoen aan de volgende hardwarevereisten:
 
     | Container | Minimum | Aanbevolen|

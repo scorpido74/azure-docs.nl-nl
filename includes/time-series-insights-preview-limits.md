@@ -4,17 +4,17 @@ description: bestand opnemen
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 02/07/2020
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 8537db1e5703abd8df92a2950455bee556731d08
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013857"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123248"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Algemene Beschik baarheid en preview-vergelijking
 
@@ -50,7 +50,7 @@ Er worden Maxi maal twee gebeurtenis bronnen per instantie ondersteund.
 * Meer informatie over het [toevoegen van een event hub bron](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * [Een IOT hub-bron](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)configureren.
 
-Standaard [ondersteunen voorbeeld omgevingen ingangs snelheden](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress) van Maxi maal **1 MB per seconde (MB/s) per omgeving**. Klanten kunnen hun voorbeeld omgevingen zo nodig schalen tot een door Voer van **16 MB/s** . Er is ook een limiet van **0,5 MB/s**per partitie. 
+Standaard [ondersteunen voorbeeld omgevingen ingangs snelheden](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations) van Maxi maal **1 MB per seconde (MB/s) per omgeving**. Klanten kunnen hun voorbeeld omgevingen zo nodig schalen tot een door Voer van **16 MB/s** . Er is ook een limiet van **0,5 MB/s**per partitie. 
 
 ### <a name="api-limits"></a>API-limieten
 

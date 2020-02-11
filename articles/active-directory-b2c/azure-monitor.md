@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/05/2020
-ms.openlocfilehash: b701449e8cfb7a379522ee6ccb93f5569bd703d8
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/10/2020
+ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046022"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121375"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C met Azure Monitor bewaken
 
@@ -24,9 +24,9 @@ Gebruik Azure Monitor om Azure Active Directory B2C (Azure AD B2C) aanmeld-en [a
 
 U kunt logboek gebeurtenissen door sturen naar:
 
-* Een Azure Storage-account.
-* Een Azure-Event Hub (en kan worden geïntegreerd met uw logische Splunk-en Sumo-instanties).
-* Een Azure Log Analytics-werk ruimte (voor het analyseren van gegevens, het maken van Dash boards en waarschuwingen voor specifieke gebeurtenissen).
+* Een Azure- [opslag account](../storage/blobs/storage-blobs-introduction.md).
+* Een Azure- [Event hub](../event-hubs/event-hubs-about.md) (en kan worden geïntegreerd met uw logische Splunk-en Sumo-instanties).
+* Een [log Analytics-werk ruimte](../azure-monitor/platform/resource-logs-collect-workspace.md) (voor het analyseren van gegevens, het maken van Dash boards en waarschuwingen voor specifieke gebeurtenissen).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -42,15 +42,15 @@ U kunt ook de [Azure Cloud shell](https://shell.azure.com)gebruiken, die de mees
 
 Azure AD B2C maakt gebruik van [Azure Active Directory bewaking](../active-directory/reports-monitoring/overview-monitoring.md). Als u *Diagnostische instellingen* in azure Active Directory binnen uw Azure AD B2C Tenant wilt inschakelen, gebruikt u [gedelegeerd resource beheer](../lighthouse/concepts/azure-delegated-resource-management.md).
 
-U geeft een gebruiker in uw Azure AD B2C Directory (de **service provider**) toestemming voor het configureren van de Azure monitor instantie binnen de Tenant die uw Azure-abonnement (de **klant**) bevat. Als u de autorisatie wilt maken, implementeert u een [Azure Resource Manager](../azure-resource-manager/index.yml) sjabloon voor uw Azure AD-Tenant met het abonnement. In de volgende secties wordt uitgelegd hoe u het proces kunt door lopen.
+U geeft een gebruiker of groep in uw Azure AD B2C Directory (de **service provider**) toestemming voor het configureren van de Azure monitor instantie binnen de Tenant die uw Azure-abonnement (de **klant**) bevat. Als u de autorisatie wilt maken, implementeert u een [Azure Resource Manager](../azure-resource-manager/index.yml) sjabloon voor uw Azure AD-Tenant met het abonnement. In de volgende secties wordt uitgelegd hoe u het proces kunt door lopen.
 
-## <a name="create-a-resource-group"></a>Een resourcegroep maken
+## <a name="create-or-choose-resource-group"></a>Een resource groep maken of kiezen
 
-[Maak een resource groep](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)In de Azure Active Directory-Tenant (Azure AD) die uw Azure-abonnement bevat (*niet* de map die uw Azure AD B2C Tenant bevat). Gebruik de volgende waarden:
+Dit is de resource groep met het Azure Storage-doel account, de Event Hub of de werk ruimte Log Analytics om gegevens van Azure Monitor te ontvangen. U geeft de naam van de resource groep op wanneer u de Azure Resource Manager sjabloon implementeert.
 
-* **Abonnement**: selecteer uw Azure-abonnement.
-* **Resource groep**: Voer een naam in voor de resource groep. Bijvoorbeeld *Azure-AD-B2C-monitor*.
-* **Regio**: Selecteer een Azure-locatie. Bijvoorbeeld *US - centraal*.
+[Maak een resource groep](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) of kies een bestaande in de Azure Active Directory-Tenant (Azure AD) die uw Azure-abonnement bevat, *niet* de map die uw Azure AD B2C-Tenant bevat.
+
+In dit voor beeld wordt een resource groep met de naam *Azure-AD-B2C-monitor* gebruikt in de regio *VS-centraal* .
 
 ## <a name="delegate-resource-management"></a>Resource beheer delegeren
 
@@ -209,7 +209,17 @@ Nadat u de sjabloon hebt geïmplementeerd en een paar minuten hebt gewacht totda
 
 ## <a name="configure-diagnostic-settings"></a>Diagnostische instellingen configureren
 
-Nadat u resource beheer hebt gedelegeerd en uw abonnement hebt geselecteerd, bent u klaar om [Diagnostische instellingen te maken](../active-directory/reports-monitoring/overview-monitoring.md) in de Azure Portal.
+Diagnostische instellingen bepalen waar logboeken en metrische gegevens voor een resource moeten worden verzonden. Mogelijke bestemmingen zijn:
+
+- [Azure Storage-account](../azure-monitor/platform/resource-logs-collect-storage.md)
+- [Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) -oplossingen.
+- [Log Analytics-werkruimte](../azure-monitor/platform/resource-logs-collect-workspace.md)
+
+Als u dat nog niet hebt gedaan, maakt u een exemplaar van het gekozen doel type in de resource groep die u hebt opgegeven in de [Azure Resource Manager sjabloon](#create-an-azure-resource-manager-template).
+
+### <a name="create-diagnostic-settings"></a>Diagnostische instellingen maken
+
+U kunt nu [Diagnostische instellingen maken](../active-directory/reports-monitoring/overview-monitoring.md) in de Azure Portal.
 
 Controle-instellingen voor Azure AD B2C activiteiten logboeken configureren:
 
@@ -217,12 +227,24 @@ Controle-instellingen voor Azure AD B2C activiteiten logboeken configureren:
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. **Azure Active Directory** selecteren
 1. Onder **bewaking**selecteert u **Diagnostische instellingen**.
-1. Selecteer **+ Diagnostische instelling toevoegen**.
+1. Als er bestaande instellingen zijn voor de resource, ziet u een lijst met instellingen die al zijn geconfigureerd. Selecteer **Diagnostische instelling toevoegen** om een nieuwe instelling toe te voegen, of **Bewerk** de instelling om een bestaande te bewerken. Elke instelling kan niet meer dan één van de doel typen hebben.
 
     ![Het deel venster Diagnostische instellingen in Azure Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
+1. Geef een naam op voor uw instelling als deze nog niet aanwezig is.
+1. Schakel het selectie vakje voor elke bestemming in om de logboeken te verzenden. Selecteer **configureren** om de instellingen op te geven, zoals wordt beschreven in de volgende tabel.
+
+    | Instelling | Beschrijving |
+    |:---|:---|
+    | Archiveren naar een opslag account | De naam van het opslag account. |
+    | Streamen naar een Event Hub | De naam ruimte waar de Event Hub wordt gemaakt (als dit uw eerste keer is dat streaming-logboeken zijn) of gestreamd naar (als er al resources zijn die de logboek categorie naar deze naam ruimte streamen).
+    | Verzenden naar Log Analytics | De naam van de werk ruimte. |
+
+1. Selecteer **audit logs bevat** en **SignInLogs**.
+1. Selecteer **Opslaan**.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over het toevoegen en configureren van diagnostische instellingen in Azure Monitor raadpleegt u deze zelf studie in de Azure Monitor documentatie:
+Zie [zelf studie: resource logboeken verzamelen en analyseren vanuit een Azure-resource](../azure-monitor/insights/monitor-azure-resource.md)voor meer informatie over het toevoegen en configureren van diagnostische instellingen in azure monitor.
 
-[Zelf studie: resource logboeken verzamelen en analyseren vanuit een Azure-resource](/azure-monitor/learn/tutorial-resource-logs.md)
+Zie [zelf studie: Stream Azure Active Directory-logboeken naar een Azure-Event hub](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)voor informatie over het streamen van Azure AD-logboeken naar een event hub.

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b86f58a1b6b9e3a952861dbe7dbeef4dfe06a644
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 90d39635ac6302f816f39ca19cc00a39cfbbf850
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964829"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121014"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-c"></a>Quick Start: een voor beeld van een IoT Plug en Play preview-apparaatC#toepassing verbinden met IOT hub ()
 
@@ -25,7 +25,7 @@ In deze Quick start ziet u hoe u een voor beeld van een IoT-voorbeeld Plug en Pl
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om deze Quick Start te volt ooien, moet u .NET Core 2,2 installeren op uw ontwikkel computer. U kunt deze versie van de .NET Core SDK voor meerdere platformen downloaden van [.net Core 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2).
+Om deze Quick Start te volt ooien, moet u .NET Core 3,0 installeren op uw ontwikkel computer. U kunt deze versie van de .NET Core SDK voor meerdere platformen downloaden van [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0).
 
 U kunt de versie van .NET controleren die zich op uw ontwikkel computer bevindt door de volgende opdracht uit te voeren in een lokaal Terminal venster: 
 
@@ -72,7 +72,7 @@ U gebruikt de gekloonde voorbeeld code voor het bouwen van een toepassing die ee
 1. Voer een voorbeeld toepassing uit om een IoT Plug en Play-apparaat te simuleren dat telemetrie verzendt naar uw IoT-hub. Gebruik in hetzelfde Terminal venster de volgende opdracht om de benodigde pakketten te bouwen en de voorbeeld toepassing uit te voeren:
 
     ```cmd\sh
-        dotnet run
+    dotnet run --framework=netcoreapp3.0
     ```
 
 Er worden berichten weer gegeven met de melding dat het apparaat is geregistreerd en wacht op updates vanuit de Cloud. Dit geeft aan dat het apparaat nu gereed is om opdrachten en updates van eigenschappen te ontvangen en dat er telemetriegegevens worden verzonden naar de hub. Laat het voor beeld uitvoeren tijdens het uitvoeren van de volgende stappen.

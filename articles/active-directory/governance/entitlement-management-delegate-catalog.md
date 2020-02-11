@@ -16,16 +16,18 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f71007b886d3cc25a7cf9dc23d784144ed4e1fbd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 51e37ad006da5042291614c773f242b5a1f3be97
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174378"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120189"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Beheer van toegang tot catalogussen van de maker van het Azure AD-recht
 
-Als u wilt delegeren aan gebruikers die geen beheerder zijn, zodat ze hun eigen catalogi kunnen maken, kunt u deze gebruikers toevoegen aan de rol van Azure AD-bevoegdheids beheer-gedefinieerde catalogus Maker. U kunt afzonderlijke gebruikers toevoegen, maar u kunt ook een groep toevoegen, waarvan de leden vervolgens catalogi kunnen maken.
+Een catalogus is een container met resources en toegangs pakketten. U maakt een catalogus wanneer u gerelateerde resources en toegangs pakketten wilt groeperen. Standaard kan een globale beheerder of een gebruikers beheerder [een catalogus maken](entitlement-management-catalog-create.md)en kunnen ze extra gebruikers toevoegen als catalogus eigenaren.
+
+Als u wilt delegeren aan gebruikers die geen beheerder zijn, zodat ze hun eigen catalogi kunnen maken, kunt u deze gebruikers toevoegen aan de rol van Azure AD-bevoegdheids beheer-gedefinieerde catalogus Maker. U kunt afzonderlijke gebruikers toevoegen, maar u kunt ook een groep toevoegen, waarvan de leden vervolgens catalogi kunnen maken.  Nadat u een catalogus hebt gemaakt, kunnen ze de resources die ze in hun catalogus hebben, vervolgens toevoegen.
 
 ## <a name="as-an-it-administrator-delegate-to-a-catalog-creator"></a>Als IT-beheerder delegeren aan een maker van de catalogus
 

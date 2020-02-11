@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: 4850a58ae96b9fc5e8293efbac0de447915289ca
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 02/10/2020
+ms.openlocfilehash: 3dc0af3f0d1236e902f6fa845fae95e3f2a500d1
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763348"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116464"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Zelf studie: een Azure Machine Learning-pijp lijn bouwen voor batch Score
 
@@ -40,7 +40,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begin
 ## <a name="prerequisites"></a>Vereisten
 
 * Als u nog geen virtuele machine voor Azure Machine Learning-werk ruimte of-notebook hebt, kunt u [deel 1 van de zelf studie voor Setup](tutorial-1st-experiment-sdk-setup.md)volt ooien.
-* Wanneer u de installatie-zelf studie hebt voltooid, gebruikt u dezelfde notebook server om het notitie blok *zelf studies/tutorial-pipeline-batch-scoring-Classification. ipynb* te openen.
+* Wanneer u de installatie zelf studie hebt voltooid, gebruikt u dezelfde notebook server om de *zelf studies/machine-learning-pipelines-Advanced/tutorial-pipeline-batch-scoring-Classification. ipynb* notebook te openen.
 
 Als u de installatie-zelf studie in uw eigen [lokale omgeving](how-to-configure-environment.md#local)wilt uitvoeren, kunt u de zelf studie openen op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials). Voer `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` uit om de vereiste pakketten op te halen.
 

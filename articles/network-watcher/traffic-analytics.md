@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840584"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114409"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -59,61 +59,61 @@ Met Traffic Analytics worden de onbewerkte NSG-stroom logboeken onderzocht en wo
 
 U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteunde regio's:
 
-* Canada-Midden
-* VS - west-centraal
-* VS - oost
-* VS - oost 2
-* VS - noord-centraal
-* VS - zuid-centraal
-* VS - centraal
-* VS - west
-* VS - west 2
+* Canada - midden
+* US - west-centraal
+* US - oost
+* US - oost 2
+* US - noord-centraal
+* US - zuid-centraal
+* US - centraal
+* US - west
+* US - west 2
 * Frankrijk - centraal
-* Europa - west
+* Europa -west
 * Europa - noord
-* Brazilië - Zuid
-* VK - west
-* VK - zuid
-* Australië Oost
-* Australië Zuidoost
+* Brazilië - zuid
+* Verenigd Koninkrijk West
+* Verenigd Koninkrijk Zuid
+* Australië - oost
+* Australië - zuidoost
 * Azië - oost
 * Azië - zuidoost
 * Korea - centraal
 * India - centraal
 * India - zuid
-* Japan - Oost 
-* Japan - West
-* US Gov - Virginia
-* China - oost 2
+* Japan - oost 
+* Japan - west
+* VS (overheid) - Virginia
+* China-oost 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Ondersteunde regio's: Log Analytics werk ruimten
 
 De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
-* Canada-Midden
-* VS - west-centraal
-* VS - oost
-* VS - oost 2
-* VS - noord-centraal
-* VS - zuid-centraal
-* VS - centraal
-* VS - west
-* VS - west 2
-* VS - centraal
+* Canada - midden
+* US - west-centraal
+* US - oost
+* US - oost 2
+* US - noord-centraal
+* US - zuid-centraal
+* US - centraal
+* US - west
+* US - west 2
+* US - centraal
 * Frankrijk - centraal
-* Europa - west
+* Europa -west
 * Europa - noord
-* Brazilië - Zuid
-* VK - west
-* VK - zuid
-* Australië Oost
-* Australië Zuidoost
+* Brazilië - zuid
+* Verenigd Koninkrijk West
+* Verenigd Koninkrijk Zuid
+* Australië - oost
+* Australië - zuidoost
 * Azië - oost
 * Azië - zuidoost
 * Korea - centraal
 * India - centraal
-* Japan - Oost
-* US Gov - Virginia
-* China - oost 2
+* Japan - oost
+* VS (overheid) - Virginia
+* China-oost 2
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -151,7 +151,7 @@ Als u verkeer wilt analyseren, moet u een bestaande netwerk-Watcher hebben of [e
 
 Voordat u logboek registratie van NSG inschakelt, moet u een netwerk beveiligings groep hebben voor het vastleggen van stromen voor. Als u geen netwerk beveiligings groep hebt, raadpleegt u [een netwerk beveiligings groep maken](../virtual-network/manage-network-security-group.md#create-a-network-security-group) om er een te maken.
 
-Selecteer aan de linkerkant van de Azure Portal **monitor**, vervolgens **Network Watcher**, en selecteer vervolgens NSG- **stroom logboeken**. Selecteer de netwerk beveiligings groep waarvoor u een NSG-stroom logboek wilt inschakelen, zoals wordt weer gegeven in de volgende afbeelding:
+Ga in Azure Portal naar **Network Watcher**en selecteer vervolgens NSG- **stroom logboeken**. Selecteer de netwerk beveiligings groep waarvoor u een NSG-stroom logboek wilt inschakelen, zoals wordt weer gegeven in de volgende afbeelding:
 
 ![Selectie van Nsg's waarvoor NSG-stroom logboek moet worden aangevraagd](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
@@ -210,7 +210,7 @@ Selecteer aan de linkerkant van de portal **alle services**en voer vervolgens *m
 
 Het kan tot 30 minuten duren voordat het dash board de eerste keer wordt weer gegeven, omdat Traffic Analytics eerst voldoende gegevens moet verzamelen om zinvolle inzichten te verkrijgen, voordat deze rapporten kunnen genereren.
 
-## <a name="usage-scenarios"></a>Gebruiksscenario's
+## <a name="usage-scenarios"></a>Gebruiks scenario's
 
 Enkele van de inzichten die u mogelijk wilt krijgen nadat Traffic Analytics volledig is geconfigureerd, zijn als volgt:
 

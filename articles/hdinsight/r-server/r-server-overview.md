@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 06/12/2019
-ms.openlocfilehash: b04cc3a5e3a5680f7a16e890c39a4a7d83002bd7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 02/10/2020
+ms.openlocfilehash: a77771880da962298f6e80782e5f3e251f5f4641
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321658"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122368"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Wat is ML van services in azure HDInsight
 
@@ -35,7 +35,7 @@ ML Services in HDInsight biedt de volgende voor delen:
 
 ### <a name="ai-innovation-from-microsoft-and-open-source"></a>AI-innovatie van micro soft en open-source
 
-  ML Services bevat uiterst schaal bare, gedistribueerde set algoritmen, zoals [RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)en [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) die kunnen werken met gegevens grootten die groter zijn dan de grootte van het fysieke geheugen en die worden uitgevoerd op een groot aantal verschillende platformen in een gedistribueerde manier. Meer informatie over de verzameling van de aangepaste [R-pakketten](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) en [Python-pakketten](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) van micro soft die zijn opgenomen in het product.
+  ML Services bevat uiterst schaal bare, gedistribueerde set algoritmen, zoals [RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)en [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) die kunnen werken met gegevens grootten die groter zijn dan de grootte van het fysieke geheugen en op een gedistribueerde manier worden uitgevoerd op een groot aantal verschillende platformen. Meer informatie over de verzameling van de aangepaste [R-pakketten](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) en [Python-pakketten](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) van micro soft die zijn opgenomen in het product.
   
   ML-Services conbrugt deze micro soft-innovaties en bijdragen die afkomstig zijn van de open-source community (R-, python-en AI-werkset), die allemaal op één platform op bedrijfs niveau zijn gebaseerd. Een open-source machine learning-pakket van R of python kan naast eigen innovatie van micro soft worden gebruikt.
 
@@ -50,6 +50,9 @@ ML Services in HDInsight biedt de volgende voor delen:
 
   Individuals embarking on the journey of making their applications intelligent or simply wanting to learn the new world of AI and machine learning, need the right resources to help them get started. In addition to this documentation, Microsoft provides several learning resources and has engaged several training partners to help you ramp up and become productive quickly.
 --->
+
+> [!NOTE]  
+> Het cluster type van de ML Services op HDInsight wordt alleen ondersteund op HDInsight 3,6. HDInsight 3,6 is gepland om op 31 december 2020 te worden ingetrokken.
 
 ## <a name="key-features-of-ml-services-on-hdinsight"></a>Belangrijkste functies van ML Services in HDInsight
 
@@ -116,7 +119,7 @@ Het is ook mogelijk om de hoeveelheid geheugen die beschikbaar is voor de MILLIL
 
     hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
 
-### <a name="scale-your-cluster"></a>Een cluster schalen
+### <a name="scale-your-cluster"></a>Uw cluster schalen
 
 Een bestaand ML Services-cluster in HDInsight kan omhoog of omlaag worden geschaald via de portal. Door omhoog te schalen, kunt u de extra capaciteit krijgen die u mogelijk nodig hebt voor grotere verwerkings taken, of u kunt een cluster terugschalen wanneer het niet actief is. Zie [HDInsight-clusters beheren](../hdinsight-administer-use-portal-linux.md)voor instructies over het schalen van een cluster.
 

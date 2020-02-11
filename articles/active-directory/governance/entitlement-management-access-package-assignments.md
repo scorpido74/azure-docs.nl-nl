@@ -16,16 +16,16 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0501da153567f3b95804d8a8a6576d8cf199762c
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554005"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120430"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Toewijzingen voor een toegangs pakket in azure AD-rechts beheer weer geven, toevoegen en verwijderen
 
-In het beheer van rechten van Azure AD kunt u zien wie er toegang tot pakketten, hun beleid en status heeft gekregen. Als een toegangs pakket het juiste beleid heeft, kunt u ook rechtstreeks een gebruiker toewijzen aan een toegangs pakket. In dit artikel wordt beschreven hoe u toewijzingen voor een toegangs pakket kunt weer geven, toevoegen en verwijderen.
+In het beheer van rechten van Azure AD kunt u zien wie er toegang tot pakketten, hun beleid en status heeft gekregen. Als een toegangs pakket het juiste beleid heeft, kunt u ook rechtstreeks een gebruiker toewijzen aan een toegangs pakket. In dit artikel wordt beschreven hoe u toewijzingen voor toegangs pakketten kunt weer geven, toevoegen en verwijderen.
 
 ## <a name="view-who-has-an-assignment"></a>Weer geven wie een toewijzing heeft
 
@@ -48,6 +48,10 @@ In het beheer van rechten van Azure AD kunt u zien wie er toegang tot pakketten,
 1. Als u verlopen toewijzingen wilt zien, klikt u op de filter status en selecteert u **verlopen**.
 
 1. Als u een CSV-bestand van de gefilterde lijst wilt downloaden, klikt u op **downloaden**.
+
+### <a name="viewing-assignments-programmatically"></a>Toewijzingen weer geven via een programma
+
+U kunt ook toewijzingen in een toegangs pakket ophalen met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de machtiging gedelegeerde `EntitlementManagement.ReadWrite.All` heeft, kan de API aanroepen om de [lijst accessPackageAssignments te vermelden](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta).
 
 ## <a name="directly-assign-a-user"></a>Een gebruiker rechtstreeks toewijzen
 
@@ -76,6 +80,10 @@ In sommige gevallen wilt u mogelijk rechtstreeks specifieke gebruikers toewijzen
 1. Klik op **toevoegen** om de geselecteerde gebruikers rechtstreeks toe te wijzen aan het toegangs pakket.
 
     Na enkele ogen blikken klikt u op **vernieuwen** om de gebruikers in de lijst toewijzingen weer te geven.
+
+### <a name="directly-assigning-users-programmatically"></a>Gebruikers rechtstreeks via een programma toewijzen
+
+U kunt ook rechtstreeks een gebruiker toewijzen aan een toegangs pakket met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de machtiging gedelegeerde `EntitlementManagement.ReadWrite.All` heeft, kan de API aanroepen om [een accessPackageAssignmentRequest te maken](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
 
 ## <a name="remove-an-assignment"></a>Een toewijzing verwijderen
 

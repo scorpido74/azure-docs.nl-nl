@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: b3d5e1f814a8eb083ab01623051f1b5b3723a9f1
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: e5bf99e2ea84f41054ff57d08882bfa8ab4d6be5
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049629"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114221"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -35,14 +35,33 @@ Als u wilt bijhouden met de meest recente ontwikkelingen, vindt in dit artikel u
 > U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Gebruik de [rest API](https://aka.ms/ams-v3-rest-sdk), CLI of een van de ondersteunde sdk's.
 
 Zie voor meer informatie [migratie richtlijnen voor het overstappen van Media Services versie 2 tot v3](migrate-from-v2-to-v3.md#known-issues).
-
+ 
 ## <a name="january-2020"></a>Januari 2020
 
 ### <a name="improvements-in-media-processors"></a>Verbeteringen in Media-processors
 
 - Verbeterde ondersteuning voor geïnterlinieerde bronnen in video analyse: dergelijke inhoud wordt nu niet-geïnterlinieerd voordat ze worden verzonden naar interferentie-engines.
 - Wanneer u miniaturen genereert met de ' beste ' modus, zoekt het coderings programma nu meer dan 30 seconden om een frame te selecteren dat niet Monochromatic is.
- 
+
+### <a name="azure-government-cloud-updates"></a>Cloud updates Azure Government
+
+Media Services GA'ed in de volgende Azure Government regio's: *USGov Arizona* en *USGov Texas*.
+
+## <a name="december-2019"></a>December 2019
+
+CDN-ondersteuning is toegevoegd voor de *oorsprong: prefetch-* headers voor Live en video on-demand streaming; beschikbaar voor klanten die een direct-contract met Akamai CDN hebben. Origin-assisteren CDN-prefetch-functie omvat de volgende HTTP-header-uitwisselingen tussen Akamai CDN en Azure Media Services Origin:
+
+|HTTP-header|Waarden|Afzender|Ontvanger|Doel|
+| ---- | ---- | ---- | ---- | ----- |
+|CDN-oorsprong-assistentie-prefetch-ingeschakeld | 1 (standaard) of 0 |CDN|Oorsprong|Om aan te geven dat CDN prefetch is ingeschakeld|
+|CDN-oorsprong-assisteren-prefetch-pad| Voorbeeld: <br/>Fragmenten (video = 1400000000, Format = mpd-time-CMAF)|Oorsprong|CDN|Het prefetch-pad naar CDN opgeven|
+|CDN-oorsprong-assistentie-prefetch-aanvraag|1 (prefetch-aanvraag) of 0 (normale aanvraag)|CDN|Oorsprong|Om aan te geven dat de aanvraag van CDN een prefetch is|
+
+Als u een deel van de koptekst uitwisseling in actie wilt zien, kunt u de volgende stappen uitvoeren:
+
+1. Gebruik postman of krul om een aanvraag voor het Media Services van de oorsprong van een audio-of video segment of fragment uit te geven. Zorg ervoor dat u de koptekst CDN-oorsprong-assistentie-prefetch-ingeschakeld: 1 in de aanvraag toevoegt.
+2. In het antwoord ziet u de header CDN-Origin-Assist-prefetch-pad met een relatief pad als waarde.
+
 ## <a name="november-2019"></a>November 2019
 
 ### <a name="live-transcription-preview"></a>Live transcriptie preview

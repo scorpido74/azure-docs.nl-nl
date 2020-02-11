@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68d34046a16787ca1c6790880592fb30667ff2dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c858a17d4574e6e45283df7c1276cd303f25297
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422696"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120483"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Een nieuw toegangs pakket maken in het beheer van rechten van Azure AD
 
@@ -57,7 +57,7 @@ Dit zijn de stappen op hoog niveau voor het maken van een nieuw toegangs pakket.
 
 **Vereiste rol:** Globale beheerder, gebruikers beheerder, catalogus eigenaar of toegangs pakket beheer
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Klik op **Azure Active Directory** en klik vervolgens op **Identity governance**.
 
@@ -119,7 +119,7 @@ Afhankelijk van wie u dit toegangs pakket wilt kunnen aanvragen, voert u de stap
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
-## <a name="review--create"></a>Beoordelen en maken
+## <a name="review--create"></a>Controleren en maken
 
 Op het tabblad **controleren en maken** kunt u uw instellingen controleren en controleren of er validatie fouten zijn.
 
@@ -131,7 +131,18 @@ Op het tabblad **controleren en maken** kunt u uw instellingen controleren en co
 
     Het nieuwe toegangs pakket wordt weer gegeven in de lijst met toegangs pakketten.
 
+## <a name="creating-an-access-package-programmatically"></a>Een toegangs pakket programmatisch maken
+
+U kunt ook een toegangs pakket maken met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de machtiging gedelegeerde `EntitlementManagement.ReadWrite.All` heeft, kan de API aanroepen naar
+
+1. [Vermeld de accessPackageResources in de catalogus](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) en [Maak een accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) voor alle resources die nog niet in de catalogus staan.
+1. [Vermeld de accessPackageResourceRoles](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) van elke accessPackageResource in een accessPackageCatalog. Deze lijst met rollen wordt vervolgens gebruikt voor het selecteren van een rol, wanneer u vervolgens een accessPackageResourceRoleScope maakt.
+1. [Een AccessPackage maken](https://docs.microsoft.com/graph/api/accesspackage-post?view=graph-rest-beta).
+1. [Een AccessPackageAssignmentPolicy maken](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta).
+1. [Maak een accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta) voor elke resource functie die nodig is in het toegangs pakket.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Koppeling delen om een toegangs pakket aan te vragen](entitlement-management-access-package-settings.md)
 - [Resource rollen wijzigen voor een toegangs pakket](entitlement-management-access-package-resources.md)
+- [Een gebruiker rechtstreeks toewijzen aan het toegangs pakket](entitlement-management-access-package-assignments.md)

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
 ms.date: 09/23/2019
-ms.openlocfilehash: 7fadb17476c2a071de767573994bb1120b476cdf
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053741"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122107"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Overzicht van ENTER prise Security in azure HDInsight
 
@@ -46,7 +46,7 @@ De Hadoop-beheerder kan op rollen gebaseerd toegangs beheer (RBAC) configureren 
 
 De beheerder kan bijvoorbeeld [Apache Ranger](https://ranger.apache.org/) configureren om toegangscontrolebeleid in te stellen voor Hive. Deze functionaliteit zorgt ervoor dat filtering op rijniveau en op kolom niveau (gegevens maskering) wordt toegepast en de gevoelige gegevens van niet-geautoriseerde gebruikers worden gefilterd.
 
-### <a name="auditing"></a>Controle
+### <a name="auditing"></a>Controleren
 
 Controle van alle toegang tot de cluster bronnen en de gegevens is nodig voor het bijhouden van ongeoorloofde of onbedoelde toegang tot de resources. Het is net zo belang rijk als het beveiligen van de HDInsight-cluster resources van niet-geautoriseerde gebruikers en het beveiligen van de gegevens.
 
@@ -87,9 +87,9 @@ De volgende tabel bevat koppelingen naar bronnen voor elk type beveiligings oplo
 |  | [Patching van het besturings systeem](../hdinsight-os-patching.md) controleren op regel matige intervallen | Klant |
 | Netwerkbeveiliging | Een [virtueel netwerk](../hdinsight-plan-virtual-network-deployment.md) configureren |
 |  | [Regels voor binnenkomende netwerk beveiligings groepen (NSG)](../hdinsight-plan-virtual-network-deployment.md#networktraffic) configureren | Klant |
-|  | [Beperking van uitgaand verkeer](../hdinsight-restrict-outbound-traffic.md) configureren met Firewall (preview-versie) | Klant |
-| Gevirtualiseerde infra structuur | N/A | HDInsight (Cloud provider) |
-| Fysieke infrastructuur beveiliging | N/A | HDInsight (Cloud provider) |
+|  | [Beperking van uitgaand verkeer](../hdinsight-restrict-outbound-traffic.md) configureren met firewall | Klant |
+| Gevirtualiseerde infra structuur | N.v.t. | HDInsight (Cloud provider) |
+| Fysieke infrastructuur beveiliging | N.v.t. | HDInsight (Cloud provider) |
 
 ## <a name="next-steps"></a>Volgende stappen
 

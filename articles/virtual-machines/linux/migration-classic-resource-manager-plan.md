@@ -3,8 +3,8 @@ title: Planning voor de migratie van klassiek naar Azure Resource Manager
 description: Planning voor de migratie van IaaS-resources van klassiek naar Azure Resource Manager
 services: virtual-machines-linux
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 04/01/2017
-ms.author: kasing
-ms.openlocfilehash: 460db5a3c836ecb35fd6c5943c88d32516d91674
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 91af575e0326d773143fe15711694f939144974a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969862"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121999"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planning voor de migratie van IaaS-resources van klassiek naar Azure Resource Manager
 Hoewel Azure Resource Manager veel fantastische functies biedt, is het van essentieel belang om uw migratie traject te plannen om ervoor te zorgen dat alles goed gaat. Bij het plannen van de tijd zorgt u ervoor dat er geen problemen optreden tijdens het uitvoeren van migratie activiteiten.
@@ -31,7 +31,7 @@ Er zijn vier algemene fasen van de migratie traject:
 
 ![Migratie fasen](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plan
+## <a name="plan"></a>Plannen
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technische overwegingen en-afwegingen
 
@@ -114,10 +114,10 @@ De volgende problemen zijn in veel van de grotere migraties ontdekt. Dit is geen
     >
 
   - Netwerkinterfaces
-  - Load Balancers
+  - Load balancers
   - Openbare IP-adressen
   - Statische open bare Ip's
-  - Cores
+  - Kerngeheugens
   - Netwerkbeveiligingsgroepen
   - Routetabellen
 

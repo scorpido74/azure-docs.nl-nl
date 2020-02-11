@@ -1,6 +1,6 @@
 ---
-title: Met behulp van de klassieke Azure CLI met Azure Storage | Microsoft Docs
-description: Informatie over het gebruik van de Azure classic opdrachtregelinterface (CLI) met Azure Storage te maken en beheren van storage-accounts en werken met Azure-blobs en bestanden.
+title: De klassieke Azure CLI gebruiken met Azure Storage | Microsoft Docs
+description: Informatie over het gebruik van de klassieke Azure-opdracht regel interface (CLI) met Azure Storage om opslag accounts te maken en te beheren en te werken met Azure-blobs en-bestanden.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,45 +9,45 @@ ms.date: 01/30/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 88f713c5695e2453edc58d072899aa417f0514af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6554385a879b054153dcb808c3dff4b60c136458
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147045"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120853"
 ---
-# <a name="using-the-azure-classic-cli-with-azure-storage"></a>Met behulp van de klassieke Azure CLI met Azure Storage
+# <a name="using-the-azure-classic-cli-with-azure-storage"></a>De klassieke Azure CLI gebruiken met Azure Storage
 
 ## <a name="overview"></a>Overzicht
 
-De klassieke Azure-CLI biedt een open-source, platformoverschrijdende opdrachten om te werken met het Azure-Platform. Het biedt veel van dezelfde functionaliteit gevonden in de [Azure-portal](https://portal.azure.com) ook als uitgebreide data access-functionaliteit.
+De klassieke Azure-CLI biedt een aantal open-source-en platformoverschrijdende opdrachten voor het werken met het Azure-platform. Het biedt veel van de functionaliteit die wordt aangetroffen in de [Azure Portal](https://portal.azure.com) , evenals uitgebreide functionaliteit voor gegevens toegang.
 
-In deze handleiding wordt beschreven hoe u [Azure klassieke CLI](../../cli-install-nodejs.md) om uit te voeren van een verscheidenheid aan ontwikkeling en beheer taken met Azure Storage. U wordt aangeraden dat u downloaden en installeren of naar de meest recente klassieke CLI upgraden voordat u deze handleiding.
+In deze hand leiding wordt uitgelegd hoe u de klassieke versie van [Azure](../../cli-install-nodejs.md) kunt gebruiken om een aantal ontwikkel-en beheer taken uit te voeren met Azure Storage. U wordt aangeraden om de meest recente klassieke CLI te downloaden en te installeren of te upgraden voordat u deze hand leiding gebruikt.
 
-Deze handleiding wordt ervan uitgegaan dat u inzicht in de basisbeginselen van Azure Storage. De handleiding bevat een aantal scripts ter illustratie van het gebruik van de klassieke CLI met Azure Storage. Zorg ervoor dat de scriptvariabelen op basis van uw configuratie voor elk script is uitgevoerd.
+In deze hand leiding wordt ervan uitgegaan dat u bekend bent met de basis concepten van Azure Storage. De hand leiding bevat een aantal scripts om het gebruik van de klassieke CLI met Azure Storage te demonstreren. Zorg ervoor dat u de script variabelen op basis van uw configuratie bijwerkt voordat u elk script uitvoert.
 
 > [!NOTE]
-> De handleiding bevat de Azure klassieke CLI opdrachtregels en scriptregels-voorbeelden voor klassieke opslagaccounts. Zie [met de Azure CLI voor Mac, Linux en Windows met Azure Resource Management](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects) voor Azure classic CLI-opdrachten voor Resource Manager-opslagaccounts.
+> De hand leiding bevat de klassieke Azure CLI-opdracht en script voorbeelden voor klassieke opslag accounts. Zie [de Azure CLI voor Mac, Linux en Windows gebruiken met Azure resource management](../../virtual-machines/azure-cli-arm-commands.md#storage-objects) voor klassieke Azure cli-opdrachten voor Resource Manager-opslag accounts.
 >
 >
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
-## <a name="get-started-with-azure-storage-and-the-azure-classic-cli-in-5-minutes"></a>Aan de slag met Azure Storage en de klassieke Azure CLI in vijf minuten
-Deze handleiding Ubuntu gebruikt voor voorbeelden, maar andere OS-platformen op dezelfde manier moeten uitvoeren.
+## <a name="get-started-with-azure-storage-and-the-azure-classic-cli-in-5-minutes"></a>Ga binnen vijf minuten aan de slag met Azure Storage en de klassieke Azure-CLI
+Deze hand leiding maakt gebruik van Ubuntu voor voor beelden, maar andere besturingssysteem platforms moeten op dezelfde manier worden uitgevoerd.
 
-**Nieuw bij Azure:** Een Microsoft Azure-abonnement en een Microsoft-account dat is gekoppeld aan dat abonnement ophalen. Zie voor meer informatie over Azure-Aankoopopties [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/), [kopen opties](https://azure.microsoft.com/pricing/purchase-options/), en [aanbiedingen voor leden](https://azure.microsoft.com/pricing/member-offers/) (voor leden van MSDN, Microsoft Partner Network en BizSpark, en andere Microsoft-programma's).
+**Nieuw in Azure:** Een Microsoft Azure-abonnement en een Microsoft-account die aan het abonnement zijn gekoppeld, ophalen. Voor informatie over opties voor Azure Purchase, Zie [gratis proef versie](https://azure.microsoft.com/pricing/free-trial/), [aankoop opties](https://azure.microsoft.com/pricing/purchase-options/)en [leden aanbiedingen](https://azure.microsoft.com/pricing/member-offers/) (voor leden van MSDN, Microsoft Partner Network en BizSpark en andere micro soft-Program ma's).
 
-Zie [beheerdersrollen toewijzen in Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) voor meer informatie over Azure-abonnementen.
+Zie [beheerders rollen toewijzen in azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) voor meer informatie over Azure-abonnementen.
 
-**Na het maken van een Microsoft Azure-abonnement en -account:**
+**Nadat u een Microsoft Azure-abonnement en-account hebt gemaakt:**
 
-1. Download en installeer de Azure klassieke CLI volgens de instructies die worden beschreven in [de klassieke Azure-CLI installeren](../../cli-install-nodejs.md).
-2. Zodra de klassieke CLI is geïnstalleerd, kunt u zich op de azure-opdracht uit via de opdrachtregelinterface (Bash, Terminal-opdrachtprompt) voor toegang tot de klassieke CLI-opdrachten. Type de _azure_ opdracht en u ziet de volgende uitvoer.
+1. Down load en installeer de klassieke Azure-CLI volgens de instructies in [de klassieke Azure-cli installeren](../../cli-install-nodejs.md).
+2. Zodra de klassieke CLI is geïnstalleerd, kunt u de Azure-opdracht van de opdracht regel interface (bash, Terminal, opdracht prompt) gebruiken om toegang te krijgen tot de klassieke CLI-opdrachten. Typ de _Azure_ -opdracht en de volgende uitvoer wordt weer geven.
 
-    ![Uitvoer van de Azure-opdracht](./media/storage-azure-cli/azure_command.png)   
-3. Typ in de opdrachtregelinterface `azure storage` lijst met alle opdrachten in de azure-opslag en het ophalen van een eerste indruk van de functies van de klassieke CLI biedt. U kunt de naam van de opdracht met typen **-h** parameter (bijvoorbeeld `azure storage share create -h`) om de details van de opdrachtsyntaxis te bekijken.
-4. Nu geven we u een eenvoudig script waarin basic klassieke CLI-opdrachten voor toegang tot Azure Storage. Het script wordt eerst gevraagd om in te stellen van de twee variabelen die voor uw opslagaccount en de sleutel. Het script wordt vervolgens een nieuwe container maken in deze nieuwe storage-account en een bestaand installatiekopiebestand (blob) uploaden naar deze container. Nadat het script geeft een lijst van alle blobs in die container, wordt deze de installatiekopie-bestand downloaden naar de doelmap die alleen op de lokale computer bestaat.
+    ![Azure-opdracht uitvoer](./media/storage-azure-cli/azure_command.png)   
+3. In de opdracht regel interface typt u `azure storage` om alle Azure Storage-opdrachten weer te geven en een eerste indruk te krijgen van de functionaliteiten die de klassieke CLI biedt. U kunt de opdracht naam met de para meter **-h** typen (bijvoorbeeld `azure storage share create -h`) om de details van de opdracht syntaxis weer te geven.
+4. Nu krijgt u een eenvoudig script dat eenvoudige klassieke CLI-opdrachten weergeeft om toegang te krijgen tot Azure Storage. Met het script wordt u eerst gevraagd om twee variabelen in te stellen voor uw opslag account en de sleutel. Vervolgens wordt door het script een nieuwe container gemaakt in dit nieuwe opslag account en wordt een bestaand installatie kopie bestand (BLOB) naar die container geüpload. Nadat het script alle blobs in die container heeft vermeld, wordt het afbeeldings bestand gedownload naar de doelmap die zich op de lokale computer bevindt.
 
     ```azurecli
     #!/bin/bash
@@ -76,78 +76,78 @@ Zie [beheerdersrollen toewijzen in Azure Active Directory (Azure AD)](https://do
     echo "Done"
     ```
 
-5. Open uw favoriete teksteditor (vim bijvoorbeeld) in uw lokale computer. Typ het bovenstaande script in de teksteditor.
-6. Nu moet u de scriptvariabelen op basis van uw configuratie-instellingen bijwerken.
+5. Open de gewenste tekst editor (vim bijvoorbeeld) op de lokale computer. Typ het bovenstaande script in de tekst editor.
+6. Nu moet u de script variabelen bijwerken op basis van uw configuratie-instellingen.
 
-   * **< Naam_opslagaccount >** gebruik van de opgegeven naam in het script of voer een nieuwe naam voor uw storage-account. **Belangrijk:** De naam van het opslagaccount moet uniek zijn in Azure. Er moet een kleine letter, te!
-   * **< Storage_account_key >** de toegangssleutel van uw storage-account.
-   * **< Container_name >** gebruik van de opgegeven naam in het script of voer een nieuwe naam voor de container.
-   * **< Image_to_upload >** Voer een pad naar een afbeelding op uw lokale computer, zoals: ' ~ / images/HelloWorld.png '.
-   * **< Destination_folder >** Geef het pad naar een lokale map voor het opslaan van bestanden die worden gedownload uit Azure Storage, zoals: '~/downloadImages'.
-7. Nadat u de benodigde variabelen in vim hebt bijgewerkt, drukt u op toetsencombinaties `ESC`, `:`, `wq!` om op te slaan van het script.
-8. Als u wilt uitvoeren met dit script, typt u de bestandsnaam van het script in de bash-console. Na dit script wordt uitgevoerd, moet u een lokale map waarin het gedownloade bestand hebben. De volgende schermafbeelding ziet u een voorbeeld van uitvoer:
+   * **< storage_account_name >** Gebruik de opgegeven naam in het script of voer een nieuwe naam in voor uw opslag account. **Belang rijk:** De naam van het opslag account moet uniek zijn in Azure. Het moet ook kleine letters zijn.
+   * **< storage_account_key >** De toegangs sleutel van uw opslag account.
+   * **< container_name >** Gebruik de opgegeven naam in het script of voer een nieuwe naam in voor de container.
+   * **< image_to_upload >** Geef een pad op naar een afbeelding op de lokale computer, zoals: ' ~/images/HelloWorld.png '.
+   * **< destination_folder >** Voer een pad naar een lokale map in voor het opslaan van bestanden die zijn gedownload van Azure Storage, zoals: "~/downloadImages".
+7. Nadat u de benodigde variabelen in vim hebt bijgewerkt, drukt u op toetsen combinaties `ESC`, `:``wq!` om het script op te slaan.
+8. Als u dit script wilt uitvoeren, typt u de naam van het script bestand in de bash-console. Nadat dit script is uitgevoerd, moet u een lokale doelmap hebben die het gedownloade afbeeldings bestand bevat. In de volgende scherm afbeelding ziet u een voor beeld van een uitvoer:
 
-Nadat het script wordt uitgevoerd, moet u een lokale map waarin het gedownloade bestand hebben.
+Nadat het script is uitgevoerd, moet u een lokale doelmap hebben die het gedownloade afbeeldings bestand bevat.
 
-## <a name="manage-storage-accounts-with-the-azure-classic-cli"></a>Storage-accounts beheren met de klassieke Azure-CLI
+## <a name="manage-storage-accounts-with-the-azure-classic-cli"></a>Opslag accounts beheren met de klassieke Azure-CLI
 ### <a name="connect-to-your-azure-subscription"></a>Verbinding maken met uw Azure-abonnement
-Hoewel de meeste van de opslagopdrachten zonder een Azure-abonnement werkt, adviseren we u verbinding maken met uw abonnement vanuit de klassieke CLI.
+Hoewel de meeste opslag opdrachten werken zonder een Azure-abonnement, wordt u aangeraden verbinding te maken met uw abonnement vanuit de klassieke CLI.
 
 ### <a name="create-a-new-storage-account"></a>Een nieuw opslagaccount maken
-Voor het gebruik van Azure storage, moet u een opslagaccount. Nadat u uw computer verbinding maken met uw abonnement hebt geconfigureerd, kunt u een nieuw Azure storage-account maken.
+Als u Azure Storage wilt gebruiken, hebt u een opslag account nodig. U kunt een nieuw Azure-opslag account maken nadat u uw computer hebt geconfigureerd om verbinding te maken met uw abonnement.
 
 ```azurecli
 azure storage account create <account_name>
 ```
 
-De naam van uw opslagaccount moet tussen 3 en 24 tekens lang zijn en cijfers en kleine letters bevatten.
+De naam van uw opslag account moet tussen 3 en 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten.
 
-### <a name="set-a-default-azure-storage-account-in-environment-variables"></a>Een standaard Azure storage-account in omgevingsvariabelen instellen
-U kunt meerdere opslagaccounts hebben in uw abonnement. U kunt Kies een van deze en stel deze in de omgevingsvariabelen voor alle opslagopdrachten in dezelfde sessie. Hiermee kunt u voor het uitvoeren van de CLI-opdrachten voor klassieke opslag zonder het storage-account op te geven en expliciet sleutel.
+### <a name="set-a-default-azure-storage-account-in-environment-variables"></a>Een standaard Azure-opslag account instellen in omgevings variabelen
+U kunt meerdere opslag accounts in uw abonnement hebben. U kunt er een selecteren en instellen in de omgevings variabelen voor alle opslag opdrachten in dezelfde sessie. Hierdoor kunt u de klassieke CLI-opslag opdrachten uitvoeren zonder het opslag account en de sleutel expliciet op te geven.
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
 export AZURE_STORAGE_ACCESS_KEY=<key>
 ```
 
-Verbindingsreeks maakt gebruik van een andere manier om in te stellen van een storage-standaardaccount. Ten eerste de verbindingsreeks ophalen door de opdracht:
+Een andere manier om een standaard-opslag account in te stellen, is het gebruik van connection string. Haal eerst de connection string op via de opdracht:
 
 ```azurecli
 azure storage account connectionstring show <account_name>
 ```
 
-Vervolgens kopieert u de verbindingsreeks van de uitvoer en instellen op omgevingsvariabele:
+Kopieer vervolgens de uitvoer connection string en stel deze in op omgevings variabele:
 
 ```azurecli
 export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
 ```
 
-## <a name="create-and-manage-blobs"></a>Maken en blobs beheren
-Azure Blob-opslag is een service voor het opslaan van grote hoeveelheden ongestructureerde gegevens, zoals tekst of binaire gegevens, die kunnen worden benaderd vanaf elke locatie ter wereld via HTTP of HTTPS. In deze sectie wordt ervan uitgegaan dat u al bekend met de concepten van Azure Blob storage bent. Zie voor gedetailleerde informatie [aan de slag met Azure Blob storage met .NET](../blobs/storage-dotnet-how-to-use-blobs.md) en [concepten van Blob Service](https://msdn.microsoft.com/library/azure/dd179376.aspx).
+## <a name="create-and-manage-blobs"></a>Blobs maken en beheren
+Azure Blob-opslag is een service voor het opslaan van grote hoeveel heden ongestructureerde gegevens, zoals tekst of binaire gegevens, die overal ter wereld toegankelijk zijn via HTTP of HTTPS. In deze sectie wordt ervan uitgegaan dat u al bekend bent met de concepten van Azure Blob-opslag. Zie voor meer informatie aan de [slag met Azure Blob Storage met behulp](../blobs/storage-dotnet-how-to-use-blobs.md) van de concepten van .net en [BLOB-service](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 
 ### <a name="create-a-container"></a>Een container maken
-Elke blob in Azure storage moet zich in een container. U kunt maken met een privé-container met de `azure storage container create` opdracht:
+Elke Blob in azure Storage moet zich in een container bevinden. U kunt een persoonlijke container maken met behulp van de `azure storage container create` opdracht:
 
 ```azurecli
 azure storage container create mycontainer
 ```
 
 > [!NOTE]
-> Er zijn drie niveaus van anonieme toegang voor lezen: **Uit**, **Blob**, en **Container**. Om te voorkomen dat anonieme toegang tot blobs, stelt u de parameter machtiging in op **uit**. Standaard worden de nieuwe container privé en kan alleen worden geopend door de eigenaar van het. Anonieme toegang toestaan openbare leestoegang tot blob-resources, maar niet aan de containermetagegevens van de of aan de lijst met blobs in de container, stelt u de parameter machtiging op **Blob**. Als u wilt toestaan dat volledige openbare leestoegang tot de blob-resources, de containermetagegevens van de en de lijst met blobs in de container, kunt u de machtiging-parameter instellen op **Container**. Zie [Anonieme leestoegang tot containers en blobs beheren](../blobs/storage-manage-access-to-resources.md) voor meer informatie.
+> Er zijn drie niveaus anonieme lees toegang: **uit**, **BLOB**en **container**. Om anonieme toegang tot blobs te voor komen, stelt u de para meter permission in op **off**. De nieuwe container is standaard privé en kan alleen worden geopend door de eigenaar van het account. Als u anonieme open bare Lees toegang wilt toestaan voor BLOB-resources, maar niet voor meta gegevens van containers of naar de lijst met blobs in de container, stelt u de machtigings parameter in op **BLOB**. Als u volledige open bare Lees toegang wilt toestaan voor BLOB-resources, meta gegevens van containers en de lijst met blobs in de container, stelt u de machtigings parameter in op **container**. Zie [Anonieme leestoegang tot containers en blobs beheren](../blobs/storage-manage-access-to-resources.md) voor meer informatie.
 >
 >
 
 ### <a name="upload-a-blob-into-a-container"></a>Een blob uploaden naar een container
-Azure Blob Storage ondersteunt blok-blobs en pagina-blobs. Zie voor meer informatie, [blok-Blobs, toevoeg-Blobs en pagina-Blobs](https://msdn.microsoft.com/library/azure/ee691964.aspx).
+Azure Blob Storage ondersteunt blok-blobs en pagina-blobs. Zie voor meer informatie [over blok-blobs, toevoeg-blobs en pagina-blobs](https://msdn.microsoft.com/library/azure/ee691964.aspx).
 
-Als u wilt uploaden blobs in een container, kunt u de `azure storage blob upload`. Met deze opdracht wordt standaard de lokale bestanden geüpload naar een blok-blob. Als u wilt het type voor de blob opgeven, kunt u de `--blobtype` parameter.
+Als u blobs wilt uploaden naar een container, kunt u de `azure storage blob upload`gebruiken. Met deze opdracht worden standaard de lokale bestanden geüpload naar een blok-blob. Als u het type voor de BLOB wilt opgeven, kunt u de para meter `--blobtype` gebruiken.
 
 ```azurecli
 azure storage blob upload '~/images/HelloWorld.png' mycontainer myBlockBlob
 ```
 
 ### <a name="download-blobs-from-a-container"></a>Blobs downloaden uit een container
-Het volgende voorbeeld ziet u hoe u blobs downloaden uit een container.
+In het volgende voor beeld ziet u hoe u blobs kunt downloaden uit een container.
 
 ```azurecli
 azure storage blob download mycontainer myBlockBlob '~/downloadImages/downloaded.png'
@@ -156,7 +156,7 @@ azure storage blob download mycontainer myBlockBlob '~/downloadImages/downloaded
 ### <a name="copy-blobs"></a>Blobs kopiëren
 U kunt blobs binnen of tussen opslagaccounts en regio's asynchroon kopiëren.
 
-In het volgende voorbeeld ziet u hoe u blobs van één opslagaccount naar een ander kopieert. In dit voorbeeld maken we een container waarin blobs openbaar zijn, anoniem toegankelijk is.
+In het volgende voorbeeld ziet u hoe u blobs van één opslagaccount naar een ander kopieert. In dit voor beeld maken we een container waarin blobs openbaar zijn en anoniem toegankelijk zijn.
 
 ```azurecli
 azure storage container create mycontainer2 -a <accountName2> -k <accountKey2> -p Blob
@@ -166,63 +166,63 @@ azure storage blob upload '~/Images/HelloWorld.png' mycontainer2 myBlockBlob2 -a
 azure storage blob copy start 'https://<accountname2>.blob.core.windows.net/mycontainer2/myBlockBlob2' mycontainer
 ```
 
-In dit voorbeeld voert een asynchroon kopiëren. U kunt de status van elke kopieerbewerking controleren door het uitvoeren van de `azure storage blob copy show` bewerking.
+In dit voor beeld wordt een asynchrone kopie uitgevoerd. U kunt de status van elke Kopieer bewerking controleren door de bewerking `azure storage blob copy show` uit te voeren.
 
-Houd er rekening mee dat de bron-URL voor de kopieerbewerking opgegeven moet openbaar toegankelijk is, of een SAS (shared access signature)-token bevatten.
+Houd er rekening mee dat de bron-URL die is geleverd voor de Kopieer bewerking openbaar toegankelijk moet zijn of een SAS (Shared Access Signature)-token moeten bevatten.
 
 ### <a name="delete-a-blob"></a>Een blob verwijderen
-Als u wilt verwijderen van een blob, gebruikt u de onderstaande opdracht:
+Als u een BLOB wilt verwijderen, gebruikt u de onderstaande opdracht:
 
 ```azurecli
 azure storage blob delete mycontainer myBlockBlob2
 ```
 
-## <a name="create-and-manage-file-shares"></a>Maken en beheren van bestandsshares
-Azure Files biedt gedeelde opslag voor toepassingen die gebruikmaken van de SMB-protocol. Microsoft Azure virtuele machines en cloudservices, evenals on-premises toepassingen, kunnen bestandsgegevens via gekoppelde shares delen. U kunt bestandsshares en gegevens uit een bestand via de klassieke CLI beheren. Zie voor meer informatie over Azure Files [Inleiding tot Azure Files](../files/storage-files-introduction.md).
+## <a name="create-and-manage-file-shares"></a>Bestands shares maken en beheren
+Azure Files biedt gedeelde opslag voor toepassingen die gebruikmaken van het standaard SMB-protocol. Microsoft Azure virtuele machines en Cloud Services, en on-premises toepassingen, kunnen bestands gegevens delen via gekoppelde shares. U kunt bestands shares en bestands gegevens beheren via de klassieke CLI. Zie [Inleiding tot Azure files](../files/storage-files-introduction.md)voor meer informatie over Azure files.
 
 ### <a name="create-a-file-share"></a>Een bestandsshare maken
-Een Azure-bestandsshare is een SMB-bestandsshare in Azure. Alle mappen en bestanden moeten worden gemaakt in een bestandsshare. Een account kan een onbeperkt aantal shares bevatten en een share kan een onbeperkt aantal bestanden, tot de capaciteitslimiet van het opslagaccount. Het volgende voorbeeld wordt een bestandsshare met de naam **myshare**.
+Een Azure-bestands share is een SMB-bestands share in Azure. Alle mappen en bestanden moeten worden gemaakt in een bestands share. Een account kan een onbeperkt aantal shares bevatten en een share kan een onbeperkt aantal bestanden opslaan, tot aan de capaciteits limieten van het opslag account. In het volgende voor beeld wordt een bestands share met de naam **MyShare**gemaakt.
 
 ```azurecli
 azure storage share create myshare
 ```
 
 ### <a name="create-a-directory"></a>Een map maken
-Een directory van azurebiedt een optionele hiërarchische structuur voor een Azure-bestandsshare. Het volgende voorbeeld wordt een map met de naam **mijnmap** in de bestandsshare.
+Een Directory biedt een optionele hiërarchische structuur voor een Azure-bestands share. In het volgende voor beeld wordt een map gemaakt met de naam **myDir** in de bestands share.
 
 ```azurecli
 azure storage directory create myshare myDir
 ```
 
-Houd er rekening mee dat pad kan meerdere niveaus bevatten *bijvoorbeeld*, **een / b**. Echter, moet u ervoor zorgen dat alle bovenliggende mappen bestaan. Bijvoorbeeld, voor het pad **een / b**, moet u de directory maken **een** eerst, map vervolgens maken **b**.
+Houd er rekening mee dat mappad meerdere niveaus kunnenbevatten, zoals **a/b**. U moet er echter voor zorgen dat alle bovenliggende directory's bestaan. Voor pad **a/b**moet u bijvoorbeeld eerst Directory **a** maken en vervolgens map **b**maken.
 
-### <a name="upload-a-local-file-to-directory"></a>Een lokaal bestand uploaden naar map
-Het volgende voorbeeld wordt een bestand geüpload **~/temp/samplefile.txt** naar de **mijnmap** directory. Bewerk het bestandspad zodat deze naar een geldig bestand op uw lokale computer verwijst:
+### <a name="upload-a-local-file-to-directory"></a>Een lokaal bestand uploaden naar de map
+In het volgende voor beeld wordt een bestand geüpload van **~/temp/samplefile.txt** naar de **myDir** -map. Bewerk het bestandspad zodat dit verwijst naar een geldig bestand op uw lokale computer:
 
 ```azurecli
 azure storage file upload '~/temp/samplefile.txt' myshare myDir
 ```
 
-Houd er rekening mee dat een bestand in de share tot 1 TB in grootte kan worden.
+Houd er rekening mee dat een bestand in de share Maxi maal 1 TB groot kan zijn.
 
-### <a name="list-the-files-in-the-share-root-or-directory"></a>De bestanden in de hoofdmap van de share of map
-U kunt een lijst de bestanden en submappen in de hoofdmap van een share of een map met de volgende opdracht:
+### <a name="list-the-files-in-the-share-root-or-directory"></a>De bestanden in de hoofdmap van de share of de map weer geven
+U kunt de bestanden en submappen in een share-hoofdmap of een map weer geven met de volgende opdracht:
 
 ```azurecli
 azure storage file list myshare myDir
 ```
 
-Houd er rekening mee dat de naam van de map optioneel voor de lijstbewerking is. Als u dit weglaat, wordt de opdracht de inhoud van de hoofdmap van de share.
+Houd er rekening mee dat de mapnaam optioneel is voor de bewerking vermelding. Als u dit weglaat, wordt de inhoud van de hoofdmap van de share weer gegeven.
 
 ### <a name="copy-files"></a>Bestanden kopiëren
-Vanaf versie 0.9.8 van de klassieke CLI, kunt u een bestand kopiëren naar een ander bestand, een bestand naar een blob of een blob naar een bestand. Hieronder ziet hoe u deze kopieerbewerkingen met behulp van CLI-opdrachten uitvoert. Een bestand kopiëren naar de nieuwe map:
+Vanaf versie 0.9.8 van de klassieke CLI kunt u een bestand kopiëren naar een ander bestand, een bestand naar een BLOB of een BLOB naar een bestand. Hieronder ziet u hoe u deze Kopieer bewerkingen kunt uitvoeren met CLI-opdrachten. Een bestand kopiëren naar de nieuwe map:
 
 ```azurecli
 azure storage file copy start --source-share srcshare --source-path srcdir/hello.txt --dest-share destshare
     --dest-path destdir/hellocopy.txt --connection-string $srcConnectionString --dest-connection-string $destConnectionString
 ```
 
-Een blob kopieert naar een map:
+Een BLOB naar een bestands directory kopiëren:
 
 ```azurecli
 azure storage file copy start --source-container srcctn --source-blob hello2.txt --dest-share hello
@@ -231,9 +231,9 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor het werken met resources voor Storage Hier vindt u Azure klassieke CLI-opdrachten:
+U vindt hier informatie over de klassieke CLI-opdracht van Azure voor het werken met opslag resources:
 
-* [Azure klassieke CLI-opdrachten in Resource Manager-modus](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
-* [Azure klassieke CLI-opdrachten in Azure Service Management-modus](../../cli-install-nodejs.md)
+* [Klassieke Azure CLI-opdrachten in de Resource Manager-modus](../../virtual-machines/azure-cli-arm-commands.md#storage-objects)
+* [Klassieke Azure CLI-opdrachten in azure Service Management-modus](../../cli-install-nodejs.md)
 
-U mogelijk ook interessant om te proberen de nieuwste versie van de [Azure CLI](../storage-azure-cli.md), voor gebruik met het Resource Manager-implementatiemodel.
+Mogelijk wilt u ook de nieuwste versie van de [Azure cli](../storage-azure-cli.md)proberen, voor gebruik met het Resource Manager-implementatie model.

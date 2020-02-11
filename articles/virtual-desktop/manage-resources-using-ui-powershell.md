@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: e3ea11f4faad204756f9e1296b5190e1f81a5cc0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2a7d10f41e343f21e16b10f4bf7c79670824ec2c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772803"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115904"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Een beheer programma implementeren met Power shell
 
@@ -109,7 +109,7 @@ Voer de volgende Power shell-opdrachten uit om de web-app-URL op te halen en in 
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName
 $redirectUri = "https://" + $webApp.DefaultHostName + "/"
-Get-AzureADApplication | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
+Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
 ```
 
 Nu u een omleidings-URI hebt toegevoegd, moet u de API-URL bijwerken zodat het beheer programma kan communiceren met de API-back-end-service.

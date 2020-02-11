@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5895ed256fa5f0337b74d9dbe14c4074dad4b522
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422649"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120239"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Een catalogus met resources maken en beheren in azure AD-rechts beheer
 
@@ -51,6 +51,10 @@ Een catalogus is een container met resources en toegangs pakketten. U maakt een 
 
 1. Klik op **maken** om de catalogus te maken.
 
+### <a name="creating-a-catalog-programmatically"></a>Een catalogus programmatisch maken
+
+U kunt ook een catalogus maken met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de machtiging gedelegeerde `EntitlementManagement.ReadWrite.All` heeft, kan de API aanroepen om [een accessPackageCatalog te maken](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
+
 ## <a name="add-resources-to-a-catalog"></a>Resources toevoegen aan een catalogus
 
 Als u resources wilt toevoegen aan een toegangs pakket, moeten de resources aanwezig zijn in een catalogus. De typen resources die u kunt toevoegen, zijn groepen, toepassingen en share point online-sites. De groepen kunnen bestaan uit in de Cloud gemaakte Office 365-groepen of in de Cloud gemaakte Azure AD-beveiligings groepen. De toepassingen kunnen Azure AD-bedrijfs toepassingen zijn, met inbegrip van zowel SaaS-toepassingen als uw eigen toepassingen die federatieve zijn voor Azure AD. De sites kunnen share point online-sites of share point online-site verzamelingen zijn.
@@ -76,6 +80,10 @@ Als u resources wilt toevoegen aan een toegangs pakket, moeten de resources aanw
 1. Wanneer u klaar bent, klikt u op **toevoegen**.
 
     Deze resources kunnen nu worden opgenomen in toegangs pakketten in de catalogus.
+
+### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Een resource via een programma aan een catalogus toevoegen
+
+U kunt ook een resource toevoegen aan een catalogus met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol of een catalogus en resource-eigenaar, met een toepassing die de machtiging gedelegeerde `EntitlementManagement.ReadWrite.All` heeft, kan de API aanroepen om [een accessPackageResourceRequest te maken](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta).
 
 ## <a name="remove-resources-from-a-catalog"></a>Resources uit een catalogus verwijderen
 
@@ -144,6 +152,10 @@ U kunt een catalogus verwijderen, maar alleen als deze geen toegangs pakketten h
 1. Klik op **verwijderen**in het **overzicht**van de catalogus.
 
 1. Klik op **Ja**in het bericht venster dat wordt weer gegeven.
+
+### <a name="deleting-a-catalog-programmatically"></a>Een catalogus programmatisch verwijderen
+
+U kunt ook een catalogus verwijderen met Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de machtiging gedelegeerde `EntitlementManagement.ReadWrite.All` heeft, kan de API aanroepen om [een accessPackageCatalog te verwijderen](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>Volgende stappen
 

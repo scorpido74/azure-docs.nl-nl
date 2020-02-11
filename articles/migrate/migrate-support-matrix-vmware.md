@@ -3,12 +3,12 @@ title: VMware-evaluatie ondersteuning in Azure Migrate
 description: Meer informatie over VMware-evaluatie ondersteuning in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1b3e81653ba934b209755391f08e60ef603e645a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086778"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121334"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 
@@ -42,7 +42,7 @@ Naast het detecteren van computers, Azure Migrate: Server assessment kan apps, r
 **Machine besturings systeem** | Alle Windows-en Linux-versies.
 **vCenter-referenties** | Een vCenter Server account met alleen-lezen toegang en de bevoegdheden die zijn ingeschakeld voor Virtual Machines > gast bewerkingen.
 **VM-referenties** | Biedt momenteel ondersteuning voor het gebruik van één referentie voor alle Windows-servers en één referentie voor alle Linux-servers.<br/><br/> U maakt een gast gebruikers account voor Windows-Vm's en een standaard/normaal gebruikers account (niet-sudo toegang) voor alle virtuele Linux-machines.
-**VMware-hulpprogram ma's** | VMware-hulpprogram ma's moeten zijn geïnstalleerd en worden uitgevoerd op de virtuele machines die u wilt detecteren.
+**VMware-hulpprogram ma's** | VMware-hulpprogram ma's moeten zijn geïnstalleerd en worden uitgevoerd op de virtuele machines die u wilt detecteren. <br/> Als uw VMware-hulpprogram ma's een versie heeft tussen 9,10-10.2.0, moet u deze upgraden naar meer dan 10.2.0.
 **Poort toegang** | Op ESXi-hosts waarop Vm's worden uitgevoerd die u wilt detecteren, moet het Azure Migrate apparaat verbinding kunnen maken met TCP-poort 443.
 **Limieten** | Voor app-Discovery kunt u Maxi maal 10000 per apparaat detecteren. 
 

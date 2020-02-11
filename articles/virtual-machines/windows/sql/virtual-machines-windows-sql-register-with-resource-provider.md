@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f16cb95a42bf201aa7d75a3393917c58f51fbb07
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 148ded0eba61221a2bdf0b8a50392da47a4c5f20
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122437"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122490"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Een SQL Server virtuele machine registreren in azure met de resource provider van de SQL-VM
 
@@ -35,7 +35,7 @@ Als u een Azure Marketplace-installatie kopie van SQL Server VM implementeert vi
 
 - **Vereenvoudigd licentie beheer**: registreren met de resource provider van de SQL-VM vereenvoudigt het beheer van SQL Server licenties en stelt u in staat om snel SQL Server vm's te identificeren met de Azure Hybrid Benefit die is ingeschakeld met behulp van de [Azure Portal](virtual-machines-windows-sql-manage-portal.md), AZ CLI of Power shell: 
 
-   # <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+   # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
    ```azurecli-interactive
    $vms = az sql vm list | ConvertFrom-Json
@@ -91,7 +91,7 @@ U kunt de huidige modus van uw SQL Server IaaS-agent weer geven met behulp van P
 
 Als u uw SQL Server-VM wilt registreren bij de resource provider van de SQL-VM, moet u uw abonnement eerst registreren bij de resource provider. Dit geeft de resource provider van de SQL-VM de mogelijkheid om resources binnen uw abonnement te maken.  U kunt dit doen met behulp van de Azure Portal, de Azure CLI of Power shell.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 1. Open de Azure Portal en ga naar **alle services**. 
 1. Ga naar **abonnementen** en selecteer het gewenste abonnement.  
@@ -161,20 +161,20 @@ SQL Server VM registreren in Lightweight-modus met Power shell:
 
 Als de SQL IaaS-uitbrei ding al hand matig is geïnstalleerd op de virtuele machine, kunt u de SQL Server VM in de volledige modus registreren zonder de SQL Server-service opnieuw te starten. **Als de SQL IaaS-extensie echter niet is geïnstalleerd, wordt de SQL IaaS-uitbrei ding in de volledige modus geïnstalleerd en wordt de SQL Server-service opnieuw gestart. Ga door met de waarschuwing.**
 
-Hieronder ziet u het code fragment dat wordt geregistreerd bij de resource provider van de SQL-VM in de volledige modus. Gebruik de volgende Power shell-opdracht om in de volledige beheer modus te registreren:
+
+Gebruik de volgende Power shell-opdracht om uw SQL Server-VM rechtstreeks te registreren in de volledige modus (en mogelijk de SQL Server-service opnieuw te starten): 
 
   ```powershell-interactive
   # Get the existing  Compute VM
   $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
         
   # Register with SQL VM resource provider in full mode
-  Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
   ```
-
 
 ### <a name="noagent-management-mode"></a>Beheer modus voor niet-agent 
 
-SQL Server 2008 en 2008 R2 geïnstalleerd op Windows Server 2008 kunnen worden geregistreerd bij de resource provider van de SQL-VM in de modus niet- [agent](#management-modes). Met deze optie wordt de naleving gegarandeerd en kan de SQL Server virtuele machine worden bewaakt in de Azure Portal met beperkte functionaliteit.
+SQL Server 2008 en 2008 R2 geïnstalleerd op Windows Server 2008 (_niet R2_) kunnen worden geregistreerd bij de resource provider van de SQL-vm in de modus niet- [agent](#management-modes). Met deze optie wordt de naleving gegarandeerd en kan de SQL Server virtuele machine worden bewaakt in de Azure Portal met beperkte functionaliteit.
 
 Geef `AHUB` of `PAYG` op als de **sqlLicenseType**, en `SQL2008-WS2008` of `SQL2008R2-WS2008` als **sqlImageOffer**. 
 
@@ -183,17 +183,37 @@ Als u uw SQL Server 2008-of 2008 R2-exemplaar op Windows Server 2008-exemplaar w
 
 # <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
 
-Registreer SQL Server VM in de modus niet-agent met de AZ CLI: 
+Registreer uw SQL Server 2008 VM in de modus niet-agent met de AZ CLI: 
 
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
    --license-type PAYG --sql-mgmt-type NoAgent 
    --image-sku Enterprise --image-offer SQL2008-WS2008R2
  ```
+ 
+ 
+Registreer uw SQL Server 2008 R2 VM in de modus niet-agent met de AZ CLI: 
+
+  ```azurecli-interactive
+   az sql vm create -n sqlvm -g myresourcegroup -l eastus |
+   --license-type PAYG --sql-mgmt-type NoAgent 
+   --image-sku Enterprise --image-offer SQL2008R2-WS2008R2
+ ```
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Registreer SQL Server VM in de modus niet-agent met Power shell: 
+Registreer SQL Server 2008 VM in de modus niet-agent met Power shell: 
+
+
+  ```powershell-interactive
+  # Get the existing compute VM
+  $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+          
+  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
+    -LicenseType PAYG -SqlManagementType NoAgent -Sku Standard -Offer SQL2008-WS2008
+  ```
+  
+  Registreer SQL Server 2008 R2 VM in de modus niet-agent met Power shell: 
 
 
   ```powershell-interactive
@@ -221,9 +241,9 @@ U kunt de huidige modus van uw SQL Server IaaS-agent weer geven met behulp van P
 De agent modus bijwerken naar Full: 
 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar de resource van de [virtuele SQL-machines](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) . 
 1. Selecteer uw SQL Server virtuele machine en selecteer **overzicht**. 
 1. Selecteer voor SQL Server Vm's met de IaaS of de modus voor licht gewicht de optie **alleen licentie type en editie-updates zijn beschikbaar met het uitbreidings bericht van de SQL IaaS-extensie** .
@@ -252,10 +272,9 @@ Voer het volgende Power shell-code fragment uit:
   ```powershell-interactive
   # Get the existing  Compute VM
   $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-
-  # Update to full mode
-  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-     -LicenseType PAYG -SqlManagementType Full
+        
+  # Register with SQL VM resource provider in full mode
+  Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
   ```
 
 ---
@@ -263,9 +282,9 @@ Voer het volgende Power shell-code fragment uit:
 ## <a name="verify-registration-status"></a>Registratie status verifiëren
 U kunt controleren of uw SQL Server virtuele machine al is geregistreerd bij de resource provider van de SQL-VM met behulp van de Azure Portal, de Azure CLI of Power shell. 
 
-### <a name="azure-portal"></a>Azure Portal 
+### <a name="azure-portal"></a>Azure-portal 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 1. Ga naar de [virtuele machines van SQL Server](virtual-machines-windows-sql-manage-portal.md).
 1. Selecteer uw SQL Server-VM in de lijst. Als uw SQL Server VM hier niet wordt vermeld, is deze waarschijnlijk niet geregistreerd bij de resource provider van de SQL-VM. 
 1. Bekijk de waarde onder **status**. Als de **status** is **geslaagd**, is de SQL Server VM geregistreerd bij de resource provider van de SQL-VM. 
@@ -300,11 +319,11 @@ Als u de registratie van uw SQL Server-VM bij de resource provider van de SQL-VM
 
 Het ongedaan maken van de registratie van de SQL-VM met de resource provider van de SQL-VM is nood zakelijk om de beheer modus te verlagen van de volledige. 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Voer de volgende stappen uit om de registratie van uw SQL Server virtuele machine bij de resource provider ongedaan te maken met behulp van de Azure Portal:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Ga naar de SQL Server VM-resource. 
   
    ![Resource van virtuele SQL-machines](media/virtual-machines-windows-sql-manage-portal/sql-vm-manage.png)
@@ -324,7 +343,7 @@ Voer de volgende stappen uit om de registratie van uw SQL Server virtuele machin
 
 ### <a name="command-line"></a>Opdrachtregel
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 Als u de registratie van uw SQL Server virtuele machine van de resource provider met Azure CLI ongedaan wilt maken, gebruikt u de opdracht [AZ SQL VM delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) . Hiermee wordt de SQL Server virtuele machine *bron* verwijderd, maar wordt de virtuele machine niet verwijderd. 
 
 

@@ -3,18 +3,18 @@ title: Service quota's en beschik baarheid van regio's
 description: Quota, limieten en beschikbaarheid in regio's van de Azure Container Instances-service.
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 91681130e32cf8a76829b8bfc3e2a1e97a59ff6b
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: b3e7f2f67d806bd2fca74f58d446b0de9a4b8f44
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533514"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117899"
 ---
 # <a name="quotas-and-limits-for-azure-container-instances"></a>Quota en limieten voor Azure Container Instances
 
 Alle Azure-services bevatten bepaalde standaardlimieten en -quota voor resources en functies. In dit artikel worden de standaard quota en-limieten voor Azure Container Instances beschreven.
 
-Zie [Resource beschikbaarheid voor Azure container instances](container-instances-region-availability.md)voor de beschik baarheid van Azure container instances functies en resources in azure-regio's.
+De beschik baarheid van compute-, geheugen-en opslag resources voor Azure Container Instances varieert per regio en besturings systeem. Zie [Beschik baarheid van resources voor Azure container instances](container-instances-region-availability.md)voor meer informatie.
 
 ## <a name="service-quotas-and-limits"></a>Servicequota en -limieten
 

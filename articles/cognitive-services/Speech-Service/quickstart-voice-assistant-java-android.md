@@ -3,19 +3,19 @@ title: 'Snelstartgids: Custom Voice Assistant, java (Android)-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het maken van een toepassing voor spraak assistenten in Java op Android met behulp van de Speech SDK
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: travisw
-ms.openlocfilehash: 70031513d6f120e539e80d6befad4bf9320fb9c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: d4f84bad6139210dcff3d3f3726d8b7a17d92a5b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975955"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119756"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Snelstartgids: een spraak assistent maken in Java op Android met behulp van de Speech SDK
 

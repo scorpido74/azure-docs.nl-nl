@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dab35fbcd221af9f4eb587b8c98a8ff85aeef59f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9becb91cfffd4553b2b8aa1a2d616963eae92ab0
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982786"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114054"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Een eenmalige wachtwoord technische profiel definiëren in een Azure AD B2C aangepast beleid
 
@@ -51,7 +51,7 @@ De eerste modus van dit technische profiel is het genereren van een code. Hieron
 
 Het **InputClaims** -element bevat een lijst met claims die vereist zijn voor verzen ding naar de provider voor eenmalig wachtwoord protocol. U kunt de naam van uw claim ook toewijzen aan de hieronder gedefinieerde naam.
 
-| ClaimReferenceId | Verplicht | Beschrijving |
+| ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ID | Ja | De id waarmee de gebruiker wordt geïdentificeerd die de code later moet verifiëren. Dit wordt vaak gebruikt als de id van de bestemming waarnaar de code wordt geleverd, bijvoorbeeld e-mail adres of telefoon nummer. |
 
@@ -61,7 +61,7 @@ Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTra
 
 Het **OutputClaims** -element bevat een lijst met claims die zijn gegenereerd door de provider voor eenmalig wacht woord protocol. U kunt de naam van uw claim ook toewijzen aan de hieronder gedefinieerde naam.
 
-| ClaimReferenceId | Verplicht | Beschrijving |
+| ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | otpGenerated | Ja | De gegenereerde code waarvan de sessie wordt beheerd door Azure AD B2C. |
 
@@ -71,14 +71,14 @@ Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsT
 
 De volgende instellingen kunnen worden gebruikt voor het configureren van code generatie en-onderhoud:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | CodeExpirationInSeconds | Nee | Tijd in seconden totdat de code verloopt. Minimum: `60`; Maximum: `1200`; Standaard: `600`. |
-| CodeLength | Nee | Lengte van de code. De standaardwaarde is `6`. |
-| CharacterSet | Nee | De tekenset voor de code, opgemaakt voor gebruik in een reguliere expressie. Bijvoorbeeld `a-z0-9A-Z`. De standaardwaarde is `0-9`. De tekenset moet mini maal tien verschillende tekens bevatten in de opgegeven set. |
-| NumRetryAttempts | Nee | Het aantal verificatie pogingen voordat de code als ongeldig wordt beschouwd. De standaardwaarde is `5`. |
+| CodeLength | Nee | Lengte van de code. De standaard waarde is `6`. |
+| CharacterSet | Nee | De tekenset voor de code, opgemaakt voor gebruik in een reguliere expressie. Bijvoorbeeld `a-z0-9A-Z`. De standaard waarde is `0-9`. De tekenset moet mini maal tien verschillende tekens bevatten in de opgegeven set. |
+| NumRetryAttempts | Nee | Het aantal verificatie pogingen voordat de code als ongeldig wordt beschouwd. De standaard waarde is `5`. |
 | Bewerking | Ja | De bewerking die moet worden uitgevoerd. Mogelijke waarden: `GenerateCode`of `VerifyCode`. |
-| ReuseSameCode | Nee | Of er een dubbele code moet worden gegeven in plaats van een nieuwe code te genereren wanneer de gegeven code niet is verlopen en nog geldig is. De standaardwaarde is `false`. |
+| ReuseSameCode | Nee | Of er een dubbele code moet worden gegeven in plaats van een nieuwe code te genereren wanneer de gegeven code niet is verlopen en nog geldig is. De standaard waarde is `false`. |
 
 ### <a name="returning-error-message"></a>Fout bericht retour neren
 
@@ -117,7 +117,7 @@ De tweede modus van dit technische profiel is om een code te controleren. Hieron
 
 Het **InputClaims** -element bevat een lijst met claims die vereist zijn voor verzen ding naar de provider voor eenmalig wachtwoord protocol. U kunt de naam van uw claim ook toewijzen aan de hieronder gedefinieerde naam.
 
-| ClaimReferenceId | Verplicht | Beschrijving |
+| ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | ID | Ja | De id voor het identificeren van de gebruiker die eerder een code heeft gegenereerd. Dit wordt vaak gebruikt als de id van de bestemming waarnaar de code wordt geleverd, bijvoorbeeld e-mail adres of telefoon nummer. |
 | otpToVerify | Ja | De verificatie code van de gebruiker. |
@@ -134,7 +134,7 @@ Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsT
 
 De volgende instellingen kunnen worden gebruikt voor het configureren van het fout bericht dat wordt weer gegeven bij fout bij code verificatie:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | Nee | Het bericht dat wordt weer gegeven aan de gebruiker als de sessie met de code verificatie is verlopen. Het is de code verlopen of de code is nooit voor een bepaalde id gegenereerd. |
 | UserMessageIfMaxRetryAttempted | Nee | Het bericht dat aan de gebruiker wordt weer gegeven als het maximum aantal toegestane verificatie pogingen is overschreden. |
@@ -168,3 +168,10 @@ Het volgende voor beeld `TechnicalProfile` wordt gebruikt voor het controleren v
     </InputClaims>
 </TechnicalProfile>
 ```
+
+## <a name="next-steps"></a>Volgende stappen
+
+Zie het volgende artikel voor een voor beeld van het gebruik van een technial-profiel met een eenmalig wacht woord met aangepaste e-mail verificatie:
+
+- [Aangepaste e-mail verificatie in Azure Active Directory B2C](custom-email.md)
+

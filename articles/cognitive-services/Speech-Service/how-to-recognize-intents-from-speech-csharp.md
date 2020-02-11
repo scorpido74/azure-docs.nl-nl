@@ -3,19 +3,19 @@ title: Intenties herkennen vanuit spraak met behulp van de Speech SDKC#
 titleSuffix: Azure Cognitive Services
 description: In deze hand leiding leert u hoe u de intenties kunt herkennen vanuit spraak met behulp C#van de Speech SDK voor.
 services: cognitive-services
-author: wolfma61
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2019
-ms.author: wolfma
-ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 5d3c77c307739f9014010a592aa496a1cc83b333
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805889"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120037"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Intenties herkennen vanuit spraak met de Speech SDK voorC#
 
@@ -91,12 +91,15 @@ Vervolgens voegt u code toe aan het project.
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-1. Voeg in de gegeven `Main()` methode de volgende code toe:
+1. Vervang de meegeleverde `Main()` methode door de volgende asynchrone equivalent:
 
    ```csharp
-   RecognizeIntentAsync().Wait();
-   Console.WriteLine("Please press Enter to continue.");
-   Console.ReadLine();
+   public static async Task Main()
+   {
+       await RecognizeIntentAsync();
+       Console.WriteLine("Please press Enter to continue.");
+       Console.ReadLine();
+   }
    ```
 
 1. Maak een lege, asynchrone methode `RecognizeIntentAsync()`, zoals hier wordt weer gegeven:
@@ -173,7 +176,7 @@ De toepassing parseert het JSON-resultaat niet. De JSON-tekst wordt alleen weer 
 
 ## <a name="specify-recognition-language"></a>Herkenningstaal opgeven
 
-Standaard herkent LUIS intenties in het Amerikaans-Engels (`en-us`). U kunt een landinstellingscode toewijzen aan de eigenschap `SpeechRecognitionLanguage` van de spraakconfiguratie om intenties in andere talen te herkennen. U kunt bijvoorbeeld `config.SpeechRecognitionLanguage = "de-de";` toevoegen in de toepassing voordat u de herkenner maakt om de intenties in het Duits te herkennen. Zie [ondersteunde talen](language-support.md#speech-to-text)voor meer informatie.
+Standaard herkent LUIS intenties in het Amerikaans-Engels (`en-us`). U kunt een landinstellingscode toewijzen aan de eigenschap `SpeechRecognitionLanguage` van de spraakconfiguratie om intenties in andere talen te herkennen. U kunt bijvoorbeeld `config.SpeechRecognitionLanguage = "de-de";` toevoegen in de toepassing voordat u de herkenner maakt om de intenties in het Duits te herkennen. Zie [Luis language support (Engelstalig)](../LUIS/luis-language-support.md#languages-supported)voor meer informatie.
 
 ## <a name="continuous-recognition-from-a-file"></a>Continue herkenning uit een bestand
 

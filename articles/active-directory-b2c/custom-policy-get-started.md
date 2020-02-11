@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cd1b5f120952752e956c957df9daa124a06d7b63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5a0e5846dd541e4997c271aee180b3790efa16e9
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847626"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114034"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Aan de slag met aangepast beleid in Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ ms.locfileid: "76847626"
 
 ## <a name="add-signing-and-encryption-keys"></a>Ondertekenings-en versleutelings sleutels toevoegen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
 1. Selecteer op de pagina overzicht onder **beleids regels**het **Framework identiteits ervaring**.
@@ -73,11 +73,11 @@ U moet deze twee toepassingen in uw Azure AD B2C-Tenant slechts eenmaal registre
 
 ### <a name="register-the-identityexperienceframework-application"></a>De IdentityExperienceFramework-toepassing registreren
 
-Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidige **toepassingen** gebruiken of onze nieuwe **Preview-ervaring (Unified app-registraties)** . [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
+Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de **app-registraties (verouderde)** ervaring of onze nieuwe geïntegreerde **app-registraties (preview-versie)** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
 1. Selecteer in het menu **Azure Active Directory** overzicht onder **beheren**de optie **app-registraties (verouderd)** .
 1. Selecteer **Nieuwe toepassing registreren**.

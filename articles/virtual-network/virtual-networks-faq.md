@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ef7e29351717daf91981f844f1d911a404cf9402
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646877"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121799"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Virtual Network
 
@@ -35,7 +35,7 @@ Gebruik VNets voor het volgende:
 
 * Schakel hybride Cloud scenario's in. VNets biedt u de flexibiliteit om een reeks hybride Cloud scenario's te ondersteunen. U kunt op een veilige manier Cloud toepassingen verbinden met elk type on-premises systeem, zoals mainframes en UNIX-systemen.
 
-### <a name="how-do-i-get-started"></a>Hoe kan ik beginnen?
+### <a name="how-do-i-get-started"></a>Hoe ga ik aan de slag?
 Ga naar de documentatie van het [virtuele netwerk](https://docs.microsoft.com/azure/virtual-network/) om aan de slag te gaan. Deze inhoud bevat overzichts-en implementatie-informatie voor alle VNet-functies.
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Kan ik VNets gebruiken zonder cross-premises-connectiviteit?
@@ -49,9 +49,9 @@ Ja. U kunt een [WAN-optimalisatie netwerk virtueel apparaat](https://azuremarket
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>Welke hulpprogram ma's kan ik gebruiken om een VNet te maken?
 U kunt de volgende hulpprogram ma's gebruiken om een VNet te maken of configureren:
 
-* Azure Portal
+* Azure-portal
 * PowerShell
-* Azure-CLI
+* Azure CLI
 * Een netwerk configuratie bestand (netcfg-alleen voor klassieke VNets). Zie het artikel [een VNet configureren met behulp van een netwerk configuratie bestand](virtual-networks-using-network-configuration-file.md) .
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Welke adresbereiken kan ik gebruiken in mijn VNets?
@@ -100,7 +100,7 @@ Nee.
 Ja. Subnetten kunnen op elk gewenst moment worden toegevoegd aan VNets, zolang het adres bereik van het subnet geen deel uitmaakt van een ander subnet en er ruimte beschikbaar is in het adres bereik van het virtuele netwerk.
 
 ### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Kan ik de grootte van mijn subnet wijzigen nadat ik het heb gemaakt?
-Ja. U kunt een subnet toevoegen, verwijderen, uitbreiden of verkleinen als hierin geen VM's of services zijn geïmplementeerd.
+Ja. U kunt een subnet toevoegen, verwijderen, uitbreiden of verkleinen als er geen Vm's of services in zijn geïmplementeerd.
 
 ### <a name="can-i-modify-subnets-after-i-created-them"></a>Kan ik de subnetten wijzigen nadat ik deze heb gemaakt?
 Ja. U kunt de CIDR-blokken die door een VNet worden gebruikt, toevoegen, verwijderen en wijzigen.
@@ -161,13 +161,13 @@ Ja. Alle netwerk interfaces (NIC) die zijn gekoppeld aan een virtuele machine di
 Nee. U kunt geen privé-IP-adres reserveren. Als er een privé-IP-adres beschikbaar is, wordt het toegewezen aan een virtuele machine of rolinstantie door de DHCP-server. De virtuele machine kan al dan niet de VM zijn waaraan u het privé-IP-adres wilt toewijzen. U kunt echter het privé-IP-adres van een al gemaakte virtuele machine wijzigen in elk beschikbaar privé-IP-adres.
 
 ### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>Worden privé-IP-adressen gewijzigd voor Vm's in een VNet?
-Dat hangt ervan af. Als de virtuele machine is geïmplementeerd via Resource Manager, Nee, ongeacht of het IP-adres is toegewezen met de statische of dynamische toewijzings methode. Als de virtuele machine via het klassieke implementatie model is geïmplementeerd, kunnen dynamische IP-adressen worden gewijzigd wanneer een virtuele machine wordt gestart nadat de status gestopt (toewijzing ongedaan gemaakt) is bereikt. Het adres wordt vrijgegeven van een virtuele machine die is geïmplementeerd via een van beide implementatie modellen wanneer de virtuele machine wordt verwijderd.
+Dit is afhankelijk van. Als de virtuele machine is geïmplementeerd via Resource Manager, Nee, ongeacht of het IP-adres is toegewezen met de statische of dynamische toewijzings methode. Als de virtuele machine via het klassieke implementatie model is geïmplementeerd, kunnen dynamische IP-adressen worden gewijzigd wanneer een virtuele machine wordt gestart nadat de status gestopt (toewijzing ongedaan gemaakt) is bereikt. Het adres wordt vrijgegeven van een virtuele machine die is geïmplementeerd via een van beide implementatie modellen wanneer de virtuele machine wordt verwijderd.
 
 ### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>Kan ik hand matig IP-adressen toewijzen aan Nic's in het VM-besturings systeem?
 Ja, maar dit wordt niet aanbevolen, tenzij nodig, zoals bij het toewijzen van meerdere IP-adressen aan een virtuele machine. Zie [meerdere IP-adressen toevoegen aan een virtuele machine](virtual-network-multiple-ip-addresses-portal.md#os-config)voor meer informatie. Als het IP-adres dat is toegewezen aan een Azure-NIC dat is gekoppeld aan een VM wordt gewijzigd en het IP-adres in het VM-besturings systeem verschilt, verliest u de verbinding met de virtuele machine.
 
 ### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>Wat gebeurt er met mijn IP-adressen als ik een implementatie site voor de Cloud service stop of een virtuele machine afsluit vanuit het besturings systeem?
-Niets. De IP-adressen (openbaar VIP, openbaar en privé) blijven toegewezen aan de implementatie site van de Cloud service of virtuele machine.
+Nul. De IP-adressen (openbaar VIP, openbaar en privé) blijven toegewezen aan de implementatie site van de Cloud service of virtuele machine.
 
 ### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Kan ik Vm's van het ene subnet verplaatsen naar een ander subnet in een VNet zonder opnieuw te implementeren?
 Ja. Meer informatie kunt u vinden in het artikel [een VM of rolinstantie verplaatsen naar een ander subnet](virtual-networks-move-vm-role-to-subnet.md) .
@@ -230,7 +230,7 @@ Ja. U kunt REST-Api's gebruiken voor VNets in de [Azure Resource Manager](/rest/
 Ja. Meer informatie over het gebruik van:
 - Het Azure Portal om VNets te implementeren via de [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) en [klassieke](virtual-networks-create-vnet-classic-pportal.md) implementatie modellen.
 - Power shell voor het beheren van VNets die zijn geïmplementeerd via de [Resource Manager](/powershell/module/az.network) en de [klassieke](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) implementatie modellen.
-- De Azure-opdracht regel interface (CLI) voor het implementeren en beheren van VNets die zijn geïmplementeerd via de [Resource Manager](/cli/azure/network/vnet) en de [klassieke](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) implementatie modellen.  
+- De Azure-opdracht regel interface (CLI) voor het implementeren en beheren van VNets die zijn geïmplementeerd via de [Resource Manager](/cli/azure/network/vnet) en de [klassieke](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) implementatie modellen.  
 
 ## <a name="vnet-peering"></a>VNet-peering
 
@@ -245,13 +245,13 @@ Als de twee virtuele netwerken in twee verschillende regio's worden gekoppeld vi
 De volgende resources kunnen Basic load balancers gebruiken. Dit betekent dat u deze niet kunt bereiken via het front-end-IP-adres van de Load Balancer via globale VNet-peering. U kunt ook globale VNet-peering gebruiken om de bronnen rechtstreeks te bereiken via hun eigen VNet-Ip's, indien toegestaan. 
 - Vm's achter Basic load balancers
 - Schaal sets voor virtuele machines met Basic load balancers 
-- Redis-cache 
+- Redis Cache 
 - Application Gateway (v1) SKU
-- Service Fabric
+- Infrastructuur van service
 - SQL MI
-- API Management
+- API-beheer
 - Active Directory-domein-service (toevoegen)
-- Logische apps
+- Logic Apps
 - HDInsight
 -   Azure Batch
 - App Service-omgeving
@@ -408,7 +408,7 @@ Er is geen limiet voor het totale aantal VNet-service-eind punten in een virtuee
 |Azure KeyVault|    127|
 |Azure Cosmos DB|   64|
 |Azure Event Hub|   128|
-|Service Bus van Azure| 128|
+|Azure Service Bus| 128|
 |Azure Data Lake Store V1|  100|
  
 >[!NOTE]

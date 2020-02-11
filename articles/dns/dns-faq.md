@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 990adf73211e96370fd06f5e322301128321e81f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937299"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121716"
 ---
 # <a name="azure-dns-faq"></a>Veelgestelde vragen over Azure DNS
 
@@ -38,7 +38,7 @@ Azure garandeert dat geldige DNS-aanvragen een reactie ontvangen van ten minste 
 
 Zie de [pagina Azure DNS Sla](https://azure.microsoft.com/support/legal/sla/dns)voor meer informatie.
 
-### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Wat is een DNS-zone? Is dat hetzelfde als een DNS-domein? 
+### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Wat is een DNS-zone? Is dit hetzelfde als een DNS-domein? 
 
 Een domein is een unieke naam in het Domain Name System. Bijvoorbeeld: contoso.com.
 
@@ -48,9 +48,9 @@ Een domein naam is *slechts een naam*. Een DNS-zone is een gegevens bron die de 
 
 ### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Moet ik een DNS-domeinnaam aanschaffen om Azure DNS te gebruiken? 
 
-Dat hoeft niet.
+Niet noodzakelijkerwijs.
 
-U hoeft geen domein te kopen voor het hosten van een DNS-zone in Azure DNS. U kunt altijd een DNS-zone maken zonder dat u eigenaar van een domeinnaam bent. DNS-query's voor deze zone worden alleen opgelost als deze worden omgeleid naar de Azure DNS naam servers die zijn toegewezen aan de zone.
+U hoeft geen domein te kopen voor het hosten van een DNS-zone in Azure DNS. U kunt op elk gewenst moment een DNS-zone maken zonder eigenaar van de domein naam. DNS-query's voor deze zone worden alleen opgelost als deze worden omgeleid naar de Azure DNS naam servers die zijn toegewezen aan de zone.
 
 Als u uw DNS-zone wilt koppelen aan de algemene DNS-hiërarchie, moet u de domein naam kopen. Vervolgens zoekt u op DNS-query's van overal ter wereld uw DNS-zone en beantwoordt u uw DNS-records.
 
@@ -149,7 +149,7 @@ Ja. Azure DNS ondersteunt het samen hosten van domeinen met andere DNS-services.
 
 Als u co-hosting wilt instellen, wijzigt u de NS-records voor het domein zodat deze verwijzen naar de naam servers van beide providers. De naam server records bepalen welke providers DNS-query's ontvangen voor het domein. U kunt deze NS-records wijzigen in Azure DNS, in de andere provider en in de bovenliggende zone. De bovenliggende zone wordt doorgaans geconfigureerd via de domein naam van het REGI ster. Zie [DNS-domein overdracht](dns-domain-delegation.md)voor meer informatie over DNS-delegering.
 
-Zorg er ook voor dat de DNS-records voor het domein synchroon zijn tussen DNS-providers. Azure DNS biedt momenteel geen ondersteuning voor DNS-zone overdrachten. DNS-records moeten worden gesynchroniseerd met behulp van de [Azure DNS beheer Portal](dns-operations-recordsets-portal.md), [rest API](https://docs.microsoft.com/powershell/module/az.dns), [SDK](dns-sdk.md), [Power shell-cmdlets](dns-operations-recordsets.md)of het [cli-hulp programma](dns-operations-recordsets-cli.md).
+Zorg er ook voor dat de DNS-records voor het domein synchroon zijn tussen DNS-providers. Azure DNS biedt momenteel geen ondersteuning voor DNS-zone overdrachten. DNS-records moeten worden gesynchroniseerd met behulp van de [Azure DNS beheer Portal](dns-operations-recordsets-portal.md), [rest API](https://docs.microsoft.com/rest/api/dns/), [SDK](dns-sdk.md), [Power shell-cmdlets](dns-operations-recordsets.md)of het [cli-hulp programma](dns-operations-recordsets-cli.md).
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Moet ik mijn domein overdragen aan alle vier Azure DNS naam servers?
 

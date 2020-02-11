@@ -5,15 +5,15 @@ services: notification-hubs
 author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 11/21/2019
+ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: b9f434f2d3c06d3db0bfda7c5853cc835ff64035
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047764"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123134"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Het bestand met de aanvraag voor certificaat ondertekening genereren
 
@@ -26,10 +26,9 @@ Genereer het CSR-bestand (Certificate Signing Request) dat door Apple wordt gebr
 1. Selecteer **toegang tot sleutel hanger**, vouw de **certificaat assistent**uit en selecteer vervolgens **een certificaat aanvragen bij een certificerings instantie**.
 
     ![Toegang tot sleutelhanger gebruiken om een nieuw certificaat aan te vragen](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
-    
-> [!NOTE]
-> OS X standaard selecteert het eerste item in de categorie die u hebt geselecteerd in het hulp programma voor sleutel hanger toegang. Dit kan problematisch zijn als u zich in het gedeelte **certificaten** bevindt en de **certificerings instantie Apple Worldwide Developer Relations** *niet* het eerste item in de lijst is. Voordat u een certificaat aanvraagt, controleert u of u zich in de sectie **certificaten** bevindt en selecteert u **Apple Worldwide Developer Relations certificerings instantie**.
 
+   > [!NOTE]
+   > Sleutel hanger toegang selecteert standaard het eerste item in de lijst. Dit kan een probleem zijn als u zich in de categorie **certificaten** bevindt en de **certificerings instantie van de Apple Worldwide Developer Relations** niet het eerste item in de lijst is. Zorg ervoor dat u een niet-sleutel item hebt of dat de **certificerings instantie sleutel voor Apple Worldwide Developer Relations** is geselecteerd, voordat u de CSR (aanvraag voor certificaat ondertekening) genereert.
 
 1. Selecteer het **e-mail adres**van uw gebruiker, voer uw **algemene naam** waarde in, zorg ervoor dat u **op schijf opgeslagen**opgeeft en selecteer **door gaan**. Geef het **e-mail adres** van de CA leeg, omdat dit niet vereist is.
 

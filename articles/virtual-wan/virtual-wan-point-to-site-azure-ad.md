@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: alzam
-ms.openlocfilehash: cad502dc759a4d481f3071a8a27ddeca79fbc18c
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: b3508c4c8da5b4987fb5f38cf3bf701f2dda1097
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108305"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122029"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>Zelf studie: een VPN-verbinding voor een gebruiker maken met behulp van Azure Virtual WAN
 
@@ -123,7 +123,7 @@ Gebruik het VPN-profiel om uw clients te configureren.
 
 ## <a name="configure-user-vpn-clients"></a>VPN-clients voor gebruikers configureren
 
-Als u verbinding wilt maken, moet u de Azure VPN-client (preview) downloaden en het VPN-client profiel importeren dat in de vorige stappen is gedownload op elke computer die verbinding wil maken met het VNet.
+Als u verbinding wilt maken, moet u de Azure VPN-client downloaden en het VPN-client profiel importeren dat in de vorige stappen is gedownload op elke computer die verbinding wil maken met het VNet.
 
 > [!NOTE]
 > Azure AD-verificatie wordt alleen ondersteund voor OpenVPN®-protocol verbindingen.
@@ -131,7 +131,7 @@ Als u verbinding wilt maken, moet u de Azure VPN-client (preview) downloaden en 
 
 #### <a name="to-download-the-azure-vpn-client"></a>De Azure VPN-client downloaden
 
-Gebruik deze [koppeling](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) om de Azure VPN-client te downloaden (preview).
+Gebruik deze [koppeling](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) om de Azure VPN-client te downloaden.
 
 #### <a name="import"></a>Een client profiel importeren
 

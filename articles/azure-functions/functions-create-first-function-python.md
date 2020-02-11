@@ -4,12 +4,12 @@ description: Maak en implementeer serverloze python-code in de Cloud met behulp 
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 529a992178fae5566c8e315956388c4cd4b80257
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898563"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116211"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Quick Start: een HTTP-geactiveerde python-functie maken in azure
 
@@ -107,7 +107,7 @@ In Azure Functions is een functie project een container voor een of meer afzonde
 
 Desgewenst kunt u [de functie lokaal uitvoeren](#run-the-function-locally) en de bestands inhoud later bekijken.
 
-### <a name="__init__py"></a>\_\_init\_\_. py
+#### <a name="__init__py"></a>\_\_init\_\_. py
 
 *\_\_init\_\_. py* bevat een `main()` python-functie die wordt geactiveerd volgens de configuratie in *Function. json*.
 
@@ -140,7 +140,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 Voor HTTP-trigger ontvangt de functie aanvraag gegevens in de variabele `req` zoals gedefinieerd in *Function. json*. `req` is een instantie van de [klasse Azure. functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). Het retour object, gedefinieerd als `$return` in *Function. json*, is een instantie van de [klasse Azure. functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Zie [Azure functions HTTP-triggers en-bindingen](functions-bindings-http-webhook.md)voor meer informatie.
 
-### <a name="functionjson"></a>function.json
+#### <a name="functionjson"></a>function.json
 
 *Function. json* is een configuratie bestand dat de invoer-en uitvoer `bindings` definieert voor de functie, met inbegrip van het trigger type. U kunt `scriptFile` zo nodig wijzigen om een ander python-bestand aan te roepen.
 
@@ -199,7 +199,7 @@ Wanneer u klaar bent, **Ctrl**+**C** om de functions-host te stoppen.
 
 ## <a name="create-supporting-azure-resources-for-your-function"></a>Ondersteunende Azure-resources maken voor uw functie
 
-Als u uw functie code wilt implementeren in azure, moet u drie resources maken:
+Voordat u uw functie code kunt implementeren in azure, moet u drie resources maken:
 
 - Een resource groep, een logische container voor gerelateerde resources.
 - Een Azure Storage account, waarmee de status en andere informatie over uw projecten worden bijgehouden.
@@ -276,7 +276,7 @@ Kopieer de volledige **invoke-URL** die wordt weer gegeven in de uitvoer van de 
 ![De uitvoer van de functie die wordt uitgevoerd op Azure in een browser](./media/functions-create-first-function-python/function-test-cloud-browser.png)
 
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[Ezelsoor](#tab/curl)
 
 Voer [krul](https://curl.haxx.se/) uit met de **aanroepende URL**en voeg de para meter `&name=Azure`toe. De uitvoer van de opdracht moet de tekst ' Hello Azure ' zijn.
 

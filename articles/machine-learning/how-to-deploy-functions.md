@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 00a62e970e27d689eb639a62938376f73410c270
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 321f985bd375e6fa4337e060bb15d318ea306ab4
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024906"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116746"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Een machine learning model implementeren op Azure Functions (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Met Azure Machine Learning kunt u docker-installatie kopieën maken op basis van
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure Machine Learning-werkruimte. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
-* De [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Een getraind machine learning model dat is geregistreerd in uw werk ruimte. Als u geen model hebt, gebruikt u de [zelf studie voor installatie kopie classificatie: Train model](tutorial-train-models-with-aml.md) om er een te trainen en te registreren.
 
     > [!IMPORTANT]
@@ -42,7 +42,7 @@ Met Azure Machine Learning kunt u docker-installatie kopieën maken op basis van
     >
     > Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over het instellen van deze variabelen.
 
-## <a name="prepare-for-deployment"></a>Voorbereiden op implementatie
+## <a name="prepare-for-deployment"></a>Implementatie voorbereiden
 
 Voordat u implementeert, moet u definiëren wat er nodig is om het model als een webservice uit te voeren. In de volgende lijst worden de basis items beschreven die nodig zijn voor een implementatie:
 
@@ -58,7 +58,7 @@ Voordat u implementeert, moet u definiëren wat er nodig is om het model als een
 
 * **Afhankelijkheden**, zoals hulp scripts of python/Conda-pakketten die zijn vereist voor het uitvoeren van het script of model van de vermelding
 
-Deze entiteiten worden ingekapseld in een Afleidings __configuratie__. De deductieconfiguratie verwijst naar het invoerscript en andere afhankelijkheden.
+Deze entiteiten worden ingekapseld in een Afleidings __configuratie__. De configuratie voor afwijzen verwijst naar het script voor de vermelding en andere afhankelijkheden.
 
 > [!IMPORTANT]
 > Wanneer u een configuratie voor afwijzen maakt voor gebruik met Azure Functions, moet u een [omgevings](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) object gebruiken. Houd er rekening mee dat als u een aangepaste omgeving definieert, de standaard waarden van azureml en versie > = 1.0.45 als een PIP-afhankelijkheid worden toegevoegd. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten. In het volgende voor beeld ziet u hoe u een omgevings object maakt en dit gebruikt met een configuratie voor ingaand gebruik:
@@ -118,7 +118,7 @@ Als `show_output=True`, wordt de uitvoer van het docker-bouw proces weer gegeven
 
 ## <a name="deploy-image-as-a-web-app"></a>Een installatie kopie implementeren als een web-app
 
-1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervang `<acrinstance>` door de waarde die u eerder van `package.location`hebt geretourneerd: 
+1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervang `<myacr>` door de waarde die u eerder van `package.location`hebt geretourneerd: 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -177,7 +177,7 @@ Als `show_output=True`, wordt de uitvoer van het docker-bouw proces weer gegeven
 1. Maak het opslag account dat moet worden gebruikt voor de Blob-opslag en ontvang het connection string. Vervang `<triggerStorage>` door de naam die u wilt gebruiken.
 
     ```azurecli-interactive
-    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
@@ -252,5 +252,5 @@ Op dit punt begint de functie-app het laden van de installatie kopie.
 * Meer informatie over het configureren van uw functions-app in de [functions](/azure/azure-functions/functions-create-function-linux-custom-image) -documentatie.
 * Meer informatie over Blob Storage activeert [Azure Blob-opslag bindingen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
 * [Implementeer uw model naar Azure app service](how-to-deploy-app-service.md).
-* [Een ML-Model dat is geïmplementeerd als een webservice gebruiken](how-to-consume-web-service.md)
+* [Een ML-model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 * [API-naslaginformatie](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)

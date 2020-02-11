@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van acties voor automatisch schale
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
-ms.openlocfilehash: fd5aeadd72123b58801ce038b0cc99d17dcfd200
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364200"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120688"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Acties voor automatisch schalen gebruiken voor het verzenden van e-mail berichten en waarschuwingen voor webhooks in Azure Monitor
 Dit artikel laat u zien hoe u triggers kunt instellen, zodat u specifieke Web-Url's aanroept of e-mail berichten verzendt op basis van acties voor automatisch schalen in Azure.  
@@ -17,11 +17,11 @@ Dit artikel laat u zien hoe u triggers kunt instellen, zodat u specifieke Web-Ur
 ## <a name="webhooks"></a>Webhooks
 Met webhooks kunt u de meldingen van Azure-waarschuwingen naar andere systemen routeren voor nabewerkingen of aangepaste meldingen. U kunt de waarschuwing bijvoorbeeld routeren naar services die een inkomende webaanvraag voor het verzenden van SMS-berichten, het registreren van fouten, het melden van een team via chat-of bericht Services, enzovoort. De webhook-URI moet een geldig HTTP-of HTTPS-eind punt zijn.
 
-## <a name="email"></a>E-mail
+## <a name="email"></a>Email
 E-mail kan worden verzonden naar een geldig e-mail adres. Beheerders en mede beheerders van het abonnement waarbij de regel wordt uitgevoerd, worden ook op de hoogte gesteld.
 
-## <a name="cloud-services-and-web-apps"></a>Cloud Services en Web Apps
-U kunt zich aanmelden vanaf de Azure Portal voor Cloud Services en server farms (Web Apps).
+## <a name="cloud-services-and-app-services"></a>Cloud Services en App Services
+U kunt zich aanmelden vanaf de Azure Portal voor Cloud Services en server farms (App Services).
 
 * Kies de **schaal op basis van** metrische gegevens.
 
@@ -106,7 +106,7 @@ Wanneer de melding over automatisch schalen wordt gegenereerd, worden de volgend
 | context |ja |De actie context voor automatisch schalen |
 | tijdstempel |ja |Tijds tempel wanneer de actie voor automatisch schalen is geactiveerd |
 | id |Ja |Resource Manager-ID van de instelling voor automatisch schalen |
-| name |Ja |De naam van de instelling voor automatisch schalen |
+| naam |Ja |De naam van de instelling voor automatisch schalen |
 | details informatie |Ja |Uitleg van de actie die de service voor automatisch schalen heeft ondernomen en de wijziging van het aantal instanties |
 | subscriptionId |Ja |Abonnements-ID van de doel resource die wordt geschaald |
 | resourceGroupName |Ja |De naam van de resource groep van de doel resource die wordt geschaald |

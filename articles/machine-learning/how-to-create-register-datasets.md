@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 99f4d8d854334b047caf36406f21890cde7eda16
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 02/10/2020
+ms.openlocfilehash: 0bfaef72be23f148c01e02e910b11128cec1659e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77082949"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116711"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning gegevens sets maken
 
@@ -172,7 +172,9 @@ Een gegevensset maken in Studio:
 1. Selecteer **gegevens sets** in het gedeelte **assets** van het linkerdeel venster. 
 1. Selecteer **gegevensset maken** om de bron van uw gegevensset te kiezen. Deze bron kan lokale bestanden, een gegevens opslag of een open bare URL zijn.
 1. Selecteer een **tabel** of **bestand** voor het type gegevensset.
-1. Selecteer **volgende** om de **instellingen en de voor beeld**-, **schema** -en **gegevens** formulieren te controleren. ze worden op intelligente wijze ingevuld op basis van het bestands type. Gebruik deze formulieren om uw selecties te controleren en uw gegevensset verder te configureren voordat u deze hebt gemaakt.  
+1. Selecteer **volgende** om het formulier **gegevens opslag en bestand selecteren** te openen. Op dit formulier selecteert u waar u uw gegevensset na het maken moet blijven en selecteert u welke gegevens bestanden u voor uw gegevensset wilt gebruiken. 
+1. Selecteer **volgende** om de **instellingen en de voor beeld** -en **schema** formulieren in te vullen. ze worden op intelligente wijze ingevuld op basis van het bestands type en u kunt uw gegevensset verder configureren voordat deze formulieren worden gemaakt. 
+1. Selecteer **volgende** om het formulier **Details bevestigen** weer te geven. Controleer uw selecties en maak een optioneel gegevens profiel voor uw gegevensset. Meer informatie over [gegevens profilering](how-to-create-portal-experiments.md#profile). 
 1. Selecteer **maken** om het maken van de gegevensset te volt ooien.
 
 ## <a name="register-datasets"></a>Gegevens sets registreren

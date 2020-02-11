@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 08/26/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3c0ff63a360d96d0e9db18d430e755e567197de1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 071a8dd40d87e5df6fc5c65b789bb63b515dc60a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122080"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116501"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Zelf studie: een classificatie model voor een installatie kopie implementeren in Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Container Instances is een uitstekende oplossing voor het testen en inzicht krij
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u het notitie blok wilt uitvoeren, voltooit u eerst de model training in [zelf studie (deel 1): een classificatie model voor een installatie kopie trainen](tutorial-train-models-with-aml.md).   Open vervolgens het notebook **IMG-classificatie-part2-Deploy. ipynb** in de map gekloonde **zelf studies** .
+Als u het notitie blok wilt uitvoeren, voltooit u eerst de model training in [zelf studie (deel 1): een classificatie model voor een installatie kopie trainen](tutorial-train-models-with-aml.md).   Open vervolgens het notebook *IMG-classificatie-part2-Deploy. ipynb* in uw gekloonde *zelf studies/image-classificatie-mnist-data-* map.
 
 Deze zelf studie is ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u deze wilt gebruiken in uw eigen [lokale omgeving](how-to-configure-environment.md#local).  Zorg ervoor dat u `matplotlib` en `scikit-learn` hebt geïnstalleerd in uw omgeving. 
 

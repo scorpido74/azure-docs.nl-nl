@@ -4,12 +4,12 @@ description: Patronen automatisch schalen in azure voor Web Apps, schaal sets vo
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d9f04e0af4349f6b149619f13dac8ca2f59b560e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396986"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117107"
 ---
 # <a name="best-practices-for-autoscale"></a>Aanbevolen procedures voor Automatisch schalen
 Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
@@ -113,7 +113,7 @@ Op dezelfde manier wordt met de functie voor automatisch schalen naar het standa
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Overwegingen voor schalen wanneer meerdere regels in een profiel zijn geconfigureerd
 
-Er zijn gevallen waarin het mogelijk is om meerdere regels in een profiel in te stellen. De volgende regels voor automatisch schalen worden door Services gebruikt wanneer er meerdere regels zijn ingesteld.
+Er zijn gevallen waarin het mogelijk is om meerdere regels in een profiel in te stellen. De volgende regels voor automatisch schalen worden gebruikt door de engine voor automatisch schalen wanneer er meerdere regels zijn ingesteld.
 
 Bij *uitschalen worden automatisch*schalen uitgevoerd als aan een regel wordt voldaan.
 Bij *schalen naar automatisch*schalen moeten aan alle regels worden voldaan.
@@ -133,13 +133,13 @@ Daarna gebeurt het volgende:
 Aan de andere kant, als CPU 25% is en het geheugen 51% automatisch schalen **niet** is geschaald. Om in te schalen moet CPU 29% zijn en geheugen 49%.
 
 ### <a name="always-select-a-safe-default-instance-count"></a>Altijd een veilig standaard aantal exemplaren selecteren
-Het standaard aantal exemplaren is belang rijk dat automatisch wordt geschaald naar dat aantal wanneer er geen metrische gegevens beschikbaar zijn. Selecteer daarom een standaard aantal exemplaren dat veilig is voor uw workloads.
+Het standaard aantal exemplaren is belang rijk omdat automatisch schalen uw service inschaalt naar dat aantal wanneer er geen metrische gegevens beschikbaar zijn. Selecteer daarom een standaard aantal exemplaren dat veilig is voor uw workloads.
 
 ### <a name="configure-autoscale-notifications"></a>Meldingen voor automatisch schalen configureren
 Automatisch schalen wordt in het activiteiten logboek geplaatst als aan een van de volgende voor waarden wordt voldaan:
 
-* Automatisch schalen geeft een schaal bewerking
-* Een schaal actie is voltooid door de service voor automatisch schalen
+* Automatisch schalen geeft een schaal bewerking.
+* De service voor automatisch schalen heeft een schaal actie voltooid.
 * De service voor automatisch schalen kan geen schaal actie ondernemen.
 * Er zijn geen metrische gegevens beschikbaar voor de service voor automatisch schalen om een schaal beslissing te nemen.
 * Metrische gegevens zijn beschikbaar (herstel) opnieuw om een schaal beslissing te nemen.

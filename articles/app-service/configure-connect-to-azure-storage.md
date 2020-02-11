@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866982"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120681"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Azure Files configureren in een Windows-container op App Service
 
@@ -38,6 +38,7 @@ Deze hand leiding laat zien hoe u toegang krijgt tot Azure Storage in Windows-co
 - Azure Storage in Windows-containers wordt momenteel **niet ondersteund** voor het nemen van uw eigen code Scenario's in Windows app service-abonnementen.
 - Azure Storage in Windows-containers **biedt geen ondersteuning** voor het gebruik van de **opslag firewall** -configuratie vanwege beperkingen van de infra structuur.
 - Met Azure Storage in Windows-containers kunt u **Maxi maal vijf** koppel punten per app opgeven.
+- Azure Storage die aan een app zijn gekoppeld, is niet toegankelijk via App Service FTP-en FTPs-eind punten. Gebruik [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 - Azure Storage wordt afzonderlijk in rekening gebracht en **niet opgenomen** in uw web-app. Meer informatie over [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage).
 
 ## <a name="link-storage-to-your-web-app-preview"></a>Opslag koppelen aan uw web-app (preview)

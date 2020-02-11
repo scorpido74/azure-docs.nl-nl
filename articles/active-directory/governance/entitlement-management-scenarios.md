@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d780e6e11d2c067261f6862e1678ef5de0aaa9bb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f40ed05391c36f820940d5351373ecd8f9492b17
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422510"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120134"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Algemene scenario's in het beheer van rechten van Azure AD
 
@@ -150,6 +150,10 @@ Er zijn verschillende manieren waarop u het rechten beheer voor uw organisatie k
 
 1. [Toegangs pakketten voor een gebruiker weer geven](entitlement-management-reports.md#view-access-packages-for-a-user)
 1. [Resource toewijzingen voor een gebruiker weer geven](entitlement-management-reports.md#view-resource-assignments-for-a-user)
+
+## <a name="programmatic-administration"></a>Programmatisch beheer
+
+U kunt ook toegangs pakketten, catalogi, beleids regels, aanvragen en toewijzingen beheren met Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de machtiging gedelegeerde `EntitlementManagement.ReadWrite.All` heeft, kan de [rechten beheer-API](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)aanroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

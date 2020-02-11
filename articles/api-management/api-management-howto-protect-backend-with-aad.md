@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 771257df12ee29c2bc8d32672c8e8b7d039a96ba
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: cbcd3d27da3aff66e1dc6758af8a573666c0bbbe
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120806"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121406"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Een API beveiligen met behulp van OAuth 2,0 met Azure Active Directory en API Management
 
@@ -47,7 +47,7 @@ Hier volgt een kort overzicht van de stappen:
 
 De eerste stap is het registreren van een toepassing in azure AD die de API vertegenwoordigt, om een API te beveiligen met Azure AD. 
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassing te registreren. Zoek en selecteer **API-registraties**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassing te registreren. Zoek en selecteer **app-registraties**.
 
 1. Selecteer **nieuwe registratie**. 
 

@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: a6a8b766efdc781df1fea29da81dc48090875ad7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4612d15dd5d3ab6e814f09210d5ff3991fef0328
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036573"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121869"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Een kopie van een virtuele Linux-machine maken met behulp van Azure CLI en Managed Disks
 
@@ -133,4 +133,4 @@ az vm create --resource-group myResourceGroup \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure cli-opdrachten voor de Azure Resource Manager](../azure-cli-arm-commands.md)voor meer informatie over het gebruik van Azure CLI voor het beheren van uw nieuwe virtuele machine.
+Voor meer informatie over het gebruik van een [Galerie met gedeelde afbeeldingen](shared-images.md) voor het beheren van VM-installatie kopieën.

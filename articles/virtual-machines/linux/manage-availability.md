@@ -15,18 +15,16 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5742ed346c6761dd443d6252e5c9e457fa952b87
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 55c9075f28a9ff7e28fcb01352494cd6cff73f14
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035892"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121902"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>De beschik baarheid van virtuele Linux-machines beheren
 
 Meer informatie over manieren om meerdere virtuele machines in te stellen en te beheren om hoge Beschik baarheid voor uw Linux-toepassing in azure te garanderen. U kunt ook [de beschik baarheid van virtuele Windows-machines beheren](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
-Zie voor instructies over het maken van een beschikbaarheidsset met CLI in het Resource Manager-implementatie model Azure beschik bare set [: opdrachten voor het beheren van uw beschikbaarheids sets](../azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets).
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 

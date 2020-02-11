@@ -1,22 +1,18 @@
 ---
 title: Onderhouds meldingen voor Azure-Vm's ontvangen met Power shell
 description: Bekijk onderhouds meldingen voor virtuele machines die in Azure worden uitgevoerd en start selfservice onderhoud met behulp van Power shell.
-services: virtual-machines
-documentationcenter: ''
 author: shants123
-editor: ''
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: f136fc3001e6ae224e264a59ceba66ed61ead865
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c23a06c502bd43b52cb35220b711084c7c8c1c7a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535832"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121834"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>Verwerken van gepland onderhoud met behulp van Power shell
 

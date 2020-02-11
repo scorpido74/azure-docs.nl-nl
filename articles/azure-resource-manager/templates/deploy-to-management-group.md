@@ -2,13 +2,13 @@
 title: Resources implementeren in beheer groep
 description: Hierin wordt beschreven hoe u resources kunt implementeren in het bereik van de beheer groep in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 4ba4f4d2e95c0b878e9f402fa84139ac5b351e3c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 02/10/2020
+ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121910"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117038"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Resources op het niveau van de beheer groep maken
 
@@ -63,8 +63,20 @@ Voor implementaties van een beheer groep gelden enkele belang rijke aandachtspun
 
 * De functie [resourceGroup ()](template-functions-resource.md#resourcegroup) wordt **niet** ondersteund.
 * De functie [Subscription ()](template-functions-resource.md#subscription) wordt **niet** ondersteund.
-* De functie [resourceId ()](template-functions-resource.md#resourceid) wordt ondersteund. Gebruik deze om de resource-ID op te halen voor resources die worden gebruikt bij implementaties op beheer groepniveau. U kunt bijvoorbeeld de resource-ID voor een beleids definitie ophalen met `resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))`. De resource-ID wordt geretourneerd in de indeling `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}`.
 * De functies [Reference ()](template-functions-resource.md#reference) en [List ()](template-functions-resource.md#list) worden ondersteund.
+* De functie [resourceId ()](template-functions-resource.md#resourceid) wordt ondersteund. Gebruik deze om de resource-ID op te halen voor resources die worden gebruikt bij implementaties op beheer groepniveau. Geef geen waarde op voor de para meter van de resource groep.
+
+  Als u bijvoorbeeld de resource-ID voor een beleids definitie wilt ophalen, gebruikt u:
+  
+  ```json
+  resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
+  ```
+  
+  De geretourneerde Resource-ID heeft de volgende indeling:
+  
+  ```json
+  /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
 
 ## <a name="create-policies"></a>Beleidsregels maken
 
@@ -136,9 +148,13 @@ In het volgende voor beeld wordt een bestaande beleids definitie toegewezen aan 
 }
 ```
 
+## <a name="template-sample"></a>Voor beeld van sjabloon
+
+* Maak een resource groep, een beleid en een beleids toewijzing.  [Hier](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)weer geven.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [toegang tot Azure-resources beheren met RBAC en Azure Resource Manager sjablonen](../../role-based-access-control/role-assignments-template.md)voor meer informatie over het toewijzen van rollen.
 * Zie [deployASCwithWorkspaceSettings. json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)(Engelstalig) voor een voor beeld van de implementatie van werk ruimte-instellingen voor Azure Security Center.
-* Zie [ontwerp sjablonen](template-syntax.md)voor meer informatie over het maken van Azure Resource Manager sjablonen. 
+* Zie [ontwerp sjablonen](template-syntax.md)voor meer informatie over het maken van Azure Resource Manager sjablonen.
 * Zie [sjabloon functies](template-functions.md)voor een lijst met de beschik bare functies in een sjabloon.

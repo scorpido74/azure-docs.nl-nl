@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 6d1dd8f749f6c3e991413628bd1e08baf76a02f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 378b802602576c4cf50862149f5d31d16d721be0
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458670"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115832"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Een virtuele Linux-machine uploaden en maken op basis van een aangepaste schijf met de Azure CLI
 
@@ -79,7 +79,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-Het doel-opslag account moet hetzelfde zijn als de locatie waar u de virtuele schijf hebt geüpload. U moet ook vragen opgeven, of antwoord geven op alle aanvullende para meters die vereist zijn voor de opdracht **AZ VM Create** , zoals virtueel netwerk, openbaar IP-adres, gebruikers naam en SSH-sleutels. Meer informatie over de [beschik bare cli-Resource Manager-para meters](../azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)kunt u lezen.
+Het doel-opslag account moet hetzelfde zijn als de locatie waar u de virtuele schijf hebt geüpload. U moet ook vragen opgeven, of antwoord geven op alle aanvullende para meters die vereist zijn voor de opdracht **AZ VM Create** , zoals virtueel netwerk, openbaar IP-adres, gebruikers naam en SSH-sleutels. Meer informatie over de [beschik bare klassieke cli-Resource Manager-para meters](../azure-cli-arm-commands.md#virtual-machines)kunt u lezen.
 
 ## <a name="requirements"></a>Vereisten
 Als u de volgende stappen wilt uitvoeren, moet u:
@@ -130,7 +130,7 @@ In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` 
 az group create --name myResourceGroup --location westus
 ```
 
-## <a name="create-a-storage-account"></a>Maak een opslagaccount
+## <a name="create-a-storage-account"></a>Create a storage account
 
 Maak een opslag account voor uw aangepaste schijf en virtuele machines met [AZ Storage account create](/cli/azure/storage/account). Alle Vm's met niet-beheerde schijven die u maakt op basis van uw aangepaste schijf, moeten zich in hetzelfde opslag account bevindt als die schijf. 
 

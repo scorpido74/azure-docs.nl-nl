@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 572d8c4b59622156e8b3aca4565bbc206367f6d4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5ca153f0d52b65aa1ee56d5757381f1f31c7eeb5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514850"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120815"
 ---
 # <a name="api-management-authentication-policies"></a>Verificatie beleid voor API Management
 In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
@@ -48,16 +48,16 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 
 ### <a name="elements"></a>Elementen
 
-|Naam|Beschrijving|Verplicht|
+|Naam|Beschrijving|Vereist|
 |----------|-----------------|--------------|
 |verificatie-basis|Hoofd element.|Ja|
 
 ### <a name="attributes"></a>Kenmerken
 
-|Naam|Beschrijving|Verplicht|Standaard|
+|Naam|Beschrijving|Vereist|Standaard|
 |----------|-----------------|--------------|-------------|
-|gebruikersnaam|Hiermee geeft u de gebruikers naam van de basis referentie.|Ja|N/A|
-|wachtwoord|Hiermee geeft u het wacht woord van de basis referentie op.|Ja|N/A|
+|gebruikersnaam|Hiermee geeft u de gebruikers naam van de basis referentie.|Ja|N.v.t.|
+|wachtwoord|Hiermee geeft u het wacht woord van de basis referentie op.|Ja|N.v.t.|
 
 ### <a name="usage"></a>Gebruik
  Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -88,16 +88,16 @@ In dit voor beeld wordt het client certificaat geïdentificeerd op basis van de 
 
 ### <a name="elements"></a>Elementen  
   
-|Naam|Beschrijving|Verplicht|  
+|Naam|Beschrijving|Vereist|  
 |----------|-----------------|--------------|  
 |verificatie-certificaat|Hoofd element.|Ja|  
   
 ### <a name="attributes"></a>Kenmerken  
   
-|Naam|Beschrijving|Verplicht|Standaard|  
+|Naam|Beschrijving|Vereist|Standaard|  
 |----------|-----------------|--------------|-------------|  
-|vingerafdruk|De vinger afdruk voor het client certificaat.|Er moet een `thumbprint` of `certificate-id` aanwezig zijn.|N/A|  
-|certificaat-id|De naam van de certificaat resource.|Er moet een `thumbprint` of `certificate-id` aanwezig zijn.|N/A|  
+|thumbprint|De vinger afdruk voor het client certificaat.|Er moet een `thumbprint` of `certificate-id` aanwezig zijn.|N.v.t.|  
+|certificaat-id|De naam van de certificaat resource.|Er moet een `thumbprint` of `certificate-id` aanwezig zijn.|N.v.t.|  
   
 ### <a name="usage"></a>Gebruik  
  Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -147,16 +147,16 @@ In dit voor beeld wordt het client certificaat geïdentificeerd op basis van de 
 
 ### <a name="elements"></a>Elementen  
   
-|Naam|Beschrijving|Verplicht|  
+|Naam|Beschrijving|Vereist|  
 |----------|-----------------|--------------|  
 |verificatie-beheerd identiteit |Hoofd element.|Ja|  
   
 ### <a name="attributes"></a>Kenmerken  
   
-|Naam|Beschrijving|Verplicht|Standaard|  
+|Naam|Beschrijving|Vereist|Standaard|  
 |----------|-----------------|--------------|-------------|  
-|Resource|tekenreeksexpressie. De App-ID-URI van de doel-Web-API (beveiligde bron) in Azure Active Directory.|Ja|N/A|  
-|uitvoer-token-variabele-naam|tekenreeksexpressie. De naam van de context variabele waarmee de token waarde wordt ontvangen als object type `string`. |Nee|N/A|  
+|resource|Tekenreeks. De App-ID van de doel-Web-API (beveiligde bron) in Azure Active Directory.|Ja|N.v.t.|  
+|uitvoer-token-variabele-naam|Tekenreeks. De naam van de context variabele waarmee de token waarde wordt ontvangen als object type `string`. |Nee|N.v.t.|  
 |negeren-fout|True. Als deze is ingesteld op `true`, blijft de beleids pijplijn worden uitgevoerd, zelfs als er geen toegangs token is verkregen.|Nee|onwaar|  
   
 ### <a name="usage"></a>Gebruik  

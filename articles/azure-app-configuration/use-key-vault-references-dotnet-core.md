@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b35c23e6dd88af01391bf7f01a7e736a1a744fff
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4e896c5fa6f8656be29eed7eb8d4e8854a94ecfa
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714439"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116620"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Zelf studie: Key Vault verwijzingen gebruiken in een ASP.NET Core-app
 
@@ -172,7 +172,7 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
     using Azure.Identity;
     ```
 
-1. Werk de `CreateWebHostBuilder`-methode bij om app-configuratie te gebruiken door de `config.AddAzureAppConfiguration`-methode aan te roepen. Neem de `UseAzureKeyVault` optie op voor het door geven van een nieuwe `KeyVaultClient` verwijzing naar uw Key Vault.
+1. Werk de `CreateWebHostBuilder`-methode bij om app-configuratie te gebruiken door de `config.AddAzureAppConfiguration`-methode aan te roepen. Neem de `ConfigureKeyVault` optie op en geef de juiste referenties door aan uw Key Vault.
 
     #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -217,7 +217,7 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
             .UseStartup<Startup>());
     ```
 
-1. Wanneer u de verbinding met de app-configuratie hebt geïnitialiseerd, hebt u de `KeyVaultClient` verwijzing naar de `UseAzureKeyVault`-methode door gegeven. Na de initialisatie kunt u de waarden van Key Vault verwijzingen op dezelfde manier openen als de waarden van reguliere app-configuratie sleutels.
+1. Wanneer u de verbinding met de app-configuratie hebt geïnitialiseerd, stelt u de verbinding met Key Vault in door de `ConfigureKeyVault`-methode aan te roepen. Na de initialisatie kunt u de waarden van Key Vault verwijzingen op dezelfde manier openen als de waarden van reguliere app-configuratie sleutels.
 
     Als u dit proces in actie wilt zien, opent u *index. cshtml* in de **weer gaven** > **basismap** . Vervang de inhoud door de volgende code:
 

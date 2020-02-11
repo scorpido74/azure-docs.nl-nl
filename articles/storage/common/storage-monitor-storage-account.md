@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e9ef700e45acc55f476d72883107b0c5c958fa7f
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862829"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116267"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Een opslag account in de Azure Portal bewaken
 
@@ -25,6 +25,8 @@ U wordt aangeraden [Azure monitor voor opslag](../../azure-monitor/insights/stor
 > Er zijn kosten verbonden aan het onderzoeken van bewakings gegevens in de Azure Portal. Zie [Opslaganalyse](storage-analytics.md)voor meer informatie.
 >
 > Azure Files ondersteunt momenteel Opslaganalyse metrische gegevens, maar biedt nog geen ondersteuning voor logboek registratie.
+>
+> Opslag accounts voor Premium-prestaties blok-blobs bieden geen ondersteuning voor metrische gegevens over opslag analyse, maar wel ondersteuning voor logboek registratie. U kunt logboek registratie via een programma inschakelen via de REST API of de client bibliotheek. Als u metrische gegevens wilt weer geven met Premium-Blob-Blob Storage-accounts, kunt u overwegen [Azure Storage metrische gegevens in azure monitor](storage-metrics-in-azure-monitor.md)te gebruiken.
 >
 > Zie [Microsoft Azure Storage controleren, diagnosticeren en problemen oplossen](storage-monitoring-diagnosing-troubleshooting.md)voor meer informatie over het gebruik van Opslaganalyse en andere hulpprogram ma's voor het identificeren, vaststellen en oplossen van problemen met Azure Storage.
 >
@@ -53,7 +55,7 @@ Een standaardset metrische gegevens wordt weer gegeven in grafieken op de Blade 
 U kunt metrische gegevens verzamelen en logboek registratie uitschakelen door de **status** in te stellen op **uit**.
 
 > [!NOTE]
-> Azure Storage gebruikt [tabel opslag](storage-introduction.md#table-storage) om de metrische gegevens voor uw opslag account op te slaan, en slaat de metrische gegevens op in tabellen in uw account. Zie  voor meer informatie. [Hoe metrische gegevens worden opgeslagen](storage-analytics-metrics.md#how-metrics-are-stored).
+> Azure Storage gebruikt [tabel opslag](storage-introduction.md#table-storage) om de metrische gegevens voor uw opslag account op te slaan, en slaat de metrische gegevens op in tabellen in uw account. Zie voor meer informatie [Hoe metrische gegevens worden opgeslagen](storage-analytics-metrics.md#how-metrics-are-stored).
 >
 
 ## <a name="customize-metrics-charts"></a>Grafieken met metrische gegevens aanpassen

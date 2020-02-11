@@ -5,14 +5,14 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 14740e780f6143f19f843891c16b25df761d0b4f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0a4faad8bfe92a5389e0ee440aa3ccc404535955
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931256"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118086"
 ---
-Wanneer u toegang hebt tot het gebruik van de formulier herkenning, ontvangt u een welkomst-e-mail met verschillende koppelingen en bronnen. Gebruik de koppeling ' Azure Portal ' in dat bericht om de Azure Portal te openen en een resource voor een formulier herkenning te maken. Geef in het deel venster **maken** de volgende informatie op:
+Ga naar Azure Portal en [Maak een nieuwe resource voor de herkenner van formulieren](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer). Geef in het deel venster **maken** de volgende informatie op:
 
 |    |    |
 |--|--|

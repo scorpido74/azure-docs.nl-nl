@@ -1,5 +1,5 @@
 ---
-title: OpenSSL configureren voor Linux
+title: OpenSSL voor Linux configureren
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het configureren van OpenSSL voor Linux.
 services: cognitive-services
@@ -10,26 +10,46 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: cadf31dede8ee81323076013d00b9431f597bda6
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: ff8772f7c3c3213c010b0bdbd0d0aa8897404bac
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156485"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119995"
 ---
-# <a name="configure-openssl-for-linux"></a>OpenSSL configureren voor Linux
+# <a name="configure-openssl-for-linux"></a>OpenSSL voor Linux configureren
 
 Wanneer u een Speech SDK-versie vóór 1.9.0 gebruikt, wordt [openssl](https://www.openssl.org) dynamisch geconfigureerd voor de versie van het hostsysteem. In latere versies van de Speech SDK is OpenSSL (versie [1.1.1 b](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html)) statisch gekoppeld aan de kern bibliotheek van de spraak-SDK.
 
-## <a name="troubleshoot-connectivity"></a>Problemen met verbindingen oplossen
-
-Als er verbindings fouten optreden bij het gebruik van de 1.9.0-release van de Speech SDK, moet u ervoor zorgen dat de `ssl/certs` Directory bestaat in `/usr/lib` Directory, die wordt gevonden in het Linux-bestands systeem. Als de `ssl/certs` map *niet bestaat*, controleert u of openssl in uw systeem is geïnstalleerd met behulp van de volgende opdracht:
-
+Controleer of de OpenSSL-certificaten in uw systeem zijn geïnstalleerd om verbinding te garanderen. Een opdracht uitvoeren:
 ```bash
-which openssl
+openssl version -d
 ```
 
-Ga vervolgens naar de map OpenSSL `certs` en kopieer de inhoud van die map naar `/usr/lib/ssl/certs` map. Probeer vervolgens opnieuw om te zien of er verbindings problemen zijn opgelost.
+De uitvoer op systemen op basis van Ubuntu/Debian moet zijn:
+```
+OPENSSLDIR: "/usr/lib/ssl"
+```
+
+Controleer of er `certs` submap onder OPENSSLDIR is. In het bovenstaande voor beeld zou het worden `/usr/lib/ssl/certs`.
+
+* Als er `/usr/lib/ssl/certs` is en deze veel afzonderlijke certificaat bestanden bevat (met `.crt`-of `.pem`-extensie), is er geen verdere actie nodig.
+
+* Als OPENSSLDIR iets anders is dan `/usr/lib/ssl` en/of er één certificaat bundel bestand is in plaats van meerdere afzonderlijke bestanden, moet u een geschikte SSL-omgevings variabele instellen om aan te geven waar de certificaten kunnen worden gevonden.
+
+## <a name="examples"></a>Voorbeelden
+
+- OPENSSLDIR is `/opt/ssl`. Er is `certs` submap met veel `.crt` of `.pem` bestanden.
+Stel de omgevings variabele `SSL_CERT_DIR` in op `/opt/ssl/certs` voordat u een programma uitvoert dat gebruikmaakt van de spraak-SDK. Bijvoorbeeld:
+```bash
+SSL_CERT_DIR=/opt/ssl/certs ./helloworld
+```
+
+- OPENSSLDIR is `/etc/pki/tls`. Er is een certificaat bundel bestand, bijvoorbeeld `ca-bundle.pem` of `ca-bundle.crt`.
+Stel de omgevings variabele `SSL_CERT_FILE` in op `/etc/pki/tls/ca-bundle.pem` voordat u een programma uitvoert dat gebruikmaakt van de spraak-SDK. Bijvoorbeeld:
+```bash
+SSL_CERT_FILE=/etc/pki/tls/ca-bundle.pem ./helloworld
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: 1766b536043d8c404addb1877aa3ef9b57344ef4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722251"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116758"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>machine learning-pijp lijnen plannen met Azure Machine Learning SDK voor python
 
@@ -55,6 +55,13 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 ## <a name="create-a-schedule"></a>Een planning maken
 
 Als u een pijp lijn op een terugkerende basis wilt uitvoeren, maakt u een planning. Een `Schedule` koppelt een pijp lijn, een experiment en een trigger. De trigger kan een`ScheduleRecurrence` zijn met een beschrijving van de wacht tijd tussen uitvoeringen of een Data Store-pad dat een directory specificeert om te bekijken of er wijzigingen zijn. In beide gevallen hebt u de pijp lijn-id en de naam van het experiment nodig om de planning te maken.
+
+Importeer boven aan uw python-bestand de `Schedule`-en `ScheduleRecurrence` klassen:
+
+```python
+
+from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
+```
 
 ### <a name="create-a-time-based-schedule"></a>Een op tijd gebaseerde planning maken
 
@@ -141,3 +148,4 @@ Ga voor meer informatie naar:
 
 * Meer informatie over [pijp lijnen](concept-ml-pipelines.md)
 * Meer informatie over het [verkennen van Azure machine learning met Jupyter](samples-notebooks.md)
+

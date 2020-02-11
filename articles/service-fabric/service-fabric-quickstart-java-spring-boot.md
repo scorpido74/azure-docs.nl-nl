@@ -6,73 +6,56 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c12cd53b55cac48aae3d69506204c9d107e34aa6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eb96989b4a2731e78471b848d690b48352408d1c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464375"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121478"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Snelstartgids: een Java Spring boot-app implementeren op Azure Service Fabric
 
-In deze Quick start ziet u hoe u een Java Spring boot-toepassing implementeert in azure Service Fabric. Azure Service Fabric is een platform voor gedistribueerde systemen voor het implementeren en distribueren van microservices en containers. 
-
-Deze quickstart gebruikt het [Aan de slag](https://spring.io/guides/gs/spring-boot/)-voorbeeld van de Spring-website. Met gebruik van vertrouwde opdrachtregelprogramma’s wordt u in deze snelstart stapsgewijs begeleid bij het implementeren van het Spring Boot-voorbeeld als een Service Fabric-toepassing. Als u klaar bent, werkt het Spring Boot Aan de slag-voorbeeld in Service Fabric.
-
-![Voor beeld van Spring boot Service Fabric](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
-
-In deze snelstartgids leert u de volgende zaken:
-
-* Een Spring Boot-toepassing implementeren in Service Fabric
-* De toepassing implementeren in het lokale cluster
-* De toepassing op meerdere knooppunten uitschalen
-* Failover van de service uitvoeren met geen beschikbaarheid
+In deze Quick Start implementeert u een Java Spring boot-toepassing naar Azure Service Fabric met behulp van vertrouwde opdracht regel Programma's in Linux of MacOS. Azure Service Fabric is een platform voor gedistribueerde systemen voor het implementeren en distribueren van microservices en containers. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-1. Service Fabric-SDK en Service Fabric CLI (opdrachtregelinterface) installeren
+- [Java-omgeving](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) en [Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Service Fabric SDK-& Service Fabric-opdracht regel interface (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Git](https://git-scm.com/downloads)
 
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
-    
-    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+#### <a name="macostabmacos"></a>[MacOS](#tab/macos)
 
-1. [Git installeren](https://git-scm.com/)
-1. Yeoman installeren
+- [Java-omgeving en Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
+- [Service Fabric SDK-& Service Fabric-opdracht regel interface (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
+- [Git](https://git-scm.com/downloads)
 
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-
-    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-1. Java-omgeving instellen
-
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-    
-    b.  [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)
+--- 
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Voer in een terminalvenster de volgende opdracht uit om het Spring Boot Aan de slag-voorbeeld te klonen op de lokale computer.
+Voer in een Terminal venster de volgende opdracht uit om het Spring boot aan de [slag](https://github.com/spring-guides/gs-spring-boot) te klonen met de voor beeld-app naar uw lokale computer.
 
 ```bash
 git clone https://github.com/spring-guides/gs-spring-boot.git
 ```
 
 ## <a name="build-the-spring-boot-application"></a>De Spring Boot-toepassing compileren 
-1. Voer in de directory `gs-spring-boot/complete` de onderstaande opdracht uit om de toepassing te compileren 
+Voer in de map *GS-lente-boot/complete* de onderstaande opdracht uit om de toepassing te bouwen 
 
-    ```bash
-    ./gradlew build
-    ``` 
+```bash
+./gradlew build
+``` 
 
 ## <a name="package-the-spring-boot-application"></a>De Spring Boot-toepassing inpakken 
-1. Voer in de `gs-spring-boot`-map van uw kloon de opdracht `yo azuresfguest` uit. 
+1. Voer in de map *GS-lente-boot* in uw kloon de `yo azuresfguest` opdracht uit. 
 
 1. Voer de volgende details in voor elke prompt.
 
     ![Yeoman vermeldingen voor Spring boot](./media/service-fabric-quickstart-java-spring-boot/yeoman-entries-spring-boot.png)
 
-1. Maak in de map `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` een bestand met de naam `entryPoint.sh`. Voeg het volgende toe aan het bestand `entryPoint.sh`. 
+1. Maak in de map *SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code* een bestand met de naam *entryPoint.sh*. Voeg de volgende code toe aan het *entryPoint.sh* -bestand. 
 
     ```bash
     #!/bin/bash
@@ -91,7 +74,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
        </Resources>
     ```
 
-    De **ServiceManifest.xml** ziet er nu als volgt uit: 
+    De *ServiceManifest.xml* ziet er nu als volgt uit: 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -136,17 +119,17 @@ In dit stadium hebt u een Service Fabric-toepassing voor het Spring Boot Aan de 
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster
     ```
 
-    Het starten van het lokale cluster kan enige tijd duren. Open Service Fabric Explorer op **http://localhost:19080** om te controleren of het cluster volledig naar behoren functioneert. Als de vijf knooppunten in orde zijn, is het lokale cluster actief. 
+    Het starten van het lokale cluster kan enige tijd duren. Als u wilt controleren of het cluster volledig actief is, opent u de Service Fabric Explorer op `http://localhost:19080`. Als de vijf knooppunten in orde zijn, is het lokale cluster actief. 
     
     ![Service Fabric Explorer toont goede knoop punten](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-healthy-nodes.png)
 
-1. Open de map `gs-spring-boot/SpringServiceFabric`.
+1. Open de map *GS-lente-boot/SpringServiceFabric* .
 1. Voer de volgende opdracht uit om verbinding te maken met het lokale cluster.
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
     ```
-1. Voer het `install.sh`-script uit.
+1. Voer het script *install.sh* uit.
 
     ```bash
     ./install.sh
@@ -157,6 +140,8 @@ In dit stadium hebt u een Service Fabric-toepassing voor het Spring Boot Aan de 
     ![Voor beeld van Spring boot Service Fabric](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 U hebt nu toegang tot de Spring Boot-toepassing die werd geïmplementeerd in een Service Fabric-cluster.
+
+Zie voor meer informatie het voor beeld van een Spring boot aan de [slag](https://spring.io/guides/gs/spring-boot/) op de lente-website.
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Toepassingen en services voor schalen in een cluster
 
@@ -207,11 +192,11 @@ Het opnieuw opstarten van een knooppunt kan worden gesimuleerd met behulp van Se
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u de volgende zaken geleerd:
+In deze snelstart hebt u de volgende zaken geleerd:
 
 * Een Spring Boot-toepassing implementeren in Service Fabric
 * De toepassing implementeren in het lokale cluster
-* De toepassing op meerdere knooppunten uitschalen
+* De toepassing uitschalen over meerdere knooppunten
 * Failover van de service uitvoeren met geen beschikbaarheid
 
 Meer informatie over het werken met Java-apps in Service Fabric vindt u in de zelfstudie voor Java-apps.

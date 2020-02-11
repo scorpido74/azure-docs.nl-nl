@@ -3,12 +3,12 @@ title: Bestanden en mappen herstellen vanuit een back-up van Azure VM
 description: In dit artikel vindt u informatie over het herstellen van bestanden en mappen vanaf een herstel punt van een virtuele Azure-machine.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 86a46e606e9425cf4951817ca3afa23fe57dae52
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294079"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114320"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -56,6 +56,8 @@ Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de v
 7. Klik vanaf de download locatie (meestal de map down Loads) met de rechter muisknop op het uitvoer bare bestand of script en voer dit uit met beheerders referenties. Wanneer u hierom wordt gevraagd, typt u het wacht woord of plakt u het wacht woord uit het geheugen en drukt u op **Enter**. Zodra het geldige wacht woord is ingevoerd, maakt het script verbinding met het herstel punt.
 
     ![Menu bestands herstel](./media/backup-azure-restore-files-from-vm/executable-output.png)
+
+8. Voor Linux-machines wordt een python-script gegenereerd. Eén moet het script downloaden en kopiëren naar de relevante/compatibele Linux-server. Mogelijk moet u de machtigingen wijzigen om deze uit te voeren met ```chmod +x <python file name>```. Voer vervolgens het python-bestand uit met ```./<python file name>```.
 
 Raadpleeg de sectie [toegangs vereisten](#access-requirements) om te controleren of het script is uitgevoerd.
 
@@ -188,13 +190,13 @@ In Linux moet het besturings systeem van de computer die wordt gebruikt om besta
 
 Het script vereist ook python-en bash-onderdelen om het herstel punt veilig uit te voeren en te verbinden.
 
-|Component | Versie  |
+|Onderdeel | Version  |
 | --------------- | ---- |
 | bash | 4 en hoger |
 | python | 2.6.6 en hoger  |
 | TLS | 1,2 moet worden ondersteund  |
 
-## <a name="access-requirements"></a>Vereisten voor toegang
+## <a name="access-requirements"></a>Toegangs vereisten
 
 Als u het script uitvoert op een computer met beperkte toegang, controleert u of er toegang is tot:
 

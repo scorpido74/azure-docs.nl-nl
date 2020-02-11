@@ -2,13 +2,13 @@
 title: 'Sjabloon functies: bronnen'
 description: Beschrijft de functies in een Azure Resource Manager-sjabloon gebruikt voor het ophalen van waarden over resources.
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: cfcc9ff3af33fe9de813d8a31b7d102f00725ce4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/10/2020
+ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048804"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120538"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Functies van de resource voor Azure Resource Manager-sjablonen
 
@@ -752,14 +752,14 @@ Het vorige voorbeeld retourneert een object in de volgende indeling:
 resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Retourneert de unieke id van een resource. U kunt deze functie gebruiken als de resourcenaam van de niet eenduidig of niet ingericht binnen dezelfde sjabloon is.
+Retourneert de unieke id van een resource. U kunt deze functie gebruiken als de resourcenaam van de niet eenduidig of niet ingericht binnen dezelfde sjabloon is. De notatie van de geretourneerde id varieert, afhankelijk van of de implementatie plaatsvindt bij het bereik van een resource groep, een abonnement, een beheer groep of een Tenant.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nee |tekenreeks (In GUID-indeling) |Standaard wordt het huidige abonnement. Deze waarde opgeven wanneer u nodig hebt om op te halen van een resource in een ander abonnement. |
-| resourceGroupName |Nee |tekenreeks |Standaardwaarde is de huidige resourcegroep. Deze waarde opgeven wanneer u nodig hebt om op te halen van een resource in een andere resourcegroep. |
+| resourceGroupName |Nee |tekenreeks |Standaardwaarde is de huidige resourcegroep. Deze waarde opgeven wanneer u nodig hebt om op te halen van een resource in een andere resourcegroep. Geef deze waarde alleen op wanneer u implementeert voor het bereik van een resource groep. |
 | resourceType |Ja |tekenreeks |Het type resource, met inbegrip van de naamruimte van de resource-provider. |
 | resourceName1 |Ja |tekenreeks |De naam van de resource. |
 | resourceName2 |Nee |tekenreeks |Volgend resource naam segment, indien nodig. |
@@ -768,7 +768,7 @@ Ga door met het toevoegen van resource namen als para meters wanneer het resourc
 
 ### <a name="return-value"></a>Retourwaarde
 
-De resource-ID wordt geretourneerd in de volgende indeling:
+Wanneer de sjabloon wordt geïmplementeerd in het bereik van een resource groep, wordt de resource-ID geretourneerd met de volgende indeling:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -778,6 +778,12 @@ Bij gebruik in een [implementatie op abonnements niveau](deploy-to-subscription.
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+Bij gebruik in de [implementatie van een beheer groep](deploy-to-management-group.md) of implementatie op Tenant niveau, wordt de resource-id in de volgende indeling geretourneerd:
+
+```json
+/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
 Als u de ID in andere indelingen wilt ophalen, raadpleegt u:
@@ -890,7 +896,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | sameRGOutput | Tekenreeks | /Subscriptions/{Current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | Tekenreeks | /Subscriptions/{Current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |

@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b24ad492f622fa9a3e494c7ead724fb3980f6668
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066848"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121362"
 ---
 # <a name="how-provisioning-works"></a>Hoe inrichting werkt
 
@@ -86,6 +86,8 @@ U kunt bereik filters gebruiken om op kenmerken gebaseerde regels te definiëren
 ### <a name="b2b-guest-users"></a>B2B-gebruikers (gast)
 
 Het is mogelijk de Azure AD User Provisioning Service te gebruiken om B2B-gebruikers (of gast) in te richten in azure AD naar SaaS-toepassingen. Om B2B-gebruikers zich echter aan te melden bij de SaaS-toepassing met behulp van Azure AD, moet voor de SaaS-toepassing de mogelijkheid voor eenmalige aanmelding op basis van SAML op een specifieke manier zijn geconfigureerd. Zie voor meer informatie over het configureren van SaaS-toepassingen voor het ondersteunen van aanmeldingen van B2B-gebruikers [SaaS-apps configureren voor B2B-samen werking](../b2b/configure-saas-apps.md).
+
+Houd er rekening mee dat de userPrincipalName voor een gast gebruiker vaak wordt opgeslagen als "alias # EXT #@domain.com". Wanneer de userPrincipalName is opgenomen in uw kenmerk toewijzingen als bron kenmerk, wordt het #EXT # verwijderd uit de userPrincipalName. Als u wilt dat de #EXT # aanwezig is, vervangt u userPrincipalName door originalUserPrincipalName als bron kenmerk. 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Inrichtings cycli: begin en incrementeel
 

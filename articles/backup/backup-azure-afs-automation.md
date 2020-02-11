@@ -3,12 +3,12 @@ title: Back-up maken van Azure Files met Power shell
 description: In dit artikel vindt u informatie over het maken van een back-up van Azure Files met behulp van de Azure Backup-service en Power shell.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: a80589fb45937949b3612e12139ab1615bc1620d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086940"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120516"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Back-up maken van Azure Files met Power shell
 
@@ -250,9 +250,9 @@ testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 P
 
 ## <a name="important-notice---backup-item-identification-for-afs-backups"></a>Belang rijke kennisgeving-back-upitem-id voor AFS-back-ups
 
-In deze sectie vindt u een overzicht van de wijzigingen in het back-upitem ophalen voor AFS-back-ups van de preview-versie tot GA.
+Deze sectie bevat een overzicht van een belang rijke wijziging in de voor bereiding op AFS-back-ups.
 
-Bij het inschakelen van de back-up voor AFS levert de gebruiker de beschrijvende bestands share naam van de klant op als de naam van de entiteit en wordt er een back-upitem gemaakt. De naam van het back-upitem is een unieke id die is gemaakt door Azure Backup service. Normaal gesp roken is de id een gebruiks vriendelijke naam. Maar er is een wijziging aangebracht in de manier waarop Azure-Services een Azure-bestands share intern identificeren. Dit betekent dat de unieke naam van het back-upitem voor AFS Backup een GUID is en geen relatie heeft met de beschrijvende naam van de klant. Als u de unieke naam van elk item wilt weten, voert u de ```Get-AzRecoveryServicesBackupItem``` opdracht uit met de relevante filters voor backupManagementType en WorkloadType om alle relevante items te verkrijgen en bekijkt u vervolgens het veld naam in het geretourneerde PS-object/-antwoord. Het wordt altijd aanbevolen om items in een lijst weer te geven en vervolgens hun unieke naam op te halen uit het veld naam in antwoord. Gebruik deze waarde om de items te filteren met de naam parameter. Gebruik anders de para meter FriendlyName om het item op te halen met de beschrijvende naam/id van de klant.
+Bij het inschakelen van de back-up voor AFS levert de gebruiker de beschrijvende bestands share naam van de klant op als de naam van de entiteit en wordt er een back-upitem gemaakt. De naam van het back-upitem is een unieke id die is gemaakt door Azure Backup service. Normaal gesp roken is de id een gebruiks vriendelijke naam. Maar om het belang rijk scenario van zacht verwijderen te verwerken, waarbij een bestands share kan worden verwijderd en een andere bestands share met dezelfde naam kan worden gemaakt, is de unieke identiteit van de Azure-bestands share nu een ID in plaats van beschrijvende naam van de klant. Als u de unieke identiteit/naam van elk item wilt weten, voert u de ```Get-AzRecoveryServicesBackupItem``` opdracht uit met de relevante filters voor backupManagementType en WorkloadType om alle relevante items op te halen en bekijkt u vervolgens het veld naam in het geretourneerde PS-object/-antwoord. Het wordt altijd aanbevolen om items in een lijst weer te geven en vervolgens hun unieke naam op te halen uit het veld naam in antwoord. Gebruik deze waarde om de items te filteren met de naam parameter. Gebruik anders de para meter FriendlyName om het item op te halen met de beschrijvende naam/id van de klant.
 
 > [!WARNING]
 > Zorg ervoor dat de PS-versie is bijgewerkt naar de minimale versie van AZ. Recovery Services 2.6.0 voor AFS-back-ups. Met deze versie is het filter ' FriendlyName ' beschikbaar voor de opdracht ```Get-AzRecoveryServicesBackupItem```. Geef de naam van de Azure-bestands share door aan de FriendlyName-para meter. Als u de naam van de Azure-bestands share doorgeeft aan de naam parameter, genereert deze versie een waarschuwing om deze beschrijvende naam door te geven aan de beschrijvende naam parameter. Als u deze minimale versie niet installeert, kan dit leiden tot een fout in bestaande scripts. Installeer de minimale versie van PS met de volgende opdracht.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a5e92ccf1104f36b3f2b045f9922158b1f7330
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: d7d8a7881c00427023e5f174461b3d8b24d83444
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064138"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121446"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelf studie: werk plek op Facebook configureren voor automatische gebruikers inrichting
 
@@ -43,7 +43,9 @@ Als uw werk plek is geïntegreerd in quarantaine, moet u opnieuw een geldig toke
 
 https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
 
- 
+#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Hoe kan ik zien of mijn toepassing is gemigreerd? 
+Wanneer uw toepassing wordt gemigreerd, wordt de banner in de autorisatie sectie over de wijzigingen van de upcommie verwijderd en wordt het veld geheim token vervangen door een knop met een blauwe machtiging. 
+
 #### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>De sectie beheerders referenties is grijs weer gegeven in mijn toepassing en kan niet worden opgeslagen. Hoe komt dat?
 De sectie beheerders referenties is vergrendeld voor bestaande werk plek-klanten. Wanneer uw Tenant is gemigreerd naar de nieuwe werkplek toepassing, kunt u de sectie beheerders referenties opnieuw bijwerken. Als u niet kunt wachten, kunt u de bovenstaande URL gebruiken om uw toepassing te bewerken. 
 

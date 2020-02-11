@@ -1,25 +1,18 @@
 ---
 title: Bronnen voor ontwikkel aars-Language Understanding
-titleSuffix: Azure Cognitive Services
-description: Ontwikkel aars hebben zowel REST-Api's als Sdk's voor Language Understanding.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 01/22/2020
-ms.author: diberry
-ms.openlocfilehash: 2f351ac570080c83e78697bbca94340bb96cbcf7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+description: Sdk's, REST Api's, CLI, helpen u bij het ontwikkelen van Language Understanding-apps (LUIS) in uw programmeer taal. Beheer uw Azure-resources en LUIS-voor spellingen.
+ms.topic: reference
+ms.date: 02/09/2020
+ms.openlocfilehash: ed869b7022e43b8ecf8c1f05bb3c6f0919076818
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716131"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119974"
 ---
-# <a name="developer-resources-for-language-understanding"></a>Bronnen voor ontwikkel aars voor Language Understanding
+# <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK-, REST-en CLI-ontwikkelaars bronnen voor Language Understanding (LUIS)
 
-Ontwikkel aars kunnen zowel REST-Api's als Sdk's voor Language Understanding gebruiken.
+Sdk's, REST Api's, CLI, helpen u bij het ontwikkelen van Language Understanding-apps (LUIS) in uw programmeer taal. Beheer uw Azure-resources en LUIS-voor spellingen. 
 
 ## <a name="azure-resource-management"></a>Azure-resource beheer
 
@@ -31,11 +24,17 @@ Zoek naar de referentie documentatie op basis van het hulp programma:
 
 * [PowerShell voor Azure RM](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
 
+
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>Aanvragen voor ontwerpen Language Understanding en voor spellingen
 
-De Language Understanding-service wordt geopend vanuit een Azure-resource die u moet maken. Er zijn twee resources: ontwerp-en Voorspellings eindpunt resources. Met beide resources kunt u uw LUIS-resources beheren.
+De Language Understanding-service wordt geopend vanuit een Azure-resource die u moet maken. Er zijn twee resources:
+
+* Gebruik de **ontwerp** resource voor training voor het maken, bewerken, trainen en publiceren.
+* Gebruik de voor **Spelling** voor runtime om de tekst van de gebruiker te verzenden en een voor spelling te ontvangen.
 
 Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
+
+Gebruik [Cognitive Services voorbeeld code](https://github.com/Azure-Samples/cognitive-services-quickstart-code) om de meest voorkomende taken te leren en te gebruiken.
 
 ### <a name="rest-apis"></a>REST API’s
 
@@ -77,7 +76,7 @@ Bot Framework biedt [verschillende hulpprogram ma's](https://github.com/microsof
 * [Luis cli](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) : uw Luis.ai-toepassingen maken en beheren
 * [Verzen ding](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch): bovenliggende en onderliggende apps beheren
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) : automatisch een back- C#up van/typescript-klassen voor uw Luis-intenties en entiteiten genereren.
-* [Bot-emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) : een bureaublad toepassing die bot-ontwikkel aars in staat stelt om bots te testen en op te sporen met behulp van de bot Framework SDK
+* [Bot Framework-emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) : een bureaublad toepassing die bot-ontwikkel aars in staat stelt om bots te testen en op te sporen met behulp van de bot Framework SDK
 
 
 ## <a name="next-steps"></a>Volgende stappen

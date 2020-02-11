@@ -3,19 +3,19 @@ title: 'Snelstartgids: aangepaste spraak assistent, C# (UWP)-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: In dit artikel maakt u een C# universeel Windows-platform-toepassing (UWP) met behulp van de Cognitive Services speech Software Development Kit (SDK). U verbindt uw client toepassing met een eerder gemaakte bot-Framework-bot die is geconfigureerd voor gebruik van het directe lijn spraak kanaal. De toepassing is gebouwd met het Speech SDK NuGet-pakket en micro soft Visual Studio 2019.
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: travisw
-ms.openlocfilehash: 25d74b640f1bf567792c317626da0178ead7e34f
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: af9395b8f75a9097d4449571fd54be6259a7b9f3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816222"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119770"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-uwp"></a>Snelstartgids: een spraak assistent maken met de spraak-SDK, UWP
 

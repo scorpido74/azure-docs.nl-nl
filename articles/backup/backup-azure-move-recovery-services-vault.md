@@ -4,12 +4,12 @@ description: Instructies voor het verplaatsen van de Recovery Services-kluis in 
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 7d0a6c47fa08774161d3a2b7507cdfecaf8c7197
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: fed42c578da2e4f27f42e11d5ac67d698bbcd939
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172893"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120726"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Een Recovery Services kluis verplaatsen over Azure-abonnementen en-resource groepen
 
@@ -18,6 +18,10 @@ In dit artikel wordt uitgelegd hoe u een Recovery Services kluis kunt verplaatse
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 
 Resource verplaatsing voor Recovery Services kluis wordt ondersteund in Australië-oost, Australië-Zuid-Oost, Canada-centraal, Canada-oost, Zuid-Azië-oost, Azië-oost, centraal VS, Noord-Centraal VS, VS-Oost, Oost-VS2, Zuid-Centraal VS, West-Centraal VS, West-Centraal VS2, VS-West, Centraal-India, India-zuid, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Europa-noord, Europa-west, Zuid-Afrika-noord, Zuid-Afrika-west, UK-zuid en UK-west.
+
+## <a name="unsupported-regions"></a>Niet-ondersteunde regio's
+
+Frankrijk-centraal, Frankrijk-zuid, Duitsland-noordoost, Duitsland-centraal, US Gov-Iowa, China-noord, China North2, China-oost, China Oost2
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Vereisten voor het verplaatsen van Recovery Services kluis
 
@@ -44,7 +48,7 @@ Resource verplaatsing voor Recovery Services kluis wordt ondersteund in Australi
 
 Een Recovery Services-kluis en de bijbehorende resources verplaatsen naar een andere resource groep
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Open de lijst met **Recovery Services kluizen** en selecteer de kluis die u wilt verplaatsen. Wanneer het kluis dashboard wordt geopend, wordt het weer gegeven zoals in de volgende afbeelding.
 
    ![Service kluis herstellen openen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -73,7 +77,7 @@ Een Recovery Services-kluis en de bijbehorende resources verplaatsen naar een an
 
 U kunt een Recovery Services kluis en de bijbehorende resources naar een ander abonnement verplaatsen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Open de lijst met Recovery Services kluizen en selecteer de kluis die u wilt verplaatsen. Wanneer het kluis dashboard wordt geopend, wordt het weer gegeven zoals in de volgende afbeelding.
 
     ![Service kluis herstellen openen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -128,7 +132,7 @@ Als u een Recovery Services kluis wilt verplaatsen naar een andere resource groe
 az resource move --destination-group <destinationResourceGroupName> --ids <VaultResourceID>
 ```
 
-Als u wilt verplaatsen naar een nieuw abonnement, bieden de `--destination-subscription-id` parameter.
+Als u wilt overstappen op een nieuw abonnement, geeft u de para meter `--destination-subscription-id` op.
 
 ## <a name="post-migration"></a>Na de migratie
 

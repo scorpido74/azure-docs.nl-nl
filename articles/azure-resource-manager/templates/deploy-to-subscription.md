@@ -2,13 +2,13 @@
 title: Resources implementeren voor het abonnement
 description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure Resource Manager sjabloon. Ook wordt uitgelegd hoe u resources kunt implementeren in het bereik van Azure-abonnementen.
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: b11668466fe3954dc5bc90435d5dfd016ca9791c
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 02/10/2020
+ms.openlocfilehash: c53d274303a203a427a36f8f729f6b43cee44e40
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086731"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120610"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 
@@ -86,8 +86,22 @@ Voor elke implementatie naam is de locatie onveranderbaar. U kunt geen implement
 Voor implementaties op abonnements niveau zijn er enkele belang rijke aandachtspunten bij het gebruik van sjabloon functies:
 
 * De functie [resourceGroup ()](template-functions-resource.md#resourcegroup) wordt **niet** ondersteund.
-* De functie [resourceId ()](template-functions-resource.md#resourceid) wordt ondersteund. Gebruik deze om de resource-ID op te halen voor resources die worden gebruikt bij implementaties op abonnements niveau. U kunt bijvoorbeeld de resource-ID voor een beleids definitie ophalen met `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`. Of gebruik de functie [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) om de resource-id voor een resource op abonnements niveau op te halen.
 * De functies [Reference ()](template-functions-resource.md#reference) en [List ()](template-functions-resource.md#list) worden ondersteund.
+* De functie [resourceId ()](template-functions-resource.md#resourceid) wordt ondersteund. Gebruik deze om de resource-ID op te halen voor resources die worden gebruikt bij implementaties op abonnements niveau. Geef geen waarde op voor de para meter van de resource groep.
+
+  Als u bijvoorbeeld de resource-ID voor een beleids definitie wilt ophalen, gebruikt u:
+  
+  ```json
+  resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
+  ```
+  
+  De geretourneerde Resource-ID heeft de volgende indeling:
+
+  ```json
+  /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
+
+  Of gebruik de functie [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) om de resource-id voor een resource op abonnements niveau op te halen.
 
 ## <a name="create-resource-groups"></a>Resource groepen maken
 
@@ -98,7 +112,7 @@ Met de volgende sjabloon maakt u een lege resource groep.
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgName": {
       "type": "string"
@@ -126,7 +140,7 @@ Gebruik het [element Copy](create-multiple-instances.md) met resource groepen om
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgNamePrefix": {
       "type": "string"
@@ -167,7 +181,7 @@ In het volgende voor beeld wordt een resource groep gemaakt en wordt een opslag 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgName": {
       "type": "string"

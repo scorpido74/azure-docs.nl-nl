@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1ed80ad87d81c2ec1bdfe50e9cd4556f141507b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c91b9ffc9e3487e492c91cb0f5825d0b725f9410
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907472"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120093"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Verzamelingen maken in de portal mijn apps
 
@@ -30,7 +30,7 @@ Uw gebruikers kunnen de portal mijn apps gebruiken om de Cloud toepassingen te b
 > [!NOTE]
 > In dit artikel wordt beschreven hoe een beheerder verzamelingen kan inschakelen en maken. Zie voor informatie over het gebruik van de portals en verzamelingen van mijn apps [Access en verzamelingen gebruiken](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
 
-## <a name="enable-my-apps-preview-features"></a>Preview-functies voor mijn apps inschakelen
+## <a name="enable-the-latest-my-apps-features"></a>De nieuwste functies van mijn apps inschakelen
 
 1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als gebruikers beheerder of globale beheerder.
 
@@ -39,8 +39,8 @@ Uw gebruikers kunnen de portal mijn apps gebruiken om de Cloud toepassingen te b
 3. Onder preview- **functies voor gebruikers onderdelen**selecteert u de **voor beeld-instellingen voor gebruikers onderdelen beheren**.
 
 4. Onder **gebruikers kunnen preview-functies voor mijn apps gebruiken**. Kies een van de volgende opties:
-   * **Geselecteerd** : Hiermee schakelt u Preview-functies in voor een specifieke groep. Gebruik de optie **een groep selecteren** om de groep te selecteren waarvoor u Preview-functies wilt inschakelen.  
-   * **Alles** : Hiermee schakelt u Preview-functies in voor alle gebruikers.
+   * **Geselecteerd** : Hiermee schakelt u de functies voor een specifieke groep in. Gebruik de optie **een groep selecteren** om de groep te selecteren waarvoor u de functies wilt inschakelen.  
+   * **Alle** : Hiermee schakelt u de functies voor alle gebruikers in.
 
 > [!NOTE]
 > Voor het openen van de portal mijn apps kunnen gebruikers de koppeling `https://myapps.microsoft.com` gebruiken, of de aangepaste koppeling voor uw organisatie, zoals `https://myapps.microsoft.com/contoso.com`. Nadat u de nieuwe ervaring voor mijn apps hebt ingeschakeld, wordt de banner **update mijn toepassingen is beschikbaar** weer gegeven aan de bovenkant van de pagina mijn apps en kunnen gebruikers **proberen** de nieuwe ervaring weer te geven. Gebruikers kunnen de nieuwe ervaring niet meer gebruiken door **Ja** te selecteren in het vaandel nieuwe ervaring aan de bovenkant van de pagina te **laten staan** .

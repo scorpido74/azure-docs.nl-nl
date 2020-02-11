@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: 06a247c9e65ce386034a50650e46994bbbe9074a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e4f27e582e6b920e9de068fe2c3270af19ad8a17
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152167"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122420"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Voor beeld: een aangepaste vaardigheid maken met behulp van python
 
@@ -57,7 +57,7 @@ De Azure Functions-projectsjabloon in Visual Studio Code maakt een project dat k
 
 Het functie-appproject wordt in een nieuwe werkruimte gemaakt. Het project bevat de configuratiebestanden [host.json](../azure-functions/functions-host-json.md) en [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file), plus eventuele taalspecifieke projectbestanden. 
 
-Er wordt ook een nieuwe HTTP-geactiveerde functie gemaakt in de map **samen voegen** van het functie-app-project. Hierin ziet u een bestand met de naam '\__init__. py ' met deze inhoud:
+Er wordt ook een nieuwe HTTP-geactiveerde functie gemaakt in de map **samen voegen** van het functie-app-project. Hierin wordt een bestand met de naam '\_\_init__. py ' weer met deze inhoud:
 
 ```py
 import logging
@@ -264,7 +264,7 @@ Nu u een nieuwe aangepaste vaardigheid hebt, kunt u deze toevoegen aan uw vaardi
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Gefeliciteerd! U hebt uw eerste aangepaste vaardigheid gemaakt. U kunt nu hetzelfde patroon volgen om uw eigen aangepaste functionaliteit toe te voegen. Klik op de volgende koppelingen voor meer informatie.
+Gefeliciteerd. U hebt uw eerste aangepaste vaardigheid gemaakt. U kunt nu hetzelfde patroon volgen om uw eigen aangepaste functionaliteit toe te voegen. Klik op de volgende koppelingen voor meer informatie.
 
 + [Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Een aangepaste vaardigheid toevoegen aan een AI-verrijkings pijplijn](cognitive-search-custom-skill-interface.md)

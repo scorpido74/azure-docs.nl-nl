@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1d244d7b62fcfefeec6f628f473274ae982bf4d8
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024276"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120224"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problemen met & beperkingen van Azure Cloud Shell oplossen
 
@@ -28,6 +28,11 @@ Bekende oplossingen voor het oplossen van problemen in Azure Cloud Shell zijn on
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-troubleshooting"></a>Algemene probleem oplossing
+
+### <a name="error-running-azuread-cmdlets-in-powershell"></a>Fout bij het uitvoeren van AzureAD-cmdlets in Power shell
+
+- **Details**: wanneer u AzureAD-cmdlets uitvoert, zoals `Get-AzureADUser` in Cloud shell, ziet u mogelijk een fout bericht: `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`. 
+- **Oplossing**: voer de `Connect-AzureAD`-cmdlet uit. Voorheen heeft Cloud Shell deze cmdlet automatisch uitgevoerd tijdens het opstarten van Power shell. De cmdlet wordt niet meer automatisch uitgevoerd om de start tijd te versnellen. U kunt ervoor kiezen om het vorige gedrag te herstellen door `Connect-AzureAD` toe te voegen aan het $PROFILE-bestand in Power shell.
 
 ### <a name="early-timeouts-in-firefox"></a>Vroege time-outs in FireFox
 
@@ -117,7 +122,7 @@ Cloud Shell ondersteunt de nieuwste versies van de volgende browsers:
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="usage-limits"></a>Gebruiksbeperkingen
+### <a name="usage-limits"></a>Gebruiks limieten
 
 Cloud Shell is bedoeld voor interactieve use-cases. Als gevolg hiervan worden langlopende niet-interactieve sessies beëindigd zonder dat dit wordt gewaarschuwd.
 
