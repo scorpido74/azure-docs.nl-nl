@@ -38,5 +38,8 @@
     - name: Problemen met Azure FarmBeats oplossen
       href: troubleshoot-azure-farmbeats.md
 - name: Naslaginformatie
-  items: null
-  href: references-for-azure-farmbeats.md
+  items:
+    - name: Naslaginformatie
+      href: references-for-azure-farmbeats.md
+    - name: REST-API
+      href: rest-api-in-azure-farmbeats.md

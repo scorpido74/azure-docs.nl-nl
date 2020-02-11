@@ -6,15 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/29/2020
+ms.date: 02/09/2020
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 81083a9d94f782201a8eb765ac1f88093c0337c4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c6dd2e9ce01205b34b95fa224e8bd16d21588b70
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024089"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114255"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
@@ -167,7 +167,7 @@ Ga als volgt te werk om de verbinding van een machine met Azure Arc voor servers
 
     Als u een script wilt maken voor het verwijderen van de installatie, kunt u het volgende voor beeld gebruiken, waarmee de product code wordt opgehaald en de agent wordt verwijderd met behulp van de Msiexec. exe-opdracht regel `msiexec /x {Product Code}`. Dit doet u als volgt:  
     
-    a. Open de REGI ster-editor.  
+    a. Open de register-editor.  
     b. Zoek onder register sleutel `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`naar de GUID van de product code en kopieer deze.  
     c. U kunt de agent vervolgens verwijderen met behulp van Msiexec.
 
@@ -188,5 +188,6 @@ Ga als volgt te werk om de verbinding van een machine met Azure Arc voor servers
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Een beleid toewijzen aan verbonden computers](../../governance/policy/assign-policy-portal.md)
+- Meer informatie over het beheren van uw machine met [Azure Policy](../../governance/policy/overview.md), voor zaken als VM- [gast configuratie](../../governance/policy/concepts/guest-configuration.md), moet u controleren of de computer rapporteert aan de verwachte log Analytics-werk ruimte, de bewaking inschakelen met [Azure monitor met vm's](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)en nog veel meer.
+
+- Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u het besturings systeem en de workloads die worden uitgevoerd op de machine proactief wilt bewaken, beheren met Automation-runbooks of-oplossingen, zoals Updatebeheer, of andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-intro.md)gebruiken.
