@@ -110,6 +110,10 @@
               href: microsoft-compute-sizeselector.md
             - name: Gebruikersnaamveld
               href: microsoft-compute-usernametextbox.md
+        - name: Beheerde identiteit
+          items:
+            - name: IdentitySelector
+              href: microsoft-managedidentity-identityselector.md
         - name: Netwerk
           items:
             - name: OpenbaarIPAdresCombo

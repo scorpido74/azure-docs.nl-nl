@@ -25,6 +25,9 @@
         - name: Geautomatiseerd ML-experiment maken
           displayName: 'automl, automated, auto ml, portal, ui'
           href: tutorial-first-experiment-automated-ml.md
+        - name: De vraag voorspellen met geautomatiseerde ML (gegevens over het gebruik van deelfietsen)
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-automated-ml-forecast.md
     - name: Python-SDK
       items:
         - name: Uw eerste ML-experiment maken
