@@ -14,10 +14,10 @@ ms.date: 01/17/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76270859"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Eigendom van de facturering van een Azure-abonnement overdragen aan een ander account
@@ -34,7 +34,7 @@ Als u een EA-klant (Enterprise Agreement) bent, kan uw ondernemingsbeheerder het
 
 1. Zoek naar **kostenbeheer en facturering**.
 
-   ![Schermopname van zoekopdracht in de Azure-portal](./media/billing-subscription-transfer/billing-search-cost-management-billing.png)
+   ![Schermopname van de zoekopdracht in de Azure-portal](./media/billing-subscription-transfer/billing-search-cost-management-billing.png)
 
 1. Selecteer in het linkerdeelvenster **Abonnementen**. Afhankelijk van de toegangsmogelijkheden moet u mogelijk een factureringsbereik en vervolgens **Abonnementen** of **Azure-abonnementen** selecteren.
 
@@ -86,7 +86,7 @@ Voor Visual Studio- en Microsoft Partner Network-abonnementen geldt een maandeli
 
 ## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>Eigendom van facturering overdragen voor EA-abonnementen (Enterprise Agreement)
 
-De ondernemingsbeheerder kan het eigendom van abonnementen overdragen tussen accounts in een inschrijving. Zie [account eigenaar wijzigen](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) in de EA-portal voor meer informatie.
+De ondernemingsbeheerder kan het eigendom van abonnementen overdragen tussen accounts in een inschrijving. Zie [Accounteigenaar wijzigen](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) in de EA-portal voor meer informatie.
 
 ## <a name="next-steps-after-accepting-billing-ownership"></a>Volgende stappen na het accepteren van het eigendom van facturering
 
@@ -190,7 +190,7 @@ Zelfs als de [RBAC-toewijzingen (op rollen gebaseerd toegangsbeheer)](../../role
 
 Als ontvangers de toegang tot hun resources willen beperken, moeten ze overwegen om de geheimen bij te werken die zijn gekoppeld aan de service. De meeste resources kunnen worden bijgewerkt door de volgende stappen uit te voeren:
 
-  1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+  1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
   2. Selecteer in het Hub-menu **Alle resources**.
   3. Selecteer de resource.
   4. Klik op de resourcepagina op **Instellingen**. Hier kunt u bestaande geheimen weergeven en bijwerken.
@@ -224,7 +224,7 @@ Deze fout wordt weergegeven wanneer u een Microsoft Azure Plan-abonnement probee
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 

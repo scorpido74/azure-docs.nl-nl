@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: 0f413d38565202d379c81570b5cb169c2ed8effe
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987822"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Uw Microsoft Azure-factuur weergeven en downloaden
@@ -50,7 +50,7 @@ Er kunnen verschillende redenen voor zijn dat u geen factuur ziet:
 
 ## <a name="download-invoices-in-the-azure-portal"></a>Facturen downloaden in de Azure-portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek naar *Kostenbeheer en facturering*.
 1. Afhankelijk van uw toegang moet u mogelijk een factureringsrekening of factureringsprofiel selecteren.
 1. Selecteer **Facturen** onder **Facturering** in het menu aan de linkerkant.
@@ -87,51 +87,51 @@ Volg de voorgaande stappen om u af te melden voor ontvangst van uw factuur via e
 <!-- Does following section apply to MPA too? -->
 ## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Facturen voor uw Microsoft-klantovereenkomst ontvangen via e-mail
 
-Als u een facturerings account voor de micro soft-klant overeenkomst hebt, kunt u zich aanmelden om uw factuur in een e-mail bericht op te halen. Alle gebruikers met een rol van eigenaar, bijdrager, lezer of factuur beheerder in een facturerings profiel ontvangen hun factuur in een e-mail bericht. 
+Als u een factureringsaccount voor een Microsoft-klantovereenkomst hebt, kunt u zich aanmelden om uw factuur via e-mail te ontvangen. Alle gebruikers met de rol van eigenaar, inzender, lezer of factuurbeheerder in een factureringsprofiel ontvangen hun factuur via een e-mailbericht. 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek naar **Kostenbeheer en facturering**.
 
    ![Schermopname van zoekopdracht in portal naar abonnementen](./media/download-azure-invoice/search-cmb.png)
 
-1. Selecteer **facturerings profielen** aan de linkerkant. Selecteer in de lijst facturerings profielen een facturerings profiel om de facturen in het e-mail bericht op te halen.
+1. Selecteer aan de linkerkant de optie **Factureringsprofielen**. Selecteer in de lijst met factureringsprofielen een factureringsprofiel om de bijbehorende facturen per e-mail te ontvangen.
 
-   [Scherm opname van ![die de lijst met facturerings profielen bevat](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Schermopname met lijst van factureringsprofielen](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
-1. Selecteer **Eigenschappen** aan de linkerkant en selecteer vervolgens **e-mail factuur voorkeur bijwerken**.
+1. Selecteer **Eigenschappen** aan de linkerkant en selecteer vervolgens **Voorkeur voor e-facturen bijwerken**.
 
-   [Scherm opname van ![die de lijst met facturerings profielen bevat](./media/download-azure-invoice/mca-select-update-email-preferences.png)](./media/download-azure-invoice/mca-select-update-email-preferences.png#lightbox)
+   [![Schermopname met lijst van factureringsprofielen](./media/download-azure-invoice/mca-select-update-email-preferences.png)](./media/download-azure-invoice/mca-select-update-email-preferences.png#lightbox)
 
-1. Selecteer **opt in** en klik vervolgens op **bijwerken**.
+1. Selecteer **Aanmelden** en klik vervolgens op **Bijwerken**.
 
-   [Scherm opname van ![die de lijst met facturerings profielen bevat](./media/download-azure-invoice/mca-select-email-opt-in.png)](./media/download-azure-invoice/mca-select-email-opt-in.png#lightbox)
+   [![Schermopname met lijst van factureringsprofielen](./media/download-azure-invoice/mca-select-email-opt-in.png)](./media/download-azure-invoice/mca-select-email-opt-in.png#lightbox)
 
 ## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Meld u af voor ontvangst van uw Microsoft-klantovereenkomst via e-mail
 
-Volg de voor gaande stappen om u af te melden bij het ophalen van uw factuur via e-mail. Klik vervolgens op **opt-out**. Alle gebruikers met een rol eigenaar, bijdrager, lezer of beheerder van de Manager worden bij het ophalen van de factuur bij e-mail afgemeld. 
+Volg de voorgaande stappen om u af te melden voor ontvangst van uw factuur via e-mail en klik op **Afmelden**. Alle gebruikers met de rol van eigenaar, inzender, lezer of factuurbeheerder worden afgemeld voor het ontvangen van een factuur per e-mail. 
 
-## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>Anderen toegang geven tot uw micro soft-klant overeenkomst-facturen
+## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>Anderen toegang geven tot facturen voor uw Microsoft-klantovereenkomst
 
-U kunt anderen toegang geven om facturen te bekijken, te downloaden en te betalen door hen de rol van de beheerder voor een facturerings profiel toe te wijzen. Als u ervoor hebt gekozen om uw factuur in een e-mail bericht op te halen, krijgen deze gebruikers ook de facturen in het e-mail bericht. 
+U kunt anderen toegang geven om facturen te bekijken, te downloaden en te betalen door hen de rol van factuurbeheerder toe te wijzen voor een factureringsprofiel. Als u ervoor hebt gekozen om facturen per e-mail bericht te ontvangen, krijgen deze gebruikers de facturen ook per e-mail. 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek naar **Kostenbeheer en facturering**.
 
    ![Schermopname van zoekopdracht in portal naar abonnementen](./media/download-azure-invoice/search-cmb.png)
 
-1. Selecteer **facturerings profielen** aan de linkerkant. Selecteer in de lijst facturerings profielen een facturerings profiel waarvoor u een rol van factuur beheerder wilt toewijzen.
+1. Selecteer aan de linkerkant de optie **Factureringsprofielen**. Selecteer in de lijst factureringsprofielen een factureringsprofiel waarvoor u de rol van factuurbeheerder wilt toewijzen.
 
-   [Scherm opname van ![die de lijst met facturerings profielen bevat](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Schermopname met lijst van factureringsprofielen](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
-1. Selecteer **Access Control (IAM)** aan de linkerkant en selecteer vervolgens **toevoegen** boven aan de pagina.
+1. Selecteer **Toegangsbeheer (IAM)** aan de linkerkant en selecteer vervolgens **Toevoegen** bovenaan de pagina.
 
-   [Scherm opname van ![waarop de pagina toegangs beheer wordt weer gegeven](./media/download-azure-invoice/mca-select-access-control.png)](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png#lightbox)
+   [![Schermopname van de pagina Toegangsbeheer](./media/download-azure-invoice/mca-select-access-control.png)](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png#lightbox)
 
-1. Selecteer in de vervolg keuzelijst rol de optie **factuur Manager**. Voer het e-mailadres in van de gebruiker die u toegang wilt verlenen. Selecteer **Opslaan** om de rol toe te wijzen.
+1. Selecteer **Factuurbeheerder** in de vervolgkeuzelijst Rol. Voer het e-mailadres in van de gebruiker die u toegang wilt verlenen. Selecteer **Opslaan** om de rol toe te wijzen.
 
-   [Scherm afbeelding van ![waarin een gebruiker wordt toegevoegd als een factuur beheerder](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
+   [![Schermopname van het toevoegen van een gebruiker als een factuurbeheerder](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
 
 ## <a name="check-your-billing-account-type"></a>Uw type factureringsrekening controleren
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
@@ -156,4 +156,4 @@ Als u een Microsoft-klantovereenkomst hebt, raadpleegt u:
 - [Informatie over begrippen op de factuur voor uw factureringsprofiel](mca-understand-your-invoice.md)
 - [Informatie over het bestand voor Azure-gebruik en -kosten voor uw factureringsprofiel](mca-understand-your-usage.md)
 - [Belastingdocumenten voor uw factureringsprofiel bekijken en downloaden](mca-download-tax-document.md)
-- [De Azure-prijzen voor uw organisatie weergeven](../manage/ea-pricing.md)
+- [Azure-prijzen voor uw organisatie bekijken en downloaden](../manage/ea-pricing.md)

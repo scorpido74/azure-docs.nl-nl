@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 9ebc418327d8c73198d43d3c40e14d48c73ad209
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76290237"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Toepassing van de reserveringskorting op virtuele machines
@@ -37,7 +37,7 @@ De volgende tabel illustreert de kosten voor uw virtuele machine na aankoop van 
 
 ## <a name="how-reservation-discount-is-applied"></a>De manier waarop reserveringskorting wordt toegepast
 
-Voor een reserveringskorting geldt: '*gebruiken of verliezen*'. Als u voor een bepaald uur geen passende resources hebt, verliest u de reserveringshoeveelheid voor dat uur. U kunt niet-gebruikte gereserveerde uren niet meenemen.
+Voor een reserveringskorting geldt: '*gebruiken of verliezen*'. Als u voor een bepaald uur geen passende resources hebt, verliest u de reserveringshoeveelheid voor dat uur. U kunt ongebruikte gereserveerde uren niet meenemen.
 
 Wanneer u een resource afsluit, wordt de reserveringskorting automatisch toegepast op een andere overeenkomstige resource in het opgegeven bereik. Als er geen overeenkomstige resources in het opgegeven bereik worden gevonden, *verliest* u de gereserveerde uren.
 
@@ -47,7 +47,7 @@ Wanneer u een resource afsluit, wordt de reserveringskorting automatisch toegepa
 
 ![Schermopname van één toegepaste reservering en twee gekoppelde VM-instanties](./media/understand-vm-reservation-charges/billing-reserved-vm-instance-application.png)
 
-1. Elk gebruik boven de reserveringslijn wordt gefactureerd tegen de normale tarieven op gebruiksbasis. Er worden geen kosten in rekening gebracht voor gebruik onder de regel reserve ringen, omdat deze al is betaald als onderdeel van de aankoop van de reserve ring.
+1. Elk gebruik boven de reserveringslijn wordt gefactureerd tegen de normale tarieven op gebruiksbasis. Er worden geen kosten in rekening gebracht voor gebruik onder de reserveringslijn, aangezien dat al is betaald in het kader van de reservering.
 2. In uur 1 is instantie 1 gedurende 0,75 uur actief en instantie 2 gedurende 0,5 uur. Het totale gebruik voor uur 1 bedraagt 1,25 uur. U betaalt het tarief op gebruiksbasis voor de resterende 0,25 uur.
 3. In uur 2 en uur 3 waren beide instanties gedurende 1 uur actief. Eén instantie valt onder de reservering en de andere wordt gefactureerd volgens het tarief op gebruiksbasis.
 4. In uur 4 is instantie 1 gedurende 0,5 uur actief en instantie 2 gedurende 1 uur. Instantie 1 wordt volledig gedekt door de reservering en van instantie 2 wordt 0,5 uur gedekt. U betaalt het tarief op gebruiksbasis voor de resterende 0,5 uur.
@@ -111,4 +111,4 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../reservations/understand-reserved-instance-usage.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../reservations/understand-reserved-instance-usage-ea.md)
 - [Inzicht in het gebruik van reserveringen voor CSP-abonnementen](/partner-center/azure-reservations)
-- [Kosten van Windows-software zijn niet inbegrepen in reserveringen](../reservations/reserved-instance-windows-software-costs.md)
+- [Kosten van Windows-software zijn niet inbegrepen bij reserveringen](../reservations/reserved-instance-windows-software-costs.md)

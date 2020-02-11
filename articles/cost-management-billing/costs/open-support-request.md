@@ -1,6 +1,6 @@
 ---
-title: Maak een ondersteuningsaanvraag voor Cloudyn in Azure | Microsoft Docs
-description: In dit artikel leidt u door de stappen die nodig voor het maken van een ondersteuningsaanvraag voor Cloudyn.
+title: Een ondersteuningsaanvraag voor Cloudyn maken in Azure | Microsoft Docs
+description: Dit artikel begeleidt u door de stappen die nodig zijn om een ondersteuningsaanvraag voor Cloudyn te maken.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -11,41 +11,41 @@ ms.service: cost-management-billing
 manager: benshy
 ms.custom: ''
 ms.openlocfilehash: 4ebb2a1f617da75aad8cea805ba793910375c47a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989317"
 ---
-# <a name="create-a-support-request-for-cloudyn"></a>Maak een ondersteuningsaanvraag voor Cloudyn
+# <a name="create-a-support-request-for-cloudyn"></a>Een ondersteuningsaanvraag maken voor Cloudyn
 
-Als u de informatie die u zoekt niet vinden, kunt u een ondersteuningsaanvraag openen. Of, als u vermoedt dat een probleem is een service wordt onderbroken of bug. Wanneer u een ondersteuningsticket opent, zorg er dan voor dat die voor een probleem hebt geopend. Doe dit het geval helpt het gerapporteerde probleem snel te routeren.
+U kunt een ondersteuningsaanvraag openen als u de informatie die u zoekt niet kunt vinden of als u denkt dat een probleem wordt veroorzaakt door een serviceonderbreking of een bug. Wanneer u een ondersteuningsticket opent, doe dat dan alleen voor een bepaald probleem. Het gemelde probleem kan dan snel naar de juiste persoon of afdeling worden gestuurd.
 
 ## <a name="open-a-support-ticket"></a>Een ondersteuningsticket openen
 
-1. Meld u aan bij Azure portal (https://portal.azure.com).
-2. Klik op de bovenste navigatiebalk **Help**.
-3. In de **Help** menu, klikt u op **Help en ondersteuning**.
-4. In de Help + ondersteuning menu onder ondersteuning, klikt u op **nieuwe ondersteuningsaanvraag**.
-5. Selecteer in het gebied basisprincipes onder probleemtype **facturering**.
-6. Onder het abonnement, kiest u elke vermelde abonnement. Het abonnement dat u kiest, wordt niet gebruikt voor het probleem routering.
-7. Selecteer uw Azure-ondersteuningsplan onder ondersteuningsplan, en klik vervolgens op **volgende**.  
-8. Selecteer in het gebied probleem een **ernst** niveau om te bepalen van de reactietijd.
-9. In **probleemtype** Selecteer **Cloudyn Legacy**, en selecteer vervolgens een **categorie**.
-10. In de **titel** voert u een titel waarmee uw aanvraag wordt beschreven.
-11. In de **Details** vak, typ extra informatie.
-12. Voor **wanneer is het probleem begonnen?** , selecteert u een bij benadering de datum en tijd voor en klik vervolgens op **volgende**.  
-14. In de **contactgegevens** gebied, selecteer de gewenste Neem contact op met de methode en geef uw contactgegevens, en klik vervolgens op **maken**.  
+1. Meld u aan bij de Azure-portal (https://portal.azure.com).
+2. Klik in de bovenste navigatiebalk op **Help**.
+3. Klik in het menu **Help** op **Help + ondersteuning**.
+4. Klik in het menu Help en ondersteuning onder Ondersteuning op **Nieuwe ondersteuningsaanvraag**.
+5. Selecteer **Facturering** in de vervolgkeuzelijst Type probleem op het tabblad Basis.
+6. Kies een vermeld abonnement in de vervolgkeuzelijst Abonnement. Het abonnement dat u kiest, wordt niet gebruikt voor het routeren van problemen.
+7. Selecteer bij Ondersteuningsplan uw Azure-ondersteuningsplan en klik op **Volgende**.  
+8. Selecteer in het gebied Probleem een waarde voor **Ernst** om de reactietijd te bepalen.
+9. Selecteer **Cloudyn Legacy** in de vervolgkeuzelijst **Probleemtype** en selecteer vervolgens een waarde voor **Categorie**.
+10. Voer in het vak **Titel** een titel in die uw aanvraag beschrijft.
+11. Typ in het vak **Details** aanvullende informatie.
+12. Selecteer voor **Wanneer is het probleem begonnen?** een datum en tijd waarop het probleem waarschijnlijk is begonnen en klik op **Volgende**.  
+14. Selecteer in het gedeelte **Contactgegevens** de gewenste contactmethode, geef uw contactgegevens op en klik op **Maken**.  
 
-Wanneer de ondersteuningsticket is gemaakt, wordt deze toegevoegd aan de Ondersteuningswachtrij voor. Reactietijd varieert, afhankelijk van het ondersteuningsplan en de ernst (impact op bedrijf) van het probleem. Zie voor meer informatie, [ondersteuningsreikwijdte en reactiesnelheid](https://azure.microsoft.com/support/plans/response/).
+Wanneer het ondersteuningsticket is gemaakt, wordt het in de ondersteuningswachtrij geplaatst. De reactietijd is afhankelijk van het ondersteuningsplan en de ernst (impact op het bedrijf) van het probleem. Zie [Ondersteuningsreikwijdte en reactiesnelheid](https://azure.microsoft.com/support/plans/response/) voor meer informatie.
 
-Als u wilt een facturering ondersteuningsticket maken voor kostenbeheer, onder **probleemtype**, selecteer **Azure Cost Management**.
+Als u een ondersteuningsticket voor facturering wilt maken voor Cost Management, selecteert u **Azure Cost Management** in de vervolgkeuzelijst **Type probleem**.
 
-Om te controleren of de status van een incident dat u hebt ingediend, Zie [alle ondersteuningsaanvragen](../../azure-portal/supportability/how-to-create-azure-support-request.md#all-support-requests).
+Als u de status wilt controleren van een incident dat u hebt ingediend, raadpleegt u [Alle ondersteuningsaanvragen](../../azure-portal/supportability/how-to-create-azure-support-request.md#all-support-requests).
 
-Als u een oudere Cloudyn-gebruiker zonder een Azure-account bent, kunt u een ondersteuningsaanvraag op openen https://support.microsoft.com/oas/default.aspx?prid=16451.
+Als u een Cloudyn-gebruiker bent zonder een Azure-account, kunt u een ondersteuningsaanvraag openen op https://support.microsoft.com/oas/default.aspx?prid=16451.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voor meer informatie over Cloudyn, blijven de [gebruik en kosten bekijken](../cloudyn/tutorial-review-usage.md) voor Cloudyn.
+- Als u meer wilt weten over Cloudyn, gaat u verder met de zelfstudie [Gebruik en kosten bekijken](../cloudyn/tutorial-review-usage.md) voor Cloudyn.

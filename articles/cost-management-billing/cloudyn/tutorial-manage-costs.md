@@ -1,21 +1,20 @@
 ---
 title: 'Zelfstudie: kosten beheren met Cloudyn in Azure | Microsoft Docs'
 description: In deze zelfstudie leest u hoe u kosten kunt beheren met behulp van kostentoewijzing en rapporten over showback en chargeback.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: d4117e8a40f277c6ac0213272176b75a1c161eb1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: c628a30e5a49e6bf9c0938ca8cccc0f349777668
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987409"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769913"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Zelfstudie: kosten beheren met Cloudyn
 
@@ -23,7 +22,7 @@ In Cloudyn kunt u kosten beheren en showback-rapporten maken door kosten toe te 
 
 Stel dat u engineering-kosten vergoed wilt hebben. U moet aan het engineering-team laten zien dat u een bepaald bedrag nodig hebt, op basis van resourcekosten. U kunt ze een rapport laten zien voor alle verbruikte resources met de tag *engineering*.
 
-In dit artikel worden de termen 'tags' en 'categorieën' soms door elkaar gebruikt. Categorieën zijn grote verzamelingen en kunnen veel zaken bevatten. Ze kunnen bedrijfsonderdelen, kostenplaatsen, webservices en andere zaken bevatten die worden getagd. Tags zijn naam/waarde-paren waarmee u resources kunt categoriseren en geconsolideerde facturerings gegevens kunt weer geven en beheren door dezelfde tag op meerdere resources en resource groepen toe te passen. In eerdere versies van de Azure-portal werd naar een *tagnaam* verwezen als *sleutel*. Tags worden gemaakt en opgeslagen door één Azure-abonnement. Tags in AWS bestaan uit sleutel/waarde-paren. Omdat voor zowel Azure als AWS gebruik wordt gemaakt van de term *sleutel*, wordt in Cloudyn die term ook gebruikt. In Category Manager worden sleutels (tagnamen) gebruikt om tags samen te voegen.
+In dit artikel worden de termen 'tags' en 'categorieën' soms door elkaar gebruikt. Categorieën zijn grote verzamelingen en kunnen veel zaken bevatten. Ze kunnen bedrijfsonderdelen, kostenplaatsen, webservices en andere zaken bevatten die worden getagd. Tags zijn naam/waarde-paren waarmee u resources kunt categoriseren en geconsolideerde factureringsgegevens kunt weergeven en beheren. Hiervoor past u dezelfde tag toe op meerdere resources en resourcegroepen. In eerdere versies van de Azure-portal werd naar een *tagnaam* verwezen als *sleutel*. Tags worden gemaakt en opgeslagen door één Azure-abonnement. Tags in AWS bestaan uit sleutel/waarde-paren. Omdat voor zowel Azure als AWS gebruik wordt gemaakt van de term *sleutel*, wordt in Cloudyn die term ook gebruikt. In Category Manager worden sleutels (tagnamen) gebruikt om tags samen te voegen.
 
 In deze zelfstudie leert u het volgende:
 
@@ -51,7 +50,7 @@ Houd er rekening mee dat de taggegevens van die resources niet worden weergegeve
 
 Wanneer u kostentoewijzing start, is het eerste wat u doet het definiëren van het bereik met behulp van een kostenmodel. Het kostenmodel heeft geen invloed op de kosten, maar zorgt alleen voor de verdeling ervan. Wanneer u een kostenmodel maakt, kunt u uw gegevens segmenteren op kostenentiteit, rekening of abonnement, en op meerdere tags. Voorbeelden van veelgebruikte tags zijn een factureringstag, kostenplaats of groepsnaam. Tags kunnen ook helpen bij het uitvoeren van showback of chargeback naar andere onderdelen van uw organisatie.
 
-Als u een aangepast kosten toewijzings model wilt maken, selecteert u **kosten** &gt; **Cost Management** &gt; **kosten toewijzing 360 °** in het menu van het rapport.
+Als u een aangepast model voor de toewijzing van kosten wilt maken, selecteert u **Costs** &gt; **Cost Management** &gt; **Cost Allocation 360°** in het menu van het rapport.
 
 ![Voorbeeld van een dashboard waarin u Cost Allocation 360 selecteert](./media/tutorial-manage-costs/cost-allocation-360.png)
 
@@ -81,7 +80,7 @@ Als u niet-toegewezen gereserveerde instanties van AWS (Amazon Web Services) heb
 
 Als u informatie wilt bekijken over de keuzes die u hebt gemaakt voor het toewijzen van kosten, selecteert u **Summary**. Selecteer **Save As Draft** om uw gegevens op te slaan en later verder te werken aan de aanvullende regels. Als u de gegevens wilt opslaan en Cloudyn het model voor kostentoewijzing direct mag verwerken, selecteert u **Save and Activate**.
 
-In de lijst met kostenmodellen wordt het nieuwe kostenmodel vermeld met de status **Processing**. Het kan even duren voordat de Cloudyn-database is bijgewerkt met uw kostenmodel. Als de verwerking is voltooid, wordt de status bijgewerkt naar **Completed**. U kunt vervolgens gegevens uit uw kosten model weer geven in het rapport kosten analyse onder **uitgebreide Filters** &gt; **kosten model**.
+In de lijst met kostenmodellen wordt het nieuwe kostenmodel vermeld met de status **Processing**. Het kan even duren voordat de Cloudyn-database is bijgewerkt met uw kostenmodel. Als de verwerking is voltooid, wordt de status bijgewerkt naar **Completed**. U kunt gegevens uit uw kostenmodel nu bekijken in het rapport Cost Analysis, onder **Extended Filters** &gt; **Cost Model**.
 
 ### <a name="category-manager"></a>Category Manager
 
@@ -131,7 +130,7 @@ Als u momentopname van de gegevens beschikbaar wilt stellen aan andere teams, ku
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Aangepaste tags gebruiken voor het toewijzen van kosten.

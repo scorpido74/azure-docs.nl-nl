@@ -346,6 +346,8 @@
               href: ./spark/apache-azure-spark-history-server.md
             - name: In cache opslaan met IO Cache inschakelen
               href: ./spark/apache-spark-improve-performance-iocache.md
+            - name: Jar-afhankelijkheden beheren
+              href: ./spark/manage-jar-dependency.md
             - name: Notitieblokken gebruiken met Apache Spark
               items:
                 - name: Een lokaal Jupyter-notitieblok gebruiken

@@ -1,207 +1,206 @@
 ---
-title: Inzicht in Cloudyn-rapporten in Azure kosten | Microsoft Docs
-description: Dit artikel helpt u inzicht in de basisstructuur voor de rapporten voor management van Cloudyn kosten en functies.
-services: cost-management
+title: Inzicht in Cloudyn-rapporten voor kostenbeheer in Azure | Microsoft Docs
+description: Dit artikel helpt u inzicht te krijgen in de basisstructuur en functies van Cloudyn-rapporten voor kostenbeheer.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: fff08bc30e0d1bae77a2aee641f6e211cea40beb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 89bcbf75396a1eda9de4a715739adb3a3696e137
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989109"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76773989"
 ---
-# <a name="understanding-cloudyn-cost-management-reports"></a>Inzicht in Cloudyn-rapporten voor kosten
+# <a name="understanding-cloudyn-cost-management-reports"></a>Inzicht in Cloudyn-rapporten voor kostenbeheer
 
-Dit artikel helpt u inzicht in de basisstructuur voor de rapporten voor management van Cloudyn kosten en functies. De meeste Cloudyn-rapporten zijn intuïtief en een uniform uiterlijk hebben. Nadat u dit artikel hebt gelezen, gaan alle kostenbeheerrapporten gebruiken. Veel standard-functies zijn beschikbaar in de verschillende rapporten, zodat u kunt de rapporten moeiteloos navigeren. Rapporten kunnen worden aangepast en u kunt kiezen uit verschillende opties om te berekenen en de resultaten weer te geven.
+Dit artikel helpt u inzicht te krijgen in de basisstructuur en functies van Cloudyn-rapporten voor kostenbeheer. De meeste Cloudyn-rapporten zijn intuïtief en hebben een uniforme vormgeving. Nadat u dit artikel hebt gelezen, kunt u alle rapporten voor kostenbeheer gebruiken. Veel standaardfuncties zijn beschikbaar in de verschillende rapporten, zodat u gemakkelijk door de rapporten kunt navigeren. Rapporten kunnen worden aangepast, en u kunt kiezen uit verschillende opties om de resultaten te berekenen en weer te geven.
 
-## <a name="report-fields-and-options"></a>Rapportvelden en opties
+## <a name="report-fields-and-options"></a>Rapportvelden en -opties
 
-Hier volgt een overzicht van een voorbeeld van het rapport Cost Over Time. De meeste Cloudyn-rapporten hebben een vergelijkbare indeling.
+Hier volgt een voorbeeld van het rapport Cost Over Time (Kosten in de loop van de tijd). De meeste Cloudyn-rapporten hebben een vergelijkbare indeling.
 
-![Voorbeeld van het rapport Cost Over Time met genummerde gebieden die overeenkomt met beschrijvingen](./media/understanding-cost-reports/sample-report.png)
+![Voorbeeld van het rapport Cost Over Time (Kosten in de loop van de tijd), met genummerde gebieden die overeenkomen met beschrijvingen](./media/understanding-cost-reports/sample-report.png)
 
-Elke genummerde gebied in de voorgaande afbeelding wordt beschreven in de volgende informatie:
+Elk genummerd gebied in de voorgaande afbeelding wordt gedetailleerd beschreven in de volgende informatie:
 
 1. **Datumbereik**
 
-    Gebruik de lijst datumbereik voor het definiëren van een rapport tijdsinterval met behulp van een vooraf ingestelde of aangepast.
-2. **Opgeslagen Filter**
+    Gebruik de lijst Datumbereik om een tijdsinterval voor een rapport te definiëren met behulp van een voorinstelling of aangepaste instelling.
+2. **Opgeslagen filter**
 
-    De lijst opgeslagen Filter gebruiken om op te slaan van de huidige groepen en filters die worden toegepast op het rapport. Opgeslagen filters zijn beschikbaar voor de kosten en prestaties van rapporten, waaronder:
+    Met de lijst Opgeslagen filter kunt u de huidige groepen en filters opslaan die op het rapport worden toegepast. Opgeslagen filters zijn beschikbaar in kosten- en prestatierapporten, waaronder:
 
       - Kostenanalyse
       - Toewijzing
       - Asset-management
       - Optimalisatie
 
-   Typ de naam van een filter en klik op **opslaan**.
+   Typ een filternaam en klik op **Opslaan**.
 
 3. **Tags**
 
-    Gebruik het gebied van de Tags aan groep door de tag categorieën. Labels die worden vermeld in het menu Azure afdeling of kosten center tags of ze zijn het kosten entiteits- en abonnement tags van Cloudyn. Selecteer de tags om resultaten te filteren. U kunt ook de naam van een tag (trefwoord) om resultaten te filteren typen.
+    Gebruik het gebied Tags om categorieën te groeperen op tags. Tags die in het menu worden weergegeven, zijn afdelings- of kostenplaatstags van Azure of kostenentiteits- en abonnementstags van Cloudyn. Selecteer tags om de resultaten te filteren. U kunt ook een tagnaam (sleutelwoord) typen om de resultaten te filteren.
 
-    ![Voorbeeld van een lijst met tags voor het filteren van resultaten op](./media/understanding-cost-reports/select-options.png)
+    ![Voorbeeld van een lijst met tags waarop u resultaten kunt filteren](./media/understanding-cost-reports/select-options.png)
 
-    Klik op **toevoegen** een nieuw filter toe te voegen.
+    Klik op **Toevoegen** als u een nieuw filter wilt toevoegen.
 
-    ![Filter toevoegen met opties en voorwaarden om te filteren op](./media/understanding-cost-reports/add-filter.png)
+    ![Vak Filter toevoegen met opties en filtervoorwaarden](./media/understanding-cost-reports/add-filter.png)
 
-    Tag groeperen of filteren heeft geen betrekking op Azure-resources of groep resourcetags.
+    Het groeperen of filteren op tags is niet gerelateerd aan tags van Azure-resources of -resourcegroepen.
 
-    Kostentoewijzing tag groeperen en filteren zijn beschikbaar in de **groepen** menu-optie.
+    U kunt kostentoewijzingen groeperen en filteren op tags via de menuoptie **Groepen**.
 
 4. **Groepen in rapporten**
 
-    Groepen gebruiken in Cost Analysis rapporten om weer te geven standaard, ingedeeld categorieën van facturering van gegevens in uw rapport.  Echter bekijken groepen in Cost Allocation rapporten weergeven op basis van een tag categorieën. Tag op basis van categorieën worden gedefinieerd in het model voor kostentoewijzing en standard gespecificeerde categorieën van factureringsgegevens.
+    Gebruik groepen in kostenanalyserapporten om gespecificeerde standaardcategorieën van factureringsgegevens in uw rapport weer te geven.  In groepen in kostentoewijzingsrapporten worden wel op tags gebaseerde categorieën weergegeven. Op tags gebaseerde categorieën worden gedefinieerd in het kostentoewijzingsmodel en gespecificeerde standaardcategorieën van factureringsgegevens.
 
-    ![Eerste voorbeeld van de lijst met labels die u kunt groeperen op](./media/understanding-cost-reports/groups-tags01.png)
+    ![Eerste voorbeeld van een lijst met tags waarop u kunt groeperen](./media/understanding-cost-reports/groups-tags01.png)
 
-    ![Tweede voorbeeld van de lijst met labels die u kunt groeperen op](./media/understanding-cost-reports/groups-tags02.png)
+    ![Tweede voorbeeld van een lijst met tags waarop u kunt groeperen](./media/understanding-cost-reports/groups-tags02.png)
 
-    Groepen in de groep op basis van een tag categorieën zijn in Kostenrapporten toewijzing, onder andere:
+    In kostentoewijzingsrapporten kunnen groepen in op tags gebaseerde categorieën het volgende omvatten:
       - Tags
-      - groep resourcetags
-      - Cloudyn kosten entity-tags
-      - Abonnement tag categorieën voor doel voor het toewijzen van kosten
+      - tags van resourcegroepen
+      - tags van Cloudyn-kostenentiteiten
+      - Abonnementstagcategorieën voor kostentoewijzingsdoeleinden
 
-   Voorbeelden zijn onder andere:
+   Voorbeelden hiervan zijn:
    - Kostenplaats
    - Afdeling
    - Toepassing
    - Omgeving
-   - Kosten code
+   - Kostencode
 
-     Hier volgt een lijst van ingebouwde groepen in rapporten beschikbaar:
+     Hier volgt een lijst met ingebouwde groepen die beschikbaar zijn in rapporten:
 
      - **Kostentype**
-     - Selecteer een kostentype of meerdere kostensoorten of Alles selecteren. Kostensoorten zijn onder andere:
-       - Eenmalig
+     - Selecteer een kostentype, meerdere kostentypen of alle kostentypen. Mogelijke kostentypen zijn:
+       - Eenmalige kosten
        - Ondersteuning
        - Gebruikskosten
-     - **De klant**
-       - Selecteer een specifieke klant, meerdere klanten, of alle klanten.
+     - **Klant**
+       - Selecteer een specifieke klant, meerdere klanten of alle klanten.
      - **Accountnaam**
-       - De naam van het account of abonnement. In Azure is de naam van het Azure-abonnement.
-     - **Geen account**
-       - Selecteer een account, meerdere accounts of alle accounts. In Azure is de GUID van het Azure-abonnement.
-     - **Bovenliggende Account**
-       - Selecteer de bovenliggende account, meerdere accounts of selecteren.
+       - De naam van het account of abonnement. In Azure is dit de naam van het Azure-abonnement.
+     - **Accountnummer**
+       - Selecteer een account, meerdere accounts of alle accounts. In Azure is dit de GUID van het Azure-abonnement.
+     - **Bovenliggend account**
+       - Selecteer het bovenliggende account, meerdere accounts of alle accounts.
      - **Service**
-       - Selecteer een service, meerdere services, of alle services.
+       - Selecteer een service, meerdere services of alle services.
      - **Provider**
-       - De cloudprovider waarin activa en kosten gekoppeld worden.
+       - De cloudprovider waar assets en uitgaven zijn gekoppeld.
      - **Regio**
-       - De regio waar de resource wordt gehost.
-     - **Binnen een Beschikbaarheidszone**
-       - AWS geïsoleerd locaties binnen een regio.
+       - Regio waar de resource wordt gehost.
+     - **Beschikbaarheidszone**
+       - Geïsoleerde AWS-locaties binnen een regio.
      - **Resourcetype**
-       - Het type resource in gebruik.
-     - **Sub-Type**
+       - Het type resource dat wordt gebruikt.
+     - **Subtype**
        - Selecteer het subtype.
      - **Bewerking**
-       - Selecteer de bewerking of **Show all**.
+       - Selecteer de bewerking of selecteer **Alles weergeven**.
      - **Prijsmodel**
-       - Alle kosten vooraf
-       - Geen kosten vooraf
-       - Gedeeltelijk kosten vooraf
+       - Alles vooruit
+       - Niets vooruit
+       - Gedeeltelijk vooruit
        - Op aanvraag
        - Reservering
        - Spot
-     - **Type van de kosten in rekening gebracht**
-       - Selecteer negatieve of positieve kosten type of beide.
-     - **Tenants**
-       - Of een virtuele machine wordt uitgevoerd als een toegewezen machine.
+     - **Kostentype**
+       - Selecteer een negatief of positief kostentype, of beide.
+     - **Tenancy**
+       - Hiermee wordt aangegeven of een machine wordt uitgevoerd als een toegewezen machine.
      - **Gebruikstype**
-       - Gebruikstype zijn eenmalige kosten of terugkerende kosten.
+       - Dit kunnen eenmalige kosten of terugkerende kosten zijn.
 
 5. **Filters**
 
-    Enkelvoudige of meervoudige selectie filters gebruiken om te bereiken op geselecteerde waarden ingesteld. Als u wilt een filter wilt instellen, klikt u op **toevoegen** en selecteer vervolgens filtercategorieën en waarden.
+    Gebruik een of meer filters om bereiken in te stellen op bepaalde waarden. Als u een filter wilt instellen, klikt u op **Toevoegen** en selecteert u vervolgens filtercategorieën en -waarden.
 
-6. **Kosten Model**
+6. **Kostenmodel**
 
-    Selecteer een kostenmodel dat u eerder hebt gemaakt met Cost Allocation 360 met behulp van kostenmodel. Mogelijk hebt u meerdere modellen voor Cloudyn-kosten, afhankelijk van uw vereisten van de toewijzing van kosten. Sommige van uw organisatie teams mogelijk kosten toewijzing eisen die van anderen verschillen. Elk team kan hun eigen toegewezen kostenmodel hebben.
+    Gebruik Kostenmodel om een kostenmodel te selecteren dat u eerder hebt gemaakt met Kostentoewijzing 360. U hebt mogelijk meerdere Cloudyn-kostenmodellen, afhankelijk van uw vereisten voor kostentoewijzingen. Sommige teams van uw organisatie kunnen andere kostentoewijzingsvereisten hebben. Elk team kan een eigen toegewezen kostenmodel hebben.
 
-    Zie voor meer informatie over het maken van een definitie van cost allocation model [aangepaste tags gebruiken voor het toewijzen van kosten](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
+    Zie [Aangepaste tags voor kostentoewijzingen gebruiken](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) voor informatie over het maken van een definitie voor een kostentoewijzingsmodel.
 
 7. **Afschrijving**
 
-    Gebruik afschrijving in Cost Allocation rapporten om niet-gebruik weer te geven op basis van servicekosten of eenmalige kosten van leveranciers en hun kosten na verloop van tijd tijdens hun levensduur gelijkmatig verdeeld. Voorbeelden van eenmalige kosten zijn onder andere:
-    - Jaarlijkse kosten van ondersteuning
-    - Jaarlijkse kosten van security-onderdelen
-    - Kopen van gereserveerde instanties kosten
-    - Sommige items voor de Azure Marketplace.
+    Gebruik afschrijving in kostentoewijzingsrapporten om niet op gebruik gebaseerde servicekosten of eenmalig te betalen kosten weer te geven. De kosten in deze rapporten worden gelijkmatig verspreid over hun levensduur. Voorbeelden van eenmalige kosten kunnen het volgende omvatten:
+    - Jaarlijkse kosten voor ondersteuning
+    - Jaarlijkse kosten voor beveiligingsonderdelen
+    - Kosten voor aankoop van gereserveerde instanties
+    - Bepaalde Azure Marketplace-items.
 
-   Selecteer onder afschrijving, **afgeschreven kosten** of **werkelijke kosten**.
+   Selecteer **Afgeschreven kosten** of **Werkelijke kosten** onder Afschrijving.
 
-8. **Resolutie**
+8. **Afsluiting**
 
-    Gebruik het probleem zou moeten de resolutie van de tijd binnen het geselecteerde datumbereik selecteren. De resolutie van uw tijd bepaalt hoe eenheden worden weergegeven in het rapport en kunnen worden:
+    Gebruik Afsluiting om de afsluitingstijd binnen het geselecteerde datumbereik te selecteren. De afsluitingstijd bepaalt hoe eenheden worden weergegeven in het rapport. Mogelijke frequenties zijn:
     - Dagelijks
-    - Elke week
+    - Wekelijks
     - Maandelijks
-    - Per kwartaal
+    - Driemaandelijks
     - Jaarlijks
 
-9. **Toewijzingsregels voor**
+9. **Toewijzingsregels**
 
-    Toewijzingsregels gebruiken om te passen of uitschakelen van de kostentoewijzing kosten opnieuw berekenen. U kunt inschakelen of uitschakelen van de herberekening van de toewijzing van kosten voor factureringsgegevens. De herberekening is van toepassing op de geselecteerde categorieën in het rapport. Hiermee kunt u beoordelen effect herberekening voor de toewijzing van kosten op basis van onbewerkte gegevens van de facturering.
+    Gebruik toewijzingsregels om de herberekening van kosten voor kostentoewijzingen toe te passen of uit te schakelen. U kunt de herberekening van kostentoewijzingen voor factureringsgegevens in- of uitschakelen. De herberekening is van toepassing op de geselecteerde categorieën in het rapport. Zo kunt u het effect van de herberekening van een kostentoewijzing op onbewerkte factureringsgegevens beoordelen.
 
-10. **Niet-gecategoriseerde**
+10. **Niet-gecategoriseerd**
 
-    Gebruik niet-gecategoriseerd wilt opnemen of uitsluiten van niet-gecategoriseerde kosten in het rapport.
+    Gebruik Niet-gecategoriseerd om niet-categoriseerde kosten in het rapport op te nemen of uit te sluiten.
 
 11. **Velden weergeven/verbergen**
 
-    De optie weergeven/verbergen heeft geen effect in rapporten.
+    De optie Weergeven/Verbergen is niet van invloed op rapporten.
 
 12. **Weergave-indelingen**
 
-    Weergave-indelingen gebruiken verschillende weergaven voor graph of de tabel selecteren.
+    Gebruik Weergave-indelingen om verschillende grafiek- of tabelweergaven te selecteren.
 
-    ![De symbolen van het weergave-indelingen die u kunt selecteren](./media/understanding-cost-reports/display-formats.png)
+    ![Symbolen van weergave-indelingen die u kunt selecteren](./media/understanding-cost-reports/display-formats.png)
 
-13. **Multi-color**
+13. **Meerdere kleuren**
 
-    Gebruik meerdere kleur om in te stellen de kleur van de grafieken in uw rapport.
+    Gebruik Meerdere kleuren om de kleuren van grafieken in uw rapport in te stellen.
 
 14. **Acties**
 
-    Gebruik acties wilt opslaan, exporteren of het rapport plant.
+    Gebruik Acties om het rapport op te slaan, te exporteren of te plannen.
 
 15. **Beleid**
 
-    Hoewel niet afgebeeld, bevatten sommige rapporten een beleid voor het berekenen van geschatte kosten. In deze rapporten, de **geconsolideerde** beleid bevat aanbevelingen voor alle accounts en abonnementen onder de huidige entiteit, zoals Microsoft inschrijvings- of AWS afspelen. De **zelfstandige** beleid bevat aanbevelingen voor een account of abonnement alsof er zijn geen andere abonnementen. Is afhankelijk van het beleid dat u selecteert op de optimalisatie-strategie door uw organisatie gebruikt. Kosten schattingen zijn gebaseerd op de afgelopen 30 dagen van het gebruik van.
+    Hoewel niet afgebeeld, bevatten sommige rapporten een beleid voor de berekening van verwachte kosten. In deze rapporten toont het **geconsolideerde** beleid aanbevelingen voor alle accounts en abonnementen onder de huidige entiteit, zoals een inschrijving bij Microsoft of een betaler bij AWS. Het **zelfstandige** beleid toont aanbevelingen voor één account of abonnement alsof er geen andere abonnementen zijn. Het beleid dat u selecteert, is afhankelijk van de optimalisatiestrategie van uw organisatie. Kostenprognoses zijn gebaseerd op het gebruik van de laatste 30 dagen.
 
-## <a name="save-and-schedule-reports"></a>Opslaan en rapporten plannen
+## <a name="save-and-schedule-reports"></a>Rapporten opslaan en plannen
 
-Nadat u een rapport maakt, kunt u deze kunt opslaan voor toekomstig gebruik. Opgeslagen rapporten zijn beschikbaar in **hulpprogramma's voor mijn** > **mijn rapporten**. Als u wijzigingen in een bestaand rapport aanbrengen en deze opslaat, wordt het rapport wordt opgeslagen als een nieuwe versie. Of, kunt u deze opslaan als een nieuw rapport.
+Nadat u een rapport hebt gemaakt, kunt u het opslaan voor toekomstig gebruik. Opgeslagen rapporten zijn beschikbaar in **Mijn hulpmiddelen** > **Mijn rapporten**. Als u een bestaand rapport wijzigt en opslaat, wordt het rapport opgeslagen als een nieuwe versie. U kunt het ook opslaan als een nieuw rapport.
 
 ### <a name="save-a-report-to-the-cloudyn-portal"></a>Een rapport opslaan in de Cloudyn-portal
 
-Wanneer u een rapport bekijkt, klikt u op **acties** en selecteer vervolgens **opslaan in Mijn rapporten**. Het rapport een naam en voeg vervolgens een uw eigen URL of de automatisch gemaakte URL gebruiken. U kunt eventueel **delen** het rapport openbaar met anderen in uw organisatie of als u deze aan uw entiteit kunt delen. Als u het rapport niet te delen, een persoonlijke rapport blijft en dat alleen kunt u bekijken. Sla het rapport op.
+Klik vanuit een weergegeven rapport op **Acties** en selecteer vervolgens **Opslaan in mijn rapporten**. Typ een naam voor het rapport en voeg uw eigen URL toe of gebruik de automatisch gemaakte URL. Desgewenst kunt u het rapport **delen** met anderen in uw organisatie of het delen met uw entiteit. Als u het rapport niet deelt, blijft het een persoonlijk rapport dat alleen u kunt bekijken. Sla het rapport op.
 
 
-### <a name="save-a-report-to-cloud-provider-storage"></a>Een rapport naar de cloud storage provider opslaan
+### <a name="save-a-report-to-cloud-provider-storage"></a>Een rapport opslaan in een opslagplaats van een cloudprovider
 
-Als u wilt een rapport opslaan in uw cloudserviceprovider, moet u al zijn geconfigureerd een storage-account. Wanneer u een rapport bekijkt, klikt u op **acties** en selecteer vervolgens **rapport plant**. Het rapport een naam en voeg vervolgens een uw eigen URL of de automatisch gemaakte URL gebruiken. Selecteer **opslaan in storage** en selecteer het opslagaccount of een nieuwe toevoegen. Voer een voorvoegsel dat wordt toegevoegd aan de naam van het rapport. Selecteer een CSV-of JSON-bestands indeling en sla het rapport op.
+Om een rapport te kunnen opslaan bij uw cloudserviceprovider, moet u al een opslagaccount hebben geconfigureerd. Klik vanuit een weergegeven rapport op **Acties** en selecteer vervolgens **Rapport plannen**. Typ een naam voor het rapport en voeg uw eigen URL toe of gebruik de automatisch gemaakte URL. Selecteer **Opslaan in opslag** en selecteer vervolgens het opslagaccount of voeg een nieuw opslagaccount toe. Voer een voorvoegsel in dat wordt toegevoegd aan de bestandsnaam van het rapport. Selecteer de bestandsindeling CSV of JSON en sla het rapport op.
 
 ### <a name="schedule-a-report"></a>Een rapport plannen
 
-U kunt rapporten uitvoeren met regelmatige tussenpozen en u kunt deze verzonden naar een ontvanger lijst of cloud serviceprovider storage-account. Wanneer u een rapport bekijkt, klikt u op **acties** en selecteer vervolgens **rapport plant**. U kunt het rapport per e-mail verzenden en opslaan op een storage-account. Onder **planning**, selecteert u het interval (dagelijks, wekelijks of maandelijks). Selecteer de dag of datums te leveren en selecteer de tijd voor wekelijkse en maandelijkse. Sla het geplande rapport op. Als u de indeling van het Excel-rapport selecteert, wordt het rapport als een bijlage verzonden. Wanneer u inhoud e-mailindeling selecteert, worden de rapportresultaten die worden weergegeven in de grafiekindeling als een grafiek geleverd.
+U kunt rapporten uitvoeren op geplande intervallen en u kunt ze verzenden naar een lijst met ontvangers of een opslagaccount bij een cloudserviceprovider. Klik vanuit een weergegeven rapport op **Acties** en selecteer vervolgens **Rapport plannen**. U kunt het rapport per e-mail verzenden en opslaan in een opslagaccount. Onder **Planning** selecteert u het interval (dagelijks, wekelijks of maandelijks). Voor wekelijks en maandelijks selecteert u de gewenste dag of datums voor uitvoering, en de tijd. Sla het geplande rapport op. Als u de indeling voor een Excel-rapport selecteert, wordt het rapport verzonden als een bijlage. Wanneer u de indeling voor e-mailinhoud selecteert, worden rapportresultaten die worden weergegeven in diagramindeling geleverd als een grafiek.
 
 ### <a name="export-a-report-as-a-csv-file"></a>Een rapport exporteren als een CSV-bestand
 
-Wanneer u een rapport bekijkt, klikt u op **acties** en selecteer vervolgens **alle rapportgegevens exporteren**. Een pop-upvenster wordt weergegeven en een CSV-bestand wordt gedownload.
+Klik vanuit een weergegeven rapport op **Acties** en selecteer vervolgens **Alle rapportgegevens exporteren**. Er wordt een pop-upvenster weergegeven waarin een CSV-bestand wordt gedownload.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de rapporten die zijn opgenomen in Cloudyn op [rapporten van Cloudyn gebruik](../../cost-management/use-reports.md).
-- Meer informatie over het gebruik van rapporten maken [dashboards](../../cost-management/dashboards.md).
+- Meer informatie over de rapporten die zijn opgenomen in Cloudyn op [Use Cloudyn reports](../../cost-management/use-reports.md) (Cloudyn-rapporten gebruiken).
+- Meer informatie over het gebruik van rapporten voor het maken van [dashboards](../../cost-management/dashboards.md).

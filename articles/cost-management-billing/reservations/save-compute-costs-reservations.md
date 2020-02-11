@@ -7,16 +7,16 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: banders
-ms.openlocfilehash: 2e8c477aea7a11eefa606ab9cd084ca3ed9f400f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 10cf5b5a0ec4edda3d3c868cda34352e827604b0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75995648"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76841877"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
-Met behulp van Azure-reserveringen kunt u geld besparen omdat u een abonnement voor één of drie jaar neemt voor virtuele machines, Azure Blob Storage of Azure Data Lake Storage Gen2, rekencapaciteit van een SQL Database, Azure Cosmos DB-doorvoer of andere Azure-resources. Door u vast te leggen krijgt u korting op de resources die u gebruikt. Met reserveringen kunt u tot wel 72% besparen op uw resourcekosten ten opzichte van de prijzen voor betalen per gebruik. Reserveringen voorzien in een korting op de factuur en zijn niet van invloed op de runtime-status van uw resources.
+Met behulp van Azure-reserveringen kunt u geld besparen omdat u een abonnement voor één of drie jaar neemt voor virtuele machines, Azure Blob Storage of Azure Data Lake Storage Gen2, rekencapaciteit van een SQL Database, Azure Disk Storage, Azure Cosmos DB-doorvoer of andere Azure-resources. Door u vast te leggen krijgt u korting op de resources die u gebruikt. Met reserveringen kunt u tot wel 72% besparen op uw resourcekosten ten opzichte van de prijzen voor betalen per gebruik. Reserveringen voorzien in een korting op de factuur en zijn niet van invloed op de runtime-status van uw resources.
 
 U kunt vooraf of maandelijks voor een reservering betalen. De totale kosten van betalingen vooraf en per maand voor reserveringen zijn hetzelfde en u hoeft ook geen toeslag te betalen wanneer u voor maandelijks betalen kiest. Maandelijkse betaling is beschikbaar voor Azure-reserveringen, niet voor producten van derden.
 
@@ -32,15 +32,15 @@ Service-abonnementen:
 
 - **Gereserveerde VM-instantie**: een reservering dekt alleen de rekenkosten van de virtuele machine. Aanvullende software-, netwerk- of opslagkosten vallen hier niet onder.
 - **Gereserveerde Azure Storage-capaciteit**: onder een reservering valt de opslagcapaciteit voor standaardopslagaccounts voor Blob Storage of Azure Data Lake Gen2 Storage. De tarieven voor bandbreedte of transacties vallen niet onder de reservering.
+- **Azure Disk Storage-reserveringen**: een reservering dekt alleen Premium-SSD's met de grootte P30 of hoger. De reservering geldt niet voor andere schijftypen of schijfgrootten kleiner dan P30.
 - **Gereserveerde Azure Cosmos DB-capaciteit**: onder een reservering valt de doorvoer die voor uw resources is ingericht. De opslag- en netwerkkosten vallen hier niet onder.
 - **Gereserveerde SQL Database-vCore**: alleen de rekenkosten worden opgenomen in een reservering. De licentie wordt afzonderlijk gefactureerd.
 - **SQL Data Warehouse**: onder een reservering valt het cDWU-gebruik. Een reservering omvat geen opslag- en netwerkkosten die samenhangen met het gebruik van SQL Data Warehouse.
 - **App Service-zegelkosten**: onder een reservering valt het gebruik van zegels. De reservering is niet van toepassing op werkrollen, dus alle andere resources die aan de zegel zijn gekoppeld, worden afzonderlijk in rekening gebracht.
-- Azure Database voor MySQL
-- Azure Database voor PostgreSQL
-- Azure Database voor MariaDB
+- Azure Database for MySQL
+- Azure Database for PostgreSQL
+- Azure Database for MariaDB
 - Azure Data Explorer
-- Premium SSD Managed Disks
 
 
 Voor virtuele Windows-machines en SQL Database kunt u de licentiekosten dekken met [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
@@ -105,9 +105,9 @@ Een reserveringsbereik wordt niet automatisch bijgewerkt als u de resourcegroep 
 
 Reserveringskortingen zijn van toepassing op de volgende in aanmerking komende typen abonnementen en aanbiedingen.
 
-- Enter prise Agreement (nummers van aanbiedingen: MS-AZR-0017P of MS-AZR-0148P)
+- Enterprise Agreement (aanbiedingsnummers: MS-AZR-0017P of MS-AZR-0148P)
 - Abonnementen met een Microsoft-klantovereenkomst.
-- Afzonderlijke abonnementen met betalen per gebruik-tarieven (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P)
+- Afzonderlijke abonnementen met tarieven voor betalen naar gebruik (aanbiedingsnummers: MS-AZR-0003P of MS-AZR-0023P)
 - CSP-abonnementen
 
 Voor resources die voor een abonnement met andere typen aanbiedingen worden uitgevoerd, wordt geen reserveringskorting verkregen.
@@ -122,7 +122,7 @@ De reserveringskorting is van toepassing op het resourcegebruik dat overeenkomt 
 
 Voor een reserveringskorting geldt: *gebruiken of verliezen*. Als u geen overeenkomende resources voor eender welk uur hebt, verliest u een reserveringshoeveelheid voor dat uur. U kunt niet-gebruikte gereserveerde uren niet meenemen.
 
-Wanneer u een resource afsluit, wordt de reserveringskorting automatisch toegepast op een andere overeenkomstige resource in het opgegeven bereik. Als er geen overeenkomstige resources in het opgegeven bereik worden gevonden, *verliest* u de gereserveerde uren.
+Wanneer u een resource afsluit, wordt de reserveringskorting automatisch toegepast op een andere overeenkomstige resource in het opgegeven bereik. Als er geen overeenkomende resources in het opgegeven bereik worden gevonden, *verliest* u de gereserveerde uren.
 
 Stel dat u bijvoorbeeld later een resource wilt maken en dat u een ondergebruikte overeenkomende reservering hebt. De reserveringskorting is automatisch van toepassing op de nieuwe overeenkomende resource.
 
@@ -140,10 +140,10 @@ Wanneer u een reservering koopt, kan de korting ook worden toegepast op andere i
 
 Service-abonnementen:
 
-- Gereserveerde VM-instanties: wanneer u de reserve ring koopt en **geoptimaliseerd voor de flexibiliteit van de instantie grootte**selecteert, is de kortings dekking afhankelijk van de grootte van de virtuele machine die u selecteert. De reservering kan worden toegepast op de VM-grootten in de groep met series van dezelfde grootte. Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) voor meer informatie.
-- Gereserveerde capaciteit Azure Storage: u kunt gereserveerde capaciteit voor standaard Azure Storage accounts kopen in eenheden van 100 TiB of 1 PiB per maand. Gereserveerde Azure Storage-capaciteit is in alle regio's, voor elke toegangslaag (dynamisch, statisch of archief) en voor elke replicatieoptie (LRS, GRS of ZRS) beschikbaar.
-- Gereserveerde capaciteit SQL Database: de kortings dekking hangt af van de prestatie tier die u kiest. Zie [Begrip van de manier waarop Azure-reserveringskorting wordt toegepast](understand-reservation-charges.md) voor meer informatie.
-- Azure Cosmos DB gereserveerde capaciteit: de kortings dekking is afhankelijk van de ingerichte door voer. Zie [Begrip van de manier waarop Azure Cosmos DB-reserveringskorting wordt toegepast](understand-cosmosdb-reservation-charges.md) voor meer informatie.
+- Gereserveerde VM-instanties: Wanneer u de reservering koopt en **Geoptimaliseerd voor flexibiliteit van de instantiegrootte** selecteert, hangt de kortingsdekking af van de VM-grootte die u selecteert. De reservering kan worden toegepast op de VM-grootten in de groep met series van dezelfde grootte. Zie [Flexibiliteit van de VM-grootte met gereserveerde VM-instanties](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) voor meer informatie.
+- Gereserveerde Azure Storage-capaciteit: U kunt gereserveerde capaciteit voor standaard Azure Storage-accounts aanschaffen in eenheden van 100 TiB of 1 PiB per maand. Gereserveerde Azure Storage-capaciteit is in alle regio's, voor elke toegangslaag (dynamisch, statisch of archief) en voor elke replicatieoptie (LRS, GRS of ZRS) beschikbaar.
+- Gereserveerde capaciteit voor SQL Database: De kortingsdekking hangt af van de prestatielaag die u kiest. Zie [Begrip van de manier waarop Azure-reserveringskorting wordt toegepast](understand-reservation-charges.md) voor meer informatie.
+- Gereserveerde Azure Cosmos DB-capaciteit: De kortingsdekking hangt af van de ingerichte doorvoer. Zie [Begrip van de manier waarop Azure Cosmos DB-reserveringskorting wordt toegepast](understand-cosmosdb-reservation-charges.md) voor meer informatie.
 
 ## <a name="reservation-notifications"></a>Reserveringsmeldingen
 
@@ -169,7 +169,7 @@ Voor klanten met afzonderlijk abonnementen:
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 

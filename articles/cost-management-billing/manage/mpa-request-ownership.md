@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
 ms.openlocfilehash: 65b56511a3b454b192b5adb2a98fb3bb3510bb7e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988199"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Eigendom aanvragen van facturering van Azure-abonnementen voor uw MPA-account
@@ -43,7 +43,7 @@ Dit artikel is van toepassing op factureringsrekeningen voor Microsoft Partner-o
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-   ![Schermopname van de zoekopdracht in Azure Portal naar kostenbeheer en facturering](./media/mpa-request-ownership/search-cmb.png)
+   ![Schermopname van zoekopdracht in de Azure-portal naar kostenbeheer en facturering](./media/mpa-request-ownership/search-cmb.png)
 
 3. Selecteer **Klanten** aan de linkerkant en selecteer vervolgens een klant in de lijst.
 
@@ -67,11 +67,11 @@ Dit artikel is van toepassing op factureringsrekeningen voor Microsoft Partner-o
 
 ## <a name="check-the-transfer-request-status"></a>De status van de overdrachtsaanvraag controleren
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-   ![Schermopname van de zoekopdracht in Azure Portal naar kostenbeheer en facturering](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+   ![Schermopname van zoekopdracht in de Azure-portal naar kostenbeheer en facturering](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
 
 3. Selecteer **Klanten** aan de linkerkant.
 
@@ -95,18 +95,18 @@ Dit artikel is van toepassing op factureringsrekeningen voor Microsoft Partner-o
    |Status|Definitie|
    |---------|---------|
    |Wordt uitgevoerd|De gebruiker heeft de overdrachtsaanvraag niet geaccepteerd|
-   |Verwerken|De gebruiker heeft de overdrachtsaanvraag geaccepteerd. Facturering voor abonnementen die de gebruiker heeft geselecteerd, wordt overgebracht naar uw account|
+   |Wordt verwerkt|De gebruiker heeft de overdrachtsaanvraag geaccepteerd. Facturering voor abonnementen die de gebruiker heeft geselecteerd, wordt overgebracht naar uw account|
    |Voltooid| De facturering voor abonnementen die de gebruiker heeft geselecteerd, wordt overgebracht naar uw account|
    |Voltooid met fouten|De aanvraag is voltooid, maar de facturering voor sommige abonnementen die de gebruiker heeft geselecteerd, kan niet worden overgedragen|
    |Verlopen|De gebruiker heeft de aanvraag niet op tijd geaccepteerd en de aanvraag is verlopen|
    |Geannuleerd|Iemand met toegang tot de overdrachtsaanvraag heeft de aanvraag geannuleerd|
    |Geweigerd|De gebruiker heeft de overdrachtsaanvraag geweigerd|
 
-6. Selecteer een overdrachtsaanvraag om details weer te geven. Op de pagina Details van overdracht wordt de volgende informatie weer gegeven: ![scherm opname van de lijst met verzonden abonnementen](./media/mpa-request-ownership/mpa-transfer-completed.png)
+6. Selecteer een overdrachtsaanvraag om details weer te geven. Op de pagina met overdrachtsdetails wordt de volgende informatie weergegeven: ![Schermopname van de lijst van overgedragen abonnementen](./media/mpa-request-ownership/mpa-transfer-completed.png)
 
    |Kolom  |Definitie|
    |---------|---------|
-   |Id van overdrachtsaanvraag|De unieke id voor uw overdrachtsaanvraag. Als u een ondersteuningsaanvraag indient, deelt u deze id met de Azure-ondersteuning om uw ondersteuningsaanvraag te versnellen|
+   |Id van overdrachtsaanvraag|De unieke id voor uw overdrachtsaanvraag. Als u een ondersteuningsaanvraag indient, deelt u de id met de ondersteuning van Azure om uw ondersteuningsaanvraag te versnellen|
    |Overdracht aangevraagd op|De datum waarop de overdrachtsaanvraag is verzonden|
    |Overdracht aangevraagd door|Het e-mailadres van de gebruiker die de overdrachtsaanvraag heeft verzonden|
    |Overdrachtsaanvraag verloopt op| De datum waarop de overdrachtsaanvraag verloopt|
@@ -148,7 +148,7 @@ Azure-reserveringen worden niet automatisch verplaatst met abonnementen. [Neem c
 
 ### <a name="access-to-azure-services"></a>Toegang tot Azure-services
 
-Toegang voor bestaande gebruikers, groepen of service-principals die zijn toegewezen met behulp van [Azure RBAC (op rollen gebaseerd toegangs beheer)](../../role-based-access-control/overview.md) wordt niet beïnvloed tijdens de overgang. De partner krijgt geen nieuwe RBAC-toegang tot de abonnementen.  
+Toegang voor bestaande gebruikers, groepen of service-principals die is toegewezen met behulp van [Azure RBAC (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/overview.md) wordt niet beïnvloed tijdens de overgang. De partner krijgt geen nieuwe RBAC-toegang tot de abonnementen.  
 
 De partners moeten samenwerken met de klant om toegang te krijgen tot abonnementen.  De partners moeten [Beheer namens - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) of [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider)-toegang krijgen om ondersteuningstickets te openen.
 

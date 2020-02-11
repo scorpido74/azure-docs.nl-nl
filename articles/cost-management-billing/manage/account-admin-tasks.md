@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: banders
-ms.openlocfilehash: 2fadd0b6eb0951031a9d577b2fd3a3d497076dd8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: dfee9218f1e65189117c3d37808a303cf7568cd7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75990110"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76846225"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Taken van accountbeheerders in de Azure-portal
 
@@ -29,13 +29,18 @@ U moet de accountbeheerder zijn om deze taken te kunnen uitvoeren.
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Naar de betalingswijzen voor uw abonnement navigeren
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com). 
+
 1. Zoek naar **Kostenbeheer en facturering**.
     
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/account-admin-tasks/search-bar.png)
 
-1. Selecteer het abonnement waar u de creditcard aan wilt toevoegen in de lijst **Mijn abonnementen**.
-    ![Schermopname van het overzicht van Mijn abonnementen](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+1. Selecteer het abonnement waar u de creditcard aan wilt toevoegen in de lijst **Mijn abonnementen**. 
+   
+   ![Schermopname van het overzicht van Mijn abonnementen](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+   
+   > [!NOTE]
+   > Als u sommige van uw abonnementen hier niet ziet, kan het zijn dat u de map voor het abonnement op een bepaald moment hebt gewijzigd. Voor deze abonnementen moet u weer de oorspronkelijke map instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2. 
 
 1. Selecteer **Betalingswijzen**.
 
@@ -119,10 +124,13 @@ De bestedingslimiet is niet beschikbaar voor abonnementen met toezeggingsplannen
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/account-admin-tasks/search-bar.png)
 
-1. Selecteer uw Visual Studio Enterprise-abonnement in de lijst **Mijn abonnementen**.
-    
-    ![Schermopname van het overzicht van Mijn abonnementen](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+1. Selecteer uw Visual Studio Enterprise-abonnement in de lijst **Mijn abonnementen**. 
 
+   ![Schermopname van het overzicht van Mijn abonnementen](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > Als u sommige van uw Visual Studio-abonnementen hier niet ziet, kan het zijn dat u de map voor een abonnement op een bepaald moment hebt gewijzigd. Voor deze abonnementen moet u weer de oorspronkelijke map instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2.
+    
 1. Klik in het abonnementsoverzicht op de oranje banner om de bestedingslimiet te verwijderen.
     
     ![Schermopname met banner voor het verwijderen van de bestedingslimiet](./media/account-admin-tasks/msdn-remove-spending-limit-banner-x.png)
@@ -144,10 +152,13 @@ Als u een abonnement voor Azure in Open Licensing hebt, kunt u in de Azure-porta
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering ](./media/account-admin-tasks/search-bar.png)
 
-1. Selecteer uw Azure in Open-abonnement in de lijst **Mijn abonnementen**.
-   
+1. Selecteer uw Azure in Open-abonnement in de lijst **Mijn abonnementen**. 
+
     ![Schermopname van het overzicht van Mijn abonnementen](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
+   > [!NOTE]
+   > Als u uw abonnement hier niet ziet, kan het zijn dat u de map voor het abonnement op een bepaald moment hebt gewijzigd. U moet weer de oorspronkelijke map voor het abonnement instellen (de map waarin u zich voor het eerst hebt geregistreerd). Herhaal vervolgens stap 2.
+    
 1. Selecteer **Tegoedgeschiedenis**.
     
     ![Schermopname waarop Tegoedgeschiedenis is geselecteerd](./media/account-admin-tasks/aio-credit-history-blade.png)

@@ -42,9 +42,9 @@
       href: openvpn-azure-ad-tenant.md
     - name: Meervoudige verificatie (MFA) inschakelen voor een gebruikers-VPN
       href: openvpn-azure-ad-mfa.md
-    - name: Azure Active Directory-verificatie instellen voor gebruikers-VPN (preview)
+    - name: Azure AD-verificatie configureren voor gebruikers-VPN
       href: virtual-wan-point-to-site-azure-ad.md
-    - name: Azure Active Directory-verificatie met meerde toepassingen instellen voor gebruikers-VPN (preview)
+    - name: Azure Active Directory-verificatie met meerde toepassingen instellen voor gebruikers-VPN
       href: openvpn-azure-ad-tenant-multi-app.md
     - name: Automatisering configureren (Virtual WAN-partners)
       href: virtual-wan-configure-automation-providers.md

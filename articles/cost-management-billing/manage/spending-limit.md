@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: banders
 ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76314120"
 ---
 # <a name="azure-spending-limit"></a>Bestedingslimiet voor Azure
@@ -42,18 +42,18 @@ U kunt de bestedingslimiet op elk gewenst moment verwijderen zolang er een geldi
 
 Ga als volgt te werk om de bestedingslimiet te verwijderen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Navigeer naar **abonnementen**.
-1. Selecteer uw abonnement. Bijvoorbeeld *Visual Studio Enter prise*.
-1. Selecteer boven aan de pagina **beheren**. U wordt omgeleid naar https://account.azure.com/. Selecteer aan de rechter kant van de pagina **bestedings limiet verwijderen**.  
-  ![voor beeld van het verwijderen van bestedings limiet](./media/spending-limit/account-azure-com-spending-limit.png)
-1. U wordt teruggeleid naar de Azure Portal. Selecteer een optie die geschikt is voor u en selecteer vervolgens een betalings wijze. Selecteer **Finish**.  
-  ![Selecteer een optie om de bestedings limiet te verwijderen](./media/spending-limit/remove-spending-limit.png)
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Ga naar **Abonnementen**.
+1. Selecteer uw abonnement. Selecteer bijvoorbeeld *Visual Studio Enterprise*.
+1. Selecteer **Beheren** bovenaan de pagina. U wordt omgeleid naar https://account.azure.com/. Selecteer **Bestedingslimiet verwijderen** aan de rechterkant van de pagina.  
+  ![Voorbeeld met de optie Bestedingslimiet verwijderen](./media/spending-limit/account-azure-com-spending-limit.png)
+1. U wordt teruggeleid naar de Azure-portal. Selecteer een optie die geschikt is voor u en selecteer vervolgens een betalingswijze. Selecteer **Finish**.  
+  ![Een optie selecteren om de bestedingslimiet te verwijderen](./media/spending-limit/remove-spending-limit.png)
 
 | Optie | Effect |
 | --- | --- |
-| Bestedingslimiet voor onbepaalde tijd verwijderen | Hiermee wordt de bestedingslimiet verwijderd, zonder dat deze automatisch weer wordt ingeschakeld aan het begin van de volgende factureringsperiode. |
-| Bestedingslimiet voor de huidige factureringsperiode verwijderen | Hiermee wordt de bestedingslimiet verwijderd, waarna deze automatisch weer wordt ingeschakeld aan het begin van de volgende factureringsperiode. |
+| Bestedingslimiet voor onbepaalde tijd verwijderen | Hiermee wordt de bestedingslimiet verwijderd zonder dat deze aan het begin van de volgende factureringsperiode automatisch weer wordt ingeschakeld. |
+| Bestedingslimiet voor de huidige factureringsperiode verwijderen | Hiermee wordt de bestedingslimiet verwijderd waarna deze automatisch weer wordt ingeschakeld aan het begin van de volgende factureringsperiode. |
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>Waarom u de bestedingslimiet zou willen verwijderen
 
@@ -68,7 +68,7 @@ De bestedingslimiet kan ervoor zorgen dat u bepaalde Microsoft-services en servi
 Deze functie is alleen beschikbaar wanneer de bestedingslimiet voor onbepaalde tijd is verwijderd voor abonnementstypen met tegoeden die zijn verspreid over meerdere maanden. U kunt deze functie gebruiken om uw bestedingslimiet automatisch aan het begin van de volgende factureringsperiode in te schakelen.
 
 1. Meld u aan bij het [Accountcentrum](https://account.windowsazure.com/Subscriptions).
-1. Selecteer de gele banner om de optie voor de bestedings limiet te wijzigen.
+1. Selecteer de gele banner om de optie voor de bestedingslimiet te wijzigen.
 1. Kies **Bestedingslimiet inschakelen in de volgende factureringsperiode \<begindatum van de factureringsperiode\>**
 
 ## <a name="custom-spending-limit"></a>Aangepast bestedingslimiet
@@ -83,7 +83,7 @@ Aangepaste bestedingslimieten zijn niet beschikbaar.
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
-Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
+Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 - Voer een upgrade uit naar abonnement met prijzen voor [betalen per gebruik](upgrade-azure-subscription.md).

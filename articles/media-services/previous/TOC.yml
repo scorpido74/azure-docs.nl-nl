@@ -255,8 +255,6 @@
         - name: On-premises coderingsprogramma's configureren voor gebruik met cloudcoderingsprogramma's
           href: media-services-live-encoders-overview.md
           items:
-            - name: FMLE-coderingsprogramma
-              href: media-services-configure-fmle-live-encoder.md
             - name: Haivision KB-coderingsprogramma
               href: media-services-configure-kb-live-encoder.md
             - name: NewTek TriCaster-coderingsprogramma

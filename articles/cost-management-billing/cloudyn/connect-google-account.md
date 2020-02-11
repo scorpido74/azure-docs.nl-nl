@@ -1,78 +1,77 @@
 ---
-title: Verbinding maken met een account van Google Cloud Platform aan Cloudyn in Azure | Microsoft Docs
-description: Verbinding maken met een account van Google Cloud Platform om kosten en gebruiksgegevens in Cloudyn-rapporten weer te geven.
-services: cost-management
+title: Een Google Cloud Platform-account verbinden met Cloudyn in Azure | Microsoft Docs
+description: Lees hoe u een Google Cloud Platform-account kunt verbinden om kosten en gebruiksgegevens te bekijken in Cloudyn-rapporten.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 8849811560c7e3d35a40b4725dbbb63c82745123
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 09989337b2e78277c6182630ce0f1cdf57a0e0c1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75994569"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76770187"
 ---
-# <a name="connect-a-google-cloud-platform-account"></a>Verbinding maken met een account van Google Cloud Platform
+# <a name="connect-a-google-cloud-platform-account"></a>Een Google Cloud Platform-account verbinden
 
-U kunt uw bestaande Google Cloud Platform-account verbinding maken met Cloudyn. Nadat u uw account met Cloudyn verbonden, is kosten en gebruiksgegevens beschikbaar in Cloudyn-rapporten. In dit artikel helpt u bij het configureren en verbinden van uw Google-account met Cloudyn.
+U kunt uw bestaande Google Cloud Platform-account verbinden met Cloudyn. Nadat u uw account hebt verbonden met Cloudyn, zijn kosten en gebruiksgegevens beschikbaar in Cloudyn-rapporten. Dit artikel helpt u bij het configureren en verbinden van uw Google-account met Cloudyn.
 
 
-## <a name="collect-project-information"></a>Gegevens verzamelen
+## <a name="collect-project-information"></a>Projectgegevens verzamelen
 
-Begint u met het verzamelen van gegevens over uw project.
+U begint met het verzamelen van gegevens over uw project.
 
-1. Aanmelden bij de Google Cloud Platform-console op [ https://console.cloud.google.com ](https://console.cloud.google.com).
-2. Lees de projectinformatie die u voorbereiden naar Cloudyn en noteer wilt de **projectnaam** en de **Project-ID**. De gegevens voor de latere fasen bij de hand te houden.  
-    ![Naam van het project en Project-ID wordt weergegeven in de Google Cloud Platform-console](./media/connect-google-account/gcp-console01.png)
-3. Als u facturering niet is ingeschakeld en is gekoppeld aan uw project, maakt u een factureringsaccount. Zie voor meer informatie, [maken van een nieuwe factureringsaccount](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
+1. Meld u aan bij de Google Cloud Platform-console op [https://console.cloud.google.com](https://console.cloud.google.com).
+2. Controleer de projectgegevens die u wilt overbrengen naar Cloudyn en noteer de waarden van **Projectnaam** en **Project-ID**. Bewaar deze gegevens voor latere stappen.  
+    ![Projectnaam en project-id in de Google Cloud Platform-console](./media/connect-google-account/gcp-console01.png)
+3. Als facturering niet is ingeschakeld en aan uw project is gekoppeld, maakt u een factureringsaccount. Zie [Create, Modify, or Close Your Cloud Billing Account](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account) voor meer informatie.
 
-## <a name="enable-storage-bucket-billing-export"></a>Opslag bucket facturering exporteren inschakelen
+## <a name="enable-storage-bucket-billing-export"></a>Exporteren van facturering uit opslagbucket inschakelen
 
-Uw Google-factureringsgegevens Cloudyn opgehaald uit een bucket van opslag. Houd de **Bucketnaam** en **rapport voorvoegsel** informatie handig voor later gebruik tijdens de registratie van Cloudyn.
+Cloudyn haalt uw Google-factureringsgegevens op uit een opslagbucket. Bewaar de waarden voor **Bucketnaam** en **Rapportvoorvoegsel** voor later gebruik tijdens Cloudyn-registratie.
 
-Google Cloud Storage gebruiken voor het opslaan van rapporten over gebruik leidt tot minimale kosten. Zie voor meer informatie, [prijzen voor Cloud Storage](https://cloud.google.com/storage/pricing).
+Als u Google Cloud Storage gebruikt voor het opslaan van gebruiksrapporten, worden er minimale kosten in rekening gebracht. Zie [Prijzen voor Cloud Storage](https://cloud.google.com/storage/pricing) voor meer informatie.
 
-1. Als u facturering exporteren naar een bestand niet hebt ingeschakeld, volgt u de instructies op de [inschakelen facturering exporteren naar een bestand](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). U kunt de exportindeling van de JSON- of CSV-facturering.
-2. Anders wordt in de Google Cloud Platform-console, Ga naar **facturering** > **facturering export**. Houd er rekening mee uw facturering **Bucketnaam** en **rapport voorvoegsel**.  
-    ![Facturering export informatie die wordt weergegeven op de pagina voor het exporteren van facturering](./media/connect-google-account/billing-export.png)
+1. Als u het factuurexport naar een bestand niet hebt ingeschakeld, volgt u de instructies in [Hoe u factuurexport naar een bestand kunt inschakelen](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). U kunt de indeling JSON of CSV gebruiken voor factuurexport.
+2. Ga anders in de Google Cloud Platform-console naar **Facturering** > **Facturering exporteren**. Noteer de waarden voor **Bucketnaam** en **Rapportvoorvoegsel**.  
+    ![Gegevens voor factuurexport op de pagina Facturering exporteren](./media/connect-google-account/billing-export.png)
 
-## <a name="enable-google-cloud-platform-apis"></a>Google Cloud Platform-API's inschakelen
+## <a name="enable-google-cloud-platform-apis"></a>API's van Google Cloud Platform inschakelen
 
-Voor het verzamelen van gebruiks-en asset nodig Cloudyn heeft de volgende Google Cloud Platform-API's ingeschakeld:
+Cloudyn kan alleen gegevens over het gebruik en assets verzamelen als de volgende Google Cloud Platform-API's zijn ingeschakeld voor Cloudyn:
 
 - BigQuery API
 - Google Cloud SQL
 - Google Cloud Datastore API
 - Google Cloud Storage
-- JSON-API van Google Cloud Storage
-- Google Compute Engine-API
+- Google Cloud Storage
+- Google Compute Engine API
 
-### <a name="enable-or-verify-apis"></a>In- of API's controleren
+### <a name="enable-or-verify-apis"></a>API's inschakelen of verifiëren
 
-1. Selecteer het project dat u wilt registreren bij Cloudyn in de Google Cloud Platform-console.
-2. Navigeer naar **API's en Services** > **bibliotheek**.
-3. Zoeken gebruiken om dat elke API voor de eerder vermelde.
-4. Controleer voor elke API **API ingeschakeld** wordt weergegeven. Klik anders op **inschakelen**.
+1. Selecteer in de Google Cloud Platform-console het project dat u wilt registreren bij Cloudyn.
+2. Ga naar **API's en services** > **Bibliotheek**.
+3. Gebruik het zoekvak om eerder vermelde API's te vinden.
+4. Controleer voor elke API of **API ingeschakeld** wordt weergegeven. Klik op **INSCHAKELEN** als dat niet zo is.
 
 ## <a name="add-a-google-cloud-account-to-cloudyn"></a>Een Google Cloud-account toevoegen aan Cloudyn
 
-1. Open de Cloudyn-portal vanuit Azure portal of Ga naar [ https://azure.cloudyn.com ](https://azure.cloudyn.com/) en meld u aan.
-2. Klik op **instellingen** (symbol tandwiel) en selecteer vervolgens **Cloudaccounts**.
-3. In **Accounts Management**, selecteer de **Google-Accounts** tabblad en klik vervolgens op **nieuwe toevoegen +** .
-4. In **Google-accountnaam**, voer het e-mailadres voor de facturering account en klik vervolgens op **volgende**.
-5. In het dialoogvenster voor Google-verificatie, selecteer of typ een Google-account en vervolgens **toestaan** cloudyn.com toegang tot uw account.
-6. De gegevens van de aanvraag-project toevoegen dat u al vorige die u hebt genoteerd. Dit zijn onder andere **Project-ID**, **Project** naam **facturering** Bucketnaam, en **facturering bestand** voorvoegsel rapport en klik vervolgens op  **Sla**.  
+1. Open de Cloudyn-portal vanuit de Azure-portal of ga naar [https://azure.cloudyn.com](https://azure.cloudyn.com/) en meld u aan.
+2. Klik op **Settings** (het tandwiel) en selecteer vervolgens **Cloud Accounts**.
+3. Selecteer in **Accounts Management** het tabblad **Google Accounts** en klik op **Add new +** .
+4. Voer bij **Google Account Name**het e-mailadres voor het factureringsaccount in en klik vervolgens op **Next**.
+5. Selecteer of typ een Google-account in het verificatievenster van Google en selecteer vervolgens **ALLOW** om cloudyn.com toegang te geven tot uw account.
+6. Voeg de gevraagde projectgegevens toe die u eerder hebt genoteerd. Het gaat om **Project ID**, naam van **Project**, naam van bucket voor **billing** en rapportvoorvoegsel voor **billing file**. Klik vervolgens op **Save**.  
     ![Google-project toevoegen aan Cloudyn-account](./media/connect-google-account/add-project.png)
 
-Uw Google-account wordt weergegeven in de lijst van accounts en moet er **geverifieerde**. Klik hieronder moet uw Google-project de naam en ID worden weergegeven en hebben een groen vinkje symbool. Status van de account moet zijn **voltooid**.
+Uw Google-account wordt weergegeven in de lijst met accounts met de vermelding **Authenticated**. Onder het account moeten de naam en de id van het Google-project worden vermeld, gemarkeerd met een groen vinkje. De accountstatus moet **Completed** zijn.
 
-Binnen een paar uur rapporten Cloudyn met gegevens over de kosten en gebruik van Google.
+Binnen een paar uur bevatten Cloudyn-rapporten gegevens over de kosten en het gebruik van Google.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voor meer informatie over Cloudyn, blijven de [gebruik en kosten bekijken](tutorial-review-usage.md) voor Cloudyn.
+- Als u meer wilt weten over Cloudyn, gaat u verder met de zelfstudie [Gebruik en kosten bekijken](tutorial-review-usage.md) voor Cloudyn.

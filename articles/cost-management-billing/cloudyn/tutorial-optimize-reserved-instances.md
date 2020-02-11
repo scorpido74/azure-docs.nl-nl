@@ -1,7 +1,6 @@
 ---
-title: Zelf studie-de kosten van het gereserveerde exemplaar optimaliseren met Cloudyn-Azure
+title: 'Zelfstudie: kosten van gereserveerde instanties optimaliseren met Cloudyn in Azure'
 description: In deze zelfstudie leert u hoe u de kosten van gereserveerde instanties voor Azure en Amazon Web Services (AWS) kunt optimaliseren.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -9,18 +8,18 @@ ms.date: 05/20/2019
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
-manager: benshy
-ms.openlocfilehash: c1afad7cb36916777b2f6cefa40b9bd1ddc465a2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.reviewer: benshy
+ms.openlocfilehash: 9b0dbc31f3789cb0033a531ad6c5395d3cfb8bcc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987087"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769946"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
 
-# <a name="tutorial-optimize-reserved-instances"></a>Zelfstudie: gereserveerde instanties optimaliseren
+# <a name="tutorial-optimize-reserved-instances"></a>Zelfstudie: Gereserveerde instanties optimaliseren
 
 In deze zelfstudie leert u hoe u de kosten en het gebruik van gereserveerde instanties voor Azure en Amazon Web Services (AWS) kunt optimaliseren met Cloudyn. Een gereserveerde instantie bij een provider van cloudservices is een verplichting tot een langetermijncontract waarbij u zich vooraf verplicht tot toekomstig gebruik van de virtuele machine. Dit kan mogelijk aanzienlijke besparingen bieden in vergelijking met het prijsmodel voor virtuele machines waarbij u betaalt op basis van gebruik. Mogelijke besparingen worden alleen gerealiseerd wanneer u de capaciteit van uw gereserveerde instanties volledig gebruikt.
 

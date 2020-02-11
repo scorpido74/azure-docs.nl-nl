@@ -1,6 +1,6 @@
 ---
-title: Bekijk de factuur van uw micro soft-partner overeenkomst-Azure
-description: Meer informatie over het gebruik van het factuur-en Resource verbruik en voor het verifiëren van de kosten voor uw micro soft-partner overeenkomst.
+title: Uw factuur voor uw Microsoft-partnerovereenkomst controleren - Azure
+description: Lees hoe u uw factuur en het resourceverbruik controleert, evenals kosten voor uw Microsoft Partnerovereenkomst.
 author: jureid
 manager: jureid
 tags: billing
@@ -12,32 +12,32 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: banders
 ms.openlocfilehash: e3823a9eb2e0713f7f42e4e02808ef957efc5944
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990838"
 ---
-# <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Zelf studie: uw factuur voor micro soft-partner overeenkomst controleren
+# <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Zelfstudie: Uw factuur voor uw Microsoft-partnerovereenkomst controleren
 
- In de factureringsrekening voor een Microsoft Partner-overeenkomst wordt elke maand een factuur voor elk factureringsprofiel gegenereerd. De factuur bevat alle klantkosten van de vorige maand. U krijgt meer inzicht in de kosten op uw factuur door de afzonderlijke transacties te analyseren in de Azure-portal. U kunt ook uw facturen weer geven in de Azure Portal en de kosten vergelijken met het detail bestand voor gebruik.
+ In de factureringsrekening voor een Microsoft Partner-overeenkomst wordt elke maand een factuur voor elk factureringsprofiel gegenereerd. De factuur bevat alle klantkosten van de vorige maand. U krijgt meer inzicht in de kosten op uw factuur door de afzonderlijke transacties te analyseren in de Azure-portal. U kunt ook uw facturen weergeven in de Azure-portal en de kosten vergelijken met het bestand met gebruiksgegevens.
 
 Zie [hoe u facturen kunt downloaden vanuit de Azure-portal ](download-azure-invoice.md) voor meer informatie.
 
-Deze zelf studie is alleen van toepassing op Azure-partners met een micro soft-partner overeenkomst.
+Deze zelfstudie is alleen van toepassing op Azure-partners met een Microsoft Partner-overeenkomst.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Gefactureerde trans acties in de Azure Portal controleren
+> * Gefactureerde transacties controleren in de Azure-portal
 > * Bekijk de openstaande kosten om een schatting te maken van uw volgende factuur
 > * Uw Azure-gebruikskosten analyseren
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet toegang hebben tot een facturerings account voor een micro soft-partner overeenkomst.
+Toegang tot een factureringsaccount voor een Microsoft Partner-overeenkomst.
 
-Deze moet meer dan 30 dagen na de dag waarop u bent geabonneerd op Azure. Azure factureert u aan het einde van uw factureringsperiode.
+Het moet meer dan 30 dagen geleden zijn dat u zich geabonneerd hebt op Azure. Azure factureert u aan het einde van uw factureringsperiode.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -47,21 +47,21 @@ Deze moet meer dan 30 dagen na de dag waarop u bent geabonneerd op Azure. Azure 
 
 Controleer het type overeenkomst om te bepalen of u toegang hebt tot een factureringsrekening voor een Microsoft Partner-overeenkomst.
 
-Typ in het Azure Portal *kosten beheer en facturering* in het zoekvak en selecteer vervolgens **Cost Management + facturering**.
+Typ in de Azure-portal *kostenbeheer en facturering* in het zoekvak en selecteer vervolgens **Kostenbeheer en facturering**.
 
-![Schermopname van zoekopdracht in de Azure-portal](./media/review-partner-agreement-bill/billing-search-cost-management-billing.png)
+![Schermopname van de zoekopdracht in de Azure-portal](./media/review-partner-agreement-bill/billing-search-cost-management-billing.png)
 
 Als u toegang hebt tot slechts één factureringsbereik, selecteert u **Eigenschappen** aan de linkerkant. U hebt toegang tot een factureringsaccount voor een Microsoft Partner-overeenkomst als het type factureringsrekening **Microsoft Partner-overeenkomst** is.
 
-![Scherm opname van de micro soft-partner overeenkomst in de pagina eigenschappen](./media/review-partner-agreement-bill/billing-account-properties-partner-agreement.png)
+![Schermopname van de Microsoft Partner-overeenkomst op de pagina Eigenschappen](./media/review-partner-agreement-bill/billing-account-properties-partner-agreement.png)
 
 Als u toegang hebt tot meerdere factureringsbereiken, controleert u het type in de kolom voor de factureringsrekening. U hebt toegang tot een factureringsrekening voor een Microsoft Partner-overeenkomst als het type factureringsaccount voor een of meer van de bereiken **Microsoft Partner-overeenkomst**.
 
-![Scherm opname van de micro soft-partner overeenkomst in de lijst pagina met facturerings accounts](./media/review-partner-agreement-bill/mpa-in-the-list.png)
+![Schermopname met Microsoft Partner-overeenkomst op de pagina met een lijst van factureringsaccounts](./media/review-partner-agreement-bill/mpa-in-the-list.png)
 
-## <a name="review-invoiced-transactions-in-the-azure-portal"></a>Gefactureerde trans acties in de Azure Portal controleren
+## <a name="review-invoiced-transactions-in-the-azure-portal"></a>Gefactureerde transacties controleren in de Azure-portal
 
-Selecteer in Cost Management en facturering **alle trans acties** aan de linkerkant van de pagina. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount, een factureringsprofiel of een klant selecteren en vervolgens **Alle transacties**.
+Selecteer in Kostenbeheer en facturering **Alle transacties** aan de linkerkant van de pagina. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount, een factureringsprofiel of een klant selecteren en vervolgens **Alle transacties**.
 
 De pagina Alle transacties geeft de volgende informatie weer:
 
@@ -69,15 +69,15 @@ De pagina Alle transacties geeft de volgende informatie weer:
 
 |Kolom  |Definitie  |
 |---------|---------|
-|Datum     | Transactiedatum  |
+|Date     | Transactiedatum  |
 |Factuur-id     | De identificatie van de factuur waarop de transactie is gefactureerd. Als u een ondersteuningsaanvraag indient, deelt u deze id met de Azure-ondersteuning om uw ondersteuningsaanvraag te versnellen |
 |Transactietype     |  Het type transactie, bijvoorbeeld aankoop-, annulerings- of gebruikskosten  |
 |Productfamilie     | De categorie van producten, zoals berekening voor virtuele machines of database voor Azure SQL-database|
-|Product SDKU     | Een unieke code die het exemplaar van uw product identificeert |
-|Bedrag     |  Het aantal transacties      |
+|Product-SKU     | Een unieke code die het exemplaar van uw product identificeert |
+|Aantal     |  Het aantal transacties      |
 |Factureringsprofiel     | De transactie wordt weergegeven in deze factuur van het factureringsprofiel |
 
-Zoek naar een factuur-ID om de trans acties voor de factuur te filteren.
+Zoek op factuur-id om de transacties voor de betreffende factuur te filteren.
 
 ## <a name="review-pending-charges-to-estimate-your-next-invoice"></a>Bekijk de openstaande kosten om een schatting te maken van uw volgende factuur
 
@@ -87,7 +87,7 @@ De kosten worden geschat en als openstaande kosten beschouwd totdat ze worden ge
 
 Wanneer u de openstaande kosten identificeert, krijgt u inzicht in de kosten door de afzonderlijke transacties te analyseren die aan de kosten hebben bijgedragen. Op dit moment worden openstaande gebruikskosten niet weergegeven op de pagina Alle transacties. U kunt de openstaande gebruikskosten weergeven op de Azure-abonnementenpagina.
 
-Selecteer een facturerings profiel in Cost Management en facturering. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount selecteren. Vanuit het factureringsaccount selecteert u **Factureringsprofielen** en vervolgens een factureringsprofiel.
+Selecteer een factureringsprofiel in Kostenbeheer en facturering. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount selecteren. Vanuit het factureringsaccount selecteert u **Factureringsprofielen** en vervolgens een factureringsprofiel.
 
 Selecteer **Alle transacties** aan de linkerkant van de pagina.
 
@@ -97,7 +97,7 @@ Zoek op *Openstaand*. Gebruik de filter **Periode** om de openstaande kosten voo
 
 ### <a name="view-pending-charges-by-customer"></a>Openstaande kosten per klant weergeven
 
-Selecteer een facturerings profiel in Cost Management en facturering. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount selecteren. Vanuit het factureringsaccount selecteert u **Factureringsprofielen** en vervolgens een factureringsprofiel.
+Selecteer een factureringsprofiel in Kostenbeheer en facturering. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount selecteren. Vanuit het factureringsaccount selecteert u **Factureringsprofielen** en vervolgens een factureringsprofiel.
 
 Selecteer **Klanten** links op de pagina.
 
@@ -107,7 +107,7 @@ Op de pagina Klanten worden de kosten voor de huidige en vorige maand weergegeve
 
 ### <a name="view-pending-usage-charges"></a>Openstaande gebruikskosten weergeven
 
-Selecteer een facturerings profiel in Cost Management en facturering. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount selecteren. Vanuit het factureringsaccount selecteert u **Factureringsprofielen** en vervolgens een factureringsprofiel.
+Selecteer een factureringsprofiel in Kostenbeheer en facturering. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount selecteren. Vanuit het factureringsaccount selecteert u **Factureringsprofielen** en vervolgens een factureringsprofiel.
 
 Selecteer **Azure-abonnementen** links op de pagina. De pagina Azure-abonnementen geeft de kosten voor elk abonnement voor de huidige en vorige maand weer in het factureringsprofiel. De maandkosten tot heden zijn de openstaande kosten voor de huidige maand en worden gefactureerd wanneer de factuur voor deze maand wordt gegenereerd. Als de factuur van de vorige maand nog steeds niet is gegenereerd, dan zijn de kosten van vorige maand ook openstaand.
 
@@ -127,14 +127,14 @@ Als u uw factuur al hebt betaald, kunt u de status van de betaling controleren o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Gefactureerde trans acties in de Azure Portal controleren
+> * Gefactureerde transacties controleren in de Azure-portal
 > * Bekijk de openstaande kosten om een schatting te maken van uw volgende factuur
 > * Uw Azure-gebruikskosten analyseren
 
-Meer informatie over het gebruik van Azure Cost Management voor partners.
+Lees meer over Azure Cost Management voor partners.
 
 > [!div class="nextstepaction"]
 > [Aan de slag met Azure Cost Management voor partners](../costs/get-started-partners.md)

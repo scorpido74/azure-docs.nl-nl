@@ -15,10 +15,10 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: e183a622910c7690b566537311661789253efbfb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75992723"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Kosten beheren met Azure Budgets
@@ -135,7 +135,7 @@ Elke logische app moet beginnen met een trigger, die wordt geactiveerd wanneer e
 3.  Selecteer **Nieuwe stap** > **Een actie toevoegen**.
 
     ![Azure - Nieuwe stap - Een actie toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-4.  Zoek naar ' JSON parseren ' in het zoekvak van **Logic apps Designer** om de [actie](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) **gegevens bewerkingen-JSON parseren** te zoeken en te selecteren.
+4.  Zoek naar 'JSON parseren' in het zoekvak van **Ontwerp van logische apps** om de [actie](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts) **Gegevensbewerkingen - JSON parseren** te zoeken.
 
     ![Azure - Logische app - De actie JSON parseren toevoegen](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 5.  Voer 'Nettolading' in als de naam voor de **Inhoud** van de nettolading JSON parseren, of gebruik de tag 'Hoofdtekst' voor dynamische inhoud.

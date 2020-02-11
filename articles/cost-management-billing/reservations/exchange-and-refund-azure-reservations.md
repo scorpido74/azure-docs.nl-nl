@@ -1,5 +1,5 @@
 ---
-title: Selfserviceopties voor inruilen en retourneren voor Azure Reservations
+title: Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen
 description: Meer informatie over hoe u Azure-reserveringen kunt inwisselen of retourneren.
 author: yashesvi
 manager: yashesvi
@@ -8,18 +8,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2020
+ms.date: 01/24/2020
 ms.author: banders
-ms.openlocfilehash: ea545919436201524a1c77b27e9b187f3b1c3b64
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
-ms.translationtype: MT
+ms.openlocfilehash: 5f0c0c50ffd639109fdbb90c76e4ec036a8bc975
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314042"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76773884"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Selfserviceopties voor inruilen en retourneren voor Azure Reservations
 
-Azure-reserveringen bieden flexibiliteit om te voldoen aan uw evoluerende behoeften. U kunt een reservering inwisselen voor een andere reservering van hetzelfde type. U kunt ook een restitutie (tot USD 50.000 per jaar) voor een reservering aanvragen als u deze niet meer nodig hebt. De maximum limiet van de restitutie is van toepassing op alle reserve ringen binnen het bereik van uw overeenkomst met micro soft.
+Azure-reserveringen bieden flexibiliteit om te voldoen aan uw evoluerende behoeften. U kunt een reservering inwisselen voor een andere reservering van hetzelfde type. U kunt ook een restitutie (tot USD 50.000 per jaar) voor een reservering aanvragen als u deze niet meer nodig hebt. De maximumlimiet van de restitutie geldt voor alle reserveringen binnen het bereik van uw overeenkomst met Microsoft.
 
 De selfserviceoptie voor inwisselen en annuleren is niet beschikbaar voor Enterprise Agreement-klanten van de Amerikaanse overheid. Andere abonnementstypen voor de Amerikaanse overheid, zoals Betalen per gebruik en CSP, worden wel ondersteund.
 
@@ -29,14 +29,14 @@ U moet eigenaarsrechten voor de reserveringsorder hebben om een bestaande reserv
 
 U kunt uw reservering inwisselen met drie snelle stappen in [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
-1. Selecteer de reserveringen waarvoor u een restitutie wilt aanvragen en klik op **Inwisselen**.  
+1. Selecteer de reserveringen waarvoor u een restitutie wilt aanvragen en selecteer **Inwisselen**.  
     ![Voorbeeldafbeelding van reserveringen om restitutie voor aan te vragen](./media/exchange-and-refund-azure-reservations/exchange-refund-return.png)
 2. Selecteer het VM-product dat u wilt aanschaffen en geef een hoeveelheid op. Zorg ervoor dat het totaal van de nieuwe aankoop hoger is dan het restitutietotaal. [Bepaal de juiste grootte voordat u overgaat tot aanschaf](../../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
     ![Voorbeeldafbeelding van het te kopen VM-product bij een inwisseling](./media/exchange-and-refund-azure-reservations/exchange-refund-select-purchase.png)
 3. Controleer en voltooi de transactie.  
     ![Voorbeeldafbeelding van het te kopen VM-product bij een inwisseling, waarbij de retournering wordt voltooid](./media/exchange-and-refund-azure-reservations/exchange-refund-confirm-exchange.png)
 
-Voor restitutie voor een reservering gaat u naar**Reserveringsgegevens** en klikt u op **Restitutie**.
+Voor restitutie voor een reservering gaat u naar**Reserveringsgegevens** en selecteert u **Restitutie**.
 
 ## <a name="how-transactions-are-processed"></a>Hoe transacties worden verwerkt
 
@@ -66,7 +66,7 @@ Azure heeft de volgende beleidsregels voor annuleringen, inwisselingen en restit
 - Alleen eigenaars van reserveringen kunnen een inwisseling verwerken. [Meer informatie over het toevoegen of wijzigen van gebruikers die een reservering kunnen beheren](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 - Een inwisseling wordt verwerkt als een restitutie en een nieuwe aankoop: er worden verschillende transacties gemaakt voor de annulering en de nieuwe aankoop. Het reserveringsbedrag naar rato wordt gerestitueerd voor de reserveringen die u inruilt. De kosten voor de nieuwe aankoop worden volledig in rekening gebracht. Het reserveringsbedrag naar rato is de dagelijkse restwaarde naar rato van de reservering die wordt geretourneerd.
 - U kunt reserveringen inwisselen of hier restitutie voor aanvragen zelfs als de Enterprise Agreement die is gebruikt om de reservering aan te schaffen is verlopen en is vernieuwd als een nieuwe overeenkomst.
-- U kunt elke reserveringseigenschap zoals grootte, regio, hoeveelheid en periode wijzigen met een inwisseling.
+- U kunt reserveringseigenschappen wijzigen zoals familie, serie, versie, SKU, regio, hoeveelheid en periode wijzigen met een inwisseling.
 - Het nieuwe aankooptotaal moet gelijk zijn aan of groter zijn dan het geretourneerde bedrag.
 - De nieuwe reservering die is gekocht als onderdeel van een inwisseling, heeft een nieuwe periode die start vanaf het moment van de inwisseling.
 - Er is geen boete of jaarlijkse limieten voor inwisselingen.
@@ -81,7 +81,7 @@ Azure heeft de volgende beleidsregels voor annuleringen, inwisselingen en restit
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Niet-Premium Storage inwisselen voor Premium Storage
 
-U kunt een reservering die is gekocht voor een VM-grootte die geen ondersteuning biedt voor Premium Storage inwisselen voor een bijbehorende VM-grootte die deze ondersteuning wel biedt. Bijvoorbeeld een _F1_ voor een _F1s_. Als u de inwisseling wilt maken, gaat u naar Reserveringsdetails en klikt u op **Inwisselen**. De periode van de gereserveerde instantie wordt niet opnieuw ingesteld door de inwisseling en er wordt ook geen nieuwe transactie gemaakt.
+U kunt een reservering die is gekocht voor een VM-grootte die geen ondersteuning biedt voor Premium Storage inwisselen voor een bijbehorende VM-grootte die deze ondersteuning wel biedt. Bijvoorbeeld een _F1_ voor een _F1s_. Als u de inwisseling wilt maken, gaat u naar Reserveringsdetails en selecteert u **Inwisselen**. De periode van de gereserveerde instantie wordt niet opnieuw ingesteld door de inwisseling en er wordt ook geen nieuwe transactie gemaakt.
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
@@ -97,4 +97,4 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
     - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](understand-reserved-instance-usage.md)
     - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)
     - [Kosten van Windows-software zijn niet inbegrepen in reserveringen](reserved-instance-windows-software-costs.md)
-    - [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](/partner-center/azure-reservations)
+    - [Azure-reserveringen in CSP-programma (Cloud Solution Provider) van partnercentrum](/partner-center/azure-reservations)

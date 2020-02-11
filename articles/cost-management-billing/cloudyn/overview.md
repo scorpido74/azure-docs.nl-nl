@@ -1,21 +1,20 @@
 ---
 title: Overzicht van Cloudyn in Azure | Microsoft Docs
 description: Cloudyn is een kostenbeheeroplossing voor meerdere clouds die helpt bij het gebruik van Azure- en andere cloudresources.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/14/2019
+ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
-manager: benshy
+ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: d4a31518dcd6fb5722fc19617b153bafb8a20f68
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: bfd00613a3949b29e2defcb6f97398a39091d0e6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987654"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76774060"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Wat is de Cloudyn-service?
 
@@ -25,42 +24,42 @@ Zie [Introduction to Azure Cloudyn](https://azure.microsoft.com/resources/videos
 
 Azure Cost Management biedt vergelijkbare functionaliteit als Cloudyn. Azure Cost Management is een systeemeigen Azure-oplossing voor kostenbeheer. Het helpt u kosten te analyseren, budgetten te maken en beheren, gegevens te exporteren en aanbevelingen voor optimalisatie te bekijken en er actie op te ondernemen om geld te besparen. Zie [Azure Cost Management](../cost-management-billing-overview.md) voor meer informatie.
 
-Bekijk de [video over Azure Cost Management en Cloudyn](https://www.youtube.com/watch?v=PmwFWwSluh8) om aanbevelingen te bekijken wanneer u een Azure Cost Management of Cloudyn moet gebruiken, op basis van uw bedrijfs behoeften.
+Bekijk de [video over Azure Cost Management en Cloudyn](https://www.youtube.com/watch?v=PmwFWwSluh8) om aanbevelingen te zien voor het gebruik van Azure Cost Management of Cloudyn, op basis van uw bedrijfsbehoeften.
 
 >[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 
-## <a name="cloudyn-features-moving-to-azure-cost-management"></a>Cloudyn-functies worden verplaatst naar Azure Cost Management
+## <a name="cloudyn-features-moving-to-azure-cost-management"></a>Cloudyn-functies worden overgebracht naar Azure Cost Management
 
-Micro soft heeft Cloudyn aangeschaft en migreert de functies voor kosten beheer van de Cloudyn Portal standaard naar Azure. Als u de nieuwe functies wilt gebruiken, meldt u zich aan bij de Azure Portal en navigeert u naar [Cost Management en facturering](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) in de lijst met Azure-Services. Vergeleken met Cloudyn biedt de systeem eigen ervaring betere prestaties en een lagere gegevens latentie van ongeveer acht uur.
+Microsoft heeft Cloudyn overgenomen en de functies voor kostenbeheer worden nu overgebracht van de Cloudyn-portal naar Azure. Als u de nieuwe functies wilt gebruiken, meldt u zich aan bij de Azure-portal en selecteert u [Kostenbeheer en facturering](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) in de lijst met Azure-services. Vergeleken met Cloudyn biedt de systeemeigen ervaring betere prestaties en een lagere gegevenslatentie van ongeveer acht uur.
 
-Migratie van belang rijke functies voor Enterprise Agreement, betalen naar gebruik-en MSDN-aanbiedings categorieën aan Azure Cost Management is voltooid. CSP-abonnementen worden gemigreerd naar Azure Cost Management.
+De migratie van belangrijke functies voor de aanbiedingscategorieën Enterprise Agreement, Betalen per gebruik en MSDN naar Azure Cost Management is voltooid. CSP-abonnementen worden inmiddels gemigreerd naar Azure Cost Management.
 
-Als u een aanbiedings categorie nog niet hebt gemigreerd, moet u de Cloudyn-Portal blijven gebruiken. Alle andere gebruikers kunnen Azure Cost Management gebruiken.
+Als u een aanbiedingscategorie hebt die nog niet is gemigreerd, moet u de Cloudyn-portal blijven gebruiken. In alle andere gevallen kunt u Azure Cost Management gebruiken.
 
-| Microsoft Azure-aanbiedingen en-functies | Aanbevolen service voor kosten beheer |
+| Aanbiedingen en functies van Microsoft Azure | Aanbevolen service voor kostenbeheer |
 | --- | --- |
 | Azure Enterprise Agreement | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
-| Azure Web direct (PAYG/MSDN) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| Azure Web Direct (PAYG/MSDN) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
 | Azure Government | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
 | Azure CSP | [Cloudyn](https://azure.cloudyn.com) |
-| Ondersteuning voor cross-Cloud Cost Analysis voor AWS (in preview-versie) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
-| Aanbevelingen voor AWS | [Cloudyn](https://azure.cloudyn.com) |
+| Ondersteuning voor kostenanalyse van clouds voor AWS (in preview) | [Azure Cost Management](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/overview) |
+| AWS-aanbevelingen | [Cloudyn](https://azure.cloudyn.com) |
 
-Enkele van de volgende functies zijn beschikbaar in Cloudyn, maar deze zijn nu beschikbaar in Azure Cost Management.
+Enkele van de volgende functies zijn beschikbaar in Cloudyn, maar alle functies zijn nu beschikbaar in Azure Cost Management.
 
 - API's
-- Aanbevelingen voor Azure compute
-- Aanbevelingen voor Azure reservering
+- Aanbevelingen voor Azure Compute
+- Aanbevelingen voor Azure-reserveringen
 - Budgetten
 - Kostenanalyse
-- Gegevens exporteren naar een Azure Storage-account
+- Gegevens exporteren naar een Azure-opslagaccount
 - Lagere latentie
-- Power BI inhouds pakket en connector
-- Ondersteuning voor resource Tags
+- Power BI-inhoudspakket en -connector
+- Ondersteuning voor resourcetags
 
 ## <a name="monitor-usage-and-spending"></a>Gebruik en uitgaven bewaken
 
-Het bewaken van uw gebruik en uitgaven is cruciaal voor cloudinfrastructuren, omdat organisaties betalen voor de resources waarvan ze gebruik maken. Als het gebruik de afgesproken drempelwaarden overschrijden, kunnen zich al snel onverwachte kostenoverschrijdingen voordoen. Enkele belang rijke factoren kunnen ad hoc-bewaking lastig maken. Ten eerste: bij het beramen van kosten op basis van gemiddeld gebruik wordt aangenomen dat uw verbruik consistent blijft gedurende een bepaalde factureringsperiode. Ten tweede: als de kosten uw budget (dreigen te) overschrijden, is het belangrijk dat u vooraf meldingen krijgt om uw bestedingen te kunnen aanpassen. Ten slotte: sommige cloudserviceproviders leveren geen kostenramingen versus drempelwaarden of rapporten met vergelijkingen tussen bepaalde perioden.
+Het bewaken van uw gebruik en uitgaven is cruciaal voor cloudinfrastructuren, omdat organisaties betalen voor de resources waarvan ze gebruik maken. Als het gebruik de afgesproken drempelwaarden overschrijden, kunnen zich al snel onverwachte kostenoverschrijdingen voordoen. Enkele belangrijke factoren kunnen ad-hocbewaking lastig maken. Ten eerste: bij het beramen van kosten op basis van gemiddeld gebruik wordt aangenomen dat uw verbruik consistent blijft gedurende een bepaalde factureringsperiode. Ten tweede: als de kosten uw budget (dreigen te) overschrijden, is het belangrijk dat u vooraf meldingen krijgt om uw bestedingen te kunnen aanpassen. Ten slotte: sommige cloudserviceproviders leveren geen kostenramingen versus drempelwaarden of rapporten met vergelijkingen tussen bepaalde perioden.
 
 Rapporten kunnen uw uitgaven helpen bewaken voor het analyseren en volgen van het gebruik van, de kosten voor en de trends in de cloud. Door rapporten met overuren te gebruiken, kunt u afwijkingen in de trends detecteren. Ondoelmatigheden in de cloudimplementatie komen naar voren in optimalisatierapporten. In kostenanalyserapporten ziet u ook ondoelmatigheden.
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 4dc7771862bc922702c5cc321fb3c566212d799a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75990565"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Facturering van abonnementen controleren met behulp van REST-API's
@@ -48,7 +48,7 @@ De volgende headers zijn vereist:
 |Aanvraagheader|Beschrijving|
 |--------------------|-----------------|
 |*Content-Type:*|Vereist. Ingesteld op `application/json`.|
-|*Authorization:*|Vereist. Stel in op een geldig `Bearer` [toegangs token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+|*Authorization:*|Vereist. Ingesteld op een geldig `Bearer` [toegangstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 ## <a name="response"></a>Antwoord
 

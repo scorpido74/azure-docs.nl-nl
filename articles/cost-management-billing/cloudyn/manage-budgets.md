@@ -1,89 +1,89 @@
 ---
-title: Cloudyn-budgetten beheren in azure
-description: Dit artikel helpt u snel budgetten maken en te beginnen met beheer van deze in Cloudyn.
+title: Cloudyn-budgetten beheren in Azure
+description: Dit artikel helpt u om snel budgetten te maken en deze te beheren in Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 3572296da8e81602e905a3d9f515e7d49067cfa4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 91a1027add615c71784b6be1261fab97aadd9f3a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75990591"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769988"
 ---
-# <a name="manage-azure-budgets-with-cloudyn"></a>Azure budgetten met Cloudyn beheren
+# <a name="manage-azure-budgets-with-cloudyn"></a>Azure-budgetten beheren met Cloudyn
 
-Opzetten van budgetten en budget gebaseerde waarschuwingen helpen bij het verbeteren van uw cloud-governance en aansprakelijkheid. Dit artikel helpt u snel budgetten maken en te beginnen met beheer van deze in Cloudyn.
+U kunt budgetten en budgetwaarschuwingen instellen om uw cloudgovernance en verantwoordelijkheid te verbeteren. Dit artikel helpt u om snel budgetten te maken en deze te beheren in Cloudyn.
 
-Wanneer u een Enterprise- of MSP-account hebt, kunt u uw hiërarchische kostenstructuur entiteit maandelijkse budget quota toewijzen aan verschillende bedrijfseenheden, afdelingen of een andere kostenentiteit. Wanneer u een Premium-account hebt, kunt u de functionaliteit voor het beheer van budget, dit vervolgens op uw uitgaven volledige in de cloud toegepast wordt. Alle budgetten worden handmatig toegewezen.
+Wanneer u een Enterprise- of MSP-account hebt, kunt u uw hiërarchische structuur van kostenentiteiten gebruiken om maandelijkse budgetquota toe te wijzen aan verschillende bedrijfseenheden, afdelingen of een andere kostenentiteit. Wanneer u een Premium-account hebt, kunt u de functionaliteit voor budgetbeheer gebruiken, die vervolgens wordt toegepast op de totale clouduitgaven. Alle budgetten worden handmatig toegewezen.
 
-Op basis van toegewezen budgetten, kunt u drempelwaarde voor waarschuwingen op basis van uw budget dat wordt gebruikt voor het percentage instellen en definiëren van de ernst van elke drempelwaarde.
+Op basis van toegewezen budgetten kunt u drempelwaarschuwingen instellen afhankelijk van het percentage van uw budget dat is verbruikt en de ernst van elke drempelwaarde definiëren.
 
-De rapporten met het toegewezen budget budget. Gebruikers kunnen bekijken als hun uitgaven boven, onder of ervoor met hun gebruik na verloop van tijd is. Wanneer u selecteert **velden weergeven/verbergen** aan de bovenkant van een budgetrapport, kunt u kosten, budget, totale kosten of totaal budget weergeven.
+Budgetrapporten laten het toegewezen budget zien. Gebruikers kunnen zien wanneer hun uitgaven hoger, lager of gelijk zijn dan hun verbruik in de loop van de tijd. Wanneer u bovenaan een budgetrapport **Velden weergeven/verbergen** selecteert, kunt u ervoor kiezen om de kosten, het budget, de samengevoegde kosten of het totale budget weer te geven.
 
-Azure Cost Management biedt vergelijkbare functionaliteit als Cloudyn. Azure Cost Management is een systeemeigen Azure-oplossing voor kostenbeheer. Het helpt u kosten te analyseren, budgetten te maken en beheren, gegevens te exporteren en aanbevelingen voor optimalisatie te bekijken en er actie op te ondernemen om geld te besparen. Zie voor meer informatie over budgetten in Cost Management [maken en beheren van budgetten](../costs/tutorial-acm-create-budgets.md).
+Azure Cost Management biedt vergelijkbare functionaliteit als Cloudyn. Azure Cost Management is een systeemeigen Azure-oplossing voor kostenbeheer. Het helpt u kosten te analyseren, budgetten te maken en beheren, gegevens te exporteren en aanbevelingen voor optimalisatie te bekijken en er actie op te ondernemen om geld te besparen. Zie [Budgetten maken en beheren](../costs/tutorial-acm-create-budgets.md)voor meer informatie over budgetten in Cost Management.
 
 ## <a name="create-budgets"></a>Budgetten maken
 
-Wanneer u een budget maakt, stelt u deze voor het fiscale jaar en van toepassing op een bepaalde entiteit.
+Wanneer u een budget maakt, stelt u dit in voor het boekjaar en is het van toepassing op een specifieke entiteit.
 
-Maken van een budget en wijs deze toe aan een entiteit:
+Een budget maken en toewijzen aan een entiteit:
 
-1. Navigeer naar **kosten** &gt; **Cost Management** &gt; **Budget**.
-2. Op de pagina budgetbeheer onder **entiteiten**, selecteer de entiteit waarin u wilt maken van het budget.
-3. Selecteer in het budgetjaar, het jaar waarin u wilt maken van het budget.
-4. Stel de Budgetwaarde van een voor elke maand. Wanneer u klaar bent, klikt u op **opslaan**.
-In dit voorbeeld worden de maandelijkse budget voor juni 2018 is ingesteld op $135.000. Het totale budget voor het jaar is $1,615,000.00.
-![Maak een budget-pagina waar u een budget voor elke maand instellen](./media/manage-budgets/set-budget.png)
+1. Ga naar **Costs** &gt; **Cost Management** &gt; **Budget**.
+2. Selecteer op de pagina Budget Management, onder **Entities**, de entiteit waarvoor u het budget wilt maken.
+3. Selecteer in het budgetjaar het jaar waarvoor u het budget wilt maken.
+4. Stel voor elke maand een budgetwaarde in. Wanneer u klaar bent, klikt u op **Save**.
+In dit voorbeeld is het maandelijkse budget voor juni 2018 ingesteld op $ 135.000. Het totale budget voor het jaar is $ 1.615.000,00.
+![Een budgetpagina maken waar u een budget voor elke maand instelt](./media/manage-budgets/set-budget.png)
 
 
-Voor het importeren van een bestand voor de jaarlijkse budget:
+Een bestand voor het jaarlijkse budget importeren:
 
-1. Onder **acties**, selecteer **exporteren** voor het downloaden van een lege sjabloon CSV moet worden gebruikt als de basis voor het budget.
-2. Vul in het CSV-bestand met uw budget-fragmenten en lokaal opslaan.
-3. Onder **acties**, selecteer **importeren**.
-4. Selecteer uw opgeslagen bestand en klik vervolgens op **OK**.
+1. Selecteer **Export** onder **Actions** om een lege CSV-sjabloon te downloaden en deze te gebruiken als basis voor het budget.
+2. Vul het CSV-bestand in met uw budgetgegevens en sla het bestand lokaal op.
+3. Selecteer **Import** onder **Actions**.
+4. Selecteer het opgeslagen bestand en klik vervolgens op **OK**.
 
-Uw voltooide budget onder exporteren als een CSV-bestand, **acties**, selecteer **exporteren** om het bestand te downloaden.
+Als u het voltooide budget wilt exporteren als een CSV-bestand, selecteert u **Export** onder **Actions** om het bestand te downloaden.
 
-## <a name="view-budget-in-reports"></a>Weergave budget in rapporten
+## <a name="view-budget-in-reports"></a>Budget in rapporten weergeven
 
-Wanneer u klaar bent, wordt uw budget weer gegeven in de meeste kosten rapporten onder **kosten** &gt; **kosten analyse** en in het rapport kosten versus budget gedurende een periode. U kunt ook op basis van budgetdrempels met behulp van rapporten plannen **acties**.
+Wanneer dit is voltooid, wordt uw budget weergegeven in de meeste kostenrapporten onder **Costs** &gt; **Cost Analysis**, en in het rapport Cost vs. Budget Over Time. U kunt rapporten ook plannen op basis van budgetdrempelwaarden met behulp van **Actions**.
 
-Hier volgt een voorbeeld van het rapport Cost Analysis. Het toont de totale budget en kosten door de typen werkbelasting en het gebruik sinds het begin van het jaar.
+Hier ziet u een voorbeeld van het rapport Cost Analysis. Het bevat het totale budget en de kosten per workload en gebruikstypen sinds het begin van het jaar.
 
-![Voorbeeld van een rapport Cost Analysis met budget](./media/manage-budgets/cost-analysis-budget-example.png)
+![Voorbeeld van een rapport van Cost Analysis met budget](./media/manage-budgets/cost-analysis-budget-example.png)
 
-In dit voorbeeld wordt ervan uitgegaan dat de huidige datum is 22 juni. De kosten voor juni 2018 zijn $71,611.28 vergeleken met het maandelijkse budget van $135.000. De kosten is veel lager dan het maandelijkse budget omdat er nog steeds acht dagen aan vóór het einde van de maand.
+In dit voorbeeld wordt ervan uitgegaan dat de huidige datum 22 juni is. De kosten voor juni 2018 zijn $ 71.611,28 vergeleken met het maandelijkse budget van $ 135.000. De kosten zijn veel lager dan het maandelijkse budget omdat er nog acht dagen te gaan zijn tot het einde van de maand.
 
-Er is een andere manier om het rapport weer te geven om te kijken naar vs van de totale kosten uw budget. Om te zien samengevoegde kosten onder **velden weergeven/verbergen**, selecteer **totale kosten** en **totaalbudget**. Hier volgt een voorbeeld van de totale kosten sinds het begin van het jaar.
+Een andere manier om het rapport weer te geven is door te kijken naar de samengevoegde kosten in vergelijking met uw budget. Als u de samengevoegde kosten wilt zien, selecteert u onder **Show/Hide Fields** **Accumulated Cost** en **Total Budget**. Hier ziet u een voorbeeld van de samengevoegde kosten sinds het begin van het jaar.
 
-![Voor beelden van geaccumuleerde kosten en totaal budget weer gegeven in het rapport kosten versus budget gedurende een periode](./media/manage-budgets/accumulated-budget.png)
+![Voorbeeld van samengevoegde kosten en totale budget in het rapport Cost vs. Budget in de loop van de tijd](./media/manage-budgets/accumulated-budget.png)
 
-Enige tijd in de toekomst uw totale kosten kan groter zijn dan uw budget. Kunt u eenvoudig kunt zien dat als u de diagramweergave voor wijzigt de _regel_ type.
+Ergens op een moment in de toekomst bestaat de kans dat de samengevoegde kosten hoger zijn dan uw budget. U kunt dat gemakkelijker zien als u het type grafiek wijzigt in _lijn_.
 
-![Budget wordt weergegeven in een lijndiagram in de kosten door maanden rapport](./media/manage-budgets/budget-line.png)
+![Budget in een lijndiagram in het rapport Cost by Months](./media/manage-budgets/budget-line.png)
 
-## <a name="create-budget-alerts-for-a-filter"></a>Budget waarschuwingen voor een filter maken
+## <a name="create-budget-alerts-for-a-filter"></a>Budgetwaarschuwingen maken voor een filter
 
-In het vorige voorbeeld, kunt u zien dat de totale kosten het budget nadert. U kunt automatische budget waarschuwingen kunt maken, zodat u een bericht weergegeven wanneer de uitgaven van methoden of uw budget overschrijdt. De waarschuwing is in feite, een gepland rapport met een drempelwaarde. Budget waarschuwingsdrempel voor de metrische gegevens zijn onder andere:
+In het vorige voorbeeld kunt u zien dat de samengevoegde bijna het budget hebben bereikt. U kunt automatische budgetwaarschuwingen maken zodat u op de hoogte wordt gebracht wanneer de uitgaven het budget bijna of helemaal overschrijden. De waarschuwing is in feite een gepland rapport met een drempel. Dit zijn enkele metrische gegevens voor drempelwaarden voor budgetwaarschuwingen:
 
-- Resterende kosten versus budget – om op te geven van een valuta waarde drempelwaarde
-- Kosten percentage versus budget – om op te geven van een drempelwaarde voor percentage waarde
+- Remaining Cost vs. Budget; om een drempel voor een valutawaarde op te geven
+- Cost Percentage vs. Budget; om een drempel voor een percentagewaarde op te geven
 
-We bekijken een voorbeeld.
+Laten we eens naar een voorbeeld kijken.
 
-Klik in het rapport kosten versus budget gedurende een periode op **acties** en selecteer vervolgens **rapport plannen**. Selecteer een drempelwaarde voor metrische gegevens op het tabblad drempelwaarde. Bijvoorbeeld, **Cost percentage vs budget**. Selecteer een type waarschuwing en voer een percentage van het budget. Als u wilt om slechts één keer te worden geïnformeerd, selecteer **aantal achtereenvolgende waarschuwingen** en typ vervolgens _1_. Klik op **Opslaan**.
+Klik in het rapport Cost vs. Budget Over Time op **Actions** en selecteer vervolgens **Schedule report**. Selecteer op het tabblad Threshold een drempelwaarde, zoals **Cost Percentage vs Budget**. Selecteer een type waarschuwing en voer een percentagewaarde van het budget in. Als u slechts één keer een melding wilt ontvangen, selecteert u **Number of consecutive alerts** en typt u _1_. Klik op **Opslaan**.
 
-![Het maken van een budget waarschuwing bij het opslaan of dit vak rapport plannen](./media/manage-budgets/budget-alert.png)
+![Een budgetwaarschuwing maken in het venster Save or Schedule this report](./media/manage-budgets/budget-alert.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u dit nog niet hebt al de eerste zelfstudie voltooid voor Cloudyn, lezen via [gebruik en kosten bekijken](tutorial-review-usage.md).
-- Meer informatie over de [rapporten die beschikbaar zijn in Cloudyn](use-reports.md).
+- Als u de eerste zelfstudie voor Cloudyn nog niet hebt voltooid, leest u die op [Gebruik en kosten bekijken](tutorial-review-usage.md).
+- Lees meer over de [rapporten die beschikbaar zijn in Cloudyn](use-reports.md).

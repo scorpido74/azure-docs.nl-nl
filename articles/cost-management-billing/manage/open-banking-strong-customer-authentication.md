@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75996038"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Open Banking (PSD2) en Sterke Klantverificatie (SCA) voor Azure-klanten
@@ -48,7 +48,7 @@ Als uw bank de kosten weigert, verandert de status van uw Azure-account in de Az
 
 1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com/).
 2. Zoek op **Kostenbeheer en facturering**.
-3. Bekijk op **de pagina** **Cost Management + facturering** de kolom Status in het raster **Mijn abonnementen** .
+3. Ga op de pagina **Overzicht** van **Kostenbeheer + facturering** naar het raster **Mijn abonnementen** en bekijk de statuskolom.
 4. Als uw abonnement de status **Achterstallig** heeft, klikt u op **Saldo vereffenen**. U wordt gevraagd om tijdens het proces meervoudige verificatie te doorlopen.
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>Openstaande kosten verrekenen voor Marketplace- en reserveringsaankopen
@@ -56,7 +56,7 @@ Als uw bank de kosten weigert, verandert de status van uw Azure-account in de Az
 Marketplace- en reserveringsaankopen worden niet samen met de Azure-services gefactureerd. Als uw bank de Marketplace- of reserveringskosten weigert, wordt uw factuurstatus in de Azure-portal als **Achterstallig** weergegeven. U kunt de status van uw Marketplace- en reserveringsfacturen controleren door deze stappen te volgen:
 
 1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com/).
-2. Zoek op **Kostenbeheer en facturering**.
+2. Zoek naar **Kostenbeheer en facturering**.
 3. Onder Facturering selecteert u **Facturen**.
 4. Klik aan de rechterkant op het tabblad **Azure Marketplace en reserveringen**.
 5. Selecteer het bijbehorende abonnement.
