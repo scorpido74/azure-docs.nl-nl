@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure PowerShell'
+title: 'Zelf studie: een aangepaste rol maken voor Azure-resources met Azure PowerShell'
 description: Ga aan de slag met het maken van een aangepaste rol voor Azure-resources met behulp van Azure PowerShell in deze zelf studie.
 services: active-directory
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 176e465163d92156308eda64c4187467cc10ee15
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: d337e31f554c0aabbb94771aa7bfca4afb19a431
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419743"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138280"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure PowerShell
 

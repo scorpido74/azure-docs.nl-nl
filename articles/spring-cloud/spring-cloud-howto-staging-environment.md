@@ -4,18 +4,18 @@ description: Meer informatie over het gebruik van een Blue-groene implementatie 
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 4adeb5593f86bdf3f8a4ea5f844c31a8314e0f15
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 5612a514ed89f73453f3751b34263b0beeea1c59
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276924"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138148"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Een faserings omgeving instellen in azure lente-Cloud
 
-In dit artikel wordt beschreven hoe u een faserings implementatie instelt met behulp van het patroon voor blauw-groen-implementatie in azure lente-Cloud. U ziet ook hoe u die faserings implementatie in productie brengt zonder de productie-implementatie rechtstreeks te wijzigen.
+In dit artikel wordt beschreven hoe u een faserings implementatie instelt met behulp van het patroon voor blauw-groen-implementatie in azure lente-Cloud. Blauw/groen-implementatie is een Azure DevOps-patroon voor continue levering dat erop vertrouwt een bestaande (blauwe) versie live te houden terwijl een nieuwe (groene) wordt geïmplementeerd. In dit artikel wordt beschreven hoe u die fase ring implementeert in productie zonder de productie-implementatie rechtstreeks te wijzigen.
 
 ## <a name="prerequisites"></a>Vereisten
 

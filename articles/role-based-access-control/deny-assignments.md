@@ -1,5 +1,5 @@
 ---
-title: Meer informatie over het weigeren van toewijzingen voor Azure-resources | Microsoft Docs
+title: Meer informatie over het weigeren van toewijzingen voor Azure-resources
 description: Meer informatie over het weigeren van toewijzingen in op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7ab811635ca50c3a28ecd8bdf6d0f18fad4c384f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479360"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137380"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Meer informatie over het weigeren van toewijzingen voor Azure-resources
 
@@ -39,7 +39,7 @@ Geweigerde toewijzingen worden door Azure gemaakt en beheerd om resources te bev
 
 Het weigeren van toewijzingen volgt een vergelijkbaar patroon als roltoewijzingen, maar er zijn ook enkele verschillen.
 
-| Mogelijkheid | Nieuwe roltoewijzing | Toewijzing weigeren |
+| Mogelijkheid | Roltoewijzing | Toewijzing weigeren |
 | --- | --- | --- |
 | Toegang verlenen | :heavy_check_mark: |  |
 | Toegang weigeren |  | :heavy_check_mark: |

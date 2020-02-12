@@ -1,5 +1,5 @@
 ---
-title: Batch voorspellingen uitvoeren met behulp van Azure Machine Learning Designer
+title: Batch voorspellingen uitvoeren met behulp van Azure Machine Learning Designer (preview)
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het trainen van een model en het instellen van een batch voorspelling-pijp lijn met behulp van de ontwerp functie. Implementeer de pijp lijn als een webservice met para meters die kan worden geactiveerd vanuit elke HTTP-bibliotheek.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/13/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: d2653699a69cb468e8490c2cba579b73e526d1ed
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 95a3c1b892cacd802f359fdc03de74fa60a1e118
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311883"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138112"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Batch voorspellingen uitvoeren met behulp van Azure Machine Learning Designer
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

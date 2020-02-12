@@ -1,5 +1,5 @@
 ---
-title: Toegang verhogen om alle Azure-abonnementen en-beheer groepen te beheren | Microsoft Docs
+title: Toegang verhogen om alle Azure-abonnementen en-beheer groepen te beheren
 description: Hierin wordt beschreven hoe u de toegang tot een globale beheerder uitbreidt om alle abonnementen en beheer groepen te beheren in Azure Active Directory met behulp van de Azure Portal of REST API.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/03/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8b27a97d95f224513dd03293b9bd0082c5ed6d1b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1731c630cb98ac542ebcdc7aedf07f7bb63eaec0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772258"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137465"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Toegang verhogen om alle Azure-abonnementen en-beheer groepen te beheren
 
@@ -47,7 +47,7 @@ U moet deze verhoogde toegang verwijderen nadat u de wijzigingen hebt aangebrach
 
 ![Toegang verhogen](./media/elevate-access-global-admin/elevate-access.png)
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portal
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Toegang verhogen voor een globale beheerder
 
@@ -140,7 +140,7 @@ Ga als volgt te werk om de toewijzing van de rol beheerder voor gebruikers toega
       -RoleDefinitionName "User Access Administrator" -Scope "/"
     ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 ### <a name="list-role-assignment-at-root-scope-"></a>Roltoewijzing in hoofd bereik weer geven (/)
 
@@ -180,7 +180,7 @@ Ga als volgt te werk om de toewijzing van de rol beheerder voor gebruikers toega
     az role assignment delete --assignee username@example.com --role "User Access Administrator" --scope "/"
     ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Toegang verhogen voor een globale beheerder
 

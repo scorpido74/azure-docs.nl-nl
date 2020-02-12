@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5b039221f3a25bddf7953cbe8d517275f76d6f37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7cbd088ed7b4f6ae242cce2067e52def2dad61c9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479057"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136343"
 ---
 # <a name="display-controls"></a>Besturings elementen weer geven
 
@@ -46,7 +46,7 @@ In de volgende afbeelding ziet u een zelf-bevestigde aanmeldings pagina met twee
 
 Het element **DisplayControl** bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Id | Ja | Een id die wordt gebruikt voor het weergave besturings element. Hiernaar kan worden [verwezen](#referencing-display-controls). |
 | UserInterfaceControlType | Ja | Het type van het weergave besturings element. Momenteel wordt de [VerificationControl](display-control-verification.md) ondersteund |
@@ -90,7 +90,7 @@ Bepaalde weergave claims zijn vereist voor bepaalde typen weergave besturings el
 
 De **uitvoer claims** van een besturings element voor weer gave worden niet naar de volgende Orchestration-stap verzonden. Ze worden tijdelijk alleen opgeslagen voor de huidige sessie voor weergave beheer. Deze tijdelijke claims kunnen worden gedeeld tussen de verschillende acties van hetzelfde weergave besturings element.
 
-Als u de uitvoer van de claims voor de volgende Orchestration-stap wilt opdelen, gebruikt u de **OutputClaims** van het daad werkelijke zelf-beweringen technische profiel dat verwijst naar dit weergave besturings element.
+Als u de uitvoer claims wilt samen stellen aan de volgende indelings stap, gebruikt u de **OutputClaims** van het daad werkelijke zelf-beweringen technische profiel dat verwijst naar dit weergave besturings element.
 
 ### <a name="display-control-actions"></a>Besturings acties weer geven
 

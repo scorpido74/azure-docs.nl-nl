@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 50e17fae88f16d7579997b3b356638777ec3163a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
-ms.translationtype: MT
+ms.openlocfilehash: 3a940c7676a59ed85d5cf16c76f72a12ce0026d5
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77014280"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136274"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,7 +61,7 @@ De meta gegevens van het zelfondertekende technische profiel voor **LocalAccount
 
 Het element **ContentDefinition** bevat het volgende kenmerk:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Id | Ja | Een id voor een inhouds definitie. De waarde is één opgegeven in de sectie **inhouds definitie-id's** verderop op deze pagina. |
 
@@ -77,7 +77,7 @@ Het **ContentDefinition** -element bevat de volgende elementen:
 
 ### <a name="datauri"></a>DataUri
 
-Het element **DataUri** wordt gebruikt om de pagina-id op te geven. Azure AD B2C gebruikt de pagina-id om UI-elementen en Java script aan de client zijde te laden en te initiëren. De notatie van de waarde is `urn:com:microsoft:aad:b2c:elements:page-name:version`.  De volgende tabel bevat een lijst met de pagina-id's die u kunt gebruiken.
+Het element **DataUri** wordt gebruikt om de pagina-id op te geven. Azure AD B2C gebruikt de pagina-id om UI-elementen en Java script aan de client zijde te laden en te initiëren. De notatie van de waarde is `urn:com:microsoft:aad:b2c:elements:page-name:version`.  De volgende tabel geeft een lijst van de waarden en beschrijvingen van de pagina-id's die u kunt gebruiken.
 
 | Waarde |   Beschrijving |
 | ----- | ----------- |
@@ -99,7 +99,7 @@ Het **LocalizedResourcesReferences** -element bevat de volgende elementen:
 
 Het **LocalizedResourcesReferences** -element bevat de volgende kenmerken:
 
-| Kenmerk | Verplicht | Beschrijving |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
 | Taal | Ja | Een teken reeks die een ondersteunde taal voor het beleid bevat per RFC 5646-Tags voor het identificeren van talen. |
 | LocalizedResourcesReferenceId | Ja | De id van het **LocalizedResources** -element. |
@@ -143,14 +143,14 @@ Het kenmerk ID van het element **ContentDefinition** geeft het type pagina aan d
 
 | Id | Standaard sjabloon | Beschrijving |
 | -- | ---------------- | ----------- |
-| **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Fout pagina** : er wordt een fout pagina weer gegeven wanneer een uitzonde ring of een fout wordt aangetroffen. |
-| **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | Pagina voor het selecteren van de **identiteits provider** : geeft een lijst van id-providers waaruit gebruikers kunnen kiezen tijdens het aanmelden. De opties zijn doorgaans ondernemings-id-providers, sociale id-providers zoals Facebook en Google + of lokale accounts. |
-| **api.idpselections.signup** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Selectie van ID-provider voor registratie** van id-providers die gebruikers kunnen kiezen tijdens het aanmelden. De opties zijn doorgaans ondernemings-id-providers, sociale id-providers zoals Facebook en Google + of lokale accounts. |
-| **api.localaccountpasswordreset** | [selfasserted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Pagina verg eten wacht woord** : hier wordt een formulier weer gegeven dat gebruikers moeten volt ooien om het opnieuw instellen van een wacht woord te initiëren. |
-| **api.localaccountsignin** | [selfasserted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | De **aanmeldings pagina van een lokaal account** : geeft een formulier weer voor het aanmelden met een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. Het formulier kan een tekstvak voor tekst invoer en wacht woord bevatten. |
-| **api.localaccountsignup** | [selfasserted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | De pagina voor het registreren van een **lokaal account** : hier wordt een formulier weer gegeven voor het aanmelden voor een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. Het formulier kan verschillende invoer besturings elementen bevatten, zoals een tekstinvoervak, een vak voor het invoeren van een wacht woord, een keuze rondje, vervolg keuze vakjes en meervoudige selectie vakjes. |
-| **api.phonefactor** | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-factor Authentication-pagina** : verifieert telefoon nummers, met behulp van tekst of spraak tijdens het registreren of aanmelden. |
-| **api.selfasserted** | [selfasserted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Aanmeldings pagina voor sociaal account** : Hiermee wordt een formulier weer gegeven dat gebruikers moeten volt ooien wanneer ze zich aanmelden met een bestaand account van een sociale ID-provider. Deze pagina is vergelijkbaar met de volgende aanmeldings pagina voor het sociaal account, met uitzonde ring van de velden voor wacht woord invoer. |
-| **api.selfasserted.profileupdate** | [updateprofile. cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Pagina Profiel bijwerken** : hier wordt een formulier weer gegeven dat gebruikers kunnen gebruiken om hun profiel bij te werken. Deze pagina is vergelijkbaar met de registratie pagina voor het sociaal account, met uitzonde ring van de velden voor het invoeren van wacht woorden. |
-| **api.signuporsignin** | [Unified. cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Unified Sign-up-of aanmeldings pagina** : Hiermee wordt het aanmelden en aanmelden door de gebruiker verwerkt. Gebruikers kunnen ondernemings-id-providers, sociale id-providers, zoals Facebook of Google + of lokale accounts gebruiken. |
+| **API. error** | [uitzonde ring. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Fout pagina** : er wordt een fout pagina weer gegeven wanneer een uitzonde ring of een fout wordt aangetroffen. |
+| **API. idpselections** | [idpSelector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | Pagina voor het selecteren van de **identiteits provider** : geeft een lijst van id-providers waaruit gebruikers kunnen kiezen tijdens het aanmelden. De opties zijn doorgaans ondernemings-id-providers, sociale id-providers zoals Facebook en Google + of lokale accounts. |
+| **API. idpselections. signup** | [idpSelector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Selectie van ID-provider voor registratie** van id-providers die gebruikers kunnen kiezen tijdens het aanmelden. De opties zijn doorgaans ondernemings-id-providers, sociale id-providers zoals Facebook en Google + of lokale accounts. |
+| **API. localaccountpasswordreset** | [selfasserted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Pagina verg eten wacht woord** : hier wordt een formulier weer gegeven dat gebruikers moeten volt ooien om het opnieuw instellen van een wacht woord te initiëren. |
+| **API. localaccountsignin** | [selfasserted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | De **aanmeldings pagina van een lokaal account** : geeft een formulier weer voor het aanmelden met een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. Het formulier kan een tekstvak voor tekst invoer en wacht woord bevatten. |
+| **API. localaccountsignup** | [selfasserted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | De pagina voor het registreren van een **lokaal account** : hier wordt een formulier weer gegeven voor het aanmelden voor een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. Het formulier kan verschillende invoer besturings elementen bevatten, zoals een tekstinvoervak, een vak voor het invoeren van een wacht woord, een keuze rondje, vervolg keuze vakjes en meervoudige selectie vakjes. |
+| **API. Phone factor** | [multifactor-1.0.0. cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-factor Authentication-pagina** : verifieert telefoon nummers, met behulp van tekst of spraak tijdens het registreren of aanmelden. |
+| **API. selfasserted** | [selfasserted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Aanmeldings pagina voor sociaal account** : Hiermee wordt een formulier weer gegeven dat gebruikers moeten volt ooien wanneer ze zich aanmelden met een bestaand account van een sociale ID-provider. Deze pagina is vergelijkbaar met de volgende aanmeldings pagina voor het sociaal account, met uitzonde ring van de velden voor wacht woord invoer. |
+| **API. selfasserted. profileupdate** | [updateprofile. cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Pagina Profiel bijwerken** : hier wordt een formulier weer gegeven dat gebruikers kunnen gebruiken om hun profiel bij te werken. Deze pagina is vergelijkbaar met de registratie pagina voor het sociaal account, met uitzonde ring van de velden voor het invoeren van wacht woorden. |
+| **API. signuporsignin** | [Unified. cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Unified Sign-up-of aanmeldings pagina** : Hiermee wordt het aanmelden en aanmelden door de gebruiker verwerkt. Gebruikers kunnen ondernemings-id-providers, sociale id-providers, zoals Facebook of Google + of lokale accounts gebruiken. |
 

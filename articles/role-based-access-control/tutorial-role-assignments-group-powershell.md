@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een groep toegang verlenen tot Azure-resources met RBAC en Azure PowerShell'
+title: 'Zelf studie: groep toegang verlenen tot Azure-resources met RBAC en Azure PowerShell'
 description: Meer informatie over hoe u een groep toegang verleent tot Azure-resources met behulp van RBAC (op rollen gebaseerd toegangs beheer) en Azure PowerShell in deze zelf studie.
 services: active-directory
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: fb26e603ebb867bda47a93162ffef9bf716d3db6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 2f001e781640704cfcee161b3de75b3f4cae1423
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418588"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138246"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Zelf studie: een groep toegang verlenen tot Azure-resources met RBAC en Azure PowerShell
 
@@ -46,7 +46,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 In RBAC verleent u toegang door een roltoewijzing te maken. Een roltoewijzing bestaat uit drie elementen: beveiligings-principal, roldefinitie en bereik (ook wel scope of niveau genoemd). Dit zijn de twee roltoewijzingen die u gaat uitvoeren in deze zelfstudie:
 
-| Beveiligings-principal | Roldefinitie ophalen | Bereik |
+| Beveiligings-principal | Roldefinitie | Bereik |
 | --- | --- | --- |
 | Groep<br>(RBAC Tutorial Group) | [Lezer](built-in-roles.md#reader) | Abonnement |
 | Groep<br>(RBAC Tutorial Group)| [Inzender](built-in-roles.md#contributor) | Resourcegroep<br>(rbac-tutorial-resource-group) |

@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, Power shell, desired state Configuration, updat
 ms.date: 02/03/2020
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: c38bc2d5d9a7e23c0bb3041a5cb3b5cd1da9adb1
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: ad24418bf3879e4ef9a0ae4833c37c051079c668
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114239"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133846"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Wat is Azure Arc voor servers (preview-versie)
 
@@ -63,7 +63,7 @@ De volgende versies van het Windows-en Linux-besturings systeem worden officieel
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure-abonnement en service limieten
 
-Voordat u uw computers met Azure-Arc voor servers (preview) configureert, moet u de limieten voor het Azure Resource Manager- [abonnement](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager) en de [limieten van de resource groep](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) controleren om het aantal machines te plannen dat moet worden verbonden.
+Voordat u uw computers met Azure-Arc voor servers (preview) configureert, moet u de limieten voor het Azure Resource Manager- [abonnement](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) en de [limieten van de resource groep](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) controleren om het aantal machines te plannen dat moet worden verbonden.
 
 ### <a name="networking-configuration"></a>Netwerk configuratie
 

@@ -8,13 +8,13 @@ ms.author: daperlov
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/10/2020
+ms.openlocfilehash: 2e50d226282536fa4e8c044d2ee3d91df4cfd1ee
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644695"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131473"
 ---
 # <a name="azure-data-factory-faq"></a>Veelgestelde vragen over Azure Data Factory
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Data Factory.  
@@ -55,7 +55,7 @@ Voor ontwikkel aars en gegevens technici van Visual Data is de Data Factory-webi
 
 ### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Uitgebreide platformoverschrijdende Sdk's voor geavanceerde gebruikers
 Data Factory v2 biedt een uitgebreide set Sdk's die kan worden gebruikt voor het ontwerpen, beheren en bewaken van pijp lijnen met behulp van uw favoriete IDE, waaronder:
-* Python SDK
+* Python-SDK
 * Power shell CLI
 * C# SDK
 
@@ -72,7 +72,7 @@ Als u uw SSIS-workloads wilt verplaatsen, kunt u een Data Factory maken en een A
 ### <a name="sdks"></a>SDK's
 Als u een ervaren gebruiker bent en op zoek bent naar een programmatische interface, biedt Data Factory een uitgebreide set Sdk's die u kunt gebruiken om pijp lijnen te ontwerpen, beheren of bewaken met behulp van uw favoriete IDE. Taal ondersteuning omvat .NET, Power shell, python en REST.
 
-### <a name="monitoring"></a>Controleren
+### <a name="monitoring"></a>Bewaking
 U kunt uw gegevens fabrieken bewaken via Power shell, SDK of de visuele controle Hulpprogramma's in de gebruikers interface van de browser. U kunt op aanvraag, op basis van triggers en op tijd gebaseerde aangepaste stromen op een efficiënte en efficiënte manier bewaken en beheren. Annuleer bestaande taken, Bekijk fouten in een oogopslag, zoom op om gedetailleerde fout berichten op te halen en los de problemen op, in één venster van glas zonder tussen komst te scha kelen of te navigeren tussen schermen. 
 
 ### <a name="new-features-for-ssis-in-data-factory"></a>Nieuwe functies voor SSIS in Data Factory
@@ -139,7 +139,7 @@ Een gegevensset is een sterk getypeerde para meter en een entiteit die u opnieuw
 
 Een gekoppelde service is ook een sterk getypeerde para meter die verbindings informatie bevat voor een gegevens archief of een reken omgeving. Het is ook een entiteit die u kunt hergebruiken of ernaar verwijzen.
 
-### <a name="control-flows"></a>Stromen controleren
+### <a name="control-flows"></a>Controle stromen
 Met controle stromen worden pijplijn activiteiten gestroomd, waaronder het koppelen van activiteiten in een reeks, vertakkingen, para meters die u definieert op pijplijn niveau en de argumenten die u doorgeeft als u de pijp lijn op aanvraag of vanuit een trigger aanroept. Controle stromen omvatten ook aangepaste status door geven en herhalen van containers (dat wil zeggen, foreach-iterators).
 
 
@@ -195,6 +195,9 @@ Gebruik de Kopieer activiteit om gegevens te stage van een van de andere connect
 
 Zelf-hostende IR is een ADF-pijp lijn constructie die u met de Kopieer activiteit kunt gebruiken om gegevens te verkrijgen of te verplaatsen naar en van on-premises of op virtuele machines gebaseerde gegevens bronnen en Sinks. Faseer de gegevens eerst met een kopie, vervolgens de gegevens stroom voor trans formatie en vervolgens een volgende kopie als u de getransformeerde gegevens terug naar de on-premises opslag wilt verplaatsen.
 
+### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>Worden er meerdere tenants voor de compute-engine voor gegevens stromen gebruikt?
+Clusters worden nooit gedeeld. We garanderen isolatie voor elke uitvoering van een taak in productie-uitvoeringen. In het geval van fout opsporing kan één persoon een cluster ophalen en worden alle fouten naar dat cluster geleid die door die gebruiker worden geïnitieerd.
+
 ## <a name="wrangling-data-flows"></a>Wrangling-gegevens stromen
 
 ### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Wat zijn de ondersteunde regio's voor wrangling data flow?
@@ -202,18 +205,18 @@ Zelf-hostende IR is een ADF-pijp lijn constructie die u met de Kopieer activitei
 Wrangling-gegevens stroom wordt momenteel ondersteund in gegevens fabrieken die in de volgende regio's zijn gemaakt:
 
 * Australië - oost
-* Canada-Midden
+* Canada - midden
 * India - centraal
 * US - centraal
-* VS - oost
-* VS - oost 2
-* Japan - Oost
+* US - oost
+* US - oost 2
+* Japan - oost
 * Europa - noord
 * Azië - zuidoost
 * US - zuid-centraal
-* UK - zuid
+* Verenigd Koninkrijk Zuid
 * US - west-centraal
-* Europa - west
+* Europa -west
 * US - west
 * US - west 2
 
@@ -259,7 +262,7 @@ Wrangling-gegevens stroom ondersteunt de volgende gegevens typen in SQL. U krijg
 * smallint
 * tinyint
 * bigint
-* lang
+* long
 * tekst
 * date
 * datum/tijd

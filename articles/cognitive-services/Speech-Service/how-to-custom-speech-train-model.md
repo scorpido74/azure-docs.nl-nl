@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0f28d984cfc29e67c3b5c3a90137ee09868b471c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806025"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137770"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Een model trainen voor Custom Speech
 
-Als u een spraak-naar-tekst model wilt trainen, kunt u de nauw keurigheid van het micro soft-basis model verbeteren of een aangepast model dat u wilt maken. Een model wordt getraind met behulp van transcripties en gerelateerde tekst. Deze gegevens sets en eerder geüploade audio gegevens worden gebruikt voor het verfijnen en trainen van het spraak-naar-tekst model om woorden, zinsdelen, acroniemen, namen en andere productspecifieke voor waarden te herkennen. Hoe meer gegevens sets in het domein zijn die u opgeeft (wat betreft wat gebruikers zeggen en wat u verwacht te herkennen), des te nauw keuriger is uw model, wat resulteert in verbeterde herkenning. Wanneer u niet-gerelateerde gegevens indeelt in uw training, kunt u de nauw keurigheid van uw model verminderen of onnauwkeuriger maken.
+Training van een model voor spraak naar tekst kan de nauw keurigheid van de herkenning voor het basislijn model van micro soft verbeteren. Een model wordt getraind met behulp van transcripties en gerelateerde tekst. Deze gegevens sets en eerder geüploade audio gegevens worden gebruikt voor het verfijnen en trainen van het spraak-naar-tekst model om woorden, zinsdelen, acroniemen, namen en andere productspecifieke voor waarden te herkennen. Hoe meer gegevens sets in het domein zijn die u opgeeft (wat betreft wat gebruikers zeggen en wat u verwacht te herkennen), des te nauw keuriger is uw model, wat resulteert in verbeterde herkenning. Wanneer u niet-gerelateerde gegevens indeelt in uw training, kunt u de nauw keurigheid van uw model verminderen of onnauwkeuriger maken.
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>Training gebruiken om nauw keurige problemen op te lossen
 
 Als u herkennings problemen ondervindt met uw model, kunt u de nauw keurigheid verbeteren door gebruik te maken van transcripten met menselijke labels en gerelateerde gegevens voor extra training. Gebruik deze tabel om te bepalen welke gegevensset moet worden gebruikt voor het oplossen van uw probleem (en):
 
-| Toepassing | Gegevenstype |
+| Use-case | Gegevenstype |
 | -------- | --------- |
 | Verbeter nauw keurigheid van herkenning op branchespecifieke woorden lijst en grammatica, zoals medische terminologie of het jargon. | Gerelateerde tekst (zinnen/uitingen) |
 | Definieer de fonetische en weer gegeven vorm van een woord of term met een niet-standaard uitspraak, zoals product namen of acroniemen. | Gerelateerde tekst (uitspraak) |
@@ -62,7 +62,7 @@ Als u ervoor hebt gekozen om nauw keurigheid te testen, is het belang rijk dat u
 
 - [Uw model implementeren](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Uw gegevens voorbereiden en testen](how-to-custom-speech-test-data.md)
 - [Uw gegevens controleren](how-to-custom-speech-inspect-data.md)

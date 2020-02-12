@@ -1,21 +1,21 @@
 ---
-title: 'Zelf studie: een lente toepassing voorbereiden voor implementatie in azure lente Cloud'
-description: In deze zelf studie gaat u een Java lente-toepassing voorbereiden voor implementatie.
+title: 'Zelf studie: een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud'
+description: In deze zelf studie gaat u een Java lente-toepassing voorbereiden voor implementatie in azure lente-Cloud.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 7a879fa942046376e8cf0acc40a62039e8f3de25
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1af4bdcfc0fea319b9e5c9f39a1ade3f4492404f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064713"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137637"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud
 
-Deze Quick Start laat zien hoe u een bestaande Java-toepassing voor de cloud kunt voorbereiden voor implementatie in azure lente-Cloud. Als het goed is geconfigureerd, biedt Azure lente Cloud krachtige services voor het bewaken, schalen en bijwerken van uw Java-lente-Cloud toepassing.
+In deze Quick start ziet u hoe u een bestaande Java-toepassing voorbereidt voor implementatie naar Azure lente-Cloud. Als het goed is geconfigureerd, biedt Azure lente Cloud krachtige services voor het bewaken, schalen en bijwerken van uw Java-lente-Cloud toepassing.
 
 ## <a name="java-runtime-version"></a>Java runtime-versie
 

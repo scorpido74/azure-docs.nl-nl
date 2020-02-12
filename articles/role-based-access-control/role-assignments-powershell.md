@@ -1,5 +1,5 @@
 ---
-title: Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en Azure PowerShell
+title: Roltoewijzingen toevoegen of verwijderen met RBAC en Azure PowerShell
 description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers, groepen, service-principals of beheerde identiteiten met behulp van op rollen gebaseerd toegangs beheer (RBAC) en Azure PowerShell van Azure.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0ee996e39950d38b10f8df78fe47f7087c4a2ed1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 68a73f622dc69b70870ddc1db16edcf406b63800
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981049"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138328"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en Azure PowerShell
 

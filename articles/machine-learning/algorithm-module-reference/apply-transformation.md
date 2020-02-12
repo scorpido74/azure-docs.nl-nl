@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: a48ce60dca9f4221e364d53567f5b53719deb18c
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 443b021b266a202775e94e44acac3a91a2b70617
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314518"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137588"
 ---
 # <a name="apply-transformation-module"></a>Module transformatie toepassen
 
-In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om een invoer gegevensset te wijzigen op basis van een eerder berekende trans formatie.  
   
@@ -32,9 +32,9 @@ Azure Machine Learning biedt ondersteuning voor het maken en Toep assen van vers
 
 ## <a name="how-to-use-apply-transformation"></a>Trans formatie Toep assen gebruiken  
   
-1. Voeg de module **trans formatie Toep assen** toe aan uw pijp lijn. U kunt deze module vinden onder **machine learning**in de categorie **Score** . 
+1. Voeg de module **trans formatie Toep assen** toe aan uw pijp lijn. U kunt deze module vinden in het **model score & evaluatie** categorie. 
   
-2. Zoek een bestaande trans formatie die moet worden gebruikt als invoer.  Eerder opgeslagen trans formaties vindt u in de groep **trans formatie** in het navigatie deel venster aan de linkerkant.  
+2. Zoek een bestaande trans formatie die moet worden gebruikt als invoer. Eerder opgeslagen trans formaties vindt u in de categorie **mijn gegevens sets** onder **gegevens sets** in de structuur van de module links.  
   
    
   

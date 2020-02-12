@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 11/04/2019
-ms.openlocfilehash: 4d22fd39eae5d5cf207d6d44819f0ce7ab2eceb5
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/11/2020
+ms.openlocfilehash: f15f50e372d0bfe58018b16ebfa5d5d85644ae1a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963238"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137790"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Bouw een classificatie om de bedrijfs categorie te voors pellen met behulp van Azure Machine Learning Designer.
 
@@ -63,7 +63,7 @@ Er zijn geen artikelen voor sommige bedrijven gevonden. het aantal records is du
 
 ## <a name="pre-process-the-text-data"></a>De tekst gegevens vooraf verwerken
 
-We gebruiken de **tekst module preprocess** om de tekst gegevens voor te verwerken, met inbegrip van de zinnen, Tokenize, enzovoort. U vindt alle ondersteunde opties in het artikel voor [**verwerking van tekst**](algorithm-module-reference/preprocess-text.md) . Nadat de TeX-gegevens vooraf zijn verwerkt, gebruiken we de module voor het **splitsen van gegevens** om de invoer gegevens wille keurig te verdelen, zodat de trainings gegevensset 50% van de oorspronkelijke gegevens bevat en de test-gegevensset 50% van de oorspronkelijke gegevens bevat.
+We gebruiken de **tekst module preprocess** om de tekst gegevens voor te verwerken, met inbegrip van de zinnen, Tokenize, enzovoort. U vindt alle ondersteunde opties in het artikel voor [**verwerking van tekst**](algorithm-module-reference/preprocess-text.md) . Nadat tekst gegevens vooraf zijn verwerkt, gebruiken we de module voor het **splitsen van gegevens** om de invoer gegevens wille keurig te verdelen, zodat de trainings gegevensset 50% van de oorspronkelijke gegevens bevat en de test-gegevensset 50% van de oorspronkelijke gegevens bevat.
 
 ## <a name="feature-engineering"></a>Functie techniek
 In dit voor beeld gebruiken we twee methoden voor het uitvoeren van functie techniek.
@@ -79,7 +79,7 @@ In de voorbeeld pijplijn stellen we het aantal hash-bits in op 14 en stellen we 
 
 Een n-gram is een aaneengesloten reeks n voor waarden van een bepaalde tekst reeks. Een n-gram van grootte 1 wordt een unigram genoemd. een n-gram van grootte 2 is een bigram. een n-gram van grootte 3 is een Trigram. N-g van grotere grootten wordt soms aangeduid met de waarde n, bijvoorbeeld ' vier-gram ', ' vijf-gram ', enzovoort.
 
-We gebruiken de [**functie N-gram van de tekst module uitpakken**](algorithm-module-reference/extract-n-gram-features-from-text.md)als een andere oplossing voor functie techniek. In deze module wordt eerst de set van n-gram geëxtraheerd, naast het n-gram nummer, het aantal documenten waarbij elke n-gram wordt weer gegeven in de tekst, geteld (DF). In dit voor beeld wordt TF-IDF metric gebruikt om onderdeel waarden te berekenen. Vervolgens worden ongestructureerde tekst gegevens geconverteerd naar numerieke functie vectoren met gelijke lengte, waarbij elke functie de TF-IDF van een n-gram in een tekst-exemplaar vertegenwoordigt.
+We gebruiken de [**functie N-gram van de tekst module uitpakken**](algorithm-module-reference/extract-n-gram-features-from-text.md) als een andere oplossing voor functie techniek. In deze module wordt eerst de set van n-gram geëxtraheerd, naast het n-gram nummer, het aantal documenten waarbij elke n-gram wordt weer gegeven in de tekst, geteld (DF). In dit voor beeld wordt TF-IDF metric gebruikt om onderdeel waarden te berekenen. Vervolgens worden ongestructureerde tekst gegevens geconverteerd naar numerieke functie vectoren met gelijke lengte, waarbij elke functie de TF-IDF van een n-gram in een tekst-exemplaar vertegenwoordigt.
 
 Nadat u tekst gegevens hebt geconverteerd naar numerieke functie vectoren, wordt een **Select column** -module gebruikt om de tekst gegevens uit de gegevensset te verwijderen. 
 

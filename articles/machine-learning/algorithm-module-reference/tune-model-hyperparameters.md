@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: d15da0c0cb00f640d2ffc647475f66b76119f609
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/11/2020
+ms.openlocfilehash: 112a7f7aa61984b2ce9bd8400c629fe62db55584
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548370"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137903"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hyperparameters afstemmen
 
@@ -43,17 +43,13 @@ In deze sectie wordt beschreven hoe u een eenvoudige para meter-sweep uitvoert, 
 
 2.  Verbind een niet-traind model met de meest linkse invoer. 
 
-3. Stel de optie **trainer modus maken** in op **parameter bereik**. Gebruik de **opbouw functie voor bereik** om een reeks waarden op te geven die u wilt gebruiken in de para meter sweep.  
 
-    Bijna alle modules voor classificatie en regressie bieden ondersteuning voor het opruimen van geïntegreerde para meters. Voor meer informatie over het configureren van een parameter bereik, kunt u alleen de beschik bare parameter waarden testen.
-
-    U kunt de waarde voor een of meer para meters hand matig instellen en vervolgens de resterende para meters opruimen. Dit kan enige tijd besparen.
 
 4.  Voeg de gegevensset toe die u voor training wilt gebruiken en verbind deze met de middelste invoer van het model Hyper parameters voor het afstemmen.  
 
     Als u een gecodeerde gegevensset hebt, kunt u deze koppelen aan de meest rechtse invoer poort (**optionele validatie gegevensset**). Zo kunt u de nauw keurigheid meten tijdens de training en het afstemmen.
 
-5.  Kies in het deel venster **Eigenschappen** van stem model Hyper parameters een waarde voor de modus voor het afwijzen van de **para meter**. Met deze optie bepaalt u hoe de para meters worden geselecteerd.
+5.  Kies in het rechterdeel venster van model Hyper parameters een waarde voor de modus voor het afwijzen van de **para meter**. Met deze optie bepaalt u hoe de para meters worden geselecteerd.
 
     - **Volledig raster**: wanneer u deze optie selecteert, wordt de module herhaald volgens een raster dat vooraf is gedefinieerd door het systeem, om verschillende combi Naties te proberen en de beste kenniser te identificeren. Deze optie is handig wanneer u niet weet wat de beste parameter instellingen zijn en u alle mogelijke combi Naties van waarden wilt proberen.
 
@@ -64,8 +60,6 @@ In deze sectie wordt beschreven hoe u een eenvoudige para meter-sweep uitvoert, 
 7.  Kies het aantal uitvoeringen:
 
     1. **Maximum aantal uitvoeringen op wille keurige sweep**: als u een wille keurige sweep kiest, kunt u opgeven hoe vaak het model moet worden getraind met behulp van een wille keurige combi natie van parameter waarden.
-
-    2. **Maximum aantal uitvoeringen op wille keurig raster**: deze optie bepaalt ook het aantal iteraties voor een wille keurige steek proef van parameter waarden, maar de waarden worden niet wille keurig van het opgegeven bereik gegenereerd. In plaats daarvan maakt de module een matrix van alle mogelijke combi Naties van parameter waarden. Vervolgens neemt het een wille keurige steek proef over de matrix. Deze methode is efficiënter en minder gevoelig voor regionale oversteek proeven of ondersampling.
 
 8.  Voor de **rang schikking**kiest u één metrische waarde voor het classificeren van de modellen.
 

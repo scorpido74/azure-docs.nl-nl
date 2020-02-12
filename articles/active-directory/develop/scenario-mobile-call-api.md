@@ -1,7 +1,7 @@
 ---
 title: Een web-API aanroepen vanuit een mobiele app | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept (die een web-API aanroepen)
+description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept. (Een web-API aanroepen.)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,37 +16,37 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 6b87809e29940b343a395ffb461c0829295fcd8a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f41c9a0e4754c60fd248e540a81e2afa833d655b
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702059"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132408"
 ---
-# <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Mobiele app die web-Api's aanroept-een web-API aanroepen
+# <a name="call-a-web-api-from-a-mobile-app"></a>Een web-API aanroepen vanuit een mobiele app
 
-Nadat uw app is aangemeld bij een gebruiker en tokens heeft ontvangen, worden in MSAL verschillende gegevens over de gebruiker, de omgeving van de gebruiker en de uitgegeven tokens weer gegeven. Uw app kan deze waarden gebruiken om een web-API aan te roepen of een welkomst bericht voor de gebruiker weer te geven.
+Nadat uw app een gebruiker heeft ondertekend en tokens ontvangt, wordt er informatie weer gegeven over de gebruiker, de omgeving van de gebruiker en de uitgegeven tokens. Uw app kan deze waarden gebruiken om een web-API aan te roepen of een welkomst bericht voor de gebruiker weer te geven.
 
-Eerst kijken we naar het MSAL-resultaat. Vervolgens gaan we kijken hoe u een toegangs token van de `AuthenticationResult` of `result` kunt gebruiken om een beveiligde web-API aan te roepen.
+In dit artikel kijken we eerst naar het MSAL-resultaat. Vervolgens gaan we kijken hoe u een toegangs token van `AuthenticationResult` of `result` kunt gebruiken om een beveiligde web-API aan te roepen.
 
 ## <a name="msal-result"></a>MSAL resultaat
 MSAL biedt de volgende waarden: 
 
-- `AccessToken`: wordt gebruikt om beveiligde web-Api's aan te roepen in een HTTP Bearer-aanvraag.
-- `IdToken`: bevat nuttige informatie over de aangemelde gebruiker, zoals de naam van de gebruiker, de thuis Tenant en een unieke id voor opslag.
-- `ExpiresOn`: de verloop tijd van het token. MSAL verwerkt automatisch vernieuwen voor apps.
-- `TenantId`: de id van de Tenant waarmee de gebruiker zich heeft aangemeld. Voor gast gebruikers (Azure Active Directory B2B) wordt met deze waarde de Tenant geïdentificeerd waarmee de gebruiker zich heeft aangemeld, niet de thuis Tenant van de gebruiker.  
-- `Scopes`: de bereiken die met uw token zijn verleend. De toegekende bereiken kunnen een subset zijn van de bereiken die u hebt aangevraagd.
+- `AccessToken` beveiligde web-Api's aanroepen in een HTTP Bearer-aanvraag.
+- `IdToken` bevat nuttige informatie over de aangemelde gebruiker. Deze informatie omvat de naam van de gebruiker, de thuis Tenant en een unieke id voor opslag.
+- `ExpiresOn` is de verloop tijd van het token. MSAL verwerkt de automatische vernieuwing van een app.
+- `TenantId` is de id van de Tenant waarbij de gebruiker zich heeft aangemeld. Voor gast gebruikers in Azure Active Directory (Azure AD) B2B, wordt met deze waarde de Tenant geïdentificeerd waar de gebruiker zich heeft aangemeld. Met de waarde wordt niet de thuis Tenant van de gebruiker geïdentificeerd.  
+- `Scopes` geeft de bereiken aan die met uw token zijn verleend. De toegekende bereiken kunnen een subset zijn van de bereiken die u hebt aangevraagd.
 
-MSAL biedt ook een abstractie voor een `Account`. Een `Account` vertegenwoordigt het aangemelde account van de huidige gebruiker.
+MSAL biedt ook een abstractie voor een `Account` waarde. Een `Account` waarde staat voor het aangemelde account van de huidige gebruiker:
 
-- `HomeAccountIdentifier`: de id van de thuis Tenant van de gebruiker.
-- `UserName`: de voorkeurs gebruikers naam van de gebruiker. Dit kan leeg zijn voor Azure Active Directory B2C gebruikers.
-- `AccountIdentifier`: de id van de aangemelde gebruiker. Deze waarde is hetzelfde als de `HomeAccountIdentifier` waarde in de meeste gevallen, tenzij de gebruiker een gast is in een andere Tenant.
+- `HomeAccountIdentifier` identificeert de thuis Tenant van de gebruiker.
+- `UserName` is de voorkeurs gebruikersnaam van de gebruiker. Deze waarde kan leeg zijn voor gebruikers van Azure AD B2C.
+- `AccountIdentifier` identificeert de aangemelde gebruiker. In de meeste gevallen is deze waarde hetzelfde als de `HomeAccountIdentifier` waarde, tenzij de gebruiker een gast is in een andere Tenant.
 
 ## <a name="call-an-api"></a>Een API aanroepen
 
-Nadat u het toegangs token hebt, is het eenvoudig om een web-API aan te roepen. Uw app gebruikt het token om een HTTP-aanvraag te maken en vervolgens de aanvraag uit te voeren.
+Nadat u het toegangs token hebt, kunt u een web-API aanroepen. In uw app wordt het token gebruikt voor het bouwen van een HTTP-aanvraag en het uitvoeren van de aanvraag.
 
 ### <a name="android"></a>Android
 
@@ -90,9 +90,7 @@ Nadat u het toegangs token hebt, is het eenvoudig om een web-API aan te roepen. 
 
 ### <a name="msal-for-ios-and-macos"></a>MSAL voor iOS en macOS
 
-De methoden voor het verkrijgen van tokens retour neren een `MSALResult`-object. `MSALResult` beschrijft een `accessToken`-eigenschap die kan worden gebruikt om een web-API aan te roepen. U moet een toegangs token toevoegen aan de HTTP-autorisatie-header voordat u de aanroep voor toegang tot de beveiligde web-API.
-
-Doel-C:
+De methoden voor het verkrijgen van tokens retour neren een `MSALResult`-object. `MSALResult` beschrijft een `accessToken` eigenschap. U kunt `accessToken` gebruiken om een web-API aan te roepen. Voeg deze eigenschap toe aan de HTTP-autorisatie-header voordat u aanroept om toegang te krijgen tot de beveiligde web-API.
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -105,8 +103,6 @@ NSURLSessionDataTask *task =
      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {}];
 [task resume];
 ```
-
-Swift
 
 ```swift
 let urlRequest = NSMutableURLRequest()
@@ -122,16 +118,17 @@ task.resume()
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
-## <a name="making-several-api-requests"></a>Meerdere API-aanvragen doen
+## <a name="make-several-api-requests"></a>Meerdere API-aanvragen doen
 
-Als u dezelfde API meerdere keren moet aanroepen, of als u meerdere Api's moet aanroepen, neemt u rekening met het volgende wanneer u uw app bouwt:
+Als u dezelfde API meerdere keren moet aanroepen, of als u meerdere Api's moet aanroepen, moet u rekening houden met de volgende onderwerpen wanneer u uw app bouwt:
 
-- **Incrementele toestemming**: met het micro soft Identity-platform kunnen apps de toestemming van de gebruiker krijgen wanneer machtigingen zijn vereist, in plaats van aan het begin. Telkens wanneer uw app klaar is om een API aan te roepen, moet deze alleen de scopes aanvragen die moeten worden gebruikt.
-- **Voorwaardelijke toegang**: in bepaalde scenario's krijgt u mogelijk aanvullende vereisten voor voorwaardelijke toegang wanneer u meerdere API-aanvragen maakt. Dit kan gebeuren als de eerste aanvraag geen beleids regels voor voorwaardelijke toegang heeft toegepast en uw app probeert op de achtergrond toegang te krijgen tot een nieuwe API waarvoor voorwaardelijke toegang is vereist. Als u dit scenario wilt afhandelen, moet u ervoor zorgen dat u fouten van Silent-aanvragen ondervangt en een interactieve aanvraag maakt.  Zie [richt lijnen voor voorwaardelijke toegang](conditional-access-dev-guide.md)voor meer informatie.
+- **Incrementele toestemming**: met het micro soft Identity-platform kunnen Apps gebruikers toestemming krijgen wanneer er machtigingen zijn vereist in plaats van aan het begin. Telkens wanneer uw app klaar is om een API aan te roepen, moet deze alleen de bereiken aanvragen die het nodig heeft.
 
-## <a name="calling-several-apis-in-xamarin-or-uwp---incremental-consent-and-conditional-access"></a>Meerdere Api's aanroepen in Xamarin of UWP-incrementele toestemming en voorwaardelijke toegang
+- **Voorwaardelijke toegang**: wanneer u meerdere API-aanvragen maakt, moet u mogelijk voldoen aan aanvullende vereisten voor voorwaardelijke toegang. De vereisten kunnen op deze manier toenemen als de eerste aanvraag geen beleids regels voor voorwaardelijke toegang heeft en uw app probeert op de achtergrond toegang te krijgen tot een nieuwe API waarvoor voorwaardelijke toegang is vereist. Als u dit probleem wilt verhelpen, moet u ervoor zorgen dat u fouten opvangt van Silent-aanvragen en een interactieve aanvraag maakt.  Zie [richt lijnen voor voorwaardelijke toegang](conditional-access-dev-guide.md)voor meer informatie.
 
-Als u meerdere Api's voor dezelfde gebruiker moet aanroepen nadat u een token voor een gebruiker hebt aangeschaft, kunt u voor komen dat de gebruiker herhaaldelijk om referenties wordt gevraagd door vervolgens `AcquireTokenSilent` aan te roepen om een token op te halen.
+## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Meerdere Api's aanroepen met behulp van incrementele toestemming en voorwaardelijke toegang
+
+Als u meerdere Api's voor dezelfde gebruiker moet aanroepen, kunt u, nadat u een token voor de gebruiker hebt aangeschaft, voor komen dat de gebruiker herhaaldelijk om referenties wordt gevraagd door vervolgens `AcquireTokenSilent` aan te roepen om een token op te halen:
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -141,10 +138,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-De gevallen waarin de interactie is vereist, is als volgt:
+Interactie is vereist wanneer:
 
-- De gebruiker heeft toestemming gegeven voor de eerste API, maar nu moet worden geinstemming voor meer bereiken (incrementele toestemming)
-- De eerste API heeft geen meervoudige verificatie nodig, maar de volgende.
+- De gebruiker heeft toestemming gegeven voor de eerste API, maar nu moet worden gestemd op meer bereiken. In dit geval gebruikt u incrementele toestemming.
+- Voor de eerste API is geen meervoudige verificatie vereist, maar de volgende API doet dat wel.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

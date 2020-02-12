@@ -1,5 +1,5 @@
 ---
-title: Taken van Elastic Database (preview)
+title: Elastic Database taken (preview-versie)
 description: Elastic Database taken (preview) configureren om Transact-SQL (T-SQL)-scripts uit te voeren in een set van een of meer Azure SQL-data bases
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 283b4004f34372104eb083496400772884f5965e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 633c3ffc8e266087c88116a15c43469727a9a50d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420377"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133653"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Elastische taken maken, configureren en beheren
 
@@ -55,7 +55,7 @@ Het instellen van de juiste referenties voor het uitvoeren van een taak kan enig
 
 De volgende afbeelding is gemaakt als hulp bij het begrijpen en instellen van de juiste taakreferenties. **Denk eraan dat de gebruiker moet worden gemaakt in elke database (alle *doelgebruikersdatabases*) waarin de taak moet worden uitgevoerd**.
 
-![Referenties voor elastische taken](media/elastic-jobs-overview/job-credentials.png)
+![Referenties voor Elastic Jobs](media/elastic-jobs-overview/job-credentials.png)
 
 ## <a name="security-best-practices"></a>Aanbevolen procedures voor beveiliging
 
@@ -88,7 +88,7 @@ Een eenvoudige tactiek is te testen of een object bestaat voordat u het maakt.
 
 
 ```sql
-IF NOT EXIST (some_object)
+IF NOT EXISTS (some_object)
     -- Create the object
     -- If it exists, drop the object before recreating it.
 ```

@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/01/2019
+ms.date: 10/02/2019
 ms.author: juliako
-ms.openlocfilehash: 5b5956094da497cfbb72608587b2e0389ceec8fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3520b7d6b0fd67fdbff3e1dd78d038f36ad5f0af
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427132"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133424"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3
 
@@ -115,7 +115,7 @@ In de volgende tabel ziet u de code verschillen tussen v2 en v3 voor algemene sc
 * U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Gebruik de [rest API](https://aka.ms/ams-v3-rest-sdk), CLI of een van de ondersteunde sdk's.
 * U moet gereserveerde media-eenheden (MRUs) inrichten in uw account om de gelijktijdigheid en prestaties van uw taken te bepalen, met name voor de analyse van video of audio. Zie [Mediaverwerking schalen](../previous/media-services-scale-media-processing-overview.md) voor meer informatie. U kunt de MRUs beheren met [CLI 2,0 voor Media Services v3](media-reserved-units-cli-how-to.md), met behulp van de [Azure Portal](../previous/media-services-portal-scale-media-processing.md)of met behulp van de [v2-api's](../previous/media-services-dotnet-encoding-units.md). U moet MRUs inrichten, ongeacht of u Media Services v2-of v3-Api's gebruikt.
 * Media Services entiteiten die met de V3 API zijn gemaakt, kunnen niet worden beheerd door de v2 API.  
-* Het is niet raadzaam om entiteiten te beheren die met v2 Api's zijn gemaakt via de V3-Api's. Hieronder volgen enkele voor beelden van de verschillen die de entiteiten in twee versies incompatibel maken:   
+* Niet alle entiteiten in de v2 API worden automatisch weer gegeven in de V3 API.  Hieronder volgen enkele voor beelden van entiteiten in de twee versies die niet compatibel zijn:  
     * Taken en taken die zijn gemaakt in v2, worden niet weer gegeven in v3, omdat ze niet zijn gekoppeld aan een trans formatie. De aanbeveling is om over te scha kelen naar v3-trans formaties en-taken. Er is een relatief korte periode voor het bewaken van de Inflight v2-taken tijdens het overschakelen.
     * Kanalen en Program Ma's die zijn gemaakt met v2 (die zijn toegewezen aan Live-gebeurtenissen en live-uitvoer in v3), kunnen niet worden beheerd met v3. De aanbeveling is om over te scha kelen naar v3 Live-gebeurtenissen en live-uitvoer op een handige kanaal stop.<br/>Momenteel kunt u continu actieve kanalen niet migreren.  
 

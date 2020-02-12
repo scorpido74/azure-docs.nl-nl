@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: rohink
-ms.openlocfilehash: b00bc1c95e2f593523c584c4abfe9381e5697f79
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 49e0bce6eea8fac32f49bb905c225e898e709af0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939461"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136285"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Zelf studie: direct verkeer naar specifieke eind punten op basis van het subnet van de gebruiker met behulp van Traffic Manager
 
@@ -47,7 +47,7 @@ De virtuele machines voor de tests worden gebruikt om te laten zien hoe Traffic 
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij Azure Portal op https://portal.azure.com.
+Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
 ### <a name="create-websites"></a>Websites maken
 
@@ -154,7 +154,7 @@ Maak een Traffic Manager-profiel waarmee u specifieke eindpunten kunt retournere
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
-    | Name                   | Deze naam moet uniek zijn binnen de zone trafficmanager.net en resulteert in de DNS-naam, trafficmanager.net, die wordt gebruikt voor het openen van uw Traffic Manager-profiel.                                   |
+    | Naam                   | Deze naam moet uniek zijn binnen de zone trafficmanager.net en resulteert in de DNS-naam, trafficmanager.net, die wordt gebruikt voor het openen van uw Traffic Manager-profiel.                                   |
     | Routeringsmethode          | Selecteer de routeringsmethode **Subnet**.                                       |
     | Abonnement            | Selecteer uw abonnement.                          |
     | Resourcegroep          | Selecteer **Bestaande** en voer *myResourceGroupTM1* in. |
@@ -174,7 +174,7 @@ Voeg de twee virtuele machines met de IIS-servers- *myIISVMEastUS* & *myIISVMWes
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | Type                    | Azure-eindpunt                                   |
-    | Name           | myInternalWebSiteEndpoint                                        |
+    | Naam           | myInternalWebSiteEndpoint                                        |
     | Doelbrontype           | Openbaar IP-adres                          |
     | Doelbron          | **Kies een openbaar IP-adres** om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam *myIISVMEastUS-ip*. Dit is het openbare IP-adres van de IIS-server VM in US - oost.|
     |  Instellingen voor subnetroutering    |   Voeg het IP-adres van de *myVMEastUS* -test-VM toe. Alle gebruikers query's die afkomstig zijn van deze VM, worden omgeleid naar de *myInternalWebSiteEndpoint*.    |

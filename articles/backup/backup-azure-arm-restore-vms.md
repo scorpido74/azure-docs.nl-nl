@@ -4,12 +4,12 @@ description: Een virtuele Azure-machine herstellen vanaf een herstel punt met be
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 23e34d65a06f5fbf3ad8ce53311862c680ddebd0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d70db384101d838b2b65707090577156daa59b9a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77021981"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138063"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure VM-gegevens herstellen in Azure Portal
 
@@ -71,7 +71,7 @@ Als u geen machtigingen hebt, kunt u [een schijf herstellen](#restore-disks)en n
 
 2. Geef de instellingen voor de geselecteerde terugzet optie op.
 
-## <a name="create-a-vm"></a>Een VM maken
+## <a name="create-a-vm"></a>Een virtuele machine maken
 
 Als een van de [Opties voor terugzetten](#restore-options)kunt u snel een virtuele machine maken met de basis instellingen van een herstel punt.
 
@@ -168,6 +168,9 @@ De gebruikers ervaring voor het herstellen van de secundaire regio is vergelijkb
 - Als u een virtuele machine wilt herstellen en maken, raadpleegt u [een virtuele machine maken](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm).
 - Raadpleeg [schijven herstellen](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks)als u de schijf wilt herstellen.
 
+>[!NOTE]
+>Nadat de herstel bewerking is geactiveerd en in de fase voor gegevens overdracht, kan de herstel taak niet worden geannuleerd.
+
 ### <a name="monitoring-secondary-region-restore-jobs"></a>Taken voor het herstellen van secundaire regio's bewaken
 
 1. Ga in de portal naar **Recovery Services kluis** > **back-uptaken**
@@ -183,7 +186,7 @@ Er zijn een aantal algemene scenario's waarin u mogelijk Vm's moet herstellen.
 --- | ---
 **Vm's herstellen met voor deel voor hybride gebruik** | Als een virtuele Windows-machine gebruikmaakt van [hybride licenties voor voor delen (hub)](../virtual-machines/windows/hybrid-use-benefit-licensing.md), herstelt u de schijven en maakt u een nieuwe virtuele machine met behulp van de meegeleverde sjabloon (waarbij **licentie type** is ingesteld op **Windows_Server**) of Power shell.  Deze instelling kan ook worden toegepast nadat de virtuele machine is gemaakt.
 **Vm's herstellen tijdens een nood geval in azure Data Center** | Als de kluis gebruikmaakt van GRS en het primaire Data Center voor de virtuele machine uitvalt, Azure Backup ondersteunt het herstellen van back-ups van virtuele machines naar het gekoppelde Data Center. Selecteer een opslag account in het gekoppelde Data Center en herstel als normaal. Azure Backup gebruikt de compute-service in de gekoppelde regio om de herstelde VM te maken. Meer [informatie](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md) over de flexibiliteit van data centers.
-**VM van één domein controller herstellen in één domein** | Herstel de VM, zoals elke andere virtuele machine. Opmerking:<br/><br/> Vanuit een Active Directory perspectief is de virtuele machine van Azure net als elke andere virtuele machine.<br/><br/> Directory Services Restore Mode (DSRM) is ook beschikbaar, dus alle Active Directory herstel scenario's zijn levensvatbaar. Meer [informatie](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps) over het maken van back-ups en het herstellen van overwegingen voor gevirtualiseerde domein controllers.
+**VM van één domein controller herstellen in één domein** | Herstel de VM, zoals elke andere virtuele machine. Houd rekening met het volgende:<br/><br/> Vanuit een Active Directory perspectief is de virtuele machine van Azure net als elke andere virtuele machine.<br/><br/> Directory Services Restore Mode (DSRM) is ook beschikbaar, dus alle Active Directory herstel scenario's zijn levensvatbaar. Meer [informatie](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps) over het maken van back-ups en het herstellen van overwegingen voor gevirtualiseerde domein controllers.
 **Meerdere Vm's van domein controllers in één domein herstellen** | Als andere domein controllers in hetzelfde domein kunnen worden bereikt via het netwerk, kan de domein controller worden hersteld, zoals elke VM. Als het de laatste domein controller in het domein is, of als er een herstel in een geïsoleerd netwerk is uitgevoerd, gebruikt u een [forest recovery](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 **Meerdere domeinen in één forest herstellen** | We raden u aan een [forest-herstel](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)uit te voeren.
 **Bare-metal terugzet bewerking** | Het belangrijkste verschil tussen Azure Vm's en on-premises Hyper visors is dat er geen VM-console beschikbaar is in Azure. Een-console is vereist voor bepaalde scenario's, zoals het herstellen met behulp van een Bare-Metal Recovery (BMR)-type back-up. Het terugzetten van de VM vanuit de kluis is echter een volledige vervanging van BMR.

@@ -1,21 +1,19 @@
 ---
-title: Proximity-plaatsings groepen gebruiken voor Windows-Vm's
-description: Meer informatie over het maken en gebruiken van proximity-plaatsings groepen voor virtuele Windows-machines in Azure.
-services: virtual-machines-windows
-author: cynthn
-manager: gwallace
-ms.service: virtual-machines-windows
+title: 'Power shell: proximity-plaatsings groepen gebruiken'
+description: Meer informatie over het maken en gebruiken van proximity placement groups met behulp van Azure PowerShell.
+services: virtual-machines
+ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/30/2019
+ms.date: 01/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 6d0c35737151b060dcffba8944f4a1361d36dc14
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c1c144ac9db040bfac45ecc7838401ae09c9e2c4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171222"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137993"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Vm's implementeren op proximity-plaatsings groepen met Power shell
 
@@ -49,7 +47,7 @@ Get-AzProximityPlacementGroup
 ```
 
 
-## <a name="create-a-vm"></a>Een VM maken
+## <a name="create-a-vm"></a>Een virtuele machine maken
 
 Maak een virtuele machine in de plaatsings groep met behulp van `-ProximityPlacementGroup $ppg.Id` om te verwijzen naar de locatie-ID van de Proximity-groep wanneer u [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) gebruikt om de virtuele machine te maken.
 
@@ -71,12 +69,107 @@ Get-AzProximityPlacementGroup -ResourceId $ppg.Id |
     Format-Table -Property VirtualMachines -Wrap
 ```
 
+### <a name="move-an-existing-vm-into-a-proximity-placement-group"></a>Een bestaande virtuele machine verplaatsen naar een plaatsings groep voor nabijheid
+
+U kunt ook een bestaande virtuele machine toevoegen aan een proximity-plaatsings groep. U moet eerst de virtuele machine stop\deallocate en vervolgens de virtuele machine bijwerken en opnieuw starten.
+
+```azurepowershell-interactive
+$ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
+$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
+Stop-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName -ProximityPlacementGroupId $ppg.Id
+Restart-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+```
+
+### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>Een bestaande virtuele machine uit een proximity-plaatsings groep verplaatsen
+
+Als u een virtuele machine uit een proximity-plaatsings groep wilt verwijderen, moet u eerst de virtuele machine stop\deallocate en vervolgens de virtuele machine bijwerken en opnieuw starten.
+
+```azurepowershell-interactive
+$ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
+$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
+Stop-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+$vm.ProximityPlacementGroupId = ""
+Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName 
+Restart-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+```
+
+
 ## <a name="availability-sets"></a>Beschikbaarheidssets
 U kunt ook een beschikbaarheidsset maken in de plaatsings groep voor proximity. Gebruik dezelfde `-ProximityPlacementGroup`-para meter met de cmdlet [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) voor het maken van een beschikbaarheidsset en alle virtuele machines die zijn gemaakt in de beschikbaarheidsset, worden ook gemaakt in dezelfde plaatsings groep.
+
+Als u een bestaande beschikbaarheidsset wilt toevoegen aan of verwijderen uit een proximity-plaatsings groep, moet u eerst alle virtuele machines in de beschikbaarheidsset stoppen. 
+
+### <a name="move-an-existing-availability-set-into-a-proximity-placement-group"></a>Een bestaande beschikbaarheidsset verplaatsen naar een proximity-plaatsings groep
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$avSetName = "myAvailabilitySet"
+$avSet = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup -Name $avSetName
+$vmIds = $avSet.VirtualMachinesReferences
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force
+    } 
+
+$ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPG -Name myPPG
+Update-AzAvailabilitySet -AvailabilitySet $avSet -ProximityPlacementGroupId $ppg.Id
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName 
+    } 
+```
+
+### <a name="move-an-existing-availability-set-out-of-a-proximity-placement-group"></a>Een bestaande Beschik baarheid uit een plaatsings groep voor nabijheid verplaatsen
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$avSetName = "myAvailabilitySet"
+$avSet = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup -Name $avSetName
+$vmIds = $avSet.VirtualMachinesReferences
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force
+    } 
+
+$avSet.ProximityPlacementGroup = ""
+Update-AzAvailabilitySet -AvailabilitySet $avSet 
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName 
+    } 
+```
 
 ## <a name="scale-sets"></a>Schaalsets
 
 U kunt ook een schaalset maken in de plaatsings groep voor proximity. Gebruik dezelfde `-ProximityPlacementGroup`-para meter met [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) om een schaalset te maken en alle instanties worden gemaakt in dezelfde plaatsings groep.
+
+
+Als u een bestaande schaalset wilt toevoegen aan of verwijderen uit een proximity-plaatsings groep, moet u eerst de schaalset stoppen. 
+
+### <a name="move-an-existing-scale-set-into-a-proximity-placement-group"></a>Een bestaande schaalset verplaatsen naar een proximity-plaatsings groep
+
+```azurepowershell-interactive
+$ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPG -Name myPPG
+$vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScaleSet
+Stop-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+Update-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName -ProximityPlacementGroupId $ppg.Id
+Restart-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+```
+
+### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>Een bestaande schaalset uit een proximity-plaatsings groep verplaatsen
+
+```azurepowershell-interactive
+$vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScaleSet
+Stop-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+$vmss.ProximityPlacementGroup = ""
+Update-AzVmss -VirtualMachineScaleSet $vmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName  
+Restart-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

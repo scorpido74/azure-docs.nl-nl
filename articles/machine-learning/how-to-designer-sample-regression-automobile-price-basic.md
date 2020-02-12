@@ -9,13 +9,13 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 12/25/2019
-ms.openlocfilehash: 6f4fe941cc44211f9f5d5e77b11043257b43a8ea
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/11/2020
+ms.openlocfilehash: 58adbc7607b0b32e79123b701c37f55ce7cc1d2e
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963285"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138116"
 ---
 # <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Regressie gebruiken om de prijzen van auto's te voors pellen met Azure Machine Learning Designer
 
@@ -61,7 +61,7 @@ Gebruik de module **select columns in dataset** om normale verliezen met veel on
 
 Problemen met machine learning kunnen variëren. Veelvoorkomende machine learning taken omvatten classificatie-, cluster-, regressie-en aanbevolen systemen, die elk een ander algoritme kunnen vereisen. Uw keuze van algoritme is vaak afhankelijk van de vereisten van de use-case. Nadat u een algoritme hebt gekozen, moet u de para meters afstemmen om een nauw keuriger model te trainen. Vervolgens moet u alle modellen evalueren op basis van metrische gegevens, zoals nauw keurigheid, Intelligibility en efficiëntie.
 
-Omdat het doel van dit voor beeld is om de prijzen van auto's te voors pellen, en omdat de kolom Label (prijs) reële getallen bevat, is een regressie model een goede keuze. Gezien het feit dat het aantal functies relatief klein is (minder dan 100) en deze functies niet verspreid zijn, is de beslissings grens waarschijnlijk niet lineair. Daarom gebruiken we de regressie van het **beslissings forest** voor deze pijp lijn.
+Omdat het doel van dit voor beeld is om de prijzen van auto's te voors pellen, en omdat de kolom Label (prijs) doorlopende gegevens is, kan een regressie model een goede keuze zijn. We gebruiken **lineaire regressie** voor deze pijp lijn.
 
 Gebruik de module **Splits data** om de invoer gegevens wille keurig te verdelen, zodat de trainings gegevensset 70% van de oorspronkelijke gegevens bevat en de test gegevensset 30% van de oorspronkelijke gegevens bevat.
 

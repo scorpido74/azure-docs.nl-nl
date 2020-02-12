@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0c03394c48c936f9faef85e9f4933893aaa67090
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 62e5b363f8008380a61e24c0549573a30ecaeb73
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482424"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131858"
 ---
 # <a name="imagery-partner-integration"></a>Partnerintegratie voor afbeeldingen
 
@@ -40,7 +40,7 @@ U moet de volgende referenties in de drone-partner software gebruiken om FarmBea
 
 De Api's bevatten technische documentatie voor Swagger. Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over de api's en bijbehorende aanvragen of antwoorden.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 FarmBeats maakt gebruik van Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD). Azure App Service biedt ingebouwde ondersteuning voor verificatie en autorisatie. 
 
@@ -492,4 +492,4 @@ De POST-aanroep van de/SceneFile-API retourneert een SAS-upload-URL, die kan wor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [rest API](references-for-azure-farmbeats.md#rest-api)voor meer informatie over op rest API gebaseerde integratie Details.
+Zie [rest API](rest-api-in-azure-farmbeats.md)voor meer informatie over op rest API gebaseerde integratie Details.

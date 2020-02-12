@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 0aa30c114153521258842fc5f1e9150053b766f4
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 21a11863bd2bc9882d4336f5c5d2bf1d7b7f49da
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332304"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133770"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Stel een lab in dat is gericht op diep gaande lessen in de verwerking van natuurlijke taal met behulp van Azure Lab Services
 In dit artikel wordt beschreven hoe u een test omgeving kunt instellen voor een diep gaande cursus in natuurlijke taal verwerking (NLP) met behulp van Azure Lab Services. De verwerking van natuurlijke taal (NLP) is een vorm van kunst matige intelligentie (AI) waarmee computers kunnen beschikken over mogelijkheden voor vertaling, spraak herkenning en andere talen.  
@@ -32,7 +32,7 @@ Nadat u het lab-account hebt gemaakt, schakelt u de volgende instellingen in het
 
 | Account instelling Lab | Instructies |
 | ----------- | ------------ |  
-| Marketplace-installatie kopieën | De Data Science Virtual Machine-installatie kopie voor Linux (Ubuntu) inschakelen voor gebruik binnen uw Lab-account.  Raadpleeg de volgende artikelen voor instructies: [Geef Marketplace-installatie kopieën op die beschikbaar zijn voor Lab-makers](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators). | 
+| Marketplace-installatie kopieën | De Data Science Virtual Machine-installatie kopie voor Linux (Ubuntu) inschakelen voor gebruik binnen uw Lab-account.  Raadpleeg de volgende artikelen voor instructies: [Geef Marketplace-installatie kopieën op die beschikbaar zijn voor Lab-makers](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators). | 
 
 Volg [deze zelf studie](tutorial-setup-classroom-lab.md) om een nieuw lab te maken en de volgende instellingen toe te passen:
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ddcf5a1df31b4b36e25b2522ada21deab19fe032
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159871"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138023"
 ---
 # <a name="securing-paas-deployments"></a>PaaS-implementaties beveiligen
 
@@ -36,7 +36,7 @@ Het [ontwikkelen van beveiligde toepassingen op Azure](abstract-develop-secure-a
 ## <a name="cloud-security-advantages"></a>Voor delen van Cloud beveiliging
 Het is belang rijk om inzicht te krijgen in de [verantwoordelijkheid](shared-responsibility.md) tussen u en micro soft. On-premises is het eigendom van de hele stack, maar wanneer u overstapt naar de Cloud, worden sommige verantwoordelijkheden overgedragen naar micro soft.
 
-Er zijn [beveiligings voordelen die zich in de Cloud](shared-responsibility.md#cloud security advantages)bevinden. In een on-premises omgeving hebben organisaties waarschijnlijk unmet verantwoordelijkheden en beperkte bronnen die beschikbaar zijn om te investeren in beveiliging, waardoor een omgeving wordt gemaakt waarin aanvallers zwakke plekken op alle lagen kunnen exploiteren.
+Er zijn [beveiligings voordelen die zich in de Cloud](shared-responsibility.md#cloud-security-advantages)bevinden. In een on-premises omgeving hebben organisaties waarschijnlijk unmet verantwoordelijkheden en beperkte bronnen die beschikbaar zijn om te investeren in beveiliging, waardoor een omgeving wordt gemaakt waarin aanvallers zwakke plekken op alle lagen kunnen exploiteren.
 
 Organisaties kunnen hun detectie en reactie tijden voor bedreigingen verbeteren door gebruik te maken van de Cloud beveiligings mogelijkheden van een provider en Cloud Intelligence.  Door verantwoordelijkheden te verplaatsen naar de Cloud provider, kunnen organisaties meer beveiligings dekking krijgen, waardoor ze beveiligings bronnen en budget opnieuw aan andere zakelijke prioriteiten kan toewijzen.
 
@@ -98,10 +98,10 @@ De levens cyclus van micro soft [Security Development](https://www.microsoft.com
 
 De volgende tabel geeft een overzicht van de STRIDE-bedreigingen en biedt enkele voor beelden van oplossingen die gebruikmaken van Azure-functies. Deze oplossingen werken niet in elke situatie.
 
-| Bestaat | Beveiligings eigenschap | Mogelijke problemen met het Azure-platform |
+| Bedreiging | Beveiligings eigenschap | Mogelijke problemen met het Azure-platform |
 | --- | --- | --- |
 | Spoofing | Verificatie | HTTPS-verbindingen vereisen. |
-| Manipulatie | Gegevensintegriteit | SSL-certificaten valideren. |
+| Knoeien | Gegevensintegriteit | SSL-certificaten valideren. |
 | Ging | Niet-afwijzing | [Bewaking en diagnose](/azure/architecture/best-practices/monitoring)van Azure inschakelen. |
 | Vrijgeven van informatie | Aard | Versleutel gevoelige gegevens op rest door gebruik te maken van [service certificaten](/rest/api/appservice/certificates). |
 | Denial of service | Beschikbaarheid | Bewaak de prestatie gegevens voor mogelijke denial-of-service-voor waarden. Verbindings filters implementeren. |
@@ -119,7 +119,7 @@ Hieronder vindt u aanbevolen procedures voor het gebruik van App Service.
 **Details**: het beperken van de toegang is van cruciaal belang voor organisaties die beveiligings beleid voor gegevens toegang willen afdwingen. U kunt RBAC gebruiken om machtigingen toe te wijzen aan gebruikers, groepen en toepassingen bij een bepaald bereik. Zie aan de [slag met toegangs beheer](/azure/role-based-access-control/overview)voor meer informatie over het verlenen van gebruikers toegang tot toepassingen.
 
 **Aanbevolen procedure**: Beveilig uw sleutels.   
-**Details**: Azure Key Vault helpt bij het beveiligen van cryptografische sleutels en geheimen die worden gebruikt door Cloud toepassingen en-services. Met Key Vault kunt u sleutels en geheimen versleutelen (zoals verificatie sleutels, sleutels voor opslag accounts, sleutels voor gegevens versleuteling,. PFX-bestanden en wacht woorden) met behulp van sleutels die worden beveiligd door Hardware Security modules (Hsm's). Voor extra zekerheid kunt u sleutels importeren of genereren in HSM's. Zie [Azure Key Vault](/azure/key-vault/key-vault-overview) voor meer informatie. U kunt Key Vault ook gebruiken om uw TLS-certificaten te beheren met automatische verlenging.
+**Details**: Azure Key Vault helpt bij het beveiligen van cryptografische sleutels en geheimen die worden gebruikt door Cloud toepassingen en-services. Met Key Vault kunt u sleutels en geheimen versleutelen (zoals verificatie sleutels, sleutels voor opslag accounts, sleutels voor gegevens versleuteling,. PFX-bestanden en wacht woorden) met behulp van sleutels die worden beveiligd door Hardware Security modules (Hsm's). Voor extra zekerheid kunt u de sleutels importeren of genereren in HSM's. Zie [Azure Key Vault](/azure/key-vault/key-vault-overview) voor meer informatie. U kunt Key Vault ook gebruiken om uw TLS-certificaten te beheren met automatische verlenging.
 
 **Best Practice**: IP-adressen van binnenkomende bronnen beperken.   
 **Details**: [app service Environment](/azure/app-service/environment/intro) heeft een functie voor de integratie van virtuele netwerken waarmee u binnenkomende bron-IP-adressen kunt beperken via netwerk beveiligings groepen. Met virtuele netwerken kunt u Azure-resources in een niet-Internet Routeer bare netwerk plaatsen waartoe u de toegang beheert. Zie [uw app integreren met een virtueel Azure-netwerk](/azure/app-service/web-sites-integrate-with-vnet)voor meer informatie.
@@ -157,7 +157,7 @@ In dit artikel zijn we gericht op beveiligings voordelen van een Azure PaaS-impl
 - [Azure SQL Database en Azure SQL Data Warehouse](paas-applications-using-sql.md)
 - [Azure Storage](paas-applications-using-storage.md)
 - Azure Cache voor Redis
-- Service Bus van Azure
+- Azure Service Bus
 - Firewalls voor webtoepassingen
 
 Zie voor het ontwikkelen van [beveiligde toepassingen op Azure](abstract-develop-secure-apps.md) voor beveiligings vragen en-besturings elementen kunt u overwegen in elke fase van de levens cyclus van software ontwikkeling bij het ontwikkelen van toepassingen voor de Cloud.

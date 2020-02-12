@@ -5,27 +5,25 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/01/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: deabef0c2c3540e515fe72a161710c95a20fa86f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 50ce8530aca40eed07741f35be1a57bbd7cc1868
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175898"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133599"
 ---
-Open de PowerShell-console met verhoogde bevoegdheden.
+Open de Power shell-console met verhoogde bevoegdheden.
 
-
-
-Als u Azure PowerShell lokaal uitvoert, moet u een verbinding maken met uw Azure-account. De *Connect AzAccount* cmdlet vraagt u om referenties. Na verificatie, het instellingen van uw account gedownload zodat ze beschikbaar voor Azure PowerShell zijn. Als u PowerShell niet lokaal worden uitgevoerd en worden in plaats daarvan met behulp van de Azure Cloud Shell 'Uitproberen' in de browser, kunt u deze eerste stap overslaan. U wordt automatisch verbinding maken met uw Azure-account.
+Als u Azure PowerShell lokaal uitvoert, maakt u verbinding met uw Azure-account. Met de cmdlet *Connect-AzAccount* wordt u gevraagd referenties op te vragen. Na de verificatie worden uw account instellingen gedownload zodat ze beschikbaar zijn voor Azure PowerShell. Als u in plaats daarvan Azure Cloud Shell gebruikt, hoeft u *Connect-AzAccount*niet uit te voeren. Azure Cloud Shell maakt automatisch verbinding met uw Azure-account.
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-Als u meer dan één abonnement hebt, krijgt u een lijst met uw Azure-abonnementen.
+Als u meer dan één abonnement hebt, kunt u een lijst met uw Azure-abonnementen ophalen.
 
 ```azurepowershell-interactive
 Get-AzSubscription

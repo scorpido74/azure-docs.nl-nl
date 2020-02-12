@@ -5,26 +5,26 @@ services: azure-portal
 keywords: instellingen, time-out
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 87de67eec9171825a1ebff9ab60782fea8836039
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310795"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132078"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>Time-out voor inactiviteit op Directory niveau instellen
 
-De instelling time-out voor inactiviteit helpt u bij het beveiligen van uw resources tegen onbevoegde toegang als gebruikers verg eten hun werk station te beveiligen. Wanneer een gebruiker enige tijd inactief is, wordt de Azure Portal-sessie automatisch afgemeld. Beheerders kunnen het maximum aantal niet-actieve tijd afdwingen voordat een sessie wordt afgemeld. De instelling time-out voor inactiviteit is van toepassing op het niveau van de Directory. Zie [Active Directory Domain Services Overview](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)voor meer informatie over directory's.
+De instelling time-out voor inactiviteit helpt u bij het beveiligen van uw resources tegen onbevoegde toegang als gebruikers verg eten hun werk station te beveiligen. Wanneer een gebruiker enige tijd inactief is, wordt de Azure Portal-sessie automatisch afgemeld. Beheerders in de [rol globale beheerder](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) kunnen het maximum aantal niet-actieve tijd afdwingen voordat een sessie wordt afgemeld. De instelling time-out voor inactiviteit is van toepassing op het niveau van de Directory. Zie [Active Directory Domain Services Overview](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)voor meer informatie over directory's.
 
 ## <a name="configure-the-inactive-timeout-setting"></a>De instelling voor de inactieve time-out configureren
 
-Als u een beheerder bent en u een instelling voor inactieve time-out wilt afdwingen voor alle gebruikers van de Azure Portal, volgt u deze stappen:
+Als u een globale beheerder bent en u een instelling voor een inactieve time-out wilt afdwingen voor alle gebruikers van de Azure Portal, voert u de volgende stappen uit:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **instellingen** in de koptekst van de globale pagina.
 3. Selecteer de koppeling tekst **configureren time-out**mapniveau.
 

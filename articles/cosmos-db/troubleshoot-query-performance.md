@@ -1,19 +1,19 @@
 ---
 title: Problemen met query's oplossen bij het gebruik van Azure Cosmos DB
 description: Meer informatie over het identificeren, vaststellen en oplossen van problemen met Azure Cosmos DB SQL-query's.
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 01/14/2020
-ms.author: girobins
+ms.date: 02/10/2020
+ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: f016902f6cf7e0238dadb97d816f4590caec112e
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 34f5de01df72b48d275448e028ab0f8cb71e51f8
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77109340"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132067"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Problemen met query's oplossen bij het gebruik van Azure Cosmos DB
 
@@ -198,7 +198,7 @@ Hoewel query's met een filter en een `ORDER BY`-component normaal gesp roken geb
 Query:
 
 ```sql
-SELECT * FROM c WHERE c.foodGroup = “Soups, Sauces, and Gravies” ORDER BY c._ts ASC
+SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts ASC
 ```
 
 Indexerings beleid:
@@ -308,7 +308,7 @@ Als we bijvoorbeeld een container met de partitie sleutel foodGroup maken, hoeve
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup = “Soups, Sauces, and Gravies” and c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup = "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
 Deze query's worden ook geoptimaliseerd door de partitie sleutel in de query op te nemen:
@@ -327,7 +327,7 @@ WHERE c.description = "Mushroom, oyster, raw"
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup > “Soups, Sauces, and Gravies” and c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup > "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
 ## <a name="filters-on-multiple-properties"></a>Filters op meerdere eigenschappen

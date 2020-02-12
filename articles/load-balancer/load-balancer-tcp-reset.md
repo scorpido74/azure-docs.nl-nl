@@ -13,21 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
 ms.author: allensu
-ms.openlocfilehash: b37253f37043d902d33504b99401781eb1c761c5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: eac7dc3b7188131685ef630c0dc01d248e1d6a6a
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075936"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134784"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer met opnieuw instellen van TCP bij inactiviteit (openbare preview)
+# <a name="load-balancer-with-tcp-reset-on-idle"></a>Load Balancer met TCP Reset bij niet-actief
 
 U kunt [Standard Load Balancer](load-balancer-standard-overview.md) gebruiken om een meer voorspel bare toepassings gedrag te maken voor uw SCENARIO'S door TCP reset in te scha kelen bij niet-actief voor een bepaalde regel. Het standaard gedrag van Load Balancer is het op de achtergrond neerzetten van stromen wanneer de time-out van een stroom niet actief is.  Als u deze functie inschakelt, worden Load Balancer bidirectionele TCP resets (TCP eerste pakket) verzonden naar time-out voor inactiviteit.  Hiermee wordt de eind punten van uw toepassing geïnformeerd dat er een time-out voor de verbinding is opgetreden. deze kan niet meer worden gebruikt.  Eind punten kunnen onmiddellijk een nieuwe verbinding tot stand brengen, indien nodig.
 
 ![Load Balancer TCP opnieuw instellen](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
-
->[!NOTE] 
->De functie voor het opnieuw instellen van een TCP-time-out voor inactiviteit op dit moment is beschikbaar als open bare preview. Load Balancer Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
 U wijzigt dit standaard gedrag en schakelt het verzenden van TCP-opnieuw instellen in op inactieve time-outwaarde voor binnenkomende NAT-regels, taakverdelings regels en [Uitgaande regels](https://aka.ms/lboutboundrules).  Wanneer dit is ingeschakeld per regel, verzendt Load Balancer bidirectionele TCP-opnieuw instellen (eerste TCP-pakketten) naar zowel client-als server eindpunten op het moment van time-out voor inactiviteit voor alle overeenkomende stromen.
 
@@ -73,10 +70,9 @@ Beschikbaar in alle regio's.
 
 ## <a name="limitations"></a>Beperkingen
 
-- De portal kan niet worden gebruikt voor het configureren of weer geven van TCP Reset.  Gebruik in plaats daarvan sjablonen, REST-API, Az CLI 2.0 of PowerShell.
 - EERSTE TCP wordt alleen verzonden tijdens de TCP-verbinding in de INGESTELDe status.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [standaardversie van Load Balancer](load-balancer-standard-overview.md).
+- Meer informatie over [Standard Load Balancer](load-balancer-standard-overview.md).
 - Meer informatie over [Uitgaande regels](load-balancer-outbound-rules-overview.md).

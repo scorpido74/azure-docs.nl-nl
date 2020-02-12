@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: c0b32bfba61f1c6f3f00c5189f611d84069dd9da
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
-ms.translationtype: MT
+ms.openlocfilehash: 7cc74ca19d2194a7319ab1b88ab7847b04b0d895
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779668"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134569"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Geforceerde tunneling met het implementatiemodel van Azure Resource Manager configureren
 
@@ -47,9 +47,9 @@ Geforceerde Tunneling in azure wordt geconfigureerd via door de gebruiker gedefi
 
 * Elk virtueel netwerksubnet heeft een ingebouwde, systeem-routeringstabel. De routeringstabel van het systeem heeft de volgende drie groepen van routes:
   
-  * **Lokale VNet routes:** rechtstreeks naar de bestemming VM's in hetzelfde virtuele netwerk.
-  * **On-premises routes:** naar de Azure VPN-gateway.
-  * **Standaard-route:** rechtstreeks met Internet. Pakketten die bestemd zijn voor de privé-IP-adressen die niet worden gedekt door de vorige twee routes, worden verwijderd.
+  * **Lokale VNet-routes:** Rechtstreeks naar de doel-Vm's in hetzelfde virtuele netwerk.
+  * **On-premises routes:** Naar de Azure VPN-gateway.
+  * **Standaard route:** Rechtstreeks op internet. Pakketten die bestemd zijn voor de privé-IP-adressen die niet worden gedekt door de vorige twee routes, worden verwijderd.
 * Deze procedure maakt gebruik van door de gebruiker gedefinieerde routes (UDR) om een routerings tabel te maken om een standaard route toe te voegen en koppel de routerings tabel vervolgens aan uw VNet-subnet ('s) om geforceerde Tunneling in te scha kelen op deze subnetten.
 * Geforceerde tunneling moet worden gekoppeld aan een VNet met een op route gebaseerde VPN-gateway. U moet een 'standaard-site"tussen de cross-premises lokale sites die zijn verbonden met het virtuele netwerk instellen. Het on-premises VPN-apparaat moet ook worden geconfigureerd met 0.0.0.0/0 als verkeers selectie. 
 * ExpressRoute geforceerde tunneling is niet geconfigureerd via dit mechanisme, maar in plaats daarvan wordt ingeschakeld door kondigt een standaardroute via de ExpressRoute-BGP-peeringsessies. Zie de [ExpressRoute-documentatie](https://azure.microsoft.com/documentation/services/expressroute/)voor meer informatie.
@@ -71,7 +71,7 @@ Installeer de meest recente versie van de PowerShell-cmdlets van Azure Resource 
 
 ### <a name="to-log-in"></a>Aanmelden
 
-[!INCLUDE [To log in](../../includes/vpn-gateway-ps-login-include.md)]
+[!INCLUDE [To log in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ## <a name="configure-forced-tunneling"></a>Geforceerde tunneling configureren
 

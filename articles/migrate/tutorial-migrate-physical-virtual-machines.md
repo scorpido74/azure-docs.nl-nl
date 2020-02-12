@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe u fysieke machines naar Azure m
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 3fbc94464c139add6e275890e1a1e415b2826f0d
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 908a5915cbb7f5aeb9f641da18024d5dbf497707
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069520"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134939"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Machines als fysieke servers migreren naar Azure
 
@@ -61,9 +61,6 @@ Voordat u aan deze zelfstudie begint, dient u eerst:
 Stel Azure-machtigingen in voordat u kunt migreren met Azure Migrate server migratie.
 
 - **Een project maken**: uw Azure-account moet machtigingen hebben om een Azure migrate project te maken. 
-- **Registreer het Azure migrate replicatie apparaat**: het replicatie apparaat maakt en registreert een Azure Active Directory-app in uw Azure-account. Machtigingen voor delegeren.
-- **Maak Key Vault**: om machines te migreren, maakt Azure Migrate een Key Vault in de resource groep, om toegangs sleutels te beheren voor het opslag account voor replicatie in uw abonnement. Als u de kluis wilt maken, moet u machtigingen voor roltoewijzing hebben voor de resource groep waarin het Azure Migrate-project zich bevindt. 
-
 
 ### <a name="assign-permissions-to-create-project"></a>Machtigingen toewijzen voor het maken van een project
 
@@ -73,43 +70,6 @@ Stel Azure-machtigingen in voordat u kunt migreren met Azure Migrate server migr
     - Als u zojuist een gratis Azure-account hebt gemaakt, bent u de eigenaar van uw abonnement.
     - Als u niet de eigenaar van het abonnement bent, kunt u met de eigenaar samen werken om de rol toe te wijzen.
 
-### <a name="assign-permissions-to-register-the-replication-appliance"></a>Machtigingen toewijzen voor het registreren van het replicatie apparaat
-
-Voor migratie op basis van een agent delegeren machtigingen voor Azure Migrate server migratie om een Azure AD-app in uw account te maken en registreren. U kunt machtigingen toewijzen met behulp van een van de volgende methoden:
-
-- Een Tenant/globale beheerder kan machtigingen verlenen aan gebruikers in de Tenant om Azure AD-apps te maken en registreren.
-- Een Tenant/globale beheerder kan de rol van toepassings ontwikkelaar (die de machtigingen heeft) toewijzen aan het account.
-
-Het is een goed idee dat:
-
-- De apps hebben geen andere toegangs machtigingen voor het abonnement dan de hierboven beschreven.
-- U hebt deze machtigingen alleen nodig wanneer u een nieuw replicatie apparaat registreert. U kunt de machtigingen verwijderen nadat het replicatie apparaat is ingesteld. 
-
-
-#### <a name="grant-account-permissions"></a>Account machtigingen verlenen
-
-De Tenant/globale beheerder kan machtigingen als volgt verlenen
-
-1. In azure AD moet de Tenant/globale beheerder naar **Azure Active Directory** > **gebruikers** > **gebruikers instellingen**navigeren.
-2. De beheerder moet **app-registraties** instellen op **Ja**.
-
-    ![Azure AD-machtigingen](./media/tutorial-migrate-physical-virtual-machines/aad.png)
-
-> [!NOTE]
-> Dit is een standaard instelling die niet gevoelig is. [Meer informatie](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
-
-#### <a name="assign-application-developer-role"></a>Rol toepassings ontwikkelaar toewijzen 
-
-De Tenant/globale beheerder kan de rol van toepassings ontwikkelaar toewijzen aan een account. [Meer informatie](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
-
-## <a name="assign-permissions-to-create-key-vault"></a>Machtigingen voor het maken van Key Vault toewijzen
-
-Wijs als volgt machtigingen voor roltoewijzing toe voor de resource groep waarin het Azure Migrate project zich bevindt:
-
-1. Selecteer in de resource groep in de Azure Portal **toegangs beheer (IAM)** .
-2. Zoek in **toegang controleren**het relevante account en klik erop om de machtigingen weer te geven. U hebt machtigingen voor **eigenaar** (of **Inzender** en **gebruikers toegang**) nodig.
-3. Als u niet over de vereiste machtigingen beschikt, vraagt u deze aan bij de eigenaar van de resource groep. 
-
 ## <a name="prepare-for-migration"></a>Voorbereiden op migratie
 
 ### <a name="check-machine-requirements-for-migration"></a>Controleer de computer vereisten voor migratie
@@ -117,7 +77,7 @@ Wijs als volgt machtigingen voor roltoewijzing toe voor de resource groep waarin
 Zorg ervoor dat de computers voldoen aan de vereisten voor migratie naar Azure. 
 
 > [!NOTE]
-> Migratie op basis van een agent met Azure Migrate server migratie is gebaseerd op de functies van de Azure Site Recovery-service. Sommige vereisten kunnen worden gekoppeld aan Site Recovery documentatie.
+> Migratie op basis van een agent met Azure Migrate server migratie heeft dezelfde replicatie architectuur als voor herstel na nood geval op basis van agents van de Azure Site Recovery-service. sommige van de gebruikte onderdelen delen dezelfde code basis. Sommige vereisten kunnen worden gekoppeld aan Site Recovery documentatie.
 
 1. [Controleer](migrate-support-matrix-physical-migration.md#physical-server-requirements) de vereisten voor de fysieke server.
 2. Controleer de VM-instellingen. On-premises machines die u naar Azure repliceert, moeten voldoen aan de vereisten van de [Azure-VM](migrate-support-matrix-physical-migration.md#azure-vm-requirements).

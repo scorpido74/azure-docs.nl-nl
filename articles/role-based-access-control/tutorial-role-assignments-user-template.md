@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van RBAC en Resource Manager-sjabloon'
+title: 'Zelf studie: gebruikers toegang verlenen tot Azure-resources met RBAC en Resource Manager-sjabloon'
 description: Meer informatie over hoe u een gebruiker toegang verleent tot Azure-resources met behulp van het op rollen gebaseerde toegangs beheer (RBAC) met behulp van Azure Resource Manager sjabloon in deze zelf studie.
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: ed143f85b4372348baa1d74b4ec7a7447943a74f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418487"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138202"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van RBAC en Resource Manager-sjabloon
 
@@ -63,7 +63,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Open de resource groep die u in de laatste procedure hebt gemaakt. De standaard naam is de naam van het project waaraan **RG** is toegevoegd.
 1. Selecteer **Toegangsbeheer (IAM)** in het menu links.
 1. Selecteer **Roltoewijzingen**. 

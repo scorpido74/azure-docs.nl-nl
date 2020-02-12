@@ -3,13 +3,13 @@ title: Limieten en quota voor Azure-abonnementen
 description: Biedt een lijst met algemene Azure-abonnementen en service limieten, quota's en beperkingen. Dit artikel bevat informatie over het verhogen van de limieten en maximum waarden.
 tags: billing
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: b209bc3e60f50ac363d3426d6c87f206b016d711
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
-ms.translationtype: MT
+ms.date: 02/10/2020
+ms.openlocfilehash: 0891a18c782d4d60970ccba8efa7c9bfc98f19df
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087421"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133706"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnements-en service limieten, quota's en beperkingen
 
@@ -28,8 +28,6 @@ Zie [naamgevings regels en beperkingen voor Azure-resources](resource-name-rules
 ## <a name="limits-and-azure-resource-manager"></a>Limieten en Azure Resource Manager
 
 U kunt meerdere Azure-resources combi neren in één Azure-resource groep. Wanneer u resource groepen gebruikt, worden de limieten die eenmaal globaal worden beheerd op een regionaal niveau met Azure Resource Manager. Zie [Azure Resource Manager Overview](overview.md)voor meer informatie over Azure-resource groepen.
-
-In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met verschillen in limieten wanneer u Azure Resource Manager gebruikt. Er is bijvoorbeeld een tabel met **limieten voor abonnementen** en een **abonnements limiet-Azure Resource Manager** tabel. Wanneer een limiet van toepassing is op beide scenario's, wordt deze alleen weer gegeven in de eerste tabel. Tenzij anders aangegeven, zijn de limieten globaal in alle regio's.
 
 > [!NOTE]
 > Quota voor resources in azure-resource groepen zijn per regio toegankelijk voor uw abonnement, niet per abonnement als de Service beheer quota's. We gebruiken vCPU quota's als voor beeld. Als u een quotum toename wilt aanvragen met ondersteuning voor Vcpu's, moet u bepalen hoeveel Vcpu's u wilt gebruiken in welke regio's. Vervolgens maakt u een specifieke aanvraag voor de vCPU quota's voor Azure-resource groepen voor de hoeveel heden en regio's die u wilt. Als u in Europa-west 30 Vcpu's moet gebruiken om uw toepassing daar uit te voeren, vraagt u in Europa-west specifiek 30 Vcpu's aan. Uw vCPU-quotum wordt niet verhoogd in een andere regio: alleen Europa-west heeft het vCPU-quotum van 30.
@@ -115,13 +113,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 
 ### <a name="subscription-limits"></a>Abonnementslimieten
 
-#### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>Abonnements limieten-Azure Service Management (klassiek implementatie model)
-
-[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
-
-#### <a name="subscription-limits---azure-resource-manager"></a>Abonnements limieten-Azure Resource Manager
-
-De volgende limieten gelden wanneer u Azure Resource Manager-en Azure-resource groepen gebruikt. Limieten die niet zijn gewijzigd met Azure Resource Manager worden niet weer gegeven. Zie de vorige tabel voor deze limieten.
+De volgende limieten gelden wanneer u Azure Resource Manager-en Azure-resource groepen gebruikt.
 
 Zie [Resource Manager-aanvragen beperken](request-limits-and-throttling.md)voor meer informatie over de lees-en schrijf limieten van de Resource Manager-API.
 
@@ -485,6 +477,12 @@ Zie [SQL database resource limieten voor afzonderlijke data bases](../../sql-dat
 ### <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse limieten
 
 Zie [SQL Data Warehouse resource limieten](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)voor SQL Data Warehouse limieten.
+
+### <a name="classic-deployment-model-limits"></a>Limieten voor klassiek implementatie model
+
+Als u het klassieke implementatie model gebruikt in plaats van het Azure Resource Manager-implementatie model, zijn de volgende limieten van toepassing.
+
+[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
 
 ## <a name="see-also"></a>Zie ook
 

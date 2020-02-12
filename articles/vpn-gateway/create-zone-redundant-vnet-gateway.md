@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: cherylmc
-ms.openlocfilehash: 250ced13696d6ec34e7c434b26a2917a3c55e91d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
-ms.translationtype: MT
+ms.openlocfilehash: 58e9b4204e2d563d8e4e1af8353870880f98b065
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834639"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133596"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Een zone-redundante virtuele netwerk gateway maken in Azure-beschikbaarheidszones
 
-U kunt VPN-en ExpressRoute-gateways implementeren in Azure-beschikbaarheidszones. Dit zorgt in een virtuele netwerkgateway voor tolerantie, schaalbaarheid en hoge beschikbaarheid. Gateways fysiek en logisch implementeren in Azure-beschikbaarheidszones scheidt gateways binnen een regio, terwijl uw on-premises netwerkconnectiviteit met Azure wordt beschermd tegen fouten op zoneniveau. Zie [info over zone-redundante virtuele netwerk gateways](about-zone-redundant-vnet-gateways.md) en [over Azure-beschikbaarheidszones](../availability-zones/az-overview.md)voor meer informatie.
+U kunt VPN-en ExpressRoute-gateways implementeren in Azure-beschikbaarheidszones. Dit brengt tolerantie, schaal baarheid en hogere Beschik baarheid voor virtuele netwerk gateways. Het implementeren van gateways in Azure-beschikbaarheidszones fysiek en logisch scheidt gateways binnen een regio, terwijl uw on-premises netwerk connectiviteit met Azure wordt beschermd tegen storingen op zone niveau. Zie [info over zone-redundante virtuele netwerk gateways](about-zone-redundant-vnet-gateways.md) en [over Azure-beschikbaarheidszones](../availability-zones/az-overview.md)voor meer informatie.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -37,7 +37,7 @@ Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
 
 Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps).
 
-[!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
+[!INCLUDE [PowerShell login](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ## <a name="variables"></a>1. Declareer de variabelen
 

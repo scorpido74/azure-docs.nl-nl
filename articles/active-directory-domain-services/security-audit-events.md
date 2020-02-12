@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: d8e96ffc3e2b4756a4184a9a023133f14b326ed3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42ab32e80ef0a1a7f3c02d8a8eedbb8ab13c4b88
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979931"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132258"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Beveiligings controles inschakelen voor Azure Active Directory Domain Services
 
-Met beveiligings controles van Azure Active Directory Domain Services (Azure AD DS) kunnen beveiligings gebeurtenissen van Azure streamen naar doel bronnen. Deze resources omvatten Azure Storage, Azure Log Analytics-werk ruimten of Azure Event hub. Nadat u beveiligings controle gebeurtenissen hebt ingeschakeld, stuurt Azure AD DS alle gecontroleerde gebeurtenissen voor de geselecteerde categorie naar de doel resource. U kunt gebeurtenissen in azure Storage archiveren en gebeurtenissen streamen naar SIEM-software (Security Information and Event Management) (of een equivalent) met behulp van Azure Event Hubs, of uw eigen analyse uitvoeren en Azure Log Analytics-werk ruimten van de Azure Portal gebruiken.
+Met beveiligings controles van Azure Active Directory Domain Services (Azure AD DS) kunnen beveiligings gebeurtenissen van Azure streamen naar doel bronnen. Deze resources omvatten Azure Storage, Azure Log Analytics-werk ruimten of Azure Event hub. Nadat u beveiligings controle gebeurtenissen hebt ingeschakeld, stuurt Azure AD DS alle gecontroleerde gebeurtenissen voor de geselecteerde categorie naar de doel resource.
+
+U kunt gebeurtenissen in azure Storage archiveren en gebeurtenissen streamen naar SIEM-software (Security Information and Event Management) (of een equivalent) met behulp van Azure Event Hubs, of uw eigen analyse uitvoeren en Azure Log Analytics-werk ruimten van de Azure Portal gebruiken.
 
 > [!IMPORTANT]
 > Azure AD DS-beveiligings controles zijn alleen beschikbaar voor exemplaren op basis van Azure Resource Manager. Zie [Azure-AD DS migreren van het klassieke virtuele-netwerk model naar Resource Manager][migrate-azure-adds]voor meer informatie over het migreren van.
@@ -51,35 +53,35 @@ De volgende controle gebeurtenis categorieën zijn beschikbaar:
 |:---|:---|
 |Beveiliging account aanmelding|4767, 4774, 4775, 4776, 4777|
 |Account beheer beveiliging|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781, 4782, 4793, 4798, 4799, 5376, 5377|
-|Details bijhouden van beveiliging|Geen|
+|Details bijhouden van beveiliging|None|
 |Beveiliging van Active Directory-toegang|5136, 5137, 5138, 5139, 5141|
 |Beveiliging bij afmelden|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Beveiliging tegen object toegang|Geen|
+|Beveiliging tegen object toegang|None|
 |Beveiliging van beleids wijzigingen|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
 |Beveiliging van bevoegdheden gebruiken|4985|
-|Systeembeveiliging|4612, 4621|
+|Systeem beveiliging|4612, 4621|
 
 ## <a name="security-audit-destinations"></a>Doelen voor beveiligings controle
 
-U kunt een wille keurige combi natie van Azure Storage-, Azure Event Hubs-of Azure Log Analytics-werk ruimten gebruiken als doel resource voor Azure AD DS-beveiligings controles. U kunt Azure Storage gebruiken om gebeurtenissen voor beveiligings controle te archiveren, maar een Azure Log Analytics-werk ruimte om de informatie op korte termijn te analyseren en rapporteren.
+U kunt Azure Storage-, Azure Event Hubs-of Azure Log Analytics-werk ruimten gebruiken als doel resource voor Azure AD DS-beveiligings controles. Deze bestemmingen kunnen worden gecombineerd. U kunt bijvoorbeeld Azure Storage gebruiken om gebeurtenissen voor beveiligings controle te archiveren, maar een Azure Log Analytics-werk ruimte om de informatie te analyseren en rapporteren op de korte termijn.
 
 De volgende tabel geeft een overzicht van scenario's voor elk doel bron type.
 
 > [!IMPORTANT]
-> U moet de doel resource maken voordat u Azure AD Domain Services beveiligings controles inschakelt. U kunt deze resources maken met behulp van de Azure Portal, Azure PowerShell of de Azure CLI.
+> U moet de doel resource maken voordat u de beveiligings controles van Azure AD DS inschakelt. U kunt deze resources maken met behulp van de Azure Portal, Azure PowerShell of de Azure CLI.
 
 | Doel resource | Scenario |
 |:---|:---|
-|Azure Storage| Dit doel moet worden gebruikt wanneer uw primaire behoefte is om beveiligings controle gebeurtenissen voor archiverings doeleinden op te slaan. Andere doelen kunnen worden gebruikt voor archiverings doeleinden, maar deze doelen bieden mogelijkheden die verder gaan dan de primaire nood zaak van archiveren. Voordat u de beveiligings controle gebeurtenissen van Azure AD DS inschakelt, moet u eerst [een Azure Storage account maken](../storage/common/storage-account-create.md).|
-|Azure Event Hubs| Dit doel moet worden gebruikt wanneer uw primaire behoefte is om beveiligings controle gebeurtenissen te delen met aanvullende software, zoals gegevens analyse software of beveiligings gegevens & Event Management-software (SIEM). Voordat u Azure AD DS beveiligings controle gebeurtenissen inschakelt, [maakt u een event hub met behulp van Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
-|Azure Log Analytics Workspace| Dit doel moet worden gebruikt wanneer uw primaire behoefte is om veilige controles van de Azure Portal rechtstreeks te analyseren en te controleren. Voordat u Azure AD DS beveiligings controle gebeurtenissen inschakelt, [maakt u een log Analytics-werk ruimte in de Azure Portal.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
+|Azure Storage| Dit doel moet worden gebruikt wanneer uw primaire behoefte is om beveiligings controle gebeurtenissen voor archiverings doeleinden op te slaan. Andere doelen kunnen worden gebruikt voor archiverings doeleinden, maar deze doelen bieden mogelijkheden die verder gaan dan de primaire nood zaak van archiveren. <br /><br />Voordat u de beveiligings controle gebeurtenissen van Azure AD DS inschakelt, moet u eerst [een Azure Storage account maken](../storage/common/storage-account-create.md).|
+|Azure Event Hubs| Dit doel moet worden gebruikt wanneer uw primaire behoefte is om beveiligings controle gebeurtenissen te delen met aanvullende software, zoals gegevens analyse software of beveiligings gegevens & Event Management-software (SIEM).<br /><br />Voordat u Azure AD DS beveiligings controle gebeurtenissen inschakelt, [maakt u een event hub met behulp van Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
+|Azure Log Analytics Workspace| Dit doel moet worden gebruikt wanneer uw primaire behoefte is om veilige controles van de Azure Portal rechtstreeks te analyseren en te controleren.<br /><br />Voordat u Azure AD DS beveiligings controle gebeurtenissen inschakelt, [maakt u een log Analytics-werk ruimte in de Azure Portal.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>Beveiligings controle gebeurtenissen inschakelen met behulp van de Azure Portal
 
 Voer de volgende stappen uit om beveiligings controle gebeurtenissen van Azure AD DS in te scha kelen met behulp van de Azure Portal.
 
 > [!IMPORTANT]
-> Azure AD DS-beveiligings controles zijn niet terugwerkt. Het is niet mogelijk om gebeurtenissen uit het verleden op te halen of om gebeurtenissen uit het verleden opnieuw af te spelen. Azure AD DS kan alleen gebeurtenissen verzenden die plaatsvinden nadat deze is ingeschakeld.
+> Azure AD DS-beveiligings controles zijn niet terugwerkt. U kunt geen gebeurtenissen uit het verleden ophalen of opnieuw afspelen. Azure AD DS kan alleen gebeurtenissen verzenden die optreden nadat beveiligings controles zijn ingeschakeld.
 
 1. Meld u aan bij Azure Portal op https://portal.azure.com.
 1. Zoek en selecteer **Azure AD Domain Services**aan de bovenkant van de Azure Portal. Kies uw beheerde domein, zoals *aadds.contoso.com*.
@@ -116,7 +118,7 @@ Voer de volgende stappen uit om beveiligings controle gebeurtenissen van Azure A
 Voer de volgende stappen uit om beveiligings controle gebeurtenissen van Azure AD DS in te scha kelen met behulp van Azure PowerShell. Als dat nodig is, [installeert u eerst de Azure PowerShell-module en maakt u verbinding met uw Azure-abonnement](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> Azure AD DS-beveiligings controles zijn niet terugwerkt. Het is niet mogelijk om gebeurtenissen uit het verleden op te halen of om gebeurtenissen uit het verleden opnieuw af te spelen. Azure AD DS kan alleen gebeurtenissen verzenden die plaatsvinden nadat deze is ingeschakeld.
+> Azure AD DS-beveiligings controles zijn niet terugwerkt. U kunt geen gebeurtenissen uit het verleden ophalen of opnieuw afspelen. Azure AD DS kan alleen gebeurtenissen verzenden die optreden nadat beveiligings controles zijn ingeschakeld.
 
 1. Verifieer uw Azure-abonnement met de cmdlet [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) . Voer uw account referenties in als dit wordt gevraagd.
 
@@ -175,7 +177,7 @@ Met log Analytics-werk ruimten kunt u de beveiligings controle gebeurtenissen be
 * [Documentatie voor Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
 * [Aan de slag met Log Analytics in Azure Monitor](../azure-monitor/log-query/get-started-portal.md)
 * [Aan de slag met logboek query's in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
-* [Dashboards van Log Analytics-gegevens maken en delen](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Dash boards van Log Analytics gegevens maken en delen](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 De volgende voorbeeld query's kunnen worden gebruikt om te beginnen met het analyseren van beveiligings controle gebeurtenissen vanuit Azure AD DS.
 
@@ -191,11 +193,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>Voorbeeld query 2
 
-Bekijk alle account vergrendelings gebeurtenissen (*4740*) tussen 26 juni 2019 om 9:00 uur en 1 juli 2019 middernacht, oplopend gesorteerd op de datum en tijd:
+Alle account vergrendelings gebeurtenissen (*4740*) tussen 3 februari 2020 om 9:00 uur weer geven en 10 februari 2019 middernacht, oplopend gesorteerd op de datum en tijd:
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01)
+| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```

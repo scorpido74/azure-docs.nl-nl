@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/02/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 90bccf76b4c98c732cb926bb4252654d20478412
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 27517c375265b552d2e1dec4d8c167d1bc86549d
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018972"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137660"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>IoT Central beheren via de Azure Portal
 
@@ -23,19 +23,17 @@ In plaats van IoT Central-toepassingen te maken en te beheren op de website van 
 
 ## <a name="create-iot-central-applications"></a>IoT Central-toepassingen maken
 
-Als u een toepassing wilt maken, gaat u naar de [Azure Portal](https://ms.portal.azure.com) en selecteert u **een resource maken** in het hoofd venster aan de linkerkant.
+Als u een toepassing wilt maken, gaat u naar de [Azure Portal](https://ms.portal.azure.com) en selecteert u **een resource maken**.
 
-![Beheer Portal: navigatie menu](media/howto-manage-iot-central-from-portal/image0.png)
-
-Typ **IOT Central**in de zoek balk.
+In **de Marketplace** -balk zoeken, typt u *IOT Central*:
 
 ![Beheer Portal: zoeken](media/howto-manage-iot-central-from-portal/image0a1.png)
 
-Selecteer het regel item **IOT Central toepassing** in de zoek resultaten.
+Selecteer de tegel **IOT Central toepassing** in de zoek resultaten:
 
 ![Beheerportal: Zoek resultaten](media/howto-manage-iot-central-from-portal/image0b1.png)
 
-Selecteer nu **Maken**.
+Selecteer nu **maken**:
 
 ![Beheer Portal: IoT Central resource](media/howto-manage-iot-central-from-portal/image0c1.png)
 
@@ -55,19 +53,17 @@ Als u al een Azure IoT Central-toepassing hebt, kunt u deze verwijderen of verpl
 > [!NOTE]
 > U kunt geen toepassingen zien die zijn gemaakt in het prijs plan gratis in de Azure Portal omdat deze niet zijn gekoppeld aan uw abonnement.
 
-Als u aan de slag wilt gaan, selecteert u **alle resources** in het hoofd venster aan de linkerkant. Gebruik het zoekvak om de naam van uw toepassing te typen om deze te zoeken in de lijst met resources. Selecteer vervolgens de IoT Central toepassing die u wilt beheren.
+Selecteer **alle resources** in de portal om aan de slag te gaan. Selecteer **verborgen typen weer geven** en typ de naam van uw toepassing in **filteren op naam** om deze te zoeken. Selecteer vervolgens de IoT Central toepassing die u wilt beheren.
 
-![Beheer Portal: resource beheer](media/howto-manage-iot-central-from-portal/image2a.png)
-
-Als u naar de toepassing wilt navigeren, selecteert u de IoT Central toepassings-URL.
+Als u naar de toepassing wilt navigeren, selecteert u de **IOT Central toepassings-URL**:
 
 ![Beheer Portal: resource beheer](media/howto-manage-iot-central-from-portal/image3.png)
 
-Als u de toepassing wilt verplaatsen naar een andere resource groep, selecteert u **wijzigen** naast de resource groep. Kies op de pagina **resources verplaatsen** de resource groep waar u deze toepassing naartoe wilt migreren.
+Als u de toepassing wilt verplaatsen naar een andere resource groep, selecteert u **wijzigen** naast de resource groep. Kies op de pagina **resources verplaatsen** de resource groep waar u deze toepassing naartoe wilt verplaatsen:
 
 ![Beheer Portal: resource beheer](media/howto-manage-iot-central-from-portal/image4a.png)
 
-Als u de toepassing naar een ander abonnement wilt verplaatsen, selecteert u de **wijzigings** koppeling naast het abonnement. Kies het abonnement waarnaar u deze toepassing wilt migreren in het dialoog venster dat wordt weer gegeven.
+Als u de toepassing wilt verplaatsen naar een ander abonnement, selecteert u **wijzigen** naast het abonnement. Kies op de pagina **resources verplaatsen** het abonnement waarnaar u deze toepassing wilt verplaatsen:
 
 ![Beheer Portal: resource beheer](media/howto-manage-iot-central-from-portal/image5a.png)
 

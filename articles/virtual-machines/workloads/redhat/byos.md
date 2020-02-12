@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 1/14/2020
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: afda502bcd89423ecdd008c0297c85dd8a5b61fb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b0ef6030b1b460d118a255ede3c46719616fe3b0
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989838"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133838"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux uw gouden installatie kopieën met uw eigen abonnement in azure
 
@@ -177,7 +177,7 @@ Red Hat Enterprise Linux uw installatie kopieën van uw eigen abonnementen kunne
 
 Azure Disk Encryption wordt niet ondersteund op [aangepaste Red Hat-installatie kopieën](/linux/redhat-create-upload-vhd). Aanvullende ADE-vereisten en-vereisten worden beschreven in [Azure Disk Encryption voor Linux-vm's](../../linux/disk-encryption-overview.md#additional-vm-requirements).
 
-De stappen voor het Toep assen van Azure Disk Encryption zijn beschikbaar in [Azure Disk Encryption scenario's voor Linux-vm's](../../linux/disk-encryption-linux.md) en gerelateerde artikelen.  
+De stappen voor het Toep assen van Azure Disk Encryption zijn beschikbaar in [Azure Disk Encryption scenario's voor Linux-vm's](../../linux/disk-encryption-linux.md) en gerelateerde artikelen.
 
 ## <a name="additional-information"></a>Aanvullende informatie
 
@@ -186,7 +186,7 @@ De stappen voor het Toep assen van Azure Disk Encryption zijn beschikbaar in [Az
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
-    
+
     Neem in dit geval contact op met micro soft of Red Hat om uw abonnement in te scha kelen.
 
 - Als u een moment opname van een RHEL BYOS-installatie kopie wijzigt en probeert die aangepaste installatie kopie te publiceren naar de [Galerie met gedeelde afbeeldingen](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries), moet u plan gegevens opgeven die overeenkomen met de oorspronkelijke bron van de moment opname. De opdracht kan er bijvoorbeeld als volgt uitzien:

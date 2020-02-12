@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: c9d02490a5627ead502429ead06608b4fb621058
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 3141795ed9ccfdabc9fd462a1cd09a74690f9c5b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548404"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137921"
 ---
 # <a name="train-model-module"></a>Module Train-Model
 
@@ -39,7 +39,7 @@ In Azure Machine Learning is het maken en gebruiken van een machine learning mod
 
 3. Nadat de training is voltooid, kunt u het getrainde model met een van de [Score modules](./score-model.md)gebruiken om voor spellingen te doen op nieuwe gegevens.
 
-## <a name="how-to-use-train-model"></a>**Train model** gebruiken  
+## <a name="how-to-use-train-model"></a>Train model gebruiken 
   
 1.  Configureer in Azure Machine Learning een classificatie model of regressie model.
     
@@ -49,7 +49,7 @@ In Azure Machine Learning is het maken en gebruiken van een machine learning mod
 
     De trainings gegevensset moet een kolom Label bevatten. Alle rijen zonder labels worden genegeerd.
   
-4.  Klik voor **kolom Label**op **kolom kiezer starten**en kies één kolom die de resultaten bevat die het model kan gebruiken voor de training.
+4.  Klik bij **Label kolom**op **kolom bewerken** in het rechter paneel van de module en kies één kolom die de resultaten bevat die het model kan gebruiken voor de training.
   
     - Voor classificatie problemen moet de kolom label **categorische** waarden of **discrete** waarden bevatten. Enkele voor beelden zijn een Ja/Nee-classificatie, een ziekte classificatie code of naam of een inkomsten groep.  Als u een noncategorical-kolom selecteert, wordt er tijdens de training een fout geretourneerd door de module.
   

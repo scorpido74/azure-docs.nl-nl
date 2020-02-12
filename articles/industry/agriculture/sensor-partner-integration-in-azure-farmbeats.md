@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ef84c5f1d1c3f3b9e7cd76d7fab327426ea6e313
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530643"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132835"
 ---
 # <a name="sensor-partner-integration"></a>Partnerintegratie voor sensoren
 
@@ -132,16 +132,16 @@ FarmBeats data hub beschikt over de volgende Api's waarmee apparaat-partners app
   Fabrikant  | De naam van de fabrikant |
   Code  | Product code of model naam of-nummer van het apparaat. Bijvoorbeeld EnviroMonitor # 6800. |
   Poorten  | Poort naam en-type, digitaal of analoog.  |
-  Name  | Naam voor het identificeren van de resource. Bijvoorbeeld model naam of product naam. |
+  Naam  | Naam voor het identificeren van de resource. Bijvoorbeeld model naam of product naam. |
   Beschrijving  | Geef een zinvolle beschrijving van het model op. |
   Eigenschappen  | Aanvullende eigenschappen van de fabrikant. |
-  **Apparaat** |  |
+  **Apparaatconfiguratie** |  |
   DeviceModelId  |ID van het gekoppelde model. |
   HardwareId   |De unieke ID voor het apparaat, zoals een MAC-adres.  |
   ReportingInterval |Rapportage-interval in seconden. |
   Locatie    |Apparaat Latitude (-90 tot + 90), lengte graad (-180 tot 180) en uitbrei ding (in meters). |
   ParentDeviceId | De ID van het bovenliggende apparaat waarmee dit apparaat is verbonden. Als een knoop punt bijvoorbeeld is verbonden met een gateway, heeft het knoop punt parentDeviceID als de gateway. |
-  Name  | Naam om de resource te identificeren. De partners van het apparaat moeten een naam verzenden die consistent is met de naam van het apparaat op de partner zijde van het apparaat. Als de apparaatnaam door de gebruiker is gedefinieerd op de partner zijde van het apparaat, moet dezelfde door de gebruiker gedefinieerde naam worden door gegeven aan FarmBeats.  |
+  Naam  | Naam om de resource te identificeren. De partners van het apparaat moeten een naam verzenden die consistent is met de naam van het apparaat op de partner zijde van het apparaat. Als de apparaatnaam door de gebruiker is gedefinieerd op de partner zijde van het apparaat, moet dezelfde door de gebruiker gedefinieerde naam worden door gegeven aan FarmBeats.  |
   Beschrijving  | Geef een zinvolle beschrijving op.  |
   Eigenschappen  |Aanvullende eigenschappen van de fabrikant.  |
   **SensorModel** |  |
@@ -155,7 +155,7 @@ FarmBeats data hub beschikt over de volgende Api's waarmee apparaat-partners app
   SensorMeasures > AggregationType  | Geen, gemiddelde, maximum, minimum of StandardDeviation.
   Diepte van SensorMeasures->  | De diepte van de sensor in centimeters. Bijvoorbeeld de meting van het vocht 10 cm onder het wegdek.
   Beschrijving van SensorMeasures->  | Geef een duidelijke beschrijving van de meting op.
-  Name  | Naam voor het identificeren van de resource. Bijvoorbeeld de naam van het model of de product naam.
+  Naam  | Naam voor het identificeren van de resource. Bijvoorbeeld de naam van het model of de product naam.
   Beschrijving  | Geef een zinvolle beschrijving van het model op.
   Eigenschappen  | Aanvullende eigenschappen van de fabrikant.
   **Sensoren**  |  |
@@ -164,7 +164,7 @@ FarmBeats data hub beschikt over de volgende Api's waarmee apparaat-partners app
   Locatie  | Sensor Latitude (-90 tot + 90), lengte graad (-180 tot 180) en uitbrei ding (in meters).
   Naam van poort >  |Naam en type van de poort waarop de sensor is aangesloten op het apparaat. Dit moet dezelfde naam zijn als die is gedefinieerd in het model van het apparaat.
   DeviceId  | ID van het apparaat waarmee de sensor is verbonden.
-  Name  | Naam om de resource te identificeren. Bijvoorbeeld, de naam van de sensor of de product naam en het model nummer of de product code.
+  Naam  | Naam om de resource te identificeren. Bijvoorbeeld, de naam van de sensor of de product naam en het model nummer of de product code.
   Beschrijving  | Geef een zinvolle beschrijving op.
   Eigenschappen  | Aanvullende eigenschappen van de fabrikant.
 
@@ -345,4 +345,4 @@ De fabrikant of partners van het apparaat kunnen de volgende controle lijst gebr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [rest API](references-for-azure-farmbeats.md#rest-api)voor meer informatie over de rest API.
+Zie [rest API](rest-api-in-azure-farmbeats.md)voor meer informatie over de rest API.

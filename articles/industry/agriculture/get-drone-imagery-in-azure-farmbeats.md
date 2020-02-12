@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a64627028ea4ecc732924d0c9fca196204f7951d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482554"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132055"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>Drone-installatie kopie van drone-partners ophalen
 
@@ -38,7 +38,7 @@ Geef de volgende informatie op voor de provider van uw apparaat om integratie me
 Volg deze stappen.
 
 1. Down load dit [script](https://aka.ms/farmbeatspartnerscript)en pak het uit naar uw lokale station. Twee bestanden bevinden zich in het zip-bestand.
-2. Meld u aan bij [Azure Portal](https://portal.azure.com/) en open Azure Cloud Shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de portal.
+2. Meld u aan bij de [Azure Portal](https://portal.azure.com/) en open Azure Cloud shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de portal.
 
     ![Azure Cloud Shell openen op de rechter balk van de portal](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
@@ -91,4 +91,4 @@ Bestanden en afbeeldingen die zijn geüpload door de drone-provider, worden weer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe u FarmBeats Datahub- [api's](references-for-azure-farmbeats.md#rest-api) kunt gebruiken om uw drone-installatie kopie te downloaden.
+Meer informatie over hoe u FarmBeats Datahub- [api's](rest-api-in-azure-farmbeats.md) kunt gebruiken om uw drone-installatie kopie te downloaden.

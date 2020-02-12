@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 315ebfa1460f9d9bc041925cec2451f63ac5be16
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 55c7e2f30324fe7878e38f1129c63c6e0c51a75f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580238"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134816"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Zelfstudie: Gebruik van een lab bijhouden in Azure Lab Services
 In deze zelfstudie leert u hoe een maker of eigenaar van een lab het gebruik van een lab kan bijhouden.
@@ -32,18 +32,18 @@ In deze zelfstudie voert u de volgende acties uit:
 > * Virtuele machines van studenten beheren 
 
 
-## <a name="view-users-registered-with-the-lab"></a>Gebruikers weergeven die zijn geregistreerd bij het lab
+## <a name="view-registered-users"></a>Geregistreerde gebruikers weer geven
 
 1. Navigeer naar de [Azure Lab Services-website](https://labs.azure.com). 
 2. Selecteer **Aanmelden** en voer uw referenties in. Azure Lab Services ondersteunt organisatieaccounts en Microsoft-accounts.
 3. Op de pagina **Mijn labs** selecteert u het lab waarvoor u het gebruik wilt bijhouden. 
-4. Selecteer **Gebruikers** in het menu links of in de tegel **Gebruikers**. U ziet studenten die zijn geregistreerd bij uw lab. Selecteer **Registratiekoppeling**, kopieer de koppeling en stuur deze naar elke nieuwe student die nog niet is geregistreerd bij uw lab. 
+4. Selecteer **Gebruikers** in het menu links of in de tegel **Gebruikers**. U ziet studenten die zijn geregistreerd bij uw lab.  
 
     ![Geregistreerde gebruikers](../media/tutorial-track-usage/registered-users.png)
 
     Zie [Lab-gebruikers toevoegen en beheren](how-to-configure-student-usage.md)voor meer informatie over het toevoegen en beheren van gebruikers voor het lab.
 
-## <a name="view-the-usage-of-vms-in-the-lab"></a>Het gebruik van virtuele machines in het lab weergeven 
+## <a name="view-the-usage-of-vms"></a>Het gebruik van Vm's weer geven
 
 1. Selecteer **Virtuele machines** in het menu aan de linkerkant. 
 2. Controleer of u de status van virtuele machines kunt zien en het aantal uur dat de virtuele machines actief zijn geweest. De tijd die een labeigenaar besteedt op de VM van een student, wordt niet meegeteld in de gebruikstijd die wordt weergegeven in de laatste kolom. 

@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/11/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: a95b59c6cc0d486c1d4b10f39d0d272dd4b34f54
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 944f5008cff8d982ef15a1b129e2cd41d7df5cb4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018989"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137734"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>IoT Central beheren vanuit Azure PowerShell
 
@@ -57,7 +57,7 @@ New-AzResourceGroup -ResourceGroupName "MyIoTCentralResourceGroup" `
 # Create an IoT Central application
 New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -Name "myiotcentralapp" -Subdomain "mysubdomain" `
-  -Sku "ST1" -Template "iotc-demo@1.0.0" `
+  -Sku "ST1" -Template "iotc-pnp-preview@1.0.0" `
   -DisplayName "My Custom Display Name"
 ```
 
@@ -66,30 +66,14 @@ Het script maakt eerst een resource groep in de regio VS-Oost voor de toepassing
 |Parameter         |Beschrijving |
 |------------------|------------|
 |ResourceGroupName |De resource groep die de toepassing bevat. Deze resource groep moet al bestaan in uw abonnement. |
-|Locatie |Deze cmdlet gebruikt standaard de locatie van de resource groep. Op dit moment kunt u een IoT Central-toepassing maken in de regio **VS-Oost**, VS- **West**, **Europa-Noord**of **Europa-West** regio's, of in het **Australië** of **Azië en Stille Oceaan** geografs.  |
-|Name              |De naam van de toepassing in de Azure Portal. |
-|subdomein         |Het subdomein in de URL van de toepassing. In het voor beeld is de toepassings-URL https://mysubdomain.azureiotcentral.com. |
+|Locatie |Deze cmdlet gebruikt standaard de locatie van de resource groep. Op dit moment kunt u een IoT Central-toepassing maken in het **Australia**-, **Azië en Stille Oceaan**-, **Europa**-of **Verenigde Staten** -geografische gebieden.  |
+|Naam              |De naam van de toepassing in de Azure Portal. |
+|Subdomein         |Het subdomein in de URL van de toepassing. In het voor beeld is de toepassings-URL https://mysubdomain.azureiotcentral.com. |
 |Sku               |Op dit moment kunt u **ST1** of **ST2**gebruiken. Zie [prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
-|Sjabloon          | De toepassings sjabloon die moet worden gebruikt. Zie de volgende tabel voor meer informatie: |
+|Template          | De toepassings sjabloon die moet worden gebruikt. Zie de volgende tabel voor meer informatie. |
 |DisplayName       |De naam van de toepassing, zoals deze wordt weer gegeven in de gebruikers interface. |
 
-**Toepassings sjablonen**
-
-| Naam van sjabloon            | Beschrijving |
-| ------------------------ | ----------- |
-| iotc-default@1.0.0       | Hiermee maakt u een lege toepassing die u kunt vullen met uw eigen apparaatsjablonen en apparaten.
-| iotc-pnp-preview@1.0.0   | Hiermee maakt u een lege Plug en Play (preview)-toepassing waarmee u kunt vullen met uw eigen Apparaatinstellingen en apparaten. |
-| iotc-condition@1.0.0     | Hiermee maakt u een toepassing met een sjabloon voor de bewaking van de voor waarden van een in-Store-analyse. Gebruik deze sjabloon om verbinding te maken en de opslag omgeving te bewaken. |
-| iotc-consumption@1.0.0   | Hiermee maakt u een toepassing met water verbruik-bewakings sjabloon. Gebruik deze sjabloon om de water stroom te bewaken en te beheren. |
-| iotc-distribution@1.0.0  | Hiermee maakt u een toepassing met een sjabloon voor digitale distributie. Gebruik deze sjabloon om de efficiëntie van de opslag van het magazijn te verbeteren door digitalizing van belang rijke activa en acties. |
-| iotc-inventory@1.0.0     | Hiermee maakt u een toepassing met een Smart Inventory Management-sjabloon. Gebruik deze sjabloon om de ontvangst, product verplaatsing, cyclus telling en het bijhouden van Sens oren te automatiseren. |
-| iotc-logistics@1.0.0     | Hiermee maakt u een toepassing met een verbonden logistiek-sjabloon. Gebruik deze sjabloon om uw verzen ding in realtime in de lucht, het water en de grond te volgen met locatie-en voorwaarde bewaking. |
-| iotc-meter@1.0.0         | Hiermee maakt u een toepassing met een sjabloon voor slimme meter bewaking. Gebruik deze sjabloon om het energie verbruik en de netwerk status te bewaken en trends te identificeren voor het verbeteren van de klant ondersteuning en het beheer van slimme software.  |
-| iotc-patient@1.0.0       | Hiermee maakt u een toepassing met een continue patiënten-bewakings sjabloon. Gebruik deze sjabloon om patiënten, nieuwe invoer en het beheer van ziekten uit te breiden. |
-| iotc-power@1.0.0         | Hiermee maakt u een toepassing met behulp van een zonne-paneel bewakings sjabloon. Gebruik deze sjabloon om de status van een zonne paneel, trends van energie generatie te bewaken. |
-| iotc-quality@1.0.0       | Hiermee maakt u een toepassing met bewakings sjabloon voor water kwaliteit. Gebruik deze sjabloon om de water kwaliteit digitaal te bewaken.|
-| iotc-store@1.0.0         | Hiermee maakt u een toepassing met een in-Store-analyse sjabloon. Gebruik deze sjabloon om de afhandelings stroom in uw Store te controleren en te beheren. |
-| iotc-waste@1.0.0         | Hiermee maakt u een toepassing met een verbonden afval beheer sjabloon. Gebruik deze sjabloon om de afval bakken en de Opera tors van het verzend veld te bewaken. |
+[!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
 
 ## <a name="view-your-iot-central-applications"></a>Uw IoT Central-toepassingen weer geven
 

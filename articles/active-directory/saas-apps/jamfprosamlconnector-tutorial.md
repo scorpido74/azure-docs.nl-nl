@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Jamf Pro | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Jamf Pro | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Splunk Enterprise en Jamf Pro.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe426a6b3d087683e615d3212e0693b185c40f0
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
-ms.translationtype: MT
+ms.openlocfilehash: 80bc0a1680d43b40b5ab69db5ded5898e5a52ddf
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212375"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137477"
 ---
-# <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Zelfstudie: Azure Active Directory SSO-integratie met Jamf Pro
+# <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Zelf studie: SSO-integratie Azure Active Directory met Jamf Pro
 
 In deze zelf studie leert u hoe u Jamf Pro integreert met Azure Active Directory (Azure AD). Wanneer u Jamf Pro integreert met Azure AD, kunt u het volgende doen:
 
@@ -80,11 +80,11 @@ In deze sectie schakelt u Azure AD SSO in de Azure Portal in.
 
 1. Als u de toepassing in de **gestarte** modus in IDP wilt configureren, voert u de waarden voor de volgende velden in in de sectie **basis configuratie van SAML** :
 
-    a. Voer in het tekstvak **id** een URL in die gebruikmaakt van de volgende formule:`https://<subdomain>.jamfcloud.com/saml/metadata`
+    a. Voer in het tekstvak **id** een URL in die gebruikmaakt van de volgende formule: `https://<subdomain>.jamfcloud.com/saml/metadata`
 
-    b. Voer in het tekstvak **antwoord-URL** een URL in die gebruikmaakt van de volgende formule:`https://<subdomain>.jamfcloud.com/saml/SSO`
+    b. Voer in het tekstvak **antwoord-URL** een URL in die gebruikmaakt van de volgende formule: `https://<subdomain>.jamfcloud.com/saml/SSO`
 
-1. Selecteer **extra Url's instellen**. Als u de toepassing in de door **SP gestarte** modus wilt configureren, voert u in het tekstvak **URL voor aanmelding** een URL in die gebruikmaakt van de volgende formule:`https://<subdomain>.jamfcloud.com`
+1. Selecteer **extra Url's instellen**. Als u de toepassing in de door **SP gestarte** modus wilt configureren, voert u in het tekstvak **URL voor aanmelding** een URL in die gebruikmaakt van de volgende formule: `https://<subdomain>.jamfcloud.com`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de daad werkelijke id, de antwoord-URL en de aanmeldings-URL. U krijgt de daad werkelijke id-waarde uit de sectie **eenmalige aanmelding** in Jamf Pro Portal, die verderop in de zelf studie wordt uitgelegd. U kunt de waarde van het werkelijke subdomein ophalen uit de id-waarde en die subdomeingegevens gebruiken als uw aanmeldings-URL en antwoord-URL. U kunt ook verwijzen naar de formules die worden weer gegeven in de sectie **basis configuratie van SAML** in de Azure Portal.
@@ -93,14 +93,14 @@ In deze sectie schakelt u Azure AD SSO in de Azure Portal in.
 
     ![De download koppeling voor het SAML-handtekening certificaat](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.
    1. Voer in het veld **gebruikers naam** [naam] @ [companydomain] in. [extensie]. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Selecteer **Maken**.
@@ -123,7 +123,7 @@ In deze sectie verleent u B. Simon toegang tot Jamf Pro.
 1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker. Selecteer vervolgens de knop **selecteren** onder aan het scherm.
 1. Selecteer de knop **toewijzen** in het dialoog venster **toewijzing toevoegen** .
 
-## <a name="configure-sso-in-jamf-pro"></a>Eenmalige aanmelding in Jamf Pro configureren 
+## <a name="configure-sso-in-jamf-pro"></a>Eenmalige aanmelding in Jamf Pro configureren
 
 1. Als u de configuratie in Jamf Pro wilt automatiseren, installeert u de **uitbrei ding mijn apps Secure Sign-in browser** door **de extensie installeren**te selecteren.
 
@@ -147,30 +147,32 @@ In deze sectie verleent u B. Simon toegang tot Jamf Pro.
 
     ![De pagina voor eenmalige aanmelding in Jamf Pro](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-    a. Schakel het selectie vakje **verificatie via eenmalige aanmelding inschakelen** in.
+  a. Selecteer **Bewerken**.
 
-    b. Selecteer **anders** als een optie in de vervolg keuzelijst **ID-provider** .
+  b. Schakel het selectie vakje **verificatie via eenmalige aanmelding inschakelen** in.
 
-    c. Voer in het veld **andere provider** **Azure AD**in.
+    c. Selecteer **Azure** als een optie in de vervolg keuzelijst **ID-provider** .
 
     d. Kopieer de waarde van de **entiteit-id** en plak deze in het veld **id (Entiteits-ID)** in het gedeelte **basis configuratie van SAML** in de Azure Portal.
 
     > [!NOTE]
-    > Gebruik de waarde in het `<SUBDOMAIN>` veld om de aanmeldings-URL en de antwoord-URL te volt ooien in het gedeelte **basis configuratie van SAML** in de Azure Portal.
+    > Gebruik de waarde in het veld `<SUBDOMAIN>` om de aanmeldings-URL en de antwoord-URL te volt ooien in het gedeelte **basis configuratie van SAML** in de Azure Portal.
 
     e. Selecteer **meta gegevens-URL** in de vervolg keuzelijst **ID-provider meta gegevens bron** . In het veld dat wordt weer gegeven, plakt u de URL-waarde van de **app Federation-meta gegevens** die u hebt gekopieerd uit de Azure Portal.
 
-7. Schuif op dezelfde pagina omlaag naar de sectie **gebruikers toewijzing** . Voer vervolgens de volgende stappen uit.   
+    f. Beschrijving Bewerk de waarde voor het verval van het token of selecteer verval datum van SAML-token uitschakelen.
+
+7. Schuif op dezelfde pagina omlaag naar de sectie **gebruikers toewijzing** . Voer vervolgens de volgende stappen uit.
 
     ![De sectie gebruikers toewijzing van de pagina eenmalige aanmelding in Jamf Pro.](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
 
     a. Selecteer de optie **NameID** voor de **gebruikers toewijzing**van de ID-provider. Deze optie is standaard ingesteld op **NameID**, maar u kunt een aangepast kenmerk definiëren.
 
-    b. Selecteer **e-mail** voor **JAMF Pro-gebruikers toewijzing**. Jamf Pro wijst SAML-kenmerken toe die door de IdP eerst worden verzonden door gebruikers en vervolgens op groepen. Wanneer een gebruiker toegang probeert te krijgen tot Jamf Pro, haalt Jamf Pro informatie over de gebruiker van de identiteits provider en komt deze overeen met alle Jamf Pro-gebruikers accounts. Als het binnenkomende gebruikers account niet wordt gevonden, probeert Jamf Pro dit te laten overeenkomen met de groeps naam.
+    b. Selecteer **e-mail** voor **Jamf Pro-gebruikers toewijzing**. Jamf Pro wijst SAML-kenmerken toe die door de IdP eerst worden verzonden door gebruikers en vervolgens op groepen. Wanneer een gebruiker toegang probeert te krijgen tot Jamf Pro, haalt Jamf Pro informatie over de gebruiker van de identiteits provider en komt deze overeen met alle Jamf Pro-gebruikers accounts. Als het binnenkomende gebruikers account niet wordt gevonden, probeert Jamf Pro dit te laten overeenkomen met de groeps naam.
 
-    c. Plak de waarde `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` in het veld **kenmerk naam** van de ID-provider.
+    c. Plak de waarde `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` in het veld **kenmerk naam van ID-provider** .
 
-    d. Selecteer **gebruikers toestaan om verificatie met eenmalige aanmelding over te slaan**. Als gevolg hiervan worden gebruikers niet omgeleid naar de aanmeldings pagina van de identiteits provider voor verificatie en kunnen ze zich rechtstreeks aanmelden bij Jamf Pro. Wanneer een gebruiker toegang probeert te krijgen tot Jamf Pro via de id-provider, vindt IdP-geïnitieerde SSO-verificatie en -autorisatie plaats.
+    d. Schuif op dezelfde pagina omlaag naar de sectie **beveiliging** en selecteer **gebruikers toestaan om verificatie met eenmalige aanmelding over te slaan**. Als gevolg hiervan worden gebruikers niet omgeleid naar de aanmeldings pagina van de identiteits provider voor verificatie en kunnen ze zich rechtstreeks aanmelden bij Jamf Pro. Wanneer een gebruiker toegang probeert te krijgen tot Jamf Pro via de id-provider, vindt IdP-geïnitieerde SSO-verificatie en -autorisatie plaats.
 
     e. Selecteer **Opslaan**.
 
@@ -202,11 +204,11 @@ Voer de volgende stappen uit om een gebruikers account in te richten:
 
     ![Nieuwe opties voor het instellen van accounts in Jamf Pro-systeem instellingen](./media/jamfprosamlconnector-tutorial/user4.png)
 
-    a. Voer`Britta Simon`in het veld **username** de volledige naam van de test gebruiker in.
+    a. Voer in het veld **gebruikers naam** `Britta Simon`, de volledige naam van de test gebruiker.
 
     b. Selecteer de opties voor **toegangs niveau**, **set met bevoegdheden**en **toegangs status** die in overeenstemming zijn met uw organisatie.
 
-    c. Voer`Britta Simon`in het veld **volledige naam** in.
+    c. Voer in het veld **volledige naam** `Britta Simon`in.
 
     d. Voer in het veld **e-mail adres** het e-mail adres van het account van de Juliae Simon in.
 
@@ -216,7 +218,7 @@ Voer de volgende stappen uit om een gebruikers account in te richten:
 
     g. Selecteer **Opslaan**.
 
-## <a name="test-the-sso-configuration"></a>De SSO-configuratie testen 
+## <a name="test-the-sso-configuration"></a>De SSO-configuratie testen
 
 In dit gedeelte test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
@@ -231,4 +233,3 @@ Wanneer u de tegel Jamf Pro selecteert in het toegangs venster, moet u automatis
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer Jamf Pro met Azure AD](https://aad.portal.azure.com/)
-

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 32eb8e71cfb978fac5b4d6d05af4da4fdc9f67b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0d220d1d88d9d761d9f0eba6187abefb372681be
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715517"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131889"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -86,7 +86,7 @@ Volg deze stappen.
 |          Fabrikant            |         De naam van de fabrikant    |
 |  Code                    |  Product code of model naam of-nummer van het apparaat. Bijvoorbeeld EnviroMonitor # 6800.  |
 |            Poorten          |     Poort naam en-type, digitaal of analoog.
-|     Name                 |  Naam om de resource te identificeren. Bijvoorbeeld de naam van het model of de product naam.
+|     Naam                 |  Naam om de resource te identificeren. Bijvoorbeeld de naam van het model of de product naam.
       Beschrijving     | Geef een zinvolle beschrijving van het model op.
 |    Eigenschappen          |    Aanvullende eigenschappen van de fabrikant.   |
 |    **Apparaatconfiguratie**             |                      |
@@ -95,7 +95,7 @@ Volg deze stappen.
 |  ReportingInterval        |   Rapportage-interval in seconden.
 |  Locatie            |  Apparaat Latitude (-90 tot + 90), lengte graad (-180 tot 180) en uitbrei ding (in meters).   
 |ParentDeviceId       |    De ID van het bovenliggende apparaat waarmee dit apparaat is verbonden. Bijvoorbeeld een knoop punt dat is verbonden met een gateway. Een knoop punt heeft parentDeviceId als de gateway.  |
-|    Name            | Een naam om de resource te identificeren. Apparaat-partners moeten een naam verzenden die consistent is met de apparaatnaam aan de partner zijde. Als de naam van de partner apparaat door de gebruiker is gedefinieerd, moet dezelfde door de gebruiker gedefinieerde naam worden door gegeven aan FarmBeats.|
+|    Naam            | Een naam om de resource te identificeren. Apparaat-partners moeten een naam verzenden die consistent is met de apparaatnaam aan de partner zijde. Als de naam van de partner apparaat door de gebruiker is gedefinieerd, moet dezelfde door de gebruiker gedefinieerde naam worden door gegeven aan FarmBeats.|
 |     Beschrijving       |      Geef een zinvolle beschrijving op. |
 |     Eigenschappen    |  Aanvullende eigenschappen van de fabrikant.
 |     **SensorModel**        |          |
@@ -107,7 +107,7 @@ Volg deze stappen.
 |    SensorMeasures > type    |Meet type van de telemetrie van de sensor. De door het systeem gedefinieerde typen zijn AmbientTemperature, CO2, depth, ElectricalConductivity, LeafWetness, length, LiquidLevel, nitraat, O2, PH, fosfaat, PointInTime, kalium, druk, RainGauge, RelativeHumidity, zouten, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Raadpleeg de/ExtendedType-API om meer toe te voegen.|
 |        SensorMeasures >-eenheid              | De gegevens eenheid van de sensor-telemetrie. De door het systeem gedefinieerde eenheden zijn geen eenheid, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, kwik, PSI, MilliMeter, CentiMeter, meter, inch, meter, mijl, kilo meter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, percentage, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, seconden, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour om meer toe te voegen, raadpleegt u de/ExtendedType-API.|
 |    SensorMeasures > AggregationType    |  De waarden kunnen none, Average, maximum, minimum of StandardDeviation zijn.  |
-|          Name            | Naam voor het identificeren van een resource. Bijvoorbeeld de naam van het model of de product naam.  |
+|          Naam            | Naam voor het identificeren van een resource. Bijvoorbeeld de naam van het model of de product naam.  |
 |    Beschrijving        | Geef een zinvolle beschrijving van het model op.  |
 |   Eigenschappen       |  Aanvullende eigenschappen van de fabrikant.  |
 |    **Sensoren**      |          |
@@ -116,7 +116,7 @@ Volg deze stappen.
 | Locatie          |  Sensor Latitude (-90 tot + 90), lengte graad (-180 tot 180) en uitbrei ding (in meters).|
 |   Naam van poort >        |  Naam en type van de poort waarop de sensor is aangesloten op het apparaat. Dit moet overeenkomen met de naam die is gedefinieerd in het model apparaat. |
 |    DeviceID  |    ID van het apparaat waarmee de sensor is verbonden.     |
-| Name            |   Naam voor het identificeren van de resource. Bijvoorbeeld de naam van de sensor of de product naam en het model nummer of de product code.|
+| Naam            |   Naam voor het identificeren van de resource. Bijvoorbeeld de naam van de sensor of de product naam en het model nummer of de product code.|
 |    Beschrijving      | Geef een zinvolle beschrijving op. |
 |    Eigenschappen        |Aanvullende eigenschappen van de fabrikant. |
 
@@ -126,7 +126,7 @@ Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over o
 
 Als u een API-aanvraag wilt maken, combineert u de HTTP-methode (POST), de URL naar de API-service en de URI naar een resource om een query uit te voeren, gegevens te verzenden naar, te maken of te verwijderen. Vervolgens voegt u een of meer HTTP-aanvraag headers toe. De URL van de API-service is het API-eind punt, dat wil zeggen, de Datahub-URL (https://\<yourdatahub >. azurewebsites. net).  
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 FarmBeats Datahub maakt gebruik van Bearer-verificatie, die de volgende referenties nodig heeft die zijn gegenereerd in de vorige sectie:
 
@@ -422,4 +422,4 @@ Hier volgt een voor beeld van een telemetrie-bericht:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over op REST API gebaseerde integratie Details [rest API](references-for-azure-farmbeats.md#rest-api).
+Zie voor meer informatie over op REST API gebaseerde integratie Details [rest API](rest-api-in-azure-farmbeats.md).

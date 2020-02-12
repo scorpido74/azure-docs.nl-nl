@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 9502a81149df11ffa378bf8ffc2c377f4bb22d7f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 226c9ae1c42c85db57dab3fd1911943e167a6288
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177110"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133685"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Een Lab instellen om shell scripting op Linux te leren
 Dit artikel laat u zien hoe u een lab kunt instellen om shell scripting op Linux te leren. Scripting is een nuttig onderdeel van systeem beheer waarmee beheerders terugkerende taken kunnen voor komen. In dit voorbeeld scenario bestrijkt de klasse traditionele bash-scripts en uitgebreide scripts. Uitgebreide scripts zijn scripts die bash-opdrachten en Ruby combi neren. Met deze benadering kan ruby gegevens rond en bash opdrachten door geven om met de shell te communiceren. 
@@ -32,7 +32,7 @@ Nadat u het lab-account hebt gemaakt, schakelt u de volgende instellingen in het
 
 | Account instelling Lab | Instructies |
 | ----------- | ------------ |  
-| Marketplace-installatie kopieën | Schakel de [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) -installatie kopie in voor gebruik binnen uw Lab-account. Zie [Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers opgeven](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators) voor meer informatie | 
+| Marketplace-installatie kopieën | Schakel de [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) -installatie kopie in voor gebruik binnen uw Lab-account. Zie [Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers opgeven](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators) voor meer informatie | 
 
 Volg [deze zelf studie](tutorial-setup-classroom-lab.md) om een nieuw lab te maken en de volgende instellingen toe te passen:
 
@@ -47,7 +47,7 @@ Volg [deze zelf studie](tutorial-setup-classroom-lab.md) om een nieuw lab te mak
 De [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) -installatie kopie heeft geen extern bureau blad-server standaard geïnstalleerd. Volg de instructies in de [extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure](../../virtual-machines/linux/use-remote-desktop.md) artikel om de pakketten te installeren die nodig zijn op de sjabloon computer om verbinding te maken via het Remote Desktop Protocol.
 
 ## <a name="install-ruby"></a>Ruby installeren
-Ruby is een open-source dynamische taal die kan worden gecombineerd met bash-scripts. In deze sectie wordt beschreven hoe u `apt-get` gebruikt om de meest recente versie van [ruby](https://www.ruby-lang.org/)te installeren.
+Ruby is een open-source dynamische taal die kan worden gecombineerd met bash-scripts. In deze sectie wordt beschreven hoe u `apt-get` kunt gebruiken om de meest recente versie van [ruby](https://www.ruby-lang.org/)te installeren.
 
 1. Installeer updates door de volgende opdrachten uit te voeren:
 

@@ -9,22 +9,31 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 4a0af9d040c801c125d04a5af72b2ea53322ccdb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 89b01a3fb066f181f5ec54b481b71feaa7a6ae08
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74886568"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131409"
 ---
 # <a name="recommended-on-premises-encoders"></a>Aanbevolen on-premises coderingsprogramma's
+
 Wanneer u live streamt met Azure Media Services, kunt u opgeven hoe u wilt dat uw kanaal de invoer stroom ontvangt. Als u kiest voor het gebruik van een on-premises Encoder met een live encoding-kanaal, moet uw encoder een single-bitrate stream van hoge kwaliteit pushen als uitvoer. Als u kiest voor het gebruik van een on-premises Encoder met een Pass-Through kanaal, moet uw encoder een multi-bitrate stream als uitvoer met alle gewenste uitvoer kwaliteiten pushen. Zie [live streamen met on-premises encoders](media-services-live-streaming-with-onprem-encoders.md)voor meer informatie.
 
+## <a name="encoder-requirements"></a>Encoder vereisten
+
+Encoders moeten TLS 1,2 ondersteunen bij het gebruik van HTTPS-of RTMP-protocollen.
+
+## <a name="live-encoders-that-output-rtmp"></a>Live coderings Programma's die RTMP uitvoeren 
+
 Azure Media Services raadt u aan om een van de volgende Live coderings Programma's te gebruiken die RTMP als uitvoer hebben:
+
 - Adobe Flash Media Live Encoder 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Telestream-Wirecast (versie 13.0.2 of hoger vanwege de TLS 1,2-vereiste)
+
+  Encoders moeten TLS 1,2 ondersteunen bij het gebruik van RTMP-protocollen.
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -33,11 +42,16 @@ Azure Media Services raadt u aan om een van de volgende Live coderings Programma
 - xStream
 - Switcher Studio (iOS)
 
+## <a name="live-encoders-that-output-fragmented-mp4"></a>Live coderings Programma's die gefragmenteerde MP4 uitvoeren 
+
 Azure Media Services raadt u aan om een van de volgende Live coderings Programma's te gebruiken met gefragmenteerde multi-bitrate (Smooth Streaming) als uitvoer:
+
 - Media Excel Hero Live en Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
+- Elementaire Live (versie 2.14.15 en hoger vanwege de TLS 1,2-vereiste)
+
+  Encoders moeten TLS 1,2 ondersteunen bij het gebruik van HTTPS-protocollen.
 - Envivio 4Caster C4 Gen III
 - Denk aan de communicatie selenio MCP3
 
@@ -45,6 +59,7 @@ Azure Media Services raadt u aan om een van de volgende Live coderings Programma
 > Een live coderings programma kan een single-bitrate stream verzenden naar een Pass-Through-kanaal, maar deze configuratie wordt niet aanbevolen omdat de client niet is toegestaan voor Adaptive Bitrate Streaming.
 
 ## <a name="how-to-become-an-on-premises-encoder-partner"></a>Hoe kan ik een on-premises coderings partner worden?
+
 Als Azure Media Services on-premises encoder-partner Media Services propageert u uw product door uw Codeer aan te bevelen voor zakelijke klanten. Als u een on-premises encoder partner wilt worden, moet u de compatibiliteit van uw on-premises encoder controleren met Media Services. Voer hiervoor de volgende verificaties uit:
 
 Kanaal verificatie door geven

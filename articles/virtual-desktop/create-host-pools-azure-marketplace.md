@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 25dd4810cf8cccab8bcbf211da4f6abbcd147056
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40659414848adb9be86b6163cf456809e9cb750f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020026"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134596"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Zelf studie: een hostgroep maken met behulp van Azure Marketplace
 
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Voer de Azure Marketplace-aanbieding uit om een nieuwe hostgroep in te richten
 
@@ -65,6 +65,10 @@ Ga als volgt te werk voor de Blade **basis beginselen** :
 Voor de Blade **virtuele machines configureren** :
 
 1. Accepteer de standaard waarden of pas het aantal en de grootte van de virtuele machines aan.
+    
+    >[!NOTE]
+    >Als de specifieke VM-grootte die u zoekt niet wordt weer gegeven in de VM-grootte kiezer, dat is omdat we deze nog niet hebben uitgevoerd op het Azure Marketplace-hulp programma. Als u een VM-grootte wilt aanvragen, moet u een aanvraag maken of een bestaande aanvraag bijstemmen in het [Windows-UserVoice-forum van Virtual Desktop](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+    
 2. Voer een voor voegsel voor de namen van de virtuele machines in. Als u bijvoorbeeld de naam "voor voegsel" opgeeft, worden de virtuele machines "voor voegsel-0," "voor voegsel-1," genoemd.
 3. Selecteer **volgende: instellingen van de virtuele machine**.
 

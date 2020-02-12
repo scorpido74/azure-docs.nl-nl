@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Cassandra-API met Python - Azure Cosmos DB'
+title: 'Snelstart: Cassandra-API met Python - Azure Cosmos DB'
 description: In deze snelstart ziet u hoe u de Apache Cassandra-API in Azure Cosmos DB gebruikt om een profieltoepassing te maken met Python.
 author: SnehaGunda
 ms.author: sngun
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 5d5715e21b0560f4433e557f52b7fcf204e2046b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0b432653c452b6763e746f61b86e881c9cee62cc
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60891856"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134692"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Quickstart: een Cassandra-app bouwen met de Python SDK en Azure Cosmos DB
+# <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Quick Start: een Cassandra-app bouwen met python SDK en Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -24,18 +24,14 @@ ms.locfileid: "60891856"
 > * [Python](create-cassandra-python.md)
 >  
 
-Deze quickstart laat zien hoe u Python en de [Cassandra-API](cassandra-introduction.md) van Azure Cosmos DB gebruikt voor het compileren van een profiel-app door een voorbeeld uit GitHub te klonen. In deze snelstart ziet u ook hoe u de webportal van Azure gebruikt om een Azure Cosmos DB-account te maken.
-
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafieken en hier query's op uitvoeren. Deze databases genieten allemaal het voordeel van de wereldwijde distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Azure Cosmos DB.
+In deze Quick Start maakt u een Azure Cosmos DB Cassandra-API-account en gebruikt u een Cassandra python-app die is gekloond van GitHub om een Cassandra-data base en-container te maken. Azure Cosmos DB is een database service met meerdere modellen waarmee u snel documenten, tabellen, sleutel waarden en grafische data bases met globale distributie en mogelijkheden voor horizontale schaal kunt maken en er query's op uitvoert.
 
 ## <a name="prerequisites"></a>Vereisten
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] [Probeer Azure Cosmos DB gratis uit](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, zonder kosten en zonder verplichtingen.
-
-U hebt verder nodig:
-* [Python](https://www.python.org/downloads/)-versie v2.7.14
-* [Git](https://git-scm.com/)
-* [Python-stuurprogramma voor Apache Cassandra](https://github.com/datastax/python-driver)
+- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [Probeer gratis Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement.
+- [Python 2.7.14 + of 3.4 +](https://www.python.org/downloads/).
+- [Git](https://git-scm.com/downloads).
+- [Python-stuur programma voor Apache Cassandra](https://github.com/datastax/python-driver).
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
 
@@ -47,7 +43,7 @@ Voordat u een documentdatabase kunt maken, moet u een Cassandra-account maken me
 
 We gaan nu een Cassandra API-app klonen vanuit GitHub, de verbindingsreeks instellen en de app uitvoeren. U zult zien hoe gemakkelijk het is om op een programmatische manier met gegevens te werken. 
 
-1. Open een opdrachtprompt. Maak een nieuwe map met de naam `git-samples`. Sluit vervolgens de opdrachtprompt.
+1. Open een opdrachtprompt. Maak een nieuwe map met de naam `git-samples`. Sluit de opdrachtprompt.
 
     ```bash
     md "C:\git-samples"
@@ -67,7 +63,7 @@ We gaan nu een Cassandra API-app klonen vanuit GitHub, de verbindingsreeks inste
 
 ## <a name="review-the-code"></a>De code bekijken
 
-Deze stap is optioneel. Als u wilt weten hoe de databaseresources met de code worden gemaakt, kunt u de volgende codefragmenten bekijken. De codefragmenten zijn alle afkomstig uit het bestand pyquickstart.py. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsreeks bijwerken](#update-your-connection-string). 
+Deze stap is optioneel. Als u wilt weten hoe de code de databaseresources maakt, kunt u de volgende codefragmenten bekijken. De code fragmenten zijn allemaal afkomstig uit het *pyquickstart.py* -bestand. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsgegevens bijwerken](#update-your-connection-string). 
 
 * De waarden van de gebruikersnaam en het wachtwoord zijn ingesteld met behulp van de pagina Verbindingsreeks in de Azure-portal. `path\to\cert` bevat een pad naar een X509-certificaat. 
 
@@ -136,13 +132,13 @@ Deze stap is optioneel. Als u wilt weten hoe de databaseresources met de code wo
 
 Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en kopieer deze in de app. De verbindingsreeks stelt uw app in staat om te communiceren met de gehoste database.
 
-1. Selecteer **Verbindingsreeks** in de [Azure-portal](https://portal.azure.com/). 
+1. Selecteer in uw Azure Cosmos DB-account [](https://portal.azure.com/)in de Azure Portal **verbindings reeks**. 
 
     Gebruik de ![knop Kopiëren](./media/create-cassandra-python/copy.png) aan de rechterkant van het scherm om de bovenste waarde (het CONTACT POINT) te kopiëren.
 
     ![Een gebruikersnaam, wachtwoord en toegangspunt die worden gebruikt voor toegang in Azure Portal, blade Verbindingsreeks, bekijken en kopiëren](./media/create-cassandra-python/keys.png)
 
-2. Open het `config.py`-bestand. 
+2. Open het *config.py* -bestand. 
 
 3. Plak de waarde CONTACT POINT vanuit de portal over `<FILLME>` op regel 10.
 
@@ -162,17 +158,17 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
     `'password' = '2Ggkr662ifxz2Mg==`';`
 
-6. Sla het bestand config.py op.
+6. Sla het *config.py* -bestand op.
     
 ## <a name="use-the-x509-certificate"></a>Het X509-certificaat gebruiken
 
-1. Download het Baltimore CyberTrust Root-certificaat lokaal van [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt). Wijzig de naam van het bestand met de bestandsextensie `.cer`.
+1. Download het Baltimore CyberTrust Root-certificaat lokaal van [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt). Wijzig de naam van het bestand met de bestands extensie *. CER*.
 
    Het certificaat heeft serienummer `02:00:00:b9` en SHA1-vingerafdruk `d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
 
-2. Open `pyquickstart.py` en wijzig het `path\to\cert` zo dat het naar uw nieuwe certificaat verwijst.
+2. Open *pyquickstart.py* en wijzig de `path\to\cert` zodat deze naar uw nieuwe certificaat verwijst.
 
-3. Sla `pyquickstart.py` op.
+3. Sla *pyquickstart.py*op.
 
 ## <a name="run-the-python-app"></a>De Python-app uitvoeren
 
@@ -187,15 +183,15 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
     python -m pip install pyopenssl
     ```
 
-2. Voer de volgende opdracht uit om de knooppunttoepassing te starten:
+2. Voer de volgende opdracht uit om uw python-toepassing te starten:
 
     ```
     python pyquickstart.py
     ```
 
-3. Controleer of de resultaten op de opdrachtregel aan de verwachting voldoen.
+3. Controleer of de resultaten van de opdrachtregel aan de verwachting voldoen.
 
-    Druk op Ctrl+C om de uitvoering van het programma te stoppen en het consolevenster te sluiten. 
+    Druk op CTRL + C om de uitvoering van het programma te stoppen en het console venster te sluiten. 
 
     ![De uitvoer bekijken en controleren](./media/create-cassandra-python/output.png)
     
@@ -213,7 +209,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u geleerd hoe u een Azure Cosmos DB-account maakt, een container maakt met Data Explorer en een app uitvoert. Nu kunt u aanvullende gegevens in uw Cosmos DB-account importeren. 
+In deze Quick Start hebt u geleerd hoe u een Azure Cosmos DB-account maakt met Cassandra-API en een Cassandra python-app uitvoert die een Cassandra-data base en-container maakt. U kunt nu aanvullende gegevens in uw Azure Cosmos DB-account importeren. 
 
 > [!div class="nextstepaction"]
 > [Cassandra-gegevens importeren in Azure Cosmos DB](cassandra-import-data.md)

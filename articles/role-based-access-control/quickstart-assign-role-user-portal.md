@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en de Azure Portal'
+title: 'Zelf studie: gebruikers toegang verlenen tot Azure-resources met RBAC en de Azure Portal '
 description: In deze zelf studie leert u hoe u een gebruiker toegang verleent tot Azure-resources met behulp van op rollen gebaseerd toegangs beheer (RBAC) in de Azure Portal.
 services: role-based-access-control
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: f4dd3995df2a068824c4aa6bccca5606d250a165
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6281c9a1818a3b46ac4f7a62f8ae76668db56887
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419665"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138098"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en de Azure Portal
 

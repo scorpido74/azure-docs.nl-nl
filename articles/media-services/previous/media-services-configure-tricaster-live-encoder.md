@@ -15,25 +15,24 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 0e793a5aa7d619b0bb7a1d3efcdf665ea400c555
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
-ms.translationtype: MT
+ms.openlocfilehash: 11ee8f52a8fd4db2d052eeaeef1387b011d23050
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016741"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131557"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>De NewTek TriCaster Encoder gebruiken om een live stream met één bitsnelheid te verzenden  
 > [!div class="op_single_selector"]
-> * [Tricaster](media-services-configure-tricaster-live-encoder.md)
+> * [TriCaster](media-services-configure-tricaster-live-encoder.md)
 > * [Elementair Live](media-services-configure-elemental-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 >
 >
 
 In dit artikel wordt beschreven hoe u de [NewTek TriCaster](https://newtek.com/products/tricaster-40.html) Live Encoder configureert om een enkele bitrate stroom te verzenden naar AMS-kanalen die zijn ingeschakeld voor Live encoding. Zie [Werken met kanalen waarmee Live Encoding kan worden uitgevoerd met Azure Media Services](media-services-manage-live-encoder-enabled-channels.md) voor meer informatie.
 
-In deze zelfstudie laat zien hoe Azure Media Services (AMS) beheren met Azure Media Services Explorer (AMSE)-hulpprogramma. Dit hulpprogramma wordt alleen uitgevoerd op Windows-PC. Als u van Mac- of Linux gebruikmaakt, de Azure portal gebruiken voor het maken van [kanalen](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) en [programma's](media-services-portal-creating-live-encoder-enabled-channel.md).
+In deze zelfstudie laat zien hoe Azure Media Services (AMS) beheren met Azure Media Services Explorer (AMSE)-hulpprogramma. Dit hulpprogramma wordt alleen uitgevoerd op Windows-PC. Als u gebruikmaakt van Mac of Linux, gebruikt u de Azure Portal om [kanalen](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) en [Program ma's](media-services-portal-creating-live-encoder-enabled-channel.md)te maken.
 
 > [!NOTE]
 > Wanneer u TriCaster gebruikt voor het verzenden van een bijdrage aan AMS-kanalen die zijn ingeschakeld voor Live encoding, kunnen er video-en audio storingen voor komen in uw live-evenement als u bepaalde functies van TriCaster gebruikt, zoals het snel knippen tussen feeds of overschakelen naar/van pastels. Het AMS-team werkt aan het oplossen van deze problemen. het is dan ook niet aanbevolen deze functies te gebruiken.
@@ -43,8 +42,8 @@ In deze zelfstudie laat zien hoe Azure Media Services (AMS) beheren met Azure Me
 ## <a name="prerequisites"></a>Vereisten
 
 * [Een Azure Media Services-account maken](media-services-portal-create-account.md)
-* Controleer of er is een Streaming-eindpunt is uitgevoerd. Zie voor meer informatie, [Streaming-eindpunten beheren in een Media Services-Account](media-services-portal-manage-streaming-endpoints.md)
-* Installeer de nieuwste versie van de [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) hulpprogramma.
+* Controleer of er is een Streaming-eindpunt is uitgevoerd. Zie [streaming-eind punten beheren in een Media Services-account](media-services-portal-manage-streaming-endpoints.md) voor meer informatie
+* Installeer de meest recente versie van het hulp programma [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) .
 * Het hulpprogramma voor starten en verbinding maken met uw AMS-account.
 
 ## <a name="tips"></a>Tips
@@ -55,13 +54,13 @@ In deze zelfstudie laat zien hoe Azure Media Services (AMS) beheren met Azure Me
 
 ## <a name="create-a-channel"></a>Een kanaal maken
 
-1. In het AMSE-hulpprogramma, gaat u naar de **Live** tabblad, en met de rechtermuisknop op het gebied van het kanaal. Selecteer **kanaal maken...** in het menu.
+1. In het hulp programma AMSE gaat u naar het tabblad **Live** en klikt u met de rechter muisknop binnen het kanaal gebied. Selecteer **kanaal maken...** in het menu.
 
     ![TriCaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
 
-2. Geef de naam van een kanaal, het beschrijvingsveld is optioneel. Selecteer onder instellingen voor Channel **Standard** voor de optie voor Live codering met het invoer-Protocol die is ingesteld op **RTMP**. U kunt alle andere instellingen omdat laten.
+2. Geef de naam van een kanaal, het beschrijvingsveld is optioneel. Onder kanaal instellingen selecteert u **standaard** voor de optie Live encoding, waarbij het invoer protocol is ingesteld op **RTMP**. U kunt alle andere instellingen omdat laten.
 
-    Zorg ervoor dat de **nu starten van het nieuwe kanaal** is geselecteerd.
+    Zorg ervoor dat het **nieuwe kanaal nu starten** is geselecteerd.
 
 3. Klik op **kanaal maken**.
 
@@ -72,30 +71,30 @@ In deze zelfstudie laat zien hoe Azure Media Services (AMS) beheren met Azure Me
 >
 >
 
-Terwijl het kanaal wordt gestart, kunt u [configureren van het coderingsprogramma](media-services-configure-tricaster-live-encoder.md#configure_tricaster_rtmp).
+Terwijl het kanaal wordt gestart, kunt u [het coderings programma configureren](media-services-configure-tricaster-live-encoder.md#configure_tricaster_rtmp).
 
 > [!IMPORTANT]
-> De facturering begint zodra kanaal krijgt de status gereed. Zie voor meer informatie, [van kanaal Staten](media-services-manage-live-encoder-enabled-channels.md#states).
+> De facturering begint zodra kanaal krijgt de status gereed. Zie [Staten van het kanaal](media-services-manage-live-encoder-enabled-channels.md#states)voor meer informatie.
 >
 >
 
-## <a name="a-idconfigure_tricaster_rtmpconfigure-the-newtek-tricaster-encoder"></a><a id="configure_tricaster_rtmp"/>De NewTek TriCaster-Encoder configureren
+## <a name="a-idconfigure_tricaster_rtmpconfigure-the-newtek-tricaster-encoder"></a>de NewTek TriCaster-encoder <a id="configure_tricaster_rtmp"/>configureren
 
 In deze zelfstudie worden de volgende uitvoerinstellingen gebruikt. De rest van deze sectie worden de configuratiestappen in meer detail beschreven.
 
 **Video**:
 
-* Videocodec H.264
-* Uplinkpoortprofiel Hoog (niveau 4,0)
-* Bitsnelheid 5000 kbps
-* Keyframe: 2 seconden (60 seconden)
-* Frame frequentie: 30
+* Codec: H.264
+* Profiel: Hoog (niveau 4.0)
+* Bitrate: 5000 kbps
+* Sleutelframes: 2 seconden (60 seconden)
+* Tarief frame: 30
 
 **Audio**:
 
-* Videocodec AAC (LC)
-* Bitsnelheid 192 kbps
-* Sample frequentie: 44,1 kHz
+* Codec: AAC (LC)
+* Bitrate: 192 kbps
+* Samplefrequentie: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Configuratiestappen
 
@@ -116,7 +115,7 @@ In deze zelfstudie worden de volgende uitvoerinstellingen gebruikt. De rest van 
     Zodra het profiel is geüpload, gaat u verder met de volgende stap.
 8. Haal de invoer-URL van het kanaal op om deze toe te wijzen aan het TriCaster **RTMP-eind punt**.
 
-    Ga terug naar het AMSE-hulpprogramma en de voltooiingsstatus kanaal controleren. Zodra de status is gewijzigd van **vanaf** naar **met**, krijgt u de invoer-URL.
+    Ga terug naar het AMSE-hulpprogramma en de voltooiingsstatus kanaal controleren. Zodra de status is gewijzigd van **starten** in **wordt uitgevoerd**, kunt u de invoer-URL ophalen.
 
     Wanneer het kanaal actief is, klikt u met de rechter muisknop op de naam van het kanaal, gaat u omlaag om de **invoer-URL naar het klem bord te verplaatsen** en selecteert u vervolgens **primaire invoer-URL**.  
 
@@ -131,41 +130,41 @@ In deze zelfstudie worden de volgende uitvoerinstellingen gebruikt. De rest van 
      ![TriCaster](./media/media-services-tricaster-live-encoder/media-services-tricaster11.png)
 
 > [!IMPORTANT]
-> Voordat u klikt op **Stream**, u **moet** ervoor te zorgen dat het kanaal gereed is.
+> Voordat u op **Stream**klikt, **moet** u ervoor zorgen dat het kanaal gereed is.
 > Zorg ervoor dat u niet laat het kanaal in een status gereed hebben zonder een invoer bijdrage feed voor langer dan 15 minuten >.
 >
 >
 
 ## <a name="test-playback"></a>Test afspelen
 
-Navigeer naar het AMSE-hulpprogramma en met de rechtermuisknop op het kanaal moet worden getest. In het menu Beweeg de muisaanwijzer over **afspelen van de Preview-versie** en selecteer **met Azure Media Player**.  
+Navigeer naar het AMSE-hulpprogramma en met de rechtermuisknop op het kanaal moet worden getest. Klik in het menu met de muis aanwijzer op **het afspelen van de preview-versie** en selecteer **met Azure Media Player**.  
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster8.png)
 
 Als de stroom in de speler wordt weergegeven, is klikt u vervolgens het coderingsprogramma correct is geconfigureerd om te verbinden met AMS.
 
-Als er een fout wordt ontvangen, moet het kanaal opnieuw worden ingesteld en moeten de coderings instellingen worden aangepast. Zie de [probleemoplossing](media-services-troubleshooting-live-streaming.md) artikel voor hulp.  
+Als er een fout wordt ontvangen, moet het kanaal opnieuw worden ingesteld en moeten de coderings instellingen worden aangepast. Raadpleeg het artikel over [probleem oplossing](media-services-troubleshooting-live-streaming.md) voor hulp.  
 
 ## <a name="create-a-program"></a>Een programma maken
 
-1. Wanneer het kanaal afspelen hebt bevestigd, maakt u een programma. Onder de **Live** tabblad in het AMSE-hulpprogramma, met de rechtermuisknop op het gebied van het programma en selecteert u **nieuw programma maken**.  
+1. Wanneer het kanaal afspelen hebt bevestigd, maakt u een programma. Klik onder het tabblad **Live** in het hulp programma AMSE met de rechter muisknop in het gebied Program en selecteer **nieuw programma maken**.  
 
     ![TriCaster](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
-2. Naam van het programma en wijzig indien nodig, de **voor het archiefvenster** (die standaard vier uur). U kunt ook opgeven van een opslaglocatie bevinden of behoud de standaardwaarde.  
-3. Controleer de **Start het programma nu** vak.
+2. Geef het programma een naam en wijzig indien nodig de **lengte van het archief venster** (de standaard waarde is vier uur). U kunt ook opgeven van een opslaglocatie bevinden of behoud de standaardwaarde.  
+3. Schakel het selectie vakje **programma nu starten** in.
 4. Klik op **programma maken**.  
 
     >[!NOTE]
     >Maken van een programma duurt minder lang dan het maken van kanalen.
         
-5. Zodra het programma wordt uitgevoerd, bevestigt u afspelen door met de rechtermuisknop op het programma en te navigeren naar **afspelen van de programma's** en vervolgens de optie **met Azure Media Player**.  
-6. Nadat u hebt bevestigd, met de rechtermuisknop op het programma opnieuw uit en selecteer **de URL van de uitvoer naar Klembord kopiëren** (of het ophalen van deze informatie van de **gegevens en instellingen van het programma** optie in het menu).
+5. Nadat het programma is uitgevoerd, kunt u het afspelen bevestigen door met de rechter muisknop op het programma te klikken en te navigeren om **de Program ma's** af te spelen en vervolgens te selecteren **met Azure Media Player**.  
+6. Nadat deze is bevestigd, klikt u opnieuw met de rechter muisknop op het programma en selecteert **u de uitvoer-URL naar het klem bord kopiëren** (of deze gegevens ophalen uit de optie **informatie en instellingen** van het programma in het menu).
 
 De stroom is nu klaar om te worden ingesloten in een speler of gedistribueerd naar een doelgroep voor het weergeven van live.  
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Zie de [probleemoplossing](media-services-troubleshooting-live-streaming.md) artikel voor hulp.
+Raadpleeg het artikel over [probleem oplossing](media-services-troubleshooting-live-streaming.md) voor hulp.
 
 ## <a name="next-step"></a>Volgende stap
 

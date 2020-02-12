@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 46034c8392dc1720fe5e03fc5e419dba6ed20e0b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5851b294e52fdcc03dbf3b889ff32898a823f655
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314467"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137555"
 ---
 # <a name="clean-missing-data-module"></a>Ontbrekende gegevens module wissen
 
-In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Met deze module kunt u ontbrekende waarden verwijderen, vervangen of afleiden. 
 
@@ -37,11 +37,11 @@ In deze module wordt ook een definitie uitgevoerd van de trans formatie die word
 
 ## <a name="how-to-use-clean-missing-data"></a>Schone ontbrekende gegevens gebruiken
 
-Met deze module kunt u een reinigings bewerking definiëren. U kunt ook de opschoon bewerking opslaan, zodat u deze later kunt Toep assen op nieuwe gegevens. Raadpleeg de volgende koppelingen voor een beschrijving van het maken en opslaan van een reinigings proces: 
+Met deze module kunt u een reinigings bewerking definiëren. U kunt ook de opschoon bewerking opslaan, zodat u deze later kunt Toep assen op nieuwe gegevens. Zie de volgende secties voor het maken en opslaan van een reinigings proces: 
  
-+ Ontbrekende waarden vervangen
++ [Ontbrekende waarden vervangen](#replace-missing-values)
   
-+ Een reinigings transformatie Toep assen op nieuwe gegevens
++ [Een reinigings transformatie Toep assen op nieuwe gegevens](#apply-a-saved-cleaning-operation-to-new-data)
  
 > [!IMPORTANT]
 > De reinigings methode die u voor het verwerken van ontbrekende waarden gebruikt, kan de resultaten aanzienlijk beïnvloeden. We raden u aan om met verschillende methoden te experimenteren. Houd rekening met zowel de reden voor het gebruik van een bepaalde methode als de kwaliteit van de resultaten.
@@ -56,12 +56,9 @@ Telkens wanneer u de module [clean Missing Data](./clean-missing-data.md) toepas
 
     Als u bijvoorbeeld wilt controleren op ontbrekende waarden in alle numerieke kolommen:
 
-    1. Open de kolom kiezer en selecteer **with Rules**.
-    2. Selecteer **geen kolommen**voor **beginnen met**.
+    1. Selecteer de module **clean Missing Data** en klik op **kolom bewerken** in het rechter paneel van de module.
 
-        U kunt ook beginnen met alle kolommen en vervolgens kolommen uitsluiten. In eerste instantie worden regels niet weer gegeven als u eerst op **alle kolommen**klikt, maar u kunt op **geen kolommen** klikken en vervolgens op **alle kolommen** klikken om met alle kolommen te beginnen en vervolgens kolommen uit te filteren op basis van de naam, het gegevens type of de kolommen index.
-
-    3. Voor **opnemen**selecteert u in de vervolg keuzelijst het **kolom Type** en selecteert u vervolgens **Numeriek**of een specifiek numeriek type. 
+    3. Voor **opnemen**selecteert u **kolom typen** in de vervolg keuzelijst en selecteert u vervolgens **Numeriek**. 
   
     Elke opschonings-of vervangings methode die u kiest, moet van toepassing zijn op **alle** kolommen in de selectie. Als de gegevens in een kolom incompatibel zijn met de opgegeven bewerking, retourneert de module een fout en stopt de pijp lijn.
   
@@ -109,7 +106,7 @@ Telkens wanneer u de module [clean Missing Data](./clean-missing-data.md) toepas
   
 6. De waarde voor het **vervangen** van de optie is beschikbaar als u de optie **aangepaste vervangings waarde**hebt geselecteerd. Typ een nieuwe waarde die moet worden gebruikt als de vervangings waarde voor alle ontbrekende waarden in de kolom.  
   
-    Houd er rekening mee dat u deze optie alleen kunt gebruiken in kolommen die de gegevens typen integer, double, Boolean of date hebben. Voor datum kolommen kan de vervangings waarde ook worden ingevoerd als het aantal 100-nano seconden Ticks sinds 1/1/0001 12:00 uur  
+    Houd er rekening mee dat u deze optie alleen kunt gebruiken in kolommen met het gehele getal, de waarde double, Booleaans of teken reeks.
   
 7. **Indicator kolom voor ontbrekende waarde genereren**: Selecteer deze optie als u een bepaalde indicatie wilt uitvoeren van de vraag of de waarden in de kolom voldoen aan de criteria voor het schoonmaken van ontbrekende waarden. Deze optie is met name handig wanneer u een nieuwe reinigings bewerking instelt en er zeker van wilt zijn dat deze goed werkt.
   

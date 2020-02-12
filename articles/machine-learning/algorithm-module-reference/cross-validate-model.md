@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 5ac1f3e4bf629a2e12eb0461b932a5865228c79c
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/11/2020
+ms.openlocfilehash: 6dd8246d5751609e2f20ee9d5e519529752940f7
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546704"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137531"
 ---
 # <a name="cross-validate-model"></a>Kruisvalidatie van model valideren
 
@@ -62,21 +62,19 @@ In dit scenario moet u het model trainen en testen met behulp van het model krui
 
 2. Verbind de uitvoer van een classificatie of regressie model. 
 
-    Als u bijvoorbeeld **twee class Bayes Point-machines** voor classificatie gebruikt, configureert u het model met de gewenste para meters. Sleep vervolgens een connector van de niet- **getrainde model** poort van de classificatie naar de overeenkomende poort van kruislings validate model. 
+    Als u bijvoorbeeld **twee klassen hebt gestimuleerd beslissings structuur** voor classificatie, configureert u het model met de gewenste para meters. Sleep vervolgens een connector van de niet- **getrainde model** poort van de classificatie naar de overeenkomende poort van kruislings validate model. 
 
     > [!TIP] 
     > U hoeft het model niet te trainen omdat Kruis validatie het model automatisch als onderdeel van de evaluatie ondertraint.  
 3.  Verbind op de **gegevensset** -poort van kruislings valideren model een trainings gegevensset met een label.  
 
-4.  Selecteer in het deel venster **Eigenschappen** van het model Kruis valideren de optie **kolom kiezer starten**. Kies de enkele kolom die het klassen label of de voorspel bare waarde bevat. 
+4.  Klik in het rechter paneel van het model Kruis validatie op **kolom bewerken**. Selecteer de enkelvoudige kolom die het klassen label of de voorspel bare waarde bevat. 
 
 5. Stel een waarde in voor de **wille keurige Seed** -para meter als u de resultaten van kruis validatie wilt herhalen in opeenvolgende uitvoeringen van dezelfde gegevens.  
 
 6. Voer de pijplijn uit.
 
 7. Zie de sectie met [resultaten](#results) voor een beschrijving van de rapporten.
-
-    Als u een kopie van het model later opnieuw wilt gebruiken, schakelt u over naar het tabblad **uitvoer** in het rechterdeel venster van de module die het algoritme bevat (bijvoorbeeld de **twee klasse Bayes-punt machine**). Selecteer vervolgens het pictogram **gegevensset registreren** om een kopie van het getrainde model in de module structuur op te slaan.
 
 ## <a name="results"></a>Resultaten
 
@@ -88,9 +86,9 @@ De eerste uitvoer van de module levert de bron gegevens voor elke rij, samen met
 
 Als u de resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muisknop op de model module Kruis valideren. Selecteer **gescoorde resultaten visualiseren**.
 
-| Naam nieuwe kolom      | Beschrijving                              |
+| Nieuwe kolom naam      | Beschrijving                              |
 | -------------------- | ---------------------------------------- |
-| Labels met een score        | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Het bevat de voorspelde waarde voor elke rij. |
+| Gescoorde labels        | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Het bevat de voorspelde waarde voor elke rij. |
 | Gescoorde kansen | Deze kolom wordt toegevoegd aan het einde van de gegevensset. Deze geeft de geschatte waarschijnlijkheid van de waarde in de **gescoorde labels**aan. |
 | Vouw nummer          | Hiermee wordt de op nul gebaseerde index van de vouw aangegeven waarmee elke rij met gegevens tijdens Kruis validatie werd toegewezen. |
 
@@ -103,7 +101,7 @@ In dit rapport worden de vouwen weer gegeven op index waarde, in oplopende volg 
 Als u de resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muisknop op de model module Kruis valideren. Selecteer **evaluatie resultaten visualiseren door te vouwen**.
 
 
-|Kolomnaam| Beschrijving|
+|kolom naam| Beschrijving|
 |----|----|
 |Vouw nummer| Een id voor elke vouw. Als u vijf vouwen hebt gemaakt, zijn er vijf subsets met gegevens, genummerd van 0 tot 4.
 |Aantal voor beelden in vouwen|Het aantal rijen dat aan elke vouw is toegewezen. Ze moeten ongeveer gelijk zijn. |

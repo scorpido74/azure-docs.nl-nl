@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 27838aae1d829598bed44a6c16f7a1d38a95b727
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314093"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138178"
 ---
 # <a name="score-model-module"></a>De module Score Model (Scoremodel)
 
-In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om voor spellingen te genereren met behulp van een getrainde classificatie of een regressie model.
 
@@ -44,7 +44,7 @@ De Score of voorspelde waarde kan in veel verschillende indelingen worden opgege
 
 - Voor classificatie modellen voert het [score model](./score-model.md) een voorspelde waarde uit voor de klasse, evenals de waarschijnlijkheid van de voorspelde waarde.
 - Voor regressie modellen genereert het [score model](./score-model.md) alleen de voorspelde numerieke waarde.
-- Voor afbeeldings classificatie modellen kan de score de klasse van het object in de afbeelding zijn of een Booleaanse waarde die aangeeft of een bepaalde functie is gevonden.
+
 
 ## <a name="publish-scores-as-a-web-service"></a>Scores publiceren als een webservice
 

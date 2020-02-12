@@ -1,5 +1,5 @@
 ---
-title: Serverless
+title: Serverloos
 description: In dit artikel wordt de nieuwe serverloze Compute-laag beschreven en vergelijkt deze met de bestaande ingerichte Compute-laag
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 2b11bbc22714ab1905421812e3cb24ee660ee667
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372327"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131967"
 ---
-# <a name="azure-sql-database-serverless"></a>Azure SQL Database - Serverloos
+# <a name="azure-sql-database-serverless"></a>Azure SQL Database serverloos
 
 Azure SQL Database serverloos is een compute-laag voor afzonderlijke data bases waarmee de berekening automatisch wordt geschaald op basis van de vraag van de werk belasting en de facturen voor de hoeveelheid reken kracht die per seconde wordt gebruikt. De compute-laag zonder server onderbreekt ook automatisch data bases tijdens inactieve Peri Oden wanneer alleen opslag wordt gefactureerd en automatisch data bases hervat wanneer de activiteit wordt geretourneerd.
 
@@ -43,7 +43,7 @@ De compute-laag zonder server voor één data base is vastgelegd door een bereik
 
 Zie [facturering](sql-database-serverless.md#billing)voor meer informatie over de kosten.
 
-## <a name="scenarios"></a>Scenario's
+## <a name="scenarios"></a>Scenario 's
 
 Serverloze is prijs-prestatie geoptimaliseerd voor afzonderlijke data bases met periodieke, onvoorspelbare gebruiks patronen die enige vertraging kunnen ondervinden bij het opwarmen van het aantal keer dat ze niet actief zijn. De ingerichte Compute-laag daarentegen heeft de prijs prestaties geoptimaliseerd voor afzonderlijke data bases of meerdere data bases in elastische Pools met een hoger gemiddeld gebruik dat geen vertraging kan ondervinden bij het opwarmen van berekeningen.
 
@@ -66,7 +66,7 @@ De volgende tabel bevat een overzicht van de verschillen tussen de serverloze Co
 | | **Serverloze compute** | **Ingerichte compute** |
 |:---|:---|:---|
 |**Database gebruiks patroon**| Onregelmatige, onvoorspelbaar gebruik met minder gemiddelde reken capaciteit gedurende een bepaalde periode. |  Meer reguliere gebruiks patronen met een hoger gemiddelde reken gebruik gedurende een bepaalde periode of meerdere data bases met elastische Pools.|
-| **Prestatie beheer-inspanning** |Lager|Hoger|
+| **Prestatie beheer-inspanning** |Onderliggende|Omhoog|
 |**Berekening schalen**|Automatisch|Handmatig|
 |**Reactie tijd van berekeningen**|Lager dan inactieve Peri Oden|Direct|
 |**Granulatie facturering**|Per seconde|Per uur|
@@ -129,9 +129,9 @@ Autohervatten wordt geactiveerd als een van de volgende voor waarden op elk mome
 |Verificatie en autorisatie|Aanmelden|
 |Detectie van bedreigingen|Instellingen voor detectie van bedreigingen in-of uitschakelen op Data Base-of server niveau.<br>Instellingen voor detectie van bedreigingen wijzigen op Data Base-of server niveau.|
 |Gegevensdetectie en -classificatie|Toevoegen, wijzigen, verwijderen of weer geven van gevoeligheids labels|
-|Controle|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
+|Controleren|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
 |Gegevensmaskering|Regels voor gegevens maskering toevoegen, wijzigen, verwijderen of weer geven|
-|Transparante dataversleuteling|Status of status van transparante gegevens versleuteling weer geven|
+|Transparent Data Encryption|Status of status van transparante gegevens versleuteling weer geven|
 |Gegevens Archief voor query (prestaties)|Query Store-instellingen wijzigen of weer geven|
 |Autotuning|Toepassing en verificatie van aanbevelingen voor automatische afstemming, zoals automatisch indexeren|
 |Data base kopiëren|Maak een Data Base als kopie.<br>Exporteren naar een BACPAC-bestand.|
@@ -155,17 +155,17 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
 
 1. Geef de naam van de service doelstelling op. De service doelstelling schrijft de service tier, het genereren van hardware en het maximale aantal vCores. In de volgende tabel worden de opties voor service doelstelling weer gegeven:
 
-   |Naam van service doelstelling|Serviceniveau|Hardware genereren|Maximum aantal vCores|
+   |Naam van service doelstelling|Servicelaag|Hardware genereren|Maximum aantal vCores|
    |---|---|---|---|
-   |GP_S_Gen5_1|Algemeen doel|Gen5|1|
-   |GP_S_Gen5_2|Algemeen doel|Gen5|2|
-   |GP_S_Gen5_4|Algemeen doel|Gen5|4|
-   |GP_S_Gen5_6|Algemeen doel|Gen5|6|
-   |GP_S_Gen5_8|Algemeen doel|Gen5|8|
-   |GP_S_Gen5_10|Algemeen doel|Gen5|10|
-   |GP_S_Gen5_12|Algemeen doel|Gen5|12|
-   |GP_S_Gen5_14|Algemeen doel|Gen5|14|
-   |GP_S_Gen5_16|Algemeen doel|Gen5|16|
+   |GP_S_Gen5_1|Algemeen gebruik|GEN5|1|
+   |GP_S_Gen5_2|Algemeen gebruik|GEN5|2|
+   |GP_S_Gen5_4|Algemeen gebruik|GEN5|4|
+   |GP_S_Gen5_6|Algemeen gebruik|GEN5|6|
+   |GP_S_Gen5_8|Algemeen gebruik|GEN5|8|
+   |GP_S_Gen5_10|Algemeen gebruik|GEN5|10|
+   |GP_S_Gen5_12|Algemeen gebruik|GEN5|12|
+   |GP_S_Gen5_14|Algemeen gebruik|GEN5|14|
+   |GP_S_Gen5_16|Algemeen gebruik|GEN5|16|
 
 2. Geef desgewenst de minimale vCores en de vertraging voor autopause op om de standaard waarden te wijzigen. De volgende tabel bevat de beschik bare waarden voor deze para meters.
 
@@ -257,7 +257,7 @@ Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause 
 Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause wordt uitgevoerd met behulp van de opdracht [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) in azure CLI met behulp van de argumenten `capacity`, `min-capacity`en `auto-pause-delay`.
 
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 ### <a name="resources-used-and-billed"></a>Gebruikte resources en gefactureerd
 
@@ -306,11 +306,11 @@ az sql db show --name $databasename --resource-group $resourcegroupname --server
 ```
 
 
-## <a name="resource-limits"></a>Bronbeperkingen
+## <a name="resource-limits"></a>Bronlimieten
 
 Zie [serverloze Compute-laag](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)voor resource limieten.
 
-## <a name="billing"></a>Billing
+## <a name="billing"></a>Facturering
 
 De hoeveelheid berekenings kosten is het maximum van CPU-gebruik en het geheugen dat elke seconde wordt gebruikt. Als de gebruikte hoeveelheid CPU en het gebruikte geheugen kleiner is dan het minimum aantal dat voor elk is ingericht, wordt de ingerichte hoeveelheid gefactureerd. Als u de CPU wilt vergelijken met geheugen voor facturerings doeleinden, wordt geheugen genormaliseerd in eenheden van vCores door de hoeveelheid geheugen in GB met 3 GB per vCore opnieuw te schalen.
 
@@ -342,13 +342,13 @@ Nauw keuriger wordt de reken factuur in dit voor beeld als volgt berekend:
 |8:00-24:00|0|0|Er wordt geen reken tijd in rekening gebracht|0 vCore seconden|
 |Totaal aantal vCore seconden gefactureerd over 24 uur||||50400 vCore seconden|
 
-Stel dat de reken eenheids prijs $0.000073/vCore/seconde is.  De reken tijd die voor deze periode van 24 uur wordt gefactureerd, is het product van de reken eenheids prijs en vCore seconden in rekening gebracht: $0.000073/vCore/Second * 50400 vCore seconden = $3,68
+Stel dat de reken eenheids prijs $0.000145/vCore/seconde is.  De reken tijd die voor deze periode van 24 uur wordt gefactureerd, is het product van de reken eenheids prijs en vCore seconden in rekening gebracht: $0.000145/vCore/Second * 50400 vCore seconden ~ $7,31
 
 ### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure Hybrid Benefit en gereserveerde capaciteit
 
 Azure Hybrid Benefit (AHB) en gereserveerde capaciteits kortingen zijn niet van toepassing op de serverloze Compute-laag.
 
-## <a name="available-regions"></a>Beschikbare regio's
+## <a name="available-regions"></a>Beschik bare regio's
 
 De compute-laag zonder server is wereld wijd beschikbaar, met uitzonde ring van de volgende regio's: China-oost, China-noord, Duitsland-centraal, Duitsland-noordoost, UK-noord, UK-zuid 2, West-Centraal VS en US Gov Central (Iowa).
 

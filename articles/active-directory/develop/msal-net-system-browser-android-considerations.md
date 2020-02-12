@@ -1,7 +1,7 @@
 ---
 title: Xamarin Android-systeem browser overwegingen (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over specifieke overwegingen bij het gebruik van systeem browsers op Xamarin Android met micro soft Authentication Library voor .NET (MSAL.NET).
+description: Meer informatie over overwegingen voor het gebruik van systeem browsers op Xamarin Android met micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,20 +13,21 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c144c6dd090669ca16c03050cbb8b59ff0cc224f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ad26a4d619a7984f08a8decc87f9339adae47cdd
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084590"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132614"
 ---
-#  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>Xamarin Android-systeem browser overwegingen met MSAL.NET
+#  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Xamarin Android-systeem browser overwegingen voor het gebruik van MSAL.NET
 
-In dit artikel worden specifieke overwegingen beschreven voor het gebruik van de systeem browser op Xamarin Android met de micro soft Authentication Library voor .NET (MSAL.NET).
+In dit artikel wordt beschreven wat u moet overwegen wanneer u de systeem browser gebruikt op Xamarin Android met micro soft Authentication Library voor .NET (MSAL.NET).
 
-Vanaf MSAL.NET 2.4.0-Preview ondersteunt MSAL.NET andere browsers dan Chrome en hoeft niet langer Chrome te worden geïnstalleerd op het Android-apparaat voor verificatie.
+Vanaf MSAL.NET 2.4.0 Preview ondersteunt MSAL.NET andere browsers dan Chrome. Het is niet meer nodig om Chrome te installeren op het Android-apparaat voor authenticatie.
 
-We raden u aan om browsers te gebruiken die aangepaste tabbladen ondersteunen, zoals deze:
+U wordt aangeraden browsers te gebruiken die aangepaste tabbladen ondersteunen. Hier volgen enkele voor beelden van deze browsers:
 
 | Browsers met aangepaste tabbladen ondersteunen | Pakket naam |
 |------| ------- |
@@ -37,28 +38,19 @@ We raden u aan om browsers te gebruiken die aangepaste tabbladen ondersteunen, z
 |Kiwi | com. kiwibrowser. browser|
 |Brave | com. Brave. browser|
 
-Naast browsers met aangepaste tabbladen ondersteuning, op basis van onze tests, kunnen enkele browsers die geen aangepaste tabbladen ondersteunen, ook worden gebruikt voor verificatie: Opera, Opera Mini-, inbrowser-en Maxthon. Lees voor meer informatie de [tabel voor test resultaten](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Android-system-browser#devices-and-browsers-tested).
+Naast het identificeren van browsers die ondersteuning bieden voor aangepaste tabbladen, wordt met onze tests aangegeven dat een aantal browsers die geen aangepaste tabbladen ondersteunen ook voor verificatie werkt. Deze browsers bevatten Opera, Opera Mini-, inbrowser-en Maxthon. 
 
-## <a name="known-issues"></a>Bekende problemen
+## <a name="tested-devices-and-browsers"></a>Geteste apparaten en browsers
+De volgende tabel geeft een lijst van de apparaten en browsers die zijn getest voor verificatie compatibiliteit.
 
-- Als de gebruiker geen browser heeft ingeschakeld op het apparaat, wordt door MSAL.NET een `AndroidActivityNotFound`-uitzonde ring gegenereerd. 
-  - **Risico beperking**: Informeer de gebruiker of hij of zij een browser (bij voor keur een met aangepaste tabbladen-ondersteuning) op hun apparaat moet inschakelen.
-
-- Als verificatie mislukt (bijvoorbeeld verificatie wordt gestart met DuckDuckGo), retourneert MSAL.NET een `AuthenticationCanceled MsalClientException`. 
-  - **Hoofd probleem**: er is geen ondersteuning voor een browser met aangepaste tabbladen ingeschakeld op het apparaat. Verificatie is gestart met een alternatieve browser, waardoor de verificatie niet kan worden voltooid. 
-  - **Risico beperking**: Informeer de gebruiker dat deze een browser (bij voor keur een met aangepaste tabblad ondersteuning) moet installeren op hun apparaat.
-
-## <a name="devices-and-browsers-tested"></a>Apparaten en browsers getest
-De volgende tabel geeft een lijst van de apparaten en browsers die zijn getest.
-
-| | Browser&ast;     |  Resultaat  | 
+| Apparaat | Browser     |  Resultaat  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/één + | Chrome&ast; | Door|
-| Huawei/één + | Edge-&ast; | Door|
-| Huawei/één + | Firefox-&ast; | Door|
-| Huawei/één + | Brave&ast; | Door|
-| Eén + | Ecosia&ast; | Door|
-| Eén + | Kiwi&ast; | Door|
+| Huawei/één + | Chrome\* | Door|
+| Huawei/één + | Edge-\* | Door|
+| Huawei/één + | Firefox-\* | Door|
+| Huawei/één + | Brave\* | Door|
+| Eén + | Ecosia\* | Door|
+| Eén + | Kiwi\* | Door|
 | Huawei/één + | Opera | Door|
 | Huawei | OperaMini | Door|
 | Huawei/één + | InBrowser | Door|
@@ -67,9 +59,18 @@ De volgende tabel geeft een lijst van de apparaten en browsers die zijn getest.
 | Huawei/één + | UC-browser | Door de gebruiker geannuleerde authenticatie|
 | Eén + | Dolfijnen | Door de gebruiker geannuleerde authenticatie|
 | Eén + | CM-browser | Door de gebruiker geannuleerde authenticatie|
-| Huawei/één + | geen geïnstalleerd | AndroidActivityNotFound ex|
+| Huawei/één + | geen geïnstalleerd | AndroidActivityNotFound-uitzonde ring|
 
-&ast; ondersteunt aangepaste tabbladen
+\* ondersteunt aangepaste tabbladen
+
+## <a name="known-issues"></a>Bekende problemen
+
+Als de gebruiker geen browser heeft ingeschakeld op het apparaat, wordt door MSAL.NET een `AndroidActivityNotFound`-uitzonde ring gegenereerd.  
+  - **Risico beperking**: vraag de gebruiker een browser op het apparaat in te scha kelen. U kunt het beste een browser aanbevelen die aangepaste tabbladen ondersteunt.
+
+Als verificatie mislukt (bijvoorbeeld als verificatie wordt gestart met DuckDuckGo), retourneert MSAL.NET `AuthenticationCanceled MsalClientException`. 
+  - **Hoofd probleem**: een browser die ondersteuning biedt voor aangepaste tabbladen is niet ingeschakeld op het apparaat. Verificatie gestart met een browser die de verificatie niet kan volt ooien. 
+  - **Risico beperking**: vraag de gebruiker een browser op het apparaat in te scha kelen. U kunt het beste een browser aanbevelen die aangepaste tabbladen ondersteunt.
 
 ## <a name="next-steps"></a>Volgende stappen
-Lees deze [hand leiding](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid)voor code fragmenten en aanvullende informatie over het gebruik van System browser met Xamarin Android.  
+Zie [kiezen tussen een Inge sloten webbrowser en een systeem browser op Xamarin Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid) en [embedded versus systeem webinterface](msal-net-web-browsers.md#embedded-vs-system-web-ui)voor meer informatie en voor beelden van code.  

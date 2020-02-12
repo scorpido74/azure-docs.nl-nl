@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/17/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 214c071e0d01908e2d46c932fcf87906de834102
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644678"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137948"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Procedure: sentiment detecteren met behulp van de Text Analytics-API
 
@@ -50,14 +50,7 @@ De Text Analytics-API biedt twee versies van Sentimentanalyse v2 en v3. Sentimen
 | Sentiment labelen                        |                       | X                     |
 | Model versie beheer                   |                       | X                     |
 
-#### <a name="version-2tabversion-2"></a>[Versie 2](#tab/version-2)
-
-### <a name="sentiment-scoring"></a>Sentiment Score
-
-De sentiment Analyzer classificeert de tekst als een hoofd zakelijk positief of negatief. Er wordt een score in het bereik van 0 tot 1 toegewezen. Waarden dicht bij 0,5 zijn neutraal of onbepaald. Een score van 0,5 geeft neutraliteit aan. Wanneer een teken reeks niet kan worden geanalyseerd voor sentiment of geen sentiment heeft, is de Score altijd 0,5 precies. Bijvoorbeeld, als u in een Spaanse tekenreeks doorgeeft met een Engelse taalcode is de score 0,5.
-
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Versie 3 (open bare preview)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Versie 3,0-Preview](#tab/version-3)
 
 ### <a name="sentiment-scoring"></a>Sentiment Score
 
@@ -85,6 +78,13 @@ Sentimentanalyse v3 kan scores en labels in een zin en document niveau retour ne
 
 U kunt een voorbeeld C# toepassing vinden die deze versie van sentimentanalyse aanroept op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs).
 
+
+#### <a name="version-21tabversion-2"></a>[Versie 2,1](#tab/version-2)
+
+### <a name="sentiment-scoring"></a>Sentiment Score
+
+De sentiment Analyzer classificeert de tekst als een hoofd zakelijk positief of negatief. Er wordt een score in het bereik van 0 tot 1 toegewezen. Waarden dicht bij 0,5 zijn neutraal of onbepaald. Een score van 0,5 geeft neutraliteit aan. Wanneer een teken reeks niet kan worden geanalyseerd voor sentiment of geen sentiment heeft, is de Score altijd 0,5 precies. Bijvoorbeeld, als u in een Spaanse tekenreeks doorgeeft met een Engelse taalcode is de score 0,5.
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>Een REST API aanvraag verzenden 
@@ -101,27 +101,28 @@ De document grootte moet kleiner zijn dan 5.120 tekens per document. U kunt Maxi
 
 Maak een POST-aanvraag. U kunt [postman](text-analytics-how-to-call-api.md) of de **API-test console** in de volgende referentie koppelingen gebruiken om een snelle structuur en verzen ding te sturen. 
 
-#### <a name="version-2tabversion-2"></a>[Versie 2](#tab/version-2)
-
-[Naslag informatie over Sentimentanalyse v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Versie 3 (open bare preview)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Versie 3,0-Preview](#tab/version-3)
 
 [Sentimentanalyse v3-referentie](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
+
+#### <a name="version-21tabversion-2"></a>[Versie 2,1](#tab/version-2)
+
+[Naslag informatie over Sentimentanalyse v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
 ---
 
 Stel het HTTPS-eind punt voor sentiment analyse in met behulp van een Text Analytics resource in azure of een geïnstantieerd [Text Analytics-container](text-analytics-how-to-install-containers.md). U moet de juiste URL toevoegen voor de versie die u wilt gebruiken. Bijvoorbeeld:
-    
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
-#### <a name="version-2tabversion-2"></a>[Versie 2](#tab/version-2)
+> [!NOTE]
+> U vindt de sleutel en het eind punt voor uw Text Analytics-resource in azure Portal. Ze bevinden zich op de pagina **snel starten** van de resource, onder **resource beheer**. 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Versie 3 (open bare preview)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Versie 3,0-Preview](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
+
+#### <a name="version-21tabversion-2"></a>[Versie 2,1](#tab/version-2)
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
 ---
 
@@ -161,26 +162,7 @@ De sentiment Analyzer classificeert de tekst als een hoofd zakelijk positief of 
 
 Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een toepassing die JSON accepteert of de uitvoer opslaan in een bestand op het lokale systeem. Importeer vervolgens de uitvoer in een toepassing die u kunt gebruiken om de gegevens te sorteren, te zoeken en te bewerken.
 
-#### <a name="version-2tabversion-2"></a>[Versie 2](#tab/version-2)
-
-### <a name="sentiment-analysis-v2-example-response"></a>Voorbeeld reactie van Sentimentanalyse v2
-
-Antwoorden van Sentimentanalyse v2 bevatten sentiment scores voor elk verzonden document.
-
-```json
-{
-  "documents": [{
-    "id": "1",
-    "score": 0.98690706491470337
-  }, {
-    "id": "2",
-    "score": 0.95202046632766724
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Versie 3 (open bare preview)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Versie 3,0-Preview](#tab/version-3)
 
 ### <a name="sentiment-analysis-v3-example-response"></a>Sentimentanalyse v3-voorbeeld antwoord
 
@@ -255,6 +237,26 @@ Antwoorden van Sentimentanalyse v3 bevatten sentiment labels en scores voor elke
     "errors": []
 }
 ```
+
+#### <a name="version-21tabversion-2"></a>[Versie 2,1](#tab/version-2)
+
+### <a name="sentiment-analysis-v2-example-response"></a>Voorbeeld reactie van Sentimentanalyse v2
+
+Antwoorden van Sentimentanalyse v2 bevatten sentiment scores voor elk verzonden document.
+
+```json
+{
+  "documents": [{
+    "id": "1",
+    "score": 0.98690706491470337
+  }, {
+    "id": "2",
+    "score": 0.95202046632766724
+  }],
+  "errors": []
+}
+```
+
 ---
 
 ## <a name="summary"></a>Samenvatting

@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 1e0016e8ce6bc9178befd1a5ca96aa2554929ac5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4b156ad12238e6ab33aaa40283cdd324bddce206
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719531"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134429"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Snelstartgids: een python-toepassing bouwen met een Azure Cosmos DB SQL-API-account
 
@@ -29,19 +29,15 @@ ms.locfileid: "76719531"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Deze snelstart laat zien hoe u een [SQL API](sql-api-introduction.md)-account van Azure Cosmos DB, een documentdatabase en een container kunt maken met behulp van de Azure-portal. Vervolgens ontwikkelt u een console-app die is gebouwd met de Python SDK voor [SQL API](sql-api-sdk-python.md) en voert u deze uit.
-
-Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel documenten, sleutel/waarde, brede kolom-en grafiek databases maken en doorzoeken. Al deze bewerkingen profiteren van de distributie en schaal van Azure Cosmos DB.
-
-In deze Quick Start wordt versie 4 van de [python-SDK](https://pypi.org/project/azure-cosmos/#history)gebruikt.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+In deze Quick Start maakt en beheert u een Azure Cosmos DB SQL-API-account van de Azure Portal en van Visual Studio code met een python-app die is gekloond van GitHub. Azure Cosmos DB is een database service met meerdere modellen waarmee u snel documenten, tabellen, sleutel waarden en grafische data bases met globale distributie en mogelijkheden voor horizontale schaal kunt maken en er query's op uitvoert.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Python 3.6 +](https://www.python.org/downloads/), met het `python` uitvoer bare bestand dat beschikbaar is in uw `PATH`.
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [Python-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
+- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [Probeer gratis Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement. U kunt ook de [Azure Cosmos DB emulator](https://aka.ms/cosmosdb-emulator) gebruiken met een URI van `https://localhost:8081` en de sleutel `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
+- [Python 3.6 +](https://www.python.org/downloads/), met de `python` uitvoer bare bestand in uw `PATH`.
+- [Visual Studio Code](https://code.visualstudio.com/).
+- De [python-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview).
+- [Git](https://www.git-scm.com/downloads). 
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
 
@@ -80,7 +76,7 @@ U kunt nu het hulp programma Data Explorer in de Azure Portal gebruiken om een D
 
 ## <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
-We gaan nu een SQL API-app klonen vanuit GitHub, de verbindingsreeks instellen en de app uitvoeren.
+We gaan nu een SQL API-app klonen vanuit GitHub, de verbindingsreeks instellen en de app uitvoeren. In deze Quick Start wordt versie 4 van de [python-SDK](https://pypi.org/project/azure-cosmos/#history)gebruikt.
 
 1. Open een opdrachtprompt, maak een nieuwe map met de naam git-samples en sluit vervolgens de opdrachtprompt.
 
@@ -109,27 +105,27 @@ We gaan nu een SQL API-app klonen vanuit GitHub, de verbindingsreeks instellen e
 
 Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en kopieer deze in de app.
 
-1. Klik in het [Azure Portal](https://portal.azure.com/)in uw Azure Cosmos-account in de linkernavigatiebalk op **sleutels**. In de volgende stap gebruikt u de kopieerknoppen aan de rechterkant van het scherm om de **URI** en **Primaire sleutel** in het `cosmos_get_started.py`-bestand te kopiëren.
+1. Selecteer in uw Azure Cosmos DB-account in de [Azure Portal](https://portal.azure.com/)de optie **sleutels** in het linkernavigatievenster. Gebruik de Kopieer knoppen aan de rechter kant van het scherm om de **URI** en **primaire sleutel** in het bestand *cosmos_get_started. py* in de volgende stap te kopiëren.
 
     ![Haal een toegangs sleutel en URI op in de sleutel instellingen in de Azure Portal](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
 
-2. Open het `cosmos_get_started.py`-bestand in \git-samples\azure-Cosmos-DB-python-Getting-Started in Visual Studio code.
+2. Open in Visual Studio code het bestand *cosmos_get_started. py* in *\git-samples\azure-Cosmos-DB-python-Getting-Started*.
 
-3. Kopieer uw **URI** -waarde vanuit de portal (met de Kopieer knop) en geef deze als waarde aan de **eindpunt** variabele in ``cosmos_get_started.py``. 
+3. Kopieer uw **URI** -waarde vanuit de portal (met de Kopieer knop) en geef deze als waarde aan de **eindpunt** variabele in *cosmos_get_started. py*. 
 
     `endpoint = 'https://FILLME.documents.azure.com',`
 
-4. Kopieer vervolgens de waarde van uw **primaire sleutel** uit de portal en geef deze als waarde aan de **sleutel** in ``cosmos_get_started.py``. U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB. 
+4. Kopieer vervolgens de waarde van uw **primaire sleutel** uit de portal en geef deze als waarde aan de **sleutel** in *cosmos_get_started. py*. U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB. 
 
     `key = 'FILLME'`
 
-5. Sla het bestand ``cosmos_get_started.py`` op.
+5. Sla het bestand *cosmos_get_started. py* op.
 
 ## <a name="review-the-code"></a>De code bekijken
 
 Deze stap is optioneel. Meer informatie over de database resources die zijn gemaakt in code of overs Laan om [uw Connection String](#update-your-connection-string)bij te werken.
 
-De volgende codefragmenten zijn allemaal afkomstig uit het bestand `cosmos_get_started.py`.
+De volgende code fragmenten zijn allemaal afkomstig uit het bestand *cosmos_get_started. py* .
 
 * De CosmosClient wordt geïnitialiseerd. Zorg ervoor dat u de waarden voor het eind punt en de sleutel bijwerkt, zoals beschreven in de sectie [uw Connection String bijwerken](#update-your-connection-string) . 
 
@@ -164,7 +160,7 @@ De volgende codefragmenten zijn allemaal afkomstig uit het bestand `cosmos_get_s
 
 3. Selecteer **View** > **Integrated Terminal** om de in Visual Studio Code geïntegreerde terminal te openen.
 
-4. Controleer of u zich in het venster van de geïntegreerde terminal in de map azure-cosmos-db-python-getting-started bevindt. Zo niet, voer dan de volgende opdracht uit om naar de voorbeeldmap over te schakelen. 
+4. Controleer in het geïntegreerde Terminal venster of u zich in de map *Azure-Cosmos-DB-python-Getting-Started* bevindt. Zo niet, voer dan de volgende opdracht uit om naar de voorbeeldmap over te schakelen. 
 
     ```cmd
     cd "\git-samples\azure-cosmos-db-python-getting-started"`
@@ -185,36 +181,36 @@ De volgende codefragmenten zijn allemaal afkomstig uit het bestand `cosmos_get_s
     ```
 
 7. Als u wilt bevestigen dat de nieuwe items zijn gemaakt en opgeslagen, selecteert u in de Azure Portal **Data Explorer** > **AzureSampleFamilyDatabase** > **items**. De items weer geven die zijn gemaakt. Hier volgt een voor beeld van een JSON-document voor de serie van de splinter:
-
-```json
-{
-    "id": "Andersen-1569479288379",
-    "lastName": "Andersen",
-    "district": "WA5",
-    "parents": [
-        {
-            "familyName": null,
-            "firstName": "Thomas"
-        },
-        {
-            "familyName": null,
-            "firstName": "Mary Kay"
-        }
-    ],
-    "children": null,
-    "address": {
-        "state": "WA",
-        "county": "King",
-        "city": "Seattle"
-    },
-    "registered": true,
-    "_rid": "8K5qAIYtZXeBhB4AAAAAAA==",
-    "_self": "dbs/8K5qAA==/colls/8K5qAIYtZXc=/docs/8K5qAIYtZXeBhB4AAAAAAA==/",
-    "_etag": "\"a3004d78-0000-0800-0000-5d8c5a780000\"",
-    "_attachments": "attachments/",
-    "_ts": 1569479288
-}
-```
+   
+   ```json
+   {
+       "id": "Andersen-1569479288379",
+       "lastName": "Andersen",
+       "district": "WA5",
+       "parents": [
+           {
+               "familyName": null,
+               "firstName": "Thomas"
+           },
+           {
+               "familyName": null,
+               "firstName": "Mary Kay"
+           }
+       ],
+       "children": null,
+       "address": {
+           "state": "WA",
+           "county": "King",
+           "city": "Seattle"
+       },
+       "registered": true,
+       "_rid": "8K5qAIYtZXeBhB4AAAAAAA==",
+       "_self": "dbs/8K5qAA==/colls/8K5qAIYtZXc=/docs/8K5qAIYtZXeBhB4AAAAAAA==/",
+       "_etag": "\"a3004d78-0000-0800-0000-5d8c5a780000\"",
+       "_attachments": "attachments/",
+       "_ts": 1569479288
+   }
+   ```
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 
@@ -226,7 +222,7 @@ De volgende codefragmenten zijn allemaal afkomstig uit het bestand `cosmos_get_s
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u een Azure Cosmos-account maakt, een container maakt met behulp van de Data Explorer en een app uitvoert. Nu kunt u aanvullende gegevens in uw Cosmos DB-account importeren. 
+In deze Quick Start hebt u geleerd hoe u een Azure Cosmos DB account maakt, een container maakt met behulp van de Data Explorer en een python-app uitvoert in Visual Studio code. Nu kunt u aanvullende gegevens in uw Azure Cosmos DB-account importeren. 
 
 > [!div class="nextstepaction"]
 > [Gegevens importeren in Azure Cosmos DB voor de SQL API](import-data.md)

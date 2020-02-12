@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: f3c2b1aa8f41b382bea96b33108d23bf09850c78
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ba3e677b98406a5f126649aafc2f89fb9d20c895
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984758"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137618"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werk ruimte?
 
@@ -28,7 +28,7 @@ Prijzen en functies die beschikbaar zijn, zijn afhankelijk van het feit of [Basi
 
 Een taxonomie van de werk ruimte wordt geïllustreerd in het volgende diagram:
 
-[![Taxonomie van werkruimte](./media/concept-workspace/azure-machine-learning-taxonomy.png)](./media/concept-workspace/azure-machine-learning-taxonomy.png#lightbox)
+[taxonomie van ![werk ruimte](./media/concept-workspace/azure-machine-learning-taxonomy.png)](./media/concept-workspace/azure-machine-learning-taxonomy.png#lightbox)
 
 In het diagram worden de volgende onderdelen van een werk ruimte weer gegeven:
 
@@ -81,6 +81,9 @@ U kunt ook de volgende beheer taken voor werk ruimten uitvoeren:
 > [!NOTE]
 > Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS**, **VS-oost 2**, **Europa-Noord** of **UK-Zuid**, met ondersteuning voor andere regio's binnenkort.
 >Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken.
+
+> [!WARNING]
+> Het verplaatsen van uw Azure Machine Learning-werk ruimte naar een ander abonnement of het verplaatsen van het abonnement dat eigenaar is naar een nieuwe Tenant, wordt niet ondersteund. Dit kan fouten veroorzaken.
 
 ## <a name='create-workspace'></a>Een werk ruimte maken
 

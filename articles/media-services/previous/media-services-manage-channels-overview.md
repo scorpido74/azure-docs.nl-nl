@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8b58e9d2eae1fbe5b0f4086f772bea3bf46399c3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 99efe375fad142963214b09df24be70bc3bc9d99
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895942"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131600"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Overzicht van live streamen met Media Services
 
@@ -55,13 +55,13 @@ In Azure Media Services wordt alle functionaliteiten voor live streamen afgehand
 
 Een **kanaal** vertegenwoordigt een pijplijn voor de verwerking van inhoud voor live-streaming. Een kanaal kan op de volgende manieren live invoerstromen ontvangen:
 
-* Een on-premises live codering verzendt multi-bitrate **RTMP** of **Smooth Streaming** (gefragmenteerd MP4) naar het kanaal dat is geconfigureerd voor **passthrough**-levering. **Passthrough**-levering vindt plaats wanneer de opgenomen streams het **kanaal** passeren zonder verdere verwerking. U kunt de volgende Live coderings Programma's gebruiken die multi-bitrate Smooth Streaming uitvoeren: MediaExcel, Ateme, denk aan communicatie, Envivio, Cisco en elementair. De volgende Live coderings Programma's uitvoer RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek en TriCaster transcodeers.  Een live coderingsprogramma kan ook een stream met één bitsnelheid verzenden naar een kanaal dat niet is ingeschakeld voor Live Encoding, maar dit wordt niet aanbevolen. Desgevraagd levert Media Services de stream aan klanten.
+* Een on-premises live codering verzendt multi-bitrate **RTMP** of **Smooth Streaming** (gefragmenteerd MP4) naar het kanaal dat is geconfigureerd voor **passthrough**-levering. **Passthrough**-levering vindt plaats wanneer de opgenomen streams het **kanaal** passeren zonder verdere verwerking. U kunt de volgende Live coderings Programma's gebruiken die multi-bitrate Smooth Streaming uitvoeren: MediaExcel, Ateme, denk aan communicatie, Envivio, Cisco en elementair. Met de volgende Live coderings Programma's wordt RTMP uitgevoerd: Wirecast, Haivision, Teradek en TriCaster transcodeers.  Een live coderingsprogramma kan ook een stream met één bitsnelheid verzenden naar een kanaal dat niet is ingeschakeld voor Live Encoding, maar dit wordt niet aanbevolen. Desgevraagd levert Media Services de stream aan klanten.
 
   > [!NOTE]
   > Het gebruik van de passthrough-methode is de meest voordelige manier om live te streamen wanneer u meerdere gebeurtenissen gedurende een langere periode streamt en u al hebt geïnvesteerd in on-premises coderingsprogramma’s. Zie de details over de [prijzen](https://azure.microsoft.com/pricing/details/media-services/).
   > 
   > 
-* Een on-premises Live Encoder verzendt een stream met één bitsnelheid naar het kanaal dat is ingeschakeld voor het uitvoeren van Live code ring met Media Services in een van de volgende indelingen: RTMP of Smooth Streaming (gefragmenteerde MP4). De volgende Live coderings Programma's met RTMP-uitvoer zijn bekend om te werken met kanalen van dit type: Telestream Wirecast, FMLE. Het kanaal codeert de inkomende single-bitrate stream vervolgens live naar een (adaptieve) multi-bitrate videostream. Desgevraagd levert Media Services de stream aan klanten.
+* Een on-premises Live Encoder verzendt een stream met één bitsnelheid naar het kanaal dat is ingeschakeld voor het uitvoeren van Live code ring met Media Services in een van de volgende indelingen: RTMP of Smooth Streaming (gefragmenteerde MP4). De volgende Live coderings Programma's met RTMP-uitvoer zijn bekend om te werken met kanalen van dit type: Telestream-Wirecast. Het kanaal codeert de inkomende single-bitrate stream vervolgens live naar een (adaptieve) multi-bitrate videostream. Desgevraagd levert Media Services de stream aan klanten.
 
 Als u begint met de release van Media Services 2,10, kunt u, wanneer u een kanaal maakt, opgeven op welke manier u wilt dat uw kanaal de invoer stroom ontvangt en of u wilt dat het kanaal Live code ring van uw stream uitvoert. U hebt hiervoor twee opties:
 
@@ -138,22 +138,22 @@ U bent zelf verantwoordelijk voor het stoppen van uw kanalen wanneer u klaar ben
 >
 
 ### <a id="states"></a>Kanaal statussen en hoe deze worden toegewezen aan de facturerings modus
-De huidige status van een Kanaal. Mogelijke waarden:
+De huidige status van een kanaal. Mogelijke waarden:
 
-* **Gestopt**. Dit is de begin status van het kanaal nadat het is gemaakt (tenzij automatisch starten is geselecteerd in de portal.) Er vindt geen facturering plaats in deze status. In deze status kunnen de eigenschappen van het Kanaal worden bijgewerkt, maar is streaming niet toegestaan.
-* Wordt **gestart**. Het Kanaal wordt gestart. Er vindt geen facturering plaats in deze status. In deze status zijn streaming en updates niet toegestaan. Als er een fout optreedt, wordt het Kanaal teruggezet naar de status Stopped.
-* **Wordt uitgevoerd**. Het Kanaal kan nu live streams verwerken. Het is nu een facturerings verbruik. U moet het kanaal stoppen om verdere facturering te voor komen.
-* Wordt **gestopt**. Het Kanaal wordt gestopt. Er vindt geen facturering plaats in deze tijdelijke status. In deze status zijn streaming en updates niet toegestaan.
-* **Verwijderen**. Het Kanaal wordt verwijderd. Er vindt geen facturering plaats in deze tijdelijke status. In deze status zijn streaming en updates niet toegestaan.
+* **Gestopt**. Dit is de begin status van het kanaal nadat het is gemaakt (tenzij automatisch starten is geselecteerd in de portal.) Er vindt geen facturering plaats in deze status. In deze status kunnen de kanaal eigenschappen worden bijgewerkt, maar streaming is niet toegestaan.
+* Wordt **gestart**. Het kanaal wordt gestart. Er vindt geen facturering plaats in deze status. Er zijn geen updates of streaming toegestaan tijdens deze status. Als er een fout optreedt, keert het kanaal terug naar de status gestopt.
+* **Wordt uitgevoerd**. Het kanaal kan live streams verwerken. Het is nu een facturerings verbruik. U moet het kanaal stoppen om verdere facturering te voor komen.
+* Wordt **gestopt**. Het kanaal wordt gestopt. Er vindt geen facturering plaats in deze tijdelijke status. Er zijn geen updates of streaming toegestaan tijdens deze status.
+* **Verwijderen**. Het kanaal wordt verwijderd. Er vindt geen facturering plaats in deze tijdelijke status. Er zijn geen updates of streaming toegestaan tijdens deze status.
 
-In de volgende tabel wordt het verband tussen de verschillende Kanaalstatussen en de facturering weergegeven.
+In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de facturerings modus.
 
-| Kanaalstatus | Portal UI-indicatoren | Is het facturerings abonnement? |
+| Kanaal status | UI-indica toren van portal | Is het facturerings abonnement? |
 | --- | --- | --- |
-| Starting |Starting |Nee (overgangsstatus) |
-| In uitvoering |Ready (er worden geen programma's uitgevoerd)<br/>of<br/>Streaming (er wordt ten minste een programma uitgevoerd) |JA |
-| Stopping |Stopping |Nee (overgangsstatus) |
-| Stopped |Stopped |Nee |
+| Starten |Starten |Nee (tijdelijke status) |
+| In uitvoering |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |KLIKT |
+| Stoppen |Stoppen |Nee (tijdelijke status) |
+| Gestopt |Gestopt |Nee |
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

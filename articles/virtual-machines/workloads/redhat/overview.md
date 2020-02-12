@@ -7,14 +7,14 @@ manager: borisb2015
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.topic: overview
-ms.date: 12/18/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 8ca249a5f6c300a39548e4e16927d7a20acae1a8
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: daba49e6861eb67fd07c6fcf618b2b2d6cdd8c89
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942329"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133809"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat-workloads op Azure
 Red Hat-workloads worden ondersteund door diverse aanbiedingen op Azure. Red Hat Enterprise Linux-installatie kopieën (RHEL) zijn de kern van RHEL-workloads, zoals de Red Hat Update infrastructure (RHUI).
@@ -37,6 +37,11 @@ Azure biedt ook Red Hat Gold-installatie kopieën. Deze installatie kopieën kun
 
 > [!NOTE]
 > Opmerking over dubbele facturering: dubbele facturering wordt gedaan wanneer een gebruiker twee keer betaalt voor RHEL-abonnementen. Dit gebeurt meestal wanneer een klant abonnements beheer gebruikt om een recht op een RHEL PAYG VM te koppelen. Bijvoorbeeld: een klant die gebruikmaakt van abonnement-manager om een recht te koppelen voor SAP-pakketten op een RHEL PAYG-installatie kopie, wordt indirect gefactureerd, omdat ze twee keer betalen voor RHEL-eenmaal door de kosten voor de PAYG Premium en eenmaal via hun SAP-abonnement. Dit geldt niet voor BYOS van installatie kopie gebruikers.
+
+### <a name="generation-2-images"></a>Installatie kopieën van de 2e generatie
+Virtuele machines van de tweede generatie bieden een aantal nieuwere functies in vergelijking met virtuele machines van de eerste generatie. Meer informatie vindt u in de [documentatie van de tweede generatie](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2). Het belangrijkste verschil van een RHEL-installatie kopie is dat virtuele machines van de tweede generatie een UEFI gebruiken in plaats van BIOS-Firmware-Interface en een GUID-partitie tabel (GPT) gebruiken in plaats van een Master Boot Record (MBR) op de opstart tijd. Dit maakt, onder andere, de besturingssysteem schijf grootten die groter zijn dan 2 TB. Daarnaast worden de Vm's uit de [Mv2-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series) alleen uitgevoerd op installatie kopieën van de tweede generatie.
+
+RHEL Generation 2-installatie kopieën zijn beschikbaar op Marketplace. Zoek naar ' Gen2 ' in de afbeeldings-SKU bij het aanbieden van alle installatie kopieën met behulp van de Azure CLI en ga naar het tabblad Geavanceerd in het implementatie proces van de VM om een virtuele machine van de 2e generatie te implementeren.
 
 ## <a name="red-hat-update-infrastructure-rhui"></a>Infra structuur voor Red Hat update (RHUI)
 Azure biedt alleen een Red Hat update-infra structuur voor PAYG RHEL virtual machines (Vm's). RHUI is in feite een mirror van de Red Hat Cdn's, maar is alleen toegankelijk voor de virtuele machines van Azure PAYG RHEL. U krijgt toegang tot de juiste pakketten, afhankelijk van de RHEL-installatie kopie die u hebt geïmplementeerd. Bijvoorbeeld, een RHEL voor SAP-installatie kopie heeft naast base RHEL-pakketten ook toegang tot de SAP-pakketten.

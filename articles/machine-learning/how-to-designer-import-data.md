@@ -9,14 +9,14 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 5df00d68b7114cc489b0708f5c2e401c87d0be15
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314025"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138153"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer"></a>Uw gegevens importeren in Azure Machine Learning Designer
+# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Uw gegevens importeren in Azure Machine Learning Designer (preview)
 
 In dit artikel leert u hoe u uw eigen gegevens in de ontwerp functie kunt importeren om aangepaste oplossingen te maken. Er zijn twee manieren waarop u gegevens kunt importeren in de ontwerp functie: 
 
@@ -45,7 +45,7 @@ U kunt de geregistreerde gegevens sets vinden in het palet module, onder **gegev
 
 ![Scherm opname van de locatie van opgeslagen gegevens sets in het palet voor ontwerpen](media/how-to-designer-import-data/use-datasets-designer.png)
 
-Alle [bestanden](how-to-create-register-datasets.md#dataset-types) die in uw machine learning-werk ruimte zijn geregistreerd, worden weer gegeven in het palet van de module. U bent niet beperkt tot het gebruik van gegevens sets die zijn gemaakt in de ontwerp functie.
+
 
 > [!NOTE]
 > De ontwerp functie biedt momenteel alleen ondersteuning voor het verwerken van [tabellaire gegevens sets](how-to-create-register-datasets.md#dataset-types). Als u [bestands gegevens sets](how-to-create-register-datasets.md#dataset-types)wilt gebruiken, gebruikt u de Azure machine learning SDK die beschikbaar is voor python en R.
@@ -78,9 +78,9 @@ De Designer herkent intern de volgende gegevens typen:
 
 * Tekenreeks
 * Geheel getal
-* Decimal
+* decimaal
 * Booleaans
-* Datum
+* Date
 
 De ontwerp functie maakt gebruik van een intern gegevens type om gegevens tussen modules door te geven. U kunt uw gegevens in de indeling van de gegevens tabel expliciet converteren met behulp van de module [converteren naar dataset](algorithm-module-reference/convert-to-dataset.md) . Alle modules die andere indelingen dan de interne indeling accepteren, worden de gegevens op de achtergrond geconverteerd voordat deze aan de volgende module worden door gegeven.
 

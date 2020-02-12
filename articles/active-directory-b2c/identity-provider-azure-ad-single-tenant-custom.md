@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1802c3a92ed18dec5cba974c54c92f01324245eb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 64934dd5bc591415c0bad6ac3dc6a4a2d98dd005
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847613"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136313"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Azure Active Directory-account instellen met behulp van aangepast beleid in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B
 
 Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant van de organisatie.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map gebruikt die de Azure AD-Tenant van uw organisatie bevat (bijvoorbeeld contoso.com). Selecteer het **filter Directory + abonnement** in het bovenste menu en kies vervolgens de map die uw Azure AD-Tenant bevat.
 1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 1. Selecteer **nieuwe registratie**.
@@ -49,6 +49,19 @@ Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt
 1. Selecteer **Registreren**. Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
 1. Selecteer **certificaten & geheimen**en selecteer vervolgens **Nieuw client geheim**.
 1. Voer een **Beschrijving** in voor het geheim, selecteer een verloop en selecteer vervolgens **toevoegen**. Noteer de **waarde** van het geheim voor gebruik in een latere stap.
+
+## <a name="configuring-optional-claims"></a>Optionele claims configureren
+
+Als u de `family_name` en `given_name` claims van Azure AD wilt ophalen, kunt u optionele claims voor uw toepassing configureren in de Azure Portal gebruikers interface of het toepassings manifest. Zie [optionele claims voor uw Azure AD-app bieden](../active-directory/develop/active-directory-optional-claims.md)voor meer informatie.
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Zoek en selecteer **Azure Active Directory**.
+1. Selecteer in de sectie **beheren** de optie **app-registraties**.
+1. Selecteer in de lijst de toepassing waarvoor u de optionele claims wilt configureren.
+1. Selecteer in de sectie **beheren** de optie **token configuratie (preview)** .
+1. Selecteer **optionele claim toevoegen**.
+1. Selecteer het token type dat u wilt configureren.
+1. Selecteer de optionele claims die u wilt toevoegen.
+1. Klik op **Toevoegen**.
 
 ## <a name="create-a-policy-key"></a>Een beleids sleutel maken
 
@@ -73,23 +86,20 @@ U kunt Azure AD definiëren als een claim provider door Azure AD toe te voegen a
 1. Open het bestand *TrustFrameworkExtensions. XML* .
 2. Zoek het element **ClaimsProviders** . Als deze niet bestaat, voegt u deze toe onder het hoofd element.
 3. Voeg als volgt een nieuwe **ClaimsProvider** toe:
-
-    ```XML
+    ```xml
     <ClaimsProvider>
       <Domain>Contoso</Domain>
       <DisplayName>Login using Contoso</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="ContosoProfile">
+        <TechnicalProfile Id="OIDC-Contoso">
           <DisplayName>Contoso Employee</DisplayName>
           <Description>Login with your Contoso account</Description>
           <Protocol Name="OpenIdConnect"/>
           <Metadata>
-            <Item Key="METADATA">https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration</Item>
-            <Item Key="ProviderName">https://sts.windows.net/00000000-0000-0000-0000-000000000000/</Item>
-            <!-- Update the Client ID below to the Application ID -->
+            <Item Key="METADATA">https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration</Item>
             <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
             <Item Key="response_types">code</Item>
-            <Item Key="scope">openid</Item>
+            <Item Key="scope">openid profile</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="UsePolicyInRedirectUri">false</Item>
@@ -125,12 +135,11 @@ U kunt Azure AD definiëren als een claim provider door Azure AD toe te voegen a
 
 Als u een token van het Azure AD-eind punt wilt ophalen, moet u de protocollen definiëren die Azure AD B2C moet gebruiken om te communiceren met Azure AD. Dit wordt gedaan binnen het **TechnicalProfile** -element van **ClaimsProvider**.
 
-1. Werk de ID van het **TechnicalProfile** -element bij. Deze ID wordt gebruikt om te verwijzen naar dit technische profiel van andere onderdelen van het beleid.
+1. Werk de ID van het **TechnicalProfile** -element bij. Deze ID wordt gebruikt om te verwijzen naar dit technische profiel van andere onderdelen van het beleid, bijvoorbeeld `OIDC-Contoso`.
 1. Werk de waarde voor **DisplayName**bij. Deze waarde wordt weer gegeven op de knop aanmelden op het aanmeldings scherm.
 1. De waarde voor de **Beschrijving**bijwerken.
 1. Azure AD maakt gebruik van het OpenID Connect Connect-protocol, dus zorg ervoor dat de waarde voor **protocol** is `OpenIdConnect`.
-1. Stel de waarde van de **meta gegevens** in op `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration`, waarbij `your-AD-tenant-name` uw Azure AD-Tenant naam is. Bijvoorbeeld: `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
-1. Open uw browser en ga naar de **meta gegevens** -URL die u zojuist hebt bijgewerkt, zoek naar het object van de **verlener** en kopieer en plak de waarde in de waarde voor **ProviderName** in het XML-bestand.
+1. Stel de waarde van de **meta gegevens** in op `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration`, waarbij `tenant-name` uw Azure AD-Tenant naam is. Bijvoorbeeld: `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 1. Stel **client_id** van de toepassings-id in voor de registratie van de toepassing.
 1. Werk onder **CryptographicKeys**de waarde van **StorageReferenceId** bij naar de naam van de beleids sleutel die u eerder hebt gemaakt. Bijvoorbeeld `B2C_1A_ContosoAppSecret`.
 
@@ -171,10 +180,10 @@ Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit 
 1. Voeg het volgende **ClaimsExchange** -element toe om ervoor te zorgen dat u dezelfde waarde gebruikt voor de **id** die u hebt gebruikt voor **TargetClaimsExchangeId**:
 
     ```XML
-    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="ContosoProfile" />
+    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="OIDC-Contoso" />
     ```
 
-    Werk de waarde van **TechnicalProfileReferenceId** bij naar de **id** van het technische profiel dat u eerder hebt gemaakt. Bijvoorbeeld `ContosoProfile`.
+    Werk de waarde van **TechnicalProfileReferenceId** bij naar de **id** van het technische profiel dat u eerder hebt gemaakt. Bijvoorbeeld `OIDC-Contoso`.
 
 1. Sla het bestand *TrustFrameworkExtensions. XML* op en upload het opnieuw voor verificatie.
 

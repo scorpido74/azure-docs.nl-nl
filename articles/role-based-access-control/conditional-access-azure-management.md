@@ -1,5 +1,5 @@
 ---
-title: Toegang tot beheer van Azure beheren met voorwaardelijke toegang in Azure Active Directory
+title: Toegang tot beheer van Azure beheren met voorwaardelijke toegang in azure AD
 description: Meer informatie over het gebruik van voorwaardelijke toegang in azure AD om de toegang tot Azure management te beheren.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: e4b7ce0701349cae3ef501213d0f822ee8d150d0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f3341f1c30a1581b8507652c322c00581e3972aa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142837"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137413"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Toegang tot beheer van Azure beheren met voorwaardelijke toegang
 
@@ -37,7 +37,7 @@ Als u een beleid voor Azure-beheer wilt maken, selecteert u **Microsoft Azure be
 
 Het beleid dat u maakt, is van toepassing op alle Azure Management-eind punten, met inbegrip van het volgende:
 
-- Azure Portal
+- Azure-portal
 - Azure Resource Manager provider
 - Klassieke service management-Api's
 - Azure PowerShell

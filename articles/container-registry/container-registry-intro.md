@@ -3,15 +3,15 @@ title: Beheerde container registers
 description: Kennismaking met de Azure Container Registry-service, waarmee u cloudgebaseerde, beheerde en persoonlijke Docker-registers kunt maken.
 author: stevelas
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 863b93497505443b79f41f580150a4dbf790a6f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1992a2a63d16a955d136459f5dbaece7df815c71
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445717"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132036"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Inleiding tot privé-Docker-containerregisters in Azure
 
@@ -21,7 +21,7 @@ Gebruik Azure-container registers met uw bestaande pijp lijnen voor het ontwikke
 
 Zie voor meer informatie over docker-en register concepten het [docker-overzicht](https://docs.docker.com/engine/docker-overview/) en [over registers, opslag plaatsen en installatie kopieën](container-registry-concepts.md).
 
-## <a name="use-cases"></a>Use cases
+## <a name="use-cases"></a>Gebruiksvoorbeelden
 
 Haal installatiekopieën op vanuit een Azure-containerregister en push ze naar verschillende implementatiedoelen:
 
@@ -41,7 +41,7 @@ Azure biedt hulp middelen zoals Azure Command-Line Interface, Azure Portal en AP
 * **Beveiliging en toegang** : u meldt zich aan bij een REGI ster met behulp van de Azure CLI of de standaard `docker login` opdracht. Azure Container Registry container installatie kopieën overdraagt via HTTPS en TLS ondersteunt om client verbindingen te beveiligen. 
 
   > [!IMPORTANT]
-  > Vanaf 13 januari 2020 moeten voor Azure Container Registry alle beveiligde verbindingen van servers en toepassingen worden gebruikt om TLS 1,2 te gebruiken. Ondersteuning voor TLS 1,0 en 1,1 wordt buiten gebruik gesteld.
+  > Vanaf 13 januari 2020 moeten voor Azure Container Registry alle beveiligde verbindingen van servers en toepassingen worden gebruikt om TLS 1,2 te gebruiken. Schakel TLS 1,2 in met behulp van een recente docker-client (versie 18.03.0 of hoger). Ondersteuning voor TLS 1,0 en 1,1 wordt buiten gebruik gesteld. 
 
   U kunt [toegang beheren](container-registry-authentication.md) tot een containerregister met behulp van een Azure-identiteit, een door Azure Active Directory ondersteunde [service-principal](../active-directory/develop/app-objects-and-service-principals.md) of een opgegeven beheeraccount. Gebruik op rollen gebaseerd toegangs beheer (RBAC) voor het toewijzen van gebruikers of systemen met een nauw keurige machtiging voor een REGI ster.
 

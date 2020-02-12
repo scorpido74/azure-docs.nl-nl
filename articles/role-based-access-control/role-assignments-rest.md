@@ -1,5 +1,5 @@
 ---
-title: Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de REST API
+title: Roltoewijzingen toevoegen of verwijderen met RBAC en de REST API
 description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers, groepen, service-principals of beheerde identiteiten met behulp van op rollen gebaseerd toegangs beheer (RBAC) en de REST API van Azure.
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3c7b7dac649548b8b21cc13761009c11609c8904
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ae6fce5ab962637fe477ade75cf81b6ac237bdd2
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981041"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138315"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de REST API
 
@@ -57,23 +57,23 @@ Als u in RBAC toegang wilt verlenen, voegt u een roltoewijzing toe. Als u een ro
 
 1. Vervang *{Scope}* in de URI door het bereik voor de roltoewijzing.
 
-    | Scope | Type |
+    | Bereik | Type |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | Beheergroep |
     | `subscriptions/{subscriptionId1}` | Abonnement |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resourcegroep |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Bron |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Resource |
 
 1. Vervang *{roleAssignmentName}* door de GUID-id van de roltoewijzing.
 
 1. Vervang *{Scope}* in de hoofd tekst van de aanvraag door het bereik voor de roltoewijzing.
 
-    | Scope | Type |
+    | Bereik | Type |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | Beheergroep |
     | `subscriptions/{subscriptionId1}` | Abonnement |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resourcegroep |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Bron |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Resource |
 
 1. Vervang *{roledefinitionid hebben}* door de roldefinitie-id.
 
@@ -93,12 +93,12 @@ Als u in RBAC de toegang wilt intrekken voor een rol, verwijdert u de roltoewijz
 
 1. Vervang *{Scope}* in de URI door het bereik voor het verwijderen van de roltoewijzing.
 
-    | Scope | Type |
+    | Bereik | Type |
     | --- | --- |
     | `providers/Microsoft.Management/managementGroups/{groupId1}` | Beheergroep |
     | `subscriptions/{subscriptionId1}` | Abonnement |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resourcegroep |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Bron |
+    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | Resource |
 
 1. Vervang *{roleAssignmentName}* door de GUID-id van de roltoewijzing.
 

@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 173e483710c3fa96ae542f7941f0912ed07ea2ca
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 57a211c6ffab9a960c013008410f4b52b909d360
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312193"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137513"
 ---
 # <a name="edit-metadata-module"></a>Meta gegevens module bewerken
 
-In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Learning Designer.
+In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Learning Designer (preview).
 
 Gebruik de module gegevens bewerken om meta gegevens te wijzigen die zijn gekoppeld aan kolommen in een gegevensset. De waarde en het gegevens type van de gegevensset worden gewijzigd na gebruik van de module meta gegevens bewerken.
 
@@ -40,9 +40,9 @@ Veelvoorkomende meta gegevens wijzigingen kunnen het volgende omvatten:
   
 ## <a name="configure-edit-metadata"></a>Meta gegevens bewerken configureren
   
-1. Voeg in Azure Machine Learning de module meta gegevens bewerken toe aan uw pijp lijn en verbind de gegevensset die u wilt bijwerken. U kunt de gegevensset onder **gegevens transformatie** vinden in de categorie **bewerken** .
+1. Voeg in Azure Machine Learning Designer de module meta gegevens bewerken toe aan uw pijp lijn en verbind de gegevensset die u wilt bijwerken. U kunt de module vinden in de categorie **gegevens transformatie** .
   
-1. Selecteer **de kolom kiezer starten** en kies de kolom of set kolommen waarmee u wilt werken. U kunt kolommen afzonderlijk op naam of index kiezen of u kunt een groep kolommen op type kiezen.  
+1. Klik in het rechterdeel venster van de module op **kolom bewerken** en kies de kolom of de set kolommen waarmee u wilt werken. U kunt kolommen afzonderlijk op naam of index kiezen of u kunt een groep kolommen op type kiezen.  
   
 1. Selecteer de optie **gegevens type** als u een ander gegevens type aan de geselecteerde kolommen wilt toewijzen. Mogelijk moet u het gegevens type voor bepaalde bewerkingen wijzigen. Als uw bron-gegevensset bijvoorbeeld getallen heeft verwerkt als tekst, moet u deze wijzigen in een numeriek gegevens type voordat u wiskundige bewerkingen kunt gebruiken.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 32a4fde12287e06c12fac9ed13ad7a8889b49fc1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec34ed723e9b0743a9a5fbbe6413659dd63b0e8a
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895917"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134916"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Live streamen met Azure Media Services om multi-bitrate streams te maken
 
@@ -31,7 +31,7 @@ ms.locfileid: "74895917"
 In Azure Media Services (AMS) vertegenwoordigt een **kanaal** een pijp lijn voor het verwerken van live streaming-inhoud. Een **kanaal** ontvangt Live-invoer stromen op een van de volgende twee manieren:
 
 * Een on-premises Live Encoder verzendt een stream met één bitsnelheid naar het kanaal dat is ingeschakeld voor het uitvoeren van Live code ring met Media Services in een van de volgende indelingen: RTMP of Smooth Streaming (gefragmenteerde MP4). Het kanaal codeert de inkomende single-bitrate stream vervolgens live naar een (adaptieve) multi-bitrate videostream. Desgevraagd levert Media Services de stream aan klanten.
-* Een on-premises Live Encoder verzendt een multi-bitrate **RTMP** -of **Smooth streaming** (gefragmenteerde MP4) naar het kanaal dat niet is ingeschakeld voor het uitvoeren van Live code ring met AMS. De opgenomen streams passeren door **kanaal**s zonder verdere verwerking. Deze methode wordt **Pass-Through**genoemd. U kunt de volgende Live coderings Programma's gebruiken die multi-bitrate Smooth Streaming uitvoeren: MediaExcel, Ateme, denk aan communicatie, Envivio, Cisco en elementair. De volgende Live coderings Programma's uitvoer RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek en TriCaster encoders.  Een live coderingsprogramma kan ook een stream met één bitsnelheid verzenden naar een kanaal dat niet is ingeschakeld voor Live Encoding, maar dit wordt niet aanbevolen. Desgevraagd levert Media Services de stream aan klanten.
+* Een on-premises Live Encoder verzendt een multi-bitrate **RTMP** -of **Smooth streaming** (gefragmenteerde MP4) naar het kanaal dat niet is ingeschakeld voor het uitvoeren van Live code ring met AMS. De opgenomen streams passeren door **kanaal**s zonder verdere verwerking. Deze methode wordt **Pass-Through**genoemd. U kunt de volgende Live coderings Programma's gebruiken die multi-bitrate Smooth Streaming uitvoeren: MediaExcel, Ateme, denk aan communicatie, Envivio, Cisco en elementair. De volgende Live coderings Programma's uitvoeren RTMP: Telestream Wirecast, Haivision, Teradek en TriCaster encoder.  Een live coderingsprogramma kan ook een stream met één bitsnelheid verzenden naar een kanaal dat niet is ingeschakeld voor Live Encoding, maar dit wordt niet aanbevolen. Desgevraagd levert Media Services de stream aan klanten.
 
   > [!NOTE]
   > Het gebruik van een Pass-Through-methode is de voordeligste manier om live streamen uit te voeren.
@@ -58,22 +58,22 @@ Als u het kanaal niet meer wilt factureren, moet u het kanaal stoppen via de API
 U bent zelf verantwoordelijk voor het stoppen van uw kanalen wanneer u klaar bent met het Live encoding-kanaal.  Als u een coderings kanaal niet stopt, wordt de facturering voortgezet.
 
 ### <a id="states"></a>Kanaal statussen en hoe deze worden toegewezen aan de facturerings modus
-De huidige status van een Kanaal. Mogelijke waarden:
+De huidige status van een kanaal. Mogelijke waarden:
 
-* **Gestopt**. Dit is de begin status van het kanaal nadat het is gemaakt (tenzij automatisch starten is geselecteerd in de portal.) Er vindt geen facturering plaats in deze status. In deze status kunnen de eigenschappen van het Kanaal worden bijgewerkt, maar is streaming niet toegestaan.
-* Wordt **gestart**. Het Kanaal wordt gestart. Er vindt geen facturering plaats in deze status. In deze status zijn streaming en updates niet toegestaan. Als er een fout optreedt, wordt het Kanaal teruggezet naar de status Stopped.
-* **Wordt uitgevoerd**. Het Kanaal kan nu live streams verwerken. Het is nu een facturerings verbruik. U moet het kanaal stoppen om verdere facturering te voor komen. 
-* Wordt **gestopt**. Het Kanaal wordt gestopt. Er vindt geen facturering plaats in deze tijdelijke status. In deze status zijn streaming en updates niet toegestaan.
-* **Verwijderen**. Het Kanaal wordt verwijderd. Er vindt geen facturering plaats in deze tijdelijke status. In deze status zijn streaming en updates niet toegestaan.
+* **Gestopt**. Dit is de begin status van het kanaal nadat het is gemaakt (tenzij automatisch starten is geselecteerd in de portal.) Er vindt geen facturering plaats in deze status. In deze status kunnen de kanaal eigenschappen worden bijgewerkt, maar streaming is niet toegestaan.
+* Wordt **gestart**. Het kanaal wordt gestart. Er vindt geen facturering plaats in deze status. Er zijn geen updates of streaming toegestaan tijdens deze status. Als er een fout optreedt, keert het kanaal terug naar de status gestopt.
+* **Wordt uitgevoerd**. Het kanaal kan live streams verwerken. Het is nu een facturerings verbruik. U moet het kanaal stoppen om verdere facturering te voor komen. 
+* Wordt **gestopt**. Het kanaal wordt gestopt. Er vindt geen facturering plaats in deze tijdelijke status. Er zijn geen updates of streaming toegestaan tijdens deze status.
+* **Verwijderen**. Het kanaal wordt verwijderd. Er vindt geen facturering plaats in deze tijdelijke status. Er zijn geen updates of streaming toegestaan tijdens deze status.
 
-In de volgende tabel wordt het verband tussen de verschillende Kanaalstatussen en de facturering weergegeven. 
+In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de facturerings modus. 
 
-| Kanaalstatus | Portal UI-indicatoren | Is het facturerings abonnement? |
+| Kanaal status | UI-indica toren van portal | Is het facturerings abonnement? |
 | --- | --- | --- |
-| Starting |Starting |Nee (overgangsstatus) |
-| In uitvoering |Ready (er worden geen programma's uitgevoerd)<br/>of<br/>Streaming (er wordt ten minste een programma uitgevoerd) |JA |
-| Stopping |Stopping |Nee (overgangsstatus) |
-| Stopped |Stopped |Nee |
+| Starten |Starten |Nee (tijdelijke status) |
+| In uitvoering |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |KLIKT |
+| Stoppen |Stoppen |Nee (tijdelijke status) |
+| Gestopt |Gestopt |Nee |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>Automatisch afsluiten voor ongebruikte kanalen
 Vanaf 25 januari 2016 Media Services de implementatie van een update die automatisch een kanaal stopt (met Live encoding ingeschakeld) nadat het is uitgevoerd in een ongebruikte status gedurende een lange periode. Dit geldt voor kanalen zonder actieve Program Ma's en die gedurende een lange periode geen invoer bijdrage hebben ontvangen.
@@ -300,22 +300,22 @@ Als u de gearchiveerde inhoud wilt behouden maar deze niet langer voor streaming
 Als Live Encoding is ingeschakeld, kunt u nu een preview-versie van de live-feed krijgen wanneer het kanaal wordt bereikt. Dit kan een waardevol hulp middel zijn om te controleren of uw live feed het kanaal daad werkelijk bereikt. 
 
 ## <a id="states"></a>Kanaal statussen en hoe statussen worden toegewezen aan de facturerings modus
-De huidige status van een Kanaal. Mogelijke waarden:
+De huidige status van een kanaal. Mogelijke waarden:
 
-* **Gestopt**. Dit is de beginstatus van het Kanaal nadat het is gemaakt. In deze status kunnen de eigenschappen van het Kanaal worden bijgewerkt, maar is streaming niet toegestaan.
-* Wordt **gestart**. Het Kanaal wordt gestart. In deze status zijn streaming en updates niet toegestaan. Als er een fout optreedt, wordt het Kanaal teruggezet naar de status Stopped.
-* **Wordt uitgevoerd**. Het Kanaal kan nu live streams verwerken.
-* Wordt **gestopt**. Het Kanaal wordt gestopt. In deze status zijn streaming en updates niet toegestaan.
-* **Verwijderen**. Het Kanaal wordt verwijderd. In deze status zijn streaming en updates niet toegestaan.
+* **Gestopt**. Dit is de begin status van het kanaal nadat het is gemaakt. In deze status kunnen de kanaal eigenschappen worden bijgewerkt, maar streaming is niet toegestaan.
+* Wordt **gestart**. Het kanaal wordt gestart. Er zijn geen updates of streaming toegestaan tijdens deze status. Als er een fout optreedt, keert het kanaal terug naar de status gestopt.
+* **Wordt uitgevoerd**. Het kanaal kan live streams verwerken.
+* Wordt **gestopt**. Het kanaal wordt gestopt. Er zijn geen updates of streaming toegestaan tijdens deze status.
+* **Verwijderen**. Het kanaal wordt verwijderd. Er zijn geen updates of streaming toegestaan tijdens deze status.
 
-In de volgende tabel wordt het verband tussen de verschillende Kanaalstatussen en de facturering weergegeven. 
+In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de facturerings modus. 
 
-| Kanaalstatus | Portal UI-indicatoren | In rekening gebracht? |
+| Kanaal status | UI-indica toren van portal | Gefactureerd? |
 | --- | --- | --- |
-| Starting |Starting |Nee (overgangsstatus) |
-| In uitvoering |Ready (er worden geen programma's uitgevoerd)<br/>of<br/>Streaming (er wordt ten minste een programma uitgevoerd) |Ja |
-| Stopping |Stopping |Nee (overgangsstatus) |
-| Stopped |Stopped |Nee |
+| Starten |Starten |Nee (tijdelijke status) |
+| In uitvoering |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |Ja |
+| Stoppen |Stoppen |Nee (tijdelijke status) |
+| Gestopt |Gestopt |Nee |
 
 > [!NOTE]
 > Op dit moment is het begin gemiddelde van het kanaal ongeveer 2 minuten, maar het kan Maxi maal 20 minuten duren. Het opnieuw instellen van het kanaal kan tot vijf minuten duren.
@@ -340,7 +340,7 @@ In de volgende tabel wordt het verband tussen de verschillende Kanaalstatussen e
 * Pastel afbeeldingen moeten voldoen aan de beperkingen die [hier](media-services-manage-live-encoder-enabled-channels.md#default_slate)worden beschreven. Als u probeert een kanaal te maken met een standaard kleur die groter is dan 1920, wordt de aanvraag uiteindelijk afgemeld.
 * Nog een keer.... Vergeet niet om uw kanalen te stoppen wanneer u klaar bent met streamen. Als u dat niet doet, wordt de facturering voortgezet.
 
-## <a name="need-help"></a>Hebt u hulp nodig?
+## <a name="need-help"></a>Hulp nodig?
 
 U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 

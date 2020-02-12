@@ -1,5 +1,5 @@
 ---
-title: Aangepaste rollen maken of bijwerken voor Azure-resources met behulp van de REST API-Azure | Microsoft Docs
+title: Aangepaste rollen voor Azure-resources maken of bijwerken met de REST API
 description: Meer informatie over het weer geven, maken, bijwerken of verwijderen van aangepaste rollen met op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources met behulp van de REST API.
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 474de8934ec7e27df601fe80809566a801e6af61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 145bc45e1b7faeddc23cf5f0662337e15ab51c29
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452926"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137365"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Aangepaste rollen maken of bijwerken voor Azure-resources met behulp van de REST API
 
@@ -38,7 +38,7 @@ Als u alle aangepaste rollen in een directory wilt weer geven, gebruikt u de [ro
 
 1. Vervang *{filter}* door het type rol.
 
-    | Filter | Beschrijving |
+    | Filteren | Beschrijving |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | Filteren op basis van het type CustomRole |
 
@@ -54,15 +54,15 @@ Als u aangepaste rollen in een bereik wilt weer geven, gebruikt u de [roldefinit
 
 1. Vervang *{Scope}* in de URI door het bereik waarvoor u de rollen wilt weer geven.
 
-    | Scope | Type |
+    | Bereik | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resourcegroep |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Bron |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Vervang *{filter}* door het type rol.
 
-    | Filter | Beschrijving |
+    | Filteren | Beschrijving |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | Filteren op basis van het type CustomRole |
 
@@ -78,15 +78,15 @@ Als u informatie wilt weer geven over een aangepaste rol met behulp van de weerg
 
 1. Vervang *{Scope}* in de URI door het bereik waarvoor u de rollen wilt weer geven.
 
-    | Scope | Type |
+    | Bereik | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resourcegroep |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Bron |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Vervang *{filter}* door de weergave naam voor de rol.
 
-    | Filter | Beschrijving |
+    | Filteren | Beschrijving |
     | --- | --- |
     | `$filter=roleName%20eq%20'{roleDisplayName}'` | Gebruik het formulier URL-code ring van de exacte weergave naam van de rol. Bijvoorbeeld `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
@@ -104,11 +104,11 @@ Als u informatie wilt ophalen over een aangepaste rol met de unieke id, gebruikt
 
 1. Vervang *{Scope}* in de URI door het bereik waarvoor u de rollen wilt weer geven.
 
-    | Scope | Type |
+    | Bereik | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resourcegroep |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Bron |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Vervang *{roledefinitionid hebben}* door de GUID-id van de roldefinitie.
 
@@ -152,11 +152,11 @@ Als u een aangepaste rol wilt maken, gebruikt u de [roldefinities-rest API maken
 
 1. Vervang *{Scope}* in de URI door de eerste `assignableScopes` van de aangepaste rol.
 
-    | Scope | Type |
+    | Bereik | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resourcegroep |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Bron |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Vervang *{roledefinitionid hebben}* door de GUID-id van de aangepaste rol.
 
@@ -217,11 +217,11 @@ Als u een aangepaste rol wilt bijwerken, gebruikt u de [roldefinities-rest API m
 
 1. Vervang *{Scope}* in de URI door de eerste `assignableScopes` van de aangepaste rol.
 
-    | Scope | Type |
+    | Bereik | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resourcegroep |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Bron |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Vervang *{roledefinitionid hebben}* door de GUID-id van de aangepaste rol.
 
@@ -301,11 +301,11 @@ Als u een aangepaste rol wilt verwijderen, gebruikt u de [roldefinities-rest API
 
 1. Vervang *{Scope}* in de URI door het bereik dat u wilt verwijderen van de aangepaste rol.
 
-    | Scope | Type |
+    | Bereik | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resourcegroep |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Bron |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Vervang *{roledefinitionid hebben}* door de GUID-id van de aangepaste rol.
 

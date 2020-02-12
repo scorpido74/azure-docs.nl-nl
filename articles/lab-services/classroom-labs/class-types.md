@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: e1c5504b30c2784e8657ccc0dc4ec18689fe2a68
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: ef5cc0fb561d385a1b1d7b4c14db8c10343508cf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806810"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133667"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Overzicht van klassen typen-Azure Lab Services
 
@@ -44,7 +44,23 @@ U kunt een Lab instellen voor een klasse die zich richt op de forensische-kant v
 
 In een ethische hacking-klasse kunnen studenten moderne technieken leren voor het beschermen tegen beveiligings problemen. Elke student haalt een virtuele Windows Server-host op met twee geneste virtuele machines: één virtuele machine met [Metasploitable3](https://github.com/rapid7/metasploitable3) -installatie kopie en een andere machine met [Kali Linux](https://www.kali.org/) -installatie kopie. De virtuele machine Metasploitable wordt gebruikt voor het exploiteren van toepassingen.  De virtuele machine met Kali Linux biedt toegang tot de hulpprogram ma's die nodig zijn om forensische-taken uit te voeren.
 
-Voor gedetailleerde informatie over het instellen van dit type Lab, Zie [een Lab instellen om ethische hacking-klasse te leren](class-type-ethical-hacking.md).
+Voor gedetailleerde informatie over het instellen van dit type Lab raadpleegt u [een Lab instellen om ethische hacking-klasse te leren](class-type-ethical-hacking.md).
+
+## <a name="database-management"></a>Databasebeheer
+Data bases zijn concepten van een van de in de meeste computer wetenschappen geschoolde opleidingen. U kunt een Lab instellen voor een basis beheer klasse voor data bases in Azure Lab Services. U kunt bijvoorbeeld een virtuele-machine sjabloon in een Lab instellen met een [MySQL](https://www.mysql.com/) -database server of een [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) -server.
+
+Voor gedetailleerde informatie over het instellen van dit type Lab, Zie [een Lab instellen voor het leren van database beheer voor relationele data bases](class-type-database-management.md).
+
+## <a name="python-and-jupyter-notebooks"></a>Python-en Jupyter-notebooks
+U kunt een sjabloon machine instellen in Azure Lab Services met de hulpprogram ma's die nodig zijn om cursisten te leren hoe ze [Jupyter-notebooks](http://jupyter-notebook.readthedocs.io)kunnen gebruiken. Jupyter-notebooks is een open-source project waarmee u eenvoudig uitgebreide tekst en uitvoer bare [python](https://www.python.org/) -bron code kunt combi neren op één canvas dat een notitie blok wordt genoemd. Het uitvoeren van een notitie blok resulteert in een lineaire record met invoer en uitvoer.  Deze uitvoer kan tekst, tabel met gegevens, spreidings grafieken en meer zijn.
+
+Zie [een Lab instellen om data Science te leren met python-en Jupyter-notebooks](class-type-jupyter-notebook.md)voor gedetailleerde informatie over het instellen van dit type Lab.
+
+## <a name="mobile-app-development-with-android-studio"></a>Ontwikkeling met Android Studio via de mobiele app
+U kunt een Lab instellen in Azure Lab Services om een inleidende klasse voor de ontwikkeling van mobiele toepassingen te leren. Deze klasse richt zich op mobiele Android-toepassingen die op de [Google Play Store](https://play.google.com/store/apps)kunnen worden gepubliceerd.  Studenten leren hoe u [Android Studio](https://developer.android.com/studio) kunt gebruiken om toepassingen te bouwen.  [Visual Studio emulator voor Android](https://visualstudio.microsoft.com/vs/msft-android-emulator/) wordt gebruikt om de toepassing lokaal te testen.
+
+Voor gedetailleerde informatie over het instellen van dit type Lab raadpleegt u [een Lab instellen om de ontwikkeling van mobiele toepassingen te leren maken met Android Studio](class-type-mobile-dev-android-studio.md).
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

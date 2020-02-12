@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/27/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774142"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137973"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
 
@@ -44,46 +44,8 @@ De Text Analytics-API biedt twee versies van named entity Recognition-v2 en v3. 
 
 Zie [taal ondersteuning](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) voor meer informatie.
 
-#### <a name="version-2tabversion-2"></a>[Versie 2](#tab/version-2)
 
-### <a name="entity-types"></a>Entiteitstypen
-
-> [!NOTE]
-> Named entity Recognition (NER) versie 2 ondersteunt alleen de volgende entiteiten. NER V3 bevindt zich in de open bare preview en breidt het aantal en de diepte van de entiteiten die in tekst worden herkend, aanzienlijk uit.   
-
-| Type  | SubType | Voorbeeld |
-|:-----------   |:------------- |:---------|
-| Persoon        | N.v.t.\*         | "Jeff", "Bill Gates"     |
-| Locatie      | N.v.t.\*         | Redmond, Washington; Parijs  |
-| Organisatie  | N.v.t.\*         | Microsoft   |
-| Hoeveelheid      | Aantal        | 6, zes     |
-| Hoeveelheid      | Percentage    | 50%, vijftig procent|
-| Hoeveelheid      | Rangtelwoord       | 2e, tweede     |
-| Hoeveelheid      | Leeftijd           | "90 dag oud", "30 jaar oud"    |
-| Hoeveelheid      | Valuta      | $ 10,99     |
-| Hoeveelheid      | Dimensie     | 10 mijl, 40 cm     |
-| Hoeveelheid      | Temperatuur   | 32 graden    |
-| Datum/tijd      | N.v.t.\*         | 18:30 uur, 4 februari 2012      |
-| Datum/tijd      | Datum          | 2 mei 2017, 05-02-2017   |
-| Datum/tijd      | Tijd          | "8 a.m.", "8:00"  |
-| Datum/tijd      | Datumbereik     | 2 mei tot 5 mei    |
-| Datum/tijd      | Tijdsbereik     | 18.00 uur tot 19.00 uur     |
-| Datum/tijd      | Duur      | 1 minuut en 45 seconden   |
-| Datum/tijd      | Set           | elke dinsdag     |
-| URL           | N.v.t.\*         | "https:\//www.bing.com"    |
-| E-mail         | N.v.t.\*         | "support@contoso.com" |
-| Telefoon nummer VS  | N.v.t.\*         | (Alleen telefoon nummers in de VS) "(312) 555-0176" |
-| IP-adres    | N.v.t.\*         | "10.0.0.100" |
-
-\* afhankelijk van de invoer en geëxtraheerde entiteiten, kunnen bepaalde entiteiten de `SubType`weglaten.  Alle ondersteunde entiteits typen die worden weer gegeven, zijn alleen beschikbaar voor de talen Engels, Chinees, vereenvoudigd, Duits en Spaans.
-
-### <a name="request-endpoints"></a>Eind punten van aanvraag
-
-De benoemde entiteits herkenning v2 gebruikt één eind punt voor NER en aanvragen voor entiteits koppeling:
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Versie 3 (open bare preview)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Versie 3,0-Preview](#tab/version-3)
 
 ### <a name="entity-types"></a>Entiteitstypen
 
@@ -110,6 +72,45 @@ Entiteit koppelen
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
+#### <a name="version-21tabversion-2"></a>[Versie 2,1](#tab/version-2)
+
+### <a name="entity-types"></a>Entiteitstypen
+
+> [!NOTE]
+> Named entity Recognition (NER) versie 2 ondersteunt alleen de volgende entiteiten. NER V3 bevindt zich in de open bare preview en breidt het aantal en de diepte van de entiteiten die in tekst worden herkend, aanzienlijk uit.   
+
+| Type  | SubType | Voorbeeld |
+|:-----------   |:------------- |:---------|
+| Person        | N.v.t.\*         | "Jeff", "Bill Gates"     |
+| Locatie      | N.v.t.\*         | "Redmond, Washington", "Parijs"  |
+| Organisatie  | N.v.t.\*         | "Microsoft"   |
+| Aantal      | Aantal        | "6", "six"     |
+| Aantal      | Percentage    | "50%", "50 procent"|
+| Aantal      | Rang telwoord       | ' 2e ', ' seconde '     |
+| Aantal      | Leeftijd           | "90 dag oud", "30 jaar oud"    |
+| Aantal      | Valuta      | "$10,99"     |
+| Aantal      | Dimensielideigenschap     | "10 mijl", "40 cm"     |
+| Aantal      | Temperatuur   | "32 graden"    |
+| DateTime      | N.v.t.\*         | "6:17.30 februari 4, 2012"      |
+| DateTime      | Date          | "Mei 2e, 2017", "05/02/2017"   |
+| DateTime      | Time          | "8 a.m.", "8:00"  |
+| DateTime      | DateRange     | "Mag 2e tot vijfde mei"    |
+| DateTime      | TimeRange     | "18:00 uur naar 19.00 uur"     |
+| DateTime      | Duur      | "1 minuut en 45 seconden"   |
+| DateTime      | Instellen           | "elke dinsdag"     |
+| URL           | N.v.t.\*         | "https:\//www.bing.com"    |
+| Email         | N.v.t.\*         | "support@contoso.com" |
+| Telefoon nummer VS  | N.v.t.\*         | (Alleen telefoon nummers in de VS) "(312) 555-0176" |
+| IP-adres    | N.v.t.\*         | "10.0.0.100" |
+
+\* afhankelijk van de invoer en geëxtraheerde entiteiten, kunnen bepaalde entiteiten de `SubType`weglaten.  Alle ondersteunde entiteits typen die worden weer gegeven, zijn alleen beschikbaar voor de talen Engels, Chinees, vereenvoudigd, Duits en Spaans.
+
+### <a name="request-endpoints"></a>Eind punten van aanvraag
+
+De benoemde entiteits herkenning v2 gebruikt één eind punt voor NER en aanvragen voor entiteits koppeling:
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>Een REST API aanvraag verzenden
@@ -118,23 +119,16 @@ Entiteit koppelen
 
 U moet JSON-documenten hebben met de volgende indeling: ID, tekst, taal.
 
-Elk document moet binnen 5.120 tekens lang zijn en u kunt Maxi maal 1.000 items (Id's) per verzameling hebben. De verzameling is in de hoofdtekst van de aanvraag ingediend.
+Elk document moet 5.120 tekens lang zijn en u kunt Maxi maal 1.000 items (Id's) per verzameling hebben. De verzameling is in de hoofdtekst van de aanvraag ingediend.
 
 ### <a name="structure-the-request"></a>Structureer de aanvraag
 
 Maak een POST-aanvraag. U kunt [postman](text-analytics-how-to-call-api.md) of de **API-test console** in de volgende koppelingen gebruiken om een snelle structuur en verzen ding te sturen. 
 
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+> [!NOTE]
+> U vindt de sleutel en het eind punt voor uw Text Analytics-resource in azure Portal. Ze bevinden zich op de pagina **snel starten** van de resource, onder **resource beheer**. 
 
-#### <a name="version-2tabversion-2"></a>[Versie 2](#tab/version-2)
-
-[Naslag Gids voor benoemde entiteits herkenning (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
-
-Versie 2 gebruikt het volgende eind punt voor entiteits koppelings-en NER-aanvragen: 
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3tabversion-3"></a>[Versie 3](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Versie 3,0-Preview](#tab/version-3)
 
 [Benoemde entiteit herkenning v3-referentie](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -147,6 +141,14 @@ NER
 
 Entiteit koppelen
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+#### <a name="version-21tabversion-2"></a>[Versie 2,1](#tab/version-2)
+
+[Naslag Gids voor benoemde entiteits herkenning (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+
+Versie 2 gebruikt het volgende eind punt voor entiteits koppelings-en NER-aanvragen: 
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
@@ -180,44 +182,8 @@ Alle POST-aanvragen retour neren een JSON-indelings antwoord met de eigenschappe
 
 Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een toepassing die JSON accepteert of u kunt de uitvoer opslaan als lokaal bestand en vervolgens importeren in een toepassing waarmee u kunt sorteren, zoeken en de gegevens kunt manipuleren.
 
-#### <a name="version-2tabversion-2"></a>[Versie 2](#tab/version-2)
 
-### <a name="example-ner-v2-response"></a>Voor beeld van NER v2-antwoord
-```json
-{
-  "documents": [{
-    "id": "1",
-    "entities": [{
-      "name": "Seattle",
-      "matches": [{
-        "wikipediaScore": 0.15046201222847677,
-        "entityTypeScore": 0.80624294281005859,
-        "text": "Seattle",
-        "offset": 26,
-        "length": 7
-      }],
-      "wikipediaLanguage": "en",
-      "wikipediaId": "Seattle",
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
-      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
-      "type": "Location"
-    }, {
-      "name": "last week",
-      "matches": [{
-        "entityTypeScore": 0.8,
-        "text": "last week",
-        "offset": 34,
-        "length": 9
-      }],
-      "type": "DateTime",
-      "subType": "DateRange"
-    }]
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Versie 3 (open bare preview)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Versie 3,0-Preview)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Voor beeld v3-antwoorden
 
@@ -271,6 +237,43 @@ Versie 3 biedt afzonderlijke eind punten voor NER en entiteits koppelingen. De a
   }],
   "errors": [],
   "modelVersion": "2019-10-01"
+}
+```
+
+#### <a name="version-21tabversion-2"></a>[Versie 2,1](#tab/version-2)
+
+### <a name="example-ner-v2-response"></a>Voor beeld van NER v2-antwoord
+```json
+{
+  "documents": [{
+    "id": "1",
+    "entities": [{
+      "name": "Seattle",
+      "matches": [{
+        "wikipediaScore": 0.15046201222847677,
+        "entityTypeScore": 0.80624294281005859,
+        "text": "Seattle",
+        "offset": 26,
+        "length": 7
+      }],
+      "wikipediaLanguage": "en",
+      "wikipediaId": "Seattle",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
+      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+      "type": "Location"
+    }, {
+      "name": "last week",
+      "matches": [{
+        "entityTypeScore": 0.8,
+        "text": "last week",
+        "offset": 34,
+        "length": 9
+      }],
+      "type": "DateTime",
+      "subType": "DateRange"
+    }]
+  }],
+  "errors": []
 }
 ```
 

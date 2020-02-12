@@ -6,18 +6,18 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 0cde8b48e7bd1d1daa8f14dcded87001fb898fa7
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b5748824590f40e30af8f462d4c8ff25521cfd94
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769221"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136077"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor Java
 
 Ga aan de slag met de Azure Key Vault-client bibliotheek voor Java. Volg de onderstaande stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen.
 
-Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor Java om het volgende te doen:
+Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor Java om het volgende te doen:
 
 - Verbeter de beveiliging en controle over sleutels en wacht woorden.
 - Versleutelings sleutels maken en importeren in een paar minuten.
@@ -168,7 +168,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 Met de Azure Key Vault-client bibliotheek voor Java kunt u sleutels en gerelateerde assets beheren, zoals certificaten en geheimen. In de onderstaande code voorbeelden ziet u hoe u een-client maakt, een geheim instelt, een geheim ophaalt en een geheim verwijdert.
 
-De volledige console-app is beschikbaar op https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
+De volledige console-app is [hieronder](#sample-code).
 
 ## <a name="code-examples"></a>Code voorbeelden
 

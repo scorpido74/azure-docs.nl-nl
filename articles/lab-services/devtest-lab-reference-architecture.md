@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: f079071a88d034dfd279da8656da517b934275a3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 77e6ab588f74c8b810f211e069c1c24043155111
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982105"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132839"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs referentie architectuur voor ondernemingen
 Dit artikel bevat referentie architectuur om u te helpen bij het implementeren van een oplossing op basis van Azure DevTest Labs in een onderneming. Het bevat het volgende:
@@ -41,7 +41,7 @@ Dit zijn de belangrijkste elementen van de referentie architectuur:
     - U wilt alle netwerk verkeer in en uit de cloud omgeving afdwingen via een on-premises Firewall voor beveiliging/naleving.
 - **Netwerk beveiligings groepen**: een gemeen schappelijke manier om het verkeer naar de cloud omgeving (of binnen de cloud omgeving) te beperken op basis van bron-en doel-IP-adressen is het gebruik van een [netwerk beveiligings groep](../virtual-network/security-overview.md). Bijvoorbeeld: u wilt alleen verkeer toestaan dat afkomstig is van het bedrijfs netwerk naar de netwerken van het lab.
 - **Extern bureau blad-gateway**: ondernemingen blok keren doorgaans uitgaande extern bureau blad-verbindingen op de firewall van het bedrijf. Er zijn verschillende opties voor het inschakelen van connectiviteit met de cloud omgeving in DevTest Labs, waaronder:
-  - Gebruik een [extern bureau blad-gateway](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)en white list het statische IP-adres van de gateway Load Balancer.
+  - Gebruik een [extern bureau blad-gateway](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)en sta het statische IP-adres van de gateway Load Balancer toe.
   - [Direct alle binnenkomende RDP-verkeer](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) via de ExpressRoute/site-naar-site-VPN-verbinding. Deze functionaliteit is een gemeen schappelijke overweging wanneer ondernemingen een DevTest Labs-implementatie plannen.
 - **Netwerk services (virtuele netwerken, subnetten)** : de [Azure-netwerk](../networking/networking-overview.md) topologie is een ander belang rijk onderdeel van de DevTest Labs-architectuur. Hiermee wordt bepaald of resources van het lab kunnen communiceren en toegang hebben tot on-premises en het internet. Ons architectuur diagram bevat de meest voorkomende manieren waarop klanten DevTest Labs gebruiken: alle Labs verbinden via [virtuele netwerk peering](../virtual-network/virtual-network-peering-overview.md) met behulp van een [hub-spoke model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) voor de ExpressRoute/site-naar-site VPN-verbinding met on-premises. Maar DevTest Labs maakt rechtstreeks gebruik van Azure Virtual Network, dus er zijn geen beperkingen voor het instellen van de netwerk infrastructuur.
 - **DevTest Labs**: DevTest Labs is een belang rijk onderdeel van de algehele architectuur. Zie [about DevTest Labs](devtest-lab-overview.md)(Engelstalig) voor meer informatie over de service.
@@ -50,7 +50,7 @@ Dit zijn de belangrijkste elementen van de referentie architectuur:
 ## <a name="scalability-considerations"></a>Schaalbaarheidsoverwegingen
 Hoewel DevTest Labs geen ingebouwde quota's of limieten heeft, hebben andere Azure-resources die worden gebruikt in de normale werking van een lab, [quota's op abonnements niveau](../azure-resource-manager/management/azure-subscription-service-limits.md). In een typische bedrijfs implementatie hebt u dus meerdere Azure-abonnementen nodig om een grote implementatie van DevTest Labs te kunnen behandelen. De quota's die het vaakst door ondernemingen worden bereikt zijn:
 
-- **Resource groepen**: in de standaard configuratie wordt in DevTest Labs een resource groep gemaakt voor elke nieuwe virtuele machine, of de gebruiker maakt een omgeving met behulp van de service. Abonnementen kunnen [Maxi maal 980 resource groepen](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)bevatten. Dat is de limiet voor de virtuele machines en omgevingen in een abonnement. Er zijn twee andere configuraties die u moet overwegen:
+- **Resource groepen**: in de standaard configuratie wordt in DevTest Labs een resource groep gemaakt voor elke nieuwe virtuele machine, of de gebruiker maakt een omgeving met behulp van de service. Abonnementen kunnen [Maxi maal 980 resource groepen](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)bevatten. Dat is de limiet voor de virtuele machines en omgevingen in een abonnement. Er zijn twee andere configuraties die u moet overwegen:
     - **[Alle virtuele machines gaan naar dezelfde resource groep](resource-group-control.md)** : Hoewel u met deze instelling de limiet voor de resource groep kunt bereiken, is dit van invloed op de limiet voor resource type per resource-groep.
     - **Gedeelde open bare Ip's gebruiken**: alle virtuele machines van dezelfde grootte en regio gaan naar dezelfde resource groep. Deze configuratie is een ' middens ' tussen de quota van de resource groep en de quota voor bron typen per resource groep als de virtuele machines open bare IP-adressen mogen hebben.
 - **Resources per resource groep per resource type**: de standaard limiet voor [resources per resource groep per resource type is 800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits).  Wanneer u de *alle virtuele machines naar dezelfde configuratie van de resource groep* gebruikt, bereiken gebruikers deze abonnements limiet veel eerder, met name als de virtuele machines veel extra schijven hebben.

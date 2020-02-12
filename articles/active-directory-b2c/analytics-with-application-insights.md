@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/12/2018
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 646e3e0d68846013d656627a4ef6ef1fb1e11e09
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 002221bc69659a3be6fee950319909c9fc63ea9c
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846768"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136326"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Gebruikers gedrag bijhouden in Azure Active Directory B2C met behulp van Application Insights
 
@@ -29,7 +29,7 @@ Wanneer u Azure Active Directory B2C (Azure AD B2C) gebruikt in combi natie met 
 * Prestaties meten.
 * Meldingen van Application Insights maken.
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>How it works (Engelstalig artikel)
 
 Het Framework voor identiteits ervaring in Azure AD B2C bevat de provider `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0`. Er worden gebeurtenis gegevens rechtstreeks naar Application Insights verzonden met behulp van de instrumentatie sleutel die aan Azure AD B2C wordt gegeven.
 
@@ -45,14 +45,14 @@ Voer de stappen in aan de [slag met aangepast beleid](custom-policy-get-started.
 
 Wanneer u Application Insights met Azure AD B2C gebruikt, hoeft u alleen maar een resource te maken en de instrumentatie sleutel op te halen.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map met uw Azure-abonnement gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw abonnement bevat. Deze Tenant is niet uw Azure AD B2C-Tenant.
 3. Kies **een resource maken** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **Application Insights**.
-4. Klik op **Maken**.
+4. Klik op **Create**.
 5. Voer een **naam** in voor de resource.
 6. Selecteer voor **toepassings Type** **ASP.NET-webtoepassing**.
 7. Voor **resource groep**selecteert u een bestaande groep of voert u een naam in voor een nieuwe groep.
-8. Klik op **Maken**.
+8. Klik op **Create**.
 4. Nadat u de Application Insights resource hebt gemaakt, opent u deze, vouwt u de **essentiële**elementen uit en kopieert u de instrumentatie sleutel.
 
 ![Application Insights overzicht en instrumentatie sleutel](./media/analytics-with-application-insights/app-insights.png)
@@ -158,7 +158,7 @@ Voeg de profielen toe aan het bestand *TrustFrameworkExtensions. XML* van het St
       <InputClaims>
         <!-- Properties of an event are added through the syntax {property:NAME}, where NAME is property being added to the event. DefaultValue can be either a static value or a value that's resolved by one of the supported DefaultClaimResolvers. -->
         <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
-        <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" />
+        <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" DefaultValue="{Context:CorrelationId}" />
         <InputClaim ClaimTypeReferenceId="Culture" PartnerClaimType="{property:Culture}" DefaultValue="{Culture:RFC5646}" />
       </InputClaims>
     </TechnicalProfile>

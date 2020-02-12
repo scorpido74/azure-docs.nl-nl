@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 489f4a527a5afaf1bab5e2065137a5011d45baa6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474434"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132286"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Veelvoorkomend gebruik: cases en scenario's voor Azure Active Directory Domain Services
 
@@ -48,7 +48,7 @@ De volgende overwegingen met betrekking tot de implementatie zijn van toepassing
 
 Als voorbeeld scenario heeft Contoso een on-premises toepassing die veel jaren geleden van een ISV is gekocht. De toepassing bevindt zich momenteel in de onderhouds modus door de ISV en het aanvragen van wijzigingen aan de toepassing is prohibitively duur. Deze toepassing heeft een webfrontend waarmee gebruikers referenties worden verzameld met behulp van een webformulier en vervolgens gebruikers verifieert door een LDAP-binding uit te voeren op de on-premises AD DS omgeving.
 
-![LDAP-binding](./media/active-directory-domain-services-scenarios/ldap-bind.png)
+![LDAP bind](./media/active-directory-domain-services-scenarios/ldap-bind.png)
 
 Contoso wil deze toepassing migreren naar Azure. De toepassing moet blijven werken, zonder dat u wijzigingen hoeft aan te brengen. Daarnaast moeten gebruikers zich kunnen verifiëren met hun bestaande bedrijfs referenties en zonder extra training. Het moet transparant zijn voor eind gebruikers waarop de toepassing wordt uitgevoerd.
 
@@ -65,7 +65,7 @@ De volgende overwegingen met betrekking tot de implementatie zijn van toepassing
 
 Net als bij het vorige voorbeeld scenario gaan we ervan uitgaan dat contoso een on-premises LOB-toepassing (line-of-Business) heeft die bijna een jaar geleden is ontwikkeld. Deze toepassing is Directory-Aware en is ontworpen om LDAP te gebruiken voor het lezen van informatie/kenmerken over gebruikers van AD DS. De toepassing wijzigt geen kenmerken of op een andere manier naar de map schrijven.
 
-Contoso wil deze toepassing migreren naar Azure en buiten gebruik stellen op de lokale hardware die momenteel als host fungeert voor deze toepassing. De toepassing kan niet worden herschreven voor het gebruik van moderne Directory-Api's, zoals de op REST gebaseerde Azure AD-Graph API. Er is een lift-en Shift-optie gewenst waarbij de toepassing kan worden gemigreerd om te worden uitgevoerd in de Cloud, zonder code te wijzigen of de toepassing te herschrijven.
+Contoso wil deze toepassing migreren naar Azure en buiten gebruik stellen op de lokale hardware die momenteel als host fungeert voor deze toepassing. De toepassing kan niet worden herschreven voor het gebruik van moderne Directory-Api's, zoals de op REST gebaseerde Microsoft Graph-API. Er is een lift-en Shift-optie gewenst waarbij de toepassing kan worden gemigreerd om te worden uitgevoerd in de Cloud, zonder code te wijzigen of de toepassing te herschrijven.
 
 Om u te helpen bij dit scenario kunnen toepassingen met Azure AD DS LDAP-lees bewerkingen uitvoeren op het beheerde domein om de benodigde kenmerk gegevens op te halen. De toepassing hoeft niet opnieuw te worden geschreven, dus met een lift-en-verschuiving in azure kunnen gebruikers de app blijven gebruiken zonder dat er sprake is van een wijziging in de locatie waar deze wordt uitgevoerd.
 

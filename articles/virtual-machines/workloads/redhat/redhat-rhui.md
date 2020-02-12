@@ -9,19 +9,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 1a63b388725823695c41339ae173c8d8e34839ef
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 2d6b6c03d7726a5a40a2eb1e6cf60c0342791c46
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941393"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133774"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure voor on-demand Red Hat Enterprise Linux-machines in Azure
- [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) kunt u cloudproviders, zoals Azure, voor het spiegelen van de inhoud van Red Hat gehoste opslagplaats, aangepaste opslagplaatsen maken met Azure-specifieke inhoud en het beschikbaar maken voor virtuele machines door eindgebruikers.
+ Met de [Red Hat Update infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) kunnen cloud providers, zoals Azure, gehoste inhoud van een opslag plaats met Red Hat worden gespiegeld, aangepaste opslag plaatsen met Azure-specifieke inhoud maken en deze beschikbaar maken voor virtuele machines van eind gebruikers.
 
-Red Hat Enterprise Linux (RHEL) betalen naar gebruik (betalen per gebruik) afbeeldingen afkomstig zijn vooraf geconfigureerd voor toegang tot Azure RHUI. Er is geen aanvullende configuratie nodig. Uitvoeren als u de meest recente updates, `sudo yum update` nadat uw RHEL-exemplaar gereed is. Deze service is opgenomen als onderdeel van de kosten voor de RHEL PAYG-software.
+Red Hat Enterprise Linux (RHEL) betalen naar gebruik (betalen per gebruik) afbeeldingen afkomstig zijn vooraf geconfigureerd voor toegang tot Azure RHUI. Er is geen aanvullende configuratie nodig. Als u de meest recente updates wilt downloaden, voert u `sudo yum update` uit nadat uw RHEL-exemplaar klaar is. Deze service is opgenomen als onderdeel van de kosten voor de RHEL PAYG-software.
 
 Meer informatie over RHEL-installatie kopieën in azure, met inbegrip van publicatie-en bewaar beleid, is [hier](./redhat-images.md)beschikbaar.
 
@@ -30,11 +30,11 @@ Informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL vindt u
 ## <a name="important-information-about-azure-rhui"></a>Belangrijke informatie over Azure RHUI
 
 * Azure RHUI is de update-infra structuur die ondersteuning biedt voor alle RHEL PAYG-Vm's die zijn gemaakt in Azure. Dit verhindert u niet dat u uw PAYG RHEL-Vm's kunt registreren met abonnements Manager of satelliet of andere bron van updates, maar wel met een PAYG-VM, resulteert dit in indirect dubbel facturering. Zie het volgende punt voor meer informatie.
-* Toegang tot de RHUI wordt gehost op Azure is opgenomen in de prijs van de installatiekopie RHEL PAYG. Als u een betalen per gebruik-RHEL VM uit de RHUI wordt gehost op Azure registratie is dat de virtuele machine niet converteren naar een type bring-your-own-license (BYOL) van virtuele machine. Als u dezelfde virtuele machine met een andere bron van de updates hebt geregistreerd, kunnen kosten voor _indirecte_ dubbele kosten in rekening gebracht. U betaalt het eerst voor de kosten van Azure RHEL-software. De tweede keer voor Red Hat-abonnementen die eerder zijn gekocht, moet u betalen. Als u een andere update-infra structuur dan een door Azure gehoste RHUI wilt gebruiken, kunt u overwegen om te registreren voor het gebruik van de [RHEL BYOS-installatie kopieën](./byos.md).
+* Toegang tot de RHUI wordt gehost op Azure is opgenomen in de prijs van de installatiekopie RHEL PAYG. Als u een betalen per gebruik-RHEL VM uit de RHUI wordt gehost op Azure registratie is dat de virtuele machine niet converteren naar een type bring-your-own-license (BYOL) van virtuele machine. Als u dezelfde VM registreert bij een andere bron van updates, worden er mogelijk _indirecte_ dubbele kosten in rekening gebracht. U betaalt het eerst voor de kosten van Azure RHEL-software. De tweede keer voor Red Hat-abonnementen die eerder zijn gekocht, moet u betalen. Als u een andere update-infra structuur dan een door Azure gehoste RHUI wilt gebruiken, kunt u overwegen om te registreren voor het gebruik van de [RHEL BYOS-installatie kopieën](./byos.md).
 
 * RHEL SAP PAYG-installatie kopieën in azure (RHEL for SAP, RHEL for SAP HANA en RHEL for SAP Business Applications) zijn verbonden met toegewezen RHUI-kanalen die blijven gelden voor de specifieke RHEL-versie zoals vereist voor SAP-certificering.
 
-* Toegang tot Azure gehoste RHUI is beperkt tot de virtuele machines binnen de [Azure datacenter IP-adresbereiken](https://www.microsoft.com/download/details.aspx?id=41653). Als u via een proxy alle VM-verkeer via een on-premises netwerkinfrastructuur, moet u mogelijk voor het instellen van de gebruiker gedefinieerde routes voor de RHEL-betalen per gebruik virtuele machines voor toegang tot de Azure-RHUI. Als dat het geval is, moeten door de gebruiker gedefinieerde routes worden toegevoegd voor _alle_ RHUI IP-adressen.
+* Toegang tot door Azure gehoste RHUI is beperkt tot de virtuele machines binnen de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653). Als u via een proxy alle VM-verkeer via een on-premises netwerkinfrastructuur, moet u mogelijk voor het instellen van de gebruiker gedefinieerde routes voor de RHEL-betalen per gebruik virtuele machines voor toegang tot de Azure-RHUI. Als dat het geval is, moeten door de gebruiker gedefinieerde routes worden toegevoegd voor _alle_ RHUI IP-adressen.
 
 ## <a name="image-update-behavior"></a>Gedrag van installatie kopie-updates
 
@@ -137,9 +137,9 @@ Voer het volgende uit als root:
 
 ## <a name="the-ips-for-the-rhui-content-delivery-servers"></a>De IP-adressen voor de levering van inhoud RHUI servers
 
-RHUI is beschikbaar in alle regio's waar de RHEL-installatiekopieën voor op aanvraag beschikbaar zijn. Het bevat momenteel alle openbare regio's die worden vermeld op de [Azure-statusdashboard](https://azure.microsoft.com/status/) pagina-, Azure US Government- en Microsoft Azure Duitsland-regio's.
+RHUI is beschikbaar in alle regio's waar de RHEL-installatiekopieën voor op aanvraag beschikbaar zijn. Het bevat momenteel alle open bare regio's die worden vermeld op de [Azure-status dashboard](https://azure.microsoft.com/status/) pagina, Azure Amerikaanse overheid en Microsoft Azure Duitsland regio's.
 
-Als u verder beperken van toegang van RHEL betalen per gebruik virtuele machines in een configuratie van het netwerk, zorg ervoor dat de volgende IP-adressen zijn toegestaan voor `yum update` om te werken, afhankelijk van de omgeving waarin u werkt in:
+Als u een netwerk configuratie gebruikt om de toegang van RHEL PAYG Vm's verder te beperken, moet u ervoor zorgen dat de volgende IP-adressen zijn toegestaan voor `yum update`, afhankelijk van de omgeving waarin u zich bevindt:
 
 
 ```
@@ -184,11 +184,11 @@ Als u problemen hebt met het verbinding maken met Azure RHUI vanuit uw virtuele 
 
 1. Inspecteer de configuratie van de virtuele machine voor het Azure-RHUI-eindpunt:
 
-    1. Controleer of de `/etc/yum.repos.d/rh-cloud.repo` bestand bevat een verwijzing naar `rhui-[1-3].microsoft.com` in de `baseurl` van de `[rhui-microsoft-azure-rhel*]` sectie van het bestand. Als dit het geval is, gebruikt u de nieuwe Azure-RHUI.
+    1. Controleer of het `/etc/yum.repos.d/rh-cloud.repo` bestand een verwijzing bevat naar `rhui-[1-3].microsoft.com` in de `baseurl` van de sectie `[rhui-microsoft-azure-rhel*]` van het bestand. Als dit het geval is, gebruikt u de nieuwe Azure-RHUI.
 
-    1. Als deze naar een locatie met het volgende patroon verwijst `mirrorlist.*cds[1-4].cloudapp.net`, een configuratie-update is vereist. U de oude VM-momentopname en moet u deze om te verwijzen naar de nieuwe Azure-RHUI bij te werken.
+    1. Als deze verwijst naar een locatie met het volgende patroon, `mirrorlist.*cds[1-4].cloudapp.net`, is een configuratie-update vereist. U de oude VM-momentopname en moet u deze om te verwijzen naar de nieuwe Azure-RHUI bij te werken.
 
-1. Toegang tot Azure gehoste RHUI is beperkt tot virtuele machines binnen de [Azure datacenter IP-adresbereiken](https://www.microsoft.com/download/details.aspx?id=41653).
+1. Toegang tot door Azure gehoste RHUI is beperkt tot Vm's binnen de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653).
 
 1. Als u de nieuwe configuratie, hebt gecontroleerd dat de virtuele machine verbinding vanuit de Azure-IP-adresbereik maakt en nog steeds geen verbinding met Azure RHUI, bestand een ondersteuningscase met Microsoft of Red Hat maken.
 
@@ -196,7 +196,7 @@ Als u problemen hebt met het verbinding maken met Azure RHUI vanuit uw virtuele 
 
 In September 2016 gaan we een bijgewerkte Azure RHUI geïmplementeerd. In April 2017 wordt de oude Azure RHUI afgesloten. Als u eerder hebt gebruikt de PAYG RHEL-installatiekopieën (of hun momentopnamen) vanaf September 2016 of hoger, bent u automatisch verbinding met de nieuwe Azure-RHUI. Als u oudere momentopnamen echter op uw virtuele machines hebt, moet u handmatig bijwerken hun configuratie voor toegang tot de Azure-RHUI zoals beschreven in een volgende sectie.
 
-De nieuwe Azure RHUI-servers worden geïmplementeerd met [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/). In Traffic Manager, één eindpunt (rhui-1.microsoft.com) kan worden gebruikt door een virtuele machine, ongeacht de regio.
+De nieuwe Azure RHUI-servers worden geïmplementeerd met [azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/). In Traffic Manager, één eindpunt (rhui-1.microsoft.com) kan worden gebruikt door een virtuele machine, ongeacht de regio.
 
 ### <a name="manual-update-procedure-to-use-the-azure-rhui-servers"></a>Handmatige updateprocedure voor het gebruik van de Azure-RHUI-servers
 Deze procedure is alleen ter informatie bedoeld. Er is al de juiste configuratie verbinding maken met Azure RHUI PAYG RHEL-installatiekopieën. Voor het handmatig bijwerken van de configuratie voor het gebruik van de Azure-RHUI-servers, voert u de volgende stappen uit:
@@ -212,6 +212,6 @@ Deze procedure is alleen ter informatie bedoeld. Er is al de juiste configuratie
   ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Een Red Hat Enterprise Linux-VM maken vanaf een betalen per gebruik van Azure Marketplace-installatiekopie en RHUI wordt gehost op Azure gebruiken, gaat u naar de [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/).
+* Ga naar de [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/)om een Red Hat Enterprise Linux VM te maken op basis van een installatie kopie van Azure Marketplace payg en Azure-gehoste RHUI te gebruiken.
 * Ga naar de [documentatie pagina](./redhat-images.md)voor meer informatie over de Red Hat-afbeeldingen in Azure.
 * Informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL vindt u op de pagina [levens cyclus van Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .

@@ -1,6 +1,6 @@
 ---
-title: Beheer de toegang tot Azure-resources met Azure AD Privileged Identity Management (PIM)
-description: Meer informatie over het beheren van toegang tot Azure-resources met behulp van Azure Active Directory Privileged Identity Management (PIM) en op rollen gebaseerd toegangsbeheer (RBAC).
+title: Toegang tot Azure-resources beheren met Azure AD en PIM
+description: Meer informatie over het beheren van toegang tot Azure-resources met behulp van Azure Active Directory Privileged Identity Management (PIM) en op rollen gebaseerd toegangs beheer (RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,22 +15,22 @@ ms.workload: identity
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 757068034868744b408c9402b521a0e4c73950f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 53c6375ce04425eae27f4c935e613cc27d058dc8
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344611"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138039"
 ---
-# <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>Toegang tot Azure-resources met Azure AD Privileged Identity Management beheren
+# <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>Toegang tot Azure-resources beheren met Azure AD Privileged Identity Management
 
-Als u wilt bevoegde accounts te beschermen tegen schadelijke cyberaanvallen, kunt u Azure Active Directory Privileged Identity Management (PIM) Verlaag de blootstellingstijd van bevoegdheden en vergroot uw inzicht in het gebruik ervan door middel van rapporten en waarschuwingen. PIM doet dit door gebruikers beperkt tot alleen nemen over hun bevoegdheden 'just-in-time' (JIT), of door het toewijzen van bevoegdheden voor een kortere duur waarna bevoegdheden automatisch worden ingetrokken. 
+Als u geprivilegieerde accounts van kwaad aardige aanvallen wilt beveiligen, kunt u Azure Active Directory Privileged Identity Management (PIM) gebruiken om de belichtings tijd van bevoegdheden te verlagen en uw zicht baarheid te verg Roten met rapporten en waarschuwingen. PIM doet dit door gebruikers te beperken tot het uitvoeren van hun bevoegdheden (just-in-time) of door privileges toe te wijzen voor een kortere duur, waarna de bevoegdheden automatisch worden ingetrokken. 
 
-U kunt nu PIM met Azure op rollen gebaseerd toegangsbeheer (RBAC) gebruiken om te beheren, controleren en bewaken van toegang tot Azure-resources. PIM kunt het lidmaatschap van de ingebouwde en aangepaste rollen om u te helpen beheren: 
+U kunt PIM nu gebruiken met op rollen gebaseerd toegangs beheer (RBAC) van Azure voor het beheren, beheren en bewaken van de toegang tot Azure-resources. Met PIM kunt u het lidmaatschap van ingebouwde en aangepaste rollen beheren om u te helpen: 
 
-- Op aanvraag, 'just-in-time' toegang tot Azure-resources inschakelen
-- Toegang tot bronnen voor toegewezen gebruikers en groepen automatisch verlopen
-- Tijdelijke toegang tot Azure-resources voor snelle taken of op een aanroep schema's toewijzen
-- Waarschuwingen ontvangen wanneer nieuwe gebruikers of groepen toegang tot resources worden toegewezen, en wanneer ze in aanmerking komende toewijzingen activeren
+- On-demand inschakelen, ' just-in-time ' toegang tot Azure-resources
+- Resource toegang automatisch laten verlopen voor toegewezen gebruikers en groepen
+- Tijdelijke toegang tot Azure-resources toewijzen voor snelle taken of planningen op oproep
+- Ontvang waarschuwingen wanneer nieuwe gebruikers of groepen toegang krijgen tot resources en wanneer ze in aanmerking komende toewijzingen activeren
 
-Zie voor meer informatie, [wat is Azure AD Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md).
+Zie [Wat is Azure AD privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md)voor meer informatie.

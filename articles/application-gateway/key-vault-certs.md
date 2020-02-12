@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 76807c8ed10e30c554b6aa06ec096c830a86e36e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 5633dd7b72f4de22cd34b7d093e8ec4d9cb411f1
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571980"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137706"
 ---
 # <a name="ssl-termination-with-key-vault-certificates"></a>SSL-beëindiging met Key Vault certificaten
 
@@ -33,6 +33,9 @@ Application Gateway integratie met Key Vault biedt veel voor delen, waaronder:
 - Ondersteuning voor het automatisch verlengen van certificaten die zijn opgeslagen in uw sleutel kluis.
 
 Application Gateway ondersteunt momenteel alleen door software gevalideerde certificaten. HSM (Hardware Security module)-gevalideerde certificaten worden niet ondersteund. Nadat Application Gateway is geconfigureerd voor het gebruik van Key Vault certificaten, haalt de instanties het certificaat op Key Vault en installeert ze lokaal voor SSL-beëindiging. De exemplaren pollen ook Key Vault met een interval van 24 uur om een vernieuwde versie van het certificaat op te halen, als dit bestaat. Als er een bijgewerkt certificaat wordt gevonden, wordt het SSL-certificaat dat momenteel is gekoppeld aan de HTTPS-listener automatisch gedraaid.
+
+> [!NOTE]
+> Het Azure Portal ondersteunt alleen certificaten met alleen een sleutel kluis, geen geheimen. Application Gateway ondersteunt nog steeds referentie geheimen van de sleutel kluis, maar alleen via niet-Portal resources zoals Power shell, CLI, API, ARM-sjablonen, enzovoort. 
 
 ## <a name="how-integration-works"></a>De werking van integratie
 

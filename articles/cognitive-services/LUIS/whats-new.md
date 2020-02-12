@@ -1,34 +1,28 @@
 ---
 title: Wat is er nieuw-Language Understanding (LUIS)
-titleSuffix: Azure Cognitive Services
 description: Dit artikel wordt regel matig bijgewerkt met nieuws over de Azure Cognitive Services Language Understanding-API.
-author: diberry
-manager: nitinme
-ms.custom: experiment-luis-0519
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: diberry
-ms.openlocfilehash: e03c7489268f3ad7076481de4498c5e202f654b6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.date: 02/11/2020
+ms.openlocfilehash: 716860b54e7d8e75984c0365cac61d14153c09ff
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280302"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137795"
 ---
 # <a name="whats-new-in-language-understanding"></a>Wat is er nieuw in Language Understanding
 
-Meer informatie over wat er nieuw is in de service. Deze items zijn release opmerkingen, Video's, blog berichten en andere soorten informatie. Bladwijzer deze pagina om up-to-date te blijven met de service.  
+Meer informatie over wat er nieuw is in de service. Deze items zijn release opmerkingen, Video's, blog berichten en andere soorten informatie. Bladwijzer deze pagina om up-to-date te blijven met de service.
 
-## <a name="release-notes"></a>Releaseopmerkingen 
+## <a name="release-notes"></a>Releaseopmerkingen
 
 ### <a name="november-4-2019---ignite"></a>4 november 2019-Ignite
 
+* Video- [geavanceerde natuurlijke language Understanding-modellen (NLU) met Luis en Azure Cognitive Services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+
 * Verbeterde productiviteit van ontwikkel aars
-    * Algemene Beschik baarheid van ons [Voorspellings eindpunt v3](luis-migration-api-v3.md). 
-    * De mogelijkheid om apps te importeren en exporteren met de. lu-indeling ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Dit wordt de manier om een effectief CI/CD-proces uit te voeren. 
+    * Algemene Beschik baarheid van ons [Voorspellings eindpunt v3](luis-migration-api-v3.md).
+    * De mogelijkheid om apps te importeren en exporteren met de. lu-indeling ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Dit wordt de manier om een effectief CI/CD-proces uit te voeren.
 * Taal uitbreiding
     * [Arabisch en Hindi](luis-language-support.md) in open bare preview.
 * Vooraf gemaakte modellen
@@ -37,8 +31,8 @@ Meer informatie over wat er nieuw is in de service. Deze items zijn release opme
     * Italiaanse [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md#italian-entity-support) -leeftijd, valuta, dimensie, getal en percentage resolutie worden gewijzigd van v2.
 * Verbeterde gebruikers ervaring in de [Preview.Luis.ai-Portal](https://preview.luis.ai) , vernieuwd, waarmee u complexe modellen kunt bouwen en fouten kunt opsporen. Probeer de preview-portal zelf studies:
     * [Alleen intentie](tutorial-intents-only.md)
-    * [Door de computer geleerde entiteit](tutorial-machine-learned-entity.md) 
-* Geavanceerde taal mogelijkheden: [Geavanceerde taal modellen bouwen](luis-concept-entity-types.md) met minder inspanning. 
+    * [Door de computer geleerde entiteit](tutorial-machine-learned-entity.md)
+* Geavanceerde taal mogelijkheden: [Geavanceerde taal modellen bouwen](luis-concept-entity-types.md) met minder inspanning.
 * Definieer machine learning functies op model niveau en zorg ervoor dat modellen kunnen worden gebruikt als signalen voor andere modellen, bijvoorbeeld door entiteiten te gebruiken als functies voor intenties en andere entiteiten.
 * Nieuwe, uitgebreide [limieten](luis-boundaries.md) : hoger maximum voor woordgroepen lijsten en totaal aantal zinsdelen, nieuw model als functie limieten
 * Haal informatie op uit tekst in de indeling van een diepe hiërarchie structuur, zodat conversatie toepassingen krachtiger worden.
@@ -74,7 +68,7 @@ De volgende functies zijn uitgebracht op de build 2019-conferentie:
 
 * [Preview van de V3 API-migratie handleiding](luis-migration-api-v3.md)
 * [Verbeterd analyse dashboard](luis-how-to-use-dashboard.md)
-* [Verbeterde, vooraf ontwikkelde domeinen](luis-reference-prebuilt-domains.md) 
+* [Verbeterde, vooraf ontwikkelde domeinen](luis-reference-prebuilt-domains.md)
 * [Dynamische lijst entiteiten](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Externe entiteiten](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
@@ -83,6 +77,10 @@ De volgende functies zijn uitgebracht op de build 2019-conferentie:
 [Bot-Framework](https://blog.botframework.com/)
 
 ## <a name="videos"></a>Video's
+
+### <a name="2019-ignite-videos"></a>2019 Ignite-Video's
+
+[Geavanceerde natuurlijke Language Understanding-modellen (NLU) met LUIS en Azure Cognitive Services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
 
 ### <a name="2019-build-videos"></a>2019 Video's bouwen
 

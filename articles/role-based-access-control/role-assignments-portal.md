@@ -1,5 +1,5 @@
 ---
-title: Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal
+title: Roltoewijzingen toevoegen of verwijderen met RBAC en de Azure Portal
 description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers, groepen, service-principals of beheerde identiteiten met behulp van op rollen gebaseerd toegangs beheer (RBAC) en de Azure Portal van Azure.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4003e11120c13624379cf7dad9334e896cd3a7a8
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e2458b07602bca3b6f12b2f486b509c11d705461
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774720"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138349"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal
 

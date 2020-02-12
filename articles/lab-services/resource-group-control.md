@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: b6f51dee948d9e4d9e3f8594f9f7e60fb11b7057
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29816d158cf1428727b7ff17bcc2c347f402dedf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647336"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134532"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Geef een resource groep op voor Lab-virtuele machines in Azure DevTest Labs
 
@@ -31,12 +31,12 @@ Als eigenaar van een lab kunt u de virtuele lab-machines configureren die moeten
 Met deze functie kunt u een script gebruiken om een nieuwe of bestaande resource groep in uw Azure-abonnement op te geven voor al uw Lab-Vm's. Azure DevTest Labs ondersteunt deze functie momenteel via een API.
 
 > [!NOTE]
-> Alle abonnements limieten zijn van toepassing wanneer u Labs maakt in DevTest Labs. Beschouw een Lab als andere resources in uw abonnement. In het geval van resource groepen is de limiet [980 resource groepen per abonnement](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
+> Alle abonnements limieten zijn van toepassing wanneer u Labs maakt in DevTest Labs. Beschouw een Lab als andere resources in uw abonnement. In het geval van resource groepen is de limiet [980 resource groepen per abonnement](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits). 
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
 Volg deze stappen om een resource groep op te geven voor alle Vm's die in het lab zijn gemaakt. 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **alle services** in het navigatie menu links. 
 3. Selecteer **DevTest Labs** uit de lijst.
 4. Selecteer in de lijst met Labs uw **Lab**.  

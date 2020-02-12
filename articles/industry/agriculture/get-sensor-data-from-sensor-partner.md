@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d56504c96c5e039f2563a1bfee577fe9b15e8563
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9364c344c58d17f9f6e6404dd8aa850af032cee9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715579"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138359"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Sensor gegevens ophalen van sensor partners
 
@@ -40,27 +40,32 @@ Nadat u het streamen van sensor gegevens hebt gestart, kunt u beginnen met het p
 U kunt de bovenstaande informatie genereren door de volgende stappen uit te voeren: (Houd er rekening mee dat deze stappen moeten worden uitgevoerd in azure, zodat u toegang nodig hebt tot het Azure-abonnement waar FarmBeats wordt geïmplementeerd)
 
 1. Down load het [zip-bestand](https://aka.ms/farmbeatspartnerscriptv2)en pak het uit naar uw lokale station. Er is één bestand in het zip-bestand.
-2. Meld u aan bij https://portal.azure.com/ en ga naar Azure Active Directory-> app-registraties
 
-3. Klik op de registratie van de app die is gemaakt als onderdeel van uw FarmBeats-implementatie. Deze heeft dezelfde naam als uw FarmBeats data hub.
+2. Meld u aan bij https://portal.azure.com/.
 
-4. Klik op "een API weer geven"-> Klik op "een client toepassing toevoegen" en voer **04b07795-8ddb-461A-bbee-02f9e1bf7b46** in en selecteer bereik autoriseren. Hiermee krijgt u toegang tot de Azure CLI (Cloud Shell) om de onderstaande stappen uit te voeren.
+3. **Als u FarmBeats-versie 1.2.7 of hoger hebt, moet u stap 3a, 3B en 3c overs Laan en naar stap 4 gaan.** U kunt de FarmBeats-versie controleren door te klikken op het pictogram instellingen in de rechter bovenhoek van de FarmBeats-gebruikers interface.
 
-5. Open Cloud Shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de Azure Portal.
+3a. Ga naar app-registraties voor Azure Active Directory->
+
+3B. Klik op de registratie van de app die is gemaakt als onderdeel van uw FarmBeats-implementatie. Deze heeft dezelfde naam als uw FarmBeats data hub.
+
+3c. Klik op "een API weer geven"-> Klik op "een client toepassing toevoegen" en voer **04b07795-8ddb-461A-bbee-02f9e1bf7b46** in en selecteer bereik autoriseren. Hiermee krijgt u toegang tot de Azure CLI (Cloud Shell) om de onderstaande stappen uit te voeren.
+
+4. Open Cloud Shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de Azure Portal.
 
     ![Azure Portal werk balk](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-6. Zorg ervoor dat de omgeving is ingesteld op **Power shell**. Standaard is deze ingesteld op bash.
+5. Zorg ervoor dat de omgeving is ingesteld op **Power shell**. Standaard is deze ingesteld op bash.
 
     ![Power shell-werkbalk instelling](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-7. Upload het bestand uit stap 1 in uw Cloud Shell-exemplaar.
+6. Upload het bestand uit stap 1 in uw Cloud Shell-exemplaar.
 
     ![Knop uploaden-werk balk](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-8. Ga naar de map waarin het bestand is geüpload. Standaard worden bestanden in de hoofdmap van de gebruikers naam geüpload naar de basismap.
+7. Ga naar de map waarin het bestand is geüpload. Standaard worden bestanden in de hoofdmap van de gebruikers naam geüpload naar de basismap.
 
-9. Voer het volgende script uit: Het script vraagt om de Tenant-ID die kan worden verkregen op basis van Azure Active Directory-> overzichts pagina.
+8. Voer het volgende script uit: Het script vraagt om de Tenant-ID die kan worden verkregen op basis van Azure Active Directory-> overzichts pagina.
 
     ```azurepowershell-interactive 
 
@@ -68,7 +73,7 @@ U kunt de bovenstaande informatie genereren door de volgende stappen uit te voer
 
     ```
 
-10. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt**, **Tenant-ID**, **client-id**, **client geheim**en **EventHub-verbindings reeks**.
+9. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt**, **Tenant-ID**, **client-id**, **client geheim**en **EventHub-verbindings reeks**.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Apparaatgegevens integreren met behulp van de gegenereerde referenties
 

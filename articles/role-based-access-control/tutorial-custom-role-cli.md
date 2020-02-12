@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure CLI'
+title: 'Zelf studie: een aangepaste rol maken voor Azure-resources met Azure CLI'
 description: In deze zelf studie kunt u aan de slag met het maken van een aangepaste rol voor Azure-resources met behulp van Azure CLI.
 services: active-directory
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 29b0bea851466b5173711441a5a7927c796c9926
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: f1a6e72e1444a26b675379d9948217a7773c4a1c
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419596"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138255"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure CLI
 
@@ -91,7 +91,7 @@ De eenvoudigste manier om een aangepaste rol te maken, is door een JSON-sjabloon
     az account list --output table
     ```
 
-1. Vervang in `AssignableScopes` `{subscriptionId1}` door de id van uw abonnement.
+1. Vervang in `AssignableScopes``{subscriptionId1}` door de id van uw abonnement.
 
     U moet expliciete abonnement-id's toevoegen, anders is het niet mogelijk om de rol in uw abonnement te importeren.
 

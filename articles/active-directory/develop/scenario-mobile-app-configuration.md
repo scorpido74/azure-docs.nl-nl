@@ -1,5 +1,6 @@
 ---
-title: Mobiele apps configureren die web-Api's aanroepen-micro soft Identity-platform | Azure
+title: Mobiele apps configureren die web-Api's aanroepen | Azure
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept (de code configuratie van de app)
 services: active-directory
 documentationcenter: dev-center-name
@@ -14,32 +15,32 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 61d3a7b7f06ffdb7f39f80f7f3bf19e9007945d2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: fc25f13d0b0b8a264dcd47a5fdebb0533e93fb55
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702110"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132488"
 ---
-# <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Mobiele app die web-Api's aanroept-code configuratie
+# <a name="configure-a-mobile-app-that-calls-web-apis"></a>Een mobiele app configureren die web-Api's aanroept
 
-Zodra u de toepassing hebt gemaakt, leert u hoe u de code kunt configureren met de para meters voor app-registratie. Mobiele toepassingen hebben ook enkele complexe specifiek, die te maken hebben met de aanpassing in het Framework voor het bouwen van deze apps
+Nadat u de toepassing hebt gemaakt, leert u hoe u de code kunt configureren met behulp van de app-registratie parameters. Mobiele toepassingen bieden een aantal complexe aspecten die betrekking hebben op de aanpassing aan het maken van hun Framework.
 
-## <a name="msal-libraries-supporting-mobile-apps"></a>MSAL-bibliotheken die mobiele apps ondersteunen
+## <a name="find-msal-support-for-mobile-apps"></a>MSAL-ondersteuning voor mobiele apps zoeken
 
-De micro soft-bibliotheken die mobiele apps ondersteunen zijn:
+De volgende typen micro soft Authentication Library (MSAL) ondersteunen mobiele apps.
 
-  MSAL-bibliotheek | Beschrijving
-  ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Voor het ontwikkelen van draag bare toepassingen. MSAL.NET ondersteunde platforms voor het bouwen van een mobiele toepassing zijn UWP, Xamarin. iOS en Xamarin. Android.
-  ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Systeem eigen iOS-toepassingen ontwikkelen met de doel stelling-C of SWIFT
-  ![MSAL. Android](media/sample-v2-code/logo_android.png) <br/> MSAL. Android | Systeem eigen Android-toepassingen ontwikkelen in Java voor Android
+MSAL | Beschrijving
+------------ | ----------
+![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Wordt gebruikt voor het ontwikkelen van draag bare toepassingen. MSAL.NET ondersteunt de volgende platforms voor het bouwen van een mobiele toepassing: Universeel Windows-platform (UWP), Xamarin. iOS en Xamarin. Android.
+![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Wordt gebruikt voor het ontwikkelen van systeem eigen iOS-toepassingen met behulp van objectief-C of SWIFT.
+![MSAL. Android](media/sample-v2-code/logo_android.png) <br/> MSAL. Android | Wordt gebruikt voor het ontwikkelen van systeem eigen Android-toepassingen in Java voor Android.
 
-## <a name="instantiating-the-application"></a>De toepassing instantiëren
+## <a name="instantiate-the-application"></a>De toepassing instantiëren
 
 ### <a name="android"></a>Android
 
-Mobiele toepassingen gebruiken de klasse `PublicClientApplication`. Hier kunt u een exemplaar maken:
+Mobiele toepassingen gebruiken de klasse `PublicClientApplication`. U kunt dit als volgt instantiëren:
 
 ```Java
 PublicClientApplication sampleApp = new PublicClientApplication(
@@ -49,9 +50,7 @@ PublicClientApplication sampleApp = new PublicClientApplication(
 
 ### <a name="ios"></a>iOS
 
-Mobiele toepassingen op iOS moeten een exemplaar van de `MSALPublicClientApplication`-klasse maken.
-
-Doel-C:
+Mobiele toepassingen op iOS moeten een exemplaar van de `MSALPublicClientApplication`-klasse maken. Gebruik de volgende code om een instantie van de klasse te maken. 
 
 ```objc
 NSError *msalError = nil;
@@ -60,32 +59,33 @@ MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig 
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
 
-Swift
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
 if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
 ```
 
-Er zijn [aanvullende MSALPublicClientApplicationConfig-eigenschappen](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplicationConfig.html#/Configuration%20options) waarmee de standaard instantie kan worden overschreven, een omleidings-URI moet worden opgegeven of het cache gedrag voor het MSAL wordt gewijzigd. 
+[Aanvullende MSALPublicClientApplicationConfig-eigenschappen](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplicationConfig.html#/Configuration%20options) kunnen de standaard instantie overschrijven, een omleidings-URI opgeven of het gedrag van het opslaan van MSAL-tokens wijzigen. 
 
 ### <a name="xamarin-or-uwp"></a>Xamarin of UWP
 
-In de volgende alinea wordt uitgelegd hoe u de toepassing kunt instantiëren voor Xamarin. iOS-, Xamarin. Android-en UWP-apps.
+In deze sectie wordt uitgelegd hoe u de toepassing kunt instantiëren voor Xamarin. iOS-, Xamarin. Android-en UWP-apps.
 
-#### <a name="instantiating-the-application"></a>De toepassing instantiëren
+#### <a name="instantiate-the-application"></a>De toepassing instantiëren
 
-In Xamarin, of UWP, is de eenvoudigste manier om de toepassing te instantiëren, waarbij de `ClientId` de GUID van de geregistreerde app is.
+In Xamarin of UWP is de eenvoudigste manier om de toepassing te instantiëren door de volgende code te gebruiken. In deze code is `ClientId` de GUID van de geregistreerde app.
 
 ```csharp
 var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
 
-Er zijn aanvullende*para meters* voor het instellen van de gebruikers interface, het vervangen van de standaard instantie, het opgeven van een client naam en-versie (voor telemetrie), het opgeven van een omleidings-URI, de http-Factory opgeven die moet worden gebruikt (bijvoorbeeld voor het afhandelen van proxy's, telemetrie en logboek registratie opgeven). Dit is het onderwerp van de volgende alinea's.
+Met aanvullende `With<Parameter>`-methoden wordt de UI-bovenliggende ingesteld, de standaard instantie vervangen, een client naam en-versie voor telemetrie opgegeven, een omleidings-URI opgeven en opgeven welke HTTP-Factory moet worden gebruikt. De HTTP-Factory kan bijvoorbeeld worden gebruikt om proxy's te verwerken en telemetrie en logboek registratie op te geven. 
 
-##### <a name="specifying-the-parent-uiwindowactivity"></a>De bovenliggende UI/Window/activiteit opgeven
+De volgende secties bevatten meer informatie over het instantiëren van de toepassing.
 
-Op Android moet u de bovenliggende activiteit door geven voordat u interactieve verificatie doet. Wanneer u in iOS een Broker gebruikt, moet u de View Controller door geven. Op dezelfde manier kunt u in het bovenliggende venster het beste door geven aan UWP. Dit is mogelijk wanneer u het token aanschaft, maar het is ook mogelijk om een call back op te geven tijdens het maken van de app. een gemachtigde retourneert de UIParent.
+##### <a name="specify-the-parent-ui-window-or-activity"></a>De bovenliggende gebruikers interface, het venster of de activiteit opgeven
+
+Op Android moet u de bovenliggende activiteit door geven voordat u interactieve verificatie doet. Wanneer u in iOS een Broker gebruikt, moet u `ViewController`door geven. Op dezelfde manier kunt u in het bovenliggende venster het beste door geven aan UWP. U geeft deze door wanneer u het token aanschaft. Maar wanneer u de app maakt, kunt u ook een call back opgeven als gemachtigde die `UIParent`retourneert.
 
 ```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
@@ -93,7 +93,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
   .Build();
 ```
 
-In Android raden we u aan de `CurrentActivityPlugin` [hier](https://github.com/jamesmontemagno/CurrentActivityPlugin)te gebruiken.  Vervolgens ziet uw `PublicClientApplication` Builder-code er als volgt uit:
+In Android wordt u aangeraden [`CurrentActivityPlugin`](https://github.com/jamesmontemagno/CurrentActivityPlugin)te gebruiken. De resulterende `PublicClientApplication` Builder-code ziet er als volgt uit:
 
 ```csharp
 // Requires MSAL.NET 4.2 or above
@@ -103,76 +103,81 @@ var pca = PublicClientApplicationBuilder
   .Build();
 ```
 
-##### <a name="more-app-building-parameters"></a>Meer para meters voor het bouwen van apps
+##### <a name="find-more-app-building-parameters"></a>Meer para meters voor het bouwen van apps zoeken
 
-- Zie de referentie documentatie [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods) voor een lijst met alle wijzigingen die op `PublicClientApplicationBuilder`beschikbaar zijn.
-- Zie [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)in de referentie documentatie voor de beschrijving van alle opties die worden weer gegeven in `PublicClientApplicationOptions`.
+Zie de [lijst methoden](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)voor een lijst met alle methoden die beschikbaar zijn op `PublicClientApplicationBuilder`.
 
-## <a name="xamarin-ios-specific-considerations"></a>Specifieke overwegingen voor Xamarin iOS
+Zie de [referentie documentatie](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)voor een beschrijving van alle opties die worden weer gegeven in `PublicClientApplicationOptions`.
 
-Op Xamarin iOS zijn er verschillende overwegingen die u moet meenemen bij het gebruik van MSAL.NET:
+## <a name="tasks-for-xamarin-ios"></a>Taken voor Xamarin iOS
 
-1. [De functie `OpenUrl` in het `AppDelegate` overschrijven en implementeren](msal-net-xamarin-ios-considerations.md#implement-openurl)
-1. [Sleutel hanger groepen inschakelen](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
-1. [Het delen van token cache inschakelen](msal-net-xamarin-ios-considerations.md#enable-token-cache-sharing-across-ios-applications)
-1. [Sleutel hanger toegang inschakelen](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
+Als u MSAL.NET gebruikt op Xamarin iOS, voert u de volgende taken uit.
 
-Details vindt u in [Xamarin IOS-overwegingen](msal-net-xamarin-ios-considerations.md)
+* [De functie `OpenUrl` in `AppDelegate` overschrijven en implementeren](msal-net-xamarin-ios-considerations.md#implement-openurl)
+* [Sleutel hanger groepen inschakelen](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
+* [Het delen van token cache inschakelen](msal-net-xamarin-ios-considerations.md#enable-token-cache-sharing-across-ios-applications)
+* [Sleutel hanger toegang inschakelen](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
 
-## <a name="msal-for-ios-and-macos-specific-considerations"></a>MSAL voor iOS-en macOS-specifieke overwegingen
+Zie [Xamarin](msal-net-xamarin-ios-considerations.md)voor meer informatie.
 
-Vergelijk bare overwegingen zijn van toepassing wanneer u MSAL gebruikt voor iOS en macOS:
+## <a name="tasks-for-msal-for-ios-and-macos"></a>Taken voor MSAL voor iOS en macOS
 
-1. [De `openURL`-call back implementeren](#brokered-authentication-for-msal-for-ios-and-macos)
-2. [Toegangs groepen voor sleutel hanger inschakelen](howto-v2-keychain-objc.md)
-3. [Browsers en webweergaven aanpassen](customize-webviews.md)
+Deze taken zijn nodig wanneer u MSAL gebruikt voor iOS en macOS:
 
-## <a name="xamarin-android-specific-considerations"></a>Specifieke aandachtspunten voor Xamarin Android
+* [De `openURL`-call back implementeren](#brokered-authentication-for-msal-for-ios-and-macos)
+* [Toegangs groepen voor sleutel hanger inschakelen](howto-v2-keychain-objc.md)
+* [Browsers en webweergaven aanpassen](customize-webviews.md)
 
-Hier zijn Xamarin Android-specifiek:
+## <a name="tasks-for-xamarinandroid"></a>Taken voor Xamarin. Android
 
-- [Controleren of het besturings element terugkeert naar MSAL zodra het interactieve deel van de verificatie stroom is beëindigd](msal-net-xamarin-android-considerations.md#ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends)
+Als u Xamarin. Android gebruikt, voert u de volgende taken uit:
+
+- [Controleer of het besturings element terugkeert naar MSAL nadat het interactieve deel van de verificatie stroom is beëindigd](msal-net-xamarin-android-considerations.md#ensure-that-control-returns-to-msal)
 - [Het Android-manifest bijwerken](msal-net-xamarin-android-considerations.md#update-the-android-manifest)
 - [De Inge sloten webweergave gebruiken (optioneel)](msal-net-xamarin-android-considerations.md#use-the-embedded-web-view-optional)
-- [Probleemoplossing](msal-net-xamarin-android-considerations.md#troubleshooting)
+- [Problemen oplossen indien nodig](msal-net-xamarin-android-considerations.md#troubleshoot)
 
-Details vindt u in [Xamarin Android-overwegingen](msal-net-xamarin-android-considerations.md)
+Zie [Xamarin. Android-overwegingen](msal-net-xamarin-android-considerations.md)voor meer informatie.
 
-Ten slotte zijn er enkele specifieke kenmerken die u moet weten over de browsers op Android. Deze worden beschreven in [Xamarin Android-specifieke overwegingen met MSAL.net](msal-net-system-browser-android-considerations.md)
+Zie [Xamarin. Android-specifieke overwegingen met MSAL.net](msal-net-system-browser-android-considerations.md)voor overwegingen met betrekking tot de browsers op Android.
 
-#### <a name="uwp-specific-considerations"></a>Specifieke aandachtspunten voor UWP
+#### <a name="tasks-for-uwp"></a>Taken voor UWP
 
-Op UWP kunt u bedrijfs netwerken gebruiken. Zie [universeel Windows-platform-specifieke overwegingen met MSAL.net](msal-net-uwp-considerations.md)voor meer informatie over het gebruik van de MSAL-bibliotheek met UWP.
+Op UWP kunt u bedrijfs netwerken gebruiken. In de volgende secties worden de taken beschreven die u in het bedrijfs scenario moet volt ooien.
 
-## <a name="configuring-the-application-to-use-the-broker"></a>De toepassing configureren voor het gebruik van de Broker
+Zie [UWP-specifieke overwegingen met MSAL.net](msal-net-uwp-considerations.md)voor meer informatie.
 
-### <a name="why-use-brokers-in-ios-and-android-applications"></a>Waarom makelaars in iOS-en Android-toepassingen gebruiken?
+## <a name="configure-the-application-to-use-the-broker"></a>De toepassing configureren voor het gebruik van de Broker
 
 Op Android en iOS bieden makelaars de volgende opties:
 
-- Eenmalige aanmelding (SSO) wanneer het apparaat is geregistreerd bij AAD. Uw gebruikers hoeven zich niet aan te melden bij elke toepassing.
-- Apparaat-id. Hiermee wordt het aan Azure AD-apparaat gekoppelde beleid voor voorwaardelijke toegang ingeschakeld door het certificaat van het apparaat te openen dat is gemaakt op het apparaat toen het was gekoppeld aan de werk plek.
-- Verificatie van de toepassings-id. Wanneer een toepassing de Broker aanroept, wordt de omleidings-URL door gegeven en wordt deze door de Broker gecontroleerd.
+- **Eenmalige aanmelding (SSO)** : u kunt SSO gebruiken voor apparaten die zijn geregistreerd bij Azure Active Directory (Azure AD). Wanneer u SSO gebruikt, hoeven uw gebruikers zich niet aan te melden bij elke toepassing.
+- **Apparaat-id**: met deze instelling schakelt u beleids regels voor voorwaardelijke toegang in die betrekking hebben op Azure ad-apparaten. Het verificatie proces maakt gebruik van het certificaat van het apparaat dat is gemaakt toen het apparaat werd toegevoegd aan de werk plek.
+- **Verificatie**van de toepassings-id: wanneer een toepassing de Broker aanroept, wordt de omleidings-URL door gegeven. Vervolgens wordt de Broker gecontroleerd.
 
 ### <a name="enable-the-broker-on-xamarin"></a>De Broker inschakelen op Xamarin
 
-Als u een van deze functies wilt inschakelen, gebruikt u de para meter `WithBroker()` wanneer u de `PublicClientApplicationBuilder.CreateApplication`-methode aanroept. `.WithBroker()` is standaard ingesteld op waar. Volg de onderstaande stappen voor [Xamarin. IOS](#brokered-authentication-for-xamarinios).
+Als u de Broker op Xamarin wilt inschakelen, gebruikt u de para meter `WithBroker()` wanneer u de `PublicClientApplicationBuilder.CreateApplication`-methode aanroept. `.WithBroker()` is standaard ingesteld op waar. 
+
+Volg de stappen in de [sectie Xamarin. IOS](#enable-brokered-authentication-for-xamarin-ios) in dit artikel om brokered Authentication in te scha kelen voor Xamarin. IOS.
 
 ### <a name="enable-the-broker-for-msal-for-android"></a>De Broker inschakelen voor MSAL voor Android
 
-Zie [brokered auth in Android](brokered-auth.md) voor meer informatie over het inschakelen van een Broker op Android. 
+Zie [brokered Authentication on Android](brokered-auth.md)voor meer informatie over het inschakelen van een Broker op Android. 
 
 ### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>De Broker inschakelen voor MSAL voor iOS en macOS
 
-Brokered Authentication is standaard ingeschakeld voor AAD-scenario's in MSAL voor iOS en macOS. Volg de onderstaande stappen om uw toepassing te configureren voor ondersteuning voor brokered verificatie voor [MSAL voor IOS en macOS](#brokered-authentication-for-msal-for-ios-and-macos). Houd er rekening mee dat sommige stappen verschillen tussen [MSAL voor Xamarin. IOS](#brokered-authentication-for-xamarinios) en [MSAL voor IOS en macOS](#brokered-authentication-for-msal-for-ios-and-macos).
+Brokered Authentication is standaard ingeschakeld voor Azure AD-scenario's in MSAL voor iOS en macOS. 
 
-### <a name="brokered-authentication-for-xamarinios"></a>Brokered authenticatie voor Xamarin. iOS
+De volgende secties bevatten instructies voor het configureren van uw toepassing voor ondersteuning voor brokered-verificatie voor MSAL voor Xamarin. iOS of MSAL voor iOS en macOS. In de twee sets met instructies verschillen een deel van de stappen.
 
-Volg de onderstaande stappen om uw Xamarin. iOS-app in te scha kelen voor communicatie met de app [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458) .
+### <a name="enable-brokered-authentication-for-xamarin-ios"></a>Brokered Authentication inschakelen voor Xamarin iOS
+
+Volg de stappen in deze sectie om uw Xamarin. iOS-app in te scha kelen voor communicatie met de app [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458) .
 
 #### <a name="step-1-enable-broker-support"></a>Stap 1: ondersteuning voor Broker inschakelen
 
-Broker-ondersteuning is ingeschakeld per`PublicClientApplication`. Het is standaard uitgeschakeld. U moet de para meter `WithBroker()` (standaard ingesteld op True) gebruiken bij het maken van de `PublicClientApplication` via de `PublicClientApplicationBuilder`.
+Broker-ondersteuning is standaard uitgeschakeld. U schakelt deze in voor een afzonderlijke `PublicClientApplication` klasse. Gebruik de para meter `WithBroker()` wanneer u de klasse `PublicClientApplication` via `PublicClientApplicationBuilder`maakt. De para meter `WithBroker()` is standaard ingesteld op True.
 
 ```csharp
 var app = PublicClientApplicationBuilder
@@ -184,7 +189,7 @@ var app = PublicClientApplicationBuilder
 
 #### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>Stap 2: AppDelegate bijwerken voor het afhandelen van de call back
 
-Wanneer MSAL.NET de Broker aanroept, roept de Broker op zijn beurt terug naar uw toepassing via de `AppDelegate.OpenUrl` methode. Omdat MSAL wacht op het antwoord van de Broker, moet uw toepassing samen werken om MSAL.NET terug aan te roepen. U doet dit door het `AppDelegate.cs`-bestand bij te werken om de onderstaande methode te overschrijven.
+Wanneer MSAL.NET de Broker aanroept, wordt de Broker vervolgens teruggebeld naar uw toepassing. Het wordt teruggebeld met behulp van de `AppDelegate.OpenUrl` methode. Omdat MSAL wacht op het antwoord van de Broker, moet uw toepassing samen werken om MSAL.NET terug aan te roepen. U kunt dit gedrag instellen door het `AppDelegate.cs` bestand bij te werken om de methode te overschrijven, zoals in de volgende code wordt weer gegeven.
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
@@ -204,70 +209,73 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 }
 ```
 
-Deze methode wordt aangeroepen telkens wanneer de toepassing wordt gestart en wordt gebruikt als een kans om de reactie van de Broker te verwerken en het verificatie proces te volt ooien dat door MSAL.NET wordt gestart.
+Deze methode wordt aangeroepen telkens wanneer de toepassing wordt gestart. Het is een kans om de reactie van de Broker te verwerken en om het verificatie proces te volt ooien dat MSAL.NET is gestart.
 
 #### <a name="step-3-set-a-uiviewcontroller"></a>Stap 3: een UIViewController () instellen
 
-Met Xamarin iOS hoeft u normaal gesp roken geen object venster in te stellen, maar in dit geval kunt u antwoorden van een Broker verzenden en ontvangen. Stel in `AppDelegate.cs`nog een view controller in.
+Voor Xamarin iOS hoeft u normaal gesp roken geen object venster in te stellen. Maar in dit geval moet u deze zo instellen dat u antwoorden kunt verzenden en ontvangen vanuit een Broker. Als u een object venster wilt instellen, stelt u in `AppDelegate.cs`een `ViewController`in.
 
-Ga als volgt te werk om het object venster in te stellen:
+Voer de volgende stappen uit om het object venster in te stellen:
 
-1) Stel in `AppDelegate.cs`de `App.RootViewController` in op een nieuwe `UIViewController()`. Dit zorgt ervoor dat er een `UIViewController` is met de aanroep naar de Broker. Als deze niet correct is ingesteld, wordt deze fout mogelijk weer geven: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
-2) Op de AcquireTokenInteractive-aanroep gebruikt u de `.WithParentActivityOrWindow(App.RootViewController)` en geeft u de verwijzing naar het object venster dat u gaat gebruiken.
+1. Stel in `AppDelegate.cs`de `App.RootViewController` in op een nieuwe `UIViewController()`. Deze instelling zorgt ervoor dat de aanroep naar de Broker `UIViewController`bevat. Als deze niet correct is ingesteld, wordt deze fout mogelijk weer geven:
 
-**Bijvoorbeeld:**
+    `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker."`
 
-In `App.cs`:
-```csharp
-   public static object RootViewController { get; set; }
-```
-In `AppDelegate.cs`:
-```csharp
-   LoadApplication(new App());
-   App.RootViewController = new UIViewController();
-```
-In de aanroep voor het verkrijgen van een token:
-```csharp
-result = await app.AcquireTokenInteractive(scopes)
-             .WithParentActivityOrWindow(App.RootViewController)
-             .ExecuteAsync();
-```
+1. Gebruik `.WithParentActivityOrWindow(App.RootViewController)`op de aanroep van `AcquireTokenInteractive`. Geef de verwijzing door voor het object venster dat u gaat gebruiken. Hier volgt een voorbeeld:
 
+    In `App.cs`:
+    ```csharp
+       public static object RootViewController { get; set; }
+    ```
+    In `AppDelegate.cs`:
+    ```csharp
+       LoadApplication(new App());
+       App.RootViewController = new UIViewController();
+    ```
+    In het `AcquireToken`-gesprek:
+    ```csharp
+    result = await app.AcquireTokenInteractive(scopes)
+                 .WithParentActivityOrWindow(App.RootViewController)
+                 .ExecuteAsync();
+    ```
+    
 #### <a name="step-4-register-a-url-scheme"></a>Stap 4: een URL-schema registreren
 
-MSAL.NET maakt gebruik van Url's om de Broker aan te roepen en retour neren het Broker-antwoord terug naar uw app. Als u de retour ronding wilt volt ooien, moet u een URL-schema voor uw app registreren in het `Info.plist`-bestand.
+MSAL.NET maakt gebruik van Url's om de Broker aan te roepen en retour neren het Broker-antwoord terug naar uw app. Als u de retour ronding wilt volt ooien, registreert u het URL-schema van uw app in het `Info.plist` bestand. 
 
-Voor voegsel van de `CFBundleURLSchemes` met `msauth`. Voeg vervolgens `CFBundleURLName` toe aan het einde.
+Voer de volgende stappen uit om het URL-schema van uw app te registreren:
 
-`$"msauth.(BundleId)"`
+1. Voor voegsel `CFBundleURLSchemes` met `msauth`. 
+1. Voeg `CFBundleURLName` toe aan het einde. Volg dit patroon: 
 
-**Bijvoorbeeld:** 
-`msauth.com.yourcompany.xforms`
+   `$"msauth.(BundleId)"`
 
-> [!NOTE]
-> Dit URL-schema wordt onderdeel van de RedirectUri die wordt gebruikt voor het uniek identificeren van uw app bij het ontvangen van het antwoord van de Broker.
+   Hier `BundleId` de unieke identificatie van uw apparaat. Als `BundleId` bijvoorbeeld `yourcompany.xforms`is, wordt uw URL-schema `msauth.com.yourcompany.xforms`.
+    
+   > [!NOTE]
+   > Dit URL-schema wordt onderdeel van de omleidings-URI die uw app op unieke wijze identificeert wanneer het de reactie van de Broker ontvangt.
+    
+   ```XML
+    <key>CFBundleURLTypes</key>
+       <array>
+         <dict>
+           <key>CFBundleTypeRole</key>
+           <string>Editor</string>
+           <key>CFBundleURLName</key>
+           <string>com.yourcompany.xforms</string>
+           <key>CFBundleURLSchemes</key>
+           <array>
+             <string>msauth.com.yourcompany.xforms</string>
+           </array>
+         </dict>
+       </array>
+   ```
+    
+#### <a name="step-5-add-to-the-lsapplicationqueriesschemes-section"></a>Stap 5: toevoegen aan de sectie LSApplicationQueriesSchemes
 
-```XML
- <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-        <key>CFBundleTypeRole</key>
-        <string>Editor</string>
-        <key>CFBundleURLName</key>
-        <string>com.yourcompany.xforms</string>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>msauth.com.yourcompany.xforms</string>
-        </array>
-      </dict>
-    </array>
-```
+MSAL maakt gebruik van `–canOpenURL:` om te controleren of de Broker op het apparaat is geïnstalleerd. In iOS 9 heeft Apple de schema's vergrendeld die een toepassing kan opvragen.
 
-#### <a name="step-5-lsapplicationqueriesschemes"></a>Stap 5: LSApplicationQueriesSchemes
-
-MSAL maakt gebruik van `–canOpenURL:` om te controleren of de Broker op het apparaat is geïnstalleerd. In iOS 9 zijn de schema's vergrendeld waarvan een toepassing kan zoeken.
-
-**Voeg** **`msauthv2`** toe aan de sectie `LSApplicationQueriesSchemes` van het `Info.plist` bestand.
+Voeg `msauthv2` toe aan de sectie `LSApplicationQueriesSchemes` van het bestand `Info.plist`, zoals in het volgende code voorbeeld:
 
 ```XML 
 <key>LSApplicationQueriesSchemes</key>
@@ -278,13 +286,11 @@ MSAL maakt gebruik van `–canOpenURL:` om te controleren of de Broker op het ap
 
 ### <a name="brokered-authentication-for-msal-for-ios-and-macos"></a>Brokered authenticatie voor MSAL voor iOS en macOS
 
-Brokered Authentication is standaard ingeschakeld voor AAD-scenario's.
+Brokered Authentication is standaard ingeschakeld voor Azure AD-scenario's.
 
 #### <a name="step-1-update-appdelegate-to-handle-the-callback"></a>Stap 1: AppDelegate bijwerken voor het afhandelen van de call back
 
-Wanneer MSAL voor iOS en macOS de Broker aanroept, wordt de Broker op zijn beurt teruggebeld naar uw toepassing via de `openURL` methode. Omdat MSAL wacht op het antwoord van de Broker, moet uw toepassing samen werken om MSAL terug aan te roepen. U doet dit door het `AppDelegate.m`-bestand bij te werken om de onderstaande methode te overschrijven.
-
-Doel-C:
+Wanneer MSAL voor iOS en macOS de Broker aanroept, wordt de Broker teruggebeld naar uw toepassing met behulp van de `openURL` methode. Omdat MSAL wacht op het antwoord van de Broker, moet uw toepassing samen werken met het aanroepen van MSAL. Stel deze mogelijkheid in door het `AppDelegate.m` bestand bij te werken om de methode te overschrijven, zoals in de volgende code voorbeelden wordt weer gegeven.
 
 ```objc
 - (BOOL)application:(UIApplication *)app
@@ -295,8 +301,6 @@ Doel-C:
                                          sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]];
 }
 ```
-
-Swift
 
 ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -309,38 +313,48 @@ Swift
     }
 ```
 
-Houd er rekening mee dat als u UISceneDelegate op iOS 13 + hebt aangenomen, MSAL call back moet worden geplaatst in de `scene:openURLContexts:` in plaats daarvan (Zie de [Apple-documentatie](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)). MSAL `handleMSALResponse:sourceApplication:` mag voor elke URL slechts eenmaal worden aangeroepen.
+> [!NOTE]
+> Als u `UISceneDelegate` hebt aangenomen op iOS 13 of hoger, plaatst u de MSAL-call back in het `scene:openURLContexts:` van `UISceneDelegate`. MSAL `handleMSALResponse:sourceApplication:` mag voor elke URL slechts eenmaal worden aangeroepen.
+>
+> Zie de [Apple-documentatie](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)voor meer informatie.
 
 #### <a name="step-2-register-a-url-scheme"></a>Stap 2: een URL-schema registreren
 
-MSAL voor iOS en macOS gebruikt Url's om de Broker aan te roepen en retour neren het Broker-antwoord terug naar uw app. Als u de retour ronding wilt volt ooien, moet u een URL-schema voor uw app registreren in het `Info.plist`-bestand.
+MSAL voor iOS en macOS gebruikt Url's om de Broker aan te roepen en retour neren het Broker-antwoord naar uw app. Als u de retour ronding wilt volt ooien, registreert u een URL-schema voor uw app in het `Info.plist`-bestand.
 
-Een voor voegsel voor uw aangepaste URL-schema met `msauth`. Voeg vervolgens **uw bundel-id** toe aan het einde.
+Een schema voor uw app registreren: 
 
-`msauth.(BundleId)`
+1. Een voor voegsel voor uw aangepaste URL-schema met `msauth`. 
 
-**Bijvoorbeeld:** 
-`msauth.com.yourcompany.xforms`
+1. Voeg uw bundel-id toe aan het einde van het schema. Volg dit patroon: 
+
+   `$"msauth.(BundleId)"`
+
+   Hier `BundleId` de unieke identificatie van uw apparaat. Als `BundleId` bijvoorbeeld `yourcompany.xforms`is, wordt uw URL-schema `msauth.com.yourcompany.xforms`.
+  
+   > [!NOTE]
+   > Dit URL-schema wordt onderdeel van de omleidings-URI die uw app op unieke wijze identificeert wanneer het de reactie van de Broker ontvangt. Zorg ervoor dat de omleidings-URI in de indeling `msauth.(BundleId)://auth` is geregistreerd voor uw toepassing in de [Azure Portal](https://portal.azure.com).
+  
+   ```XML
+   <key>CFBundleURLTypes</key>
+   <array>
+       <dict>
+           <key>CFBundleURLSchemes</key>
+           <array>
+               <string>msauth.[BUNDLE_ID]</string>
+           </array>
+       </dict>
+   </array>
+   ```
+
+#### <a name="step-3-add-lsapplicationqueriesschemes"></a>Stap 3: LSApplicationQueriesSchemes toevoegen
+
+Voeg `LSApplicationQueriesSchemes` toe voor het toestaan van aanroepen naar de Microsoft Authenticator-app, als deze is geïnstalleerd.
 
 > [!NOTE]
-> Dit URL-schema wordt onderdeel van de RedirectUri die wordt gebruikt voor het uniek identificeren van uw app bij het ontvangen van het antwoord van de Broker. Zorg ervoor dat de RedirectUri in de indeling van `msauth.(BundleId)://auth` is geregistreerd voor uw toepassing in [Azure Portal](https://portal.azure.com).
+> Het `msauthv3` schema is vereist wanneer uw app wordt gecompileerd met Xcode 11 of hoger. 
 
-```XML
-<key>CFBundleURLTypes</key>
-<array>
-    <dict>
-        <key>CFBundleURLSchemes</key>
-        <array>
-            <string>msauth.[BUNDLE_ID]</string>
-        </array>
-    </dict>
-</array>
-```
-
-#### <a name="step-3-lsapplicationqueriesschemes"></a>Stap 3: LSApplicationQueriesSchemes
-
-**Voeg `LSApplicationQueriesSchemes`** toe om het aanroepen van Microsoft Authenticator toe te staan indien geïnstalleerd.
-Houd er rekening mee dat het schema msauthv3 vereist is bij het compileren van uw app met Xcode 11 of hoger. 
+Hier volgt een voor beeld van het toevoegen van `LSApplicationQueriesSchemes`:
 
 ```XML 
 <key>LSApplicationQueriesSchemes</key>
@@ -352,7 +366,7 @@ Houd er rekening mee dat het schema msauthv3 vereist is bij het compileren van u
 
 ### <a name="brokered-authentication-for-xamarinandroid"></a>Brokered-verificatie voor Xamarin. Android
 
-MSAL.NET biedt nog geen ondersteuning voor Brokers voor Android.
+MSAL.NET biedt geen ondersteuning voor Brokers voor Android.
 
 ## <a name="next-steps"></a>Volgende stappen
 

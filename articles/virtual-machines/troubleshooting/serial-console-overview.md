@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 8/30/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 20bc22661f9faad1b289dbbe7200f4f83c097f0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.openlocfilehash: 8eea568217dc5f47c45433e5fdd755682e322b2f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451228"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134054"
 ---
-# <a name="azure-serial-console"></a>Azure Serial Console
+# <a name="azure-serial-console"></a>Azure-seriële console
 
-De seriële console in de Azure Portal biedt toegang tot een op tekst gebaseerde console voor virtuele machines (Vm's) en installatie kopieën van virtuele-machine schaal sets met Linux of Windows. Deze seriële verbinding maakt verbinding met de seriële poort ttyS0 of COM1 van de VM of exemplaar van de virtuele-machineschaalset, en biedt zo toegang onafhankelijk van de status van het netwerk of het besturingssysteem. De seriële console is alleen toegankelijk via de Azure Portal en is alleen toegestaan voor gebruikers met een toegangs rol van Inzender of een hoger niveau voor virtuele-machine schaal sets.
+De seriële console in de Azure Portal biedt toegang tot een op tekst gebaseerde console voor virtuele machines (Vm's) en installatie kopieën van virtuele-machine schaal sets met Linux of Windows. Deze seriële verbinding maakt verbinding met de seriële ttyS0-of COM1-poort van de virtuele machine of het exemplaar van de VM-schaalset, waardoor toegang onafhankelijk is van de status van het netwerk of het besturings systeem. De seriële console is alleen toegankelijk via de Azure Portal en is alleen toegestaan voor gebruikers met een toegangs rol van Inzender of een hoger niveau voor virtuele-machine schaal sets.
 
 Seriële console werkt op dezelfde manier voor Vm's en exemplaren van virtuele-machine schaal sets. In dit document bevatten alle vermeldingen aan Vm's impliciet instanties voor schaal sets voor virtuele machines, tenzij anders vermeld.
 
@@ -34,28 +34,28 @@ Seriële console werkt op dezelfde manier voor Vm's en exemplaren van virtuele-m
 U hebt het volgende nodig om toegang te krijgen tot de seriële console op uw VM of virtuele-machine Scale set-instantie:
 
 - Diagnostische gegevens over opstarten moeten zijn ingeschakeld voor de virtuele machine
-- Er moet een gebruikers account zijn dat gebruikmaakt van wachtwoord verificatie in de virtuele machine. U kunt een gebruiker op basis van een wacht woord maken met de functie [wacht woord opnieuw instellen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) van de extensie VM-toegang. Selecteer **wachtwoord opnieuw instellen** uit de **ondersteuning en probleemoplossing** sectie.
+- Er moet een gebruikers account zijn dat gebruikmaakt van wachtwoord verificatie in de virtuele machine. U kunt een gebruiker op basis van een wacht woord maken met de functie [wacht woord opnieuw instellen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) van de extensie VM-toegang. Selecteer **wacht woord opnieuw instellen** in het gedeelte **ondersteuning en probleem oplossing** .
 - Het Azure-account voor toegang tot de seriële console moet de [rol Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) hebben voor zowel de VM als het opslag account voor [Diagnostische gegevens over opstarten](boot-diagnostics.md)
 
 > [!NOTE]
-> - Klassieke implementaties worden niet ondersteund. De virtuele machine of het exemplaar van de VM-schaalset moet gebruikmaken van het Azure Resource Manager-implementatie model.
+> Klassieke implementaties worden niet ondersteund. De virtuele machine of het exemplaar van de VM-schaalset moet gebruikmaken van het Azure Resource Manager-implementatie model.
 
 ## <a name="get-started-with-the-serial-console"></a>Aan de slag met de seriële console
 De seriële console voor Vm's en schaal sets voor virtuele machines is alleen toegankelijk via de Azure Portal:
 
 ### <a name="serial-console-for-virtual-machines"></a>Seriële console voor Virtual Machines
 Seriële console voor Vm's is net zo eenvoudig als klikken op **seriële console** in de sectie **ondersteuning en probleem oplossing** in de Azure Portal.
-  1. Open de [Azure Portal](https://portal.azure.com).
+  1. Open de [Azure-portal](https://portal.azure.com).
 
   1. Ga naar **alle resources** en selecteer een virtuele machine. De overzichts pagina voor de VM wordt geopend.
 
-  1. Schuif omlaag naar de **ondersteuning en probleemoplossing** sectie en selecteer **seriële console**. Een nieuw deelvenster met de seriële console wordt geopend en wordt de verbinding wordt gestart.
+  1. Schuif omlaag naar de sectie **ondersteuning en probleem oplossing** en selecteer **seriële console**. Een nieuw deelvenster met de seriële console wordt geopend en wordt de verbinding wordt gestart.
 
      ![Venster Linux-seriële console](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
 ### <a name="serial-console-for-virtual-machine-scale-sets"></a>Seriële console voor Virtual Machine Scale Sets
 Seriële console is beschikbaar voor schaal sets voor virtuele machines, die toegankelijk zijn voor elk exemplaar in de schaalset. U moet naar de afzonderlijke instantie van een schaalset voor virtuele machines gaan voordat u de knop **seriële console** ziet. Als voor de virtuele-machine schaal sets geen diagnostische gegevens over opstarten zijn ingeschakeld, moet u het model voor de schaalset van de virtuele machine bijwerken om diagnostische gegevens over opstarten in te scha kelen en vervolgens alle exemplaren naar het nieuwe model bijwerken om toegang te krijgen tot de seriële console.
-  1. Open de [Azure Portal](https://portal.azure.com).
+  1. Open de [Azure-portal](https://portal.azure.com).
 
   1. Ga naar **alle resources** en selecteer een schaalset voor virtuele machines. De overzichts pagina voor de schaalset voor virtuele machines wordt geopend.
 
@@ -66,6 +66,37 @@ Seriële console is beschikbaar voor schaal sets voor virtuele machines, die toe
   1. Selecteer **seriële console**in het gedeelte **ondersteuning en probleem oplossing** . Een nieuw deelvenster met de seriële console wordt geopend en wordt de verbinding wordt gestart.
 
      ![Seriële console voor virtuele Linux-machine schaal sets](./media/virtual-machines-serial-console/vmss-start-console.gif)
+
+## <a name="serial-console-rbac-role"></a>RBAC-rol seriële console
+Zoals hierboven vermeld, vereist de seriële console VM-bijdrager of meer toegang tot uw VM of virtuele-machine schaalset. Als u geen VM-bijdrager aan een gebruiker wilt verlenen, maar toch een gebruiker toegang wilt geven tot de seriële console, kunt u dit doen met de volgende rol:
+
+```
+{
+  "Name": "Serial Console Role",
+  "IsCustom": true,
+  "Description": "Role for Serial Console Users that provides significantly reduced access than VM Contributor",
+  "Actions": [
+      "Microsoft.Compute/virtualMachines/*/write",
+      "Microsoft.Compute/virtualMachines/*/read",
+      "Microsoft.Storage/storageAccounts/*"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/subscriptions/<subscriptionId>"
+  ]
+}
+```
+
+### <a name="to-create-and-use-the-role"></a>De rol maken en gebruiken:
+*   Sla de JSON op een bekende locatie op, bijvoorbeeld `~/serialconsolerole.json`.
+*   Gebruik de volgende AZ CLI-opdracht om de roldefinitie te maken: `az role definition create --role-definition serialconsolerole.json -o=json`
+*   Als u de rol moet bijwerken, gebruikt u de volgende opdracht: `az role definition update --role-definition serialconsolerole.json -o=json`
+*   De rol wordt weer gegeven in Access Control (IAM) in de portal (dit kan enkele minuten duren)
+*   U kunt gebruikers toevoegen aan de virtuele machine en het opslag account voor diagnostische gegevens over opstarten met de rol van aangepaste rol
+    *   Houd er rekening mee dat aan de gebruiker de aangepaste rol moet worden verleend op de VM *en* het opslag account voor diagnostische gegevens over opstarten
+
 
 ## <a name="advanced-uses-for-serial-console"></a>Geavanceerd gebruik van seriële console
 Afgezien van de toegang tot de console tot uw virtuele machine, kunt u ook de Azure Serial console gebruiken voor het volgende:

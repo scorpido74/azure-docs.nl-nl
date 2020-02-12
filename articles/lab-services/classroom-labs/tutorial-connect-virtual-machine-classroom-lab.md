@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 30983d141f087a46e420f7ea457fba181956c28e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 27d79e28a986e929fb71dd77fc50b3c2cd32618f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577820"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134042"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Zelfstudie: toegang tot een leslokaallab in Azure Lab Services
 In deze zelfstudie maakt u als student verbinding met een virtuele machine (VM) in een leslokaallab. 

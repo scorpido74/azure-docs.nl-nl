@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 11/19/2019
-ms.openlocfilehash: a906e5f354f332cebb0656c6fc40b17c8a5016a2
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546687"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137552"
 ---
 # <a name="evaluate-model-module"></a>Model module evalueren
 
@@ -80,10 +80,10 @@ Omdat dit een cluster model is, zijn de evaluatie resultaten anders dan wanneer 
 
 In deze sectie worden de metrische gegevens die worden geretourneerd voor de specifieke typen modellen beschreven die worden ondersteund voor gebruik met het **Evaluate-model**:
 
-+ [classificatie modellen](#bkmk_classification)
-+ [regressie modellen](#bkmk_regression)
++ [classificatie modellen](#metrics-for-classification-models)
++ [regressie modellen](#metrics-for-regression-models)
 
-###  <a name="bkmk_classification"></a>Metrische gegevens voor classificatie modellen
+### <a name="metrics-for-classification-models"></a>Metrische gegevens voor classificatie modellen
 
 De volgende metrische gegevens worden gerapporteerd bij het evalueren van classificatie modellen. Als u modellen vergelijkt, worden ze gerangschikt op basis van de metrische gegevens die u voor de evaluatie selecteert.  
   
@@ -101,7 +101,7 @@ De volgende metrische gegevens worden gerapporteerd bij het evalueren van classi
   
 - **Verlies van trainings logboeken** is een enkele score die het voor deel van de classificatie op een wille keurige voor spelling weergeeft. Het logboek verlies meet de onzekerheid van uw model door de waarschijnlijkheid dat het wordt uitgevoerd, te vergelijken met de bekende waarden van de labels. U wilt het logboek verlies voor het model als geheel minimaliseren.
 
-##  <a name="bkmk_regression"></a>Metrische gegevens voor regressie modellen
+### <a name="metrics-for-regression-models"></a>Metrische gegevens voor regressie modellen
  
 De metrische gegevens die voor regressie modellen zijn geretourneerd, zijn ontworpen om de hoeveelheid fout te schatten.  Een model wordt gezien als een goede grootte van de gegevens als het verschil tussen de waargenomen en voorspelde waarden klein is. Gezien het patroon van de verschillen (het verschil tussen een voorspeld punt en de bijbehorende werkelijke waarde), kan u echter een heleboel informatie over mogelijke afwijking in het model vertellen.  
   
@@ -115,7 +115,7 @@ De metrische gegevens die voor regressie modellen zijn geretourneerd, zijn ontwo
   
 - Met **relatieve kwadratische fout (RSE)** wordt het totale kwadraat van de voorspelde waarden op dezelfde manier genormaliseerd door te delen door de totale kwadraat fout van de werkelijke waarden.  
   
-- **Gemiddelde nul een fout (MZOE)** geeft aan of de voor spelling juist is of niet.  Met andere woorden: `ZeroOneLoss(x,y) = 1` wanneer `x!=y`; anders `0`.
+
   
 - De **determinatie coëfficiënt**, vaak R<sup>2</sup>genoemd, vertegenwoordigt de voorspellende kracht van het model als een waarde tussen 0 en 1. Nul betekent dat het model wille keurig is (er wordt niets uitgelegd). 1 betekent dat er een perfecte aanpassing is. Wees echter voorzichtig bij het interpreteren van R<sup>2</sup> -waarden, omdat lage waarden volledig normaal kunnen zijn en hoge waarden kunnen worden verdacht.
   

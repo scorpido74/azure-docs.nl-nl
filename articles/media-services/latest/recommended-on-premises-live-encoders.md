@@ -6,21 +6,21 @@ keywords: code ring; encoders; media
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 11/18/2019
+ms.date: 02/04/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: MT
+ms.openlocfilehash: bccdb49c22bce983fe8cb2aba1387c4b1645b62c
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186024"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132711"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Aanbevolen code ring voor live streamen
 
 In Azure Media Services vertegenwoordigt een [live gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) (kanaal) een pijp lijn voor het verwerken van live-streaming-inhoud. De live-gebeurtenis ontvangt Live invoer stromen op een van de volgende twee manieren.
 
-* Een on-premises Live Encoder verzendt een gegevensgestuurde multi-bitrate RTMP-of Smooth Streaming (gefragmenteerde MP4)-stream naar de live gebeurtenis die niet is ingeschakeld voor het uitvoeren van Live code ring met Media Services. De opgenomen streams passeren Live gebeurtenissen zonder verdere verwerking. Deze methode wordt **Pass-Through**genoemd. Een live coderings programma kan een single-bitrate stream verzenden naar een Pass-Through-kanaal. Deze configuratie wordt niet aanbevolen omdat de client niet is toegestaan voor Adaptive Bitrate Streaming.
+* Een on-premises Live Encoder verzendt een gegevensgestuurde multi-bitrate RTMP-of Smooth Streaming (gefragmenteerde MP4)-stream naar de live gebeurtenis die niet is ingeschakeld voor het uitvoeren van Live code ring met Media Services. De opgenomen streams passeren Live gebeurtenissen zonder verdere verwerking. Deze methode wordt **Pass-Through**genoemd. We raden u aan om met het Live coderings programma multi-bitrate streams te verzenden in plaats van een single-bitrate stream naar een Pass-through live-gebeurtenis om Adaptive Bitrate Streaming toe te staan aan de client.
 
   > [!NOTE]
   > Het gebruik van een Pass-Through-methode is de voordeligste manier om live streamen uit te voeren.
@@ -29,21 +29,28 @@ In Azure Media Services vertegenwoordigt een [live gebeurtenis](https://docs.mic
 
 Zie voor gedetailleerde informatie over Live encoding met Media Services [live streamen met Media Services v3](live-streaming-overview.md).
 
+## <a name="encoder-requirements"></a>Encoder vereisten
+
+Encoders moeten TLS 1,2 ondersteunen bij het gebruik van HTTPS-of RTMP-protocollen.
+
 ## <a name="live-encoders-that-output-rtmp"></a>Live coderings Programma's die RTMP uitvoeren
 
 Media Services raadt het gebruik aan van een van de volgende live-encoders met RTMP als uitvoer. De ondersteunde URL-schema's zijn `rtmp://` of `rtmps://`.
 
+Bij het streamen via RTMP controleert u de instellingen voor de firewall en/of proxy om te zien of de uitgaande TCP-poorten 1935 en 1936 open zijn.<br/><br/>
+Bij het streamen via RTMPS controleert u de instellingen voor de firewall en/of proxy om te zien of de uitgaande TCP-poorten 2935 en 2936 open zijn.
+
 > [!NOTE]
-> Bij het streamen via RTMP controleert u de instellingen voor de firewall en/of proxy om te zien of de uitgaande TCP-poorten 1935 en 1936 open zijn.
+> Encoders moeten TLS 1,2 ondersteunen bij het gebruik van RTMP-protocollen.
 
 - Adobe Flash Media Live Encoder 3.2
 - [Cambria Live 4,3](https://www.capellasystems.net/products/cambria-live/)
+- Elementair Live (versie 2.14.15 en hoger)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
 - Switcher Studio (iOS)
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Telestream-Wirecast (versie 13.0.2 of hoger vanwege de TLS 1,2-vereiste)
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -57,17 +64,19 @@ Media Services raadt het gebruik aan van een van de volgende live-encoders met R
 
 Media Services raadt u aan om een van de volgende Live coderings Programma's te gebruiken met multi-bitrate Smooth Streaming (gefragmenteerde MP4) als uitvoer. De ondersteunde URL-schema's zijn `http://` of `https://`.
 
+> [!NOTE]
+> Encoders moeten TLS 1,2 ondersteunen bij het gebruik van HTTPS-protocollen.
+
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
-- Envivio 4Caster C4 Gen III
+- Elementaire Live (versie 2.14.15 en hoger vanwege de TLS 1,2-vereiste)
+- Envivio 4Caster C4 Gen III 
 - Denk aan de communicatie selenio MCP3
 - Media Excel Hero Live en Hero 4K (UHD/HEVC)
 - [Ffmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  Als u live-gebeurtenissen in meerdere talen wilt streamen (bijvoorbeeld een Engels audio nummer en één Spaans audio spoor), kunt u dit doen met de media Excel live encoder die is geconfigureerd voor het verzenden van live feeds naar een Pass-through live-gebeurtenis.
-
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Instellingen voor on-premises Live coderings Programma's configureren
 

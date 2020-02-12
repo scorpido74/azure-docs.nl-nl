@@ -9,8 +9,8 @@
   items:
     - name: Selfservice voor wachtwoordherstel inschakelen
       href: tutorial-enable-sspr.md
-    - name: MFA voor toepassingen inschakelen
-      href: tutorial-mfa-applications.md
+    - name: Azure Multi-Factor Authentication inschakelen
+      href: tutorial-enable-azure-mfa.md
     - name: On-premises integratie van selfservice voor wachtwoordherstel inschakelen
       href: tutorial-enable-writeback.md
     - name: Azure Identity Protection integreren

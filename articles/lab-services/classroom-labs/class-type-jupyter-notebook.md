@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 695b87540178fb5c1012a095c2a86937a189ef24
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75530677"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133751"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Stel een lab in om data Science te leren met python-en Jupyter-notebooks
 
@@ -30,7 +30,7 @@ Als u dit Lab wilt instellen, hebt u een Azure-abonnement en een Lab-account nod
 
 ### <a name="lab-account-settings"></a>Instellingen van Lab-account
 
-Schakel de instellingen die worden beschreven in de onderstaande tabel voor het lab-account in. Zie [Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers opgeven](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators)voor meer informatie over het inschakelen van Marketplace-installatie kopieën.
+Schakel de instellingen die worden beschreven in de onderstaande tabel voor het lab-account in. Zie [Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers opgeven](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators)voor meer informatie over het inschakelen van Marketplace-installatie kopieën.
 
 | Account instelling Lab | Instructies |
 | ------------------- | ------------ |
@@ -46,7 +46,7 @@ Gebruik de instellingen in de onderstaande tabel bij het instellen van een leslo
 | Lab-instellingen | Waarde/instructies |
 | ------------ | ------------------ |
 |Grootte van virtuele machine| Kleine GPU (Compute). Deze grootte is het meest geschikt voor computerintensieve en netwerkintensieve toepassingen, zoals kunst matige intelligentie en diep gaande lessen. |
-|Installatie kopie van virtuele machine| Virtuele machine voor datatechnologie - Windows 2016|
+|Installatie kopie van virtuele machine| Data Science Virtual Machine-Windows 2016|
 
 ## <a name="template-machine"></a>Sjabloon machine
 
@@ -54,7 +54,7 @@ De [Data Science virtual machine-](https://azuremarketplace.microsoft.com/market
 
 De resterende taak voor het instellen van de klasse is het leveren van lokale notitie blokken.  Zie [How to Configure an environment with Jupyter notebooks](../../machine-learning/how-to-configure-environment.md#jupyter)voor instructies over het gebruik van de Azure machine learning-voor beelden.  U kunt ook uw eigen notitie blokken op de sjabloon machine opgeven.  De notitie blokken worden gekopieerd naar alle studenten machines wanneer de sjabloon wordt gepubliceerd.
 
-## <a name="cost-estimate"></a>Kostenschatting
+## <a name="cost-estimate"></a>Kosten raming
 
 Laten we een mogelijke schatting van de kosten voor deze klasse beslaan.  We gebruiken een klasse van 25 studenten.  Er zijn 20 uur geplande tijd voor de klasse.  Daarnaast krijgt elke student tien uur quota voor huis werk of toewijzingen buiten een geplande klasse tijd.  De grootte van de virtuele machine die u hebt gekozen, is een kleine GPU (Compute). Dit zijn 139 Lab-eenheden.
 

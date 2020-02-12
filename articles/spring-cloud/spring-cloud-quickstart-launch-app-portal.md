@@ -1,23 +1,23 @@
 ---
-title: 'Snelstartgids: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal'
-description: In deze Quick Start implementeert u een voorbeeld toepassing in de Azure lente-Cloud met behulp van de Azure Portal.
+title: 'Snelstartgids: een bestaande Azure lente-Cloud toepassing starten met behulp van de Azure Portal'
+description: In deze Quick Start implementeert u een lente-Cloud toepassing in de Azure lente-Cloud met behulp van de Azure Portal.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/4/2019
+ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: f88319319b366ec8b726d5cf6cce540008497b57
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 67ad112021c2fadb5ea93ffefcf5e58e9404e92a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278911"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137742"
 ---
-# <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Snelstartgids: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal
+# <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Snelstartgids: een bestaande Azure lente-Cloud toepassing starten met behulp van de Azure Portal
 
-Met Azure lente Cloud kunt u eenvoudig lente-Cloud toepassingen uitvoeren op Azure.
+In deze Quick start ziet u hoe u een bestaande lente-Cloud toepassing kunt implementeren in Azure. Met Azure lente Cloud kunt u eenvoudig lente-Cloud toepassingen uitvoeren op Azure. 
 
-In deze Quick start ziet u hoe u een bestaande lente-Cloud toepassing kunt implementeren in Azure.  De voorbeeld toepassings code die in deze zelf studie wordt gebruikt, is te vinden in onze [github samples-opslag plaats](https://github.com/Azure-Samples/PiggyMetrics). Wanneer u klaar bent, is de beschik bare voorbeeld toepassing online en kan deze worden beheerd via de Azure Portal.
+De voorbeeld toepassings code die in deze zelf studie wordt gebruikt, is te vinden in onze [github samples-opslag plaats](https://github.com/Azure-Samples/PiggyMetrics). Wanneer u klaar bent, is de beschik bare voorbeeld toepassing online en kan deze worden beheerd via de Azure Portal.
 
 In deze Quick Start leert u het volgende:
 
@@ -36,7 +36,7 @@ In deze Quick Start leert u het volgende:
 >[!TIP]
 > Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren.  Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de nieuwste versies van Git, JDK, maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u uw [Azure Cloud shell](https://shell.azure.com) vanuit shell.Azure.com.  [Lees onze documentatie](../cloud-shell/overview.md) voor meer informatie over Azure Cloud shell.
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 1. [Git installeren](https://git-scm.com/)
 2. [JDK 8 installeren](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
@@ -80,7 +80,7 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 
 1. Stel het **Label** in op config.
 
-1. Selecteer **Apply** om uw wijzigingen op te slaan.
+1. Selecteer **Toep assen** om uw wijzigingen op te slaan.
 
     ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
@@ -150,7 +150,7 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u de volgende zaken geleerd:
+In deze snelstart hebt u de volgende zaken geleerd:
 
 > [!div class="checklist"]
 > * Een service-exemplaar inrichten

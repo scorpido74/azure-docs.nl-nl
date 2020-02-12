@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: c5379452449188f17b75036eb09c3ca15bae0c2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1cf519d8d8c25877b49bf14aefd1c0be3afa8023
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448164"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137879"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Snelstartgids: digitale inkt herkennen met de inkt Recognizer REST API enC#
 
@@ -31,8 +31,8 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Eender welke versie van [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
-- [Newtonsoft.Json](https://www.newtonsoft.com/json)
+- Elke versie van [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
+- [Newton soft. json](https://www.newtonsoft.com/json)
     - Newton soft. json installeren als een NuGet-pakket in Visual Studio:
         1. Klik met de rechter muisknop op **Solution Manager**
         2. Klik op **NuGet-pakketten beheren...**
@@ -49,11 +49,11 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
 
 1. Maak in Visual Studio een nieuwe console oplossing en voeg de volgende pakketten toe. 
     
-    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
+    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
 
 2. Maak variabelen voor de sleutel en het eind punt van uw abonnement en het JSON-voorbeeld bestand. Het eind punt zal later worden gecombineerd met `inkRecognitionUrl` om toegang te krijgen tot de API. 
 
-    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
+    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>Een functie maken om aanvragen te verzenden
 
@@ -63,7 +63,7 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
  
 3. De aanvraag verzenden met `PutAsync()`. Als de aanvraag is voltooid, retourneert u het antwoord.  
     
-    [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=request)]
+    [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=request)]
 
 ## <a name="send-an-ink-recognition-request"></a>Een aanvraag voor inkt herkenning verzenden
 
@@ -71,13 +71,13 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
 
 2. Deserialiseren van het JSON-object en schrijf het naar de-console. 
     
-    [!code-csharp[request to recognize ink data](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=recognize)]
+    [!code-csharp[request to recognize ink data](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=recognize)]
 
 ## <a name="load-your-digital-ink-data"></a>Uw digitale inkt gegevens laden
 
 Maak een functie met de naam `LoadJson()` om het JSON-bestand met de gegevens van de inkt te laden. Gebruik een `StreamReader` en `JsonTextReader` om een `JObject` te maken en het te retour neren.
 
-[!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
+[!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
 
 ## <a name="send-the-api-request"></a>De API-aanvraag verzenden
 
@@ -85,7 +85,7 @@ Maak een functie met de naam `LoadJson()` om het JSON-bestand met de gegevens va
 
 2. Roep de hierboven gemaakte `recognizeInk()`-functie aan. Gebruik `System.Console.ReadKey()` om te voor komen dat het console venster wordt geopend nadat de toepassing is uitgevoerd.
     
-    [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=main)]
+    [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=main)]
 
 
 ## <a name="run-the-application-and-view-the-response"></a>De toepassing uitvoeren en het antwoord weer geven
@@ -96,7 +96,7 @@ Voer de toepassing uit. Een geslaagde reactie wordt geretourneerd in JSON-indeli
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naslaginformatie over REST API](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [Naslaginformatie over de REST-API](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 
 Bekijk de volgende voorbeeld toepassingen op GitHub voor meer informatie over de werking van de API voor inkt herkenning in een digitale hand schrift-app:

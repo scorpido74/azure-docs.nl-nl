@@ -1,5 +1,5 @@
 ---
-title: Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen | Microsoft Docs
+title: Klassieke abonnements beheerders rollen, Azure RBAC-rollen en Azure AD-rollen
 description: In dit artikel worden de verschillende rollen in Azure beschreven, te weten klassieke abonnementsbeheerdersrollen, RBAC-rollen (rollen op basis van toegangsbeheer) van Azure en beheerdersrollen van Azure AD (Azure Active Directory)
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1d0966737964c44fc4a6778cdb811a4ecc732ffc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 08c14135ba17df4de446de5625352c8cffdc60a1
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979310"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138078"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen
 
@@ -79,7 +79,7 @@ Azure RBAC staat voor op rollen gebaseerd toegangsbeheer en is een machtigingssy
 | [Lezer](built-in-roles.md#reader) | <ul><li>Azure-resources weergeven</li></ul> | Geldt voor alle resourcetypen. |
 | [Beheerder van gebruikerstoegang](built-in-roles.md#user-access-administrator) | <ul><li>Toegang van gebruikers tot Azure-resources beheren</li></ul> |  |
 
-Met de overige ingebouwde rollen kunnen specifieke Azure-resources worden beheerd. Met de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) kan een gebruiker bijvoorbeeld virtuele machines maken en beheren. Zie [Ingebouwde rollen](built-in-roles.md) voor een lijst met alle ingebouwde rollen voor Azure-resources.
+De overige ingebouwde rollen zijn bedoeld voor het beheer van specifieke Azure-resources. Met de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) kan een gebruiker bijvoorbeeld virtuele machines maken en beheren. Zie [Ingebouwde rollen](built-in-roles.md) voor een lijst met alle ingebouwde rollen voor Azure-resources.
 
 Alleen Azure Portal en de API's van Azure Resource Manager ondersteunen RBAC. Gebruikers, groepen en toepassingen met toegewezen RBAC-rollen kunnen geen gebruikmaken van de [API's van het klassieke implementatiemodel van Azure](../azure-resource-manager/management/deployment-models.md).
 

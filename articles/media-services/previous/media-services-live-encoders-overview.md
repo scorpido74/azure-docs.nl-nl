@@ -1,6 +1,6 @@
 ---
-title: On-premises coderingsprogramma's configureren bij gebruik van Azure Media Services om multi-bitrate streams te maken | Microsoft Docs
-description: In dit onderwerp geeft een lijst van on-premises live encoders die u gebruiken kunt om te leggen van uw live-evenementen en verzenden van een single-bitrate live stream aan AMS-kanalen (die zijn live codering is ingeschakeld) voor verdere verwerking. Het onderwerp bevat koppelingen naar zelfstudies die laten zien hoe vermelde coderingsprogramma's configureren.
+title: On-premises encoders configureren bij gebruik van Azure Media Services om multi-bitrate-streams te maken | Microsoft Docs
+description: In dit onderwerp vindt u een overzicht van on-premises Live coderings Programma's die u kunt gebruiken om uw Live-gebeurtenissen vast te leggen en een live stream met één bitsnelheid te verzenden naar AMS-kanalen (waarvoor Live code ring is ingeschakeld) voor verdere verwerking. Het onderwerp is gekoppeld aan zelf studies die laten zien hoe u de weer gegeven encoders configureert.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,33 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8bd0014518dc93abb952114a1728f8fc1d3fb4a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71a31228602ef161158eaa05c80d50f65de98a50
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708077"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133272"
 ---
-# <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>On-premises coderingsprogramma's configureren bij het gebruik van Azure Media Services om multi-bitrate streams te maken
-In dit onderwerp geeft een lijst van on-premises live encoders die u gebruiken kunt om te leggen van uw live-evenementen en verzenden van een single-bitrate live stream aan AMS-kanalen (die zijn live codering is ingeschakeld) voor verdere verwerking. Het onderwerp bevat ook koppelingen naar zelfstudies die laten zien hoe vermelde coderingsprogramma's configureren.
+# <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>On-premises encoders configureren bij gebruik van Azure Media Services om multi-bitrate-streams te maken
+In dit onderwerp vindt u een overzicht van on-premises Live coderings Programma's die u kunt gebruiken om uw Live-gebeurtenissen vast te leggen en een live stream met één bitsnelheid te verzenden naar AMS-kanalen (waarvoor Live code ring is ingeschakeld) voor verdere verwerking. In het onderwerp vindt u ook koppelingen naar zelf studies die laten zien hoe u de weer gegeven encoders configureert.
 
 > [!NOTE]
 > Bij het streamen via RTMP controleert u de instellingen voor de firewall en/of proxy om te zien of de uitgaande TCP-poorten 1935 en 1936 open zijn.
 
-## <a name="flash-media-live-encoder"></a>Flash Media Live Encoder
-Voor meer informatie over het configureren van de [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) encoder (FMLE) voor het verzenden van een single-bitrate live stream naar een AMS-kanaal, Zie [FMLE configureren](media-services-configure-fmle-live-encoder.md).
+## <a name="haivision-kb-encoder"></a>Haivision KB-coderings programma
+Zie [HAIVISION KB Encoder configureren](media-services-configure-kb-live-encoder.md)voor meer informatie over het configureren van de coderings encoder [Haivision KB](https://www.haivision.com/products/kb-series/) om een live stream met één bitsnelheid naar een AMS-kanaal te verzenden.
 
-## <a name="haivision-kb-encoder"></a>Haivision KB-coderingsprogramma
-Voor meer informatie over het configureren van de [Haivision KB-coderingsprogramma](https://www.haivision.com/products/kb-series/) encoder voor het verzenden van een single-bitrate live stream naar een AMS-kanaal, Zie [Haivision KB-coderingsprogramma configureren](media-services-configure-kb-live-encoder.md).
-
-## <a name="telestream-wirecast"></a>Telestream Wirecast
-Voor meer informatie over het configureren van de [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) encoder voor het verzenden van een single-bitrate live stream naar een AMS-kanaal, Zie [Wirecast configureren](media-services-configure-wirecast-live-encoder.md).
+## <a name="telestream-wirecast"></a>Telestream-Wirecast
+Zie [Configuring Wirecast](media-services-configure-wirecast-live-encoder.md)(Engelstalig) voor informatie over het configureren van de Wirecast encoder van de [Telestream](https://www.telestream.net/wirecast/overview.htm) om een live stream met één bitsnelheid naar een AMS-kanaal te verzenden.
 
 ## <a name="newtek-tricaster"></a>NewTek TriCaster
-Voor meer informatie over het configureren van de [Tricaster](https://newtek.com/products/tricaster-40.html) encoder voor het verzenden van een single-bitrate live stream naar een AMS-kanaal, Zie [Tricaster configureren](media-services-configure-tricaster-live-encoder.md).
+Zie [Configuring TriCaster](media-services-configure-tricaster-live-encoder.md)(Engelstalig) voor informatie over het configureren van het [TriCaster](https://newtek.com/products/tricaster-40.html) -coderings programma om een live stream met één bitsnelheid naar een AMS-kanaal te verzenden.
 
 ## <a name="elemental-live"></a>Elemental Live
-Zie voor meer informatie, [Elemental Live](https://www.elementaltechnologies.com/products/elemental-live).
+Zie voor meer informatie [elementaire Live](https://www.elementaltechnologies.com/products/elemental-live).
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

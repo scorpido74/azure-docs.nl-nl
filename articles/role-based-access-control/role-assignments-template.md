@@ -1,5 +1,5 @@
 ---
-title: Roltoewijzingen toevoegen met behulp van Azure RBAC en Azure Resource Manager sjablonen
+title: Roltoewijzingen toevoegen met RBAC-en Azure Resource Manager-sjablonen
 description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers, groepen, service-principals of beheerde identiteiten met behulp van op rollen gebaseerd toegangs beheer (RBAC) en Azure Resource Manager sjablonen van Azure.
 services: active-directory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: aeb4bfbc40196575e2cb812738a9ab5de991d2aa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9f817880f938f5d03024e3aacd9b84817a5ac721
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981021"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138287"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Roltoewijzingen toevoegen met behulp van Azure RBAC en Azure Resource Manager sjablonen
 
@@ -195,7 +195,7 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-### <a name="resource"></a>Bron
+### <a name="resource"></a>Resource
 
 Als u een roltoewijzing moet toevoegen op het niveau van een resource, is de indeling van de roltoewijzing verschillend. U geeft de naam ruimte van de resource provider en het resource type van de resource waaraan u de rol wilt toewijzen. U neemt ook de naam van de resource op in de naam van de roltoewijzing.
 
