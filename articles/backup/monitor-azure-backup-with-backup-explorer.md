@@ -1,98 +1,103 @@
 ---
 title: Uw back-ups controleren met backup Explorer
-description: Een artikel waarin wordt beschreven hoe u back-up Explorer kunt gebruiken voor het uitvoeren van real-time bewaking van back-ups in kluizen, abonnementen, regio's en tenants
+description: In dit artikel wordt beschreven hoe u met back-up-Verkenner realtime-bewaking van back-ups in kluizen, abonnementen, regio's en tenants uitvoert.
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 331d8aeeb828dedb6700a94fafa074c179bef7ab
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b65f68e33b53dff341ee72f6b9e9f42e344c49b1
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992181"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149572"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Uw back-ups controleren met backup Explorer
 
-Als organisaties een back-up van meer en meer machines naar de Cloud maken, is het belang rijk dat u een centrale locatie hebt voor het weer geven van operationele informatie over back-ups over een groot goed, om efficiënt back-ups te controleren.
+Als organisaties een back-up maken van meer en meer machines naar de Cloud, wordt het steeds belang rijker om deze back-ups efficiënt te bewaken. De beste manier om te beginnen is door een centrale locatie te gebruiken voor het weer geven van operationele informatie over een groot goed.
 
-De werkmap van de back-up Explorer is een ingebouwde Azure Monitor werkmap waarmee back-uptoepassingen een enkel glas venster kunnen hebben voor het uitvoeren van operationele bewakings activiteiten met betrekking tot het maken van een back-up van het hele back-upbestand op Azure (die tenants, locaties, abonnementen, resource groepen en kluizen), allemaal vanaf een centrale locatie. In ruime mate biedt het de volgende mogelijkheden:
+Backup Explorer is een ingebouwde Azure Monitor werkmap waarmee Azure Backup klanten deze ene centrale locatie. Met back-up Verkenner kunt u operationele activiteiten bewaken voor het hele back-upbestand op Azure, voor het omspannen van tenants, locaties, abonnementen, resource groepen en kluizen. In ruime mate biedt backup Explorer de volgende mogelijkheden:
 
-* **Op schaal perspectief** : een geaggregeerde weer gave van de back-upitems, taken, waarschuwingen, beleids regels en resources die niet zijn geconfigureerd voor back-up op de volledige back-up. 
-* **Analyse van inzoomen** : u kunt ervoor kiezen om gedetailleerde informatie over elk van de entiteiten te verkrijgen: de taken, waarschuwingen, beleids regels en back-upitems, allemaal vanaf één locatie.
-* **Interfaces waarvoor actie** kan worden uitgevoerd: Zodra u een probleem hebt geïdentificeerd, kunt u kiezen om acties uit te voeren door naadloos naar het back-upitem of de Azure-resource te navigeren.
+* **Op schaal**: krijg een geaggregeerde weer gave van de back-upitems, taken, waarschuwingen, beleids regels en resources die nog niet zijn geconfigureerd voor back-up in het hele erfgoed. 
+* **Analyse van inzoomen**: gedetailleerde informatie over elk van uw taken, waarschuwingen, beleids regels en back-upitems op één plek weer geven.
+* **Interfaces waarvoor actie**kan worden uitgevoerd: nadat u een probleem hebt geïdentificeerd, kunt u dit oplossen door probleemloos naar het relevante back-upitem of de Azure-resource te gaan.
 
-De bovenstaande mogelijkheden worden out-of-the-box door systeem eigen integratie geboden met Azure resource Graph en Azure Monitor werkmappen.
+Deze mogelijkheden worden out-of-Box door systeem eigen integratie geboden met Azure resource Graph en Azure Monitor werkmappen.
 
 > [!NOTE]
-> * Backup Explorer is momenteel alleen beschikbaar voor Azure VM-gegevens.
-> * De back-up Verkenner is bedoeld als operationeel dash board voor het weer geven van informatie over uw back-ups in de afgelopen 7 dagen (maximum).
-> * Het is momenteel niet mogelijk om de back-upverkenner-sjabloon aan te passen. Het is ook niet aanbevolen om aangepaste automatiserings functies te schrijven op Azure-resource grafiek gegevens.
+> * Backup Explorer is momenteel alleen beschikbaar voor Azure virtual machines-gegevens (Vm's).
+> * Backup Explorer is bedoeld als operationeel dash board voor het weer geven van informatie over uw back-ups in de afgelopen 7 dagen (maximum).
+> * Het is momenteel niet mogelijk om de back-upverkenner-sjabloon aan te passen. 
+> * Het is niet raadzaam om aangepaste Automatiseringen te schrijven op Azure-resource grafiek gegevens.
 
-## <a name="getting-started"></a>Aan de slag
+## <a name="get-started"></a>Aan de slag
 
-U kunt de back-up Verkenner openen door naar een van uw Recovery Services-kluizen te gaan en te klikken op de koppeling **back-up Verkenner** op de pagina **overzicht** .
+U kunt back-upverkenner openen door naar een van uw Recovery Services-kluizen te gaan en de koppeling **back-up** te selecteren in het deel venster **overzicht** .
 
 ![Snelle koppeling van kluis](media/backup-azure-monitor-with-backup-explorer/vault-quick-link.png)
 
-Als u op de koppeling klikt, wordt de back-upverkenner geopend, met daarin een geaggregeerde weer gave over alle kluizen en abonnementen waartoe u toegang hebt. Als u een Azure Lighthouse-account gebruikt, kunt u gegevens weer geven over alle tenants waartoe u toegang hebt (Zie de sectie hieronder voor meerdere Tenant weergaven) voor meer informatie.
+Als u de koppeling selecteert, wordt back-upverkenner geopend, waarmee een geaggregeerde weer gave wordt geboden over alle kluizen en abonnementen waartoe u toegang hebt. Als u een Azure Lighthouse-account gebruikt, kunt u gegevens weer geven over alle tenants waartoe u toegang hebt. Zie de sectie ' cross-Tenant weergaven ' aan het einde van dit artikel voor meer informatie.
 
-![Landings pagina Explorer](media/backup-azure-monitor-with-backup-explorer/explorer-landing-page.png)
+![Landings pagina van back-up Verkenner](media/backup-azure-monitor-with-backup-explorer/explorer-landing-page.png)
 
 ## <a name="backup-explorer-use-cases"></a>Use cases in back-up Verkenner
 
-De back-up Verkenner bestaat uit meerdere tabbladen. elk tabblad bevat gedetailleerde informatie over een specifiek type back-upartefact, bijvoorbeeld back-upitems, taken, beleids regels, enzovoort. Deze sectie bevat een kort overzicht van elk van de tabbladen. De Video's bieden voorbeeld cases voor elk van de tabbladen, samen met een beschrijving van de verschillende beschik bare besturings elementen voor de gebruiker.
+In back-upverkenner worden meerdere tabbladen weer gegeven, elk met gedetailleerde informatie over een specifieke back-upartefact (bijvoorbeeld een back-upitem, taak of beleid). Deze sectie bevat een kort overzicht van elk van de tabbladen. De Video's bieden voor beelden van gebruiks voorbeelden voor elk back-upartefact, samen met beschrijvingen van de beschik bare besturings elementen.
 
-### <a name="summary"></a>Samenvatting
+### <a name="the-summary-tab"></a>Het tabblad samen vatting
 
-Op het tabblad samen vatting kunt u een kort overzicht krijgen van de algemene voor waarden van uw back-up. U kunt informatie weer geven, zoals het aantal items dat wordt beveiligd, het aantal items waarvoor de beveiliging niet is ingeschakeld, hoeveel taken zijn geslaagd in de afgelopen 24 uur, enzovoort. 
+Het tabblad **samen vatting** bevat een kort overzicht van de algemene voor waarden van uw back-up. U kunt bijvoorbeeld het aantal items dat wordt beveiligd, bekijken, het aantal items waarvoor de beveiliging niet is ingeschakeld, of hoeveel taken in de afgelopen 24 uur zijn geslaagd.
 
-Elk van de andere tabbladen vertegenwoordigt een afzonderlijke entiteit – bijvoorbeeld: Back-upitems, back-uptaken, back-upwaarschuwingen en back-upbeleid. U kunt ook informatie weer geven over machines waarvoor geen back-up is geconfigureerd. Als u op een van deze tabbladen klikt, wordt informatie weer gegeven die specifiek is voor die entiteit.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQYd]
 
-### <a name="backup-items"></a>Back-upitems
+### <a name="the-backup-items-tab"></a>Het tabblad Back-upitems
 
-U kunt elk van uw back-upitems, gefilterd op abonnement, kluis en andere para meters weer geven. Als u op de naam van een back-upitem klikt, kunt u de Azure-Blade voor dat back-upitem openen. U kunt bijvoorbeeld zien dat de laatste back-up is mislukt voor item ' X ' in de tabel. Klik op X om de Blade back-up voor dit item te openen, waar u een back-upbewerking op aanvraag kunt activeren.
+U kunt elk van uw back-upitems filteren en weer geven op basis van het abonnement, de kluis en andere kenmerken. Als u de naam van een back-upitem selecteert, kunt u het deel venster Azure voor dat item openen. U kunt bijvoorbeeld zien dat de laatste back-up is mislukt voor item *X*in de tabel. Als u *X*selecteert, kunt u het deel venster **back-up** van het item openen, waar u een back-upbewerking op aanvraag kunt activeren.
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQYc]
 
-### <a name="jobs"></a>Taken
+### <a name="the-jobs-tab"></a>Het tabblad taken
 
-U kunt de details weer geven van alle taken die in de afgelopen zeven dagen zijn geactiveerd door te navigeren naar het tabblad taken. Hier kunt u filteren op taak bewerking, taak status en fout code (in het geval van mislukte taken).
+Selecteer het tabblad **taken** om de details weer te geven van alle taken die in de afgelopen zeven dagen zijn geactiveerd. Hier kunt u filteren op *taak bewerking*, *taak status*en *fout code* (voor mislukte taken).
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nOrh]
 
-### <a name="alerts"></a>Waarschuwingen
+### <a name="the-alerts-tab"></a>Het tabblad waarschuwingen
 
-U kunt details weer geven van alle waarschuwingen die in de afgelopen zeven dagen zijn geactiveerd voor uw kluizen door te klikken op het tabblad waarschuwingen. Hier kunt u records filteren op het type waarschuwing (bijvoorbeeld back-upfout, herstel fout), de huidige status van de waarschuwing (bijvoorbeeld actief of opgelost) en de ernst van de waarschuwing (bijvoorbeeld kritiek, waarschuwing, informatie). U kunt ook naar de Azure-VM navigeren door te klikken op de koppeling naar de virtuele machine en de nood zakelijke actie te ondernemen.
+Selecteer het tabblad **waarschuwingen** om details weer te geven van alle waarschuwingen die in de afgelopen 7 dagen zijn gegenereerd voor uw kluizen. U kunt waarschuwingen filteren op type (*back-upfout* of *herstel fout*), huidige status (*actief* of *opgelost*) en Ernst (*kritiek*, *waarschuwing*of *informatie*). U kunt ook een koppeling selecteren om de virtuele Azure-machine te bezoeken en alle benodigde actie ondernemen.
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nTxe]
 
-### <a name="policies"></a>Beleid
+### <a name="the-policies-tab"></a>Het tabblad beleid
 
-Als u op het tabblad beleid klikt, kunt u belang rijke informatie weer geven over alle back-upbeleiden die zijn gemaakt in uw back-up. U kunt zien hoeveel items zijn gekoppeld aan elk beleid, samen met de Bewaar termijn en de back-upfrequentie die door elk beleid zijn opgegeven.
+U kunt het tabblad **beleid** selecteren voor het weer geven van belang rijke informatie over alle back-upbeleiden die zijn gemaakt in uw back-up. U kunt het aantal items weer geven dat is gekoppeld aan elk beleid, samen met de Bewaar termijn en de back-upfrequentie die door het beleid zijn opgegeven.
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nLKV]
 
-### <a name="backup-not-enabled"></a>Back-up niet ingeschakeld
+### <a name="the-backup-not-enabled-tab"></a>Het tabblad niet ingeschakeld voor back-up
 
-Het is belang rijk dat de back-upbeheerder van een organisatie snel kan vaststellen op welke computers in de organisatie nog geen back-up is ingeschakeld, zodat back-up kan worden ingeschakeld voor alle computers die beveiliging nodig hebben. Als u op de tab **-back-up niet ingeschakeld** klikt, kunt u in deze taak.
+De back-up moet zijn ingeschakeld voor alle machines waarvoor beveiliging is vereist. Met backup Explorer kunnen back-upbeheerders snel bepalen welke computers in een organisatie nog niet zijn beveiligd met back-up. Als u deze informatie wilt weer geven, selecteert u het tabblad **back-up is niet ingeschakeld** .
 
-Op dit tabblad wordt een tabel weer geven met een lijst met items die niet zijn beveiligd. Als uw organisatie de procedure volgt voor het toewijzen van verschillende labels aan productie machines en test machines, of machines voor verschillende functies, die elk een afzonderlijk back-upbeleid nodig hebben, kunt u filteren op Tags gebruiken om informatie weer te geven die specifiek is voor een bepaalde machine klasse. Als u op de naam van een item klikt, wordt u omgeleid naar de Blade **back-up configureren** voor dat item. hier kunt u een back-up maken van dat item met een geschikt back-upbeleid.
+In het deel venster **back-up is niet ingeschakeld** wordt een tabel weer gegeven met een lijst met niet-beveiligde machines. Uw organisatie kan verschillende tags toewijzen aan productie machines en test machines, of op machines met verschillende functies. Omdat voor elke klasse van machines een afzonderlijk back-upbeleid nodig is, kunt u met de filtering op labels specifieke informatie bekijken. Als u de naam van een computer selecteert, wordt u omgeleid naar het deel venster voor het configureren van de **back-up** van die computer, waarin u kunt kiezen om een toepasselijk back-upbeleid toe te passen.
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQXZ]
 
-## <a name="exporting-to-excel"></a>Exporteren naar Excel
+## <a name="export-to-excel"></a>Exporteren naar Excel
 
-Als u op de pijl-omlaag in de rechter bovenhoek van een wille keurige widget (tabel/grafiek) klikt, wordt de inhoud van die widget geëxporteerd als een Excel-werk blad, net als bij bestaande filters die zijn toegepast. Als u meer rijen van een tabel wilt exporteren naar Excel, kunt u het aantal rijen dat wordt weer gegeven op de pagina verhogen door de vervolg keuzelijst **rijen per pagina** boven aan elk tabblad te gebruiken.
+U kunt de inhoud van een tabel of diagram exporteren als een Excel-spread sheet. De inhoud wordt geëxporteerd als is, waarbij uw bestaande filters zijn toegepast. Als u extra tabel rijen wilt exporteren, kunt u het aantal rijen dat moet worden weer gegeven op de pagina verhogen door de vervolg keuzelijst **rijen per pagina** boven aan elk tabblad te gebruiken.
 
-## <a name="pinning-to-dashboard"></a>Vastmaken aan dash board
+## <a name="pin-to-the-dashboard"></a>Vastmaken aan het dash board
 
-U kunt op het speld pictogram boven aan elke widget klikken om die widget aan uw Azure Portal-dash board vast te maken. Dit helpt u bij het maken van aangepaste Dash boards die zijn aangepast om de belangrijkste informatie die u nodig hebt, weer te geven.
+U kunt het pictogram ' vastmaken ' boven aan elke tabel of grafiek selecteren om het vast te maken aan uw Azure Portal dash board. Als u deze gegevens vastmaakt, kunt u een aangepast dash board maken dat is aangepast om de informatie weer te geven die het belangrijkst is voor u.
 
 ## <a name="cross-tenant-views"></a>Cross-Tenant weergaven
 
-Als u een Azure Lighthouse-gebruiker bent met gedelegeerde toegang tot abonnementen in meerdere Tenant omgevingen, kunt u het standaard abonnements filter gebruiken (door te klikken op het filter pictogram in de rechter bovenhoek van de Azure Portal) om alle abonnementen te selecteren die u wilt Zie gegevens voor. Als u dit doet, wordt de back-upverkenner in staat stellen om informatie te verzamelen over alle kluizen in deze abonnementen. Meer informatie over Azure Lighthouse [vindt u hier](https://docs.microsoft.com/azure/lighthouse/overview).
+Als u een Azure Lighthouse-gebruiker bent met gedelegeerde toegang tot abonnementen in meerdere Tenant omgevingen, kunt u het standaard abonnements filter gebruiken. U geeft de abonnementen weer waarvoor u gegevens wilt weer geven door in de rechter bovenhoek van het Azure Portal het pictogram filter te selecteren. Wanneer u deze functie gebruikt, wordt in back-upverkenner informatie geaggregeerd over alle kluizen in de geselecteerde abonnementen. Zie [Wat is Azure Lighthouse?](https://docs.microsoft.com/azure/lighthouse/overview)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

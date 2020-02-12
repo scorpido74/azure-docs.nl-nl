@@ -7,25 +7,25 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: cc7ce8a8725e3cbc5c4f0d4db8bfcc3f1b1d657b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 903e3f3dcbcc72289fc82ec59dec0305b6adbc17
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427690"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150915"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Klant verloop analyseren met behulp van Azure Machine Learning Studio (klassiek)
 ## <a name="overview"></a>Overzicht
 In dit artikel vindt u een referentie-implementatie van een project met klant verloop analyse dat is gebouwd met behulp van Azure Machine Learning Studio (klassiek). In dit artikel wordt besproken hoe gekoppelde algemene modellen voor het oplossen van het probleem van het verloop van industriële klanten zuinigste. We ook meet de nauwkeurigheid van modellen die zijn gebouwd met behulp van Machine Learning en richtlijnen voor de verdere ontwikkeling beoordelen.  
 
-### <a name="acknowledgements"></a>Bevestigingen
+### <a name="acknowledgements"></a>Dankbetuigingen
 Dit experiment werd ontwikkeld en getest door Serge Berger, Principal data wetenschapper bij micro soft en Roger Barga, voorheen product manager voor Microsoft Azure Machine Learning Studio (klassiek). De Azure-documentatieteam dank erkent hun ervaring en ze Bedankt voor het delen van deze whitepaper.
 
 > [!NOTE]
-> De gegevens die worden gebruikt voor dit experiment is niet openbaar beschikbaar. Zie voor een voorbeeld van hoe u een machine learning-model voor verloop analyse bouwt: [Retail verloop model sjabloon](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) in [Azure AI Gallery](https://gallery.azure.ai/)
+> De gegevens die worden gebruikt voor dit experiment is niet openbaar beschikbaar. Voor een voor beeld van het bouwen van een machine learning model voor de verloop analyse raadpleegt u: [sjabloon detail verloop model](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) in [Azure AI Gallery](https://gallery.azure.ai/)
 > 
 > 
 
@@ -37,13 +37,13 @@ Bedrijven in de markt consumenten en in alle enterprise-sectoren hebben om op te
 De algemene factor is dat ondernemingen nodig om deze bewaarduur van een speciale klant. Zo zou een natuurlijke methodologie score van elke klant met de kans van verloop en de bovenste N die verhelpen. De belangrijkste klanten mogelijk het meest winstgevend zijn. Bijvoorbeeld, meer geavanceerde scenario's een functie winst in dienst is bij de selectie van kandidaten voor speciale dispensatie. Deze overwegingen zijn echter slechts een deel van de complete strategie voor het omgaan met verloop. Bedrijven hebben ook rekening account risico's (en bijbehorende risicotolerantie), wordt het niveau en de kosten van de tussenkomst van de en aannemelijke klantsegmentatie.  
 
 ## <a name="industry-outlook-and-approaches"></a>De bedrijfstak van outlook en benaderingen
-Geavanceerde verwerking van het verloop is een teken van een goed ontwikkelde bedrijfstak. Het klassieke voorbeeld is de branche telecommunicatie waar abonnees bekend is dat ze vaak overschakelen van één provider naar de andere. Dit verloop niet verplicht is een primair probleem. Bovendien providers aanzienlijke kennis hebben verzameld over *verloop van stuurprogramma's*, zijn de factoren die klanten om over te schakelen.
+Geavanceerde verwerking van het verloop is een teken van een goed ontwikkelde bedrijfstak. Het klassieke voorbeeld is de branche telecommunicatie waar abonnees bekend is dat ze vaak overschakelen van één provider naar de andere. Dit verloop niet verplicht is een primair probleem. Daarnaast hebben providers belang rijke kennis verzameld over *verloop Stuur Programma's*. Dit zijn de factoren die klanten stimuleren om over te scha kelen.
 
 Telefoon of het apparaat keuze is bijvoorbeeld een bekende stuurprogramma van het verloop in het bedrijf mobiele telefoon. Als gevolg hiervan is een populaire beleid voor de prijs van een toestel subsidize voor nieuwe abonnees en een volledige prijs voor bestaande klanten voor een upgrade. In het verleden heeft dit beleid geleid tot klanten hopping van één provider naar een andere nieuwe korting te krijgen. Deze heeft providers om hun strategieën te verfijnen op zijn beurt gevraagd.
 
 Hoge volatiliteit in aanbiedingen die telefoon is een factor die snel worden ongeldig modellen van het verloop die zijn gebaseerd op de huidige telefoon modellen. Bovendien mobiele telefoons zijn niet alleen apparaten die telecommunicatie, ze zijn ook mode-instructies (Houd rekening met de iPhone). Deze sociale voorspellingsfactoren vallen buiten het bereik van reguliere telecommunicatie-gegevenssets.
 
-Het resultaat voor het maken van modellering is dat u een geluid beleid kan niet devise gewoon door het elimineren van bekende redenen voor het verloop. Een strategie voor continue modellen, met inbegrip van klassieke modellen die kwantificeren variabelen voor de categorische (zoals beslisbomen), is in feite **verplichte**.
+Het resultaat voor het maken van modellering is dat u een geluid beleid kan niet devise gewoon door het elimineren van bekende redenen voor het verloop. Een continue model strategie, met inbegrip van klassieke modellen waarmee Categorische variabelen (zoals beslissings structuren) worden gekwantificeerd, is in feite **verplicht**.
 
 Met behulp van big data-sets op hun klanten, uitvoert organisaties big data-analyses (met name, verloop detectie op basis van big data) als een effectieve benadering voor het probleem. U vindt meer informatie over de big data-benadering tot het probleem van het verloop in de aanbevelingen van ETL-sectie.  
 
@@ -60,9 +60,9 @@ Deze vooruit uitziende aanpak is de beste manier om het verloop behandelen, maar
 
 ![Interactie diagram van het verloop model](./media/azure-ml-customer-churn-scenario/churn-2.png)
 
-*Afbeelding 4: Geïntegreerde multi-modeldatabase archetype*  
+*Afbeelding 4: Unified multi-model archetype*  
 
-Interactie tussen de modellen is essentieel als we een holistische benadering om aan te leveren klantretentie. Elk model vermindert per se de na verloop van tijd; de architectuur is daarom een impliciete lus (vergelijkbaar met de archetype ingesteld door de heldere-DM-standaard voor datamining, [***3***]).  
+Interactie tussen de modellen is essentieel als we een holistische benadering om aan te leveren klantretentie. Elk model hoeft niet meer in de loop van de tijd te worden gedegradeerd. Daarom is de architectuur een impliciete lus (vergelijkbaar met de archetype die is ingesteld door de scherp-DM-gegevens analyse standaard, [***3***]).  
 
 De algehele cyclus van risico-besluit-marketing segmentering/ontleding is nog steeds een gegeneraliseerde structuur, van toepassing op tal van zakelijke problemen is. Verloop analyse is gewoon een sterke vertegenwoordiger van deze groep van problemen, omdat deze de kenmerken van een complexe zakelijke probleem dat is niet toegestaan een vereenvoudigd voorspellende oplossing vertoont. De sociale aspecten van de moderne aanpak van verloop zijn met name niet gemarkeerd in de benadering, maar de sociale aspecten worden ingekapseld in de archetype modelleren als ze op een model zou zijn.  
 
@@ -79,7 +79,7 @@ In het volgende diagram ziet u het prototype dat is gemaakt. Dit maakt gebruik v
 
 ![Scherm afbeelding waarin een complexe studio-werk ruimte (klassieke) wordt weer gegeven met een groot aantal onderling verbonden modules](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
-*Afbeelding 5: Prototype van een benadering van modellering verloop*  
+*Afbeelding 5: prototype van een verloop model benadering*  
 
 In de volgende secties vindt u meer informatie over het prototype-beoordelings model dat we hebben geïmplementeerd met behulp van Machine Learning Studio (klassiek).  
 
@@ -98,17 +98,17 @@ De volgende diagrammen ziet u de gegevens die is gebruikt.
 
 ![Scherm afbeelding met een voor beeld van de gegevens die worden gebruikt met ruwe waarden](./media/azure-ml-customer-churn-scenario/churn-4.png)
 
-*Afbeelding 6: Fragment van een gegevensbron (verborgen)*  
+*Afbeelding 6: fragment van de gegevens bron (verborgen)*  
 
 ![Scherm afbeelding met statistische functies die zijn geëxtraheerd uit de gegevens bron](./media/azure-ml-customer-churn-scenario/churn-5.png)
 
-*Afbeelding 7: Functies die zijn geëxtraheerd uit de gegevensbron*
+*Afbeelding 7: functies die zijn geëxtraheerd uit de gegevens bron*
  
 
 > Houd er rekening mee dat deze gegevens privé is; daarom het model en de gegevens kunnen niet worden gedeeld.
-> Zie, voor een vergelijkbaar model met behulp van de openbaar beschikbare gegevens, in dit voorbeeld een experiment uit in de [Azure AI Gallery](https://gallery.azure.ai/): [traject van de klant Telco](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Voor een vergelijkbaar model met openbaar beschik bare gegevens raadpleegt u dit voorbeeld experiment in het [Azure AI Gallery](https://gallery.azure.ai/): [telecommunicatie klant verloop](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
-> Voor meer informatie over hoe u een verloop Analytics-model met behulp van Cortana Intelligence Suite kunt implementeren, wordt ook aangeraden [in deze video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) door Senior Program Manager Westerse Hyong Tok. 
+> Voor meer informatie over hoe u een verloop analyse model kunt implementeren met behulp van Cortana Intelligence Suite, wordt [deze video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) ook aanbevolen door Senior Program Manager wee Hyong Tok. 
 > 
 > 
 
@@ -137,14 +137,14 @@ In deze sectie geven we onze bevindingen over de nauwkeurigheid van de modellen,
 ### <a name="accuracy-and-precision-of-scoring"></a>Nauwkeurigheid en precisie van score
 Over het algemeen ligt de implementatie in Azure Machine Learning Studio (klassiek) achter SAS nauw keurig met ongeveer 10-15% (gebied onder curve of AUC).  
 
-De belangrijkste metrische gegevens in verloop is echter de snelheid misclassification: dat wil zeggen, van de top N-churners als voorspelde door de classificatie, welke van deze daadwerkelijk is **niet** verloop, en nog speciale behandeling ontvangen? Het volgende diagram worden deze snelheid misclassification voor alle modellen vergeleken:  
+De belangrijkste metrische gegevens in het verloop zijn echter het onjuist classificatie tempo: dat wil zeggen, van de bovenste N-bussen als voor speld door de classificatie, waarvan het eigenlijk **geen** verloop heeft ondervonden, en die nog een speciale behandeling hebben ontvangen? Het volgende diagram worden deze snelheid misclassification voor alle modellen vergeleken:  
 
 ![Gebied onder het curve diagram waarmee de prestaties van 4 algoritmen worden vergeleken](./media/azure-ml-customer-churn-scenario/churn-7.png)
 
-*Afbeelding 9: Passau prototype gebied onder curve*
+*Afbeelding 9: Passau-prototype gebied onder bocht*
 
 ### <a name="using-auc-to-compare-results"></a>Met behulp van AUC om resultaten te vergelijken
-Gebied onder Curve (AUC) is een metrische waarde die staat voor een globale maateenheid *Afscheidbaarheid* tussen de verdeling van scores voor positieve en negatieve populaties. Het is vergelijkbaar met de traditionele ontvanger Operator kenmerk (ROC)-grafiek, maar één belangrijk verschil is dat de metriek AUC vereist niet dat u een waarde voor drempel kiezen. In plaats daarvan het bevat een overzicht van de resultaten **alle** keuzemogelijkheden. Daarentegen de traditionele ROC-grafiek toont de-positief-ratio op de verticale as en de fout-positief-ratio op de horizontale as en is afhankelijk van de drempelwaarde voor classificatie.   
+Opper vlak onder curve (AUC) is een metriek die een globale *separability* vertegenwoordigt tussen de distributies van scores voor positieve en negatieve populaties. Het is vergelijkbaar met de traditionele ontvanger Operator kenmerk (ROC)-grafiek, maar één belangrijk verschil is dat de metriek AUC vereist niet dat u een waarde voor drempel kiezen. In plaats daarvan wordt een overzicht gegeven van de resultaten voor **alle** mogelijke keuzes. Daarentegen de traditionele ROC-grafiek toont de-positief-ratio op de verticale as en de fout-positief-ratio op de horizontale as en is afhankelijk van de drempelwaarde voor classificatie.   
 
 AUC wordt gebruikt als een meet waarde voor verschillende algoritmen (of verschillende systemen), omdat het mogelijk is dat modellen worden vergeleken met hun AUC-waarden. Dit is een populaire benadering in branches zoals meteorologie en biosciences. Dus vertegenwoordigt AUC een populair hulpprogramma voor het beoordelen van de prestaties van de classificatie.  
 
@@ -162,14 +162,14 @@ Het volgende diagram van Wikipedia ziet u de relatie in een afbeelding levendige
 
 ![Twee doelen. Eén doel toont de zoek markeringen die los van elkaar zijn gegroepeerd, maar in de buurt van de stieren-ogen als "lage nauw keurigheid: goede betrouw baarheid, slechte precisie. Een ander doel is nauw keurig gegroepeerd, maar ver van de stieren-ogen gemarkeerd met lage nauw keurigheid, goede nauw keurigheid.](./media/azure-ml-customer-churn-scenario/churn-8.png)
 
-*Afbeelding 10: Een afweging tussen nauwkeurigheid en precisie*
+*Afbeelding 10: verhouding tussen nauw keurigheid en precisie*
 
 ### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Resultaten nauwkeurigheid en precisie voor boosted decision tree model
 Het volgende diagram wordt de onbewerkte resultaten van het scoring-met behulp van de Machine Learning-model voor de boosted decision tree-model, wat gebeurt er met de meest nauwkeurige tussen de vier modellen worden weergegeven:  
 
 ![Tabel fragment met nauw keurigheid, precisie, intrekken, F-Score, AUC, gemiddeld logboek verlies en verlies van het trainings logboek voor vier algoritmen](./media/azure-ml-customer-churn-scenario/churn-9.png)
 
-*Afbeelding 11: Boosted decision tree model kenmerken*
+*Afbeelding 11: kenmerken van het versterkte model van de beslissings structuur*
 
 ## <a name="performance-comparison"></a>Vergelijking van de prestaties
 We hebben de snelheid vergeleken waarmee gegevens zijn gescoord met behulp van de Machine Learning Studio klassieke modellen en een vergelijkbaar model dat is gemaakt met behulp van de Desktop Edition van SAS Enter prise Miner 12,1.  
@@ -190,11 +190,11 @@ In de branche telecommunicatie verschillende procedures voor het analyseren van 
 * Metrische gegevens voor vier fundamentele categorieën worden afgeleid:
   * **Entiteit (bijvoorbeeld een abonnement)** . Algemene informatie over het abonnement en/of de klant die het onderwerp van het verloop inrichten.
   * **Activiteit**. Alle informatie over het gebruik mogelijk die is gerelateerd aan de entiteit, bijvoorbeeld het aantal aanmeldingen verkrijgen.
-  * **Klantondersteuning**. Verzamelt gegevens uit logboeken van de klant ondersteuning om aan te geven of het abonnement problemen of interactie met de klantondersteuning heeft.
+  * **Klanten ondersteuning**. Verzamelt gegevens uit logboeken van de klant ondersteuning om aan te geven of het abonnement problemen of interactie met de klantondersteuning heeft.
   * **Concurrerende en zakelijke gegevens**. Verkrijgen van mogelijk informatie over de klant (bijvoorbeeld kunnen zijn niet beschikbaar of moeilijk zijn om bij te houden).
 * Gebruik van belang voor het station functies selecteren. Dit betekent dat het boosted decision tree model altijd een veelbelovende benadering is.  
 
-Het gebruik van de volgende vier categorieën wordt de illusie die een eenvoudige *deterministische* benadering, op basis van de indexen op redelijke factoren per categorie, een onjuiste indeling moet voldoende zijn voor het identificeren van klanten op risico's voor verloop. Helaas, hoewel dit begrip plausibele lijkt, is een false begrip. De reden is dat verloop een tijdelijke effect is en de factoren die bijdragen aan het verloop meestal in tijdelijke Staten zijn. Wat kunt u vandaag nog klanten potentiële klanten kan afwijken morgen en het zeker worden verschillende zes maanden vanaf nu. Daarom een *probabilistic* model is noodzakelijk.  
+Het gebruik van deze vier categorieën maakt de illusie die een eenvoudige *deterministische* benadering heeft, op basis van de indices die op redelijke factoren per categorie zijn gevormd, moet voldoende zijn om klanten te identificeren die risico lopen op het verloop. Helaas, hoewel dit begrip plausibele lijkt, is een false begrip. De reden is dat verloop een tijdelijke effect is en de factoren die bijdragen aan het verloop meestal in tijdelijke Staten zijn. Wat kunt u vandaag nog klanten potentiële klanten kan afwijken morgen en het zeker worden verschillende zes maanden vanaf nu. Daarom is een *Probabilistic* -model nood zakelijk.  
 
 Observatie van dit belangrijk is vaak over het hoofd gezien in het bedrijfsleven, die in het algemeen de voorkeur geeft aan een business intelligence-georiënteerde benadering met analytics, meestal omdat het een eenvoudiger verkopen en admits eenvoudig automatiseren.  
 
@@ -210,19 +210,19 @@ Dit document beschrijft een functionele aanpak voor het aanpakken van het algeme
 
  
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Verwijzingen
 [1] voorspellende analyses: buiten de voor spelling, W. McKnight, Information Management, juli/augustus 2011, p. 18-20.  
 
 [2] Wikipedia-artikel: [nauw keurigheid en precisie](https://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [heldere-DM 1.0: stapsgewijze datamining Guide](https://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [helder-DM 1,0: stapsgewijze hand leiding voor gegevens analyse](https://www.the-modeling-agency.com/crisp-dm.pdf)   
 
-[4] [Marketing voor big Data: Houd contact met uw klanten effectiever en stimuleren van waarde](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] [Big data marketing: uw klanten effectiever benaderen en de waarde ervan verlagen](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [Telco verloop model sjabloon](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) in [Azure AI Gallery](https://gallery.azure.ai/) 
+[5] [telecommunicatie verloop model sjabloon](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) in [Azure AI Gallery](https://gallery.azure.ai/) 
  
 
 ## <a name="appendix"></a>Bijlage
 ![Moment opname van een presentatie in het verloop prototype](./media/azure-ml-customer-churn-scenario/churn-10.png)
 
-*Afbeelding 12: Een momentopname van een presentatie op verloop prototype*
+*Afbeelding 12: moment opname van een presentatie in het verloop prototype*

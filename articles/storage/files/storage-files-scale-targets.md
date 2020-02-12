@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2e05f0cb46e1e54ced5911c0a78dd026dbb7f4fa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dcb0ffef0cf48a7bcbfbdb0107999f7e90333559
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905594"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151986"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure bestanden schaalbaarheids- en prestatiedoelen
 
-[Azure Files](storage-files-introduction.md) biedt volledig beheerde bestandsshares in de cloud die toegankelijk zijn via het industriestandaard SMB-protocol. Dit artikel worden de schaalbaarheids- en prestatiedoelen voor Azure Files en Azure File Sync.
+[Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard SMB-protocol. Dit artikel worden de schaalbaarheids- en prestatiedoelen voor Azure Files en Azure File Sync.
 
-De schaalbaarheids- en prestatiedoelen die hier worden vermeld geavanceerde doelen zijn, maar ook worden beïnvloed door andere variabelen in uw implementatie. Bijvoorbeeld, kan de doorvoer voor een bestand ook worden beperkt door de beschikbare netwerkbandbreedte, niet alleen de servers die als host fungeert voor de Azure Files-service. Het is raadzaam testen van uw gebruikspatroon om te bepalen of de schaalbaarheid en prestaties van Azure Files voldoen aan uw vereisten. We zijn ook toegewezen aan het verhogen van deze limieten na verloop van tijd. Kunt u ons feedback, hetzij in de opmerkingen hieronder of op de [Azure bestanden UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files), over welke beperkingen u graag zou willen zien we verhogen.
+De schaalbaarheids- en prestatiedoelen die hier worden vermeld geavanceerde doelen zijn, maar ook worden beïnvloed door andere variabelen in uw implementatie. Bijvoorbeeld, kan de doorvoer voor een bestand ook worden beperkt door de beschikbare netwerkbandbreedte, niet alleen de servers die als host fungeert voor de Azure Files-service. Het is raadzaam testen van uw gebruikspatroon om te bepalen of de schaalbaarheid en prestaties van Azure Files voldoen aan uw vereisten. We zijn ook toegewezen aan het verhogen van deze limieten na verloop van tijd. Aarzel niet om ons feedback te geven, hetzij in de opmerkingen hieronder of op het [Azure files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files), over welke limieten u zou willen zien.
 
 ## <a name="azure-storage-account-scale-targets"></a>Schaal prestatiedoelen voor Azure storage-account
 
@@ -70,8 +70,8 @@ Omdat de Azure File Sync-agent wordt uitgevoerd op een Windows Server-computer d
 
 Voor Azure File Sync is prestaties van essentieel belang is in twee fasen:
 
-1. **Eerste eenmalige inrichting**: voor optimale prestaties op de eerste inrichting verwijzen naar [Onboarding met Azure File Sync](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) voor de details van de optimale implementatie.
-2. **Doorlopende synchronisatie**: nadat de gegevens in eerste instantie wordt gemaakt in de Azure-bestandsshares, Azure File Sync houdt meerdere eindpunten gesynchroniseerd.
+1. **Eerste**eenmalige inrichting: als u de prestaties van de eerste inrichting wilt optimaliseren, raadpleegt u de voor bereiding op [Azure file sync](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync) voor de optimale implementatie details.
+2. **Voortdurende synchronisatie**: nadat de gegevens in eerste instantie zijn geseed in de Azure-bestands shares, Azure File Sync meerdere eind punten in de synchronisatie bewaard.
 
 Voor hulp bij het plannen van de implementatie voor elk van de fasen, worden hieronder de resultaten waargenomen tijdens het interne testen op een systeem met een configuratie
 
@@ -81,14 +81,14 @@ Voor hulp bij het plannen van de implementatie voor elk van de fasen, worden hie
 | Geheugen | 128 GiB |
 | Schijf | SAS-schijven met RAID 10 met accu back cache |
 | Netwerk | 1 Gbps-netwerk |
-| Werkbelasting | Bestandsserver voor algemeen gebruik|
+| Workload | Bestandsserver voor algemeen gebruik|
 
 | Eerste eenmalige inrichting  |  |
 |-|-|
 | Aantal objecten | 25.000.000-objecten |
 | Grootte van de gegevensset| ~ 4,7 TiB |
 | Gemiddelde grootte | ~ 200 KiB (grootste bestand: 100 GiB) |
-| Uploaden van doorvoer | 20 objecten per seconde |
+| Uploaden van doorvoer | 20 objecten per seconde per synchronisatie groep |
 | Namespace downloaden doorvoer * | 400 objecten per seconde |
 
 \* Wanneer een nieuw servereindpunt wordt gemaakt, kan de Azure File Sync-agent een van de bestandsinhoud wordt niet gedownload. Het de volledige naamruimte voor het eerst synchroniseert en vervolgens triggers op de achtergrond intrekken om de bestanden in hun geheel te downloaden of, indien het cloud-opslaglagen is ingeschakeld, naar de cloud beleidsinstelling voor lagen ingesteld op het servereindpunt.
@@ -98,7 +98,7 @@ Voor hulp bij het plannen van de implementatie voor elk van de fasen, worden hie
 | Aantal objecten die zijn gesynchroniseerd| 125,000 objecten (~ 1% verloop) |
 | Grootte van de gegevensset| 50 giB |
 | Gemiddelde grootte | ~ 500 KiB |
-| Uploaden van doorvoer | 20 objecten per seconde |
+| Uploaden van doorvoer | 20 objecten per seconde per synchronisatie groep |
 | Volledige Download doorvoer * | 60 objecten per seconde |
 
 \* Als cloud tiering is ingeschakeld, kunt u waarschijnlijk betere prestaties als slechts een deel van het bestand gegevens gedownload in acht nemen. De gegevens van de bestanden in de cache downloadt met Azure File Sync alleen wanneer ze worden gewijzigd op een van de eindpunten. Voor gelaagde of de zojuist gemaakte bestanden, de agent niet de gegevens uit een bestand wordt gedownload en synchroniseert de naamruimte op alle servereindpunten in plaats daarvan alleen. De agent biedt ook ondersteuning voor gedeeltelijke downloads van gelaagde bestanden, zoals ze worden gebruikt door de gebruiker. 

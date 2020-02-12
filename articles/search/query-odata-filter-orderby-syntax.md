@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e0db41098287ff011416932a0d44a1cb9f76127d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786165"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153873"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Overzicht van OData-taal voor `$filter`, `$orderby`en `$select` in azure Cognitive Search
 
@@ -93,7 +93,7 @@ Veld paden worden gebruikt in veel para meters van de [Azure COGNITIVE Search re
 
 | API | Parameternaam | Beperkingen |
 | --- | --- | --- |
-| Index [maken](https://docs.microsoft.com/rest/api/searchservice/create-index) of [bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Geen |
+| Index [maken](https://docs.microsoft.com/rest/api/searchservice/create-index) of [bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | None |
 | Index [maken](https://docs.microsoft.com/rest/api/searchservice/create-index) of [bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Kan alleen verwijzen naar **Doorzoek** bare velden |
 | Index [maken](https://docs.microsoft.com/rest/api/searchservice/create-index) of [bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Kan alleen verwijzen naar **filter** bare velden |
 | [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search` wanneer `queryType` is `full` | Kan alleen verwijzen naar **Doorzoek** bare velden |
@@ -121,6 +121,17 @@ De volgende tabel bevat voor beelden van constanten voor elk van de gegevens typ
 | `Edm.Int32` | `123`, `-456` |
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
+
+### <a name="escaping-special-characters-in-string-constants"></a>Speciale tekens in teken reeks constanten
+
+Teken reeks constanten in OData worden gescheiden door enkele aanhalings tekens. Als u een query wilt maken met een teken reeks constante die mogelijk enkele aanhalings tekens bevat, kunt u de Inge sloten aanhalings tekens sluiten door ze te verdubbelen.
+
+Zo zou een woord groep met een niet-geformatteerde apostrof zoals "Car auto" worden weer gegeven in OData als de teken reeks constante `'Alice''s car'`.
+
+> [!IMPORTANT]
+> Wanneer u via een programma filters maakt, is het belang rijk om teken reeks constanten te onthouden die afkomstig zijn van gebruikers invoer. Zo kunt u de kans op [ininjectie aanvallen](https://wikipedia.org/wiki/SQL_injection)beperken, met name bij het gebruik van filters voor het implementeren van [beveiligings beperking](search-security-trimming-for-azure-search.md).
+
+### <a name="constants-syntax"></a>Syntaxis van constanten
 
 De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica voor de meeste constanten die in de bovenstaande tabel worden weer gegeven. De grammatica voor geo-ruimtelijke typen vindt u in de [georuimtelijke functies van OData in Azure Cognitive Search](search-query-odata-geo-spatial-functions.md).
 

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: quickstart
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: dd6eec34a1f1bd59aed397111e31048196e1e9c2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3897047bbe3f105c0b4adf3da38b037ea62dd646
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427722"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153635"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Quick Start: uw eerste proef versie van data Science maken in Azure Machine Learning Studio (klassiek)
 
@@ -95,9 +95,9 @@ Eerst voegen we een module toe waarmee de kolom **normalized-losses** volledig w
 
 1. Klik op de module [select columns in dataset][select-columns] en klik in het deel venster **Properties** op **Launch column selector** .
 
-   - Klik links op **With rules**
-   - Klik onder **Begin With** op **All columns**. Met deze regels worden [kolommen in dataset geselecteerd][select-columns] voor het door geven van alle kolommen (met uitzonde ring van de kolommen die we nu gaan uitsluiten).
-   - Selecteer in de vervolgkeuzelijsten **Exclude** (Uitsluiten) en **column names** (kolomnamen) en klik in het tekstvak. Er wordt een lijst met kolommen weergegeven. Selecteer **normalized-losses** om dit aan het tekstvak toe te voegen.
+   - Klik links op **With rules** (Met regels)
+   - Klik onder **Begin With** (Beginnen met) op **All columns** (Alle kolommen). Met deze regels worden [kolommen in dataset geselecteerd][select-columns] voor het door geven van alle kolommen (met uitzonde ring van de kolommen die we nu gaan uitsluiten).
+   - Selecteer in de vervolgkeuzelijsten **Exclude** en **column names** en klik in het tekstvak. Er wordt een lijst met kolommen weergegeven. Selecteer **normalized-losses** om dit aan het tekstvak toe te voegen.
    - Klik rechtsonder op de knop met het vinkje (OK) om de kolomkiezer te sluiten.
 
      ![De kolomkiezer starten en de kolom normalized-losses uitsluiten](./media/create-experiment/launch-column-selector.png)
@@ -144,9 +144,9 @@ Laten we een model bouwen dat gebruikmaakt van een subset kenmerken onze gegeven
 
 1. Dubbelklik op de module en typ 'Select features for prediction' (Kenmerken voor de voorspelling selecteren).
 
-1. Klik in het deelvenster **Properties** (Eigenschappen) op **Launch column selector** (Kolomselector starten).
+1. Klik in het deelvenster **Properties** op **Launch column selector**.
 
-1. Klik op **With rules** (Met regels).
+1. Klik op **With rules**.
 
 1. Klik onder **Begin With** op **No columns**. Selecteer in de filterrij **Include** en **column names** en selecteer onze lijst met kolomnamen in het tekstvak. Dit filter zorgt ervoor dat de module alleen de kolommen (kenmerken) doorgeeft die wij opgeven.
 
@@ -177,11 +177,11 @@ We gebruiken onze gegevens zowel voor trainings- als testdoeleinden door ze op t
     ![De splitsfractie van de module Split Data in instellen op 0,75](./media/create-experiment/set-split-data-percentage.png)
 
     > [!TIP]
-    > Door de parameter **Random seed** te wijzigen, kunt u verschillende willekeurig samples voor trainings- en testdoeleinden gebruiken. Deze parameter bepaalt de seeding van de pseudo-willekeurige nummergenerator.
+    > Door de parameter **Random seed** (Willekeurige seed) te wijzigen, kunt u verschillende willekeurig samples voor trainings- en testdoeleinden gebruiken. Deze parameter bepaalt de seeding van de pseudo-willekeurige nummergenerator.
 
 1. Voer het experiment uit. Wanneer het experiment wordt uitgevoerd, geven de modules [select columns in dataset][select-columns] en [Split data][split] de kolom definities door aan de modules die we nu toevoegen.  
 
-1. Als u een leeralgoritme wilt selecteren, moet u de categorie **Machine Learning** in het modulepalet links van het canvas uitvouwen en vouwt u vervolgens **Initialize Model** uit. Er worden verschillende categorieën weergegeven die kunnen worden gebruikt om de machine learning-algoritmen te initialiseren. Voor dit experiment selecteert u de [lineaire regressie][linear-regression] module onder de categorie **regressie** en sleept u deze naar het canvas op het experiment. (U kunt de module ook zoeken door 'linear regression' in het zoekvak van het palet te typen.)
+1. Als u een leeralgoritme wilt selecteren, moet u de categorie **Machine Learning** in het modulepalet links van het canvas uitvouwen en vouwt u vervolgens **Initialize Model** (Model initialiseren) uit. Er worden verschillende categorieën weergegeven die kunnen worden gebruikt om de machine learning-algoritmen te initialiseren. Voor dit experiment selecteert u de [lineaire regressie][linear-regression] module onder de categorie **regressie** en sleept u deze naar het canvas op het experiment. (U kunt de module ook zoeken door 'linear regression' in het zoekvak van het palet te typen.)
 
 1. Zoek de module [Train model][train-model] en sleep deze naar het canvas van het experiment. Koppel de uitvoer van de module [Linear Regression][linear-regression] aan de linkerkant van de module [Train model][train-model] en koppel de gegevens uitvoer (links poort) van de module [gesplitste gegevens][split] aan de rechter invoer van de module [Train model][train-model] .
 

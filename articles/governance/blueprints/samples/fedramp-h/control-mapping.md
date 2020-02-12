@@ -3,12 +3,12 @@ title: Voorbeeld besturings elementen voor FedRAMP hoge blauw druk
 description: De toewijzing van het FedRAMP-hoge blauw druk-voor beeld beheren. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 93e2de3f19e0577645337df029789336a35b024d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: cceca23e4bdc749c553eaf41b5f9599be3c9bf7d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087344"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150609"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>De toewijzing van het FedRAMP-hoge blauw druk-voor beeld bepalen
 
@@ -261,7 +261,7 @@ Daarnaast wijst deze blauw druk ook beleids definities toe waarmee onbeveiligde 
 
 - De regels voor de netwerk beveiligings groep voor virtuele machines die zijn gericht op internet, moeten worden gehard
 - Toegang via Internet gericht eind punt moet worden beperkt
-- De Nsg's-regels voor webtoepassingen op IaaS moeten een harde verbinding hebben
+- Webpoorten moeten worden beperkt op netwerk beveiligings groepen die zijn gekoppeld aan uw virtuele machine
 - Onbeperkte netwerk toegang tot opslag accounts controleren
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) grens beveiliging | Toegangs punten

@@ -1,6 +1,6 @@
 ---
 title: Beheer baarheid en controle-overzicht
-description: Overzicht van bewaking en beheer baarheid voor het gebruik van resources, logboek-en query activiteit, aanbevelingen en gegevens beveiliging (back-up en herstel) in Azure SQL Data Warehouse.
+description: Overzicht van bewaking en beheer baarheid voor het gebruik van resources, logboek-en query activiteit, aanbevelingen en gegevens beveiliging (back-up en herstel) met SQL-pool.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 54dbf7bcac92f7536d4e4579045c474914264935
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 31a12a60fc6f02a935ff98278e69d1ed2dd68ce5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760739"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153261"
 ---
-# <a name="manageability-and-monitoring-with-azure-sql-data-warehouse"></a>Beheer baarheid en bewaking met Azure SQL Data Warehouse
+# <a name="manageability-and-monitoring-with-sql-pool"></a>Beheer baarheid en bewaking met SQL-groep
 
-Bekijk wat er beschikbaar is om u te helpen bij het beheren en bewaken van SQL Data Warehouse. De volgende artikelen markeren manieren om de prestaties en het gebruik van uw data warehouse te optimaliseren.
+Met SQL Analytics kunt u een Data Warehouse inrichten via een SQL-groep. De volgende artikelen helpen u bij het beheren en bewaken van uw data warehouse. U leert ook hoe u het gebruik en de prestaties van het Data Warehouse optimaliseert.
 
 ## <a name="overview"></a>Overzicht
 
@@ -33,4 +33,4 @@ Bekijk wat er beschikbaar is om u te helpen bij het beheren en bewaken van SQL D
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [uw data warehouse controleren en afstemmen](sql-data-warehouse-manage-monitor.md)voor instructies.
+Zie [uw SQL-groep bewaken en afstemmen](sql-data-warehouse-manage-monitor.md)voor instructies voor hand leidingen.

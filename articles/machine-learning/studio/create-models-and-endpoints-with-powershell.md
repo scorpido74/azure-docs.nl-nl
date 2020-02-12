@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: ae9550e797ad13f78f222cb6120f040721914964
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9c1557efd87bf75ec59c9b65112b2bb3d0c678db
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454766"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153618"
 ---
 # <a name="use-powershell-to-create-studio-classic-models-and-web-service-endpoints-from-one-experiment"></a>Power shell gebruiken voor het maken van Studio-modellen en web service-eind punten van een experiment
 
@@ -35,37 +35,37 @@ Gelukkig kunt u dit doen met behulp van de API voor opnieuw [trainen van Azure m
 > 
 
 ## <a name="set-up-the-training-experiment"></a>Het trainingsexperiment instellen
-Gebruik het voorbeeld [trainingsexperiment](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1) die zich in de [Cortana Intelligence Gallery](https://gallery.azure.ai). Open dit experiment in de werk ruimte [Azure machine learning Studio (klassiek)](https://studio.azureml.net) .
+Gebruik het voorbeeld [experiment](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1) in de [Cortana Intelligence Gallery](https://gallery.azure.ai). Open dit experiment in de werk ruimte [Azure machine learning Studio (klassiek)](https://studio.azureml.net) .
 
 > [!NOTE]
 > Als u wilt volgen, samen met het volgende voorbeeld, kunt u een standard-werkruimte in plaats van een gratis werkruimte gebruiken. Maakt u een eindpunt voor elke klant - voor een totaal van 10 eindpunten - en waarvoor een standard-werkruimte is vereist omdat een gratis werkruimte beperkt tot 3-eindpunten is.
 > 
 > 
 
-Het experiment wordt gebruikgemaakt van een **gegevens importeren** module voor het importeren van de gegevensset training *customer001.csv* uit Azure storage-account. Stel dat u hebt verzameld van trainingdatasets van alle fiets verhuur locaties en opgeslagen in de dezelfde locatie van de blob-opslag met bestandsnamen, variërend van *rentalloc001.csv* naar *rentalloc10.csv*.
+Het experiment maakt gebruik van een **import gegevens** module voor het importeren van de trainings gegevensset *customer001. CSV* van een Azure-opslag account. We gaan ervan uit dat u trainings gegevens sets hebt verzameld van alle uithuur locaties van fietsen en ze hebt opgeslagen op dezelfde Blob-opslag locatie met bestands namen, variërend van *rentalloc001. CSV* naar *rentalloc10. CSV*.
 
 ![In de lezers module worden gegevens uit een Azure-Blob geïmporteerd](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
-Houd er rekening mee dat een **Web Service uitvoer** module is toegevoegd aan de **Train Model** module.
+Houd er rekening mee dat een webservice-module voor het **uitvoeren van webservices** is toegevoegd aan de module **Train model** .
 Wanneer dit experiment is geïmplementeerd als een webservice, het eindpunt die zijn gekoppeld aan dat de uitvoer het getrainde model in de indeling van een bestand .ilearner retourneert.
 
-Let ook op een web service-parameter die de URL definieert in te stellen die de **importgegevens** module wordt gebruikt. Hiermee kunt u de parameter gebruiken om op te geven van individuele training gegevenssets trainen van het model voor elke locatie.
-Er zijn andere manieren waarop u kunt dit hebt gedaan. U kunt een SQL-query met de parameter van een web-service gegevens ophalen uit een SQL Azure-database. Of u kunt een **Web Service invoer** module om door te geven in een gegevensset met de webservice.
+U kunt ook een webservice-para meter instellen waarmee de URL wordt gedefinieerd die wordt gebruikt in de module **import data** . Hiermee kunt u de parameter gebruiken om op te geven van individuele training gegevenssets trainen van het model voor elke locatie.
+Er zijn andere manieren waarop u kunt dit hebt gedaan. U kunt een SQL-query met de parameter van een web-service gegevens ophalen uit een SQL Azure-database. U kunt ook een module voor het **invoeren van webservices** gebruiken om in een gegevensset door te geven aan de webservice.
 
 ![Een getrainde model module wordt uitgevoerd in een webservice-module voor het uitvoeren van webservices](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
-Nu gaan we deze met behulp van de standaardwaarde trainingsexperiment uitvoeren *rental001.csv* als de gegevensset training. Als u de uitvoer van de **evalueren** module (Klik op de uitvoer en selecteer **Visualize**), ziet u een goede prestaties van *AUC* = 0.91. Op dit moment u kunt een webservice buiten deze trainingsexperiment implementeren.
+Nu gaan we dit trainings experiment uitvoeren met de standaard waarde *rental001. CSV* als trainings gegevensset. Als u de uitvoer van de module **Evaluate** bekijkt (Klik op de uitvoer en selecteert u **visualiseren**), ziet u een goede prestaties van *AUC* = 0,91. Op dit moment u kunt een webservice buiten deze trainingsexperiment implementeren.
 
 ## <a name="deploy-the-training-and-scoring-web-services"></a>De training en scoren van webservices implementeren
-Voor het implementeren van de webservice voor de training, klikt u op de **webservice ingesteld** onder het experimentcanvas en selecteer **webservice implementeren**. Deze webservice 'Fiets verhuur Training' aanroepen.
+Als u de training-webservice wilt implementeren, klikt u op de knop **webservice instellen** onder het canvas op het experiment en selecteert u **Web service implementeren**. Deze webservice 'Fiets verhuur Training' aanroepen.
 
 Nu moet u de scoring-webservice implementeren.
-Om dit te doen, klikt u op **webservice ingesteld** onder het canvas en selecteer **voorspellende webservice**. Hiermee maakt u een scoring-experiment.
+Hiertoe klikt u op **webservice instellen** onder het canvas en selecteert u **Predictive web service**. Hiermee maakt u een scoring-experiment.
 U moet enkele kleine aanpassingen te kunnen gebruiken als een webservice. De kolom van het label "cnt" verwijderen uit de invoergegevens en de uitvoer naar alleen de exemplaar-id en de bijbehorende voorspelde waarde beperken.
 
-Als u wilt dat werk besparen, kunt u openen de [Voorspellend experiment](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1) in de galerie die al is voorbereid.
+Als u uw werk wilt opslaan, kunt u het [voorspellende experiment](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1) openen in de galerie die al is voor bereid.
 
-Voor het implementeren van de webservice, de voorspellende experiment uit te voeren, en klik vervolgens op de **webservice implementeren** knop onder het canvas. De naam van de scoring-webservice 'Fiets verhuur score'.
+Als u de webservice wilt implementeren, voert u het voorspellende experiment uit en klikt u op de knop **webservice implementeren** onder het canvas. De naam van de scoring-webservice 'Fiets verhuur score'.
 
 ## <a name="create-10-identical-web-service-endpoints-with-powershell"></a>10 identieke webservice-eindpunten maken met PowerShell
 Deze webservice wordt geleverd met een eindpunt. Maar u niet als geïnteresseerd bent in het standaardeindpunt omdat deze kan niet worden bijgewerkt. Wat u moet doen is het maken van 10 extra eindpunten, één voor elke locatie. U kunt dit doen met PowerShell.
@@ -87,14 +87,14 @@ Voer de volgende PowerShell-opdracht:
         Add-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -Description $endpointName     
     }
 
-Nu u 10 eindpunten hebt gemaakt en ze alle dezelfde getraind bevatten model wordt getraind op *customer001.csv*. U kunt ze weergeven in Azure portal.
+U hebt nu 10 eind punten gemaakt en deze bevatten allemaal hetzelfde getrainde model dat is getraind op *customer001. CSV*. U kunt ze weergeven in Azure portal.
 
 ![De lijst met getrainde modellen weer geven in de portal](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>Bijwerken van de eindpunten voor het gebruik van afzonderlijke trainings-gegevenssets met behulp van PowerShell
-De volgende stap is het de eindpunten bijwerken met een unieke getraind op de afzonderlijke gegevens van elke klant-modellen. Maar u moet eerst voor het produceren van deze modellen uit de **fiets verhuur Training** webservice. We gaan terug naar de **fiets verhuur Training** webservice. U moet het eindpunt BES 10 keer met 10 verschillende trainingdatasets aanroepen om te kunnen produceren van 10 verschillende modellen. Gebruik de **InovkeAmlWebServiceBESEndpoint** PowerShell-cmdlet om dit te doen.
+De volgende stap is het de eindpunten bijwerken met een unieke getraind op de afzonderlijke gegevens van elke klant-modellen. Maar eerst moet u deze modellen maken op basis van de trainings-webservice voor de **fiets** . We gaan terug naar de web-service voor de **huur training** van de fiets. U moet het eindpunt BES 10 keer met 10 verschillende trainingdatasets aanroepen om te kunnen produceren van 10 verschillende modellen. Gebruik hiervoor de Power shell-cmdlet **InovkeAmlWebServiceBESEndpoint** .
 
-Ook moet u referenties opgeven voor uw blob storage-account in `$configContent`. Dat wil zeggen op de velden `AccountName`, `AccountKey`, en `RelativeLocation`. De `AccountName` mag een van de accountnamen van uw, zoals weergegeven in de **Azure-portal** (*opslag* tabblad). Wanneer u op een storage-account klikt, de `AccountKey` kunt u vinden door te drukken de **toegangssleutels beheren** knop aan de onderkant en kopiëren van de *primaire toegangssleutel*. De `RelativeLocation` is het pad relatief ten opzichte van uw opslag waar een nieuw model moet worden opgeslagen. Bijvoorbeeld: het pad `hai/retrain/bike_rental/` in het volgende script verwijst naar een container met de naam `hai`, en `/retrain/bike_rental/` zijn submappen. Op dit moment, u kunt geen submappen via de gebruikersinterface van de portal maken, maar er zijn [verschillende Azure Opslagverkenners](../../storage/common/storage-explorers.md) waarmee u om dit te doen. Het is raadzaam dat u een nieuwe container in uw storage voor het opslaan van de nieuwe getrainde modellen (.iLearner-bestanden) als volgt maken: klik op de opslagpagina de **toevoegen** knop aan de onderkant en noem het `retrain`. Kortom, de noodzakelijke wijzigingen aan in het volgende script hebben betrekking op `AccountName`, `AccountKey`, en `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
+U moet ook referenties voor uw Blob Storage-account opgeven in `$configContent`. Dat wil zeggen, in de velden `AccountName`, `AccountKey`en `RelativeLocation`. De `AccountName` kan een van uw account namen zijn, zoals wordt weer gegeven in het **Azure Portal** (tabblad*opslag* ). Nadat u op een opslag account hebt geklikt, kunt u het `AccountKey` vinden door op de knop **toegangs toetsen beheren** te drukken en de *primaire toegangs sleutel*te kopiëren. Het `RelativeLocation` is het pad dat relatief is ten opzichte van uw opslag locatie waar een nieuw model wordt opgeslagen. Bijvoorbeeld: het pad `hai/retrain/bike_rental/` in het volgende script verwijst naar een container met de naam `hai`en `/retrain/bike_rental/` submappen zijn. Op dit moment kunt u geen submappen maken via de portal-gebruikers interface, maar er zijn [verschillende Azure Storage Explorers](../../storage/common/storage-explorers.md) waarmee u dit kunt doen. Het is raadzaam om een nieuwe container in uw opslag ruimte te maken om de nieuwe getrainde modellen (iLearner-bestanden) als volgt op te slaan: Klik op de knop **toevoegen** onder aan de pagina opslag en geef deze de naam `retrain`. In samen vatting zijn de benodigde wijzigingen in het volgende script van toepassing op `AccountName`, `AccountKey`en `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service
@@ -114,9 +114,9 @@ Ook moet u referenties opgeven voor uw blob storage-account in `$configContent`.
 > 
 > 
 
-Zoals u ziet, in plaats van het maken van 10 verschillende BES taak json-configuratiebestanden, maken u dynamisch het configuratietekenreeks in plaats daarvan. Hieraan naar de *jobConfigString* parameter van de **InvokeAmlWebServceBESEndpoint** cmdlet. Er is echt geen nodig om een kopie op schijf bewaren.
+Zoals u ziet, in plaats van het maken van 10 verschillende BES taak json-configuratiebestanden, maken u dynamisch het configuratietekenreeks in plaats daarvan. Voer de invoer vervolgens door naar de para meter *jobConfigString* van de cmdlet **InvokeAmlWebServceBESEndpoint** . Er is echt geen nodig om een kopie op schijf bewaren.
 
-Als alles goed gaat, na enige tijd ziet u 10 .iLearner bestanden van *model001.ilearner* naar *model010.ilearner*, in uw Azure storage-account. Nu bent u klaar om bij te werken van de 10 scoring-webservice-eindpunten met deze modellen met behulp van de **Patch-AmlWebServiceEndpoint** PowerShell-cmdlet. Vergeet niet opnieuw die u kunt alleen patch uitvoeren voor de niet-standaard-eindpunten die u via een programma eerder hebt gemaakt.
+Als alles goed gaat, moet u na een tijdje 10. iLearner-bestanden van *model001. iLearner* naar *model010. ILearner*in uw Azure Storage-account zien. Nu bent u klaar om de 10 scores-webservice-eind punten bij te werken met deze modellen met behulp van de Power shell **-cmdlet patch-AmlWebServiceEndpoint** . Vergeet niet opnieuw die u kunt alleen patch uitvoeren voor de niet-standaard-eindpunten die u via een programma eerder hebt gemaakt.
 
     # Patch the 10 endpoints with respective .ilearner models
     $baseLoc = 'http://bostonmtc.blob.core.windows.net/'
@@ -129,7 +129,7 @@ Als alles goed gaat, na enige tijd ziet u 10 .iLearner bestanden van *model001.i
         Patch-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -ResourceName 'Bike Rental [trained model]' -BaseLocation $baseLoc -RelativeLocation $relativeLoc -SasBlobToken $sasToken
     }
 
-Dit moet vrij snel uitvoeren. Wanneer de uitvoering is voltooid, zult u hebben gemaakt 10 voorspellende webservice-eindpunten. Elke bevat een unieke getraind op de specifieke gegevensset naar een locatie verhuur, vanuit een enkele trainingsexperiment model is getraind. U kunt dit controleren, kunt u proberen het aanroepen van deze eindpunten met behulp van de **InvokeAmlWebServiceRRSEndpoint** cmdlet, zodat ze met de dezelfde invoergegevens. U kunt verwachten van verschillende voorspellingsresultaten worden weergegeven omdat de modellen worden getraind met verschillende training sets.
+Dit moet vrij snel uitvoeren. Wanneer de uitvoering is voltooid, zult u hebben gemaakt 10 voorspellende webservice-eindpunten. Elke bevat een unieke getraind op de specifieke gegevensset naar een locatie verhuur, vanuit een enkele trainingsexperiment model is getraind. Als u dit wilt controleren, kunt u deze eind punten aanroepen met behulp van de **InvokeAmlWebServiceRRSEndpoint** -cmdlet, zodat ze dezelfde invoer gegevens leveren. U kunt verwachten van verschillende voorspellingsresultaten worden weergegeven omdat de modellen worden getraind met verschillende training sets.
 
 ## <a name="full-powershell-script"></a>Volledige PowerShell-script
 Hier volgt de lijst met de volledige broncode:

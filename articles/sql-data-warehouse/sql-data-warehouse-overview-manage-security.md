@@ -1,6 +1,6 @@
 ---
 title: Een Data Base beveiligen
-description: Tips voor het beveiligen van een data base in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
+description: Tips voor het beveiligen van een Data Base en het ontwikkelen van oplossingen in de SQL-pool resource van SQL Analytics.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5eeb1c25264c36909774ec689b7410765881c8e2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 26cdbb1fc2899d1b03fea6199074467623706c63
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064730"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153278"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Een data base in SQL Data Warehouse beveiligen
 > [!div class="op_single_selector"]
@@ -27,21 +27,21 @@ ms.locfileid: "77064730"
 > 
 > 
 
-In dit artikel worden de basis beginselen beschreven van het beveiligen van uw Azure SQL Data Warehouse-data base. In dit artikel wordt met name aan de slag met resources voor het beperken van toegang, het beveiligen van gegevens en het bewaken van activiteiten in een Data Base.
+In dit artikel wordt stapsgewijs uitgelegd hoe u de SQL-groep in SQL Analytics kunt beveiligen. In dit artikel wordt met name aan de slag met resources voor het beperken van toegang, het beveiligen van gegevens en het bewaken van activiteiten in een Data Base die is ingericht met een SQL-groep.
 
 ## <a name="connection-security"></a>Verbindingsbeveiliging
 Verbindingsbeveiliging verwijst naar de manier waarop u verbindingen met uw database beperkt en beveiligt met behulp van firewallregels en verbindingsversleuteling.
 
 Firewall regels worden door de server en de data base gebruikt om verbindings pogingen af te wijzen van IP-adressen die niet expliciet zijn white list. Als u verbindingen van uw toepassing of het open bare IP-adres van de client computer wilt toestaan, moet u eerst een firewall regel op server niveau maken met behulp van de Azure Portal, REST API of Power shell. 
 
-Als best practice moet u het IP-adresbereik dat is toegestaan door uw serverfirewall zoveel mogelijk beperken.  Om toegang te krijgen tot Azure SQL Data Warehouse vanaf uw lokale computer, zorgt u ervoor dat de firewall op uw netwerk en lokale computer uitgaande communicatie toestaat op TCP-poort 1433.  
+Als best practice moet u het IP-adresbereik dat is toegestaan door uw serverfirewall zoveel mogelijk beperken.  Als u toegang wilt krijgen tot de SQL-groep vanaf uw lokale computer, zorgt u ervoor dat de firewall op uw netwerk en lokale computer uitgaande communicatie toestaat op TCP-poort 1433.  
 
-Azure Synapse gebruikt IP-firewall regels op server niveau. Het biedt geen ondersteuning voor IP-firewall regels op database niveau. Zie [Azure SQL database firewall-regels](../sql-database/sql-database-firewall-configure.md) voor meer informatie.
+Azure Synapse Analytics maakt gebruik van IP-firewall regels op server niveau. Het biedt geen ondersteuning voor IP-firewall regels op database niveau. Zie [Azure SQL database firewall-regels](../sql-database/sql-database-firewall-configure.md) voor meer informatie.
 
-Verbindingen met uw SQL Data Warehouse worden standaard versleuteld.  Het wijzigen van de verbindings instellingen om versleuteling uit te scha kelen, wordt genegeerd.
+Verbindingen met uw SQL-groep worden standaard versleuteld.  Het wijzigen van de verbindings instellingen om versleuteling uit te scha kelen, wordt genegeerd.
 
-## <a name="authentication"></a>Authentication
-Verificatie verwijst naar hoe u uw identiteit bewijst bij het maken van verbinding met de database. SQL Data Warehouse ondersteunt momenteel SQL Server-verificatie met een gebruikers naam en wacht woord en met Azure Active Directory. 
+## <a name="authentication"></a>Verificatie
+Verificatie verwijst naar hoe u uw identiteit bewijst bij het maken van verbinding met de database. SQL-pool ondersteunt momenteel SQL Server verificatie met een gebruikers naam en wacht woord en met Azure Active Directory. 
 
 Wanneer u de logische server voor uw database hebt gemaakt, hebt u een aanmelding 'serverbeheerder' opgegeven met een gebruikersnaam en wachtwoord. Met deze referenties kunt u zich bij elke Data Base op die server als de eigenaar van de data base of "dbo" verifiëren via SQL Server-verificatie.
 
@@ -55,7 +55,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Maak vervolgens verbinding met uw **SQL Data Warehouse-data base** met uw server beheerders aanmelding en een database gebruiker te maken op basis van de Server aanmelding die u hebt gemaakt.
+Maak vervolgens verbinding met uw **SQL-groeps database** met de aanmelding van de server beheerder en maakt u een database gebruiker op basis van de Server aanmelding die u hebt gemaakt.
 
 ```sql
 -- Connect to SQL DW database and create a database user
@@ -98,4 +98,4 @@ In SQL Database wordt de database versleutelings sleutel beveiligd door een inge
 U kunt uw data base versleutelen met behulp van de [Azure Portal](sql-data-warehouse-encryption-tde.md) of [T-SQL](sql-data-warehouse-encryption-tde-tsql.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [verbinding maken met SQL Data Warehouse](sql-data-warehouse-connect-overview.md)voor meer informatie en voor beelden over het maken van verbinding met uw magazijn met verschillende protocollen.
+Zie [verbinding maken met SQL-groep](sql-data-warehouse-connect-overview.md)voor meer informatie en voor beelden over het maken van verbinding met uw magazijn met verschillende protocollen.

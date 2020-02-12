@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: dce05c558423400d095c83800cdcaf85e174e081
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ec3697208434eb971e47136416f2c2cc541b5cea
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860406"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152071"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Active-Active S2S VPN-verbindingen configureren met Azure VPN-gateways
 
 Dit artikel begeleidt u stapsgewijs door de stappen voor het maken van actieve, cross-premises en VNet-naar-VNet-verbindingen met behulp van het Resource Manager-implementatie model en Power shell.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-highly-available-cross-premises-connections"></a>Over Maxi maal beschik bare cross-premises verbindingen
 Voor een hoge Beschik baarheid van cross-premises en VNet-naar-VNet-connectiviteit moet u meerdere VPN-gateways implementeren en meerdere parallelle verbindingen tot stand brengen tussen uw netwerken en Azure. Bekijk [Maxi maal beschik bare cross-premises en vnet-naar-vnet-connectiviteit](vpn-gateway-highlyavailable.md) voor een overzicht van connectiviteits opties en topologie.

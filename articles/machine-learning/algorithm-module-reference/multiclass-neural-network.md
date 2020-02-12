@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: a1b14a4f004e9b6fe64d9095eeb63ebf78750387
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: f94427ddfbdc19836cd177fd642987aaaeedf1ee
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546534"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152088"
 ---
 # <a name="multiclass-neural-network-module"></a>Multi Class Neural-netwerk module
 
@@ -56,7 +56,7 @@ Voor het berekenen van de uitvoer van het netwerk voor een bepaalde invoer wordt
         - De uitvoer laag is volledig verbonden met de verborgen laag.
         - De verborgen laag is volledig verbonden met de invoer laag.
         - Het aantal knoop punten in de invoer laag wordt bepaald door het aantal functies in de trainings gegevens.
-        - Het aantal knoop punten in de verborgen laag kan worden ingesteld door de gebruiker. De standaardwaarde is 100.
+        - Het aantal knoop punten in de verborgen laag kan worden ingesteld door de gebruiker. De standaard waarde is 100.
         - Het aantal knoop punten in de uitvoer laag is afhankelijk van het aantal klassen.
   
    

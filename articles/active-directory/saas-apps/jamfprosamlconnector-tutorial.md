@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80bc0a1680d43b40b5ab69db5ded5898e5a52ddf
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
-ms.translationtype: HT
+ms.openlocfilehash: dc99e23e1b885de25bd2159d7916790cad851108
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137477"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150227"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Zelf studie: SSO-integratie Azure Active Directory met Jamf Pro
 
@@ -164,7 +164,7 @@ In deze sectie verleent u B. Simon toegang tot Jamf Pro.
 
 7. Schuif op dezelfde pagina omlaag naar de sectie **gebruikers toewijzing** . Voer vervolgens de volgende stappen uit.
 
-    ![De sectie gebruikers toewijzing van de pagina eenmalige aanmelding in Jamf Pro.](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
+    ![De sectie gebruikers toewijzing van de pagina eenmalige aanmelding in Jamf Pro.](./media/jamfprosamlconnector-tutorial/tutorial-jamfprosamlconnector-single.png)
 
     a. Selecteer de optie **NameID** voor de **gebruikers toewijzing**van de ID-provider. Deze optie is standaard ingesteld op **NameID**, maar u kunt een aangepast kenmerk definiëren.
 
@@ -224,7 +224,7 @@ In dit gedeelte test u de configuratie voor eenmalige aanmelding van Azure AD me
 
 Wanneer u de tegel Jamf Pro selecteert in het toegangs venster, moet u automatisch worden aangemeld bij het Jamf Pro-account waarvoor u SSO hebt geconfigureerd. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Extra resources
 
 - [Zelf studies voor het integreren van SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

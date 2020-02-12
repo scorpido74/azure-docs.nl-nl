@@ -1,5 +1,5 @@
 ---
-title: Problemen oplossen
+title: Probleemoplossing
 description: Problemen met Azure SQL Data Warehouse oplossen.
 services: sql-data-warehouse
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 11/25/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ce57c48e568e840f3a651a5530f3fba6c0be60b7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4eec340a04b9cdbc85a2c8712a11d31132766206
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721044"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153363"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Problemen met Azure SQL Data Warehouse oplossen
 Dit artikel bevat een lijst met veelvoorkomende problemen met de probleem oplossing.
@@ -30,7 +30,7 @@ Dit artikel bevat een lijst met veelvoorkomende problemen met de probleem oploss
 | Geblokkeerd door de firewall                                          | Azure SQL-data bases worden beveiligd door firewalls op server-en database niveau om ervoor te zorgen dat alleen bekende IP-adressen toegang hebben tot een Data Base. De firewalls zijn standaard beveiligd. Dit betekent dat u een expliciete en een IP-adres of bereik van adressen moet inschakelen voordat u verbinding kunt maken.  Als u uw firewall voor toegang wilt configureren, volgt u de stappen in de [Server firewall toegang configureren voor uw client-IP](sql-data-warehouse-get-started-provision.md) in de instructies voor het [inrichten](sql-data-warehouse-get-started-provision.md). |
 | Kan geen verbinding maken met het hulp programma of stuur programma                           | SQL Data Warehouse wordt aangeraden [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15), [SSDT for Visual Studio](sql-data-warehouse-install-visual-studio.md)of [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) te gebruiken om uw gegevens op te vragen. Zie [Stuur Programma's voor Azure SQL Data Warehouse](sql-data-warehouse-connection-strings.md) en [verbinding maken met Azure SQL Data Warehouse](sql-data-warehouse-connect-overview.md) -artikelen voor meer informatie over Stuur Programma's en het maken van verbinding met SQL Data Warehouse. |
 
-## <a name="tools"></a>Hulpprogramma's
+## <a name="tools"></a>Extra
 | Probleem                                                        | Oplossing                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Er ontbreken AAD-gebruikers in Visual Studio object Explorer           | Dit is een bekend probleem.  Als tijdelijke oplossing kunt u de gebruikers weer geven in [sys. database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15).  Zie [verificatie voor Azure SQL Data Warehouse](sql-data-warehouse-authentication.md) voor meer informatie over het gebruik van Azure Active Directory met SQL Data Warehouse. |
@@ -53,7 +53,7 @@ Dit artikel bevat een lijst met veelvoorkomende problemen met de probleem oploss
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Msg 40847: de bewerking kan niet worden uitgevoerd omdat de server het toegestane quotum van de data base-transactie eenheid van 45000 zou overschrijden. | Verminder de [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md) van de data base die u probeert te maken of [vraag een quotum toename](sql-data-warehouse-get-started-create-support-ticket.md)aan. |
 | Ruimte gebruik onderzoeken                              | Zie [tabel grootten]( ../sql-data-warehouse/sql-data-warehouse-tables-overview.md#table-size-queries) om inzicht te krijgen in het ruimte gebruik van uw systeem. |
-| Hulp bij het beheren van tabellen                                    | Zie het artikel [tabel Overview] [overzicht] voor meer informatie over het beheren van uw tabellen.  Dit artikel bevat ook koppelingen naar gedetailleerde onderwerpen, zoals [tabel gegevens typen](sql-data-warehouse-tables-data-types.md), [het distribueren van een tabel](sql-data-warehouse-tables-distribute.md), [het indexeren](sql-data-warehouse-tables-index.md)van een tabel, het [partitioneren van een](sql-data-warehouse-tables-partition.md)tabel, het [onderhouden van tabel statistieken](sql-data-warehouse-tables-statistics.md) en [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md). |
+| Hulp bij het beheren van tabellen                                    | Zie het artikel [overzicht](../sql-data-warehouse/sql-data-warehouse-tables-overview.md) voor meer informatie over het beheren van tabellen.  Dit artikel bevat ook koppelingen naar gedetailleerde onderwerpen, zoals [tabel gegevens typen](sql-data-warehouse-tables-data-types.md), [het distribueren van een tabel](sql-data-warehouse-tables-distribute.md), [het indexeren](sql-data-warehouse-tables-index.md)van een tabel, het [partitioneren van een](sql-data-warehouse-tables-partition.md)tabel, het [onderhouden van tabel statistieken](sql-data-warehouse-tables-statistics.md) en [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md). |
 | De voortgangs balk voor transparent Data Encryption (TDE) wordt niet bijgewerkt in de Azure Portal | U kunt de status van TDE bekijken via [Power shell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
 
 

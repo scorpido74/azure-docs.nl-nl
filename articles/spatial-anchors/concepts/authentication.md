@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 823ce8d523a231875705d7c4d3f46cfd8fd24994
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270589"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152598"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Verificatie en autorisatie voor Azure spatiale ankers
 
@@ -96,6 +96,13 @@ Voor toepassingen die zijn gericht Azure Active Directory gebruikers, is de aanb
 
 1. Configuratie in Azure Portal
     1.  Registreer uw toepassing in azure AD als **systeem eigen toepassing**. Als onderdeel van de registratie moet u bepalen of uw toepassing multi tenant moet zijn of niet, en de omleidings-Url's opgeven die voor uw toepassing zijn toegestaan.
+        1.  Overschakelen naar het tabblad **API-machtigingen**
+        2.  Selecteer **een machtiging toevoegen**
+            1.  **Resource provider voor gemengde realiteit** selecteren onder **api's mijn organisatie gebruikt** tabblad
+            2.  **Gedelegeerde machtigingen** selecteren
+            3.  Schakel het selectie vakje in voor **mixedreality. signin** onder **mixedreality**
+            4.  **Machtigingen toevoegen** selecteren
+        3.  **Toestemming van beheerder verlenen** selecteren
     2.  Verleen uw toepassing of gebruikers toegang tot uw resource:
         1.  Ga naar de resource met ruimtelijke ankers in Azure Portal
         2.  Overschakelen naar het tabblad **toegangs beheer (IAM)**

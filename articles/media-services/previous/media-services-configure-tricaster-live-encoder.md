@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 11ee8f52a8fd4db2d052eeaeef1387b011d23050
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: 7909fbb958a66d00616d4ed1b844d02bb47d997e
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131557"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152496"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>De NewTek TriCaster Encoder gebruiken om een live stream met één bitsnelheid te verzenden  
 > [!div class="op_single_selector"]
@@ -34,10 +34,10 @@ In dit artikel wordt beschreven hoe u de [NewTek TriCaster](https://newtek.com/p
 
 In deze zelfstudie laat zien hoe Azure Media Services (AMS) beheren met Azure Media Services Explorer (AMSE)-hulpprogramma. Dit hulpprogramma wordt alleen uitgevoerd op Windows-PC. Als u gebruikmaakt van Mac of Linux, gebruikt u de Azure Portal om [kanalen](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) en [Program ma's](media-services-portal-creating-live-encoder-enabled-channel.md)te maken.
 
+Wanneer u TriCaster gebruikt voor het verzenden van een bijdrage aan AMS-kanalen die zijn ingeschakeld voor Live encoding, kunnen er video-en audio storingen voor komen in uw live-evenement als u bepaalde functies van TriCaster gebruikt, zoals het snel knippen tussen feeds of overschakelen naar/van pastels. Het AMS-team werkt aan het oplossen van deze problemen. het is dan ook niet aanbevolen deze functies te gebruiken.
+
 > [!NOTE]
-> Wanneer u TriCaster gebruikt voor het verzenden van een bijdrage aan AMS-kanalen die zijn ingeschakeld voor Live encoding, kunnen er video-en audio storingen voor komen in uw live-evenement als u bepaalde functies van TriCaster gebruikt, zoals het snel knippen tussen feeds of overschakelen naar/van pastels. Het AMS-team werkt aan het oplossen van deze problemen. het is dan ook niet aanbevolen deze functies te gebruiken.
->
->
+>  Overweeg om over te stappen op TLS 1,2, de TLS-versie prefferred.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -162,7 +162,7 @@ Als er een fout wordt ontvangen, moet het kanaal opnieuw worden ingesteld en moe
 
 De stroom is nu klaar om te worden ingesloten in een speler of gedistribueerd naar een doelgroep voor het weergeven van live.  
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 Raadpleeg het artikel over [probleem oplossing](media-services-troubleshooting-live-streaming.md) voor hulp.
 

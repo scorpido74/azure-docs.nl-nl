@@ -10,16 +10,16 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 40f779fa5545e0e9c8fd1aa2cc2689b29dffdb82
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 68d39b4f363794d50fd05c2067502fc55d5d0170
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760756"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153244"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Wat is Azure Synapse Analytics (voorheen SQL DW)?
 
-Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big data-analyses combineert. Dit geeft u de vrijheid om geheel naar eigen wens op schaal gegevens op te vragen, met behulp van serverloze on-demand of ingerichte resources. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te leveren voor direct BI en machine learning behoeften
+Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big data-analyses combineert. Deze geeft u de vrijheid om op schaal gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte resources. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te leveren voor direct BI en machine learning behoeften
 
 Azure Synapse heeft vier onderdelen:
 - SQL Analytics: volledige op T-SQL gebaseerde analyses – algemeen beschikbaar
@@ -27,14 +27,14 @@ Azure Synapse heeft vier onderdelen:
     - SQL on-demand (betalen per TB verwerkte) – (preview-versie)
 - Spark: diep geïntegreerde Apache Spark (preview-versie) 
 - Gegevens integratie: hybride gegevens integratie (preview-versie)
-- Studio: uniforme gebruikers ervaring.  (Preview)
+- Studio: uniforme gebruikers ervaring.  (Preview-versie)
 
 > [!NOTE]
 > Om toegang te krijgen tot de preview-functies van Azure Synapse, kunt u [hier](https://aka.ms/synapsepreview)toegang aanvragen. Micro soft zal alle aanvragen sorteren en zo snel mogelijk reageren.
 
 ## <a name="sql-analytics-and-sql-pool-in-azure-synapse"></a>SQL-analyse en SQL-groep in azure Synapse
 
-SQL Analytics verwijst naar de functies voor Enter prise data warehousing die algemeen beschikbaar zijn met Azure Synapse. 
+SQL Analytics verwijst naar de functies voor Enter prise data warehousing die algemeen beschikbaar zijn in azure Synapse. 
 
 SQL-pool vertegenwoordigt een verzameling analytische resources die worden ingericht wanneer u SQL Analytics gebruikt. De grootte van de SQL-groep wordt bepaald door DWU (data warehousing units).
 

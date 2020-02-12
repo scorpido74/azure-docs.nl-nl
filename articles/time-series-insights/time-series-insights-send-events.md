@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: b9d64c347881f78e832a39bca8404fdad98cbf17
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76981103"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152513"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Gebeurtenissen verzenden naar een Time Series Insights-omgeving met behulp van een event hub
 
@@ -25,7 +25,7 @@ In dit artikel wordt uitgelegd hoe u een Event Hub in azure Event Hubs maakt en 
 ## <a name="configure-an-event-hub"></a>Een Event Hub configureren
 
 1. Lees de [Event hubs documentatie](https://docs.microsoft.com/azure/event-hubs/)voor meer informatie over het maken van een event hub.
-1. Zoek in het zoekvak **Event Hubs**. Selecteer in de geretourneerde lijst **Event Hubs**.
+1. Zoek in het zoekvak naar **Event hubs**. Selecteer **Event hubs**in de weer gegeven lijst.
 1. Selecteer uw event hub.
 1. Wanneer u een Event Hub maakt, maakt u een Event Hub naam ruimte. Als u nog geen Event Hub in de naam ruimte hebt gemaakt, maakt u in het menu onder **entiteiten**een event hub.  
 
@@ -41,13 +41,13 @@ In dit artikel wordt uitgelegd hoe u een Event Hub in azure Event Hubs maakt en 
 1. Zorg ervoor dat u een Consumer groep maakt die uitsluitend wordt gebruikt door de bron van de Time Series Insights gebeurtenis.
 
     > [!IMPORTANT]
-    > Zorg ervoor dat deze Consumer groep niet wordt gebruikt door een andere service, zoals een Azure Stream Analytics-taak of een andere Time Series Insights omgeving. Als de consumergroep wordt gebruikt door de andere worden services, leesbewerkingen negatief beïnvloed voor deze omgeving en voor andere services. Als u **$Default** als de consumergroep andere lezers mogelijk uw consumentengroep kunnen gebruiken.
+    > Zorg ervoor dat deze Consumer groep niet wordt gebruikt door een andere service, zoals een Azure Stream Analytics-taak of een andere Time Series Insights omgeving. Als de consumergroep wordt gebruikt door de andere worden services, leesbewerkingen negatief beïnvloed voor deze omgeving en voor andere services. Als u **$default** als de Consumer groep gebruikt, kunnen andere lezers uw consumenten groep mogelijk hergebruiken.
 
 1. Selecteer in het menu onder **instellingen**de optie **beleid voor gedeelde toegang**en selecteer vervolgens **toevoegen**.
 
     [![Selecteer beleid voor gedeelde toegang en selecteer vervolgens de knop toevoegen](media/send-events/add-shared-access-policy.png)](media/send-events/add-shared-access-policy.png#lightbox)
 
-1. In de **nieuw beleid voor gedeelde toegang toevoegen** deelvenster maken van een gedeelde toegang met de naam **MySendPolicy**. U kunt dit beleid voor gedeelde toegang gebruiken voor het verzenden C# van gebeurtenissen in de voor beelden verderop in dit artikel.
+1. Maak in het deel venster **nieuw gedeeld toegangs beleid toevoegen** een gedeelde toegang met de naam **MySendPolicy**. U kunt dit beleid voor gedeelde toegang gebruiken voor het verzenden C# van gebeurtenissen in de voor beelden verderop in dit artikel.
 
     [Voer ![in het vak beleids naam MySendPolicy in](media/send-events/configure-shared-access-policy-confirm.png)](media/send-events/configure-shared-access-policy-confirm.png#lightbox)
 
@@ -55,17 +55,17 @@ In dit artikel wordt uitgelegd hoe u een Event Hub in azure Event Hubs maakt en 
 
 ## <a name="add-a-time-series-insights-instance"></a>Een Time Series Insights-exemplaar toevoegen
 
-De update Time Series Insights maakt gebruik van exemplaren contextuele gegevens toevoegen aan binnenkomende telemetriegegevens. De gegevens op het moment dat de query is gekoppeld met behulp van een **Time Series-ID**. De **Time Series-id** voor het voorbeeld project Windmills dat later in dit artikel wordt gebruikt, is `id`. Lees voor meer informatie over time series Insight-instanties en **tijd reeks-ID-** [modellen](./time-series-insights-update-tsm.md).
+De update Time Series Insights maakt gebruik van exemplaren contextuele gegevens toevoegen aan binnenkomende telemetriegegevens. De gegevens worden tijdens de query tijd gekoppeld met behulp van een **tijd reeks-id**. De **Time Series-id** voor het voorbeeld project Windmills dat later in dit artikel wordt gebruikt, is `id`. Lees voor meer informatie over time series Insight-instanties en **tijd reeks-ID-** [modellen](./time-series-insights-update-tsm.md).
 
 ### <a name="create-a-time-series-insights-event-source"></a>Een Time Series Insights-gebeurtenisbron maken
 
-1. Als u een gebeurtenisbron hebt gemaakt, de stappen voor voltooid [een gebeurtenisbron maken](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
+1. Als u nog geen gebeurtenis bron hebt gemaakt, voert u de stappen uit om [een gebeurtenis bron te maken](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 
-1. Een waarde instellen voor `timeSeriesId`. Lees voor meer informatie over **tijd reeks-ID-** [modellen](./time-series-insights-update-tsm.md).
+1. Stel een waarde in voor `timeSeriesId`. Lees voor meer informatie over **tijd reeks-ID-** [modellen](./time-series-insights-update-tsm.md).
 
 ### <a name="push-events-to-windmills-sample"></a>Push gebeurtenissen naar Windmills-voor beeld
 
-1. Zoek in de zoekbalk typt, **Event Hubs**. Selecteer in de geretourneerde lijst **Event Hubs**.
+1. Zoek in de zoek balk naar **Event hubs**. Selecteer **Event hubs**in de weer gegeven lijst.
 
 1. Selecteer uw Event Hub-exemplaar.
 
@@ -73,12 +73,18 @@ De update Time Series Insights maakt gebruik van exemplaren contextuele gegevens
 
     [![de waarde voor de primaire sleutel niet kopiëren connection string](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. Ga naar https://tsiclientsample.azurewebsites.net/windFarmGen.html. De URL wordt gesimuleerd Zwart gat apparaten uitgevoerd.
+1. Ga naar https://tsiclientsample.azurewebsites.net/windFarmGen.html. De URL maakt en voert gesimuleerde Windmill-apparaten uit.
 1. Plak in het vak **Event hub-verbindings reeks** op de webpagina de Connection String die u hebt gekopieerd in het [invoer veld Windmill](#push-events-to-windmills-sample).
   
     [![plak de primaire-sleutel connection string in het vak Verbindings reeks van de Event hub](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
-1. Selecteer **Klik hier om te beginnen**. De simulator genereert exemplaar JSON die u rechtstreeks kunt gebruiken.
+1. Selecteer **klikken om te starten**. 
+
+    > [!TIP]
+    > De Windmill Simulator maakt ook JSON die u kunt gebruiken als een Payload met de [Time Series INSIGHTS ga query-api's](https://docs.microsoft.com/rest/api/time-series-insights/ga-query).
+
+    > [!NOTE]
+    > De Simulator blijft gegevens verzenden totdat het tabblad browser is gesloten.
 
 1. Ga terug naar uw event hub in Azure portal. Op de pagina **overzicht** worden de nieuwe gebeurtenissen weer gegeven die door de Event hub worden ontvangen.
 
@@ -147,9 +153,9 @@ De update Time Series Insights maakt gebruik van exemplaren contextuele gegevens
     }
     ```
 
-* **Uitvoer**: twee gebeurtenissen. De eigenschap **locatie** is gekopieerd naar elke gebeurtenis.
+* **Uitvoer**: twee gebeurtenissen. De **locatie** van de eigenschap wordt naar elke gebeurtenis gekopieerd.
 
-    |location|events.id|events.timestamp|
+    |locatie|events.id|events.timestamp|
     |--------|---------------|----------------------|
     |WestUs|device1|2016-01-08T01:08:00Z|
     |WestUs|device2|2016-01-08T01:17:00Z|
@@ -190,7 +196,7 @@ De update Time Series Insights maakt gebruik van exemplaren contextuele gegevens
 
 * **Uitvoer**: twee gebeurtenissen.
 
-    |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
+    |locatie|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
     |---|---|---|---|---|---|---|---|
     |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
     |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|

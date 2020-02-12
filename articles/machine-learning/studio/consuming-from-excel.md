@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: e32e3ddd99efe1d389b65f7a4134633a40b29a9a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2e95c4bfbe7342e251e6d845fd4acfed6ff6109a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839720"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150099"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Een Azure Machine Learning Studio-webservice (klassiek) gebruiken vanuit Excel
 
@@ -26,7 +26,7 @@ Als u Excel 2013 (of hoger) of Excel online gebruikt, wordt u aangeraden de Exce
 
 
 ## <a name="steps"></a>Stappen
-Publiceer een webservice. [Zelf studie 3: het model](tutorial-part3-credit-risk-deploy.md) voor het maken van een credit risico geeft uitleg hoe dit moet doen. Momenteel wordt de functie Excel-werkmap alleen ondersteund voor aanvraag/antwoord-Services met één uitvoer (dat wil zeggen, een enkel Score label). 
+Een webservice publiceren. [Zelf studie 3: het model](tutorial-part3-credit-risk-deploy.md) voor het maken van een credit risico geeft uitleg hoe dit moet doen. De Excel-werkmap-functie wordt momenteel alleen ondersteund voor aanvraag/antwoord-services die een enkele uitvoer (dat wil zeggen, een enkel scoring label) hebben. 
 
 Zodra u een webservice hebt, klikt u op de **sectie webservices** aan de linkerkant van Studio en selecteert u vervolgens de webservice die vanuit Excel moet worden gebruikt.
 
@@ -48,21 +48,21 @@ Zodra u een webservice hebt, klikt u op de **sectie webservices** aan de linkerk
 2. Er wordt een beveiligings waarschuwing weer gegeven. Klik op de knop **bewerken inschakelen** .
 
     ![Bewerken inschakelen om de beveiligde weer gave beveiligings waarschuwing te verwijderen](./media/consuming-from-excel/enableeditting.png)
-3. Er wordt een beveiligings waarschuwing weer gegeven. Klik op de knop **inhoud inschakelen** om macro's uit te voeren in uw werk blad.
+3. Er wordt een beveiligingswaarschuwing weergegeven. Klik op de knop **inhoud inschakelen** om macro's uit te voeren in uw werk blad.
 
     ![Inhoud inschakelen voor het uitschakelen van de beveiligings waarschuwing macro's verwijderen](./media/consuming-from-excel/enablecontent.png)
-4. Zodra macro's zijn ingeschakeld, wordt er een tabel gegenereerd. Kolommen in blauw zijn vereist als invoer in de bron records-webservice, of **para meters**. Let op de uitvoer van de RR'S-service, **VOORspelde waarden** groen. Wanneer alle kolommen voor een bepaalde rij zijn gevuld, wordt de Score-API automatisch door de werkmap aangeroepen en worden de gescoorde resultaten weer gegeven.
+4. Zodra de macro's zijn ingeschakeld, wordt een tabel wordt gegenereerd. Kolommen in blauw zijn vereist als invoer in de bron records-webservice, of **para meters**. Let op de uitvoer van de RR'S-service, **VOORspelde waarden** groen. Wanneer alle kolommen voor een bepaalde rij zijn ingevuld, de werkmap wordt automatisch de scoring-API-aanroepen en de beoordeelde resultaten worden weergegeven.
 
     ![Tabel voor parameter invoer en de resulterende voorspelde waarden](./media/consuming-from-excel/sampletable.png)
-5. Als u meer dan één rij wilt scoren, vult u de tweede rij met gegevens in en worden de voorspelde waarden geproduceerd. U kunt zelfs meerdere rijen tegelijk plakken.
+5. Voor het scoren van meer dan één rij opvulling van de tweede rij met gegevens en de voorspelde waarden worden geproduceerd. U kunt zelfs meerdere rijen in één keer plakken.
 
-U kunt een van de Excel-functies (grafieken, Power map, voorwaardelijke opmaak enz.) gebruiken met de voorspelde waarden om te helpen bij het visualiseren van de gegevens.
+U kunt een van de Excel-functies (grafieken, power map, voorwaardelijke opmaak, enzovoort) met de voorspelde waarden gebruiken om u te helpen bij het visualiseren van de gegevens.
 
-## <a name="sharing-your-workbook"></a>Uw werkmap delen
-Voor een goede werking van de macro's moet uw API-sleutel deel uitmaken van het werk blad. Dit betekent dat u de werkmap alleen moet delen met entiteiten/individuen die u vertrouwt.
+## <a name="sharing-your-workbook"></a>Delen van uw werkmap
+Voor de macro's om te werken, moet uw API-sleutel deel uitmaken van het werkblad. Dat betekent dat u de werkmap moet delen alleen met entiteiten/personen die u vertrouwt.
 
 ## <a name="automatic-updates"></a>Automatische updates
-In deze twee situaties wordt een aanroep van een bron records gemaakt:
+Een RRS-aanroep wordt uitgevoerd in deze twee gevallen:
 
 1. De eerste keer dat een rij inhoud bevat in alle **para meters**
 2. Telkens wanneer een van de **para meters** verandert in een rij waarvoor alle **para meters** zijn opgegeven.

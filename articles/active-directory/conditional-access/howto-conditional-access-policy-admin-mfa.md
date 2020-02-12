@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e972228923654ca73063aad370d087e550138dbf
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fb396429c95dbed090283752c5a0d9ff5cc176af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043372"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148195"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Voorwaardelijke toegang: MFA vereisen voor beheerders
 
@@ -24,14 +24,14 @@ Accounts waaraan beheerders rechten zijn toegewezen, zijn gericht op aanvallers.
 
 Micro soft raadt u aan MFA verplicht te stellen voor de volgende rollen ten minste:
 
-* Globale beheerder
-* SharePoint-beheerder
-* Exchange-beheerder
+* Financieel medewerker
 * Beheerder van voorwaardelijke toegang
-* Beveiligingsbeheerder
+* Exchange-beheerder
+* Algemeen beheerder
 * Help Desk (wacht woord) beheerder
 * Wachtwoordbeheerder
-* Factureringsbeheerder
+* Beveiligingsbeheerder
+* SharePoint-beheerder
 * Gebruikers beheerder
 
 Organisaties kunnen ervoor kiezen om rollen op te nemen of uit te sluiten zoals ze passen.
@@ -55,14 +55,14 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **insluiten**selecteert u **Directory rollen (preview)** en kiest u ten minste de volgende rollen:
-      * Globale beheerder
-      * SharePoint-beheerder
-      * Exchange-beheerder
+      * Financieel medewerker
       * Beheerder van voorwaardelijke toegang
-      * Beveiligingsbeheerder
+      * Exchange-beheerder
+      * Algemeen beheerder
       * Helpdesk beheerder
       * Wachtwoordbeheerder
-      * Factureringsbeheerder
+      * Beveiligingsbeheerder
+      * SharePoint-beheerder
       * Gebruikers beheerder
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
    1. Selecteer **Done**.

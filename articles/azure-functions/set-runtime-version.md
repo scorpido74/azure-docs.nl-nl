@@ -3,12 +3,12 @@ title: Azure Functions runtime-versies instellen
 description: Azure Functions ondersteunt meerdere versies van de runtime. Meer informatie over het opgeven van de runtime versie van een functie-app die wordt gehost in Azure.
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 60953d10aeb92083b0aad3432921c7c55bc77e39
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294164"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151952"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions runtime-versies instellen
 
@@ -18,7 +18,7 @@ Een functie-app wordt uitgevoerd op een specifieke versie van de Azure Functions
 
 Met Azure Functions kunt u een specifieke versie van de runtime richten met behulp van de instelling `FUNCTIONS_EXTENSION_VERSION` toepassing in een functie-app. De functie-app wordt op de opgegeven primaire versie bewaard totdat u expliciet naar een nieuwe versie gaat verplaatsen.
 
-Als u alleen de primaire versie opgeeft, wordt de functie-app automatisch bijgewerkt naar nieuwe secundaire versies van de runtime wanneer deze beschikbaar komen. Nieuwe secundaire versies introduceren geen belang rijke wijzigingen. Als u een secundaire versie opgeeft (bijvoorbeeld ' 2.0.12345 '), wordt de functie-app vastgemaakt aan die specifieke versie totdat u deze expliciet wijzigt.
+Als u alleen de primaire versie opgeeft, wordt de functie-app automatisch bijgewerkt naar nieuwe secundaire versies van de runtime wanneer deze beschikbaar komen. Nieuwe secundaire versies mogen geen belang rijke wijzigingen introduceren. Als u een secundaire versie opgeeft (bijvoorbeeld ' 2.0.12345 '), wordt de functie-app vastgemaakt aan die specifieke versie totdat u deze expliciet wijzigt.
 
 > [!NOTE]
 > Als u vastmaakt aan een specifieke versie van Azure Functions en vervolgens probeert te publiceren naar Azure met Visual Studio, wordt er een dialoog venster weer gegeven waarin u wordt gevraagd om bij te werken naar de nieuwste versie of de publicatie te annuleren. U kunt dit voor komen door de eigenschap `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` toe te voegen aan uw `.csproj` bestand.

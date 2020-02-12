@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2c8483948deae41edbe3922dc77361ba2c58a94
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 40511aac29182dafbe01408960376589198ceb64
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099871"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151918"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Procedure bij failover van het noodherstel
 
@@ -34,15 +34,15 @@ Er zijn twee gevallen waarin u rekening moet houden bij een failover naar een DR
 >[!NOTE]
 >De volgende stappen moeten worden uitgevoerd in de HANA-eenheid voor grote instanties, waarmee de DR-eenheid wordt aangeduid. 
  
-Als u de meest recente back-upmomentopnamen wilt herstellen, volgt u de stappen in ' volledige DR-failover uitvoeren-azure_hana_dr_failover ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf). 
+Als u de meest recente back-upmomentopnamen wilt herstellen, volgt u de stappen in ' Full DR failover-azure_hana_dr_failover uitvoeren ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf). 
 
-Als u meerdere exemplaren van SAP HANA failover wilt uitvoeren, voert u de opdracht azure_hana_dr_failover verschillende keren uit. Geef desgevraagd de SAP HANA SID op waarvoor u een failover wilt uitvoeren en die u wilt herstellen. 
+Als u meerdere exemplaren van SAP HANA failover wilt uitvoeren, voert u de azure_hana_dr_failover opdracht verschillende keren uit. Geef desgevraagd de SAP HANA SID op waarvoor u een failover wilt uitvoeren en die u wilt herstellen. 
 
 
-U kunt de DR failover ook testen zonder dat dit van invloed is op de daad werkelijke replicatie relatie. Als u een testfailover wilt uitvoeren, volgt u de stappen in ' een test uitvoeren op DR-failover-azure_hana_test_dr_failover ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf). 
+U kunt de DR failover ook testen zonder dat dit van invloed is op de daad werkelijke replicatie relatie. Als u een testfailover wilt uitvoeren, volgt u de stappen in ' test DR failover-azure_hana_test_dr_failover uitvoeren ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf). 
 
 >[!IMPORTANT]
->Voer *geen* productie transacties uit op het exemplaar dat u hebt gemaakt in de Dr-site via het proces van het **testen van een failover**. Met de opdracht azure_hana_test_dr_failover wordt een set volumes gemaakt die geen relatie hebben met de primaire site. Als gevolg hiervan is de synchronisatie van de primaire site *niet* mogelijk. 
+>Voer *geen* productie transacties uit op het exemplaar dat u hebt gemaakt in de Dr-site via het proces van het **testen van een failover**. De opdracht azure_hana_test_dr_failover een set volumes maakt die geen relatie hebben met de primaire site. Als gevolg hiervan is de synchronisatie van de primaire site *niet* mogelijk. 
 
 Als u meerdere exemplaren van SAP HANA wilt testen, voert u het script meerdere keren uit. Voer desgevraagd de SAP HANA SID in van het exemplaar dat u wilt testen voor failover. 
 
@@ -88,7 +88,7 @@ De volgende stappen laten zien hoe u het SAP HANA productie-exemplaar kunt herst
 
    ![Het gebied voor het initialiseren van het logboek instellen](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
 
-1. Selecteer **Finish**.
+1. Selecteer **Voltooien**.
 
    ![De herstel bewerking voor nood gevallen volt ooien](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
 
@@ -115,9 +115,9 @@ Volg deze stappen:
 
 ## <a name="monitor-disaster-recovery-replication"></a>Replicatie voor herstel na nood gevallen controleren
 
-Voer het script `azure_hana_replication_status`uit om de status van de voortgang van de opslag replicatie te controleren. Deze opdracht moet worden uitgevoerd vanuit een eenheid die wordt uitgevoerd op de locatie voor nood herstel, zodat deze werkt zoals verwacht. De opdracht werkt niet ongeacht of de replicatie actief is. De opdracht kan worden uitgevoerd voor elke HANA grote instantie-eenheid van uw Tenant op de locatie voor nood herstel. Het kan niet worden gebruikt om details over het opstart volume op te halen. 
+Als u de status van de voortgang van de opslag replicatie wilt controleren, voert u het script `azure_hana_replication_status`uit. Deze opdracht moet worden uitgevoerd vanuit een eenheid die wordt uitgevoerd op de locatie voor nood herstel, zodat deze werkt zoals verwacht. De opdracht werkt niet ongeacht of de replicatie actief is. De opdracht kan worden uitgevoerd voor elke HANA grote instantie-eenheid van uw Tenant op de locatie voor nood herstel. Het kan niet worden gebruikt om details over het opstart volume op te halen. 
 
-Zie ' Get DR Replication status-azure_hana_replication_status ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf)voor meer informatie over de opdracht en de uitvoer.
+Zie ' Get DR Replication status-azure_hana_replication_status ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)voor meer informatie over de opdracht en de uitvoer.
 
 
 ## <a name="next-steps"></a>Volgende stappen

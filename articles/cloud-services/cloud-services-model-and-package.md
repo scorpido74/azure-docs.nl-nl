@@ -2,17 +2,17 @@
 title: Wat is een Cloud service model en-pakket | Microsoft Docs
 description: Hierin worden het Cloud service model (. csdef,. cscfg) en het pakket (. cspkg) in azure beschreven
 services: cloud-services
-author: tgore03
+author: tanmaygore
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 0d04236861287074087cc125d7b0d44dc65eccbf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360698"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148306"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Wat is het Cloud service model en hoe kan ik het pakket inpakken?
 Een Cloud service wordt gemaakt op basis van drie onderdelen, de service definitie *(. csdef)* , de service configuratie *(. cscfg)* en een service pakket *(. cspkg)* . De bestanden **ServiceDefinition. csdef** en **ServiceConfig. cscfg** zijn gebaseerd op XML en beschrijven de structuur van de Cloud service en hoe deze zijn geconfigureerd. het model wordt gezamenlijk genoemd. **ServicePackage. cspkg** is een zip-bestand dat is gegenereerd op basis van de **ServiceDefinition. csdef** en onder andere, bevat alle vereiste op basis van binaire afhankelijkheden. Azure maakt een Cloud service van zowel **ServicePackage. cspkg** als **ServiceConfig. cscfg**.
@@ -106,7 +106,7 @@ Bevat de definities voor lokale opslag resources. Een lokale opslag resource is 
 **Rusland**  
 Bevat de definities voor geïmporteerde modules. Het vorige code voorbeeld toont de modules voor Verbinding met extern bureaublad en Azure Connect.
 
-**Start-ups**  
+**Opstarten**  
 Bevat taken die worden uitgevoerd wanneer de rol wordt gestart. De taken worden gedefinieerd in een. cmd-of een uitvoerbaar bestand.
 
 <a name="cscfg"></a>
@@ -216,6 +216,9 @@ De [Azure runtime library](/previous-versions/azure/reference/mt419365(v=azure.1
 <a name="cspkg"></a>
 
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
+> [!NOTE]
+> De maximale pakket grootte die kan worden geïmplementeerd, is 600MB
+
 Als u een toepassing als een Cloud service in azure wilt implementeren, moet u de toepassing eerst in de juiste indeling inpakken. U kunt het opdracht regel programma **CSPack** (geïnstalleerd met de Azure- [SDK](https://azure.microsoft.com/downloads/)) gebruiken om het pakket bestand te maken als een alternatief voor Visual Studio.
 
 **CSPack** maakt gebruik van de inhoud van het service definitie bestand en service configuratie bestand om de inhoud van het pakket te definiëren. **CSPack** genereert een toepassings pakket bestand (. cspkg) dat u naar Azure kunt uploaden met behulp van de [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Het pakket heeft standaard de naam `[ServiceDefinitionFileName].cspkg`, maar u kunt een andere naam opgeven met behulp van de `/out` optie **CSPack**.
@@ -261,10 +264,10 @@ Waar de variabelen als volgt worden gedefinieerd:
 
 | Variabele | Waarde |
 | --- | --- |
-| \[DirectoryName\] |De submap onder de hoofdmap van het project met het. csdef-bestand van het Azure-project. |
+| \[mapnaam\] |De submap onder de hoofdmap van het project met het. csdef-bestand van het Azure-project. |
 | \[ServiceDefinition\] |De naam van het service definitie bestand. Dit bestand heeft standaard de naam ServiceDefinition. csdef. |
 | \[OutputFileName\] |De naam voor het gegenereerde pakket bestand. Dit wordt doorgaans ingesteld op de naam van de toepassing. Als er geen bestands naam is opgegeven, wordt het toepassings pakket gemaakt als \[ApplicationName\]. cspkg. |
-| \[RoleName\] |De naam van de rol zoals gedefinieerd in het service definitie bestand. |
+| \[rolnaam\] |De naam van de rol zoals gedefinieerd in het service definitie bestand. |
 | \[RoleBinariesDirectory] |De locatie van de binaire bestanden voor de rol. |
 | \[VirtualPath\] |De fysieke mappen voor elk virtueel pad dat is gedefinieerd in de sectie sites van de service definitie. |
 | \[PhysicalPath\] |De fysieke mappen van de inhoud voor elk virtueel pad dat is gedefinieerd in het knoop punt site van de service definitie. |

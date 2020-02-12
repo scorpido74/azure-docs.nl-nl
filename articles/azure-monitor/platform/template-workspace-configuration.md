@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 9ba4fe318db86760e0dbc326730d03ad09203a88
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 936008a074944c79b8b0bab3beaf3a5aaa5ecc12
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834208"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151765"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Log Analytics-werk ruimte beheren met Azure Resource Manager sjablonen
 
@@ -38,14 +38,14 @@ In dit artikel vindt u voor beelden van sjablonen die een deel van de configurat
 
 De volgende tabel geeft een overzicht van de API-versie voor de resources die in dit voor beeld worden gebruikt.
 
-| Bron | Resourcetype | API-versie |
+| Resource | Resourcetype | API-versie |
 |:---|:---|:---|
-| Werkruimte   | werkruimten    | 2017-03-15-preview |
-| Search      | savedSearches | 2015-03-20 |
+| Werkruimte   | werk ruimten    | 2017-03-15-preview |
+| Zoeken      | savedSearches | 2015-03-20 |
 | Gegevensbron | gegevens bronnen   | 2015-11-01-preview |
 | Oplossing    | oplossingen     | 2015-11-01-preview |
 
-## <a name="create-a-log-analytics-workspace"></a>Een Log Analytics-werkruimte maken
+## <a name="create-a-log-analytics-workspace"></a>Een Log Analytics-werk ruimte maken
 
 In het volgende voor beeld wordt een werk ruimte gemaakt op basis van een sjabloon van uw lokale computer. De JSON-sjabloon is zo geconfigureerd dat alleen de naam en locatie van de nieuwe werk ruimte zijn vereist. Het gebruikt waarden die zijn opgegeven voor andere werkruimte parameters, zoals de [toegangs beheer modus](design-logs-deployment.md#access-control-mode), de prijs categorie, de retentie en het capaciteits reserverings niveau.
 
@@ -147,8 +147,8 @@ Voor de capaciteits reservering definieert u een geselecteerde capaciteits reser
     }
     ```
 
-2. De sjabloon bijwerken om aan uw eisen voldoen. Beoordeling [Microsoft.OperationalInsights/workspaces sjabloon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) verwijzing voor meer informatie over welke eigenschappen en waarden worden ondersteund. 
-3. Sla dit bestand als **deploylaworkspacetemplate.json** naar een lokale map.
+2. De sjabloon bijwerken om aan uw eisen voldoen. Raadpleeg de naslag informatie over [micro soft. OperationalInsights/werkruimte sjablonen](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) als u wilt weten welke eigenschappen en waarden worden ondersteund. 
+3. Sla dit bestand op als **deploylaworkspacetemplate. json** naar een lokale map.
 4. U kunt deze sjabloon nu implementeren. U kunt Power shell of de opdracht regel gebruiken om de werk ruimte te maken, waarbij u de naam en locatie van de werk ruimte opgeeft als onderdeel van de opdracht. De naam van de werk ruimte moet globaal uniek zijn in alle Azure-abonnementen.
 
    * Gebruik voor Power shell de volgende opdrachten uit de map met de sjabloon:
@@ -301,9 +301,7 @@ In het volgende sjabloon voorbeeld ziet u hoe u:
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]",
-          "name": "CapacityReservation",
-          "capacityReservationLevel": 100
+          "name": "[parameters('pricingTier')]"
         }
       },
       "resources": [

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 1b9a836491e989b676663d13b8eebb994c5145d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37968e968a0f9a1098dd5e90d463879bfa95ce1f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454794"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153584"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Een Azure Machine Learning Studio-webservice (klassiek) implementeren
 
@@ -68,7 +68,7 @@ Nu het voorspellende experiment is voor bereid, kunt u dit implementeren als een
 Als u uw voorspellende experiment wilt implementeren, klikt u op **uitvoeren** onder aan het canvas van het experiment. Zodra het experiment is voltooid, klikt u op **webservice implementeren** en selecteert u **Web service implementeren [Nieuw]** .  De pagina implementatie van de Web Service-Portal van Machine Learning Studio (klassiek) wordt geopend.
 
 > [!NOTE] 
-> Voor het implementeren van een nieuwe webservice moet u voldoende machtigingen hebben in het abonnement waarvoor u de webservice implementeert. Zie voor meer informatie, [beheren van een webservice met behulp van de Azure Machine Learning-webserviceportal](manage-new-webservice.md). 
+> Voor het implementeren van een nieuwe webservice moet u voldoende machtigingen hebben in het abonnement waarvoor u de webservice implementeert. Zie [Manage a web service using the Azure machine learning Web Services portal](manage-new-webservice.md)(Engelstalig) voor meer informatie. 
 
 ### <a name="web-service-portal-deploy-experiment-page"></a>Pagina Web Service Portal implementeren experiment
 
@@ -132,28 +132,28 @@ Prijzen zijn specifiek voor regio's. u moet dus een facturerings plan definiëre
 #### <a name="create-a-plan-in-another-region"></a>Een plan maken in een andere regio
 
 1. Meld u aan bij [Microsoft Azure machine learning-webservices](https://services.azureml.net/).
-2. Klik op de **plannen** menu-optie.
-3. Klik op de abonnementen via de weergavepagina **nieuw**.
-4. Uit de **abonnement** vervolgkeuzelijst, selecteer het abonnement waarin het nieuwe abonnement worden geplaatst.
-5. Uit de **regio** vervolgkeuzelijst, selecteer een regio voor het nieuwe abonnement. De opties plannen voor de geselecteerde regio wordt weergegeven in de **opties plannen** sectie van de pagina.
-6. Uit de **resourcegroep** vervolgkeuzelijst, selecteer een resourcegroep voor het abonnement. Zie voor meer informatie over resourcegroepen [overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md).
-7. In **Plannaam** typt u de naam van het plan.
-8. Onder **abonnementsopties**, klikt u op het niveau van de facturering voor het nieuwe abonnement.
-9. Klik op **Maken**.
+2. Klik op de menu optie **plannen** .
+3. Klik op de pagina plannen over weer gave op **Nieuw**.
+4. Selecteer in de vervolg keuzelijst **abonnement** het abonnement waarin het nieuwe plan wordt opgeslagen.
+5. Selecteer in de vervolg keuzelijst **regio** een regio voor het nieuwe plan. De plannings opties voor de geselecteerde regio worden weer gegeven in de sectie **plan opties** van de pagina.
+6. Selecteer een resource groep voor het plan uit de vervolg keuzelijst **resource groep** . Zie [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md)(Engelstalig) voor meer informatie over resource groepen.
+7. Typ in **naam van plan** de naam van het plan.
+8. Klik onder **Opties plannen**op het facturerings niveau voor het nieuwe abonnement.
+9. Klik op **Create**.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>De webservice implementeren in een andere regio
 
 1. Klik op de pagina webservices Microsoft Azure Machine Learning op de menu optie **webservices** .
 2. Selecteer de Web-Service die u naar een nieuwe regio implementeert.
-3. Klik op **kopie**.
-4. In **naam van de webservice**, typt u een nieuwe naam voor de webservice.
-5. In **Web servicebeschrijving**, typ een beschrijving voor de webservice.
-6. Uit de **abonnement** vervolgkeuzelijst, selecteer het abonnement waarin de nieuwe webservice zich bevindt.
-7. Uit de **resourcegroep** vervolgkeuzelijst, selecteer een resourcegroep voor de webservice. Zie voor meer informatie over resourcegroepen [overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md).
-8. Uit de **regio** vervolgkeuzelijst, selecteer de regio waarin u kunt de webservice implementeren.
-9. Uit de **opslagaccount** vervolgkeuzelijst, selecteer een storage-account waarin u voor het opslaan van de webservice.
-10. Uit de **Prijsplan** vervolgkeuzelijst, selecteer een abonnement in de regio die u hebt geselecteerd in stap 8.
-11. Klik op **kopie**.
+3. Klik op **Kopiëren**.
+4. In de naam van de **webservice**typt u een nieuwe naam voor de webservice.
+5. Typ in **Web Service Description**een beschrijving voor de webservice.
+6. Selecteer in de vervolg keuzelijst **abonnement** het abonnement waarin de nieuwe webservice wordt opgeslagen.
+7. Selecteer een resource groep voor de webservice in de vervolg keuzelijst **resource groep** . Zie [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md)(Engelstalig) voor meer informatie over resource groepen.
+8. Selecteer in de vervolg keuzelijst **regio** de regio waarin u de webservice wilt implementeren.
+9. Selecteer een opslag account in de vervolg keuzelijst **opslag account** om de webservice op te slaan.
+10. Selecteer in de vervolg keuzelijst **prijs plan** een abonnement in de regio die u in stap 8 hebt geselecteerd.
+11. Klik op **Kopiëren**.
 
 ## <a name="deploy-it-as-a-classic-web-service"></a>De service implementeren als een klassieke webservice
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: ba7afb506a21df7fc2fe4cc4b7194549b6efde83
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 0602757fad0eb4424e10fb0c1cf0272826ed0024
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050562"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150694"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Zelf studie: team viewer configureren voor automatische gebruikers inrichting
 
@@ -40,7 +40,8 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
 * [Een Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassings beheerder, Cloud toepassings beheerder, eigenaar van de toepassing of globale beheerder). 
-* Een team viewer-account met beheerders machtigingen.
+* Een geldige [tensor-licentie](https://www.teamviewer.com/de/teamviewer-tensor/) voor Team Viewer.
+* Een geldige aangepaste id van de configuratie [voor eenmalige aanmelding](https://community.teamviewer.com/t5/Knowledge-Base/Single-Sign-On-with-Azure-Active-Directory/ta-p/60209#toc-hId--473669723) die beschikbaar is.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
 1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
@@ -49,7 +50,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
 ## <a name="step-2-configure-teamviewer-to-support-provisioning-with-azure-ad"></a>Stap 2. Team viewer configureren voor ondersteuning van inrichting met Azure AD
 
-1. Meld u aan bij de beheer console van de Team Viewer-app. Navigeer naar **Profiel bewerken**.
+1. Meld u aan voor de [Team Viewer-beheer console](https://login.teamviewer.com). Navigeer naar **Profiel bewerken**.
 
     ![Team Viewer-beheer console](./media/teamviewer-provisioning-tutorial/admin.png)
 
@@ -143,7 +144,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 * Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
 * Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Extra resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

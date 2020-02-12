@@ -1,5 +1,5 @@
 ---
-title: Eenvoudige querysyntaxis
+title: Vereenvoudigde querysyntaxis
 titleSuffix: Azure Cognitive Search
 description: Verwijzing voor de eenvoudige query syntaxis die wordt gebruikt voor Zoek opdrachten in volledige tekst in azure Cognitive Search.
 manager: nitinme
@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,19 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fb98be9975de38ec9f65e723e078a1db8755b4ed
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792559"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152666"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Eenvoudige query syntaxis in azure Cognitive Search
 
 Azure Cognitive Search implementeert twee op lucene gebaseerde query talen: [eenvoudige query-parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) en de [lucene query-parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). In azure Cognitive Search worden de opties voor fuzzy/helling uitgesloten van de eenvoudige query syntaxis.  
 
-> [!NOTE]  
->  Azure Cognitive Search biedt een alternatieve [lucene-query syntaxis](query-lucene-syntax.md) voor complexere query's. Zie [Hoe zoeken in volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)voor meer informatie over het parseren van de architectuur en voor delen van query's voor elke syntaxis.
+> [!NOTE]
+> De syntaxis van de eenvoudige query wordt gebruikt voor query-expressies die zijn door gegeven in de **Zoek** parameter van de [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents) -API en niet om te verwarren met de [OData-syntaxis](query-odata-filter-orderby-syntax.md) die wordt gebruikt voor de para meter [$filter](search-filters.md) van die API. Deze verschillende syntaxis hebben hun eigen regels voor het maken van query's, teken reeksen, enzovoort.
+>
+> Azure Cognitive Search biedt een alternatieve [volledige lucene-query syntaxis](query-lucene-syntax.md) voor complexere query's in de **Zoek** parameter. Zie [Hoe zoeken in volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md)voor meer informatie over het parseren van de architectuur en voor delen van query's voor elke syntaxis.
 
 ## <a name="how-to-invoke-simple-parsing"></a>Eenvoudige parsering aanroepen
 
@@ -72,7 +74,7 @@ De operator suffix is een asterisk `*`. `lux*` zoekt bijvoorbeeld naar documente
 
 ## <a name="phrase-search-operator"></a>Zoek operator voor woordgroepen
 
-De operator phrase omsluit een woord groep tussen aanhalings tekens `" "`. Als `Roach Motel` bijvoorbeeld (zonder aanhalings tekens) zoekt naar documenten met `Roach` en/of `Motel` ergens in een wille keurige volg orde, worden `"Roach Motel"` (met aanhalings tekens) alleen gezocht in documenten die die gehele woord groep samen bevatten en in die volg orde (tekst analyse nog steeds van toepassing).
+De operator phrase omsluit een woord groep tussen aanhalings tekens `" "`. Als `Roach Motel` bijvoorbeeld (zonder aanhalings tekens) zoekt naar documenten met `Roach` en/of `Motel` ergens in een wille keurige volg orde, worden `"Roach Motel"` (met aanhalings tekens) alleen vergeleken met documenten die die hele woord groep samen bevatten, en in die volg orde (tekst analyse is nog steeds van toepassing).
 
 ## <a name="precedence-operator"></a>Prioriteits operator
 

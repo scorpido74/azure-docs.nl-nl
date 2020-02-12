@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845083"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152921"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Pakket inspectie met Azure Network Watcher
 
@@ -39,7 +39,7 @@ In dit scenario kunt u het volgende doen:
 
 In dit scenario laten we zien hoe u de eerste round trip-tijd (RTT) kunt weer geven van een Transmission Control Protocol (TCP)-conversatie tussen twee eind punten.
 
-Wanneer een TCP-verbinding tot stand is gebracht, volgen de eerste drie pakketten die in de verbinding worden verzonden, een patroon dat doorgaans de drieweg-handshake wordt genoemd. Door de eerste twee pakketten te controleren die in deze Handshake worden verzonden, een eerste aanvraag van de client en een reactie van de server, kunnen we de latentie berekenen wanneer deze verbinding tot stand is gebracht. Deze latentie wordt de round-trip tijd (RTT) genoemd. Raadpleeg de volgende resource voor meer informatie over het TCP-protocol en de drieweg-handshake. https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+Wanneer een TCP-verbinding tot stand is gebracht, volgen de eerste drie pakketten die in de verbinding worden verzonden, een patroon dat doorgaans de drieweg-handshake wordt genoemd. Door de eerste twee pakketten te controleren die in deze Handshake worden verzonden, een eerste aanvraag van de client en een reactie van de server, kunnen we de latentie berekenen wanneer deze verbinding tot stand is gebracht. Deze latentie wordt de round-trip tijd (RTT) genoemd. Raadpleeg de volgende resource voor meer informatie over het TCP-protocol en de drieweg-handshake. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
 ### <a name="step-1"></a>Stap 1
 

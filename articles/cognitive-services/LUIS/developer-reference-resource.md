@@ -2,17 +2,17 @@
 title: Bronnen voor ontwikkel aars-Language Understanding
 description: Sdk's, REST Api's, CLI, helpen u bij het ontwikkelen van Language Understanding-apps (LUIS) in uw programmeer taal. Beheer uw Azure-resources en LUIS-voor spellingen.
 ms.topic: reference
-ms.date: 02/09/2020
-ms.openlocfilehash: ed869b7022e43b8ecf8c1f05bb3c6f0919076818
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 02/11/2020
+ms.openlocfilehash: fda4301a0851e6a36cbb6493dcf48293b2c5db37
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119974"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152683"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK-, REST-en CLI-ontwikkelaars bronnen voor Language Understanding (LUIS)
 
-Sdk's, REST Api's, CLI, helpen u bij het ontwikkelen van Language Understanding-apps (LUIS) in uw programmeer taal. Beheer uw Azure-resources en LUIS-voor spellingen. 
+Sdk's, REST Api's, CLI, helpen u bij het ontwikkelen van Language Understanding-apps (LUIS) in uw programmeer taal. Beheer uw Azure-resources en LUIS-voor spellingen.
 
 ## <a name="azure-resource-management"></a>Azure-resource beheer
 
@@ -36,14 +36,41 @@ Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
 Gebruik [Cognitive Services voorbeeld code](https://github.com/Azure-Samples/cognitive-services-quickstart-code) om de meest voorkomende taken te leren en te gebruiken.
 
+### <a name="rest-specifications"></a>REST-specificaties
+
+De [Luis-rest specificaties](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/cognitiveservices/data-plane/LUIS), samen met alle [Azure rest-specificaties](https://github.com/Azure/azure-rest-api-specs), zijn openbaar beschikbaar op github.
+
 ### <a name="rest-apis"></a>REST API’s
 
 De API'S voor ontwerpen en voor spellingen van eind punten zijn beschikbaar via REST-Api's:
 
-|Type|Version|
+|Type|Versie|
 |--|--|
 |Ontwerpen|[Offload](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[Preview v3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
 |voorspelling|[Offload](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[V3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
+
+### <a name="rest-endpoints"></a>REST-eind punten
+
+LUIS heeft momenteel twee soorten eind punten:
+
+* ontwerpen voor het trainings eindpunt
+* query voorspelling voor het runtime-eind punt.
+
+|Doel|URL|
+|--|--|
+|Ontwerpen op trainings eindpunt|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|V2 runtime-alle voor spellingen op runtime-eind punt|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|Voor spelling van v3 runtime-versies op runtime-eind punt|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|V3 runtime-sleuf voor voor spelling op runtime-eind punt|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+
+In de volgende tabel worden de para meters beschreven, aangeduid met accolades `{}`in de vorige tabel.
+
+|Parameter|Doel|
+|--|--|
+|`your-resource-name`|Azure-resource naam|
+|`q` of `query`|utterance tekst verzonden vanuit de clienttoepassing zoals chatbot|
+|`version`|versie naam van 10 tekens|
+|`slot`| `production` of `staging`|
 
 ### <a name="language-based-sdks"></a>Op taal gebaseerde Sdk's
 
@@ -77,7 +104,7 @@ Bot Framework biedt [verschillende hulpprogram ma's](https://github.com/microsof
 * [Verzen ding](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch): bovenliggende en onderliggende apps beheren
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) : automatisch een back- C#up van/typescript-klassen voor uw Luis-intenties en entiteiten genereren.
 * [Bot Framework-emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) : een bureaublad toepassing die bot-ontwikkel aars in staat stelt om bots te testen en op te sporen met behulp van de bot Framework SDK
-
+* [Bot Framework Composer](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) : een geïntegreerd hulp programma voor ontwikkel aars en meerdere disciplinaire teams voor het bouwen van bots-en gespreks ervaringen met het micro soft bot Framework
 
 ## <a name="next-steps"></a>Volgende stappen
 

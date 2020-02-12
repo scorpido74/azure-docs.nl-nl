@@ -7,19 +7,19 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: ff9c123c0fecd26aba6ecbbda4a915d928b99f2f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d7311dce938ea575a27cf006e7469670813b7f10
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454723"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153499"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Machine Learning Studio-werk ruimte (klassieke) implementeren met behulp van Azure Resource Manager
 
-Met behulp van een Azure Resource Manager-sjabloon voor de implementatie u tijd bespaart doordat u een schaalbare manier om te implementeren met elkaar verbonden onderdelen met een validatie en mechanisme voor opnieuw proberen. Als u bijvoorbeeld Azure Machine Learning Studio (klassieke) werk ruimten wilt instellen, moet u eerst een Azure-opslag account configureren en vervolgens uw werk ruimte implementeren. Stel dit handmatig doen voor honderden werkruimten. Een eenvoudiger alternatief is het gebruik van een Azure Resource Manager sjabloon voor het implementeren van een studio-werk ruimte (klassiek) en alle bijbehorende afhankelijkheden. In dit artikel gaat u door dit stapsgewijze proces. Zie voor een goed overzicht van Azure Resource Manager [overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md).
+Met behulp van een Azure Resource Manager-sjabloon voor de implementatie u tijd bespaart doordat u een schaalbare manier om te implementeren met elkaar verbonden onderdelen met een validatie en mechanisme voor opnieuw proberen. Als u bijvoorbeeld Azure Machine Learning Studio (klassieke) werk ruimten wilt instellen, moet u eerst een Azure-opslag account configureren en vervolgens uw werk ruimte implementeren. Stel dit handmatig doen voor honderden werkruimten. Een eenvoudiger alternatief is het gebruik van een Azure Resource Manager sjabloon voor het implementeren van een studio-werk ruimte (klassiek) en alle bijbehorende afhankelijkheden. In dit artikel gaat u door dit stapsgewijze proces. Zie [overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md)voor een geweldig overzicht van Azure Resource Manager.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -112,7 +112,7 @@ $rg = New-AzResourceGroup -Name "uniquenamerequired523" -Location "South Central
 $rg
 ```
 
-Controleer of dat de resourcegroep correct is ingericht. **ProvisioningState** moet 'geslaagd zijn."
+Controleer of dat de resourcegroep correct is ingericht. **ProvisioningState** moet "geslaagd" zijn.
 Naam van de resourcegroep wordt gebruikt door de sjabloon voor het genereren van de naam van het opslagaccount. De opslagaccountnaam moet tussen 3 en 24 tekens lang zijn en cijfers en kleine letters bevatten.
 
 ![Resourcegroep](./media/deploy-with-resource-manager-template/resourcegroupprovisioning.png)
@@ -141,8 +141,8 @@ Nadat de werk ruimte is ingericht, kunt u ook veel Azure Machine Learning Studio
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Azure Resource Manager-sjablonen](../../azure-resource-manager/templates/template-syntax.md).
-* Bekijk de [opslagplaats voor Azure Quickstart-sjablonen](https://github.com/Azure/azure-quickstart-templates).
+* Meer informatie over het [ontwerpen van Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-syntax.md).
+* Bekijk de [opslag plaats voor Azure Quick](https://github.com/Azure/azure-quickstart-templates)start-sjablonen.
 * Bekijk deze video over [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39).
 * Zie de [Naslag informatie voor de Resource Manager-sjabloon](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions)
 

@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 6e78cbdd9cd921db2340a92c46a9337ac0fc98eb
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 714148815fa4ff543ecbf86ab21e8d51fe775543
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311849"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153771"
 ---
 # <a name="select-columns-in-dataset-module"></a>Kolommen in de module gegevensset selecteren
 
-In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om een subset van kolommen te kiezen die moeten worden gebruikt in downstream-bewerkingen. De-module verwijdert de kolommen niet fysiek uit de gegevensset van de bron. in plaats daarvan wordt er een subset met kolommen gemaakt, zoals een database *weergave* of *projectie*.
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: d601d19a786613f674f7b941becc5e97d84e6fce
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939266"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149929"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Zelfstudie: Een aliasrecord zo configureren dat deze naar een openbaar Azure-IP-adres verwijst 
 
@@ -36,7 +36,7 @@ Het voorbeelddomein dat wordt gebruikt voor deze zelfstudie is contoso.com, maar
 
 ## <a name="create-the-network-infrastructure"></a>De netwerkinfrastructuur maken
 Maak eerst een virtueel netwerk en een subnet waaraan u de webservers gaat toevoegen.
-1. Meld u aan bij Azure Portal op https://portal.azure.com.
+1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 2. Selecteer helemaal linksboven in de portal **Een resource maken**. Typ *resourcegroep* in het zoekvak en maak een resourcegroep met de naam **RG-DNS-Alias-pip**.
 3. Selecteer **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
 4. Maak een virtueel netwerk met de naam **VNet-Server**. Plaats het in de resourcegroep **RG-DNS-Alias-pip** en geef het subnet de naam **SN-Web**.
@@ -73,7 +73,7 @@ Maak een aliasrecord dat naar het openbare IP-adres verwijst.
 5. Schakel het selectievakje **Alias recordset** in.
 6. Selecteer **Azure-service kiezen** en selecteer vervolgens het openbare IP-adres **Web-01-ip**.
 
-## <a name="test-the-alias-record"></a>Het aliasrecord testen
+## <a name="test-the-alias-record"></a>De aliasrecord testen
 
 1. Selecteer in de resourcegroep **RG-DNS-Alias-pip** de virtuele machine **Web-01**. Noteer het openbare IP-adres.
 1. Ga in een webbrowser naar de Fully Qualified Domain Name voor de virtuele machine Web01-01. Een voorbeeld is **web01.contoso.com**. De IIS-standaardwebpagina wordt nu weergegeven.

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: ce1e7d3b3b9908d5c4608f6ab62e9b743f80c0b0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f7f8989cd1a174ecd66f23324a7760fb5cbb665b
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838017"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148086"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Hoe een model van Machine Learning Studio (klassiek) van een experiment naar een webservice wordt uitgevoerd
 Azure Machine Learning Studio (klassiek) biedt een interactief canvas waarmee u een ***experiment*** kunt ontwikkelen, uitvoeren, testen en herhalen voor een voorspellend analyse model. Er zijn tal van beschik bare modules die kunnen:
@@ -49,7 +49,7 @@ Hier volgen de stappen die een typische oplossing volgt wanneer u deze ontwikkel
 Het ***trainings experiment*** is de eerste fase van het ontwikkelen van uw web-service in machine learning Studio (klassiek). Het trainings experiment is bedoeld om u een plek te geven voor het ontwikkelen, testen, herhalen en uiteindelijk trainen van een machine learning model. U kunt zelfs meerdere modellen tegelijk trainen tijdens het zoeken naar de beste oplossing, maar nadat u klaar bent met het experimenteren, selecteert u één getraind model en verwijdert u de rest van het experiment. Voor een voor beeld van het ontwikkelen van een experiment voor voorspellende analyses raadpleegt u [een Predictive Analytics oplossing ontwikkelen voor een beoordeling van de krediet risico in azure machine learning Studio (klassiek)](tutorial-part1-credit-risk.md).
 
 ### <a name="the-predictive-experiment"></a>Het voorspellende experiment
-Zodra u een getraind model hebt in uw trainings experiment, klikt u op **webservice instellen** en selecteert u **Predictive Web Service** in machine learning Studio (klassiek) om het proces van het converteren van uw trainings experiment naar een voorspellend volume te initiëren.  ***Experimenteer***. Het doel van het voorspellende experiment is het gebruik van uw getrainde model om nieuwe gegevens te scoren, met als doel een Azure-webservice te gebruiken.
+Zodra u een getraind model hebt in uw trainings experiment, klikt u op **webservice instellen** en selecteert u **Predictive Web Service** in machine learning Studio (klassiek) om het proces van het converteren van uw trainings experiment naar een ***voorspellend experiment***te initiëren. Het doel van het voorspellende experiment is het gebruik van uw getrainde model om nieuwe gegevens te scoren, met als doel een Azure-webservice te gebruiken.
 
 Deze conversie vindt plaats door de volgende stappen uit te voeren:
 
@@ -95,14 +95,14 @@ Hier volgt een voor beeld: Stel dat uw voorspellende experiment de volledige rij
 
 Als u uw machine learning model wilt blijven gebruiken, maar u het opnieuw wilt trainen met nieuwe gegevens, hebt u twee opties:
 
-1. **Het model opnieuw trainen tijdens het uitvoeren van de webservice** : als u uw model opnieuw wilt trainen terwijl de voorspellende webservice wordt uitgevoerd, kunt u dit doen door een aantal wijzigingen aan te brengen in het trainings experiment, zodat het een ***Oefen experiment***wordt en vervolgens u kunt dit implementeren als een ***retraining-webservice*** . Zie [machine learning-modellen programmatisch opnieuw trainen](/azure/machine-learning/studio/retrain-machine-learning-model)voor instructies over hoe u dit doet.
+1. **Het model opnieuw trainen tijdens het uitvoeren van de webservice** : als u uw model opnieuw wilt trainen terwijl de voorspellende webservice wordt uitgevoerd, kunt u dit doen door een aantal wijzigingen aan te brengen in het trainings experiment, zodat het een ***experiment***voor het trainen van de training is. u kunt dit vervolgens als een ***retraining-webservice*** implementeren. Zie [machine learning-modellen programmatisch opnieuw trainen](/azure/machine-learning/studio/retrain-machine-learning-model)voor instructies over hoe u dit doet.
 2. **Ga terug naar het oorspronkelijke trainings experiment en gebruik verschillende trainings gegevens voor het ontwikkelen van uw model** -uw voorspellende experiment is gekoppeld aan de webservice, maar het trainings experiment is op deze manier niet rechtstreeks gekoppeld. Als u het oorspronkelijke opleidings experiment wijzigt en op **webservice instellen**klikt, wordt er een *Nieuw* voorspellend experiment gemaakt, dat tijdens de implementatie een *nieuwe* webservice maakt. De oorspronkelijke webservice wordt niet alleen bijgewerkt.
 
    Als u het trainings experiment wilt wijzigen, opent u het en klikt u op **Opslaan als** om een kopie te maken. Hierdoor blijft het oorspronkelijke trainings experiment, het voorspellende experiment en de webservice intact. U kunt nu een nieuwe webservice maken met uw wijzigingen. Wanneer u de nieuwe webservice hebt geïmplementeerd, kunt u vervolgens beslissen of u de vorige webservice wilt stoppen of dat u naast het nieuwe web service moet worden uitgevoerd.
 
 **U wilt een ander model trainen**
 
-Als u wijzigingen wilt aanbrengen in uw oorspronkelijke voorspellende experiment, zoals het selecteren van een andere machine learning algoritme, zoals het kiezen van een andere Trainings methode, enzovoort, moet u de tweede procedure volgen die hierboven wordt beschreven voor het opnieuw trainen van uw model: Open de Oefen experiment, klik op **Opslaan als** om een kopie te maken en start vervolgens het nieuwe pad van het ontwikkelen van uw model, het maken van het voorspellende experiment en het implementeren van de webservice. Hiermee maakt u een nieuwe webservice die niet gerelateerd is aan de oorspronkelijke, en kunt u bepalen welke service of beide er moet worden uitgevoerd.
+Als u wijzigingen wilt aanbrengen in uw oorspronkelijke voorspellende experiment, zoals het selecteren van een andere machine learning-algoritme, het uitvoeren van een andere Trainings methode, enzovoort, moet u de tweede hierboven beschreven procedure volgen voor het opnieuw trainen van uw model: Open het trainings experiment, klik op **Opslaan als** om een kopie te maken en start vervolgens het nieuwe pad van het ontwikkelen van uw model, het maken van het voorspellende experiment en het implementeren van de webservice. Hiermee maakt u een nieuwe webservice die niet gerelateerd is aan de oorspronkelijke, en kunt u bepalen welke service of beide er moet worden uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende artikelen voor meer informatie over het proces van ontwikkelen en experimenteren:

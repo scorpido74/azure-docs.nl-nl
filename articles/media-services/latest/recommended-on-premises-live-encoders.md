@@ -6,21 +6,23 @@ keywords: code ring; encoders; media
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 02/04/2020
+ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: bccdb49c22bce983fe8cb2aba1387c4b1645b62c
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: c8cf8883c80dad7988793a898dcaf01dd8f860c3
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132711"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152632"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Aanbevolen code ring voor live streamen
 
 In Azure Media Services vertegenwoordigt een [live gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) (kanaal) een pijp lijn voor het verwerken van live-streaming-inhoud. De live-gebeurtenis ontvangt Live invoer stromen op een van de volgende twee manieren.
 
-* Een on-premises Live Encoder verzendt een gegevensgestuurde multi-bitrate RTMP-of Smooth Streaming (gefragmenteerde MP4)-stream naar de live gebeurtenis die niet is ingeschakeld voor het uitvoeren van Live code ring met Media Services. De opgenomen streams passeren Live gebeurtenissen zonder verdere verwerking. Deze methode wordt **Pass-Through**genoemd. We raden u aan om met het Live coderings programma multi-bitrate streams te verzenden in plaats van een single-bitrate stream naar een Pass-through live-gebeurtenis om Adaptive Bitrate Streaming toe te staan aan de client.
+* Een on-premises Live Encoder verzendt een gegevensgestuurde multi-bitrate RTMP-of Smooth Streaming (gefragmenteerde MP4)-stream naar de live gebeurtenis die niet is ingeschakeld voor het uitvoeren van Live code ring met Media Services. De opgenomen streams passeren Live gebeurtenissen zonder verdere verwerking. Deze methode wordt **Pass-Through**genoemd. We raden u aan om met het Live coderings programma multi-bitrate streams te verzenden in plaats van een single-bitrate stream naar een Pass-through live-gebeurtenis om Adaptive Bitrate Streaming toe te staan aan de client. 
+
+    Als u multi-bitrate streams gebruikt voor de Pass-through live-gebeurtenis, moeten de grootte van de video-GOP terug en de video fragmenten op verschillende bitsnelheden worden gesynchroniseerd om onverwacht gedrag bij het afspelen te voor komen.
 
   > [!NOTE]
   > Het gebruik van een Pass-Through-methode is de voordeligste manier om live streamen uit te voeren.

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1c11539460f1ef65f8cea3d36f1a017661133355
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1dc0eec6178420976181b05a059e9f8b4859ec2a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833964"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152003"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Virtuele netwerken van verschillende implementatiemodellen verbinden met PowerShell
 
@@ -166,7 +166,7 @@ U kunt de status van de gateway controleren met behulp van de cmdlet **Get-azure
 
 ## <a name="creatermgw"></a>Sectie 2: de RM VNet-gateway configureren
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 Aan de vereisten wordt ervan uitgegaan dat u al een RM VNet hebt gemaakt. In deze stap maakt u een VPN-gateway voor het RM-VNet. Start deze stappen pas nadat u het open bare IP-adres voor de klassieke VNet-gateway hebt opgehaald. 
 
@@ -298,7 +298,7 @@ Voor het maken van een verbinding tussen de gateways is Power shell vereist. Mog
 
 [!INCLUDE [vpn-gateway-verify-connection-ps-classic](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
@@ -309,7 +309,7 @@ Voor het maken van een verbinding tussen de gateways is Power shell vereist. Mog
 
 [!INCLUDE [vpn-gateway-verify-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 
 [!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: ea37dc9ee6c9249aa9d18f7ee7ab1fdbe1230930
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f5d1fff7d1343ad569fa015ebdb65d0152f04376
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975836"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153210"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API voor spraak-naar-tekst
 
@@ -42,9 +42,9 @@ Deze parameters kunnen worden opgenomen in de query-tekenreeks van de REST-aanvr
 
 | Parameter | Beschrijving | Vereiste / optioneel |
 |-----------|-------------|---------------------|
-| `language` | Hiermee geeft u de gesproken taal die wordt herkend. Zie [ondersteunde talen](language-support.md#speech-to-text). | Verplicht |
-| `format` | Hiermee geeft u de resultaatindeling. Geaccepteerde waarden zijn `simple` en `detailed`. Eenvoudige tot de resultaten behoren `RecognitionStatus`, `DisplayText`, `Offset`, en `Duration`. Gedetailleerde antwoorden bevatten meerdere resultaten met vertrouwen waarden en vier verschillende manieren. De standaardinstelling is `simple`. | Optioneel |
-| `profanity` | Geeft aan hoe grof taalgebruik in herkenningsresultaten worden verwerkt. Geaccepteerde waarden zijn `masked`, waarbij de woorden met sterretjes `removed`worden vervangen, waardoor alle woorden worden verwijderd uit het resultaat, of `raw`, waarbij de scheld woorden in het resultaat wordt opgenomen. De standaardinstelling is `masked`. | Optioneel |
+| `language` | Hiermee geeft u de gesproken taal die wordt herkend. Zie [ondersteunde talen](language-support.md#speech-to-text). | Vereist |
+| `format` | Hiermee geeft u de resultaatindeling. Geaccepteerde waarden zijn `simple` en `detailed`. Eenvoudige resultaten zijn `RecognitionStatus`, `DisplayText`, `Offset`en `Duration`. Gedetailleerde antwoorden bevatten meerdere resultaten met vertrouwen waarden en vier verschillende manieren. De standaard instelling is `simple`. | Optioneel |
+| `profanity` | Geeft aan hoe grof taalgebruik in herkenningsresultaten worden verwerkt. Geaccepteerde waarden zijn `masked`, waarbij de woorden met sterretjes `removed`worden vervangen, waardoor alle woorden worden verwijderd uit het resultaat, of `raw`, waarbij de scheld woorden in het resultaat wordt opgenomen. De standaard instelling is `masked`. | Optioneel |
 
 ## <a name="request-headers"></a>Aanvraagheaders
 
@@ -52,16 +52,16 @@ Deze tabel bevat de vereiste en optionele headers voor spraak-naar-tekst-aanvrag
 
 |Header| Beschrijving | Vereiste / optioneel |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | Uw abonnements sleutel voor spraak Services. | Een van beide deze header of `Authorization` is vereist. |
-| `Authorization` | Een verificatietoken voorafgegaan door het woord `Bearer`. Zie [Verificatie](#authentication) voor meer informatie. | Een van beide deze header of `Ocp-Apim-Subscription-Key` is vereist. |
-| `Content-type` | Beschrijft de indeling en codec van de opgegeven gegevens. Geaccepteerde waarden zijn `audio/wav; codecs=audio/pcm; samplerate=16000` en `audio/ogg; codecs=opus`. | Verplicht |
+| `Ocp-Apim-Subscription-Key` | Uw abonnements sleutel voor spraak Services. | Deze header of `Authorization` is vereist. |
+| `Authorization` | Een autorisatie token dat wordt voorafgegaan door het woord `Bearer`. Zie [Verificatie](#authentication) voor meer informatie. | Deze header of `Ocp-Apim-Subscription-Key` is vereist. |
+| `Content-type` | Beschrijft de indeling en codec van de opgegeven gegevens. Geaccepteerde waarden zijn `audio/wav; codecs=audio/pcm; samplerate=16000` en `audio/ogg; codecs=opus`. | Vereist |
 | `Transfer-Encoding` | Hiermee geeft u op of gesegmenteerde audiogegevens wordt verzonden, in plaats van één bestand. Gebruik alleen deze header als audiogegevens logische groepen te verdelen. | Optioneel |
-| `Expect` | Als u gesegmenteerde overdracht, stuurt u `Expect: 100-continue`. De speech-service erkent de eerste aanvraag en wacht op aanvullende gegevens.| Vereist als het gesegmenteerde audiogegevens verzenden. |
-| `Accept` | Indien opgegeven, moet deze `application/json`. De speech-service biedt resultaten in JSON. Sommige aanvraag raamwerken bieden een incompatibele standaard waarde. Het is raadzaam om altijd `Accept`te gebruiken. | Optioneel maar aanbevolen. |
+| `Expect` | Als u gesegmenteerde overdracht wilt gebruiken, moet u `Expect: 100-continue`verzenden. De speech-service erkent de eerste aanvraag en wacht op aanvullende gegevens.| Vereist als het gesegmenteerde audiogegevens verzenden. |
+| `Accept` | Als dit wordt gegeven, moet het worden `application/json`. De speech-service biedt resultaten in JSON. Sommige aanvraag raamwerken bieden een incompatibele standaard waarde. Het is raadzaam om altijd `Accept`te gebruiken. | Optioneel maar aanbevolen. |
 
 ## <a name="audio-formats"></a>Audio-indelingen
 
-Audio wordt verzonden in de hoofdtekst van de HTTP `POST` aanvraag. Het moet zich binnen een van de indelingen in deze tabel:
+Audio wordt verzonden in de hoofd tekst van de HTTP-`POST` aanvraag. Het moet zich binnen een van de indelingen in deze tabel:
 
 | Indeling | Codec | Bitrate | Samplefrequentie |
 |--------|-------|---------|-------------|
@@ -69,7 +69,7 @@ Audio wordt verzonden in de hoofdtekst van de HTTP `POST` aanvraag. Het moet zic
 | OGG | OPUS | 16-bits | 16 kHz, mono |
 
 >[!NOTE]
->De bovenstaande indelingen worden ondersteund via REST API en WebSocket in de speech-service. De [spraak SDK](speech-sdk.md) momenteel alleen ondersteunt de WAV opmaken met PCM codec.
+>De bovenstaande indelingen worden ondersteund via REST API en WebSocket in de speech-service. De [Speech SDK](speech-sdk.md) ondersteunt momenteel de WAV-indeling met PCM-codec en [andere indelingen](how-to-use-codec-compressed-audio-input-streams.md).
 
 ## <a name="sample-request"></a>Voorbeeld van een aanvraag
 
@@ -94,14 +94,14 @@ De HTTP-statuscode voor elke reactie geeft aan dat het slagen of veelvoorkomende
 | 100 | Doorgaan | De eerste aanvraag is geaccepteerd. Doorgaan met het verzenden van de rest van de gegevens. (Met gesegmenteerde overdracht gebruikt.) |
 | 200 | OK | De aanvraag is uitgevoerd. de antwoordtekst is een JSON-object. |
 | 400 | Ongeldig verzoek | Er is geen taal code gegeven, geen ondersteunde taal, ongeldig audio bestand, enzovoort. |
-| 401 | Niet geautoriseerd | Abonnementssleutel of autorisatie-token is ongeldig in de regio is opgegeven of ongeldig eindpunt. |
+| 401 | Niet-geautoriseerd | Abonnementssleutel of autorisatie-token is ongeldig in de regio is opgegeven of ongeldig eindpunt. |
 | 403 | Verboden | Ontbrekende abonnementssleutel of autorisatie token. |
 
 ## <a name="chunked-transfer"></a>Gesegmenteerde overdracht
 
 Gesegmenteerde overdracht (`Transfer-Encoding: chunked`) kan helpen de latentie van herkenning te verminderen. Hiermee kan de spraak service de verwerking van het audio bestand starten tijdens de verzen ding. De REST-API biedt geen tijdelijke of gedeeltelijke resultaten.
 
-Dit codevoorbeeld laat zien hoe voor het verzenden van audio in segmenten. Alleen de eerste chunk moet de audio bestands-header bevatten. `request` is een HTTPWebRequest-object dat is verbonden met het juiste REST-eindpunt. `audioFile` is het pad naar een audio-bestand op schijf.
+Dit codevoorbeeld laat zien hoe voor het verzenden van audio in segmenten. Alleen de eerste chunk moet de audio bestands-header bevatten. `request` is een HTTPWebRequest-object dat is verbonden met het juiste REST-eind punt. `audioFile` het pad is naar een audio bestand op schijf.
 
 ```csharp
 
@@ -142,29 +142,29 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ## <a name="response-parameters"></a>Antwoord-parameters
 
-Resultaten worden gegeven als JSON. De `simple` indeling omvat deze velden op het hoogste niveau.
+Resultaten worden gegeven als JSON. De `simple` indeling bevat deze velden op het hoogste niveau.
 
 | Parameter | Beschrijving  |
 |-----------|--------------|
-|`RecognitionStatus`|Status, zoals `Success` voor geslaagde opname. Zie de volgende tabel.|
+|`RecognitionStatus`|Status, zoals `Success` voor geslaagde herkenning. Zie de volgende tabel.|
 |`DisplayText`|De herkende tekst na hoofdletter gebruik, interpunctie, inverse tekst normalisatie (conversie van gesp roken tekst naar kortere formulieren, zoals 200 voor "200" of "Dr. Smit" voor "Doctor Smith") en grove maskers. Alleen op succes is geïnstalleerd.|
 |`Offset`|De tijd (in eenheden van 100 nanoseconden) waarmee de herkende spraak in de audiostream begint.|
 |`Duration`|De duur (in eenheden van 100 nanoseconden) van de herkende spraak in de audio-stream.|
 
-De `RecognitionStatus` veld bevat deze waarden mogelijk:
+Het veld `RecognitionStatus` kan deze waarden bevatten:
 
 | Status | Beschrijving |
 |--------|-------------|
-| `Success` | De opname is voltooid en de `DisplayText` veld niet aanwezig is. |
+| `Success` | De herkenning is geslaagd en het `DisplayText` veld is aanwezig. |
 | `NoMatch` | Spraak is gedetecteerd in de audiostream, maar er zijn geen woorden uit de doeltaal zijn afgestemd. Betekent meestal dat de opname-taal is een andere taal dan het account dat de gebruiker spreekt. |
 | `InitialSilenceTimeout` | Het begin van de audiostream bevat alleen stilte en de time-out voor spraak-service. |
 | `BabbleTimeout` | Het begin van de audiostream bevat alleen ruis, en de time-out voor spraak-service. |
 | `Error` | De opname-service is een interne fout opgetreden en kan niet worden voortgezet. Probeer het opnieuw, indien mogelijk. |
 
 > [!NOTE]
-> Als de audio alleen uit grof taalgebruik bestaat, en de `profanity` queryparameter is ingesteld op `remove`, de service heeft geen spraak resultaat geretourneerd.
+> Als de audio alleen uit scheld woorden bestaat en de `profanity` query parameter is ingesteld op `remove`, retourneert de service geen gesp roken resultaat.
 
-De `detailed` indeling bevat dezelfde gegevens als de `simple` indeling, samen met `NBest`, een lijst met alternatieve interpretaties van hetzelfde herkennings resultaat. Deze resultaten worden geclassificeerd op basis van de meest waarschijnlijke kans op minst. De eerste vermelding is hetzelfde als het belangrijkste herkennings resultaat.  Wanneer u de `detailed` indeling `DisplayText` wordt geleverd als `Display` voor elk resultaat in de `NBest` lijst.
+De `detailed` indeling bevat dezelfde gegevens als de `simple` indeling, samen met `NBest`, een lijst met alternatieve interpretaties van hetzelfde herkennings resultaat. Deze resultaten worden geclassificeerd op basis van de meest waarschijnlijke kans op minst. De eerste vermelding is hetzelfde als het belangrijkste herkennings resultaat.  Wanneer u de `detailed` notatie gebruikt, wordt `DisplayText` als `Display` voor elk resultaat weer gegeven in de `NBest` lijst.
 
 Elk object in de `NBest` lijst bevat:
 
@@ -174,7 +174,7 @@ Elk object in de `NBest` lijst bevat:
 | `Lexical` | De lexicale vorm van de herkende tekst: de werkelijke woorden herkend. |
 | `ITN` | De inverse-normalized-tekst ("canonieke") vorm van de herkende tekst, met telefoon getallen, getallen, afkortingen ("doctor smith' op 'dr smith') en andere transformaties toegepast. |
 | `MaskedITN` | Het formulier toevoegen met grof taalgebruik maskering toegepast, indien aangevraagd. |
-| `Display` | Het formulier weergegeven van de herkende tekst, met interpunctie hoofdletters en kleine letters toegevoegd. Deze parameter is hetzelfde als `DisplayText` opgegeven als indeling is ingesteld op `simple`. |
+| `Display` | Het formulier weergegeven van de herkende tekst, met interpunctie hoofdletters en kleine letters toegevoegd. Deze para meter is hetzelfde als `DisplayText` opgegeven wanneer notatie is ingesteld op `simple`. |
 
 ## <a name="sample-responses"></a>Voorbeeld van reacties
 

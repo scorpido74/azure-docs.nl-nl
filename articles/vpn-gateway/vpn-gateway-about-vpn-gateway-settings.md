@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9ecea0576f7cec4e70d6e223b5412a8d8057b2ab
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d7a2040748d170b4e536df59947ea811f149d931
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894745"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148144"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Over VPN Gateway configuratie-instellingen
 
@@ -28,7 +28,7 @@ Met de waarden in dit artikel worden VPN-gateways (virtuele netwerk gateways die
 
 * Zie [about Virtual WAN](../virtual-wan/virtual-wan-about.md)(Engelstalig) voor virtuele WAN.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="gwtype"></a>Gateway typen
 
@@ -55,7 +55,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### <a name="configure-a-gateway-sku"></a>Een gateway-SKU configureren
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 
 Als u de Azure Portal gebruikt om een virtuele netwerk gateway van Resource Manager te maken, kunt u de gateway-SKU selecteren met behulp van de vervolg keuzelijst. De opties die u opgeeft, komen overeen met het gateway type en het VPN-type dat u selecteert.
 
@@ -69,7 +69,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
@@ -172,8 +172,8 @@ Zie de volgende pagina's voor aanvullende technische bronnen en specifieke synta
 | **Klassiek** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
-| [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
-| Niet ondersteund | [Azure-CLI](/cli/azure/network/vnet-gateway)|
+| [REST-API](https://msdn.microsoft.com/library/jj154113) |[REST-API](/rest/api/network/virtualnetworkgateways) |
+| Niet ondersteund | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
 ## <a name="next-steps"></a>Volgende stappen
 

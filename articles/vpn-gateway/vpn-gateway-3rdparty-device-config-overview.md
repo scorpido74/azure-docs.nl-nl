@@ -7,17 +7,17 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 733add5aa86ebd7faaaab78bb301ba9469433fdd
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778019"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148329"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Overzicht van configuraties van VPN-apparaten voor partners
 Dit artikel bevat een overzicht van het configureren van on-premises VPN-apparaten om verbinding te maken met Azure VPN-gateways. Een voor beeld van een virtueel Azure-netwerk en een VPN-gateway Setup wordt gebruikt om te laten zien hoe u verbinding kunt maken met verschillende on-premises VPN-configuraties met dezelfde para meters.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="device-requirements"></a>Vereisten voor apparaten
 Azure VPN-gateways gebruiken standaard IPsec/IKE-protocol suites voor VPN-tunnels van het site-naar-site (S2S). Zie [over VPN-apparaten](vpn-gateway-about-vpn-devices.md)voor een lijst met IPSec/IKE-para meters en cryptografische algoritmen voor Azure VPN-gateways. U kunt ook de exacte algoritmen en belangrijkste sterke punten voor een specifieke verbinding opgeven, zoals wordt beschreven in [informatie over cryptografische vereisten](vpn-gateway-about-compliance-crypto.md).
@@ -29,10 +29,10 @@ De eerste configuratie in het voor beeld bestaat uit één S2S VPN-tunnel tussen
 
 Zie [een site-naar-site-verbinding configureren](vpn-gateway-howto-site-to-site-resource-manager-portal.md)voor stapsgewijze instructies voor het instellen van één VPN-tunnel. In de volgende secties worden de verbindings parameters voor de voorbeeld configuratie opgegeven en wordt een Power shell-script geboden waarmee u aan de slag kunt.
 
-### <a name="connection-parameters"></a>Verbindingsparameters
+### <a name="connection-parameters"></a>Verbindings parameters
 In deze sectie vindt u de para meters voor de voor beelden die in de vorige secties worden beschreven.
 
-| **Parameter**                | **Waarde**                    |
+| **Bepaalde**                | **Waarde**                    |
 | ---                          | ---                          |
 | Adres voorvoegsels van virtuele netwerken        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN-gateway-IP         | Azure VPN Gateway IP         |

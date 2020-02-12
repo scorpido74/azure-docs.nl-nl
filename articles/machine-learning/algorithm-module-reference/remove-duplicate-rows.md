@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 6e5c1a1bfc82460ad7e53cc8444a4bb42aa4ef19
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 429ddd62cccb8657aa18ec844968cc12df778f55
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548387"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153788"
 ---
 # <a name="remove-duplicate-rows-module"></a>Module dubbele rijen verwijderen
 
@@ -26,15 +26,15 @@ Stel dat uw gegevens er als volgt uitzien en dat er meerdere records worden aang
 
 | PatientID | Initialen| Geslacht|Leeftijd|Stoffen|
 |----|----|----|----|----|
-|1|F.M.| mln.| 53| jan|
-|2| F.A.M.| mln.| 53| jan|
-|3| F.A.M.| mln.| 24| jan|
-|3| F.M.| mln.| 24| Feb|
-|4| F.M.| mln.| 23| Feb|
-| | F.M.| mln.| 23| |
-|5| F.A.M.| mln.| 53| |
-|6| F.A.M.| mln.| NaN| |
-|7| F.A.M.| mln.| NaN| |
+|1|F.M.| M| 53| Jan|
+|2| F.A.M.| M| 53| Jan|
+|3| F.A.M.| M| 24| Jan|
+|3| F.M.| M| 24| Februari|
+|4| F.M.| M| 23| Februari|
+| | F.M.| M| 23| |
+|5| F.A.M.| M| 53| |
+|6| F.A.M.| M| NaN| |
+|7| F.A.M.| M| NaN| |
 
 Het is duidelijk dat dit voor beeld meerdere kolommen bevat met mogelijk dubbele gegevens. Of ze daad werkelijk worden gedupliceerd, is afhankelijk van uw kennis van de gegevens. 
 

@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dbc7f8068ed84f42ec41ebd969e0aa91ffbb264
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5aa30bc819531ee8cc9cd337648a6cbc661bb29
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473328"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149810"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Veelgestelde vragen over Azure Active Directory Connect
 
@@ -113,7 +113,7 @@ Hieronder vindt u een informatief document waarin een aantal van de best practic
 - Staging-servers zijn niet bedoeld als een oplossing met hoge Beschik baarheid, maar u kunt meerdere staging-servers hebben
 - Introductie van een ' vertragings-' staging-server kunnen een mogelijke downtime in geval van een fout oplossen
 - Test en valideer eerst alle upgrades op de staging-server
-- Validatie altijd valideren voordat wordt overgeschakeld naar de staging-serverLeverage van de staging-server voor volledige import bewerkingen en volledige synchronisaties om de impact van het bedrijf te verminderen
+- Valideer altijd de export voordat u overschakelt naar de staging-server.  Maak gebruik van de staging-server voor volledige import bewerkingen en volledige synchronisaties om de impact van het bedrijf te verminderen
 - Bewaar versie consistentie tussen Azure AD Connect servers zoveel mogelijk 
 
 **V: kan ik toestaan dat Azure AD Connect het Azure AD Connector-account op de werkgroepcomputer maakt?**
@@ -258,7 +258,7 @@ In zeldzame gevallen wordt de Azure AD Connect-service niet gestart nadat u de u
 **V: Ik weet niet wat de Risico's zijn wanneer ik een upgrade naar een nieuwere versie van Azure AD Connect. Kunt u mij bellen om me te helpen met de upgrade?**  
 Als u hulp nodig hebt bij het upgraden naar een nieuwere versie van Azure AD Connect, opent u een ondersteunings ticket bij [een service aanvraag maken om contact op te nemen met de ondersteuning van Office 365](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/).
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 **V: hoe kan ik hulp krijgen bij Azure AD Connect?**
 
 [Zoek in de micro soft Knowledge Base (KB)](https://www.microsoft.com/en-us/search/result.aspx?q=azure+active+directory+connect)

@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 60a9c6b237423337abb520b335c98d3c8c7549be
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4340ee4ed1edda8590726151e07eec45c0751ed6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312194"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152258"
 ---
 # <a name="feature-hashing-module-reference"></a>Naslag informatie over functie hashing-module
 
-In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Learning Designer.
+In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Learning Designer (preview).
 
 Gebruik de functie hashing-module om een stroom van Engelse tekst te transformeren in een set integer-functies. U kunt deze hash-functie vervolgens door geven die is ingesteld op een machine learning algoritme voor het trainen van een tekst analyse model.
 
@@ -30,7 +30,7 @@ Hashing van functies werkt door unieke tokens te converteren naar gehele getalle
 
 Neem bijvoorbeeld een aantal eenvoudige zinnen zoals deze, gevolgd door een sentiment-Score. Stel dat u deze tekst wilt gebruiken om een model te bouwen.
 
-|Gebruikers tekst|Sentiment|
+|Gebruikers tekst|Stemming|
 |--------------|---------------|
 |Ik gek dit boek|3|
 |Ik Hated dit boek|1|
@@ -50,9 +50,9 @@ U kunt de grootte van het n-gram instellen met behulp van de eigenschap **n-gram
 
 |Term (unigrams)|Frequency|
 |------------|---------------|
-|boek|3|
+|telefoonlijst|3|
 |I|3|
-|boeken|1|
+|houding|1|
 |aangetroffen|1|
 
 Nadat de woorden lijst is gebouwd, zet de functie hashing module de woordenlijst termen om in hash-waarden. Vervolgens wordt berekend of een functie in elk geval is gebruikt. Voor elke rij met tekst gegevens voert de module een set kolommen uit, één kolom voor elke hash-functie.
@@ -121,7 +121,7 @@ Met de volgende aanbevolen procedures kunt u optimaal profiteren van de functie 
     
 * U kunt deze voor verwerkings opties voor tekst gebruiken om de resultaten te vereenvoudigen en de nauw keurigheid te verbeteren:
 
-    * Woordafbreking
+    * Woord afbreking
     * Het verwijderen van woorden stoppen
     * Case-normalisatie
     * Verwijdering van Lees tekens en speciale tekens

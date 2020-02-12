@@ -1,5 +1,5 @@
 ---
-title: De voorbeeldgegevenssets gebruiken
+title: De voorbeeld gegevens sets gebruiken
 titleSuffix: ML Studio (classic) - Azure
 description: Beschrijvingen van de gegevens sets die worden gebruikt in voorbeeld modellen die zijn opgenomen in Machine Learning Studio (klassiek). U kunt deze voorbeeld gegevens sets gebruiken voor uw experimenten.
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: c2700c8241905f6e219b566a10e3378dd6c7251d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 211a2a83d2668c3240daca11e9063b31d42655ae
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427428"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152751"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>De voorbeeld gegevens sets gebruiken in Azure Machine Learning Studio (klassiek)
 [top]: #machine-learning-sample-datasets
@@ -259,7 +259,7 @@ Een subset van gegevens uit de data base van het National Institute of diabetes 
 </tr>
 
 <tr>
-  <td>Gegevens van klanten van restaurants</td>
+  <td>Klant gegevens van restaurant</td>
   <td>
 Een set meta gegevens over klanten, met inbegrip van demografische informatie en voor keuren.
 <p></p>
@@ -270,7 +270,7 @@ Een set meta gegevens over klanten, met inbegrip van demografische informatie en
 </tr>
 
 <tr>
-  <td>Gegevens van functies van restaurant</td>
+  <td>Gegevens van het restaurant onderdeel</td>
   <td>
 Een set meta gegevens over restaurants en hun functies, zoals voedsel type, restauratie stijl en locatie.
 <p></p>
@@ -281,7 +281,7 @@ Een set meta gegevens over restaurants en hun functies, zoals voedsel type, rest
 </tr>
 
 <tr>
-  <td>Beoordelingen van restaurants</td>
+  <td>Restaurant beoordelingen</td>
   <td>
 Bevat beoordelingen van gebruikers aan restaurants op een schaal van 0 tot 2.
 <p></p>
@@ -358,28 +358,28 @@ Houd er rekening mee dat voor sommige bedrijven een artikel niet kan worden gevo
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing. CSV</a></td>
   <td>
 De gegevensset bevat klant gegevens en indicaties over hun reactie op een directe mailing campagne. Elke rij vertegenwoordigt een klant. De gegevensset bevat negen functies voor demografische gegevens van gebruikers en eerdere gedragingen, en drie label kolommen (bezoeken, conversie en uitgaven).  Bezoek is een binaire kolom die aangeeft dat een klant na de marketing campagne is bezocht. Conversie geeft aan dat een klant iets heeft gekocht. Best Eden aan het bedrag dat is uitgegeven.  De gegevensset is beschikbaar gesteld door Kevin Hillstrom voor MineThatData-mail analyse en gegevens analyse.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test. CSV</a></td>
   <td>
 Functies van test voorbeelden in de RCV1-v2-nieuws gegevensset van Reuters. De gegevensset heeft 781K nieuws artikelen samen met hun Id's (eerste kolom van de gegevensset). Elk artikel wordt getokend, stopworded en versleuteld. De gegevensset is beschikbaar gesteld door David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train. CSV</a></td>
   <td>
 Functies van training-voor beelden in de RCV1-v2-nieuws gegevensset van Reuters. De gegevensset heeft 23K nieuws artikelen samen met hun Id's (eerste kolom van de gegevensset). Elk artikel wordt getokend, stopworded en versleuteld. De gegevensset is beschikbaar gesteld door David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. CSV</a><br></td>
   <td>
 Gegevensset van de KDDe Cup 1999 kennis detectie en Hulpprogram Ma's voor gegevens analyse van<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.</a>
 <p></p>
@@ -388,14 +388,14 @@ De gegevensset is gedownload en opgeslagen in Azure Blob Storage (<a href="https
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2. topics. qrels. CSV</a></td>
   <td>
 Onderwerps toewijzingen voor nieuws artikelen in de RCV1-v2-nieuws gegevensset van Reuters. Een nieuws artikel kan worden toegewezen aan verschillende onderwerpen. De indeling van elke rij is '&lt;topic name&gt; &lt;document-id&gt; 1 '. De gegevensset bevat 2.6 M-onderwerps toewijzingen. De gegevensset is beschikbaar gesteld door David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
   <td>
 Deze gegevens zijn afkomstig van de KDDe Cup 2010 Student prestatie-evaluatie test (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Student Performance Evaluation</a>). De gebruikte gegevens zijn de Algebra_2008_2009-Trainingsset (stempel, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. Uitdaging gegevensset van de KDDe Cup 2010 onderwijs gegevens analyse uitdaging. Zoek het op <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">down loads. jsp</a>.
 <p></p>

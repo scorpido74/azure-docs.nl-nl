@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9342a70e539c4a2717fe45426c26595285172681
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 18a9578cc454ea5259b9564d64dcd4308ee5ef87
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045770"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148968"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>VPN-client configuratie bestanden maken en installeren voor systeem eigen Azure-certificaat verificatie P2S-configuraties
 
@@ -28,7 +28,7 @@ Client configuratie bestanden zijn specifiek voor de VPN-configuratie voor het V
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="generate"></a>Configuratiebestanden voor VPN-clients genereren
+## <a name="generate"></a>Configuratie bestanden voor VPN-clients genereren
 
 Voordat u begint, moet u ervoor zorgen dat alle gebruikers met een verbinding een geldig certificaat hebben geïnstalleerd op het apparaat van de gebruiker. Zie [een client certificaat installeren](point-to-site-how-to-vpn-client-install-azure-cert.md)voor meer informatie over het installeren van een client certificaat.
 
@@ -46,7 +46,6 @@ U kunt client configuratie bestanden genereren met behulp van Power shell of met
 
 ### <a name="zipps"></a>Bestanden genereren met behulp van Power shell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 1. Bij het genereren van configuratie bestanden voor VPN-clients is de waarde '-EapTls '. Genereer de configuratie bestanden voor de VPN-client met de volgende opdracht:
 
@@ -112,10 +111,10 @@ Voer de volgende stappen uit om de systeem eigen VPN-client te configureren voor
    ![certificaat](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Kies een identiteit** om een lijst met certificaten weer te geven waaruit u kunt kiezen. Selecteer het juiste certificaat en klik vervolgens op **door gaan**.
 
-   ![identiteit](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. Geef in het veld **lokale id** de naam van het certificaat op (uit stap 6). In dit voor beeld is het ' ikev2Client.com '. Klik vervolgens op de knop **Toep assen** om de wijzigingen op te slaan.
 
-   ![aanvragen](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+   ![Toep assen](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. Klik in het dialoog venster **netwerk** op **Toep assen** om alle wijzigingen op te slaan. Klik vervolgens op **verbinding maken** om de P2S-verbinding met Azure VNet te starten.
 
 ## <a name="linuxgui"></a>Linux (strongSwan GUI)

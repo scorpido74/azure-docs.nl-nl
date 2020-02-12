@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: Azure Machine Learning Studio (klassiek) is een hulp programma voor slepen en neerzetten waarmee u snel modellen kunt bouwen op basis van een kant-en-klare bibliotheek met algoritmen en modules.
 services: machine-learning
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: f3be29dc222e0e9b98ed51d8f921fb9926b018ca
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 07629a17492d0c898bbd76aeeab6c84cf39b4b55
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314064"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152700"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Wat is Machine Learning Studio (klassiek)?
 
@@ -38,13 +38,13 @@ Er is geen programmering vereist. u kunt gegevens sets en modules visueel verbin
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Wat is het verschil tussen Machine Learning Studio (klassiek) en Azure Machine Learning?
 
-[Azure machine learning](../overview-what-is-azure-ml.md) biedt **zowel sdk's als** de Azure machine learning Designer voor het snel voorbereiden van gegevens, het trainen en implementeren van machine learning modellen. De Designer biedt een vergelijk bare functionaliteit voor slepen en neerzetten naar Studio (klassiek). Maar in tegens telling tot het eigen reken platform van Studio (klassiek) maakt de ontwerper gebruik van uw eigen reken resources en is deze volledig geïntegreerd in Azure Machine Learning.
+[Azure machine learning](../overview-what-is-azure-ml.md) biedt **zowel sdk's als** de Azure machine learning Designer (preview) om snel gegevens te kunnen prepen, machine learning modellen te trainen en te implementeren. De Designer biedt een vergelijk bare functionaliteit voor slepen en neerzetten naar Studio (klassiek). Maar in tegens telling tot het eigen reken platform van Studio (klassiek) maakt de ontwerper gebruik van uw eigen reken resources en is deze volledig geïntegreerd in Azure Machine Learning.
 
 Hier volgt een snelle vergelijking:
 
 || Machine Learning Studio (klassiek) | Azure Machine Learning |
 |---| --- | --- |
-| Interface slepen en neerzetten | Ja | Ja, [Azure machine learning Designer](../concept-designer.md) |
+| Interface slepen en neerzetten | Ja | Ja, [Azure machine learning Designer (preview-versie)](../concept-designer.md) |
 | Experiment | Schaalbaar (10-GB training-gegevens limiet) | Schalen met Compute target |
 | Modules voor de interface voor slepen en neerzetten | Allerlei | Initiële set populaire [modules](../algorithm-module-reference/module-reference.md)|
 |Doelen van de trainings compute| Eigen reken doel, alleen CPU-ondersteuning| Ondersteunt Azure Machine Learning Compute (GPU of CPU) en virtuele notebook-Vm's.<br/>([Andere reken processen die worden ondersteund in SDK](../concept-compute-target.md#train))|

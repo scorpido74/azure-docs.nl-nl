@@ -3,12 +3,12 @@ title: Voorbeeld besturings elementen voor FedRAMP matige blauw druk
 description: De toewijzing van het FedRAMP matige blauw druk-voor beeld beheren. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
 ms.date: 10/31/2019
 ms.topic: sample
-ms.openlocfilehash: 0ecf5430f643ee795f81759f3d07a062e433f5b6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 3fd6762f4f0a76b560a37dd1ed4f727aa76385fd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544559"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150475"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>De toewijzing van het FedRAMP matige blauw druk-voor beeld controleren
 
@@ -27,7 +27,7 @@ Deze blauw druk helpt u bij het controleren van accounts die mogelijk niet voldo
 - Afgeschafte accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
 - Externe accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement
 - Externe accounts met lees machtigingen moeten worden verwijderd uit uw abonnement
-- Externe accounts met schrijfmachtigingen moeten worden verwijderd uit uw abonnement
+- Externe accounts met schrijf machtigingen moeten worden verwijderd uit uw abonnement
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) account beheer | Op rollen gebaseerde Schema's
 
@@ -70,7 +70,7 @@ Deze blauw druk helpt u bij het bewaken en beheren van externe toegang door [Azu
 - Onbeperkte netwerk toegang tot opslag accounts controleren
 - Fout opsporing op afstand moet worden uitgeschakeld voor de API-app
 - Fout opsporing op afstand moet worden uitgeschakeld voor functie-app
-- Externe fout opsporing moet worden uitgeschakeld voor webtoepassing
+- Foutopsporing op afstand moet worden uitgeschakeld voor Web-App
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5-antwoord op mislukte controle verwerking
 
@@ -79,7 +79,7 @@ Deze blauw druk wijst [Azure Policy](../../../policy/overview.md) definities toe
 - Diagnostische instelling voor controleren
 - Controle op SQL Server moet zijn ingeschakeld
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
-- Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
+- Geavanceerde gegevens beveiliging moet zijn ingeschakeld op uw SQL-servers
 
 ## <a name="au-12-audit-generation"></a>Generatie van AU-12-audit
 
@@ -95,7 +95,7 @@ Deze blauw druk helpt u om ervoor te zorgen dat systeem gebeurtenissen worden va
 - Diagnostische instelling voor controleren
 - Controle op SQL Server moet zijn ingeschakeld
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
-- Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
+- Geavanceerde gegevens beveiliging moet zijn ingeschakeld op uw SQL-servers
 - Geavanceerde gegevens beveiliging implementeren op SQL-servers
 - Controle op SQL-servers implementeren
 - Diagnostische instellingen voor netwerk beveiligings groepen implementeren
@@ -170,7 +170,7 @@ Deze blauw druk helpt u bij het afdwingen van sterke wacht woorden door [Azure P
 Deze blauw druk helpt u bij het beheren van beveiligings problemen met informatie systemen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen waarmee beveiligings problemen met het besturings systeem, SQL-beveiligings problemen en beveiligings problemen met virtuele machines in azure Security Center worden bewaakt Azure Security Center biedt rapportage mogelijkheden waarmee u real-time inzicht kunt krijgen in de beveiligings status van geïmplementeerde Azure-resources. Deze blauw druk wijst ook beleids definities toe die geavanceerde gegevens beveiliging controleren en afdwingen op SQL-servers. Met geavanceerde gegevens beveiliging zijn de evaluatie van beveiligings problemen en geavanceerde functies voor bedreigings beveiliging beschikbaar om u te helpen bij het begrijpen van de kwets baarheid van uw geïmplementeerde
 
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
-- Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
+- Geavanceerde gegevens beveiliging moet zijn ingeschakeld op uw SQL-servers
 - Geavanceerde gegevens beveiliging implementeren op SQL-servers
 - Beveiligings problemen in de beveiligings configuratie van de schaal sets van virtuele machines moeten worden hersteld
 - Beveiligings problemen in de beveiligings configuratie op uw virtuele machines moeten worden hersteld
@@ -190,7 +190,7 @@ Daarnaast wijst deze blauw druk ook beleids definities toe waarmee onbeveiligde 
 
 - De regels voor de netwerk beveiligings groep voor virtuele machines die zijn gericht op internet, moeten worden gehard
 - Toegang via Internet gericht eind punt moet worden beperkt
-- De Nsg's-regels voor webtoepassingen op IaaS moeten een harde verbinding hebben
+- Webpoorten moeten worden beperkt op netwerk beveiligings groepen die zijn gekoppeld aan uw virtuele machine
 - Onbeperkte netwerk toegang tot opslag accounts controleren
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) grens beveiliging | Toegangs punten
@@ -212,17 +212,17 @@ Deze blauw druk helpt u om het vertrouwelijke en de integriteit van verzonden in
 - De API-app mag alleen toegankelijk zijn via HTTPS
 - Windows-webservers controleren die geen protocollen voor beveiligde communicatie gebruiken
 - Vereisten implementeren voor het controleren van Windows-webservers die geen beveiligde communicatie protocollen gebruiken
-- functie-app mag alleen toegankelijk zijn via HTTPS
+- Functie-App moet alleen toegankelijk zijn via HTTPS
 - Alleen beveiligde verbindingen met uw Redis Cache moeten worden ingeschakeld
 - Beveiligde overdracht naar opslag accounts moet zijn ingeschakeld
-- Webtoepassing mag alleen toegankelijk zijn via HTTPS
+- Web-App moet alleen toegankelijk zijn via HTTPS
 
 ## <a name="sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>SC-28 (1) beveiliging van informatie in rust | Cryptografische beveiliging
 
 Deze blauw druk helpt u bij het afdwingen van uw beleid voor het gebruik van cryptograph-besturings elementen om informatie te beveiligen door [Azure Policy](../../../policy/overview.md) definities toe te wijzen die specifieke cryptograph-besturings elementen afdwingen en het gebruik van zwakke cryptografische instellingen te controleren. Als u wilt weten waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maat regelen nemen om ervoor te zorgen dat bronnen worden geconfigureerd in overeenstemming met uw informatie beveiligings beleid. Met name de beleids definities die door deze blauw drukken worden toegewezen, vereisen versleuteling voor data Lake Storage-accounts. transparante gegevens versleuteling vereisen voor SQL-data bases; en controleren op ontbrekende versleuteling voor SQL-data bases, schijven van virtuele machines en Automation-account variabelen.
 
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
-- Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
+- Geavanceerde gegevens beveiliging moet zijn ingeschakeld op uw SQL-servers
 - Geavanceerde gegevens beveiliging implementeren op SQL-servers
 - Transparante gegevens versleuteling van SQL DB implementeren
 - Schijf versleuteling moet worden toegepast op virtuele machines
@@ -268,7 +268,7 @@ Deze blauw druk helpt u bij het controleren van uw systeem door logboek registra
 - \[preview\]: Log Analytics agent voor Windows VM Scale Sets implementeren (VMSS)
 - \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's
 - Geavanceerde gegevens beveiliging moet zijn ingeschakeld voor uw beheerde instanties
-- Geavanceerde gegevensbeveiliging moet zijn ingeschakeld op uw SQL-servers
+- Geavanceerde gegevens beveiliging moet zijn ingeschakeld op uw SQL-servers
 - Geavanceerde gegevens beveiliging implementeren op SQL-servers
 - Geavanceerde beveiliging tegen bedreigingen implementeren voor opslag accounts
 - Controle op SQL-servers implementeren

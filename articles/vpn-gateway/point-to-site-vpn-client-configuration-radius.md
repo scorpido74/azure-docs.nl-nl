@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 16689982156743f5dc4e2ed09a0f9bc097a51b9b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 6e1b162d17e2369b579fc1210c57e0409b0546bc
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903040"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148467"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>VPN-client configuratie bestanden maken en installeren voor P2S RADIUS-verificatie
 
@@ -38,7 +38,6 @@ De configuratie werk stroom voor P2S RADIUS-verificatie is als volgt:
 
 Als u de secties in dit artikel wilt gebruiken, moet u eerst bepalen welk type verificatie u wilt gebruiken: gebruikers naam/wacht woord, certificaat of andere verificatie typen. Elke sectie bevat stappen voor Windows, Mac OS X en Linux (beperkte stappen op dit moment).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="adeap"></a>Gebruikers naam/wachtwoord verificatie
 
@@ -50,7 +49,7 @@ Wanneer u gebruikers naam-en wachtwoord verificatie configureert, kunt u alleen 
 
 U kunt de configuratie bestanden voor de VPN-client genereren met behulp van de Azure Portal, of door gebruik te maken van Azure PowerShell.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 
 1. Navigeer naar de gateway van het virtuele netwerk.
 2. Klik op **punt-naar-site-configuratie**.

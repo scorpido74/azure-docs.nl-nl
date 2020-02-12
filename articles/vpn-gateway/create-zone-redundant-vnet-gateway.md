@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 58e9b4204e2d563d8e4e1af8353870880f98b065
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: d8c6b68a38d4b60cf7a3194e6a5ded8804cc416f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133596"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150167"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Een zone-redundante virtuele netwerk gateway maken in Azure-beschikbaarheidszones
 
@@ -21,27 +21,11 @@ U kunt VPN-en ExpressRoute-gateways implementeren in Azure-beschikbaarheidszones
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-U kunt Power shell lokaal geïnstalleerd op uw computer of de Azure Cloud Shell gebruiken. Als u Power shell lokaal wilt installeren en gebruiken, is voor deze functie de meest recente versie van de Power shell-module vereist.
-
-[!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
-
-### <a name="to-use-powershell-locally"></a>Power shell lokaal gebruiken
-
-Als u Power shell lokaal op uw computer gebruikt, in plaats van Cloud Shell te gebruiken, moet u Power shell-module 1.0.0 of hoger installeren. Als u de versie van Power shell die u hebt geïnstalleerd, wilt controleren, gebruikt u de volgende opdracht:
-
-```azurepowershell
-Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
-```
-
-Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps).
-
-[!INCLUDE [PowerShell login](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="variables"></a>1. Declareer de variabelen
 
-De waarden die worden gebruikt voor de voorbeeld stappen worden hieronder weer gegeven. Daarnaast gebruiken sommige van de voor beelden gedeclareerde variabelen in de stappen. Als u deze stappen in uw eigen omgeving gebruikt, zorg er dan voor dat u deze waarden vervangt door uw eigen waarde. Wanneer u een locatie opgeeft, controleert u of de regio die u opgeeft, wordt ondersteund. Raadpleeg de [Veelgestelde vragen](#faq)voor meer informatie.
+Declareer de waarden die u wilt gebruiken. Gebruik het volgende voorbeeld, en vervang zo nodig de waarden door uw eigen waarden. Als u uw Power shell/Cloud Shell-sessie op een wille keurig moment tijdens de oefening sluit, kopieert en plakt u de waarden opnieuw om de variabelen opnieuw te declareren. Wanneer u een locatie opgeeft, controleert u of de regio die u opgeeft, wordt ondersteund. Raadpleeg de [Veelgestelde vragen](#faq)voor meer informatie.
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"

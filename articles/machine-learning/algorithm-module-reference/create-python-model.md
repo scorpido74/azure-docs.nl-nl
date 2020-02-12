@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: c07ae779334c97b28803d77d2ce4a1b5b7962b48
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e26ae7ded47a235ecf1829946c1cc79af9a0fb8c
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314416"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152394"
 ---
 # <a name="create-python-model"></a>Python-model maken
 
-In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Meer informatie over het gebruik van de module **python-model maken** voor het maken van een niet-traind model van een python-script. U kunt het model baseren op alle informatie die is opgenomen in een python-pakket in de Azure Machine Learning Designer-omgeving. 
 

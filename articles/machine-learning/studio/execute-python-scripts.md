@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: c43f3021009c0c8a5a414b18bb9f0ff7d7a4a4bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a5512069ec609783d166b8417a7006ec4ab17fe1
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427659"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153431"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python machine learning scripts uitvoeren in Azure Machine Learning Studio (klassiek)
 
@@ -31,7 +31,7 @@ De primaire interface naar python in Studio (klassiek) is via de [script][execut
 
 ![Voor beeld van python-code in het vak module parameter](./media/execute-python-scripts/embedded-machine-learning-python-script.png)
 
-### <a name="input-parameters"></a>Invoerparameters
+### <a name="input-parameters"></a>Invoer parameters
 
 Invoer voor de python-module worden weer gegeven als Panda DataFrames. De functie `azureml_main` accepteert Maxi maal twee optionele Panda DataFrames als para meters.
 
