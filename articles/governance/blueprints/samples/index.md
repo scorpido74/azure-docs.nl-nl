@@ -1,14 +1,14 @@
 ---
 title: Index van blauwdrukvoorbeelden
 description: Index van compatibiliteits- en standaardvoorbeelden voor het implementeren van omgevingen, beleidsregels en grondbeginselen voor Cloud Adoptions Framework met Azure Blueprints.
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.topic: sample
-ms.openlocfilehash: fa5f02af6a0e59359d6bc3c2d24515fea535a0fa
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 88dde10efefd8153eff9aa6ad2ea47a1e00e2c87
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938294"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150456"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-voorbeelden
 
@@ -20,6 +20,7 @@ De volgende tabel bevat links naar voorbeelden voor Azure Blueprints. Elk voorbe
 |---------|---------|
 | [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Voorziet in richtlijnen om te voldoen aan de naleving van PBMM (Canada Federal Protected B, Medium Integrity, Medium Availability). |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1.1.0/index.md)| Biedt een set beleidsregels om te voldoen aan de aanbevelingen van CIS Microsoft Azure Foundations Benchmark. |
+| [DoD Impact Level 4](./dod-impact-level-4/index.md) | Bied een set beleidsregels om te helpen voldoen aan DoD Impact Level 4. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | Bied een set beleidsregels om te helpen voldoen aan FedRAMP Moderate. |
 | [FedRAMP High](./fedramp-h/index.md) | Bied een set beleidsregels om te helpen voldoen aan FedRAMP High. |
 | [HIPAA HITRUST](./HIPAA-HITRUST/index.md) | Bied een set beleidsregels om te helpen voldoen aan HIPAA HITRUST. |

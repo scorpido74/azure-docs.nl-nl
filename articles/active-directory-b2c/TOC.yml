@@ -182,8 +182,6 @@
             - name: Aangepast e-mailadres
               href: custom-email.md
               displayName: verification
-            - name: Pagina-indeling
-              href: page-layout.md
             - name: JavaScript inschakelen
               href: javascript-samples.md
             - name: Wachtwoordcomplexiteit
@@ -383,6 +381,8 @@
       href: custom-policy-developer-notes.md
     - name: Codevoorbeelden
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
+    - name: Versie van pagina-indeling
+      href: page-layout.md
     - name: Cookiedefinities
       href: cookie-definitions.md
       displayName: 'cookies, SameSite'

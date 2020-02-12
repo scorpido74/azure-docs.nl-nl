@@ -320,26 +320,45 @@
         - name: FileStore
           href: /azure/databricks/data/filestore
           maintainContext: true
-    - name: Hulpprogramma's voor business intelligence
+    - name: Integraties
       items:
-        - name: BI-hulpprogramma's koppelen
-          href: /azure/databricks/bi/jdbc-odbc-bi
+        - name: Overzicht van Integraties
+          href: /azure/databricks/integrations/index
           maintainContext: true
-        - name: Tableau
-          href: /azure/databricks/bi/tableau
-          maintainContext: true
-        - name: Power BI
-          href: /azure/databricks/bi/power-bi
-          maintainContext: true
-        - name: Alteryx
-          href: /azure/databricks/bi/alteryx
-          maintainContext: true
-        - name: Looker
-          href: /azure/databricks/bi/looker
-          maintainContext: true
-        - name: SQL Workbench/J
-          href: /azure/databricks/bi/workbenchj
-          maintainContext: true
+        - name: Hulpprogramma's voor business intelligence
+          items:
+            - name: BI-hulpprogramma's koppelen
+              href: /azure/databricks/bi/jdbc-odbc-bi
+              maintainContext: true
+            - name: Tableau
+              href: /azure/databricks/bi/tableau
+              maintainContext: true
+            - name: Power BI
+              href: /azure/databricks/bi/power-bi
+              maintainContext: true
+            - name: Alteryx
+              href: /azure/databricks/bi/alteryx
+              maintainContext: true
+            - name: Looker
+              href: /azure/databricks/bi/looker
+              maintainContext: true
+            - name: SQL Workbench/J
+              href: /azure/databricks/bi/workbenchj
+              maintainContext: true
+        - name: Integraties van partnergegevens
+          items:
+            - name: Overzicht van partnerintegraties
+              href: /azure/databricks/integrations/ingestion/index
+            - name: Qlik-integratie
+              href: /azure/databricks/integrations/ingestion/qlik
+            - name: Fivetran-integratie
+              href: /azure/databricks/integrations/ingestion/fivetran
+            - name: InfoWorks-integratie
+              href: /azure/databricks/integrations/ingestion/infoworks
+            - name: StreamSets-integratie
+              href: /azure/databricks/integrations/ingestion/streamsets
+            - name: Syncsort-integratie
+              href: /azure/databricks/integrations/ingestion/syncsort
     - name: Delta Lake
       items:
         - name: Inleiding tot Delta Lake
@@ -1818,9 +1837,9 @@
         - name: Releasetypen
           href: /azure/databricks/release-notes/release-types
           maintainContext: true
-        - name: Statuspagina van Azure Databricks
-          href: /azure/databricks/status
-          maintainContext: true
+    - name: Statuspagina van Azure Databricks
+      href: /azure/databricks/status
+      maintainContext: true
     - name: Gids voor R-ontwikkelaars
       href: /azure/machine-learning/r-developers-guide
     - name: Azure-roadmap

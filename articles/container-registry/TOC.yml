@@ -47,7 +47,7 @@
           href: container-registry-geo-replication.md
         - name: Best practices voor het register
           href: container-registry-best-practices.md
-    - name: Handleidingen
+    - name: Instructiegidsen
       expanded: false
       items:
         - name: Registerbewerkingen
@@ -84,12 +84,14 @@
               items:
                 - name: Verificatieoverzicht
                   href: container-registry-authentication.md
-                - name: Verificatie van service-principal
+                - name: Verifiëren met service-principal
                   href: container-registry-auth-service-principal.md
-                - name: Verificatie van beheerde identiteit
+                - name: Verifiëren met beheerde identiteit
                   href: container-registry-authentication-managed-identity.md
                 - name: Verificatie via Azure Container Instances
                   href: container-registry-auth-aci.md
+                - name: Verifiëren vanaf Kubernetes met pullgeheim
+                  href: container-registry-auth-kubernetes.md
                 - name: Verificatie via Azure Kubernetes Service (AKS)
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
             - name: Op rollen gebaseerd toegangsbeheer
@@ -158,7 +160,7 @@
       items:
         - name: Taken met meerdere stappen
           href: container-registry-tasks-multi-step.md
-    - name: Handleidingen
+    - name: Instructiegidsen
       expanded: false
       items:
         - name: Toegang tot beveiligde resources met beheerde identiteiten
@@ -174,7 +176,7 @@
 - name: Naslaginformatie
   expanded: false
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/acr
     - name: REST
       href: /rest/api/containerregistry
