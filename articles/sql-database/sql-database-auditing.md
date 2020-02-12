@@ -11,7 +11,7 @@ ms.reviewer: vanto
 ms.date: 08/22/2019
 ms.openlocfilehash: 8f82f0539432418f967d51f00e659ce92d1fa9b6
 ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76719803"
@@ -251,9 +251,9 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
 
     > [!IMPORTANT]
     > De instelling schrijven beveiligde toevoeg-blobs toestaan onder Bewaar periode is momenteel beschikbaar en alleen zichtbaar in de volgende regio's:
-    > - US - oost
-    > - US - zuid-centraal
-    > - US - west 2
+    > - VS - oost
+    > - VS - zuid-centraal
+    > - VS - west 2
 
 
 ## <a id="subheading-7"></a>Beheer van Azure SQL Server en data bases controleren met behulp van Azure PowerShell

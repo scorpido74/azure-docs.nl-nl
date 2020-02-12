@@ -32,7 +32,7 @@ Het besturings vlak of de API-server bevindt zich in een door Azure Kubernetes s
 
 ## <a name="currently-supported-regions"></a>Momenteel ondersteunde regio's
 * VS - west
-* US - west 2
+* VS - west 2
 * VS - oost 2
 * Canada-Midden
 * Europa - noord

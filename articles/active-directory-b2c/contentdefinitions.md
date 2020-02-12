@@ -1,5 +1,6 @@
 ---
-title: ContentDefinitions-Azure Active Directory B2C | Microsoft Docs
+title: ContentDefinitions
+titleSuffix: Azure AD B2C
 description: Geef het ContentDefinitions-element van een aangepast beleid in Azure Active Directory B2C op.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3a940c7676a59ed85d5cf16c76f72a12ce0026d5
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 724736bedd81ea45d7472a615fa22cde6916f21c
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136274"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148858"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -56,7 +57,6 @@ De meta gegevens van het zelfondertekende technische profiel voor **LocalAccount
   ...
 ```
 
-
 ## <a name="contentdefinition"></a>ContentDefinition
 
 Het element **ContentDefinition** bevat het volgende kenmerk:
@@ -72,22 +72,59 @@ Het **ContentDefinition** -element bevat de volgende elementen:
 | LoadUri | 1:1 | Een teken reeks die de URL van de HTML5-pagina voor de inhouds definitie bevat. |
 | RecoveryUri | 0:1 | Een teken reeks die de URL van de HTML-pagina bevat voor het weer geven van een fout met betrekking tot de inhouds definitie. |
 | DataUri | 1:1 | Een teken reeks die de relatieve URL bevat van een HTML-bestand dat de gebruikers ervaring biedt voor het aanroepen van de stap. |
-| Metagegevens | 1:1 | Een verzameling sleutel-waardeparen die de meta gegevens bevat die worden gebruikt door de inhouds definitie. |
+| Metagegevens | 0:1 | Een verzameling sleutel-waardeparen die de meta gegevens bevat die worden gebruikt door de inhouds definitie. |
 | LocalizedResourcesReferences | 0:1 | Een verzameling gelokaliseerde bronnen verwijzingen. Gebruik dit element om de lokalisatie van een gebruikers interface en claims-kenmerk aan te passen. |
 
 ### <a name="datauri"></a>DataUri
 
-Het element **DataUri** wordt gebruikt om de pagina-id op te geven. Azure AD B2C gebruikt de pagina-id om UI-elementen en Java script aan de client zijde te laden en te initiëren. De notatie van de waarde is `urn:com:microsoft:aad:b2c:elements:page-name:version`.  De volgende tabel geeft een lijst van de waarden en beschrijvingen van de pagina-id's die u kunt gebruiken.
+Het element **DataUri** wordt gebruikt om de pagina-id op te geven. Azure AD B2C gebruikt de pagina-id om UI-elementen en Java script aan de client zijde te laden en te initiëren. De notatie van de waarde is `urn:com:microsoft:aad:b2c:elements:page-name:version`. De volgende tabel geeft een lijst van de pagina-id's die u kunt gebruiken.
 
-| Waarde |   Beschrijving |
+| Pagina-id | Beschrijving |
 | ----- | ----------- |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | Hiermee wordt een fout pagina weer gegeven wanneer een uitzonde ring of een fout wordt aangetroffen. |
-| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | Een lijst met de id-providers waaruit gebruikers kunnen kiezen tijdens het aanmelden. |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | Geeft een formulier weer voor het aanmelden met een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. Deze waarde biedt ook de functie ' aanmeld functionaliteit blijven ' en ' uw wacht woord verg eten? ' gekoppeld. |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | Geeft een formulier weer voor het aanmelden met een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | Hiermee worden telefoon nummers gecontroleerd met behulp van tekst of spraak tijdens het registreren of aanmelden. |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | Hiermee wordt een formulier weer gegeven waarmee gebruikers hun profiel kunnen maken of bijwerken. |
+| `globalexception` | Hiermee wordt een fout pagina weer gegeven wanneer een uitzonde ring of een fout wordt aangetroffen. |
+| `providerselection` | Een lijst met de id-providers waaruit gebruikers kunnen kiezen tijdens het aanmelden. |
+| `unifiedssp` | Geeft een formulier weer voor het aanmelden met een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. Deze waarde biedt ook de functie ' aanmeld functionaliteit blijven ' en ' uw wacht woord verg eten? ' gekoppeld. |
+| `unifiedssp` | Geeft een formulier weer voor het aanmelden met een lokaal account dat is gebaseerd op een e-mail adres of een gebruikers naam. |
+| `multifactor` | Hiermee worden telefoon nummers gecontroleerd met behulp van tekst of spraak tijdens het registreren of aanmelden. |
+| `selfasserted` | Hiermee wordt een formulier weer gegeven waarmee gebruikers hun profiel kunnen maken of bijwerken. |
 
+## <a name="select-a-page-layout"></a>Selecteer een pagina-indeling
+
+U kunt [code voor Java script-client](javascript-samples.md) inschakelen door `contract` tussen `elements` en het pagina Type in te voegen. Bijvoorbeeld `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+Het [versie](page-layout.md) gedeelte van de `DataUri` geeft het pakket inhoud met HTML, CSS en Java script voor de elementen van de gebruikers interface in uw beleid. Als u van plan bent om Java script-client code in te scha kelen, moeten de elementen waarop u uw Java script baseert, onveranderbaar zijn. Als ze niet onveranderbaar zijn, kunnen wijzigingen op de pagina's van uw gebruikers onverwacht gedrag veroorzaken. Als u deze problemen wilt voor komen, dwingt u het gebruik van een pagina-indeling af en geeft u een versie van de pagina-indeling op. Zo zorgt u ervoor dat alle inhouds definities die u op uw Java script hebt gebaseerd, onveranderbaar zijn. Zelfs als u Java script niet wilt inschakelen, moet u nog steeds de versie van de pagina-indeling opgeven voor uw pagina's.
+
+In het volgende voor beeld ziet u de **DataUri** van `selfasserted` versie `1.2.0`:
+
+```xml
+<ContentDefinition Id="api.localaccountpasswordreset">
+<LoadUri>~/tenant/templates/AzureBlue/selfAsserted.cshtml</LoadUri>
+<RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+<DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+<Metadata>
+    <Item Key="DisplayName">Local account change password page</Item>
+</Metadata>
+</ContentDefinition>
+```
+
+#### <a name="migrating-to-page-layout"></a>Migreren naar pagina-indeling
+
+De notatie van de waarde moet het woord `contract`: _urn: com: micro soft: AAD: B2C: elementen:**contract**:p Age-name: Version_bevatten. Als u een pagina-indeling wilt opgeven in uw aangepaste beleids regels die gebruikmaken van een oude **DataUri** -waarde, gebruikt u de volgende tabel om te migreren naar de nieuwe indeling.
+
+| Oude gegevens-URI die waarde | Nieuwe gegevens-URI die waarde |
+| ----------------- | ----------------- |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -103,19 +140,6 @@ Het **LocalizedResourcesReferences** -element bevat de volgende kenmerken:
 | --------- | -------- | ----------- |
 | Taal | Ja | Een teken reeks die een ondersteunde taal voor het beleid bevat per RFC 5646-Tags voor het identificeren van talen. |
 | LocalizedResourcesReferenceId | Ja | De id van het **LocalizedResources** -element. |
-
-In het volgende voor beeld ziet u de definitie voor registratie of aanmeldings inhoud:
-
-```XML
-<ContentDefinition Id="api.signuporsignin">
-  <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
-  <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-  <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
-  <Metadata>
-    <Item Key="DisplayName">Signin and Signup</Item>
-  </Metadata>
-</ContentDefinition>
-```
 
 In het volgende voor beeld wordt een registratie-of aanmeldings definitie weer gegeven met een verwijzing naar lokalisatie voor Engels, Frans en Spaans:
 
@@ -154,3 +178,8 @@ Het kenmerk ID van het element **ContentDefinition** geeft het type pagina aan d
 | **API. selfasserted. profileupdate** | [updateprofile. cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Pagina Profiel bijwerken** : hier wordt een formulier weer gegeven dat gebruikers kunnen gebruiken om hun profiel bij te werken. Deze pagina is vergelijkbaar met de registratie pagina voor het sociaal account, met uitzonde ring van de velden voor het invoeren van wacht woorden. |
 | **API. signuporsignin** | [Unified. cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Unified Sign-up-of aanmeldings pagina** : Hiermee wordt het aanmelden en aanmelden door de gebruiker verwerkt. Gebruikers kunnen ondernemings-id-providers, sociale id-providers, zoals Facebook of Google + of lokale accounts gebruiken. |
 
+## <a name="next-steps"></a>Volgende stappen
+
+Zie voor een voor beeld van het aanpassen van de gebruikers interface met behulp van inhouds definities:
+
+[De gebruikers interface van uw toepassing aanpassen met behulp van een aangepast beleid](custom-policy-ui-customization.md)

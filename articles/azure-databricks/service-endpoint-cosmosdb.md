@@ -61,7 +61,7 @@ Ga als volgt te werk voordat u begint:
    |Resourcegroep|*de resource groep*|
    |Accountnaam|DB-vnet-service-eind punt|
    |API|Core (SQL)|
-   |Locatie|US - west|
+   |Locatie|VS - west|
    |Geo-redundantie|Uitschakelen|
    |Schrijf bewerkingen met meerdere regio's|Inschakelen|
 

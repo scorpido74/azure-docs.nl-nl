@@ -37,7 +37,7 @@ Configureer uw Genomics-account met de volgende informatie, zoals weergegeven in
  |Abonnement         | De naam van uw abonnement|Dit is de factureringseenheid voor uw Azure-services; zie [Abonnementen](https://account.azure.com/Subscriptions) voor meer informatie over uw abonnement. |      
  |Resourcegroep       | MyResourceGroup       |  Met resourcegroepen kunt u meerdere Azure-resources (opslagaccount, Genomics-account enzovoort) in één groep indelen voor eenvoudig beheer. Zie [Resourcegroepen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) voor meer informatie. Zie [Naamgevingsregels](/azure/architecture/best-practices/resource-naming) voor geldige resourcegroepnamen. |
  |Accountnaam         | MyGenomicsAccount     |Kies een unieke account-id. Zie [Naamgevingsregels](/azure/architecture/best-practices/resource-naming) voor geldige namen. |
- |Locatie                   | US - west 2                    |    De service is beschikbaar in US - west 2, Europa - west en Azië - zuidoost |
+ |Locatie                   | VS - west 2                    |    De service is beschikbaar in VS - west 2, Europa - west en Azië - zuidoost |
 
 U kunt **meldingen** selecteren in de bovenste menu balk om het implementatie proces te bewaken.
 
@@ -101,7 +101,7 @@ Configureer uw opslag account met de volgende informatie, zoals wordt weer gegev
  |Abonnement         | Uw Azure-abonnement |Zie [Abonnementen](https://account.azure.com/Subscriptions) voor meer informatie over uw abonnement. |      
  |Resourcegroep       | MyResourceGroup       |  U kunt dezelfde resource groep selecteren als uw Genomics-account. Zie [naamgevings regels](/azure/architecture/best-practices/resource-naming) voor geldige namen van resource groepen |
  |Naam van opslagaccount         | MyStorageAccount     |Kies een unieke account-id. Zie [naamgevings regels](/azure/architecture/best-practices/resource-naming) voor geldige namen |
- |Locatie                  | US - west 2                  | Gebruik dezelfde locatie als de locatie van uw Genomics-account om de kosten voor uitgaand verkeer te verminderen en de latentie te verminderen.  | 
+ |Locatie                  | VS - west 2                  | Gebruik dezelfde locatie als de locatie van uw Genomics-account om de kosten voor uitgaand verkeer te verminderen en de latentie te verminderen.  | 
  |Prestaties                  | Standard                   | Standard is de standaardinstelling. Zie [Inleiding tot Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) voor meer informatie over standaard-en Premium-opslag accounts.    |
  |Soort account       | BlobStorage       |  Blob-opslag kan twee tot vijf keer sneller zijn dan algemeen gebruik voor downloads en uploads. |
  |Replicatie                  | Lokaal redundante opslag                  | Lokaal redundante opslag repliceert uw gegevens in het datacenter in de regio waarin u uw opslagaccount hebt gemaakt. Zie [Azure Storage-replicatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy) voor meer informatie.    |

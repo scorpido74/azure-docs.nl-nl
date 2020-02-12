@@ -58,9 +58,9 @@ Met de gemaakte IoT Hub resource die gebruikmaakt van deze configuratie, worden 
 
 IoT-hubs waarvoor het gebruik van TLS 1,2 vereist is, kunnen in de volgende regio's worden gemaakt:
 
-* US - oost
-* US - zuid-centraal
-* US - west 2
+* VS - oost
+* VS - zuid-centraal
+* VS - west 2
 
 > [!NOTE]
 > Bij failovers blijft de eigenschap `minTlsVersion` van uw IoT Hub effectief in de geo-paard Region-post-failover.

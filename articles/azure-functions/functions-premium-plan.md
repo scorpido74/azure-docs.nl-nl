@@ -115,9 +115,9 @@ Hieronder ziet u de regio's die momenteel worden ondersteund voor elk besturings
 |Japan - Oost| ✔ | ✔<sup>1</sup> |
 |Japan - West| ✔ | |
 |Korea - centraal| ✔ |  |
-|US - noord-centraal| ✔ |  |
+|VS - noord-centraal| ✔ |  |
 |Europa - noord| ✔ | ✔<sup>1</sup> |
-|US - zuid-centraal| ✔ | ✔<sup>1</sup> |
+|VS - zuid-centraal| ✔ | ✔<sup>1</sup> |
 |India - zuid | ✔ | |
 |Azië - zuidoost| ✔ | ✔<sup>1</sup> |
 |UK - zuid| ✔ | |
@@ -125,7 +125,7 @@ Hieronder ziet u de regio's die momenteel worden ondersteund voor elk besturings
 |Europa - west| ✔ | ✔<sup>1</sup> |
 |India - west| ✔ |  |
 |VS - west| ✔ | ✔<sup>1</sup> |
-|US - west 2| ✔ |  |
+|VS - west 2| ✔ |  |
 
 <sup>1</sup> Maxi maal aantal uitschalen is beperkt tot 20 exemplaren.  
 <sup>2</sup> Maxi maal aantal uitschalen beperkt tot 60 exemplaren.

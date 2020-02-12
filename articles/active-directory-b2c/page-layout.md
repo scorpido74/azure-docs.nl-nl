@@ -1,91 +1,47 @@
 ---
-title: Selecteer een pagina-indeling-Azure Active Directory B2C
-description: Meer informatie over het selecteren van een pagina-indeling in Azure Active Directory B2C.
+title: Versies van pagina-indeling
+titleSuffix: Azure AD B2C
+description: Versie geschiedenis van de pagina-indeling voor UI-aanpassing in aangepast beleid.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 12/18/2019
+ms.topic: reference
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 452687f3886a85bea796e3899410667ee1d592fa
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2a0a786d3e2135467c7279c76bae273bff0ba2d0
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840312"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149504"
 ---
-# <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Selecteer een pagina-indeling in Azure Active Directory B2C aangepaste beleids regels gebruiken
-
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
-U kunt Java script-client-side code inschakelen in het beleid voor Azure Active Directory B2C (Azure AD B2C), ongeacht of u gebruikers stromen of aangepaste beleids regels gebruikt. Als u Java script wilt inschakelen voor uw toepassingen, moet u een element toevoegen aan uw [aangepaste beleid](custom-policy-overview.md), een pagina-indeling selecteren en [b2clogin.com](b2clogin.md) in uw aanvragen gebruiken.
-
-Een pagina-indeling is een koppeling van elementen die Azure AD B2C biedt en de inhoud die u opgeeft.
-
-In dit artikel wordt beschreven hoe u een pagina-indeling selecteert in Azure AD B2C door deze te configureren in een aangepast beleid.
-
-> [!NOTE]
-> Als u Java script wilt inschakelen voor gebruikers stromen, raadpleegt u [Java script en pagina-indelings versies in azure Active Directory B2C](user-flow-javascript-overview.md).
-
-## <a name="replace-datauri-values"></a>Gegevens-URI die waarden vervangen
-
-In uw aangepaste beleidsregels, hebt u mogelijk [ContentDefinitions](contentdefinitions.md) waarmee de HTML-sjablonen gebruikt in de gebruikersbeleving worden gedefinieerd. De **ContentDefinition** bevat een **gegevens-URI die** die verwijst naar de pagina-elementen die is geleverd door Azure AD B2C. De **LoadUri** is het relatieve pad naar de HTML en CSS-inhoud die u opgeeft.
-
-```XML
-<ContentDefinition Id="api.idpselections">
-  <LoadUri>~/tenant/default/idpSelector.cshtml</LoadUri>
-  <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-  <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0</DataUri>
-  <Metadata>
-    <Item Key="DisplayName">Idp selection page</Item>
-    <Item Key="language.intro">Sign in</Item>
-  </Metadata>
-</ContentDefinition>
-```
-
-Als u een pagina-indeling wilt selecteren, wijzigt u de **DataUri** -waarden in uw [ContentDefinitions](contentdefinitions.md) in uw beleid. Door het overschakelen van de oude **gegevens-URI die** waarden naar de nieuwe waarden, bent u een onveranderbaar pakket te selecteren. Het voor deel van het gebruik van dit pakket is dat u weet dat het niet wordt gewijzigd en dat uw pagina onverwacht gedrag veroorzaakt.
-
-Als u een pagina-indeling wilt opgeven in uw aangepaste beleids regels die gebruikmaken van een oude **DataUri** -waarde, voegt u `contract` in tussen `elements` en het pagina Type (bijvoorbeeld `selfasserted`) en geeft u het versie nummer op. Bijvoorbeeld:
-
-| Oude gegevens-URI die waarde | Nieuwe gegevens-URI die waarde |
-| ----------------- | ----------------- |
-| `urn:com:microsoft:aad:b2c:elements:claimsconsent:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.1.0` |
-| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.1.0` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.0.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.1.0` |
-
-## <a name="version-change-log"></a>Logboek van versie wijzigingen
+# <a name="page-layout-versions"></a>Versies van pagina-indeling
 
 Pagina-indelings pakketten worden regel matig bijgewerkt met oplossingen en verbeteringen in hun pagina-elementen. In het volgende wijzigingslog bestand worden de wijzigingen aangegeven die in elke versie zijn geïntroduceerd.
 
-### <a name="200"></a>2.0.0
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+## <a name="200"></a>2.0.0
 
 - Zelfbevestigende pagina (`selfasserted`)
   - Er is ondersteuning toegevoegd voor [besturings elementen voor weer gave](display-controls.md) in aangepast beleid.
 
-### <a name="120"></a>1.2.0
+## <a name="120"></a>1.2.0
 
 - Alle pagina's
   - Toegankelijkheids oplossingen
-  - U kunt nu het kenmerk `data-preload="true"` toevoegen in uw HTML-tags om de laad volgorde voor CSS en Java script te bepalen. Scenario's zijn onder andere:
-    - Gebruik dit op uw CSS-koppeling om de CSS op hetzelfde moment als uw HTML te laden zodat het niet ' Flik keren ' is tussen het laden van de bestanden
-    - Met dit kenmerk kunt u de volg orde bepalen waarin uw script tags worden opgehaald en uitgevoerd voordat de pagina wordt geladen
+  - U kunt nu het kenmerk `data-preload="true"` toevoegen in uw HTML-tags om de laad volgorde voor CSS en Java script te bepalen.
+    - Laad gekoppelde CSS-bestanden op hetzelfde moment als uw HTML-sjabloon zodat er geen Flik kering is tussen het laden van de bestanden.
+    - De volg orde bepalen waarin uw `script` Tags worden opgehaald en uitgevoerd voordat de pagina wordt geladen.
   - Het veld e-mail is nu `type=email` en mobiele toetsen borden bieden de juiste suggesties
   - Ondersteuning voor Chrome-vertaling
-- Geïntegreerde en zelfbevestigende pagina
-  - De velden gebruikers naam/e-mail adres en wacht woord gebruiken nu het HTML-element van het formulier.  Hierdoor kan Edge en Internet Explorer deze gegevens op de juiste manier opslaan
+- Geïntegreerde en zelf bevestigde pagina's
+  - De velden gebruikers naam/e-mail adres en wacht woord gebruiken nu het `form` HTML-element zodat Edge en Internet Explorer (IE) deze gegevens op de juiste manier kunnen opslaan.
 
-### <a name="110"></a>1.1.0
+## <a name="110"></a>1.1.0
 
 - Uitzonderings pagina (globalexception)
   - Toegankelijkheids oplossing
@@ -107,10 +63,10 @@ Pagina-indelings pakketten worden regel matig bijgewerkt met oplossingen en verb
 - Unified SSP (unifiedssp)
   - Besturings element voor behoud van aangemeld (KMSI) toegevoegd
 
-### <a name="100"></a>1.0.0
+## <a name="100"></a>1.0.0
 
 - Eerste release
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe u de gebruikersinterface van uw toepassingen kunt aanpassen [aanpassen van de gebruikersinterface van uw toepassing met behulp van een aangepast beleid in Azure Active Directory B2C](custom-policy-ui-customization.md).
+Zie [de gebruikers interface van uw toepassing aanpassen met behulp van een aangepast beleid](custom-policy-ui-customization.md)voor meer informatie over het aanpassen van de gebruikers interface van uw toepassingen in een aangepast beleid.

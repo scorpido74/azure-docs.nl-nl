@@ -96,14 +96,14 @@ De bron regio's worden weer gegeven in de volgende tabel. Alle open bare regio's
 | Australië - centraal     | China - oost        | India - zuid        | Europa - west        |
 | Australië - centraal 2   | China - oost 2      | Azië - zuidoost     | UK - zuid           |
 | Australië - oost        | China - noord       | Japan - Oost         | UK - west            |
-| Australië - zuidoost   | China - noord 2     | Japan - West         | US DoD - centraal     |
-| Brazilië - Zuid          | Azië - oost         | Korea - centraal      | US DoD - oost        |
+| Australië - zuidoost   | China - noord 2     | Japan - West         | US DoD Central     |
+| Brazilië - Zuid          | Azië - oost         | Korea - centraal      | US DoD East        |
 | Canada-Midden        | VS - oost           | Korea - zuid        | US Gov - Arizona     |
-| Canada-Oost           | VS - oost 2         | US - noord-centraal   | US Gov - Texas       |
+| Canada-Oost           | VS - oost 2         | VS - noord-centraal   | US Gov - Texas       |
 | India - centraal         | VS-Oost 2 EUAP    | Europa - noord       | US Gov - Virginia    |
-| US - centraal            | Frankrijk - centraal    | US - zuid-centraal   | India - west         |
-| Centrale VS-EUAP       | Frankrijk - zuid      | US - west-centraal    | US - west            |
-|                       |                   |                    | US - west 2          |
+| VS - centraal            | Frankrijk - centraal    | VS - zuid-centraal   | India - west         |
+| Centrale VS-EUAP       | Frankrijk - zuid      | VS - west-centraal    | VS - west            |
+|                       |                   |                    | VS - west 2          |
 
 
 

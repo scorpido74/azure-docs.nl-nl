@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 91ba4d1f7d32071cce0de1de528abf02982ce7be
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 419fbd987c1deb95a7c903d85105958443d06b01
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427621"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153601"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Een Azure Machine Learning Studio-werk ruimte (klassieke) maken en delen
 
@@ -30,18 +30,18 @@ Als u Azure Machine Learning Studio (klassiek) wilt gebruiken, moet u een Machin
     >
     > 
 
-2. Klik op **+ nieuwe**
+2. Klik op **+ Nieuw**
 
-3. Typ in het zoekvak **machine learning Studio (klassieke) werk ruimte** en selecteer het overeenkomende item. Selecteer klikt u vervolgens **maken** aan de onderkant van de pagina.
+3. Typ in het zoekvak **machine learning Studio (klassieke) werk ruimte** en selecteer het overeenkomende item. Selecteer vervolgens onder aan de pagina op **maken** .
 
 4. Voer uw werkruimte:
 
-   - De *Werkruimtenaam* mogelijk maximaal 260 tekens bevatten, niet eindigen op een spatie. De naam kan niet deze tekens niet bevatten: `< > * % & : \ ? + /`
-   - De *web service-plan* u kiest u (of maak), samen met de bijbehorende *prijscategorie* u selecteert, wordt gebruikt als u deze werkruimte-webservices implementeren.
+   - De *naam van de werk ruimte* mag maxi maal 260 tekens bevatten en mag niet eindigen met een spatie. De naam mag niet de volgende tekens bevatten: `< > * % & : \ ? + /`
+   - Het *webservice-abonnement* dat u kiest (of maakt), samen met de bijbehorende *prijs categorie* die u selecteert, wordt gebruikt als u webservices uit deze werk ruimte implementeert.
 
      ![Een nieuwe studio-werk ruimte maken](./media/create-workspace/create-new-workspace.png)
 
-5. Klik op **Maken**.
+5. Klik op **Create**.
 
 > [!NOTE]
 > Machine Learning Studio (klassiek) is afhankelijk van een Azure Storage-account dat u opgeeft om tussenliggende gegevens op te slaan wanneer de werk stroom wordt uitgevoerd. Nadat de werk ruimte is gemaakt, wordt het opslag account verwijderd, of als de toegangs sleutels zijn gewijzigd, werkt de werk ruimte niet meer en mislukken alle experimenten in deze werk ruimte.
@@ -66,8 +66,8 @@ Als er een probleem optreedt bij het maken van uw werk ruimte, raadpleegt u de [
 ## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>Een Azure Machine Learning Studio-werk ruimte (klassieke) delen
 Zodra een Machine Learning Studio (klassieke) werk ruimte is gemaakt, kunt u gebruikers uitnodigen voor uw werk ruimte om de toegang tot uw werk ruimte en alle experimenten, gegevens sets, notitie blokken, enzovoort te delen. U kunt gebruikers toevoegen in een van de twee rollen:
 
-* **Gebruiker** -werkruimte van een gebruiker kunt maken, openen, wijzigen en verwijderen van experimenten, gegevenssets, enz. in de werkruimte.
-* **De eigenaar van** - eigenaar kunt uitnodigen en gebruikers in de werkruimte, behalve wat een gebruiker verwijderen kunnen doen.
+* **Gebruiker** : een werkruimte gebruiker kan experimenten, gegevens sets, enzovoort, maken, openen, wijzigen en verwijderen in de werk ruimte.
+* **Eigenaar** : een eigenaar kan gebruikers uitnodigen en verwijderen in de werk ruimte, naast wat een gebruiker kan doen.
 
 > [!NOTE]
 > De administrator-account dat wordt gemaakt van de werkruimte wordt automatisch toegevoegd aan de werkruimte als werkruimte eigenaar. Echter andere beheerders of gebruikers in het desbetreffende abonnement worden niet automatisch toegang verleend tot de werkruimte - moet u ze expliciet uitnodigen.
@@ -78,11 +78,11 @@ Zodra een Machine Learning Studio (klassieke) werk ruimte is gemaakt, kunt u geb
 
 1. Meld u aan bij Machine Learning Studio (klassiek) op [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
-2. Klik in het linkerdeelvenster op **instellingen**
+2. Klik in het linkerdeel venster op **instellingen**
 
-3. Klik op de **gebruikers** tabblad
+3. Klik op het tabblad **gebruikers**
 
-4. Klik op **meer gebruikers UITNODIGEN** aan de onderkant van de pagina
+4. Klik op **meer gebruikers uitnodigen** onder aan de pagina
 
     ![Studio-instellingen](./media/create-workspace/settings.png)
 
@@ -90,7 +90,7 @@ Zodra een Machine Learning Studio (klassieke) werk ruimte is gemaakt, kunt u geb
 
 6. Selecteer of u wilt dat de gebruikers toevoegen als eigenaar of gebruiker.
 
-7. Klik op de **OK** vinkje knop.
+7. Klik op de knop voor het selectie vakje **OK** .
 
 Elke gebruiker die u ontvangt een e-mailbericht met instructies voor het aanmelden bij de gedeelde werkruimte.
 

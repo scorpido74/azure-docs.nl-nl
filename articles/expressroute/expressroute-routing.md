@@ -156,14 +156,14 @@ U kunt meer dan één ExpressRoute-circuit per geopolitieke regio aanschaffen. H
 | **Microsoft Azure-regio** | **Regionale BGP-Community** | **Opslag-BGP-Community** | **SQL BGP-Community** | **Cosmos DB BGP-Community** |
 | --- | --- | --- | --- | --- |
 | **Noord-Amerika** | |
-| US - oost | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
-| US - oost 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
-| US - west | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
-| US - west 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
-| US - west-centraal | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
-| US - noord-centraal | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
-| US - zuid-centraal | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
-| US - centraal | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
+| VS - oost | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
+| VS - oost 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
+| VS - west | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
+| VS - west 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
+| VS - west-centraal | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
+| VS - noord-centraal | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
+| VS - zuid-centraal | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
+| VS - centraal | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
 | Canada - midden | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
 | Canada - oost | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
 | **Zuid-Amerika** | |
@@ -246,8 +246,8 @@ CRM Online ondersteunt Dynamics v 8.2 en lager. Voor hogere versies selecteert u
 | US Gov - Iowa | 12076:51109 |
 | VS (overheid) - Virginia | 12076:51105 |
 | VS (overheid) - Texas | 12076:51108 |
-| US DoD - centraal | 12076:51209 |
-| US DoD - oost | 12076:51205 |
+| US DoD Central | 12076:51209 |
+| US DoD East | 12076:51205 |
 
 
 | **Service in nationale clouds** | **BGP-communitywaarde** |

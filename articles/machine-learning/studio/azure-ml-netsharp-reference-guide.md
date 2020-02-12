@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 295cac883e7c84158fd9d2a2b7e9780dfe6c64d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cf6e07e3bbad6b98fcce9cc0e39cdab97375a2a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427676"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148569"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Hand leiding voor de netwerk specificatie taal net # Neural voor Azure Machine Learning Studio (klassiek)
 
@@ -56,7 +56,7 @@ Daarnaast ondersteunt net # de volgende vier soorten geavanceerde verbindings bu
 
 ## <a name="supported-customizations"></a>Ondersteunde aanpassingen
 
-De architectuur van Neural-netwerk modellen die u in Azure Machine Learning Studio (klassiek) maakt, kan uitgebreid worden aangepast met behulp van net #. U kunt het volgende doen:
+De architectuur van Neural-netwerk modellen die u in Azure Machine Learning Studio (klassiek) maakt, kan uitgebreid worden aangepast met behulp van net #. U kunt:
 
 + Maak verborgen lagen en beheer het aantal knoop punten in elke laag.
 + Opgeven hoe lagen met elkaar moeten worden verbonden.
@@ -460,6 +460,6 @@ output Digit [10] from Hid3 all;
 + Het totale aantal knoop punten kan worden berekend met behulp van de gedeclareerde dimensionaliteit van de laag, [50, 5, 5], als volgt: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + Omdat `Sharing[d]` alleen onwaar is voor `d == 0`, wordt het aantal kernels `MapCount * NodeCount\[0] = 10 * 5 = 50`.
 
-## <a name="acknowledgements"></a>Bevestigingen
+## <a name="acknowledgements"></a>Dankbetuigingen
 
 De net # taal voor het aanpassen van de architectuur van Neural-netwerken is ontwikkeld door micro soft Shon Katzenberger (architect, Machine Learning) en Alexey Kamenev (software engineer, micro soft Research). Het wordt intern gebruikt voor machine learning projecten en toepassingen variërend van afbeeldings detectie tot tekst analyse. Zie [neural-netten in azure machine learning Studio-Introduction to net # (](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx) Engelstalig) voor meer informatie.

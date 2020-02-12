@@ -19,10 +19,10 @@ ms.locfileid: "75426321"
 Azure Stream Analytics biedt een SQL-achtige querytaal voor het uitvoeren van transformaties en berekeningen via event gegevensstromen. Er zijn veel ingebouwde functies, maar sommige complexe scenario's vereisen meer flexibiliteit. Met .NET Standard-door gebruiker gedefinieerde functies (UDF's), kunt u uw eigen functies die zijn geschreven in elke standaard .NET-taal aanroepen (C#, F#, enzovoort) om uit te breiden de querytaal van Stream Analytics. UDF's kunnen u ingewikkelde wiskundige berekeningen uitvoeren, aangepaste ML-modellen met behulp van ML.NET importeren en gebruiken van aangepaste toerekening logica voor ontbrekende gegevens. De UDF-functie voor Stream Analytics-taken is momenteel beschikbaar als preview-versie en mag niet worden gebruikt in werk belastingen voor de productie.
 
 Door de gebruiker gedefinieerde .NET-functie voor Cloud taken is beschikbaar in:
-* US - west-centraal
+* VS - west-centraal
 * Europa - noord
 * VS - oost
-* US - west
+* VS - west
 * VS - oost 2
 * Europa - west
 

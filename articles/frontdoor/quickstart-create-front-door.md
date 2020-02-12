@@ -42,7 +42,7 @@ Voor deze snelstart moeten twee exemplaren van een webtoepassing worden geïmple
      | Naam           | Voer een unieke naam voor de web-app in  |
      | Resourcegroep          | Selecteer **Nieuw** en typ *myResourceGroupFD1* |
      | App Service-plan/-locatie         | Selecteer **Nieuw**.  Voer in het App Service-plan *myAppServicePlanEastUS* in en selecteer **OK**. 
-     |      Locatie  |   US - oost        |
+     |      Locatie  |   VS - oost        |
     |||
 
 3. Selecteer **Maken**.

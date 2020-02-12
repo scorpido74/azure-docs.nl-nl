@@ -53,7 +53,7 @@ Voordat u doorgaat, zorgt u voor de volgende zaken:
 * [Visual Studio 2019](https://www.visualstudio.com/downloads/) -Community of ENTER prise
 
 > [!NOTE]
-> Het wordt aanbevolen om het abonnement voor deze zelfstudie in de regio US - west te maken. Als u dit niet doet, moet u de eindpunten en regio's in de code wijzigen naar mate u deze oefening doorloopt.  
+> Het wordt aanbevolen om het abonnement voor deze zelfstudie in de regio VS - west te maken. Als u dit niet doet, moet u de eindpunten en regio's in de code wijzigen naar mate u deze oefening doorloopt.  
 
 ## <a name="create-a-wpf-app-in-visual-studio"></a>Een WPF-app maken in Visual Studio
 

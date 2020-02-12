@@ -197,7 +197,7 @@ Voeg de twee virtuele machines met de IIS-servers- *myIISVMEastUS* & *myIISVMWEu
     | Type                    | Azure-eindpunt                                   |
     | Name           | myTestWebSiteEndpoint                                        |
     | Doelbrontype           | Openbaar IP-adres                          |
-    | Doelbron          | **Kies een openbaar IP-adres** om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam *myIISVMEastUS-ip*. Dit is het openbare IP-adres van de IIS-server VM in US - oost.|
+    | Doelbron          | **Kies een openbaar IP-adres** om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam *myIISVMEastUS-ip*. Dit is het openbare IP-adres van de IIS-server VM in VS - oost.|
     |  Instellingen voor subnetroutering    |   Voeg het IP-adres van de *myVMEastUS* -test-VM toe. Alle gebruikers query's die afkomstig zijn van deze VM, worden omgeleid naar de *myTestWebSiteEndpoint*.    |
 
 4. Herhaal stap 2 en 3 om een ander eind punt met de naam *myProductionEndpoint* toe te voegen voor het open bare IP-adres *myIISVMWEurope-IP* dat is gekoppeld aan de IIS-Server-VM met de naam *myIISVMWEurope*. Voeg het IP-adres van de test-VM- *myVMWestEurope*toe voor de instellingen van het **subnet routeren**. Alle gebruikers query's van deze test-VM worden doorgestuurd naar het eind punt- *myProductionWebsiteEndpoint*.

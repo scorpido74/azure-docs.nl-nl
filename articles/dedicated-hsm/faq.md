@@ -66,10 +66,10 @@ De specifieke HSM-service van Azure maakt gebruik van SafeNet Luna Network HSM 7
 
 Vanaf eind maart 2019 is toegewezen HSM beschikbaar in de volgende 14 regio's. Verdere regio's worden gepland en kunnen worden besproken via de vertegenwoordiger van uw micro soft-account.
 
-* US - oost
-* US - oost 2
-* US - west
-* US - zuid-centraal
+* VS - oost
+* VS - oost 2
+* VS - west
+* VS - zuid-centraal
 * Azië - zuidoost
 * Azië - oost
 * India - centraal

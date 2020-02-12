@@ -5,16 +5,16 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 789af25cc37183e9eeae253e1e8529615abdd308
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849799"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152887"
 ---
 # <a name="durable-functions-versions-overview"></a>Overzicht van Durable Functions versies
 
-*Durable functions* is een uitbrei ding van [Azure functions](../functions-overview.md) en [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) waarmee u stateful functies in een serverloze omgeving kunt schrijven. Met de extensie worden status, controlepunten en het opnieuw opstarten voor u beheerd. Als u nog niet bekend bent met Durable Functions, raadpleegt u de documentatie van het [overzicht](durable-functions-overview.md).
+*Durable functions* is een uitbrei ding van [Azure functions](../functions-overview.md) en [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) waarmee u stateful functies in een serverloze omgeving kunt schrijven. De extensie beheert status, controlepunten en het opnieuw opstarten voor u. Als u nog niet bekend bent met Durable Functions, raadpleegt u de documentatie van het [overzicht](durable-functions-overview.md).
 
 ## <a name="new-features-in-2x"></a>Nieuwe functies in 2. x
 
@@ -59,6 +59,10 @@ Durable Functions 2. x maakt gebruik van een nieuw host. json-schema. De belangr
 * `"notifications"` (en de Subsectie `"eventGrid"`) voor configuratie van gebeurtenis raster meldingen.
 
 Zie de [referentie documentatie voor Durable functions host. json](durable-functions-bindings.md#durable-functions-2-0-host-json) voor meer informatie.
+
+#### <a name="default-taskhub-name-changes"></a>Naam wijzigingen standaard taskhub
+
+Als in versie 1. x de naam van een taak-hub niet is opgegeven in host. json, werd deze standaard ingesteld op ' DurableFunctionsHub '. In versie 2. x is de naam van de standaard taak-hub nu afgeleid van de naam van de functie-app. Als u daarom geen naam van een taak-hub hebt opgegeven bij het upgraden naar 2. x, wordt uw code uitgevoerd met de nieuwe taak hub en worden alle in-Flight-indelingen niet meer verwerkt door een toepassing. U kunt dit probleem omzeilen door de naam van uw taak-hub expliciet in te stellen op de standaard waarde van ' DurableFunctionsHub '. u kunt ook de [implementatie handleiding voor nul-downtime](durable-functions-zero-downtime-deployment.md) volgen voor meer informatie over het afhandelen van belang rijke wijzigingen voor in-Flight-indelingen.
 
 #### <a name="public-interface-changes-net-only"></a>Wijzigingen in de open bare interface (alleen .NET)
 

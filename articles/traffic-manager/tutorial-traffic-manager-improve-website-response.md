@@ -163,7 +163,7 @@ Voeg de twee virtuele machines met de IIS-servers- *myIISVMEastUS* & *myIISVMWes
     | Type                    | Azure-eindpunt                                   |
     | Naam           | myEastUSEndpoint                                        |
     | Doelbrontype           | Openbaar IP-adres                          |
-    | Doelbron          | **Kies een openbaar IP-adres** om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam *myIISVMEastUS-ip*. Dit is het openbare IP-adres van de IIS-server VM in US - oost.|
+    | Doelbron          | **Kies een openbaar IP-adres** om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam *myIISVMEastUS-ip*. Dit is het openbare IP-adres van de IIS-server VM in VS - oost.|
     |        |           |
 
 4. Herhaal stap 2 en 3 om een ander eind punt met de naam *myWestEuropeEndpoint* toe te voegen voor het open bare IP-adres *myIISVMWestEurope-IP* dat is gekoppeld aan de IIS-Server-VM met de naam *myIISVMWestEurope*.

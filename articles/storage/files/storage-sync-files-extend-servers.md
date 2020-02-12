@@ -222,7 +222,7 @@ Om Azure File Sync te implementeren, plaatst u eerst een resource van een **opsl
    | **Naam** | Een unieke naam (per abonnement) voor opslagsynchronisatieservice.<br><br>Gebruik voor deze zelfstudie _afssyncservice02_. |
    | **Abonnement** | Het Azure-abonnement dat u gebruikt voor deze zelfstudie. |
    | **Resourcegroep** | De resourcegroep die de opslagsynchronisatieservice bevat.<br><br>Gebruik voor deze zelfstudie _afsresgroup101918_. |
-   | **Locatie** | US - oost |
+   | **Locatie** | VS - oost |
 
 1. Als u klaar bent, selecteert u **Maken** om de **opslagsynchronisatieservice** te implementeren.
 1. Selecteer het tabblad **Meldingen** > **Naar de resource gaan**.

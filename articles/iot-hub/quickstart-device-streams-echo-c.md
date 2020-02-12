@@ -56,7 +56,7 @@ U hebt de volgende vereisten nodig:
 
 De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 
-  * US - centraal
+  * VS - centraal
   * Centrale VS-EUAP
   * Europa - noord
   * Azië - zuidoost

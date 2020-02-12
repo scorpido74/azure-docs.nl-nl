@@ -30,11 +30,11 @@ Een geo-gerepliceerd register biedt de volgende voordelen:
 ## <a name="example-use-case"></a>Voorbeeld van een toepassing
 Contoso voert een website voor openbare aanwezigheid uit voor de VS, Canada en Europa. Contoso voert AKS-clusters ([Azure Kubernetes Service](/azure/aks/)) uit in US - west, US - oost, Canada - centraal en Europa - west om deze markten met lokale inhoud van dicht bij het netwerk te bedienen. De webtoepassing, geïmplementeerd als een Docker-installatiekopie, gebruikt dezelfde code en installatiekopie in alle regio's. Inhoud, die lokaal is voor een bepaalde regio, wordt opgehaald uit een database, die uniek is ingericht in elke regio. Elke regionale implementatie heeft een unieke configuratie voor resources zoals de lokale database.
 
-Het ontwikkelteam bevindt zich in Seattle, WA en gebruikt het datacentrum US - west.
+Het ontwikkelteam bevindt zich in Seattle, WA en gebruikt het datacentrum VS - west.
 
 ![Pushen naar meerdere registers](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Pushen naar meerdere registers*
 
-Voordat Contoso de functies voor geo-replicatie ging gebruiken, had het bedrijf een in de VS gebaseerd register in US - west, met een extra register in Europa - west. Het ontwikkelteam pushte installatiekopieën naar twee verschillende registers om deze verschillende regio's te bedienen.
+Voordat Contoso de functies voor geo-replicatie ging gebruiken, had het bedrijf een in de VS gebaseerd register in VS - west, met een extra register in Europa - west. Het ontwikkelteam pushte installatiekopieën naar twee verschillende registers om deze verschillende regio's te bedienen.
 
 ```bash
 docker push contoso.azurecr.io/public/products/web:1.2
@@ -44,8 +44,8 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 
 Typische uitdagingen van meerdere registers zijn onder meer:
 
-* De clusters US - oost, US - west en Canada - centraal halen allemaal gegevens op uit het register US - west, waarbij extra kosten voor uitgaand verkeer worden gegenereerd omdat al deze externe containerhosts installatiekopieën ophalen vanuit datacenters in US - west.
-* Het ontwikkelteam moet installatiekopieën pushen naar registers in US - west en Europa - west.
+* De clusters VS - oost, VS - west en Canada - centraal halen allemaal gegevens op uit het register VS - west, waarbij extra kosten voor uitgaand verkeer worden gegenereerd omdat al deze externe containerhosts installatiekopieën ophalen vanuit datacenters in VS - west.
+* Het ontwikkelteam moet installatiekopieën pushen naar registers in VS - west en Europa - west.
 * Het ontwikkelteam moet elke regionale implementatie configureren en onderhouden met installatiekopienamen die verwijzen naar het lokale register.
 * Toegang tot het register moet voor elke regio worden geconfigureerd.
 
@@ -112,7 +112,7 @@ Een replica verwijderen in de Azure Portal:
 
 Geo-replicatie is een functie van de [Premium SKU](container-registry-skus.md) van Azure Container Registry. Wanneer u een register naar de gewenste regio's repliceert, worden er kosten voor het Premium-register voor elke regio gemaakt.
 
-In het voorgaande voorbeeld ging Contoso van twee registers naar één en voegde het bedrijf replica's toe aan US - oost, Canada - centraal en Europa - west. Contoso zou vier keer per maand Premium betalen, zonder extra configuratie of beheer. Elke regio haalt nu installatiekopieën lokaal op, wat zorgt voor betere prestaties en een hogere betrouwbaarheid zonder kosten voor uitgaand netwerkverkeer voor US - west naar Canada en US - oost.
+In het voorgaande voorbeeld ging Contoso van twee registers naar één en voegde het bedrijf replica's toe aan VS - oost, Canada - centraal en Europa - west. Contoso zou vier keer per maand Premium betalen, zonder extra configuratie of beheer. Elke regio haalt nu installatiekopieën lokaal op, wat zorgt voor betere prestaties en een hogere betrouwbaarheid zonder kosten voor uitgaand netwerkverkeer voor VS - west naar Canada en VS - oost.
 
 ## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>Problemen met push bewerkingen met geo-gerepliceerde registers oplossen
  

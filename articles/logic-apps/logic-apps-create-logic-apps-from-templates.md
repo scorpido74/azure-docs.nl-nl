@@ -49,7 +49,7 @@ Als u nog geen abonnement op Azure hebt, [meld u dan aan voor een gratis Azure-a
    | **Naam** | *naam-van-uw-logische-app* | Geef een unieke naam voor de logische app op. | 
    | **Abonnement** | *naam-van-uw-Azure-abonnement* | Selecteer het Azure-abonnement dat u wilt gebruiken. | 
    | **Resourcegroep** | *naam-van-uw-Azure-resourcegroep* | Maak of selecteer een [Azure-resource groep](../azure-resource-manager/management/overview.md) voor deze logische app en beheer alle resources die zijn gekoppeld aan deze app. | 
-   | **Locatie** | *uw-Azure-datacenter-regio* | Selecteer de regio van het datacenter voor het implementeren van uw logische app, bijvoorbeeld US - west. | 
+   | **Locatie** | *uw-Azure-datacenter-regio* | Selecteer de regio van het datacenter voor het implementeren van uw logische app, bijvoorbeeld VS - west. | 
    | **Log Analytics** | **Uit** (standaard) of **op** | Stel [Diagnostische logboek registratie](../logic-apps/monitor-logic-apps-log-analytics.md) in voor uw logische app met behulp van [Azure monitor-logboeken](../log-analytics/log-analytics-overview.md). Hiervoor hebt u al een Log Analytics-werk ruimte nodig. | 
    |||| 
 

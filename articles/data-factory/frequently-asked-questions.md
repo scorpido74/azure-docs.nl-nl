@@ -207,18 +207,18 @@ Wrangling-gegevens stroom wordt momenteel ondersteund in gegevens fabrieken die 
 * Australië - oost
 * Canada - midden
 * India - centraal
-* US - centraal
-* US - oost
-* US - oost 2
+* VS - centraal
+* VS - oost
+* VS - oost 2
 * Japan - oost
 * Europa - noord
 * Azië - zuidoost
-* US - zuid-centraal
+* VS - zuid-centraal
 * Verenigd Koninkrijk Zuid
-* US - west-centraal
+* VS - west-centraal
 * Europa -west
-* US - west
-* US - west 2
+* VS - west
+* VS - west 2
 
 ### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Wat zijn de beperkingen en beperkingen met wrangling-gegevens stroom?
 

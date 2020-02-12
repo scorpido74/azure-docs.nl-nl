@@ -31,16 +31,16 @@ U moet de Azure CLI-versie 2.0.76 of hoger hebben geïnstalleerd en geconfiguree
 
 AKS-clusters kunnen momenteel worden gemaakt met beschikbaarheids zones in de volgende regio's:
 
-* US - centraal
-* US - oost 2
-* US - oost
+* VS - centraal
+* VS - oost 2
+* VS - oost
 * Frankrijk - centraal
 * Japan - oost
 * Europa - noord
 * Azië - zuidoost
 * Verenigd Koninkrijk Zuid
 * Europa -west
-* US - west 2
+* VS - west 2
 
 De volgende beperkingen zijn van toepassing wanneer u een AKS-cluster maakt met beschikbaarheids zones:
 

@@ -62,7 +62,7 @@ Als u de netwerkcommunicatie wilt testen met Network Watcher, moet u eerst een n
 Als u al een netwerk-watcher hebt ingeschakeld in minstens één regio, gaat u verder met [IP-stroomverificatie gebruiken](#use-ip-flow-verify).
 
 1. Selecteer in de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de resultaten.
-2. Schakel een netwerk-watcher in de regio US - oost in, omdat dat de regio is waarin de VM is geïmplementeerd in de vorige stap. Selecteer **Regio's** om dit item uit te vouwen en selecteer vervolgens **...** rechts van **US - oost**, zoals wordt weergegeven in de volgende afbeelding:
+2. Schakel een netwerk-watcher in de regio VS - oost in, omdat dat de regio is waarin de VM is geïmplementeerd in de vorige stap. Selecteer **Regio's** om dit item uit te vouwen en selecteer vervolgens **...** rechts van **US - oost**, zoals wordt weergegeven in de volgende afbeelding:
 
     ![Network Watcher inschakelen](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
 
@@ -90,7 +90,7 @@ Als u een VM maakt, wordt netwerkverkeer van en naar de VM standaard toegestaan 
 
     ![IP-stroomverificatie](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)
 
-    Na enkele seconden blijkt uit het resultaat dat toegang is toegestaan vanwege een beveiligingsregel met de naam **AllowInternetOutbound**. Toen u de controle uitvoerde, werd met Network Watcher automatisch een netwerk-watcher gemaakt in de regio US - oost, als u een bestaande netwerk-watcher had in een andere regio dan US - oost voordat u de controle uitvoerde.
+    Na enkele seconden blijkt uit het resultaat dat toegang is toegestaan vanwege een beveiligingsregel met de naam **AllowInternetOutbound**. Toen u de controle uitvoerde, werd met Network Watcher automatisch een netwerk-watcher gemaakt in de regio VS - oost, als u een bestaande netwerk-watcher had in een andere regio dan VS - oost voordat u de controle uitvoerde.
 4. Voltooi stap 3 nogmaals, maar wijzig het **Externe IP-adres** in **172.31.0.100**. Uit het resultaat blijkt dat toegang wordt geweigerd vanwege een beveiligingsregel met de naam **DefaultOutboundDenyAll**.
 5. Voltooi stap 3 nogmaals, maar wijzig de **Richting** in **Binnenkomend**, de **Lokale poort** in **80** en de **Externe poort** in **60000**. Uit het resultaat blijkt dat toegang wordt geweigerd vanwege een beveiligingsregel met de naam **DefaultInboundDenyAll**.
 

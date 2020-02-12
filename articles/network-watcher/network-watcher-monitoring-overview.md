@@ -77,7 +77,7 @@ De effectieve beveiligingsregels voor een netwerkinterface zijn een combinatie v
 
 ## <a name="metrics"></a>Metrische gegevens
 
-Er gelden [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits) voor het aantal netwerkresources dat u binnen een Azure-abonnement en -regio kunt maken. Als u deze limieten bereikt, kunt u geen resources meer maken binnen het Azure-abonnement of de Azure-regio. De *Abonnementslimiet voor netwerk* laat zien hoeveel van elke netwerkresource u hebt geïmplementeerd in een abonnement en regio en wat de limiet voor de resource is. In de volgende afbeelding ziet u de gedeeltelijke uitvoer voor netwerkbronnen die zijn geïmplementeerd in de regio US - oost voor een voorbeeldabonnement:
+Er gelden [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits) voor het aantal netwerkresources dat u binnen een Azure-abonnement en -regio kunt maken. Als u deze limieten bereikt, kunt u geen resources meer maken binnen het Azure-abonnement of de Azure-regio. De *Abonnementslimiet voor netwerk* laat zien hoeveel van elke netwerkresource u hebt geïmplementeerd in een abonnement en regio en wat de limiet voor de resource is. In de volgende afbeelding ziet u de gedeeltelijke uitvoer voor netwerkbronnen die zijn geïmplementeerd in de regio VS - oost voor een voorbeeldabonnement:
 
 ![Abonnementslimieten](./media/network-watcher-monitoring-overview/subscription-limit.png)
 

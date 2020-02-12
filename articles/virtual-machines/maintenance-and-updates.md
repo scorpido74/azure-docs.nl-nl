@@ -77,7 +77,7 @@ Als u van plan bent te wachten tot de geplande onderhouds fase, zijn er enkele d
 
 #### <a name="paired-regions"></a>Gekoppelde regio's
 
-Elke Azure-regio is gekoppeld aan een andere regio binnen dezelfde geografische omgeving. Samen maken ze een regio paar. Tijdens de geplande onderhouds fase worden in azure alleen de Vm's in één regio van een regio paar bijgewerkt. Tijdens het bijwerken van de virtuele machine in Noord-Centraal VS, werkt Azure de virtuele machine in Zuid-Centraal VS bijvoorbeeld niet bij. Tegelijkertijd met US - oost kan er echter wel onderhoud plaatsvinden in andere regio's, zoals Europa - noord. Meer informatie over het werken met regio paren kan u helpen uw Vm's beter te verdelen over regio's. Zie [Azure Region-paren](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)voor meer informatie.
+Elke Azure-regio is gekoppeld aan een andere regio binnen dezelfde geografische omgeving. Samen maken ze een regio paar. Tijdens de geplande onderhouds fase worden in azure alleen de Vm's in één regio van een regio paar bijgewerkt. Tijdens het bijwerken van de virtuele machine in Noord-Centraal VS, werkt Azure de virtuele machine in Zuid-Centraal VS bijvoorbeeld niet bij. Tegelijkertijd met VS - oost kan er echter wel onderhoud plaatsvinden in andere regio's, zoals Europa - noord. Meer informatie over het werken met regio paren kan u helpen uw Vm's beter te verdelen over regio's. Zie [Azure Region-paren](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)voor meer informatie.
 
 #### <a name="availability-sets-and-scale-sets"></a>Beschikbaarheids sets en schaal sets
 

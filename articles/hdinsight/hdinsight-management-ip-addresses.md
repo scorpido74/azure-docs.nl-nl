@@ -74,10 +74,10 @@ Verkeer toestaan van de IP-adressen die worden vermeld voor de Azure HDInsight-s
 | &nbsp; | UK - zuid | 51.140.47.39</br>51.140.52.16 | \*:443 | Inkomend |
 | Verenigde Staten | VS - centraal | 13.89.171.122</br>13.89.171.124 | \*:443 | Inkomend |
 | &nbsp; | VS - oost | 13.82.225.233</br>40.71.175.99 | \*:443 | Inkomend |
-| &nbsp; | US - noord-centraal | 157.56.8.38</br>157.55.213.99 | \*:443 | Inkomend |
-| &nbsp; | US - west-centraal | 52.161.23.15</br>52.161.10.167 | \*:443 | Inkomend |
+| &nbsp; | VS - noord-centraal | 157.56.8.38</br>157.55.213.99 | \*:443 | Inkomend |
+| &nbsp; | VS - west-centraal | 52.161.23.15</br>52.161.10.167 | \*:443 | Inkomend |
 | &nbsp; | VS - west | 13.64.254.98</br>23.101.196.19 | \*:443 | Inkomend |
-| &nbsp; | US - west 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Inkomend |
+| &nbsp; | VS - west 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Inkomend |
 | &nbsp; | VAE - noord | 65.52.252.96</br>65.52.252.97 | \*:443 | Inkomend |
 
 Voor informatie over de IP-adressen die voor Azure Government moeten worden gebruikt, raadpleegt u het document [Azure Government Intelligence en Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) .

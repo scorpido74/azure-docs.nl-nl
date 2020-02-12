@@ -150,7 +150,7 @@ Azure Backup de functie voor het terugzetten van meerdere regio's heeft toegevoe
 
 | Type back-upbeheer | Ondersteund                                                    | Ondersteunde regio's |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Ja. Open bare beperkte preview ondersteund voor versleutelde Vm's en Vm's met minder dan 4 TB schijven | US - west-centraal   |
+| Azure VM               | Ja. Open bare beperkte preview ondersteund voor versleutelde Vm's en Vm's met minder dan 4 TB schijven | VS - west-centraal   |
 | MARS-agent/on-premises | Nee                                                           | N/A               |
 | SQL-/SAP HANA          | Nee                                                           | N/A               |
 | AFS                    | Nee                                                           | N/A               |

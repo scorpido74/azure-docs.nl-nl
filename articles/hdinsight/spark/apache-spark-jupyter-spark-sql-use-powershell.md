@@ -46,7 +46,7 @@ Wanneer u het Power shell-script uitvoert, wordt u gevraagd de volgende waarden 
 |Parameter|Waarde|
 |------|------|
 |Naam van Azure-resourcegroep | Geef een unieke naam op voor de resourcegroep.|
-|Locatie| Geef de Azure-regio op, bijvoorbeeld 'US - centraal'. |
+|Locatie| Geef de Azure-regio op, bijvoorbeeld 'VS - centraal'. |
 |Standaardnaam van opslagaccount | Geef een unieke naam op voor het opslagaccount. |
 |Clusternaam | Geef een unieke naam op voor het HDInsight-cluster.|
 |Referenties voor clusteraanmelding | U gebruikt dit account om later in de snelstartgids verbinding te maken met het clusterdashboard.|

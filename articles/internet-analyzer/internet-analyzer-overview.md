@@ -38,9 +38,9 @@ Tijdens de preview zijn de volgende vooraf geconfigureerde eind punten beschikba
 * **Azure-regio's**
     * Brazilië - zuid
     * India - centraal
-    * US - centraal
+    * VS - centraal
     * Azië - oost
-    * US - oost
+    * VS - oost
     * Japan - west
     * Europa - noord
     * Zuid-Afrika - noord
@@ -48,8 +48,8 @@ Tijdens de preview zijn de volgende vooraf geconfigureerde eind punten beschikba
     * VAE - noord
     * Verenigd Koninkrijk West  
     * Europa -west
-    * US - west 
-    * US - west 2
+    * VS - west 
+    * VS - west 2
 * **Meerdere Azure-regio combinaties** 
     * VS-Oost, Brazilië-zuid 
     * VS-Oost, Azië-oost 

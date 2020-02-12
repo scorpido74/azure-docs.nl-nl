@@ -54,7 +54,7 @@ Gebruik de volgende stappen voor het maken van een Event Hub en verzenden van ge
    |Name     | myEventHubsNS        |  Een unieke naam voor het identificeren van de event hub-naamruimte.       |
    |Abonnement     |   \<Uw abonnement\>      |   Selecteer een Azure-abonnement waarvoor u de event hub wilt maken.      |
    |Resourcegroep     |   MyASADemoRG      |  Selecteer **Nieuwe maken** en voer een naam voor de nieuwe resourcegroep voor uw account in.       |
-   |Locatie     |   US - west 2      |    De locatie waar de event hub-naamruimte kan worden geïmplementeerd.     |
+   |Locatie     |   VS - west 2      |    De locatie waar de event hub-naamruimte kan worden geïmplementeerd.     |
 
 4. Gebruik standaardopties voor de resterende instellingen en selecteer **Maken**.
 
@@ -137,7 +137,7 @@ Nu u een stream van gesprekgebeurtenissen hebt, kunt u een Stream Analytics-taak
    |Taaknaam     |  ASATutorial       |   Een unieke naam voor het identificeren van de event hub-naamruimte.      |
    |Abonnement    |  \<Uw abonnement\>   |   Selecteer een Azure-abonnement waarvoor u de taak wilt maken.       |
    |Resourcegroep   |   MyASADemoRG      |   Selecteer **Bestaande gebruiken** en voer een naam voor de nieuwe resourcegroep voor uw account in.      |
-   |Locatie   |    US - west 2     |      De locatie waar de taak kan worden geïmplementeerd. Het is raadzaam de taak en de event hub in dezelfde regio te plaatsen om de best mogelijke prestaties te realiseren en u niet hoeft te betalen voor het overbrengen van gegevens tussen regio's.      |
+   |Locatie   |    VS - west 2     |      De locatie waar de taak kan worden geïmplementeerd. Het is raadzaam de taak en de event hub in dezelfde regio te plaatsen om de best mogelijke prestaties te realiseren en u niet hoeft te betalen voor het overbrengen van gegevens tussen regio's.      |
    |Hostingomgeving    | Cloud        |     Stream Analytics-taken kunnen worden geïmplementeerd in Cloud of in Edge. Met cloud kunt u implementeren naar Azure Cloud en Edge kunt u implementeren op een IoT Edge apparaat.    |
    |Streamingeenheden     |    1       |      Streaming-eenheden vertegenwoordigen de computerresources die nodig zijn om een taak uit te voeren. Deze waarde is standaard ingesteld op 1. Zie het artikel [Streaming-eenheden begrijpen en aanpassen](stream-analytics-streaming-unit-consumption.md) voor meer informatie over het schalen van streaming-eenheden.      |
 

@@ -38,7 +38,7 @@ De combi Naties van Azure-Services en-regio's die ondersteuning bieden voor Besc
 
 |                                 |Noord- en Zuid-Amerika |              |           |           | Europa |              |          |              | Azië en Stille Oceaan |                 |
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|
-|          |US - centraal|VS - oost|VS - oost 2|US - west 2|Frankrijk - centraal|Europa - noord|UK - zuid|Europa - west|Japan - Oost|Azië - zuidoost|
+|          |VS - centraal|VS - oost|VS - oost 2|VS - west 2|Frankrijk - centraal|Europa - noord|UK - zuid|Europa - west|Japan - Oost|Azië - zuidoost|
 | **Compute**                         |            |              |           |           |                |              |          |             |            |                |
 | Virtuele Linux-machines          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Virtuele Windows-machines        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |

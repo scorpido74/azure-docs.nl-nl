@@ -60,14 +60,14 @@ Met Traffic Analytics worden de onbewerkte NSG-stroom logboeken onderzocht en wo
 U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteunde regio's:
 
 * Canada - midden
-* US - west-centraal
-* US - oost
-* US - oost 2
-* US - noord-centraal
-* US - zuid-centraal
-* US - centraal
-* US - west
-* US - west 2
+* VS - west-centraal
+* VS - oost
+* VS - oost 2
+* VS - noord-centraal
+* VS - zuid-centraal
+* VS - centraal
+* VS - west
+* VS - west 2
 * Frankrijk - centraal
 * Europa -west
 * Europa - noord
@@ -90,15 +90,15 @@ U kunt Traffic Analytics voor Nsg's gebruiken in een van de volgende ondersteund
 
 De Log Analytics-werk ruimte moet in de volgende regio's bestaan:
 * Canada - midden
-* US - west-centraal
-* US - oost
-* US - oost 2
-* US - noord-centraal
-* US - zuid-centraal
-* US - centraal
-* US - west
-* US - west 2
-* US - centraal
+* VS - west-centraal
+* VS - oost
+* VS - oost 2
+* VS - noord-centraal
+* VS - zuid-centraal
+* VS - centraal
+* VS - west
+* VS - west 2
+* VS - centraal
 * Frankrijk - centraal
 * Europa -west
 * Europa - noord

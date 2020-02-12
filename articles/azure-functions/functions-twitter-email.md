@@ -54,7 +54,7 @@ De Cognitive Services-API's zijn als afzonderlijke resources beschikbaar in Azur
     | Instelling      |  Voorgestelde waarde   | Beschrijving                                        |
     | --- | --- | --- |
     | **Naam** | MyCognitiveServicesAccnt | Kies een unieke naam voor het account. |
-    | **Locatie** | US - west | Gebruik de dichtstbijzijnde locatie. |
+    | **Locatie** | VS - west | Gebruik de dichtstbijzijnde locatie. |
     | **Prijscategorie** | F0 | Begin met de laagste categorie. Als u geen aanroepen meer hebt, schaalt u naar een hogere categorie.|
     | **Resourcegroep** | myResourceGroup | Gebruik dezelfde resourcegroep voor alle services in deze tutorial.|
 

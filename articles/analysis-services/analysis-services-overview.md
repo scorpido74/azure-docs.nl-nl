@@ -84,14 +84,14 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |VS - oost     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |VS - oost 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |VS - oost 2     |     S8, S9, S8v2, S9v2   |    1    |
-|US - noord-centraal     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|US - centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|US - zuid-centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|US - west-centraal   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
-|US - west     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|US - west     |    S8, S9, S8v2, S9v2   |    2  |
-|US - west 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|US - west 2    |    S8, S9, S8v2, S9v2  |    1     |
+|VS - noord-centraal     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
+|VS - centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|VS - zuid-centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|VS - west-centraal   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|VS - west     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
+|VS - west     |    S8, S9, S8v2, S9v2   |    2  |
+|VS - west 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
+|VS - west 2    |    S8, S9, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Europa
 

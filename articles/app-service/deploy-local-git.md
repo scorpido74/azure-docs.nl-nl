@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680950"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152989"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-implementatie naar Azure App Service
 
@@ -50,6 +50,9 @@ Als u de URL wilt ophalen voor het inschakelen van lokale Git-implementatie voor
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
 ```
+> [!NOTE]
+> Als u een Linux-app-service-abonnement gebruikt, moet u deze para meter toevoegen:--runtime python | 3.7
+
 
 Als u een nieuwe app met Git wilt maken, voert u [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) in het Cloud shell uit met de para meter `--deployment-local-git`. Vervang \<app-naam >, \<groeps naam > en \<plan naam > met de namen voor uw nieuwe Git-app, de Azure-resource groep en het Azure App Service plan.
 
@@ -142,7 +145,7 @@ Lokale Git-implementatie voor uw app inschakelen met Azure-pijp lijnen (preview)
 
 Mogelijk worden de volgende veelvoorkomende fout berichten weer geven wanneer u Git gebruikt om te publiceren naar een App Service-app in Azure:
 
-|Bericht|Oorzaak|Resolutie
+|Bericht|Oorzaak|Oplossing
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|De app is niet actief.|Start de app in het Azure Portal. Git-implementatie is niet beschikbaar wanneer de web-app is gestopt.|
 |`Couldn't resolve host 'hostname'`|De adres gegevens voor de externe Azure-computer zijn onjuist.|Gebruik de opdracht `git remote -v` om alle externe-en de bijbehorende URL weer te geven. Controleer of de URL voor de externe Azure juist is. Als dat nodig is, kunt u deze extern verwijderen en opnieuw maken met de juiste URL.|
@@ -151,7 +154,7 @@ Mogelijk worden de volgende veelvoorkomende fout berichten weer geven wanneer u 
 |`RPC failed; result=22, HTTP code = 5xx.`|Deze fout kan optreden als u probeert een grote Git-opslag plaats via HTTPS te pushen.|Wijzig de Git-configuratie op de lokale computer om de `postBuffer` groter te maken. Bijvoorbeeld: `git config --global http.postBuffer 524288000`.|
 |`Error - Changes committed to remote repository but your web app not updated.`|U hebt een node. js-app geïmplementeerd met een _package. json_ -bestand dat aanvullende vereiste modules specificeert.|Raadpleeg de `npm ERR!` fout berichten vóór deze fout voor meer context over de fout. Hieronder vindt u de bekende oorzaken van deze fout en de bijbehorende `npm ERR!` berichten:<br /><br />**Onjuist gevormd pakket. JSON-bestand**: `npm ERR! Couldn't read dependencies.`<br /><br />**Systeem eigen module heeft geen binaire distributie voor Windows**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />of <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 - [Documentatie voor project kudu](https://github.com/projectkudu/kudu/wiki)
 - [Continue implementatie naar Azure App Service](deploy-continuous-deployment.md)

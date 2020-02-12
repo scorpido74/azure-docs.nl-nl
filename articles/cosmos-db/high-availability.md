@@ -81,15 +81,15 @@ Deze functie is beschikbaar in de volgende Azure-regio's:
 
 - Azië - zuidoost
 
-- US - oost
+- VS - oost
 
-- US - oost 2
+- VS - oost 2
 
-- US - centraal
+- VS - centraal
 
 - Europa -west
 
-- US - west 2
+- VS - west 2
 
 > [!NOTE]
 > Als u Beschikbaarheidszones inschakelt voor een Azure Cosmos-account in één regio, worden er kosten in rekening gebracht die gelijk zijn aan het toevoegen van een extra regio aan uw account. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) en de [kosten voor meerdere regio's in azure Cosmos DB](optimize-cost-regions.md) artikelen voor meer informatie over prijzen.

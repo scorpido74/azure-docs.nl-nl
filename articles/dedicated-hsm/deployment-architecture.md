@@ -29,10 +29,10 @@ Azure toegewezen HSM biedt opslag van cryptografische sleutels in Azure. Deze vo
 
 De HSM's worden verdeeld over de Microsoft-datacenters en kunnen eenvoudig worden ingericht als een paar apparaten als de basis van een maximaal beschikbare oplossing. Ze kunnen ook worden geïmplementeerd in regio's voor een robuuste oplossing voor noodherstel. De regio's met toegewezen HSM die beschikbaar zijn op dit moment:
 
-* US - oost
-* US - oost 2
-* US - west
-* US - zuid-centraal
+* VS - oost
+* VS - oost 2
+* VS - west
+* VS - zuid-centraal
 * Azië - zuidoost
 * Azië - oost
 * India - centraal

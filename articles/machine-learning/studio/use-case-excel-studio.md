@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: e440d9d882d0459d04a15b8f39ea6877707ea096
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6976f0bb671b94f71b71287483c2ab88d0959899
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427453"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152768"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Analytics van Excel migreren naar Azure Machine Learning Studio (klassiek)
 
@@ -54,8 +54,8 @@ In eerste instantie heeft het Excel-model duidelijk het model studio (klassiek) 
 |  | Excel | Studio (klassiek) |
 | --- |:---:|:---:|
 | Prestaties | | |
-| <ul style="list-style-type: none;"><li>Aangepast R-kwadraat</li></ul> |0.96 |N/A |
-| <ul style="list-style-type: none;"><li>Coëfficiënt van <br />Analyses</li></ul> |N/A |0.78<br />(lage nauw keurigheid) |
+| <ul style="list-style-type: none;"><li>Aangepast R-kwadraat</li></ul> |0.96 |N.V.T. |
+| <ul style="list-style-type: none;"><li>Coëfficiënt van <br />Analyses</li></ul> |N.V.T. |0.78<br />(lage nauw keurigheid) |
 | Gemiddelde absolute fout |$9.5 m |$19.4 m |
 | Gemiddelde absolute fout (%) |6.03% |12.2% |
 
@@ -71,24 +71,24 @@ Toen we de aanbevelingen hebben toegepast, hebben we dezelfde basislijn prestati
 
 |  | Excel | Studio (klassiek) (oorspronkelijk) | Studio (klassiek) met minste kwadraten |
 | --- |:---:|:---:|:---:|
-| Label waarde |Werkelijke waarden (numeriek) |Dezelfde |Dezelfde |
-| Cursist |Excel-> gegevens analyse-> regressie |Lineaire regressie. |Lineaire regressie |
-| Opties voor meer informatie |N/A |Standaardwaarden |normale minimale kwadraten<br />L2 = 0,005 |
-| Gegevensset |26 rijen, 3 kenmerken, 1 label. Alle getallen. |Dezelfde |Dezelfde |
-| Splitsen: trainen |Excel getraind op de eerste 18 rijen, getest op de laatste 8 rijen. |Dezelfde |Dezelfde |
-| Splitsen: testen |Formule van Excel-regressie toegepast op de laatste 8 rijen |Dezelfde |Dezelfde |
+| Label waarde |Werkelijke waarden (numeriek) |dezelfde |dezelfde |
+| Learner |Excel-> gegevens analyse-> regressie |Lineaire regressie. |Lineaire regressie |
+| Opties voor meer informatie |N.V.T. |Standaard |normale minimale kwadraten<br />L2 = 0,005 |
+| Gegevensset |26 rijen, 3 kenmerken, 1 label. Alle getallen. |dezelfde |dezelfde |
+| Splitsen: trainen |Excel getraind op de eerste 18 rijen, getest op de laatste 8 rijen. |dezelfde |dezelfde |
+| Splitsen: testen |Formule van Excel-regressie toegepast op de laatste 8 rijen |dezelfde |dezelfde |
 | **Prestaties** | | | |
-| Aangepast R-kwadraat |0.96 |N/A | |
-| Determinatie coëfficiënt |N/A |0.78 |0.952049 |
+| Aangepast R-kwadraat |0.96 |N.V.T. | |
+| Determinatie coëfficiënt |N.V.T. |0.78 |0.952049 |
 | Gemiddelde absolute fout |$9.5 m |$19.4 m |$9.5 m |
-| Gemiddelde absolute fout (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
+| Gemiddelde absolute fout (%) |<span style="background-color: 00FF00;">6,03%</span> |12.2% |<span style="background-color: 00FF00;">6,03%</span> |
 
 Daarnaast worden de Excel-coëfficiënten vergeleken met het onderdeel gewichten in het door Azure getrainde model:
 
 |  | Excel-coëfficiënten | Gewichten van Azure-functies |
 | --- |:---:|:---:|
 | Interceptie/afwijking |19470209.88 |19328500 |
-| -functie A |0.832653063 |0.834156 |
+| Functie A |0.832653063 |0.834156 |
 | Functie B |11071967.08 |11007300 |
 | Functie C |25383318.09 |25140800 |
 
@@ -129,7 +129,7 @@ We hebben ook geadviseerd om op [filter gebaseerde functie selectie][filter-base
 
 De mogelijkheid om de voorspellende analytische prognose van Studio (klassiek) over te dragen naar Excel System root, maakt een aanzienlijke toename van de mogelijkheid om resultaten te bieden aan een brede zakelijke gebruikers publiek. 
 
-## <a name="resources"></a>Resources
+## <a name="resources"></a>Bronnen
 Hier volgen enkele bronnen voor hulp bij het werken met regressie: 
 
 * Regressie in Excel. Als u nog niet hebt geprobeerd regressie in Excel te maken, kunt u met deze zelf studie het volgende doen: [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)

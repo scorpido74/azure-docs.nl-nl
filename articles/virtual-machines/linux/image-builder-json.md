@@ -61,9 +61,9 @@ De locatie is de regio waar de aangepaste installatie kopie wordt gemaakt. Voor 
 
 - VS - oost
 - VS - oost 2
-- US - west-centraal
+- VS - west-centraal
 - VS - west
-- US - west 2
+- VS - west 2
 
 
 ```json

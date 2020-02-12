@@ -21,9 +21,9 @@ VPN-verbinding tussen sites en virtuele WAN-architectuur is beschikbaar voor de 
 
 |Geopolitieke regio | Azure-regio's|
 |---|---|
-| Noord-Amerika | US - oost, US - west, US - oost 2, US - west 2, US - centraal, US - zuid-centraal, US - noord-centraal, US - west-centraal, Canada - centraal, Canada - oost |
+| Noord-Amerika | VS - oost, VS - west, VS - oost 2, VS - west 2, VS - centraal, VS - zuid-centraal, VS - noord-centraal, VS - west-centraal, Canada - centraal, Canada - oost |
 |Zuid-Amerika |Brazilië - Zuid |
-| Europa | Frankrijk - centraal, Frankrijk - zuid, Europa - noord, Europa - west, UK - west, UK - zuid |
+| Europa | Frankrijk - centraal, Frankrijk - zuid, Europa - noord, Europa - west, VK - west, VK - zuid |
 | Azië | Azië - oost, Azië - zuidoost |
 | Japan  | Japan - west, Japan - oost |
 | Australië | Australië - zuidoost, Australië - oost |
@@ -38,6 +38,6 @@ VPN-verbinding tussen sites en virtuele WAN-architectuur is beschikbaar voor de 
 
 |Geopolitieke regio | Azure-regio's|
 |---|---|
-| Cloud van de Amerikaanse overheid | US Gov - AZ, US Gov - Iowa, US Gov - TX, US Gov - Virginia, US DoD - centraal, US DoD - oost |
+| Cloud van de Amerikaanse overheid | US Gov - AZ, US Gov - Iowa, US Gov - TX, US Gov - Virginia, US DoD Central, US DoD East |
 | China - oost | China - oost, China - oost2|
 | China - noord | China - noord, China - noord2 |

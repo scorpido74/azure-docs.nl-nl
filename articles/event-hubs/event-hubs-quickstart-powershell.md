@@ -13,7 +13,7 @@ ms.date: 11/05/2019
 ms.author: shvija
 ms.openlocfilehash: 2a88fe340037c31a71cb34181682095f31400c36
 ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/07/2019
 ms.locfileid: "73720608"
@@ -42,7 +42,7 @@ Als u PowerShell lokaal gebruikt, moet u de nieuwste versie van PowerShell uitvo
 
 Een resourcegroep is een logische verzameling van Azure-resources. U hebt een resourcegroep nodig om een Event Hub te maken. 
 
-In het volgende voorbeeld wordt een resourcegroep gemaakt in de regio US - oost. Vervang `myResourceGroup` door de naam van de resourcegroep die u wilt gebruiken:
+In het volgende voorbeeld wordt een resourcegroep gemaakt in de regio VS - oost. Vervang `myResourceGroup` door de naam van de resourcegroep die u wilt gebruiken:
 
 ```azurepowershell-interactive
 New-AzResourceGroup –Name myResourceGroup –Location eastus

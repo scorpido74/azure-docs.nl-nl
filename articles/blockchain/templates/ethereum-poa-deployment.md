@@ -93,7 +93,7 @@ Verificatietype | De methode voor verificatie bij de virtuele machine. | Wachtwo
 Wachtwoord | Het wachtwoord voor het beheerdersaccount voor elk van de geïmplementeerde virtuele machines. Alle Vm's hebben in eerste instantie hetzelfde wacht woord. U kunt het wacht woord na het inrichten wijzigen. | 12-72 tekens 
 Abonnement | Het abonnement waarop het consortium netwerk moet worden geïmplementeerd |
 Resourcegroep| De resource groep waarvoor het consortium netwerk moet worden geïmplementeerd. | myResourceGroup
-Locatie | De Azure-regio voor de resource groep. | US - west 2
+Locatie | De Azure-regio voor de resource groep. | VS - west 2
 
 Selecteer **OK**.
 
@@ -106,7 +106,7 @@ Geef onder *implementatie regio's*het aantal regio's en locaties voor elk op. U 
 Parameter | Beschrijving | Voorbeeldwaarde
 ----------|-------------|--------------
 Aantal regio's|Aantal regio's voor de implementatie van het consortium netwerk| 2
-Eerste regio | Eerste regio voor het implementeren van het consortium netwerk | US - west 2
+Eerste regio | Eerste regio voor het implementeren van het consortium netwerk | VS - west 2
 Tweede regio | Tweede regio voor het implementeren van het consortium netwerk. Extra regio's zijn zichtbaar wanneer het aantal regio's twee of meer is. | VS - oost 2
 
 Selecteer **OK**.

@@ -210,7 +210,7 @@ Om alle databaseobjecten zoals tabelschema’s, indexen en opgeslagen procedures
 
    Met de volgende opdracht bijvoorbeeld maakt u een service in:
 
-   * Locatie: US - oost 2
+   * Locatie: VS - oost 2
    * Abonnement: 97181df2-909d-420b-ab93-1bff15acb6b7
    * Naam resourcegroep: PostgresDemo
    * Naam DMS-service: PostgresCLI
@@ -259,7 +259,7 @@ Om alle databaseobjecten zoals tabelschema’s, indexen en opgeslagen procedures
 
     Zo maakt u met de volgende opdracht een project met deze parameters:
 
-   * Locatie: US - west-centraal
+   * Locatie: VS - west-centraal
    * Naam resourcegroep: PostgresDemo
    * Servicenaam: PostgresCLI
    * Projectnaam: PGMigration

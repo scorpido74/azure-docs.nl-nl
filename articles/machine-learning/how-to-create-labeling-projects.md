@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 8c6b7b4d64b3a4f504cc9aef275b3d48cd62a3d8
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: e469837c8e374e62824bd8f7a7feb110ed1be9c9
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116835"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153108"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Een gegevens label project maken en labels exporteren 
 
@@ -161,9 +161,9 @@ Gebruik deze stappen om een of meer labels aan een project toe te voegen:
 1. Selecteer in de lijst aan de linkerkant **Label klassen**.
 1. Selecteer boven aan de lijst **+ labels toevoegen** ![een label toe te voegen](media/how-to-create-labeling-projects/add-label.png)
 1. Voeg in het formulier het nieuwe label toe en kies hoe u wilt door gaan.  Omdat u de beschik bare labels voor een afbeelding hebt gewijzigd, kiest u hoe u de al gelabelde gegevens wilt behandelen:
-    * Opnieuw beginnen, waarbij alle bestaande labels worden verwijderd.  Kies deze optie als u alle bestaande labels wilt wissen zodat de volledige set kan worden gebruikt om alle installatie kopieën te labelen.
-    * Opnieuw beginnen, waarbij alle bestaande labels behouden blijven.  Kies deze optie om alle gegevens als niet-gelabeld te markeren, maar behoud de bestaande labels als een standaard label voor installatie kopieën die zijn gelabeld.
-    * Ga door en behoud alle bestaande labels. Kies deze optie om ervoor te zorgen dat alle gegevens al worden gelabeld als is en begin het nieuwe label te gebruiken voor gegevens die nog niet zijn geclassificeerd.
+    * Opnieuw beginnen, waarbij alle bestaande labels worden verwijderd.  Kies deze optie als u vanaf het begin met de nieuwe volledige set etiketten wilt beginnen met labelen. 
+    * Opnieuw beginnen, waarbij alle bestaande labels behouden blijven.  Kies deze optie om alle gegevens als niet-gelabeld te markeren, maar behoud de bestaande labels als een standaard label voor installatie kopieën die eerder zijn gelabeld.
+    * Ga door en behoud alle bestaande labels. Kies deze optie om ervoor te zorgen dat alle gegevens al worden gelabeld als is en begin het nieuwe label te gebruiken voor gegevens die nog niet zijn gelabeld.
 1. Wijzig uw instructies pagina indien nodig voor de nieuwe label (s).
 1. Zodra u alle nieuwe labels hebt toegevoegd, klikt u boven aan de pagina op **Start** om het project opnieuw te starten.  
 

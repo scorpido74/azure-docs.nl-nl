@@ -37,7 +37,7 @@ Grootschalige (Citus)-Server groepen zijn beschikbaar in de volgende Azure-regio
     * VS - oost
     * VS - oost 2
     * VS Noord-Centraal *
-    * US - west 2
+    * VS - west 2
 * Azië en Stille Oceaan:
     * Australië-oost *
     * Azië - zuidoost

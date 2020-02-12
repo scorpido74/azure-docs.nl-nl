@@ -25,11 +25,11 @@ ms.locfileid: "76938312"
 * VS - centraal
 * VS - oost
 * VS - oost 2
-* US - noord-centraal
-* US - zuid-centraal
-* US - west-centraal
+* VS - noord-centraal
+* VS - zuid-centraal
+* VS - west-centraal
 * VS - west
-* US - west 2
+* VS - west 2
 
 **Europa**
 * Frankrijk - centraal

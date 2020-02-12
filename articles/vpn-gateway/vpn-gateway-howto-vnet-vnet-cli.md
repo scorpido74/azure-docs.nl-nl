@@ -92,7 +92,7 @@ In de voorbeelden worden de volgende waarden gebruikt:
 
 * VNet-naam: TestVNet1
 * Resourcegroep: TestRG1
-* Locatie: US - oost
+* Locatie: VS - oost
 * TestVNet1: 10.11.0.0/16 en 10.12.0.0/16
 * FrontEnd: 10.11.0.0/24
 * BackEnd: 10.12.0.0/24
@@ -111,7 +111,7 @@ In de voorbeelden worden de volgende waarden gebruikt:
 * BackEnd: 10.42.0.0/24
 * GatewaySubnet: 10.42.255.0/27
 * Resourcegroep: TestRG4
-* Locatie: US - west
+* Locatie: VS - west
 * GatewayName: VNet4GW
 * Openbare IP: VNet4GWIP
 * VPNType: op route gebaseerd

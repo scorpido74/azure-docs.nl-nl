@@ -17,12 +17,12 @@ ms.locfileid: "72783559"
 |---------------------|-------------------------|
 | VS - oost             | 3                       |
 | VS - oost 2           | 3                       |
-| US - west             | 3                       |
-| US - west 2           | 2                       |
-| US - centraal          | 3                       |
-| US - noord-centraal    | 3                       |
-| US - zuid-centraal    | 3                       |
-| US - west-centraal     | 2                       |
+| VS - west             | 3                       |
+| VS - west 2           | 2                       |
+| VS - centraal          | 3                       |
+| VS - noord-centraal    | 3                       |
+| VS - zuid-centraal    | 3                       |
+| VS - west-centraal     | 2                       |
 | Canada-Midden      | 3                       |
 | Canada-Oost         | 2                       |
 |                     |                         |
@@ -57,5 +57,5 @@ ms.locfileid: "72783559"
 | US Gov - Virginia     | 2                       |
 | US Gov - Texas        | 2                       |
 | US Gov - Arizona      | 2                       |
-| US DoD - centraal      | 2                       |
-| US DoD - oost         | 2                       |
+| US DoD Central      | 2                       |
+| US DoD East         | 2                       |

@@ -41,13 +41,13 @@ NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de we
 * Europa - west
 * Frankrijk - centraal
 
-* US - west-centraal
-* US - noord-centraal
-* US - zuid-centraal
-* US - centraal
+* VS - west-centraal
+* VS - noord-centraal
+* VS - zuid-centraal
+* VS - centraal
 * VS - oost
 * VS - oost 2
-* US - west 2
+* VS - west 2
 * Japan-Oost
 * Azië - zuidoost
 * Zuid-Oost-Australië

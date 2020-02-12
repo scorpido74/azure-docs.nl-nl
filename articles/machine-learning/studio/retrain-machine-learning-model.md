@@ -1,5 +1,5 @@
 ---
-title: Omscholen voor een webservice
+title: Een webservice opnieuw trainen
 titleSuffix: ML Studio (classic) - Azure
 description: Meer informatie over het bijwerken van een webservice voor het gebruik van een pas getraind machine learning model in Azure Machine Learning Studio (klassiek).
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: c24eb50688efcf220b26b5a0f352d012876dbab3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 867d104b58980679dc815238fef14050e7d9e8c7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838669"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152853"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Een machine learning model opnieuw trainen en implementeren
 
@@ -31,7 +31,7 @@ U kunt deze stappen volgen om een machine learning nieuwe webservice opnieuw te 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="deploy-the-retraining-web-service"></a>De webservice voor retraining implementeren
+## <a name="deploy-the-retraining-web-service"></a>De retraining webservice implementeren
 
 Met een Retrain web service kunt u uw model opnieuw trainen met een nieuwe set para meters, zoals nieuwe gegevens, en deze op een later tijdstip opslaan. Wanneer u een **webservice-uitvoer** verbindt met een **Train-model**, voert het trainings experiment een nieuw model uit dat u wilt gebruiken.
 
@@ -72,7 +72,7 @@ Op de volgende scherm afbeelding ziet u de pagina **verbruik** in de Azure machi
 
 ![Pagina verbruiken](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
-### <a name="update-the-apikey-declaration"></a>De apikey-declaratie bijwerken
+### <a name="update-the-apikey-declaration"></a>De declaratie apikey bijwerken
 
 Zoek de **apikey** -declaratie:
 
@@ -80,13 +80,13 @@ Zoek de **apikey** -declaratie:
 
 Zoek in de sectie **basis informatie** over het gebruik van de pagina **verbruik** de primaire sleutel en kopieer deze naar de **apikey** -declaratie.
 
-### <a name="update-the-azure-storage-information"></a>De Azure Storage gegevens bijwerken
+### <a name="update-the-azure-storage-information"></a>De Azure Storage-gegevens bijwerken
 
 De voorbeeld code BES uploadt een bestand van een lokaal station (bijvoorbeeld ' C:\temp\CensusInput.csv ') naar Azure Storage, verwerkt het en schrijft de resultaten terug naar Azure Storage.
 
 1. Aanmelden bij Azure Portal
 1. Klik in de linker navigatie kolom op **meer services**, zoek naar **opslag accounts**en selecteer deze.
-1. Selecteer in de lijst met opslag accounts een om het opnieuw getrainde model op te slaan.
+1. Selecteer in de lijst met opslagaccounts, een voor het opslaan van het retrained model.
 1. Klik in de linker navigatie kolom op **toegangs toetsen**.
 1. Kopieer de **primaire toegangs sleutel**en sla deze op.
 1. Klik in de linker navigatie kolom op **blobs**.
@@ -100,7 +100,7 @@ Zoek de *StorageAccountName*-, *StorageAccountKey*-en *StorageContainerName* -de
 
 U moet er ook voor zorgen dat het invoer bestand beschikbaar is op de locatie die u opgeeft in de code.
 
-### <a name="specify-the-output-location"></a>De uitvoer locatie opgeven
+### <a name="specify-the-output-location"></a>Geef de uitvoerlocatie
 
 Wanneer u de uitvoer locatie in de aanvraag lading opgeeft, moet de extensie van het bestand dat is opgegeven in *RelativeLocation* worden opgegeven als `ilearner`.
 
@@ -140,7 +140,7 @@ Ga vervolgens naar het web service-definitie object door de cmdlet [Get-AzMlWebS
 
     $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-Als u de naam van de resource groep van een bestaande webservice wilt bepalen, voert u de cmdlet Get-AzMlWebService uit zonder para meters om de webservices in uw abonnement weer te geven. Zoek de webservice en controleer de webservice-ID. De naam van de resource groep is het vierde element in de ID, net na het *resourceGroups* -element. In het volgende voor beeld is de naam van de resource groep standaard-MachineLearning-SouthCentralUS.
+Als u de naam van de resource groep van een bestaande webservice wilt bepalen, voert u de cmdlet Get-AzMlWebService uit zonder para meters om de webservices in uw abonnement weer te geven. Ga naar de webservice en zoek vervolgens naar de web service-ID. De naam van de resource groep is het vierde element in de ID, net na het *resourceGroups* -element. In het volgende voorbeeld is de naam van de resourcegroep standaard-MachineLearning-SouthCentralUS.
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -149,7 +149,7 @@ Als u de naam van de resource groep van een bestaande webservice wilt bepalen, v
     Type : Microsoft.MachineLearning/webServices
     Tags : {}
 
-Als u de naam van de resource groep van een bestaande webservice wilt bepalen, meldt u zich aan bij de Azure Machine Learning Web Services-portal. Selecteer de webservice. De naam van de resource groep is het vijfde element van de URL van de webservice, net na het *resourceGroups* -element. In het volgende voor beeld is de naam van de resource groep standaard-MachineLearning-SouthCentralUS.
+Als u de naam van de resource groep van een bestaande webservice wilt bepalen, meldt u zich aan bij de Azure Machine Learning Web Services-portal. Selecteer de web-service. De naam van de resource groep is het vijfde element van de URL van de webservice, net na het *resourceGroups* -element. In het volgende voorbeeld is de naam van de resourcegroep standaard-MachineLearning-SouthCentralUS.
 
     https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
 
@@ -182,7 +182,7 @@ Gebruik de cmdlet [import-AzMlWebService](https://docs.microsoft.com/powershell/
 
     $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
-### <a name="update-the-web-service"></a>De webservice bijwerken
+### <a name="update-the-web-service"></a>Bijwerken van de webservice
 
 Gebruik ten slotte de cmdlet [Update-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) om het voorspellende experiment bij te werken.
 

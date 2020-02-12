@@ -35,8 +35,8 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Als u Traffic Manager in actie wilt zien, implementeert u het volgende voor deze zelfstudie:
 
-- Twee exemplaren van basiswebsites die worden uitgevoerd in verschillende Azure-regio's: US - oost en Europa - west.
-- Twee virtuele machines voor het testen van de Traffic Manager: één in US - oost en de andere in Europa - west. De test-VM’s worden gebruikt om te illustreren hoe gebruikersverkeer via Traffic Manager naar een website wordt gerouteerd met een bijbehorend eindpunt waaraan een hoger gewicht is toegewezen.
+- Twee exemplaren van basiswebsites die worden uitgevoerd in verschillende Azure-regio's: VS - oost en Europa - west.
+- Twee virtuele machines voor het testen van de Traffic Manager: één in VS - oost en de andere in Europa - west. De test-VM’s worden gebruikt om te illustreren hoe gebruikersverkeer via Traffic Manager naar een website wordt gerouteerd met een bijbehorend eindpunt waaraan een hoger gewicht is toegewezen.
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -46,7 +46,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 In dit gedeelte maakt u twee website-instanties die de twee service-eindpunten voor het Traffic Manager-profiel vormen in twee Azure-regio’s. Voltooi de volgende stappen om de twee websites te maken:
 
-1. Maak twee virtuele machines om een eenvoudige website uit te voeren: een in US - oost en de andere in Europa - west.
+1. Maak twee virtuele machines om een eenvoudige website uit te voeren: een in VS - oost en de andere in Europa - west.
 2. Installeer een IIS-server op elke virtuele machine. Werk de standaardwebpagina bij die de naam beschrijft van de virtuele machine waarmee een gebruiker is verbonden als deze de website bezoekt.
 
 #### <a name="create-vms-for-running-websites"></a>Virtuele machines maken voor het uitvoeren van websites
@@ -160,7 +160,7 @@ Voeg de twee virtuele machines waarop de IIS-servers myIISVMEastUS en myIISVMWes
     | Type                    | Voer het Azure-eindpunt in.                                   |
     | Name           | Voer **myEastUSEndpoint** in.                                        |
     | Doelbrontype           | Selecteer **Openbaar IP-adres**.                          |
-    | Doelbron          | Kies een openbaar IP-adres om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam **myIISVMEastUS-ip**. Dit is het openbare IP-adres van de IIS-server VM in US - oost.|
+    | Doelbron          | Kies een openbaar IP-adres om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam **myIISVMEastUS-ip**. Dit is het openbare IP-adres van de IIS-server VM in VS - oost.|
     |  Gewicht      | Voer **100** in.        |
     |        |           |
 

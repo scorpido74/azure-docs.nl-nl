@@ -55,7 +55,7 @@ De Azure HPC-cache is beschikbaar in de volgende Azure-regio's:
 * Europa - west
 * Azië - zuidoost
 * Sydney
-* US - west 2
+* VS - west 2
 * Korea - centraal
 
 Controleer de [product pagina van de Azure HPC-cache](https://azure.microsoft.com/services/hpc-cache) voor de meest recente beschikbaarheids gegevens.

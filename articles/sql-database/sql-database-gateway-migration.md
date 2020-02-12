@@ -27,17 +27,17 @@ Klanten worden op de hoogte gesteld via e-mail en in het Azure Portal goed van e
 
 De eerste afronding van verkeer migratie naar nieuwere gateways is gepland voor **14 oktober 2019** in de volgende regio's:
 - Brazilië - zuid
-- US - west
+- VS - west
 - Europa -west
-- US - oost
-- US - centraal
+- VS - oost
+- VS - centraal
 - Azië - zuidoost
-- US - zuid-centraal
+- VS - zuid-centraal
 - Europa - noord
-- US - noord-centraal
+- VS - noord-centraal
 - Japan - west
 - Japan - oost
-- US - oost 2
+- VS - oost 2
 - Azië - oost
 
 Bij de migratie van verkeer wordt het open bare IP-adres gewijzigd dat DNS voor uw SQL Database verhelpt.

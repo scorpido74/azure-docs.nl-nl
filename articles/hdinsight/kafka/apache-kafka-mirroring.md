@@ -65,8 +65,8 @@ Deze architectuur bevat twee clusters in verschillende resource groepen en virtu
 
     |Resourcegroep | Locatie |
     |---|---|
-    | kafka-primary-rg | US - centraal |
-    | kafka-secondary-rg | US - noord-centraal |
+    | kafka-primary-rg | VS - centraal |
+    | kafka-secondary-rg | VS - noord-centraal |
 
 1. Maak een nieuw virtueel netwerk **Kafka-primair-vnet** in **Kafka-Primary-RG**. Behoud de standaard instellingen.
 1. Maak een nieuw virtueel netwerk **Kafka-secundair-vnet** in **Kafka-Secondary-RG**, ook met de standaard instellingen.

@@ -66,7 +66,7 @@ Een Azure-resourcegroep is een logische container waarin Azure-resources worden 
 
 Maak een resourcegroep met de opdracht [az group create](/cli/azure/group#az-group-create). 
 
-Selecteer de naam van een resourcegroep en vul de tijdelijke aanduiding in. In het volgende voorbeeld wordt een resourcegroep gemaakt in de regio US - west:
+Selecteer de naam van een resourcegroep en vul de tijdelijke aanduiding in. In het volgende voorbeeld wordt een resourcegroep gemaakt in de regio VS - west:
 
 ```azurecli
 # To list locations: az account list-locations --output table

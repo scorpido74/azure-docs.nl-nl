@@ -57,7 +57,7 @@ Meld u aan bij uw Azure-account en selecteer uw abonnement.
     ```
 
     > [!TIP]
-    > In het voorbeeld wordt de resourcegroep gemaakt in de locatie US - west. U kunt een lijst met beschikbare locaties weergeven met de opdracht `az account list-locations -o table`.
+    > In het voorbeeld wordt de resourcegroep gemaakt in de locatie VS - west. U kunt een lijst met beschikbare locaties weergeven met de opdracht `az account list-locations -o table`.
     >
     >
 

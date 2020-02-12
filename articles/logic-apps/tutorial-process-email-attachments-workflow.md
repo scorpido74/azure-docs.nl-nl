@@ -145,7 +145,7 @@ Gebruik nu het codefragment in deze stappen om een Azure-functie te maken waarme
    | **Resourcegroep** | LA-Tutorial-RG | Dezelfde Azure-resourcegroep die u eerder hebt gebruikt |
    | **Besturingssysteem** | <*uw> voor uw besturings systeem* | Selecteer het besturings systeem dat de programmeer taal van uw favoriete functie ondersteunt. Voor dit voor beeld selecteert u **Windows**. |
    | **Hostingabonnement** | Verbruiksabonnement | Deze instelling bepaalt hoe de resources worden toegewezen en geschaald, bijvoorbeeld de rekenkracht, om uw functie-app uit te voeren. Bekijk [Vergelijking van hostingabonnementen](../azure-functions/functions-scale.md). |
-   | **Locatie** | US - west | Dezelfde regio die u eerder hebt gebruikt |
+   | **Locatie** | VS - west | Dezelfde regio die u eerder hebt gebruikt |
    | **Runtime Stack** | Voorkeurstaal | Selecteer een runtime die de programmeer taal van uw favoriete functie ondersteunt. Selecteer **.net** voor C# en F# functions. |
    | **Opslag** | cleantextfunctionstorageacct | Maak een opslagaccount voor uw functie-app. Gebruik alleen kleine letters en cijfers. <p>**Opmerking:** Dit opslag account bevat uw functie-apps en wijkt af van het eerder gemaakte opslag account voor e-mail bijlagen. |
    | **Application Insights** | Uitschakelen | Hiermee schakelt u toepassings bewaking in met [Application Insights](../azure-monitor/app/app-insights-overview.md), maar voor deze zelf studie selecteert u **uitschakelen** > **Toep assen**. |
@@ -240,7 +240,7 @@ Nadat u hebt gecontroleerd of uw functie werkt, maakt u uw logische app. In deze
    | **Naam** | LA-ProcessAttachment | De naam voor uw logische app |
    | **Abonnement** | <*your-Azure-subscription-name*> | Hetzelfde Azure-abonnement dat u eerder hebt gebruikt |
    | **Resourcegroep** | LA-Tutorial-RG | Dezelfde Azure-resourcegroep die u eerder hebt gebruikt |
-   | **Locatie** | US - west | Dezelfde regio die u eerder hebt gebruikt |
+   | **Locatie** | VS - west | Dezelfde regio die u eerder hebt gebruikt |
    | **Log Analytics** | Uit | Voor deze zelf studie selecteert u de instelling **uit** . |
    ||||
 

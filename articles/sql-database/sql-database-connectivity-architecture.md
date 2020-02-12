@@ -81,7 +81,7 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Brazilië - Zuid         | 104.41.11.5, 191.233.200.14 |
 | Canada-Midden       | 40.85.224.249      |
 | Canada-Oost          | 40.86.226.166      |
-| US - centraal           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
+| VS - centraal           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
 | China - oost           | 139.219.130.35     |
 | China - oost 2         | 40.73.82.1         |
 | China - noord          | 139.219.15.17      |
@@ -99,20 +99,20 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Japan - West           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | Korea - centraal        | 52.231.32.42       |
 | Korea - zuid          | 52.231.200.86      |
-| US - noord-centraal     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
+| VS - noord-centraal     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Europa - noord         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Zuid-Afrika - noord   | 102.133.152.0      |
 | Zuid-Afrika - west    | 102.133.24.0       |
-| US - zuid-centraal     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
+| VS - zuid-centraal     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
 | Azië - zuidoost      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | VAE - centraal          | 20.37.72.64        |
 | VAE - noord            | 65.52.248.0        |
 | UK - zuid             | 51.140.184.11      |
 | UK - west              | 51.141.8.11        |
-| US - west-centraal      | 13.78.145.25       |
+| VS - west-centraal      | 13.78.145.25       |
 | Europa - west          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
-| US - west              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
-| US - west 2            | 13.66.226.202      |
+| VS - west              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
+| VS - west 2            | 13.66.226.202      |
 |                      |                    |
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL Database verbindings beleid wijzigen

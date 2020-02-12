@@ -171,13 +171,13 @@ Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische 
 |Azure-regio |Voor voegsel regionale eind punt|
 |---|---|
 | **VS en Canada** | |
-|US - west-centraal | https:\/-westcentralus.monitoring.azure.com/ |
-|US - west 2       | https:\/-westus2.monitoring.azure.com/ |
-|US - noord-centraal | https:\/-northcentralus.monitoring.azure.com
-|US - zuid-centraal| https:\/-southcentralus.monitoring.azure.com/ |
-|US - centraal      | https:\/-centralus.monitoring.azure.com |
+|VS - west-centraal | https:\/-westcentralus.monitoring.azure.com/ |
+|VS - west 2       | https:\/-westus2.monitoring.azure.com/ |
+|VS - noord-centraal | https:\/-northcentralus.monitoring.azure.com
+|VS - zuid-centraal| https:\/-southcentralus.monitoring.azure.com/ |
+|VS - centraal      | https:\/-centralus.monitoring.azure.com |
 |Canada - midden | https:\//canadacentral.monitoring.Azure.comc
-|US - oost| https:\/-eastus.monitoring.azure.com/ |
+|VS - oost| https:\/-eastus.monitoring.azure.com/ |
 | **Europa** | |
 |Europa - noord    | https:\/-northeurope.monitoring.azure.com/ |
 |Europa -west     | https:\/-westeurope.monitoring.azure.com/ |

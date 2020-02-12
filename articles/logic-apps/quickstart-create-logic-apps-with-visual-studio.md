@@ -113,7 +113,7 @@ Wanneer u uw Azure-resource groep-project hebt, maakt u uw logische app met de s
    | ------- | ------------- | ----------- |
    | Gebruikers account | Fabrikam <br> sophia-owen@fabrikam.com | Het account dat u hebt gebruikt bij het aanmelden bij Visual Studio |
    | **Abonnement** | Betalen per gebruik <br> (sophia-owen@fabrikam.com) | De naam voor uw Azure-abonnement en het bijbehorende account |
-   | **Resourcegroep** | MyLogicApp-RG <br> (US - west) | De Azure-resource groep en-locatie voor het opslaan en implementeren van de resources van uw logische app |
+   | **Resourcegroep** | MyLogicApp-RG <br> (VS - west) | De Azure-resource groep en-locatie voor het opslaan en implementeren van de resources van uw logische app |
    | **Locatie** | **Hetzelfde als resource groep** | Het locatie type en de specifieke locatie voor het implementeren van uw logische app. Het locatie type is ofwel een Azure-regio ofwel een bestaande [integratie service omgeving (ISE)](connect-virtual-network-vnet-isolated-environment.md). <p>Voor deze Quick Start laat u het locatie type ingesteld op **regio** en de locatie ingesteld op **hetzelfde als de resource groep**. <p>**Opmerking**: nadat u het project voor de resource groep hebt gemaakt, kunt u [het locatie type en de locatie wijzigen](manage-logic-apps-with-visual-studio.md#change-location), maar een ander locatie type is op verschillende manieren van invloed op uw logische app. |
    ||||
 

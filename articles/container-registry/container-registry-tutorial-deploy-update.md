@@ -105,7 +105,7 @@ Als u de regionale webhooks wilt bekijken die zijn gemaakt tijdens de implementa
 
 Selecteer elke webhook om de geschiedenis van de bijbehorende aanroepen en antwoorden te bekijken. U zou een rij moeten zien voor de actie **push** in de logboeken van beide webhooks. Hier toont het logboek voor de webhook in de regio *US - west* de actie **push** die is geactiveerd door de `docker push` in de vorige stap:
 
-![Logboek voor containerregister-webhook in Azure Portal (US - west)][tutorial-portal-02]
+![Logboek voor containerregister-webhook in Azure Portal (VS - west)][tutorial-portal-02]
 
 ## <a name="view-the-updated-web-app"></a>Bijgewerkte web-app weergeven
 
@@ -117,11 +117,11 @@ Controleer of de app in beide implementaties is bijgewerkt door naar beide regio
 
 Selecteer de link in het App Service-overzicht om de bijgewerkte app te bekijken. Hier volgt een voorbeeldweergave van de app die wordt uitgevoerd in *US - west*:
 
-![Browserweergave van gewijzigde web-app die wordt uitgevoerd in de regio US - west][deployed-app-westus-modified]
+![Browserweergave van gewijzigde web-app die wordt uitgevoerd in de regio VS - west][deployed-app-westus-modified]
 
 Controleer of de bijgewerkte containerinstallatiekopie ook is geïmplementeerd naar *US - oost* door deze in uw browser weer te geven.
 
-![Browserweergave van gewijzigde web-app die wordt uitgevoerd in de regio US - oost][deployed-app-eastus-modified]
+![Browserweergave van gewijzigde web-app die wordt uitgevoerd in de regio VS - oost][deployed-app-eastus-modified]
 
 Met één `docker push` hebt u automatisch de webtoepassing bijgewerkt die wordt uitgevoerd in beide regionale web-app-implementaties. En Azure Container Registry leverde de containerinstallatiekopieën uit de opslagplaatsen het dichtst bij elke implementatie.
 

@@ -1,5 +1,5 @@
 ---
-title: Modelresultaten interpreteren
+title: Model resultaten interpreteren
 titleSuffix: ML Studio (classic) - Azure
 description: De optimale parameterset voor een algoritme kiezen met behulp van en het visualiseren van score model uitvoer.
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19ae6e8fd8e8a3118343ed8734abb67bc817c3d5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454706"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153465"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Model resultaten interpreteren in Azure Machine Learning Studio (klassiek)
 In dit onderwerp wordt uitgelegd hoe u de Voorspellings resultaten in Azure Machine Learning Studio (klassiek) kunt visualiseren en interpreteren. Nadat u een model hebt getraind en voor spellingen hebt uitgevoerd (het ' gescoorde ' model '), moet u het Voorspellings resultaat begrijpen en interpreteren.
@@ -94,7 +94,7 @@ Nadat u de webservice hebt uitgevoerd en enkele onderdeel waarden van een test i
 
 Afbeelding 5. Webservice resultaat van een twee klassen classificatie van Iris
 
-### <a name="multi-class-classification"></a>Classificatie in meerdere klassen
+### <a name="multi-class-classification"></a>Classificatie met meerdere klassen
 **Voorbeeld experiment**
 
 In dit experiment voert u een taak voor het herkennen van een brief uit als voor beeld van een classificatie met een meervoudige klasse. De classificatie probeert een bepaalde letter (klasse) voor tes pellen op basis van een aantal hand matig geschreven kenmerk waarden die zijn geëxtraheerd uit de hand geschreven afbeeldingen.
@@ -224,7 +224,7 @@ Voor aanbevolen systemen kunt u het advies probleem van het restaurant als voor 
 
 * Restaurant beoordelingen van klanten
 * Gegevens van klant functie
-* Gegevens van functies van restaurant
+* Gegevens van het restaurant onderdeel
 
 Er zijn verschillende dingen die u kunt doen met de module [Train matchbox aanbevelen][train-matchbox-recommender] in azure machine learning Studio (klassiek):
 

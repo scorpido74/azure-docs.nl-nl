@@ -4,12 +4,12 @@ description: Informatie over de managementgroepen, hoe hun machtigingen werken e
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
-ms.openlocfilehash: 507f4575e6d8daa16a1ed7db3d429d2810a63a7c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a8b087eeaa2f087e79a4d05764199e3b72b6ec66
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750248"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151969"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uw resources organiseren met Azure-beheergroepen
 
@@ -87,7 +87,7 @@ Zo kan de RBAC-rol van VM-inzender aan een beheergroep worden toegewezen. Deze r
 
 In de volgende tabel staat een lijst met rollen en de acties die worden ondersteund in beheergroepen.
 
-| Naam RBAC-rol             | Create | Naam wijzigen | Verplaatsen** | Verwijderen | Toegang toewijzen | Beleid toewijzen | Lezen  |
+| Naam RBAC-rol             | Maken | Naam wijzigen | Verplaatsen** | Verwijderen | Toegang toewijzen | Beleid toewijzen | Lezen  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
 |Eigenaar                       | X      | X      | X      | X      | X             | X             | X     |
 |Inzender                 | X      | X      | X      | X      |               |               | X     |
@@ -102,7 +102,7 @@ In de volgende tabel staat een lijst met rollen en de acties die worden onderste
 
 ## <a name="custom-rbac-role-definition-and-assignment"></a>Aangepaste definitie en toewijzing van de RBAC-rol
 
-Aangepaste RBAC-functie ondersteuning voor beheer groepen wordt momenteel ondersteund met enkele [beperkingen](#limitations).  U kunt het bereik van de beheer groep definiëren in het toewijs bare bereik van de functie definitie.  Deze aangepaste RBAC-rol is vervolgens beschikbaar voor toewijzing voor die beheer groep en alle beheer groepen, abonnementen, resource groepen of bronnen daaronder. Deze aangepaste rol neemt de hiërarchie over, zoals ingebouwde rollen.    
+Aangepaste RBAC-functie ondersteuning voor beheer groepen is momenteel in Preview met enkele [beperkingen](#limitations).  U kunt het bereik van de beheergroep definiëren in het toewijsbare bereik van de roldefinitie.  Die aangepaste RBAC-rol is dan beschikbaar voor toewijzing in die beheergroep en alle beheergroepen, abonnementen, resourcegroepen en resources daaronder. Deze aangepaste rol neemt machtigingen over in de hiërarchie op dezelfde manier als een ingebouwde rol.    
 
 ### <a name="example-definition"></a>Voorbeeld definitie
 Het [definiëren en maken van een aangepaste rol](../../role-based-access-control/custom-roles.md) verandert niet met het opnemen van beheer groepen. Gebruik het volledige pad om de **/providers/Microsoft.Management/managementgroups/{groupid}** van de beheer groep te definiëren. 

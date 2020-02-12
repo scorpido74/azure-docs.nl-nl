@@ -254,7 +254,7 @@ Bekijk op het tabblad **controleren en maken** de samen vatting en selecteer **m
 U kunt de implementatie bewaken vanuit Azure Portal. Met de knop **Meldingen** boven aan het scherm kunt u de algemene status van de implementatie weergeven.
 
 > [!NOTE]
-> Om u een idee te geven van de implementatietijden, heb ik een virtuele SQL-machine voor de regio US - oost geïmplementeerd met standaardinstellingen. Deze testimplementatie nam in totaal ongeveer 12 minuten in beslag. Afhankelijk van uw regio en de geselecteerde instellingen bent u mogelijk meer of minder tijd kwijt aan de implementatie.
+> Om u een idee te geven van de implementatietijden, heb ik een virtuele SQL-machine voor de regio VS - oost geïmplementeerd met standaardinstellingen. Deze testimplementatie nam in totaal ongeveer 12 minuten in beslag. Afhankelijk van uw regio en de geselecteerde instellingen bent u mogelijk meer of minder tijd kwijt aan de implementatie.
 
 ## <a id="remotedesktop"></a> De virtuele machine openen via Extern bureaublad
 

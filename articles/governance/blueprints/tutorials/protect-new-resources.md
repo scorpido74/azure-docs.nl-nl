@@ -155,7 +155,7 @@ Wanneer de definitie van de blauw druk is gepubliceerd, kunt u deze toewijzen aa
      |Artefact naam|Type artefact|Parameternaam|Waarde|Beschrijving|
      |-|-|-|-|-|
      |Resource groep RGtoLock|Resourcegroep|Naam|TestingBPLocks|Hiermee definieert u de naam van de nieuwe resource groep waarop blauw drukken moet worden toegepast.|
-     |Resource groep RGtoLock|Resourcegroep|Locatie|US - west 2|Hiermee definieert u de locatie van de nieuwe resource groep waarop blauw drukken moet worden toegepast.|
+     |Resource groep RGtoLock|Resourcegroep|Locatie|VS - west 2|Hiermee definieert u de locatie van de nieuwe resource groep waarop blauw drukken moet worden toegepast.|
      |StorageAccount|Resource Manager-sjabloon|storageAccountType (StorageAccount)|Standard_GRS|De opslag-SKU. De standaard waarde is _Standard_LRS_.|
 
 1. Nadat u alle para meters hebt ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** .

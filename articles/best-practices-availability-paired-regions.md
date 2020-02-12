@@ -31,7 +31,7 @@ Afbeelding 1: Azure-regionale paren
 | Azië |Azië - oost |Azië - zuidoost |
 | Australië |Australië - oost |Australië - zuidoost |
 | Australië |Australië - centraal |Australië - centraal 2 |
-| Brazilië |Brazilië - zuid |US - zuid-centraal |
+| Brazilië |Brazilië - zuid |VS - zuid-centraal |
 | Canada |Canada - centraal |Canada - oost |
 | China |China - noord |China East|
 | China |China - noord 2 |China - oost 2|
@@ -42,14 +42,14 @@ Afbeelding 1: Azure-regionale paren
 | India |India - west |India - zuid |
 | Japan |Japan - Oost |Japan - west |
 | Korea |Korea - centraal |Korea - zuid |
-| Noord-Amerika |VS - oost |US - west |
-| Noord-Amerika |US - oost 2 |US - centraal |
-| Noord-Amerika |US - noord-centraal |US - zuid-centraal |
-| Noord-Amerika |US - west 2 |US - west-centraal 
+| Noord-Amerika |VS - oost |VS - west |
+| Noord-Amerika |VS - oost 2 |VS - centraal |
+| Noord-Amerika |VS - noord-centraal |VS - zuid-centraal |
+| Noord-Amerika |VS - west 2 |VS - west-centraal 
 | Zuid-Afrika | Zuid-Afrika - noord | Zuid-Afrika - west
 | VK |Verenigd Koninkrijk West |UK - zuid |
 | Verenigde Arabische Emiraten | VAE - noord | VAE - centraal
-| Amerikaans Ministerie van defensie |US DoD - oost |US DoD - centraal |
+| Amerikaans Ministerie van defensie |US DoD East |US DoD Central |
 | Amerikaanse overheid |VS (overheid) - Arizona |VS (overheid) - Texas |
 | Amerikaanse overheid |US Gov - Iowa |VS (overheid) - Virginia |
 | Amerikaanse overheid |VS (overheid) - Virginia |VS (overheid) - Texas |

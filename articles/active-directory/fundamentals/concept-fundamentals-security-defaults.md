@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb6170aa54c286a5a2d8353c1dd951859fdf8a0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 023a52f373844e026de0e588e9cd46323abdcf34
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024582"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149827"
 ---
 # <a name="what-are-security-defaults"></a>Wat zijn de standaard beveiligings instellingen?
 
@@ -47,13 +47,13 @@ Gebruikers met toegang tot geprivilegieerde accounts hebben meer toegang tot uw 
 
 Nadat de registratie bij Multi-Factor Authentication is voltooid, moeten de volgende negen Azure AD-beheerders rollen extra authenticatie uitvoeren elke keer dat ze zich aanmelden:
 
-- Globale beheerder
+- Algemeen beheerder
 - SharePoint-beheerder
 - Exchange-beheerder
 - Beheerder van voorwaardelijke toegang
 - Beveiligingsbeheerder
 - Helpdesk beheerder of wachtwoord beheerder
-- Factureringsbeheerder
+- Financieel medewerker
 - Gebruikers beheerder
 - Verificatie beheerder
 
@@ -74,7 +74,7 @@ Azure AD biedt ondersteuning voor diverse verificatie protocollen, waaronder ver
 
 De meeste pogingen om zich aan te melden, zijn van verouderde verificatie. Verouderde verificatie biedt geen ondersteuning voor Multi-Factor Authentication. Zelfs als er een Multi-Factor Authentication beleid is ingeschakeld in uw directory, kan een aanvaller zich verifiëren met behulp van een ouder protocol en Multi-Factor Authentication overs Laan. 
 
-Nadat de standaard instellingen voor beveiliging zijn ingeschakeld in uw Tenant, worden alle verificatie aanvragen die door een ouder protocol worden uitgevoerd, geblokkeerd. Standaard instellingen voor beveiliging blok keren Exchange ActiveSync niet.
+Nadat de standaard instellingen voor beveiliging zijn ingeschakeld in uw Tenant, worden alle verificatie aanvragen die door een ouder protocol worden uitgevoerd, geblokkeerd. Standaard instellingen voor beveiliging blokkeert Exchange Active Sync basis verificatie.
 
 > [!WARNING]
 > Voordat u standaard instellingen voor beveiliging inschakelt, moet u ervoor zorgen dat uw beheerders geen oudere verificatie protocollen gebruiken. Zie voor meer informatie [hoe u de verouderde verificatie verlaat](concept-fundamentals-block-legacy-authentication.md).
@@ -83,9 +83,9 @@ Nadat de standaard instellingen voor beveiliging zijn ingeschakeld in uw Tenant,
 
 Organisaties gebruiken verschillende Azure-Services die worden beheerd via de Azure Resource Manager-API, waaronder:
 
-- Azure Portal 
+- Azure-portal 
 - Azure PowerShell 
-- Azure-CLI
+- Azure CLI
 
 Het gebruik van Azure Resource Manager voor het beheren van uw services is een zeer geprivilegieerde actie. Azure Resource Manager kunt de configuratie van de Tenant breed wijzigen, zoals service-instellingen en abonnements facturering. Verificatie met één factor is kwetsbaar voor diverse aanvallen zoals phishing en wachtwoord spray. 
 
@@ -104,7 +104,7 @@ De pre-2017 Exchange Online-tenants hebben moderne verificatie standaard uitgesc
 
 De volgende aanvullende overwegingen zijn gerelateerd aan de implementatie van de standaard instellingen voor de beveiliging van uw Tenant.
 
-### <a name="authentication-methods"></a>Authenticatiemethoden
+### <a name="authentication-methods"></a>Verificatiemethoden
 
 Met de standaard instellingen voor beveiliging kunt u de registratie en het gebruik van Azure Multi-Factor Authentication toestaan met behulp van **de Microsoft Authenticator app**. Voorwaardelijke toegang staat het gebruik toe van elke verificatie methode die de beheerder inschakelt.
 
@@ -114,7 +114,7 @@ Met de standaard instellingen voor beveiliging kunt u de registratie en het gebr
 | Verificatie code van de mobiele app of het hardware-token |   | X |
 | SMS-bericht naar telefoon |   | X |
 | Bellen naar telefoon |   | X |
-| App-wachtwoorden |   | X * * |
+| App-wacht woorden |   | X * * |
 
 \* * App-wacht woorden zijn alleen beschikbaar in MFA per gebruiker met verouderde verificatie scenario's als deze zijn ingeschakeld door beheerders.
 

@@ -109,29 +109,29 @@ Voor bedrijfs continuïteit en herstel na nood gevallen (BCDR) kunt u uw Azure-b
 |--------|--------|----------------------|---------------|---------------|
 | Public |Australië - oost | https:\/-kailani-aue.one.microsoft.com | Australië - zuidoost | https:\/-tm-kailani-aue.one.microsoft.com |
 | Public |Australië - zuidoost | https:\/-kailani-aus.one.microsoft.com | Australië - oost | https:\/-tm-kailani-aus.one.microsoft.com |
-| Public | Brazilië - Zuid | https:\//brazilsouth01.afs.azure.net | US - zuid-centraal | https:\/-tm-brazilsouth01.afs.azure.net |
+| Public | Brazilië - Zuid | https:\//brazilsouth01.afs.azure.net | VS - zuid-centraal | https:\/-tm-brazilsouth01.afs.azure.net |
 | Public | Canada-Midden | https:\/-kailani-cac.one.microsoft.com | Canada-Oost | https:\/-tm-kailani-cac.one.microsoft.com |
 | Public | Canada-Oost | https:\/-kailani-cae.one.microsoft.com | Canada-Midden | https:\/-tm-kailani.cae.one.microsoft.com |
 | Public | India - centraal | https:\/-kailani-cin.one.microsoft.com | India - zuid | https:\/-tm-kailani-cin.one.microsoft.com |
-| Public | US - centraal | https:\/-kailani-cus.one.microsoft.com | VS - oost 2 | https:\/-tm-kailani-cus.one.microsoft.com |
+| Public | VS - centraal | https:\/-kailani-cus.one.microsoft.com | VS - oost 2 | https:\/-tm-kailani-cus.one.microsoft.com |
 | Public | Azië - oost | https:\//kailani11.one.microsoft.com | Azië - zuidoost | https:\/-tm-kailani11.one.microsoft.com |
-| Public | VS - oost | https:\//kailani1.one.microsoft.com | US - west | https:\/-tm-kailani1.one.microsoft.com |
-| Public | VS - oost 2 | https:\/-kailani-ess.one.microsoft.com | US - centraal | https:\/-tm-kailani-ess.one.microsoft.com |
+| Public | VS - oost | https:\//kailani1.one.microsoft.com | VS - west | https:\/-tm-kailani1.one.microsoft.com |
+| Public | VS - oost 2 | https:\/-kailani-ess.one.microsoft.com | VS - centraal | https:\/-tm-kailani-ess.one.microsoft.com |
 | Public | Japan - Oost | https:\/-japaneast01.afs.azure.net | Japan - West | https:\/-tm-japaneast01.afs.azure.net |
 | Public | Japan - West | https:\/-japanwest01.afs.azure.net | Japan - Oost | https:\/-tm-japanwest01.afs.azure.net |
 | Public | Korea - centraal | https:\/-koreacentral01.afs.azure.net/ | Korea - zuid | https:\/-tm-koreacentral01.afs.azure.net/ |
 | Public | Korea - zuid | https:\//koreasouth01.afs.azure.net/ | Korea - centraal | https:\//tm-koreasouth01.afs.azure.net/ |
-| Public | US - noord-centraal | https:\/-northcentralus01.afs.azure.net | US - zuid-centraal | https:\/-tm-northcentralus01.afs.azure.net |
+| Public | VS - noord-centraal | https:\/-northcentralus01.afs.azure.net | VS - zuid-centraal | https:\/-tm-northcentralus01.afs.azure.net |
 | Public | Europa - noord | https:\/-kailani7.one.microsoft.com | Europa - west | https:\/-tm-kailani7.one.microsoft.com |
-| Public | US - zuid-centraal | https:\/-southcentralus01.afs.azure.net | US - noord-centraal | https:\/-tm-southcentralus01.afs.azure.net |
+| Public | VS - zuid-centraal | https:\/-southcentralus01.afs.azure.net | VS - noord-centraal | https:\/-tm-southcentralus01.afs.azure.net |
 | Public | India - zuid | https:\/-kailani-sin.one.microsoft.com | India - centraal | https:\/-tm-kailani-sin.one.microsoft.com |
 | Public | Azië - zuidoost | https:\/-kailani10.one.microsoft.com | Azië - oost | https:\/-tm-kailani10.one.microsoft.com |
 | Public | UK - zuid | https:\/-kailani-uks.one.microsoft.com | UK - west | https:\/-tm-kailani-uks.one.microsoft.com |
 | Public | UK - west | https:\/-kailani-ukw.one.microsoft.com | UK - zuid | https:\/-tm-kailani-ukw.one.microsoft.com |
-| Public | US - west-centraal | https:\/-westcentralus01.afs.azure.net | US - west 2 | https:\/-tm-westcentralus01.afs.azure.net |
+| Public | VS - west-centraal | https:\/-westcentralus01.afs.azure.net | VS - west 2 | https:\/-tm-westcentralus01.afs.azure.net |
 | Public | Europa - west | https:\//kailani6.one.microsoft.com | Europa - noord | https:\/-tm-kailani6.one.microsoft.com |
-| Public | US - west | https:\//kailani.one.microsoft.com | VS - oost | https:\/-tm-kailani.one.microsoft.com |
-| Public | US - west 2 | https:\/-westus201.afs.azure.net | US - west-centraal | https:\//tm-westus201.afs.azure.net |
+| Public | VS - west | https:\//kailani.one.microsoft.com | VS - oost | https:\/-tm-kailani.one.microsoft.com |
+| Public | VS - west 2 | https:\/-westus201.afs.azure.net | VS - west-centraal | https:\//tm-westus201.afs.azure.net |
 | Overheid | US Gov - Arizona | https:\/-usgovarizona01.afs.azure.us | US Gov - Texas | https:\/-tm-usgovarizona01.afs.azure.us |
 | Overheid | US Gov - Texas | https:\//usgovtexas01.afs.azure.us | US Gov - Arizona | https:\//tm-usgovtexas01.afs.azure.us |
 

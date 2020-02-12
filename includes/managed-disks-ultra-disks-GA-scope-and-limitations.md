@@ -20,7 +20,7 @@ Voor nu hebben Ultra disks de volgende beperkingen:
 - Worden ondersteund in de volgende regio's, met een verschillend aantal beschikbaarheids zones per regio:
     - VS - oost 2
     - VS - oost
-    - US - west 2
+    - VS - west 2
     - Zuidoost-Azië
     - Europa - noord
     - Europa - west

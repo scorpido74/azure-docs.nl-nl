@@ -33,7 +33,7 @@ Data Catalog is ontworpen voor technische en niet-technische gebruikers, waarond
 ## <a name="what-is-its-availability-by-region"></a>Wat is de beschik baarheid per regio?
 Data Catalog Services zijn momenteel beschikbaar in de volgende data centers:
 
-* US - west
+* VS - west
 * VS - oost
 * Europa - west
 * Europa - noord

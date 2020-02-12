@@ -116,7 +116,7 @@ Stel een Azure Migrate project in en voeg vervolgens het hulp programma voor mig
     --- | ---
     Azië | Azië - zuidoost
     Europa | Europa - noord of Europa - west
-    Verenigde Staten | US - oost of US - west-centraal
+    Verenigde Staten | VS - oost of VS - west-centraal
 
     De opgegeven geografie voor het project wordt alleen gebruikt om de metagegevens op te slaan die zijn verzameld van on-premises virtuele machines. U kunt een wille keurige doel regio voor de daad werkelijke migratie selecteren.
 8. Selecteer in **hulp programma voor beoordeling selecteren** **de optie overs Laan een evaluatie hulpmiddel voor nu toevoegen** > **volgende**.

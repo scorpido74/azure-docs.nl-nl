@@ -10,7 +10,7 @@ ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: ca24cbdd9541456cbaa3f384587fee17d47f5ca2
 ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/10/2020
 ms.locfileid: "75864108"
@@ -76,7 +76,7 @@ In de volgende tabel ziet u een voor beeld van hoe u uw VNets definieert. Gebrui
 | Virtual Network | Adresruimte | Regio | Maakt verbinding met de lokale netwerk site |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |VS - oost |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
-| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |US - west |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
+| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |VS - west |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 ## <a name="vnetvalues"></a>Stap 2: de virtuele netwerken maken
 
@@ -98,7 +98,7 @@ Adres ruimte: 10.11.0.0/16, 10.12.0.0/16 (optioneel)<br>
 Subnetnaam: standaard<br>
 Adres bereik van subnet: 10.11.0.1/24<br>
 Resource groep: ClassicRG<br>
-Locatie: US - oost<br>
+Locatie: VS - oost<br>
 GatewaySubnet: 10.11.1.0/27
 
 **Waarden voor TestVNet4**
@@ -108,7 +108,7 @@ Adres ruimte: 10.41.0.0/16, 10.42.0.0/16 (optioneel)<br>
 Subnetnaam: standaard<br>
 Adres bereik van subnet: 10.41.0.1/24<br>
 Resource groep: ClassicRG<br>
-Locatie: US - west<br>
+Locatie: VS - west<br>
 GatewaySubnet: 10.41.1.0/27
 
 **Houd bij het maken van uw VNets de volgende instellingen in acht:**
@@ -138,7 +138,7 @@ De lokale site voor elk VNet is het andere VNet. De volgende voorbeeld waarden w
 | Virtual Network | Adresruimte | Regio | Maakt verbinding met de lokale netwerk site |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |VS - oost |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
-| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |US - west |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
+| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |VS - west |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 1. Zoek TestVNet1 in de Azure Portal. Klik in de sectie **VPN-verbindingen** van de pagina op **Gateway**.
 

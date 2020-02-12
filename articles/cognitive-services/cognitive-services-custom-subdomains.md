@@ -74,24 +74,24 @@ Ja. Dit is een lijst met regionale eind punten die u kunt gebruiken met Azure Co
 | | Australië - oost | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Brazilië - zuid | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Canada - midden | `https://canadacentral.api.cognitive.microsoft.com` |
-| | US - centraal | `https://centralus.api.cognitive.microsoft.com` |
+| | VS - centraal | `https://centralus.api.cognitive.microsoft.com` |
 | | Azië - oost | `https://eastasia.api.cognitive.microsoft.com` |
-| | US - oost | `https://eastus.api.cognitive.microsoft.com` |
-| | US - oost 2 | `https://eastus2.api.cognitive.microsoft.com` |
+| | VS - oost | `https://eastus.api.cognitive.microsoft.com` |
+| | VS - oost 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | Frankrijk - centraal | `https://francecentral.api.cognitive.microsoft.com` |
 | | India - centraal | `https://centralindia.api.cognitive.microsoft.com` |
 | | Japan - oost | `https://japaneast.api.cognitive.microsoft.com` |
 | | Korea - centraal | `https://koreacentral.api.cognitive.microsoft.com` |
-| | US - noord-centraal | `https://northcentralus.api.cognitive.microsoft.com` |
+| | VS - noord-centraal | `https://northcentralus.api.cognitive.microsoft.com` |
 | | Europa - noord | `https://northeurope.api.cognitive.microsoft.com` |
 | | Zuid-Afrika - noord | `https://southafricanorth.api.cognitive.microsoft.com` |
-| | US - zuid-centraal | `https://southcentralus.api.cognitive.microsoft.com` |
+| | VS - zuid-centraal | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Azië - zuidoost | `https://southeastasia.api.cognitive.microsoft.com` |
 | | UK - zuid | `https://uksouth.api.cognitive.microsoft.com` |
-| | US - west-centraal | `https://westcentralus.api.cognitive.microsoft.com` |
+| | VS - west-centraal | `https://westcentralus.api.cognitive.microsoft.com` |
 | | Europa -west | `https://westeurope.api.cognitive.microsoft.com` |
-| | US - west | `https://westus.api.cognitive.microsoft.com` |
-| | US - west 2 | `https://westus2.api.cognitive.microsoft.com` |
+| | VS - west | `https://westus.api.cognitive.microsoft.com` |
+| | VS - west 2 | `https://westus2.api.cognitive.microsoft.com` |
 | US Gov | VS (overheid) - Virginia | `https://virginia.api.cognitive.microsoft.us` |
 | China | China - oost 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | China - noord | `https://chinanorth.api.cognitive.azure.cn` |

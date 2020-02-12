@@ -198,14 +198,14 @@ De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor
 |-----------------|-------------------------|---------------|
 | Open bare Azure| VS Zuid-Centraal (wereld wijd)| 104.214.19.224|
 | Open bare Azure| VS Noord-Centraal (wereld wijd)| 52.162.110.80|
-| Open bare Azure| US - west-centraal| 52.253.135.58|
+| Open bare Azure| VS - west-centraal| 52.253.135.58|
 | Open bare Azure| Korea - centraal| 40.82.157.167|
 | Open bare Azure| Verenigd Koninkrijk West| 51.137.136.0|
 | Open bare Azure| Japan - west| 40.81.185.8|
-| Open bare Azure| US - noord-centraal| 40.81.47.216|
+| Open bare Azure| VS - noord-centraal| 40.81.47.216|
 | Open bare Azure| Verenigd Koninkrijk Zuid| 51.145.56.125|
 | Open bare Azure| India - west| 40.81.89.24|
-| Open bare Azure| US - oost| 52.224.186.99|
+| Open bare Azure| VS - oost| 52.224.186.99|
 | Open bare Azure| Europa -west| 51.145.179.78|
 | Open bare Azure| Japan - oost| 52.140.238.179|
 | Open bare Azure| Frankrijk - centraal| 40.66.60.111|
@@ -217,17 +217,17 @@ De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor
 | Open bare Azure| Canada - midden| 52.139.20.34|
 | Open bare Azure| Korea - zuid| 40.80.232.185|
 | Open bare Azure| India - centraal| 13.71.49.1|
-| Open bare Azure| US - west| 13.64.39.16|
+| Open bare Azure| VS - west| 13.64.39.16|
 | Open bare Azure| Australië - zuidoost| 20.40.160.107|
 | Open bare Azure| Australië - centraal| 20.37.52.67|
 | Open bare Azure| India - zuid| 20.44.33.246|
-| Open bare Azure| US - centraal| 13.86.102.66|
+| Open bare Azure| VS - centraal| 13.86.102.66|
 | Open bare Azure| Australië - oost| 20.40.125.155|
-| Open bare Azure| US - west 2| 51.143.127.203|
+| Open bare Azure| VS - west 2| 51.143.127.203|
 | Open bare Azure| VS-Oost 2 EUAP| 52.253.229.253|
 | Open bare Azure| Centrale VS-EUAP| 52.253.159.160|
-| Open bare Azure| US - zuid-centraal| 20.188.77.119|
-| Open bare Azure| US - oost 2| 20.44.72.3|
+| Open bare Azure| VS - zuid-centraal| 20.188.77.119|
+| Open bare Azure| VS - oost 2| 20.44.72.3|
 | Open bare Azure| Europa - noord| 52.142.95.35|
 | Open bare Azure| Azië - oost| 52.139.152.27|
 | Open bare Azure| Frankrijk - zuid| 20.39.80.2|

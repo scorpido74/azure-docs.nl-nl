@@ -4,16 +4,16 @@ description: Maak test certificaten en leer hoe u deze kunt installeren op een A
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/03/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cf073572cd5b371ec484c99f14cbefb4cba75ce7
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fe46e968aa2dcebaa483cd38fd2e050ccfe43054
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509900"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149895"
 ---
 # <a name="install-production-certificates-on-an-iot-edge-device"></a>Productie certificaten op een IoT Edge apparaat installeren
 
@@ -89,6 +89,12 @@ Als u bijvoorbeeld de voorbeeld scripts hebt gebruikt om [demo certificaten te m
       ```
 
 4. Controleer op Linux-apparaten of de gebruiker **iotedge** Lees machtigingen heeft voor de directory die de certificaten bevat.
+
+5. Als u eerder andere certificaten voor IoT Edge op het apparaat hebt gebruikt, verwijdert u de bestanden in de volgende twee directory's voordat u IoT Edge start of opnieuw opstart:
+
+   * Windows: `C:\ProgramData\iotedge\hsm\certs` en `C:\ProgramData\iotedge\hsm\cert_keys`
+
+   * Linux: `/var/lib/iotedge/hsm/certs` en `/var/lib/iotedge/hsm/cert_keys`
 
 ## <a name="next-steps"></a>Volgende stappen
 

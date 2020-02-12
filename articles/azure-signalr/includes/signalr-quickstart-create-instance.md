@@ -31,7 +31,7 @@ Uw toepassing maakt verbinding met een SignalR-Service-exemplaar in Azure.
     | **Resourcenaam** | Wereldwijd unieke naam | Naam ter identificatie van uw nieuwe SignalR Service-exemplaar. Geldige tekens zijn `a-z`, `0-9` en `-`.  | 
     | **Abonnement** | Uw abonnement | Het abonnement waarin dit nieuwe SignalR Service-exemplaar is gemaakt. | 
     | **[Resourcegroep](../../azure-resource-manager/management/overview.md)** |  myResourceGroup | Naam voor de nieuwe resourcegroep waarin het SignalR Service-exemplaar moet worden gemaakt. | 
-    | **Locatie** | US - west | Kies een [regio](https://azure.microsoft.com/regions/) bij u in de buurt. |
+    | **Locatie** | VS - west | Kies een [regio](https://azure.microsoft.com/regions/) bij u in de buurt. |
     | **Prijscategorie** | Gratis | Probeer Azure SignalR Service gratis uit. |
     | **Aantal eenheden** |  Niet van toepassing | Het aantal eenheden geeft aan hoeveel verbindingen uw SignalR Service-exemplaar kan accepteren. Dit kan alleen worden geconfigureerd in de Standard-laag. |
     | **Service modus** |  Serverless | Voor gebruik met Azure Functions of REST API. |

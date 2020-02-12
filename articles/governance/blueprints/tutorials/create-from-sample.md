@@ -101,10 +101,10 @@ Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan dez
      |Artefact naam|Type artefact|Parameternaam|Waarde|Beschrijving|
      |-|-|-|-|-|
      |Resource groep ProdRG|Resourcegroep|Naam|ProductionRG|Hiermee definieert u de naam van de eerste resource groep.|
-     |Resource groep ProdRG|Resourcegroep|Locatie|US - west 2|Hiermee stelt u de locatie van de eerste resource groep.|
+     |Resource groep ProdRG|Resourcegroep|Locatie|VS - west 2|Hiermee stelt u de locatie van de eerste resource groep.|
      |Inzender|Nieuwe roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee definieert u welke gebruiker of groep de rol van _Inzender_ toewijzing moet verlenen binnen de eerste resource groep.|
      |Resource groep PreProdRG|Resourcegroep|Naam|PreProductionRG|Hiermee definieert u de naam van de tweede resource groep.|
-     |Resource groep PreProdRG|Resourcegroep|Locatie|US - west|Hiermee stelt u de locatie van de tweede resource groep in.|
+     |Resource groep PreProdRG|Resourcegroep|Locatie|VS - west|Hiermee stelt u de locatie van de tweede resource groep in.|
      |Eigenaar|Nieuwe roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee definieert u welke gebruiker of groep de roltoewijzing van de _eigenaar_ binnen de tweede resource groep moet verlenen.|
      |Lezers|Nieuwe roltoewijzing|Gebruiker of groep|{Uw ID}|Hiermee definieert u welke gebruiker of groep de roltoewijzing van _lezers_ moet verlenen in de tweede resource groep.|
 

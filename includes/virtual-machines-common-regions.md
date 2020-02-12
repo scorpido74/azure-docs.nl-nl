@@ -44,7 +44,7 @@ Voorbeelden van regioparen zijn:
 
 | Primair | Secundair |
 |:--- |:--- |
-| US - west |VS - oost |
+| VS - west |VS - oost |
 | Europa - noord |Europa - west |
 | Azië - zuidoost |Azië - oost |
 

@@ -96,12 +96,12 @@ Wanneer zowel de bron-als de Sink-gegevens opslag zich in de cloud bevinden, geb
 |:--- |:--- |:--- |
 | Verenigde Staten | VS - oost | VS - oost |
 | &nbsp; | VS - oost 2 | VS - oost 2 |
-| &nbsp; | US - centraal | US - centraal |
-| &nbsp; | US - noord-centraal | US - noord-centraal |
-| &nbsp; | US - zuid-centraal | US - zuid-centraal |
-| &nbsp; | US - west-centraal | US - west-centraal |
-| &nbsp; | US - west | US - west |
-| &nbsp; | US - west 2 | US - west 2 |
+| &nbsp; | VS - centraal | VS - centraal |
+| &nbsp; | VS - noord-centraal | VS - noord-centraal |
+| &nbsp; | VS - zuid-centraal | VS - zuid-centraal |
+| &nbsp; | VS - west-centraal | VS - west-centraal |
+| &nbsp; | VS - west | VS - west |
+| &nbsp; | VS - west 2 | VS - west 2 |
 | Canada | Canada-Oost | Canada-Midden |
 | &nbsp; | Canada-Midden | Canada-Midden |
 | Brazilië | Brazilië - Zuid | Brazilië - Zuid |

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: c26c4c47cb17acf88bc545af3a1fc979138d56b1
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 5e64cb2db2bd16a881334779a1c6f1ef19296da2
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951731"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152020"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuele netwerken van verschillende implementatie modellen verbinden met behulp van de portal
 
@@ -30,7 +30,7 @@ Als u nog geen virtuele netwerk gateway hebt en u deze niet wilt maken, kunt u i
 
 ### <a name="before"></a>Voordat u begint
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 * Bij deze stappen wordt ervan uitgegaan dat beide VNets al zijn gemaakt. Als u dit artikel als een oefening gebruikt en niet over VNets beschikt, zijn er koppelingen in de stappen die u kunt gebruiken om ze te maken.
 * Controleer of de adresbereiken voor de VNets elkaar niet overlappen of elkaar overlappen met een van de bereiken voor andere verbindingen waarmee de gateways kunnen worden verbonden.
@@ -75,10 +75,10 @@ Voor deze configuratie maakt u een VPN-gateway verbinding via een IPsec/IKE VPN-
 
 In de volgende tabel ziet u een voor beeld van hoe het voor beeld-VNets en de lokale sites worden gedefinieerd:
 
-| Virtueel netwerk | Adresruimte | Regio | Maakt verbinding met de lokale netwerk site |
+| Virtueel netwerk | Adres ruimte | Regio | Maakt verbinding met de lokale netwerk site |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |US - west | RMVNetLocal (192.168.0.0/16) |
-| RMVNet | (192.168.0.0/16) |VS - oost |ClassicVNetLocal (10.0.0.0/24) |
+| RMVNet | (192.168.0.0/16) |US - oost |ClassicVNetLocal (10.0.0.0/24) |
 
 ## <a name="classicvnet"></a>Sectie 1: de klassieke VNet-instellingen configureren
 
@@ -100,7 +100,7 @@ Als u al een VNet met een VPN-gateway hebt, controleert u of de gateway dynamisc
 
 1. Ga naar **alle resources** en zoek de **ClassicVNet** in de lijst.
 2. Klik in de sectie **instellingen** van het menu op **Gateway** en klik vervolgens op de banner om een gateway te maken.
-  ![Een VPN-gateway configureren](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "Ceen VPN-gateway onfigureren ")
+  ![Een VPN-gateway configureren](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "Een VPN-gateway configureren")
 3. Selecteer op de pagina **nieuwe VPN-verbinding** bij **verbindings type**de optie **site-naar-site**.
 4. Klik voor **lokale site**op **vereiste instellingen configureren**. Hiermee opent u de pagina **lokale site** .
 5. Maak op de pagina **lokale site** een naam om te verwijzen naar het Resource Manager VNet. Bijvoorbeeld ' RMVNetLocal '.
@@ -170,10 +170,10 @@ In deze stap maakt u de virtuele netwerkgateway VNet. Het maken van een gateway 
 
 **Voorbeeld waarden:** Lokale netwerk gateway = ClassicVNetLocal
 
-| Virtueel netwerk | Adresruimte | Regio | Maakt verbinding met de lokale netwerk site |Openbaar IP-adres van Gateway|
+| Virtueel netwerk | Adres ruimte | Regio | Maakt verbinding met de lokale netwerk site |Openbaar IP-adres van Gateway|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |US - west | RMVNetLocal (192.168.0.0/16) |Het open bare IP-adres dat is toegewezen aan de ClassicVNet-gateway|
-| RMVNet | (192.168.0.0/16) |VS - oost |ClassicVNetLocal (10.0.0.0/24) |Het open bare IP-adres dat is toegewezen aan de RMVNet-gateway.|
+| RMVNet | (192.168.0.0/16) |US - oost |ClassicVNetLocal (10.0.0.0/24) |Het open bare IP-adres dat is toegewezen aan de RMVNet-gateway.|
 
 De lokale netwerk gateway geeft het adres bereik en het open bare IP-adres aan dat is gekoppeld aan uw klassieke VNet en de gateway van het virtuele netwerk. Als u deze stappen uitvoert als oefening, raadpleegt u de voorbeeld waarden.
 

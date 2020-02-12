@@ -29,9 +29,9 @@ Als u een opslag account wilt maken dat afhankelijk is van de account versleutel
 
 U kunt een opslag account maken dat afhankelijk is van de account versleutelings sleutel voor wachtrij-en tabel opslag in de volgende regio's:
 
-- US - oost
-- US - zuid-centraal
-- US - west 2  
+- VS - oost
+- VS - zuid-centraal
+- VS - west 2  
 
 ### <a name="register-to-use-the-account-encryption-key"></a>Registreren voor het gebruik van de account versleutelings sleutel
 

@@ -49,7 +49,7 @@ Gebruik de Azure CLI om een resource groep te maken en vervolgens een IoT-hub to
    ```
 
    > [!TIP]
-   > In het voorbeeld wordt de resourcegroep gemaakt in de locatie US - west. U kunt een lijst met beschik bare locaties weer geven door de volgende opdracht uit te voeren: 
+   > In het voorbeeld wordt de resourcegroep gemaakt in de locatie VS - west. U kunt een lijst met beschik bare locaties weer geven door de volgende opdracht uit te voeren: 
    >
    >``` bash
    >az account list-locations -o table

@@ -24,7 +24,7 @@ ms.locfileid: "74806640"
 
 SAP HANA op Azure (grote exemplaren) service op basis van revisie 3 stem pels is beschikbaar in verschillende configuraties in de Azure-regio's van:
 
-- US - west
+- VS - west
 - VS - oost
 - Australië - oost
 - Australië - zuidoost
@@ -35,9 +35,9 @@ SAP HANA op Azure (grote exemplaren) service op basis van revisie 3 stem pels is
 
 SAP HANA op Azure (grote exemplaren) service op basis van revisie 4 stem pels is beschikbaar in verschillende configuraties in de Azure-regio's van:
 
-- US - west 2
+- VS - west 2
 - VS - oost
-- US - zuid-centraal
+- VS - zuid-centraal
 - Europa - west
 - Europa - noord
 

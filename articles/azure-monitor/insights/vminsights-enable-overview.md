@@ -36,14 +36,14 @@ Voordat u begint, zorg ervoor dat u weet dat de informatie in de volgende sectie
 
 Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende regio's:
 
-- US - west-centraal
-- US - west
-- US - west 2
-- US - zuid-centraal
+- VS - west-centraal
+- VS - west
+- VS - west 2
+- VS - zuid-centraal
 - VS - oost
 - VS - oost2
-- US - centraal
-- US - noord-centraal
+- VS - centraal
+- VS - noord-centraal
 - Canada-Midden
 - UK - zuid
 - Europa - noord

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: b5d35fc14d69da2246c0ef5d4ef6d19a9e0c8462
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 74ede523c9747de4746fe1854bd1e352eba2f7e3
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750995"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148892"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor gegevens platform
 
@@ -38,7 +38,7 @@ Azure-resources genereren een aanzienlijke hoeveelheid bewakings gegevens. Azure
 
 Metrische gegevens in Azure Monitor worden opgeslagen in een Data Base met een tijd reeks die is geoptimaliseerd voor het analyseren van tijdgebonden data. Dit maakt metrische gegevens bijzonder geschikt voor waarschuwingen en snelle detectie van problemen. Ze kunnen u vertellen hoe uw systeem wordt uitgevoerd, maar normaal gesp roken moet worden gecombineerd met Logboeken om de hoofd oorzaak van problemen te identificeren.
 
-Metrische gegevens zijn beschikbaar voor interactieve analyse in de Azure Portal met [Metrics Explorer](../app/metrics-explorer.md). Ze kunnen worden toegevoegd aan een [Azure-dash board](../learn/tutorial-app-dashboards.md) voor visualisatie in combi natie met andere gegevens en worden gebruikt voor vrijwel real time- [waarschuwingen](alerts-metric.md).
+Metrische gegevens zijn beschikbaar voor interactieve analyse in de Azure Portal met [Azure Metrics Explorer](../platform/metrics-getting-started.md). Ze kunnen worden toegevoegd aan een [Azure-dash board](../learn/tutorial-app-dashboards.md) voor visualisatie in combi natie met andere gegevens en worden gebruikt voor vrijwel real time- [waarschuwingen](alerts-metric.md).
 
 Lees meer over de metrische gegevens van Azure Monitor, inclusief de brongegevens in [metrieken in azure monitor](data-platform-metrics.md).
 
@@ -83,7 +83,7 @@ Bekijk de [metrische gegevens in azure monitor](data-platform-metrics.md) en [me
 
 
 ## <a name="stream-data-to-external-systems"></a>Stream-gegevens met externe systemen
-Naast het gebruik van de hulpprogramma's in Azure voor het analyseren van gegevens, mogelijk hebt u een vereiste dit doorsturen naar een extern hulpprogramma, zoals een security information en event management (SIEM) product. Doorsturen van dit gebeurt meestal rechtstreeks vanuit de bewaakte resources via [Azure Event Hubs](/azure/event-hubs/). Sommige bronnen kunnen worden geconfigureerd om gegevens rechtstreeks naar een Event Hub te verzenden terwijl u een ander proces, zoals een logische app, kunt gebruiken om de vereiste gegevens op te halen. Zie [Azure monitoring-gegevens streamen naar een event hub voor gebruik door een extern hulp programma](stream-monitoring-data-event-hubs.md) voor meer informatie.
+Naast het gebruik van de hulpprogramma's in Azure voor het analyseren van gegevens, mogelijk hebt u een vereiste dit doorsturen naar een extern hulpprogramma, zoals een security information en event management (SIEM) product. Deze door sturing geschiedt doorgaans rechtstreeks vanuit bewaakte bronnen via [Azure Event hubs](/azure/event-hubs/). Sommige bronnen kunnen worden geconfigureerd om gegevens rechtstreeks naar een Event Hub te verzenden terwijl u een ander proces, zoals een logische app, kunt gebruiken om de vereiste gegevens op te halen. Zie [Azure monitoring-gegevens streamen naar een event hub voor gebruik door een extern hulp programma](stream-monitoring-data-event-hubs.md) voor meer informatie.
 
 
 
@@ -91,4 +91,4 @@ Naast het gebruik van de hulpprogramma's in Azure voor het analyseren van gegeve
 
 - Meer informatie over [metrische gegevens vindt u in azure monitor](data-platform-metrics.md).
 - Lees meer over de [Logboeken in azure monitor](data-platform-logs.md).
-- Meer informatie over de [bewakingsgegevens beschikbaar](data-sources.md) voor verschillende resources in Azure.
+- Meer informatie over de [beschik bare bewakings gegevens](data-sources.md) voor verschillende bronnen in Azure.

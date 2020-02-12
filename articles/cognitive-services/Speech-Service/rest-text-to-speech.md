@@ -46,7 +46,7 @@ Met het `voices/list`-eind punt kunt u een volledige lijst met stemmen voor een 
 | Australië - oost | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Brazilië - Zuid | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Canada-Midden | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| US - centraal | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| VS - centraal | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Azië - oost | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | VS - oost | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | VS - oost 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -54,14 +54,14 @@ Met het `voices/list`-eind punt kunt u een volledige lijst met stemmen voor een 
 | India - centraal | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Japan - Oost | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Korea - centraal | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| US - noord-centraal | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| VS - noord-centraal | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Europa - noord | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| US - zuid-centraal | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| VS - zuid-centraal | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Azië - zuidoost | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | UK - zuid | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Europa - west | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| US - west | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| US - west 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| VS - west | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| VS - west 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
 ### <a name="request-headers"></a>Aanvraagheaders
 

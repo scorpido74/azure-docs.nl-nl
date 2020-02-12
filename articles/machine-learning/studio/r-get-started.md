@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 81e232e37e437c4fa9d23a49a720b88511423905
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3972fb3c0717069f84b177c54e8fc002ec52f469
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427564"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152870"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Aan de slag met de programmeer taal R in Azure Machine Learning Studio (klassiek)
 
@@ -503,7 +503,7 @@ Voer deze code uit in uw experiment en controleer het resultaat van het uitvoer 
 
 *Afbeelding 11. Samen vatting van de data frame met twee kolommen verwijderd.*
 
-Goed nieuws! De verwachte resultaten worden opgehaald.
+Goed nieuws. De verwachte resultaten worden opgehaald.
 
 ### <a name="add-a-new-column"></a>Een nieuwe kolom toevoegen
 
@@ -756,7 +756,7 @@ Voer deze code uit en Bekijk wat er gebeurt. Het waarnemings punt dat is geprodu
 
 De relaties tussen deze variabelen hebben een enkele onevene structuur. Misschien is dit het gevolg van trends in de gegevens en van het feit dat we de variabelen niet hebben gestandaardiseerd.
 
-### <a name="correlation-analysis"></a>Correlatieanalyse
+### <a name="correlation-analysis"></a>Correlatie analyse
 
 Om correlatie-analyses uit te voeren, moeten zowel de trend worden genormaliseerd als de variabelen worden gestandaardiseerd. We kunnen gewoon de functie R `scale()` gebruiken, waarmee variabelen worden gecentreerd en geschaald. Deze functie kan sneller worden uitgevoerd. Ik wil echter een voor beeld zien van een verdedigings programma in R.
 

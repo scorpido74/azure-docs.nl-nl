@@ -110,11 +110,11 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | Canada-Midden | 40.82.188.208 |
 | Canada-Oost | 40.80.255.12 |
 | India - centraal | 40.81.249.251 |
-| US - centraal | 40.67.188.68 |
+| VS - centraal | 40.67.188.68 |
 | Centrale VS-EUAP | 40.89.56.69 |
 | Azië - oost | 20.189.74.103 |
 | VS - oost | 52.224.146.56 |
-| US - oost 2 | 52.232.230.201 |
+| VS - oost 2 | 52.232.230.201 |
 | Oost-VS2 EUAP | 52.253.226.110 |
 | Frankrijk - centraal | 40.66.57.91 |
 | Frankrijk - zuid | 40.82.236.24 |
@@ -122,20 +122,20 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | Japan - West | 40.81.184.86 |
 | Korea - centraal | 40.82.156.149 |
 | Korea - zuid | 40.80.234.9 |
-| US - noord-centraal | 40.81.45.254 |
+| VS - noord-centraal | 40.81.45.254 |
 | Europa - noord | 52.142.91.221 |
 | Zuid-Afrika - noord | 102.133.129.138 |
 | Zuid-Afrika - west | 102.133.0.97 |
-| US - zuid-centraal | 20.45.3.60 |
+| VS - zuid-centraal | 20.45.3.60 |
 | Azië - zuidoost | 40.119.203.252 |
 | India - zuid | 40.81.72.110 |
 | UK - zuid | 40.81.154.254 |
 | UK - west | 40.81.122.39 |
-| US - west-centraal | 52.159.55.120 |
+| VS - west-centraal | 52.159.55.120 |
 | Europa - west | 51.145.176.215 |
 | India - west | 40.81.88.112 |
-| US - west | 13.64.38.225 |
-| US - west 2 | 40.90.219.23 |
+| VS - west | 13.64.38.225 |
+| VS - west 2 | 40.90.219.23 |
 
 #### <a name="health-monitoring-addresses"></a>Adressen voor status controle
 
@@ -149,7 +149,7 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | Canada-Midden | 168.61.212.201 |
 | Canada-Oost | 168.61.212.201 |
 | India - centraal | 23.99.5.162 |
-| US - centraal | 168.61.212.201 |
+| VS - centraal | 168.61.212.201 |
 | Centrale VS-EUAP | 168.61.212.201 |
 | Azië - oost | 168.63.212.33 |
 | VS - oost | 137.116.81.189 |
@@ -161,20 +161,20 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | Japan - West | 138.91.19.129 |
 | Korea - centraal | 138.91.19.129 |
 | Korea - zuid | 138.91.19.129 |
-| US - noord-centraal | 23.96.212.108 |
+| VS - noord-centraal | 23.96.212.108 |
 | Europa - noord | 191.235.212.69 
 | Zuid-Afrika - noord | 104.211.224.189 |
 | Zuid-Afrika - west | 104.211.224.189 |
-| US - zuid-centraal | 23.98.145.105 |
+| VS - zuid-centraal | 23.98.145.105 |
 | India - zuid | 23.99.5.162 |
 | Azië - zuidoost | 168.63.173.234 |
 | UK - zuid | 23.97.212.5 |
 | UK - west | 23.97.212.5 |
-| US - west-centraal | 168.61.212.201 |
+| VS - west-centraal | 168.61.212.201 |
 | Europa - west | 23.97.212.5 |
 | India - west | 23.99.5.162 |
-| US - west | 23.99.5.162 |
-| US - west 2 | 23.99.5.162 | 
+| VS - west | 23.99.5.162 |
+| VS - west 2 | 23.99.5.162 | 
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Monitor configuratie-eindpunt adressen
 
@@ -209,7 +209,7 @@ Als u Azure Data Explorer cluster in uw subnet implementeert, kunt u gegevens ve
 | Zuidoost-Azië | 52.148.86.165 |
 | UK - zuid | 52.174.4.112 |
 | UK - west | 52.169.237.246 |
-| US - west-centraal | 52.161.31.69 |
+| VS - west-centraal | 52.161.31.69 |
 | Europa - west | 52.174.4.112 |
 | India-West | 13.71.25.187 |
 | VS-West | 40.78.70.148 |
