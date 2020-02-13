@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
-ms.openlocfilehash: bf07a165b6ea933719eb06b6625a91033030a120
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16e4a7e2f06d2630c970f8daa4428e7a184a79df
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895447"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163038"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Zelf studie: Azure Digital Apparaatdubbels preview implementeren en een ruimtelijke grafiek configureren
 
@@ -52,7 +52,7 @@ Maak een nieuw exemplaar van de Azure Digital Twins-service met behulp van de st
 
 ## <a name="grant-permissions-to-your-app"></a>Machtigingen verlenen aan uw app
 
-Digital Twins maakt gebruik van [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) voor het beheren van de [lees-/schrijftoegang](../active-directory/develop/v1-permissions-and-consent.md) tot de service. Elke toepassing die moet worden verbonden met uw exemplaar van Digital Twins, moet worden geregistreerd bij Azure AD. In de stappen in deze sectie wordt uitgelegd hoe u de voorbeeld-app registreert.
+Digital Twins maakt gebruik van [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) voor het beheren van de [lees-/schrijftoegang](../active-directory/develop/v2-permissions-and-consent.md) tot de service. Elke toepassing die moet worden verbonden met uw exemplaar van Digital Twins, moet worden geregistreerd bij Azure AD. In de stappen in deze sectie wordt uitgelegd hoe u de voorbeeld-app registreert.
 
 Als u al over een app-registratie beschikt, kunt u deze opnieuw gebruiken voor uw voorbeeld. Neem deze sectie echter wel door om te controleren of de registratie van uw app juist is geconfigureerd.
 
@@ -64,7 +64,7 @@ In deze sectie ziet u hoe een Azure Digital Twins-toepassing communiceert met de
 
 ### <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Als u de voorbeelden voor de [snelstart voor het vinden van beschikbare ruimten](quickstart-view-occupancy-dotnet.md) al hebt gedownload, kunt u deze stappen overslaan.
+Als u de voorbeelden voor de [quickstart om beschikbare ruimten te vinden](quickstart-view-occupancy-dotnet.md) al hebt gedownload, kunt u deze stappen overslaan.
 
 1. Download de [.NET-voorbeelden van Digital Twins](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip).
 2. Pak de inhoud van de gecomprimeerde map uit op uw computer.
@@ -149,7 +149,7 @@ Het bestand **provisionSample.yaml** bevat de volgende knooppunten:
 
 - **devices**: ruimten kunnen `devices` bevatten. Dat zijn fysieke of virtuele entiteiten waarmee een aantal sensoren wordt beheerd. Een apparaat kan bijvoorbeeld het telefoonnummer van een gebruiker zijn of een Raspberry Pi-sensorpod, een gateway, enzovoort. In het denkbeeldige gebouw uit het voorbeeld bevat de ruimte **Focus Room** bijvoorbeeld het apparaat **Raspberry Pi 3 A1**. Elk apparaatknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die is vastgelegd in het voorbeeld. Als u dit voorbeeld wilt configureren in een productieomgeving, moet u deze waarden vervangen door de waarden van uw installatie.  
 
-- **sensoren**: een apparaat kan meerdere `sensors` bevatten. Hiermee kunnen fysieke wijzigingen (bijvoorbeeld in temperatuur, beweging of accuniveau) worden gedetecteerd en vastgelegd. Elk sensor knooppunt wordt uniek geïdentificeerd door een `hardwareId`, dat u hier kunt opgeven. Voor een werkelijke toepassing moet u deze vervangen door de unieke id's van de sensoren in uw installatie. Het bestand provisionSample.yaml bevat twee sensoren: een bewegingssensor (*Motion*) en een CO2-sensor (*CarbonDioxide*). Voeg, onder de regels voor de CO2-sensor, de volgende regels toe om een temperatuursensor (*Temperature*) toe te voegen. Deze zijn opgenomen in provisionSample. yaml als commentaar-out-lijnen. U kunt er coderegels van maken door het teken `#` aan het begin van elke regel te verwijderen. 
+- **sensoren**: een apparaat kan meerdere `sensors` bevatten. Hiermee kunnen fysieke wijzigingen (bijvoorbeeld in temperatuur, beweging of accuniveau) worden gedetecteerd en vastgelegd. Elk sensorknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die hier is vastgelegd. Voor een werkelijke toepassing moet u deze vervangen door de unieke id's van de sensoren in uw installatie. Het bestand provisionSample.yaml bevat twee sensoren: een bewegingssensor (*Motion*) en een CO2-sensor (*CarbonDioxide*). Voeg, onder de regels voor de CO2-sensor, de volgende regels toe om een temperatuursensor (*Temperature*) toe te voegen. Deze zijn opgenomen in provisionSample. yaml als commentaar-out-lijnen. U kunt er coderegels van maken door het teken `#` aan het begin van elke regel te verwijderen. 
 
     ```yaml
             - dataType: Temperature

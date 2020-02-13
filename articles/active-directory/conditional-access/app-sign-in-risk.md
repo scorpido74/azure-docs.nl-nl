@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9338c1a42737180ec5395f30060b4eed35ce5eda
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: be447b001b0b2e14999aac98ba2125f8cbfe9853
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381075"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186617"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Quick Start: toegang blok keren wanneer er een sessie risico wordt gedetecteerd met Azure Active Directory voorwaardelijke toegang  
 
-Als u uw omgeving wilt beveiligen, wilt u mogelijk verdachte gebruikers blok keren om zich aan te melden. [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analyseert elke aanmelding en berekent de kans dat een aanmeldings poging niet is uitgevoerd door de rechtmatige eigenaar van een gebruikers account. De kans (laag, gemiddeld, hoog) wordt aangegeven in de vorm van een berekende waarde met de naam [aanmeldings risico niveaus](conditions.md#sign-in-risk). Door de aanmeldings risico voorwaarde in te stellen, kunt u een beleid voor voorwaardelijke toegang configureren om te reageren op specifieke risico niveaus.
+Als u uw omgeving wilt beveiligen, wilt u mogelijk verdachte gebruikers blok keren om zich aan te melden. [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analyseert elke aanmelding en berekent de kans dat een aanmeldings poging niet is uitgevoerd door de rechtmatige eigenaar van een gebruikers account. De kans (laag, gemiddeld, hoog) wordt aangegeven in de vorm van een berekende waarde met de naam [aanmeldings risico niveaus](concept-conditional-access-conditions.md#sign-in-risk). Door de aanmeldings risico voorwaarde in te stellen, kunt u een beleid voor voorwaardelijke toegang configureren om te reageren op specifieke risico niveaus.
 
 In deze Quick start ziet u hoe u een [beleid voor voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md) kunt configureren dat een aanmelding blokkeert wanneer een geconfigureerd risico niveau voor aanmelden is gedetecteerd.
 
@@ -143,7 +143,7 @@ Wanneer u het **hulp programma What if-beleid** uitvoert voor dit scenario, moet
 
 1. Klik op de pagina [voorwaardelijke toegang-beleids regels](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) in het menu aan de bovenkant op **What if**.  
 
-   ![What If](./media/app-sign-in-risk/14.png)
+   ![Wat als](./media/app-sign-in-risk/14.png)
 
 1. Klik op **gebruiker**, selecteer **Alan Charon** op de pagina **gebruikers** en klik vervolgens op **selecteren**.
 

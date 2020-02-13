@@ -9,18 +9,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bd20bb008c52b7d99416aed7a0599a6e78d2acf2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544154"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161644"
 ---
-# <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Voor beeld-Azure AD Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager
+# <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Azure AD Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager
 
 Azure Active Directory Domain Services (AD DS) ondersteunt eenmalige overstap voor klanten die momenteel gebruikmaken van het klassieke virtuele netwerk model naar het Resource Manager-model van het virtuele netwerk. Azure AD DS beheerde domeinen die gebruikmaken van het Resource Manager-implementatie model bieden extra functies, zoals een verfijnd wachtwoord beleid, audit logboeken en beveiliging tegen account vergrendeling.
 
-In dit artikel vindt u een overzicht van de voor delen en overwegingen voor migratie en vervolgens de vereiste stappen om een bestaand exemplaar van Azure AD DS te migreren. Deze migratie functie is momenteel beschikbaar als preview-versie.
+In dit artikel vindt u een overzicht van de voor delen en overwegingen voor migratie en vervolgens de vereiste stappen om een bestaand exemplaar van Azure AD DS te migreren.
 
 ## <a name="overview-of-the-migration-process"></a>Overzicht van het migratieproces
 
@@ -116,7 +116,7 @@ Azure AD DS maakt doorgaans gebruik van de eerste twee beschik bare IP-adressen 
 
 Bij het migratie proces moeten de domein controllers gedurende een bepaalde tijd offline zijn. Domein controllers zijn niet toegankelijk terwijl Azure AD DS worden gemigreerd naar het Resource Manager-implementatie model en het virtuele netwerk. Gemiddeld is de downtime ongeveer 1 tot 3 uur. Deze periode is van waaruit de domein controllers offline worden gezet naar het moment dat de eerste domein controller weer online is. Dit gemiddelde omvat niet de tijd die nodig is om de tweede domein controller te repliceren, of de tijd die het kan duren om aanvullende resources te migreren naar het Resource Manager-implementatie model.
 
-### <a name="account-lockout"></a>Accountvergrendeling
+### <a name="account-lockout"></a>Account vergrendeling
 
 In azure AD DS beheerde domeinen die worden uitgevoerd op klassieke virtuele netwerken, is het AD-account vergrendelings beleid niet aanwezig. Als Vm's worden blootgesteld aan Internet, kunnen aanvallers met behulp van wacht woord-spray methoden gebruiken om accounts te laten afdwingen. Er is geen account vergrendelings beleid om deze pogingen te stoppen. Voor Azure AD DS beheerde domeinen die gebruikmaken van het Resource Manager-implementatie model en virtuele netwerken, wordt het AD-account vergrendelings beleid beschermd tegen deze aanvallen met een wacht woord.
 
@@ -153,11 +153,11 @@ De migratie naar het Resource Manager-implementatie model en het virtuele netwer
 
 | Stap    | Uitgevoerd via  | Geschatte tijd  | Downtime  | Terugdraaien/herstellen? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [Stap 1: het nieuwe virtuele netwerk bijwerken en zoeken](#update-and-verify-virtual-network-settings) | Azure Portal | 15 minuten | Geen downtime vereist | N/A |
+| [Stap 1: het nieuwe virtuele netwerk bijwerken en zoeken](#update-and-verify-virtual-network-settings) | Azure-portal | 15 minuten | Geen downtime vereist | N.v.t. |
 | [Stap 2: het beheerde domein van Azure AD DS voorbereiden voor migratie](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 minuten op gemiddeld | De downtime van Azure AD DS begint nadat deze opdracht is voltooid. | Terugdraaien en herstellen beschikbaar. |
 | [Stap 3: het beheerde domein van Azure AD DS verplaatsen naar een bestaand virtueel netwerk](#migrate-the-managed-domain) | PowerShell | 1 – 3 uur gemiddeld | Er is één domein controller beschikbaar zodra deze opdracht is voltooid, de downtime wordt beëindigd. | Bij fouten zijn zowel terugdraaien (Self Service) als herstel beschikbaar. |
 | [Stap 4: testen en wachten op de replica domein controller](#test-and-verify-connectivity-after-the-migration)| Power shell en Azure Portal | 1 uur of langer, afhankelijk van het aantal tests | Beide domein controllers zijn beschikbaar en moeten normaal functioneren. | N.v.t. Zodra de eerste virtuele machine is gemigreerd, is er geen optie voor terugdraaien of herstellen. |
-| [Stap 5-optionele configuratie stappen](#optional-post-migration-configuration-steps) | Azure Portal en Vm's | N/A | Geen downtime vereist | N/A |
+| [Stap 5-optionele configuratie stappen](#optional-post-migration-configuration-steps) | Azure Portal en Vm's | N.v.t. | Geen downtime vereist | N.v.t. |
 
 > [!IMPORTANT]
 > Lees alle informatie over dit migratie artikel en richt lijnen voordat u het migratie proces start om extra uitval tijd te voor komen. Het migratie proces is van invloed op de beschik baarheid van de Azure AD DS domein controllers gedurende een bepaalde periode. Gebruikers, services en toepassingen kunnen niet bij het beheerde domein verifiëren tijdens het migratie proces.
@@ -294,7 +294,7 @@ Als dat nodig is, kunt u het beleid voor verfijnde wacht woorden bijwerken zodat
 1. Gebruik een netwerk tracering op de virtuele machine om de bron van de aanvallen te zoeken en te voor komen dat deze IP-adressen zich kunnen aanmelden.
 1. Wanneer er minimale vergrendelings problemen zijn, werkt u het verfijnde wachtwoord beleid zo strikt mogelijk aan.
 
-### <a name="creating-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
+### <a name="creating-a-network-security-group"></a>Een netwerk beveiligings groep maken
 
 Azure AD DS heeft een netwerk beveiligings groep nodig om de poorten die nodig zijn voor het beheerde domein te beveiligen en alle andere inkomend verkeer te blok keren. Deze netwerk beveiligings groep fungeert als een extra beveiligingslaag om de toegang tot het beheerde domein te vergren delen en wordt niet automatisch gemaakt. Als u de netwerk beveiligings groep wilt maken en de vereiste poorten wilt openen, raadpleegt u de volgende stappen:
 

@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
-ms.translationtype: MT
+ms.openlocfilehash: 54401d4fd8a911fc9cf5bc67d4324e84005fa752
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091783"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157241"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Gegevens opname van Azure Data Explorer
 
@@ -62,11 +62,11 @@ Azure Data Explorer biedt Sdk's die kunnen worden gebruikt voor query's en gegev
 
 Kusto biedt client-SDK die kan worden gebruikt voor het opnemen en opvragen van gegevens met:
 
-* [Python-SDK](/azure/kusto/api/python/kusto-python-client-library)
+* [Python SDK](/azure/kusto/api/python/kusto-python-client-library)
 
 * [.NET SDK](/azure/kusto/api/netfx/about-the-sdk)
 
-* [Java-SDK](/azure/kusto/api/java/kusto-java-client-library)
+* [Java SDK](/azure/kusto/api/java/kusto-java-client-library)
 
 * [Node-SDK](/azure/kusto/api/node/kusto-node-client-library)
 
@@ -90,7 +90,7 @@ Kusto biedt client-SDK die kan worden gebruikt voor het opnemen en opvragen van 
 
 | Methode | Latentie |
 | --- | --- |
-| **Inline opname** | Onmiddellijk |
+| **Inline opname** | Direct |
 | **Opnemen uit query** | Query tijd + verwerkings tijd |
 | **Opnemen uit opslag** | Download tijd + verwerkings tijd |
 | **Opname in wachtrij** | Batch verwerking en verwerkings tijd |
@@ -118,7 +118,7 @@ Voor organisaties met een bestaande infra structuur die is gebaseerd op een beri
 ## <a name="supported-data-formats"></a>Ondersteunde gegevens indelingen
 
 Voor alle opname methoden behalve opnemen vanuit query moet u de gegevens opmaken zodat deze door Azure Data Explorer kunnen worden geparseerd. 
-* De ondersteunde gegevens indelingen zijn: TXT, CSV, TSV, TSVE, PSV, SCSV, SOH, JSON (line-separated, multi-line), AVRO en Parquet. 
+* De ondersteunde gegevens indelingen zijn: TXT, CSV, TSV, TSVE, PSV, SCSV, SOH, JSON (line-separated, multi-line), AVRO, Orc en Parquet. 
 * Ondersteunt ZIP-en GZIP-compressie.
 
 > [!NOTE]

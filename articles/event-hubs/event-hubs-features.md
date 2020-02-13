@@ -13,37 +13,37 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e0505960a413308283c4e67e33ec495eedd3b092
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 568a21cee5b50a8914c603976f5951d0235dbff7
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827731"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157173"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Functies en de belangrijkste termen in de Azure Event Hubs
 
-Azure Event Hubs is een schaalbare verwerkingsservice van gebeurtenissen, die worden opgenomen en verwerkt van grote hoeveelheden gebeurtenissen en de gegevens, met een lage latentie en hoge betrouwbaarheid. Zie [wat is Event Hubs?](event-hubs-what-is-event-hubs.md) voor een overzicht op hoog niveau.
+Azure Event Hubs is een schaalbare verwerkingsservice van gebeurtenissen, die worden opgenomen en verwerkt van grote hoeveelheden gebeurtenissen en de gegevens, met een lage latentie en hoge betrouwbaarheid. Zie [Wat is Event hubs?](event-hubs-what-is-event-hubs.md) voor een overzicht op hoog niveau.
 
-Dit artikel is gebaseerd op de informatie in de [overzichtsartikel](event-hubs-what-is-event-hubs.md), en biedt technische en implementatie-informatie over Event Hubs-onderdelen en functies.
+Dit artikel is gebaseerd op de informatie in het [overzichts artikel](event-hubs-what-is-event-hubs.md)en biedt technische en implementatie details over Event hubs onderdelen en functies.
 
 ## <a name="namespace"></a>Naamruimte
-Een Event Hubs-naamruimte biedt een unieke scoping container, waarnaar wordt verwezen door de [volledig gekwalificeerde domeinnaam](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), in die u een of meer eventhubs of Kafka-onderwerpen maakt. 
+Een Event Hubs naam ruimte biedt een unieke bereik container, waarnaar wordt verwezen door de [Fully Qualified Domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), waarin u een of meer Event hubs of Kafka-onderwerpen maakt. 
 
 ## <a name="event-hubs-for-apache-kafka"></a>Event Hubs voor Apache Kafka
 
-[Deze functie](event-hubs-for-kafka-ecosystem-overview.md) biedt een eindpunt waarmee klanten een om te communiceren met Event Hubs met behulp van het Kafka-protocol. Deze integratie biedt klanten een Kafka-eindpunt. Deze aanbieding kunnen klanten hun bestaande Kafka-toepassingen om te communiceren met Event Hubs, zodat een alternatief voor het uitvoeren van hun eigen Kafka-clusters configureren. Eventhubs voor Apache Kafka biedt ondersteuning voor Kafka-protocol 1.0 en hoger. 
+[Deze functie](event-hubs-for-kafka-ecosystem-overview.md) biedt een eind punt waarmee klanten kunnen praten met Event hubs met behulp van het Kafka-protocol. Deze integratie biedt klanten een Kafka-eindpunt. Deze aanbieding kunnen klanten hun bestaande Kafka-toepassingen om te communiceren met Event Hubs, zodat een alternatief voor het uitvoeren van hun eigen Kafka-clusters configureren. Eventhubs voor Apache Kafka biedt ondersteuning voor Kafka-protocol 1.0 en hoger. 
 
-Met deze integratie kunt wilt u niet Kafka-clusters uitvoeren of ze beheren met Zookeeper. Hiermee kunt u ook werkt met bepaalde van de meest veeleisende functies van Event Hubs, zoals automatisch vergroten en Geo-noodherstel vastleggen.
+Met deze integratie hoeft u geen Kafka-clusters uit te voeren of ze te beheren met Zookeeper. Hiermee kunt u ook werkt met bepaalde van de meest veeleisende functies van Event Hubs, zoals automatisch vergroten en Geo-noodherstel vastleggen.
 
 Deze integratie kunt ook toepassingen, zoals de Maker van de Mirror of framework, zoals Kafka verbinding maken om te werken clusterless met alleen wijzigingen in de configuratie. 
 
 ## <a name="event-publishers"></a>Gebeurtenisuitgevers
 
-Elke entiteit die gegevens naar een event hub verzendt, is een gebeurtenisproducent-, of *gebeurtenisuitgever*. Gebeurtenisuitgevers kunnen gebeurtenissen publiceren met HTTPS of AMQP 1.0 of Kafka 1.0 en hoger. Gebeurtenisuitgevers gebruiken een Shared Access Signature-token (SAS) om zichzelf te identificeren bij een Event Hub en kunnen een unieke identiteit hebben of een algemene SAS-token gebruiken.
+Elke entiteit die gegevens naar een Event Hub verzendt, is een gebeurtenis producent of een *Uitgever van gebeurtenissen*. Gebeurtenisuitgevers kunnen gebeurtenissen publiceren met HTTPS of AMQP 1.0 of Kafka 1.0 en hoger. Gebeurtenisuitgevers gebruiken een Shared Access Signature-token (SAS) om zichzelf te identificeren bij een Event Hub en kunnen een unieke identiteit hebben of een algemene SAS-token gebruiken.
 
 ### <a name="publishing-an-event"></a>Een gebeurtenis publiceren
 
-U kunt een gebeurtenis publiceren met AMQP 1.0, Kafka 1.0 (en hoger) of HTTPS. Eventhubs biedt [-clientbibliotheken en -klassen](event-hubs-dotnet-framework-api-overview.md) voor het publiceren van gebeurtenissen naar een event hub vanaf .NET-clients. Voor andere runtimes en platforms kunt u een AMQP 1.0-client gebruiken, zoals [Apache Qpid](https://qpid.apache.org/). U kunt gebeurtenissen afzonderlijk of batchgewijs publiceren. Eén publicatie (exemplaar met gebeurtenisgegevens) heeft een limiet van 1 MB, ongeacht of het één gebeurtenis of om een batch. Het publiceren van gebeurtenissen die groter zijn dan deze drempelwaarde resulteert in een fout. Het is voor uitgevers een best practice om niets te weten over de partities binnen Event Hub en alleen een *partitiesleutel* (zie volgende sectie) of hun identiteit via de SAS-token op te geven.
+U kunt een gebeurtenis publiceren met AMQP 1.0, Kafka 1.0 (en hoger) of HTTPS. Event Hubs biedt [client bibliotheken en-klassen](event-hubs-dotnet-framework-api-overview.md) voor het publiceren van gebeurtenissen naar een event hub van .net-clients. Voor andere runtimes en platforms kunt u een AMQP 1.0-client gebruiken, zoals [Apache Qpid](https://qpid.apache.org/). U kunt gebeurtenissen afzonderlijk of batchgewijs publiceren. Eén publicatie (exemplaar met gebeurtenisgegevens) heeft een limiet van 1 MB, ongeacht of het één gebeurtenis of om een batch. Het publiceren van gebeurtenissen die groter zijn dan deze drempelwaarde resulteert in een fout. Het is voor uitgevers een best practice om niets te weten over de partities binnen Event Hub en alleen een *partitiesleutel* (zie volgende sectie) of hun identiteit via de SAS-token op te geven.
 
 De keuze om AMQP of HTTPS te gebruiken, geldt specifiek voor het gebruiksscenario. AMQP vereist de inrichting van een permanente bidirectionele socket naast Transport Layer Security (TLS) of SSL/TLS. AMQP gaat gepaard met hogere netwerkkosten tijdens de initialisatie van de sessie. Voor HTTPS is echter extra SSL-overhead vereist voor elke aanvraag. AMQP biedt betere prestaties voor regelmatige uitgevers.
 
@@ -63,7 +63,7 @@ Het is niet nodig om van tevoren uitgeversnamen te maken. De namen moeten echter
 
 ## <a name="capture"></a>Capture
 
-[Event Hubs Capture](event-hubs-capture-overview.md) kunt u automatisch de streaminggegevens in Event Hubs vastleggen en sla deze op uw eigen keuze aan een Blob storage-account of een Azure Data Lake-Service-account. U kunt Capture inschakelen via de Azure-portal en geef een minimale grootte en het tijdvenster om uit te voeren van het vastleggen. Met Event Hubs Capture kunt opgeven u uw eigen Azure Blob Storage-account en een container of een Azure Data Lake-Service-account, een van die wordt gebruikt voor het opslaan van de vastgelegde gegevens. Vastgelegde gegevens worden geschreven in de Apache Avro-indeling.
+Met [Event hubs Capture](event-hubs-capture-overview.md) kunt u automatisch de streaminggegevens in Event hubs vastleggen en opslaan in een Blob Storage-account of een Azure data Lake-service account. U kunt Capture inschakelen via de Azure-portal en geef een minimale grootte en het tijdvenster om uit te voeren van het vastleggen. Met Event Hubs Capture kunt opgeven u uw eigen Azure Blob Storage-account en een container of een Azure Data Lake-Service-account, een van die wordt gebruikt voor het opslaan van de vastgelegde gegevens. Vastgelegde gegevens worden geschreven in de Apache Avro-indeling.
 
 ## <a name="partitions"></a>Partities
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
@@ -83,7 +83,7 @@ Het Event Hubs-mechanisme voor publiceren/abonneren wordt geactiveerd via *consu
 
 In een architectuur waarin de stroom wordt verwerkt, is elke downstream-toepassing gelijk aan een consumergroep. Als u gebeurtenisgegevens naar de langetermijnopslag wilt schrijven, is de schrijftoepassing die hiervoor wordt gebruikt, een consumergroep. De complexe verwerking van gebeurtenissen kan vervolgens worden uitgevoerd door een andere, afzonderlijke consumergroep. U hebt alleen toegang tot partities via een consumergroep. Een Event Hub bevat altijd een standaardconsumergroep. Voor een Event Hub van het type Standaard kunt u maximaal 20 consumergroepen maken.
 
-Er mag maximaal 5 gelijktijdige lezers op een partitie per consumentengroep. echter **het verdient aanbeveling dat er slechts één actieve ontvanger beschikbaar op een partitie per consumergroep is**. Binnen een enkele partitie ontvangt elke lezer alle berichten. Als u meerdere lezers op dezelfde partitie hebt, klikt verwerken u dubbele berichten. U moet dit in uw code, die mogelijk niet eenvoudig te verwerken. Het is echter een geldig benadering in sommige scenario's.
+Er kunnen Maxi maal vijf gelijktijdige lezers op een partitie per consumenten groep zijn. **het is echter raadzaam dat er slechts één actieve ontvanger is op een partitie per Consumer groep**. Binnen een enkele partitie ontvangt elke lezer alle berichten. Als u meerdere lezers op dezelfde partitie hebt, klikt verwerken u dubbele berichten. U moet dit in uw code, die mogelijk niet eenvoudig te verwerken. Het is echter een geldig benadering in sommige scenario's.
 
 
 Dit zijn voorbeelden van de URI-conventie voor consumergroepen:
@@ -134,11 +134,14 @@ U bent verantwoordelijk voor het beheer van de offset.
 
 Voor meer informatie over Event Hubs gaat u naar de volgende koppelingen:
 
-* Aan de slag met een [Event Hubs-zelfstudie][Event Hubs tutorial]
+- Aan de slag met Event Hubs
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Programmeerhandleiding voor Event Hubs](event-hubs-programming-guide.md)
 * [Beschikbaarheid en consistentie in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)
-* [Event Hubs-voorbeelden][]
+* [Event Hubs-voor beelden][]
 
-[Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
-[Event Hubs-voorbeelden]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+[Event Hubs-voor beelden]: https://github.com/Azure/azure-event-hubs/tree/master/samples

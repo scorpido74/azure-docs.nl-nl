@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: vertalen van spraak naar tekst, C++ (Windows)-spraak service'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: NOG TE BEPALEN
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 2b32d6632c9a9860e628dbcfb810482da44316c2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 232edfc08b2d2696f5592e8bfb7bc16b52edb34c
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468356"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156060"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -44,7 +44,8 @@ Voordat u aan de slag gaat, moet u het volgende doen:
    void TranslateSpeechToText()
    {
        // Creates an instance of a speech translation config with specified subscription key and service region.
-       // Replace with your own subscription key and service region (e.g., "westus").
+       // Replace with your own subscription key and service region (e.g., "westus", use the one of SpeechSDKParameters
+       // from here: https://aka.ms/speech/sdkregion).   
        auto config = SpeechTranslationConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
        // Sets source and target languages.

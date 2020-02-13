@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 33e1037a0fe261f9fb0d06a9ebb0b3b323fe8d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701260"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159877"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Gebruikers aanmelden en de Microsoft Graph-API aanroepen vanuit een Java script-toepassing met één pagina (SPA)
 
@@ -50,8 +50,8 @@ Deze hand leiding maakt gebruik van de volgende bibliotheek:
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Preview van micro soft-verificatie bibliotheek voor Java script|
 
 > [!NOTE]
-> *Msal. js* is gericht op het micro soft Identity platform-eind punt, dat persoonlijke accounts en school-en werk accounts mogelijk maakt om zich aan te melden en tokens te verkrijgen. Het micro soft Identity platform-eind punt heeft [enkele beperkingen](azure-ad-endpoint-comparison.md#limitations).
-> Zie de [hand leiding voor het vergelijken van eind punten](azure-ad-endpoint-comparison.md)om de verschillen tussen de eind punten v 1.0 en v 2.0 te begrijpen.
+> *Msal. js* is gericht op het micro soft Identity platform-eind punt, dat persoonlijke accounts en school-en werk accounts mogelijk maakt om zich aan te melden en tokens te verkrijgen. Het micro soft Identity platform-eind punt heeft [enkele beperkingen](../azuread-dev/azure-ad-endpoint-comparison.md#limitations).
+> Zie de [hand leiding voor het vergelijken van eind punten](../azuread-dev/azure-ad-endpoint-comparison.md)om de verschillen tussen de eind punten v 1.0 en v 2.0 te begrijpen.
 
 <!--end-collapse-->
 
@@ -266,7 +266,7 @@ Het door deze hand leiding gegenereerde beveiligd-wachtwoord verificatie roept `
 
 #### <a name="getting-a-user-token-interactively"></a>Een gebruikerstoken interactief ophalen
 
-Na de eerste aanmelding wilt u gebruikers niet vragen om opnieuw te verifiëren wanneer ze een token nodig hebben om toegang te krijgen tot een resource. Daarom moet *acquireTokenSilent* de meeste tijd worden gebruikt voor het verkrijgen van tokens. Er zijn echter situaties waarin u gebruikers moet dwingen met het micro soft Identity platform-eind punt te communiceren. Voorbeelden:
+Na de eerste aanmelding wilt u gebruikers niet vragen om opnieuw te verifiëren wanneer ze een token nodig hebben om toegang te krijgen tot een resource. Daarom moet *acquireTokenSilent* de meeste tijd worden gebruikt voor het verkrijgen van tokens. Er zijn echter situaties waarin u gebruikers moet dwingen met het micro soft Identity platform-eind punt te communiceren. Voorbeelden zijn:
 
 - Gebruikers moeten hun referenties opnieuw invoeren omdat het wacht woord is verlopen.
 - Uw toepassing vraagt toegang tot een resource en u hebt toestemming van de gebruiker nodig.
@@ -325,7 +325,7 @@ Voeg de volgende code toe aan uw `index.html`-bestand binnen de `<script></scrip
 
 ## <a name="register-your-application"></a>Uw toepassing registreren
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u het account in de rechter bovenhoek en stelt u vervolgens uw portal-sessie in op de Azure AD-Tenant die u wilt gebruiken.
 1. Ga naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .

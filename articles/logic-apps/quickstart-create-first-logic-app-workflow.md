@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 6fd9166168a5b21900aa49d42a1dd5b81039dbcd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428763"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191284"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Snelstartgids: uw eerste werk stroom maken met behulp van Azure Logic Apps-Azure Portal
 
@@ -44,7 +44,7 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **Naam** | <*logic-app-name*> | De naam van de logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt ' mijn-eerste logica-app ' gebruikt. |
+   | **Naam** | <*Logic-app-naam*> | De naam van de logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt ' mijn-eerste logica-app ' gebruikt. |
    | **Abonnement** | <*Azure-subscription-name*> | De naam van uw Azure-abonnement |
    | **Resourcegroep** | <*Azure-resource-group-name*> | De naam voor de [Azure-resource groep](../azure-resource-manager/management/overview.md) die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' My-First-LA-RG ' gebruikt. |
    | **Locatie** | <*Azure-regio*> | De regio waar u de gegevens van uw logische app opslaat. In dit voor beeld wordt ' West US ' gebruikt. |
@@ -116,7 +116,7 @@ Voeg nu een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) toe
 1. Als uw geselecteerde e-mail Connector u vraagt om uw identiteit te verifiëren, voltooit u die stap nu om een verbinding tot stand te brengen tussen uw logische app en uw e-mail service.
 
    > [!NOTE]
-   > In dit specifieke voor beeld moet u uw identiteit hand matig verifiëren. Connectors waarvoor verificatie is vereist, verschillen echter in de verificatie typen die ze ondersteunen. U hebt ook opties voor het instellen van de manier waarop u de verificatie wilt afhandelen. Wanneer u bijvoorbeeld Azure Resource Manager sjablonen gebruikt voor implementatie, kunt u invoer para meters en beveiligen die u vaak of eenvoudig wilt wijzigen, zoals verbindings gegevens. Zie deze onderwerpen voor meer informatie:
+   > In dit specifieke voor beeld moet u uw identiteit hand matig verifiëren. Connectors waarvoor verificatie is vereist, verschillen echter in de verificatie typen die ze ondersteunen. U hebt ook opties voor het instellen van de manier waarop u de verificatie wilt afhandelen. Wanneer u bijvoorbeeld Azure Resource Manager sjablonen gebruikt voor implementatie, kunt u para meters en de beveiliging verbeteren voor invoer die u vaak of eenvoudig wilt wijzigen, zoals verbindings gegevens. Zie de volgende onderwerpen voor meer informatie:
    >
    > * [Sjabloon parameters voor implementatie](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
    > * [OAuth-verbindingen autoriseren](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)

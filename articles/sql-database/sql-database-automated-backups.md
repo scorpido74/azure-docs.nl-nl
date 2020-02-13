@@ -1,5 +1,5 @@
 ---
-title: automatische, geografisch redundante back-ups
+title: Automatische, geografisch redundante back-ups
 description: SQL Database maakt om de paar minuten automatisch een lokale back-up van de data base en maakt gebruik van geografisch redundante opslag met lees toegang voor geo-redundantie.
 services: sql-database
 ms.service: sql-database
@@ -12,24 +12,24 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 6b880696b4922c68c73ce4ff59f72a62ce5a5a30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348942"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157496"
 ---
 # <a name="automated-backups"></a>Automatische back-ups
 
-SQL Database maakt automatisch de database back-ups die gedurende de duur van de geconfigureerde Bewaar periode worden bewaard en maakt gebruik van [geografisch redundante opslag met lees toegang (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) om ervoor te zorgen dat ze worden bewaard, zelfs als het Data Center niet beschikbaar is. Deze back-ups worden automatisch gemaakt. Database back-ups zijn een essentieel onderdeel van een strategie voor bedrijfs continuïteit en herstel na nood gevallen, omdat uw gegevens worden beschermd tegen onbedoelde beschadiging of verwijdering. Als uw back-ups gedurende lange tijd beschikbaar zijn voor uw beveiligings regels, kunt u een [lange termijn retentie](sql-database-long-term-retention.md) configureren op Singleton-data bases en elastische Pools.
+SQL Database maakt automatisch de database back-ups die gedurende de duur van de geconfigureerde Bewaar periode worden bewaard en maakt gebruik van [geografisch redundante opslag met lees toegang (RA-GRS)](../storage/common/storage-redundancy.md) om ervoor te zorgen dat ze worden bewaard, zelfs als het Data Center niet beschikbaar is. Deze back-ups worden automatisch gemaakt. Database back-ups zijn een essentieel onderdeel van een strategie voor bedrijfs continuïteit en herstel na nood gevallen, omdat uw gegevens worden beschermd tegen onbedoelde beschadiging of verwijdering. Als uw back-ups gedurende lange tijd beschikbaar zijn voor uw beveiligings regels, kunt u een [lange termijn retentie](sql-database-long-term-retention.md) configureren op Singleton-data bases en elastische Pools.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="what-is-a-sql-database-backup"></a>Wat is een SQL Database back-up?
 
-SQL Database gebruikt SQL Server technologie om elke week [volledige back-ups](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) te maken, [differentiële back-](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) ups elke 12 uur en [back-ups van transactie logboeken](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) om de 5-10 minuten. De back-ups worden opgeslagen in [Ra-GRS-opslag-blobs](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) die worden gerepliceerd naar een [gekoppeld Data Center](../best-practices-availability-paired-regions.md) voor beveiliging tegen een storing in een Data Center. Wanneer u een Data Base herstelt, moet u de volledige, differentiële en transactie logboek back-ups herstellen.
+SQL Database gebruikt SQL Server technologie om elke week [volledige back-ups](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) te maken, [differentiële back-](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) ups elke 12 uur en [back-ups van transactie logboeken](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) om de 5-10 minuten. De back-ups worden opgeslagen in [Ra-GRS-opslag-blobs](../storage/common/storage-redundancy.md) die worden gerepliceerd naar een [gekoppeld Data Center](../best-practices-availability-paired-regions.md) voor beveiliging tegen een storing in een Data Center. Wanneer u een Data Base herstelt, moet u de volledige, differentiële en transactie logboek back-ups herstellen.
 
-U kunt deze back-ups gebruiken om:
+U kunt deze back-ups gebruiken voor het volgende:
 
 - **Een bestaande data base in het verleden herstellen naar een bepaald tijdstip** binnen de retentie periode met behulp van de Azure Portal, Azure PowerShell, Azure CLI of rest API. In één data base en elastische Pools wordt met deze bewerking een nieuwe data base gemaakt op dezelfde server als de oorspronkelijke data base. In het beheerde exemplaar kan deze bewerking een kopie maken van de data base of een ander beheerd exemplaar onder hetzelfde abonnement.
 - **Een verwijderde data base herstellen op het moment dat deze is verwijderd** of op elk moment binnen de retentie periode. De verwijderde data base kan alleen worden hersteld in de logische server of het beheerde exemplaar waarin de oorspronkelijke Data Base is gemaakt.
@@ -53,19 +53,19 @@ U kunt enkele van deze bewerkingen uitproberen met de volgende voor beelden:
 
 ## <a name="backup-frequency"></a>Back-upfrequentie
 
-### <a name="point-in-time-restore"></a>Herstel naar een bepaald tijdstip
+### <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
 
-SQL Database ondersteunt self-service for Point-in-time Restore (PITR) door automatisch volledige back-ups, differentiële back-ups en back-ups van transactie logboeken te maken. Volledige database back-ups worden wekelijks gemaakt, differentiële back-ups van data bases worden doorgaans elke 12 uur gemaakt en back-ups van transactie logboeken worden over het algemeen elke 5-10 minuten gemaakt, met de frequentie gebaseerd op de reken grootte en de hoeveelheid database activiteit. De eerste volledige back-up wordt onmiddellijk gepland nadat er een Data Base is gemaakt. Het wordt doorgaans binnen 30 minuten voltooid, maar het kan langer duren als de Data Base een aanzienlijke omvang heeft. De eerste back-up kan bijvoorbeeld langer duren op een herstelde data base of een kopie van een Data Base. Na de eerste volledige back-up worden alle verdere back-ups automatisch op de achtergrond gepland en beheerd. De exacte timing van alle databaseback-ups wordt bepaald door de SQL Database-service, omdat deze de algehele werkbelasting van het systeem evenredig verdeelt. U kunt de back-uptaken niet wijzigen of uitschakelen. 
+SQL Database ondersteunt self-service for Point-in-time Restore (PITR) door automatisch volledige back-ups, differentiële back-ups en back-ups van transactie logboeken te maken. Volledige database back-ups worden wekelijks gemaakt, differentiële back-ups van data bases worden doorgaans elke 12 uur gemaakt en back-ups van transactie logboeken worden over het algemeen elke 5-10 minuten gemaakt, met de frequentie gebaseerd op de reken grootte en de hoeveelheid database activiteit. De eerste volledige back-up wordt onmiddellijk gepland nadat er een Data Base is gemaakt. Het wordt doorgaans binnen 30 minuten voltooid, maar het kan langer duren als de Data Base een aanzienlijke omvang heeft. De eerste back-up kan bijvoorbeeld langer duren op een herstelde data base of een kopie van een Data Base. Na de eerste volledige back-up worden alle verdere back-ups automatisch op de achtergrond gepland en beheerd. De exacte timing van back-ups van alle data bases wordt bepaald door de SQL Database-Service, omdat deze de algehele systeem werk belasting evenwichtig benadert. U kunt de back-uptaken niet wijzigen of uitschakelen.
 
-De PITR-back-ups zijn geografisch redundant en worden beschermd door [Azure Storage cross-regionale replicatie](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
+De PITR-back-ups worden beveiligd met geografisch redundante opslag. Zie [Azure Storage redundantie](../storage/common/storage-redundancy.md)voor meer informatie.
 
 Zie herstel naar een bepaald [tijdstip](sql-database-recovery-using-backups.md#point-in-time-restore) voor meer informatie.
 
-### <a name="long-term-retention"></a>Langetermijnretentie
+### <a name="long-term-retention"></a>Lange bewaartermijn
 
 Enkele en gegroepeerde Data bases bieden de mogelijkheid om op lange termijn retentie (LTR) van volledige back-ups te configureren voor Maxi maal tien jaar in Azure Blob-opslag. Als LTR-beleid is ingeschakeld, worden de wekelijkse volledige back-ups automatisch gekopieerd naar een andere RA-GRS-opslag container. Om te voldoen aan de verschillende vereisten voor naleving, kunt u verschillende Bewaar perioden selecteren voor wekelijkse, maandelijkse en/of jaarlijkse back-ups. Het opslag verbruik is afhankelijk van de geselecteerde frequentie van back-ups en de retentie periode (n). U kunt de [LTR-prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=sql-database) gebruiken om de kosten van v.l.n.r.-opslag te schatten.
 
-Net als PITR zijn de LTR-back-ups geo-redundant en worden beveiligd door [Azure Storage cross-regionale replicatie](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
+Net als PITR worden de V.L.N.R.-back-ups beschermd met geografisch redundante opslag. Zie [Azure Storage redundantie](../storage/common/storage-redundancy.md)voor meer informatie.
 
 Zie [lange termijn retentie van back-ups](sql-database-long-term-retention.md)voor meer informatie.
 
@@ -112,7 +112,7 @@ Er worden geen extra kosten in rekening gebracht voor back-upopslag voor data ba
 
 ### <a name="vcore-model"></a>vCore-model
 
-Voor afzonderlijke data bases geldt een minimum hoeveelheid voor back-upopslag die gelijk is aan 100% van de database grootte, zonder extra kosten. Voor elastische Pools en beheerde instanties is er geen extra kosten in rekening gebracht voor een minimale back-upopslag die gelijk is aan 100% van de toegewezen gegevens opslag voor de grootte van de groep of het exemplaar. Voor aanvullend verbruik van back-upopslag worden GB/maand berekend. Dit extra verbruik is afhankelijk van de werk belasting en de grootte van de afzonderlijke data bases.
+Voor afzonderlijke data bases geldt een minimum hoeveelheid voor back-upopslag die gelijk is aan 100% van de database grootte, zonder extra kosten. Voor elastische Pools en beheerde instanties is er geen extra kosten in rekening gebracht voor een minimale back-upopslag die gelijk is aan 100% van de toegewezen gegevens opslag voor de grootte van de groep of het exemplaar. Voor aanvullend verbruik van back-upopslag worden in GB/maand kosten in rekening gebracht. Dit extra verbruik is afhankelijk van de werk belasting en de grootte van de afzonderlijke data bases.
 
 Azure SQL DB berekent uw totale in-retentie back-upopslag als een cumulatieve waarde. Elk uur wordt deze waarde gerapporteerd aan de Azure-facturerings pijplijn die verantwoordelijk is voor het samen voegen van dit uur gebruik om uw verbruik aan het einde van elke maand te verkrijgen. Nadat de data base is verwijderd, verlagen we het verbruik van de back-ups. Zodra de retentie periode is verstreken, wordt de facturering gestopt. Omdat alle logboek back-ups en differentiële back-ups worden bewaard voor de volledige Bewaar periode, hebben data bases die sterk zijn gewijzigd, hogere back-upkosten. 
 

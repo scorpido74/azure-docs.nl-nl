@@ -13,12 +13,12 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 3f95a0743ca6fadff0c7a26a796ef20659adfb80
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: cb9441e6ce19094ff72e902cdeea151041ceb963
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697741"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161125"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory-instemming raamwerk
 
@@ -28,7 +28,7 @@ Het Framework is gebaseerd op een gebruiker of een beheerder die toestemming gee
 
 Het toestemming raamwerk is gebaseerd op OAuth 2,0 en de verschillende stromen, zoals autorisatie code toekenning en client referenties verlenen, met behulp van open bare of vertrouwelijke clients. Met behulp van OAuth 2,0 kunt u met Azure AD veel verschillende soorten client toepassingen bouwen, zoals op een telefoon, Tablet, server of webtoepassing, en toegang krijgen tot de vereiste bronnen.
 
-Zie [toegang tot webtoepassingen met oauth 2,0-en Azure AD](v1-protocols-oauth-code.md) -en [verificatie SCENARIO'S voor Azure AD](authentication-scenarios.md)machtigen voor meer informatie over het gebruik van het toestemming raamwerk met OAuth 2.0-autorisatie subsidies. Zie [app-verificatie met Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview)voor informatie over het verkrijgen van geautoriseerde toegang tot Office 365 via Microsoft Graph.
+Zie [toegang tot webtoepassingen met oauth 2,0-en Azure AD](v2-oauth2-auth-code-flow.md) -en [verificatie SCENARIO'S voor Azure AD](authentication-scenarios.md)machtigen voor meer informatie over het gebruik van het toestemming raamwerk met OAuth 2.0-autorisatie subsidies. Zie [app-verificatie met Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview)voor informatie over het verkrijgen van geautoriseerde toegang tot Office 365 via Microsoft Graph.
 
 ## <a name="consent-experience---an-example"></a>Bestemmings ervaring-een voor beeld
 
@@ -42,13 +42,13 @@ In de volgende stappen ziet u hoe de bestemmings ervaring werkt voor zowel de on
 
 1. Als de gebruiker nog niet is geverifieerd, wordt de gebruiker door het `/authorize`-eind punt van Azure AD gevraagd zich aan te melden.
 
-    ![Gebruiker of beheerder meldt zich aan bij Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    ![Gebruiker of beheerder meldt zich aan bij Azure AD](./media/consent-framework/usersignin.png)
 
 1. Nadat de gebruiker zich heeft aangemeld, wordt door Azure AD bepaald of de gebruiker een toestemming pagina moet worden weer gegeven. Hierbij wordt gecontroleerd of de gebruiker (of de beheerder in de organisatie) de toepassing al toestemming heeft gegeven. Als er nog geen toestemming is verleend, wordt de gebruiker door Azure AD om toestemming gevraagd en worden de vereiste machtigingen weer gegeven die moeten worden gebruikt. De set machtigingen die worden weer gegeven in het dialoog venster voor toestemming, komt overeen met de opties die zijn geselecteerd in de **gedelegeerde machtigingen** in de Azure Portal.
 
-    ![Toont een voor beeld van machtigingen die worden weer gegeven in het dialoog venster voor toestemming](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![Toont een voor beeld van machtigingen die worden weer gegeven in het dialoog venster voor toestemming](./media/consent-framework/consent.png)
 
-1. Nadat de gebruiker toestemming verleent, wordt er een autorisatie code geretourneerd naar uw toepassing, die wordt ingewisseld om een toegangs token en een vernieuwings token te verkrijgen. Zie [Web API app type](web-api.md)voor meer informatie over deze stroom.
+1. Nadat de gebruiker toestemming verleent, wordt er een autorisatie code geretourneerd naar uw toepassing, die wordt ingewisseld om een toegangs token en een vernieuwings token te verkrijgen. Zie [OAuth 2,0 Authorization code flow](v2-oauth2-auth-code-flow.md)(Engelstalig) voor meer informatie over deze stroom.
 
 1. Beheerders kunnen toestemming geven voor de gedelegeerde machtigingen van een toepassing voor alle gebruikers in de tenant. Toestemming van de beheerder voor komt dat het dialoog venster voor toestemming wordt weer gegeven voor elke gebruiker in de Tenant en kan worden uitgevoerd in de [Azure Portal](https://portal.azure.com) door gebruikers met de rol Administrator. Zie [Administrator role permissions in azure AD](../users-groups-roles/directory-assign-admin-roles.md)(Engelstalig) voor meer informatie over welke beheerders rollen toestemming kunnen geven voor gedelegeerde machtigingen.
 

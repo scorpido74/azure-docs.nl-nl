@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c43f1fe0d5850b53f0f72f05633e498a94d871c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: c429648adeb0c81799bff2dca1650de965395a60
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149301"
+ms.locfileid: "77166442"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Zelf studie: Azure AD B2B Collaboration-gebruikers (preview) bulksgewijs uitnodigen
 
@@ -27,7 +27,7 @@ ms.locfileid: "77149301"
 
 > [!NOTE]
 > Vanaf 12/22/2019 is de functie voor bulk-uitnodiging gebruikers (preview) tijdelijk uitgeschakeld.
-> Er is momenteel geen bekende datum voor wanneer deze functie opnieuw wordt ingeschakeld in de Azure Portal. Als u gast gebruikers bulksgewijs wilt uitnodigen met behulp van Power shell, raadpleegt u [B2B-code en Power shell](code-samples.md)-voor beelden.
+> Er is momenteel geen bekende datum voor wanneer deze functie opnieuw wordt ingeschakeld in de Azure Portal. Als u gast gebruikers bulksgewijs wilt uitnodigen met behulp van Power shell, raadpleegt u de [zelf studie voor B2B-uitnodiging](bulk-invite-powershell.md) of de [B2B-code en Power shell](code-samples.md)-voor beelden.
 
 Als u Azure Active Directory (Azure AD) B2B-samenwerking gebruikt om te werken met externe partners, kunt u tegelijkertijd meerdere gastgebruikers uitnodigen voor uw organisatie. In deze zelf studie leert u hoe u de Azure Portal kunt gebruiken om bulk uitnodigingen naar externe gebruikers te verzenden. Ga als volgt te werk:
 

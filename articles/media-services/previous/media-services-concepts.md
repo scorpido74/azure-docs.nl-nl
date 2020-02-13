@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2126fed5231f2264ba9a0bbc13be9410bb8294da
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978829"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162902"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services concepten 
 
@@ -29,7 +29,7 @@ In dit onderwerp vindt u een overzicht van de belangrijkste Media Services conce
 
 ## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>assets en opslag
 ### <a name="assets"></a>Assets
-Een [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) digitale bestanden (met inbegrip van de video, audio, afbeeldingen, verzamelingen van miniaturen, tekstsporen en ondertitelingsbestanden-bestanden) en de metagegevens over deze bestanden bevat. Nadat de digitale bestanden zijn geüpload naar een asset, kunnen ze worden gebruikt in de Media Services coderen en streamen van werkstromen.
+Een [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) bevat digitale bestanden (inclusief video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden) en de meta gegevens over deze bestanden. Nadat de digitale bestanden zijn geüpload naar een asset, kunnen ze worden gebruikt in de Media Services coderen en streamen van werkstromen.
 
 Een Asset wordt toegewezen aan een BLOB-container in het Azure Storage-account en de bestanden in de Asset worden opgeslagen als blok-blobs in die container. Pagina-blobs worden niet ondersteund door Azure Media Services.
 
@@ -83,7 +83,7 @@ Media Services ondersteunt twee typen Locators: OnDemandOrigin-Locators, die wor
 >[!NOTE]
 >De lijst machtiging (AccessPermissions. List) moet niet worden gebruikt bij het maken van een OnDemandOrigin-Locator. 
 
-### <a name="storage-account"></a>Opslagaccount
+### <a name="storage-account"></a>Storage-account
 Alle toegang tot Azure Storage wordt uitgevoerd via een opslag account. Een media service-account kan worden gekoppeld aan een of meer opslag accounts. Een account kan een onbeperkt aantal containers bevatten, zolang de totale grootte ervan onder 500TB per opslag account is.  Media Services biedt hulp middelen op het niveau van de SDK waarmee u meerdere opslag accounts kunt beheren en taak verdeling kunt Toep assen op de distributie van uw assets tijdens het uploaden naar deze accounts op basis van metrische gegevens of wille keurige distributie. Zie werken met [Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx)voor meer informatie. 
 
 ## <a name="jobs-and-tasks"></a>Taken en taken
@@ -108,10 +108,10 @@ Media Services ondersteunt de volgende on-demand encoders die in dit artikel wor
 
 Zie [encoders](media-services-encode-asset.md)voor meer informatie over ondersteunde coderings Programma's.
 
-## <a name="live-streaming"></a>Live Streaming
+## <a name="live-streaming"></a>Live streamen
 In Azure Media Services vertegenwoordigt een kanaal een pijp lijn voor het verwerken van live streaming-inhoud. Een kanaal ontvangt Live-invoer stromen op een van de volgende twee manieren:
 
-* Een on-premises Live Encoder verzendt een multi-bitrate RTMP-of Smooth Streaming (gefragmenteerde MP4) naar het kanaal. U kunt de volgende Live coderings Programma's gebruiken die multi-bitrate Smooth Streaming uitvoeren: MediaExcel, Ateme, denk aan communicatie, Envivio, Cisco en elementair. De volgende Live coderings Programma's uitvoer RTMP: Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision en TriCaster encoders. De opgenomen streams passeren kanalen zonder verdere trans codering en code ring. Desgevraagd levert Media Services de stream aan klanten.
+* Een on-premises Live Encoder verzendt een multi-bitrate RTMP-of Smooth Streaming (gefragmenteerde MP4) naar het kanaal. U kunt de volgende Live coderings Programma's gebruiken die multi-bitrate Smooth Streaming uitvoeren: MediaExcel, Ateme, denk aan communicatie, Envivio, Cisco en elementair. De volgende Live coderings Programma's uitvoer RTMP: Adobe Flash Live Encoder, [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision en TriCaster encoders. De opgenomen streams passeren kanalen zonder verdere trans codering en code ring. Desgevraagd levert Media Services de stream aan klanten.
 * Een stream met één bitsnelheid (in een van de volgende indelingen: RTMP of Smooth Streaming (gefragmenteerde MP4)) wordt verzonden naar het kanaal dat is ingeschakeld voor het uitvoeren van Live code ring met Media Services. Het kanaal codeert de inkomende single-bitrate stream vervolgens live naar een (adaptieve) multi-bitrate videostream. Desgevraagd levert Media Services de stream aan klanten.
 
 ### <a name="channel"></a>Kanaal
@@ -131,7 +131,7 @@ Elk programma (gebeurtenis) is gekoppeld aan een Asset. Als u het programma wilt
 
 Een kanaal ondersteunt maximaal drie gelijktijdig actieve programma's, zodat u meerdere archieven van dezelfde binnenkomende stream kunt maken. Hierdoor kunt u verschillende onderdelen van een gebeurtenis naar behoefte publiceren en archiveren. Zo kan het voor uw bedrijf nodig zijn zes uur van een programma te archiveren, maar alleen de laatste tien minuten uit te zenden. Hiervoor moet u twee gelijktijdig actieve programma's maken. Het ene programma wordt ingesteld om zes uur van de gebeurtenis te archiveren, maar het programma wordt niet gepubliceerd. Het andere programma wordt ingesteld om tien minuten te archiveren en dit programma wordt wel gepubliceerd.
 
-Zie voor meer informatie:
+Ga voor meer informatie naar:
 
 * [Werken met kanalen die zijn ingeschakeld om Live Encoding uit te voeren met Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
 * [Werken met kanalen die een multi-bitrate livestream van on-premises encoders ontvangen](media-services-live-streaming-with-onprem-encoders.md)
@@ -208,13 +208,13 @@ In de volgende lijst worden verschillende streaming-indelingen beschreven en vin
 
 {streaming-eindpuntnaam-media services-accountnaam}.streaming.mediaservices.windows.net/{locator-id}/{bestandsnaam}.ism/Manifest
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
+http:\/-testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
 * MPEG DASH
 
 {streaming-eindpunt naam-Media Services-account naam}. streaming. Media Services. Windows. net/{Locator-ID} bestands (Format = mpd-time-KVP)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (Format = mpd-time-KVP)
 
 * Apple HTTP Live Streaming (HLS) v4
 

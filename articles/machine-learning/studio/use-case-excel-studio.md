@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 6976f0bb671b94f71b71287483c2ab88d0959899
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 5831f83d8cd38cc07c64fdc398405c3a70935485
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152768"
+ms.locfileid: "77169092"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Analytics van Excel migreren naar Azure Machine Learning Studio (klassiek)
 
@@ -54,8 +54,8 @@ In eerste instantie heeft het Excel-model duidelijk het model studio (klassiek) 
 |  | Excel | Studio (klassiek) |
 | --- |:---:|:---:|
 | Prestaties | | |
-| <ul style="list-style-type: none;"><li>Aangepast R-kwadraat</li></ul> |0.96 |N.V.T. |
-| <ul style="list-style-type: none;"><li>Coëfficiënt van <br />Analyses</li></ul> |N.V.T. |0.78<br />(lage nauw keurigheid) |
+| <ul style="list-style-type: none;"><li>Aangepast R-kwadraat</li></ul> |0.96 |N.v.t. |
+| <ul style="list-style-type: none;"><li>Coëfficiënt van <br />Analyses</li></ul> |N.v.t. |0.78<br />(lage nauw keurigheid) |
 | Gemiddelde absolute fout |$9.5 m |$19.4 m |
 | Gemiddelde absolute fout (%) |6.03% |12.2% |
 
@@ -73,13 +73,13 @@ Toen we de aanbevelingen hebben toegepast, hebben we dezelfde basislijn prestati
 | --- |:---:|:---:|:---:|
 | Label waarde |Werkelijke waarden (numeriek) |dezelfde |dezelfde |
 | Learner |Excel-> gegevens analyse-> regressie |Lineaire regressie. |Lineaire regressie |
-| Opties voor meer informatie |N.V.T. |Standaard |normale minimale kwadraten<br />L2 = 0,005 |
+| Opties voor meer informatie |N.v.t. |Standaard |normale minimale kwadraten<br />L2 = 0,005 |
 | Gegevensset |26 rijen, 3 kenmerken, 1 label. Alle getallen. |dezelfde |dezelfde |
 | Splitsen: trainen |Excel getraind op de eerste 18 rijen, getest op de laatste 8 rijen. |dezelfde |dezelfde |
 | Splitsen: testen |Formule van Excel-regressie toegepast op de laatste 8 rijen |dezelfde |dezelfde |
 | **Prestaties** | | | |
-| Aangepast R-kwadraat |0.96 |N.V.T. | |
-| Determinatie coëfficiënt |N.V.T. |0.78 |0.952049 |
+| Aangepast R-kwadraat |0.96 |N.v.t. | |
+| Determinatie coëfficiënt |N.v.t. |0.78 |0.952049 |
 | Gemiddelde absolute fout |$9.5 m |$19.4 m |$9.5 m |
 | Gemiddelde absolute fout (%) |<span style="background-color: 00FF00;">6,03%</span> |12.2% |<span style="background-color: 00FF00;">6,03%</span> |
 

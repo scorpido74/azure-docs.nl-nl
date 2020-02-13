@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5406d301f6487753bc13b291db6d22eaedbf67b7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: cf1515bcf2223ae730a47f7105d51206ba638cd7
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066809"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161610"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -143,7 +143,7 @@ De SCIM-RFC definieert een kern gebruikers-en groeps schema, en biedt ook uitbre
    4. Selecteer **kenmerk lijst bewerken voor appName**.
    5. Typ onder aan de lijst met kenmerken informatie over het aangepaste kenmerk in de opgegeven velden. Selecteer vervolgens **kenmerk toevoegen**.
 
-Voor SCIM-toepassingen moet de naam van het kenmerk voldoen aan het patroon dat in het voor beeld hieronder wordt weer gegeven. De ' CustomExtensionName ' en ' CustomAttribute ' kunnen worden aangepast volgens de vereisten van uw toepassing, bijvoorbeeld: urn: IETF: params: scim: schemas: extension: 2.0: CustomExtensionName: CustomAttribute
+Voor SCIM-toepassingen moet de naam van het kenmerk voldoen aan het patroon dat in het voor beeld hieronder wordt weer gegeven. De ' CustomExtensionName ' en ' CustomAttribute ' kunnen worden aangepast volgens de vereisten van uw toepassing, bijvoorbeeld: urn: IETF: params: scim: schemas: extension: 2.0: CustomExtensionName: CustomAttribute of urn: IETF: params: scim: schemas: extension: CustomExtensionName: 2.0: User. CustomAttributeName: waarde
 
 Deze instructies zijn alleen van toepassing op SCIM-toepassingen. Toepassingen zoals ServiceNow en Sales Force zijn niet geïntegreerd met Azure AD met behulp van SCIM. deze specifieke naam ruimte is daarom niet vereist bij het toevoegen van een aangepast kenmerk.
 

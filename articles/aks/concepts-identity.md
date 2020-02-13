@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: a1ed1eccd7a10d78cd503559469654e5562cde0c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5d29598b0962fc42c855e7a26917a34269c30ddb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615869"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158059"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Opties voor toegang en identiteiten voor Azure Kubernetes service (AKS)
 
@@ -40,9 +40,9 @@ De beveiliging van AKS-clusters kan worden uitgebreid met de integratie van Azur
 
 ![Integratie met AKS-clusters Azure Active Directory](media/concepts-identity/aad-integration.png)
 
-Met Azure AD geïntegreerde AKS-clusters kunt u gebruikers of groepen toegang verlenen tot Kubernetes-resources binnen een naam ruimte of in het cluster. Een gebruiker kan `kubectl` een configuratie context verkrijgen door de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] uit te voeren. Wanneer een gebruiker vervolgens met het AKS-cluster communiceert `kubectl`met, wordt ze gevraagd zich aan te melden met hun Azure AD-referenties. Deze benadering biedt één bron voor gebruikers account beheer en wachtwoord referenties. De gebruiker heeft alleen toegang tot de resources zoals gedefinieerd door de Cluster beheerder.
+Met Azure AD geïntegreerde AKS-clusters kunt u gebruikers of groepen toegang verlenen tot Kubernetes-resources binnen een naam ruimte of in het cluster. Een gebruiker kan een `kubectl` configuratie context verkrijgen door de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] uit te voeren. Wanneer een gebruiker vervolgens communiceert met het AKS-cluster met `kubectl`, wordt u gevraagd zich aan te melden met hun Azure AD-referenties. Deze benadering biedt één bron voor gebruikers account beheer en wachtwoord referenties. De gebruiker heeft alleen toegang tot de resources zoals gedefinieerd door de Cluster beheerder.
 
-Azure AD-verificatie in AKS-clusters maakt gebruik van OpenID Connect Connect, een laag-id die boven op het OAuth 2,0-protocol is gebouwd. OAuth 2,0 definieert mechanismen voor het verkrijgen en gebruiken van toegangs tokens voor toegang tot beveiligde bronnen en OpenID Connect Connect implementeert verificatie als een uitbrei ding van het OAuth 2,0-autorisatie proces. Voor meer informatie over OpenID Connect Connect raadpleegt u de [Open-ID Connect-documentatie][openid-connect]. Voor het controleren van de verificatie tokens die zijn verkregen via Azure AD via OpenID Connect Connect, maken AKS-clusters gebruik van Kubernetes webhook-token verificatie. Zie de documentatie voor webhook- [token verificatie][webhook-token-docs]voor meer informatie.
+Azure AD-verificatie in AKS-clusters maakt gebruik van OpenID Connect Connect, een laag-id die boven op het OAuth 2,0-protocol is gebouwd. OAuth 2,0 definieert mechanismen voor het verkrijgen en gebruiken van toegangs tokens voor toegang tot beveiligde bronnen en OpenID Connect Connect implementeert verificatie als een uitbrei ding van het OAuth 2,0-autorisatie proces. Voor meer informatie over OpenID Connect Connect raadpleegt u de [Open-ID Connect-documentatie][openid-connect]. Voor het controleren van de verificatie tokens die zijn verkregen via Azure AD via OpenID Connect Connect, maken AKS-clusters gebruik van Kubernetes webhook-token verificatie. Zie de [documentatie voor webhook-token verificatie][webhook-token-docs]voor meer informatie.
 
 ## <a name="role-based-access-controls-rbac"></a>Op rollen gebaseerde toegangs beheer (RBAC)
 
@@ -91,7 +91,7 @@ Raadpleeg de volgende artikelen voor meer informatie over de belangrijkste Kuber
 [kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
 <!-- LINKS - Internal -->
-[openid-connect]: ../active-directory/develop/v1-protocols-openid-connect-code.md
+[openid-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [azure-rbac]: ../role-based-access-control/overview.md
 [aks-aad]: azure-ad-integration-cli.md

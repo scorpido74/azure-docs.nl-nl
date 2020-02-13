@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5a9e5e014740302c439036bd3889761f4750344f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 203bf584711fbfcfd0baeee8f5e4c7f70d96823b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062860"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157211"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
@@ -93,7 +93,7 @@ Als u wilt weten hoe u een Premium-bestands share maakt, raadpleegt u ons artike
 Op dit moment kunt u niet rechtstreeks converteren tussen een standaard bestands share en een Premium-bestands share. Als u wilt overschakelen naar een van beide lagen, moet u een nieuwe bestands share in die laag maken en de gegevens van de oorspronkelijke share hand matig kopiëren naar de nieuwe share die u hebt gemaakt. U kunt dit doen met behulp van een van de Azure Files ondersteunde Kopieer hulpprogramma's, zoals Robocopy of AzCopy.
 
 > [!IMPORTANT]
-> Premium-bestands shares zijn beschikbaar voor LRS in de meeste regio's die opslag accounts en ZRS in een kleinere subset van regio's aanbieden. Zie de pagina [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=storage) voor Azure als u wilt weten of Premium-bestands shares op dit moment beschikbaar zijn in uw regio. Zie [ondersteuning voor dekking en regionale Beschik baarheid](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)als u wilt weten welke regio's ZRS ondersteunen.
+> Premium-bestands shares zijn beschikbaar voor LRS in de meeste regio's die opslag accounts en ZRS in een kleinere subset van regio's aanbieden. Zie de pagina [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=storage) voor Azure als u wilt weten of Premium-bestands shares op dit moment beschikbaar zijn in uw regio. Zie [Azure Storage redundantie](../common/storage-redundancy.md)voor informatie over REGIO'S die ZRS ondersteunen.
 >
 > Vul deze [enquête](https://aka.ms/pfsfeedback)in om u te helpen bij het bepalen van de prioriteit van nieuwe regio's en de functies van de Premium-laag.
 
@@ -155,41 +155,14 @@ Nieuwe bestands shares beginnen met het volledige aantal tegoeden in de burst-Bu
 
 ## <a name="file-share-redundancy"></a>Redundantie van bestands share
 
-Azure Files standaard shares ondersteunt vier opties voor gegevens redundantie: lokaal redundante opslag (LRS), zone redundant Storage (ZRS), geografisch redundante opslag (GRS) en geo-zone-redundante opslag (GZRS) (preview).
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-Azure Files Premium-shares ondersteunen zowel LRS als ZRS. ZRS is momenteel beschikbaar in een kleinere subset van regio's.
-
-In de volgende secties worden de verschillen tussen de verschillende redundantie opties beschreven:
-
-### <a name="locally-redundant-storage"></a>Lokaal redundante opslag
-
-[!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
-
-### <a name="zone-redundant-storage"></a>Zone redundante opslag
-
-[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
-
-### <a name="geo-redundant-storage"></a>Geografisch redundante opslag
+Als u kiest voor geografisch redundante opslag met lees toegang (RA-GRS), moet u weten dat Azure-bestand op dit moment geen ondersteuning biedt voor geografisch redundante opslag met lees toegang (RA-GRS). Bestands shares in het RA-GRS-opslag account werken zoals in GRS-accounts en worden GRS-prijzen in rekening gebracht.
 
 > [!Warning]  
 > Als u uw Azure-bestands share als een Cloud-eind punt in een GRS-opslag account gebruikt, mag u de failover van het opslag account niet starten. Als u dat wel doet, werkt de synchronisatie niet meer en kan dit leiden tot onverwacht gegevensverlies van bestanden in cloudlagen. In het geval van een verlies van een Azure-regio, zal micro soft de failover van het opslag account activeren op een manier die compatibel is met Azure File Sync.
 
-Geografisch redundante opslag (GRS) is ontworpen om ten minste 99.99999999999999% (16 9) duurzaamheid van objecten over een bepaald jaar te bieden door uw gegevens te repliceren naar een secundaire regio die honderden kilo meters van de primaire regio is. Als voor uw opslag account GRS is ingeschakeld, zijn uw gegevens duurzaam, zelfs in het geval van een volledige regionale onderbreking of een ramp waarbij de primaire regio niet kan worden hersteld.
-
-Als u kiest voor geografisch redundante opslag met lees toegang (RA-GRS), moet u weten dat Azure-bestand op dit moment geen ondersteuning biedt voor geografisch redundante opslag met lees toegang (RA-GRS). Bestands shares in het RA-GRS-opslag account werken zoals in GRS-accounts en worden GRS-prijzen in rekening gebracht.
-
-GRS repliceert uw gegevens naar een ander Data Center in een secundaire regio, maar deze gegevens zijn alleen-lezen als micro soft een failover initieert van de primaire naar de secundaire regio.
-
-Voor een opslag account waarvoor GRS is ingeschakeld, worden alle gegevens eerst gerepliceerd met lokaal redundante opslag (LRS). Een update wordt eerst doorgevoerd op de primaire locatie en gerepliceerd met behulp van LRS. De update wordt vervolgens asynchroon gerepliceerd naar de secundaire regio met behulp van GRS. Wanneer gegevens naar de secundaire locatie worden geschreven, worden deze ook gerepliceerd binnen die locatie met behulp van LRS.
-
-De primaire en secundaire regio's beheren replica's in afzonderlijke fout domeinen en upgraden domeinen binnen een opslag schaal eenheid. De eenheid voor opslag schaal is de basis replicatie-eenheid binnen het Data Center. Replicatie op dit niveau wordt verzorgd door LRS. Zie voor meer informatie [lokaal redundante opslag (LRS): lage kosten voor gegevens redundantie voor Azure Storage](../common/storage-redundancy-lrs.md).
-
-Houd bij het bepalen van de te gebruiken replicatie optie de volgende punten in acht:
-
-* Geo-zone-redundante opslag (GZRS) biedt een hoge Beschik baarheid en maximale duurzaamheid door gegevens synchroon te repliceren over drie Azure-beschikbaarheids zones en vervolgens gegevens asynchroon te repliceren naar de secundaire regio. U kunt ook lees toegang tot de secundaire regio inschakelen. GZRS is ontworpen om ten minste 99.99999999999999% (16 9) duurzaamheid van objecten in een bepaald jaar te bieden. Zie [geo-zone-redundante opslag voor hoge Beschik baarheid en maximale duurzaamheid (preview)](../common/storage-redundancy-gzrs.md)voor meer informatie over GZRS.
-* Zone-redundante opslag (ZRS) biedt een hoge Beschik baarheid met synchrone replicatie en is mogelijk een betere keuze voor sommige scenario's dan GRS. Zie [ZRS](../common/storage-redundancy-zrs.md)voor meer informatie over ZRS.
-* Asynchrone replicatie vergt een vertraging van de tijd dat gegevens naar de primaire regio worden geschreven, naar wanneer deze wordt gerepliceerd naar de secundaire regio. In het geval van een regionale ramp kunnen wijzigingen die nog niet zijn gerepliceerd naar de secundaire regio, verloren gaan als de gegevens niet kunnen worden hersteld vanuit de primaire regio.
-* Met GRS is de replica niet beschikbaar voor lees-of schrijf toegang tenzij micro soft een failover naar de secundaire regio initieert. In het geval van een failover hebt u lees-en schrijf toegang tot deze gegevens nadat de failover is voltooid. Zie [richt lijnen voor herstel na nood gevallen](../common/storage-disaster-recovery-guidance.md)voor meer informatie.
+Azure Files Premium-shares ondersteunen zowel LRS als ZRS. ZRS is momenteel beschikbaar in een kleinere subset van regio's.
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>Onboarding naar grotere bestands shares (Standard-laag)
 

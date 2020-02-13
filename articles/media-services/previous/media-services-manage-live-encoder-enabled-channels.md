@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: ec34ed723e9b0743a9a5fbbe6413659dd63b0e8a
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134916"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162528"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Live streamen met Azure Media Services om multi-bitrate streams te maken
 
@@ -31,7 +31,7 @@ ms.locfileid: "77134916"
 In Azure Media Services (AMS) vertegenwoordigt een **kanaal** een pijp lijn voor het verwerken van live streaming-inhoud. Een **kanaal** ontvangt Live-invoer stromen op een van de volgende twee manieren:
 
 * Een on-premises Live Encoder verzendt een stream met één bitsnelheid naar het kanaal dat is ingeschakeld voor het uitvoeren van Live code ring met Media Services in een van de volgende indelingen: RTMP of Smooth Streaming (gefragmenteerde MP4). Het kanaal codeert de inkomende single-bitrate stream vervolgens live naar een (adaptieve) multi-bitrate videostream. Desgevraagd levert Media Services de stream aan klanten.
-* Een on-premises Live Encoder verzendt een multi-bitrate **RTMP** -of **Smooth streaming** (gefragmenteerde MP4) naar het kanaal dat niet is ingeschakeld voor het uitvoeren van Live code ring met AMS. De opgenomen streams passeren door **kanaal**s zonder verdere verwerking. Deze methode wordt **Pass-Through**genoemd. U kunt de volgende Live coderings Programma's gebruiken die multi-bitrate Smooth Streaming uitvoeren: MediaExcel, Ateme, denk aan communicatie, Envivio, Cisco en elementair. De volgende Live coderings Programma's uitvoeren RTMP: Telestream Wirecast, Haivision, Teradek en TriCaster encoder.  Een live coderingsprogramma kan ook een stream met één bitsnelheid verzenden naar een kanaal dat niet is ingeschakeld voor Live Encoding, maar dit wordt niet aanbevolen. Desgevraagd levert Media Services de stream aan klanten.
+* Een on-premises Live Encoder verzendt een multi-bitrate **RTMP** -of **Smooth streaming** (gefragmenteerde MP4) naar het kanaal dat niet is ingeschakeld voor het uitvoeren van Live code ring met AMS. De opgenomen streams passeren door **kanaal**s zonder verdere verwerking. Deze methode wordt **Pass-Through**genoemd. U kunt de volgende Live coderings Programma's gebruiken die multi-bitrate Smooth Streaming uitvoeren: MediaExcel, Ateme, denk aan communicatie, Envivio, Cisco en elementair. De volgende Live coderings Programma's uitvoeren RTMP: [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Haivision, Teradek en TriCaster encoder.  Een live coderingsprogramma kan ook een stream met één bitsnelheid verzenden naar een kanaal dat niet is ingeschakeld voor Live Encoding, maar dit wordt niet aanbevolen. Desgevraagd levert Media Services de stream aan klanten.
 
   > [!NOTE]
   > Het gebruik van een Pass-Through-methode is de voordeligste manier om live streamen uit te voeren.
@@ -146,7 +146,7 @@ Overwegingen:
 * sampling frequentie van 44,1 kHz
 * ADTS-verpakking met MPEG-2-stijl
 * De aanbevolen encoders zijn onder andere:
-* Telestream-Wirecast
+* [Telestream-Wirecast](media-services-configure-wirecast-live-encoder.md)
 * Flash Media Live Encoder
 
 #### <a name="single-bitrate-fragmented-mp4-smooth-streaming"></a>Single-bitrate Fragmented MP4 (Smooth Streaming);

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: acd02f143fe35edd867ce26f26a4cba74bd6f10b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6439393b72eb724ca017edc17ce7a7c36c275fca
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847340"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166968"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Opmerkingen voor ontwikkel aars voor aangepast beleid in Azure Active Directory B2C
 
@@ -72,7 +72,7 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 | OAUTH1 Relying Party |  |  |  | Wordt niet ondersteund. |
 | OAUTH2 Relying Party |  |  | X |  |
 | OIDC Relying Party |  |  | X |  |
-| SAML voor Relying Party | X |  |  |  |
+| SAML voor Relying Party |  |X  |  |  |
 | WSFED Relying Party | X |  |  |  |
 | REST API met basis-en certificaat verificatie |  |  | X | Bijvoorbeeld Azure Logic Apps. |
 
@@ -80,12 +80,12 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 
 | Functie | Ontwikkeling | Preview | Algemene beschikbaarheid | Opmerkingen |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Azure Multi Factor Authentication |  |  | X |  |
+| Multi-factor Authentication van Azure |  |  | X |  |
 | Azure Active Directory als lokale map |  |  | X |  |
 | Azure-e-mail subsysteem voor verificatie via e-mail |  |  | X |  |
 | Ondersteuning voor meerdere talen|  |  | X |  |
 | Validatie van predikaten |  |  | X | Bijvoorbeeld wachtwoord complexiteit. |
-| E-mail providers van derden gebruiken | X |  |  |  |
+| E-mail providers van derden gebruiken |  |X  |  |  |
 
 ### <a name="content-definition"></a>Inhouds definitie
 

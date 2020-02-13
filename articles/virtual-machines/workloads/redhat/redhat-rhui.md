@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 2d6b6c03d7726a5a40a2eb1e6cf60c0342791c46
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e4213e67d9d752f3fc6450236b41e8bbf61f9957
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133774"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169311"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure voor on-demand Red Hat Enterprise Linux-machines in Azure
  Met de [Red Hat Update infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) kunnen cloud providers, zoals Azure, gehoste inhoud van een opslag plaats met Red Hat worden gespiegeld, aangepaste opslag plaatsen met Azure-specifieke inhoud maken en deze beschikbaar maken voor virtuele machines van eind gebruikers.
@@ -210,6 +210,30 @@ Deze procedure is alleen ter informatie bedoeld. Er is al de juiste configuratie
   ```bash
   yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
   ```
+
+- Voor RHEL 8:
+    1. Een configuratie bestand maken:
+        ```bash
+        vi rhel8.config
+        ```
+    1. Voeg de volgende inhoud toe aan het configuratie bestand:
+        ```bash
+        [rhui-microsoft-azure-rhel8]
+        name=Microsoft Azure RPMs for Red Hat Enterprise Linux 8
+        baseurl=https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-2.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-3.microsoft.com/pulp/repos/microsoft-azure-rhel8
+        enabled=1
+        gpgcheck=1
+        gpgkey=https://rhelimage.blob.core.windows.net/repositories/RPM-GPG-KEY-microsoft-azure-release sslverify=1
+        ```
+    1. Sla het bestand op en voer de volgende opdracht uit:
+        ```bash
+        dnf --config rhel8.config install 'rhui-azure-rhel8'
+        ```
+    1. Uw VM bijwerken
+        ```bash
+        sudo dnf update
+        ```
+
 
 ## <a name="next-steps"></a>Volgende stappen
 * Ga naar de [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/)om een Red Hat Enterprise Linux VM te maken op basis van een installatie kopie van Azure Marketplace payg en Azure-gehoste RHUI te gebruiken.

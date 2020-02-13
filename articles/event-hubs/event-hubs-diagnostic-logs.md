@@ -16,25 +16,25 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 12a20abb4014712f26e5827bcd1d3c822e8b25a1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750724"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162307"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnostische logboeken voor een Azure event hub instellen
 
 U kunt twee typen logboeken voor Azure Event Hubs bekijken:
 
-* **[Activiteitenlogboeken](../azure-monitor/platform/platform-logs-overview.md)** : deze logboeken zijn informatie over de bewerkingen die worden uitgevoerd op een andere taak. De logboeken zijn altijd ingeschakeld.
-* **[Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md)** : U kunt diagnostische logboeken voor een uitgebreidere weergave van alles wat er gebeurt met een taak configureren. Diagnostische logboeken voor activiteiten vanaf het moment dat de taak is gemaakt totdat de taak wordt verwijderd, met inbegrip van updates en activiteiten die plaatsvinden terwijl de taak wordt uitgevoerd.
+* **[Activiteiten logboeken](../azure-monitor/platform/platform-logs-overview.md)** : deze logboeken bevatten informatie over de bewerkingen die worden uitgevoerd op een taak. De logboeken zijn altijd ingeschakeld.
+* **[Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md)** : u kunt Diagnostische logboeken configureren voor een uitgebreidere weer gave van alles wat er gebeurt met een taak. Diagnostische logboeken voor activiteiten vanaf het moment dat de taak is gemaakt totdat de taak wordt verwijderd, met inbegrip van updates en activiteiten die plaatsvinden terwijl de taak wordt uitgevoerd.
 
 ## <a name="enable-diagnostic-logs"></a>Diagnostische logboeken inschakelen
 
 Diagnostische logboeken zijn standaard uitgeschakeld. Volg deze stappen zodat logboeken met diagnostische gegevens:
 
-1.  In de [Azure-portal](https://portal.azure.com)onder **bewaking en beheer**, klikt u op **diagnoselogboeken**.
+1.  Klik in de [Azure Portal](https://portal.azure.com)onder **controle en beheer**op **Diagnostische logboeken**.
 
     ![Deelvenster navigatie naar Logboeken met diagnostische gegevens](./media/event-hubs-diagnostic-logs/image1.png)
 
@@ -44,7 +44,7 @@ Diagnostische logboeken zijn standaard uitgeschakeld. Volg deze stappen zodat lo
 
     ![Logboeken met diagnostische gegevens inschakelen](./media/event-hubs-diagnostic-logs/image2.png)
 
-4.  Voor **Status**, klikt u op **op**.
+4.  Voor **status** **, klikt u op.**
 
     ![Wijzig de status van diagnostische logboeken](./media/event-hubs-diagnostic-logs/image3.png)
 
@@ -52,16 +52,16 @@ Diagnostische logboeken zijn standaard uitgeschakeld. Volg deze stappen zodat lo
 
 6.  De nieuwe instellingen voor diagnostische gegevens opslaan.
 
-Nieuwe instellingen van kracht in ongeveer 10 minuten. Hierna logboeken worden weergegeven in de geconfigureerde archivering doel, in de **diagnoselogboeken** deelvenster.
+Nieuwe instellingen van kracht in ongeveer 10 minuten. Daarna worden logboeken weer gegeven in het geconfigureerde archief doel in het deel venster **Diagnostische logboeken** .
 
-Zie voor meer informatie over het configureren van diagnostische gegevens over de [overzicht van diagnostische logboeken in Azure](../azure-monitor/platform/platform-logs-overview.md).
+Zie voor meer informatie over het configureren van diagnostische gegevens het [overzicht van Azure Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Categorieën van diagnostische logboeken
 
 Eventhubs vastleggen diagnostische logboeken voor twee categorieën:
 
-* **Logboeken archiveren**: logboeken die specifiek betrekking hebben op Event Hubs-archieven, logboeken met betrekking tot het archiveren van fouten.
-* **Operationele logboeken**: informatie over wat er gebeurt tijdens Event Hubs-bewerkingen, met name het bewerkingstype, met inbegrip van de event hub maken, resources die worden gebruikt en de status van de bewerking.
+* **Archief logboeken**: Logboeken gerelateerd aan Event hubs archieven, met name logboeken die betrekking hebben op archief fouten.
+* **Operationele logboeken**: informatie over wat er gebeurt tijdens Event hubs bewerkingen, met name het bewerkings type, inclusief Event hub maken, gebruikte resources en de status van de bewerking.
 
 ## <a name="diagnostic-logs-schema"></a>Diagnostische logboeken schema
 
@@ -71,14 +71,14 @@ Alle logboeken worden opgeslagen in JavaScript Object Notation (JSON)-indeling. 
 
 Archief log JSON-tekenreeksen zijn onder andere elementen die worden vermeld in de volgende tabel:
 
-Name | Beschrijving
+Naam | Beschrijving
 ------- | -------
 Taaknaam | Beschrijving van de taak die is mislukt.
 ActivityId | Interne ID, die wordt gebruikt voor het bijhouden.
 trackingId | Interne ID, die wordt gebruikt voor het bijhouden.
 resourceId | Azure Resource Manager resource-ID.
 eventHub | Event hub volledige naam (inclusief de naam van naamruimte).
-PartitionId | Event Hub-partitie wordt geschreven.
+partitionId | Event Hub-partitie wordt geschreven.
 archiveStep | ArchiveFlushWriter
 startTime | Begintijd van de fout.
 fouten | Aantal keren dat is een fout opgetreden.
@@ -109,7 +109,7 @@ De volgende code is een voorbeeld van een logboek archiveren JSON-tekenreeks:
 
 Operationeel logboek van JSON-tekenreeksen zijn onder andere elementen die worden vermeld in de volgende tabel:
 
-Name | Beschrijving
+Naam | Beschrijving
 ------- | -------
 ActivityId | Interne ID gebruikt voor het bijhouden van gebruik.
 EventName | Naam van de bewerking.  
@@ -139,6 +139,10 @@ Example:
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Inleiding tot Eventhubs](event-hubs-what-is-event-hubs.md)
-* [Event Hubs-API-overzicht](event-hubs-api-overview.md)
-* [Aan de slag met Event Hubs](event-hubs-dotnet-standard-getstarted-send.md)
+- [Inleiding tot Event Hubs](event-hubs-what-is-event-hubs.md)
+- [Event Hubs-API-overzicht](event-hubs-api-overview.md)
+- Aan de slag met Event Hubs
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)

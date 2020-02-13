@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 20b667ae345e468bcd3db25d85b7c9de561af4bc
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 447e8a67cedbb8f78e4db9602f603fefd382693c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111473"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162936"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>De follower-Data Base gebruiken om data bases in azure Data Explorer te koppelen
 
@@ -206,8 +206,8 @@ U kunt de Azure Resource Manager-sjabloon implementeren met [behulp van de Azure
 
 |**Instelling**  |**Beschrijving**  |
 |---------|---------|
-|Naam van follower-cluster     |  De naam van het opvolg cluster. Dit is het cluster waarop deze sjabloon wordt geïmplementeerd.  |
-|Naam van gekoppelde database configuraties    |    De naam van het gekoppelde database configuratie object. De naam kan elke wille keurige teken reeks zijn zolang deze uniek is op het cluster niveau.     |
+|Naam van follower-cluster     |  De naam van het opvolg cluster; waar de sjabloon wordt geïmplementeerd.  |
+|Naam van gekoppelde database configuraties    |    De naam van het gekoppelde database configuratie object. De naam kan elke wille keurige teken reeks zijn die uniek is op het cluster niveau.     |
 |Databasenaam     |      De naam van de data base die moet worden gevolgd. Als u alle data bases van de leider wilt volgen, gebruikt u *.   |
 |Resource-ID van Leader cluster    |   De resource-ID van het leider cluster.      |
 |Type aanpassing van standaard-principals    |   De standaard instelling voor het wijzigen van de principal. Kan `Union`, `Replace` of `None`zijn. Zie voor meer informatie over de standaard instelling voor het wijzigen van principals de [opdracht voor het wijzigen van het type Principal](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |

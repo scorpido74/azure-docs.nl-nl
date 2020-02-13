@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984843"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169838"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning Compute-instantie?
 
@@ -26,9 +26,6 @@ Gebruik een reken instantie als uw volledig geconfigureerde en beheerde ontwikke
 
 Reken instanties worden meestal gebruikt als ontwikkel omgevingen.  Ze kunnen ook worden gebruikt als een reken doel voor training en voor het afleiden van ontwikkel-en test doeleinden.  Voor grote taken is een [Azure machine learning Compute-Cluster](how-to-set-up-training-targets.md#amlcompute) met schaal mogelijkheden voor meerdere knoop punten een betere reken doel keuze.
 
-> [!NOTE]
-> Reken instanties zijn momenteel alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS**, **VS-oost 2**, **Europa-Noord** of **UK-Zuid**, met ondersteuning voor andere regio's binnenkort.
->Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken. 
 
 ## <a name="why-use-a-compute-instance"></a>Waarom een reken instantie gebruiken?
 
@@ -52,7 +49,7 @@ Deze hulpprogram ma's en omgevingen zijn geïnstalleerd op het reken exemplaar:
 |----|:----:|
 |Stuurprogramma's|`CUDA`</br>`cuDNN`</br>`NVIDIA`</br>`Blob FUSE` |
 |Intel MPI-bibliotheek||
-|Azure-CLI ||
+|Azure CLI ||
 |Azure Machine Learning-voor beelden ||
 |EDAT-engine Azure Machine Learning ||
 |Docker||
@@ -68,11 +65,11 @@ Deze hulpprogram ma's en omgevingen zijn geïnstalleerd op het reken exemplaar:
 
 |**PYTHON** -hulpprogram ma's & omgevingen|Details|
 |----|----|
-|Anaconda Python||
+|Anaconda python||
 |Jupyter en-extensies||
 |Jjupyterlab en-extensies||
 |Visual Studio Code ||
-[Azure Machine Learning-SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>van PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
+[Azure Machine Learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>van PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
 |Andere PyPI-pakketten|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-pakketten|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Uitgebreide leer pakketten|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -124,7 +121,7 @@ U kunt de volgende acties uitvoeren:
 
 Voor elk reken exemplaar in uw werk ruimte kunt u het volgende doen:
 
-* Toegang tot Jupyter, Jjupyterlab, RStudio en VS code-Uri's op het reken exemplaar
+* Toegang tot Jupyter, Jjupyterlab, RStudio op het reken exemplaar
 * SSH naar Compute-instantie. SSH-toegang is standaard uitgeschakeld, maar kan worden ingeschakeld op het moment dat het reken proces wordt gemaakt. SSH-toegang is via het mechanisme voor open bare/persoonlijke sleutels. Op het tabblad krijgt u details over SSH-verbindingen zoals IP-adres, gebruikers naam en poort nummer.
 * Details ophalen over een specifiek reken exemplaar, zoals het IP-adres en de regio.
 

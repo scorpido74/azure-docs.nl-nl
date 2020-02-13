@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274541"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157262"
 ---
 # <a name="storage-account-overview"></a>Overzicht van opslagaccounts
 
@@ -33,8 +33,8 @@ V2-opslag accounts voor algemeen gebruik ondersteunen de nieuwste functies van A
 - Blobs (alle typen: blok keren, toevoegen, pagina)
 - Data Lake Gen2
 - Bestanden
-- Schijven
-- Queues
+- Disks
+- Wachtrijen
 - Tabellen
 
 > [!NOTE]
@@ -50,8 +50,8 @@ V1-opslag accounts voor algemeen gebruik bieden toegang tot alle Azure Storage-s
 
 - Blobs (alle typen)
 - Bestanden
-- Schijven
-- Queues
+- Disks
+- Wachtrijen
 - Tabellen
 
 In de meeste gevallen moet u v2-accounts voor algemeen gebruik gebruiken. U kunt voor deze scenario's algemene v1-accounts gebruiken:
@@ -115,11 +115,9 @@ Als er een wijziging is in het gebruiks patroon van uw gegevens, kunt u op elk g
 > [!IMPORTANT]
 > Als u de toegangs laag voor een bestaand opslag account of BLOB wijzigt, kunnen er extra kosten in rekening worden gebracht. Zie de sectie facturering van het [opslag account](#storage-account-billing)voor meer informatie.
 
-## <a name="replication"></a>Replicatie
+## <a name="redundancy"></a>Redundantie
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-Zie [Azure storage-replicatie](storage-redundancy.md)voor meer informatie over opslag replicatie.
 
 ## <a name="encryption"></a>Versleuteling
 

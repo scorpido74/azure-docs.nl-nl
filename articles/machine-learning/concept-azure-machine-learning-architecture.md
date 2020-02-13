@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 927014ed0c2b261351df786ad8a6b56f20c573a8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5f5522201534a54f5d132257553469eed5addab3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984860"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169875"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -29,8 +29,8 @@ De werk stroom voor het machine learning model volgt doorgaans deze reeks:
 
 1. **Leerling**
     + Ontwikkel machine learning trainings scripts in **python** of met de visuele ontwerper.
-    + Maken en configureren van een **compute-doel**.
-    + **Verzenden van de scripts** naar de geconfigureerde compute-doel om uit te voeren in die omgeving. Tijdens de training kunnen de scripts lezen uit of schrijven naar de **gegevens opslag**. En de uitvoerings records worden opgeslagen als **uitgevoerd** in de **werk ruimte** en gegroepeerd onder **experimenten**.
+    + Een **reken doel**maken en configureren.
+    + **Verzend de scripts** naar het geconfigureerde Compute-doel om in die omgeving uit te voeren. Tijdens de training kunnen de scripts lezen uit of schrijven naar de **gegevens opslag**. En de uitvoerings records worden opgeslagen als **uitgevoerd** in de **werk ruimte** en gegroepeerd onder **experimenten**.
 
 1. **Pakket** -nadat een bevredigende uitvoering is gevonden, registreert u het persistente model in het **model register**.
 
@@ -63,15 +63,15 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
 + <a href="#experiments">Experimenten</a>
 + <a href="#github-tracking-and-integration">Git-tracking</a>
 + <a href="#iot-module-endpoints">IoT-modules</a>
-+ <a href="#logging">Logboekregistratie</a>
++ <a href="#logging">Userenv</a>
 + <a href="#ml-pipelines">ML-pijp lijnen</a>
-+ <a href="#models">Models</a>
-+ <a href="#runs">Uitvoeren</a>
++ <a href="#models">Basis</a>
++ <a href="#runs">Uitvoeringsrun</a>
 + <a href="#run-configurations">Configuratie uitvoeren</a>
 + <a href="#snapshots">Snapshot</a>
 + <a href="#training-scripts">Trainings script</a>
 + <a href="#web-service-endpoint">Webservices</a>
-+ <a href="#workspaces">Workspace</a>
++ <a href="#workspaces">Werk ruimte</a>
 
 ### <a name="activities"></a>Activiteiten
 
@@ -84,9 +84,6 @@ Activiteiten kunnen meldingen geven via de SDK of de Web-UI, zodat u de voortgan
 
 ### <a name="compute-instance"></a>Reken instantie (preview-versie)
 
-> [!NOTE]
-> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS**, **VS-oost 2**, **Europa-Noord** of **UK-Zuid**, met ondersteuning voor andere regio's binnenkort.
->Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken. 
 
 Een **Azure machine learning Compute-instantie** (voorheen laptop-VM) is een volledig beheerd werk station in de Cloud met meerdere hulpprogram ma's en omgevingen die voor machine learning zijn geïnstalleerd. Reken instanties kunnen worden gebruikt als een reken doel voor trainings-en detraining-taken. Voor grote taken is het [Azure machine learning compute-clusters](how-to-set-up-training-targets.md#amlcompute) met schaal mogelijkheden voor meerdere knoop punten een betere reken doel keuze.
 
@@ -176,7 +173,7 @@ U kunt de stappen van de pijp lijn herbruikbaresen en uitvoeren zonder de volgen
 
 Zie [pijp lijnen en Azure machine learning](concept-ml-pipelines.md)voor meer informatie over het machine learning pijp lijnen met deze service.
 
-### <a name="models"></a>Modellen
+### <a name="models"></a>Basis
 
 De eenvoudigste is een model een stukje code dat een invoer en uitvoer wordt geproduceerd. Het maken van een machine learning-model omvat het selecteren van een algoritme, voorzien van deze gegevens en afstemmen van hyperparameters. Training is een iteratief proces dat een getraind model produceert, wat het model hebt geleerd tijdens de training ingekapseld.
 
@@ -199,7 +196,7 @@ U kunt een geregistreerd model dat wordt gebruikt door een actieve implementatie
 
 Zie voor een voor beeld van het registreren van een model [een afbeeldings classificatie model trainen met Azure machine learning](tutorial-train-models-with-aml.md).
 
-### <a name="runs"></a>Uitvoerbewerkingen
+### <a name="runs"></a>Methode
 
 Een uitvoering is één uitvoering van een trainings script. Azure Machine Learning registreert alle uitvoeringen en slaat de volgende informatie op:
 
@@ -230,7 +227,7 @@ Als u wilt een model te trainen, moet u de map waarin het trainingsscript en de 
 
 Zie [zelf studie: een classificatie model voor een installatie kopie trainen met Azure machine learning](tutorial-train-models-with-aml.md)voor een voor beeld.
 
-### <a name="workspaces"></a>Werkruimten
+### <a name="workspaces"></a>Workspaces
 
 [De werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor Azure machine learning. Het biedt een centrale locatie voor het werken met alle artefacten die u maakt wanneer u Azure Machine Learning gebruikt. U kunt een werk ruimte delen met anderen. Zie [Wat is een Azure machine learning-werk ruimte?](concept-workspace.md)voor een gedetailleerde beschrijving van werk ruimten.
 
@@ -239,5 +236,5 @@ Zie [zelf studie: een classificatie model voor een installatie kopie trainen met
 Om aan de slag te gaan met Azure Machine Learning raadpleegt u:
 
 * [Wat is Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md)
+* [Een Azure Machine Learning-werk ruimte maken](how-to-manage-workspace.md)
 * [Zelf studie (deel 1): een model trainen](tutorial-train-models-with-aml.md)

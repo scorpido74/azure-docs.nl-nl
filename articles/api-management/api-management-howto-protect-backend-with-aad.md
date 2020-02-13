@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: cbcd3d27da3aff66e1dc6758af8a573666c0bbbe
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
-ms.translationtype: MT
+ms.openlocfilehash: 213e5523c0c99309c3244e19a406a7b82297188f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121406"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161797"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Een API beveiligen met behulp van OAuth 2,0 met Azure Active Directory en API Management
 
@@ -212,7 +212,7 @@ U kunt de [validatie JWT](api-management-access-restriction-policies.md#Validate
 
 ## <a name="build-an-application-to-call-the-api"></a>Een toepassing bouwen om de API aan te roepen
 
-In deze hand leiding hebt u de ontwikkelaars console in API Management gebruikt als de voor beeld-client toepassing om de `Echo API` te roepen die wordt beveiligd door OAuth 2,0. Zie [Azure Active Directory code voorbeelden](../active-directory/develop/sample-v1-code.md)voor meer informatie over het bouwen van een toepassing en het implementeren van OAuth 2,0.
+In deze hand leiding hebt u de ontwikkelaars console in API Management gebruikt als de voor beeld-client toepassing om de `Echo API` te roepen die wordt beveiligd door OAuth 2,0. Zie [Azure Active Directory code voorbeelden](../active-directory/develop/sample-v2-code.md)voor meer informatie over het bouwen van een toepassing en het implementeren van OAuth 2,0.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over [Azure Active Directory en OAuth 2.0](../active-directory/develop/authentication-scenarios.md).

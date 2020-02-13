@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/12/2019
-ms.openlocfilehash: f088b8210b8170d22e84d131f0a72f5f8caa3b92
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: f8737f645df2aefbf9ce544199f0cc45ce6a3d60
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435216"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162800"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Apache Spark uitvoeren vanuit de Spark-shell
 
@@ -27,29 +27,74 @@ Een interactieve [Apache Spark](https://spark.apache.org/) shell biedt een repl-
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Spark biedt shells voor scala (Spark-shell) en python (pyspark). Voer in uw SSH-sessie een van de volgende opdrachten in:
+1. Spark biedt shells voor scala (Spark-shell) en python (pyspark). Voer in uw SSH-sessie *een* van de volgende opdrachten in:
 
     ```bash
     spark-shell
-    pyspark
+
+    # Optional configurations
+    # spark-shell --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
     ```
 
-    U kunt nu Spark-opdrachten invoeren in de juiste taal.
+    ```bash
+    pyspark
 
-1. Enkele eenvoudige voorbeeld opdrachten:
+    # Optional configurations
+    # pyspark --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
+    ```
+
+    Als u een optionele configuratie wilt gebruiken, controleert u eerst de [OutOfMemoryError-uitzonde ring voor Apache Spark](./apache-spark-troubleshoot-outofmemory.md).
+
+1. Enkele eenvoudige voorbeeld opdrachten. Kies de relevante taal:
+
+    ```spark-shell
+    val textFile = spark.read.textFile("/example/data/fruits.txt")
+    textFile.first()
+    textFile.filter(line => line.contains("apple")).show()
+    ```
+
+    ```pyspark
+    textFile = spark.read.text("/example/data/fruits.txt")
+    textFile.first()
+    textFile.filter(textFile.value.contains("apple")).show()
+    ```
+
+1. Een query uitvoeren op een CSV-bestand. Opmerking de onderstaande taal werkt voor `spark-shell` en `pyspark`.
 
     ```scala
-    // Load data
+    spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
+    ```
+
+1. Een query uitvoeren op een CSV-bestand en de resultaten opslaan in een variabele:
+
+    ```spark-shell
     var data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+    ```
 
-    // Show data
+    ```pyspark
+    data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+    ```
+
+1. Resultaten weer geven:
+
+    ```spark-shell
     data.show()
-
-    // Select certain columns
     data.select($"BuildingID", $"Country").show(10)
+    ```
 
-    // exit shell
+    ```pyspark
+    data.show()
+    data.select("BuildingID", "Country").show(10)
+    ```
+
+1. Afsluiten
+
+    ```spark-shell
     :q
+    ```
+
+    ```pyspark
+    exit()
     ```
 
 ## <a name="sparksession-and-sparkcontext-instances"></a>SparkSession-en SparkContext-instanties
@@ -62,7 +107,7 @@ Voer `spark`in om toegang te krijgen tot het SparkSession-exemplaar. Voer `sc`in
 
 De Spark shell-opdracht (`spark-shell`of `pyspark`) ondersteunt veel opdracht regel parameters. Als u een volledige lijst met para meters wilt weer geven, start u de Spark-shell met de switch `--help`. Sommige van deze para meters zijn mogelijk alleen van toepassing op `spark-submit`, die door de Spark-shell worden ingepakt.
 
-| schakelen | description | Voorbeeld |
+| /tijdnotatie | description | Voorbeeld |
 | --- | --- | --- |
 | --master MASTER_URL | Hiermee geeft u de hoofd-URL op. In HDInsight is deze waarde altijd `yarn`. | `--master yarn`|
 | --potten JAR_LIST | Een door komma's gescheiden lijst met lokale potten die moeten worden toegevoegd aan het stuur programma en de namen van de uitvoerder. In HDInsight bestaat deze lijst uit paden naar het standaard bestands systeem in Azure Storage of Data Lake Storage. | `--jars /path/to/examples.jar` |

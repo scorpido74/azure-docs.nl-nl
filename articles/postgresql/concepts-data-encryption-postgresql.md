@@ -6,21 +6,21 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 917dc85672fcc5e4c3f1431f80d1f6eb68207392
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 125f92b64ee745a595d15ccacafb6a62414955a9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050039"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157530"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel
 
 > [!NOTE]
 > Op dit moment moet u toegang aanvragen om deze mogelijkheid te gebruiken. Als u dit wilt doen, neemt u contact op met AskAzureDBforPostgreSQL@service.microsoft.com.
 
-Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel, kunt u Bring Your Own Key (BYOK) voor gegevens bescherming in rust. Ook kunnen organisaties een schei ding van taken implementeren in het beheer van sleutels en gegevens. Met door de klant beheerde versleuteling bent u verantwoordelijk voor en in een volledig beheer van de levens cyclus van een sleutel, de machtigingen voor sleutel gebruik en het controleren van bewerkingen op sleutels.
+Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for PostgreSQL één server biedt u de mogelijkheid om uw QWN-sleutel (BYOK) voor gegevens beveiliging in rust te brengen. Ook kunnen organisaties een schei ding van taken implementeren in het beheer van sleutels en gegevens. Met door de klant beheerde versleuteling bent u verantwoordelijk voor en in een volledig beheer van de levens cyclus van een sleutel, de machtigingen voor sleutel gebruik en het controleren van bewerkingen op sleutels.
 
-Voor Azure Database for PostgreSQL Eén server stelt u gegevens versleuteling in op server niveau. Met deze vorm van gegevens versleuteling gebruikt u de sleutel in de versleuteling van de gegevens versleutelings sleutel (DEK). De DEK is een door de klant beheerde asymmetrische sleutel die is opgeslagen in een door de klant en door de klant beheerd [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) exemplaar. DEK wordt verderop in dit artikel uitgebreid beschreven.
+Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for PostgreSQL één server, wordt ingesteld op server niveau. Voor een bepaalde server wordt een door de klant beheerde sleutel, de sleutel versleutelings sleutel (KEK), gebruikt om de gegevens versleutelings sleutel (DEK) te versleutelen die door de service wordt gebruikt. De KEK is een asymmetrische sleutel die is opgeslagen in een [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) exemplaar van een klant en door de klant wordt beheerd. De sleutel versleutelings sleutel (KEK) en de gegevens versleutelings sleutel (DEK) wordt verderop in dit artikel uitvoeriger beschreven.
 
 Key Vault is een op de cloud gebaseerd extern systeem voor sleutel beheer. Het is Maxi maal beschikbaar en biedt schaal bare, veilige opslag voor RSA cryptografische sleutels, optioneel ondersteund door FIPS 140-2 level 2 gevalideerde hardware security modules (Hsm's). Het biedt geen directe toegang tot een opgeslagen sleutel, maar biedt ook services voor versleuteling en ontsleuteling naar gemachtigde entiteiten. Key Vault kunt de sleutel genereren, importeren of [laten overzetten van een on-premises HSM-apparaat](../key-vault/key-Vault-hsm-protected-keys.md).
 
@@ -31,11 +31,10 @@ Key Vault is een op de cloud gebaseerd extern systeem voor sleutel beheer. Het i
 
 Gegevens versleuteling voor Azure Database for PostgreSQL één server biedt de volgende voor delen:
 
-* Grotere transparantie, gedetailleerdere controle en beheer voor de versleutelings sleutel.
-* Centraal beheer en de organisatie van sleutels door ze te hosten in Azure Key Vault.
-* De mogelijkheid om schei ding van taken te implementeren in het beheer van sleutels en gegevens binnen de organisatie.
-* De mogelijkheid om sleutel beheer te scheiden van gegevens beheer binnen een organisatie, zodat een Key Vault beheerder de belangrijkste toegangs machtigingen kan intrekken om een versleutelde data base ontoegankelijk te maken.
-* Meer vertrouwen van uw eind gebruikers, omdat micro soft de versleutelings sleutels in Key Vault niet kan zien of extra heren.
+* Gegevens toegang wordt volledig beheerd door u door de mogelijkheid om de sleutel te verwijderen en de data base ontoegankelijk te maken. 
+*   Volledige controle over de levens cyclus van de sleutel, inclusief het draaien van de sleutel die moet worden uitgelijnd met bedrijfs beleid
+*   Centraal beheer en organisatie van sleutels in Azure Key Vault
+*   Mogelijkheid om schei ding van taken te implementeren tussen beveiligings ambtenaren en DBA en systeem beheerders
 
 ## <a name="terminology-and-description"></a>Terminologie en beschrijving
 

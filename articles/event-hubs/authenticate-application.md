@@ -6,17 +6,17 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: cce96039ca3883e0ea5ea0b738e0f6e2e079262d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 4256cebe44b732b190ef1666d0438d17e058b820
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996198"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169295"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Een toepassing verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs resources
-Microsoft Azure biedt geïntegreerde toegangsbeheer voor bronnen en toepassingen op basis van Azure Active Directory (Azure AD). Een belang rijk voor deel van het gebruik van Azure AD met Azure Event Hubs is dat u uw referenties niet meer hoeft op te slaan in de code. In plaats daarvan kunt u een OAuth 2,0-toegangs token aanvragen bij het micro soft Identity-platform. De resource naam voor het aanvragen van een `https://eventhubs.azure.net/`token is. Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of Service-Principal) die de toepassing uitvoert. Als de verificatie slaagt, retourneert Azure AD een toegangs token voor de toepassing en kan de toepassing vervolgens het toegangs token gebruiken om een aanvraag voor Azure Event Hubs-resources te autoriseren.
+Microsoft Azure biedt geïntegreerde toegangsbeheer voor bronnen en toepassingen op basis van Azure Active Directory (Azure AD). Een belang rijk voor deel van het gebruik van Azure AD met Azure Event Hubs is dat u uw referenties niet meer hoeft op te slaan in de code. In plaats daarvan kunt u een OAuth 2,0-toegangs token aanvragen bij het micro soft Identity-platform. De resource naam voor het aanvragen van een token is `https://eventhubs.azure.net/`. Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of Service-Principal) die de toepassing uitvoert. Als de verificatie slaagt, retourneert Azure AD een toegangs token voor de toepassing en kan de toepassing vervolgens het toegangs token gebruiken om een aanvraag voor Azure Event Hubs-resources te autoriseren.
 
 Wanneer een rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, de Event Hubs naam ruimte of een andere resource. Een Azure AD-beveiliging kan rollen toewijzen aan een gebruiker, een groep, een service-principal voor de toepassing of een [beheerde identiteit voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md). 
 
@@ -26,9 +26,9 @@ Wanneer een rol is toegewezen aan een Azure AD-beveiligings-principal, verleent 
 ## <a name="built-in-roles-for-azure-event-hubs"></a>Ingebouwde rollen voor Azure Event Hubs
 Azure biedt de volgende ingebouwde RBAC-rollen voor het verlenen van toegang tot Event Hubs gegevens met behulp van Azure AD en OAuth:
 
-- [Eigenaar van Azure Event hubs-gegevens](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Gebruik deze rol om volledige toegang tot Event Hubs resources te geven.
-- [Afzender van Azure Event hubs gegevens](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Gebruik deze rol om toegang te krijgen tot Event Hubs-resources.
-- [Gegevens ontvanger van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Gebruik deze rol om toegang te krijgen tot Event Hubs-resources.   
+- [Azure Event hubs-gegevens eigenaar](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): gebruik deze rol om volledige toegang tot Event hubs resources te geven.
+- [Gegevens verzender van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): gebruik deze rol om toegang te geven tot Event hubs-resources.
+- [Gegevens ontvanger van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): gebruik deze rol om toegang te krijgen tot Event hubs resources.   
 
 > [!IMPORTANT]
 > De preview-versie ondersteunt het toevoegen van Event Hubs rechten voor gegevens toegang aan de rol eigenaar of bijdrager. De bevoegdheden voor gegevens toegang voor de rol eigenaar en Inzender worden echter niet meer nageleefd. Als u de rol eigenaar of Inzender gebruikt, schakelt u over naar het gebruik van de functie Azure Event Hubs-gegevens eigenaar.
@@ -67,10 +67,10 @@ Een belang rijk voor deel van het gebruik van Azure AD met Event Hubs is dat uw 
 
 In de volgende secties ziet u hoe u uw systeem eigen toepassing of webtoepassing kunt configureren voor verificatie met het micro soft Identity-platform 2,0. Zie [overzicht van micro soft Identity platform (v 2.0)](../active-directory/develop/v2-overview.md)voor meer informatie over micro soft identity platform 2,0.
 
-Zie voor een overzicht van de OAuth 2.0-stroom voor het verlenen van code, [autoriseren de toegang tot Azure Active Directory web-apps met behulp van de OAuth 2.0-code verlenen stroom](../active-directory/develop/v2-oauth2-auth-code-flow.md).
+Zie [toegang tot Azure Active Directory webtoepassingen verlenen met behulp van de oauth 2,0 code Grant flow](../active-directory/develop/v2-oauth2-auth-code-flow.md)voor een overzicht van de OAuth 2,0-code subsidie stroom.
 
 ### <a name="register-your-application-with-an-azure-ad-tenant"></a>Uw toepassing registreren bij een Azure AD-tenant
-De eerste stap bij het gebruik van Azure AD om Event Hubs resources te autoriseren, registreert uw client toepassing met een Azure AD-Tenant vanuit de [Azure Portal](https://portal.azure.com/). Wanneer u uw client toepassing registreert, geeft u informatie over de toepassing op AD. Azure AD biedt vervolgens een client-ID (ook wel een toepassings-ID genoemd) die u kunt gebruiken om uw toepassing te koppelen aan Azure AD runtime. Zie voor meer informatie over de client-ID, [toepassing en service-principalobjecten in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). 
+De eerste stap bij het gebruik van Azure AD om Event Hubs resources te autoriseren, registreert uw client toepassing met een Azure AD-Tenant vanuit de [Azure Portal](https://portal.azure.com/). Wanneer u uw client toepassing registreert, geeft u informatie over de toepassing op AD. Azure AD biedt vervolgens een client-ID (ook wel een toepassings-ID genoemd) die u kunt gebruiken om uw toepassing te koppelen aan Azure AD runtime. Zie voor meer informatie over de client-ID [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). 
 
 De volgende afbeeldingen tonen stappen voor het registreren van een webtoepassing:
 
@@ -83,7 +83,7 @@ Nadat u uw toepassing hebt geregistreerd, ziet u de **toepassings-id (client)** 
 
 ![Toepassings-ID van de geregistreerde toepassing](./media/authenticate-application/application-id.png)
 
-Zie voor meer informatie over het registreren van een toepassing met Azure AD [toepassingen integreren met Azure Active Directory](../active-directory/develop/quickstart-v2-register-an-app.md).
+Zie [toepassingen integreren met Azure Active Directory](../active-directory/develop/quickstart-v2-register-an-app.md)voor meer informatie over het registreren van een toepassing met Azure AD.
 
 
 ### <a name="create-a-client-secret"></a>Een client geheim maken   
@@ -103,6 +103,13 @@ Zodra u uw toepassing hebt geregistreerd en de machtiging hebt verleend voor het
 
 Voor een lijst met scenario's waarvoor het verkrijgen van tokens wordt ondersteund, zie het gedeelte [scenario's](https://aka.ms/msal-net-scenarios) van de [micro soft Authentication Library (MSAL) voor .net github-](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) opslag plaats.
 
+## <a name="samples"></a>Voorbeelden
+- [Micro soft. Azure. Event hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)-voor beelden. 
+    
+    In deze voor beelden wordt de oude bibliotheek van **micro soft. Azure. Event hubs** gebruikt, maar u kunt deze eenvoudig bijwerken met de meest recente **Azure. Messa ging. Event hubs** -bibliotheek. Zie de [hand leiding voor het migreren van micro soft. Azure. Event hubs naar Azure. Messa ging. Event hubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)om het voor beeld te verplaatsen van het gebruik van de oude bibliotheek naar een nieuwe.
+- [Voor beelden van Azure. Messa ging. Event hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+
+    Dit voor beeld is bijgewerkt om de meest recente **Azure. Messa ging. Event hubs** -bibliotheek te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Zie [Wat is op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md)? voor meer informatie over RBAC.

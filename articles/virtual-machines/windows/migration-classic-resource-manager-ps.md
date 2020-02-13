@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 802d97e2c9b64fd9d8caeaf479af3f4aec356607
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 109bffe7b5ab9bb322c4ddb2f7b8ec4ac87a54cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153125"
+ms.locfileid: "77168342"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS-resources van klassiek naar Azure Resource Manager migreren met behulp van Power shell
 In deze stappen ziet u hoe u Azure PowerShell-opdrachten kunt gebruiken om IaaS-resources (Infrastructure as a Service) te migreren van het klassieke implementatie model naar het Azure Resource Manager-implementatie model.
@@ -52,8 +52,6 @@ Hier volgen enkele aanbevolen procedures voor het bepalen van de migratie van Ia
 Er zijn twee belang rijke opties voor het installeren van Azure PowerShell: [PowerShell Gallery](https://www.powershellgallery.com/profiles/azure-sdk/) of [Web platform Installer (WebPI)](https://aka.ms/webpi-azps). WebPI ontvangt maandelijkse updates. PowerShell Gallery updates doorlopend worden ontvangen. Dit artikel is gebaseerd op Azure PowerShell versie 2.1.0.
 
 Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor installatie-instructies.
-
-<br>
 
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>Stap 3: Zorg ervoor dat u een beheerder bent voor het abonnement
 Als u deze migratie wilt uitvoeren, moet u worden toegevoegd als een cobeheerder voor het abonnement in de [Azure Portal](https://portal.azure.com).
@@ -104,6 +102,14 @@ Wacht vijf minuten totdat de registratie is voltooid. Controleer de status van d
 
 Zorg ervoor dat RegistrationState is `Registered` voordat u doorgaat.
 
+Voordat u overschakelt naar het klassieke implementatie model, moet u ervoor zorgen dat u voldoende Azure Resource Manager virtuele-Vcpu's in de Azure-regio van uw huidige implementatie of virtueel netwerk hebt. U kunt de volgende Power shell-opdracht gebruiken om het huidige aantal Vcpu's te controleren dat zich in Azure Resource Manager bevindt. Zie [limieten en de Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits)voor meer informatie over vCPU-quota's.
+
+In dit voor beeld wordt de beschik baarheid in de regio **VS-West** gecontroleerd. Vervang de naam van het voorbeeld gebied door eigen.
+
+```powershell
+    Get-AzVMUsage -Location "West US"
+```
+
 Meld u nu aan bij uw account voor het klassieke implementatie model.
 
 ```powershell
@@ -122,27 +128,17 @@ Stel uw Azure-abonnement in voor de huidige sessie. In dit voor beeld wordt het 
     Select-AzureSubscription –SubscriptionName "My Azure Subscription"
 ```
 
-<br>
 
-## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>Stap 5: voldoende Resource Manager VM-Vcpu's
-Zorg ervoor dat u voldoende Azure Resource Manager virtuele-Vcpu's in de Azure-regio van uw huidige implementatie of virtueel netwerk hebt. U kunt de volgende Power shell-opdracht gebruiken om het huidige aantal Vcpu's te controleren dat zich in Azure Resource Manager bevindt. Zie [limieten en de Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits)voor meer informatie over vCPU-quota's.
-
-In dit voor beeld wordt de beschik baarheid in de regio **VS-West** gecontroleerd. Vervang de naam van het voorbeeld gebied door eigen.
-
-```powershell
-Get-AzVMUsage -Location "West US"
-```
-
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Stap 6: opdrachten uitvoeren voor het migreren van uw IaaS-resources
-* [Vm's migreren in een Cloud service (niet in een virtueel netwerk)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
-* [Vm's migreren in een virtueel netwerk](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
-* [Een opslag account migreren](#step-62-migrate-a-storage-account)
+## <a name="step-5-run-commands-to-migrate-your-iaas-resources"></a>Stap 5: opdrachten uitvoeren voor het migreren van uw IaaS-resources
+* [Vm's migreren in een Cloud service (niet in een virtueel netwerk)](#step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [Vm's migreren in een virtueel netwerk](#step-51-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [Een opslag account migreren](#step-52-migrate-a-storage-account)
 
 > [!NOTE]
 > Alle bewerkingen die hier worden beschreven, zijn idempotent. Als er een ander probleem is dan een niet-ondersteunde functie of een configuratie fout, raden wij u aan de bewerking voor voorbereiden, afbreken of door voeren opnieuw uit. Het platform voert vervolgens de actie opnieuw uit.
 
 
-### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Stap 6,1: optie 1-virtuele machines in een Cloud service migreren (niet in een virtueel netwerk)
+### <a name="step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Stap 5,1: optie 1-virtuele machines in een Cloud service migreren (niet in een virtueel netwerk)
 De lijst met Cloud Services ophalen met behulp van de volgende opdracht. Kies vervolgens de Cloud service die u wilt migreren. Als de virtuele machines in de Cloud service zich in een virtueel netwerk bevinden of als ze beschikken over web-of werk rollen, retourneert de opdracht een fout bericht.
 
 ```powershell
@@ -223,7 +219,7 @@ Als de voor bereide configuratie goed lijkt, kunt u de resources door lopen en d
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Stap 6,1: optie 2-virtuele machines in een virtueel netwerk migreren
+### <a name="step-51-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Stap 5,1: optie 2-virtuele machines in een virtueel netwerk migreren
 
 Als u virtuele machines in een virtueel netwerk wilt migreren, migreert u het virtuele netwerk. De virtuele machines worden automatisch gemigreerd met het virtuele netwerk. Kies het virtuele netwerk dat u wilt migreren.
 > [!NOTE]
@@ -266,7 +262,7 @@ Als de voor bereide configuratie goed lijkt, kunt u de resources door lopen en d
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-### <a name="step-62-migrate-a-storage-account"></a>Stap 6,2: een opslag account migreren
+### <a name="step-52-migrate-a-storage-account"></a>Stap 5,2: een opslag account migreren
 Nadat u klaar bent met het migreren van de virtuele machines, voert u de volgende controles uit voordat u de opslag accounts migreert.
 
 > [!NOTE]

@@ -7,14 +7,14 @@ manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 8752522e4b5a7b91778d6eb2cd8e4ba3bac95da0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 17186d1d7b50ea872dc47eca8c2c4491787d2a38
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782123"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158941"
 ---
 # <a name="preview-deploy-spot-vms-using-azure-powershell"></a>Voor beeld: spot-Vm's implementeren met behulp van Azure PowerShell
 
@@ -29,7 +29,7 @@ U hebt de mogelijkheid om een maximum prijs voor de virtuele machine in te stell
 > Spot instanties zijn momenteel beschikbaar als open bare preview.
 > Deze preview-versie wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 >
-> Voor het vroege deel van de open bare preview hebben spot instanties een vaste prijs, zodat er geen op prijzen gebaseerde verwijderingen zijn.
+
 
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
@@ -37,9 +37,6 @@ U hebt de mogelijkheid om een maximum prijs voor de virtuele machine in te stell
 Maak een spotVM met [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) om de configuratie te maken. Neem `-Priority Spot` op en stel `-MaxPrice` in op:
 - `-1` zodat de virtuele machine niet wordt verwijderd op basis van de prijs.
 - een dollar bedrag, Maxi maal vijf cijfers. `-MaxPrice .98765` betekent bijvoorbeeld dat de toewijzing van de virtuele machine ongedaan wordt gemaakt wanneer de prijs voor een spotVM ongeveer $. 98765 per uur duurt.
-
-> [!IMPORTANT]
-> Voor het vroege deel van de open bare preview kunt u een maximum prijs instellen, maar deze wordt genegeerd. Voor harde Vm's geldt een vaste prijs, zodat er geen op prijzen gebaseerde verwijderingen zijn.
 
 
 In dit voor beeld wordt een spotVM gemaakt die niet wordt toegewezen op basis van de prijzen (alleen wanneer Azure de capaciteit nodig heeft).

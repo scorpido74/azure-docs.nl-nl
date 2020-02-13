@@ -12,12 +12,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: bacac67ddd7f379d679a149fe9574676ae0c7567
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7d596292a823b4d912204f5cfbe8623ab7429fa3
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834416"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161389"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Toegangs tokens van micro soft Identity platform
 
@@ -63,7 +63,7 @@ JWTs zijn onderverdeeld in drie delen:
 
 Elk onderdeel wordt gescheiden door een punt (`.`) en afzonderlijk base64-gecodeerd.
 
-Claims zijn alleen aanwezig als er een waarde bestaat om deze op te vullen. Uw app mag dus geen afhankelijkheid hebben van een claim die aanwezig is. Voor beelden zijn onder andere `pwd_exp` (niet elke Tenant vereist dat wacht woorden verlopen) of `family_name` ([client referentie](v1-oauth2-client-creds-grant-flow.md) stromen zijn namens toepassingen, die geen naam hebben). De claims die worden gebruikt voor de validatie van het toegangs token, zijn altijd aanwezig.
+Claims zijn alleen aanwezig als er een waarde bestaat om deze op te vullen. Uw app mag dus geen afhankelijkheid hebben van een claim die aanwezig is. Voor beelden zijn onder andere `pwd_exp` (niet elke Tenant vereist dat wacht woorden verlopen) of `family_name` (client Referentie ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) stromen zijn namens toepassingen, die geen namen hebben. De claims die worden gebruikt voor de validatie van het toegangs token, zijn altijd aanwezig.
 
 > [!NOTE]
 > Sommige claims worden gebruikt voor het beveiligen van Azure AD-tokens in het geval van hergebruik. Deze zijn gemarkeerd als niet als openbaar verbruik in de beschrijving als ' dekkend '. Deze claims kunnen al dan niet worden weer gegeven in een token en nieuwe kunnen zonder kennisgeving worden toegevoegd.
@@ -98,7 +98,7 @@ Claims zijn alleen aanwezig als er een waarde bestaat om deze op te vullen. Uw a
 | `preferred_username` | Tekenreeks | De primaire gebruikers naam die de gebruiker vertegenwoordigt. Dit kan een e-mail adres, telefoon nummer of een algemene gebruikers naam zijn zonder een opgegeven indeling. De waarde is onveranderbaar en kan in de loop van de tijd veranderen. Omdat de waarde is ververanderbaar, mag deze niet worden gebruikt om autorisatie beslissingen te nemen.  Het kan echter ook worden gebruikt voor hints met gebruikers namen. Het `profile` bereik is vereist om deze claim te kunnen ontvangen. |
 | `name` | Tekenreeks | Biedt een lees bare waarde waarmee het onderwerp van het token wordt geïdentificeerd. De waarde is niet gegarandeerd uniek, is onveranderbaar en is ontworpen om alleen te worden gebruikt voor weergave doeleinden. Het `profile` bereik is vereist om deze claim te kunnen ontvangen. |
 | `scp` | Teken reeks, een door spaties gescheiden lijst met bereiken | De set bereiken die wordt weer gegeven door uw toepassing waarvoor de client toepassing toestemming heeft aangevraagd (en ontvangen). Uw app moet controleren of deze bereiken geldig zijn voor uw app en autorisatie beslissingen nemen op basis van de waarde van deze bereiken. Alleen opgenomen voor [gebruikers tokens](#user-and-application-tokens). |
-| `roles` | Matrix van teken reeksen, een lijst met machtigingen | De set machtigingen die door uw toepassing worden weer gegeven en waarvoor de aanvraag of gebruiker toestemming heeft gegeven om deze aan te roepen. Voor [toepassings tokens](#user-and-application-tokens)wordt dit gebruikt tijdens de [client-referentie](v1-oauth2-client-creds-grant-flow.md) stroom in plaats van de gebruikers scopes.  Voor [gebruikers tokens](#user-and-application-tokens) wordt dit ingevuld met de rollen waaraan de gebruiker is toegewezen in de doel toepassing. |
+| `roles` | Matrix van teken reeksen, een lijst met machtigingen | De set machtigingen die door uw toepassing worden weer gegeven en waarvoor de aanvraag of gebruiker toestemming heeft gegeven om deze aan te roepen. Voor [toepassings tokens](#user-and-application-tokens)wordt dit gebruikt tijdens de client referentie stroom ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) in plaats van de gebruikers scopes.  Voor [gebruikers tokens](#user-and-application-tokens) wordt dit ingevuld met de rollen waaraan de gebruiker is toegewezen in de doel toepassing. |
 | `wids` | Matrix van [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) -guid's | Hiermee worden de rollen voor de Tenant opgegeven die aan deze gebruiker zijn toegewezen, in het gedeelte van de rollen die aanwezig zijn op [de pagina beheer rollen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids).  Deze claim wordt per toepassing geconfigureerd via de eigenschap `groupMembershipClaims` van het [toepassings manifest](reference-app-manifest.md).  Het instellen op ' all ' of ' DirectoryRole ' is vereist.  Mag niet aanwezig zijn in tokens die zijn verkregen via de impliciete stroom vanwege problemen met de token lengte. |
 | `groups` | JSON-matrix met GUID'S | Bevat object-Id's die de groepslid maatschappen van het onderwerp vertegenwoordigen. Deze waarden zijn uniek (zie object-ID) en kunnen veilig worden gebruikt voor het beheren van toegang, zoals het afdwingen van autorisatie voor toegang tot een bron. De groepen die zijn opgenomen in de claim groepen, worden per toepassing geconfigureerd via de eigenschap `groupMembershipClaims` van het [toepassings manifest](reference-app-manifest.md). Met een waarde van Null worden alle groepen uitgesloten, de waarde ' beveiligings groep ' bevat alleen Active Directory beveiligings groepslid maatschappen en de waarde ' all ' bevat zowel beveiligings groepen als Office 365-distributie lijsten. <br><br>Zie de `hasgroups` claim hieronder voor meer informatie over het gebruik van de `groups` claim met de impliciete toekenning. <br>Voor andere stromen geldt dat als het aantal groepen dat de gebruiker in een overschrijding een limiet heeft (150 voor SAML, 200 voor JWT), een overschrijding-claim wordt toegevoegd aan de claim bronnen die naar het AAD Graph-eind punt met de lijst met groepen voor de gebruiker verwijzen. |
 | `hasgroups` | Booleaans | Indien aanwezig, wordt altijd `true`, zodat de gebruiker zich in ten minste één groep bevindt. Wordt gebruikt in plaats van de `groups` claim voor JWTs in impliciete toekennings stromen als de claim van de volledige groep het URI-fragment zou uitbreiden dat groter is dan de URL-lengte limieten (momenteel 6 of meer groepen). Geeft aan dat de client de grafiek moet gebruiken om de groepen van de gebruiker (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`) te bepalen. |
@@ -172,7 +172,7 @@ Als u een id_token of een access_token wilt valideren, moet uw app zowel de hand
 
 De Azure AD-middleware heeft ingebouwde mogelijkheden voor het valideren van toegangs tokens, en u kunt bladeren door onze voor [beelden](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) om er een te vinden in de taal van uw keuze. Zie voor meer informatie over het expliciet valideren van een JWT-token het [hand MATIGE JWT-validatie voorbeeld](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation).
 
-We bieden bibliotheken en code voorbeelden die laten zien hoe u de token validatie eenvoudig kunt afhandelen. De onderstaande informatie is bedoeld voor degenen die het onderliggende proces willen begrijpen. Er zijn ook verschillende open source-bibliotheken van derden beschikbaar voor JWT-validatie-er is ten minste één optie voor bijna elk platform en elke taal. Zie [v 1.0-verificatie bibliotheken](active-directory-authentication-libraries.md) en [v 2.0-verificatie bibliotheken](reference-v2-libraries.md)voor meer informatie over Azure AD-verificatie bibliotheken en code voorbeelden.
+We bieden bibliotheken en code voorbeelden die laten zien hoe u de token validatie eenvoudig kunt afhandelen. De onderstaande informatie is bedoeld voor degenen die het onderliggende proces willen begrijpen. Er zijn ook verschillende open source-bibliotheken van derden beschikbaar voor JWT-validatie-er is ten minste één optie voor bijna elk platform en elke taal. Zie [v 1.0-verificatie bibliotheken](../azuread-dev/active-directory-authentication-libraries.md) en [v 2.0-verificatie bibliotheken](reference-v2-libraries.md)voor meer informatie over Azure AD-verificatie bibliotheken en code voorbeelden.
 
 ### <a name="validating-the-signature"></a>De hand tekening valideren
 
@@ -229,9 +229,9 @@ Met de bedrijfs logica van uw toepassing wordt deze stap gedicteerd. sommige alg
 
 ## <a name="user-and-application-tokens"></a>Tokens van gebruikers en toepassingen
 
-Uw toepassing kan tokens namens een gebruiker (de gebruikelijke stroom) of rechtstreeks vanuit een toepassing (via de [client referenties stroom](v1-oauth2-client-creds-grant-flow.md)) ontvangen. Deze app-tokens geven aan dat deze aanroep afkomstig is van een toepassing en geen back-up van de-gebruiker heeft. Deze tokens worden grotendeels hetzelfde behandeld, met enkele verschillen:
+Uw toepassing kan tokens namens een gebruiker (de gebruikelijke stroom) of rechtstreeks vanuit een toepassing (via de client referentie stroom ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) ontvangen. Deze app-tokens geven aan dat deze aanroep afkomstig is van een toepassing en geen back-up van de-gebruiker heeft. Deze tokens worden grotendeels hetzelfde behandeld, met enkele verschillen:
 
-* Alleen app-tokens hebben een `scp` claim en kunnen in plaats daarvan een `roles` claim hebben. Hier wordt de machtiging voor de toepassing (in plaats van de gedelegeerde machtigingen) vastgelegd. Zie toestemming en toestemming in [v 1.0](v1-permissions-and-consent.md) en [v 2.0](v2-permissions-and-consent.md)voor meer informatie over gedelegeerde en toepassings machtigingen.
+* Alleen app-tokens hebben een `scp` claim en kunnen in plaats daarvan een `roles` claim hebben. Hier wordt de machtiging voor de toepassing (in plaats van de gedelegeerde machtigingen) vastgelegd. Zie machtigingen en toestemming ([v 1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)) voor meer informatie over gedelegeerde en toepassings machtigingen.
 * Er ontbreken veel specifieke claims, zoals `name` of `upn`.
 * De `sub`-en `oid` claims zijn hetzelfde. 
 
@@ -257,7 +257,7 @@ Vernieuwings tokens kunnen op elk gewenst moment ongeldig worden gemaakt of inge
 | Beheerder wacht woord opnieuw instellen | Ingetrokken | Ingetrokken | Blijft actief | Blijft actief | Blijft actief |
 | Gebruiker trekt de vernieuwings tokens in [via Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Ingetrokken | Ingetrokken | Ingetrokken | Ingetrokken | Ingetrokken |
 | De beheerder trekt alle vernieuwings tokens voor de Tenant in [via Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Ingetrokken | Ingetrokken |Ingetrokken | Ingetrokken | Ingetrokken |
-| [Eenmalige afmelding](v1-protocols-openid-connect-code.md#single-sign-out) op Internet | Ingetrokken | Blijft actief | Ingetrokken | Blijft actief | Blijft actief |
+| Eenmalige afmelding ([v 1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out), [v 2.0](v2-protocols-oidc.md#single-sign-out) ) op Internet | Ingetrokken | Blijft actief | Ingetrokken | Blijft actief | Blijft actief |
 
 > [!NOTE]
 > Een ' niet-wacht woord op basis van ' is een aanmelding waarbij de gebruiker geen wacht woord heeft opgegeven om deze op te halen. U kunt bijvoorbeeld uw gezicht gebruiken met Windows Hello, een FIDO2-sleutel of een pincode.
@@ -269,4 +269,4 @@ Vernieuwings tokens kunnen op elk gewenst moment ongeldig worden gemaakt of inge
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [`id_tokens` in azure AD](id-tokens.md).
-* Meer informatie over machtigingen en toestemming in [v 1.0](v1-permissions-and-consent.md) en [v 2.0](v2-permissions-and-consent.md).
+* Meer informatie over machtigingen en toestemming ( [v 1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)).

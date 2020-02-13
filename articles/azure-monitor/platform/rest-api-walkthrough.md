@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6dff1fe974ad4ffa993e4df03b4903d7e46e1990
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363503"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162256"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure monitoring REST API-overzicht
 
@@ -57,7 +57,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-Als u een query wilt uitvoeren voor de Azure Monitor-API, moet de client toepassing de eerder gemaakte service-principal gebruiken om te verifiëren. In het volgende voor beeld Power shell-script wordt één benadering weer gegeven, waarbij de [Active Directory Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md) (ADAL) wordt gebruikt om het JWT-verificatie token op te halen. De JWT-token wordt door gegeven als onderdeel van een HTTP-autorisatie parameter in aanvragen voor de Azure Monitor REST API.
+Als u een query wilt uitvoeren voor de Azure Monitor-API, moet de client toepassing de eerder gemaakte service-principal gebruiken om te verifiëren. In het volgende voor beeld Power shell-script wordt één benadering weer gegeven, waarbij de [Active Directory Authentication Library](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) wordt gebruikt om het JWT-verificatie token op te halen. De JWT-token wordt door gegeven als onderdeel van een HTTP-autorisatie parameter in aanvragen voor de Azure Monitor REST API.
 
 ```powershell
 $azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -314,7 +314,7 @@ Gebruik de naam waarde van de metriek (niet het ' localizedValue ') voor filter 
 
 **Methode**: ophalen
 
-**Aanvraag-URI**: *https://management.azure.com/subscriptions/ {abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-Provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/Microsoft.Insights/Metrics? metricnames = *{metric}* & time span = *{StartTime/EndTime}* & $filter = *{filter}* & interval = *{timeGrain}* & aggregatie = *{aggreation}* & API-Version = *{apiVersion}*
+**Aanvraag-URI**: *https://management.azure.com/subscriptions/{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/ *{resource-Provider-namespace}* / *{resource-type}* / *{resource-name}* /providers/Microsoft.Insights/Metrics? metricnames = *{metric}* & time span = *{StartTime/EndTime}* & $filter = *{filter}* & interval = *{timeGrain}* & aggregatie = *{aggreation}* & API-Version = *{apiVersion}*
 
 Als u bijvoorbeeld de top-3 Api's wilt ophalen, in aflopende waarde, door het aantal ' trans acties ' tijdens een periode van 5 minuten, waarbij de GeotType ' primair ' was, zou de aanvraag er als volgt uitzien:
 
@@ -604,13 +604,13 @@ Voor de voor gaande code is de resource-ID die moet worden gebruikt het volledig
 
 De volgende lijst bevat enkele voor beelden van Resource-ID-indelingen voor verschillende Azure-resources:
 
-* **IoT Hub** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Devices/IotHubs/ *{iot-hub-name}*
+* **IOT hub** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.devices/IotHubs/ *{IOT-hub-name}*
 * **Elastische SQL-pool** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.SQL/servers/ *{pool-DB}* /elasticpools/ *{SQL-pool-name}*
 * **SQL database (V12)** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.SQL/servers/ *{server-name}* /databases/ *{Data Base-name}*
 * **Service Bus** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.ServiceBus/ *{Namespace}* / *{ServiceBus-name}*
 * **Schaal sets voor virtuele machines** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachineScaleSets/ *{VM-name}*
-* **VMs** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachines/ *{vm-name}*
-* **Event Hubs** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.EventHub/namespaces/ *{eventhub-namespace}*
+* **Vm's** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachines/ *{VM-name}*
+* **Event hubs** -/Subscriptions/ *{abonnements-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.EventHub/namespaces/ *{EventHub-namespace}*
 
 Er zijn alternatieve benaderingen voor het ophalen van de resource-ID, inclusief het gebruik van Azure Resource Explorer, het weer geven van de gewenste resource in de Azure Portal en via Power shell of de Azure CLI.
 
@@ -620,7 +620,7 @@ U kunt de resource-ID voor een gewenste resource vinden door de [Azure resource 
 
 ![ALT "Azure Resource Explorer"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 De resource-ID kan ook worden opgehaald uit de Azure Portal. Hiertoe gaat u naar de gewenste resource en selecteert u vervolgens Eigenschappen. De resource-ID wordt weer gegeven in de sectie eigenschappen, zoals u kunt zien in de volgende scherm afbeelding:
 
@@ -654,7 +654,7 @@ PlanId         :
 Version        : 08586982649483762729
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Als u de resource-ID voor een Azure Storage-account wilt ophalen met behulp van de Azure CLI, voert u de `az storage account show` opdracht uit, zoals in het volgende voor beeld wordt weer gegeven:
 

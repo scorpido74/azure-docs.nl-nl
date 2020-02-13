@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: spraak vertalen naar meerdere talen, java (Windows, Linux)-spraak service'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: NOG TE BEPALEN
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 452ee1f43704e60b701b8a1afe00a11f819e4a4f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 910ced472fe2d565c0de8a9605af487d6f909473
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468591"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156100"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -52,7 +52,8 @@ Voordat u aan de slag gaat, moet u het volgende doen:
        {
            // Creates an instance of a speech translation config with specified
            // subscription key and service region. Replace with your own subscription key
-           // and service region (e.g., "westus").
+           // and service region (e.g., "westus", use the one of SpeechSDKParameters
+           // from here: https://aka.ms/speech/sdkregion).   
 
            int exitCode = 1;
            SpeechTranslationConfig config = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey",  "YourServiceRegion");
@@ -130,7 +131,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
-1. Sla de wijzigingen in het project op.
+1. Sla de wijzigingen aan het project op.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 

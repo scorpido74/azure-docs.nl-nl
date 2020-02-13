@@ -2,13 +2,13 @@
 title: Toegangs regels voor Firewall
 description: Configureer regels voor toegang tot een Azure container Registry van achter een firewall door toegang toe te staan (white list) REST API en domein namen van het opslag eindpunt of servicespecifieke IP-adresbereiken.
 ms.topic: article
-ms.date: 07/17/2019
-ms.openlocfilehash: 4d3c4ff4ca19d8b563c185e5c314011823081df1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/11/2020
+ms.openlocfilehash: 06fedea2adf5e73929f5752279f2bd7e7227e570
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745200"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168024"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Regels configureren voor toegang tot een Azure container Registry achter een firewall
 
@@ -115,6 +115,10 @@ Zoek naar de specifieke regio, zoals **Storage. AustraliaCentral**.
 Gebruik in een virtueel Azure-netwerk netwerk beveiligings regels voor het filteren van verkeer van een bron, zoals een virtuele machine, naar een container register. Gebruik het **AzureContainerRegistry** - [service label](../virtual-network/security-overview.md#service-tags)om het maken van de regels van het Azure-netwerk te vereenvoudigen. Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels voor de toegang tot een Azure-service wereld wijd of per Azure-regio. Het label wordt automatisch bijgewerkt wanneer adressen worden gewijzigd. 
 
 Maak bijvoorbeeld een regel voor een uitgaande netwerk beveiligings groep met het doel **AzureContainerRegistry** om verkeer naar een Azure container Registry toe te staan. Als u alleen toegang tot de servicetag wilt toestaan in een specifieke regio, geeft u de regio op in de volgende indeling: **AzureContainerRegistry**. [*regio naam*].
+
+## <a name="configure-client-firewall-rules-for-mcr"></a>Firewall regels voor clients configureren voor MCR
+
+Zie de richt lijnen voor het configureren van [MCR-firewall regels](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)voor micro soft container Registry (MCR) van achter een firewall. MCR is het primaire REGI ster voor alle door micro soft gepubliceerde docker-installatie kopieën, zoals Windows Server-installatie kopieën.
 
 ## <a name="next-steps"></a>Volgende stappen
 

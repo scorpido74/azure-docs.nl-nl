@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a6c333da0e88af25e3907af23f792a210002477f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902047"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77178996"
 ---
 Met behulp van spot Vm's kunt u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kosten besparing. Op elk moment dat Azure de capaciteit nodig heeft, verwijdert de Azure-infra structuur spot Vm's. Daarom zijn de virtuele machines geschikt voor werk belastingen die onderbrekingen kunnen afhandelen, zoals batch verwerkings taken, ontwikkel-en test omgevingen, grootschalige werk belastingen en meer.
 
@@ -23,16 +23,12 @@ De hoeveelheid beschik bare capaciteit kan variëren op basis van grootte, regio
 > Spot instanties zijn momenteel beschikbaar als open bare preview.
 > Deze preview-versie wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 >
-> Voor het vroege deel van de open bare preview hebben spot instanties een vaste prijs, zodat er geen op prijzen gebaseerde verwijderingen zijn.
 
 ## <a name="eviction-policy"></a>Verwijderings beleid
 
 Vm's kunnen worden verwijderd op basis van de capaciteit of de maximale prijs die u hebt ingesteld. Voor virtuele machines wordt het verwijderings beleid zo ingesteld dat de *toewijzing* ongedaan wordt gemaakt, waardoor de verwijderde vm's naar de status stopped-disallocated worden verplaatst, zodat u de verwijderde vm's op een later tijdstip opnieuw kunt implementeren. Het opnieuw toewijzen van spot-Vm's is echter afhankelijk van de beschik bare steun capaciteit. De toegewezen Vm's worden geteld voor uw vCPU-quotum en er worden kosten in rekening gebracht voor de onderliggende schijven. 
 
 Gebruikers kunnen zich aanmelden om in-VM-meldingen te ontvangen via [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md). Hiermee wordt u op de hoogte gesteld als uw Vm's worden verwijderd en u 30 seconden hebt om taken te volt ooien en afsluit taken uit te voeren vóór de verwijdering. 
-
-> [!IMPORTANT]
-> Voor het vroege deel van de open bare preview kunt u een maximum prijs instellen, maar deze wordt genegeerd. Voor harde Vm's geldt een vaste prijs, zodat er geen op prijzen gebaseerde verwijderingen zijn.
 
 
 | Optie | Resultaat |
@@ -54,7 +50,7 @@ De volgende VM-grootten worden niet ondersteund voor spot-Vm's:
 
 Spot-Vm's kunnen momenteel geen tijdelijke besturingssysteem schijven gebruiken.
 
-Spot-Vm's kunnen worden geïmplementeerd in elke regio, met uitzonde ring van Microsoft Azure-China 21Vianet en Ministerie van defensie (DoD) in de Azure Government regio.
+Spot-Vm's kunnen worden geïmplementeerd in elke regio, met uitzonde ring van Microsoft Azure-China 21Vianet.
 
 ## <a name="pricing"></a>Prijzen
 
@@ -95,11 +91,11 @@ Met variabele prijzen kunt u een maximum prijs instellen, in Amerikaanse dollars
 | Azure-kanalen               | Beschik baarheid van Azure spot Vm's       |
 |------------------------------|-----------------------------------|
 | Enterprise Agreement         | Ja                               |
-| Betalen per gebruik                | Ja                               |
+| Betalen naar gebruik                | Ja                               |
 | Cloud serviceprovider (CSP) | [Neem contact op met uw partner](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Voordelen                     | Niet beschikbaar                     |
-| Gesponsord                    | Niet beschikbaar                     |
-| Gratis proefversie                   | Niet beschikbaar                     |
+| Gesponsorde                    | Niet beschikbaar                     |
+| Gratis proef versie                   | Niet beschikbaar                     |
 
 
 **V:** Waar kan ik vragen plaatsen?

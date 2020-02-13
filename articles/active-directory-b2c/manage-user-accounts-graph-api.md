@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9e55edcb7c107a3dfa91f61aaa1fea64bc62f21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 71b437f57f9d9e6e18af88d6413269cac6f66c47
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848874"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161661"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: de Azure AD-Graph API gebruiken
 
@@ -26,7 +26,7 @@ Mogelijk moet u een bestaande gebruikers opslag migreren naar een B2C-Tenant. Of
 Voor B2C-tenants zijn er twee primaire modi om te communiceren met de Graph API:
 
 * Voor **interactieve**, eenmalige taken moet u als Administrator account in de B2C-Tenant fungeren wanneer u de taken uitvoert. In deze modus moet een beheerder zich aanmelden met referenties voordat de beheerder aanroepen naar de Graph API kan uitvoeren.
-* Voor **geautomatiseerde**, doorlopende taken moet u een type service account gebruiken dat u opgeeft met de benodigde bevoegdheden voor het uitvoeren van beheer taken. In azure AD kunt u dit doen door een toepassing te registreren en te verifiëren bij Azure AD. Dit wordt gedaan met behulp van een *toepassings-id* die gebruikmaakt van de [OAuth 2,0-client referenties toewijzen](../active-directory/develop/service-to-service.md). In dit geval fungeert de toepassing als zichzelf, niet als gebruiker, om de Graph API aan te roepen.
+* Voor **geautomatiseerde**, doorlopende taken moet u een type service account gebruiken dat u opgeeft met de benodigde bevoegdheden voor het uitvoeren van beheer taken. In azure AD kunt u dit doen door een toepassing te registreren en te verifiëren bij Azure AD. Dit wordt gedaan met behulp van een *toepassings-id* die gebruikmaakt van de [OAuth 2,0-client referenties toewijzen](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). In dit geval fungeert de toepassing als zichzelf, niet als gebruiker, om de Graph API aan te roepen.
 
 In dit artikel leert u hoe u de geautomatiseerde use-case uitvoert. U bouwt een .NET 4,5-`B2CGraphClient` op waarmee gebruikers ruwe, lees-, update-en delete-bewerkingen (ruw) uitvoeren. De client heeft een Windows-opdracht regel interface (CLI) waarmee u verschillende methoden kunt aanroepen. De code wordt echter geschreven zodat deze zich op een niet-interactieve, geautomatiseerde manier bevindt.
 
@@ -60,7 +60,7 @@ De machtiging voor het *lezen en schrijven van Directory gegevens* die u eerder 
 
 Als u uw toepassing de mogelijkheid wilt geven om gebruikers te verwijderen of wacht woorden bij te werken, moet u de *gebruiker* de rol van de beheerder verlenen.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
 1. Selecteer onder **beheren**de optie **rollen en beheerders**.
@@ -73,7 +73,7 @@ Uw Azure AD B2C-toepassing heeft nu de extra machtigingen die vereist zijn om ge
 
 ## <a name="get-the-sample-code"></a>De voorbeeldcode halen
 
-Het code voorbeeld is een .NET-console toepassing die gebruikmaakt van de [Active Directory Authentication Library (ADAL)](../active-directory/develop/active-directory-authentication-libraries.md) om te communiceren met Azure AD-Graph API. De code laat zien hoe u de API aanroept om gebruikers programmatisch te beheren in een Azure AD B2C-Tenant.
+Het code voorbeeld is een .NET-console toepassing die gebruikmaakt van de [Active Directory Authentication Library (ADAL)](../active-directory/azuread-dev/active-directory-authentication-libraries.md) om te communiceren met Azure AD-Graph API. De code laat zien hoe u de API aanroept om gebruikers programmatisch te beheren in een Azure AD B2C-Tenant.
 
 U kunt [het voor beeld-archief](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip) (\*. zip) downloaden of de GitHub-opslag plaats klonen:
 

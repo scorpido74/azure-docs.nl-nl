@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 83717f9a78d80923f020ab699be9ddabbbcc12ef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0f426e7a87204acd4be6529f7dd11a954f23491a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700002"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159468"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Wat is er gebeurd met mijn MVC-project (Visual Studio Azure Active Directory Connected service)?
 
@@ -32,7 +32,7 @@ Zie [aan](vs-active-directory-dotnet-getting-started.md)de slag voor meer inform
 
 Van invloed op het project bestand *. NET references) en `packages.config` (NuGet references).
 
-| Type | Referentie |
+| Type | Naslaginformatie |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -47,7 +47,7 @@ Van invloed op het project bestand *. NET references) en `packages.config` (NuGe
 
 Aanvullende verwijzingen als u de optie **Directory gegevens lezen** hebt geselecteerd:
 
-| Type | Referentie |
+| Type | Naslaginformatie |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework. SqlServer (alleen Visual Studio 2015) |
@@ -61,7 +61,7 @@ Aanvullende verwijzingen als u de optie **Directory gegevens lezen** hebt gesele
 
 De volgende verwijzingen worden verwijderd (ASP.NET 4 projecten, net als in Visual Studio 2015):
 
-| Type | Referentie |
+| Type | Naslaginformatie |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -164,4 +164,4 @@ Meer [informatie over Azure Active Directory](https://azure.microsoft.com/servic
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Verificatie scenario's voor Azure Active Directory](authentication-scenarios.md)
-- [Aanmelden met micro soft toevoegen aan een ASP.NET-Web-app](quickstart-v1-aspnet-webapp.md)
+- [Aanmelden met micro soft toevoegen aan een ASP.NET-Web-app](quickstart-v2-aspnet-webapp.md)

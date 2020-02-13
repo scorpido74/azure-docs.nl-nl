@@ -8,39 +8,35 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 02/11/2020
+ms.openlocfilehash: b6147e45ca686328b1702faa5a8d50d9a75e50d6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466534"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157836"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Uw Azure Cognitive Search-service beheren met Power shell
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [REST-API](https://docs.microsoft.com/rest/api/searchmanagement/)
+> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0) -> 
 
-U kunt Power shell-cmdlets en-scripts uitvoeren op Windows, Linux of in [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) om Azure Cognitive Search te maken en te configureren. De **AZ. Search** -module breidt Azure PowerShell] uit met volledige pariteit van de [rest api's voor Azure Cognitive Search Management](https://docs.microsoft.com/rest/api/searchmanagement). Met Azure PowerShell en **AZ. Search**kunt u de volgende taken uitvoeren:
+U kunt Power shell-cmdlets en-scripts uitvoeren op Windows, Linux of in [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) om Azure Cognitive Search te maken en te configureren. De module **AZ. Search** breidt [Azure PowerShell](https://docs.microsoft.com/powershell/) uit met volledige pariteit van de [rest api's voor zoek beheer](https://docs.microsoft.com/rest/api/searchmanagement) en de mogelijkheid om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
-> * [Alle zoek services in uw abonnement weer geven](#list-search-services)
-> * [Informatie over een specifieke zoek service ophalen](#get-search-service-information)
+> * [Zoek Services in een abonnement weer geven](#list-search-services)
+> * [Service-informatie retour neren](#get-search-service-information)
 > * [Een service maken of verwijderen](#create-or-delete-a-service)
 > * [Beheer-API opnieuw genereren-sleutels](#regenerate-admin-keys)
 > * [Query-API-sleutels maken of verwijderen](#create-or-delete-query-keys)
-> * [Een service schalen door replica's en partities te verg Roten of verkleinen](#scale-replicas-and-partitions)
+> * [Omhoog of omlaag schalen met replica's en partities](#scale-replicas-and-partitions)
 
-Power shell kan niet worden gebruikt om de naam, regio of laag van uw service te wijzigen. Toegewezen resources worden toegewezen wanneer een service wordt gemaakt. Voor het wijzigen van de onderliggende hardware (locatie of type knoop punt) is een nieuwe service vereist. Er zijn geen hulpprogram ma's of Api's voor het overbrengen van inhoud van de ene service naar de andere. Alle inhouds beheer is via [rest](https://docs.microsoft.com/rest/api/searchservice/) -of [.net](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) -api's, en als u indexen wilt verplaatsen, moet u ze opnieuw maken en opnieuw laden voor een nieuwe service. 
+Af en toe worden vragen gesteld over taken die *niet* voor komen in de bovenstaande lijst. Op dit moment kunt u niet de module **AZ. Search** of het beheer rest API gebruiken om een server naam,-regio of-laag te wijzigen. Toegewezen resources worden toegewezen wanneer een service wordt gemaakt. Voor het wijzigen van de onderliggende hardware (locatie of type knoop punt) is een nieuwe service vereist. Op dezelfde manier zijn er geen hulpprogram ma's of Api's voor het overdragen van inhoud, zoals een index, van de ene service naar de andere.
 
-Hoewel er geen speciale Power shell-opdrachten zijn voor inhouds beheer, kunt u Power shell-script schrijven dat REST of .NET aanroept om indexen te maken en te laden. De **AZ. Search** -module biedt deze bewerkingen niet.
-
-Andere taken die niet worden ondersteund via Power shell of een andere API (alleen Portal) zijn onder andere:
-+ [Een cognitieve Services-resource koppelen](cognitive-search-attach-cognitive-services.md) voor [AI-verrijkte indexering](cognitive-search-concept-intro.md). Een cognitieve service is gekoppeld aan een vaardig heden, geen abonnement of service.
-+ [Bewakings oplossingen voor het](search-monitor-usage.md#add-on-monitoring-solutions) bewaken van Azure Cognitive Search.
+Binnen een service is het maken en beheren van inhoud via [Search Service rest API](https://docs.microsoft.com/rest/api/searchservice/) of [.NET SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search). Hoewel er geen speciale Power shell-opdrachten zijn voor inhoud, kunt u Power shell-script schrijven dat REST-of .NET-Api's aanroept om indexen te maken en te laden.
 
 <a name="check-versions-and-load"></a>
 
@@ -92,7 +88,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>Alle Azure Cognitive Search Services in uw abonnement weer geven
+## <a name="list-services-in-a-subscription"></a>Services in een abonnement weer geven
 
 De volgende opdrachten zijn afkomstig van [**AZ. resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources), die informatie over bestaande resources en services retour neren die al zijn ingericht in uw abonnement. Als u niet weet hoeveel Zoek Services al zijn gemaakt, retour neren deze opdrachten die informatie en bespaart u een reis naar de portal.
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: e494a5141a96409fc6691df3a5f1194600ad0c32
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: bbfb65c31bf6fd46cc18c9eee66086afbbff1d5f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086467"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157971"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -31,13 +31,12 @@ U moet de Azure CLI-versie 2.0.76 of hoger hebben geïnstalleerd en geconfiguree
 
 De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en beheert die ondersteuning bieden voor meerdere knooppunt groepen:
 
+* Zie [quota's, beperkingen voor de grootte van virtuele machines en beschik baarheid van regio's in azure Kubernetes service (AKS)][quotas-skus-regions].
 * U kunt de standaard-knooppunt groep (First) niet verwijderen.
 * De invoeg toepassing voor het routeren van HTTP-toepassingen kan niet worden gebruikt.
 * Het AKS-cluster moet het standaard SKU-load balancer gebruiken om meerdere knooppunt groepen te kunnen gebruiken. de functie wordt niet ondersteund met Basic SKU load balancers.
 * Het AKS-cluster moet virtuele-machine schaal sets gebruiken voor de knoop punten.
 * De naam van een knooppunt groep mag alleen kleine letters bevatten en moet beginnen met een kleine letter. Voor Linux-knooppunt Pools moet de lengte tussen 1 en 12 tekens lang zijn voor Windows-knooppunt groepen. de lengte moet tussen 1 en 6 tekens lang zijn.
-* Het AKS-cluster kan Maxi maal 10 knooppunt groepen bevatten.
-* Het AKS-cluster kan Maxi maal 1000 knoop punten in deze tien knooppunt groepen hebben.
 * Alle knooppunt groepen moeten zich in hetzelfde vnet en subnet bevinden.
 * Bij het maken van meerdere knooppunt groepen tijdens het maken van een cluster, moeten alle Kubernetes-versies die worden gebruikt door de knooppunt groepen, overeenkomen met de versieset voor het besturings vlak. Dit kan worden bijgewerkt nadat het cluster is ingericht met behulp van de bewerkingen per knooppunt groep.
 
@@ -604,6 +603,7 @@ Zie [een Windows Server-container maken in AKS][aks-windows]om Windows Server-co
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 <!-- INTERNAL LINKS -->
+[quotas-skus-regions]: quotas-skus-regions.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [az-aks-create]: /cli/azure/aks#az-aks-create

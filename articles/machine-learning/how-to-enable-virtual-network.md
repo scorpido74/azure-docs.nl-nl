@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988211"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169947"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten beveiligen en taken in een Azure-Virtual Network afzorgen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -124,10 +124,6 @@ Als u Azure Machine Learning experimenten wilt gebruiken met Azure Key Vault ach
 <a id="amlcompute"></a>
 
 ## <a name="compute-instance"></a>Een Machine Learning Compute gebruiken
-
-> [!NOTE]
-> Reken instanties (preview) zijn momenteel alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**, met ondersteuning voor andere regio's binnenkort.
-> Gebruik een van deze regio's om een reken instantie te maken die kan worden toegevoegd aan het virtuele netwerk.
 
 Als u een Azure Machine Learning Compute-exemplaar of reken cluster in een virtueel netwerk wilt gebruiken, moet aan de volgende netwerk vereisten worden voldaan:
 
@@ -459,7 +455,7 @@ except:
     aks_target.wait_for_completion(show_output = True)
 ```
 
-__Azure-CLI__
+__Azure CLI__
 
 ```azurecli-interactive
 az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
@@ -508,5 +504,5 @@ Zie [Azure firewall implementeren en configureren](/azure/firewall/tutorial-fire
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Trainings omgevingen instellen](how-to-set-up-training-targets.md)
-* [Waar u modellen implementeren](how-to-deploy-and-where.md)
+* [Implementatie van modellen](how-to-deploy-and-where.md)
 * [Modellen veilig implementeren met SSL](how-to-secure-web-service.md)

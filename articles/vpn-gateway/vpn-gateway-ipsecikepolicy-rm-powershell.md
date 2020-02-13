@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 8ed32ccedcd6cc4ffd159069399c0417842325d8
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eaca48fc354f1cf37635e9729b04eaaaa882ba1c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514915"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161899"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>IPsec/IKE-beleid configureren voor S2S VPN-of VNet-naar-VNet-verbindingen
 
 In dit artikel worden de stappen beschreven voor het configureren van IPsec/IKE-beleid voor site-naar-site VPN-of VNet-naar-VNet-verbindingen met behulp van het Resource Manager-implementatie model en Power shell.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about"></a>IPsec-en IKE-beleids parameters voor Azure VPN-gateways
 IPsec en IKE-protocol standaard bieden ondersteuning voor een breed scala van cryptografische algoritmen in verschillende combi Naties. Raadpleeg [over cryptografische vereisten en Azure VPN-gateways](vpn-gateway-about-compliance-crypto.md) om te zien hoe dit kan helpen om te zorgen voor cross-premises en vnet-naar-vnet-connectiviteit die voldoet aan uw nalevings-en beveiligings vereisten.

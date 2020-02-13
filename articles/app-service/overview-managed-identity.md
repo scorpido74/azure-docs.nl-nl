@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 4e2a76e40206e1562d565571dbe22e5d9d0e930e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834167"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161916"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -167,7 +167,7 @@ Eerst moet u een door de gebruiker toegewezen id-resource maken.
 
 5. Klik op het tabblad **toegewezen door gebruiker** op **toevoegen**.
 
-6. Zoek de identiteit die u eerder hebt gemaakt en selecteer deze. Klik op **Add**.
+6. Zoek de identiteit die u eerder hebt gemaakt en selecteer deze. Klik op **Toevoegen**.
 
     ![Beheerde identiteit in App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
@@ -253,10 +253,10 @@ De **MSI_ENDPOINT** is een lokale URL van waaruit uw app tokens kan aanvragen. A
 
 > |Parameternaam|In|Beschrijving|
 > |-----|-----|-----|
-> |resource|Query|De AAD-resource-URI van de resource waarvoor een token moet worden verkregen. Dit kan een van de [Azure-Services zijn die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) of een andere resource-URI.|
-> |api-version|Query|De versie van de token-API die moet worden gebruikt. "2017-09-01" is momenteel de enige versie die wordt ondersteund.|
+> |resource|Query's uitvoeren|De AAD-resource-URI van de resource waarvoor een token moet worden verkregen. Dit kan een van de [Azure-Services zijn die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) of een andere resource-URI.|
+> |api-version|Query's uitvoeren|De versie van de token-API die moet worden gebruikt. "2017-09-01" is momenteel de enige versie die wordt ondersteund.|
 > |geheim|Header|De waarde van de omgevings variabele MSI_SECRET. Deze header wordt gebruikt om SSRF-aanvallen (server-side Request vervalsing) te voor komen.|
-> |clientid|Query|(Optioneel tenzij gebruikers toegewezen) De ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Als u dit weglaat, wordt de door het systeem toegewezen identiteit gebruikt.|
+> |clientid|Query's uitvoeren|(Optioneel tenzij gebruikers toegewezen) De ID van de door de gebruiker toegewezen identiteit die moet worden gebruikt. Als u dit weglaat, wordt de door het systeem toegewezen identiteit gebruikt.|
 
 > [!IMPORTANT]
 > Als u probeert tokens te verkrijgen voor door de gebruiker toegewezen identiteiten, moet u de eigenschap `clientid` toevoegen. Anders probeert de token service een token te verkrijgen voor een door het systeem toegewezen identiteit, die al dan niet bestaat.
@@ -270,7 +270,7 @@ Een geslaagd 200 OK-antwoord bevat een JSON-hoofd tekst met de volgende eigensch
 > |resource|De App-ID-URI van de ontvangende webservice.|
 > |token_type|Geeft de waarde van het token type aan. Het enige type dat door Azure AD wordt ondersteund, is Bearer. Zie voor meer informatie over Bearer-tokens [het OAuth 2,0 Authorization Framework: Bearer-token gebruik (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
-Dit antwoord is hetzelfde als het [antwoord voor de aanvraag van de Aad service-to-service-toegangs token](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
+Dit antwoord is hetzelfde als het [antwoord voor de aanvraag van de Aad service-to-service-toegangs token](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token).
 
 > [!NOTE]
 > Omgevings variabelen worden ingesteld wanneer het proces voor het eerst wordt gestart, dus nadat u een beheerde identiteit voor uw toepassing hebt ingeschakeld, moet u de toepassing mogelijk opnieuw opstarten of de code opnieuw implementeren voordat `MSI_ENDPOINT` en `MSI_SECRET` beschikbaar zijn voor uw code.
@@ -299,7 +299,7 @@ Content-Type: application/json
 }
 ```
 
-### <a name="code-examples"></a>Codevoorbeelden
+### <a name="code-examples"></a>Code voorbeelden
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 

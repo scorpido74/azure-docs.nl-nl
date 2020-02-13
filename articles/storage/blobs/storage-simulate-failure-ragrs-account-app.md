@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 522ed13681a98535c35552128fc8432782ec1ca2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892444"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162698"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Zelf studie: een fout simuleren bij het lezen van gegevens uit de primaire regio
 
-Deze zelfstudie is deel twee van een serie. Er wordt uitgelegd wat de voordelen zijn van [geografisch redundante opslag met leestoegang](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) door een fout te simuleren.
+Deze zelfstudie is deel twee van een serie. Hierin leert u wat de voor delen zijn van [geografisch redundante opslag met lees toegang](../common/storage-redundancy.md) (RA-GRS) door een fout te simuleren.
 
-Als u een fout wilt simuleren, kunt u een [statische route ring](#simulate-a-failure-with-an-invalid-static-route) of [Fiddler](#simulate-a-failure-with-fiddler)gebruiken. Met beide methoden kunt u storingen simuleren voor aanvragen naar het primaire eind punt van uw opslag account met [geografisch redundante Lees toegang](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS), waardoor de toepassing in plaats daarvan wordt gelezen vanaf het secundaire eind punt.
+Als u een fout wilt simuleren, kunt u een [statische route ring](#simulate-a-failure-with-an-invalid-static-route) of [Fiddler](#simulate-a-failure-with-fiddler)gebruiken. Met beide methoden kunt u storingen simuleren voor aanvragen naar het primaire eind punt van uw opslag account met [geografisch redundante Lees toegang](../common/storage-redundancy.md) (RA-GRS), waardoor de toepassing in plaats daarvan wordt gelezen vanaf het secundaire eind punt.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -41,7 +41,7 @@ Als u een fout wilt simuleren met behulp van Fiddler, downloadt en [installeert 
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Een fout simuleren met een ongeldige statische route
 
-U kunt een ongeldige statische route maken voor alle aanvragen naar het primaire eindpunt van uw [geografisch redundante](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) opslagaccount met leestoegang. In deze zelfstudie wordt de lokale host gebruikt als de gateway voor routeringsaanvragen voor de opslagaccount. Het gebruik van de lokale host als de gateway zorgt ervoor dat alle aanvragen naar het primaire eindpunt van uw opslagaccount in een lusvorm terugkeren naar de host, wat vervolgens tot een fout leidt. Voer de volgende stappen uit om een fout en herstel van het primaire eindpunt met een ongeldige statische route te simuleren.
+U kunt een ongeldige statische route maken voor alle aanvragen naar het primaire eindpunt van uw [geografisch redundante](../common/storage-redundancy.md) opslagaccount met leestoegang. In deze zelfstudie wordt de lokale host gebruikt als de gateway voor routeringsaanvragen voor de opslagaccount. Het gebruik van de lokale host als de gateway zorgt ervoor dat alle aanvragen naar het primaire eindpunt van uw opslagaccount in een lusvorm terugkeren naar de host, wat vervolgens tot een fout leidt. Voer de volgende stappen uit om een fout en herstel van het primaire eindpunt met een ongeldige statische route te simuleren.
 
 ### <a name="start-and-pause-the-application"></a>De toepassing starten en onderbreken
 

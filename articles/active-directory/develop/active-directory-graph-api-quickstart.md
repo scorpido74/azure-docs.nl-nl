@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f32d9832f0bad81ca29ab7553d956b593531d1bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9fd5fa943468924c289587285fe7986a73c21dba
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698931"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161338"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Procedure: de Azure AD-Graph API gebruiken
 
@@ -81,7 +81,7 @@ Voor de doel einden van deze Snelstartgids kunt u de Fiddler-webdebugger gebruik
 
 In het onderstaande voor beeld gebruikt u Fiddler Web Debugger om een nieuwe beveiligings groep ' MyTestGroup ' te maken in uw Azure AD-adres lijst.
 
-**Een toegangs token verkrijgen**: voor toegang tot Azure AD Graph moeten clients eerst worden geverifieerd bij Azure AD. Zie [verificatie scenario's voor Azure AD](v1-authentication-scenarios.md)voor meer informatie.
+**Een toegangs token verkrijgen**: voor toegang tot Azure AD Graph moeten clients eerst worden geverifieerd bij Azure AD. Zie [verificatie scenario's voor Azure AD](authentication-scenarios.md)voor meer informatie.
 
 **Een query opstellen en uitvoeren**: Voer de volgende stappen uit:
 

@@ -17,16 +17,14 @@ ms.date: 12/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ebdebd48710e892ec8f1a96eeba0f91228024420
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4bf6d777662ad1ba4843d6e650dfd3a6a357822f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700529"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159757"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Micro soft Identity platform en de OAuth 2,0-client referenties stroom
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 U kunt de [OAuth 2,0-client referenties toekenning](https://tools.ietf.org/html/rfc6749#section-4.4) die is opgegeven in RFC 6749, ook wel *twee legged OAuth*genoemd, gebruiken om toegang te krijgen tot webbronnen met behulp van de identiteit van een toepassing. Dit type toekenning wordt meestal gebruikt voor server-naar-server-interacties die op de achtergrond moeten worden uitgevoerd, zonder directe interactie met een gebruiker. Deze typen toepassingen worden vaak *daemons* of *service accounts*genoemd.
 
@@ -119,9 +117,9 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Parameter | Voorwaarde | Beschrijving |
 | --- | --- | --- |
-| `tenant` | Verplicht | De Directory-Tenant waarvan u toestemming wilt aanvragen. Dit kan een GUID of beschrijvende naam zijn. Als u niet weet van welke Tenant de gebruiker behoort en u deze wilt laten aanmelden met een Tenant, gebruikt u `common`. |
-| `client_id` | Verplicht | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
-| `redirect_uri` | Verplicht | De omleidings-URI waar u het antwoord voor uw app wilt laten afhandelen. De waarde moet exact overeenkomen met een van de omleidings-Uri's die u in de portal hebt geregistreerd, behalve dat deze URL moet worden gecodeerd en dat er extra padsegmenten kunnen zijn. |
+| `tenant` | Vereist | De Directory-Tenant waarvan u toestemming wilt aanvragen. Dit kan een GUID of beschrijvende naam zijn. Als u niet weet van welke Tenant de gebruiker behoort en u deze wilt laten aanmelden met een Tenant, gebruikt u `common`. |
+| `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
+| `redirect_uri` | Vereist | De omleidings-URI waar u het antwoord voor uw app wilt laten afhandelen. De waarde moet exact overeenkomen met een van de omleidings-Uri's die u in de portal hebt geregistreerd, behalve dat deze URL moet worden gecodeerd en dat er extra padsegmenten kunnen zijn. |
 | `state` | Aanbevolen | Een waarde die is opgenomen in de aanvraag die ook wordt geretourneerd in de token reactie. Dit kan een teken reeks zijn van elke gewenste inhoud. De status wordt gebruikt voor het coderen van informatie over de status van de gebruiker in de app voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin ze zich bevonden. |
 
 Op dit moment dwingt Azure AD af dat alleen een Tenant beheerder zich kan aanmelden bij het volt ooien van de aanvraag. De beheerder wordt gevraagd om alle directe toepassings machtigingen die u hebt aangevraagd voor uw app, goed te keuren in de app-registratie Portal.
@@ -182,11 +180,11 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 | Parameter | Voorwaarde | Beschrijving |
 | --- | --- | --- |
-| `tenant` | Verplicht | De Directory-Tenant waarmee de toepassing moet worden uitgevoerd, in GUID of domeinnaam indeling. |
-| `client_id` | Verplicht | De toepassings-ID die is toegewezen aan uw app. U kunt deze informatie vinden in de portal waar u uw app hebt geregistreerd. |
-| `scope` | Verplicht | De waarde die is door gegeven voor de para meter `scope` in deze aanvraag, moet de resource-id (URI van de toepassings-ID) zijn van de resource die u wilt aanbrengen met het achtervoegsel van de `.default`. Voor het Microsoft Graph-voor beeld is de waarde `https://graph.microsoft.com/.default`. <br/>Deze waarde vertelt het micro soft Identity platform-eind punt van alle directe toepassings machtigingen die u hebt geconfigureerd voor uw app. het eind punt moet een token uitgeven voor de resources die zijn gekoppeld aan de resource die u wilt gebruiken. Zie de documentatie van de [toestemming](v2-permissions-and-consent.md#the-default-scope)voor meer informatie over het `/.default` bereik. |
-| `client_secret` | Verplicht | Het client geheim dat u hebt gegenereerd voor uw app in de app-registratie Portal. Het client geheim moet URL-gecodeerd zijn voordat het wordt verzonden. |
-| `grant_type` | Verplicht | Moet worden ingesteld op `client_credentials`. |
+| `tenant` | Vereist | De Directory-Tenant waarmee de toepassing moet worden uitgevoerd, in GUID of domeinnaam indeling. |
+| `client_id` | Vereist | De toepassings-ID die is toegewezen aan uw app. U kunt deze informatie vinden in de portal waar u uw app hebt geregistreerd. |
+| `scope` | Vereist | De waarde die is door gegeven voor de para meter `scope` in deze aanvraag, moet de resource-id (URI van de toepassings-ID) zijn van de resource die u wilt aanbrengen met het achtervoegsel van de `.default`. Voor het Microsoft Graph-voor beeld is de waarde `https://graph.microsoft.com/.default`. <br/>Deze waarde vertelt het micro soft Identity platform-eind punt van alle directe toepassings machtigingen die u hebt geconfigureerd voor uw app. het eind punt moet een token uitgeven voor de resources die zijn gekoppeld aan de resource die u wilt gebruiken. Zie de documentatie van de [toestemming](v2-permissions-and-consent.md#the-default-scope)voor meer informatie over het `/.default` bereik. |
+| `client_secret` | Vereist | Het client geheim dat u hebt gegenereerd voor uw app in de app-registratie Portal. Het client geheim moet URL-gecodeerd zijn voordat het wordt verzonden. |
+| `grant_type` | Vereist | moet worden ingesteld op `client_credentials`. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Tweede geval: toegangs token aanvraag met een certificaat
 
@@ -204,12 +202,12 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 | Parameter | Voorwaarde | Beschrijving |
 | --- | --- | --- |
-| `tenant` | Verplicht | De Directory-Tenant waarmee de toepassing moet worden uitgevoerd, in GUID of domeinnaam indeling. |
-| `client_id` | Verplicht |De client-ID van de toepassing die is toegewezen aan uw app. |
-| `scope` | Verplicht | De waarde die is door gegeven voor de para meter `scope` in deze aanvraag, moet de resource-id (URI van de toepassings-ID) zijn van de resource die u wilt aanbrengen met het achtervoegsel van de `.default`. Voor het Microsoft Graph-voor beeld is de waarde `https://graph.microsoft.com/.default`. <br/>Met deze waarde wordt het micro soft Identity platform-eind punt geïnformeerd over alle directe toepassings machtigingen die u hebt geconfigureerd voor uw app. het moet een token uitgeven voor de resources die zijn gekoppeld aan de resource die u wilt gebruiken. Zie de documentatie van de [toestemming](v2-permissions-and-consent.md#the-default-scope)voor meer informatie over het `/.default` bereik. |
-| `client_assertion_type` | Verplicht | De waarde moet worden ingesteld op `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
-| `client_assertion` | Verplicht | Een verklaring (een JSON-webtoken) die u moet maken en ondertekenen met het certificaat dat u hebt geregistreerd als referenties voor uw toepassing. Lees de informatie over [certificaat referenties](active-directory-certificate-credentials.md) voor meer informatie over het registreren van uw certificaat en de indeling van de verklaring.|
-| `grant_type` | Verplicht | Moet worden ingesteld op `client_credentials`. |
+| `tenant` | Vereist | De Directory-Tenant waarmee de toepassing moet worden uitgevoerd, in GUID of domeinnaam indeling. |
+| `client_id` | Vereist |De client-ID van de toepassing die is toegewezen aan uw app. |
+| `scope` | Vereist | De waarde die is door gegeven voor de para meter `scope` in deze aanvraag, moet de resource-id (URI van de toepassings-ID) zijn van de resource die u wilt aanbrengen met het achtervoegsel van de `.default`. Voor het Microsoft Graph-voor beeld is de waarde `https://graph.microsoft.com/.default`. <br/>Met deze waarde wordt het micro soft Identity platform-eind punt geïnformeerd over alle directe toepassings machtigingen die u hebt geconfigureerd voor uw app. het moet een token uitgeven voor de resources die zijn gekoppeld aan de resource die u wilt gebruiken. Zie de documentatie van de [toestemming](v2-permissions-and-consent.md#the-default-scope)voor meer informatie over het `/.default` bereik. |
+| `client_assertion_type` | Vereist | De waarde moet worden ingesteld op `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
+| `client_assertion` | Vereist | Een verklaring (een JSON-webtoken) die u moet maken en ondertekenen met het certificaat dat u hebt geregistreerd als referenties voor uw toepassing. Lees de informatie over [certificaat referenties](active-directory-certificate-credentials.md) voor meer informatie over het registreren van uw certificaat en de indeling van de verklaring.|
+| `grant_type` | Vereist | moet worden ingesteld op `client_credentials`. |
 
 U ziet dat de para meters bijna hetzelfde zijn als in het geval van de aanvraag van het gedeelde geheim, behalve dat de para meter client_secret wordt vervangen door twee para meters: een client_assertion_type en client_assertion.
 
@@ -281,5 +279,5 @@ Raadpleeg de [documentatie over client referenties overzicht](https://aka.ms/msa
 
 | Voorbeeld | Platform |Beschrijving |
 |--------|----------|------------|
-|[active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2,1-console | Een eenvoudige .NET core-toepassing waarin de gebruikers van een Microsoft Graph Tenant worden weer gegeven met de identiteit van de toepassing, in plaats van namens een gebruiker. Het voor beeld illustreert ook de variatie met behulp van certificaten voor verificatie. |
-|[active-directory-dotnet-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | Een webtoepassing die gegevens van de Microsoft Graph synchroniseert met behulp van de identiteit van de toepassing, in plaats van namens een gebruiker. |
+|[Active-Directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2,1-console | Een eenvoudige .NET core-toepassing waarin de gebruikers van een Microsoft Graph Tenant worden weer gegeven met de identiteit van de toepassing, in plaats van namens een gebruiker. Het voor beeld illustreert ook de variatie met behulp van certificaten voor verificatie. |
+|[Active-Directory-DotNet-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | Een webtoepassing die gegevens van de Microsoft Graph synchroniseert met behulp van de identiteit van de toepassing, in plaats van namens een gebruiker. |

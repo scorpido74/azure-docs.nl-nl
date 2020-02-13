@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 9a260577906ec94ecba87bb1be02fe35d8c763b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 882904ec09014df821c648bb4823d7a0930abba5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467337"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156297"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,7 +34,7 @@ Nu gaan we een eenvoudige gebruikers interface voor de toepassing maken. Bewerk 
 
 * Sleep in het palet linksboven in het `activity_main.xml` venster een knop naar de lege ruimte boven de tekst.
 
-* Ga naar de kenmerken van de knop aan de rechterkant en voer `onSpeechButtonClicked` in als de waarde voor het kenmerk `onClick`. We gaan een methode met deze naam schrijven om de knopgebeurtenis af te handelen. Wijzig het kenmerk ID in de rechterbovenhoek in `button`.
+* Ga naar de kenmerken van de knop aan de rechterkant en voer `onClick` in als de waarde voor het kenmerk `onSpeechButtonClicked`. We gaan een methode met deze naam schrijven om de knopgebeurtenis af te handelen. Wijzig het kenmerk ID in de rechterbovenhoek in `button`.
 
 * Gebruik het pictogram van de toverstaf bovenaan de ontwerpfunctie om beperkingen voor de lay-out af te leiden.
 
@@ -58,7 +58,7 @@ De tekst en de grafische weergave van uw gebruikersinterface moeten er nu ongeve
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang ook de teken reeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld. Gebruik bijvoorbeeld `westus` voor het gratis proef abonnement.
+1. Vervang ook de teken reeks `YourServiceRegion` door de para meter ' Speech SDK ' uit de [regio](https://aka.ms/speech/sdkregion) die aan uw abonnement is gekoppeld. Gebruik bijvoorbeeld `westus` voor het gratis proef abonnement.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 

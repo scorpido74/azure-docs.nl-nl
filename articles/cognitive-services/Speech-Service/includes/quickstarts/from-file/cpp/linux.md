@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/14/2020
 ms.author: erhopf
-ms.openlocfilehash: 6655cf4ba57bda8f2bfdd1a0b2781e2385db2e6f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ea219937fc765abd05e3ff438c0a48eb76a298b8
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748834"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156631"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,7 +35,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang in dit nieuwe bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel van de Speech-service.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de teken reeks `YourServiceRegion` door de para meter "Speech SDK" uit de [regio](https://aka.ms/speech/sdkregion) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proef abonnement).
 
 1. Vervang de teken reeks `whatstheweatherlike.wav` door uw eigen bestands naam.
 

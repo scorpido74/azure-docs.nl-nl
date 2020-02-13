@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 75893a85f975d5d1454f1b93535a1df7a45e8731
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 018d0c3bc009f6063de75b9a479be650b2c06e7c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084015"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160841"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL-uitzonde ringen en-fouten verwerken
 
@@ -506,7 +506,7 @@ De volgende voorbeeld code van doel-C demonstreert de aanbevolen procedures voor
 
 ## <a name="conditional-access-and-claims-challenges"></a>Voorwaardelijke toegang en claim uitdagingen
 
-Wanneer tokens op de achtergrond worden opgehaald, kan uw toepassing fouten ontvangen wanneer een [Challenge voor voorwaardelijke toegang](conditional-access-dev-guide.md) , zoals MFA-beleid, is vereist voor een API die u probeert te openen.
+Wanneer tokens op de achtergrond worden opgehaald, kan uw toepassing fouten ontvangen wanneer een [Challenge voor voorwaardelijke toegang](../azuread-dev/conditional-access-dev-guide.md) , zoals MFA-beleid, is vereist voor een API die u probeert te openen.
 
 Het patroon voor het afhandelen van deze fout is het interactief verkrijgen van een token met behulp van MSAL. Bij het interactief ophalen van een token wordt de gebruiker gevraagd om te voldoen aan het vereiste beleid voor voorwaardelijke toegang.
 
@@ -520,7 +520,7 @@ Als u de claim Challenge wilt afhandelen, moet u de methode `.WithClaim()` van d
 
 ### <a name="javascript"></a>Javascript
 
-Wanneer tokens op de achtergrond worden opgehaald (met behulp van `acquireTokenSilent`) met behulp van MSAL. js, kan uw toepassing fouten ontvangen wanneer een [Challenge voor voorwaardelijke toegang](conditional-access-dev-guide.md) , zoals MFA-beleid, is vereist voor een API die u probeert te openen.
+Wanneer tokens op de achtergrond worden opgehaald (met behulp van `acquireTokenSilent`) met behulp van MSAL. js, kan uw toepassing fouten ontvangen wanneer een [Challenge voor voorwaardelijke toegang](../azuread-dev/conditional-access-dev-guide.md) , zoals MFA-beleid, is vereist voor een API die u probeert te openen.
 
 Het patroon voor het afhandelen van deze fout is het maken van een interactieve aanroep om token te verkrijgen in MSAL. js, zoals `acquireTokenPopup` of `acquireTokenRedirect`, zoals in het volgende voor beeld:
 

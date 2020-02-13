@@ -16,38 +16,25 @@ ms.workload: ''
 ms.date: 05/02/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 8228da778e6cf6a874868ef0206092913908352d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: db10520508eb0b216a59cc643394ab27fd5ffa69
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694292"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169926"
 ---
-# <a name="azure-policy-sample-templates-for-virtual-network"></a>Voorbeeldsjablonen van Azure Policy voor virtueel netwerk
+# <a name="azure-policy-sample-built-ins-for-virtual-network"></a>Voor beeld van Azure-beleid voor het virtuele netwerk
 
-De volgende tabel bevat koppelingen naar voorbeelden voor [Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). De voorbeelden staan in [opslagplaats met voorbeelden voor Azure Policy](https://github.com/Azure/azure-policy).
+De volgende tabel bevat koppelingen naar voorbeelden voor [Azure Policy](../governance/policy/overview.md). De voorbeelden staan in [opslagplaats met voorbeelden voor Azure Policy](https://github.com/Azure/azure-policy).
 
-| | |
-|---|---|
-|**Netwerk**||
-| [NSG X on every NIC](../governance/policy/samples/nsg-on-nic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (NSG X op elke NIC) | Vereist dat een specifieke netwerkbeveiligingsgroep wordt gebruikt met elke interface van een virtueel netwerk. U geeft de id op van de netwerkbeveiligingsgroep die u wilt gebruiken. |
-| [NSG X on every subnet](../governance/policy/samples/nsg-on-subnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (NSG X in elk subnet) | Vereist dat een specifieke netwerkbeveiligingsgroep wordt gebruikt met elk virtueel subnet. U geeft de id op van de netwerkbeveiligingsgroep die u wilt gebruiken. |
-| [No route table](../governance/policy/samples/no-user-defined-route-table.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Geen routetabel)  |Voorkomt dat virtuele netwerken worden geïmplementeerd met een routetabel. |
-| [Use approved subnet for VM network interfaces](../governance/policy/samples/use-approved-subnet-vm-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Goedgekeurd subnet gebruiken voor VM-netwerkinterfaces) | Vereist dat netwerkinterfaces een goedgekeurd subnet gebruiken. U geeft de id op van het goedgekeurde subnet. |
-| [Use approved vNet for VM network interfaces](../governance/policy/samples/use-approved-vnet-vm-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Goedgekeurd vNet gebruiken voor VM-netwerkinterfaces) | Vereist dat netwerkinterfaces een goedgekeurd virtueel netwerk gebruiken. U geeft de id op van het goedgekeurde virtuele netwerk. |
-|**Controle**||
-| [Audit diagnostic setting](../governance/policy/samples/audit-diagnostic-setting.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Diagnostische instelling voor controleren) | Controleert of er geen diagnostische instellingen zijn ingeschakeld voor de opgegeven resourcetypen. U geeft een matrix van resourcetypen op waarvoor u wilt controleren of er diagnostische instellingen zijn ingeschakeld. |
-|**Naam- en tekstconventies**||
-| [Allow multiple name patterns](../governance/policy/samples/allow-multiple-name-patterns.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Meerdere naamgevingspatronen toestaan) | Toestaan dat verschillende naamgevingspatronen mogen worden gebruikt voor resources. |
-| [Require like pattern](../governance/policy/samples/enforce-like-pattern.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Like-patroon vereisen) | Resourcenamen moeten voldoen aan de voorwaarde *like* voor een patroon. |
-| [Require match pattern](../governance/policy/samples/enforce-match-pattern.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Match-patroon vereisen) | Resourcenamen moeten overeenkomen met een opgegeven naamgevingspatroon. |
-| [Require tag match pattern](../governance/policy/samples/enforce-tag-match-pattern.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Tag-match-patroon vereisen) | Een tagwaarde moet overeenkomen met een tekstpatroon. |
-|**Tags**||
-| [Billing Tags Policy Initiative](../governance/policy/samples/billing-tags-policy-initiative.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Factureringstagbeleidinitiatief) | Vereist opgegeven tagwaarden voor kostenplaats en productnaam. Er wordt gebruikgemaakt van ingebouwde beleidsregels om vereiste tags toe te passen en af te dwingen. U geeft de vereiste waarden voor de tags op.  |
-| [Enforce tag and its value on resource groups](../governance/policy/samples/enforce-tag-on-resource-groups.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Tag met de bijbehorende waarde afdwingen voor resourcegroepen) | Vereist een tag en waarde voor een resourcegroep. U geeft de vereiste naam en waarde voor de tag op.  |
-| [Enforce tag and its value](../governance/policy/samples/enforce-tag-value.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Tag en waarde afdwingen) | Vereist een opgegeven naam en waarde voor de tag. U geeft de naam en waarde op voor de tag die moet worden afgedwongen.  |
-| [Apply tag and its default value](../governance/policy/samples/apply-tag-default-value.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Tag met standaardwaarde toepassen) | Hiermee voegt u de opgegeven naam en waarde voor een tag toe, als die tag niet is opgegeven. U geeft de naam en waarde op voor de tag die moet worden toegepast.  |
-|**Algemeen**||
-| [Allowed locations](../governance/policy/samples/allowed-locations.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Toegestane locaties) | Vereist dat alle resources worden geïmplementeerd naar de goedgekeurde locaties. U geeft een matrix van goedgekeurde locaties op.  |
-| [Allowed resource types](../governance/policy/samples/allowed-resource-types.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Toegestane resourcetypen) | Zorgt ervoor dat alleen goedgekeurde resourcetypen worden geïmplementeerd. U geeft een matrix met resourcetypen op die zijn toegestaan.  |
-| [Not allowed resource types](../governance/policy/samples/not-allowed-resource-types.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Niet-toegestane resourcetypen) | Voorkomt de implementatie van de opgegeven resourcetypen. U geeft een matrix met resourcetypen op die niet zijn toegestaan.  |
+## <a name="network"></a>Netwerk
+
+[!INCLUDE [azure-policy-samples-policies-network](../../includes/azure-policy-samples-policies-network.md)]
+
+## <a name="tags"></a>Tags
+
+[!INCLUDE [azure-policy-samples-policies-tags](../../includes/azure-policy-samples-policies-tags.md)]
+
+## <a name="general"></a>Algemeen
+
+[!INCLUDE [azure-policy-samples-policies-general](../../includes/azure-policy-samples-policies-general.md)]

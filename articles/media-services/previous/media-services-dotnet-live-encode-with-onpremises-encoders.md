@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: bc7c8a059e1e17b7b280a7061206b10ed6c530aa
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 11c6da0b79f169b250dc0178f76dcd885ce91668
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69015841"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162868"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Live streamen met on-premises encoders met behulp van .NET
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Hieronder wordt aangegeven wat de vereisten zijn om de zelfstudie te voltooien:
 * Een Media Services-account. Zie [Een Media Services-account maken](media-services-portal-create-account.md) voor meer informatie over het maken van een Media Services-account.
 * Controleer of het streaming-eindpunt van waar u inhoud wilt streamen, de status **Wordt uitgevoerd** heeft. 
 * Stel uw ontwikkel omgeving in. Zie [uw omgeving instellen](media-services-set-up-computer.md)voor meer informatie.
-* Een webcam. Bijvoorbeeld [Telestream Wirecast-coderingsprogramma](https://www.telestream.net/wirecast/overview.htm).
+* Een webcam. Bijvoorbeeld [Telestream Wirecast-coderingsprogramma](media-services-configure-wirecast-live-encoder.md).
 
 Aanbevolen om de volgende artikelen te controleren:
 
@@ -69,7 +69,7 @@ In het volgende code voorbeeld ziet u hoe u de volgende taken kunt uitvoeren:
 >[!NOTE]
 >Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). U moet dezelfde beleids-id gebruiken als u altijd dezelfde dagen/toegangsmachtigingen gebruikt, bijvoorbeeld beleidsregels voor locators die zijn bedoeld om gedurende een lange periode gehandhaafd te blijven (niet-upload-beleidsregels). Raadpleeg [dit artikel](media-services-dotnet-manage-entities.md#limit-access-policies) voor meer informatie.
 
-Zie [Azure Media Services RTMP-ondersteuning en live](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)coderings Programma's voor meer informatie over het configureren van een live coderings programma.
+Zie [Azure Media Services RTMP-ondersteuning en live coderings](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)Programma's voor meer informatie over het configureren van een live coderings programma.
 
 ```csharp
 using System;

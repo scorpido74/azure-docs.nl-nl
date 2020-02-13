@@ -16,19 +16,19 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b8aac627936aef2cfa79bbd92d6163fe40b4d32
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 70a85a81996766b862cd6fbc3b605636385e0fda
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274855"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159179"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problemen bij het aanmelden bij een niet-galerie toepassing die is geconfigureerd voor federatieve eenmalige aanmelding
 
 Als u de onderstaande aanmeldings problemen wilt oplossen, raden we u aan deze suggestie te volgen om betere diagnose te krijgen en de oplossings stappen te automatiseren:
 
 - Installeer de [beveiligde browser uitbreiding mijn apps](access-panel-extension-problem-installing.md) om Azure Active Directory (Azure AD) te helpen bij het verbeteren van de test ervaring in de Azure Portal.
-- Reproduceer de fout met behulp van de test ervaring op de pagina app-configuratie in de Azure Portal. Meer informatie over het [opsporen van op SAML gebaseerde toepassingen voor eenmalige aanmelding](../develop/howto-v1-debug-saml-sso-issues.md)
+- Reproduceer de fout met behulp van de test ervaring op de pagina app-configuratie in de Azure Portal. Meer informatie over het [opsporen van op SAML gebaseerde toepassingen voor eenmalige aanmelding](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
 
 ## <a name="application-not-found-in-directory"></a>Kan de toepassing niet vinden in de map
 
@@ -40,7 +40,7 @@ Het kenmerk van de verlener verzendt van de toepassing naar Azure AD in de SAML-
 
 **Opgelost**
 
-Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../develop/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
+Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
 
 1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
 
@@ -66,11 +66,11 @@ Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-w
 
 **Mogelijke oorzaak** 
 
-De AssertionConsumerServiceURL-waarde in de SAML-aanvraag komt niet overeen met de antwoord-URL-waarde of het patroon dat is geconfigureerd in azure AD. De AssertionConsumerServiceURL-waarde in de SAML-aanvraag is de URL die u in de fout ziet. 
+De waarde AssertionConsumerServiceURL in de SAML-aanvraag komt niet overeen met de waarde of het patroon van de antwoord-URL die is geconfigureerd in Azure AD. De AssertionConsumerServiceURL-waarde in de SAML-aanvraag is de URL die u ziet in de fout. 
 
 **Opgelost** 
 
-Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../develop/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
+Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
  
 1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.** 
 
@@ -98,11 +98,11 @@ Nadat u de waarde voor de antwoord-URL in azure AD hebt bijgewerkt en deze overe
 
 **Mogelijke oorzaak**
 
-De gebruiker heeft geen toegang gekregen tot de toepassing in azure AD.
+De gebruiker heeft in Azure AD geen toegang gekregen tot de toepassing.
 
 **Opgelost**
 
-Volg de onderstaande stappen om een of meer gebruikers rechtstreeks toe te wijzen aan een toepassing. Als u de [test ervaring](../develop/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
+Volg de onderstaande stappen om een of meer gebruikers rechtstreeks toe te wijzen aan een toepassing. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
 
 1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder.**
 
@@ -148,7 +148,7 @@ Azure AD biedt geen ondersteuning voor de SAML-aanvraag die door de toepassing i
 
 -   Ontbrekende vereiste velden in de SAML-aanvraag
 
--   Versleutelde methode van SAML-aanvraag
+-   Gecodeerde methode voor SAML-aanvraag
 
 **Opgelost**
 
@@ -172,7 +172,7 @@ Het `Issuer` kenmerk dat vanuit de toepassing naar Azure AD is verzonden in de S
 
 **Opgelost**
 
-Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../develop/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren:
+Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren:
 
 1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-** beheerder.
 

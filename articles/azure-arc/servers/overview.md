@@ -7,15 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Azure Automation, DSC, Power shell, desired state Configuration, update beheer, bijhouden van wijzigingen, inventaris, runbooks, Python, grafisch, hybride
-ms.date: 02/03/2020
-ms.custom: mvc
+ms.date: 02/12/2020
 ms.topic: overview
-ms.openlocfilehash: ad24418bf3879e4ef9a0ae4833c37c051079c668
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 33681d5c9e296d7c292dabbd64560e3d95c45af2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133846"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190309"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Wat is Azure Arc voor servers (preview-versie)
 
@@ -41,6 +40,8 @@ Met Azure Arc voor servers (preview) worden alleen bepaalde regio's ondersteund:
 - WestUS2
 - West-Europa
 - WestAsia
+
+In de meeste gevallen moet de locatie die u selecteert bij het maken van het installatie script, de Azure-regio die geografisch het dichtst bij de locatie van uw machine ligt. Data-at-rest wordt opgeslagen in de Azure-geografie die de door u opgegeven regio bevat. Dit kan ook van invloed zijn op uw keuze van regio als u gegevens locatie vereisten hebt. Als de Azure-regio waarmee uw machine is verbonden, wordt beïnvloed door een storing, heeft dit geen invloed op de verbonden computer, maar beheer bewerkingen die gebruikmaken van Azure, kunnen mogelijk niet worden voltooid. Als u meerdere locaties hebt die een geografisch redundante service bieden, kunt u voor tolerantie in het geval van een regionale storing het beste de computers op elke locatie verbinden met een andere Azure-regio.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -135,10 +136,10 @@ Het koppelen van machines in uw hybride omgeving met Azure kan worden uitgevoerd
 
 | Methode | Beschrijving |
 |--------|-------------|
-| Interactief | Installeer de agent hand matig op een enkele of een beperkt aantal machines Volg de stappen in [computers verbinden met Azure Portal](quickstart-onboard-portal.md).<br> Vanuit het Azure Portal kunt u een script genereren en uitvoeren op de computer om de installatie-en configuratie stappen van de agent te automatiseren.|
-| Op schaal | Installeer en configureer de agent voor meerdere machines die de [Connect-computers volgen met behulp van een Service-Principal](quickstart-onboard-powershell.md).<br> Met deze methode maakt u een Service-Principal om machines niet-interactief te verbinden.|
+| Interactief | Installeer de agent hand matig op een enkele of een beperkt aantal machines Volg de stappen in [computers verbinden met Azure Portal](onboard-portal.md).<br> Vanuit het Azure Portal kunt u een script genereren en uitvoeren op de computer om de installatie-en configuratie stappen van de agent te automatiseren.|
+| Op schaal | Installeer en configureer de agent voor meerdere machines die de [Connect-computers volgen met behulp van een Service-Principal](onboard-service-principal.md).<br> Met deze methode maakt u een Service-Principal om machines niet-interactief te verbinden.|
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u Azure-Arc voor servers (preview) wilt gaan evalueren, volgt u het artikel [verbinding maken met hybride computers met Azure via de Azure Portal](quickstart-onboard-portal.md). 
+- Als u Azure-Arc voor servers (preview) wilt gaan evalueren, volgt u het artikel [verbinding maken met hybride computers met Azure via de Azure Portal](onboard-portal.md). 

@@ -8,16 +8,16 @@ ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 141f1a7fc8f966132cb3570fd9d9cfa911127eed
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 9356cecb22672ae15505d14b5ac73d5baeef09e0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792448"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191376"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>B2B-oplossingen voor bedrijfs integratie met Azure Logic Apps en Enterprise Integration Pack
 
-Voor Business-to-Business (B2B)-oplossingen en naadloze communicatie tussen organisaties kunt u geautomatiseerde, schaal bare Enter prise Integration-werk stromen maken met behulp van de Enterprise Integration Pack (EIP) met [Azure Logic apps](../logic-apps/logic-apps-overview.md). Hoewel organisaties verschillende protocollen en indelingen gebruiken, kunnen ze berichten elektronisch uitwisselen. De EIP transformeert verschillende indelingen naar een indeling die de systemen van uw organisatie kunnen verwerken en ondersteunt industrie standaard protocollen, waaronder [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md)en [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). U kunt ook berichten beveiligen met versleuteling en digitale hand tekeningen. De EIP ondersteunt deze [Enter prise Integration-connectors](../connectors/apis-list.md#integration-account-connectors) en deze industrie standaarden:
+Voor Business-to-Business (B2B)-oplossingen en naadloze communicatie tussen organisaties kunt u geautomatiseerde, schaal bare Enter prise Integration-werk stromen maken met behulp van de Enterprise Integration Pack (EIP) met [Azure Logic apps](../logic-apps/logic-apps-overview.md). Hoewel organisaties verschillende protocollen en indelingen gebruiken, kunnen ze berichten elektronisch uitwisselen. De EIP transformeert verschillende indelingen naar een indeling die de systemen van uw organisatie kunnen verwerken en ondersteunt industrie standaard protocollen, waaronder [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md)en [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). U kunt ook de beveiliging van berichten verbeteren door versleuteling en digitale hand tekeningen te gebruiken. De EIP ondersteunt deze [Enter prise Integration-connectors](../connectors/apis-list.md#integration-account-connectors) en deze industrie standaarden:
 
 * Electronic Data Interchange (EDI)
 * Enterprise Application Integration (EAI)
@@ -32,7 +32,7 @@ Als u bekend bent met micro soft BizTalk Server of Azure BizTalk Services, volgt
 
 * U kunt aangepaste code voor uw Logic apps maken met Azure functions.
 
-## <a name="how-do-i-get-started"></a>Hoe kan ik beginnen?
+## <a name="how-do-i-get-started"></a>Hoe ga ik aan de slag?
 
 Voordat u werk stromen voor B2B Logic apps kunt bouwen met de EIP, hebt u de volgende items nodig:
 
@@ -48,7 +48,7 @@ Dit zijn de stappen op hoog niveau om te beginnen met het bouwen van B2B Logic a
 
 ![Vereisten voor het maken van B2B Logic apps](./media/logic-apps-enterprise-integration-overview/overview.png)  
 
-## <a name="try-now"></a>Probeer het nu
+## <a name="try-now"></a>Nu uitproberen
 
 [Een volledig operationele logische voorbeeld toepassing implementeren die AS2 berichten verzendt en ontvangt](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
 

@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 0cd4c45403d59819bf7ba729ea99de76ccf967ca
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9c5534f2df4a375daf355d74f788b7f610f92919
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819898"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162154"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL Database back-ups Maxi maal tien jaar opslaan
 
-Veel toepassingen hebben wettelijke, nalevings-of andere zakelijke doel einden waarvoor u de back-ups van de Data Base wilt behouden na de 7-35 dagen die worden meegeleverd met Azure SQL Database [automatische back-ups](sql-database-automated-backups.md). Door gebruik te maken van de functie voor lange termijn retentie (LTR) kunt u voor Maxi maal tien jaar opgegeven SQL database volledige back-ups in [Ra-GRS-](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) Blob-opslag. U kunt elke back-up vervolgens herstellen als een nieuwe database.
+Veel toepassingen hebben wettelijke, nalevings-of andere zakelijke doel einden waarvoor u de back-ups van de Data Base wilt behouden na de 7-35 dagen die worden meegeleverd met Azure SQL Database [automatische back-ups](sql-database-automated-backups.md). Door gebruik te maken van de functie voor lange termijn retentie (LTR) kunt u opgegeven SQL database volledige back-ups in Azure Blob-opslag met geografisch redundante opslag met lees toegang gedurende Maxi maal tien jaar. U kunt vervolgens een back-up herstellen als een nieuwe data base. Zie [Azure Storage redundantie](../storage/common/storage-redundancy.md)voor meer informatie over Azure Storage redundantie.
 
 > [!NOTE]
 > LTR kan worden ingeschakeld voor afzonderlijke en gepoolde data bases. Het is nog niet beschikbaar voor instance-data bases in beheerde exemplaren. U kunt SQL Agent-taken gebruiken voor het plannen van [back-ups met alleen-kopiëren](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) als alternatief voor een oplossing van meer dan 35 dagen.
@@ -32,15 +32,15 @@ Lange termijn retentie van back-ups (LTR) maakt gebruik van de volledige databas
 
 Voor beelden van het LTR-beleid:
 
--  W = 0, M = 0, Y = 5, WeekOfYear = 3
+-  W=0, M=0, Y=5, WeekOfYear=3
 
    De derde volledige back-up van elk jaar wordt vijf jaar bewaard.
    
-- W = 0, M = 3, Y = 0
+- W=0, M=3, Y=0
 
    De eerste volledige back-up van elke maand wordt drie maanden bewaard.
 
-- W = 12, M = 0, Y = 0
+- W=12, M=0, Y=0
 
    Elke wekelijkse volledige back-up wordt twaalf weken bewaard.
 

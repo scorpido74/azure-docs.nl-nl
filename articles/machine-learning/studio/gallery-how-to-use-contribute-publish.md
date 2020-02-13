@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 5049bdfdc84df16c4b8070decf47fd2d726d7777
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 6a82c4d6eecec3a3a9ef690536988c8402444ffc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153023"
+ms.locfileid: "77168551"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Resources delen en ontdekken in de Azure AI Gallery
 
@@ -121,7 +121,7 @@ U kunt een van de volgende informatie voor uw experiment rechtstreeks in de gale
 * Naam van experiment
 * Samenvatting of beschrijving
 * Tags
-* Afbeelding
+* Installatiekopie
 * Zichtbaarheids instelling (**openbaar** of niet in **lijst**)
 
 U kunt ook het experiment verwijderen uit de galerie.

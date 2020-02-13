@@ -8,16 +8,16 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: f62adbaea8d6549af0137f49542ee89e7531b9ef
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: e316da12345c0bf1ea3682dadb1a7a65f250747b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136175"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191102"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Snelstartgids: een persoonlijke koppelings service maken met behulp van de Azure Portal
 
-Een Azure Private Link-service verwijst naar uw eigen service die wordt beheerd door een persoonlijke koppeling. U kunt persoonlijke koppelingen toegang verlenen tot de service of resource die achter Azure Load Balancer werkt. Consumenten van uw service kunnen deze privé vanuit hun eigen virtuele netwerken benaderen. In deze Quick Start leert u hoe u een persoonlijke koppelings service kunt maken met behulp van de Azure Portal.
+Een Azure Private Link-service verwijst naar uw eigen service die wordt beheerd door een persoonlijke koppeling. U kunt persoonlijke koppelingen toegang verlenen tot de service of resource die achter Azure Standard Load Balancer werkt. Consumenten van uw service kunnen deze privé vanuit hun eigen virtuele netwerken benaderen. In deze Quick Start leert u hoe u een persoonlijke koppelings service kunt maken met behulp van de Azure Portal.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -37,9 +37,9 @@ In deze sectie gaat u een virtueel netwerk maken. U maakt ook het subnet om de l
 
 1. Typ of Selecteer in het deel venster **virtueel netwerk maken** de volgende waarden:
 
-   - **Naam**: Voer **MyVNet**in.
-   - **ResourceGroup**: Selecteer **nieuwe maken**, Voer **MyResourceGroupLB**in en selecteer **OK**.
-   - **Naam**van **subnet** > : Voer **MyBackendSubnet**in.
+   - **Naam**: Voer **myVNet**in.
+   - **ResourceGroup**: Selecteer **nieuwe maken**, Voer **myResourceGroupLB**in en selecteer **OK**.
+   - **Naam**van **subnet** > : Voer **myBackendSubnet**in.
 
 1. Selecteer **Maken**.
 
@@ -56,12 +56,12 @@ Gebruik de portal om een standaard interne load balancer te maken. De naam en he
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | **Abonnement**               | Selecteer uw abonnement.    |
-    | **Resourcegroep**         | Selecteer **MyResourceGroupLB** in het vak.|
+    | **Resourcegroep**         | Selecteer **myResourceGroupLB** in het vak.|
     | **Naam**                   | Voer **myLoadBalancer**in.                                   |
     | **Regio**         | Selecteer **US - oost 2**.                                        |
     | **Type**          | selecteer **Intern**.                                        |
     | **SKU**           | selecteer **Standaard**.                          |
-    | **Virtueel netwerk**           | Selecteer **MyVNet**.                          |
+    | **Virtueel netwerk**           | Selecteer **myVNet**.                          |
     | **Toewijzing van IP-adres**              | Selecteer **Statisch**.   |
     | **Privé-IP-adres**|Geef een adres op dat zich in de adres ruimte van uw virtuele netwerk en subnet bevindt. Een voor beeld is 10.3.0.7.  |
 
@@ -88,13 +88,13 @@ Gebruik een status test om de resource status load balancer te controleren. Op b
 
 Een status test maken om de status van de resources te controleren:
 
-1. Selecteer **alle resources** in het meest linkse menu en selecteer vervolgens **MyLoadBalancer** in de lijst met resources.
+1. Selecteer **alle resources** in het meest linkse menu en selecteer vervolgens **myLoadBalancer** in de lijst met resources.
 
 1. Selecteer onder **Instellingen** de optie **Statustests** en selecteer vervolgens **Toevoegen**.
 
 1. Voer op de pagina **een status test toevoegen** de volgende waarden in of Selecteer deze:
 
-   - **Naam**: Voer **MyHealthProbe**in.
+   - **Naam**: Voer **myHealthProbe**in.
    - **Protocol**: selecteer **TCP** .
    - **Poort**: Voer **80**in.
    - **Interval**: Voer **15**in. Deze waarde is het aantal seconden tussen test pogingen.
@@ -110,23 +110,23 @@ Een load balancer regel definieert hoe verkeer naar resources wordt gedistribuee
 - De back-end-IP-groep om het verkeer te ontvangen.
 - De vereiste bron-en doel poorten.
 
-De load balancer regel met de naam **MyLoadBalancerRule** luistert naar poort 80 in de front-end van **LoadBalancerFrontEnd** . De regel verzendt netwerk verkeer naar de **MyBackendPool** back-end-adres groep op dezelfde poort 80.
+De load balancer regel met de naam **myLoadBalancerRule** luistert naar poort 80 in de front-end van **LoadBalancerFrontEnd** . De regel verzendt netwerk verkeer naar de **myBackendPool** back-end-adres groep op dezelfde poort 80.
 
 Een load balancer regel maken:
 
-1. Selecteer **alle resources** in het meest linkse menu en selecteer vervolgens **MyLoadBalancer** in de lijst met resources.
+1. Selecteer **alle resources** in het meest linkse menu en selecteer vervolgens **myLoadBalancer** in de lijst met resources.
 
 1. Selecteer onder **instellingen**de optie **taakverdelings regels**en selecteer vervolgens **toevoegen**.
 
 1. Voer op de pagina **taakverdelings regel toevoegen** de volgende waarden in of Selecteer deze als deze nog niet aanwezig zijn:
 
-   - **Naam**: Voer **MyLoadBalancerRule**in.
+   - **Naam**: Voer **myLoadBalancerRule**in.
    - **Frontend-IP-adres:** Voer **LoadBalancerFrontEnd**in.
    - **Protocol**: selecteer **TCP** .
    - **Poort**: Voer **80**in.
    - **Backend-poort**: Voer **80**in.
-   - **Back-endpool**: selecteer **MyBackendPool**.
-   - **Statustest**: selecteer **MyHealthProbe**. 
+   - **Back-end-pool**: Selecteer **myBackendPool**.
+   - **Status test**: Selecteer **myHealthProbe**. 
 
 1. Selecteer **OK**.
 
@@ -144,7 +144,7 @@ In deze sectie maakt u een persoonlijke koppelings service achter een standaard 
     |-------------------|------------------------------------------------------------------------------|
     | Project Details:  |                                                                              |
     | **Abonnement**      | Selecteer uw abonnement.                                                     |
-    | **Resourcegroep**    | Selecteer **MyResourceGroupLB**.                                                    |
+    | **Resourcegroep**    | Selecteer **myResourceGroupLB**.                                                    |
     | Exemplaar Details: |                                                                              |
     | **Naam**              | Voer **myPrivateLinkService**in. |
     | **Regio**            | Selecteer **US - oost 2**.                                                        |
@@ -155,9 +155,9 @@ In deze sectie maakt u een persoonlijke koppelings service achter een standaard 
 
     | Instelling                           | Waarde                                                                           |
     |-----------------------------------|---------------------------------------------------------------------------------|
-    | **Load Balancer**                     | Selecteer **MyLoadBalancer**.                                                           |
-    | **Load Balancer frontend-IP-adres** | Selecteer het front-end-IP-adres van **MyLoadBalancer**.                                |
-    | **Virtueel netwerk van de bron-NAT**        | Selecteer **myVNET**.                                                                   |
+    | **Load Balancer**                     | Selecteer **myLoadBalancer**.                                                           |
+    | **Load Balancer frontend-IP-adres** | Selecteer het front-end-IP-adres van **myLoadBalancer**.                                |
+    | **Virtueel netwerk van de bron-NAT**        | Selecteer **myVNet**.                                                                   |
     | **Bron-NAT-subnet**                 | Selecteer **myBackendSubnet**.                                                          |
     | **TCP-proxy v2 inschakelen**               | Selecteer **Ja** of **Nee** , afhankelijk van of uw toepassing een TCP proxy v2-header verwacht. |
     | **Instellingen voor privé IP-adres**       | Configureer de toewijzings methode en het IP-adres voor elke NAT-IP.                  |

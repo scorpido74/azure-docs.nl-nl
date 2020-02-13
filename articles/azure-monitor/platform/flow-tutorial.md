@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/29/2017
-ms.openlocfilehash: 3c1df04e96aff55ae5b9f7130b1593638e3ea1b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6097d38d3335be356ca75f5a9d0eadeed414b03
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395069"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166940"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Azure Monitor logboek processen automatiseren met de connector voor Microsoft Flow
 Met [Microsoft flow](https://ms.flow.microsoft.com) kunt u geautomatiseerde werk stromen maken met honderden acties voor diverse services. Uitvoer van de ene actie kan worden gebruikt als invoer voor een andere, zodat u integratie tussen verschillende services kunt maken.  Met de Azure Log Analytics-connector voor Microsoft Flow kunt u werk stromen bouwen met gegevens die zijn opgehaald door logboek query's van een Log Analytics-werk ruimte in Azure Monitor.
@@ -36,7 +36,7 @@ In de zelf studie in dit artikel leest u hoe u een stroom maakt waarmee automati
 
 
 ## <a name="step-3-add-a-log-analytics-action"></a>Stap 3: een Log Analytics actie toevoegen
-1. Klik op **+ Nieuwe stap** en selecteer **Een actie toevoegen**.
+1. Klik op **+ nieuwe stap**en klik vervolgens op **een actie toevoegen**.
 2. Zoeken naar **log Analytics**.
 3. Klik op **Azure log Analytics: Query's uitvoeren en resultaten visualiseren**.<br><br>![query venster Log Analytics uitvoeren](media/flow-tutorial/flow02.png)
 
@@ -77,6 +77,5 @@ In de zelf studie in dit artikel leest u hoe u een stroom maakt waarmee automati
 
 - Meer informatie over [logboek query's vindt u in azure monitor](../log-query/log-query-overview.md).
 - Meer informatie over [Microsoft flow](https://ms.flow.microsoft.com).
-
 
 

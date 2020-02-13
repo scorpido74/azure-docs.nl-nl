@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/22/2019
-ms.openlocfilehash: 8f82f0539432418f967d51f00e659ce92d1fa9b6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: HT
+ms.date: 02/11/2020
+ms.openlocfilehash: 7011bf068a96fe9da035ec08a1f6ef7f80a0b240
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719803"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161950"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL database controle
 
@@ -27,9 +27,6 @@ Controle voor Azure [SQL database](sql-database-technical-overview.md) en [SQL D
 
 > [!NOTE] 
 > Dit onderwerp is van toepassing op Azure SQL-servers en op SQL Database- en SQL Data Warehouse-databases die op deze Azure SQL-servers worden gemaakt. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse.
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 
 ## <a id="subheading-1"></a>Overzicht van de controle van Azure SQL database
 
@@ -44,11 +41,11 @@ U kunt SQL database controle gebruiken voor het volgende:
 >
 > - Alle opslag typen (v1, v2, blob) worden ondersteund.
 > - Alle configuraties voor opslag replicatie worden ondersteund.
+> - Opslag achter een virtueel netwerk en een firewall wordt ondersteund.
 > - **Premium-opslag** wordt momenteel **niet ondersteund**.
-> - **Opslag in VNet** wordt momenteel **niet ondersteund**.
-> - **Opslag achter een firewall** wordt momenteel **niet ondersteund**.
 > - **Hiërarchische naam ruimte** voor **Azure data Lake Storage Gen2 opslag account** wordt momenteel **niet ondersteund**.
-
+> - Het inschakelen van controle op een onderbroken **Azure SQL Data Warehouse** wordt niet ondersteund. Als u controle wilt inschakelen, moet u het Data Warehouse hervatten.
+   
 ## <a id="subheading-8"></a>Het controle beleid op server niveau versus database niveau definiëren
 
 Er kan een controle beleid worden gedefinieerd voor een specifieke data base of als standaard server beleid:
@@ -66,60 +63,51 @@ Er kan een controle beleid worden gedefinieerd voor een specifieke data base of 
    >
    > Anders wordt u aangeraden alleen BLOB-controle op server niveau in te scha kelen en de controle op database niveau uitgeschakeld te laten voor alle data bases.
 
-## <a id="subheading-2"></a>Controle instellen voor uw data base
+## <a id="subheading-2"></a>Controle instellen voor uw server
 
 In de volgende sectie wordt de configuratie van de controle met behulp van de Azure Portal beschreven.
 
+  > [!NOTE]
+   >U hebt nu meerdere opties voor het configureren van de locatie waar audit logboeken worden geschreven. U kunt Logboeken schrijven naar een Azure-opslag account, naar een Log Analytics-werk ruimte voor het gebruik van Azure Monitor-Logboeken of Event Hub voor gebruik met Event Hub. U kunt een wille keurige combi natie van deze opties configureren en er worden controle logboeken naar elke optie geschreven.
+
 1. Ga naar de [Azure Portal](https://portal.azure.com).
 2. Navigeer naar **controle** onder de kop beveiliging in het deel venster SQL database/server.
-
-    <a id="auditing-screenshot"></a>![navigatie deel venster][1]
-
 3. Als u liever een server controle beleid instelt, kunt u de koppeling **Server instellingen weer geven** op de pagina database controle selecteren. U kunt vervolgens de instellingen voor de controle van de server weer geven of wijzigen. Het controle beleid voor servers is van toepassing op alle bestaande en nieuw gemaakte data bases op deze server.
 
     ![Navigatievenster][2]
 
-4. Als u de controle wilt inschakelen op het niveau van de data base, schakelt u **controle** in **op**aan.
-
-    Als server controle is ingeschakeld, is de door de data base geconfigureerde controle naast de server controle aanwezig.
+4. Als u de controle wilt inschakelen op het niveau van de data base, schakelt u **controle** in **op**aan. Als server controle is ingeschakeld, is de door de data base geconfigureerde controle naast de server controle aanwezig.
 
     ![Navigatievenster][3]
 
-5. **Nieuw** : u hebt nu meerdere opties voor het configureren van de locatie waar audit logboeken worden geschreven. U kunt Logboeken schrijven naar een Azure-opslag account, naar een Log Analytics-werk ruimte voor het gebruik van Azure Monitor-Logboeken of Event Hub voor gebruik met Event Hub. U kunt een wille keurige combi natie van deze opties configureren en er worden controle logboeken naar elke optie geschreven.
-  
-  > [!NOTE]
-   >Klanten die een onveranderbare logboek opslag voor hun server-of database niveau-controle gebeurtenissen willen configureren, moeten de [instructies volgen die worden gegeven door Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)
-  
-  > [!WARNING]
-   > Als u controle inschakelt op Log Analytics, worden er kosten in rekening gebracht op basis van opname tarieven. Houd rekening met de gekoppelde kosten met behulp van deze [optie](https://azure.microsoft.com/pricing/details/monitor/)of overweeg de audit logboeken op te slaan in een Azure-opslag account.
+### <a id="audit-storage-destination">Controleren op opslag bestemming</a>
 
-    ![opslag opties](./media/sql-database-auditing-get-started/auditing-select-destination.png)
-
-6. Als u het schrijven van audit logboeken naar een opslag account wilt configureren, selecteert u **opslag** en opent u **opslag Details**. Selecteer het Azure-opslag account waarin de logboeken worden opgeslagen en selecteer vervolgens de Bewaar periode. De oude logboeken worden verwijderd. Klik vervolgens op **OK**.
+Als u het schrijven van audit logboeken naar een opslag account wilt configureren, selecteert u **opslag** en opent u **opslag Details**. Selecteer het Azure-opslag account waarin de logboeken worden opgeslagen en selecteer vervolgens de Bewaar periode. Klik vervolgens op **OK**. Logboeken die ouder zijn dan de Bewaar periode, worden verwijderd.
 
    > [!IMPORTANT]
    > - De standaard waarde voor de Bewaar periode is 0 (onbeperkte retentie). U kunt deze waarde wijzigen door de schuif regelaar voor **bewaren (dagen)** in **opslag instellingen** te verplaatsen bij het configureren van het opslag account voor controle.
    > - Als u de retentie periode van 0 (onbeperkte retentie) wijzigt naar een andere waarde, moet u er rekening mee houden dat bewaren alleen van toepassing is op de logboeken die zijn geschreven nadat de Bewaar waarde is gewijzigd (tijdens de periode waarin retentie is ingesteld op onbeperkt, blijven behouden, zelfs nadat bewaren is ingeschakeld)
 
-    ![opslagaccount](./media/sql-database-auditing-get-started/auditing_select_storage.png)
+   ![opslagaccount](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-7. Als u het schrijven van audit logboeken naar een Log Analytics-werk ruimte wilt configureren, selecteert u **log Analytics (preview)** en opent u **log Analytics Details**. Selecteer of maak de Log Analytics-werk ruimte waar de logboeken worden geschreven en klik vervolgens op **OK**.
+Als u een opslag account wilt configureren in een virtueel netwerk of een firewall, hebt u een [Active Directory beheerder](/sql-database-aad-authentication-configure.md?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) op de server nodig. Schakel **vertrouwde micro soft-Services toestaan in voor toegang tot dit opslag account** op het opslag account. Bovendien moet u de machtiging ' micro soft. Authorization/roleAssignments/write ' hebben voor het geselecteerde opslag account.
 
-    ![Log Analytics-werkruimte](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+U wordt aangeraden de [beheerder](../role-based-access-control/built-in-roles.md#user-access-administrator) van de gebruiker te zijn om de beheerde identiteit de rol ' BLOB data contributor ' te geven. Zie voor meer informatie over machtigingen en op rollen gebaseerd toegangs beheer [Wat is op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources?](../role-based-access-control/overview.md) en om [roltoewijzingen toe te voegen of te verwijderen met behulp van Azure RBAC en de Azure Portal](../role-based-access-control/role-assignments-portal.md)
 
-8. Als u het schrijven van audit logboeken naar een Event Hub wilt configureren, selecteert u **Event hub (preview)** en opent u **Details van Event hub**. Selecteer de Event Hub waar de logboeken worden geschreven en klik vervolgens op **OK**. Zorg ervoor dat de Event Hub zich in dezelfde regio bevindt als de-data base en-server.
+### <a id="audit-log-analytics-destination">Controleren op Log Analytics bestemming</a>
+  
+Als u het schrijven van audit logboeken naar een Log Analytics-werk ruimte wilt configureren, selecteert u **log Analytics (preview)** en opent u **log Analytics Details**. Selecteer of maak de Log Analytics-werk ruimte waar de logboeken worden geschreven en klik vervolgens op **OK**.
 
-    ![Event Hub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+   ![LogAnalyticsworkspace](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    
+  > [!WARNING]
+   > Als u controle inschakelt op Log Analytics, worden er kosten in rekening gebracht op basis van opname tarieven. Houd rekening met de gekoppelde kosten met behulp van deze [optie](https://azure.microsoft.com/pricing/details/monitor/)of overweeg de audit logboeken op te slaan in een Azure-opslag account.
 
-9. Klik op **Opslaan**.
-10. Als u de gecontroleerde gebeurtenissen wilt aanpassen, kunt u dit doen via [Power shell-cmdlets](#subheading-7) of de [rest API](#subheading-9).
-11. Nadat u de controle-instellingen hebt geconfigureerd, kunt u de nieuwe functie voor het detecteren van bedreigingen inschakelen en e-mail berichten configureren voor het ontvangen van beveiligings waarschuwingen. Wanneer u detectie van dreigingen gebruikt, ontvangt u proactieve waarschuwingen over afwijkende database activiteiten die kunnen wijzen op mogelijke beveiligings dreigingen. Zie aan de slag [met detectie van bedreigingen](sql-database-threat-detection-get-started.md)voor meer informatie.
+### <a id="audit-event-hub-destination">Controleren op Event hub-doel</a>
 
-> [!IMPORTANT]
-> Het is niet mogelijk om controle in te scha kelen op een onderbroken Azure SQL Data Warehouse. Als u deze functie wilt inschakelen, moet u het Data Warehouse opheffen.
+Als u het schrijven van audit logboeken naar een Event Hub wilt configureren, selecteert u **Event hub (preview)** en opent u **Details van Event hub**. Selecteer de Event Hub waar de logboeken worden geschreven en klik vervolgens op **OK**. Zorg ervoor dat de Event Hub zich in dezelfde regio bevindt als de-data base en-server.
 
-> [!WARNING]
-> Als u controle inschakelt op een server waarop een Azure SQL Data Warehouse **wordt weer gegeven, wordt het Data Warehouse hervat en opnieuw onderbroken** . Dit kan in rekening worden gebracht.
+   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
 ## <a id="subheading-3"></a>Controle logboeken en-rapporten analyseren
 
@@ -171,7 +159,7 @@ Als u ervoor hebt gekozen om audit logboeken naar een Azure Storage-account te s
 
        ![Navigatievenster][8]
 
-- Gebruik de systeem functie **sys. fn_get_audit_file** (T-SQL) om de controle logboek gegevens in tabel vorm te retour neren. Zie [sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)voor meer informatie over het gebruik van deze functie.
+- Gebruik de systeem functie **sys. fn_get_audit_file** (T-SQL) om de controle logboek gegevens in tabel vorm te retour neren. Zie [sys. fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)voor meer informatie over het gebruik van deze functie.
 
 - **Samenvoeg controle bestanden** in SQL Server Management Studio gebruiken (vanaf SSMS 17):
     1. Selecteer in het menu SSMS **File** > **Open** > **audit bestanden samen voegen**.
@@ -226,6 +214,9 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
 
 ## <a name="additional-information"></a>Aanvullende informatie
 
+- Als u de gecontroleerde gebeurtenissen wilt aanpassen, kunt u dit doen via [Power shell-cmdlets](#subheading-7) of de [rest API](#subheading-9).
+
+- Nadat u de controle-instellingen hebt geconfigureerd, kunt u de nieuwe functie voor het detecteren van bedreigingen inschakelen en e-mail berichten configureren voor het ontvangen van beveiligings waarschuwingen. Wanneer u detectie van dreigingen gebruikt, ontvangt u proactieve waarschuwingen over afwijkende database activiteiten die kunnen wijzen op mogelijke beveiligings dreigingen. Zie aan de slag [met detectie van bedreigingen](sql-database-threat-detection-get-started.md)voor meer informatie.
 - Zie de naslag informatie over de [indeling van BLOB-controle logboeken](https://go.microsoft.com/fwlink/?linkid=829599)voor meer informatie over de logboek indeling, de hiërarchie van de opslag map en naam conventies.
 
     > [!IMPORTANT]
@@ -233,7 +224,6 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
 
 - Audit logboeken worden geschreven om **blobs toe te voegen** in een Azure Blob-opslag op uw Azure-abonnement:
   - **Premium Storage** wordt momenteel **niet ondersteund** door toevoeg-blobs.
-  - **Opslag in VNet** wordt momenteel **niet ondersteund**.
 
 - Het standaard controlebeleid bevat alle acties en de volgende set actie groepen, waarmee alle query's en opgeslagen procedures worden gecontroleerd die worden uitgevoerd op de data base, evenals geslaagde en mislukte aanmeldingen:
 
@@ -247,25 +237,25 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
 
 - Azure SQL Database controle is geoptimaliseerd voor Beschik baarheid van & prestaties. Tijdens een zeer hoge activiteit Azure SQL Database bewerkingen door voeren en kunnen sommige gecontroleerde gebeurtenissen niet worden vastgelegd.
 
-- Zie [toestaan dat beveiligde toevoeg-blobs worden geschreven](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes)voor het configureren van onveranderbare controles voor opslag accounts. Houd er rekening mee dat de container naam voor controle is **sqldbauditlogs**.
+- Zie [toestaan dat beveiligde toevoeg-blobs worden geschreven](../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)voor het configureren van onveranderbare controles voor opslag accounts. Houd er rekening mee dat de container naam voor controle is **sqldbauditlogs**.
 
     > [!IMPORTANT]
     > De instelling schrijven beveiligde toevoeg-blobs toestaan onder Bewaar periode is momenteel beschikbaar en alleen zichtbaar in de volgende regio's:
-    > - VS - oost
-    > - VS - zuid-centraal
-    > - VS - west 2
+    > - US - oost
+    > - US - zuid-centraal
+    > - US - west 2
 
 
 ## <a id="subheading-7"></a>Beheer van Azure SQL Server en data bases controleren met behulp van Azure PowerShell
 
 **Power shell-cmdlets (inclusief WHERE-component ondersteuning voor aanvullende filters)** :
 
-- [Controle beleid voor data bases maken of bijwerken (set-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseaudit)
-- [Controle beleid voor servers maken of bijwerken (set-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit)
-- [Database controlebeleid ophalen (Get-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseaudit)
-- [Server controle beleid ophalen (Get-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveraudit)
-- [Database controlebeleid verwijderen (Remove-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseaudit)
-- [Server controle beleid verwijderen (Remove-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserveraudit)
+- [Controle beleid voor data bases maken of bijwerken (set-AzSqlDatabaseAudit)](/powershell/module/az.sql/set-azsqldatabaseaudit)
+- [Controle beleid voor servers maken of bijwerken (set-AzSqlServerAudit)](/powershell/module/az.sql/set-azsqlserveraudit)
+- [Database controlebeleid ophalen (Get-AzSqlDatabaseAudit)](/powershell/module/az.sql/get-azsqldatabaseaudit)
+- [Server controle beleid ophalen (Get-AzSqlServerAudit)](/powershell/module/az.sql/get-azsqlserveraudit)
+- [Database controlebeleid verwijderen (Remove-AzSqlDatabaseAudit)](/powershell/module/az.sql/remove-azsqldatabaseaudit)
+- [Server controle beleid verwijderen (Remove-AzSqlServerAudit)](/powershell/module/az.sql/remove-azsqlserveraudit)
 
 Zie [controle en detectie van bedreigingen configureren met Power shell](scripts/sql-database-auditing-and-threat-detection-powershell.md)voor een voor beeld van een script.
 
@@ -273,21 +263,21 @@ Zie [controle en detectie van bedreigingen configureren met Power shell](scripts
 
 **REST API**:
 
-- [Controle beleid voor data base maken of bijwerken](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [Controle beleid voor servers maken of bijwerken](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Controle beleid voor data base ophalen](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-- [Controle beleid voor server ophalen](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Controle beleid voor data base maken of bijwerken](/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [Controle beleid voor servers maken of bijwerken](/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Controle beleid voor data base ophalen](/rest/api/sql/database%20auditing%20settings/get)
+- [Controle beleid voor server ophalen](/rest/api/sql/server%20auditing%20settings/get)
 
 Uitgebreid beleid met de component WHERE ondersteuning voor extra filtering:
 
-- [Beleid voor *uitgebreide* controle van data base maken of bijwerken](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [*Uitgebreid* controle beleid voor servers maken of bijwerken](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [*Uitgebreide* controle beleid voor data base ophalen](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [*Uitgebreid* controle beleid voor server ophalen](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Beleid voor *uitgebreide* controle van data base maken of bijwerken](/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [*Uitgebreid* controle beleid voor servers maken of bijwerken](/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [*Uitgebreide* controle beleid voor data base ophalen](/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [*Uitgebreid* controle beleid voor server ophalen](/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-9"></a>Azure SQL Server en database controle beheren met behulp van Azure Resource Manager sjablonen
 
-U kunt Azure SQL database auditing beheren met behulp van [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) sjablonen, zoals in deze voor beelden wordt weer gegeven:
+U kunt Azure SQL database auditing beheren met behulp van [Azure Resource Manager](../azure-resource-manager/management/overview.md) sjablonen, zoals in deze voor beelden wordt weer gegeven:
 
 - [Een Azure SQL Server implementeren met controle ingeschakeld om audit logboeken naar een Azure Blob Storage-account te schrijven](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
 - [Een Azure SQL Server implementeren met controle ingeschakeld om audit logboeken te schrijven naar Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
@@ -316,4 +306,4 @@ U kunt Azure SQL database auditing beheren met behulp van [Azure Resource Manage
 [7]: ./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png
 [8]: ./media/sql-database-auditing-get-started/8_auditing_get_started_blob_audit_records.png
 [9]: ./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png
-[10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png
+[10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png 

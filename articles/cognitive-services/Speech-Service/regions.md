@@ -11,18 +11,20 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 409ce8b904997f2ab75f70b2138ec5b1e70a0e69
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f1379202fc59e9cca7a3543be201f8ebff276bef
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816660"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168364"
 ---
 # <a name="speech-service-supported-regions"></a>Ondersteunde regio's voor spraak Services
 
 De spraak-service kunt uw toepassing audio naar tekst wilt converteren, voert u spraakomzetting en converteren tekst naar spraak. De service is beschikbaar in meerdere regio's met unieke eindpunten voor de spraak-SDK en REST-API's.
 
-Zorg ervoor dat u het eindpunt dat overeenkomt met de regio voor uw abonnement.
+De spraak Portal om aangepaste configuraties uit te voeren op uw spraak ervaring voor alle regio's is hier beschikbaar: https://speech.microsoft.com
+
+Zorg ervoor dat de oproep overeenkomt met de regio voor uw abonnement voor het aanroepen van uw spraak service.
 
 ## <a name="speech-sdk"></a>Speech-SDK
 
@@ -30,28 +32,13 @@ In de [Speech SDK](speech-sdk.md)worden regio's opgegeven als een teken reeks (b
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>Spraak naar tekst, tekst-naar-spraak en omzetting
 
-De Speech SDK is beschikbaar in deze regio's voor **spraak herkenning**, **tekst naar spraak**en **vertaling**:
+De portal voor spraak aanpassing is hier beschikbaar: https://speech.microsoft.com
 
-| Regio           | Parameter voor spraak-SDK | Spraak aanpassing Portal    |
-| ---------------- | -------------------- | ------------------------------ |
-| VS - west          | `westus`             | https://westus.cris.ai         |
-| VS - west 2        | `westus2`            | https://westus2.cris.ai        |
-| VS - oost          | `eastus`             | https://eastus.cris.ai         |
-| VS - oost 2        | `eastus2`            | https://eastus2.cris.ai        |
-| VS - centraal       | `centralus`          | https://centralus.cris.ai      |
-| VS - noord-centraal | `northcentralus`     | https://northcentralus.cris.ai |
-| VS - zuid-centraal | `southcentralus`     | https://southcentralus.cris.ai |
-| India - centraal    | `centralindia`       | https://centralindia.cris.ai   |
-| Azië - oost        | `eastasia`           | https://eastasia.cris.ai       |
-| Azië - zuidoost   | `southeastasia`      | https://southeastasia.cris.ai  |
-| Japan - Oost       | `japaneast`          | https://japaneast.cris.ai      |
-| Korea - centraal    | `koreacentral`       | https://koreacentral.cris.ai   |
-| Australië - oost   | `australiaeast`      | https://australiaeast.cris.ai  |
-| Canada-Midden   | `canadacentral`      | https://canadacentral.cris.ai  |
-| Europa - noord     | `northeurope`        | https://northeurope.cris.ai    |
-| Europa - west      | `westeurope`         | https://westeurope.cris.ai     |
-| UK - zuid         | `uksouth`            | https://uksouth.cris.ai        |
-| Frankrijk - centraal   | `francecentral`      | https://francecentral.cris.ai  |
+De speech-service is beschikbaar in deze regio's voor **spraak herkenning**, **tekst naar spraak**en **vertaling**:
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+Als u de [Speech SDK](speech-sdk.md)gebruikt, worden regio's opgegeven met de **regio-id** (bijvoorbeeld als een para meter voor `SpeechConfig.FromSubscription`). Zorg ervoor dat de regio overeenkomt met de regio van uw abonnement.
 
 ### <a name="intent-recognition"></a>Intentieherkenning
 
@@ -63,14 +50,14 @@ Beschik bare regio's voor **intentie herkenning** via de Speech SDK zijn de volg
 | Azië          | Azië - zuidoost   | `southeastasia`      |
 | Australië     | Australië - oost   | `australiaeast`      |
 | Europa        | Europa - noord     | `northeurope`        |
-| Europa        | Europa - west      | `westeurope`         |
-| Noord-Amerika | VS - oost          | `eastus`             |
-| Noord-Amerika | VS - oost 2        | `eastus2`            |
-| Noord-Amerika | VS - zuid-centraal | `southcentralus`     |
-| Noord-Amerika | VS - west-centraal  | `westcentralus`      |
-| Noord-Amerika | VS - west          | `westus`             |
-| Noord-Amerika | VS - west 2        | `westus2`            |
-| Zuid-Amerika | Brazilië - Zuid     | `brazilsouth`        |
+| Europa        | Europa -west      | `westeurope`         |
+| Noord-Amerika | US - oost          | `eastus`             |
+| Noord-Amerika | US - oost 2        | `eastus2`            |
+| Noord-Amerika | US - zuid-centraal | `southcentralus`     |
+| Noord-Amerika | US - west-centraal  | `westcentralus`      |
+| Noord-Amerika | US - west          | `westus`             |
+| Noord-Amerika | US - west 2        | `westus2`            |
+| Zuid-Amerika | Brazilië - zuid     | `brazilsouth`        |
 
 Dit is een subset van de publicatie regio's die worden ondersteund door de [Language Understanding-service (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
 
@@ -80,15 +67,15 @@ De [spraak-SDK](speech-sdk.md) ondersteunt de mogelijkheden van de **Voice Assis
 
 | Regio         | Parameter voor spraak-SDK |
 | -------------- | -------------------- |
-| VS - west        | `westus`             |
-| VS - west 2      | `westus2`            |
-| VS - oost        | `eastus`             |
-| VS - oost 2      | `eastus2`            |
-| Europa - west    | `westeurope`         |
+| US - west        | `westus`             |
+| US - west 2      | `westus2`            |
+| US - oost        | `eastus`             |
+| US - oost 2      | `eastus2`            |
+| Europa -west    | `westeurope`         |
 | Europa - noord   | `northeurope`        |
 | Azië - zuidoost | `southeastasia`      |
 
-## <a name="rest-apis"></a>REST API's
+## <a name="rest-apis"></a>REST API’s
 
 De spraak-service wordt ook aangegeven REST-eindpunten voor spraak-naar-tekst en spraak-aanvragen.
 
@@ -96,7 +83,18 @@ De spraak-service wordt ook aangegeven REST-eindpunten voor spraak-naar-tekst en
 
 Zie [spraak-naar-tekst-rest API](rest-speech-to-text.md)voor naslag informatie over spraak naar tekst.
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+Het eind punt voor de REST API heeft de volgende indeling:
+
+```
+https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
+```
+
+Vervang `<REGION_IDENTIFIER>` door de id die overeenkomt met de regio van uw abonnement uit deze tabel:
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+> [!NOTE]
+> De para meter language moet worden toegevoegd aan de URL om te voor komen dat er een 4xx HTTP-fout wordt ontvangen. De taal die is ingesteld op Amerikaans-Engels met het eind punt vs West is: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
 
 ### <a name="text-to-speech"></a>Tekst naar spraak
 

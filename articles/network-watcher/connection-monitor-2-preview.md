@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 43c49cce1dd53edd5c2b13b01a31f94752579dff
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049207"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169321"
 ---
 # <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>Geïntegreerde controle van connectiviteit met verbindings monitor (preview-versie)
 
@@ -403,7 +403,7 @@ Als u een test groep wilt maken in een verbindings monitor, geeft u de waarde vo
 
       ![Bestemmingen toevoegen 2](./media/connection-monitor-2-preview/add-azure-dests2.png)
 
-   2. Klik op het tabblad eind punten om virtuele Azure-machines als doelen te selecteren. De lijst met eind punten wordt gevuld met de test-Url's O365 en D365, gegroepeerd op naam.  U kunt ook een eind punt kiezen dat is gemaakt in andere test groepen in dezelfde verbindings monitor. Als u een nieuw eind punt wilt toevoegen, klikt u op + eind punt in de rechter bovenhoek van het scherm en geeft u eind punt-URL/IP/FQDN en naam op
+   2. Klik op het tabblad eind punten om eind punten als doelen te selecteren. De lijst met eind punten wordt gevuld met de test-Url's O365 en D365, gegroepeerd op naam.  U kunt ook een eind punt kiezen dat is gemaakt in andere test groepen in dezelfde verbindings monitor. Als u een nieuw eind punt wilt toevoegen, klikt u op + eind punt in de rechter bovenhoek van het scherm en geeft u eind punt-URL/IP/FQDN en naam op
 
       ![Eind punten toevoegen](./media/connection-monitor-2-preview/add-endpoints.png)
 
@@ -550,7 +550,7 @@ De trends van mislukte controles weer geven% en RTT voor:
    5. Het tijds interval voor het weer geven van meer gegevens wijzigen
    6. U kunt de weer gave in stap b wijzigen en kiezen voor het weer geven van bronnen, doelen of test configuraties. Kies vervolgens een entiteit om de belangrijkste 5 mislukte tests te onderzoeken.  Bijvoorbeeld: Kies weer geven per: bronnen en bestemmingen om alle tests te onderzoeken die worden uitgevoerd tussen die combi natie in de geselecteerde verbindings monitor.
 
-3. Test
+3. Testen
    1. Klik op de bron + bestemming + configuratie van de test die u gedetailleerd wilt onderzoeken
    2. Voor het geselecteerde tijds interval, voor mislukte controles, worden de drempel waarde en de werkelijke waarden weer geven. Voor RTT (msec) worden drempelwaarde, Gem, min en maximum waarden weer geven. U ziet ook geactiveerde waarschuwingen die specifiek zijn voor de test die u hebt geselecteerd.
 

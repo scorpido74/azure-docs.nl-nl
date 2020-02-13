@@ -3,12 +3,12 @@ title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy de gast configuratie agent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 205aa5a9292d0f70fed8247a8af1fe575ad3614e
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 128baa0df1d3e555fe9629005529710202e1bbf6
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830493"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169530"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informatie over Azure Policy Gast-configuratie
 
@@ -36,13 +36,13 @@ Voordat u de configuratie van de Gast gebruiken kunt, moet u de resourceprovider
 
 Volg deze stappen voor het registreren van de resourceprovider voor de configuratie van de Gast via Azure portal:
 
-1. Starten van de Azure portal en klikt u op **alle services**. Zoek en selecteer **abonnementen**.
+1. Start de Azure Portal en klik op **alle services**. Zoek en selecteer **abonnementen**.
 
 1. Zoek en klik op het abonnement dat u wilt de configuratie van de Gast voor inschakelen.
 
-1. In het menu links van de **abonnement** pagina, klikt u op **resourceproviders**.
+1. Klik in het linkermenu op de pagina **abonnement** op **resource providers**.
 
-1. Filteren op of blader totdat u **Microsoft.GuestConfiguration**, klikt u vervolgens op **registreren** in dezelfde rij.
+1. Filter op of schuif totdat u **micro soft. GuestConfiguration**hebt gevonden en klik vervolgens op in dezelfde rij **registreren** .
 
 ### <a name="registration---powershell"></a>Registratie - PowerShell
 
@@ -62,7 +62,7 @@ De volgende tabel bevat een overzicht van de lokale hulpprogramma's die op elk o
 |Besturingssysteem|Hulpprogramma voor het valideren|Opmerkingen|
 |-|-|-|
 |Windows|[Windows Power shell desired state Configuration](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef inspectie mogelijk](https://www.chef.io/inspec/)| Ruby en Python worden geïnstalleerd door de configuratie van de Gast-extensie. |
+|Linux|[Chef-specificatie](https://www.chef.io/inspec/)| Ruby en Python worden geïnstalleerd door de configuratie van de Gast-extensie. |
 
 ### <a name="validation-frequency"></a>Validatie frequentie
 
@@ -72,7 +72,7 @@ De gast configuratie client controleert elke vijf minuten op nieuwe inhoud. Zodr
 
 De volgende tabel ziet u een lijst met ondersteunde besturingssystemen op Azure-installatiekopieën:
 
-|Uitgever|Name|Versies|
+|Uitgever|Naam|Versies|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04, 16.04, 18.04|
 |credativ|Debian|8, 9|
@@ -98,23 +98,23 @@ De [servicetag ' GuestAndHybridManagement ' kan](../../../virtual-network/servic
 
 Voor elke controle die wordt uitgevoerd per gast configuratie zijn twee beleids definities, een **DeployIfNotExists** -definitie en een **AuditIfNotExists** -definitie vereist. De definitie van de **DeployIfNotExists** wordt gebruikt om de computer voor te bereiden met de gast configuratie agent en andere onderdelen ter ondersteuning van de [validatie hulpprogramma's](#validation-tools).
 
-De **DeployIfNotExists** beleidsdefinitie valideert en corrigeert de volgende items:
+De **DeployIfNotExists** -beleids definitie valideert en corrigeert de volgende items:
 
 - Controleer of aan de computer een configuratie is toegewezen om te evalueren. Als er momenteel geen toewijzing aanwezig is, haalt u de toewijzing op en bereidt u de machine voor door het volgende te doen:
   - Verifiëren met de computer met behulp van een [beheerde identiteit](../../../active-directory/managed-identities-azure-resources/overview.md)
-  - Installeer de nieuwste versie van de **Microsoft.GuestConfiguration** extensie
-  - Installeren van [-validatiehulpprogramma's](#validation-tools) en afhankelijkheden, indien nodig
+  - De nieuwste versie van de **micro soft. GuestConfiguration** -extensie installeren
+  - [Validatie hulpprogramma's](#validation-tools) en afhankelijkheden, indien nodig, installeren
 
 Als de **DeployIfNotExists** -toewijzing niet compatibel is, kan een [herstel taak](../how-to/remediate-resources.md#create-a-remediation-task) worden gebruikt.
 
 Zodra de **DeployIfNotExists** -toewijzing compatibel is, gebruikt de **AuditIfNotExists** -beleids toewijzing de lokale validatie hulpprogramma's om te bepalen of de configuratie toewijzing compatibel of niet-compatibel is. Het hulpprogramma voor het valideren biedt de resultaten naar de configuratie van de Gast-client. De client verzendt de resultaten naar de Gast-extensie, waardoor ze beschikbaar zijn via de configuratie van de Gast-resourceprovider.
 
-Azure Policy maakt gebruik van de configuratie van de Gast-resourceproviders **complianceStatus** eigenschap voor rapport naleving in de **naleving** knooppunt. Zie voor meer informatie, [ophalen van Nalevingsgegevens](../how-to/get-compliance-data.md).
+Azure Policy maakt gebruik van de **complianceStatus** -eigenschap van de gast configuratie resource providers om naleving te rapporteren in het knoop punt **naleving** . Zie [nalevings gegevens ophalen](../how-to/get-compliance-data.md)voor meer informatie.
 
 > [!NOTE]
 > Het **DeployIfNotExists** -beleid is vereist voor het **AuditIfNotExists** -beleid om resultaten te retour neren. Zonder de **DeployIfNotExists**wordt met het **AuditIfNotExists** -beleid ' 0 van 0 ' resources weer gegeven als status.
 
-Alle ingebouwde beleidsregels voor de configuratie van de Gast zijn opgenomen in een initiatief aan groep de definities voor gebruik in toewijzingen. Het ingebouwde initiatief met de naam _\[Preview\]: wachtwoord beveiligings instellingen controleren binnen Linux-en Windows-machines_ bevat 18 beleids regels. Er zijn zes **DeployIfNotExists** en **AuditIfNotExists** paren voor Windows en drie sets voor Linux. De [beleids definitie](definition-structure.md#policy-rule) logica valideert dat alleen het doel besturingssysteem wordt geëvalueerd.
+Alle ingebouwde beleidsregels voor de configuratie van de Gast zijn opgenomen in een initiatief aan groep de definities voor gebruik in toewijzingen. Het ingebouwde initiatief met de naam _\[Preview\]: wachtwoord beveiligings instellingen controleren binnen Linux-en Windows-machines_ bevat 18 beleids regels. Er zijn zes **DeployIfNotExists** -en **AuditIfNotExists** -paren voor Windows en drie paren voor Linux. De [beleids definitie](definition-structure.md#policy-rule) logica valideert dat alleen het doel besturingssysteem wordt geëvalueerd.
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>De instellingen van het besturings systeem controleren volgens de industrie basislijnen
 
@@ -183,10 +183,10 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 ## <a name="guest-configuration-samples"></a>Voor beelden van gast configuraties
 
-Voor beelden voor beleids gast configuratie zijn beschikbaar op de volgende locaties:
+De bron voor de ingebouwde initiatieven van de gast configuratie voor beleid is beschikbaar op de volgende locaties:
 
-- [Voor beelden van index-gast configuratie](../samples/index.md#guest-configuration)
-- [Azure Policy-voor beelden GitHub opslag plaats](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
+- [Ingebouwde initiatieven-gast configuratie](../samples/built-in-initiatives.md#guest-configuration)
+- [Azure Policy-voor beelden GitHub opslag plaats](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest Configuration)
 
 ## <a name="next-steps"></a>Volgende stappen
 

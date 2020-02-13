@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: 364395a05737f6dc6333b922f54376a9d5149fe6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 38cb1222a64b1759528749caa15dfb1bb906cef6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701447"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159910"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Pacht in Azure Active Directory
 
@@ -46,9 +46,9 @@ In de Azure Portal kunt u uw app configureren als één Tenant of multi tenant d
 
 Het bouwen van fantastische multi tenant-apps kan lastig zijn vanwege het aantal verschillende beleids regels dat IT-beheerders kunnen instellen in hun tenants. Als u ervoor kiest een multi tenant-app te bouwen, volgt u deze aanbevolen procedures:
 
-* Test uw app in een Tenant met geconfigureerde [beleids regels voor voorwaardelijke toegang](conditional-access-dev-guide.md).
+* Test uw app in een Tenant met geconfigureerde [beleids regels voor voorwaardelijke toegang](../azuread-dev/conditional-access-dev-guide.md).
 * Volg het principe van minimale gebruikers toegang om ervoor te zorgen dat uw app alleen machtigingen aanvraagt die daad werkelijk nodig is. Vermijd het aanvragen van machtigingen waarvoor een beheerders toestemming is vereist, waardoor gebruikers uw app helemaal niet in sommige organisaties kunnen verkrijgen. 
-* Geef de juiste namen en beschrijvingen op voor de machtigingen die u beschikbaar maakt als onderdeel van uw app. Op deze manier kunnen gebruikers en beheerders weten wat ze ermee instemmen wanneer ze de Api's van uw app proberen te gebruiken. Zie de sectie best practices in de [hand leiding voor machtigingen](v1-permissions-and-consent.md)voor meer informatie.
+* Geef de juiste namen en beschrijvingen op voor de machtigingen die u beschikbaar maakt als onderdeel van uw app. Op deze manier kunnen gebruikers en beheerders weten wat ze ermee instemmen wanneer ze de Api's van uw app proberen te gebruiken. Zie de sectie best practices in de [hand leiding voor machtigingen](v2-permissions-and-consent.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

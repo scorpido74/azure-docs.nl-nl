@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 02/07/2020
+ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162892"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162205"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-architectuur in HDInsight
 
@@ -28,7 +28,7 @@ In dit artikel worden GARENs geïntroduceerd en hoe het de uitvoering van toepas
 
 GARENs regelen en organiseren gegevens verwerking in Hadoop. GARENs hebben twee kern services die als processen worden uitgevoerd op knoop punten in het cluster:
 
-* Resource
+* ResourceManager
 * NodeManager
 
 De Resource Manager verleent cluster Compute-resources aan toepassingen als MapReduce-taken. De Resource Manager geeft deze bronnen als containers, waarbij elke container bestaat uit een toewijzing van CPU-kernen en RAM-geheugen. Als u alle beschik bare resources in een cluster hebt gecombineerd en vervolgens de kernen en het geheugen in blokken hebt gedistribueerd, is elk bronnen blok een container. Elk knoop punt in het cluster heeft een capaciteit voor een bepaald aantal containers. Daarom heeft het cluster een vaste limiet voor het aantal beschik bare containers. De service-eenheid van resources in een container kan worden geconfigureerd.
@@ -46,6 +46,27 @@ De NodeManagers voert de taken uit waaruit de toepassing is opgebouwd en rapport
 Alle typen HDInsight-clusters implementeren GARENs. De Resource Manager wordt geïmplementeerd voor hoge Beschik baarheid met een primair en secundair exemplaar, dat respectievelijk wordt uitgevoerd op de eerste en tweede hoofd knooppunten in het cluster. Er is slechts één exemplaar van de Resource Manager tegelijk actief. De NodeManager-instanties worden uitgevoerd op de beschik bare worker-knoop punten in het cluster.
 
 ![Apache-GARENs op Azure HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+
+## <a name="soft-delete"></a>Voorlopig verwijderen
+
+Als u het verwijderen van een bestand uit uw opslag account ongedaan wilt maken, raadpleegt u:
+
+### <a name="azure-storage"></a>Azure Storage
+
+* [Voorlopig verwijderen voor Azure Storage-blobs](../storage/blobs/storage-blob-soft-delete.md)
+* [BLOB verwijderen](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage gen 1
+
+[Restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+
+### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
+
+[Bekende problemen met Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-known-issues.md)
+
+## <a name="trash-purging"></a>Prullenbak verwijderen
+
+De eigenschap `fs.trash.interval` van **HDFS** > **Advanced core-site** moet de standaard waarde `0` omdat u geen gegevens op het lokale bestands systeem hoeft op te slaan. Deze waarde heeft geen invloed op externe opslag accounts (WASB, ADLS GEN1, ABFS)
 
 ## <a name="next-steps"></a>Volgende stappen
 

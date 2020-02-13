@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2bac51a86c8acdba0f6c2f03e5a24ab2b133aa8e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521012"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157700"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Failover van een opslag account initiëren (preview-versie)
 
@@ -32,15 +32,15 @@ In dit artikel wordt beschreven hoe u een failover voor een account initieert vo
 Voordat u een account-failover kunt uitvoeren op uw opslag account, moet u ervoor zorgen dat u de volgende stappen hebt uitgevoerd:
 
 - Meld u aan voor de preview-versie van het account-failover. Zie [over de preview-versie](storage-disaster-recovery-guidance.md#about-the-preview)voor meer informatie over het registreren van.
-- Zorg ervoor dat uw opslag account is geconfigureerd voor het gebruik van geografisch redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS). Zie [geo-redundante opslag (GRS): cross-Regional Replication for Azure Storage](storage-redundancy-grs.md)voor meer informatie over geografisch redundante opslag. 
+- Zorg ervoor dat uw opslag account is geconfigureerd voor het gebruik van geografisch redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS). Zie [Azure Storage redundantie](storage-redundancy.md)voor meer informatie over geografisch redundante opslag.
 
 ## <a name="important-implications-of-account-failover"></a>Belang rijke implicaties van account-failover
 
 Wanneer u een failover voor een account initieert voor uw opslag account, worden de DNS-records voor het secundaire eind punt bijgewerkt zodat het secundaire eind punt het primaire eind punt wordt. Zorg ervoor dat u de mogelijke gevolgen voor uw opslag account begrijpt voordat u een failover initieert.
 
-Als u de omvang van gegevens verlies wilt schatten voordat u een failover initieert, controleert u de eigenschap van de **laatste synchronisatie tijd** met de `Get-AzStorageAccount` Power shell-cmdlet en neemt u de para meter `-IncludeGeoReplicationStats` op. Controleer vervolgens de eigenschap `GeoReplicationStats` voor uw account. 
+Als u de omvang van gegevens verlies wilt schatten voordat u een failover initieert, controleert u de eigenschap van de **laatste synchronisatie tijd** met de `Get-AzStorageAccount` Power shell-cmdlet en neemt u de para meter `-IncludeGeoReplicationStats` op. Controleer vervolgens de eigenschap `GeoReplicationStats` voor uw account. \
 
-Na de failover wordt uw type opslag account automatisch geconverteerd naar lokaal redundante opslag (LRS) in de nieuwe primaire regio. U kunt geografisch redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS) opnieuw inschakelen voor het account. Houd er rekening mee dat het converteren van LRS naar GRS of RA-GRS een extra kosten in beslag brengt. Zie [prijs informatie voor band breedte](https://azure.microsoft.com/pricing/details/bandwidth/)voor meer informatie. 
+Na de failover wordt uw type opslag account automatisch geconverteerd naar lokaal redundante opslag (LRS) in de nieuwe primaire regio. U kunt geografisch redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS) opnieuw inschakelen voor het account. Houd er rekening mee dat het converteren van LRS naar GRS of RA-GRS een extra kosten in beslag brengt. Zie [prijs informatie voor band breedte](https://azure.microsoft.com/pricing/details/bandwidth/)voor meer informatie.
 
 Nadat u GRS voor uw opslag account opnieuw hebt ingeschakeld, begint micro soft met het repliceren van de gegevens in uw account naar de nieuwe secundaire regio. De replicatie tijd is afhankelijk van de hoeveelheid gegevens die wordt gerepliceerd.  
 

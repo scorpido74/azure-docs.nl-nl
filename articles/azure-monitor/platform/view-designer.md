@@ -6,18 +6,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/22/2018
-ms.openlocfilehash: 05d849aa0edf5892e568c4078ca619490cfcd98e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2019
+ms.openlocfilehash: e5d707200d1e1eab9becbb30181649525f3a5a7b
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363197"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166467"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Aangepaste weer gaven maken met behulp van de weer gave designer in Azure Monitor
 Met behulp van View designer in Azure Monitor kunt u verschillende aangepaste weer gaven maken in de Azure Portal die u kan helpen bij het visualiseren van gegevens in uw Log Analytics-werk ruimte. Dit artikel bevat een overzicht van de ontwerp functies en-procedures voor het maken en bewerken van aangepaste weer gaven.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!IMPORTANT]
+> Weer gaven in Azure Monitor worden gefaseerd uit-en vervangen door [werkmappen](workbooks-overview.md) die extra functionaliteit bieden. Zie de [alternatieve hand leiding Azure monitor weergave Designer voor werkmappen](view-designer-conversion-overview.md) voor meer informatie over het converteren van uw bestaande weer gaven naar werkmappen.
 
 Zie voor meer informatie over de ontwerp functie voor weer gaven:
 
@@ -32,9 +33,9 @@ Weer gaven worden weer gegeven op de pagina **overzicht** van Azure monitor in d
 
 De weer gaven die u maakt met de weer gave Designer bevatten de elementen die in de volgende tabel worden beschreven:
 
-| Onderdeel | Beschrijving |
+| Webonderdeelpagina's | Beschrijving |
 |:--- |:--- |
-| Tegels | Worden weer gegeven op de **overzichts** pagina van Azure monitor. Elke tegel bevat een visueel overzicht van de aangepaste weer gave die het vertegenwoordigt. Elk tegel type biedt een andere visualisatie van uw records. U selecteert een tegel om een aangepaste weer gave weer te geven. |
+| Pagina's | Worden weer gegeven op de **overzichts** pagina van Azure monitor. Elke tegel bevat een visueel overzicht van de aangepaste weer gave die het vertegenwoordigt. Elk tegel type biedt een andere visualisatie van uw records. U selecteert een tegel om een aangepaste weer gave weer te geven. |
 | Aangepaste weer gave | Wordt weer gegeven wanneer u een tegel selecteert. Elke weer gave bevat een of meer visualisatie onderdelen. |
 | Visualisatie onderdelen | Een visualisatie van gegevens weer geven in de werk ruimte Log Analytics op basis van een of meer [logboek query's](../log-query/log-query-overview.md). De meeste onderdelen bevatten een kop, die een visualisatie op hoog niveau en een lijst bevat waarin de belangrijkste resultaten worden weer gegeven. Elk onderdeel type biedt een andere visualisatie van de records in de werk ruimte Log Analytics. U selecteert elementen in het onderdeel om een logboek query uit te voeren die gedetailleerde records bevat. |
 
@@ -54,7 +55,7 @@ De opties worden beschreven in de volgende tabel:
 | Vernieuwen   | Hiermee vernieuwt u de weer gave met de meest recente gegevens. | 
 | Logboeken      | Hiermee opent u de [log Analytics](../log-query/portals.md) voor het analyseren van gegevens met logboek query's. |
 | Bewerken       | Hiermee opent u de weer gave in de ontwerp functie voor weer gave om de inhoud en configuratie te bewerken.  |
-| Kloon      | Hiermee maakt u een nieuwe weer gave en opent u deze in de ontwerp functie voor weer gaven. De naam van de nieuwe weer gave is hetzelfde als de oorspronkelijke naam, maar er wordt een *kopie* aan toegevoegd. |
+| Klonen      | Hiermee maakt u een nieuwe weer gave en opent u deze in de ontwerp functie voor weer gaven. De naam van de nieuwe weer gave is hetzelfde als de oorspronkelijke naam, maar er wordt een *kopie* aan toegevoegd. |
 | Datumbereik | Stel het datum-en tijds bereik filter in voor de gegevens die in de weer gave worden opgenomen. Dit datum bereik wordt toegepast vóór een datum bereik dat is ingesteld in query's in de weer gave.  |
 | +          | Definieer een aangepast filter dat is gedefinieerd voor de weer gave. |
 
@@ -102,7 +103,7 @@ De opties voor het werken met weer gaven in de bewerkings modus worden beschreve
 | Weergave verwijderen | Hiermee verwijdert u de weer gave. |
 | Exporteren      | Hiermee wordt de weer gave geëxporteerd naar een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) die u kunt importeren in een andere werk ruimte. De naam van het bestand is de naam van de weer gave en heeft een *omsview* -extensie. |
 | Importeren      | Hiermee wordt het *omsview* -bestand geïmporteerd dat u hebt geëxporteerd uit een andere werk ruimte. Met deze actie wordt de configuratie van de bestaande weer gave overschreven. |
-| Kloon       | Hiermee maakt u een nieuwe weer gave en opent u deze in de ontwerp functie voor weer gaven. De naam van de nieuwe weer gave is hetzelfde als de oorspronkelijke naam, maar er wordt een *kopie* aan toegevoegd. |
+| Klonen       | Hiermee maakt u een nieuwe weer gave en opent u deze in de ontwerp functie voor weer gaven. De naam van de nieuwe weer gave is hetzelfde als de oorspronkelijke naam, maar er wordt een *kopie* aan toegevoegd. |
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Tegels](view-designer-tiles.md) toevoegen aan uw aangepaste weer gave.

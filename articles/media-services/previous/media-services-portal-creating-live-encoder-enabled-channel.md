@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3217a2d5ba3d45a069eacdb67a8d69e9abc674b8
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015213"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162562"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Live streamen met Media Services om multi-bitrate streams te maken met Azure Portal  
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
-> * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST-API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 
 > [!NOTE]
@@ -43,8 +43,8 @@ Hieronder volgen de algemene stappen voor het maken van veelvoorkomende toepassi
 
 1. Sluit een videocamera aan op een computer. <br/>Bekijk voor het instellen van ideeën de [eenvoudige en draag bare video versnellings configuratie voor Video's]( https://link.medium.com/KNTtiN6IeT).
 
-    Als u geen toegang hebt tot een camera, kunt u hulpprogram ma's zoals [Wirecast](https://www.telestream.net/wirecast/overview.htm) gebruiken om een live-feed uit een video bestand te genereren.
-1. Start en configureer een on-premises live-encoder dat een single-bitrate stream in een van de volgende protocollen kan uitvoeren: RTMP of Smooth Streaming. Zie [Azure Media Services RTMP-ondersteuning en live coderingsprogramma's](https://go.microsoft.com/fwlink/?LinkId=532824) voor meer informatie. <br/>Bekijk ook deze blog: [Live streamen van productie met IB](https://link.medium.com/ttuwHpaJeT).
+    Als u geen toegang hebt tot een camera, kunt u hulpprogram ma's zoals [Wirecast](media-services-configure-wirecast-live-encoder.md) gebruiken om een live-feed uit een video bestand te genereren.
+1. Start en configureer een on-premises livecoderingsprogramma dat een single-bitrate stream in een van de volgende protocollen kan uitvoeren: RTMP of Smooth Streaming. Zie [Azure Media Services RTMP-ondersteuning en live coderingsprogramma's](https://go.microsoft.com/fwlink/?LinkId=532824) voor meer informatie. <br/>Bekijk ook deze blog: [productie van live streams met IB](https://link.medium.com/ttuwHpaJeT).
 
     Deze stap kan ook worden uitgevoerd nadat u uw kanaal hebt gemaakt.
 1. Maak en start een kanaal. 
@@ -65,7 +65,7 @@ Hieronder volgen de algemene stappen voor het maken van veelvoorkomende toepassi
 
 Hieronder wordt aangegeven wat de vereisten zijn om de zelfstudie te voltooien.
 
-* U hebt een Azure-account nodig om deze zelfstudie te voltooien. Als u geen account hebt, kunt u binnen een paar minuten een gratis proefaccount maken. 
+* U hebt een Azure-account nodig om deze zelfstudie te voltooien. Als u geen account hebt, kunt u binnen een paar minuten een account voor de gratis proefversie maken. 
   Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
 * Een Media Services-account. Zie [Account maken](media-services-portal-create-account.md) voor meer informatie over het maken van een Media Services-account.
 * Een webcam en een coderingsprogramma dat een single bitrate livestream kan verzenden.
@@ -94,7 +94,7 @@ Hieronder wordt aangegeven wat de vereisten zijn om de zelfstudie te voltooien.
         U kunt de protocoloptie niet wijzigen terwijl het kanaal of de gekoppelde gebeurtenissen/programma's worden uitgevoerd. Als u verschillende protocollen nodig hebt, maakt u afzonderlijke kanalen voor elk streaming-protocol.  
    2. U kunt IP-beperking toepassen op de opname. 
 
-       U kunt de IP-adressen definiëren die een video naar dit kanaal mogen publiceren. Toegestane IP-adressen kunnen worden opgegeven als een enkel IP-adres (bijvoorbeeld 10.0.0.1), een IP-adresbereik met een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22) of een IP-adresbereik met een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld '10.0.0.1(255.255.252.0)').
+       U kunt de IP-adressen definiëren die een video naar dit kanaal mogen publiceren. Toegestane IP-adressen kunnen worden opgegeven als een enkel IP-adres (bijvoorbeeld 10.0.0.1), een IP-bereik met een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22) of een IP-bereik met een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld 10.0.0.1 (255.255.252.0)).
 
        Als geen IP-adressen zijn opgegeven en er geen regeldefinitie bestaat, zijn er geen IP-adressen toegestaan. Als u IP-adres(sen) wilt toestaan, maakt u een regel en stelt u 0.0.0.0/0 in.
 6. Pas op het tabblad **Voorbeeld** IP-beperking toe op de preview.

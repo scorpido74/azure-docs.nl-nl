@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: mlearned
-ms.openlocfilehash: 5b99d76ef20c288d6ae0bd33e1e2b6a75a359d3a
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 520557c80bf2630a359188dd86ec0987e0d5326b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67616273"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158142"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure Active Directory integreren met de Azure Kubernetes-service met behulp van Azure CLI
 
@@ -40,7 +40,7 @@ aksname="myakscluster"
 
 Azure AD-verificatie wordt geleverd voor AKS-clusters met OpenID Connect Connect. OpenID Connect Connect is een id-laag die boven op het OAuth 2,0-protocol is gebouwd. Voor meer informatie over OpenID Connect Connect raadpleegt u de [Open-ID Connect-documentatie][open-id-connect].
 
-Vanuit het Kubernetes-cluster wordt webhook-token verificatie gebruikt om verificatie tokens te verifiëren. Webhook-token verificatie wordt geconfigureerd en beheerd als onderdeel van het AKS-cluster. Zie de documentatie voor webhook- [verificatie][kubernetes-webhook]voor meer informatie over de verificatie van webhook-tokens.
+Vanuit het Kubernetes-cluster wordt webhook-token verificatie gebruikt om verificatie tokens te verifiëren. Webhook-token verificatie wordt geconfigureerd en beheerd als onderdeel van het AKS-cluster. Zie de [documentatie voor webhook-verificatie][kubernetes-webhook]voor meer informatie over de verificatie van webhook-tokens.
 
 > [!NOTE]
 > Bij het configureren van Azure AD voor AKS-verificatie, worden twee Azure AD-toepassingen geconfigureerd. Deze bewerking moet worden uitgevoerd door een beheerder van een Azure-Tenant.
@@ -77,8 +77,8 @@ serverApplicationSecret=$(az ad sp credential reset \
 
 De Azure AD heeft machtigingen nodig om de volgende acties uit te voeren:
 
-* Adreslijstgegevens lezen
-* Aanmelden en gebruikersprofiel lezen
+* Mapgegevens lezen
+* Aanmelden en gebruikers profiel lezen
 
 Wijs deze machtigingen toe met behulp van de opdracht [AZ AD App permission add][az-ad-app-permission-add] :
 
@@ -98,7 +98,7 @@ az ad app permission admin-consent --id  $serverApplicationId
 
 ## <a name="create-azure-ad-client-component"></a>Een Azure AD-client onderdeel maken
 
-De tweede Azure AD-toepassing wordt gebruikt wanneer een gebruiker zich aanmeldt bij het AKS-cluster`kubectl`met de Kubernetes cli (). Deze client toepassing neemt de verificatie aanvraag van de gebruiker en verifieert hun referenties en machtigingen. Maak de Azure AD-App voor het client onderdeel met behulp van de opdracht [AZ AD App Create][az-ad-app-create] :
+De tweede Azure AD-toepassing wordt gebruikt wanneer een gebruiker zich aanmeldt bij het AKS-cluster met de Kubernetes CLI (`kubectl`). Deze client toepassing neemt de verificatie aanvraag van de gebruiker en verifieert hun referenties en machtigingen. Maak de Azure AD-App voor het client onderdeel met behulp van de opdracht [AZ AD App Create][az-ad-app-create] :
 
 ```azurecli-interactive
 clientApplicationId=$(az ad app create \
@@ -129,7 +129,7 @@ az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 
 ## <a name="deploy-the-cluster"></a>Het cluster implementeren
 
-Maak nu het AKS-cluster op basis van de twee Azure AD-toepassingen die zijn gemaakt. Maak eerst een resource groep met de opdracht [AZ Group Create][az-group-create] . In het volgende voor beeld wordt de resource groep  gemaakt in de regio eastus:
+Maak nu het AKS-cluster op basis van de twee Azure AD-toepassingen die zijn gemaakt. Maak eerst een resource groep met de opdracht [AZ Group Create][az-group-create] . In het volgende voor beeld wordt de resource groep gemaakt in de regio *eastus* :
 
 Maak een resource groep voor het cluster:
 
@@ -161,7 +161,7 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 
 ## <a name="create-rbac-binding"></a>RBAC-binding maken
 
-Voordat een Azure Active Directory-account kan worden gebruikt met het AKS-cluster, moet een functie binding of cluster functie binding worden gemaakt. *Rollen* definiëren de machtigingen die moeten worden verleend  en bindingen worden toegepast op de gewenste gebruikers. Deze toewijzingen kunnen worden toegepast op een bepaalde naam ruimte of in het hele cluster. Zie [using RBAC Authorization][rbac-authorization](Engelstalig) voor meer informatie.
+Voordat een Azure Active Directory-account kan worden gebruikt met het AKS-cluster, moet een functie binding of cluster functie binding worden gemaakt. *Rollen* definiëren de machtigingen die moeten worden verleend en *bindingen* worden toegepast op de gewenste gebruikers. Deze toewijzingen kunnen worden toegepast op een bepaalde naam ruimte of in het hele cluster. Zie [using RBAC Authorization][rbac-authorization](Engelstalig) voor meer informatie.
 
 De user principal name (UPN) ophalen voor de gebruiker die momenteel is aangemeld met behulp van de opdracht [AZ AD afgemelde gebruiker weer geven][az-ad-signed-in-user-show] . Dit gebruikers account is in de volgende stap ingeschakeld voor Azure AD-integratie.
 
@@ -172,7 +172,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > Als de gebruiker aan wie u de RBAC-binding hebt verleend, zich in dezelfde Azure AD-Tenant bevindt, wijst u machtigingen toe op basis van de *userPrincipalName*. Als de gebruiker zich in een andere Azure AD-Tenant bevindt, kunt u in plaats daarvan de eigenschap *objectId* opvragen en gebruiken.
 
-Maak een yaml-manifest `basic-azure-ad-binding.yaml` met de naam en plak de volgende inhoud. Op de laatste regel vervangt u *userPrincipalName_or_objectId* door de UPN-of object-id-uitvoer van de vorige opdracht:
+Maak een YAML-manifest met de naam `basic-azure-ad-binding.yaml` en plak de volgende inhoud. Vervang op de laatste regel *userPrincipalName_or_objectId* door de UPN-of object-id-uitvoer van de vorige opdracht:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -197,7 +197,7 @@ kubectl apply -f basic-azure-ad-binding.yaml
 
 ## <a name="access-cluster-with-azure-ad"></a>Toegang tot cluster met Azure AD
 
-We gaan nu de integratie van Azure AD-verificatie voor het AKS-cluster testen. Stel de `kubectl` configuratie context zo in dat reguliere gebruikers referenties worden gebruikt. Deze context geeft alle verificatie aanvragen door aan Azure AD.
+We gaan nu de integratie van Azure AD-verificatie voor het AKS-cluster testen. Stel de `kubectl` configuratie context in voor het gebruik van reguliere gebruikers referenties. Deze context geeft alle verificatie aanvragen door aan Azure AD.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --overwrite-existing
@@ -209,7 +209,7 @@ Gebruik nu de [kubectl Get peul][kubectl-get] -opdracht om de hele naam ruimte w
 kubectl get pods --all-namespaces
 ```
 
-U ontvangt een aanmeldings prompt om te verifiëren met behulp van de Azure AD-referenties via een webbrowser. Nadat u bent geverifieerd, `kubectl` wordt de opdracht weer gegeven in het AKS-cluster, zoals wordt weer gegeven in de volgende voorbeeld uitvoer:
+U ontvangt een aanmeldings prompt om te verifiëren met behulp van de Azure AD-referenties via een webbrowser. Nadat u bent geverifieerd, wordt de `kubectl` opdracht weer gegeven in het AKS-cluster, zoals wordt weer gegeven in de volgende voorbeeld uitvoer:
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -228,7 +228,7 @@ kube-system   metrics-server-7b97f9cd9-btxzz          1/1     Running   0       
 kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0          23h
 ```
 
-Het ontvangen `kubectl` verificatie token is in de cache opgeslagen. U wordt alleen opnieuw gevraagd om u aan te melden wanneer het token is verlopen of het Kubernetes-configuratie bestand opnieuw wordt gemaakt.
+Het verificatie token dat voor `kubectl` is ontvangen, wordt in de cache opgeslagen. U wordt alleen opnieuw gevraagd om u aan te melden wanneer het token is verlopen of het Kubernetes-configuratie bestand opnieuw wordt gemaakt.
 
 Als er een autorisatie fout bericht wordt weer gegeven nadat u zich hebt aangemeld met een webbrowser, zoals in de volgende voorbeeld uitvoer, controleert u de volgende mogelijke problemen:
 
@@ -238,7 +238,7 @@ error: You must be logged in to the server (Unauthorized)
 
 * U hebt de juiste object-ID of UPN-naam gedefinieerd, afhankelijk van of het gebruikers account zich in dezelfde Azure AD-Tenant bevindt of niet.
 * De gebruiker is geen lid van meer dan 200 groepen.
-* Het geheim dat is gedefinieerd in de registratie van de toepassing voor de server komt overeen met de waarde die is geconfigureerd met`--aad-server-app-secret`
+* Het geheim dat is gedefinieerd in de registratie van de toepassing voor de server overeenkomt met de waarde die is geconfigureerd met `--aad-server-app-secret`
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -260,7 +260,7 @@ Zie [Aanbevolen procedures voor verificatie en autorisatie in AKS][operator-best
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
-[open-id-connect]:../active-directory/develop/v1-protocols-openid-connect-code.md
+[open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
 [az-ad-app-create]: /cli/azure/ad/app#az-ad-app-create
 [az-ad-app-update]: /cli/azure/ad/app#az-ad-app-update

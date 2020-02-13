@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ede43e3ed939083e7b5ff94899d12f6f4795a880
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: d3ee211298598d78f423d88fd4df1c58ed4bfa29
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941485"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157445"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Een token van Azure AD verkrijgen voor het machtigen van aanvragen van een client toepassing
 
@@ -22,7 +22,7 @@ Een belang rijk voor deel van het gebruik van Azure Active Directory (Azure AD) 
 
 In dit artikel wordt beschreven hoe u uw systeem eigen toepassing of webtoepassing configureert voor verificatie met micro soft Identity platform 2,0. De code voorbeeld onderdelen .NET, maar andere talen gebruiken een soortgelijke benadering. Zie [overzicht van micro soft Identity platform (v 2.0)](../../active-directory/develop/v2-overview.md)voor meer informatie over micro soft identity platform 2,0.
 
-Zie voor een overzicht van de OAuth 2.0-stroom voor het verlenen van code, [autoriseren de toegang tot Azure Active Directory web-apps met behulp van de OAuth 2.0-code verlenen stroom](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
+Zie [toegang tot Azure Active Directory webtoepassingen verlenen met behulp van de oauth 2,0 code Grant flow](../../active-directory/develop/v2-oauth2-auth-code-flow.md)voor een overzicht van de OAuth 2,0-code subsidie stroom.
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Een rol toewijzen aan een Azure AD-beveiligings-principal
 
@@ -30,20 +30,20 @@ Als u wilt een beveiligings-principal van uw Azure Storage-toepassing verifiëre
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Uw toepassing registreren bij een Azure AD-tenant
 
-De eerste stap bij het gebruik van Azure AD om toegang tot opslag resources te autoriseren, is het registreren van uw client toepassing met een Azure AD-Tenant vanuit het [Azure Portal](https://portal.azure.com). Wanneer u uw client toepassing registreert, geeft u informatie over de toepassing op in azure AD. Vervolgens Azure AD biedt een client-ID (ook wel een *toepassings-ID*) waarmee u kunt uw toepassing koppelen aan Azure AD tijdens runtime. Zie voor meer informatie over de client-ID, [toepassing en service-principalobjecten in Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md).
+De eerste stap bij het gebruik van Azure AD om toegang tot opslag resources te autoriseren, is het registreren van uw client toepassing met een Azure AD-Tenant vanuit het [Azure Portal](https://portal.azure.com). Wanneer u uw client toepassing registreert, geeft u informatie over de toepassing op in azure AD. Azure AD biedt vervolgens een client-ID (ook wel een *toepassings-id*genoemd) die u gebruikt om uw toepassing te koppelen aan Azure ad tijdens runtime. Zie voor meer informatie over de client-ID [toepassings-en Service-Principal-objecten in azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md).
 
 Als u uw Azure Storage-toepassing wilt registreren, volgt u de stappen in [Quick Start: een toepassing registreren bij het micro soft Identity-platform](../../active-directory/develop/quickstart-configure-app-access-web-apis.md). De volgende afbeelding toont algemene instellingen voor het registreren van een webtoepassing:
 
 ![Scherm afbeelding die laat zien hoe u uw opslag toepassing registreert bij Azure AD](./media/storage-auth-aad-app/app-registration.png)
 
 > [!NOTE]
-> Als u uw toepassing als een systeemeigen toepassing registreert, kunt u een geldige URI voor de **omleidings-URI**. Voor systeem eigen toepassingen hoeft deze waarde geen echte URL te zijn. Voor webtoepassingen moet de omleidings-URI een geldige URI zijn, omdat deze de URL specificeert waarnaar de tokens worden opgegeven.
+> Als u uw toepassing registreert als een systeem eigen toepassing, kunt u een geldige URI voor de **omleidings-URI**opgeven. Voor systeem eigen toepassingen hoeft deze waarde geen echte URL te zijn. Voor webtoepassingen moet de omleidings-URI een geldige URI zijn, omdat deze de URL specificeert waarnaar de tokens worden opgegeven.
 
-Nadat u uw toepassing hebt geregistreerd, ziet u de toepassings-ID (of de client-ID) onder **instellingen**:
+Nadat u uw toepassing hebt geregistreerd, ziet u de toepassings-ID (of client-ID) onder **instellingen**:
 
 ![Scherm opname met de client-ID](./media/storage-auth-aad-app/app-registration-client-id.png)
 
-Zie voor meer informatie over het registreren van een toepassing met Azure AD [toepassingen integreren met Azure Active Directory](../../active-directory/develop/quickstart-v2-register-an-app.md).
+Zie [toepassingen integreren met Azure Active Directory](../../active-directory/develop/quickstart-v2-register-an-app.md)voor meer informatie over het registreren van een toepassing met Azure AD.
 
 ## <a name="grant-your-registered-app-permissions-to-azure-storage"></a>Uw geregistreerde app-machtigingen verlenen voor Azure Storage
 
@@ -85,7 +85,7 @@ Als u wilt een beveiligings-principal met Azure AD verifiëren, moet u enkele be
 
 ### <a name="azure-ad-authority"></a>Azure AD-instantie
 
-Voor de openbare cloud van Microsoft, de base Azure AD-instantie is als volgt, waar *tenant-id* uw Active Directory-tenant-ID (of de map-ID):
+Voor de open bare cloud van micro soft is de basis-Azure AD-instantie als volgt, waarbij *Tenant-id* uw Active Directory Tenant-id (of directory-id) is:
 
 `https://login.microsoftonline.com/<tenant-id>/`
 
@@ -165,7 +165,7 @@ private static async Task<string> CreateBlob(string accessToken)
 
 In het bovenstaande voorbeeld worden de .NET-clientbibliotheek verwerkt de autorisatie van de aanvraag voor het maken van de blok-blob. Azure Storage client bibliotheken voor andere talen, wordt ook de autorisatie van de aanvraag voor u afgehandeld. Echter, als u een Azure Storage-bewerking met een OAuth-token met behulp van de REST-API aanroept, klikt u vervolgens u moet autoriseren van de aanvraag met het OAuth-token.
 
-Voor het aanroepen van Blob en Queue-service-bewerkingen met behulp van OAuth-toegangstokens, geeft u het toegangstoken in de **autorisatie** koptekst met behulp van de **Bearer** -schema en geeft u een serviceversie van 2017-11-09 of hoger, als in het volgende voorbeeld weergegeven:
+Als u BLOB-en Queue-service bewerkingen wilt aanroepen met OAuth-toegangs tokens, geeft u het toegangs token in de **autorisatie** -header door middel van het **Bearer** -schema en geeft u een service versie van 2017-11-09 of hoger op, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```https
 GET /container/file.txt HTTP/1.1
@@ -202,7 +202,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-Toestemming is het proces van een gebruiker die toestemming verleent voor toegang tot beveiligde resources voor hun naam. Het micro soft Identity-platform 2,0 ondersteunt incrementele toestemming, wat inhoudt dat een beveiligingsprincipal in eerste instantie een minimale set machtigingen kan aanvragen en zo nodig machtigingen kan toevoegen in de loop van de tijd. Wanneer uw code een toegangs token aanvraagt, geeft u het bereik van machtigingen op dat uw app op een bepaald moment nodig heeft in de para meter `scope`. Zie de sectie met de titel **incrementele en dynamische toestemming** in [Waarom update to micro soft Identity platform (v 2.0)? (Engelstalig)](../../active-directory/develop/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)voor meer informatie over incrementele toestemming.
+Toestemming is het proces van een gebruiker die toestemming verleent voor toegang tot beveiligde resources voor hun naam. Het micro soft Identity-platform 2,0 ondersteunt incrementele toestemming, wat inhoudt dat een beveiligingsprincipal in eerste instantie een minimale set machtigingen kan aanvragen en zo nodig machtigingen kan toevoegen in de loop van de tijd. Wanneer uw code een toegangs token aanvraagt, geeft u het bereik van machtigingen op dat uw app op een bepaald moment nodig heeft in de para meter `scope`. Zie de sectie met de titel **incrementele en dynamische toestemming** in [Waarom update to micro soft Identity platform (v 2.0)? (Engelstalig)](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)voor meer informatie over incrementele toestemming.
 
 De volgende methode bouwt de verificatie-eigenschappen voor het aanvragen van een incrementele toestemming:
 

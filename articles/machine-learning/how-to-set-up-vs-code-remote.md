@@ -9,26 +9,23 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: f5607c5d41a028a20a4658a67a7ce487a75f0d7c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1999d29db21f820fbcdbca08f2258b657673be3e
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990348"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169755"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interactief fouten opsporen in een Azure Machine Learning Compute-exemplaar met externe versus code
 
 In dit artikel leert u hoe u de externe Visual Studio code kunt instellen op een Azure Machine Learning Compute-exemplaar, zodat u uw code op een andere manier op een andere manier kan **debuggen** vanuit VS code. 
-
-> [!NOTE]
-> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS**, **VS-oost 2**, **Europa-Noord** of **UK-Zuid**, met ondersteuning voor andere regio's binnenkort.
 
 + Een [Azure machine learning Compute-exemplaar](concept-compute-instance.md) is een volledig beheerd werk station in de Cloud voor gegevens wetenschappers en biedt beheer-en Enter prise-gereedheids mogelijkheden voor IT-beheerders. 
 
 
 + [Visual Studio code Remote](https://code.visualstudio.com/docs/remote/remote-overview) Met ontwikkeling kunt u een container, een externe computer of het Windows-subsysteem voor Linux (WSL) gebruiken als een ontwikkel omgeving met volledige functionaliteit. 
 
-## <a name="prerequisite"></a>Vereisten  
+## <a name="prerequisite"></a>Vereiste  
 
 Op Windows-platforms moet u [een met OpenSSH compatibele SSH-client installeren](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) als deze nog niet aanwezig is. 
 
@@ -93,7 +90,7 @@ Hier vindt u enkele details over de velden:
 |----|---------|
 |Host|Een wille keurige steno gebruiken voor het reken exemplaar |
 |Hostnaam|Dit is het IP-adres van het reken exemplaar |
-|Port|Dit is de poort die wordt weer gegeven in het bovenstaande SSH-dialoog venster |
+|Poort|Dit is de poort die wordt weer gegeven in het bovenstaande SSH-dialoog venster |
 |Gebruiker|Dit moet worden `azureuser` |
 |IdentityFile|Moet verwijzen naar het bestand waarin u de persoonlijke sleutel hebt opgeslagen |
 

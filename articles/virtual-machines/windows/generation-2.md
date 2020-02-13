@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ace08d95e1f2eb5a6e7252ecdf505e282b04ddf8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7daa2da76bf3097679a72bfdef069db20ae66087
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837342"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161729"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -58,7 +58,8 @@ Vm's van generatie 2 ondersteunen de volgende installatie kopieën van Marketpla
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16,04, 18,04, 19,04, 19,10 
-* RHEL 8,0
+* RHEL 8,0, 7,6, 7,5, 7,4, 7,0
+* Cent OS 8,0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>On-premises versus Azure Generation 2 Vm's
 
@@ -78,9 +79,9 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 
 | Functie | Generatie 1 | Generatie 2 |
 |---------|--------------|--------------|
-| Opstarten             | PCAT                      | UEFI                               |
-| Schijf controllers | IDE                       | SCSI                               |
-| VM-grootten         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
+| modus             | PCAT                      | UEFI                               |
+| Schijf controllers | HARDE                       | SCSI                               |
+| Formaten van virtuele machines         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Mogelijkheden van generatie 1 vs. generatie 2
 
@@ -100,18 +101,19 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 
 In de Azure Portal of Azure CLI kunt u virtuele machines van de tweede generatie maken op basis van een Marketplace-installatie kopie die ondersteuning biedt voor UEFI-opstart bewerkingen.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure-portal
 
-Installatie kopieën van de tweede generatie voor Windows en SLES zijn opgenomen in dezelfde server aanbieding als de gen1-installatie kopieën. Wat het betekent voor een stroom perspectief is dat, u selecteert de aanbieding en de SKU in de portal voor uw VM. Als de SKU zowel installatie kopieën van de 1e 1 als de tweede generatie ondersteunt, kunt u een virtuele machine van de tweede generatie maken op het tabblad *Geavanceerd* in de stroom voor het maken van de virtuele machine.
+Hieronder vindt u de stappen voor het maken van een Gen2-VM (Generation 2) in Azure Portal.
 
-Momenteel ondersteunen de volgende Sku's de installatie kopieën van de eerste en tweede generatie:
-
-* Windows Server 2012
-* Windows Server 2012 R2
-* Windows Server 2016
-* Windows Server 2019
-
-Wanneer u een Windows Server-SKU als het aanbod selecteert, is er op het tabblad **Geavanceerd** een optie voor het maken van een virtuele machine van het soort **generatie 1** (BIOS) of **generatie 2** (UEFI). Als u **gen 2**selecteert, moet u ervoor zorgen dat de VM-grootte die is geselecteerd op het tabblad **basis beginselen** , wordt [ondersteund voor virtuele machines van de tweede generatie](#generation-2-vm-sizes).
+1. Meld u aan bij Azure Portal op https://portal.azure.com.
+1. Selecteer **Een resource maken**.
+1. Klik op **alles weer geven** in azure Marketplace aan de linkerkant.
+1. Selecteer een installatie kopie die Gen2 ondersteunt.
+1. Klik op **Create**.
+1. Selecteer op het tabblad **Geavanceerd** onder de sectie **VM-generatie** de optie **generatie 2** .
+1. Ga naar het tabblad **basis** informatie en klik onder **Details van exemplaar**op **grootte** en open de Blade **VM-grootte selecteren** .
+1. Selecteer een [ondersteunde virtuele machine van de tweede generatie](#generation-2-vm-sizes).
+1. Ga door met de stroom voor het maken van een virtuele machine in [Azure Portal](quick-create-portal.md) .
 
 ![Selecteer generatie 1 of generatie 2 virtuele machine](./media/generation-2/gen1-gen2-select.png)
 
@@ -195,6 +197,13 @@ U kunt ook virtuele machines van de tweede generatie maken met behulp van schaal
 
 * **Kan ik een virtuele machine van generatie 1 migreren naar generatie 2?**  
     Nee, u kunt de generatie van een virtuele machine niet wijzigen nadat u deze hebt gemaakt. Als u wilt scha kelen tussen VM'S gegenereerd, maakt u een nieuwe VM van een andere generatie.
+
+* **Waarom is mijn VM-grootte niet ingeschakeld in de formaat kiezer wanneer ik een Gen2-VM Maak?**
+
+    Dit kan worden opgelost door de volgende handelingen uit te voeren:
+
+    1. Controleer of de eigenschap voor het genereren van de **virtuele machine** is ingesteld op **gen 2** op het tabblad **Geavanceerd** .
+    1. Controleer of u zoekt naar een [VM-grootte die Gen2 vm's ondersteunt](#generation-2-vm-sizes).
 
 ## <a name="next-steps"></a>Volgende stappen
 

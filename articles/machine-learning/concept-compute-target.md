@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 3d6439424f2a39bf5b5477cebd5fadb23a6370b0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984809"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169820"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn Compute-doelen in Azure Machine Learning? 
 
@@ -50,16 +50,12 @@ Een beheerde Compute-resource wordt gemaakt en beheerd door Azure Machine Learni
 
 U kunt Azure Machine Learning Compute instances (preview) of compute clusters maken in:
 
-| | Azure Machine Learning Studio | Azure Portal | SDK | Resource Manager-sjabloon | CLI |
+| | Azure Machine Learning Studio | Azure-portal | SDK | Resource Manager-sjabloon | CLI |
 |---| ----- | ----- | ----- | ----- | ----- |
-| Rekeninstantie | ja | ja | ja | ja |  |
-| Reken cluster | ja | ja | ja | ja | ja |
+| Rekenproces | ja | ja | ja | ja |  |
+| Rekencluster | ja | ja | ja | ja | ja |
 
 Wanneer u deze reken resources maakt, worden deze automatisch onderdeel van uw werk ruimte, in tegens telling tot andere soorten Compute-doelen.
-
-> [!NOTE]
-> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS**, **VS-oost 2**, **Europa-Noord** of **UK-Zuid**, met ondersteuning voor andere regio's binnenkort.
->Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken. 
 
 ### <a name="compute-clusters"></a>Reken clusters
 
@@ -78,6 +74,6 @@ Een niet-beheerd reken doel wordt *niet* beheerd door Azure machine learning. U 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Procedures voor:
+Leer hoe u het volgende doet:
 * [Een reken doel instellen om uw model te trainen](how-to-set-up-training-targets.md)
 * [Uw model implementeren naar een berekenings doel](how-to-deploy-and-where.md)

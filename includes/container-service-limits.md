@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 11/22/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0695416c65eed2bbf0a19d5ed1ea0c53a7ece332
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ac928d9087ba5db312540b8ec542d7a2a29e2a99
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485536"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179063"
 ---
 | Resource | Standaardlimiet |
 | --- | :--- |
 | Maximum aantal clusters per abonnement | 100 |
 | Maximum aantal knoop punten per cluster met beschikbaarheids sets voor virtuele machines en Basic Load Balancer SKU  | 100 |
-| Maximum aantal knoop punten per cluster met Virtual Machine Scale Sets en [Standard load BALANCER SKU][standard-load-balancer] | 800 (100 knoop punten per [knooppunt groep][node-pool]) |
+| Maximum aantal knoop punten per cluster met Virtual Machine Scale Sets en [Standard load BALANCER SKU][standard-load-balancer] | 1000 (100 knoop punten per [knooppunt groep][node-pool]) |
 | Maximum aantal peulen per knoop punt: [basis netwerken][basic-networking] met Kubenet | 110 |
 | Maximum aantal per knoop punt: [Geavanceerd netwerken][advanced-networking] met Azure container Network-Interface | Implementatie van Azure CLI: 30<sup>1</sup><br />Azure Resource Manager sjabloon: 30<sup>1</sup><br />Portal-implementatie: 30 |
 

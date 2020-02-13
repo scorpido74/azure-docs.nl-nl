@@ -4,7 +4,6 @@ description: 'Quick Start: scripts die gebruikmaken van de Azure python SDK om d
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
-manager: timlt
 editor: ''
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
 ms.service: event-hubs
@@ -15,12 +14,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: c6c27a269abfd6fbf29ec7bbb0980d764abaa242
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6c830cf871c2ae650bb61e8b3712a664e9e405d4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904499"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187294"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Quick Start: overzicht van het vastleggen van Event Hubs: python (Azure-eventhub versie 1)
 
@@ -43,7 +42,7 @@ In dit scenario kunt u het volgende doen:
 
 - Python 3,4 of hoger, met `pip` geïnstalleerd en bijgewerkt.
   
-- Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+- Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
   
 - Een actieve Event Hubs naam ruimte en Event Hub, gemaakt door de instructies te volgen op [Quick Start: een event hub maken met Azure Portal](event-hubs-create.md). Noteer uw naam ruimte en Event Hub namen die u later in dit overzicht kunt gebruiken. 
   
@@ -57,7 +56,7 @@ In dit scenario kunt u het volgende doen:
 
 Maak een opslag account en een container die moeten worden gebruikt voor de opname. 
 
-1. Meld u aan bij de [Azure Portal][Azure portal].
+1. Meld u aan bij de [Azure-portal][Azure portal].
 2. Selecteer in de linkernavigatiebalk **opslag accounts**en selecteer in het scherm **opslag accounts** de optie **toevoegen**.
 3. Selecteer een abonnement en resource groep in het scherm voor het maken van het opslag account en geef het opslag account een naam. U kunt de andere selecties standaard laten staan. Selecteer **controleren + maken**, Controleer de instellingen en selecteer vervolgens **maken**. 
    

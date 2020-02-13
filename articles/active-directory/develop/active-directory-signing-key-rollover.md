@@ -12,18 +12,18 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d3994b56b55a7aac0ba3ab64d53b6436bc19c45b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f3585cfa7ea6f0d8afc61e899f9641d415a2e354
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698540"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161185"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Rollover van de handtekening sleutel in Azure Active Directory
 In dit artikel wordt beschreven wat u moet weten over de open bare sleutels die in Azure Active Directory (Azure AD) worden gebruikt voor het ondertekenen van beveiligings tokens. Het is belang rijk te weten dat deze sleutels periodiek worden doorgevoerd en kan in een nood geval direct worden doorgevoerd. Alle toepassingen die gebruikmaken van Azure AD, moeten programmatisch het proces voor sleutel rollover kunnen afhandelen of een periodiek hand matig rollover proces instellen. Ga verder met lezen om te begrijpen hoe de sleutels werken, hoe u de invloed van de rollover op uw toepassing kunt beoordelen en hoe u uw toepassing kunt bijwerken of een periodiek hand matig rollover proces kunt instellen voor het afhandelen van Key rollover, indien nodig.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Overzicht van handtekeningen sleutels in azure AD
-Azure AD maakt gebruik van open bare-sleutel cryptografie die is gebaseerd op industrie normen om een vertrouwens relatie tussen zichzelf en de toepassingen die deze gebruiken te maken. In de praktijk werkt dit op de volgende manier: Azure AD maakt gebruik van een handtekening sleutel die bestaat uit een openbaar en een persoonlijk sleutel paar. Wanneer een gebruiker zich aanmeldt bij een toepassing die gebruikmaakt van Azure AD voor verificatie, maakt Azure AD een beveiligings token dat informatie over de gebruiker bevat. Dit token is ondertekend door Azure AD met behulp van de persoonlijke sleutel voordat het wordt teruggestuurd naar de toepassing. Om te controleren of het token geldig is en afkomstig is van Azure AD, moet de toepassing de hand tekening van het token valideren met behulp van de open bare sleutel die wordt weer gegeven door Azure AD die is opgenomen in het [OpenID Connect Connect-detectie document](https://openid.net/specs/openid-connect-discovery-1_0.html) van de Tenant of het SAML/WS-inrichtings [document met federatieve meta gegevens](azure-ad-federation-metadata.md).
+Azure AD maakt gebruik van open bare-sleutel cryptografie die is gebaseerd op industrie normen om een vertrouwens relatie tussen zichzelf en de toepassingen die deze gebruiken te maken. In de praktijk werkt dit op de volgende manier: Azure AD maakt gebruik van een handtekening sleutel die bestaat uit een openbaar en een persoonlijk sleutel paar. Wanneer een gebruiker zich aanmeldt bij een toepassing die gebruikmaakt van Azure AD voor verificatie, maakt Azure AD een beveiligings token dat informatie over de gebruiker bevat. Dit token is ondertekend door Azure AD met behulp van de persoonlijke sleutel voordat het wordt teruggestuurd naar de toepassing. Om te controleren of het token geldig is en afkomstig is van Azure AD, moet de toepassing de hand tekening van het token valideren met behulp van de open bare sleutel die wordt weer gegeven door Azure AD die is opgenomen in het [OpenID Connect Connect-detectie document](https://openid.net/specs/openid-connect-discovery-1_0.html) van de Tenant of het SAML/WS-inrichtings [document met federatieve meta gegevens](../azuread-dev/azure-ad-federation-metadata.md).
 
 Uit veiligheids overwegingen wordt de handtekening sleutel van Azure AD periodiek gerollt en in het geval van nood onmiddellijk te worden doorgevoerd. Elke toepassing die is geïntegreerd met Azure AD moet worden voor bereid om een sleutel rollover gebeurtenis te verwerken, ongeacht hoe vaak deze kan optreden. Als dat niet het geval is, zal de aanmeldings aanvraag mislukken als uw toepassing een verlopen sleutel probeert te gebruiken om de hand tekening op een token te verifiëren.
 
@@ -140,7 +140,7 @@ Met de volgende stappen kunt u controleren of de logica goed werkt in uw toepass
 3. In de tabel **IssuingAuthorityKeys** is er ten minste één rij die overeenkomt met de vingerafdruk waarde voor de sleutel. Alle rijen in de tabel verwijderen.
 4. Klik met de rechter muisknop op de tabel **tenants** en klik vervolgens op **tabel gegevens weer geven**.
 5. In de tabel **tenants** is er ten minste één rij die overeenkomt met een unieke Directory-Tenant-id. Alle rijen in de tabel verwijderen. Als u de rijen in de tabel **tenants** en **IssuingAuthorityKeys** niet verwijdert, krijgt u tijdens runtime een fout melding.
-6. Maak de toepassing en voer deze uit. Nadat u bent aangemeld bij uw account, kunt u de toepassing stoppen.
+6. Bouw en voer de toepassing uit. Nadat u bent aangemeld bij uw account, kunt u de toepassing stoppen.
 7. Ga terug naar de **Server Explorer** en Bekijk de waarden in de tabel **IssuingAuthorityKeys** en **tenants** . U ziet dat ze automatisch opnieuw zijn ingevuld met de juiste gegevens uit het federatieve meta gegevens document.
 
 ### <a name="vs2013"></a>Web-Api's die bronnen beveiligen en worden gemaakt met Visual Studio 2013
@@ -281,7 +281,7 @@ Volg de onderstaande stappen om te controleren of de sleutel rollover logica wer
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. Wijzig in de **\<vinger afdruk toevoegen = "" >** instelling de waarde van de vinger afdruk door een wille keurig teken te vervangen door een andere. Sla het bestand **Web.config** op.
+2. Wijzig in de **\<vinger afdruk toevoegen = "" >** instelling de waarde van de vinger afdruk door een wille keurig teken te vervangen door een andere. Sla het bestand **Web. config** op.
 3. Bouw de toepassing en voer deze uit. Als u het aanmeld proces kunt volt ooien, wordt de sleutel door uw toepassing bijgewerkt door de vereiste informatie te downloaden uit het federatieve meta gegevens document van uw Directory. Als u problemen ondervindt bij het aanmelden, moet u ervoor zorgen dat de wijzigingen in uw toepassing correct zijn door het [toevoegen van een aanmelding aan uw webtoepassing met Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) -artikel of het downloaden en inspecteren van het volgende code voorbeeld: [multi tenant-Cloud toepassing voor Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Webtoepassingen die bronnen beveiligen en zijn gemaakt met Visual Studio 2008 of 2010 en Windows Identity Foundation (WIF) v 1.0 voor .NET 3,5

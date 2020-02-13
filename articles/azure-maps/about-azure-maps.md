@@ -3,30 +3,30 @@ title: Overzicht | Microsoft Azure kaarten
 description: Meer informatie over services en mogelijkheden in Microsoft Azure Maps en hoe u deze kunt gebruiken in uw toepassingen.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2909dbebc7531be0e45b321cc31b599b0f63ee4a
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: e01bfec9edbe1e868a3e3244e3cb6d1e1a46561d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262568"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190355"
 ---
 # <a name="what-is-azure-maps"></a>Wat is Azure Maps?
 
 Azure Maps is een verzameling georuimtelijke services die gebruikmaken van nieuwe toewijzings gegevens voor het bieden van geografische context voor web-en mobiele toepassingen. Azure Maps biedt:
 
 * REST-Api's voor het weer geven van kaarten in meerdere stijlen en satelliet installatie kopieën.
-* Zoekt naar adressen, plaatsen en interessante onderwerpen over de hele wereld.
-* Verschillende soorten route ring: Point-to-Point, multi point optimaliseren, multi point-optimalisatie, isochrone, bedrijfs voertuigen, verkeer dat wordt beïnvloed en matrix routering
-* Weer gave verkeers stroom en incidenten.
-* Mobiliteits Services voor het aanvragen van open bare door Voer en alternatieve transport methoden (zoals Bike share, scooter share, auto share) en planningen van routes in realtime. 
-* Het instellen van de gebruikers locatie via geolocatie, en het converteren van de locatie naar tijd zones. 
-* Services voor het geoomheiningen en toewijzen van gegevens opslag, met locatie gegevens die worden gehost in Azure. 
+* Zoek Services om adressen, plaatsen en interessante zaken over de hele wereld te vinden.
+* Verschillende routerings opties; zoals Point-to-Point, multi point, multi point Optimization, isochrone, bedrijfs voertuigen, verkeer dat wordt beïnvloed en matrix routering.
+* Weer gave verkeers stroom en incidenten, voor toepassingen waarvoor verkeers gegevens nodig zijn.
+* Mobility-service om open bare Transit logistiek aan te vragen, routes in realtime te plannen en informatie te vragen voor alternatieve transport methoden.
+* Tijd zone-en geolocatie Services en om een locatie te converteren naar tijd zones.
+* Geoomheining van service en toewijzing van gegevens opslag, met locatie gegevens die worden gehost in Azure. 
 * Locatie informatie via georuimtelijke analyse. 
 
 Daarnaast zijn Azure Maps services beschikbaar via de Web-SDK of de Android-SDK. Met deze hulpprogram ma's kunnen ontwikkel aars snel oplossingen ontwikkelen en schalen waarmee locatie gegevens in azure-oplossingen worden geïntegreerd. 
@@ -39,11 +39,11 @@ In de volgende video wordt Azure Maps in detail uitgelegd:
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps/player?format=ny" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-## <a name="map-controls"></a>Kaartbesturingselementen
+## <a name="map-controls"></a>Besturings elementen toewijzen
 
 ### <a name="web-sdk"></a>Web SDK
 
-Met de Azure Maps Web-SDK kunt u interactieve kaarten aanpassen met uw eigen inhoud en installatie kopieën voor uw web-of mobiele toepassingen. Dit besturings element maakt gebruik van WebGL, zodat u grote gegevens sets met hoge prestaties kunt weer geven. Ontwikkel met de SDK met behulp van Java script of type script.
+Met de Azure Maps Web-SDK kunt u interactieve kaarten aanpassen met uw eigen inhoud en beelden. U kunt deze interactieve kaart gebruiken voor uw web-of mobiele toepassingen. Het kaart besturings element maakt gebruik van WebGL, zodat u grote gegevens sets met hoge prestaties kunt weer geven. Ontwikkel met de SDK met behulp van Java script of type script.
 
 ![Voorbeeld toewijzing van een gewijzigde populatie](media/about-azure-maps/Introduction_WebMapControl.png)
 
@@ -63,15 +63,15 @@ Gegevens zijn van cruciaal belang voor kaarten. Gebruik gegevens service om geor
 
 ### <a name="mobility-service"></a>Mobility-service
 
-Met de Azure Maps Mobility-service kunt u in realtime een eenmalige excursie plannen. Het retourneert de best mogelijke route opties en biedt verschillende soorten reis modi. In het gebied van metro (stad) kunnen deze modi wandel, fietsen en open bare door Voer bevatten. U kunt een doorvoer traject, lijn geometrie, lijsten van stop bewerkingen, geplande en real-time aankomsten en service waarschuwingen aanvragen.
+Met de Azure Maps Mobility-service kunt u in realtime een eenmalige excursie plannen. Het retourneert de best mogelijke route opties en biedt verschillende soorten reis modi. In het gebied van metro (stad) kunnen deze modi wandel, fietsen en open bare door Voer bevatten. U kunt een doorvoer traject, lijn geometrie, lijsten van stop bewerkingen, geplande aankomsten, realtime-aankomsten en service waarschuwingen aanvragen.
 
-Met deze service kunt u ook zoeken naar specifieke object typen, zoals gedeelde fietsen, scooters of auto's rond een locatie. Gebruikers kunnen het aantal beschik bare fietsen in de dichtstbijzijnde Dock aanvragen en zoeken naar beschik bare Voer tuigen voor het delen van de voor rang. Gebruikers kunnen ook informatie vinden, zoals de toekomst Beschik baarheid van de Voer tuigen en het huidige brandstof niveau.
+Met de service kunt u ook zoeken naar specifieke object typen rond een locatie. Gebruikers kunnen zoeken naar gedeelde fietsen, scooters of auto's rond een locatie. Gebruikers kunnen het aantal beschik bare fietsen in de dichtstbijzijnde Dock aanvragen en zoeken naar beschik bare Voer tuigen voor het delen van de voor rang. En kunnen gebruikers informatie vinden, zoals de toekomst Beschik baarheid van de Voer tuigen en het huidige brandstof niveau.
 
 Zie de [documentatie van Mobility API](https://docs.microsoft.com/rest/api/maps/mobility)voor meer informatie over de service.
 
 ### <a name="render-service"></a>Service voor rendering
 
-De weergave service helpt ontwikkel aars bij het maken van webtoepassingen en mobiele toepassingen om ze te koppelen. De service maakt gebruik van een raster met grafische afbeeldingen van hoge kwaliteit, beschikbaar in 19 zoomniveaus, of volledig aanpasbare kaartafbeeldingen in een vectorindeling.
+De weergave service helpt ontwikkel aars bij het maken van webtoepassingen en mobiele toepassingen met toewijzings functies. De service maakt gebruik van een raster met grafische afbeeldingen van hoge kwaliteit, beschikbaar in 19 zoomniveaus, of volledig aanpasbare kaartafbeeldingen in een vectorindeling.
 
 ![Voor beeld van een kaart in de weergave service](media/about-azure-maps/Introduction_Map.png)
 
@@ -79,7 +79,7 @@ De Render Service biedt nu preview-API's die ontwikkelaars met satellietbeelden 
 
 ### <a name="route-service"></a>Routeservice
 
-De Route Service bevat robuuste geometrische berekeningen voor de infrastructuur in de echte wereld en routebeschrijvingen voor meerdere manieren van reizen. Met de service kunnen ontwikkelaars richtingen berekenen voor een aantal manieren van reizen, zoals met de auto, vrachtwagen, fiets of wandelen. In de service kan ook rekening worden gehouden met invoerwaarden voor verkeersomstandigheden, gewichtsbeperkingen of transport van gevaarlijke stoffen.
+De Route Service bevat robuuste geometrische berekeningen voor de infrastructuur in de echte wereld en routebeschrijvingen voor meerdere manieren van reizen. Met de service kunnen ontwikkel aars een route beschrijving berekenen over een aantal reis modi, zoals auto, vracht wagen, fiets of wandel. De service beschouwt ook invoer zoals verkeers voorwaarden, gewichts beperkingen of gevaarlijke materiaal transport.
 
 ![Voor beeld van een kaart vanuit de route service](media/about-azure-maps/Introduction_Route.png)
 
@@ -108,7 +108,7 @@ Er zijn momenteel preview-versies beschikbaar van API’s voor zoeken in batches
 
 ### <a name="spatial-operations-service"></a>Ruimtelijke-bewerkingen service
 
-De Azure Maps spatiale Operations-service neemt locatie-informatie en analyseert deze snel om klanten te informeren over lopende gebeurtenissen die in de tijd en ruimte optreden. Het maakt bijna realtime analyse en voorspellende modellering van gebeurtenissen mogelijk. 
+De Azure Maps spatiale Operations-service heeft locatie-informatie. De locatie gegevens worden snel geanalyseerd om klanten te informeren over lopende gebeurtenissen die in tijd en ruimte plaatsvinden. Het maakt bijna realtime analyse en voorspellende modellering van gebeurtenissen mogelijk. 
 
 Met de service kunnen klanten hun locatie Intelligence verbeteren met een bibliotheek met algemene georuimtelijke wiskundige berekeningen. Veelvoorkomende berekeningen zijn onder andere het dichtstbijzijnde punt, fantastische cirkel afstand en buffers. Lees de [documentatie over ruimtelijk Operations API](https://docs.microsoft.com/rest/api/maps/spatial)voor meer informatie over de service en de verschillende functies.
 
@@ -118,7 +118,7 @@ Met de time zone-service kunt u de huidige, historische en toekomstige tijd zone
 
 * De tijd zone-Id's van micro soft Windows converteren naar IANA-tijd zones.
 * Een tijd zone-offset wordt opgehaald naar UTC.
-* De huidige tijd in een tijd zone ophalen. 
+* De huidige tijd in een gekozen tijd zone ophalen. 
 
 Een typisch JSON-antwoord voor een query naar de tijd zone service ziet er als volgt uit:
 
@@ -169,7 +169,7 @@ Azure Maps biedt ook een handig [Java script-kaart besturings element](https://d
 
 Voor toegang tot de Azure Maps Services gaat u naar de [Azure Portal](https://portal.azure.com) en maakt u een Azure Maps-account.
 
-Azure Maps maakt gebruik van een verificatieschema op basis van sleutels. Uw account wordt geleverd met twee sleutels die al voor u zijn gegenereerd. Begin met het integreren van deze locatie mogelijkheden in uw toepassing, met behulp van een van de sleutels en maak een aanvraag voor de Azure Maps-service.
+Azure Maps maakt gebruik van een verificatieschema op basis van sleutels. Uw account wordt geleverd met twee sleutels die al voor u zijn gegenereerd. gebruik een van beide sleutels. Begin met het integreren van deze locatie mogelijkheden in uw toepassing en het indienen van aanvragen voor de Azure Maps Services.
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: c852bdeb30efe6acf626ae67028ec1ccb9e0b6db
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 08e10996f633d35ffbf946b61937a0e9a76f7227
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310965"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162222"
 ---
 # <a name="available-event-hubs-apis"></a>Beschik bare Event Hubs-Api's
 
@@ -31,13 +31,13 @@ In de volgende sectie worden alle momenteel beschik bare Azure Event Hubs runtim
 
 Zie [aanvullende informatie](#additional-information)voor meer informatie over de huidige status van elke runtime bibliotheek.
 
-| Taal/platform | Clientpakket | EventProcessorHost-pakket | Opslagplaats |
+| Taal/platform | Client pakket | EventProcessorHost-pakket | Opslagplaats |
 | --- | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHub](https://github.com/azure/azure-event-hubs-dotnet) |
-| .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | N/A |
+| .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | N.v.t. |
 | Java | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) | [GitHub](https://github.com/Azure/azure-event-hubs-java) |
-| Knooppunt | [NPM](https://www.npmjs.com/package/azure-event-hubs) | N/A | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
-| C | N/A | N/A | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
+| Knooppunt | [NPM](https://www.npmjs.com/package/azure-event-hubs) | N.v.t. | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
+| C | N.v.t. | N.v.t. | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
 
 ### <a name="additional-information"></a>Aanvullende informatie
 
@@ -47,7 +47,7 @@ Het .NET-ecosysteem heeft meerdere runtimes, dus er zijn meerdere .NET-bibliothe
 
 #### <a name="node"></a>Knooppunt
 
-De [node. JS-bibliotheek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) bevindt zich momenteel in de preview-versie en wordt beheerd als een kant project door micro soft-werk nemers en externe inzenders. Alle bijdragen, inclusief bron code, zijn welkom en worden gecontroleerd.
+De [Java script-bibliotheek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) is momenteel beschikbaar als preview-versie en wordt beheerd als een kant project door micro soft-werk nemers en externe inzenders. Alle bijdragen, inclusief bron code, zijn welkom en worden gecontroleerd.
 
 ## <a name="management-apis"></a>Beheer API’s
 

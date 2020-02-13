@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639868"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161933"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionale nood herstel voor Azure Databricks clusters
 
@@ -37,7 +37,7 @@ Als u uw eigen regionale nood herstel topologie wilt maken, volgt u deze vereist
 
    1. Richt meerdere Azure Databricks-werk ruimten in afzonderlijke Azure-regio's in. Maak bijvoorbeeld de primaire Azure Databricks-werk ruimte in Oost-VS2. Maak een tweede Azure Databricks werk ruimte voor herstel na nood gevallen in een afzonderlijke regio, zoals vs-West.
 
-   2. [Geografisch redundante opslag](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)gebruiken. De gegevens die zijn gekoppeld aan Azure Databricks, worden standaard opgeslagen in Azure Storage. De resultaten van Databricks-taken worden ook opgeslagen in Azure Blob Storage, zodat de verwerkte gegevens duurzaam zijn en die Maxi maal beschikbaar blijven nadat het cluster is beëindigd. Omdat de opslag-en het Databricks-cluster zich op dezelfde locatie bevinden, moet u geo-redundante opslag gebruiken zodat gegevens kunnen worden geopend in een secundaire regio als de primaire regio niet meer toegankelijk is.
+   2. [Geografisch redundante opslag](../storage/common/storage-redundancy.md)gebruiken. De gegevens die zijn gekoppeld aan Azure Databricks, worden standaard opgeslagen in Azure Storage. De resultaten van Databricks-taken worden ook opgeslagen in Azure Blob Storage, zodat de verwerkte gegevens duurzaam zijn en die Maxi maal beschikbaar blijven nadat het cluster is beëindigd. Omdat de opslag-en het Databricks-cluster zich op dezelfde locatie bevinden, moet u geo-redundante opslag gebruiken zodat gegevens kunnen worden geopend in een secundaire regio als de primaire regio niet meer toegankelijk is.
 
    3. Zodra de secundaire regio is gemaakt, moet u de gebruikers, gebruikers mappen, notebooks, cluster configuratie, taken configuratie, Bibliotheken, opslag, init-scripts en toegangs beheer opnieuw configureren. Meer informatie vindt u in de volgende sectie.
 

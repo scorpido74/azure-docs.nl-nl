@@ -3,29 +3,27 @@ title: 'Zelf studie: regels maken en beheren in uw Azure IoT Central-toepassing'
 description: Deze zelf studie laat zien hoe u met Azure IoT Central regels uw apparaten in bijna realtime kunt bewaken en automatisch acties kunt aanroepen, zoals het verzenden van een e-mail bericht wanneer de regel wordt geactiveerd.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 96514a224960240f2187164aac7c79c1659880e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f61a41fa89c7006341db928472f6b20d272bc550
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027704"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167424"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Zelf studie: een regel maken en meldingen instellen in uw Azure IoT Central-toepassing
 
 *Dit artikel is van toepassing op operators, opbouwfuncties en beheerders.*
 
-
-
 U kunt Azure IoT Central gebruiken om uw verbonden apparaten op afstand te bewaken. Met Azure IoT Central-regels kunt u uw apparaten in bijna realtime bewaken en automatisch acties aanroepen, zoals het verzenden van een e-mail bericht. Met slechts enkele muis klikken kunt u een voor waarde definiëren voor het controleren van telemetrie van uw apparaten en het configureren van een bijbehorende actie. In dit artikel wordt uitgelegd hoe u regels kunt maken voor het bewaken van de telemetrie die door het apparaat wordt verzonden.
 
 Apparaten gebruiken telemetrie om numerieke gegevens van het apparaat te verzenden. Een regel die wordt geactiveerd wanneer de telemetrie van het geselecteerde apparaat een opgegeven drempel overschrijdt.
 
-In deze zelf studie maakt u een regel voor het verzenden van een e-mail bericht wanneer de Tempe ratuur in een omgevings sensor van het apparaat 70&deg; F overschrijdt.
+In deze zelf studie maakt u een regel voor het verzenden van een e-mail bericht wanneer de Tempe ratuur in een gesimuleerd omgevings sensor 70&deg; F.
 
 In deze zelfstudie leert u het volgende:
 
@@ -36,7 +34,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, moet u de [toepassing een Azure-IOT Central maken](./quick-deploy-iot-central.md) volt ooien en [een gesimuleerd apparaat toevoegen aan de snelstartgids van uw IOT Central toepassing](./quick-create-pnp-device.md) om de sjabloon voor het **omgevings sensor** apparaat te maken waarmee u kunt werken.
+Voordat u begint, moet u de [toepassing een Azure-IOT Central maken](./quick-deploy-iot-central.md) volt ooien en [een gesimuleerd apparaat toevoegen aan de](./quick-create-pnp-device.md) Snelstartgids van de IOT Central toepassing om de **MXChip IOT DevKit** -apparaatprofiel te maken waarmee u kunt werken.
 
 ## <a name="create-a-rule"></a>Een regel maken
 
@@ -52,7 +50,7 @@ Voor het maken van een telemetrie-regel moet er ten minste één telemetrie-meti
 
 1. Voer de naam _temperatuur monitor_ in om de regel te identificeren en druk op ENTER.
 
-1. Selecteer de sjabloon **omgevings sensor** . De regel is standaard automatisch van toepassing op alle apparaten die aan de sjabloon voor het apparaat zijn gekoppeld. Als u wilt filteren op een subset van de apparaten, selecteert u **+ filter** en gebruikt u de eigenschappen van het apparaat om de apparaten te identificeren. Als u de regel wilt uitschakelen, schakelt u de knop **ingeschakeld/uitgeschakeld** in de regel header in:
+1. Selecteer de sjabloon **MXChip IOT DevKit** -apparaat. De regel is standaard automatisch van toepassing op alle apparaten die aan de sjabloon voor het apparaat zijn gekoppeld. Als u wilt filteren op een subset van de apparaten, selecteert u **+ filter** en gebruikt u de eigenschappen van het apparaat om de apparaten te identificeren. Als u de regel wilt uitschakelen, schakelt u de knop **ingeschakeld/uitgeschakeld** in de regel header in:
 
     ![Filters en inschakelen](media/tutorial-create-telemetry-rules/device-filters.png)
 
@@ -77,7 +75,7 @@ U kunt meerdere voor waarden aan een regel toevoegen door **+ voor waarde**te se
 
 ### <a name="configure-actions"></a>Acties configureren
 
-Nadat u de voor waarde hebt gedefinieerd, stelt u de acties in die moeten worden uitgevoerd wanneer de regel wordt geactiveerd. Acties worden aangeroepen wanneer de voor waarden die in de regel zijn opgegeven, worden geëvalueerd als waar. Op dit moment is e-mail de enige beschik bare actie.
+Nadat u de voor waarde hebt gedefinieerd, stelt u de acties in die moeten worden uitgevoerd wanneer de regel wordt geactiveerd. Acties worden aangeroepen wanneer de voor waarden die in de regel zijn opgegeven, worden geëvalueerd als waar.
 
 1. Selecteer **+ e-mail** in de sectie **acties** .
 
@@ -110,7 +108,7 @@ Kies de regel die u wilt in-of uitschakelen. Voeg in de sectie **bereiken** een 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 * Een regel op basis van telemetrie maken
 * Een actie toevoegen

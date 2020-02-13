@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cd10bd2a04bfb2a3e3316d86e64a98c75c12e36d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76530895"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179014"
 ---
 In dit artikel wordt uitgelegd hoe u back-ups en herstel na nood gevallen (DR) van IaaS virtual machines (Vm's) en schijven in azure plant. In dit document worden zowel beheerde als onbeheerde schijven beschreven.
 
@@ -33,7 +33,7 @@ Voordat we gaan kijken naar back-ups en DR-opties, gaan we enkele methoden samen
 
 ### <a name="azure-iaas-resiliency"></a>Tolerantie van Azure IaaS
 
-*Tolerantie* verwijst naar de tolerantie voor normale storingen die zich voordoen in hardware-onderdelen. Tolerantie is de mogelijkheid om fouten te herstellen en verder te werken. Het gaat niet om het vermijden van storingen, maar om het reageren op storingen op een manier waarmee downtime of gegevensverlies wordt voorkomen. Het doel van flexibiliteit is om de toepassing na een storing weer volledig te laten functioneren. Virtuele machines en schijven van Azure zijn ontworpen om te worden gebruikt voor veelvoorkomende hardwarefouten. Laten we eens kijken hoe het Azure IaaS-platform deze tolerantie biedt.
+*Tolerantie* verwijst naar de tolerantie voor normale storingen die zich voordoen in hardware-onderdelen. Tolerantie is de mogelijkheid om fouten te herstellen en verder te werken. Het is niet mogelijk om storingen te voor komen, maar op een manier te reageren op fouten waardoor downtime of gegevens verlies wordt voor komen. Het doel van flexibiliteit is om de toepassing na een storing weer volledig te laten functioneren. Virtuele machines en schijven van Azure zijn ontworpen om te worden gebruikt voor veelvoorkomende hardwarefouten. Laten we eens kijken hoe het Azure IaaS-platform deze tolerantie biedt.
 
 Een virtuele machine bestaat voornamelijk uit twee delen: een Compute Server en de permanente schijven. Beide beïnvloeden de fout tolerantie van een virtuele machine.
 
@@ -51,7 +51,7 @@ Om de werk belastingen van toepassingen te beschermen tegen downtime vanwege de 
 
 Vanwege deze afzonderlijke fout domeinen hebben gelokaliseerde hardwarestoringen doorgaans geen invloed op meerdere Vm's in de set. Als u afzonderlijke fout domeinen hebt, beschikt u over hoge Beschik baarheid voor uw toepassing. Het is een goede gewoonte om beschikbaarheids sets te gebruiken wanneer hoge Beschik baarheid is vereist. In de volgende sectie wordt het aspect nood herstel beschreven.
 
-### <a name="backup-and-disaster-recovery"></a>Back-up en herstel na noodgeval
+### <a name="backup-and-disaster-recovery"></a>Back-ups en herstel na nood gevallen
 
 Herstel na nood gevallen is de mogelijkheid om van zeldzame, maar grote incidenten te herstellen. Deze incidenten omvatten niet-tijdelijke, grootschalige storingen, zoals service-onderbrekingen die van invloed zijn op een hele regio. Herstel na nood gevallen omvat gegevens back-up en-archivering en kan hand matige interventie zijn, zoals het herstellen van een Data Base uit een back-up.
 
@@ -103,17 +103,17 @@ Als u [Premium ssd's](../articles/virtual-machines/windows/disks-types.md), [Man
 Voor niet-beheerde schijven kunt u het lokaal redundante opslag type gebruiken voor IaaS-schijven, maar moet Azure Backup worden ingeschakeld met de geo-redundante opslag optie voor de Recovery Services-kluis.
 
 > [!NOTE]
-> Als u de geo [-redundante opslag](../articles/storage/common/storage-redundancy-grs.md) of [geografisch redundante opslag optie met lees toegang](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) voor uw onbeheerde schijven gebruikt, hebt u nog steeds consistente moment opnamen nodig voor back-up en Dr. Gebruik een [Azure backup](https://azure.microsoft.com/services/backup/) of [consistente moment opnamen](#alternative-solution-consistent-snapshots).
+> Als u de geo [-redundante opslag](../articles/storage/common/storage-redundancy-grs.md) of [geografisch redundante opslag optie met lees toegang](../articles/storage/common/storage-redundancy.md) voor uw onbeheerde schijven gebruikt, hebt u nog steeds consistente moment opnamen nodig voor back-up en Dr. Gebruik een [Azure backup](https://azure.microsoft.com/services/backup/) of [consistente moment opnamen](#alternative-solution-consistent-snapshots).
 
  De volgende tabel bevat een samen vatting van de oplossingen die beschikbaar zijn voor DR.
 
 | Scenario | Automatische replicatie | Oplossing voor nood herstel |
 | --- | --- | --- |
-| Premium SSD-schijven | Lokaal ([lokaal redundante opslag](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Premium-SSD schijven | Lokaal ([lokaal redundante opslag](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Managed Disks | Lokaal ([lokaal redundante opslag](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Onbeheerde lokaal redundante opslag schijven | Lokaal ([lokaal redundante opslag](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Niet-beheerde geo-redundante opslag schijven | Kruis regio ([geografisch redundante opslag](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Consistente moment opnamen](#alternative-solution-consistent-snapshots) |
-| Niet-beheerde geografisch redundante opslag schijven met lees toegang | Kruis regio ([geografisch redundante opslag met lees toegang](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Consistente moment opnamen](#alternative-solution-consistent-snapshots) |
+| Niet-beheerde geografisch redundante opslag schijven met lees toegang | Kruis regio ([geografisch redundante opslag met lees toegang](../articles/storage/common/storage-redundancy.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Consistente moment opnamen](#alternative-solution-consistent-snapshots) |
 
 Hoge Beschik baarheid is het beste te voldoen aan de hand van beheerde schijven in een beschikbaarheidsset samen met Azure Backup. Als u onbeheerde schijven gebruikt, kunt u nog steeds Azure Backup gebruiken voor DR. Als u Azure Backup niet kunt gebruiken, is het maken van [consistente moment opnamen](#alternative-solution-consistent-snapshots), zoals beschreven in een later gedeelte, een alternatieve oplossing voor back-up en Dr.
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 930ff1abf77c4e28d377daf12174ff3fbb60cf23
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152241"
+ms.locfileid: "77163191"
 ---
 # <a name="import-data-module"></a>Gegevens module importeren
 
@@ -42,7 +42,7 @@ Voordat u Cloud opslag gebruikt, moet u eerst een gegevens opslag registreren in
 
 Nadat u de gewenste gegevens hebt gedefinieerd en verbinding wilt maken met de bron, wordt het gegevens type van elke kolom afgeleid op basis van de waarden die erin worden **[weer gegeven en](./import-data.md)** worden de gegevens in uw ontwerp pijplijn geladen. De uitvoer van **import gegevens** is een gegevensset die kan worden gebruikt met een wille keurige ontwerp pijplijn.
 
-Als de bron gegevens worden gewijzigd, kunt u de gegevensset vernieuwen en nieuwe gegevens toevoegen door [import gegevens](./import-data.md)opnieuw uit te voeren. Als u echter niet wilt dat elke keer dat u de pijp lijn uitvoert, de bron opnieuw moet worden gelezen, stelt u de optie **in cache opgeslagen resultaten gebruiken** in op True. Als deze optie is geselecteerd, controleert de module of de pijp lijn eerder is uitgevoerd met dezelfde bron en dezelfde invoer opties. Als er een vorige run wordt gevonden, worden de gegevens in de cache gebruikt, in plaats van de gegevens uit de bron opnieuw te laden.
+Als de bron gegevens worden gewijzigd, kunt u de gegevensset vernieuwen en nieuwe gegevens toevoegen door [import gegevens](./import-data.md)opnieuw uit te voeren.
 
 ## <a name="how-to-configure-import-data"></a>Import gegevens configureren
 
@@ -60,11 +60,7 @@ Als de bron gegevens worden gewijzigd, kunt u de gegevensset vernieuwen en nieuw
 
     ![import-data-preview](media/module/import-data.png)
 
-1. Selecteer de optie **in cache opgeslagen resultaten gebruiken** als u de gegevensset in de cache wilt opslaan voor hergebruik op opeenvolgende uitvoeringen.
 
-    Ervan uitgaande dat er geen andere wijzigingen zijn aangebracht in de module parameters, laadt de pijp lijn de gegevens alleen de eerste keer dat de module wordt uitgevoerd en wordt vervolgens een versie van de gegevensset in de cache gebruikt.
-
-    Schakel deze optie uit als u de gegevens telkens opnieuw wilt laden wanneer u de pijp lijn uitvoert.
 
 1. Voer de pijplijn uit.
 

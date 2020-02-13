@@ -10,12 +10,12 @@ ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 592be1710893791e80dfe4b20e1323e789b33e69
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945456"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157089"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Maxi maal beschik bare toepassingen ontwerpen met geografisch redundante opslag met lees toegang
 
@@ -23,8 +23,8 @@ Een gemeen schappelijke functie van Cloud infrastructuren als Azure Storage is d
 
 Opslag accounts die zijn geconfigureerd voor geo-redundante replicatie, worden synchroon gerepliceerd in de primaire regio en vervolgens asynchroon gerepliceerd naar een secundaire regio die honderden kilo meters is. Azure Storage biedt twee typen geo-redundante replicatie:
 
-* [Geo-zone-redundante opslag (GZRS) (preview)](storage-redundancy-gzrs.md) biedt replicatie voor scenario's waarvoor zowel een hoge Beschik baarheid als een maximale duurzaamheid zijn vereist. Gegevens worden synchroon gerepliceerd over drie Azure-beschikbaarheids zones in de primaire regio met zone-redundante opslag (ZRS) en worden vervolgens asynchroon gerepliceerd naar de secundaire regio. Voor lees toegang tot gegevens in de secundaire regio schakelt u geo-zone-redundante opslag met lees toegang (RA-GZRS) in.
-* [Geo-redundante opslag (GRS)](storage-redundancy-grs.md) biedt cross-regionalisatie voor de bescherming tegen regionale storingen. Gegevens worden synchroon gerepliceerd in de primaire regio met lokaal redundante opslag (LRS) en vervolgens asynchroon gerepliceerd naar de secundaire regio. Voor lees toegang tot gegevens in de secundaire regio schakelt u geografisch redundante opslag met lees toegang (RA-GRS) in.
+* [Geo-zone-redundante opslag (GZRS) (preview)](storage-redundancy.md) biedt replicatie voor scenario's waarvoor zowel een hoge Beschik baarheid als een maximale duurzaamheid zijn vereist. Gegevens worden synchroon gerepliceerd over drie Azure-beschikbaarheids zones in de primaire regio met zone-redundante opslag (ZRS) en worden vervolgens asynchroon gerepliceerd naar de secundaire regio. Voor lees toegang tot gegevens in de secundaire regio schakelt u geo-zone-redundante opslag met lees toegang (RA-GZRS) in.
+* [Geo-redundante opslag (GRS)](storage-redundancy.md) biedt cross-regionalisatie voor de bescherming tegen regionale storingen. Gegevens worden synchroon gerepliceerd in de primaire regio met lokaal redundante opslag (LRS) en vervolgens asynchroon gerepliceerd naar de secundaire regio. Voor lees toegang tot gegevens in de secundaire regio schakelt u geografisch redundante opslag met lees toegang (RA-GRS) in.
 
 In dit artikel wordt uitgelegd hoe u uw toepassing kunt ontwerpen voor het afhandelen van een storing in de primaire regio. Als de primaire regio niet beschikbaar is, kan uw toepassing worden aangepast om Lees bewerkingen uit te voeren op de secundaire regio. Zorg ervoor dat uw opslag account is geconfigureerd voor RA-GRS of RA-GZRS voordat u aan de slag gaat.
 
@@ -200,12 +200,12 @@ Geografisch redundante opslag werkt door trans acties te repliceren van de prima
 
 In de volgende tabel ziet u een voor beeld van wat er kan gebeuren wanneer u de details van een werk nemer bijwerkt om ze lid te maken van de rol *Administrators* . Voor dit voor beeld moet u de entiteit **werk nemer** bijwerken en een entiteit **rol beheerder** bijwerken met een telling van het totale aantal beheerders. U ziet hoe de updates in de secundaire regio in de juiste volg orde worden toegepast.
 
-| **Tijd** | **Trans actie**                                            | **Replicatie**                       | **Tijdstip van de laatste synchronisatie** | **Resultaat** |
+| **Tegelijk** | **Trans actie**                                            | **Replicatie**                       | **Tijdstip van de laatste synchronisatie** | **Daardoor** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Trans actie A: <br> Werk nemer invoegen <br> entiteit in primaire |                                   |                    | Trans actie A ingevoegd op primaire,<br> nog niet gerepliceerd. |
 | T1       |                                                            | Trans actie A <br> gerepliceerd naar<br> primaire | T1 | Trans actie A gerepliceerd naar secundair. <br>Laatste synchronisatie tijd bijgewerkt.    |
-| T2       | Trans actie B:<br>Update<br> entiteit werk nemer<br> in primaire  |                                | T1                 | Trans actie B, geschreven naar primair,<br> nog niet gerepliceerd.  |
-| T3       | Trans actie C:<br> Update <br>beheerder<br>rol-entiteit in<br>basis |                    | T1                 | Trans actie C geschreven naar primair,<br> nog niet gerepliceerd.  |
+| T2       | Trans actie B:<br>Bijwerken<br> entiteit werk nemer<br> in primaire  |                                | T1                 | Trans actie B, geschreven naar primair,<br> nog niet gerepliceerd.  |
+| T3       | Trans actie C:<br> Bijwerken <br>beheerder<br>rol-entiteit in<br>basis |                    | T1                 | Trans actie C geschreven naar primair,<br> nog niet gerepliceerd.  |
 | *T4*     |                                                       | Trans actie C <br>gerepliceerd naar<br> primaire | T1         | Trans actie C gerepliceerd naar secundair.<br>LastSyncTime is niet bijgewerkt omdat <br>trans actie B is nog niet gerepliceerd.|
 | *T5*     | Entiteiten lezen <br>van secundaire                           |                                  | T1                 | U krijgt de verouderde waarde voor werk nemer <br> entiteit omdat trans actie B niet <br> gerepliceerd. U krijgt de nieuwe waarde voor<br> entiteit van beheerdersrol omdat C<br> bijgewerkt. Laatste synchronisatie tijd nog niet<br> bijgewerkt omdat trans actie B<br> is niet gerepliceerd. U kunt de<br>entiteit van beheerdersrol is inconsistent <br>omdat de datum/tijd van de entiteit na <br>de laatste synchronisatie tijd. |
 | *T6*     |                                                      | Trans actie B<br> gerepliceerd naar<br> primaire | T6                 | *T6* : alle trans acties via C hebben <br>gerepliceerd, laatste synchronisatie tijd<br> is bijgewerkt. |
@@ -214,38 +214,7 @@ In dit voor beeld wordt ervan uitgegaan dat de client overschakelt van de secund
 
 Om te herkennen dat het mogelijk inconsistente gegevens bevat, kan de client de waarde van de *laatste synchronisatie tijd* gebruiken die u op elk gewenst moment kunt bereiken door een opslag service te doorzoeken. Dit geeft u het tijdstip waarop de gegevens in de secundaire regio voor het laatst consistent zijn en toen de service alle trans acties vóór dat moment heeft toegepast. In het bovenstaande voor beeld, nadat de **werknemers** entiteit in de secundaire regio is ingevoegd, wordt de laatste synchronisatie tijd ingesteld op *T1*. Deze blijft op *T1* totdat de service de werknemers entiteit in de secundaire regio **bijwerkt** wanneer deze is ingesteld op *T6*. Als de client de laatste synchronisatie tijd ophaalt bij het lezen van de entiteit op *T5*, kan deze worden vergeleken met de tijds tempel van de entiteit. Als de tijds tempel van de entiteit later is dan de laatste synchronisatie tijd, heeft de entiteit een mogelijk inconsistente status en kunt u de juiste actie ondernemen voor uw toepassing. Als u dit veld wilt gebruiken, moet u weten wanneer de laatste update voor de primaire is voltooid.
 
-## <a name="getting-the-last-sync-time"></a>De laatste synchronisatie tijd ophalen
-
-U kunt Power shell of Azure CLI gebruiken om de laatste synchronisatie tijd op te halen om te bepalen wanneer de gegevens voor het laatst zijn geschreven naar de secundaire.
-
-### <a name="powershell"></a>PowerShell
-
-Als u de laatste synchronisatie tijd voor het opslag account wilt ophalen met behulp van Power shell, installeert u een Azure Storage preview-module die ondersteuning biedt voor het ophalen van geo-replicatie statistieken. Bijvoorbeeld:
-
-```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
-```
-
-Controleer vervolgens de eigenschap **GeoReplicationStats. LastSyncTime** van het opslag account. Vergeet niet om de waarden van de tijdelijke aanduidingen te vervangen door uw eigen waarden:
-
-```powershell
-$lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
-    -Name <storage-account> `
-    -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
-```
-
-### <a name="azure-cli"></a>Azure-CLI
-
-Als u de laatste synchronisatie tijd voor het opslag account wilt ophalen met behulp van Azure CLI, controleert u de eigenschap **geoReplicationStats. lastSyncTime** van het opslag account. Gebruik de para meter `--expand` om waarden te retour neren voor de eigenschappen die onder **geoReplicationStats**zijn genest. Vergeet niet om de waarden van de tijdelijke aanduidingen te vervangen door uw eigen waarden:
-
-```azurecli
-$lastSyncTime=$(az storage account show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --expand geoReplicationStats \
-    --query geoReplicationStats.lastSyncTime \
-    --output tsv)
-```
+Zie voor meer informatie over het controleren van de laatste synchronisatie tijd [de eigenschap laatste synchronisatie tijd voor een opslag account](last-sync-time-get.md).
 
 ## <a name="testing"></a>Testen
 

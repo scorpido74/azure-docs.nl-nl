@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96e729bee0ac9beac447893ed8dbf1bba633e412
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e933c82229415a71182096a6aca9a2e535934d89
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274183"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159043"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Probleem met het configureren van een eenmalige aanmelding met een wacht woord voor een toepassing in de Azure AD-galerie
 
@@ -31,7 +31,7 @@ Dit probleem treedt doorgaans op als de leverancier van de toepassing onlangs ee
 
 Micro soft heeft technologieën om automatisch te detecteren wanneer integraties zijn verbroken. het is mogelijk dat u de problemen niet meteen kunt vinden of dat de problemen enige tijd duren om op te lossen. Als een van deze integraties niet correct werkt, opent u een ondersteunings aanvraag zodat deze zo snel mogelijk kan worden opgelost.
 
-**Als u contact opneemt met de leverancier van deze toepassing, kunt u** ze onze manier sturen zodat micro soft ermee kan samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../develop/howto-app-gallery-listing.md) om ze te starten.
+**Als u contact opneemt met de leverancier van deze toepassing, kunt u** ze onze manier sturen zodat micro soft ermee kan samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../azuread-dev/howto-app-gallery-listing.md) om ze te starten.
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Referenties worden ingevuld en verzonden, maar de pagina geeft aan dat de referenties onjuist zijn
 
@@ -59,7 +59,7 @@ Als de vorige suggesties niet werken, is het mogelijk dat er een wijziging is op
 
 Micro soft heeft technologieën om automatisch te detecteren wanneer een toepassings integratie is verbroken. het is mogelijk dat u de problemen niet meteen kunt vinden of dat de problemen enige tijd in beslag nemen. Wanneer een integratie niet correct werkt, kunt u een ondersteunings aanvraag openen om deze zo snel mogelijk vast te krijgen. 
 
-Daarnaast kunt **u, als u in contact komt met de leverancier van deze toepassing,** **hen onze manier sturen** zodat we met hen kunnen samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../develop/howto-app-gallery-listing.md) om ze te starten.
+Daarnaast kunt **u, als u in contact komt met de leverancier van deze toepassing,** **hen onze manier sturen** zodat we met hen kunnen samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../azuread-dev/howto-app-gallery-listing.md) om ze te starten.
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>De uitbrei ding werkt in Chrome en Firefox, maar niet in Internet Explorer
 
@@ -73,7 +73,7 @@ Er zijn twee hoofd oorzaken voor dit probleem:
 
   * Helaas kan deze situatie variëren, afhankelijk van de browser versie, de computer snelheid of de bezochte site. In dit geval raden we u aan om contact op te nemen met de ondersteuning, zodat we de integratie voor deze specifieke toepassing kunnen oplossen.
 
-Daarnaast kunt **u, als u in contact komt met de leverancier van deze toepassing,** **hen onze manier sturen** zodat we met hen kunnen samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../develop/howto-app-gallery-listing.md) om ze te starten.
+Daarnaast kunt **u, als u in contact komt met de leverancier van deze toepassing,** **hen onze manier sturen** zodat we met hen kunnen samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../azuread-dev/howto-app-gallery-listing.md) om ze te starten.
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Controleren of de aanmeldings pagina van de toepassing onlangs is gewijzigd of een extra veld vereist
 
@@ -81,7 +81,7 @@ Als de aanmeldings pagina van de toepassing drastisch is gewijzigd, is het mogel
 
 Micro soft heeft technologieën om automatisch te detecteren wanneer een toepassings integratie is verbroken. het is mogelijk dat u de problemen niet meteen kunt vinden of dat de problemen enige tijd in beslag nemen. Wanneer een integratie niet correct werkt, kunt u een ondersteunings aanvraag openen om deze zo snel mogelijk vast te krijgen. 
 
-Daarnaast kunt **u, als u in contact komt met de leverancier van deze toepassing,** **hen onze manier sturen** zodat we met hen kunnen samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../develop/howto-app-gallery-listing.md) om ze te starten.
+Daarnaast kunt **u, als u in contact komt met de leverancier van deze toepassing,** **hen onze manier sturen** zodat we met hen kunnen samen werken om hun toepassing systeem eigen te integreren met Azure Active Directory. U kunt de leverancier verzenden naar de [vermelding uw toepassing in de galerie met Azure Active Directory toepassingen](../azuread-dev/howto-app-gallery-listing.md) om ze te starten.
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>De browser uitbreiding van het toegangs venster installeren
 

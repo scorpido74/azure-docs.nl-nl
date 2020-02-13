@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 174cdc31d7e5f29716febc7f68bbb410f33926c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274634"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159162"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Azure Active Directory aanmeldings gedrag configureren voor een toepassing met behulp van een beleid voor het detecteren van een thuis domein
 
@@ -271,4 +271,4 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ## <a name="next-steps"></a>Volgende stappen
 - Zie [verificatie scenario's voor Azure AD](../develop/authentication-scenarios.md)voor meer informatie over hoe verificatie werkt in azure AD.
 - Zie voor meer informatie over eenmalige aanmelding [voor gebruikers eenmalige aanmelding bij toepassingen in azure Active Directory](what-is-single-sign-on.md).
-- Bezoek de [Active Directory hand leiding voor ontwikkel aars](../develop/v1-overview.md) voor een overzicht van alle inhoud die betrekking heeft op ontwikkel aars.
+- Ga naar het [micro soft-identiteits platform](../develop/v2-overview.md) voor een overzicht van alle inhoud die betrekking heeft op ontwikkel aars.

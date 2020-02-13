@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: c5b8c506398af27ced284405dd75e48fb19a17af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698846"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161219"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integreren met Azure Active Directory
 
@@ -32,7 +32,7 @@ Er zijn verschillende manieren waarop uw toepassing kan worden geïntegreerd met
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Ondersteuning voor Azure AD als een manier om u aan te melden bij uw toepassing
 
-**Verminder de wrijving van het probleem en verminder de ondersteunings kosten.** Als u Azure AD gebruikt om u aan te melden bij uw toepassing, hebben uw gebruikers niet langer een naam en wacht woord om te onthouden. Als ontwikkelaar hebt u nog een minder wacht woord om op te slaan en te beveiligen. Het is niet mogelijk om verg eten wacht woorden opnieuw in te voeren. Dit kan alleen aanzienlijk zijn. Met Azure AD-bevoegdheden meldt u zich aan voor een aantal van de populairste Cloud toepassingen van de wereld, waaronder Office 365 en Microsoft Azure. Met honderden miljoenen gebruikers van miljoenen organisaties is uw gebruiker al aangemeld bij Azure AD. Meer informatie over het [toevoegen van ondersteuning voor Azure AD-aanmelding](v1-authentication-scenarios.md).
+**Verminder de wrijving van het probleem en verminder de ondersteunings kosten.** Als u Azure AD gebruikt om u aan te melden bij uw toepassing, hebben uw gebruikers niet langer een naam en wacht woord om te onthouden. Als ontwikkelaar hebt u nog een minder wacht woord om op te slaan en te beveiligen. Het is niet mogelijk om verg eten wacht woorden opnieuw in te voeren. Dit kan alleen aanzienlijk zijn. Met Azure AD-bevoegdheden meldt u zich aan voor een aantal van de populairste Cloud toepassingen van de wereld, waaronder Office 365 en Microsoft Azure. Met honderden miljoenen gebruikers van miljoenen organisaties is uw gebruiker al aangemeld bij Azure AD. Meer informatie over het [toevoegen van ondersteuning voor Azure AD-aanmelding](authentication-scenarios.md).
 
 **Vereenvoudig de registratie voor uw toepassing.**  Wanneer u zich aanmeldt voor uw toepassing, kan Azure AD essentiële informatie over een gebruiker verzenden, zodat u uw aanmeldings formulier vooraf kunt invullen of het volledig moet elimineren. Gebruikers kunnen zich aanmelden voor uw toepassing met behulp van hun Azure AD-account via een vertrouwde instemming-ervaring die vergelijkbaar is met die van sociale media en mobiele toepassingen. Elke gebruiker kan zich registreren en aanmelden bij een toepassing die is geïntegreerd met Azure AD zonder dat hiervoor een rol is vereist. Meer informatie over [het aanmelden van uw toepassing voor aanmelding bij een Azure ad-account](../../app-service/configure-authentication-provider-aad.md).
 
@@ -70,7 +70,7 @@ De integratie met Azure AD is gebaseerd op voor delen waarvoor u geen extra code
 
 **Azure AD breidt Active Directory uit naar de Cloud, zodat uw toepassing kan worden geïntegreerd met AD.**  Veel organisaties over de hele wereld gebruiken Active Directory als hun belangrijkste aanmeld-en identiteits beheersysteem en vereisen dat hun toepassingen werken met AD. Integreren met Azure AD integreert uw app met Active Directory.
 
-### <a name="advanced-security-features"></a>Geavanceerde beveiligingsfuncties
+### <a name="advanced-security-features"></a>Geavanceerde beveiligings functies
 
 **Multi-factor Authentication.**  Azure AD biedt systeem eigen multi-factor Authentication. IT-beheerders kunnen multi-factor Authentication vereisen voor toegang tot uw toepassing, zodat u deze ondersteuning niet zelf hoeft te coderen. Meer informatie over [multi-factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
 
@@ -92,5 +92,5 @@ De integratie met Azure AD is gebaseerd op voor delen waarvoor u geen extra code
 
 [Aan de slag](v2-overview.md#getting-started)met het schrijven van code.
 
-[Gebruikers aanmelden met het micro soft Identity-platform](v1-authentication-scenarios.md)
+[Gebruikers aanmelden met het micro soft Identity-platform](authentication-scenarios.md)
 

@@ -1,7 +1,7 @@
 ---
 title: 'Quick Start: spraak samen te brengen in audio C# bestand, (.net)-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: TBD
+description: NOG TE BEPALEN
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 72086f1df2b497a722b2752b56a32e6c269fe32d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 17e5f35e83f5cb6e8115a9d344f93abf84e5b38a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768155"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156285"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -65,6 +65,9 @@ namespace helloworld
 Voordat u een `SpeechSynthesizer`-object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van de abonnements sleutel en de regio van het abonnement. Voeg deze code in de methode `SynthesisToAudioFileAsync()` toe.
 
 ````C#
+// Replace with your own subscription key and service region (e.g., "westus", use the one of SpeechSDKParameters
+// from here: https://aka.ms/speech/sdkregion).
+// The default language is "en-us".
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ````
 

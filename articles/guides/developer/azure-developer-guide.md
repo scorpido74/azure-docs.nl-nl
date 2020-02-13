@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 67fe048c5afb07c65dcddc797e3a1d8461b1893f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: fa8013722376a4864ba955783dbde1f73c0d9e8a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965957"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163106"
 ---
-# <a name="get-started-guide-for-azure-developers"></a>Aan de slag-handleiding voor Azure-ontwikkelaars
+# <a name="get-started-guide-for-azure-developers"></a>Aan de slag met de hand leiding voor Azure-ontwikkel aars
 
 ## <a name="what-is-azure"></a>Wat is Azure?
 
@@ -92,11 +92,11 @@ In plaats van dat u zich zorgen hoeft te maken over het bouwen en beheren van ee
 
 Azure Service Fabric is een platform voor gedistribueerde systemen. Met dit platform kunnen schaal bare en betrouw bare micro services eenvoudig worden gebouwd, verpakt, geïmplementeerd en beheerd. Het biedt ook uitgebreide mogelijkheden voor toepassings beheer, zoals:
 
-* Inrichting
+* Inrichten
 * Implementeren
-* Controleren
+* Bewaking
 * Bijwerken/patchen
-* Deleting
+* Verwijder
 
 Apps, die worden uitgevoerd op een gedeelde groep machines, kunnen klein worden gestart en zo nodig worden geschaald naar honderden of duizenden machines.
 
@@ -163,7 +163,7 @@ Azure biedt verschillende manieren om containers in uw toepassingen te gebruiken
   >
   > **Aan de slag**: [gebruik een aangepaste docker-installatie kopie voor app service op Linux](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Het is essentieel dat u niet alleen weet wie uw toepassingen gebruikt, maar ook om onbevoegde toegang tot uw resources te voor komen. Azure biedt verschillende manieren om uw app-clients te verifiëren.
 
@@ -171,7 +171,7 @@ Het is essentieel dat u niet alleen weet wie uw toepassingen gebruikt, maar ook 
 
   > **Wanneer**u wilt gebruiken: als u een SSO-ervaring wilt bieden, kunt u werken met gegevens op basis van een grafiek of gebruikers op basis van een domein verifiëren.
   >
-  > **Aan de slag**: raadpleeg de [Azure Active Directory hand leiding voor ontwikkel aars](../../active-directory/develop/v1-overview.md)voor meer informatie.
+  > **Aan de slag**: raadpleeg de [Azure Active Directory hand leiding voor ontwikkel aars](../../active-directory/develop/v2-overview.md)voor meer informatie.
 
 - **App service-verificatie**: wanneer u kiest voor app service om uw app te hosten, krijgt u ook ingebouwde verificatie ondersteuning voor Azure AD, samen met sociale id-providers, zoals Facebook, Google, micro soft en Twitter.
 
@@ -181,7 +181,7 @@ Het is essentieel dat u niet alleen weet wie uw toepassingen gebruikt, maar ook 
 
 Zie [Aanbevolen procedures en patronen voor Azure-beveiliging](../../security/fundamentals/best-practices-and-patterns.md)voor meer informatie over aanbevolen beveiligings procedures in Azure.
 
-### <a name="monitoring"></a>Controleren
+### <a name="monitoring"></a>Bewaking
 
 Als uw toepassing in azure actief is, moet u de prestaties bewaken, kijken of er problemen zijn en zien hoe klanten uw app gebruiken. Azure biedt verschillende controle opties.
 
@@ -193,7 +193,7 @@ Als uw toepassing in azure actief is, moet u de prestaties bewaken, kijken of er
 
     >**Aan**de slag: aan de slag [met Azure monitor](../../monitoring-and-diagnostics/monitoring-get-started.md).
 
-### <a name="devops-integration"></a>Integratie met DevOps
+### <a name="devops-integration"></a>DevOps-integratie
 
 Of het nu gaat om Vm's inrichten of het publiceren van uw web-apps met continue integratie, Azure integreert met de meeste populaire DevOps-hulpprogram ma's. U kunt werken met de hulpprogram ma's die u al hebt en uw bestaande ervaring maximaliseren met ondersteuning voor hulpprogram ma's zoals:
 
@@ -238,15 +238,15 @@ Azure biedt twee manieren om uw toepassingen en services te beheren vanaf de opd
 
 -   [Azure PowerShell](../../powershell-install-configure.md): voorziet in een set modules met cmdlets waarmee u Azure-resources kunt beheren met behulp van Windows Power shell.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
-De [Azure Portal](https://portal.azure.com) is een webtoepassing. U kunt de Azure Portal gebruiken om Azure-resources en-services te maken, te beheren en te verwijderen. De Store bestaat uit de volgende afzonderlijke Stores:
+De [Azure Portal](https://portal.azure.com) is een webtoepassing. U kunt de Azure Portal gebruiken om Azure-resources en-services te maken, te beheren en te verwijderen. Het bevat:
 
 * Een configureerbaar dash board
 * Azure resource management-hulpprogram ma's
 * Toegang tot abonnements instellingen en facturerings gegevens. Zie [Azure Portal-overzicht](../../azure-portal-overview.md)voor meer informatie.
 
-### <a name="rest-apis"></a>REST API's
+### <a name="rest-apis"></a>REST API’s
 
 Azure is gebouwd op een set REST-Api's die ondersteuning bieden voor de Azure Portal-gebruikers interface. De meeste van deze REST Api's worden ook ondersteund om uw Azure-resources en-toepassingen programmatisch in te richten en te beheren vanaf elk apparaat met een Internet verbinding. Zie de [Naslag informatie voor Azure rest SDK](https://docs.microsoft.com/rest/api/)voor de volledige set rest API documentatie.
 
@@ -298,7 +298,7 @@ Wanneer u nieuwe Azure-Services inricht, doet u dat in een bepaald abonnement. A
 
 De Azure Resource Explorer is een uitstekend hulp programma voor het visualiseren van de resources die u al hebt gemaakt in uw abonnement. Zie [Azure resource Explorer gebruiken om resources te bekijken en te wijzigen](../../resource-manager-resource-explorer.md)voor meer informatie.
 
-#### <a name="grant-access-to-resources"></a>Toegang tot resources verlenen
+#### <a name="grant-access-to-resources"></a>Toegang verlenen tot resources
 
 Wanneer u toegang verleent tot Azure-resources, is het altijd een best practice om gebruikers de minste bevoegdheid te geven die nodig is om een bepaalde taak uit te voeren.
 
@@ -324,7 +324,7 @@ Met Azure Resource Manager kunt u aangepaste labels toewijzen aan afzonderlijke 
 
 U kunt meerdere labels toewijzen aan elke resource. Zie [Tags gebruiken om uw Azure-resources te organiseren](../../resource-group-using-tags.md)voor meer informatie.
 
-### <a name="billing"></a>Billing
+### <a name="billing"></a>Facturering
 
 In de overstap van on-premises computing naar in de Cloud gehoste services zijn het bijhouden en ramen van service gebruik en gerelateerde kosten aanzienlijk van belang. Het is belang rijk om te schatten welke nieuwe resources maandelijks moeten worden uitgevoerd. U kunt ook projecteren hoe de facturering zoekt naar een bepaalde maand op basis van de huidige uitgaven.
 

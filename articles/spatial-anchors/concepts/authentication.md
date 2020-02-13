@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 3de84e2d814acfca67bc722243a90fa41f6536e1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152598"
+ms.locfileid: "77161678"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Verificatie en autorisatie voor Azure spatiale ankers
 
@@ -92,7 +92,7 @@ Als dat is gebeurd, wordt de uitwisseling van de account sleutel voor een toegan
 
 ## <a name="azure-ad-user-authentication"></a>Gebruikers verificatie van Azure AD
 
-Voor toepassingen die zijn gericht Azure Active Directory gebruikers, is de aanbevolen benadering een Azure AD-token voor de gebruiker te gebruiken, dat u kunt verkrijgen met behulp van de ADAL-bibliotheek, zoals beschreven in de volgende documentatie: [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md); u moet de stappen volgen die worden vermeld onder Quick starts, zoals:
+Voor toepassingen die zijn gericht Azure Active Directory gebruikers, is de aanbevolen benadering een Azure AD-token voor de gebruiker te gebruiken, dat u kunt verkrijgen met behulp van de [MSAL-bibliotheek](../../active-directory/develop/msal-overview.md). Voer de stappen uit die worden vermeld in de [Snelstartgids een app registreren](../../active-directory/develop/quickstart-register-app.md), waaronder:
 
 1. Configuratie in Azure Portal
     1.  Registreer uw toepassing in azure AD als **systeem eigen toepassing**. Als onderdeel van de registratie moet u bepalen of uw toepassing multi tenant moet zijn of niet, en de omleidings-Url's opgeven die voor uw toepassing zijn toegestaan.
@@ -118,7 +118,7 @@ Voor toepassingen die zijn gericht Azure Active Directory gebruikers, is de aanb
         3.  Als uw toepassing **alle Microsoft-account gebruikers**ondersteunt, vervangt u deze waarde door **common**
     3.  Stel op de token aanvraag de **resource** in op "https://sts.mixedreality.azure.com". Deze ' resource ' geeft aan Azure AD door dat uw toepassing een token aanvraagt voor de Azure spatiale ankers-service.
 
-Met dat moet uw toepassing ADAL een Azure AD-token kunnen verkrijgen. u kunt dat Azure AD-token instellen als de **authenticationToken** in uw Cloud sessie configuratie object.
+Met dat moet uw toepassing MSAL een Azure AD-token kunnen verkrijgen. u kunt dat Azure AD-token instellen als de **authenticationToken** in uw Cloud sessie configuratie object.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -168,7 +168,7 @@ De aanbevolen optie voor het implementeren van apps met behulp van Azure spatial
 
 Hierbij wordt ervan uitgegaan dat uw app een eigen mechanisme gebruikt (bijvoorbeeld: Microsoft-account, PlayFab, Facebook, Google ID, aangepaste gebruikers naam/wacht woord, enzovoort) om te verifiëren bij de back-upservice. Zodra uw gebruikers zijn geverifieerd voor uw back-end-service, kan die service een Azure AD-Token ophalen, dit uitwisselen voor een toegangs token voor Azure spatiale ankers en het weer terugsturen naar uw client toepassing.
 
-Het Azure AD-toegangs token wordt opgehaald met behulp van de ADAL-bibliotheek, zoals beschreven in de volgende documentatie: [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md); u moet de stappen volgen die worden vermeld onder Quick starts, zoals:
+Het Azure AD-toegangs token wordt opgehaald met behulp van de [MSAL-bibliotheek](../../active-directory/develop/msal-overview.md). Voer de stappen uit die worden vermeld in de [Snelstartgids een app registreren](../../active-directory/develop/quickstart-register-app.md), waaronder:
 
 1.  Configuratie in Azure Portal:
     1.  Registreer uw toepassing in azure AD:

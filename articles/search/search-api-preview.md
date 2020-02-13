@@ -7,22 +7,22 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.openlocfilehash: fd21a4b821e1911e94d542a0922e5269786c365d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/11/2020
+ms.openlocfilehash: db941152186127302680b5e659e43cd2d82a8908
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991062"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162273"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Preview-functies in azure Cognitive Search
 
 Dit artikel bevat een lijst met functies die momenteel als preview-versie beschikbaar zijn. Functies die overschakelen van preview naar algemene Beschik baarheid, worden verwijderd uit deze lijst. U kunt [service-updates](https://azure.microsoft.com/updates/?product=search) controleren of [Wat is er nieuw](whats-new.md) voor aankondigingen over algemene Beschik baarheid.
 
-Hoewel sommige preview-functies beschikbaar zijn in de portal en .NET SDK, bevat de REST API altijd preview-functies. 
+Hoewel sommige preview-functies beschikbaar zijn in de portal en .NET SDK, bevat de REST API altijd preview-functies.
 
-+ Voor zoek bewerkingen is de huidige preview API-versie [`2019-05-06-Preview`](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview)
-+ Voor beheer bewerkingen is de huidige preview-versie [`2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview)
++ [ **`2019-05-06-Preview`** ](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview) is de huidige preview-versie voor zoek bewerkingen.
++ Voor beheer bewerkingen is [ **`2019-10-01-Preview`** ](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) de huidige preview-versie.
 
 > [!IMPORTANT]
 > De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
@@ -31,27 +31,29 @@ Hoewel sommige preview-functies beschikbaar zijn in de portal en .NET SDK, bevat
 
 Bekijk de nieuwste verbeteringen voor AI-verrijking met de [Preview-API voor zoeken](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview).
 
-+ [Aangepaste kwalificatie voor het opzoeken van entiteiten (preview)](cognitive-search-skill-custom-entity-lookup.md ) is een cognitieve vaardigheid die zoekt naar tekst uit een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen. Met deze lijst worden alle documenten met alle overeenkomende entiteiten labeld. De vaardigheid ondersteunt ook een mate van fuzzy matching die kan worden toegepast om overeenkomsten te vinden die vergelijkbaar zijn, maar niet helemaal precies. 
-
-+ [PII-detectie vaardigheid (preview)](cognitive-search-skill-pii-detection.md) is een cognitieve vaardigheid die wordt gebruikt tijdens de indexering die persoonlijke gegevens ophaalt uit een invoer tekst en die u de mogelijkheid biedt om de tekst op verschillende manieren te maskeren.
-
-+ [Incrementele verrijking (preview)](cognitive-search-incremental-indexing-conceptual.md) voegt caching toe aan een verrijkings pijplijn, zodat u de bestaande uitvoer opnieuw kunt gebruiken als een gerichte wijziging, zoals een update van een vakkennisset of een ander object, de inhoud niet wijzigt. Caching is alleen van toepassing op verrijkte documenten die worden geproduceerd door een vaardig heden.
-
-+ [Knowledge Store (preview)](knowledge-store-concept-intro.md) is een nieuwe bestemming voor een op AI gebaseerde verrijkings pijplijn. De fysieke gegevens structuur bevindt zich in Azure Blob Storage en Azure Table Storage, en wordt gemaakt en ingevuld wanneer u een Indexeer functie uitvoert met een bijgevoegde cognitieve vaardigheids. De definitie van een kennis archief zelf is opgegeven in een definitie van een vakkennisset. In de definitie van het kennis archief beheert u de fysieke structuur van uw gegevens door middel van *projectie* -elementen die bepalen hoe gegevens worden gevormd, of gegevens worden opgeslagen in tabel opslag of Blob-opslag en of er meerdere weer gaven zijn.
+|||
+|-|-|
+| [Zoek vaardigheid aangepaste entiteit (preview-versie)](cognitive-search-skill-custom-entity-lookup.md ) | Een cognitieve vaardigheid die zoekt naar tekst van een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen. Met deze lijst worden alle documenten met alle overeenkomende entiteiten labeld. De vaardigheid ondersteunt ook een mate van fuzzy matching die kan worden toegepast om overeenkomsten te vinden die vergelijkbaar zijn, maar niet helemaal precies. | 
+| [PII-detectie vaardigheid (preview-versie)](cognitive-search-skill-pii-detection.md) | Een cognitieve vaardigheid die wordt gebruikt tijdens de indexering die persoons gegevens ophaalt uit een invoer tekst en u de mogelijkheid biedt om deze op verschillende manieren te maskeren in de tekst.| 
+| [Incrementele verrijking (preview-versie)](cognitive-search-incremental-indexing-conceptual.md) | Voegt caching toe aan een verrijkings pijplijn, zodat u de bestaande uitvoer opnieuw kunt gebruiken als een gerichte wijziging, zoals een update van een vakkennisset of een ander object, de inhoud niet wijzigt. Caching is alleen van toepassing op verrijkte documenten die worden geproduceerd door een vaardig heden.| 
+| [Kennis archief (preview-versie)](knowledge-store-concept-intro.md) | Een nieuwe bestemming van een op AI gebaseerde verrijkings pijplijn. De fysieke gegevens structuur bevindt zich in Azure Blob Storage en Azure Table Storage, en wordt gemaakt en ingevuld wanneer u een Indexeer functie uitvoert met een bijgevoegde cognitieve vaardigheids. De definitie van een kennis archief zelf is opgegeven in een definitie van een vakkennisset. In de definitie van het kennis archief beheert u de fysieke structuur van uw gegevens door middel van *projectie* -elementen die bepalen hoe gegevens worden gevormd, of gegevens worden opgeslagen in tabel opslag of Blob-opslag en of er meerdere weer gaven zijn.| 
 
 ## <a name="indexing-and-query-features"></a>Indexerings-en query functies
 
 Preview-functies voor Indexeer functie zijn beschikbaar in de preview-API voor zoeken. 
 
-+ [Cosmos DB Indexeer functie](search-howto-index-cosmosdb.md) ondersteunt MongoDb API (preview), GREMLIN-API (preview) en Cassandra-API (preview).
-
-+ [Azure data Lake Storage Gen2 Indexeer functie (preview)](search-howto-index-azure-data-lake-storage.md) kan inhoud en meta gegevens indexeren vanuit data Lake Storage Gen2.
-
-+ [moreLikeThis query para meter (preview)](search-more-like-this.md) vindt u documenten die relevant zijn voor een specifiek document. Deze functie heeft eerdere voor beelden. 
+|||
+|-|-|
+| [Indexeer functie Cosmos DB](search-howto-index-cosmosdb.md) | Ondersteuning voor de MongoDB-API (preview), de Gremlin-API (preview) en de API-typen Cassandra-API (preview). | 
+|  [Azure Data Lake Storage Gen2 Indexeer functie (preview-versie)](search-howto-index-azure-data-lake-storage.md) | Inhoud en meta gegevens indexeren van Data Lake Storage Gen2.| 
+| [moreLikeThis-query parameter (preview-versie)](search-more-like-this.md) | Zoekt documenten die relevant zijn voor een specifiek document. Deze functie heeft eerdere voor beelden. | 
 
 ## <a name="management-features"></a>Beheer functies
 
-+ [Ondersteuning voor privé-eind punten](service-create-private-endpoint.md) via [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) van de beheer rest API. U kunt een service maken met beperkingen voor het openen van het eind punt.
+|||
+|-|-|
+| [Ondersteuning voor privé-eind punten](service-create-private-endpoint.md) | U kunt een virtueel netwerk maken met een beveiligde client (zoals een virtuele machine) en vervolgens een zoek service maken die gebruikmaakt van een persoonlijk eind punt. |
+| Beperking van IP-toegang | Met [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) van het beheer rest API kunt u een service maken met beperkingen voor de toegang tot IP-adressen. |
 
 ## <a name="earlier-preview-features"></a>Eerdere preview-functies
 

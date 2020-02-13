@@ -7,14 +7,14 @@ manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 682ee86c373c715080ef1baf82b473242a2e43db
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8845d0f9277384c1cc32b31b5ea5151cd0668c79
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782045"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158975"
 ---
 # <a name="preview-deploy-spot-vms-using-the-azure-portal"></a>Voor beeld: plaats virtuele machines met behulp van de Azure Portal
 
@@ -28,7 +28,7 @@ U hebt de mogelijkheid om een maximum prijs voor de virtuele machine in te stell
 > Spot instanties zijn momenteel beschikbaar als open bare preview.
 > Deze preview-versie wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 >
-> Voor het vroege deel van de open bare preview hebben spot instanties een vaste prijs, zodat er geen op prijzen gebaseerde verwijderingen zijn.
+
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
 

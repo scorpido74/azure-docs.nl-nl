@@ -17,16 +17,14 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4d06e5a2bfe05a530fe369f70880ea04f0bc3dd3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b45ba0c0b417be9cf308fedbb7fad2f6ad5fceaf
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700512"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159728"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Micro soft Identity platform en de OAuth 2,0-autorisatie voor het weigeren van apparaten
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Het micro soft-identiteits platform ondersteunt de [machtiging verlenen voor apparaten](https://tools.ietf.org/html/rfc8628), waarmee gebruikers zich kunnen aanmelden bij apparaten met invoer beperkingen, zoals een Smart TV, IOT-apparaat of printer.  Om deze stroom in te scha kelen, heeft de gebruiker van het apparaat een webpagina in de browser op een ander apparaat om u aan te melden.  Zodra de gebruiker zich aanmeldt, kan het apparaat toegangs tokens verkrijgen en tokens vernieuwen als dat nodig is.  
 
@@ -62,8 +60,8 @@ scope=user.read%20openid%20profile
 
 | Parameter | Voorwaarde | Beschrijving |
 | --- | --- | --- |
-| `tenant` | Verplicht | Kan/veelvoorkomende,/consumers of/organizations. zijn  Het kan ook de Directory Tenant zijn waarvoor u een machtiging wilt aanvragen in de indeling GUID of beschrijvende naam.  |
-| `client_id` | Verplicht | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
+| `tenant` | Vereist | Kan/veelvoorkomende,/consumers of/organizations. zijn  Het kan ook de Directory Tenant zijn waarvoor u een machtiging wilt aanvragen in de indeling GUID of beschrijvende naam.  |
+| `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
 | `scope` | Aanbevolen | Een lijst met door spaties gescheiden [bereiken](v2-permissions-and-consent.md) waarvan u wilt dat de gebruiker toestemming geeft.  |
 
 ### <a name="device-authorization-response"></a>Reactie van het apparaat autorisatie
@@ -99,12 +97,12 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| Parameter | Verplicht | Beschrijving|
+| Parameter | Vereist | Beschrijving|
 | -------- | -------- | ---------- |
-| `tenant`  | Verplicht | Dezelfde Tenant of Tenant alias die in de eerste aanvraag wordt gebruikt. | 
-| `grant_type` | Verplicht | Moet `urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Verplicht | Moet overeenkomen met de `client_id` die in de eerste aanvraag wordt gebruikt. |
-| `device_code`| Verplicht | De `device_code` geretourneerd in de autorisatie aanvraag voor het apparaat.  |
+| `tenant`  | Vereist | Dezelfde Tenant of Tenant alias die in de eerste aanvraag wordt gebruikt. | 
+| `grant_type` | Vereist | Moet `urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Vereist | Moet overeenkomen met de `client_id` die in de eerste aanvraag wordt gebruikt. |
+| `device_code`| Vereist | De `device_code` geretourneerd in de autorisatie aanvraag voor het apparaat.  |
 
 ### <a name="expected-errors"></a>Verwachte fouten
 

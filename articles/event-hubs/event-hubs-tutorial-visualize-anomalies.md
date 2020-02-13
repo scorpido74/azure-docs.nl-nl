@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 01/15/2020
-ms.openlocfilehash: 8fa123772ae380cd000c414c63bdf3908d279751
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906382"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163174"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Zelfstudie: Gegevensanomalieën binnen in realtime naar Azure Event Hubs verzonden gebeurtenissen visualiseren
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 > * Een Stream Analytics-taak configureren om die transacties te verwerken
 > * Een Power BI-visualisatie configureren om de resultaten te tonen
 
-U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien. Als u nog geen abonnement hebt, [maakt u een gratis account][] voordat u begint.
+U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien. Als u nog geen abonnement hebt, maakt u een [gratis account][] voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -186,7 +186,7 @@ U kunt nu gegevens streamen naar uw Event Hub. Als u die gegevens in een Power B
 
    ![Schermopname waarin wordt weergegeven hoe u een nieuwe Azure Stream Analytics-taak maakt.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Accepteer de standaardwaarden voor de rest van de velden. Klik op **Maken**. 
+    Accepteer de standaardwaarden voor de rest van de velden. Klik op **Create**. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Een invoer aan de Stream Analytics-taak toevoegen
 
@@ -320,7 +320,7 @@ Klik in de Stream Analytics-taak op **Start**, vervolgens op **Nu**  en daarna o
 
    Klik op **Volgende**.
 
-10. Stel de titel in op **Fraudulent uses** (frauduleus gebruik) en de subtitel op **Sum in last few minutes** (totaal in de afgelopen paar minuten). Klik op **Toepassen**. De tegel wordt opgeslagen op uw dashboard.
+10. Stel de titel in op **Fraudulent uses** (frauduleus gebruik) en de subtitel op **Sum in last few minutes** (totaal in de afgelopen paar minuten). Klik op **Apply** (Toepassen). De tegel wordt opgeslagen op uw dashboard.
 
     ![Schermafbeelding van het opgeven van de titel en subtitel voor een dashboardtegel.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
@@ -373,7 +373,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 > [!div class="checklist"]
 > * Een Event Hubs-naamruimte maken
 > * Een Event Hub maken
@@ -384,6 +384,6 @@ In deze zelfstudie hebt u het volgende geleerd:
 Ga naar het volgende artikel voor meer informatie over Azure Event Hubs.
 
 > [!div class="nextstepaction"]
-> [Aan de slag met het verzenden van berichten naar Azure Event Hubs in .NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
+> [Aan de slag met het verzenden van berichten naar Azure Event Hubs in .NET Standard](get-started-dotnet-standard-send-v2.md)
 
-[maakt u een gratis account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[gratis account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

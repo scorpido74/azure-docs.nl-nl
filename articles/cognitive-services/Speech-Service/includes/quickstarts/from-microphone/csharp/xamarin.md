@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 66391f7b9282781902723b0153a5797a5f7ae82b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f315f29eab107c9e0e145bd25db71a8cb8b2ace
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469072"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77155966"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -48,7 +48,7 @@ Het algemene HelloWorld-project bevat platform onafhankelijke implementaties voo
 1. Zoek in de handler van het bron bestand `OnRecognitionButtonClicked` de teken reeks `YourSubscriptionKey`en vervang deze door de sleutel van uw abonnement.
 
 
-1. Zoek in de handler `OnRecognitionButtonClicked` de teken reeks `YourServiceRegion`en vervang deze door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld. (Gebruik `westus` voor het gratis proef abonnement.)
+1. Zoek in de handler `OnRecognitionButtonClicked` de teken reeks `YourServiceregion`en vervang deze door de "Speech SDK para meter" uit de [regio](https://aka.ms/speech/sdkregion) die aan uw abonnement is gekoppeld. (Gebruik `westus` voor het gratis proef abonnement.)
 
 1. Vervolgens moet u een [Xamarin-service](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)maken, die wordt gebruikt om microfoon machtigingen op te vragen uit verschillende platform projecten, zoals UWP, Android en IOS. Hiervoor moet u een nieuwe map met de naam *Services* toevoegen onder het project HelloWorld en een nieuw C# bron bestand maken. U kunt met de rechter muisknop op de map *Services* klikken en > **nieuw item** **toevoegen** > **code bestand**. Wijzig de naam van het bestand `IMicrophoneService.cs`en plaats alle code uit het volgende fragment in dat bestand:
 

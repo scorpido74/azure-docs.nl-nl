@@ -7,16 +7,16 @@ ms.service: vpn-gateway
 ms.date: 02/07/2019
 ms.author: cherylmc
 ms.topic: conceptual
-ms.openlocfilehash: 2c02b656f8d7879115d25516bf49f49d9921a290
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: f351f14796ec736bd5525f139a518c9a0dd3d19f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146327"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162103"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Een virtuele netwerk gateway verwijderen met Power shell
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [Azure-portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (klassiek)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
@@ -30,7 +30,7 @@ Er zijn een aantal verschillende benaderingen die u kunt nemen wanneer u een vir
 
 ## <a name="before-beginning"></a>Voordat u begint
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1. down load de nieuwste Azure Resource Manager Power shell-cmdlets.
 

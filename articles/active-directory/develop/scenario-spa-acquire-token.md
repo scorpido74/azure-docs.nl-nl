@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: 290b0073ea6736141bca035f82f7aa37bdf364ef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701923"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160063"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Toepassing met één pagina: een Token ophalen om een API aan te roepen
 
@@ -42,7 +42,7 @@ U kunt de API-bereiken instellen waarvan u wilt dat het toegangs token moet word
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>Een token verkrijgen met een pop-upvenster
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 In de volgende code wordt het eerder beschreven patroon gecombineerd met de methoden voor een pop-upervaring:
 
@@ -69,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 De MSAL-hoek wrapper biedt de HTTP-Interceptor, waarmee automatisch toegangs tokens op de achtergrond worden opgehaald en worden gekoppeld aan de HTTP-aanvragen voor Api's.
 
@@ -111,9 +111,11 @@ ngOnDestroy() {
 
 U kunt ook expliciet tokens verkrijgen met behulp van de methoden Acquire-token, zoals beschreven in de core MSAL. JS-bibliotheek.
 
+---
+
 ## <a name="acquire-a-token-with-a-redirect"></a>Een token verkrijgen met een omleiding
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Het volgende patroon is eerder beschreven, maar wordt weer gegeven met een omleidings methode om tokens interactief te verkrijgen. U moet de retour aanroep van de omleiding registreren zoals eerder is beschreven.
 
@@ -142,6 +144,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 ```
 
 ## <a name="request-optional-claims"></a>Optionele claims aanvragen
+
 U kunt optionele claims gebruiken voor de volgende doel einden:
 
 - Neem aanvullende claims op in tokens voor uw toepassing.
@@ -150,7 +153,6 @@ U kunt optionele claims gebruiken voor de volgende doel einden:
 
 Als u optionele claims wilt aanvragen in `IdToken`, kunt u een stringified claims-object verzenden naar het veld `claimsRequest` van de `AuthenticationParameters.ts`-klasse.
 
-### <a name="javascript"></a>JavaScript
 ```javascript
 "optionalClaims":  
    {
@@ -168,12 +170,14 @@ var request = {
 
 myMSALObj.acquireTokenPopup(request);
 ```
+
 Zie voor meer informatie [optionele claims](active-directory-optional-claims.md).
 
-
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Deze code is hetzelfde als eerder beschreven.
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

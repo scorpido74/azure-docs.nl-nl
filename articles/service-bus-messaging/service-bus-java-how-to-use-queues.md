@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5a32d92dd8a44602034d84262f2e502a60ac23a9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: d819d4f7b3049a5c034ec8ac5170175f3ad3e9bb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760637"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190835"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Snelstartgids: Azure Service Bus-wacht rijen gebruiken met Java om berichten te verzenden en te ontvangen
 
@@ -124,9 +124,9 @@ De primaire manier om berichten uit een wachtrij te ontvangen, is door een **Ser
 Wanneer u de **ReceiveAndDelete** -modus gebruikt, ontvangt u een eenmalige bewerking. Wanneer service bus een lees aanvraag voor een bericht in een wachtrij ontvangt, wordt het bericht gemarkeerd als verbruikt en wordt het naar de toepassing geretourneerd. De **ReceiveAndDelete** -modus (de standaard modus) is het eenvoudigste model en werkt het beste voor scenario's waarin een toepassing niet de verwerking van een bericht in het geval van een fout kan verdragen. Neem bijvoorbeeld een scenario waarin de consument de ontvangstaanvraag uitgeeft en het systeem vervolgens vastloopt voordat de aanvraag wordt verwerkt.
 Omdat Service Bus het bericht heeft gemarkeerd als verbruikt, wordt het bericht dat voor het vastlopen is verbruikt, gemist wanneer de toepassing opnieuw wordt gestart en er opnieuw wordt verbruikt.
 
-In de **PeekLock** -modus wordt ontvangen een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of het op een betrouw bare manier voor toekomstige verwerking opslaat), wordt de tweede fase van het ontvangst proces voltooid door het **verwijderen** van een bericht aan te roepen. Als Service Bus de aanroep **verwijderen** ziet, wordt het bericht gemarkeerd als verbruikt en wordt het uit de wachtrij verwijderd.
+In de **PeekLock** -modus wordt ontvangen een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of op betrouw bare wijze is opgeslagen voor toekomstige verwerking), wordt de tweede fase van het ontvangst proces voltooid door het aanroepen van **complete ()** op het ontvangen bericht. Als Service Bus de aanroep **complete ()** ziet, wordt het bericht gemarkeerd als verbruikt en wordt het uit de wachtrij verwijderd. 
 
-In het volgende voor beeld ziet u hoe berichten kunnen worden ontvangen en verwerkt met behulp van de **PeekLock** -modus (niet de standaard modus). In het onderstaande voor beeld ziet u een oneindige lus en worden berichten verwerkt die binnenkomen in onze `TestQueue`:
+In het volgende voor beeld ziet u hoe berichten kunnen worden ontvangen en verwerkt met behulp van de **PeekLock** -modus (niet de standaard modus). In het onderstaande voor beeld wordt het call back-model gebruikt met een geregistreerde bericht-handler en worden berichten verwerkt die binnenkomen in onze `TestQueue`. In deze modus wordt de **volledige ()** automatisch aangeroepen, omdat de retour aanroep normaal wordt geretourneerd en het aanroepen van **Abandon ()** als de retour aanroep een uitzonde ring genereert. 
 
 ```java
     public void run() throws Exception {
@@ -179,11 +179,11 @@ In het volgende voor beeld ziet u hoe berichten kunnen worden ontvangen en verwe
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Het vastlopen van de toepassing en onleesbare berichten afhandelen
-Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvangende toepassing het bericht om de een of andere reden niet kan verwerken, kan de methode **unlockMessage** worden aangeroepen op het ontvangen bericht (in plaats van de **deleteMessage** -methode). Dit zorgt ervoor dat Service Bus het bericht in de wachtrij ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde consumerende toepassing of door een andere consumerende toepassing.
+Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvangende toepassing het bericht om de een of andere reden niet kan verwerken, kan de methode **Abandon ()** aanroepen op het client object met het vergrendelings token van het ontvangen bericht dat is verkregen via **getLockToken ()** . Dit zorgt ervoor dat Service Bus het bericht in de wachtrij ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde consumerende toepassing of door een andere consumerende toepassing.
 
 Er is ook een time-out gekoppeld aan een bericht dat in de wachtrij is vergrendeld. als de toepassing het bericht niet kan verwerken voordat de time-out van de vergren deling verloopt (bijvoorbeeld als de toepassing vastloopt), wordt Service Bus het bericht automatisch ontgrendeld en wordt het beschikbaar om opnieuw te worden ontvangen.
 
-In het geval dat de toepassing vastloopt na het verwerken van het bericht, maar voordat de **deleteMessage** -aanvraag is verzonden, wordt het bericht opnieuw aan de toepassing bezorgd wanneer het opnieuw wordt gestart. Dit wordt vaak *Ten minste eenmaal verwerken* genoemd; dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar dat hetzelfde bericht in sommige situaties opnieuw kan worden bezorgd. Als in het scenario dubbele verwerking niet wordt getolereerd, dan moeten toepassingsontwikkelaars extra logica toevoegen aan de toepassing om dubbele berichtbezorging af te handelen. Dit wordt vaak bereikt met de methode **getMessageId** van het bericht, dat constant blijft tijdens de bezorgings pogingen.
+In het geval dat de toepassing vastloopt na het verwerken van het bericht, maar voordat de aanvraag **volledig ()** is uitgegeven, wordt het bericht opnieuw aan de toepassing verzonden wanneer het opnieuw wordt gestart. Dit wordt vaak *Ten minste eenmaal verwerken* genoemd; dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar dat hetzelfde bericht in sommige situaties opnieuw kan worden bezorgd. Als in het scenario dubbele verwerking niet wordt getolereerd, moeten toepassingsontwikkelaars extra logica toevoegen aan de toepassing om dubbele berichtbezorging af te handelen. Dit wordt vaak bereikt met de methode **getMessageId** van het bericht, dat constant blijft tijdens de bezorgings pogingen.
 
 > [!NOTE]
 > U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 

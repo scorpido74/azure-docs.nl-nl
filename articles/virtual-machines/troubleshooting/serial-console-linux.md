@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 1074c4bc561236039e6ee55ef2df4fc8bd8dbbfc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b1f7708c9bd213e201ba4eb8837a191dca68ca9e
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772513"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167022"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure Serial console voor Linux
 
@@ -38,7 +38,7 @@ Zie [seriële console voor Windows](../windows/serial-console.md)voor informatie
 
 - Uw account dat gebruikmaakt van seriële console, moet de [rol Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) hebben voor de VM en het opslag account voor [Diagnostische gegevens over opstarten](boot-diagnostics.md)
 
-- Uw virtuele machine of exemplaar van de VM-schaalset moet een gebruiker met een wacht woord zijn. U kunt maken met de [wachtwoord opnieuw instellen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) functie van de VM-extensie voor toegang. Selecteer **wachtwoord opnieuw instellen** uit de **ondersteuning en probleemoplossing** sectie.
+- Uw virtuele machine of exemplaar van de VM-schaalset moet een gebruiker met een wacht woord zijn. U kunt er een maken met de functie [wacht woord opnieuw instellen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) van de extensie VM-toegang. Selecteer **wacht woord opnieuw instellen** in het gedeelte **ondersteuning en probleem oplossing** .
 
 - Voor de virtuele machine of het exemplaar van de VM-schaalset moet [Diagnostische gegevens over opstarten](boot-diagnostics.md) zijn ingeschakeld.
 
@@ -93,13 +93,13 @@ Standaard hebben alle abonnementen seriële console toegang ingeschakeld. U kunt
 ## <a name="serial-console-security"></a>Seriële console-beveiliging
 
 ### <a name="access-security"></a>Beveiliging voor toegang
-Toegang tot de seriële console is beperkt tot gebruikers die beschikken over een toegangsrol van [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) of hoger op de virtuele machine. Als uw Azure Active Directory-tenant is multi-factor authentication (MFA) vereist, wordt toegang tot de seriële console ook de MFA moet omdat de seriële console-toegang via de [Azure-portal](https://portal.azure.com).
+Toegang tot de seriële console is beperkt tot gebruikers die de rol van toegang tot de [virtuele machine](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) of een hoger niveau van de virtuele machine hebben. Als uw Azure Active Directory-Tenant multi-factor Authentication (MFA) vereist, heeft toegang tot de seriële console ook MFA nodig omdat de toegang tot de seriële console via de [Azure Portal](https://portal.azure.com).
 
 ### <a name="channel-security"></a>Beveiliging van het kanaal
 Alle gegevens die worden verzonden heen en weer worden versleuteld op de kabel.
 
 ### <a name="audit-logs"></a>Auditlogboeken
-Alle toegang tot de seriële console momenteel is aangemeld de [diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) logboeken van de virtuele machine. Toegang tot deze logboeken zijn eigendom van en beheerd door de beheerder van de virtuele machine van Azure.
+Alle toegang tot de seriële console is momenteel geregistreerd in de logboeken voor [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) van de virtuele machine. Toegang tot deze logboeken zijn eigendom van en beheerd door de beheerder van de virtuele machine van Azure.
 
 > [!CAUTION]
 > Er zijn geen wachtwoorden voor toegang voor de console worden geregistreerd. Echter, als opdrachten worden uitgevoerd binnen de console bevat of uitvoer van wachtwoorden, geheimen, gebruikersnamen of enige andere vorm van persoonlijk identificeerbare informatie (PII), die wordt geschreven naar de VM boot diagnostics-Logboeken. Ze worden geschreven, samen met andere zichtbare tekst, als onderdeel van de implementatie van de seriële console Schuif terug functie. Deze logboeken zijn circulaire en alleen personen met leesmachtigingen voor het opslagaccount voor diagnostische gegevens over de toegang tot hebben. Als u een gegevensfactory met geheimen of PII insluit, kunt u het beste SSH gebruiken tenzij de seriële console absoluut nood zakelijk is.
@@ -114,7 +114,7 @@ Als een gebruiker is verbonden met de seriële console en een andere gebruiker i
 Toegankelijkheid is een belang rijke focus voor de Azure Serial console. Daarom hebben we ervoor gezorgd dat de seriële console volledig toegankelijk is.
 
 ### <a name="keyboard-navigation"></a>Toetsenbordnavigatie
-Gebruik de **tabblad** sleutel op het toetsenbord om te navigeren in de interface van de seriële console van de Azure-portal. Uw locatie wordt gemarkeerd op het scherm worden weergegeven. Als u wilt de focus van de seriële console-venster laten, drukt u op **Ctrl**+**F6** op het toetsenbord.
+Gebruik de **Tab** -toets op het toetsen bord om te navigeren in de interface van de seriële console van de Azure Portal. Uw locatie wordt gemarkeerd op het scherm worden weergegeven. Als u de focus van het venster van de seriële console wilt verlaten, drukt u op **Ctrl**+**F6** op het toetsen bord.
 
 ### <a name="use-serial-console-with-a-screen-reader"></a>Seriële console gebruiken met een scherm lezer
 De seriële console heeft ingebouwde ondersteuning voor schermlezers. Navigeren om met een schermlezer ingeschakeld, kunnen de alt-tekst voor de geselecteerde knop om te worden door de schermlezer voorgelezen.
@@ -124,7 +124,7 @@ Er zijn enkele problemen met de seriële console en het besturings systeem van d
 
 Probleem                           |   Oplossing
 :---------------------------------|:--------------------------------------------|
-Drukken **Enter** nadat de banner van de verbinding niet leidt een aanmeldingsprompt tot moet worden weergegeven. | Zie voor meer informatie, [Hitting invoeren, gebeurt er niets](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Dit probleem kan optreden als u een aangepaste VM, een vrijgemaakt apparaat of een GRUB-configuratie uitvoert die ervoor zorgt dat Linux geen verbinding kan maken met de seriële poort.
+Wanneer u op **Enter** drukt na de verbindings banner, wordt er geen aanmeldings prompt weer gegeven. | GRUB is mogelijk niet juist geconfigureerd. Voer de volgende opdrachten uit: `grub2-mkconfig -o /etc/grub2-efi.cfg` en/of `grub2-mkconfig -o /etc/grub2.cfg`. Voor meer informatie, zie op ' door [voeren Enter ' niets](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Dit probleem kan optreden als u een aangepaste VM, een vrijgemaakt apparaat of een GRUB-configuratie uitvoert die ervoor zorgt dat Linux geen verbinding kan maken met de seriële poort.
 Seriële console tekst neemt een deel van de scherm grootte in beslag (vaak na het gebruik van een tekst editor). | Seriële consoles bieden geen ondersteuning voor onderhandelen over de venster grootte ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)). Dit betekent dat er geen SIGWINCH-signaal wordt verzonden naar de scherm grootte van de update en dat de virtuele machine geen kennis heeft van de grootte van uw Terminal. Installeer xterm of een soortgelijk hulp programma om u te voorzien van de `resize`-opdracht en voer vervolgens `resize`uit.
 Lange tekenreeksen plakken werkt niet. | De seriële console beperkt de lengte van tekenreeksen in de terminal naar 2048 tekens om te voorkomen dat de seriële poort-bandbreedte overbelasten geplakt.
 Er zijn geen toetsenbord invoer in SLES BYOS-installatie kopieën. Toetsenbord invoer wordt alleen sporadisch herkend. | Dit is een probleem met het Plymouth-pakket. Plymouth moet niet worden uitgevoerd in azure omdat u geen welkomst scherm nodig hebt en Plymouth de mogelijkheid biedt om de seriële console te gebruiken. Verwijder Plymouth met `sudo zypper remove plymouth` en start de computer opnieuw op. U kunt ook de kernel-regel van uw GRUB-configuratie wijzigen door `plymouth.enable=0` toe te voegen aan het einde van de regel. U kunt dit doen door [de opstart vermelding tijdens het opstarten te bewerken](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)of door de GRUB_CMDLINE_LINUX regel in `/etc/default/grub`te bewerken, grub opnieuw te maken met `grub2-mkconfig -o /boot/grub2/grub.cfg`en vervolgens opnieuw op te starten.
@@ -134,11 +134,11 @@ Er zijn geen toetsenbord invoer in SLES BYOS-installatie kopieën. Toetsenbord i
 
 **V. Hoe kan ik feedback verzenden?**
 
-A. Feedback geven door een GitHub-probleem te maken op https://aka.ms/serialconsolefeedback. U kunt ook (minder bij voorkeur), kunt u feedback via verzenden azserialhelp@microsoft.com of in de categorie van de virtuele machine van https://feedback.azure.com.
+A. Feedback geven door een GitHub-probleem te maken op https://aka.ms/serialconsolefeedback. Als alternatief (minder voor keur) kunt u feedback verzenden via azserialhelp@microsoft.com of in de virtuele-machine categorie van https://feedback.azure.com.
 
 **V. ondersteunt de seriële console kopiëren/plakken?**
 
-A. Ja. Gebruik **Ctrl**+**Shift**+**C** en **Ctrl**+**Shift** + **V** kopiëren en plakken in de terminal.
+A. Ja. Gebruik **ctrl**+**SHIFT**+**C** en **CTRL**+**SHIFT**+**V** om de Terminal te kopiëren en te plakken.
 
 **V. kan ik seriële console gebruiken in plaats van een SSH-verbinding?**
 
@@ -172,5 +172,5 @@ A. Ja. Omdat de seriële console geen SSH-sleutels nodig heeft, hoeft u alleen e
 * Gebruik de seriële console voor [NMI-en SYSRQ-aanroepen](serial-console-nmi-sysrq.md).
 * Meer informatie over het gebruik van de seriële console om [grub in te scha kelen in verschillende distributies](serial-console-grub-proactive-configuration.md)
 * De seriële console is ook beschikbaar voor [virtuele Windows-machines](../windows/serial-console.md).
-* Meer informatie over [diagnostische gegevens over opstarten](boot-diagnostics.md).
+* Meer informatie over [Diagnostische gegevens over opstarten](boot-diagnostics.md).
 

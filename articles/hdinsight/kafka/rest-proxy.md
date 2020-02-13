@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: b53fc3af71ce872c9ca9f513139c8179fd4165ed
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bc6859d29a574cea0d97989977ba9a333b20f6c4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031383"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157127"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interactie met Apache Kafka clusters in azure HDInsight met behulp van een REST-proxy
 
@@ -24,6 +24,8 @@ Met de Kafka REST-proxy kunt u met uw Kafka-cluster communiceren via een REST AP
 
 Zonder REST-proxy moeten Kafka-clients zich in hetzelfde VNet bevinden als het Kafka-cluster of een gekoppeld VNet. Met de REST-proxy kunt u overal verbinding maken met gegevens producenten of gebruikers die zich elders bevinden. Als u de REST-proxy implementeert, maakt u een nieuw openbaar eind punt voor uw cluster, dat u kunt vinden in de Portal instellingen.
 
+![Kafka REST-proxy architectuur](./media/rest-proxy/rest-proxy-architecture.png)
+
 Zie [Apache Kafka rest proxy API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)voor een volledige specificatie van bewerkingen die worden ondersteund door de API.
 
 ### <a name="security"></a>Beveiliging
@@ -32,7 +34,7 @@ De toegang tot de Kafka REST-proxy wordt beheerd met Azure Active Directory-beve
 
 Bij het maken van het Kafka-cluster waarvoor de REST-proxy is ingeschakeld, geeft u de AAD-beveiligings groep op die toegang moet hebben tot het REST-eind punt. De Kafka-clients (toepassingen) die toegang nodig hebben tot de REST proxy moeten door de groeps eigenaar bij deze groep worden geregistreerd. De eigenaar van de groep kan dit doen via de portal of via Power shell.
 
-Voordat er aanvragen worden gedaan voor het eind punt van de REST-proxy, moet de client toepassing een OAuth-Token ophalen om het lidmaatschap van de juiste beveiligings groep te verifiëren. Zie [toegang tot Azure Active Directory webtoepassingen toestaan met de OAuth 2,0 code subsidie flow](../../active-directory/develop/v1-protocols-oauth-code.md)voor meer informatie over de werking van OAuth-tokens. Voor een voor beeld van het ophalen van een OAuth-token in Python, raadpleegt u voor [beeld van client toepassing](#client-application-sample)
+Voordat er aanvragen worden gedaan voor het eind punt van de REST-proxy, moet de client toepassing een OAuth-Token ophalen om het lidmaatschap van de juiste beveiligings groep te verifiëren. Zie [toegang tot Azure Active Directory webtoepassingen toestaan met de OAuth 2,0 code subsidie flow](../../active-directory/azuread-dev/v1-protocols-oauth-code.md)voor meer informatie over de werking van OAuth-tokens. Voor een voor beeld van het ophalen van een OAuth-token in Python, raadpleegt u voor [beeld van client toepassing](#client-application-sample)
 
 Zodra de client toepassing het OAuth-token heeft, moet dit token door gegeven worden in de HTTP-aanvraag voor de REST-proxy.
 

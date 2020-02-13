@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: celested
+ms.date: 02/12/2020
+ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: b741f42bb215df59903fed7ed84094b7d037ce65
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063013"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166012"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Veilige toegang tot on-premises Api's met Azure AD-toepassingsproxy
 
@@ -53,19 +53,19 @@ De SecretAPI-Web-API publiceren via toepassings proxy:
 
 1. Bouw en publiceer het voorbeeld SecretAPI-project als een ASP.NET-Web-app op uw lokale computer of intranet. Zorg ervoor dat u lokaal toegang tot de Web-App kunt krijgen. 
    
-1. Selecteer in de [Azure Portal](https://portal.azure.com) **Azure Active Directory** in het linkernavigatievenster. Selecteer vervolgens op de pagina **overzicht** de optie **bedrijfs toepassingen**.
+1. Selecteer **Azure Active Directory**In het [Azure Portal](https://portal.azure.com). Selecteer vervolgens **bedrijfs toepassingen**.
    
 1. Selecteer boven aan de pagina **bedrijfs toepassingen-alle toepassingen** de optie **nieuwe toepassing**.
    
-1. Selecteer op de pagina **Bladeren door Azure AD-galerie** onder **on-premises toepassingen** **de optie een lokale toepassing toevoegen**. De pagina **uw eigen on-premises toepassing toevoegen** wordt weer gegeven.
+1. Selecteer op de pagina **een toepassing toevoegen** de optie **on-premises toepassingen**. De pagina **uw eigen on-premises toepassing toevoegen** wordt weer gegeven.
    
 1. Als er geen toepassings proxy connector is geïnstalleerd, wordt u gevraagd deze te installeren. Selecteer **toepassings proxy connector downloaden** om de connector te downloaden en te installeren. 
    
 1. Nadat u de toepassings proxy connector hebt geïnstalleerd, op de pagina **uw eigen on-premises toepassing toevoegen** :
    
-   1. Voer *SecretAPI* in bij **naam**.
+   1. Voer *SecretAPI*in bij **naam**.
       
-   1. Voer de URL in die u gebruikt voor toegang tot de API vanuit uw intranet naast **interne URL**. 
+   1. Voer naast **interne URL**de URL in die u gebruikt voor toegang tot de API vanuit uw intranet.
       
    1. Zorg ervoor dat **verificatie vooraf** is ingesteld op **Azure Active Directory**. 
       

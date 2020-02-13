@@ -13,12 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a0dd9b339ca6372a34ff46222cad347eb1a673f9
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 15af18177cea217612a4d5276d130abe02d339f4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084990"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160757"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>Ondersteuning voor Active Directory Federation Services in MSAL.NET
 Met Active Directory Federation Services (AD FS) in Windows Server kunt u OpenID Connect Connect en OAuth 2,0-verificatie en-autorisatie toevoegen aan toepassingen die u ontwikkelt. Deze toepassingen kunnen gebruikers vervolgens rechtstreeks verifiëren tegen AD FS. Lees [AD FS scenario's voor ontwikkel aars](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)voor meer informatie.
@@ -54,7 +54,7 @@ Er zijn momenteel geen plannen voor het ondersteunen van een rechtstreekse verbi
 - AD FS 16, omdat het geen PKCE ondersteunt en nog steeds resources gebruikt, niet bereik
 - AD FS v2, dat niet OIDC-compatibel is.
 
- Als u scenario's wilt ondersteunen waarvoor een rechtstreekse verbinding met AD FS 2016 is vereist, gebruikt u de meest recente versie van [Azure Active Directory-verificatie bibliotheek](active-directory-authentication-libraries.md#microsoft-supported-client-libraries). Wanneer u uw on-premises systeem hebt bijgewerkt naar AD FS 2019, kunt u MSAL.NET gebruiken.
+ Als u scenario's wilt ondersteunen waarvoor een rechtstreekse verbinding met AD FS 2016 is vereist, gebruikt u de meest recente versie van [Azure Active Directory-verificatie bibliotheek](../azuread-dev/active-directory-authentication-libraries.md#microsoft-supported-client-libraries). Wanneer u uw on-premises systeem hebt bijgewerkt naar AD FS 2019, kunt u MSAL.NET gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

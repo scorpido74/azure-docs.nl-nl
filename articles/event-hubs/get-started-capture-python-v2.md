@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 788fcf15ebd68aae525c2895340f437594c9c58c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 34583ef49b2f919391af3fe5700a558b2dc40700
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906406"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187245"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Event Hubs gegevens vastleggen in Azure Storage en deze lezen met behulp van python (Azure-eventhub versie 5)
 
-U kunt een Event Hub zodanig configureren dat de gegevens die naar een Event Hub worden verzonden, worden vastgelegd in een Azure-opslag account of Azure Data Lake Storage. In dit artikel wordt beschreven hoe u een python-code schrijft voor het verzenden van gebeurtenissen naar een Event Hub en het lezen van de vastgelegde gegevens uit Azure Blob Storage. Zie [Event hubs Capture-functie overzicht](event-hubs-capture-overview.md)voor meer informatie over deze functie.
+U kunt een Event Hub zodanig configureren dat de gegevens die naar een Event Hub worden verzonden, worden vastgelegd in een Azure-opslag account of Azure Data Lake Storage gen 1 of gen 2. In dit artikel wordt beschreven hoe u een python-code schrijft voor het verzenden van gebeurtenissen naar een Event Hub en het lezen van de vastgelegde gegevens uit **Azure Blob Storage**. Zie [Event hubs Capture-functie overzicht](event-hubs-capture-overview.md)voor meer informatie over deze functie.
 
 In deze Quick Start wordt de [Azure PYTHON SDK](https://azure.microsoft.com/develop/python/) gebruikt om de Capture-functie te demonstreren. De *Sender.py* -app stuurt gesimuleerde omgevings-telemetrie naar Event hubs in JSON-indeling. De event hub is geconfigureerd voor het gebruik van de Capture-functie voor het schrijven van deze gegevens naar Blob-opslag in batches. De *capturereader.py* -app leest deze blobs en maakt een toevoeg bestand voor elk apparaat. De app schrijft de gegevens vervolgens naar CSV-bestanden.
 
@@ -40,7 +40,7 @@ In deze snelstart, gaat u het volgende doen:
 ## <a name="prerequisites"></a>Vereisten
 
 - Python 2,7 en 3,5 of hoger, waarbij PIP is geïnstalleerd en bijgewerkt.  
-- Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.  
+- Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.  
 - Een actieve Event Hubs naam ruimte en Event Hub.
 [Maak een event hubs naam ruimte en een event hub in de naam ruimte](event-hubs-create.md). Noteer de naam van de Event Hubs naam ruimte, de naam van de Event Hub en de primaire toegangs sleutel voor de naam ruimte. Als u de toegangs sleutel wilt ophalen, raadpleegt u [een event hubs-Connection String ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). De naam van de standaard sleutel is *RootManageSharedAccessKey*. Voor deze Quick Start hebt u alleen de primaire sleutel nodig. U hebt de connection string niet nodig.  
 - Een Azure-opslag account, een BLOB-container in het opslag account en een connection string naar het opslag account. Als u deze items niet hebt, gaat u als volgt te werk:  
@@ -55,7 +55,7 @@ In deze snelstart, gaat u het volgende doen:
 In deze sectie maakt u een python-script waarmee 200-gebeurtenissen (10 apparaten * 20 gebeurtenissen) naar een Event Hub worden verzonden. Deze gebeurtenissen zijn een voor beeld van het lezen van een omgeving dat wordt verzonden in JSON-indeling. 
 
 1. Open uw favoriete python-editor, zoals [Visual Studio code][Visual Studio Code].
-2. Maken van een script met de naam *sender.py*. 
+2. Maak een script met de naam *Sender.py*. 
 3. Plak de volgende code in *Sender.py*. 
    
     ```python

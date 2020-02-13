@@ -6,14 +6,14 @@ tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544783"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162681"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Voor beeld: Azure spot-Vm's voor schaal sets voor virtuele machines 
 
@@ -25,7 +25,6 @@ De hoeveelheid beschik bare capaciteit kan variëren op basis van grootte, regio
 > Spot instanties zijn momenteel beschikbaar als open bare preview.
 > Deze preview-versie wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 >
-> Voor het vroege deel van de open bare preview hebben spot instanties een vaste prijs, zodat er geen op prijzen gebaseerde verwijderingen zijn.
 
 ## <a name="pricing"></a>Prijzen
 
@@ -48,8 +47,8 @@ Gebruikers kunnen zich aanmelden om in-VM-meldingen te ontvangen via [Azure Sche
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Implementatie-Vm's in schaal sets implementeren
 
 Als u virtuele-machine bewerkingen wilt implementeren op schaal sets, kunt u de vlag nieuwe *prioriteit* instellen op *Spot*. Alle virtuele machines in uw schaalset worden ingesteld op spot. Gebruik een van de volgende methoden voor het maken van een schaalset met behulp van spot-Vm's:
-- [Azure Portal](#portal)
-- [Azure-CLI](#azure-cli)
+- [Azure-portal](#portal)
+- [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Azure Resource Manager sjablonen](#resource-manager-templates)
 
@@ -58,7 +57,7 @@ Als u virtuele-machine bewerkingen wilt implementeren op schaal sets, kunt u de 
 Het proces voor het maken van een schaalset die gebruikmaakt van stapsgewijze Vm's, is gelijk aan die in het [artikel aan](quick-create-portal.md)de slag. Wanneer u een schaalset implementeert, kunt u kiezen voor het instellen van de vlag spot en het verwijderings beleid: ![een schaalset maken met behulp van een vaste virtuele machine](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 Het proces voor het maken van een schaalset met stapsgewijze Vm's is hetzelfde als die in het [artikel aan](quick-create-cli.md)de slag. Voeg alleen de '---Priority spot ' toe en voeg `--max-price`toe. In dit voor beeld gebruiken we `-1` voor `--max-price` zodat het exemplaar niet wordt verwijderd op basis van de prijs.
 
@@ -161,11 +160,11 @@ Als u het exemplaar wilt verwijderen nadat het is verwijderd, wijzigt u de para 
 | Azure-kanalen               | Beschik baarheid van Azure spot Vm's       |
 |------------------------------|-----------------------------------|
 | Enterprise Agreement         | Ja                               |
-| Betalen per gebruik                | Ja                               |
+| Betalen naar gebruik                | Ja                               |
 | Cloud serviceprovider (CSP) | [Neem contact op met uw partner](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Voordelen                     | Niet beschikbaar                     |
-| Gesponsord                    | Niet beschikbaar                     |
-| Gratis proefversie                   | Niet beschikbaar                     |
+| Gesponsorde                    | Niet beschikbaar                     |
+| Gratis proef versie                   | Niet beschikbaar                     |
 
 
 **V:** Waar kan ik vragen plaatsen?
