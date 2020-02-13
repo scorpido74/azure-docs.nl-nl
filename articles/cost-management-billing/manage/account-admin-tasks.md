@@ -2,21 +2,21 @@
 title: Taken van accountbeheerders in de Azure-portal
 description: In dit artikel wordt beschreven hoe u betalingsbewerkingen uitvoert in de Azure-portal
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: dfee9218f1e65189117c3d37808a303cf7568cd7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2f858fa7715145d55cf1c978b9c368e1f6586dce
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76846225"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132138"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Taken van accountbeheerders in de Azure-portal
 
